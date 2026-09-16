@@ -1,0 +1,24 @@
+"""Explicit pipeline orchestration; no training on import."""
+import random
+import numpy as np
+import torch
+from .data import load_data, build_train_loader
+from .models import UniversalVisionEncoder, CaptionDecoder, ImageCaptioningModel
+
+def run(config):
+    random.seed(config.seed)
+    np.random.seed(config.seed)
+    torch.manual_seed(config.seed)
+    torch.cuda.manual_seed_all(config.seed)
+    config.device = 'cuda' if torch.cuda.is_available() else 'cpu'
+    print(f'Using device: {config.device}', flush=True)
+    data = load_data(config)
+    encoder = UniversalVisionEncoder().to(config.device)
+    decoder = CaptionDecoder(vocab_size=data.vocab_size).to(config.device)
+    model = ImageCaptioningModel(encoder, decoder).to(config.device)
+    if config.mode == 'train':
+        from .training import train_model
+        train_model(model, build_train_loader(config, data), data, config)
+    else:
+        from .evaluation import evaluate_model
+        evaluate_model(model, data, config)

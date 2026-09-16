@@ -1,0 +1,109 @@
+"""COCO splits, prompt cache, image preprocessing and training DataLoader."""
+import json
+import os
+from types import SimpleNamespace
+import pandas as pd
+import torch
+from PIL import Image, ImageFile
+from torch.utils.data import Dataset, DataLoader
+from torchvision import transforms
+from .tokenizer import CaptionTokenizer
+
+NORMALIZATION_STATS = {
+    'mean': [0.48145466, 0.4578275, 0.40821073],
+    'std': [0.26862954, 0.26130258, 0.27577711],
+}
+
+image_transform = transforms.Compose([
+    transforms.Resize((224, 224)),
+    transforms.ToTensor(),
+    transforms.Normalize(mean=NORMALIZATION_STATS['mean'], std=NORMALIZATION_STATS['std']),
+])
+
+
+class CocoPromptDataset(Dataset):
+    def __init__(self, dataframe, transform, caption_tokenizer, prompt_cache):
+        self.dataframe = dataframe.reset_index(drop=True)
+        self.transform = transform
+        self.caption_tokenizer = caption_tokenizer
+        self.prompt_cache = prompt_cache
+
+    def __len__(self):
+        return len(self.dataframe)
+
+    def __getitem__(self, idx):
+        row = self.dataframe.iloc[idx]
+        image_path = row['image']
+        if image_path not in self.prompt_cache:
+            raise KeyError(f'Missing prompt embedding for: {image_path}')
+
+        image = self.transform(Image.open(image_path).convert('RGB'))
+        caption_ids, caption_padding_masks = [], []
+        for caption in row['captions']:
+            ids, mask = self.caption_tokenizer.encode(caption)
+            caption_ids.append(ids)
+            caption_padding_masks.append(mask)
+
+        prompt_entry = self.prompt_cache[image_path]
+        return (
+            image,
+            torch.stack(caption_ids),
+            torch.stack(caption_padding_masks),
+            prompt_entry['tokens'].float(),
+            prompt_entry['mask'].long(),
+        )
+
+def load_data(config):
+    ImageFile.LOAD_TRUNCATED_IMAGES = True
+    for path in (config.dataset_json_path, config.prompt_cache_path):
+        if not os.path.isfile(path):
+            raise FileNotFoundError(path)
+    with open(config.dataset_json_path, 'r', encoding='utf-8') as f:
+        coco_data = json.load(f)
+
+    train_data, val_data, test_data = [], [], []
+    for coco_image_id, img in enumerate(coco_data['images']):
+        full_image_path = os.path.join(config.base_path, img['filepath'], img['filename'])
+        captions = [sent['raw'] for sent in img['sentences']][:5]
+        item = {
+            'image': full_image_path,
+            'captions': captions,
+            'eval_id': coco_image_id,
+            'filename': img['filename'],
+        }
+        if img['split'] in ['train', 'restval']:
+            train_data.append(item)
+        elif img['split'] == 'val':
+            val_data.append(item)
+        elif img['split'] == 'test':
+            test_data.append(item)
+
+    train_df = pd.DataFrame(train_data)
+    val_df = pd.DataFrame(val_data)
+    test_df = pd.DataFrame(test_data)
+
+    print(f'Train: {len(train_df):,} | Val: {len(val_df):,} | Test: {len(test_df):,}')
+
+
+    all_train_captions = [caption for item in train_data for caption in item['captions']]
+    caption_tokenizer = CaptionTokenizer(all_train_captions)
+    vocab_size = len(caption_tokenizer.word2idx)
+    print(f'Caption vocabulary: {vocab_size:,}')
+
+    prompt_embedding_bundle = torch.load(config.prompt_cache_path, map_location='cpu', weights_only=False)
+    prompt_embedding_cache = prompt_embedding_bundle['data']
+    print(f'Prompt embedding entries: {len(prompt_embedding_cache):,}')
+
+    return SimpleNamespace(train_df=train_df, val_df=val_df, test_df=test_df,
+                           tokenizer=caption_tokenizer, prompt_cache=prompt_embedding_cache,
+                           transform=image_transform, vocab_size=vocab_size)
+
+
+def build_train_loader(config, data):
+    dataset = CocoPromptDataset(data.train_df, data.transform, data.tokenizer, data.prompt_cache)
+    loader = DataLoader(dataset, batch_size=config.batch_size, shuffle=True, drop_last=True,
+                        num_workers=config.num_workers, pin_memory=config.device == 'cuda')
+    if len(loader) == 0:
+        raise ValueError('Training split is too small for the batch size with drop_last=True.')
+    print(f'Train batches per epoch: {len(loader):,}')
+    return loader
