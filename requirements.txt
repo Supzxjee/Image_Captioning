@@ -1,0 +1,9 @@
+torch
+torchvision
+transformers
+numpy
+pandas
+Pillow
+tqdm
+pycocotools
+git+https://github.com/salaniz/pycocoevalcap.git
