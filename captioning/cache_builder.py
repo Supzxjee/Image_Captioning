@@ -86,10 +86,12 @@ def main(argv=None):
     parser.add_argument('--parts', type=int, default=4)
     parser.add_argument('--batch-size', type=int, default=32)
     parser.add_argument('--num-workers', type=int, default=2)
+    parser.add_argument('--loader-timeout', type=float, default=120,
+                        help='Seconds to wait for a worker batch; ignored with num-workers=0.')
     parser.add_argument('--limit', type=int, default=0, help='Smoke test: first N images in the selected part, 0=all.')
     parser.add_argument('--verify-samples', type=int, default=10)
     args = parser.parse_args(argv)
-    if args.batch_size < 1 or args.num_workers < 0 or args.limit < 0 or args.verify_samples < 1:
+    if args.batch_size < 1 or args.num_workers < 0 or args.limit < 0 or args.verify_samples < 1 or args.loader_timeout <= 0:
         parser.error('Invalid batch size, workers, limit or verification sample count.')
     records = select_part(collect_records(args.dataset_json_path), args.part, args.parts)
     if args.limit:
@@ -132,7 +134,8 @@ def main(argv=None):
     from .cache_images import CacheImages
     dataset = CacheImages(records, args.base_path, transform)
     loader = DataLoader(dataset, batch_size=args.batch_size, shuffle=False,
-                        num_workers=args.num_workers, pin_memory=device == 'cuda')
+                        num_workers=args.num_workers, pin_memory=device == 'cuda',
+                        timeout=args.loader_timeout if args.num_workers else 0)
     metadata = dict(model_id=MODEL_ID, model_revision=getattr(backbone.config, '_commit_hash', None),
                     output='vision_model.last_hidden_state', preprocessing='bilinear',
                     image_size=[224, 224], antialias=True,
@@ -153,12 +156,24 @@ def main(argv=None):
     print(f'Preflight PASS: {sample_count} images; FP32 extraction/FP16 storage.', flush=True)
 
     def batches():
-        for i, pixels in enumerate(tqdm(loader, desc='Caching CLIP FP32')):
+        iterator = iter(loader)
+        for i in tqdm(range(len(loader)), desc='Caching CLIP FP32'):
+            if i % 50 == 0:
+                print(f'Waiting for image batch {i+1}/{len(loader)} at row {i*args.batch_size}', flush=True)
+            try:
+                pixels = next(iterator)
+            except Exception:
+                near = records[i*args.batch_size:(i+1)*args.batch_size]
+                print(f'Image loader failed while requesting rows {i*args.batch_size}:{(i+1)*args.batch_size}. Requested filenames: {[r["filename"] for r in near]}. Workers may also be prefetching later rows.', flush=True)
+                raise
+            if i % 50 == 0:
+                print(f'Running CLIP for batch {i+1}', flush=True)
             with torch.no_grad():
                 features = backbone(pixel_values=pixels.to(device, non_blocking=True)).last_hidden_state.float()
+            array = features.cpu().numpy()
             if (i+1) % 50 == 0:
-                print(f'Cached {min((i+1)*args.batch_size, len(records))}/{len(records)}', flush=True)
-            yield features.cpu().numpy()
+                print(f'Computed {min((i+1)*args.batch_size, len(records))}/{len(records)}; writing HDF5 next', flush=True)
+            yield array
 
     write_feature_batches(pending, records, batches(), metadata)
     # Re-read real saved rows and compare to fresh FP32 extraction.

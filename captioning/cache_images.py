@@ -16,5 +16,9 @@ class CacheImages(Dataset):
     def __getitem__(self, index):
         ImageFile.LOAD_TRUNCATED_IMAGES = True
         record = self.records[index]
-        with Image.open(self.base_path / record['filepath'] / record['filename']) as image:
-            return self.transform(image.convert('RGB'))
+        path = self.base_path / record['filepath'] / record['filename']
+        try:
+            with Image.open(path) as image:
+                return self.transform(image.convert('RGB'))
+        except Exception as error:
+            raise RuntimeError(f'Cannot process cache image row {index}: {path}') from error

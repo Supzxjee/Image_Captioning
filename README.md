@@ -215,3 +215,5 @@ Mỗi HDF5 có imgids=COCO filename IDs, eval_ids, filename, filepath, split, co
 Thay bốn đường dẫn bằng các thư mục Input thực tế, chỉ chứa full shards. Có đủ test nên không cần test từ ảnh gốc. CLI mặc định coco_id/bilinear/fp32 cũng đúng cho cache này; không dùng profile karpathy_id/bicubic/AMP của cache bạn bạn.
 
 Chưa chạy extraction trên GPU/dataset thật tại máy phát triển. Tests kiểm tra chia phần đầy đủ không chồng lặp, ghi/đọc ID đúng, FP16 serialization và từ chối file chưa hoàn tất. Cần chạy smoke trên Kaggle trước full cache.
+
+Cache builder dùng DataLoader timeout 120 giây khi có workers. Có thể đổi bằng --loader-timeout; log chỉ rõ chờ batch, chạy CLIP hay chuẩn bị ghi HDF5. Nếu worker lỗi, log tên ảnh của batch được yêu cầu (worker có thể đang prefetch ảnh sau đó). Thử --num-workers 0 để chẩn đoán worker multiprocessing; chế độ này không có loader timeout. Timeout chỉ giới hạn chờ worker batch, không giới hạn GPU kernel hoặc I/O ghi file. Không tự resume .partial.
