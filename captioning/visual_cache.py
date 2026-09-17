@@ -37,6 +37,8 @@ class VisualCache:
         self._pid = os.getpid()
         for file_index, path in enumerate(self.paths):
             with h5py.File(path, 'r') as f:
+                if 'complete' in f.attrs and not bool(f.attrs['complete']):
+                    raise ValueError(f'{path}: cache has not completed writing')
                 if 'features' not in f or 'imgids' not in f:
                     raise ValueError(f'{path}: expected features and imgids datasets')
                 features, ids = f['features'], f['imgids']

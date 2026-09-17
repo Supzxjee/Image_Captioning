@@ -144,7 +144,7 @@ CLI mặc định không tự chạy full test sau train; bật `--test-after-tr
 
 ## Kiểm chứng
 
-Đã kiểm tra cú pháp các module và notebook, CLI, cấu hình, việc import không khởi chạy pipeline. Cả 16 regression tests CPU cho HDF5 reader và cached encoder/decoder đã qua (backbone giả, không tải CLIP). Chưa chạy training/inference trên GPU tại máy phát triển; chưa xác nhận tương thích toàn bộ dependencies Kaggle. Notebook gốc được giữ nguyên. So sánh các mô hình với cùng dữ liệu, seed, ngân sách train, checkpoint selection và decoding.
+Đã kiểm tra cú pháp các module và notebook, CLI, cấu hình, việc import không khởi chạy pipeline. Cả 19 regression tests CPU cho HDF5 reader và cached encoder/decoder đã qua (backbone giả, không tải CLIP). Chưa chạy training/inference trên GPU tại máy phát triển; chưa xác nhận tương thích toàn bộ dependencies Kaggle. Notebook gốc được giữ nguyên. So sánh các mô hình với cùng dữ liệu, seed, ngân sách train, checkpoint selection và decoding.
 
 ## Train xong tự chạy full test
 
@@ -182,3 +182,36 @@ Thêm cả ba tùy chọn vào verification, train và test trực tiếp:
 Giữ mặc định bilinear/fp32 cho checkpoint baseline cũ. Profile bicubic/AMP khác preprocessing/precision các thí nghiệm trước, nên cần báo cáo riêng và dùng profile nhất quán khi test checkpoint được train bằng cache này. Repository reference cho thấy cấu hình tạo cache; cache dataset thực tế vẫn phải verify trên Kaggle. Không tăng dung sai để ép cache không khớp vượt qua kiểm tra. Nếu vẫn mismatch, đối chiếu version Transformers, ảnh/JSON và GPU/kernel/batch dùng khi tạo cache.
 
 Cache train/val không có test: bật `--test-after-train --test-visual-source images` để tự train bằng cache rồi full test từ ảnh gốc; giữ cùng bicubic/AMP cho test. Chế độ same (mặc định) yêu cầu cache chứa đủ ảnh test. Notebook launcher đã chọn images cho test và profile RAG_Captioning khi VISUAL_CACHE không rỗng.
+
+## Tự cache theo pipeline gốc (khuyến nghị cho thí nghiệm tiếp theo)
+
+`cache_visual_features.py` chỉ cần ảnh COCO và dataset_coco.json; không cần prompt embedding cache. Trích xuất bằng cùng CLIP ViT-B/16, resize bilinear 224x224, normalization CLIP, eval mode và FP32 (không AMP/TF32), lưu FP16. Giữ toàn bộ 197x768 tokens trước projection. FP16 storage vẫn có sai số làm tròn so với pipeline online FP32; báo cáo điều này trong thí nghiệm.
+
+### Chạy thử
+
+```python
+!python -u cache_visual_features.py --part 1 --parts 4 --limit 50 --output-dir /kaggle/working/cache_smoke
+```
+
+Kiểm tra preflight và saved-row verification PASS trước khi chạy full. Smoke file có suffix _smoke và không dùng lẫn với full cache (trùng IDs). Dùng một phiên/version riêng cho full cache.
+
+### Tạo đủ bốn phần bằng bốn phiên Save & Run All riêng
+
+```python
+PART = 1  # Lần lượt 1, 2, 3, 4; mỗi phần là một version/session riêng
+!python -u cache_visual_features.py --part $PART --parts 4 --batch-size 32 --output-dir /kaggle/working/visual_cache
+```
+
+Mỗi phần ~9.3 GB tensor cho toàn bộ 123287 ảnh, gồm các split theo thứ tự JSON; không bỏ test. Không chạy vòng for tạo cả bốn phần vào cùng Output. Lưu Output từng phiên, sau đó Add Input cả bốn Notebook Outputs vào notebook train (hoặc gom thành Dataset nếu có quy trình upload phù hợp). Script kiểm tra ngân sách dung lượng trước khi chạy và không ghi đè file đã tồn tại; nếu phiên bị ngắt, file .partial được giữ để điều tra, không có auto-resume. Chạy lại trong output directory/version mới.
+
+Mỗi HDF5 có imgids=COCO filename IDs, eval_ids, filename, filepath, split, complete flag và metadata model/preprocessing/precision/hash JSON/version dependencies; JSON manifest đi kèm. Script kiểm tra sai số lưu FP16 trên mẫu trước khi cache toàn phần, rồi re-read mẫu trong file và so với CLIP FP32 trực tiếp. Đây là kiểm tra mẫu, không chứng nhận mọi dòng bằng cách tính lại toàn bộ.
+
+### Train dùng cache tự tạo
+
+```python
+!python -u train_h1_2_gated.py --mode train --epochs 10 --visual-cache /path/to/part1 --visual-cache /path/to/part2 --visual-cache /path/to/part3 --visual-cache /path/to/part4 --visual-cache-id-key coco_id --visual-preprocessing bilinear --visual-precision fp32 --experiment-name h1_2_gated_owncache --test-after-train
+```
+
+Thay bốn đường dẫn bằng các thư mục Input thực tế, chỉ chứa full shards. Có đủ test nên không cần test từ ảnh gốc. CLI mặc định coco_id/bilinear/fp32 cũng đúng cho cache này; không dùng profile karpathy_id/bicubic/AMP của cache bạn bạn.
+
+Chưa chạy extraction trên GPU/dataset thật tại máy phát triển. Tests kiểm tra chia phần đầy đủ không chồng lặp, ghi/đọc ID đúng, FP16 serialization và từ chối file chưa hoàn tất. Cần chạy smoke trên Kaggle trước full cache.
