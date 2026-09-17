@@ -1,5 +1,5 @@
 """Architecture constants and runtime settings; no datasets or models loaded here."""
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from pathlib import Path
 
 MODEL_NAME = 'clip'
@@ -25,11 +25,14 @@ class Config:
     work_dir: Path = Path('/kaggle/working')
     experiment_name: str = 'h1_2_gated_prompt_to_visual_crossattn'
     device: str = 'cpu'
+    visual_cache: list[str] = field(default_factory=list)
 
     def __post_init__(self):
         self.work_dir = Path(self.work_dir)
-        if self.mode not in {'train', 'evaluate'} or self.split not in {'val', 'test'}:
+        if self.mode not in {'train', 'evaluate', 'verify-cache'} or self.split not in {'val', 'test'}:
             raise ValueError('Invalid mode or evaluation split.')
+        if self.mode == 'verify-cache' and not self.visual_cache:
+            raise ValueError('verify-cache requires --visual-cache.')
         if self.epochs <= 0 or self.lr <= 0 or self.limit < 0 or self.batch_size <= 0 or self.num_workers < 0:
             raise ValueError('Epochs, learning rate and batch size must be positive; limit/workers nonnegative.')
 

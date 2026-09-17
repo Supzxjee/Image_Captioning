@@ -18,6 +18,8 @@ captioning/
   config.py       # Hằng số kiến trúc, cấu hình và đường dẫn
   cli.py          # Tham số dòng lệnh
   pipeline.py     # Ghép các bước và chọn train/evaluate
+  visual_cache.py # Đọc HDF5 theo COCO ID, an toàn cho worker
+  cache_verification.py # Đối chiếu cache với CLIP trực tiếp
   data.py         # Chia tập COCO, cache prompt, Dataset và DataLoader
   tokenizer.py    # Vocabulary và mã hóa caption
   models.py       # CLIP encoder, gated cross-attention và decoder
@@ -94,6 +96,42 @@ Tính METEOR cần Java; môi trường Kaggle phải có `java` trên PATH.
 
 Thay đường dẫn checkpoint thực tế. Lệnh nạp model weights của H1.2 hoặc H1.2-G, khởi tạo optimizer mới và đánh số epoch lại từ 1; không phải resume đầy đủ. Không dùng checkpoint H0 vì thiếu attention của H1.2. Với checkpoint cũ không lưu vocabulary, cần đảm bảo cùng dataset/tokenizer. Khi so sánh, H1.2 đối chứng cũng phải có cùng ngân sách fine-tune để tránh nhầm hiệu quả của gate với hiệu quả train thêm.
 
+## Dùng visual cache HDF5 có sẵn
+
+Gắn dataset [CLIP TrainVal Features MSCOCO 2014](https://www.kaggle.com/datasets/vuthetam/clip-trainval-features-mscoco-2014) bằng Add Input. Copy đúng đường dẫn thư mục từ bảng Input; ví dụ dưới đây dùng đường dẫn ngắn thường gặp, môi trường của bạn có thể là `/kaggle/input/datasets/vuthetam/clip-trainval-features-mscoco-2014`.
+
+Cache cần có hai keys `features` (N, 197, 768), float16/float32 và `imgids` (N,), COCO image IDs. Reader ghép theo ID lấy từ filename, không dùng `eval_id` hoặc thứ tự dòng. Gộp tất cả `.h5` trong thư mục; kiểm tra thiếu ảnh, ID trùng, shape và giá trị không hữu hạn. Không âm thầm chuyển sang ảnh trực tiếp khi cache thiếu mẫu.
+
+### Xác nhận cache trước khi train
+
+```python
+CACHE = '/kaggle/input/clip-trainval-features-mscoco-2014'
+!python -u train_h1_2_gated.py --mode verify-cache --visual-cache "$CACHE" --split val --limit 10
+```
+
+So sánh các features cache với `last_hidden_state` của CLIP và preprocessing hiện tại. Cho phép sai số FP16 (`atol=0.01`, `rtol=0.005`); nếu không đạt, dừng để kiểm tra notebook tạo cache. PASS trên mẫu nhỏ không đảm bảo mọi dòng cache đúng; nên thử thêm ảnh và đối chiếu cách tạo cache. Lệnh verification cần cả ảnh gốc và prompt cache/dataset JSON như pipeline bình thường.
+
+### Train và evaluate dùng cache
+
+```python
+!python -u train_h1_2_gated.py --mode train --epochs 10 --visual-cache "$CACHE" --experiment-name h1_2_gated_visualcache
+!python -u train_h1_2_gated.py --mode evaluate --epochs 10 --split test --visual-cache "$CACHE" --experiment-name h1_2_gated_visualcache
+```
+
+Dùng tên experiment riêng để tránh ghi đè mốc đã train. Khi evaluate checkpoint cũ, truyền đường dẫn bằng `--checkpoint`; cache path không bắt buộc trùng đường dẫn lúc train nhưng phải chứa đúng features. Có thể truyền từng file bằng cách lặp `--visual-cache /path/train.h5 --visual-cache /path/val.h5`.
+
+Mỗi worker DataLoader mở HDF5 riêng và chỉ đọc features từng ảnh; chỉ bảng IDs nằm trong RAM. Tensors FP16 trên disk được chuyển thành FP32 để dùng với projection hiện tại. Cache nằm trước projection, nên projection, attention, gate và decoder vẫn được train. Trong chế độ cache, CLIP backbone vẫn được nạp để giữ tương thích checkpoint nhưng không chạy forward trong train/inference. Không dùng cách này nếu bạn muốn fine-tune backbone hoặc dùng augmentation ảnh ngẫu nhiên.
+
+History mới có `train_seconds` từng epoch và log giây/batch để đo tốc độ. Chưa đo tốc độ với dataset thật trên Kaggle, chưa kiểm chứng preprocessing của cache bạn cung cấp; cần chạy verification trước. Đánh giá vẫn chạy beam search từng ảnh như cũ.
+
+### Kiểm tra cục bộ
+
+```bash
+python -m unittest discover -s tests -v
+```
+
+Tests dùng HDF5 tổng hợp để kiểm tra ID/shards, coverage, dữ liệu lỗi và worker spawn; encoder tests dùng backbone giả để kiểm tra đường cache bỏ qua backbone, giữ gradients và khớp đầu ra với đường pixels. Không tải CLIP weights trong tests, nên tests không xác nhận cache thật khớp preprocessing.
+
 ## Đầu ra
 
 Trong `/kaggle/working/h1_2_gated_prompt_to_visual_crossattn/`:
@@ -106,4 +144,4 @@ Không tự chạy full test sau train. Thư mục `/kaggle/working` nằm ngoà
 
 ## Kiểm chứng
 
-Đã kiểm tra cú pháp các module và notebook, CLI, cấu hình, việc import không khởi chạy pipeline, và đối chiếu AST kiến trúc với phiên bản trước khi tách module. Chưa chạy training/inference trên GPU tại máy phát triển; chưa xác nhận tương thích toàn bộ dependencies Kaggle. Notebook gốc được giữ nguyên. So sánh các mô hình với cùng dữ liệu, seed, ngân sách train, checkpoint selection và decoding.
+Đã kiểm tra cú pháp các module và notebook, CLI, cấu hình, việc import không khởi chạy pipeline. Cả 9 regression tests CPU cho HDF5 reader và cached encoder/decoder đã qua (backbone giả, không tải CLIP). Chưa chạy training/inference trên GPU tại máy phát triển; chưa xác nhận tương thích toàn bộ dependencies Kaggle. Notebook gốc được giữ nguyên. So sánh các mô hình với cùng dữ liệu, seed, ngân sách train, checkpoint selection và decoding.

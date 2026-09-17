@@ -1,5 +1,6 @@
 """Teacher-forced cross-entropy training and per-epoch checkpoint saving."""
 import json
+import time
 import torch
 import torch.nn as nn
 import torch.optim as optim
@@ -54,14 +55,18 @@ def train_model(model, train_loader, data, config):
     config.checkpoint_dir.mkdir(parents=True, exist_ok=True)
     history = []
     for epoch in range(1, config.epochs + 1):
+        started = time.monotonic()
         average_loss = train_one_epoch(model, train_loader, optimizer, criterion, epoch, config)
-        history.append({'epoch': epoch, 'train_loss': average_loss})
+        elapsed = time.monotonic() - started
+        history.append({'epoch': epoch, 'train_loss': average_loss, 'train_seconds': elapsed})
+        print(f'Epoch training time: {elapsed:.1f}s | {elapsed / len(train_loader):.3f}s/batch', flush=True)
 
         checkpoint_path = config.checkpoint_dir / f'model_h1_2_crossattn_epoch_{epoch}.pth'
         torch.save({
             'experiment_name': 'H1.2_gated_prompt_to_visual_cross_attention',
             'gate': 'sigmoid(linear(concat(prompt, attended_visual)))',
             'seed': config.seed,
+            'visual_cache_files': data.visual_cache.paths if data.visual_cache else [],
             'learning_rate': config.lr,
             'caption_word2idx': data.tokenizer.word2idx,
             'cross_attention': 'query=prompt, key=visual, value=visual',

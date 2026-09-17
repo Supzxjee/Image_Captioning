@@ -14,11 +14,22 @@ def run(config):
     print(f'Using device: {config.device}', flush=True)
     data = load_data(config)
     encoder = UniversalVisionEncoder().to(config.device)
+    if config.mode == 'verify-cache':
+        from .cache_verification import verify_cache
+        try:
+            verify_cache(encoder, data, config)
+        finally:
+            data.visual_cache.close()
+        return
     decoder = CaptionDecoder(vocab_size=data.vocab_size).to(config.device)
     model = ImageCaptioningModel(encoder, decoder).to(config.device)
-    if config.mode == 'train':
-        from .training import train_model
-        train_model(model, build_train_loader(config, data), data, config)
-    else:
-        from .evaluation import evaluate_model
-        evaluate_model(model, data, config)
+    try:
+        if config.mode == 'train':
+            from .training import train_model
+            train_model(model, build_train_loader(config, data), data, config)
+        else:
+            from .evaluation import evaluate_model
+            evaluate_model(model, data, config)
+    finally:
+        if data.visual_cache is not None:
+            data.visual_cache.close()

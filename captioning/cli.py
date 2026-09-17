@@ -5,9 +5,11 @@ from .config import Config
 def parse_args(argv=None):
     defaults = Config()
     parser = argparse.ArgumentParser(description='H1.2-G image captioning on Kaggle')
-    parser.add_argument('--mode', choices=['train', 'evaluate'], default='train')
+    parser.add_argument('--mode', choices=['train', 'evaluate', 'verify-cache'], default='train')
     parser.add_argument('--epochs', type=int, default=defaults.epochs)
     parser.add_argument('--lr', type=float, default=defaults.lr)
+    parser.add_argument('--visual-cache', action='append', default=[],
+                        help='HDF5 file or directory; repeat to use multiple files. Omit to run CLIP directly.')
     parser.add_argument('--checkpoint', default='')
     parser.add_argument('--split', choices=['val', 'test'], default='val')
     parser.add_argument('--limit', type=int, default=0, help='0 = full split; positive = first N images')

@@ -46,8 +46,16 @@ class UniversalVisionEncoder(nn.Module):
         return self
 
     def forward(self, images, cached_prompt_tokens, prompt_mask):
-        with torch.no_grad():
-            visual_features = self.feature_extractor(pixel_values=images).last_hidden_state
+        if images.ndim == 3:
+            # Cached raw CLIP last_hidden_state; no backbone forward pass.
+            if images.shape[1:] != (197, 768):
+                raise ValueError(f'Expected cached visual tokens (B, 197, 768), got {images.shape}')
+            visual_features = images.to(dtype=self.vis_projection.weight.dtype)
+        elif images.ndim == 4:
+            with torch.no_grad():
+                visual_features = self.feature_extractor(pixel_values=images).last_hidden_state
+        else:
+            raise ValueError('Expected image pixels (B, C, H, W) or cached tokens (B, 197, 768).')
 
         vis_features = self.dropout(self.relu(self.vis_projection(visual_features)))
         prompt_features = self.prompt_projection(cached_prompt_tokens)

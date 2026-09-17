@@ -2,8 +2,8 @@
 import json
 import time
 from pathlib import Path
-from PIL import Image
 from tqdm.auto import tqdm
+from .data import load_visual_input
 from .checkpoints import load_checkpoint
 from .inference import generate_caption_beam_search
 from .metrics import export_ground_truth, compute_coco_metrics
@@ -27,7 +27,7 @@ def evaluate_model(model, data, config):
     for _, row in tqdm(eval_df.iterrows(), total=len(eval_df), desc=f'Generating {config.split} captions'):
         image_path = row['image']
         prompt_entry = data.prompt_cache[image_path]
-        image_tensor = data.transform(Image.open(image_path).convert('RGB'))
+        image_tensor = load_visual_input(row, data.transform, data.visual_cache)
         caption = generate_caption_beam_search(
             model=model,
             image=image_tensor,

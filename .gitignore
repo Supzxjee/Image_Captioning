@@ -3,3 +3,5 @@ __pycache__/
 *.pth
 *.pt
 .env
+*.h5
+.test-deps/

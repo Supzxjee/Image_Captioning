@@ -8,6 +8,7 @@ from PIL import Image, ImageFile
 from torch.utils.data import Dataset, DataLoader
 from torchvision import transforms
 from .tokenizer import CaptionTokenizer
+from .visual_cache import VisualCache, coco_image_id
 
 NORMALIZATION_STATS = {
     'mean': [0.48145466, 0.4578275, 0.40821073],
@@ -22,11 +23,12 @@ image_transform = transforms.Compose([
 
 
 class CocoPromptDataset(Dataset):
-    def __init__(self, dataframe, transform, caption_tokenizer, prompt_cache):
+    def __init__(self, dataframe, transform, caption_tokenizer, prompt_cache, visual_cache=None):
         self.dataframe = dataframe.reset_index(drop=True)
         self.transform = transform
         self.caption_tokenizer = caption_tokenizer
         self.prompt_cache = prompt_cache
+        self.visual_cache = visual_cache
 
     def __len__(self):
         return len(self.dataframe)
@@ -37,7 +39,7 @@ class CocoPromptDataset(Dataset):
         if image_path not in self.prompt_cache:
             raise KeyError(f'Missing prompt embedding for: {image_path}')
 
-        image = self.transform(Image.open(image_path).convert('RGB'))
+        image = load_visual_input(row, self.transform, self.visual_cache)
         caption_ids, caption_padding_masks = [], []
         for caption in row['captions']:
             ids, mask = self.caption_tokenizer.encode(caption)
@@ -70,6 +72,7 @@ def load_data(config):
             'captions': captions,
             'eval_id': coco_image_id,
             'filename': img['filename'],
+            'coco_id': coco_image_id(img['filename']),
         }
         if img['split'] in ['train', 'restval']:
             train_data.append(item)
@@ -94,16 +97,33 @@ def load_data(config):
     prompt_embedding_cache = prompt_embedding_bundle['data']
     print(f'Prompt embedding entries: {len(prompt_embedding_cache):,}')
 
-    return SimpleNamespace(train_df=train_df, val_df=val_df, test_df=test_df,
+    visual_cache = VisualCache(config.visual_cache) if config.visual_cache else None
+    if visual_cache is not None:
+        for label, df in [('train', train_df), ('val', val_df), ('test', test_df)]:
+            count = sum(int(i) in visual_cache.index for i in df.get('coco_id', []))
+            print(f'Visual cache coverage {label}: {count}/{len(df)}', flush=True)
+        selected = train_df if config.mode == 'train' else (val_df if config.split == 'val' else test_df)
+        if config.mode != 'train' and config.limit:
+            selected = selected.head(config.limit)
+        visual_cache.require_ids(selected.get('coco_id', []), config.mode)
+        print('Using cached CLIP tokens; projection, attention, gate and decoder remain trainable.', flush=True)
+    return SimpleNamespace(visual_cache=visual_cache, train_df=train_df, val_df=val_df, test_df=test_df,
                            tokenizer=caption_tokenizer, prompt_cache=prompt_embedding_cache,
                            transform=image_transform, vocab_size=vocab_size)
 
 
 def build_train_loader(config, data):
-    dataset = CocoPromptDataset(data.train_df, data.transform, data.tokenizer, data.prompt_cache)
+    dataset = CocoPromptDataset(data.train_df, data.transform, data.tokenizer, data.prompt_cache, data.visual_cache)
     loader = DataLoader(dataset, batch_size=config.batch_size, shuffle=True, drop_last=True,
                         num_workers=config.num_workers, pin_memory=config.device == 'cuda')
     if len(loader) == 0:
         raise ValueError('Training split is too small for the batch size with drop_last=True.')
     print(f'Train batches per epoch: {len(loader):,}')
     return loader
+
+
+def load_visual_input(row, transform, visual_cache=None):
+    if visual_cache is not None:
+        return torch.from_numpy(visual_cache.read(row['coco_id']))
+    with Image.open(row['image']) as image:
+        return transform(image.convert('RGB'))
