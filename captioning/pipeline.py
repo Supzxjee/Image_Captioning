@@ -14,7 +14,7 @@ def run(config):
     config.device = 'cuda' if torch.cuda.is_available() else 'cpu'
     print(f'Using device: {config.device}', flush=True)
     data = load_data(config)
-    encoder = UniversalVisionEncoder().to(config.device)
+    encoder = UniversalVisionEncoder(visual_precision=config.visual_precision).to(config.device)
     if config.mode == 'verify-cache':
         from .cache_verification import verify_cache
         try:
@@ -30,7 +30,12 @@ def run(config):
             train_model(model, build_train_loader(config, data), data, config)
             if config.test_after_train:
                 from .evaluation import evaluate_model
-                evaluate_model(model, data, post_train_test_config(config))
+                from copy import copy
+                test_data = copy(data)
+                if config.test_visual_source == 'images':
+                    test_data.visual_cache = None
+                    print('Full test uses original images with the selected preprocessing/precision.', flush=True)
+                evaluate_model(model, test_data, post_train_test_config(config))
         else:
             from .evaluation import evaluate_model
             evaluate_model(model, data, config)

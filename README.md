@@ -144,7 +144,7 @@ CLI mặc định không tự chạy full test sau train; bật `--test-after-tr
 
 ## Kiểm chứng
 
-Đã kiểm tra cú pháp các module và notebook, CLI, cấu hình, việc import không khởi chạy pipeline. Cả 13 regression tests CPU cho HDF5 reader và cached encoder/decoder đã qua (backbone giả, không tải CLIP). Chưa chạy training/inference trên GPU tại máy phát triển; chưa xác nhận tương thích toàn bộ dependencies Kaggle. Notebook gốc được giữ nguyên. So sánh các mô hình với cùng dữ liệu, seed, ngân sách train, checkpoint selection và decoding.
+Đã kiểm tra cú pháp các module và notebook, CLI, cấu hình, việc import không khởi chạy pipeline. Cả 16 regression tests CPU cho HDF5 reader và cached encoder/decoder đã qua (backbone giả, không tải CLIP). Chưa chạy training/inference trên GPU tại máy phát triển; chưa xác nhận tương thích toàn bộ dependencies Kaggle. Notebook gốc được giữ nguyên. So sánh các mô hình với cùng dữ liệu, seed, ngân sách train, checkpoint selection và decoding.
 
 ## Train xong tự chạy full test
 
@@ -168,3 +168,17 @@ Tùy chọn này dùng checkpoint epoch cuối vừa train, cùng visual cache, 
 Nếu `imgids` là chỉ số zero-based của `images` trong cùng `dataset_coco.json`, thêm `--visual-cache-id-key eval_id` vào cả verify-cache, train và evaluate. Không tự động đoán loại ID. Chạy verify-cache để đối chiếu với ảnh thực; số lượng và khoảng ID chưa đủ chứng minh cùng thứ tự JSON. Mặc định vẫn dùng COCO ID từ filename.
 
 Cache được kiểm tra có 113287 train + 5000 val, tổng 118287 mẫu; không thể chứa toàn bộ 123287 ảnh. Không bật `--test-after-train` nếu thiếu cache test. Sau train, evaluate checkpoint trong lệnh riêng, bỏ `--visual-cache` để chạy CLIP trực tiếp cho tập test. Có thể bổ sung cache test sau.
+
+### Profile cache RAG_Captioning
+
+Đối chiếu repo https://github.com/vuthetam/RAG_Captioning: extract_visual_features.py lưu raw CLIP ViT-B/16 last_hidden_state với resize bicubic, antialias=True và CUDA autocast FP16. imgids lấy từ trường imgid trong sentences của Karpathy JSON, không phải COCO filename ID; không cần giả định nó luôn bằng thứ tự dòng JSON.
+
+Thêm cả ba tùy chọn vào verification, train và test trực tiếp:
+
+```text
+--visual-cache-id-key karpathy_id --visual-preprocessing bicubic --visual-precision amp-fp16
+```
+
+Giữ mặc định bilinear/fp32 cho checkpoint baseline cũ. Profile bicubic/AMP khác preprocessing/precision các thí nghiệm trước, nên cần báo cáo riêng và dùng profile nhất quán khi test checkpoint được train bằng cache này. Repository reference cho thấy cấu hình tạo cache; cache dataset thực tế vẫn phải verify trên Kaggle. Không tăng dung sai để ép cache không khớp vượt qua kiểm tra. Nếu vẫn mismatch, đối chiếu version Transformers, ảnh/JSON và GPU/kernel/batch dùng khi tạo cache.
+
+Cache train/val không có test: bật `--test-after-train --test-visual-source images` để tự train bằng cache rồi full test từ ảnh gốc; giữ cùng bicubic/AMP cho test. Chế độ same (mặc định) yêu cầu cache chứa đủ ảnh test. Notebook launcher đã chọn images cho test và profile RAG_Captioning khi VISUAL_CACHE không rỗng.

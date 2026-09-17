@@ -15,11 +15,15 @@ NORMALIZATION_STATS = {
     'std': [0.26862954, 0.26130258, 0.27577711],
 }
 
-image_transform = transforms.Compose([
-    transforms.Resize((224, 224)),
-    transforms.ToTensor(),
-    transforms.Normalize(mean=NORMALIZATION_STATS['mean'], std=NORMALIZATION_STATS['std']),
-])
+def build_image_transform(preprocessing='bilinear'):
+    interpolation = (transforms.InterpolationMode.BICUBIC if preprocessing == 'bicubic'
+                     else transforms.InterpolationMode.BILINEAR)
+    return transforms.Compose([
+        transforms.Resize((224, 224), interpolation=interpolation, antialias=True),
+        transforms.ToTensor(),
+        transforms.Normalize(mean=NORMALIZATION_STATS['mean'], std=NORMALIZATION_STATS['std']),
+    ])
+
 
 
 class CocoPromptDataset(Dataset):
@@ -65,6 +69,10 @@ def load_data(config):
 
     train_data, val_data, test_data = [], [], []
     for eval_id, img in enumerate(coco_data['images']):
+        sentence_ids = {sent['imgid'] for sent in img['sentences'] if 'imgid' in sent}
+        karpathy_id = img.get('imgid', next(iter(sentence_ids)) if len(sentence_ids) == 1 else None)
+        if len(sentence_ids) > 1 or (sentence_ids and karpathy_id not in sentence_ids):
+            raise ValueError(f'Inconsistent Karpathy imgid for {img["filename"]}')
         full_image_path = os.path.join(config.base_path, img['filepath'], img['filename'])
         captions = [sent['raw'] for sent in img['sentences']][:5]
         item = {
@@ -73,6 +81,7 @@ def load_data(config):
             'eval_id': eval_id,
             'filename': img['filename'],
             'coco_id': coco_image_id(img['filename']),
+            'karpathy_id': karpathy_id,
         }
         if img['split'] in ['train', 'restval']:
             train_data.append(item)
@@ -99,6 +108,11 @@ def load_data(config):
 
     if config.test_after_train and len(test_df) == 0:
         raise ValueError('Test split is empty.')
+    image_transform = build_image_transform(config.visual_preprocessing)
+    if config.visual_cache and config.visual_cache_id_key == 'karpathy_id':
+        for df in (train_df, val_df, test_df):
+            if len(df) and df['karpathy_id'].isna().any():
+                raise ValueError('Missing Karpathy imgid in JSON; do not substitute row order.')
     visual_cache = VisualCache(config.visual_cache, id_key=config.visual_cache_id_key) if config.visual_cache else None
     if visual_cache is not None:
         for label, df in [('train', train_df), ('val', val_df), ('test', test_df)]:
@@ -108,7 +122,7 @@ def load_data(config):
         if config.mode != 'train' and config.limit:
             selected = selected.head(config.limit)
         visual_cache.require_ids(selected.get(config.visual_cache_id_key, []), config.mode)
-        if config.test_after_train:
+        if config.test_after_train and config.test_visual_source == 'same':
             if len(test_df) == 0:
                 raise ValueError('Test split is empty.')
             visual_cache.require_ids(test_df[config.visual_cache_id_key], 'full test after train')

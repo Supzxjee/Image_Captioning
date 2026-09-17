@@ -1,12 +1,13 @@
 """CLIP visual encoder, gated prompt attention and caption decoder."""
 import math
+from contextlib import nullcontext
 import torch
 import torch.nn as nn
 from transformers import CLIPModel
 from .config import EMBED_DIM, NUM_HEADS
 
 class UniversalVisionEncoder(nn.Module):
-    def __init__(self, model_name='clip', embed_dim=EMBED_DIM, num_heads=NUM_HEADS, attn_dropout=0.1):
+    def __init__(self, model_name='clip', embed_dim=EMBED_DIM, num_heads=NUM_HEADS, attn_dropout=0.1, visual_precision='fp32'):
         super().__init__()
         if model_name.lower() != 'clip':
             raise NotImplementedError('Only CLIP is supported in this notebook.')
@@ -16,6 +17,7 @@ class UniversalVisionEncoder(nn.Module):
         for parameter in self.feature_extractor.parameters():
             parameter.requires_grad = False
 
+        self.visual_precision = visual_precision
         self.vis_projection = nn.Linear(768, embed_dim)
         self.prompt_projection = nn.Sequential(
             nn.Linear(512, embed_dim),
@@ -45,6 +47,13 @@ class UniversalVisionEncoder(nn.Module):
         self.feature_extractor.eval()
         return self
 
+    def extract_visual_features(self, images):
+        use_amp = self.visual_precision == 'amp-fp16' and images.device.type == 'cuda'
+        context = torch.autocast(device_type='cuda', dtype=torch.float16) if use_amp else nullcontext()
+        with torch.no_grad(), context:
+            features = self.feature_extractor(pixel_values=images).last_hidden_state
+        return features.to(dtype=self.vis_projection.weight.dtype)
+
     def forward(self, images, cached_prompt_tokens, prompt_mask):
         if images.ndim == 3:
             # Cached raw CLIP last_hidden_state; no backbone forward pass.
@@ -52,8 +61,7 @@ class UniversalVisionEncoder(nn.Module):
                 raise ValueError(f'Expected cached visual tokens (B, 197, 768), got {images.shape}')
             visual_features = images.to(dtype=self.vis_projection.weight.dtype)
         elif images.ndim == 4:
-            with torch.no_grad():
-                visual_features = self.feature_extractor(pixel_values=images).last_hidden_state
+            visual_features = self.extract_visual_features(images)
         else:
             raise ValueError('Expected image pixels (B, C, H, W) or cached tokens (B, 197, 768).')
 

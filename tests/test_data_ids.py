@@ -30,11 +30,11 @@ class DataIdsTests(unittest.TestCase):
                          torch=SimpleNamespace(load=lambda *a, **k: {'data': {}}),
                          ImageFile=SimpleNamespace(LOAD_TRUNCATED_IMAGES=False),
                          CaptionTokenizer=FakeTokenizer, coco_image_id=coco_image_id,
-                         SimpleNamespace=SimpleNamespace, image_transform=None)
+                         SimpleNamespace=SimpleNamespace, build_image_transform=lambda p: None)
         exec(compile(ast.Module(body=[function], type_ignores=[]), str(source), 'exec'), namespace)
         images = []
         for split, coco_id in [('train', 42), ('restval', 7), ('val', 100), ('test', 99)]:
-            images.append(dict(split=split, filepath='val2014',
+            images.append(dict(split=split, imgid=coco_id + 1000, filepath='val2014',
                                filename=f'COCO_val2014_{coco_id:012d}.jpg',
                                sentences=[{'raw': 'a bicycle'}]))
         with patch('builtins.open', return_value=io.StringIO(json.dumps({'images': images}))):
@@ -43,6 +43,7 @@ class DataIdsTests(unittest.TestCase):
         self.assertEqual(data.val_df[0]['coco_id'], 100)
         self.assertEqual(data.test_df[0]['coco_id'], 99)
         self.assertEqual(data.test_df[0]['eval_id'], 3)
+        self.assertEqual(data.test_df[0]['karpathy_id'], 1099)
 
 
 if __name__ == '__main__':

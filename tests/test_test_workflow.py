@@ -19,6 +19,15 @@ class TestWorkflowTests(unittest.TestCase):
         self.assertEqual(original.checkpoint, 'warm_start.pth')
         self.assertFalse(test.test_after_train)
 
+    def test_cache_train_then_online_test_preserves_reference_profile(self):
+        cfg = Config(visual_cache=['train.h5'], test_after_train=True,
+                     test_visual_source='images', visual_cache_id_key='karpathy_id',
+                     visual_preprocessing='bicubic', visual_precision='amp-fp16')
+        test = post_train_test_config(cfg)
+        self.assertEqual(test.visual_cache, [])
+        self.assertEqual(cfg.visual_cache, ['train.h5'])
+        self.assertEqual((test.visual_preprocessing, test.visual_precision), ('bicubic', 'amp-fp16'))
+
     def test_cli_flag_and_validation(self):
         self.assertTrue(parse_args(['--test-after-train']).test_after_train)
         with self.assertRaises(ValueError):

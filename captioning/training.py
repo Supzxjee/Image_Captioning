@@ -66,6 +66,8 @@ def train_model(model, train_loader, data, config):
             'experiment_name': 'H1.2_gated_prompt_to_visual_cross_attention',
             'gate': 'sigmoid(linear(concat(prompt, attended_visual)))',
             'seed': config.seed,
+            'visual_preprocessing': config.visual_preprocessing,
+            'visual_precision': config.visual_precision,
             'visual_cache_id_key': config.visual_cache_id_key,
             'visual_cache_files': data.visual_cache.paths if data.visual_cache else [],
             'learning_rate': config.lr,

@@ -18,7 +18,7 @@ def verify_cache(encoder, data, config):
         cached = load_visual_input(row, data.transform, data.visual_cache).to(config.device)
         pixels = load_visual_input(row, data.transform).unsqueeze(0).to(config.device)
         with torch.no_grad():
-            direct = encoder.feature_extractor(pixel_values=pixels).last_hidden_state[0].float()
+            direct = encoder.extract_visual_features(pixels)[0].half().float()
         delta = (direct - cached).abs()
         # Allow float16 quantization; preprocessing/model mismatches should fail.
         matches = torch.allclose(direct, cached, atol=0.01, rtol=0.005)

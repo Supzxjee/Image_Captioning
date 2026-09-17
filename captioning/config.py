@@ -26,16 +26,23 @@ class Config:
     experiment_name: str = 'h1_2_gated_prompt_to_visual_crossattn'
     device: str = 'cpu'
     test_after_train: bool = False
+    test_visual_source: str = 'same'
     predictions: str = ''
     ground_truth: str = ''
     metrics_output: str = ''
     visual_cache_id_key: str = 'coco_id'
+    visual_preprocessing: str = 'bilinear'
+    visual_precision: str = 'fp32'
     visual_cache: list[str] = field(default_factory=list)
 
     def __post_init__(self):
         self.work_dir = Path(self.work_dir)
-        if self.visual_cache_id_key not in {'coco_id', 'eval_id'}:
-            raise ValueError('Cache ID key must be coco_id or eval_id.')
+        if self.test_visual_source not in {'same', 'images'}:
+            raise ValueError('Invalid test visual source.')
+        if self.visual_cache_id_key not in {'coco_id', 'eval_id', 'karpathy_id'}:
+            raise ValueError('Invalid visual cache ID key.')
+        if self.visual_preprocessing not in {'bilinear', 'bicubic'} or self.visual_precision not in {'fp32', 'amp-fp16'}:
+            raise ValueError('Invalid visual preprocessing or precision.')
         if self.mode not in {'train', 'evaluate', 'predict', 'metrics', 'verify-cache'} or self.split not in {'val', 'test'}:
             raise ValueError('Invalid mode or evaluation split.')
         if self.test_after_train and self.mode != 'train':
@@ -59,4 +66,5 @@ class Config:
 def post_train_test_config(config):
     """Use the newly trained final checkpoint, not the warm-start input."""
     return replace(config, mode='evaluate', checkpoint='', split='test', limit=0,
-                   test_after_train=False)
+                   test_after_train=False,
+                   visual_cache=[] if config.test_visual_source == 'images' else list(config.visual_cache))

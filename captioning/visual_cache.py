@@ -14,7 +14,7 @@ def coco_image_id(filename):
 
 class VisualCache:
     def __init__(self, paths, id_key="coco_id"):
-        if id_key not in {"coco_id", "eval_id"}:
+        if id_key not in {"coco_id", "eval_id", "karpathy_id"}:
             raise ValueError("Invalid visual cache ID key")
         self.id_key = id_key
         import h5py
