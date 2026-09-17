@@ -140,8 +140,25 @@ Trong `/kaggle/working/h1_2_gated_prompt_to_visual_crossattn/`:
 - `train_history_h1_2.json`: loss train.
 - `evaluation/`: predictions, ground truth, metrics theo split và số ảnh; predictions tạm mỗi 50 ảnh.
 
-Không tự chạy full test sau train. Thư mục `/kaggle/working` nằm ngoài thư mục clone nên kết quả không bị lẫn với mã nguồn repo. Tải checkpoint/kết quả từ phiên Kaggle sau khi hoàn tất.
+CLI mặc định không tự chạy full test sau train; bật `--test-after-train` nếu cần. Thư mục `/kaggle/working` nằm ngoài thư mục clone nên kết quả không bị lẫn với mã nguồn repo. Tải checkpoint/kết quả từ phiên Kaggle sau khi hoàn tất.
 
 ## Kiểm chứng
 
-Đã kiểm tra cú pháp các module và notebook, CLI, cấu hình, việc import không khởi chạy pipeline. Cả 9 regression tests CPU cho HDF5 reader và cached encoder/decoder đã qua (backbone giả, không tải CLIP). Chưa chạy training/inference trên GPU tại máy phát triển; chưa xác nhận tương thích toàn bộ dependencies Kaggle. Notebook gốc được giữ nguyên. So sánh các mô hình với cùng dữ liệu, seed, ngân sách train, checkpoint selection và decoding.
+Đã kiểm tra cú pháp các module và notebook, CLI, cấu hình, việc import không khởi chạy pipeline. Cả 13 regression tests CPU cho HDF5 reader và cached encoder/decoder đã qua (backbone giả, không tải CLIP). Chưa chạy training/inference trên GPU tại máy phát triển; chưa xác nhận tương thích toàn bộ dependencies Kaggle. Notebook gốc được giữ nguyên. So sánh các mô hình với cùng dữ liệu, seed, ngân sách train, checkpoint selection và decoding.
+
+## Train xong tự chạy full test
+
+```python
+!python -u train_h1_2_gated.py --mode train --epochs 10 --visual-cache "$CACHE" --experiment-name h1_2_gated_visualcache --test-after-train
+```
+
+Tùy chọn này dùng checkpoint epoch cuối vừa train, cùng visual cache, toàn bộ split test (không áp dụng `--limit`). Nếu warm-start, không dùng nhầm checkpoint đầu vào. Coverage test được kiểm tra trước training khi có cache. Mặc định train vẫn không chạy test; chỉ bật khi đã chốt thí nghiệm. Notebook launcher có biến `TEST_AFTER_TRAIN = True` để chạy cả train và test qua Save & Run All.
+
+### Chỉ sinh caption hoặc tính metric từ file
+
+```python
+!python -u train_h1_2_gated.py --mode predict --checkpoint /path/checkpoint.pth --split test --visual-cache "$CACHE" --experiment-name h1_2_gated_visualcache
+!python -u train_h1_2_gated.py --mode metrics --predictions /kaggle/working/h1_2_gated_visualcache/evaluation/test_5000_captions_h1_2_gated.json --ground-truth /kaggle/working/h1_2_gated_visualcache/evaluation/test_5000_gt_h1_2_gated.json --metrics-output /kaggle/working/h1_2_gated_visualcache/evaluation/test_5000_metrics_h1_2_gated.json
+```
+
+`predict` lưu captions và ground truth, không tính metric. `evaluate` sinh caption rồi tính metric. Captions và ground truth luôn được lưu trước scoring; nếu thiếu pycocoevalcap/Java hoặc scoring lỗi, cài dependencies và chạy lại `metrics`, không chạy lại `evaluate`. `metrics` không nạp checkpoint, model, dữ liệu ảnh hay visual cache. Nó kiểm tra ID khớp giữa hai file trước khi chấm.

@@ -2,6 +2,7 @@
 import random
 import numpy as np
 import torch
+from .config import post_train_test_config
 from .data import load_data, build_train_loader
 from .models import UniversalVisionEncoder, CaptionDecoder, ImageCaptioningModel
 
@@ -27,6 +28,9 @@ def run(config):
         if config.mode == 'train':
             from .training import train_model
             train_model(model, build_train_loader(config, data), data, config)
+            if config.test_after_train:
+                from .evaluation import evaluate_model
+                evaluate_model(model, data, post_train_test_config(config))
         else:
             from .evaluation import evaluate_model
             evaluate_model(model, data, config)

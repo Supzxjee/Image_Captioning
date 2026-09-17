@@ -97,6 +97,8 @@ def load_data(config):
     prompt_embedding_cache = prompt_embedding_bundle['data']
     print(f'Prompt embedding entries: {len(prompt_embedding_cache):,}')
 
+    if config.test_after_train and len(test_df) == 0:
+        raise ValueError('Test split is empty.')
     visual_cache = VisualCache(config.visual_cache) if config.visual_cache else None
     if visual_cache is not None:
         for label, df in [('train', train_df), ('val', val_df), ('test', test_df)]:
@@ -106,6 +108,10 @@ def load_data(config):
         if config.mode != 'train' and config.limit:
             selected = selected.head(config.limit)
         visual_cache.require_ids(selected.get('coco_id', []), config.mode)
+        if config.test_after_train:
+            if len(test_df) == 0:
+                raise ValueError('Test split is empty.')
+            visual_cache.require_ids(test_df['coco_id'], 'full test after train')
         print('Using cached CLIP tokens; projection, attention, gate and decoder remain trainable.', flush=True)
     return SimpleNamespace(visual_cache=visual_cache, train_df=train_df, val_df=val_df, test_df=test_df,
                            tokenizer=caption_tokenizer, prompt_cache=prompt_embedding_cache,

@@ -5,7 +5,11 @@ from .config import Config
 def parse_args(argv=None):
     defaults = Config()
     parser = argparse.ArgumentParser(description='H1.2-G image captioning on Kaggle')
-    parser.add_argument('--mode', choices=['train', 'evaluate', 'verify-cache'], default='train')
+    parser.add_argument('--mode', choices=['train', 'evaluate', 'predict', 'metrics', 'verify-cache'], default='train')
+    parser.add_argument('--test-after-train', action='store_true', help='After training, generate full test captions and compute metrics.')
+    parser.add_argument('--predictions', default='', help='Saved predictions JSON for metrics mode.')
+    parser.add_argument('--ground-truth', default='', help='Saved COCO ground truth JSON for metrics mode.')
+    parser.add_argument('--metrics-output', default='', help='Metrics JSON output path.')
     parser.add_argument('--epochs', type=int, default=defaults.epochs)
     parser.add_argument('--lr', type=float, default=defaults.lr)
     parser.add_argument('--visual-cache', action='append', default=[],
@@ -25,5 +29,9 @@ def parse_args(argv=None):
 
 def main(argv=None):
     config = parse_args(argv)
+    if config.mode == 'metrics':
+        from .metrics import score_files
+        score_files(config.predictions, config.ground_truth, config.metrics_output or None)
+        return
     from .pipeline import run
     run(config)

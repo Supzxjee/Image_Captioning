@@ -6,7 +6,7 @@ from tqdm.auto import tqdm
 from .data import load_visual_input
 from .checkpoints import load_checkpoint
 from .inference import generate_caption_beam_search
-from .metrics import export_ground_truth, compute_coco_metrics
+from .metrics import export_ground_truth, score_files
 
 def evaluate_model(model, data, config):
     path = Path(config.checkpoint) if config.checkpoint else config.checkpoint_dir / f'model_h1_2_crossattn_epoch_{config.epochs}.pth'
@@ -55,14 +55,13 @@ def evaluate_model(model, data, config):
         json.dump(predictions, f, ensure_ascii=False, indent=2)
     export_ground_truth(eval_df, ground_truth_path)
 
-    metrics = compute_coco_metrics(predictions_path, ground_truth_path)
-    with open(metrics_path, 'w', encoding='utf-8') as f:
-        json.dump(metrics, f, ensure_ascii=False, indent=2)
-
-    print('\n===== H1.2-G — EVALUATION RESULTS =====')
-    print(f'Evaluated images: {len(predictions):,}')
-    for metric_name, value in metrics.items():
-        print(f'{metric_name:<10}: {value:.4f}')
-    print(f'\nPredictions: {predictions_path}')
-    print(f'Ground truth: {ground_truth_path}')
-    print(f'Metrics: {metrics_path}')
+    print(f'Predictions saved: {predictions_path}', flush=True)
+    print(f'Ground truth saved: {ground_truth_path}', flush=True)
+    if config.mode == 'predict':
+        return predictions_path, ground_truth_path
+    try:
+        score_files(predictions_path, ground_truth_path, metrics_path)
+    except Exception:
+        print('Scoring failed; captions and ground truth are already saved. Retry with --mode metrics; do not regenerate captions.', flush=True)
+        raise
+    return predictions_path, ground_truth_path
