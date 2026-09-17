@@ -162,3 +162,9 @@ Tùy chọn này dùng checkpoint epoch cuối vừa train, cùng visual cache, 
 ```
 
 `predict` lưu captions và ground truth, không tính metric. `evaluate` sinh caption rồi tính metric. Captions và ground truth luôn được lưu trước scoring; nếu thiếu pycocoevalcap/Java hoặc scoring lỗi, cài dependencies và chạy lại `metrics`, không chạy lại `evaluate`. `metrics` không nạp checkpoint, model, dữ liệu ảnh hay visual cache. Nó kiểm tra ID khớp giữa hai file trước khi chấm.
+
+### Cache dùng số thứ tự JSON thay vì COCO ID
+
+Nếu `imgids` là chỉ số zero-based của `images` trong cùng `dataset_coco.json`, thêm `--visual-cache-id-key eval_id` vào cả verify-cache, train và evaluate. Không tự động đoán loại ID. Chạy verify-cache để đối chiếu với ảnh thực; số lượng và khoảng ID chưa đủ chứng minh cùng thứ tự JSON. Mặc định vẫn dùng COCO ID từ filename.
+
+Cache được kiểm tra có 113287 train + 5000 val, tổng 118287 mẫu; không thể chứa toàn bộ 123287 ảnh. Không bật `--test-after-train` nếu thiếu cache test. Sau train, evaluate checkpoint trong lệnh riêng, bỏ `--visual-cache` để chạy CLIP trực tiếp cho tập test. Có thể bổ sung cache test sau.

@@ -44,6 +44,15 @@ class VisualCacheTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             coco_image_id('invalid.jpg')
 
+    def test_explicit_json_row_id_mapping(self):
+        cache = VisualCache([str(self.path)], id_key='eval_id')
+        try:
+            self.assertEqual(cache.id_key, 'eval_id')
+            cache.require_ids([7, 42], 'json rows')
+            self.assertEqual(cache.read(7)[0, 0], 2)
+        finally:
+            cache.close()
+
     def test_directory_merges_shards_and_checks_coverage(self):
         self.make_file(self.root / 'b.h5', [99])
         cache = VisualCache([str(self.root)])

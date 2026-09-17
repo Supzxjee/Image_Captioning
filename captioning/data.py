@@ -99,19 +99,19 @@ def load_data(config):
 
     if config.test_after_train and len(test_df) == 0:
         raise ValueError('Test split is empty.')
-    visual_cache = VisualCache(config.visual_cache) if config.visual_cache else None
+    visual_cache = VisualCache(config.visual_cache, id_key=config.visual_cache_id_key) if config.visual_cache else None
     if visual_cache is not None:
         for label, df in [('train', train_df), ('val', val_df), ('test', test_df)]:
-            count = sum(int(i) in visual_cache.index for i in df.get('coco_id', []))
+            count = sum(int(i) in visual_cache.index for i in df.get(config.visual_cache_id_key, []))
             print(f'Visual cache coverage {label}: {count}/{len(df)}', flush=True)
         selected = train_df if config.mode == 'train' else (val_df if config.split == 'val' else test_df)
         if config.mode != 'train' and config.limit:
             selected = selected.head(config.limit)
-        visual_cache.require_ids(selected.get('coco_id', []), config.mode)
+        visual_cache.require_ids(selected.get(config.visual_cache_id_key, []), config.mode)
         if config.test_after_train:
             if len(test_df) == 0:
                 raise ValueError('Test split is empty.')
-            visual_cache.require_ids(test_df['coco_id'], 'full test after train')
+            visual_cache.require_ids(test_df[config.visual_cache_id_key], 'full test after train')
         print('Using cached CLIP tokens; projection, attention, gate and decoder remain trainable.', flush=True)
     return SimpleNamespace(visual_cache=visual_cache, train_df=train_df, val_df=val_df, test_df=test_df,
                            tokenizer=caption_tokenizer, prompt_cache=prompt_embedding_cache,
@@ -130,6 +130,6 @@ def build_train_loader(config, data):
 
 def load_visual_input(row, transform, visual_cache=None):
     if visual_cache is not None:
-        return torch.from_numpy(visual_cache.read(row['coco_id']))
+        return torch.from_numpy(visual_cache.read(row[visual_cache.id_key]))
     with Image.open(row['image']) as image:
         return transform(image.convert('RGB'))

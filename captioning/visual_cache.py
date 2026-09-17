@@ -13,7 +13,10 @@ def coco_image_id(filename):
 
 
 class VisualCache:
-    def __init__(self, paths):
+    def __init__(self, paths, id_key="coco_id"):
+        if id_key not in {"coco_id", "eval_id"}:
+            raise ValueError("Invalid visual cache ID key")
+        self.id_key = id_key
         import h5py
         self.paths = []
         for value in paths:
@@ -47,7 +50,7 @@ class VisualCache:
                 for row, value in enumerate(ids[:]):
                     image_id = int(value)
                     if image_id in self.index:
-                        raise ValueError(f'Duplicate COCO image ID {image_id} across cache rows')
+                        raise ValueError(f'Duplicate cache image ID {image_id} across cache rows')
                     self.index[image_id] = (file_index, row)
 
     def require_ids(self, ids, label):
@@ -60,7 +63,7 @@ class VisualCache:
         import numpy as np
         image_id = int(image_id)
         if image_id not in self.index:
-            raise KeyError(f'COCO image ID {image_id} is absent from visual cache')
+            raise KeyError(f'Cache image ID {image_id} is absent from visual cache')
         # Separate handles per DataLoader worker, safe for both fork and spawn.
         if self._pid != os.getpid():
             self.close()
@@ -70,7 +73,7 @@ class VisualCache:
             self._handles[file_index] = h5py.File(self.paths[file_index], 'r')
         array = self._handles[file_index]['features'][row].astype(np.float32)
         if not np.isfinite(array).all():
-            raise ValueError(f'Non-finite visual features for COCO image ID {image_id}')
+            raise ValueError(f'Non-finite visual features for cache image ID {image_id}')
         return array
 
     def close(self):

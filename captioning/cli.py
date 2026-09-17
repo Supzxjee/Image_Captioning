@@ -12,6 +12,8 @@ def parse_args(argv=None):
     parser.add_argument('--metrics-output', default='', help='Metrics JSON output path.')
     parser.add_argument('--epochs', type=int, default=defaults.epochs)
     parser.add_argument('--lr', type=float, default=defaults.lr)
+    parser.add_argument('--visual-cache-id-key', choices=['coco_id', 'eval_id'], default='coco_id',
+                        help='coco_id = filename ID; eval_id = zero-based row in dataset_coco.json. Verify before use.')
     parser.add_argument('--visual-cache', action='append', default=[],
                         help='HDF5 file or directory; repeat to use multiple files. Omit to run CLIP directly.')
     parser.add_argument('--checkpoint', default='')

@@ -29,10 +29,13 @@ class Config:
     predictions: str = ''
     ground_truth: str = ''
     metrics_output: str = ''
+    visual_cache_id_key: str = 'coco_id'
     visual_cache: list[str] = field(default_factory=list)
 
     def __post_init__(self):
         self.work_dir = Path(self.work_dir)
+        if self.visual_cache_id_key not in {'coco_id', 'eval_id'}:
+            raise ValueError('Cache ID key must be coco_id or eval_id.')
         if self.mode not in {'train', 'evaluate', 'predict', 'metrics', 'verify-cache'} or self.split not in {'val', 'test'}:
             raise ValueError('Invalid mode or evaluation split.')
         if self.test_after_train and self.mode != 'train':
