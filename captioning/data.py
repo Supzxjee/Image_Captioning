@@ -64,13 +64,13 @@ def load_data(config):
         coco_data = json.load(f)
 
     train_data, val_data, test_data = [], [], []
-    for coco_image_id, img in enumerate(coco_data['images']):
+    for eval_id, img in enumerate(coco_data['images']):
         full_image_path = os.path.join(config.base_path, img['filepath'], img['filename'])
         captions = [sent['raw'] for sent in img['sentences']][:5]
         item = {
             'image': full_image_path,
             'captions': captions,
-            'eval_id': coco_image_id,
+            'eval_id': eval_id,
             'filename': img['filename'],
             'coco_id': coco_image_id(img['filename']),
         }
