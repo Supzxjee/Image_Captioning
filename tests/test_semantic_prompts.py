@@ -4,7 +4,7 @@ import unittest
 from pathlib import Path
 from types import SimpleNamespace
 from unittest.mock import patch
-from captioning.semantic_prompts import align_prompt_cache, parse_scene, scene_prompt
+from captioning.semantic_prompts import align_prompt_cache, parse_scene, scene_prompt, generate_valid_scene
 from build_vlm_prompts import embed, load_scene_rows, records_from_json
 
 
@@ -26,6 +26,29 @@ class SemanticPromptTests(unittest.TestCase):
             scene['relations'][0][field] = value
             with self.assertRaises(ValueError):
                 parse_scene(json.dumps(scene))
+
+    def test_schema_retry_receives_error_and_preserves_successful_relation(self):
+        bad = json.loads(json.dumps(self.scene))
+        bad['relations'][0]['object'] = 'car'
+        calls, errors = [], []
+        def generate_raw(previous_raw, previous_error):
+            calls.append((previous_raw, previous_error))
+            return json.dumps(bad if len(calls) == 1 else self.scene)
+        scene, raw, retries = generate_valid_scene(generate_raw, 2,
+            lambda *error: errors.append(error))
+        self.assertEqual(retries, 1)
+        self.assertEqual(len(scene['relations']), 1)
+        self.assertIn('endpoints', calls[1][1])
+        self.assertEqual(len(errors), 1)
+
+    def test_retry_exhaustion_does_not_return_empty_fallback(self):
+        calls = []
+        def generate_raw(*feedback):
+            calls.append(feedback)
+            return 'not JSON'
+        with self.assertRaisesRegex(ValueError, 'after 3 attempts'):
+            generate_valid_scene(generate_raw, retries=2)
+        self.assertEqual(len(calls), 3)
 
     def test_filename_alignment_handles_new_kaggle_mount_and_rejects_collisions(self):
         value = {'tokens': 'sentinel'}

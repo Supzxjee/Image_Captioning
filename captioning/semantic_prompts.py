@@ -51,12 +51,29 @@ def parse_scene(raw):
         if not isinstance(item, dict) or set(item) != {'subject', 'predicate', 'object'}:
             raise ValueError('Invalid relation schema.')
         relation = {key: clean_phrase(value) for key, value in item.items()}
-        if (relation['subject'] not in names or relation['object'] not in names
-                or relation['subject'] == relation['object']
-                or relation['predicate'] not in SPATIAL_RELATIONS):
-            raise ValueError('Unsupported or ungrounded relation.')
+        if relation['subject'] not in names or relation['object'] not in names:
+            raise ValueError(f'Relation endpoints must match object names {sorted(names)}: {relation}')
+        if relation['subject'] == relation['object']:
+            raise ValueError(f'Self-relation is not allowed: {relation}')
+        if relation['predicate'] not in SPATIAL_RELATIONS:
+            raise ValueError(f'Unsupported spatial predicate {relation["predicate"]!r}; '
+                             f'allowed: {sorted(SPATIAL_RELATIONS)}')
         normalized_relations.append(relation)
     return {'objects': normalized, 'relations': normalized_relations}
+
+
+def generate_valid_scene(generate_raw, retries=2, on_error=None):
+    """Retry invalid schema with explicit feedback; never silently drop relations."""
+    previous_raw, previous_error = None, None
+    for attempt in range(retries + 1):
+        raw = generate_raw(previous_raw, previous_error)
+        try:
+            return parse_scene(raw), raw, attempt
+        except (ValueError, TypeError, KeyError) as error:
+            previous_raw, previous_error = raw, str(error)
+            if on_error is not None:
+                on_error(attempt, raw, previous_error)
+    raise ValueError(f'Invalid scene after {retries + 1} attempts: {previous_error}')
 
 
 def scene_prompt(scene, variant):

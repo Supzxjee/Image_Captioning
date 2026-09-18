@@ -52,7 +52,10 @@ ablation ngân sách khác và chạy lại cả hai loại, không chỉ tăng 
    Nếu metric lỗi, caption và ground truth vẫn được lưu để tính lại bằng mode metrics.
 
 Extraction lưu mỗi scene hợp lệ ngay và cho chạy tiếp cùng file, cùng cấu hình.
-JSON không hợp lệ dừng với `.errors.jsonl`, không thay bằng prompt rỗng. Trong phiên
+JSON không hợp lệ được thử sửa tối đa 2 lần với phản hồi cụ thể từ validator
+(`--retries 2`), vẫn dùng cùng ảnh và không dùng caption gốc. Mỗi lỗi được lưu
+vào `.errors.jsonl`; nếu hết lượt vẫn sai thì dừng, không thay bằng prompt rỗng.
+Scene lưu số lần retry để kiểm tra chất lượng dữ liệu. Trong phiên
 mới, copy scene và metadata cũ từ Input sang một đường dẫn output ghi được rồi
 trỏ --output đến đó để resume. Save & Run All không tự mang file phiên tương tác
 sang phiên mới. File bị ghi dở một dòng phải được kiểm tra/sửa trước khi resume.

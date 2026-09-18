@@ -4,9 +4,11 @@ import hashlib
 import json
 from pathlib import Path
 import time
+import copy
+import inspect
 
 from captioning.config import Config, MAX_PROMPT_LEN
-from captioning.semantic_prompts import SCENE_INSTRUCTION, parse_scene, scene_prompt
+from captioning.semantic_prompts import SCENE_INSTRUCTION, parse_scene, scene_prompt, generate_valid_scene
 
 
 def records_from_json(path):
@@ -76,14 +78,24 @@ def generate(args):
         print(f'Already complete: {len(done)} scenes.', flush=True)
         return
     processor = AutoProcessor.from_pretrained(args.model, revision=args.revision,
-                                              min_pixels=256*28*28, max_pixels=args.max_pixels)
+                                              min_pixels=256*28*28, max_pixels=args.max_pixels,
+                                              use_fast=True)
+    # dtype was added to newer Transformers; older supported versions use torch_dtype.
+    dtype_key = ('dtype' if 'dtype' in inspect.signature(
+        Qwen2_5_VLForConditionalGeneration.from_pretrained).parameters else 'torch_dtype')
     model = Qwen2_5_VLForConditionalGeneration.from_pretrained(
-        args.model, revision=args.revision, torch_dtype=torch.float16,
+        args.model, revision=args.revision, **{dtype_key: torch.float16},
         attn_implementation='sdpa').to('cuda').eval()
+    generation_config = copy.deepcopy(model.generation_config)
+    generation_config.do_sample = False
+    generation_config.temperature = None
+    generation_config.top_p = None
+    generation_config.top_k = None
     resolved = getattr(model.config, '_commit_hash', None)
     if meta_path.exists() and existing.get('resolved_revision') != resolved:
         raise ValueError('Model revision changed; resume using the original revision.')
-    metadata.update(resolved_revision=resolved, complete=False)
+    metadata.update(resolved_revision=resolved, complete=False,
+                    repair_policy={'schema_feedback_retries': args.retries}, processor_use_fast=True)
     meta_path.write_text(json.dumps(metadata, indent=2), encoding='utf-8')
     started, count = time.monotonic(), 0
     for record in records:
@@ -95,23 +107,38 @@ def generate(args):
             messages = [{'role': 'user', 'content': [
                 {'type': 'image', 'image': image.convert('RGB')},
                 {'type': 'text', 'text': SCENE_INSTRUCTION}]}]
-            inputs = processor.apply_chat_template(messages, tokenize=True,
-                add_generation_prompt=True, return_dict=True, return_tensors='pt').to('cuda')
-            with torch.inference_mode():
-                generated = model.generate(**inputs, do_sample=False,
-                                           max_new_tokens=args.max_new_tokens)
-            raw = processor.batch_decode(generated[:, inputs['input_ids'].shape[1]:],
-                                         skip_special_tokens=True)[0]
-        try:
-            scene = parse_scene(raw)
-        except (ValueError, TypeError, KeyError) as error:
-            with output.with_suffix('.errors.jsonl').open('a', encoding='utf-8') as f:
-                f.write(json.dumps({'filename': record['filename'], 'raw': raw,
-                                    'error': str(error)}) + '\n')
-            raise RuntimeError(f'Invalid VLM scene for {record["filename"]}; see errors file. '
-                               'Valid earlier rows are saved; no empty fallback prompt.') from error
+            def generate_raw(previous_raw, previous_error):
+                conversation = list(messages)
+                if previous_raw is not None:
+                    conversation += [
+                        {'role': 'assistant', 'content': [{'type': 'text', 'text': previous_raw}]},
+                        {'role': 'user', 'content': [{'type': 'text', 'text':
+                            'Your JSON failed validation: ' + previous_error +
+                            '. Reinspect the image and return the complete corrected JSON only. '
+                            'Use exact object names for endpoints and only the allowed spatial predicates. '
+                            'Do not invent missing objects or relations. If a relation cannot be supported, '
+                            'omit it; relations may be an empty list.'}]}]
+                inputs = processor.apply_chat_template(conversation, tokenize=True,
+                    add_generation_prompt=True, return_dict=True, return_tensors='pt').to('cuda')
+                with torch.inference_mode():
+                    generated = model.generate(**inputs, generation_config=generation_config,
+                                               max_new_tokens=args.max_new_tokens)
+                return processor.batch_decode(generated[:, inputs['input_ids'].shape[1]:],
+                                              skip_special_tokens=True)[0]
+
+            def log_error(attempt, raw, error):
+                with output.with_suffix('.errors.jsonl').open('a', encoding='utf-8') as f:
+                    f.write(json.dumps({'filename': record['filename'], 'attempt': attempt + 1,
+                                        'raw': raw, 'error': error}) + '\n')
+                print(f'{record["filename"]}: schema attempt {attempt + 1} failed: {error}', flush=True)
+
+            try:
+                scene, raw, retry_count = generate_valid_scene(generate_raw, args.retries, log_error)
+            except ValueError as error:
+                raise RuntimeError(f'Invalid VLM scene for {record["filename"]}; see errors file. '
+                                   'Valid earlier rows are saved; no empty fallback prompt.') from error
         with output.open('a', encoding='utf-8') as f:
-            f.write(json.dumps(dict(record, scene=scene, raw=raw), ensure_ascii=False) + '\n')
+            f.write(json.dumps(dict(record, scene=scene, raw=raw, retries=retry_count), ensure_ascii=False) + '\n')
             f.flush()
         count += 1
         done[record['filename']] = record
@@ -143,7 +170,7 @@ def embed(args):
             raise ValueError(f'Scene split JSON hash mismatch: {path}')
         scene_metadata.append(meta)
     profile_keys = ('model', 'resolved_revision', 'max_pixels', 'max_new_tokens',
-                    'instruction', 'generation', 'parts')
+                    'instruction', 'generation', 'parts', 'repair_policy', 'processor_use_fast')
     if any(any(meta.get(k) != scene_metadata[0].get(k) for k in profile_keys)
            for meta in scene_metadata[1:]):
         raise ValueError('Scene shards use different VLM extraction profiles.')
@@ -220,6 +247,7 @@ def main(argv=None):
             sub.add_argument('--limit', type=int, default=100, help='Pilot default; 0 = entire shard.')
             sub.add_argument('--max-pixels', type=int, default=512*28*28)
             sub.add_argument('--max-new-tokens', type=int, default=384)
+            sub.add_argument('--retries', type=int, default=2, help='Additional schema-feedback attempts per image.')
             sub.add_argument('--output', required=True)
         else:
             sub.add_argument('--scenes', nargs='+', required=True)
@@ -228,7 +256,7 @@ def main(argv=None):
             sub.add_argument('--allow-partial', action='store_true', help='Smoke cache only; cannot train full split.')
     args = parser.parse_args(argv)
     if args.mode == 'generate':
-        if args.parts < 1 or args.limit < 0 or args.max_pixels < 256*28*28 or args.max_new_tokens < 1:
+        if args.parts < 1 or args.limit < 0 or args.max_pixels < 256*28*28 or args.max_new_tokens < 1 or args.retries < 0:
             parser.error('Invalid partition, limit or generation budget.')
         generate(args)
     else:
