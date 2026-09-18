@@ -88,14 +88,19 @@ def main(argv=None):
     parser.add_argument('--num-workers', type=int, default=2)
     parser.add_argument('--loader-timeout', type=float, default=120,
                         help='Seconds to wait for a worker batch; ignored with num-workers=0.')
+    parser.add_argument('--start-row', type=int, default=0, help='Diagnostic offset within selected part; nonzero requires --limit.')
+    parser.add_argument('--trace-batches', action='store_true', help='Log every image batch and GPU/CPU/HDF5 stage.')
+    parser.add_argument('--device', choices=['auto', 'cuda', 'cpu'], default='auto')
     parser.add_argument('--limit', type=int, default=0, help='Smoke test: first N images in the selected part, 0=all.')
     parser.add_argument('--verify-samples', type=int, default=10)
     args = parser.parse_args(argv)
-    if args.batch_size < 1 or args.num_workers < 0 or args.limit < 0 or args.verify_samples < 1 or args.loader_timeout <= 0:
+    if args.batch_size < 1 or args.num_workers < 0 or args.limit < 0 or args.verify_samples < 1 or args.loader_timeout <= 0 or args.start_row < 0:
         parser.error('Invalid batch size, workers, limit or verification sample count.')
     records = select_part(collect_records(args.dataset_json_path), args.part, args.parts)
+    if args.start_row and not args.limit:
+        parser.error('--start-row requires --limit; diagnostic subsets are not full shards.')
     if args.limit:
-        records = records[:args.limit]
+        records = records[args.start_row:args.start_row+args.limit]
     estimated = len(records) * BYTES_PER_IMAGE
     if not records:
         raise ValueError('Selected part is empty.')
@@ -107,7 +112,7 @@ def main(argv=None):
     existing = sum(p.stat().st_size for p in output_dir.parent.rglob('*') if p.is_file())
     if existing + estimated + 200_000_000 > 19_000_000_000:
         raise ValueError('Existing outputs plus this cache approach 20 GB; use a fresh Kaggle version/session.')
-    suffix = '_smoke' if args.limit else ''
+    suffix = f'_smoke_row_{args.start_row:06d}' if args.limit else ''
     final = output_dir / f'visual_part_{args.part:02d}_of_{args.parts:02d}{suffix}.h5'
     pending = final.with_suffix('.partial')
     if final.exists() or pending.exists():
@@ -124,7 +129,10 @@ def main(argv=None):
     from transformers import CLIPModel
     from .data import build_image_transform
     ImageFile.LOAD_TRUNCATED_IMAGES = True
-    device = 'cuda' if torch.cuda.is_available() else 'cpu'
+    device = ('cuda' if torch.cuda.is_available() else 'cpu') if args.device == 'auto' else args.device
+    if device == 'cuda' and not torch.cuda.is_available():
+        raise RuntimeError('CUDA requested but unavailable.')
+    print(f'Cache device: {device}; workers: {args.num_workers}', flush=True)
     # Explicit FP32, no autocast/TF32 for the frozen visual encoder.
     torch.backends.cuda.matmul.allow_tf32 = False
     torch.backends.cudnn.allow_tf32 = False
@@ -142,13 +150,18 @@ def main(argv=None):
                     mean=[0.48145466, 0.4578275, 0.40821073], std=[0.26862954, 0.26130258, 0.27577711],
                     compute_dtype='float32', storage_dtype='float16', autocast=False,
                     dataset_json_sha256=hashlib.sha256(Path(args.dataset_json_path).read_bytes()).hexdigest(),
-                    part=args.part, parts=args.parts, smoke=bool(args.limit), image_count=len(records),
+                    part=args.part, parts=args.parts, smoke=bool(args.limit), start_row=args.start_row, image_count=len(records),
                     torch=torch.__version__, torchvision=torchvision.__version__, transformers=transformers.__version__)
     # Preflight extraction and quantization check before the expensive full part.
     sample_count = min(args.verify_samples, len(records))
-    sample_pixels = torch.stack([dataset[i] for i in range(sample_count)]).to(device)
+    print(f'Preflight: reading {sample_count} images', flush=True)
+    sample_pixels = torch.stack([dataset[i] for i in range(sample_count)])
+    print('Preflight: transferring pixels to device', flush=True)
+    sample_pixels = sample_pixels.to(device)
+    print('Preflight: running CLIP', flush=True)
     with torch.no_grad():
         sample_features = backbone(pixel_values=sample_pixels).last_hidden_state.float()
+    print('Preflight: CLIP returned; checking tensors', flush=True)
     if not torch.isfinite(sample_features).all():
         raise ValueError('Non-finite features in preflight.')
     if not torch.allclose(sample_features, sample_features.half().float(), atol=0.01, rtol=0.005):
@@ -158,7 +171,7 @@ def main(argv=None):
     def batches():
         iterator = iter(loader)
         for i in tqdm(range(len(loader)), desc='Caching CLIP FP32'):
-            if i % 50 == 0:
+            if args.trace_batches or i % 50 == 0:
                 print(f'Waiting for image batch {i+1}/{len(loader)} at row {i*args.batch_size}', flush=True)
             try:
                 pixels = next(iterator)
@@ -166,14 +179,30 @@ def main(argv=None):
                 near = records[i*args.batch_size:(i+1)*args.batch_size]
                 print(f'Image loader failed while requesting rows {i*args.batch_size}:{(i+1)*args.batch_size}. Requested filenames: {[r["filename"] for r in near]}. Workers may also be prefetching later rows.', flush=True)
                 raise
-            if i % 50 == 0:
+            if args.trace_batches or i % 50 == 0:
                 print(f'Running CLIP for batch {i+1}', flush=True)
+            if args.trace_batches:
+                print(f'Batch {i+1}: filenames={[r["filename"] for r in records[i*args.batch_size:(i+1)*args.batch_size]]}', flush=True)
+                print(f'Batch {i+1}: transferring pixels to {device}', flush=True)
+            pixels = pixels.to(device, non_blocking=not args.trace_batches)
+            if args.trace_batches and device == 'cuda':
+                torch.cuda.synchronize()
+            if args.trace_batches:
+                print(f'Batch {i+1}: CLIP forward', flush=True)
             with torch.no_grad():
-                features = backbone(pixel_values=pixels.to(device, non_blocking=True)).last_hidden_state.float()
+                features = backbone(pixel_values=pixels).last_hidden_state.float()
+            if args.trace_batches and device == 'cuda':
+                torch.cuda.synchronize()
+            if args.trace_batches:
+                print(f'Batch {i+1}: CLIP finished; copying features to CPU', flush=True)
             array = features.cpu().numpy()
+            if args.trace_batches:
+                print(f'Batch {i+1}: CPU copy finished; HDF5 write next', flush=True)
             if (i+1) % 50 == 0:
                 print(f'Computed {min((i+1)*args.batch_size, len(records))}/{len(records)}; writing HDF5 next', flush=True)
             yield array
+            if args.trace_batches:
+                print(f'Batch {i+1}: HDF5 write/flush completed', flush=True)
 
     write_feature_batches(pending, records, batches(), metadata)
     # Re-read real saved rows and compare to fresh FP32 extraction.
