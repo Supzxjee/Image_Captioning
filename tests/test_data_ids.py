@@ -8,6 +8,7 @@ from types import SimpleNamespace
 from unittest.mock import patch
 from captioning.config import Config
 from captioning.visual_cache import coco_image_id
+from captioning.semantic_prompts import align_prompt_cache
 
 
 class FakeFrame(list):
@@ -27,10 +28,12 @@ class DataIdsTests(unittest.TestCase):
         namespace = dict(json=json, os=SimpleNamespace(path=SimpleNamespace(isfile=lambda p: True,
                                 join=lambda *p: '/'.join(p))),
                          pd=SimpleNamespace(DataFrame=FakeFrame),
-                         torch=SimpleNamespace(load=lambda *a, **k: {'data': {}}),
+                         torch=SimpleNamespace(load=lambda *a, **k: {'data': {
+                             image['filename']: {} for image in images}}),
                          ImageFile=SimpleNamespace(LOAD_TRUNCATED_IMAGES=False),
                          CaptionTokenizer=FakeTokenizer, coco_image_id=coco_image_id,
-                         SimpleNamespace=SimpleNamespace, build_image_transform=lambda p: None)
+                         SimpleNamespace=SimpleNamespace, build_image_transform=lambda p: None,
+                         align_prompt_cache=align_prompt_cache)
         exec(compile(ast.Module(body=[function], type_ignores=[]), str(source), 'exec'), namespace)
         images = []
         for split, coco_id in [('train', 42), ('restval', 7), ('val', 100), ('test', 99)]:

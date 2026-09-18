@@ -9,6 +9,7 @@ from torch.utils.data import Dataset, DataLoader
 from torchvision import transforms
 from .tokenizer import CaptionTokenizer
 from .visual_cache import VisualCache, coco_image_id
+from .semantic_prompts import align_prompt_cache
 
 NORMALIZATION_STATS = {
     'mean': [0.48145466, 0.4578275, 0.40821073],
@@ -103,8 +104,18 @@ def load_data(config):
     print(f'Caption vocabulary: {vocab_size:,}')
 
     prompt_embedding_bundle = torch.load(config.prompt_cache_path, map_location='cpu', weights_only=False)
-    prompt_embedding_cache = prompt_embedding_bundle['data']
+    prompt_embedding_cache = align_prompt_cache(prompt_embedding_bundle['data'],
+        [item['image'] for item in train_data + val_data + test_data])
     print(f'Prompt embedding entries: {len(prompt_embedding_cache):,}')
+    selected_prompts = train_data if config.mode == 'train' else (val_data if config.split == 'val' else test_data)
+    if config.mode != 'train' and config.limit:
+        selected_prompts = selected_prompts[:config.limit]
+    if config.test_after_train:
+        selected_prompts = selected_prompts + test_data
+    missing_prompts = [item['filename'] for item in selected_prompts
+                       if item['image'] not in prompt_embedding_cache]
+    if missing_prompts:
+        raise ValueError(f'Missing {len(missing_prompts)} prompt embeddings; examples: {missing_prompts[:10]}')
 
     if config.test_after_train and len(test_df) == 0:
         raise ValueError('Test split is empty.')
@@ -127,7 +138,8 @@ def load_data(config):
                 raise ValueError('Test split is empty.')
             visual_cache.require_ids(test_df[config.visual_cache_id_key], 'full test after train')
         print('Using cached CLIP tokens; projection, attention, gate and decoder remain trainable.', flush=True)
-    return SimpleNamespace(visual_cache=visual_cache, train_df=train_df, val_df=val_df, test_df=test_df,
+    return SimpleNamespace(prompt_metadata=prompt_embedding_bundle.get('metadata', {}),
+                           visual_cache=visual_cache, train_df=train_df, val_df=val_df, test_df=test_df,
                            tokenizer=caption_tokenizer, prompt_cache=prompt_embedding_cache,
                            transform=image_transform, vocab_size=vocab_size)
 

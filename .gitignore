@@ -5,3 +5,5 @@ __pycache__/
 .env
 *.h5
 .test-deps/
+*.pt.partial
+vlm_outputs/

@@ -219,3 +219,11 @@ Chưa chạy extraction trên GPU/dataset thật tại máy phát triển. Tests
 Cache builder dùng DataLoader timeout 120 giây khi có workers. Có thể đổi bằng --loader-timeout; log chỉ rõ chờ batch, chạy CLIP hay chuẩn bị ghi HDF5. Nếu worker lỗi, log tên ảnh của batch được yêu cầu (worker có thể đang prefetch ảnh sau đó). Thử --num-workers 0 để chẩn đoán worker multiprocessing; chế độ này không có loader timeout. Timeout chỉ giới hạn chờ worker batch, không giới hạn GPU kernel hoặc I/O ghi file. Không tự resume .partial.
 
 Chẩn đoán cache part bị kẹt: dùng --start-row 6300 --limit 256 --batch-size 8 --num-workers 0 --trace-batches --verify-samples 1. start-row là vị trí trong part, file subset có suffix smoke và không dùng cho full training. --device cpu/cuda chọn nơi chạy. Bọc subprocess.run(..., timeout=600) để giới hạn tiến trình chạy thử; đừng lặp lại full part hàng giờ trước khi xác định lỗi.
+# VLM prompt experiments
+
+Next experiment: replace YOLO/spatial-heuristic prompts with image-only VLM objects
+and spatial relations while keeping H1.2 + Gate and visual features fixed.
+See [VLM_EXPERIMENTS.md](VLM_EXPERIMENTS.md). Kaggle notebooks:
+`vlm_extract_kaggle.ipynb` (100-image pilot then resumable scene shards),
+`vlm_embed_kaggle.ipynb` (both CLIP prompt caches), and
+`vlm_train_kaggle.ipynb` (one variant per version, train + full test).

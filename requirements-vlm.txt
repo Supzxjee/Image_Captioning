@@ -1,0 +1,5 @@
+# Install in the prompt-extraction notebook, separate from caption training.
+transformers>=4.51,<5
+accelerate>=1.2
+torch
+Pillow
