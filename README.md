@@ -221,6 +221,10 @@ Cache builder dùng DataLoader timeout 120 giây khi có workers. Có thể đ�
 Chẩn đoán cache part bị kẹt: dùng --start-row 6300 --limit 256 --batch-size 8 --num-workers 0 --trace-batches --verify-samples 1. start-row là vị trí trong part, file subset có suffix smoke và không dùng cho full training. --device cpu/cuda chọn nơi chạy. Bọc subprocess.run(..., timeout=600) để giới hạn tiến trình chạy thử; đừng lặp lại full part hàng giờ trước khi xác định lỗi.
 # VLM prompt experiments
 
+Objects-only YOLO ablation (without VLM):
+[OBJECTS_ABLATION.md](OBJECTS_ABLATION.md) and `objects_only_kaggle.ipynb`.
+Requires original saved object labels, builds a fresh prompt cache, then train + full test.
+
 Next experiment: replace YOLO/spatial-heuristic prompts with image-only VLM objects
 and spatial relations while keeping H1.2 + Gate and visual features fixed.
 See [VLM_EXPERIMENTS.md](VLM_EXPERIMENTS.md). Kaggle notebooks:
