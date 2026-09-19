@@ -69,6 +69,19 @@ class CachedEncoderTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, '197, 768'):
             self.encoder(torch.zeros(2, 1, 768), self.prompt, self.mask)
 
+    def test_cached_only_encoder_does_not_load_or_require_backbone(self):
+        with patch.object(self.models.CLIPModel, 'from_pretrained',
+                          side_effect=AssertionError('must not download CLIP')):
+            encoder = self.models.UniversalVisionEncoder(
+                embed_dim=32, num_heads=4, load_backbone=False).eval()
+        self.assertIsNone(encoder.feature_extractor)
+        with torch.no_grad():
+            visual, prompt = encoder(self.cached, self.prompt, self.mask)
+        self.assertEqual(visual.shape, (2, 197, 32))
+        self.assertEqual(prompt.shape, (2, 20, 32))
+        with self.assertRaisesRegex(RuntimeError, 'backbone was not loaded'):
+            encoder.extract_visual_features(torch.zeros(1, 3, 224, 224))
+
 
 if __name__ == '__main__':
     unittest.main()

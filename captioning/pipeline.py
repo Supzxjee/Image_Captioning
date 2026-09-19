@@ -14,7 +14,14 @@ def run(config):
     config.device = 'cuda' if torch.cuda.is_available() else 'cpu'
     print(f'Using device: {config.device}', flush=True)
     data = load_data(config)
-    encoder = UniversalVisionEncoder(visual_precision=config.visual_precision).to(config.device)
+    needs_backbone = (config.mode == 'verify-cache' or not config.visual_cache or
+                      (config.mode == 'train' and config.test_after_train and
+                       config.test_visual_source == 'images'))
+    print('Initializing encoder: ' + ('loading CLIP vision backbone.' if needs_backbone
+          else 'visual cache active; skipping unused CLIP vision backbone.'), flush=True)
+    encoder = UniversalVisionEncoder(visual_precision=config.visual_precision,
+                                     load_backbone=needs_backbone).to(config.device)
+    print('Encoder initialized.', flush=True)
     if config.mode == 'verify-cache':
         from .cache_verification import verify_cache
         try:

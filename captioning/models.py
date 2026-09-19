@@ -7,15 +7,18 @@ from transformers import CLIPModel
 from .config import EMBED_DIM, NUM_HEADS
 
 class UniversalVisionEncoder(nn.Module):
-    def __init__(self, model_name='clip', embed_dim=EMBED_DIM, num_heads=NUM_HEADS, attn_dropout=0.1, visual_precision='fp32'):
+    def __init__(self, model_name='clip', embed_dim=EMBED_DIM, num_heads=NUM_HEADS,
+                 attn_dropout=0.1, visual_precision='fp32', load_backbone=True):
         super().__init__()
         if model_name.lower() != 'clip':
             raise NotImplementedError('Only CLIP is supported in this notebook.')
 
-        clip_model = CLIPModel.from_pretrained('openai/clip-vit-base-patch16')
-        self.feature_extractor = clip_model.vision_model
-        for parameter in self.feature_extractor.parameters():
-            parameter.requires_grad = False
+        self.feature_extractor = None
+        if load_backbone:
+            clip_model = CLIPModel.from_pretrained('openai/clip-vit-base-patch16')
+            self.feature_extractor = clip_model.vision_model
+            for parameter in self.feature_extractor.parameters():
+                parameter.requires_grad = False
 
         self.visual_precision = visual_precision
         self.vis_projection = nn.Linear(768, embed_dim)
@@ -44,10 +47,13 @@ class UniversalVisionEncoder(nn.Module):
 
     def train(self, mode=True):
         super().train(mode)
-        self.feature_extractor.eval()
+        if self.feature_extractor is not None:
+            self.feature_extractor.eval()
         return self
 
     def extract_visual_features(self, images):
+        if self.feature_extractor is None:
+            raise RuntimeError('CLIP vision backbone was not loaded; provide cached visual tokens.')
         use_amp = self.visual_precision == 'amp-fp16' and images.device.type == 'cuda'
         context = torch.autocast(device_type='cuda', dtype=torch.float16) if use_amp else nullcontext()
         with torch.no_grad(), context:

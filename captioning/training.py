@@ -10,7 +10,8 @@ from .checkpoints import load_checkpoint
 
 def train_one_epoch(model, loader, optimizer, criterion, epoch, config):
     model.train()
-    model.encoder.feature_extractor.eval()
+    if model.encoder.feature_extractor is not None:
+        model.encoder.feature_extractor.eval()
     total_loss = 0.0
 
     progress = tqdm(loader, desc=f'Epoch {epoch}/{config.epochs}')
