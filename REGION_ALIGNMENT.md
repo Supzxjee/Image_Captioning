@@ -75,7 +75,9 @@ if not REGION_TARGETS.exists():
         '--name-key', 'label',
         '--bbox-key', 'bbox',
         '--confidence-key', 'conf',
-        '--min-confidence', '0.0',
+        '--min-confidence', '0.5',
+        '--min-area-ratio', '0.001',
+        '--max-area-ratio', '0.9',
         '--max-regions', '10',
         '--output', REGION_TARGETS,
     ])
@@ -138,7 +140,9 @@ Cell trên thêm các tham số sau vào pipeline Gate hiện tại:
 ```
 
 Giữ seed 42, prompt object+relation, visual cache, 10 epoch và decoding giống
-bản Gate đối chứng. Không thay confidence threshold trước khi đọc báo cáo audit.
+bản Gate đối chứng. Các ngưỡng region supervision được chọn từ audit: bỏ detection
+confidence dưới 0.5, box nhỏ hơn 0.1% hoặc lớn hơn 90% diện tích ảnh. Việc lọc
+chỉ áp dụng cho `L_region`; prompt object+relation đầu vào vẫn giữ nguyên.
 Chạy smoke một epoch trước; log phải hiện riêng `caption` và `align`, cả hai hữu
 hạn và giảm hợp lý. So sánh metric với Gate cùng seed, sau đó mới thử lambda 0.05
 hoặc 0.2 trên validation; không chọn lambda bằng test.

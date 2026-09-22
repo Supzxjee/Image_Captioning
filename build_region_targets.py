@@ -21,10 +21,13 @@ def main(argv=None):
     parser.add_argument('--bbox-key', default='bbox')
     parser.add_argument('--confidence-key', default='conf')
     parser.add_argument('--min-confidence', type=float, default=0.0)
+    parser.add_argument('--min-area-ratio', type=float, default=0.0)
+    parser.add_argument('--max-area-ratio', type=float, default=1.0)
     parser.add_argument('--max-regions', type=int, default=10)
     args = parser.parse_args(argv)
-    if not 0 <= args.min_confidence <= 1 or args.max_regions <= 0:
-        parser.error('min-confidence must be in [0,1]; max-regions must be positive.')
+    if (not 0 <= args.min_confidence <= 1 or args.max_regions <= 0 or
+            not 0 <= args.min_area_ratio < args.max_area_ratio <= 1):
+        parser.error('Confidence/area ratios must be valid; max-regions must be positive.')
 
     source_path, dataset_path = Path(args.source), Path(args.dataset_json_path)
     source = index_source(json.loads(source_path.read_text(encoding='utf-8')))
@@ -44,6 +47,7 @@ def main(argv=None):
         raise ValueError('No valid object labels found.')
 
     data, skipped, clipped, truncated = {}, 0, 0, 0
+    filtered_confidence = filtered_area = 0
     for index, (filename, record) in enumerate(records.items(), 1):
         entry = source.get(filename)
         if entry is None:
@@ -64,8 +68,11 @@ def main(argv=None):
             if (not isinstance(label, str) or not label.strip() or
                     not isinstance(bbox, (list, tuple)) or len(bbox) != 4 or
                     not all(isinstance(value, (int, float)) for value in bbox) or
-                    not isinstance(confidence, (int, float)) or confidence < args.min_confidence):
+                    not isinstance(confidence, (int, float))):
                 skipped += 1
+                continue
+            if confidence < args.min_confidence:
+                filtered_confidence += 1
                 continue
             x1, y1, x2, y2 = map(float, bbox)
             bounded = (max(0.0, min(x1, image_width)), max(0.0, min(y1, image_height)),
@@ -74,6 +81,10 @@ def main(argv=None):
             x1, y1, x2, y2 = bounded
             if x2 <= x1 or y2 <= y1:
                 skipped += 1
+                continue
+            area_ratio = (x2 - x1) * (y2 - y1) / (image_width * image_height)
+            if not args.min_area_ratio <= area_ratio <= args.max_area_ratio:
+                filtered_area += 1
                 continue
             normalized_label = ' '.join(label.lower().strip().split())
             targets.append((float(confidence), [x1 / image_width, y1 / image_height,
@@ -114,8 +125,12 @@ def main(argv=None):
         'prototype_extraction': 'fp32',
         'prototype_storage': 'fp16',
         'min_confidence': args.min_confidence,
+        'min_area_ratio': args.min_area_ratio,
+        'max_area_ratio': args.max_area_ratio,
         'max_regions': args.max_regions,
         'skipped_detections': skipped,
+        'filtered_by_confidence': filtered_confidence,
+        'filtered_by_area': filtered_area,
         'clipped_boxes': clipped,
         'truncated_detections': truncated,
         'source_sha256': hashlib.sha256(source_path.read_bytes()).hexdigest(),

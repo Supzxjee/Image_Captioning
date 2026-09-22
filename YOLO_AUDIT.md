@@ -73,3 +73,5 @@ thấp, box trùng, box quá nhỏ/lớn, ảnh không có detection và một n
 Nếu các lỗi tập trung ở một ngưỡng rõ ràng mới thay đổi bộ lọc YOLO; giữ nguyên
 cache cho thí nghiệm đối chứng.
 
+Kết quả audit thực tế và quyết định lọc region supervision của đề tài nằm trong
+[YOLO_AUDIT_RESULTS.md](YOLO_AUDIT_RESULTS.md).
