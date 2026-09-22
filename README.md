@@ -231,3 +231,11 @@ See [VLM_EXPERIMENTS.md](VLM_EXPERIMENTS.md). Kaggle notebooks:
 `vlm_extract_kaggle.ipynb` (100-image pilot then resumable scene shards),
 `vlm_embed_kaggle.ipynb` (both CLIP prompt caches), and
 `vlm_train_kaggle.ipynb` (one variant per version, train + full test).
+
+## Audit cache YOLO trước region alignment
+
+Chạy `audit_yolo_detections.py` để kiểm tra coverage theo split, confidence,
+bounding box vượt biên/quá nhỏ/quá lớn và các box cùng lớp bị trùng. Script xuất
+JSON tổng hợp cùng CSV theo ảnh và theo nhãn, không chạy lại YOLO. Hướng dẫn và
+cell Kaggle đầy đủ nằm trong [YOLO_AUDIT.md](YOLO_AUDIT.md). Đây là kiểm tra bất
+thường dữ liệu; vẫn cần xem một mẫu ảnh phân tầng trước khi đổi threshold.
