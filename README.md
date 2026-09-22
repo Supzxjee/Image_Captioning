@@ -239,3 +239,10 @@ bounding box vượt biên/quá nhỏ/quá lớn và các box cùng lớp bị t
 JSON tổng hợp cùng CSV theo ảnh và theo nhãn, không chạy lại YOLO. Hướng dẫn và
 cell Kaggle đầy đủ nằm trong [YOLO_AUDIT.md](YOLO_AUDIT.md). Đây là kiểm tra bất
 thường dữ liệu; vẫn cần xem một mẫu ảnh phân tầng trước khi đổi threshold.
+
+## Object–region alignment loss
+
+`build_region_targets.py` tạo cache box chuẩn hóa và CLIP text prototype cho các
+nhãn YOLO. Khi train với `--alignment-weight > 0`, mô hình cộng region
+classification loss vào caption loss để căn chỉnh trực tiếp bounding-box patch
+features với object label. Xem [REGION_ALIGNMENT.md](REGION_ALIGNMENT.md).

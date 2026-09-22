@@ -34,6 +34,10 @@ class Config:
     visual_preprocessing: str = 'bilinear'
     visual_precision: str = 'fp32'
     visual_cache: list[str] = field(default_factory=list)
+    region_targets_path: str = ''
+    alignment_weight: float = 0.0
+    alignment_temperature: float = 0.07
+    max_regions: int = 10
 
     def __post_init__(self):
         self.work_dir = Path(self.work_dir)
@@ -51,6 +55,10 @@ class Config:
             raise ValueError('metrics mode requires --predictions and --ground-truth.')
         if self.mode == 'verify-cache' and not self.visual_cache:
             raise ValueError('verify-cache requires --visual-cache.')
+        if self.mode == 'train' and self.alignment_weight > 0 and not self.region_targets_path:
+            raise ValueError('Positive alignment weight requires --region-targets-path.')
+        if self.alignment_weight < 0 or self.alignment_temperature <= 0 or self.max_regions <= 0:
+            raise ValueError('Alignment weight must be nonnegative; temperature/max-regions positive.')
         if self.epochs <= 0 or self.lr <= 0 or self.limit < 0 or self.batch_size <= 0 or self.num_workers < 0:
             raise ValueError('Epochs, learning rate and batch size must be positive; limit/workers nonnegative.')
 

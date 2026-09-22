@@ -31,6 +31,12 @@ def parse_args(argv=None):
     parser.add_argument('--prompt-cache-path', default=defaults.prompt_cache_path)
     parser.add_argument('--work-dir', default=str(defaults.work_dir))
     parser.add_argument('--experiment-name', default=defaults.experiment_name)
+    parser.add_argument('--region-targets-path', default='',
+                        help='Prebuilt normalized YOLO boxes and CLIP label prototypes for region loss.')
+    parser.add_argument('--alignment-weight', type=float, default=0.0,
+                        help='Lambda for object-region classification loss; 0 keeps the baseline unchanged.')
+    parser.add_argument('--alignment-temperature', type=float, default=0.07)
+    parser.add_argument('--max-regions', type=int, default=10)
     return Config(**vars(parser.parse_args(argv)))
 
 def main(argv=None):

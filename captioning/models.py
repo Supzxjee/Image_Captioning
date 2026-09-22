@@ -157,8 +157,10 @@ class ImageCaptioningModel(nn.Module):
         memory_pad_mask = torch.cat([prompt_pad_mask, visual_pad_mask], dim=1)
         return memory, memory_pad_mask
 
-    def forward(self, images, cached_prompt_tokens, prompt_mask, tgt, tgt_key_padding_mask=None):
+    def forward(self, images, cached_prompt_tokens, prompt_mask, tgt, tgt_key_padding_mask=None,
+                return_visual=False):
         memory, memory_pad_mask = self.build_memory(images, cached_prompt_tokens, prompt_mask)
+        vis_features = memory[:, prompt_mask.size(1):]
         batch_size, memory_len, embed_dim = memory.shape
         captions_per_image = tgt.size(0) // batch_size
         if tgt.size(0) != batch_size * captions_per_image:
@@ -169,9 +171,10 @@ class ImageCaptioningModel(nn.Module):
         memory_pad_mask = memory_pad_mask.unsqueeze(1).expand(batch_size, captions_per_image, memory_len)
         memory_pad_mask = memory_pad_mask.reshape(batch_size * captions_per_image, memory_len)
 
-        return self.decoder(
+        logits = self.decoder(
             tgt=tgt,
             memory=memory,
             tgt_key_padding_mask=tgt_key_padding_mask,
             memory_key_padding_mask=memory_pad_mask,
         )
+        return (logits, vis_features) if return_visual else logits

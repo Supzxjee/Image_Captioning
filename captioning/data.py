@@ -28,12 +28,15 @@ def build_image_transform(preprocessing='bilinear'):
 
 
 class CocoPromptDataset(Dataset):
-    def __init__(self, dataframe, transform, caption_tokenizer, prompt_cache, visual_cache=None):
+    def __init__(self, dataframe, transform, caption_tokenizer, prompt_cache, visual_cache=None,
+                 region_targets=None, max_regions=10):
         self.dataframe = dataframe.reset_index(drop=True)
         self.transform = transform
         self.caption_tokenizer = caption_tokenizer
         self.prompt_cache = prompt_cache
         self.visual_cache = visual_cache
+        self.region_targets = region_targets
+        self.max_regions = max_regions
 
     def __len__(self):
         return len(self.dataframe)
@@ -52,13 +55,27 @@ class CocoPromptDataset(Dataset):
             caption_padding_masks.append(mask)
 
         prompt_entry = self.prompt_cache[image_path]
-        return (
+        sample = (
             image,
             torch.stack(caption_ids),
             torch.stack(caption_padding_masks),
             prompt_entry['tokens'].float(),
             prompt_entry['mask'].long(),
         )
+        if self.region_targets is None:
+            return sample
+        target = self.region_targets.get(row['filename'])
+        if target is None:
+            raise KeyError(f'Missing region targets for: {row["filename"]}')
+        boxes = torch.zeros(self.max_regions, 4, dtype=torch.float32)
+        labels = torch.full((self.max_regions,), -1, dtype=torch.long)
+        confidences = torch.zeros(self.max_regions, dtype=torch.float32)
+        count = min(self.max_regions, len(target['labels']))
+        if count:
+            boxes[:count] = torch.as_tensor(target['boxes'][:count], dtype=torch.float32)
+            labels[:count] = torch.as_tensor(target['labels'][:count], dtype=torch.long)
+            confidences[:count] = torch.as_tensor(target['confidences'][:count], dtype=torch.float32)
+        return sample + (boxes, labels, confidences)
 
 def load_data(config):
     ImageFile.LOAD_TRUNCATED_IMAGES = True
@@ -138,14 +155,32 @@ def load_data(config):
                 raise ValueError('Test split is empty.')
             visual_cache.require_ids(test_df[config.visual_cache_id_key], 'full test after train')
         print('Using cached CLIP tokens; projection, attention, gate and decoder remain trainable.', flush=True)
+    region_targets, region_metadata, label_prototypes = None, {}, None
+    if config.mode == 'train' and config.alignment_weight > 0:
+        if not os.path.isfile(config.region_targets_path):
+            raise FileNotFoundError(config.region_targets_path)
+        region_bundle = torch.load(config.region_targets_path, map_location='cpu', weights_only=False)
+        region_targets = region_bundle['data']
+        region_metadata = region_bundle['metadata']
+        label_prototypes = region_bundle['label_prototypes'].float()
+        missing_regions = [item['filename'] for item in train_data if item['filename'] not in region_targets]
+        if missing_regions:
+            raise ValueError(f'Missing {len(missing_regions)} region targets; examples: {missing_regions[:10]}')
+        if label_prototypes.ndim != 2 or label_prototypes.size(1) != 512:
+            raise ValueError(f'Expected label prototypes (classes, 512), got {label_prototypes.shape}')
+        print(f'Region targets: {len(region_targets):,} images | '
+              f'{label_prototypes.size(0)} labels | lambda={config.alignment_weight}', flush=True)
     return SimpleNamespace(prompt_metadata=prompt_embedding_bundle.get('metadata', {}),
                            visual_cache=visual_cache, train_df=train_df, val_df=val_df, test_df=test_df,
                            tokenizer=caption_tokenizer, prompt_cache=prompt_embedding_cache,
-                           transform=image_transform, vocab_size=vocab_size)
+                           transform=image_transform, vocab_size=vocab_size,
+                           region_targets=region_targets, region_metadata=region_metadata,
+                           label_prototypes=label_prototypes)
 
 
 def build_train_loader(config, data):
-    dataset = CocoPromptDataset(data.train_df, data.transform, data.tokenizer, data.prompt_cache, data.visual_cache)
+    dataset = CocoPromptDataset(data.train_df, data.transform, data.tokenizer, data.prompt_cache,
+                                data.visual_cache, data.region_targets, config.max_regions)
     loader = DataLoader(dataset, batch_size=config.batch_size, shuffle=True, drop_last=True,
                         num_workers=config.num_workers, pin_memory=config.device == 'cuda')
     if len(loader) == 0:
