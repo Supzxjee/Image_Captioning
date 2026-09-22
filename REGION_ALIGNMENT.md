@@ -30,7 +30,7 @@ import sys
 from pathlib import Path
 
 REPO = Path('/kaggle/working/Image_Captioning')
-COMMIT = '5c3bcc4'
+COMMIT = 'ee983c1'
 
 DETECTIONS = Path('/kaggle/input/datasets/ducanh2403/objectdetectionecache/objectdetectioncache.json')
 COCO_JSON = Path('/kaggle/input/datasets/vuthetam/mscoco-2014/dataset_coco.json')
