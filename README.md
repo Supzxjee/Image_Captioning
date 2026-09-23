@@ -248,3 +248,6 @@ classification loss vào caption loss để căn chỉnh trực tiếp bounding-
 features với object label. Xem [REGION_ALIGNMENT.md](REGION_ALIGNMENT.md).
 Thí nghiệm giảm lambda xuống 0.02 và chỉ đánh giá validation có cell Kaggle đầy
 đủ tại [REGION_ALIGNMENT_L002.md](REGION_ALIGNMENT_L002.md).
+
+- [Kaggle dual-GPU workflow for region alignment lambda 0.02](REGION_ALIGNMENT_L002_DUAL_GPU.md)
+
