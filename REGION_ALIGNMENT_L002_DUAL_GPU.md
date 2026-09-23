@@ -21,7 +21,7 @@ COCO_JSON = Path('/kaggle/input/datasets/vuthetam/mscoco-2014/dataset_coco.json'
 COCO_IMAGES = Path('/kaggle/input/datasets/vuthetam/mscoco-2014/images')
 PROMPT_CACHE = Path('/kaggle/input/datasets/ducanh2403/prompt-cache/prompt_clip_tokens_cache.pt')
 VISUAL_CACHE = Path('/kaggle/input/datasets/ducanh2403/visual-cache')
-REGION_TARGETS = Path('/kaggle/working/region_targets_yolo.pt')
+REGION_TARGETS = Path('/kaggle/input/datasets/ducanh2403/region-target/region_targets_yolo.pt')
 
 SMOKE = True  # Thành công 20 batch thì đổi thành False để chạy đủ 10 epoch.
 EPOCHS = 1 if SMOKE else 10
@@ -65,31 +65,16 @@ run(['git', 'rev-parse', '--short', 'HEAD'])
 run([sys.executable, '-m', 'pip', 'install', '-q', '-r', 'requirements.txt'])
 
 
-# 3. Tạo region targets đã lọc một lần trước khi khởi chạy hai process.
-if not REGION_TARGETS.exists():
-    run([
-        sys.executable, '-u', 'build_region_targets.py',
-        '--source', DETECTIONS,
-        '--dataset-json-path', COCO_JSON,
-        '--base-path', COCO_IMAGES,
-        '--objects-field', 'objects',
-        '--name-key', 'label',
-        '--bbox-key', 'bbox',
-        '--confidence-key', 'conf',
-        '--min-confidence', '0.5',
-        '--min-area-ratio', '0.001',
-        '--max-area-ratio', '0.9',
-        '--max-regions', '10',
-        '--output', REGION_TARGETS,
-    ])
-else:
-    print('Dùng lại region target cache:', REGION_TARGETS, flush=True)
+# 3. Dùng region targets đã được tạo sẵn và upload thành Kaggle Input.
+# /kaggle/input là read-only, vì vậy không tạo cache mới tại đây.
+assert REGION_TARGETS.is_file(), f'Thiếu region target cache: {REGION_TARGETS}'
+print('Dùng lại region target cache:', REGION_TARGETS, flush=True)
 
-assert REGION_TARGETS.is_file(), f'Không tạo được: {REGION_TARGETS}'
+# File JSON chỉ là metadata tùy chọn; training chỉ bắt buộc file .pt.
 metadata_path = REGION_TARGETS.with_suffix('.json')
 if metadata_path.is_file():
     metadata = json.loads(metadata_path.read_text(encoding='utf-8'))
-    print('\nRegion metadata:', json.dumps(metadata, indent=2), flush=True)
+    print('Region metadata:', json.dumps(metadata, indent=2), flush=True)
     assert metadata['complete'], 'Region target cache chưa hoàn chỉnh.'
     assert metadata['min_confidence'] == 0.5
     assert metadata['min_area_ratio'] == 0.001
@@ -180,4 +165,5 @@ Epoch 1: batch 100/3540 ...
 ```
 
 Trong `nvidia-smi`, cả GPU 0 và GPU 1 phải có process Python và bộ nhớ GPU được sử dụng. Số `3540` vẫn là số bước của một epoch vì Accelerate chia từng batch 32 thành hai nửa, thay vì tăng global batch lên 64.
+
 
