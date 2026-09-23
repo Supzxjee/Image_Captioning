@@ -15,7 +15,7 @@ import sys
 from pathlib import Path
 
 REPO = Path('/kaggle/working/Image_Captioning')
-COMMIT = '51e952e'
+COMMIT = '9e53ef5'
 
 DETECTIONS = Path('/kaggle/input/datasets/ducanh2403/objectdetectionecache/objectdetectioncache.json')
 COCO_JSON = Path('/kaggle/input/datasets/vuthetam/mscoco-2014/dataset_coco.json')
@@ -156,4 +156,5 @@ print('\nRegion targets:', REGION_TARGETS, REGION_TARGETS.stat().st_size / 1e6, 
 Sau smoke, kiểm tra log có dòng `SMOKE MODE: stopping each epoch after 20
 batches.` và ba loss hữu hạn. Khi chạy bản chính thức, đổi duy nhất `SMOKE =
 False`. Không thêm `--test-after-train` vào thí nghiệm chọn lambda.
+
 
