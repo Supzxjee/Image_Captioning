@@ -152,6 +152,8 @@ def train_model(model, train_loader, data, config, accelerator=None):
                           f'{config.max_train_batches} batches.')
     model, optimizer, train_loader = accelerator.prepare(model, optimizer, train_loader)
     base_model = accelerator.unwrap_model(model)
+    if torch.cuda.is_available():
+        torch.cuda.manual_seed(config.seed + accelerator.process_index)
     history = []
     label_prototypes = (data.label_prototypes.to(config.device)
                         if data.label_prototypes is not None else None)

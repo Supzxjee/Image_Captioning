@@ -12,7 +12,9 @@ def run(config):
         from accelerate import Accelerator, DataLoaderConfiguration
         from accelerate.utils import set_seed
         accelerator = Accelerator(dataloader_config=DataLoaderConfiguration(split_batches=True))
-        set_seed(config.seed, device_specific=True)
+        # Keep the sampler seed identical so every rank slices the same global
+        # batch sequence. CUDA dropout is made rank-specific after prepare().
+        set_seed(config.seed, device_specific=False)
         config.device = accelerator.device
         config.is_main_process = accelerator.is_main_process
         accelerator.print(f'Using Accelerate: {accelerator.num_processes} process(es) | '
