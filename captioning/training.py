@@ -61,7 +61,8 @@ def train_one_epoch(model, base_model, loader, optimizer, criterion, epoch, conf
         base_model.encoder.feature_extractor.eval()
     totals = {'loss': 0.0, 'caption_loss': 0.0, 'alignment_loss': 0.0}
 
-    progress = tqdm(loader, desc=f'Epoch {epoch}/{config.epochs}',
+    total_batches = min(len(loader), config.max_train_batches or len(loader))
+    progress = tqdm(loader, total=total_batches, desc=f'Epoch {epoch}/{config.epochs}',
                     disable=not accelerator.is_local_main_process)
     processed_batches = 0
     epoch_started = time.monotonic()
@@ -125,7 +126,6 @@ def train_one_epoch(model, base_model, loader, optimizer, criterion, epoch, conf
                              align=f'{reduced_alignment:.4f}')
         if batch_number == 1 or batch_number % 100 == 0:
             elapsed = time.monotonic() - epoch_started
-            total_batches = min(len(loader), config.max_train_batches or len(loader))
             eta_minutes = max(total_batches - batch_number, 0) * elapsed / batch_number / 60
             accelerator.print(f'Epoch {epoch}: batch {batch_number}/{total_batches} | '
                               f'{elapsed / batch_number:.2f}s/batch | ETA {eta_minutes:.1f}min | '
@@ -165,8 +165,9 @@ def train_model(model, train_loader, data, config, accelerator=None):
         history.append({'epoch': epoch, 'train_loss': losses['loss'],
                         'caption_loss': losses['caption_loss'],
                         'alignment_loss': losses['alignment_loss'], 'train_seconds': elapsed})
+        completed_batches = min(len(train_loader), config.max_train_batches or len(train_loader))
         accelerator.print(f'Epoch training time: {elapsed:.1f}s | '
-                          f'{elapsed / len(train_loader):.3f}s/batch')
+                          f'{elapsed / completed_batches:.3f}s/batch')
 
         checkpoint_path = config.checkpoint_dir / f'model_h1_2_crossattn_epoch_{epoch}.pth'
         accelerator.wait_for_everyone()
@@ -215,4 +216,6 @@ def train_model(model, train_loader, data, config, accelerator=None):
 
     accelerator.wait_for_everyone()
     accelerator.print(f'✅ Training complete. History: {history_path}')
-    return accelerator.is_main_process
+    is_main_process = accelerator.is_main_process
+    accelerator.end_training()
+    return is_main_process

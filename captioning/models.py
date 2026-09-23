@@ -127,7 +127,8 @@ class CaptionDecoder(nn.Module):
 
     @staticmethod
     def causal_mask(size, device):
-        return torch.triu(torch.full((size, size), float('-inf'), device=device), diagonal=1)
+        # Boolean mask matches the boolean padding masks expected by PyTorch.
+        return torch.triu(torch.ones((size, size), dtype=torch.bool, device=device), diagonal=1)
 
     def forward(self, tgt, memory, tgt_key_padding_mask=None, memory_key_padding_mask=None):
         tgt_embeddings = self.pos_encoder(self.embedding(tgt) * math.sqrt(self.d_model))
