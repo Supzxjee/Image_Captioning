@@ -16,7 +16,6 @@ import torch
 REPO = Path('/kaggle/working/Image_Captioning')
 COMMIT = '4613a0f'
 
-DETECTIONS = Path('/kaggle/input/datasets/ducanh2403/objectdetectionecache/objectdetectioncache.json')
 COCO_JSON = Path('/kaggle/input/datasets/vuthetam/mscoco-2014/dataset_coco.json')
 COCO_IMAGES = Path('/kaggle/input/datasets/vuthetam/mscoco-2014/images')
 PROMPT_CACHE = Path('/kaggle/input/datasets/ducanh2403/prompt-cache/prompt_clip_tokens_cache.pt')
@@ -42,7 +41,7 @@ for index in range(torch.cuda.device_count()):
     print(f'GPU {index}:', torch.cuda.get_device_name(index))
 assert torch.cuda.device_count() == 2, 'Notebook phải chọn Accelerator GPU T4 x2.'
 
-for path in (DETECTIONS, COCO_JSON, PROMPT_CACHE):
+for path in (COCO_JSON, PROMPT_CACHE, REGION_TARGETS):
     assert path.is_file(), f'Thiếu Input: {path}'
 assert COCO_IMAGES.is_dir(), f'Sai thư mục ảnh: {COCO_IMAGES}'
 for part in range(1, 4):
@@ -165,5 +164,6 @@ Epoch 1: batch 100/3540 ...
 ```
 
 Trong `nvidia-smi`, cả GPU 0 và GPU 1 phải có process Python và bộ nhớ GPU được sử dụng. Số `3540` vẫn là số bước của một epoch vì Accelerate chia từng batch 32 thành hai nửa, thay vì tăng global batch lên 64.
+
 
 
