@@ -38,6 +38,7 @@ class Config:
     alignment_weight: float = 0.0
     alignment_temperature: float = 0.07
     max_regions: int = 10
+    max_train_batches: int = 0
 
     def __post_init__(self):
         self.work_dir = Path(self.work_dir)
@@ -59,6 +60,8 @@ class Config:
             raise ValueError('Positive alignment weight requires --region-targets-path.')
         if self.alignment_weight < 0 or self.alignment_temperature <= 0 or self.max_regions <= 0:
             raise ValueError('Alignment weight must be nonnegative; temperature/max-regions positive.')
+        if self.max_train_batches < 0:
+            raise ValueError('max-train-batches must be nonnegative.')
         if self.epochs <= 0 or self.lr <= 0 or self.limit < 0 or self.batch_size <= 0 or self.num_workers < 0:
             raise ValueError('Epochs, learning rate and batch size must be positive; limit/workers nonnegative.')
 

@@ -61,7 +61,10 @@ def train_one_epoch(model, loader, optimizer, criterion, epoch, config, label_pr
     totals = {'loss': 0.0, 'caption_loss': 0.0, 'alignment_loss': 0.0}
 
     progress = tqdm(loader, desc=f'Epoch {epoch}/{config.epochs}')
-    for batch in progress:
+    processed_batches = 0
+    for batch_number, batch in enumerate(progress, 1):
+        if config.max_train_batches and batch_number > config.max_train_batches:
+            break
         images, captions, caption_masks, prompt_tokens, prompt_mask = batch[:5]
         images = images.to(config.device, non_blocking=True)
         captions = captions.to(config.device, non_blocking=True)
@@ -106,10 +109,13 @@ def train_one_epoch(model, loader, optimizer, criterion, epoch, config, label_pr
         totals['loss'] += loss.item()
         totals['caption_loss'] += caption_loss.item()
         totals['alignment_loss'] += alignment_loss.item()
+        processed_batches += 1
         progress.set_postfix(loss=f'{loss.item():.4f}', cap=f'{caption_loss.item():.4f}',
                              align=f'{alignment_loss.item():.4f}')
 
-    return {key: value / len(loader) for key, value in totals.items()}
+    if processed_batches == 0:
+        raise ValueError('No training batches were processed.')
+    return {key: value / processed_batches for key, value in totals.items()}
 
 def train_model(model, train_loader, data, config):
     criterion = nn.CrossEntropyLoss(ignore_index=data.tokenizer.pad_idx)
@@ -118,6 +124,8 @@ def train_model(model, train_loader, data, config):
         load_checkpoint(model, config.checkpoint, data.tokenizer, warm_start=True)
         print(f'Warm-started from {config.checkpoint}; fresh optimizer.', flush=True)
     config.checkpoint_dir.mkdir(parents=True, exist_ok=True)
+    if config.max_train_batches:
+        print(f'SMOKE MODE: stopping each epoch after {config.max_train_batches} batches.', flush=True)
     history = []
     label_prototypes = (data.label_prototypes.to(config.device)
                         if data.label_prototypes is not None else None)
@@ -147,6 +155,7 @@ def train_model(model, train_loader, data, config):
             'alignment_temperature': config.alignment_temperature,
             'region_targets_path': config.region_targets_path,
             'region_metadata': data.region_metadata,
+            'max_train_batches': config.max_train_batches,
             'caption_word2idx': data.tokenizer.word2idx,
             'cross_attention': 'query=prompt, key=visual, value=visual',
             'epoch': epoch,

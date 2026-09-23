@@ -37,6 +37,8 @@ def parse_args(argv=None):
                         help='Lambda for object-region classification loss; 0 keeps the baseline unchanged.')
     parser.add_argument('--alignment-temperature', type=float, default=0.07)
     parser.add_argument('--max-regions', type=int, default=10)
+    parser.add_argument('--max-train-batches', type=int, default=0,
+                        help='Smoke-test cap per epoch; 0 uses the full training loader.')
     return Config(**vars(parser.parse_args(argv)))
 
 def main(argv=None):
