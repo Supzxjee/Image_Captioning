@@ -54,21 +54,23 @@ def object_region_loss(visual_features, boxes, labels, confidences, label_protot
     return (losses * weight_tensor).sum() / weight_tensor.sum()
 
 
-def train_one_epoch(model, loader, optimizer, criterion, epoch, config, label_prototypes=None):
+def train_one_epoch(model, base_model, loader, optimizer, criterion, epoch, config,
+                    accelerator, label_prototypes=None):
     model.train()
-    if model.encoder.feature_extractor is not None:
-        model.encoder.feature_extractor.eval()
+    if base_model.encoder.feature_extractor is not None:
+        base_model.encoder.feature_extractor.eval()
     totals = {'loss': 0.0, 'caption_loss': 0.0, 'alignment_loss': 0.0}
 
-    progress = tqdm(loader, desc=f'Epoch {epoch}/{config.epochs}')
+    progress = tqdm(loader, desc=f'Epoch {epoch}/{config.epochs}',
+                    disable=not accelerator.is_local_main_process)
     processed_batches = 0
     epoch_started = time.monotonic()
-    print(f'Epoch {epoch}: waiting for first training batch...', flush=True)
+    accelerator.print(f'Epoch {epoch}: waiting for first training batch...')
     for batch_number, batch in enumerate(progress, 1):
         if config.max_train_batches and batch_number > config.max_train_batches:
             break
         if batch_number == 1:
-            print(f'Epoch {epoch}: first batch loaded; starting GPU forward/backward.', flush=True)
+            accelerator.print(f'Epoch {epoch}: first batch loaded; starting GPU forward/backward.')
         images, captions, caption_masks, prompt_tokens, prompt_mask = batch[:5]
         images = images.to(config.device, non_blocking=True)
         captions = captions.to(config.device, non_blocking=True)
@@ -104,55 +106,70 @@ def train_one_epoch(model, loader, optimizer, criterion, epoch, config, label_pr
                                           for value in region_batch]
             alignment_loss = object_region_loss(
                 visual_features, boxes, labels, confidences, label_prototypes,
-                model.encoder.prompt_projection, config.alignment_temperature)
+                base_model.encoder.prompt_projection, config.alignment_temperature)
         loss = caption_loss + config.alignment_weight * alignment_loss
-        loss.backward()
-        torch.nn.utils.clip_grad_norm_(model.parameters(), max_norm=1.0)
+        accelerator.backward(loss)
+        accelerator.clip_grad_norm_(model.parameters(), max_norm=1.0)
         optimizer.step()
 
-        totals['loss'] += loss.item()
-        totals['caption_loss'] += caption_loss.item()
-        totals['alignment_loss'] += alignment_loss.item()
+        reduced = accelerator.reduce(
+            torch.stack([loss.detach(), caption_loss.detach(), alignment_loss.detach()]),
+            reduction='mean',
+        )
+        reduced_loss, reduced_caption, reduced_alignment = [value.item() for value in reduced]
+        totals['loss'] += reduced_loss
+        totals['caption_loss'] += reduced_caption
+        totals['alignment_loss'] += reduced_alignment
         processed_batches += 1
-        progress.set_postfix(loss=f'{loss.item():.4f}', cap=f'{caption_loss.item():.4f}',
-                             align=f'{alignment_loss.item():.4f}')
+        progress.set_postfix(loss=f'{reduced_loss:.4f}', cap=f'{reduced_caption:.4f}',
+                             align=f'{reduced_alignment:.4f}')
         if batch_number == 1 or batch_number % 100 == 0:
             elapsed = time.monotonic() - epoch_started
             total_batches = min(len(loader), config.max_train_batches or len(loader))
             eta_minutes = max(total_batches - batch_number, 0) * elapsed / batch_number / 60
-            print(f'Epoch {epoch}: batch {batch_number}/{total_batches} | '
-                  f'{elapsed / batch_number:.2f}s/batch | ETA {eta_minutes:.1f}min | '
-                  f'total={loss.item():.4f} caption={caption_loss.item():.4f} '
-                  f'alignment={alignment_loss.item():.4f}', flush=True)
+            accelerator.print(f'Epoch {epoch}: batch {batch_number}/{total_batches} | '
+                              f'{elapsed / batch_number:.2f}s/batch | ETA {eta_minutes:.1f}min | '
+                              f'total={reduced_loss:.4f} caption={reduced_caption:.4f} '
+                              f'alignment={reduced_alignment:.4f}')
 
     if processed_batches == 0:
         raise ValueError('No training batches were processed.')
     return {key: value / processed_batches for key, value in totals.items()}
 
-def train_model(model, train_loader, data, config):
+def train_model(model, train_loader, data, config, accelerator=None):
+    if accelerator is None:
+        from accelerate import Accelerator, DataLoaderConfiguration
+        accelerator = Accelerator(dataloader_config=DataLoaderConfiguration(split_batches=True))
     criterion = nn.CrossEntropyLoss(ignore_index=data.tokenizer.pad_idx)
     optimizer = optim.AdamW((p for p in model.parameters() if p.requires_grad), lr=config.lr)
     if config.checkpoint:
         load_checkpoint(model, config.checkpoint, data.tokenizer, warm_start=True)
-        print(f'Warm-started from {config.checkpoint}; fresh optimizer.', flush=True)
-    config.checkpoint_dir.mkdir(parents=True, exist_ok=True)
+        accelerator.print(f'Warm-started from {config.checkpoint}; fresh optimizer.')
+    if accelerator.is_main_process:
+        config.checkpoint_dir.mkdir(parents=True, exist_ok=True)
     if config.max_train_batches:
-        print(f'SMOKE MODE: stopping each epoch after {config.max_train_batches} batches.', flush=True)
+        accelerator.print(f'SMOKE MODE: stopping each epoch after '
+                          f'{config.max_train_batches} batches.')
+    model, optimizer, train_loader = accelerator.prepare(model, optimizer, train_loader)
+    base_model = accelerator.unwrap_model(model)
     history = []
     label_prototypes = (data.label_prototypes.to(config.device)
                         if data.label_prototypes is not None else None)
     for epoch in range(1, config.epochs + 1):
         started = time.monotonic()
-        losses = train_one_epoch(model, train_loader, optimizer, criterion, epoch, config,
-                                 label_prototypes)
+        losses = train_one_epoch(model, base_model, train_loader, optimizer, criterion, epoch,
+                                 config, accelerator, label_prototypes)
         elapsed = time.monotonic() - started
         history.append({'epoch': epoch, 'train_loss': losses['loss'],
                         'caption_loss': losses['caption_loss'],
                         'alignment_loss': losses['alignment_loss'], 'train_seconds': elapsed})
-        print(f'Epoch training time: {elapsed:.1f}s | {elapsed / len(train_loader):.3f}s/batch', flush=True)
+        accelerator.print(f'Epoch training time: {elapsed:.1f}s | '
+                          f'{elapsed / len(train_loader):.3f}s/batch')
 
         checkpoint_path = config.checkpoint_dir / f'model_h1_2_crossattn_epoch_{epoch}.pth'
-        torch.save({
+        accelerator.wait_for_everyone()
+        if accelerator.is_main_process:
+            torch.save({
             'experiment_name': 'H1.2_gated_prompt_to_visual_cross_attention',
             'gate': 'sigmoid(linear(concat(prompt, attended_visual)))',
             'seed': config.seed,
@@ -179,17 +196,21 @@ def train_model(model, train_loader, data, config):
             'max_prompt_len': MAX_PROMPT_LEN,
             'num_attention_heads': NUM_HEADS,
             'vocab_size': data.vocab_size,
-            'encoder_state_dict': model.encoder.state_dict(),
-            'decoder_state_dict': model.decoder.state_dict(),
+            'encoder_state_dict': base_model.encoder.state_dict(),
+            'decoder_state_dict': base_model.decoder.state_dict(),
             'optimizer_state_dict': optimizer.state_dict(),
-        }, checkpoint_path)
+            }, checkpoint_path)
 
-        print(f'✅ Epoch {epoch}/{config.epochs} | total: {losses["loss"]:.4f} | '
-              f'caption: {losses["caption_loss"]:.4f} | alignment: {losses["alignment_loss"]:.4f}')
-        print(f'💾 Saved: {checkpoint_path}')
+        accelerator.print(f'✅ Epoch {epoch}/{config.epochs} | total: {losses["loss"]:.4f} | '
+                          f'caption: {losses["caption_loss"]:.4f} | '
+                          f'alignment: {losses["alignment_loss"]:.4f}')
+        accelerator.print(f'💾 Saved: {checkpoint_path}')
 
     history_path = config.work_dir / config.experiment_name / 'train_history_h1_2.json'
-    with open(history_path, 'w', encoding='utf-8') as f:
-        json.dump(history, f, indent=2)
+    if accelerator.is_main_process:
+        with open(history_path, 'w', encoding='utf-8') as f:
+            json.dump(history, f, indent=2)
 
-    print(f'✅ Training complete. History: {history_path}')
+    accelerator.wait_for_everyone()
+    accelerator.print(f'✅ Training complete. History: {history_path}')
+    return accelerator.is_main_process

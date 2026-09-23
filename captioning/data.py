@@ -16,6 +16,11 @@ NORMALIZATION_STATS = {
     'std': [0.26862954, 0.26130258, 0.27577711],
 }
 
+
+def _log(config, message):
+    if getattr(config, 'is_main_process', True):
+        print(message, flush=True)
+
 def build_image_transform(preprocessing='bilinear'):
     interpolation = (transforms.InterpolationMode.BICUBIC if preprocessing == 'bicubic'
                      else transforms.InterpolationMode.BILINEAR)
@@ -112,18 +117,18 @@ def load_data(config):
     val_df = pd.DataFrame(val_data)
     test_df = pd.DataFrame(test_data)
 
-    print(f'Train: {len(train_df):,} | Val: {len(val_df):,} | Test: {len(test_df):,}')
+    _log(config, f'Train: {len(train_df):,} | Val: {len(val_df):,} | Test: {len(test_df):,}')
 
 
     all_train_captions = [caption for item in train_data for caption in item['captions']]
     caption_tokenizer = CaptionTokenizer(all_train_captions)
     vocab_size = len(caption_tokenizer.word2idx)
-    print(f'Caption vocabulary: {vocab_size:,}')
+    _log(config, f'Caption vocabulary: {vocab_size:,}')
 
     prompt_embedding_bundle = torch.load(config.prompt_cache_path, map_location='cpu', weights_only=False)
     prompt_embedding_cache = align_prompt_cache(prompt_embedding_bundle['data'],
         [item['image'] for item in train_data + val_data + test_data])
-    print(f'Prompt embedding entries: {len(prompt_embedding_cache):,}')
+    _log(config, f'Prompt embedding entries: {len(prompt_embedding_cache):,}')
     selected_prompts = train_data if config.mode == 'train' else (val_data if config.split == 'val' else test_data)
     if config.mode != 'train' and config.limit:
         selected_prompts = selected_prompts[:config.limit]
@@ -145,7 +150,7 @@ def load_data(config):
     if visual_cache is not None:
         for label, df in [('train', train_df), ('val', val_df), ('test', test_df)]:
             count = sum(int(i) in visual_cache.index for i in df.get(config.visual_cache_id_key, []))
-            print(f'Visual cache coverage {label}: {count}/{len(df)}', flush=True)
+            _log(config, f'Visual cache coverage {label}: {count}/{len(df)}')
         selected = train_df if config.mode == 'train' else (val_df if config.split == 'val' else test_df)
         if config.mode != 'train' and config.limit:
             selected = selected.head(config.limit)
@@ -154,7 +159,7 @@ def load_data(config):
             if len(test_df) == 0:
                 raise ValueError('Test split is empty.')
             visual_cache.require_ids(test_df[config.visual_cache_id_key], 'full test after train')
-        print('Using cached CLIP tokens; projection, attention, gate and decoder remain trainable.', flush=True)
+        _log(config, 'Using cached CLIP tokens; projection, attention, gate and decoder remain trainable.')
     region_targets, region_metadata, label_prototypes = None, {}, None
     if config.mode == 'train' and config.alignment_weight > 0:
         if not os.path.isfile(config.region_targets_path):
@@ -168,8 +173,8 @@ def load_data(config):
             raise ValueError(f'Missing {len(missing_regions)} region targets; examples: {missing_regions[:10]}')
         if label_prototypes.ndim != 2 or label_prototypes.size(1) != 512:
             raise ValueError(f'Expected label prototypes (classes, 512), got {label_prototypes.shape}')
-        print(f'Region targets: {len(region_targets):,} images | '
-              f'{label_prototypes.size(0)} labels | lambda={config.alignment_weight}', flush=True)
+        _log(config, f'Region targets: {len(region_targets):,} images | '
+                     f'{label_prototypes.size(0)} labels | lambda={config.alignment_weight}')
     return SimpleNamespace(prompt_metadata=prompt_embedding_bundle.get('metadata', {}),
                            visual_cache=visual_cache, train_df=train_df, val_df=val_df, test_df=test_df,
                            tokenizer=caption_tokenizer, prompt_cache=prompt_embedding_cache,
@@ -181,11 +186,12 @@ def load_data(config):
 def build_train_loader(config, data):
     dataset = CocoPromptDataset(data.train_df, data.transform, data.tokenizer, data.prompt_cache,
                                 data.visual_cache, data.region_targets, config.max_regions)
+    device_type = getattr(config.device, 'type', config.device)
     loader = DataLoader(dataset, batch_size=config.batch_size, shuffle=True, drop_last=True,
-                        num_workers=config.num_workers, pin_memory=config.device == 'cuda')
+                        num_workers=config.num_workers, pin_memory=device_type == 'cuda')
     if len(loader) == 0:
         raise ValueError('Training split is too small for the batch size with drop_last=True.')
-    print(f'Train batches per epoch: {len(loader):,}')
+    _log(config, f'Train batches per epoch: {len(loader):,}')
     return loader
 
 

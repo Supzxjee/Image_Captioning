@@ -7,21 +7,35 @@ from .data import load_data, build_train_loader
 from .models import UniversalVisionEncoder, CaptionDecoder, ImageCaptioningModel
 
 def run(config):
-    random.seed(config.seed)
-    np.random.seed(config.seed)
-    torch.manual_seed(config.seed)
-    torch.cuda.manual_seed_all(config.seed)
-    config.device = 'cuda' if torch.cuda.is_available() else 'cpu'
-    print(f'Using device: {config.device}', flush=True)
+    accelerator = None
+    if config.mode == 'train':
+        from accelerate import Accelerator, DataLoaderConfiguration
+        from accelerate.utils import set_seed
+        accelerator = Accelerator(dataloader_config=DataLoaderConfiguration(split_batches=True))
+        set_seed(config.seed, device_specific=True)
+        config.device = accelerator.device
+        config.is_main_process = accelerator.is_main_process
+        accelerator.print(f'Using Accelerate: {accelerator.num_processes} process(es) | '
+                          f'global batch size: {config.batch_size} | device: {config.device}')
+    else:
+        random.seed(config.seed)
+        np.random.seed(config.seed)
+        torch.manual_seed(config.seed)
+        torch.cuda.manual_seed_all(config.seed)
+        config.device = 'cuda' if torch.cuda.is_available() else 'cpu'
+        config.is_main_process = True
+        print(f'Using device: {config.device}', flush=True)
     data = load_data(config)
     needs_backbone = (config.mode == 'verify-cache' or not config.visual_cache or
                       (config.mode == 'train' and config.test_after_train and
                        config.test_visual_source == 'images'))
-    print('Initializing encoder: ' + ('loading CLIP vision backbone.' if needs_backbone
-          else 'visual cache active; skipping unused CLIP vision backbone.'), flush=True)
+    if config.is_main_process:
+        print('Initializing encoder: ' + ('loading CLIP vision backbone.' if needs_backbone
+              else 'visual cache active; skipping unused CLIP vision backbone.'), flush=True)
     encoder = UniversalVisionEncoder(visual_precision=config.visual_precision,
                                      load_backbone=needs_backbone).to(config.device)
-    print('Encoder initialized.', flush=True)
+    if config.is_main_process:
+        print('Encoder initialized.', flush=True)
     if config.mode == 'verify-cache':
         from .cache_verification import verify_cache
         try:
@@ -34,8 +48,9 @@ def run(config):
     try:
         if config.mode == 'train':
             from .training import train_model
-            train_model(model, build_train_loader(config, data), data, config)
-            if config.test_after_train:
+            is_main_process = train_model(model, build_train_loader(config, data), data, config,
+                                          accelerator=accelerator)
+            if config.test_after_train and is_main_process:
                 from .evaluation import evaluate_model
                 from copy import copy
                 test_data = copy(data)
