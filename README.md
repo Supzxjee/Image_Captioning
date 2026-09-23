@@ -246,3 +246,5 @@ thường dữ liệu; vẫn cần xem một mẫu ảnh phân tầng trước k
 nhãn YOLO. Khi train với `--alignment-weight > 0`, mô hình cộng region
 classification loss vào caption loss để căn chỉnh trực tiếp bounding-box patch
 features với object label. Xem [REGION_ALIGNMENT.md](REGION_ALIGNMENT.md).
+Thí nghiệm giảm lambda xuống 0.02 và chỉ đánh giá validation có cell Kaggle đầy
+đủ tại [REGION_ALIGNMENT_L002.md](REGION_ALIGNMENT_L002.md).
