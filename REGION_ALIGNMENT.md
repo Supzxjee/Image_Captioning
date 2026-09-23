@@ -30,7 +30,7 @@ import sys
 from pathlib import Path
 
 REPO = Path('/kaggle/working/Image_Captioning')
-COMMIT = 'ee983c1'
+COMMIT = '2258b46'
 
 DETECTIONS = Path('/kaggle/input/datasets/ducanh2403/objectdetectionecache/objectdetectioncache.json')
 COCO_JSON = Path('/kaggle/input/datasets/vuthetam/mscoco-2014/dataset_coco.json')
@@ -146,3 +146,12 @@ chỉ áp dụng cho `L_region`; prompt object+relation đầu vào vẫn giữ 
 Chạy smoke một epoch trước; log phải hiện riêng `caption` và `align`, cả hai hữu
 hạn và giảm hợp lý. So sánh metric với Gate cùng seed, sau đó mới thử lambda 0.05
 hoặc 0.2 trên validation; không chọn lambda bằng test.
+
+## Nếu log dừng ở `Train batches per epoch`
+
+Không dùng commit trước `2258b46` cho full train. Các bản cũ gộp patch theo từng
+bounding box bằng vòng lặp Python, tạo hàng trăm lần đồng bộ GPU mỗi batch và có
+thể làm một epoch kéo dài nhiều giờ. Commit `2258b46` vector hóa mask, pooling và
+nearest-patch cho toàn bộ `(batch, regions, 196 patches)` trong một lượt. Dừng
+kernel cũ, checkout commit này và chạy lại từ đầu; region target `.pt` đã tạo bằng
+ngưỡng giống nhau có thể dùng lại.
