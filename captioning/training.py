@@ -15,31 +15,41 @@ def object_region_loss(visual_features, boxes, labels, confidences, label_protot
     batch, tokens, dim = visual_features.shape
     if tokens != 197:
         raise ValueError(f'Region alignment expects 197 CLIP tokens, got {tokens}.')
-    patches = visual_features[:, 1:].reshape(batch, 14, 14, dim)
+    patches = visual_features[:, 1:].reshape(batch, 196, dim)
     centers = (torch.arange(14, device=visual_features.device, dtype=boxes.dtype) + 0.5) / 14
     yy, xx = torch.meshgrid(centers, centers, indexing='ij')
-    region_vectors, targets, weights = [], [], []
-    for batch_index in range(batch):
-        for region_index in torch.nonzero(labels[batch_index] >= 0, as_tuple=False).flatten().tolist():
-            x1, y1, x2, y2 = boxes[batch_index, region_index]
-            mask = (xx >= x1) & (xx <= x2) & (yy >= y1) & (yy <= y2)
-            if mask.any():
-                vector = patches[batch_index][mask].mean(dim=0)
-            else:
-                center_x, center_y = (x1 + x2) / 2, (y1 + y2) / 2
-                distance = (xx - center_x).square() + (yy - center_y).square()
-                flat_index = distance.argmin()
-                vector = patches[batch_index].reshape(196, dim)[flat_index]
-            region_vectors.append(vector)
-            targets.append(labels[batch_index, region_index])
-            weights.append(confidences[batch_index, region_index].clamp_min(0.05))
-    if not region_vectors:
+    patch_x = xx.reshape(1, 1, 196)
+    patch_y = yy.reshape(1, 1, 196)
+    x1, y1, x2, y2 = boxes.unbind(dim=-1)
+    inside = ((patch_x >= x1.unsqueeze(-1)) & (patch_x <= x2.unsqueeze(-1)) &
+              (patch_y >= y1.unsqueeze(-1)) & (patch_y <= y2.unsqueeze(-1)))
+    valid = labels >= 0
+    inside = inside & valid.unsqueeze(-1)
+
+    # One batched matrix multiplication replaces hundreds of small GPU launches
+    # and Python/GPU synchronizations per batch.
+    counts = inside.sum(dim=-1)
+    pooled = torch.einsum('brp,bpd->brd', inside.to(patches.dtype), patches)
+    pooled = pooled / counts.clamp_min(1).unsqueeze(-1).to(pooled.dtype)
+
+    # Very small boxes can contain no patch center. Select the patch nearest to
+    # the bbox centre for all such regions in one vectorized gather.
+    center_x = ((x1 + x2) / 2).unsqueeze(-1)
+    center_y = ((y1 + y2) / 2).unsqueeze(-1)
+    distances = (patch_x - center_x).square() + (patch_y - center_y).square()
+    nearest_index = distances.argmin(dim=-1)
+    nearest = patches.gather(
+        1, nearest_index.unsqueeze(-1).expand(-1, -1, dim)
+    )
+    pooled = torch.where((counts > 0).unsqueeze(-1), pooled, nearest)
+
+    if not valid.any():
         return visual_features.sum() * 0
-    regions = F.normalize(torch.stack(region_vectors), dim=-1)
+    regions = F.normalize(pooled[valid], dim=-1)
     prototypes = F.normalize(prompt_projection(label_prototypes), dim=-1)
     logits = regions @ prototypes.t() / temperature
-    target_tensor = torch.stack(targets)
-    weight_tensor = torch.stack(weights)
+    target_tensor = labels[valid]
+    weight_tensor = confidences[valid].clamp_min(0.05)
     losses = F.cross_entropy(logits, target_tensor, reduction='none')
     return (losses * weight_tensor).sum() / weight_tensor.sum()
 
