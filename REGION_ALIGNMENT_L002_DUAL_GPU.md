@@ -14,7 +14,7 @@ from pathlib import Path
 import torch
 
 REPO = Path('/kaggle/working/Image_Captioning')
-COMMIT = '4613a0f'
+COMMIT = '3be0030'
 
 COCO_JSON = Path('/kaggle/input/datasets/vuthetam/mscoco-2014/dataset_coco.json')
 COCO_IMAGES = Path('/kaggle/input/datasets/vuthetam/mscoco-2014/images')
@@ -164,6 +164,7 @@ Epoch 1: batch 100/3540 ...
 ```
 
 Trong `nvidia-smi`, cả GPU 0 và GPU 1 phải có process Python và bộ nhớ GPU được sử dụng. Số `3540` vẫn là số bước của một epoch vì Accelerate chia từng batch 32 thành hai nửa, thay vì tăng global batch lên 64.
+
 
 
 
