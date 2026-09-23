@@ -62,9 +62,13 @@ def train_one_epoch(model, loader, optimizer, criterion, epoch, config, label_pr
 
     progress = tqdm(loader, desc=f'Epoch {epoch}/{config.epochs}')
     processed_batches = 0
+    epoch_started = time.monotonic()
+    print(f'Epoch {epoch}: waiting for first training batch...', flush=True)
     for batch_number, batch in enumerate(progress, 1):
         if config.max_train_batches and batch_number > config.max_train_batches:
             break
+        if batch_number == 1:
+            print(f'Epoch {epoch}: first batch loaded; starting GPU forward/backward.', flush=True)
         images, captions, caption_masks, prompt_tokens, prompt_mask = batch[:5]
         images = images.to(config.device, non_blocking=True)
         captions = captions.to(config.device, non_blocking=True)
@@ -112,6 +116,14 @@ def train_one_epoch(model, loader, optimizer, criterion, epoch, config, label_pr
         processed_batches += 1
         progress.set_postfix(loss=f'{loss.item():.4f}', cap=f'{caption_loss.item():.4f}',
                              align=f'{alignment_loss.item():.4f}')
+        if batch_number == 1 or batch_number % 100 == 0:
+            elapsed = time.monotonic() - epoch_started
+            total_batches = min(len(loader), config.max_train_batches or len(loader))
+            eta_minutes = max(total_batches - batch_number, 0) * elapsed / batch_number / 60
+            print(f'Epoch {epoch}: batch {batch_number}/{total_batches} | '
+                  f'{elapsed / batch_number:.2f}s/batch | ETA {eta_minutes:.1f}min | '
+                  f'total={loss.item():.4f} caption={caption_loss.item():.4f} '
+                  f'alignment={alignment_loss.item():.4f}', flush=True)
 
     if processed_batches == 0:
         raise ValueError('No training batches were processed.')
