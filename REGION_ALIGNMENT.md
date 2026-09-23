@@ -30,7 +30,7 @@ import sys
 from pathlib import Path
 
 REPO = Path('/kaggle/working/Image_Captioning')
-COMMIT = '2258b46'
+COMMIT = '51e952e'
 
 DETECTIONS = Path('/kaggle/input/datasets/ducanh2403/objectdetectionecache/objectdetectioncache.json')
 COCO_JSON = Path('/kaggle/input/datasets/vuthetam/mscoco-2014/dataset_coco.json')
@@ -112,7 +112,9 @@ command = [
     '--max-regions', '10',
     '--experiment-name', EXPERIMENT,
 ]
-if not SMOKE:
+if SMOKE:
+    command += ['--max-train-batches', '20']
+else:
     command.append('--test-after-train')
 run(command)
 
@@ -154,4 +156,5 @@ bounding box bằng vòng lặp Python, tạo hàng trăm lần đồng bộ GPU
 thể làm một epoch kéo dài nhiều giờ. Commit `2258b46` vector hóa mask, pooling và
 nearest-patch cho toàn bộ `(batch, regions, 196 patches)` trong một lượt. Dừng
 kernel cũ, checkout commit này và chạy lại từ đầu; region target `.pt` đã tạo bằng
-ngưỡng giống nhau có thể dùng lại.
+ngưỡng giống nhau có thể dùng lại. Workflow ghim commit `51e952e`, đồng thời
+giới hạn smoke test ở 20 batch; `SMOKE=False` luôn dùng đủ 3.540 batch mỗi epoch.
