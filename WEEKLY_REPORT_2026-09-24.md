@@ -147,6 +147,7 @@ hình cũ được ghi theo kết quả đã lưu trước đó.
 | Gate + Region Alignment λ=0.10 | 0.7604 | 0.3584 | 0.2790 | 0.5642 | 1.1532 | khoảng 5 giờ 14 phút |
 | Gate + Region Alignment λ=0.02 | 0.7641 | 0.3624 | 0.2834 | 0.5687 | 1.1705 | dùng dual GPU |
 | Lightweight Q-Former, 32 queries, 2 layers | **0.7674** | **0.3707** | **0.2850** | **0.5731** | **1.1882** | dùng dual GPU |
+| Q-Former + OCC re-ranking 0.1 | 0.7676 | 0.3705 | 0.2850 | 0.5731 | 1.1882 | không train lại |
 
 Kết luận từ test:
 
@@ -208,7 +209,9 @@ khả năng tạo caption dài và chính xác hơn.
    giữ Q-Former không ITC làm candidate hiện tại.
 8. Các chênh lệch hiện tại mới có một seed, chưa phải bằng chứng về ý nghĩa thống kê.
 9. OCC weight 0.1 chỉ tăng validation CIDEr khoảng 0.0005 và làm giảm nhẹ BLEU;
-   cần kết quả test cố định trước khi quyết định giữ hay loại.
+   trên test chỉ tăng BLEU-1, còn sáu metric khác giảm nhẹ nên không được giữ.
+10. OCC thay 34/5.000 test captions; checker nghi ngờ 582/6.905 object mentions.
+    Đây chưa phải CHAIR và chưa chứng minh hallucination giảm so với baseline.
 
 ## 6. Các vấn đề đã xử lý
 
@@ -227,8 +230,8 @@ khả năng tạo caption dài và chính xác hơn.
 
 ## 7. Công việc tiếp theo
 
-1. Đánh giá OCC re-ranking với weight 0.1 đã cố định trên test.
-2. Báo cáo thêm hallucination/CHAIR nếu dữ liệu annotation đáp ứng.
+1. Tính thống kê object hallucination cho caption rank 0 để đối chiếu OCC công bằng.
+2. Báo cáo thêm CHAIR nếu dữ liệu annotation đáp ứng.
 3. Chạy thêm seed cho Gate và Q-Former trước khi
    khẳng định đóng góp cuối cùng.
 

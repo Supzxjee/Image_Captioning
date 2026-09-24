@@ -201,3 +201,19 @@ Output cần giữ trong `/kaggle/working/qformer_occ_test_w010/`:
 So sánh với Q-Former gốc trên test: BLEU-1 `0.7674`, BLEU-4 `0.3707`, METEOR
 `0.2850`, ROUGE-L `0.5731`, CIDEr `1.1882`. Không thay đổi weight sau khi xem
 kết quả test.
+
+## Kết quả test
+
+OCC weight 0.1 thay 34/5.000 caption (`0,68%`). Trong caption được chọn, checker
+nhận diện 6.905 object mentions, gồm 6.323 mentions được YOLO hỗ trợ và 582 mentions
+bị nghi ngờ (`8,43%`). Đây là thống kê của caption sau re-ranking, chưa phải mức
+giảm hallucination so với baseline.
+
+| Mô hình | BLEU-1 | BLEU-2 | BLEU-3 | BLEU-4 | METEOR | ROUGE-L | CIDEr |
+|---|---:|---:|---:|---:|---:|---:|---:|
+| Q-Former | 0.767393 | **0.608733** | **0.474553** | **0.370666** | **0.285039** | **0.573118** | **1.188245** |
+| Q-Former + OCC 0.1 | **0.767640** | 0.608697 | 0.474413 | 0.370463 | 0.285013 | 0.573103 | 1.188175 |
+
+OCC chỉ tăng BLEU-1 `0.000247`; sáu metric còn lại đều giảm nhẹ, trong đó CIDEr
+giảm `0.000070`. Vì vậy OCC không được giữ trong mô hình cuối và được báo cáo như
+một ablation âm. Q-Former không ITC, không OCC vẫn là mô hình tốt nhất.

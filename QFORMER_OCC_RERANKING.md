@@ -351,3 +351,14 @@ So sánh kết quả test cố định này với Q-Former gốc: BLEU-1 `0.7674
 `0.3707`, METEOR `0.2850`, ROUGE-L `0.5731`, CIDEr `1.1882`. Kết luận OCC dựa
 trên toàn bộ metric và số hallucinated mentions, không thay đổi trọng số sau khi
 nhìn test.
+
+## Kết luận sau test
+
+Với weight 0.1 cố định, OCC thay 34/5.000 caption. BLEU-1 tăng `0.000247`, nhưng
+BLEU-2/3/4, METEOR, ROUGE-L và CIDEr đều giảm nhẹ; CIDEr giảm `0.000070`. Do đó
+OCC được giữ như ablation âm và không đưa vào mô hình cuối. Mô hình được chọn vẫn
+là Q-Former không ITC, không OCC.
+
+Checker báo 582/6.905 object mentions (`8,43%`) là không được YOLO hỗ trợ trong
+caption sau re-ranking. Con số này không tự chứng minh OCC làm giảm hallucination,
+vì cần tính cùng thống kê cho caption rank 0 hoặc dùng CHAIR với annotation chuẩn.
