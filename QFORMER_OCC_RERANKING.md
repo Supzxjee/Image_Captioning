@@ -249,3 +249,101 @@ print('Summary:', summary_path)
 OCC chỉ đánh giá 80 lớp COCO. Nó không xác minh thuộc tính hoặc quan hệ, có thể
 phạt nhầm khi YOLO bỏ sót object, và từ `orange` có thể là màu thay vì vật thể. Vì
 vậy kết quả phải được trình bày như một heuristic re-ranking ablation.
+
+## Kết quả validation
+
+Đối chứng `weight=0` đã khớp Q-Former validation. Trọng số được chọn theo CIDEr là
+`0.1`:
+
+| Mô hình | BLEU-1 | BLEU-2 | BLEU-3 | BLEU-4 | METEOR | ROUGE-L | CIDEr |
+|---|---:|---:|---:|---:|---:|---:|---:|
+| Q-Former, weight=0 | **0.7672** | **0.6089** | **0.4744** | **0.3703** | **0.2830** | 0.5712 | 1.1740 |
+| Q-Former + OCC, weight=0.1 | 0.7669 | 0.6086 | 0.4743 | 0.3701 | 0.2830 | **0.5712** | **1.1745** |
+
+CIDEr tăng `0.00048`; BLEU-1/2/3/4 và METEOR giảm nhẹ, ROUGE-L gần như không
+đổi. OCC thay caption của 36/5.000 ảnh (`0,72%`). Số ảnh bị thay theo trọng số:
+
+| Weight | 0 | 0.05 | 0.1 | 0.2 | 0.3 | 0.4 |
+|---:|---:|---:|---:|---:|---:|---:|
+| Ảnh bị thay | 0 | 16 | 36 | 90 | 142 | 213 |
+
+Đây là cải thiện rất nhỏ và trái chiều, nên chỉ đủ điều kiện chạy test như một
+ablation đã chốt trước; chưa phải bằng chứng OCC giúp mô hình rõ rệt.
+
+## Cell tiếp theo: cố định weight=0.1 và đánh giá test
+
+Chạy cell này ngay sau cell validation ở trên. Nó dùng lại `CHECKPOINT`, `run` và
+các đường dẫn Input đã được xác minh. Không thử thêm trọng số trên test.
+
+```python
+FIXED_WEIGHT = 0.1
+TEST_EXPERIMENT = 'qformer_occ_test_w010'
+
+# 1. Sinh cùng 5 beam candidates trên test split.
+test_common = [
+    '--checkpoint', CHECKPOINT,
+    '--split', 'test',
+    '--limit', '0',
+    '--dataset-json-path', COCO_JSON,
+    '--base-path', COCO_IMAGES,
+    '--prompt-cache-path', PROMPT_CACHE,
+    '--visual-cache', VISUAL_CACHE,
+    '--visual-cache-id-key', 'coco_id',
+    '--visual-preprocessing', 'bilinear',
+    '--visual-precision', 'fp32',
+    '--visual-adapter', 'qformer',
+    '--num-visual-queries', '32',
+    '--qformer-layers', '2',
+    '--experiment-name', TEST_EXPERIMENT,
+]
+run([
+    sys.executable, '-u', 'train_h1_2_gated.py',
+    '--mode', 'candidates',
+    '--candidate-count', '5',
+] + test_common)
+
+
+# 2. Áp dụng đúng weight=0.1 đã chọn trên validation.
+test_dir = Path('/kaggle/working') / TEST_EXPERIMENT
+test_candidates = test_dir / 'evaluation/test_5000_beam5_candidates.json'
+test_ground_truth = test_dir / 'evaluation/test_5000_gt_candidates.json'
+test_rerank_dir = test_dir / 'reranking'
+assert test_candidates.is_file(), test_candidates
+assert test_ground_truth.is_file(), test_ground_truth
+
+run([
+    sys.executable, '-u', 'rerank_candidates.py',
+    '--candidates', test_candidates,
+    '--ground-truth', test_ground_truth,
+    '--detections', DETECTIONS,
+    '--output-dir', test_rerank_dir,
+    '--weight', FIXED_WEIGHT,
+    '--min-confidence', '0.5',
+    '--hallucination-penalty', '1.0',
+    '--objects-field', 'objects',
+    '--name-key', 'label',
+    '--confidence-key', 'conf',
+])
+
+
+# 3. In kết quả test cuối cùng; tuyệt đối không đổi weight theo kết quả này.
+test_summary_path = test_rerank_dir / 'test_occ_summary.json'
+test_summary = json.loads(test_summary_path.read_text(encoding='utf-8'))
+assert test_summary['mode'] == 'apply'
+assert abs(test_summary['best_weight'] - FIXED_WEIGHT) < 1e-12
+fixed = test_summary['results'][0]
+
+print('\nFixed OCC test weight:', fixed['weight'])
+print('Changed test images:', fixed['changed_images'])
+print('Recognized mentions:', fixed['recognized_mentions'])
+print('Supported mentions:', fixed['supported_mentions'])
+print('Hallucinated mentions:', fixed['hallucinated_mentions'])
+print('TEST metrics:')
+print(json.dumps(fixed['metrics'], indent=2))
+print('Summary:', test_summary_path)
+```
+
+So sánh kết quả test cố định này với Q-Former gốc: BLEU-1 `0.7674`, BLEU-4
+`0.3707`, METEOR `0.2850`, ROUGE-L `0.5731`, CIDEr `1.1882`. Kết luận OCC dựa
+trên toàn bộ metric và số hallucinated mentions, không thay đổi trọng số sau khi
+nhìn test.

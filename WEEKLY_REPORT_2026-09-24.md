@@ -120,6 +120,18 @@ nhất; các mẫu còn lại trong global batch 32 là negative. Loss tổng l�
 góp của căn chỉnh ảnh–caption. Caption embedding được cache thành HDF5 để không
 chạy lại CLIP Text Encoder trong từng batch.
 
+### 2.6. Sinh nhiều ứng viên và Object Consistency re-ranking
+
+Đã mở rộng beam search để lưu tối đa 5 caption ứng viên thay vì bỏ bốn beam còn
+lại. Object Consistency Checker chuẩn hóa tên object COCO trong caption, đối chiếu
+với YOLO detection có confidence từ 0.5 và re-rank bằng tổng hợp language score với
+object score. Trọng số được chọn trên validation theo CIDEr; `weight=0` tái tạo đúng
+metric Q-Former gốc.
+
+Validation chọn `weight=0.1`: CIDEr tăng từ 1.1740 lên 1.1745, nhưng BLEU-1/2/3/4
+giảm nhẹ và chỉ 36/5.000 ảnh bị thay. Đây là tín hiệu yếu; weight 0.1 được cố định
+để chạy test một lần như ablation, không tiếp tục dò trọng số trên test.
+
 ## 3. Kết quả trên test split 5.000 ảnh
 
 Các mô hình trong bảng này đều được đánh giá trên test split. Các giá trị của mô
@@ -195,6 +207,8 @@ khả năng tạo caption dài và chính xác hơn.
 7. ITC α=0.1 chỉ tăng BLEU-1/2/3 nhưng làm giảm BLEU-4, METEOR, ROUGE-L và CIDEr;
    giữ Q-Former không ITC làm candidate hiện tại.
 8. Các chênh lệch hiện tại mới có một seed, chưa phải bằng chứng về ý nghĩa thống kê.
+9. OCC weight 0.1 chỉ tăng validation CIDEr khoảng 0.0005 và làm giảm nhẹ BLEU;
+   cần kết quả test cố định trước khi quyết định giữ hay loại.
 
 ## 6. Các vấn đề đã xử lý
 
@@ -213,11 +227,9 @@ khả năng tạo caption dài và chính xác hơn.
 
 ## 7. Công việc tiếp theo
 
-1. Dùng Q-Former không ITC làm backbone để sinh nhiều caption ứng viên.
-2. Xây dựng Object Consistency Checker đối chiếu object trong caption với YOLO cache.
-3. Re-rank ứng viên bằng điểm ngôn ngữ, điểm nhất quán object và độ dài.
-4. Báo cáo thêm hallucination/CHAIR nếu dữ liệu annotation đáp ứng.
-5. Chạy thêm seed cho Gate và Q-Former trước khi
+1. Đánh giá OCC re-ranking với weight 0.1 đã cố định trên test.
+2. Báo cáo thêm hallucination/CHAIR nếu dữ liệu annotation đáp ứng.
+3. Chạy thêm seed cho Gate và Q-Former trước khi
    khẳng định đóng góp cuối cùng.
 
 ## 8. Tệp và hướng dẫn liên quan
@@ -227,6 +239,7 @@ khả năng tạo caption dài và chính xác hơn.
 - [EVALUATE_L002_TEST.md](EVALUATE_L002_TEST.md): workflow test λ=0.02.
 - [QFORMER_EXPERIMENT.md](QFORMER_EXPERIMENT.md): cơ chế, code Kaggle và kết quả Q-Former.
 - [QFORMER_ITC_EXPERIMENT.md](QFORMER_ITC_EXPERIMENT.md): cơ chế, code Kaggle và kết quả ITC.
+- [QFORMER_OCC_RERANKING.md](QFORMER_OCC_RERANKING.md): sinh candidates, OCC và re-ranking.
 - [REGION_ALIGNMENT_L002_DUAL_GPU.md](REGION_ALIGNMENT_L002_DUAL_GPU.md): workflow Accelerate hai GPU.
 
 ## 9. Artifact cần lưu
