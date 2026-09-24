@@ -81,8 +81,16 @@ for part in range(1, 4):
     assert shard.is_file(), f'Thiếu visual cache: {shard}'
 
 
-# 2. Tìm và xác minh đúng checkpoint Q-Former baseline.
-candidates = sorted(Path('/kaggle/input').rglob(CHECKPOINT_NAME))
+# 2. Tìm và xác minh đúng checkpoint Q-Former baseline. Kaggle có thể giữ file
+# .pth hoặc bung nó thành thư mục không còn phần mở rộng.
+input_root = Path('/kaggle/input')
+expected_names = {CHECKPOINT_NAME, Path(CHECKPOINT_NAME).stem}
+candidates = set(input_root.rglob(CHECKPOINT_NAME))
+for data_pickle in input_root.rglob('data.pkl'):
+    archive_root = data_pickle.parent
+    if archive_root.name in expected_names:
+        candidates.add(archive_root)
+candidates = sorted(candidates, key=str)
 print('\nCheckpoint candidates:')
 for candidate in candidates:
     print(' -', candidate, '| file=', candidate.is_file(), '| dir=', candidate.is_dir())
