@@ -251,3 +251,6 @@ Thí nghiệm giảm lambda xuống 0.02 và chỉ đánh giá validation có ce
 
 - [Kaggle dual-GPU workflow for region alignment lambda 0.02](REGION_ALIGNMENT_L002_DUAL_GPU.md)
 
+
+Đánh giá checkpoint region alignment lambda 0.02 đã chốt trên test 5.000 ảnh: [EVALUATE_L002_TEST.md](EVALUATE_L002_TEST.md).
+
