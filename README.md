@@ -254,3 +254,6 @@ Thí nghiệm giảm lambda xuống 0.02 và chỉ đánh giá validation có ce
 
 Đánh giá checkpoint region alignment lambda 0.02 đã chốt trên test 5.000 ảnh: [EVALUATE_L002_TEST.md](EVALUATE_L002_TEST.md).
 
+
+Kết quả và kết luận ablation object-region alignment: [REGION_ALIGNMENT_RESULTS.md](REGION_ALIGNMENT_RESULTS.md).
+
