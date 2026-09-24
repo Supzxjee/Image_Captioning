@@ -257,3 +257,6 @@ Thí nghiệm giảm lambda xuống 0.02 và chỉ đánh giá validation có ce
 
 Kết quả và kết luận ablation object-region alignment: [REGION_ALIGNMENT_RESULTS.md](REGION_ALIGNMENT_RESULTS.md).
 
+
+Lightweight Q-Former ablation và cell Kaggle dual-GPU: [QFORMER_EXPERIMENT.md](QFORMER_EXPERIMENT.md).
+
