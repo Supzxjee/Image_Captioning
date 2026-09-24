@@ -34,6 +34,13 @@ class TestWorkflowTests(unittest.TestCase):
             Config(mode='predict', test_after_train=True)
         with self.assertRaises(ValueError):
             Config(mode='metrics')
+        qformer = parse_args(['--visual-adapter', 'qformer', '--num-visual-queries', '16',
+                              '--qformer-layers', '3'])
+        self.assertEqual((qformer.visual_adapter, qformer.num_visual_queries,
+                          qformer.qformer_layers), ('qformer', 16, 3))
+        with self.assertRaises(ValueError):
+            Config(visual_adapter='qformer', alignment_weight=0.02,
+                   region_targets_path='regions.pt')
 
     def test_metrics_cli_does_not_load_pipeline(self):
         with patch('captioning.metrics.score_files') as score:

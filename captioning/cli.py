@@ -39,6 +39,10 @@ def parse_args(argv=None):
     parser.add_argument('--max-regions', type=int, default=10)
     parser.add_argument('--max-train-batches', type=int, default=0,
                         help='Smoke-test cap per epoch; 0 uses the full training loader.')
+    parser.add_argument('--visual-adapter', choices=['direct', 'qformer'], default='direct',
+                        help='direct keeps 197 CLIP tokens; qformer learns a compact visual memory.')
+    parser.add_argument('--num-visual-queries', type=int, default=32)
+    parser.add_argument('--qformer-layers', type=int, default=2)
     return Config(**vars(parser.parse_args(argv)))
 
 def main(argv=None):

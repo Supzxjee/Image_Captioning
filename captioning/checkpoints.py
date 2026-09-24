@@ -5,6 +5,18 @@ def load_checkpoint(model, path, tokenizer, warm_start=False):
     checkpoint = torch.load(path, map_location='cpu', weights_only=False)
     if checkpoint.get('caption_word2idx', tokenizer.word2idx) != tokenizer.word2idx:
         raise RuntimeError('Checkpoint caption vocabulary differs from current dataset.')
+    checkpoint_adapter = checkpoint.get('visual_adapter', 'direct')
+    model_adapter = getattr(model.encoder, 'visual_adapter', 'direct')
+    if checkpoint_adapter != model_adapter:
+        raise RuntimeError(f'Checkpoint visual adapter is {checkpoint_adapter!r}, but model '
+                           f'was created with {model_adapter!r}.')
+    if checkpoint_adapter == 'qformer':
+        expected = (getattr(model.encoder, 'num_visual_queries', None),
+                    getattr(model.encoder, 'qformer_layers', None))
+        saved = (checkpoint.get('num_visual_queries'), checkpoint.get('qformer_layers'))
+        if saved != expected:
+            raise RuntimeError(f'Q-Former checkpoint configuration {saved} differs from model '
+                               f'configuration {expected}.')
     encoder_state = checkpoint['encoder_state_dict']
     if model.encoder.feature_extractor is None:
         # Older cached-feature checkpoints unnecessarily stored the frozen CLIP

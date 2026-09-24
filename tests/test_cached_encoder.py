@@ -82,6 +82,22 @@ class CachedEncoderTests(unittest.TestCase):
         with self.assertRaisesRegex(RuntimeError, 'backbone was not loaded'):
             encoder.extract_visual_features(torch.zeros(1, 3, 224, 224))
 
+    def test_qformer_compresses_visual_memory_and_keeps_gradients(self):
+        encoder = self.models.UniversalVisionEncoder(
+            embed_dim=32,
+            num_heads=4,
+            load_backbone=False,
+            visual_adapter='qformer',
+            num_visual_queries=8,
+            qformer_layers=2,
+        )
+        visual, prompt = encoder(self.cached, self.prompt, self.mask)
+        self.assertEqual(visual.shape, (2, 8, 32))
+        self.assertEqual(prompt.shape, (2, 20, 32))
+        (visual[..., 0].sum() + prompt[..., 0].sum()).backward()
+        self.assertIsNotNone(encoder.qformer.query_tokens.grad)
+        self.assertGreater(encoder.qformer.query_tokens.grad.abs().sum().item(), 0)
+
 
 if __name__ == '__main__':
     unittest.main()

@@ -6,9 +6,56 @@ import torch.nn as nn
 from transformers import CLIPModel
 from .config import EMBED_DIM, NUM_HEADS
 
+
+class VisualQueryLayer(nn.Module):
+    """Self-attend queries, retrieve visual evidence, then refine with an FFN."""
+    def __init__(self, embed_dim, num_heads, dropout=0.1):
+        super().__init__()
+        self.self_attn = nn.MultiheadAttention(
+            embed_dim, num_heads, dropout=dropout, batch_first=True)
+        self.cross_attn = nn.MultiheadAttention(
+            embed_dim, num_heads, dropout=dropout, batch_first=True)
+        self.self_norm = nn.LayerNorm(embed_dim)
+        self.cross_norm = nn.LayerNorm(embed_dim)
+        self.ffn_norm = nn.LayerNorm(embed_dim)
+        self.dropout = nn.Dropout(dropout)
+        self.ffn = nn.Sequential(
+            nn.Linear(embed_dim, embed_dim * 4),
+            nn.GELU(),
+            nn.Dropout(dropout),
+            nn.Linear(embed_dim * 4, embed_dim),
+        )
+
+    def forward(self, queries, visual_tokens):
+        update, _ = self.self_attn(queries, queries, queries, need_weights=False)
+        queries = self.self_norm(queries + self.dropout(update))
+        update, _ = self.cross_attn(
+            query=queries, key=visual_tokens, value=visual_tokens, need_weights=False)
+        queries = self.cross_norm(queries + self.dropout(update))
+        return self.ffn_norm(queries + self.dropout(self.ffn(queries)))
+
+
+class LightweightQFormer(nn.Module):
+    """Trainable visual queries inspired by BLIP-2 Q-Former, trained from scratch."""
+    def __init__(self, embed_dim, num_heads, num_queries=32, num_layers=2, dropout=0.1):
+        super().__init__()
+        self.query_tokens = nn.Parameter(torch.empty(1, num_queries, embed_dim))
+        nn.init.normal_(self.query_tokens, mean=0.0, std=0.02)
+        self.layers = nn.ModuleList([
+            VisualQueryLayer(embed_dim, num_heads, dropout) for _ in range(num_layers)
+        ])
+
+    def forward(self, visual_tokens):
+        queries = self.query_tokens.expand(visual_tokens.size(0), -1, -1)
+        for layer in self.layers:
+            queries = layer(queries, visual_tokens)
+        return queries
+
+
 class UniversalVisionEncoder(nn.Module):
     def __init__(self, model_name='clip', embed_dim=EMBED_DIM, num_heads=NUM_HEADS,
-                 attn_dropout=0.1, visual_precision='fp32', load_backbone=True):
+                 attn_dropout=0.1, visual_precision='fp32', load_backbone=True,
+                 visual_adapter='direct', num_visual_queries=32, qformer_layers=2):
         super().__init__()
         if model_name.lower() != 'clip':
             raise NotImplementedError('Only CLIP is supported in this notebook.')
@@ -21,7 +68,17 @@ class UniversalVisionEncoder(nn.Module):
                 parameter.requires_grad = False
 
         self.visual_precision = visual_precision
+        self.visual_adapter = visual_adapter
+        self.num_visual_queries = num_visual_queries
+        self.qformer_layers = qformer_layers
         self.vis_projection = nn.Linear(768, embed_dim)
+        self.qformer = (LightweightQFormer(
+            embed_dim=embed_dim,
+            num_heads=num_heads,
+            num_queries=num_visual_queries,
+            num_layers=qformer_layers,
+            dropout=attn_dropout,
+        ) if visual_adapter == 'qformer' else None)
         self.prompt_projection = nn.Sequential(
             nn.Linear(512, embed_dim),
             nn.LayerNorm(embed_dim),
@@ -72,12 +129,13 @@ class UniversalVisionEncoder(nn.Module):
             raise ValueError('Expected image pixels (B, C, H, W) or cached tokens (B, 197, 768).')
 
         vis_features = self.dropout(self.relu(self.vis_projection(visual_features)))
+        visual_memory = self.qformer(vis_features) if self.qformer is not None else vis_features
         prompt_features = self.prompt_projection(cached_prompt_tokens)
 
         attended_prompt, _ = self.prompt_to_visual_attn(
             query=prompt_features,
-            key=vis_features,
-            value=vis_features,
+            key=visual_memory,
+            value=visual_memory,
             need_weights=False,
         )
 
@@ -94,7 +152,7 @@ class UniversalVisionEncoder(nn.Module):
             0.0,
         )
 
-        return vis_features, grounded_prompt_features
+        return visual_memory, grounded_prompt_features
 
 class PositionalEncoding(nn.Module):
     def __init__(self, d_model=EMBED_DIM, max_len=100):

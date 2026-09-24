@@ -34,10 +34,18 @@ def run(config):
     if config.is_main_process:
         print('Initializing encoder: ' + ('loading CLIP vision backbone.' if needs_backbone
               else 'visual cache active; skipping unused CLIP vision backbone.'), flush=True)
-    encoder = UniversalVisionEncoder(visual_precision=config.visual_precision,
-                                     load_backbone=needs_backbone).to(config.device)
+    encoder = UniversalVisionEncoder(
+        visual_precision=config.visual_precision,
+        load_backbone=needs_backbone,
+        visual_adapter=config.visual_adapter,
+        num_visual_queries=config.num_visual_queries,
+        qformer_layers=config.qformer_layers,
+    ).to(config.device)
     if config.is_main_process:
         print('Encoder initialized.', flush=True)
+        if config.visual_adapter == 'qformer':
+            print(f'Q-Former active: 197 CLIP tokens -> {config.num_visual_queries} learnable '
+                  f'visual queries | {config.qformer_layers} layers.', flush=True)
     if config.mode == 'verify-cache':
         from .cache_verification import verify_cache
         try:

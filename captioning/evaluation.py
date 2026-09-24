@@ -14,7 +14,9 @@ def evaluate_model(model, data, config):
         raise FileNotFoundError(path)
     checkpoint = load_checkpoint(model, path, data.tokenizer)
     model.eval()
-    print(f"Loaded H1.2-G checkpoint: epoch {checkpoint['epoch']} | loss {checkpoint['loss']:.4f}", flush=True)
+    adapter = checkpoint.get('visual_adapter', 'direct')
+    print(f"Loaded checkpoint: epoch {checkpoint['epoch']} | loss {checkpoint['loss']:.4f} | "
+          f"visual adapter {adapter}", flush=True)
     config.eval_dir.mkdir(parents=True, exist_ok=True)
     eval_df = data.val_df if config.split == 'val' else data.test_df
     if config.limit:
