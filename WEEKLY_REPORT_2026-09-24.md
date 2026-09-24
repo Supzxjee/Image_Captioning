@@ -130,14 +130,18 @@ hình cũ được ghi theo kết quả đã lưu trước đó.
 | Không Prompt | 0.7320 | 0.3250 | 0.2640 | 0.5530 | 1.0970 | 3 giờ 30 phút |
 | Chỉ có prompt | 0.7650 | 0.3650 | 0.2860 | 0.5690 | 1.1720 | 8 giờ 30 phút |
 | Cross-Attention Prompt–Ảnh | 0.7660 | 0.3640 | 0.2810 | 0.5680 | 1.1690 | 7 giờ 16 phút |
-| Cross-Attention có Gate | **0.7660** | **0.3660** | 0.2830 | **0.5710** | **1.1820** | khoảng 5 giờ |
+| Cross-Attention có Gate | 0.7660 | 0.3660 | 0.2830 | 0.5710 | 1.1820 | khoảng 5 giờ |
 | Chỉ có object label | 0.7620 | 0.3640 | 0.2820 | 0.5690 | 1.1590 | 5 giờ 30 phút |
 | Gate + Region Alignment λ=0.10 | 0.7604 | 0.3584 | 0.2790 | 0.5642 | 1.1532 | khoảng 5 giờ 14 phút |
-| Gate + Region Alignment λ=0.02 | 0.7641 | 0.3624 | **0.2834** | 0.5687 | 1.1705 | dùng dual GPU |
+| Gate + Region Alignment λ=0.02 | 0.7641 | 0.3624 | 0.2834 | 0.5687 | 1.1705 | dùng dual GPU |
+| Lightweight Q-Former, 32 queries, 2 layers | **0.7674** | **0.3707** | **0.2850** | **0.5731** | **1.1882** | dùng dual GPU |
 
 Kết luận từ test:
 
-- Gate hiện vẫn là mô hình có CIDEr, BLEU-4 và ROUGE-L tốt nhất.
+- Q-Former không ITC hiện là mô hình tốt nhất ở BLEU-1, BLEU-4, METEOR,
+  ROUGE-L và CIDEr.
+- So với Gate, Q-Former tăng khoảng 0.0014 BLEU-1, 0.0047 BLEU-4, 0.0020
+  METEOR, 0.0021 ROUGE-L và 0.0062 CIDEr.
 - λ=0.10 làm giảm toàn bộ metric, cho thấy auxiliary task lấn át caption task.
 - Giảm xuống λ=0.02 giúp phục hồi kết quả nhưng vẫn chưa vượt Gate.
 - Object–region classification loss hiện tại được giữ như một ablation, không chọn
@@ -169,9 +173,8 @@ Kết quả Q-Former tích cực nhất ở BLEU-3 và BLEU-4. Điều này cho 
 được cô đọng có thể hỗ trợ decoder tạo các cụm từ dài tốt hơn. Tuy nhiên, mức tăng
 vẫn nhỏ và mới được kiểm tra với một seed.
 
-Chưa thể kết luận Q-Former tốt hơn Gate baseline vì Q-Former hiện có metric
-validation, còn Gate trong bảng hiện có metric test. Cần đánh giá Q-Former trên test
-sau khi đã chọn bằng validation để có phép so sánh cùng split.
+Kết quả test xác nhận Q-Former tốt hơn Gate baseline trên cùng split ở cả năm metric
+đang báo cáo. Do đó Q-Former không ITC được chọn làm candidate tốt nhất hiện tại.
 
 ITC α=0.1 so với Q-Former không ITC tăng BLEU-1 `0.0012`, BLEU-2 `0.0016` và
 BLEU-3 `0.0003`, nhưng giảm BLEU-4 `0.0016`, METEOR `0.0002`, ROUGE-L `0.0007`
@@ -186,9 +189,9 @@ khả năng tạo caption dài và chính xác hơn.
    nhãn mất cân bằng, đặc biệt là `person`.
 3. Căn chỉnh vùng ảnh bằng auxiliary object classification loss chưa cải thiện caption.
 4. λ=0.02 phù hợp hơn λ=0.10 nhưng vẫn thấp hơn Gate trên test.
-5. Learnable visual queries/Q-Former cho kết quả validation tốt hơn region-loss
-   candidate ở toàn bộ metric.
-6. Q-Former là hướng có triển vọng hơn việc tiếp tục dò trọng số λ cho region loss.
+5. Learnable visual queries/Q-Former tốt hơn region-loss candidate trên validation
+   và vượt Gate trên test ở toàn bộ năm metric đang báo cáo.
+6. Q-Former không ITC được chọn làm mô hình tốt nhất hiện tại.
 7. ITC α=0.1 chỉ tăng BLEU-1/2/3 nhưng làm giảm BLEU-4, METEOR, ROUGE-L và CIDEr;
    giữ Q-Former không ITC làm candidate hiện tại.
 8. Các chênh lệch hiện tại mới có một seed, chưa phải bằng chứng về ý nghĩa thống kê.
@@ -210,13 +213,11 @@ khả năng tạo caption dài và chính xác hơn.
 
 ## 7. Công việc tiếp theo
 
-1. Giữ Q-Former không ITC làm candidate và đánh giá trên test 5.000 ảnh.
-2. So sánh Q-Former và Gate trên cùng test split để chọn backbone.
-3. Với backbone tốt hơn, sinh nhiều caption ứng viên thay vì chỉ lấy beam tốt nhất.
-4. Xây dựng Object Consistency Checker đối chiếu object trong caption với YOLO cache.
-5. Re-rank ứng viên bằng điểm ngôn ngữ, điểm nhất quán object và độ dài.
-6. Báo cáo thêm hallucination/CHAIR nếu dữ liệu annotation đáp ứng.
-7. Nếu Q-Former cải thiện trên test, chạy thêm seed cho Gate và Q-Former trước khi
+1. Dùng Q-Former không ITC làm backbone để sinh nhiều caption ứng viên.
+2. Xây dựng Object Consistency Checker đối chiếu object trong caption với YOLO cache.
+3. Re-rank ứng viên bằng điểm ngôn ngữ, điểm nhất quán object và độ dài.
+4. Báo cáo thêm hallucination/CHAIR nếu dữ liệu annotation đáp ứng.
+5. Chạy thêm seed cho Gate và Q-Former trước khi
    khẳng định đóng góp cuối cùng.
 
 ## 8. Tệp và hướng dẫn liên quan

@@ -200,3 +200,24 @@ tập trung rõ hơn ở BLEU-3/BLEU-4, nhưng vẫn nhỏ và mới có một s
 chứng Q-Former tốt hơn region-loss candidate trên validation, chưa chứng minh tốt
 hơn Gate baseline vì Gate hiện chỉ có metric test trong bảng cũ. Không so trực tiếp
 metric validation này với metric test của Gate.
+
+## Kết quả test 5.000 ảnh
+
+Sau khi chọn kiến trúc bằng validation, checkpoint Q-Former không ITC được đánh
+giá một lần trên test split:
+
+```json
+{
+  "Bleu_1": 0.7673929147791878,
+  "Bleu_2": 0.6087332892786202,
+  "Bleu_3": 0.47455273221154215,
+  "Bleu_4": 0.37066552705750105,
+  "METEOR": 0.2850389946676435,
+  "ROUGE_L": 0.5731179908462452,
+  "CIDEr": 1.1882447460531307
+}
+```
+
+Trên cùng test split, Q-Former vượt Gate ở BLEU-1, BLEU-4, METEOR, ROUGE-L và
+CIDEr. Vì vậy Q-Former không ITC được chọn làm candidate tốt nhất cho các bước
+sinh nhiều ứng viên, Object Consistency Checker và re-ranking.

@@ -217,4 +217,22 @@ Sau khi có kết quả, so sánh trực tiếp với Gate trên cùng test spli
 | Mô hình | BLEU-1 | BLEU-4 | METEOR | ROUGE-L | CIDEr |
 |---|---:|---:|---:|---:|---:|
 | Cross-Attention có Gate | 0.7660 | 0.3660 | 0.2830 | 0.5710 | 1.1820 |
-| Q-Former 32q/2l | chờ chạy | chờ chạy | chờ chạy | chờ chạy | chờ chạy |
+| Q-Former 32q/2l | **0.7674** | **0.3707** | **0.2850** | **0.5731** | **1.1882** |
+
+Kết quả đầy đủ của Q-Former trên test:
+
+```json
+{
+  "Bleu_1": 0.7673929147791878,
+  "Bleu_2": 0.6087332892786202,
+  "Bleu_3": 0.47455273221154215,
+  "Bleu_4": 0.37066552705750105,
+  "METEOR": 0.2850389946676435,
+  "ROUGE_L": 0.5731179908462452,
+  "CIDEr": 1.1882447460531307
+}
+```
+
+So với Gate theo các số đã ghi trong bảng, Q-Former tăng khoảng `0.0014` BLEU-1,
+`0.0047` BLEU-4, `0.0020` METEOR, `0.0021` ROUGE-L và `0.0062` CIDEr. Q-Former
+không ITC được chọn làm mô hình tốt nhất hiện tại.
