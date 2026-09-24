@@ -179,3 +179,24 @@ So sánh validation Q-Former với validation Gate bằng cùng seed, prompt cac
 cache, 10 epoch và beam size 5. Không đưa metric Q-Former vào bảng test trước khi
 chốt kiến trúc trên validation. Nếu Q-Former không vượt Gate, giữ kết quả như ablation
 về cơ chế nén visual memory và không tiếp tục thêm object consistency vào nhánh này.
+
+## Kết quả validation 5.000 ảnh
+
+```json
+{
+  "Bleu_1": 0.7671533571628831,
+  "Bleu_2": 0.608853373137689,
+  "Bleu_3": 0.47444502761316537,
+  "Bleu_4": 0.3703219250600793,
+  "METEOR": 0.28301217655387967,
+  "ROUGE_L": 0.571214149949258,
+  "CIDEr": 1.1740115041643502
+}
+```
+
+So với region alignment λ=0.02 trên cùng validation split, Q-Former tăng BLEU-1
+0.0006, BLEU-4 0.0049, METEOR 0.0002, ROUGE-L 0.0026 và CIDEr 0.0061. Cải thiện
+tập trung rõ hơn ở BLEU-3/BLEU-4, nhưng vẫn nhỏ và mới có một seed. Đây là bằng
+chứng Q-Former tốt hơn region-loss candidate trên validation, chưa chứng minh tốt
+hơn Gate baseline vì Gate hiện chỉ có metric test trong bảng cũ. Không so trực tiếp
+metric validation này với metric test của Gate.
