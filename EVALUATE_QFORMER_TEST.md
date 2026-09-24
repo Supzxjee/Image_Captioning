@@ -45,10 +45,17 @@ def restore_torch_archive(source, index):
 
     destination = Path('/kaggle/working') / f'restored_qformer_candidate_{index}.pth'
     print('Kaggle expanded checkpoint; rebuilding:', source, flush=True)
+    data_pickles = list(source.rglob('data.pkl'))
+    assert len(data_pickles) == 1, (
+        f'Expected exactly one data.pkl below {source}, found {len(data_pickles)}'
+    )
+    # Kaggle can add a folder named after the original checkpoint. The real
+    # PyTorch archive root is the directory that directly contains data.pkl.
+    archive_root = data_pickles[0].parent
     with zipfile.ZipFile(destination, mode='w', compression=zipfile.ZIP_STORED) as archive:
-        for file in source.rglob('*'):
+        for file in archive_root.rglob('*'):
             if file.is_file():
-                relative = file.relative_to(source).as_posix()
+                relative = file.relative_to(archive_root).as_posix()
                 archive.write(file, f'archive/{relative}')
     return destination
 
