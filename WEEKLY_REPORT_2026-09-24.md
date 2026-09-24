@@ -111,6 +111,15 @@ So với pipeline Gate trước, decoder memory giảm từ 217 tokens xuống 5
 Q-Former đầu tiên chỉ dùng caption loss, không dùng YOLO bbox và không dùng region
 alignment loss để đo riêng đóng góp của learnable queries.
 
+### 2.5. Bổ sung image–text contrastive alignment cho Q-Former
+
+Đã bổ sung ITC loss để căn chỉnh 32 visual queries với embedding CLIP của 5 caption
+tham chiếu thuộc train split. Điểm ảnh–văn bản lấy query có cosine similarity cao
+nhất; các mẫu còn lại trong global batch 32 là negative. Loss tổng là
+`L_caption + 0.1 × L_ITC`. Thí nghiệm này không dùng region loss để đo riêng đóng
+góp của căn chỉnh ảnh–caption. Caption embedding được cache thành HDF5 để không
+chạy lại CLIP Text Encoder trong từng batch.
+
 ## 3. Kết quả trên test split 5.000 ảnh
 
 Các mô hình trong bảng này đều được đánh giá trên test split. Các giá trị của mô
@@ -141,7 +150,8 @@ Không trộn các số validation dưới đây vào bảng test phía trên.
 | Mô hình | BLEU-1 | BLEU-2 | BLEU-3 | BLEU-4 | METEOR | ROUGE-L | CIDEr |
 |---|---:|---:|---:|---:|---:|---:|---:|
 | Gate + Region Alignment λ=0.02 | 0.7666 | 0.6084 | 0.4718 | 0.3654 | 0.2828 | 0.5686 | 1.1679 |
-| Lightweight Q-Former, 32 queries, 2 layers | **0.7672** | **0.6089** | **0.4744** | **0.3703** | **0.2830** | **0.5712** | **1.1740** |
+| Lightweight Q-Former, 32 queries, 2 layers | 0.7672 | 0.6089 | 0.4744 | **0.3703** | **0.2830** | **0.5712** | **1.1740** |
+| Q-Former + ITC α=0.1 | **0.7684** | **0.6105** | **0.4747** | 0.3687 | 0.2828 | 0.5705 | 1.1705 |
 
 Q-Former so với region alignment λ=0.02 trên cùng validation split:
 
@@ -163,6 +173,12 @@ Chưa thể kết luận Q-Former tốt hơn Gate baseline vì Q-Former hiện c
 validation, còn Gate trong bảng hiện có metric test. Cần đánh giá Q-Former trên test
 sau khi đã chọn bằng validation để có phép so sánh cùng split.
 
+ITC α=0.1 so với Q-Former không ITC tăng BLEU-1 `0.0012`, BLEU-2 `0.0016` và
+BLEU-3 `0.0003`, nhưng giảm BLEU-4 `0.0016`, METEOR `0.0002`, ROUGE-L `0.0007`
+và CIDEr `0.0035`. Kết quả trái chiều và rất nhỏ, nên chưa chọn checkpoint ITC để
+đánh giá test. Điều này cho thấy căn chỉnh toàn ảnh–caption chưa trực tiếp cải thiện
+khả năng tạo caption dài và chính xác hơn.
+
 ## 5. Kết luận trong tuần
 
 1. Visual feature cache và dual-GPU Accelerate giúp giảm đáng kể thời gian thực nghiệm.
@@ -173,7 +189,9 @@ sau khi đã chọn bằng validation để có phép so sánh cùng split.
 5. Learnable visual queries/Q-Former cho kết quả validation tốt hơn region-loss
    candidate ở toàn bộ metric.
 6. Q-Former là hướng có triển vọng hơn việc tiếp tục dò trọng số λ cho region loss.
-7. Các chênh lệch hiện tại mới có một seed, chưa phải bằng chứng về ý nghĩa thống kê.
+7. ITC α=0.1 chỉ tăng BLEU-1/2/3 nhưng làm giảm BLEU-4, METEOR, ROUGE-L và CIDEr;
+   giữ Q-Former không ITC làm candidate hiện tại.
+8. Các chênh lệch hiện tại mới có một seed, chưa phải bằng chứng về ý nghĩa thống kê.
 
 ## 6. Các vấn đề đã xử lý
 
@@ -188,10 +206,11 @@ sau khi đã chọn bằng validation để có phép so sánh cùng split.
 | Log và checkpoint bị ghi hai lần | Chỉ cho rank 0 ghi output |
 | Cảnh báo NCCL khi thoát | Gọi `accelerator.end_training()` |
 | Visual memory 197 tokens lớn hơn prompt 20 tokens | Thử nén thành 32 learnable visual queries |
+| Căn chỉnh mới chỉ dựa vào caption loss | Thêm ITC giữa visual queries và CLIP caption embeddings |
 
 ## 7. Công việc tiếp theo
 
-1. Đánh giá checkpoint Q-Former đã chọn trên test 5.000 ảnh.
+1. Giữ Q-Former không ITC làm candidate và đánh giá trên test 5.000 ảnh.
 2. So sánh Q-Former và Gate trên cùng test split để chọn backbone.
 3. Với backbone tốt hơn, sinh nhiều caption ứng viên thay vì chỉ lấy beam tốt nhất.
 4. Xây dựng Object Consistency Checker đối chiếu object trong caption với YOLO cache.
@@ -206,6 +225,7 @@ sau khi đã chọn bằng validation để có phép so sánh cùng split.
 - [REGION_ALIGNMENT_RESULTS.md](REGION_ALIGNMENT_RESULTS.md): kết quả ablation region loss.
 - [EVALUATE_L002_TEST.md](EVALUATE_L002_TEST.md): workflow test λ=0.02.
 - [QFORMER_EXPERIMENT.md](QFORMER_EXPERIMENT.md): cơ chế, code Kaggle và kết quả Q-Former.
+- [QFORMER_ITC_EXPERIMENT.md](QFORMER_ITC_EXPERIMENT.md): cơ chế, code Kaggle và kết quả ITC.
 - [REGION_ALIGNMENT_L002_DUAL_GPU.md](REGION_ALIGNMENT_L002_DUAL_GPU.md): workflow Accelerate hai GPU.
 
 ## 9. Artifact cần lưu

@@ -265,10 +265,16 @@ print('\nHoàn tất:', experiment_dir)
 
 So sánh validation 5.000 ảnh với Q-Former không ITC đã có:
 
-| Mô hình | BLEU-1 | BLEU-4 | METEOR | ROUGE-L | CIDEr |
-|---|---:|---:|---:|---:|---:|
-| Q-Former 32q/2l | 0.7672 | 0.3703 | 0.2830 | 0.5712 | 1.1740 |
-| Q-Former + ITC α=0.1 | chờ chạy | chờ chạy | chờ chạy | chờ chạy | chờ chạy |
+| Mô hình | BLEU-1 | BLEU-2 | BLEU-3 | BLEU-4 | METEOR | ROUGE-L | CIDEr |
+|---|---:|---:|---:|---:|---:|---:|---:|
+| Q-Former 32q/2l | 0.7672 | 0.6089 | 0.4744 | **0.3703** | **0.2830** | **0.5712** | **1.1740** |
+| Q-Former + ITC α=0.1 | **0.7684** | **0.6105** | **0.4747** | 0.3687 | 0.2828 | 0.5705 | 1.1705 |
 
-Chỉ chạy test 5.000 ảnh sau khi Q-Former + ITC được chọn trên validation. Không
-đổi seed, số epoch, cache, batch size hoặc decoding trong lần so sánh này.
+Chênh lệch ITC so với Q-Former lần lượt là: BLEU-1 `+0.0012`, BLEU-2
+`+0.0016`, BLEU-3 `+0.0003`, BLEU-4 `-0.0016`, METEOR `-0.0002`, ROUGE-L
+`-0.0007` và CIDEr `-0.0035`.
+
+ITC α=0.1 tạo thay đổi nhỏ và trái chiều: tăng unigram/bigram nhưng giảm các metric
+tổng hợp quan trọng hơn. Vì vậy checkpoint này không được chọn để chạy test. Kết
+quả được giữ như một ablation cho thấy căn chỉnh ảnh–caption ở mức toàn cục chưa
+đủ để cải thiện caption; Q-Former không ITC vẫn là candidate tốt hơn trên validation.
