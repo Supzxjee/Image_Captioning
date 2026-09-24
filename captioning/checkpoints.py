@@ -17,6 +17,11 @@ def load_checkpoint(model, path, tokenizer, warm_start=False):
         if saved != expected:
             raise RuntimeError(f'Q-Former checkpoint configuration {saved} differs from model '
                                f'configuration {expected}.')
+    checkpoint_uses_itc = float(checkpoint.get('itc_weight', 0.0)) > 0
+    model_uses_itc = bool(getattr(model.encoder, 'use_itc', False))
+    if checkpoint_uses_itc != model_uses_itc:
+        raise RuntimeError(f'Checkpoint ITC setting is {checkpoint_uses_itc}, but model ITC '
+                           f'setting is {model_uses_itc}.')
     encoder_state = checkpoint['encoder_state_dict']
     if model.encoder.feature_extractor is None:
         # Older cached-feature checkpoints unnecessarily stored the frozen CLIP

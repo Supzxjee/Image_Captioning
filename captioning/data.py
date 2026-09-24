@@ -9,6 +9,7 @@ from torch.utils.data import Dataset, DataLoader
 from torchvision import transforms
 from .tokenizer import CaptionTokenizer
 from .visual_cache import VisualCache, coco_image_id
+from .caption_cache import CaptionEmbeddingCache
 from .semantic_prompts import align_prompt_cache
 
 NORMALIZATION_STATS = {
@@ -34,7 +35,7 @@ def build_image_transform(preprocessing='bilinear'):
 
 class CocoPromptDataset(Dataset):
     def __init__(self, dataframe, transform, caption_tokenizer, prompt_cache, visual_cache=None,
-                 region_targets=None, max_regions=10):
+                 region_targets=None, max_regions=10, caption_embedding_cache=None):
         self.dataframe = dataframe.reset_index(drop=True)
         self.transform = transform
         self.caption_tokenizer = caption_tokenizer
@@ -42,6 +43,7 @@ class CocoPromptDataset(Dataset):
         self.visual_cache = visual_cache
         self.region_targets = region_targets
         self.max_regions = max_regions
+        self.caption_embedding_cache = caption_embedding_cache
 
     def __len__(self):
         return len(self.dataframe)
@@ -67,6 +69,8 @@ class CocoPromptDataset(Dataset):
             prompt_entry['tokens'].float(),
             prompt_entry['mask'].long(),
         )
+        if self.caption_embedding_cache is not None:
+            sample += (torch.from_numpy(self.caption_embedding_cache.read(row['coco_id'])),)
         if self.region_targets is None:
             return sample
         target = self.region_targets.get(row['filename'])
@@ -160,6 +164,13 @@ def load_data(config):
                 raise ValueError('Test split is empty.')
             visual_cache.require_ids(test_df[config.visual_cache_id_key], 'full test after train')
         _log(config, 'Using cached CLIP tokens; projection, attention, gate and decoder remain trainable.')
+    caption_embedding_cache = None
+    if config.mode == 'train' and config.itc_weight > 0:
+        caption_embedding_cache = CaptionEmbeddingCache(config.caption_embedding_cache_path)
+        caption_embedding_cache.require_ids(train_df['coco_id'], 'ITC training')
+        _log(config, f'Caption embedding cache: {len(caption_embedding_cache.index):,} images | '
+                     f'ITC weight={config.itc_weight}')
+
     region_targets, region_metadata, label_prototypes = None, {}, None
     if config.mode == 'train' and config.alignment_weight > 0:
         if not os.path.isfile(config.region_targets_path):
@@ -179,13 +190,15 @@ def load_data(config):
                            visual_cache=visual_cache, train_df=train_df, val_df=val_df, test_df=test_df,
                            tokenizer=caption_tokenizer, prompt_cache=prompt_embedding_cache,
                            transform=image_transform, vocab_size=vocab_size,
+                           caption_embedding_cache=caption_embedding_cache,
                            region_targets=region_targets, region_metadata=region_metadata,
                            label_prototypes=label_prototypes)
 
 
 def build_train_loader(config, data):
     dataset = CocoPromptDataset(data.train_df, data.transform, data.tokenizer, data.prompt_cache,
-                                data.visual_cache, data.region_targets, config.max_regions)
+                                data.visual_cache, data.region_targets, config.max_regions,
+                                data.caption_embedding_cache)
     device_type = getattr(config.device, 'type', config.device)
     loader = DataLoader(dataset, batch_size=config.batch_size, shuffle=True, drop_last=True,
                         num_workers=config.num_workers, pin_memory=device_type == 'cuda')

@@ -9,6 +9,28 @@ from tqdm.auto import tqdm
 from .config import MODEL_NAME, EMBED_DIM, MAX_PROMPT_LEN, NUM_HEADS
 from .checkpoints import load_checkpoint
 
+
+def _gather_with_grad(tensor):
+    """Gather equal local batches while preserving gradients for global ITC negatives."""
+    if not torch.distributed.is_available() or not torch.distributed.is_initialized():
+        return tensor
+    from torch.distributed.nn.functional import all_gather
+    return torch.cat(all_gather(tensor.contiguous()), dim=0)
+
+
+def image_text_contrastive_loss(projected_queries, caption_embeddings, temperature):
+    """BLIP-2-style max-query image/text contrastive loss with batch negatives."""
+    queries = F.normalize(projected_queries, dim=-1)
+    captions = F.normalize(caption_embeddings, dim=-1)
+    captions = F.normalize(captions.mean(dim=1), dim=-1)
+    queries = _gather_with_grad(queries)
+    captions = _gather_with_grad(captions)
+    scores = torch.einsum('bqd,nd->bqn', queries, captions).max(dim=1).values
+    scores = scores / temperature
+    targets = torch.arange(scores.size(0), device=scores.device)
+    return (F.cross_entropy(scores, targets) +
+            F.cross_entropy(scores.transpose(0, 1), targets)) / 2
+
 def object_region_loss(visual_features, boxes, labels, confidences, label_prototypes,
                        prompt_projection, temperature):
     """Classify bbox-pooled CLIP patches against CLIP text label prototypes."""
@@ -59,7 +81,8 @@ def train_one_epoch(model, base_model, loader, optimizer, criterion, epoch, conf
     model.train()
     if base_model.encoder.feature_extractor is not None:
         base_model.encoder.feature_extractor.eval()
-    totals = {'loss': 0.0, 'caption_loss': 0.0, 'alignment_loss': 0.0}
+    totals = {'loss': 0.0, 'caption_loss': 0.0, 'alignment_loss': 0.0,
+              'itc_loss': 0.0}
 
     total_batches = min(len(loader), config.max_train_batches or len(loader))
     progress = tqdm(loader, total=total_batches, desc=f'Epoch {epoch}/{config.epochs}',
@@ -78,7 +101,12 @@ def train_one_epoch(model, base_model, loader, optimizer, criterion, epoch, conf
         caption_masks = caption_masks.to(config.device, non_blocking=True)
         prompt_tokens = prompt_tokens.to(config.device, non_blocking=True)
         prompt_mask = prompt_mask.to(config.device, non_blocking=True)
-        region_batch = batch[5:] if len(batch) > 5 else None
+        offset = 5
+        caption_embeddings = None
+        if config.itc_weight > 0:
+            caption_embeddings = batch[offset].to(config.device, non_blocking=True)
+            offset += 1
+        region_batch = batch[offset:] if config.alignment_weight > 0 else None
 
         batch_size = images.size(0)
         captions_flat = captions.reshape(batch_size * 5, -1)
@@ -95,8 +123,9 @@ def train_one_epoch(model, base_model, loader, optimizer, criterion, epoch, conf
             tgt=tgt_input,
             tgt_key_padding_mask=tgt_padding_mask,
             return_visual=region_batch is not None,
+            return_itc=caption_embeddings is not None,
         )
-        if region_batch is not None:
+        if region_batch is not None or caption_embeddings is not None:
             logits, visual_features = output
         else:
             logits, visual_features = output, None
@@ -108,29 +137,37 @@ def train_one_epoch(model, base_model, loader, optimizer, criterion, epoch, conf
             alignment_loss = object_region_loss(
                 visual_features, boxes, labels, confidences, label_prototypes,
                 base_model.encoder.prompt_projection, config.alignment_temperature)
-        loss = caption_loss + config.alignment_weight * alignment_loss
+        itc_loss = caption_loss.new_zeros(())
+        if caption_embeddings is not None:
+            itc_loss = image_text_contrastive_loss(
+                visual_features, caption_embeddings, config.itc_temperature)
+        loss = (caption_loss + config.alignment_weight * alignment_loss +
+                config.itc_weight * itc_loss)
         accelerator.backward(loss)
         accelerator.clip_grad_norm_(model.parameters(), max_norm=1.0)
         optimizer.step()
 
         reduced = accelerator.reduce(
-            torch.stack([loss.detach(), caption_loss.detach(), alignment_loss.detach()]),
+            torch.stack([loss.detach(), caption_loss.detach(), alignment_loss.detach(),
+                         itc_loss.detach()]),
             reduction='mean',
         )
-        reduced_loss, reduced_caption, reduced_alignment = [value.item() for value in reduced]
+        reduced_loss, reduced_caption, reduced_alignment, reduced_itc = [
+            value.item() for value in reduced]
         totals['loss'] += reduced_loss
         totals['caption_loss'] += reduced_caption
         totals['alignment_loss'] += reduced_alignment
+        totals['itc_loss'] += reduced_itc
         processed_batches += 1
         progress.set_postfix(loss=f'{reduced_loss:.4f}', cap=f'{reduced_caption:.4f}',
-                             align=f'{reduced_alignment:.4f}')
+                             itc=f'{reduced_itc:.4f}')
         if batch_number == 1 or batch_number % 100 == 0:
             elapsed = time.monotonic() - epoch_started
             eta_minutes = max(total_batches - batch_number, 0) * elapsed / batch_number / 60
             accelerator.print(f'Epoch {epoch}: batch {batch_number}/{total_batches} | '
                               f'{elapsed / batch_number:.2f}s/batch | ETA {eta_minutes:.1f}min | '
                               f'total={reduced_loss:.4f} caption={reduced_caption:.4f} '
-                              f'alignment={reduced_alignment:.4f}')
+                              f'alignment={reduced_alignment:.4f} itc={reduced_itc:.4f}')
 
     if processed_batches == 0:
         raise ValueError('No training batches were processed.')
@@ -164,7 +201,8 @@ def train_model(model, train_loader, data, config, accelerator=None):
         elapsed = time.monotonic() - started
         history.append({'epoch': epoch, 'train_loss': losses['loss'],
                         'caption_loss': losses['caption_loss'],
-                        'alignment_loss': losses['alignment_loss'], 'train_seconds': elapsed})
+                        'alignment_loss': losses['alignment_loss'],
+                        'itc_loss': losses['itc_loss'], 'train_seconds': elapsed})
         completed_batches = min(len(train_loader), config.max_train_batches or len(train_loader))
         accelerator.print(f'Epoch training time: {elapsed:.1f}s | '
                           f'{elapsed / completed_batches:.3f}s/batch')
@@ -191,12 +229,16 @@ def train_model(model, train_loader, data, config, accelerator=None):
             'visual_adapter': config.visual_adapter,
             'num_visual_queries': config.num_visual_queries,
             'qformer_layers': config.qformer_layers,
+            'caption_embedding_cache_path': config.caption_embedding_cache_path,
+            'itc_weight': config.itc_weight,
+            'itc_temperature': config.itc_temperature,
             'caption_word2idx': data.tokenizer.word2idx,
             'cross_attention': 'query=prompt, key=visual, value=visual',
             'epoch': epoch,
             'loss': losses['loss'],
             'caption_loss': losses['caption_loss'],
             'alignment_loss': losses['alignment_loss'],
+            'itc_loss': losses['itc_loss'],
             'model_name': MODEL_NAME,
             'embed_dim': EMBED_DIM,
             'max_prompt_len': MAX_PROMPT_LEN,
@@ -209,7 +251,8 @@ def train_model(model, train_loader, data, config, accelerator=None):
 
         accelerator.print(f'✅ Epoch {epoch}/{config.epochs} | total: {losses["loss"]:.4f} | '
                           f'caption: {losses["caption_loss"]:.4f} | '
-                          f'alignment: {losses["alignment_loss"]:.4f}')
+                          f'alignment: {losses["alignment_loss"]:.4f} | '
+                          f'itc: {losses["itc_loss"]:.4f}')
         accelerator.print(f'💾 Saved: {checkpoint_path}')
 
     history_path = config.work_dir / config.experiment_name / 'train_history_h1_2.json'

@@ -55,7 +55,8 @@ class LightweightQFormer(nn.Module):
 class UniversalVisionEncoder(nn.Module):
     def __init__(self, model_name='clip', embed_dim=EMBED_DIM, num_heads=NUM_HEADS,
                  attn_dropout=0.1, visual_precision='fp32', load_backbone=True,
-                 visual_adapter='direct', num_visual_queries=32, qformer_layers=2):
+                 visual_adapter='direct', num_visual_queries=32, qformer_layers=2,
+                 use_itc=False):
         super().__init__()
         if model_name.lower() != 'clip':
             raise NotImplementedError('Only CLIP is supported in this notebook.')
@@ -71,6 +72,7 @@ class UniversalVisionEncoder(nn.Module):
         self.visual_adapter = visual_adapter
         self.num_visual_queries = num_visual_queries
         self.qformer_layers = qformer_layers
+        self.use_itc = use_itc
         self.vis_projection = nn.Linear(768, embed_dim)
         self.qformer = (LightweightQFormer(
             embed_dim=embed_dim,
@@ -79,6 +81,7 @@ class UniversalVisionEncoder(nn.Module):
             num_layers=qformer_layers,
             dropout=attn_dropout,
         ) if visual_adapter == 'qformer' else None)
+        self.itc_query_projection = (nn.Linear(embed_dim, 512) if use_itc else None)
         self.prompt_projection = nn.Sequential(
             nn.Linear(512, embed_dim),
             nn.LayerNorm(embed_dim),
@@ -217,7 +220,7 @@ class ImageCaptioningModel(nn.Module):
         return memory, memory_pad_mask
 
     def forward(self, images, cached_prompt_tokens, prompt_mask, tgt, tgt_key_padding_mask=None,
-                return_visual=False):
+                return_visual=False, return_itc=False):
         memory, memory_pad_mask = self.build_memory(images, cached_prompt_tokens, prompt_mask)
         vis_features = memory[:, prompt_mask.size(1):]
         batch_size, memory_len, embed_dim = memory.shape
@@ -236,4 +239,10 @@ class ImageCaptioningModel(nn.Module):
             tgt_key_padding_mask=tgt_key_padding_mask,
             memory_key_padding_mask=memory_pad_mask,
         )
+        if return_itc:
+            if self.encoder.itc_query_projection is None:
+                raise RuntimeError('ITC output requested, but the ITC projection is disabled.')
+            # Keep this trainable projection inside DDP's forward graph so its
+            # gradients are synchronized by Accelerate on every process.
+            return logits, self.encoder.itc_query_projection(vis_features)
         return (logits, vis_features) if return_visual else logits

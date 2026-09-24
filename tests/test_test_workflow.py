@@ -41,6 +41,13 @@ class TestWorkflowTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             Config(visual_adapter='qformer', alignment_weight=0.02,
                    region_targets_path='regions.pt')
+        itc = parse_args(['--visual-adapter', 'qformer', '--itc-weight', '0.1',
+                          '--caption-embedding-cache-path', 'captions.h5'])
+        self.assertEqual((itc.itc_weight, itc.itc_temperature), (0.1, 0.07))
+        with self.assertRaises(ValueError):
+            Config(itc_weight=0.1, caption_embedding_cache_path='captions.h5')
+        with self.assertRaises(ValueError):
+            Config(visual_adapter='qformer', itc_weight=0.1)
 
     def test_metrics_cli_does_not_load_pipeline(self):
         with patch('captioning.metrics.score_files') as score:

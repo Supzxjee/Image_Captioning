@@ -40,12 +40,16 @@ def run(config):
         visual_adapter=config.visual_adapter,
         num_visual_queries=config.num_visual_queries,
         qformer_layers=config.qformer_layers,
+        use_itc=config.itc_weight > 0,
     ).to(config.device)
     if config.is_main_process:
         print('Encoder initialized.', flush=True)
         if config.visual_adapter == 'qformer':
             print(f'Q-Former active: 197 CLIP tokens -> {config.num_visual_queries} learnable '
                   f'visual queries | {config.qformer_layers} layers.', flush=True)
+        if config.itc_weight > 0:
+            print(f'ITC active: weight={config.itc_weight} | '
+                  f'temperature={config.itc_temperature}.', flush=True)
     if config.mode == 'verify-cache':
         from .cache_verification import verify_cache
         try:
@@ -74,3 +78,5 @@ def run(config):
     finally:
         if data.visual_cache is not None:
             data.visual_cache.close()
+        if data.caption_embedding_cache is not None:
+            data.caption_embedding_cache.close()

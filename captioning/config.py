@@ -42,6 +42,9 @@ class Config:
     visual_adapter: str = 'direct'
     num_visual_queries: int = 32
     qformer_layers: int = 2
+    caption_embedding_cache_path: str = ''
+    itc_weight: float = 0.0
+    itc_temperature: float = 0.07
 
     def __post_init__(self):
         self.work_dir = Path(self.work_dir)
@@ -71,6 +74,12 @@ class Config:
             raise ValueError('num-visual-queries and qformer-layers must be positive.')
         if self.visual_adapter == 'qformer' and self.alignment_weight > 0:
             raise ValueError('The first Q-Former ablation does not combine region alignment loss.')
+        if self.itc_weight < 0 or self.itc_temperature <= 0:
+            raise ValueError('ITC weight must be nonnegative and temperature positive.')
+        if self.itc_weight > 0 and self.visual_adapter != 'qformer':
+            raise ValueError('ITC currently requires visual-adapter=qformer.')
+        if self.mode == 'train' and self.itc_weight > 0 and not self.caption_embedding_cache_path:
+            raise ValueError('Positive ITC weight requires --caption-embedding-cache-path.')
         if self.epochs <= 0 or self.lr <= 0 or self.limit < 0 or self.batch_size <= 0 or self.num_workers < 0:
             raise ValueError('Epochs, learning rate and batch size must be positive; limit/workers nonnegative.')
 
