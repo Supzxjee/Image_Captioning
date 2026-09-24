@@ -3,7 +3,18 @@ import torch
 import torch.nn.functional as F
 from .config import MAX_CAPTION_LEN
 
-def generate_caption_beam_search(model, image, cached_prompt_tokens, prompt_mask, tokenizer, max_len=MAX_CAPTION_LEN, beam_size=5, device=None):
+def _decode_tokens(token_ids, tokenizer):
+    words = [tokenizer.idx2word.get(token_id, tokenizer.UNK) for token_id in token_ids]
+    words = [word for word in words if word not in {tokenizer.PAD, tokenizer.BOS, tokenizer.EOS}]
+    return ' '.join(words)
+
+
+def generate_caption_candidates(model, image, cached_prompt_tokens, prompt_mask, tokenizer,
+                                max_len=MAX_CAPTION_LEN, beam_size=5, candidate_count=5,
+                                device=None):
+    """Return distinct final beams while preserving the original raw-score ordering."""
+    if beam_size < 1 or candidate_count < 1 or candidate_count > beam_size:
+        raise ValueError('Require 1 <= candidate_count <= beam_size.')
     device = device or next(model.parameters()).device
     model.eval()
     with torch.no_grad():
@@ -35,7 +46,29 @@ def generate_caption_beam_search(model, image, cached_prompt_tokens, prompt_mask
             if all(token_ids[-1] == tokenizer.eos_idx for token_ids, _ in beams):
                 break
 
-    best_tokens = beams[0][0]
-    words = [tokenizer.idx2word.get(token_id, tokenizer.UNK) for token_id in best_tokens]
-    words = [word for word in words if word not in {tokenizer.PAD, tokenizer.BOS, tokenizer.EOS}]
-    return ' '.join(words)
+    results, seen = [], set()
+    for token_ids, score in beams:
+        caption = _decode_tokens(token_ids, tokenizer)
+        if caption in seen:
+            continue
+        seen.add(caption)
+        generated_length = max(len(token_ids) - 1, 1)
+        results.append({
+            'caption': caption,
+            'logprob': float(score),
+            'avg_logprob': float(score / generated_length),
+            'length': generated_length,
+        })
+        if len(results) == candidate_count:
+            break
+    if not results:
+        raise RuntimeError('Beam search produced no caption candidate.')
+    return results
+
+
+def generate_caption_beam_search(model, image, cached_prompt_tokens, prompt_mask, tokenizer,
+                                 max_len=MAX_CAPTION_LEN, beam_size=5, device=None):
+    return generate_caption_candidates(
+        model, image, cached_prompt_tokens, prompt_mask, tokenizer,
+        max_len=max_len, beam_size=beam_size, candidate_count=1, device=device,
+    )[0]['caption']

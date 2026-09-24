@@ -48,6 +48,10 @@ class TestWorkflowTests(unittest.TestCase):
             Config(itc_weight=0.1, caption_embedding_cache_path='captions.h5')
         with self.assertRaises(ValueError):
             Config(visual_adapter='qformer', itc_weight=0.1)
+        candidates = parse_args(['--mode', 'candidates', '--candidate-count', '5'])
+        self.assertEqual((candidates.mode, candidates.candidate_count), ('candidates', 5))
+        with self.assertRaises(ValueError):
+            Config(candidate_count=6)
 
     def test_metrics_cli_does_not_load_pipeline(self):
         with patch('captioning.metrics.score_files') as score:

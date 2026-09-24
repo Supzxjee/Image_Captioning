@@ -72,9 +72,12 @@ def run(config):
                     test_data.visual_cache = None
                     print('Full test uses original images with the selected preprocessing/precision.', flush=True)
                 evaluate_model(model, test_data, post_train_test_config(config))
-        else:
+        elif config.mode in {'evaluate', 'predict'}:
             from .evaluation import evaluate_model
             evaluate_model(model, data, config)
+        elif config.mode == 'candidates':
+            from .evaluation import generate_candidate_file
+            generate_candidate_file(model, data, config)
     finally:
         if data.visual_cache is not None:
             data.visual_cache.close()

@@ -45,6 +45,7 @@ class Config:
     caption_embedding_cache_path: str = ''
     itc_weight: float = 0.0
     itc_temperature: float = 0.07
+    candidate_count: int = 5
 
     def __post_init__(self):
         self.work_dir = Path(self.work_dir)
@@ -54,7 +55,7 @@ class Config:
             raise ValueError('Invalid visual cache ID key.')
         if self.visual_preprocessing not in {'bilinear', 'bicubic'} or self.visual_precision not in {'fp32', 'amp-fp16'}:
             raise ValueError('Invalid visual preprocessing or precision.')
-        if self.mode not in {'train', 'evaluate', 'predict', 'metrics', 'verify-cache'} or self.split not in {'val', 'test'}:
+        if self.mode not in {'train', 'evaluate', 'predict', 'metrics', 'verify-cache', 'candidates'} or self.split not in {'val', 'test'}:
             raise ValueError('Invalid mode or evaluation split.')
         if self.test_after_train and self.mode != 'train':
             raise ValueError('--test-after-train is only valid with train mode.')
@@ -82,6 +83,8 @@ class Config:
             raise ValueError('Positive ITC weight requires --caption-embedding-cache-path.')
         if self.epochs <= 0 or self.lr <= 0 or self.limit < 0 or self.batch_size <= 0 or self.num_workers < 0:
             raise ValueError('Epochs, learning rate and batch size must be positive; limit/workers nonnegative.')
+        if not 1 <= self.candidate_count <= 5:
+            raise ValueError('candidate-count must be between 1 and beam size 5.')
 
     @property
     def checkpoint_dir(self):

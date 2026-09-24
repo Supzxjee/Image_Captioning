@@ -5,7 +5,8 @@ from .config import Config
 def parse_args(argv=None):
     defaults = Config()
     parser = argparse.ArgumentParser(description='H1.2-G image captioning on Kaggle')
-    parser.add_argument('--mode', choices=['train', 'evaluate', 'predict', 'metrics', 'verify-cache'], default='train')
+    parser.add_argument('--mode', choices=['train', 'evaluate', 'predict', 'metrics',
+                                           'verify-cache', 'candidates'], default='train')
     parser.add_argument('--test-after-train', action='store_true', help='After training, generate full test captions and compute metrics.')
     parser.add_argument('--test-visual-source', choices=['same', 'images'], default='same',
                         help='For test-after-train: images runs CLIP directly when test features are absent.')
@@ -47,6 +48,7 @@ def parse_args(argv=None):
                         help='HDF5 with five frozen CLIP caption embeddings per train image.')
     parser.add_argument('--itc-weight', type=float, default=0.0)
     parser.add_argument('--itc-temperature', type=float, default=0.07)
+    parser.add_argument('--candidate-count', type=int, default=5)
     return Config(**vars(parser.parse_args(argv)))
 
 def main(argv=None):
