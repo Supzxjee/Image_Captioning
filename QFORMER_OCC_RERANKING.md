@@ -272,6 +272,10 @@ ablation đã chốt trước; chưa phải bằng chứng OCC giúp mô hình r
 
 ## Cell tiếp theo: cố định weight=0.1 và đánh giá test
 
+Nếu validation được chạy bằng Save Version và phiên đã kết thúc, dùng notebook
+test độc lập trong [QFORMER_OCC_TEST.md](QFORMER_OCC_TEST.md) để không chạy lại
+validation. Cell bên dưới chỉ dành cho phiên interactive vẫn còn các biến trước đó.
+
 Chạy cell này ngay sau cell validation ở trên. Nó dùng lại `CHECKPOINT`, `run` và
 các đường dẫn Input đã được xác minh. Không thử thêm trọng số trên test.
 

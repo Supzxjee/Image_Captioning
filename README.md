@@ -270,5 +270,8 @@ Q-Former + image-text contrastive alignment, caption-cache builder và cell Kagg
 Sinh 5 caption candidates, Object Consistency Checker và tune re-ranking trên validation: [QFORMER_OCC_RERANKING.md](QFORMER_OCC_RERANKING.md).
 
 
+Save Version độc lập để áp dụng OCC weight 0.1 trên test: [QFORMER_OCC_TEST.md](QFORMER_OCC_TEST.md).
+
+
 Báo cáo tiến độ tuần 24/09/2026: [WEEKLY_REPORT_2026-09-24.md](WEEKLY_REPORT_2026-09-24.md).
 
