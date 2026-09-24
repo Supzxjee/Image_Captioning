@@ -261,5 +261,8 @@ Kết quả và kết luận ablation object-region alignment: [REGION_ALIGNMENT
 Lightweight Q-Former ablation và cell Kaggle dual-GPU: [QFORMER_EXPERIMENT.md](QFORMER_EXPERIMENT.md).
 
 
+Q-Former + image-text contrastive alignment, caption-cache builder và cell Kaggle dual-GPU: [QFORMER_ITC_EXPERIMENT.md](QFORMER_ITC_EXPERIMENT.md).
+
+
 Báo cáo tiến độ tuần 24/09/2026: [WEEKLY_REPORT_2026-09-24.md](WEEKLY_REPORT_2026-09-24.md).
 
