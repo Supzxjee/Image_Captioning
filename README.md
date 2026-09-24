@@ -267,5 +267,8 @@ Q-Former + image-text contrastive alignment, caption-cache builder và cell Kagg
 Đánh giá checkpoint Q-Former không ITC trên test 5.000 ảnh: [EVALUATE_QFORMER_TEST.md](EVALUATE_QFORMER_TEST.md).
 
 
+Sinh 5 caption candidates, Object Consistency Checker và tune re-ranking trên validation: [QFORMER_OCC_RERANKING.md](QFORMER_OCC_RERANKING.md).
+
+
 Báo cáo tiến độ tuần 24/09/2026: [WEEKLY_REPORT_2026-09-24.md](WEEKLY_REPORT_2026-09-24.md).
 
