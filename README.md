@@ -2,6 +2,8 @@
 
 Biến thể có gate của H1.2 prompt-to-visual cross-attention, dùng MS COCO 2014 và CLIP prompt token cache. Giữ notebook H1.2 gốc để đối chiếu.
 
+Hướng dẫn đánh giá hallucination cho Q-Former và OCC: [CHAIR_EVALUATION.md](CHAIR_EVALUATION.md).
+
 ## Cơ chế
 
 - Prompt là Q; visual tokens là K và V trong cross-attention encoder.
@@ -274,4 +276,3 @@ Save Version độc lập để áp dụng OCC weight 0.1 trên test: [QFORMER_O
 
 
 Báo cáo tiến độ tuần 24/09/2026: [WEEKLY_REPORT_2026-09-24.md](WEEKLY_REPORT_2026-09-24.md).
-
