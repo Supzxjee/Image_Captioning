@@ -65,7 +65,7 @@ from pathlib import Path
 import torch
 
 REPO = Path('/kaggle/working/Image_Captioning')
-COMMIT = '471af59'
+COMMIT = 'badda5a'
 
 COCO_JSON = Path('/kaggle/input/datasets/vuthetam/mscoco-2014/dataset_coco.json')
 COCO_IMAGES = Path('/kaggle/input/datasets/vuthetam/mscoco-2014/images')
@@ -306,3 +306,75 @@ CLIPScore trong workflow dùng cosine giữa image/text embeddings của
 đúng checkpoint CLIP; vì vậy không cần chạy lại vision backbone. Mô hình CLIP sử
 dụng cần được ghi rõ khi báo cáo vì giá trị tuyệt đối có thể khác cấu hình CLIPScore
 sử dụng backbone khác.
+
+## Chạy lại riêng re-ranking sau lỗi baseline của commit cũ
+
+Commit `471af59` đã dùng `avg_logprob` trong re-ranking, trong khi beam search xếp
+candidate bằng raw `logprob`. Vì vậy cấu hình `(clip=0, object=0)` không tái tạo
+rank 0. Checkpoint, candidates và CLIPScore không bị ảnh hưởng. Nếu đã chạy xong
+đến assertion này, chỉ chạy cell sau; không train và không sinh caption lại:
+
+```python
+import json
+import subprocess
+import sys
+from pathlib import Path
+
+REPO = Path('/kaggle/working/Image_Captioning')
+EXPERIMENT_DIR = Path('/kaggle/working/prompt_conditioned_qformer_32q_2l')
+DETECTIONS = Path(
+    '/kaggle/input/datasets/ducanh2403/'
+    'objectdetectionecache/objectdetectioncache.json'
+)
+
+
+def run(args, cwd=None):
+    args = list(map(str, args))
+    print('\nRunning:', ' '.join(args), flush=True)
+    subprocess.run(args, cwd=cwd, check=True)
+
+
+assert REPO.is_dir(), REPO
+run(['git', 'fetch', 'origin'], cwd=REPO)
+run(['git', 'checkout', '--detach', 'badda5a'], cwd=REPO)
+run(['git', 'rev-parse', '--short', 'HEAD'], cwd=REPO)
+
+evaluation_dir = EXPERIMENT_DIR / 'evaluation'
+scored_candidates = evaluation_dir / 'val_5000_beam5_clipscore_candidates.json'
+ground_truth = evaluation_dir / 'val_5000_gt_candidates.json'
+for path in (scored_candidates, ground_truth, DETECTIONS):
+    assert path.is_file(), path
+
+fixed_dir = EXPERIMENT_DIR / 'multiscore_reranking_fixed'
+run([
+    sys.executable, '-u', REPO / 'rerank_multiscore.py',
+    '--candidates', scored_candidates,
+    '--ground-truth', ground_truth,
+    '--detections', DETECTIONS,
+    '--output-dir', fixed_dir,
+    '--clip-weights', '0,0.1,0.2,0.3',
+    '--object-weights', '0,0.05,0.1,0.2',
+    '--min-confidence', '0.5',
+    '--hallucination-penalty', '1.0',
+    '--objects-field', 'objects',
+    '--name-key', 'label',
+    '--confidence-key', 'conf',
+])
+
+summary_path = fixed_dir / 'val_multiscore_summary.json'
+summary = json.loads(summary_path.read_text(encoding='utf-8'))
+baseline = next(
+    item for item in summary['results']
+    if item['clip_weight'] == 0.0 and item['object_weight'] == 0.0
+)
+assert baseline['decoder_weight'] == 1.0
+assert baseline['changed_images'] == 0
+
+print('\nBASELINE METRICS')
+print(json.dumps(baseline['metrics'], indent=2))
+print('\nBEST VALIDATION WEIGHTS')
+print(json.dumps(summary['best_weights'], indent=2))
+print('\nBEST VALIDATION METRICS')
+print(json.dumps(summary['best_metrics'], indent=2))
+print('\nSummary:', summary_path)
+```
