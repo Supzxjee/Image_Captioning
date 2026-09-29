@@ -10,7 +10,9 @@ class MultiscoreRerankingTests(unittest.TestCase):
             'candidates': [
                 {'caption': 'a dog', 'logprob': -1.0, 'avg_logprob': -0.2,
                  'clipscore': 0.4},
-                {'caption': 'a person', 'logprob': -2.0, 'avg_logprob': -0.4,
+                # avg_logprob deliberately favors rank 1. A zero-auxiliary
+                # baseline must still follow the beam's raw logprob ordering.
+                {'caption': 'a person', 'logprob': -2.0, 'avg_logprob': -0.1,
                  'clipscore': 0.9},
             ],
         }

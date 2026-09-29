@@ -20,8 +20,10 @@ def rerank_multiscore(record, detected, clip_weight, object_weight,
     if any('clipscore' not in candidate for candidate in candidates):
         raise ValueError(f'Image {record.get("image_id")}: candidate lacks clipscore')
 
-    language = [float(candidate.get('avg_logprob', candidate['logprob']))
-                for candidate in candidates]
+    # Beam candidates are ordered by the accumulated raw log-probability in
+    # inference.py. Use that same score so auxiliary weights of zero reproduce
+    # rank 0 exactly; avg_logprob would silently introduce length normalization.
+    language = [float(candidate['logprob']) for candidate in candidates]
     clip = [float(candidate['clipscore']) for candidate in candidates]
     language_scores, clip_scores = _minmax(language), _minmax(clip)
     decoder_weight = 1.0 - clip_weight - object_weight
