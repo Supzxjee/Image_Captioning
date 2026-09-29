@@ -35,9 +35,12 @@ class TestWorkflowTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             Config(mode='metrics')
         qformer = parse_args(['--visual-adapter', 'qformer', '--num-visual-queries', '16',
-                              '--qformer-layers', '3'])
+                              '--qformer-layers', '3', '--prompt-conditioned-qformer'])
         self.assertEqual((qformer.visual_adapter, qformer.num_visual_queries,
                           qformer.qformer_layers), ('qformer', 16, 3))
+        self.assertTrue(qformer.prompt_conditioned_qformer)
+        with self.assertRaises(ValueError):
+            Config(prompt_conditioned_qformer=True)
         with self.assertRaises(ValueError):
             Config(visual_adapter='qformer', alignment_weight=0.02,
                    region_targets_path='regions.pt')

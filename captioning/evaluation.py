@@ -16,7 +16,8 @@ def evaluate_model(model, data, config):
     model.eval()
     adapter = checkpoint.get('visual_adapter', 'direct')
     print(f"Loaded checkpoint: epoch {checkpoint['epoch']} | loss {checkpoint['loss']:.4f} | "
-          f"visual adapter {adapter}", flush=True)
+          f"visual adapter {adapter} | prompt-conditioned Q-Former "
+          f"{bool(checkpoint.get('prompt_conditioned_qformer', False))}", flush=True)
     config.eval_dir.mkdir(parents=True, exist_ok=True)
     eval_df = data.val_df if config.split == 'val' else data.test_df
     if config.limit:
@@ -123,6 +124,8 @@ def generate_candidate_file(model, data, config):
             'checkpoint': str(path),
             'epoch': checkpoint['epoch'],
             'visual_adapter': checkpoint.get('visual_adapter', 'direct'),
+            'prompt_conditioned_qformer': bool(
+                checkpoint.get('prompt_conditioned_qformer', False)),
         },
         'data': records,
     }

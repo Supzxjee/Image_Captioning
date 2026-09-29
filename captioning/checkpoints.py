@@ -17,6 +17,12 @@ def load_checkpoint(model, path, tokenizer, warm_start=False):
         if saved != expected:
             raise RuntimeError(f'Q-Former checkpoint configuration {saved} differs from model '
                                f'configuration {expected}.')
+        checkpoint_conditioned = bool(checkpoint.get('prompt_conditioned_qformer', False))
+        model_conditioned = bool(getattr(model.encoder, 'prompt_conditioned_qformer', False))
+        if checkpoint_conditioned != model_conditioned:
+            raise RuntimeError(f'Checkpoint prompt-conditioned setting is '
+                               f'{checkpoint_conditioned}, but model setting is '
+                               f'{model_conditioned}.')
     checkpoint_uses_itc = float(checkpoint.get('itc_weight', 0.0)) > 0
     model_uses_itc = bool(getattr(model.encoder, 'use_itc', False))
     if checkpoint_uses_itc != model_uses_itc:

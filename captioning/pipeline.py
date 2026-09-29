@@ -41,12 +41,16 @@ def run(config):
         num_visual_queries=config.num_visual_queries,
         qformer_layers=config.qformer_layers,
         use_itc=config.itc_weight > 0,
+        prompt_conditioned_qformer=config.prompt_conditioned_qformer,
     ).to(config.device)
     if config.is_main_process:
         print('Encoder initialized.', flush=True)
         if config.visual_adapter == 'qformer':
             print(f'Q-Former active: 197 CLIP tokens -> {config.num_visual_queries} learnable '
                   f'visual queries | {config.qformer_layers} layers.', flush=True)
+            if config.prompt_conditioned_qformer:
+                print('Prompt conditioning active: masked prompt semantics gate every visual '
+                      'query before image cross-attention.', flush=True)
         if config.itc_weight > 0:
             print(f'ITC active: weight={config.itc_weight} | '
                   f'temperature={config.itc_temperature}.', flush=True)

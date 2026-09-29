@@ -42,6 +42,7 @@ class Config:
     visual_adapter: str = 'direct'
     num_visual_queries: int = 32
     qformer_layers: int = 2
+    prompt_conditioned_qformer: bool = False
     caption_embedding_cache_path: str = ''
     itc_weight: float = 0.0
     itc_temperature: float = 0.07
@@ -71,6 +72,8 @@ class Config:
             raise ValueError('max-train-batches must be nonnegative.')
         if self.visual_adapter not in {'direct', 'qformer'}:
             raise ValueError('visual-adapter must be direct or qformer.')
+        if self.prompt_conditioned_qformer and self.visual_adapter != 'qformer':
+            raise ValueError('Prompt-conditioned Q-Former requires visual-adapter=qformer.')
         if self.num_visual_queries <= 0 or self.qformer_layers <= 0:
             raise ValueError('num-visual-queries and qformer-layers must be positive.')
         if self.visual_adapter == 'qformer' and self.alignment_weight > 0:

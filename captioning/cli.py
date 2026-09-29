@@ -44,6 +44,8 @@ def parse_args(argv=None):
                         help='direct keeps 197 CLIP tokens; qformer learns a compact visual memory.')
     parser.add_argument('--num-visual-queries', type=int, default=32)
     parser.add_argument('--qformer-layers', type=int, default=2)
+    parser.add_argument('--prompt-conditioned-qformer', action='store_true',
+                        help='Condition learnable visual queries on masked-mean prompt tokens.')
     parser.add_argument('--caption-embedding-cache-path', default='',
                         help='HDF5 with five frozen CLIP caption embeddings per train image.')
     parser.add_argument('--itc-weight', type=float, default=0.0)

@@ -37,16 +37,35 @@ class VisualQueryLayer(nn.Module):
 
 class LightweightQFormer(nn.Module):
     """Trainable visual queries inspired by BLIP-2 Q-Former, trained from scratch."""
-    def __init__(self, embed_dim, num_heads, num_queries=32, num_layers=2, dropout=0.1):
+    def __init__(self, embed_dim, num_heads, num_queries=32, num_layers=2, dropout=0.1,
+                 prompt_conditioned=False):
         super().__init__()
+        self.prompt_conditioned = prompt_conditioned
         self.query_tokens = nn.Parameter(torch.empty(1, num_queries, embed_dim))
         nn.init.normal_(self.query_tokens, mean=0.0, std=0.02)
+        if prompt_conditioned:
+            self.prompt_condition_projection = nn.Linear(embed_dim, embed_dim)
+            self.prompt_condition_gate = nn.Linear(embed_dim * 2, embed_dim)
+            self.prompt_condition_norm = nn.LayerNorm(embed_dim)
+            nn.init.zeros_(self.prompt_condition_gate.weight)
+            nn.init.constant_(self.prompt_condition_gate.bias, -2.0)
         self.layers = nn.ModuleList([
             VisualQueryLayer(embed_dim, num_heads, dropout) for _ in range(num_layers)
         ])
 
-    def forward(self, visual_tokens):
+    def forward(self, visual_tokens, prompt_tokens=None, prompt_mask=None):
         queries = self.query_tokens.expand(visual_tokens.size(0), -1, -1)
+        if self.prompt_conditioned:
+            if prompt_tokens is None or prompt_mask is None:
+                raise ValueError('Prompt-conditioned Q-Former requires prompt tokens and mask.')
+            valid = prompt_mask.to(dtype=prompt_tokens.dtype).unsqueeze(-1)
+            pooled_prompt = (prompt_tokens * valid).sum(dim=1) / valid.sum(dim=1).clamp_min(1)
+            condition = self.prompt_condition_projection(pooled_prompt).unsqueeze(1)
+            condition = condition.expand(-1, queries.size(1), -1)
+            gate = torch.sigmoid(self.prompt_condition_gate(
+                torch.cat([queries, condition], dim=-1)
+            ))
+            queries = self.prompt_condition_norm(queries + gate * condition)
         for layer in self.layers:
             queries = layer(queries, visual_tokens)
         return queries
@@ -56,7 +75,7 @@ class UniversalVisionEncoder(nn.Module):
     def __init__(self, model_name='clip', embed_dim=EMBED_DIM, num_heads=NUM_HEADS,
                  attn_dropout=0.1, visual_precision='fp32', load_backbone=True,
                  visual_adapter='direct', num_visual_queries=32, qformer_layers=2,
-                 use_itc=False):
+                 use_itc=False, prompt_conditioned_qformer=False):
         super().__init__()
         if model_name.lower() != 'clip':
             raise NotImplementedError('Only CLIP is supported in this notebook.')
@@ -72,6 +91,7 @@ class UniversalVisionEncoder(nn.Module):
         self.visual_adapter = visual_adapter
         self.num_visual_queries = num_visual_queries
         self.qformer_layers = qformer_layers
+        self.prompt_conditioned_qformer = prompt_conditioned_qformer
         self.use_itc = use_itc
         self.vis_projection = nn.Linear(768, embed_dim)
         self.qformer = (LightweightQFormer(
@@ -80,6 +100,7 @@ class UniversalVisionEncoder(nn.Module):
             num_queries=num_visual_queries,
             num_layers=qformer_layers,
             dropout=attn_dropout,
+            prompt_conditioned=prompt_conditioned_qformer,
         ) if visual_adapter == 'qformer' else None)
         self.itc_query_projection = (nn.Linear(embed_dim, 512) if use_itc else None)
         self.prompt_projection = nn.Sequential(
@@ -132,8 +153,13 @@ class UniversalVisionEncoder(nn.Module):
             raise ValueError('Expected image pixels (B, C, H, W) or cached tokens (B, 197, 768).')
 
         vis_features = self.dropout(self.relu(self.vis_projection(visual_features)))
-        visual_memory = self.qformer(vis_features) if self.qformer is not None else vis_features
-        prompt_features = self.prompt_projection(cached_prompt_tokens)
+        if self.qformer is not None and self.prompt_conditioned_qformer:
+            prompt_features = self.prompt_projection(cached_prompt_tokens)
+            visual_memory = self.qformer(vis_features, prompt_features, prompt_mask)
+        else:
+            visual_memory = self.qformer(vis_features) if self.qformer is not None else vis_features
+            # Preserve the original operation order for existing direct/Q-Former runs.
+            prompt_features = self.prompt_projection(cached_prompt_tokens)
 
         attended_prompt, _ = self.prompt_to_visual_attn(
             query=prompt_features,

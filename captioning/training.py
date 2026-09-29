@@ -229,6 +229,7 @@ def train_model(model, train_loader, data, config, accelerator=None):
             'visual_adapter': config.visual_adapter,
             'num_visual_queries': config.num_visual_queries,
             'qformer_layers': config.qformer_layers,
+            'prompt_conditioned_qformer': config.prompt_conditioned_qformer,
             'caption_embedding_cache_path': config.caption_embedding_cache_path,
             'itc_weight': config.itc_weight,
             'itc_temperature': config.itc_temperature,
