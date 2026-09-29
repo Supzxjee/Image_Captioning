@@ -276,3 +276,5 @@ Save Version độc lập để áp dụng OCC weight 0.1 trên test: [QFORMER_O
 
 
 Báo cáo tiến độ tuần 24/09/2026: [WEEKLY_REPORT_2026-09-24.md](WEEKLY_REPORT_2026-09-24.md).
+
+Prompt-Conditioned Q-Former và re-ranking đa điểm: [PROMPT_CONDITIONED_QFORMER.md](PROMPT_CONDITIONED_QFORMER.md).
