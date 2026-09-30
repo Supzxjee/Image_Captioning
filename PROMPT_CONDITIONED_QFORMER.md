@@ -482,3 +482,27 @@ for result in summary['results']:
     })
 print('Summary:', summary_path)
 ```
+
+## Kết quả lưới validation mở rộng
+
+Lưới mở rộng đạt kết quả tốt nhất tại `(decoder=0.3, CLIP=0.4, OCC=0.3)`:
+
+```json
+{
+  "Bleu_1": 0.7678410117434351,
+  "Bleu_2": 0.607125713071443,
+  "Bleu_3": 0.4677653623464259,
+  "Bleu_4": 0.3584492133014783,
+  "METEOR": 0.2871204555546018,
+  "ROUGE_L": 0.5735162260226078,
+  "CIDEr": 1.1786961984595687
+}
+```
+
+So với Q-Former cũ, pipeline tăng BLEU-1 `0,000688`, METEOR `0,004108`,
+ROUGE-L `0,002302` và CIDEr `0,004685`; BLEU-2 giảm `0,001728`, BLEU-3 giảm
+`0,006680` và BLEU-4 giảm `0,011873`. CLIP weight `0.5–0.6` làm CIDEr giảm, nên
+`0.4` đã nằm trong vùng đỉnh. Với CLIP `0.4`, tăng OCC từ `0.2` lên `0.3` chỉ tăng
+CIDEr `0,000035` nhưng cũng tăng METEOR. Theo tiêu chí chọn trước là CIDEr, cấu
+hình test được khóa thành `decoder=0.3, CLIP=0.4, OCC=0.3`; không điều chỉnh lại
+sau khi xem test.
