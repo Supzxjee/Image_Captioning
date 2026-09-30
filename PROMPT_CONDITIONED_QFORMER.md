@@ -378,3 +378,98 @@ print('\nBEST VALIDATION METRICS')
 print(json.dumps(summary['best_metrics'], indent=2))
 print('\nSummary:', summary_path)
 ```
+
+## Kết quả validation lần 1
+
+Baseline đối chứng đã tái tạo đúng rank 0 (`changed_images=0`):
+
+| Mô hình | BLEU-1 | BLEU-2 | BLEU-3 | BLEU-4 | METEOR | ROUGE-L | CIDEr |
+|---|---:|---:|---:|---:|---:|---:|---:|
+| Q-Former cũ | 0.767153 | 0.608853 | 0.474445 | 0.370322 | 0.283012 | 0.571214 | 1.174012 |
+| Prompt-Conditioned Q-Former | 0.762841 | 0.600290 | 0.463012 | 0.357720 | 0.279752 | 0.566974 | 1.142160 |
+| Prompt-Conditioned + re-ranking 0.5/0.3/0.2 | **0.770143** | **0.608946** | 0.471126 | 0.363894 | **0.284020** | **0.571393** | 1.170234 |
+
+Prompt conditioning đơn lẻ giảm toàn bộ metric so với Q-Former cũ, gồm CIDEr
+`-0,031851` và BLEU-4 `-0,012602`. Re-ranking tăng CIDEr `+0,028074` và BLEU-4
+`+0,006174` so với baseline mới, nhưng vẫn thấp hơn Q-Former cũ lần lượt `0,003777`
+và `0,006428`. BLEU-1, BLEU-2, METEOR và ROUGE-L của pipeline re-ranking nhỉnh
+hơn Q-Former cũ.
+
+Cấu hình tốt nhất trong lưới đầu tiên là `(decoder=0.5, CLIP=0.3, OCC=0.2)`, đổi
+1.654/5.000 caption. Caption được chọn có 7.081 object mentions, gồm 6.531 được
+YOLO hỗ trợ và 550 bị nghi ngờ (`7,77%`). Đây chưa phải CHAIR. Vì cả CLIP và OCC
+weight tốt nhất đều nằm ở biên trên của lưới, cần mở rộng lưới validation trước
+khi khóa cấu hình test.
+
+## Mở rộng lưới validation, không train lại
+
+Dùng lại Input Save Version và chạy cell sau trong notebook re-ranking hiện tại:
+
+```python
+import json
+import subprocess
+import sys
+from pathlib import Path
+
+REPO = Path('/kaggle/working/Image_Captioning')
+DETECTIONS = Path(
+    '/kaggle/input/datasets/ducanh2403/'
+    'objectdetectionecache/objectdetectioncache.json'
+)
+INPUT_ROOT = Path('/kaggle/input')
+OUTPUT = Path('/kaggle/working/prompt_conditioned_qformer_grid_extended')
+
+
+def run(args, cwd=None):
+    args = list(map(str, args))
+    print('\nRunning:', ' '.join(args), flush=True)
+    subprocess.run(args, cwd=cwd, check=True)
+
+
+def exactly_one(name):
+    matches = sorted(INPUT_ROOT.rglob(name), key=str)
+    print(name, matches)
+    assert len(matches) == 1, (name, matches)
+    return matches[0]
+
+
+SCORED = exactly_one('val_5000_beam5_clipscore_candidates.json')
+GROUND_TRUTH = exactly_one('val_5000_gt_candidates.json')
+assert DETECTIONS.is_file(), DETECTIONS
+assert REPO.is_dir(), REPO
+run(['git', 'fetch', 'origin'], cwd=REPO)
+run(['git', 'checkout', '--detach', 'badda5a'], cwd=REPO)
+
+run([
+    sys.executable, '-u', REPO / 'rerank_multiscore.py',
+    '--candidates', SCORED,
+    '--ground-truth', GROUND_TRUTH,
+    '--detections', DETECTIONS,
+    '--output-dir', OUTPUT,
+    '--clip-weights', '0.3,0.4,0.5,0.6',
+    '--object-weights', '0.1,0.2,0.3',
+    '--min-confidence', '0.5',
+    '--hallucination-penalty', '1.0',
+    '--objects-field', 'objects',
+    '--name-key', 'label',
+    '--confidence-key', 'conf',
+])
+
+summary_path = OUTPUT / 'val_multiscore_summary.json'
+summary = json.loads(summary_path.read_text(encoding='utf-8'))
+print('\nBEST EXTENDED WEIGHTS')
+print(json.dumps(summary['best_weights'], indent=2))
+print('\nBEST EXTENDED METRICS')
+print(json.dumps(summary['best_metrics'], indent=2))
+for result in summary['results']:
+    print({
+        'decoder': round(result['decoder_weight'], 2),
+        'clip': result['clip_weight'],
+        'object': result['object_weight'],
+        'changed': result['changed_images'],
+        'BLEU-4': round(result['metrics']['Bleu_4'], 6),
+        'METEOR': round(result['metrics']['METEOR'], 6),
+        'CIDEr': round(result['metrics']['CIDEr'], 6),
+    })
+print('Summary:', summary_path)
+```
