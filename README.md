@@ -282,3 +282,5 @@ Prompt-Conditioned Q-Former và re-ranking đa điểm: [PROMPT_CONDITIONED_QFOR
 Test cố định cho Prompt-Conditioned Q-Former: [PROMPT_CONDITIONED_QFORMER_TEST.md](PROMPT_CONDITIONED_QFORMER_TEST.md).
 
 CHAIR test cho Prompt-Conditioned Q-Former: [PROMPT_CONDITIONED_QFORMER_CHAIR.md](PROMPT_CONDITIONED_QFORMER_CHAIR.md).
+
+Ablation Q-Former cũ với cùng re-ranking: [QFORMER_FIXED_RERANKING_ABLATION.md](QFORMER_FIXED_RERANKING_ABLATION.md).
