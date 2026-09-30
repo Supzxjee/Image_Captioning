@@ -17,18 +17,23 @@ re-ranking tốt bằng hoặc tốt hơn pipeline mới, cải thiện đến c
 
 ## Input Kaggle cần gắn
 
-- Output của notebook Q-Former cũ có `test_5000_beam5_candidates.json`;
+- Output của notebook Q-Former cũ có một trong hai file
+  `test_5000_beam5_candidates.json` hoặc
+  `test_5000_beam5_clipscore_candidates.json`;
 - ba visual-cache shards;
 - `objectdetectioncache.json`.
 
 Có thể gắn đồng thời output của Prompt-Conditioned Q-Former. Cell sẽ đọc metadata
 và chỉ chọn candidate bundle có `visual_adapter=qformer` cùng
-`prompt_conditioned_qformer=False`. Chọn một GPU và bật Internet.
+`prompt_conditioned_qformer=False`. Chọn một GPU và bật Internet. Chỉ checkpoint
+hoặc file caption rank 0 là chưa đủ, vì re-ranking cần toàn bộ năm beam candidates
+của từng ảnh.
 
 ## Cell Kaggle đầy đủ
 
 ```python
 import json
+import os
 import subprocess
 import sys
 from pathlib import Path
@@ -49,6 +54,10 @@ DETECTIONS = Path(
 CLIP_WEIGHT = 0.4
 OBJECT_WEIGHT = 0.3
 
+# Nếu có nhiều output Q-Former trong Input, điền đường dẫn file cần dùng tại đây.
+# Chấp nhận file raw hoặc file đã chấm CLIPScore. Bình thường để None.
+CANDIDATES_OVERRIDE = None
+
 
 def run(args, cwd=None):
     args = list(map(str, args))
@@ -63,44 +72,114 @@ for part in range(1, 4):
     assert shard.is_file(), shard
 
 
-# 2. Tìm đúng candidate bundle Q-Former cũ bằng metadata.
-candidate_paths = sorted(
-    INPUT_ROOT.rglob('test_5000_beam5_candidates.json'), key=str
-)
-print('\nCandidate bundles:')
+# 2. Tìm candidate bundle mà không quét 123 nghìn ảnh COCO.
+# Chấp nhận cả raw và file đã có CLIPScore từ một Save Version cũ.
+skip_directories = {
+    'images', 'checkpoints', 'visual-cache', 'visual_cache',
+    'prompt-cache', 'prompt_cache', 'Image_Captioning', '__pycache__',
+}
+candidate_paths = []
+if CANDIDATES_OVERRIDE:
+    candidate_paths = [Path(CANDIDATES_OVERRIDE)]
+else:
+    for root, directories, files in os.walk(INPUT_ROOT):
+        directories[:] = [
+            name for name in directories if name not in skip_directories
+        ]
+        for filename in files:
+            lower = filename.lower()
+            if (
+                lower.endswith('.json')
+                and 'test' in lower
+                and 'candidate' in lower
+                and 'gt_candidate' not in lower
+            ):
+                candidate_paths.append(Path(root) / filename)
+candidate_paths = sorted(set(candidate_paths), key=str)
+
+print('\nCác file test candidate tìm thấy trong Input:')
+if not candidate_paths:
+    print('  KHÔNG CÓ FILE NÀO')
+
 matches = []
 for path in candidate_paths:
     try:
         bundle = json.loads(path.read_text(encoding='utf-8'))
         metadata = bundle.get('metadata', {})
+        records = bundle.get('data', [])
     except Exception as error:
         print('Bỏ qua file không đọc được:', path, repr(error))
         continue
+    first = records[0] if records else {}
+    is_bundle = (
+        len(records) == 5000
+        and isinstance(first.get('candidates'), list)
+        and len(first.get('candidates', [])) > 0
+    )
+    adapter = metadata.get('visual_adapter')
+    path_hint = str(path).lower()
+    prompt_conditioned = bool(
+        metadata.get('prompt_conditioned_qformer', False)
+    )
     profile = {
         'split': metadata.get('split'),
-        'count': metadata.get('count'),
-        'adapter': metadata.get('visual_adapter'),
-        'prompt_conditioned': bool(
-            metadata.get('prompt_conditioned_qformer', False)
+        'metadata_count': metadata.get('count'),
+        'actual_count': len(records),
+        'adapter': adapter,
+        'prompt_conditioned': prompt_conditioned,
+        'has_clipscore': bool(
+            first.get('candidates')
+            and 'clipscore' in first['candidates'][0]
         ),
     }
     print('-', path, profile)
     if (
-        metadata.get('split') == 'test'
-        and int(metadata.get('count', -1)) == 5000
-        and metadata.get('visual_adapter') == 'qformer'
-        and not bool(metadata.get('prompt_conditioned_qformer', False))
+        is_bundle
+        and metadata.get('split', 'test') == 'test'
+        and (adapter == 'qformer' or 'qformer' in path_hint)
+        and not prompt_conditioned
+        and 'prompt_conditioned' not in path_hint
     ):
         matches.append(path)
 
-assert len(matches) == 1, (
-    f'Cần đúng một candidate bundle Q-Former cũ, tìm thấy {len(matches)}: '
-    f'{matches}'
+if not candidate_paths:
+    raise FileNotFoundError(
+        'Input hiện tại không chứa beam candidates test. Hãy Add Input output '
+        'của notebook Q-Former cũ có test_5000_beam5_candidates.json hoặc '
+        'test_5000_beam5_clipscore_candidates.json. Checkpoint/predictions rank-0 '
+        'không đủ để re-rank.'
+    )
+if len(matches) != 1:
+    raise RuntimeError(
+        f'Cần đúng một candidate bundle Q-Former cũ, nhận diện được {len(matches)}: '
+        f'{matches}. Nếu có nhiều file, gán CANDIDATES_OVERRIDE bằng đường dẫn '
+        'file Q-Former cũ cần dùng.'
+    )
+SOURCE_CANDIDATES = matches[0]
+
+# Ground truth thường nằm cạnh raw candidates; nếu file source ở thư mục
+# reranking thì tìm trong cùng cây output notebook.
+ground_truth_matches = sorted(
+    SOURCE_CANDIDATES.parent.rglob('test_5000_gt_candidates.json'), key=str
 )
-RAW_CANDIDATES = matches[0]
-GROUND_TRUTH = RAW_CANDIDATES.parent / 'test_5000_gt_candidates.json'
+if not ground_truth_matches:
+    for parent in SOURCE_CANDIDATES.parents:
+        if parent == INPUT_ROOT.parent:
+            break
+        ground_truth_matches.extend(
+            sorted(parent.glob('**/test_5000_gt_candidates.json'), key=str)
+        )
+        if ground_truth_matches:
+            break
+ground_truth_matches = sorted(set(ground_truth_matches), key=str)
+if len(ground_truth_matches) != 1:
+    raise RuntimeError(
+        f'Không xác định duy nhất ground truth đi kèm {SOURCE_CANDIDATES}: '
+        f'{ground_truth_matches}'
+    )
+GROUND_TRUTH = ground_truth_matches[0]
 assert GROUND_TRUTH.is_file(), GROUND_TRUTH
-print('\nSelected old Q-Former candidates:', RAW_CANDIDATES)
+print('\nSelected old Q-Former candidates:', SOURCE_CANDIDATES)
 print('Matched ground truth:', GROUND_TRUTH)
 
 
@@ -120,18 +199,26 @@ run([
 ])
 
 
-# 4. Tính CLIPScore cho candidates cũ.
+# 4. Tính CLIPScore nếu source chưa có; nếu đã có thì dùng lại trực tiếp.
 OUTPUT.mkdir(parents=True, exist_ok=True)
-SCORED_CANDIDATES = OUTPUT / 'test_5000_qformer_old_clipscore_candidates.json'
-run([
-    sys.executable, '-u', PROJECT_REPO / 'score_clip_candidates.py',
-    '--candidates', RAW_CANDIDATES,
-    '--visual-cache', VISUAL_CACHE,
-    '--output', SCORED_CANDIDATES,
-    '--model', 'openai/clip-vit-base-patch16',
-    '--batch-size', '64',
-    '--device', 'cuda',
-])
+source_bundle = json.loads(SOURCE_CANDIDATES.read_text(encoding='utf-8'))
+source_first_candidate = source_bundle['data'][0]['candidates'][0]
+if 'clipscore' in source_first_candidate:
+    SCORED_CANDIDATES = SOURCE_CANDIDATES
+    print('Dùng lại CLIPScore có sẵn:', SCORED_CANDIDATES)
+else:
+    SCORED_CANDIDATES = (
+        OUTPUT / 'test_5000_qformer_old_clipscore_candidates.json'
+    )
+    run([
+        sys.executable, '-u', PROJECT_REPO / 'score_clip_candidates.py',
+        '--candidates', SOURCE_CANDIDATES,
+        '--visual-cache', VISUAL_CACHE,
+        '--output', SCORED_CANDIDATES,
+        '--model', 'openai/clip-vit-base-patch16',
+        '--batch-size', '64',
+        '--device', 'cuda',
+    ])
 
 
 # 5. Đánh giá rank 0.
@@ -212,7 +299,7 @@ run([
 
 
 # 8. Chuyển eval_id sang COCO id cho CHAIR.
-bundle = json.loads(RAW_CANDIDATES.read_text(encoding='utf-8'))
+bundle = json.loads(SOURCE_CANDIDATES.read_text(encoding='utf-8'))
 records = bundle['data']
 eval_to_coco = {int(row['image_id']): int(row['coco_id']) for row in records}
 baseline_chair_input = [
