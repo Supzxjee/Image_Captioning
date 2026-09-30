@@ -149,6 +149,19 @@ if not candidate_paths:
         'test_5000_beam5_clipscore_candidates.json. Checkpoint/predictions rank-0 '
         'không đủ để re-rank.'
     )
+# Một Save Version phục hồi có thể chứa cả raw và scored bundle. Khi đó ưu tiên
+# scored bundle duy nhất để không chạy CLIP lại.
+if len(matches) > 1:
+    scored_matches = []
+    for path in matches:
+        payload = json.loads(path.read_text(encoding='utf-8'))
+        candidate = payload['data'][0]['candidates'][0]
+        if 'clipscore' in candidate:
+            scored_matches.append(path)
+    if len(scored_matches) == 1:
+        print('Có cả raw và scored bundle; tự chọn scored bundle.')
+        matches = scored_matches
+
 if len(matches) != 1:
     raise RuntimeError(
         f'Cần đúng một candidate bundle Q-Former cũ, nhận diện được {len(matches)}: '
