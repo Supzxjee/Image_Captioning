@@ -273,3 +273,10 @@ trợ và 529 bị nghi ngờ (`7,42%`). Đây là thống kê OCC, chưa phải
 So với Q-Former cũ trên test, pipeline mới tăng CIDEr `0,000325` và METEOR
 `0,002306`, nhưng giảm BLEU-1/2/3/4 và ROUGE-L. Do đó đóng góp thực nghiệm rõ
 nhất nằm ở re-ranking; prompt conditioning đơn lẻ không cải thiện caption model.
+
+## Kết quả hallucination của pipeline cuối
+
+CHAIR trên test giảm từ `CHAIRs=0,0490`, `CHAIRi=0,034464` ở rank 0 xuống
+`CHAIRs=0,0364`, `CHAIRi=0,024651` sau re-ranking; Recall tăng từ `0,436428` lên
+`0,451924`. Có 98 caption được sửa từ hallucinated thành clean và 35 caption bị
+thay đổi theo chiều ngược lại, giảm ròng 63 caption hallucinated trên 5.000 ảnh.

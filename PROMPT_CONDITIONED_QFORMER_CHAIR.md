@@ -154,3 +154,25 @@ print('Summary:', summary_path)
 `CHAIRs` và `CHAIRi` càng thấp càng tốt; `Recall` càng cao càng tốt. Báo cáo cả
 `sentence_transitions`, đặc biệt so sánh `improved_to_clean` với
 `regressed_to_hallucinated`.
+
+## Kết quả CHAIR trên test 5.000 ảnh
+
+| Hệ thống | CHAIRs ↓ | CHAIRi ↓ | Recall ↑ |
+|---|---:|---:|---:|
+| Prompt-Conditioned rank 0 | 0.049000 | 0.034464 | 0.436428 |
+| + fixed re-ranking 0.3/0.4/0.3 | **0.036400** | **0.024651** | **0.451924** |
+| Chênh lệch | **-0.012600** | **-0.009813** | **+0.015496** |
+
+CHAIRs giảm từ 4,90% xuống 3,64%, tương đương giảm tương đối 25,7%. CHAIRi giảm
+từ 3,45% xuống 2,47%, tương đương giảm tương đối 28,5%. Recall tăng 1,55 điểm
+phần trăm.
+
+Trong 5.000 ảnh, rank 0 có 245 caption bị CHAIR đánh dấu và hệ thống cuối có 182.
+Có 98 caption chuyển từ hallucinated sang clean, 35 caption chuyển ngược lại, 147
+caption vẫn hallucinated và 4.720 caption đều clean. Như vậy re-ranking làm giảm
+ròng 63 caption chứa object hallucination.
+
+Kết quả này chứng minh re-ranking giảm object hallucination trên cùng tập test.
+Nó chưa chứng minh prompt conditioning tạo ra cải thiện, vì prompt-conditioned rank
+0 thấp hơn Q-Former cũ ở các metric caption. Ablation tiếp theo cần áp dụng cùng
+re-ranker lên candidates của Q-Former cũ.
