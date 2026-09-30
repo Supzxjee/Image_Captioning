@@ -395,3 +395,62 @@ Prompt-Conditioned rank 0 và Prompt-Conditioned re-ranked. Vì cùng fixed weig
 được áp dụng trên test, khác biệt giữa hai hàng re-ranked phản ánh ảnh hưởng của
 prompt conditioning trong cùng downstream pipeline. Không đổi weights sau kết quả
 này.
+
+## Kết quả test 5.000 ảnh
+
+Bộ trọng số `decoder=0.3`, `CLIPScore=0.4`, `OCC=0.3` được giữ nguyên từ
+validation của Prompt-Conditioned Q-Former và áp dụng trực tiếp, không tune lại
+trên test của Q-Former cũ.
+
+| Mô hình | BLEU-1 | BLEU-2 | BLEU-3 | BLEU-4 | METEOR | ROUGE-L | CIDEr |
+|---|---:|---:|---:|---:|---:|---:|---:|
+| Q-Former cũ, rank 0 | 0.767393 | 0.608733 | 0.474553 | **0.370666** | 0.285039 | 0.573118 | 1.188245 |
+| Q-Former cũ + fixed re-ranking | **0.772729** | **0.615227** | **0.478446** | 0.369356 | **0.290791** | **0.577798** | **1.221815** |
+| Prompt-Conditioned Q-Former, rank 0 | 0.759712 | 0.598945 | 0.463337 | 0.359790 | 0.281008 | 0.566814 | 1.151742 |
+| Prompt-Conditioned + fixed re-ranking | 0.762326 | 0.603126 | 0.464612 | 0.356083 | 0.287345 | 0.571062 | 1.188570 |
+
+So với rank 0 của chính Q-Former cũ, re-ranking thay 2.941/5.000 caption
+(`58,82%`) và thay đổi metric như sau:
+
+| Metric | Chênh lệch re-ranked − rank 0 |
+|---|---:|
+| BLEU-1 | +0.005336 |
+| BLEU-2 | +0.006493 |
+| BLEU-3 | +0.003893 |
+| BLEU-4 | -0.001310 |
+| METEOR | +0.005752 |
+| ROUGE-L | +0.004680 |
+| CIDEr | +0.033570 |
+
+Re-ranking làm giảm nhẹ BLEU-4 nhưng cải thiện rõ CIDEr, METEOR, ROUGE-L và
+BLEU-1/2/3. Caption sau re-ranking có 7.086 object mentions được nhận diện, gồm
+6.552 mentions được YOLO hỗ trợ và 534 mentions bị nghi ngờ (`7,54%`).
+
+## Kết quả CHAIR
+
+| Mô hình | CHAIRs ↓ | CHAIRi ↓ | Recall ↑ |
+|---|---:|---:|---:|
+| Q-Former cũ, rank 0 | 0.0432 | 0.030299 | 0.437508 |
+| Q-Former cũ + fixed re-ranking | **0.0348** | **0.023712** | **0.453131** |
+| Prompt-Conditioned, rank 0 | 0.0490 | 0.034464 | 0.436428 |
+| Prompt-Conditioned + fixed re-ranking | 0.0364 | 0.024651 | 0.451924 |
+
+Trên Q-Former cũ, fixed re-ranking giảm CHAIRs tuyệt đối `0.0084`, tương đối
+`19,44%`; giảm CHAIRi tuyệt đối `0.006587`, tương đối `21,74%`; đồng thời tăng
+Recall `0.015623`. Có 82 caption chuyển từ hallucinated sang clean và 40 caption
+chuyển theo chiều ngược lại, tức giảm ròng 42 caption hallucinated. Các trường hợp
+còn lại gồm 4.744 caption đều clean và 134 caption vẫn hallucinated ở cả hai đầu.
+
+## Kết luận ablation
+
+Với cùng re-ranking cố định, Q-Former cũ cao hơn Prompt-Conditioned Q-Former ở
+cả bảy metric caption: `+0.010403` BLEU-1, `+0.012101` BLEU-2, `+0.013834`
+BLEU-3, `+0.013273` BLEU-4, `+0.003446` METEOR, `+0.006735` ROUGE-L và
+`+0.033246` CIDEr. Nó cũng có CHAIRs/CHAIRi thấp hơn và Recall cao hơn.
+
+Do đó, cải thiện của pipeline cuối đến từ cơ chế chọn lại candidates bằng
+CLIPScore và OCC. Cách đưa prompt trực tiếp vào Q-Former hiện tại làm giảm chất
+lượng visual queries và không được giữ trong mô hình cuối. Cấu hình được chọn sau
+ablation là **Q-Former cũ + fixed multi-score re-ranking 0.3/0.4/0.3**. Kết luận
+này áp dụng cho checkpoint và một seed hiện tại; chưa thay thế thí nghiệm nhiều
+seed.
