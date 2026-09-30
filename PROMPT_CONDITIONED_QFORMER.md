@@ -436,9 +436,18 @@ def exactly_one(name):
 SCORED = exactly_one('val_5000_beam5_clipscore_candidates.json')
 GROUND_TRUTH = exactly_one('val_5000_gt_candidates.json')
 assert DETECTIONS.is_file(), DETECTIONS
-assert REPO.is_dir(), REPO
+if not REPO.exists():
+    run([
+        'git', 'clone',
+        'https://github.com/Supzxjee/Image_Captioning.git',
+        REPO,
+    ])
 run(['git', 'fetch', 'origin'], cwd=REPO)
 run(['git', 'checkout', '--detach', 'badda5a'], cwd=REPO)
+run([
+    sys.executable, '-m', 'pip', 'install', '-q', '-r',
+    REPO / 'requirements.txt',
+])
 
 run([
     sys.executable, '-u', REPO / 'rerank_multiscore.py',
