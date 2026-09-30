@@ -280,3 +280,5 @@ Báo cáo tiến độ tuần 24/09/2026: [WEEKLY_REPORT_2026-09-24.md](WEEKLY_R
 Prompt-Conditioned Q-Former và re-ranking đa điểm: [PROMPT_CONDITIONED_QFORMER.md](PROMPT_CONDITIONED_QFORMER.md).
 
 Test cố định cho Prompt-Conditioned Q-Former: [PROMPT_CONDITIONED_QFORMER_TEST.md](PROMPT_CONDITIONED_QFORMER_TEST.md).
+
+CHAIR test cho Prompt-Conditioned Q-Former: [PROMPT_CONDITIONED_QFORMER_CHAIR.md](PROMPT_CONDITIONED_QFORMER_CHAIR.md).

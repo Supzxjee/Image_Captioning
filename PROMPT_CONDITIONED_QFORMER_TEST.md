@@ -257,3 +257,19 @@ print('Predictions:', final['predictions'])
 print('Details:', final['details'])
 print('Hoàn tất:', experiment_dir)
 ```
+
+## Kết quả test 5.000 ảnh
+
+| Mô hình | BLEU-1 | BLEU-2 | BLEU-3 | BLEU-4 | METEOR | ROUGE-L | CIDEr |
+|---|---:|---:|---:|---:|---:|---:|---:|
+| Prompt-Conditioned rank 0 | 0.759712 | 0.598945 | 0.463337 | **0.359790** | 0.281008 | 0.566814 | 1.151742 |
+| + fixed re-ranking 0.3/0.4/0.3 | **0.762326** | **0.603126** | **0.464612** | 0.356083 | **0.287345** | **0.571062** | **1.188570** |
+
+Re-ranking đổi 2.885/5.000 caption. So với rank 0, CIDEr tăng `0,036827`,
+METEOR tăng `0,006337`, ROUGE-L tăng `0,004248`, BLEU-1/2/3 tăng và BLEU-4
+giảm `0,003708`. Caption cuối có 7.127 object mentions, gồm 6.598 được YOLO hỗ
+trợ và 529 bị nghi ngờ (`7,42%`). Đây là thống kê OCC, chưa phải CHAIR.
+
+So với Q-Former cũ trên test, pipeline mới tăng CIDEr `0,000325` và METEOR
+`0,002306`, nhưng giảm BLEU-1/2/3/4 và ROUGE-L. Do đó đóng góp thực nghiệm rõ
+nhất nằm ở re-ranking; prompt conditioning đơn lẻ không cải thiện caption model.
