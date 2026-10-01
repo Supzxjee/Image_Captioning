@@ -42,6 +42,15 @@ class TestWorkflowTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             Config(prompt_conditioned_qformer=True)
         with self.assertRaises(ValueError):
+            Config(object_semantic_alignment=True, object_prompt_cache_path='objects.pt')
+        with self.assertRaises(ValueError):
+            Config(visual_adapter='qformer', object_semantic_alignment=True)
+        objects = parse_args(['--visual-adapter', 'qformer',
+                              '--object-semantic-alignment',
+                              '--object-prompt-cache-path', 'objects.pt'])
+        self.assertTrue(objects.object_semantic_alignment)
+        self.assertEqual(objects.object_prompt_cache_path, 'objects.pt')
+        with self.assertRaises(ValueError):
             Config(visual_adapter='qformer', alignment_weight=0.02,
                    region_targets_path='regions.pt')
         itc = parse_args(['--visual-adapter', 'qformer', '--itc-weight', '0.1',

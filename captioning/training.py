@@ -102,6 +102,12 @@ def train_one_epoch(model, base_model, loader, optimizer, criterion, epoch, conf
         prompt_tokens = prompt_tokens.to(config.device, non_blocking=True)
         prompt_mask = prompt_mask.to(config.device, non_blocking=True)
         offset = 5
+        object_prompt_tokens = None
+        object_prompt_mask = None
+        if config.object_semantic_alignment:
+            object_prompt_tokens = batch[offset].to(config.device, non_blocking=True)
+            object_prompt_mask = batch[offset + 1].to(config.device, non_blocking=True)
+            offset += 2
         caption_embeddings = None
         if config.itc_weight > 0:
             caption_embeddings = batch[offset].to(config.device, non_blocking=True)
@@ -124,6 +130,8 @@ def train_one_epoch(model, base_model, loader, optimizer, criterion, epoch, conf
             tgt_key_padding_mask=tgt_padding_mask,
             return_visual=region_batch is not None,
             return_itc=caption_embeddings is not None,
+            object_prompt_tokens=object_prompt_tokens,
+            object_prompt_mask=object_prompt_mask,
         )
         if region_batch is not None or caption_embeddings is not None:
             logits, visual_features = output
@@ -230,6 +238,9 @@ def train_model(model, train_loader, data, config, accelerator=None):
             'num_visual_queries': config.num_visual_queries,
             'qformer_layers': config.qformer_layers,
             'prompt_conditioned_qformer': config.prompt_conditioned_qformer,
+            'object_semantic_alignment': config.object_semantic_alignment,
+            'object_prompt_cache_path': config.object_prompt_cache_path,
+            'object_prompt_metadata': data.object_prompt_metadata,
             'caption_embedding_cache_path': config.caption_embedding_cache_path,
             'itc_weight': config.itc_weight,
             'itc_temperature': config.itc_temperature,

@@ -42,6 +42,7 @@ def run(config):
         qformer_layers=config.qformer_layers,
         use_itc=config.itc_weight > 0,
         prompt_conditioned_qformer=config.prompt_conditioned_qformer,
+        object_semantic_alignment=config.object_semantic_alignment,
     ).to(config.device)
     if config.is_main_process:
         print('Encoder initialized.', flush=True)
@@ -51,6 +52,9 @@ def run(config):
             if config.prompt_conditioned_qformer:
                 print('Prompt conditioning active: masked prompt semantics gate every visual '
                       'query before image cross-attention.', flush=True)
+            if config.object_semantic_alignment:
+                print('Object semantic alignment active: Q-Former queries attend to separate '
+                      'CLIP object prompts through a residual gate.', flush=True)
         if config.itc_weight > 0:
             print(f'ITC active: weight={config.itc_weight} | '
                   f'temperature={config.itc_temperature}.', flush=True)

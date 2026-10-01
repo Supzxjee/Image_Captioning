@@ -11,6 +11,7 @@ from .tokenizer import CaptionTokenizer
 from .visual_cache import VisualCache, coco_image_id
 from .caption_cache import CaptionEmbeddingCache
 from .semantic_prompts import align_prompt_cache
+from .object_concepts import align_object_concept_cache
 
 NORMALIZATION_STATS = {
     'mean': [0.48145466, 0.4578275, 0.40821073],
@@ -35,7 +36,8 @@ def build_image_transform(preprocessing='bilinear'):
 
 class CocoPromptDataset(Dataset):
     def __init__(self, dataframe, transform, caption_tokenizer, prompt_cache, visual_cache=None,
-                 region_targets=None, max_regions=10, caption_embedding_cache=None):
+                 region_targets=None, max_regions=10, caption_embedding_cache=None,
+                 object_prompt_cache=None):
         self.dataframe = dataframe.reset_index(drop=True)
         self.transform = transform
         self.caption_tokenizer = caption_tokenizer
@@ -44,6 +46,7 @@ class CocoPromptDataset(Dataset):
         self.region_targets = region_targets
         self.max_regions = max_regions
         self.caption_embedding_cache = caption_embedding_cache
+        self.object_prompt_cache = object_prompt_cache
 
     def __len__(self):
         return len(self.dataframe)
@@ -69,6 +72,11 @@ class CocoPromptDataset(Dataset):
             prompt_entry['tokens'].float(),
             prompt_entry['mask'].long(),
         )
+        if self.object_prompt_cache is not None:
+            object_entry = self.object_prompt_cache.get(image_path)
+            if object_entry is None:
+                raise KeyError(f'Missing object prompt embedding for: {image_path}')
+            sample += (object_entry['tokens'].float(), object_entry['mask'].long())
         if self.caption_embedding_cache is not None:
             sample += (torch.from_numpy(self.caption_embedding_cache.read(row['coco_id'])),)
         if self.region_targets is None:
@@ -143,6 +151,25 @@ def load_data(config):
     if missing_prompts:
         raise ValueError(f'Missing {len(missing_prompts)} prompt embeddings; examples: {missing_prompts[:10]}')
 
+    object_prompt_cache, object_prompt_metadata = None, {}
+    if config.object_semantic_alignment:
+        if not os.path.isfile(config.object_prompt_cache_path):
+            raise FileNotFoundError(config.object_prompt_cache_path)
+        object_bundle = torch.load(
+            config.object_prompt_cache_path, map_location='cpu', weights_only=False)
+        if not isinstance(object_bundle, dict) or 'data' not in object_bundle:
+            raise ValueError('Object prompt cache must contain a data mapping.')
+        object_prompt_cache = align_object_concept_cache(
+            object_bundle['data'], [item['image'] for item in train_data + val_data + test_data])
+        object_prompt_metadata = object_bundle.get('metadata', {})
+        missing_objects = [item['filename'] for item in selected_prompts
+                           if item['image'] not in object_prompt_cache]
+        if missing_objects:
+            raise ValueError(f'Missing {len(missing_objects)} object prompt embeddings; '
+                             f'examples: {missing_objects[:10]}')
+        _log(config, f'Object prompt entries: {len(object_prompt_cache):,} | '
+                     f'max objects={object_prompt_metadata.get("max_objects", "unknown")}')
+
     if config.test_after_train and len(test_df) == 0:
         raise ValueError('Test split is empty.')
     image_transform = build_image_transform(config.visual_preprocessing)
@@ -187,8 +214,10 @@ def load_data(config):
         _log(config, f'Region targets: {len(region_targets):,} images | '
                      f'{label_prototypes.size(0)} labels | lambda={config.alignment_weight}')
     return SimpleNamespace(prompt_metadata=prompt_embedding_bundle.get('metadata', {}),
+                           object_prompt_metadata=object_prompt_metadata,
                            visual_cache=visual_cache, train_df=train_df, val_df=val_df, test_df=test_df,
                            tokenizer=caption_tokenizer, prompt_cache=prompt_embedding_cache,
+                           object_prompt_cache=object_prompt_cache,
                            transform=image_transform, vocab_size=vocab_size,
                            caption_embedding_cache=caption_embedding_cache,
                            region_targets=region_targets, region_metadata=region_metadata,
@@ -198,7 +227,7 @@ def load_data(config):
 def build_train_loader(config, data):
     dataset = CocoPromptDataset(data.train_df, data.transform, data.tokenizer, data.prompt_cache,
                                 data.visual_cache, data.region_targets, config.max_regions,
-                                data.caption_embedding_cache)
+                                data.caption_embedding_cache, data.object_prompt_cache)
     device_type = getattr(config.device, 'type', config.device)
     loader = DataLoader(dataset, batch_size=config.batch_size, shuffle=True, drop_last=True,
                         num_workers=config.num_workers, pin_memory=device_type == 'cuda')

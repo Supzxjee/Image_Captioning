@@ -17,7 +17,8 @@ def evaluate_model(model, data, config):
     adapter = checkpoint.get('visual_adapter', 'direct')
     print(f"Loaded checkpoint: epoch {checkpoint['epoch']} | loss {checkpoint['loss']:.4f} | "
           f"visual adapter {adapter} | prompt-conditioned Q-Former "
-          f"{bool(checkpoint.get('prompt_conditioned_qformer', False))}", flush=True)
+          f"{bool(checkpoint.get('prompt_conditioned_qformer', False))} | object alignment "
+          f"{bool(checkpoint.get('object_semantic_alignment', False))}", flush=True)
     config.eval_dir.mkdir(parents=True, exist_ok=True)
     eval_df = data.val_df if config.split == 'val' else data.test_df
     if config.limit:
@@ -30,6 +31,8 @@ def evaluate_model(model, data, config):
     for _, row in tqdm(eval_df.iterrows(), total=len(eval_df), desc=f'Generating {config.split} captions'):
         image_path = row['image']
         prompt_entry = data.prompt_cache[image_path]
+        object_entry = (data.object_prompt_cache[image_path]
+                        if data.object_prompt_cache is not None else None)
         image_tensor = load_visual_input(row, data.transform, data.visual_cache)
         caption = generate_caption_beam_search(
             model=model,
@@ -39,6 +42,8 @@ def evaluate_model(model, data, config):
             tokenizer=data.tokenizer,
             beam_size=5,
             device=config.device,
+            object_prompt_tokens=(object_entry['tokens'] if object_entry else None),
+            object_prompt_mask=(object_entry['mask'] if object_entry else None),
         )
         predictions.append({'image_id': int(row['eval_id']), 'caption': caption})
         if len(predictions) % 50 == 0:
@@ -89,6 +94,8 @@ def generate_candidate_file(model, data, config):
     for _, row in tqdm(eval_df.iterrows(), total=len(eval_df),
                        desc=f'Generating {config.split} candidates'):
         prompt_entry = data.prompt_cache[row['image']]
+        object_entry = (data.object_prompt_cache[row['image']]
+                        if data.object_prompt_cache is not None else None)
         image_tensor = load_visual_input(row, data.transform, data.visual_cache)
         candidates = generate_caption_candidates(
             model=model,
@@ -99,6 +106,8 @@ def generate_candidate_file(model, data, config):
             beam_size=5,
             candidate_count=config.candidate_count,
             device=config.device,
+            object_prompt_tokens=(object_entry['tokens'] if object_entry else None),
+            object_prompt_mask=(object_entry['mask'] if object_entry else None),
         )
         records.append({
             'image_id': int(row['eval_id']),
@@ -126,6 +135,8 @@ def generate_candidate_file(model, data, config):
             'visual_adapter': checkpoint.get('visual_adapter', 'direct'),
             'prompt_conditioned_qformer': bool(
                 checkpoint.get('prompt_conditioned_qformer', False)),
+            'object_semantic_alignment': bool(
+                checkpoint.get('object_semantic_alignment', False)),
         },
         'data': records,
     }

@@ -11,7 +11,8 @@ def _decode_tokens(token_ids, tokenizer):
 
 def generate_caption_candidates(model, image, cached_prompt_tokens, prompt_mask, tokenizer,
                                 max_len=MAX_CAPTION_LEN, beam_size=5, candidate_count=5,
-                                device=None):
+                                device=None, object_prompt_tokens=None,
+                                object_prompt_mask=None):
     """Return distinct final beams while preserving the original raw-score ordering."""
     if beam_size < 1 or candidate_count < 1 or candidate_count > beam_size:
         raise ValueError('Require 1 <= candidate_count <= beam_size.')
@@ -21,7 +22,14 @@ def generate_caption_candidates(model, image, cached_prompt_tokens, prompt_mask,
         image = image.unsqueeze(0).to(device)
         cached_prompt_tokens = cached_prompt_tokens.unsqueeze(0).to(device, dtype=torch.float32)
         prompt_mask = prompt_mask.unsqueeze(0).to(device, dtype=torch.long)
-        memory, memory_pad_mask = model.build_memory(image, cached_prompt_tokens, prompt_mask)
+        if object_prompt_tokens is not None:
+            object_prompt_tokens = object_prompt_tokens.unsqueeze(0).to(
+                device, dtype=torch.float32)
+        if object_prompt_mask is not None:
+            object_prompt_mask = object_prompt_mask.unsqueeze(0).to(device, dtype=torch.long)
+        memory, memory_pad_mask = model.build_memory(
+            image, cached_prompt_tokens, prompt_mask,
+            object_prompt_tokens, object_prompt_mask)
 
         beams = [([tokenizer.bos_idx], 0.0)]
         for _ in range(max_len - 1):
@@ -67,8 +75,10 @@ def generate_caption_candidates(model, image, cached_prompt_tokens, prompt_mask,
 
 
 def generate_caption_beam_search(model, image, cached_prompt_tokens, prompt_mask, tokenizer,
-                                 max_len=MAX_CAPTION_LEN, beam_size=5, device=None):
+                                 max_len=MAX_CAPTION_LEN, beam_size=5, device=None,
+                                 object_prompt_tokens=None, object_prompt_mask=None):
     return generate_caption_candidates(
         model, image, cached_prompt_tokens, prompt_mask, tokenizer,
         max_len=max_len, beam_size=beam_size, candidate_count=1, device=device,
+        object_prompt_tokens=object_prompt_tokens, object_prompt_mask=object_prompt_mask,
     )[0]['caption']

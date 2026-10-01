@@ -71,11 +71,58 @@ class LightweightQFormer(nn.Module):
         return queries
 
 
+class ObjectSemanticAlignment(nn.Module):
+    """Retrieve object-prompt evidence for each visual query and fuse it through a gate."""
+    def __init__(self, embed_dim, num_heads, dropout=0.1, object_dim=512):
+        super().__init__()
+        self.object_projection = nn.Sequential(
+            nn.Linear(object_dim, embed_dim),
+            nn.LayerNorm(embed_dim),
+        )
+        self.cross_attn = nn.MultiheadAttention(
+            embed_dim, num_heads, dropout=dropout, batch_first=True)
+        self.gate = nn.Linear(embed_dim * 2, embed_dim)
+        nn.init.zeros_(self.gate.weight)
+        nn.init.constant_(self.gate.bias, -2.0)
+        self.dropout = nn.Dropout(dropout)
+
+    def forward(self, visual_queries, object_tokens, object_mask):
+        if object_tokens.ndim != 3 or object_mask.ndim != 2:
+            raise ValueError('Expected object tokens (B, O, 512) and mask (B, O).')
+        if object_tokens.shape[:2] != object_mask.shape:
+            raise ValueError('Object token and mask dimensions do not match.')
+        valid = object_mask.to(dtype=torch.bool)
+        has_objects = valid.any(dim=1)
+
+        # MultiheadAttention cannot consume a row whose every key is masked.
+        safe_valid = valid.clone()
+        safe_tokens = object_tokens
+        if (~has_objects).any():
+            safe_valid[~has_objects, 0] = True
+            safe_tokens = object_tokens.clone()
+            safe_tokens[~has_objects, 0] = 0
+
+        object_features = self.object_projection(
+            safe_tokens.to(dtype=self.object_projection[0].weight.dtype))
+        attended, _ = self.cross_attn(
+            query=visual_queries,
+            key=object_features,
+            value=object_features,
+            key_padding_mask=~safe_valid,
+            need_weights=False,
+        )
+        gate = torch.sigmoid(self.gate(torch.cat([visual_queries, attended], dim=-1)))
+        aligned = visual_queries + self.dropout(gate * attended)
+        # An image with no accepted detections must preserve the baseline exactly.
+        return torch.where(has_objects[:, None, None], aligned, visual_queries)
+
+
 class UniversalVisionEncoder(nn.Module):
     def __init__(self, model_name='clip', embed_dim=EMBED_DIM, num_heads=NUM_HEADS,
                  attn_dropout=0.1, visual_precision='fp32', load_backbone=True,
                  visual_adapter='direct', num_visual_queries=32, qformer_layers=2,
-                 use_itc=False, prompt_conditioned_qformer=False):
+                 use_itc=False, prompt_conditioned_qformer=False,
+                 object_semantic_alignment=False):
         super().__init__()
         if model_name.lower() != 'clip':
             raise NotImplementedError('Only CLIP is supported in this notebook.')
@@ -92,6 +139,7 @@ class UniversalVisionEncoder(nn.Module):
         self.num_visual_queries = num_visual_queries
         self.qformer_layers = qformer_layers
         self.prompt_conditioned_qformer = prompt_conditioned_qformer
+        self.object_semantic_alignment = object_semantic_alignment
         self.use_itc = use_itc
         self.vis_projection = nn.Linear(768, embed_dim)
         self.qformer = (LightweightQFormer(
@@ -102,6 +150,9 @@ class UniversalVisionEncoder(nn.Module):
             dropout=attn_dropout,
             prompt_conditioned=prompt_conditioned_qformer,
         ) if visual_adapter == 'qformer' else None)
+        self.object_alignment = (ObjectSemanticAlignment(
+            embed_dim, num_heads, attn_dropout
+        ) if object_semantic_alignment else None)
         self.itc_query_projection = (nn.Linear(embed_dim, 512) if use_itc else None)
         self.prompt_projection = nn.Sequential(
             nn.Linear(512, embed_dim),
@@ -141,7 +192,8 @@ class UniversalVisionEncoder(nn.Module):
             features = self.feature_extractor(pixel_values=images).last_hidden_state
         return features.to(dtype=self.vis_projection.weight.dtype)
 
-    def forward(self, images, cached_prompt_tokens, prompt_mask):
+    def forward(self, images, cached_prompt_tokens, prompt_mask,
+                object_prompt_tokens=None, object_prompt_mask=None):
         if images.ndim == 3:
             # Cached raw CLIP last_hidden_state; no backbone forward pass.
             if images.shape[1:] != (197, 768):
@@ -160,6 +212,12 @@ class UniversalVisionEncoder(nn.Module):
             visual_memory = self.qformer(vis_features) if self.qformer is not None else vis_features
             # Preserve the original operation order for existing direct/Q-Former runs.
             prompt_features = self.prompt_projection(cached_prompt_tokens)
+
+        if self.object_alignment is not None:
+            if object_prompt_tokens is None or object_prompt_mask is None:
+                raise ValueError('Object semantic alignment requires object prompt tokens and mask.')
+            visual_memory = self.object_alignment(
+                visual_memory, object_prompt_tokens, object_prompt_mask)
 
         attended_prompt, _ = self.prompt_to_visual_attn(
             query=prompt_features,
@@ -233,9 +291,11 @@ class ImageCaptioningModel(nn.Module):
         self.encoder = encoder
         self.decoder = decoder
 
-    def build_memory(self, images, cached_prompt_tokens, prompt_mask):
+    def build_memory(self, images, cached_prompt_tokens, prompt_mask,
+                     object_prompt_tokens=None, object_prompt_mask=None):
         vis_features, grounded_prompt_features = self.encoder(
-            images, cached_prompt_tokens, prompt_mask
+            images, cached_prompt_tokens, prompt_mask,
+            object_prompt_tokens, object_prompt_mask,
         )
         memory = torch.cat([grounded_prompt_features, vis_features], dim=1)
         prompt_pad_mask = (prompt_mask == 0)
@@ -246,8 +306,11 @@ class ImageCaptioningModel(nn.Module):
         return memory, memory_pad_mask
 
     def forward(self, images, cached_prompt_tokens, prompt_mask, tgt, tgt_key_padding_mask=None,
-                return_visual=False, return_itc=False):
-        memory, memory_pad_mask = self.build_memory(images, cached_prompt_tokens, prompt_mask)
+                return_visual=False, return_itc=False, object_prompt_tokens=None,
+                object_prompt_mask=None):
+        memory, memory_pad_mask = self.build_memory(
+            images, cached_prompt_tokens, prompt_mask,
+            object_prompt_tokens, object_prompt_mask)
         vis_features = memory[:, prompt_mask.size(1):]
         batch_size, memory_len, embed_dim = memory.shape
         captions_per_image = tgt.size(0) // batch_size

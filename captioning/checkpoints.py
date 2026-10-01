@@ -28,6 +28,12 @@ def load_checkpoint(model, path, tokenizer, warm_start=False):
     if checkpoint_uses_itc != model_uses_itc:
         raise RuntimeError(f'Checkpoint ITC setting is {checkpoint_uses_itc}, but model ITC '
                            f'setting is {model_uses_itc}.')
+    checkpoint_uses_objects = bool(checkpoint.get('object_semantic_alignment', False))
+    model_uses_objects = bool(getattr(model.encoder, 'object_semantic_alignment', False))
+    if checkpoint_uses_objects != model_uses_objects and not (
+            warm_start and model_uses_objects and not checkpoint_uses_objects):
+        raise RuntimeError(f'Checkpoint object alignment setting is {checkpoint_uses_objects}, '
+                           f'but model setting is {model_uses_objects}.')
     encoder_state = checkpoint['encoder_state_dict']
     if model.encoder.feature_extractor is None:
         # Older cached-feature checkpoints unnecessarily stored the frozen CLIP
@@ -37,6 +43,9 @@ def load_checkpoint(model, path, tokenizer, warm_start=False):
     if warm_start:
         result = model.encoder.load_state_dict(encoder_state, strict=False)
         allowed = {'prompt_visual_gate.weight', 'prompt_visual_gate.bias'}
+        if model_uses_objects and not checkpoint_uses_objects:
+            allowed.update(key for key in result.missing_keys
+                           if key.startswith('object_alignment.'))
         if set(result.missing_keys) - allowed or result.unexpected_keys:
             raise RuntimeError(f'Incompatible encoder checkpoint: {result}')
     else:
