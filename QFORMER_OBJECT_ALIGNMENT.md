@@ -27,8 +27,10 @@ flowchart LR
 
 ## Cell Kaggle đầy đủ
 
-Chạy `SMOKE=True` trước. Khi 20 batch hoàn thành và checkpoint có metadata đúng,
-đổi thành `False`, chọn **Save Version**, rồi chỉ đánh giá validation 5.000 ảnh.
+Do full run đầu tiên bị treo sau batch 100 trên hai GPU T4, cell dùng cấu hình NCCL
+ổn định hơn và ba chế độ. Chạy `RUN_MODE='diagnostic'` để kiểm tra tới batch 150.
+Nếu hoàn thành và checkpoint có metadata đúng, đổi thành `RUN_MODE='full'`, chọn
+**Save Version**, rồi đánh giá validation 5.000 ảnh.
 
 ```python
 import json
@@ -36,6 +38,13 @@ import os
 import subprocess
 import sys
 from pathlib import Path
+
+# Tránh NCCL treo ngẫu nhiên giữa hai GPU T4 trên Kaggle.
+os.environ['NCCL_P2P_DISABLE'] = '1'
+os.environ['NCCL_IB_DISABLE'] = '1'
+os.environ['NCCL_DEBUG'] = 'INFO'
+os.environ['TORCH_NCCL_ASYNC_ERROR_HANDLING'] = '1'
+os.environ['TORCH_NCCL_HEARTBEAT_TIMEOUT_SEC'] = '300'
 
 import torch
 
@@ -49,10 +58,16 @@ VISUAL_CACHE = Path('/kaggle/input/datasets/ducanh2403/visual-cache')
 DETECTIONS = Path('/kaggle/input/datasets/ducanh2403/objectdetectionecache/objectdetectioncache.json')
 OBJECT_CACHE = Path('/kaggle/working/object_semantic_cache/object_concepts.pt')
 
-SMOKE = True
-EPOCHS = 1 if SMOKE else 10
-EXPERIMENT = ('qformer_object_alignment_smoke' if SMOKE
-              else 'qformer_object_alignment_32q_2l')
+# 'smoke' = 20 batch; 'diagnostic' = 150 batch; 'full' = 10 epoch + validation.
+RUN_MODE = 'diagnostic'
+assert RUN_MODE in {'smoke', 'diagnostic', 'full'}
+MAX_TRAIN_BATCHES = {'smoke': 20, 'diagnostic': 150, 'full': 0}[RUN_MODE]
+EPOCHS = 10 if RUN_MODE == 'full' else 1
+EXPERIMENT = {
+    'smoke': 'qformer_object_alignment_smoke',
+    'diagnostic': 'qformer_object_alignment_diagnostic_150',
+    'full': 'qformer_object_alignment_32q_2l',
+}[RUN_MODE]
 
 
 def run(args, cwd=None):
@@ -161,8 +176,8 @@ train_args = [
     '--batch-size', '32',
     '--num-workers', '0',
 ] + list(map(str, common))
-if SMOKE:
-    train_args += ['--max-train-batches', '20']
+if MAX_TRAIN_BATCHES:
+    train_args += ['--max-train-batches', str(MAX_TRAIN_BATCHES)]
 
 run([
     sys.executable, '-m', 'accelerate.commands.launch',
@@ -183,11 +198,11 @@ assert meta['num_visual_queries'] == 32
 assert meta['qformer_layers'] == 2
 assert meta['object_semantic_alignment'] is True
 assert meta['object_prompt_metadata']['min_confidence'] == 0.5
-assert meta['max_train_batches'] == (20 if SMOKE else 0)
+assert meta['max_train_batches'] == MAX_TRAIN_BATCHES
 print('Checkpoint metadata PASS')
 del meta
 
-if not SMOKE:
+if RUN_MODE == 'full':
     eval_args = [
         'train_h1_2_gated.py',
         '--mode', 'evaluate',
@@ -215,4 +230,3 @@ So sánh rank-0 validation với Q-Former cũ: BLEU-4 `0.370322`, CIDEr `1.17401
 Chỉ sinh candidates và đánh giá test nếu object alignment tăng CIDEr, đồng thời
 BLEU-4 không giảm quá `0.003`. Nếu không đạt, giữ kết quả như ablation E1 và chuyển
 sang E2: object-guided relation alignment, không chỉnh trọng số trên test.
-
