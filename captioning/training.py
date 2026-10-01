@@ -95,6 +95,10 @@ def train_one_epoch(model, base_model, loader, optimizer, criterion, epoch, conf
             break
         if batch_number == 1:
             accelerator.print(f'Epoch {epoch}: first batch loaded; starting GPU forward/backward.')
+        if (config.object_semantic_alignment and
+                (batch_number == 1 or batch_number % 100 == 1)):
+            print(f'[rank {accelerator.process_index}] epoch {epoch} batch {batch_number}: '
+                  'loaded', flush=True)
         images, captions, caption_masks, prompt_tokens, prompt_mask = batch[:5]
         images = images.to(config.device, non_blocking=True)
         captions = captions.to(config.device, non_blocking=True)
@@ -133,6 +137,10 @@ def train_one_epoch(model, base_model, loader, optimizer, criterion, epoch, conf
             object_prompt_tokens=object_prompt_tokens,
             object_prompt_mask=object_prompt_mask,
         )
+        if (config.object_semantic_alignment and
+                (batch_number == 1 or batch_number % 100 == 1)):
+            print(f'[rank {accelerator.process_index}] epoch {epoch} batch {batch_number}: '
+                  'forward complete', flush=True)
         if region_batch is not None or caption_embeddings is not None:
             logits, visual_features = output
         else:
@@ -152,8 +160,16 @@ def train_one_epoch(model, base_model, loader, optimizer, criterion, epoch, conf
         loss = (caption_loss + config.alignment_weight * alignment_loss +
                 config.itc_weight * itc_loss)
         accelerator.backward(loss)
+        if (config.object_semantic_alignment and
+                (batch_number == 1 or batch_number % 100 == 1)):
+            print(f'[rank {accelerator.process_index}] epoch {epoch} batch {batch_number}: '
+                  'backward complete', flush=True)
         accelerator.clip_grad_norm_(model.parameters(), max_norm=1.0)
         optimizer.step()
+        if (config.object_semantic_alignment and
+                (batch_number == 1 or batch_number % 100 == 1)):
+            print(f'[rank {accelerator.process_index}] epoch {epoch} batch {batch_number}: '
+                  'optimizer complete', flush=True)
 
         reduced = accelerator.reduce(
             torch.stack([loss.detach(), caption_loss.detach(), alignment_loss.detach(),

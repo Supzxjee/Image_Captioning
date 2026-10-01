@@ -1,5 +1,6 @@
 """Explicit pipeline orchestration; no training on import."""
 import random
+from datetime import timedelta
 import numpy as np
 import torch
 from .config import post_train_test_config
@@ -10,8 +11,26 @@ def run(config):
     accelerator = None
     if config.mode == 'train':
         from accelerate import Accelerator, DataLoaderConfiguration
-        from accelerate.utils import set_seed
-        accelerator = Accelerator(dataloader_config=DataLoaderConfiguration(split_batches=True))
+        from accelerate.utils import (
+            DistributedDataParallelKwargs,
+            InitProcessGroupKwargs,
+            set_seed,
+        )
+        kwargs_handlers = []
+        if config.object_semantic_alignment:
+            # Some images have no accepted detections, so the object branch can
+            # receive zero gradients on one rank. Explicit unused-parameter
+            # detection prevents the two DDP ranks from waiting on different
+            # gradient buckets. The process-group timeout turns a collective
+            # failure into an actionable error instead of an hours-long hang.
+            kwargs_handlers = [
+                DistributedDataParallelKwargs(find_unused_parameters=True),
+                InitProcessGroupKwargs(timeout=timedelta(minutes=10)),
+            ]
+        accelerator = Accelerator(
+            dataloader_config=DataLoaderConfiguration(split_batches=True),
+            kwargs_handlers=kwargs_handlers,
+        )
         # Keep the sampler seed identical so every rank slices the same global
         # batch sequence. CUDA dropout is made rank-specific after prepare().
         set_seed(config.seed, device_specific=False)
