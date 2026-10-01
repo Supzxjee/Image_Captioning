@@ -28,9 +28,9 @@ flowchart LR
 ## Cell Kaggle đầy đủ
 
 Hai full run bằng DDP đã treo lần lượt sau batch 100 và 200 dù smoke thành công.
-Vì vậy workflow ổn định dùng một GPU, loại bỏ hoàn toàn NCCL/DDP. Chạy
-`RUN_MODE='diagnostic_single'` tới batch 150 để xác nhận batch size 32 vừa VRAM.
-Nếu thành công, đổi thành `RUN_MODE='full_single'` và chọn **Save Version**.
+Vì vậy workflow ổn định dùng một GPU, loại bỏ hoàn toàn NCCL/DDP. Mô hình được
+warm-start từ Q-Former đã train 10 epoch nên E1 trước hết chỉ fine-tune 3 epoch,
+sau đó đánh giá validation. Không tốn 10 epoch cho một hướng chưa được xác nhận.
 
 ```python
 import json
@@ -51,14 +51,16 @@ VISUAL_CACHE = Path('/kaggle/input/datasets/ducanh2403/visual-cache')
 DETECTIONS = Path('/kaggle/input/datasets/ducanh2403/objectdetectionecache/objectdetectioncache.json')
 OBJECT_CACHE = Path('/kaggle/working/object_semantic_cache/object_concepts.pt')
 
-# Không dùng lại dual-GPU run: cả hai lần đều treo sau vài trăm batch.
-RUN_MODE = 'diagnostic_single'
-assert RUN_MODE in {'diagnostic_single', 'full_single'}
-MAX_TRAIN_BATCHES = {'diagnostic_single': 150, 'full_single': 0}[RUN_MODE]
-EPOCHS = 10 if RUN_MODE == 'full_single' else 1
+# 'diagnostic_single': 150 batch để kiểm tra VRAM; 'pilot_single': 3 epoch + val.
+# Smoke dual-GPU đã PASS nên có thể chạy thẳng pilot_single; OOM nếu có sẽ xuất
+# hiện ngay batch đầu, không làm mất nhiều giờ.
+RUN_MODE = 'pilot_single'
+assert RUN_MODE in {'diagnostic_single', 'pilot_single'}
+MAX_TRAIN_BATCHES = {'diagnostic_single': 150, 'pilot_single': 0}[RUN_MODE]
+EPOCHS = 3 if RUN_MODE == 'pilot_single' else 1
 EXPERIMENT = {
     'diagnostic_single': 'qformer_object_alignment_single_gpu_diagnostic_150',
-    'full_single': 'qformer_object_alignment_32q_2l_single_gpu',
+    'pilot_single': 'qformer_object_alignment_32q_2l_single_gpu_3ep',
 }[RUN_MODE]
 
 
@@ -190,7 +192,7 @@ assert meta['max_train_batches'] == MAX_TRAIN_BATCHES
 print('Checkpoint metadata PASS')
 del meta
 
-if RUN_MODE == 'full_single':
+if RUN_MODE == 'pilot_single':
     eval_args = [
         'train_h1_2_gated.py',
         '--mode', 'evaluate',
@@ -215,6 +217,6 @@ print('\nHoàn tất:', experiment_dir)
 ## Quy tắc quyết định
 
 So sánh rank-0 validation với Q-Former cũ: BLEU-4 `0.370322`, CIDEr `1.174012`.
-Chỉ sinh candidates và đánh giá test nếu object alignment tăng CIDEr, đồng thời
-BLEU-4 không giảm quá `0.003`. Nếu không đạt, giữ kết quả như ablation E1 và chuyển
-sang E2: object-guided relation alignment, không chỉnh trọng số trên test.
+Chỉ kéo dài fine-tuning hoặc sinh candidates nếu pilot 3 epoch tăng CIDEr, đồng
+thời BLEU-4 không giảm quá `0.003`. Nếu không đạt, giữ kết quả như ablation E1 và
+chuyển sang E2: object-guided relation alignment, không chỉnh trọng số trên test.
