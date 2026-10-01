@@ -234,6 +234,14 @@ See [VLM_EXPERIMENTS.md](VLM_EXPERIMENTS.md). Kaggle notebooks:
 `vlm_embed_kaggle.ipynb` (both CLIP prompt caches), and
 `vlm_train_kaggle.ipynb` (one variant per version, train + full test).
 
+## Q-Former object semantic alignment
+
+`build_object_concept_cache.py` mã hóa từng nhãn YOLO thành một CLIP object
+prompt riêng. Tùy chọn `--object-semantic-alignment` cho 32 Q-Former queries
+truy vấn các object embeddings rồi fusion qua residual gate. Cell Kaggle từ
+warm-start, smoke test đến validation nằm trong
+[QFORMER_OBJECT_ALIGNMENT.md](QFORMER_OBJECT_ALIGNMENT.md).
+
 ## Audit cache YOLO trước region alignment
 
 Chạy `audit_yolo_detections.py` để kiểm tra coverage theo split, confidence,
