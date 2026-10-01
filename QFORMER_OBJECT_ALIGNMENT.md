@@ -27,10 +27,10 @@ flowchart LR
 
 ## Cell Kaggle đầy đủ
 
-Do full run đầu tiên bị treo sau batch 100 trên hai GPU T4, cell dùng cấu hình NCCL
-ổn định hơn và ba chế độ. Chạy `RUN_MODE='diagnostic'` để kiểm tra tới batch 150.
-Nếu hoàn thành và checkpoint có metadata đúng, đổi thành `RUN_MODE='full'`, chọn
-**Save Version**, rồi đánh giá validation 5.000 ảnh.
+Hai full run bằng DDP đã treo lần lượt sau batch 100 và 200 dù smoke thành công.
+Vì vậy workflow ổn định dùng một GPU, loại bỏ hoàn toàn NCCL/DDP. Chạy
+`RUN_MODE='diagnostic_single'` tới batch 150 để xác nhận batch size 32 vừa VRAM.
+Nếu thành công, đổi thành `RUN_MODE='full_single'` và chọn **Save Version**.
 
 ```python
 import json
@@ -38,13 +38,6 @@ import os
 import subprocess
 import sys
 from pathlib import Path
-
-# Tránh NCCL treo ngẫu nhiên giữa hai GPU T4 trên Kaggle.
-os.environ['NCCL_P2P_DISABLE'] = '1'
-os.environ['NCCL_IB_DISABLE'] = '1'
-os.environ['NCCL_DEBUG'] = 'INFO'
-os.environ['TORCH_NCCL_ASYNC_ERROR_HANDLING'] = '1'
-os.environ['TORCH_NCCL_HEARTBEAT_TIMEOUT_SEC'] = '300'
 
 import torch
 
@@ -58,22 +51,21 @@ VISUAL_CACHE = Path('/kaggle/input/datasets/ducanh2403/visual-cache')
 DETECTIONS = Path('/kaggle/input/datasets/ducanh2403/objectdetectionecache/objectdetectioncache.json')
 OBJECT_CACHE = Path('/kaggle/working/object_semantic_cache/object_concepts.pt')
 
-# 'smoke' = 20 batch; 'diagnostic' = 150 batch; 'full' = 10 epoch + validation.
-RUN_MODE = 'diagnostic'
-assert RUN_MODE in {'smoke', 'diagnostic', 'full'}
-MAX_TRAIN_BATCHES = {'smoke': 20, 'diagnostic': 150, 'full': 0}[RUN_MODE]
-EPOCHS = 10 if RUN_MODE == 'full' else 1
+# Không dùng lại dual-GPU run: cả hai lần đều treo sau vài trăm batch.
+RUN_MODE = 'diagnostic_single'
+assert RUN_MODE in {'diagnostic_single', 'full_single'}
+MAX_TRAIN_BATCHES = {'diagnostic_single': 150, 'full_single': 0}[RUN_MODE]
+EPOCHS = 10 if RUN_MODE == 'full_single' else 1
 EXPERIMENT = {
-    'smoke': 'qformer_object_alignment_smoke',
-    'diagnostic': 'qformer_object_alignment_diagnostic_150',
-    'full': 'qformer_object_alignment_32q_2l',
+    'diagnostic_single': 'qformer_object_alignment_single_gpu_diagnostic_150',
+    'full_single': 'qformer_object_alignment_32q_2l_single_gpu',
 }[RUN_MODE]
 
 
-def run(args, cwd=None):
+def run(args, cwd=None, env=None):
     args = list(map(str, args))
     print('\nRunning:', ' '.join(args), flush=True)
-    subprocess.run(args, cwd=cwd, check=True)
+    subprocess.run(args, cwd=cwd, env=env, check=True)
 
 
 def find_old_qformer_checkpoint():
@@ -115,7 +107,7 @@ print('PyTorch:', torch.__version__)
 print('CUDA devices:', torch.cuda.device_count())
 for index in range(torch.cuda.device_count()):
     print(f'GPU {index}:', torch.cuda.get_device_name(index))
-assert torch.cuda.device_count() == 2, 'Notebook phải chọn GPU T4 x2.'
+assert torch.cuda.device_count() >= 1, 'Notebook phải bật GPU.'
 for path in (COCO_JSON, PROMPT_CACHE, DETECTIONS):
     assert path.is_file(), path
 assert COCO_IMAGES.is_dir(), COCO_IMAGES
@@ -179,15 +171,11 @@ train_args = [
 if MAX_TRAIN_BATCHES:
     train_args += ['--max-train-batches', str(MAX_TRAIN_BATCHES)]
 
-run([
-    sys.executable, '-m', 'accelerate.commands.launch',
-    '--multi_gpu',
-    '--num_processes', '2',
-    '--num_machines', '1',
-    '--mixed_precision', 'no',
-    '--dynamo_backend', 'no',
-    '--num_cpu_threads_per_process', '1',
-] + train_args, cwd=REPO)
+# Chỉ cho tiến trình train nhìn thấy GPU 0. Chạy Python trực tiếp nên không tạo
+# process group NCCL và không thể lặp lại deadlock của hai full run trước.
+single_gpu_env = os.environ.copy()
+single_gpu_env['CUDA_VISIBLE_DEVICES'] = '0'
+run([sys.executable, '-u'] + train_args, cwd=REPO, env=single_gpu_env)
 
 experiment_dir = Path('/kaggle/working') / EXPERIMENT
 checkpoint = experiment_dir / f'checkpoints/model_h1_2_crossattn_epoch_{EPOCHS}.pth'
@@ -202,7 +190,7 @@ assert meta['max_train_batches'] == MAX_TRAIN_BATCHES
 print('Checkpoint metadata PASS')
 del meta
 
-if RUN_MODE == 'full':
+if RUN_MODE == 'full_single':
     eval_args = [
         'train_h1_2_gated.py',
         '--mode', 'evaluate',
@@ -213,7 +201,7 @@ if RUN_MODE == 'full':
         '--batch-size', '32',
         '--num-workers', '0',
     ] + list(map(str, common))
-    run([sys.executable, '-u'] + eval_args, cwd=REPO)
+    run([sys.executable, '-u'] + eval_args, cwd=REPO, env=single_gpu_env)
 
     metrics_path = experiment_dir / 'evaluation/val_5000_metrics_h1_2_gated.json'
     assert metrics_path.is_file(), metrics_path
