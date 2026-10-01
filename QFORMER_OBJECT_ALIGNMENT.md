@@ -28,9 +28,9 @@ flowchart LR
 ## Cell Kaggle đầy đủ
 
 Hai full run bằng DDP đã treo lần lượt sau batch 100 và 200 dù smoke thành công.
-Vì vậy workflow ổn định dùng một GPU, loại bỏ hoàn toàn NCCL/DDP. Mô hình được
-warm-start từ Q-Former đã train 10 epoch nên E1 trước hết chỉ fine-tune 3 epoch,
-sau đó đánh giá validation. Không tốn 10 epoch cho một hướng chưa được xác nhận.
+Phiên bản này bật `find_unused_parameters`, timeout collective 10 phút và heartbeat
+theo từng rank. Chạy 500 batch trên hai GPU trước; nếu hoàn thành mới chạy pilot
+3 epoch. Nếu lỗi phân tán tái diễn, timeout sẽ trả traceback thay vì treo nhiều giờ.
 
 ```python
 import json
@@ -39,10 +39,17 @@ import subprocess
 import sys
 from pathlib import Path
 
+# NCCL báo lỗi bất đồng bộ sớm; mã nguồn còn đặt timeout collective 10 phút.
+os.environ['NCCL_P2P_DISABLE'] = '1'
+os.environ['NCCL_IB_DISABLE'] = '1'
+os.environ['NCCL_DEBUG'] = 'WARN'
+os.environ['TORCH_NCCL_ASYNC_ERROR_HANDLING'] = '1'
+os.environ['TORCH_NCCL_HEARTBEAT_TIMEOUT_SEC'] = '600'
+
 import torch
 
 REPO = Path('/kaggle/working/Image_Captioning')
-COMMIT = '48e4667'
+COMMIT = '0c74ee8'
 
 COCO_JSON = Path('/kaggle/input/datasets/vuthetam/mscoco-2014/dataset_coco.json')
 COCO_IMAGES = Path('/kaggle/input/datasets/vuthetam/mscoco-2014/images')
@@ -51,23 +58,21 @@ VISUAL_CACHE = Path('/kaggle/input/datasets/ducanh2403/visual-cache')
 DETECTIONS = Path('/kaggle/input/datasets/ducanh2403/objectdetectionecache/objectdetectioncache.json')
 OBJECT_CACHE = Path('/kaggle/working/object_semantic_cache/object_concepts.pt')
 
-# 'diagnostic_single': 150 batch để kiểm tra VRAM; 'pilot_single': 3 epoch + val.
-# Smoke dual-GPU đã PASS nên có thể chạy thẳng pilot_single; OOM nếu có sẽ xuất
-# hiện ngay batch đầu, không làm mất nhiều giờ.
-RUN_MODE = 'pilot_single'
-assert RUN_MODE in {'diagnostic_single', 'pilot_single'}
-MAX_TRAIN_BATCHES = {'diagnostic_single': 150, 'pilot_single': 0}[RUN_MODE]
-EPOCHS = 3 if RUN_MODE == 'pilot_single' else 1
+# Bắt buộc chạy diagnostic_dual trước khi đổi sang pilot_dual.
+RUN_MODE = 'diagnostic_dual'
+assert RUN_MODE in {'diagnostic_dual', 'pilot_dual'}
+MAX_TRAIN_BATCHES = {'diagnostic_dual': 500, 'pilot_dual': 0}[RUN_MODE]
+EPOCHS = 3 if RUN_MODE == 'pilot_dual' else 1
 EXPERIMENT = {
-    'diagnostic_single': 'qformer_object_alignment_single_gpu_diagnostic_150',
-    'pilot_single': 'qformer_object_alignment_32q_2l_single_gpu_3ep',
+    'diagnostic_dual': 'qformer_object_alignment_dual_gpu_diagnostic_500',
+    'pilot_dual': 'qformer_object_alignment_32q_2l_dual_gpu_3ep',
 }[RUN_MODE]
 
 
-def run(args, cwd=None, env=None):
+def run(args, cwd=None):
     args = list(map(str, args))
     print('\nRunning:', ' '.join(args), flush=True)
-    subprocess.run(args, cwd=cwd, env=env, check=True)
+    subprocess.run(args, cwd=cwd, check=True)
 
 
 def find_old_qformer_checkpoint():
@@ -109,7 +114,7 @@ print('PyTorch:', torch.__version__)
 print('CUDA devices:', torch.cuda.device_count())
 for index in range(torch.cuda.device_count()):
     print(f'GPU {index}:', torch.cuda.get_device_name(index))
-assert torch.cuda.device_count() >= 1, 'Notebook phải bật GPU.'
+assert torch.cuda.device_count() == 2, 'Notebook phải chọn GPU T4 x2.'
 for path in (COCO_JSON, PROMPT_CACHE, DETECTIONS):
     assert path.is_file(), path
 assert COCO_IMAGES.is_dir(), COCO_IMAGES
@@ -173,11 +178,15 @@ train_args = [
 if MAX_TRAIN_BATCHES:
     train_args += ['--max-train-batches', str(MAX_TRAIN_BATCHES)]
 
-# Chỉ cho tiến trình train nhìn thấy GPU 0. Chạy Python trực tiếp nên không tạo
-# process group NCCL và không thể lặp lại deadlock của hai full run trước.
-single_gpu_env = os.environ.copy()
-single_gpu_env['CUDA_VISIBLE_DEVICES'] = '0'
-run([sys.executable, '-u'] + train_args, cwd=REPO, env=single_gpu_env)
+run([
+    sys.executable, '-m', 'accelerate.commands.launch',
+    '--multi_gpu',
+    '--num_processes', '2',
+    '--num_machines', '1',
+    '--mixed_precision', 'no',
+    '--dynamo_backend', 'no',
+    '--num_cpu_threads_per_process', '1',
+] + train_args, cwd=REPO)
 
 experiment_dir = Path('/kaggle/working') / EXPERIMENT
 checkpoint = experiment_dir / f'checkpoints/model_h1_2_crossattn_epoch_{EPOCHS}.pth'
@@ -192,7 +201,7 @@ assert meta['max_train_batches'] == MAX_TRAIN_BATCHES
 print('Checkpoint metadata PASS')
 del meta
 
-if RUN_MODE == 'pilot_single':
+if RUN_MODE == 'pilot_dual':
     eval_args = [
         'train_h1_2_gated.py',
         '--mode', 'evaluate',
@@ -203,7 +212,7 @@ if RUN_MODE == 'pilot_single':
         '--batch-size', '32',
         '--num-workers', '0',
     ] + list(map(str, common))
-    run([sys.executable, '-u'] + eval_args, cwd=REPO, env=single_gpu_env)
+    run([sys.executable, '-u'] + eval_args, cwd=REPO)
 
     metrics_path = experiment_dir / 'evaluation/val_5000_metrics_h1_2_gated.json'
     assert metrics_path.is_file(), metrics_path
