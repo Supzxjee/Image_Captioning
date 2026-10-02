@@ -229,3 +229,22 @@ So sánh rank-0 validation với Q-Former cũ: BLEU-4 `0.370322`, CIDEr `1.17401
 Chỉ kéo dài fine-tuning hoặc sinh candidates nếu pilot 3 epoch tăng CIDEr, đồng
 thời BLEU-4 không giảm quá `0.003`. Nếu không đạt, giữ kết quả như ablation E1 và
 chuyển sang E2: object-guided relation alignment, không chỉnh trọng số trên test.
+
+## Kết quả E1 trên validation 5.000 ảnh
+
+Diagnostic DDP hoàn thành đủ 500 batch với `0.314 s/batch`; checkpoint và metadata
+đều PASS. Pilot sau đó fine-tune 3 epoch trên hai T4 và đánh giá toàn bộ validation.
+
+| Mô hình | BLEU-1 | BLEU-2 | BLEU-3 | BLEU-4 | METEOR | ROUGE-L | CIDEr |
+|---|---:|---:|---:|---:|---:|---:|---:|
+| Q-Former 32q/2l | 0.767153 | 0.608853 | 0.474445 | 0.370322 | 0.283012 | 0.571214 | 1.174012 |
+| + Object Semantic Alignment, 3 epoch | **0.768813** | 0.608349 | 0.472681 | 0.366658 | 0.282614 | **0.572399** | 1.168861 |
+| Delta | +0.001660 | -0.000505 | -0.001764 | -0.003664 | -0.000398 | +0.001185 | -0.005150 |
+
+E1 tăng nhẹ BLEU-1 và ROUGE-L nhưng làm giảm CIDEr `0.005150` và BLEU-4
+`0.003664`. Kết quả không đạt quy tắc quyết định: CIDEr không tăng và mức giảm
+BLEU-4 lớn hơn `0.003`. Vì vậy không train thêm, không chọn checkpoint bằng test
+và không đưa E1 vào pipeline cuối. Kết quả được giữ như một ablation cho thấy
+object-label prompts đơn lẻ còn trùng lặp với bằng chứng mà Q-Former đã lấy từ
+CLIP visual tokens. Bước tiếp theo là E2, dùng object làm điều kiện để chọn và căn
+chỉnh relation prompts thay vì tiếp tục tăng cường object semantics độc lập.
