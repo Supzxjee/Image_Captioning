@@ -267,11 +267,13 @@ class UniversalVisionEncoder(nn.Module):
             raise ValueError('Expected image pixels (B, C, H, W) or cached tokens (B, 197, 768).')
 
         vis_features = self.dropout(self.relu(self.vis_projection(visual_features)))
-        prompt_features = self.prompt_projection(cached_prompt_tokens)
         if self.qformer is not None and self.prompt_conditioned_qformer:
+            prompt_features = self.prompt_projection(cached_prompt_tokens)
             visual_memory = self.qformer(vis_features, prompt_features, prompt_mask)
         else:
             visual_memory = self.qformer(vis_features) if self.qformer is not None else vis_features
+            # Preserve dropout/RNG order for every pre-existing experiment.
+            prompt_features = self.prompt_projection(cached_prompt_tokens)
 
         if self.object_alignment is not None:
             if object_prompt_tokens is None or object_prompt_mask is None:
