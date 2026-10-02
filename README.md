@@ -242,6 +242,11 @@ truy vấn các object embeddings rồi fusion qua residual gate. Cell Kaggle t�
 warm-start, smoke test đến validation nằm trong
 [QFORMER_OBJECT_ALIGNMENT.md](QFORMER_OBJECT_ALIGNMENT.md).
 
+E1 không vượt Q-Former cũ. E2 giữ object embeddings làm điều kiện chọn token từ
+prompt object–relation, sau đó mới căn chỉnh semantic evidence với visual queries.
+Mã, sơ đồ và cell Kaggle nằm trong
+[QFORMER_CASCADE_ALIGNMENT.md](QFORMER_CASCADE_ALIGNMENT.md).
+
 ## Audit cache YOLO trước region alignment
 
 Chạy `audit_yolo_detections.py` để kiểm tra coverage theo split, confidence,
