@@ -34,6 +34,12 @@ def load_checkpoint(model, path, tokenizer, warm_start=False):
             warm_start and model_uses_objects and not checkpoint_uses_objects):
         raise RuntimeError(f'Checkpoint object alignment setting is {checkpoint_uses_objects}, '
                            f'but model setting is {model_uses_objects}.')
+    checkpoint_uses_cascade = bool(checkpoint.get('cascade_semantic_alignment', False))
+    model_uses_cascade = bool(getattr(model.encoder, 'cascade_semantic_alignment', False))
+    if checkpoint_uses_cascade != model_uses_cascade and not (
+            warm_start and model_uses_cascade and not checkpoint_uses_cascade):
+        raise RuntimeError(f'Checkpoint cascade alignment setting is {checkpoint_uses_cascade}, '
+                           f'but model setting is {model_uses_cascade}.')
     encoder_state = checkpoint['encoder_state_dict']
     if model.encoder.feature_extractor is None:
         # Older cached-feature checkpoints unnecessarily stored the frozen CLIP
@@ -46,6 +52,9 @@ def load_checkpoint(model, path, tokenizer, warm_start=False):
         if model_uses_objects and not checkpoint_uses_objects:
             allowed.update(key for key in result.missing_keys
                            if key.startswith('object_alignment.'))
+        if model_uses_cascade and not checkpoint_uses_cascade:
+            allowed.update(key for key in result.missing_keys
+                           if key.startswith('cascade_alignment.'))
         if set(result.missing_keys) - allowed or result.unexpected_keys:
             raise RuntimeError(f'Incompatible encoder checkpoint: {result}')
     else:

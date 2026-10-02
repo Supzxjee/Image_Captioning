@@ -152,7 +152,7 @@ def load_data(config):
         raise ValueError(f'Missing {len(missing_prompts)} prompt embeddings; examples: {missing_prompts[:10]}')
 
     object_prompt_cache, object_prompt_metadata = None, {}
-    if config.object_semantic_alignment:
+    if config.object_semantic_alignment or config.cascade_semantic_alignment:
         if not os.path.isfile(config.object_prompt_cache_path):
             raise FileNotFoundError(config.object_prompt_cache_path)
         object_bundle = torch.load(

@@ -95,7 +95,7 @@ def train_one_epoch(model, base_model, loader, optimizer, criterion, epoch, conf
             break
         if batch_number == 1:
             accelerator.print(f'Epoch {epoch}: first batch loaded; starting GPU forward/backward.')
-        if (config.object_semantic_alignment and
+        if ((config.object_semantic_alignment or config.cascade_semantic_alignment) and
                 (batch_number == 1 or batch_number % 100 == 1)):
             print(f'[rank {accelerator.process_index}] epoch {epoch} batch {batch_number}: '
                   'loaded', flush=True)
@@ -108,7 +108,7 @@ def train_one_epoch(model, base_model, loader, optimizer, criterion, epoch, conf
         offset = 5
         object_prompt_tokens = None
         object_prompt_mask = None
-        if config.object_semantic_alignment:
+        if config.object_semantic_alignment or config.cascade_semantic_alignment:
             object_prompt_tokens = batch[offset].to(config.device, non_blocking=True)
             object_prompt_mask = batch[offset + 1].to(config.device, non_blocking=True)
             offset += 2
@@ -137,7 +137,7 @@ def train_one_epoch(model, base_model, loader, optimizer, criterion, epoch, conf
             object_prompt_tokens=object_prompt_tokens,
             object_prompt_mask=object_prompt_mask,
         )
-        if (config.object_semantic_alignment and
+        if ((config.object_semantic_alignment or config.cascade_semantic_alignment) and
                 (batch_number == 1 or batch_number % 100 == 1)):
             print(f'[rank {accelerator.process_index}] epoch {epoch} batch {batch_number}: '
                   'forward complete', flush=True)
@@ -160,13 +160,13 @@ def train_one_epoch(model, base_model, loader, optimizer, criterion, epoch, conf
         loss = (caption_loss + config.alignment_weight * alignment_loss +
                 config.itc_weight * itc_loss)
         accelerator.backward(loss)
-        if (config.object_semantic_alignment and
+        if ((config.object_semantic_alignment or config.cascade_semantic_alignment) and
                 (batch_number == 1 or batch_number % 100 == 1)):
             print(f'[rank {accelerator.process_index}] epoch {epoch} batch {batch_number}: '
                   'backward complete', flush=True)
         accelerator.clip_grad_norm_(model.parameters(), max_norm=1.0)
         optimizer.step()
-        if (config.object_semantic_alignment and
+        if ((config.object_semantic_alignment or config.cascade_semantic_alignment) and
                 (batch_number == 1 or batch_number % 100 == 1)):
             print(f'[rank {accelerator.process_index}] epoch {epoch} batch {batch_number}: '
                   'optimizer complete', flush=True)
@@ -255,6 +255,7 @@ def train_model(model, train_loader, data, config, accelerator=None):
             'qformer_layers': config.qformer_layers,
             'prompt_conditioned_qformer': config.prompt_conditioned_qformer,
             'object_semantic_alignment': config.object_semantic_alignment,
+            'cascade_semantic_alignment': config.cascade_semantic_alignment,
             'object_prompt_cache_path': config.object_prompt_cache_path,
             'object_prompt_metadata': data.object_prompt_metadata,
             'caption_embedding_cache_path': config.caption_embedding_cache_path,

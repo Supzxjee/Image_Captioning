@@ -44,6 +44,7 @@ class Config:
     qformer_layers: int = 2
     prompt_conditioned_qformer: bool = False
     object_semantic_alignment: bool = False
+    cascade_semantic_alignment: bool = False
     object_prompt_cache_path: str = ''
     caption_embedding_cache_path: str = ''
     itc_weight: float = 0.0
@@ -78,8 +79,13 @@ class Config:
             raise ValueError('Prompt-conditioned Q-Former requires visual-adapter=qformer.')
         if self.object_semantic_alignment and self.visual_adapter != 'qformer':
             raise ValueError('Object semantic alignment requires visual-adapter=qformer.')
-        if self.object_semantic_alignment and not self.object_prompt_cache_path:
-            raise ValueError('Object semantic alignment requires --object-prompt-cache-path.')
+        if self.cascade_semantic_alignment and self.visual_adapter != 'qformer':
+            raise ValueError('Cascade semantic alignment requires visual-adapter=qformer.')
+        if self.object_semantic_alignment and self.cascade_semantic_alignment:
+            raise ValueError('Choose object or cascade semantic alignment, not both.')
+        if ((self.object_semantic_alignment or self.cascade_semantic_alignment) and
+                not self.object_prompt_cache_path):
+            raise ValueError('Semantic alignment requires --object-prompt-cache-path.')
         if self.num_visual_queries <= 0 or self.qformer_layers <= 0:
             raise ValueError('num-visual-queries and qformer-layers must be positive.')
         if self.visual_adapter == 'qformer' and self.alignment_weight > 0:

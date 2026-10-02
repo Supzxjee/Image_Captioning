@@ -117,12 +117,70 @@ class ObjectSemanticAlignment(nn.Module):
         return torch.where(has_objects[:, None, None], aligned, visual_queries)
 
 
+class CascadeSemanticAlignment(nn.Module):
+    """Use object context to select object-relation prompt tokens for visual queries."""
+    def __init__(self, embed_dim, num_heads, dropout=0.1, object_dim=512):
+        super().__init__()
+        self.object_projection = nn.Sequential(
+            nn.Linear(object_dim, embed_dim),
+            nn.LayerNorm(embed_dim),
+        )
+        self.object_context = nn.Linear(embed_dim, embed_dim)
+        self.prompt_key = nn.Linear(embed_dim, embed_dim)
+        self.selector = nn.Linear(embed_dim, 1)
+        self.query_to_semantic = nn.MultiheadAttention(
+            embed_dim, num_heads, dropout=dropout, batch_first=True)
+        self.gate = nn.Linear(embed_dim * 2, embed_dim)
+        nn.init.zeros_(self.gate.weight)
+        nn.init.constant_(self.gate.bias, -2.0)
+        self.dropout = nn.Dropout(dropout)
+
+    def forward(self, visual_queries, prompt_features, prompt_mask,
+                object_tokens, object_mask):
+        object_valid = object_mask.to(dtype=torch.bool)
+        prompt_valid = prompt_mask.to(dtype=torch.bool)
+        has_context = object_valid.any(dim=1) & prompt_valid.any(dim=1)
+
+        projected_objects = self.object_projection(
+            object_tokens.to(dtype=self.object_projection[0].weight.dtype))
+        object_weights = object_valid.to(projected_objects.dtype).unsqueeze(-1)
+        pooled_objects = ((projected_objects * object_weights).sum(dim=1) /
+                          object_weights.sum(dim=1).clamp_min(1))
+        selector_hidden = torch.tanh(
+            self.prompt_key(prompt_features) +
+            self.object_context(pooled_objects).unsqueeze(1))
+        scores = self.selector(selector_hidden).squeeze(-1)
+
+        safe_prompt_valid = prompt_valid.clone()
+        if (~has_context).any():
+            safe_prompt_valid[~has_context, 0] = True
+        scores = scores.masked_fill(~safe_prompt_valid, torch.finfo(scores.dtype).min)
+        selection = torch.softmax(scores, dim=1)
+        # Retain the original feature scale while emphasizing selected tokens.
+        selection = selection * prompt_valid.sum(dim=1, keepdim=True).clamp_min(1)
+        selected_prompt = prompt_features * selection.unsqueeze(-1)
+        if (~has_context).any():
+            selected_prompt = selected_prompt.clone()
+            selected_prompt[~has_context, 0] = 0
+
+        attended, _ = self.query_to_semantic(
+            query=visual_queries,
+            key=selected_prompt,
+            value=selected_prompt,
+            key_padding_mask=~safe_prompt_valid,
+            need_weights=False,
+        )
+        gate = torch.sigmoid(self.gate(torch.cat([visual_queries, attended], dim=-1)))
+        aligned = visual_queries + self.dropout(gate * attended)
+        return torch.where(has_context[:, None, None], aligned, visual_queries)
+
+
 class UniversalVisionEncoder(nn.Module):
     def __init__(self, model_name='clip', embed_dim=EMBED_DIM, num_heads=NUM_HEADS,
                  attn_dropout=0.1, visual_precision='fp32', load_backbone=True,
                  visual_adapter='direct', num_visual_queries=32, qformer_layers=2,
                  use_itc=False, prompt_conditioned_qformer=False,
-                 object_semantic_alignment=False):
+                 object_semantic_alignment=False, cascade_semantic_alignment=False):
         super().__init__()
         if model_name.lower() != 'clip':
             raise NotImplementedError('Only CLIP is supported in this notebook.')
@@ -140,6 +198,7 @@ class UniversalVisionEncoder(nn.Module):
         self.qformer_layers = qformer_layers
         self.prompt_conditioned_qformer = prompt_conditioned_qformer
         self.object_semantic_alignment = object_semantic_alignment
+        self.cascade_semantic_alignment = cascade_semantic_alignment
         self.use_itc = use_itc
         self.vis_projection = nn.Linear(768, embed_dim)
         self.qformer = (LightweightQFormer(
@@ -153,6 +212,9 @@ class UniversalVisionEncoder(nn.Module):
         self.object_alignment = (ObjectSemanticAlignment(
             embed_dim, num_heads, attn_dropout
         ) if object_semantic_alignment else None)
+        self.cascade_alignment = (CascadeSemanticAlignment(
+            embed_dim, num_heads, attn_dropout
+        ) if cascade_semantic_alignment else None)
         self.itc_query_projection = (nn.Linear(embed_dim, 512) if use_itc else None)
         self.prompt_projection = nn.Sequential(
             nn.Linear(512, embed_dim),
@@ -205,19 +267,23 @@ class UniversalVisionEncoder(nn.Module):
             raise ValueError('Expected image pixels (B, C, H, W) or cached tokens (B, 197, 768).')
 
         vis_features = self.dropout(self.relu(self.vis_projection(visual_features)))
+        prompt_features = self.prompt_projection(cached_prompt_tokens)
         if self.qformer is not None and self.prompt_conditioned_qformer:
-            prompt_features = self.prompt_projection(cached_prompt_tokens)
             visual_memory = self.qformer(vis_features, prompt_features, prompt_mask)
         else:
             visual_memory = self.qformer(vis_features) if self.qformer is not None else vis_features
-            # Preserve the original operation order for existing direct/Q-Former runs.
-            prompt_features = self.prompt_projection(cached_prompt_tokens)
 
         if self.object_alignment is not None:
             if object_prompt_tokens is None or object_prompt_mask is None:
                 raise ValueError('Object semantic alignment requires object prompt tokens and mask.')
             visual_memory = self.object_alignment(
                 visual_memory, object_prompt_tokens, object_prompt_mask)
+        if self.cascade_alignment is not None:
+            if object_prompt_tokens is None or object_prompt_mask is None:
+                raise ValueError('Cascade semantic alignment requires object prompt tokens and mask.')
+            visual_memory = self.cascade_alignment(
+                visual_memory, prompt_features, prompt_mask,
+                object_prompt_tokens, object_prompt_mask)
 
         attended_prompt, _ = self.prompt_to_visual_attn(
             query=prompt_features,

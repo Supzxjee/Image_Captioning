@@ -17,7 +17,7 @@ def run(config):
             set_seed,
         )
         kwargs_handlers = []
-        if config.object_semantic_alignment:
+        if config.object_semantic_alignment or config.cascade_semantic_alignment:
             # Some images have no accepted detections, so the object branch can
             # receive zero gradients on one rank. Explicit unused-parameter
             # detection prevents the two DDP ranks from waiting on different
@@ -62,6 +62,7 @@ def run(config):
         use_itc=config.itc_weight > 0,
         prompt_conditioned_qformer=config.prompt_conditioned_qformer,
         object_semantic_alignment=config.object_semantic_alignment,
+        cascade_semantic_alignment=config.cascade_semantic_alignment,
     ).to(config.device)
     if config.is_main_process:
         print('Encoder initialized.', flush=True)
@@ -74,6 +75,9 @@ def run(config):
             if config.object_semantic_alignment:
                 print('Object semantic alignment active: Q-Former queries attend to separate '
                       'CLIP object prompts through a residual gate.', flush=True)
+            if config.cascade_semantic_alignment:
+                print('Cascade semantic alignment active: object context selects tokens from '
+                      'the object-relation prompt before gated query alignment.', flush=True)
         if config.itc_weight > 0:
             print(f'ITC active: weight={config.itc_weight} | '
                   f'temperature={config.itc_temperature}.', flush=True)

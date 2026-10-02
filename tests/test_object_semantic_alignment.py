@@ -2,7 +2,7 @@ import unittest
 
 import torch
 
-from captioning.models import ObjectSemanticAlignment
+from captioning.models import CascadeSemanticAlignment, ObjectSemanticAlignment
 from captioning.object_concepts import (
     align_object_concept_cache,
     build_object_concept_index,
@@ -52,6 +52,36 @@ class ObjectSemanticAlignmentTests(unittest.TestCase):
         mask = torch.tensor([[0, 0, 0], [1, 0, 0]])
         output = module(queries, objects, mask)
         self.assertTrue(torch.equal(output[0], queries[0]))
+        self.assertTrue(torch.isfinite(output).all())
+
+
+class CascadeSemanticAlignmentTests(unittest.TestCase):
+    def test_object_context_selects_prompt_and_updates_queries(self):
+        torch.manual_seed(11)
+        module = CascadeSemanticAlignment(16, 4, dropout=0.0)
+        queries = torch.randn(2, 5, 16, requires_grad=True)
+        prompt = torch.randn(2, 6, 16)
+        prompt_mask = torch.tensor([[1, 1, 1, 0, 0, 0], [1, 1, 0, 0, 0, 0]])
+        objects = torch.randn(2, 3, 512)
+        object_mask = torch.tensor([[1, 1, 0], [1, 0, 0]])
+        output = module(queries, prompt, prompt_mask, objects, object_mask)
+        self.assertEqual(tuple(output.shape), (2, 5, 16))
+        self.assertFalse(torch.equal(output, queries))
+        output.sum().backward()
+        self.assertGreater(module.selector.weight.grad.abs().sum().item(), 0)
+        self.assertGreater(module.query_to_semantic.in_proj_weight.grad.abs().sum().item(), 0)
+
+    def test_missing_objects_preserve_baseline_exactly(self):
+        module = CascadeSemanticAlignment(8, 2, dropout=0.0).eval()
+        queries = torch.randn(1, 4, 8)
+        output = module(
+            queries,
+            torch.randn(1, 5, 8),
+            torch.ones(1, 5, dtype=torch.long),
+            torch.randn(1, 3, 512),
+            torch.zeros(1, 3, dtype=torch.long),
+        )
+        self.assertTrue(torch.equal(output, queries))
         self.assertTrue(torch.isfinite(output).all())
 
 

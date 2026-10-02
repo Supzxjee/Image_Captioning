@@ -48,6 +48,9 @@ def parse_args(argv=None):
                         help='Condition learnable visual queries on masked-mean prompt tokens.')
     parser.add_argument('--object-semantic-alignment', action='store_true',
                         help='Align Q-Former visual queries with per-object CLIP text prompts.')
+    parser.add_argument('--cascade-semantic-alignment', action='store_true',
+                        help='Use object context to select object-relation prompt tokens before '
+                             'aligning them with Q-Former queries.')
     parser.add_argument('--object-prompt-cache-path', default='',
                         help='PT cache containing per-object CLIP text embeddings and masks.')
     parser.add_argument('--caption-embedding-cache-path', default='',
