@@ -46,7 +46,7 @@ os.environ['TORCH_NCCL_HEARTBEAT_TIMEOUT_SEC'] = '600'
 import torch
 
 REPO = Path('/kaggle/working/Image_Captioning')
-COMMIT = '64e599cca669385915caf1003d5dd5e0c6197825'
+COMMIT = '7cc56ee7fcce9b150213346dd12b5a3f0fba80f5'
 
 COCO_JSON = Path('/kaggle/input/datasets/vuthetam/mscoco-2014/dataset_coco.json')
 COCO_IMAGES = Path('/kaggle/input/datasets/vuthetam/mscoco-2014/images')
