@@ -30,8 +30,10 @@ theo từng rank. Chạy 500 batch trên hai GPU trước; nếu hoàn thành m�
 ```python
 import json
 import os
+import shutil
 import subprocess
 import sys
+import time
 from pathlib import Path
 
 # NCCL báo lỗi bất đồng bộ sớm; mã nguồn còn đặt timeout collective 10 phút.
@@ -119,10 +121,32 @@ assert VISUAL_CACHE.is_dir(), VISUAL_CACHE
 OLD_CHECKPOINT = find_old_qformer_checkpoint()
 print('Warm-start checkpoint:', OLD_CHECKPOINT)
 
+# Tải đúng một commit thay vì clone toàn bộ repository. Nếu lần trước clone dở,
+# thư mục không có .git sẽ được dọn trước khi thử lại.
+if REPO.exists() and not (REPO / '.git').is_dir():
+    shutil.rmtree(REPO)
 if not REPO.exists():
-    run(['git', 'clone', 'https://github.com/Supzxjee/Image_Captioning.git', REPO])
-run(['git', 'fetch', 'origin'], cwd=REPO)
-run(['git', 'checkout', '--detach', COMMIT], cwd=REPO)
+    REPO.mkdir(parents=True)
+    run(['git', 'init'], cwd=REPO)
+    run(['git', 'remote', 'add', 'origin',
+         'https://github.com/Supzxjee/Image_Captioning.git'], cwd=REPO)
+
+last_fetch_error = None
+for attempt in range(1, 4):
+    try:
+        run(['git', 'fetch', '--depth', '1', 'origin', COMMIT], cwd=REPO)
+        last_fetch_error = None
+        break
+    except subprocess.CalledProcessError as error:
+        last_fetch_error = error
+        print(f'Fetch lần {attempt}/3 thất bại; thử lại sau 10 giây.', flush=True)
+        if attempt < 3:
+            time.sleep(10)
+if last_fetch_error is not None:
+    raise RuntimeError(
+        'Không tải được mã nguồn sau 3 lần. Kiểm tra Internet của Kaggle.') from last_fetch_error
+run(['git', 'checkout', '--detach', 'FETCH_HEAD'], cwd=REPO)
+run(['git', 'rev-parse', '--short', 'HEAD'], cwd=REPO)
 run([sys.executable, '-m', 'pip', 'install', '-q', '-r', 'requirements.txt'], cwd=REPO)
 
 # Cache chỉ chứa object prompts, không chứa caption reference.
