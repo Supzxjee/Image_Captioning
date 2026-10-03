@@ -68,7 +68,7 @@ def main(argv=None):
 
     data = {}
     empty = 0
-    for filename, items in selected.items():
+    for item_index, (filename, items) in enumerate(selected.items(), 1):
         tokens = torch.zeros(args.max_objects, 512, dtype=torch.float16)
         mask = torch.zeros(args.max_objects, dtype=torch.uint8)
         confidences = torch.zeros(args.max_objects, dtype=torch.float16)
@@ -85,6 +85,8 @@ def main(argv=None):
             'labels': names,
             'confidences': confidences,
         }
+        if item_index == 1 or item_index % 10000 == 0:
+            print(f'Materialized object cache: {item_index}/{len(selected)}', flush=True)
 
     destination = Path(args.output)
     if destination.exists():
@@ -108,6 +110,7 @@ def main(argv=None):
             Path(args.dataset_json_path).read_bytes()).hexdigest(),
     }
     temporary = destination.with_suffix(destination.suffix + '.partial')
+    print(f'Writing {len(data)} object entries to {temporary} ...', flush=True)
     torch.save({'data': data, 'metadata': metadata}, temporary)
     temporary.replace(destination)
     destination.with_suffix('.json').write_text(
