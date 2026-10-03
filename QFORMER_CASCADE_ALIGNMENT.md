@@ -46,7 +46,7 @@ os.environ['TORCH_NCCL_HEARTBEAT_TIMEOUT_SEC'] = '600'
 import torch
 
 REPO = Path('/kaggle/working/Image_Captioning')
-COMMIT = '64e599c'
+COMMIT = '64e599cca669385915caf1003d5dd5e0c6197825'
 
 COCO_JSON = Path('/kaggle/input/datasets/vuthetam/mscoco-2014/dataset_coco.json')
 COCO_IMAGES = Path('/kaggle/input/datasets/vuthetam/mscoco-2014/images')
@@ -134,7 +134,9 @@ if not REPO.exists():
 last_fetch_error = None
 for attempt in range(1, 4):
     try:
-        run(['git', 'fetch', '--depth', '1', 'origin', COMMIT], cwd=REPO)
+        # Fetch an advertised branch. A short commit hash is not a remote ref
+        # and makes git fetch exit 128 in a newly initialized repository.
+        run(['git', 'fetch', '--depth', '20', 'origin', 'main'], cwd=REPO)
         last_fetch_error = None
         break
     except subprocess.CalledProcessError as error:
@@ -145,7 +147,7 @@ for attempt in range(1, 4):
 if last_fetch_error is not None:
     raise RuntimeError(
         'Không tải được mã nguồn sau 3 lần. Kiểm tra Internet của Kaggle.') from last_fetch_error
-run(['git', 'checkout', '--detach', 'FETCH_HEAD'], cwd=REPO)
+run(['git', 'checkout', '--detach', COMMIT], cwd=REPO)
 run(['git', 'rev-parse', '--short', 'HEAD'], cwd=REPO)
 run([sys.executable, '-m', 'pip', 'install', '-q', '-r', 'requirements.txt'], cwd=REPO)
 
