@@ -171,13 +171,15 @@ def train_one_epoch(model, base_model, loader, optimizer, criterion, epoch, conf
             print(f'[rank {accelerator.process_index}] epoch {epoch} batch {batch_number}: '
                   'optimizer complete', flush=True)
 
-        reduced = accelerator.reduce(
-            torch.stack([loss.detach(), caption_loss.detach(), alignment_loss.detach(),
-                         itc_loss.detach()]),
-            reduction='mean',
-        )
-        reduced_loss, reduced_caption, reduced_alignment, reduced_itc = [
-            value.item() for value in reduced]
+        # DDP already synchronizes model gradients during backward. A second
+        # per-batch collective here was only used to average display values and
+        # intermittently deadlocked on Kaggle T4x2 after both ranks had finished
+        # optimizer.step(). Track rank-local losses instead; they do not affect
+        # training, checkpoint weights or validation metrics.
+        reduced_loss = loss.detach().item()
+        reduced_caption = caption_loss.detach().item()
+        reduced_alignment = alignment_loss.detach().item()
+        reduced_itc = itc_loss.detach().item()
         totals['loss'] += reduced_loss
         totals['caption_loss'] += reduced_caption
         totals['alignment_loss'] += reduced_alignment
