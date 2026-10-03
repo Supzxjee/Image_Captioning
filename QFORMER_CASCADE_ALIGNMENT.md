@@ -46,14 +46,14 @@ os.environ['TORCH_NCCL_HEARTBEAT_TIMEOUT_SEC'] = '600'
 import torch
 
 REPO = Path('/kaggle/working/Image_Captioning')
-COMMIT = '7cc56ee7fcce9b150213346dd12b5a3f0fba80f5'
+COMMIT = '7cb84ba96cda67a8163159f23e069867d09ddae1'
 
 COCO_JSON = Path('/kaggle/input/datasets/vuthetam/mscoco-2014/dataset_coco.json')
 COCO_IMAGES = Path('/kaggle/input/datasets/vuthetam/mscoco-2014/images')
 PROMPT_CACHE = Path('/kaggle/input/datasets/ducanh2403/prompt-cache/prompt_clip_tokens_cache.pt')
 VISUAL_CACHE = Path('/kaggle/input/datasets/ducanh2403/visual-cache')
 DETECTIONS = Path('/kaggle/input/datasets/ducanh2403/objectdetectionecache/objectdetectioncache.json')
-OBJECT_CACHE = Path('/kaggle/working/object_semantic_cache/object_concepts.pt')
+BUILT_OBJECT_CACHE = Path('/kaggle/working/object_semantic_cache/object_concepts.pt')
 
 # Bắt buộc chạy diagnostic_dual trước khi đổi sang pilot_dual.
 RUN_MODE = 'diagnostic_dual'
@@ -150,6 +150,18 @@ if last_fetch_error is not None:
 run(['git', 'checkout', '--detach', COMMIT], cwd=REPO)
 run(['git', 'rev-parse', '--short', 'HEAD'], cwd=REPO)
 run([sys.executable, '-m', 'pip', 'install', '-q', '-r', 'requirements.txt'], cwd=REPO)
+
+# Ưu tiên cache đã tạo ở E1. Hãy Add Input output của notebook E1 để không phải
+# nạp lại CLIP text encoder và ghi lại file cache lớn trong mỗi Save Version.
+input_object_caches = sorted(Path('/kaggle/input').rglob('object_concepts.pt'))
+if input_object_caches:
+    OBJECT_CACHE = input_object_caches[0]
+    print('Dùng lại object cache từ Input:', OBJECT_CACHE)
+    if len(input_object_caches) > 1:
+        print('Các object cache khác (không dùng):', input_object_caches[1:])
+else:
+    OBJECT_CACHE = BUILT_OBJECT_CACHE
+    print('Không tìm thấy object cache trong Input; sẽ xây lại:', OBJECT_CACHE)
 
 # Cache chỉ chứa object prompts, không chứa caption reference.
 if not OBJECT_CACHE.is_file():
