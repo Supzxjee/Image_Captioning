@@ -328,6 +328,22 @@ hơn Q-Former gốc. Chưa thể quy toàn bộ mức tăng cho cascade alignmen
 `RUN_MODE = 'qformer_control_dual'` từ cùng checkpoint Q-Former epoch 10. Chỉ sau
 khi so sánh với control này mới quyết định chạy test và CHAIR cho E2.
 
+### Kết quả Q-Former continuation control
+
+Control đã được warm-start từ cùng checkpoint Q-Former epoch 10 và fine-tune thêm
+3 epoch, cùng seed và ngân sách train với E2 nhưng không bật cascade alignment:
+
+| Mô hình | BLEU-1 | BLEU-2 | BLEU-3 | BLEU-4 | METEOR | ROUGE-L | CIDEr |
+|---|---:|---:|---:|---:|---:|---:|---:|
+| Q-Former continuation 3 epoch | 0.762990 | 0.602581 | 0.467207 | 0.362813 | 0.283962 | 0.569488 | 1.169574 |
+| Q-Former + E2, fine-tune 3 epoch | **0.771221** | **0.614371** | **0.479508** | **0.373879** | **0.286857** | **0.574349** | **1.186754** |
+| Chênh lệch E2 − control | +0.008231 | +0.011790 | +0.012302 | +0.011066 | +0.002895 | +0.004861 | +0.017180 |
+
+Control còn thấp hơn Q-Former epoch 10 ở CIDEr `-0.004438` và BLEU-4
+`-0.007509`. Vì E2 vượt cả checkpoint gốc lẫn control có cùng ba epoch fine-tune,
+E2 qua cửa đối chứng công bằng. Tiếp theo, đánh giá ViT-direct trên validation để
+hoàn thiện bảng ablation, sau đó khóa cấu hình E2 và đánh giá test một lần.
+
 ## Đánh giá validation cho baseline ViT-direct
 
 Chạy cell này trong một Kaggle notebook riêng và Add Input output chứa checkpoint
