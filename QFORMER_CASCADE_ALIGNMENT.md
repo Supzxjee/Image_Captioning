@@ -312,6 +312,22 @@ visual tokens ban đầu; không dùng test ViT để chọn cấu hình E2. Ch�
 re-ranking ở giai đoạn chọn kiến trúc. Nếu E2 qua cả hai cửa, bước sau mới đánh giá
 test một lần và chạy CHAIR; nếu không đạt, giữ Q-Former cũ.
 
+## Kết quả pilot E2 trên validation 5.000 ảnh
+
+Pilot `qformer_cascade_alignment_32q_2l_dual_gpu_3ep` đã hoàn thành:
+
+| Mô hình | BLEU-1 | BLEU-2 | BLEU-3 | BLEU-4 | METEOR | ROUGE-L | CIDEr |
+|---|---:|---:|---:|---:|---:|---:|---:|
+| Q-Former 32q/2l, epoch 10 | 0.767153 | 0.608853 | 0.474445 | 0.370322 | 0.283012 | 0.571214 | 1.174012 |
+| Q-Former + E2, fine-tune 3 epoch | **0.771221** | **0.614371** | **0.479508** | **0.373879** | **0.286857** | **0.574349** | **1.186754** |
+| Chênh lệch E2 − Q-Former | +0.004068 | +0.005518 | +0.005063 | +0.003557 | +0.003845 | +0.003135 | +0.012742 |
+
+E2 qua cửa pilot: CIDEr tăng và BLEU-4 cũng tăng, trong khi cả bảy metric đều cao
+hơn Q-Former gốc. Chưa thể quy toàn bộ mức tăng cho cascade alignment vì E2 đã
+được fine-tune thêm 3 epoch. Bước kế tiếp bắt buộc là chạy
+`RUN_MODE = 'qformer_control_dual'` từ cùng checkpoint Q-Former epoch 10. Chỉ sau
+khi so sánh với control này mới quyết định chạy test và CHAIR cho E2.
+
 ## Đánh giá validation cho baseline ViT-direct
 
 Chạy cell này trong một Kaggle notebook riêng và Add Input output chứa checkpoint
