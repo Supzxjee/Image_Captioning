@@ -30,18 +30,32 @@ def coco_id(filename):
     return int(match.group(1))
 
 
-# 1. Chọn đúng caption test E2, không lấy caption Q-Former/control cũ.
-candidates = sorted(
-    path for path in Path('/kaggle/input').rglob(
-        'test_5000_captions_h1_2_gated.json')
-    if 'qformer_cascade_alignment_32q_2l_test' in str(path)
-)
-print('E2 prediction candidates:')
-for path in candidates:
-    print('-', path)
+# 1. Chọn đúng caption test E2 bằng metric đi kèm. Kaggle có thể đổi tên thư
+# mục mount, nên không dựa vào tên experiment trong đường dẫn.
+all_predictions = sorted(Path('/kaggle/input').rglob(
+    'test_5000_captions_h1_2_gated.json'))
+candidates = []
+print('Test prediction files:')
+for path in all_predictions:
+    metrics_path = path.parent / 'test_5000_metrics_h1_2_gated.json'
+    metrics = None
+    if metrics_path.is_file():
+        try:
+            metrics = json.loads(metrics_path.read_text(encoding='utf-8'))
+        except Exception as error:
+            print('-', path, '| metrics không đọc được:', repr(error))
+            continue
+    print('-', path, '| metrics =', metrics)
+    if (isinstance(metrics, dict)
+            and abs(float(metrics.get('CIDEr', -1)) - 1.194745300990926) < 1e-9
+            and abs(float(metrics.get('Bleu_4', -1)) - 0.37114510544349455) < 1e-9):
+        candidates.append(path)
+
 assert len(candidates) == 1, (
-    f'Cần đúng một file caption test E2, tìm thấy {len(candidates)}: {candidates}')
+    f'Cần đúng một caption file có metric E2, tìm thấy {len(candidates)}: '
+    f'{candidates}. Hãy Add Input output của notebook E2 test đã hoàn thành.')
 PREDICTIONS = candidates[0]
+print('Selected E2 predictions:', PREDICTIONS)
 assert COCO_JSON.is_file(), COCO_JSON
 
 
