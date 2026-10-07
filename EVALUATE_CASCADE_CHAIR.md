@@ -6,6 +6,7 @@ accelerator `None`, bật Internet để clone evaluator.
 
 ```python
 import json
+import os
 import re
 import subprocess
 import sys
@@ -32,8 +33,16 @@ def coco_id(filename):
 
 # 1. Chọn đúng caption test E2 bằng metric đi kèm. Kaggle có thể đổi tên thư
 # mục mount, nên không dựa vào tên experiment trong đường dẫn.
-all_predictions = sorted(Path('/kaggle/input').rglob(
-    'test_5000_captions_h1_2_gated.json'))
+prediction_name = 'test_5000_captions_h1_2_gated.json'
+all_predictions = []
+for root, directories, files in os.walk('/kaggle/input'):
+    # COCO's image folders contain >120k files and can make a recursive Path
+    # search take many minutes. No evaluation JSON is stored below them.
+    directories[:] = [name for name in directories
+                      if name not in {'images', 'checkpoints', '.git'}]
+    if prediction_name in files:
+        all_predictions.append(Path(root) / prediction_name)
+all_predictions.sort(key=str)
 candidates = []
 print('Test prediction files:')
 for path in all_predictions:
