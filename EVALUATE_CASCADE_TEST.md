@@ -1,8 +1,9 @@
 # Đánh giá E2 Cascade Alignment trên test 5.000 ảnh
 
 Workflow này chỉ inference và tính COCO metrics, không train lại. Trước khi chạy,
-Add Input output của pilot E2 chứa checkpoint epoch 3, object semantic cache,
-prompt cache, visual cache và MS COCO 2014.
+Add Input output của pilot E2 chứa checkpoint epoch 3, prompt cache, visual cache,
+MS COCO 2014 và một trong hai nguồn object: `object_concepts.pt` đã mã hóa hoặc
+`objectdetectioncache.json` thô. Nếu chỉ có JSON, cell tự xây semantic cache.
 
 ```python
 import json
@@ -22,6 +23,10 @@ COCO_JSON = Path('/kaggle/input/datasets/vuthetam/mscoco-2014/dataset_coco.json'
 COCO_IMAGES = Path('/kaggle/input/datasets/vuthetam/mscoco-2014/images')
 PROMPT_CACHE = Path('/kaggle/input/datasets/ducanh2403/prompt-cache/prompt_clip_tokens_cache.pt')
 VISUAL_CACHE = Path('/kaggle/input/datasets/ducanh2403/visual-cache')
+DETECTIONS = Path(
+    '/kaggle/input/datasets/ducanh2403/objectdetectionecache/'
+    'objectdetectioncache.json')
+BUILT_OBJECT_CACHE = Path('/kaggle/working/object_semantic_cache/object_concepts.pt')
 
 CHECKPOINT_NAME = 'model_h1_2_crossattn_epoch_3.pth'
 EXPERIMENT = 'qformer_cascade_alignment_32q_2l_test'
@@ -84,10 +89,15 @@ for path in Path('/kaggle/input').rglob('object_concepts.pt'):
             object_cache_matches.append(path)
     except Exception as error:
         print('Bỏ qua object cache không đọc được:', path, repr(error))
-assert len(object_cache_matches) == 1, (
-    f'Cần đúng một object cache hoàn chỉnh, tìm thấy: {object_cache_matches}')
-OBJECT_CACHE = object_cache_matches[0]
-print('Object cache:', OBJECT_CACHE)
+assert len(object_cache_matches) <= 1, (
+    f'Có nhiều object cache hoàn chỉnh; hãy gỡ Input trùng: {object_cache_matches}')
+OBJECT_CACHE = object_cache_matches[0] if object_cache_matches else None
+if OBJECT_CACHE is not None:
+    print('Dùng object semantic cache có sẵn:', OBJECT_CACHE)
+else:
+    assert DETECTIONS.is_file(), (
+        'Không có object_concepts.pt và cũng thiếu detection JSON: ' + str(DETECTIONS))
+    print('Chưa có object_concepts.pt; sẽ xây từ detection JSON:', DETECTIONS)
 
 
 # 2. Tìm đúng checkpoint E2; checkpoint control epoch 3 sẽ bị loại.
@@ -149,7 +159,33 @@ run(['git', 'checkout', '--detach', COMMIT], cwd=REPO)
 run([sys.executable, '-m', 'pip', 'install', '-q', '-r', 'requirements.txt'], cwd=REPO)
 
 
-# 4. Đánh giá test 5.000 ảnh với beam size 5.
+# 4. Nếu chỉ có YOLO detection JSON, mã hóa nhãn bằng CLIP Text Encoder một lần.
+if OBJECT_CACHE is None:
+    run([
+        sys.executable, '-u', 'build_object_concept_cache.py',
+        '--source', DETECTIONS,
+        '--dataset-json-path', COCO_JSON,
+        '--output', BUILT_OBJECT_CACHE,
+        '--objects-field', 'objects',
+        '--name-key', 'label',
+        '--confidence-key', 'conf',
+        '--min-confidence', '0.5',
+        '--max-objects', '10',
+        '--batch-size', '256',
+    ], cwd=REPO)
+    OBJECT_CACHE = BUILT_OBJECT_CACHE
+
+object_bundle = torch.load(OBJECT_CACHE, map_location='cpu', weights_only=False)
+object_metadata = object_bundle.get('metadata', {})
+assert object_metadata.get('complete')
+assert object_metadata.get('count') == 123287
+assert object_metadata.get('max_objects') == 10
+assert float(object_metadata.get('min_confidence')) == 0.5
+print('Object semantic cache verified:', OBJECT_CACHE)
+del object_bundle
+
+
+# 5. Đánh giá test 5.000 ảnh với beam size 5.
 run([
     sys.executable, '-u', 'train_h1_2_gated.py',
     '--mode', 'evaluate',
@@ -174,7 +210,7 @@ run([
 ], cwd=REPO)
 
 
-# 5. Xác nhận output test đầy đủ.
+# 6. Xác nhận output test đầy đủ.
 evaluation_dir = Path('/kaggle/working') / EXPERIMENT / 'evaluation'
 predictions_path = evaluation_dir / 'test_5000_captions_h1_2_gated.json'
 ground_truth_path = evaluation_dir / 'test_5000_gt_h1_2_gated.json'
