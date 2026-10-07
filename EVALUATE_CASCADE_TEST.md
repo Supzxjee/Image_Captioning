@@ -233,3 +233,15 @@ print('Metrics:', metrics_path)
 Chạy bằng một GPU T4. Giữ lại toàn bộ thư mục
 `/kaggle/working/qformer_cascade_alignment_32q_2l_test/evaluation` để tính CHAIR
 mà không phải sinh caption lần nữa.
+
+## Kết quả test 5.000 ảnh
+
+| Mô hình | BLEU-1 | BLEU-2 | BLEU-3 | BLEU-4 | METEOR | ROUGE-L | CIDEr |
+|---|---:|---:|---:|---:|---:|---:|---:|
+| Q-Former 32q/2l | 0.767393 | 0.608733 | 0.474553 | 0.370666 | 0.285039 | 0.573118 | 1.188245 |
+| Q-Former + E2 | **0.770348** | **0.611786** | **0.476790** | **0.371145** | **0.287974** | **0.575733** | **1.194745** |
+| Chênh lệch E2 − Q-Former | +0.002955 | +0.003052 | +0.002238 | +0.000480 | +0.002935 | +0.002615 | +0.006501 |
+
+E2 tăng cả bảy metric trên test. Kết quả test nhất quán với validation và control
+cùng ngân sách fine-tune, nên E2 được giữ làm mô hình caption chính. Bước tiếp theo
+là chạy CHAIR trực tiếp trên file caption test đã lưu.
