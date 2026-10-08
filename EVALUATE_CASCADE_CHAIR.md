@@ -17,6 +17,10 @@ OUTPUT = Path('/kaggle/working/chair_e2_cascade_test')
 COCO_JSON = Path('/kaggle/input/datasets/vuthetam/mscoco-2014/dataset_coco.json')
 CHAIR_COMMIT = '4087a26211aa2339b9a76307cb8f0321ef691d0a'
 
+# Nếu tự dò không thấy, bấm Copy Path tại file caption E2 rồi dán vào đây.
+# Ví dụ: '/kaggle/input/.../test_5000_captions_h1_2_gated.json'
+PREDICTIONS_PATH = ''
+
 
 def run(args, cwd=None):
     args = list(map(str, args))
@@ -35,13 +39,19 @@ def coco_id(filename):
 # mục mount, nên không dựa vào tên experiment trong đường dẫn.
 prediction_name = 'test_5000_captions_h1_2_gated.json'
 all_predictions = []
-for root, directories, files in os.walk('/kaggle/input'):
-    # COCO's image folders contain >120k files and can make a recursive Path
-    # search take many minutes. No evaluation JSON is stored below them.
-    directories[:] = [name for name in directories
-                      if name not in {'images', 'checkpoints', '.git'}]
-    if prediction_name in files:
-        all_predictions.append(Path(root) / prediction_name)
+if PREDICTIONS_PATH:
+    direct_path = Path(PREDICTIONS_PATH)
+    assert direct_path.is_file(), direct_path
+    all_predictions = [direct_path]
+else:
+    for search_root in ('/kaggle/input', '/kaggle/working'):
+        for root, directories, files in os.walk(search_root):
+            # COCO's image folders contain >120k files and can make a recursive
+            # search take many minutes. No evaluation JSON is stored below them.
+            directories[:] = [name for name in directories
+                              if name not in {'images', 'checkpoints', '.git'}]
+            if prediction_name in files:
+                all_predictions.append(Path(root) / prediction_name)
 all_predictions.sort(key=str)
 candidates = []
 print('Test prediction files:')
