@@ -161,4 +161,10 @@ So sánh kết quả với hai mốc test đã có:
 |---|---:|---:|---:|---:|
 | ViT-direct + Gate | 0.0490 | 0.034464 | 0.436428 | 1.1820 |
 | Q-Former | 0.0432 | 0.030299 | 0.437508 | 1.188245 |
-| Q-Former + E2 | kết quả mới | kết quả mới | kết quả mới | 1.194745 |
+| Q-Former + E2 | **0.0388** | **0.026636** | **0.443922** | **1.194745** |
+
+So với Q-Former, E2 giảm CHAIRs `0.0044` (tương đối `10.19%`), giảm CHAIRi
+`0.003663` (tương đối `12.09%`) và tăng Recall `0.006414`. So với ViT-direct,
+E2 giảm CHAIRs `0.0102` (tương đối `20.82%`) và giảm CHAIRi `0.007828`
+(tương đối `22.71%`). E2 đồng thời có CIDEr cao nhất, nên cải thiện độ chính xác
+ngữ nghĩa mà không đánh đổi chất lượng caption tổng thể.

@@ -344,6 +344,20 @@ Control còn thấp hơn Q-Former epoch 10 ở CIDEr `-0.004438` và BLEU-4
 E2 qua cửa đối chứng công bằng. Tiếp theo, đánh giá ViT-direct trên validation để
 hoàn thiện bảng ablation, sau đó khóa cấu hình E2 và đánh giá test một lần.
 
+## Kết quả cuối trên test
+
+| Mô hình | BLEU-4 ↑ | METEOR ↑ | ROUGE-L ↑ | CIDEr ↑ | CHAIRs ↓ | CHAIRi ↓ | Recall ↑ |
+|---|---:|---:|---:|---:|---:|---:|---:|
+| ViT-direct + Gate | 0.3660 | 0.2830 | 0.5710 | 1.1820 | 0.0490 | 0.034464 | 0.436428 |
+| Q-Former 32q/2l | 0.370666 | 0.285039 | 0.573118 | 1.188245 | 0.0432 | 0.030299 | 0.437508 |
+| Q-Former + E2 | **0.371145** | **0.287974** | **0.575733** | **1.194745** | **0.0388** | **0.026636** | **0.443922** |
+
+E2 vượt Q-Former ở toàn bộ metric caption test và đồng thời giảm CHAIRs tương đối
+`10.19%`, giảm CHAIRi tương đối `12.09%`, tăng object Recall `0.006414`. So với
+ViT-direct, E2 giảm CHAIRs tương đối `20.82%` và CHAIRi tương đối `22.71%`.
+Kết quả nhất quán giữa validation, control cùng ngân sách fine-tune và test, nên E2
+được chọn làm kiến trúc cuối của chuỗi ablation này.
+
 ## Đánh giá validation cho baseline ViT-direct
 
 Chạy cell này trong một Kaggle notebook riêng và Add Input output chứa checkpoint
