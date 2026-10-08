@@ -40,6 +40,12 @@ def load_checkpoint(model, path, tokenizer, warm_start=False):
             warm_start and model_uses_cascade and not checkpoint_uses_cascade):
         raise RuntimeError(f'Checkpoint cascade alignment setting is {checkpoint_uses_cascade}, '
                            f'but model setting is {model_uses_cascade}.')
+    if checkpoint_uses_cascade and model_uses_cascade and not warm_start:
+        checkpoint_selector = checkpoint.get('cascade_selector_mode', 'object_context')
+        model_selector = getattr(model.encoder, 'cascade_selector_mode', 'object_context')
+        if checkpoint_selector != model_selector:
+            raise RuntimeError(f'Checkpoint cascade selector mode is {checkpoint_selector!r}, '
+                               f'but model mode is {model_selector!r}.')
     encoder_state = checkpoint['encoder_state_dict']
     if model.encoder.feature_extractor is None:
         # Older cached-feature checkpoints unnecessarily stored the frozen CLIP

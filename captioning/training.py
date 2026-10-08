@@ -258,6 +258,7 @@ def train_model(model, train_loader, data, config, accelerator=None):
             'prompt_conditioned_qformer': config.prompt_conditioned_qformer,
             'object_semantic_alignment': config.object_semantic_alignment,
             'cascade_semantic_alignment': config.cascade_semantic_alignment,
+            'cascade_selector_mode': config.cascade_selector_mode,
             'object_prompt_cache_path': config.object_prompt_cache_path,
             'object_prompt_metadata': data.object_prompt_metadata,
             'caption_embedding_cache_path': config.caption_embedding_cache_path,

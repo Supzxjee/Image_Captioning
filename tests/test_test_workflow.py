@@ -52,13 +52,17 @@ class TestWorkflowTests(unittest.TestCase):
         self.assertEqual(objects.object_prompt_cache_path, 'objects.pt')
         cascade = parse_args(['--visual-adapter', 'qformer',
                               '--cascade-semantic-alignment',
+                              '--cascade-selector-mode', 'uniform',
                               '--object-prompt-cache-path', 'objects.pt'])
         self.assertTrue(cascade.cascade_semantic_alignment)
+        self.assertEqual(cascade.cascade_selector_mode, 'uniform')
         with self.assertRaises(ValueError):
             Config(visual_adapter='qformer', cascade_semantic_alignment=True)
         with self.assertRaises(ValueError):
             Config(visual_adapter='qformer', object_semantic_alignment=True,
                    cascade_semantic_alignment=True, object_prompt_cache_path='objects.pt')
+        with self.assertRaises(ValueError):
+            Config(cascade_selector_mode='uniform')
         with self.assertRaises(ValueError):
             Config(visual_adapter='qformer', alignment_weight=0.02,
                    region_targets_path='regions.pt')

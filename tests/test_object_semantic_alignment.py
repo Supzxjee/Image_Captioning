@@ -84,6 +84,35 @@ class CascadeSemanticAlignmentTests(unittest.TestCase):
         self.assertTrue(torch.equal(output, queries))
         self.assertTrue(torch.isfinite(output).all())
 
+    def test_uniform_mode_keeps_cascade_but_ignores_object_values(self):
+        torch.manual_seed(13)
+        module = CascadeSemanticAlignment(
+            8, 2, dropout=0.0, selector_mode='uniform').eval()
+        queries = torch.randn(1, 4, 8)
+        prompt = torch.randn(1, 5, 8)
+        prompt_mask = torch.tensor([[1, 1, 1, 0, 0]])
+        object_mask = torch.tensor([[1, 1, 0]])
+        output_a = module(
+            queries, prompt, prompt_mask, torch.randn(1, 3, 512), object_mask)
+        output_b = module(
+            queries, prompt, prompt_mask, torch.randn(1, 3, 512), object_mask)
+        self.assertTrue(torch.equal(output_a, output_b))
+        self.assertFalse(torch.equal(output_a, queries))
+
+    def test_prompt_only_mode_does_not_require_detected_objects(self):
+        module = CascadeSemanticAlignment(
+            8, 2, dropout=0.0, selector_mode='prompt_only').eval()
+        queries = torch.randn(1, 4, 8)
+        output = module(
+            queries,
+            torch.randn(1, 5, 8),
+            torch.ones(1, 5, dtype=torch.long),
+            torch.randn(1, 3, 512),
+            torch.zeros(1, 3, dtype=torch.long),
+        )
+        self.assertFalse(torch.equal(output, queries))
+        self.assertTrue(torch.isfinite(output).all())
+
 
 if __name__ == '__main__':
     unittest.main()

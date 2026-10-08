@@ -51,6 +51,11 @@ def parse_args(argv=None):
     parser.add_argument('--cascade-semantic-alignment', action='store_true',
                         help='Use object context to select object-relation prompt tokens before '
                              'aligning them with Q-Former queries.')
+    parser.add_argument('--cascade-selector-mode',
+                        choices=['object_context', 'prompt_only', 'uniform'],
+                        default=defaults.cascade_selector_mode,
+                        help='Cascade token weighting: full object-conditioned selector, '
+                             'prompt-only selector, or uniform valid-token weights.')
     parser.add_argument('--object-prompt-cache-path', default='',
                         help='PT cache containing per-object CLIP text embeddings and masks.')
     parser.add_argument('--caption-embedding-cache-path', default='',

@@ -19,7 +19,8 @@ def evaluate_model(model, data, config):
           f"visual adapter {adapter} | prompt-conditioned Q-Former "
           f"{bool(checkpoint.get('prompt_conditioned_qformer', False))} | object alignment "
           f"{bool(checkpoint.get('object_semantic_alignment', False))} | cascade alignment "
-          f"{bool(checkpoint.get('cascade_semantic_alignment', False))}", flush=True)
+          f"{bool(checkpoint.get('cascade_semantic_alignment', False))} | cascade selector "
+          f"{checkpoint.get('cascade_selector_mode', 'object_context')}", flush=True)
     config.eval_dir.mkdir(parents=True, exist_ok=True)
     eval_df = data.val_df if config.split == 'val' else data.test_df
     if config.limit:
@@ -140,6 +141,8 @@ def generate_candidate_file(model, data, config):
                 checkpoint.get('object_semantic_alignment', False)),
             'cascade_semantic_alignment': bool(
                 checkpoint.get('cascade_semantic_alignment', False)),
+            'cascade_selector_mode': checkpoint.get(
+                'cascade_selector_mode', 'object_context'),
         },
         'data': records,
     }

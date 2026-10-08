@@ -63,6 +63,7 @@ def run(config):
         prompt_conditioned_qformer=config.prompt_conditioned_qformer,
         object_semantic_alignment=config.object_semantic_alignment,
         cascade_semantic_alignment=config.cascade_semantic_alignment,
+        cascade_selector_mode=config.cascade_selector_mode,
     ).to(config.device)
     if config.is_main_process:
         print('Encoder initialized.', flush=True)
@@ -77,7 +78,8 @@ def run(config):
                       'CLIP object prompts through a residual gate.', flush=True)
             if config.cascade_semantic_alignment:
                 print('Cascade semantic alignment active: object context selects tokens from '
-                      'the object-relation prompt before gated query alignment.', flush=True)
+                      'the object-relation prompt before gated query alignment | selector mode '
+                      f'{config.cascade_selector_mode}.', flush=True)
         if config.itc_weight > 0:
             print(f'ITC active: weight={config.itc_weight} | '
                   f'temperature={config.itc_temperature}.', flush=True)

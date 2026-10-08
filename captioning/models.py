@@ -119,8 +119,12 @@ class ObjectSemanticAlignment(nn.Module):
 
 class CascadeSemanticAlignment(nn.Module):
     """Use object context to select object-relation prompt tokens for visual queries."""
-    def __init__(self, embed_dim, num_heads, dropout=0.1, object_dim=512):
+    def __init__(self, embed_dim, num_heads, dropout=0.1, object_dim=512,
+                 selector_mode='object_context'):
         super().__init__()
+        if selector_mode not in {'object_context', 'prompt_only', 'uniform'}:
+            raise ValueError(f'Invalid cascade selector mode: {selector_mode}')
+        self.selector_mode = selector_mode
         self.object_projection = nn.Sequential(
             nn.Linear(object_dim, embed_dim),
             nn.LayerNorm(embed_dim),
@@ -139,25 +143,34 @@ class CascadeSemanticAlignment(nn.Module):
                 object_tokens, object_mask):
         object_valid = object_mask.to(dtype=torch.bool)
         prompt_valid = prompt_mask.to(dtype=torch.bool)
-        has_context = object_valid.any(dim=1) & prompt_valid.any(dim=1)
-
-        projected_objects = self.object_projection(
-            object_tokens.to(dtype=self.object_projection[0].weight.dtype))
-        object_weights = object_valid.to(projected_objects.dtype).unsqueeze(-1)
-        pooled_objects = ((projected_objects * object_weights).sum(dim=1) /
-                          object_weights.sum(dim=1).clamp_min(1))
-        selector_hidden = torch.tanh(
-            self.prompt_key(prompt_features) +
-            self.object_context(pooled_objects).unsqueeze(1))
-        scores = self.selector(selector_hidden).squeeze(-1)
+        has_prompt = prompt_valid.any(dim=1)
+        has_context = (object_valid.any(dim=1) & has_prompt
+                       if self.selector_mode == 'object_context' else has_prompt)
 
         safe_prompt_valid = prompt_valid.clone()
         if (~has_context).any():
             safe_prompt_valid[~has_context, 0] = True
-        scores = scores.masked_fill(~safe_prompt_valid, torch.finfo(scores.dtype).min)
-        selection = torch.softmax(scores, dim=1)
-        # Retain the original feature scale while emphasizing selected tokens.
-        selection = selection * prompt_valid.sum(dim=1, keepdim=True).clamp_min(1)
+        if self.selector_mode == 'uniform':
+            # Equivalent to a uniform softmax rescaled by the valid-token count:
+            # every valid prompt token keeps weight 1, so selection is removed
+            # while query-to-semantic attention and the residual gate remain.
+            selection = prompt_valid.to(prompt_features.dtype)
+        else:
+            selector_hidden = self.prompt_key(prompt_features)
+            if self.selector_mode == 'object_context':
+                projected_objects = self.object_projection(
+                    object_tokens.to(dtype=self.object_projection[0].weight.dtype))
+                object_weights = object_valid.to(projected_objects.dtype).unsqueeze(-1)
+                pooled_objects = ((projected_objects * object_weights).sum(dim=1) /
+                                  object_weights.sum(dim=1).clamp_min(1))
+                selector_hidden = (selector_hidden +
+                                   self.object_context(pooled_objects).unsqueeze(1))
+            scores = self.selector(torch.tanh(selector_hidden)).squeeze(-1)
+            scores = scores.masked_fill(
+                ~safe_prompt_valid, torch.finfo(scores.dtype).min)
+            selection = torch.softmax(scores, dim=1)
+            # Retain the original feature scale while emphasizing selected tokens.
+            selection = selection * prompt_valid.sum(dim=1, keepdim=True).clamp_min(1)
         selected_prompt = prompt_features * selection.unsqueeze(-1)
         if (~has_context).any():
             selected_prompt = selected_prompt.clone()
@@ -180,7 +193,8 @@ class UniversalVisionEncoder(nn.Module):
                  attn_dropout=0.1, visual_precision='fp32', load_backbone=True,
                  visual_adapter='direct', num_visual_queries=32, qformer_layers=2,
                  use_itc=False, prompt_conditioned_qformer=False,
-                 object_semantic_alignment=False, cascade_semantic_alignment=False):
+                 object_semantic_alignment=False, cascade_semantic_alignment=False,
+                 cascade_selector_mode='object_context'):
         super().__init__()
         if model_name.lower() != 'clip':
             raise NotImplementedError('Only CLIP is supported in this notebook.')
@@ -199,6 +213,7 @@ class UniversalVisionEncoder(nn.Module):
         self.prompt_conditioned_qformer = prompt_conditioned_qformer
         self.object_semantic_alignment = object_semantic_alignment
         self.cascade_semantic_alignment = cascade_semantic_alignment
+        self.cascade_selector_mode = cascade_selector_mode
         self.use_itc = use_itc
         self.vis_projection = nn.Linear(768, embed_dim)
         self.qformer = (LightweightQFormer(
@@ -213,7 +228,7 @@ class UniversalVisionEncoder(nn.Module):
             embed_dim, num_heads, attn_dropout
         ) if object_semantic_alignment else None)
         self.cascade_alignment = (CascadeSemanticAlignment(
-            embed_dim, num_heads, attn_dropout
+            embed_dim, num_heads, attn_dropout, selector_mode=cascade_selector_mode
         ) if cascade_semantic_alignment else None)
         self.itc_query_projection = (nn.Linear(embed_dim, 512) if use_itc else None)
         self.prompt_projection = nn.Sequential(

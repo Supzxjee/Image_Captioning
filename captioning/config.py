@@ -45,6 +45,7 @@ class Config:
     prompt_conditioned_qformer: bool = False
     object_semantic_alignment: bool = False
     cascade_semantic_alignment: bool = False
+    cascade_selector_mode: str = 'object_context'
     object_prompt_cache_path: str = ''
     caption_embedding_cache_path: str = ''
     itc_weight: float = 0.0
@@ -81,6 +82,10 @@ class Config:
             raise ValueError('Object semantic alignment requires visual-adapter=qformer.')
         if self.cascade_semantic_alignment and self.visual_adapter != 'qformer':
             raise ValueError('Cascade semantic alignment requires visual-adapter=qformer.')
+        if self.cascade_selector_mode not in {'object_context', 'prompt_only', 'uniform'}:
+            raise ValueError('cascade-selector-mode must be object_context, prompt_only, or uniform.')
+        if not self.cascade_semantic_alignment and self.cascade_selector_mode != 'object_context':
+            raise ValueError('Non-default cascade-selector-mode requires cascade semantic alignment.')
         if self.object_semantic_alignment and self.cascade_semantic_alignment:
             raise ValueError('Choose object or cascade semantic alignment, not both.')
         if ((self.object_semantic_alignment or self.cascade_semantic_alignment) and
