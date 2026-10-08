@@ -345,9 +345,11 @@ print('\nHoàn tất')
 print('Summary:', OUTPUT / 'transition_summary.json')
 print('Candidates:', OUTPUT / 'qualitative_candidates.json')
 print('HTML report:', OUTPUT / 'qualitative_report.html')
-```
 
-Trong báo cáo chính, chọn khoảng 4 ví dụ `improved_to_clean`, 1–2 ví dụ
-`regressed_to_hallucinated` và 1 ví dụ `both_hallucinated`. Đọc năm reference
-captions và quan sát ảnh trước khi viết nhận xét; không kết luận E2 tốt hơn chỉ dựa
-vào độ dài caption.
+# Gợi ý viết báo cáo:
+# - chọn khoảng 4 ví dụ improved_to_clean;
+# - chọn 1 đến 2 ví dụ regressed_to_hallucinated;
+# - chọn 1 ví dụ both_hallucinated;
+# - đọc 5 reference captions và quan sát ảnh trước khi nhận xét;
+# - không kết luận E2 tốt hơn chỉ dựa vào độ dài caption.
+```
