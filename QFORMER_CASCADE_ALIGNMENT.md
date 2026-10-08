@@ -68,7 +68,7 @@ os.environ['TORCH_NCCL_HEARTBEAT_TIMEOUT_SEC'] = '600'
 import torch
 
 REPO = Path('/kaggle/working/Image_Captioning')
-COMMIT = '7cb84ba96cda67a8163159f23e069867d09ddae1'
+COMMIT = '47d0ec3'
 
 COCO_JSON = Path('/kaggle/input/datasets/vuthetam/mscoco-2014/dataset_coco.json')
 COCO_IMAGES = Path('/kaggle/input/datasets/vuthetam/mscoco-2014/images')
@@ -77,21 +77,30 @@ VISUAL_CACHE = Path('/kaggle/input/datasets/ducanh2403/visual-cache')
 DETECTIONS = Path('/kaggle/input/datasets/ducanh2403/objectdetectionecache/objectdetectioncache.json')
 BUILT_OBJECT_CACHE = Path('/kaggle/working/object_semantic_cache/object_concepts.pt')
 
-# Bắt buộc chạy diagnostic_dual trước khi đổi sang pilot_dual.
-# Chỉ chạy qformer_control_dual nếu pilot E2 qua cửa tín hiệu ban đầu.
+# Chạy diagnostic tương ứng trước mỗi pilot. Hai mode uniform là ablation bỏ
+# Soft Selector nhưng vẫn giữ query-to-semantic attention và residual gate.
 RUN_MODE = 'diagnostic_dual'
-assert RUN_MODE in {'diagnostic_dual', 'pilot_dual', 'qformer_control_dual'}
+assert RUN_MODE in {
+    'diagnostic_dual', 'pilot_dual', 'qformer_control_dual',
+    'diagnostic_uniform', 'pilot_uniform',
+}
 USE_CASCADE = RUN_MODE != 'qformer_control_dual'
+SELECTOR_MODE = ('uniform' if RUN_MODE in {'diagnostic_uniform', 'pilot_uniform'}
+                 else 'object_context')
 MAX_TRAIN_BATCHES = {
     'diagnostic_dual': 500,
     'pilot_dual': 0,
     'qformer_control_dual': 0,
+    'diagnostic_uniform': 500,
+    'pilot_uniform': 0,
 }[RUN_MODE]
-EPOCHS = 1 if RUN_MODE == 'diagnostic_dual' else 3
+EPOCHS = 1 if RUN_MODE in {'diagnostic_dual', 'diagnostic_uniform'} else 3
 EXPERIMENT = {
     'diagnostic_dual': 'qformer_cascade_alignment_dual_gpu_diagnostic_500',
     'pilot_dual': 'qformer_cascade_alignment_32q_2l_dual_gpu_3ep',
     'qformer_control_dual': 'qformer_continuation_32q_2l_dual_gpu_3ep',
+    'diagnostic_uniform': 'e2_no_soft_selector_diagnostic_500',
+    'pilot_uniform': 'e2_no_soft_selector_32q_2l_dual_gpu_3ep',
 }[RUN_MODE]
 
 
@@ -234,6 +243,7 @@ common = [
 if USE_CASCADE:
     common += [
         '--cascade-semantic-alignment',
+        '--cascade-selector-mode', SELECTOR_MODE,
         '--object-prompt-cache-path', OBJECT_CACHE,
     ]
 
@@ -269,12 +279,13 @@ assert meta['qformer_layers'] == 2
 assert meta['object_semantic_alignment'] is False
 assert meta['cascade_semantic_alignment'] is USE_CASCADE
 if USE_CASCADE:
+    assert meta['cascade_selector_mode'] == SELECTOR_MODE
     assert meta['object_prompt_metadata']['min_confidence'] == 0.5
 assert meta['max_train_batches'] == MAX_TRAIN_BATCHES
 print('Checkpoint metadata PASS')
 del meta
 
-if RUN_MODE in {'pilot_dual', 'qformer_control_dual'}:
+if RUN_MODE in {'pilot_dual', 'qformer_control_dual', 'pilot_uniform'}:
     eval_args = [
         'train_h1_2_gated.py',
         '--mode', 'evaluate',
@@ -290,12 +301,29 @@ if RUN_MODE in {'pilot_dual', 'qformer_control_dual'}:
     metrics_path = experiment_dir / 'evaluation/val_5000_metrics_h1_2_gated.json'
     assert metrics_path.is_file(), metrics_path
     metrics = json.loads(metrics_path.read_text(encoding='utf-8'))
-    label = ('CASCADE ALIGNMENT' if USE_CASCADE else 'Q-FORMER CONTINUATION CONTROL')
+    label = ({
+        'pilot_dual': 'CASCADE ALIGNMENT',
+        'pilot_uniform': 'E2 WITHOUT SOFT SELECTOR',
+        'qformer_control_dual': 'Q-FORMER CONTINUATION CONTROL',
+    }[RUN_MODE])
     print(f'\n{label} VALIDATION METRICS')
     print(json.dumps(metrics, indent=2))
 
 print('\nHoàn tất:', experiment_dir)
 ```
+
+## Ablation bỏ Soft Selector
+
+Trong cùng cell trên, chạy lần lượt:
+
+1. `RUN_MODE = 'diagnostic_uniform'` để kiểm tra 500 batch;
+2. nếu diagnostic hoàn tất, đổi thành `RUN_MODE = 'pilot_uniform'` để train 3 epoch
+   và đánh giá validation 5.000 ảnh.
+
+Mode `uniform` giữ nguyên Q-Former, query-to-semantic cross-attention và residual
+gate. Nó chỉ thay trọng số Soft Selector bằng trọng số `1` cho mọi prompt token hợp
+lệ. Vì vậy so sánh với E2 gốc đo trực tiếp đóng góp của Soft Selector. Không chạy
+test hoặc CHAIR cho ablation này trước khi xem kết quả validation.
 
 ## Quy tắc quyết định
 
