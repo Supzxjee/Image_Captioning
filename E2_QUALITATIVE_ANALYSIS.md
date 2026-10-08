@@ -6,7 +6,8 @@ một báo cáo HTML kèm ảnh và năm reference captions.
 
 ## Input cần gắn
 
-- Output test Q-Former có CIDEr `1.1882447461`;
+- Output test Q-Former có CIDEr `1.1882447461`, hoặc output
+  `qformer_test_candidates_rebuilt` chứa `test_5000_beam5_candidates.json`;
 - output test E2 có CIDEr `1.1947453010`;
 - MS COCO 2014 gồm `dataset_coco.json` và thư mục `images`.
 
@@ -50,7 +51,7 @@ def coco_id(filename):
     return int(match.group(1))
 
 
-def find_prediction(target_cider, target_bleu4, label):
+def find_prediction(target_cider, target_bleu4, label, required=True):
     prediction_name = 'test_5000_captions_h1_2_gated.json'
     found = []
     for root, directories, files in os.walk(INPUT_ROOT):
@@ -67,8 +68,63 @@ def find_prediction(target_cider, target_bleu4, label):
         if (abs(float(metrics.get('CIDEr', -1)) - target_cider) < 1e-9 and
                 abs(float(metrics.get('Bleu_4', -1)) - target_bleu4) < 1e-9):
             found.append(prediction)
+    if not required and not found:
+        return None
     assert len(found) == 1, f'{label}: cần đúng một prediction file, tìm thấy {found}'
     return found[0]
+
+
+def recover_qformer_rank0_from_candidates():
+    name = 'test_5000_beam5_candidates.json'
+    matches = []
+    for root, directories, files in os.walk(INPUT_ROOT):
+        directories[:] = [entry for entry in directories
+                          if entry not in {'images', 'checkpoints', '.git'}]
+        if name not in files:
+            continue
+        path = Path(root) / name
+        try:
+            payload = json.loads(path.read_text(encoding='utf-8'))
+            metadata = payload.get('metadata', {})
+            records = payload.get('data', [])
+        except Exception as error:
+            print('Bỏ qua candidate bundle không đọc được:', path, repr(error))
+            continue
+        signature = {
+            'split': metadata.get('split'),
+            'count': metadata.get('count'),
+            'adapter': metadata.get('visual_adapter'),
+            'prompt_conditioned': bool(
+                metadata.get('prompt_conditioned_qformer', False)),
+            'cascade': bool(metadata.get('cascade_semantic_alignment', False)),
+        }
+        print('Q-Former candidate bundle:', path, signature)
+        if (signature == {
+                'split': 'test',
+                'count': 5000,
+                'adapter': 'qformer',
+                'prompt_conditioned': False,
+                'cascade': False,
+        } and len(records) == 5000 and
+                all(row.get('candidates') for row in records)):
+            matches.append((path, records))
+    assert len(matches) == 1, (
+        'Không có caption test Q-Former chuẩn và cũng không tìm thấy đúng một '
+        f'candidate bundle baseline: {[path for path, _ in matches]}')
+    source, records = matches[0]
+    predictions = [
+        {
+            'image_id': int(row['image_id']),
+            'caption': row['candidates'][0]['caption'],
+        }
+        for row in records
+    ]
+    destination = OUTPUT / 'qformer_rank0_recovered_predictions.json'
+    destination.write_text(
+        json.dumps(predictions, ensure_ascii=False, indent=2), encoding='utf-8')
+    print('Khôi phục Q-Former rank-0 từ:', source)
+    print('Predictions tạm:', destination)
+    return destination
 
 
 def prepare_chair_input(prediction_path, eval_to_coco, output_path):
@@ -96,7 +152,10 @@ assert COCO_IMAGES.is_dir(), COCO_IMAGES
 OUTPUT.mkdir(parents=True, exist_ok=True)
 IMAGE_OUTPUT.mkdir(parents=True, exist_ok=True)
 
-QFORMER_PREDICTIONS = find_prediction(QFORMER_CIDER, QFORMER_BLEU4, 'Q-Former')
+QFORMER_PREDICTIONS = find_prediction(
+    QFORMER_CIDER, QFORMER_BLEU4, 'Q-Former', required=False)
+if QFORMER_PREDICTIONS is None:
+    QFORMER_PREDICTIONS = recover_qformer_rank0_from_candidates()
 E2_PREDICTIONS = find_prediction(E2_CIDER, E2_BLEU4, 'E2')
 print('Q-Former predictions:', QFORMER_PREDICTIONS)
 print('E2 predictions:', E2_PREDICTIONS)
