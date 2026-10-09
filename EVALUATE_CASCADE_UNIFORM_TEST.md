@@ -138,9 +138,18 @@ for index, candidate in enumerate(sorted(candidates, key=str), 1):
         matches.append((restored, candidate))
     del meta
 
-assert len(matches) == 1, (
-    f'Cần đúng một checkpoint E2 uniform epoch 3, tìm thấy {len(matches)}: {matches}')
-CHECKPOINT, CHECKPOINT_SOURCE = matches[0]
+assert matches, 'Không tìm thấy checkpoint E2 uniform epoch 3 hợp lệ.'
+if len(matches) > 1:
+    print('Tìm thấy nhiều bản sao checkpoint uniform hợp lệ:')
+    for _, source in matches:
+        print(' -', source)
+    print('Ưu tiên checkpoint trong Kaggle Dataset ổn định.')
+dataset_matches = [
+    match for match in matches
+    if '/kaggle/input/datasets/' in match[1].as_posix()
+]
+CHECKPOINT, CHECKPOINT_SOURCE = (
+    dataset_matches[0] if dataset_matches else matches[0])
 print('\nUniform checkpoint verified:', CHECKPOINT_SOURCE)
 
 
