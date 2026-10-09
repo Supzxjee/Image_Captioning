@@ -88,8 +88,21 @@ for path in Path('/kaggle/input').rglob('object_concepts.pt'):
             object_cache_matches.append(path)
     except Exception as error:
         print('Bỏ qua object cache không đọc được:', path, repr(error))
-assert len(object_cache_matches) <= 1, object_cache_matches
-OBJECT_CACHE = object_cache_matches[0] if object_cache_matches else None
+object_cache_matches = sorted(set(object_cache_matches), key=str)
+if len(object_cache_matches) > 1:
+    print('Tìm thấy nhiều bản sao object cache hoàn chỉnh:')
+    for path in object_cache_matches:
+        print(' -', path)
+    print('Các file đều đã qua kiểm tra metadata; ưu tiên Kaggle Dataset ổn định.')
+dataset_caches = [
+    path for path in object_cache_matches
+    if '/kaggle/input/datasets/' in path.as_posix()
+]
+OBJECT_CACHE = (dataset_caches[0] if dataset_caches
+                else object_cache_matches[0] if object_cache_matches
+                else None)
+if OBJECT_CACHE is not None:
+    print('Dùng object semantic cache:', OBJECT_CACHE)
 if OBJECT_CACHE is None:
     assert DETECTIONS.is_file(), (
         'Không có object_concepts.pt và thiếu detection JSON: ' + str(DETECTIONS))
@@ -229,4 +242,3 @@ print('Manifest:', manifest_path)
 Giữ toàn bộ thư mục
 `/kaggle/working/e2_no_soft_selector_32q_2l_test/evaluation`. Sau khi có kết quả,
 chạy workflow CHAIR riêng bên dưới; không sinh caption lần thứ hai.
-
