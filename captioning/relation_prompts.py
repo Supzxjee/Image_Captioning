@@ -13,6 +13,22 @@ from pathlib import PurePosixPath
 
 PERSON = 'person'
 SUPPORTS = {'dining table', 'bed', 'couch', 'bench', 'chair'}
+SUPPORTED_ON = {
+    'dining table': {
+        'apple', 'banana', 'book', 'bottle', 'bowl', 'broccoli', 'cake',
+        'carrot', 'cell phone', 'cup', 'donut', 'fork', 'hot dog', 'knife',
+        'cat', 'dog', 'laptop', 'orange', 'pizza', 'potted plant', 'remote',
+        'sandwich', 'spoon', 'vase', 'wine glass',
+    },
+    'bed': {'backpack', 'book', 'cat', 'cell phone', 'dog', 'handbag',
+            'laptop', 'remote', 'suitcase', 'teddy bear'},
+    'couch': {'backpack', 'book', 'cat', 'cell phone', 'dog', 'handbag',
+              'laptop', 'remote', 'teddy bear'},
+    'bench': {'backpack', 'bird', 'book', 'cat', 'dog', 'handbag',
+              'suitcase', 'teddy bear'},
+    'chair': {'backpack', 'book', 'cat', 'cell phone', 'dog', 'handbag',
+              'laptop', 'remote', 'teddy bear'},
+}
 WEARABLE = {'tie', 'backpack'}
 CARRIED = {'handbag', 'suitcase'}
 HOLDABLE = {
@@ -28,6 +44,17 @@ FOOD_CONTENTS = {
     'broccoli', 'carrot', 'apple', 'orange', 'banana', 'sandwich', 'hot dog',
     'pizza', 'donut', 'cake',
 }
+
+# Raw IoU alone produces visually true but semantically unhelpful relations
+# (for example a car box overlapping a person standing in front of it).  Keep
+# overlap only for pairs where contact/attachment is meaningful in a caption.
+MEANINGFUL_OVERLAP_PAIRS = {
+    frozenset(('person', 'bench')),
+    frozenset(('person', 'couch')), frozenset(('person', 'laptop')),
+    frozenset(('person', 'suitcase')),
+    frozenset(('plant', 'vase')), frozenset(('potted plant', 'vase')),
+}
+BOARD_LIKE_RIDEABLES = {'surfboard'}
 
 RELATION_PRIORITY = {
     'wearing': 1.00,
@@ -150,7 +177,12 @@ def _semantic_relation(a, b):
         containment = _inside_fraction(item, person)
         x_overlap = _axis_overlap(person.box[0], person.box[2], item.box[0], item.box[2])
         person_bottom, item_bottom = person.box[3], item.box[3]
-        if item.label in RIDEABLE and x_overlap >= 0.25 and item.center[1] >= person.center[1]:
+        board_orientation_ok = (item.label not in BOARD_LIKE_RIDEABLES or
+                                item.width >= 1.15 * item.height)
+        if (item.label in RIDEABLE and board_orientation_ok and x_overlap >= 0.25 and
+                item.center[1] >= person.center[1]):
+            # A ridden object supports the lower part of the person.  This
+            # rejects many carried surfboards and snowboards beside a person.
             if person_bottom <= item_bottom + 0.30 * item.height:
                 return person, 'riding', item, 'person-object class and support geometry'
         if containment >= 0.55:
@@ -158,13 +190,19 @@ def _semantic_relation(a, b):
                 return person, 'wearing', item, 'person contains wearable object'
             if item.label in CARRIED:
                 return person, 'carrying', item, 'person contains carried object'
-            if item.label in HOLDABLE:
+            if item.label in HOLDABLE and containment >= 0.65:
+                # Scissors detected in the centre of the upper torso are often
+                # jewellery or a printed motif rather than a held object.
+                px = (item.center[0] - person.box[0]) / max(person.width, 1e-6)
+                py = (item.center[1] - person.box[1]) / max(person.height, 1e-6)
+                if item.label == 'scissors' and 0.30 <= px <= 0.70 and py <= 0.55:
+                    return None
                 return person, 'holding', item, 'person contains handheld object'
 
     # Objects nested in furniture are normally on the visible support surface.
     if a.label in SUPPORTS or b.label in SUPPORTS:
         support, item = (a, b) if a.label in SUPPORTS else (b, a)
-        if item.label != PERSON:
+        if item.label in SUPPORTED_ON[support.label]:
             horizontal = _axis_overlap(item.box[0], item.box[2], support.box[0], support.box[2])
             nested = _inside_fraction(item, support)
             surface_band = support.box[1] - 0.15 * support.height <= item.box[3] <= (
@@ -176,14 +214,22 @@ def _semantic_relation(a, b):
     for inner, outer in ((a, b), (b, a)):
         allowed = ((outer.label in VEHICLE_CONTAINERS and inner.label in VEHICLE_PASSENGERS) or
                    (outer.label in FOOD_CONTAINERS and inner.label in FOOD_CONTENTS))
-        if allowed and _inside_fraction(inner, outer) >= 0.70:
+        area_ratio = inner.area / max(outer.area, 1e-6)
+        relative_y = (inner.center[1] - outer.box[1]) / max(outer.height, 1e-6)
+        strict_visible_pair = (inner.label == PERSON and
+                               outer.label in {'car', 'truck', 'airplane'})
+        visible_vehicle_evidence = (not strict_visible_pair or
+                                    (area_ratio >= 0.025 and 0.08 <= relative_y <= 0.78))
+        if (allowed and visible_vehicle_evidence and inner.confidence >= 0.60 and
+                _inside_fraction(inner, outer) >= 0.70):
             return inner, 'inside', outer, 'semantic container whitelist'
     return None
 
 
 def _geometric_relation(a, b):
     overlap = _iou(a, b)
-    if overlap >= 0.15:
+    pair = frozenset((a.label, b.label))
+    if overlap >= 0.15 and pair in MEANINGFUL_OVERLAP_PAIRS:
         return a, 'overlapping', b, 'box IoU'
 
     ax, ay = a.center
@@ -268,7 +314,7 @@ def build_relation_entry(entry, **kwargs):
         ],
         'triplets': triplets,
         'prompt': relation_prompt(triplets, detections),
-        'heuristic_version': 'H1_2_semantic_instance_aware_v2',
+        'heuristic_version': 'H1_3_semantic_instance_aware_v2_1',
     }
 
 

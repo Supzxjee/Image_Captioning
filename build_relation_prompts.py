@@ -87,7 +87,7 @@ def main(argv=None):
     relation_counts = Counter(
         item['relation'] for entry in cache.values() for item in entry['triplets'])
     summary = {
-        'heuristic_version': 'H1_2_semantic_instance_aware_v2',
+        'heuristic_version': 'H1_3_semantic_instance_aware_v2_1',
         'images': len(cache),
         'images_with_relations': sum(bool(entry['triplets']) for entry in cache.values()),
         'total_relations': sum(relation_counts.values()),

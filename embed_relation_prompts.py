@@ -81,8 +81,8 @@ def main(argv=None):
             print(f'Encoded prompts: {len(data)}/{len(ordered)}', flush=True)
 
     metadata = {
-        'variant': 'semantic_instance_aware_relation_v2',
-        'heuristic_version': 'H1_2_semantic_instance_aware_v2',
+        'variant': 'semantic_instance_aware_relation_v2_1',
+        'heuristic_version': 'H1_3_semantic_instance_aware_v2_1',
         'encoder': 'openai/clip-vit-base-patch16',
         'feature': 'text_model.last_hidden_state',
         'storage': 'fp16',

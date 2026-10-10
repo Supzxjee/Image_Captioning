@@ -29,6 +29,22 @@ class RelationPromptTests(unittest.TestCase):
         self.assertEqual(result['triplets'][0]['relation'], 'on')
         self.assertEqual(result['prompt'], 'a photo showing cake on dining table')
 
+    def test_implausible_furniture_on_support_is_rejected(self):
+        entry = {'objects': [
+            detection('dining table', [0, 80, 200, 200]),
+            detection('chair', [60, 55, 110, 105]),
+        ]}
+        result = build_relation_entry(entry)
+        self.assertNotIn('chair on dining table', result['prompt'])
+
+    def test_potted_plant_is_not_put_on_couch_from_box_overlap(self):
+        entry = {'objects': [
+            detection('couch', [0, 80, 200, 200]),
+            detection('potted plant', [60, 55, 110, 105]),
+        ]}
+        result = build_relation_entry(entry)
+        self.assertNotIn('potted plant on couch', result['prompt'])
+
     def test_implausible_animal_containment_is_not_inside(self):
         entry = {'objects': [
             detection('dog', [0, 0, 160, 160]),
@@ -44,6 +60,38 @@ class RelationPromptTests(unittest.TestCase):
         ]}
         result = build_relation_entry(entry)
         self.assertEqual(result['triplets'][0]['relation'], 'inside')
+
+    def test_tiny_passenger_box_does_not_imply_vehicle_containment(self):
+        entry = {'objects': [
+            detection('airplane', [0, 0, 500, 300]),
+            detection('person', [240, 220, 260, 280]),
+        ]}
+        result = build_relation_entry(entry)
+        self.assertNotIn('person inside airplane', result['prompt'])
+
+    def test_carried_vertical_surfboard_is_not_ridden(self):
+        entry = {'objects': [
+            detection('person', [80, 20, 140, 200]),
+            detection('surfboard', [120, 40, 170, 230]),
+        ]}
+        result = build_relation_entry(entry)
+        self.assertNotIn('person riding surfboard', result['prompt'])
+
+    def test_torso_scissors_do_not_imply_holding(self):
+        entry = {'objects': [
+            detection('person', [0, 0, 100, 200]),
+            detection('scissors', [45, 35, 55, 60]),
+        ]}
+        result = build_relation_entry(entry)
+        self.assertNotIn('person holding scissors', result['prompt'])
+
+    def test_arbitrary_overlap_is_not_emitted(self):
+        entry = {'objects': [
+            detection('car', [0, 0, 200, 120]),
+            detection('person', [80, 20, 140, 160]),
+        ]}
+        result = build_relation_entry(entry)
+        self.assertNotIn('overlapping', result['prompt'])
 
     def test_multiple_same_class_instances_do_not_create_text_contradiction(self):
         entry = {'objects': [

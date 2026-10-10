@@ -1,4 +1,4 @@
-# Bộ sinh quan hệ V2: semantic + instance-aware
+# Bộ sinh quan hệ V2.1: semantic + instance-aware
 
 V2 sửa hai lỗi được xác nhận qua kiểm tra thủ công 120 ảnh COCO:
 
@@ -11,6 +11,22 @@ V2 chỉ dùng ảnh gián tiếp qua YOLO label, confidence và bounding box; k
 caption tham chiếu. Mỗi detection giữ `instance_id` trong metadata. Bộ sinh chọn
 tối đa một quan hệ cho mỗi cặp instance và một quan hệ mạnh nhất cho mỗi cặp lớp
 trước khi chuyển thành prompt chữ.
+
+## Hiệu chỉnh V2.1 sau audit ảnh
+
+Audit trực quan trên cùng 120 ảnh cho thấy V2 tăng strict accept rate từ
+50,83% lên 70,83%. V2.1 xử lý tiếp các lỗi lặp lại trong 35 prompt chưa đạt:
+
+- chỉ sinh `on` cho các cặp vật–bề mặt hợp lý, tránh `chair on dining table`
+  và `potted plant on couch` do hộp bao chồng nhau;
+- với `person inside car/truck/airplane`, yêu cầu người có kích thước và vị trí
+  đủ rõ bên trong phương tiện;
+- loại `riding surfboard` khi ván gần thẳng đứng, thường là người đang mang ván;
+- siết `holding` và chặn trường hợp scissors nằm giữa thân người;
+- chỉ giữ `overlapping` cho một số cặp có ý nghĩa tiếp xúc rõ ràng.
+
+Các quy tắc này vẫn chỉ đọc nhãn, confidence và bounding box của detector; không
+đọc caption tham chiếu hay annotation quan hệ.
 
 ## Các quan hệ ưu tiên
 
