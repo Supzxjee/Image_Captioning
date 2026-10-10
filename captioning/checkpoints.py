@@ -55,6 +55,13 @@ def load_checkpoint(model, path, tokenizer, warm_start=False):
     if warm_start:
         result = model.encoder.load_state_dict(encoder_state, strict=False)
         allowed = {'prompt_visual_gate.weight', 'prompt_visual_gate.bias'}
+        # A cached-feature checkpoint may omit the frozen CLIP vision backbone.
+        # When continuing from original images, the backbone has just been loaded
+        # from the same pretrained CLIP release, so these missing frozen weights
+        # are expected and must not invalidate the trainable warm start.
+        if model.encoder.feature_extractor is not None:
+            allowed.update(key for key in result.missing_keys
+                           if key.startswith('feature_extractor.'))
         if model_uses_objects and not checkpoint_uses_objects:
             allowed.update(key for key in result.missing_keys
                            if key.startswith('object_alignment.'))
