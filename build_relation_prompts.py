@@ -2,9 +2,28 @@
 import argparse
 import json
 from collections import Counter
-from pathlib import Path
+from pathlib import Path, PurePosixPath
 
 from captioning.relation_prompts import build_relation_cache
+
+
+def select_source_filenames(source, filenames):
+    payload = source.get('data', source) if isinstance(source, dict) else source
+    if not isinstance(payload, dict):
+        raise ValueError('Source must be a mapping.')
+    requested = list(dict.fromkeys(filenames))
+    if len(requested) != len(filenames):
+        raise ValueError('Filename selection contains duplicates.')
+    by_name = {}
+    for key, value in payload.items():
+        name = PurePosixPath(str(key).replace('\\', '/')).name
+        if name in by_name:
+            raise ValueError(f'Ambiguous detection filename: {name}')
+        by_name[name] = (key, value)
+    missing = [name for name in requested if name not in by_name]
+    if missing:
+        raise ValueError(f'Missing {len(missing)} requested detections: {missing[:10]}')
+    return {by_name[name][0]: by_name[name][1] for name in requested}
 
 
 def main(argv=None):
@@ -20,6 +39,8 @@ def main(argv=None):
     parser.add_argument('--max-relations', type=int, default=3)
     parser.add_argument('--duplicate-iou', type=float, default=0.8)
     parser.add_argument('--limit', type=int, default=0, help='Smoke only; 0 processes the full cache.')
+    parser.add_argument('--filenames-file', default='',
+                        help='One filename per line; builds exactly this reproducible audit subset.')
     args = parser.parse_args(argv)
     if not 0 <= args.min_confidence <= 1:
         parser.error('--min-confidence must be in [0, 1].')
@@ -27,10 +48,19 @@ def main(argv=None):
         parser.error('--max-objects must be positive; max-relations/limit nonnegative.')
     if not 0 < args.duplicate_iou <= 1:
         parser.error('--duplicate-iou must be in (0, 1].')
+    if args.limit and args.filenames_file:
+        parser.error('--limit and --filenames-file are mutually exclusive.')
 
     source_path = Path(args.source)
     source = json.loads(source_path.read_text(encoding='utf-8'))
-    if args.limit:
+    if args.filenames_file:
+        selection_path = Path(args.filenames_file)
+        filenames = [line.strip() for line in selection_path.read_text(
+            encoding='utf-8-sig').splitlines() if line.strip()]
+        if not filenames:
+            raise ValueError('Empty filename selection.')
+        source = select_source_filenames(source, filenames)
+    elif args.limit:
         payload = source.get('data', source) if isinstance(source, dict) else source
         if not isinstance(payload, dict):
             raise ValueError('Source must be a mapping.')
@@ -67,6 +97,7 @@ def main(argv=None):
             'max_objects': args.max_objects,
             'max_relations': args.max_relations,
             'duplicate_iou': args.duplicate_iou,
+            'filenames_file': args.filenames_file,
         },
     }
     destination.with_suffix('.summary.json').write_text(

@@ -1,6 +1,7 @@
 import unittest
 
 from captioning.relation_prompts import build_relation_entry, infer_relations, select_detections
+from build_relation_prompts import select_source_filenames
 from embed_relation_prompts import index_prompts
 
 
@@ -82,6 +83,16 @@ class RelationPromptTests(unittest.TestCase):
                 '/first/a.jpg': {'prompt': 'first'},
                 '/second/a.jpg': {'prompt': 'second'},
             })
+
+    def test_exact_filename_subset_preserves_requested_order(self):
+        source = {
+            '/old/b.jpg': {'objects': []},
+            '/old/a.jpg': {'objects': []},
+        }
+        selected = select_source_filenames(source, ['a.jpg', 'b.jpg'])
+        self.assertEqual(list(selected), ['/old/a.jpg', '/old/b.jpg'])
+        with self.assertRaisesRegex(ValueError, 'Missing'):
+            select_source_filenames(source, ['missing.jpg'])
 
 
 if __name__ == '__main__':

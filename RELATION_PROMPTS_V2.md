@@ -59,6 +59,23 @@ print(json.dumps(summary, indent=2))
 Kiểm tra thủ công 120 ảnh trên JSON smoke trước. Chỉ khi tỷ lệ `ACCEPT` tăng rõ
 so với mốc V1 `61/120` mới tạo cache toàn bộ 123.287 ảnh.
 
+Để so sánh công bằng trên đúng 120 ảnh đã audit ở V1, dùng danh sách cố định đã
+commit trong `audit/relation_prompt_audit_120_filenames.txt`:
+
+```python
+AUDIT_OUTPUT = Path('/kaggle/working/relation_prompts_v2_audit_120')
+AUDIT_OUTPUT.mkdir(parents=True, exist_ok=True)
+run([
+    sys.executable, '-u', 'build_relation_prompts.py',
+    '--source', DETECTIONS,
+    '--output', AUDIT_OUTPUT / 'promptcache_relation_v2_audit_120.json',
+    '--filenames-file', REPO / 'audit/relation_prompt_audit_120_filenames.txt',
+    '--min-confidence', '0.5',
+    '--max-objects', '10',
+    '--max-relations', '3',
+])
+```
+
 ## Tạo JSON và CLIP token cache đầy đủ
 
 ```python
