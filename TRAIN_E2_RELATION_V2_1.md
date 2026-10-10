@@ -275,6 +275,30 @@ run([
     sys.executable, "-m", "pip", "install", "-q", "-r", "requirements.txt"
 ], cwd=REPO)
 
+# Download CLIP exactly once before Accelerate creates two processes.  Starting
+# from_pretrained() concurrently can leave both ranks waiting on the same Hugging
+# Face cache lock.  The workers are forced offline after this preflight so that
+# training either uses the complete local snapshot or fails immediately.
+HF_HOME = Path("/kaggle/working/huggingface")
+HF_HOME.mkdir(parents=True, exist_ok=True)
+os.environ["HF_HOME"] = str(HF_HOME)
+os.environ["HF_HUB_DISABLE_XET"] = "1"
+os.environ["HF_HUB_DOWNLOAD_TIMEOUT"] = "300"
+print("Prefetching CLIP ViT-B/16 once before dual-GPU launch...", flush=True)
+run([
+    sys.executable,
+    "-u",
+    "-c",
+    (
+        "from transformers import CLIPModel; "
+        "m = CLIPModel.from_pretrained('openai/clip-vit-base-patch16'); "
+        "print('CLIP snapshot verified in local cache', flush=True); "
+        "del m"
+    ),
+])
+os.environ["HF_HUB_OFFLINE"] = "1"
+os.environ["TRANSFORMERS_OFFLINE"] = "1"
+
 # Kaggle may receive an incorrectly extracted .pt directory.  In that case,
 # rebuild the exact deterministic object cache from the saved YOLO JSON rather
 # than attempting to re-zip PyTorch's internal archive files.
