@@ -67,12 +67,16 @@ EPOCHS = 3
 
 print("E2 relation V2.1 bootstrap started.", flush=True)
 
-assert CHECKPOINT_ROOT.is_dir(), CHECKPOINT_ROOT
-checkpoint_matches = sorted(
-    CHECKPOINT_ROOT.rglob("model_h1_2_crossattn_epoch_10.pth")
-)
-assert len(checkpoint_matches) == 1, checkpoint_matches
-OLD_CHECKPOINT = checkpoint_matches[0]
+if CHECKPOINT_ROOT.is_file():
+    assert CHECKPOINT_ROOT.name == "model_h1_2_crossattn_epoch_10.pth"
+    OLD_CHECKPOINT = CHECKPOINT_ROOT
+else:
+    assert CHECKPOINT_ROOT.is_dir(), CHECKPOINT_ROOT
+    checkpoint_matches = sorted(
+        CHECKPOINT_ROOT.rglob("model_h1_2_crossattn_epoch_10.pth")
+    )
+    assert len(checkpoint_matches) == 1, checkpoint_matches
+    OLD_CHECKPOINT = checkpoint_matches[0]
 print("Selected epoch-10 checkpoint:", OLD_CHECKPOINT, flush=True)
 
 
