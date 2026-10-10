@@ -46,9 +46,8 @@ PROMPT_CACHE = Path(
     "/kaggle/input/datasets/ducanh2403/prompt-conditioned-qformer-32q-2l/"
     "relation_prompts_v2_1_full/prompt_clip_tokens_relation_v2_1.pt"
 )
-OLD_CHECKPOINT = Path(
-    "/kaggle/input/datasets/ducanh2403/prompt-conditioned-qformer-32q-2l/"
-    "qformer_32q_2l_gated/checkpoints/model_h1_2_crossattn_epoch_10.pth"
+CHECKPOINT_ROOT = Path(
+    "/kaggle/input/datasets/ducanh2403/qformer-epoch10"
 )
 DETECTIONS = Path(
     "/kaggle/input/datasets/ducanh2403/"
@@ -67,6 +66,14 @@ EXPERIMENT = "qformer_cascade_alignment_v2_1_raw_images_32q_2l_dual_gpu_3ep"
 EPOCHS = 3
 
 print("E2 relation V2.1 bootstrap started.", flush=True)
+
+assert CHECKPOINT_ROOT.is_dir(), CHECKPOINT_ROOT
+checkpoint_matches = sorted(
+    CHECKPOINT_ROOT.rglob("model_h1_2_crossattn_epoch_10.pth")
+)
+assert len(checkpoint_matches) == 1, checkpoint_matches
+OLD_CHECKPOINT = checkpoint_matches[0]
+print("Selected epoch-10 checkpoint:", OLD_CHECKPOINT, flush=True)
 
 
 def run(args, cwd=None):
