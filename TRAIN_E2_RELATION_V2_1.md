@@ -35,7 +35,7 @@ os.environ["TORCH_NCCL_HEARTBEAT_TIMEOUT_SEC"] = "600"
 import torch
 
 REPO = Path("/kaggle/working/Image_Captioning")
-COMMIT = "410d267"
+COMMIT = "aaf03b8"
 COCO_JSON = Path(
     "/kaggle/input/datasets/vuthetam/mscoco-2014/dataset_coco.json"
 )
@@ -113,6 +113,7 @@ def find_v2_1_prompt_cache():
 
 def checkpoint_signature(path):
     meta = torch.load(path, map_location="cpu", weights_only=False)
+    encoder_state = meta.get("encoder_state_dict", {})
     signature = {
         "epoch": meta.get("epoch"),
         "visual_adapter": meta.get("visual_adapter", "direct"),
@@ -122,6 +123,9 @@ def checkpoint_signature(path):
         "itc_weight": float(meta.get("itc_weight", 0.0)),
         "object_alignment": bool(meta.get("object_semantic_alignment", False)),
         "cascade_alignment": bool(meta.get("cascade_semantic_alignment", False)),
+        "backbone_tensors": sum(
+            key.startswith("feature_extractor.") for key in encoder_state
+        ),
     }
     del meta
     return signature
@@ -154,7 +158,11 @@ def find_old_qformer_checkpoint():
             print("Skip unreadable checkpoint:", path, repr(error))
             continue
         print(path, signature)
-        if signature == expected:
+        core_signature = {
+            key: value for key, value in signature.items()
+            if key != "backbone_tensors"
+        }
+        if core_signature == expected and signature["backbone_tensors"] > 0:
             matches.append(path)
     assert matches, (
         "Khong tim thay Q-Former baseline epoch 10 dung metadata. "
@@ -274,30 +282,6 @@ run(["git", "rev-parse", "--short", "HEAD"], cwd=REPO)
 run([
     sys.executable, "-m", "pip", "install", "-q", "-r", "requirements.txt"
 ], cwd=REPO)
-
-# Download CLIP exactly once before Accelerate creates two processes.  Starting
-# from_pretrained() concurrently can leave both ranks waiting on the same Hugging
-# Face cache lock.  The workers are forced offline after this preflight so that
-# training either uses the complete local snapshot or fails immediately.
-HF_HOME = Path("/kaggle/working/huggingface")
-HF_HOME.mkdir(parents=True, exist_ok=True)
-os.environ["HF_HOME"] = str(HF_HOME)
-os.environ["HF_HUB_DISABLE_XET"] = "1"
-os.environ["HF_HUB_DOWNLOAD_TIMEOUT"] = "300"
-print("Prefetching CLIP ViT-B/16 once before dual-GPU launch...", flush=True)
-run([
-    sys.executable,
-    "-u",
-    "-c",
-    (
-        "from transformers import CLIPModel; "
-        "m = CLIPModel.from_pretrained('openai/clip-vit-base-patch16'); "
-        "print('CLIP snapshot verified in local cache', flush=True); "
-        "del m"
-    ),
-])
-os.environ["HF_HUB_OFFLINE"] = "1"
-os.environ["TRANSFORMERS_OFFLINE"] = "1"
 
 # Kaggle may receive an incorrectly extracted .pt directory.  In that case,
 # rebuild the exact deterministic object cache from the saved YOLO JSON rather
