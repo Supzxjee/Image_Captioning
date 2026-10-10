@@ -172,10 +172,35 @@ assert free_bytes > required_bytes + 5 * 1024**3, (
 if VISUAL_CACHE_LOCAL.exists():
     shutil.rmtree(VISUAL_CACHE_LOCAL)
 VISUAL_CACHE_LOCAL.mkdir(parents=True)
+
+
+def copy_with_progress(source, destination, chunk_size=64 * 1024**2):
+    total = source.stat().st_size
+    copied = 0
+    next_report = 1024**3
+    started = time.monotonic()
+    with source.open("rb") as src, destination.open("wb") as dst:
+        while True:
+            chunk = src.read(chunk_size)
+            if not chunk:
+                break
+            dst.write(chunk)
+            copied += len(chunk)
+            if copied >= next_report or copied == total:
+                elapsed = max(time.monotonic() - started, 1e-6)
+                print(
+                    f"  {copied / 1024**3:.1f}/{total / 1024**3:.1f} GiB "
+                    f"({100 * copied / total:.1f}%) | "
+                    f"{copied / 1024**2 / elapsed:.1f} MiB/s",
+                    flush=True,
+                )
+                next_report += 1024**3
+
+
 for source in source_shards:
     destination = VISUAL_CACHE_LOCAL / source.name
     print(f"Copying visual cache: {source.name}", flush=True)
-    shutil.copyfile(source, destination)
+    copy_with_progress(source, destination)
     assert destination.stat().st_size == source.stat().st_size
 print("Local visual cache ready:", VISUAL_CACHE_LOCAL, flush=True)
 
