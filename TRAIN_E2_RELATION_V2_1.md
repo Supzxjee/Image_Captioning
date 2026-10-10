@@ -166,25 +166,45 @@ def find_object_cache():
     matches = sorted(
         (path for path in Path("/kaggle/input").rglob("object_concepts.pt")
          if path.is_file()),
-        key=path_priority,
+        # A full 123,287-image cache is much larger than diagnostic caches.
+        # Prefer the largest candidate so we do not spend minutes loading a
+        # known partial cache first.
+        key=lambda path: (-path.stat().st_size, path_priority(path)),
     )
+    print("Object cache candidates:", len(matches))
+    for path in matches:
+        print(" -", path, f"({path.stat().st_size / 2**30:.2f} GiB)")
     for path in matches:
         try:
             bundle = torch.load(path, map_location="cpu", weights_only=False)
             metadata = bundle.get("metadata", {})
-            del bundle
+            data = bundle.get("data")
         except Exception as error:
             print("Skip unreadable object cache:", path, repr(error))
             continue
-        if (
-            metadata.get("count") == 123287
-            and metadata.get("complete") is True
-            and metadata.get("max_objects") == 10
-            and float(metadata.get("min_confidence", -1)) == 0.5
-        ):
+        actual_count = len(data) if isinstance(data, dict) else -1
+        first_entry = next(iter(data.values()), {}) if isinstance(data, dict) else {}
+        tokens = first_entry.get("tokens") if isinstance(first_entry, dict) else None
+        mask = first_entry.get("mask") if isinstance(first_entry, dict) else None
+        shape_ok = (
+            tokens is not None and tuple(tokens.shape) == (10, 512)
+            and mask is not None and tuple(mask.shape) == (10,)
+        )
+        metadata_ok = (
+            metadata.get("count", actual_count) == 123287
+            and metadata.get("complete", actual_count == 123287) is True
+            and metadata.get("max_objects", 10) == 10
+            and float(metadata.get("min_confidence", 0.5)) == 0.5
+        )
+        print("Candidate metadata:", json.dumps(metadata, indent=2))
+        print("Actual entries:", actual_count, "shape_ok:", shape_ok)
+        del bundle
+        del data
+        if actual_count == 123287 and shape_ok and metadata_ok:
             print("Selected object cache:", path)
             print(json.dumps(metadata, indent=2))
             return path
+        print("Rejected object cache:", path)
     raise AssertionError(
         "Khong tim thay object_concepts.pt hoan chinh. Add Input object cache."
     )
