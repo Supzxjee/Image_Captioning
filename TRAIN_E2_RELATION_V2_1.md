@@ -9,8 +9,13 @@ Trước khi chạy:
 - Save Version notebook sinh full cache V2.1;
 - Add Input output đó vào notebook train;
 - Add Input checkpoint Q-Former baseline epoch 10;
-- Add Input `object_semantic_cache`, `visual-cache` và MS COCO 2014;
+- Add Input `object_semantic_cache` và MS COCO 2014;
 - chọn GPU T4 x2.
+
+Workflow này cố ý đọc ảnh gốc và chạy frozen CLIP ViT-B/16 trực tiếp. Không Add
+Input `visual-cache`: các shard HDF5 lớn trên Kaggle mount có thể treo DataLoader
+giữa epoch. Backbone, preprocessing và precision vẫn giống lúc tạo cache; chỉ thay
+cách lấy 197 visual tokens.
 
 ```python
 import json
@@ -30,15 +35,12 @@ os.environ["TORCH_NCCL_HEARTBEAT_TIMEOUT_SEC"] = "600"
 import torch
 
 REPO = Path("/kaggle/working/Image_Captioning")
-COMMIT = "e7e0685"
+COMMIT = "410d267"
 COCO_JSON = Path(
     "/kaggle/input/datasets/vuthetam/mscoco-2014/dataset_coco.json"
 )
 COCO_IMAGES = Path(
     "/kaggle/input/datasets/vuthetam/mscoco-2014/images"
-)
-VISUAL_CACHE = Path(
-    "/kaggle/input/datasets/ducanh2403/visual-cache"
 )
 BUILT_OBJECT_CACHE = Path(
     "/kaggle/working/object_semantic_cache/object_concepts.pt"
@@ -49,7 +51,7 @@ EXPECTED_PROMPT_SHA = (
 EXPECTED_TOKEN_SHA = (
     "03a89869a11e137d84204f1ad602f1b80d1fd7b28fb6ed73ea9b3906fcf4c908"
 )
-EXPERIMENT = "qformer_cascade_alignment_v2_1_32q_2l_dual_gpu_3ep"
+EXPERIMENT = "qformer_cascade_alignment_v2_1_raw_images_32q_2l_dual_gpu_3ep"
 EPOCHS = 3
 
 
@@ -235,7 +237,6 @@ for index in range(torch.cuda.device_count()):
 assert torch.cuda.device_count() == 2, "Notebook phai chon GPU T4 x2."
 assert COCO_JSON.is_file(), COCO_JSON
 assert COCO_IMAGES.is_dir(), COCO_IMAGES
-assert VISUAL_CACHE.is_dir(), VISUAL_CACHE
 
 # Check the small list of checkpoints first so a missing Add Input fails fast,
 # before loading the multi-gigabyte object/prompt caches.
@@ -317,8 +318,6 @@ common = [
     "--dataset-json-path", COCO_JSON,
     "--base-path", COCO_IMAGES,
     "--prompt-cache-path", PROMPT_CACHE,
-    "--visual-cache", VISUAL_CACHE,
-    "--visual-cache-id-key", "coco_id",
     "--visual-preprocessing", "bilinear",
     "--visual-precision", "fp32",
     "--visual-adapter", "qformer",
@@ -366,6 +365,7 @@ assert meta["object_semantic_alignment"] is False
 assert meta["cascade_semantic_alignment"] is True
 assert meta["cascade_selector_mode"] == "object_context"
 assert meta["max_train_batches"] == 0
+assert meta["visual_cache_files"] == []
 assert meta["prompt_metadata"]["complete"] is True
 assert meta["prompt_metadata"]["count"] == 123287
 assert meta["prompt_metadata"]["source_sha256"] == EXPECTED_PROMPT_SHA
