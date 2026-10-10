@@ -40,6 +40,9 @@ COCO_IMAGES = Path(
 VISUAL_CACHE = Path(
     "/kaggle/input/datasets/ducanh2403/visual-cache"
 )
+BUILT_OBJECT_CACHE = Path(
+    "/kaggle/working/object_semantic_cache/object_concepts.pt"
+)
 EXPECTED_PROMPT_SHA = (
     "b816743130a62047b347577d855f5dbf38ee621544050a8f09153e8056a4e479"
 )
@@ -205,9 +208,24 @@ def find_object_cache():
             print(json.dumps(metadata, indent=2))
             return path
         print("Rejected object cache:", path)
-    raise AssertionError(
-        "Khong tim thay object_concepts.pt hoan chinh. Add Input object cache."
+    print(
+        "Khong co object_concepts.pt dung dinh dang; se tao lai tu "
+        "objectdetectioncache.json."
     )
+    return None
+
+
+def find_detection_cache():
+    matches = sorted(
+        (path for path in Path("/kaggle/input").rglob("objectdetectioncache.json")
+         if path.is_file()),
+        key=path_priority,
+    )
+    assert matches, (
+        "Khong tim thay objectdetectioncache.json de tao lai object cache."
+    )
+    print("Selected detection cache:", matches[0])
+    return matches[0]
 
 
 print("PyTorch:", torch.__version__)
@@ -255,6 +273,45 @@ run(["git", "rev-parse", "--short", "HEAD"], cwd=REPO)
 run([
     sys.executable, "-m", "pip", "install", "-q", "-r", "requirements.txt"
 ], cwd=REPO)
+
+# Kaggle may receive an incorrectly extracted .pt directory.  In that case,
+# rebuild the exact deterministic object cache from the saved YOLO JSON rather
+# than attempting to re-zip PyTorch's internal archive files.
+if OBJECT_CACHE is None:
+    DETECTIONS = find_detection_cache()
+    OBJECT_CACHE = BUILT_OBJECT_CACHE
+    OBJECT_CACHE.parent.mkdir(parents=True, exist_ok=True)
+    if OBJECT_CACHE.exists():
+        if OBJECT_CACHE.is_dir():
+            shutil.rmtree(OBJECT_CACHE)
+        else:
+            OBJECT_CACHE.unlink()
+    run([
+        sys.executable,
+        "-u",
+        "build_object_concept_cache.py",
+        "--source", DETECTIONS,
+        "--dataset-json-path", COCO_JSON,
+        "--output", OBJECT_CACHE,
+        "--objects-field", "objects",
+        "--name-key", "label",
+        "--confidence-key", "conf",
+        "--min-confidence", "0.5",
+        "--max-objects", "10",
+        "--batch-size", "256",
+    ], cwd=REPO)
+    rebuilt = torch.load(OBJECT_CACHE, map_location="cpu", weights_only=False)
+    rebuilt_data = rebuilt.get("data", {})
+    rebuilt_metadata = rebuilt.get("metadata", {})
+    assert len(rebuilt_data) == 123287
+    assert rebuilt_metadata.get("complete") is True
+    assert rebuilt_metadata.get("count") == 123287
+    assert rebuilt_metadata.get("max_objects") == 10
+    assert float(rebuilt_metadata.get("min_confidence")) == 0.5
+    print("Rebuilt object cache metadata:")
+    print(json.dumps(rebuilt_metadata, indent=2))
+    del rebuilt
+    del rebuilt_data
 
 common = [
     "--dataset-json-path", COCO_JSON,
