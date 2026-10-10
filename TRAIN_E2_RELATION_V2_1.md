@@ -9,7 +9,7 @@ Trước khi chạy:
 - Save Version notebook sinh full cache V2.1;
 - Add Input output đó vào notebook train;
 - Add Input checkpoint Q-Former baseline epoch 10;
-- Add Input `object_semantic_cache` và MS COCO 2014;
+- Add Input `objectdetectionecache` và MS COCO 2014;
 - chọn GPU T4 x2.
 
 Workflow này cố ý đọc ảnh gốc và chạy frozen CLIP ViT-B/16 trực tiếp. Không Add
@@ -42,7 +42,19 @@ COCO_JSON = Path(
 COCO_IMAGES = Path(
     "/kaggle/input/datasets/vuthetam/mscoco-2014/images"
 )
-BUILT_OBJECT_CACHE = Path(
+PROMPT_CACHE = Path(
+    "/kaggle/input/datasets/ducanh2403/prompt-conditioned-qformer-32q-2l/"
+    "relation_prompts_v2_1_full/prompt_clip_tokens_relation_v2_1.pt"
+)
+OLD_CHECKPOINT = Path(
+    "/kaggle/input/datasets/ducanh2403/prompt-conditioned-qformer-32q-2l/"
+    "qformer_32q_2l_gated/checkpoints/model_h1_2_crossattn_epoch_10.pth"
+)
+DETECTIONS = Path(
+    "/kaggle/input/datasets/ducanh2403/"
+    "objectdetectionecache/objectdetectioncache.json"
+)
+OBJECT_CACHE = Path(
     "/kaggle/working/object_semantic_cache/object_concepts.pt"
 )
 EXPECTED_PROMPT_SHA = (
@@ -54,61 +66,14 @@ EXPECTED_TOKEN_SHA = (
 EXPERIMENT = "qformer_cascade_alignment_v2_1_raw_images_32q_2l_dual_gpu_3ep"
 EPOCHS = 3
 
+print("E2 relation V2.1 bootstrap started.", flush=True)
+
 
 def run(args, cwd=None):
     args = list(map(str, args))
     print("\nRunning:", " ".join(args), flush=True)
     subprocess.run(args, cwd=cwd, check=True)
 
-
-def path_priority(path):
-    text = path.as_posix()
-    return (
-        0 if "/kaggle/input/datasets/" in text else 1,
-        0 if "/kaggle/input/notebooks/" in text else 1,
-        len(text),
-        text,
-    )
-
-
-def find_v2_1_prompt_cache():
-    matches = []
-    for manifest_path in Path("/kaggle/input").rglob("manifest.json"):
-        try:
-            manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
-        except Exception:
-            continue
-        if manifest.get("heuristic_version") != "H1_3_semantic_instance_aware_v2_1":
-            continue
-        if manifest.get("prompt_json_sha256") != EXPECTED_PROMPT_SHA:
-            continue
-        if manifest.get("token_cache_sha256") != EXPECTED_TOKEN_SHA:
-            continue
-        token_path = manifest_path.parent / manifest["token_cache"]
-        metadata_path = token_path.with_suffix(".json")
-        if not token_path.is_file() or not metadata_path.is_file():
-            continue
-        metadata = json.loads(metadata_path.read_text(encoding="utf-8"))
-        if not (
-            metadata.get("complete") is True
-            and metadata.get("count") == 123287
-            and metadata.get("max_length") == 20
-            and metadata.get("source_sha256") == EXPECTED_PROMPT_SHA
-            and metadata.get("heuristic_version")
-                == "H1_3_semantic_instance_aware_v2_1"
-        ):
-            continue
-        matches.append(token_path)
-    assert matches, (
-        "Khong tim thay full prompt cache V2.1. Add Input output cua notebook "
-        "BUILD_RELATION_PROMPTS_V2_1_FULL."
-    )
-    selected = sorted(matches, key=path_priority)[0]
-    print("Prompt cache candidates:")
-    for path in sorted(matches, key=path_priority):
-        print(" -", path)
-    print("Selected prompt cache:", selected)
-    return selected
 
 
 def checkpoint_signature(path):
@@ -131,113 +96,6 @@ def checkpoint_signature(path):
     return signature
 
 
-def find_old_qformer_checkpoint():
-    expected = {
-        "epoch": 10,
-        "visual_adapter": "qformer",
-        "queries": 32,
-        "layers": 2,
-        "prompt_conditioned": False,
-        "itc_weight": 0.0,
-        "object_alignment": False,
-        "cascade_alignment": False,
-    }
-    matches = []
-    candidates = sorted(
-        (path for path in Path("/kaggle/input").rglob("*epoch_10.pth")
-         if path.is_file()),
-        key=path_priority,
-    )
-    print("Epoch-10 checkpoint candidates:", len(candidates))
-    for path in candidates:
-        if not path.is_file():
-            continue
-        try:
-            signature = checkpoint_signature(path)
-        except Exception as error:
-            print("Skip unreadable checkpoint:", path, repr(error))
-            continue
-        print(path, signature)
-        core_signature = {
-            key: value for key, value in signature.items()
-            if key != "backbone_tensors"
-        }
-        if core_signature == expected and signature["backbone_tensors"] > 0:
-            matches.append(path)
-    assert matches, (
-        "Khong tim thay Q-Former baseline epoch 10 dung metadata. "
-        "Hay Add Input dataset prompt-conditioned-qformer-32q-2l co file "
-        "qformer_32q_2l_gated/checkpoints/"
-        "model_h1_2_crossattn_epoch_10.pth."
-    )
-    selected = sorted(matches, key=path_priority)[0]
-    print("Selected warm-start checkpoint:", selected)
-    return selected
-
-
-def find_object_cache():
-    matches = sorted(
-        (path for path in Path("/kaggle/input").rglob("object_concepts.pt")
-         if path.is_file()),
-        # A full 123,287-image cache is much larger than diagnostic caches.
-        # Prefer the largest candidate so we do not spend minutes loading a
-        # known partial cache first.
-        key=lambda path: (-path.stat().st_size, path_priority(path)),
-    )
-    print("Object cache candidates:", len(matches))
-    for path in matches:
-        print(" -", path, f"({path.stat().st_size / 2**30:.2f} GiB)")
-    for path in matches:
-        try:
-            bundle = torch.load(path, map_location="cpu", weights_only=False)
-            metadata = bundle.get("metadata", {})
-            data = bundle.get("data")
-        except Exception as error:
-            print("Skip unreadable object cache:", path, repr(error))
-            continue
-        actual_count = len(data) if isinstance(data, dict) else -1
-        first_entry = next(iter(data.values()), {}) if isinstance(data, dict) else {}
-        tokens = first_entry.get("tokens") if isinstance(first_entry, dict) else None
-        mask = first_entry.get("mask") if isinstance(first_entry, dict) else None
-        shape_ok = (
-            tokens is not None and tuple(tokens.shape) == (10, 512)
-            and mask is not None and tuple(mask.shape) == (10,)
-        )
-        metadata_ok = (
-            metadata.get("count", actual_count) == 123287
-            and metadata.get("complete", actual_count == 123287) is True
-            and metadata.get("max_objects", 10) == 10
-            and float(metadata.get("min_confidence", 0.5)) == 0.5
-        )
-        print("Candidate metadata:", json.dumps(metadata, indent=2))
-        print("Actual entries:", actual_count, "shape_ok:", shape_ok)
-        del bundle
-        del data
-        if actual_count == 123287 and shape_ok and metadata_ok:
-            print("Selected object cache:", path)
-            print(json.dumps(metadata, indent=2))
-            return path
-        print("Rejected object cache:", path)
-    print(
-        "Khong co object_concepts.pt dung dinh dang; se tao lai tu "
-        "objectdetectioncache.json."
-    )
-    return None
-
-
-def find_detection_cache():
-    matches = sorted(
-        (path for path in Path("/kaggle/input").rglob("objectdetectioncache.json")
-         if path.is_file()),
-        key=path_priority,
-    )
-    assert matches, (
-        "Khong tim thay objectdetectioncache.json de tao lai object cache."
-    )
-    print("Selected detection cache:", matches[0])
-    return matches[0]
-
-
 print("PyTorch:", torch.__version__)
 print("CUDA devices:", torch.cuda.device_count())
 for index in range(torch.cuda.device_count()):
@@ -245,12 +103,45 @@ for index in range(torch.cuda.device_count()):
 assert torch.cuda.device_count() == 2, "Notebook phai chon GPU T4 x2."
 assert COCO_JSON.is_file(), COCO_JSON
 assert COCO_IMAGES.is_dir(), COCO_IMAGES
+assert PROMPT_CACHE.is_file(), PROMPT_CACHE
+assert OLD_CHECKPOINT.is_file(), OLD_CHECKPOINT
+assert DETECTIONS.is_file(), DETECTIONS
 
-# Check the small list of checkpoints first so a missing Add Input fails fast,
-# before loading the multi-gigabyte object/prompt caches.
-OLD_CHECKPOINT = find_old_qformer_checkpoint()
-PROMPT_CACHE = find_v2_1_prompt_cache()
-OBJECT_CACHE = find_object_cache()
+prompt_metadata_path = PROMPT_CACHE.with_suffix(".json")
+manifest_path = PROMPT_CACHE.parent / "manifest.json"
+assert prompt_metadata_path.is_file(), prompt_metadata_path
+assert manifest_path.is_file(), manifest_path
+prompt_metadata = json.loads(prompt_metadata_path.read_text(encoding="utf-8"))
+manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+assert prompt_metadata.get("complete") is True
+assert prompt_metadata.get("count") == 123287
+assert prompt_metadata.get("max_length") == 20
+assert prompt_metadata.get("source_sha256") == EXPECTED_PROMPT_SHA
+assert prompt_metadata.get("heuristic_version") == "H1_3_semantic_instance_aware_v2_1"
+assert manifest.get("prompt_json_sha256") == EXPECTED_PROMPT_SHA
+assert manifest.get("token_cache_sha256") == EXPECTED_TOKEN_SHA
+
+expected_checkpoint = {
+    "epoch": 10,
+    "visual_adapter": "qformer",
+    "queries": 32,
+    "layers": 2,
+    "prompt_conditioned": False,
+    "itc_weight": 0.0,
+    "object_alignment": False,
+    "cascade_alignment": False,
+}
+signature = checkpoint_signature(OLD_CHECKPOINT)
+core_signature = {
+    key: value for key, value in signature.items()
+    if key != "backbone_tensors"
+}
+assert core_signature == expected_checkpoint, signature
+assert signature["backbone_tensors"] > 0, (
+    "Checkpoint epoch 10 khong chua frozen CLIP backbone.", signature
+)
+print("Explicit input paths and metadata PASS.", flush=True)
+print("Checkpoint signature:", signature, flush=True)
 
 if REPO.exists() and not (REPO / ".git").is_dir():
     shutil.rmtree(REPO)
@@ -283,44 +174,40 @@ run([
     sys.executable, "-m", "pip", "install", "-q", "-r", "requirements.txt"
 ], cwd=REPO)
 
-# Kaggle may receive an incorrectly extracted .pt directory.  In that case,
-# rebuild the exact deterministic object cache from the saved YOLO JSON rather
-# than attempting to re-zip PyTorch's internal archive files.
-if OBJECT_CACHE is None:
-    DETECTIONS = find_detection_cache()
-    OBJECT_CACHE = BUILT_OBJECT_CACHE
-    OBJECT_CACHE.parent.mkdir(parents=True, exist_ok=True)
-    if OBJECT_CACHE.exists():
-        if OBJECT_CACHE.is_dir():
-            shutil.rmtree(OBJECT_CACHE)
-        else:
-            OBJECT_CACHE.unlink()
-    run([
-        sys.executable,
-        "-u",
-        "build_object_concept_cache.py",
-        "--source", DETECTIONS,
-        "--dataset-json-path", COCO_JSON,
-        "--output", OBJECT_CACHE,
-        "--objects-field", "objects",
-        "--name-key", "label",
-        "--confidence-key", "conf",
-        "--min-confidence", "0.5",
-        "--max-objects", "10",
-        "--batch-size", "256",
-    ], cwd=REPO)
-    rebuilt = torch.load(OBJECT_CACHE, map_location="cpu", weights_only=False)
-    rebuilt_data = rebuilt.get("data", {})
-    rebuilt_metadata = rebuilt.get("metadata", {})
-    assert len(rebuilt_data) == 123287
-    assert rebuilt_metadata.get("complete") is True
-    assert rebuilt_metadata.get("count") == 123287
-    assert rebuilt_metadata.get("max_objects") == 10
-    assert float(rebuilt_metadata.get("min_confidence")) == 0.5
-    print("Rebuilt object cache metadata:")
-    print(json.dumps(rebuilt_metadata, indent=2))
-    del rebuilt
-    del rebuilt_data
+# The manually uploaded object_concepts.pt was extracted into a directory by
+# Kaggle. Rebuild the deterministic cache from the explicit YOLO JSON path.
+OBJECT_CACHE.parent.mkdir(parents=True, exist_ok=True)
+if OBJECT_CACHE.exists():
+    if OBJECT_CACHE.is_dir():
+        shutil.rmtree(OBJECT_CACHE)
+    else:
+        OBJECT_CACHE.unlink()
+run([
+    sys.executable,
+    "-u",
+    "build_object_concept_cache.py",
+    "--source", DETECTIONS,
+    "--dataset-json-path", COCO_JSON,
+    "--output", OBJECT_CACHE,
+    "--objects-field", "objects",
+    "--name-key", "label",
+    "--confidence-key", "conf",
+    "--min-confidence", "0.5",
+    "--max-objects", "10",
+    "--batch-size", "256",
+], cwd=REPO)
+rebuilt = torch.load(OBJECT_CACHE, map_location="cpu", weights_only=False)
+rebuilt_data = rebuilt.get("data", {})
+rebuilt_metadata = rebuilt.get("metadata", {})
+assert len(rebuilt_data) == 123287
+assert rebuilt_metadata.get("complete") is True
+assert rebuilt_metadata.get("count") == 123287
+assert rebuilt_metadata.get("max_objects") == 10
+assert float(rebuilt_metadata.get("min_confidence")) == 0.5
+print("Rebuilt object cache metadata:")
+print(json.dumps(rebuilt_metadata, indent=2))
+del rebuilt
+del rebuilt_data
 
 common = [
     "--dataset-json-path", COCO_JSON,
