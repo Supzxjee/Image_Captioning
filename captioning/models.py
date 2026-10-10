@@ -192,6 +192,7 @@ class UniversalVisionEncoder(nn.Module):
     def __init__(self, model_name='clip', embed_dim=EMBED_DIM, num_heads=NUM_HEADS,
                  attn_dropout=0.1, visual_precision='fp32', load_backbone=True,
                  frozen_backbone_state=None,
+                 clip_model_path='openai/clip-vit-base-patch16',
                  visual_adapter='direct', num_visual_queries=32, qformer_layers=2,
                  use_itc=False, prompt_conditioned_qformer=False,
                  object_semantic_alignment=False, cascade_semantic_alignment=False,
@@ -229,7 +230,7 @@ class UniversalVisionEncoder(nn.Module):
                         'Frozen CLIP backbone in checkpoint is incompatible: '
                         f'missing={sorted(missing)}, unexpected={sorted(unexpected)}')
             else:
-                clip_model = CLIPModel.from_pretrained('openai/clip-vit-base-patch16')
+                clip_model = CLIPModel.from_pretrained(clip_model_path)
                 self.feature_extractor = clip_model.vision_model
             for parameter in self.feature_extractor.parameters():
                 parameter.requires_grad = False

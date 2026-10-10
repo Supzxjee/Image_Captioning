@@ -33,6 +33,7 @@ class Config:
     visual_cache_id_key: str = 'coco_id'
     visual_preprocessing: str = 'bilinear'
     visual_precision: str = 'fp32'
+    clip_model_path: str = 'openai/clip-vit-base-patch16'
     visual_cache: list[str] = field(default_factory=list)
     region_targets_path: str = ''
     alignment_weight: float = 0.0

@@ -244,6 +244,7 @@ def train_model(model, train_loader, data, config, accelerator=None):
             'prompt_metadata': getattr(data, 'prompt_metadata', {}),
             'visual_preprocessing': config.visual_preprocessing,
             'visual_precision': config.visual_precision,
+            'clip_model_path': config.clip_model_path,
             'visual_cache_id_key': config.visual_cache_id_key,
             'visual_cache_files': data.visual_cache.paths if data.visual_cache else [],
             'learning_rate': config.lr,

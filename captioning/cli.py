@@ -19,6 +19,8 @@ def parse_args(argv=None):
                         help='coco_id = filename ID; eval_id = zero-based row in dataset_coco.json. karpathy_id = imgid field. Verify before use.')
     parser.add_argument('--visual-preprocessing', choices=['bilinear', 'bicubic'], default='bilinear')
     parser.add_argument('--visual-precision', choices=['fp32', 'amp-fp16'], default='fp32')
+    parser.add_argument('--clip-model-path', default=defaults.clip_model_path,
+                        help='Local Hugging Face CLIP directory or model ID. Use a local path for offline Kaggle runs.')
     parser.add_argument('--visual-cache', action='append', default=[],
                         help='HDF5 file or directory; repeat to use multiple files. Omit to run CLIP directly.')
     parser.add_argument('--checkpoint', default='')

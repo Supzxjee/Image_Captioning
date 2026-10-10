@@ -74,6 +74,7 @@ def run(config):
         visual_precision=config.visual_precision,
         load_backbone=needs_backbone,
         frozen_backbone_state=frozen_backbone_state,
+        clip_model_path=config.clip_model_path,
         visual_adapter=config.visual_adapter,
         num_visual_queries=config.num_visual_queries,
         qformer_layers=config.qformer_layers,
