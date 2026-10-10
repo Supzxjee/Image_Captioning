@@ -134,9 +134,13 @@ def find_old_qformer_checkpoint():
         "cascade_alignment": False,
     }
     matches = []
-    for path in Path("/kaggle/input").rglob(
-        "model_h1_2_crossattn_epoch_10.pth"
-    ):
+    candidates = sorted(
+        (path for path in Path("/kaggle/input").rglob("*epoch_10.pth")
+         if path.is_file()),
+        key=path_priority,
+    )
+    print("Epoch-10 checkpoint candidates:", len(candidates))
+    for path in candidates:
         if not path.is_file():
             continue
         try:
@@ -147,7 +151,12 @@ def find_old_qformer_checkpoint():
         print(path, signature)
         if signature == expected:
             matches.append(path)
-    assert matches, "Khong tim thay Q-Former baseline epoch 10 dung metadata."
+    assert matches, (
+        "Khong tim thay Q-Former baseline epoch 10 dung metadata. "
+        "Hay Add Input dataset prompt-conditioned-qformer-32q-2l co file "
+        "qformer_32q_2l_gated/checkpoints/"
+        "model_h1_2_crossattn_epoch_10.pth."
+    )
     selected = sorted(matches, key=path_priority)[0]
     print("Selected warm-start checkpoint:", selected)
     return selected
@@ -190,9 +199,11 @@ assert COCO_JSON.is_file(), COCO_JSON
 assert COCO_IMAGES.is_dir(), COCO_IMAGES
 assert VISUAL_CACHE.is_dir(), VISUAL_CACHE
 
+# Check the small list of checkpoints first so a missing Add Input fails fast,
+# before loading the multi-gigabyte object/prompt caches.
+OLD_CHECKPOINT = find_old_qformer_checkpoint()
 PROMPT_CACHE = find_v2_1_prompt_cache()
 OBJECT_CACHE = find_object_cache()
-OLD_CHECKPOINT = find_old_qformer_checkpoint()
 
 if REPO.exists() and not (REPO / ".git").is_dir():
     shutil.rmtree(REPO)
