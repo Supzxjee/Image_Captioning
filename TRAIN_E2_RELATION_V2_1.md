@@ -9,16 +9,14 @@ Trước khi chạy:
 - Save Version notebook sinh full cache V2.1;
 - Add Input output đó vào notebook train;
 - Add Input checkpoint Q-Former baseline epoch 10;
-- trong `Add Input` -> `Models`, thêm model Hugging Face
-  `openai/clip-vit-base-patch16`;
+- Add Input dataset `visual-cache` chứa đủ ba shard HDF5;
 - Add Input `objectdetectionecache` và MS COCO 2014;
 - chọn GPU T4 x2.
 
-Workflow này cố ý đọc ảnh gốc và chạy frozen CLIP ViT-B/16 trực tiếp từ Model
-Input cục bộ. Không Add
-Input `visual-cache`: các shard HDF5 lớn trên Kaggle mount có thể treo DataLoader
-giữa epoch. Backbone, preprocessing và precision vẫn giống lúc tạo cache; chỉ thay
-cách lấy 197 visual tokens.
+Workflow chép ba visual-cache shard từ Kaggle Input sang ổ cục bộ `/tmp` trước
+khi launch hai GPU. Hai rank không đọc HDF5 qua Kaggle mount trong lúc train nên
+tránh tình trạng DataLoader đứng giữa epoch. Cache cục bộ bị xóa sau evaluation và
+không được đưa vào output của notebook.
 
 ```python
 import json
@@ -45,6 +43,10 @@ COCO_JSON = Path(
 COCO_IMAGES = Path(
     "/kaggle/input/datasets/vuthetam/mscoco-2014/images"
 )
+VISUAL_CACHE_INPUT = Path(
+    "/kaggle/input/datasets/ducanh2403/visual-cache"
+)
+VISUAL_CACHE_LOCAL = Path("/tmp/e2_relation_v2_1_visual_cache")
 PROMPT_CACHE = Path(
     "/kaggle/input/datasets/ducanh2403/prompt-conditioned-qformer-32q-2l/"
     "relation_prompts_v2_1_full/prompt_clip_tokens_relation_v2_1.pt"
@@ -65,7 +67,7 @@ EXPECTED_PROMPT_SHA = (
 EXPECTED_TOKEN_SHA = (
     "03a89869a11e137d84204f1ad602f1b80d1fd7b28fb6ed73ea9b3906fcf4c908"
 )
-EXPERIMENT = "qformer_cascade_alignment_v2_1_raw_images_32q_2l_dual_gpu_3ep"
+EXPERIMENT = "qformer_cascade_alignment_v2_1_local_cache_32q_2l_dual_gpu_3ep"
 EPOCHS = 3
 
 print("E2 relation V2.1 bootstrap started.", flush=True)
@@ -110,35 +112,6 @@ def checkpoint_signature(path):
     return signature
 
 
-def find_local_clip_model():
-    input_root = Path("/kaggle/input")
-    candidate_roots = [
-        path for path in input_root.iterdir()
-        if "clip" in path.name.lower() and "patch16" in path.name.lower()
-    ]
-    matches = []
-    for root in candidate_roots:
-        for config_path in root.rglob("config.json"):
-            try:
-                config = json.loads(config_path.read_text(encoding="utf-8"))
-            except (OSError, UnicodeDecodeError, json.JSONDecodeError):
-                continue
-            vision = config.get("vision_config", {})
-            if config.get("model_type") != "clip" or vision.get("patch_size") != 16:
-                continue
-            model_dir = config_path.parent
-            weights = list(model_dir.glob("model*.safetensors"))
-            weights += list(model_dir.glob("pytorch_model*.bin"))
-            if weights:
-                matches.append(model_dir)
-    unique = sorted(set(matches))
-    assert len(unique) == 1, (
-        "Can dung mot Kaggle Model Input openai/clip-vit-base-patch16; "
-        f"tim thay: {unique}"
-    )
-    return unique[0]
-
-
 print("PyTorch:", torch.__version__)
 print("CUDA devices:", torch.cuda.device_count())
 for index in range(torch.cuda.device_count()):
@@ -146,6 +119,7 @@ for index in range(torch.cuda.device_count()):
 assert torch.cuda.device_count() == 2, "Notebook phai chon GPU T4 x2."
 assert COCO_JSON.is_file(), COCO_JSON
 assert COCO_IMAGES.is_dir(), COCO_IMAGES
+assert VISUAL_CACHE_INPUT.is_dir(), VISUAL_CACHE_INPUT
 assert PROMPT_CACHE.is_file(), PROMPT_CACHE
 assert OLD_CHECKPOINT.is_file(), OLD_CHECKPOINT
 assert DETECTIONS.is_file(), DETECTIONS
@@ -180,10 +154,30 @@ core_signature = {
     if key != "backbone_tensors"
 }
 assert core_signature == expected_checkpoint, signature
-CLIP_MODEL = find_local_clip_model()
 print("Explicit input paths and metadata PASS.", flush=True)
 print("Checkpoint signature:", signature, flush=True)
-print("Local CLIP model:", CLIP_MODEL, flush=True)
+
+source_shards = [
+    VISUAL_CACHE_INPUT / f"visual_part_{part:02d}_of_03.h5"
+    for part in range(1, 4)
+]
+for shard in source_shards:
+    assert shard.is_file(), shard
+required_bytes = sum(shard.stat().st_size for shard in source_shards)
+free_bytes = shutil.disk_usage("/tmp").free
+assert free_bytes > required_bytes + 5 * 1024**3, (
+    f"Khong du dung luong /tmp: can {required_bytes / 1024**3:.1f} GiB, "
+    f"con trong {free_bytes / 1024**3:.1f} GiB."
+)
+if VISUAL_CACHE_LOCAL.exists():
+    shutil.rmtree(VISUAL_CACHE_LOCAL)
+VISUAL_CACHE_LOCAL.mkdir(parents=True)
+for source in source_shards:
+    destination = VISUAL_CACHE_LOCAL / source.name
+    print(f"Copying visual cache: {source.name}", flush=True)
+    shutil.copyfile(source, destination)
+    assert destination.stat().st_size == source.stat().st_size
+print("Local visual cache ready:", VISUAL_CACHE_LOCAL, flush=True)
 
 if REPO.exists() and not (REPO / ".git").is_dir():
     shutil.rmtree(REPO)
@@ -257,7 +251,8 @@ common = [
     "--prompt-cache-path", PROMPT_CACHE,
     "--visual-preprocessing", "bilinear",
     "--visual-precision", "fp32",
-    "--clip-model-path", CLIP_MODEL,
+    "--visual-cache", VISUAL_CACHE_LOCAL,
+    "--visual-cache-id-key", "coco_id",
     "--visual-adapter", "qformer",
     "--num-visual-queries", "32",
     "--qformer-layers", "2",
@@ -303,8 +298,8 @@ assert meta["object_semantic_alignment"] is False
 assert meta["cascade_semantic_alignment"] is True
 assert meta["cascade_selector_mode"] == "object_context"
 assert meta["max_train_batches"] == 0
-assert meta["visual_cache_files"] == []
-assert Path(meta["clip_model_path"]) == CLIP_MODEL
+assert len(meta["visual_cache_files"]) == 3
+assert all(str(VISUAL_CACHE_LOCAL) in path for path in meta["visual_cache_files"])
 assert meta["prompt_metadata"]["complete"] is True
 assert meta["prompt_metadata"]["count"] == 123287
 assert meta["prompt_metadata"]["source_sha256"] == EXPECTED_PROMPT_SHA
@@ -334,6 +329,8 @@ assert metrics_path.is_file(), metrics_path
 metrics = json.loads(metrics_path.read_text(encoding="utf-8"))
 print("\nE2 RELATION V2.1 VALIDATION METRICS")
 print(json.dumps(metrics, indent=2))
+shutil.rmtree(VISUAL_CACHE_LOCAL)
+print("Removed local visual cache:", VISUAL_CACHE_LOCAL)
 print("\nCompleted:", experiment_dir)
 ```
 
@@ -348,4 +345,5 @@ So sánh validation với E2 cũ:
 
 V2.1 đạt tín hiệu nếu CIDEr tăng và BLEU-4 không giảm quá `0.003`. Nếu qua cửa
 validation, mới chạy test 5.000 ảnh và CHAIR; chưa chạy thêm ablation hoặc E3.
+
 
