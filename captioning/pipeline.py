@@ -50,12 +50,30 @@ def run(config):
     needs_backbone = (config.mode == 'verify-cache' or not config.visual_cache or
                       (config.mode == 'train' and config.test_after_train and
                        config.test_visual_source == 'images'))
+    frozen_backbone_state = None
+    if needs_backbone and config.checkpoint:
+        checkpoint_payload = torch.load(
+            config.checkpoint, map_location='cpu', weights_only=False)
+        encoder_state = checkpoint_payload.get('encoder_state_dict', {})
+        frozen_backbone_state = {
+            key.removeprefix('feature_extractor.'): value
+            for key, value in encoder_state.items()
+            if key.startswith('feature_extractor.')
+        }
+        del checkpoint_payload
+        del encoder_state
     if config.is_main_process:
-        print('Initializing encoder: ' + ('loading CLIP vision backbone.' if needs_backbone
-              else 'visual cache active; skipping unused CLIP vision backbone.'), flush=True)
+        if frozen_backbone_state:
+            source = 'restoring frozen CLIP vision backbone from checkpoint.'
+        elif needs_backbone:
+            source = 'loading CLIP vision backbone from pretrained source.'
+        else:
+            source = 'visual cache active; skipping unused CLIP vision backbone.'
+        print('Initializing encoder: ' + source, flush=True)
     encoder = UniversalVisionEncoder(
         visual_precision=config.visual_precision,
         load_backbone=needs_backbone,
+        frozen_backbone_state=frozen_backbone_state,
         visual_adapter=config.visual_adapter,
         num_visual_queries=config.num_visual_queries,
         qformer_layers=config.qformer_layers,
@@ -64,7 +82,9 @@ def run(config):
         object_semantic_alignment=config.object_semantic_alignment,
         cascade_semantic_alignment=config.cascade_semantic_alignment,
         cascade_selector_mode=config.cascade_selector_mode,
-    ).to(config.device)
+    )
+    del frozen_backbone_state
+    encoder = encoder.to(config.device)
     if config.is_main_process:
         print('Encoder initialized.', flush=True)
         if config.visual_adapter == 'qformer':

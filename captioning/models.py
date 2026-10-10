@@ -191,6 +191,7 @@ class CascadeSemanticAlignment(nn.Module):
 class UniversalVisionEncoder(nn.Module):
     def __init__(self, model_name='clip', embed_dim=EMBED_DIM, num_heads=NUM_HEADS,
                  attn_dropout=0.1, visual_precision='fp32', load_backbone=True,
+                 frozen_backbone_state=None,
                  visual_adapter='direct', num_visual_queries=32, qformer_layers=2,
                  use_itc=False, prompt_conditioned_qformer=False,
                  object_semantic_alignment=False, cascade_semantic_alignment=False,
@@ -201,8 +202,35 @@ class UniversalVisionEncoder(nn.Module):
 
         self.feature_extractor = None
         if load_backbone:
-            clip_model = CLIPModel.from_pretrained('openai/clip-vit-base-patch16')
-            self.feature_extractor = clip_model.vision_model
+            if frozen_backbone_state:
+                from transformers import CLIPVisionConfig, CLIPVisionModel
+                vision_config = CLIPVisionConfig(
+                    hidden_size=768,
+                    intermediate_size=3072,
+                    num_hidden_layers=12,
+                    num_attention_heads=12,
+                    image_size=224,
+                    patch_size=16,
+                    projection_dim=512,
+                    hidden_act='quick_gelu',
+                    layer_norm_eps=1e-5,
+                    attention_dropout=0.0,
+                    initializer_factor=1.0,
+                    initializer_range=0.02,
+                )
+                self.feature_extractor = CLIPVisionModel(vision_config).vision_model
+                result = self.feature_extractor.load_state_dict(
+                    frozen_backbone_state, strict=False)
+                optional = {'embeddings.position_ids'}
+                missing = set(result.missing_keys) - optional
+                unexpected = set(result.unexpected_keys) - optional
+                if missing or unexpected:
+                    raise RuntimeError(
+                        'Frozen CLIP backbone in checkpoint is incompatible: '
+                        f'missing={sorted(missing)}, unexpected={sorted(unexpected)}')
+            else:
+                clip_model = CLIPModel.from_pretrained('openai/clip-vit-base-patch16')
+                self.feature_extractor = clip_model.vision_model
             for parameter in self.feature_extractor.parameters():
                 parameter.requires_grad = False
 
