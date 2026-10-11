@@ -46,6 +46,13 @@ def load_checkpoint(model, path, tokenizer, warm_start=False):
         if checkpoint_selector != model_selector:
             raise RuntimeError(f'Checkpoint cascade selector mode is {checkpoint_selector!r}, '
                                f'but model mode is {model_selector!r}.')
+    checkpoint_uses_grounded = bool(checkpoint.get('grounded_relation_alignment', False))
+    model_uses_grounded = bool(getattr(model.encoder, 'grounded_relation_alignment', False))
+    if checkpoint_uses_grounded != model_uses_grounded and not (
+            warm_start and model_uses_grounded and not checkpoint_uses_grounded):
+        raise RuntimeError(f'Checkpoint grounded relation setting is '
+                           f'{checkpoint_uses_grounded}, but model setting is '
+                           f'{model_uses_grounded}.')
     encoder_state = checkpoint['encoder_state_dict']
     if model.encoder.feature_extractor is None:
         # Older cached-feature checkpoints unnecessarily stored the frozen CLIP
@@ -68,6 +75,9 @@ def load_checkpoint(model, path, tokenizer, warm_start=False):
         if model_uses_cascade and not checkpoint_uses_cascade:
             allowed.update(key for key in result.missing_keys
                            if key.startswith('cascade_alignment.'))
+        if model_uses_grounded and not checkpoint_uses_grounded:
+            allowed.update(key for key in result.missing_keys
+                           if key.startswith('relation_alignment.'))
         if set(result.missing_keys) - allowed or result.unexpected_keys:
             raise RuntimeError(f'Incompatible encoder checkpoint: {result}')
     else:

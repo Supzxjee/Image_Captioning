@@ -5,6 +5,7 @@ import torch
 import torch.nn as nn
 from transformers import CLIPModel
 from .config import EMBED_DIM, NUM_HEADS
+from .grounded_relations import PairGroundedRelationAlignment
 
 
 class VisualQueryLayer(nn.Module):
@@ -196,7 +197,7 @@ class UniversalVisionEncoder(nn.Module):
                  visual_adapter='direct', num_visual_queries=32, qformer_layers=2,
                  use_itc=False, prompt_conditioned_qformer=False,
                  object_semantic_alignment=False, cascade_semantic_alignment=False,
-                 cascade_selector_mode='object_context'):
+                 cascade_selector_mode='object_context', grounded_relation_alignment=False):
         super().__init__()
         if model_name.lower() != 'clip':
             raise NotImplementedError('Only CLIP is supported in this notebook.')
@@ -243,6 +244,7 @@ class UniversalVisionEncoder(nn.Module):
         self.object_semantic_alignment = object_semantic_alignment
         self.cascade_semantic_alignment = cascade_semantic_alignment
         self.cascade_selector_mode = cascade_selector_mode
+        self.grounded_relation_alignment = grounded_relation_alignment
         self.use_itc = use_itc
         self.vis_projection = nn.Linear(768, embed_dim)
         self.qformer = (LightweightQFormer(
@@ -259,6 +261,9 @@ class UniversalVisionEncoder(nn.Module):
         self.cascade_alignment = (CascadeSemanticAlignment(
             embed_dim, num_heads, attn_dropout, selector_mode=cascade_selector_mode
         ) if cascade_semantic_alignment else None)
+        self.relation_alignment = (PairGroundedRelationAlignment(
+            embed_dim, num_heads, attn_dropout
+        ) if grounded_relation_alignment else None)
         self.itc_query_projection = (nn.Linear(embed_dim, 512) if use_itc else None)
         self.prompt_projection = nn.Sequential(
             nn.Linear(512, embed_dim),
@@ -299,7 +304,10 @@ class UniversalVisionEncoder(nn.Module):
         return features.to(dtype=self.vis_projection.weight.dtype)
 
     def forward(self, images, cached_prompt_tokens, prompt_mask,
-                object_prompt_tokens=None, object_prompt_mask=None):
+                object_prompt_tokens=None, object_prompt_mask=None,
+                relation_tokens=None, negative_relation_tokens=None,
+                subject_boxes=None, object_boxes=None, relation_confidences=None,
+                relation_mask=None, return_relation_diagnostics=False):
         if images.ndim == 3:
             # Cached raw CLIP last_hidden_state; no backbone forward pass.
             if images.shape[1:] != (197, 768):
@@ -330,6 +338,16 @@ class UniversalVisionEncoder(nn.Module):
             visual_memory = self.cascade_alignment(
                 visual_memory, prompt_features, prompt_mask,
                 object_prompt_tokens, object_prompt_mask)
+        relation_diagnostics = None
+        if self.relation_alignment is not None:
+            relation_inputs = (relation_tokens, negative_relation_tokens, subject_boxes,
+                               object_boxes, relation_confidences, relation_mask)
+            if any(value is None for value in relation_inputs):
+                raise ValueError('Grounded relation alignment requires relation tokens, pair '
+                                 'boxes, confidences and mask.')
+            visual_memory, relation_diagnostics = self.relation_alignment(
+                visual_memory, vis_features, relation_tokens, negative_relation_tokens,
+                subject_boxes, object_boxes, relation_confidences, relation_mask)
 
         attended_prompt, _ = self.prompt_to_visual_attn(
             query=prompt_features,
@@ -351,7 +369,8 @@ class UniversalVisionEncoder(nn.Module):
             0.0,
         )
 
-        return visual_memory, grounded_prompt_features
+        output = (visual_memory, grounded_prompt_features)
+        return output + (relation_diagnostics,) if return_relation_diagnostics else output
 
 class PositionalEncoding(nn.Module):
     def __init__(self, d_model=EMBED_DIM, max_len=100):
@@ -404,25 +423,40 @@ class ImageCaptioningModel(nn.Module):
         self.decoder = decoder
 
     def build_memory(self, images, cached_prompt_tokens, prompt_mask,
-                     object_prompt_tokens=None, object_prompt_mask=None):
-        vis_features, grounded_prompt_features = self.encoder(
+                     object_prompt_tokens=None, object_prompt_mask=None,
+                     relation_tokens=None, negative_relation_tokens=None,
+                     subject_boxes=None, object_boxes=None, relation_confidences=None,
+                     relation_mask=None, return_relation_diagnostics=False):
+        encoder_output = self.encoder(
             images, cached_prompt_tokens, prompt_mask,
             object_prompt_tokens, object_prompt_mask,
+            relation_tokens, negative_relation_tokens, subject_boxes, object_boxes,
+            relation_confidences, relation_mask, return_relation_diagnostics,
         )
+        vis_features, grounded_prompt_features = encoder_output[:2]
+        relation_diagnostics = encoder_output[2] if return_relation_diagnostics else None
         memory = torch.cat([grounded_prompt_features, vis_features], dim=1)
         prompt_pad_mask = (prompt_mask == 0)
         visual_pad_mask = torch.zeros(
             images.size(0), vis_features.size(1), dtype=torch.bool, device=images.device
         )
         memory_pad_mask = torch.cat([prompt_pad_mask, visual_pad_mask], dim=1)
-        return memory, memory_pad_mask
+        output = (memory, memory_pad_mask)
+        return output + (relation_diagnostics,) if return_relation_diagnostics else output
 
     def forward(self, images, cached_prompt_tokens, prompt_mask, tgt, tgt_key_padding_mask=None,
                 return_visual=False, return_itc=False, object_prompt_tokens=None,
-                object_prompt_mask=None):
-        memory, memory_pad_mask = self.build_memory(
+                object_prompt_mask=None, relation_tokens=None,
+                negative_relation_tokens=None, subject_boxes=None, object_boxes=None,
+                relation_confidences=None, relation_mask=None,
+                return_relation_diagnostics=False):
+        memory_output = self.build_memory(
             images, cached_prompt_tokens, prompt_mask,
-            object_prompt_tokens, object_prompt_mask)
+            object_prompt_tokens, object_prompt_mask, relation_tokens,
+            negative_relation_tokens, subject_boxes, object_boxes,
+            relation_confidences, relation_mask, return_relation_diagnostics)
+        memory, memory_pad_mask = memory_output[:2]
+        relation_diagnostics = memory_output[2] if return_relation_diagnostics else None
         vis_features = memory[:, prompt_mask.size(1):]
         batch_size, memory_len, embed_dim = memory.shape
         captions_per_image = tgt.size(0) // batch_size
@@ -446,4 +480,6 @@ class ImageCaptioningModel(nn.Module):
             # Keep this trainable projection inside DDP's forward graph so its
             # gradients are synchronized by Accelerate on every process.
             return logits, self.encoder.itc_query_projection(vis_features)
+        if return_relation_diagnostics:
+            return logits, relation_diagnostics
         return (logits, vis_features) if return_visual else logits

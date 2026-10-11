@@ -48,6 +48,10 @@ class Config:
     cascade_semantic_alignment: bool = False
     cascade_selector_mode: str = 'object_context'
     object_prompt_cache_path: str = ''
+    grounded_relation_alignment: bool = False
+    grounded_relation_cache_path: str = ''
+    relation_alignment_weight: float = 0.0
+    relation_alignment_margin: float = 0.2
     caption_embedding_cache_path: str = ''
     itc_weight: float = 0.0
     itc_temperature: float = 0.07
@@ -83,15 +87,33 @@ class Config:
             raise ValueError('Object semantic alignment requires visual-adapter=qformer.')
         if self.cascade_semantic_alignment and self.visual_adapter != 'qformer':
             raise ValueError('Cascade semantic alignment requires visual-adapter=qformer.')
+        if self.grounded_relation_alignment and self.visual_adapter != 'qformer':
+            raise ValueError('Grounded relation alignment requires visual-adapter=qformer.')
         if self.cascade_selector_mode not in {'object_context', 'prompt_only', 'uniform'}:
             raise ValueError('cascade-selector-mode must be object_context, prompt_only, or uniform.')
         if not self.cascade_semantic_alignment and self.cascade_selector_mode != 'object_context':
             raise ValueError('Non-default cascade-selector-mode requires cascade semantic alignment.')
         if self.object_semantic_alignment and self.cascade_semantic_alignment:
             raise ValueError('Choose object or cascade semantic alignment, not both.')
+        if sum((self.object_semantic_alignment, self.cascade_semantic_alignment,
+                self.grounded_relation_alignment)) > 1:
+            raise ValueError('Choose exactly one semantic alignment architecture.')
         if ((self.object_semantic_alignment or self.cascade_semantic_alignment) and
                 not self.object_prompt_cache_path):
             raise ValueError('Semantic alignment requires --object-prompt-cache-path.')
+        if self.grounded_relation_alignment and not self.grounded_relation_cache_path:
+            raise ValueError('Grounded relation alignment requires '
+                             '--grounded-relation-cache-path.')
+        if self.relation_alignment_weight < 0 or not 0 < self.relation_alignment_margin < 2:
+            raise ValueError('Relation alignment weight must be nonnegative and margin in (0, 2).')
+        if self.mode == 'train' and self.grounded_relation_alignment and \
+                self.relation_alignment_weight <= 0:
+            raise ValueError('Grounded relation training requires positive '
+                             '--relation-alignment-weight.')
+        if not self.grounded_relation_alignment and self.relation_alignment_weight > 0:
+            raise ValueError('Relation alignment weight requires grounded relation alignment.')
+        if self.grounded_relation_alignment and self.itc_weight > 0:
+            raise ValueError('Run grounded relation alignment separately from ITC.')
         if self.num_visual_queries <= 0 or self.qformer_layers <= 0:
             raise ValueError('num-visual-queries and qformer-layers must be positive.')
         if self.visual_adapter == 'qformer' and self.alignment_weight > 0:

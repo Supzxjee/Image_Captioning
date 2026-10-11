@@ -12,7 +12,7 @@ def _decode_tokens(token_ids, tokenizer):
 def generate_caption_candidates(model, image, cached_prompt_tokens, prompt_mask, tokenizer,
                                 max_len=MAX_CAPTION_LEN, beam_size=5, candidate_count=5,
                                 device=None, object_prompt_tokens=None,
-                                object_prompt_mask=None):
+                                object_prompt_mask=None, relation_entry=None):
     """Return distinct final beams while preserving the original raw-score ordering."""
     if beam_size < 1 or candidate_count < 1 or candidate_count > beam_size:
         raise ValueError('Require 1 <= candidate_count <= beam_size.')
@@ -29,7 +29,19 @@ def generate_caption_candidates(model, image, cached_prompt_tokens, prompt_mask,
             object_prompt_mask = object_prompt_mask.unsqueeze(0).to(device, dtype=torch.long)
         memory, memory_pad_mask = model.build_memory(
             image, cached_prompt_tokens, prompt_mask,
-            object_prompt_tokens, object_prompt_mask)
+            object_prompt_tokens, object_prompt_mask,
+            relation_tokens=(relation_entry['tokens'].unsqueeze(0).to(
+                device, dtype=torch.float32) if relation_entry else None),
+            negative_relation_tokens=(relation_entry['negative_tokens'].unsqueeze(0).to(
+                device, dtype=torch.float32) if relation_entry else None),
+            subject_boxes=(relation_entry['subject_boxes'].unsqueeze(0).to(
+                device, dtype=torch.float32) if relation_entry else None),
+            object_boxes=(relation_entry['object_boxes'].unsqueeze(0).to(
+                device, dtype=torch.float32) if relation_entry else None),
+            relation_confidences=(relation_entry['confidences'].unsqueeze(0).to(
+                device, dtype=torch.float32) if relation_entry else None),
+            relation_mask=(relation_entry['mask'].unsqueeze(0).to(
+                device, dtype=torch.long) if relation_entry else None))
 
         beams = [([tokenizer.bos_idx], 0.0)]
         for _ in range(max_len - 1):
@@ -76,9 +88,11 @@ def generate_caption_candidates(model, image, cached_prompt_tokens, prompt_mask,
 
 def generate_caption_beam_search(model, image, cached_prompt_tokens, prompt_mask, tokenizer,
                                  max_len=MAX_CAPTION_LEN, beam_size=5, device=None,
-                                 object_prompt_tokens=None, object_prompt_mask=None):
+                                 object_prompt_tokens=None, object_prompt_mask=None,
+                                 relation_entry=None):
     return generate_caption_candidates(
         model, image, cached_prompt_tokens, prompt_mask, tokenizer,
         max_len=max_len, beam_size=beam_size, candidate_count=1, device=device,
         object_prompt_tokens=object_prompt_tokens, object_prompt_mask=object_prompt_mask,
+        relation_entry=relation_entry,
     )[0]['caption']

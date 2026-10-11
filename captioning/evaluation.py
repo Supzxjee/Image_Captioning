@@ -20,7 +20,8 @@ def evaluate_model(model, data, config):
           f"{bool(checkpoint.get('prompt_conditioned_qformer', False))} | object alignment "
           f"{bool(checkpoint.get('object_semantic_alignment', False))} | cascade alignment "
           f"{bool(checkpoint.get('cascade_semantic_alignment', False))} | cascade selector "
-          f"{checkpoint.get('cascade_selector_mode', 'object_context')}", flush=True)
+          f"{checkpoint.get('cascade_selector_mode', 'object_context')} | grounded relation "
+          f"{bool(checkpoint.get('grounded_relation_alignment', False))}", flush=True)
     config.eval_dir.mkdir(parents=True, exist_ok=True)
     eval_df = data.val_df if config.split == 'val' else data.test_df
     if config.limit:
@@ -35,6 +36,8 @@ def evaluate_model(model, data, config):
         prompt_entry = data.prompt_cache[image_path]
         object_entry = (data.object_prompt_cache[image_path]
                         if data.object_prompt_cache is not None else None)
+        relation_entry = (data.grounded_relation_cache[image_path]
+                          if data.grounded_relation_cache is not None else None)
         image_tensor = load_visual_input(row, data.transform, data.visual_cache)
         caption = generate_caption_beam_search(
             model=model,
@@ -46,6 +49,7 @@ def evaluate_model(model, data, config):
             device=config.device,
             object_prompt_tokens=(object_entry['tokens'] if object_entry else None),
             object_prompt_mask=(object_entry['mask'] if object_entry else None),
+            relation_entry=relation_entry,
         )
         predictions.append({'image_id': int(row['eval_id']), 'caption': caption})
         if len(predictions) % 50 == 0:
@@ -98,6 +102,8 @@ def generate_candidate_file(model, data, config):
         prompt_entry = data.prompt_cache[row['image']]
         object_entry = (data.object_prompt_cache[row['image']]
                         if data.object_prompt_cache is not None else None)
+        relation_entry = (data.grounded_relation_cache[row['image']]
+                          if data.grounded_relation_cache is not None else None)
         image_tensor = load_visual_input(row, data.transform, data.visual_cache)
         candidates = generate_caption_candidates(
             model=model,
@@ -110,6 +116,7 @@ def generate_candidate_file(model, data, config):
             device=config.device,
             object_prompt_tokens=(object_entry['tokens'] if object_entry else None),
             object_prompt_mask=(object_entry['mask'] if object_entry else None),
+            relation_entry=relation_entry,
         )
         records.append({
             'image_id': int(row['eval_id']),
@@ -143,6 +150,8 @@ def generate_candidate_file(model, data, config):
                 checkpoint.get('cascade_semantic_alignment', False)),
             'cascade_selector_mode': checkpoint.get(
                 'cascade_selector_mode', 'object_context'),
+            'grounded_relation_alignment': bool(
+                checkpoint.get('grounded_relation_alignment', False)),
         },
         'data': records,
     }

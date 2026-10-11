@@ -63,6 +63,18 @@ class TestWorkflowTests(unittest.TestCase):
                    cascade_semantic_alignment=True, object_prompt_cache_path='objects.pt')
         with self.assertRaises(ValueError):
             Config(cascade_selector_mode='uniform')
+        grounded = parse_args([
+            '--visual-adapter', 'qformer', '--grounded-relation-alignment',
+            '--grounded-relation-cache-path', 'relations.pt',
+            '--relation-alignment-weight', '0.1',
+        ])
+        self.assertTrue(grounded.grounded_relation_alignment)
+        self.assertEqual(grounded.relation_alignment_margin, 0.2)
+        with self.assertRaises(ValueError):
+            Config(visual_adapter='qformer', grounded_relation_alignment=True,
+                   grounded_relation_cache_path='relations.pt')
+        with self.assertRaises(ValueError):
+            Config(visual_adapter='qformer', relation_alignment_weight=0.1)
         with self.assertRaises(ValueError):
             Config(visual_adapter='qformer', alignment_weight=0.02,
                    region_targets_path='regions.pt')

@@ -12,6 +12,7 @@ from .visual_cache import VisualCache, coco_image_id
 from .caption_cache import CaptionEmbeddingCache
 from .semantic_prompts import align_prompt_cache
 from .object_concepts import align_object_concept_cache
+from .grounded_relations import align_grounded_relation_cache
 
 NORMALIZATION_STATS = {
     'mean': [0.48145466, 0.4578275, 0.40821073],
@@ -37,7 +38,7 @@ def build_image_transform(preprocessing='bilinear'):
 class CocoPromptDataset(Dataset):
     def __init__(self, dataframe, transform, caption_tokenizer, prompt_cache, visual_cache=None,
                  region_targets=None, max_regions=10, caption_embedding_cache=None,
-                 object_prompt_cache=None):
+                 object_prompt_cache=None, grounded_relation_cache=None):
         self.dataframe = dataframe.reset_index(drop=True)
         self.transform = transform
         self.caption_tokenizer = caption_tokenizer
@@ -47,6 +48,7 @@ class CocoPromptDataset(Dataset):
         self.max_regions = max_regions
         self.caption_embedding_cache = caption_embedding_cache
         self.object_prompt_cache = object_prompt_cache
+        self.grounded_relation_cache = grounded_relation_cache
 
     def __len__(self):
         return len(self.dataframe)
@@ -77,6 +79,18 @@ class CocoPromptDataset(Dataset):
             if object_entry is None:
                 raise KeyError(f'Missing object prompt embedding for: {image_path}')
             sample += (object_entry['tokens'].float(), object_entry['mask'].long())
+        if self.grounded_relation_cache is not None:
+            relation_entry = self.grounded_relation_cache.get(image_path)
+            if relation_entry is None:
+                raise KeyError(f'Missing grounded relations for: {image_path}')
+            sample += (
+                relation_entry['tokens'].float(),
+                relation_entry['negative_tokens'].float(),
+                relation_entry['subject_boxes'].float(),
+                relation_entry['object_boxes'].float(),
+                relation_entry['confidences'].float(),
+                relation_entry['mask'].long(),
+            )
         if self.caption_embedding_cache is not None:
             sample += (torch.from_numpy(self.caption_embedding_cache.read(row['coco_id'])),)
         if self.region_targets is None:
@@ -170,6 +184,26 @@ def load_data(config):
         _log(config, f'Object prompt entries: {len(object_prompt_cache):,} | '
                      f'max objects={object_prompt_metadata.get("max_objects", "unknown")}')
 
+    grounded_relation_cache, grounded_relation_metadata = None, {}
+    if config.grounded_relation_alignment:
+        if not os.path.isfile(config.grounded_relation_cache_path):
+            raise FileNotFoundError(config.grounded_relation_cache_path)
+        relation_bundle = torch.load(
+            config.grounded_relation_cache_path, map_location='cpu', weights_only=False)
+        if not isinstance(relation_bundle, dict) or 'data' not in relation_bundle:
+            raise ValueError('Grounded relation cache must contain a data mapping.')
+        grounded_relation_cache = align_grounded_relation_cache(
+            relation_bundle['data'],
+            [item['image'] for item in train_data + val_data + test_data])
+        grounded_relation_metadata = relation_bundle.get('metadata', {})
+        missing_relations = [item['filename'] for item in selected_prompts
+                             if item['image'] not in grounded_relation_cache]
+        if missing_relations:
+            raise ValueError(f'Missing {len(missing_relations)} grounded relation entries; '
+                             f'examples: {missing_relations[:10]}')
+        _log(config, f'Grounded relation entries: {len(grounded_relation_cache):,} | '
+                     f'max relations={grounded_relation_metadata.get("max_relations", "unknown")}')
+
     if config.test_after_train and len(test_df) == 0:
         raise ValueError('Test split is empty.')
     image_transform = build_image_transform(config.visual_preprocessing)
@@ -215,9 +249,11 @@ def load_data(config):
                      f'{label_prototypes.size(0)} labels | lambda={config.alignment_weight}')
     return SimpleNamespace(prompt_metadata=prompt_embedding_bundle.get('metadata', {}),
                            object_prompt_metadata=object_prompt_metadata,
+                           grounded_relation_metadata=grounded_relation_metadata,
                            visual_cache=visual_cache, train_df=train_df, val_df=val_df, test_df=test_df,
                            tokenizer=caption_tokenizer, prompt_cache=prompt_embedding_cache,
                            object_prompt_cache=object_prompt_cache,
+                           grounded_relation_cache=grounded_relation_cache,
                            transform=image_transform, vocab_size=vocab_size,
                            caption_embedding_cache=caption_embedding_cache,
                            region_targets=region_targets, region_metadata=region_metadata,
@@ -227,7 +263,8 @@ def load_data(config):
 def build_train_loader(config, data):
     dataset = CocoPromptDataset(data.train_df, data.transform, data.tokenizer, data.prompt_cache,
                                 data.visual_cache, data.region_targets, config.max_regions,
-                                data.caption_embedding_cache, data.object_prompt_cache)
+                                data.caption_embedding_cache, data.object_prompt_cache,
+                                data.grounded_relation_cache)
     device_type = getattr(config.device, 'type', config.device)
     loader = DataLoader(dataset, batch_size=config.batch_size, shuffle=True, drop_last=True,
                         num_workers=config.num_workers, pin_memory=device_type == 'cuda')

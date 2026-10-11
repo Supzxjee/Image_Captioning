@@ -17,7 +17,8 @@ def run(config):
             set_seed,
         )
         kwargs_handlers = []
-        if config.object_semantic_alignment or config.cascade_semantic_alignment:
+        if (config.object_semantic_alignment or config.cascade_semantic_alignment or
+                config.grounded_relation_alignment):
             # Some images have no accepted detections, so the object branch can
             # receive zero gradients on one rank. Explicit unused-parameter
             # detection prevents the two DDP ranks from waiting on different
@@ -83,6 +84,7 @@ def run(config):
         object_semantic_alignment=config.object_semantic_alignment,
         cascade_semantic_alignment=config.cascade_semantic_alignment,
         cascade_selector_mode=config.cascade_selector_mode,
+        grounded_relation_alignment=config.grounded_relation_alignment,
     )
     del frozen_backbone_state
     encoder = encoder.to(config.device)
@@ -101,6 +103,10 @@ def run(config):
                 print('Cascade semantic alignment active: object context selects tokens from '
                       'the object-relation prompt before gated query alignment | selector mode '
                       f'{config.cascade_selector_mode}.', flush=True)
+            if config.grounded_relation_alignment:
+                print('Pair-grounded relation alignment active: each relation is tied to its '
+                      'subject/object CLIP patches and ranked against a counterfactual predicate '
+                      f'with margin {config.relation_alignment_margin}.', flush=True)
         if config.itc_weight > 0:
             print(f'ITC active: weight={config.itc_weight} | '
                   f'temperature={config.itc_temperature}.', flush=True)

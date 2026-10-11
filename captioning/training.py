@@ -8,6 +8,7 @@ import torch.nn.functional as F
 from tqdm.auto import tqdm
 from .config import MODEL_NAME, EMBED_DIM, MAX_PROMPT_LEN, NUM_HEADS
 from .checkpoints import load_checkpoint
+from .grounded_relations import counterfactual_relation_loss
 
 
 def _gather_with_grad(tensor):
@@ -82,7 +83,7 @@ def train_one_epoch(model, base_model, loader, optimizer, criterion, epoch, conf
     if base_model.encoder.feature_extractor is not None:
         base_model.encoder.feature_extractor.eval()
     totals = {'loss': 0.0, 'caption_loss': 0.0, 'alignment_loss': 0.0,
-              'itc_loss': 0.0}
+              'itc_loss': 0.0, 'relation_loss': 0.0}
 
     total_batches = min(len(loader), config.max_train_batches or len(loader))
     progress = tqdm(loader, total=total_batches, desc=f'Epoch {epoch}/{config.epochs}',
@@ -95,7 +96,8 @@ def train_one_epoch(model, base_model, loader, optimizer, criterion, epoch, conf
             break
         if batch_number == 1:
             accelerator.print(f'Epoch {epoch}: first batch loaded; starting GPU forward/backward.')
-        if ((config.object_semantic_alignment or config.cascade_semantic_alignment) and
+        if ((config.object_semantic_alignment or config.cascade_semantic_alignment or
+             config.grounded_relation_alignment) and
                 (batch_number == 1 or batch_number % 100 == 1)):
             print(f'[rank {accelerator.process_index}] epoch {epoch} batch {batch_number}: '
                   'loaded', flush=True)
@@ -112,6 +114,11 @@ def train_one_epoch(model, base_model, loader, optimizer, criterion, epoch, conf
             object_prompt_tokens = batch[offset].to(config.device, non_blocking=True)
             object_prompt_mask = batch[offset + 1].to(config.device, non_blocking=True)
             offset += 2
+        relation_batch = None
+        if config.grounded_relation_alignment:
+            relation_batch = tuple(value.to(config.device, non_blocking=True)
+                                   for value in batch[offset:offset + 6])
+            offset += 6
         caption_embeddings = None
         if config.itc_weight > 0:
             caption_embeddings = batch[offset].to(config.device, non_blocking=True)
@@ -136,15 +143,28 @@ def train_one_epoch(model, base_model, loader, optimizer, criterion, epoch, conf
             return_itc=caption_embeddings is not None,
             object_prompt_tokens=object_prompt_tokens,
             object_prompt_mask=object_prompt_mask,
+            relation_tokens=(relation_batch[0] if relation_batch else None),
+            negative_relation_tokens=(relation_batch[1] if relation_batch else None),
+            subject_boxes=(relation_batch[2] if relation_batch else None),
+            object_boxes=(relation_batch[3] if relation_batch else None),
+            relation_confidences=(relation_batch[4] if relation_batch else None),
+            relation_mask=(relation_batch[5] if relation_batch else None),
+            return_relation_diagnostics=relation_batch is not None,
         )
-        if ((config.object_semantic_alignment or config.cascade_semantic_alignment) and
+        if ((config.object_semantic_alignment or config.cascade_semantic_alignment or
+             config.grounded_relation_alignment) and
                 (batch_number == 1 or batch_number % 100 == 1)):
             print(f'[rank {accelerator.process_index}] epoch {epoch} batch {batch_number}: '
                   'forward complete', flush=True)
-        if region_batch is not None or caption_embeddings is not None:
+        if relation_batch is not None:
+            logits, relation_diagnostics = output
+            visual_features = None
+        elif region_batch is not None or caption_embeddings is not None:
             logits, visual_features = output
+            relation_diagnostics = None
         else:
             logits, visual_features = output, None
+            relation_diagnostics = None
         caption_loss = criterion(logits.reshape(-1, logits.size(-1)), tgt_expected.reshape(-1))
         alignment_loss = caption_loss.new_zeros(())
         if region_batch is not None:
@@ -157,16 +177,23 @@ def train_one_epoch(model, base_model, loader, optimizer, criterion, epoch, conf
         if caption_embeddings is not None:
             itc_loss = image_text_contrastive_loss(
                 visual_features, caption_embeddings, config.itc_temperature)
+        relation_loss = caption_loss.new_zeros(())
+        if relation_diagnostics is not None:
+            relation_loss = counterfactual_relation_loss(
+                relation_diagnostics, config.relation_alignment_margin)
         loss = (caption_loss + config.alignment_weight * alignment_loss +
-                config.itc_weight * itc_loss)
+                config.itc_weight * itc_loss +
+                config.relation_alignment_weight * relation_loss)
         accelerator.backward(loss)
-        if ((config.object_semantic_alignment or config.cascade_semantic_alignment) and
+        if ((config.object_semantic_alignment or config.cascade_semantic_alignment or
+             config.grounded_relation_alignment) and
                 (batch_number == 1 or batch_number % 100 == 1)):
             print(f'[rank {accelerator.process_index}] epoch {epoch} batch {batch_number}: '
                   'backward complete', flush=True)
         accelerator.clip_grad_norm_(model.parameters(), max_norm=1.0)
         optimizer.step()
-        if ((config.object_semantic_alignment or config.cascade_semantic_alignment) and
+        if ((config.object_semantic_alignment or config.cascade_semantic_alignment or
+             config.grounded_relation_alignment) and
                 (batch_number == 1 or batch_number % 100 == 1)):
             print(f'[rank {accelerator.process_index}] epoch {epoch} batch {batch_number}: '
                   'optimizer complete', flush=True)
@@ -180,20 +207,23 @@ def train_one_epoch(model, base_model, loader, optimizer, criterion, epoch, conf
         reduced_caption = caption_loss.detach().item()
         reduced_alignment = alignment_loss.detach().item()
         reduced_itc = itc_loss.detach().item()
+        reduced_relation = relation_loss.detach().item()
         totals['loss'] += reduced_loss
         totals['caption_loss'] += reduced_caption
         totals['alignment_loss'] += reduced_alignment
         totals['itc_loss'] += reduced_itc
+        totals['relation_loss'] += reduced_relation
         processed_batches += 1
         progress.set_postfix(loss=f'{reduced_loss:.4f}', cap=f'{reduced_caption:.4f}',
-                             itc=f'{reduced_itc:.4f}')
+                             rel=f'{reduced_relation:.4f}', itc=f'{reduced_itc:.4f}')
         if batch_number == 1 or batch_number % 100 == 0:
             elapsed = time.monotonic() - epoch_started
             eta_minutes = max(total_batches - batch_number, 0) * elapsed / batch_number / 60
             accelerator.print(f'Epoch {epoch}: batch {batch_number}/{total_batches} | '
                               f'{elapsed / batch_number:.2f}s/batch | ETA {eta_minutes:.1f}min | '
                               f'total={reduced_loss:.4f} caption={reduced_caption:.4f} '
-                              f'alignment={reduced_alignment:.4f} itc={reduced_itc:.4f}')
+                              f'alignment={reduced_alignment:.4f} relation={reduced_relation:.4f} '
+                              f'itc={reduced_itc:.4f}')
 
     if processed_batches == 0:
         raise ValueError('No training batches were processed.')
@@ -228,7 +258,9 @@ def train_model(model, train_loader, data, config, accelerator=None):
         history.append({'epoch': epoch, 'train_loss': losses['loss'],
                         'caption_loss': losses['caption_loss'],
                         'alignment_loss': losses['alignment_loss'],
-                        'itc_loss': losses['itc_loss'], 'train_seconds': elapsed})
+                        'itc_loss': losses['itc_loss'],
+                        'relation_loss': losses['relation_loss'],
+                        'train_seconds': elapsed})
         completed_batches = min(len(train_loader), config.max_train_batches or len(train_loader))
         accelerator.print(f'Epoch training time: {elapsed:.1f}s | '
                           f'{elapsed / completed_batches:.3f}s/batch')
@@ -262,6 +294,11 @@ def train_model(model, train_loader, data, config, accelerator=None):
             'cascade_selector_mode': config.cascade_selector_mode,
             'object_prompt_cache_path': config.object_prompt_cache_path,
             'object_prompt_metadata': data.object_prompt_metadata,
+            'grounded_relation_alignment': config.grounded_relation_alignment,
+            'grounded_relation_cache_path': config.grounded_relation_cache_path,
+            'grounded_relation_metadata': data.grounded_relation_metadata,
+            'relation_alignment_weight': config.relation_alignment_weight,
+            'relation_alignment_margin': config.relation_alignment_margin,
             'caption_embedding_cache_path': config.caption_embedding_cache_path,
             'itc_weight': config.itc_weight,
             'itc_temperature': config.itc_temperature,
@@ -272,6 +309,7 @@ def train_model(model, train_loader, data, config, accelerator=None):
             'caption_loss': losses['caption_loss'],
             'alignment_loss': losses['alignment_loss'],
             'itc_loss': losses['itc_loss'],
+            'relation_loss': losses['relation_loss'],
             'model_name': MODEL_NAME,
             'embed_dim': EMBED_DIM,
             'max_prompt_len': MAX_PROMPT_LEN,
@@ -285,6 +323,7 @@ def train_model(model, train_loader, data, config, accelerator=None):
         accelerator.print(f'✅ Epoch {epoch}/{config.epochs} | total: {losses["loss"]:.4f} | '
                           f'caption: {losses["caption_loss"]:.4f} | '
                           f'alignment: {losses["alignment_loss"]:.4f} | '
+                          f'relation: {losses["relation_loss"]:.4f} | '
                           f'itc: {losses["itc_loss"]:.4f}')
         accelerator.print(f'💾 Saved: {checkpoint_path}')
 

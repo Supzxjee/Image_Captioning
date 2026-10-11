@@ -60,6 +60,13 @@ def parse_args(argv=None):
                              'prompt-only selector, or uniform valid-token weights.')
     parser.add_argument('--object-prompt-cache-path', default='',
                         help='PT cache containing per-object CLIP text embeddings and masks.')
+    parser.add_argument('--grounded-relation-alignment', action='store_true',
+                        help='Ground each relation in its subject/object CLIP patches and train '
+                             'against a counterfactual predicate.')
+    parser.add_argument('--grounded-relation-cache-path', default='',
+                        help='PT cache with pair boxes, relation embeddings and hard negatives.')
+    parser.add_argument('--relation-alignment-weight', type=float, default=0.0)
+    parser.add_argument('--relation-alignment-margin', type=float, default=0.2)
     parser.add_argument('--caption-embedding-cache-path', default='',
                         help='HDF5 with five frozen CLIP caption embeddings per train image.')
     parser.add_argument('--itc-weight', type=float, default=0.0)
