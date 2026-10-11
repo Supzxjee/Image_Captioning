@@ -16,11 +16,9 @@ Không cần GPU đôi.
 import shutil
 import subprocess
 import sys
-import shutil
 from pathlib import Path
 
 REPO = Path('/kaggle/working/Image_Captioning')
-COMMIT = '276e39a'
 COMMIT = '276e39a'
 RELATIONS = Path(
     '/kaggle/input/datasets/ducanh2403/prompt-conditioned-qformer-32q-2l/'
@@ -85,6 +83,7 @@ import sys
 from pathlib import Path
 
 REPO = Path('/kaggle/working/Image_Captioning')
+COMMIT = '276e39a'
 COCO_JSON = Path('/kaggle/input/datasets/vuthetam/mscoco-2014/dataset_coco.json')
 COCO_IMAGES = Path('/kaggle/input/datasets/vuthetam/mscoco-2014/images')
 PROMPT_CACHE = Path(
