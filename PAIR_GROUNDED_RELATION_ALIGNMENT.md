@@ -16,9 +16,11 @@ Không cần GPU đôi.
 import shutil
 import subprocess
 import sys
+import shutil
 from pathlib import Path
 
 REPO = Path('/kaggle/working/Image_Captioning')
+COMMIT = '276e39a'
 COMMIT = '276e39a'
 RELATIONS = Path(
     '/kaggle/input/datasets/ducanh2403/prompt-conditioned-qformer-32q-2l/'
@@ -104,6 +106,15 @@ for path in (COCO_JSON, PROMPT_CACHE, GROUNDED_CACHE, CHECKPOINT):
     assert path.is_file(), path
 assert COCO_IMAGES.is_dir(), COCO_IMAGES
 assert VISUAL_CACHE.is_dir(), VISUAL_CACHE
+if REPO.exists():
+    shutil.rmtree(REPO)
+subprocess.run([
+    'git', 'clone', 'https://github.com/Supzxjee/Image_Captioning.git', REPO
+], check=True)
+subprocess.run(['git', 'checkout', '--detach', COMMIT], cwd=REPO, check=True)
+subprocess.run([
+    sys.executable, '-m', 'pip', 'install', '-q', '-r', 'requirements.txt'
+], cwd=REPO, check=True)
 
 args = [
     sys.executable, '-u', 'train_h1_2_gated.py',
