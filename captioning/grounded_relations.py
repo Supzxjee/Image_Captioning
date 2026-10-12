@@ -225,7 +225,11 @@ def appearance_relation_loss(diagnostics, action_mask, margin=0.2,
     positive_score = (appearance * positive).sum(-1)
     negative_score = (appearance * negative).sum(-1)
     weights = diagnostics['confidences'].to(features.dtype).clamp_min(0.05)
-    predicate = (F.relu(margin - positive_score + negative_score)[valid] *
+    # Similar CLIP phrases have a small maximum attainable cosine-score gap.
+    # Cap the requested gap at half that bound rather than impose an impossible loss.
+    predicate_margin = torch.minimum(
+        torch.full_like(positive_score, margin), 0.5 * (positive - negative).norm(dim=-1))
+    predicate = (F.relu(predicate_margin - positive_score + negative_score)[valid] *
                  weights[valid]).sum() / weights[valid].sum()
     wrong_loss, eligible_count = zero, 0
     if 'wrong_image_features' in diagnostics and wrong_image_weight > 0:

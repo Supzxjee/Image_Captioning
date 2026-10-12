@@ -39,6 +39,15 @@ class AppearanceRelationTests(unittest.TestCase):
         self.assertEqual(parts['eligible_wrong_images'], 2)
         self.assertEqual(loss.item(), 0)
 
+    def test_similar_fixed_text_targets_have_an_attainable_margin(self):
+        positive = torch.tensor([[[1., 0.]]])
+        negative = torch.nn.functional.normalize(torch.tensor([[[1., .01]]]), dim=-1)
+        d = {'appearance_features': positive - negative,
+             'fixed_positive_features': positive, 'fixed_negative_features': negative,
+             'mask': torch.ones(1, 1, dtype=torch.bool), 'confidences': torch.ones(1, 1)}
+        loss, _ = appearance_relation_loss(d, d['mask'])
+        self.assertEqual(loss.item(), 0)
+
     def test_duplicate_phrase_is_not_used_as_wrong_image_negative(self):
         d = self.diagnostics()
         d['fixed_positive_features'] = torch.ones(2, 1, 2)
