@@ -1,24 +1,13 @@
-# Lưu checkpoint E3 vào notebook riêng
+# E3 checkpoint store: source version 194
 
-1. Tạo notebook Kaggle mới, đặt tên `E3 Checkpoint Store`. CPU là đủ.
-2. Import file `E3_CHECKPOINT_STORE.ipynb` từ repo này.
-3. Add Input output của `kltn-mscoco`, chọn version TRAIN E3 thành công, có thư mục `pair_grounded_relation_32q_2l_dual_gpu_3ep/checkpoints`. Version validation không chứa checkpoint. Notebook mới có thể chọn input version riêng với notebook diagnostic hiện tại.
-4. Chạy cell và Save Version → Save & Run All. Cell kiểm tra metadata E3 epoch 3, sao chép checkpoint nguyên vẹn và kiểm tra SHA256. Không tải file `.pth` về máy hoặc upload thành dataset.
-5. Trong notebook diagnostic, Add Input output của `E3 Checkpoint Store`. Copy File Path của checkpoint rồi thay `CHECKPOINT` bằng đường dẫn đó.
+Import `E3_CHECKPOINT_STORE.ipynb` into a NEW Kaggle notebook. CPU is sufficient; enable Internet.
 
-Output của notebook mới:
+No Add Input from kltn-mscoco is required. The cell uses `kaggle kernels output ducanh2403/kltn-mscoco/194 --file-pattern ...` to retrieve only E3 epoch 3, explicitly selecting version 194.
 
-```text
-e3_checkpoint_store/
-  model_h1_2_crossattn_epoch_3.pth
-  manifest.json
-  train_history_h1_2.json  # nếu có trong output train
-```
+For this private notebook, create an API token at https://www.kaggle.com/settings/api. Add it as `KAGGLE_API_TOKEN` in Add-ons > Secrets and enable access for this notebook. Do not paste the token into the code or chat.
 
-Nếu slug của notebook là `e3-checkpoint-store`, đường dẫn checkpoint dự kiến:
+Run and Save Version / Save & Run All. Output: `e3_checkpoint_store/model_h1_2_crossattn_epoch_3.pth` and `manifest.json` with source version 194. Metadata and copy SHA256 are verified.
 
-```python
-CHECKPOINT = Path('/kaggle/input/notebooks/ducanh2403/e3-checkpoint-store/e3_checkpoint_store/model_h1_2_crossattn_epoch_3.pth')
-```
+Then Add Input this independent notebook output in the diagnostic notebook and use Copy File Path to replace CHECKPOINT. No local .pth download or dataset upload is required.
 
-Dùng Copy File Path để xác nhận mount thực tế. Giữ nguyên các input prompt V2.1, grounded relation cache và visual cache đã chốt.
+Official documentation: https://github.com/Kaggle/kaggle-cli/blob/main/docs/kernels.md and https://github.com/Kaggle/kaggle-cli/blob/main/docs/README.md

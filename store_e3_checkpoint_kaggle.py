@@ -1,20 +1,48 @@
-"""Run in a NEW Kaggle notebook attached to the successful E3 TRAIN output."""
+"""Retrieve checkpoint from Kaggle notebook version 194 into independent output."""
 import gc
 import hashlib
 import json
+import os
 import shutil
+import subprocess
+import sys
 import time
 from pathlib import Path
 
 import torch
 
-SOURCE = Path('/kaggle/input/notebooks/ducanh2403/kltn-mscoco/pair_grounded_relation_32q_2l_dual_gpu_3ep/checkpoints/model_h1_2_crossattn_epoch_3.pth')
+SOURCE_NOTEBOOK = 'ducanh2403/kltn-mscoco/194'
+DOWNLOAD = Path('/tmp/e3_checkpoint_version_194')
+RELATIVE_CHECKPOINT = Path('pair_grounded_relation_32q_2l_dual_gpu_3ep/checkpoints/model_h1_2_crossattn_epoch_3.pth')
+SOURCE = DOWNLOAD / RELATIVE_CHECKPOINT
 OUTPUT = Path('/kaggle/working/e3_checkpoint_store')
 DESTINATION = OUTPUT / SOURCE.name
 
+if not SOURCE.is_file():
+    environment = os.environ.copy()
+    if not environment.get('KAGGLE_API_TOKEN'):
+        from kaggle_secrets import UserSecretsClient
+        try:
+            environment['KAGGLE_API_TOKEN'] = UserSecretsClient().get_secret('KAGGLE_API_TOKEN')
+        except Exception:
+            raise RuntimeError(
+                'Add-ons > Secrets: add and enable KAGGLE_API_TOKEN from '
+                'https://www.kaggle.com/settings/api. Enable Internet and run again.'
+            ) from None
+    subprocess.run([sys.executable, '-m', 'pip', 'install', '-q', '--upgrade', 'kaggle'], check=True)
+    executable = shutil.which('kaggle')
+    assert executable, 'Kaggle CLI executable was not found after installation.'
+    DOWNLOAD.mkdir(parents=True, exist_ok=True)
+    print('Downloading ONLY E3 epoch-3 checkpoint from version 194...', flush=True)
+    subprocess.run([
+        executable, 'kernels', 'output', SOURCE_NOTEBOOK, '-p', str(DOWNLOAD),
+        '--file-pattern', r'(^|/)pair_grounded_relation_32q_2l_dual_gpu_3ep/checkpoints/model_h1_2_crossattn_epoch_3\.pth$',
+    ], env=environment, check=True)
+    environment.pop('KAGGLE_API_TOKEN', None)
+
 assert SOURCE.is_file(), (
-    f'Khong co checkpoint: {SOURCE}. Notebook MOI phai Add Input version TRAIN E3 '
-    'thanh cong, khong phai version validation. Copy File Path va sua SOURCE neu mount khac.'
+    f'Checkpoint was not downloaded: {SOURCE}. Verify that notebook version 194 '
+    'has the successful E3 training output and this exact filename.'
 )
 OUTPUT.mkdir(parents=True, exist_ok=True)
 assert shutil.disk_usage(OUTPUT).free > SOURCE.stat().st_size + 1024**3, 'Not enough output disk space.'
@@ -68,6 +96,7 @@ if history.is_file():
     shutil.copyfile(history, OUTPUT / history.name)
 
 manifest = {
+    'source_notebook': SOURCE_NOTEBOOK, 'source_version': 194,
     'source': str(SOURCE), 'checkpoint': DESTINATION.name,
     'bytes': total, 'sha256': destination_hash.hexdigest(), 'signature': signature,
     'purpose': 'Independent E3 checkpoint output for diagnostic and evaluation notebooks',
