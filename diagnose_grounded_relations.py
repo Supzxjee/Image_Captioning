@@ -108,6 +108,13 @@ def main():
                     caption_on = generate_caption_beam_search(**kwargs)
                     diagnostics = state['diagnostics']
                     positive, negative = ranking(diagnostics)
+                    required_margins = [config.relation_alignment_margin] * positive.numel()
+                    if 'appearance_features' in diagnostics:
+                        valid = diagnostics['mask'].bool()
+                        p = F.normalize(diagnostics['fixed_positive_features'][valid], dim=-1)
+                        n = F.normalize(diagnostics['fixed_negative_features'][valid], dim=-1)
+                        required_margins = (0.5 * (p - n).norm(dim=-1)).clamp_max(
+                            config.relation_alignment_margin).tolist()
                     positive, negative = positive.tolist(), negative.tolist()
                     evidence = diagnostics['evidence_gate'][diagnostics['mask']].tolist()
                     query_gate = float(state['query_gate'].mean())
@@ -136,6 +143,7 @@ def main():
                             'action_predicate': metadata.get('relation') in ACTION_PREDICATES,
                             'positive_score': positive[slot], 'negative_score': negative[slot],
                             'margin': positive[slot] - negative[slot],
+                            'required_margin': required_margins[slot],
                             'wrong_image_positive_score': wrong_positive[slot],
                             'wrong_image_negative_score': wrong_negative[slot],
                             'wrong_image_margin': wrong_positive[slot] - wrong_negative[slot],
@@ -166,7 +174,7 @@ def main():
             return {
                 'count': len(items), 'mean_margin': mean([x['margin'] for x in items]),
                 'positive_above_negative_rate': mean([x['margin'] > 0 for x in items]),
-                'margin_satisfied_rate': mean([x['margin'] >= config.relation_alignment_margin for x in items]),
+                'margin_satisfied_rate': mean([x['margin'] >= x['required_margin'] for x in items]),
                 'wrong_image_mean_margin': mean([x['wrong_image_margin'] for x in items]),
                 'wrong_image_positive_above_negative_rate': mean([x['wrong_image_margin'] > 0 for x in items]),
                 'correct_minus_wrong_positive_score': mean([
