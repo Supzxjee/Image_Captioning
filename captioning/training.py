@@ -336,7 +336,7 @@ def train_model(model, train_loader, data, config, accelerator=None):
             'relation_wrong_image_weight': config.relation_wrong_image_weight,
             'relation_verified_scale': config.relation_verified_scale,
             'relation_verifier_frozen': config.grounded_relation_version == 'verified_v3',
-            'verified_visual_projection_frozen': config.grounded_relation_version == 'verified_v3',
+            'shared_visual_projection_frozen': config.grounded_relation_version == 'verified_v3',
             'caption_embedding_cache_path': config.caption_embedding_cache_path,
             'itc_weight': config.itc_weight,
             'itc_temperature': config.itc_temperature,
