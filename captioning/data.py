@@ -12,7 +12,7 @@ from .visual_cache import VisualCache, coco_image_id
 from .caption_cache import CaptionEmbeddingCache
 from .semantic_prompts import align_prompt_cache
 from .object_concepts import align_object_concept_cache
-from .grounded_relations import align_grounded_relation_cache
+from .grounded_relations import align_grounded_relation_cache, action_relation_mask
 
 NORMALIZATION_STATS = {
     'mean': [0.48145466, 0.4578275, 0.40821073],
@@ -91,6 +91,8 @@ class CocoPromptDataset(Dataset):
                 relation_entry['confidences'].float(),
                 relation_entry['mask'].long(),
             )
+            if 'action_mask' in relation_entry:
+                sample += (relation_entry['action_mask'].long(),)
         if self.caption_embedding_cache is not None:
             sample += (torch.from_numpy(self.caption_embedding_cache.read(row['coco_id'])),)
         if self.region_targets is None:
@@ -196,6 +198,11 @@ def load_data(config):
             relation_bundle['data'],
             [item['image'] for item in train_data + val_data + test_data])
         grounded_relation_metadata = relation_bundle.get('metadata', {})
+        if config.grounded_relation_version == 'appearance_v2':
+            for entry in grounded_relation_cache.values():
+                if 'relations' not in entry:
+                    raise ValueError('Appearance V2 requires predicate metadata in relation cache.')
+                entry['action_mask'] = action_relation_mask(entry)
         missing_relations = [item['filename'] for item in selected_prompts
                              if item['image'] not in grounded_relation_cache]
         if missing_relations:

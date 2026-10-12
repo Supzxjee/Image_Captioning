@@ -85,6 +85,7 @@ def run(config):
         cascade_semantic_alignment=config.cascade_semantic_alignment,
         cascade_selector_mode=config.cascade_selector_mode,
         grounded_relation_alignment=config.grounded_relation_alignment,
+        grounded_relation_version=config.grounded_relation_version,
     )
     del frozen_backbone_state
     encoder = encoder.to(config.device)

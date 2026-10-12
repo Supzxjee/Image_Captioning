@@ -5,6 +5,17 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 
+ACTION_PREDICATES = frozenset({'holding', 'wearing', 'carrying', 'riding'})
+
+
+def action_relation_mask(entry):
+    """Mark heuristic action labels eligible for appearance-only alignment."""
+    mask = torch.zeros_like(entry['mask'], dtype=torch.bool)
+    for index, relation in enumerate(entry.get('relations', [])):
+        if index < mask.numel() and relation.get('relation') in ACTION_PREDICATES:
+            mask[index] = bool(entry['mask'][index])
+    return mask
+
 
 def align_grounded_relation_cache(cache, image_paths):
     """Validate a fixed-size grounded-relation cache and align it by filename."""
@@ -92,8 +103,16 @@ def relative_geometry(subject_boxes, object_boxes):
 
 class PairGroundedRelationAlignment(nn.Module):
     """Ground relation text in its subject/object patches before query fusion."""
-    def __init__(self, embed_dim, num_heads, dropout=0.1, relation_dim=512):
+    def __init__(self, embed_dim, num_heads, dropout=0.1, relation_dim=512,
+                 grounding_version='v1'):
         super().__init__()
+        if grounding_version not in {'v1', 'appearance_v2'}:
+            raise ValueError('Unknown grounded relation version.')
+        self.grounding_version = grounding_version
+        # This scorer never sees relative geometry or trainable text projections.
+        self.appearance_projection = (nn.Sequential(
+            nn.Linear(embed_dim * 3, relation_dim), nn.GELU(), nn.LayerNorm(relation_dim)
+        ) if grounding_version == 'appearance_v2' else None)
         self.relation_projection = nn.Sequential(
             nn.Linear(relation_dim, embed_dim), nn.LayerNorm(embed_dim))
         self.pair_projection = nn.Sequential(
@@ -154,6 +173,20 @@ class PairGroundedRelationAlignment(nn.Module):
             'confidences': relation_confidences,
             'evidence_gate': evidence.squeeze(-1),
         }
+        if self.appearance_projection is not None:
+            diagnostics['appearance_features'] = self.appearance_projection(
+                torch.cat([subject, obj, union], dim=-1))
+            diagnostics['fixed_positive_features'] = relation_tokens.detach()
+            diagnostics['fixed_negative_features'] = negative_relation_tokens.detach()
+            if patches.size(0) > 1:
+                # Use a different local-batch image but retain original boxes.
+                # Loss filters cases with similar annotated relation phrases.
+                other_patches = patches.roll(1, dims=0)
+                other_subject = _pool_patch_boxes(other_patches, subject_boxes, valid)
+                other_object = _pool_patch_boxes(other_patches, object_boxes, valid)
+                other_union = _pool_patch_boxes(other_patches, union_boxes, valid)
+                diagnostics['wrong_image_features'] = self.appearance_projection(
+                    torch.cat([other_subject, other_object, other_union], dim=-1))
         return aligned, diagnostics
 
 
@@ -170,3 +203,44 @@ def counterfactual_relation_loss(diagnostics, margin=0.2):
     weights = diagnostics['confidences'][valid].to(positive_score.dtype).clamp_min(0.05)
     losses = F.relu(margin - positive_score + negative_score)
     return (losses * weights).sum() / weights.sum()
+
+
+def appearance_relation_loss(diagnostics, action_mask, margin=0.2,
+                             wrong_image_weight=0.5, duplicate_threshold=0.9):
+    """Action-only predicate ranking plus a conservative cross-image ranking term.
+
+    Text targets are fixed cached CLIP EOS vectors. Cross-image negatives are weak:
+    missing annotations do not prove the relation is absent. Exclude other images
+    containing near-identical positive phrases to reduce false negatives.
+    """
+    features = diagnostics['appearance_features']
+    valid = diagnostics['mask'].bool() & action_mask.bool()
+    zero = features.sum() * 0
+    if not valid.any():
+        return zero, {'predicate_loss': zero, 'wrong_image_loss': zero,
+                      'actions': 0, 'eligible_wrong_images': 0}
+    positive = F.normalize(diagnostics['fixed_positive_features'].detach(), dim=-1)
+    negative = F.normalize(diagnostics['fixed_negative_features'].detach(), dim=-1)
+    appearance = F.normalize(features, dim=-1)
+    positive_score = (appearance * positive).sum(-1)
+    negative_score = (appearance * negative).sum(-1)
+    weights = diagnostics['confidences'].to(features.dtype).clamp_min(0.05)
+    predicate = (F.relu(margin - positive_score + negative_score)[valid] *
+                 weights[valid]).sum() / weights[valid].sum()
+    wrong_loss, eligible_count = zero, 0
+    if 'wrong_image_features' in diagnostics and wrong_image_weight > 0:
+        other_text = positive.roll(1, dims=0)
+        other_valid = diagnostics['mask'].bool().roll(1, dims=0)
+        similarities = torch.einsum('brd,bsd->brs', positive, other_text)
+        duplicates = ((similarities >= duplicate_threshold) & other_valid[:, None, :]).any(-1)
+        eligible = valid & ~duplicates
+        eligible_count = int(eligible.sum().item())
+        if eligible.any():
+            wrong_features = F.normalize(diagnostics['wrong_image_features'], dim=-1)
+            wrong_score = (wrong_features * positive).sum(-1)
+            wrong_loss = (F.relu(margin - positive_score + wrong_score)[eligible] *
+                          weights[eligible]).sum() / weights[eligible].sum()
+    return predicate + wrong_image_weight * wrong_loss, {
+        'predicate_loss': predicate, 'wrong_image_loss': wrong_loss,
+        'actions': int(valid.sum().item()), 'eligible_wrong_images': eligible_count,
+    }

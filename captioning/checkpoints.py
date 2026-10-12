@@ -48,6 +48,13 @@ def load_checkpoint(model, path, tokenizer, warm_start=False):
                                f'but model mode is {model_selector!r}.')
     checkpoint_uses_grounded = bool(checkpoint.get('grounded_relation_alignment', False))
     model_uses_grounded = bool(getattr(model.encoder, 'grounded_relation_alignment', False))
+    if checkpoint_uses_grounded and model_uses_grounded:
+        saved_version = checkpoint.get('grounded_relation_version', 'v1')
+        model_version = getattr(model.encoder, 'grounded_relation_version', 'v1')
+        if saved_version != model_version:
+            raise RuntimeError(f'Grounded relation versions differ: checkpoint={saved_version}, '
+                               f'model={model_version}. Start V2 from the baseline Q-Former '
+                               'checkpoint, not the collapsed E3 V1 checkpoint.')
     if checkpoint_uses_grounded != model_uses_grounded and not (
             warm_start and model_uses_grounded and not checkpoint_uses_grounded):
         raise RuntimeError(f'Checkpoint grounded relation setting is '

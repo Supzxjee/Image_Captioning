@@ -8,7 +8,7 @@ import torch.nn.functional as F
 from tqdm.auto import tqdm
 from .config import MODEL_NAME, EMBED_DIM, MAX_PROMPT_LEN, NUM_HEADS
 from .checkpoints import load_checkpoint
-from .grounded_relations import counterfactual_relation_loss
+from .grounded_relations import counterfactual_relation_loss, appearance_relation_loss
 
 
 def _gather_with_grad(tensor):
@@ -84,6 +84,9 @@ def train_one_epoch(model, base_model, loader, optimizer, criterion, epoch, conf
         base_model.encoder.feature_extractor.eval()
     totals = {'loss': 0.0, 'caption_loss': 0.0, 'alignment_loss': 0.0,
               'itc_loss': 0.0, 'relation_loss': 0.0}
+    if config.grounded_relation_version == 'appearance_v2':
+        totals.update(relation_predicate_loss=0.0, relation_wrong_image_loss=0.0,
+                      relation_actions_per_batch=0.0, relation_wrong_images_per_batch=0.0)
 
     total_batches = min(len(loader), config.max_train_batches or len(loader))
     progress = tqdm(loader, total=total_batches, desc=f'Epoch {epoch}/{config.epochs}',
@@ -115,10 +118,14 @@ def train_one_epoch(model, base_model, loader, optimizer, criterion, epoch, conf
             object_prompt_mask = batch[offset + 1].to(config.device, non_blocking=True)
             offset += 2
         relation_batch = None
+        relation_action_mask = None
         if config.grounded_relation_alignment:
             relation_batch = tuple(value.to(config.device, non_blocking=True)
                                    for value in batch[offset:offset + 6])
             offset += 6
+            if config.grounded_relation_version == 'appearance_v2':
+                relation_action_mask = batch[offset].to(config.device, non_blocking=True)
+                offset += 1
         caption_embeddings = None
         if config.itc_weight > 0:
             caption_embeddings = batch[offset].to(config.device, non_blocking=True)
@@ -179,8 +186,19 @@ def train_one_epoch(model, base_model, loader, optimizer, criterion, epoch, conf
                 visual_features, caption_embeddings, config.itc_temperature)
         relation_loss = caption_loss.new_zeros(())
         if relation_diagnostics is not None:
-            relation_loss = counterfactual_relation_loss(
-                relation_diagnostics, config.relation_alignment_margin)
+            if config.grounded_relation_version == 'appearance_v2':
+                relation_loss, relation_terms = appearance_relation_loss(
+                    relation_diagnostics, relation_action_mask, config.relation_alignment_margin,
+                    config.relation_wrong_image_weight)
+                if batch_number == 1 or batch_number % 100 == 0:
+                    accelerator.print(
+                        f'Appearance V2: actions={relation_terms["actions"]} | '
+                        f'eligible wrong images={relation_terms["eligible_wrong_images"]} | '
+                        f'predicate={relation_terms["predicate_loss"].detach().item():.4f} | '
+                        f'wrong image={relation_terms["wrong_image_loss"].detach().item():.4f}')
+            else:
+                relation_loss = counterfactual_relation_loss(
+                    relation_diagnostics, config.relation_alignment_margin)
         loss = (caption_loss + config.alignment_weight * alignment_loss +
                 config.itc_weight * itc_loss +
                 config.relation_alignment_weight * relation_loss)
@@ -213,6 +231,11 @@ def train_one_epoch(model, base_model, loader, optimizer, criterion, epoch, conf
         totals['alignment_loss'] += reduced_alignment
         totals['itc_loss'] += reduced_itc
         totals['relation_loss'] += reduced_relation
+        if config.grounded_relation_version == 'appearance_v2':
+            totals['relation_predicate_loss'] += relation_terms['predicate_loss'].detach().item()
+            totals['relation_wrong_image_loss'] += relation_terms['wrong_image_loss'].detach().item()
+            totals['relation_actions_per_batch'] += relation_terms['actions']
+            totals['relation_wrong_images_per_batch'] += relation_terms['eligible_wrong_images']
         processed_batches += 1
         progress.set_postfix(loss=f'{reduced_loss:.4f}', cap=f'{reduced_caption:.4f}',
                              rel=f'{reduced_relation:.4f}', itc=f'{reduced_itc:.4f}')
@@ -261,6 +284,9 @@ def train_model(model, train_loader, data, config, accelerator=None):
                         'itc_loss': losses['itc_loss'],
                         'relation_loss': losses['relation_loss'],
                         'train_seconds': elapsed})
+        if config.grounded_relation_version == 'appearance_v2':
+            history[-1].update({key: value for key, value in losses.items()
+                               if key.startswith('relation_')})
         completed_batches = min(len(train_loader), config.max_train_batches or len(train_loader))
         accelerator.print(f'Epoch training time: {elapsed:.1f}s | '
                           f'{elapsed / completed_batches:.3f}s/batch')
@@ -299,6 +325,8 @@ def train_model(model, train_loader, data, config, accelerator=None):
             'grounded_relation_metadata': data.grounded_relation_metadata,
             'relation_alignment_weight': config.relation_alignment_weight,
             'relation_alignment_margin': config.relation_alignment_margin,
+            'grounded_relation_version': config.grounded_relation_version,
+            'relation_wrong_image_weight': config.relation_wrong_image_weight,
             'caption_embedding_cache_path': config.caption_embedding_cache_path,
             'itc_weight': config.itc_weight,
             'itc_temperature': config.itc_temperature,

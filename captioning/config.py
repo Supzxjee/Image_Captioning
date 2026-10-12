@@ -52,6 +52,8 @@ class Config:
     grounded_relation_cache_path: str = ''
     relation_alignment_weight: float = 0.0
     relation_alignment_margin: float = 0.2
+    grounded_relation_version: str = 'v1'
+    relation_wrong_image_weight: float = 0.5
     caption_embedding_cache_path: str = ''
     itc_weight: float = 0.0
     itc_temperature: float = 0.07
@@ -59,6 +61,12 @@ class Config:
 
     def __post_init__(self):
         self.work_dir = Path(self.work_dir)
+        if self.grounded_relation_version not in {'v1', 'appearance_v2'}:
+            raise ValueError('Invalid grounded relation version.')
+        if self.grounded_relation_version != 'v1' and not self.grounded_relation_alignment:
+            raise ValueError('Appearance V2 requires grounded relation alignment.')
+        if self.relation_wrong_image_weight < 0:
+            raise ValueError('Wrong-image relation weight must be nonnegative.')
         if self.test_visual_source not in {'same', 'images'}:
             raise ValueError('Invalid test visual source.')
         if self.visual_cache_id_key not in {'coco_id', 'eval_id', 'karpathy_id'}:

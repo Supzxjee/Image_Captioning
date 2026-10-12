@@ -197,7 +197,8 @@ class UniversalVisionEncoder(nn.Module):
                  visual_adapter='direct', num_visual_queries=32, qformer_layers=2,
                  use_itc=False, prompt_conditioned_qformer=False,
                  object_semantic_alignment=False, cascade_semantic_alignment=False,
-                 cascade_selector_mode='object_context', grounded_relation_alignment=False):
+                 cascade_selector_mode='object_context', grounded_relation_alignment=False,
+                 grounded_relation_version='v1'):
         super().__init__()
         if model_name.lower() != 'clip':
             raise NotImplementedError('Only CLIP is supported in this notebook.')
@@ -245,6 +246,7 @@ class UniversalVisionEncoder(nn.Module):
         self.cascade_semantic_alignment = cascade_semantic_alignment
         self.cascade_selector_mode = cascade_selector_mode
         self.grounded_relation_alignment = grounded_relation_alignment
+        self.grounded_relation_version = grounded_relation_version
         self.use_itc = use_itc
         self.vis_projection = nn.Linear(768, embed_dim)
         self.qformer = (LightweightQFormer(
@@ -262,7 +264,7 @@ class UniversalVisionEncoder(nn.Module):
             embed_dim, num_heads, attn_dropout, selector_mode=cascade_selector_mode
         ) if cascade_semantic_alignment else None)
         self.relation_alignment = (PairGroundedRelationAlignment(
-            embed_dim, num_heads, attn_dropout
+            embed_dim, num_heads, attn_dropout, grounding_version=grounded_relation_version
         ) if grounded_relation_alignment else None)
         self.itc_query_projection = (nn.Linear(embed_dim, 512) if use_itc else None)
         self.prompt_projection = nn.Sequential(

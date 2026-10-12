@@ -19,13 +19,15 @@ from captioning.checkpoints import load_checkpoint
 from captioning.data import load_data, load_visual_input
 from captioning.inference import generate_caption_beam_search
 from captioning.models import UniversalVisionEncoder, CaptionDecoder, ImageCaptioningModel
+from captioning.grounded_relations import ACTION_PREDICATES
 
 
 def ranking(diagnostics):
     valid = diagnostics['mask'].bool()
-    pair = F.normalize(diagnostics['pair_features'][valid], dim=-1)
-    positive = F.normalize(diagnostics['positive_relation_features'][valid], dim=-1)
-    negative = F.normalize(diagnostics['negative_relation_features'][valid], dim=-1)
+    appearance = 'appearance_features' in diagnostics
+    pair = F.normalize(diagnostics['appearance_features' if appearance else 'pair_features'][valid], dim=-1)
+    positive = F.normalize(diagnostics['fixed_positive_features' if appearance else 'positive_relation_features'][valid], dim=-1)
+    negative = F.normalize(diagnostics['fixed_negative_features' if appearance else 'negative_relation_features'][valid], dim=-1)
     return (pair * positive).sum(-1), (pair * negative).sum(-1)
 
 
@@ -37,6 +39,7 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('--output', required=True)
     parser.add_argument('--sample-size', type=int, default=100)
+    parser.add_argument('--expected-epoch', type=int, default=3)
     args, remaining = parser.parse_known_args()
     config = parse_args(remaining)
     if config.mode != 'predict' or config.split != 'val' or not config.visual_cache:
@@ -57,14 +60,16 @@ def main():
             load_backbone=False, visual_adapter='qformer',
             num_visual_queries=config.num_visual_queries, qformer_layers=config.qformer_layers,
             grounded_relation_alignment=True,
+            grounded_relation_version=config.grounded_relation_version,
         ).to(config.device)
         model = ImageCaptioningModel(encoder, CaptionDecoder(data.vocab_size)).to(config.device)
         checkpoint = load_checkpoint(model, config.checkpoint, data.tokenizer)
-        if checkpoint.get('epoch') != 3:
-            raise ValueError('This diagnostic expects E3 pilot epoch 3.')
+        if checkpoint.get('epoch') != args.expected_epoch:
+            raise ValueError(f'This diagnostic expects epoch {args.expected_epoch}.')
         checkpoint_metadata = {key: checkpoint.get(key) for key in (
             'epoch', 'visual_adapter', 'num_visual_queries', 'qformer_layers',
-            'grounded_relation_alignment', 'relation_alignment_weight', 'relation_alignment_margin')}
+            'grounded_relation_alignment', 'grounded_relation_version',
+            'relation_alignment_weight', 'relation_alignment_margin')}
         del checkpoint
         model.eval()
 
@@ -128,6 +133,7 @@ def main():
                             'subject': metadata.get('subject'), 'predicate': metadata.get('relation'),
                             'object': metadata.get('object'),
                             'counterfactual': metadata.get('counterfactual_relation'),
+                            'action_predicate': metadata.get('relation') in ACTION_PREDICATES,
                             'positive_score': positive[slot], 'negative_score': negative[slot],
                             'margin': positive[slot] - negative[slot],
                             'wrong_image_positive_score': wrong_positive[slot],
@@ -176,12 +182,15 @@ def main():
             'checkpoint': config.checkpoint, 'checkpoint_metadata': checkpoint_metadata,
             'split': 'val', 'sampling': 'random_without_replacement', 'seed': config.seed,
             'sample_count': len(records), 'images_with_relations': len(with_relations),
+            'score_source': ('appearance_only_fixed_text' if config.grounded_relation_version == 'appearance_v2'
+                             else 'geometry_and_appearance_trainable_text'),
             'caption_changed_count': sum(r['caption_changed'] for r in records),
             'caption_changed_rate_with_relations': mean([r['caption_changed'] for r in with_relations]),
             'no_relation_caption_changed_count': sum(r['caption_changed'] for r in without_relations),
             'query_gate_mean': mean([r['query_gate_mean'] for r in with_relations]),
             'residual_ratio_mean': mean([r['residual_ratio'] for r in with_relations]),
             'ranking': stats(relations), 'by_predicate': {k: stats(v) for k, v in grouped.items()},
+            'action_ranking': stats([r for r in relations if r['action_predicate']]),
             'interpretation': 'Cached positives are heuristic labels, not human ground truth. '
                 'Wrong-image scores test sensitivity to visual evidence while preserving geometry. '
                 'Off bypasses only the E3 residual; relation information remains in prompt V2.1. '
