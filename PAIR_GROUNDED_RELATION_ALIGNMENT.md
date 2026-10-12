@@ -153,3 +153,77 @@ Sau diagnostic mới chạy pilot 3 epoch bằng T4 x2. Pilot phải khởi tạ
 Q-Former epoch 10, đặt `--max-train-batches 0`, giữ seed 42 và dùng đúng cache
 trên. Không warm-start từ E2 V2.1 vì kiến trúc cascade cũ và pair-grounded mới
 khác nhau.
+
+## 3. Pilot 3 epoch: stage visual cache trước khi chạy dual GPU
+
+Không đọc ngẫu nhiên các shard HDF5 trực tiếp từ `/kaggle/input` bằng hai rank.
+Trong một lần thử, cả hai rank đã hoàn thành `optimizer.step()` ở batch 101 nhưng
+treo khi lấy batch tiếp theo. Copy ba shard sang ổ cục bộ `/tmp` trước khi launch,
+rồi truyền thư mục cục bộ cho `--visual-cache`.
+
+```python
+import shutil
+import time
+from pathlib import Path
+
+VISUAL_CACHE_INPUT = Path(
+    '/kaggle/input/datasets/ducanh2403/visual-cache'
+)
+VISUAL_CACHE_LOCAL = Path('/tmp/visual-cache')
+
+source_shards = [
+    VISUAL_CACHE_INPUT / f'visual_part_{part:02d}_of_03.h5'
+    for part in range(1, 4)
+]
+for shard in source_shards:
+    assert shard.is_file(), shard
+
+required_bytes = sum(shard.stat().st_size for shard in source_shards)
+free_bytes = shutil.disk_usage('/tmp').free
+assert free_bytes > required_bytes + 5 * 1024**3, (
+    f'Khong du /tmp: can {required_bytes / 1024**3:.1f} GiB, '
+    f'con trong {free_bytes / 1024**3:.1f} GiB.'
+)
+
+if VISUAL_CACHE_LOCAL.exists():
+    shutil.rmtree(VISUAL_CACHE_LOCAL)
+VISUAL_CACHE_LOCAL.mkdir(parents=True)
+
+def copy_with_progress(source, destination, chunk_size=64 * 1024**2):
+    total = source.stat().st_size
+    copied = 0
+    next_report = 1024**3
+    started = time.monotonic()
+    with source.open('rb') as src, destination.open('wb') as dst:
+        while True:
+            chunk = src.read(chunk_size)
+            if not chunk:
+                break
+            dst.write(chunk)
+            copied += len(chunk)
+            if copied >= next_report or copied == total:
+                elapsed = max(time.monotonic() - started, 1e-6)
+                print(
+                    f'{source.name}: {copied / 1024**3:.1f}/'
+                    f'{total / 1024**3:.1f} GiB | '
+                    f'{copied / 1024**2 / elapsed:.1f} MiB/s',
+                    flush=True,
+                )
+                next_report += 1024**3
+
+for source in source_shards:
+    destination = VISUAL_CACHE_LOCAL / source.name
+    copy_with_progress(source, destination)
+    assert destination.stat().st_size == source.stat().st_size
+
+print('Local visual cache ready:', VISUAL_CACHE_LOCAL, flush=True)
+```
+
+Trong lệnh train, dùng:
+
+```python
+'--visual-cache', VISUAL_CACHE_LOCAL,
+```
+
+và giữ `--batch-size 32`, Accelerate `--num_processes 2`, relation weight `0.1`,
+margin `0.2`, seed `42`, `--epochs 3`, `--max-train-batches 0`.
