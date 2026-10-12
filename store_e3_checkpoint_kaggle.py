@@ -33,16 +33,31 @@ if not SOURCE.is_file():
     executable = shutil.which('kaggle')
     assert executable, 'Kaggle CLI executable was not found after installation.'
     DOWNLOAD.mkdir(parents=True, exist_ok=True)
+    print('OUTPUT FILES REPORTED BY KAGGLE FOR VERSION 194:', flush=True)
+    subprocess.run([
+        executable, 'kernels', 'files', SOURCE_NOTEBOOK, '--csv', '--page-size', '200',
+    ], env=environment, check=True)
     print('Downloading ONLY E3 epoch-3 checkpoint from version 194...', flush=True)
     subprocess.run([
         executable, 'kernels', 'output', SOURCE_NOTEBOOK, '-p', str(DOWNLOAD),
-        '--file-pattern', r'(^|/)pair_grounded_relation_32q_2l_dual_gpu_3ep/checkpoints/model_h1_2_crossattn_epoch_3\.pth$',
+        '--file-pattern', r'model_h1_2_crossattn_epoch_3[.]pth$',
     ], env=environment, check=True)
     environment.pop('KAGGLE_API_TOKEN', None)
 
+if not SOURCE.is_file():
+    flat_source = DOWNLOAD / RELATIVE_CHECKPOINT.name
+    if flat_source.is_file():
+        SOURCE = flat_source
+
+if not SOURCE.is_file():
+    print('LOCAL DOWNLOAD DIRECTORY CONTENTS:', flush=True)
+    for entry in DOWNLOAD.iterdir():
+        print(entry.name, flush=True)
+
 assert SOURCE.is_file(), (
-    f'Checkpoint was not downloaded: {SOURCE}. Verify that notebook version 194 '
-    'has the successful E3 training output and this exact filename.'
+    f'Checkpoint was not downloaded to a known location: {SOURCE}. '
+    'Send OUTPUT FILES REPORTED BY KAGGLE FOR VERSION 194 and the download log. '
+    'Do not switch to latest version; we must verify the actual version-194 filename.'
 )
 OUTPUT.mkdir(parents=True, exist_ok=True)
 assert shutil.disk_usage(OUTPUT).free > SOURCE.stat().st_size + 1024**3, 'Not enough output disk space.'
