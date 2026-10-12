@@ -12,6 +12,7 @@ from pathlib import Path
 import torch
 
 SOURCE_NOTEBOOK = 'ducanh2403/kltn-mscoco/194'
+KAGGLE_CLI_COMMIT = '9c57dd74c29904c40ff7879eed33644be89d2e2f'
 DOWNLOAD = Path('/tmp/e3_checkpoint_version_194')
 RELATIVE_CHECKPOINT = Path('pair_grounded_relation_32q_2l_dual_gpu_3ep/checkpoints/model_h1_2_crossattn_epoch_3.pth')
 SOURCE = DOWNLOAD / RELATIVE_CHECKPOINT
@@ -29,7 +30,24 @@ if not SOURCE.is_file():
                 'Add-ons > Secrets: add and enable KAGGLE_API_TOKEN from '
                 'https://www.kaggle.com/settings/api. Enable Internet and run again.'
             ) from None
-    subprocess.run([sys.executable, '-m', 'pip', 'install', '-q', '--upgrade', 'kaggle'], check=True)
+    # PyPI kaggle 2.2.4 parses /194 but ignores it in output/files API requests.
+    # Pin official upstream code that sends version_label='v194' instead.
+    subprocess.run([
+        sys.executable, '-m', 'pip', 'install', '-q', '--force-reinstall', '--no-deps',
+        f'https://github.com/Kaggle/kaggle-cli/archive/{KAGGLE_CLI_COMMIT}.zip',
+    ], check=True)
+    subprocess.run([
+        sys.executable, '-m', 'pip', 'install', '-q', '--upgrade', 'kagglesdk>=0.1.37,<1.0',
+    ], check=True)
+    subprocess.run([
+        sys.executable, '-c',
+        'import inspect; from kaggle.api.kaggle_api_extended import KaggleApi; '
+        'assert "request.version_label" in inspect.getsource(KaggleApi.kernels_output), '
+        '"Installed CLI ignores output version"; '
+        'assert "request.version_label" in inspect.getsource(KaggleApi.kernels_list_files), '
+        '"Installed CLI ignores files version"; '
+        'print("Kaggle CLI version forwarding PASS", flush=True)',
+    ], env=environment, check=True)
     executable = shutil.which('kaggle')
     assert executable, 'Kaggle CLI executable was not found after installation.'
     DOWNLOAD.mkdir(parents=True, exist_ok=True)
@@ -111,6 +129,7 @@ if history.is_file():
     shutil.copyfile(history, OUTPUT / history.name)
 
 manifest = {
+    'kaggle_cli_commit': KAGGLE_CLI_COMMIT,
     'source_notebook': SOURCE_NOTEBOOK, 'source_version': 194,
     'source': str(SOURCE), 'checkpoint': DESTINATION.name,
     'bytes': total, 'sha256': destination_hash.hexdigest(), 'signature': signature,

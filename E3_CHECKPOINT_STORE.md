@@ -11,3 +11,7 @@ Run and Save Version / Save & Run All. Output: `e3_checkpoint_store/model_h1_2_c
 Then Add Input this independent notebook output in the diagnostic notebook and use Copy File Path to replace CHECKPOINT. No local .pth download or dataset upload is required.
 
 Official documentation: https://github.com/Kaggle/kaggle-cli/blob/main/docs/kernels.md and https://github.com/Kaggle/kaggle-cli/blob/main/docs/README.md
+
+## Fix: released CLI ignores output version
+
+PyPI kaggle 2.2.4 parses /194 but does not forward the version in kernels_output or kernels_list_files. The notebook now installs official upstream commit `9c57dd74c29904c40ff7879eed33644be89d2e2f` and checks that both API methods assign request.version_label before retrieving private output. This fixes the code path; authenticated retrieval still requires execution on Kaggle.
