@@ -6,7 +6,7 @@ import sys
 import time
 from pathlib import Path
 
-CHECKPOINT = Path('/kaggle/input/notebooks/ducanh2403/kltn-mscoco/e3_appearance_v2_32q_2l_dual_gpu_1ep/checkpoints/model_h1_2_crossattn_epoch_1.pth')
+CHECKPOINT = Path('/kaggle/input/notebooks/ducanh2403/e3-appearance-v2-checkpoint-store/e3_appearance_v2_checkpoint_store/model_h1_2_crossattn_epoch_1.pth')
 PROMPT_CACHE = Path('/kaggle/input/datasets/ducanh2403/prompt-conditioned-qformer-32q-2l/relation_prompts_v2_1_full/prompt_clip_tokens_relation_v2_1.pt')
 GROUNDED_CACHE = Path('/kaggle/input/notebooks/ducanh2403/build-grounded-relation-v1/grounded_relation_v1_full/grounded_relation_cache.pt')
 VISUAL_CACHE_SOURCE = Path('/kaggle/input/datasets/ducanh2403/visual-cache')

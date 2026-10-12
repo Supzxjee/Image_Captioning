@@ -10,7 +10,7 @@ V2 đã học scorer nhưng query gate gần đóng sau 1 epoch. V3 đưa điể
 
 ## Chạy
 
-Bật Internet, chọn T4 x2. Add Input output của lần train V2 full 1 epoch, prompt V2.1, grounded cache V1, visual cache, MS COCO. Dùng Copy File Path sửa duy nhất CHECKPOINT nếu mount V2 khác. Cell cũng dùng checkpoint Working nếu bạn vẫn ở session vừa train V2.
+Bật Internet, chọn T4 x2. Add Input output notebook mới E3 Appearance V2 Checkpoint Store (lấy từ source version210), prompt V2.1, grounded cache V1, visual cache, MS COCO. Dùng Copy File Path sửa duy nhất CHECKPOINT nếu mount V2 khác. Cell cũng dùng checkpoint Working nếu bạn vẫn ở session vừa train V2.
 
 Cell diagnostic cùng 100 ảnh trước train; train 128 global batches (~4096 ảnh); diagnostic 100 ảnh sau train. Cả hai diagnostic có caption ON/OFF/counterfactual, accepted relations và đối chứng ảnh khác. Query gate mean là null ở V3 vì kiến trúc không có learned query gate; đọc verification weights và residual.
 
@@ -23,7 +23,7 @@ import sys
 import time
 from pathlib import Path
 
-CHECKPOINT = Path('/kaggle/input/notebooks/ducanh2403/kltn-mscoco/e3_appearance_v2_32q_2l_dual_gpu_1ep/checkpoints/model_h1_2_crossattn_epoch_1.pth')
+CHECKPOINT = Path('/kaggle/input/notebooks/ducanh2403/e3-appearance-v2-checkpoint-store/e3_appearance_v2_checkpoint_store/model_h1_2_crossattn_epoch_1.pth')
 PROMPT_CACHE = Path('/kaggle/input/datasets/ducanh2403/prompt-conditioned-qformer-32q-2l/relation_prompts_v2_1_full/prompt_clip_tokens_relation_v2_1.pt')
 GROUNDED_CACHE = Path('/kaggle/input/notebooks/ducanh2403/build-grounded-relation-v1/grounded_relation_v1_full/grounded_relation_cache.pt')
 VISUAL_CACHE_SOURCE = Path('/kaggle/input/datasets/ducanh2403/visual-cache')
