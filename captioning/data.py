@@ -198,11 +198,13 @@ def load_data(config):
             relation_bundle['data'],
             [item['image'] for item in train_data + val_data + test_data])
         grounded_relation_metadata = relation_bundle.get('metadata', {})
-        if config.grounded_relation_version == 'appearance_v2':
+        if config.grounded_relation_version in {'appearance_v2', 'verified_v3'}:
             for entry in grounded_relation_cache.values():
                 if 'relations' not in entry:
                     raise ValueError('Appearance V2 requires predicate metadata in relation cache.')
                 entry['action_mask'] = action_relation_mask(entry)
+                if config.grounded_relation_version == 'verified_v3':
+                    entry['mask'] = entry['action_mask'].long()
         missing_relations = [item['filename'] for item in selected_prompts
                              if item['image'] not in grounded_relation_cache]
         if missing_relations:

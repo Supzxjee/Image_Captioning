@@ -198,7 +198,7 @@ class UniversalVisionEncoder(nn.Module):
                  use_itc=False, prompt_conditioned_qformer=False,
                  object_semantic_alignment=False, cascade_semantic_alignment=False,
                  cascade_selector_mode='object_context', grounded_relation_alignment=False,
-                 grounded_relation_version='v1'):
+                 grounded_relation_version='v1', relation_verified_scale=0.1):
         super().__init__()
         if model_name.lower() != 'clip':
             raise NotImplementedError('Only CLIP is supported in this notebook.')
@@ -249,6 +249,10 @@ class UniversalVisionEncoder(nn.Module):
         self.grounded_relation_version = grounded_relation_version
         self.use_itc = use_itc
         self.vis_projection = nn.Linear(768, embed_dim)
+        self.relation_verified_scale = relation_verified_scale
+        if grounded_relation_version == 'verified_v3':
+            # V2 verifier was trained on this projection. Freeze it to keep scores stable.
+            self.vis_projection.requires_grad_(False)
         self.qformer = (LightweightQFormer(
             embed_dim=embed_dim,
             num_heads=num_heads,
@@ -264,7 +268,8 @@ class UniversalVisionEncoder(nn.Module):
             embed_dim, num_heads, attn_dropout, selector_mode=cascade_selector_mode
         ) if cascade_semantic_alignment else None)
         self.relation_alignment = (PairGroundedRelationAlignment(
-            embed_dim, num_heads, attn_dropout, grounding_version=grounded_relation_version
+            embed_dim, num_heads, attn_dropout, grounding_version=grounded_relation_version,
+            verified_scale=relation_verified_scale
         ) if grounded_relation_alignment else None)
         self.itc_query_projection = (nn.Linear(embed_dim, 512) if use_itc else None)
         self.prompt_projection = nn.Sequential(

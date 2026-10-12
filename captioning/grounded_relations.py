@@ -104,15 +104,19 @@ def relative_geometry(subject_boxes, object_boxes):
 class PairGroundedRelationAlignment(nn.Module):
     """Ground relation text in its subject/object patches before query fusion."""
     def __init__(self, embed_dim, num_heads, dropout=0.1, relation_dim=512,
-                 grounding_version='v1'):
+                 grounding_version='v1', verified_scale=0.1):
         super().__init__()
-        if grounding_version not in {'v1', 'appearance_v2'}:
+        if grounding_version not in {'v1', 'appearance_v2', 'verified_v3'}:
             raise ValueError('Unknown grounded relation version.')
         self.grounding_version = grounding_version
+        self.verified_scale = verified_scale
         # This scorer never sees relative geometry or trainable text projections.
         self.appearance_projection = (nn.Sequential(
             nn.Linear(embed_dim * 3, relation_dim), nn.GELU(), nn.LayerNorm(relation_dim)
-        ) if grounding_version == 'appearance_v2' else None)
+        ) if grounding_version in {'appearance_v2', 'verified_v3'} else None)
+        self.verified_visual_projection = (nn.Sequential(
+            nn.Linear(relation_dim, embed_dim), nn.LayerNorm(embed_dim)
+        ) if grounding_version == 'verified_v3' else None)
         self.relation_projection = nn.Sequential(
             nn.Linear(relation_dim, embed_dim), nn.LayerNorm(embed_dim))
         self.pair_projection = nn.Sequential(
@@ -127,6 +131,44 @@ class PairGroundedRelationAlignment(nn.Module):
         nn.init.constant_(self.evidence_gate.bias, -1.0)
         nn.init.zeros_(self.query_gate.weight)
         nn.init.constant_(self.query_gate.bias, -2.0)
+        if grounding_version == 'verified_v3':
+            for component in (self.appearance_projection, self.pair_projection,
+                              self.evidence_gate, self.query_gate):
+                component.requires_grad_(False)
+
+    def _verified_forward(self, visual_queries, subject, obj, union, relation_tokens,
+                          negative_tokens, confidences, valid):
+        appearance = self.appearance_projection(torch.cat([subject, obj, union], dim=-1))
+        pair = F.normalize(appearance, dim=-1)
+        positive = F.normalize(relation_tokens.detach(), dim=-1)
+        negative = F.normalize(negative_tokens.detach(), dim=-1)
+        positive_score = (pair * positive).sum(-1)
+        gap = positive_score - (pair * negative).sum(-1)
+        required_margin = (0.5 * (positive - negative).norm(dim=-1)).clamp_max(0.2)
+        accepted = valid & (confidences > 0) & (positive_score > 0) & (gap >= required_margin)
+        # A verification weight, not a calibrated probability or learned query gate.
+        weights = (confidences.clamp(0, 1) * torch.sigmoid(positive_score / 0.1) *
+                   torch.sigmoid((gap - required_margin) / 0.1)) * accepted
+        grounded = self.relation_norm(
+            self.relation_projection(relation_tokens) + self.verified_visual_projection(appearance))
+        has_accepted = accepted.any(dim=1)
+        safe = accepted.clone()
+        safe[~has_accepted, 0] = True
+        values = grounded * weights.unsqueeze(-1)
+        attended, _ = self.query_to_relation(
+            visual_queries, grounded, values, key_padding_mask=~safe, need_weights=False)
+        row_weight = weights.sum(-1) / accepted.sum(-1).clamp_min(1)
+        aligned = visual_queries + self.dropout(
+            self.verified_scale * row_weight[:, None, None] * attended)
+        aligned = torch.where(has_accepted[:, None, None], aligned, visual_queries)
+        return aligned, {
+            'appearance_features': appearance,
+            'fixed_positive_features': relation_tokens.detach(),
+            'fixed_negative_features': negative_tokens.detach(),
+            'mask': valid, 'confidences': confidences,
+            'evidence_gate': weights, 'accepted_mask': accepted,
+            'verification_weights': weights,
+        }
 
     def forward(self, visual_queries, projected_visual_tokens, relation_tokens,
                 negative_relation_tokens, subject_boxes, object_boxes,
@@ -145,6 +187,9 @@ class PairGroundedRelationAlignment(nn.Module):
             torch.maximum(subject_boxes[..., 3], object_boxes[..., 3]),
         ], dim=-1)
         union = _pool_patch_boxes(patches, union_boxes, valid)
+        if self.grounding_version == 'verified_v3':
+            return self._verified_forward(visual_queries, subject, obj, union, relation_tokens,
+                                          negative_relation_tokens, relation_confidences, valid)
         geometry = relative_geometry(subject_boxes, object_boxes).to(patches.dtype)
         pair_features = self.pair_projection(torch.cat([subject, obj, union, geometry], dim=-1))
         positive = self.relation_projection(relation_tokens)

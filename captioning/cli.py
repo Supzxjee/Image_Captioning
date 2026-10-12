@@ -67,7 +67,8 @@ def parse_args(argv=None):
                         help='PT cache with pair boxes, relation embeddings and hard negatives.')
     parser.add_argument('--relation-alignment-weight', type=float, default=0.0)
     parser.add_argument('--relation-alignment-margin', type=float, default=0.2)
-    parser.add_argument('--grounded-relation-version', choices=['v1', 'appearance_v2'], default='v1')
+    parser.add_argument('--grounded-relation-version', choices=['v1', 'appearance_v2', 'verified_v3'], default='v1')
+    parser.add_argument('--relation-verified-scale', type=float, default=0.1)
     parser.add_argument('--relation-wrong-image-weight', type=float, default=0.5)
     parser.add_argument('--caption-embedding-cache-path', default='',
                         help='HDF5 with five frozen CLIP caption embeddings per train image.')

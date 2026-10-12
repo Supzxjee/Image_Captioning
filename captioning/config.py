@@ -54,6 +54,7 @@ class Config:
     relation_alignment_margin: float = 0.2
     grounded_relation_version: str = 'v1'
     relation_wrong_image_weight: float = 0.5
+    relation_verified_scale: float = 0.1
     caption_embedding_cache_path: str = ''
     itc_weight: float = 0.0
     itc_temperature: float = 0.07
@@ -61,12 +62,17 @@ class Config:
 
     def __post_init__(self):
         self.work_dir = Path(self.work_dir)
-        if self.grounded_relation_version not in {'v1', 'appearance_v2'}:
+        if self.grounded_relation_version not in {'v1', 'appearance_v2', 'verified_v3'}:
             raise ValueError('Invalid grounded relation version.')
         if self.grounded_relation_version != 'v1' and not self.grounded_relation_alignment:
             raise ValueError('Appearance V2 requires grounded relation alignment.')
         if self.relation_wrong_image_weight < 0:
             raise ValueError('Wrong-image relation weight must be nonnegative.')
+        if not 0 <= self.relation_verified_scale <= 1:
+            raise ValueError('Verified relation scale must be in [0, 1].')
+        if self.grounded_relation_version == 'verified_v3' and (
+                self.relation_alignment_weight != 0 or self.relation_alignment_margin != 0.2):
+            raise ValueError('Verified V3 uses frozen verifier, zero alignment weight and margin 0.2.')
         if self.test_visual_source not in {'same', 'images'}:
             raise ValueError('Invalid test visual source.')
         if self.visual_cache_id_key not in {'coco_id', 'eval_id', 'karpathy_id'}:
@@ -115,7 +121,7 @@ class Config:
         if self.relation_alignment_weight < 0 or not 0 < self.relation_alignment_margin < 2:
             raise ValueError('Relation alignment weight must be nonnegative and margin in (0, 2).')
         if self.mode == 'train' and self.grounded_relation_alignment and \
-                self.relation_alignment_weight <= 0:
+                self.relation_alignment_weight <= 0 and self.grounded_relation_version != 'verified_v3':
             raise ValueError('Grounded relation training requires positive '
                              '--relation-alignment-weight.')
         if not self.grounded_relation_alignment and self.relation_alignment_weight > 0:

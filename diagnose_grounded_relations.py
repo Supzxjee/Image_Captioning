@@ -40,6 +40,7 @@ def main():
     parser.add_argument('--output', required=True)
     parser.add_argument('--sample-size', type=int, default=100)
     parser.add_argument('--expected-epoch', type=int, default=3)
+    parser.add_argument('--warm-start-verifier', action='store_true')
     args, remaining = parser.parse_known_args()
     config = parse_args(remaining)
     if config.mode != 'predict' or config.split != 'val' or not config.visual_cache:
@@ -61,9 +62,13 @@ def main():
             num_visual_queries=config.num_visual_queries, qformer_layers=config.qformer_layers,
             grounded_relation_alignment=True,
             grounded_relation_version=config.grounded_relation_version,
+            relation_verified_scale=config.relation_verified_scale,
         ).to(config.device)
         model = ImageCaptioningModel(encoder, CaptionDecoder(data.vocab_size)).to(config.device)
-        checkpoint = load_checkpoint(model, config.checkpoint, data.tokenizer)
+        if args.warm_start_verifier and config.grounded_relation_version != 'verified_v3':
+            raise ValueError('Warm-start verifier is only for V3 pre-training diagnostic.')
+        checkpoint = load_checkpoint(model, config.checkpoint, data.tokenizer,
+                                     warm_start=args.warm_start_verifier)
         if checkpoint.get('epoch') != args.expected_epoch:
             raise ValueError(f'This diagnostic expects epoch {args.expected_epoch}.')
         checkpoint_metadata = {key: checkpoint.get(key) for key in (
@@ -117,7 +122,7 @@ def main():
                             config.relation_alignment_margin).tolist()
                     positive, negative = positive.tolist(), negative.tolist()
                     evidence = diagnostics['evidence_gate'][diagnostics['mask']].tolist()
-                    query_gate = float(state['query_gate'].mean())
+                    query_gate = (float(state['query_gate'].mean()) if 'query_gate' in state else None)
                     residual_ratio = state['residual_ratio']
                     inputs = state['inputs']
 
@@ -132,8 +137,16 @@ def main():
                     state['bypass'] = True
                     caption_off = generate_caption_beam_search(**kwargs)
                     state['bypass'] = False
+                    caption_counterfactual = None
+                    if config.grounded_relation_version == 'verified_v3':
+                        counterfactual_entry = dict(entry)
+                        counterfactual_entry['tokens'] = entry['negative_tokens']
+                        counterfactual_entry['negative_tokens'] = entry['tokens']
+                        caption_counterfactual = generate_caption_beam_search(
+                            **{**kwargs, 'relation_entry': counterfactual_entry})
                     count = len(positive)
-                    for slot in range(count):
+                    valid_slots = diagnostics['mask'][0].nonzero().flatten().tolist()
+                    for position, slot in enumerate(valid_slots):
                         metadata = entry.get('relations', [])[slot]
                         relations.append({
                             'filename': row['filename'], 'slot': slot,
@@ -141,13 +154,17 @@ def main():
                             'object': metadata.get('object'),
                             'counterfactual': metadata.get('counterfactual_relation'),
                             'action_predicate': metadata.get('relation') in ACTION_PREDICATES,
-                            'positive_score': positive[slot], 'negative_score': negative[slot],
-                            'margin': positive[slot] - negative[slot],
-                            'required_margin': required_margins[slot],
-                            'wrong_image_positive_score': wrong_positive[slot],
-                            'wrong_image_negative_score': wrong_negative[slot],
-                            'wrong_image_margin': wrong_positive[slot] - wrong_negative[slot],
-                            'evidence_gate': evidence[slot],
+                            'positive_score': positive[position], 'negative_score': negative[position],
+                            'margin': positive[position] - negative[position],
+                            'required_margin': required_margins[position],
+                            'wrong_image_positive_score': wrong_positive[position],
+                            'wrong_image_negative_score': wrong_negative[position],
+                            'wrong_image_margin': wrong_positive[position] - wrong_negative[position],
+                            'evidence_gate': evidence[position],
+                            'accepted': (bool(diagnostics['accepted_mask'][0, slot])
+                                         if 'accepted_mask' in diagnostics else None),
+                            'wrong_image_accepted': (bool(wrong_diagnostics['accepted_mask'][0, slot])
+                                                     if 'accepted_mask' in wrong_diagnostics else None),
                             'confidence': float(entry['confidences'][slot]),
                             'subject_box': entry['subject_boxes'][slot].tolist(),
                             'object_box': entry['object_boxes'][slot].tolist(),
@@ -156,6 +173,7 @@ def main():
                         'filename': row['filename'], 'image_path': row['image'],
                         'image_id': int(row['eval_id']), 'relation_count': count,
                         'caption_on': caption_on, 'caption_off': caption_off,
+                        'caption_counterfactual': caption_counterfactual,
                         'caption_changed': caption_on != caption_off,
                         'query_gate_mean': query_gate if count else None,
                         'residual_ratio': residual_ratio, 'references': row['captions'],
@@ -190,12 +208,20 @@ def main():
             'checkpoint': config.checkpoint, 'checkpoint_metadata': checkpoint_metadata,
             'split': 'val', 'sampling': 'random_without_replacement', 'seed': config.seed,
             'sample_count': len(records), 'images_with_relations': len(with_relations),
-            'score_source': ('appearance_only_fixed_text' if config.grounded_relation_version == 'appearance_v2'
+            'model_grounding_version': config.grounded_relation_version,
+            'relation_verified_scale': config.relation_verified_scale,
+            'accepted_relations': sum(r['accepted'] is True for r in relations),
+            'wrong_image_accepted_relations': sum(r['wrong_image_accepted'] is True for r in relations),
+            'score_source': ('appearance_only_fixed_text' if config.grounded_relation_version in {'appearance_v2', 'verified_v3'}
                              else 'geometry_and_appearance_trainable_text'),
             'caption_changed_count': sum(r['caption_changed'] for r in records),
+            'counterfactual_caption_changed_count': sum(
+                r['caption_counterfactual'] is not None and r['caption_counterfactual'] != r['caption_on']
+                for r in records),
             'caption_changed_rate_with_relations': mean([r['caption_changed'] for r in with_relations]),
             'no_relation_caption_changed_count': sum(r['caption_changed'] for r in without_relations),
-            'query_gate_mean': mean([r['query_gate_mean'] for r in with_relations]),
+            'query_gate_mean': mean([r['query_gate_mean'] for r in with_relations
+                                     if r['query_gate_mean'] is not None]),
             'residual_ratio_mean': mean([r['residual_ratio'] for r in with_relations]),
             'ranking': stats(relations), 'by_predicate': {k: stats(v) for k, v in grouped.items()},
             'action_ranking': stats([r for r in relations if r['action_predicate']]),
@@ -228,6 +254,7 @@ def main():
             cards.append(f'<article><h3>{esc(record["filename"])}</h3><img src="{image_name}">'
                 f'<p><b>Relation ON:</b> {esc(record["caption_on"])}</p>'
                 f'<p><b>Relation OFF:</b> {esc(record["caption_off"])}</p>'
+                f'<p><b>Counterfactual:</b> {esc(record.get("caption_counterfactual"))}</p>'
                 f'<p>Reference: {esc(record["references"])}</p>'
                 f'<pre>{esc(json.dumps(record["relations"], indent=2, ensure_ascii=False))}</pre></article>')
         (output / 'review.html').write_text('<!doctype html><meta charset="utf-8">'

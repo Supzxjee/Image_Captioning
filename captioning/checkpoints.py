@@ -48,13 +48,20 @@ def load_checkpoint(model, path, tokenizer, warm_start=False):
                                f'but model mode is {model_selector!r}.')
     checkpoint_uses_grounded = bool(checkpoint.get('grounded_relation_alignment', False))
     model_uses_grounded = bool(getattr(model.encoder, 'grounded_relation_alignment', False))
+    if warm_start and getattr(model.encoder, 'grounded_relation_version', 'v1') == 'verified_v3':
+        if checkpoint.get('grounded_relation_version') not in {'appearance_v2', 'verified_v3'}:
+            raise RuntimeError('Verified V3 requires the trained appearance V2 verifier checkpoint.')
     if checkpoint_uses_grounded and model_uses_grounded:
         saved_version = checkpoint.get('grounded_relation_version', 'v1')
         model_version = getattr(model.encoder, 'grounded_relation_version', 'v1')
-        if saved_version != model_version:
+        upgrading_verified = warm_start and saved_version == 'appearance_v2' and model_version == 'verified_v3'
+        if saved_version != model_version and not upgrading_verified:
             raise RuntimeError(f'Grounded relation versions differ: checkpoint={saved_version}, '
                                f'model={model_version}. Start V2 from the baseline Q-Former '
                                'checkpoint, not the collapsed E3 V1 checkpoint.')
+        if saved_version == model_version == 'verified_v3' and not warm_start:
+            if checkpoint.get('relation_verified_scale', 0.1) != model.encoder.relation_verified_scale:
+                raise RuntimeError('Verified V3 fusion scale differs from saved checkpoint.')
     if checkpoint_uses_grounded != model_uses_grounded and not (
             warm_start and model_uses_grounded and not checkpoint_uses_grounded):
         raise RuntimeError(f'Checkpoint grounded relation setting is '
@@ -69,6 +76,9 @@ def load_checkpoint(model, path, tokenizer, warm_start=False):
     if warm_start:
         result = model.encoder.load_state_dict(encoder_state, strict=False)
         allowed = {'prompt_visual_gate.weight', 'prompt_visual_gate.bias'}
+        if checkpoint_uses_grounded and model_uses_grounded and upgrading_verified:
+            allowed.update(key for key in result.missing_keys
+                           if key.startswith('relation_alignment.verified_visual_projection.'))
         # A cached-feature checkpoint may omit the frozen CLIP vision backbone.
         # When continuing from original images, the backbone has just been loaded
         # from the same pretrained CLIP release, so these missing frozen weights

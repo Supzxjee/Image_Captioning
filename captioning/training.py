@@ -82,6 +82,9 @@ def train_one_epoch(model, base_model, loader, optimizer, criterion, epoch, conf
     model.train()
     if base_model.encoder.feature_extractor is not None:
         base_model.encoder.feature_extractor.eval()
+    if config.grounded_relation_version == 'verified_v3':
+        base_model.encoder.dropout.eval()
+        base_model.encoder.relation_alignment.appearance_projection.eval()
     totals = {'loss': 0.0, 'caption_loss': 0.0, 'alignment_loss': 0.0,
               'itc_loss': 0.0, 'relation_loss': 0.0}
     if config.grounded_relation_version == 'appearance_v2':
@@ -123,7 +126,7 @@ def train_one_epoch(model, base_model, loader, optimizer, criterion, epoch, conf
             relation_batch = tuple(value.to(config.device, non_blocking=True)
                                    for value in batch[offset:offset + 6])
             offset += 6
-            if config.grounded_relation_version == 'appearance_v2':
+            if config.grounded_relation_version in {'appearance_v2', 'verified_v3'}:
                 relation_action_mask = batch[offset].to(config.device, non_blocking=True)
                 offset += 1
         caption_embeddings = None
@@ -186,7 +189,11 @@ def train_one_epoch(model, base_model, loader, optimizer, criterion, epoch, conf
                 visual_features, caption_embeddings, config.itc_temperature)
         relation_loss = caption_loss.new_zeros(())
         if relation_diagnostics is not None:
-            if config.grounded_relation_version == 'appearance_v2':
+            if config.grounded_relation_version == 'verified_v3':
+                if batch_number == 1 or batch_number % 100 == 0:
+                    accelerator.print(f'Verified V3: accepted action relations='
+                                      f'{relation_diagnostics["accepted_mask"].sum().item()}')
+            elif config.grounded_relation_version == 'appearance_v2':
                 relation_loss, relation_terms = appearance_relation_loss(
                     relation_diagnostics, relation_action_mask, config.relation_alignment_margin,
                     config.relation_wrong_image_weight)
@@ -327,6 +334,9 @@ def train_model(model, train_loader, data, config, accelerator=None):
             'relation_alignment_margin': config.relation_alignment_margin,
             'grounded_relation_version': config.grounded_relation_version,
             'relation_wrong_image_weight': config.relation_wrong_image_weight,
+            'relation_verified_scale': config.relation_verified_scale,
+            'relation_verifier_frozen': config.grounded_relation_version == 'verified_v3',
+            'verified_visual_projection_frozen': config.grounded_relation_version == 'verified_v3',
             'caption_embedding_cache_path': config.caption_embedding_cache_path,
             'itc_weight': config.itc_weight,
             'itc_temperature': config.itc_temperature,
