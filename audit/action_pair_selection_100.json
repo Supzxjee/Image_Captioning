@@ -1,0 +1,2202 @@
+[
+  {
+    "filename": "COCO_val2014_000000016744.jpg",
+    "slot": 0,
+    "subject": "person",
+    "object": "snowboard",
+    "old_predicate": "riding",
+    "subject_box": [
+      0.20440000295639038,
+      0.30098506808280945,
+      0.4667600095272064,
+      0.7668358087539673
+    ],
+    "object_box": [
+      0.18768000602722168,
+      0.6901791095733643,
+      0.5539799928665161,
+      0.7838507294654846
+    ],
+    "confidence": 0.8529999852180481,
+    "clip_proposal": null,
+    "clip_decision": "ambiguous_scores"
+  },
+  {
+    "filename": "COCO_val2014_000000055950.jpg",
+    "slot": 0,
+    "subject": "person",
+    "object": "tennis racket",
+    "old_predicate": "holding",
+    "subject_box": [
+      0.1893896758556366,
+      0.10603124648332596,
+      0.7172769904136658,
+      0.6138749718666077
+    ],
+    "object_box": [
+      0.18873240053653717,
+      0.18610937893390656,
+      0.4311502277851105,
+      0.33906251192092896
+    ],
+    "confidence": 0.9247999787330627,
+    "clip_proposal": null,
+    "clip_decision": "view_disagreement"
+  },
+  {
+    "filename": "COCO_val2014_000000064399.jpg",
+    "slot": 0,
+    "subject": "person",
+    "object": "donut",
+    "old_predicate": "holding",
+    "subject_box": [
+      0.015796875581145287,
+      0.09311403334140778,
+      0.9539843797683716,
+      0.9892762899398804
+    ],
+    "object_box": [
+      0.6453593969345093,
+      0.5194298028945923,
+      0.7452812790870667,
+      0.6955263018608093
+    ],
+    "confidence": 0.54339998960495,
+    "clip_proposal": "eating",
+    "clip_decision": "candidate_for_review"
+  },
+  {
+    "filename": "COCO_val2014_000000082940.jpg",
+    "slot": 0,
+    "subject": "person",
+    "object": "surfboard",
+    "old_predicate": "riding",
+    "subject_box": [
+      0.5660393834114075,
+      0.3080156147480011,
+      0.7910284399986267,
+      0.6250937581062317
+    ],
+    "object_box": [
+      0.6323632597923279,
+      0.6167343854904175,
+      0.8188402652740479,
+      0.6431718468666077
+    ],
+    "confidence": 0.7129999995231628,
+    "clip_proposal": null,
+    "clip_decision": "view_disagreement"
+  },
+  {
+    "filename": "COCO_val2014_000000109092.jpg",
+    "slot": 0,
+    "subject": "person",
+    "object": "tie",
+    "old_predicate": "wearing",
+    "subject_box": [
+      0.24271999299526215,
+      0.0,
+      0.9964200258255005,
+      0.9868000149726868
+    ],
+    "object_box": [
+      0.815280020236969,
+      0.44347500801086426,
+      0.9257799983024597,
+      0.8690000176429749
+    ],
+    "confidence": 0.8931999802589417,
+    "clip_proposal": null,
+    "clip_decision": "ambiguous_scores"
+  },
+  {
+    "filename": "COCO_val2014_000000109092.jpg",
+    "slot": 1,
+    "subject": "person",
+    "object": "hot dog",
+    "old_predicate": "holding",
+    "subject_box": [
+      0.24271999299526215,
+      0.0,
+      0.9964200258255005,
+      0.9868000149726868
+    ],
+    "object_box": [
+      0.24624000489711761,
+      0.643625020980835,
+      0.38637998700141907,
+      0.7850499749183655
+    ],
+    "confidence": 0.6373999714851379,
+    "clip_proposal": null,
+    "clip_decision": "ambiguous_scores"
+  },
+  {
+    "filename": "COCO_val2014_000000121006.jpg",
+    "slot": 0,
+    "subject": "person",
+    "object": "skateboard",
+    "old_predicate": "riding",
+    "subject_box": [
+      0.2831718623638153,
+      0.18364834785461426,
+      0.6036093831062317,
+      0.9772967100143433
+    ],
+    "object_box": [
+      0.11753124743700027,
+      0.9097802042961121,
+      0.5141562223434448,
+      0.9924395680427551
+    ],
+    "confidence": 0.8658000230789185,
+    "clip_proposal": null,
+    "clip_decision": "view_disagreement"
+  },
+  {
+    "filename": "COCO_val2014_000000132615.jpg",
+    "slot": 0,
+    "subject": "person",
+    "object": "baseball bat",
+    "old_predicate": "holding",
+    "subject_box": [
+      0.44789063930511475,
+      0.2494613528251648,
+      0.8060625195503235,
+      0.8797423839569092
+    ],
+    "object_box": [
+      0.4170781373977661,
+      0.5848009586334229,
+      0.5253437757492065,
+      0.7380561828613281
+    ],
+    "confidence": 0.8895000219345093,
+    "clip_proposal": null,
+    "clip_decision": "view_disagreement"
+  },
+  {
+    "filename": "COCO_val2014_000000132615.jpg",
+    "slot": 1,
+    "subject": "person",
+    "object": "baseball glove",
+    "old_predicate": "holding",
+    "subject_box": [
+      0.8395000100135803,
+      0.5316861867904663,
+      0.9996406435966492,
+      0.8115222454071045
+    ],
+    "object_box": [
+      0.8366875052452087,
+      0.6974941492080688,
+      0.8947499990463257,
+      0.7988524436950684
+    ],
+    "confidence": 0.777400016784668,
+    "clip_proposal": null,
+    "clip_decision": "view_disagreement"
+  },
+  {
+    "filename": "COCO_val2014_000000206025.jpg",
+    "slot": 0,
+    "subject": "person",
+    "object": "tie",
+    "old_predicate": "wearing",
+    "subject_box": [
+      0.004410377237945795,
+      0.11781249940395355,
+      0.9970518946647644,
+      0.998046875
+    ],
+    "object_box": [
+      0.3926179111003876,
+      0.5844687223434448,
+      0.6025707721710205,
+      1.0
+    ],
+    "confidence": 0.9409999847412109,
+    "clip_proposal": null,
+    "clip_decision": "neutral_winner"
+  },
+  {
+    "filename": "COCO_val2014_000000252393.jpg",
+    "slot": 0,
+    "subject": "person",
+    "object": "baseball glove",
+    "old_predicate": "holding",
+    "subject_box": [
+      0.004929577466100454,
+      0.041120000183582306,
+      0.9957183003425598,
+      0.9968400001525879
+    ],
+    "object_box": [
+      0.1498028188943863,
+      0.5802199840545654,
+      0.6849859356880188,
+      0.8873999714851379
+    ],
+    "confidence": 0.9713000059127808,
+    "clip_proposal": null,
+    "clip_decision": "ambiguous_scores"
+  },
+  {
+    "filename": "COCO_val2014_000000293221.jpg",
+    "slot": 0,
+    "subject": "person",
+    "object": "sandwich",
+    "old_predicate": "holding",
+    "subject_box": [
+      0.0014199999859556556,
+      5.333333319867961e-05,
+      0.6800600290298462,
+      0.9896266460418701
+    ],
+    "object_box": [
+      0.31036001443862915,
+      0.2473600059747696,
+      0.5253999829292297,
+      0.3845333456993103
+    ],
+    "confidence": 0.8511000275611877,
+    "clip_proposal": null,
+    "clip_decision": "ambiguous_scores"
+  },
+  {
+    "filename": "COCO_val2014_000000314757.jpg",
+    "slot": 0,
+    "subject": "person",
+    "object": "remote",
+    "old_predicate": "holding",
+    "subject_box": [
+      0.09039062261581421,
+      0.18197916448116302,
+      0.506906270980835,
+      0.9937291741371155
+    ],
+    "object_box": [
+      0.4799218773841858,
+      0.3687083423137665,
+      0.5031874775886536,
+      0.39747917652130127
+    ],
+    "confidence": 0.7447999715805054,
+    "clip_proposal": null,
+    "clip_decision": "ambiguous_scores"
+  },
+  {
+    "filename": "COCO_val2014_000000392365.jpg",
+    "slot": 0,
+    "subject": "person",
+    "object": "baseball glove",
+    "old_predicate": "holding",
+    "subject_box": [
+      0.8541406393051147,
+      0.34447917342185974,
+      0.9880937337875366,
+      0.9926458597183228
+    ],
+    "object_box": [
+      0.8684375286102295,
+      0.6003124713897705,
+      0.9442499876022339,
+      0.707895815372467
+    ],
+    "confidence": 0.8974000215530396,
+    "clip_proposal": null,
+    "clip_decision": "ambiguous_scores"
+  },
+  {
+    "filename": "COCO_val2014_000000399873.jpg",
+    "slot": 0,
+    "subject": "person",
+    "object": "scissors",
+    "old_predicate": "holding",
+    "subject_box": [
+      0.2114531248807907,
+      0.00011737089516827837,
+      0.6473749876022339,
+      0.8865258097648621
+    ],
+    "object_box": [
+      0.5057812333106995,
+      0.5430751442909241,
+      0.6255000233650208,
+      0.6336619853973389
+    ],
+    "confidence": 0.6854000091552734,
+    "clip_proposal": null,
+    "clip_decision": "view_disagreement"
+  },
+  {
+    "filename": "COCO_val2014_000000498453.jpg",
+    "slot": 0,
+    "subject": "person",
+    "object": "surfboard",
+    "old_predicate": "riding",
+    "subject_box": [
+      0.541265606880188,
+      0.34242990612983704,
+      0.730218768119812,
+      0.7441354990005493
+    ],
+    "object_box": [
+      0.5700312256813049,
+      0.7280607223510742,
+      0.6787968873977661,
+      0.7830607295036316
+    ],
+    "confidence": 0.8217999935150146,
+    "clip_proposal": null,
+    "clip_decision": "view_disagreement"
+  },
+  {
+    "filename": "COCO_val2014_000000513659.jpg",
+    "slot": 0,
+    "subject": "person",
+    "object": "horse",
+    "old_predicate": "riding",
+    "subject_box": [
+      0.056968748569488525,
+      0.6037434935569763,
+      0.0806562528014183,
+      0.694506049156189
+    ],
+    "object_box": [
+      0.07264062762260437,
+      0.6305372714996338,
+      0.12854687869548798,
+      0.7216984629631042
+    ],
+    "confidence": 0.7027000188827515,
+    "clip_proposal": null,
+    "clip_decision": "view_disagreement"
+  },
+  {
+    "filename": "COCO_val2014_000000528046.jpg",
+    "slot": 0,
+    "subject": "person",
+    "object": "umbrella",
+    "old_predicate": "holding",
+    "subject_box": [
+      0.19644027948379517,
+      0.1452656239271164,
+      0.99906325340271,
+      0.8128906488418579
+    ],
+    "object_box": [
+      0.03934426233172417,
+      0.2660312354564667,
+      0.5592974424362183,
+      0.7427031397819519
+    ],
+    "confidence": 0.8460999727249146,
+    "clip_proposal": null,
+    "clip_decision": "view_disagreement"
+  },
+  {
+    "filename": "COCO_val2014_000000531929.jpg",
+    "slot": 0,
+    "subject": "person",
+    "object": "tennis racket",
+    "old_predicate": "holding",
+    "subject_box": [
+      0.713379979133606,
+      0.3144444525241852,
+      0.9232800006866455,
+      0.7871052622795105
+    ],
+    "object_box": [
+      0.7261599898338318,
+      0.5398245453834534,
+      0.7998200058937073,
+      0.6895321607589722
+    ],
+    "confidence": 0.781000018119812,
+    "clip_proposal": null,
+    "clip_decision": "ambiguous_scores"
+  },
+  {
+    "filename": "COCO_val2014_000000541898.jpg",
+    "slot": 0,
+    "subject": "person",
+    "object": "bottle",
+    "old_predicate": "holding",
+    "subject_box": [
+      0.0005624999757856131,
+      0.43149882555007935,
+      0.4928281307220459,
+      0.988430917263031
+    ],
+    "object_box": [
+      0.28340625762939453,
+      0.3370960056781769,
+      0.3491249978542328,
+      0.6512880325317383
+    ],
+    "confidence": 0.8424000144004822,
+    "clip_proposal": null,
+    "clip_decision": "view_disagreement"
+  },
+  {
+    "filename": "COCO_val2014_000000541898.jpg",
+    "slot": 1,
+    "subject": "person",
+    "object": "tie",
+    "old_predicate": "wearing",
+    "subject_box": [
+      0.0005624999757856131,
+      0.43149882555007935,
+      0.4928281307220459,
+      0.988430917263031
+    ],
+    "object_box": [
+      0.19804687798023224,
+      0.8371428847312927,
+      0.2821093797683716,
+      0.9989461302757263
+    ],
+    "confidence": 0.5698999762535095,
+    "clip_proposal": null,
+    "clip_decision": "view_disagreement"
+  },
+  {
+    "filename": "COCO_val2014_000000575081.jpg",
+    "slot": 0,
+    "subject": "person",
+    "object": "remote",
+    "old_predicate": "holding",
+    "subject_box": [
+      0.3354218602180481,
+      0.005854800809174776,
+      0.5152343511581421,
+      0.9557377099990845
+    ],
+    "object_box": [
+      0.3353593647480011,
+      0.0010772834066301584,
+      0.3987968862056732,
+      0.09672131389379501
+    ],
+    "confidence": 0.6761000156402588,
+    "clip_proposal": null,
+    "clip_decision": "ambiguous_scores"
+  },
+  {
+    "filename": "COCO_val2014_000000578861.jpg",
+    "slot": 0,
+    "subject": "person",
+    "object": "cell phone",
+    "old_predicate": "holding",
+    "subject_box": [
+      0.045656248927116394,
+      0.12485804408788681,
+      0.5727968811988831,
+      0.9902365803718567
+    ],
+    "object_box": [
+      0.2943437397480011,
+      0.28417980670928955,
+      0.40342187881469727,
+      0.41807571053504944
+    ],
+    "confidence": 0.9121999740600586,
+    "clip_proposal": null,
+    "clip_decision": "ambiguous_scores"
+  },
+  {
+    "filename": "COCO_val2014_000000156232.jpg",
+    "slot": 0,
+    "subject": "person",
+    "object": "horse",
+    "old_predicate": "riding",
+    "subject_box": [
+      0.6521406173706055,
+      0.013339070603251457,
+      0.8949218988418579,
+      0.6243545413017273
+    ],
+    "object_box": [
+      0.4676249921321869,
+      0.254698783159256,
+      0.9774374961853027,
+      0.9389328956604004
+    ],
+    "confidence": 0.935699999332428,
+    "clip_proposal": null,
+    "clip_decision": "view_disagreement"
+  },
+  {
+    "filename": "COCO_val2014_000000230561.jpg",
+    "slot": 0,
+    "subject": "person",
+    "object": "remote",
+    "old_predicate": "holding",
+    "subject_box": [
+      0.027270833030343056,
+      0.22645312547683716,
+      0.48393750190734863,
+      0.8227499723434448
+    ],
+    "object_box": [
+      0.27937498688697815,
+      0.4142187535762787,
+      0.35341668128967285,
+      0.4750312566757202
+    ],
+    "confidence": 0.6764000058174133,
+    "clip_proposal": null,
+    "clip_decision": "ambiguous_scores"
+  },
+  {
+    "filename": "COCO_val2014_000000021400.jpg",
+    "slot": 0,
+    "subject": "person",
+    "object": "handbag",
+    "old_predicate": "carrying",
+    "subject_box": [
+      0.1879200041294098,
+      0.21660056710243225,
+      0.359140008687973,
+      0.9015297293663025
+    ],
+    "object_box": [
+      0.2161400020122528,
+      0.328073650598526,
+      0.3343600034713745,
+      0.6827195286750793
+    ],
+    "confidence": 0.8863999843597412,
+    "clip_proposal": "carrying",
+    "clip_decision": "candidate_for_review"
+  },
+  {
+    "filename": "COCO_val2014_000000097967.jpg",
+    "slot": 0,
+    "subject": "person",
+    "object": "backpack",
+    "old_predicate": "wearing",
+    "subject_box": [
+      0.043937500566244125,
+      0.036520835012197495,
+      0.11795312166213989,
+      0.3023749887943268
+    ],
+    "object_box": [
+      0.0430000014603138,
+      0.07879166305065155,
+      0.09165625274181366,
+      0.1796875
+    ],
+    "confidence": 0.7347000241279602,
+    "clip_proposal": null,
+    "clip_decision": "view_disagreement"
+  },
+  {
+    "filename": "COCO_val2014_000000181383.jpg",
+    "slot": 0,
+    "subject": "person",
+    "object": "suitcase",
+    "old_predicate": "carrying",
+    "subject_box": [
+      0.3694531321525574,
+      0.39162352681159973,
+      0.5215469002723694,
+      0.9617882370948792
+    ],
+    "object_box": [
+      0.3641093671321869,
+      0.4682588279247284,
+      0.5165625214576721,
+      0.7088470458984375
+    ],
+    "confidence": 0.7669000029563904,
+    "clip_proposal": null,
+    "clip_decision": "ambiguous_scores"
+  },
+  {
+    "filename": "COCO_val2014_000000273728.jpg",
+    "slot": 0,
+    "subject": "person",
+    "object": "horse",
+    "old_predicate": "riding",
+    "subject_box": [
+      0.3199531137943268,
+      0.023952940478920937,
+      0.691156268119812,
+      0.9903764724731445
+    ],
+    "object_box": [
+      0.006750000175088644,
+      0.674752950668335,
+      0.9969218969345093,
+      0.9924941062927246
+    ],
+    "confidence": 0.6266999840736389,
+    "clip_proposal": null,
+    "clip_decision": "ambiguous_scores"
+  },
+  {
+    "filename": "COCO_val2014_000000365170.jpg",
+    "slot": 0,
+    "subject": "person",
+    "object": "handbag",
+    "old_predicate": "carrying",
+    "subject_box": [
+      0.45500001311302185,
+      0.5217968821525574,
+      0.5878982543945312,
+      0.7396093606948853
+    ],
+    "object_box": [
+      0.5117698907852173,
+      0.5589374899864197,
+      0.5814159512519836,
+      0.6429687738418579
+    ],
+    "confidence": 0.5185999870300293,
+    "clip_proposal": null,
+    "clip_decision": "ambiguous_scores"
+  },
+  {
+    "filename": "COCO_val2014_000000291619.jpg",
+    "slot": 0,
+    "subject": "person",
+    "object": "frisbee",
+    "old_predicate": "holding",
+    "subject_box": [
+      0.5302343964576721,
+      0.24028103053569794,
+      0.676437497138977,
+      0.6781498789787292
+    ],
+    "object_box": [
+      0.6363281011581421,
+      0.2738407552242279,
+      0.6788750290870667,
+      0.3046838343143463
+    ],
+    "confidence": 0.808899998664856,
+    "clip_proposal": null,
+    "clip_decision": "ambiguous_scores"
+  },
+  {
+    "filename": "COCO_val2014_000000543895.jpg",
+    "slot": 2,
+    "subject": "person",
+    "object": "frisbee",
+    "old_predicate": "holding",
+    "subject_box": [
+      0.23085936903953552,
+      0.2975409924983978,
+      0.5206406116485596,
+      0.8707025647163391
+    ],
+    "object_box": [
+      0.4060312509536743,
+      0.5707259774208069,
+      0.5454531311988831,
+      0.6319906115531921
+    ],
+    "confidence": 0.7347000241279602,
+    "clip_proposal": null,
+    "clip_decision": "view_disagreement"
+  },
+  {
+    "filename": "COCO_val2014_000000268556.jpg",
+    "slot": 0,
+    "subject": "person",
+    "object": "motorcycle",
+    "old_predicate": "riding",
+    "subject_box": [
+      0.33710938692092896,
+      0.28523436188697815,
+      0.6685468554496765,
+      0.8616562485694885
+    ],
+    "object_box": [
+      0.14473436772823334,
+      0.45579686760902405,
+      0.8836718797683716,
+      0.8492812514305115
+    ],
+    "confidence": 0.9009000062942505,
+    "clip_proposal": null,
+    "clip_decision": "ambiguous_scores"
+  },
+  {
+    "filename": "COCO_val2014_000000183991.jpg",
+    "slot": 0,
+    "subject": "person",
+    "object": "frisbee",
+    "old_predicate": "holding",
+    "subject_box": [
+      0.00028124998789280653,
+      0.27429166436195374,
+      0.058281250298023224,
+      0.9464583396911621
+    ],
+    "object_box": [
+      0.00010937500337604433,
+      0.6497916579246521,
+      0.07967187464237213,
+      0.7409166693687439
+    ],
+    "confidence": 0.8348000049591064,
+    "clip_proposal": null,
+    "clip_decision": "view_disagreement"
+  },
+  {
+    "filename": "COCO_val2014_000000189267.jpg",
+    "slot": 0,
+    "subject": "person",
+    "object": "skis",
+    "old_predicate": "riding",
+    "subject_box": [
+      0.44945311546325684,
+      0.13154566287994385,
+      0.6828749775886536,
+      0.9029742479324341
+    ],
+    "object_box": [
+      0.4127500057220459,
+      0.8178688287734985,
+      0.8156406283378601,
+      0.9969789385795593
+    ],
+    "confidence": 0.8342999815940857,
+    "clip_proposal": null,
+    "clip_decision": "view_disagreement"
+  },
+  {
+    "filename": "COCO_val2014_000000322056.jpg",
+    "slot": 1,
+    "subject": "person",
+    "object": "cell phone",
+    "old_predicate": "holding",
+    "subject_box": [
+      0.4683000147342682,
+      0.06449999660253525,
+      0.995959997177124,
+      0.9880625009536743
+    ],
+    "object_box": [
+      0.4567199945449829,
+      0.38972917199134827,
+      0.5045599937438965,
+      0.43806248903274536
+    ],
+    "confidence": 0.6086000204086304,
+    "clip_proposal": null,
+    "clip_decision": "view_disagreement"
+  },
+  {
+    "filename": "COCO_val2014_000000492914.jpg",
+    "slot": 0,
+    "subject": "person",
+    "object": "skateboard",
+    "old_predicate": "riding",
+    "subject_box": [
+      0.365296870470047,
+      0.001384976552799344,
+      0.7844374775886536,
+      0.5820422768592834
+    ],
+    "object_box": [
+      0.34700000286102295,
+      0.5026995539665222,
+      0.6106093525886536,
+      0.6268779635429382
+    ],
+    "confidence": 0.8977000117301941,
+    "clip_proposal": null,
+    "clip_decision": "ambiguous_scores"
+  },
+  {
+    "filename": "COCO_val2014_000000325958.jpg",
+    "slot": 0,
+    "subject": "person",
+    "object": "motorcycle",
+    "old_predicate": "riding",
+    "subject_box": [
+      0.6523593664169312,
+      0.2809791564941406,
+      0.8917343616485596,
+      0.9946666955947876
+    ],
+    "object_box": [
+      0.4951249957084656,
+      0.5324583053588867,
+      0.999218761920929,
+      0.9934791922569275
+    ],
+    "confidence": 0.9074000120162964,
+    "clip_proposal": null,
+    "clip_decision": "view_disagreement"
+  },
+  {
+    "filename": "COCO_val2014_000000070471.jpg",
+    "slot": 0,
+    "subject": "person",
+    "object": "remote",
+    "old_predicate": "holding",
+    "subject_box": [
+      0.40104687213897705,
+      0.005104166455566883,
+      0.9975468516349792,
+      0.9884374737739563
+    ],
+    "object_box": [
+      0.4604843854904175,
+      0.38318750262260437,
+      0.6269999742507935,
+      0.7070416808128357
+    ],
+    "confidence": 0.7455999851226807,
+    "clip_proposal": null,
+    "clip_decision": "ambiguous_scores"
+  },
+  {
+    "filename": "COCO_val2014_000000069969.jpg",
+    "slot": 0,
+    "subject": "person",
+    "object": "handbag",
+    "old_predicate": "carrying",
+    "subject_box": [
+      0.6351875066757202,
+      0.373233824968338,
+      0.7235937714576721,
+      0.8094278573989868
+    ],
+    "object_box": [
+      0.6339218616485596,
+      0.4401741325855255,
+      0.6745937466621399,
+      0.5592288374900818
+    ],
+    "confidence": 0.8485999703407288,
+    "clip_proposal": null,
+    "clip_decision": "view_disagreement"
+  },
+  {
+    "filename": "COCO_val2014_000000246626.jpg",
+    "slot": 0,
+    "subject": "person",
+    "object": "cell phone",
+    "old_predicate": "holding",
+    "subject_box": [
+      0.0015868264017626643,
+      0.33555999398231506,
+      0.8002095818519592,
+      0.9981600046157837
+    ],
+    "object_box": [
+      0.35814371705055237,
+      0.15308000147342682,
+      0.7036826610565186,
+      0.909500002861023
+    ],
+    "confidence": 0.9398000240325928,
+    "clip_proposal": null,
+    "clip_decision": "ambiguous_scores"
+  },
+  {
+    "filename": "COCO_val2014_000000433059.jpg",
+    "slot": 0,
+    "subject": "person",
+    "object": "skis",
+    "old_predicate": "riding",
+    "subject_box": [
+      0.2791999876499176,
+      0.3525066673755646,
+      0.8841599822044373,
+      0.9925066828727722
+    ],
+    "object_box": [
+      0.30935999751091003,
+      0.7851999998092651,
+      0.5293599963188171,
+      0.9980800151824951
+    ],
+    "confidence": 0.629800021648407,
+    "clip_proposal": null,
+    "clip_decision": "ambiguous_scores"
+  },
+  {
+    "filename": "COCO_val2014_000000114453.jpg",
+    "slot": 0,
+    "subject": "person",
+    "object": "bottle",
+    "old_predicate": "holding",
+    "subject_box": [
+      0.00019999999494757503,
+      0.23006005585193634,
+      0.15860000252723694,
+      0.612342357635498
+    ],
+    "object_box": [
+      0.08771999925374985,
+      0.46600601077079773,
+      0.130280002951622,
+      0.6658258438110352
+    ],
+    "confidence": 0.8725000023841858,
+    "clip_proposal": null,
+    "clip_decision": "view_disagreement"
+  },
+  {
+    "filename": "COCO_val2014_000000291634.jpg",
+    "slot": 0,
+    "subject": "person",
+    "object": "motorcycle",
+    "old_predicate": "riding",
+    "subject_box": [
+      0.7283602952957153,
+      0.30131250619888306,
+      0.7863972187042236,
+      0.4500156342983246
+    ],
+    "object_box": [
+      0.08612009137868881,
+      0.37632811069488525,
+      0.9381986260414124,
+      0.9343593716621399
+    ],
+    "confidence": 0.7587000131607056,
+    "clip_proposal": null,
+    "clip_decision": "ambiguous_scores"
+  },
+  {
+    "filename": "COCO_val2014_000000528786.jpg",
+    "slot": 0,
+    "subject": "person",
+    "object": "horse",
+    "old_predicate": "riding",
+    "subject_box": [
+      0.5383594036102295,
+      0.03934426233172417,
+      0.6624374985694885,
+      0.40653395652770996
+    ],
+    "object_box": [
+      0.39162498712539673,
+      0.2136768102645874,
+      0.811328113079071,
+      0.6106323003768921
+    ],
+    "confidence": 0.758400022983551,
+    "clip_proposal": null,
+    "clip_decision": "ambiguous_scores"
+  },
+  {
+    "filename": "COCO_val2014_000000277073.jpg",
+    "slot": 0,
+    "subject": "person",
+    "object": "motorcycle",
+    "old_predicate": "riding",
+    "subject_box": [
+      0.39662501215934753,
+      0.3219764828681946,
+      0.5492968559265137,
+      0.7254117727279663
+    ],
+    "object_box": [
+      0.28648436069488525,
+      0.4484705924987793,
+      0.6209531426429749,
+      0.8207294344902039
+    ],
+    "confidence": 0.9136999845504761,
+    "clip_proposal": null,
+    "clip_decision": "ambiguous_scores"
+  },
+  {
+    "filename": "COCO_val2014_000000248703.jpg",
+    "slot": 0,
+    "subject": "person",
+    "object": "sports ball",
+    "old_predicate": "holding",
+    "subject_box": [
+      0.42912501096725464,
+      0.18204225599765778,
+      0.6547187566757202,
+      0.7479812502861023
+    ],
+    "object_box": [
+      0.433531254529953,
+      0.6846713423728943,
+      0.49131250381469727,
+      0.7687558531761169
+    ],
+    "confidence": 0.8999999761581421,
+    "clip_proposal": null,
+    "clip_decision": "ambiguous_scores"
+  },
+  {
+    "filename": "COCO_val2014_000000167952.jpg",
+    "slot": 0,
+    "subject": "person",
+    "object": "fork",
+    "old_predicate": "holding",
+    "subject_box": [
+      0.7335000038146973,
+      0.0014375000027939677,
+      0.9989062547683716,
+      0.22349999845027924
+    ],
+    "object_box": [
+      0.8502187728881836,
+      0.1693125069141388,
+      0.9991875290870667,
+      0.24587500095367432
+    ],
+    "confidence": 0.7239999771118164,
+    "clip_proposal": null,
+    "clip_decision": "ambiguous_scores"
+  },
+  {
+    "filename": "COCO_val2014_000000246398.jpg",
+    "slot": 0,
+    "subject": "person",
+    "object": "skateboard",
+    "old_predicate": "riding",
+    "subject_box": [
+      0.48442187905311584,
+      0.05615925043821335,
+      0.7880625128746033,
+      0.9202576279640198
+    ],
+    "object_box": [
+      0.46735936403274536,
+      0.7777283191680908,
+      0.7271406054496765,
+      0.9475409984588623
+    ],
+    "confidence": 0.888700008392334,
+    "clip_proposal": null,
+    "clip_decision": "view_disagreement"
+  },
+  {
+    "filename": "COCO_val2014_000000534173.jpg",
+    "slot": 0,
+    "subject": "person",
+    "object": "cell phone",
+    "old_predicate": "holding",
+    "subject_box": [
+      0.11448000371456146,
+      0.009759999811649323,
+      0.7780200242996216,
+      0.989359974861145
+    ],
+    "object_box": [
+      0.37251999974250793,
+      0.3025600016117096,
+      0.43244001269340515,
+      0.41045331954956055
+    ],
+    "confidence": 0.8543000221252441,
+    "clip_proposal": null,
+    "clip_decision": "ambiguous_scores"
+  },
+  {
+    "filename": "COCO_val2014_000000570848.jpg",
+    "slot": 0,
+    "subject": "person",
+    "object": "tennis racket",
+    "old_predicate": "holding",
+    "subject_box": [
+      0.4744531214237213,
+      0.2598513066768646,
+      0.7943281531333923,
+      0.9924721121788025
+    ],
+    "object_box": [
+      0.5026562213897705,
+      0.7184944152832031,
+      0.654671847820282,
+      0.897881031036377
+    ],
+    "confidence": 0.9401999711990356,
+    "clip_proposal": null,
+    "clip_decision": "ambiguous_scores"
+  },
+  {
+    "filename": "COCO_val2014_000000484531.jpg",
+    "slot": 1,
+    "subject": "person",
+    "object": "bottle",
+    "old_predicate": "holding",
+    "subject_box": [
+      0.10997916758060455,
+      0.0012187500251457095,
+      0.6988958120346069,
+      0.9746719002723694
+    ],
+    "object_box": [
+      0.2691666781902313,
+      0.3623749911785126,
+      0.35493749380111694,
+      0.5015624761581421
+    ],
+    "confidence": 0.7396000027656555,
+    "clip_proposal": null,
+    "clip_decision": "neutral_winner"
+  },
+  {
+    "filename": "COCO_val2014_000000249276.jpg",
+    "slot": 1,
+    "subject": "person",
+    "object": "cup",
+    "old_predicate": "holding",
+    "subject_box": [
+      0.5821377038955688,
+      0.12084375321865082,
+      1.0,
+      0.9986405968666077
+    ],
+    "object_box": [
+      0.9126630425453186,
+      0.3530937433242798,
+      0.9994927644729614,
+      0.4801250100135803
+    ],
+    "confidence": 0.8313999772071838,
+    "clip_proposal": null,
+    "clip_decision": "view_disagreement"
+  },
+  {
+    "filename": "COCO_val2014_000000574343.jpg",
+    "slot": 0,
+    "subject": "person",
+    "object": "snowboard",
+    "old_predicate": "riding",
+    "subject_box": [
+      0.49524998664855957,
+      0.4893442690372467,
+      0.8208593726158142,
+      0.8403747081756592
+    ],
+    "object_box": [
+      0.447453111410141,
+      0.5711709856987,
+      0.6711875200271606,
+      0.9261358380317688
+    ],
+    "confidence": 0.930400013923645,
+    "clip_proposal": null,
+    "clip_decision": "ambiguous_scores"
+  },
+  {
+    "filename": "COCO_val2014_000000464200.jpg",
+    "slot": 0,
+    "subject": "person",
+    "object": "frisbee",
+    "old_predicate": "holding",
+    "subject_box": [
+      0.02709374949336052,
+      0.0029796839226037264,
+      0.5133593678474426,
+      0.9900451302528381
+    ],
+    "object_box": [
+      0.39640626311302185,
+      0.5298645496368408,
+      0.547656238079071,
+      0.5925959348678589
+    ],
+    "confidence": 0.8695999979972839,
+    "clip_proposal": null,
+    "clip_decision": "ambiguous_scores"
+  },
+  {
+    "filename": "COCO_val2014_000000579081.jpg",
+    "slot": 0,
+    "subject": "person",
+    "object": "skis",
+    "old_predicate": "riding",
+    "subject_box": [
+      0.3050781190395355,
+      0.425677090883255,
+      0.4092968702316284,
+      0.7361978888511658
+    ],
+    "object_box": [
+      0.21789062023162842,
+      0.6616926789283752,
+      0.5090937614440918,
+      0.7891927361488342
+    ],
+    "confidence": 0.7373999953269958,
+    "clip_proposal": "sitting_beside",
+    "clip_decision": "candidate_for_review"
+  },
+  {
+    "filename": "COCO_val2014_000000482476.jpg",
+    "slot": 0,
+    "subject": "person",
+    "object": "cell phone",
+    "old_predicate": "holding",
+    "subject_box": [
+      0.21787500381469727,
+      0.00223529408685863,
+      0.9995468854904175,
+      0.9891999959945679
+    ],
+    "object_box": [
+      0.20912499725818634,
+      0.5646117925643921,
+      0.3352031111717224,
+      0.630541205406189
+    ],
+    "confidence": 0.9039999842643738,
+    "clip_proposal": null,
+    "clip_decision": "ambiguous_scores"
+  },
+  {
+    "filename": "COCO_val2014_000000317595.jpg",
+    "slot": 2,
+    "subject": "person",
+    "object": "sandwich",
+    "old_predicate": "holding",
+    "subject_box": [
+      0.0006406250176951289,
+      0.30856481194496155,
+      0.43110936880111694,
+      0.9803935289382935
+    ],
+    "object_box": [
+      0.2512499988079071,
+      0.646273136138916,
+      0.327937513589859,
+      0.8901388645172119
+    ],
+    "confidence": 0.633899986743927,
+    "clip_proposal": null,
+    "clip_decision": "neutral_winner"
+  },
+  {
+    "filename": "COCO_val2014_000000145604.jpg",
+    "slot": 1,
+    "subject": "person",
+    "object": "bicycle",
+    "old_predicate": "riding",
+    "subject_box": [
+      0.2748749852180481,
+      0.061592504382133484,
+      0.5020312666893005,
+      0.508407473564148
+    ],
+    "object_box": [
+      0.27870312333106995,
+      0.37407493591308594,
+      0.47975000739097595,
+      0.5440046787261963
+    ],
+    "confidence": 0.5925999879837036,
+    "clip_proposal": null,
+    "clip_decision": "view_disagreement"
+  },
+  {
+    "filename": "COCO_val2014_000000366822.jpg",
+    "slot": 1,
+    "subject": "person",
+    "object": "backpack",
+    "old_predicate": "wearing",
+    "subject_box": [
+      0.10279999673366547,
+      0.23946666717529297,
+      0.4184400141239166,
+      0.9841066598892212
+    ],
+    "object_box": [
+      0.19577999413013458,
+      0.8863466382026672,
+      0.390720009803772,
+      0.9987733364105225
+    ],
+    "confidence": 0.5879999995231628,
+    "clip_proposal": null,
+    "clip_decision": "view_disagreement"
+  },
+  {
+    "filename": "COCO_val2014_000000446301.jpg",
+    "slot": 0,
+    "subject": "person",
+    "object": "sports ball",
+    "old_predicate": "holding",
+    "subject_box": [
+      0.3231718838214874,
+      0.1420794427394867,
+      0.5795781016349792,
+      0.9900233745574951
+    ],
+    "object_box": [
+      0.5129218697547913,
+      0.680210292339325,
+      0.5504999756813049,
+      0.736495316028595
+    ],
+    "confidence": 0.9179999828338623,
+    "clip_proposal": null,
+    "clip_decision": "view_disagreement"
+  },
+  {
+    "filename": "COCO_val2014_000000305589.jpg",
+    "slot": 0,
+    "subject": "person",
+    "object": "cell phone",
+    "old_predicate": "holding",
+    "subject_box": [
+      0.33899998664855957,
+      0.07030516117811203,
+      0.9968437552452087,
+      0.9905164241790771
+    ],
+    "object_box": [
+      0.36070311069488525,
+      0.24251173436641693,
+      0.4311875104904175,
+      0.686784029006958
+    ],
+    "confidence": 0.8743000030517578,
+    "clip_proposal": null,
+    "clip_decision": "ambiguous_scores"
+  },
+  {
+    "filename": "COCO_val2014_000000506987.jpg",
+    "slot": 0,
+    "subject": "person",
+    "object": "cell phone",
+    "old_predicate": "holding",
+    "subject_box": [
+      0.0004199999966658652,
+      0.16832000017166138,
+      0.9984400272369385,
+      0.890666663646698
+    ],
+    "object_box": [
+      0.00039999998989515007,
+      0.4054933190345764,
+      0.45590001344680786,
+      0.775546669960022
+    ],
+    "confidence": 0.8623999953269958,
+    "clip_proposal": null,
+    "clip_decision": "ambiguous_scores"
+  },
+  {
+    "filename": "COCO_val2014_000000115636.jpg",
+    "slot": 0,
+    "subject": "person",
+    "object": "horse",
+    "old_predicate": "riding",
+    "subject_box": [
+      0.4202888011932373,
+      0.15123437345027924,
+      0.6547653675079346,
+      0.38910937309265137
+    ],
+    "object_box": [
+      0.23001804947853088,
+      0.3775312602519989,
+      0.7604331970214844,
+      0.8577656149864197
+    ],
+    "confidence": 0.7495999932289124,
+    "clip_proposal": null,
+    "clip_decision": "ambiguous_scores"
+  },
+  {
+    "filename": "COCO_val2014_000000310705.jpg",
+    "slot": 0,
+    "subject": "person",
+    "object": "tie",
+    "old_predicate": "wearing",
+    "subject_box": [
+      0.002319999970495701,
+      0.04045454412698746,
+      0.9987000226974487,
+      0.9659090638160706
+    ],
+    "object_box": [
+      0.0017399999778717756,
+      0.5891125798225403,
+      0.5068600177764893,
+      0.9893289804458618
+    ],
+    "confidence": 0.9271000027656555,
+    "clip_proposal": "sitting_beside",
+    "clip_decision": "candidate_for_review"
+  },
+  {
+    "filename": "COCO_val2014_000000009800.jpg",
+    "slot": 0,
+    "subject": "person",
+    "object": "tie",
+    "old_predicate": "wearing",
+    "subject_box": [
+      0.7607812285423279,
+      0.055276498198509216,
+      0.999625027179718,
+      0.5703917145729065
+    ],
+    "object_box": [
+      0.828125,
+      0.2653917074203491,
+      0.8581093549728394,
+      0.37059909105300903
+    ],
+    "confidence": 0.8471999764442444,
+    "clip_proposal": null,
+    "clip_decision": "view_disagreement"
+  },
+  {
+    "filename": "COCO_val2014_000000395463.jpg",
+    "slot": 0,
+    "subject": "person",
+    "object": "cup",
+    "old_predicate": "holding",
+    "subject_box": [
+      0.19736666977405548,
+      0.2654666602611542,
+      0.3354499936103821,
+      0.42553332448005676
+    ],
+    "object_box": [
+      0.2776833474636078,
+      0.3863333463668823,
+      0.30254998803138733,
+      0.4398888945579529
+    ],
+    "confidence": 0.6966999769210815,
+    "clip_proposal": null,
+    "clip_decision": "view_disagreement"
+  },
+  {
+    "filename": "COCO_val2014_000000338847.jpg",
+    "slot": 0,
+    "subject": "person",
+    "object": "tie",
+    "old_predicate": "wearing",
+    "subject_box": [
+      0.4407025873661041,
+      0.15009374916553497,
+      0.9992740154266357,
+      0.9979375004768372
+    ],
+    "object_box": [
+      0.7793676853179932,
+      0.4075624942779541,
+      0.8986417055130005,
+      0.8321874737739563
+    ],
+    "confidence": 0.8592000007629395,
+    "clip_proposal": null,
+    "clip_decision": "ambiguous_scores"
+  },
+  {
+    "filename": "COCO_val2014_000000490366.jpg",
+    "slot": 0,
+    "subject": "person",
+    "object": "surfboard",
+    "old_predicate": "riding",
+    "subject_box": [
+      0.3524843752384186,
+      0.4216458201408386,
+      0.584640622138977,
+      0.7491666674613953
+    ],
+    "object_box": [
+      0.32996875047683716,
+      0.7044583559036255,
+      0.4990156292915344,
+      0.7698749899864197
+    ],
+    "confidence": 0.7793999910354614,
+    "clip_proposal": "kneeling_beside",
+    "clip_decision": "candidate_for_review"
+  },
+  {
+    "filename": "COCO_val2014_000000326168.jpg",
+    "slot": 0,
+    "subject": "person",
+    "object": "bicycle",
+    "old_predicate": "riding",
+    "subject_box": [
+      0.5201406478881836,
+      0.4980769157409668,
+      0.6837656497955322,
+      0.995149552822113
+    ],
+    "object_box": [
+      0.5545781254768372,
+      0.7804273366928101,
+      0.6846562623977661,
+      0.9986965656280518
+    ],
+    "confidence": 0.7576000094413757,
+    "clip_proposal": null,
+    "clip_decision": "view_disagreement"
+  },
+  {
+    "filename": "COCO_val2014_000000354027.jpg",
+    "slot": 0,
+    "subject": "person",
+    "object": "handbag",
+    "old_predicate": "carrying",
+    "subject_box": [
+      0.834109365940094,
+      0.589018702507019,
+      0.9223437309265137,
+      0.9519859552383423
+    ],
+    "object_box": [
+      0.8989843726158142,
+      0.7642289996147156,
+      0.9268593788146973,
+      0.8340654373168945
+    ],
+    "confidence": 0.572700023651123,
+    "clip_proposal": null,
+    "clip_decision": "ambiguous_scores"
+  },
+  {
+    "filename": "COCO_val2014_000000261888.jpg",
+    "slot": 0,
+    "subject": "person",
+    "object": "bicycle",
+    "old_predicate": "riding",
+    "subject_box": [
+      0.5642187595367432,
+      0.3374882638454437,
+      0.7224843502044678,
+      0.921009361743927
+    ],
+    "object_box": [
+      0.5295624732971191,
+      0.6032863855361938,
+      0.8214531540870667,
+      0.9152112603187561
+    ],
+    "confidence": 0.8831999897956848,
+    "clip_proposal": null,
+    "clip_decision": "neutral_winner"
+  },
+  {
+    "filename": "COCO_val2014_000000043882.jpg",
+    "slot": 1,
+    "subject": "person",
+    "object": "donut",
+    "old_predicate": "holding",
+    "subject_box": [
+      0.25468748807907104,
+      0.0016718750121071935,
+      0.979520857334137,
+      0.9967968463897705
+    ],
+    "object_box": [
+      0.3633750081062317,
+      0.49531251192092896,
+      0.4597291648387909,
+      0.6169999837875366
+    ],
+    "confidence": 0.6043999791145325,
+    "clip_proposal": null,
+    "clip_decision": "view_disagreement"
+  },
+  {
+    "filename": "COCO_val2014_000000433822.jpg",
+    "slot": 0,
+    "subject": "person",
+    "object": "cell phone",
+    "old_predicate": "holding",
+    "subject_box": [
+      0.15977083146572113,
+      0.11053124815225601,
+      0.9086041450500488,
+      0.8564687371253967
+    ],
+    "object_box": [
+      0.23985417187213898,
+      0.5931093692779541,
+      0.46308332681655884,
+      0.6556249856948853
+    ],
+    "confidence": 0.5221999883651733,
+    "clip_proposal": "looking_at",
+    "clip_decision": "candidate_for_review"
+  },
+  {
+    "filename": "COCO_val2014_000000125556.jpg",
+    "slot": 0,
+    "subject": "person",
+    "object": "cell phone",
+    "old_predicate": "holding",
+    "subject_box": [
+      0.0,
+      0.21410000324249268,
+      0.629159152507782,
+      0.9980400204658508
+    ],
+    "object_box": [
+      0.3752552568912506,
+      0.6774600148200989,
+      0.5915014743804932,
+      0.7831599712371826
+    ],
+    "confidence": 0.9035000205039978,
+    "clip_proposal": null,
+    "clip_decision": "ambiguous_scores"
+  },
+  {
+    "filename": "COCO_val2014_000000557396.jpg",
+    "slot": 0,
+    "subject": "person",
+    "object": "skateboard",
+    "old_predicate": "riding",
+    "subject_box": [
+      0.256046861410141,
+      0.16188810765743256,
+      0.4582812488079071,
+      0.5085314512252808
+    ],
+    "object_box": [
+      0.2734062373638153,
+      0.48904427886009216,
+      0.33528125286102295,
+      0.544918417930603
+    ],
+    "confidence": 0.5845000147819519,
+    "clip_proposal": null,
+    "clip_decision": "neutral_winner"
+  },
+  {
+    "filename": "COCO_val2014_000000384995.jpg",
+    "slot": 0,
+    "subject": "person",
+    "object": "skis",
+    "old_predicate": "riding",
+    "subject_box": [
+      0.37818750739097595,
+      0.07979687303304672,
+      0.6719791889190674,
+      0.7264999747276306
+    ],
+    "object_box": [
+      0.3361666798591614,
+      0.5844374895095825,
+      0.8676041960716248,
+      0.8394062519073486
+    ],
+    "confidence": 0.9049999713897705,
+    "clip_proposal": null,
+    "clip_decision": "neutral_winner"
+  },
+  {
+    "filename": "COCO_val2014_000000091105.jpg",
+    "slot": 1,
+    "subject": "person",
+    "object": "sports ball",
+    "old_predicate": "holding",
+    "subject_box": [
+      0.0015690866857767105,
+      0.2168281227350235,
+      0.984051525592804,
+      0.9647499918937683
+    ],
+    "object_box": [
+      0.30203747749328613,
+      0.6985312700271606,
+      0.7665573954582214,
+      0.9074687361717224
+    ],
+    "confidence": 0.9144999980926514,
+    "clip_proposal": null,
+    "clip_decision": "ambiguous_scores"
+  },
+  {
+    "filename": "COCO_val2014_000000327617.jpg",
+    "slot": 0,
+    "subject": "person",
+    "object": "tennis racket",
+    "old_predicate": "holding",
+    "subject_box": [
+      0.2011609524488449,
+      0.1809999942779541,
+      0.6325066089630127,
+      0.9808281064033508
+    ],
+    "object_box": [
+      0.36807388067245483,
+      0.45460936427116394,
+      0.6350923776626587,
+      0.7995312213897705
+    ],
+    "confidence": 0.9125999808311462,
+    "clip_proposal": "standing_beside",
+    "clip_decision": "candidate_for_review"
+  },
+  {
+    "filename": "COCO_val2014_000000295138.jpg",
+    "slot": 0,
+    "subject": "person",
+    "object": "skateboard",
+    "old_predicate": "riding",
+    "subject_box": [
+      0.25818750262260437,
+      0.0007801418541930616,
+      0.6398593783378601,
+      0.8149881958961487
+    ],
+    "object_box": [
+      0.26695311069488525,
+      0.7806382775306702,
+      0.6061562299728394,
+      0.8789598345756531
+    ],
+    "confidence": 0.8733999729156494,
+    "clip_proposal": null,
+    "clip_decision": "view_disagreement"
+  },
+  {
+    "filename": "COCO_val2014_000000505939.jpg",
+    "slot": 1,
+    "subject": "person",
+    "object": "skis",
+    "old_predicate": "riding",
+    "subject_box": [
+      0.15102000534534454,
+      0.19989334046840668,
+      0.3526799976825714,
+      0.850933313369751
+    ],
+    "object_box": [
+      0.030319999903440475,
+      0.7854133248329163,
+      0.5605000257492065,
+      0.8834666609764099
+    ],
+    "confidence": 0.7972999811172485,
+    "clip_proposal": null,
+    "clip_decision": "ambiguous_scores"
+  },
+  {
+    "filename": "COCO_val2014_000000565670.jpg",
+    "slot": 0,
+    "subject": "person",
+    "object": "tie",
+    "old_predicate": "wearing",
+    "subject_box": [
+      0.0010400000028312206,
+      0.0,
+      0.9958599805831909,
+      0.9829599857330322
+    ],
+    "object_box": [
+      0.21731999516487122,
+      0.6437333226203918,
+      0.5202999711036682,
+      0.9947999715805054
+    ],
+    "confidence": 0.8751999735832214,
+    "clip_proposal": null,
+    "clip_decision": "neutral_winner"
+  },
+  {
+    "filename": "COCO_val2014_000000558845.jpg",
+    "slot": 0,
+    "subject": "person",
+    "object": "tie",
+    "old_predicate": "wearing",
+    "subject_box": [
+      0.27060386538505554,
+      0.2551562488079071,
+      0.6472705602645874,
+      0.9983281493186951
+    ],
+    "object_box": [
+      0.4245169162750244,
+      0.37028124928474426,
+      0.48927536606788635,
+      0.49360936880111694
+    ],
+    "confidence": 0.6743000149726868,
+    "clip_proposal": null,
+    "clip_decision": "ambiguous_scores"
+  },
+  {
+    "filename": "COCO_val2014_000000113473.jpg",
+    "slot": 0,
+    "subject": "person",
+    "object": "sandwich",
+    "old_predicate": "holding",
+    "subject_box": [
+      0.002593749901279807,
+      0.0043541667982935905,
+      0.8988593816757202,
+      0.996666669845581
+    ],
+    "object_box": [
+      0.3159218728542328,
+      0.5964375138282776,
+      0.4417187571525574,
+      0.8209166526794434
+    ],
+    "confidence": 0.5291000008583069,
+    "clip_proposal": "eating",
+    "clip_decision": "candidate_for_review"
+  },
+  {
+    "filename": "COCO_val2014_000000239894.jpg",
+    "slot": 0,
+    "subject": "person",
+    "object": "handbag",
+    "old_predicate": "carrying",
+    "subject_box": [
+      0.2718075215816498,
+      0.12229687720537186,
+      0.794460117816925,
+      0.9990468621253967
+    ],
+    "object_box": [
+      0.16483567655086517,
+      0.7333593964576721,
+      0.4577229917049408,
+      0.999093770980835
+    ],
+    "confidence": 0.5338000059127808,
+    "clip_proposal": null,
+    "clip_decision": "ambiguous_scores"
+  },
+  {
+    "filename": "COCO_val2014_000000523217.jpg",
+    "slot": 0,
+    "subject": "person",
+    "object": "tie",
+    "old_predicate": "wearing",
+    "subject_box": [
+      0.47541332244873047,
+      0.11069999635219574,
+      0.874613344669342,
+      0.9970999956130981
+    ],
+    "object_box": [
+      0.6447466611862183,
+      0.3076600134372711,
+      0.6781600117683411,
+      0.3623799979686737
+    ],
+    "confidence": 0.607699990272522,
+    "clip_proposal": null,
+    "clip_decision": "view_disagreement"
+  },
+  {
+    "filename": "COCO_val2014_000000378454.jpg",
+    "slot": 0,
+    "subject": "person",
+    "object": "frisbee",
+    "old_predicate": "holding",
+    "subject_box": [
+      0.11508196592330933,
+      0.35045313835144043,
+      0.6873536109924316,
+      0.5706562399864197
+    ],
+    "object_box": [
+      0.31590163707733154,
+      0.5117655992507935,
+      0.4235597252845764,
+      0.568109393119812
+    ],
+    "confidence": 0.906499981880188,
+    "clip_proposal": null,
+    "clip_decision": "neutral_winner"
+  },
+  {
+    "filename": "COCO_val2014_000000036607.jpg",
+    "slot": 0,
+    "subject": "person",
+    "object": "cell phone",
+    "old_predicate": "holding",
+    "subject_box": [
+      0.003046874888241291,
+      0.00814554002135992,
+      0.5797187685966492,
+      0.9876995086669922
+    ],
+    "object_box": [
+      0.298890620470047,
+      0.2744366228580475,
+      0.6335312724113464,
+      0.8492018580436707
+    ],
+    "confidence": 0.612500011920929,
+    "clip_proposal": null,
+    "clip_decision": "view_disagreement"
+  },
+  {
+    "filename": "COCO_val2014_000000027789.jpg",
+    "slot": 0,
+    "subject": "person",
+    "object": "remote",
+    "old_predicate": "holding",
+    "subject_box": [
+      0.5749843716621399,
+      0.2835625112056732,
+      0.7963906526565552,
+      0.987666666507721
+    ],
+    "object_box": [
+      0.5691718459129333,
+      0.47597917914390564,
+      0.6026562452316284,
+      0.5087916851043701
+    ],
+    "confidence": 0.5203999876976013,
+    "clip_proposal": null,
+    "clip_decision": "view_disagreement"
+  },
+  {
+    "filename": "COCO_val2014_000000523371.jpg",
+    "slot": 0,
+    "subject": "person",
+    "object": "motorcycle",
+    "old_predicate": "riding",
+    "subject_box": [
+      0.380859375,
+      0.00497916666790843,
+      0.6226406097412109,
+      0.5251041650772095
+    ],
+    "object_box": [
+      0.07371874898672104,
+      0.3174166679382324,
+      0.9656406044960022,
+      0.9910208582878113
+    ],
+    "confidence": 0.9301999807357788,
+    "clip_proposal": null,
+    "clip_decision": "ambiguous_scores"
+  },
+  {
+    "filename": "COCO_val2014_000000071877.jpg",
+    "slot": 0,
+    "subject": "person",
+    "object": "skateboard",
+    "old_predicate": "riding",
+    "subject_box": [
+      0.19528037309646606,
+      0.06776562333106995,
+      0.8109579682350159,
+      0.5034531354904175
+    ],
+    "object_box": [
+      0.4393925368785858,
+      0.3435312509536743,
+      0.8397430181503296,
+      0.5118593573570251
+    ],
+    "confidence": 0.9319999814033508,
+    "clip_proposal": null,
+    "clip_decision": "view_disagreement"
+  },
+  {
+    "filename": "COCO_val2014_000000387725.jpg",
+    "slot": 0,
+    "subject": "person",
+    "object": "cup",
+    "old_predicate": "holding",
+    "subject_box": [
+      0.13184374570846558,
+      0.26254716515541077,
+      0.3759062588214874,
+      0.7215566039085388
+    ],
+    "object_box": [
+      0.3051718771457672,
+      0.6034669876098633,
+      0.36317187547683716,
+      0.7541981339454651
+    ],
+    "confidence": 0.9000999927520752,
+    "clip_proposal": null,
+    "clip_decision": "view_disagreement"
+  },
+  {
+    "filename": "COCO_val2014_000000328601.jpg",
+    "slot": 0,
+    "subject": "person",
+    "object": "tennis racket",
+    "old_predicate": "holding",
+    "subject_box": [
+      0.20297980308532715,
+      0.0214687492698431,
+      0.8385605812072754,
+      0.9987187385559082
+    ],
+    "object_box": [
+      0.17626263201236725,
+      0.14170312881469727,
+      0.3116414248943329,
+      0.39082813262939453
+    ],
+    "confidence": 0.5181999802589417,
+    "clip_proposal": null,
+    "clip_decision": "neutral_winner"
+  },
+  {
+    "filename": "COCO_val2014_000000290416.jpg",
+    "slot": 0,
+    "subject": "person",
+    "object": "skis",
+    "old_predicate": "riding",
+    "subject_box": [
+      0.6262656450271606,
+      0.13503125309944153,
+      0.8730000257492065,
+      0.35401561856269836
+    ],
+    "object_box": [
+      0.5874687433242798,
+      0.13004687428474426,
+      0.669671893119812,
+      0.4602031111717224
+    ],
+    "confidence": 0.5078999996185303,
+    "clip_proposal": null,
+    "clip_decision": "neutral_winner"
+  },
+  {
+    "filename": "COCO_val2014_000000210394.jpg",
+    "slot": 1,
+    "subject": "person",
+    "object": "bicycle",
+    "old_predicate": "riding",
+    "subject_box": [
+      0.9616405963897705,
+      0.4801458418369293,
+      0.9995156526565552,
+      0.6273958086967468
+    ],
+    "object_box": [
+      0.8615312576293945,
+      0.5373749732971191,
+      0.997921884059906,
+      0.6548333168029785
+    ],
+    "confidence": 0.6714000105857849,
+    "clip_proposal": null,
+    "clip_decision": "view_disagreement"
+  },
+  {
+    "filename": "COCO_val2014_000000154816.jpg",
+    "slot": 0,
+    "subject": "person",
+    "object": "baseball glove",
+    "old_predicate": "holding",
+    "subject_box": [
+      0.3585156202316284,
+      0.33295872807502747,
+      0.5879531502723694,
+      0.8101376295089722
+    ],
+    "object_box": [
+      0.5413437485694885,
+      0.38009175658226013,
+      0.5901718735694885,
+      0.48107796907424927
+    ],
+    "confidence": 0.8353999853134155,
+    "clip_proposal": null,
+    "clip_decision": "view_disagreement"
+  },
+  {
+    "filename": "COCO_val2014_000000029444.jpg",
+    "slot": 0,
+    "subject": "person",
+    "object": "frisbee",
+    "old_predicate": "holding",
+    "subject_box": [
+      0.048515625298023224,
+      0.00800000037997961,
+      0.7969375252723694,
+      0.9865624904632568
+    ],
+    "object_box": [
+      0.08101562410593033,
+      0.0637291669845581,
+      0.30576562881469727,
+      0.3727291524410248
+    ],
+    "confidence": 0.9605000019073486,
+    "clip_proposal": null,
+    "clip_decision": "ambiguous_scores"
+  },
+  {
+    "filename": "COCO_val2014_000000210522.jpg",
+    "slot": 2,
+    "subject": "person",
+    "object": "bicycle",
+    "old_predicate": "riding",
+    "subject_box": [
+      0.2827500104904175,
+      0.10470833629369736,
+      0.5056874752044678,
+      0.9913750290870667
+    ],
+    "object_box": [
+      0.21175000071525574,
+      0.7228958606719971,
+      0.45656248927116394,
+      0.9962083101272583
+    ],
+    "confidence": 0.754800021648407,
+    "clip_proposal": "standing_beside",
+    "clip_decision": "candidate_for_review"
+  },
+  {
+    "filename": "COCO_val2014_000000014975.jpg",
+    "slot": 0,
+    "subject": "person",
+    "object": "tie",
+    "old_predicate": "wearing",
+    "subject_box": [
+      0.8380937576293945,
+      0.2773972749710083,
+      0.9995625019073486,
+      0.9888128042221069
+    ],
+    "object_box": [
+      0.8934218883514404,
+      0.42561644315719604,
+      0.9180155992507935,
+      0.5640410780906677
+    ],
+    "confidence": 0.8392999768257141,
+    "clip_proposal": null,
+    "clip_decision": "view_disagreement"
+  },
+  {
+    "filename": "COCO_val2014_000000068257.jpg",
+    "slot": 0,
+    "subject": "person",
+    "object": "surfboard",
+    "old_predicate": "riding",
+    "subject_box": [
+      0.2991875112056732,
+      0.12810304760932922,
+      0.5379062294960022,
+      0.6498594880104065
+    ],
+    "object_box": [
+      0.4650624990463257,
+      0.6031381487846375,
+      0.6417812705039978,
+      0.8147774934768677
+    ],
+    "confidence": 0.9060999751091003,
+    "clip_proposal": null,
+    "clip_decision": "ambiguous_scores"
+  }
+]
