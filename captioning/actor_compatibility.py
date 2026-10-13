@@ -17,6 +17,16 @@ def actor_supervision(rows, exhaustive=False):
     return labels, torch.tensor([e[:4] for e in edges], dtype=torch.long).reshape(-1, 4)
 
 
+def actor_edge_metrics(scores, rows, exhaustive=False):
+    _,edges=actor_supervision(rows,exhaustive=exhaustive)
+    if not len(edges):return {'edges':0,'wins':0,'ties':0,'win_rate':None}
+    i,r,j,c=edges.T
+    gap=scores[i,r]-scores[j,c]
+    return {'edges':len(edges),'images':len({rows[int(e[0])]['image_id'] for e in edges}),
+            'wins':int((gap>0).sum()),'ties':int((gap==0).sum()),
+            'win_rate':float((gap>0).float().mean()),'mean_gap':float(gap.mean())}
+
+
 def pair_geometry(rows):
     # Absolute boxes plus offsets/area ratio: continuous evidence, not a distance rule.
     values = []

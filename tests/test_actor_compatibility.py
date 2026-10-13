@@ -1,6 +1,6 @@
 import unittest
 import torch
-from captioning.actor_compatibility import actor_supervision, ActorCompatibility, CompactActorCompatibility, actor_loss
+from captioning.actor_compatibility import actor_supervision, ActorCompatibility, CompactActorCompatibility, actor_loss, actor_edge_metrics
 
 
 class ActorTests(unittest.TestCase):
@@ -18,6 +18,10 @@ class ActorTests(unittest.TestCase):
         _, full=actor_supervision(rows,exhaustive=True)
         self.assertGreater(len(full),len(limited))
         self.assertEqual(len(full),36)
+        logits=torch.zeros(7,6);logits[0]=1
+        report=actor_edge_metrics(logits,rows,exhaustive=True)
+        self.assertEqual(report['edges'],36)
+        self.assertEqual(report['wins'],36)
 
     def test_union_has_no_effect_and_subject_receives_signal(self):
         torch.manual_seed(42)

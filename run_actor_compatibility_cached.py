@@ -7,7 +7,7 @@ import zipfile
 from pathlib import Path
 from collections import Counter
 import torch
-from captioning.actor_compatibility import ActorCompatibility, CompactActorCompatibility, actor_supervision, actor_loss, pair_geometry
+from captioning.actor_compatibility import ActorCompatibility, CompactActorCompatibility, actor_supervision, actor_loss, pair_geometry, actor_edge_metrics
 from captioning.supervised_relations import RELATIONS
 from captioning.selected_relation_prompts import build_selected_prompts
 from run_instance_alignment_diagnostic import fit_thresholds, edge_metrics, metrics
@@ -143,7 +143,7 @@ def main():
         'support':dict(zip(RELATIONS,support)), 'enabled':dict(zip(RELATIONS,enabled)),
         'thresholds':dict(zip(RELATIONS,thresholds)), 'history':history,
         'dev_actor_endpoint_metrics':metrics(activations[n:],dev_labels,thresholds),
-        'dev_actor_edges':edge_metrics(logits[n:],dev)['actor'],
+        'dev_actor_edges':actor_edge_metrics(logits[n:],dev,exhaustive=args.all_actor_edges),
         'candidate_selected_claims':sum(len(e['relations']) for e in prompts.values()),
         'candidate_modes':dict(Counter(e['mode'] for e in prompts.values())),
         'train_source_sha256':sha(args.train_source), 'candidate_source_sha256':sha(args.candidate_source),
