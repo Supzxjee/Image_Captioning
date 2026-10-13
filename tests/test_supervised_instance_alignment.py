@@ -1,0 +1,100 @@
+import copy
+import unittest
+import torch
+from captioning.supervised_relations import (RELATION_SPECS, build_pairs, decode_action,
+                                             contrast_edges, diagnostic_subset)
+from captioning.instance_contrast_alignment import InstanceContrastAlignment, supervised_alignment_loss
+
+
+class SupervisedInstanceTests(unittest.TestCase):
+    def fixture(self):
+        actions = [{'action_name': name, 'role_name': ['agent', role],
+                    'ann_id': [1, 2], 'image_id': [100, 100], 'label': [0, -1],
+                    'role_object_id': [1, 2, 0, 0]} for name, role, _ in RELATION_SPECS]
+        actions[0].update(label=[1, 0], role_object_id=[1, 2, 10, 0])
+        annotations = [{'id': aid, 'image_id': 100, 'category_id': 1 if aid < 10 else 2,
+                        'bbox': [aid, 10, 20, 30], 'iscrowd': 0} for aid in (1, 2, 10, 11)]
+        instances = {'images': [{'id': 100, 'width': 100, 'height': 100}],
+                     'annotations': annotations,
+                     'categories': [{'id': 1, 'name': 'person'}, {'id': 2, 'name': 'tie'}]}
+        caption = [{'cocoid': 100, 'filename': 'test.jpg', 'split': 'train'}]
+        return actions, instances, caption
+
+    def test_role_column_order_and_agent_validation(self):
+        action = self.fixture()[0][0]
+        self.assertEqual(decode_action(action)[1]['roles']['obj'], 10)
+        action['role_object_id'][0] = 99
+        with self.assertRaises(ValueError):
+            decode_action(action)
+
+    def test_unannotated_target_is_unknown_and_confirmed_absence_is_zero(self):
+        rows, _ = build_pairs(*self.fixture())
+        indexed = {(r['subject_id'], r['object_id']): r for r in rows}
+        self.assertEqual(indexed[(1, 10)]['labels'][0], 1)
+        self.assertEqual(indexed[(1, 11)]['labels'][0], -1)
+        self.assertEqual(indexed[(2, 10)]['labels'][0], 0)
+        edges = contrast_edges(rows)
+        self.assertTrue(any(e[-1] == 'actor' for e in edges))
+        self.assertTrue(any(e[-1] == 'predicate' for e in edges))
+        for i, r, j, c, _ in edges:
+            self.assertEqual(rows[i]['labels'][r], 1)
+            self.assertEqual(rows[j]['labels'][c], 0)
+
+    def test_missing_positive_role_is_not_negative(self):
+        actions, instances, caption = self.fixture()
+        actions[1]['label'][0] = 1
+        rows, _ = build_pairs(actions, instances, caption)
+        self.assertTrue(all(r['labels'][1] == -1 for r in rows if r['subject_id'] == 1))
+
+    def test_caption_heldout_excluded(self):
+        actions, instances, caption = self.fixture()
+        for split in ('val', 'test'):
+            caption[0]['split'] = split
+            rows, stats = build_pairs(actions, instances, caption)
+            self.assertEqual(rows, [])
+            self.assertEqual(stats['excluded_caption_heldout_subjects'], 2)
+
+    def test_subset_deterministic_unique(self):
+        rows, _ = build_pairs(*self.fixture())
+        self.assertEqual(diagnostic_subset(rows, 4), diagnostic_subset(rows, 4))
+        selected = diagnostic_subset(rows, 4)
+        self.assertEqual(len({(r['subject_id'], r['object_id']) for r in selected}), len(selected))
+
+    def test_unknown_scores_have_no_loss_or_gradient(self):
+        scores = torch.tensor([[.2, -.3, .8]], requires_grad=True)
+        labels = torch.tensor([[1, 0, -1]])
+        edges = torch.empty((0, 4), dtype=torch.long)
+        loss, _, _ = supervised_alignment_loss(scores, labels, edges)
+        modified = scores.detach().clone()
+        modified[0, 2] = -100
+        other, _, _ = supervised_alignment_loss(modified, labels, edges)
+        self.assertAlmostEqual(loss.item(), other.item())
+        loss.backward()
+        self.assertEqual(scores.grad[0, 2].item(), 0)
+
+    def test_unknown_contrast_is_rejected(self):
+        with self.assertRaises(ValueError):
+            supervised_alignment_loss(torch.zeros(1, 2), torch.tensor([[1, -1]]),
+                                      torch.tensor([[0, 0, 0, 1]]))
+
+    def test_pair_head_backprop_fixed_text(self):
+        model = InstanceContrastAlignment(dim=8)
+        views = torch.randn(2, 3, 8)
+        text = torch.randn(2, 2, 8, requires_grad=True)
+        scores = model(views, text)
+        loss, _, _ = supervised_alignment_loss(scores, torch.tensor([[1, 0], [0, 1]]),
+                                               torch.tensor([[0, 0, 0, 1]]))
+        loss.backward()
+        self.assertIsNone(text.grad)
+        self.assertTrue(any(p.grad is not None and p.grad.abs().sum() > 0 for p in model.parameters()))
+
+    def test_ap_ties_and_threshold_abstention(self):
+        from run_instance_alignment_diagnostic import binary_average_precision, fit_thresholds
+        self.assertAlmostEqual(binary_average_precision([1, 0, 0], [.5, .5, .5]), 1/3)
+        self.assertEqual(binary_average_precision([1, 0], [.9, .1]), 1)
+        self.assertIsNone(binary_average_precision([0, 0], [.9, .1]))
+        self.assertEqual(fit_thresholds(torch.zeros(4, 6), torch.zeros(4, 6)), [1.01]*6)
+
+
+if __name__ == '__main__':
+    unittest.main()
