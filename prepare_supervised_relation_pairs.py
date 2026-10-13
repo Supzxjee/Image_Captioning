@@ -7,7 +7,7 @@ import urllib.request
 import zipfile
 from pathlib import Path
 from captioning.supervised_relations import (RELATIONS, build_pairs, diagnostic_subset,
-                                             pair_statistics)
+                                             pair_statistics, select_unseen_pairs)
 
 VCOCO_REVISION = '489cc4db74f2f10ab4b134f67da3874afbf245ab'
 COCO_URL = 'https://s3.amazonaws.com/images.cocodataset.org/annotations/annotations_trainval2014.zip'
@@ -49,6 +49,9 @@ def main():
     parser.add_argument('--instances', default='', help='Optional explicit combined COCO instance JSON')
     parser.add_argument('--train-pairs', type=int, default=512)
     parser.add_argument('--val-pairs', type=int, default=128)
+    parser.add_argument('--exclude-images', default='')
+    parser.add_argument('--evaluation-pairs', type=int, default=500)
+    parser.add_argument('--selection-seed', type=int, default=20261013)
     args = parser.parse_args()
     work, output = Path(args.work_dir), Path(args.output)
     work.mkdir(parents=True, exist_ok=True)
@@ -88,6 +91,21 @@ def main():
                'scope': 'GT boxes, six action roles; no wearing; no detector performance claim',
                'seed': 42, 'sampler': 'half-positive anchors, up to limit/8 actor anchors, '
                        'keep confirmed counterparts, fill negatives first; not prevalence preserving'}
+    if args.exclude_images:
+        exclusion = json.loads(Path(args.exclude_images).read_text())
+        seen = set(exclusion['image_ids'])
+        rows, excluded = build_pairs(annotations['val'], instances, caption)
+        selected, eligible = select_unseen_pairs(rows, seen, args.evaluation_pairs, args.selection_seed)
+        path = output / 'evaluation_pairs.json'
+        path.write_text(json.dumps(selected, indent=2), encoding='utf-8')
+        summary.update(variant='frozen_residual_unseen_image_evaluation_v1',
+            seed=args.selection_seed, exclusion_sha256=file_hash(args.exclude_images),
+            seen_image_overlap=0, excluded=excluded, eligible_pool=pair_statistics(eligible),
+            evaluation=pair_statistics(selected), pair_json_sha256=file_hash(path),
+            notes='Unseen for listed scorer runs/audits, not unseen for caption training or CLIP pretraining.')
+        (output / 'evaluation_pair_summary.json').write_text(json.dumps(summary, indent=2), encoding='utf-8')
+        print('NEW IMAGE PAIRS LOCKED\n' + json.dumps(summary, indent=2), flush=True)
+        return
     splits = {}
     for split, limit in [('train', args.train_pairs), ('val', args.val_pairs)]:
         rows, excluded = build_pairs(annotations[split], instances, caption)

@@ -223,13 +223,20 @@ def main():
     parser.add_argument('--shard', type=int, default=0)
     parser.add_argument('--epochs', type=int, default=20)
     parser.add_argument('--train', action='store_true')
+    parser.add_argument('--evaluation-only', action='store_true')
     args = parser.parse_args()
     if args.shards < 1 or not 0 <= args.shard < args.shards or args.epochs < 1:
         raise ValueError('Invalid diagnostic configuration.')
     data = Path(args.data)
-    train_rows = json.loads((data / 'train_pairs.json').read_text())
-    val_rows = json.loads((data / 'val_pairs.json').read_text())
-    if not train_rows or not val_rows:
+    if args.evaluation_only:
+        if args.train:
+            raise ValueError('Evaluation-only feature extraction cannot train.')
+        train_rows = []
+        val_rows = json.loads((data / 'evaluation_pairs.json').read_text())
+    else:
+        train_rows = json.loads((data / 'train_pairs.json').read_text())
+        val_rows = json.loads((data / 'val_pairs.json').read_text())
+    if not val_rows or (not train_rows and not args.evaluation_only):
         raise ValueError('Empty split.')
     if {r['image_id'] for r in train_rows} & {r['image_id'] for r in val_rows}:
         raise ValueError('Image leakage between train and val.')

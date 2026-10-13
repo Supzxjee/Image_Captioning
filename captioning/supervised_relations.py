@@ -192,3 +192,13 @@ def pair_statistics(rows):
             'labels': {name: dict(Counter(str(r['labels'][c]) for r in rows))
                        for c, name in enumerate(RELATIONS)},
             'contrast_edges': dict(Counter(e[-1] for e in contrast_edges(rows)))}
+
+
+def select_unseen_pairs(rows, seen, count=500, seed=20261013):
+    eligible = [r for r in rows if r['image_id'] not in seen]
+    selected = diagnostic_subset(eligible, count, seed=seed)
+    if len(selected) != count:
+        raise ValueError('Insufficient new pairs; do not silently change protocol.')
+    if {r['image_id'] for r in selected} & set(seen):
+        raise ValueError('Seen image selected.')
+    return selected, eligible

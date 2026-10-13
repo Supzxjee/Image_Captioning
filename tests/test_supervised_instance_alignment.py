@@ -145,6 +145,16 @@ class SupervisedInstanceTests(unittest.TestCase):
         self.assertAlmostEqual(raw_rank.item(), centered_rank.item())
         self.assertNotAlmostEqual(raw_bce.item(), centered_bce.item())
 
+    def test_new_image_selection_excludes_entire_images_and_fails_shortfall(self):
+        from captioning.supervised_relations import select_unseen_pairs
+        rows = [{'image_id': i//2, 'subject_id': i*2, 'object_id': i*2+1,
+                 'labels': [i%2, 0]} for i in range(40)]
+        selected, _ = select_unseen_pairs(rows, {0, 1, 2}, count=12)
+        self.assertFalse({r['image_id'] for r in selected} & {0, 1, 2})
+        self.assertEqual(selected, select_unseen_pairs(rows, {0, 1, 2}, count=12)[0])
+        with self.assertRaises(ValueError):
+            select_unseen_pairs(rows, set(range(20)), count=12)
+
 
 if __name__ == '__main__':
     unittest.main()

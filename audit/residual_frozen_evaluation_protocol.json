@@ -1,0 +1,29 @@
+{
+  "model": "ResidualInstanceAlignment",
+  "checkpoint_sha256": "86930afcbed9573a4a48a2a0b5a7d94507d52b67aaa63b73e5a5f7717907a438",
+  "checkpoint_origin": "R50 CPU run,seed42,20epochs",
+  "scale": 0.1,
+  "seed": 42,
+  "epochs": 20,
+  "threshold_policy": "frozen checkpoint thresholds, no fitting on new labels",
+  "evaluation_pairs": 500,
+  "selection_seed": 20261013,
+  "exclusion_sha256": "35aa80473e746c5aed7138af67e0ee827d56c9658b1c711985c393c9a2a1f245",
+  "relations": [
+    "holding",
+    "riding",
+    "sitting_on",
+    "carrying",
+    "eating",
+    "talking_on"
+  ],
+  "notes": "Unseen for listed relation runs/audits; GT boxes and curated diagnostic. Caption train/restval only.",
+  "clip_thresholds": [
+    0.34635841846466064,
+    1.01,
+    1.01,
+    1.01,
+    1.01,
+    1.01
+  ]
+}
