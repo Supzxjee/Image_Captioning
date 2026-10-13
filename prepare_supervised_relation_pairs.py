@@ -8,6 +8,7 @@ import zipfile
 from pathlib import Path
 from captioning.supervised_relations import (RELATIONS, build_pairs, diagnostic_subset,
                                              pair_statistics, select_unseen_pairs)
+from captioning.actor_compatibility import actor_supervision
 
 VCOCO_REVISION = '489cc4db74f2f10ab4b134f67da3874afbf245ab'
 COCO_URL = 'https://s3.amazonaws.com/images.cocodataset.org/annotations/annotations_trainval2014.zip'
@@ -52,6 +53,8 @@ def main():
     parser.add_argument('--exclude-images', default='')
     parser.add_argument('--evaluation-pairs', type=int, default=500)
     parser.add_argument('--selection-seed', type=int, default=20261013)
+    parser.add_argument('--all-actor-endpoints', action='store_true')
+    parser.add_argument('--actor-dev-exclusions', default='')
     args = parser.parse_args()
     work, output = Path(args.work_dir), Path(args.output)
     work.mkdir(parents=True, exist_ok=True)
@@ -91,6 +94,34 @@ def main():
                'scope': 'GT boxes, six action roles; no wearing; no detector performance claim',
                'seed': 42, 'sampler': 'half-positive anchors, up to limit/8 actor anchors, '
                        'keep confirmed counterparts, fill negatives first; not prevalence preserving'}
+    if args.all_actor_endpoints:
+        if args.exclude_images or not args.actor_dev_exclusions:
+            raise ValueError('Actor endpoint extraction needs explicit dev exclusions, not evaluation sampler.')
+        exclusions = set(json.loads(Path(args.actor_dev_exclusions).read_text())['image_ids'])
+        splits = {}
+        summary.update(variant='actor_compatibility_all_endpoints_v1',
+                       actor_dev_exclusions_sha256=file_hash(args.actor_dev_exclusions),
+                       sampler='All confirmed actor contrast endpoints; no pair-count limit or unknown negatives')
+        for split in ('train', 'val'):
+            rows, excluded = build_pairs(annotations[split], instances, caption)
+            if split == 'val':
+                rows = [r for r in rows if r['image_id'] not in exclusions]
+            labels, edges = actor_supervision(rows, exhaustive=True)
+            selected = [r for i,r in enumerate(rows) if (labels[i]>=0).any()]
+            if not selected:
+                raise ValueError('No confirmed actor pairs after exclusions.')
+            splits[split] = selected
+            path = output/f'{split}_pairs.json'
+            path.write_text(json.dumps(selected,indent=2),encoding='utf-8')
+            summary[split] = {'full':pair_statistics(rows),'diagnostic':pair_statistics(selected),
+                             'actor_edges_exhaustive':len(edges),'excluded':excluded,
+                             'pair_json_sha256':file_hash(path)}
+        if {r['image_id'] for r in splits['train']} & {r['image_id'] for r in splits['val']}:
+            raise ValueError('Actor train/dev image overlap.')
+        summary['notes']='New unseen actor dev images after listed exclusions, not caption test. GT boxes/classes.'
+        (output/'pair_summary.json').write_text(json.dumps(summary,indent=2),encoding='utf-8')
+        print('ALL ACTOR ENDPOINTS READY\n'+json.dumps(summary,indent=2),flush=True)
+        return
     if args.exclude_images:
         exclusion = json.loads(Path(args.exclude_images).read_text())
         seen = set(exclusion['image_ids'])
