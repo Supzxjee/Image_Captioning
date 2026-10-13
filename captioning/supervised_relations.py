@@ -147,7 +147,9 @@ def diagnostic_subset(rows, limit, seed=42):
                 break
         if len(chosen) >= limit:
             break
-    remaining = [r for r in pos + neg if (r['subject_id'], r['object_id']) not in used]
+    # Fill remaining slots with all-zero/unknown pairs before more positives.
+    # Positive-first fill previously skewed the intended diagnostic composition.
+    remaining = [r for r in neg + pos if (r['subject_id'], r['object_id']) not in used]
     chosen += remaining[:max(0, limit - len(chosen))]
     return sorted(chosen, key=lambda r: (r['image_id'], r['subject_id'], r['object_id']))
 

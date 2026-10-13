@@ -60,6 +60,12 @@ class SupervisedInstanceTests(unittest.TestCase):
         selected = diagnostic_subset(rows, 4)
         self.assertEqual(len({(r['subject_id'], r['object_id']) for r in selected}), len(selected))
 
+    def test_subset_fill_does_not_favor_additional_positives(self):
+        rows = [{'image_id': i, 'subject_id': i*2, 'object_id': i*2+1,
+                 'labels': [1 if i < 20 else 0, 0]} for i in range(40)]
+        selected = diagnostic_subset(rows, 12)
+        self.assertEqual(sum(1 in r['labels'] for r in selected), 6)
+
     def test_unknown_scores_have_no_loss_or_gradient(self):
         scores = torch.tensor([[.2, -.3, .8]], requires_grad=True)
         labels = torch.tensor([[1, 0, -1]])
