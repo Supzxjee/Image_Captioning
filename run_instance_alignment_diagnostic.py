@@ -104,6 +104,22 @@ def fit_thresholds(scores, labels):
     return thresholds
 
 
+def edge_metrics(scores, rows):
+    edges = contrast_edges(rows)
+    result = {}
+    for kind in ('actor', 'predicate'):
+        subset = [e for e in edges if e[-1] == kind]
+        if not subset:
+            result[kind] = {'edges': 0, 'win_rate': None, 'mean_gap': None}
+            continue
+        gaps = torch.stack([scores[i, r] - scores[j, c] for i, r, j, c, _ in subset])
+        result[kind] = {'edges': len(subset), 'images': len({rows[e[0]]['image_id'] for e in subset}),
+                        'wins': int((gaps > 0).sum()), 'ties': int((gaps == 0).sum()),
+                        'win_rate': float((gaps > 0).float().mean()), 'mean_gap': float(gaps.mean()),
+                        'margin_pass_rate': float((gaps >= .2).float().mean())}
+    return result
+
+
 def train(args, rows, train_rows, val_rows):
     from collections import Counter
     torch.set_num_threads(2)
@@ -120,6 +136,7 @@ def train(args, rows, train_rows, val_rows):
     n = len(train_rows)
     edges = contrast_edges(train_rows)
     edge_tensor = torch.tensor([e[:4] for e in edges], dtype=torch.long).reshape(-1, 4)
+    edge_kinds = torch.tensor([1 if e[-1] == 'actor' else 0 for e in edges])
     model = InstanceContrastAlignment()
     optimizer = torch.optim.AdamW(model.parameters(), lr=1e-3, weight_decay=.01)
     history = []
@@ -128,7 +145,8 @@ def train(args, rows, train_rows, val_rows):
         model.train()
         optimizer.zero_grad()
         scores = model(views[:n], text[:n])
-        loss, bce, ranking = supervised_alignment_loss(scores, labels[:n], edge_tensor)
+        loss, bce, ranking = supervised_alignment_loss(scores, labels[:n], edge_tensor,
+                                                       edge_kinds=edge_kinds)
         if not torch.isfinite(loss):
             raise ValueError('Non-finite diagnostic loss.')
         loss.backward()
@@ -153,26 +171,43 @@ def train(args, rows, train_rows, val_rows):
         plain_optimizer.step()
     with torch.inference_mode():
         plain_scores = plain(views, text)
-    summary = {'variant': 'instance_contrast_alignment_diagnostic_v1',
+    # Same initialization/data/optimizer: isolate balanced-type reduction from edge mean.
+    torch.manual_seed(42)
+    uniform = InstanceContrastAlignment()
+    uniform_optimizer = torch.optim.AdamW(uniform.parameters(), lr=1e-3, weight_decay=.01)
+    for _ in range(args.epochs):
+        uniform_optimizer.zero_grad()
+        uniform_loss, _, _ = supervised_alignment_loss(uniform(views[:n], text[:n]), labels[:n], edge_tensor)
+        uniform_loss.backward()
+        torch.nn.utils.clip_grad_norm_(uniform.parameters(), 1)
+        uniform_optimizer.step()
+    with torch.inference_mode():
+        uniform_scores = uniform(views, text)
+    summary = {'variant': 'instance_contrast_alignment_diagnostic_v2',
                'train_pairs': n, 'val_pairs': len(val_rows), 'epochs': args.epochs,
                'contrast_edges': dict(Counter(e[-1] for e in edges)), 'history': history,
+               'contrast_reduction': 'mean of present type means (predicate, actor), equal type weights',
                'threshold_protocol': 'Training-only 90% empirical precision, >=5 known accepts; not calibrated',
                'notes': 'GT boxes and diagnostic subsampling; metrics on known labels only, '
                         'not official V-COCO role AP or caption performance. Unknown claims are not negatives.'}
     predictions = []
     for name, values in [('clip_union_cosine', cosine), ('supervised_without_contrast', plain_scores),
+                         ('supervised_edge_mean_contrast', uniform_scores),
                          ('supervised_with_contrast', scores)]:
         thresholds = fit_thresholds(values[:n], labels[:n])
         summary[name] = {'thresholds': thresholds,
-                         'validation': metrics(values[n:], labels[n:], thresholds)}
+                         'validation': metrics(values[n:], labels[n:], thresholds),
+                         'validation_edges': edge_metrics(values[n:], val_rows)}
     for i, row in enumerate(val_rows, n):
         predictions.append({**row, 'scores': scores[i].tolist(),
                             'cosine_baseline': cosine[i].tolist(),
-                            'without_contrast': plain_scores[i].tolist()})
+                            'without_contrast': plain_scores[i].tolist(),
+                            'edge_mean_contrast': uniform_scores[i].tolist()})
     output = Path(args.output)
     torch.save({'model': model.state_dict(), 'relations': RELATIONS,
                 'thresholds': summary['supervised_with_contrast']['thresholds'],
-                'scope': 'diagnostic_gt_boxes'}, output / 'alignment_head.pt')
+                'scope': 'diagnostic_gt_boxes', 'variant': summary['variant'],
+                'contrast_reduction': summary['contrast_reduction']}, output / 'alignment_head.pt')
     (output / 'diagnostic_summary.json').write_text(json.dumps(summary, indent=2), encoding='utf-8')
     (output / 'validation_predictions.json').write_text(json.dumps(predictions, indent=2), encoding='utf-8')
     print('INSTANCE ALIGNMENT DIAGNOSTIC COMPLETE\n' + json.dumps(summary, indent=2), flush=True)

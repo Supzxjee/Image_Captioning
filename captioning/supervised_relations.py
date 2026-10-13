@@ -131,11 +131,20 @@ def diagnostic_subset(rows, limit, seed=42):
     neg = [r for r in rows if 1 not in r['labels']]
     rng.shuffle(pos)
     rng.shuffle(neg)
-    chosen = pos[:min(len(pos), limit // 2)]
-    used = {(r['subject_id'], r['object_id']) for r in chosen}
     by_target = defaultdict(list)
     for row in rows:
         by_target[(row['image_id'], row['object_id'])].append(row)
+    # Enrich a bounded portion with confirmed actor-counterpart anchors; this is
+    # explicitly a development diagnostic, not a prevalence-preserving benchmark.
+    actor_anchors = [row for row in pos if any(
+        other['subject_id'] != row['subject_id']
+        and any(a == 1 and b == 0 for a, b in zip(row['labels'], other['labels']))
+        for other in by_target[(row['image_id'], row['object_id'])])]
+    chosen = actor_anchors[:limit // 8]
+    used = {(r['subject_id'], r['object_id']) for r in chosen}
+    chosen += [r for r in pos if (r['subject_id'], r['object_id']) not in used][
+        :max(0, min(len(pos), limit // 2) - len(chosen))]
+    used = {(r['subject_id'], r['object_id']) for r in chosen}
     for anchor in list(chosen):
         candidates = by_target[(anchor['image_id'], anchor['object_id'])]
         for other in candidates:

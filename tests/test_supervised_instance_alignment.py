@@ -101,6 +101,26 @@ class SupervisedInstanceTests(unittest.TestCase):
         self.assertIsNone(binary_average_precision([0, 0], [.9, .1]))
         self.assertEqual(fit_thresholds(torch.zeros(4, 6), torch.zeros(4, 6)), [1.01]*6)
 
+    def test_type_balanced_ranking_not_dominated_by_duplicated_predicates(self):
+        scores = torch.tensor([[.6, .5], [-.4, 0.]])
+        labels = torch.tensor([[1, 0], [0, -1]])
+        edges = torch.tensor([[0, 0, 0, 1], [0, 0, 1, 0]])
+        _, _, ranking = supervised_alignment_loss(scores, labels, edges, edge_kinds=torch.tensor([0, 1]))
+        duplicated = torch.cat([edges[:1].repeat(20, 1), edges[1:]])
+        kinds = torch.tensor([0]*20 + [1])
+        _, _, other = supervised_alignment_loss(scores, labels, duplicated, edge_kinds=kinds)
+        self.assertAlmostEqual(ranking.item(), other.item())
+        _, _, single = supervised_alignment_loss(scores, labels, edges[:1], edge_kinds=torch.tensor([0]))
+        self.assertAlmostEqual(single.item(), 2 * ranking.item())
+
+    def test_edge_metrics_keeps_image_support_and_ties(self):
+        from run_instance_alignment_diagnostic import edge_metrics
+        rows, _ = build_pairs(*self.fixture())
+        result = edge_metrics(torch.zeros(len(rows), 6), rows)
+        self.assertEqual(result['actor']['images'], 1)
+        self.assertEqual(result['actor']['ties'], result['actor']['edges'])
+        self.assertEqual(result['actor']['wins'], 0)
+
 
 if __name__ == '__main__':
     unittest.main()

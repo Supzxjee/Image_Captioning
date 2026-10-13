@@ -17,7 +17,7 @@ class InstanceContrastAlignment(nn.Module):
 
 
 def supervised_alignment_loss(scores, labels, edges, temperature=.1, margin=.2,
-                              contrast_weight=.2):
+                              contrast_weight=.2, edge_kinds=None):
     known = labels >= 0
     if not known.any():
         raise ValueError('Batch has no known supervision.')
@@ -28,5 +28,13 @@ def supervised_alignment_loss(scores, labels, edges, temperature=.1, margin=.2,
         i, r, j, c = edges.T
         if not ((labels[i, r] == 1).all() and (labels[j, c] == 0).all()):
             raise ValueError('Contrast edges must connect confirmed positive to confirmed zero.')
-        ranking = F.relu(margin - scores[i, r] + scores[j, c]).mean()
+        penalties = F.relu(margin - scores[i, r] + scores[j, c])
+        if edge_kinds is None:
+            ranking = penalties.mean()
+        else:
+            if edge_kinds.shape != penalties.shape or not ((edge_kinds == 0) | (edge_kinds == 1)).all():
+                raise ValueError('Expected one predicate(0)/actor(1) kind per edge.')
+            # Each present type has equal weight; missing types are not fake zero losses.
+            ranking = torch.stack([penalties[edge_kinds == kind].mean()
+                                   for kind in (0, 1) if (edge_kinds == kind).any()]).mean()
     return classification + contrast_weight * ranking, classification, ranking

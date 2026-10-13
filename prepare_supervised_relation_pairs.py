@@ -82,11 +82,12 @@ def main():
                     raise ValueError('COCO category vocabularies differ.')
                 instances['categories'] = data['categories']
                 del data
-    summary = {'variant': 'instance_contrast_alignment_diagnostic_v1',
+    summary = {'variant': 'instance_contrast_alignment_diagnostic_v2',
                'relations': RELATIONS, 'vcoco_revision': VCOCO_REVISION, 'inputs': inputs,
                'unknown_label': -1, 'source': 'V-COCO train/val roles + COCO 2014 instances',
                'scope': 'GT boxes, six action roles; no wearing; no detector performance claim',
-               'seed': 42}
+               'seed': 42, 'sampler': 'half-positive anchors, up to limit/8 actor anchors, '
+                       'keep confirmed counterparts, fill negatives first; not prevalence preserving'}
     splits = {}
     for split, limit in [('train', args.train_pairs), ('val', args.val_pairs)]:
         rows, excluded = build_pairs(annotations[split], instances, caption)
