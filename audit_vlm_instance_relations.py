@@ -7,11 +7,12 @@ import time
 from collections import Counter
 from pathlib import Path
 
-from captioning.vlm_relation_audit import audit_prompt, parse_teacher_answer, shard_pairs
+from captioning.vlm_relation_audit import (audit_prompt, parse_teacher_answer, shard_pairs,
+                                          verification_prompt, parse_verification)
 from captioning.relation_candidates import union_crop_box
 
 
-def merge(output, shard_count, expected_count):
+def merge(output, shard_count, expected_count, verify_claims=False):
     results = []
     for shard in range(shard_count):
         results += json.loads((output / f'shard_{shard}.json').read_text(encoding='utf-8'))
@@ -28,10 +29,26 @@ def merge(output, shard_count, expected_count):
                  'No reference captions, old predicate or CLIP scores were shown to the model. '
                  'This audits fixed existing pairs, not a complete relation detector.',
     }
+    if verify_claims:
+        claims = [claim for row in results for claim in row['claim_verifications']]
+        summary.update({
+            'variant': 'instance_claim_verification_v1',
+            'claim_count': len(claims),
+            'claim_verdict_counts': dict(Counter(c.get('verdict', 'parse_error') for c in claims)),
+            'eligible_claims_for_review': sum(c.get('eligible_for_review', False) for c in claims),
+            'identity_or_binding_flags': sum(
+                c.get('actor_is_marked_A') is False or c.get('target_is_marked_B') is False
+                or c.get('other_actor_or_object_explains_evidence') is True
+                or c.get('subject_identity') == 'mismatch' or c.get('object_identity') == 'mismatch'
+                for c in claims),
+            'notes': 'Same teacher model performs a separate claim check; errors may be correlated. '
+                     'Eligible means review candidate, not verified truth. No accuracy without human labels.',
+        })
     (output / 'vlm_records.json').write_text(json.dumps(results, indent=2), encoding='utf-8')
     (output / 'vlm_summary.json').write_text(json.dumps(summary, indent=2), encoding='utf-8')
     fields = ['pair_index', 'filename', 'slot', 'object', 'old_predicate', 'clip_proposal',
               'decision', 'proposed_relations', 'object_description', 'evidence',
+              'original_proposed_relations', 'claim_verifications',
               'human_object_status', 'human_relation_status', 'human_supported_relations', 'notes']
     with (output / 'manual_review.csv').open('w', encoding='utf-8-sig', newline='') as handle:
         writer = csv.DictWriter(handle, fieldnames=fields)
@@ -66,12 +83,13 @@ def main():
     parser.add_argument('--shard-index', type=int, default=0)
     parser.add_argument('--shard-count', type=int, default=2)
     parser.add_argument('--merge', action='store_true')
+    parser.add_argument('--verify-claims', action='store_true')
     args = parser.parse_args()
     pairs = json.loads(Path(args.pairs).read_text(encoding='utf-8'))
     output = Path(args.output)
     output.mkdir(parents=True, exist_ok=True)
     if args.merge:
-        merge(output, args.shard_count, len(pairs))
+        merge(output, args.shard_count, len(pairs), args.verify_claims)
         return
     import torch
     from PIL import Image, ImageDraw
@@ -108,19 +126,38 @@ def main():
             pair_crop = marked.crop(union_crop_box(pair['subject_box'], pair['object_box'], *full.size))
             obj_crop = full.crop(union_crop_box(pair['object_box'], pair['object_box'], *full.size, padding=.1))
             views = [marked, pair_crop, obj_crop]
-            messages = [{'role': 'user', 'content': [
-                {'type': 'image'}, {'type': 'image'}, {'type': 'image'},
-                {'type': 'text', 'text': audit_prompt(pair)}]}]
-            text = processor.apply_chat_template(messages, tokenize=False, add_generation_prompt=True)
-            inputs = processor(text=[text], images=views, padding=True, return_tensors='pt').to('cuda:0')
-            with torch.inference_mode():
-                generated = model.generate(**inputs, max_new_tokens=256, do_sample=False)
-            raw = processor.batch_decode(generated[:, inputs['input_ids'].shape[1]:],
-                                         skip_special_tokens=True, clean_up_tokenization_spaces=False)[0]
-            try:
-                answer = parse_teacher_answer(raw)
-            except (ValueError, TypeError) as error:
-                answer = {'decision': 'parse_error', 'proposed_relations': [], 'parse_error': str(error)}
+            def infer(prompt):
+                messages = [{'role': 'user', 'content': [
+                    {'type': 'image'}, {'type': 'image'}, {'type': 'image'},
+                    {'type': 'text', 'text': prompt}]}]
+                text = processor.apply_chat_template(messages, tokenize=False, add_generation_prompt=True)
+                inputs = processor(text=[text], images=views, padding=True, return_tensors='pt').to('cuda:0')
+                with torch.inference_mode():
+                    generated = model.generate(**inputs, max_new_tokens=384, do_sample=False)
+                return processor.batch_decode(generated[:, inputs['input_ids'].shape[1]:],
+                    skip_special_tokens=True, clean_up_tokenization_spaces=False)[0]
+
+            if args.verify_claims:
+                checks = []
+                for predicate in pair['proposed_relations']:
+                    claim_raw = infer(verification_prompt(pair, predicate))
+                    try:
+                        check = parse_verification(claim_raw)
+                    except (ValueError, TypeError) as error:
+                        check = {'eligible_for_review': False, 'parse_error': str(error)}
+                    checks.append({**check, 'predicate': predicate, 'raw_answer': claim_raw})
+                kept = [c['predicate'] for c in checks if c['eligible_for_review']]
+                answer = {'claim_verifications': checks, 'proposed_relations': kept,
+                          'original_proposed_relations': pair['proposed_relations'],
+                          'decision': 'proposal_for_review' if kept else 'no_eligible_claim',
+                          'evidence': ' | '.join(c.get('direct_evidence', '') for c in checks)}
+                raw = json.dumps(checks, indent=2)
+            else:
+                raw = infer(audit_prompt(pair))
+                try:
+                    answer = parse_teacher_answer(raw)
+                except (ValueError, TypeError) as error:
+                    answer = {'decision': 'parse_error', 'proposed_relations': [], 'parse_error': str(error)}
             row = {**pair, **answer, 'pair_index': index, 'raw_answer': raw,
                    'seconds': time.monotonic() - started}
             for suffix, view in zip(['full', 'pair', 'object'], views):

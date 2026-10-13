@@ -38,13 +38,20 @@ def audit_prompt(pair):
     )
 
 
-def parse_teacher_answer(text):
+def parse_teacher_answer(text, repair_status=False):
     start = text.find('{')
     if start < 0:
         raise ValueError('No JSON object.')
     answer, _ = json.JSONDecoder().raw_decode(text[start:])
     if not isinstance(answer, dict):
         raise ValueError('Expected a JSON object.')
+    # Only repair the exact redundant-predicate schema error; never infer a label.
+    status = answer.get('relation_status')
+    if (repair_status and isinstance(status, str) and status in ALLOWED_RELATIONS
+            and answer.get('relations') == [status]):
+        answer['relation_status'] = 'supported'
+        answer['schema_repair'] = {'field': 'relation_status', 'original': status,
+                                   'replacement': 'supported'}
     for key in ('subject_visible', 'object_visible'):
         if type(answer.get(key)) is not bool:
             raise ValueError(f'{key} must be a JSON boolean.')
@@ -93,3 +100,57 @@ def shard_pairs(pairs, index, count):
     if count < 1 or not 0 <= index < count:
         raise ValueError('Invalid shard.')
     return [(i, pair) for i, pair in enumerate(pairs) if i % count == index]
+
+
+def verification_prompt(pair, predicate):
+    if predicate not in ALLOWED_RELATIONS:
+        raise ValueError('Unknown claim predicate.')
+    return (
+        'Verify ONE claim from visual evidence, independently of any previous answer. '
+        'Image 1: full image, red A is the subject and blue B is the object. '
+        'Image 2: marked crop of the same pair. Image 3: unmarked detail of B. '
+        f'Detector guesses A={pair["subject"]}, B={pair["object"]}; verify their identities. '
+        f'Claim: marked A {predicate.replace("_", " ")} marked B. '
+        'Check the exact marked instances, not another person or nearby item. '
+        'Describe A and B first. Then report the visible physical/pose/location evidence '
+        'for this claim involving exactly B. For holding/carrying require actual grip or '
+        'support; proximity is insufficient. Wearing requires B attached to A, not other '
+        'clothing. Sitting_on requires A supported by B, not an unrelated seat above B. '
+        'Eating requires visible consumption, not merely holding food. '
+        'If evidence actually refers to another actor/object, explicitly flag it. '
+        'If hidden, tiny or ambiguous, abstain. Do not substitute another relation. '
+        'Return ONLY JSON: {"subject_identity":"supported|mismatch|unclear", '
+        '"object_identity":"supported|mismatch|unclear", '
+        '"subject_description":"identity of marked A", "object_description":"identity of B", '
+        '"actor_is_marked_A":true,"target_is_marked_B":true, '
+        '"other_actor_or_object_explains_evidence":false, '
+        '"direct_evidence":"observable evidence involving A and B, or not visible", '
+        '"verdict":"supported|contradicted|unclear"}. '
+        'Booleans must be JSON booleans. Do not give a confidence score.'
+    )
+
+
+def parse_verification(text):
+    start = text.find('{')
+    if start < 0:
+        raise ValueError('No JSON object.')
+    answer, _ = json.JSONDecoder().raw_decode(text[start:])
+    if not isinstance(answer, dict):
+        raise ValueError('Expected a JSON object.')
+    for key in ('subject_identity', 'object_identity'):
+        if answer.get(key) not in {'supported', 'mismatch', 'unclear'}:
+            raise ValueError(f'Invalid {key}.')
+    for key in ('actor_is_marked_A', 'target_is_marked_B',
+                'other_actor_or_object_explains_evidence'):
+        if type(answer.get(key)) is not bool:
+            raise ValueError(f'{key} must be a JSON boolean.')
+    for key in ('subject_description', 'object_description', 'direct_evidence'):
+        if not isinstance(answer.get(key), str) or not answer[key].strip():
+            raise ValueError(f'Missing {key}.')
+    if answer.get('verdict') not in {'supported', 'contradicted', 'unclear'}:
+        raise ValueError('Invalid verdict.')
+    eligible = (answer['verdict'] == 'supported'
+                and answer['subject_identity'] == answer['object_identity'] == 'supported'
+                and answer['actor_is_marked_A'] and answer['target_is_marked_B']
+                and not answer['other_actor_or_object_explains_evidence'])
+    return {**answer, 'eligible_for_review': eligible}

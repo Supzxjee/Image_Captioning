@@ -1,0 +1,21 @@
+{
+  "count": 100,
+  "source_records_sha256": "aec789ca1fbc7909149d66364e79d935128dcaacd9d78e2c83633561246a2ef2",
+  "decision_counts": {
+    "proposal_for_review": 94,
+    "no_interaction": 6
+  },
+  "schema_repairs": [
+    2,
+    11,
+    12,
+    21,
+    31,
+    57,
+    83
+  ],
+  "notes": "Schema repair only; no visual correctness or accuracy claim.",
+  "claim_selection_sha256": "3cad0139d13ef4f955c0e8113a3648b4417b7e335a2dda3cb94b2c09ba271d20",
+  "source_zip": "vlm_instance_relation_audit_100.zip",
+  "teacher_code_commit": "74aab6b"
+}
