@@ -136,6 +136,15 @@ class SupervisedInstanceTests(unittest.TestCase):
         scores, base, delta = model(views, text)
         self.assertLessEqual(delta.abs().max().item(), .100001)
 
+    def test_shared_center_changes_bce_but_not_contrast_ranking(self):
+        scores = torch.tensor([[.3, .2], [.1, .4]])
+        labels = torch.tensor([[1, 0], [0, 1]])
+        edges = torch.tensor([[0, 0, 1, 0], [1, 1, 1, 0]])
+        _, raw_bce, raw_rank = supervised_alignment_loss(scores, labels, edges)
+        _, centered_bce, centered_rank = supervised_alignment_loss(scores-.4, labels, edges)
+        self.assertAlmostEqual(raw_rank.item(), centered_rank.item())
+        self.assertNotAlmostEqual(raw_bce.item(), centered_bce.item())
+
 
 if __name__ == '__main__':
     unittest.main()
