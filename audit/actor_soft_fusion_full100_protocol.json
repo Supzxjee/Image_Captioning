@@ -1,0 +1,23 @@
+{
+  "variant": "frozen_actor_soft_fusion_full_candidate_100_v1",
+  "selection_seed": 20261014,
+  "images": 100,
+  "vcoco_revision": "489cc4db74f2f10ab4b134f67da3874afbf245ab",
+  "model": "openai/clip-vit-base-patch16",
+  "model_revision": "57c216476eefef5ab752ec549e440a49ae4ae5f3",
+  "exclusions_sha256": "5e4dbc0853601b64126c758629b378345d2a77097b3d3ac9e21a3fdab03dc5c4",
+  "exclusions_count": 1711,
+  "residual_head_sha256": "86930afcbed9573a4a48a2a0b5a7d94507d52b67aaa63b73e5a5f7717907a438",
+  "actor_head_sha256": "cdfaae489407b13d32eb065d63eaa101f008303f61484d2a5c81d9258f0e7295",
+  "fusion_head_sha256": "5e7f838fe1fb585e3d41a090bef1617f61e868451225b7827ce5681b8b4f865d",
+  "caption_json_sha256": "2fd999220673258012acfb411a4e7e66af7d488050b2519b0badcc49b7600b8d",
+  "selection": "Uniform shuffle of eligible official VCOCOval image IDs with caption train/restval; no scores/detection conf/GT relations used to select100; missing cache fails without replacement.",
+  "min_confidence": 0.5,
+  "max_objects": 10,
+  "duplicate_iou": 0.8,
+  "max_relations": 3,
+  "training": false,
+  "threshold_refit": false,
+  "notes": "New relative to listed development/scorer images; full means retained top10person-object pool only. Independent annotation needed for precision/recall; no caption test.",
+  "detection_cache_sha256": "498825daf8f8773a1c92f4111dc4ccf1f4296343f952b486e0aa56caf82ec04c"
+}

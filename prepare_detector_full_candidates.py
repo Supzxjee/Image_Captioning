@@ -69,15 +69,15 @@ def main():
     pair_file = output / 'evaluation_pairs.json'
     pair_file.write_text(json.dumps(pairs, indent=2), encoding='utf-8')
     (output / 'object_inventory.json').write_text(json.dumps(inventory, indent=2), encoding='utf-8')
-    summary = {'variant': 'detector_full_candidate_audit_20_v1', 'images': len(inventory),
+    summary = {'variant': selection.get('variant','detector_full_candidate_audit_20_v1'), 'images': len(inventory),
                'candidate_pairs': len(pairs), 'retained_objects': sum(len(x) for x in inventory.values()),
                'images_without_person': sum(not any(o['label']=='person' for o in x) for x in inventory.values()),
                'issues': dict(issues), 'min_confidence': .5, 'max_objects': 10, 'duplicate_iou': .8,
                'coordinate_format': args.coordinate_format,
                'image_list_sha256': hashlib.sha256(Path(args.image_list).read_bytes()).hexdigest(),
                'pair_json_sha256': hashlib.sha256(pair_file.read_bytes()).hexdigest(),
-               'notes': 'All person-object pairs within top10 retained detections; no GT matching/labels. '
-                        '20 images from previously evaluated cohort, qualitative audit not new heldout benchmark.'}
+               'notes': 'All person-object pairs within top10 retained detections; no GT matching/labels. '+selection.get(
+                   'selection_scope','20 images from previously evaluated cohort, qualitative audit not new heldout benchmark.')}
     digest = hashlib.sha256()
     with source_path.open('rb') as handle:
         while block := handle.read(4*1024**2):
