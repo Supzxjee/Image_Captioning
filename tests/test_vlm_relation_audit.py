@@ -78,6 +78,9 @@ class VLMRelationAuditTests(unittest.TestCase):
                                       'old_predicate': 'secret_old_predicate'}, 'wearing')
         self.assertNotIn('secret_old', prompt)
         self.assertIn('marked A wearing marked B', prompt)
+        self.assertNotIn('|', prompt)
+        example, _ = json.JSONDecoder().raw_decode(prompt[prompt.find('{'):])
+        self.assertFalse(parse_verification(json.dumps(example))['eligible_for_review'])
 
 
 if __name__ == '__main__':
