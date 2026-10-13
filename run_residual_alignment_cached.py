@@ -7,7 +7,7 @@ import zipfile
 from pathlib import Path
 import torch
 from captioning.supervised_relations import RELATIONS, contrast_edges
-from captioning.instance_contrast_alignment import ResidualInstanceAlignment, supervised_alignment_loss
+from captioning.instance_contrast_alignment import ResidualInstanceAlignment, PairOnlyResidualAlignment, supervised_alignment_loss
 from run_instance_alignment_diagnostic import metrics, fit_thresholds, edge_metrics
 
 
@@ -17,6 +17,7 @@ def main():
     parser.add_argument('--output', required=True)
     parser.add_argument('--epochs', type=int, default=20)
     parser.add_argument('--scale', type=float, default=.1)
+    parser.add_argument('--pair-only', action='store_true', help='Correction uses A/B only; frozen union CLIP prior retained.')
     args = parser.parse_args()
     if args.epochs < 1:
         raise ValueError('epochs must be positive.')
@@ -63,7 +64,7 @@ def main():
     edges = contrast_edges(train)
     tensor_edges = torch.tensor([e[:4] for e in edges], dtype=torch.long).reshape(-1, 4)
     kinds = torch.tensor([1 if e[-1] == 'actor' else 0 for e in edges])
-    model = ResidualInstanceAlignment(scale=args.scale)
+    model = (PairOnlyResidualAlignment if args.pair_only else ResidualInstanceAlignment)(scale=args.scale)
     with torch.inference_mode():
         initial, base, _ = model(views, text)
     if not torch.equal(initial, base):
@@ -93,7 +94,7 @@ def main():
         print(history[-1], flush=True)
     with torch.inference_mode():
         scores, base, delta = model(views, text)
-    summary = {'variant': 'clip_prior_bounded_residual_v1', 'seed': 42, 'epochs': args.epochs,
+    summary = {'variant': 'clip_prior_pair_only_residual_v1' if args.pair_only else 'clip_prior_bounded_residual_v1', 'seed': 42, 'epochs': args.epochs,
                'scale': args.scale, 'train_pairs': n, 'dev_pairs': len(val),
                'source_code_commit': original.get('code_commit'), 'history': history,
                'train_only_logit_center': float(center),
@@ -128,7 +129,7 @@ def main():
     (output / 'validation_predictions.json').write_text(json.dumps([
         {**row, 'scores': scores[n+i].tolist(), 'clip': base[n+i].tolist(),
          'correction': delta[n+i].tolist()} for i, row in enumerate(val)], indent=2), encoding='utf-8')
-    torch.save({'model': model.state_dict(), 'scale': args.scale, 'relations': RELATIONS,
+    torch.save({'model': model.state_dict(), 'architecture': 'pair_only' if args.pair_only else 'union_conditioned', 'scale': args.scale, 'relations': RELATIONS,
                 'thresholds': thresholds, 'logit_center': float(center)}, output / 'residual_head.pt')
     print('RESIDUAL RESULT', json.dumps(summary['residual'], indent=2), flush=True)
     print('FLIPS', json.dumps(flips), flush=True)
