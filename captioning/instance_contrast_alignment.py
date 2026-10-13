@@ -16,6 +16,26 @@ class InstanceContrastAlignment(nn.Module):
         return torch.einsum('bd,bkd->bk', pair, F.normalize(text.detach(), dim=-1))
 
 
+class ResidualInstanceAlignment(nn.Module):
+    """Keep frozen union/text cosine and learn only a bounded additive correction."""
+    def __init__(self, dim=512, scale=.1):
+        super().__init__()
+        if not 0 < scale <= 1:
+            raise ValueError('Residual scale must be in (0,1].')
+        self.scale = scale
+        self.correction = nn.Sequential(nn.Linear(dim*3, dim), nn.GELU(),
+                                         nn.LayerNorm(dim), nn.Linear(dim, dim))
+        nn.init.zeros_(self.correction[-1].weight)
+        nn.init.zeros_(self.correction[-1].bias)
+
+    def forward(self, views, text):
+        fixed = F.normalize(text.detach(), dim=-1)
+        base = torch.einsum('bd,bkd->bk', views[:, 2].detach(), fixed)
+        raw = torch.einsum('bd,bkd->bk', self.correction(views.detach().flatten(1)), fixed)
+        delta = self.scale * torch.tanh(raw)
+        return base + delta, base, delta
+
+
 def supervised_alignment_loss(scores, labels, edges, temperature=.1, margin=.2,
                               contrast_weight=.2, edge_kinds=None):
     known = labels >= 0

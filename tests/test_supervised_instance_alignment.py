@@ -3,7 +3,8 @@ import unittest
 import torch
 from captioning.supervised_relations import (RELATION_SPECS, build_pairs, decode_action,
                                              contrast_edges, diagnostic_subset)
-from captioning.instance_contrast_alignment import InstanceContrastAlignment, supervised_alignment_loss
+from captioning.instance_contrast_alignment import (InstanceContrastAlignment,
+                                                    ResidualInstanceAlignment, supervised_alignment_loss)
 
 
 class SupervisedInstanceTests(unittest.TestCase):
@@ -120,6 +121,20 @@ class SupervisedInstanceTests(unittest.TestCase):
         self.assertEqual(result['actor']['images'], 1)
         self.assertEqual(result['actor']['ties'], result['actor']['edges'])
         self.assertEqual(result['actor']['wins'], 0)
+
+    def test_residual_starts_exactly_at_clip_and_is_bounded(self):
+        model = ResidualInstanceAlignment(dim=8, scale=.1)
+        views = torch.randn(3, 3, 8)
+        text = torch.randn(3, 6, 8)
+        scores, base, delta = model(views, text)
+        self.assertTrue(torch.equal(scores, base))
+        self.assertEqual(delta.abs().sum().item(), 0)
+        scores.sum().backward()
+        self.assertGreater(model.correction[-1].weight.grad.abs().sum().item(), 0)
+        with torch.no_grad():
+            model.correction[-1].weight.fill_(100)
+        scores, base, delta = model(views, text)
+        self.assertLessEqual(delta.abs().max().item(), .100001)
 
 
 if __name__ == '__main__':
