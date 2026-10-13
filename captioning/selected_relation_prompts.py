@@ -16,12 +16,14 @@ def phrase(label):
     return f'{article} {label}'
 
 
-def build_selected_prompts(scored_pairs, thresholds, max_relations=3):
+def build_selected_prompts(scored_pairs, thresholds, max_relations=3, object_inventory=None):
     if len(thresholds) != len(RELATIONS) or max_relations < 1:
         raise ValueError('Invalid thresholds/relation limit.')
     if not all(math.isfinite(x) for x in thresholds):
         raise ValueError('Thresholds must be finite.')
     groups = defaultdict(list)
+    for filename in object_inventory or {}:
+        groups[filename] = []
     for row in scored_pairs:
         if len(row['scores']) != len(RELATIONS) or not all(math.isfinite(v) for v in row['scores']):
             raise ValueError('Invalid scores.')
@@ -34,6 +36,10 @@ def build_selected_prompts(scored_pairs, thresholds, max_relations=3):
     result = {}
     for filename, rows in sorted(groups.items()):
         objects, candidates = {}, {}
+        for entity in (object_inventory or {}).get(filename, []):
+            identity = entity_id(filename, entity['label'], entity['bbox'])
+            objects[identity] = {**entity, 'instance_id': identity,
+                                 'prompt': 'a photo of '+phrase(entity['label'])}
         for row in rows:
             ids = []
             for role in ('subject', 'object'):
@@ -58,13 +64,13 @@ def build_selected_prompts(scored_pairs, thresholds, max_relations=3):
                                                             c['relation'], c['object_instance']))
         selected = ordered[:max_relations]
         labels = sorted({entity['label'] for entity in objects.values()})
-        object_text = 'a photo of '+', '.join(phrase(label) for label in labels)
+        object_text = 'a photo of '+', '.join(phrase(label) for label in labels) if labels else ''
         relation_text = ('a photo showing '+', '.join(
             f'{phrase(c["subject"])} {c["relation"].replace("_", " ")} {phrase(c["object"])}' for c in selected))
         result[filename] = {'objects': list(objects.values()), 'relations': selected,
                             'object_prompt': object_text,
                             'relation_prompt': relation_text if selected else '',
                             'prompt': relation_text if selected else object_text,
-                            'mode': 'object_relation' if selected else 'object_only',
+                            'mode': 'object_relation' if selected else 'object_only' if objects else 'no_objects',
                             'above_threshold_claims': len(ordered), 'capped_claims': len(ordered)-len(selected)}
     return result

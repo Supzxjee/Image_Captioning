@@ -38,6 +38,25 @@ class SelectedPromptTests(unittest.TestCase):
         self.assertEqual(len(entry['objects']), 3)
         self.assertEqual(len(entry['relations']), 2)
 
+    def test_inventory_retains_objects_without_person_pairs(self):
+        inventory = {'cat.jpg': [{'label': 'cat', 'bbox': [0, 0, 1, 1], 'confidence': .9}],
+                     'empty.jpg': []}
+        result = build_selected_prompts([], [.5]*6, object_inventory=inventory)
+        self.assertEqual(result['cat.jpg']['mode'], 'object_only')
+        self.assertIn('cat', result['cat.jpg']['prompt'])
+        self.assertEqual(result['empty.jpg']['mode'], 'no_objects')
+        self.assertEqual(result['empty.jpg']['prompt'], '')
+
+    def test_all_person_object_candidates_have_no_gt_labels(self):
+        from captioning.detector_candidates import person_object_pairs
+        image = {'filename': 'x.jpg', 'image_id': 1, 'filepath': 'train2014', 'caption_split': 'train'}
+        objects = [{'label': 'person', 'bbox': [0, 0, .3, 1], 'confidence': .9},
+                   {'label': 'person', 'bbox': [.7, 0, 1, 1], 'confidence': .8},
+                   {'label': 'bicycle', 'bbox': [.1, .3, .9, 1], 'confidence': .7}]
+        pairs = person_object_pairs(image, objects)
+        self.assertEqual(len(pairs), 4)
+        self.assertTrue(all('labels' not in row and row['subject_id'] != row['object_id'] for row in pairs))
+
 
 if __name__ == '__main__':
     unittest.main()

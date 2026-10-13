@@ -1,0 +1,126 @@
+{
+  "selection_seed": 20261014,
+  "selection_policy": "Uniform sample20 unique images from R53 cohort before scoring full detector candidates; no use of labels or prior scores",
+  "images": [
+    {
+      "image_id": 328918,
+      "filename": "COCO_train2014_000000328918.jpg",
+      "filepath": "train2014",
+      "caption_split": "train"
+    },
+    {
+      "image_id": 528582,
+      "filename": "COCO_train2014_000000528582.jpg",
+      "filepath": "train2014",
+      "caption_split": "train"
+    },
+    {
+      "image_id": 1580,
+      "filename": "COCO_train2014_000000001580.jpg",
+      "filepath": "train2014",
+      "caption_split": "train"
+    },
+    {
+      "image_id": 346481,
+      "filename": "COCO_train2014_000000346481.jpg",
+      "filepath": "train2014",
+      "caption_split": "train"
+    },
+    {
+      "image_id": 507580,
+      "filename": "COCO_train2014_000000507580.jpg",
+      "filepath": "train2014",
+      "caption_split": "train"
+    },
+    {
+      "image_id": 532014,
+      "filename": "COCO_train2014_000000532014.jpg",
+      "filepath": "train2014",
+      "caption_split": "train"
+    },
+    {
+      "image_id": 391488,
+      "filename": "COCO_train2014_000000391488.jpg",
+      "filepath": "train2014",
+      "caption_split": "train"
+    },
+    {
+      "image_id": 198759,
+      "filename": "COCO_train2014_000000198759.jpg",
+      "filepath": "train2014",
+      "caption_split": "train"
+    },
+    {
+      "image_id": 49901,
+      "filename": "COCO_train2014_000000049901.jpg",
+      "filepath": "train2014",
+      "caption_split": "train"
+    },
+    {
+      "image_id": 347604,
+      "filename": "COCO_train2014_000000347604.jpg",
+      "filepath": "train2014",
+      "caption_split": "train"
+    },
+    {
+      "image_id": 259514,
+      "filename": "COCO_train2014_000000259514.jpg",
+      "filepath": "train2014",
+      "caption_split": "train"
+    },
+    {
+      "image_id": 395225,
+      "filename": "COCO_train2014_000000395225.jpg",
+      "filepath": "train2014",
+      "caption_split": "train"
+    },
+    {
+      "image_id": 313071,
+      "filename": "COCO_train2014_000000313071.jpg",
+      "filepath": "train2014",
+      "caption_split": "train"
+    },
+    {
+      "image_id": 282934,
+      "filename": "COCO_train2014_000000282934.jpg",
+      "filepath": "train2014",
+      "caption_split": "train"
+    },
+    {
+      "image_id": 445495,
+      "filename": "COCO_train2014_000000445495.jpg",
+      "filepath": "train2014",
+      "caption_split": "train"
+    },
+    {
+      "image_id": 17489,
+      "filename": "COCO_train2014_000000017489.jpg",
+      "filepath": "train2014",
+      "caption_split": "train"
+    },
+    {
+      "image_id": 296882,
+      "filename": "COCO_train2014_000000296882.jpg",
+      "filepath": "train2014",
+      "caption_split": "train"
+    },
+    {
+      "image_id": 48130,
+      "filename": "COCO_train2014_000000048130.jpg",
+      "filepath": "train2014",
+      "caption_split": "train"
+    },
+    {
+      "image_id": 304248,
+      "filename": "COCO_train2014_000000304248.jpg",
+      "filepath": "train2014",
+      "caption_split": "train"
+    },
+    {
+      "image_id": 318672,
+      "filename": "COCO_train2014_000000318672.jpg",
+      "filepath": "train2014",
+      "caption_split": "train"
+    }
+  ]
+}

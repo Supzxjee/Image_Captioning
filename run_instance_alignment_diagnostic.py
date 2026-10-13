@@ -236,6 +236,12 @@ def main():
     else:
         train_rows = json.loads((data / 'train_pairs.json').read_text())
         val_rows = json.loads((data / 'val_pairs.json').read_text())
+    if not val_rows and args.evaluation_only:
+        output = Path(args.output)
+        output.mkdir(parents=True, exist_ok=True)
+        torch.save([], output / f'features_{args.shard}.pt')
+        print('No detector pair candidates; saved empty feature shard.', flush=True)
+        return
     if not val_rows or (not train_rows and not args.evaluation_only):
         raise ValueError('Empty split.')
     if {r['image_id'] for r in train_rows} & {r['image_id'] for r in val_rows}:
