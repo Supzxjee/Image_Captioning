@@ -19,6 +19,13 @@ def sha(path):
     return digest.hexdigest()
 
 
+def newline_hashes(path):
+    """Accept only LF/CRLF representations of the exact frozen manifest bytes."""
+    raw = Path(path).read_bytes()
+    lf = raw.replace(b'\r\n', b'\n')
+    return {hashlib.sha256(value).hexdigest() for value in (raw, lf, lf.replace(b'\n', b'\r\n'))}
+
+
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('--source', required=True)
@@ -30,7 +37,8 @@ def main():
     protocol = json.loads(Path(args.protocol).read_text())
     if sha(args.checkpoint) != protocol['checkpoint_sha256']:
         raise ValueError('Frozen checkpoint SHA mismatch.')
-    if sha(args.exclusions) != protocol['exclusion_sha256']:
+    exclusion_hashes = newline_hashes(args.exclusions)
+    if protocol['exclusion_sha256'] not in exclusion_hashes:
         raise ValueError('Exclusion manifest changed.')
     seen = set(json.loads(Path(args.exclusions).read_text())['image_ids'])
     with zipfile.ZipFile(args.source) as archive:
@@ -44,8 +52,13 @@ def main():
         data_summary = json.loads(read('data/evaluation_pair_summary.json'))
         if hashlib.sha256(raw).hexdigest() != data_summary['pair_json_sha256']:
             raise ValueError('Pair hash mismatch.')
-        if data_summary['exclusion_sha256'] != protocol['exclusion_sha256']:
+        if data_summary['exclusion_sha256'] not in exclusion_hashes:
             raise ValueError('Source used different exclusions.')
+        config = json.loads(read('manifest.json'))['configuration']
+        if (config['model'] != 'openai/clip-vit-base-patch16'
+                or config['model_revision'] != '57c216476eefef5ab752ec549e440a49ae4ae5f3'
+                or config['training'] is not False):
+            raise ValueError('Frozen feature model/protocol mismatch.')
         if data_summary['seed'] != protocol['selection_seed'] or len(rows) != protocol['evaluation_pairs']:
             raise ValueError('Evaluation selection protocol mismatch.')
         records = []
@@ -83,6 +96,7 @@ def main():
                'source_zip_sha256': sha(args.source), 'pairs': len(rows),
                'images': len({r['image_id'] for r in rows}), 'seen_image_overlap': 0,
                'training_performed': False, 'threshold_refit': False,
+               'exclusion_hash_verification': 'Exact frozen content; LF/CRLF-only variants accepted',
                'flips_vs_clip': flips_vs_base(scores, base, rows),
                'notes': 'New for listed scorer experiments/audits. GT boxes and curated pairs; '
                         'not caption-heldout/official HOI role AP or proof of novelty.'}

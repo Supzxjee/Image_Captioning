@@ -155,6 +155,19 @@ class SupervisedInstanceTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             select_unseen_pairs(rows, set(range(20)), count=12)
 
+    def test_exclusion_checksum_allows_only_line_ending_changes(self):
+        import tempfile
+        from pathlib import Path
+        from evaluate_frozen_residual import newline_hashes
+        with tempfile.TemporaryDirectory() as folder:
+            path = Path(folder) / 'manifest.json'
+            path.write_bytes(b'{\n"image_ids": [1, 2]\n}')
+            expected = newline_hashes(path)
+            path.write_bytes(b'{\r\n"image_ids": [1, 2]\r\n}')
+            self.assertEqual(newline_hashes(path), expected)
+            path.write_bytes(b'{\r\n"image_ids": [1, 3]\r\n}')
+            self.assertFalse(newline_hashes(path) & expected)
+
 
 if __name__ == '__main__':
     unittest.main()
