@@ -1,0 +1,48 @@
+{
+  "variant": "shared_union_interaction_regions_v1",
+  "model": "openai/clip-vit-base-patch16",
+  "revision": "57c216476eefef5ab752ec549e440a49ae4ae5f3",
+  "union_padding": 0.1,
+  "grid": 14,
+  "vision_dim": 768,
+  "regions": [
+    "subject",
+    "object",
+    "intersection",
+    "bridge",
+    "outside",
+    "union_cls"
+  ],
+  "feature": "final CLIP patch hidden_state postLayerNorm;area-weighted region pooling andL2norm;no512D visualprojection",
+  "empty_regions": "zero feature withvalid=False;no synthetic contact label",
+  "bridge": "center-to-center bounding corridor paddedhalfpatch;subtract subject/object rectangles",
+  "training_performed": false,
+  "splits": {
+    "train": {
+      "pairs": 1141,
+      "images": 616,
+      "pair_json_sha256": "1e1afd0a33e52003d558e0236b1aa41ba7d2d54b04fafaefc5f025e7667fffa6",
+      "source_sha256": "c3fcf5d65a462392891f4efa8adbd33a8d5359598ad0d0e80e4c91e863ee449f"
+    },
+    "val": {
+      "pairs": 310,
+      "images": 128,
+      "pair_json_sha256": "bbda4ccfd9e3eaf9c5644d4eb9f4995e981cc38ca7f2f01f0d089c953c51d8c3",
+      "source_sha256": "c3fcf5d65a462392891f4efa8adbd33a8d5359598ad0d0e80e4c91e863ee449f"
+    },
+    "transfer": {
+      "pairs": 364,
+      "images": 286,
+      "pair_json_sha256": "87eb9d91f24546da3a0bc9bd40d16cf0557dee68ccde7ca6c1695ab20d7e1b4f",
+      "source_sha256": "a129ab178f02e147980c537b1a64f21f8cc8f16a2c2ad09e60049ddac0d36e07"
+    },
+    "full100": {
+      "pairs": 1321,
+      "images": 94,
+      "pair_json_sha256": "d83edc17ebbe1d5be5dac88190b99ab5017e71aca8adb95496d44a1332fd2f0f",
+      "source_sha256": "864bedb4925d5a3cc7eca50fa434d81761f84928dba9acab91d6c1badf8b8d4d"
+    }
+  },
+  "next_paired_training": "region verifier vsunion-CLS repeated inallvalid slots;identicalgeometry/mass/valid/text/dims andtrain schedule;knownlabels only;no audit labels/whitelists",
+  "notes": "Coarse14x14 spatial evidence,notsegmentation/contactGT;contextualized patches can contain otherinstances. Existingmatched train/dev/transfer/full100development sets;no freshheldout/novelty/caption claim."
+}
