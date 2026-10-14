@@ -1,0 +1,523 @@
+{
+  "variant": "triplet_gate_bottleneck_v1",
+  "full_gt": {
+    "head_sha256": "de8124a30555b39eabdf45cdf649d599788174361c94bd8036ebed714f61fab4",
+    "source_sha256": "a129ab178f02e147980c537b1a64f21f8cc8f16a2c2ad09e60049ddac0d36e07",
+    "training_performed": false,
+    "threshold_refit": false,
+    "pipeline_changed": false,
+    "known_positive": 243,
+    "states": {
+      "both_accept": {
+        "positive": 35,
+        "negative": 1,
+        "unknown": 8,
+        "precision_on_known": 0.9722222222222222,
+        "recall_on_known": 0.1440329218106996
+      },
+      "proposer_only": {
+        "positive": 8,
+        "negative": 5,
+        "unknown": 3,
+        "precision_on_known": 0.6153846153846154,
+        "recall_on_known": 0.03292181069958848
+      },
+      "verifier_only": {
+        "positive": 83,
+        "negative": 11,
+        "unknown": 30,
+        "precision_on_known": 0.8829787234042553,
+        "recall_on_known": 0.34156378600823045
+      },
+      "neither_accept": {
+        "positive": 117,
+        "negative": 1682,
+        "unknown": 201,
+        "precision_on_known": 0.06503613118399111,
+        "recall_on_known": 0.48148148148148145
+      }
+    },
+    "proposer_alone": {
+      "positive": 43,
+      "negative": 6,
+      "unknown": 11,
+      "precision_on_known": 0.8775510204081632,
+      "recall_on_known": 0.17695473251028807
+    },
+    "verifier_alone_counterfactual": {
+      "positive": 118,
+      "negative": 12,
+      "unknown": 38,
+      "precision_on_known": 0.9076923076923077,
+      "recall_on_known": 0.48559670781893005
+    },
+    "per_relation": {
+      "holding": {
+        "known_positive": 142,
+        "states": {
+          "both_accept": {
+            "positive": 5,
+            "negative": 0,
+            "unknown": 0
+          },
+          "proposer_only": {
+            "positive": 4,
+            "negative": 2,
+            "unknown": 0
+          },
+          "verifier_only": {
+            "positive": 62,
+            "negative": 6,
+            "unknown": 23
+          },
+          "neither_accept": {
+            "positive": 71,
+            "negative": 126,
+            "unknown": 65
+          }
+        }
+      },
+      "riding": {
+        "known_positive": 18,
+        "states": {
+          "both_accept": {
+            "positive": 13,
+            "negative": 0,
+            "unknown": 4
+          },
+          "proposer_only": {
+            "positive": 2,
+            "negative": 1,
+            "unknown": 0
+          },
+          "verifier_only": {
+            "positive": 2,
+            "negative": 0,
+            "unknown": 1
+          },
+          "neither_accept": {
+            "positive": 1,
+            "negative": 336,
+            "unknown": 4
+          }
+        }
+      },
+      "sitting_on": {
+        "known_positive": 28,
+        "states": {
+          "both_accept": {
+            "positive": 5,
+            "negative": 1,
+            "unknown": 2
+          },
+          "proposer_only": {
+            "positive": 2,
+            "negative": 1,
+            "unknown": 3
+          },
+          "verifier_only": {
+            "positive": 12,
+            "negative": 3,
+            "unknown": 5
+          },
+          "neither_accept": {
+            "positive": 9,
+            "negative": 233,
+            "unknown": 88
+          }
+        }
+      },
+      "carrying": {
+        "known_positive": 27,
+        "states": {
+          "both_accept": {
+            "positive": 0,
+            "negative": 0,
+            "unknown": 0
+          },
+          "proposer_only": {
+            "positive": 0,
+            "negative": 0,
+            "unknown": 0
+          },
+          "verifier_only": {
+            "positive": 3,
+            "negative": 1,
+            "unknown": 0
+          },
+          "neither_accept": {
+            "positive": 24,
+            "negative": 330,
+            "unknown": 6
+          }
+        }
+      },
+      "eating": {
+        "known_positive": 23,
+        "states": {
+          "both_accept": {
+            "positive": 12,
+            "negative": 0,
+            "unknown": 2
+          },
+          "proposer_only": {
+            "positive": 0,
+            "negative": 1,
+            "unknown": 0
+          },
+          "verifier_only": {
+            "positive": 2,
+            "negative": 0,
+            "unknown": 0
+          },
+          "neither_accept": {
+            "positive": 9,
+            "negative": 309,
+            "unknown": 29
+          }
+        }
+      },
+      "talking_on": {
+        "known_positive": 5,
+        "states": {
+          "both_accept": {
+            "positive": 0,
+            "negative": 0,
+            "unknown": 0
+          },
+          "proposer_only": {
+            "positive": 0,
+            "negative": 0,
+            "unknown": 0
+          },
+          "verifier_only": {
+            "positive": 2,
+            "negative": 1,
+            "unknown": 1
+          },
+          "neither_accept": {
+            "positive": 3,
+            "negative": 348,
+            "unknown": 9
+          }
+        }
+      }
+    },
+    "notes": "Frozen score decomposition on reused matched detector pairs before prompt cap. Verifier-only is a diagnostic counterfactual, not a promoted ungated pipeline. Unmatched detector proposals absent; unknown labels not counted as false. Neither acceptance means both thresholds fail, not two separately attributed exclusive losses."
+  },
+  "mixed": {
+    "head_sha256": "1b99fff6d0b94e5fb0faf114f675218b9d433e531bdc5327ad455e896a832e47",
+    "source_sha256": "a129ab178f02e147980c537b1a64f21f8cc8f16a2c2ad09e60049ddac0d36e07",
+    "training_performed": false,
+    "threshold_refit": false,
+    "pipeline_changed": false,
+    "known_positive": 243,
+    "states": {
+      "both_accept": {
+        "positive": 28,
+        "negative": 1,
+        "unknown": 7,
+        "precision_on_known": 0.9655172413793104,
+        "recall_on_known": 0.11522633744855967
+      },
+      "proposer_only": {
+        "positive": 15,
+        "negative": 5,
+        "unknown": 4,
+        "precision_on_known": 0.75,
+        "recall_on_known": 0.06172839506172839
+      },
+      "verifier_only": {
+        "positive": 80,
+        "negative": 10,
+        "unknown": 27,
+        "precision_on_known": 0.8888888888888888,
+        "recall_on_known": 0.3292181069958848
+      },
+      "neither_accept": {
+        "positive": 120,
+        "negative": 1683,
+        "unknown": 204,
+        "precision_on_known": 0.06655574043261231,
+        "recall_on_known": 0.49382716049382713
+      }
+    },
+    "proposer_alone": {
+      "positive": 43,
+      "negative": 6,
+      "unknown": 11,
+      "precision_on_known": 0.8775510204081632,
+      "recall_on_known": 0.17695473251028807
+    },
+    "verifier_alone_counterfactual": {
+      "positive": 108,
+      "negative": 11,
+      "unknown": 34,
+      "precision_on_known": 0.907563025210084,
+      "recall_on_known": 0.4444444444444444
+    },
+    "per_relation": {
+      "holding": {
+        "known_positive": 142,
+        "states": {
+          "both_accept": {
+            "positive": 2,
+            "negative": 0,
+            "unknown": 0
+          },
+          "proposer_only": {
+            "positive": 7,
+            "negative": 2,
+            "unknown": 0
+          },
+          "verifier_only": {
+            "positive": 54,
+            "negative": 5,
+            "unknown": 19
+          },
+          "neither_accept": {
+            "positive": 79,
+            "negative": 127,
+            "unknown": 69
+          }
+        }
+      },
+      "riding": {
+        "known_positive": 18,
+        "states": {
+          "both_accept": {
+            "positive": 12,
+            "negative": 0,
+            "unknown": 4
+          },
+          "proposer_only": {
+            "positive": 3,
+            "negative": 1,
+            "unknown": 0
+          },
+          "verifier_only": {
+            "positive": 2,
+            "negative": 0,
+            "unknown": 1
+          },
+          "neither_accept": {
+            "positive": 1,
+            "negative": 336,
+            "unknown": 4
+          }
+        }
+      },
+      "sitting_on": {
+        "known_positive": 28,
+        "states": {
+          "both_accept": {
+            "positive": 5,
+            "negative": 1,
+            "unknown": 2
+          },
+          "proposer_only": {
+            "positive": 2,
+            "negative": 1,
+            "unknown": 3
+          },
+          "verifier_only": {
+            "positive": 10,
+            "negative": 2,
+            "unknown": 5
+          },
+          "neither_accept": {
+            "positive": 11,
+            "negative": 234,
+            "unknown": 88
+          }
+        }
+      },
+      "carrying": {
+        "known_positive": 27,
+        "states": {
+          "both_accept": {
+            "positive": 0,
+            "negative": 0,
+            "unknown": 0
+          },
+          "proposer_only": {
+            "positive": 0,
+            "negative": 0,
+            "unknown": 0
+          },
+          "verifier_only": {
+            "positive": 11,
+            "negative": 1,
+            "unknown": 1
+          },
+          "neither_accept": {
+            "positive": 16,
+            "negative": 330,
+            "unknown": 5
+          }
+        }
+      },
+      "eating": {
+        "known_positive": 23,
+        "states": {
+          "both_accept": {
+            "positive": 9,
+            "negative": 0,
+            "unknown": 1
+          },
+          "proposer_only": {
+            "positive": 3,
+            "negative": 1,
+            "unknown": 1
+          },
+          "verifier_only": {
+            "positive": 1,
+            "negative": 0,
+            "unknown": 0
+          },
+          "neither_accept": {
+            "positive": 10,
+            "negative": 309,
+            "unknown": 29
+          }
+        }
+      },
+      "talking_on": {
+        "known_positive": 5,
+        "states": {
+          "both_accept": {
+            "positive": 0,
+            "negative": 0,
+            "unknown": 0
+          },
+          "proposer_only": {
+            "positive": 0,
+            "negative": 0,
+            "unknown": 0
+          },
+          "verifier_only": {
+            "positive": 2,
+            "negative": 2,
+            "unknown": 1
+          },
+          "neither_accept": {
+            "positive": 3,
+            "negative": 347,
+            "unknown": 9
+          }
+        }
+      }
+    },
+    "notes": "Frozen score decomposition on reused matched detector pairs before prompt cap. Verifier-only is a diagnostic counterfactual, not a promoted ungated pipeline. Unmatched detector proposals absent; unknown labels not counted as false. Neither acceptance means both thresholds fail, not two separately attributed exclusive losses."
+  },
+  "full100_counterfactual": {
+    "head_sha256": "de8124a30555b39eabdf45cdf649d599788174361c94bd8036ebed714f61fab4",
+    "source_sha256": "864bedb4925d5a3cc7eca50fa434d81761f84928dba9acab91d6c1badf8b8d4d",
+    "training_performed": false,
+    "threshold_refit": false,
+    "pipeline_changed": false,
+    "max_relations": 3,
+    "gated_claims": 11,
+    "ungated_claims": 91,
+    "gated_relation_images": 7,
+    "ungated_relation_images": 44,
+    "ungated_pre_cap_claims": 160,
+    "added_after_cap": 81,
+    "removed_by_cap_competition": 1,
+    "notes": "Counterfactual only: existing frozen verifier scores/thresholds, remove R50 hard gate. Full100 is reused development; prior assistant reviews are selected, method-visible and incomplete. Do not infer accuracy for unreviewed/new claims; margin-based cap can displace previously accepted claims."
+  },
+  "new_assistant_spotcheck": {
+    "reviewer": "assistant_visual_inspection",
+    "independent_human_annotation": false,
+    "method_membership_visible": true,
+    "sampling": "Purposive restored-object and suspicious-person/table cases; not random or exhaustive. No precision/recall estimate.",
+    "images_inspected": 4,
+    "claims_assessed": 6,
+    "claims": [
+      {
+        "filename": "COCO_train2014_000000017356.jpg",
+        "subject_instance": "det_d8db9964c24e",
+        "subject": "person",
+        "object_instance": "det_ead7ab62f8e1",
+        "object": "donut",
+        "relation": "holding",
+        "score": 0.8883627653121948,
+        "threshold": 0.791481077671051,
+        "score_margin": 0.0968816876411438,
+        "prompt": "a photo of a person holding a donut",
+        "assistant_status": "supported",
+        "assistant_notes": "Child visibly grasps donut near mouth."
+      },
+      {
+        "filename": "COCO_train2014_000000020575.jpg",
+        "subject_instance": "det_95f9611d26b5",
+        "subject": "person",
+        "object_instance": "det_2afde1a7c352",
+        "object": "frisbee",
+        "relation": "holding",
+        "score": 0.8121091723442078,
+        "threshold": 0.791481077671051,
+        "score_margin": 0.02062809467315674,
+        "prompt": "a photo of a person holding a frisbee",
+        "assistant_status": "supported",
+        "assistant_notes": "Foreground man visibly holds disc at left hand."
+      },
+      {
+        "filename": "COCO_train2014_000000020575.jpg",
+        "subject_instance": "det_1b70162949eb",
+        "subject": "person",
+        "object_instance": "det_95f9611d26b5",
+        "object": "person",
+        "relation": "riding",
+        "score": 0.27296051383018494,
+        "threshold": 0.17892253398895264,
+        "score_margin": 0.0940379798412323,
+        "prompt": "a photo of a person riding a person",
+        "assistant_status": "contradicted",
+        "assistant_notes": "Small background swimmer is spatially separate from foreground man; no riding/contact."
+      },
+      {
+        "filename": "COCO_train2014_000000572807.jpg",
+        "subject_instance": "det_a934cbf7e0f1",
+        "subject": "person",
+        "object_instance": "det_4075a7f24702",
+        "object": "person",
+        "relation": "riding",
+        "score": 0.3407822847366333,
+        "threshold": 0.17892253398895264,
+        "score_margin": 0.16185975074768066,
+        "prompt": "a photo of a person riding a person",
+        "assistant_status": "contradicted",
+        "assistant_notes": "Background spectator does not ride foreground skateboarder."
+      },
+      {
+        "filename": "COCO_train2014_000000219565.jpg",
+        "subject_instance": "det_f14de9bc480f",
+        "subject": "person",
+        "object_instance": "det_5db511eea5ef",
+        "object": "dining table",
+        "relation": "sitting_on",
+        "score": 0.8407956957817078,
+        "threshold": 0.6416088938713074,
+        "score_margin": 0.1991868019104004,
+        "prompt": "a photo of a person sitting on a dining table",
+        "assistant_status": "contradicted",
+        "assistant_notes": "Two selected men stand/lean around cake table; neither visibly sits on tabletop."
+      },
+      {
+        "filename": "COCO_train2014_000000219565.jpg",
+        "subject_instance": "det_7ad2d9c5d1a6",
+        "subject": "person",
+        "object_instance": "det_5db511eea5ef",
+        "object": "dining table",
+        "relation": "sitting_on",
+        "score": 0.795530378818512,
+        "threshold": 0.6416088938713074,
+        "score_margin": 0.1539214849472046,
+        "prompt": "a photo of a person sitting on a dining table",
+        "assistant_status": "contradicted",
+        "assistant_notes": "Two selected men stand/lean around cake table; neither visibly sits on tabletop."
+      }
+    ]
+  }
+}

@@ -11,6 +11,7 @@ from run_instance_alignment_diagnostic import metrics
 def main():
     p=argparse.ArgumentParser()
     for name in ('source','head-directory','reference-directory','v2-source','actor-source','output'):p.add_argument('--'+name,required=True)
+    p.add_argument('--bottleneck-audit',action='store_true',help='Export frozen gate decomposition; no threshold tuning or pipeline change.')
     args=p.parse_args();torch.set_num_threads(2)
     summary=json.loads((Path(args.head_directory)/'triplet_summary.json').read_text())
     train_ids=set()
@@ -62,6 +63,39 @@ def main():
         'notes':'ReusedR55 matched detector pool; sequential development,not freshheldout/detectionAP/caption quality. Unknown excluded from precision; frozen thresholds, no fitting here.'}
     output=Path(args.output);output.mkdir(parents=True,exist_ok=True)
     (output/'transfer_summary.json').write_text(json.dumps(result,indent=2),encoding='utf-8')
+    if args.bottleneck_audit:
+        verifier=scores>=torch.tensor(cp['thresholds'])
+        states={'both_accept':before&verifier,'proposer_only':before&~verifier,
+                'verifier_only':~before&verifier,'neither_accept':~before&~verifier}
+        if not torch.equal(sum(m.to(torch.int64) for m in states.values()),torch.ones_like(labels)):
+            raise ValueError('Gate states must form an exhaustive disjoint partition.')
+        decomposition={name:counts(mask) for name,mask in states.items()}
+        total_positive=int((labels==1).sum())
+        if sum(v['positive'] for v in decomposition.values())!=total_positive:
+            raise ValueError('Positive gate partition does not conserve labels.')
+        per_relation={}
+        for c,relation in enumerate(cp['relations']):
+            per_relation[relation]={
+                'known_positive':int((labels[:,c]==1).sum()),
+                'states':{name:{'positive':int((mask[:,c]&(labels[:,c]==1)).sum()),
+                               'negative':int((mask[:,c]&(labels[:,c]==0)).sum()),
+                               'unknown':int((mask[:,c]&(labels[:,c]<0)).sum())}
+                          for name,mask in states.items()}}
+        audit={'head_sha256':result['head_sha256'],'source_sha256':result['source_sha256'],
+               'training_performed':False,'threshold_refit':False,'pipeline_changed':False,
+               'known_positive':total_positive,'states':decomposition,
+               'proposer_alone':counts(before),'verifier_alone_counterfactual':counts(verifier),
+               'per_relation':per_relation,
+               'notes':'Frozen score decomposition on reused matched detector pairs before prompt cap. '
+                       'Verifier-only is a diagnostic counterfactual, not a promoted ungated pipeline. '
+                       'Unmatched detector proposals absent; unknown labels not counted as false. '
+                       'Neither acceptance means both thresholds fail, not two separately attributed exclusive losses.'}
+        (output/'bottleneck_summary.json').write_text(json.dumps(audit,indent=2),encoding='utf-8')
+        predictions=[{**row,'proposer_scores':reference[i]['scores'],'verifier_scores':scores[i].tolist(),
+                      'gate_states':[next(name for name,mask in states.items() if bool(mask[i,c])) for c in range(labels.shape[1])]}
+                     for i,row in enumerate(rows)]
+        (output/'bottleneck_predictions.json').write_text(json.dumps(predictions,indent=2),encoding='utf-8')
+        print('BOTTLENECK',json.dumps({k:v for k,v in audit.items() if k!='per_relation'},indent=2),flush=True)
     print(json.dumps({k:v for k,v in result.items() if k!='verifier_metrics_all_known'},indent=2),flush=True)
 
 
