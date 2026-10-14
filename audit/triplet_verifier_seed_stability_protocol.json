@@ -1,0 +1,17 @@
+{
+  "variant": "triplet_verifier_matched_seed_stability_v1",
+  "seeds": [42, 7, 123],
+  "epochs": 30,
+  "learning_rate": 0.001,
+  "train_threshold_rule": "at least5 known accepts and90percent empirical precision, fitted on train only",
+  "v2_source_sha256": "a1ec392b40b3e5b2a20e71da5f7e33049f12a722d03e34480a29c530300bbf62",
+  "actor_source_sha256": "cd2b139265084045258a6ca251d9b4b8d8c8648a612ac1ab26615a3a23258136",
+  "candidate_source_sha256": "864bedb4925d5a3cc7eca50fa434d81761f84928dba9acab91d6c1badf8b8d4d",
+  "transfer_source_sha256": "a129ab178f02e147980c537b1a64f21f8cc8f16a2c2ad09e60049ddac0d36e07",
+  "reuse_seed42_heads": {
+    "candidate_text": "de8124a30555b39eabdf45cdf649d599788174361c94bd8036ebed714f61fab4",
+    "relation_bank": "ce5422b743157eaa4ac98eec7fb326071ad8544b200e928c8535c5150a38c020"
+  },
+  "seed_selection": false,
+  "notes": "Seed42 already inspected; seeds7/123 paired across architectures, same data/config. Development stability only, not freshheldout/significance proof. SD across seeds is not image uncertainty or a confidence interval. Originalseed42 checkpoints remain fixed; no bestseed promotion or threshold tuning."
+}

@@ -18,7 +18,8 @@ def main():
     for name in ('v2-source','actor-source','candidate-source','scored','output'):p.add_argument('--'+name,required=True)
     p.add_argument('--relation-only-text',action='store_true',help='Matched ablation: shared train-only text bank, no candidate-specific object text.')
     p.add_argument('--residual-head',default='C:/KhoaLuanTotNghiep/Code/output/clip_prior_residual_v1/residual_head.pt')
-    args=p.parse_args();torch.set_num_threads(2);torch.manual_seed(42)
+    p.add_argument('--seed',type=int,default=42)
+    args=p.parse_args();torch.set_num_threads(2);torch.manual_seed(args.seed)
     old,oldviews,oldtext,oldlens=read_archive(args.v2_source,['train_pairs.json','val_pairs.json'])
     new,newviews,newtext,newlens=read_archive(args.actor_source,['train_pairs.json','val_pairs.json'])
     # Only the official training partitions are pooled. Every development row stays out.
@@ -81,7 +82,7 @@ def main():
     old_prompts=json.loads((Path(args.scored)/'baseline_prompt_cache.json').read_text())
     inventory={f:[{'label':o['label'],'bbox':o['bbox'],'confidence':o['confidence']} for o in e['objects']] for f,e in old_prompts.items()}
     prompts=build_selected_prompts(modified,thresholds,object_inventory=inventory)
-    summary={'variant':'relation_only_triplet_ablation_v1' if args.relation_only_text else 'text_conditioned_whole_triplet_development_v1','seed':42,'epochs':30,
+    summary={'variant':'relation_only_triplet_ablation_v1' if args.relation_only_text else 'text_conditioned_whole_triplet_development_v1','seed':args.seed,'epochs':30,
         'train_pairs':len(train),'train_images':len({r['image_id'] for r in train}),'dev_pairs':len(dev),
         'training_labels':dict(Counter(str(int(v)) for v in labels.flatten())),
         'contrast_edges':dict(Counter(e[-1] for e in edges)),'parameters':sum(p.numel() for p in model.parameters()),
