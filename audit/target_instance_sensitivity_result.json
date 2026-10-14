@@ -1,0 +1,960 @@
+{
+  "variant": "natural_target_instance_sensitivity_v1",
+  "training_performed": false,
+  "threshold_refit": false,
+  "models": {
+    "union_only": {
+      "holding": {
+        "all_low_overlap_abs_score_difference": {
+          "count": 1955,
+          "mean": 0.14241762357728813,
+          "median": 0.0003427218762226403
+        },
+        "at_least_one_accepted_abs_difference": {
+          "count": 243,
+          "mean": 0.7090453000633461,
+          "median": 0.7719259581645019
+        },
+        "same_common_active_pairs_abs_difference": {
+          "count": 266,
+          "mean": 0.6551123091507781,
+          "median": 0.7563519250252284
+        },
+        "both_accepted": 21,
+        "threshold_disagreement": 222
+      },
+      "riding": {
+        "all_low_overlap_abs_score_difference": {
+          "count": 1955,
+          "mean": 0.0031620550982052126,
+          "median": 1.2279917427804321e-05
+        },
+        "at_least_one_accepted_abs_difference": {
+          "count": 7,
+          "mean": 0.7592670028763158,
+          "median": 0.8687316346913576
+        },
+        "same_common_active_pairs_abs_difference": {
+          "count": 17,
+          "mean": 0.31267439144111825,
+          "median": 9.824187873164192e-05
+        },
+        "both_accepted": 1,
+        "threshold_disagreement": 6
+      },
+      "sitting_on": {
+        "all_low_overlap_abs_score_difference": {
+          "count": 1955,
+          "mean": 0.0068355018250481885,
+          "median": 1.0393286174803507e-05
+        },
+        "at_least_one_accepted_abs_difference": {
+          "count": 7,
+          "mean": 0.7313923086704952,
+          "median": 0.8348617628216743
+        },
+        "same_common_active_pairs_abs_difference": {
+          "count": 8,
+          "mean": 0.6581354379886761,
+          "median": 0.8319276282563806
+        },
+        "both_accepted": 1,
+        "threshold_disagreement": 6
+      },
+      "carrying": {
+        "all_low_overlap_abs_score_difference": {
+          "count": 1955,
+          "mean": 0.0038588306109039925,
+          "median": 1.2980501196580008e-05
+        },
+        "at_least_one_accepted_abs_difference": {
+          "count": 10,
+          "mean": 0.3688095061806962,
+          "median": 0.3160137795493938
+        },
+        "same_common_active_pairs_abs_difference": {
+          "count": 10,
+          "mean": 0.3688095061806962,
+          "median": 0.3160137795493938
+        },
+        "both_accepted": 1,
+        "threshold_disagreement": 9
+      },
+      "eating": {
+        "all_low_overlap_abs_score_difference": {
+          "count": 1955,
+          "mean": 0.004512129237598186,
+          "median": 8.564591553295031e-06
+        },
+        "at_least_one_accepted_abs_difference": {
+          "count": 12,
+          "mean": 0.4627316693076864,
+          "median": 0.5352166194934398
+        },
+        "same_common_active_pairs_abs_difference": {
+          "count": 12,
+          "mean": 0.4627316693076864,
+          "median": 0.5352166194934398
+        },
+        "both_accepted": 3,
+        "threshold_disagreement": 9
+      },
+      "talking_on": {
+        "all_low_overlap_abs_score_difference": {
+          "count": 1955,
+          "mean": 0.0009396140571128774,
+          "median": 7.59067916078493e-06
+        },
+        "at_least_one_accepted_abs_difference": {
+          "count": 0,
+          "mean": null,
+          "median": null
+        },
+        "same_common_active_pairs_abs_difference": {
+          "count": 0,
+          "mean": null,
+          "median": null
+        },
+        "both_accepted": 0,
+        "threshold_disagreement": 0
+      }
+    },
+    "regions": {
+      "holding": {
+        "all_low_overlap_abs_score_difference": {
+          "count": 1955,
+          "mean": 0.06421717638371671,
+          "median": 0.00035478919744491577
+        },
+        "at_least_one_accepted_abs_difference": {
+          "count": 68,
+          "mean": 0.6287749657520394,
+          "median": 0.6980975782498717
+        },
+        "same_common_active_pairs_abs_difference": {
+          "count": 266,
+          "mean": 0.3476226073720394,
+          "median": 0.28160990617470816
+        },
+        "both_accepted": 13,
+        "threshold_disagreement": 55
+      },
+      "riding": {
+        "all_low_overlap_abs_score_difference": {
+          "count": 1955,
+          "mean": 0.002129132607745391,
+          "median": 1.1457519576651976e-05
+        },
+        "at_least_one_accepted_abs_difference": {
+          "count": 7,
+          "mean": 0.5008991383282202,
+          "median": 0.49662805534899235
+        },
+        "same_common_active_pairs_abs_difference": {
+          "count": 17,
+          "mean": 0.20626128326405116,
+          "median": 1.2340504326857626e-05
+        },
+        "both_accepted": 1,
+        "threshold_disagreement": 6
+      },
+      "sitting_on": {
+        "all_low_overlap_abs_score_difference": {
+          "count": 1955,
+          "mean": 0.00443316044629101,
+          "median": 7.855180228943937e-06
+        },
+        "at_least_one_accepted_abs_difference": {
+          "count": 3,
+          "mean": 0.5107697720328966,
+          "median": 0.6974561437964439
+        },
+        "same_common_active_pairs_abs_difference": {
+          "count": 8,
+          "mean": 0.46236483578104526,
+          "median": 0.4897553459741175
+        },
+        "both_accepted": 1,
+        "threshold_disagreement": 2
+      },
+      "carrying": {
+        "all_low_overlap_abs_score_difference": {
+          "count": 1955,
+          "mean": 0.0025772737523364,
+          "median": 1.7221820598933846e-05
+        },
+        "at_least_one_accepted_abs_difference": {
+          "count": 2,
+          "mean": 0.5578044368885458,
+          "median": 0.5578044368885458
+        },
+        "same_common_active_pairs_abs_difference": {
+          "count": 10,
+          "mean": 0.1588331994251348,
+          "median": 0.08009926322847605
+        },
+        "both_accepted": 0,
+        "threshold_disagreement": 2
+      },
+      "eating": {
+        "all_low_overlap_abs_score_difference": {
+          "count": 1955,
+          "mean": 0.0046230856904729035,
+          "median": 1.447983959224075e-05
+        },
+        "at_least_one_accepted_abs_difference": {
+          "count": 12,
+          "mean": 0.5594530032637218,
+          "median": 0.6670702323317528
+        },
+        "same_common_active_pairs_abs_difference": {
+          "count": 12,
+          "mean": 0.5594530032637218,
+          "median": 0.6670702323317528
+        },
+        "both_accepted": 2,
+        "threshold_disagreement": 10
+      },
+      "talking_on": {
+        "all_low_overlap_abs_score_difference": {
+          "count": 1955,
+          "mean": 0.0009121032059131249,
+          "median": 1.0209318134002388e-05
+        },
+        "at_least_one_accepted_abs_difference": {
+          "count": 0,
+          "mean": null,
+          "median": null
+        },
+        "same_common_active_pairs_abs_difference": {
+          "count": 0,
+          "mean": null,
+          "median": null
+        },
+        "both_accepted": 0,
+        "threshold_disagreement": 0
+      }
+    },
+    "old_triplet": {
+      "holding": {
+        "all_low_overlap_abs_score_difference": {
+          "count": 1955,
+          "mean": 0.039448302966849806,
+          "median": 0.010715387761592865
+        },
+        "at_least_one_accepted_abs_difference": {
+          "count": 66,
+          "mean": 0.02909392299074115,
+          "median": 0.019530266523361206
+        },
+        "same_common_active_pairs_abs_difference": {
+          "count": 266,
+          "mean": 0.05962163581481358,
+          "median": 0.02141507901251316
+        },
+        "both_accepted": 54,
+        "threshold_disagreement": 12
+      },
+      "riding": {
+        "all_low_overlap_abs_score_difference": {
+          "count": 1955,
+          "mean": 0.004911137279312875,
+          "median": 0.0004949205322191119
+        },
+        "at_least_one_accepted_abs_difference": {
+          "count": 13,
+          "mean": 0.18843138674632287,
+          "median": 0.1803306769579649
+        },
+        "same_common_active_pairs_abs_difference": {
+          "count": 17,
+          "mean": 0.14621343363679068,
+          "median": 0.15148943662643433
+        },
+        "both_accepted": 3,
+        "threshold_disagreement": 10
+      },
+      "sitting_on": {
+        "all_low_overlap_abs_score_difference": {
+          "count": 1955,
+          "mean": 0.014607947217659309,
+          "median": 0.0012842932483181357
+        },
+        "at_least_one_accepted_abs_difference": {
+          "count": 4,
+          "mean": 0.12037023901939392,
+          "median": 0.03764641284942627
+        },
+        "same_common_active_pairs_abs_difference": {
+          "count": 8,
+          "mean": 0.07678686850704253,
+          "median": 0.03764641284942627
+        },
+        "both_accepted": 3,
+        "threshold_disagreement": 1
+      },
+      "carrying": {
+        "all_low_overlap_abs_score_difference": {
+          "count": 1955,
+          "mean": 0.0023114511347346036,
+          "median": 0.0008283022616524249
+        },
+        "at_least_one_accepted_abs_difference": {
+          "count": 1,
+          "mean": 0.001954972743988037,
+          "median": 0.001954972743988037
+        },
+        "same_common_active_pairs_abs_difference": {
+          "count": 10,
+          "mean": 0.02544635087251663,
+          "median": 0.01432444155216217
+        },
+        "both_accepted": 1,
+        "threshold_disagreement": 0
+      },
+      "eating": {
+        "all_low_overlap_abs_score_difference": {
+          "count": 1955,
+          "mean": 0.0017362669429435429,
+          "median": 0.000157251488417387
+        },
+        "at_least_one_accepted_abs_difference": {
+          "count": 5,
+          "mean": 0.16613679528236389,
+          "median": 0.1519671380519867
+        },
+        "same_common_active_pairs_abs_difference": {
+          "count": 12,
+          "mean": 0.13699409738183022,
+          "median": 0.11234161257743835
+        },
+        "both_accepted": 1,
+        "threshold_disagreement": 4
+      },
+      "talking_on": {
+        "all_low_overlap_abs_score_difference": {
+          "count": 1955,
+          "mean": 0.001367810766076874,
+          "median": 0.00037380107096396387
+        },
+        "at_least_one_accepted_abs_difference": {
+          "count": 0,
+          "mean": null,
+          "median": null
+        },
+        "same_common_active_pairs_abs_difference": {
+          "count": 0,
+          "mean": null,
+          "median": null
+        },
+        "both_accepted": 0,
+        "threshold_disagreement": 0
+      }
+    }
+  },
+  "source_provenance": {
+    "union_only": {
+      "head_sha256": "699890b712497563d9d28deea157011f7e4afa39d46686ccd4ac92176da8e71a",
+      "prediction_sha256": "9372aabf994cb98303fec1ea85591192366cd71d6e1f6516d3e503f97b80cf80"
+    },
+    "regions": {
+      "head_sha256": "32484612d27752050c2a2693cff5b328d0ea6b2befaaa0c0fb9cc1fdbd270b3b",
+      "prediction_sha256": "1af14dfc95c694fa6689ca9cc7cf964e956c9503c683d711e3e33e7ed8c35ecb"
+    },
+    "old_triplet": {
+      "head_sha256": "de8124a30555b39eabdf45cdf649d599788174361c94bd8036ebed714f61fab4",
+      "prediction_sha256": "470033a3c656389263405d6d2a13ae78415e3a156376397e9ac9b17b58eb1c14"
+    }
+  },
+  "same_class_groups": 257,
+  "same_class_pair_comparisons": 1955,
+  "low_overlap_pair_comparisons": 1955,
+  "geometry_overlap_cutoff": 0.8,
+  "supervision": {
+    "full_gt_train": {
+      "positive_anchor_alternate_target_label_counts": {
+        "-1": 287
+      },
+      "confirmed_positive_to_zero_target_contrasts": 0,
+      "unknown_examples": [
+        {
+          "image_id": 1837,
+          "subject_id": 1284207,
+          "relation": "holding",
+          "positive_target": 1860644,
+          "alternate_target": 1279920,
+          "alternate_label": -1
+        },
+        {
+          "image_id": 3236,
+          "subject_id": 1276398,
+          "relation": "sitting_on",
+          "positive_target": 99729,
+          "alternate_target": 1245196,
+          "alternate_label": -1
+        },
+        {
+          "image_id": 3236,
+          "subject_id": 1293339,
+          "relation": "sitting_on",
+          "positive_target": 1942454,
+          "alternate_target": 1268300,
+          "alternate_label": -1
+        },
+        {
+          "image_id": 6780,
+          "subject_id": 466407,
+          "relation": "holding",
+          "positive_target": 1448219,
+          "alternate_target": 542198,
+          "alternate_label": -1
+        },
+        {
+          "image_id": 9669,
+          "subject_id": 1709645,
+          "relation": "holding",
+          "positive_target": 321902,
+          "alternate_target": 1703621,
+          "alternate_label": -1
+        },
+        {
+          "image_id": 9669,
+          "subject_id": 1709645,
+          "relation": "talking_on",
+          "positive_target": 321902,
+          "alternate_target": 1703621,
+          "alternate_label": -1
+        },
+        {
+          "image_id": 10265,
+          "subject_id": 493301,
+          "relation": "holding",
+          "positive_target": 657811,
+          "alternate_target": 305510,
+          "alternate_label": -1
+        },
+        {
+          "image_id": 14873,
+          "subject_id": 2020813,
+          "relation": "carrying",
+          "positive_target": 1163596,
+          "alternate_target": 1178117,
+          "alternate_label": -1
+        },
+        {
+          "image_id": 29456,
+          "subject_id": 1225449,
+          "relation": "carrying",
+          "positive_target": 1415684,
+          "alternate_target": 269022,
+          "alternate_label": -1
+        },
+        {
+          "image_id": 29525,
+          "subject_id": 1248859,
+          "relation": "riding",
+          "positive_target": 344127,
+          "alternate_target": 344183,
+          "alternate_label": -1
+        },
+        {
+          "image_id": 29525,
+          "subject_id": 1254110,
+          "relation": "riding",
+          "positive_target": 344183,
+          "alternate_target": 1258851,
+          "alternate_label": -1
+        },
+        {
+          "image_id": 29525,
+          "subject_id": 1254110,
+          "relation": "sitting_on",
+          "positive_target": 344183,
+          "alternate_target": 1258851,
+          "alternate_label": -1
+        }
+      ],
+      "existing_contrast_types": {
+        "actor": 736,
+        "predicate": 4408
+      },
+      "notes": "Same image,subject,predicate, differenttarget. Unknown alternatives remain unknown, not invented negatives."
+    },
+    "matched_detector_train": {
+      "positive_anchor_alternate_target_label_counts": {
+        "-1": 125
+      },
+      "confirmed_positive_to_zero_target_contrasts": 0,
+      "unknown_examples": [
+        {
+          "image_id": 1837,
+          "subject_id": 1284207,
+          "relation": "holding",
+          "positive_target": 1860644,
+          "alternate_target": 1279920,
+          "alternate_label": -1
+        },
+        {
+          "image_id": 6780,
+          "subject_id": 466407,
+          "relation": "holding",
+          "positive_target": 1448219,
+          "alternate_target": 542198,
+          "alternate_label": -1
+        },
+        {
+          "image_id": 10265,
+          "subject_id": 493301,
+          "relation": "holding",
+          "positive_target": 657811,
+          "alternate_target": 305510,
+          "alternate_label": -1
+        },
+        {
+          "image_id": 29525,
+          "subject_id": 1248859,
+          "relation": "riding",
+          "positive_target": 344127,
+          "alternate_target": 344183,
+          "alternate_label": -1
+        },
+        {
+          "image_id": 56599,
+          "subject_id": 487863,
+          "relation": "holding",
+          "positive_target": 284597,
+          "alternate_target": 1723299,
+          "alternate_label": -1
+        },
+        {
+          "image_id": 56599,
+          "subject_id": 487863,
+          "relation": "carrying",
+          "positive_target": 284597,
+          "alternate_target": 1723299,
+          "alternate_label": -1
+        },
+        {
+          "image_id": 62336,
+          "subject_id": 1716597,
+          "relation": "holding",
+          "positive_target": 662744,
+          "alternate_target": 112298,
+          "alternate_label": -1
+        },
+        {
+          "image_id": 62336,
+          "subject_id": 1716597,
+          "relation": "sitting_on",
+          "positive_target": 112298,
+          "alternate_target": 662744,
+          "alternate_label": -1
+        },
+        {
+          "image_id": 66828,
+          "subject_id": 487624,
+          "relation": "riding",
+          "positive_target": 581682,
+          "alternate_target": 2151889,
+          "alternate_label": -1
+        },
+        {
+          "image_id": 66828,
+          "subject_id": 487624,
+          "relation": "sitting_on",
+          "positive_target": 581682,
+          "alternate_target": 2151889,
+          "alternate_label": -1
+        },
+        {
+          "image_id": 78614,
+          "subject_id": 467356,
+          "relation": "holding",
+          "positive_target": 294341,
+          "alternate_target": 1512489,
+          "alternate_label": -1
+        },
+        {
+          "image_id": 88609,
+          "subject_id": 496645,
+          "relation": "holding",
+          "positive_target": 1081264,
+          "alternate_target": 374014,
+          "alternate_label": -1
+        }
+      ],
+      "existing_contrast_types": {
+        "actor": 457,
+        "predicate": 3041
+      },
+      "notes": "Same image,subject,predicate, differenttarget. Unknown alternatives remain unknown, not invented negatives."
+    }
+  },
+  "notes": "Natural candidate substitutions, same image/subject/objectclass but target,crop andgeometry change together. Scores are sigmoid activations, not probabilities; scale differs across models. Sensitivity/multiple acceptance is not accuracy or proof of one true target. IoU<.8 subgroup excludes nearly duplicate boxes geometrically, not validated instances. Reuseddevelopment;no labels added or pipeline changed.",
+  "target_rank_comparisons": {
+    "union_only vs regions": {
+      "active_group_predicates": 108,
+      "different_top_target": 15
+    },
+    "union_only vs old_triplet": {
+      "active_group_predicates": 116,
+      "different_top_target": 81
+    },
+    "regions vs old_triplet": {
+      "active_group_predicates": 57,
+      "different_top_target": 32
+    }
+  },
+  "pizza_target_case": [
+    {
+      "image_id": 303429,
+      "filename": "COCO_train2014_000000303429.jpg",
+      "filepath": "train2014",
+      "caption_split": "train",
+      "subject_id": "det_d641ee12784d",
+      "object_id": "det_e4eeb360d577",
+      "subject": "person",
+      "object": "pizza",
+      "subject_box": [
+        0.1248,
+        0.23084,
+        0.8392266666666666,
+        0.8754400000000001
+      ],
+      "object_box": [
+        0.03584,
+        0.6876599999999999,
+        0.35034666666666664,
+        0.8949600000000001
+      ],
+      "subject_detector_confidence": 0.9486,
+      "object_detector_confidence": 0.8906,
+      "model_scores": {
+        "union_only": {
+          "holding": 0.9637027978897095,
+          "riding": 0.002371389651671052,
+          "sitting_on": 0.013982829637825489,
+          "carrying": 0.019836321473121643,
+          "eating": 0.743046224117279,
+          "talking_on": 0.024686051532626152
+        },
+        "regions": {
+          "holding": 0.944287896156311,
+          "riding": 0.010255424305796623,
+          "sitting_on": 0.024982811883091927,
+          "carrying": 0.09733957052230835,
+          "eating": 0.7576740384101868,
+          "talking_on": 0.06198607385158539
+        },
+        "old_triplet": {
+          "holding": 0.8793290257453918,
+          "riding": 0.020587753504514694,
+          "sitting_on": 0.2599383592605591,
+          "carrying": 0.09138523042201996,
+          "eating": 0.6885485053062439,
+          "talking_on": 0.11414451152086258
+        }
+      }
+    },
+    {
+      "image_id": 303429,
+      "filename": "COCO_train2014_000000303429.jpg",
+      "filepath": "train2014",
+      "caption_split": "train",
+      "subject_id": "det_d641ee12784d",
+      "object_id": "det_5dcb40c0fd50",
+      "subject": "person",
+      "object": "pizza",
+      "subject_box": [
+        0.1248,
+        0.23084,
+        0.8392266666666666,
+        0.8754400000000001
+      ],
+      "object_box": [
+        0.13346666666666665,
+        0.44752,
+        0.32349333333333335,
+        0.51842
+      ],
+      "subject_detector_confidence": 0.9486,
+      "object_detector_confidence": 0.856,
+      "model_scores": {
+        "union_only": {
+          "holding": 0.9663328528404236,
+          "riding": 0.00212678499519825,
+          "sitting_on": 0.010745062492787838,
+          "carrying": 0.024299675598740578,
+          "eating": 0.7365819215774536,
+          "talking_on": 0.025261620059609413
+        },
+        "regions": {
+          "holding": 0.9605348110198975,
+          "riding": 0.015366236679255962,
+          "sitting_on": 0.030385704711079597,
+          "carrying": 0.1898297518491745,
+          "eating": 0.8325420022010803,
+          "talking_on": 0.1128772720694542
+        },
+        "old_triplet": {
+          "holding": 0.892883837223053,
+          "riding": 0.007842323742806911,
+          "sitting_on": 0.09100212156772614,
+          "carrying": 0.07408604025840759,
+          "eating": 0.574517548084259,
+          "talking_on": 0.08526737242937088
+        }
+      }
+    },
+    {
+      "image_id": 303429,
+      "filename": "COCO_train2014_000000303429.jpg",
+      "filepath": "train2014",
+      "caption_split": "train",
+      "subject_id": "det_d641ee12784d",
+      "object_id": "det_d0974408d52a",
+      "subject": "person",
+      "object": "pizza",
+      "subject_box": [
+        0.1248,
+        0.23084,
+        0.8392266666666666,
+        0.8754400000000001
+      ],
+      "object_box": [
+        0.6085866666666666,
+        0.91608,
+        0.8118133333333334,
+        0.99954
+      ],
+      "subject_detector_confidence": 0.9486,
+      "object_detector_confidence": 0.8476,
+      "model_scores": {
+        "union_only": {
+          "holding": 0.2147274613380432,
+          "riding": 0.00024636482703499496,
+          "sitting_on": 0.000839166808873415,
+          "carrying": 0.0009658124763518572,
+          "eating": 0.08029372245073318,
+          "talking_on": 0.002003955887630582
+        },
+        "regions": {
+          "holding": 0.26468905806541443,
+          "riding": 0.0006484492332674563,
+          "sitting_on": 0.000725272111594677,
+          "carrying": 0.003484076354652643,
+          "eating": 0.0628199428319931,
+          "talking_on": 0.0024440144188702106
+        },
+        "old_triplet": {
+          "holding": 0.8342357873916626,
+          "riding": 0.003992712590843439,
+          "sitting_on": 0.05539676919579506,
+          "carrying": 0.027521789073944092,
+          "eating": 0.3787580132484436,
+          "talking_on": 0.032511886209249496
+        }
+      }
+    },
+    {
+      "image_id": 303429,
+      "filename": "COCO_train2014_000000303429.jpg",
+      "filepath": "train2014",
+      "caption_split": "train",
+      "subject_id": "det_d641ee12784d",
+      "object_id": "det_6db98b0f9b9a",
+      "subject": "person",
+      "object": "dining table",
+      "subject_box": [
+        0.1248,
+        0.23084,
+        0.8392266666666666,
+        0.8754400000000001
+      ],
+      "object_box": [
+        0,
+        0.62864,
+        0.9073333333333333,
+        0.9993200000000001
+      ],
+      "subject_detector_confidence": 0.9486,
+      "object_detector_confidence": 0.6844,
+      "model_scores": {
+        "union_only": {
+          "holding": 0.6421959400177002,
+          "riding": 0.005984487012028694,
+          "sitting_on": 0.3509136736392975,
+          "carrying": 0.0011193121317774057,
+          "eating": 0.03322214633226395,
+          "talking_on": 0.007685760036110878
+        },
+        "regions": {
+          "holding": 0.49204468727111816,
+          "riding": 0.007653290405869484,
+          "sitting_on": 0.4623960554599762,
+          "carrying": 0.004101989790797234,
+          "eating": 0.01731668785214424,
+          "talking_on": 0.007779277395457029
+        },
+        "old_triplet": {
+          "holding": 0.30229708552360535,
+          "riding": 0.020991848781704903,
+          "sitting_on": 0.6476498246192932,
+          "carrying": 0.0024948131758719683,
+          "eating": 0.035011306405067444,
+          "talking_on": 0.008168458938598633
+        }
+      }
+    },
+    {
+      "image_id": 303429,
+      "filename": "COCO_train2014_000000303429.jpg",
+      "filepath": "train2014",
+      "caption_split": "train",
+      "subject_id": "det_d641ee12784d",
+      "object_id": "det_67c8f13d7781",
+      "subject": "person",
+      "object": "dining table",
+      "subject_box": [
+        0.1248,
+        0.23084,
+        0.8392266666666666,
+        0.8754400000000001
+      ],
+      "object_box": [
+        0.8262666666666667,
+        0.48596,
+        0.9991466666666667,
+        0.60862
+      ],
+      "subject_detector_confidence": 0.9486,
+      "object_detector_confidence": 0.5806,
+      "model_scores": {
+        "union_only": {
+          "holding": 0.5413519740104675,
+          "riding": 0.003103015711531043,
+          "sitting_on": 0.2055763304233551,
+          "carrying": 0.0009007951011881232,
+          "eating": 0.02299528196454048,
+          "talking_on": 0.005893579684197903
+        },
+        "regions": {
+          "holding": 0.230720654129982,
+          "riding": 0.0029274371918290854,
+          "sitting_on": 0.22835130989551544,
+          "carrying": 0.0016007571248337626,
+          "eating": 0.006763133220374584,
+          "talking_on": 0.002990162232890725
+        },
+        "old_triplet": {
+          "holding": 0.39345571398735046,
+          "riding": 0.004176256712526083,
+          "sitting_on": 0.2534632682800293,
+          "carrying": 0.00399273494258523,
+          "eating": 0.022606726735830307,
+          "talking_on": 0.010115308687090874
+        }
+      }
+    },
+    {
+      "image_id": 303429,
+      "filename": "COCO_train2014_000000303429.jpg",
+      "filepath": "train2014",
+      "caption_split": "train",
+      "subject_id": "det_d641ee12784d",
+      "object_id": "det_e265a091c811",
+      "subject": "person",
+      "object": "chair",
+      "subject_box": [
+        0.1248,
+        0.23084,
+        0.8392266666666666,
+        0.8754400000000001
+      ],
+      "object_box": [
+        0.70968,
+        0.56826,
+        0.9988266666666666,
+        0.8979600000000001
+      ],
+      "subject_detector_confidence": 0.9486,
+      "object_detector_confidence": 0.6743,
+      "model_scores": {
+        "union_only": {
+          "holding": 0.06069474294781685,
+          "riding": 0.002168192295357585,
+          "sitting_on": 0.1535046249628067,
+          "carrying": 0.00016488076653331518,
+          "eating": 0.0037871624808758497,
+          "talking_on": 0.0021874583326280117
+        },
+        "regions": {
+          "holding": 0.06512102484703064,
+          "riding": 0.0029525747522711754,
+          "sitting_on": 0.22397449612617493,
+          "carrying": 0.00035497822682373226,
+          "eating": 0.001203737105242908,
+          "talking_on": 0.0018370540346950293
+        },
+        "old_triplet": {
+          "holding": 0.3884326219558716,
+          "riding": 0.010712049901485443,
+          "sitting_on": 0.5748056173324585,
+          "carrying": 0.0016987635754048824,
+          "eating": 0.011177604086697102,
+          "talking_on": 0.012745650485157967
+        }
+      }
+    },
+    {
+      "image_id": 303429,
+      "filename": "COCO_train2014_000000303429.jpg",
+      "filepath": "train2014",
+      "caption_split": "train",
+      "subject_id": "det_d641ee12784d",
+      "object_id": "det_cd59d2b1efed",
+      "subject": "person",
+      "object": "chair",
+      "subject_box": [
+        0.1248,
+        0.23084,
+        0.8392266666666666,
+        0.8754400000000001
+      ],
+      "object_box": [
+        0.8994666666666667,
+        0.7241000000000001,
+        0.9996,
+        0.9991
+      ],
+      "subject_detector_confidence": 0.9486,
+      "object_detector_confidence": 0.5619,
+      "model_scores": {
+        "union_only": {
+          "holding": 0.0015608869725838304,
+          "riding": 0.00032516478677280247,
+          "sitting_on": 0.011712162755429745,
+          "carrying": 3.4812801459338516e-05,
+          "eating": 0.0008441181853413582,
+          "talking_on": 0.00035097418003715575
+        },
+        "regions": {
+          "holding": 0.0017578779952600598,
+          "riding": 0.0004414681170601398,
+          "sitting_on": 0.00994118582457304,
+          "carrying": 8.769085980020463e-05,
+          "eating": 0.00035034038592129946,
+          "talking_on": 0.00023887059069238603
+        },
+        "old_triplet": {
+          "holding": 0.3364259600639343,
+          "riding": 0.010633687488734722,
+          "sitting_on": 0.5817030072212219,
+          "carrying": 0.0014134382363408804,
+          "eating": 0.010488982312381268,
+          "talking_on": 0.012977231293916702
+        }
+      }
+    }
+  ]
+}
