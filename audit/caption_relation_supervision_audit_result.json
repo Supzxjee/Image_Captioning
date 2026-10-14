@@ -1,0 +1,55 @@
+{
+  "source_review_sha256": "3f19a11c7673754a629e82dcd9600445f5f8d3f807829b1381d0a36cd8f31946",
+  "summary": {
+    "train_images": 512,
+    "train_claims": 590,
+    "claims_with_reference_object": 379,
+    "claims_with_reference_verb": 306,
+    "claims_with_joint_reference_cooccurrence": 217,
+    "notes": "Limited lexical diagnostic. No parse/instance identity/negation entailment. Missing words are not false relations; synonym mismatch possible. Do not train negatives or rerank from this diagnostic. Evaluation remains inspected development."
+  },
+  "rates": {
+    "claims_with_reference_object": 0.6423728813559322,
+    "claims_with_reference_verb": 0.5186440677966102,
+    "claims_with_joint_reference_cooccurrence": 0.3677966101694915
+  },
+  "by_predicate": {
+    "carrying": {
+      "claims": 34,
+      "object_cooccurrence": 2,
+      "joint_cooccurrence": 1
+    },
+    "holding": {
+      "claims": 255,
+      "object_cooccurrence": 137,
+      "joint_cooccurrence": 75
+    },
+    "riding": {
+      "claims": 226,
+      "object_cooccurrence": 205,
+      "joint_cooccurrence": 118
+    },
+    "wearing": {
+      "claims": 75,
+      "object_cooccurrence": 35,
+      "joint_cooccurrence": 23
+    }
+  },
+  "candidate_lexical_coverage": {
+    "legacy": {
+      "images": 12,
+      "selected_claims": 27,
+      "reference_joint": 13,
+      "top_joint": 3,
+      "any_candidate_joint": 3
+    },
+    "direct": {
+      "images": 12,
+      "selected_claims": 27,
+      "reference_joint": 13,
+      "top_joint": 3,
+      "any_candidate_joint": 3
+    }
+  },
+  "notes": "Lexical cooccurrence only. Missing synonym and wrong verb-object attachment can under/overcount; not truth, recall, parser accuracy or independent image grounding. No new training labels or reranking."
+}
