@@ -1,0 +1,24 @@
+{
+  "variant": "triplet_detector_training_features_v1",
+  "train_reference_pairs": 1776,
+  "val_reference_pairs": 489,
+  "train_pairs_sha256": "551833c3422064744ac0e1b6a1f8e20bc8bc2264ac3e989c35dd687d2968f778",
+  "val_pairs_sha256": "73820a583e023555a196fd7352c5d893a55fc101d4ffe139cbeb46c940923124",
+  "model": "openai/clip-vit-base-patch16",
+  "model_revision": "57c216476eefef5ab752ec549e440a49ae4ae5f3",
+  "detection_cache_sha256": "498825daf8f8773a1c92f4111dc4ccf1f4296343f952b486e0aa56caf82ec04c",
+  "caption_json_sha256": "2fd999220673258012acfb411a4e7e66af7d488050b2519b0badcc49b7600b8d",
+  "min_confidence": 0.5,
+  "min_iou": 0.5,
+  "max_objects": 10,
+  "duplicate_iou": 0.8,
+  "coordinate_format": "pixel_xyxy",
+  "training": false,
+  "local_training": {
+    "seed": 42,
+    "epochs": 30,
+    "learning_rate": 0.001,
+    "comparison": "GT features vs detector features on exactly same matchedtrain/matcheddev rows; architecture/loss/train-thresholdrule unchanged. No bestseedselection."
+  },
+  "notes": "Feature extraction only; GT matching supplies existinglabels; no invented unknownnegatives or unmatchedproposal labels. Exact matchingcoverage logged. Alreadyinspecteddevelopment data; not newheldout or detectionAP."
+}

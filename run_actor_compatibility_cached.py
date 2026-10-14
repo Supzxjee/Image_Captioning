@@ -44,6 +44,25 @@ def read_archive(path, pair_names):
                 config = json.loads(read('manifest.json'))['configuration']
                 if config['training'] is not False or config['model_revision'] != '57c216476eefef5ab752ec549e440a49ae4ae5f3':
                     raise ValueError('Actor feature model mismatch.')
+            elif summary['variant'] == 'triplet_detector_training_features_v1':
+                config=json.loads(read('manifest.json'))['configuration']
+                if config['training'] is not False or config['model_revision']!='57c216476eefef5ab752ec549e440a49ae4ae5f3':
+                    raise ValueError('Detector training feature model mismatch.')
+                from evaluate_frozen_residual import newline_hashes
+                protocol_path='audit/triplet_detector_training_protocol.json'
+                protocol=json.loads(Path(protocol_path).read_text())
+                if config['protocol_sha256'] not in newline_hashes(protocol_path):raise ValueError('Training protocol changed.')
+                for split,data in zip(('train','val'),raw):
+                    reference=json.loads(Path(f'audit/triplet_detector_{split}_reference_pairs.json').read_text())
+                    lookup={(r['image_id'],r['subject_id'],r['object_id']):r for r in reference}
+                    for row in json.loads(data):
+                        original=lookup[(row['image_id'],row['subject_id'],row['object_id'])]
+                        if any(row[k]!=original[k] for k in ('labels','filename','subject','object','caption_split')):
+                            raise ValueError('Detector feature changed supervision.')
+                        if row['gt_subject_box']!=original['subject_box'] or row['gt_object_box']!=original['object_box']:
+                            raise ValueError('Detector source changed GT boxes.')
+                        if row['subject_match_iou']<protocol['min_iou'] or row['object_match_iou']<protocol['min_iou']:
+                            raise ValueError('Insufficient matching IoU.')
             else:
                 raise ValueError('Unsupported actor training archive.')
             for split, data in zip(('train', 'val'), raw):

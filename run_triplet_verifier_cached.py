@@ -19,6 +19,8 @@ def main():
     p.add_argument('--relation-only-text',action='store_true',help='Matched ablation: shared train-only text bank, no candidate-specific object text.')
     p.add_argument('--residual-head',default='C:/KhoaLuanTotNghiep/Code/output/clip_prior_residual_v1/residual_head.pt')
     p.add_argument('--seed',type=int,default=42)
+    p.add_argument('--detector-source',help='New matched detector features; both conditions use exactly its matched rows.')
+    p.add_argument('--train-condition',choices=['detector','gt_control'],default='detector')
     args=p.parse_args();torch.set_num_threads(2);torch.manual_seed(args.seed)
     old,oldviews,oldtext,oldlens=read_archive(args.v2_source,['train_pairs.json','val_pairs.json'])
     new,newviews,newtext,newlens=read_archive(args.actor_source,['train_pairs.json','val_pairs.json'])
@@ -37,6 +39,21 @@ def main():
                 continue
             seen[key]=len(train);train.append(row);v.append(views[i]);t.append(text[i])
     dev=new[newlens[0]:];dv=newviews[newlens[0]:];dt=newtext[newlens[0]:]
+    if args.detector_source:
+        matched,mv,mt,mlens=read_archive(args.detector_source,['train_pairs.json','val_pairs.json'])
+        def align(matched_rows,original_rows,original_views,original_text,start):
+            index={(r['image_id'],r['subject_id'],r['object_id']):i for i,r in enumerate(original_rows)}
+            picked=[];features=[];texts=[]
+            for offset,row in enumerate(matched_rows):
+                i=index[(row['image_id'],row['subject_id'],row['object_id'])];original=original_rows[i]
+                if row['labels']!=original['labels']:raise ValueError('Matched labels disagree.')
+                if not torch.allclose(original_text[i],mt[start+offset],atol=1e-5):raise ValueError('Text encoder/features changed.')
+                picked.append(row if args.train_condition=='detector' else original)
+                features.append(mv[start+offset] if args.train_condition=='detector' else original_views[i])
+                texts.append(original_text[i])
+            return picked,features,texts
+        train,v,t=align(matched[:mlens[0]],train,torch.stack(v),torch.stack(t),0)
+        dev,dev_v,dev_t=align(matched[mlens[0]:],dev,dv,dt,mlens[0]);dv=torch.stack(dev_v);dt=torch.stack(dev_t)
     if {r['image_id'] for r in train}&{r['image_id'] for r in dev}:raise ValueError('Train/dev leakage.')
     if any(r['caption_split'] not in ('train','restval') for r in train+dev):raise ValueError('Caption heldout included.')
     views=torch.stack(v);text=torch.stack(t);geometry=pair_geometry(train)
@@ -98,6 +115,10 @@ def main():
                 'Unknown missing roles remain masked. All confirmed actor and predicate contrasts used. '
                 'Frozen A/B and predicate-object text embeddings; union excluded from verifier. No object whitelist or hand labels from audit used for training. '
                 'Train-only thresholds; sigmoid not calibrated probability; fixed30ep/lr.001/margin1 logits. No caption claim.'}
+    if args.detector_source:
+        summary['sources']['detector_training']=sha(args.detector_source)
+        summary['training_condition']=args.train_condition
+        summary['scope']='Identical matchedtrain/matcheddev subset across detector andGTcontrol; original fullGT result not a controlled box ablation.'
     output=Path(args.output);output.mkdir(parents=True,exist_ok=True)
     torch.save({'model':model.state_dict(),'thresholds':thresholds,'relations':RELATIONS,
                 'relation_only_text':args.relation_only_text,'relation_bank':relation_bank},output/'triplet_head.pt')

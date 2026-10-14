@@ -19,13 +19,15 @@ def main():
     parser.add_argument('--min-confidence', type=float, default=.5)
     parser.add_argument('--min-iou', type=float, default=.5)
     parser.add_argument('--coordinate-format', choices=['pixel_xyxy', 'normalized_xyxy'], default='pixel_xyxy')
+    parser.add_argument('--reference-count',type=int,default=500,help='Explicitly locked input cohort size; legacy default500.')
+    parser.add_argument('--max-objects',type=int,default=100,help='Legacy default100; training domain protocol uses10.')
     args = parser.parse_args()
     if not 0 <= args.min_confidence <= 1 or not 0 < args.min_iou <= 1:
         raise ValueError('Confidence outside [0,1].')
     raw = Path(args.pairs).read_bytes()
     rows = json.loads(raw)
-    if len(rows) != 500:
-        raise ValueError('Require locked 500-pair reference cohort.')
+    if len(rows) != args.reference_count or args.reference_count<1 or args.max_objects<1:
+        raise ValueError('Require the explicitly locked reference pair count and positive object cap.')
     source_path = Path(args.detections)
     source = json.loads(source_path.read_text())
     if not isinstance(source, dict):
@@ -55,7 +57,7 @@ def main():
         with Image.open(path) as image:
             width, height = image.size
         raw_boxes = select_detections(indexed[filename], min_confidence=args.min_confidence,
-                                      max_objects=100, duplicate_iou=.8)
+                                      max_objects=args.max_objects, duplicate_iou=.8)
         detections = []
         for item in raw_boxes:
             if not 0 <= item.confidence <= 1:
@@ -87,7 +89,8 @@ def main():
     path = output / 'evaluation_pairs.json'
     path.write_text(json.dumps(selected, indent=2), encoding='utf-8')
     summary = {'variant': 'frozen_residual_detector_matched_pairs_v1', 'relations': RELATIONS,
-               'reference_pairs': 500, 'matched_pairs': len(selected), 'pair_coverage': len(selected)/500,
+               'reference_pairs': args.reference_count, 'matched_pairs': len(selected), 'pair_coverage': len(selected)/len(rows),
+               'max_objects':args.max_objects,
                'min_confidence': args.min_confidence, 'min_iou': args.min_iou,
                'coordinate_format': args.coordinate_format, 'missing_pairs': dict(missing_counts),
                'cache_issues': dict(issues), 'matching': 'class-aware IoU-descending one-to-one greedy; same-class NMS0.8',
