@@ -68,6 +68,8 @@ def parse_args(argv=None):
     parser.add_argument('--relation-alignment-weight', type=float, default=0.0)
     parser.add_argument('--relation-alignment-margin', type=float, default=0.2)
     parser.add_argument('--grounded-relation-version', choices=['v1', 'appearance_v2', 'verified_v3'], default='v1')
+    parser.add_argument('--decoder-relation-memory', action='store_true',
+                        help='Append confidence-weighted instance relation slots to decoder memory (V1/V2).')
     parser.add_argument('--relation-verified-scale', type=float, default=0.1)
     parser.add_argument('--relation-wrong-image-weight', type=float, default=0.5)
     parser.add_argument('--caption-embedding-cache-path', default='',

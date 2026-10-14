@@ -47,6 +47,8 @@ def main():
     parser.add_argument('--sample-size', type=int, default=12)
     parser.add_argument('--beam-size', type=int, default=5)
     parser.add_argument('--candidate-count', type=int, default=3)
+    parser.add_argument('--compare-decoder-memory', action='store_true',
+                        help='Exploratory old-checkpoint routing intervention; no training or promotion.')
     args = parser.parse_args()
     from captioning.models import UniversalVisionEncoder, CaptionDecoder, ImageCaptioningModel
     if args.sample_size < 1 or not 1 <= args.candidate_count <= args.beam_size:
@@ -77,6 +79,10 @@ def main():
         use_itc=saved.get('itc_weight', 0) > 0, grounded_relation_alignment=True,
         grounded_relation_version=saved.get('grounded_relation_version', 'v1'),
         relation_verified_scale=saved.get('relation_verified_scale', .1))
+    encoder.decoder_relation_memory = saved.get('decoder_relation_memory', False)
+    if args.compare_decoder_memory and (encoder.decoder_relation_memory or
+                                       encoder.grounded_relation_version == 'verified_v3'):
+        raise ValueError('Routing comparison requires historical V1/V2 without direct decoder memory')
     del saved
     model = ImageCaptioningModel(encoder, CaptionDecoder(len(vocabulary))).to(device).eval()
     load_checkpoint(model, args.checkpoint, tokenizer)  # Strict; no warm start or random new heads.
@@ -111,7 +117,14 @@ def main():
             off = dict(original); off['mask'] = torch.zeros_like(original['mask'])
             image, prompt = torch.from_numpy(visual_cache.read(coco_image_id(name))), indexed[name]
             outcomes = {}; baseline_memory = None
-            for condition, entry in [('on', original), ('off', off), ('target_swap', swapped)]:
+            conditions = [('on', original), ('off', off), ('target_swap', swapped)]
+            if args.compare_decoder_memory:
+                conditions += [('direct_on', original), ('direct_off', off), ('direct_target_swap', swapped)]
+            for condition, entry in conditions:
+                if args.compare_decoder_memory:
+                    encoder.decoder_relation_memory = condition.startswith('direct_')
+                if condition in {'on', 'direct_on'}:
+                    baseline_memory = None
                 with torch.inference_mode():
                     kwargs = dict(relation_tokens=entry['tokens'][None].float().to(device),
                         negative_relation_tokens=entry['negative_tokens'][None].float().to(device),
@@ -138,6 +151,10 @@ def main():
                 off_top_changed=top('on') != top('off'), swap_top_changed=top('on') != top('target_swap'),
                 off_candidates_changed=outcomes['on']['candidates'] != outcomes['off']['candidates'],
                 swap_candidates_changed=outcomes['on']['candidates'] != outcomes['target_swap']['candidates']))
+            if args.compare_decoder_memory:
+                records[-1]['direct_off_top_changed'] = top('direct_on') != top('direct_off')
+                records[-1]['direct_swap_top_changed'] = top('direct_on') != top('direct_target_swap')
+                records[-1]['routing_on_top_changed'] = top('on') != top('direct_on')
             (output / 'records.json').write_text(json.dumps(records, indent=2), encoding='utf-8')
             print(f'{len(records)}/{len(cohort)} {name}: off={records[-1]["off_top_changed"]}, '
                   f'swap={records[-1]["swap_top_changed"]}', flush=True)
@@ -151,10 +168,18 @@ def main():
         grounded_sha256=hashlib.sha256(Path(args.grounded_cache).read_bytes()).hexdigest(),
         prompt_sha256=hashlib.sha256(Path(args.prompt_cache).read_bytes()).hexdigest(),
         beam_size=args.beam_size, candidate_count=args.candidate_count,
+        compare_decoder_memory=args.compare_decoder_memory,
         notes='Inference only. Generic relation prompt retained in all conditions. Alternate targets '
               'are unknown, not negatives. Caption change is sensitivity, not quality. '
               'Candidates_changed includes logprob changes, not only changed wording. '
               'Historical checkpoint and new selected relations may differ in distribution.')
+    if args.compare_decoder_memory:
+        summary['direct_memory_comparison'] = dict(
+            direct_off_top_changed=sum(r['direct_off_top_changed'] for r in records),
+            direct_swap_top_changed=sum(r['direct_swap_top_changed'] for r in records),
+            routing_on_top_changed=sum(r['routing_on_top_changed'] for r in records),
+            interpretation='Same old weights, newly appended decoder slots; untrained routing intervention. '
+                           'Changed wording alone is not quality improvement.')
     (output / 'summary.json').write_text(json.dumps(summary, indent=2), encoding='utf-8')
     print(json.dumps(summary, indent=2), flush=True)
 

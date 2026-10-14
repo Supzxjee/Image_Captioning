@@ -48,6 +48,10 @@ def load_checkpoint(model, path, tokenizer, warm_start=False):
                                f'but model mode is {model_selector!r}.')
     checkpoint_uses_grounded = bool(checkpoint.get('grounded_relation_alignment', False))
     model_uses_grounded = bool(getattr(model.encoder, 'grounded_relation_alignment', False))
+    saved_memory = bool(checkpoint.get('decoder_relation_memory', False))
+    model_memory = bool(getattr(model.encoder, 'decoder_relation_memory', False))
+    if saved_memory != model_memory and not (warm_start and model_memory and not saved_memory):
+        raise RuntimeError('Checkpoint decoder relation memory setting differs; explicitly warm-start a new training run.')
     if warm_start and getattr(model.encoder, 'grounded_relation_version', 'v1') == 'verified_v3':
         if checkpoint.get('grounded_relation_version') not in {'appearance_v2', 'verified_v3'}:
             raise RuntimeError('Verified V3 requires the trained appearance V2 verifier checkpoint.')

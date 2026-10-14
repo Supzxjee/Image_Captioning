@@ -87,6 +87,7 @@ def run(config):
         grounded_relation_alignment=config.grounded_relation_alignment,
         grounded_relation_version=config.grounded_relation_version,
         relation_verified_scale=config.relation_verified_scale,
+        decoder_relation_memory=config.decoder_relation_memory,
     )
     del frozen_backbone_state
     encoder = encoder.to(config.device)

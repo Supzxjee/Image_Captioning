@@ -6,6 +6,7 @@ import torch.nn as nn
 from transformers import CLIPModel
 from .config import EMBED_DIM, NUM_HEADS
 from .grounded_relations import PairGroundedRelationAlignment
+from .decoder_relation_memory import append_relation_memory
 
 
 class VisualQueryLayer(nn.Module):
@@ -198,7 +199,8 @@ class UniversalVisionEncoder(nn.Module):
                  use_itc=False, prompt_conditioned_qformer=False,
                  object_semantic_alignment=False, cascade_semantic_alignment=False,
                  cascade_selector_mode='object_context', grounded_relation_alignment=False,
-                 grounded_relation_version='v1', relation_verified_scale=0.1):
+                 grounded_relation_version='v1', relation_verified_scale=0.1,
+                 decoder_relation_memory=False):
         super().__init__()
         if model_name.lower() != 'clip':
             raise NotImplementedError('Only CLIP is supported in this notebook.')
@@ -247,6 +249,10 @@ class UniversalVisionEncoder(nn.Module):
         self.cascade_selector_mode = cascade_selector_mode
         self.grounded_relation_alignment = grounded_relation_alignment
         self.grounded_relation_version = grounded_relation_version
+        if decoder_relation_memory and (not grounded_relation_alignment or
+                                        grounded_relation_version == 'verified_v3'):
+            raise ValueError('Decoder relation memory requires V1/V2 pair grounding; V3 not supported.')
+        self.decoder_relation_memory = decoder_relation_memory
         self.use_itc = use_itc
         self.vis_projection = nn.Linear(768, embed_dim)
         self.relation_verified_scale = relation_verified_scale
@@ -434,20 +440,24 @@ class ImageCaptioningModel(nn.Module):
                      relation_tokens=None, negative_relation_tokens=None,
                      subject_boxes=None, object_boxes=None, relation_confidences=None,
                      relation_mask=None, return_relation_diagnostics=False):
+        direct_relations = getattr(self.encoder, 'decoder_relation_memory', False)
         encoder_output = self.encoder(
             images, cached_prompt_tokens, prompt_mask,
             object_prompt_tokens, object_prompt_mask,
             relation_tokens, negative_relation_tokens, subject_boxes, object_boxes,
-            relation_confidences, relation_mask, return_relation_diagnostics,
+            relation_confidences, relation_mask, return_relation_diagnostics or direct_relations,
         )
         vis_features, grounded_prompt_features = encoder_output[:2]
-        relation_diagnostics = encoder_output[2] if return_relation_diagnostics else None
+        relation_diagnostics = encoder_output[2] if return_relation_diagnostics or direct_relations else None
         memory = torch.cat([grounded_prompt_features, vis_features], dim=1)
         prompt_pad_mask = (prompt_mask == 0)
         visual_pad_mask = torch.zeros(
             images.size(0), vis_features.size(1), dtype=torch.bool, device=images.device
         )
         memory_pad_mask = torch.cat([prompt_pad_mask, visual_pad_mask], dim=1)
+        if direct_relations:
+            memory, memory_pad_mask = append_relation_memory(
+                memory, memory_pad_mask, relation_diagnostics, self.encoder.relation_alignment.relation_norm)
         output = (memory, memory_pad_mask)
         return output + (relation_diagnostics,) if return_relation_diagnostics else output
 
@@ -464,7 +474,9 @@ class ImageCaptioningModel(nn.Module):
             relation_confidences, relation_mask, return_relation_diagnostics)
         memory, memory_pad_mask = memory_output[:2]
         relation_diagnostics = memory_output[2] if return_relation_diagnostics else None
-        vis_features = memory[:, prompt_mask.size(1):]
+        visual_end = prompt_mask.size(1) + (self.encoder.num_visual_queries
+            if self.encoder.qformer is not None else 197)
+        vis_features = memory[:, prompt_mask.size(1):visual_end]
         batch_size, memory_len, embed_dim = memory.shape
         captions_per_image = tgt.size(0) // batch_size
         if tgt.size(0) != batch_size * captions_per_image:

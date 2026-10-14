@@ -333,6 +333,7 @@ def train_model(model, train_loader, data, config, accelerator=None):
             'relation_alignment_weight': config.relation_alignment_weight,
             'relation_alignment_margin': config.relation_alignment_margin,
             'grounded_relation_version': config.grounded_relation_version,
+            'decoder_relation_memory': config.decoder_relation_memory,
             'relation_wrong_image_weight': config.relation_wrong_image_weight,
             'relation_verified_scale': config.relation_verified_scale,
             'relation_verifier_frozen': config.grounded_relation_version == 'verified_v3',

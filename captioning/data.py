@@ -198,6 +198,8 @@ def load_data(config):
             relation_bundle['data'],
             [item['image'] for item in train_data + val_data + test_data])
         grounded_relation_metadata = relation_bundle.get('metadata', {})
+        if config.mode == 'train' and grounded_relation_metadata.get('inference_only'):
+            raise ValueError('Diagnostic inference-only relation cache cannot be used for training.')
         if config.grounded_relation_version in {'appearance_v2', 'verified_v3'}:
             for entry in grounded_relation_cache.values():
                 if 'relations' not in entry:

@@ -53,6 +53,7 @@ class Config:
     relation_alignment_weight: float = 0.0
     relation_alignment_margin: float = 0.2
     grounded_relation_version: str = 'v1'
+    decoder_relation_memory: bool = False
     relation_wrong_image_weight: float = 0.5
     relation_verified_scale: float = 0.1
     caption_embedding_cache_path: str = ''
@@ -62,6 +63,9 @@ class Config:
 
     def __post_init__(self):
         self.work_dir = Path(self.work_dir)
+        if self.decoder_relation_memory and (not self.grounded_relation_alignment or
+                                            self.grounded_relation_version == 'verified_v3'):
+            raise ValueError('Decoder relation memory requires V1/V2 pair grounding.')
         if self.grounded_relation_version not in {'v1', 'appearance_v2', 'verified_v3'}:
             raise ValueError('Invalid grounded relation version.')
         if self.grounded_relation_version != 'v1' and not self.grounded_relation_alignment:
@@ -121,7 +125,7 @@ class Config:
         if self.relation_alignment_weight < 0 or not 0 < self.relation_alignment_margin < 2:
             raise ValueError('Relation alignment weight must be nonnegative and margin in (0, 2).')
         if self.mode == 'train' and self.grounded_relation_alignment and \
-                self.relation_alignment_weight <= 0 and self.grounded_relation_version != 'verified_v3':
+                self.relation_alignment_weight <= 0 and self.grounded_relation_version != 'verified_v3' and not self.decoder_relation_memory:
             raise ValueError('Grounded relation training requires positive '
                              '--relation-alignment-weight.')
         if not self.grounded_relation_alignment and self.relation_alignment_weight > 0:
