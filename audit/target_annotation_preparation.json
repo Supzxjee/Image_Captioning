@@ -1,0 +1,18 @@
+{
+  "cases": 125,
+  "images": 61,
+  "same_class_cases": 32,
+  "relation_counts": {
+    "riding": 18,
+    "holding": 55,
+    "carrying": 16,
+    "sitting_on": 27,
+    "eating": 7,
+    "talking_on": 2
+  },
+  "manifest_sha256": "f009ad534f2c24033bb38f363662ce9012350229f48f2ff531b6733527f7ed96",
+  "annotation_performed": false,
+  "training_performed": false,
+  "negative_labels_assigned": 0,
+  "notes": "Official public COCO images, JPEG decoding and dimensions match extraction metadata. Pixel hashes recorded; byte identity with Kaggle images not established."
+}
