@@ -1,0 +1,9 @@
+{
+  "variant": "prompt_target_information_audit_v1",
+  "eligible_cases": 34,
+  "same_class": 21,
+  "identical_text": 21,
+  "distinct_grounded_payload": 34,
+  "filtered_sha256": "acb1ba75fe7c82acdf7a1d584b0c0f3c3dc361df060d11ea7a7ab0a26148482b",
+  "notes": "Train annotations only. Exact same text implies same deterministic text encoding, not identical grounded visual memory. No caption checkpoint executed; no CIDEr/BLEU/CHAIR measurement. Payload is not a tensor cache."
+}
