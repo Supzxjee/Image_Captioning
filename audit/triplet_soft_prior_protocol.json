@@ -1,0 +1,22 @@
+{
+  "variant": "frozen_triplet_soft_prior_v1",
+  "seed": 42,
+  "epochs": 100,
+  "learning_rate": 0.03,
+  "ridge": 0.01,
+  "contrast_weight": 0.2,
+  "conditions": ["triplet_only", "soft_prior"],
+  "train_pairs": 1141,
+  "dev_pairs": 310,
+  "inputs": "per-predicate frozen triplet logit and R50 continuous residual score",
+  "normalization": "mean/populationstd on known training labels per predicate only;std floor0.001",
+  "fusion": "two softplus nonnegative weights andbias perpredicate;18 nominal parameters;triplet_only zeros normalized R50 input (12 effective parameters)",
+  "loss": "masked BCE +0.2 type-balanced known actor/predicate hinge margin1 +0.01 ridge onweights/bias",
+  "thresholds": "same existing train-only >=90% precision and>=5accepted rule;no threshold fitting elsewhere",
+  "detector_source_sha256": "c3fcf5d65a462392891f4efa8adbd33a8d5359598ad0d0e80e4c91e863ee449f",
+  "transfer_source_sha256": "a129ab178f02e147980c537b1a64f21f8cc8f16a2c2ad09e60049ddac0d36e07",
+  "full100_source_sha256": "864bedb4925d5a3cc7eca50fa434d81761f84928dba9acab91d6c1badf8b8d4d",
+  "triplet_head_sha256": "de8124a30555b39eabdf45cdf649d599788174361c94bd8036ebed714f61fab4",
+  "residual_head_sha256": "86930afcbed9573a4a48a2a0b5a7d94507d52b67aaa63b73e5a5f7717907a438",
+  "notes": "Frozen source heads previously trained on GT crops of these training images; calibration/fusion is in-sample stacking, not out-of-fold evidence. Fit matched training detector views only. No hard R50 gate, hand labels/whitelists or dev-based hyperparameter selection. All evaluations reused development; no caption/novelty claim."
+}

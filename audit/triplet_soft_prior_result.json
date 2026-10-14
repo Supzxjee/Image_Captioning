@@ -1,0 +1,436 @@
+{
+  "triplet_only": {
+    "condition": "triplet_only",
+    "protocol": {
+      "variant": "frozen_triplet_soft_prior_v1",
+      "seed": 42,
+      "epochs": 100,
+      "learning_rate": 0.03,
+      "ridge": 0.01,
+      "contrast_weight": 0.2,
+      "conditions": [
+        "triplet_only",
+        "soft_prior"
+      ],
+      "train_pairs": 1141,
+      "dev_pairs": 310,
+      "inputs": "per-predicate frozen triplet logit and R50 continuous residual score",
+      "normalization": "mean/populationstd on known training labels per predicate only;std floor0.001",
+      "fusion": "two softplus nonnegative weights andbias perpredicate;18 nominal parameters;triplet_only zeros normalized R50 input (12 effective parameters)",
+      "loss": "masked BCE +0.2 type-balanced known actor/predicate hinge margin1 +0.01 ridge onweights/bias",
+      "thresholds": "same existing train-only >=90% precision and>=5accepted rule;no threshold fitting elsewhere",
+      "detector_source_sha256": "c3fcf5d65a462392891f4efa8adbd33a8d5359598ad0d0e80e4c91e863ee449f",
+      "transfer_source_sha256": "a129ab178f02e147980c537b1a64f21f8cc8f16a2c2ad09e60049ddac0d36e07",
+      "full100_source_sha256": "864bedb4925d5a3cc7eca50fa434d81761f84928dba9acab91d6c1badf8b8d4d",
+      "triplet_head_sha256": "de8124a30555b39eabdf45cdf649d599788174361c94bd8036ebed714f61fab4",
+      "residual_head_sha256": "86930afcbed9573a4a48a2a0b5a7d94507d52b67aaa63b73e5a5f7717907a438",
+      "notes": "Frozen source heads previously trained on GT crops of these training images; calibration/fusion is in-sample stacking, not out-of-fold evidence. Fit matched training detector views only. No hard R50 gate, hand labels/whitelists or dev-based hyperparameter selection. All evaluations reused development; no caption/novelty claim."
+    },
+    "weights": [
+      [
+        1.738371729850769,
+        0.17200329899787903
+      ],
+      [
+        1.323732614517212,
+        0.17200329899787903
+      ],
+      [
+        1.5676137208938599,
+        0.17200329899787903
+      ],
+      [
+        0.914743959903717,
+        0.17200329899787903
+      ],
+      [
+        0.7484960556030273,
+        0.17200329899787903
+      ],
+      [
+        0.6375200748443604,
+        0.17200329899787903
+      ]
+    ],
+    "bias": [
+      -0.3361804187297821,
+      -1.9754043817520142,
+      -1.9128575325012207,
+      -1.9683632850646973,
+      -2.0091259479522705,
+      -1.9978690147399902
+    ],
+    "thresholds": [
+      0.7860159873962402,
+      0.5316928029060364,
+      0.6561852693557739,
+      0.5375814437866211,
+      0.5356940031051636,
+      0.47099027037620544
+    ],
+    "train_pairs": 1141,
+    "train_images": 616,
+    "dev_pairs": 310,
+    "train_evaluation_overlap": 0,
+    "nominal_parameters": 18,
+    "effective_parameters": 12,
+    "dev_metrics": {
+      "per_relation": {
+        "holding": {
+          "known": 290,
+          "positive": 119,
+          "AP": 0.6739170441203033,
+          "precision": 0.7435897435897436,
+          "recall": 0.24369747899159663,
+          "accepted_known": 39
+        },
+        "riding": {
+          "known": 303,
+          "positive": 24,
+          "AP": 0.9269854862108752,
+          "precision": 0.8,
+          "recall": 1.0,
+          "accepted_known": 30
+        },
+        "sitting_on": {
+          "known": 268,
+          "positive": 27,
+          "AP": 0.8746599915735135,
+          "precision": 0.8076923076923077,
+          "recall": 0.7777777777777778,
+          "accepted_known": 26
+        },
+        "carrying": {
+          "known": 308,
+          "positive": 18,
+          "AP": 0.4352563550864642,
+          "precision": 0.3333333333333333,
+          "recall": 0.05555555555555555,
+          "accepted_known": 3
+        },
+        "eating": {
+          "known": 308,
+          "positive": 4,
+          "AP": 0.9166666666666666,
+          "precision": 0.75,
+          "recall": 0.75,
+          "accepted_known": 4
+        },
+        "talking_on": {
+          "known": 308,
+          "positive": 4,
+          "AP": 0.8041666666666667,
+          "precision": 0.6666666666666666,
+          "recall": 0.5,
+          "accepted_known": 3
+        }
+      },
+      "macro_AP_on_known_labels": 0.7719420350540815
+    },
+    "dev_acceptance": {
+      "positive": 80,
+      "negative": 25,
+      "unknown": 16,
+      "precision_on_known": 0.7619047619047619,
+      "recall_on_known": 0.40816326530612246
+    },
+    "dev_actor_edges": {
+      "edges": 194,
+      "images": 126,
+      "wins": 152,
+      "ties": 0,
+      "win_rate": 0.7835051417350769,
+      "mean_gap": 0.9675921201705933
+    },
+    "transfer_acceptance": {
+      "positive": 116,
+      "negative": 11,
+      "unknown": 36,
+      "precision_on_known": 0.9133858267716536,
+      "recall_on_known": 0.4773662551440329
+    },
+    "transfer_metrics": {
+      "per_relation": {
+        "holding": {
+          "known": 276,
+          "positive": 142,
+          "AP": 0.887341686500293,
+          "precision": 0.9285714285714286,
+          "recall": 0.45774647887323944,
+          "accepted_known": 70
+        },
+        "riding": {
+          "known": 355,
+          "positive": 18,
+          "AP": 0.9391543374565449,
+          "precision": 1.0,
+          "recall": 0.8333333333333334,
+          "accepted_known": 15
+        },
+        "sitting_on": {
+          "known": 266,
+          "positive": 28,
+          "AP": 0.8784896305485903,
+          "precision": 0.8333333333333334,
+          "recall": 0.5357142857142857,
+          "accepted_known": 18
+        },
+        "carrying": {
+          "known": 358,
+          "positive": 27,
+          "AP": 0.6467073260861681,
+          "precision": 0.8571428571428571,
+          "recall": 0.2222222222222222,
+          "accepted_known": 7
+        },
+        "eating": {
+          "known": 333,
+          "positive": 23,
+          "AP": 0.9652112066299705,
+          "precision": 1.0,
+          "recall": 0.5652173913043478,
+          "accepted_known": 13
+        },
+        "talking_on": {
+          "known": 354,
+          "positive": 5,
+          "AP": 0.6491666666666667,
+          "precision": 0.5,
+          "recall": 0.4,
+          "accepted_known": 4
+        }
+      },
+      "macro_AP_on_known_labels": 0.8276784756480389
+    },
+    "transfer_actor_edges": {
+      "edges": 60,
+      "images": 49,
+      "wins": 51,
+      "ties": 0,
+      "win_rate": 0.8500000238418579,
+      "mean_gap": 1.0513076782226562
+    },
+    "full100_selected_claims": 87,
+    "full100_relation_images": 42,
+    "full100_pre_cap_claims": 154,
+    "notes": "No hard proposer veto. Train-only in-sample stacking/calibration;frozen source heads;unknown labels masked. Known-label matched transfer precision is not fullpool precision;review samples are purposive/method-visible;no caption claim.",
+    "fusion_head_sha256": "fcc2e01428420ea447aff7b4ce58af9e9209f7dad2cf5dfc7006f61ba2279da7"
+  },
+  "soft_prior": {
+    "condition": "soft_prior",
+    "protocol": {
+      "variant": "frozen_triplet_soft_prior_v1",
+      "seed": 42,
+      "epochs": 100,
+      "learning_rate": 0.03,
+      "ridge": 0.01,
+      "contrast_weight": 0.2,
+      "conditions": [
+        "triplet_only",
+        "soft_prior"
+      ],
+      "train_pairs": 1141,
+      "dev_pairs": 310,
+      "inputs": "per-predicate frozen triplet logit and R50 continuous residual score",
+      "normalization": "mean/populationstd on known training labels per predicate only;std floor0.001",
+      "fusion": "two softplus nonnegative weights andbias perpredicate;18 nominal parameters;triplet_only zeros normalized R50 input (12 effective parameters)",
+      "loss": "masked BCE +0.2 type-balanced known actor/predicate hinge margin1 +0.01 ridge onweights/bias",
+      "thresholds": "same existing train-only >=90% precision and>=5accepted rule;no threshold fitting elsewhere",
+      "detector_source_sha256": "c3fcf5d65a462392891f4efa8adbd33a8d5359598ad0d0e80e4c91e863ee449f",
+      "transfer_source_sha256": "a129ab178f02e147980c537b1a64f21f8cc8f16a2c2ad09e60049ddac0d36e07",
+      "full100_source_sha256": "864bedb4925d5a3cc7eca50fa434d81761f84928dba9acab91d6c1badf8b8d4d",
+      "triplet_head_sha256": "de8124a30555b39eabdf45cdf649d599788174361c94bd8036ebed714f61fab4",
+      "residual_head_sha256": "86930afcbed9573a4a48a2a0b5a7d94507d52b67aaa63b73e5a5f7717907a438",
+      "notes": "Frozen source heads previously trained on GT crops of these training images; calibration/fusion is in-sample stacking, not out-of-fold evidence. Fit matched training detector views only. No hard R50 gate, hand labels/whitelists or dev-based hyperparameter selection. All evaluations reused development; no caption/novelty claim."
+    },
+    "weights": [
+      [
+        1.5863234996795654,
+        0.5263106822967529
+      ],
+      [
+        0.852774441242218,
+        0.7590954899787903
+      ],
+      [
+        1.1513227224349976,
+        0.5440763235092163
+      ],
+      [
+        0.5249266624450684,
+        0.4008890688419342
+      ],
+      [
+        0.4523789584636688,
+        0.49147364497184753
+      ],
+      [
+        0.3007693588733673,
+        0.33380693197250366
+      ]
+    ],
+    "bias": [
+      -0.35673707723617554,
+      -2.010225296020508,
+      -1.9286237955093384,
+      -1.9490890502929688,
+      -2.0367307662963867,
+      -2.048818349838257
+    ],
+    "thresholds": [
+      0.8191381096839905,
+      0.6550955176353455,
+      0.6851284503936768,
+      0.5293915867805481,
+      0.7287099957466125,
+      0.4947798252105713
+    ],
+    "train_pairs": 1141,
+    "train_images": 616,
+    "dev_pairs": 310,
+    "train_evaluation_overlap": 0,
+    "nominal_parameters": 18,
+    "effective_parameters": 18,
+    "dev_metrics": {
+      "per_relation": {
+        "holding": {
+          "known": 290,
+          "positive": 119,
+          "AP": 0.7050619931535715,
+          "precision": 0.88,
+          "recall": 0.18487394957983194,
+          "accepted_known": 25
+        },
+        "riding": {
+          "known": 303,
+          "positive": 24,
+          "AP": 0.9027923177442863,
+          "precision": 0.7777777777777778,
+          "recall": 0.875,
+          "accepted_known": 27
+        },
+        "sitting_on": {
+          "known": 268,
+          "positive": 27,
+          "AP": 0.9253611301170307,
+          "precision": 0.84,
+          "recall": 0.7777777777777778,
+          "accepted_known": 25
+        },
+        "carrying": {
+          "known": 308,
+          "positive": 18,
+          "AP": 0.38960549593925514,
+          "precision": 0.7142857142857143,
+          "recall": 0.2777777777777778,
+          "accepted_known": 7
+        },
+        "eating": {
+          "known": 308,
+          "positive": 4,
+          "AP": 0.875,
+          "precision": 1.0,
+          "recall": 0.75,
+          "accepted_known": 3
+        },
+        "talking_on": {
+          "known": 308,
+          "positive": 4,
+          "AP": 0.6547619047619048,
+          "precision": 1.0,
+          "recall": 0.25,
+          "accepted_known": 1
+        }
+      },
+      "macro_AP_on_known_labels": 0.742097140286008
+    },
+    "dev_acceptance": {
+      "positive": 73,
+      "negative": 15,
+      "unknown": 15,
+      "precision_on_known": 0.8295454545454546,
+      "recall_on_known": 0.37244897959183676
+    },
+    "dev_actor_edges": {
+      "edges": 194,
+      "images": 126,
+      "wins": 162,
+      "ties": 0,
+      "win_rate": 0.8350515365600586,
+      "mean_gap": 1.0981656312942505
+    },
+    "transfer_acceptance": {
+      "positive": 102,
+      "negative": 12,
+      "unknown": 27,
+      "precision_on_known": 0.8947368421052632,
+      "recall_on_known": 0.41975308641975306
+    },
+    "transfer_metrics": {
+      "per_relation": {
+        "holding": {
+          "known": 276,
+          "positive": 142,
+          "AP": 0.8918441398621271,
+          "precision": 0.9122807017543859,
+          "recall": 0.36619718309859156,
+          "accepted_known": 57
+        },
+        "riding": {
+          "known": 355,
+          "positive": 18,
+          "AP": 0.9745098039215688,
+          "precision": 1.0,
+          "recall": 0.7222222222222222,
+          "accepted_known": 13
+        },
+        "sitting_on": {
+          "known": 266,
+          "positive": 28,
+          "AP": 0.8786442898668588,
+          "precision": 0.7777777777777778,
+          "recall": 0.5,
+          "accepted_known": 18
+        },
+        "carrying": {
+          "known": 358,
+          "positive": 27,
+          "AP": 0.6834518801803992,
+          "precision": 0.9166666666666666,
+          "recall": 0.4074074074074074,
+          "accepted_known": 12
+        },
+        "eating": {
+          "known": 333,
+          "positive": 23,
+          "AP": 0.9572595771522492,
+          "precision": 1.0,
+          "recall": 0.4782608695652174,
+          "accepted_known": 11
+        },
+        "talking_on": {
+          "known": 354,
+          "positive": 5,
+          "AP": 0.5644444444444445,
+          "precision": 0.3333333333333333,
+          "recall": 0.2,
+          "accepted_known": 3
+        }
+      },
+      "macro_AP_on_known_labels": 0.8250256892379412
+    },
+    "transfer_actor_edges": {
+      "edges": 60,
+      "images": 49,
+      "wins": 54,
+      "ties": 0,
+      "win_rate": 0.8999999761581421,
+      "mean_gap": 1.1631643772125244
+    },
+    "full100_selected_claims": 69,
+    "full100_relation_images": 39,
+    "full100_pre_cap_claims": 97,
+    "notes": "No hard proposer veto. Train-only in-sample stacking/calibration;frozen source heads;unknown labels masked. Known-label matched transfer precision is not fullpool precision;review samples are purposive/method-visible;no caption claim.",
+    "fusion_head_sha256": "1e67800d3bbe58b14d763a7ff66772a034279e14c09bd7a27a4ac9d31733e03b"
+  }
+}
