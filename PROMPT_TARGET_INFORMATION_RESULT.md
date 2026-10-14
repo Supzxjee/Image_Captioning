@@ -29,6 +29,20 @@ The audit exports an explicit language-plus-ID-plus-normalized-box interchange c
 
 ## Decision
 
+Prior uploaded diagnostic ZIPs were also reopened and each summary count recomputed from `diagnostic_records.json`. All five summaries agree with their records. These are historical checkpoint results, not five new runs and not tests of the latest region selector:
+
+| Historical condition | Images with relations | Captions changed by bypassing pair residual |
+|---|---:|---:|
+| E3 pair-grounded epoch 3 | 66 | 0 |
+| Appearance V2, 500-image diagnostic | 66 | 7 |
+| Appearance V2, full one epoch | 66 | 0 |
+| Verified V3, before pilot | 20 | 1 |
+| Verified V3, after pilot | 20 | 1 |
+
+The small Appearance V2 diagnostic is not stronger evidence than the full training run. The full run's mean query gate is .001853 and mean residual/input norm ratio is .003301; E3 epoch 3 values are .000210 and .000756. These observations support prioritizing the relation-to-decoder path rather than assuming more target annotations alone will change captions. V3 uses a different verification mechanism; its gate is not numerically comparable to the learned V1/V2 query gate.
+
+Off conditions retained the generic V2.1 prompt. Unchanged top captions do not prove identical token probabilities, absence of all semantic information, or unchanged quality over the complete dataset. No new quality metric was computed. Public `audit/historical_caption_sensitivity.json` records source archive hashes and original code commits.
+
 Pause further manual annotation and target-loss tuning. First test caption dependence on verified relations, using a fixed caption checkpoint and a small fixed image subset: compare the existing relation input, a zero relation mask, and a target-box swap with identical relation text. Keep visual tokens, generic prompt tokens, decoding policy and candidate count fixed. Record accepted relation masks/weights, memory change, caption candidates and relation errors. All-zero/unchanged results must be reported, not interpreted as an improvement. Wrong-box swaps are interventions, not verified negative training labels.
 
 The full caption checkpoint and its compatible visual/prompt/grounded caches are not available locally. No actual decoder intervention, CIDEr/BLEU/CHAIR evaluation or causal bottleneck conclusion is reported. This audit identifies an integration risk and a falsifiable next test; it does not prove that serialization caused the prior pilot's poor transfer.
@@ -38,5 +52,7 @@ The full caption checkpoint and its compatible visual/prompt/grounded caches are
 `python audit_prompt_target_information.py --package <original annotation directory> --filtered <human_batch1_filtered.json> --output <new output directory>`
 
 `python -m unittest tests.test_prompt_target_information`
+
+Optional repeated `--historical-diagnostic <previous review ZIP>` verifies historical summary counts against raw on/off caption records.
 
 Local output: `C:/KhoaLuanTotNghiep/Code/output/prompt_target_information_audit_v1`.

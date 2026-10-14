@@ -2,6 +2,7 @@
 import argparse
 import hashlib
 import json
+import zipfile
 from pathlib import Path
 
 from captioning.selected_relation_prompts import build_selected_prompts
@@ -37,6 +38,8 @@ def main():
     parser.add_argument('--package', required=True)
     parser.add_argument('--filtered', required=True)
     parser.add_argument('--output', required=True)
+    parser.add_argument('--historical-diagnostic', action='append', default=[],
+                        help='Prior review ZIP; recompute on/off counts from its records.')
     args = parser.parse_args()
     package, source = Path(args.package), Path(args.filtered)
     cases = json.loads((package / 'review/cases.json').read_text(encoding='utf-8'))['cases']
@@ -64,6 +67,34 @@ def main():
     output.mkdir(parents=True, exist_ok=True)
     (output / 'cases.json').write_text(json.dumps(rows, ensure_ascii=False, indent=2), encoding='utf-8')
     (output / 'summary.json').write_text(json.dumps(summary, indent=2), encoding='utf-8')
+    historical = []
+    for archive in args.historical_diagnostic:
+        path = Path(archive)
+        digest = hashlib.sha256(path.read_bytes()).hexdigest()
+        with zipfile.ZipFile(path) as handle:
+            for member in handle.namelist():
+                if not member.endswith('diagnostic_summary.json'):
+                    continue
+                previous = json.loads(handle.read(member))
+                records = json.loads(handle.read(member.replace(
+                    'diagnostic_summary.json', 'diagnostic_records.json')))
+                changes = sum(r['caption_on'] != r['caption_off'] for r in records)
+                with_relations = sum(bool(r['relation_count']) for r in records)
+                if (changes != previous['caption_changed_count'] or
+                        with_relations != previous['images_with_relations'] or
+                        len(records) != previous['sample_count']):
+                    raise ValueError(f'Historical record/summary mismatch: {path.name}:{member}')
+                historical.append(dict(archive=path.name, archive_sha256=digest, member=member,
+                    code_commit=previous['code_commit'], images=len(records),
+                    images_with_relations=with_relations, caption_changed=changes,
+                    residual_ratio=previous['residual_ratio_mean'],
+                    query_gate_mean=previous['query_gate_mean'],
+                    accepted_relations=previous.get('accepted_relations'),
+                    notes='Reanalysis of previous Kaggle outputs; not a new model run. '
+                          'Off retains generic V2.1 relation prompt.'))
+    if historical:
+        (output / 'historical_caption_sensitivity.json').write_text(
+            json.dumps(historical, indent=2), encoding='utf-8')
     print(json.dumps(summary, indent=2))
 
 

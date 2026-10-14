@@ -1,0 +1,67 @@
+[
+  {
+    "archive": "e3_relation_diagnostic_100.zip",
+    "archive_sha256": "2dba78fee5f42462be9273ff79fab7d46f01bd4719cfcd70ff208702c06b73a8",
+    "member": "diagnostic_summary.json",
+    "code_commit": "8eb21fe",
+    "images": 100,
+    "images_with_relations": 66,
+    "caption_changed": 0,
+    "residual_ratio": 0.0007563015976550312,
+    "query_gate_mean": 0.00020967125221266707,
+    "accepted_relations": null,
+    "notes": "Reanalysis of previous Kaggle outputs; not a new model run. Off retains generic V2.1 relation prompt."
+  },
+  {
+    "archive": "e3_appearance_v2_diagnostic_500 (1).zip",
+    "archive_sha256": "82e41ab6f7040e9d4010587e7a70a318c9c94bf0ecbdb99cb710306edf7af512",
+    "member": "validation_diagnostic_100/diagnostic_summary.json",
+    "code_commit": "8c44631",
+    "images": 100,
+    "images_with_relations": 66,
+    "caption_changed": 7,
+    "residual_ratio": 0.049675769031499374,
+    "query_gate_mean": 0.11758389843232704,
+    "accepted_relations": null,
+    "notes": "Reanalysis of previous Kaggle outputs; not a new model run. Off retains generic V2.1 relation prompt."
+  },
+  {
+    "archive": "e3_appearance_v2_32q_2l_dual_gpu_1ep_review.zip",
+    "archive_sha256": "4b5849c58e97a2aa22fa2e9624401f634c8f68b083255bceb0c1abddc442dae5",
+    "member": "validation_diagnostic_100/diagnostic_summary.json",
+    "code_commit": "8c44631",
+    "images": 100,
+    "images_with_relations": 66,
+    "caption_changed": 0,
+    "residual_ratio": 0.003301245523757781,
+    "query_gate_mean": 0.0018526864604968014,
+    "accepted_relations": null,
+    "notes": "Reanalysis of previous Kaggle outputs; not a new model run. Off retains generic V2.1 relation prompt."
+  },
+  {
+    "archive": "e3_verified_v3_pilot_128b_review.zip",
+    "archive_sha256": "1e2b6bc619221ecf0f882d84c678bb773b77ca92e121e990ba6031ae3d6d7c8c",
+    "member": "before_training_100/diagnostic_summary.json",
+    "code_commit": "0dbe6f6",
+    "images": 100,
+    "images_with_relations": 20,
+    "caption_changed": 1,
+    "residual_ratio": 0.018092787265777587,
+    "query_gate_mean": null,
+    "accepted_relations": 21,
+    "notes": "Reanalysis of previous Kaggle outputs; not a new model run. Off retains generic V2.1 relation prompt."
+  },
+  {
+    "archive": "e3_verified_v3_pilot_128b_review.zip",
+    "archive_sha256": "1e2b6bc619221ecf0f882d84c678bb773b77ca92e121e990ba6031ae3d6d7c8c",
+    "member": "after_training_100/diagnostic_summary.json",
+    "code_commit": "0dbe6f6",
+    "images": 100,
+    "images_with_relations": 20,
+    "caption_changed": 1,
+    "residual_ratio": 0.01562916439725086,
+    "query_gate_mean": null,
+    "accepted_relations": 21,
+    "notes": "Reanalysis of previous Kaggle outputs; not a new model run. Off retains generic V2.1 relation prompt."
+  }
+]
