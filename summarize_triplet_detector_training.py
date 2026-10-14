@@ -19,6 +19,7 @@ def main():
     for name in ('source', 'gt-head', 'detector-head', 'gt-transfer',
                  'detector-transfer', 'visual-review', 'output'):
         parser.add_argument('--' + name, required=True)
+    parser.add_argument('--augmented', action='store_true', help='Compare full-GT plus matched GT/detector views.')
     args = parser.parse_args()
     torch.set_num_threads(2)
     rows, views, text, lengths = read_archive(args.source, ['train_pairs.json', 'val_pairs.json'])
@@ -30,6 +31,11 @@ def main():
               'notes': 'Single fixed seed42 development audit. Identical detector dev features for both heads; '
                        'thresholds fitted on each training condition only. Full100 review is method-visible '
                        'assistant inspection of selected claims, not independent accuracy or exhaustive recall.'}
+    if args.augmented:
+        protocol = json.loads(Path('audit/triplet_mixed_view_protocol.json').read_text())
+        if result['source_sha256'] != protocol['detector_source_sha256']:
+            raise ValueError('Augmentation source differs from locked protocol.')
+        result.update(variant=protocol['variant'], protocol=protocol)
     for condition, head_path, transfer_path in (
         ('gt_control', args.gt_head, args.gt_transfer),
         ('detector', args.detector_head, args.detector_transfer),
@@ -38,8 +44,16 @@ def main():
         summary = json.loads((directory / 'triplet_summary.json').read_text())
         if summary['sources']['detector_training'] != result['source_sha256']:
             raise ValueError('Different matched training archive.')
-        if summary['training_condition'] != condition or summary['seed'] != 42 or summary['epochs'] != 30:
+        expected = {'gt_control': 'gt_augmented_control', 'detector': 'mixed_detector'} if args.augmented else {
+            'gt_control': 'gt_control', 'detector': 'detector'}
+        if summary['training_condition'] != expected[condition] or summary['seed'] != 42 or summary['epochs'] != 30:
             raise ValueError('Unexpected training condition/configuration.')
+        if args.augmented and (summary['train_pairs'] != 1776 or summary['extra_view_pairs'] != lengths[0]
+                               or summary['threshold_fit_domain'] != 'matched training detector crops; both conditions'):
+            raise ValueError('Full-GT retention or common calibration protocol changed.')
+        if args.augmented and any(summary['sources'][name] != protocol[name + '_source_sha256']
+                                  for name in ('v2', 'actor', 'full100')):
+            raise ValueError('Original source differs from locked protocol.')
         cp = torch.load(directory / 'triplet_head.pt', map_location='cpu', weights_only=True)
         model = TripletVerifier()
         model.load_state_dict(cp['model'])
@@ -57,6 +71,7 @@ def main():
         if transfer['head_sha256'] != sha(directory / 'triplet_head.pt') or transfer['threshold_refit']:
             raise ValueError('Transfer head changed or thresholds refitted.')
         result['runs'][condition] = {
+            'training_condition': summary['training_condition'],
             'head_sha256': transfer['head_sha256'],
             'common_detector_dev_metrics': metrics(logits.sigmoid(), labels, cp['thresholds']),
             'common_detector_dev_actor_edges': actor_edge_metrics(logits, dev, exhaustive=True),

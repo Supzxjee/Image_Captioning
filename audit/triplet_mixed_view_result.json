@@ -1,0 +1,341 @@
+{
+  "source_sha256": "c3fcf5d65a462392891f4efa8adbd33a8d5359598ad0d0e80e4c91e863ee449f",
+  "common_detector_dev_pairs": 310,
+  "runs": {
+    "gt_control": {
+      "training_condition": "gt_augmented_control",
+      "head_sha256": "53ca9308748ea27097eb14f2c069d0ab40a28f527601ecd13ae60f0af5fdb5ed",
+      "common_detector_dev_metrics": {
+        "per_relation": {
+          "holding": {
+            "known": 290,
+            "positive": 119,
+            "AP": 0.6566578386135272,
+            "precision": 0.7209302325581395,
+            "recall": 0.2605042016806723,
+            "accepted_known": 43
+          },
+          "riding": {
+            "known": 303,
+            "positive": 24,
+            "AP": 0.9267959766463656,
+            "precision": 0.8275862068965517,
+            "recall": 1.0,
+            "accepted_known": 29
+          },
+          "sitting_on": {
+            "known": 268,
+            "positive": 27,
+            "AP": 0.8633944682718317,
+            "precision": 0.84,
+            "recall": 0.7777777777777778,
+            "accepted_known": 25
+          },
+          "carrying": {
+            "known": 308,
+            "positive": 18,
+            "AP": 0.4477909951776424,
+            "precision": 0.5,
+            "recall": 0.1111111111111111,
+            "accepted_known": 4
+          },
+          "eating": {
+            "known": 308,
+            "positive": 4,
+            "AP": 0.9166666666666666,
+            "precision": 0.75,
+            "recall": 0.75,
+            "accepted_known": 4
+          },
+          "talking_on": {
+            "known": 308,
+            "positive": 4,
+            "AP": 0.6791666666666667,
+            "precision": 0.6666666666666666,
+            "recall": 0.5,
+            "accepted_known": 3
+          }
+        },
+        "macro_AP_on_known_labels": 0.7484121020071167
+      },
+      "common_detector_dev_actor_edges": {
+        "edges": 194,
+        "images": 126,
+        "wins": 149,
+        "ties": 0,
+        "win_rate": 0.7680412530899048,
+        "mean_gap": 1.4177815914154053
+      },
+      "transfer": {
+        "variant": "text_conditioned_whole_triplet_development_v1",
+        "pairs": 364,
+        "images": 286,
+        "head_sha256": "53ca9308748ea27097eb14f2c069d0ab40a28f527601ecd13ae60f0af5fdb5ed",
+        "source_sha256": "a129ab178f02e147980c537b1a64f21f8cc8f16a2c2ad09e60049ddac0d36e07",
+        "train_image_overlap": 0,
+        "training_performed": false,
+        "threshold_refit": false,
+        "before": {
+          "positive": 43,
+          "negative": 6,
+          "unknown": 11,
+          "precision_on_known": 0.8775510204081632,
+          "recall_on_known": 0.17695473251028807
+        },
+        "after": {
+          "positive": 33,
+          "negative": 2,
+          "unknown": 8,
+          "precision_on_known": 0.9428571428571428,
+          "recall_on_known": 0.13580246913580246
+        },
+        "lost_positives": 10,
+        "removed_negatives": 4,
+        "verifier_actor_edges": {
+          "edges": 60,
+          "images": 49,
+          "wins": 50,
+          "ties": 0,
+          "win_rate": 0.8333333134651184,
+          "mean_gap": 1.636499285697937
+        },
+        "verifier_metrics_all_known": {
+          "per_relation": {
+            "holding": {
+              "known": 276,
+              "positive": 142,
+              "AP": 0.8753242505441302,
+              "precision": 0.8888888888888888,
+              "recall": 0.4507042253521127,
+              "accepted_known": 72
+            },
+            "riding": {
+              "known": 355,
+              "positive": 18,
+              "AP": 0.9158399470899474,
+              "precision": 1.0,
+              "recall": 0.7777777777777778,
+              "accepted_known": 14
+            },
+            "sitting_on": {
+              "known": 266,
+              "positive": 28,
+              "AP": 0.8779612237545119,
+              "precision": 0.8235294117647058,
+              "recall": 0.5,
+              "accepted_known": 17
+            },
+            "carrying": {
+              "known": 358,
+              "positive": 27,
+              "AP": 0.6488684483689976,
+              "precision": 0.9,
+              "recall": 0.3333333333333333,
+              "accepted_known": 10
+            },
+            "eating": {
+              "known": 333,
+              "positive": 23,
+              "AP": 0.9635904299056938,
+              "precision": 1.0,
+              "recall": 0.6521739130434783,
+              "accepted_known": 15
+            },
+            "talking_on": {
+              "known": 354,
+              "positive": 5,
+              "AP": 0.5237037037037038,
+              "precision": 0.5,
+              "recall": 0.4,
+              "accepted_known": 4
+            }
+          },
+          "macro_AP_on_known_labels": 0.8008813338944974
+        },
+        "notes": "ReusedR55 matched detector pool; sequential development,not freshheldout/detectionAP/caption quality. Unknown excluded from precision; frozen thresholds, no fitting here."
+      },
+      "full100_claims": 12,
+      "full100_relation_images": 8
+    },
+    "detector": {
+      "training_condition": "mixed_detector",
+      "head_sha256": "1b99fff6d0b94e5fb0faf114f675218b9d433e531bdc5327ad455e896a832e47",
+      "common_detector_dev_metrics": {
+        "per_relation": {
+          "holding": {
+            "known": 290,
+            "positive": 119,
+            "AP": 0.6567510991509831,
+            "precision": 0.725,
+            "recall": 0.24369747899159663,
+            "accepted_known": 40
+          },
+          "riding": {
+            "known": 303,
+            "positive": 24,
+            "AP": 0.9321225944729834,
+            "precision": 0.8,
+            "recall": 1.0,
+            "accepted_known": 30
+          },
+          "sitting_on": {
+            "known": 268,
+            "positive": 27,
+            "AP": 0.8730092402928645,
+            "precision": 0.7857142857142857,
+            "recall": 0.8148148148148148,
+            "accepted_known": 28
+          },
+          "carrying": {
+            "known": 308,
+            "positive": 18,
+            "AP": 0.47992229705382466,
+            "precision": 0.6,
+            "recall": 0.16666666666666666,
+            "accepted_known": 5
+          },
+          "eating": {
+            "known": 308,
+            "positive": 4,
+            "AP": 0.95,
+            "precision": 1.0,
+            "recall": 0.75,
+            "accepted_known": 3
+          },
+          "talking_on": {
+            "known": 308,
+            "positive": 4,
+            "AP": 0.6791666666666667,
+            "precision": 0.6666666666666666,
+            "recall": 0.5,
+            "accepted_known": 3
+          }
+        },
+        "macro_AP_on_known_labels": 0.7618286496062203
+      },
+      "common_detector_dev_actor_edges": {
+        "edges": 194,
+        "images": 126,
+        "wins": 149,
+        "ties": 0,
+        "win_rate": 0.7680412530899048,
+        "mean_gap": 1.3868664503097534
+      },
+      "transfer": {
+        "variant": "text_conditioned_whole_triplet_development_v1",
+        "pairs": 364,
+        "images": 286,
+        "head_sha256": "1b99fff6d0b94e5fb0faf114f675218b9d433e531bdc5327ad455e896a832e47",
+        "source_sha256": "a129ab178f02e147980c537b1a64f21f8cc8f16a2c2ad09e60049ddac0d36e07",
+        "train_image_overlap": 0,
+        "training_performed": false,
+        "threshold_refit": false,
+        "before": {
+          "positive": 43,
+          "negative": 6,
+          "unknown": 11,
+          "precision_on_known": 0.8775510204081632,
+          "recall_on_known": 0.17695473251028807
+        },
+        "after": {
+          "positive": 28,
+          "negative": 1,
+          "unknown": 7,
+          "precision_on_known": 0.9655172413793104,
+          "recall_on_known": 0.11522633744855967
+        },
+        "lost_positives": 15,
+        "removed_negatives": 5,
+        "verifier_actor_edges": {
+          "edges": 60,
+          "images": 49,
+          "wins": 49,
+          "ties": 0,
+          "win_rate": 0.8166666626930237,
+          "mean_gap": 1.6117104291915894
+        },
+        "verifier_metrics_all_known": {
+          "per_relation": {
+            "holding": {
+              "known": 276,
+              "positive": 142,
+              "AP": 0.8741408117526658,
+              "precision": 0.9180327868852459,
+              "recall": 0.39436619718309857,
+              "accepted_known": 61
+            },
+            "riding": {
+              "known": 355,
+              "positive": 18,
+              "AP": 0.9305149050016202,
+              "precision": 1.0,
+              "recall": 0.7777777777777778,
+              "accepted_known": 14
+            },
+            "sitting_on": {
+              "known": 266,
+              "positive": 28,
+              "AP": 0.8780019865329776,
+              "precision": 0.8333333333333334,
+              "recall": 0.5357142857142857,
+              "accepted_known": 18
+            },
+            "carrying": {
+              "known": 358,
+              "positive": 27,
+              "AP": 0.6411081931416648,
+              "precision": 0.9166666666666666,
+              "recall": 0.4074074074074074,
+              "accepted_known": 12
+            },
+            "eating": {
+              "known": 333,
+              "positive": 23,
+              "AP": 0.9687370600414075,
+              "precision": 1.0,
+              "recall": 0.43478260869565216,
+              "accepted_known": 10
+            },
+            "talking_on": {
+              "known": 354,
+              "positive": 5,
+              "AP": 0.48904761904761906,
+              "precision": 0.5,
+              "recall": 0.4,
+              "accepted_known": 4
+            }
+          },
+          "macro_AP_on_known_labels": 0.7969250959196591
+        },
+        "notes": "ReusedR55 matched detector pool; sequential development,not freshheldout/detectionAP/caption quality. Unknown excluded from precision; frozen thresholds, no fitting here."
+      },
+      "full100_claims": 11,
+      "full100_relation_images": 7
+    }
+  },
+  "notes": "Single fixed seed42 development audit. Identical detector dev features for both heads; thresholds fitted on each training condition only. Full100 review is method-visible assistant inspection of selected claims, not independent accuracy or exhaustive recall.",
+  "variant": "triplet_full_gt_matched_view_augmentation_v1",
+  "protocol": {
+    "variant": "triplet_full_gt_matched_view_augmentation_v1",
+    "seed": 42,
+    "epochs": 30,
+    "optimizer": "AdamW lr0.001 weight_decay0.01 clip_norm1",
+    "full_gt_pairs": 1776,
+    "extra_matched_pairs": 1141,
+    "common_detector_dev_pairs": 310,
+    "conditions": [
+      "gt_augmented_control",
+      "mixed_detector"
+    ],
+    "objective": "0.5 fullGT loss +0.5 matched-view loss; independent contrasts per block",
+    "loss_each_block": "BCEknown +0.2 type-balanced actor/predicate hinge,temperature1,margin1logit",
+    "threshold_fit": "identical matched training detector crops; each predicate >=5 accepts at >=90% empirical train precision",
+    "evaluation": "frozen R50 proposer + verifier; reused R55matched364 andfull100; no evaluation threshold fitting",
+    "detector_source_sha256": "c3fcf5d65a462392891f4efa8adbd33a8d5359598ad0d0e80e4c91e863ee449f",
+    "v2_source_sha256": "a1ec392b40b3e5b2a20e71da5f7e33049f12a722d03e34480a29c530300bbf62",
+    "actor_source_sha256": "cd2b139265084045258a6ca251d9b4b8d8c8648a612ac1ab26615a3a23258136",
+    "full100_source_sha256": "864bedb4925d5a3cc7eca50fa434d81761f84928dba9acab91d6c1badf8b8d4d",
+    "transfer_source_sha256": "a129ab178f02e147980c537b1a64f21f8cc8f16a2c2ad09e60049ddac0d36e07",
+    "notes": "Single fixed-seed development diagnostic. No GT rows discarded; unknown remains masked. Control repeats matched GT supervision to hold weighting/schedule fixed; detector training changes only matched extra crops/geometry. No consistency loss, new labels or caption claim. Do not select seed/epoch/threshold from audit outcomes."
+  }
+}

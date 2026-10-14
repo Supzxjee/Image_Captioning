@@ -1,0 +1,20 @@
+{
+  "variant": "triplet_full_gt_matched_view_augmentation_v1",
+  "seed": 42,
+  "epochs": 30,
+  "optimizer": "AdamW lr0.001 weight_decay0.01 clip_norm1",
+  "full_gt_pairs": 1776,
+  "extra_matched_pairs": 1141,
+  "common_detector_dev_pairs": 310,
+  "conditions": ["gt_augmented_control", "mixed_detector"],
+  "objective": "0.5 fullGT loss +0.5 matched-view loss; independent contrasts per block",
+  "loss_each_block": "BCEknown +0.2 type-balanced actor/predicate hinge,temperature1,margin1logit",
+  "threshold_fit": "identical matched training detector crops; each predicate >=5 accepts at >=90% empirical train precision",
+  "evaluation": "frozen R50 proposer + verifier; reused R55matched364 andfull100; no evaluation threshold fitting",
+  "detector_source_sha256": "c3fcf5d65a462392891f4efa8adbd33a8d5359598ad0d0e80e4c91e863ee449f",
+  "v2_source_sha256": "a1ec392b40b3e5b2a20e71da5f7e33049f12a722d03e34480a29c530300bbf62",
+  "actor_source_sha256": "cd2b139265084045258a6ca251d9b4b8d8c8648a612ac1ab26615a3a23258136",
+  "full100_source_sha256": "864bedb4925d5a3cc7eca50fa434d81761f84928dba9acab91d6c1badf8b8d4d",
+  "transfer_source_sha256": "a129ab178f02e147980c537b1a64f21f8cc8f16a2c2ad09e60049ddac0d36e07",
+  "notes": "Single fixed-seed development diagnostic. No GT rows discarded; unknown remains masked. Control repeats matched GT supervision to hold weighting/schedule fixed; detector training changes only matched extra crops/geometry. No consistency loss, new labels or caption claim. Do not select seed/epoch/threshold from audit outcomes."
+}
