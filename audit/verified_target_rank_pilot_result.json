@@ -1,0 +1,500 @@
+{
+  "classification_only": {
+    "condition": "classification_only",
+    "settings": {
+      "seed": 42,
+      "epochs": 30,
+      "lr": 0.001,
+      "weight_decay": 0.01,
+      "contrast_weight": 0.2,
+      "margin_logit": 1,
+      "temperature": 1,
+      "gradient_clip_norm": 1,
+      "threshold_rule": "train-only >=90%known precision and>=5accepts",
+      "region_source_sha256": "6b055345bebfc6c9e82fb8ee81e09b0a4894bf04c6f5c3b889eee3a7e5b7aaee",
+      "extraction_protocol": {
+        "variant": "shared_union_interaction_regions_v1",
+        "model": "openai/clip-vit-base-patch16",
+        "revision": "57c216476eefef5ab752ec549e440a49ae4ae5f3",
+        "union_padding": 0.1,
+        "grid": 14,
+        "vision_dim": 768,
+        "regions": [
+          "subject",
+          "object",
+          "intersection",
+          "bridge",
+          "outside",
+          "union_cls"
+        ],
+        "feature": "final CLIP patch hidden_state postLayerNorm;area-weighted region pooling andL2norm;no512D visualprojection",
+        "empty_regions": "zero feature withvalid=False;no synthetic contact label",
+        "bridge": "center-to-center bounding corridor paddedhalfpatch;subtract subject/object rectangles",
+        "training_performed": false,
+        "splits": {
+          "train": {
+            "pairs": 1141,
+            "images": 616,
+            "pair_json_sha256": "1e1afd0a33e52003d558e0236b1aa41ba7d2d54b04fafaefc5f025e7667fffa6",
+            "source_sha256": "c3fcf5d65a462392891f4efa8adbd33a8d5359598ad0d0e80e4c91e863ee449f"
+          },
+          "val": {
+            "pairs": 310,
+            "images": 128,
+            "pair_json_sha256": "bbda4ccfd9e3eaf9c5644d4eb9f4995e981cc38ca7f2f01f0d089c953c51d8c3",
+            "source_sha256": "c3fcf5d65a462392891f4efa8adbd33a8d5359598ad0d0e80e4c91e863ee449f"
+          },
+          "transfer": {
+            "pairs": 364,
+            "images": 286,
+            "pair_json_sha256": "87eb9d91f24546da3a0bc9bd40d16cf0557dee68ccde7ca6c1695ab20d7e1b4f",
+            "source_sha256": "a129ab178f02e147980c537b1a64f21f8cc8f16a2c2ad09e60049ddac0d36e07"
+          },
+          "full100": {
+            "pairs": 1321,
+            "images": 94,
+            "pair_json_sha256": "d83edc17ebbe1d5be5dac88190b99ab5017e71aca8adb95496d44a1332fd2f0f",
+            "source_sha256": "864bedb4925d5a3cc7eca50fa434d81761f84928dba9acab91d6c1badf8b8d4d"
+          }
+        },
+        "next_paired_training": "region verifier vsunion-CLS repeated inallvalid slots;identicalgeometry/mass/valid/text/dims andtrain schedule;knownlabels only;no audit labels/whitelists",
+        "notes": "Coarse14x14 spatial evidence,notsegmentation/contactGT;contextualized patches can contain otherinstances. Existingmatched train/dev/transfer/full100development sets;no freshheldout/novelty/caption claim."
+      },
+      "notes": "Both ordered-region heads use identical new negative BCE labels andoriginal actor/predicate contrasts. Only target_rank adds target hinge. Sameinit/schedule/thresholdrule;noR50gate primary. Single-reviewer trainannotations;reuseddevelopment,notcaptionquality.",
+      "annotation": {
+        "review_sha256": "5ffdcedb7f9b72565f052b2e10860562c53ff9e1d4e386e6851e15291444507f",
+        "manifest_sha256": "f009ad534f2c24033bb38f363662ce9012350229f48f2ff531b6733527f7ed96",
+        "filter_counts": {
+          "eligible": 34,
+          "source_positive_conflict": 10,
+          "both_supported_no_negative": 4,
+          "localization_not_clear": 2,
+          "incomplete": 75
+        },
+        "target_edges": 34,
+        "target_loss_weight": 0.2,
+        "notes": "Bothregion conditions use same newly confirmed negative BCE labels andsame original actor/predicate edges. Only target_rank adds .2 mean target hinge margin1. One selfreported human reviewer;source conflicts excluded,notresolved. No source labels overwritten;remainingunknown masked;reviewed train images only."
+      }
+    },
+    "parameters": 683649,
+    "training_labels": {
+      "0": 5535,
+      "1": 755,
+      "-1": 556
+    },
+    "contrast_edges": {
+      "actor": 457,
+      "predicate": 3041
+    },
+    "dev_metrics": {
+      "per_relation": {
+        "holding": {
+          "known": 290,
+          "positive": 119,
+          "AP": 0.8834662979517955,
+          "precision": 0.8584070796460177,
+          "recall": 0.8151260504201681,
+          "accepted_known": 113
+        },
+        "riding": {
+          "known": 303,
+          "positive": 24,
+          "AP": 0.9016297227052793,
+          "precision": 0.7931034482758621,
+          "recall": 0.9583333333333334,
+          "accepted_known": 29
+        },
+        "sitting_on": {
+          "known": 268,
+          "positive": 27,
+          "AP": 0.8689408599376729,
+          "precision": 0.7916666666666666,
+          "recall": 0.7037037037037037,
+          "accepted_known": 24
+        },
+        "carrying": {
+          "known": 308,
+          "positive": 18,
+          "AP": 0.6968744940641061,
+          "precision": 0.8888888888888888,
+          "recall": 0.4444444444444444,
+          "accepted_known": 9
+        },
+        "eating": {
+          "known": 308,
+          "positive": 4,
+          "AP": 1.0,
+          "precision": 1.0,
+          "recall": 0.75,
+          "accepted_known": 3
+        },
+        "talking_on": {
+          "known": 308,
+          "positive": 4,
+          "AP": 0.8928571428571428,
+          "precision": 1.0,
+          "recall": 0.5,
+          "accepted_known": 2
+        }
+      },
+      "macro_AP_on_known_labels": 0.8739614195859994
+    },
+    "dev_acceptance": {
+      "positive": 152,
+      "negative": 28,
+      "unknown": 8,
+      "precision_on_known": 0.8444444444444444,
+      "recall_on_known": 0.7755102040816326
+    },
+    "dev_actor_edges": {
+      "edges": 194,
+      "images": 126,
+      "wins": 182,
+      "ties": 0,
+      "win_rate": 0.938144326210022,
+      "mean_gap": 4.120299816131592
+    },
+    "transfer_metrics": {
+      "per_relation": {
+        "holding": {
+          "known": 276,
+          "positive": 142,
+          "AP": 0.9399996721065393,
+          "precision": 0.9037037037037037,
+          "recall": 0.8591549295774648,
+          "accepted_known": 135
+        },
+        "riding": {
+          "known": 355,
+          "positive": 18,
+          "AP": 0.9829059829059832,
+          "precision": 1.0,
+          "recall": 0.9444444444444444,
+          "accepted_known": 17
+        },
+        "sitting_on": {
+          "known": 266,
+          "positive": 28,
+          "AP": 0.8110659702877682,
+          "precision": 0.8,
+          "recall": 0.7142857142857143,
+          "accepted_known": 25
+        },
+        "carrying": {
+          "known": 358,
+          "positive": 27,
+          "AP": 0.7582042660358741,
+          "precision": 0.8666666666666667,
+          "recall": 0.48148148148148145,
+          "accepted_known": 15
+        },
+        "eating": {
+          "known": 333,
+          "positive": 23,
+          "AP": 0.9859851679511411,
+          "precision": 1.0,
+          "recall": 0.7391304347826086,
+          "accepted_known": 17
+        },
+        "talking_on": {
+          "known": 354,
+          "positive": 5,
+          "AP": 0.6585281385281386,
+          "precision": 1.0,
+          "recall": 0.2,
+          "accepted_known": 1
+        }
+      },
+      "macro_AP_on_known_labels": 0.856114866302574
+    },
+    "transfer_acceptance": {
+      "positive": 190,
+      "negative": 20,
+      "unknown": 25,
+      "precision_on_known": 0.9047619047619048,
+      "recall_on_known": 0.7818930041152263
+    },
+    "transfer_actor_edges": {
+      "edges": 60,
+      "images": 49,
+      "wins": 58,
+      "ties": 0,
+      "win_rate": 0.9666666388511658,
+      "mean_gap": 4.429874897003174
+    },
+    "transfer_with_frozen_R50_gate": {
+      "positive": 42,
+      "negative": 2,
+      "unknown": 1,
+      "precision_on_known": 0.9545454545454546,
+      "recall_on_known": 0.1728395061728395
+    },
+    "thresholds": [
+      0.6714279651641846,
+      0.39453819394111633,
+      0.6965733170509338,
+      0.48812058568000793,
+      0.5006358027458191,
+      0.5887444019317627
+    ],
+    "full100_claims": 128,
+    "full100_relation_images": 73,
+    "full100_gated_claims": 19,
+    "reviewed_train_target_edges": {
+      "edges": 34,
+      "wins": 34,
+      "mean_gap": 5.251084804534912,
+      "notes": "Training fit only,not target accuracy on heldout."
+    },
+    "head_sha256": "d8d499abb958c816b8a6f936d88274b13e3e9ae3703e6649e7ce14c2aadded3f"
+  },
+  "target_rank": {
+    "condition": "target_rank",
+    "settings": {
+      "seed": 42,
+      "epochs": 30,
+      "lr": 0.001,
+      "weight_decay": 0.01,
+      "contrast_weight": 0.2,
+      "margin_logit": 1,
+      "temperature": 1,
+      "gradient_clip_norm": 1,
+      "threshold_rule": "train-only >=90%known precision and>=5accepts",
+      "region_source_sha256": "6b055345bebfc6c9e82fb8ee81e09b0a4894bf04c6f5c3b889eee3a7e5b7aaee",
+      "extraction_protocol": {
+        "variant": "shared_union_interaction_regions_v1",
+        "model": "openai/clip-vit-base-patch16",
+        "revision": "57c216476eefef5ab752ec549e440a49ae4ae5f3",
+        "union_padding": 0.1,
+        "grid": 14,
+        "vision_dim": 768,
+        "regions": [
+          "subject",
+          "object",
+          "intersection",
+          "bridge",
+          "outside",
+          "union_cls"
+        ],
+        "feature": "final CLIP patch hidden_state postLayerNorm;area-weighted region pooling andL2norm;no512D visualprojection",
+        "empty_regions": "zero feature withvalid=False;no synthetic contact label",
+        "bridge": "center-to-center bounding corridor paddedhalfpatch;subtract subject/object rectangles",
+        "training_performed": false,
+        "splits": {
+          "train": {
+            "pairs": 1141,
+            "images": 616,
+            "pair_json_sha256": "1e1afd0a33e52003d558e0236b1aa41ba7d2d54b04fafaefc5f025e7667fffa6",
+            "source_sha256": "c3fcf5d65a462392891f4efa8adbd33a8d5359598ad0d0e80e4c91e863ee449f"
+          },
+          "val": {
+            "pairs": 310,
+            "images": 128,
+            "pair_json_sha256": "bbda4ccfd9e3eaf9c5644d4eb9f4995e981cc38ca7f2f01f0d089c953c51d8c3",
+            "source_sha256": "c3fcf5d65a462392891f4efa8adbd33a8d5359598ad0d0e80e4c91e863ee449f"
+          },
+          "transfer": {
+            "pairs": 364,
+            "images": 286,
+            "pair_json_sha256": "87eb9d91f24546da3a0bc9bd40d16cf0557dee68ccde7ca6c1695ab20d7e1b4f",
+            "source_sha256": "a129ab178f02e147980c537b1a64f21f8cc8f16a2c2ad09e60049ddac0d36e07"
+          },
+          "full100": {
+            "pairs": 1321,
+            "images": 94,
+            "pair_json_sha256": "d83edc17ebbe1d5be5dac88190b99ab5017e71aca8adb95496d44a1332fd2f0f",
+            "source_sha256": "864bedb4925d5a3cc7eca50fa434d81761f84928dba9acab91d6c1badf8b8d4d"
+          }
+        },
+        "next_paired_training": "region verifier vsunion-CLS repeated inallvalid slots;identicalgeometry/mass/valid/text/dims andtrain schedule;knownlabels only;no audit labels/whitelists",
+        "notes": "Coarse14x14 spatial evidence,notsegmentation/contactGT;contextualized patches can contain otherinstances. Existingmatched train/dev/transfer/full100development sets;no freshheldout/novelty/caption claim."
+      },
+      "notes": "Both ordered-region heads use identical new negative BCE labels andoriginal actor/predicate contrasts. Only target_rank adds target hinge. Sameinit/schedule/thresholdrule;noR50gate primary. Single-reviewer trainannotations;reuseddevelopment,notcaptionquality.",
+      "annotation": {
+        "review_sha256": "5ffdcedb7f9b72565f052b2e10860562c53ff9e1d4e386e6851e15291444507f",
+        "manifest_sha256": "f009ad534f2c24033bb38f363662ce9012350229f48f2ff531b6733527f7ed96",
+        "filter_counts": {
+          "eligible": 34,
+          "source_positive_conflict": 10,
+          "both_supported_no_negative": 4,
+          "localization_not_clear": 2,
+          "incomplete": 75
+        },
+        "target_edges": 34,
+        "target_loss_weight": 0.2,
+        "notes": "Bothregion conditions use same newly confirmed negative BCE labels andsame original actor/predicate edges. Only target_rank adds .2 mean target hinge margin1. One selfreported human reviewer;source conflicts excluded,notresolved. No source labels overwritten;remainingunknown masked;reviewed train images only."
+      }
+    },
+    "parameters": 683649,
+    "training_labels": {
+      "0": 5535,
+      "1": 755,
+      "-1": 556
+    },
+    "contrast_edges": {
+      "actor": 457,
+      "predicate": 3041
+    },
+    "dev_metrics": {
+      "per_relation": {
+        "holding": {
+          "known": 290,
+          "positive": 119,
+          "AP": 0.8701478642912936,
+          "precision": 0.8467741935483871,
+          "recall": 0.8823529411764706,
+          "accepted_known": 124
+        },
+        "riding": {
+          "known": 303,
+          "positive": 24,
+          "AP": 0.9409019434070978,
+          "precision": 0.8214285714285714,
+          "recall": 0.9583333333333334,
+          "accepted_known": 28
+        },
+        "sitting_on": {
+          "known": 268,
+          "positive": 27,
+          "AP": 0.8855899640896949,
+          "precision": 0.75,
+          "recall": 0.6666666666666666,
+          "accepted_known": 24
+        },
+        "carrying": {
+          "known": 308,
+          "positive": 18,
+          "AP": 0.6317538384693198,
+          "precision": 0.8,
+          "recall": 0.2222222222222222,
+          "accepted_known": 5
+        },
+        "eating": {
+          "known": 308,
+          "positive": 4,
+          "AP": 1.0,
+          "precision": 1.0,
+          "recall": 0.75,
+          "accepted_known": 3
+        },
+        "talking_on": {
+          "known": 308,
+          "positive": 4,
+          "AP": 0.8125,
+          "precision": 0.6,
+          "recall": 0.75,
+          "accepted_known": 5
+        }
+      },
+      "macro_AP_on_known_labels": 0.8568156017095676
+    },
+    "dev_acceptance": {
+      "positive": 156,
+      "negative": 33,
+      "unknown": 8,
+      "precision_on_known": 0.8253968253968254,
+      "recall_on_known": 0.7959183673469388
+    },
+    "dev_actor_edges": {
+      "edges": 194,
+      "images": 126,
+      "wins": 185,
+      "ties": 0,
+      "win_rate": 0.9536082744598389,
+      "mean_gap": 4.450106143951416
+    },
+    "transfer_metrics": {
+      "per_relation": {
+        "holding": {
+          "known": 276,
+          "positive": 142,
+          "AP": 0.9439211805474682,
+          "precision": 0.8913043478260869,
+          "recall": 0.8661971830985915,
+          "accepted_known": 138
+        },
+        "riding": {
+          "known": 355,
+          "positive": 18,
+          "AP": 0.9829059829059832,
+          "precision": 1.0,
+          "recall": 0.9444444444444444,
+          "accepted_known": 17
+        },
+        "sitting_on": {
+          "known": 266,
+          "positive": 28,
+          "AP": 0.8047288926684006,
+          "precision": 0.8260869565217391,
+          "recall": 0.6785714285714286,
+          "accepted_known": 23
+        },
+        "carrying": {
+          "known": 358,
+          "positive": 27,
+          "AP": 0.7344997964118583,
+          "precision": 0.8461538461538461,
+          "recall": 0.4074074074074074,
+          "accepted_known": 13
+        },
+        "eating": {
+          "known": 333,
+          "positive": 23,
+          "AP": 0.9879647132955257,
+          "precision": 1.0,
+          "recall": 0.782608695652174,
+          "accepted_known": 18
+        },
+        "talking_on": {
+          "known": 354,
+          "positive": 5,
+          "AP": 0.5768253968253969,
+          "precision": 0.3333333333333333,
+          "recall": 0.2,
+          "accepted_known": 3
+        }
+      },
+      "macro_AP_on_known_labels": 0.8384743271091054
+    },
+    "transfer_acceptance": {
+      "positive": 189,
+      "negative": 23,
+      "unknown": 29,
+      "precision_on_known": 0.8915094339622641,
+      "recall_on_known": 0.7777777777777778
+    },
+    "transfer_actor_edges": {
+      "edges": 60,
+      "images": 49,
+      "wins": 58,
+      "ties": 0,
+      "win_rate": 0.9666666388511658,
+      "mean_gap": 4.845549583435059
+    },
+    "transfer_with_frozen_R50_gate": {
+      "positive": 42,
+      "negative": 2,
+      "unknown": 2,
+      "precision_on_known": 0.9545454545454546,
+      "recall_on_known": 0.1728395061728395
+    },
+    "thresholds": [
+      0.6219802498817444,
+      0.25925710797309875,
+      0.648082435131073,
+      0.5071952939033508,
+      0.28440946340560913,
+      0.5147846341133118
+    ],
+    "full100_claims": 135,
+    "full100_relation_images": 78,
+    "full100_gated_claims": 19,
+    "reviewed_train_target_edges": {
+      "edges": 34,
+      "wins": 34,
+      "mean_gap": 6.674597263336182,
+      "notes": "Training fit only,not target accuracy on heldout."
+    },
+    "head_sha256": "2fc976ae2a7f70f19b21cf8672411c99f812baa40d460104a1d2e03edb0710ba"
+  }
+}

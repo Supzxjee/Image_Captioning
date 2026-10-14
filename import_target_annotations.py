@@ -43,7 +43,10 @@ def main():
     if hashlib.sha256((package/'cases.json').read_bytes()).hexdigest()!=mapping['manifest_sha256']:raise ValueError('Case manifest changed.')
     if hashlib.sha256(Path('audit/interaction_region_train_pairs.json').read_bytes()).hexdigest()!=mapping['source_pairs_sha256']:
         raise ValueError('Training pair source changed; resolve provenance before importing.')
-    result=filter_annotations(review,mapping);output=Path(args.output);output.parent.mkdir(parents=True,exist_ok=True)
+    result=filter_annotations(review,mapping)
+    result['provenance']={'review_sha256':hashlib.sha256(Path(args.review).read_bytes()).hexdigest(),
+                          'manifest_sha256':mapping['manifest_sha256'],'source_pairs_sha256':mapping['source_pairs_sha256']}
+    output=Path(args.output);output.parent.mkdir(parents=True,exist_ok=True)
     output.write_text(json.dumps(result,indent=2),encoding='utf-8');print(json.dumps(result['counts'],indent=2))
 
 

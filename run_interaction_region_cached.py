@@ -13,12 +13,30 @@ from run_triplet_soft_prior_cached import read_matched_transfer,acceptance
 from run_instance_alignment_diagnostic import metrics,fit_thresholds
 from evaluate_frozen_residual import sha
 from validate_interaction_regions import validate
+from import_target_annotations import filter_annotations
+
+
+def verified_target_tensors(train, filtered):
+    labels=torch.tensor([r['labels'] for r in train]);edges=[];seen=set()
+    for item in filtered['eligible_contrasts']:
+        i,j,c=item['positive_row_index'],item['alternate_row_index'],item['relation_index']
+        if not (0<=i<len(train) and 0<=j<len(train) and 0<=c<6):raise ValueError('Invalid annotation row/class index.')
+        a,b=train[i],train[j]
+        if (a['image_id'],a['subject_id'])!=(b['image_id'],b['subject_id']) or a['object_id']==b['object_id']:
+            raise ValueError('Target contrast must hold image/subject fixed andchange object.')
+        if a['labels'][c]!=1 or b['labels'][c]!=-1:raise ValueError('Review mustconfirm positive andpreviously unknown alternative.')
+        if (i,j,c) in seen:raise ValueError('Duplicate target contrast.')
+        seen.add((i,j,c));labels[j,c]=0;edges.append((i,c,j,c))
+    if not edges:raise ValueError('No eligible reviewed target contrasts.')
+    return labels,torch.tensor(edges,dtype=torch.long)
 
 
 def main():
     parser=argparse.ArgumentParser()
     for name in ('region-source','train-source','transfer-source','candidate-source','scored','reference-directory','residual-head','output'):
         parser.add_argument('--'+name,required=True)
+    parser.add_argument('--target-review',help='Returned human JSON; switches to paired region classification vs target-ranking trial.')
+    parser.add_argument('--annotation-package',help='Original local manifest/private mapping directory.')
     args=parser.parse_args();torch.set_num_threads(2)
     protocol=json.loads(Path('audit/interaction_region_protocol.json').read_text())
     for source,split in ((args.train_source,'train'),(args.transfer_source,'transfer'),(args.candidate_source,'full100')):
@@ -54,6 +72,20 @@ def main():
     train=cohorts['train'][0];labels=torch.tensor([r['labels'] for r in train])
     edges=contrast_edges(train,max_per_positive=len(train));ee=torch.tensor([e[:4] for e in edges],dtype=torch.long).reshape(-1,4)
     ek=torch.tensor([int(e[-1]=='actor') for e in edges])
+    target_edges=None;annotation_settings=None
+    if args.target_review:
+        if not args.annotation_package:raise ValueError('Original annotation package required.')
+        package=Path(args.annotation_package);mapping=json.loads((package/'private_mapping.json').read_text(encoding='utf-8'))
+        if sha(package/'cases.json')!=mapping['manifest_sha256'] or sha('audit/interaction_region_train_pairs.json')!=mapping['source_pairs_sha256']:
+            raise ValueError('Annotation source/manifest changed.')
+        filtered=filter_annotations(json.loads(Path(args.target_review).read_text(encoding='utf-8-sig')),mapping)
+        labels,target_edges=verified_target_tensors(train,filtered)
+        (output/'private_filtered_annotations.json').write_text(json.dumps(filtered,indent=2,ensure_ascii=False),encoding='utf-8')
+        annotation_settings={'review_sha256':sha(args.target_review),'manifest_sha256':mapping['manifest_sha256'],
+            'filter_counts':filtered['counts'],'target_edges':len(target_edges),'target_loss_weight':.2,
+            'notes':'Bothregion conditions use same newly confirmed negative BCE labels andsame original actor/predicate edges. '
+                    'Only target_rank adds .2 mean target hinge margin1. One selfreported human reviewer;source conflicts excluded,notresolved. '
+                    'No source labels overwritten;remainingunknown masked;reviewed train images only.'}
     gate_protocol=json.loads(Path('audit/actor_soft_fusion_full100_protocol.json').read_text())
     if sha(args.residual_head)!=gate_protocol['residual_head_sha256']:raise ValueError('Frozen R50 head changed.')
     rc=torch.load(args.residual_head,map_location='cpu',weights_only=True)
@@ -71,16 +103,25 @@ def main():
         'region_source_sha256':sha(args.region_source),'extraction_protocol':protocol,
         'notes':'Same initialization/train/text/masks/mass/geometry/parameter dimensions. Control repeatsunionCLS invalid slots. '
                 'Primary acceptance hasno R50gate;secondaryconjunction frozen. Unknownmasked,no auditlabels. Reuseddevelopment;notcaptionquality.'}
-    for condition in ('union_only','regions'):
+    if annotation_settings:
+        settings['annotation']=annotation_settings
+        settings['notes']='Both ordered-region heads use identical new negative BCE labels andoriginal actor/predicate contrasts. Only target_rank adds target hinge. Sameinit/schedule/thresholdrule;noR50gate primary. Single-reviewer trainannotations;reuseddevelopment,notcaptionquality.'
+    conditions=('classification_only','target_rank') if annotation_settings else ('union_only','regions')
+    for condition in conditions:
         torch.manual_seed(settings['seed']);model=InteractionRegionVerifier()
         optimizer=torch.optim.AdamW(model.parameters(),lr=settings['lr'],weight_decay=settings['weight_decay']);history=[]
         def predict(split):return model(*cohorts[split][1:],union_only=condition=='union_only')
         for epoch in range(settings['epochs']):
             optimizer.zero_grad();logits=predict('train')
             loss,bce,ranking=supervised_alignment_loss(logits,labels,ee,temperature=1.,margin=1.,contrast_weight=.2,edge_kinds=ek)
+            target_loss=logits.sum()*0
+            if condition=='target_rank':
+                i,r,j,c=target_edges.T
+                target_loss=torch.relu(1.-logits[i,r]+logits[j,c]).mean()
+                loss=loss+.2*target_loss
             if not torch.isfinite(loss):raise ValueError('Nonfinite training loss.')
             loss.backward();torch.nn.utils.clip_grad_norm_(model.parameters(),1);optimizer.step()
-            history.append({'epoch':epoch+1,'loss':float(loss.detach()),'bce':float(bce.detach()),'ranking':float(ranking.detach())})
+            history.append({'epoch':epoch+1,'loss':float(loss.detach()),'bce':float(bce.detach()),'ranking':float(ranking.detach()),'target_ranking':float(target_loss.detach())})
         model.eval().requires_grad_(False)
         with torch.no_grad():logits={split:predict(split) for split in cohorts};scores={split:value.sigmoid() for split,value in logits.items()}
         thresholds=fit_thresholds(scores['train'],labels)
@@ -104,6 +145,10 @@ def main():
             'transfer_with_frozen_R50_gate':acceptance(gated_transfer,transfer,thresholds),
             'thresholds':thresholds,'full100_claims':len(selected),'full100_relation_images':sum(bool(e['relations']) for e in prompts.values()),
             'full100_gated_claims':sum(len(e['relations']) for e in gated_prompts.values()),'known_assistant_review_crosscheck':review}
+        if annotation_settings:
+            i,r,j,c=target_edges.T;gap=logits['train'][i,r]-logits['train'][j,c]
+            result['reviewed_train_target_edges']={'edges':len(gap),'wins':int((gap>0).sum()),'mean_gap':float(gap.mean()),
+                'notes':'Training fit only,not target accuracy on heldout.'}
         directory=output/condition;directory.mkdir(exist_ok=True)
         torch.save({'model':model.state_dict(),'thresholds':thresholds,'union_only':condition=='union_only','settings':settings},directory/'region_head.pt')
         result['head_sha256']=sha(directory/'region_head.pt')
