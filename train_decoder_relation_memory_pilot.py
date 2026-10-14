@@ -76,7 +76,9 @@ def main():
         notes='Caption CE only; heuristic action-positive training cache, not human ground truth. '
               'Same cohort/order/init/trainable parameter names; encoder/language path frozen. '
               'Dropout seed same but memory shapes differ. Evaluation is reused inspected development, '
-              'not heldout scientific evidence. No early stopping, threshold/loss/epoch search.')
+              'not heldout scientific evidence; the source caption checkpoint may already have seen '
+              'these COCO training images. Only pilot adaptation excludes them. '
+              'No early stopping, threshold/loss/epoch search.')
     (output/'protocol.json').write_text(json.dumps(protocol, indent=2), encoding='utf-8')
     try:
         for condition in ('legacy', 'direct'):
