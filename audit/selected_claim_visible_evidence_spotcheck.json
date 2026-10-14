@@ -1,0 +1,197 @@
+{
+  "images": 3,
+  "claims": [
+    {
+      "subject_instance": "det_d7a9c6732b58",
+      "subject": "person",
+      "object_instance": "det_9f8e8d208951",
+      "object": "bicycle",
+      "relation": "riding",
+      "score": 0.736096978187561,
+      "threshold": 0.39453819394111633,
+      "score_margin": 0.3415587842464447,
+      "prompt": "a photo of a person riding a bicycle",
+      "filename": "COCO_train2014_000000089033.jpg",
+      "subject_box": [
+        0.06258333333333334,
+        0.3176875,
+        0.9857708333333334,
+        0.998640625
+      ],
+      "object_box": [
+        0.0010416666666666667,
+        0.512109375,
+        0.09539583333333333,
+        0.70165625
+      ],
+      "assistant_visual_status": "unsupported_visible_relation",
+      "evidence_note": "Foreground subject carries bananas; bicycle is in background, not ridden by this subject.",
+      "usage": "evaluation-only; not human ground truth or training label"
+    },
+    {
+      "subject_instance": "det_d7a9c6732b58",
+      "subject": "person",
+      "object_instance": "det_e824daf19747",
+      "object": "banana",
+      "relation": "holding",
+      "score": 0.8999333381652832,
+      "threshold": 0.6714279651641846,
+      "score_margin": 0.22850537300109863,
+      "prompt": "a photo of a person holding a banana",
+      "filename": "COCO_train2014_000000089033.jpg",
+      "subject_box": [
+        0.06258333333333334,
+        0.3176875,
+        0.9857708333333334,
+        0.998640625
+      ],
+      "object_box": [
+        0.022416666666666665,
+        0.187765625,
+        0.7331875,
+        0.586609375
+      ],
+      "assistant_visual_status": "supported_visible_relation",
+      "evidence_note": "Subject supports bananas with hands at shoulder.",
+      "usage": "evaluation-only; not human ground truth or training label"
+    },
+    {
+      "subject_instance": "det_d7a9c6732b58",
+      "subject": "person",
+      "object_instance": "det_e824daf19747",
+      "object": "banana",
+      "relation": "eating",
+      "score": 0.6576275825500488,
+      "threshold": 0.5006358027458191,
+      "score_margin": 0.15699177980422974,
+      "prompt": "a photo of a person eating a banana",
+      "filename": "COCO_train2014_000000089033.jpg",
+      "subject_box": [
+        0.06258333333333334,
+        0.3176875,
+        0.9857708333333334,
+        0.998640625
+      ],
+      "object_box": [
+        0.022416666666666665,
+        0.187765625,
+        0.7331875,
+        0.586609375
+      ],
+      "assistant_visual_status": "unsupported_visible_relation",
+      "evidence_note": "No visible eating or biting; subject carries the bunch.",
+      "usage": "evaluation-only; not human ground truth or training label"
+    },
+    {
+      "subject_instance": "det_0bba35118996",
+      "subject": "person",
+      "object_instance": "det_15040bda7959",
+      "object": "skis",
+      "relation": "holding",
+      "score": 0.9384188652038574,
+      "threshold": 0.6714279651641846,
+      "score_margin": 0.26699090003967285,
+      "prompt": "a photo of a person holding a skis",
+      "filename": "COCO_train2014_000000130024.jpg",
+      "subject_box": [
+        0.35738,
+        0.4503550295857988,
+        0.43692000000000003,
+        0.8206508875739645
+      ],
+      "object_box": [
+        0.38338,
+        0.8123372781065089,
+        0.42538,
+        0.867662721893491
+      ],
+      "assistant_visual_status": "unsupported_visible_relation",
+      "evidence_note": "Skis target is at feet; hands support poles, not this ski box.",
+      "usage": "evaluation-only; not human ground truth or training label"
+    },
+    {
+      "subject_instance": "det_0bba35118996",
+      "subject": "person",
+      "object_instance": "det_11100b473119",
+      "object": "person",
+      "relation": "holding",
+      "score": 0.6811113953590393,
+      "threshold": 0.6714279651641846,
+      "score_margin": 0.009683430194854736,
+      "prompt": "a photo of a person holding a person",
+      "filename": "COCO_train2014_000000130024.jpg",
+      "subject_box": [
+        0.35738,
+        0.4503550295857988,
+        0.43692000000000003,
+        0.8206508875739645
+      ],
+      "object_box": [
+        0.34268,
+        0.6118639053254438,
+        0.37266000000000005,
+        0.6955325443786983
+      ],
+      "assistant_visual_status": "localization_uncertain",
+      "evidence_note": "Very small person target box; does not clearly identify a whole separate person being held.",
+      "usage": "evaluation-only; not human ground truth or training label"
+    },
+    {
+      "subject_instance": "det_dd5bc2a74d7e",
+      "subject": "person",
+      "object_instance": "det_3affb8b18aff",
+      "object": "sports ball",
+      "relation": "holding",
+      "score": 0.8958988189697266,
+      "threshold": 0.6714279651641846,
+      "score_margin": 0.224470853805542,
+      "prompt": "a photo of a person holding a sports ball",
+      "filename": "COCO_train2014_000000348636.jpg",
+      "subject_box": [
+        0.263453125,
+        0.28580796252927404,
+        0.519890625,
+        0.7759953161592507
+      ],
+      "object_box": [
+        0.30790625,
+        0.3482201405152225,
+        0.332296875,
+        0.38482435597189696
+      ],
+      "assistant_visual_status": "unsupported_visible_relation",
+      "evidence_note": "Ball is airborne and separated from hands holding the bat.",
+      "usage": "evaluation-only; not human ground truth or training label"
+    },
+    {
+      "subject_instance": "det_dd5bc2a74d7e",
+      "subject": "person",
+      "object_instance": "det_7d566227df8f",
+      "object": "baseball bat",
+      "relation": "holding",
+      "score": 0.6735303997993469,
+      "threshold": 0.6714279651641846,
+      "score_margin": 0.0021024346351623535,
+      "prompt": "a photo of a person holding a baseball bat",
+      "filename": "COCO_train2014_000000348636.jpg",
+      "subject_box": [
+        0.263453125,
+        0.28580796252927404,
+        0.519890625,
+        0.7759953161592507
+      ],
+      "object_box": [
+        0.146609375,
+        0.33088992974238873,
+        0.29031250000000003,
+        0.45606557377049184
+      ],
+      "assistant_visual_status": "supported_visible_relation",
+      "evidence_note": "Hands grasp bat.",
+      "usage": "evaluation-only; not human ground truth or training label"
+    }
+  ],
+  "selection": "Purposive suspected failures; not representative precision estimate",
+  "source": "Prior full100 archive images and selected JSON; boxes inspected numerically",
+  "independent_human_review": false
+}
