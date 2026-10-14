@@ -63,8 +63,13 @@ def main():
         captions=[s['raw'] for s in r['sentences'][:5]]
         claims=[c for i,c in enumerate(entry['relations']) if entry['mask'][i]]
         train.append(dict(filename=name,claims=summarize_claims(claims,captions)))
-    with zipfile.ZipFile(a.pilot_review) as z:
-        evaluation={arm:json.loads(z.read(arm+'/evaluation_12/records.json')) for arm in ('legacy','direct')}
+    review_path=Path(a.pilot_review)
+    if review_path.is_dir():
+        evaluation={arm:json.loads((review_path/arm/'evaluation_12/records.json').read_text(encoding='utf-8'))
+                    for arm in ('legacy','direct')}
+    else:
+        with zipfile.ZipFile(review_path) as z:
+            evaluation={arm:json.loads(z.read(arm+'/evaluation_12/records.json')) for arm in ('legacy','direct')}
     candidate=[]
     for arm,rows in evaluation.items():
         for row in rows:
