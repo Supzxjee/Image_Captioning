@@ -1,0 +1,315 @@
+{
+  "source_sha256": "c3fcf5d65a462392891f4efa8adbd33a8d5359598ad0d0e80e4c91e863ee449f",
+  "common_detector_dev_pairs": 310,
+  "runs": {
+    "gt_control": {
+      "head_sha256": "d878c1006d663ba2b22350f56bc1e08e0871bd4878712ffe3344b334024dff31",
+      "common_detector_dev_metrics": {
+        "per_relation": {
+          "holding": {
+            "known": 290,
+            "positive": 119,
+            "AP": 0.6286627972240044,
+            "precision": 0.7209302325581395,
+            "recall": 0.2605042016806723,
+            "accepted_known": 43
+          },
+          "riding": {
+            "known": 303,
+            "positive": 24,
+            "AP": 0.9192283128287019,
+            "precision": 0.8571428571428571,
+            "recall": 1.0,
+            "accepted_known": 28
+          },
+          "sitting_on": {
+            "known": 268,
+            "positive": 27,
+            "AP": 0.8443884007877634,
+            "precision": 0.7333333333333333,
+            "recall": 0.8148148148148148,
+            "accepted_known": 30
+          },
+          "carrying": {
+            "known": 308,
+            "positive": 18,
+            "AP": 0.40375223794765036,
+            "precision": 0.6,
+            "recall": 0.16666666666666666,
+            "accepted_known": 5
+          },
+          "eating": {
+            "known": 308,
+            "positive": 4,
+            "AP": 0.8875,
+            "precision": 0.75,
+            "recall": 0.75,
+            "accepted_known": 4
+          },
+          "talking_on": {
+            "known": 308,
+            "positive": 4,
+            "AP": 0.5595238095238095,
+            "precision": 0.4,
+            "recall": 0.5,
+            "accepted_known": 5
+          }
+        },
+        "macro_AP_on_known_labels": 0.7071759263853217
+      },
+      "common_detector_dev_actor_edges": {
+        "edges": 194,
+        "images": 126,
+        "wins": 141,
+        "ties": 0,
+        "win_rate": 0.7268041372299194,
+        "mean_gap": 1.4778761863708496
+      },
+      "transfer": {
+        "variant": "text_conditioned_whole_triplet_development_v1",
+        "pairs": 364,
+        "images": 286,
+        "head_sha256": "d878c1006d663ba2b22350f56bc1e08e0871bd4878712ffe3344b334024dff31",
+        "source_sha256": "a129ab178f02e147980c537b1a64f21f8cc8f16a2c2ad09e60049ddac0d36e07",
+        "train_image_overlap": 0,
+        "training_performed": false,
+        "threshold_refit": false,
+        "before": {
+          "positive": 43,
+          "negative": 6,
+          "unknown": 11,
+          "precision_on_known": 0.8775510204081632,
+          "recall_on_known": 0.17695473251028807
+        },
+        "after": {
+          "positive": 29,
+          "negative": 3,
+          "unknown": 7,
+          "precision_on_known": 0.90625,
+          "recall_on_known": 0.11934156378600823
+        },
+        "lost_positives": 14,
+        "removed_negatives": 3,
+        "verifier_actor_edges": {
+          "edges": 60,
+          "images": 49,
+          "wins": 51,
+          "ties": 0,
+          "win_rate": 0.8500000238418579,
+          "mean_gap": 1.7588093280792236
+        },
+        "verifier_metrics_all_known": {
+          "per_relation": {
+            "holding": {
+              "known": 276,
+              "positive": 142,
+              "AP": 0.8491789857354486,
+              "precision": 0.8636363636363636,
+              "recall": 0.4014084507042254,
+              "accepted_known": 66
+            },
+            "riding": {
+              "known": 355,
+              "positive": 18,
+              "AP": 0.8976060682409891,
+              "precision": 0.9333333333333333,
+              "recall": 0.7777777777777778,
+              "accepted_known": 15
+            },
+            "sitting_on": {
+              "known": 266,
+              "positive": 28,
+              "AP": 0.8518065131613266,
+              "precision": 0.8,
+              "recall": 0.5714285714285714,
+              "accepted_known": 20
+            },
+            "carrying": {
+              "known": 358,
+              "positive": 27,
+              "AP": 0.6296111807790683,
+              "precision": 0.7692307692307693,
+              "recall": 0.37037037037037035,
+              "accepted_known": 13
+            },
+            "eating": {
+              "known": 333,
+              "positive": 23,
+              "AP": 0.9642575839409485,
+              "precision": 1.0,
+              "recall": 0.5652173913043478,
+              "accepted_known": 13
+            },
+            "talking_on": {
+              "known": 354,
+              "positive": 5,
+              "AP": 0.6037414965986395,
+              "precision": 0.5,
+              "recall": 0.8,
+              "accepted_known": 8
+            }
+          },
+          "macro_AP_on_known_labels": 0.7993669714094035
+        },
+        "notes": "ReusedR55 matched detector pool; sequential development,not freshheldout/detectionAP/caption quality. Unknown excluded from precision; frozen thresholds, no fitting here."
+      },
+      "full100_claims": 12,
+      "full100_relation_images": 8
+    },
+    "detector": {
+      "head_sha256": "f6c2c81adb3f43f75521f2878b1ef646f8cc31016147b701d26f803b29fa90c7",
+      "common_detector_dev_metrics": {
+        "per_relation": {
+          "holding": {
+            "known": 290,
+            "positive": 119,
+            "AP": 0.6278167660696733,
+            "precision": 0.7391304347826086,
+            "recall": 0.2857142857142857,
+            "accepted_known": 46
+          },
+          "riding": {
+            "known": 303,
+            "positive": 24,
+            "AP": 0.9304754319546941,
+            "precision": 0.8275862068965517,
+            "recall": 1.0,
+            "accepted_known": 29
+          },
+          "sitting_on": {
+            "known": 268,
+            "positive": 27,
+            "AP": 0.8361753846933359,
+            "precision": 0.7586206896551724,
+            "recall": 0.8148148148148148,
+            "accepted_known": 29
+          },
+          "carrying": {
+            "known": 308,
+            "positive": 18,
+            "AP": 0.4636485762296829,
+            "precision": 0.6,
+            "recall": 0.16666666666666666,
+            "accepted_known": 5
+          },
+          "eating": {
+            "known": 308,
+            "positive": 4,
+            "AP": 0.9166666666666666,
+            "precision": 0.6666666666666666,
+            "recall": 1.0,
+            "accepted_known": 6
+          },
+          "talking_on": {
+            "known": 308,
+            "positive": 4,
+            "AP": 0.6458333333333333,
+            "precision": 0.75,
+            "recall": 0.75,
+            "accepted_known": 4
+          }
+        },
+        "macro_AP_on_known_labels": 0.7367693598245643
+      },
+      "common_detector_dev_actor_edges": {
+        "edges": 194,
+        "images": 126,
+        "wins": 148,
+        "ties": 0,
+        "win_rate": 0.7628865838050842,
+        "mean_gap": 1.437258005142212
+      },
+      "transfer": {
+        "variant": "text_conditioned_whole_triplet_development_v1",
+        "pairs": 364,
+        "images": 286,
+        "head_sha256": "f6c2c81adb3f43f75521f2878b1ef646f8cc31016147b701d26f803b29fa90c7",
+        "source_sha256": "a129ab178f02e147980c537b1a64f21f8cc8f16a2c2ad09e60049ddac0d36e07",
+        "train_image_overlap": 0,
+        "training_performed": false,
+        "threshold_refit": false,
+        "before": {
+          "positive": 43,
+          "negative": 6,
+          "unknown": 11,
+          "precision_on_known": 0.8775510204081632,
+          "recall_on_known": 0.17695473251028807
+        },
+        "after": {
+          "positive": 30,
+          "negative": 2,
+          "unknown": 8,
+          "precision_on_known": 0.9375,
+          "recall_on_known": 0.12345679012345678
+        },
+        "lost_positives": 13,
+        "removed_negatives": 4,
+        "verifier_actor_edges": {
+          "edges": 60,
+          "images": 49,
+          "wins": 50,
+          "ties": 0,
+          "win_rate": 0.8333333134651184,
+          "mean_gap": 1.743545413017273
+        },
+        "verifier_metrics_all_known": {
+          "per_relation": {
+            "holding": {
+              "known": 276,
+              "positive": 142,
+              "AP": 0.8478153628195347,
+              "precision": 0.873015873015873,
+              "recall": 0.3873239436619718,
+              "accepted_known": 63
+            },
+            "riding": {
+              "known": 355,
+              "positive": 18,
+              "AP": 0.9170307342721138,
+              "precision": 0.9333333333333333,
+              "recall": 0.7777777777777778,
+              "accepted_known": 15
+            },
+            "sitting_on": {
+              "known": 266,
+              "positive": 28,
+              "AP": 0.8402693140467926,
+              "precision": 0.7894736842105263,
+              "recall": 0.5357142857142857,
+              "accepted_known": 19
+            },
+            "carrying": {
+              "known": 358,
+              "positive": 27,
+              "AP": 0.6114109959105221,
+              "precision": 0.7857142857142857,
+              "recall": 0.4074074074074074,
+              "accepted_known": 14
+            },
+            "eating": {
+              "known": 333,
+              "positive": 23,
+              "AP": 0.9734884287105455,
+              "precision": 1.0,
+              "recall": 0.6956521739130435,
+              "accepted_known": 16
+            },
+            "talking_on": {
+              "known": 354,
+              "positive": 5,
+              "AP": 0.5657051282051283,
+              "precision": 0.6,
+              "recall": 0.6,
+              "accepted_known": 5
+            }
+          },
+          "macro_AP_on_known_labels": 0.7926199939941062
+        },
+        "notes": "ReusedR55 matched detector pool; sequential development,not freshheldout/detectionAP/caption quality. Unknown excluded from precision; frozen thresholds, no fitting here."
+      },
+      "full100_claims": 12,
+      "full100_relation_images": 8
+    }
+  },
+  "notes": "Single fixed seed42 development audit. Identical detector dev features for both heads; thresholds fitted on each training condition only. Full100 review is method-visible assistant inspection of selected claims, not independent accuracy or exhaustive recall."
+}
