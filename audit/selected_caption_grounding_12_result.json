@@ -1,0 +1,48 @@
+{
+  "sample_count": 12,
+  "valid_relations": 27,
+  "conditions": {
+    "off": {
+      "top_wording_changed": 0,
+      "candidate_wording_or_order_changed": 0,
+      "images_with_candidate_logprob_changes": 12,
+      "mean_memory_relative_change": 0.001112323756387923,
+      "median_memory_relative_change": 0.0007321277225855738,
+      "min_memory_relative_change": 0.0003835073148366064,
+      "max_memory_relative_change": 0.0026335702277719975,
+      "mean_abs_candidate_logprob_change": 0.0011498081959568178,
+      "max_abs_candidate_logprob_change": 0.0037594549357891083
+    },
+    "target_swap": {
+      "top_wording_changed": 0,
+      "candidate_wording_or_order_changed": 0,
+      "images_with_candidate_logprob_changes": 12,
+      "mean_memory_relative_change": 2.475940426904799e-06,
+      "median_memory_relative_change": 1.0193004698066943e-06,
+      "min_memory_relative_change": 4.574094703002629e-07,
+      "max_memory_relative_change": 9.656801921664737e-06,
+      "mean_abs_candidate_logprob_change": 4.215418205906947e-06,
+      "max_abs_candidate_logprob_change": 2.1055340766906738e-05
+    }
+  },
+  "evidence_weight": {
+    "mean": 0.023309265366858907,
+    "min": 0.0094997463747859,
+    "max": 0.03312782570719719
+  },
+  "notes": "Frozen historical checkpoint; selected development images and unknown alternative targets. Generic V2.1 prompt retained. Nonzero score/memory changes do not imply quality improvement. No CIDEr/BLEU/CHAIR evaluation; no model training or checkpoint promotion.",
+  "source_review_sha256": "90f5334d94257ba76ac7808f478732f7757a2581760be25c7eeee6048ca08688",
+  "source_summary": {
+    "sample_count": 12,
+    "eligible_images": 23,
+    "selection": "first lexicographic filenames with same-class low-overlap alternative; inspected development",
+    "off_top_changed": 0,
+    "swap_top_changed": 0,
+    "checkpoint_sha256": "7a9afaf9861ad57f0f5c4a05d3fc4e51ae94c36f014b30aa6c832cc9c00adae7",
+    "grounded_sha256": "0b2ac21326ca7fae7cd514998c90260941971388fb12bf7bbee1fa763839f657",
+    "prompt_sha256": "03a89869a11e137d84204f1ad602f1b80d1fd7b28fb6ed73ea9b3906fcf4c908",
+    "beam_size": 5,
+    "candidate_count": 3,
+    "notes": "Inference only. Generic relation prompt retained in all conditions. Alternate targets are unknown, not negatives. Caption change is sensitivity, not quality. Candidates_changed includes logprob changes, not only changed wording. Historical checkpoint and new selected relations may differ in distribution."
+  }
+}
