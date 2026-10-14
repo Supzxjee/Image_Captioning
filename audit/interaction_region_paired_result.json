@@ -1,0 +1,553 @@
+{
+  "union_only": {
+    "condition": "union_only",
+    "settings": {
+      "seed": 42,
+      "epochs": 30,
+      "lr": 0.001,
+      "weight_decay": 0.01,
+      "contrast_weight": 0.2,
+      "margin_logit": 1,
+      "temperature": 1,
+      "gradient_clip_norm": 1,
+      "threshold_rule": "train-only >=90%known precision and>=5accepts",
+      "region_source_sha256": "6b055345bebfc6c9e82fb8ee81e09b0a4894bf04c6f5c3b889eee3a7e5b7aaee",
+      "extraction_protocol": {
+        "variant": "shared_union_interaction_regions_v1",
+        "model": "openai/clip-vit-base-patch16",
+        "revision": "57c216476eefef5ab752ec549e440a49ae4ae5f3",
+        "union_padding": 0.1,
+        "grid": 14,
+        "vision_dim": 768,
+        "regions": [
+          "subject",
+          "object",
+          "intersection",
+          "bridge",
+          "outside",
+          "union_cls"
+        ],
+        "feature": "final CLIP patch hidden_state postLayerNorm;area-weighted region pooling andL2norm;no512D visualprojection",
+        "empty_regions": "zero feature withvalid=False;no synthetic contact label",
+        "bridge": "center-to-center bounding corridor paddedhalfpatch;subtract subject/object rectangles",
+        "training_performed": false,
+        "splits": {
+          "train": {
+            "pairs": 1141,
+            "images": 616,
+            "pair_json_sha256": "1e1afd0a33e52003d558e0236b1aa41ba7d2d54b04fafaefc5f025e7667fffa6",
+            "source_sha256": "c3fcf5d65a462392891f4efa8adbd33a8d5359598ad0d0e80e4c91e863ee449f"
+          },
+          "val": {
+            "pairs": 310,
+            "images": 128,
+            "pair_json_sha256": "bbda4ccfd9e3eaf9c5644d4eb9f4995e981cc38ca7f2f01f0d089c953c51d8c3",
+            "source_sha256": "c3fcf5d65a462392891f4efa8adbd33a8d5359598ad0d0e80e4c91e863ee449f"
+          },
+          "transfer": {
+            "pairs": 364,
+            "images": 286,
+            "pair_json_sha256": "87eb9d91f24546da3a0bc9bd40d16cf0557dee68ccde7ca6c1695ab20d7e1b4f",
+            "source_sha256": "a129ab178f02e147980c537b1a64f21f8cc8f16a2c2ad09e60049ddac0d36e07"
+          },
+          "full100": {
+            "pairs": 1321,
+            "images": 94,
+            "pair_json_sha256": "d83edc17ebbe1d5be5dac88190b99ab5017e71aca8adb95496d44a1332fd2f0f",
+            "source_sha256": "864bedb4925d5a3cc7eca50fa434d81761f84928dba9acab91d6c1badf8b8d4d"
+          }
+        },
+        "next_paired_training": "region verifier vsunion-CLS repeated inallvalid slots;identicalgeometry/mass/valid/text/dims andtrain schedule;knownlabels only;no audit labels/whitelists",
+        "notes": "Coarse14x14 spatial evidence,notsegmentation/contactGT;contextualized patches can contain otherinstances. Existingmatched train/dev/transfer/full100development sets;no freshheldout/novelty/caption claim."
+      },
+      "notes": "Same initialization/train/text/masks/mass/geometry/parameter dimensions. Control repeatsunionCLS invalid slots. Primary acceptance hasno R50gate;secondaryconjunction frozen. Unknownmasked,no auditlabels. Reuseddevelopment;notcaptionquality."
+    },
+    "parameters": 683649,
+    "training_labels": {
+      "0": 5501,
+      "-1": 590,
+      "1": 755
+    },
+    "contrast_edges": {
+      "actor": 457,
+      "predicate": 3041
+    },
+    "dev_metrics": {
+      "per_relation": {
+        "holding": {
+          "known": 290,
+          "positive": 119,
+          "AP": 0.896995086100671,
+          "precision": 0.8482142857142857,
+          "recall": 0.7983193277310925,
+          "accepted_known": 112
+        },
+        "riding": {
+          "known": 303,
+          "positive": 24,
+          "AP": 0.8999287204203513,
+          "precision": 0.7272727272727273,
+          "recall": 1.0,
+          "accepted_known": 33
+        },
+        "sitting_on": {
+          "known": 268,
+          "positive": 27,
+          "AP": 0.7844097177515834,
+          "precision": 0.7407407407407407,
+          "recall": 0.7407407407407407,
+          "accepted_known": 27
+        },
+        "carrying": {
+          "known": 308,
+          "positive": 18,
+          "AP": 0.7378751327955347,
+          "precision": 0.9166666666666666,
+          "recall": 0.6111111111111112,
+          "accepted_known": 12
+        },
+        "eating": {
+          "known": 308,
+          "positive": 4,
+          "AP": 1.0,
+          "precision": 1.0,
+          "recall": 0.75,
+          "accepted_known": 3
+        },
+        "talking_on": {
+          "known": 308,
+          "positive": 4,
+          "AP": 1.0,
+          "precision": 0.8,
+          "recall": 1.0,
+          "accepted_known": 5
+        }
+      },
+      "macro_AP_on_known_labels": 0.8865347761780233
+    },
+    "dev_acceptance": {
+      "positive": 157,
+      "negative": 35,
+      "unknown": 7,
+      "precision_on_known": 0.8177083333333334,
+      "recall_on_known": 0.8010204081632653
+    },
+    "dev_actor_edges": {
+      "edges": 194,
+      "images": 126,
+      "wins": 180,
+      "ties": 0,
+      "win_rate": 0.9278350472450256,
+      "mean_gap": 5.19335412979126
+    },
+    "transfer_metrics": {
+      "per_relation": {
+        "holding": {
+          "known": 276,
+          "positive": 142,
+          "AP": 0.8966818765014729,
+          "precision": 0.8832116788321168,
+          "recall": 0.852112676056338,
+          "accepted_known": 137
+        },
+        "riding": {
+          "known": 355,
+          "positive": 18,
+          "AP": 1.0000000000000002,
+          "precision": 1.0,
+          "recall": 1.0,
+          "accepted_known": 18
+        },
+        "sitting_on": {
+          "known": 266,
+          "positive": 28,
+          "AP": 0.8345385267073423,
+          "precision": 0.9,
+          "recall": 0.6428571428571429,
+          "accepted_known": 20
+        },
+        "carrying": {
+          "known": 358,
+          "positive": 27,
+          "AP": 0.868546982400728,
+          "precision": 0.84,
+          "recall": 0.7777777777777778,
+          "accepted_known": 25
+        },
+        "eating": {
+          "known": 333,
+          "positive": 23,
+          "AP": 0.9911166338387506,
+          "precision": 1.0,
+          "recall": 0.8695652173913043,
+          "accepted_known": 20
+        },
+        "talking_on": {
+          "known": 354,
+          "positive": 5,
+          "AP": 0.5181929181929181,
+          "precision": 1.0,
+          "recall": 0.2,
+          "accepted_known": 1
+        }
+      },
+      "macro_AP_on_known_labels": 0.8515128229402021
+    },
+    "transfer_acceptance": {
+      "positive": 199,
+      "negative": 22,
+      "unknown": 33,
+      "precision_on_known": 0.9004524886877828,
+      "recall_on_known": 0.8189300411522634
+    },
+    "transfer_actor_edges": {
+      "edges": 60,
+      "images": 49,
+      "wins": 58,
+      "ties": 0,
+      "win_rate": 0.9666666388511658,
+      "mean_gap": 5.452110290527344
+    },
+    "transfer_with_frozen_R50_gate": {
+      "positive": 41,
+      "negative": 3,
+      "unknown": 2,
+      "precision_on_known": 0.9318181818181818,
+      "recall_on_known": 0.16872427983539096
+    },
+    "thresholds": [
+      0.6578543186187744,
+      0.2935965061187744,
+      0.6370250582695007,
+      0.3150891959667206,
+      0.309471070766449,
+      0.5918950438499451
+    ],
+    "full100_claims": 169,
+    "full100_relation_images": 82,
+    "full100_gated_claims": 21,
+    "head_sha256": "699890b712497563d9d28deea157011f7e4afa39d46686ccd4ac92176da8e71a"
+  },
+  "regions": {
+    "condition": "regions",
+    "settings": {
+      "seed": 42,
+      "epochs": 30,
+      "lr": 0.001,
+      "weight_decay": 0.01,
+      "contrast_weight": 0.2,
+      "margin_logit": 1,
+      "temperature": 1,
+      "gradient_clip_norm": 1,
+      "threshold_rule": "train-only >=90%known precision and>=5accepts",
+      "region_source_sha256": "6b055345bebfc6c9e82fb8ee81e09b0a4894bf04c6f5c3b889eee3a7e5b7aaee",
+      "extraction_protocol": {
+        "variant": "shared_union_interaction_regions_v1",
+        "model": "openai/clip-vit-base-patch16",
+        "revision": "57c216476eefef5ab752ec549e440a49ae4ae5f3",
+        "union_padding": 0.1,
+        "grid": 14,
+        "vision_dim": 768,
+        "regions": [
+          "subject",
+          "object",
+          "intersection",
+          "bridge",
+          "outside",
+          "union_cls"
+        ],
+        "feature": "final CLIP patch hidden_state postLayerNorm;area-weighted region pooling andL2norm;no512D visualprojection",
+        "empty_regions": "zero feature withvalid=False;no synthetic contact label",
+        "bridge": "center-to-center bounding corridor paddedhalfpatch;subtract subject/object rectangles",
+        "training_performed": false,
+        "splits": {
+          "train": {
+            "pairs": 1141,
+            "images": 616,
+            "pair_json_sha256": "1e1afd0a33e52003d558e0236b1aa41ba7d2d54b04fafaefc5f025e7667fffa6",
+            "source_sha256": "c3fcf5d65a462392891f4efa8adbd33a8d5359598ad0d0e80e4c91e863ee449f"
+          },
+          "val": {
+            "pairs": 310,
+            "images": 128,
+            "pair_json_sha256": "bbda4ccfd9e3eaf9c5644d4eb9f4995e981cc38ca7f2f01f0d089c953c51d8c3",
+            "source_sha256": "c3fcf5d65a462392891f4efa8adbd33a8d5359598ad0d0e80e4c91e863ee449f"
+          },
+          "transfer": {
+            "pairs": 364,
+            "images": 286,
+            "pair_json_sha256": "87eb9d91f24546da3a0bc9bd40d16cf0557dee68ccde7ca6c1695ab20d7e1b4f",
+            "source_sha256": "a129ab178f02e147980c537b1a64f21f8cc8f16a2c2ad09e60049ddac0d36e07"
+          },
+          "full100": {
+            "pairs": 1321,
+            "images": 94,
+            "pair_json_sha256": "d83edc17ebbe1d5be5dac88190b99ab5017e71aca8adb95496d44a1332fd2f0f",
+            "source_sha256": "864bedb4925d5a3cc7eca50fa434d81761f84928dba9acab91d6c1badf8b8d4d"
+          }
+        },
+        "next_paired_training": "region verifier vsunion-CLS repeated inallvalid slots;identicalgeometry/mass/valid/text/dims andtrain schedule;knownlabels only;no audit labels/whitelists",
+        "notes": "Coarse14x14 spatial evidence,notsegmentation/contactGT;contextualized patches can contain otherinstances. Existingmatched train/dev/transfer/full100development sets;no freshheldout/novelty/caption claim."
+      },
+      "notes": "Same initialization/train/text/masks/mass/geometry/parameter dimensions. Control repeatsunionCLS invalid slots. Primary acceptance hasno R50gate;secondaryconjunction frozen. Unknownmasked,no auditlabels. Reuseddevelopment;notcaptionquality."
+    },
+    "parameters": 683649,
+    "training_labels": {
+      "0": 5501,
+      "-1": 590,
+      "1": 755
+    },
+    "contrast_edges": {
+      "actor": 457,
+      "predicate": 3041
+    },
+    "dev_metrics": {
+      "per_relation": {
+        "holding": {
+          "known": 290,
+          "positive": 119,
+          "AP": 0.8862263142972915,
+          "precision": 0.8636363636363636,
+          "recall": 0.7983193277310925,
+          "accepted_known": 110
+        },
+        "riding": {
+          "known": 303,
+          "positive": 24,
+          "AP": 0.8681751371673605,
+          "precision": 0.8,
+          "recall": 1.0,
+          "accepted_known": 30
+        },
+        "sitting_on": {
+          "known": 268,
+          "positive": 27,
+          "AP": 0.8706294944694445,
+          "precision": 0.7692307692307693,
+          "recall": 0.7407407407407407,
+          "accepted_known": 26
+        },
+        "carrying": {
+          "known": 308,
+          "positive": 18,
+          "AP": 0.6968520894331699,
+          "precision": 0.8888888888888888,
+          "recall": 0.4444444444444444,
+          "accepted_known": 9
+        },
+        "eating": {
+          "known": 308,
+          "positive": 4,
+          "AP": 1.0,
+          "precision": 1.0,
+          "recall": 0.75,
+          "accepted_known": 3
+        },
+        "talking_on": {
+          "known": 308,
+          "positive": 4,
+          "AP": 0.8928571428571428,
+          "precision": 1.0,
+          "recall": 0.75,
+          "accepted_known": 3
+        }
+      },
+      "macro_AP_on_known_labels": 0.8691233630374016
+    },
+    "dev_acceptance": {
+      "positive": 153,
+      "negative": 28,
+      "unknown": 8,
+      "precision_on_known": 0.8453038674033149,
+      "recall_on_known": 0.7806122448979592
+    },
+    "dev_actor_edges": {
+      "edges": 194,
+      "images": 126,
+      "wins": 182,
+      "ties": 0,
+      "win_rate": 0.938144326210022,
+      "mean_gap": 4.135672569274902
+    },
+    "transfer_metrics": {
+      "per_relation": {
+        "holding": {
+          "known": 276,
+          "positive": 142,
+          "AP": 0.9369598629526801,
+          "precision": 0.9029850746268657,
+          "recall": 0.852112676056338,
+          "accepted_known": 134
+        },
+        "riding": {
+          "known": 355,
+          "positive": 18,
+          "AP": 0.9844444444444448,
+          "precision": 1.0,
+          "recall": 0.9444444444444444,
+          "accepted_known": 17
+        },
+        "sitting_on": {
+          "known": 266,
+          "positive": 28,
+          "AP": 0.8034031616466161,
+          "precision": 0.7692307692307693,
+          "recall": 0.7142857142857143,
+          "accepted_known": 26
+        },
+        "carrying": {
+          "known": 358,
+          "positive": 27,
+          "AP": 0.7648227171762391,
+          "precision": 0.8666666666666667,
+          "recall": 0.48148148148148145,
+          "accepted_known": 15
+        },
+        "eating": {
+          "known": 333,
+          "positive": 23,
+          "AP": 0.9859851679511411,
+          "precision": 1.0,
+          "recall": 0.7391304347826086,
+          "accepted_known": 17
+        },
+        "talking_on": {
+          "known": 354,
+          "positive": 5,
+          "AP": 0.6585281385281386,
+          "precision": 0.5,
+          "recall": 0.2,
+          "accepted_known": 2
+        }
+      },
+      "macro_AP_on_known_labels": 0.8556905821165434
+    },
+    "transfer_acceptance": {
+      "positive": 189,
+      "negative": 22,
+      "unknown": 25,
+      "precision_on_known": 0.8957345971563981,
+      "recall_on_known": 0.7777777777777778
+    },
+    "transfer_actor_edges": {
+      "edges": 60,
+      "images": 49,
+      "wins": 58,
+      "ties": 0,
+      "win_rate": 0.9666666388511658,
+      "mean_gap": 4.442241191864014
+    },
+    "transfer_with_frozen_R50_gate": {
+      "positive": 42,
+      "negative": 2,
+      "unknown": 1,
+      "precision_on_known": 0.9545454545454546,
+      "recall_on_known": 0.1728395061728395
+    },
+    "thresholds": [
+      0.660205602645874,
+      0.33378955721855164,
+      0.6762341856956482,
+      0.48665478825569153,
+      0.5027419924736023,
+      0.5633955597877502
+    ],
+    "full100_claims": 128,
+    "full100_relation_images": 73,
+    "full100_gated_claims": 19,
+    "head_sha256": "32484612d27752050c2a2693cff5b328d0ea6b2befaaa0c0fb9cc1fdbd270b3b"
+  },
+  "assistant_new_spotcheck": {
+    "reviewer": "assistant_visual_inspection",
+    "independent_human_annotation": false,
+    "method_membership_visible": true,
+    "sampling": "Four purposive new-output images;notrandom/exhaustive or accuracyestimate.",
+    "images_inspected": 4,
+    "claims": [
+      {
+        "filename": "COCO_train2014_000000018250.jpg",
+        "subject_instance": "det_bee897e48ce9",
+        "subject": "person",
+        "object_instance": "det_51cb60476abf",
+        "object": "skateboard",
+        "relation": "holding",
+        "score": 0.8852517008781433,
+        "threshold": 0.660205602645874,
+        "score_margin": 0.2250460982322693,
+        "prompt": "a photo of a person holding a skateboard",
+        "assistant_status": "contradicted",
+        "assistant_notes": "Hands are at head, away from skateboard resting against the ground."
+      },
+      {
+        "filename": "COCO_train2014_000000028517.jpg",
+        "subject_instance": "det_cac609f721c1",
+        "subject": "person",
+        "object_instance": "det_98b7574888d7",
+        "object": "cup",
+        "relation": "holding",
+        "score": 0.7957984209060669,
+        "threshold": 0.660205602645874,
+        "score_margin": 0.13559281826019287,
+        "prompt": "a photo of a person holding a cup",
+        "assistant_status": "unclear",
+        "assistant_notes": "Overlapping actors, occluded hands and cup/wine-glass aliases prevent confirming exact target/action."
+      },
+      {
+        "filename": "COCO_train2014_000000028517.jpg",
+        "subject_instance": "det_cac609f721c1",
+        "subject": "person",
+        "object_instance": "det_48c29bb82ba4",
+        "object": "wine glass",
+        "relation": "holding",
+        "score": 0.7625261545181274,
+        "threshold": 0.660205602645874,
+        "score_margin": 0.10232055187225342,
+        "prompt": "a photo of a person holding a wine glass",
+        "assistant_status": "unclear",
+        "assistant_notes": "Overlapping actors, occluded hands and cup/wine-glass aliases prevent confirming exact target/action."
+      },
+      {
+        "filename": "COCO_train2014_000000028517.jpg",
+        "subject_instance": "det_0670d82a8542",
+        "subject": "person",
+        "object_instance": "det_98b7574888d7",
+        "object": "cup",
+        "relation": "holding",
+        "score": 0.7135480642318726,
+        "threshold": 0.660205602645874,
+        "score_margin": 0.053342461585998535,
+        "prompt": "a photo of a person holding a cup",
+        "assistant_status": "unclear",
+        "assistant_notes": "Overlapping actors, occluded hands and cup/wine-glass aliases prevent confirming exact target/action."
+      },
+      {
+        "filename": "COCO_train2014_000000046940.jpg",
+        "subject_instance": "det_7a28d3b4efe0",
+        "subject": "person",
+        "object_instance": "det_57230d890a9d",
+        "object": "tie",
+        "relation": "holding",
+        "score": 0.9146885871887207,
+        "threshold": 0.660205602645874,
+        "score_margin": 0.2544829845428467,
+        "prompt": "a photo of a person holding a tie",
+        "assistant_status": "unclear",
+        "assistant_notes": "Tie is visibly worn; no hand grip visible; lower part extends outside frame."
+      },
+      {
+        "filename": "COCO_train2014_000000172901.jpg",
+        "subject_instance": "det_3d96d109328a",
+        "subject": "person",
+        "object_instance": "det_0aa1bc9782f6",
+        "object": "laptop",
+        "relation": "holding",
+        "score": 0.7791857719421387,
+        "threshold": 0.660205602645874,
+        "score_margin": 0.11898016929626465,
+        "prompt": "a photo of a person holding a laptop",
+        "assistant_status": "contradicted",
+        "assistant_notes": "Visible hand supports bird, rather than grasping laptop; laptop occupies table/keyboard context."
+      }
+    ]
+  }
+}
