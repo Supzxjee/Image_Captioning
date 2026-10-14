@@ -14,4 +14,4 @@ The source caption checkpoint may already have seen these COCO training images d
 
 Import DECODER_RELATION_MEMORY_ADAPTATION_512_FULL.ipynb. It is standalone. Fill SELECTED with the same mounted JSON path as the previous run. Checkpoint, prompt cache, full training grounded cache, visual cache and COCO_JSON have the previously supplied paths; attach those inputs if absent. COCO_JSON supplies captions; no COCO image files are read. No full visual-cache staging. Enable Internet and GPU; one GPU is used sequentially.
 
-Code pinned to c1037d8. Return decoder_relation_memory_adaptation_512_review.zip (JSON evidence only). Both legacy/direct adapted_epoch_2.pth checkpoints remain separately in saved Kaggle output, excluded from the review ZIP.
+Code pinned to ef772a1. Return decoder_relation_memory_adaptation_512_review.zip (JSON evidence only). Both legacy/direct adapted_epoch_2.pth checkpoints remain separately in saved Kaggle output, excluded from the review ZIP.
