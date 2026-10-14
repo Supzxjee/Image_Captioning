@@ -1,0 +1,89 @@
+{
+  "review_sha256": "e3de0d5aa31aa89f757d2ddb188c01539ea625f8c15666377d7efd729242b7b4",
+  "train_images": 512,
+  "excluded_pool_images": 100,
+  "overlap": 0,
+  "trainable_parameters_per_arm": 3154944,
+  "caption_loss": {
+    "legacy": [
+      {
+        "epoch": 1,
+        "caption_loss": 1.5947471596300602,
+        "batches": 32
+      },
+      {
+        "epoch": 2,
+        "caption_loss": 1.5822510235011578,
+        "batches": 32
+      }
+    ],
+    "direct": [
+      {
+        "epoch": 1,
+        "caption_loss": 1.59303505346179,
+        "batches": 32
+      },
+      {
+        "epoch": 2,
+        "caption_loss": 1.5823160447180271,
+        "batches": 32
+      }
+    ]
+  },
+  "checks": {
+    "legacy": {
+      "off": {
+        "top_changed": 0,
+        "ordered_lists_changed": 0,
+        "sets_changed": 0,
+        "changed_images": []
+      },
+      "target_swap": {
+        "top_changed": 0,
+        "ordered_lists_changed": 0,
+        "sets_changed": 0,
+        "changed_images": []
+      }
+    },
+    "direct": {
+      "off": {
+        "top_changed": 0,
+        "ordered_lists_changed": 3,
+        "sets_changed": 3,
+        "changed_images": [
+          "COCO_train2014_000000028517.jpg",
+          "COCO_train2014_000000089033.jpg",
+          "COCO_train2014_000000329841.jpg"
+        ]
+      },
+      "target_swap": {
+        "top_changed": 0,
+        "ordered_lists_changed": 0,
+        "sets_changed": 0,
+        "changed_images": []
+      }
+    }
+  },
+  "cross_arm": {
+    "on": {
+      "top_changed": 0,
+      "ordered_lists_changed": 3,
+      "sets_changed": 3
+    },
+    "off": {
+      "top_changed": 0,
+      "ordered_lists_changed": 0,
+      "sets_changed": 0
+    },
+    "target_swap": {
+      "top_changed": 0,
+      "ordered_lists_changed": 3,
+      "sets_changed": 3
+    }
+  },
+  "checkpoint_sha256": {
+    "legacy": "a6d3888885306128271ea35aa83927627f46f1a83b0a02e69b732d9340f3d0a8",
+    "direct": "5373daaf8f2b0d546d9b03eab64b2e0171539f2b11330e270614c28e29f0503c"
+  },
+  "notes": "Reported training/checkpoint metadata verified for consistency; weights not included. Frozen source may have seen COCO development images. No CIDEr/BLEU/CHAIR or independent correctness benchmark. Chair candidate absent from current returned beams, not proof learned relation rejection."
+}
