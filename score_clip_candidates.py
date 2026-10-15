@@ -10,6 +10,7 @@ def main(argv=None):
     parser.add_argument('--visual-cache', action='append', required=True)
     parser.add_argument('--output', required=True)
     parser.add_argument('--model', default='openai/clip-vit-base-patch16')
+    parser.add_argument('--revision', default='main', help='Pin the Hugging Face CLIP revision for reproducible scoring.')
     parser.add_argument('--batch-size', type=int, default=64)
     parser.add_argument('--device', default='cuda')
     args = parser.parse_args(argv)
@@ -31,8 +32,8 @@ def main(argv=None):
     cache.require_ids([record['coco_id'] for record in records], 'CLIPScore')
     device = torch.device(args.device if torch.cuda.is_available() else 'cpu')
     print(f'Loading {args.model} on {device}.', flush=True)
-    model = CLIPModel.from_pretrained(args.model).to(device).eval()
-    tokenizer = AutoTokenizer.from_pretrained(args.model)
+    model = CLIPModel.from_pretrained(args.model, revision=args.revision).to(device).eval()
+    tokenizer = AutoTokenizer.from_pretrained(args.model, revision=args.revision)
     for parameter in model.parameters():
         parameter.requires_grad = False
 
@@ -74,6 +75,7 @@ def main(argv=None):
     metadata = bundle.setdefault('metadata', {})
     metadata.update({
         'clipscore_model': args.model,
+        'clipscore_revision': args.revision,
         'clipscore_formula': '2.5 * max(cosine(CLIP image, CLIP text), 0)',
         'clipscore_visual_source': 'cached last_hidden_state CLS + post_layernorm + visual_projection',
     })

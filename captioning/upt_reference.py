@@ -46,12 +46,19 @@ def prepare_image(image):
 
 def load_reference(upt_directory,pocket_directory,checkpoint,correspondence):
     global NMS_LIBRARY
-    # The local torch nightly cannot load the stable TorchVision C++ extension.
-    # Register its missing schema so pure-Python ResNet/transforms can import.
-    if not hasattr(torch.ops.torchvision,'nms'):
+    # Stable GPU builds must register their own native schemas first. Only the
+    # isolated CPU host needs the schema fallback after a failed normal import.
+    try:
+        import torchvision
+    except RuntimeError as error:
+        if 'operator torchvision::nms does not exist' not in str(error):
+            raise
+        for name in list(sys.modules):
+            if name == 'torchvision' or name.startswith('torchvision.'):
+                del sys.modules[name]
         NMS_LIBRARY=torch.library.Library('torchvision','DEF')
         NMS_LIBRARY.define('nms(Tensor boxes, Tensor scores, float iou_threshold) -> Tensor')
-    import torchvision
+        import torchvision
     if not torchvision.extension._has_ops():
         torchvision.ops.boxes.nms=cpu_nms
         torchvision.ops.nms=cpu_nms
