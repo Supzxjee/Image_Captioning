@@ -13,7 +13,7 @@ COCO_IMAGES = Path('/kaggle/input/datasets/vuthetam/mscoco-2014/images')
 DETECTIONS = Path('/kaggle/input/datasets/ducanh2403/objectdetectionecache/objectdetectioncache.json')
 OUTPUT = Path('/kaggle/working/qformer_ce_scst_train20k_val1000')
 TRAIN_IMAGES, VALIDATION_IMAGES, BATCH_SIZE, LEARNING_RATE = 20000, 1000, 8, 5e-6
-PROJECT_COMMIT = 'ec368670494f6e83552d42cf4222dc2c691bd955'
+PROJECT_COMMIT = 'dabaca2b66640f7113733f16fd30597fefeab5f7'
 REPO = Path('/kaggle/working/Image_Captioning')
 CHAIR = Path('/tmp/scst-reference/CHAIR')
 os.environ.update(PYTHONUNBUFFERED='1', HDF5_USE_FILE_LOCKING='FALSE',
@@ -51,7 +51,7 @@ assert torch.cuda.device_count() >= 2, 'Select GPU T4 x2 in Notebook Settings.'
 for i in range(2): print('GPU', i, torch.cuda.get_device_name(i), flush=True)
 checkout('https://github.com/Maxlinn/CHAIR-metric-standalone.git', CHAIR, '4087a26211aa2339b9a76307cb8f0321ef691d0a')
 assert (CHAIR/'chair.pkl').is_file(), 'Pinned CHAIR cache missing.'
-run([sys.executable, '-m', 'unittest', 'tests.test_scst', '-v'], cwd=REPO)
+run([sys.executable, '-u', REPO/'scst_preflight.py'], cwd=REPO)
 # Fail on model downloads and metric dependencies before expensive training.
 run([sys.executable, '-u', '-c', "from transformers import CLIPModel,AutoTokenizer;m=CLIPModel.from_pretrained('openai/clip-vit-base-patch16',revision='57c216476eefef5ab752ec549e440a49ae4ae5f3');t=AutoTokenizer.from_pretrained('openai/clip-vit-base-patch16',revision='57c216476eefef5ab752ec549e440a49ae4ae5f3');print('Pinned CLIP prefetch PASS',flush=True)"])
 smoke = """
