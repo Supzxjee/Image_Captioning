@@ -1,0 +1,72 @@
+{
+  "source_sha256": "b26b36118a1e9a2b57ceb99f6f07ab7e4f1d96ac50151d97903c5edbb80af162",
+  "images": 512,
+  "changed": 165,
+  "CIDEr_changes": {
+    "better": 76,
+    "worse": 77,
+    "tied": 12,
+    "positive_contribution_to_corpus": 0.05363703846131198,
+    "negative_contribution_to_corpus": -0.06623190219436732,
+    "net_delta": -0.01259486373305533
+  },
+  "descriptive_groups": {
+    "both_clean": {
+      "images": 159,
+      "contribution_to_corpus_CIDEr_delta": -0.013518628596815489
+    },
+    "different_objects": {
+      "images": 34,
+      "contribution_to_corpus_CIDEr_delta": -0.0058740138179874295
+    },
+    "same_sixverb_claims": {
+      "images": 150,
+      "contribution_to_corpus_CIDEr_delta": 0.0006657842118548132
+    },
+    "longer": {
+      "images": 44,
+      "contribution_to_corpus_CIDEr_delta": -0.00236472292794076
+    },
+    "different_PTB": {
+      "images": 153,
+      "contribution_to_corpus_CIDEr_delta": -0.012594863733055331
+    },
+    "same_objects": {
+      "images": 131,
+      "contribution_to_corpus_CIDEr_delta": -0.006720849915067902
+    },
+    "shorter": {
+      "images": 74,
+      "contribution_to_corpus_CIDEr_delta": 0.00046795064069672887
+    },
+    "same_length": {
+      "images": 47,
+      "contribution_to_corpus_CIDEr_delta": -0.0106980914458113
+    },
+    "same_PTB": {
+      "images": 12,
+      "contribution_to_corpus_CIDEr_delta": 0.0
+    },
+    "different_sixverb_claims": {
+      "images": 15,
+      "contribution_to_corpus_CIDEr_delta": -0.013260647944910144
+    },
+    "removed_hallucination": {
+      "images": 3,
+      "contribution_to_corpus_CIDEr_delta": 0.0006522829937690987
+    },
+    "both_hallucinated": {
+      "images": 3,
+      "contribution_to_corpus_CIDEr_delta": 0.00027148186999105984
+    }
+  },
+  "decision": "Diagnostic only. No new model,threshold,epoch,weight or validation-based selection.",
+  "limitations": [
+    "Reference CIDEr changes do not establish visual correctness.",
+    "Lexical class/claim grouping is incomplete.",
+    "CHAIR clean does not imply correct relation,attribute or whole caption.",
+    "Repeated inspection of development validation512."
+  ],
+  "new_training_or_notebook": false,
+  "test_used": false
+}

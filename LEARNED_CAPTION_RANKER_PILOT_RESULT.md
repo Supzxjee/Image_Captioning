@@ -52,3 +52,7 @@ Nguồn `learned_caption_ranker_1024_512_review.zip`,4.461.555 byte; SHA256 `b26
 ## Quyết định
 
 Giữ cả ba head để đối chiếu, giữ fixed/UPT đã chốt làm mốc. Không thay mô hình hiện tại, không chạy full hoặc tăng epoch tự động. Bước tiếp theo cần kiểm tra vì sao thay đổi ứng viên làm mất CIDEr, và thiết kế tiêu chí học/chọn có kiểm soát regression trên tập train/tune; không chỉnh rule theo512 validation này rồi gọi là cải thiện độc lập. Tín hiệu giảm CHAIR đáng giữ lại nhưng chưa đạt mục tiêu đồng thời cải thiện chất lượng caption.
+
+## Phân tích tiếp theo và notebook đang dùng
+
+[Phân rã165 thay đổi](LEARNED_RANKER_CHANGE_DIAGNOSTIC.md):3 caption sửa hallucination đóng góp CIDEr dương; phần giảm đến từ các thay đổi khác, chưa chứng minh phải hy sinh CIDEr để giảm hallucination. Chưa chọn ngưỡng hoặc train lại. Người dùng xác nhận tên notebook hiện dùng là **QFormer UPT Val5000 20261015**; không suy phương pháp/split từ tên giữ lại của notebook.
