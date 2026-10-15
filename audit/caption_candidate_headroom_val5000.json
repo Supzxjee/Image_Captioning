@@ -1,0 +1,50 @@
+{
+  "source_archive_sha256": "ecfca2a85b3f2ec77d09c4a36510f28f42b1307e42d915dd77c2175e77c07594",
+  "split": "val",
+  "images": 5000,
+  "candidate_count_distribution": {
+    "5": 5000
+  },
+  "CIDEr": {
+    "rank0": 1.1740115041643502,
+    "fixed_rerank": 1.2107228818013345,
+    "upt_rerank": 1.2125801401440146,
+    "reference_oracle": 1.5139045767150041
+  },
+  "oracle_gaps": {
+    "rank0": {
+      "mean_CIDEr_gap_to_oracle": 0.339893072550654,
+      "images_with_strictly_better_CIDEr_candidate": 3712,
+      "images_with_CIDEr_gain_at_least_point1": 2990,
+      "images_already_tied_for_best_CIDEr": 1288
+    },
+    "fixed_rerank": {
+      "mean_CIDEr_gap_to_oracle": 0.30318169491366975,
+      "images_with_strictly_better_CIDEr_candidate": 3527,
+      "images_with_CIDEr_gain_at_least_point1": 2767,
+      "images_already_tied_for_best_CIDEr": 1473
+    },
+    "upt_rerank": {
+      "mean_CIDEr_gap_to_oracle": 0.3013244365709897,
+      "images_with_strictly_better_CIDEr_candidate": 3520,
+      "images_with_CIDEr_gain_at_least_point1": 2759,
+      "images_already_tied_for_best_CIDEr": 1480
+    }
+  },
+  "diversity": {
+    "mean_unique_PTB_captions": 4.5878,
+    "images_with_PTB_duplicate_candidates": 1762,
+    "images_with_different_explicit_object_class_sets": 2270,
+    "images_with_different_six_verb_claim_sets": 732,
+    "oracle_vs_fixed_different_object_sets": 857,
+    "oracle_vs_fixed_different_claim_sets": 280
+  },
+  "limitations": [
+    "Reference-aware CIDEr ceiling, not an executable selector or measured new model.",
+    "CIDEr improvement does not establish visual truth, relation correctness or lower CHAIR.",
+    "Lexical object/claim diversity is partial; does not measure all semantic differences.",
+    "Existing reused validation, not independent test; no training or hyperparameter search."
+  ],
+  "new_notebook_started": false,
+  "test_used": false
+}

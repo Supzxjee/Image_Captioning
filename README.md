@@ -12,6 +12,7 @@ Hướng dẫn đánh giá hallucination cho Q-Former và OCC: [CHAIR_EVALUATION
 - [Full validation caption 5.000 ảnh: đã hoàn tất](HOI_CAPTION_VALIDATION_RESULT.md): fixed re-ranking CIDEr **1.210723**, thêm UPT λ=.1 đạt **1.212580**; chỉ đổi 43 caption. CHAIRs tăng từ **3.56% lên 3.58%**: chưa cải thiện hallucination. Đã tính lại CIDEr/BLEU/ROUGE và tái tổng hợp CHAIR. Đã khóa λ=.1 cho test độc lập bên dưới.
 - [Test 5.000 ảnh với lambda=.1 đã khóa: hoàn tất](HOI_CAPTION_TEST_RESULT.md): CIDEr tăng **0.002049017** so với fixed; đổi **33** caption, số caption hallucinated **174→175**. Không dò lại trọng số trên test. [Notebook](HOI_CAPTION_TEST_FULL.ipynb) do người dùng chạy.
 - [Prototype prompt giữ đúng cặp instance](INSTANCE_LOCAL_PROMPT_PILOT_RESULT.md): cache-only local, 111 calibration/128 development; cạnh tranh cùng người tăng nhận đúng80→94 nhưng nhận sai12→19, precision86.96%→83.19%. Gate FAIL; không mở full Kaggle, chưa có caption metric mới.
+- [Dư địa chọn trong beam5, validation5.000 ảnh](CAPTION_CANDIDATE_HEADROOM_RESULT.md): oracle theo reference **1.513905CIDEr** so với fixed **1.210723**;3.527 ảnh có ứng viên đạt CIDEr cao hơn. Chỉ là trần chẩn đoán, không phải mô hình mới hoặc bằng chứng giảm hallucination; ưu tiên pilot bộ chấm caption có đối chứng.
 - **Thực thi Kaggle do người dùng chủ động bấm chạy.** Trợ lý chuẩn bị/sửa mã và đọc kết quả; không tự khởi chạy hoặc chạy lại notebook.
 - Giữ riêng metric validation/test, kiến trúc/hậu xử lý và kết quả lịch sử/được tái kiểm tra. Chưa thay pipeline caption bằng các head quan hệ thử nhỏ.
 
