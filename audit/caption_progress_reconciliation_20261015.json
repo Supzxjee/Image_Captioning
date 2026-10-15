@@ -1,0 +1,81 @@
+{
+  "variant": "caption_progress_reconciliation_20261015",
+  "registry_sha256": "6b5fe8edbef513ab0abc35e53cc7384d1b8f21204e7efd9d4b4eb512aa8585d9",
+  "archive_sha256": "c401f6557966f9b37f568565fe01749183517c906226e5ae973a5117bea484bf",
+  "archive_member_sha256": {
+    "e2_qualitative_analysis/qformer_chair_output.json": "0caf9c47c9d7706e9434177e10464a3994735a7425c7b0096fc379f8dfd0386b",
+    "e2_qualitative_analysis/e2_chair_output.json": "255ef94248d1198263bbadd068235055b5e7a36a1266edf6f8e9d7ccf27ffdd3",
+    "e2_qualitative_analysis/qformer_chair_input.json": "21672933d5ee925ad3a4d97c920077016e8b54edc0dd86507cc35aebcbd458b9",
+    "e2_qualitative_analysis/e2_chair_input.json": "057834dca0519fb123c72afa69674681ce74aaf1f3ae64ade0f54c3c73755442",
+    "e2_qualitative_analysis/transition_summary.json": "171cf0a042b7fe0d1e6700aeef233e5c355780bf3d48f441c4d9d6ba241a14f5"
+  },
+  "document_sha256": {
+    "EVALUATE_QFORMER_TEST.md": "8956a9f9b62f08da13147cd6db3bd528550d0706150159dd1765a3f4fda51e8c",
+    "QFORMER_OBJECT_ALIGNMENT.md": "83a259cc41e9a98a5f9fddcfa97047ad1056fdbb705256310e17c939a0131b9b",
+    "QFORMER_CASCADE_ALIGNMENT.md": "10cea0bff84b310a52ec135a0058335d5aee554ac451697f7bb37efbec80e691",
+    "QFORMER_FIXED_RERANKING_ABLATION.md": "68b8fcd28abd79750ce159dd6bd471600b09eb498e74445a59e6fc325023ff32",
+    "EVALUATE_CASCADE_CHAIR.md": "f9a01a92743c7fc77b39c612855f08024e9ac3737b40ee24dc680dd4ee0ee9dd"
+  },
+  "paired_chair": {
+    "baseline": {
+      "CHAIRs": 0.0432,
+      "CHAIRi": 0.030298894499795278,
+      "Recall": 0.4375079385240696
+    },
+    "e2_v1": {
+      "CHAIRs": 0.0388,
+      "CHAIRi": 0.026636019469983774,
+      "Recall": 0.44392226597231044
+    },
+    "baseline_counts": {
+      "captions": 5000,
+      "hallucinated_captions": 216,
+      "recognized_mentions": 7327,
+      "hallucinated_mentions": 222,
+      "recalled_gt_objects": 6889,
+      "gt_objects": 15746
+    },
+    "e2_counts": {
+      "captions": 5000,
+      "hallucinated_captions": 194,
+      "recognized_mentions": 7396,
+      "hallucinated_mentions": 197,
+      "recalled_gt_objects": 6990,
+      "gt_objects": 15746
+    },
+    "transitions": {
+      "both_clean": 4705,
+      "improved_to_clean": 101,
+      "regressed_to_hallucinated": 79,
+      "both_hallucinated": 115
+    },
+    "delta_e2_minus_baseline": {
+      "CHAIRs": -0.004400000000000001,
+      "CHAIRi": -0.0036628750298115034,
+      "Recall": 0.006414327448240831
+    },
+    "bootstrap_images": 5000,
+    "bootstrap_replicates": 20000,
+    "bootstrap_seed": 42,
+    "chair_s_delta_95_percentile_interval": [
+      -0.0096,
+      0.001
+    ],
+    "interpretation": "Numerical improvement; paired image-bootstrap interval includes zero. Reaggregated existing CHAIR outputs; not a fresh scorer run."
+  },
+  "historical_deltas": {
+    "e2_v1_vs_qformer_test_cider": 0.0065005548999999,
+    "fixed_reranking_vs_qformer_test_cider": 0.03357038509999999,
+    "e2_v21_vs_qformer_test_cider": 0.005053302209745203,
+    "e2_v1_vs_continuation_validation_cider": 0.017180256899999913,
+    "e3_vs_e2_v21_validation_cider": -0.006834362372729164
+  },
+  "evidence_status": {
+    "M12_M19_CHAIR": "same5000 IDs/captions/GT objects and aggregate arithmetic verified from uploaded artifact",
+    "caption_metrics": "historical registry/documents; not recomputed without original reference/candidate bundles",
+    "M13_reranking": "historical registry and implementation report agree; raw reranked captions/candidates not present in inspected local artifacts",
+    "M24_V21_M25_E3": "registry and user-provided logs; no new inference"
+  },
+  "new_caption_model_evaluated": false,
+  "correction": "The earlier blanket statement that nothing beat the baseline was incorrect. Historical E2 and fixed reranking have numerical gains; recent relation prototypes have not surpassed the best historical pipeline."
+}

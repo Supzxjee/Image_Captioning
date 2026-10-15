@@ -1,0 +1,228 @@
+{
+  "variant": "pretrained_upt_hico_target_audit_v1",
+  "protocol_sha256": "fba41b4e7fad9211204c4c598b38bff59655d0545cb7986616bc7d2079e07e6d",
+  "runtime": {
+    "torchvision": "0.24.0+cpu",
+    "native_torchvision_ops": false,
+    "nms": "deterministic pure torch IoU NMS; stable input-order tie break",
+    "checkpoint_keys": [
+      "model_state_dict"
+    ],
+    "state_tensors": 766,
+    "parameters": 54762778
+  },
+  "evaluation": {
+    "total_cases": 34,
+    "total_images": 22,
+    "localized_cases": 27,
+    "localized_and_ontology_supported": 20,
+    "coverage": 0.5882352941176471,
+    "missing_node_roles": {
+      "alternate": 4,
+      "positive": 3
+    },
+    "localized_but_ontology_unsupported": 7,
+    "matched_comparisons": {
+      "clip_gap": {
+        "cases": 20,
+        "images": 15,
+        "wins": 17,
+        "ties": 0,
+        "win_rate": 0.85
+      },
+      "raw_gap": {
+        "cases": 20,
+        "images": 15,
+        "wins": 20,
+        "ties": 0,
+        "win_rate": 1.0
+      },
+      "official_gap": {
+        "cases": 20,
+        "images": 15,
+        "wins": 18,
+        "ties": 0,
+        "win_rate": 0.9
+      },
+      "detection_confidence_gap": {
+        "cases": 20,
+        "images": 15,
+        "wins": 13,
+        "ties": 0,
+        "win_rate": 0.65
+      }
+    },
+    "matched_same_class": {
+      "clip_gap": {
+        "cases": 16,
+        "images": 12,
+        "wins": 13,
+        "ties": 0,
+        "win_rate": 0.8125
+      },
+      "raw_gap": {
+        "cases": 16,
+        "images": 12,
+        "wins": 16,
+        "ties": 0,
+        "win_rate": 1.0
+      },
+      "official_gap": {
+        "cases": 16,
+        "images": 12,
+        "wins": 16,
+        "ties": 0,
+        "win_rate": 1.0
+      },
+      "detection_confidence_gap": {
+        "cases": 16,
+        "images": 12,
+        "wins": 11,
+        "ties": 0,
+        "win_rate": 0.6875
+      }
+    },
+    "raw_covered_and_correct_of_all": 20,
+    "raw_paired_changes_vs_clip": {
+      "fixed": {
+        "cases": 3,
+        "images": 2
+      },
+      "regressed": {
+        "cases": 0,
+        "images": 0
+      }
+    },
+    "go_to_larger_audit": false,
+    "notes": "Unlocalized/ontology-unsupported cases stay unscored, not false. Same-subset CLIP comparison only. Go rule fixed before inference; not production promotion."
+  },
+  "image_count": 22,
+  "case_count": 34,
+  "cache_sha256": {
+    "private_image_1837.pt": "7c53e3c54a2280d204b2c7ffa4977b8cb9796f190bad355a0fec9fb7f6436611",
+    "private_image_6780.pt": "c35c2ba3d1f2f549a3fb89842f01bcc9d8c55fefc03fb4391ea3b78172582e6c",
+    "private_image_10265.pt": "042ae87a1a1955ae099a017499ef0efe676747cb19438e5fe2ee9d22e83ae7d1",
+    "private_image_29525.pt": "51f3826d18f6e28df491c31fd520f27a59967f910c85027db07491402a4db172",
+    "private_image_56599.pt": "de9f7babe12d9fa64d3fdd5b4551cb2681d73b7869e07e4025293cdf58c1ad74",
+    "private_image_62336.pt": "57ccab4c06016496bd4f3f1cbefcc6b86b049e20bb524a36fb5ad980feeb826e",
+    "private_image_66828.pt": "039bc54f19aef883125887784d622a659ee6b67fd935c0cbf4e4502759d4c423",
+    "private_image_88609.pt": "451fa62f48e23b24a8315e80b284885c55082a6b161d0f7d2d2b290bf131e057",
+    "private_image_90148.pt": "7e63ddfe9b363cc5485c7bc63a2cbe08610b10325b4e156ee104c183b0a76ce6",
+    "private_image_99910.pt": "2b0cc29448ae391e3acd1d8079c2771ede665c771391c5c3540bccf77123b747",
+    "private_image_107843.pt": "2c08bccf3482b297c2338c383eb791768c1855c68ab3a5daa4ab679f5a96a802",
+    "private_image_111922.pt": "52cab80788de79b1437ea79af916582557e19b849b296a4bf7b52834c5b5bf1d",
+    "private_image_136302.pt": "b01e064d99783296a87c94acbb71c61fde12ed5d47865d0bed07b31482b68b65",
+    "private_image_306800.pt": "72b63f3cc7a317cb9c55e988c02ea4d3502865b07e33f591c529cc73125eb02e",
+    "private_image_329469.pt": "432051667697a42605ac06613c841ab5e4362b94200505b780abf560dfcdd2be",
+    "private_image_334758.pt": "8d2a25dfb81f5b1f3bfcca4a808035acb84ef2f9f8d113af9e560aed8dc02c83",
+    "private_image_392793.pt": "7543002d23cea085b0081165a71ec03686d1ee334436adbd8d8bec784ce39873",
+    "private_image_402041.pt": "9bfeea35e6cac0140db46c0f84a58aca96702dc05dbd1c5502f3ac1760a8d0e7",
+    "private_image_432019.pt": "f06468952f5869e1117cc424902ae707adf84a3aab36d66474c5bacfaabdbe86",
+    "private_image_438331.pt": "ccbf409841f0842db2a97c21de984afb4655c6490cf0063e16a6a8d806650557",
+    "private_image_448839.pt": "692106e67f3ed8d3036bcd1e6ad80617fbe85e8bd420ae1db9a71a7befc4594f",
+    "private_image_529613.pt": "6fb74c84e8047f573b782e49f9f6d0ba2735df7e8a09e6d39d9fd82bee131dd5"
+  },
+  "production_promotion": false,
+  "training_performed": false,
+  "caption_metrics_measured": false,
+  "seconds": 60.53199999999924,
+  "secondary_score_numerics": "Official gaps taken directly from stored upstream vectorized outputs, avoiding scalar sigmoid kernel rounding; all aggregate results unchanged.",
+  "protocol": {
+    "variant": "pretrained_upt_hico_target_audit_v1",
+    "reference_revisions": {
+      "C:\\KhoaLuanTotNghiep\\Code\\.tmp\\upt-reference": "192743045e4c5f6827299fdc15809f5b97ac1b8e",
+      "C:\\KhoaLuanTotNghiep\\Code\\.tmp\\pocket-reference": "bff287098bb73427fd8d5525b2ac9867fb56629d",
+      "C:\\KhoaLuanTotNghiep\\Code\\.tmp\\upt-reference\\detr": "820d17abc697e8dd5f49d4cd1fdbde412545bac5",
+      "C:\\KhoaLuanTotNghiep\\Code\\.tmp\\upt-reference\\hicodet": "9dd59c1f6ee2ddc011567765d0bc644858391fea"
+    },
+    "checkpoint_sha256": "12f7f84c7c8d5bcc38f53470f57c5cc30ff2f025726e8bcc27addeb0578a258c",
+    "checkpoint_url": "https://drive.google.com/file/d/1lvopTC_JlGHdKOyyEZTUp2VtFfCQ-08z/view",
+    "upstream_url": "https://github.com/fredzzhang/upt",
+    "training_dataset": "HICO-DET; no local fine-tuning",
+    "metadata_sha256": "09a967ca9ea154765f75694c09940483ce1741cd9e45789095ad7a99781a743f",
+    "source_sha256": "c3fcf5d65a462392891f4efa8adbd33a8d5359598ad0d0e80e4c91e863ee449f",
+    "review_sha256": "5ffdcedb7f9b72565f052b2e10860562c53ff9e1d4e386e6851e15291444507f",
+    "manifest_sha256": "f009ad534f2c24033bb38f363662ce9012350229f48f2ff531b6733527f7ed96",
+    "minimum_iou": 0.5,
+    "matching": "class-consistent one-to-one maximum-total-IoU Hungarian;no relation labels",
+    "primary": "raw trained verb logits where all three instances localize and both object/verb combinations occur in HICO ontology",
+    "secondary": "official sigmoid times native class/detection prior; detection-confidence-only control",
+    "go_rule": "coverage>=80% of34 and raw wins>=same-subset CLIP wins+3; only go to larger audit, not production",
+    "images": [
+      1837,
+      6780,
+      10265,
+      29525,
+      56599,
+      62336,
+      66828,
+      88609,
+      90148,
+      99910,
+      107843,
+      111922,
+      136302,
+      306800,
+      329469,
+      334758,
+      392793,
+      402041,
+      432019,
+      438331,
+      448839,
+      529613
+    ],
+    "cases": 34,
+    "training_performed": false,
+    "caption_decoder_changed": false,
+    "limitations": [
+      "Inspected single-reviewer development pool",
+      "HICO relation training differs; COCO detector pretraining may have seen image objects",
+      "Not a same-training-budget architecture ablation",
+      "Missing/ontology-unsupported is unknown, not false"
+    ]
+  },
+  "verification": {
+    "strict_checkpoint_tensors": 766,
+    "all22_cache_hashes_checked": true,
+    "all_case_matching_and_metrics_replayed_exactly": true,
+    "official_output_cells_replayed_exactly": 30601,
+    "images_preprocessing_bit_exact_to_upstream": 22,
+    "one_full_model_forward_replayed_exactly": true,
+    "exploratory_fallback": {
+      "all": {
+        "cases": 34,
+        "clip_wins": 28,
+        "fallback_wins": 31,
+        "ties": 0
+      },
+      "same_class": {
+        "cases": 21,
+        "clip_wins": 18,
+        "fallback_wins": 21,
+        "ties": 0
+      },
+      "teacher_routed": 20,
+      "clip_fallback": 14,
+      "status": "Exploratory rule added after observing teacher results; not independent validation, calibrated acceptance, unified scores or a caption improvement."
+    }
+  },
+  "exploratory_pairwise_fallback": {
+    "all": {
+      "cases": 34,
+      "clip_wins": 28,
+      "fallback_wins": 31,
+      "ties": 0
+    },
+    "same_class": {
+      "cases": 21,
+      "clip_wins": 18,
+      "fallback_wins": 21,
+      "ties": 0
+    },
+    "teacher_routed": 20,
+    "clip_fallback": 14,
+    "status": "Exploratory rule added after observing teacher results; not independent validation, calibrated acceptance, unified scores or a caption improvement."
+  },
+  "qualitative_check": "Three corrected target contrasts on two images inspected for gross matching errors; not independent annotation."
+}

@@ -4,6 +4,12 @@ Biến thể có gate của H1.2 prompt-to-visual cross-attention, dùng MS COCO
 
 Hướng dẫn đánh giá hallucination cho Q-Former và OCC: [CHAIR_EVALUATION.md](CHAIR_EVALUATION.md).
 
+## Trạng thái thực nghiệm đã đối chiếu — 15/10/2026
+
+- [Bảng caption và mức độ bằng chứng](CAPTION_PROGRESS_AUDIT_20261015.md): E2 đã có mức tăng số học so với Q-Former. Mốc pipeline CIDEr mạnh nhất trong các kết quả đã kiểm tra là **Q-Former + fixed re-ranking: 1.221815, CHAIRs 3.48%**; các metric này là kết quả lịch sử, chưa tái lập bundle re-ranking trong lần audit này. Các prototype quan hệ gần đây chưa vượt mốc đó.
+- [Đối chứng HOI huấn luyện sẵn](PRETRAINED_HOI_TRANSFER_RESULT.md): UPT HICO-DET đạt **20/20** so với CLIP **17/20** trên cùng các cặp được phủ, nhưng chỉ phủ **20/34**. Đây là tín hiệu nhận biết đối tượng đích, chưa phải cải thiện caption hay đóng góp mới đã xác nhận.
+- Giữ riêng metric validation/test, kiến trúc/hậu xử lý và kết quả lịch sử/được tái kiểm tra. Chưa thay pipeline caption bằng các head quan hệ thử nhỏ.
+
 ## Cơ chế
 
 - Prompt là Q; visual tokens là K và V trong cross-attention encoder.
@@ -11,7 +17,7 @@ Hướng dẫn đánh giá hallucination cho Q-Former và OCC: [CHAIR_EVALUATION
 - Prompt cập nhật: `LayerNorm(prompt + Dropout(gate * attended_visual))`.
 - Gate khởi tạo với weight 0, bias -2 (khoảng 0.119), giúp bắt đầu với cập nhật visual nhỏ. Đây không phải khởi tạo tương đương hoàn toàn H0 vì vẫn có LayerNorm của H1.2.
 - Nối prompt cập nhật và visual thành memory cho decoder. Không thêm attention chiều ngược, không thêm loss căn chỉnh trong thí nghiệm này.
-- Chưa có kết quả thực nghiệm; không bảo đảm tăng điểm.
+- Đây là mô tả cơ chế ban đầu; kết quả thực nghiệm hiện có được đối chiếu trong bảng trạng thái phía trên.
 
 ## Cấu trúc mã nguồn
 
