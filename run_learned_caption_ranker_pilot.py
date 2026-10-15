@@ -106,7 +106,7 @@ def fit(mode,train,tune,train_targets,tune_targets,output):
                   'parameters':sum(p.numel() for p in model.parameters()),'checkpoint_sha256':sha(path)}
 
 
-def run(a):
+def prepare_features(a):
     if torch.cuda.device_count()<2:raise RuntimeError('Need T4 x2.')
     torch.set_num_threads(2);torch.manual_seed(42)
     torch.backends.cuda.matmul.allow_tf32=False;torch.backends.cudnn.allow_tf32=False
@@ -142,6 +142,12 @@ def run(a):
         assert [{k:v for k,v in c.items() if k!='clipscore'} for c in r['candidates']]==original['candidates']
         assert sha(r['feature_file'])==r['feature_sha256']
     save(output/'feature_candidates.json',{'metadata':{'count':len(records)},'data':records})
+    return cfg,dataset,groups,records
+
+
+def run(a):
+    cfg,dataset,groups,records=prepare_features(a)
+    output=Path(a.output)
     lookup={r['image_id']:r for r in records}
     subsets={name:[lookup[r['image_id']] for r in group] for name,group in groups.items()}
     train,tune=subsets['fit'],subsets['tune']

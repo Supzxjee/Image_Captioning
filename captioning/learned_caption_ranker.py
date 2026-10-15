@@ -24,7 +24,7 @@ class CaptionRanker(nn.Module):
         self.head=nn.Sequential(nn.Linear(width,hidden),nn.GELU(),nn.Linear(hidden,1))
         nn.init.zeros_(self.head[-1].weight);nn.init.zeros_(self.head[-1].bias)
 
-    def forward(self,batch):
+    def represent(self,batch):
         f=batch['scores'].float();pieces=[f]
         if self.mode!='scores':
             image=self.image(batch['image_global'].float())[:,None,:].expand(-1,f.size(1),-1)
@@ -39,7 +39,10 @@ class CaptionRanker(nn.Module):
             mask=batch['text_mask'].flatten(0,1).unsqueeze(-1).to(attended.dtype)
             pooled=(attended*mask).sum(1)/mask.sum(1).clamp_min(1)
             pieces.append(pooled.reshape(b,k,-1))
-        residual=self.scale*torch.tanh(self.head(torch.cat(pieces,-1)).squeeze(-1))
+        return torch.cat(pieces,-1)
+
+    def forward(self,batch):
+        residual=self.scale*torch.tanh(self.head(self.represent(batch)).squeeze(-1))
         base=batch['fixed_scores'].double()
         score=base+residual.double()
         return score.masked_fill(~batch['candidate_mask'].bool(),float('-inf')),residual
