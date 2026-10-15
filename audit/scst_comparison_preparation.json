@@ -1,0 +1,21 @@
+{
+  "status": "PREPARED_NOT_RUN",
+  "date": "2026-10-15",
+  "variant": "qformer_ce_vs_scst_train20k_val1000",
+  "train_images": 20000,
+  "validation_images": 1000,
+  "epochs": 1,
+  "batch_size": 8,
+  "updates_per_arm": 2500,
+  "learning_rate": 5e-06,
+  "seed": 42,
+  "test_used": false,
+  "assistant_launched_notebook": false,
+  "local_tests_passed": 11,
+  "local_test_scope": "CIDEr-D equivalence on identical normalization; reward batch invariance; policy gradient sign/masking; deterministic disjoint cohorts; full cached QFormer rollout/rescore/CE backward. Unused pretrained CLIP import stubbed in cached CPU model test.",
+  "reward_tokenizer": "NLTK Treebank; official evaluation uses Stanford PTB",
+  "training_results": null,
+  "runtime_not_yet_verified": "Kaggle T4x2 and real mounted inputs; no full GPU training performed",
+  "notebook": "SCST_COMPARISON_TRAIN20K_VAL1000.ipynb",
+  "manual_notebook_title": "QFormer UPT Val5000 20261015"
+}
