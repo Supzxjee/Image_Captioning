@@ -1,0 +1,42 @@
+{
+  "split": "val",
+  "selection_metric": "CIDEr; tie -> smaller UPT weight",
+  "grid_fixed_before_run": [
+    0.0,
+    0.05,
+    0.1,
+    0.2
+  ],
+  "fixed_base": {
+    "decoder": 0.3,
+    "clip": 0.4,
+    "occ": 0.3
+  },
+  "upt_weight": 0.1,
+  "trials": [
+    {
+      "upt_weight": 0.0,
+      "CIDEr": 1.2107228818013345,
+      "changed_vs_rank0": 2937
+    },
+    {
+      "upt_weight": 0.05,
+      "CIDEr": 1.2112672369994635,
+      "changed_vs_rank0": 2933
+    },
+    {
+      "upt_weight": 0.1,
+      "CIDEr": 1.2125801401440146,
+      "changed_vs_rank0": 2928
+    },
+    {
+      "upt_weight": 0.2,
+      "CIDEr": 1.2123654415695728,
+      "changed_vs_rank0": 2935
+    }
+  ],
+  "selection_on_validation_only": true,
+  "candidate_sha256": "c457f70cf175524f9bbfd34ee16cbc2870f7a003ade274195b9852e49666c4b4",
+  "ground_truth_sha256": "97f206aca4bc9ff2bcf0b8404b112366b14c3656d39fdc1e36e1fdb019548ab1",
+  "test_run": false
+}

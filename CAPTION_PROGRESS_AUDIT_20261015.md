@@ -61,3 +61,7 @@ python audit_caption_progress.py --archive C:/Users/leduc/Downloads/results.zip 
 ```
 
 Không chỉnh sửa báo cáo tuần DOCX/PDF. Không chạy lại caption model trong audit này.
+
+## Bổ sung: full validation UPT đã hoàn tất
+
+[Artifact validation mới đã audit](HOI_CAPTION_VALIDATION_RESULT.md) tái lập Q-Former rank 0 CIDEr 1.174011504; fixed re-ranking 1.210722882; thêm UPT λ=.1 đạt 1.212580140. CHAIRs tương ứng 4.28% / 3.56% / 3.58%. UPT chỉ đổi 43 caption so với fixed; tăng CIDEr nhỏ và thêm ròng một caption hallucinated. Đây là validation chọn λ, không thay thế mốc test lịch sử và chưa có test mới. Các hạn chế tái kiểm tra nêu ở phần lịch sử phía trên được giữ nguyên cho artifact lịch sử; bundle validation mới đã tính lại CIDEr/BLEU/ROUGE.

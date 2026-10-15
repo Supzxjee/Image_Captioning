@@ -34,5 +34,16 @@
   "fixed_notebook_resubmitted": false,
   "execution_policy": "User starts Kaggle notebooks manually. Prepare/edit/download results only; no automatic notebook execution.",
   "manual_rerun_expected_review_archive": "/kaggle/working/qformer_upt_val5000_fixed_review.zip",
-  "recovered_local_archive": "C:/KhoaLuanTotNghiep/Code/output/qformer_val5000_candidates_reuse.zip"
+  "recovered_local_archive": "C:/KhoaLuanTotNghiep/Code/output/qformer_val5000_candidates_reuse.zip",
+  "returned_manual_run": {
+    "status": "VALIDATION_COMPLETE",
+    "split": "val",
+    "count": 5000,
+    "core_commit": "8e7a552bf81631fd1480a27ed04db105fd72c277",
+    "archive_sha256": "ecfca2a85b3f2ec77d09c4a36510f28f42b1307e42d915dd77c2175e77c07594",
+    "upt_weight": 0.1,
+    "test_run": false,
+    "assistant_started_notebook": false,
+    "audit": "hoi_caption_validation_result.json"
+  }
 }
