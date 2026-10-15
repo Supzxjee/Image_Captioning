@@ -1,0 +1,594 @@
+{
+  "summary": {
+    "variant": "pretrained_upt_acceptance_v1",
+    "protocol_sha256": "b3a8c14f9850d272496ca31d6ed1d0ebd559f7e3cfc5d0b04492a87d8cb64408",
+    "runtime": {
+      "torchvision": "0.24.0+cpu",
+      "native_torchvision_ops": false,
+      "nms": "deterministic pure torch IoU NMS; stable input-order tie break",
+      "checkpoint_keys": [
+        "model_state_dict"
+      ],
+      "state_tensors": 766,
+      "parameters": 54762778
+    },
+    "calibration_images": 111,
+    "development_images": 128,
+    "calibration_pairs": 187,
+    "development_pairs": 310,
+    "availability_reasons_all_cells": {
+      "available": 937,
+      "unsupported_object_verb": 1745,
+      "missing_instance": 300
+    },
+    "policies": {
+      "clip_all": {
+        "positive": [
+          1.01,
+          1.01,
+          1.01,
+          1.01,
+          1.01,
+          1.01
+        ],
+        "negative": [
+          0.35414108633995056,
+          0.5492094159126282,
+          0.39511898159980774,
+          0.6596214175224304,
+          0.6138503551483154,
+          0.643513560295105
+        ],
+        "calibration_support": [
+          {
+            "known": 161,
+            "positive_tail_known": 0,
+            "negative_tail_known": 14
+          },
+          {
+            "known": 182,
+            "positive_tail_known": 0,
+            "negative_tail_known": 164
+          },
+          {
+            "known": 156,
+            "positive_tail_known": 0,
+            "negative_tail_known": 47
+          },
+          {
+            "known": 183,
+            "positive_tail_known": 0,
+            "negative_tail_known": 183
+          },
+          {
+            "known": 180,
+            "positive_tail_known": 0,
+            "negative_tail_known": 180
+          },
+          {
+            "known": 185,
+            "positive_tail_known": 0,
+            "negative_tail_known": 185
+          }
+        ],
+        "requested_known_precision": 0.9,
+        "minimum_known": 5,
+        "warning": "Empirical calibration precision only; no statistical or out-of-distribution guarantee."
+      },
+      "clip_teacher_mask": {
+        "positive": [
+          1.01,
+          1.01,
+          1.01,
+          1.01,
+          1.01,
+          1.01
+        ],
+        "negative": [
+          0.35414108633995056,
+          -0.01,
+          -0.01,
+          0.6486969590187073,
+          -0.01,
+          -0.01
+        ],
+        "calibration_support": [
+          {
+            "known": 137,
+            "positive_tail_known": 0,
+            "negative_tail_known": 11
+          },
+          {
+            "known": 38,
+            "positive_tail_known": 0,
+            "negative_tail_known": 0
+          },
+          {
+            "known": 41,
+            "positive_tail_known": 0,
+            "negative_tail_known": 0
+          },
+          {
+            "known": 84,
+            "positive_tail_known": 0,
+            "negative_tail_known": 84
+          },
+          {
+            "known": 8,
+            "positive_tail_known": 0,
+            "negative_tail_known": 0
+          },
+          {
+            "known": 3,
+            "positive_tail_known": 0,
+            "negative_tail_known": 0
+          }
+        ],
+        "requested_known_precision": 0.9,
+        "minimum_known": 5,
+        "warning": "Empirical calibration precision only; no statistical or out-of-distribution guarantee."
+      },
+      "upt_raw": {
+        "positive": [
+          0.5157874226570129,
+          1.01,
+          0.013407733291387558,
+          1.01,
+          1.01,
+          1.01
+        ],
+        "negative": [
+          0.11817518621683121,
+          0.07954459637403488,
+          0.008059444837272167,
+          0.8943052887916565,
+          -0.01,
+          -0.01
+        ],
+        "calibration_support": [
+          {
+            "known": 137,
+            "positive_tail_known": 42,
+            "negative_tail_known": 60
+          },
+          {
+            "known": 38,
+            "positive_tail_known": 0,
+            "negative_tail_known": 13
+          },
+          {
+            "known": 41,
+            "positive_tail_known": 25,
+            "negative_tail_known": 16
+          },
+          {
+            "known": 84,
+            "positive_tail_known": 0,
+            "negative_tail_known": 84
+          },
+          {
+            "known": 8,
+            "positive_tail_known": 0,
+            "negative_tail_known": 0
+          },
+          {
+            "known": 3,
+            "positive_tail_known": 0,
+            "negative_tail_known": 0
+          }
+        ],
+        "requested_known_precision": 0.9,
+        "minimum_known": 5,
+        "warning": "Empirical calibration precision only; no statistical or out-of-distribution guarantee."
+      },
+      "upt_native": {
+        "positive": [
+          0.46254146099090576,
+          1.01,
+          0.008736266754567623,
+          1.01,
+          1.01,
+          1.01
+        ],
+        "negative": [
+          0.009172901511192322,
+          0.0669337585568428,
+          0.00782972201704979,
+          0.7773240804672241,
+          -0.01,
+          -0.01
+        ],
+        "calibration_support": [
+          {
+            "known": 137,
+            "positive_tail_known": 33,
+            "negative_tail_known": 51
+          },
+          {
+            "known": 38,
+            "positive_tail_known": 0,
+            "negative_tail_known": 13
+          },
+          {
+            "known": 41,
+            "positive_tail_known": 25,
+            "negative_tail_known": 16
+          },
+          {
+            "known": 84,
+            "positive_tail_known": 0,
+            "negative_tail_known": 84
+          },
+          {
+            "known": 8,
+            "positive_tail_known": 0,
+            "negative_tail_known": 0
+          },
+          {
+            "known": 3,
+            "positive_tail_known": 0,
+            "negative_tail_known": 0
+          }
+        ],
+        "requested_known_precision": 0.9,
+        "minimum_known": 5,
+        "warning": "Empirical calibration precision only; no statistical or out-of-distribution guarantee."
+      }
+    },
+    "development": {
+      "clip_all": {
+        "known_cells": 1785,
+        "known_positives": 196,
+        "available_known_cells": 1785,
+        "available_positives": 196,
+        "accepted_true": 0,
+        "accepted_false": 0,
+        "accepted_unknown": 0,
+        "known_precision": null,
+        "full_pool_positive_recall": 0.0,
+        "unavailable_known": 0,
+        "abstained_known": 492,
+        "ap_by_predicate": [
+          0.5657721517463188,
+          0.08490552875484998,
+          0.09657688679353621,
+          0.21817211368081216,
+          0.05988639509715091,
+          0.012129474208275917
+        ],
+        "macro_ap_available_known": 0.17290709171349064,
+        "by_predicate": {
+          "hold": {
+            "known_positive": 119,
+            "available_positive": 119,
+            "accepted_true": 0,
+            "accepted_false": 0
+          },
+          "ride": {
+            "known_positive": 24,
+            "available_positive": 24,
+            "accepted_true": 0,
+            "accepted_false": 0
+          },
+          "sit_on": {
+            "known_positive": 27,
+            "available_positive": 27,
+            "accepted_true": 0,
+            "accepted_false": 0
+          },
+          "carry": {
+            "known_positive": 18,
+            "available_positive": 18,
+            "accepted_true": 0,
+            "accepted_false": 0
+          },
+          "eat": {
+            "known_positive": 4,
+            "available_positive": 4,
+            "accepted_true": 0,
+            "accepted_false": 0
+          },
+          "talk_on": {
+            "known_positive": 4,
+            "available_positive": 4,
+            "accepted_true": 0,
+            "accepted_false": 0
+          }
+        }
+      },
+      "clip_teacher_mask": {
+        "known_cells": 1785,
+        "known_positives": 196,
+        "available_known_cells": 574,
+        "available_positives": 170,
+        "accepted_true": 0,
+        "accepted_false": 0,
+        "accepted_unknown": 0,
+        "known_precision": null,
+        "full_pool_positive_recall": 0.0,
+        "unavailable_known": 1211,
+        "abstained_known": 1613,
+        "ap_by_predicate": [
+          0.5699583205904017,
+          0.25730342713053594,
+          0.2223960800583159,
+          0.44768484134306313,
+          0.8541666666666666,
+          0.5777777777777777
+        ],
+        "macro_ap_available_known": 0.4882145189277935,
+        "by_predicate": {
+          "hold": {
+            "known_positive": 119,
+            "available_positive": 108,
+            "accepted_true": 0,
+            "accepted_false": 0
+          },
+          "ride": {
+            "known_positive": 24,
+            "available_positive": 24,
+            "accepted_true": 0,
+            "accepted_false": 0
+          },
+          "sit_on": {
+            "known_positive": 27,
+            "available_positive": 17,
+            "accepted_true": 0,
+            "accepted_false": 0
+          },
+          "carry": {
+            "known_positive": 18,
+            "available_positive": 14,
+            "accepted_true": 0,
+            "accepted_false": 0
+          },
+          "eat": {
+            "known_positive": 4,
+            "available_positive": 4,
+            "accepted_true": 0,
+            "accepted_false": 0
+          },
+          "talk_on": {
+            "known_positive": 4,
+            "available_positive": 3,
+            "accepted_true": 0,
+            "accepted_false": 0
+          }
+        }
+      },
+      "upt_raw": {
+        "known_cells": 1785,
+        "known_positives": 196,
+        "available_known_cells": 574,
+        "available_positives": 170,
+        "accepted_true": 80,
+        "accepted_false": 16,
+        "accepted_unknown": 4,
+        "known_precision": 0.8333333333333334,
+        "full_pool_positive_recall": 0.40816326530612246,
+        "unavailable_known": 1211,
+        "abstained_known": 1326,
+        "ap_by_predicate": [
+          0.920037012462358,
+          0.7074497002963102,
+          0.9541906958861976,
+          0.5332803131133876,
+          0.8041666666666667,
+          0.9166666666666666
+        ],
+        "macro_ap_available_known": 0.8059651758485978,
+        "by_predicate": {
+          "hold": {
+            "known_positive": 119,
+            "available_positive": 108,
+            "accepted_true": 63,
+            "accepted_false": 5
+          },
+          "ride": {
+            "known_positive": 24,
+            "available_positive": 24,
+            "accepted_true": 0,
+            "accepted_false": 0
+          },
+          "sit_on": {
+            "known_positive": 27,
+            "available_positive": 17,
+            "accepted_true": 17,
+            "accepted_false": 11
+          },
+          "carry": {
+            "known_positive": 18,
+            "available_positive": 14,
+            "accepted_true": 0,
+            "accepted_false": 0
+          },
+          "eat": {
+            "known_positive": 4,
+            "available_positive": 4,
+            "accepted_true": 0,
+            "accepted_false": 0
+          },
+          "talk_on": {
+            "known_positive": 4,
+            "available_positive": 3,
+            "accepted_true": 0,
+            "accepted_false": 0
+          }
+        }
+      },
+      "upt_native": {
+        "known_cells": 1785,
+        "known_positives": 196,
+        "available_known_cells": 574,
+        "available_positives": 170,
+        "accepted_true": 63,
+        "accepted_false": 13,
+        "accepted_unknown": 4,
+        "known_precision": 0.8289473684210527,
+        "full_pool_positive_recall": 0.32142857142857145,
+        "unavailable_known": 1211,
+        "abstained_known": 1367,
+        "ap_by_predicate": [
+          0.8877850393967627,
+          0.6021579433177562,
+          0.902234350878179,
+          0.4899444902442158,
+          0.8041666666666667,
+          0.9166666666666666
+        ],
+        "macro_ap_available_known": 0.7671591928617079,
+        "by_predicate": {
+          "hold": {
+            "known_positive": 119,
+            "available_positive": 108,
+            "accepted_true": 47,
+            "accepted_false": 3
+          },
+          "ride": {
+            "known_positive": 24,
+            "available_positive": 24,
+            "accepted_true": 0,
+            "accepted_false": 0
+          },
+          "sit_on": {
+            "known_positive": 27,
+            "available_positive": 17,
+            "accepted_true": 16,
+            "accepted_false": 10
+          },
+          "carry": {
+            "known_positive": 18,
+            "available_positive": 14,
+            "accepted_true": 0,
+            "accepted_false": 0
+          },
+          "eat": {
+            "known_positive": 4,
+            "available_positive": 4,
+            "accepted_true": 0,
+            "accepted_false": 0
+          },
+          "talk_on": {
+            "known_positive": 4,
+            "available_positive": 3,
+            "accepted_true": 0,
+            "accepted_false": 0
+          }
+        }
+      }
+    },
+    "seconds": 693.875,
+    "caption_metrics_measured": false,
+    "production_promotion": false
+  },
+  "human_threshold_transfer": {
+    "review_sha256": "5ffdcedb7f9b72565f052b2e10860562c53ff9e1d4e386e6851e15291444507f",
+    "contrasts": 34,
+    "unique_labeled_cells": 68,
+    "images": 22,
+    "thresholds_changed": false,
+    "status": "Exploratory acceptance transfer on reused single-reviewer contrasts; no fitting on human labels.",
+    "results": {
+      "clip_all": {
+        "known_cells": 68,
+        "known_positives": 34,
+        "available_known_cells": 68,
+        "available_positives": 34,
+        "accepted_true": 0,
+        "accepted_false": 0,
+        "accepted_unknown": 0,
+        "known_precision": null,
+        "full_pool_positive_recall": 0.0,
+        "unavailable_known": 0,
+        "abstained_known": 25,
+        "ap_by_predicate": [
+          0.7991197691197691,
+          0.8154071075123707,
+          0.6266827616827617,
+          0.8333333333333333,
+          0.5,
+          null
+        ],
+        "macro_ap_available_known": 0.7149085943296469,
+        "both_contrast_endpoints_accepted": 0
+      },
+      "clip_teacher_mask": {
+        "known_cells": 68,
+        "known_positives": 34,
+        "available_known_cells": 49,
+        "available_positives": 27,
+        "accepted_true": 0,
+        "accepted_false": 0,
+        "accepted_unknown": 0,
+        "known_precision": null,
+        "full_pool_positive_recall": 0.0,
+        "unavailable_known": 19,
+        "abstained_known": 60,
+        "ap_by_predicate": [
+          0.8085457752124419,
+          0.8549450549450549,
+          0.7783333333333333,
+          0.8333333333333333,
+          1.0,
+          null
+        ],
+        "macro_ap_available_known": 0.8550314993648327,
+        "both_contrast_endpoints_accepted": 0
+      },
+      "upt_raw": {
+        "known_cells": 68,
+        "known_positives": 34,
+        "available_known_cells": 49,
+        "available_positives": 27,
+        "accepted_true": 13,
+        "accepted_false": 0,
+        "accepted_unknown": 8,
+        "known_precision": 1.0,
+        "full_pool_positive_recall": 0.38235294117647056,
+        "unavailable_known": 19,
+        "abstained_known": 34,
+        "ap_by_predicate": [
+          0.9797979797979798,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          null
+        ],
+        "macro_ap_available_known": 0.995959595959596,
+        "both_contrast_endpoints_accepted": 0
+      },
+      "upt_native": {
+        "known_cells": 68,
+        "known_positives": 34,
+        "available_known_cells": 49,
+        "available_positives": 27,
+        "accepted_true": 10,
+        "accepted_false": 0,
+        "accepted_unknown": 6,
+        "known_precision": 1.0,
+        "full_pool_positive_recall": 0.29411764705882354,
+        "unavailable_known": 19,
+        "abstained_known": 35,
+        "ap_by_predicate": [
+          0.9380952380952381,
+          1.0,
+          1.0,
+          0.75,
+          1.0,
+          null
+        ],
+        "macro_ap_available_known": 0.9376190476190477,
+        "both_contrast_endpoints_accepted": 0
+      }
+    }
+  },
+  "verification": {
+    "cache_files_verified": 239,
+    "official_scores_bit_exact": 113168,
+    "all_pair_scores_and_availability_replayed": true,
+    "calibration_only_policies_exact": true,
+    "development_counts_and_ap_exact": true,
+    "protocol_sha256": "b3a8c14f9850d272496ca31d6ed1d0ebd559f7e3cfc5d0b04492a87d8cb64408"
+  }
+}
