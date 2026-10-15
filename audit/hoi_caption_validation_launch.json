@@ -8,9 +8,9 @@
   "required_visible_gpu_count": 2,
   "is_private": true,
   "enable_internet": true,
-  "status_last_observed": "RUNNING",
-  "observed_at_utc": "2026-10-15 07:00:32 UTC",
-  "inference_progress_confirmed": false,
+  "status_last_observed": "ERROR",
+  "observed_at_utc": "2026-10-15 07:35:30 UTC",
+  "inference_progress_confirmed": true,
   "caption_metrics_measured": false,
   "local_scoped_tests_passed": 24,
   "cpu_upt_compatibility_replay": "Original22 cache hashes and preprocessing,30601 native cells,and one complete model forward replay exactly.",
@@ -26,5 +26,13 @@
   "training_performed": false,
   "test_run": false,
   "expected_review_archive": "/kaggle/working/qformer_upt_val5000_review.zip",
-  "completion_evidence_required": "run_summary.json status VALIDATION_COMPLETE,count5000,allthreecaption/CHAIRresults,lockedvalidationselection;not merely a RUNNING session."
+  "completion_evidence_required": "run_summary.json status VALIDATION_COMPLETE,count5000,allthreecaption/CHAIRresults,lockedvalidationselection;not merely a RUNNING session.",
+  "failure": "IndexError in UPT infer on empty upstream image-output list;rank1 journal completed7 images before COCO_val2014_000000074331.jpg.",
+  "completed_beam_clip_images": 5000,
+  "fixed_core_commit": "8e7a552bf81631fd1480a27ed04db105fd72c277",
+  "fixed_scoped_tests_passed": 29,
+  "fixed_notebook_resubmitted": false,
+  "execution_policy": "User starts Kaggle notebooks manually. Prepare/edit/download results only; no automatic notebook execution.",
+  "manual_rerun_expected_review_archive": "/kaggle/working/qformer_upt_val5000_fixed_review.zip",
+  "recovered_local_archive": "C:/KhoaLuanTotNghiep/Code/output/qformer_val5000_candidates_reuse.zip"
 }

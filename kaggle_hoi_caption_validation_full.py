@@ -14,8 +14,17 @@ VISUAL_CACHE = Path('/kaggle/input/datasets/ducanh2403/visual-cache')
 COCO_JSON = Path('/kaggle/input/datasets/vuthetam/mscoco-2014/dataset_coco.json')
 COCO_IMAGES = Path('/kaggle/input/datasets/vuthetam/mscoco-2014/images')
 DETECTIONS = Path('/kaggle/input/datasets/ducanh2403/objectdetectionecache/objectdetectioncache.json')
-OUTPUT = Path('/kaggle/working/qformer_upt_val5000')
-PROJECT_COMMIT = '6ab447ec65e6f18c7f1b4f7b7ff47ead0de790a6'
+OUTPUT = Path('/kaggle/working/qformer_upt_val5000_fixed')
+# Optional: point these two paths at the saved beam+CLIP bundle and protocol.
+# Both are in the small qformer_val5000_candidates_reuse.zip recovery package.
+REUSE_SCORED_CANDIDATES = None
+REUSE_SOURCE_PROTOCOL = None
+PREVIOUS_OUTPUT = Path('/kaggle/working/qformer_upt_val5000')
+if REUSE_SCORED_CANDIDATES is None and (PREVIOUS_OUTPUT/'val_beam5_clipscore_candidates.json').is_file() and (PREVIOUS_OUTPUT/'protocol.json').is_file():
+    REUSE_SCORED_CANDIDATES = PREVIOUS_OUTPUT/'val_beam5_clipscore_candidates.json'
+    REUSE_SOURCE_PROTOCOL = PREVIOUS_OUTPUT/'protocol.json'
+assert bool(REUSE_SCORED_CANDIDATES)==bool(REUSE_SOURCE_PROTOCOL),'Set both reuse paths or leave both None.'
+PROJECT_COMMIT = '8e7a552bf81631fd1480a27ed04db105fd72c277'
 REPO = Path('/kaggle/working/Image_Captioning')
 REFS = Path('/tmp/hoi-caption-refs')
 
@@ -110,12 +119,15 @@ run([sys.executable,'-u','-c',
      "from transformers import CLIPModel,AutoTokenizer;print('Prefetching pinned CLIP (~600MB if not cached).',flush=True);m=CLIPModel.from_pretrained('openai/clip-vit-base-patch16',revision='57c216476eefef5ab752ec549e440a49ae4ae5f3');t=AutoTokenizer.from_pretrained('openai/clip-vit-base-patch16',revision='57c216476eefef5ab752ec549e440a49ae4ae5f3');print('Pinned CLIP prefetch PASS',flush=True)"])
 
 print('Launching FULL validation: 5000 images, two GPU shards, no training.',flush=True)
-run([sys.executable,'-u',REPO/'run_hoi_caption_validation.py',
+arguments=[sys.executable,'-u',REPO/'run_hoi_caption_validation.py',
      '--checkpoint',CHECKPOINT,'--prompt-cache-path',PROMPT_CACHE,
      '--dataset-json-path',COCO_JSON,'--base-path',COCO_IMAGES,
      '--visual-cache',VISUAL_CACHE,'--detections',DETECTIONS,
      '--upt-directory',UPT,'--pocket-directory',POCKET,'--upt-checkpoint',WEIGHTS,
-     '--chair-directory',CHAIR,'--output',OUTPUT,'--workers','2'],cwd=REPO)
+     '--chair-directory',CHAIR,'--output',OUTPUT,'--workers','2']
+if REUSE_SCORED_CANDIDATES is not None:
+    arguments += ['--reuse-scored-candidates',REUSE_SCORED_CANDIDATES,'--reuse-protocol',REUSE_SOURCE_PROTOCOL]
+run(arguments,cwd=REPO)
 summary=json.loads((OUTPUT/'run_summary.json').read_text(encoding='utf-8'))
 assert summary['status']=='VALIDATION_COMPLETE' and summary['count']==5000 and not summary['test_run']
 print('RETURN FILE:',str(OUTPUT)+'_review.zip',flush=True)
