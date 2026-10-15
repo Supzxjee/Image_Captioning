@@ -66,7 +66,7 @@ if REGENERATE:
         assert shard.is_file(),shard
     CHECKPOINT=restore_exact_archive(CHECKPOINT)
     PROMPT_CACHE=restore_exact_archive(PROMPT_CACHE)
-    
+
 
 checkout('https://github.com/Supzxjee/Image_Captioning.git',REPO,PROJECT_COMMIT)
 run([sys.executable,'-m','pip','install','-q','transformers==4.57.1','pycocotools','pycocoevalcap==1.2',
@@ -98,7 +98,7 @@ run([sys.executable,'-u','-c',smoke],cwd=REPO)
 if REGENERATE:
     run([sys.executable,'-u','-c',
          "from transformers import CLIPModel,AutoTokenizer;print('Prefetching pinned CLIP (~600MB if not cached).',flush=True);m=CLIPModel.from_pretrained('openai/clip-vit-base-patch16',revision='57c216476eefef5ab752ec549e440a49ae4ae5f3');t=AutoTokenizer.from_pretrained('openai/clip-vit-base-patch16',revision='57c216476eefef5ab752ec549e440a49ae4ae5f3');print('Pinned CLIP prefetch PASS',flush=True)"])
-    
+
 
 print('Launching gain V2:fit1024/tune128/calibration128/val512;no test;fixed fallback.',flush=True)
 arguments=[sys.executable,'-u',REPO/'run_caption_gain_pilot.py','--source',SOURCE,
