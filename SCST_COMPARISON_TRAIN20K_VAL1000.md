@@ -24,6 +24,8 @@ This is one seed and previously inspected validation data, not an untouched conf
 
 Import SCST_COMPARISON_TRAIN20K_VAL1000.ipynb into **QFormer UPT Val5000 20261015**, or replace the old experiment cell with kaggle_scst_comparison.py. Do not append it after the old ranker launcher. Select GPU T4 x2 and Internet on; use the five existing inputs. Paths are editable at the start of the launcher.
 
+Preflight runs only `tests/test_scst.py` via file discovery, avoiding third-party `tests` package collisions. The repository also declares its own test package. The actual unittest output is retained in `/tmp/scst_preflight.log` and included in any raised preflight error; training remains blocked on failure. A generic CalledProcessError from the old launcher alone does not identify which test failed.
+
 GPU0 runs CE and GPU1 runs SCST independently; these are not two DDP ranks. Both GPUs shard beam inference afterward. HDF5 features are read in place, without copying 37 GB to /tmp. Concurrent input reads can limit speed; no runtime estimate is promised. The launcher prints startup logs, worker output and a 30-second heartbeat. Stop if a worker fails; no silent fallback to another checkpoint.
 
 Return **/kaggle/working/qformer_ce_scst_train20k_val1000_review.zip**. It contains protocol, training histories, predictions, candidate scores, metrics and logs; it excludes model weights. Keep the two checkpoints separately:
