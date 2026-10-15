@@ -29,7 +29,7 @@ def run(a):
         from captioning.models import UniversalVisionEncoder,CaptionDecoder,ImageCaptioningModel
         from captioning.checkpoints import load_checkpoint
         from captioning.inference import generate_caption_candidates
-        config = Config(mode='candidates',split='val',checkpoint=cfg['checkpoint'],
+        config = Config(mode='candidates',split=cfg.get('split','val'),checkpoint=cfg['checkpoint'],
             base_path=cfg['base_path'],dataset_json_path=cfg['dataset_json_path'],
             prompt_cache_path=cfg['prompt_cache_path'],visual_cache=[cfg['visual_cache']],
             visual_adapter='qformer',num_visual_queries=32,qformer_layers=2,num_workers=0,device=device)
@@ -37,7 +37,7 @@ def run(a):
         encoder = UniversalVisionEncoder(load_backbone=False,visual_adapter='qformer',num_visual_queries=32,qformer_layers=2)
         model = ImageCaptioningModel(encoder,CaptionDecoder(data.vocab_size)).to(device)
         load_checkpoint(model,config.checkpoint,data.tokenizer); model.eval()
-        lookup = {int(r['eval_id']):r for _,r in data.val_df.iterrows()}
+        lookup = {int(r['eval_id']):r for _,r in getattr(data,cfg.get('split','val')+'_df').iterrows()}
         try:
             for image in image_rows[done:]:
                 row = lookup[image['image_id']]

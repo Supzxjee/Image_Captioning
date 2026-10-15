@@ -1,0 +1,11 @@
+{
+  "input_sha256": {
+    "checkpoint": "155106910d49715f8065a444baca3321bb5e668a1f684ea3c78f860de8a39012",
+    "prompt_cache_path": "d7910e9bf87e3aad86d806c77ec336b34793e3bef68a3f662fdcb2e9456ca38d",
+    "dataset_json_path": "2fd999220673258012acfb411a4e7e66af7d488050b2519b0badcc49b7600b8d",
+    "detections": "498825daf8f8773a1c92f4111dc4ccf1f4296343f952b486e0aa56caf82ec04c",
+    "upt_checkpoint": "12f7f84c7c8d5bcc38f53470f57c5cc30ff2f025726e8bcc27addeb0578a258c"
+  },
+  "clip_revision": "57c216476eefef5ab752ec549e440a49ae4ae5f3",
+  "method": "upt_raw_class_contrast_lexical_v1"
+}
