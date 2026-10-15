@@ -20,19 +20,40 @@ def run(source, output, prior_review=None):
         protocol_sha = hashlib.sha256(z.read('protocol.json')).hexdigest()
         assert summary['protocol_sha256'] == protocol_sha
         anchored = cfg.get('ce_anchor_comparison', False)
-        assert cfg['code_commit'] == ('2e20864b046d381c27e54af3b9176ab0effaba6c' if anchored
+        object_variant = cfg.get('object_reward_comparison', False)
+        assert not (anchored and object_variant)
+        assert cfg['code_commit'] == ('794034c2bb84e6c970b9686af8a2222eeeb30691' if object_variant else
+                                     '2e20864b046d381c27e54af3b9176ab0effaba6c' if anchored
                                      else 'dabaca2b66640f7113733f16fd30597fefeab5f7')
-        arms = ('scst', 'scst_ce') if anchored else ('ce', 'scst')
-        treatment, control = ('scst_ce', 'scst') if anchored else ('scst', 'ce')
-        if anchored:
+        arms = ('scst_ce', 'scst_ce_object') if object_variant else ('scst', 'scst_ce') if anchored else ('ce', 'scst')
+        treatment, control = (('scst_ce_object', 'scst_ce') if object_variant else
+                              ('scst_ce', 'scst') if anchored else ('scst', 'ce'))
+        if anchored or object_variant:
             assert cfg['scst_weight'] == .05 and cfg['ce_weight'] == 1.
-            assert summary['variant'] == cfg['variant'] == 'scst_ce_anchor_v1'
+            assert summary['variant'] == cfg['variant'] == ('scst_ce_object_reward_v1' if object_variant else 'scst_ce_anchor_v1')
         identity = json.loads((Path(__file__).parent/'audit/hoi_validation_input_identity.json').read_text())['input_sha256']
         assert all(v == identity[k] for k, v in cfg['input_sha256'].items())
         assert [len(cfg['groups'][k]) for k in ('train', 'val')] == [20000, 1000]
         assert len({r['coco_id'] for rows in cfg['groups'].values() for r in rows}) == 21000
         assert len({r['image_id'] for rows in cfg['groups'].values() for r in rows}) == 21000
         assert not cfg['test_used'] and not summary['test_used']
+        target_checks = None
+        if object_variant:
+            from captioning.object_reward import TrainingObjectReward, CACHE_SHA256
+            targets = read('train_object_targets.json')
+            assert hashlib.sha256(z.read('train_object_targets.json')).hexdigest() == cfg['train_object_targets_sha256']
+            assert targets['metadata'] == cfg['object_reward_metadata']
+            assert targets['metadata']['annotation_cache_sha256'] == CACHE_SHA256
+            assert targets['metadata']['heldout_reward_labels_exported'] is False
+            assert len(targets['data']) == 20000
+            assert [{k: r[k] for k in ('image_id', 'coco_id', 'filename', 'filepath')} for r in targets['data']] == cfg['groups']['train']
+            assert sum(bool(r['supported']) for r in targets['data']) == targets['metadata']['reward_eligible_images']
+            TrainingObjectReward(targets['data'])
+            assert cfg['object_reward_weight'] == summary['object_reward_weight'] == 1.
+            target_checks = {'target_sha256': cfg['train_object_targets_sha256'], 'train_rows': 20000,
+                             'reward_eligible': targets['metadata']['reward_eligible_images'],
+                             'unavailable_object_reward': sum(not r['supported'] for r in targets['data']),
+                             'heldout_target_rows': 0}
         gt = read('val_gt.json'); rows = cfg['groups']['val']
         ids = [r['image_id'] for r in rows]
         refs = {i: [] for i in ids}
@@ -49,10 +70,19 @@ def run(source, output, prior_review=None):
             assert trained['protocol_sha256'] == protocol_sha
             assert trained['source_checkpoint_sha256'] == cfg['input_sha256']['checkpoint']
             assert trained['dropout'] is False and trained['precision'] == 'fp32'
-            if anchored:
+            if anchored or object_variant:
                 assert trained['scst_weight'] == .05
-                assert trained['ce_weight'] == (1. if arm == 'scst_ce' else 0.)
+                assert trained['ce_weight'] == (1. if arm in ('scst_ce', 'scst_ce_object') else 0.)
                 assert all(abs(r['loss']-(.05*r['scst_loss']+r.get('ce_loss', 0.))) < 1e-5 for r in history)
+            if object_variant:
+                obj_weight = 1. if arm == 'scst_ce_object' else 0.
+                assert trained['object_reward_weight'] == obj_weight
+                assert all(abs(r['sample_reward']-r['sample_cider_reward']-obj_weight*r.get('sample_object_reward', 0.)) < 1e-6 and
+                           abs(r['greedy_reward']-r['greedy_cider_reward']-obj_weight*r.get('greedy_object_reward', 0.)) < 1e-6 and
+                           abs(r['advantage_mean']-r['sample_reward']+r['greedy_reward']) < 1e-6 for r in history)
+                if obj_weight:
+                    assert all(0 <= r['object_supervision_fraction'] <= 1 and
+                               0 <= r['sample_unsupported_fraction'] <= 1 and 0 <= r['sample_salient_recall'] <= 1 for r in history)
             training[arm] = {**trained, 'first250_mean': {k: float(np.mean([r[k] for r in history[:250]]))
                 for k in history[0] if k not in ('step', 'images_seen', 'seconds')},
                 'last250_mean': {k: float(np.mean([r[k] for r in history[-250:]]))
@@ -123,13 +153,18 @@ def run(source, output, prior_review=None):
         gate = {'raw_CIDEr_beats_both': raw['caption']['CIDEr'] > max(base['caption']['CIDEr'], reference['caption']['CIDEr']),
                 'raw_CHAIR_not_worse_than_both': all(raw['chair'][k] <= min(base['chair'][k], reference['chair'][k]) for k in ('CHAIRs', 'CHAIRi')),
                 'raw_recall_within_1pp_of_best': raw['chair']['Recall'] >= max(base['chair']['Recall'], reference['chair']['Recall'])-.01}
-        if anchored:
+        if anchored or object_variant:
             f, b = results[treatment+'_fixed'], results['original_fixed']
             gate['fixed_not_worse_than_original'] = (f['caption']['CIDEr'] >= b['caption']['CIDEr'] and
                   all(f['chair'][k] <= b['chair'][k] for k in ('CHAIRs', 'CHAIRi')) and f['chair']['Recall'] >= b['chair']['Recall']-.01)
+            if object_variant:
+                c = results[control+'_fixed']
+                gate['fixed_not_worse_than_anchored_control'] = (f['caption']['CIDEr'] >= c['caption']['CIDEr'] and
+                    all(f['chair'][k] <= c['chair'][k] for k in ('CHAIRs', 'CHAIRi')) and f['chair']['Recall'] >= c['chair']['Recall']-.01)
         assert bool(summary['expansion_gate_passed']) == all(gate.values())
-        if anchored:
-            prior_path = Path(__file__).parent/'audit/scst_comparison_train20k_val1000_result.json'
+        control_repeat = None
+        if anchored or object_variant:
+            prior_path = Path(__file__).parent/'audit'/('scst_ce_anchor_train20k_val1000_result.json' if object_variant else 'scst_comparison_train20k_val1000_result.json')
             prior = json.loads(prior_path.read_text())
             assert all(results[k]['caption'] == prior['metrics'][k]['caption'] and results[k]['chair'] == prior['metrics'][k]['chair']
                        for k in ('original_rank0', 'original_fixed'))
@@ -141,12 +176,21 @@ def run(source, output, prior_review=None):
                     assert before['groups'] == cfg['groups'] and before['input_sha256'] == cfg['input_sha256']
                     for policy in ('rank0', 'fixed'):
                         assert json.loads(previous.read(f'original/{policy}_predictions.json')) == read(f'original/{policy}_predictions.json')
+                    if object_variant:
+                        control_repeat = {}
+                        for policy in ('rank0', 'fixed'):
+                            old = json.loads(previous.read(f'{control}/{policy}_predictions.json'))
+                            new = read(f'{control}/{policy}_predictions.json')
+                            control_repeat[policy] = {'changed_captions': sum(a['caption'] != b['caption'] for a, b in zip(old, new)),
+                                'CIDEr_previous': prior['metrics'][control+'_'+policy]['caption']['CIDEr'],
+                                'CIDEr_current': results[control+'_'+policy]['caption']['CIDEr']}
         result = {'status': 'AUDIT_PASS', 'variant': cfg.get('variant', 'ce_scst_comparison'),
                   'source_zip_sha256': hashlib.sha256(source.read_bytes()).hexdigest(),
                   'source_zip_bytes': source.stat().st_size, 'protocol_sha256': protocol_sha,
                   'training': training, 'metrics': results, 'paired_comparisons': paired,
+                  'object_target_checks': target_checks, 'previous_control_repeat': control_repeat,
                   'gate_components': gate, 'expansion_gate_passed': all(gate.values()), 'test_used': False,
-                  'previous_review_cohort_inputs_and_original_captions_exact_match': bool(anchored and prior_review),
+                  'previous_review_cohort_inputs_and_original_captions_exact_match': bool((anchored or object_variant) and prior_review),
                   'verification_limits': ['Model weights absent: actual model load/parameter hashes not independently replayed.',
                     'Full source dataset and detector cache absent: split provenance and fixed rerank formula not independently replayed.',
                     'CHAIR reaggregated from supplied object annotations, not retokenized against external ground truth.',
