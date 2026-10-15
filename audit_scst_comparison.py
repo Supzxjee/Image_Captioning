@@ -8,7 +8,7 @@ import zipfile
 import numpy as np
 
 
-def run(source, output):
+def run(source, output, prior_review=None):
     from pycocoevalcap.tokenizer.ptbtokenizer import PTBTokenizer
     from pycocoevalcap.cider.cider import Cider
     from pycocoevalcap.bleu.bleu import Bleu
@@ -19,7 +19,14 @@ def run(source, output):
         cfg, summary = read('protocol.json'), read('run_summary.json')
         protocol_sha = hashlib.sha256(z.read('protocol.json')).hexdigest()
         assert summary['protocol_sha256'] == protocol_sha
-        assert cfg['code_commit'] == 'dabaca2b66640f7113733f16fd30597fefeab5f7'
+        anchored = cfg.get('ce_anchor_comparison', False)
+        assert cfg['code_commit'] == ('2e20864b046d381c27e54af3b9176ab0effaba6c' if anchored
+                                     else 'dabaca2b66640f7113733f16fd30597fefeab5f7')
+        arms = ('scst', 'scst_ce') if anchored else ('ce', 'scst')
+        treatment, control = ('scst_ce', 'scst') if anchored else ('scst', 'ce')
+        if anchored:
+            assert cfg['scst_weight'] == .05 and cfg['ce_weight'] == 1.
+            assert summary['variant'] == cfg['variant'] == 'scst_ce_anchor_v1'
         identity = json.loads((Path(__file__).parent/'audit/hoi_validation_input_identity.json').read_text())['input_sha256']
         assert all(v == identity[k] for k, v in cfg['input_sha256'].items())
         assert [len(cfg['groups'][k]) for k in ('train', 'val')] == [20000, 1000]
@@ -33,7 +40,7 @@ def run(source, output):
         assert all(len(v) == 5 for v in refs.values())
         tokenizer = PTBTokenizer(); refs = tokenizer.tokenize(refs)
         training = {}
-        for arm in ('ce', 'scst'):
+        for arm in arms:
             history, trained = read(f'{arm}/history.json'), read(f'{arm}/training_summary.json')
             assert len(history) == trained['steps'] == 2500
             assert [r['step'] for r in history] == list(range(1, 2501))
@@ -42,12 +49,16 @@ def run(source, output):
             assert trained['protocol_sha256'] == protocol_sha
             assert trained['source_checkpoint_sha256'] == cfg['input_sha256']['checkpoint']
             assert trained['dropout'] is False and trained['precision'] == 'fp32'
+            if anchored:
+                assert trained['scst_weight'] == .05
+                assert trained['ce_weight'] == (1. if arm == 'scst_ce' else 0.)
+                assert all(abs(r['loss']-(.05*r['scst_loss']+r.get('ce_loss', 0.))) < 1e-5 for r in history)
             training[arm] = {**trained, 'first250_mean': {k: float(np.mean([r[k] for r in history[:250]]))
                 for k in history[0] if k not in ('step', 'images_seen', 'seconds')},
                 'last250_mean': {k: float(np.mean([r[k] for r in history[-250:]]))
                 for k in history[0] if k not in ('step', 'images_seen', 'seconds')}}
         results, per_image, captions, chair_rows = {}, {}, {}, {}
-        for arm in ('original', 'ce', 'scst'):
+        for arm in ('original', *arms):
             beams, clipped = read(f'{arm}/beams.json'), read(f'{arm}/clip_beams.json')
             assert [r['image_id'] for r in beams['data']] == ids
             assert [r['image_id'] for r in clipped['data']] == ids
@@ -95,8 +106,8 @@ def run(source, output):
                 chair_rows[name] = lookup
         paired = {}
         for policy in ('rank0', 'fixed'):
-            for baseline in ('original', 'ce'):
-                left, right = baseline+'_'+policy, 'scst_'+policy
+            for baseline in ('original', control):
+                left, right = baseline+'_'+policy, treatment+'_'+policy
                 delta = per_image[right]-per_image[left]
                 rng = np.random.default_rng(20261015)
                 ci = np.percentile([delta[rng.integers(0, 1000, 1000)].mean() for _ in range(5000)], [2.5, 97.5])
@@ -108,10 +119,34 @@ def run(source, output):
                 paired[right+'_vs_'+left] = {'CIDEr_delta': float(delta.mean()), 'conditional_bootstrap_95': ci.tolist(),
                     'hallucination_removed': int(fixed), 'hallucination_introduced': int(introduced),
                     'changed_captions': sum(a['caption'] != b['caption'] for a, b in zip(captions[left], captions[right]))}
-        result = {'status': 'AUDIT_PASS', 'source_zip_sha256': hashlib.sha256(source.read_bytes()).hexdigest(),
+        raw, base, reference = (results[k+'_rank0'] for k in (treatment, control, 'original'))
+        gate = {'raw_CIDEr_beats_both': raw['caption']['CIDEr'] > max(base['caption']['CIDEr'], reference['caption']['CIDEr']),
+                'raw_CHAIR_not_worse_than_both': all(raw['chair'][k] <= min(base['chair'][k], reference['chair'][k]) for k in ('CHAIRs', 'CHAIRi')),
+                'raw_recall_within_1pp_of_best': raw['chair']['Recall'] >= max(base['chair']['Recall'], reference['chair']['Recall'])-.01}
+        if anchored:
+            f, b = results[treatment+'_fixed'], results['original_fixed']
+            gate['fixed_not_worse_than_original'] = (f['caption']['CIDEr'] >= b['caption']['CIDEr'] and
+                  all(f['chair'][k] <= b['chair'][k] for k in ('CHAIRs', 'CHAIRi')) and f['chair']['Recall'] >= b['chair']['Recall']-.01)
+        assert bool(summary['expansion_gate_passed']) == all(gate.values())
+        if anchored:
+            prior_path = Path(__file__).parent/'audit/scst_comparison_train20k_val1000_result.json'
+            prior = json.loads(prior_path.read_text())
+            assert all(results[k]['caption'] == prior['metrics'][k]['caption'] and results[k]['chair'] == prior['metrics'][k]['chair']
+                       for k in ('original_rank0', 'original_fixed'))
+            if prior_review:
+                prior_review = Path(prior_review)
+                assert hashlib.sha256(prior_review.read_bytes()).hexdigest() == prior['source_zip_sha256']
+                with zipfile.ZipFile(prior_review) as previous:
+                    before = json.loads(previous.read('protocol.json'))
+                    assert before['groups'] == cfg['groups'] and before['input_sha256'] == cfg['input_sha256']
+                    for policy in ('rank0', 'fixed'):
+                        assert json.loads(previous.read(f'original/{policy}_predictions.json')) == read(f'original/{policy}_predictions.json')
+        result = {'status': 'AUDIT_PASS', 'variant': cfg.get('variant', 'ce_scst_comparison'),
+                  'source_zip_sha256': hashlib.sha256(source.read_bytes()).hexdigest(),
                   'source_zip_bytes': source.stat().st_size, 'protocol_sha256': protocol_sha,
                   'training': training, 'metrics': results, 'paired_comparisons': paired,
-                  'expansion_gate_passed': False, 'test_used': False,
+                  'gate_components': gate, 'expansion_gate_passed': all(gate.values()), 'test_used': False,
+                  'previous_review_cohort_inputs_and_original_captions_exact_match': bool(anchored and prior_review),
                   'verification_limits': ['Model weights absent: actual model load/parameter hashes not independently replayed.',
                     'Full source dataset and detector cache absent: split provenance and fixed rerank formula not independently replayed.',
                     'CHAIR reaggregated from supplied object annotations, not retokenized against external ground truth.',
@@ -123,4 +158,5 @@ def run(source, output):
 
 if __name__ == '__main__':
     p = argparse.ArgumentParser(); p.add_argument('--source', required=True); p.add_argument('--output', required=True)
-    a = p.parse_args(); run(a.source, a.output)
+    p.add_argument('--prior-review')
+    a = p.parse_args(); run(a.source, a.output, a.prior_review)
