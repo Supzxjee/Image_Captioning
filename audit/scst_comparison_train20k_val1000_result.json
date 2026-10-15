@@ -1,0 +1,241 @@
+{
+  "status": "AUDIT_PASS",
+  "source_zip_sha256": "2ceb81898b8650c39151b15e2e54dc20b20977c51806c029bdd36735b1b90732",
+  "source_zip_bytes": 4966591,
+  "protocol_sha256": "95acb277e6f9b0ff6e5d753c57d87995e4298d062e51182963a23f358ca3875a",
+  "training": {
+    "ce": {
+      "arm": "ce",
+      "steps": 2500,
+      "train_images": 20000,
+      "seconds": 974.74390522,
+      "checkpoint_sha256": "215538f9340fbcdb74c69d6723b7b6c6338fc5c96d0c1036c6381e95169c2c75",
+      "source_checkpoint_sha256": "155106910d49715f8065a444baca3321bb5e668a1f684ea3c78f860de8a39012",
+      "protocol_sha256": "95acb277e6f9b0ff6e5d753c57d87995e4298d062e51182963a23f358ca3875a",
+      "dropout": false,
+      "precision": "fp32",
+      "first250_mean": {
+        "loss": 1.7063719143867493,
+        "grad_norm": 2.687985733985901
+      },
+      "last250_mean": {
+        "loss": 1.6776250419616698,
+        "grad_norm": 2.649829168319702
+      }
+    },
+    "scst": {
+      "arm": "scst",
+      "steps": 2500,
+      "train_images": 20000,
+      "seconds": 963.0319219639999,
+      "checkpoint_sha256": "f9fc6ddc04d5fdbde0ef895dc11518a4e4d1e5026984ebb8004374b2a78989a8",
+      "source_checkpoint_sha256": "155106910d49715f8065a444baca3321bb5e668a1f684ea3c78f860de8a39012",
+      "protocol_sha256": "95acb277e6f9b0ff6e5d753c57d87995e4298d062e51182963a23f358ca3875a",
+      "dropout": false,
+      "precision": "fp32",
+      "first250_mean": {
+        "sample_reward": 0.705608816742897,
+        "greedy_reward": 1.321210834503174,
+        "advantage_mean": -0.6156020215004683,
+        "advantage_std": 0.6873666059374809,
+        "sampled_eos_fraction": 1.0,
+        "loss": -13.914114377498628,
+        "grad_norm": 63.59416054534912
+      },
+      "last250_mean": {
+        "sample_reward": 0.8935822530984878,
+        "greedy_reward": 1.2614765889644624,
+        "advantage_mean": -0.36789433005452155,
+        "advantage_std": 0.5574894208312035,
+        "sampled_eos_fraction": 1.0,
+        "loss": -5.783791797995567,
+        "grad_norm": 35.49409875869751
+      }
+    }
+  },
+  "metrics": {
+    "original_rank0": {
+      "caption": {
+        "Bleu_1": 0.7700811965588097,
+        "Bleu_2": 0.6082852662137684,
+        "Bleu_3": 0.47031396584136126,
+        "Bleu_4": 0.3650779331156371,
+        "METEOR": 0.28400440774529606,
+        "ROUGE_L": 0.5690718756791779,
+        "CIDEr": 1.2182304716351615
+      },
+      "chair": {
+        "CHAIRs": 0.036,
+        "CHAIRi": 0.02452316076294278,
+        "Recall": 0.44011317195850364
+      },
+      "hallucinated_captions": 36,
+      "hallucinated_mentions": 36,
+      "object_mentions": 1468,
+      "correct_unique_objects": 1400,
+      "reference_unique_objects": 3181,
+      "mean_words": 9.261
+    },
+    "original_fixed": {
+      "caption": {
+        "Bleu_1": 0.7768663690166362,
+        "Bleu_2": 0.6196593794345507,
+        "Bleu_3": 0.48781752544746265,
+        "Bleu_4": 0.38415225531734165,
+        "METEOR": 0.29460384102908177,
+        "ROUGE_L": 0.5825560157257371,
+        "CIDEr": 1.2758186674394347
+      },
+      "chair": {
+        "CHAIRs": 0.038,
+        "CHAIRi": 0.025827814569536423,
+        "Recall": 0.4495441685004716
+      },
+      "hallucinated_captions": 38,
+      "hallucinated_mentions": 39,
+      "object_mentions": 1510,
+      "correct_unique_objects": 1430,
+      "reference_unique_objects": 3181,
+      "mean_words": 9.633
+    },
+    "ce_rank0": {
+      "caption": {
+        "Bleu_1": 0.7692550173373154,
+        "Bleu_2": 0.6088292669836065,
+        "Bleu_3": 0.47189275968660876,
+        "Bleu_4": 0.36650345820089036,
+        "METEOR": 0.28661678183315625,
+        "ROUGE_L": 0.5704964168270936,
+        "CIDEr": 1.2200750838404446
+      },
+      "chair": {
+        "CHAIRs": 0.037,
+        "CHAIRi": 0.025727826675693975,
+        "Recall": 0.44042753850990257
+      },
+      "hallucinated_captions": 37,
+      "hallucinated_mentions": 38,
+      "object_mentions": 1477,
+      "correct_unique_objects": 1401,
+      "reference_unique_objects": 3181,
+      "mean_words": 9.516
+    },
+    "ce_fixed": {
+      "caption": {
+        "Bleu_1": 0.7696123089380736,
+        "Bleu_2": 0.611000281618096,
+        "Bleu_3": 0.47577730141637126,
+        "Bleu_4": 0.37045705378140215,
+        "METEOR": 0.2930753377789131,
+        "ROUGE_L": 0.5791018076860002,
+        "CIDEr": 1.252263506270761
+      },
+      "chair": {
+        "CHAIRs": 0.037,
+        "CHAIRi": 0.025016458196181698,
+        "Recall": 0.4489154353976737
+      },
+      "hallucinated_captions": 37,
+      "hallucinated_mentions": 38,
+      "object_mentions": 1519,
+      "correct_unique_objects": 1428,
+      "reference_unique_objects": 3181,
+      "mean_words": 9.878
+    },
+    "scst_rank0": {
+      "caption": {
+        "Bleu_1": 0.7798471885087842,
+        "Bleu_2": 0.6260517536569421,
+        "Bleu_3": 0.48386913204257487,
+        "Bleu_4": 0.3728244193264308,
+        "METEOR": 0.280444505273625,
+        "ROUGE_L": 0.5784747080431609,
+        "CIDEr": 1.230602753914492
+      },
+      "chair": {
+        "CHAIRs": 0.069,
+        "CHAIRi": 0.04524886877828054,
+        "Recall": 0.4517447343602641
+      },
+      "hallucinated_captions": 69,
+      "hallucinated_mentions": 70,
+      "object_mentions": 1547,
+      "correct_unique_objects": 1437,
+      "reference_unique_objects": 3181,
+      "mean_words": 8.76
+    },
+    "scst_fixed": {
+      "caption": {
+        "Bleu_1": 0.7922870307049624,
+        "Bleu_2": 0.6402767237788206,
+        "Bleu_3": 0.4940329344157611,
+        "Bleu_4": 0.3772937105135368,
+        "METEOR": 0.28871821488690497,
+        "ROUGE_L": 0.5834189455791688,
+        "CIDEr": 1.2767070781449408
+      },
+      "chair": {
+        "CHAIRs": 0.054,
+        "CHAIRi": 0.03345724907063197,
+        "Recall": 0.4753222257151839
+      },
+      "hallucinated_captions": 54,
+      "hallucinated_mentions": 54,
+      "object_mentions": 1614,
+      "correct_unique_objects": 1512,
+      "reference_unique_objects": 3181,
+      "mean_words": 9.111
+    }
+  },
+  "paired_comparisons": {
+    "scst_rank0_vs_original_rank0": {
+      "CIDEr_delta": 0.012372282279330182,
+      "conditional_bootstrap_95": [
+        -0.02313412042350919,
+        0.048133880507385575
+      ],
+      "hallucination_removed": 7,
+      "hallucination_introduced": 40,
+      "changed_captions": 782
+    },
+    "scst_rank0_vs_ce_rank0": {
+      "CIDEr_delta": 0.0105276700740471,
+      "conditional_bootstrap_95": [
+        -0.024390234298174985,
+        0.045592572836133216
+      ],
+      "hallucination_removed": 9,
+      "hallucination_introduced": 41,
+      "changed_captions": 828
+    },
+    "scst_fixed_vs_original_fixed": {
+      "CIDEr_delta": 0.0008884107055062938,
+      "conditional_bootstrap_95": [
+        -0.03317986990458617,
+        0.035272094150363864
+      ],
+      "hallucination_removed": 16,
+      "hallucination_introduced": 32,
+      "changed_captions": 824
+    },
+    "scst_fixed_vs_ce_fixed": {
+      "CIDEr_delta": 0.024443571874180177,
+      "conditional_bootstrap_95": [
+        -0.011317362968393516,
+        0.06059086842098495
+      ],
+      "hallucination_removed": 13,
+      "hallucination_introduced": 30,
+      "changed_captions": 872
+    }
+  },
+  "expansion_gate_passed": false,
+  "test_used": false,
+  "verification_limits": [
+    "Model weights absent: actual model load/parameter hashes not independently replayed.",
+    "Full source dataset and detector cache absent: split provenance and fixed rerank formula not independently replayed.",
+    "CHAIR reaggregated from supplied object annotations, not retokenized against external ground truth.",
+    "METEOR cross-checked across reports, not recomputed.",
+    "Bootstrap resamples paired per-image CIDEr with validation IDF fixed; one pool/checkpoint/seed, not a multi-seed confidence interval."
+  ]
+}
