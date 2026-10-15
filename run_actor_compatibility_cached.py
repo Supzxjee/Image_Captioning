@@ -12,10 +12,11 @@ from captioning.supervised_relations import RELATIONS
 from captioning.selected_relation_prompts import build_selected_prompts
 from run_instance_alignment_diagnostic import fit_thresholds, edge_metrics, metrics
 from evaluate_frozen_residual import sha
+from captioning.feature_archive import open_feature_archive
 
 
 def read_archive(path, pair_names):
-    with zipfile.ZipFile(path) as archive:
+    with open_feature_archive(path) as archive:
         def read(name):
             files = [f for f in archive.namelist() if f.endswith(name)]
             if len(files) != 1:
