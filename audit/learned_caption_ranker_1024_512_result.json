@@ -1,0 +1,261 @@
+{
+  "source_archive_sha256": "b26b36118a1e9a2b57ceb99f6f07ab7e4f1d96ac50151d97903c5edbb80af162",
+  "summary": {
+    "status": "PILOT_COMPLETE",
+    "fit_images": 1024,
+    "tune_images": 256,
+    "validation_images": 512,
+    "protocol_sha256": "a47a43d946d6afd780723b7c12b07704fa81254f2265d0a0e8035b27b664bff8",
+    "selections": {
+      "scores": {
+        "selected_epoch": 0,
+        "tune_CIDEr": 1.4945468295043107,
+        "parameters": 1025,
+        "checkpoint_sha256": "cfb2f24f96f3c3240edcc214f4b94342219a27781b6b143391b8b035011aa646"
+      },
+      "global": {
+        "selected_epoch": 1,
+        "tune_CIDEr": 1.5020318828209294,
+        "parameters": 181505,
+        "checkpoint_sha256": "60f07b260133b1fe6da09bcf98170b5562d0889faea6e0d10d95fd45e03f6c27"
+      },
+      "regional": {
+        "selected_epoch": 3,
+        "tune_CIDEr": 1.5066807541626095,
+        "parameters": 428033,
+        "checkpoint_sha256": "d60f83b6dae00c8fc0537517d1cf41465d4a6b2982514cc035641ea63705fc58"
+      }
+    },
+    "metrics": {
+      "fixed": {
+        "caption": {
+          "Bleu_1": 0.7630887406507452,
+          "Bleu_2": 0.609772864831266,
+          "Bleu_3": 0.4790622572521957,
+          "Bleu_4": 0.3729162858397679,
+          "METEOR": 0.2932248623607317,
+          "ROUGE_L": 0.5803270317957043,
+          "CIDEr": 1.2636984037233396
+        },
+        "chair": {
+          "CHAIRs": 0.03125,
+          "CHAIRi": 0.02216427640156454,
+          "Recall": 0.44090630740967546
+        },
+        "changed_vs_fixed": 0
+      },
+      "scores": {
+        "caption": {
+          "Bleu_1": 0.7630887406507452,
+          "Bleu_2": 0.609772864831266,
+          "Bleu_3": 0.4790622572521957,
+          "Bleu_4": 0.3729162858397679,
+          "METEOR": 0.2932248623607317,
+          "ROUGE_L": 0.5803270317957043,
+          "CIDEr": 1.2636984037233396
+        },
+        "chair": {
+          "CHAIRs": 0.03125,
+          "CHAIRi": 0.02216427640156454,
+          "Recall": 0.44090630740967546
+        },
+        "changed_vs_fixed": 0
+      },
+      "global": {
+        "caption": {
+          "Bleu_1": 0.7641930251417752,
+          "Bleu_2": 0.6095489785459809,
+          "Bleu_3": 0.47678491245450655,
+          "Bleu_4": 0.36917365708850475,
+          "METEOR": 0.2906901219884982,
+          "ROUGE_L": 0.578679399190486,
+          "CIDEr": 1.2591996115186603
+        },
+        "chair": {
+          "CHAIRs": 0.029296875,
+          "CHAIRi": 0.02080624187256177,
+          "Recall": 0.44335578689528476
+        },
+        "changed_vs_fixed": 91
+      },
+      "regional": {
+        "caption": {
+          "Bleu_1": 0.7658835546474431,
+          "Bleu_2": 0.6115085357061031,
+          "Bleu_3": 0.4784813081366424,
+          "Bleu_4": 0.3698913749905644,
+          "METEOR": 0.28986992479569124,
+          "ROUGE_L": 0.5760448702757641,
+          "CIDEr": 1.2511035399902846
+        },
+        "chair": {
+          "CHAIRs": 0.025390625,
+          "CHAIRi": 0.016602809706257982,
+          "Recall": 0.45254133496631965
+        },
+        "changed_vs_fixed": 165
+      }
+    },
+    "expansion_gate_passed": false,
+    "gate": "regional CIDEr >= fixed+.005;CHAIRs/i <= fixed;Recall >= fixed-.01;regional CIDEr > scores and global",
+    "test_used": false,
+    "full_training_started": false,
+    "production_promotion": false,
+    "limits": [
+      "One seed, reused small validation;no new test result.",
+      "CIDEr preferences are weak supervision,not verified wrong relations.",
+      "Contextual cached patch attention is not unique-instance grounding or a crop CLIP feature."
+    ]
+  },
+  "checks": {
+    "cohort_counts_disjoint_no_test": true,
+    "original_input_hashes": true,
+    "two_phase_shards_and_candidate_integrity": true,
+    "frozen_epoch_selection_matches_tune_histories": true,
+    "fixed_reranking_replayed": true,
+    "scores_epoch0_exact_fixed_predictions": true,
+    "validation_GT_matches_prior_bundle": true,
+    "CIDEr_BLEU_ROUGE_recomputed": true,
+    "CHAIR_reaggregated_and_captions_checked": true,
+    "gate_recomputed": true,
+    "feature_forward": "Unavailable:large private features absent;no independent global/regional forward.",
+    "METEOR": "Stored file/summary cross-check only;not independently recomputed."
+  },
+  "checkpoint_checks": {
+    "scores": {
+      "hash_and_strict_load": true,
+      "selected_epoch": 0,
+      "zero_residual_head": true
+    },
+    "global": {
+      "hash_and_strict_load": true,
+      "selected_epoch": 1,
+      "zero_residual_head": false
+    },
+    "regional": {
+      "hash_and_strict_load": true,
+      "selected_epoch": 3,
+      "zero_residual_head": false
+    }
+  },
+  "recomputed_metrics": {
+    "fixed": {
+      "CIDEr": 1.2636984037233396,
+      "ROUGE_L": 0.5803270317957043,
+      "Bleu_1": 0.7630887406507452,
+      "Bleu_2": 0.609772864831266,
+      "Bleu_3": 0.4790622572521957,
+      "Bleu_4": 0.3729162858397679
+    },
+    "scores": {
+      "CIDEr": 1.2636984037233396,
+      "ROUGE_L": 0.5803270317957043,
+      "Bleu_1": 0.7630887406507452,
+      "Bleu_2": 0.609772864831266,
+      "Bleu_3": 0.4790622572521957,
+      "Bleu_4": 0.3729162858397679
+    },
+    "global": {
+      "CIDEr": 1.2591996115186603,
+      "ROUGE_L": 0.578679399190486,
+      "Bleu_1": 0.7641930251417752,
+      "Bleu_2": 0.6095489785459809,
+      "Bleu_3": 0.47678491245450655,
+      "Bleu_4": 0.36917365708850475
+    },
+    "regional": {
+      "CIDEr": 1.2511035399902846,
+      "ROUGE_L": 0.5760448702757641,
+      "Bleu_1": 0.7658835546474431,
+      "Bleu_2": 0.6115085357061031,
+      "Bleu_3": 0.4784813081366424,
+      "Bleu_4": 0.3698913749905644
+    }
+  },
+  "chair_counts": {
+    "fixed": {
+      "captions": 512,
+      "hallucinated_captions": 16,
+      "recognized_mentions": 767,
+      "hallucinated_mentions": 17,
+      "recalled_gt_objects": 720,
+      "gt_objects": 1633
+    },
+    "scores": {
+      "captions": 512,
+      "hallucinated_captions": 16,
+      "recognized_mentions": 767,
+      "hallucinated_mentions": 17,
+      "recalled_gt_objects": 720,
+      "gt_objects": 1633
+    },
+    "global": {
+      "captions": 512,
+      "hallucinated_captions": 15,
+      "recognized_mentions": 769,
+      "hallucinated_mentions": 16,
+      "recalled_gt_objects": 724,
+      "gt_objects": 1633
+    },
+    "regional": {
+      "captions": 512,
+      "hallucinated_captions": 13,
+      "recognized_mentions": 783,
+      "hallucinated_mentions": 13,
+      "recalled_gt_objects": 739,
+      "gt_objects": 1633
+    }
+  },
+  "paired_comparisons": {
+    "global_minus_fixed": {
+      "CIDEr_delta": -0.004498792204679449,
+      "CIDEr_95_percentile_interval": [
+        -0.028785395749586305,
+        0.021463783154539725
+      ],
+      "CHAIRs_delta": -0.001953125,
+      "CHAIRs_95_percentile_interval": [
+        -0.009765625,
+        0.00390625
+      ],
+      "hallucination_removed": 2,
+      "hallucination_introduced": 1
+    },
+    "regional_minus_fixed": {
+      "CIDEr_delta": -0.01259486373305533,
+      "CIDEr_95_percentile_interval": [
+        -0.041592567649860364,
+        0.016658541859334654
+      ],
+      "CHAIRs_delta": -0.005859375,
+      "CHAIRs_95_percentile_interval": [
+        -0.013671875,
+        0.0
+      ],
+      "hallucination_removed": 3,
+      "hallucination_introduced": 0
+    },
+    "regional_minus_global": {
+      "CIDEr_delta": -0.008096071528375885,
+      "CIDEr_95_percentile_interval": [
+        -0.03357889261867302,
+        0.01674147630527266
+      ],
+      "CHAIRs_delta": -0.00390625,
+      "CHAIRs_95_percentile_interval": [
+        -0.009765625,
+        0.0
+      ],
+      "hallucination_removed": 2,
+      "hallucination_introduced": 0
+    }
+  },
+  "bootstrap": {
+    "replicates": 20000,
+    "seed": 42,
+    "fixed_corpus_IDF": true,
+    "scope": "One-seed reused validation512,not independent test or across-seed evidence."
+  },
+  "new_notebook_started": false,
+  "new_training_performed": false
+}
