@@ -1,0 +1,447 @@
+{
+  "variant": "selective_instance_evidence_routing_v1",
+  "stage": "verifier_calibration_and_prompt_memory",
+  "source_members_sha256": "f0d527f07c6771572bbd7e3003805f0d649241bcb93189575630b31be95540aa",
+  "source_members": {
+    "data/pair_summary.json": "4d5c8f8774ad0f3369e07013c304e999ffe3b86d386a904f00388f128b05df80",
+    "data/train_pairs.json": "80afcd774efbea9ef79222a85c58bda544f393571df355b5e33762ff35e37a4a",
+    "data/val_pairs.json": "56859674d5ac3997ff3f92c821903d8386dea0abc1f8b19475309f98b242fd41",
+    "features_0.pt": "585f99766060623887fef1833484eab7dd3a5cffdf93b2a44a00b988d4bb5343",
+    "features_1.pt": "1177178c1e5b2c8a22d1d47da1c6e16eea92a4d2fcdaa0360c91fe2d182e6431",
+    "manifest.json": "dc71af0d3e51b2b7468c953b26db1744b4b6d5e854d4a076e117cc392353185f"
+  },
+  "seed": 42,
+  "epochs": 30,
+  "fit_pairs": 863,
+  "calibration_pairs": 278,
+  "evaluation_pairs": 310,
+  "image_overlap": 0,
+  "comparisons": {
+    "frozen_clip": {
+      "temperature": 0.23713737726211548,
+      "policy": {
+        "positive": [
+          0.8388046026229858,
+          1.01,
+          1.01,
+          1.01,
+          1.01,
+          1.01
+        ],
+        "negative": [
+          0.07370297610759735,
+          0.6452155113220215,
+          0.13781292736530304,
+          0.9325889945030212,
+          0.8097795248031616,
+          0.9061335921287537
+        ],
+        "calibration_support": [
+          {
+            "known": 213,
+            "positive_tail_known": 5,
+            "negative_tail_known": 43
+          },
+          {
+            "known": 261,
+            "positive_tail_known": 0,
+            "negative_tail_known": 231
+          },
+          {
+            "known": 227,
+            "positive_tail_known": 0,
+            "negative_tail_known": 92
+          },
+          {
+            "known": 266,
+            "positive_tail_known": 0,
+            "negative_tail_known": 266
+          },
+          {
+            "known": 268,
+            "positive_tail_known": 0,
+            "negative_tail_known": 268
+          },
+          {
+            "known": 273,
+            "positive_tail_known": 0,
+            "negative_tail_known": 273
+          }
+        ],
+        "requested_known_precision": 0.9,
+        "minimum_known": 5,
+        "warning": "Empirical calibration precision only; no statistical or out-of-distribution guarantee."
+      },
+      "calibration": {
+        "known_labels": 1508,
+        "known_positive": 191,
+        "supported_tp": 5,
+        "supported_fp": 0,
+        "supported_known_precision": 1.0,
+        "supported_known_recall": 0.02617801047120419,
+        "contradicted_tn": 1108,
+        "contradicted_fn": 65,
+        "known_decision_coverage": 0.7811670899391174,
+        "unknown_selected_supported": 0,
+        "unknown_selected_contradicted": 85,
+        "known_brier": 0.15150412917137146,
+        "known_nll": 0.4583031237125397
+      },
+      "evaluation": {
+        "known_labels": 1785,
+        "known_positive": 196,
+        "supported_tp": 10,
+        "supported_fp": 7,
+        "supported_known_precision": 0.5882352941176471,
+        "supported_known_recall": 0.05102040816326531,
+        "contradicted_tn": 1203,
+        "contradicted_fn": 64,
+        "known_decision_coverage": 0.7193277478218079,
+        "unknown_selected_supported": 1,
+        "unknown_selected_contradicted": 39,
+        "known_brier": 0.1923670768737793,
+        "known_nll": 0.569482684135437
+      },
+      "evaluation_actor_contrasts": {
+        "edges": 194,
+        "images": 126,
+        "wins": 157,
+        "ties": 0,
+        "win_rate": 0.8092783689498901,
+        "mean_gap": 0.15946893393993378
+      },
+      "evaluation_by_predicate": {
+        "holding": {
+          "known_labels": 290,
+          "known_positive": 119,
+          "supported_tp": 10,
+          "supported_fp": 7,
+          "supported_known_precision": 0.5882352941176471,
+          "supported_known_recall": 0.08403361344537816,
+          "contradicted_tn": 20,
+          "contradicted_fn": 9,
+          "known_decision_coverage": 0.158620685338974,
+          "unknown_selected_supported": 1,
+          "unknown_selected_contradicted": 6,
+          "known_brier": 0.24148869514465332,
+          "known_nll": 0.7167278528213501
+        },
+        "riding": {
+          "known_labels": 303,
+          "known_positive": 24,
+          "supported_tp": 0,
+          "supported_fp": 0,
+          "supported_known_precision": null,
+          "supported_known_recall": 0.0,
+          "contradicted_tn": 223,
+          "contradicted_fn": 23,
+          "known_decision_coverage": 0.8118811845779419,
+          "unknown_selected_supported": 0,
+          "unknown_selected_contradicted": 7,
+          "known_brier": 0.22700205445289612,
+          "known_nll": 0.6421851515769958
+        },
+        "sitting_on": {
+          "known_labels": 268,
+          "known_positive": 27,
+          "supported_tp": 0,
+          "supported_fp": 0,
+          "supported_known_precision": null,
+          "supported_known_recall": 0.0,
+          "contradicted_tn": 68,
+          "contradicted_fn": 7,
+          "known_decision_coverage": 0.2798507511615753,
+          "unknown_selected_supported": 0,
+          "unknown_selected_contradicted": 20,
+          "known_brier": 0.17607228457927704,
+          "known_nll": 0.5293440818786621
+        },
+        "carrying": {
+          "known_labels": 308,
+          "known_positive": 18,
+          "supported_tp": 0,
+          "supported_fp": 0,
+          "supported_known_precision": null,
+          "supported_known_recall": 0.0,
+          "contradicted_tn": 289,
+          "contradicted_fn": 17,
+          "known_decision_coverage": 0.9935064911842346,
+          "unknown_selected_supported": 0,
+          "unknown_selected_contradicted": 2,
+          "known_brier": 0.24002650380134583,
+          "known_nll": 0.6819120645523071
+        },
+        "eating": {
+          "known_labels": 308,
+          "known_positive": 4,
+          "supported_tp": 0,
+          "supported_fp": 0,
+          "supported_known_precision": null,
+          "supported_known_recall": 0.0,
+          "contradicted_tn": 299,
+          "contradicted_fn": 4,
+          "known_decision_coverage": 0.9837662577629089,
+          "unknown_selected_supported": 0,
+          "unknown_selected_contradicted": 2,
+          "known_brier": 0.12250834703445435,
+          "known_nll": 0.39072778820991516
+        },
+        "talking_on": {
+          "known_labels": 308,
+          "known_positive": 4,
+          "supported_tp": 0,
+          "supported_fp": 0,
+          "supported_known_precision": null,
+          "supported_known_recall": 0.0,
+          "contradicted_tn": 304,
+          "contradicted_fn": 4,
+          "known_decision_coverage": 1.0,
+          "unknown_selected_supported": 0,
+          "unknown_selected_contradicted": 2,
+          "known_brier": 0.148421511054039,
+          "known_nll": 0.46057212352752686
+        }
+      },
+      "after_shared_three_claim_cap": {
+        "known_labels": 1785,
+        "known_positive": 196,
+        "supported_tp": 10,
+        "supported_fp": 7,
+        "supported_known_precision": 0.5882352941176471,
+        "supported_known_recall": 0.05102040816326531,
+        "contradicted_tn": 0,
+        "contradicted_fn": 0,
+        "known_decision_coverage": 0.009523809887468815,
+        "unknown_selected_supported": 1,
+        "unknown_selected_contradicted": 0,
+        "known_brier": 0.1923670768737793,
+        "known_nll": 0.569482684135437
+      }
+    },
+    "instance_evidence": {
+      "temperature": 0.8912509083747864,
+      "policy": {
+        "positive": [
+          0.6938298344612122,
+          0.2651323974132538,
+          0.459722101688385,
+          1.01,
+          1.01,
+          1.01
+        ],
+        "negative": [
+          0.21806947886943817,
+          0.24403898417949677,
+          0.2757484018802643,
+          0.5190501809120178,
+          0.19405432045459747,
+          0.17515268921852112
+        ],
+        "calibration_support": [
+          {
+            "known": 213,
+            "positive_tail_known": 14,
+            "negative_tail_known": 21
+          },
+          {
+            "known": 261,
+            "positive_tail_known": 20,
+            "negative_tail_known": 241
+          },
+          {
+            "known": 227,
+            "positive_tail_known": 15,
+            "negative_tail_known": 195
+          },
+          {
+            "known": 266,
+            "positive_tail_known": 0,
+            "negative_tail_known": 266
+          },
+          {
+            "known": 268,
+            "positive_tail_known": 0,
+            "negative_tail_known": 268
+          },
+          {
+            "known": 273,
+            "positive_tail_known": 0,
+            "negative_tail_known": 273
+          }
+        ],
+        "requested_known_precision": 0.9,
+        "minimum_known": 5,
+        "warning": "Empirical calibration precision only; no statistical or out-of-distribution guarantee."
+      },
+      "calibration": {
+        "known_labels": 1508,
+        "known_positive": 191,
+        "supported_tp": 45,
+        "supported_fp": 4,
+        "supported_known_precision": 0.9183673469387755,
+        "supported_known_recall": 0.2356020942408377,
+        "contradicted_tn": 1201,
+        "contradicted_fn": 63,
+        "known_decision_coverage": 0.8706896305084229,
+        "unknown_selected_supported": 7,
+        "unknown_selected_contradicted": 95,
+        "known_brier": 0.07199376821517944,
+        "known_nll": 0.23575885593891144
+      },
+      "evaluation": {
+        "known_labels": 1785,
+        "known_positive": 196,
+        "supported_tp": 30,
+        "supported_fp": 7,
+        "supported_known_precision": 0.8108108108108109,
+        "supported_known_recall": 0.15306122448979592,
+        "contradicted_tn": 1425,
+        "contradicted_fn": 54,
+        "known_decision_coverage": 0.8492997288703918,
+        "unknown_selected_supported": 2,
+        "unknown_selected_contradicted": 48,
+        "known_brier": 0.0673181489109993,
+        "known_nll": 0.22108903527259827
+      },
+      "evaluation_actor_contrasts": {
+        "edges": 194,
+        "images": 126,
+        "wins": 170,
+        "ties": 0,
+        "win_rate": 0.876288652420044,
+        "mean_gap": 0.35339033603668213
+      },
+      "evaluation_by_predicate": {
+        "holding": {
+          "known_labels": 290,
+          "known_positive": 119,
+          "supported_tp": 8,
+          "supported_fp": 6,
+          "supported_known_precision": 0.5714285714285714,
+          "supported_known_recall": 0.06722689075630252,
+          "contradicted_tn": 15,
+          "contradicted_fn": 6,
+          "known_decision_coverage": 0.12068965286016464,
+          "unknown_selected_supported": 0,
+          "unknown_selected_contradicted": 1,
+          "known_brier": 0.2267775684595108,
+          "known_nll": 0.6459922790527344
+        },
+        "riding": {
+          "known_labels": 303,
+          "known_positive": 24,
+          "supported_tp": 11,
+          "supported_fp": 0,
+          "supported_known_precision": 1.0,
+          "supported_known_recall": 0.4583333333333333,
+          "contradicted_tn": 277,
+          "contradicted_fn": 10,
+          "known_decision_coverage": 0.9834983348846436,
+          "unknown_selected_supported": 2,
+          "unknown_selected_contradicted": 4,
+          "known_brier": 0.04431692138314247,
+          "known_nll": 0.13757093250751495
+        },
+        "sitting_on": {
+          "known_labels": 268,
+          "known_positive": 27,
+          "supported_tp": 11,
+          "supported_fp": 1,
+          "supported_known_precision": 0.9166666666666666,
+          "supported_known_recall": 0.4074074074074074,
+          "contradicted_tn": 235,
+          "contradicted_fn": 12,
+          "known_decision_coverage": 0.9664179086685181,
+          "unknown_selected_supported": 0,
+          "unknown_selected_contradicted": 37,
+          "known_brier": 0.05533165484666824,
+          "known_nll": 0.1889437735080719
+        },
+        "carrying": {
+          "known_labels": 308,
+          "known_positive": 18,
+          "supported_tp": 0,
+          "supported_fp": 0,
+          "supported_known_precision": null,
+          "supported_known_recall": 0.0,
+          "contradicted_tn": 290,
+          "contradicted_fn": 18,
+          "known_decision_coverage": 1.0,
+          "unknown_selected_supported": 0,
+          "unknown_selected_contradicted": 2,
+          "known_brier": 0.06020844355225563,
+          "known_nll": 0.2500765025615692
+        },
+        "eating": {
+          "known_labels": 308,
+          "known_positive": 4,
+          "supported_tp": 0,
+          "supported_fp": 0,
+          "supported_known_precision": null,
+          "supported_known_recall": 0.0,
+          "contradicted_tn": 304,
+          "contradicted_fn": 4,
+          "known_decision_coverage": 1.0,
+          "unknown_selected_supported": 0,
+          "unknown_selected_contradicted": 2,
+          "known_brier": 0.011880234815180302,
+          "known_nll": 0.057694025337696075
+        },
+        "talking_on": {
+          "known_labels": 308,
+          "known_positive": 4,
+          "supported_tp": 0,
+          "supported_fp": 0,
+          "supported_known_precision": null,
+          "supported_known_recall": 0.0,
+          "contradicted_tn": 304,
+          "contradicted_fn": 4,
+          "known_decision_coverage": 1.0,
+          "unknown_selected_supported": 0,
+          "unknown_selected_contradicted": 2,
+          "known_brier": 0.012783055193722248,
+          "known_nll": 0.06555819511413574
+        }
+      },
+      "after_shared_three_claim_cap": {
+        "known_labels": 1785,
+        "known_positive": 196,
+        "supported_tp": 24,
+        "supported_fp": 3,
+        "supported_known_precision": 0.8888888888888888,
+        "supported_known_recall": 0.12244897959183673,
+        "contradicted_tn": 0,
+        "contradicted_fn": 0,
+        "known_decision_coverage": 0.01512605044990778,
+        "unknown_selected_supported": 2,
+        "unknown_selected_contradicted": 0,
+        "known_brier": 0.0673181489109993,
+        "known_nll": 0.22108903527259827
+      }
+    }
+  },
+  "exported_claims": 29,
+  "exported_images_with_claims": 12,
+  "decoder_router_trained": false,
+  "caption_metrics_measured": false,
+  "limitations": [
+    "Previously inspected development pools; image separation is not a new independent benchmark.",
+    "Localization is conditional on existing class/IoU-matched detector boxes; no localization confidence calibration.",
+    "Unknown labels are masked; selected unknown claims have no measured truth value.",
+    "Calibration thresholds meet empirical known-label precision only, not guaranteed precision.",
+    "No decoder adaptation, candidate reranker or caption-quality gain demonstrated."
+  ],
+  "code_commit": "c201b4f1058e559291c27856ef8c4bebc8c4d467",
+  "verification": {
+    "unit_tests_passed": 22,
+    "real_zip_directory_tensors_identical": true,
+    "strict_verifier_reload": true,
+    "artifact_hashes_match": true,
+    "fit_calibration_evaluation_image_overlap": 0
+  },
+  "image_counts": {
+    "fit_images": 462,
+    "calibration_images": 154,
+    "evaluation_images": 128
+  }
+}
