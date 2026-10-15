@@ -10,6 +10,9 @@ from captioning.inference_journal import InferenceJournal
 
 def run(a):
     cfg = json.loads(Path(a.config).read_text(encoding='utf-8'))
+    if cfg.get('strict_reproducibility', False):
+        from captioning.scst_runtime import configure_strict_runtime
+        configure_strict_runtime(True)
     torch.set_num_threads(2)
     random.seed(42); torch.manual_seed(42)
     torch.backends.cuda.matmul.allow_tf32 = False

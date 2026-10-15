@@ -9,6 +9,7 @@ from functools import lru_cache
 import hashlib
 from pathlib import Path
 import pickle
+import re
 import numpy as np
 from .object_consistency import COCO_LABELS, extract_caption_objects, index_detections
 
@@ -31,11 +32,17 @@ CACHE_SHA256 = '73ce11225febb97df38c5bfad60b3ff6cc25852e9df9a1330673155b4be851c3
 
 
 @lru_cache(maxsize=32768)
-def recognized_objects(text):
-    return frozenset(extract_caption_objects(text))
+def recognized_objects(text, parser_version='legacy'):
+    if parser_version not in ('legacy', 'aliases_v2'): raise ValueError('Unknown object parser version.')
+    labels = set(extract_caption_objects(text))
+    if parser_version == 'aliases_v2':
+        if re.search(r'\bdesks?\b', text.lower()): labels.add('dining table')
+        if re.search(r'\bturkeys?\b', text.lower()): labels.add('bird')
+    # Do not copy context-ambiguous mother/baby => person mappings from CHAIR.
+    return frozenset(labels)
 
 
-def make_targets(groups, dataset, cache_path, detections):
+def make_targets(groups, dataset, cache_path, detections, parser_version='legacy'):
     """Filter BEFORE accessing labels; never export held-out image annotations."""
     cache_path = Path(cache_path)
     if hashlib.sha256(cache_path.read_bytes()).hexdigest() != CACHE_SHA256:
@@ -56,7 +63,7 @@ def make_targets(groups, dataset, cache_path, detections):
         empty_annotations += not bool(support)
         refs = original['sentences'][:5]
         if len(refs) != 5: raise ValueError('Need five training references.')
-        salience = {label for ref in refs for label in recognized_objects(ref['raw'])}
+        salience = {label for ref in refs for label in recognized_objects(ref['raw'], parser_version)}
         # Both parsers can disagree on aliases. A training reference is positive
         # evidence, never a negative label merely because another parser missed it.
         support |= salience
@@ -66,6 +73,7 @@ def make_targets(groups, dataset, cache_path, detections):
         if index % 1000 == 0 or index == len(selected):
             print(f'Training-only object targets: {index}/{len(selected)}', flush=True)
     return {'metadata': {'variant': 'coco_train_object_reward_v1', 'images': len(rows),
+            'parser_version': parser_version,
             'empty_annotation_sets_before_reference_union': empty_annotations,
             'reward_eligible_images': sum(bool(r['supported']) for r in rows),
             'annotation_cache_sha256': CACHE_SHA256,
@@ -77,7 +85,9 @@ def make_targets(groups, dataset, cache_path, detections):
 
 
 class TrainingObjectReward:
-    def __init__(self, rows):
+    def __init__(self, rows, parser_version='legacy'):
+        if parser_version not in ('legacy', 'aliases_v2'): raise ValueError('Unknown object parser version.')
+        self.parser_version = parser_version
         self.rows = {r['image_id']: r for r in rows}
         if len(self.rows) != len(rows): raise ValueError('Duplicate object reward image IDs.')
         for r in rows:
@@ -91,7 +101,7 @@ class TrainingObjectReward:
         values, diagnostics = [], []
         for image_id, text in zip(ids, captions):
             r = self.rows[image_id]
-            predicted = set(recognized_objects(text))
+            predicted = set(recognized_objects(text, self.parser_version))
             support, salient, neutral = (set(r[k]) for k in ('supported', 'salient', 'detector_neutral'))
             if not support:
                 values.append(0.)

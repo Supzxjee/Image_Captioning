@@ -1,0 +1,266 @@
+{
+  "source_sha256": "cbe39cb26f07f9218a60e6b0f5bfa310541b215d30c202106b58adb1e5956035",
+  "previous_sha256": "b9652996cfeeda924a6fbdcaf2febfb5859a20cc950c4ec835803bf74ffb8505",
+  "first_step_common_numeric_fields_equal": true,
+  "first_exact_divergences": {
+    "ce_loss": {
+      "step": 2,
+      "previous": 1.7735275030136108,
+      "current": 1.7735276222229004,
+      "absolute_delta": 1.1920928955078125e-07
+    },
+    "scst_loss": {
+      "step": 2,
+      "previous": -0.48738086223602295,
+      "current": -0.4873812198638916,
+      "absolute_delta": 3.5762786865234375e-07
+    },
+    "grad_norm": {
+      "step": 3,
+      "previous": 4.703266620635986,
+      "current": 4.703221797943115,
+      "absolute_delta": 4.482269287109375e-05
+    },
+    "sample_reward": {
+      "step": 25,
+      "previous": 0.5067337155342102,
+      "current": 0.5515753626823425,
+      "absolute_delta": 0.044841647148132324
+    },
+    "greedy_reward": {
+      "step": 29,
+      "previous": 1.0633796453475952,
+      "current": 1.0783262252807617,
+      "absolute_delta": 0.014946579933166504
+    }
+  },
+  "runtime_root_cause": "Unconfirmed. Seed alone is insufficient; kernels/environments not captured in old ZIPs.",
+  "parser_alignment": {
+    "scst_ce": {
+      "chair_hallucinated_mentions": 37,
+      "caught_by_legacy_parser": 35,
+      "missed_mentions": [
+        {
+          "coco_id": 568205,
+          "caption": "a woman putting a turkey into an oven.",
+          "word": "turkey",
+          "chair_label": "bird",
+          "recognized_legacy": [
+            "oven",
+            "person"
+          ],
+          "recognized_aliases_v2": [
+            "bird",
+            "oven",
+            "person"
+          ],
+          "category": "verified_alias_gap"
+        },
+        {
+          "coco_id": 333772,
+          "caption": "a black and white cat laying on top of a wooden desk.",
+          "word": "desk",
+          "chair_label": "dining table",
+          "recognized_legacy": [
+            "cat"
+          ],
+          "recognized_aliases_v2": [
+            "cat",
+            "dining table"
+          ],
+          "category": "verified_alias_gap"
+        }
+      ]
+    },
+    "scst_ce_object": {
+      "chair_hallucinated_mentions": 40,
+      "caught_by_legacy_parser": 36,
+      "missed_mentions": [
+        {
+          "coco_id": 568205,
+          "caption": "a woman putting a turkey into an oven.",
+          "word": "turkey",
+          "chair_label": "bird",
+          "recognized_legacy": [
+            "oven",
+            "person"
+          ],
+          "recognized_aliases_v2": [
+            "bird",
+            "oven",
+            "person"
+          ],
+          "category": "verified_alias_gap"
+        },
+        {
+          "coco_id": 333772,
+          "caption": "a black and white cat laying on top of a wooden desk.",
+          "word": "desk",
+          "chair_label": "dining table",
+          "recognized_legacy": [
+            "cat"
+          ],
+          "recognized_aliases_v2": [
+            "cat",
+            "dining table"
+          ],
+          "category": "verified_alias_gap"
+        },
+        {
+          "coco_id": 309499,
+          "caption": "a mother zebra and her baby in a field.",
+          "word": "mother",
+          "chair_label": "person",
+          "recognized_legacy": [
+            "zebra"
+          ],
+          "recognized_aliases_v2": [
+            "zebra"
+          ],
+          "category": "context_ambiguous_evaluator_mapping"
+        },
+        {
+          "coco_id": 309499,
+          "caption": "a mother zebra and her baby in a field.",
+          "word": "baby",
+          "chair_label": "person",
+          "recognized_legacy": [
+            "zebra"
+          ],
+          "recognized_aliases_v2": [
+            "zebra"
+          ],
+          "category": "context_ambiguous_evaluator_mapping"
+        }
+      ]
+    }
+  },
+  "new_raw_chair_errors": [
+    {
+      "coco_id": 89670,
+      "before": "a close up of a cake on a plate",
+      "after": "a close up of a cake on a plate on a table",
+      "chair_hallucinated_words": [
+        [
+          "table",
+          "dining table"
+        ]
+      ]
+    },
+    {
+      "coco_id": 309499,
+      "before": "a couple of zebra standing next to each other.",
+      "after": "a mother zebra and her baby in a field.",
+      "chair_hallucinated_words": [
+        [
+          "mother",
+          "person"
+        ],
+        [
+          "baby",
+          "person"
+        ]
+      ]
+    },
+    {
+      "coco_id": 94678,
+      "before": "a close up of a luggage bag",
+      "after": "a close up of a luggage bag on a table",
+      "chair_hallucinated_words": [
+        [
+          "table",
+          "dining table"
+        ]
+      ]
+    },
+    {
+      "coco_id": 64574,
+      "before": "a close up of a comb and a brush",
+      "after": "a pair of scissors sitting on top of a bed.",
+      "chair_hallucinated_words": [
+        [
+          "scissors",
+          "scissors"
+        ]
+      ]
+    },
+    {
+      "coco_id": 169808,
+      "before": "a close up of a plate of food with a fork",
+      "after": "a fork and knife on a plate on a table.",
+      "chair_hallucinated_words": [
+        [
+          "knife",
+          "knife"
+        ]
+      ]
+    },
+    {
+      "coco_id": 510275,
+      "before": "a banana peel and a bottle on the ground.",
+      "after": "a banana sitting on top of a table next to a bottle.",
+      "chair_hallucinated_words": [
+        [
+          "table",
+          "dining table"
+        ]
+      ]
+    }
+  ],
+  "target_state_counts": {
+    "train_images": 20000,
+    "detector_neutral_images": 16,
+    "detector_neutral_labels": 16,
+    "empty_salience_images": 458,
+    "support_with_non_salient_classes": 11120
+  },
+  "fraction_penalty_counterexample": {
+    "type": "Design limitation, not a newly observed training behavior",
+    "captions": [
+      "a person next to a motorcycle",
+      "a person next to a sink and a motorcycle"
+    ],
+    "scores": [
+      0.0,
+      0.1666666716337204
+    ],
+    "terms": [
+      {
+        "available": true,
+        "salient_recall": 1.0,
+        "unsupported_fraction": 0.5,
+        "unsupported_classes": [
+          "motorcycle"
+        ],
+        "neutral_classes": [],
+        "recognized_classes": [
+          "motorcycle",
+          "person"
+        ]
+      },
+      {
+        "available": true,
+        "salient_recall": 1.0,
+        "unsupported_fraction": 0.3333333333333333,
+        "unsupported_classes": [
+          "motorcycle"
+        ],
+        "neutral_classes": [],
+        "recognized_classes": [
+          "motorcycle",
+          "person",
+          "sink"
+        ]
+      }
+    ],
+    "explanation": "The same unsupported motorcycle remains; adding a supported non-salient sink dilutes the fraction penalty."
+  },
+  "official_metrics_changed": false,
+  "new_training_run": false,
+  "limits": [
+    "No image-level human adjudication of mother/baby zebra; lexical false-positive suspicion only.",
+    "Alias gaps account for two of forty treatment CHAIR mentions; they do not explain all remaining errors.",
+    "CPU tests cannot confirm same-GPU bitwise reproducibility.",
+    "No conclusion that annotation neutral exemptions, reward scale or dilution caused the observed validation regression."
+  ]
+}

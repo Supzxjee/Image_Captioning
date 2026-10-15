@@ -58,6 +58,8 @@ def fit(config_path, arm):
     from captioning.checkpoints import load_checkpoint
     from captioning.scst import TrainingCider, rollout, decode, policy_loss
     cfg = json.loads(Path(config_path).read_text(encoding='utf-8'))
+    from captioning.scst_runtime import configure_strict_runtime, runtime_manifest, model_digest, tensor_digest
+    configure_strict_runtime(cfg.get('strict_reproducibility', False))
     rl_weight, ce_weight = objective_weights(cfg, arm)
     torch.set_num_threads(2)
     random.seed(42); np.random.seed(42); torch.manual_seed(42); torch.cuda.manual_seed_all(42)
@@ -82,7 +84,7 @@ def fit(config_path, arm):
             raise ValueError('Training object targets changed.')
         object_rows = json.loads(Path(cfg['train_object_targets']).read_text(encoding='utf-8'))['data']
         if {r['image_id'] for r in object_rows} != set(ids): raise ValueError('Object reward cohort mismatch.')
-        object_reward = TrainingObjectReward(object_rows)
+        object_reward = TrainingObjectReward(object_rows, cfg.get('object_reward_parser', 'legacy'))
     dataset = CocoPromptDataset(frame, data.transform, data.tokenizer, data.prompt_cache, data.visual_cache)
 
     class Indexed(Dataset):
@@ -102,6 +104,9 @@ def fit(config_path, arm):
     output.mkdir(parents=True, exist_ok=True)
     if (output/'checkpoint.pth').exists():
         raise FileExistsError('Completed checkpoint already exists; choose a fresh output directory.')
+    save(output/'runtime.json', runtime_manifest())
+    if cfg.get('strict_reproducibility', False):
+        save(output/'initial_model_identity.json', {'state_sha256': model_digest(model)})
     history, started = [], time.monotonic()
     print(f'{arm}: {len(frame)} images | {len(loader)} updates | FP32 | dropout disabled', flush=True)
     try:
@@ -109,6 +114,9 @@ def fit(config_path, arm):
             images, captions, masks, prompt, prompt_mask = [v.cuda() for v in batch]
             optimizer.zero_grad(set_to_none=True)
             record = {'step': step, 'images_seen': min(step*cfg['batch_size'], len(frame))}
+            if cfg.get('strict_reproducibility', False) and step <= 32:
+                record.update(batch_indices_sha256=tensor_digest(indices), visual_sha256=tensor_digest(images),
+                              captions_sha256=tensor_digest(captions), prompts_sha256=tensor_digest(prompt))
             if arm == 'ce':
                 loss = ce_weight*caption_ce(model, images, prompt, prompt_mask, captions, masks, data.tokenizer.pad_idx)
             else:
@@ -116,6 +124,8 @@ def fit(config_path, arm):
                     memory, padding = model.build_memory(images, prompt, prompt_mask)
                     sampled, active = rollout(model, memory, padding, data.tokenizer, sample=True)
                     greedy, _ = rollout(model, memory, padding, data.tokenizer, sample=False)
+                if cfg.get('strict_reproducibility', False) and step <= 32:
+                    record.update(sample_tokens_sha256=tensor_digest(sampled), greedy_tokens_sha256=tensor_digest(greedy))
                 image_ids = [ids[i] for i in indices.tolist()]
                 sampled_text, greedy_text = decode(sampled, data.tokenizer), decode(greedy, data.tokenizer)
                 sampled_reward = reward.score(image_ids, sampled_text)
@@ -185,6 +195,8 @@ def train_pair(cfg, protocol, repo):
         for gpu, arm in enumerate(training_arms(cfg)):
             stream = (Path(cfg['output'])/f'{arm}.log').open('w', encoding='utf-8'); streams.append(stream)
             env = {**os.environ, 'CUDA_VISIBLE_DEVICES': str(gpu), 'PYTHONUNBUFFERED': '1', 'HDF5_USE_FILE_LOCKING': 'FALSE'}
+            if cfg.get('strict_reproducibility', False):
+                env.update(CUBLAS_WORKSPACE_CONFIG=':4096:8', PYTHONHASHSEED='42')
             processes.append(subprocess.Popen([sys.executable, '-u', str(repo/'run_scst_comparison.py'),
                 '--worker', arm, '--protocol', str(protocol)], cwd=repo, env=env, stdout=stream, stderr=subprocess.STDOUT))
         positions = [0, 0]; last_heartbeat = time.monotonic()
@@ -276,6 +288,7 @@ def run(a):
     cfg = {**paths, 'groups': groups, 'batch_size': a.batch_size, 'lr': a.lr, 'epochs': 1, 'seed': 42,
            'ce_anchor_comparison': a.ce_anchor_comparison, 'scst_weight': a.scst_weight, 'ce_weight': a.ce_weight,
            'object_reward_comparison': a.object_reward_comparison, 'object_reward_weight': a.object_reward_weight,
+           'object_reward_parser': a.object_reward_parser, 'strict_reproducibility': a.strict_reproducibility,
            'code_commit': subprocess.check_output(['git', 'rev-parse', 'HEAD'], cwd=repo, text=True).strip(),
            'input_sha256': input_hashes,
            'clip_revision': '57c216476eefef5ab752ec549e440a49ae4ae5f3',
@@ -289,7 +302,7 @@ def run(a):
     if a.object_reward_comparison:
         from captioning.object_reward import make_targets
         targets = make_targets(groups, dataset, Path(paths['chair_directory'])/'chair.pkl',
-                               json.loads(Path(paths['detections']).read_text(encoding='utf-8')))
+                               json.loads(Path(paths['detections']).read_text(encoding='utf-8')), a.object_reward_parser)
         target_file = output/'train_object_targets.json'; save(target_file, targets)
         cfg.update(variant='scst_ce_object_reward_v1', train_object_targets=str(target_file),
                    train_object_targets_sha256=sha(target_file),
@@ -358,6 +371,8 @@ if __name__ == '__main__':
     p.add_argument('--ce-anchor-comparison', action='store_true')
     p.add_argument('--object-reward-comparison', action='store_true')
     p.add_argument('--object-reward-weight', type=float, default=1.)
+    p.add_argument('--object-reward-parser', choices=['legacy', 'aliases_v2'], default='legacy')
+    p.add_argument('--strict-reproducibility', action='store_true')
     p.add_argument('--scst-weight', type=float, default=1.); p.add_argument('--ce-weight', type=float, default=1.)
     for k in ('checkpoint', 'prompt-cache-path', 'dataset-json-path', 'base-path', 'visual-cache',
               'detections', 'chair-directory', 'output'): p.add_argument('--'+k)

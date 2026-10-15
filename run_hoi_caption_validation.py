@@ -83,6 +83,8 @@ def run_workers(cfg, phase, repo, worker_script='hoi_caption_worker.py'):
             log=Path(cfg['output'])/f'{phase}_gpu{rank}.log'
             stream=log.open('a',encoding='utf-8');handles.append(stream)
             env=os.environ.copy();env.update(CUDA_VISIBLE_DEVICES=str(rank),PYTHONUNBUFFERED='1',HDF5_USE_FILE_LOCKING='FALSE')
+            if cfg.get('strict_reproducibility', False):
+                env.update(CUBLAS_WORKSPACE_CONFIG=':4096:8', PYTHONHASHSEED='42')
             processes.append(subprocess.Popen([sys.executable,'-u',str(repo/worker_script),
                 '--config',str(config_path),'--rank',str(rank),'--phase',phase],cwd=repo,env=env,stdout=stream,stderr=subprocess.STDOUT))
         last=time.monotonic()
