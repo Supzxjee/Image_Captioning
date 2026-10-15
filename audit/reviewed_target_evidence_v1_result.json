@@ -1,0 +1,511 @@
+{
+  "variant": "reviewed_target_evidence_check_v1",
+  "protocol_sha256": "1a2fc7659bb207e348bf78cdc978140e29a75bc3a7a2afffc2ee6b2fae539f66",
+  "eligible_cases": 34,
+  "eligible_images": 22,
+  "review_filter_counts": {
+    "eligible": 34,
+    "source_positive_conflict": 10,
+    "both_supported_no_negative": 4,
+    "localization_not_clear": 2,
+    "incomplete": 75
+  },
+  "manifest_images_excluded": 61,
+  "fit_pairs": 699,
+  "calibration_pairs": 209,
+  "eligible_overlap_with_original_r98": {
+    "fit_images": 15,
+    "calibration_images": 7
+  },
+  "eligible_overlap_with_isolated_fit_or_calibration": 0,
+  "human_labels_used_for_training_or_calibration": 0,
+  "conditions": {
+    "r98_familiar_verifier": {
+      "all": {
+        "cases": 34,
+        "images": 22,
+        "ranking_wins": 29,
+        "ranking_ties": 0,
+        "ranking_win_rate": 0.8529411764705882,
+        "image_macro_win_rate": 0.9053030303030304,
+        "positive_supported": 6,
+        "wrong_target_supported": 3,
+        "both_supported": 3,
+        "both_abstained": 7,
+        "positive_supported_alternate_not_supported": 3,
+        "positive_supported_alternate_contradicted": 1
+      },
+      "same_class": {
+        "cases": 21,
+        "images": 13,
+        "ranking_wins": 17,
+        "ranking_ties": 0,
+        "ranking_win_rate": 0.8095238095238095,
+        "image_macro_win_rate": 0.8782051282051282,
+        "positive_supported": 5,
+        "wrong_target_supported": 3,
+        "both_supported": 3,
+        "both_abstained": 4,
+        "positive_supported_alternate_not_supported": 2,
+        "positive_supported_alternate_contradicted": 1
+      },
+      "different_class": {
+        "cases": 13,
+        "images": 9,
+        "ranking_wins": 12,
+        "ranking_ties": 0,
+        "ranking_win_rate": 0.9230769230769231,
+        "image_macro_win_rate": 0.9444444444444444,
+        "positive_supported": 1,
+        "wrong_target_supported": 0,
+        "both_supported": 0,
+        "both_abstained": 3,
+        "positive_supported_alternate_not_supported": 1,
+        "positive_supported_alternate_contradicted": 0
+      },
+      "by_predicate": {
+        "holding": {
+          "cases": 10,
+          "images": 10,
+          "ranking_wins": 10,
+          "ranking_ties": 0,
+          "ranking_win_rate": 1.0,
+          "image_macro_win_rate": 1.0,
+          "positive_supported": 1,
+          "wrong_target_supported": 0,
+          "both_supported": 0,
+          "both_abstained": 6,
+          "positive_supported_alternate_not_supported": 1,
+          "positive_supported_alternate_contradicted": 0
+        },
+        "riding": {
+          "cases": 11,
+          "images": 9,
+          "ranking_wins": 9,
+          "ranking_ties": 0,
+          "ranking_win_rate": 0.8181818181818182,
+          "image_macro_win_rate": 0.8333333333333334,
+          "positive_supported": 3,
+          "wrong_target_supported": 1,
+          "both_supported": 1,
+          "both_abstained": 0,
+          "positive_supported_alternate_not_supported": 2,
+          "positive_supported_alternate_contradicted": 1
+        },
+        "sitting_on": {
+          "cases": 10,
+          "images": 9,
+          "ranking_wins": 7,
+          "ranking_ties": 0,
+          "ranking_win_rate": 0.7,
+          "image_macro_win_rate": 0.7222222222222222,
+          "positive_supported": 2,
+          "wrong_target_supported": 2,
+          "both_supported": 2,
+          "both_abstained": 1,
+          "positive_supported_alternate_not_supported": 0,
+          "positive_supported_alternate_contradicted": 0
+        },
+        "carrying": {
+          "cases": 2,
+          "images": 2,
+          "ranking_wins": 2,
+          "ranking_ties": 0,
+          "ranking_win_rate": 1.0,
+          "image_macro_win_rate": 1.0,
+          "positive_supported": 0,
+          "wrong_target_supported": 0,
+          "both_supported": 0,
+          "both_abstained": 0,
+          "positive_supported_alternate_not_supported": 0,
+          "positive_supported_alternate_contradicted": 0
+        },
+        "eating": {
+          "cases": 1,
+          "images": 1,
+          "ranking_wins": 1,
+          "ranking_ties": 0,
+          "ranking_win_rate": 1.0,
+          "image_macro_win_rate": 1.0,
+          "positive_supported": 0,
+          "wrong_target_supported": 0,
+          "both_supported": 0,
+          "both_abstained": 0,
+          "positive_supported_alternate_not_supported": 0,
+          "positive_supported_alternate_contradicted": 0
+        },
+        "talking_on": {
+          "cases": 0,
+          "images": 0,
+          "ranking_wins": 0,
+          "ranking_ties": 0,
+          "ranking_win_rate": null,
+          "image_macro_win_rate": null,
+          "positive_supported": 0,
+          "wrong_target_supported": 0,
+          "both_supported": 0,
+          "both_abstained": 0,
+          "positive_supported_alternate_not_supported": 0,
+          "positive_supported_alternate_contradicted": 0
+        }
+      },
+      "unique_claims_before_cap": {
+        "unique_known_claims": 68,
+        "unique_known_positive_claims": 34,
+        "true_selected": 6,
+        "false_selected": 3,
+        "precision_on_reviewed": 0.6666666666666666,
+        "recall_on_reviewed": 0.17647058823529413
+      },
+      "unique_claims_after_cap": {
+        "unique_known_claims": 68,
+        "unique_known_positive_claims": 34,
+        "true_selected": 5,
+        "false_selected": 0,
+        "precision_on_reviewed": 1.0,
+        "recall_on_reviewed": 0.14705882352941177
+      },
+      "case_counts_after_cap": {
+        "positive_selected": 5,
+        "wrong_target_selected": 0,
+        "positive_selected_wrong_target_not_selected": 5
+      }
+    },
+    "isolated_clip": {
+      "all": {
+        "cases": 34,
+        "images": 22,
+        "ranking_wins": 28,
+        "ranking_ties": 0,
+        "ranking_win_rate": 0.8235294117647058,
+        "image_macro_win_rate": 0.8333333333333333,
+        "positive_supported": 0,
+        "wrong_target_supported": 0,
+        "both_supported": 0,
+        "both_abstained": 8,
+        "positive_supported_alternate_not_supported": 0,
+        "positive_supported_alternate_contradicted": 0
+      },
+      "same_class": {
+        "cases": 21,
+        "images": 13,
+        "ranking_wins": 18,
+        "ranking_ties": 0,
+        "ranking_win_rate": 0.8571428571428571,
+        "image_macro_win_rate": 0.8717948717948718,
+        "positive_supported": 0,
+        "wrong_target_supported": 0,
+        "both_supported": 0,
+        "both_abstained": 6,
+        "positive_supported_alternate_not_supported": 0,
+        "positive_supported_alternate_contradicted": 0
+      },
+      "different_class": {
+        "cases": 13,
+        "images": 9,
+        "ranking_wins": 10,
+        "ranking_ties": 0,
+        "ranking_win_rate": 0.7692307692307693,
+        "image_macro_win_rate": 0.7777777777777778,
+        "positive_supported": 0,
+        "wrong_target_supported": 0,
+        "both_supported": 0,
+        "both_abstained": 2,
+        "positive_supported_alternate_not_supported": 0,
+        "positive_supported_alternate_contradicted": 0
+      },
+      "by_predicate": {
+        "holding": {
+          "cases": 10,
+          "images": 10,
+          "ranking_wins": 10,
+          "ranking_ties": 0,
+          "ranking_win_rate": 1.0,
+          "image_macro_win_rate": 1.0,
+          "positive_supported": 0,
+          "wrong_target_supported": 0,
+          "both_supported": 0,
+          "both_abstained": 5,
+          "positive_supported_alternate_not_supported": 0,
+          "positive_supported_alternate_contradicted": 0
+        },
+        "riding": {
+          "cases": 11,
+          "images": 9,
+          "ranking_wins": 10,
+          "ranking_ties": 0,
+          "ranking_win_rate": 0.9090909090909091,
+          "image_macro_win_rate": 0.9444444444444444,
+          "positive_supported": 0,
+          "wrong_target_supported": 0,
+          "both_supported": 0,
+          "both_abstained": 0,
+          "positive_supported_alternate_not_supported": 0,
+          "positive_supported_alternate_contradicted": 0
+        },
+        "sitting_on": {
+          "cases": 10,
+          "images": 9,
+          "ranking_wins": 7,
+          "ranking_ties": 0,
+          "ranking_win_rate": 0.7,
+          "image_macro_win_rate": 0.6666666666666666,
+          "positive_supported": 0,
+          "wrong_target_supported": 0,
+          "both_supported": 0,
+          "both_abstained": 3,
+          "positive_supported_alternate_not_supported": 0,
+          "positive_supported_alternate_contradicted": 0
+        },
+        "carrying": {
+          "cases": 2,
+          "images": 2,
+          "ranking_wins": 1,
+          "ranking_ties": 0,
+          "ranking_win_rate": 0.5,
+          "image_macro_win_rate": 0.5,
+          "positive_supported": 0,
+          "wrong_target_supported": 0,
+          "both_supported": 0,
+          "both_abstained": 0,
+          "positive_supported_alternate_not_supported": 0,
+          "positive_supported_alternate_contradicted": 0
+        },
+        "eating": {
+          "cases": 1,
+          "images": 1,
+          "ranking_wins": 0,
+          "ranking_ties": 0,
+          "ranking_win_rate": 0.0,
+          "image_macro_win_rate": 0.0,
+          "positive_supported": 0,
+          "wrong_target_supported": 0,
+          "both_supported": 0,
+          "both_abstained": 0,
+          "positive_supported_alternate_not_supported": 0,
+          "positive_supported_alternate_contradicted": 0
+        },
+        "talking_on": {
+          "cases": 0,
+          "images": 0,
+          "ranking_wins": 0,
+          "ranking_ties": 0,
+          "ranking_win_rate": null,
+          "image_macro_win_rate": null,
+          "positive_supported": 0,
+          "wrong_target_supported": 0,
+          "both_supported": 0,
+          "both_abstained": 0,
+          "positive_supported_alternate_not_supported": 0,
+          "positive_supported_alternate_contradicted": 0
+        }
+      },
+      "unique_claims_before_cap": {
+        "unique_known_claims": 68,
+        "unique_known_positive_claims": 34,
+        "true_selected": 0,
+        "false_selected": 0,
+        "precision_on_reviewed": null,
+        "recall_on_reviewed": 0.0
+      },
+      "unique_claims_after_cap": {
+        "unique_known_claims": 68,
+        "unique_known_positive_claims": 34,
+        "true_selected": 0,
+        "false_selected": 0,
+        "precision_on_reviewed": null,
+        "recall_on_reviewed": 0.0
+      },
+      "case_counts_after_cap": {
+        "positive_selected": 0,
+        "wrong_target_selected": 0,
+        "positive_selected_wrong_target_not_selected": 0
+      }
+    },
+    "isolated_verifier": {
+      "all": {
+        "cases": 34,
+        "images": 22,
+        "ranking_wins": 27,
+        "ranking_ties": 0,
+        "ranking_win_rate": 0.7941176470588235,
+        "image_macro_win_rate": 0.8787878787878788,
+        "positive_supported": 11,
+        "wrong_target_supported": 5,
+        "both_supported": 5,
+        "both_abstained": 6,
+        "positive_supported_alternate_not_supported": 6,
+        "positive_supported_alternate_contradicted": 2
+      },
+      "same_class": {
+        "cases": 21,
+        "images": 13,
+        "ranking_wins": 15,
+        "ranking_ties": 0,
+        "ranking_win_rate": 0.7142857142857143,
+        "image_macro_win_rate": 0.8333333333333334,
+        "positive_supported": 10,
+        "wrong_target_supported": 5,
+        "both_supported": 5,
+        "both_abstained": 3,
+        "positive_supported_alternate_not_supported": 5,
+        "positive_supported_alternate_contradicted": 2
+      },
+      "different_class": {
+        "cases": 13,
+        "images": 9,
+        "ranking_wins": 12,
+        "ranking_ties": 0,
+        "ranking_win_rate": 0.9230769230769231,
+        "image_macro_win_rate": 0.9444444444444444,
+        "positive_supported": 1,
+        "wrong_target_supported": 0,
+        "both_supported": 0,
+        "both_abstained": 3,
+        "positive_supported_alternate_not_supported": 1,
+        "positive_supported_alternate_contradicted": 0
+      },
+      "by_predicate": {
+        "holding": {
+          "cases": 10,
+          "images": 10,
+          "ranking_wins": 10,
+          "ranking_ties": 0,
+          "ranking_win_rate": 1.0,
+          "image_macro_win_rate": 1.0,
+          "positive_supported": 2,
+          "wrong_target_supported": 0,
+          "both_supported": 0,
+          "both_abstained": 5,
+          "positive_supported_alternate_not_supported": 2,
+          "positive_supported_alternate_contradicted": 0
+        },
+        "riding": {
+          "cases": 11,
+          "images": 9,
+          "ranking_wins": 8,
+          "ranking_ties": 0,
+          "ranking_win_rate": 0.7272727272727273,
+          "image_macro_win_rate": 0.7777777777777778,
+          "positive_supported": 5,
+          "wrong_target_supported": 2,
+          "both_supported": 2,
+          "both_abstained": 1,
+          "positive_supported_alternate_not_supported": 3,
+          "positive_supported_alternate_contradicted": 1
+        },
+        "sitting_on": {
+          "cases": 10,
+          "images": 9,
+          "ranking_wins": 6,
+          "ranking_ties": 0,
+          "ranking_win_rate": 0.6,
+          "image_macro_win_rate": 0.6111111111111112,
+          "positive_supported": 4,
+          "wrong_target_supported": 3,
+          "both_supported": 3,
+          "both_abstained": 0,
+          "positive_supported_alternate_not_supported": 1,
+          "positive_supported_alternate_contradicted": 1
+        },
+        "carrying": {
+          "cases": 2,
+          "images": 2,
+          "ranking_wins": 2,
+          "ranking_ties": 0,
+          "ranking_win_rate": 1.0,
+          "image_macro_win_rate": 1.0,
+          "positive_supported": 0,
+          "wrong_target_supported": 0,
+          "both_supported": 0,
+          "both_abstained": 0,
+          "positive_supported_alternate_not_supported": 0,
+          "positive_supported_alternate_contradicted": 0
+        },
+        "eating": {
+          "cases": 1,
+          "images": 1,
+          "ranking_wins": 1,
+          "ranking_ties": 0,
+          "ranking_win_rate": 1.0,
+          "image_macro_win_rate": 1.0,
+          "positive_supported": 0,
+          "wrong_target_supported": 0,
+          "both_supported": 0,
+          "both_abstained": 0,
+          "positive_supported_alternate_not_supported": 0,
+          "positive_supported_alternate_contradicted": 0
+        },
+        "talking_on": {
+          "cases": 0,
+          "images": 0,
+          "ranking_wins": 0,
+          "ranking_ties": 0,
+          "ranking_win_rate": null,
+          "image_macro_win_rate": null,
+          "positive_supported": 0,
+          "wrong_target_supported": 0,
+          "both_supported": 0,
+          "both_abstained": 0,
+          "positive_supported_alternate_not_supported": 0,
+          "positive_supported_alternate_contradicted": 0
+        }
+      },
+      "unique_claims_before_cap": {
+        "unique_known_claims": 68,
+        "unique_known_positive_claims": 34,
+        "true_selected": 11,
+        "false_selected": 5,
+        "precision_on_reviewed": 0.6875,
+        "recall_on_reviewed": 0.3235294117647059
+      },
+      "unique_claims_after_cap": {
+        "unique_known_claims": 68,
+        "unique_known_positive_claims": 34,
+        "true_selected": 9,
+        "false_selected": 2,
+        "precision_on_reviewed": 0.8181818181818182,
+        "recall_on_reviewed": 0.2647058823529412
+      },
+      "case_counts_after_cap": {
+        "positive_selected": 9,
+        "wrong_target_selected": 2,
+        "positive_selected_wrong_target_not_selected": 7
+      }
+    }
+  },
+  "limitations": [
+    "Single self-reported human reviewer; source-positive conflicts/both-supported/unclear cases excluded.",
+    "R98 familiar condition saw original positive image labels; report separately, not heldout accuracy.",
+    "Refit excludes all61 manifest images but still reuses a previously inspected development pool.",
+    "Known-label coverage/selection conditional on existing matched detector candidates.",
+    "No decoder adaptation, new caption metrics, independent benchmark or novelty claim."
+  ],
+  "paired_target_ranking_changes": {
+    "both_correct": {
+      "cases": 24,
+      "images": 19
+    },
+    "regressed": {
+      "cases": 4,
+      "images": 2
+    },
+    "fixed": {
+      "cases": 3,
+      "images": 3
+    },
+    "both_not_correct": {
+      "cases": 3,
+      "images": 2
+    }
+  },
+  "promotion_allowed": false,
+  "verification": {
+    "metrics_recomputed_from_saved_heads": true,
+    "temperature_and_policies_recomputed": true,
+    "strict_head_reload": true,
+    "prior_correction_gap_decomposition_checked": true,
+    "fit_calibration_blocked_image_overlap": 0
+  },
+  "checkpoint_sha256": "297bd1ae4f002e1cff5fdfbe8ab181363290ebd1901f7045e43484c66404ca46"
+}
