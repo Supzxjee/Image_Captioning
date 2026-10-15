@@ -31,6 +31,7 @@ def cohorts(dataset, train_count=20000, val_count=1000):
 
 
 def training_arms(cfg):
+    if cfg.get('object_reward_comparison', False): return ('scst_ce', 'scst_ce_object')
     return ('scst', 'scst_ce') if cfg.get('ce_anchor_comparison', False) else ('ce', 'scst')
 
 
@@ -38,7 +39,7 @@ def objective_weights(cfg, arm):
     if arm not in training_arms(cfg):
         raise ValueError(f'Unexpected training arm: {arm}')
     return (float(cfg.get('scst_weight', 1.)) if arm != 'ce' else 0.,
-            float(cfg.get('ce_weight', 1.)) if arm in ('ce', 'scst_ce') else 0.)
+            float(cfg.get('ce_weight', 1.)) if arm in ('ce', 'scst_ce', 'scst_ce_object') else 0.)
 
 
 def caption_ce(model, images, prompt, prompt_mask, captions, masks, pad_idx):
@@ -73,6 +74,15 @@ def fit(config_path, arm):
     frame = data.train_df.set_index('eval_id', drop=False).loc[ids].reset_index(drop=True)
     references = {int(r['eval_id']): r['captions'] for _, r in frame.iterrows()}
     reward = TrainingCider(references) if rl_weight > 0 else None
+    object_reward = None
+    object_weight = cfg.get('object_reward_weight', 0.) if arm == 'scst_ce_object' else 0.
+    if object_weight:
+        from captioning.object_reward import TrainingObjectReward
+        if sha(cfg['train_object_targets']) != cfg['train_object_targets_sha256']:
+            raise ValueError('Training object targets changed.')
+        object_rows = json.loads(Path(cfg['train_object_targets']).read_text(encoding='utf-8'))['data']
+        if {r['image_id'] for r in object_rows} != set(ids): raise ValueError('Object reward cohort mismatch.')
+        object_reward = TrainingObjectReward(object_rows)
     dataset = CocoPromptDataset(frame, data.transform, data.tokenizer, data.prompt_cache, data.visual_cache)
 
     class Indexed(Dataset):
@@ -107,8 +117,22 @@ def fit(config_path, arm):
                     sampled, active = rollout(model, memory, padding, data.tokenizer, sample=True)
                     greedy, _ = rollout(model, memory, padding, data.tokenizer, sample=False)
                 image_ids = [ids[i] for i in indices.tolist()]
-                sampled_reward = reward.score(image_ids, decode(sampled, data.tokenizer))
-                greedy_reward = reward.score(image_ids, decode(greedy, data.tokenizer))
+                sampled_text, greedy_text = decode(sampled, data.tokenizer), decode(greedy, data.tokenizer)
+                sampled_reward = reward.score(image_ids, sampled_text)
+                greedy_reward = reward.score(image_ids, greedy_text)
+                record.update(sample_cider_reward=float(sampled_reward.mean()), greedy_cider_reward=float(greedy_reward.mean()))
+                if object_reward is not None:
+                    from captioning.object_reward import combine_rewards
+                    sampled_object, sample_terms = object_reward.score(image_ids, sampled_text)
+                    greedy_object, greedy_terms = object_reward.score(image_ids, greedy_text)
+                    sampled_reward = combine_rewards(sampled_reward, sampled_object, object_weight)
+                    greedy_reward = combine_rewards(greedy_reward, greedy_object, object_weight)
+                    record.update(sample_object_reward=float(sampled_object.mean()), greedy_object_reward=float(greedy_object.mean()),
+                         sample_unsupported_fraction=float(np.mean([r['unsupported_fraction'] for r in sample_terms])),
+                         greedy_unsupported_fraction=float(np.mean([r['unsupported_fraction'] for r in greedy_terms])),
+                         sample_salient_recall=float(np.mean([r['salient_recall'] for r in sample_terms])),
+                         greedy_salient_recall=float(np.mean([r['salient_recall'] for r in greedy_terms])),
+                         object_supervision_fraction=float(np.mean([r['available'] for r in sample_terms])))
                 advantage = torch.from_numpy(sampled_reward-greedy_reward).cuda()
                 # Recompute with gradients, avoiding retention of 29 rollout graphs.
                 logits = model(images, prompt, prompt_mask, sampled[:, :-1])
@@ -121,7 +145,7 @@ def fit(config_path, arm):
             if not torch.isfinite(loss):
                 raise FloatingPointError(f'{arm}: nonfinite loss at step {step}')
             loss.backward()
-            if arm == 'scst_ce':
+            if arm in ('scst_ce', 'scst_ce_object'):
                 # Fresh CE graph after RL backward: accumulate BOTH gradients,
                 # then clip once and take exactly one optimizer step.
                 ce_loss = caption_ce(model, images, prompt, prompt_mask, captions, masks, data.tokenizer.pad_idx)
@@ -141,6 +165,7 @@ def fit(config_path, arm):
                        decoder_state_dict={k: v.detach().cpu() for k, v in model.decoder.state_dict().items()},
                        caption_word2idx=data.tokenizer.word2idx, epoch=1, optimization=arm,
                        scst_weight=rl_weight, ce_weight=ce_weight,
+                       object_reward_weight=object_weight,
                        scst_protocol_sha256=sha(config_path), source_checkpoint_sha256=cfg['input_sha256']['checkpoint'])
         payload.pop('optimizer_state_dict', None)
         torch.save(payload, output/'checkpoint.pth.partial')
@@ -149,7 +174,7 @@ def fit(config_path, arm):
              'seconds': time.monotonic()-started, 'checkpoint_sha256': sha(output/'checkpoint.pth'),
              'source_checkpoint_sha256': cfg['input_sha256']['checkpoint'],
              'protocol_sha256': sha(config_path), 'dropout': False, 'precision': 'fp32',
-             'scst_weight': rl_weight, 'ce_weight': ce_weight})
+             'scst_weight': rl_weight, 'ce_weight': ce_weight, 'object_reward_weight': object_weight})
     finally:
         data.visual_cache.close()
 
@@ -250,6 +275,7 @@ def run(a):
         raise ValueError('Input bytes differ from the previously verified QFormer baseline inputs.')
     cfg = {**paths, 'groups': groups, 'batch_size': a.batch_size, 'lr': a.lr, 'epochs': 1, 'seed': 42,
            'ce_anchor_comparison': a.ce_anchor_comparison, 'scst_weight': a.scst_weight, 'ce_weight': a.ce_weight,
+           'object_reward_comparison': a.object_reward_comparison, 'object_reward_weight': a.object_reward_weight,
            'code_commit': subprocess.check_output(['git', 'rev-parse', 'HEAD'], cwd=repo, text=True).strip(),
            'input_sha256': input_hashes,
            'clip_revision': '57c216476eefef5ab752ec549e440a49ae4ae5f3',
@@ -260,6 +286,14 @@ def run(a):
     if a.ce_anchor_comparison:
         cfg['variant'] = 'scst_ce_anchor_v1'
         cfg['anchor_hypothesis'] = 'Add CE only; same scaled SCST coefficient in both arms; no object/relation rewards.'
+    if a.object_reward_comparison:
+        from captioning.object_reward import make_targets
+        targets = make_targets(groups, dataset, Path(paths['chair_directory'])/'chair.pkl',
+                               json.loads(Path(paths['detections']).read_text(encoding='utf-8')))
+        target_file = output/'train_object_targets.json'; save(target_file, targets)
+        cfg.update(variant='scst_ce_object_reward_v1', train_object_targets=str(target_file),
+                   train_object_targets_sha256=sha(target_file),
+                   object_reward_metadata=targets['metadata'])
     from captioning.visual_cache import VisualCache
     cache = VisualCache([paths['visual_cache']], id_key='coco_id')
     try: cache.require_ids([r['coco_id'] for rows in groups.values() for r in rows], 'SCST comparison')
@@ -270,7 +304,8 @@ def run(a):
     command([sys.executable, '-c', check, paths['chair_directory'], Path(paths['chair_directory'])/'chair.pkl', protocol])
     train_pair(cfg, protocol, repo)
     metrics = evaluate(cfg, repo)
-    treatment, control = ('scst_ce', 'scst') if a.ce_anchor_comparison else ('scst', 'ce')
+    treatment, control = (('scst_ce_object', 'scst_ce') if a.object_reward_comparison else
+                          ('scst_ce', 'scst') if a.ce_anchor_comparison else ('scst', 'ce'))
     scst, ce, original = (metrics[k+'_rank0'] for k in (treatment, control, 'original'))
     better = scst['caption']['CIDEr'] > max(ce['caption']['CIDEr'], original['caption']['CIDEr'])
     safe = all(scst['chair'][key] <= min(ce['chair'][key], original['chair'][key]) for key in ('CHAIRs', 'CHAIRi'))
@@ -284,9 +319,9 @@ def run(a):
                           'SCST is an established training method, not our claimed contribution.',
                           'CHAIR measures object hallucination, not relation correctness.',
                           'Reward normalization differs from official PTB evaluation; no test-based selection.']}
-    if a.ce_anchor_comparison:
+    if a.ce_anchor_comparison or a.object_reward_comparison:
         # The primary gate is assessed before any test or checkpoint selection.
-        fixed, baseline = metrics['scst_ce_fixed'], metrics['original_fixed']
+        fixed, baseline = metrics[treatment+'_fixed'], metrics['original_fixed']
         fixed_safe = (fixed['caption']['CIDEr'] >= baseline['caption']['CIDEr'] and
                       all(fixed['chair'][k] <= baseline['chair'][k] for k in ('CHAIRs', 'CHAIRi')) and
                       fixed['chair']['Recall'] >= baseline['chair']['Recall']-.01)
@@ -297,6 +332,17 @@ def run(a):
                        expansion_gate_passed=bool(better and safe and recall and fixed_safe))
         for key in ('raw_SCST_beats_both_CIDEr', 'raw_CHAIR_not_worse_than_both', 'raw_recall_within_1pp_of_best'):
             summary.pop(key)
+        if a.object_reward_comparison:
+            for key in ('raw_anchor_beats_both_CIDEr', 'raw_anchor_CHAIR_not_worse_than_both', 'raw_anchor_recall_within_1pp_of_best'):
+                summary[key.replace('raw_anchor_', 'raw_object_reward_')] = summary.pop(key)
+            fixed_control = metrics[control+'_fixed']
+            matched_fixed_safe = (fixed['caption']['CIDEr'] >= fixed_control['caption']['CIDEr'] and
+                 all(fixed['chair'][k] <= fixed_control['chair'][k] for k in ('CHAIRs', 'CHAIRi')) and
+                 fixed['chair']['Recall'] >= fixed_control['chair']['Recall']-.01)
+            summary.update(object_reward_weight=a.object_reward_weight,
+                           fixed_not_worse_than_anchored_control=matched_fixed_safe,
+                           expansion_gate_passed=bool(better and safe and recall and fixed_safe and matched_fixed_safe))
+            summary['limits'].append('Training COCO object reward shares the evaluator ontology; not independent relation grounding or physical-absence proof.')
     save(output/'run_summary.json', summary)
     with zipfile.ZipFile(str(output)+'_review.zip', 'w', zipfile.ZIP_DEFLATED) as z:
         for file in sorted(output.rglob('*')):
@@ -308,8 +354,10 @@ def run(a):
 
 if __name__ == '__main__':
     p = argparse.ArgumentParser(description=__doc__)
-    p.add_argument('--worker', choices=['ce', 'scst', 'scst_ce']); p.add_argument('--protocol')
+    p.add_argument('--worker', choices=['ce', 'scst', 'scst_ce', 'scst_ce_object']); p.add_argument('--protocol')
     p.add_argument('--ce-anchor-comparison', action='store_true')
+    p.add_argument('--object-reward-comparison', action='store_true')
+    p.add_argument('--object-reward-weight', type=float, default=1.)
     p.add_argument('--scst-weight', type=float, default=1.); p.add_argument('--ce-weight', type=float, default=1.)
     for k in ('checkpoint', 'prompt-cache-path', 'dataset-json-path', 'base-path', 'visual-cache',
               'detections', 'chair-directory', 'output'): p.add_argument('--'+k)
@@ -322,6 +370,9 @@ if __name__ == '__main__':
         if args.batch_size < 1 or not 0 < args.lr < 1: p.error('Invalid batch size or LR.')
         if not (0 < args.scst_weight < float('inf') and 0 < args.ce_weight < float('inf')):
             p.error('Objective weights must be finite and positive.')
+        if args.ce_anchor_comparison and args.object_reward_comparison:
+            p.error('Choose one comparison variant.')
+        if not 0 < args.object_reward_weight < float('inf'): p.error('Object reward weight must be finite and positive.')
         required = ('checkpoint', 'prompt_cache_path', 'dataset_json_path', 'base_path', 'visual_cache', 'detections', 'chair_directory', 'output')
         if any(not getattr(args, k) for k in required): p.error('All explicit input paths and --output are required.')
         run(args)

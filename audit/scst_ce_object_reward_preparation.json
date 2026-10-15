@@ -1,0 +1,39 @@
+{
+  "status": "PREPARED_NOT_RUN",
+  "variant": "scst_ce_object_reward_v1",
+  "train_images": 20000,
+  "validation_images": 1000,
+  "source_checkpoint": "original QFormer epoch10",
+  "arms": [
+    "scst_ce",
+    "scst_ce_object"
+  ],
+  "ce_weight": 1.0,
+  "scst_weight": 0.05,
+  "object_reward_weight": 1.0,
+  "formula": ".5*salient_unique_recall - unsupported_unique_fraction",
+  "annotation_cache_sha256": "73ce11225febb97df38c5bfad60b3ff6cc25852e9df9a1330673155b4be851c3",
+  "local_annotation_inspection": {
+    "selected_train": 20000,
+    "coverage": 20000,
+    "empty_support_before_reference_union": 121,
+    "outside_COCO80": [],
+    "heldout_overlap": 0
+  },
+  "train_only_target_construction": "Kaggle preflight pending; original train references and detector file absent locally",
+  "local_tests_passed": 26,
+  "notebook_executed": false,
+  "training_results": null,
+  "test_used": false,
+  "object_states": [
+    "annotation/reference-supported",
+    "detector>=.9 neutral exception",
+    "annotation-unsupported under COCO80 closed-world convention"
+  ],
+  "limits": [
+    "COCO annotation absence is not proof of physical absence.",
+    "No relation, instance, attribute or negation verification.",
+    "Training reward shares COCO ontology with CHAIR; not independent grounding evidence.",
+    "Coefficients provisional; no guaranteed improvement or novelty claim."
+  ]
+}

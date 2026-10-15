@@ -23,7 +23,10 @@ if __name__ == '__main__':
     import argparse
     parser = argparse.ArgumentParser()
     parser.add_argument('--include-anchor', action='store_true')
+    parser.add_argument('--include-object-reward', action='store_true')
     args = parser.parse_args()
     run_preflight(Path(__file__).resolve().parent)
-    if args.include_anchor:
+    if args.include_anchor or args.include_object_reward:
         run_preflight(Path(__file__).resolve().parent, '/tmp/scst_anchor_preflight.log', 'test_scst_anchor.py')
+    if args.include_object_reward:
+        run_preflight(Path(__file__).resolve().parent, '/tmp/object_reward_preflight.log', 'test_object_reward.py')
