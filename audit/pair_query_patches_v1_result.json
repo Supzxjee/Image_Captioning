@@ -1,0 +1,52 @@
+{
+  "variant": "pair_query_patch_extraction_v1",
+  "protocol_sha256": "586936cdf61bfc56799f8331fa407e197b433f711a9b4bb5be637536dccfdc3e",
+  "pairs": 1451,
+  "images": 744,
+  "image_manifest_sha256": "606a18733601e4912cefe899eca0e1785ac5f3f9b8d42c8cb2cfa3673cd77d5d",
+  "feature_sha256": {
+    "patches_0000.pt": "e1d49289873aa18726bc6dc6c04953cc5cb5f1b832cca8f87864bdf9c3b9ad8e",
+    "patches_0100.pt": "cce636a0509d4bd8f9964517883c262159a2cc9cf945ac58377bcc543cca090f",
+    "patches_0200.pt": "df984cba5d4214815c6aa7e2a0a11f9c167b3976b9e5aaa465a7410e6e1b4dba",
+    "patches_0300.pt": "71a91999e81f726ba1c71b78c1aeb0e678677440a197340939be4d9fa182f6eb",
+    "patches_0400.pt": "f4f7645efb6c4e4b82d80ee5ca98adb44ab5bda9964169404d75a9146e7e0b49",
+    "patches_0500.pt": "031a5088bc13fa205052947f38f4408e88bc3fed94de287a9029e1605ab5925f",
+    "patches_0600.pt": "db15aeb43512c7eb9b7a48ac81e72b1456bb7294c2fa4acd24937fe024229824",
+    "patches_0700.pt": "00ecea39551ddf84be5e77ba3e4e6854fbe1ef2c028a32c7bab4ff060246c3d7",
+    "patches_0800.pt": "1046735b63a8dcc3fe0f4b9d465a6027fc7ba19f115a3ccbb926cee403497883",
+    "patches_0900.pt": "9546ba00182371d7d864d1eb1c54ee9e5231cfbfb53219b23ae585653078d5b1",
+    "patches_1000.pt": "cd66dcc7a6b755eea82c7dff33f929f6459115289a6eda2679bdea6303916fa2",
+    "patches_1100.pt": "706788a0efd7290d073231a87578b1eab361b298f775b8500d27c8d8612256b9",
+    "patches_1200.pt": "76f0406f1684d574213397c50afde794cfea17b244df9735b1ee8eae2b422517",
+    "patches_1300.pt": "8300bde92ed5c22258088a1a717dae306015bb71c14fbf3ccc8c5a63ee54625b",
+    "patches_1400.pt": "57e90449373453b6e367f13250c19136af068fa19d965cda6d9341280d1790ac"
+  },
+  "seconds": 530.7189999999973,
+  "training_performed": false,
+  "torch": "2.14.1+cpu",
+  "runtime": {
+    "batch_size": 4,
+    "threads": 4,
+    "resumed_verified_pairs": 100
+  },
+  "protocol": {
+    "variant": "pair_query_patch_extraction_v1",
+    "revision": "57c216476eefef5ab752ec549e440a49ae4ae5f3",
+    "weights_sha256": "ec89c7b09c749a60aae3c9cd910516f24b58214a7df060b48962d14c469cfbf0",
+    "config_sha256": "eaf1c9089a8553c913d27ea66407f8bfc2be9989c80c9f331ddb3d63d4c5e8ad",
+    "source_pair_sha256": {
+      "train": "1e1afd0a33e52003d558e0236b1aa41ba7d2d54b04fafaefc5f025e7667fffa6",
+      "val": "bbda4ccfd9e3eaf9c5644d4eb9f4995e981cc38ca7f2f01f0d089c953c51d8c3"
+    },
+    "review_provenance_sha256": "b28ce5f6c32bf08d244477006357bed3716c293c8542456c0a7d9fe8a2ba754a",
+    "feature": "197 final vision tokens; post-layernorm; float16 cache; 196 patches plus CLS",
+    "preprocessing": "RGB; padded union .1; resize entire crop to 224 bicubic; /255; CLIP mean/std",
+    "training": false,
+    "device": "cpu",
+    "splits": [
+      1141,
+      310
+    ]
+  },
+  "minimum_original_union_cls_cosine": 0.9999997615814209
+}

@@ -1,0 +1,1903 @@
+{
+  "variant": "pair_query_attention_v1",
+  "protocol_sha256": "3e7c3368245bf4c50b9a422630fb6db7488fcb570202c299f2178824120e8b2d",
+  "partition_counts": {
+    "fit_images": 444,
+    "calibration_images": 111,
+    "development_images": 128,
+    "excluded_manifest_images_present": 61
+  },
+  "fit_pairs": 721,
+  "calibration_pairs": 187,
+  "minimum_original_union_cls_cosine": 0.9999997615814209,
+  "fit_labels": {
+    "1": 463,
+    "0": 3526,
+    "-1": 337
+  },
+  "fit_contrast_types": {
+    "predicate": 1894,
+    "actor": 269
+  },
+  "review_cases": 34,
+  "results": {
+    "clip_prior": {
+      "parameters": 0,
+      "thresholds": [
+        1.01,
+        1.01,
+        1.01,
+        1.01,
+        1.01,
+        1.01
+      ],
+      "development_metrics": {
+        "per_relation": {
+          "holding": {
+            "known": 290,
+            "positive": 119,
+            "AP": 0.5657721517463185,
+            "precision": null,
+            "recall": 0.0,
+            "accepted_known": 0
+          },
+          "riding": {
+            "known": 303,
+            "positive": 24,
+            "AP": 0.08490552875485,
+            "precision": null,
+            "recall": 0.0,
+            "accepted_known": 0
+          },
+          "sitting_on": {
+            "known": 268,
+            "positive": 27,
+            "AP": 0.09657688679353618,
+            "precision": null,
+            "recall": 0.0,
+            "accepted_known": 0
+          },
+          "carrying": {
+            "known": 308,
+            "positive": 18,
+            "AP": 0.21817211368081213,
+            "precision": null,
+            "recall": 0.0,
+            "accepted_known": 0
+          },
+          "eating": {
+            "known": 308,
+            "positive": 4,
+            "AP": 0.05988639509715091,
+            "precision": null,
+            "recall": 0.0,
+            "accepted_known": 0
+          },
+          "talking_on": {
+            "known": 308,
+            "positive": 4,
+            "AP": 0.012129474208275919,
+            "precision": null,
+            "recall": 0.0,
+            "accepted_known": 0
+          }
+        },
+        "macro_AP_on_known_labels": 0.1729070917134906
+      },
+      "development_acceptance": {
+        "positive": 0,
+        "negative": 0,
+        "unknown": 0,
+        "precision_on_known": null,
+        "recall_on_known": 0.0
+      },
+      "development_contrasts": {
+        "actor": {
+          "edges": 190,
+          "images": 126,
+          "wins": 154,
+          "ties": 0,
+          "win_rate": 0.8105263113975525,
+          "mean_gap": 0.15883700549602509,
+          "margin_pass_rate": 0.3684210479259491
+        },
+        "predicate": {
+          "edges": 580,
+          "images": 127,
+          "wins": 379,
+          "ties": 0,
+          "win_rate": 0.6534482836723328,
+          "mean_gap": 0.07331737130880356,
+          "margin_pass_rate": 0.22413793206214905
+        }
+      },
+      "reviewed_targets": {
+        "all": {
+          "cases": 34,
+          "images": 22,
+          "ranking_wins": 28,
+          "ranking_ties": 0,
+          "ranking_win_rate": 0.8235294117647058,
+          "image_macro_win_rate": 0.8333333333333333,
+          "positive_supported": 0,
+          "wrong_target_supported": 0,
+          "both_supported": 0,
+          "both_abstained": 0,
+          "positive_supported_alternate_not_supported": 0,
+          "positive_supported_alternate_contradicted": 0
+        },
+        "same_class": {
+          "cases": 21,
+          "images": 13,
+          "ranking_wins": 18,
+          "ranking_ties": 0,
+          "ranking_win_rate": 0.8571428571428571,
+          "image_macro_win_rate": 0.8717948717948718,
+          "positive_supported": 0,
+          "wrong_target_supported": 0,
+          "both_supported": 0,
+          "both_abstained": 0,
+          "positive_supported_alternate_not_supported": 0,
+          "positive_supported_alternate_contradicted": 0
+        },
+        "different_class": {
+          "cases": 13,
+          "images": 9,
+          "ranking_wins": 10,
+          "ranking_ties": 0,
+          "ranking_win_rate": 0.7692307692307693,
+          "image_macro_win_rate": 0.7777777777777778,
+          "positive_supported": 0,
+          "wrong_target_supported": 0,
+          "both_supported": 0,
+          "both_abstained": 0,
+          "positive_supported_alternate_not_supported": 0,
+          "positive_supported_alternate_contradicted": 0
+        },
+        "by_predicate": {
+          "holding": {
+            "cases": 10,
+            "images": 10,
+            "ranking_wins": 10,
+            "ranking_ties": 0,
+            "ranking_win_rate": 1.0,
+            "image_macro_win_rate": 1.0,
+            "positive_supported": 0,
+            "wrong_target_supported": 0,
+            "both_supported": 0,
+            "both_abstained": 0,
+            "positive_supported_alternate_not_supported": 0,
+            "positive_supported_alternate_contradicted": 0
+          },
+          "riding": {
+            "cases": 11,
+            "images": 9,
+            "ranking_wins": 10,
+            "ranking_ties": 0,
+            "ranking_win_rate": 0.9090909090909091,
+            "image_macro_win_rate": 0.9444444444444444,
+            "positive_supported": 0,
+            "wrong_target_supported": 0,
+            "both_supported": 0,
+            "both_abstained": 0,
+            "positive_supported_alternate_not_supported": 0,
+            "positive_supported_alternate_contradicted": 0
+          },
+          "sitting_on": {
+            "cases": 10,
+            "images": 9,
+            "ranking_wins": 7,
+            "ranking_ties": 0,
+            "ranking_win_rate": 0.7,
+            "image_macro_win_rate": 0.6666666666666666,
+            "positive_supported": 0,
+            "wrong_target_supported": 0,
+            "both_supported": 0,
+            "both_abstained": 0,
+            "positive_supported_alternate_not_supported": 0,
+            "positive_supported_alternate_contradicted": 0
+          },
+          "carrying": {
+            "cases": 2,
+            "images": 2,
+            "ranking_wins": 1,
+            "ranking_ties": 0,
+            "ranking_win_rate": 0.5,
+            "image_macro_win_rate": 0.5,
+            "positive_supported": 0,
+            "wrong_target_supported": 0,
+            "both_supported": 0,
+            "both_abstained": 0,
+            "positive_supported_alternate_not_supported": 0,
+            "positive_supported_alternate_contradicted": 0
+          },
+          "eating": {
+            "cases": 1,
+            "images": 1,
+            "ranking_wins": 0,
+            "ranking_ties": 0,
+            "ranking_win_rate": 0.0,
+            "image_macro_win_rate": 0.0,
+            "positive_supported": 0,
+            "wrong_target_supported": 0,
+            "both_supported": 0,
+            "both_abstained": 0,
+            "positive_supported_alternate_not_supported": 0,
+            "positive_supported_alternate_contradicted": 0
+          },
+          "talking_on": {
+            "cases": 0,
+            "images": 0,
+            "ranking_wins": 0,
+            "ranking_ties": 0,
+            "ranking_win_rate": null,
+            "image_macro_win_rate": null,
+            "positive_supported": 0,
+            "wrong_target_supported": 0,
+            "both_supported": 0,
+            "both_abstained": 0,
+            "positive_supported_alternate_not_supported": 0,
+            "positive_supported_alternate_contradicted": 0
+          }
+        },
+        "unique_claims_before_cap": {
+          "unique_known_claims": 68,
+          "unique_known_positive_claims": 34,
+          "true_selected": 0,
+          "false_selected": 0,
+          "precision_on_reviewed": null,
+          "recall_on_reviewed": 0.0
+        }
+      }
+    },
+    "mean_pool": {
+      "parameters": 30817,
+      "thresholds": [
+        1.01,
+        1.01,
+        1.01,
+        1.01,
+        1.01,
+        1.01
+      ],
+      "development_metrics": {
+        "per_relation": {
+          "holding": {
+            "known": 290,
+            "positive": 119,
+            "AP": 0.6058002926073843,
+            "precision": null,
+            "recall": 0.0,
+            "accepted_known": 0
+          },
+          "riding": {
+            "known": 303,
+            "positive": 24,
+            "AP": 0.09692476558688011,
+            "precision": null,
+            "recall": 0.0,
+            "accepted_known": 0
+          },
+          "sitting_on": {
+            "known": 268,
+            "positive": 27,
+            "AP": 0.11087234958925257,
+            "precision": null,
+            "recall": 0.0,
+            "accepted_known": 0
+          },
+          "carrying": {
+            "known": 308,
+            "positive": 18,
+            "AP": 0.0715780376715273,
+            "precision": null,
+            "recall": 0.0,
+            "accepted_known": 0
+          },
+          "eating": {
+            "known": 308,
+            "positive": 4,
+            "AP": 0.040080904156534404,
+            "precision": null,
+            "recall": 0.0,
+            "accepted_known": 0
+          },
+          "talking_on": {
+            "known": 308,
+            "positive": 4,
+            "AP": 0.3330357142857143,
+            "precision": null,
+            "recall": 0.0,
+            "accepted_known": 0
+          }
+        },
+        "macro_AP_on_known_labels": 0.20971534398288216
+      },
+      "development_acceptance": {
+        "positive": 0,
+        "negative": 0,
+        "unknown": 0,
+        "precision_on_known": null,
+        "recall_on_known": 0.0
+      },
+      "development_contrasts": {
+        "actor": {
+          "edges": 190,
+          "images": 126,
+          "wins": 169,
+          "ties": 0,
+          "win_rate": 0.8894736766815186,
+          "mean_gap": 0.0508289597928524,
+          "margin_pass_rate": 0.0
+        },
+        "predicate": {
+          "edges": 580,
+          "images": 127,
+          "wins": 488,
+          "ties": 0,
+          "win_rate": 0.8413792848587036,
+          "mean_gap": 0.14813761413097382,
+          "margin_pass_rate": 0.4241379201412201
+        }
+      },
+      "reviewed_targets": {
+        "all": {
+          "cases": 34,
+          "images": 22,
+          "ranking_wins": 28,
+          "ranking_ties": 0,
+          "ranking_win_rate": 0.8235294117647058,
+          "image_macro_win_rate": 0.7727272727272727,
+          "positive_supported": 0,
+          "wrong_target_supported": 0,
+          "both_supported": 0,
+          "both_abstained": 0,
+          "positive_supported_alternate_not_supported": 0,
+          "positive_supported_alternate_contradicted": 0
+        },
+        "same_class": {
+          "cases": 21,
+          "images": 13,
+          "ranking_wins": 19,
+          "ranking_ties": 0,
+          "ranking_win_rate": 0.9047619047619048,
+          "image_macro_win_rate": 0.8461538461538461,
+          "positive_supported": 0,
+          "wrong_target_supported": 0,
+          "both_supported": 0,
+          "both_abstained": 0,
+          "positive_supported_alternate_not_supported": 0,
+          "positive_supported_alternate_contradicted": 0
+        },
+        "different_class": {
+          "cases": 13,
+          "images": 9,
+          "ranking_wins": 9,
+          "ranking_ties": 0,
+          "ranking_win_rate": 0.6923076923076923,
+          "image_macro_win_rate": 0.6666666666666666,
+          "positive_supported": 0,
+          "wrong_target_supported": 0,
+          "both_supported": 0,
+          "both_abstained": 0,
+          "positive_supported_alternate_not_supported": 0,
+          "positive_supported_alternate_contradicted": 0
+        },
+        "by_predicate": {
+          "holding": {
+            "cases": 10,
+            "images": 10,
+            "ranking_wins": 7,
+            "ranking_ties": 0,
+            "ranking_win_rate": 0.7,
+            "image_macro_win_rate": 0.7,
+            "positive_supported": 0,
+            "wrong_target_supported": 0,
+            "both_supported": 0,
+            "both_abstained": 0,
+            "positive_supported_alternate_not_supported": 0,
+            "positive_supported_alternate_contradicted": 0
+          },
+          "riding": {
+            "cases": 11,
+            "images": 9,
+            "ranking_wins": 10,
+            "ranking_ties": 0,
+            "ranking_win_rate": 0.9090909090909091,
+            "image_macro_win_rate": 0.8888888888888888,
+            "positive_supported": 0,
+            "wrong_target_supported": 0,
+            "both_supported": 0,
+            "both_abstained": 0,
+            "positive_supported_alternate_not_supported": 0,
+            "positive_supported_alternate_contradicted": 0
+          },
+          "sitting_on": {
+            "cases": 10,
+            "images": 9,
+            "ranking_wins": 8,
+            "ranking_ties": 0,
+            "ranking_win_rate": 0.8,
+            "image_macro_win_rate": 0.7777777777777778,
+            "positive_supported": 0,
+            "wrong_target_supported": 0,
+            "both_supported": 0,
+            "both_abstained": 0,
+            "positive_supported_alternate_not_supported": 0,
+            "positive_supported_alternate_contradicted": 0
+          },
+          "carrying": {
+            "cases": 2,
+            "images": 2,
+            "ranking_wins": 2,
+            "ranking_ties": 0,
+            "ranking_win_rate": 1.0,
+            "image_macro_win_rate": 1.0,
+            "positive_supported": 0,
+            "wrong_target_supported": 0,
+            "both_supported": 0,
+            "both_abstained": 0,
+            "positive_supported_alternate_not_supported": 0,
+            "positive_supported_alternate_contradicted": 0
+          },
+          "eating": {
+            "cases": 1,
+            "images": 1,
+            "ranking_wins": 1,
+            "ranking_ties": 0,
+            "ranking_win_rate": 1.0,
+            "image_macro_win_rate": 1.0,
+            "positive_supported": 0,
+            "wrong_target_supported": 0,
+            "both_supported": 0,
+            "both_abstained": 0,
+            "positive_supported_alternate_not_supported": 0,
+            "positive_supported_alternate_contradicted": 0
+          },
+          "talking_on": {
+            "cases": 0,
+            "images": 0,
+            "ranking_wins": 0,
+            "ranking_ties": 0,
+            "ranking_win_rate": null,
+            "image_macro_win_rate": null,
+            "positive_supported": 0,
+            "wrong_target_supported": 0,
+            "both_supported": 0,
+            "both_abstained": 0,
+            "positive_supported_alternate_not_supported": 0,
+            "positive_supported_alternate_contradicted": 0
+          }
+        },
+        "unique_claims_before_cap": {
+          "unique_known_claims": 68,
+          "unique_known_positive_claims": 34,
+          "true_selected": 0,
+          "false_selected": 0,
+          "precision_on_reviewed": null,
+          "recall_on_reviewed": 0.0
+        }
+      },
+      "reader_diagnostic_first50_dev": {
+        "mean_entropy": 5.278115272521973,
+        "mean_maximum_weight": 0.0051020411774516106,
+        "mean_predicate_weight_l1": 0.0,
+        "note": "Internal weights, not causal explanations or contact labels."
+      },
+      "paired_target_changes_vs_clip": {
+        "both_correct": {
+          "cases": 24,
+          "images": 16
+        },
+        "regressed": {
+          "cases": 4,
+          "images": 4
+        },
+        "fixed": {
+          "cases": 4,
+          "images": 3
+        },
+        "both_not_correct": {
+          "cases": 2,
+          "images": 2
+        }
+      }
+    },
+    "query_blind": {
+      "parameters": 30817,
+      "thresholds": [
+        1.01,
+        1.01,
+        1.01,
+        1.01,
+        1.01,
+        1.01
+      ],
+      "development_metrics": {
+        "per_relation": {
+          "holding": {
+            "known": 290,
+            "positive": 119,
+            "AP": 0.6081756872590739,
+            "precision": null,
+            "recall": 0.0,
+            "accepted_known": 0
+          },
+          "riding": {
+            "known": 303,
+            "positive": 24,
+            "AP": 0.10111329489500664,
+            "precision": null,
+            "recall": 0.0,
+            "accepted_known": 0
+          },
+          "sitting_on": {
+            "known": 268,
+            "positive": 27,
+            "AP": 0.11409297424539944,
+            "precision": null,
+            "recall": 0.0,
+            "accepted_known": 0
+          },
+          "carrying": {
+            "known": 308,
+            "positive": 18,
+            "AP": 0.07159465569060816,
+            "precision": null,
+            "recall": 0.0,
+            "accepted_known": 0
+          },
+          "eating": {
+            "known": 308,
+            "positive": 4,
+            "AP": 0.0401119407797498,
+            "precision": null,
+            "recall": 0.0,
+            "accepted_known": 0
+          },
+          "talking_on": {
+            "known": 308,
+            "positive": 4,
+            "AP": 0.33367673992673996,
+            "precision": null,
+            "recall": 0.0,
+            "accepted_known": 0
+          }
+        },
+        "macro_AP_on_known_labels": 0.21146088213276296
+      },
+      "development_acceptance": {
+        "positive": 0,
+        "negative": 0,
+        "unknown": 0,
+        "precision_on_known": null,
+        "recall_on_known": 0.0
+      },
+      "development_contrasts": {
+        "actor": {
+          "edges": 190,
+          "images": 126,
+          "wins": 169,
+          "ties": 0,
+          "win_rate": 0.8894736766815186,
+          "mean_gap": 0.05293834209442139,
+          "margin_pass_rate": 0.0
+        },
+        "predicate": {
+          "edges": 580,
+          "images": 127,
+          "wins": 488,
+          "ties": 0,
+          "win_rate": 0.8413792848587036,
+          "mean_gap": 0.14885690808296204,
+          "margin_pass_rate": 0.4241379201412201
+        }
+      },
+      "reviewed_targets": {
+        "all": {
+          "cases": 34,
+          "images": 22,
+          "ranking_wins": 29,
+          "ranking_ties": 0,
+          "ranking_win_rate": 0.8529411764705882,
+          "image_macro_win_rate": 0.8181818181818182,
+          "positive_supported": 0,
+          "wrong_target_supported": 0,
+          "both_supported": 0,
+          "both_abstained": 0,
+          "positive_supported_alternate_not_supported": 0,
+          "positive_supported_alternate_contradicted": 0
+        },
+        "same_class": {
+          "cases": 21,
+          "images": 13,
+          "ranking_wins": 20,
+          "ranking_ties": 0,
+          "ranking_win_rate": 0.9523809523809523,
+          "image_macro_win_rate": 0.9230769230769231,
+          "positive_supported": 0,
+          "wrong_target_supported": 0,
+          "both_supported": 0,
+          "both_abstained": 0,
+          "positive_supported_alternate_not_supported": 0,
+          "positive_supported_alternate_contradicted": 0
+        },
+        "different_class": {
+          "cases": 13,
+          "images": 9,
+          "ranking_wins": 9,
+          "ranking_ties": 0,
+          "ranking_win_rate": 0.6923076923076923,
+          "image_macro_win_rate": 0.6666666666666666,
+          "positive_supported": 0,
+          "wrong_target_supported": 0,
+          "both_supported": 0,
+          "both_abstained": 0,
+          "positive_supported_alternate_not_supported": 0,
+          "positive_supported_alternate_contradicted": 0
+        },
+        "by_predicate": {
+          "holding": {
+            "cases": 10,
+            "images": 10,
+            "ranking_wins": 8,
+            "ranking_ties": 0,
+            "ranking_win_rate": 0.8,
+            "image_macro_win_rate": 0.8,
+            "positive_supported": 0,
+            "wrong_target_supported": 0,
+            "both_supported": 0,
+            "both_abstained": 0,
+            "positive_supported_alternate_not_supported": 0,
+            "positive_supported_alternate_contradicted": 0
+          },
+          "riding": {
+            "cases": 11,
+            "images": 9,
+            "ranking_wins": 10,
+            "ranking_ties": 0,
+            "ranking_win_rate": 0.9090909090909091,
+            "image_macro_win_rate": 0.8888888888888888,
+            "positive_supported": 0,
+            "wrong_target_supported": 0,
+            "both_supported": 0,
+            "both_abstained": 0,
+            "positive_supported_alternate_not_supported": 0,
+            "positive_supported_alternate_contradicted": 0
+          },
+          "sitting_on": {
+            "cases": 10,
+            "images": 9,
+            "ranking_wins": 8,
+            "ranking_ties": 0,
+            "ranking_win_rate": 0.8,
+            "image_macro_win_rate": 0.7777777777777778,
+            "positive_supported": 0,
+            "wrong_target_supported": 0,
+            "both_supported": 0,
+            "both_abstained": 0,
+            "positive_supported_alternate_not_supported": 0,
+            "positive_supported_alternate_contradicted": 0
+          },
+          "carrying": {
+            "cases": 2,
+            "images": 2,
+            "ranking_wins": 2,
+            "ranking_ties": 0,
+            "ranking_win_rate": 1.0,
+            "image_macro_win_rate": 1.0,
+            "positive_supported": 0,
+            "wrong_target_supported": 0,
+            "both_supported": 0,
+            "both_abstained": 0,
+            "positive_supported_alternate_not_supported": 0,
+            "positive_supported_alternate_contradicted": 0
+          },
+          "eating": {
+            "cases": 1,
+            "images": 1,
+            "ranking_wins": 1,
+            "ranking_ties": 0,
+            "ranking_win_rate": 1.0,
+            "image_macro_win_rate": 1.0,
+            "positive_supported": 0,
+            "wrong_target_supported": 0,
+            "both_supported": 0,
+            "both_abstained": 0,
+            "positive_supported_alternate_not_supported": 0,
+            "positive_supported_alternate_contradicted": 0
+          },
+          "talking_on": {
+            "cases": 0,
+            "images": 0,
+            "ranking_wins": 0,
+            "ranking_ties": 0,
+            "ranking_win_rate": null,
+            "image_macro_win_rate": null,
+            "positive_supported": 0,
+            "wrong_target_supported": 0,
+            "both_supported": 0,
+            "both_abstained": 0,
+            "positive_supported_alternate_not_supported": 0,
+            "positive_supported_alternate_contradicted": 0
+          }
+        },
+        "unique_claims_before_cap": {
+          "unique_known_claims": 68,
+          "unique_known_positive_claims": 34,
+          "true_selected": 0,
+          "false_selected": 0,
+          "precision_on_reviewed": null,
+          "recall_on_reviewed": 0.0
+        }
+      },
+      "reader_diagnostic_first50_dev": {
+        "mean_entropy": 5.272082805633545,
+        "mean_maximum_weight": 0.006579759530723095,
+        "mean_predicate_weight_l1": 0.0,
+        "note": "Internal weights, not causal explanations or contact labels."
+      },
+      "paired_target_changes_vs_clip": {
+        "both_correct": {
+          "cases": 25,
+          "images": 17
+        },
+        "regressed": {
+          "cases": 3,
+          "images": 3
+        },
+        "fixed": {
+          "cases": 4,
+          "images": 3
+        },
+        "both_not_correct": {
+          "cases": 2,
+          "images": 2
+        }
+      }
+    },
+    "attention": {
+      "parameters": 30817,
+      "thresholds": [
+        1.01,
+        1.01,
+        1.01,
+        1.01,
+        1.01,
+        1.01
+      ],
+      "development_metrics": {
+        "per_relation": {
+          "holding": {
+            "known": 290,
+            "positive": 119,
+            "AP": 0.6097179412888489,
+            "precision": null,
+            "recall": 0.0,
+            "accepted_known": 0
+          },
+          "riding": {
+            "known": 303,
+            "positive": 24,
+            "AP": 0.10075881736063076,
+            "precision": null,
+            "recall": 0.0,
+            "accepted_known": 0
+          },
+          "sitting_on": {
+            "known": 268,
+            "positive": 27,
+            "AP": 0.11416286374176911,
+            "precision": null,
+            "recall": 0.0,
+            "accepted_known": 0
+          },
+          "carrying": {
+            "known": 308,
+            "positive": 18,
+            "AP": 0.07190954056314165,
+            "precision": null,
+            "recall": 0.0,
+            "accepted_known": 0
+          },
+          "eating": {
+            "known": 308,
+            "positive": 4,
+            "AP": 0.0407091411983788,
+            "precision": null,
+            "recall": 0.0,
+            "accepted_known": 0
+          },
+          "talking_on": {
+            "known": 308,
+            "positive": 4,
+            "AP": 0.33367673992673996,
+            "precision": null,
+            "recall": 0.0,
+            "accepted_known": 0
+          }
+        },
+        "macro_AP_on_known_labels": 0.2118225073465849
+      },
+      "development_acceptance": {
+        "positive": 0,
+        "negative": 0,
+        "unknown": 0,
+        "precision_on_known": null,
+        "recall_on_known": 0.0
+      },
+      "development_contrasts": {
+        "actor": {
+          "edges": 190,
+          "images": 126,
+          "wins": 169,
+          "ties": 0,
+          "win_rate": 0.8894736766815186,
+          "mean_gap": 0.05346963182091713,
+          "margin_pass_rate": 0.0
+        },
+        "predicate": {
+          "edges": 580,
+          "images": 127,
+          "wins": 488,
+          "ties": 0,
+          "win_rate": 0.8413792848587036,
+          "mean_gap": 0.14869356155395508,
+          "margin_pass_rate": 0.4241379201412201
+        }
+      },
+      "reviewed_targets": {
+        "all": {
+          "cases": 34,
+          "images": 22,
+          "ranking_wins": 29,
+          "ranking_ties": 0,
+          "ranking_win_rate": 0.8529411764705882,
+          "image_macro_win_rate": 0.8181818181818182,
+          "positive_supported": 0,
+          "wrong_target_supported": 0,
+          "both_supported": 0,
+          "both_abstained": 0,
+          "positive_supported_alternate_not_supported": 0,
+          "positive_supported_alternate_contradicted": 0
+        },
+        "same_class": {
+          "cases": 21,
+          "images": 13,
+          "ranking_wins": 20,
+          "ranking_ties": 0,
+          "ranking_win_rate": 0.9523809523809523,
+          "image_macro_win_rate": 0.9230769230769231,
+          "positive_supported": 0,
+          "wrong_target_supported": 0,
+          "both_supported": 0,
+          "both_abstained": 0,
+          "positive_supported_alternate_not_supported": 0,
+          "positive_supported_alternate_contradicted": 0
+        },
+        "different_class": {
+          "cases": 13,
+          "images": 9,
+          "ranking_wins": 9,
+          "ranking_ties": 0,
+          "ranking_win_rate": 0.6923076923076923,
+          "image_macro_win_rate": 0.6666666666666666,
+          "positive_supported": 0,
+          "wrong_target_supported": 0,
+          "both_supported": 0,
+          "both_abstained": 0,
+          "positive_supported_alternate_not_supported": 0,
+          "positive_supported_alternate_contradicted": 0
+        },
+        "by_predicate": {
+          "holding": {
+            "cases": 10,
+            "images": 10,
+            "ranking_wins": 8,
+            "ranking_ties": 0,
+            "ranking_win_rate": 0.8,
+            "image_macro_win_rate": 0.8,
+            "positive_supported": 0,
+            "wrong_target_supported": 0,
+            "both_supported": 0,
+            "both_abstained": 0,
+            "positive_supported_alternate_not_supported": 0,
+            "positive_supported_alternate_contradicted": 0
+          },
+          "riding": {
+            "cases": 11,
+            "images": 9,
+            "ranking_wins": 10,
+            "ranking_ties": 0,
+            "ranking_win_rate": 0.9090909090909091,
+            "image_macro_win_rate": 0.8888888888888888,
+            "positive_supported": 0,
+            "wrong_target_supported": 0,
+            "both_supported": 0,
+            "both_abstained": 0,
+            "positive_supported_alternate_not_supported": 0,
+            "positive_supported_alternate_contradicted": 0
+          },
+          "sitting_on": {
+            "cases": 10,
+            "images": 9,
+            "ranking_wins": 8,
+            "ranking_ties": 0,
+            "ranking_win_rate": 0.8,
+            "image_macro_win_rate": 0.7777777777777778,
+            "positive_supported": 0,
+            "wrong_target_supported": 0,
+            "both_supported": 0,
+            "both_abstained": 0,
+            "positive_supported_alternate_not_supported": 0,
+            "positive_supported_alternate_contradicted": 0
+          },
+          "carrying": {
+            "cases": 2,
+            "images": 2,
+            "ranking_wins": 2,
+            "ranking_ties": 0,
+            "ranking_win_rate": 1.0,
+            "image_macro_win_rate": 1.0,
+            "positive_supported": 0,
+            "wrong_target_supported": 0,
+            "both_supported": 0,
+            "both_abstained": 0,
+            "positive_supported_alternate_not_supported": 0,
+            "positive_supported_alternate_contradicted": 0
+          },
+          "eating": {
+            "cases": 1,
+            "images": 1,
+            "ranking_wins": 1,
+            "ranking_ties": 0,
+            "ranking_win_rate": 1.0,
+            "image_macro_win_rate": 1.0,
+            "positive_supported": 0,
+            "wrong_target_supported": 0,
+            "both_supported": 0,
+            "both_abstained": 0,
+            "positive_supported_alternate_not_supported": 0,
+            "positive_supported_alternate_contradicted": 0
+          },
+          "talking_on": {
+            "cases": 0,
+            "images": 0,
+            "ranking_wins": 0,
+            "ranking_ties": 0,
+            "ranking_win_rate": null,
+            "image_macro_win_rate": null,
+            "positive_supported": 0,
+            "wrong_target_supported": 0,
+            "both_supported": 0,
+            "both_abstained": 0,
+            "positive_supported_alternate_not_supported": 0,
+            "positive_supported_alternate_contradicted": 0
+          }
+        },
+        "unique_claims_before_cap": {
+          "unique_known_claims": 68,
+          "unique_known_positive_claims": 34,
+          "true_selected": 0,
+          "false_selected": 0,
+          "precision_on_reviewed": null,
+          "recall_on_reviewed": 0.0
+        }
+      },
+      "reader_diagnostic_first50_dev": {
+        "mean_entropy": 5.270621299743652,
+        "mean_maximum_weight": 0.0068192132748663425,
+        "mean_predicate_weight_l1": 0.014038722962141037,
+        "note": "Internal weights, not causal explanations or contact labels."
+      },
+      "paired_target_changes_vs_clip": {
+        "both_correct": {
+          "cases": 25,
+          "images": 17
+        },
+        "regressed": {
+          "cases": 3,
+          "images": 3
+        },
+        "fixed": {
+          "cases": 4,
+          "images": 3
+        },
+        "both_not_correct": {
+          "cases": 2,
+          "images": 2
+        }
+      },
+      "paired_target_changes_vs_mean_pool": {
+        "both_correct": {
+          "cases": 28,
+          "images": 18
+        },
+        "regressed": {
+          "cases": 0,
+          "images": 0
+        },
+        "fixed": {
+          "cases": 1,
+          "images": 1
+        },
+        "both_not_correct": {
+          "cases": 5,
+          "images": 5
+        }
+      }
+    }
+  },
+  "production_promotion": false,
+  "caption_decoder_changed": false,
+  "limitations": [
+    "Single seed",
+    "Repeatedly inspected development data",
+    "No fresh independent evaluation",
+    "Coarse contextualized14x14patches; attention is not ground-truth contact",
+    "No caption metrics measured"
+  ],
+  "target_adaptation": {
+    "results": {
+      "mean_pool": {
+        "all": {
+          "cases": 34,
+          "images": 22,
+          "ranking_wins": 27,
+          "ranking_ties": 0,
+          "ranking_win_rate": 0.7941176470588235,
+          "image_macro_win_rate": 0.8712121212121212,
+          "positive_supported": 0,
+          "wrong_target_supported": 0,
+          "both_supported": 0,
+          "both_abstained": 34,
+          "positive_supported_alternate_not_supported": 0,
+          "positive_supported_alternate_contradicted": 0
+        },
+        "same_class": {
+          "cases": 21,
+          "images": 13,
+          "ranking_wins": 15,
+          "ranking_ties": 0,
+          "ranking_win_rate": 0.7142857142857143,
+          "image_macro_win_rate": 0.8205128205128205,
+          "positive_supported": 0,
+          "wrong_target_supported": 0,
+          "both_supported": 0,
+          "both_abstained": 21,
+          "positive_supported_alternate_not_supported": 0,
+          "positive_supported_alternate_contradicted": 0
+        },
+        "different_class": {
+          "cases": 13,
+          "images": 9,
+          "ranking_wins": 12,
+          "ranking_ties": 0,
+          "ranking_win_rate": 0.9230769230769231,
+          "image_macro_win_rate": 0.9444444444444444,
+          "positive_supported": 0,
+          "wrong_target_supported": 0,
+          "both_supported": 0,
+          "both_abstained": 13,
+          "positive_supported_alternate_not_supported": 0,
+          "positive_supported_alternate_contradicted": 0
+        },
+        "by_predicate": {
+          "holding": {
+            "cases": 10,
+            "images": 10,
+            "ranking_wins": 10,
+            "ranking_ties": 0,
+            "ranking_win_rate": 1.0,
+            "image_macro_win_rate": 1.0,
+            "positive_supported": 0,
+            "wrong_target_supported": 0,
+            "both_supported": 0,
+            "both_abstained": 10,
+            "positive_supported_alternate_not_supported": 0,
+            "positive_supported_alternate_contradicted": 0
+          },
+          "riding": {
+            "cases": 11,
+            "images": 9,
+            "ranking_wins": 7,
+            "ranking_ties": 0,
+            "ranking_win_rate": 0.6363636363636364,
+            "image_macro_win_rate": 0.7222222222222222,
+            "positive_supported": 0,
+            "wrong_target_supported": 0,
+            "both_supported": 0,
+            "both_abstained": 11,
+            "positive_supported_alternate_not_supported": 0,
+            "positive_supported_alternate_contradicted": 0
+          },
+          "sitting_on": {
+            "cases": 10,
+            "images": 9,
+            "ranking_wins": 7,
+            "ranking_ties": 0,
+            "ranking_win_rate": 0.7,
+            "image_macro_win_rate": 0.7777777777777778,
+            "positive_supported": 0,
+            "wrong_target_supported": 0,
+            "both_supported": 0,
+            "both_abstained": 10,
+            "positive_supported_alternate_not_supported": 0,
+            "positive_supported_alternate_contradicted": 0
+          },
+          "carrying": {
+            "cases": 2,
+            "images": 2,
+            "ranking_wins": 2,
+            "ranking_ties": 0,
+            "ranking_win_rate": 1.0,
+            "image_macro_win_rate": 1.0,
+            "positive_supported": 0,
+            "wrong_target_supported": 0,
+            "both_supported": 0,
+            "both_abstained": 2,
+            "positive_supported_alternate_not_supported": 0,
+            "positive_supported_alternate_contradicted": 0
+          },
+          "eating": {
+            "cases": 1,
+            "images": 1,
+            "ranking_wins": 1,
+            "ranking_ties": 0,
+            "ranking_win_rate": 1.0,
+            "image_macro_win_rate": 1.0,
+            "positive_supported": 0,
+            "wrong_target_supported": 0,
+            "both_supported": 0,
+            "both_abstained": 1,
+            "positive_supported_alternate_not_supported": 0,
+            "positive_supported_alternate_contradicted": 0
+          },
+          "talking_on": {
+            "cases": 0,
+            "images": 0,
+            "ranking_wins": 0,
+            "ranking_ties": 0,
+            "ranking_win_rate": null,
+            "image_macro_win_rate": null,
+            "positive_supported": 0,
+            "wrong_target_supported": 0,
+            "both_supported": 0,
+            "both_abstained": 0,
+            "positive_supported_alternate_not_supported": 0,
+            "positive_supported_alternate_contradicted": 0
+          }
+        },
+        "unique_claims_before_cap": {
+          "unique_known_claims": 68,
+          "unique_known_positive_claims": 34,
+          "true_selected": 0,
+          "false_selected": 0,
+          "precision_on_reviewed": null,
+          "recall_on_reviewed": 0.0
+        }
+      },
+      "query_blind": {
+        "all": {
+          "cases": 34,
+          "images": 22,
+          "ranking_wins": 27,
+          "ranking_ties": 0,
+          "ranking_win_rate": 0.7941176470588235,
+          "image_macro_win_rate": 0.8712121212121212,
+          "positive_supported": 0,
+          "wrong_target_supported": 0,
+          "both_supported": 0,
+          "both_abstained": 34,
+          "positive_supported_alternate_not_supported": 0,
+          "positive_supported_alternate_contradicted": 0
+        },
+        "same_class": {
+          "cases": 21,
+          "images": 13,
+          "ranking_wins": 15,
+          "ranking_ties": 0,
+          "ranking_win_rate": 0.7142857142857143,
+          "image_macro_win_rate": 0.8205128205128205,
+          "positive_supported": 0,
+          "wrong_target_supported": 0,
+          "both_supported": 0,
+          "both_abstained": 21,
+          "positive_supported_alternate_not_supported": 0,
+          "positive_supported_alternate_contradicted": 0
+        },
+        "different_class": {
+          "cases": 13,
+          "images": 9,
+          "ranking_wins": 12,
+          "ranking_ties": 0,
+          "ranking_win_rate": 0.9230769230769231,
+          "image_macro_win_rate": 0.9444444444444444,
+          "positive_supported": 0,
+          "wrong_target_supported": 0,
+          "both_supported": 0,
+          "both_abstained": 13,
+          "positive_supported_alternate_not_supported": 0,
+          "positive_supported_alternate_contradicted": 0
+        },
+        "by_predicate": {
+          "holding": {
+            "cases": 10,
+            "images": 10,
+            "ranking_wins": 10,
+            "ranking_ties": 0,
+            "ranking_win_rate": 1.0,
+            "image_macro_win_rate": 1.0,
+            "positive_supported": 0,
+            "wrong_target_supported": 0,
+            "both_supported": 0,
+            "both_abstained": 10,
+            "positive_supported_alternate_not_supported": 0,
+            "positive_supported_alternate_contradicted": 0
+          },
+          "riding": {
+            "cases": 11,
+            "images": 9,
+            "ranking_wins": 7,
+            "ranking_ties": 0,
+            "ranking_win_rate": 0.6363636363636364,
+            "image_macro_win_rate": 0.7222222222222222,
+            "positive_supported": 0,
+            "wrong_target_supported": 0,
+            "both_supported": 0,
+            "both_abstained": 11,
+            "positive_supported_alternate_not_supported": 0,
+            "positive_supported_alternate_contradicted": 0
+          },
+          "sitting_on": {
+            "cases": 10,
+            "images": 9,
+            "ranking_wins": 7,
+            "ranking_ties": 0,
+            "ranking_win_rate": 0.7,
+            "image_macro_win_rate": 0.7777777777777778,
+            "positive_supported": 0,
+            "wrong_target_supported": 0,
+            "both_supported": 0,
+            "both_abstained": 10,
+            "positive_supported_alternate_not_supported": 0,
+            "positive_supported_alternate_contradicted": 0
+          },
+          "carrying": {
+            "cases": 2,
+            "images": 2,
+            "ranking_wins": 2,
+            "ranking_ties": 0,
+            "ranking_win_rate": 1.0,
+            "image_macro_win_rate": 1.0,
+            "positive_supported": 0,
+            "wrong_target_supported": 0,
+            "both_supported": 0,
+            "both_abstained": 2,
+            "positive_supported_alternate_not_supported": 0,
+            "positive_supported_alternate_contradicted": 0
+          },
+          "eating": {
+            "cases": 1,
+            "images": 1,
+            "ranking_wins": 1,
+            "ranking_ties": 0,
+            "ranking_win_rate": 1.0,
+            "image_macro_win_rate": 1.0,
+            "positive_supported": 0,
+            "wrong_target_supported": 0,
+            "both_supported": 0,
+            "both_abstained": 1,
+            "positive_supported_alternate_not_supported": 0,
+            "positive_supported_alternate_contradicted": 0
+          },
+          "talking_on": {
+            "cases": 0,
+            "images": 0,
+            "ranking_wins": 0,
+            "ranking_ties": 0,
+            "ranking_win_rate": null,
+            "image_macro_win_rate": null,
+            "positive_supported": 0,
+            "wrong_target_supported": 0,
+            "both_supported": 0,
+            "both_abstained": 0,
+            "positive_supported_alternate_not_supported": 0,
+            "positive_supported_alternate_contradicted": 0
+          }
+        },
+        "unique_claims_before_cap": {
+          "unique_known_claims": 68,
+          "unique_known_positive_claims": 34,
+          "true_selected": 0,
+          "false_selected": 0,
+          "precision_on_reviewed": null,
+          "recall_on_reviewed": 0.0
+        }
+      },
+      "attention": {
+        "all": {
+          "cases": 34,
+          "images": 22,
+          "ranking_wins": 27,
+          "ranking_ties": 0,
+          "ranking_win_rate": 0.7941176470588235,
+          "image_macro_win_rate": 0.8712121212121212,
+          "positive_supported": 0,
+          "wrong_target_supported": 0,
+          "both_supported": 0,
+          "both_abstained": 34,
+          "positive_supported_alternate_not_supported": 0,
+          "positive_supported_alternate_contradicted": 0
+        },
+        "same_class": {
+          "cases": 21,
+          "images": 13,
+          "ranking_wins": 15,
+          "ranking_ties": 0,
+          "ranking_win_rate": 0.7142857142857143,
+          "image_macro_win_rate": 0.8205128205128205,
+          "positive_supported": 0,
+          "wrong_target_supported": 0,
+          "both_supported": 0,
+          "both_abstained": 21,
+          "positive_supported_alternate_not_supported": 0,
+          "positive_supported_alternate_contradicted": 0
+        },
+        "different_class": {
+          "cases": 13,
+          "images": 9,
+          "ranking_wins": 12,
+          "ranking_ties": 0,
+          "ranking_win_rate": 0.9230769230769231,
+          "image_macro_win_rate": 0.9444444444444444,
+          "positive_supported": 0,
+          "wrong_target_supported": 0,
+          "both_supported": 0,
+          "both_abstained": 13,
+          "positive_supported_alternate_not_supported": 0,
+          "positive_supported_alternate_contradicted": 0
+        },
+        "by_predicate": {
+          "holding": {
+            "cases": 10,
+            "images": 10,
+            "ranking_wins": 10,
+            "ranking_ties": 0,
+            "ranking_win_rate": 1.0,
+            "image_macro_win_rate": 1.0,
+            "positive_supported": 0,
+            "wrong_target_supported": 0,
+            "both_supported": 0,
+            "both_abstained": 10,
+            "positive_supported_alternate_not_supported": 0,
+            "positive_supported_alternate_contradicted": 0
+          },
+          "riding": {
+            "cases": 11,
+            "images": 9,
+            "ranking_wins": 7,
+            "ranking_ties": 0,
+            "ranking_win_rate": 0.6363636363636364,
+            "image_macro_win_rate": 0.7222222222222222,
+            "positive_supported": 0,
+            "wrong_target_supported": 0,
+            "both_supported": 0,
+            "both_abstained": 11,
+            "positive_supported_alternate_not_supported": 0,
+            "positive_supported_alternate_contradicted": 0
+          },
+          "sitting_on": {
+            "cases": 10,
+            "images": 9,
+            "ranking_wins": 7,
+            "ranking_ties": 0,
+            "ranking_win_rate": 0.7,
+            "image_macro_win_rate": 0.7777777777777778,
+            "positive_supported": 0,
+            "wrong_target_supported": 0,
+            "both_supported": 0,
+            "both_abstained": 10,
+            "positive_supported_alternate_not_supported": 0,
+            "positive_supported_alternate_contradicted": 0
+          },
+          "carrying": {
+            "cases": 2,
+            "images": 2,
+            "ranking_wins": 2,
+            "ranking_ties": 0,
+            "ranking_win_rate": 1.0,
+            "image_macro_win_rate": 1.0,
+            "positive_supported": 0,
+            "wrong_target_supported": 0,
+            "both_supported": 0,
+            "both_abstained": 2,
+            "positive_supported_alternate_not_supported": 0,
+            "positive_supported_alternate_contradicted": 0
+          },
+          "eating": {
+            "cases": 1,
+            "images": 1,
+            "ranking_wins": 1,
+            "ranking_ties": 0,
+            "ranking_win_rate": 1.0,
+            "image_macro_win_rate": 1.0,
+            "positive_supported": 0,
+            "wrong_target_supported": 0,
+            "both_supported": 0,
+            "both_abstained": 1,
+            "positive_supported_alternate_not_supported": 0,
+            "positive_supported_alternate_contradicted": 0
+          },
+          "talking_on": {
+            "cases": 0,
+            "images": 0,
+            "ranking_wins": 0,
+            "ranking_ties": 0,
+            "ranking_win_rate": null,
+            "image_macro_win_rate": null,
+            "positive_supported": 0,
+            "wrong_target_supported": 0,
+            "both_supported": 0,
+            "both_abstained": 0,
+            "positive_supported_alternate_not_supported": 0,
+            "positive_supported_alternate_contradicted": 0
+          }
+        },
+        "unique_claims_before_cap": {
+          "unique_known_claims": 68,
+          "unique_known_positive_claims": 34,
+          "true_selected": 0,
+          "false_selected": 0,
+          "precision_on_reviewed": null,
+          "recall_on_reviewed": 0.0
+        }
+      }
+    },
+    "paired_changes_vs_mean_pool": {
+      "query_blind": {
+        "both_correct": {
+          "cases": 27,
+          "images": 20
+        },
+        "regressed": {
+          "cases": 0,
+          "images": 0
+        },
+        "fixed": {
+          "cases": 0,
+          "images": 0
+        },
+        "both_not_correct": {
+          "cases": 7,
+          "images": 4
+        }
+      },
+      "attention": {
+        "both_correct": {
+          "cases": 27,
+          "images": 20
+        },
+        "regressed": {
+          "cases": 0,
+          "images": 0
+        },
+        "fixed": {
+          "cases": 0,
+          "images": 0
+        },
+        "both_not_correct": {
+          "cases": 7,
+          "images": 4
+        }
+      }
+    },
+    "fold_records": [
+      {
+        "fold": 0,
+        "mode": "mean_pool",
+        "fit_cases": 21,
+        "calibration_cases": 7,
+        "temperature": 1.5848932266235352,
+        "policy": {
+          "positive": [
+            1.01
+          ],
+          "negative": [
+            -0.01
+          ],
+          "calibration_support": [
+            {
+              "known": 14,
+              "positive_tail_known": 0,
+              "negative_tail_known": 0
+            }
+          ],
+          "requested_known_precision": 0.9,
+          "minimum_known": 5,
+          "warning": "Empirical calibration precision only; no statistical or out-of-distribution guarantee."
+        }
+      },
+      {
+        "fold": 1,
+        "mode": "mean_pool",
+        "fit_cases": 16,
+        "calibration_cases": 5,
+        "temperature": 0.5011872053146362,
+        "policy": {
+          "positive": [
+            1.01
+          ],
+          "negative": [
+            -0.01
+          ],
+          "calibration_support": [
+            {
+              "known": 10,
+              "positive_tail_known": 0,
+              "negative_tail_known": 0
+            }
+          ],
+          "requested_known_precision": 0.9,
+          "minimum_known": 5,
+          "warning": "Empirical calibration precision only; no statistical or out-of-distribution guarantee."
+        }
+      },
+      {
+        "fold": 2,
+        "mode": "mean_pool",
+        "fit_cases": 23,
+        "calibration_cases": 7,
+        "temperature": 1.8836491107940674,
+        "policy": {
+          "positive": [
+            1.01
+          ],
+          "negative": [
+            -0.01
+          ],
+          "calibration_support": [
+            {
+              "known": 14,
+              "positive_tail_known": 0,
+              "negative_tail_known": 0
+            }
+          ],
+          "requested_known_precision": 0.9,
+          "minimum_known": 5,
+          "warning": "Empirical calibration precision only; no statistical or out-of-distribution guarantee."
+        }
+      },
+      {
+        "fold": 3,
+        "mode": "mean_pool",
+        "fit_cases": 21,
+        "calibration_cases": 7,
+        "temperature": 0.3548133969306946,
+        "policy": {
+          "positive": [
+            0.3945485055446625
+          ],
+          "negative": [
+            -0.01
+          ],
+          "calibration_support": [
+            {
+              "known": 14,
+              "positive_tail_known": 5,
+              "negative_tail_known": 0
+            }
+          ],
+          "requested_known_precision": 0.9,
+          "minimum_known": 5,
+          "warning": "Empirical calibration precision only; no statistical or out-of-distribution guarantee."
+        }
+      },
+      {
+        "fold": 4,
+        "mode": "mean_pool",
+        "fit_cases": 18,
+        "calibration_cases": 11,
+        "temperature": 3.5481338500976562,
+        "policy": {
+          "positive": [
+            1.01
+          ],
+          "negative": [
+            -0.01
+          ],
+          "calibration_support": [
+            {
+              "known": 22,
+              "positive_tail_known": 0,
+              "negative_tail_known": 0
+            }
+          ],
+          "requested_known_precision": 0.9,
+          "minimum_known": 5,
+          "warning": "Empirical calibration precision only; no statistical or out-of-distribution guarantee."
+        }
+      },
+      {
+        "fold": 0,
+        "mode": "query_blind",
+        "fit_cases": 21,
+        "calibration_cases": 7,
+        "temperature": 1.5848932266235352,
+        "policy": {
+          "positive": [
+            1.01
+          ],
+          "negative": [
+            -0.01
+          ],
+          "calibration_support": [
+            {
+              "known": 14,
+              "positive_tail_known": 0,
+              "negative_tail_known": 0
+            }
+          ],
+          "requested_known_precision": 0.9,
+          "minimum_known": 5,
+          "warning": "Empirical calibration precision only; no statistical or out-of-distribution guarantee."
+        }
+      },
+      {
+        "fold": 1,
+        "mode": "query_blind",
+        "fit_cases": 16,
+        "calibration_cases": 5,
+        "temperature": 0.4731512665748596,
+        "policy": {
+          "positive": [
+            1.01
+          ],
+          "negative": [
+            -0.01
+          ],
+          "calibration_support": [
+            {
+              "known": 10,
+              "positive_tail_known": 0,
+              "negative_tail_known": 0
+            }
+          ],
+          "requested_known_precision": 0.9,
+          "minimum_known": 5,
+          "warning": "Empirical calibration precision only; no statistical or out-of-distribution guarantee."
+        }
+      },
+      {
+        "fold": 2,
+        "mode": "query_blind",
+        "fit_cases": 23,
+        "calibration_cases": 7,
+        "temperature": 1.8836491107940674,
+        "policy": {
+          "positive": [
+            1.01
+          ],
+          "negative": [
+            -0.01
+          ],
+          "calibration_support": [
+            {
+              "known": 14,
+              "positive_tail_known": 0,
+              "negative_tail_known": 0
+            }
+          ],
+          "requested_known_precision": 0.9,
+          "minimum_known": 5,
+          "warning": "Empirical calibration precision only; no statistical or out-of-distribution guarantee."
+        }
+      },
+      {
+        "fold": 3,
+        "mode": "query_blind",
+        "fit_cases": 21,
+        "calibration_cases": 7,
+        "temperature": 0.3548133969306946,
+        "policy": {
+          "positive": [
+            0.39693325757980347
+          ],
+          "negative": [
+            -0.01
+          ],
+          "calibration_support": [
+            {
+              "known": 14,
+              "positive_tail_known": 5,
+              "negative_tail_known": 0
+            }
+          ],
+          "requested_known_precision": 0.9,
+          "minimum_known": 5,
+          "warning": "Empirical calibration precision only; no statistical or out-of-distribution guarantee."
+        }
+      },
+      {
+        "fold": 4,
+        "mode": "query_blind",
+        "fit_cases": 18,
+        "calibration_cases": 11,
+        "temperature": 3.34965443611145,
+        "policy": {
+          "positive": [
+            1.01
+          ],
+          "negative": [
+            -0.01
+          ],
+          "calibration_support": [
+            {
+              "known": 22,
+              "positive_tail_known": 0,
+              "negative_tail_known": 0
+            }
+          ],
+          "requested_known_precision": 0.9,
+          "minimum_known": 5,
+          "warning": "Empirical calibration precision only; no statistical or out-of-distribution guarantee."
+        }
+      },
+      {
+        "fold": 0,
+        "mode": "attention",
+        "fit_cases": 21,
+        "calibration_cases": 7,
+        "temperature": 1.4962356090545654,
+        "policy": {
+          "positive": [
+            1.01
+          ],
+          "negative": [
+            -0.01
+          ],
+          "calibration_support": [
+            {
+              "known": 14,
+              "positive_tail_known": 0,
+              "negative_tail_known": 0
+            }
+          ],
+          "requested_known_precision": 0.9,
+          "minimum_known": 5,
+          "warning": "Empirical calibration precision only; no statistical or out-of-distribution guarantee."
+        }
+      },
+      {
+        "fold": 1,
+        "mode": "attention",
+        "fit_cases": 16,
+        "calibration_cases": 5,
+        "temperature": 0.4731512665748596,
+        "policy": {
+          "positive": [
+            1.01
+          ],
+          "negative": [
+            -0.01
+          ],
+          "calibration_support": [
+            {
+              "known": 10,
+              "positive_tail_known": 0,
+              "negative_tail_known": 0
+            }
+          ],
+          "requested_known_precision": 0.9,
+          "minimum_known": 5,
+          "warning": "Empirical calibration precision only; no statistical or out-of-distribution guarantee."
+        }
+      },
+      {
+        "fold": 2,
+        "mode": "attention",
+        "fit_cases": 23,
+        "calibration_cases": 7,
+        "temperature": 1.8836491107940674,
+        "policy": {
+          "positive": [
+            1.01
+          ],
+          "negative": [
+            -0.01
+          ],
+          "calibration_support": [
+            {
+              "known": 14,
+              "positive_tail_known": 0,
+              "negative_tail_known": 0
+            }
+          ],
+          "requested_known_precision": 0.9,
+          "minimum_known": 5,
+          "warning": "Empirical calibration precision only; no statistical or out-of-distribution guarantee."
+        }
+      },
+      {
+        "fold": 3,
+        "mode": "attention",
+        "fit_cases": 21,
+        "calibration_cases": 7,
+        "temperature": 0.3548133969306946,
+        "policy": {
+          "positive": [
+            0.39657852053642273
+          ],
+          "negative": [
+            -0.01
+          ],
+          "calibration_support": [
+            {
+              "known": 14,
+              "positive_tail_known": 5,
+              "negative_tail_known": 0
+            }
+          ],
+          "requested_known_precision": 0.9,
+          "minimum_known": 5,
+          "warning": "Empirical calibration precision only; no statistical or out-of-distribution guarantee."
+        }
+      },
+      {
+        "fold": 4,
+        "mode": "attention",
+        "fit_cases": 18,
+        "calibration_cases": 11,
+        "temperature": 3.34965443611145,
+        "policy": {
+          "positive": [
+            1.01
+          ],
+          "negative": [
+            -0.01
+          ],
+          "calibration_support": [
+            {
+              "known": 22,
+              "positive_tail_known": 0,
+              "negative_tail_known": 0
+            }
+          ],
+          "requested_known_precision": 0.9,
+          "minimum_known": 5,
+          "warning": "Empirical calibration precision only; no statistical or out-of-distribution guarantee."
+        }
+      }
+    ],
+    "notes": "Target-only acceptance; no action gate/cap. Learned on reviewed inner fit cases; each outer reviewed image predicted once. Reused development data."
+  },
+  "compressed_inputs_sha256": "5338a304b5d3ab91fae43fce2dd12084049db4991a0f7c749aa879226700a289",
+  "checkpoint_sha256": {
+    "adapt_attention_fold0.pt": "76fbc7edd051db796c2e818f97420e080222083e78f51eab4842ddb99925e642",
+    "adapt_attention_fold1.pt": "6cbb283b6026a9ff30a3932159c1fe32050e7cd6c8a9c2a4f76485e8bc62d613",
+    "adapt_attention_fold2.pt": "b0ca1de81c41b6229832eecf74b384a7addf31d47c3ee3ae08bac21c7507d451",
+    "adapt_attention_fold3.pt": "f49e1e4faf53222edcd513308ae0ad353f161d559763faf78e2376bf56906b8f",
+    "adapt_attention_fold4.pt": "d06c0df1a9a03344b7b3959aed8a47495a77f3a4c83cc74b3842bfdd3d552abf",
+    "adapt_mean_pool_fold0.pt": "749f3d6512fb7b818e678329e17180b7eda9fe2dc3a3ebe350570653c32d54d6",
+    "adapt_mean_pool_fold1.pt": "a977beb3dc93419fb00d114db13977ff4d3c78926a92a3591e29a28fdaa4619b",
+    "adapt_mean_pool_fold2.pt": "643fda933c90ed82bf0aa9b37899aedf3889a97e4e7df8a7ee8bd9923318da3f",
+    "adapt_mean_pool_fold3.pt": "00f567dc16e94fe1d45fb9e9d6409710e9962f559a02415a42d0e5c1a4e89326",
+    "adapt_mean_pool_fold4.pt": "22d11eb3bae80d408025a2e4f473010b101f2b4708b2e56aba2b618d56bd634b",
+    "adapt_query_blind_fold0.pt": "2d19cbced9d25173f706e69f27f4fd99a812745b8beb372302f21c305c70dff4",
+    "adapt_query_blind_fold1.pt": "cec2f5eb541ced3175e846008ba287bb9b0f6073865016507ed922a8792fd39f",
+    "adapt_query_blind_fold2.pt": "f9ffcd011de700446f5dc00ae6360c0fb17e5b5c9b5b12550936d6d73cd2fe51",
+    "adapt_query_blind_fold3.pt": "c2d3e45bd50e48ab52da3dbdaacab2ec443cb01bb2954b76c921ddfa99555276",
+    "adapt_query_blind_fold4.pt": "899f249695cfa08e73137556018af48a1fc38e1b2981ad87f0298c2688bbdb2e",
+    "attention_seed42.pt": "f56c1fdd1225e9ef5caed2ba675e08a62eef613d6a2f0502018b2e942355bd47",
+    "mean_pool_seed42.pt": "4b760794f0f651bdf99ce11134718d2d01d811b8b389a2f0826407aae2a7024d",
+    "query_blind_seed42.pt": "af8fed57505427c77816dd2e8c48460641e97f6aec272e183f0c6b1ed1e371bc"
+  },
+  "verification": {
+    "saved_heads_strictly_reloaded": 18,
+    "source_and_oof_logits_replayed_exactly": true,
+    "thresholds_and_target_calibration_replayed_exactly": true,
+    "metrics_and_paired_changes_replayed": true,
+    "all_review_manifest_images_excluded_from_source_fit_and_calibration": true,
+    "source_protocol_sha256": "3e7c3368245bf4c50b9a422630fb6db7488fcb570202c299f2178824120e8b2d"
+  }
+}
