@@ -1,0 +1,39 @@
+{
+  "variant": "subject_pose_landmarker_lite_v1",
+  "protocol_sha256": "14060409344af83460864904c6e165f8034833bc1d793bb80e4a63b1f122d2a9",
+  "subjects": 130,
+  "images": 61,
+  "statuses": {
+    "matched": 92,
+    "no_confident_subject": 16,
+    "no_pose": 19,
+    "ambiguous": 3
+  },
+  "pose_cache_sha256": "bc39cdac63126c1cd64c83f86f724d710f7a753f7c7e8c78a295bd54dee16a65",
+  "relation_labels_generated": 0,
+  "dependencies": {
+    "mediapipe": "0.10.35",
+    "numpy": "2.3.5",
+    "opencv-python-headless": "5.0.0.93",
+    "matplotlib": "3.11.2"
+  },
+  "image_size_metadata_added_from_verified_provenance": true,
+  "landmarks_unchanged_by_metadata_addition": true,
+  "extraction_protocol": {
+    "variant": "subject_pose_landmarker_lite_v1",
+    "mediapipe": "0.10.35",
+    "model_sha256": "59929e1d1ee95287735ddd833b19cf4ac46d29bc7afddbbf6753c459690d574a",
+    "model_url": "https://storage.googleapis.com/mediapipe-models/pose_landmarker/pose_landmarker_lite/float16/1/pose_landmarker_lite.task",
+    "source_pairs_sha256": "1e1afd0a33e52003d558e0236b1aa41ba7d2d54b04fafaefc5f025e7667fffa6",
+    "manifest_sha256": "f009ad534f2c24033bb38f363662ce9012350229f48f2ff531b6733527f7ed96",
+    "image_provenance_sha256": "b28ce5f6c32bf08d244477006357bed3716c293c8542456c0a7d9fe8a2ba754a",
+    "subjects": 130,
+    "num_poses": 4,
+    "padding_fraction": 0.15,
+    "visibility_presence_minimum": 0.5,
+    "minimum_visible_torso": 3,
+    "minimum_match_iou": 0.15,
+    "minimum_match_score_gap": 0.1,
+    "notes": "CPU image mode; padded subject crop; no temporal tracking, GT keypoints, human relation labels or action-label inference."
+  }
+}
