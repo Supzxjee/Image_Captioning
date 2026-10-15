@@ -65,3 +65,7 @@ Không chỉnh sửa báo cáo tuần DOCX/PDF. Không chạy lại caption mode
 ## Bổ sung: full validation UPT đã hoàn tất
 
 [Artifact validation mới đã audit](HOI_CAPTION_VALIDATION_RESULT.md) tái lập Q-Former rank 0 CIDEr 1.174011504; fixed re-ranking 1.210722882; thêm UPT λ=.1 đạt 1.212580140. CHAIRs tương ứng 4.28% / 3.56% / 3.58%. UPT chỉ đổi 43 caption so với fixed; tăng CIDEr nhỏ và thêm ròng một caption hallucinated. Đây là validation chọn λ, không thay thế mốc test lịch sử và chưa có test mới. Các hạn chế tái kiểm tra nêu ở phần lịch sử phía trên được giữ nguyên cho artifact lịch sử; bundle validation mới đã tính lại CIDEr/BLEU/ROUGE.
+
+## Bổ sung: test độc lập UPT đã hoàn tất
+
+[Artifact test mới](HOI_CAPTION_TEST_RESULT.md) giữ lambda=.1 đã chọn trên validation, không dò lại trên test. Q-Former rank0 CIDEr 1.188244746, fixed 1.221815131, UPT 1.223864148. CHAIRs 4.32% / 3.48% / 3.50%. UPT thay 33 caption so với fixed và thêm ròng một caption hallucinated. Bundle này cho phép tái tính metric và đối chiếu trực tiếp mốc fixed lịch sử; các giới hạn kiểm tra artifact lịch sử ở phần trên vẫn được giữ cho những artifact đó. Mức tăng CIDEr nhỏ được ghi nhận riêng với mục tiêu hallucination chưa đạt.
