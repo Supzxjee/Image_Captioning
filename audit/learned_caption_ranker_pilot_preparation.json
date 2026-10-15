@@ -1,0 +1,20 @@
+{
+  "status": "PREPARED_NOT_RUN",
+  "variant": "learned_caption_ranker_pilot_v1",
+  "core_commit": "404179bfa5b68381f86cce7f7a7d796a0c5dad5c",
+  "fit_images": 1024,
+  "train_tune_images": 256,
+  "validation_images": 512,
+  "modes": [
+    "scores",
+    "global",
+    "regional"
+  ],
+  "fixed_baseline": true,
+  "test_used": false,
+  "kaggle_started_by_assistant": false,
+  "scoped_local_tests_passed": 13,
+  "new_caption_metrics_measured": false,
+  "manual_execution_only": true,
+  "review_archive": "/kaggle/working/learned_caption_ranker_1024_512_review.zip"
+}
