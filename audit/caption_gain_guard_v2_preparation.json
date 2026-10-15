@@ -1,0 +1,16 @@
+{
+  "status": "PREPARED_NOT_RUN",
+  "core_commit": "29b7bb640623bee199c50de784f403c024dbd6a4",
+  "notebook_title": "QFormer UPT Val5000 20261015",
+  "notebook_ref": "ducanh2403/qformer-upt-val5000-20261015",
+  "fit_images": 1024,
+  "tune_images": 128,
+  "calibration_images": 128,
+  "validation_images": 512,
+  "source_cache": "learned_caption_ranker_1024_512/private_features",
+  "scoped_local_tests_passed": 19,
+  "test_used": false,
+  "selective_precision_guaranteed": false,
+  "assistant_started_notebook": false,
+  "review_archive": "/kaggle/working/caption_gain_guard_v2_review.zip"
+}
