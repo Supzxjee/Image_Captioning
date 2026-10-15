@@ -10,6 +10,7 @@ Hướng dẫn đánh giá hallucination cho Q-Former và OCC: [CHAIR_EVALUATION
 - [Đối chứng HOI huấn luyện sẵn](PRETRAINED_HOI_TRANSFER_RESULT.md): UPT HICO-DET đạt **20/20** so với CLIP **17/20** trên cùng các cặp được phủ, nhưng chỉ phủ **20/34**. Đây là tín hiệu nhận biết đối tượng đích, chưa phải cải thiện caption hay đóng góp mới đã xác nhận.
 - [UPT với ngưỡng chọn trên tập riêng](PRETRAINED_HOI_ACCEPTANCE_RESULT.md): 111 ảnh chọn ngưỡng / 128 ảnh đánh giá; AP cùng phần được phủ **0.806 so với CLIP 0.488**. UPT giữ 80 quan hệ đúng / nhận nhầm 16; chuyển nguyên ngưỡng sang nhãn người giữ 13 đúng / 0 sai trên phần đã chấm. Chưa đạt mức chính xác 90% trên tập đánh giá; chưa đo caption.
 - [Full validation caption 5.000 ảnh: đã hoàn tất](HOI_CAPTION_VALIDATION_RESULT.md): fixed re-ranking CIDEr **1.210723**, thêm UPT λ=.1 đạt **1.212580**; chỉ đổi 43 caption. CHAIRs tăng từ **3.56% lên 3.58%**: chưa cải thiện hallucination. Đã tính lại CIDEr/BLEU/ROUGE và tái tổng hợp CHAIR. Khóa λ trước test độc lập; chưa có test mới.
+- [Notebook test 5.000 ảnh, lambda=.1 đã khóa](HOI_CAPTION_TEST_PROTOCOL.md): đã chuẩn bị để người dùng tự chạy; chưa có kết quả test mới.
 - **Thực thi Kaggle do người dùng chủ động bấm chạy.** Trợ lý chuẩn bị/sửa mã và đọc kết quả; không tự khởi chạy hoặc chạy lại notebook.
 - Giữ riêng metric validation/test, kiến trúc/hậu xử lý và kết quả lịch sử/được tái kiểm tra. Chưa thay pipeline caption bằng các head quan hệ thử nhỏ.
 
