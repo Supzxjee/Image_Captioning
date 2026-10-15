@@ -30,6 +30,25 @@ def cohorts(dataset, train_count=20000, val_count=1000):
     return groups
 
 
+def training_arms(cfg):
+    return ('scst', 'scst_ce') if cfg.get('ce_anchor_comparison', False) else ('ce', 'scst')
+
+
+def objective_weights(cfg, arm):
+    if arm not in training_arms(cfg):
+        raise ValueError(f'Unexpected training arm: {arm}')
+    return (float(cfg.get('scst_weight', 1.)) if arm != 'ce' else 0.,
+            float(cfg.get('ce_weight', 1.)) if arm in ('ce', 'scst_ce') else 0.)
+
+
+def caption_ce(model, images, prompt, prompt_mask, captions, masks, pad_idx):
+    target = captions.reshape(-1, captions.size(-1))
+    logits = model(images, prompt, prompt_mask, target[:, :-1],
+                   tgt_key_padding_mask=masks.reshape_as(target)[:, :-1])
+    return torch.nn.functional.cross_entropy(logits.flatten(0, 1), target[:, 1:].reshape(-1),
+                                            ignore_index=pad_idx)
+
+
 def fit(config_path, arm):
     from torch.utils.data import DataLoader, Dataset
     from captioning.config import Config
@@ -38,6 +57,7 @@ def fit(config_path, arm):
     from captioning.checkpoints import load_checkpoint
     from captioning.scst import TrainingCider, rollout, decode, policy_loss
     cfg = json.loads(Path(config_path).read_text(encoding='utf-8'))
+    rl_weight, ce_weight = objective_weights(cfg, arm)
     torch.set_num_threads(2)
     random.seed(42); np.random.seed(42); torch.manual_seed(42); torch.cuda.manual_seed_all(42)
     torch.backends.cuda.matmul.allow_tf32 = False
@@ -52,7 +72,7 @@ def fit(config_path, arm):
     ids = [r['image_id'] for r in cfg['groups']['train']]
     frame = data.train_df.set_index('eval_id', drop=False).loc[ids].reset_index(drop=True)
     references = {int(r['eval_id']): r['captions'] for _, r in frame.iterrows()}
-    reward = TrainingCider(references) if arm == 'scst' else None
+    reward = TrainingCider(references) if rl_weight > 0 else None
     dataset = CocoPromptDataset(frame, data.transform, data.tokenizer, data.prompt_cache, data.visual_cache)
 
     class Indexed(Dataset):
@@ -80,11 +100,7 @@ def fit(config_path, arm):
             optimizer.zero_grad(set_to_none=True)
             record = {'step': step, 'images_seen': min(step*cfg['batch_size'], len(frame))}
             if arm == 'ce':
-                target = captions.reshape(-1, captions.size(-1))
-                logits = model(images, prompt, prompt_mask, target[:, :-1],
-                               tgt_key_padding_mask=masks.reshape_as(target)[:, :-1])
-                loss = torch.nn.functional.cross_entropy(logits.flatten(0, 1), target[:, 1:].reshape(-1),
-                                                        ignore_index=data.tokenizer.pad_idx)
+                loss = ce_weight*caption_ce(model, images, prompt, prompt_mask, captions, masks, data.tokenizer.pad_idx)
             else:
                 with torch.no_grad():
                     memory, padding = model.build_memory(images, prompt, prompt_mask)
@@ -96,13 +112,24 @@ def fit(config_path, arm):
                 advantage = torch.from_numpy(sampled_reward-greedy_reward).cuda()
                 # Recompute with gradients, avoiding retention of 29 rollout graphs.
                 logits = model(images, prompt, prompt_mask, sampled[:, :-1])
-                loss = policy_loss(logits, sampled[:, 1:], active, advantage)
+                rl_loss = policy_loss(logits, sampled[:, 1:], active, advantage)
+                loss = rl_weight*rl_loss
+                record['scst_loss'] = float(rl_loss.detach())
                 record.update(sample_reward=float(sampled_reward.mean()), greedy_reward=float(greedy_reward.mean()),
                               advantage_mean=float(advantage.mean()), advantage_std=float(advantage.std(unbiased=False)),
                               sampled_eos_fraction=float((sampled[:, 1:] == data.tokenizer.eos_idx).any(1).float().mean()))
             if not torch.isfinite(loss):
                 raise FloatingPointError(f'{arm}: nonfinite loss at step {step}')
             loss.backward()
+            if arm == 'scst_ce':
+                # Fresh CE graph after RL backward: accumulate BOTH gradients,
+                # then clip once and take exactly one optimizer step.
+                ce_loss = caption_ce(model, images, prompt, prompt_mask, captions, masks, data.tokenizer.pad_idx)
+                if not torch.isfinite(ce_loss):
+                    raise FloatingPointError(f'Nonfinite CE anchor at step {step}')
+                (ce_weight*ce_loss).backward()
+                record['ce_loss'] = float(ce_loss.detach())
+                loss = loss.detach()+ce_weight*ce_loss.detach()
             grad_norm = torch.nn.utils.clip_grad_norm_(model.parameters(), 1., error_if_nonfinite=True)
             optimizer.step()
             record.update(loss=float(loss.detach()), grad_norm=float(grad_norm), seconds=time.monotonic()-started)
@@ -113,6 +140,7 @@ def fit(config_path, arm):
         payload.update(encoder_state_dict={k: v.detach().cpu() for k, v in model.encoder.state_dict().items()},
                        decoder_state_dict={k: v.detach().cpu() for k, v in model.decoder.state_dict().items()},
                        caption_word2idx=data.tokenizer.word2idx, epoch=1, optimization=arm,
+                       scst_weight=rl_weight, ce_weight=ce_weight,
                        scst_protocol_sha256=sha(config_path), source_checkpoint_sha256=cfg['input_sha256']['checkpoint'])
         payload.pop('optimizer_state_dict', None)
         torch.save(payload, output/'checkpoint.pth.partial')
@@ -120,7 +148,8 @@ def fit(config_path, arm):
         save(output/'training_summary.json', {'arm': arm, 'steps': len(history), 'train_images': len(frame),
              'seconds': time.monotonic()-started, 'checkpoint_sha256': sha(output/'checkpoint.pth'),
              'source_checkpoint_sha256': cfg['input_sha256']['checkpoint'],
-             'protocol_sha256': sha(config_path), 'dropout': False, 'precision': 'fp32'})
+             'protocol_sha256': sha(config_path), 'dropout': False, 'precision': 'fp32',
+             'scst_weight': rl_weight, 'ce_weight': ce_weight})
     finally:
         data.visual_cache.close()
 
@@ -128,14 +157,14 @@ def fit(config_path, arm):
 def train_pair(cfg, protocol, repo):
     processes, streams = [], []
     try:
-        for gpu, arm in enumerate(('ce', 'scst')):
+        for gpu, arm in enumerate(training_arms(cfg)):
             stream = (Path(cfg['output'])/f'{arm}.log').open('w', encoding='utf-8'); streams.append(stream)
             env = {**os.environ, 'CUDA_VISIBLE_DEVICES': str(gpu), 'PYTHONUNBUFFERED': '1', 'HDF5_USE_FILE_LOCKING': 'FALSE'}
             processes.append(subprocess.Popen([sys.executable, '-u', str(repo/'run_scst_comparison.py'),
                 '--worker', arm, '--protocol', str(protocol)], cwd=repo, env=env, stdout=stream, stderr=subprocess.STDOUT))
         positions = [0, 0]; last_heartbeat = time.monotonic()
         while True:
-            for i, arm in enumerate(('ce', 'scst')):
+            for i, arm in enumerate(training_arms(cfg)):
                 with (Path(cfg['output'])/f'{arm}.log').open(encoding='utf-8', errors='replace') as f:
                     f.seek(positions[i]); text = f.read(); positions[i] = f.tell()
                 if text: print(f'[{arm}] {text}', end='', flush=True)
@@ -168,7 +197,7 @@ def evaluate(cfg, repo):
                           for n, r in enumerate(images) for j, s in enumerate(dataset[r['image_id']]['sentences'][:5])]}
     save(output/'val_gt.json', gt)
     metrics = {}
-    for arm in ('original', 'ce', 'scst'):
+    for arm in ('original', *training_arms(cfg)):
         folder = output/arm; folder.mkdir(parents=True, exist_ok=True)
         checkpoint = cfg['checkpoint'] if arm == 'original' else str(folder/'checkpoint.pth')
         worker_cfg = {**cfg, 'output': str(folder), 'checkpoint': checkpoint, 'images': images,
@@ -220,13 +249,17 @@ def run(a):
     if any(value != expected[key] for key, value in input_hashes.items()):
         raise ValueError('Input bytes differ from the previously verified QFormer baseline inputs.')
     cfg = {**paths, 'groups': groups, 'batch_size': a.batch_size, 'lr': a.lr, 'epochs': 1, 'seed': 42,
+           'ce_anchor_comparison': a.ce_anchor_comparison, 'scst_weight': a.scst_weight, 'ce_weight': a.ce_weight,
            'code_commit': subprocess.check_output(['git', 'rev-parse', 'HEAD'], cwd=repo, text=True).strip(),
            'input_sha256': input_hashes,
            'clip_revision': '57c216476eefef5ab752ec549e440a49ae4ae5f3',
            'reward': 'CIDEr-D x10; Treebank normalization; IDF from selected training images only',
            'dropout': False, 'precision': 'fp32', 'test_used': False,
            'budget_matching': 'Same images, order, optimizer/LR and updates; not equal FLOPs or number of captions.',
-           'evaluation': 'original/CE/SCST; same beam5 and fixed .3 decoder/.4 CLIP/.3 OCC; no UPT; no tuning'}
+           'evaluation': 'original plus two training arms; same beam5 and fixed .3 decoder/.4 CLIP/.3 OCC; no UPT; no tuning'}
+    if a.ce_anchor_comparison:
+        cfg['variant'] = 'scst_ce_anchor_v1'
+        cfg['anchor_hypothesis'] = 'Add CE only; same scaled SCST coefficient in both arms; no object/relation rewards.'
     from captioning.visual_cache import VisualCache
     cache = VisualCache([paths['visual_cache']], id_key='coco_id')
     try: cache.require_ids([r['coco_id'] for rows in groups.values() for r in rows], 'SCST comparison')
@@ -237,7 +270,8 @@ def run(a):
     command([sys.executable, '-c', check, paths['chair_directory'], Path(paths['chair_directory'])/'chair.pkl', protocol])
     train_pair(cfg, protocol, repo)
     metrics = evaluate(cfg, repo)
-    scst, ce, original = (metrics[k+'_rank0'] for k in ('scst', 'ce', 'original'))
+    treatment, control = ('scst_ce', 'scst') if a.ce_anchor_comparison else ('scst', 'ce')
+    scst, ce, original = (metrics[k+'_rank0'] for k in (treatment, control, 'original'))
     better = scst['caption']['CIDEr'] > max(ce['caption']['CIDEr'], original['caption']['CIDEr'])
     safe = all(scst['chair'][key] <= min(ce['chair'][key], original['chair'][key]) for key in ('CHAIRs', 'CHAIRi'))
     recall = scst['chair']['Recall'] >= max(ce['chair']['Recall'], original['chair']['Recall'])-.01
@@ -250,6 +284,19 @@ def run(a):
                           'SCST is an established training method, not our claimed contribution.',
                           'CHAIR measures object hallucination, not relation correctness.',
                           'Reward normalization differs from official PTB evaluation; no test-based selection.']}
+    if a.ce_anchor_comparison:
+        # The primary gate is assessed before any test or checkpoint selection.
+        fixed, baseline = metrics['scst_ce_fixed'], metrics['original_fixed']
+        fixed_safe = (fixed['caption']['CIDEr'] >= baseline['caption']['CIDEr'] and
+                      all(fixed['chair'][k] <= baseline['chair'][k] for k in ('CHAIRs', 'CHAIRi')) and
+                      fixed['chair']['Recall'] >= baseline['chair']['Recall']-.01)
+        summary.update(variant=cfg['variant'], treatment=treatment, control=control,
+                       raw_anchor_beats_both_CIDEr=better, raw_anchor_CHAIR_not_worse_than_both=safe,
+                       raw_anchor_recall_within_1pp_of_best=recall,
+                       fixed_not_worse_than_original=fixed_safe,
+                       expansion_gate_passed=bool(better and safe and recall and fixed_safe))
+        for key in ('raw_SCST_beats_both_CIDEr', 'raw_CHAIR_not_worse_than_both', 'raw_recall_within_1pp_of_best'):
+            summary.pop(key)
     save(output/'run_summary.json', summary)
     with zipfile.ZipFile(str(output)+'_review.zip', 'w', zipfile.ZIP_DEFLATED) as z:
         for file in sorted(output.rglob('*')):
@@ -261,7 +308,9 @@ def run(a):
 
 if __name__ == '__main__':
     p = argparse.ArgumentParser(description=__doc__)
-    p.add_argument('--worker', choices=['ce', 'scst']); p.add_argument('--protocol')
+    p.add_argument('--worker', choices=['ce', 'scst', 'scst_ce']); p.add_argument('--protocol')
+    p.add_argument('--ce-anchor-comparison', action='store_true')
+    p.add_argument('--scst-weight', type=float, default=1.); p.add_argument('--ce-weight', type=float, default=1.)
     for k in ('checkpoint', 'prompt-cache-path', 'dataset-json-path', 'base-path', 'visual-cache',
               'detections', 'chair-directory', 'output'): p.add_argument('--'+k)
     p.add_argument('--train-images', type=int, default=20000)
@@ -271,6 +320,8 @@ if __name__ == '__main__':
     if args.worker: fit(args.protocol, args.worker)
     else:
         if args.batch_size < 1 or not 0 < args.lr < 1: p.error('Invalid batch size or LR.')
+        if not (0 < args.scst_weight < float('inf') and 0 < args.ce_weight < float('inf')):
+            p.error('Objective weights must be finite and positive.')
         required = ('checkpoint', 'prompt_cache_path', 'dataset_json_path', 'base_path', 'visual_cache', 'detections', 'chair_directory', 'output')
         if any(not getattr(args, k) for k in required): p.error('All explicit input paths and --output are required.')
         run(args)

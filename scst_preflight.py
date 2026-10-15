@@ -4,10 +4,10 @@ import subprocess
 import sys
 
 
-def run_preflight(repo, log_path='/tmp/scst_preflight.log'):
+def run_preflight(repo, log_path='/tmp/scst_preflight.log', pattern='test_scst.py'):
     repo = Path(repo).resolve()
     args = [sys.executable, '-u', '-m', 'unittest', 'discover', '-s', str(repo/'tests'),
-            '-p', 'test_scst.py', '-v']
+            '-p', pattern, '-v']
     print('SCST preflight:', ' '.join(args), flush=True)
     result = subprocess.run(args, cwd=repo, stdout=subprocess.PIPE,
                             stderr=subprocess.STDOUT, text=True, errors='replace')
@@ -20,4 +20,10 @@ def run_preflight(repo, log_path='/tmp/scst_preflight.log'):
 
 
 if __name__ == '__main__':
+    import argparse
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--include-anchor', action='store_true')
+    args = parser.parse_args()
     run_preflight(Path(__file__).resolve().parent)
+    if args.include_anchor:
+        run_preflight(Path(__file__).resolve().parent, '/tmp/scst_anchor_preflight.log', 'test_scst_anchor.py')

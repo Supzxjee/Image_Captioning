@@ -1,0 +1,25 @@
+{
+  "status": "PREPARED_NOT_RUN",
+  "variant": "scst_ce_anchor_v1",
+  "train_images": 20000,
+  "validation_images": 1000,
+  "updates_per_arm": 2500,
+  "losses": {
+    "scst": {
+      "scst": 0.05,
+      "ce": 0.0
+    },
+    "scst_ce": {
+      "scst": 0.05,
+      "ce": 1.0
+    }
+  },
+  "source_checkpoint": "original QFormer epoch10; not regressed SCST",
+  "local_tests_passed": 16,
+  "test_used": false,
+  "assistant_launched_notebook": false,
+  "new_object_relation_rewards": false,
+  "coefficient_selection": "One provisional fixed setting motivated by observed training gradient scale; no optimality claim",
+  "gradient_accumulation": "RL backward then CE backward, combined clip once, single optimizer step; parity test passed",
+  "training_results": null
+}
