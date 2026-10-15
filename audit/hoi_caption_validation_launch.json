@@ -1,0 +1,30 @@
+{
+  "experiment": "qformer_upt_val5000",
+  "kernel": "ducanh2403/qformer-upt-val5000-20261015",
+  "url": "https://www.kaggle.com/code/ducanh2403/qformer-upt-val5000-20261015",
+  "submitted_version": 1,
+  "project_commit": "6ab447ec65e6f18c7f1b4f7b7ff47ead0de790a6",
+  "requested_accelerator": "NvidiaTeslaT4",
+  "required_visible_gpu_count": 2,
+  "is_private": true,
+  "enable_internet": true,
+  "status_last_observed": "RUNNING",
+  "observed_at_utc": "2026-10-15 07:00:32 UTC",
+  "inference_progress_confirmed": false,
+  "caption_metrics_measured": false,
+  "local_scoped_tests_passed": 24,
+  "cpu_upt_compatibility_replay": "Original22 cache hashes and preprocessing,30601 native cells,and one complete model forward replay exactly.",
+  "dataset_sources": [
+    "vuthetam/mscoco-2014",
+    "ducanh2403/qformer-epoch10",
+    "ducanh2403/prompt-cache",
+    "ducanh2403/visual-cache",
+    "ducanh2403/objectdetectionecache"
+  ],
+  "split": "val",
+  "expected_images": 5000,
+  "training_performed": false,
+  "test_run": false,
+  "expected_review_archive": "/kaggle/working/qformer_upt_val5000_review.zip",
+  "completion_evidence_required": "run_summary.json status VALIDATION_COMPLETE,count5000,allthreecaption/CHAIRresults,lockedvalidationselection;not merely a RUNNING session."
+}
