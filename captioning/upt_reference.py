@@ -97,8 +97,24 @@ def infer(model,pixels):
             subject_indices=h[0].detach().cpu(),object_indices=o[0].detach().cpu())
     handle=model.interaction_head.register_forward_hook(hook)
     try:
-        with torch.inference_mode():result=model([pixels])[0]
+        with torch.inference_mode():results=model([pixels])
     finally:handle.remove()
     captured['size']=torch.tensor(pixels.shape[-2:])
+    if len(results)==0:
+        # The pinned head skips attention-map collection for zero valid pairs.
+        # Upstream postprocessing zips over that empty list and returns [] even
+        # for a single input image. Preserve detections, but report NO evidence.
+        # A nonempty pair inventory with no output is an actual model error.
+        if (not {'logits','subject_indices','object_indices'}.issubset(captured) or captured['logits'].shape[0]!=0 or
+                captured['subject_indices'].numel()!=0 or captured['object_indices'].numel()!=0):
+            raise RuntimeError('UPT returned no image output despite a nonempty or missing pair inventory.')
+        result={'boxes':captured['boxes'],'pairing':torch.empty((2,0),dtype=torch.long),
+                'scores':captured['logits'].new_empty(0),'labels':torch.empty(0,dtype=torch.long),
+                'objects':torch.empty(0,dtype=torch.long),'size':captured['size']}
+        captured['empty_reason']='no_human_object_pairs'
+    elif len(results)==1:
+        result=results[0]
+    else:
+        raise RuntimeError(f'Expected one UPT image output, received {len(results)}.')
     captured['official_output']={k:result[k].detach().cpu() for k in ('boxes','pairing','scores','labels','objects','size')}
     return captured

@@ -5,7 +5,7 @@ from pathlib import Path
 from captioning.hoi_caption_reranking import extract_claims,candidate_evidence,rerank_with_hoi,METHOD
 from captioning.multiscore_reranking import rerank_multiscore
 from captioning.inference_journal import InferenceJournal
-from run_hoi_caption_validation import merge_records
+from run_hoi_caption_validation import merge_records,load_reused_candidates,sha
 
 
 class CaptionHOITests(unittest.TestCase):
@@ -70,6 +70,24 @@ class CaptionHOITests(unittest.TestCase):
             self.assertEqual(len(InferenceJournal(path,{'checkpoint':'abc'},[1,2]).records),2)
             with self.assertRaises(ValueError):InferenceJournal(path,{'checkpoint':'changed'},[1,2])
             with self.assertRaises(ValueError):restored.append({'image_id':2})
+
+    def test_reuse_requires_same_inputs_and_preserves_saved_candidates(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root=Path(tmp);rows=[{'image_id':1,'coco_id':101,'filename':'image.jpg','filepath':'val2014'}]
+            cfg={'images':rows,'visual_shards':[{'name':'part.h5','bytes':42}],
+                 'input_sha256':{'checkpoint':'a','prompt_cache_path':'b','dataset_json_path':'c'},'clip_revision':'pinned'}
+            protocol=root/'protocol.json';protocol.write_text(json.dumps(cfg))
+            meta={'split':'val','count':1,'beam_size':5,'candidate_count':5,'epoch':10,'visual_adapter':'qformer',
+                  'num_visual_queries':32,'qformer_layers':2,'prompt_conditioned_qformer':False,
+                  'clipscore_model':'openai/clip-vit-base-patch16','clipscore_revision':'pinned',
+                  'checkpoint_sha256':'a','protocol_sha256':sha(protocol)}
+            bundle={'metadata':meta,'data':[{**rows[0],'candidates':[{'caption':'a person','logprob':-1.,'clipscore':.7}]}]}
+            source=root/'candidates.json';source.write_text(json.dumps(bundle))
+            self.assertEqual(load_reused_candidates(source,protocol,cfg),bundle)
+            with self.assertRaisesRegex(ValueError,'checkpoint'):
+                load_reused_candidates(source,protocol,{**cfg,'input_sha256':{**cfg['input_sha256'],'checkpoint':'changed'}})
+            bundle['metadata']['clipscore_revision']='different';source.write_text(json.dumps(bundle))
+            with self.assertRaisesRegex(ValueError,'revision'):load_reused_candidates(source,protocol,cfg)
 
 
 if __name__=='__main__':unittest.main()

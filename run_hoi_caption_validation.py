@@ -2,7 +2,9 @@
 import argparse
 import hashlib
 import json
+import math
 import os
+import shutil
 import subprocess
 import sys
 import time
@@ -35,6 +37,31 @@ def merge_records(records, images):
         if any(original[k]!=record[k] for k in ('image_id','coco_id','filename')):
             raise ValueError('Shard identity mismatch.')
     return ordered
+
+
+def load_reused_candidates(source, source_protocol, cfg):
+    """Reuse completed beams/CLIP only after validating their source identity."""
+    old=json.loads(Path(source_protocol).read_text(encoding='utf-8'))
+    bundle=json.loads(Path(source).read_text(encoding='utf-8'))
+    meta=bundle.get('metadata',{})
+    if meta.get('protocol_sha256')!=sha(source_protocol): raise ValueError('Reused candidate protocol hash differs.')
+    for key in ('checkpoint','prompt_cache_path','dataset_json_path'):
+        if old['input_sha256'][key]!=cfg['input_sha256'][key]: raise ValueError(f'Reused {key} differs.')
+    if old['images']!=cfg['images'] or old['visual_shards']!=cfg['visual_shards']:
+        raise ValueError('Reused image IDs/order or visual shards differ.')
+    expected={'split':'val','count':len(cfg['images']),'beam_size':5,'candidate_count':5,
+        'epoch':10,'visual_adapter':'qformer','num_visual_queries':32,'qformer_layers':2,
+        'prompt_conditioned_qformer':False,'clipscore_model':'openai/clip-vit-base-patch16',
+        'clipscore_revision':cfg['clip_revision'],'checkpoint_sha256':cfg['input_sha256']['checkpoint']}
+    if any(meta.get(k)!=v for k,v in expected.items()): raise ValueError('Reused candidate model/split/CLIP revision differs.')
+    records=merge_records(bundle.get('data',[]),cfg['images'])
+    for record in records:
+        candidates=record.get('candidates',[])
+        if not 1<=len(candidates)<=5 or len({c['caption'] for c in candidates})!=len(candidates):
+            raise ValueError('Invalid reused beam candidates.')
+        if any(not math.isfinite(c[k]) for c in candidates for k in ('logprob','clipscore')):
+            raise ValueError('Nonfinite reused candidate score.')
+    return {**bundle,'data':records}
 
 
 def run_workers(cfg, phase, repo):
@@ -184,6 +211,8 @@ def run(a):
         'input_sha256':input_hashes,'project_commit':subprocess.check_output(['git','rev-parse','HEAD'],cwd=repo,text=True).strip(),
         'reference_revisions':refs,'method':METHOD,'split':'val','beam_size':5,'candidate_count':5,
         'base_weights':[.3,.4,.3],'upt_grid':[0.,.05,.1,.2],
+        'reuse_scored_sha256':sha(a.reuse_scored_candidates) if a.reuse_scored_candidates else None,
+        'reuse_protocol_sha256':sha(a.reuse_protocol) if a.reuse_protocol else None,
         'clip_revision':'57c216476eefef5ab752ec549e440a49ae4ae5f3',
         'visual_shards':[{'name':p.name,'bytes':p.stat().st_size} for p in sorted(Path(paths['visual_cache']).glob('*.h5'))],
         'ground_truth_use':'Metrics and validation weight selection only; never HOI extraction.',
@@ -193,21 +222,30 @@ def run(a):
     if protocol.exists() and json.loads(protocol.read_text())!=cfg: raise ValueError('Run inputs changed; choose a fresh output directory.')
     save(protocol,cfg)
     gt=output/'val_gt.json';save(gt,{'info':{},'licenses':[],'type':'captions','images':[{'id':r['image_id']} for r in images],'annotations':annotations})
-    beam_records=run_workers(cfg,'beams',repo)
     metadata={'split':'val','count':len(images),'beam_size':5,'candidate_count':5,'visual_adapter':'qformer','epoch':10,
         'num_visual_queries':32,'qformer_layers':2,'prompt_conditioned_qformer':False,'protocol_sha256':sha(protocol),'checkpoint_sha256':input_hashes['checkpoint']}
-    raw=output/'val_beam5_candidates.json';save(raw,{'metadata':metadata,'data':beam_records})
     scored=output/'val_beam5_clipscore_candidates.json'
-    command([sys.executable,'-u',repo/'score_clip_candidates.py','--candidates',raw,'--visual-cache',paths['visual_cache'],'--output',scored,'--device','cuda','--revision',cfg['clip_revision']])
+    if a.reuse_scored_candidates:
+        load_reused_candidates(a.reuse_scored_candidates,a.reuse_protocol,cfg)
+        if Path(a.reuse_scored_candidates).resolve()!=scored.resolve(): shutil.copyfile(a.reuse_scored_candidates,scored)
+        print(f'Reused verified beam5+CLIP candidates for {len(images)} images; starting UPT.',flush=True)
+    else:
+        beam_records=run_workers(cfg,'beams',repo)
+        raw=output/'val_beam5_candidates.json';save(raw,{'metadata':metadata,'data':beam_records})
+        command([sys.executable,'-u',repo/'score_clip_candidates.py','--candidates',raw,'--visual-cache',paths['visual_cache'],'--output',scored,'--device','cuda','--revision',cfg['clip_revision']])
     upt_cfg={**cfg,'clip_candidates':str(scored),'clip_candidates_sha256':sha(scored)}
     upt_records=run_workers(upt_cfg,'upt',repo)
     for original,record in zip(json.loads(scored.read_text())['data'],upt_records):
         if [{k:v for k,v in c.items() if k!='hoi_evidence'} for c in record['candidates']]!=original['candidates']: raise ValueError('UPT changed beam candidates or base scores.')
-    bundle={'metadata':{**json.loads(scored.read_text())['metadata'],'hoi_method':METHOD},'data':upt_records}
+    bundle={'metadata':{**json.loads(scored.read_text())['metadata'],'hoi_method':METHOD,
+        'validation_protocol_sha256':sha(protocol)},'data':upt_records}
     save(output/'val_hoi_candidates.json',bundle)
     result=score_and_select(bundle,gt,paths['detections'],output,Path(paths['chair_directory']))
     result.update(count=len(images),split='val',status='VALIDATION_COMPLETE',protocol_sha256=sha(protocol),
         caption_candidate_integrity_verified=True,training_performed=False,test_run=False,
+        upt_coverage={'images_without_pairs':sum(r.get('hoi_pair_count')==0 for r in upt_records),
+            'images_with_available_parsed_claim':sum(any(c['hoi_evidence']['available_claims'] for c in r['candidates']) for r in upt_records),
+            'images_with_nonzero_relation_feature':sum(any(c['hoi_evidence']['feature']!=0 for c in r['candidates']) for r in upt_records)},
         production_promotion=False,limitations=['Validation-tuned results; independent test pending.','Heuristic lexical parsing with partial coverage.','Existential person/object-class support does not identify caption instance or validate attributes.','Missing detections/unsupported ontology are neutral, not evidence of absence.','HICO and COCO pretraining overlap not exhaustively audited.'])
     save(output/'run_summary.json',result)
     archive=output.parent/(output.name+'_review.zip')
@@ -221,6 +259,8 @@ if __name__=='__main__':
     p=argparse.ArgumentParser()
     for name in ('checkpoint','prompt-cache-path','dataset-json-path','base-path','visual-cache','detections','upt-directory','pocket-directory','upt-checkpoint','chair-directory','output'):p.add_argument('--'+name,required=True)
     p.add_argument('--workers',type=int,default=2);p.add_argument('--limit',type=int,default=0)
+    p.add_argument('--reuse-scored-candidates',default='');p.add_argument('--reuse-protocol',default='')
     args=p.parse_args()
     if args.workers<1 or args.limit<0:p.error('Invalid worker count or limit.')
+    if bool(args.reuse_scored_candidates)!=bool(args.reuse_protocol):p.error('Reuse requires both candidates and their source protocol.')
     run(args)

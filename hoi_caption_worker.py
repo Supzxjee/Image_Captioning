@@ -66,7 +66,9 @@ def run(a):
             inventory = evidence_inventory(prediction,metadata['objects'],metadata['verbs'],correspondence)
             record = lookup[image['image_id']]
             enriched = [{**c,'hoi_evidence':candidate_evidence(c['caption'],inventory)} for c in record['candidates']]
-            journal.append({**record,'candidates':enriched})
+            journal.append({**record,'candidates':enriched,
+                'hoi_image_status':prediction.get('empty_reason','evaluated'),
+                'hoi_pair_count':len(prediction['subject_indices'])})
             if len(journal.records)%10 == 0: print(f'upt {a.rank}: {len(journal.records)}/{len(image_rows)} | {time.monotonic()-started:.1f}s',flush=True)
     print(f'{a.phase} shard {a.rank} COMPLETE: {len(journal.records)}',flush=True)
 

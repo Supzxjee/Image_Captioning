@@ -40,3 +40,11 @@ Report caption length, explicit object mentions, parsed-action coverage and chan
 Validation metrics are used for selection and are not an independent test result. Freeze `locked_validation_selection.json` before a separate test run. Historical **test** CIDEr 1.221815 from fixed reranking must not be numerically compared to new **validation** CIDEr as if they were the same split. HICO/COCO pretraining overlap and partial lexical coverage remain limitations.
 
 The compact review archive contains predictions, candidate evidence, metrics, transitions, protocols, journals and logs. It excludes model checkpoints and visual caches. A run is complete only when `run_summary.json` reports `VALIDATION_COMPLETE`; a created notebook or active session is not a completed result.
+
+## Empty-output correction and manual rerun
+
+Version1 completed beam generation and CLIP scoring for all5000 images, then failed in UPT. When no valid human/object pair exists, the pinned interaction head omits attention maps; upstream postprocessing can consequently return an empty image-output list. The wrapper previously indexed `[0]` unconditionally.
+
+The corrected wrapper returns correctly shaped empty relation tensors **only when the captured pair inventory is also empty**. It keeps the image/detections and assigns unknown/neutral relation evidence; it never invents a negative label or drops an image. Missing output with nonempty pairs remains an error. Other model exceptions propagate, and hooks are removed in every path. Workers record pair counts and empty-image status; the final summary reports coverage.
+
+The updated notebook writes to `qformer_upt_val5000_fixed`. The user starts it manually; it has not been resubmitted automatically. If previous completed scored candidates and their protocol are present at the explicit old working directory, it reuses them automatically. Otherwise the user can fill `REUSE_SCORED_CANDIDATES` and `REUSE_SOURCE_PROTOCOL` with the two recovered JSON paths. The runner verifies the source protocol hash, checkpoint/prompt/dataset hashes, full image identities, visual-shard sizes and pinned CLIP revision before reuse. It then starts at UPT instead of recomputing the beams and CLIP scores. Leaving both paths unset with no previous output starts the complete pipeline.

@@ -1,0 +1,25 @@
+{
+  "filename": "COCO_val2014_000000074331.jpg",
+  "source_url": "http://images.cocodataset.org/val2014/COCO_val2014_000000074331.jpg",
+  "image_sha256": "960c62ab6a8924b1f314a11d2808ebb278a097fdf0da2b78fb53bc8c6de502c2",
+  "original_upstream_output_length": 0,
+  "fixed_pair_count": 0,
+  "fixed_status": "no_human_object_pairs",
+  "empty_evidence_is_neutral": true,
+  "real_frozen_model_regression": "PASS",
+  "execution": "Local CPU regression on exact image identified from failed GPU journal; no notebook started.",
+  "scoped_tests_passed": 29,
+  "normal_cases_replay": {
+    "cache_images": 22,
+    "official_cells": 30601,
+    "one_full_model_forward_exact": true
+  },
+  "recovered_candidates": {
+    "images": 5000,
+    "candidate_sha256": "fe73c6ce43bf721ecf635f882702068560b58685f7d3389ccc2a09303f479565",
+    "source_protocol_sha256": "0c893cd3ec11e3b75a997f91ed514f70714a6e84da91d18a565d99387e6b2e91",
+    "recovery_zip_bytes": 1188529
+  },
+  "automatic_notebook_execution": false,
+  "full_validation_metrics_measured": false
+}
