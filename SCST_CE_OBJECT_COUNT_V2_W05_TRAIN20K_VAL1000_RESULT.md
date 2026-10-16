@@ -47,4 +47,4 @@ All intervals include zero. These are conditional on one checkpoint pair and thi
 
 Keep both weight1.0 (lower hallucination) and weight0.5 (closer fixed CIDEr) checkpoints as exploratory candidates. Stop coefficient tuning on this same1000-image pool for now. Before any full-training expansion or test-based claim, validate stability with another training seed using locked weight0.5 and the same original/control comparison. If broader validation is later used, separate the already-inspected1000 images from the remaining4000 and report both; do not present tuning-set selection as independent confirmation. No next notebook was prepared or launched during this review.
 
-Google Sheet synchronization is pending: the Google Drive/Sheets connector is unavailable in this session. Existing R124 and metric cells have not been changed; the local audit JSON contains the exact results for a future update.
+Google Sheet synchronization was initially unavailable during this review. In the subsequent candidate-headroom audit session, the connector became available and R124 plus metric rows M60–M65 were updated from the audited results.
