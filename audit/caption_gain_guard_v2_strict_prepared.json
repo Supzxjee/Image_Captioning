@@ -1,0 +1,16 @@
+{
+  "status": "PREPARED_NOT_GPU_RUN",
+  "core_commit": "205d59e5381d7563b6c47067afc1acaf1fc2c71b",
+  "local_tests_passed": 11,
+  "generator": "original QFormer epoch10, frozen;notSCST",
+  "fit": 1024,
+  "tune": 128,
+  "calibration": 128,
+  "validation": 512,
+  "source_cache": "V1fullfeaturecache reused when complete;else frozenfeatures regenerated",
+  "primary": "regional_guarded",
+  "strict_runtime": "heads and newly regenerated features;oldcache generation runtime unchanged",
+  "assistant_notebook_submitted": false,
+  "validation_reused": true,
+  "quality_improvement_demonstrated": false
+}
