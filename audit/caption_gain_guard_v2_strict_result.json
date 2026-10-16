@@ -1,0 +1,250 @@
+{
+  "status": "AUDIT_PASS",
+  "source_sha256": "d13af9ca31ea70e5b08a1aafc9069c6d6bc6ce861f52a8af23ba4d17ab870bc6",
+  "source_bytes": 3830113,
+  "head_checks": {
+    "scores": {
+      "strict_load": true,
+      "finite": true,
+      "selected_epoch": 0,
+      "correction": 0.0
+    },
+    "global": {
+      "strict_load": true,
+      "finite": true,
+      "selected_epoch": 6,
+      "correction": 0.7941412687340579
+    },
+    "regional": {
+      "strict_load": true,
+      "finite": true,
+      "selected_epoch": 6,
+      "correction": 0.6996155361919687
+    }
+  },
+  "metrics": {
+    "fixed": {
+      "caption": {
+        "Bleu_1": 0.7630887406507452,
+        "Bleu_2": 0.609772864831266,
+        "Bleu_3": 0.4790622572521957,
+        "Bleu_4": 0.3729162858397679,
+        "METEOR": 0.2932248623607317,
+        "ROUGE_L": 0.5803270317957043,
+        "CIDEr": 1.2636984037233396
+      },
+      "chair": {
+        "CHAIRs": 0.03125,
+        "CHAIRi": 0.02216427640156454,
+        "Recall": 0.44090630740967546
+      },
+      "changed": 0,
+      "hallucinated_captions": 16,
+      "hallucinated_mentions": 17,
+      "CIDEr_delta_vs_fixed": 0.0,
+      "changed_images_improve_decline_tie": [
+        0,
+        0,
+        0
+      ],
+      "hallucination_removed": 0,
+      "hallucination_introduced": 0
+    },
+    "scores_raw": {
+      "caption": {
+        "Bleu_1": 0.7630887406507452,
+        "Bleu_2": 0.609772864831266,
+        "Bleu_3": 0.4790622572521957,
+        "Bleu_4": 0.3729162858397679,
+        "METEOR": 0.2932248623607317,
+        "ROUGE_L": 0.5803270317957043,
+        "CIDEr": 1.2636984037233396
+      },
+      "chair": {
+        "CHAIRs": 0.03125,
+        "CHAIRi": 0.02216427640156454,
+        "Recall": 0.44090630740967546
+      },
+      "changed": 0,
+      "hallucinated_captions": 16,
+      "hallucinated_mentions": 17,
+      "CIDEr_delta_vs_fixed": 0.0,
+      "changed_images_improve_decline_tie": [
+        0,
+        0,
+        0
+      ],
+      "hallucination_removed": 0,
+      "hallucination_introduced": 0
+    },
+    "scores_guarded": {
+      "caption": {
+        "Bleu_1": 0.7630887406507452,
+        "Bleu_2": 0.609772864831266,
+        "Bleu_3": 0.4790622572521957,
+        "Bleu_4": 0.3729162858397679,
+        "METEOR": 0.2932248623607317,
+        "ROUGE_L": 0.5803270317957043,
+        "CIDEr": 1.2636984037233396
+      },
+      "chair": {
+        "CHAIRs": 0.03125,
+        "CHAIRi": 0.02216427640156454,
+        "Recall": 0.44090630740967546
+      },
+      "changed": 0,
+      "hallucinated_captions": 16,
+      "hallucinated_mentions": 17,
+      "CIDEr_delta_vs_fixed": 0.0,
+      "changed_images_improve_decline_tie": [
+        0,
+        0,
+        0
+      ],
+      "hallucination_removed": 0,
+      "hallucination_introduced": 0
+    },
+    "global_raw": {
+      "caption": {
+        "Bleu_1": 0.7673758865246672,
+        "Bleu_2": 0.6144337316206784,
+        "Bleu_3": 0.480742520172644,
+        "Bleu_4": 0.37042665641986283,
+        "METEOR": 0.2881356665913261,
+        "ROUGE_L": 0.5755275269592433,
+        "CIDEr": 1.2512449899297606
+      },
+      "chair": {
+        "CHAIRs": 0.052734375,
+        "CHAIRi": 0.03593556381660471,
+        "Recall": 0.45744029393753827
+      },
+      "changed": 254,
+      "hallucinated_captions": 27,
+      "hallucinated_mentions": 29,
+      "CIDEr_delta_vs_fixed": -0.012453413793579234,
+      "changed_images_improve_decline_tie": [
+        125,
+        122,
+        7
+      ],
+      "hallucination_removed": 2,
+      "hallucination_introduced": 13
+    },
+    "global_guarded": {
+      "caption": {
+        "Bleu_1": 0.7627803596684657,
+        "Bleu_2": 0.6093711824269298,
+        "Bleu_3": 0.4786328840887518,
+        "Bleu_4": 0.3724556214117383,
+        "METEOR": 0.29314280769394074,
+        "ROUGE_L": 0.580198691893252,
+        "CIDEr": 1.2626300653011144
+      },
+      "chair": {
+        "CHAIRs": 0.03125,
+        "CHAIRi": 0.022135416666666668,
+        "Recall": 0.4415186772810778
+      },
+      "changed": 1,
+      "hallucinated_captions": 16,
+      "hallucinated_mentions": 17,
+      "CIDEr_delta_vs_fixed": -0.001068338422225212,
+      "changed_images_improve_decline_tie": [
+        0,
+        1,
+        0
+      ],
+      "hallucination_removed": 0,
+      "hallucination_introduced": 0
+    },
+    "regional_raw": {
+      "caption": {
+        "Bleu_1": 0.7677523770987724,
+        "Bleu_2": 0.615438681028025,
+        "Bleu_3": 0.48135635245027447,
+        "Bleu_4": 0.3684546959696141,
+        "METEOR": 0.2886347212687595,
+        "ROUGE_L": 0.5754724570503875,
+        "CIDEr": 1.241589190111612
+      },
+      "chair": {
+        "CHAIRs": 0.0546875,
+        "CHAIRi": 0.03722084367245657,
+        "Recall": 0.4556031843233313
+      },
+      "changed": 256,
+      "hallucinated_captions": 28,
+      "hallucinated_mentions": 30,
+      "CIDEr_delta_vs_fixed": -0.022109213611727626,
+      "changed_images_improve_decline_tie": [
+        122,
+        127,
+        7
+      ],
+      "hallucination_removed": 2,
+      "hallucination_introduced": 14
+    },
+    "regional_guarded": {
+      "caption": {
+        "Bleu_1": 0.7627803596684657,
+        "Bleu_2": 0.6093711824269298,
+        "Bleu_3": 0.4787705013718063,
+        "Bleu_4": 0.3725359352970337,
+        "METEOR": 0.29314888857459787,
+        "ROUGE_L": 0.5801121737143636,
+        "CIDEr": 1.2624882868150964
+      },
+      "chair": {
+        "CHAIRs": 0.033203125,
+        "CHAIRi": 0.02340702210663199,
+        "Recall": 0.4415186772810778
+      },
+      "changed": 2,
+      "hallucinated_captions": 17,
+      "hallucinated_mentions": 18,
+      "CIDEr_delta_vs_fixed": -0.0012101169082434386,
+      "changed_images_improve_decline_tie": [
+        0,
+        2,
+        0
+      ],
+      "hallucination_removed": 0,
+      "hallucination_introduced": 1
+    }
+  },
+  "guarded_changes": [
+    {
+      "mode": "global",
+      "image_id": 5072,
+      "baseline": "a clock hanging from a wall next to a window.",
+      "selected": "a clock hanging on a wall next to a bottle of wine.",
+      "predicted_gain": 0.929934561252594,
+      "validation_IDF_actual_CIDEr_gain": -0.5469892721793086
+    },
+    {
+      "mode": "regional",
+      "image_id": 5072,
+      "baseline": "a clock hanging from a wall next to a window.",
+      "selected": "a clock hanging on a wall next to a bottle of wine.",
+      "predicted_gain": 0.8065178990364075,
+      "validation_IDF_actual_CIDEr_gain": -0.5469892721793086
+    },
+    {
+      "mode": "regional",
+      "image_id": 33157,
+      "baseline": "a cat sitting on the floor in front of a window.",
+      "selected": "a cat standing in a living room next to a dog.",
+      "predicted_gain": 0.7311428785324097,
+      "validation_IDF_actual_CIDEr_gain": -0.07259058484133196
+    }
+  ],
+  "expansion_gate_passed": false,
+  "feature_cache_regenerated": true,
+  "limits": [
+    "Feature tensors absent: no independent feature hash/model forward replay.",
+    "Full train references absent: train IDF/target creation not independently rebuilt; calibration arithmetic rechecked.",
+    "METEOR cross-checked only; CHAIR reaggregated from supplied labels, not retokenized.",
+    "Repeated validation512;development result only;no new GPU run or training."
+  ]
+}
