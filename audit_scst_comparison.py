@@ -194,6 +194,7 @@ def run(source, output, prior_review=None, replay_review=None):
                     all(f['chair'][k] <= c['chair'][k] for k in ('CHAIRs', 'CHAIRi')) and f['chair']['Recall'] >= c['chair']['Recall']-.01)
         assert bool(summary['expansion_gate_passed']) == all(gate.values())
         control_repeat = None
+        coefficient_comparison = None
         if anchored or object_variant:
             prior_path = Path(__file__).parent/'audit'/('scst_ce_object_count_v2_train20k_val1000_result.json'
                 if count_v2 and cfg['object_reward_weight'] == .5 else
@@ -218,6 +219,29 @@ def run(source, output, prior_review=None, replay_review=None):
                             control_repeat[policy] = {'changed_captions': sum(a['caption'] != b['caption'] for a, b in zip(old, new)),
                                 'CIDEr_previous': prior['metrics'][control+'_'+policy]['caption']['CIDEr'],
                                 'CIDEr_current': results[control+'_'+policy]['caption']['CIDEr']}
+                    if count_v2 and cfg['object_reward_weight'] == .5:
+                        assert {k: v for k, v in before.items() if k not in ('output', 'train_object_targets', 'object_reward_weight')} == {
+                            k: v for k, v in cfg.items() if k not in ('output', 'train_object_targets', 'object_reward_weight')}
+                        assert before['object_reward_weight'] == 1.
+                        assert previous.read('train_object_targets.json') == z.read('train_object_targets.json')
+                        old_history = json.loads(previous.read(control+'/history.json'))
+                        new_history = read(control+'/history.json')
+                        assert [{k: v for k, v in r.items() if k != 'seconds'} for r in old_history] == [
+                            {k: v for k, v in r.items() if k != 'seconds'} for r in new_history]
+                        assert all(v['changed_captions'] == 0 for v in control_repeat.values())
+                        coefficient_comparison = {'only_training_setting_changed': 'object_reward_weight1.0->0.5',
+                            'control2500_history_exact_except_seconds': True, 'control_predictions_exact': True,
+                            'target_bytes_exact': True, 'policies': {}}
+                        for policy in ('rank0', 'fixed'):
+                            old_predictions = json.loads(previous.read(f'{treatment}/{policy}_predictions.json'))
+                            old_tokens = tokenizer.tokenize({p['image_id']: [{'caption': p['caption']}] for p in old_predictions})
+                            old_score, old_per_image = Cider().compute_score(refs, old_tokens)
+                            assert abs(old_score-prior['metrics'][treatment+'_'+policy]['caption']['CIDEr']) < 1e-10
+                            delta = per_image[treatment+'_'+policy]-np.asarray(old_per_image)
+                            rng = np.random.default_rng(20261015)
+                            ci = np.percentile([delta[rng.integers(0, 1000, 1000)].mean() for _ in range(5000)], [2.5, 97.5])
+                            coefficient_comparison['policies'][policy] = {'CIDEr_delta_w05_minus_w1': float(delta.mean()),
+                                'conditional_bootstrap_95': ci.tolist()}
         replay_check = None
         if replay_review:
             assert count_v2
@@ -241,6 +265,7 @@ def run(source, output, prior_review=None, replay_review=None):
                   'object_target_checks': target_checks, 'previous_control_repeat': control_repeat,
                   'prior_control_comparison_is_not_repeat_test': count_v2,
                   'strict_control_vs_replay32': replay_check,
+                  'coefficient_comparison': coefficient_comparison,
                   'gate_components': gate, 'expansion_gate_passed': all(gate.values()), 'test_used': False,
                   'previous_review_cohort_inputs_and_original_captions_exact_match': bool((anchored or object_variant) and prior_review),
                   'verification_limits': ['Model weights absent: actual model load/parameter hashes not independently replayed.',
