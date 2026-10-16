@@ -66,7 +66,9 @@ def run(source, output, prior_review=None, replay_review=None):
             if count_v2:
                 assert targets['metadata']['parser_version'] == 'aliases_v2'
                 assert targets['metadata']['penalty_version'] == 'unique_count_v2'
-            assert cfg['object_reward_weight'] == summary['object_reward_weight'] == 1.
+            allowed_weights = (1., .5) if count_v2 else (1.,)
+            assert cfg['object_reward_weight'] == summary['object_reward_weight']
+            assert cfg['object_reward_weight'] in allowed_weights
             target_checks = {'target_sha256': cfg['train_object_targets_sha256'], 'train_rows': 20000,
                              'reward_eligible': targets['metadata']['reward_eligible_images'],
                              'unavailable_object_reward': sum(not r['supported'] for r in targets['data']),
@@ -97,7 +99,7 @@ def run(source, output, prior_review=None, replay_review=None):
                 assert trained['ce_weight'] == (1. if arm in ('scst_ce', 'scst_ce_object') else 0.)
                 assert all(abs(r['loss']-(.05*r['scst_loss']+r.get('ce_loss', 0.))) < 1e-5 for r in history)
             if object_variant:
-                obj_weight = 1. if arm == 'scst_ce_object' else 0.
+                obj_weight = cfg['object_reward_weight'] if arm == 'scst_ce_object' else 0.
                 assert trained['object_reward_weight'] == obj_weight
                 assert all(abs(r['sample_reward']-r['sample_cider_reward']-obj_weight*r.get('sample_object_reward', 0.)) < 1e-6 and
                            abs(r['greedy_reward']-r['greedy_cider_reward']-obj_weight*r.get('greedy_object_reward', 0.)) < 1e-6 and
@@ -193,7 +195,9 @@ def run(source, output, prior_review=None, replay_review=None):
         assert bool(summary['expansion_gate_passed']) == all(gate.values())
         control_repeat = None
         if anchored or object_variant:
-            prior_path = Path(__file__).parent/'audit'/('scst_ce_object_train20k_val1000_result.json' if count_v2 else
+            prior_path = Path(__file__).parent/'audit'/('scst_ce_object_count_v2_train20k_val1000_result.json'
+                if count_v2 and cfg['object_reward_weight'] == .5 else
+                'scst_ce_object_train20k_val1000_result.json' if count_v2 else
                 'scst_ce_anchor_train20k_val1000_result.json' if object_variant else 'scst_comparison_train20k_val1000_result.json')
             prior = json.loads(prior_path.read_text())
             assert all(results[k]['caption'] == prior['metrics'][k]['caption'] and results[k]['chair'] == prior['metrics'][k]['chair']

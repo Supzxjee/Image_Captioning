@@ -1,0 +1,24 @@
+{
+  "status": "PREPARED_NOT_GPU_RUN",
+  "training_core_commit": "7a31327199bfd49684f5eb2b39bb2f7774795919",
+  "changed_training_setting_only": "object_reward_weight1.0->0.5",
+  "output": "/kaggle/working/qformer_scst_ce_object_count_v2_w05_train20k_val1000",
+  "local_checks": [
+    "exact launcher delta: coefficient/output/banner only",
+    "Python syntax",
+    "notebook equals launcher, unexecuted",
+    "weight0.5 halves object contribution; weight0 preserves CIDEr; count cannot be diluted by supported background"
+  ],
+  "train_images": 20000,
+  "validation_images": 1000,
+  "updates_per_arm": 2500,
+  "train_schedule": "sequential fresh processes onGPU0 with strict runtime",
+  "scst_weight": 0.05,
+  "ce_weight": 1.0,
+  "object_reward_weight": 0.5,
+  "parser": "aliases_v2",
+  "penalty": "unique_count_v2",
+  "assistant_notebook_submitted": false,
+  "quality_metrics_measured": false,
+  "exploratory_validation_tuning": true
+}
