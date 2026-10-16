@@ -1,0 +1,28 @@
+{
+  "status": "PREPARED_NOT_GPU_RUN",
+  "core_commit": "025c5597568800d3ef13ad0d62080a1541efebcd",
+  "local_tests_passed": 50,
+  "train_images": 113287,
+  "epochs": 1,
+  "batch_size": 8,
+  "updates_per_arm": 14161,
+  "snapshot_update": 7081,
+  "arms": [
+    "scst_ce",
+    "scst_ce_object"
+  ],
+  "object_reward_weight": 0.5,
+  "scst_weight": 0.05,
+  "ce_weight": 1.0,
+  "train_schedule": "strict sequentialGPU0",
+  "reward_idf": "all113287trainreferences,fixed",
+  "reference_vector_cache_images": 256,
+  "selection": "fixedCIDErmaxamongoriginal/mid/endon1000val,CHAIRs/i<=original,recall>=original-.01,earliertie,baselinefallback",
+  "evaluation": "lockedselectionthenremaining4000val,separatecorpusmetrics",
+  "test_used": false,
+  "validation_never_seen_claim": false,
+  "quality_improvement_demonstrated": false,
+  "gpu_ram_runtime_measured": false,
+  "assistant_notebook_submitted": false,
+  "training_resume_supported": false
+}
