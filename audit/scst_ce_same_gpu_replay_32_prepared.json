@@ -1,0 +1,20 @@
+{
+  "status": "PREPARED_NOT_GPU_RUN",
+  "core_commit": "ac672acabbd2c79ab21898129f354a651ac65a3d",
+  "local_tests": {
+    "passed": 42,
+    "gpu_verified": false,
+    "scope": "CPU unit tests, real cached-QFormer CPU rollout/backward with unused CLIPModel import stub, comparator fixtures and tiny CPU replay; no real Kaggle inputs or T4 run"
+  },
+  "launch_policy": "User runs notebook manually; no notebook submitted",
+  "budget": {
+    "repeats": 2,
+    "updates_per_repeat": 32,
+    "batch_size": 8,
+    "train_images_for_reward_idf": 20000,
+    "gpu": "0 for both repeats, sequential fresh processes"
+  },
+  "objective": "CE + 0.05 SCST(CIDEr), no object reward",
+  "checkpoint_saved": false,
+  "quality_metrics_measured": false
+}
