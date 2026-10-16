@@ -9,6 +9,8 @@ from captioning.inference_journal import InferenceJournal
 
 def run(a):
     cfg=json.loads(Path(a.config).read_text());out=Path(cfg['output'])
+    from captioning.scst_runtime import configure_strict_runtime
+    configure_strict_runtime(cfg.get('strict_reproducibility',False))
     torch.set_num_threads(2);torch.manual_seed(42)
     torch.backends.cuda.matmul.allow_tf32=False;torch.backends.cudnn.allow_tf32=False
     if not torch.cuda.is_available():raise RuntimeError('Worker requires GPU.')

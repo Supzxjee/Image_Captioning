@@ -89,10 +89,16 @@ def fit(mode,train,tune,labels,tune_labels,out):
 
 
 def run(a):
+    from captioning.scst_runtime import configure_strict_runtime, runtime_manifest
+    configure_strict_runtime(getattr(a,'strict_reproducibility',False))
+    out=Path(a.output)
+    if (out/'protocol.json').exists() or (out/'run_summary.json').exists():
+        raise FileExistsError('Use a fresh gain-pilot output; completed or started runs are not overwritten.')
     if not torch.cuda.is_available():raise RuntimeError('GPU required.')
     torch.set_num_threads(2);torch.manual_seed(42)
     torch.backends.cuda.matmul.allow_tf32=False;torch.backends.cudnn.allow_tf32=False
-    out=Path(a.output);out.mkdir(parents=True,exist_ok=True);repo=Path(__file__).resolve().parent
+    out.mkdir(parents=True,exist_ok=True);repo=Path(__file__).resolve().parent
+    save(out/'runtime.json',runtime_manifest())
     dataset=json.loads(Path(a.dataset_json_path).read_text())
     cfg,records,source,regenerated=source_cache(a,dataset)
     identity=json.loads((repo/'audit/hoi_validation_input_identity.json').read_text())['input_sha256']
@@ -114,6 +120,9 @@ def run(a):
         'primary_policy':'regional_guarded','chair_revision':chair_revision,'test_used':False,
         'validation_scope':'same inspected512 images;development only,not independent confirmation',
         'seed':42,'epochs':10,'lr':.001,'weight_decay':.0001,'batch_size':8,
+        'strict_reproducibility':getattr(a,'strict_reproducibility',False),
+        'frozen_generator':'original QFormer epoch10; not SCST count0.5',
+        'cache_runtime_scope':'Existing cache retains its generation runtime; strict flag controls heads and newly regenerated features only.',
         'gate':'guarded regional CIDEr>=fixed+.005,CHAIRs/i<=fixed,Recall>=fixed-.01,CIDEr>guarded scores/global'}
     pp=out/'protocol.json'
     if pp.exists() and json.loads(pp.read_text())!=protocol:raise ValueError('Changed protocol;choose fresh output.')
@@ -177,5 +186,6 @@ def run(a):
 if __name__=='__main__':
     p=argparse.ArgumentParser();p.add_argument('--source',required=True)
     p.add_argument('--regenerate-features',action='store_true')
+    p.add_argument('--strict-reproducibility',action='store_true')
     for n in ('checkpoint','prompt-cache-path','dataset-json-path','base-path','visual-cache','detections','chair-directory','output'):p.add_argument('--'+n,required=True)
     run(p.parse_args())

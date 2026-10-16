@@ -133,6 +133,7 @@ def prepare_features(a):
          'learning_rate':.001,'loss':'CIDEr-weighted pairwise softplus + .01 residual-square; CIDEr preferences not verified negatives',
          'test_used':False,'qformer_or_CLIP_training':False,'manual_execution_only':True}
     protocol=output/'protocol.json'
+    if getattr(a,'strict_reproducibility',False):cfg['strict_reproducibility']=True
     if protocol.exists() and json.loads(protocol.read_text())!=cfg:raise ValueError('Changed protocol;use fresh output directory.')
     save(protocol,cfg)
     beam=run_workers(cfg,'beams',repo,worker_script='learned_ranker_worker.py')
