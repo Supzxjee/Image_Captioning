@@ -78,7 +78,7 @@ def fit(config_path, arm):
     ids = [r['image_id'] for r in cfg['groups']['train']]
     frame = data.train_df.set_index('eval_id', drop=False).loc[ids].reset_index(drop=True)
     references = {int(r['eval_id']): r['captions'] for _, r in frame.iterrows()}
-    reward = TrainingCider(references) if rl_weight > 0 else None
+    reward = TrainingCider(references, cfg.get('reward_reference_cache_size')) if rl_weight > 0 else None
     object_reward = None
     object_weight = cfg.get('object_reward_weight', 0.) if arm == 'scst_ce_object' else 0.
     if object_weight:
@@ -192,6 +192,20 @@ def fit(config_path, arm):
                      'final_model_sha256': model_digest(model), 'optimizer_sha256': state_digest(optimizer.state_dict()),
                      'diagnostic_only': True, 'checkpoint_saved': False})
                 return
+            if step in cfg.get('snapshot_steps', []):
+                snapshot = dict(payload)
+                snapshot.update(encoder_state_dict={k: v.detach().cpu() for k,v in model.encoder.state_dict().items()},
+                    decoder_state_dict={k: v.detach().cpu() for k,v in model.decoder.state_dict().items()},
+                    caption_word2idx=data.tokenizer.word2idx, epoch=1, optimization=arm,
+                    completed_updates=step, scst_weight=rl_weight, ce_weight=ce_weight,
+                    object_reward_weight=object_weight, object_reward_parser=cfg.get('object_reward_parser','legacy'),
+                    object_reward_penalty=cfg.get('object_reward_penalty','fraction_v1'),
+                    scst_protocol_sha256=sha(config_path), source_checkpoint_sha256=cfg['input_sha256']['checkpoint'])
+                snapshot.pop('optimizer_state_dict',None)
+                filename=output/f'checkpoint_step_{step}.pth'
+                torch.save(snapshot,str(filename)+'.partial'); Path(str(filename)+'.partial').replace(filename)
+                del snapshot
+                print('Snapshot saved:',filename,flush=True)
         payload.update(encoder_state_dict={k: v.detach().cpu() for k, v in model.encoder.state_dict().items()},
                        decoder_state_dict={k: v.detach().cpu() for k, v in model.decoder.state_dict().items()},
                        caption_word2idx=data.tokenizer.word2idx, epoch=1, optimization=arm,
@@ -270,9 +284,10 @@ def evaluate(cfg, repo):
                           for n, r in enumerate(images) for j, s in enumerate(dataset[r['image_id']]['sentences'][:5])]}
     save(output/'val_gt.json', gt)
     metrics = {}
-    for arm in ('original', *training_arms(cfg)):
+    for arm in cfg.get('evaluation_checkpoints', dict.fromkeys(('original', *training_arms(cfg)))):
         folder = output/arm; folder.mkdir(parents=True, exist_ok=True)
-        checkpoint = cfg['checkpoint'] if arm == 'original' else str(folder/'checkpoint.pth')
+        checkpoint = (cfg['evaluation_checkpoints'][arm] if 'evaluation_checkpoints' in cfg else
+                      cfg['checkpoint'] if arm == 'original' else str(folder/'checkpoint.pth'))
         worker_cfg = {**cfg, 'output': str(folder), 'checkpoint': checkpoint, 'images': images,
                       'workers': 2, 'split': 'val', 'checkpoint_sha256': sha(checkpoint)}
         records = run_workers(worker_cfg, 'beams', repo)

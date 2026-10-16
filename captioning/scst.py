@@ -3,7 +3,7 @@
 Reward uses CIDEr-D (clipping, sigma=6, x10), fixed training-image IDF,
 and NLTK Treebank normalization. Published metrics still use official PTB.
 """
-from collections import Counter
+from collections import Counter, OrderedDict
 import math
 import numpy as np
 import torch
@@ -26,7 +26,10 @@ def ngrams(text):
 
 class TrainingCider:
     """Cached reference vectors; never recompute document frequency per batch."""
-    def __init__(self, references):
+    def __init__(self, references, reference_cache_size=None):
+        if reference_cache_size is not None and reference_cache_size < 1:
+            raise ValueError('Reference cache size must be positive or None.')
+        self.reference_cache_size = reference_cache_size
         if len(references) < 2 or any(len(v) != 5 for v in references.values()):
             raise ValueError('Need at least two training images with five references each.')
         self.references = {k: [normalize(s) for s in refs] for k, refs in references.items()}
@@ -34,8 +37,17 @@ class TrainingCider:
         for refs in self.references.values():
             self.df.update(set(g for ref in refs for g in ngrams(ref)))
         self.log_count = math.log(len(references))
-        self.vectors = {k: [self.vector(ref) for ref in refs]
-                        for k, refs in self.references.items()}
+        self.vectors = ({k: [self.vector(ref) for ref in refs]
+                         for k, refs in self.references.items()} if reference_cache_size is None else OrderedDict())
+
+    def reference_vectors(self, image_id):
+        if image_id not in self.references: raise KeyError(image_id)
+        if image_id not in self.vectors:
+            self.vectors[image_id] = [self.vector(ref) for ref in self.references[image_id]]
+        if self.reference_cache_size is not None:
+            self.vectors.move_to_end(image_id)
+            while len(self.vectors) > self.reference_cache_size: self.vectors.popitem(last=False)
+        return self.vectors[image_id]
 
     def vector(self, text):
         vectors, norms, length = [{} for _ in range(4)], [0.]*4, 0
@@ -54,14 +66,15 @@ class TrainingCider:
         for image_id, text in zip(ids, captions):
             hyp, hn, hl = self.vector(normalize(text))
             score = 0.
-            for ref, rn, rl in self.vectors[image_id]:
+            reference_vectors = self.reference_vectors(image_id)
+            for ref, rn, rl in reference_vectors:
                 similarity = 0.
                 for n in range(4):
                     if hn[n] and rn[n]:
                         similarity += sum(min(v, ref[n].get(g, 0.))*ref[n].get(g, 0.)
                                           for g, v in hyp[n].items()) / (hn[n]*rn[n])
                 score += similarity/4 * math.exp(-((hl-rl)**2)/72.)
-            scores.append(10.*score/len(self.vectors[image_id]))
+            scores.append(10.*score/len(reference_vectors))
         return np.asarray(scores, dtype=np.float32)
 
 
