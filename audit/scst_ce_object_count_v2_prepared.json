@@ -1,0 +1,22 @@
+{
+  "status": "PREPARED_NOT_GPU_RUN",
+  "core_commit": "7a31327199bfd49684f5eb2b39bb2f7774795919",
+  "local_tests_passed": 53,
+  "scope": "CPU tests only; no user input dataset or new GPU training run",
+  "replay_precondition": "Same-GPU control replay32 PASS from user artifacts, R122; not full2500-update proof",
+  "method": "CE+.05 SCST(CIDEr + 1.0*(.5*salient_unique_recall - unsupported_unique_count))",
+  "parser": "aliases_v2",
+  "penalty": "unique_count_v2",
+  "combined_changes": true,
+  "control": "CE+.05 SCST(CIDEr)",
+  "train_images": 20000,
+  "validation_images": 1000,
+  "batch_size": 8,
+  "updates_per_arm": 2500,
+  "seed": 42,
+  "train_schedule": "Control then treatment sequential fresh processes on GPU0; strict runtime",
+  "evaluation": "Original/control/treatment, raw and fixed beam5, same validation1k, no test",
+  "assistant_notebook_submitted": false,
+  "input_paths_changed": false,
+  "quality_improvement_demonstrated": false
+}
