@@ -1,0 +1,357 @@
+{
+  "status": "AUDIT_PASS",
+  "variant": "scst_ce_object_count_v2",
+  "source_zip_sha256": "ab28c4f7927d5c17daad908cfb011ddc1ccab500d327cc62ee1d02f3eba0bf9d",
+  "source_zip_bytes": 5862955,
+  "protocol_sha256": "79b412b30ae40d12fa4b3d5ee539960dd73974929528cb76935874e337c5ea00",
+  "training": {
+    "scst_ce": {
+      "arm": "scst_ce",
+      "steps": 2500,
+      "train_images": 20000,
+      "seconds": 1193.6228022189998,
+      "checkpoint_sha256": "ee09f4f3861a9057722fa76951c323641f67148beecfd1a1e640638113dd1696",
+      "source_checkpoint_sha256": "155106910d49715f8065a444baca3321bb5e668a1f684ea3c78f860de8a39012",
+      "protocol_sha256": "79b412b30ae40d12fa4b3d5ee539960dd73974929528cb76935874e337c5ea00",
+      "dropout": false,
+      "precision": "fp32",
+      "scst_weight": 0.05,
+      "ce_weight": 1.0,
+      "object_reward_weight": 0.0,
+      "object_reward_parser": "aliases_v2",
+      "object_reward_penalty": "unique_count_v2",
+      "first250_mean": {
+        "sample_cider_reward": 0.6759303694367409,
+        "greedy_cider_reward": 1.3185881197452545,
+        "scst_loss": -15.154359529018402,
+        "sample_reward": 0.6759303694367409,
+        "greedy_reward": 1.3185881197452545,
+        "advantage_mean": -0.6426577545255423,
+        "advantage_std": 0.6830563716888428,
+        "sampled_eos_fraction": 0.9995,
+        "ce_loss": 1.7095785274505615,
+        "loss": 0.9518605375289917,
+        "grad_norm": 4.219570673942566
+      },
+      "last250_mean": {
+        "sample_cider_reward": 0.6689256664514541,
+        "greedy_cider_reward": 1.2990613567829132,
+        "scst_loss": -15.164067785739899,
+        "sample_reward": 0.6689256664514541,
+        "greedy_reward": 1.2990613567829132,
+        "advantage_mean": -0.6301356933712959,
+        "advantage_std": 0.6611861763596535,
+        "sampled_eos_fraction": 0.999,
+        "ce_loss": 1.6833794317245483,
+        "loss": 0.9251760296821594,
+        "grad_norm": 4.31463774394989
+      }
+    },
+    "scst_ce_object": {
+      "arm": "scst_ce_object",
+      "steps": 2500,
+      "train_images": 20000,
+      "seconds": 1049.570370424,
+      "checkpoint_sha256": "acaa5c6492e45449bd1cbaaed0439585b4ec56b6187391152712e88c693d32cf",
+      "source_checkpoint_sha256": "155106910d49715f8065a444baca3321bb5e668a1f684ea3c78f860de8a39012",
+      "protocol_sha256": "79b412b30ae40d12fa4b3d5ee539960dd73974929528cb76935874e337c5ea00",
+      "dropout": false,
+      "precision": "fp32",
+      "scst_weight": 0.05,
+      "ce_weight": 1.0,
+      "object_reward_weight": 1.0,
+      "object_reward_parser": "aliases_v2",
+      "object_reward_penalty": "unique_count_v2",
+      "first250_mean": {
+        "sample_cider_reward": 0.6859044176340103,
+        "greedy_cider_reward": 1.3182898051738738,
+        "sample_object_reward": 0.21987083944678307,
+        "greedy_object_reward": 0.32715834018588064,
+        "sample_unsupported_fraction": 0.04924166666666666,
+        "greedy_unsupported_fraction": 0.023625,
+        "sample_salient_recall": 0.6127416666666665,
+        "greedy_salient_recall": 0.7433166666666666,
+        "sample_unsupported_count": 0.0865,
+        "greedy_unsupported_count": 0.0445,
+        "sample_object_penalty": 0.0865,
+        "greedy_object_penalty": 0.0445,
+        "object_supervision_fraction": 0.9965,
+        "scst_loss": -17.975885261535645,
+        "sample_reward": 0.9057752485275269,
+        "greedy_reward": 1.6454481394290925,
+        "advantage_mean": -0.7396728889793157,
+        "advantage_std": 0.8216201604604721,
+        "sampled_eos_fraction": 1.0,
+        "ce_loss": 1.7104499955177308,
+        "loss": 0.8116557204723358,
+        "grad_norm": 5.007215634346008
+      },
+      "last250_mean": {
+        "sample_cider_reward": 0.6637843964099884,
+        "greedy_cider_reward": 1.289138372182846,
+        "sample_object_reward": 0.2246148865520954,
+        "greedy_object_reward": 0.33662977001070976,
+        "sample_unsupported_fraction": 0.04370833333333333,
+        "greedy_unsupported_fraction": 0.0175,
+        "sample_salient_recall": 0.610229761904762,
+        "greedy_salient_recall": 0.7522595238095239,
+        "sample_unsupported_count": 0.0805,
+        "greedy_unsupported_count": 0.0395,
+        "sample_object_penalty": 0.0805,
+        "greedy_object_penalty": 0.0395,
+        "object_supervision_fraction": 0.9935,
+        "scst_loss": -18.100066826820374,
+        "sample_reward": 0.8883992798626423,
+        "greedy_reward": 1.6257681365013124,
+        "advantage_mean": -0.7373688565194607,
+        "advantage_std": 0.788681407213211,
+        "sampled_eos_fraction": 0.9995,
+        "ce_loss": 1.685355857372284,
+        "loss": 0.7803524992465973,
+        "grad_norm": 4.860443073272705
+      }
+    }
+  },
+  "metrics": {
+    "original_rank0": {
+      "caption": {
+        "Bleu_1": 0.7700811965588097,
+        "Bleu_2": 0.6082852662137684,
+        "Bleu_3": 0.47031396584136126,
+        "Bleu_4": 0.3650779331156371,
+        "METEOR": 0.28400440774529606,
+        "ROUGE_L": 0.5690718756791779,
+        "CIDEr": 1.2182304716351615
+      },
+      "chair": {
+        "CHAIRs": 0.036,
+        "CHAIRi": 0.02452316076294278,
+        "Recall": 0.44011317195850364
+      },
+      "hallucinated_captions": 36,
+      "hallucinated_mentions": 36,
+      "object_mentions": 1468,
+      "correct_unique_objects": 1400,
+      "reference_unique_objects": 3181,
+      "mean_words": 9.261
+    },
+    "original_fixed": {
+      "caption": {
+        "Bleu_1": 0.7768663690166362,
+        "Bleu_2": 0.6196593794345507,
+        "Bleu_3": 0.48781752544746265,
+        "Bleu_4": 0.38415225531734165,
+        "METEOR": 0.29460384102908177,
+        "ROUGE_L": 0.5825560157257371,
+        "CIDEr": 1.2758186674394347
+      },
+      "chair": {
+        "CHAIRs": 0.038,
+        "CHAIRi": 0.025827814569536423,
+        "Recall": 0.4495441685004716
+      },
+      "hallucinated_captions": 38,
+      "hallucinated_mentions": 39,
+      "object_mentions": 1510,
+      "correct_unique_objects": 1430,
+      "reference_unique_objects": 3181,
+      "mean_words": 9.633
+    },
+    "scst_ce_rank0": {
+      "caption": {
+        "Bleu_1": 0.7716885315276373,
+        "Bleu_2": 0.6119826457307257,
+        "Bleu_3": 0.47585727815260687,
+        "Bleu_4": 0.36973577063535246,
+        "METEOR": 0.2862449299495687,
+        "ROUGE_L": 0.5693105279207755,
+        "CIDEr": 1.230520611485789
+      },
+      "chair": {
+        "CHAIRs": 0.038,
+        "CHAIRi": 0.02571041948579161,
+        "Recall": 0.4410562716127004
+      },
+      "hallucinated_captions": 38,
+      "hallucinated_mentions": 38,
+      "object_mentions": 1478,
+      "correct_unique_objects": 1403,
+      "reference_unique_objects": 3181,
+      "mean_words": 9.452
+    },
+    "scst_ce_fixed": {
+      "caption": {
+        "Bleu_1": 0.771863506334208,
+        "Bleu_2": 0.6131223030347298,
+        "Bleu_3": 0.4776730519820438,
+        "Bleu_4": 0.3722591594413035,
+        "METEOR": 0.2936573969821421,
+        "ROUGE_L": 0.5792397195297891,
+        "CIDEr": 1.260457560736469
+      },
+      "chair": {
+        "CHAIRs": 0.038,
+        "CHAIRi": 0.026263952724885097,
+        "Recall": 0.45237346746306195
+      },
+      "hallucinated_captions": 38,
+      "hallucinated_mentions": 40,
+      "object_mentions": 1523,
+      "correct_unique_objects": 1439,
+      "reference_unique_objects": 3181,
+      "mean_words": 9.787
+    },
+    "scst_ce_object_rank0": {
+      "caption": {
+        "Bleu_1": 0.7692631136338937,
+        "Bleu_2": 0.6114189543053932,
+        "Bleu_3": 0.47611074883304133,
+        "Bleu_4": 0.3717860129527511,
+        "METEOR": 0.28743119928393457,
+        "ROUGE_L": 0.5730865420707416,
+        "CIDEr": 1.230816932203295
+      },
+      "chair": {
+        "CHAIRs": 0.033,
+        "CHAIRi": 0.022372881355932205,
+        "Recall": 0.44168500471549826
+      },
+      "hallucinated_captions": 33,
+      "hallucinated_mentions": 33,
+      "object_mentions": 1475,
+      "correct_unique_objects": 1405,
+      "reference_unique_objects": 3181,
+      "mean_words": 9.513
+    },
+    "scst_ce_object_fixed": {
+      "caption": {
+        "Bleu_1": 0.7745447146199232,
+        "Bleu_2": 0.6160426019534782,
+        "Bleu_3": 0.48031978408157855,
+        "Bleu_4": 0.3751781126285984,
+        "METEOR": 0.29341255639548663,
+        "ROUGE_L": 0.5814583387692597,
+        "CIDEr": 1.2640028790478746
+      },
+      "chair": {
+        "CHAIRs": 0.032,
+        "CHAIRi": 0.021164021164021163,
+        "Recall": 0.45143036780886514
+      },
+      "hallucinated_captions": 32,
+      "hallucinated_mentions": 32,
+      "object_mentions": 1512,
+      "correct_unique_objects": 1436,
+      "reference_unique_objects": 3181,
+      "mean_words": 9.83
+    }
+  },
+  "paired_comparisons": {
+    "scst_ce_object_rank0_vs_original_rank0": {
+      "CIDEr_delta": 0.012586460568133314,
+      "conditional_bootstrap_95": [
+        -0.01457489378110391,
+        0.039864866090592595
+      ],
+      "hallucination_removed": 10,
+      "hallucination_introduced": 7,
+      "changed_captions": 480
+    },
+    "scst_ce_object_rank0_vs_scst_ce_rank0": {
+      "CIDEr_delta": 0.0002963207175058846,
+      "conditional_bootstrap_95": [
+        -0.017760283938069193,
+        0.017804437806150885
+      ],
+      "hallucination_removed": 8,
+      "hallucination_introduced": 3,
+      "changed_captions": 260
+    },
+    "scst_ce_object_fixed_vs_original_fixed": {
+      "CIDEr_delta": -0.011815788391560224,
+      "conditional_bootstrap_95": [
+        -0.039441654701634826,
+        0.014857427766940622
+      ],
+      "hallucination_removed": 16,
+      "hallucination_introduced": 10,
+      "changed_captions": 576
+    },
+    "scst_ce_object_fixed_vs_scst_ce_fixed": {
+      "CIDEr_delta": 0.0035453183114052644,
+      "conditional_bootstrap_95": [
+        -0.014798906335708446,
+        0.02117257452189723
+      ],
+      "hallucination_removed": 9,
+      "hallucination_introduced": 3,
+      "changed_captions": 347
+    }
+  },
+  "object_target_checks": {
+    "target_sha256": "d0256062cd4b0cfe7df3d3d3aed6e9a7a48dbf74cc563539bbf199656bb32127",
+    "train_rows": 20000,
+    "reward_eligible": 19885,
+    "unavailable_object_reward": 115,
+    "heldout_target_rows": 0
+  },
+  "previous_control_repeat": {
+    "rank0": {
+      "changed_captions": 245,
+      "CIDEr_previous": 1.2355326478576185,
+      "CIDEr_current": 1.230520611485789
+    },
+    "fixed": {
+      "changed_captions": 363,
+      "CIDEr_previous": 1.2629494982187965,
+      "CIDEr_current": 1.260457560736469
+    }
+  },
+  "prior_control_comparison_is_not_repeat_test": true,
+  "strict_control_vs_replay32": {
+    "first32_common_fields_exact_match": true,
+    "fields": [
+      "advantage_mean",
+      "advantage_std",
+      "batch_indices_sha256",
+      "caption_masks_sha256",
+      "captions_sha256",
+      "ce_loss",
+      "grad_norm",
+      "greedy_cider_reward",
+      "greedy_reward",
+      "greedy_tokens_sha256",
+      "images_seen",
+      "loss",
+      "prompt_masks_sha256",
+      "prompts_sha256",
+      "rng_before_sha256",
+      "sample_cider_reward",
+      "sample_reward",
+      "sample_tokens_sha256",
+      "sampled_eos_fraction",
+      "scst_loss",
+      "step",
+      "visual_sha256"
+    ],
+    "runtime_and_initial_model_identity_exact_match": true,
+    "scope": "Control first32 matches prior replay; control model hashes after each step unavailable in this full-run review."
+  },
+  "gate_components": {
+    "raw_CIDEr_beats_both": true,
+    "raw_CHAIR_not_worse_than_both": true,
+    "raw_recall_within_1pp_of_best": true,
+    "fixed_not_worse_than_original": false,
+    "fixed_not_worse_than_anchored_control": true
+  },
+  "expansion_gate_passed": false,
+  "test_used": false,
+  "previous_review_cohort_inputs_and_original_captions_exact_match": true,
+  "verification_limits": [
+    "Model weights absent: actual model load/parameter hashes not independently replayed.",
+    "Full source dataset and detector cache absent: split provenance and fixed rerank formula not independently replayed.",
+    "CHAIR reaggregated from supplied object annotations, not retokenized against external ground truth.",
+    "METEOR cross-checked across reports, not recomputed.",
+    "Bootstrap resamples paired per-image CIDEr with validation IDF fixed; one pool/checkpoint/seed, not a multi-seed confidence interval."
+  ]
+}

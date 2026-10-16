@@ -8,7 +8,7 @@ import zipfile
 import numpy as np
 
 
-def run(source, output, prior_review=None):
+def run(source, output, prior_review=None, replay_review=None):
     from pycocoevalcap.tokenizer.ptbtokenizer import PTBTokenizer
     from pycocoevalcap.cider.cider import Cider
     from pycocoevalcap.bleu.bleu import Bleu
@@ -21,8 +21,10 @@ def run(source, output, prior_review=None):
         assert summary['protocol_sha256'] == protocol_sha
         anchored = cfg.get('ce_anchor_comparison', False)
         object_variant = cfg.get('object_reward_comparison', False)
+        count_v2 = cfg.get('variant') == 'scst_ce_object_count_v2'
         assert not (anchored and object_variant)
-        assert cfg['code_commit'] == ('794034c2bb84e6c970b9686af8a2222eeeb30691' if object_variant else
+        assert cfg['code_commit'] == ('7a31327199bfd49684f5eb2b39bb2f7774795919' if count_v2 else
+                                     '794034c2bb84e6c970b9686af8a2222eeeb30691' if object_variant else
                                      '2e20864b046d381c27e54af3b9176ab0effaba6c' if anchored
                                      else 'dabaca2b66640f7113733f16fd30597fefeab5f7')
         arms = ('scst_ce', 'scst_ce_object') if object_variant else ('scst', 'scst_ce') if anchored else ('ce', 'scst')
@@ -30,7 +32,18 @@ def run(source, output, prior_review=None):
                               ('scst_ce', 'scst') if anchored else ('scst', 'ce'))
         if anchored or object_variant:
             assert cfg['scst_weight'] == .05 and cfg['ce_weight'] == 1.
-            assert summary['variant'] == cfg['variant'] == ('scst_ce_object_reward_v1' if object_variant else 'scst_ce_anchor_v1')
+            assert summary['variant'] == cfg['variant'] == ('scst_ce_object_count_v2' if count_v2 else
+                                                           'scst_ce_object_reward_v1' if object_variant else 'scst_ce_anchor_v1')
+        if count_v2:
+            assert object_variant and cfg['object_reward_parser'] == 'aliases_v2'
+            assert cfg['object_reward_penalty'] == 'unique_count_v2'
+            assert cfg['strict_reproducibility'] and cfg['train_same_gpu']
+            assert read('scst_ce/runtime.json') == read('scst_ce_object/runtime.json')
+            assert read('scst_ce/initial_model_identity.json') == read('scst_ce_object/initial_model_identity.json')
+            runtime = read('scst_ce/runtime.json')
+            assert runtime['deterministic_algorithms'] and not runtime['warn_only']
+            assert runtime['sdp_math'] and not runtime['sdp_flash'] and not runtime['sdp_mem_efficient']
+            assert runtime['cublas_workspace'] == ':4096:8'
         identity = json.loads((Path(__file__).parent/'audit/hoi_validation_input_identity.json').read_text())['input_sha256']
         assert all(v == identity[k] for k, v in cfg['input_sha256'].items())
         assert [len(cfg['groups'][k]) for k in ('train', 'val')] == [20000, 1000]
@@ -48,7 +61,11 @@ def run(source, output, prior_review=None):
             assert len(targets['data']) == 20000
             assert [{k: r[k] for k in ('image_id', 'coco_id', 'filename', 'filepath')} for r in targets['data']] == cfg['groups']['train']
             assert sum(bool(r['supported']) for r in targets['data']) == targets['metadata']['reward_eligible_images']
-            TrainingObjectReward(targets['data'])
+            TrainingObjectReward(targets['data'], cfg.get('object_reward_parser', 'legacy'),
+                                 cfg.get('object_reward_penalty', 'fraction_v1'))
+            if count_v2:
+                assert targets['metadata']['parser_version'] == 'aliases_v2'
+                assert targets['metadata']['penalty_version'] == 'unique_count_v2'
             assert cfg['object_reward_weight'] == summary['object_reward_weight'] == 1.
             target_checks = {'target_sha256': cfg['train_object_targets_sha256'], 'train_rows': 20000,
                              'reward_eligible': targets['metadata']['reward_eligible_images'],
@@ -66,7 +83,12 @@ def run(source, output, prior_review=None):
             assert len(history) == trained['steps'] == 2500
             assert [r['step'] for r in history] == list(range(1, 2501))
             assert all(r['images_seen'] == r['step']*8 for r in history)
-            assert all(math.isfinite(v) for r in history for v in r.values())
+            assert all(math.isfinite(v) for r in history for v in r.values() if isinstance(v, (int, float)))
+            if count_v2:
+                trace_keys = ('batch_indices', 'visual', 'captions', 'prompts', 'caption_masks', 'prompt_masks',
+                              'rng_before', 'sample_tokens', 'greedy_tokens')
+                assert all(isinstance(r[k+'_sha256'], str) and len(r[k+'_sha256']) == 64
+                           for r in history[:32] for k in trace_keys)
             assert trained['protocol_sha256'] == protocol_sha
             assert trained['source_checkpoint_sha256'] == cfg['input_sha256']['checkpoint']
             assert trained['dropout'] is False and trained['precision'] == 'fp32'
@@ -83,10 +105,17 @@ def run(source, output, prior_review=None):
                 if obj_weight:
                     assert all(0 <= r['object_supervision_fraction'] <= 1 and
                                0 <= r['sample_unsupported_fraction'] <= 1 and 0 <= r['sample_salient_recall'] <= 1 for r in history)
+                    if count_v2:
+                        for r in history:
+                            for prefix in ('sample', 'greedy'):
+                                assert r[prefix+'_unsupported_count'] >= 0
+                                assert r[prefix+'_object_penalty'] == r[prefix+'_unsupported_count']
+                                assert abs(r[prefix+'_object_reward']-(.5*r[prefix+'_salient_recall']-
+                                           r[prefix+'_object_penalty'])) < 1e-6
             training[arm] = {**trained, 'first250_mean': {k: float(np.mean([r[k] for r in history[:250]]))
-                for k in history[0] if k not in ('step', 'images_seen', 'seconds')},
+                for k, v in history[0].items() if isinstance(v, (int, float)) and k not in ('step', 'images_seen', 'seconds')},
                 'last250_mean': {k: float(np.mean([r[k] for r in history[-250:]]))
-                for k in history[0] if k not in ('step', 'images_seen', 'seconds')}}
+                for k, v in history[0].items() if isinstance(v, (int, float)) and k not in ('step', 'images_seen', 'seconds')}}
         results, per_image, captions, chair_rows = {}, {}, {}, {}
         for arm in ('original', *arms):
             beams, clipped = read(f'{arm}/beams.json'), read(f'{arm}/clip_beams.json')
@@ -164,7 +193,8 @@ def run(source, output, prior_review=None):
         assert bool(summary['expansion_gate_passed']) == all(gate.values())
         control_repeat = None
         if anchored or object_variant:
-            prior_path = Path(__file__).parent/'audit'/('scst_ce_anchor_train20k_val1000_result.json' if object_variant else 'scst_comparison_train20k_val1000_result.json')
+            prior_path = Path(__file__).parent/'audit'/('scst_ce_object_train20k_val1000_result.json' if count_v2 else
+                'scst_ce_anchor_train20k_val1000_result.json' if object_variant else 'scst_comparison_train20k_val1000_result.json')
             prior = json.loads(prior_path.read_text())
             assert all(results[k]['caption'] == prior['metrics'][k]['caption'] and results[k]['chair'] == prior['metrics'][k]['chair']
                        for k in ('original_rank0', 'original_fixed'))
@@ -184,11 +214,29 @@ def run(source, output, prior_review=None):
                             control_repeat[policy] = {'changed_captions': sum(a['caption'] != b['caption'] for a, b in zip(old, new)),
                                 'CIDEr_previous': prior['metrics'][control+'_'+policy]['caption']['CIDEr'],
                                 'CIDEr_current': results[control+'_'+policy]['caption']['CIDEr']}
+        replay_check = None
+        if replay_review:
+            assert count_v2
+            previous_audit = json.loads((Path(__file__).parent/'audit/scst_ce_same_gpu_replay_32_result.json').read_text())
+            assert hashlib.sha256(Path(replay_review).read_bytes()).hexdigest() == previous_audit['source_sha256']
+            with zipfile.ZipFile(replay_review) as replay:
+                before = json.loads(replay.read('repeat_1/scst_ce/history.json'))
+                current = read('scst_ce/history.json')[:32]
+                assert len(before) == len(current) == 32
+                fields = sorted((set(before[0]) & set(current[0]))-{'seconds'})
+                assert all(a[k] == b[k] for a, b in zip(before, current) for k in fields)
+                for artifact in ('runtime.json', 'initial_model_identity.json'):
+                    assert json.loads(replay.read('repeat_1/scst_ce/'+artifact)) == read('scst_ce/'+artifact)
+                replay_check = {'first32_common_fields_exact_match': True, 'fields': fields,
+                    'runtime_and_initial_model_identity_exact_match': True,
+                    'scope': 'Control first32 matches prior replay; control model hashes after each step unavailable in this full-run review.'}
         result = {'status': 'AUDIT_PASS', 'variant': cfg.get('variant', 'ce_scst_comparison'),
                   'source_zip_sha256': hashlib.sha256(source.read_bytes()).hexdigest(),
                   'source_zip_bytes': source.stat().st_size, 'protocol_sha256': protocol_sha,
                   'training': training, 'metrics': results, 'paired_comparisons': paired,
                   'object_target_checks': target_checks, 'previous_control_repeat': control_repeat,
+                  'prior_control_comparison_is_not_repeat_test': count_v2,
+                  'strict_control_vs_replay32': replay_check,
                   'gate_components': gate, 'expansion_gate_passed': all(gate.values()), 'test_used': False,
                   'previous_review_cohort_inputs_and_original_captions_exact_match': bool((anchored or object_variant) and prior_review),
                   'verification_limits': ['Model weights absent: actual model load/parameter hashes not independently replayed.',
@@ -203,4 +251,5 @@ def run(source, output, prior_review=None):
 if __name__ == '__main__':
     p = argparse.ArgumentParser(); p.add_argument('--source', required=True); p.add_argument('--output', required=True)
     p.add_argument('--prior-review')
-    a = p.parse_args(); run(a.source, a.output, a.prior_review)
+    p.add_argument('--replay-review')
+    a = p.parse_args(); run(a.source, a.output, a.prior_review, a.replay_review)
