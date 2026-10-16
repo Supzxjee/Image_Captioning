@@ -87,7 +87,8 @@ def fit(config_path, arm):
             raise ValueError('Training object targets changed.')
         object_rows = json.loads(Path(cfg['train_object_targets']).read_text(encoding='utf-8'))['data']
         if {r['image_id'] for r in object_rows} != set(ids): raise ValueError('Object reward cohort mismatch.')
-        object_reward = TrainingObjectReward(object_rows, cfg.get('object_reward_parser', 'legacy'))
+        object_reward = TrainingObjectReward(object_rows, cfg.get('object_reward_parser', 'legacy'),
+                                             cfg.get('object_reward_penalty', 'fraction_v1'))
     dataset = CocoPromptDataset(frame, data.transform, data.tokenizer, data.prompt_cache, data.visual_cache)
 
     class Indexed(Dataset):
@@ -149,6 +150,10 @@ def fit(config_path, arm):
                          greedy_unsupported_fraction=float(np.mean([r['unsupported_fraction'] for r in greedy_terms])),
                          sample_salient_recall=float(np.mean([r['salient_recall'] for r in sample_terms])),
                          greedy_salient_recall=float(np.mean([r['salient_recall'] for r in greedy_terms])),
+                         sample_unsupported_count=float(np.mean([r['unsupported_count'] for r in sample_terms])),
+                         greedy_unsupported_count=float(np.mean([r['unsupported_count'] for r in greedy_terms])),
+                         sample_object_penalty=float(np.mean([r['penalty'] for r in sample_terms])),
+                         greedy_object_penalty=float(np.mean([r['penalty'] for r in greedy_terms])),
                          object_supervision_fraction=float(np.mean([r['available'] for r in sample_terms])))
                 advantage = torch.from_numpy(sampled_reward-greedy_reward).cuda()
                 # Recompute with gradients, avoiding retention of 29 rollout graphs.
@@ -192,6 +197,8 @@ def fit(config_path, arm):
                        caption_word2idx=data.tokenizer.word2idx, epoch=1, optimization=arm,
                        scst_weight=rl_weight, ce_weight=ce_weight,
                        object_reward_weight=object_weight,
+                       object_reward_parser=cfg.get('object_reward_parser', 'legacy'),
+                       object_reward_penalty=cfg.get('object_reward_penalty', 'fraction_v1'),
                        scst_protocol_sha256=sha(config_path), source_checkpoint_sha256=cfg['input_sha256']['checkpoint'])
         payload.pop('optimizer_state_dict', None)
         torch.save(payload, output/'checkpoint.pth.partial')
@@ -200,24 +207,37 @@ def fit(config_path, arm):
              'seconds': time.monotonic()-started, 'checkpoint_sha256': sha(output/'checkpoint.pth'),
              'source_checkpoint_sha256': cfg['input_sha256']['checkpoint'],
              'protocol_sha256': sha(config_path), 'dropout': False, 'precision': 'fp32',
-             'scst_weight': rl_weight, 'ce_weight': ce_weight, 'object_reward_weight': object_weight})
+             'scst_weight': rl_weight, 'ce_weight': ce_weight, 'object_reward_weight': object_weight,
+             'object_reward_parser': cfg.get('object_reward_parser', 'legacy'),
+             'object_reward_penalty': cfg.get('object_reward_penalty', 'fraction_v1')})
     finally:
         data.visual_cache.close()
 
 
 def train_pair(cfg, protocol, repo):
+    if cfg.get('train_same_gpu', False):
+        if not cfg.get('strict_reproducibility', False):
+            raise ValueError('Same-GPU comparison requires strict reproducibility.')
+        for arm in training_arms(cfg):
+            print(f'Sequential same-GPU training: {arm} on GPU0', flush=True)
+            _train_parallel(cfg, protocol, repo, (arm,))
+    else:
+        _train_parallel(cfg, protocol, repo, training_arms(cfg))
+
+
+def _train_parallel(cfg, protocol, repo, arms):
     processes, streams = [], []
     try:
-        for gpu, arm in enumerate(training_arms(cfg)):
+        for gpu, arm in enumerate(arms):
             stream = (Path(cfg['output'])/f'{arm}.log').open('w', encoding='utf-8'); streams.append(stream)
             env = {**os.environ, 'CUDA_VISIBLE_DEVICES': str(gpu), 'PYTHONUNBUFFERED': '1', 'HDF5_USE_FILE_LOCKING': 'FALSE'}
             if cfg.get('strict_reproducibility', False):
                 env.update(CUBLAS_WORKSPACE_CONFIG=':4096:8', PYTHONHASHSEED='42')
             processes.append(subprocess.Popen([sys.executable, '-u', str(repo/'run_scst_comparison.py'),
                 '--worker', arm, '--protocol', str(protocol)], cwd=repo, env=env, stdout=stream, stderr=subprocess.STDOUT))
-        positions = [0, 0]; last_heartbeat = time.monotonic()
+        positions = [0]*len(arms); last_heartbeat = time.monotonic()
         while True:
-            for i, arm in enumerate(training_arms(cfg)):
+            for i, arm in enumerate(arms):
                 with (Path(cfg['output'])/f'{arm}.log').open(encoding='utf-8', errors='replace') as f:
                     f.seek(positions[i]); text = f.read(); positions[i] = f.tell()
                 if text: print(f'[{arm}] {text}', end='', flush=True)
@@ -225,7 +245,7 @@ def train_pair(cfg, protocol, repo):
                     raise RuntimeError(f'{arm} worker failed; see {arm}.log')
             if all(p.poll() == 0 for p in processes): break
             if time.monotonic()-last_heartbeat > 30:
-                print('CE/SCST workers active; independent GPU jobs, no DDP collectives.', flush=True)
+                print('Training worker(s) active; no DDP collectives.', flush=True)
                 last_heartbeat = time.monotonic()
             time.sleep(2)
     finally:
@@ -305,6 +325,7 @@ def run(a):
            'ce_anchor_comparison': a.ce_anchor_comparison, 'scst_weight': a.scst_weight, 'ce_weight': a.ce_weight,
            'object_reward_comparison': a.object_reward_comparison, 'object_reward_weight': a.object_reward_weight,
            'object_reward_parser': a.object_reward_parser, 'strict_reproducibility': a.strict_reproducibility,
+           'object_reward_penalty': a.object_reward_penalty, 'train_same_gpu': a.train_same_gpu,
            'code_commit': subprocess.check_output(['git', 'rev-parse', 'HEAD'], cwd=repo, text=True).strip(),
            'input_sha256': input_hashes,
            'clip_revision': '57c216476eefef5ab752ec549e440a49ae4ae5f3',
@@ -318,11 +339,15 @@ def run(a):
     if a.object_reward_comparison:
         from captioning.object_reward import make_targets
         targets = make_targets(groups, dataset, Path(paths['chair_directory'])/'chair.pkl',
-                               json.loads(Path(paths['detections']).read_text(encoding='utf-8')), a.object_reward_parser)
+                               json.loads(Path(paths['detections']).read_text(encoding='utf-8')), a.object_reward_parser,
+                               a.object_reward_penalty)
         target_file = output/'train_object_targets.json'; save(target_file, targets)
         cfg.update(variant='scst_ce_object_reward_v1', train_object_targets=str(target_file),
                    train_object_targets_sha256=sha(target_file),
                    object_reward_metadata=targets['metadata'])
+        if a.object_reward_penalty == 'unique_count_v2':
+            cfg['variant'] = 'scst_ce_object_count_v2'
+            cfg['hypothesis'] = 'Combined revised reward: count penalty plus explicit parser version; not an isolated penalty ablation.'
     from captioning.visual_cache import VisualCache
     cache = VisualCache([paths['visual_cache']], id_key='coco_id')
     try: cache.require_ids([r['coco_id'] for rows in groups.values() for r in rows], 'SCST comparison')
@@ -369,6 +394,8 @@ def run(a):
                  all(fixed['chair'][k] <= fixed_control['chair'][k] for k in ('CHAIRs', 'CHAIRi')) and
                  fixed['chair']['Recall'] >= fixed_control['chair']['Recall']-.01)
             summary.update(object_reward_weight=a.object_reward_weight,
+                           object_reward_parser=a.object_reward_parser, object_reward_penalty=a.object_reward_penalty,
+                           train_same_gpu=a.train_same_gpu, strict_reproducibility=a.strict_reproducibility,
                            fixed_not_worse_than_anchored_control=matched_fixed_safe,
                            expansion_gate_passed=bool(better and safe and recall and fixed_safe and matched_fixed_safe))
             summary['limits'].append('Training COCO object reward shares the evaluator ontology; not independent relation grounding or physical-absence proof.')
@@ -388,6 +415,8 @@ if __name__ == '__main__':
     p.add_argument('--object-reward-comparison', action='store_true')
     p.add_argument('--object-reward-weight', type=float, default=1.)
     p.add_argument('--object-reward-parser', choices=['legacy', 'aliases_v2'], default='legacy')
+    p.add_argument('--object-reward-penalty', choices=['fraction_v1', 'unique_count_v2'], default='fraction_v1')
+    p.add_argument('--train-same-gpu', action='store_true')
     p.add_argument('--strict-reproducibility', action='store_true')
     p.add_argument('--scst-weight', type=float, default=1.); p.add_argument('--ce-weight', type=float, default=1.)
     for k in ('checkpoint', 'prompt-cache-path', 'dataset-json-path', 'base-path', 'visual-cache',
@@ -403,6 +432,10 @@ if __name__ == '__main__':
             p.error('Objective weights must be finite and positive.')
         if args.ce_anchor_comparison and args.object_reward_comparison:
             p.error('Choose one comparison variant.')
+        if args.train_same_gpu and not args.strict_reproducibility:
+            p.error('--train-same-gpu requires --strict-reproducibility.')
+        if args.object_reward_penalty != 'fraction_v1' and not args.object_reward_comparison:
+            p.error('Count penalty requires --object-reward-comparison.')
         if not 0 < args.object_reward_weight < float('inf'): p.error('Object reward weight must be finite and positive.')
         required = ('checkpoint', 'prompt_cache_path', 'dataset_json_path', 'base_path', 'visual_cache', 'detections', 'chair_directory', 'output')
         if any(not getattr(args, k) for k in required): p.error('All explicit input paths and --output are required.')

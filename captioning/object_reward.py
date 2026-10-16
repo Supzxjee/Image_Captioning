@@ -42,8 +42,9 @@ def recognized_objects(text, parser_version='legacy'):
     return frozenset(labels)
 
 
-def make_targets(groups, dataset, cache_path, detections, parser_version='legacy'):
+def make_targets(groups, dataset, cache_path, detections, parser_version='legacy', penalty_version='fraction_v1'):
     """Filter BEFORE accessing labels; never export held-out image annotations."""
+    if penalty_version not in ('fraction_v1', 'unique_count_v2'): raise ValueError('Unknown object penalty version.')
     cache_path = Path(cache_path)
     if hashlib.sha256(cache_path.read_bytes()).hexdigest() != CACHE_SHA256:
         raise ValueError('Object annotation cache differs from the inspected pinned source.')
@@ -72,22 +73,27 @@ def make_targets(groups, dataset, cache_path, detections, parser_version='legacy
                      'detector_neutral': sorted(unknown)})
         if index % 1000 == 0 or index == len(selected):
             print(f'Training-only object targets: {index}/{len(selected)}', flush=True)
-    return {'metadata': {'variant': 'coco_train_object_reward_v1', 'images': len(rows),
+    return {'metadata': {'variant': ('coco_train_object_reward_count_v2' if penalty_version == 'unique_count_v2'
+                                    else 'coco_train_object_reward_v1'), 'images': len(rows),
             'parser_version': parser_version,
+            'penalty_version': penalty_version,
             'empty_annotation_sets_before_reference_union': empty_annotations,
             'reward_eligible_images': sum(bool(r['supported']) for r in rows),
             'annotation_cache_sha256': CACHE_SHA256,
             'support_source': 'Pinned COCO instance + reference-caption annotation union',
             'salience_source': 'Only five selected training-image references; positive labels only',
             'detector_policy': 'confidence>=.9 absent-from-annotation classes neutral, not rewarded or penalized',
-            'formula': '.5 * salient_unique_recall - unsupported_unique_fraction',
+            'formula': ('.5 * salient_unique_recall - unsupported_unique_count' if penalty_version == 'unique_count_v2'
+                        else '.5 * salient_unique_recall - unsupported_unique_fraction'),
             'outside_80_classes': 'neutral', 'heldout_reward_labels_exported': False}, 'data': rows}
 
 
 class TrainingObjectReward:
-    def __init__(self, rows, parser_version='legacy'):
+    def __init__(self, rows, parser_version='legacy', penalty_version='fraction_v1'):
         if parser_version not in ('legacy', 'aliases_v2'): raise ValueError('Unknown object parser version.')
+        if penalty_version not in ('fraction_v1', 'unique_count_v2'): raise ValueError('Unknown object penalty version.')
         self.parser_version = parser_version
+        self.penalty_version = penalty_version
         self.rows = {r['image_id']: r for r in rows}
         if len(self.rows) != len(rows): raise ValueError('Duplicate object reward image IDs.')
         for r in rows:
@@ -106,16 +112,19 @@ class TrainingObjectReward:
             if not support:
                 values.append(0.)
                 diagnostics.append({'available': False, 'salient_recall': 0., 'unsupported_fraction': 0.,
+                    'unsupported_count': 0, 'penalty': 0.,
                     'unsupported_classes': [], 'neutral_classes': sorted(predicted), 'recognized_classes': sorted(predicted)})
                 continue
             unsupported = predicted-support-neutral
             # Neutral labels cannot dilute the unsupported fraction.
             judged = predicted-neutral
-            penalty = len(unsupported)/max(len(judged), 1)
+            fraction = len(unsupported)/max(len(judged), 1)
+            penalty = len(unsupported) if self.penalty_version == 'unique_count_v2' else fraction
             coverage = len(predicted & salient)/len(salient) if salient else 0.
             value = .5*coverage-penalty
             values.append(value)
-            diagnostics.append({'available': True, 'salient_recall': coverage, 'unsupported_fraction': penalty,
+            diagnostics.append({'available': True, 'salient_recall': coverage, 'unsupported_fraction': fraction,
+                                'unsupported_count': len(unsupported), 'penalty': penalty,
                                 'unsupported_classes': sorted(unsupported),
                                 'neutral_classes': sorted(predicted & neutral),
                                 'recognized_classes': sorted(predicted)})
