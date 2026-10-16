@@ -60,6 +60,9 @@ def fit(config_path, arm):
     cfg = json.loads(Path(config_path).read_text(encoding='utf-8'))
     from captioning.scst_runtime import configure_strict_runtime, runtime_manifest, model_digest, tensor_digest
     configure_strict_runtime(cfg.get('strict_reproducibility', False))
+    replay_steps = cfg.get('replay_steps', 0)
+    if replay_steps and (replay_steps != 32 or arm != 'scst_ce' or not cfg.get('strict_reproducibility')):
+        raise ValueError('Replay requires exactly 32 strict SCST+CE updates.')
     rl_weight, ce_weight = objective_weights(cfg, arm)
     torch.set_num_threads(2)
     random.seed(42); np.random.seed(42); torch.manual_seed(42); torch.cuda.manual_seed_all(42)
@@ -100,6 +103,8 @@ def fit(config_path, arm):
     # This makes rollout and teacher-forced sequence likelihood the SAME policy.
     model.eval()
     optimizer = torch.optim.AdamW([p for p in model.parameters() if p.requires_grad], lr=cfg['lr'])
+    if replay_steps and len(loader) < replay_steps:
+        raise ValueError('Replay needs at least 32 full training batches.')
     output = Path(cfg['output'])/arm
     output.mkdir(parents=True, exist_ok=True)
     if (output/'checkpoint.pth').exists():
@@ -116,7 +121,9 @@ def fit(config_path, arm):
             record = {'step': step, 'images_seen': min(step*cfg['batch_size'], len(frame))}
             if cfg.get('strict_reproducibility', False) and step <= 32:
                 record.update(batch_indices_sha256=tensor_digest(indices), visual_sha256=tensor_digest(images),
-                              captions_sha256=tensor_digest(captions), prompts_sha256=tensor_digest(prompt))
+                              captions_sha256=tensor_digest(captions), prompts_sha256=tensor_digest(prompt),
+                              caption_masks_sha256=tensor_digest(masks), prompt_masks_sha256=tensor_digest(prompt_mask),
+                              rng_before_sha256=tensor_digest(torch.cuda.get_rng_state()))
             if arm == 'ce':
                 loss = ce_weight*caption_ce(model, images, prompt, prompt_mask, captions, masks, data.tokenizer.pad_idx)
             else:
@@ -166,11 +173,20 @@ def fit(config_path, arm):
                 loss = loss.detach()+ce_weight*ce_loss.detach()
             grad_norm = torch.nn.utils.clip_grad_norm_(model.parameters(), 1., error_if_nonfinite=True)
             optimizer.step()
+            if replay_steps:
+                record['model_after_sha256'] = model_digest(model)
+                record['rng_after_sha256'] = tensor_digest(torch.cuda.get_rng_state())
             record.update(loss=float(loss.detach()), grad_norm=float(grad_norm), seconds=time.monotonic()-started)
             history.append(record)
-            if step == 1 or step % 25 == 0 or step == len(loader):
+            if replay_steps or step == 1 or step % 25 == 0 or step == len(loader):
                 save(output/'history.json', history)
                 print(arm, json.dumps(record), flush=True)
+            if replay_steps and step == replay_steps:
+                from captioning.scst_runtime import state_digest
+                save(output/'replay_summary.json', {'steps': step, 'train_images_for_cider_idf': len(frame),
+                     'final_model_sha256': model_digest(model), 'optimizer_sha256': state_digest(optimizer.state_dict()),
+                     'diagnostic_only': True, 'checkpoint_saved': False})
+                return
         payload.update(encoder_state_dict={k: v.detach().cpu() for k, v in model.encoder.state_dict().items()},
                        decoder_state_dict={k: v.detach().cpu() for k, v in model.decoder.state_dict().items()},
                        caption_word2idx=data.tokenizer.word2idx, epoch=1, optimization=arm,

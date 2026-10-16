@@ -1,5 +1,6 @@
 """Opt-in numeric controls and trace identities; no training on import."""
 import hashlib
+import json
 from importlib import metadata
 import os
 import platform
@@ -39,6 +40,18 @@ def model_digest(model):
     for key, value in sorted(model.state_dict().items()):
         digest.update(key.encode()); digest.update(tensor_digest(value).encode())
     return digest.hexdigest()
+
+
+def state_digest(value):
+    """Stable identity of optimizer tensors and scalar hyperparameters, not pickle bytes."""
+    def encode(item):
+        if isinstance(item, torch.Tensor): return ['tensor', tensor_digest(item)]
+        if isinstance(item, dict):
+            return ['dict', [[encode(k), encode(v)] for k, v in sorted(item.items(), key=lambda p: (type(p[0]).__name__, str(p[0])))]]
+        if isinstance(item, (tuple, list)): return [type(item).__name__, [encode(v) for v in item]]
+        if item is None or isinstance(item, (str, int, float, bool)): return [type(item).__name__, item]
+        raise TypeError(f'Unsupported state item: {type(item)}')
+    return hashlib.sha256(json.dumps(encode(value), ensure_ascii=True, allow_nan=False).encode()).hexdigest()
 
 
 def runtime_manifest():
