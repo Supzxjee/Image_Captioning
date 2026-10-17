@@ -1,0 +1,22 @@
+{
+  "status": "PREPARED_NOT_GPU_RUN",
+  "core_commit": "21846bc4602f581e9ed2d29424a80f750e5fe3e9",
+  "local_tests_passed": 12,
+  "test_images": 5000,
+  "selected_checkpoint": "/kaggle/input/datasets/ducanh2403/qformer-scst-object-w05-legacy/qformer_scst_object_w05_legacy.pth",
+  "selected_sha256": "5f8eead3f4e960189345b1a9bf492763fe52ec71f70115b73244ffe9d03d2e75",
+  "comparison": "originalepoch10 versus selectedfulltrainendobject0.5;raw+fixed",
+  "primary_policy": "fixed",
+  "beam_size": 5,
+  "rerank_weights": {
+    "decoder": 0.3,
+    "CLIP": 0.4,
+    "OCC": 0.3
+  },
+  "training": false,
+  "assistant_notebook_submitted": false,
+  "test_never_seen_claim": false,
+  "test_based_selection": false,
+  "new_metrics_measured": false,
+  "repo_location": "/tmp/Image_Captioning-scst-locked-test"
+}
