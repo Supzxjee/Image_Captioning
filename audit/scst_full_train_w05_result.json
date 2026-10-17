@@ -1,0 +1,457 @@
+{
+  "status": "AUDIT_PASS",
+  "source_sha256": "c3fd4904f8a597b4ed6a50a1e124d4d5b03e27dd89c1ca17c78463f3a059ea5b",
+  "source_bytes": 52232257,
+  "metrics": {
+    "tune1000": {
+      "original_rank0": {
+        "caption": {
+          "Bleu_1": 0.7700811965588097,
+          "Bleu_2": 0.6082852662137684,
+          "Bleu_3": 0.47031396584136126,
+          "Bleu_4": 0.3650779331156371,
+          "METEOR": 0.28400440774529606,
+          "ROUGE_L": 0.5690718756791779,
+          "CIDEr": 1.2182304716351615
+        },
+        "chair": {
+          "CHAIRs": 0.036,
+          "CHAIRi": 0.02452316076294278,
+          "Recall": 0.44011317195850364
+        },
+        "hallucinated_captions": 36,
+        "hallucinated_mentions": 36,
+        "object_mentions": 1468,
+        "correct_unique_objects": 1400,
+        "reference_unique_objects": 3181
+      },
+      "original_fixed": {
+        "caption": {
+          "Bleu_1": 0.7768663690166362,
+          "Bleu_2": 0.6196593794345507,
+          "Bleu_3": 0.48781752544746265,
+          "Bleu_4": 0.38415225531734165,
+          "METEOR": 0.29460384102908177,
+          "ROUGE_L": 0.5825560157257371,
+          "CIDEr": 1.2758186674394347
+        },
+        "chair": {
+          "CHAIRs": 0.038,
+          "CHAIRi": 0.025827814569536423,
+          "Recall": 0.4495441685004716
+        },
+        "hallucinated_captions": 38,
+        "hallucinated_mentions": 39,
+        "object_mentions": 1510,
+        "correct_unique_objects": 1430,
+        "reference_unique_objects": 3181
+      },
+      "scst_ce_mid_rank0": {
+        "caption": {
+          "Bleu_1": 0.7731656184485562,
+          "Bleu_2": 0.615023271572582,
+          "Bleu_3": 0.48018069426199317,
+          "Bleu_4": 0.3732930796707229,
+          "METEOR": 0.28988115496856337,
+          "ROUGE_L": 0.5771094111296595,
+          "CIDEr": 1.2499383957277226
+        },
+        "chair": {
+          "CHAIRs": 0.032,
+          "CHAIRi": 0.022418478260869564,
+          "Recall": 0.44231373781829614
+        },
+        "hallucinated_captions": 32,
+        "hallucinated_mentions": 33,
+        "object_mentions": 1472,
+        "correct_unique_objects": 1407,
+        "reference_unique_objects": 3181
+      },
+      "scst_ce_mid_fixed": {
+        "caption": {
+          "Bleu_1": 0.7754005272763359,
+          "Bleu_2": 0.6185672346698926,
+          "Bleu_3": 0.48235490116029356,
+          "Bleu_4": 0.3747564965936601,
+          "METEOR": 0.29338143657076127,
+          "ROUGE_L": 0.5834884326066444,
+          "CIDEr": 1.27432236973075
+        },
+        "chair": {
+          "CHAIRs": 0.033,
+          "CHAIRi": 0.021710526315789475,
+          "Recall": 0.452059100911663
+        },
+        "hallucinated_captions": 33,
+        "hallucinated_mentions": 33,
+        "object_mentions": 1520,
+        "correct_unique_objects": 1438,
+        "reference_unique_objects": 3181
+      },
+      "scst_ce_end_rank0": {
+        "caption": {
+          "Bleu_1": 0.7735309687664612,
+          "Bleu_2": 0.6137133617711906,
+          "Bleu_3": 0.47793917765046007,
+          "Bleu_4": 0.3713801460095687,
+          "METEOR": 0.2880663319976828,
+          "ROUGE_L": 0.5731075145805755,
+          "CIDEr": 1.2400205556998882
+        },
+        "chair": {
+          "CHAIRs": 0.039,
+          "CHAIRi": 0.02608695652173913,
+          "Recall": 0.44640050298648226
+        },
+        "hallucinated_captions": 39,
+        "hallucinated_mentions": 39,
+        "object_mentions": 1495,
+        "correct_unique_objects": 1420,
+        "reference_unique_objects": 3181
+      },
+      "scst_ce_end_fixed": {
+        "caption": {
+          "Bleu_1": 0.7739997963961341,
+          "Bleu_2": 0.6168179373083231,
+          "Bleu_3": 0.48098576832005085,
+          "Bleu_4": 0.37324334020841593,
+          "METEOR": 0.29335656964090046,
+          "ROUGE_L": 0.5819752607092454,
+          "CIDEr": 1.2691669025818324
+        },
+        "chair": {
+          "CHAIRs": 0.041,
+          "CHAIRi": 0.0273972602739726,
+          "Recall": 0.4539453002200566
+        },
+        "hallucinated_captions": 41,
+        "hallucinated_mentions": 42,
+        "object_mentions": 1533,
+        "correct_unique_objects": 1444,
+        "reference_unique_objects": 3181
+      },
+      "scst_ce_object_mid_rank0": {
+        "caption": {
+          "Bleu_1": 0.7695365624018443,
+          "Bleu_2": 0.6115015700990009,
+          "Bleu_3": 0.47606051021814283,
+          "Bleu_4": 0.3707807834308329,
+          "METEOR": 0.2872434679389538,
+          "ROUGE_L": 0.5711425826198808,
+          "CIDEr": 1.2368331744970242
+        },
+        "chair": {
+          "CHAIRs": 0.036,
+          "CHAIRi": 0.024439918533604887,
+          "Recall": 0.44074190506130145
+        },
+        "hallucinated_captions": 36,
+        "hallucinated_mentions": 36,
+        "object_mentions": 1473,
+        "correct_unique_objects": 1402,
+        "reference_unique_objects": 3181
+      },
+      "scst_ce_object_mid_fixed": {
+        "caption": {
+          "Bleu_1": 0.7744193123034004,
+          "Bleu_2": 0.6184217640047256,
+          "Bleu_3": 0.4840774346459478,
+          "Bleu_4": 0.3777334465671461,
+          "METEOR": 0.29503416859948917,
+          "ROUGE_L": 0.5829315072100212,
+          "CIDEr": 1.2750188295785665
+        },
+        "chair": {
+          "CHAIRs": 0.032,
+          "CHAIRi": 0.021080368906455864,
+          "Recall": 0.45143036780886514
+        },
+        "hallucinated_captions": 32,
+        "hallucinated_mentions": 32,
+        "object_mentions": 1518,
+        "correct_unique_objects": 1436,
+        "reference_unique_objects": 3181
+      },
+      "scst_ce_object_end_rank0": {
+        "caption": {
+          "Bleu_1": 0.7769556025369158,
+          "Bleu_2": 0.6194369924663831,
+          "Bleu_3": 0.48463222347074897,
+          "Bleu_4": 0.37988789495227626,
+          "METEOR": 0.290828681603273,
+          "ROUGE_L": 0.5780351879560817,
+          "CIDEr": 1.2540226613785157
+        },
+        "chair": {
+          "CHAIRs": 0.036,
+          "CHAIRi": 0.0242098184263618,
+          "Recall": 0.44451430367808864
+        },
+        "hallucinated_captions": 36,
+        "hallucinated_mentions": 36,
+        "object_mentions": 1487,
+        "correct_unique_objects": 1414,
+        "reference_unique_objects": 3181
+      },
+      "scst_ce_object_end_fixed": {
+        "caption": {
+          "Bleu_1": 0.7780038661104102,
+          "Bleu_2": 0.6198382370058175,
+          "Bleu_3": 0.48355324612784,
+          "Bleu_4": 0.37768689842670833,
+          "METEOR": 0.2951234480504994,
+          "ROUGE_L": 0.5843575346129741,
+          "CIDEr": 1.2866695014367855
+        },
+        "chair": {
+          "CHAIRs": 0.038,
+          "CHAIRi": 0.025210084033613446,
+          "Recall": 0.4602326312480352
+        },
+        "hallucinated_captions": 38,
+        "hallucinated_mentions": 39,
+        "object_mentions": 1547,
+        "correct_unique_objects": 1464,
+        "reference_unique_objects": 3181
+      }
+    },
+    "validation_remainder4000": {
+      "original_rank0": {
+        "caption": {
+          "Bleu_1": 0.7664209641202988,
+          "Bleu_2": 0.6089919397192495,
+          "Bleu_3": 0.47546600092936,
+          "Bleu_4": 0.3716205668682587,
+          "METEOR": 0.28276907285855324,
+          "ROUGE_L": 0.5717497185167779,
+          "CIDEr": 1.175837366535934
+        },
+        "chair": {
+          "CHAIRs": 0.0445,
+          "CHAIRi": 0.03113109650639917,
+          "Recall": 0.4263748332941084
+        },
+        "hallucinated_captions": 178,
+        "hallucinated_mentions": 180,
+        "object_mentions": 5782,
+        "correct_unique_objects": 5435,
+        "reference_unique_objects": 12747
+      },
+      "original_fixed": {
+        "caption": {
+          "Bleu_1": 0.7756338867162007,
+          "Bleu_2": 0.6186607061618146,
+          "Bleu_3": 0.4811555531793966,
+          "Bleu_4": 0.37155511185763407,
+          "METEOR": 0.28979866392441583,
+          "ROUGE_L": 0.5770556612948744,
+          "CIDEr": 1.2086093318269673
+        },
+        "chair": {
+          "CHAIRs": 0.035,
+          "CHAIRi": 0.023521616697034953,
+          "Recall": 0.44481054365733114
+        },
+        "hallucinated_captions": 140,
+        "hallucinated_mentions": 142,
+        "object_mentions": 6037,
+        "correct_unique_objects": 5670,
+        "reference_unique_objects": 12747
+      },
+      "scst_ce_rank0": {
+        "caption": {
+          "Bleu_1": 0.7664209641202988,
+          "Bleu_2": 0.6089919397192495,
+          "Bleu_3": 0.47546600092936,
+          "Bleu_4": 0.3716205668682587,
+          "METEOR": 0.28276907285855324,
+          "ROUGE_L": 0.5717497185167779,
+          "CIDEr": 1.175837366535934
+        },
+        "chair": {
+          "CHAIRs": 0.0445,
+          "CHAIRi": 0.03113109650639917,
+          "Recall": 0.4263748332941084
+        },
+        "hallucinated_captions": 178,
+        "hallucinated_mentions": 180,
+        "object_mentions": 5782,
+        "correct_unique_objects": 5435,
+        "reference_unique_objects": 12747
+      },
+      "scst_ce_fixed": {
+        "caption": {
+          "Bleu_1": 0.7756338867162007,
+          "Bleu_2": 0.6186607061618146,
+          "Bleu_3": 0.4811555531793966,
+          "Bleu_4": 0.37155511185763407,
+          "METEOR": 0.28979866392441583,
+          "ROUGE_L": 0.5770556612948744,
+          "CIDEr": 1.2086093318269673
+        },
+        "chair": {
+          "CHAIRs": 0.035,
+          "CHAIRi": 0.023521616697034953,
+          "Recall": 0.44481054365733114
+        },
+        "hallucinated_captions": 140,
+        "hallucinated_mentions": 142,
+        "object_mentions": 6037,
+        "correct_unique_objects": 5670,
+        "reference_unique_objects": 12747
+      },
+      "scst_ce_object_rank0": {
+        "caption": {
+          "Bleu_1": 0.7731813592645526,
+          "Bleu_2": 0.6148683705168951,
+          "Bleu_3": 0.48007778507933935,
+          "Bleu_4": 0.37413353290820833,
+          "METEOR": 0.2849447796825212,
+          "ROUGE_L": 0.5733093933465013,
+          "CIDEr": 1.1957046135264822
+        },
+        "chair": {
+          "CHAIRs": 0.0395,
+          "CHAIRi": 0.027434842249657063,
+          "Recall": 0.4329646191260689
+        },
+        "hallucinated_captions": 158,
+        "hallucinated_mentions": 160,
+        "object_mentions": 5832,
+        "correct_unique_objects": 5519,
+        "reference_unique_objects": 12747
+      },
+      "scst_ce_object_fixed": {
+        "caption": {
+          "Bleu_1": 0.776752955564595,
+          "Bleu_2": 0.621605313859596,
+          "Bleu_3": 0.48583794837379224,
+          "Bleu_4": 0.3770033656254796,
+          "METEOR": 0.29364736735604074,
+          "ROUGE_L": 0.5816140596766579,
+          "CIDEr": 1.238974414742107
+        },
+        "chair": {
+          "CHAIRs": 0.0295,
+          "CHAIRi": 0.019705249213445936,
+          "Recall": 0.4479485369106456
+        },
+        "hallucinated_captions": 118,
+        "hallucinated_mentions": 119,
+        "object_mentions": 6039,
+        "correct_unique_objects": 5710,
+        "reference_unique_objects": 12747
+      }
+    }
+  },
+  "training": {
+    "scst_ce": {
+      "arm": "scst_ce",
+      "steps": 14161,
+      "train_images": 113287,
+      "seconds": 6679.582863662999,
+      "checkpoint_sha256": "43eb5e4c54a514582af93bdd6cb88c71aae0dfc336108e4fa1e7c8b446b405c0",
+      "source_checkpoint_sha256": "155106910d49715f8065a444baca3321bb5e668a1f684ea3c78f860de8a39012",
+      "protocol_sha256": "c8ebb477cbc7014de11f182c60db4f6976ebf177bb92ee78f9f025f21fe9d88f",
+      "dropout": false,
+      "precision": "fp32",
+      "scst_weight": 0.05,
+      "ce_weight": 1.0,
+      "object_reward_weight": 0.0,
+      "object_reward_parser": "aliases_v2",
+      "object_reward_penalty": "unique_count_v2"
+    },
+    "scst_ce_object": {
+      "arm": "scst_ce_object",
+      "steps": 14161,
+      "train_images": 113287,
+      "seconds": 6940.508847521999,
+      "checkpoint_sha256": "6225193761e2519994e9922376db9a83b7b0e05b0cbe2cef251cdf166ce7804c",
+      "source_checkpoint_sha256": "155106910d49715f8065a444baca3321bb5e668a1f684ea3c78f860de8a39012",
+      "protocol_sha256": "c8ebb477cbc7014de11f182c60db4f6976ebf177bb92ee78f9f025f21fe9d88f",
+      "dropout": false,
+      "precision": "fp32",
+      "scst_weight": 0.05,
+      "ce_weight": 1.0,
+      "object_reward_weight": 0.5,
+      "object_reward_parser": "aliases_v2",
+      "object_reward_penalty": "unique_count_v2"
+    }
+  },
+  "locked_selection": {
+    "selected_names": {
+      "scst_ce": "original",
+      "scst_ce_object": "scst_ce_object_end"
+    },
+    "eligible_names": {
+      "scst_ce": [
+        "scst_ce_mid"
+      ],
+      "scst_ce_object": [
+        "scst_ce_object_mid",
+        "scst_ce_object_end"
+      ]
+    },
+    "checkpoint_paths": {
+      "original": "/kaggle/input/datasets/ducanh2403/qformer-epoch10/qformer_epoch10/model_h1_2_crossattn_epoch_10.pth",
+      "scst_ce": "/kaggle/input/datasets/ducanh2403/qformer-epoch10/qformer_epoch10/model_h1_2_crossattn_epoch_10.pth",
+      "scst_ce_object": "/kaggle/working/qformer_scst_ce_object_w05_fulltrain/scst_ce_object/checkpoint.pth"
+    },
+    "checkpoint_sha256": {
+      "original": "155106910d49715f8065a444baca3321bb5e668a1f684ea3c78f860de8a39012",
+      "scst_ce": "155106910d49715f8065a444baca3321bb5e668a1f684ea3c78f860de8a39012",
+      "scst_ce_object": "6225193761e2519994e9922376db9a83b7b0e05b0cbe2cef251cdf166ce7804c"
+    },
+    "tune_metrics_sha256": "8fd3450e6c50b8ffece0f7f7472dcc52a12850250f67c47903b8459473131d07",
+    "rule": "Fixed CIDEr maximum among original/mid/end on tune1000, with CHAIRs/i <= original and recall >= original-.01; ties earlier; baseline fallback",
+    "test_used": false,
+    "locked_before_remainder_evaluation": true
+  },
+  "remainder_paired_comparisons": {
+    "rank0": {
+      "CIDEr_delta": 0.019867246990548117,
+      "conditional_bootstrap95": [
+        0.006028041346323039,
+        0.0341021623416133
+      ],
+      "hallucination_removed": 66,
+      "hallucination_introduced": 46,
+      "changed_captions": 2340
+    },
+    "fixed": {
+      "CIDEr_delta": 0.03036508291513966,
+      "conditional_bootstrap95": [
+        0.01583619988134239,
+        0.04525539423874934
+      ],
+      "hallucination_removed": 55,
+      "hallucination_introduced": 33,
+      "changed_captions": 2651
+    }
+  },
+  "gate_passed": true,
+  "target_metadata": {
+    "variant": "coco_train_object_reward_count_v2",
+    "images": 113287,
+    "parser_version": "aliases_v2",
+    "penalty_version": "unique_count_v2",
+    "empty_annotation_sets_before_reference_union": 659,
+    "reward_eligible_images": 112649,
+    "annotation_cache_sha256": "73ce11225febb97df38c5bfad60b3ff6cc25852e9df9a1330673155b4be851c3",
+    "support_source": "Pinned COCO instance + reference-caption annotation union",
+    "salience_source": "Only five selected training-image references; positive labels only",
+    "detector_policy": "confidence>=.9 absent-from-annotation classes neutral, not rewarded or penalized",
+    "formula": ".5 * salient_unique_recall - unsupported_unique_count",
+    "outside_80_classes": "neutral",
+    "heldout_reward_labels_exported": false
+  },
+  "test_used": false,
+  "limits": [
+    "One seed; reused development validation, not never-seen test.",
+    "SCST+CE selected original fallback: no comparison with independently selected newly trained control on remainder.",
+    "No trained tensors/source dataset/detections in review: cannot replay weights, split provenance or fixed-rerank formula.",
+    "Checkpoint selection arithmetic and evaluator config consistency verified; physical execution chronology not independently proven.",
+    "METEOR cross-checked only;CHAIR reaggregated,not retokenized.",
+    "Bootstrap fixed-IDF paired images conditional on checkpoint/pool;not seed uncertainty."
+  ]
+}
