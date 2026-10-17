@@ -1,0 +1,27 @@
+{
+  "status": "CONVERTED_AND_RELOADED_VERIFIED",
+  "source_file": "checkpoint.zip",
+  "source_sha256": "6225193761e2519994e9922376db9a83b7b0e05b0cbe2cef251cdf166ce7804c",
+  "source_bytes": 134418954,
+  "output_file": "qformer_scst_object_w05_legacy.pth",
+  "output_sha256": "5f8eead3f4e960189345b1a9bf492763fe52ec71f70115b73244ffe9d03d2e75",
+  "output_bytes": 134400803,
+  "output_is_zip": false,
+  "serialization": "torch.save legacy non-ZIP",
+  "load_check": "torch.load map_location=cpu weights_only=True",
+  "tensor_entries_exactly_equal": 109,
+  "all_metadata_and_vocab_preserved": true,
+  "no_training_or_model_inference": true,
+  "selected_metadata": {
+    "optimization": "scst_ce_object",
+    "visual_adapter": "qformer",
+    "num_visual_queries": 32,
+    "qformer_layers": 2,
+    "scst_weight": 0.05,
+    "ce_weight": 1.0,
+    "object_reward_weight": 0.5,
+    "object_reward_parser": "aliases_v2",
+    "object_reward_penalty": "unique_count_v2"
+  },
+  "note": "File hash changes with serialization; tensor and metadata equality verified. Original source hash remains provenance."
+}
