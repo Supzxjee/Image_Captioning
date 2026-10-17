@@ -23,5 +23,7 @@
     "object_reward_parser": "aliases_v2",
     "object_reward_penalty": "unique_count_v2"
   },
-  "note": "File hash changes with serialization; tensor and metadata equality verified. Original source hash remains provenance."
+  "note": "File hash changes with serialization; tensor and metadata equality verified. Original source hash remains provenance.",
+  "kaggle_input_path": "/kaggle/input/datasets/ducanh2403/qformer-scst-object-w05-legacy/qformer_scst_object_w05_legacy.pth",
+  "kaggle_mount_status": "Path supplied by user; remote bytes not independently checked yet"
 }
