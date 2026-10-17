@@ -1,0 +1,124 @@
+{
+  "status": "AUDIT_PASS",
+  "source_sha256": "fdc407b5e4855657c527d6640a73498b4a2e40cf125b183b0f1eabd74150521f",
+  "source_bytes": 8625055,
+  "metrics": {
+    "original_rank0": {
+      "caption": {
+        "Bleu_1": 0.7673929147791878,
+        "Bleu_2": 0.6087332892786202,
+        "Bleu_3": 0.47455273221154215,
+        "Bleu_4": 0.37066552705750105,
+        "METEOR": 0.2850389946676435,
+        "ROUGE_L": 0.5731179908462452,
+        "CIDEr": 1.1882447460531307
+      },
+      "chair": {
+        "CHAIRs": 0.0432,
+        "CHAIRi": 0.030298894499795278,
+        "Recall": 0.4375079385240696
+      },
+      "hallucinated_captions": 216,
+      "hallucinated_mentions": 222,
+      "object_mentions": 7327,
+      "correct_unique_objects": 6889,
+      "reference_unique_objects": 15746
+    },
+    "original_fixed": {
+      "caption": {
+        "Bleu_1": 0.7727291606096945,
+        "Bleu_2": 0.615226549802096,
+        "Bleu_3": 0.4784461291818007,
+        "Bleu_4": 0.36935587503156114,
+        "METEOR": 0.2907906024670001,
+        "ROUGE_L": 0.577797558924766,
+        "CIDEr": 1.2218151312426564
+      },
+      "chair": {
+        "CHAIRs": 0.0348,
+        "CHAIRi": 0.023712290870768014,
+        "Recall": 0.4531309538930522
+      },
+      "hallucinated_captions": 174,
+      "hallucinated_mentions": 180,
+      "object_mentions": 7591,
+      "correct_unique_objects": 7135,
+      "reference_unique_objects": 15746
+    },
+    "scst_object_rank0": {
+      "caption": {
+        "Bleu_1": 0.7720900594732207,
+        "Bleu_2": 0.6151820027820362,
+        "Bleu_3": 0.4820191571746516,
+        "Bleu_4": 0.3775788719388495,
+        "METEOR": 0.28934997227440895,
+        "ROUGE_L": 0.5775514953080754,
+        "CIDEr": 1.2120239556363543
+      },
+      "chair": {
+        "CHAIRs": 0.0398,
+        "CHAIRi": 0.02770644681713745,
+        "Recall": 0.4444303315127651
+      },
+      "hallucinated_captions": 199,
+      "hallucinated_mentions": 205,
+      "object_mentions": 7399,
+      "correct_unique_objects": 6998,
+      "reference_unique_objects": 15746
+    },
+    "scst_object_fixed": {
+      "caption": {
+        "Bleu_1": 0.7754072924747709,
+        "Bleu_2": 0.6196641784171996,
+        "Bleu_3": 0.48299826983320404,
+        "Bleu_4": 0.3738789872985667,
+        "METEOR": 0.29513949691726327,
+        "ROUGE_L": 0.5834172119429369,
+        "CIDEr": 1.2473415461594435
+      },
+      "chair": {
+        "CHAIRs": 0.0344,
+        "CHAIRi": 0.022878807687279384,
+        "Recall": 0.4584021338752699
+      },
+      "hallucinated_captions": 172,
+      "hallucinated_mentions": 175,
+      "object_mentions": 7649,
+      "correct_unique_objects": 7218,
+      "reference_unique_objects": 15746
+    }
+  },
+  "paired_comparisons": {
+    "rank0": {
+      "CIDEr_delta": 0.02377920958322388,
+      "conditional_bootstrap95": [
+        0.011139004977391193,
+        0.03645289473611595
+      ],
+      "hallucination_removed": 71,
+      "hallucination_introduced": 54,
+      "changed_captions": 2832
+    },
+    "fixed": {
+      "CIDEr_delta": 0.025526414916787307,
+      "conditional_bootstrap95": [
+        0.012446308212886337,
+        0.03886814425767844
+      ],
+      "hallucination_removed": 60,
+      "hallucination_introduced": 58,
+      "changed_captions": 3312
+    }
+  },
+  "selected_checkpoint_sha256": "5f8eead3f4e960189345b1a9bf492763fe52ec71f70115b73244ffe9d03d2e75",
+  "test_images": 5000,
+  "test_used": true,
+  "training": false,
+  "limits": [
+    "One seed;historical test exposure;no independent unseen-test claim.",
+    "CIDEr intervals conditional on checkpoint/imagepool,fixedIDF;not training-seed uncertainty.",
+    "Weights/fullsource/detections absent: no actual tensorforward or rerankformula replay.",
+    "METEOR cross-checked only;CHAIR reaggregated,notretokenized.",
+    "SCST+CE newtrained control not evaluated;no isolated objectreward contribution established."
+  ]
+}
