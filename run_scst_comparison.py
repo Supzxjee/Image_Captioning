@@ -278,21 +278,23 @@ def evaluate(cfg, repo):
     output = Path(cfg['output']); chair = Path(cfg['chair_directory'])
     detections = index_detections(json.loads(Path(cfg['detections']).read_text(encoding='utf-8')))
     dataset = json.loads(Path(cfg['dataset_json_path']).read_text(encoding='utf-8'))['images']
-    images = cfg['groups']['val']
+    split = cfg.get('evaluation_split', 'val')
+    if split not in ('val', 'test'): raise ValueError('Evaluation split must be val or test.')
+    images = cfg['groups'][split]
     gt = {'info': {}, 'licenses': [], 'type': 'captions', 'images': [{'id': r['image_id']} for r in images],
           'annotations': [{'id': n*5+j, 'image_id': r['image_id'], 'caption': s['raw']}
                           for n, r in enumerate(images) for j, s in enumerate(dataset[r['image_id']]['sentences'][:5])]}
-    save(output/'val_gt.json', gt)
+    save(output/f'{split}_gt.json', gt)
     metrics = {}
     for arm in cfg.get('evaluation_checkpoints', dict.fromkeys(('original', *training_arms(cfg)))):
         folder = output/arm; folder.mkdir(parents=True, exist_ok=True)
         checkpoint = (cfg['evaluation_checkpoints'][arm] if 'evaluation_checkpoints' in cfg else
                       cfg['checkpoint'] if arm == 'original' else str(folder/'checkpoint.pth'))
         worker_cfg = {**cfg, 'output': str(folder), 'checkpoint': checkpoint, 'images': images,
-                      'workers': 2, 'split': 'val', 'checkpoint_sha256': sha(checkpoint)}
+                      'workers': 2, 'split': split, 'checkpoint_sha256': sha(checkpoint)}
         records = run_workers(worker_cfg, 'beams', repo)
         raw, scored = folder/'beams.json', folder/'clip_beams.json'
-        save(raw, {'metadata': {'split': 'val', 'count': len(records), 'checkpoint_sha256': sha(checkpoint)}, 'data': records})
+        save(raw, {'metadata': {'split': split, 'count': len(records), 'checkpoint_sha256': sha(checkpoint)}, 'data': records})
         command([sys.executable, '-u', repo/'score_clip_candidates.py', '--candidates', raw,
                  '--visual-cache', cfg['visual_cache'], '--output', scored, '--device', 'cuda',
                  '--revision', cfg['clip_revision']])
@@ -302,7 +304,7 @@ def evaluate(cfg, repo):
                       rerank_multiscore(r, detections[r['filename']], .4, .3)[0] for r in records]
             name = f'{arm}_{policy}'; pred, ci, co = (folder/f'{policy}_{s}.json' for s in ('predictions', 'chair_input', 'chair_output'))
             save(pred, [{'image_id': r['image_id'], 'caption': c['caption']} for r, c in zip(records, chosen)])
-            caption = score_files(pred, output/'val_gt.json', folder/f'{policy}_metrics.json')
+            caption = score_files(pred, output/f'{split}_gt.json', folder/f'{policy}_metrics.json')
             save(ci, [{'image_id': r['coco_id'], 'caption': c['caption']} for r, c in zip(records, chosen)])
             command([sys.executable, '-u', chair/'chair.py', '--cap_file', ci, '--cache', chair/'chair.pkl', '--save_path', co], cwd=chair)
             evaluated = json.loads(co.read_text(encoding='utf-8'))
