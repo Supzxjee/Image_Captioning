@@ -14,7 +14,7 @@ COCO_IMAGES = Path('/kaggle/input/datasets/vuthetam/mscoco-2014/images')
 OUTPUT = Path('/kaggle/working/vcoco_upt_full_relation_audit')
 WORK = Path('/tmp/vcoco-upt-relation-audit')
 REPO = Path('/kaggle/working/Image_Captioning')
-COMMIT = '5396125bcefe0c091944fcd15a5e65e4b5d47a83'
+COMMIT = '5b397038a24fb17264588c328da9e069ea821507'
 # Optional: supply the official UPT HICO checkpoint already attached as a file.
 LOCAL_UPT_CHECKPOINT = None
 
@@ -79,12 +79,13 @@ if not INVENTORY.exists():
     run([sys.executable, '-u', 'audit_vcoco_alignment_data.py', '--caption-json', SOURCES / 'dataset_coco.json',
          '--vcoco-train', SOURCES / 'vcoco_train.json', '--vcoco-val', SOURCES / 'vcoco_val.json',
          '--output', INVENTORY], cwd=REPO)
-assert sha(INVENTORY / 'locked_image_groups.json') == sha(REPO / 'audit/vcoco_grounded_caption_week1_groups.json')
+assert json.loads((INVENTORY / 'locked_image_groups.json').read_text()) == json.loads(
+    (REPO / 'audit/vcoco_grounded_caption_week1_groups.json').read_text()), 'Locked image IDs differ.'
 INSTANCES = SOURCES / 'instances_vcoco_trainval2014.json'
 if not INSTANCES.exists():
     print('Fetching one official COCO annotation ZIP member; no COCO images downloaded.', flush=True)
     run([sys.executable, '-u', 'fetch_vcoco_coco_instances.py', '--sources', SOURCES, '--output', INSTANCES], cwd=REPO)
-GROUNDED = WORK / 'grounded_links'
+GROUNDED = WORK / 'grounded_links_lf_fixed'
 if not GROUNDED.exists():
     run([sys.executable, '-u', 'prepare_vcoco_grounded_caption_data.py', '--sources', SOURCES,
          '--instances-json', INSTANCES, '--groups', INVENTORY / 'locked_image_groups.json',

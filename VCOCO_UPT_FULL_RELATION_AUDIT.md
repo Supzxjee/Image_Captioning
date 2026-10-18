@@ -4,6 +4,13 @@ Trạng thái: **đã chuẩn bị code/notebook, chưa chạy suy luận GPU**.
 Kaggle. Đây là bước kiểm tra chất lượng nguồn quan hệ, không phải mô hình caption
 mới hoặc đóng góp đã chứng minh. Không yêu cầu chấm thêm thủ công ở bước này.
 
+Đã sửa lỗi khác xuống dòng Windows CRLF và Linux LF ở bước kiểm tra manifest:
+chỉ chuẩn hóa CRLF/LF khi hash, không đổi ID, split hoặc số liên kết. Đã tái hiện
+lỗi cũ rồi chạy ghép nguồn thật với cả hai định dạng, kết quả/hashes data trùng
+nhau. Launcher dùng `grounded_links_lf_fixed` để không dùng nhầm output cũ dở;
+giữ nguyên `/tmp/vcoco-upt-relation-audit/sources` nên có thể tái dùng annotation
+đã tải nếu chạy lại trong cùng session. Đây không phải lỗi notebook full cache.
+
 ## Mục đích
 
 Mô hình tương tác pretrained UPT-R50 HICO-DET nhận ảnh và tự tạo người/vật/cặp ứng
@@ -61,9 +68,9 @@ nén), dựng lại đúng dữ liệu đã kiểm chứng; không tải lại �
 UPT HICO checkpoint khoảng 220 MB nếu chưa có. Có thể điền `LOCAL_UPT_CHECKPOINT`
 để dùng file model đã attach; cần đúng hash, không dùng checkpoint Q-Former vào đây.
 
-Code inference pin commit `5396125bcefe0c091944fcd15a5e65e4b5d47a83`, upstream và
+Code inference pin commit `5b397038a24fb17264588c328da9e069ea821507`, upstream và
 checkpoint giữ nguyên identity từ các kiểm tra UPT trước. Bootstrap kiểm hash sources,
-split, box join và chạy 30 tests trước suy luận. Chưa đo thời gian cả notebook trên T4,
+split, box join và chạy 31 tests trước suy luận. Chưa đo thời gian cả notebook trên T4,
 không hứa ETA hoặc kết quả. GPU/torchvision/upstream compatibility cần xác nhận lúc chạy.
 
 ## Khi xong gửi gì?
@@ -76,7 +83,7 @@ chưa tạo ZIP. Runner dùng output mới, không ghi đè hoặc tự resume m
 
 ## Kiểm tra chuẩn bị
 
-30 CPU tests PASS cho inventory, box join, detector coverage và evaluator mới:
+31 CPU tests PASS cho inventory, box join, detector coverage và evaluator mới:
 unknown target không thành âm; missing detection còn trong denominator; GT khác
 cũng cạnh tranh mapping; threshold không tách score ties; không đủ support phải
 abstain; unknown accepted được đếm riêng, không nâng precision giả. Syntax PASS.
