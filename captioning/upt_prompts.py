@@ -2,6 +2,7 @@
 import math
 
 from .selected_relation_prompts import entity_id, phrase
+from .upt_action_text import ACTION_TEXT, action_predicate
 
 METHOD = 'upt_object_relation_prompt_v1'
 PREDICATES = ('holding', 'riding')
@@ -12,12 +13,16 @@ def noun(label):
 
 
 def relation_text(predicate, obj):
-    if predicate not in PREDICATES:
+    verb = {'holding': 'hold', 'riding': 'ride'}.get(predicate, predicate)
+    if verb not in ACTION_TEXT:
         raise ValueError('Unsupported prompt predicate.')
     # Do not infer surfing/skiing from object class alone. Keep UPT's broad ride.
     if predicate == 'riding' and obj == 'skis':
         return 'a person on skis'
-    return f'a person {predicate} {noun(obj)}'
+    if verb in ('jump', 'run'):
+        # These labels do not specify the object's grammatical role; do not invent one.
+        return f'a person and {noun(obj)} (interaction: {ACTION_TEXT[verb]})'
+    return f'a person {ACTION_TEXT[verb]} {noun(obj)}'
 
 
 def from_audit(row):
@@ -27,7 +32,7 @@ def from_audit(row):
     return detections, claims
 
 
-def from_cache(row, vocabulary):
+def from_cache(row, vocabulary, all_actions=False):
     h, w = row['resized_size_hw']
     if h <= 0 or w <= 0 or len(row['boxes_resized_xyxy']) != len(row['labels']) or len(row['labels']) != len(row['object_scores']):
         raise ValueError('Invalid cache detection dimensions.')
@@ -48,8 +53,12 @@ def from_cache(row, vocabulary):
             raise ValueError('Sparse native score row differs from ontology.')
         for verb, score in zip(verbs, scores):
             name = vocabulary['verbs'][verb]
-            if name in ('hold', 'ride'):
-                claims.append({'subject': s, 'object': o, 'predicate': 'holding' if name == 'hold' else 'riding',
+            if name == 'no_interaction':
+                continue
+            if all_actions and name not in ACTION_TEXT:
+                raise ValueError(f'Unknown UPT action: {name}')
+            if all_actions or name in ('hold', 'ride'):
+                claims.append({'subject': s, 'object': o, 'predicate': action_predicate(name),
                                'score': score})
     return detections, claims
 
@@ -57,7 +66,9 @@ def from_cache(row, vocabulary):
 def build_prompt(filename, detections, claims, policy, max_relations=3, object_threshold=.5, max_object_names=8):
     if max_relations < 1 or max_object_names < 1 or not math.isfinite(object_threshold) or not 0 <= object_threshold <= 1:
         raise ValueError('Invalid prompt options.')
-    thresholds = {p: policy['predicates'][p]['threshold'] for p in PREDICATES}
+    thresholds = {p: value['threshold'] for p, value in policy['predicates'].items()}
+    if not thresholds or any(p not in {action_predicate(v) for v in ACTION_TEXT} for p in thresholds):
+        raise ValueError('Unknown or empty policy predicates.')
     if any(not math.isfinite(t) or not 0 <= t <= 1.01 for t in thresholds.values()):
         raise ValueError('Invalid locked policy threshold.')
     objects = []
@@ -74,7 +85,7 @@ def build_prompt(filename, detections, claims, policy, max_relations=3, object_t
     unique = {}
     for c in claims:
         s, o, p, score = (c[k] for k in ('subject', 'object', 'predicate', 'score'))
-        if p not in PREDICATES or s == o or not 0 <= s < len(objects) or not 0 <= o < len(objects):
+        if p not in thresholds or s == o or not 0 <= s < len(objects) or not 0 <= o < len(objects):
             raise ValueError('Invalid relation pair/predicate.')
         if objects[s]['label'] != 'person' or not math.isfinite(score) or not 0 <= score <= 1:
             raise ValueError('Invalid relation actor/score.')

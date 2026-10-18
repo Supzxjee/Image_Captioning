@@ -11,6 +11,7 @@ import zipfile
 from audit_vcoco_alignment_data import digest
 from captioning.upt_cache import identity, read_shard
 from captioning.upt_prompts import METHOD, from_audit, from_cache, build_prompt
+from captioning.upt_action_text import ACTION_TEXT, uniform_policy
 from run_vcoco_upt_full_audit import CHECKPOINT
 
 
@@ -73,14 +74,21 @@ def records(args):
             if manifest is not None and path.name in manifest['shards'] and digest(path) != manifest['shards'][path.name]['sha256']:
                 raise ValueError('Cache shard hash differs from manifest.')
             for row in read_shard(path, task, meta['signature']):
-                detections, claims = from_cache(row, data['vocabulary'])
+                detections, claims = from_cache(row, data['vocabulary'], getattr(args, 'all_actions', False))
                 yield row['filename'], detections, claims
 
 
 def run(args):
     if args.output.exists():
         raise FileExistsError('Use a new output; preserve earlier prompts.')
-    policy = json.loads(args.policy.read_text())
+    if args.all_actions:
+        if args.policy is not None or args.audit_zip:
+            raise ValueError('--all-actions requires full-cache input, without --policy; audit ZIP has only hold/ride.')
+        policy = uniform_policy(args.relation_threshold)
+    else:
+        if args.policy is None:
+            raise ValueError('Legacy hold/ride mode requires --policy; use --all-actions for 116 actions.')
+        policy = json.loads(args.policy.read_text())
     prompts = {}
     for filename, detections, claims in records(args):
         if filename in prompts:
@@ -89,19 +97,23 @@ def run(args):
                                          args.object_threshold, args.max_object_names)
     if not prompts:
         raise ValueError('No completed image records found.')
-    summary = {'variant': METHOD, 'images': len(prompts), 'modes': dict(Counter(e['mode'] for e in prompts.values())),
+    summary = {'variant': 'upt_object_relation_prompt_all_actions_v2' if args.all_actions else METHOD,
+               'supported_actions': len(ACTION_TEXT) if args.all_actions else 2,
+               'threshold_calibrated': False if args.all_actions else 'Calibration-fitted; precision not guaranteed on new images',
+               'images': len(prompts), 'modes': dict(Counter(e['mode'] for e in prompts.values())),
                'selected_relations': sum(len(e['relations']) for e in prompts.values()),
                'selected_predicates': dict(Counter(c['predicate'] for e in prompts.values() for c in e['relations'])),
                'above_threshold_claims': sum(e['above_threshold_claims'] for e in prompts.values()),
                'capped_claims': sum(e['capped_claims'] for e in prompts.values()),
-               'policy_sha256': digest(args.policy), 'policy': policy,
+               'policy_sha256': identity(policy), 'policy': policy,
                'source': str(args.audit_zip or args.cache),
                'source_sha256': digest(args.audit_zip or args.cache / 'cache_identity.json'),
                'source_scope': '3374 reused relation audit images, not full COCO' if args.audit_zip else 'completed full-cache shards',
                'partial_allowed': args.allow_partial, 'object_threshold': args.object_threshold,
                'max_relations': args.max_relations, 'max_object_names': args.max_object_names,
                'label_based_selection': False, 'training': False, 'caption_metrics': False,
-               'limits': ['Holding/riding only; other cached verbs not yet calibrated for this generator.',
+               'limits': [('All 116 positive HICO actions; common native-score threshold is exploratory, NOT calibrated.'
+                           if args.all_actions else 'Holding/riding only; other cached verbs not used.'),
                           'Candidate previews include rejected relations and are never fed into prompt text.',
                           'Object fallback threshold/caps are fixed engineering settings, not validated precision.',
                           'No claim of full scene coverage, instance grounding by decoder, or caption improvement.']}
@@ -139,6 +151,9 @@ def run(args):
     page = '<!doctype html><meta charset="utf-8"><title>UPT prompt review 50</title><style>body{font:18px Arial;background:#eef2f6;max-width:1000px;margin:25px auto;padding:15px}article{background:white;padding:20px;margin:20px 0;border-radius:12px}.photo{position:relative}.photo img{width:100%;display:block}.photo svg{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}p{line-height:1.5}</style><h1>50 prompt UPT để kiểm tra</h1><p>Mẫu có chủ đích, chia theo mode; không đại diện phân phối ảnh. Ảnh tải từ COCO qua Internet. Box xanh: người; cam: vật trong quan hệ được chọn. Bản này chỉ dùng holding/riding với ngưỡng cũ, chưa chứng minh tăng chất lượng caption.</p>' + ''.join(cards)
     if args.review_images is not None:
         page = page.replace('Ảnh tải từ COCO qua Internet.', 'Ảnh đã lưu kèm, xem được offline.')
+    if args.all_actions:
+        page = page.replace('Bản này chỉ dùng holding/riding với ngưỡng cũ, chưa chứng minh tăng chất lượng caption.',
+                            f'Bản mở rộng 116 hành động, ngưỡng thử nghiệm {args.relation_threshold}; chưa hiệu chuẩn hoặc chứng minh tăng chất lượng caption.')
     (args.output / 'prompt_review_50.html').write_text(page, encoding='utf-8')
     print(json.dumps(summary, indent=2), flush=True)
 
@@ -148,7 +163,9 @@ if __name__ == '__main__':
     source = parser.add_mutually_exclusive_group(required=True)
     source.add_argument('--audit-zip', type=Path)
     source.add_argument('--cache', type=Path)
-    parser.add_argument('--policy', type=Path, required=True)
+    parser.add_argument('--policy', type=Path)
+    parser.add_argument('--all-actions', action='store_true', help='Use all 116 positive HICO actions; full-cache input only.')
+    parser.add_argument('--relation-threshold', type=float, default=.5, help='Exploratory native score threshold in all-actions mode.')
     parser.add_argument('--output', type=Path, required=True)
     parser.add_argument('--review-images', type=Path, help='Local COCO image directory; copy 50 review images for offline viewing.')
     parser.add_argument('--allow-partial', action='store_true')

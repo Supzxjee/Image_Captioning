@@ -1,0 +1,117 @@
+﻿upt_verb,prompt_action,example_object,example_text
+adjust,adjusting,skis,a person adjusting skis
+assemble,assembling,kite,a person assembling a kite
+block,blocking,frisbee,a person blocking a frisbee
+blow,blowing toward,cake,a person blowing toward a cake
+board,boarding,airplane,a person boarding an airplane
+break,breaking,baseball bat,a person breaking a baseball bat
+brush_with,brushing with,toothbrush,a person brushing with a toothbrush
+buy,buying,apple,a person buying an apple
+carry,carrying,bicycle,a person carrying a bicycle
+catch,catching,frisbee,a person catching a frisbee
+chase,chasing,bird,a person chasing a bird
+check,checking,clock,a person checking a clock
+clean,cleaning,dining table,a person cleaning a dining table
+control,controlling,tv,a person controlling a tv
+cook,cooking,carrot,a person cooking a carrot
+cut,cutting,apple,a person cutting an apple
+cut_with,cutting with,knife,a person cutting with a knife
+direct,directing,airplane,a person directing an airplane
+drag,dragging,suitcase,a person dragging a suitcase
+dribble,dribbling,sports ball,a person dribbling a sports ball
+drink_with,drinking from,bottle,a person drinking from a bottle
+drive,driving,boat,a person driving a boat
+dry,drying,cat,a person drying a cat
+eat,eating,apple,a person eating an apple
+eat_at,eating at,dining table,a person eating at a dining table
+exit,exiting,airplane,a person exiting an airplane
+feed,feeding,bird,a person feeding a bird
+fill,filling,cup,a person filling a cup
+flip,flipping,skateboard,a person flipping a skateboard
+flush,flushing,toilet,a person flushing a toilet
+fly,flying,airplane,a person flying an airplane
+greet,greeting,person,a person greeting a person
+grind,grinding on,skateboard,a person grinding on a skateboard
+groom,grooming,dog,a person grooming a dog
+herd,herding,cow,a person herding a cow
+hit,hitting,sports ball,a person hitting a sports ball
+hold,holding,bicycle,a person holding a bicycle
+hop_on,hopping on,bicycle,a person hopping on a bicycle
+hose,hosing,car,a person hosing a car
+hug,hugging,cat,a person hugging a cat
+hunt,hunting,bear,a person hunting a bear
+inspect,inspecting,airplane,a person inspecting an airplane
+install,installing,traffic light,a person installing a traffic light
+jump,jumping,bicycle,a person and a bicycle (interaction: jumping)
+kick,kicking,sports ball,a person kicking a sports ball
+kiss,kissing,cat,a person kissing a cat
+lasso,lassoing,cow,a person lassoing a cow
+launch,launching,boat,a person launching a boat
+lick,licking,bottle,a person licking a bottle
+lie_on,lying on,chair,a person lying on a chair
+lift,lifting,fork,a person lifting a fork
+light,lighting,cake,a person lighting a cake
+load,loading,airplane,a person loading an airplane
+lose,losing,umbrella,a person losing an umbrella
+make,making,cake,a person making a cake
+milk,milking,cow,a person milking a cow
+move,moving,refrigerator,a person moving a refrigerator
+open,opening,bottle,a person opening a bottle
+operate,operating,hair drier,a person operating a hair drier
+pack,packing,suitcase,a person packing a suitcase
+paint,painting,fire hydrant,a person painting a fire hydrant
+park,parking,bicycle,a person parking a bicycle
+pay,paying at,parking meter,a person paying at a parking meter
+peel,peeling,apple,a person peeling an apple
+pet,petting,bird,a person petting a bird
+pick,picking,apple,a person picking an apple
+pick_up,picking up,cake,a person picking up a cake
+point,pointing,remote,a person pointing a remote
+pour,pouring from,bottle,a person pouring from a bottle
+pull,pulling,kite,a person pulling a kite
+push,pushing,bicycle,a person pushing a bicycle
+race,racing,horse,a person racing a horse
+read,reading,book,a person reading a book
+release,releasing,bird,a person releasing a bird
+repair,repairing,bicycle,a person repairing a bicycle
+ride,riding,airplane,a person riding an airplane
+row,rowing,boat,a person rowing a boat
+run,running,dog,a person and a dog (interaction: running)
+sail,sailing,boat,a person sailing a boat
+scratch,scratching,cat,a person scratching a cat
+serve,serving,sports ball,a person serving a sports ball
+set,setting,clock,a person setting a clock
+shear,shearing,sheep,a person shearing a sheep
+sign,signing,baseball bat,a person signing a baseball bat
+sip,sipping from,cup,a person sipping from a cup
+sit_at,sitting at,dining table,a person sitting at a dining table
+sit_on,sitting on,airplane,a person sitting on an airplane
+slide,sliding on,pizza,a person sliding on a pizza
+smell,smelling,apple,a person smelling an apple
+spin,spinning,frisbee,a person spinning a frisbee
+squeeze,squeezing,orange,a person squeezing an orange
+stab,stabbing,person,a person stabbing a person
+stand_on,standing on,boat,a person standing on a boat
+stand_under,standing under,stop sign,a person standing under a stop sign
+stick,sticking,fork,a person sticking a fork
+stir,stirring,bowl,a person stirring a bowl
+stop_at,stopping at,stop sign,a person stopping at a stop sign
+straddle,straddling,bicycle,a person straddling a bicycle
+swing,swinging,baseball bat,a person swinging a baseball bat
+tag,tagging,person,a person tagging a person
+talk_on,talking on,cell phone,a person talking on a cell phone
+teach,teaching,person,a person teaching a person
+text_on,texting on,cell phone,a person texting on a cell phone
+throw,throwing,baseball bat,a person throwing a baseball bat
+tie,tying,boat,a person tying a boat
+toast,toasting with,wine glass,a person toasting with a wine glass
+train,training,dog,a person training a dog
+turn,turning,motorcycle,a person turning a motorcycle
+type_on,typing on,keyboard,a person typing on a keyboard
+walk,walking,bicycle,a person walking a bicycle
+wash,washing,airplane,a person washing an airplane
+watch,watching,bird,a person watching a bird
+wave,waving at,bus,a person waving at a bus
+wear,wearing,backpack,a person wearing a backpack
+wield,wielding,baseball bat,a person wielding a baseball bat
+zip,zipping,suitcase,a person zipping a suitcase
