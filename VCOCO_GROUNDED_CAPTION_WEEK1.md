@@ -9,6 +9,12 @@ Notebook GPU sẽ do người dùng tự chạy. Không triển khai lại một
 Mục tiêu: kiểm tra liệu quan hệ **dự đoán từ ảnh** và bằng chứng đúng cặp vùng có thể
 cải thiện caption ngoài checkpoint SCST+CE+object reward đã có hay không.
 
+Cập nhật cùng ngày: đã hoàn tất ghép box COCO và giữ mọi liên kết dương hợp lệ.
+Xem `VCOCO_GROUNDED_CAPTION_BOX_JOIN_RESULT.md`: 3.469 liên kết, không cắt còn một
+cặp mỗi ảnh; 16 tests PASS và export nguồn thật tái lập giống byte. Các hạn chế
+“chưa kiểm tra box” ở phần inventory dưới đây mô tả bước kiểm kê trước cập nhật này;
+box detector và hiệu quả caption vẫn chưa được đánh giá.
+
 ## Kết quả bước đầu trên nguồn thật
 
 Nguồn [V-COCO chính thức](https://github.com/s-gupta/v-coco), revision

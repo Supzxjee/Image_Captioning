@@ -1,0 +1,16 @@
+{
+  "url": "https://s3.amazonaws.com/images.cocodataset.org/annotations/annotations_trainval2014.zip",
+  "etag": "\"0a379cfc70b0e71301e0f377548639bd\"",
+  "archive_bytes": 252872794,
+  "member": "annotations/instances_train2014.json",
+  "member_crc32": "3cd50ca9",
+  "member_compressed_bytes": 107297879,
+  "member_uncompressed_bytes": 332556225,
+  "uncompressed_member_sha256": "777ef504abfeba349930485bb32ecd5b6529129a3e010f7852e1437cb049b732",
+  "network_bytes": 110266458,
+  "ijson_version": "3.4.0",
+  "image_count": 5400,
+  "annotation_count": 47423,
+  "image_pixels_downloaded": false,
+  "output_sha256": "2b26ef46c5a06201d863e3f888fc9cac28f60b16a39ff9a66364800f94458680"
+}

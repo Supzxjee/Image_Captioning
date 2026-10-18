@@ -1,0 +1,234 @@
+{
+  "status": "GT_BOX_JOIN_COMPLETE_NOT_DETECTOR_OR_CAPTION_RESULT",
+  "variant": "vcoco_grounded_caption_all_positive_links_v1",
+  "statistics": {
+    "relation_fit": {
+      "images": 2026,
+      "positive_links": 1330,
+      "images_with_positive_links": 1014,
+      "images_with_multiple_links": 208,
+      "maximum_links_per_image": 8,
+      "links_per_image_histogram": {
+        "0": 1012,
+        "1": 806,
+        "3": 39,
+        "2": 145,
+        "5": 1,
+        "4": 15,
+        "6": 6,
+        "8": 2
+      },
+      "relations": {
+        "holding": {
+          "links": 1141,
+          "images": 981
+        },
+        "riding": {
+          "links": 189,
+          "images": 91
+        }
+      },
+      "images_with_multiple_actors_same_predicate_object_class": 158,
+      "multi_actor_image_counts_by_predicate_object_class": {
+        "holding:backpack": 1,
+        "holding:baseball glove": 1,
+        "holding:bicycle": 5,
+        "holding:broccoli": 1,
+        "holding:cake": 1,
+        "holding:cell phone": 10,
+        "holding:cup": 1,
+        "holding:dog": 1,
+        "holding:fork": 2,
+        "holding:frisbee": 5,
+        "holding:handbag": 2,
+        "holding:horse": 5,
+        "holding:hot dog": 1,
+        "holding:knife": 4,
+        "holding:motorcycle": 7,
+        "holding:person": 3,
+        "holding:pizza": 2,
+        "holding:remote": 5,
+        "holding:skateboard": 2,
+        "holding:skis": 4,
+        "holding:snowboard": 6,
+        "holding:spoon": 1,
+        "holding:suitcase": 5,
+        "holding:surfboard": 4,
+        "holding:teddy bear": 1,
+        "holding:tennis racket": 18,
+        "holding:umbrella": 4,
+        "holding:wine glass": 8,
+        "riding:bicycle": 7,
+        "riding:boat": 5,
+        "riding:elephant": 11,
+        "riding:horse": 18,
+        "riding:motorcycle": 21,
+        "riding:train": 3,
+        "riding:truck": 1
+      },
+      "maximum_relation_cap_applied": false,
+      "unusable_endpoints": {},
+      "positive_actions_missing_role": {
+        "holding": 332,
+        "riding": 25
+      }
+    },
+    "relation_calibration": {
+      "images": 507,
+      "positive_links": 308,
+      "images_with_positive_links": 238,
+      "images_with_multiple_links": 51,
+      "maximum_links_per_image": 4,
+      "links_per_image_histogram": {
+        "0": 269,
+        "1": 187,
+        "2": 35,
+        "4": 3,
+        "3": 13
+      },
+      "relations": {
+        "holding": {
+          "links": 275,
+          "images": 232
+        },
+        "riding": {
+          "links": 33,
+          "images": 17
+        }
+      },
+      "images_with_multiple_actors_same_predicate_object_class": 37,
+      "multi_actor_image_counts_by_predicate_object_class": {
+        "holding:backpack": 2,
+        "holding:baseball bat": 1,
+        "holding:bottle": 1,
+        "holding:cell phone": 3,
+        "holding:cup": 1,
+        "holding:frisbee": 1,
+        "holding:handbag": 1,
+        "holding:horse": 2,
+        "holding:knife": 3,
+        "holding:pizza": 2,
+        "holding:remote": 2,
+        "holding:skis": 1,
+        "holding:snowboard": 1,
+        "holding:suitcase": 1,
+        "holding:surfboard": 2,
+        "holding:tennis racket": 2,
+        "holding:wine glass": 1,
+        "riding:bicycle": 1,
+        "riding:elephant": 2,
+        "riding:horse": 6,
+        "riding:motorcycle": 3
+      },
+      "maximum_relation_cap_applied": false,
+      "unusable_endpoints": {},
+      "positive_actions_missing_role": {
+        "holding": 90,
+        "riding": 5
+      }
+    },
+    "relation_dev": {
+      "images": 2867,
+      "positive_links": 1831,
+      "images_with_positive_links": 1415,
+      "images_with_multiple_links": 281,
+      "maximum_links_per_image": 8,
+      "links_per_image_histogram": {
+        "2": 197,
+        "1": 1134,
+        "0": 1452,
+        "4": 22,
+        "8": 1,
+        "3": 51,
+        "6": 2,
+        "5": 7,
+        "7": 1
+      },
+      "relations": {
+        "holding": {
+          "links": 1608,
+          "images": 1363
+        },
+        "riding": {
+          "links": 223,
+          "images": 111
+        }
+      },
+      "images_with_multiple_actors_same_predicate_object_class": 215,
+      "multi_actor_image_counts_by_predicate_object_class": {
+        "holding:bicycle": 3,
+        "holding:book": 3,
+        "holding:bottle": 2,
+        "holding:bowl": 2,
+        "holding:cake": 1,
+        "holding:cell phone": 6,
+        "holding:cup": 2,
+        "holding:dog": 1,
+        "holding:donut": 1,
+        "holding:fork": 1,
+        "holding:handbag": 8,
+        "holding:horse": 5,
+        "holding:hot dog": 5,
+        "holding:knife": 18,
+        "holding:laptop": 2,
+        "holding:motorcycle": 8,
+        "holding:pizza": 3,
+        "holding:remote": 9,
+        "holding:scissors": 2,
+        "holding:skateboard": 3,
+        "holding:skis": 4,
+        "holding:snowboard": 2,
+        "holding:spoon": 2,
+        "holding:suitcase": 8,
+        "holding:surfboard": 14,
+        "holding:teddy bear": 2,
+        "holding:tennis racket": 17,
+        "holding:tie": 1,
+        "holding:umbrella": 8,
+        "holding:wine glass": 8,
+        "riding:bicycle": 10,
+        "riding:boat": 5,
+        "riding:car": 2,
+        "riding:elephant": 17,
+        "riding:horse": 17,
+        "riding:motorcycle": 25,
+        "riding:train": 5
+      },
+      "maximum_relation_cap_applied": false,
+      "unusable_endpoints": {},
+      "positive_actions_missing_role": {
+        "holding": 555,
+        "riding": 13
+      }
+    }
+  },
+  "sources": {
+    "caption_sha256": "2fd999220673258012acfb411a4e7e66af7d488050b2519b0badcc49b7600b8d",
+    "groups_sha256": "6a95392e450a4b810f2937ea792b77abcc6dd4c467f22f140f2867f3b5630249",
+    "vcoco_train": "2267afe7adc0a6c3e8ac90fb35f6d3a5bd5cd3c7edebf0622d0cbb7a67fddf19",
+    "vcoco_val": "2025bf42ce985a079ad88fd052aba47d85f1531c5b04a95804427c8bcb75eedd",
+    "coco_subset_sha256": "2b26ef46c5a06201d863e3f888fc9cac28f60b16a39ff9a66364800f94458680",
+    "coco_official_member": "annotations/instances_train2014.json",
+    "coco_official_member_sha256": "777ef504abfeba349930485bb32ecd5b6529129a3e010f7852e1437cb049b732"
+  },
+  "coordinate_format": "normalized_xyxy",
+  "box_source": "official COCO ground truth",
+  "relation_cap": null,
+  "caption_metrics_computed": false,
+  "training_run": false,
+  "annotation_rules": [
+    "Each edge links one exact subject instance to one exact object instance.",
+    "All annotated positive links are retained after endpoint validation; no top-one/top-three selection.",
+    "One instance may participate in several predicates and several edges.",
+    "Missing links do not establish a negative relation or a negative target.",
+    "Actor action labels are separate from pair links; absent actor action is not a generic wrong-target label.",
+    "Annotation cardinality is not the exact visible count and does not synthesize a group caption.",
+    "GT-linked candidates are supervision only; inference must enumerate candidates without GT role IDs.",
+    "No model prediction, detector recall, caption improvement or novelty follows from this preparation."
+  ],
+  "output_sha256": {
+    "relation_fit_images.json": "4733fddd83630e5eb67aea62da4f0df8e7085710118bf9f6bd44b12d752eaafe",
+    "relation_calibration_images.json": "f20ee72d7461ce75c6bd8ef33dc0b79c61c1a224dc2f75b5c6df9a6a614bdd1a",
+    "relation_dev_images.json": "7fa194c7651c348f92c5314e39940ae8249d3aef510fbe76f31edf1e2a61a45b"
+  }
+}
