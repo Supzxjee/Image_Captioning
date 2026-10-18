@@ -75,7 +75,11 @@ python build_upt_prompts.py --audit-zip "PATH/vcoco_upt_native_score_audit_revie
 
 Output: `prompt_cache.json` (mapping filename -> prompt + evidence),
 `prompt_summary.json`, `prompt_review_50.json`, `prompt_review_50.html`.
-HTML tải ảnh trực tiếp từ COCO qua Internet; JSON dùng offline. Format prompt
+Thêm `--review-images "PATH/COCO_IMAGES"` để copy 50 ảnh vào `images/`, xem HTML
+offline. Thư mục ảnh hỗ trợ cả file trực tiếp hoặc các thư mục train2014/val2014.
+Nếu không truyền tùy chọn này, HTML dùng URL COCO và có thể không tải được trong
+trình duyệt. Bản review đã giao đã được sửa dùng 50 ảnh local, kiểm tra giải mã
+ảnh thành công và cập nhật ZIP Downloads. Format prompt
 có trường `prompt` tương thích đầu vào embedding theo filename; chưa chạy encoder
 CLIP hoặc tích hợp sang caption pipeline. Metadata embedding cũ cần đổi đúng variant
 trước khi xuất token cache mới, không gắn nhãn UPT thành heuristic V2.1.

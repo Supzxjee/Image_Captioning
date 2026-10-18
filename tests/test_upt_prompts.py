@@ -7,12 +7,24 @@ import unittest
 
 from captioning.upt_cache import pack_prediction, image_plan, identity, finish_shard
 from captioning.upt_prompts import build_prompt, from_audit, from_cache, relation_text
-from build_upt_prompts import records
+from build_upt_prompts import records, review_image
 from run_vcoco_upt_full_audit import CHECKPOINT
 from tests.test_upt_full_cache import fixture
 
 
 class UptPromptTests(unittest.TestCase):
+    def test_review_copies_local_image_and_rejects_missing_or_traversal(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp); source = root / 'source'; output = root / 'output'
+            source.mkdir(); output.mkdir()
+            name = 'COCO_train2014_000000000001.jpg'
+            (source / 'train2014').mkdir()
+            (source / 'train2014' / name).write_bytes(b'fixture')
+            self.assertEqual(review_image(name, output, source), 'images/' + name)
+            self.assertEqual((output / 'images' / name).read_bytes(), b'fixture')
+            with self.assertRaises(FileNotFoundError): review_image('missing.jpg', output, source)
+            with self.assertRaises(ValueError): review_image('../a.jpg', output, source)
+
     def fixture(self):
         dataset, vocab, prediction = fixture()
         row = pack_prediction(image_plan(dataset)[0]['images'][0], prediction, vocab, 'hash', [640, 480])

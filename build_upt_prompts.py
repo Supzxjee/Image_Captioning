@@ -5,12 +5,30 @@ import hashlib
 import html
 import json
 from pathlib import Path
+import shutil
 import zipfile
 
 from audit_vcoco_alignment_data import digest
 from captioning.upt_cache import identity, read_shard
 from captioning.upt_prompts import METHOD, from_audit, from_cache, build_prompt
 from run_vcoco_upt_full_audit import CHECKPOINT
+
+
+def review_image(filename, output, image_root=None):
+    if Path(filename).name != filename or '/' in filename or '\\' in filename:
+        raise ValueError('Expected an image filename, not a path.')
+    split = 'train2014' if filename.startswith('COCO_train2014_') else 'val2014'
+    if image_root is None:
+        return 'https://images.cocodataset.org/' + split + '/' + filename
+    source = image_root / filename
+    if not source.is_file():
+        source = image_root / split / filename
+    if not source.is_file():
+        raise FileNotFoundError(source)
+    destination = output / 'images' / filename
+    destination.parent.mkdir(exist_ok=True)
+    shutil.copyfile(source, destination)
+    return 'images/' + filename
 
 
 def records(args):
@@ -108,9 +126,7 @@ def run(args):
         (args.output / name).write_text(json.dumps(value, indent=2, ensure_ascii=False, allow_nan=False), encoding='utf-8')
     cards = []
     for row in review:
-        # Review images load from official COCO; JSON and prompts remain usable offline.
-        split = 'train2014' if row['filename'].startswith('COCO_train2014_') else 'val2014'
-        source = 'https://images.cocodataset.org/' + split + '/' + row['filename']
+        source = review_image(row['filename'], args.output, args.review_images)
         previews = '<br>'.join(html.escape(c['text']) + f" | {c['score']:.3f} | " +
                               ('qua ngưỡng' if c['passes_locked_threshold'] else 'bị từ chối') for c in row['candidate_preview'])
         rectangles = []
@@ -121,6 +137,8 @@ def run(args):
                 rectangles.append(f'<rect x="{x1}" y="{y1}" width="{x2-x1}" height="{y2-y1}" fill="none" stroke="{color}" stroke-width=".005"/>')
         cards.append(f'<article><h2>{html.escape(row["filename"])}</h2><div class="photo"><img loading="lazy" src="{source}"><svg viewBox="0 0 1 1" preserveAspectRatio="none">{"".join(rectangles)}</svg></div><p><b>Prompt:</b> {html.escape(row["prompt"])}</p><p>Mode: {row["mode"]}</p><details><summary>Ứng viên trước bộ lọc (không phải prompt)</summary>{previews}</details></article>')
     page = '<!doctype html><meta charset="utf-8"><title>UPT prompt review 50</title><style>body{font:18px Arial;background:#eef2f6;max-width:1000px;margin:25px auto;padding:15px}article{background:white;padding:20px;margin:20px 0;border-radius:12px}.photo{position:relative}.photo img{width:100%;display:block}.photo svg{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}p{line-height:1.5}</style><h1>50 prompt UPT để kiểm tra</h1><p>Mẫu có chủ đích, chia theo mode; không đại diện phân phối ảnh. Ảnh tải từ COCO qua Internet. Box xanh: người; cam: vật trong quan hệ được chọn. Bản này chỉ dùng holding/riding với ngưỡng cũ, chưa chứng minh tăng chất lượng caption.</p>' + ''.join(cards)
+    if args.review_images is not None:
+        page = page.replace('Ảnh tải từ COCO qua Internet.', 'Ảnh đã lưu kèm, xem được offline.')
     (args.output / 'prompt_review_50.html').write_text(page, encoding='utf-8')
     print(json.dumps(summary, indent=2), flush=True)
 
@@ -132,6 +150,7 @@ if __name__ == '__main__':
     source.add_argument('--cache', type=Path)
     parser.add_argument('--policy', type=Path, required=True)
     parser.add_argument('--output', type=Path, required=True)
+    parser.add_argument('--review-images', type=Path, help='Local COCO image directory; copy 50 review images for offline viewing.')
     parser.add_argument('--allow-partial', action='store_true')
     parser.add_argument('--max-relations', type=int, default=3)
     parser.add_argument('--object-threshold', type=float, default=.5)
