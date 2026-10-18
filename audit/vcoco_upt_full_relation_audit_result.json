@@ -1,0 +1,95 @@
+{
+  "status": "RETURNED_ARTIFACT_AUDIT_PASS",
+  "archive_sha256": "181e47b9db1e1ec87217d10a70f191cb8bc0ff69a61d7947e9f47ef701f4291f",
+  "archive_bytes": 4143589,
+  "code_commit": "5b397038a24fb17264588c328da9e069ea821507",
+  "calibration_images": 507,
+  "development_images": 2867,
+  "candidate_known_labels_verified": 35702,
+  "candidate_unknown_labels_verified": 131618,
+  "policies": {
+    "predicates": {
+      "holding": {
+        "threshold": 1.01,
+        "known": 3836,
+        "positive": 222,
+        "negative": 3614,
+        "selected_known_calibration": 0
+      },
+      "riding": {
+        "threshold": 1.01,
+        "known": 1386,
+        "positive": 33,
+        "negative": 1353,
+        "selected_known_calibration": 0
+      }
+    },
+    "precision_target": 0.9,
+    "minimum_known": 5,
+    "warning": "Known-label calibration precision is not precision on all proposals; unknowns excluded."
+  },
+  "development": {
+    "images": 2867,
+    "images_without_native_pairs": 0,
+    "by_predicate": {
+      "holding": {
+        "annotated_positive_links": 1608,
+        "localized_positive_links": 1313,
+        "available_positive_links": 1313,
+        "all_candidate_claims": 115999,
+        "known_candidate_claims": 21474,
+        "accepted_true": 0,
+        "accepted_false_known": 0,
+        "accepted_unknown": 0,
+        "known_precision": null,
+        "full_positive_recall": 0.0,
+        "images_with_accepted_claims": 0
+      },
+      "riding": {
+        "annotated_positive_links": 223,
+        "localized_positive_links": 204,
+        "available_positive_links": 204,
+        "all_candidate_claims": 28104,
+        "known_candidate_claims": 9006,
+        "accepted_true": 0,
+        "accepted_false_known": 0,
+        "accepted_unknown": 0,
+        "known_precision": null,
+        "full_positive_recall": 0.0,
+        "images_with_accepted_claims": 0
+      }
+    }
+  },
+  "calibration_failure_diagnostics": {
+    "holding": {
+      "maximum_observed_known_precision_with_at_least_five_accepts": {
+        "known_precision": 0.5925925925925926,
+        "threshold": 0.6496087312698364,
+        "accepted_known": 162,
+        "accepted_true": 96,
+        "accepted_false_known": 66
+      },
+      "scope": "Calibration-only failure diagnostic, not a new selected policy or development result."
+    },
+    "riding": {
+      "maximum_observed_known_precision_with_at_least_five_accepts": {
+        "known_precision": 0.10196078431372549,
+        "threshold": 0.5400053858757019,
+        "accepted_known": 255,
+        "accepted_true": 26,
+        "accepted_false_known": 229
+      },
+      "scope": "Calibration-only failure diagnostic, not a new selected policy or development result."
+    }
+  },
+  "limits": [
+    "CRC/identity/annotation labels/thresholds/metrics replayed; no new inference.",
+    "Returned journal omits boxes/native scores; cannot independently replay IoU or derive detector-prior scores.",
+    "Raw-verb score result is not a verdict on UPT native scores or on all HOI methods.",
+    "No threshold lowering or development-based policy selection performed.",
+    "Reused development and incomplete role annotation; no full-proposal precision guarantee."
+  ],
+  "caption_metrics": false,
+  "new_gpu_run": false,
+  "promote_to_prompt_source": false
+}
