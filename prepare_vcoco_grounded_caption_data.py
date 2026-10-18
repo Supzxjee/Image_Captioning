@@ -9,11 +9,11 @@ import json
 import math
 from pathlib import Path
 
-from audit_vcoco_alignment_data import CAPTION_SHA256, FOCUS, SOURCE_SHA256, caption_index, digest
+from audit_vcoco_alignment_data import CAPTION_SHA256, FOCUS, SOURCE_SHA256, caption_index, digest, groups_digest
 from captioning.supervised_relations import decode_action, normalized_box
 
 
-GROUP_SHA256 = '6a95392e450a4b810f2937ea792b77abcc6dd4c467f22f140f2867f3b5630249'
+GROUP_SHA256 = '60af7979e900ff8afa4fc51d722b827e1051e5630348deae2799d75f179037b8'
 RELATION_GROUPS = ('relation_fit', 'relation_calibration', 'relation_dev')
 
 
@@ -159,7 +159,7 @@ def main():
     args = parser.parse_args()
     if args.output.exists():
         raise FileExistsError('Use a fresh output directory.')
-    if digest(args.groups) != GROUP_SHA256:
+    if groups_digest(args.groups) != GROUP_SHA256:
         raise ValueError('Locked image groups differ.')
     if digest(args.sources / 'dataset_coco.json') != CAPTION_SHA256:
         raise ValueError('Caption input differs from pinned baseline.')

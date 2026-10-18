@@ -151,5 +151,6 @@ không ghi đè output đã khóa. Chưa có feature cache hoặc checkpoint m�
 
 Kiểm tra đã thực hiện: 7 unit tests PASS; chạy lại trên ba nguồn thật cho report
 và danh sách ID giống hệt, SHA256 manifest
-`6a95392e450a4b810f2937ea792b77abcc6dd4c467f22f140f2867f3b5630249`;
+`60af7979e900ff8afa4fc51d722b827e1051e5630348deae2799d75f179037b8`
+(chuẩn LF; mã CRLF lịch sử là `6a95392e450a4b810f2937ea792b77abcc6dd4c467f22f140f2867f3b5630249`);
 thử ghi đè output cũ bị từ chối. Syntax và `git diff --check` PASS.

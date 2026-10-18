@@ -204,7 +204,7 @@
   },
   "sources": {
     "caption_sha256": "2fd999220673258012acfb411a4e7e66af7d488050b2519b0badcc49b7600b8d",
-    "groups_sha256": "6a95392e450a4b810f2937ea792b77abcc6dd4c467f22f140f2867f3b5630249",
+    "groups_sha256": "60af7979e900ff8afa4fc51d722b827e1051e5630348deae2799d75f179037b8",
     "vcoco_train": "2267afe7adc0a6c3e8ac90fb35f6d3a5bd5cd3c7edebf0622d0cbb7a67fddf19",
     "vcoco_val": "2025bf42ce985a079ad88fd052aba47d85f1531c5b04a95804427c8bcb75eedd",
     "coco_subset_sha256": "2b26ef46c5a06201d863e3f888fc9cac28f60b16a39ff9a66364800f94458680",

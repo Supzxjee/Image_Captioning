@@ -1,8 +1,11 @@
 import copy
+import hashlib
+from pathlib import Path
 import random
+import tempfile
 import unittest
 
-from audit_vcoco_alignment_data import audit, caption_index, make_partition, summarize
+from audit_vcoco_alignment_data import audit, caption_index, make_partition, summarize, groups_digest
 
 
 def fixture():
@@ -25,6 +28,18 @@ def fixture():
 
 
 class VCOCOAlignmentDataTests(unittest.TestCase):
+    def test_group_digest_accepts_crlf_lf_but_not_changed_id(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / 'groups.json'
+            lf = b'{\n  "relation_fit": [123]\n}'
+            path.write_bytes(lf)
+            expected = groups_digest(path)
+            self.assertEqual(expected, hashlib.sha256(lf).hexdigest())
+            path.write_bytes(lf.replace(b'\n', b'\r\n'))
+            self.assertEqual(groups_digest(path), expected)
+            path.write_bytes(lf.replace(b'123', b'124'))
+            self.assertNotEqual(groups_digest(path), expected)
+
     def test_official_heldout_excluded_and_groups_disjoint(self):
         dataset, actions = fixture()
         summary, groups = audit(dataset, actions)

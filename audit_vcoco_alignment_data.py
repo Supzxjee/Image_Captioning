@@ -30,6 +30,11 @@ def digest(path):
     return value.hexdigest()
 
 
+def groups_digest(path):
+    """Only normalize CRLF/LF; any change in IDs/order/content still changes SHA."""
+    return hashlib.sha256(Path(path).read_bytes().replace(b'\r\n', b'\n')).hexdigest()
+
+
 def caption_index(dataset):
     result = {}
     for index, row in enumerate(dataset['images']):
@@ -181,8 +186,8 @@ def main():
                                for key in ('caption_json', 'vcoco_train', 'vcoco_val')}
     args.output.mkdir(parents=True)
     partition = args.output / 'locked_image_groups.json'
-    partition.write_text(json.dumps(groups, indent=2), encoding='utf-8')
-    summary['locked_image_groups_sha256'] = digest(partition)
+    partition.write_text(json.dumps(groups, indent=2), encoding='utf-8', newline='\n')
+    summary['locked_image_groups_sha256'] = groups_digest(partition)
     (args.output / 'data_audit.json').write_text(json.dumps(summary, indent=2), encoding='utf-8')
     print(json.dumps(summary, indent=2), flush=True)
 
