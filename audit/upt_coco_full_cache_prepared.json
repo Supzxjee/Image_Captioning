@@ -1,0 +1,22 @@
+{
+  "status": "PREPARED_NOT_GPU_RUN",
+  "schema": "upt_full_coco_supported_logits_v1",
+  "manual_execution_only": true,
+  "core_commit": "e70347809a8e896562f312392a4d4c1df49c9b80",
+  "images": {
+    "train_restval": 113287,
+    "val": 5000,
+    "test": 5000
+  },
+  "shards": 247,
+  "shard_size": 500,
+  "default_session_hours": 8,
+  "workers": 2,
+  "source_references_used": false,
+  "tests_cpu_passed": 38,
+  "cached_real_predictions_serialization_checks": 5,
+  "supported_logits_roundtrip_checked": 891,
+  "scope": "No model inference or training run; synthetic resume tests and real saved prediction serialization only.",
+  "notebook_source_parity": true,
+  "full_gpu_runtime_verified": false
+}
