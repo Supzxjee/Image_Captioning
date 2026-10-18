@@ -1,0 +1,240 @@
+{
+  "status": "CACHED_DETECTOR_COVERAGE_AUDITED_NOT_RELATION_ACCURACY",
+  "detections_sha256": "498825daf8f8773a1c92f4111dc4ccf1f4296343f952b486e0aa56caf82ec04c",
+  "grounded_summary_sha256": "90584f4fd6243c3d078c7a4681724a8fb39dd9cf9e7d40ee2b096cd536697aa5",
+  "configuration": {
+    "confidence": 0.5,
+    "nms_iou": 0.8,
+    "match_iou": 0.5,
+    "caps": [
+      10,
+      100
+    ],
+    "coordinate_format": "pixel_xyxy",
+    "matching": "class-aware IoU-descending one-to-one greedy over ALL noncrowd valid GT objects",
+    "candidate_generation": "every retained person -> every other retained instance; no predicate filter"
+  },
+  "results": {
+    "10": {
+      "relation_fit": {
+        "images": 2026,
+        "missing_cache_images": 0,
+        "empty_retained_detection_images": 1,
+        "images_without_candidate_pairs": 80,
+        "candidate_pairs": 33549,
+        "invalid_selected_boxes": 0,
+        "positive_links": 1330,
+        "localized_positive_links": 957,
+        "positive_link_images": 1014,
+        "positive_images_with_any_localized_link": 761,
+        "positive_images_with_all_links_localized": 692,
+        "images_without_focus_links": 1012,
+        "candidate_pairs_on_images_without_focus_links": 14257,
+        "link_localization_recall": 0.7195488721804512,
+        "per_predicate": {
+          "holding": {
+            "total": 1141,
+            "both_matched": 807,
+            "subject_missing": 22,
+            "object_missing": 304,
+            "both_missing": 8,
+            "localization_recall": 0.7072743207712533
+          },
+          "riding": {
+            "total": 189,
+            "both_matched": 150,
+            "subject_missing": 14,
+            "object_missing": 23,
+            "both_missing": 2,
+            "localization_recall": 0.7936507936507936
+          }
+        }
+      },
+      "relation_calibration": {
+        "images": 507,
+        "missing_cache_images": 0,
+        "empty_retained_detection_images": 0,
+        "images_without_candidate_pairs": 27,
+        "candidate_pairs": 8459,
+        "invalid_selected_boxes": 0,
+        "positive_links": 308,
+        "localized_positive_links": 225,
+        "positive_link_images": 238,
+        "positive_images_with_any_localized_link": 177,
+        "positive_images_with_all_links_localized": 164,
+        "images_without_focus_links": 269,
+        "candidate_pairs_on_images_without_focus_links": 4175,
+        "link_localization_recall": 0.7305194805194806,
+        "per_predicate": {
+          "holding": {
+            "total": 275,
+            "object_missing": 72,
+            "both_matched": 193,
+            "both_missing": 3,
+            "subject_missing": 7,
+            "localization_recall": 0.7018181818181818
+          },
+          "riding": {
+            "total": 33,
+            "both_matched": 32,
+            "subject_missing": 1,
+            "localization_recall": 0.9696969696969697
+          }
+        }
+      },
+      "relation_dev": {
+        "images": 2867,
+        "missing_cache_images": 0,
+        "empty_retained_detection_images": 1,
+        "images_without_candidate_pairs": 114,
+        "candidate_pairs": 47762,
+        "invalid_selected_boxes": 0,
+        "positive_links": 1831,
+        "localized_positive_links": 1323,
+        "positive_link_images": 1415,
+        "positive_images_with_any_localized_link": 1065,
+        "positive_images_with_all_links_localized": 991,
+        "images_without_focus_links": 1452,
+        "candidate_pairs_on_images_without_focus_links": 21335,
+        "link_localization_recall": 0.7225559803386128,
+        "per_predicate": {
+          "holding": {
+            "total": 1608,
+            "object_missing": 410,
+            "both_matched": 1155,
+            "subject_missing": 25,
+            "both_missing": 18,
+            "localization_recall": 0.7182835820895522
+          },
+          "riding": {
+            "total": 223,
+            "both_matched": 168,
+            "object_missing": 34,
+            "subject_missing": 20,
+            "both_missing": 1,
+            "localization_recall": 0.7533632286995515
+          }
+        }
+      }
+    },
+    "100": {
+      "relation_fit": {
+        "images": 2026,
+        "missing_cache_images": 0,
+        "empty_retained_detection_images": 1,
+        "images_without_candidate_pairs": 78,
+        "candidate_pairs": 50970,
+        "invalid_selected_boxes": 0,
+        "positive_links": 1330,
+        "localized_positive_links": 1003,
+        "positive_link_images": 1014,
+        "positive_images_with_any_localized_link": 788,
+        "positive_images_with_all_links_localized": 725,
+        "images_without_focus_links": 1012,
+        "candidate_pairs_on_images_without_focus_links": 22287,
+        "link_localization_recall": 0.7541353383458647,
+        "per_predicate": {
+          "holding": {
+            "total": 1141,
+            "both_matched": 848,
+            "object_missing": 272,
+            "subject_missing": 17,
+            "both_missing": 4,
+            "localization_recall": 0.7432077125328659
+          },
+          "riding": {
+            "total": 189,
+            "both_matched": 155,
+            "subject_missing": 12,
+            "object_missing": 22,
+            "localization_recall": 0.8201058201058201
+          }
+        }
+      },
+      "relation_calibration": {
+        "images": 507,
+        "missing_cache_images": 0,
+        "empty_retained_detection_images": 0,
+        "images_without_candidate_pairs": 26,
+        "candidate_pairs": 13049,
+        "invalid_selected_boxes": 0,
+        "positive_links": 308,
+        "localized_positive_links": 237,
+        "positive_link_images": 238,
+        "positive_images_with_any_localized_link": 184,
+        "positive_images_with_all_links_localized": 175,
+        "images_without_focus_links": 269,
+        "candidate_pairs_on_images_without_focus_links": 6312,
+        "link_localization_recall": 0.7694805194805194,
+        "per_predicate": {
+          "holding": {
+            "total": 275,
+            "object_missing": 64,
+            "both_matched": 204,
+            "subject_missing": 7,
+            "localization_recall": 0.7418181818181818
+          },
+          "riding": {
+            "total": 33,
+            "both_matched": 33,
+            "localization_recall": 1.0
+          }
+        }
+      },
+      "relation_dev": {
+        "images": 2867,
+        "missing_cache_images": 0,
+        "empty_retained_detection_images": 1,
+        "images_without_candidate_pairs": 113,
+        "candidate_pairs": 72683,
+        "invalid_selected_boxes": 0,
+        "positive_links": 1831,
+        "localized_positive_links": 1391,
+        "positive_link_images": 1415,
+        "positive_images_with_any_localized_link": 1109,
+        "positive_images_with_all_links_localized": 1031,
+        "images_without_focus_links": 1452,
+        "candidate_pairs_on_images_without_focus_links": 32343,
+        "link_localization_recall": 0.7596941561987984,
+        "per_predicate": {
+          "holding": {
+            "total": 1608,
+            "object_missing": 365,
+            "both_matched": 1211,
+            "subject_missing": 22,
+            "both_missing": 10,
+            "localization_recall": 0.7531094527363185
+          },
+          "riding": {
+            "total": 223,
+            "both_matched": 180,
+            "object_missing": 28,
+            "subject_missing": 14,
+            "both_missing": 1,
+            "localization_recall": 0.8071748878923767
+          }
+        }
+      }
+    }
+  },
+  "output_sha256": {
+    "cap10_relation_fit_reports.json": "8eb62ddaf1c3efcd3b302f78487c270e4af82a72e70ef089fb24ca5ab5c76618",
+    "cap10_relation_calibration_reports.json": "a80410149824df871d81ac497f90ac9bb498477a6800bb742e68719aa511cdff",
+    "cap10_relation_dev_reports.json": "5bf4993a03355a6ecfddb13b43546aec3a8df777f5f260ab2b885439344d9947",
+    "cap100_relation_fit_reports.json": "f3905595060ca307717a165924e1c2db2146114299e126780b7040ea0a41ba03",
+    "cap100_relation_calibration_reports.json": "3a041fd254545c6b3cfb48f15010e1b0824e49cd0be18af478b76c91cb7dd3f3",
+    "cap100_relation_dev_reports.json": "ba2ce9c407d14b867dadcaabc1bc8efe609aa3b2f9083b7de249bea5088d9f2d"
+  },
+  "new_model_inference": false,
+  "caption_evaluation": false,
+  "training": false,
+  "limits": [
+    "Caps compare a fixed deployment budget and a diagnostic reference; no cap selected by this audit.",
+    "Localization recall over annotated positive links is not HOI AP, relation accuracy or candidate precision.",
+    "Candidate pairs on images with no positive focus link are not established false relations.",
+    "Missing cache record differs from a valid empty detection list; both remain in full denominators.",
+    "Matching is deterministic greedy, not maximum matching; audit protocol may affect ambiguous overlaps.",
+    "Detector pretraining provenance is not audited here; no unseen-image generalization claim.",
+    "GT mappings are audit outputs, not permitted inference candidate selectors."
+  ]
+}

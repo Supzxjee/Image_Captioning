@@ -15,6 +15,11 @@ cặp mỗi ảnh; 16 tests PASS và export nguồn thật tái lập giống by
 “chưa kiểm tra box” ở phần inventory dưới đây mô tả bước kiểm kê trước cập nhật này;
 box detector và hiệu quả caption vẫn chưa được đánh giá.
 
+Cập nhật tiếp: đã kiểm tra cache detector trên toàn bộ 5.400 ảnh, không chạy GPU.
+Cap10 định vị đủ 2.505/3.469 liên kết (72,21%); riêng development 1.323/1.831.
+Xem `VCOCO_GROUNDED_CAPTION_DETECTOR_COVERAGE.md`. Đây là coverage endpoint,
+chưa đánh giá dự đoán quan hệ hay caption; không đổi nguồn supervision hoặc split.
+
 ## Kết quả bước đầu trên nguồn thật
 
 Nguồn [V-COCO chính thức](https://github.com/s-gupta/v-coco), revision
