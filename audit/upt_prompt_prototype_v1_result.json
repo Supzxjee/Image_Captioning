@@ -1,0 +1,66 @@
+{
+  "variant": "upt_object_relation_prompt_v1",
+  "images": 3374,
+  "modes": {
+    "object_only": 2519,
+    "object_relation": 855
+  },
+  "selected_relations": 952,
+  "selected_predicates": {
+    "holding": 952
+  },
+  "above_threshold_claims": 958,
+  "capped_claims": 6,
+  "policy_sha256": "e38cc4ede47a9143b5a2dfe2041d33b9b8d7fb50e72007d3b61ff2e33ad45bdf",
+  "policy": {
+    "predicates": {
+      "holding": {
+        "threshold": 0.503703236579895,
+        "known": 3836,
+        "positive": 222,
+        "negative": 3614,
+        "selected_known_calibration": 100
+      },
+      "riding": {
+        "threshold": 1.01,
+        "known": 1386,
+        "positive": 33,
+        "negative": 1353,
+        "selected_known_calibration": 0
+      }
+    },
+    "precision_target": 0.9,
+    "minimum_known": 5,
+    "warning": "Known-label calibration precision is not precision on all proposals; unknowns excluded."
+  },
+  "source": "C:\\Users\\leduc\\Downloads\\vcoco_upt_native_score_audit_review.zip",
+  "source_sha256": "d8a96db3c093cce6eb8e49be5d0e9b5c5a7f697a5a8c54b0092173d816583ff5",
+  "source_scope": "3374 reused relation audit images, not full COCO",
+  "partial_allowed": false,
+  "object_threshold": 0.5,
+  "max_relations": 3,
+  "max_object_names": 8,
+  "label_based_selection": false,
+  "training": false,
+  "caption_metrics": false,
+  "limits": [
+    "Holding/riding only; other cached verbs not yet calibrated for this generator.",
+    "Candidate previews include rejected relations and are never fed into prompt text.",
+    "Object fallback threshold/caps are fixed engineering settings, not validated precision.",
+    "No claim of full scene coverage, instance grounding by decoder, or caption improvement."
+  ],
+  "complete": false,
+  "post_selection_annotation_audit": {
+    "relation_calibration": {
+      "known_positive": 89,
+      "unknown": 39,
+      "known_negative": 10
+    },
+    "relation_dev": {
+      "known_positive": 559,
+      "known_negative": 89,
+      "unknown": 166
+    }
+  },
+  "prompt_cache_sha256": "a9bd1dae9b9fda0750a2744433cb890ffd710fa73a577fbdf9df5a784b663f22"
+}

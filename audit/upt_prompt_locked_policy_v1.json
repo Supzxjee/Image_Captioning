@@ -1,0 +1,21 @@
+{
+  "predicates": {
+    "holding": {
+      "threshold": 0.503703236579895,
+      "known": 3836,
+      "positive": 222,
+      "negative": 3614,
+      "selected_known_calibration": 100
+    },
+    "riding": {
+      "threshold": 1.01,
+      "known": 1386,
+      "positive": 33,
+      "negative": 1353,
+      "selected_known_calibration": 0
+    }
+  },
+  "precision_target": 0.9,
+  "minimum_known": 5,
+  "warning": "Known-label calibration precision is not precision on all proposals; unknowns excluded."
+}
