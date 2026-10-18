@@ -53,7 +53,8 @@ def run(args):
     import torch
     if torch.cuda.device_count() < 2:
         raise RuntimeError('Select T4 x2; no automatic CPU or single-GPU run.')
-    cfg = {'variant': 'vcoco_upt_full_native_audit_v1',
+    cfg = {'variant': 'vcoco_upt_full_native_score_audit_v2' if args.score_mode == 'native' else 'vcoco_upt_full_native_audit_v1',
+           'score_mode': args.score_mode,
            'upt': str(args.upt.resolve()), 'pocket': str(args.pocket.resolve()),
            'checkpoint': str(args.checkpoint.resolve()), 'instances': str(args.instances.resolve()),
            'base_path': str(args.base_path.resolve()), 'output': str(output), 'images': records,
@@ -61,7 +62,8 @@ def run(args):
            'checkpoint_sha256': CHECKPOINT, 'source_summary_sha256': digest(summary_path),
            'instances_sha256': digest(args.instances),
            'policy': 'Per-predicate lowest score with >=90% known precision and >=5 known accepts on Calibration; both known outcomes required; otherwise abstain.',
-           'score': 'sigmoid UPT raw verb logit, holding/riding only; native HICO object-verb ontology',
+           'score': ('Official UPT postprocessing scores (sigmoid verb logit times subject/object detector priors), holding/riding only'
+                     if args.score_mode == 'native' else 'sigmoid UPT raw verb logit, holding/riding only; native HICO object-verb ontology'),
            'detector': 'UPT native DETR, not the cached YOLO detector in previous coverage report',
            'matching': 'All valid noncrowd GT, class-aware IoU>=.5 one-to-one greedy; matching occurs after native proposals.',
            'unknown': 'Unlinked target, unmatched actor and missing action labels stay unknown; no role-swap negatives.',
@@ -133,6 +135,7 @@ def run(args):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--score-mode', choices=['raw', 'native'], default='raw')
     for key in ('grounded-data', 'instances', 'upt', 'pocket', 'checkpoint', 'base-path', 'output'):
         parser.add_argument('--' + key, type=Path, required=True)
     run(parser.parse_args())

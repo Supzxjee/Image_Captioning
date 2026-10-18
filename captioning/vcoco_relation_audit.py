@@ -8,6 +8,17 @@ from .supervised_relations import normalized_box
 PREDICATES = ('holding', 'riding')
 
 
+def official_upt_claims(output, verbs):
+    """Read native postprocessing scores directly, without recomputing detector priors."""
+    subjects, objects = output['pairing']
+    labels, scores = output['labels'], output['scores']
+    if len({len(subjects), len(objects), len(labels), len(scores)}) != 1:
+        raise ValueError('Official UPT output lengths differ.')
+    predicates = {verbs.index('hold'): 'holding', verbs.index('ride'): 'riding'}
+    return [{'subject': s, 'object': o, 'predicate': predicates[label], 'score': score}
+            for s, o, label, score in zip(subjects, objects, labels, scores) if label in predicates]
+
+
 def audit_image(record, prediction, annotations, image, categories):
     """prediction contains only detected boxes/classes, pairs and scores, no GT IDs."""
     detections = prediction['detections']

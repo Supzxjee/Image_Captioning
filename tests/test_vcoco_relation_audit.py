@@ -1,7 +1,7 @@
 import copy
 import unittest
 
-from captioning.vcoco_relation_audit import audit_image, evaluate, fit_thresholds
+from captioning.vcoco_relation_audit import audit_image, evaluate, fit_thresholds, official_upt_claims
 from prepare_vcoco_grounded_caption_data import grounded_images
 from tests.test_vcoco_grounded_caption_data import fixture
 
@@ -27,6 +27,17 @@ def scored():
 
 
 class RelationAuditTests(unittest.TestCase):
+    def test_official_scores_preserved_with_correct_pair_and_verb(self):
+        output = {'pairing': [[2, 0, 2], [3, 1, 4]], 'labels': [2, 0, 1], 'scores': [.0123, .9, .004]}
+        self.assertEqual(official_upt_claims(output, ['other', 'ride', 'hold']), [
+            {'subject': 2, 'object': 3, 'predicate': 'holding', 'score': .0123},
+            {'subject': 2, 'object': 4, 'predicate': 'riding', 'score': .004}])
+        self.assertEqual(official_upt_claims({'pairing': [[], []], 'labels': [], 'scores': []},
+                                            ['hold', 'ride']), [])
+        output['scores'].pop()
+        with self.assertRaises(ValueError):
+            official_upt_claims(output, ['other', 'ride', 'hold'])
+
     def test_same_actor_wrong_target_unknown_not_negative(self):
         result = scored()
         self.assertEqual([c['label'] for c in result['candidates']], [1, -1, 0, -1, 1, 1])

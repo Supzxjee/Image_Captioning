@@ -11,7 +11,7 @@ def run(args):
     from PIL import Image
     from captioning.inference_journal import InferenceJournal
     from captioning.upt_reference import load_reference, prepare_image, infer
-    from captioning.vcoco_relation_audit import audit_image
+    from captioning.vcoco_relation_audit import audit_image, official_upt_claims
     cfg = json.loads(Path(args.config).read_text())
     torch.set_num_threads(2); torch.manual_seed(42)
     if not torch.cuda.is_available():
@@ -58,7 +58,14 @@ def run(args):
                     claims.append({'subject': s, 'object': o, 'predicate': predicate,
                                    'score': float(prediction['logits'][index, column].sigmoid())})
         native = {'detections': detections, 'claims': claims, 'native_pairs': len(prediction['subject_indices'])}
+        if cfg.get('score_mode', 'raw') == 'native':
+            native['claims'] = official_upt_claims(
+                {key: prediction['official_output'][key].tolist() for key in ('pairing', 'labels', 'scores')},
+                metadata['verbs'])
         audited = audit_image(row, native, annotations[row['image_id']], images[row['image_id']], categories)
+        if cfg.get('score_mode', 'raw') == 'native':
+            audited['detection_details'] = detections
+            audited['raw_claims'] = claims
         journal.append({**audited, 'group': row['group']})
         if len(journal.records) % 10 == 0 or len(journal.records) == len(records):
             print(f'Shard {args.rank}: {len(journal.records)}/{len(records)} | {time.monotonic()-started:.1f}s', flush=True)
