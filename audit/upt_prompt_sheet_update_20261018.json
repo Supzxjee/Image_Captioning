@@ -1,0 +1,19 @@
+{
+  "spreadsheet_url": "https://docs.google.com/spreadsheets/d/1XZ5iuyCs5JP8VE6dT7AYdVTiY1_nK4C_QdXs5ppw6FA/edit",
+  "sheet": "Experiment Registry",
+  "range": "A156:P158",
+  "run_ids": [
+    "R129",
+    "R130",
+    "R131"
+  ],
+  "write_verified": true,
+  "date": "2026-10-18",
+  "source_commits": [
+    "1ca256d",
+    "2ef24b8",
+    "2079d66"
+  ],
+  "caption_metrics_added": false,
+  "note": "Inserted three experiment rows before Metrics section; exact 48-cell readback verified. Original formulas/metrics retained and shifted by native row insertion."
+}
