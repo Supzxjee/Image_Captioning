@@ -1,0 +1,115 @@
+{
+  "status": "RETURNED_ARTIFACT_AUDIT_PASS",
+  "archive_sha256": "d8a96db3c093cce6eb8e49be5d0e9b5c5a7f697a5a8c54b0092173d816583ff5",
+  "score_mode": "native",
+  "box_and_prior_replay": true,
+  "archive_bytes": 8289151,
+  "code_commit": "eb00d6c0c7d4ea6718de3cb55d1049a15ce9fbd5",
+  "calibration_images": 507,
+  "development_images": 2867,
+  "candidate_known_labels_verified": 35702,
+  "candidate_unknown_labels_verified": 131618,
+  "policies": {
+    "predicates": {
+      "holding": {
+        "threshold": 0.503703236579895,
+        "known": 3836,
+        "positive": 222,
+        "negative": 3614,
+        "selected_known_calibration": 100
+      },
+      "riding": {
+        "threshold": 1.01,
+        "known": 1386,
+        "positive": 33,
+        "negative": 1353,
+        "selected_known_calibration": 0
+      }
+    },
+    "precision_target": 0.9,
+    "minimum_known": 5,
+    "warning": "Known-label calibration precision is not precision on all proposals; unknowns excluded."
+  },
+  "development": {
+    "images": 2867,
+    "images_without_native_pairs": 0,
+    "by_predicate": {
+      "holding": {
+        "annotated_positive_links": 1608,
+        "localized_positive_links": 1313,
+        "available_positive_links": 1313,
+        "all_candidate_claims": 115999,
+        "known_candidate_claims": 21474,
+        "accepted_true": 559,
+        "accepted_false_known": 89,
+        "accepted_unknown": 170,
+        "known_precision": 0.8626543209876543,
+        "full_positive_recall": 0.347636815920398,
+        "images_with_accepted_claims": 728
+      },
+      "riding": {
+        "annotated_positive_links": 223,
+        "localized_positive_links": 204,
+        "available_positive_links": 204,
+        "all_candidate_claims": 28104,
+        "known_candidate_claims": 9006,
+        "accepted_true": 0,
+        "accepted_false_known": 0,
+        "accepted_unknown": 0,
+        "known_precision": null,
+        "full_positive_recall": 0.0,
+        "images_with_accepted_claims": 0
+      }
+    }
+  },
+  "calibration_failure_diagnostics": {
+    "holding": {
+      "maximum_observed_known_precision_with_at_least_five_accepts": {
+        "known_precision": 1.0,
+        "threshold": 0.9469219446182251,
+        "accepted_known": 5,
+        "accepted_true": 5,
+        "accepted_false_known": 0
+      },
+      "scope": "Calibration-only failure diagnostic, not a new selected policy or development result."
+    },
+    "riding": {
+      "maximum_observed_known_precision_with_at_least_five_accepts": {
+        "known_precision": 0.19491525423728814,
+        "threshold": 0.4716057777404785,
+        "accepted_known": 118,
+        "accepted_true": 23,
+        "accepted_false_known": 95
+      },
+      "scope": "Calibration-only failure diagnostic, not a new selected policy or development result."
+    }
+  },
+  "limits": [
+    "CRC/identity/annotation labels/thresholds/metrics replayed; no new inference.",
+    "Boxes/IoU/labels and native score formula replayed from saved detections/raw scores; model inference not replayed.",
+    "No threshold lowering or development-based policy selection performed.",
+    "Reused development and incomplete role annotation; no full-proposal precision guarantee."
+  ],
+  "caption_metrics": false,
+  "new_gpu_run": false,
+  "promote_to_prompt_source": false,
+  "riding_ontology_diagnostic": {
+    "scope": "Calibration-only diagnostic at maximum-precision tail; NOT an accepted policy.",
+    "threshold": 0.4716057777404785,
+    "known_false_claims": 95,
+    "predicted_object_classes": {
+      "skis": 13,
+      "skateboard": 24,
+      "snowboard": 17,
+      "surfboard": 41
+    },
+    "actor_positive_vcoco_sports_actions": {
+      "ski": 13,
+      "skateboard": 24,
+      "snowboard": 16,
+      "surf": 41,
+      "none_of_four": 1
+    },
+    "limit": "Actor action label alone does not establish the proposed target or shared HICO/V-COCO semantics."
+  }
+}
