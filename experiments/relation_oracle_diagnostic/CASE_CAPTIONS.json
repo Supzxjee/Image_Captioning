@@ -1,0 +1,382 @@
+[
+  {
+    "coco_id": 116512,
+    "case_id": "vcoco_verb_116512_217722_1765055_riding",
+    "descriptions": [
+      "a person riding a bicycle",
+      "a person holding a bicycle"
+    ],
+    "captions": {
+      "off": "a group of people riding on the backs of horses.",
+      "upt": "a group of people riding on the backs of horses.",
+      "annotation_positive": "a group of people riding on the backs of horses.",
+      "annotation_negative": "a group of people riding on the backs of horses."
+    },
+    "evidence_change": {
+      "R_attention_L1": 0.6999759674072266,
+      "R_token_relative_L2": 0.2727782130241394
+    },
+    "preference_shift": 0.0060977935791015625
+  },
+  {
+    "coco_id": 231524,
+    "case_id": "vcoco_verb_231524_234083_130532_riding",
+    "descriptions": [
+      "a person riding a bicycle",
+      "a person holding a bicycle"
+    ],
+    "captions": {
+      "off": "a group of people riding bikes down a street.",
+      "upt": "a group of people riding bikes down a street.",
+      "annotation_positive": "a group of people riding bikes down a street.",
+      "annotation_negative": "a group of people riding bikes down a street."
+    },
+    "evidence_change": {
+      "R_attention_L1": 0.3406253755092621,
+      "R_token_relative_L2": 0.09250754863023758
+    },
+    "preference_shift": -0.001224517822265625
+  },
+  {
+    "coco_id": 255495,
+    "case_id": "vcoco_verb_255495_1716967_128488_riding",
+    "descriptions": [
+      "a person riding a bicycle",
+      "a person holding a bicycle"
+    ],
+    "captions": {
+      "off": "a woman riding a bike with a smile on the front",
+      "upt": "a woman riding a bike with a smile on the front",
+      "annotation_positive": "a woman riding a bike with a smile on the front",
+      "annotation_negative": "a woman riding a bike with a smile on the front"
+    },
+    "evidence_change": {
+      "R_attention_L1": 0.6795616745948792,
+      "R_token_relative_L2": 0.35658520460128784
+    },
+    "preference_shift": -0.002506256103515625
+  },
+  {
+    "coco_id": 268313,
+    "case_id": "vcoco_verb_268313_189084_128301_riding",
+    "descriptions": [
+      "a person riding a bicycle",
+      "a person holding a bicycle"
+    ],
+    "captions": {
+      "off": "a man riding a bike with a bag on the back of it.",
+      "upt": "a man riding a bike with a bag on the back of it.",
+      "annotation_positive": "a man riding a bike with a bag on the back of it.",
+      "annotation_negative": "a man riding a bike with a bag on the back of it."
+    },
+    "evidence_change": {
+      "R_attention_L1": 0.5694764852523804,
+      "R_token_relative_L2": 0.19577893614768982
+    },
+    "preference_shift": 0.000209808349609375
+  },
+  {
+    "coco_id": 340406,
+    "case_id": "vcoco_verb_340406_1265058_241798_holding",
+    "descriptions": [
+      "a person holding a bicycle",
+      "a person riding a bicycle"
+    ],
+    "captions": {
+      "off": "a group of people waiting to board a train.",
+      "upt": "a group of people waiting for a train to come in.",
+      "annotation_positive": "a group of people waiting for a train to come in.",
+      "annotation_negative": "a group of people waiting for a train to come in."
+    },
+    "evidence_change": {
+      "R_attention_L1": 0.12515616416931152,
+      "R_token_relative_L2": 0.03349131718277931
+    },
+    "preference_shift": 0.0004329681396484375
+  },
+  {
+    "coco_id": 459543,
+    "case_id": "vcoco_verb_459543_185107_152411_riding",
+    "descriptions": [
+      "a person riding a motorcycle",
+      "a person holding a motorcycle"
+    ],
+    "captions": {
+      "off": "a man riding a motorcycle with a woman on the back of it.",
+      "upt": "a man riding a motorcycle with a woman on the back of it.",
+      "annotation_positive": "a man riding a motorcycle with a woman on the back of it.",
+      "annotation_negative": "a man riding a motorcycle with a woman on the back of it."
+    },
+    "evidence_change": {
+      "R_attention_L1": 0.3561788499355316,
+      "R_token_relative_L2": 0.16321997344493866
+    },
+    "preference_shift": 0.0022068023681640625
+  },
+  {
+    "coco_id": 98596,
+    "case_id": "vcoco_verb_98596_202874_125334_riding",
+    "descriptions": [
+      "a person riding a bicycle",
+      "a person holding a bicycle"
+    ],
+    "captions": {
+      "off": "a man riding a bike on a city street",
+      "upt": "a man riding a bike down a street next to a building.",
+      "annotation_positive": "a man riding a bike on a city street",
+      "annotation_negative": "a man riding a bike on a city street"
+    },
+    "evidence_change": {
+      "R_attention_L1": 0.7203238010406494,
+      "R_token_relative_L2": 0.5869583487510681
+    },
+    "preference_shift": -0.014862060546875
+  },
+  {
+    "coco_id": 14873,
+    "case_id": "verb_14873_2020813_1163596_carry_hold",
+    "descriptions": [
+      "a person carrying a backpack",
+      "a person holding a backpack"
+    ],
+    "captions": {
+      "off": "a group of people walking down a street with skateboards.",
+      "upt": "a group of people walking down a street with skateboards.",
+      "annotation_positive": "a group of people walking down a street with skateboards.",
+      "annotation_negative": "a group of people walking down a street with skateboards."
+    },
+    "evidence_change": {
+      "R_attention_L1": 0.24650177359580994,
+      "R_token_relative_L2": 0.10644235461950302
+    },
+    "preference_shift": 0.004047393798828125
+  },
+  {
+    "coco_id": 203809,
+    "case_id": "verb_203809_485667_1838190_hold_carry",
+    "descriptions": [
+      "a person holding a handbag",
+      "a person carrying a handbag"
+    ],
+    "captions": {
+      "off": "a man talking on a cell phone while standing on a sidewalk.",
+      "upt": "a man talking on a cell phone while standing on a sidewalk.",
+      "annotation_positive": "a man talking on a cell phone while standing on a sidewalk.",
+      "annotation_negative": "a man talking on a cell phone while standing on a sidewalk."
+    },
+    "evidence_change": {
+      "R_attention_L1": 0.8545030355453491,
+      "R_token_relative_L2": 0.38271278142929077
+    },
+    "preference_shift": 0.003276824951171875
+  },
+  {
+    "coco_id": 221202,
+    "case_id": "verb_221202_205330_59568_sit_hold",
+    "descriptions": [
+      "a person sitting on a horse",
+      "a person holding a horse"
+    ],
+    "captions": {
+      "off": "a group of people riding horses down a road.",
+      "upt": "a group of people riding horses down a road.",
+      "annotation_positive": "a group of people riding horses down a road.",
+      "annotation_negative": "a group of people riding horses down a road."
+    },
+    "evidence_change": {
+      "R_attention_L1": 0.10283966362476349,
+      "R_token_relative_L2": 0.029037049040198326
+    },
+    "preference_shift": -0.0001068115234375
+  },
+  {
+    "coco_id": 224508,
+    "case_id": "verb_224508_196169_58177_ride_hold",
+    "descriptions": [
+      "a person riding a horse",
+      "a person holding a horse"
+    ],
+    "captions": {
+      "off": "two people riding horses on the beach near the water.",
+      "upt": "two people riding horses on the beach near the water.",
+      "annotation_positive": "two people riding horses on the beach near the water.",
+      "annotation_negative": "two people riding horses on the beach near the water."
+    },
+    "evidence_change": {
+      "R_attention_L1": 0.23857641220092773,
+      "R_token_relative_L2": 0.12509360909461975
+    },
+    "preference_shift": -0.0014209747314453125
+  },
+  {
+    "coco_id": 251696,
+    "case_id": "verb_251696_423468_326265_carry_talk_on_phone",
+    "descriptions": [
+      "a person carrying a cell phone",
+      "a person talking on a cell phone"
+    ],
+    "captions": {
+      "off": "a man and woman on a subway train talking on their cell phones.",
+      "upt": "a man and woman on a subway train talking on their cell phones.",
+      "annotation_positive": "a man and woman on a subway train talking on their cell phones.",
+      "annotation_negative": "a man and woman on a subway train talking on their cell phones."
+    },
+    "evidence_change": {
+      "R_attention_L1": 0.704189121723175,
+      "R_token_relative_L2": 0.941822350025177
+    },
+    "preference_shift": -0.009903907775878906
+  },
+  {
+    "coco_id": 29456,
+    "case_id": "verb_29456_1225449_1415684_carry_hold",
+    "descriptions": [
+      "a person carrying a backpack",
+      "a person holding a backpack"
+    ],
+    "captions": {
+      "off": "a man in a backpack and sunglasses standing in front of a bus",
+      "upt": "a man in a backpack stands in front of a bus",
+      "annotation_positive": "a man in a backpack stands in front of a bus",
+      "annotation_negative": "a man in a backpack stands in front of a bus"
+    },
+    "evidence_change": {
+      "R_attention_L1": 0.2795400023460388,
+      "R_token_relative_L2": 0.08571729063987732
+    },
+    "preference_shift": -0.000530242919921875
+  },
+  {
+    "coco_id": 324823,
+    "case_id": "verb_324823_435827_321404_talk_on_phone_carry",
+    "descriptions": [
+      "a person talking on a cell phone",
+      "a person carrying a cell phone"
+    ],
+    "captions": {
+      "off": "a woman sitting at a table with a paper and a man sitting at a table in a chair.",
+      "upt": "a woman sitting at a table with a paper and a man sitting at a table in a chair.",
+      "annotation_positive": "a woman sitting at a table with a paper and a man sitting at a table in a chair.",
+      "annotation_negative": "a woman sitting at a table with a paper and a man sitting at a table in a chair."
+    },
+    "evidence_change": {
+      "R_attention_L1": 0.34444400668144226,
+      "R_token_relative_L2": 0.13791464269161224
+    },
+    "preference_shift": -0.002849578857421875
+  },
+  {
+    "coco_id": 327110,
+    "case_id": "verb_327110_1205336_329566_carry_talk_on_phone",
+    "descriptions": [
+      "a person carrying a cell phone",
+      "a person talking on a cell phone"
+    ],
+    "captions": {
+      "off": "a woman looking at her phone while a woman walks by.",
+      "upt": "a woman looking at her phone while a woman walks by.",
+      "annotation_positive": "a woman looking at her phone while a woman walks by.",
+      "annotation_negative": "a woman looking at her phone while a woman walks by."
+    },
+    "evidence_change": {
+      "R_attention_L1": 0.4682782292366028,
+      "R_token_relative_L2": 0.18083925545215607
+    },
+    "preference_shift": -0.004549980163574219
+  },
+  {
+    "coco_id": 341429,
+    "case_id": "verb_341429_190150_1569733_eat_hold",
+    "descriptions": [
+      "a person eating a pizza",
+      "a person holding a pizza"
+    ],
+    "captions": {
+      "off": "a boy sitting in front of a plate of pizza.",
+      "upt": "a boy sitting in front of a plate of pizza.",
+      "annotation_positive": "a boy sitting in front of a plate of pizza.",
+      "annotation_negative": "a boy sitting in front of a plate of pizza."
+    },
+    "evidence_change": {
+      "R_attention_L1": 0.5442468523979187,
+      "R_token_relative_L2": 0.2237892746925354
+    },
+    "preference_shift": 0.00814056396484375
+  },
+  {
+    "coco_id": 405361,
+    "case_id": "verb_405361_211141_1181400_carry_hold",
+    "descriptions": [
+      "a person carrying a handbag",
+      "a person holding a handbag"
+    ],
+    "captions": {
+      "off": "a group of people walking down a street holding umbrellas.",
+      "upt": "a group of people walking down a street holding umbrellas.",
+      "annotation_positive": "a group of people walking down a street holding umbrellas.",
+      "annotation_negative": "a group of people walking down a street holding umbrellas."
+    },
+    "evidence_change": {
+      "R_attention_L1": 0.37103262543678284,
+      "R_token_relative_L2": 0.19414059817790985
+    },
+    "preference_shift": -0.002765655517578125
+  },
+  {
+    "coco_id": 416705,
+    "case_id": "verb_416705_1229237_1072881_eat_hold",
+    "descriptions": [
+      "a person eating a pizza",
+      "a person holding a pizza"
+    ],
+    "captions": {
+      "off": "a pizza sitting on top of a white plate.",
+      "upt": "a pizza sitting on top of a white plate.",
+      "annotation_positive": "a pizza sitting on top of a white plate.",
+      "annotation_negative": "a pizza sitting on top of a white plate."
+    },
+    "evidence_change": {
+      "R_attention_L1": 0.5160235166549683,
+      "R_token_relative_L2": 0.24322381615638733
+    },
+    "preference_shift": 0.0039844512939453125
+  },
+  {
+    "coco_id": 484646,
+    "case_id": "verb_484646_427595_648089_carry_hold",
+    "descriptions": [
+      "a person carrying a surfboard",
+      "a person holding a surfboard"
+    ],
+    "captions": {
+      "off": "two men walking into the ocean with their surfboards.",
+      "upt": "two men walking into the ocean with their surfboards.",
+      "annotation_positive": "two men walking into the ocean with their surfboards.",
+      "annotation_negative": "two men walking into the ocean with their surfboards."
+    },
+    "evidence_change": {
+      "R_attention_L1": 0.1883876472711563,
+      "R_token_relative_L2": 0.04989445209503174
+    },
+    "preference_shift": -0.0011081695556640625
+  },
+  {
+    "coco_id": 495476,
+    "case_id": "verb_495476_1234948_1823893_hold_carry",
+    "descriptions": [
+      "a person holding a backpack",
+      "a person carrying a backpack"
+    ],
+    "captions": {
+      "off": "a group of people riding on the back of an elephant.",
+      "upt": "a group of people riding on the back of an elephant.",
+      "annotation_positive": "a group of people riding on the back of an elephant.",
+      "annotation_negative": "a group of people riding on the back of an elephant."
+    },
+    "evidence_change": {
+      "R_attention_L1": 0.36751437187194824,
+      "R_token_relative_L2": 0.2119682878255844
+    },
+    "preference_shift": -0.004276275634765625
+  }
+]

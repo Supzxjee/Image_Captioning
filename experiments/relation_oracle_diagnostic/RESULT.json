@@ -1,0 +1,72 @@
+{
+  "status": "SAVED_ARTIFACT_AUDIT_PASS",
+  "source_zip_sha256": "ad099341fdb759036724e2ec1c59549bba890385aecc7aae2b13ab423e4ef1b1",
+  "cases": 20,
+  "images": 20,
+  "source_files_verified": 11,
+  "checkpoint_sha256": "4938bfe875f05104cd0afca4918dad3761b181bece08d773ad2b71b6adb51043",
+  "manifest_sha256": "4440417da9599fcae76ebc9dc36d7e378ee4f9bd188b42aa2837bbac50fda20b",
+  "model_sha256": "b16e526311a1589b390e7e2dfb0ffac1a6d26aa4428ecb078faa4f346c5f081b",
+  "no_training": true,
+  "test_used": false,
+  "kaggle_data_tests": 3,
+  "kaggle_synthetic_model_tests": 1,
+  "metrics": {
+    "off": {
+      "mean_positive_minus_negative_logp": 1.7402046203613282,
+      "mean_positive_minus_negative_mean_logp": 0.3107371091842651,
+      "annotation_positive_preferred": 11,
+      "captions_changed_vs_off": 0
+    },
+    "upt": {
+      "mean_positive_minus_negative_logp": 1.7378493785858153,
+      "mean_positive_minus_negative_mean_logp": 0.3107118487358093,
+      "annotation_positive_preferred": 11,
+      "captions_changed_vs_off": 3
+    },
+    "annotation_positive": {
+      "mean_positive_minus_negative_logp": 1.7380665779113769,
+      "mean_positive_minus_negative_mean_logp": 0.31058489680290224,
+      "annotation_positive_preferred": 11,
+      "captions_changed_vs_off": 2
+    },
+    "annotation_negative": {
+      "mean_positive_minus_negative_logp": 1.7389519691467286,
+      "mean_positive_minus_negative_mean_logp": 0.31070428490638735,
+      "annotation_positive_preferred": 11,
+      "captions_changed_vs_off": 2
+    },
+    "controlled_annotation_positive_vs_negative": {
+      "mean_preference_shift": -0.0008853912353515625,
+      "captions_changed": 0,
+      "mean_R_attention_L1": 0.43586877882480624,
+      "mean_R_token_relative_L2": 0.2306957651861012
+    }
+  },
+  "additional": {
+    "mean_absolute_preference_shift": 0.0037250518798828125,
+    "median_absolute_preference_shift": 0.0028076171875,
+    "max_absolute_preference_shift": 0.014862060546875,
+    "positive_preference_shifts": 8,
+    "negative_preference_shifts": 12,
+    "R_token_relative_L2_min": 0.029037049040198326,
+    "R_token_relative_L2_max": 0.941822350025177,
+    "max_matcher_replay_error": 3.129243850708008e-07,
+    "same_preference_as_off": 20
+  },
+  "checks": [
+    "CRC, exact manifest and all embedded sources; matching checkpoint identity and full-model hashes across ranks",
+    "20 unique fixed cases, two completed T4 workers, saved unchanged-weight flags, matcher replay tolerance",
+    "All summary metrics recomputed from rank records; description ordering and likelihood arithmetic checked",
+    "Setup logs report three data tests and one synthetic model test passed"
+  ],
+  "decision": "Do not scale F or tune its alignment-loss weight on this evidence. Design a relation-conditioned representation and caption-coupled learning objective before another pilot.",
+  "limits": [
+    "20 post-hoc failure images; descriptive diagnostic, not a benchmark or checkpoint selection",
+    "Annotation zero does not logically contradict the alternate phrase; human plausibility review required",
+    "Annotation +/- fix GT boxes and vary only R text; UPT differs in boxes and slot count, so oracle-versus-UPT is confounded",
+    "Module outputs image-value tokens, not the input words. No caption change does not isolate decoder failure",
+    "Likelihood preference is language-model sensitivity, not verified caption correctness or word-level attribution",
+    "Local audit reads saved artifacts; does not replay inference or independently inspect tensor checkpoint/runtime internals. No human labels produced."
+  ]
+}
