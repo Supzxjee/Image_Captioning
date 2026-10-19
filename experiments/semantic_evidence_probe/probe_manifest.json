@@ -1,0 +1,3698 @@
+{
+  "schema_version": 1,
+  "purpose": "Frozen E matcher diagnostic; no caption training or checkpoint selection",
+  "checkpoint_sha256": "651f411f589c5dd7beb0fae98fafaa7d9ea06a7fd7f2b49400ac878f60227b18",
+  "checkpoint_protocol_sha256": "3e34a4561edc269152c0a61f3c76a807b56da85192a18d1e8bac99c8642a085f",
+  "checkpoint_cohort_sha256": "6bbdf3b75869927334ec6c2f868edf9f52346c0e79401aa0e118ba5a02fb711b",
+  "sources_sha256": {
+    "dataset": "2fd999220673258012acfb411a4e7e66af7d488050b2519b0badcc49b7600b8d",
+    "grounded": "7fa194c7651c348f92c5314e39940ae8249d3aef510fbe76f31edf1e2a61a45b",
+    "cases": "f009ad534f2c24033bb38f363662ce9012350229f48f2ff531b6733527f7ed96",
+    "review": "5ffdcedb7f9b72565f052b2e10860562c53ff9e1d4e386e6851e15291444507f"
+  },
+  "excluded_pilot_train_filenames_sha256": "7def3bf416b999aca519909c1d526df0d4fe756438604534ba187c995fcec5c0",
+  "excluded_pilot_train_images": 10000,
+  "test_used": false,
+  "validation_images_used": false,
+  "alignment_train_overlap": 0,
+  "caption_pretraining_overlap": "All diagnostic images are Karpathy train/restval, historically used for caption pretraining; not unseen-test evidence.",
+  "scope": "Existing reused human diagnostics + V-COCO val-role labels; GT boxes, not UPT detections; no annotation absence interpreted as false.",
+  "counts": {
+    "pairs": 62,
+    "images": 59,
+    "tasks": {
+      "wrong_object_instance": 12,
+      "wrong_predicate": 12,
+      "wrong_subject_instance": 38
+    },
+    "positive_predicates": {
+      "wrong_object_instance:riding": 9,
+      "wrong_object_instance:holding": 3,
+      "wrong_predicate:riding": 6,
+      "wrong_predicate:holding": 6,
+      "wrong_subject_instance:riding": 19,
+      "wrong_subject_instance:holding": 19
+    }
+  },
+  "rows": [
+    {
+      "case_id": "target_0c3f9530294c",
+      "filename": "COCO_train2014_000000402041.jpg",
+      "task": "wrong_object_instance",
+      "predicate": "riding",
+      "object_label": "elephant",
+      "candidates": [
+        {
+          "text": "a person riding an elephant",
+          "bounds": [
+            [
+              0.37229686975479126,
+              0.11458221077919006,
+              0.4605312645435333,
+              0.38474392890930176
+            ],
+            [
+              0.2417343705892563,
+              0.1992991864681244,
+              0.607796847820282,
+              0.8188948631286621
+            ],
+            [
+              0.2417343705892563,
+              0.11458221077919006,
+              0.607796847820282,
+              0.8188948631286621
+            ]
+          ]
+        },
+        {
+          "text": "a person riding an elephant",
+          "bounds": [
+            [
+              0.37229686975479126,
+              0.11458221077919006,
+              0.4605312645435333,
+              0.38474392890930176
+            ],
+            [
+              0.03096874989569187,
+              0.18946091830730438,
+              0.3441718816757202,
+              0.8205660581588745
+            ],
+            [
+              0.03096874989569187,
+              0.11458221077919006,
+              0.4605312645435333,
+              0.8205660581588745
+            ]
+          ]
+        }
+      ],
+      "positive_index": 0,
+      "label_source": "human_explicit_supported_vs_contradicted",
+      "coco_id": 402041,
+      "caption_split": "train"
+    },
+    {
+      "case_id": "target_0e4cbf68736f",
+      "filename": "COCO_train2014_000000329469.jpg",
+      "task": "wrong_object_instance",
+      "predicate": "riding",
+      "object_label": "motorcycle",
+      "candidates": [
+        {
+          "text": "a person riding a motorcycle",
+          "bounds": [
+            [
+              0.44103124737739563,
+              0.12934426963329315,
+              0.8724687695503235,
+              0.7125058770179749
+            ],
+            [
+              0.379031240940094,
+              0.4518032670021057,
+              0.9988593459129333,
+              0.9889227151870728
+            ],
+            [
+              0.379031240940094,
+              0.12934426963329315,
+              0.9988593459129333,
+              0.9889227151870728
+            ]
+          ]
+        },
+        {
+          "text": "a person riding a motorcycle",
+          "bounds": [
+            [
+              0.44103124737739563,
+              0.12934426963329315,
+              0.8724687695503235,
+              0.7125058770179749
+            ],
+            [
+              0.00040625000838190317,
+              0.1662997603416443,
+              0.33406248688697815,
+              0.9707728624343872
+            ],
+            [
+              0.00040625000838190317,
+              0.12934426963329315,
+              0.8724687695503235,
+              0.9707728624343872
+            ]
+          ]
+        }
+      ],
+      "positive_index": 0,
+      "label_source": "human_explicit_supported_vs_contradicted",
+      "coco_id": 329469,
+      "caption_split": "train"
+    },
+    {
+      "case_id": "target_1c641d5eb7b4",
+      "filename": "COCO_train2014_000000329469.jpg",
+      "task": "wrong_object_instance",
+      "predicate": "riding",
+      "object_label": "motorcycle",
+      "candidates": [
+        {
+          "text": "a person riding a motorcycle",
+          "bounds": [
+            [
+              0.054734375327825546,
+              0.002974238945171237,
+              0.3283750116825104,
+              0.6980562210083008
+            ],
+            [
+              0.379031240940094,
+              0.4518032670021057,
+              0.9988593459129333,
+              0.9889227151870728
+            ],
+            [
+              0.054734375327825546,
+              0.002974238945171237,
+              0.9988593459129333,
+              0.9889227151870728
+            ]
+          ]
+        },
+        {
+          "text": "a person riding a motorcycle",
+          "bounds": [
+            [
+              0.054734375327825546,
+              0.002974238945171237,
+              0.3283750116825104,
+              0.6980562210083008
+            ],
+            [
+              0.00040625000838190317,
+              0.1662997603416443,
+              0.33406248688697815,
+              0.9707728624343872
+            ],
+            [
+              0.00040625000838190317,
+              0.002974238945171237,
+              0.33406248688697815,
+              0.9707728624343872
+            ]
+          ]
+        }
+      ],
+      "positive_index": 1,
+      "label_source": "human_explicit_supported_vs_contradicted",
+      "coco_id": 329469,
+      "caption_split": "train"
+    },
+    {
+      "case_id": "target_4847bc6c9dbd",
+      "filename": "COCO_train2014_000000529613.jpg",
+      "task": "wrong_object_instance",
+      "predicate": "holding",
+      "object_label": "pizza",
+      "candidates": [
+        {
+          "text": "a person holding a pizza",
+          "bounds": [
+            [
+              0.7104374766349792,
+              0.05479079484939575,
+              0.9990781545639038,
+              0.9891631603240967
+            ],
+            [
+              0.5698281526565552,
+              0.7525104880332947,
+              0.7062343955039978,
+              0.9071129560470581
+            ],
+            [
+              0.5698281526565552,
+              0.05479079484939575,
+              0.9990781545639038,
+              0.9891631603240967
+            ]
+          ]
+        },
+        {
+          "text": "a person holding a pizza",
+          "bounds": [
+            [
+              0.7104374766349792,
+              0.05479079484939575,
+              0.9990781545639038,
+              0.9891631603240967
+            ],
+            [
+              0.7311093807220459,
+              0.5250208973884583,
+              0.8207187652587891,
+              0.6130962371826172
+            ],
+            [
+              0.7104374766349792,
+              0.05479079484939575,
+              0.9990781545639038,
+              0.9891631603240967
+            ]
+          ]
+        }
+      ],
+      "positive_index": 1,
+      "label_source": "human_explicit_supported_vs_contradicted",
+      "coco_id": 529613,
+      "caption_split": "train"
+    },
+    {
+      "case_id": "target_a3e9de3d1a05",
+      "filename": "COCO_train2014_000000306800.jpg",
+      "task": "wrong_object_instance",
+      "predicate": "riding",
+      "object_label": "bicycle",
+      "candidates": [
+        {
+          "text": "a person riding a bicycle",
+          "bounds": [
+            [
+              0.12490624934434891,
+              0.07544626295566559,
+              0.2906718850135803,
+              0.4726047217845917
+            ],
+            [
+              0.12729687988758087,
+              0.2585063874721527,
+              0.3114687502384186,
+              0.5208925604820251
+            ],
+            [
+              0.12490624934434891,
+              0.07544626295566559,
+              0.3114687502384186,
+              0.5208925604820251
+            ]
+          ]
+        },
+        {
+          "text": "a person riding a bicycle",
+          "bounds": [
+            [
+              0.12490624934434891,
+              0.07544626295566559,
+              0.2906718850135803,
+              0.4726047217845917
+            ],
+            [
+              0.36570313572883606,
+              0.24967212975025177,
+              0.504281222820282,
+              0.5496357083320618
+            ],
+            [
+              0.12490624934434891,
+              0.07544626295566559,
+              0.504281222820282,
+              0.5496357083320618
+            ]
+          ]
+        }
+      ],
+      "positive_index": 0,
+      "label_source": "human_explicit_supported_vs_contradicted",
+      "coco_id": 306800,
+      "caption_split": "train"
+    },
+    {
+      "case_id": "target_aad7419af8d7",
+      "filename": "COCO_train2014_000000090148.jpg",
+      "task": "wrong_object_instance",
+      "predicate": "riding",
+      "object_label": "horse",
+      "candidates": [
+        {
+          "text": "a person riding a horse",
+          "bounds": [
+            [
+              0.44264063239097595,
+              0.4294103682041168,
+              0.5676562786102295,
+              0.828773558139801
+            ],
+            [
+              0.20103125274181366,
+              0.4789622724056244,
+              0.45512500405311584,
+              0.9908726215362549
+            ],
+            [
+              0.20103125274181366,
+              0.4294103682041168,
+              0.5676562786102295,
+              0.9908726215362549
+            ]
+          ]
+        },
+        {
+          "text": "a person riding a horse",
+          "bounds": [
+            [
+              0.44264063239097595,
+              0.4294103682041168,
+              0.5676562786102295,
+              0.828773558139801
+            ],
+            [
+              0.37553125619888306,
+              0.5447641611099243,
+              0.6722031235694885,
+              0.9727122783660889
+            ],
+            [
+              0.37553125619888306,
+              0.4294103682041168,
+              0.6722031235694885,
+              0.9727122783660889
+            ]
+          ]
+        }
+      ],
+      "positive_index": 1,
+      "label_source": "human_explicit_supported_vs_contradicted",
+      "coco_id": 90148,
+      "caption_split": "train"
+    },
+    {
+      "case_id": "target_be7cb012482d",
+      "filename": "COCO_train2014_000000029525.jpg",
+      "task": "wrong_object_instance",
+      "predicate": "riding",
+      "object_label": "bicycle",
+      "candidates": [
+        {
+          "text": "a person riding a bicycle",
+          "bounds": [
+            [
+              0.5501093864440918,
+              0.5265630483627319,
+              0.5977500081062317,
+              0.6634003520011902
+            ],
+            [
+              0.7240312695503235,
+              0.5825777053833008,
+              0.779046893119812,
+              0.6706947088241577
+            ],
+            [
+              0.5501093864440918,
+              0.5265630483627319,
+              0.779046893119812,
+              0.6706947088241577
+            ]
+          ]
+        },
+        {
+          "text": "a person riding a bicycle",
+          "bounds": [
+            [
+              0.5501093864440918,
+              0.5265630483627319,
+              0.5977500081062317,
+              0.6634003520011902
+            ],
+            [
+              0.534250020980835,
+              0.5866178870201111,
+              0.6139531135559082,
+              0.6900548338890076
+            ],
+            [
+              0.534250020980835,
+              0.5265630483627319,
+              0.6139531135559082,
+              0.6900548338890076
+            ]
+          ]
+        }
+      ],
+      "positive_index": 1,
+      "label_source": "human_explicit_supported_vs_contradicted",
+      "coco_id": 29525,
+      "caption_split": "train"
+    },
+    {
+      "case_id": "target_db610fa7def8",
+      "filename": "COCO_train2014_000000448839.jpg",
+      "task": "wrong_object_instance",
+      "predicate": "riding",
+      "object_label": "bicycle",
+      "candidates": [
+        {
+          "text": "a person riding a bicycle",
+          "bounds": [
+            [
+              0.6131406426429749,
+              0.27385416626930237,
+              0.7441562414169312,
+              0.7698749899864197
+            ],
+            [
+              0.3524687588214874,
+              0.4518125057220459,
+              0.48356249928474426,
+              0.7711041569709778
+            ],
+            [
+              0.3524687588214874,
+              0.27385416626930237,
+              0.7441562414169312,
+              0.7711041569709778
+            ]
+          ]
+        },
+        {
+          "text": "a person riding a bicycle",
+          "bounds": [
+            [
+              0.6131406426429749,
+              0.27385416626930237,
+              0.7441562414169312,
+              0.7698749899864197
+            ],
+            [
+              0.6295156478881836,
+              0.5354999899864197,
+              0.6914843916893005,
+              0.9014583230018616
+            ],
+            [
+              0.6131406426429749,
+              0.27385416626930237,
+              0.7441562414169312,
+              0.9014583230018616
+            ]
+          ]
+        }
+      ],
+      "positive_index": 1,
+      "label_source": "human_explicit_supported_vs_contradicted",
+      "coco_id": 448839,
+      "caption_split": "train"
+    },
+    {
+      "case_id": "target_ddf0eb72e2b2",
+      "filename": "COCO_train2014_000000136302.jpg",
+      "task": "wrong_object_instance",
+      "predicate": "holding",
+      "object_label": "surfboard",
+      "candidates": [
+        {
+          "text": "a person holding a surfboard",
+          "bounds": [
+            [
+              0.20231249928474426,
+              0.5519999861717224,
+              0.25632813572883606,
+              0.7668125033378601
+            ],
+            [
+              0.16318750381469727,
+              0.5120416879653931,
+              0.29820311069488525,
+              0.5669375061988831
+            ],
+            [
+              0.16318750381469727,
+              0.5120416879653931,
+              0.29820311069488525,
+              0.7668125033378601
+            ]
+          ]
+        },
+        {
+          "text": "a person holding a surfboard",
+          "bounds": [
+            [
+              0.20231249928474426,
+              0.5519999861717224,
+              0.25632813572883606,
+              0.7668125033378601
+            ],
+            [
+              0.16573438048362732,
+              0.6129791736602783,
+              0.25764063000679016,
+              0.6891250014305115
+            ],
+            [
+              0.16573438048362732,
+              0.5519999861717224,
+              0.25764063000679016,
+              0.7668125033378601
+            ]
+          ]
+        }
+      ],
+      "positive_index": 1,
+      "label_source": "human_explicit_supported_vs_contradicted",
+      "coco_id": 136302,
+      "caption_split": "train"
+    },
+    {
+      "case_id": "target_e0ba7ff124ef",
+      "filename": "COCO_train2014_000000334758.jpg",
+      "task": "wrong_object_instance",
+      "predicate": "riding",
+      "object_label": "horse",
+      "candidates": [
+        {
+          "text": "a person riding a horse",
+          "bounds": [
+            [
+              0.24637646973133087,
+              0.5350156426429749,
+              0.4445176422595978,
+              0.7931249737739563
+            ],
+            [
+              0.047152940183877945,
+              0.6251093745231628,
+              0.2621176540851593,
+              0.9177968502044678
+            ],
+            [
+              0.047152940183877945,
+              0.5350156426429749,
+              0.4445176422595978,
+              0.9177968502044678
+            ]
+          ]
+        },
+        {
+          "text": "a person riding a horse",
+          "bounds": [
+            [
+              0.24637646973133087,
+              0.5350156426429749,
+              0.4445176422595978,
+              0.7931249737739563
+            ],
+            [
+              0.2870352864265442,
+              0.5880937576293945,
+              0.41312941908836365,
+              0.9177031517028809
+            ],
+            [
+              0.24637646973133087,
+              0.5350156426429749,
+              0.4445176422595978,
+              0.9177031517028809
+            ]
+          ]
+        }
+      ],
+      "positive_index": 1,
+      "label_source": "human_explicit_supported_vs_contradicted",
+      "coco_id": 334758,
+      "caption_split": "train"
+    },
+    {
+      "case_id": "target_f4c47f24a715",
+      "filename": "COCO_train2014_000000432019.jpg",
+      "task": "wrong_object_instance",
+      "predicate": "holding",
+      "object_label": "umbrella",
+      "candidates": [
+        {
+          "text": "a person holding an umbrella",
+          "bounds": [
+            [
+              0.6438906192779541,
+              0.8699444532394409,
+              0.7256718873977661,
+              0.9988611340522766
+            ],
+            [
+              0.5967968702316284,
+              0.7785555720329285,
+              0.8040156364440918,
+              0.9226111173629761
+            ],
+            [
+              0.5967968702316284,
+              0.7785555720329285,
+              0.8040156364440918,
+              0.9988611340522766
+            ]
+          ]
+        },
+        {
+          "text": "a person holding an umbrella",
+          "bounds": [
+            [
+              0.6438906192779541,
+              0.8699444532394409,
+              0.7256718873977661,
+              0.9988611340522766
+            ],
+            [
+              0.312624990940094,
+              0.7567777633666992,
+              0.5142655968666077,
+              0.9590277671813965
+            ],
+            [
+              0.312624990940094,
+              0.7567777633666992,
+              0.7256718873977661,
+              0.9988611340522766
+            ]
+          ]
+        }
+      ],
+      "positive_index": 0,
+      "label_source": "human_explicit_supported_vs_contradicted",
+      "coco_id": 432019,
+      "caption_split": "train"
+    },
+    {
+      "case_id": "target_fb525b4c45ce",
+      "filename": "COCO_train2014_000000402041.jpg",
+      "task": "wrong_object_instance",
+      "predicate": "riding",
+      "object_label": "elephant",
+      "candidates": [
+        {
+          "text": "a person riding an elephant",
+          "bounds": [
+            [
+              0.6753281354904175,
+              0.2014285773038864,
+              0.772390604019165,
+              0.47886791825294495
+            ],
+            [
+              0.5250625014305115,
+              0.2986792325973511,
+              0.9226093888282776,
+              0.8185714483261108
+            ],
+            [
+              0.5250625014305115,
+              0.2014285773038864,
+              0.9226093888282776,
+              0.8185714483261108
+            ]
+          ]
+        },
+        {
+          "text": "a person riding an elephant",
+          "bounds": [
+            [
+              0.6753281354904175,
+              0.2014285773038864,
+              0.772390604019165,
+              0.47886791825294495
+            ],
+            [
+              0.03096874989569187,
+              0.18946091830730438,
+              0.3441718816757202,
+              0.8205660581588745
+            ],
+            [
+              0.03096874989569187,
+              0.18946091830730438,
+              0.772390604019165,
+              0.8205660581588745
+            ]
+          ]
+        }
+      ],
+      "positive_index": 0,
+      "label_source": "human_explicit_supported_vs_contradicted",
+      "coco_id": 402041,
+      "caption_split": "train"
+    },
+    {
+      "filename": "COCO_train2014_000000116512.jpg",
+      "predicate": "riding",
+      "object_label": "bicycle",
+      "label_source": "vcoco_positive_role_and_explicit_actor_zero",
+      "case_id": "vcoco_verb_116512_217722_1765055_riding",
+      "task": "wrong_predicate",
+      "candidates": [
+        {
+          "text": "a person holding a bicycle",
+          "bounds": [
+            [
+              0.6652287840843201,
+              0.4274509847164154,
+              0.7954902052879333,
+              0.7481045722961426
+            ],
+            [
+              0.6561437845230103,
+              0.5800653696060181,
+              0.7348529696464539,
+              0.7608823776245117
+            ],
+            [
+              0.6561437845230103,
+              0.4274509847164154,
+              0.7954902052879333,
+              0.7608823776245117
+            ]
+          ]
+        },
+        {
+          "text": "a person riding a bicycle",
+          "bounds": [
+            [
+              0.6652287840843201,
+              0.4274509847164154,
+              0.7954902052879333,
+              0.7481045722961426
+            ],
+            [
+              0.6561437845230103,
+              0.5800653696060181,
+              0.7348529696464539,
+              0.7608823776245117
+            ],
+            [
+              0.6561437845230103,
+              0.4274509847164154,
+              0.7954902052879333,
+              0.7608823776245117
+            ]
+          ]
+        }
+      ],
+      "positive_index": 1,
+      "coco_id": 116512,
+      "caption_split": "train"
+    },
+    {
+      "filename": "COCO_train2014_000000117371.jpg",
+      "predicate": "holding",
+      "object_label": "bicycle",
+      "label_source": "vcoco_positive_role_and_explicit_actor_zero",
+      "case_id": "vcoco_verb_117371_259686_129675_holding",
+      "task": "wrong_predicate",
+      "candidates": [
+        {
+          "text": "a person holding a bicycle",
+          "bounds": [
+            [
+              0.26661795377731323,
+              0.04307812452316284,
+              0.7634864449501038,
+              0.8140624761581421
+            ],
+            [
+              0.4051356911659241,
+              0.3806406259536743,
+              0.764321506023407,
+              0.982796847820282
+            ],
+            [
+              0.26661795377731323,
+              0.04307812452316284,
+              0.764321506023407,
+              0.982796847820282
+            ]
+          ]
+        },
+        {
+          "text": "a person riding a bicycle",
+          "bounds": [
+            [
+              0.26661795377731323,
+              0.04307812452316284,
+              0.7634864449501038,
+              0.8140624761581421
+            ],
+            [
+              0.4051356911659241,
+              0.3806406259536743,
+              0.764321506023407,
+              0.982796847820282
+            ],
+            [
+              0.26661795377731323,
+              0.04307812452316284,
+              0.764321506023407,
+              0.982796847820282
+            ]
+          ]
+        }
+      ],
+      "positive_index": 0,
+      "coco_id": 117371,
+      "caption_split": "train"
+    },
+    {
+      "filename": "COCO_train2014_000000167743.jpg",
+      "predicate": "holding",
+      "object_label": "bicycle",
+      "label_source": "vcoco_positive_role_and_explicit_actor_zero",
+      "case_id": "vcoco_verb_167743_196203_127444_holding",
+      "task": "wrong_predicate",
+      "candidates": [
+        {
+          "text": "a person holding a bicycle",
+          "bounds": [
+            [
+              0.1712656319141388,
+              0.3935999870300293,
+              0.5667499899864197,
+              1.0
+            ],
+            [
+              0.5612343549728394,
+              0.9231294393539429,
+              0.6469218730926514,
+              0.9897882342338562
+            ],
+            [
+              0.1712656319141388,
+              0.3935999870300293,
+              0.6469218730926514,
+              1.0
+            ]
+          ]
+        },
+        {
+          "text": "a person riding a bicycle",
+          "bounds": [
+            [
+              0.1712656319141388,
+              0.3935999870300293,
+              0.5667499899864197,
+              1.0
+            ],
+            [
+              0.5612343549728394,
+              0.9231294393539429,
+              0.6469218730926514,
+              0.9897882342338562
+            ],
+            [
+              0.1712656319141388,
+              0.3935999870300293,
+              0.6469218730926514,
+              1.0
+            ]
+          ]
+        }
+      ],
+      "positive_index": 0,
+      "coco_id": 167743,
+      "caption_split": "train"
+    },
+    {
+      "filename": "COCO_train2014_000000231524.jpg",
+      "predicate": "riding",
+      "object_label": "bicycle",
+      "label_source": "vcoco_positive_role_and_explicit_actor_zero",
+      "case_id": "vcoco_verb_231524_234083_130532_riding",
+      "task": "wrong_predicate",
+      "candidates": [
+        {
+          "text": "a person holding a bicycle",
+          "bounds": [
+            [
+              0.7275624871253967,
+              0.23311474919319153,
+              0.9436718821525574,
+              1.0
+            ],
+            [
+              0.7545156478881836,
+              0.595714271068573,
+              1.0,
+              0.9862763285636902
+            ],
+            [
+              0.7275624871253967,
+              0.23311474919319153,
+              1.0,
+              1.0
+            ]
+          ]
+        },
+        {
+          "text": "a person riding a bicycle",
+          "bounds": [
+            [
+              0.7275624871253967,
+              0.23311474919319153,
+              0.9436718821525574,
+              1.0
+            ],
+            [
+              0.7545156478881836,
+              0.595714271068573,
+              1.0,
+              0.9862763285636902
+            ],
+            [
+              0.7275624871253967,
+              0.23311474919319153,
+              1.0,
+              1.0
+            ]
+          ]
+        }
+      ],
+      "positive_index": 1,
+      "coco_id": 231524,
+      "caption_split": "train"
+    },
+    {
+      "filename": "COCO_train2014_000000255495.jpg",
+      "predicate": "riding",
+      "object_label": "bicycle",
+      "label_source": "vcoco_positive_role_and_explicit_actor_zero",
+      "case_id": "vcoco_verb_255495_1716967_128488_riding",
+      "task": "wrong_predicate",
+      "candidates": [
+        {
+          "text": "a person holding a bicycle",
+          "bounds": [
+            [
+              0.1861562430858612,
+              0.0,
+              0.7047500014305115,
+              0.9887615442276001
+            ],
+            [
+              0.5949843525886536,
+              0.5667652487754822,
+              0.9813593626022339,
+              0.9895194172859192
+            ],
+            [
+              0.1861562430858612,
+              0.0,
+              0.9813593626022339,
+              0.9895194172859192
+            ]
+          ]
+        },
+        {
+          "text": "a person riding a bicycle",
+          "bounds": [
+            [
+              0.1861562430858612,
+              0.0,
+              0.7047500014305115,
+              0.9887615442276001
+            ],
+            [
+              0.5949843525886536,
+              0.5667652487754822,
+              0.9813593626022339,
+              0.9895194172859192
+            ],
+            [
+              0.1861562430858612,
+              0.0,
+              0.9813593626022339,
+              0.9895194172859192
+            ]
+          ]
+        }
+      ],
+      "positive_index": 1,
+      "coco_id": 255495,
+      "caption_split": "train"
+    },
+    {
+      "filename": "COCO_train2014_000000268313.jpg",
+      "predicate": "riding",
+      "object_label": "bicycle",
+      "label_source": "vcoco_positive_role_and_explicit_actor_zero",
+      "case_id": "vcoco_verb_268313_189084_128301_riding",
+      "task": "wrong_predicate",
+      "candidates": [
+        {
+          "text": "a person holding a bicycle",
+          "bounds": [
+            [
+              0.31773436069488525,
+              0.16183333098888397,
+              0.5048437714576721,
+              0.7833333611488342
+            ],
+            [
+              0.37257811427116394,
+              0.526520848274231,
+              0.4612968862056732,
+              0.8512499928474426
+            ],
+            [
+              0.31773436069488525,
+              0.16183333098888397,
+              0.5048437714576721,
+              0.8512499928474426
+            ]
+          ]
+        },
+        {
+          "text": "a person riding a bicycle",
+          "bounds": [
+            [
+              0.31773436069488525,
+              0.16183333098888397,
+              0.5048437714576721,
+              0.7833333611488342
+            ],
+            [
+              0.37257811427116394,
+              0.526520848274231,
+              0.4612968862056732,
+              0.8512499928474426
+            ],
+            [
+              0.31773436069488525,
+              0.16183333098888397,
+              0.5048437714576721,
+              0.8512499928474426
+            ]
+          ]
+        }
+      ],
+      "positive_index": 1,
+      "coco_id": 268313,
+      "caption_split": "train"
+    },
+    {
+      "filename": "COCO_train2014_000000340406.jpg",
+      "predicate": "holding",
+      "object_label": "bicycle",
+      "label_source": "vcoco_positive_role_and_explicit_actor_zero",
+      "case_id": "vcoco_verb_340406_1265058_241798_holding",
+      "task": "wrong_predicate",
+      "candidates": [
+        {
+          "text": "a person holding a bicycle",
+          "bounds": [
+            [
+              0.8238281011581421,
+              0.4722500145435333,
+              0.9077187776565552,
+              0.8055833578109741
+            ],
+            [
+              0.8103437423706055,
+              0.648562490940094,
+              0.9169374704360962,
+              0.8288541436195374
+            ],
+            [
+              0.8103437423706055,
+              0.4722500145435333,
+              0.9169374704360962,
+              0.8288541436195374
+            ]
+          ]
+        },
+        {
+          "text": "a person riding a bicycle",
+          "bounds": [
+            [
+              0.8238281011581421,
+              0.4722500145435333,
+              0.9077187776565552,
+              0.8055833578109741
+            ],
+            [
+              0.8103437423706055,
+              0.648562490940094,
+              0.9169374704360962,
+              0.8288541436195374
+            ],
+            [
+              0.8103437423706055,
+              0.4722500145435333,
+              0.9169374704360962,
+              0.8288541436195374
+            ]
+          ]
+        }
+      ],
+      "positive_index": 0,
+      "coco_id": 340406,
+      "caption_split": "train"
+    },
+    {
+      "filename": "COCO_train2014_000000411238.jpg",
+      "predicate": "holding",
+      "object_label": "bicycle",
+      "label_source": "vcoco_positive_role_and_explicit_actor_zero",
+      "case_id": "vcoco_verb_411238_254641_1334919_holding",
+      "task": "wrong_predicate",
+      "candidates": [
+        {
+          "text": "a person holding a bicycle",
+          "bounds": [
+            [
+              0.7264062762260437,
+              0.2202291637659073,
+              1.0,
+              0.9865208268165588
+            ],
+            [
+              0.7104843854904175,
+              0.8171666860580444,
+              0.8185312747955322,
+              0.984458327293396
+            ],
+            [
+              0.7104843854904175,
+              0.2202291637659073,
+              1.0,
+              0.9865208268165588
+            ]
+          ]
+        },
+        {
+          "text": "a person riding a bicycle",
+          "bounds": [
+            [
+              0.7264062762260437,
+              0.2202291637659073,
+              1.0,
+              0.9865208268165588
+            ],
+            [
+              0.7104843854904175,
+              0.8171666860580444,
+              0.8185312747955322,
+              0.984458327293396
+            ],
+            [
+              0.7104843854904175,
+              0.2202291637659073,
+              1.0,
+              0.9865208268165588
+            ]
+          ]
+        }
+      ],
+      "positive_index": 0,
+      "coco_id": 411238,
+      "caption_split": "train"
+    },
+    {
+      "filename": "COCO_train2014_000000459543.jpg",
+      "predicate": "riding",
+      "object_label": "motorcycle",
+      "label_source": "vcoco_positive_role_and_explicit_actor_zero",
+      "case_id": "vcoco_verb_459543_185107_152411_riding",
+      "task": "wrong_predicate",
+      "candidates": [
+        {
+          "text": "a person riding a motorcycle",
+          "bounds": [
+            [
+              0.45814061164855957,
+              0.3211241364479065,
+              0.7355937361717224,
+              0.5616159439086914
+            ],
+            [
+              0.5517968535423279,
+              0.5464637279510498,
+              0.8114687204360962,
+              0.7542856931686401
+            ],
+            [
+              0.45814061164855957,
+              0.3211241364479065,
+              0.8114687204360962,
+              0.7542856931686401
+            ]
+          ]
+        },
+        {
+          "text": "a person holding a motorcycle",
+          "bounds": [
+            [
+              0.45814061164855957,
+              0.3211241364479065,
+              0.7355937361717224,
+              0.5616159439086914
+            ],
+            [
+              0.5517968535423279,
+              0.5464637279510498,
+              0.8114687204360962,
+              0.7542856931686401
+            ],
+            [
+              0.45814061164855957,
+              0.3211241364479065,
+              0.8114687204360962,
+              0.7542856931686401
+            ]
+          ]
+        }
+      ],
+      "positive_index": 0,
+      "coco_id": 459543,
+      "caption_split": "train"
+    },
+    {
+      "filename": "COCO_train2014_000000482810.jpg",
+      "predicate": "holding",
+      "object_label": "bicycle",
+      "label_source": "vcoco_positive_role_and_explicit_actor_zero",
+      "case_id": "vcoco_verb_482810_197961_126737_holding",
+      "task": "wrong_predicate",
+      "candidates": [
+        {
+          "text": "a person riding a bicycle",
+          "bounds": [
+            [
+              0.3148750066757202,
+              0.14569412171840668,
+              0.5939218997955322,
+              0.9322117567062378
+            ],
+            [
+              0.024281250312924385,
+              0.5677411556243896,
+              0.711187481880188,
+              0.9784941077232361
+            ],
+            [
+              0.024281250312924385,
+              0.14569412171840668,
+              0.711187481880188,
+              0.9784941077232361
+            ]
+          ]
+        },
+        {
+          "text": "a person holding a bicycle",
+          "bounds": [
+            [
+              0.3148750066757202,
+              0.14569412171840668,
+              0.5939218997955322,
+              0.9322117567062378
+            ],
+            [
+              0.024281250312924385,
+              0.5677411556243896,
+              0.711187481880188,
+              0.9784941077232361
+            ],
+            [
+              0.024281250312924385,
+              0.14569412171840668,
+              0.711187481880188,
+              0.9784941077232361
+            ]
+          ]
+        }
+      ],
+      "positive_index": 1,
+      "coco_id": 482810,
+      "caption_split": "train"
+    },
+    {
+      "filename": "COCO_train2014_000000562296.jpg",
+      "predicate": "holding",
+      "object_label": "motorcycle",
+      "label_source": "vcoco_positive_role_and_explicit_actor_zero",
+      "case_id": "vcoco_verb_562296_195750_148370_holding",
+      "task": "wrong_predicate",
+      "candidates": [
+        {
+          "text": "a person holding a motorcycle",
+          "bounds": [
+            [
+              0.3037812411785126,
+              0.0015690376749262214,
+              0.8358281254768372,
+              0.9813389182090759
+            ],
+            [
+              0.001687500043772161,
+              0.3502301275730133,
+              1.0,
+              0.9898744821548462
+            ],
+            [
+              0.001687500043772161,
+              0.0015690376749262214,
+              1.0,
+              0.9898744821548462
+            ]
+          ]
+        },
+        {
+          "text": "a person riding a motorcycle",
+          "bounds": [
+            [
+              0.3037812411785126,
+              0.0015690376749262214,
+              0.8358281254768372,
+              0.9813389182090759
+            ],
+            [
+              0.001687500043772161,
+              0.3502301275730133,
+              1.0,
+              0.9898744821548462
+            ],
+            [
+              0.001687500043772161,
+              0.0015690376749262214,
+              1.0,
+              0.9898744821548462
+            ]
+          ]
+        }
+      ],
+      "positive_index": 0,
+      "coco_id": 562296,
+      "caption_split": "train"
+    },
+    {
+      "filename": "COCO_train2014_000000098596.jpg",
+      "predicate": "riding",
+      "object_label": "bicycle",
+      "label_source": "vcoco_positive_role_and_explicit_actor_zero",
+      "case_id": "vcoco_verb_98596_202874_125334_riding",
+      "task": "wrong_predicate",
+      "candidates": [
+        {
+          "text": "a person riding a bicycle",
+          "bounds": [
+            [
+              0.21579687297344208,
+              0.015435815788805485,
+              0.6891718506813049,
+              0.9950396418571472
+            ],
+            [
+              0.0,
+              0.6626624464988708,
+              0.8251405954360962,
+              1.0
+            ],
+            [
+              0.0,
+              0.015435815788805485,
+              0.8251405954360962,
+              1.0
+            ]
+          ]
+        },
+        {
+          "text": "a person holding a bicycle",
+          "bounds": [
+            [
+              0.21579687297344208,
+              0.015435815788805485,
+              0.6891718506813049,
+              0.9950396418571472
+            ],
+            [
+              0.0,
+              0.6626624464988708,
+              0.8251405954360962,
+              1.0
+            ],
+            [
+              0.0,
+              0.015435815788805485,
+              0.8251405954360962,
+              1.0
+            ]
+          ]
+        }
+      ],
+      "positive_index": 0,
+      "coco_id": 98596,
+      "caption_split": "train"
+    },
+    {
+      "filename": "COCO_train2014_000000101094.jpg",
+      "predicate": "riding",
+      "object_label": "elephant",
+      "label_source": "vcoco_positive_role_and_explicit_actor_zero",
+      "case_id": "vcoco_actor_101094_1717869_583064_233930_riding",
+      "task": "wrong_subject_instance",
+      "candidates": [
+        {
+          "text": "a person riding an elephant",
+          "bounds": [
+            [
+              0.40681248903274536,
+              0.15318749845027924,
+              0.4965781271457672,
+              0.29897916316986084
+            ],
+            [
+              0.19001562893390656,
+              0.3318333327770233,
+              0.6894687414169312,
+              0.8296041488647461
+            ],
+            [
+              0.19001562893390656,
+              0.15318749845027924,
+              0.6894687414169312,
+              0.8296041488647461
+            ]
+          ]
+        },
+        {
+          "text": "a person riding an elephant",
+          "bounds": [
+            [
+              0.8354687690734863,
+              0.5525416731834412,
+              0.8940312266349792,
+              0.7758333086967468
+            ],
+            [
+              0.19001562893390656,
+              0.3318333327770233,
+              0.6894687414169312,
+              0.8296041488647461
+            ],
+            [
+              0.19001562893390656,
+              0.3318333327770233,
+              0.8940312266349792,
+              0.8296041488647461
+            ]
+          ]
+        }
+      ],
+      "positive_index": 0,
+      "coco_id": 101094,
+      "caption_split": "train"
+    },
+    {
+      "filename": "COCO_train2014_000000105714.jpg",
+      "predicate": "holding",
+      "object_label": "frisbee",
+      "label_source": "vcoco_positive_role_and_explicit_actor_zero",
+      "case_id": "vcoco_actor_105714_482561_602761_483544_holding",
+      "task": "wrong_subject_instance",
+      "candidates": [
+        {
+          "text": "a person holding a frisbee",
+          "bounds": [
+            [
+              0.6565937399864197,
+              0.22222483158111572,
+              1.0,
+              0.9841217994689941
+            ],
+            [
+              0.3793906271457672,
+              0.3893676698207855,
+              0.44584375619888306,
+              0.5232552886009216
+            ],
+            [
+              0.3793906271457672,
+              0.22222483158111572,
+              1.0,
+              0.9841217994689941
+            ]
+          ]
+        },
+        {
+          "text": "a person holding a frisbee",
+          "bounds": [
+            [
+              0.4212968647480011,
+              0.22177985310554504,
+              0.908578097820282,
+              0.9813348650932312
+            ],
+            [
+              0.3793906271457672,
+              0.3893676698207855,
+              0.44584375619888306,
+              0.5232552886009216
+            ],
+            [
+              0.3793906271457672,
+              0.22177985310554504,
+              0.908578097820282,
+              0.9813348650932312
+            ]
+          ]
+        }
+      ],
+      "positive_index": 1,
+      "coco_id": 105714,
+      "caption_split": "train"
+    },
+    {
+      "filename": "COCO_train2014_000000126001.jpg",
+      "predicate": "riding",
+      "object_label": "elephant",
+      "label_source": "vcoco_positive_role_and_explicit_actor_zero",
+      "case_id": "vcoco_actor_126001_563454_582401_559045_riding",
+      "task": "wrong_subject_instance",
+      "candidates": [
+        {
+          "text": "a person riding an elephant",
+          "bounds": [
+            [
+              0.5190312266349792,
+              0.43960416316986084,
+              0.7751093506813049,
+              0.8023958206176758
+            ],
+            [
+              0.23310936987400055,
+              0.7961666584014893,
+              0.8969531059265137,
+              0.9898750185966492
+            ],
+            [
+              0.23310936987400055,
+              0.43960416316986084,
+              0.8969531059265137,
+              0.9898750185966492
+            ]
+          ]
+        },
+        {
+          "text": "a person riding an elephant",
+          "bounds": [
+            [
+              0.32167187333106995,
+              0.5434583425521851,
+              0.4909687638282776,
+              0.9881458282470703
+            ],
+            [
+              0.23310936987400055,
+              0.7961666584014893,
+              0.8969531059265137,
+              0.9898750185966492
+            ],
+            [
+              0.23310936987400055,
+              0.5434583425521851,
+              0.8969531059265137,
+              0.9898750185966492
+            ]
+          ]
+        }
+      ],
+      "positive_index": 1,
+      "coco_id": 126001,
+      "caption_split": "train"
+    },
+    {
+      "filename": "COCO_train2014_000000147674.jpg",
+      "predicate": "holding",
+      "object_label": "handbag",
+      "label_source": "vcoco_positive_role_and_explicit_actor_zero",
+      "case_id": "vcoco_actor_147674_524611_1172736_2007716_holding",
+      "task": "wrong_subject_instance",
+      "candidates": [
+        {
+          "text": "a person holding a handbag",
+          "bounds": [
+            [
+              0.0,
+              0.730772852897644,
+              0.1152968779206276,
+              1.0
+            ],
+            [
+              0.14671875536441803,
+              0.8357142806053162,
+              0.20200000703334808,
+              0.9436768293380737
+            ],
+            [
+              0.0,
+              0.730772852897644,
+              0.20200000703334808,
+              1.0
+            ]
+          ]
+        },
+        {
+          "text": "a person holding a handbag",
+          "bounds": [
+            [
+              0.13314062356948853,
+              0.7485246062278748,
+              0.2345000058412552,
+              0.9775409698486328
+            ],
+            [
+              0.14671875536441803,
+              0.8357142806053162,
+              0.20200000703334808,
+              0.9436768293380737
+            ],
+            [
+              0.13314062356948853,
+              0.7485246062278748,
+              0.2345000058412552,
+              0.9775409698486328
+            ]
+          ]
+        }
+      ],
+      "positive_index": 1,
+      "coco_id": 147674,
+      "caption_split": "train"
+    },
+    {
+      "filename": "COCO_train2014_000000159176.jpg",
+      "predicate": "holding",
+      "object_label": "skateboard",
+      "label_source": "vcoco_positive_role_and_explicit_actor_zero",
+      "case_id": "vcoco_actor_159176_1301495_1474767_1231990_holding",
+      "task": "wrong_subject_instance",
+      "candidates": [
+        {
+          "text": "a person holding a skateboard",
+          "bounds": [
+            [
+              0.5081250071525574,
+              0.42853185534477234,
+              0.5763280987739563,
+              0.7341551184654236
+            ],
+            [
+              0.2615000009536743,
+              0.5813850164413452,
+              0.2896406352519989,
+              0.7102493047714233
+            ],
+            [
+              0.2615000009536743,
+              0.42853185534477234,
+              0.5763280987739563,
+              0.7341551184654236
+            ]
+          ]
+        },
+        {
+          "text": "a person holding a skateboard",
+          "bounds": [
+            [
+              0.2423125058412552,
+              0.49980610609054565,
+              0.28987500071525574,
+              0.7234072089195251
+            ],
+            [
+              0.2615000009536743,
+              0.5813850164413452,
+              0.2896406352519989,
+              0.7102493047714233
+            ],
+            [
+              0.2423125058412552,
+              0.49980610609054565,
+              0.28987500071525574,
+              0.7234072089195251
+            ]
+          ]
+        }
+      ],
+      "positive_index": 1,
+      "coco_id": 159176,
+      "caption_split": "train"
+    },
+    {
+      "filename": "COCO_train2014_000000165334.jpg",
+      "predicate": "riding",
+      "object_label": "bicycle",
+      "label_source": "vcoco_positive_role_and_explicit_actor_zero",
+      "case_id": "vcoco_actor_165334_225612_1335895_217739_riding",
+      "task": "wrong_subject_instance",
+      "candidates": [
+        {
+          "text": "a person riding a bicycle",
+          "bounds": [
+            [
+              0.6270312666893005,
+              0.3283958435058594,
+              0.8047812581062317,
+              0.6598958373069763
+            ],
+            [
+              0.48310938477516174,
+              0.5619375109672546,
+              0.5456093549728394,
+              0.8479791879653931
+            ],
+            [
+              0.48310938477516174,
+              0.3283958435058594,
+              0.8047812581062317,
+              0.8479791879653931
+            ]
+          ]
+        },
+        {
+          "text": "a person riding a bicycle",
+          "bounds": [
+            [
+              0.44987499713897705,
+              0.3238750100135803,
+              0.5939218997955322,
+              0.7230833172798157
+            ],
+            [
+              0.48310938477516174,
+              0.5619375109672546,
+              0.5456093549728394,
+              0.8479791879653931
+            ],
+            [
+              0.44987499713897705,
+              0.3238750100135803,
+              0.5939218997955322,
+              0.8479791879653931
+            ]
+          ]
+        }
+      ],
+      "positive_index": 1,
+      "coco_id": 165334,
+      "caption_split": "train"
+    },
+    {
+      "filename": "COCO_train2014_000000170636.jpg",
+      "predicate": "riding",
+      "object_label": "motorcycle",
+      "label_source": "vcoco_positive_role_and_explicit_actor_zero",
+      "case_id": "vcoco_actor_170636_219821_150628_236396_riding",
+      "task": "wrong_subject_instance",
+      "candidates": [
+        {
+          "text": "a person riding a motorcycle",
+          "bounds": [
+            [
+              0.8752031326293945,
+              0.31016626954078674,
+              0.9940780997276306,
+              0.6931828856468201
+            ],
+            [
+              0.5203906297683716,
+              0.3354869484901428,
+              0.7796562314033508,
+              0.8285035490989685
+            ],
+            [
+              0.5203906297683716,
+              0.31016626954078674,
+              0.9940780997276306,
+              0.8285035490989685
+            ]
+          ]
+        },
+        {
+          "text": "a person riding a motorcycle",
+          "bounds": [
+            [
+              0.5973437428474426,
+              0.266128271818161,
+              0.7292500138282776,
+              0.739406168460846
+            ],
+            [
+              0.5203906297683716,
+              0.3354869484901428,
+              0.7796562314033508,
+              0.8285035490989685
+            ],
+            [
+              0.5203906297683716,
+              0.266128271818161,
+              0.7796562314033508,
+              0.8285035490989685
+            ]
+          ]
+        }
+      ],
+      "positive_index": 1,
+      "coco_id": 170636,
+      "caption_split": "train"
+    },
+    {
+      "filename": "COCO_train2014_000000180778.jpg",
+      "predicate": "holding",
+      "object_label": "laptop",
+      "label_source": "vcoco_positive_role_and_explicit_actor_zero",
+      "case_id": "vcoco_actor_180778_1739914_1101257_454965_holding",
+      "task": "wrong_subject_instance",
+      "candidates": [
+        {
+          "text": "a person holding a laptop",
+          "bounds": [
+            [
+              0.25120311975479126,
+              0.17098326981067657,
+              0.49904686212539673,
+              0.6585773825645447
+            ],
+            [
+              0.06456249952316284,
+              0.4424686133861542,
+              0.585281252861023,
+              0.8800627589225769
+            ],
+            [
+              0.06456249952316284,
+              0.17098326981067657,
+              0.585281252861023,
+              0.8800627589225769
+            ]
+          ]
+        },
+        {
+          "text": "a person holding a laptop",
+          "bounds": [
+            [
+              0.0,
+              0.22715480625629425,
+              0.32087498903274536,
+              1.0
+            ],
+            [
+              0.06456249952316284,
+              0.4424686133861542,
+              0.585281252861023,
+              0.8800627589225769
+            ],
+            [
+              0.0,
+              0.22715480625629425,
+              0.585281252861023,
+              1.0
+            ]
+          ]
+        }
+      ],
+      "positive_index": 1,
+      "coco_id": 180778,
+      "caption_split": "train"
+    },
+    {
+      "filename": "COCO_train2014_000000203671.jpg",
+      "predicate": "riding",
+      "object_label": "horse",
+      "label_source": "vcoco_positive_role_and_explicit_actor_zero",
+      "case_id": "vcoco_actor_203671_2161494_1403380_192903_riding",
+      "task": "wrong_subject_instance",
+      "candidates": [
+        {
+          "text": "a person riding a horse",
+          "bounds": [
+            [
+              0.8595468997955322,
+              0.1662295013666153,
+              1.0,
+              0.9870023131370544
+            ],
+            [
+              0.874093770980835,
+              0.5901405215263367,
+              0.9988124966621399,
+              0.997751772403717
+            ],
+            [
+              0.8595468997955322,
+              0.1662295013666153,
+              1.0,
+              0.997751772403717
+            ]
+          ]
+        },
+        {
+          "text": "a person riding a horse",
+          "bounds": [
+            [
+              0.4392968714237213,
+              0.5415691137313843,
+              0.725656270980835,
+              0.9887588024139404
+            ],
+            [
+              0.874093770980835,
+              0.5901405215263367,
+              0.9988124966621399,
+              0.997751772403717
+            ],
+            [
+              0.4392968714237213,
+              0.5415691137313843,
+              0.9988124966621399,
+              0.997751772403717
+            ]
+          ]
+        }
+      ],
+      "positive_index": 0,
+      "coco_id": 203671,
+      "caption_split": "train"
+    },
+    {
+      "filename": "COCO_train2014_000000209842.jpg",
+      "predicate": "riding",
+      "object_label": "horse",
+      "label_source": "vcoco_positive_role_and_explicit_actor_zero",
+      "case_id": "vcoco_actor_209842_188740_54707_205928_riding",
+      "task": "wrong_subject_instance",
+      "candidates": [
+        {
+          "text": "a person riding a horse",
+          "bounds": [
+            [
+              0.518750011920929,
+              0.4000000059604645,
+              0.6521875262260437,
+              0.8943793773651123
+            ],
+            [
+              0.2000156193971634,
+              0.44131147861480713,
+              0.45003125071525574,
+              0.9895082116127014
+            ],
+            [
+              0.2000156193971634,
+              0.4000000059604645,
+              0.6521875262260437,
+              0.9895082116127014
+            ]
+          ]
+        },
+        {
+          "text": "a person riding a horse",
+          "bounds": [
+            [
+              0.19757813215255737,
+              0.1193208396434784,
+              0.4896562397480011,
+              0.8832552433013916
+            ],
+            [
+              0.2000156193971634,
+              0.44131147861480713,
+              0.45003125071525574,
+              0.9895082116127014
+            ],
+            [
+              0.19757813215255737,
+              0.1193208396434784,
+              0.4896562397480011,
+              0.9895082116127014
+            ]
+          ]
+        }
+      ],
+      "positive_index": 1,
+      "coco_id": 209842,
+      "caption_split": "train"
+    },
+    {
+      "filename": "COCO_train2014_000000231315.jpg",
+      "predicate": "riding",
+      "object_label": "motorcycle",
+      "label_source": "vcoco_positive_role_and_explicit_actor_zero",
+      "case_id": "vcoco_actor_231315_1252218_2204126_1275844_riding",
+      "task": "wrong_subject_instance",
+      "candidates": [
+        {
+          "text": "a person riding a motorcycle",
+          "bounds": [
+            [
+              0.435734361410141,
+              0.0441787950694561,
+              0.7153280973434448,
+              0.889896035194397
+            ],
+            [
+              0.22248438000679016,
+              0.1283160150051117,
+              0.9484531283378601,
+              0.8904989361763
+            ],
+            [
+              0.22248438000679016,
+              0.0441787950694561,
+              0.9484531283378601,
+              0.8904989361763
+            ]
+          ]
+        },
+        {
+          "text": "a person riding a motorcycle",
+          "bounds": [
+            [
+              0.01015624962747097,
+              0.0934719368815422,
+              0.3622343838214874,
+              0.9853638410568237
+            ],
+            [
+              0.22248438000679016,
+              0.1283160150051117,
+              0.9484531283378601,
+              0.8904989361763
+            ],
+            [
+              0.01015624962747097,
+              0.0934719368815422,
+              0.9484531283378601,
+              0.9853638410568237
+            ]
+          ]
+        }
+      ],
+      "positive_index": 0,
+      "coco_id": 231315,
+      "caption_split": "train"
+    },
+    {
+      "filename": "COCO_train2014_000000233901.jpg",
+      "predicate": "holding",
+      "object_label": "baseball glove",
+      "label_source": "vcoco_positive_role_and_explicit_actor_zero",
+      "case_id": "vcoco_actor_233901_458865_635536_435537_holding",
+      "task": "wrong_subject_instance",
+      "candidates": [
+        {
+          "text": "a person holding a baseball glove",
+          "bounds": [
+            [
+              0.20884375274181366,
+              0.37626761198043823,
+              0.3518750071525574,
+              0.8165258169174194
+            ],
+            [
+              0.5512031316757202,
+              0.46718311309814453,
+              0.6017968654632568,
+              0.5823708772659302
+            ],
+            [
+              0.20884375274181366,
+              0.37626761198043823,
+              0.6017968654632568,
+              0.8165258169174194
+            ]
+          ]
+        },
+        {
+          "text": "a person holding a baseball glove",
+          "bounds": [
+            [
+              0.4794843792915344,
+              0.3456572890281677,
+              0.8562343716621399,
+              0.8762206435203552
+            ],
+            [
+              0.5512031316757202,
+              0.46718311309814453,
+              0.6017968654632568,
+              0.5823708772659302
+            ],
+            [
+              0.4794843792915344,
+              0.3456572890281677,
+              0.8562343716621399,
+              0.8762206435203552
+            ]
+          ]
+        }
+      ],
+      "positive_index": 1,
+      "coco_id": 233901,
+      "caption_split": "train"
+    },
+    {
+      "filename": "COCO_train2014_000000268804.jpg",
+      "predicate": "riding",
+      "object_label": "horse",
+      "label_source": "vcoco_positive_role_and_explicit_actor_zero",
+      "case_id": "vcoco_actor_268804_1713522_54927_1739648_riding",
+      "task": "wrong_subject_instance",
+      "candidates": [
+        {
+          "text": "a person riding a horse",
+          "bounds": [
+            [
+              0.5056250095367432,
+              0.3685416579246521,
+              0.5882031321525574,
+              0.5415833592414856
+            ],
+            [
+              0.5102656483650208,
+              0.4934374988079071,
+              0.656906247138977,
+              0.7776874899864197
+            ],
+            [
+              0.5056250095367432,
+              0.3685416579246521,
+              0.656906247138977,
+              0.7776874899864197
+            ]
+          ]
+        },
+        {
+          "text": "a person riding a horse",
+          "bounds": [
+            [
+              0.6987344026565552,
+              0.5288958549499512,
+              0.7687187790870667,
+              0.6422291398048401
+            ],
+            [
+              0.5102656483650208,
+              0.4934374988079071,
+              0.656906247138977,
+              0.7776874899864197
+            ],
+            [
+              0.5102656483650208,
+              0.4934374988079071,
+              0.7687187790870667,
+              0.7776874899864197
+            ]
+          ]
+        }
+      ],
+      "positive_index": 0,
+      "coco_id": 268804,
+      "caption_split": "train"
+    },
+    {
+      "filename": "COCO_train2014_000000274267.jpg",
+      "predicate": "holding",
+      "object_label": "spoon",
+      "label_source": "vcoco_positive_role_and_explicit_actor_zero",
+      "case_id": "vcoco_actor_274267_1278180_706817_1682103_holding",
+      "task": "wrong_subject_instance",
+      "candidates": [
+        {
+          "text": "a person holding a spoon",
+          "bounds": [
+            [
+              0.6503437757492065,
+              0.4178541600704193,
+              1.0,
+              0.7131458520889282
+            ],
+            [
+              0.22503125667572021,
+              0.5867083072662354,
+              0.2802656292915344,
+              0.6143749952316284
+            ],
+            [
+              0.22503125667572021,
+              0.4178541600704193,
+              1.0,
+              0.7131458520889282
+            ]
+          ]
+        },
+        {
+          "text": "a person holding a spoon",
+          "bounds": [
+            [
+              0.10643749684095383,
+              0.3324166536331177,
+              0.3179374933242798,
+              0.633145809173584
+            ],
+            [
+              0.22503125667572021,
+              0.5867083072662354,
+              0.2802656292915344,
+              0.6143749952316284
+            ],
+            [
+              0.10643749684095383,
+              0.3324166536331177,
+              0.3179374933242798,
+              0.633145809173584
+            ]
+          ]
+        }
+      ],
+      "positive_index": 1,
+      "coco_id": 274267,
+      "caption_split": "train"
+    },
+    {
+      "filename": "COCO_train2014_000000027902.jpg",
+      "predicate": "holding",
+      "object_label": "sandwich",
+      "label_source": "vcoco_positive_role_and_explicit_actor_zero",
+      "case_id": "vcoco_actor_27902_2152824_2218436_450287_holding",
+      "task": "wrong_subject_instance",
+      "candidates": [
+        {
+          "text": "a person holding a sandwich",
+          "bounds": [
+            [
+              0.28196653723716736,
+              0.2348593771457672,
+              0.9247907996177673,
+              0.9676406383514404
+            ],
+            [
+              0.5727823972702026,
+              0.5203593969345093,
+              0.6809204816818237,
+              0.5690000057220459
+            ],
+            [
+              0.28196653723716736,
+              0.2348593771457672,
+              0.9247907996177673,
+              0.9676406383514404
+            ]
+          ]
+        },
+        {
+          "text": "a person holding a sandwich",
+          "bounds": [
+            [
+              0.8183891177177429,
+              0.10973437130451202,
+              1.0,
+              0.8647968769073486
+            ],
+            [
+              0.5727823972702026,
+              0.5203593969345093,
+              0.6809204816818237,
+              0.5690000057220459
+            ],
+            [
+              0.5727823972702026,
+              0.10973437130451202,
+              1.0,
+              0.8647968769073486
+            ]
+          ]
+        }
+      ],
+      "positive_index": 0,
+      "coco_id": 27902,
+      "caption_split": "train"
+    },
+    {
+      "filename": "COCO_train2014_000000284543.jpg",
+      "predicate": "riding",
+      "object_label": "bicycle",
+      "label_source": "vcoco_positive_role_and_explicit_actor_zero",
+      "case_id": "vcoco_actor_284543_187471_127037_2160149_riding",
+      "task": "wrong_subject_instance",
+      "candidates": [
+        {
+          "text": "a person riding a bicycle",
+          "bounds": [
+            [
+              0.32910001277923584,
+              0.12243243306875229,
+              0.49305999279022217,
+              0.3870870769023895
+            ],
+            [
+              0.24291999638080597,
+              0.4700600504875183,
+              0.42847999930381775,
+              0.8366066217422485
+            ],
+            [
+              0.24291999638080597,
+              0.12243243306875229,
+              0.49305999279022217,
+              0.8366066217422485
+            ]
+          ]
+        },
+        {
+          "text": "a person riding a bicycle",
+          "bounds": [
+            [
+              0.29934000968933105,
+              0.4795795679092407,
+              0.42824000120162964,
+              0.7569969892501831
+            ],
+            [
+              0.24291999638080597,
+              0.4700600504875183,
+              0.42847999930381775,
+              0.8366066217422485
+            ],
+            [
+              0.24291999638080597,
+              0.4700600504875183,
+              0.42847999930381775,
+              0.8366066217422485
+            ]
+          ]
+        }
+      ],
+      "positive_index": 1,
+      "coco_id": 284543,
+      "caption_split": "train"
+    },
+    {
+      "filename": "COCO_train2014_000000304445.jpg",
+      "predicate": "riding",
+      "object_label": "bicycle",
+      "label_source": "vcoco_positive_role_and_explicit_actor_zero",
+      "case_id": "vcoco_actor_304445_221015_124788_206773_riding",
+      "task": "wrong_subject_instance",
+      "candidates": [
+        {
+          "text": "a person riding a bicycle",
+          "bounds": [
+            [
+              0.6746562719345093,
+              0.3462603986263275,
+              0.7539218664169312,
+              0.7309695482254028
+            ],
+            [
+              0.2081875056028366,
+              0.532188355922699,
+              0.4018593728542328,
+              0.9270359873771667
+            ],
+            [
+              0.2081875056028366,
+              0.3462603986263275,
+              0.7539218664169312,
+              0.9270359873771667
+            ]
+          ]
+        },
+        {
+          "text": "a person riding a bicycle",
+          "bounds": [
+            [
+              0.2630000114440918,
+              0.23828254640102386,
+              0.408265620470047,
+              0.880166232585907
+            ],
+            [
+              0.2081875056028366,
+              0.532188355922699,
+              0.4018593728542328,
+              0.9270359873771667
+            ],
+            [
+              0.2081875056028366,
+              0.23828254640102386,
+              0.408265620470047,
+              0.9270359873771667
+            ]
+          ]
+        }
+      ],
+      "positive_index": 1,
+      "coco_id": 304445,
+      "caption_split": "train"
+    },
+    {
+      "filename": "COCO_train2014_000000304866.jpg",
+      "predicate": "holding",
+      "object_label": "backpack",
+      "label_source": "vcoco_positive_role_and_explicit_actor_zero",
+      "case_id": "vcoco_actor_304866_1249970_1169166_1254857_holding",
+      "task": "wrong_subject_instance",
+      "candidates": [
+        {
+          "text": "a person holding a backpack",
+          "bounds": [
+            [
+              0.8590937256813049,
+              0.7146135568618774,
+              1.0,
+              0.9887588024139404
+            ],
+            [
+              0.726187527179718,
+              0.7536534070968628,
+              0.7729062438011169,
+              0.8705855011940002
+            ],
+            [
+              0.726187527179718,
+              0.7146135568618774,
+              1.0,
+              0.9887588024139404
+            ]
+          ]
+        },
+        {
+          "text": "a person holding a backpack",
+          "bounds": [
+            [
+              0.7341406345367432,
+              0.6760655641555786,
+              0.8307656049728394,
+              1.0
+            ],
+            [
+              0.726187527179718,
+              0.7536534070968628,
+              0.7729062438011169,
+              0.8705855011940002
+            ],
+            [
+              0.726187527179718,
+              0.6760655641555786,
+              0.8307656049728394,
+              1.0
+            ]
+          ]
+        }
+      ],
+      "positive_index": 1,
+      "coco_id": 304866,
+      "caption_split": "train"
+    },
+    {
+      "filename": "COCO_train2014_000000317306.jpg",
+      "predicate": "holding",
+      "object_label": "baseball bat",
+      "label_source": "vcoco_positive_role_and_explicit_actor_zero",
+      "case_id": "vcoco_actor_317306_462594_630774_437359_holding",
+      "task": "wrong_subject_instance",
+      "candidates": [
+        {
+          "text": "a person holding a baseball bat",
+          "bounds": [
+            [
+              0.10923437774181366,
+              0.04030245915055275,
+              0.3489062488079071,
+              0.5273156762123108
+            ],
+            [
+              0.33107811212539673,
+              0.27202269434928894,
+              0.3860468864440918,
+              0.43829867243766785
+            ],
+            [
+              0.10923437774181366,
+              0.04030245915055275,
+              0.3860468864440918,
+              0.5273156762123108
+            ]
+          ]
+        },
+        {
+          "text": "a person holding a baseball bat",
+          "bounds": [
+            [
+              0.6426718831062317,
+              0.24718336760997772,
+              0.8191249966621399,
+              0.8337051272392273
+            ],
+            [
+              0.33107811212539673,
+              0.27202269434928894,
+              0.3860468864440918,
+              0.43829867243766785
+            ],
+            [
+              0.33107811212539673,
+              0.24718336760997772,
+              0.8191249966621399,
+              0.8337051272392273
+            ]
+          ]
+        }
+      ],
+      "positive_index": 0,
+      "coco_id": 317306,
+      "caption_split": "train"
+    },
+    {
+      "filename": "COCO_train2014_000000356015.jpg",
+      "predicate": "holding",
+      "object_label": "horse",
+      "label_source": "vcoco_positive_role_and_explicit_actor_zero",
+      "case_id": "vcoco_actor_356015_1257852_274048_1328311_holding",
+      "task": "wrong_subject_instance",
+      "candidates": [
+        {
+          "text": "a person holding a horse",
+          "bounds": [
+            [
+              0.24833999574184418,
+              0.40259701013565063,
+              0.3918600082397461,
+              0.6481492519378662
+            ],
+            [
+              0.5688999891281128,
+              0.4605970084667206,
+              0.6986799836158752,
+              0.8277015089988708
+            ],
+            [
+              0.24833999574184418,
+              0.40259701013565063,
+              0.6986799836158752,
+              0.8277015089988708
+            ]
+          ]
+        },
+        {
+          "text": "a person holding a horse",
+          "bounds": [
+            [
+              0.5841799974441528,
+              0.37077611684799194,
+              0.6880599856376648,
+              0.6831343173980713
+            ],
+            [
+              0.5688999891281128,
+              0.4605970084667206,
+              0.6986799836158752,
+              0.8277015089988708
+            ],
+            [
+              0.5688999891281128,
+              0.37077611684799194,
+              0.6986799836158752,
+              0.8277015089988708
+            ]
+          ]
+        }
+      ],
+      "positive_index": 1,
+      "coco_id": 356015,
+      "caption_split": "train"
+    },
+    {
+      "filename": "COCO_train2014_000000384626.jpg",
+      "predicate": "riding",
+      "object_label": "motorcycle",
+      "label_source": "vcoco_positive_role_and_explicit_actor_zero",
+      "case_id": "vcoco_actor_384626_2166601_151557_219924_riding",
+      "task": "wrong_subject_instance",
+      "candidates": [
+        {
+          "text": "a person riding a motorcycle",
+          "bounds": [
+            [
+              0.1306000053882599,
+              0.3088372051715851,
+              0.5370200276374817,
+              0.8507493734359741
+            ],
+            [
+              0.0,
+              0.4883979260921478,
+              0.5101600289344788,
+              0.8718087673187256
+            ],
+            [
+              0.0,
+              0.3088372051715851,
+              0.5370200276374817,
+              0.8718087673187256
+            ]
+          ]
+        },
+        {
+          "text": "a person riding a motorcycle",
+          "bounds": [
+            [
+              0.0,
+              0.002093023154884577,
+              0.09672000259160995,
+              0.4489147365093231
+            ],
+            [
+              0.0,
+              0.4883979260921478,
+              0.5101600289344788,
+              0.8718087673187256
+            ],
+            [
+              0.0,
+              0.002093023154884577,
+              0.5101600289344788,
+              0.8718087673187256
+            ]
+          ]
+        }
+      ],
+      "positive_index": 0,
+      "coco_id": 384626,
+      "caption_split": "train"
+    },
+    {
+      "filename": "COCO_train2014_000000407779.jpg",
+      "predicate": "holding",
+      "object_label": "teddy bear",
+      "label_source": "vcoco_positive_role_and_explicit_actor_zero",
+      "case_id": "vcoco_actor_407779_184993_1163135_213130_holding",
+      "task": "wrong_subject_instance",
+      "candidates": [
+        {
+          "text": "a person holding a teddy bear",
+          "bounds": [
+            [
+              0.10090625286102295,
+              0.3345282971858978,
+              0.20973438024520874,
+              0.8309905529022217
+            ],
+            [
+              0.7837968468666077,
+              0.5545990467071533,
+              0.8712812662124634,
+              0.7482547163963318
+            ],
+            [
+              0.10090625286102295,
+              0.3345282971858978,
+              0.8712812662124634,
+              0.8309905529022217
+            ]
+          ]
+        },
+        {
+          "text": "a person holding a teddy bear",
+          "bounds": [
+            [
+              0.703249990940094,
+              0.3645518720149994,
+              0.8288437724113464,
+              0.8353065848350525
+            ],
+            [
+              0.7837968468666077,
+              0.5545990467071533,
+              0.8712812662124634,
+              0.7482547163963318
+            ],
+            [
+              0.703249990940094,
+              0.3645518720149994,
+              0.8712812662124634,
+              0.8353065848350525
+            ]
+          ]
+        }
+      ],
+      "positive_index": 1,
+      "coco_id": 407779,
+      "caption_split": "train"
+    },
+    {
+      "filename": "COCO_train2014_000000421840.jpg",
+      "predicate": "holding",
+      "object_label": "person",
+      "label_source": "vcoco_positive_role_and_explicit_actor_zero",
+      "case_id": "vcoco_actor_421840_494406_506246_2206965_holding",
+      "task": "wrong_subject_instance",
+      "candidates": [
+        {
+          "text": "a person holding a person",
+          "bounds": [
+            [
+              0.0,
+              0.36423438787460327,
+              0.41433027386665344,
+              0.7944999933242798
+            ],
+            [
+              0.3844220042228699,
+              0.3788124918937683,
+              0.9715780019760132,
+              0.8631093502044678
+            ],
+            [
+              0.0,
+              0.36423438787460327,
+              0.9715780019760132,
+              0.8631093502044678
+            ]
+          ]
+        },
+        {
+          "text": "a person holding a person",
+          "bounds": [
+            [
+              0.43541285395622253,
+              0.08764062821865082,
+              0.9631926417350769,
+              0.6943749785423279
+            ],
+            [
+              0.3844220042228699,
+              0.3788124918937683,
+              0.9715780019760132,
+              0.8631093502044678
+            ],
+            [
+              0.3844220042228699,
+              0.08764062821865082,
+              0.9715780019760132,
+              0.8631093502044678
+            ]
+          ]
+        }
+      ],
+      "positive_index": 1,
+      "coco_id": 421840,
+      "caption_split": "train"
+    },
+    {
+      "filename": "COCO_train2014_000000445495.jpg",
+      "predicate": "holding",
+      "object_label": "book",
+      "label_source": "vcoco_positive_role_and_explicit_actor_zero",
+      "case_id": "vcoco_actor_445495_219382_1648592_229552_holding",
+      "task": "wrong_subject_instance",
+      "candidates": [
+        {
+          "text": "a person holding a book",
+          "bounds": [
+            [
+              0.0042500002309679985,
+              0.24942928552627563,
+              0.47968751192092896,
+              0.9348387122154236
+            ],
+            [
+              0.34056249260902405,
+              0.3237965404987335,
+              0.4603906273841858,
+              0.6244168877601624
+            ],
+            [
+              0.0042500002309679985,
+              0.24942928552627563,
+              0.47968751192092896,
+              0.9348387122154236
+            ]
+          ]
+        },
+        {
+          "text": "a person holding a book",
+          "bounds": [
+            [
+              0.1743437498807907,
+              0.23230768740177155,
+              0.8647500276565552,
+              0.8135980367660522
+            ],
+            [
+              0.34056249260902405,
+              0.3237965404987335,
+              0.4603906273841858,
+              0.6244168877601624
+            ],
+            [
+              0.1743437498807907,
+              0.23230768740177155,
+              0.8647500276565552,
+              0.8135980367660522
+            ]
+          ]
+        }
+      ],
+      "positive_index": 1,
+      "coco_id": 445495,
+      "caption_split": "train"
+    },
+    {
+      "filename": "COCO_train2014_000000453968.jpg",
+      "predicate": "holding",
+      "object_label": "tennis racket",
+      "label_source": "vcoco_positive_role_and_explicit_actor_zero",
+      "case_id": "vcoco_actor_453968_520651_1482094_539754_holding",
+      "task": "wrong_subject_instance",
+      "candidates": [
+        {
+          "text": "a person holding a tennis racket",
+          "bounds": [
+            [
+              0.8533124923706055,
+              0.23717132210731506,
+              0.9932812452316284,
+              0.8383864760398865
+            ],
+            [
+              0.6481562256813049,
+              0.3039242923259735,
+              0.7539530992507935,
+              0.5649800896644592
+            ],
+            [
+              0.6481562256813049,
+              0.23717132210731506,
+              0.9932812452316284,
+              0.8383864760398865
+            ]
+          ]
+        },
+        {
+          "text": "a person holding a tennis racket",
+          "bounds": [
+            [
+              0.5517030954360962,
+              0.1640438288450241,
+              0.7649843692779541,
+              0.9573107361793518
+            ],
+            [
+              0.6481562256813049,
+              0.3039242923259735,
+              0.7539530992507935,
+              0.5649800896644592
+            ],
+            [
+              0.5517030954360962,
+              0.1640438288450241,
+              0.7649843692779541,
+              0.9573107361793518
+            ]
+          ]
+        }
+      ],
+      "positive_index": 1,
+      "coco_id": 453968,
+      "caption_split": "train"
+    },
+    {
+      "filename": "COCO_train2014_000000456245.jpg",
+      "predicate": "riding",
+      "object_label": "boat",
+      "label_source": "vcoco_positive_role_and_explicit_actor_zero",
+      "case_id": "vcoco_actor_456245_201734_177098_213452_riding",
+      "task": "wrong_subject_instance",
+      "candidates": [
+        {
+          "text": "a person riding a boat",
+          "bounds": [
+            [
+              0.47514063119888306,
+              0.5089976787567139,
+              0.6184531450271606,
+              0.7161072492599487
+            ],
+            [
+              0.3027656376361847,
+              0.6382051110267639,
+              0.8420312404632568,
+              0.7730302810668945
+            ],
+            [
+              0.3027656376361847,
+              0.5089976787567139,
+              0.8420312404632568,
+              0.7730302810668945
+            ]
+          ]
+        },
+        {
+          "text": "a person riding a boat",
+          "bounds": [
+            [
+              0.5741093754768372,
+              0.4980885684490204,
+              0.6578906178474426,
+              0.7168298363685608
+            ],
+            [
+              0.3027656376361847,
+              0.6382051110267639,
+              0.8420312404632568,
+              0.7730302810668945
+            ],
+            [
+              0.3027656376361847,
+              0.4980885684490204,
+              0.8420312404632568,
+              0.7730302810668945
+            ]
+          ]
+        }
+      ],
+      "positive_index": 1,
+      "coco_id": 456245,
+      "caption_split": "train"
+    },
+    {
+      "filename": "COCO_train2014_000000457011.jpg",
+      "predicate": "riding",
+      "object_label": "horse",
+      "label_source": "vcoco_positive_role_and_explicit_actor_zero",
+      "case_id": "vcoco_actor_457011_230651_58352_234138_riding",
+      "task": "wrong_subject_instance",
+      "candidates": [
+        {
+          "text": "a person riding a horse",
+          "bounds": [
+            [
+              0.3334687352180481,
+              0.11304166913032532,
+              0.47556251287460327,
+              0.5081250071525574
+            ],
+            [
+              0.15517187118530273,
+              0.2737083435058594,
+              0.6514062285423279,
+              0.7844791412353516
+            ],
+            [
+              0.15517187118530273,
+              0.11304166913032532,
+              0.6514062285423279,
+              0.7844791412353516
+            ]
+          ]
+        },
+        {
+          "text": "a person riding a horse",
+          "bounds": [
+            [
+              0.7066875100135803,
+              0.31860417127609253,
+              0.8377968668937683,
+              0.780916690826416
+            ],
+            [
+              0.15517187118530273,
+              0.2737083435058594,
+              0.6514062285423279,
+              0.7844791412353516
+            ],
+            [
+              0.15517187118530273,
+              0.2737083435058594,
+              0.8377968668937683,
+              0.7844791412353516
+            ]
+          ]
+        }
+      ],
+      "positive_index": 0,
+      "coco_id": 457011,
+      "caption_split": "train"
+    },
+    {
+      "filename": "COCO_train2014_000000464888.jpg",
+      "predicate": "riding",
+      "object_label": "bicycle",
+      "label_source": "vcoco_positive_role_and_explicit_actor_zero",
+      "case_id": "vcoco_actor_464888_200122_125247_256669_riding",
+      "task": "wrong_subject_instance",
+      "candidates": [
+        {
+          "text": "a person riding a bicycle",
+          "bounds": [
+            [
+              0.5639328360557556,
+              0.27248436212539673,
+              0.6367786526679993,
+              0.42353126406669617
+            ],
+            [
+              0.02442687749862671,
+              0.6890937685966492,
+              0.2849999964237213,
+              0.8178437352180481
+            ],
+            [
+              0.02442687749862671,
+              0.27248436212539673,
+              0.6367786526679993,
+              0.8178437352180481
+            ]
+          ]
+        },
+        {
+          "text": "a person riding a bicycle",
+          "bounds": [
+            [
+              0.10278656333684921,
+              0.5953750014305115,
+              0.2369762808084488,
+              0.7872499823570251
+            ],
+            [
+              0.02442687749862671,
+              0.6890937685966492,
+              0.2849999964237213,
+              0.8178437352180481
+            ],
+            [
+              0.02442687749862671,
+              0.5953750014305115,
+              0.2849999964237213,
+              0.8178437352180481
+            ]
+          ]
+        }
+      ],
+      "positive_index": 1,
+      "coco_id": 464888,
+      "caption_split": "train"
+    },
+    {
+      "filename": "COCO_train2014_000000464888.jpg",
+      "predicate": "holding",
+      "object_label": "suitcase",
+      "label_source": "vcoco_positive_role_and_explicit_actor_zero",
+      "case_id": "vcoco_actor_464888_223869_1186932_190039_holding",
+      "task": "wrong_subject_instance",
+      "candidates": [
+        {
+          "text": "a person holding a suitcase",
+          "bounds": [
+            [
+              0.5904347896575928,
+              0.5920156240463257,
+              0.6591106653213501,
+              0.7785624861717224
+            ],
+            [
+              0.45915019512176514,
+              0.6760937571525574,
+              0.5139525532722473,
+              0.7692343592643738
+            ],
+            [
+              0.45915019512176514,
+              0.5920156240463257,
+              0.6591106653213501,
+              0.7785624861717224
+            ]
+          ]
+        },
+        {
+          "text": "a person holding a suitcase",
+          "bounds": [
+            [
+              0.4890909194946289,
+              0.5966249704360962,
+              0.5853161811828613,
+              0.7798905968666077
+            ],
+            [
+              0.45915019512176514,
+              0.6760937571525574,
+              0.5139525532722473,
+              0.7692343592643738
+            ],
+            [
+              0.45915019512176514,
+              0.5966249704360962,
+              0.5853161811828613,
+              0.7798905968666077
+            ]
+          ]
+        }
+      ],
+      "positive_index": 1,
+      "coco_id": 464888,
+      "caption_split": "train"
+    },
+    {
+      "filename": "COCO_train2014_000000474190.jpg",
+      "predicate": "holding",
+      "object_label": "person",
+      "label_source": "vcoco_positive_role_and_explicit_actor_zero",
+      "case_id": "vcoco_actor_474190_512370_482591_482591_holding",
+      "task": "wrong_subject_instance",
+      "candidates": [
+        {
+          "text": "a person holding a person",
+          "bounds": [
+            [
+              0.43229687213897705,
+              0.36110416054725647,
+              0.555343747138977,
+              0.6881874799728394
+            ],
+            [
+              0.466859370470047,
+              0.4606666564941406,
+              0.5258437395095825,
+              0.6921250224113464
+            ],
+            [
+              0.43229687213897705,
+              0.36110416054725647,
+              0.555343747138977,
+              0.6921250224113464
+            ]
+          ]
+        },
+        {
+          "text": "a person holding a person",
+          "bounds": [
+            [
+              0.466859370470047,
+              0.4606666564941406,
+              0.5258437395095825,
+              0.6921250224113464
+            ],
+            [
+              0.466859370470047,
+              0.4606666564941406,
+              0.5258437395095825,
+              0.6921250224113464
+            ],
+            [
+              0.466859370470047,
+              0.4606666564941406,
+              0.5258437395095825,
+              0.6921250224113464
+            ]
+          ]
+        }
+      ],
+      "positive_index": 0,
+      "coco_id": 474190,
+      "caption_split": "train"
+    },
+    {
+      "filename": "COCO_train2014_000000481036.jpg",
+      "predicate": "riding",
+      "object_label": "train",
+      "label_source": "vcoco_positive_role_and_explicit_actor_zero",
+      "case_id": "vcoco_actor_481036_1237019_268194_1275881_riding",
+      "task": "wrong_subject_instance",
+      "candidates": [
+        {
+          "text": "a person riding a train",
+          "bounds": [
+            [
+              0.44089582562446594,
+              0.3227187395095825,
+              0.6310416460037231,
+              0.5555468797683716
+            ],
+            [
+              0.0,
+              0.0650937482714653,
+              0.7427291870117188,
+              0.9890312552452087
+            ],
+            [
+              0.0,
+              0.0650937482714653,
+              0.7427291870117188,
+              0.9890312552452087
+            ]
+          ]
+        },
+        {
+          "text": "a person riding a train",
+          "bounds": [
+            [
+              0.8748124837875366,
+              0.14228124916553497,
+              0.9995833039283752,
+              0.45720311999320984
+            ],
+            [
+              0.0,
+              0.0650937482714653,
+              0.7427291870117188,
+              0.9890312552452087
+            ],
+            [
+              0.0,
+              0.0650937482714653,
+              0.9995833039283752,
+              0.9890312552452087
+            ]
+          ]
+        }
+      ],
+      "positive_index": 0,
+      "coco_id": 481036,
+      "caption_split": "train"
+    },
+    {
+      "filename": "COCO_train2014_000000502756.jpg",
+      "predicate": "holding",
+      "object_label": "frisbee",
+      "label_source": "vcoco_positive_role_and_explicit_actor_zero",
+      "case_id": "vcoco_actor_502756_442481_604412_474343_holding",
+      "task": "wrong_subject_instance",
+      "candidates": [
+        {
+          "text": "a person holding a frisbee",
+          "bounds": [
+            [
+              0.0,
+              0.4480421543121338,
+              0.23180000483989716,
+              1.0
+            ],
+            [
+              0.4429999887943268,
+              0.5345180630683899,
+              0.5017600059509277,
+              0.624518096446991
+            ],
+            [
+              0.0,
+              0.4480421543121338,
+              0.5017600059509277,
+              1.0
+            ]
+          ]
+        },
+        {
+          "text": "a person holding a frisbee",
+          "bounds": [
+            [
+              0.4032000005245209,
+              0.3403012156486511,
+              0.5485799908638,
+              0.8865662813186646
+            ],
+            [
+              0.4429999887943268,
+              0.5345180630683899,
+              0.5017600059509277,
+              0.624518096446991
+            ],
+            [
+              0.4032000005245209,
+              0.3403012156486511,
+              0.5485799908638,
+              0.8865662813186646
+            ]
+          ]
+        }
+      ],
+      "positive_index": 1,
+      "coco_id": 502756,
+      "caption_split": "train"
+    },
+    {
+      "filename": "COCO_train2014_000000517485.jpg",
+      "predicate": "riding",
+      "object_label": "bicycle",
+      "label_source": "vcoco_positive_role_and_explicit_actor_zero",
+      "case_id": "vcoco_actor_517485_2151314_126923_220994_riding",
+      "task": "wrong_subject_instance",
+      "candidates": [
+        {
+          "text": "a person riding a bicycle",
+          "bounds": [
+            [
+              0.23281249403953552,
+              0.24875587224960327,
+              0.41340625286102295,
+              0.8048121929168701
+            ],
+            [
+              0.4263593852519989,
+              0.4787324070930481,
+              0.974359393119812,
+              1.0
+            ],
+            [
+              0.23281249403953552,
+              0.24875587224960327,
+              0.974359393119812,
+              1.0
+            ]
+          ]
+        },
+        {
+          "text": "a person riding a bicycle",
+          "bounds": [
+            [
+              0.6464999914169312,
+              0.18669013679027557,
+              1.0,
+              0.9361032843589783
+            ],
+            [
+              0.4263593852519989,
+              0.4787324070930481,
+              0.974359393119812,
+              1.0
+            ],
+            [
+              0.4263593852519989,
+              0.18669013679027557,
+              1.0,
+              1.0
+            ]
+          ]
+        }
+      ],
+      "positive_index": 1,
+      "coco_id": 517485,
+      "caption_split": "train"
+    },
+    {
+      "filename": "COCO_train2014_000000519053.jpg",
+      "predicate": "riding",
+      "object_label": "motorcycle",
+      "label_source": "vcoco_positive_role_and_explicit_actor_zero",
+      "case_id": "vcoco_actor_519053_1255229_151303_1315996_riding",
+      "task": "wrong_subject_instance",
+      "candidates": [
+        {
+          "text": "a person riding a motorcycle",
+          "bounds": [
+            [
+              0.4609687626361847,
+              0.19868852198123932,
+              0.5960624814033508,
+              0.5819672346115112
+            ],
+            [
+              0.38967186212539673,
+              0.2789227068424225,
+              0.6225937604904175,
+              0.7133255004882812
+            ],
+            [
+              0.38967186212539673,
+              0.19868852198123932,
+              0.6225937604904175,
+              0.7133255004882812
+            ]
+          ]
+        },
+        {
+          "text": "a person riding a motorcycle",
+          "bounds": [
+            [
+              0.04284375160932541,
+              0.26208430528640747,
+              0.12017187476158142,
+              0.633583128452301
+            ],
+            [
+              0.38967186212539673,
+              0.2789227068424225,
+              0.6225937604904175,
+              0.7133255004882812
+            ],
+            [
+              0.04284375160932541,
+              0.26208430528640747,
+              0.6225937604904175,
+              0.7133255004882812
+            ]
+          ]
+        }
+      ],
+      "positive_index": 0,
+      "coco_id": 519053,
+      "caption_split": "train"
+    },
+    {
+      "filename": "COCO_train2014_000000542450.jpg",
+      "predicate": "riding",
+      "object_label": "motorcycle",
+      "label_source": "vcoco_positive_role_and_explicit_actor_zero",
+      "case_id": "vcoco_actor_542450_222035_149273_238770_riding",
+      "task": "wrong_subject_instance",
+      "candidates": [
+        {
+          "text": "a person riding a motorcycle",
+          "bounds": [
+            [
+              0.3241249918937683,
+              0.4592037498950958,
+              0.4429062604904175,
+              0.7897658348083496
+            ],
+            [
+              0.3343437612056732,
+              0.557564377784729,
+              0.4557812511920929,
+              0.8519437909126282
+            ],
+            [
+              0.3241249918937683,
+              0.4592037498950958,
+              0.4557812511920929,
+              0.8519437909126282
+            ]
+          ]
+        },
+        {
+          "text": "a person riding a motorcycle",
+          "bounds": [
+            [
+              0.6363750100135803,
+              0.49852457642555237,
+              0.7122499942779541,
+              0.9100233912467957
+            ],
+            [
+              0.3343437612056732,
+              0.557564377784729,
+              0.4557812511920929,
+              0.8519437909126282
+            ],
+            [
+              0.3343437612056732,
+              0.49852457642555237,
+              0.7122499942779541,
+              0.9100233912467957
+            ]
+          ]
+        }
+      ],
+      "positive_index": 0,
+      "coco_id": 542450,
+      "caption_split": "train"
+    },
+    {
+      "filename": "COCO_train2014_000000566245.jpg",
+      "predicate": "riding",
+      "object_label": "elephant",
+      "label_source": "vcoco_positive_role_and_explicit_actor_zero",
+      "case_id": "vcoco_actor_566245_490789_580783_1231374_riding",
+      "task": "wrong_subject_instance",
+      "candidates": [
+        {
+          "text": "a person riding an elephant",
+          "bounds": [
+            [
+              0.8583199977874756,
+              0.5258399844169617,
+              1.0,
+              0.9929199814796448
+            ],
+            [
+              0.041039999574422836,
+              0.5013800263404846,
+              0.8638666868209839,
+              1.0
+            ],
+            [
+              0.041039999574422836,
+              0.5013800263404846,
+              1.0,
+              1.0
+            ]
+          ]
+        },
+        {
+          "text": "a person riding an elephant",
+          "bounds": [
+            [
+              0.07077333331108093,
+              0.12849999964237213,
+              0.4320266544818878,
+              0.6620200276374817
+            ],
+            [
+              0.041039999574422836,
+              0.5013800263404846,
+              0.8638666868209839,
+              1.0
+            ],
+            [
+              0.041039999574422836,
+              0.12849999964237213,
+              0.8638666868209839,
+              1.0
+            ]
+          ]
+        }
+      ],
+      "positive_index": 1,
+      "coco_id": 566245,
+      "caption_split": "train"
+    },
+    {
+      "filename": "COCO_train2014_000000068459.jpg",
+      "predicate": "holding",
+      "object_label": "tennis racket",
+      "label_source": "vcoco_positive_role_and_explicit_actor_zero",
+      "case_id": "vcoco_actor_68459_441167_657426_457917_holding",
+      "task": "wrong_subject_instance",
+      "candidates": [
+        {
+          "text": "a person holding a tennis racket",
+          "bounds": [
+            [
+              0.19895312190055847,
+              0.15716665983200073,
+              0.3883593678474426,
+              0.7863749861717224
+            ],
+            [
+              0.23720312118530273,
+              0.11820833384990692,
+              0.2933281362056732,
+              0.25458332896232605
+            ],
+            [
+              0.19895312190055847,
+              0.11820833384990692,
+              0.3883593678474426,
+              0.7863749861717224
+            ]
+          ]
+        },
+        {
+          "text": "a person holding a tennis racket",
+          "bounds": [
+            [
+              0.03700000047683716,
+              0.1300416737794876,
+              0.22870312631130219,
+              0.6031458377838135
+            ],
+            [
+              0.23720312118530273,
+              0.11820833384990692,
+              0.2933281362056732,
+              0.25458332896232605
+            ],
+            [
+              0.03700000047683716,
+              0.11820833384990692,
+              0.2933281362056732,
+              0.6031458377838135
+            ]
+          ]
+        }
+      ],
+      "positive_index": 0,
+      "coco_id": 68459,
+      "caption_split": "train"
+    },
+    {
+      "filename": "COCO_train2014_000000073903.jpg",
+      "predicate": "holding",
+      "object_label": "frisbee",
+      "label_source": "vcoco_positive_role_and_explicit_actor_zero",
+      "case_id": "vcoco_actor_73903_1188939_603900_1716867_holding",
+      "task": "wrong_subject_instance",
+      "candidates": [
+        {
+          "text": "a person holding a frisbee",
+          "bounds": [
+            [
+              0.6294353008270264,
+              0.21123437583446503,
+              0.8358588218688965,
+              0.9011250138282776
+            ],
+            [
+              0.7537882328033447,
+              0.11801562458276749,
+              0.872494101524353,
+              0.16107812523841858
+            ],
+            [
+              0.6294353008270264,
+              0.11801562458276749,
+              0.872494101524353,
+              0.9011250138282776
+            ]
+          ]
+        },
+        {
+          "text": "a person holding a frisbee",
+          "bounds": [
+            [
+              0.12207058817148209,
+              0.5058281421661377,
+              0.4531058967113495,
+              0.9892656207084656
+            ],
+            [
+              0.7537882328033447,
+              0.11801562458276749,
+              0.872494101524353,
+              0.16107812523841858
+            ],
+            [
+              0.12207058817148209,
+              0.11801562458276749,
+              0.872494101524353,
+              0.9892656207084656
+            ]
+          ]
+        }
+      ],
+      "positive_index": 0,
+      "coco_id": 73903,
+      "caption_split": "train"
+    }
+  ],
+  "rows_sha256": "d6f95949cccc476ee4bfbcff37cfdccc756db83d5a4957ecffaf45d251ca16b3"
+}

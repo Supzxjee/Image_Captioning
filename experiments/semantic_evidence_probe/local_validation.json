@@ -1,0 +1,26 @@
+{
+  "status": "LOCAL_DATA_AND_NOTEBOOK_CHECKS_PASS",
+  "synthetic_data_tests": 5,
+  "manifest_counts": {
+    "pairs": 62,
+    "images": 59,
+    "tasks": {
+      "wrong_object_instance": 12,
+      "wrong_predicate": 12,
+      "wrong_subject_instance": 38
+    },
+    "positive_predicates": {
+      "wrong_object_instance:riding": 9,
+      "wrong_object_instance:holding": 3,
+      "wrong_predicate:riding": 6,
+      "wrong_predicate:holding": 6,
+      "wrong_subject_instance:riding": 19,
+      "wrong_subject_instance:holding": 19
+    }
+  },
+  "checkpoint_not_available_locally": true,
+  "gpu_inference_run": false,
+  "model_smoke": "Included in Kaggle preflight; not executed locally (torch absent)",
+  "notebook_bytes": 147884,
+  "notes": "No notebook or model training launched; all code cells AST parsed and unexecuted; holding/riding positive counts balanced within every object class in verb task."
+}
