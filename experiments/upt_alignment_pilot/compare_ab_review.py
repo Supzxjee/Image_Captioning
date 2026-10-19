@@ -37,7 +37,7 @@ def compare(a_path, b_path, output):
                 assert stored['images']==len(ids)
                 assert stored['changed_captions']==sum(pred[i]['caption']!=on[i]['caption'] for i in ids)
                 assert abs(stored['mean_reference_nll_delta']-np.mean(delta))<1e-12
-            if probe=='text_swap':
+            if probe=='text_swap' and bc['arm']=='B':
                 assert pred==on and all(d[i]['reference_nll_per_token']==diag[i]['reference_nll_per_token'] for i in expected)
         def pair(left, right):
             assert [r['image_id'] for r in left]==[r['image_id'] for r in right]
@@ -46,8 +46,8 @@ def compare(a_path, b_path, output):
             ci=np.percentile([delta[rng.integers(0,1000,1000)].mean() for _ in range(5000)],[2.5,97.5]).tolist()
             return {'CIDEr_delta':float(delta.mean()),'paired_fixed_IDF_bootstrap95':ci}
         result={'status':'MATCHED_ARTIFACT_COMPARISON_PASS',
-                'B_minus_A':pair(read(a,'on_per_image_cider.json'),read(b,'on_per_image_cider.json')),
-                'B_on_minus_off':pair(read(b,'off_per_image_cider.json'),read(b,'on_per_image_cider.json')),
+                bc['arm']+'_minus_'+ac['arm']:pair(read(a,'on_per_image_cider.json'),read(b,'on_per_image_cider.json')),
+                bc['arm']+'_on_minus_off':pair(read(b,'off_per_image_cider.json'),read(b,'on_per_image_cider.json')),
                 'sensitivity':summary['sensitivity'],
                 'limits':['Saved scores only, no independent metric retokenization or checkpoint replay.',
                           'Single seed and reused val1000; bootstrap does not measure training-seed uncertainty.',

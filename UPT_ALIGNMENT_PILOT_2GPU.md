@@ -24,3 +24,7 @@ See [full Vietnamese instructions and limitations](experiments/upt_alignment_pil
 ## Completed B pilot
 
 [B result and matched A/B comparison](experiments/upt_alignment_pilot/B_RESULT.md): B CIDEr 1.199067 versus A 1.205513; region-off B 1.199913. No demonstrated overall benefit from the region branch. Await D before scaling.
+
+## Completed C/D and four-arm conclusion
+
+[Full A/B/C/D results](experiments/upt_alignment_pilot/ABCD_RESULT.md): A remains the highest CIDEr point estimate (1.205513); C 1.192828, D 1.202747. No demonstrated overall gain from the new branches. D text-swapping changes gates but no decoded captions. Diagnose conditional learning before full training.

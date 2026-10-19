@@ -1,0 +1,150 @@
+{
+  "status": "ARTIFACT_AUDIT_PASS",
+  "arm": "D",
+  "source_zip_sha256": "b4b9dc763a7d286ff248d748a6ca84293dfe569e969faefbb3d81c6c7b2d3870",
+  "source_bytes": 1627041,
+  "metrics": {
+    "origin": {
+      "caption": {
+        "Bleu_1": 0.7633300297323327,
+        "Bleu_2": 0.6068188055322815,
+        "Bleu_3": 0.46309998016209264,
+        "Bleu_4": 0.350305236249301,
+        "METEOR": 0.2853742505883088,
+        "ROUGE_L": 0.5727716662616508,
+        "CIDEr": 1.1890655082257537
+      },
+      "chair": {
+        "CHAIRs": 0.058,
+        "CHAIRi": 0.035452322738386305,
+        "Recall": 0.4568090992929603
+      },
+      "hallucinated_captions": 58,
+      "hallucinated_mentions": 58,
+      "object_mentions": 1636,
+      "correct_unique_objects": 1486,
+      "reference_unique_objects": 3253,
+      "by_mode": {
+        "object_relation": {
+          "images": 269,
+          "CIDEr_full_val_IDF": 1.330999641733331
+        },
+        "object_only": {
+          "images": 722,
+          "CIDEr_full_val_IDF": 1.1414822393675113
+        },
+        "no_objects": {
+          "images": 9,
+          "CIDEr_full_val_IDF": 0.7640475306827373
+        }
+      }
+    },
+    "on": {
+      "caption": {
+        "Bleu_1": 0.7654662062160074,
+        "Bleu_2": 0.6109878717176723,
+        "Bleu_3": 0.46478451070952154,
+        "Bleu_4": 0.35029681200029744,
+        "METEOR": 0.28601687029379713,
+        "ROUGE_L": 0.5699346142474121,
+        "CIDEr": 1.2027467967457917
+      },
+      "chair": {
+        "CHAIRs": 0.057,
+        "CHAIRi": 0.03549571603427173,
+        "Recall": 0.4574239163848755
+      },
+      "hallucinated_captions": 57,
+      "hallucinated_mentions": 58,
+      "object_mentions": 1634,
+      "correct_unique_objects": 1488,
+      "reference_unique_objects": 3253,
+      "by_mode": {
+        "object_relation": {
+          "images": 269,
+          "CIDEr_full_val_IDF": 1.311988971838308
+        },
+        "object_only": {
+          "images": 722,
+          "CIDEr_full_val_IDF": 1.1672909702806948
+        },
+        "no_objects": {
+          "images": 9,
+          "CIDEr_full_val_IDF": 0.7819647531805982
+        }
+      }
+    },
+    "off": {
+      "caption": {
+        "Bleu_1": 0.766745702430274,
+        "Bleu_2": 0.612139879003241,
+        "Bleu_3": 0.4661835010510481,
+        "Bleu_4": 0.35182047273215866,
+        "METEOR": 0.2862740925710901,
+        "ROUGE_L": 0.5701937439191147,
+        "CIDEr": 1.205174037491476
+      },
+      "chair": {
+        "CHAIRs": 0.056,
+        "CHAIRi": 0.03486238532110092,
+        "Recall": 0.45834614202274826
+      },
+      "hallucinated_captions": 56,
+      "hallucinated_mentions": 57,
+      "object_mentions": 1635,
+      "correct_unique_objects": 1491,
+      "reference_unique_objects": 3253,
+      "by_mode": {
+        "object_relation": {
+          "images": 269,
+          "CIDEr_full_val_IDF": 1.321567362988375
+        },
+        "object_only": {
+          "images": 722,
+          "CIDEr_full_val_IDF": 1.1670841192091104
+        },
+        "no_objects": {
+          "images": 9,
+          "CIDEr_full_val_IDF": 0.7819647531805982
+        }
+      }
+    }
+  },
+  "paired": {
+    "CIDEr_delta": 0.01368128852003808,
+    "CIDEr_relative_percent": 1.1505916558333618,
+    "paired_fixed_IDF_bootstrap95": [
+      -0.009196074424407648,
+      0.03625625611734891
+    ],
+    "bootstrap_source": "Saved per-image CIDEr, not independent retokenization or seed uncertainty",
+    "changed_captions": 384,
+    "hallucination_removed": 11,
+    "hallucination_introduced": 10
+  },
+  "cohort_sha256": "6bbdf3b75869927334ec6c2f868edf9f52346c0e79401aa0e118ba5a02fb711b",
+  "source_checkpoint_sha256": "5f8eead3f4e960189345b1a9bf492763fe52ec71f70115b73244ffe9d03d2e75",
+  "initial_base_sha256": "21c212f904b5dd2419b8f9fddbe50c5e1f4229ca5081e3a4efb17e786c89170b",
+  "end_checkpoint_sha256": "5c8a758efe906731c2313aec905493b77750af0425968f9cadf4e46b88466f58",
+  "training_updates": 1250,
+  "global_images_seen": 10000,
+  "train_seconds_by_rank": [
+    499.87629633799986,
+    499.8763306960001
+  ],
+  "test_used": false,
+  "checks": [
+    "ZIP CRC, source/protocol/target/cohort hashes",
+    "Karpathy split and reference captions replayed from local pinned dataset",
+    "Both complete finite1250-update histories; loss/reward arithmetic; equal clipped-input grad norms across ranks",
+    "Recorded GPU/model/DDP/metric smoke tests passed; new run not launched by auditor",
+    "1000 unique val IDs and matching rank outputs/CHAIR captions; saved per-image CIDEr aggregation and CHAIR reaggregation"
+  ],
+  "limits": [
+    "No checkpoint tensors or staged HDF5 in ZIP: cannot replay inference or verify end-checkpoint bytes/actual final cross-rank weights.",
+    "Caption metrics were stored by the official evaluator on Kaggle; no independent local tokenizer/CIDEr/BLEU/METEOR/ROUGE recomputation.",
+    "CHAIR parser outputs reaggregated, not independently retokenized; bootstrap uses saved fixed-IDF per-image scores.",
+    "One seed and reused val1000, raw greedy; not comparable directly to old beam/reranked test metrics.",
+    "Matched pilot only: compare other arms and origin/cohort/runtime before attribution; sensitivity is not verified grounding."
+  ]
+}
