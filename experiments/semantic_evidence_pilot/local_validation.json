@@ -1,0 +1,25 @@
+{
+  "status": "DATA_AST_CHECK_PASS",
+  "images": 11000,
+  "valid_slots": 45965,
+  "unique_normalized_phrases": 307,
+  "cohort_sha256": "6bbdf3b75869927334ec6c2f868edf9f52346c0e79401aa0e118ba5a02fb711b",
+  "negative_coverage": {
+    "valid_slots_by_S_O_R": [
+      5307,
+      31139,
+      5307
+    ],
+    "eligible_slots_by_S_O_R": [
+      0,
+      29325,
+      3161
+    ],
+    "rank_batches_without_negatives": 0,
+    "total_rank_batches": 2500
+  },
+  "model_cpu_tests": "4 passed, torch2.10.0+cpu",
+  "data_unit_tests": "3 passed",
+  "gpu_ddp_and_metric_smoke": "Not run locally; mandatory Kaggle preflight",
+  "notebooks": "2 unexecuted; AST and embedded source/hash checks passed"
+}

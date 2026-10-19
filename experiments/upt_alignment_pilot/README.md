@@ -7,7 +7,7 @@ Có bốn notebook độc lập, đã nhúng đủ mã mới. **Không phải ch
 | 1 | `UPT_ALIGNMENT_A_2GPU.ipynb`: huấn luyện tiếp baseline | `UPT_ALIGNMENT_D_2GPU.ipynb`: text điều khiển cổng cho từng thành phần thị giác |
 | 2 | `UPT_ALIGNMENT_B_2GPU.ipynb`: thêm vùng ảnh, không thêm text UPT | `UPT_ALIGNMENT_C_2GPU.ipynb`: vùng ảnh + text, cộng trực tiếp |
 
-Theo quyết định cập nhật, chạy A/D trước để thử toàn bộ phương án mới so với đối chứng. Đọc kết quả rồi mới quyết định chạy B/C để tách đóng góp. D thắng A chưa đủ quy gain riêng cho gating. [A đã hoàn tất và được kiểm tra](A_RESULT.md); chưa có kết quả D.
+Theo quyết định cập nhật, chạy A/D trước để thử toàn bộ phương án mới so với đối chứng. Đọc kết quả rồi mới quyết định chạy B/C để tách đóng góp. D thắng A chưa đủ quy gain riêng cho gating. [Cả A/B/C/D đã hoàn tất](ABCD_RESULT.md); chưa nhánh mới nào chứng minh cải thiện tổng thể. Thử nghiệm tiếp theo: [Semantic Evidence A/E](../../SEMANTIC_EVIDENCE_PILOT_2GPU.md).
 
 ## Cách chạy
 
