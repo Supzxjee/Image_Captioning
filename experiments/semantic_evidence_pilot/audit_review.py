@@ -10,7 +10,7 @@ import numpy as np
 from pilot_data import cohorts, identity
 
 
-def audit(source, dataset_path, output):
+def audit(source, dataset_path, output, expected_sources=None):
     here = Path(__file__).parent
     with zipfile.ZipFile(source) as z:
         assert z.testzip() is None
@@ -18,7 +18,8 @@ def audit(source, dataset_path, output):
         sha = lambda n: hashlib.sha256(z.read(n)).hexdigest()
         cfg, summary = read('protocol.json'), read('run_summary.json')
         arm = cfg['arm']
-        assert summary['status'] == 'PILOT_COMPLETE' and arm == summary['arm'] and arm in 'AE'
+        assert summary['status'] == 'PILOT_COMPLETE' and arm == summary['arm'] and arm in ('A','E','F')
+        if arm=='F': assert expected_sources is not None,'F requires its locked source bundle'
         assert not cfg['test_used'] and not summary['test_used']
         assert summary['protocol_sha256'] == sha('protocol.json')
         assert cfg['groups'] == read('groups.json')
@@ -34,7 +35,9 @@ def audit(source, dataset_path, output):
         assert (cfg['global_batch_size'],cfg['warmup_updates'],cfg['base_lr'],cfg['scst_weight']) == (8,200,5e-6,.05)
         for name, expected in cfg['embedded_source_sha256'].items():
             assert sha('source/'+name) == expected
-            assert hashlib.sha256((here/name).read_text(encoding='utf-8').encode()).hexdigest() == expected
+            source_text=expected_sources[name] if expected_sources is not None else (here/name).read_text(encoding='utf-8')
+            assert hashlib.sha256(source_text.encode()).hexdigest() == expected
+        if expected_sources is not None:assert cfg['embedded_source_sha256'].keys()==expected_sources.keys()
         targets = read('train_object_targets.json')
         assert sha('train_object_targets.json') == cfg['object_targets_sha256']
         assert targets['metadata']['parser_version'] == 'aliases_v2'
@@ -65,7 +68,9 @@ def audit(source, dataset_path, output):
         assert completions[0]['initial_base_sha256']==completions[1]['initial_base_sha256']
         assert all(a['grad_norm']==b['grad_norm'] for a,b in zip(*histories))
         setup=z.read('setup.log').decode(errors='replace')
-        for smoke_arm in 'AE': assert 'Two-GPU synchronized CE/SCST/alignment smoke PASS: '+smoke_arm in setup
+        if arm=='F':assert 'F: two-GPU synchronized CE/SCST/verified-pair synthetic smoke PASS' in setup
+        else:
+            for smoke_arm in 'AE': assert 'Two-GPU synchronized CE/SCST/alignment smoke PASS: '+smoke_arm in setup
         assert 'Ran 4 tests' in setup and 'CIDEr reward, official caption metrics and CHAIR smoke PASS' in setup
         expected={r['image_id']:r for r in cfg['groups']['val']}
         gt=read('val_gt.json')

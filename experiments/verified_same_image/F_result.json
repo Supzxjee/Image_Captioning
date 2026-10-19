@@ -1,0 +1,826 @@
+{
+  "status": "F_VERIFIED_ARTIFACT_AUDIT_PASS",
+  "arm": "F",
+  "source_zip_sha256": "680c3675418b961dcd2f6054b24aaae2485c4bd1f555e064bda6dd5c325a2d6f",
+  "source_bytes": 2230003,
+  "metrics": {
+    "origin": {
+      "caption": {
+        "Bleu_1": 0.7633300297323327,
+        "Bleu_2": 0.6068188055322815,
+        "Bleu_3": 0.46309998016209264,
+        "Bleu_4": 0.350305236249301,
+        "METEOR": 0.2853742505883088,
+        "ROUGE_L": 0.5727716662616508,
+        "CIDEr": 1.1890655082257537
+      },
+      "chair": {
+        "CHAIRs": 0.058,
+        "CHAIRi": 0.035452322738386305,
+        "Recall": 0.4568090992929603
+      },
+      "hallucinated_captions": 58,
+      "hallucinated_mentions": 58,
+      "object_mentions": 1636,
+      "correct_unique_objects": 1486,
+      "reference_unique_objects": 3253,
+      "by_mode": {
+        "object_relation": {
+          "images": 269,
+          "CIDEr_full_val_IDF": 1.330999641733331
+        },
+        "object_only": {
+          "images": 722,
+          "CIDEr_full_val_IDF": 1.1414822393675113
+        },
+        "no_objects": {
+          "images": 9,
+          "CIDEr_full_val_IDF": 0.7640475306827373
+        }
+      }
+    },
+    "on": {
+      "caption": {
+        "Bleu_1": 0.760997067448606,
+        "Bleu_2": 0.6039461265456353,
+        "Bleu_3": 0.4588643870529134,
+        "Bleu_4": 0.3478021162376969,
+        "METEOR": 0.28627951776815913,
+        "ROUGE_L": 0.5678739094885115,
+        "CIDEr": 1.1985096086015288
+      },
+      "chair": {
+        "CHAIRs": 0.052,
+        "CHAIRi": 0.03208232445520581,
+        "Recall": 0.4629572702121119
+      },
+      "hallucinated_captions": 52,
+      "hallucinated_mentions": 53,
+      "object_mentions": 1652,
+      "correct_unique_objects": 1506,
+      "reference_unique_objects": 3253,
+      "by_mode": {
+        "object_relation": {
+          "images": 269,
+          "CIDEr_full_val_IDF": 1.3317943365470355
+        },
+        "object_only": {
+          "images": 722,
+          "CIDEr_full_val_IDF": 1.153629524712544
+        },
+        "no_objects": {
+          "images": 9,
+          "CIDEr_full_val_IDF": 0.8151572475465964
+        }
+      }
+    },
+    "off": {
+      "caption": {
+        "Bleu_1": 0.7616854483095774,
+        "Bleu_2": 0.6042865063787176,
+        "Bleu_3": 0.45957277276789515,
+        "Bleu_4": 0.3484268002051446,
+        "METEOR": 0.28630214907867824,
+        "ROUGE_L": 0.567618382017088,
+        "CIDEr": 1.1978988853899615
+      },
+      "chair": {
+        "CHAIRs": 0.05,
+        "CHAIRi": 0.03090909090909091,
+        "Recall": 0.4629572702121119
+      },
+      "hallucinated_captions": 50,
+      "hallucinated_mentions": 51,
+      "object_mentions": 1650,
+      "correct_unique_objects": 1506,
+      "reference_unique_objects": 3253,
+      "by_mode": {
+        "object_relation": {
+          "images": 269,
+          "CIDEr_full_val_IDF": 1.333778444898066
+        },
+        "object_only": {
+          "images": 722,
+          "CIDEr_full_val_IDF": 1.1520444161834655
+        },
+        "no_objects": {
+          "images": 9,
+          "CIDEr_full_val_IDF": 0.8151572475465964
+        }
+      }
+    }
+  },
+  "paired": {
+    "CIDEr_delta": 0.009444100375775021,
+    "CIDEr_relative_percent": 0.7942455912178374,
+    "paired_fixed_IDF_bootstrap95": [
+      -0.012064499391143457,
+      0.03107995401941173
+    ],
+    "bootstrap_source": "Saved per-image CIDEr, not independent retokenization or seed uncertainty",
+    "changed_captions": 386,
+    "hallucination_removed": 16,
+    "hallucination_introduced": 10
+  },
+  "cohort_sha256": "6bbdf3b75869927334ec6c2f868edf9f52346c0e79401aa0e118ba5a02fb711b",
+  "source_checkpoint_sha256": "5f8eead3f4e960189345b1a9bf492763fe52ec71f70115b73244ffe9d03d2e75",
+  "initial_base_sha256": "21c212f904b5dd2419b8f9fddbe50c5e1f4229ca5081e3a4efb17e786c89170b",
+  "end_checkpoint_sha256": "4938bfe875f05104cd0afca4918dad3761b181bece08d773ad2b71b6adb51043",
+  "training_updates": 1250,
+  "global_images_seen": 10000,
+  "train_seconds_by_rank": [
+    506.896268287,
+    506.89619827800004
+  ],
+  "test_used": false,
+  "checks": [
+    "ZIP CRC, source/protocol/target/cohort hashes",
+    "Karpathy split and reference captions replayed from local pinned dataset",
+    "Both complete finite1250-update histories; loss/reward arithmetic; equal clipped-input grad norms across ranks",
+    "Recorded GPU/model/DDP/metric smoke tests passed; new run not launched by auditor",
+    "1000 unique val IDs and matching rank outputs/CHAIR captions; saved per-image CIDEr aggregation and CHAIR reaggregation",
+    "Exact fit/calibration/probe manifest, source hashes and fit-only schedule; disjoint IDs and no auxiliary caption-val images",
+    "Every pair score and bootstrap summary recomputed; matched origin/reference/reward/runtime between A/E/F; sensitivity recounted"
+  ],
+  "limits": [
+    "No checkpoint tensors or staged HDF5 in ZIP: cannot replay inference or verify end-checkpoint bytes/actual final cross-rank weights.",
+    "Caption metrics were stored by the official evaluator on Kaggle; no independent local tokenizer/CIDEr/BLEU/METEOR/ROUGE recomputation.",
+    "CHAIR parser outputs reaggregated, not independently retokenized; bootstrap uses saved fixed-IDF per-image scores.",
+    "One seed and reused val1000, raw greedy; not comparable directly to old beam/reranked test metrics.",
+    "Matched pilot only: compare other arms and origin/cohort/runtime before attribution; sensitivity is not verified grounding.",
+    "F adds verified labels/image exposures and compute, so A/E comparison is not equal supervision budget.",
+    "Matcher before is freshly initialized F, not trained E. Calibration/probe small and historically studied; no independent unseen test.",
+    "Zero/global instance comparisons have identical inputs and tie; cannot establish image-conditioned semantic understanding."
+  ],
+  "matcher": {
+    "before": {
+      "calibration": {
+        "wrong_predicate": {
+          "pairs": 24,
+          "images": 22,
+          "predicates": {
+            "holding": 10,
+            "carrying": 8,
+            "sitting_on": 1,
+            "riding": 1,
+            "talking_on": 2,
+            "eating": 2
+          },
+          "methods": {
+            "boxed": {
+              "image_macro_pair_accuracy": 0.4772727272727273,
+              "image_cluster_bootstrap95": [
+                0.2727272727272727,
+                0.6818181818181818
+              ],
+              "pair_accuracy": 0.4583333333333333,
+              "ties": 0,
+              "mean_cosine_margin": -0.0001476884741956989
+            },
+            "global_view": {
+              "image_macro_pair_accuracy": 0.5,
+              "image_cluster_bootstrap95": [
+                0.2727272727272727,
+                0.7272727272727273
+              ],
+              "pair_accuracy": 0.4583333333333333,
+              "ties": 0,
+              "mean_cosine_margin": -0.00017323787324130535
+            },
+            "zero_visual": {
+              "image_macro_pair_accuracy": 0.5227272727272727,
+              "image_cluster_bootstrap95": [
+                0.3181818181818182,
+                0.7272727272727273
+              ],
+              "pair_accuracy": 0.5,
+              "ties": 0,
+              "mean_cosine_margin": -6.984919309616089e-10
+            }
+          }
+        },
+        "wrong_subject_instance": {
+          "pairs": 116,
+          "images": 67,
+          "predicates": {
+            "sitting_on": 19,
+            "holding": 58,
+            "carrying": 21,
+            "eating": 5,
+            "talking_on": 5,
+            "riding": 8
+          },
+          "methods": {
+            "boxed": {
+              "image_macro_pair_accuracy": 0.5024875621890547,
+              "image_cluster_bootstrap95": [
+                0.38930348258706465,
+                0.6157027363184078
+              ],
+              "pair_accuracy": 0.4827586206896552,
+              "ties": 0,
+              "mean_cosine_margin": 0.0010554156033322215
+            },
+            "global_view": {
+              "image_macro_pair_accuracy": 0.5,
+              "image_cluster_bootstrap95": [
+                0.5,
+                0.5
+              ],
+              "pair_accuracy": 0.5,
+              "ties": 116,
+              "mean_cosine_margin": 0.0
+            },
+            "zero_visual": {
+              "image_macro_pair_accuracy": 0.5,
+              "image_cluster_bootstrap95": [
+                0.5,
+                0.5
+              ],
+              "pair_accuracy": 0.5,
+              "ties": 116,
+              "mean_cosine_margin": -6.101768592308307e-10
+            }
+          }
+        }
+      },
+      "probe": {
+        "wrong_object_instance": {
+          "pairs": 12,
+          "images": 10,
+          "predicates": {
+            "riding": 9,
+            "holding": 3
+          },
+          "methods": {
+            "boxed": {
+              "image_macro_pair_accuracy": 0.55,
+              "image_cluster_bootstrap95": [
+                0.25,
+                0.85
+              ],
+              "pair_accuracy": 0.5833333333333334,
+              "ties": 0,
+              "mean_cosine_margin": 0.0034459071854750314
+            },
+            "global_view": {
+              "image_macro_pair_accuracy": 0.5,
+              "image_cluster_bootstrap95": [
+                0.5,
+                0.5
+              ],
+              "pair_accuracy": 0.5,
+              "ties": 12,
+              "mean_cosine_margin": 0.0
+            },
+            "zero_visual": {
+              "image_macro_pair_accuracy": 0.5,
+              "image_cluster_bootstrap95": [
+                0.5,
+                0.5
+              ],
+              "pair_accuracy": 0.5,
+              "ties": 12,
+              "mean_cosine_margin": -1.3969838619232178e-09
+            }
+          }
+        },
+        "wrong_predicate": {
+          "pairs": 12,
+          "images": 12,
+          "predicates": {
+            "riding": 6,
+            "holding": 6
+          },
+          "methods": {
+            "boxed": {
+              "image_macro_pair_accuracy": 0.5833333333333334,
+              "image_cluster_bootstrap95": [
+                0.3333333333333333,
+                0.8333333333333334
+              ],
+              "pair_accuracy": 0.5833333333333334,
+              "ties": 0,
+              "mean_cosine_margin": 0.00037058652378618717
+            },
+            "global_view": {
+              "image_macro_pair_accuracy": 0.5833333333333334,
+              "image_cluster_bootstrap95": [
+                0.3333333333333333,
+                0.8333333333333334
+              ],
+              "pair_accuracy": 0.5833333333333334,
+              "ties": 0,
+              "mean_cosine_margin": 5.0227778653303785e-06
+            },
+            "zero_visual": {
+              "image_macro_pair_accuracy": 0.5,
+              "image_cluster_bootstrap95": [
+                0.25,
+                0.75
+              ],
+              "pair_accuracy": 0.5,
+              "ties": 0,
+              "mean_cosine_margin": 2.483526865641276e-09
+            }
+          }
+        },
+        "wrong_subject_instance": {
+          "pairs": 38,
+          "images": 37,
+          "predicates": {
+            "riding": 19,
+            "holding": 19
+          },
+          "methods": {
+            "boxed": {
+              "image_macro_pair_accuracy": 0.6351351351351351,
+              "image_cluster_bootstrap95": [
+                0.4864864864864865,
+                0.7837837837837838
+              ],
+              "pair_accuracy": 0.631578947368421,
+              "ties": 0,
+              "mean_cosine_margin": 0.0021571319329699405
+            },
+            "global_view": {
+              "image_macro_pair_accuracy": 0.5,
+              "image_cluster_bootstrap95": [
+                0.5,
+                0.5
+              ],
+              "pair_accuracy": 0.5,
+              "ties": 38,
+              "mean_cosine_margin": 0.0
+            },
+            "zero_visual": {
+              "image_macro_pair_accuracy": 0.5,
+              "image_cluster_bootstrap95": [
+                0.5,
+                0.5
+              ],
+              "pair_accuracy": 0.5,
+              "ties": 38,
+              "mean_cosine_margin": 2.107730037287662e-09
+            }
+          }
+        }
+      }
+    },
+    "after": {
+      "calibration": {
+        "wrong_predicate": {
+          "pairs": 24,
+          "images": 22,
+          "predicates": {
+            "holding": 10,
+            "carrying": 8,
+            "sitting_on": 1,
+            "riding": 1,
+            "talking_on": 2,
+            "eating": 2
+          },
+          "methods": {
+            "boxed": {
+              "image_macro_pair_accuracy": 0.36363636363636365,
+              "image_cluster_bootstrap95": [
+                0.18181818181818182,
+                0.5454545454545454
+              ],
+              "pair_accuracy": 0.375,
+              "ties": 0,
+              "mean_cosine_margin": -0.015275553431517134
+            },
+            "global_view": {
+              "image_macro_pair_accuracy": 0.45454545454545453,
+              "image_cluster_bootstrap95": [
+                0.27159090909090916,
+                0.6818181818181818
+              ],
+              "pair_accuracy": 0.4583333333333333,
+              "ties": 0,
+              "mean_cosine_margin": -0.012052229993666211
+            },
+            "zero_visual": {
+              "image_macro_pair_accuracy": 0.5,
+              "image_cluster_bootstrap95": [
+                0.29545454545454547,
+                0.7045454545454546
+              ],
+              "pair_accuracy": 0.5,
+              "ties": 0,
+              "mean_cosine_margin": -8.537123600641886e-10
+            }
+          }
+        },
+        "wrong_subject_instance": {
+          "pairs": 116,
+          "images": 67,
+          "predicates": {
+            "sitting_on": 19,
+            "holding": 58,
+            "carrying": 21,
+            "eating": 5,
+            "talking_on": 5,
+            "riding": 8
+          },
+          "methods": {
+            "boxed": {
+              "image_macro_pair_accuracy": 0.7114427860696518,
+              "image_cluster_bootstrap95": [
+                0.6044776119402985,
+                0.8134639303482586
+              ],
+              "pair_accuracy": 0.7758620689655172,
+              "ties": 0,
+              "mean_cosine_margin": 0.14432163196134157
+            },
+            "global_view": {
+              "image_macro_pair_accuracy": 0.5,
+              "image_cluster_bootstrap95": [
+                0.5,
+                0.5
+              ],
+              "pair_accuracy": 0.5,
+              "ties": 116,
+              "mean_cosine_margin": 0.0
+            },
+            "zero_visual": {
+              "image_macro_pair_accuracy": 0.5,
+              "image_cluster_bootstrap95": [
+                0.5,
+                0.5
+              ],
+              "pair_accuracy": 0.5,
+              "ties": 116,
+              "mean_cosine_margin": -2.89031143846183e-10
+            }
+          }
+        }
+      },
+      "probe": {
+        "wrong_object_instance": {
+          "pairs": 12,
+          "images": 10,
+          "predicates": {
+            "riding": 9,
+            "holding": 3
+          },
+          "methods": {
+            "boxed": {
+              "image_macro_pair_accuracy": 0.45,
+              "image_cluster_bootstrap95": [
+                0.15,
+                0.75
+              ],
+              "pair_accuracy": 0.5,
+              "ties": 0,
+              "mean_cosine_margin": 0.048232151195406914
+            },
+            "global_view": {
+              "image_macro_pair_accuracy": 0.5,
+              "image_cluster_bootstrap95": [
+                0.5,
+                0.5
+              ],
+              "pair_accuracy": 0.5,
+              "ties": 12,
+              "mean_cosine_margin": 0.0
+            },
+            "zero_visual": {
+              "image_macro_pair_accuracy": 0.5,
+              "image_cluster_bootstrap95": [
+                0.5,
+                0.5
+              ],
+              "pair_accuracy": 0.5,
+              "ties": 12,
+              "mean_cosine_margin": -9.313225746154785e-10
+            }
+          }
+        },
+        "wrong_predicate": {
+          "pairs": 12,
+          "images": 12,
+          "predicates": {
+            "riding": 6,
+            "holding": 6
+          },
+          "methods": {
+            "boxed": {
+              "image_macro_pair_accuracy": 0.4166666666666667,
+              "image_cluster_bootstrap95": [
+                0.16666666666666666,
+                0.6666666666666666
+              ],
+              "pair_accuracy": 0.4166666666666667,
+              "ties": 0,
+              "mean_cosine_margin": 0.013259609035837153
+            },
+            "global_view": {
+              "image_macro_pair_accuracy": 0.5,
+              "image_cluster_bootstrap95": [
+                0.25,
+                0.75
+              ],
+              "pair_accuracy": 0.5,
+              "ties": 0,
+              "mean_cosine_margin": -0.009815993718802929
+            },
+            "zero_visual": {
+              "image_macro_pair_accuracy": 0.5,
+              "image_cluster_bootstrap95": [
+                0.25,
+                0.75
+              ],
+              "pair_accuracy": 0.5,
+              "ties": 0,
+              "mean_cosine_margin": 0.0
+            }
+          }
+        },
+        "wrong_subject_instance": {
+          "pairs": 38,
+          "images": 37,
+          "predicates": {
+            "riding": 19,
+            "holding": 19
+          },
+          "methods": {
+            "boxed": {
+              "image_macro_pair_accuracy": 0.6756756756756757,
+              "image_cluster_bootstrap95": [
+                0.5135135135135135,
+                0.8378378378378378
+              ],
+              "pair_accuracy": 0.6842105263157895,
+              "ties": 0,
+              "mean_cosine_margin": 0.10829232236076343
+            },
+            "global_view": {
+              "image_macro_pair_accuracy": 0.5,
+              "image_cluster_bootstrap95": [
+                0.5,
+                0.5
+              ],
+              "pair_accuracy": 0.5,
+              "ties": 38,
+              "mean_cosine_margin": 0.0
+            },
+            "zero_visual": {
+              "image_macro_pair_accuracy": 0.5,
+              "image_cluster_bootstrap95": [
+                0.5,
+                0.5
+              ],
+              "pair_accuracy": 0.5,
+              "ties": 38,
+              "mean_cosine_margin": 6.862376865587736e-10
+            }
+          }
+        }
+      }
+    },
+    "geometry_controls": {
+      "calibration": {
+        "wrong_predicate": {
+          "box_iou": {
+            "pair_accuracy": 0.5,
+            "image_macro_pair_accuracy": 0.5
+          },
+          "negative_center_distance": {
+            "pair_accuracy": 0.5,
+            "image_macro_pair_accuracy": 0.5
+          }
+        },
+        "wrong_subject_instance": {
+          "box_iou": {
+            "pair_accuracy": 0.9008620689655172,
+            "image_macro_pair_accuracy": 0.8824626865671642
+          },
+          "negative_center_distance": {
+            "pair_accuracy": 0.8879310344827587,
+            "image_macro_pair_accuracy": 0.8743781094527362
+          }
+        }
+      },
+      "probe": {
+        "wrong_object_instance": {
+          "box_iou": {
+            "pair_accuracy": 1.0,
+            "image_macro_pair_accuracy": 1.0
+          },
+          "negative_center_distance": {
+            "pair_accuracy": 1.0,
+            "image_macro_pair_accuracy": 1.0
+          }
+        },
+        "wrong_predicate": {
+          "box_iou": {
+            "pair_accuracy": 0.5,
+            "image_macro_pair_accuracy": 0.5
+          },
+          "negative_center_distance": {
+            "pair_accuracy": 0.5,
+            "image_macro_pair_accuracy": 0.5
+          }
+        },
+        "wrong_subject_instance": {
+          "box_iou": {
+            "pair_accuracy": 0.8947368421052632,
+            "image_macro_pair_accuracy": 0.8918918918918919
+          },
+          "negative_center_distance": {
+            "pair_accuracy": 0.8947368421052632,
+            "image_macro_pair_accuracy": 0.8918918918918919
+          }
+        }
+      }
+    }
+  },
+  "comparisons": {
+    "F_minus_A": {
+      "CIDEr_delta": -0.0070029905005523875,
+      "paired_saved_fixed_IDF_bootstrap95": [
+        -0.024843942636353436,
+        0.011495827107319194
+      ],
+      "by_mode": {
+        "object_only": {
+          "CIDEr_delta": -0.013760175745846818,
+          "paired_saved_fixed_IDF_bootstrap95": [
+            -0.03537228683755044,
+            0.008841425713341159
+          ]
+        },
+        "object_relation": {
+          "CIDEr_delta": 0.009459818793537283,
+          "paired_saved_fixed_IDF_bootstrap95": [
+            -0.02553407599718954,
+            0.04310735885297744
+          ]
+        },
+        "no_objects": {
+          "CIDEr_delta": 0.04301834805416475,
+          "paired_saved_fixed_IDF_bootstrap95": [
+            0.0,
+            0.09611280082112562
+          ]
+        }
+      }
+    },
+    "F_minus_E": {
+      "CIDEr_delta": 0.001693948816452817,
+      "paired_saved_fixed_IDF_bootstrap95": [
+        -0.015218545997317062,
+        0.01901289205267926
+      ],
+      "by_mode": {
+        "object_only": {
+          "CIDEr_delta": 0.007244319213980795,
+          "paired_saved_fixed_IDF_bootstrap95": [
+            -0.010058776107388999,
+            0.025388074444204146
+          ]
+        },
+        "object_relation": {
+          "CIDEr_delta": -0.014201440523010268,
+          "paired_saved_fixed_IDF_bootstrap95": [
+            -0.05567155229325952,
+            0.024768103291233544
+          ]
+        },
+        "no_objects": {
+          "CIDEr_delta": 0.03152642718316056,
+          "paired_saved_fixed_IDF_bootstrap95": [
+            0.0,
+            0.09457928154948167
+          ]
+        }
+      }
+    },
+    "F_on_minus_off": {
+      "CIDEr_delta": 0.000610723211567539,
+      "paired_saved_fixed_IDF_bootstrap95": [
+        -0.00531476845500985,
+        0.006874171456284367
+      ]
+    }
+  },
+  "sensitivity": {
+    "off": {
+      "all": {
+        "images": 1000,
+        "changed_captions": 73,
+        "mean_reference_nll_delta": 0.00037237441539764404
+      },
+      "object_relation": {
+        "images": 269,
+        "changed_captions": 15,
+        "mean_reference_nll_delta": 0.0002511859383281722
+      },
+      "object_only": {
+        "images": 722,
+        "changed_captions": 58,
+        "mean_reference_nll_delta": 0.0004221681412567392
+      },
+      "no_objects": {
+        "images": 9,
+        "changed_captions": 0,
+        "mean_reference_nll_delta": 0.0
+      }
+    },
+    "text_swap": {
+      "all": {
+        "images": 1000,
+        "changed_captions": 3,
+        "mean_reference_nll_delta": 1.6848742961883546e-05
+      },
+      "object_relation": {
+        "images": 269,
+        "changed_captions": 3,
+        "mean_reference_nll_delta": 6.943763853448918e-05
+      },
+      "object_only": {
+        "images": 722,
+        "changed_captions": 0,
+        "mean_reference_nll_delta": -2.534600836418342e-06
+      },
+      "no_objects": {
+        "images": 9,
+        "changed_captions": 0,
+        "mean_reference_nll_delta": 0.0
+      }
+    },
+    "region_swap": {
+      "all": {
+        "images": 1000,
+        "changed_captions": 55,
+        "mean_reference_nll_delta": 0.00019787943363189697
+      },
+      "object_relation": {
+        "images": 269,
+        "changed_captions": 13,
+        "mean_reference_nll_delta": 0.00016313658327861346
+      },
+      "object_only": {
+        "images": 722,
+        "changed_captions": 42,
+        "mean_reference_nll_delta": 0.000213290433143975
+      },
+      "no_objects": {
+        "images": 9,
+        "changed_captions": 0,
+        "mean_reference_nll_delta": 0.0
+      }
+    }
+  },
+  "verified_counts": {
+    "fit": {
+      "pairs": 503,
+      "images": 310,
+      "tasks": {
+        "wrong_predicate": 80,
+        "wrong_subject_instance": 423
+      },
+      "predicates": {
+        "carrying": 68,
+        "holding": 283,
+        "eating": 22,
+        "riding": 35,
+        "sitting_on": 75,
+        "talking_on": 20
+      }
+    },
+    "calibration": {
+      "pairs": 140,
+      "images": 79,
+      "tasks": {
+        "wrong_predicate": 24,
+        "wrong_subject_instance": 116
+      },
+      "predicates": {
+        "holding": 68,
+        "carrying": 29,
+        "sitting_on": 20,
+        "riding": 9,
+        "talking_on": 7,
+        "eating": 7
+      }
+    },
+    "probe": {
+      "pairs": 62,
+      "images": 59,
+      "tasks": {
+        "wrong_object_instance": 12,
+        "wrong_predicate": 12,
+        "wrong_subject_instance": 38
+      },
+      "predicates": {
+        "riding": 34,
+        "holding": 28
+      }
+    }
+  },
+  "decision": "DO_NOT_SCALE_F: CIDEr below matched A; relation discrimination not improved; instance matcher below geometry controls."
+}
