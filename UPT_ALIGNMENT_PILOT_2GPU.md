@@ -20,3 +20,7 @@ Validation uses raw greedy decoding for both the starting and end checkpoints; t
 Local preparation evidence: three data unit tests passed; syntax and embedded source identities checked in all four unexecuted notebook files; boxes/instance links checked on all11000 selected entries in the real full prompt JSON. The user's A run subsequently passed model tests, a two-rank DDP smoke test and metric smoke tests on Kaggle. Both ranks finished1250 training updates. A's raw-greedy val CIDEr1.189066->1.205513 and CHAIRs5.8%->5.2%; paired CIDEr confidence interval includes zero. No assistant notebook launch, no claim of UPT benefit yet.
 
 See [full Vietnamese instructions and limitations](experiments/upt_alignment_pilot/README.md), [local input check](experiments/upt_alignment_pilot/local_input_check.json), and [artifact validation](experiments/upt_alignment_pilot/artifact_validation.json). Return the small review ZIP; preserve the non-ZIP `.pth` checkpoint separately in saved Output.
+
+## Completed B pilot
+
+[B result and matched A/B comparison](experiments/upt_alignment_pilot/B_RESULT.md): B CIDEr 1.199067 versus A 1.205513; region-off B 1.199913. No demonstrated overall benefit from the region branch. Await D before scaling.

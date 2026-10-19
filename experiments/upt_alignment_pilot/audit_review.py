@@ -17,7 +17,8 @@ def audit(source, dataset_path, output):
         read = lambda n: json.loads(z.read(n))
         sha = lambda n: hashlib.sha256(z.read(n)).hexdigest()
         cfg, summary = read('protocol.json'), read('run_summary.json')
-        assert summary['status'] == 'PILOT_COMPLETE' and cfg['arm'] == summary['arm'] == 'A'
+        arm = cfg['arm']
+        assert summary['status'] == 'PILOT_COMPLETE' and arm == summary['arm'] and arm in 'ABCD'
         assert not cfg['test_used'] and not summary['test_used']
         assert summary['protocol_sha256'] == sha('protocol.json')
         assert cfg['groups'] == read('groups.json')
@@ -44,14 +45,16 @@ def audit(source, dataset_path, output):
         for rank in (0,1):
             done, runtime, hist = (read(f'{name}_rank{rank}.json') for name in ('worker_complete','runtime','history'))
             assert done['status']=='COMPLETE' and done['updates']==len(hist)==1250
-            assert done['source_arm']=='A' and done['rank']==rank and done['trainable_branch_parameters']==0
+            assert done['source_arm']==arm and done['rank']==rank
+            assert (done['trainable_branch_parameters']==0) if arm=='A' else (done['trainable_branch_parameters']>0)
             assert runtime['gpu']['name']=='Tesla T4' and runtime['deterministic_algorithms'] and not runtime['warn_only']
             assert runtime['sdp_math'] and not runtime['sdp_flash'] and not runtime['sdp_mem_efficient']
             for step,r in enumerate(hist,1):
                 assert r['step']==step and r['global_images_seen']==step*8
                 assert all(math.isfinite(v) for v in r.values() if isinstance(v,(float,int)))
                 weight=0. if step<=200 else .05
-                assert r['scst_weight']==weight and r['branch_grad_norm']==0
+                assert r['scst_weight']==weight
+                if arm=='A': assert r['branch_grad_norm']==0
                 assert abs(r['loss']-r['ce_loss']-weight*r['scst_loss'])<1e-6
                 if weight:
                     for p in ('sample','greedy'):
@@ -60,7 +63,7 @@ def audit(source, dataset_path, output):
         assert completions[0]['initial_base_sha256']==completions[1]['initial_base_sha256']
         assert all(a['grad_norm']==b['grad_norm'] for a,b in zip(*histories))
         setup=z.read('setup.log').decode(errors='replace')
-        for arm in 'ABCD': assert 'Two-GPU synchronized CE/SCST smoke PASS: '+arm in setup
+        for smoke_arm in 'ABCD': assert 'Two-GPU synchronized CE/SCST smoke PASS: '+smoke_arm in setup
         assert 'Ran 4 tests' in setup and 'CIDEr reward, official caption metrics and CHAIR smoke PASS' in setup
         expected={r['image_id']:r for r in cfg['groups']['val']}
         gt=read('val_gt.json')
@@ -68,7 +71,7 @@ def audit(source, dataset_path, output):
         for row in cfg['groups']['val']:
             assert [r['caption'] for r in gt['annotations'] if r['image_id']==row['image_id']] == [s['raw'] for s in dataset['images'][row['image_id']]['sentences'][:5]]
         metrics, captions, chairs, per_image = {}, {}, {}, {}
-        for condition in ('origin','on'):
+        for condition in (('origin','on') if arm=='A' else ('origin','on','off')):
             rows=read(condition+'_predictions.json')
             assert len(rows)==1000 and {r['image_id'] for r in rows}==expected.keys()
             merged=sum((read(f'{condition}_rank{rank}.json') for rank in (0,1)),[])
@@ -108,7 +111,7 @@ def audit(source, dataset_path, output):
                   changed_captions=sum(captions['origin'][i]!=captions['on'][i] for i in expected),
                   hallucination_removed=sum(bool(a[i]['mscoco_hallucinated_words']) and not b[i]['mscoco_hallucinated_words'] for i in a),
                   hallucination_introduced=sum(bool(b[i]['mscoco_hallucinated_words']) and not a[i]['mscoco_hallucinated_words'] for i in a))
-        result=dict(status='ARTIFACT_AUDIT_PASS',arm='A',source_zip_sha256=hashlib.sha256(Path(source).read_bytes()).hexdigest(),
+        result=dict(status='ARTIFACT_AUDIT_PASS',arm=arm,source_zip_sha256=hashlib.sha256(Path(source).read_bytes()).hexdigest(),
                     source_bytes=Path(source).stat().st_size,metrics=metrics,paired=pair,cohort_sha256=cfg['cohort_sha256'],
                     source_checkpoint_sha256=cfg['source_checkpoint_sha256'],initial_base_sha256=completions[0]['initial_base_sha256'],
                     end_checkpoint_sha256=summary['checkpoint_sha256'],training_updates=1250,global_images_seen=10000,
@@ -121,7 +124,7 @@ def audit(source, dataset_path, output):
                             'Caption metrics were stored by the official evaluator on Kaggle; no independent local tokenizer/CIDEr/BLEU/METEOR/ROUGE recomputation.',
                             'CHAIR parser outputs reaggregated, not independently retokenized; bootstrap uses saved fixed-IDF per-image scores.',
                             'One seed and reused val1000, raw greedy; not comparable directly to old beam/reranked test metrics.',
-                            'A is continued-training control with no new UPT branch. Await D and compare its origin/cohort/runtime before attribution.'])
+                            'Matched pilot only: compare other arms and origin/cohort/runtime before attribution; sensitivity is not verified grounding.'])
     Path(output).write_text(json.dumps(result,indent=2,ensure_ascii=False),encoding='utf-8')
     print(json.dumps(dict(metrics=metrics,paired=pair),indent=2,ensure_ascii=False))
 
