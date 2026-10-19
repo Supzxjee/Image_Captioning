@@ -1,5 +1,7 @@
 # Hai notebook thử cơ chế bằng chứng ngữ nghĩa–thị giác
 
+**Đã có [kết quả A/E](experiments/semantic_evidence_pilot/AE_RESULT.md): E chưa vượt đối chứng A; chưa khuyến nghị chạy full phiên bản này.** Các notebook dưới đây giữ nguyên để tái lập thí nghiệm đã hoàn thành.
+
 Chạy đúng hai nhánh, mỗi notebook dùng cả hai GPU T4:
 
 | Notebook | Nội dung |

@@ -1,5 +1,7 @@
 # Semantic evidence pilot: two notebooks, two GPUs per notebook
 
+Completed: [A/E results and artifact audits](AE_RESULT.md). E has not improved the matched control; do not scale this version to full training. Original notebooks remain unchanged for reproducibility.
+
 ## What to run
 
 - `SEMANTIC_EVIDENCE_A_2GPU.ipynb`: matched continued-training control, no new UPT branch.

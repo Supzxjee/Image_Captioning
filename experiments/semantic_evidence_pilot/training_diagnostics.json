@@ -1,0 +1,69 @@
+{
+  "windows": {
+    "1-100": {
+      "loss_mean": 0.16567454122006894,
+      "pairs": 2505,
+      "pair_weighted_positive_margin_fraction": 0.5520958246555395,
+      "pair_weighted_margin": 0.01139641578252076
+    },
+    "101-200": {
+      "loss_mean": 0.10746132838539779,
+      "pairs": 2586,
+      "pair_weighted_positive_margin_fraction": 0.7513534615517861,
+      "pair_weighted_margin": 0.07830030886553248
+    },
+    "201-500": {
+      "loss_mean": 0.04213636808258949,
+      "pairs": 7922,
+      "pair_weighted_positive_margin_fraction": 0.9347387133742245,
+      "pair_weighted_margin": 0.20254551389270384
+    },
+    "501-1000": {
+      "loss_mean": 0.0239314083708814,
+      "pairs": 13195,
+      "pair_weighted_positive_margin_fraction": 0.9624100104386538,
+      "pair_weighted_margin": 0.2680150527516948
+    },
+    "1001-1250": {
+      "loss_mean": 0.017469253233008204,
+      "pairs": 6278,
+      "pair_weighted_positive_margin_fraction": 0.9684612995388022,
+      "pair_weighted_margin": 0.29038732554306645
+    }
+  },
+  "gradients": {
+    "query": {
+      "positive_rank_steps": 2500,
+      "rank_steps": 2500,
+      "median": 0.004224879575163397
+    },
+    "role": {
+      "positive_rank_steps": 2500,
+      "rank_steps": 2500,
+      "median": 0.00011270599590680632
+    },
+    "key": {
+      "positive_rank_steps": 2500,
+      "rank_steps": 2500,
+      "median": 0.0011160823470245788
+    },
+    "value": {
+      "positive_rank_steps": 2500,
+      "rank_steps": 2500,
+      "median": 0.03342360348866058
+    },
+    "position": {
+      "positive_rank_steps": 2500,
+      "rank_steps": 2500,
+      "median": 2.8878396537294872e-05
+    },
+    "norm": {
+      "positive_rank_steps": 2500,
+      "rank_steps": 2500,
+      "median": 0.0009626382799429391
+    }
+  },
+  "validity": {
+    "all_alignment_pair_steps_positive": true
+  }
+}

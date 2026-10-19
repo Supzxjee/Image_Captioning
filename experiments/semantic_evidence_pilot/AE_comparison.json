@@ -1,0 +1,114 @@
+{
+  "status": "MATCHED_ARTIFACT_COMPARISON_PASS",
+  "E_minus_A": {
+    "CIDEr_delta": -0.008696939317005206,
+    "paired_fixed_IDF_bootstrap95": [
+      -0.027439960947294898,
+      0.010257206985281979
+    ]
+  },
+  "E_on_minus_off": {
+    "CIDEr_delta": -0.00260516088298137,
+    "paired_fixed_IDF_bootstrap95": [
+      -0.008477219688940038,
+      0.0033250542301368714
+    ]
+  },
+  "sensitivity": {
+    "off": {
+      "all": {
+        "images": 1000,
+        "changed_captions": 60,
+        "mean_reference_nll_delta": 0.0002444695830345154
+      },
+      "object_relation": {
+        "images": 269,
+        "changed_captions": 16,
+        "mean_reference_nll_delta": 0.00032368512844950737
+      },
+      "object_only": {
+        "images": 722,
+        "changed_captions": 44,
+        "mean_reference_nll_delta": 0.0002180031627168946
+      },
+      "no_objects": {
+        "images": 9,
+        "changed_captions": 0,
+        "mean_reference_nll_delta": 0.0
+      }
+    },
+    "text_swap": {
+      "all": {
+        "images": 1000,
+        "changed_captions": 8,
+        "mean_reference_nll_delta": -3.194272518157959e-06
+      },
+      "object_relation": {
+        "images": 269,
+        "changed_captions": 4,
+        "mean_reference_nll_delta": 6.791096194526077e-05
+      },
+      "object_only": {
+        "images": 722,
+        "changed_captions": 4,
+        "mean_reference_nll_delta": -2.972620676098768e-05
+      },
+      "no_objects": {
+        "images": 9,
+        "changed_captions": 0,
+        "mean_reference_nll_delta": 0.0
+      }
+    },
+    "region_swap": {
+      "all": {
+        "images": 1000,
+        "changed_captions": 52,
+        "mean_reference_nll_delta": 0.00016744589805603026
+      },
+      "object_relation": {
+        "images": 269,
+        "changed_captions": 20,
+        "mean_reference_nll_delta": 0.00023508603688066334
+      },
+      "object_only": {
+        "images": 722,
+        "changed_captions": 32,
+        "mean_reference_nll_delta": 0.00014433206943924076
+      },
+      "no_objects": {
+        "images": 9,
+        "changed_captions": 0,
+        "mean_reference_nll_delta": 0.0
+      }
+    }
+  },
+  "E_minus_A_by_mode": {
+    "object_only": {
+      "CIDEr_delta": -0.021004494959827612,
+      "paired_fixed_IDF_bootstrap95": [
+        -0.041271102855674945,
+        -0.0007584473158230757
+      ]
+    },
+    "object_relation": {
+      "CIDEr_delta": 0.02366125931654756,
+      "paired_fixed_IDF_bootstrap95": [
+        -0.015288069244950004,
+        0.06472724560240252
+      ]
+    },
+    "no_objects": {
+      "CIDEr_delta": 0.011491920871004188,
+      "paired_fixed_IDF_bootstrap95": [
+        -0.025080898555837703,
+        0.059556661168850264
+      ]
+    }
+  },
+  "limits": [
+    "Saved scores only, no independent metric retokenization or checkpoint replay.",
+    "Single seed and reused val1000; bootstrap does not measure training-seed uncertainty.",
+    "Object-relation subgroup CIDEr is caption similarity, not predicate or instance correctness.",
+    "Swapping is sensitivity only; unchanged captions do not prove zero visual use."
+  ]
+}
