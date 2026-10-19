@@ -4,10 +4,10 @@ Có bốn notebook độc lập, đã nhúng đủ mã mới. **Không phải ch
 
 | Đợt | Notebook của bạn | Notebook của Ngân |
 |---|---|---|
-| 1 | `UPT_ALIGNMENT_A_2GPU.ipynb`: huấn luyện tiếp baseline | `UPT_ALIGNMENT_B_2GPU.ipynb`: thêm vùng ảnh, không thêm text UPT |
-| 2 | `UPT_ALIGNMENT_C_2GPU.ipynb`: vùng ảnh + text, cộng trực tiếp | `UPT_ALIGNMENT_D_2GPU.ipynb`: text điều khiển cổng cho từng thành phần thị giác |
+| 1 | `UPT_ALIGNMENT_A_2GPU.ipynb`: huấn luyện tiếp baseline | `UPT_ALIGNMENT_D_2GPU.ipynb`: text điều khiển cổng cho từng thành phần thị giác |
+| 2 | `UPT_ALIGNMENT_B_2GPU.ipynb`: thêm vùng ảnh, không thêm text UPT | `UPT_ALIGNMENT_C_2GPU.ipynb`: vùng ảnh + text, cộng trực tiếp |
 
-Chạy A/B trước và gửi hai ZIP review. Đọc kết quả rồi mới quyết định chạy C/D; chưa cần tiêu quota cho cả bốn ngay.
+Theo quyết định cập nhật, chạy A/D trước để thử toàn bộ phương án mới so với đối chứng. Đọc kết quả rồi mới quyết định chạy B/C để tách đóng góp. D thắng A chưa đủ quy gain riêng cho gating. [A đã hoàn tất và được kiểm tra](A_RESULT.md); chưa có kết quả D.
 
 ## Cách chạy
 
@@ -50,4 +50,4 @@ Hai tài khoản phải dùng dữ liệu trùng hash. So sánh thêm `cohort_sh
 
 ## Kiểm tra đã làm và giới hạn
 
-Local đã kiểm tra cú pháp, ba unit test dữ liệu và box/instance link trên đúng 11.000 mục prompt thật. **Chưa chạy notebook, tải mô hình hoặc huấn luyện trên máy người dùng.** Unit test mô hình, smoke DDP hai GPU và smoke metric được nhúng để chạy trên Kaggle trước khi huấn luyện. Đây là mã pilot mới, chưa có số đo caption mới.
+Local trước chạy đã kiểm tra cú pháp, ba unit test dữ liệu và box/instance link trên đúng 11.000 mục prompt thật. Sau đó người dùng đã chạy A trên Kaggle: unit test mô hình, smoke DDP hai GPU và smoke metric đều PASS theo log trong ZIP. A có kết quả tại [A_RESULT.md](A_RESULT.md); B/C/D chưa có kết quả. Assistant chỉ kiểm tra artifacts, không chạy notebook hay huấn luyện.

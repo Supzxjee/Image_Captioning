@@ -1,8 +1,8 @@
 # UPT visual-semantic alignment pilot — four arms, two GPUs per arm
 
-Prepared 2026-10-19. **Not yet trained or evaluated on GPU. No new caption-quality result.**
+Prepared 2026-10-19. **A completed by the user and artifact-audited; D result pending.** See [A result and limits](experiments/upt_alignment_pilot/A_RESULT.md).
 
-Each notebook runs **one arm on both GPUs using DDP**. Two independent Kaggle notebooks/accounts can run A/B concurrently; consider C/D only after reviewing A/B. This is not one arm per GPU.
+Each notebook runs **one arm on both GPUs using DDP**. Updated execution order: two independent Kaggle accounts run A/D first to compare the full proposed branch with continued-training control; consider B/C later to separate contributions. D versus A alone cannot isolate a gating contribution. This is not one arm per GPU.
 
 | Arm | Change | Standalone notebook |
 |---|---|---|
@@ -17,6 +17,6 @@ Same deterministic Karpathy train10k/val1000 cohort and preserved checkpoint acr
 
 Validation uses raw greedy decoding for both the starting and end checkpoints; these screening metrics must not be compared directly to historical beam/reranked test scores. B/C/D also include branch-removal and text/region-swap diagnostics. Gates learn caption utility, not calibrated relation truth; improvement and novelty remain unproven.
 
-Local evidence: three data unit tests passed; syntax and embedded source identities checked in all four unexecuted notebooks; boxes/instance links checked on all11000 selected entries in the real full prompt JSON. GPU model tests and a two-rank DDP smoke test run on Kaggle before expensive preparation/training. No notebook was launched by the assistant.
+Local preparation evidence: three data unit tests passed; syntax and embedded source identities checked in all four unexecuted notebook files; boxes/instance links checked on all11000 selected entries in the real full prompt JSON. The user's A run subsequently passed model tests, a two-rank DDP smoke test and metric smoke tests on Kaggle. Both ranks finished1250 training updates. A's raw-greedy val CIDEr1.189066->1.205513 and CHAIRs5.8%->5.2%; paired CIDEr confidence interval includes zero. No assistant notebook launch, no claim of UPT benefit yet.
 
 See [full Vietnamese instructions and limitations](experiments/upt_alignment_pilot/README.md), [local input check](experiments/upt_alignment_pilot/local_input_check.json), and [artifact validation](experiments/upt_alignment_pilot/artifact_validation.json). Return the small review ZIP; preserve the non-ZIP `.pth` checkpoint separately in saved Output.

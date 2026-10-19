@@ -1,0 +1,115 @@
+{
+  "status": "ARTIFACT_AUDIT_PASS",
+  "arm": "A",
+  "source_zip_sha256": "f774e7ff92167bb2a730ec307a6f12f8bc4b3196d90dd38aa4eea9c845747c8c",
+  "source_bytes": 1316031,
+  "metrics": {
+    "origin": {
+      "caption": {
+        "Bleu_1": 0.7633300297323327,
+        "Bleu_2": 0.6068188055322815,
+        "Bleu_3": 0.46309998016209264,
+        "Bleu_4": 0.350305236249301,
+        "METEOR": 0.2853742505883088,
+        "ROUGE_L": 0.5727716662616508,
+        "CIDEr": 1.1890655082257537
+      },
+      "chair": {
+        "CHAIRs": 0.058,
+        "CHAIRi": 0.035452322738386305,
+        "Recall": 0.4568090992929603
+      },
+      "hallucinated_captions": 58,
+      "hallucinated_mentions": 58,
+      "object_mentions": 1636,
+      "correct_unique_objects": 1486,
+      "reference_unique_objects": 3253,
+      "by_mode": {
+        "object_relation": {
+          "images": 269,
+          "CIDEr_full_val_IDF": 1.330999641733331
+        },
+        "object_only": {
+          "images": 722,
+          "CIDEr_full_val_IDF": 1.1414822393675113
+        },
+        "no_objects": {
+          "images": 9,
+          "CIDEr_full_val_IDF": 0.7640475306827373
+        }
+      }
+    },
+    "on": {
+      "caption": {
+        "Bleu_1": 0.763093489965662,
+        "Bleu_2": 0.6069772412006276,
+        "Bleu_3": 0.4633397886861699,
+        "Bleu_4": 0.3517194278720059,
+        "METEOR": 0.2872660124386753,
+        "ROUGE_L": 0.5713406352384716,
+        "CIDEr": 1.2055125991020814
+      },
+      "chair": {
+        "CHAIRs": 0.052,
+        "CHAIRi": 0.032475490196078434,
+        "Recall": 0.45803873347679064
+      },
+      "hallucinated_captions": 52,
+      "hallucinated_mentions": 53,
+      "object_mentions": 1632,
+      "correct_unique_objects": 1490,
+      "reference_unique_objects": 3253,
+      "by_mode": {
+        "object_relation": {
+          "images": 269,
+          "CIDEr_full_val_IDF": 1.3223345177534982
+        },
+        "object_only": {
+          "images": 722,
+          "CIDEr_full_val_IDF": 1.167389700458391
+        },
+        "no_objects": {
+          "images": 9,
+          "CIDEr_full_val_IDF": 0.7721388994924316
+        }
+      }
+    }
+  },
+  "paired": {
+    "CIDEr_delta": 0.016447090876327407,
+    "CIDEr_relative_percent": 1.3831946820885157,
+    "paired_fixed_IDF_bootstrap95": [
+      -0.003994451209209765,
+      0.036570919533823985
+    ],
+    "bootstrap_source": "Saved per-image CIDEr, not independent retokenization or seed uncertainty",
+    "changed_captions": 377,
+    "hallucination_removed": 14,
+    "hallucination_introduced": 8
+  },
+  "cohort_sha256": "6bbdf3b75869927334ec6c2f868edf9f52346c0e79401aa0e118ba5a02fb711b",
+  "source_checkpoint_sha256": "5f8eead3f4e960189345b1a9bf492763fe52ec71f70115b73244ffe9d03d2e75",
+  "initial_base_sha256": "21c212f904b5dd2419b8f9fddbe50c5e1f4229ca5081e3a4efb17e786c89170b",
+  "end_checkpoint_sha256": "cd65c49afa77081ccb5355150fe614626ad601dde397c179b875515fb602ea0d",
+  "training_updates": 1250,
+  "global_images_seen": 10000,
+  "train_seconds_by_rank": [
+    526.820176852,
+    526.820243136
+  ],
+  "test_used": false,
+  "checks": [
+    "ZIP CRC, source/protocol/target/cohort hashes",
+    "Karpathy split and reference captions replayed from local pinned dataset",
+    "Both complete finite1250-update histories; loss/reward arithmetic; equal clipped-input grad norms across ranks",
+    "Recorded GPU/model/DDP/metric smoke tests passed; new run not launched by auditor",
+    "1000 unique val IDs and matching rank outputs/CHAIR captions; saved per-image CIDEr aggregation and CHAIR reaggregation"
+  ],
+  "limits": [
+    "No checkpoint tensors or staged HDF5 in ZIP: cannot replay inference or verify end-checkpoint bytes/actual final cross-rank weights.",
+    "Caption metrics were stored by the official evaluator on Kaggle; no independent local tokenizer/CIDEr/BLEU/METEOR/ROUGE recomputation.",
+    "CHAIR parser outputs reaggregated, not independently retokenized; bootstrap uses saved fixed-IDF per-image scores.",
+    "One seed and reused val1000, raw greedy; not comparable directly to old beam/reranked test metrics.",
+    "A is continued-training control with no new UPT branch. Await D and compare its origin/cohort/runtime before attribution."
+  ]
+}
