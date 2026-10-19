@@ -1,0 +1,63 @@
+{
+  "status": "LOCAL_DATA_AND_NOTEBOOK_VALIDATION_PASS",
+  "notebook_executed": false,
+  "model_tests_executed": false,
+  "two_gpu_tests_executed": false,
+  "reason": "No local PyTorch; mandatory model/DDP preflight embedded for manual Kaggle run",
+  "data_tests_passed": 7,
+  "code_cells_parsed": 6,
+  "embedded_python_files": 13,
+  "verified_manifest_canonical_sha256": "7242a9a632ecf715d47cb2a9838a4ecacfad06b9eeca9849f6aa7ebc9e4beffa",
+  "counts": {
+    "fit": {
+      "pairs": 503,
+      "images": 310,
+      "tasks": {
+        "wrong_predicate": 80,
+        "wrong_subject_instance": 423
+      },
+      "predicates": {
+        "carrying": 68,
+        "holding": 283,
+        "eating": 22,
+        "riding": 35,
+        "sitting_on": 75,
+        "talking_on": 20
+      }
+    },
+    "calibration": {
+      "pairs": 140,
+      "images": 79,
+      "tasks": {
+        "wrong_predicate": 24,
+        "wrong_subject_instance": 116
+      },
+      "predicates": {
+        "holding": 68,
+        "carrying": 29,
+        "sitting_on": 20,
+        "riding": 9,
+        "talking_on": 7,
+        "eating": 7
+      }
+    },
+    "probe": {
+      "pairs": 62,
+      "images": 59,
+      "tasks": {
+        "wrong_object_instance": 12,
+        "wrong_predicate": 12,
+        "wrong_subject_instance": 38
+      },
+      "predicates": {
+        "riding": 34,
+        "holding": 28
+      }
+    }
+  },
+  "auxiliary_main_caption_train_overlap": 25,
+  "probe_main_caption_train_overlap": 0,
+  "caption_val_auxiliary_overlap": 0,
+  "test_used": false,
+  "status_of_experiment": "READY_NOT_RUN"
+}
