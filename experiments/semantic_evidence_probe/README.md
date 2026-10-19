@@ -1,5 +1,7 @@
 # Frozen E matcher diagnostic
 
+Completed: [results and interpretation](PROBE_RESULT.md). The frozen matcher reaches 8/12 predicate and object-instance pairs and 27/38 subject-instance pairs. Simple geometric controls do better on these instance cases; this diagnostic does not validate reliable semantic alignment or decoder-only blame.
+
 Use [FROZEN_E_MATCHER_PROBE_2GPU.ipynb](FROZEN_E_MATCHER_PROBE_2GPU.ipynb). This notebook only scores candidates using the **completed E checkpoint**, with its trained text-query/visual-value cosine matcher frozen. It does not train, generate captions, select a checkpoint, or alter an existing output. Both GPUs perform independent inference shards of this one diagnostic; there are no DDP collectives.
 
 ## Run manually on Kaggle

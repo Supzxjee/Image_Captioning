@@ -1,0 +1,295 @@
+{
+  "status": "PROBE_ARTIFACT_AUDIT_PASS",
+  "source_zip_sha256": "a181e4b8025bd8b8a6f75baca212ca9b99206e628e4ff3e3b854b19c4235803c",
+  "metrics": {
+    "wrong_object_instance": {
+      "pairs": 12,
+      "images": 10,
+      "predicates": {
+        "riding": 9,
+        "holding": 3
+      },
+      "methods": {
+        "boxed": {
+          "image_macro_pair_accuracy": 0.65,
+          "image_cluster_bootstrap95": [
+            0.4,
+            0.9
+          ],
+          "pair_accuracy": 0.6666666666666666,
+          "ties": 0,
+          "mean_cosine_margin": 0.018194889184087515
+        },
+        "global_view": {
+          "image_macro_pair_accuracy": 0.5,
+          "image_cluster_bootstrap95": [
+            0.5,
+            0.5
+          ],
+          "pair_accuracy": 0.5,
+          "ties": 12,
+          "mean_cosine_margin": 0.0
+        },
+        "zero_visual": {
+          "image_macro_pair_accuracy": 0.5,
+          "image_cluster_bootstrap95": [
+            0.5,
+            0.5
+          ],
+          "pair_accuracy": 0.5,
+          "ties": 12,
+          "mean_cosine_margin": 1.241763432820638e-09
+        }
+      }
+    },
+    "wrong_predicate": {
+      "pairs": 12,
+      "images": 12,
+      "predicates": {
+        "riding": 6,
+        "holding": 6
+      },
+      "methods": {
+        "boxed": {
+          "image_macro_pair_accuracy": 0.6666666666666666,
+          "image_cluster_bootstrap95": [
+            0.4166666666666667,
+            0.9166666666666666
+          ],
+          "pair_accuracy": 0.6666666666666666,
+          "ties": 0,
+          "mean_cosine_margin": 0.005379591758052508
+        },
+        "global_view": {
+          "image_macro_pair_accuracy": 0.8333333333333334,
+          "image_cluster_bootstrap95": [
+            0.5833333333333334,
+            1.0
+          ],
+          "pair_accuracy": 0.8333333333333334,
+          "ties": 0,
+          "mean_cosine_margin": 0.00750782589117686
+        },
+        "zero_visual": {
+          "image_macro_pair_accuracy": 0.5,
+          "image_cluster_bootstrap95": [
+            0.25,
+            0.75
+          ],
+          "pair_accuracy": 0.5,
+          "ties": 0,
+          "mean_cosine_margin": 9.313225746154785e-10
+        }
+      }
+    },
+    "wrong_subject_instance": {
+      "pairs": 38,
+      "images": 37,
+      "predicates": {
+        "riding": 19,
+        "holding": 19
+      },
+      "methods": {
+        "boxed": {
+          "image_macro_pair_accuracy": 0.7027027027027027,
+          "image_cluster_bootstrap95": [
+            0.5405405405405406,
+            0.8378378378378378
+          ],
+          "pair_accuracy": 0.7105263157894737,
+          "ties": 0,
+          "mean_cosine_margin": 0.00976866206742431
+        },
+        "global_view": {
+          "image_macro_pair_accuracy": 0.5,
+          "image_cluster_bootstrap95": [
+            0.5,
+            0.5
+          ],
+          "pair_accuracy": 0.5,
+          "ties": 38,
+          "mean_cosine_margin": 0.0
+        },
+        "zero_visual": {
+          "image_macro_pair_accuracy": 0.5,
+          "image_cluster_bootstrap95": [
+            0.5,
+            0.5
+          ],
+          "pair_accuracy": 0.5,
+          "ties": 38,
+          "mean_cosine_margin": -2.0832215484819915e-09
+        }
+      }
+    }
+  },
+  "counts_by_predicate": {
+    "wrong_object_instance": {
+      "boxed": {
+        "holding": {
+          "pairs": 3,
+          "wins": 2,
+          "ties": 0
+        },
+        "riding": {
+          "pairs": 9,
+          "wins": 6,
+          "ties": 0
+        }
+      },
+      "global_view": {
+        "holding": {
+          "pairs": 3,
+          "wins": 0,
+          "ties": 3
+        },
+        "riding": {
+          "pairs": 9,
+          "wins": 0,
+          "ties": 9
+        }
+      },
+      "zero_visual": {
+        "holding": {
+          "pairs": 3,
+          "wins": 0,
+          "ties": 3
+        },
+        "riding": {
+          "pairs": 9,
+          "wins": 0,
+          "ties": 9
+        }
+      }
+    },
+    "wrong_predicate": {
+      "boxed": {
+        "holding": {
+          "pairs": 6,
+          "wins": 3,
+          "ties": 0
+        },
+        "riding": {
+          "pairs": 6,
+          "wins": 5,
+          "ties": 0
+        }
+      },
+      "global_view": {
+        "holding": {
+          "pairs": 6,
+          "wins": 5,
+          "ties": 0
+        },
+        "riding": {
+          "pairs": 6,
+          "wins": 5,
+          "ties": 0
+        }
+      },
+      "zero_visual": {
+        "holding": {
+          "pairs": 6,
+          "wins": 1,
+          "ties": 0
+        },
+        "riding": {
+          "pairs": 6,
+          "wins": 5,
+          "ties": 0
+        }
+      }
+    },
+    "wrong_subject_instance": {
+      "boxed": {
+        "holding": {
+          "pairs": 19,
+          "wins": 12,
+          "ties": 0
+        },
+        "riding": {
+          "pairs": 19,
+          "wins": 15,
+          "ties": 0
+        }
+      },
+      "global_view": {
+        "holding": {
+          "pairs": 19,
+          "wins": 0,
+          "ties": 19
+        },
+        "riding": {
+          "pairs": 19,
+          "wins": 0,
+          "ties": 19
+        }
+      },
+      "zero_visual": {
+        "holding": {
+          "pairs": 19,
+          "wins": 0,
+          "ties": 19
+        },
+        "riding": {
+          "pairs": 19,
+          "wins": 0,
+          "ties": 19
+        }
+      }
+    }
+  },
+  "posthoc_geometry_controls": {
+    "wrong_object_instance": {
+      "box_iou": {
+        "pair_accuracy": 1.0,
+        "image_macro_pair_accuracy": 1.0
+      },
+      "negative_center_distance": {
+        "pair_accuracy": 1.0,
+        "image_macro_pair_accuracy": 1.0
+      }
+    },
+    "wrong_predicate": {
+      "box_iou": {
+        "pair_accuracy": 0.5,
+        "image_macro_pair_accuracy": 0.5
+      },
+      "negative_center_distance": {
+        "pair_accuracy": 0.5,
+        "image_macro_pair_accuracy": 0.5
+      }
+    },
+    "wrong_subject_instance": {
+      "box_iou": {
+        "pair_accuracy": 0.8947368421052632,
+        "image_macro_pair_accuracy": 0.8918918918918919
+      },
+      "negative_center_distance": {
+        "pair_accuracy": 0.8947368421052632,
+        "image_macro_pair_accuracy": 0.8918918918918919
+      }
+    }
+  },
+  "recorded_module_state_sha256": "2b81f51ca4aa2a5ce9d504306d0f807942deb7520b2d45edcb91931f6ed8a8da",
+  "no_training": true,
+  "test_used": false,
+  "checks": [
+    "ZIP CRC; exact locked manifest and source hashes; checkpoint identity in saved metadata",
+    "Two complete Tesla T4 inference shards with unique image partition and equal recorded module digests",
+    "All scores finite; 62 pairs/59 images; exact candidate labels; recomputed tie-aware accuracies and image-cluster intervals",
+    "Predicate positives balanced within each object class"
+  ],
+  "limits": [
+    "All diagnostic images are Karpathy train/restval, historically used for caption pretraining; not unseen-test evidence.",
+    "Existing reused human diagnostics + V-COCO val-role labels; GT boxes, not UPT detections; no annotation absence interpreted as false.",
+    "Holding/riding labels follow V-COCO ontology; not an exhaustive universal relation truth.",
+    "Cosine pair ranking is not calibrated confidence or caption-quality evidence.",
+    "GT/human boxes differ from UPT detector boxes used during E training.",
+    "Zero visual features are an out-of-distribution lexical/bias control, not a fair standalone model.",
+    "Global-view removes box membership/masks; unchanged scores may reflect patch/box resolution.",
+    "Reused selected diagnostic, limited actions; bootstrap samples images, not training seeds.",
+    "No independent checkpoint/visual-cache inference replay. Unchanged parameters are recorded in worker metadata, not verified from archived tensors.",
+    "Geometry controls are post-hoc descriptive comparators; no fitted parameters or thresholds. They do not establish semantic understanding or a trained baseline improvement."
+  ]
+}
