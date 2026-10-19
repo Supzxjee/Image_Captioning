@@ -1,8 +1,10 @@
 """Build a self-contained manual notebook. Never executes its cells."""
 import ast
+import base64
 import hashlib
 import json
 from pathlib import Path
+import zlib
 
 HERE=Path(__file__).resolve().parent
 ROOT=HERE.parents[1]
@@ -45,11 +47,19 @@ Tập fit nhỏ và được lặp lại; chưa có bằng chứng phương phá
     setup=texts[3].split('\nSOURCES = ')[0]
     setup=setup.replace("PROJECT_COMMIT = '1dd4dc15f42eded978945a3da66c65ec6a725b59'",f"PROJECT_COMMIT = '{COMMIT}'")
     setup=setup.replace('/tmp/Image_Captioning-semantic-evidence-pilot','/tmp/Image_Captioning-verified-same-image')
-    setup+='\nSOURCES = '+repr(embedded)+'\nSOURCE_HASHES = '+repr(hashes)+'\n'
-    setup+="for name, source in SOURCES.items(): (REPO/name).write_text(source,encoding='utf-8')\n"
-    setup+='VERIFIED_LABELS = '+repr(labels)+'\n'
-    setup+="VERIFIED_MANIFEST = REPO/'verified_manifest.json'\nVERIFIED_MANIFEST.write_text(VERIFIED_LABELS,encoding='utf-8')\n"
+    # Keep source below Kaggle's 1 MB kernel limit without requiring another Input.
+    bundle=json.dumps(dict(sources=embedded,labels=labels),ensure_ascii=False,separators=(',',':')).encode()
+    setup+='\nimport base64, hashlib, zlib\n'
+    setup+='BUNDLE_B64 = '+repr(base64.b64encode(zlib.compress(bundle,9)).decode())+'\n'
+    setup+='BUNDLE_SHA = '+repr(hashlib.sha256(bundle).hexdigest())+'\n'
+    setup+="bundle_bytes = zlib.decompress(base64.b64decode(BUNDLE_B64,validate=True))\n"
+    setup+="assert hashlib.sha256(bundle_bytes).hexdigest()==BUNDLE_SHA,'Embedded bundle changed'\n"
+    setup+="bundle = json.loads(bundle_bytes)\nSOURCES = bundle['sources']\nVERIFIED_LABELS = bundle['labels']\n"
+    setup+='SOURCE_HASHES = '+repr(hashes)+'\n'
     setup+='VERIFIED_MANIFEST_SHA = '+repr(label_hash)+'\n'
+    setup+="for name, source in SOURCES.items():\n    assert hashlib.sha256(source.encode()).hexdigest()==SOURCE_HASHES[name],name\n    (REPO/name).write_text(source,encoding='utf-8')\n"
+    setup+="assert hashlib.sha256(VERIFIED_LABELS.encode()).hexdigest()==VERIFIED_MANIFEST_SHA\n"
+    setup+="VERIFIED_MANIFEST = REPO/'verified_manifest.json'\nVERIFIED_MANIFEST.write_text(VERIFIED_LABELS,encoding='utf-8')\n"
     setup+="print('Verified F source and locked labels installed',flush=True)\n"
     texts[3]=setup
     texts[4]='## 2. Preflight\nKiểm tra dữ liệu, loss và gradient bằng dữ liệu giả, sau đó đồng bộ hai GPU và metric. Notebook dừng nếu kiểm tra lỗi.\n'
@@ -82,8 +92,11 @@ Gửi ZIP review; giữ riêng checkpoint.pth trong Saved Output. ZIP không ch�
         if cell['cell_type']=='code':
             ast.parse(text);cell['outputs']=[];cell['execution_count']=None
     output=HERE/'VERIFIED_SAME_IMAGE_F_2GPU.ipynb'
-    output.write_text(json.dumps(nb,ensure_ascii=False,indent=1),encoding='utf-8')
-    print(output.name,'built; cells NOT executed')
+    serialized=json.dumps(nb,ensure_ascii=False,indent=1).encode()
+    assert len(serialized)<900000,'Notebook must stay below Kaggle 1 MB limit'
+    assert sum(len(text.encode()) for text in texts)<900000,'Kernel source must stay below 1 MB'
+    output.write_bytes(serialized)
+    print(output.name,f'built: {len(serialized):,} bytes; cells NOT executed')
 
 
 if __name__=='__main__':main()

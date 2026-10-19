@@ -2,6 +2,8 @@
 
 Chạy **VERIFIED_SAME_IMAGE_F_2GPU.ipynb**: một notebook, một nhánh F, **T4 ×2**; bật Internet rồi **Save & Run All**. Notebook chưa được chạy thay bạn. Không cần chạy lại A/E lúc này.
 
+Bản sửa giới hạn Kaggle 1 MB: mã và nhãn được nén trong notebook rồi giải nén vào `/tmp` khi chạy, có kiểm tra SHA-256. Không đổi dữ liệu, loss hay cấu hình; không cần thêm Input. Dùng notebook mới thay bản cũ đã vượt giới hạn.
+
 ## Thay đổi gì?
 
 Giữ module E: embedding cụm từ truy vấn các CLIP patch trong vùng người–vật; token bằng chứng thị giác được đưa vào decoder. Thay loss đối chiếu giả nhãn khác ảnh bằng cặp đúng/sai có nhãn V-COCO trên **cùng ảnh**:

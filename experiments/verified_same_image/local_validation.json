@@ -7,6 +7,9 @@
   "data_tests_passed": 7,
   "code_cells_parsed": 6,
   "embedded_python_files": 13,
+  "notebook_bytes": 223455,
+  "kaggle_source_limit_bytes": 1000000,
+  "compressed_bundle_roundtrip_pass": true,
   "verified_manifest_canonical_sha256": "7242a9a632ecf715d47cb2a9838a4ecacfad06b9eeca9849f6aa7ebc9e4beffa",
   "counts": {
     "fit": {
