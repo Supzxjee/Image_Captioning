@@ -1,0 +1,25 @@
+{
+  "prompt_cache_sha256": "24e7861a4aa0e7e731d67689dce195688096232bcbef1b4264034cf520d6957d",
+  "images": 123287,
+  "checked_region_entries": 11000,
+  "mode_counts": {
+    "train": {
+      "no_objects": 68,
+      "object_only": 7226,
+      "object_relation": 2706
+    },
+    "val": {
+      "object_only": 722,
+      "object_relation": 269,
+      "no_objects": 9
+    }
+  },
+  "cohort_sha256": "6bbdf3b75869927334ec6c2f868edf9f52346c0e79401aa0e118ba5a02fb711b",
+  "checks": "Syntax, deterministic cohort, real prompt boxes/instance links, synthetic patch pooling",
+  "not_run": [
+    "GPU execution",
+    "pretrained model loading",
+    "caption training",
+    "Kaggle notebook"
+  ]
+}

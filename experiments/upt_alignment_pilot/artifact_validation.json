@@ -1,0 +1,26 @@
+[
+  {
+    "notebook": "UPT_ALIGNMENT_A_2GPU.ipynb",
+    "cells_parse": 6,
+    "embedded_sources_match": true,
+    "unexecuted": true
+  },
+  {
+    "notebook": "UPT_ALIGNMENT_B_2GPU.ipynb",
+    "cells_parse": 6,
+    "embedded_sources_match": true,
+    "unexecuted": true
+  },
+  {
+    "notebook": "UPT_ALIGNMENT_C_2GPU.ipynb",
+    "cells_parse": 6,
+    "embedded_sources_match": true,
+    "unexecuted": true
+  },
+  {
+    "notebook": "UPT_ALIGNMENT_D_2GPU.ipynb",
+    "cells_parse": 6,
+    "embedded_sources_match": true,
+    "unexecuted": true
+  }
+]
