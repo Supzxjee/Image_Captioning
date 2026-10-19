@@ -2,6 +2,8 @@
 
 F chạy đủ **1.250 cập nhật trên hai Tesla T4**, đúng bộ nhãn và giao thức đã khóa. Kiểm tra artifact PASS. Checkpoint nguồn, cohort, reward targets, caption nguồn và runtime khớp A/E. Đây không phải lỗi thiếu cặp loss hoặc gradient bằng không.
 
+**Lưu ý diễn giải sau khi rà ca lỗi:** “annotation âm xác nhận” trong thiết kế F chỉ có nghĩa nhãn actor/action V-COCO bằng 0, không bảo đảm câu mô tả đối lập sai theo ngôn ngữ tự nhiên. Ví dụ holding và carrying có thể đồng thời hợp lý; 30/80 cặp sai quan hệ fit thuộc cặp hành động này. Điểm matcher dưới đây đo khớp annotation, không tự động là độ đúng ngữ nghĩa. Chẩn đoán tiếp theo cần kiểm tra trực quan; đây là điểm yếu trong giả định tạo âm của chúng ta, chưa phải lỗi nhãn đã được xác minh. Các số caption và quyết định chưa chạy full không thay đổi.
+
 ## Caption: chưa vượt A
 
 Cùng 1.000 validation, raw greedy, seed42, không dùng test:

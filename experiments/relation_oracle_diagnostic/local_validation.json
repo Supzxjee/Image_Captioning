@@ -1,0 +1,24 @@
+{
+  "status": "LOCAL_DATA_AND_PACKAGING_PASS",
+  "notebook_bytes": 48711,
+  "code_cells_parsed": 4,
+  "data_tests_passed": 3,
+  "model_tests_run_locally": false,
+  "gpu_inference_run": false,
+  "notebook_executed": false,
+  "payload_sha256": "b40aa2cc499123ef2d46dc1d450568692e979898cec97d74b36f953fbe4191ce",
+  "manifest_sha256": "4440417da9599fcae76ebc9dc36d7e378ee4f9bd188b42aa2837bbac50fda20b",
+  "fit_predicate_action_pair_counts": {
+    "carry|eat": 6,
+    "carry|hold": 30,
+    "hold|ride": 8,
+    "hold|sit": 10,
+    "carry|sit": 6,
+    "eat|hold": 12,
+    "carry|talk_on_phone": 4,
+    "hold|talk_on_phone": 2,
+    "ride|sit": 2
+  },
+  "note": "Action overlap is a semantic validity concern, not proof all such annotation labels are erroneous",
+  "status_of_experiment": "READY_NOT_RUN"
+}

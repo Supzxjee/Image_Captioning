@@ -822,5 +822,10 @@
       }
     }
   },
-  "decision": "DO_NOT_SCALE_F: CIDEr below matched A; relation discrimination not improved; instance matcher below geometry controls."
+  "decision": "DO_NOT_SCALE_F: CIDEr below matched A; relation discrimination not improved; instance matcher below geometry controls.",
+  "label_validity_caution": {
+    "fit_predicate_pairs": 80,
+    "holding_carrying_pairs": 30,
+    "note": "Explicit VCOCO actor/action zero is an annotation negative, not logical contradiction of a natural-language phrase. Actions can co-occur. Matcher accuracy is annotation agreement; visual plausibility review is required. No caption metrics changed."
+  }
 }

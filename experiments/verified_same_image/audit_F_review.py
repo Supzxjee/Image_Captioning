@@ -94,6 +94,11 @@ def audit(source,a_path,e_path,dataset,output):
     result['limits']+=['F adds verified labels/image exposures and compute, so A/E comparison is not equal supervision budget.',
                        'Matcher before is freshly initialized F, not trained E. Calibration/probe small and historically studied; no independent unseen test.',
                        'Zero/global instance comparisons have identical inputs and tie; cannot establish image-conditioned semantic understanding.']
+    predicate_pairs=[r for r in m['splits']['fit'] if r['task']=='wrong_predicate']
+    result['label_validity_caution']=dict(
+        fit_predicate_pairs=len(predicate_pairs),
+        holding_carrying_pairs=sum({r['source_positive']['action'],r['source_negative']['action']}=={'carry','hold'} for r in predicate_pairs),
+        note='Explicit VCOCO actor/action zero is an annotation negative, not logical contradiction of a natural-language phrase. Actions can co-occur. Matcher accuracy is annotation agreement; visual plausibility review is required. No caption metrics changed.')
     Path(output).write_text(json.dumps(result,indent=2,ensure_ascii=False),encoding='utf-8')
     training_audit(source,HERE/'F_training_diagnostics.json')
     print(json.dumps(dict(status=result['status'],comparisons=comparisons,decision=result['decision']),indent=2))
