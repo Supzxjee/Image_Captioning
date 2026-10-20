@@ -35,3 +35,11 @@ JPEG decode, dimensions and EXIF orientation were checked. dHash64 distance<=6 f
 ## Local validation
 
 Three pure crop geometry tests PASS; AST and unexecuted metadata notebook PASS; candidate uniqueness and blank-label checks PASS; isolated DOM test covers startup, navigation, blank export guards and JSON export PASS. No real-browser screenshot QA. Local h5py/torch are unavailable; actual HDF5 reading and all GPU/feature checks remain for Kaggle. Local operations only read annotations/prompt JSONs and collected official public JPEGs.
+
+## Assistant draft, explicitly requested by the user
+
+`ASSISTANT_PROPOSED_REVIEW.json` contains preliminary visual judgments for21groups, **not human labels**. All21inspection plates (original resolution and224 previews with selected S/O boxes) were visually inspected. `ASSISTANT_REVIEW_SUMMARY.json` is a provisional summary only; training remains unapproved. Upright boards resting on ground, floating boards, partially occluded objects, mismatched pairs and apparent photo montages have explicit notes/uncertainty. No template eligibility threshold is weakened to meet the desired quota.
+
+Open local `review/assistant_review.html` for the prefilled version; the original blank `index.html` and its browser storage remain separate. Review/switch each label and check the per-group human confirmation box. Editing a selection or note revokes confirmation. Export `pair_crop_assisted_verified_review.json`; an export containing unconfirmed groups remains typed `assistant_proposed_pending_human_verification`. Only explicit confirmation of every exported group produces `human_self_reported`, with AI-origin provenance retained and `training_approved=false`.
+
+Additional isolated DOM checks PASS: provisional export never becomes human automatically, per-group confirmation works, edits revoke confirmation, and confirmed export retains provenance. Actual-browser visual QA has not been performed.

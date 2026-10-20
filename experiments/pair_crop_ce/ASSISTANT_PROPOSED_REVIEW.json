@@ -1,0 +1,668 @@
+{
+  "schema_version": 1,
+  "groups_sha256": "9c3d8d36f6bf797d909c59eca0f8c805a8b4b9b6a5140834dbd97289920f0b57",
+  "reviewer": "Codex — preliminary visual review",
+  "reviewer_type": "assistant_proposed_not_human",
+  "annotations": {
+    "crop_probe_100f80c322d9ac3c": {
+      "truth": [
+        [
+          "contradicted",
+          "unclear"
+        ],
+        [
+          "unclear",
+          "unclear"
+        ]
+      ],
+      "boxes": [
+        [
+          "clear",
+          "clear"
+        ],
+        [
+          "clear",
+          "clear"
+        ]
+      ],
+      "detail_224": [
+        "unclear",
+        "unclear"
+      ],
+      "notes": "Cặp1: ván dựng chạm nền; có giữ ván nhưng chưa rõ carrying. Cặp2: tư thế ở mép ramp và ván nghiêng, chưa thấy chắc chân có đứng trên ván hay tay đang nâng ván.",
+      "review_flags": [
+        "ambiguous_carrying",
+        "ambiguous_support"
+      ],
+      "confirmed_by_human": false
+    },
+    "crop_probe_11a6923598414ac0": {
+      "truth": [
+        [
+          "contradicted",
+          "unclear"
+        ],
+        [
+          "supported",
+          "contradicted"
+        ]
+      ],
+      "boxes": [
+        [
+          "clear",
+          "clear"
+        ],
+        [
+          "clear",
+          "clear"
+        ]
+      ],
+      "detail_224": [
+        "yes",
+        "yes"
+      ],
+      "notes": "Cặp1 giữ ván dựng đứng, đáy ván có vẻ tựa nền; holding rõ hơn carrying. Cặp2 người áo đen có chân trên ván.",
+      "review_flags": [
+        "ambiguous_carrying"
+      ],
+      "confirmed_by_human": false
+    },
+    "crop_probe_146ce85d9f82440b": {
+      "truth": [
+        [
+          "contradicted",
+          "unclear"
+        ],
+        [
+          "supported",
+          "contradicted"
+        ]
+      ],
+      "boxes": [
+        [
+          "clear",
+          "clear"
+        ],
+        [
+          "clear",
+          "clear"
+        ]
+      ],
+      "detail_224": [
+        "yes",
+        "yes"
+      ],
+      "notes": "Cặp1 người đang ngồi, ván dựng và tựa đất; không đứng trên ván, chưa đủ khẳng định đang mang ván. Cặp2 đang trượt trên ván.",
+      "review_flags": [
+        "ambiguous_carrying"
+      ],
+      "confirmed_by_human": false
+    },
+    "crop_probe_2ccc00fada5ec769": {
+      "truth": [
+        [
+          "supported",
+          "contradicted"
+        ],
+        [
+          "contradicted",
+          "supported"
+        ]
+      ],
+      "boxes": [
+        [
+          "clear",
+          "clear"
+        ],
+        [
+          "clear",
+          "clear"
+        ]
+      ],
+      "detail_224": [
+        "yes",
+        "yes"
+      ],
+      "notes": "Cặp1 hai chân trên ván khi thực hiện trick. Cặp2 người áo đen giữ ván dọc bên người; đề xuất carrying nhưng cần bạn kiểm tra mép dưới ván có đang tựa đất không.",
+      "review_flags": [
+        "check_board_ground_contact"
+      ],
+      "confirmed_by_human": false
+    },
+    "crop_probe_96b0eba582f9aecd": {
+      "truth": [
+        [
+          "contradicted",
+          "supported"
+        ],
+        [
+          "supported",
+          "contradicted"
+        ]
+      ],
+      "boxes": [
+        [
+          "clear",
+          "clear"
+        ],
+        [
+          "clear",
+          "clear"
+        ]
+      ],
+      "detail_224": [
+        "yes",
+        "yes"
+      ],
+      "notes": "Cặp1 hai tay nâng ván ngang. Cặp2 hai chân trên ván. Ảnh có đường ghép dọc, có thể là hai thời điểm ghép lại; không nên tự coi là hai người thật trong cùng một thời điểm.",
+      "review_flags": [
+        "photo_montage"
+      ],
+      "confirmed_by_human": false
+    },
+    "crop_probe_a7ed012c847be8a7": {
+      "truth": [
+        [
+          "supported",
+          "contradicted"
+        ],
+        [
+          "contradicted",
+          "unclear"
+        ]
+      ],
+      "boxes": [
+        [
+          "clear",
+          "clear"
+        ],
+        [
+          "clear",
+          "clear"
+        ]
+      ],
+      "detail_224": [
+        "yes",
+        "yes"
+      ],
+      "notes": "Cặp1 đang trên ván trong cú nhảy. Cặp2 đặt tay lên ván dựng chạm nền; holding có bằng chứng, carrying chưa rõ.",
+      "review_flags": [
+        "ambiguous_carrying"
+      ],
+      "confirmed_by_human": false
+    },
+    "crop_probe_c042676b0b47db95": {
+      "truth": [
+        [
+          "supported",
+          "contradicted"
+        ],
+        [
+          "contradicted",
+          "unclear"
+        ]
+      ],
+      "boxes": [
+        [
+          "clear",
+          "incorrect"
+        ],
+        [
+          "clear",
+          "clear"
+        ]
+      ],
+      "detail_224": [
+        "unclear",
+        "unclear"
+      ],
+      "notes": "Cặp1 người lớn đứng trên ván nhưng box O rất nhỏ, chỉ bao một phần ván gần chân. Cặp2 đứa trẻ giữ ván thẳng đứng chạm đất, chưa rõ carrying.",
+      "review_flags": [
+        "incomplete_object_box",
+        "ambiguous_carrying"
+      ],
+      "confirmed_by_human": false
+    },
+    "crop_probe_c75899232125146f": {
+      "truth": [
+        [
+          "supported",
+          "contradicted"
+        ],
+        [
+          "contradicted",
+          "unclear"
+        ]
+      ],
+      "boxes": [
+        [
+          "clear",
+          "clear"
+        ],
+        [
+          "clear",
+          "clear"
+        ]
+      ],
+      "detail_224": [
+        "yes",
+        "unclear"
+      ],
+      "notes": "Cặp1 chân trên ván khi trượt. Cặp2 ở rìa phải giữ ván dựng; ván có thể đang tựa nền, chưa đủ kết luận carrying.",
+      "review_flags": [
+        "ambiguous_carrying"
+      ],
+      "confirmed_by_human": false
+    },
+    "crop_probe_dbee4e176545957b": {
+      "truth": [
+        [
+          "contradicted",
+          "supported"
+        ],
+        [
+          "supported",
+          "contradicted"
+        ]
+      ],
+      "boxes": [
+        [
+          "clear",
+          "clear"
+        ],
+        [
+          "clear",
+          "clear"
+        ]
+      ],
+      "detail_224": [
+        "yes",
+        "yes"
+      ],
+      "notes": "Cặp1 người lên bậc thang, tay giữ ván bên người. Cặp2 thực hiện trick trên ván. Ảnh ghép đôi hai khoảnh khắc; cần cân nhắc loại khỏi đối chứng cùng cảnh tự nhiên.",
+      "review_flags": [
+        "photo_montage"
+      ],
+      "confirmed_by_human": false
+    },
+    "crop_probe_e37b7a8f4c88de98": {
+      "truth": [
+        [
+          "supported",
+          "contradicted"
+        ],
+        [
+          "contradicted",
+          "unclear"
+        ]
+      ],
+      "boxes": [
+        [
+          "clear",
+          "clear"
+        ],
+        [
+          "clear",
+          "clear"
+        ]
+      ],
+      "detail_224": [
+        "yes",
+        "yes"
+      ],
+      "notes": "Cặp1 người mũ trắng đứng trên ván ở mép ramp. Cặp2 người áo đen giữ ván đỏ dựng chạm nền; holding rõ nhưng carrying chưa chắc.",
+      "review_flags": [
+        "ambiguous_carrying"
+      ],
+      "confirmed_by_human": false
+    },
+    "crop_probe_1e651403fd2ebe45": {
+      "truth": [
+        [
+          "contradicted",
+          "supported"
+        ],
+        [
+          "supported",
+          "contradicted"
+        ]
+      ],
+      "boxes": [
+        [
+          "clear",
+          "clear"
+        ],
+        [
+          "clear",
+          "clear"
+        ]
+      ],
+      "detail_224": [
+        "unclear",
+        "yes"
+      ],
+      "notes": "Cặp1 người trên bờ ôm/nâng ván ngang thân; cơ thể bị che một phần và sát biên ảnh. Cặp2 đứng trên ván trong sóng. Kiểm tra lại cặp1 do vùng người nhỏ, bị che.",
+      "review_flags": [
+        "partial_subject_visibility"
+      ],
+      "confirmed_by_human": false
+    },
+    "crop_probe_1f41d21468ab4228": {
+      "truth": [
+        [
+          "contradicted",
+          "supported"
+        ],
+        [
+          "supported",
+          "contradicted"
+        ]
+      ],
+      "boxes": [
+        [
+          "clear",
+          "clear"
+        ],
+        [
+          "clear",
+          "clear"
+        ]
+      ],
+      "detail_224": [
+        "yes",
+        "yes"
+      ],
+      "notes": "Cặp1 người tóc sáng đứng trên bờ, tay nâng ván ngang. Cặp2 người đang lướt với chân trên ván.",
+      "review_flags": [],
+      "confirmed_by_human": false
+    },
+    "crop_probe_36c55a07cf7f21b5": {
+      "truth": [
+        [
+          "contradicted",
+          "unclear"
+        ],
+        [
+          "supported",
+          "contradicted"
+        ]
+      ],
+      "boxes": [
+        [
+          "clear",
+          "clear"
+        ],
+        [
+          "clear",
+          "unclear"
+        ]
+      ],
+      "detail_224": [
+        "unclear",
+        "unclear"
+      ],
+      "notes": "Cặp1 đứng trong nước giữ ván, chưa rõ đang nâng mang hay chỉ giữ ván nổi. Cặp2 đang lướt nhưng ván phần lớn bị bọt sóng che; phạm vi box O cần kiểm tra.",
+      "review_flags": [
+        "floating_vs_carrying",
+        "occluded_object_box"
+      ],
+      "confirmed_by_human": false
+    },
+    "crop_probe_86e4942e0fbb5c1a": {
+      "truth": [
+        [
+          "supported",
+          "contradicted"
+        ],
+        [
+          "contradicted",
+          "contradicted"
+        ]
+      ],
+      "boxes": [
+        [
+          "clear",
+          "clear"
+        ],
+        [
+          "clear",
+          "incorrect"
+        ]
+      ],
+      "detail_224": [
+        "yes",
+        "unclear"
+      ],
+      "notes": "Cặp1 đang đứng trên ván trong sông. Cặp2 box S là người trước cùng bên bờ, nhưng box O ngang màu vàng dường như thuộc người đứng phía sau; ván của S là ván trắng dựng thấp hơn.",
+      "review_flags": [
+        "wrong_target_pair"
+      ],
+      "confirmed_by_human": false
+    },
+    "crop_probe_88deea1ae649f226": {
+      "truth": [
+        [
+          "supported",
+          "contradicted"
+        ],
+        [
+          "contradicted",
+          "unclear"
+        ]
+      ],
+      "boxes": [
+        [
+          "clear",
+          "clear"
+        ],
+        [
+          "clear",
+          "clear"
+        ]
+      ],
+      "detail_224": [
+        "yes",
+        "yes"
+      ],
+      "notes": "Cặp1 đứng trên ván. Cặp2 ở trong nước giữ ván gần dựng đứng; không đứng trên ván nhưng chưa rõ carrying thay vì giữ/đẩy ván nổi.",
+      "review_flags": [
+        "floating_vs_carrying"
+      ],
+      "confirmed_by_human": false
+    },
+    "crop_probe_89785c52762edc97": {
+      "truth": [
+        [
+          "supported",
+          "contradicted"
+        ],
+        [
+          "contradicted",
+          "supported"
+        ]
+      ],
+      "boxes": [
+        [
+          "clear",
+          "clear"
+        ],
+        [
+          "clear",
+          "clear"
+        ]
+      ],
+      "detail_224": [
+        "yes",
+        "unclear"
+      ],
+      "notes": "Cặp1 lướt trên ván. Cặp2 người trên bờ giữ ván dọc thân, không đặt chân lên ván; vùng nhỏ nên bạn cần kiểm tra bàn tay và điểm tựa ván.",
+      "review_flags": [
+        "small_target"
+      ],
+      "confirmed_by_human": false
+    },
+    "crop_probe_8d11477253574efb": {
+      "truth": [
+        [
+          "supported",
+          "contradicted"
+        ],
+        [
+          "contradicted",
+          "unclear"
+        ]
+      ],
+      "boxes": [
+        [
+          "clear",
+          "clear"
+        ],
+        [
+          "clear",
+          "unclear"
+        ]
+      ],
+      "detail_224": [
+        "yes",
+        "unclear"
+      ],
+      "notes": "Cặp1 người phía trước đang trên ván đỏ. Cặp2 người áo xanh quay lưng với một mảnh đỏ hẹp cạnh tay; chưa xác nhận chắc toàn bộ vật và hành động mang ván.",
+      "review_flags": [
+        "occluded_object_box",
+        "ambiguous_carrying"
+      ],
+      "confirmed_by_human": false
+    },
+    "crop_probe_90bb1900abd51a0f": {
+      "truth": [
+        [
+          "contradicted",
+          "supported"
+        ],
+        [
+          "supported",
+          "contradicted"
+        ]
+      ],
+      "boxes": [
+        [
+          "clear",
+          "clear"
+        ],
+        [
+          "clear",
+          "clear"
+        ]
+      ],
+      "detail_224": [
+        "yes",
+        "yes"
+      ],
+      "notes": "Cặp1 người phía trước giữ ván dưới tay cạnh thân; ván bị cắt ở biên ảnh nhưng phần nhìn thấy rõ. Cặp2 người trong nước đứng trên ván.",
+      "review_flags": [
+        "image_boundary_truncation"
+      ],
+      "confirmed_by_human": false
+    },
+    "crop_probe_911df8e81acb945b": {
+      "truth": [
+        [
+          "contradicted",
+          "supported"
+        ],
+        [
+          "supported",
+          "contradicted"
+        ]
+      ],
+      "boxes": [
+        [
+          "clear",
+          "clear"
+        ],
+        [
+          "clear",
+          "clear"
+        ]
+      ],
+      "detail_224": [
+        "yes",
+        "yes"
+      ],
+      "notes": "Cặp1 người bên phải mang ván xanh dưới tay, ván không ở dưới chân. Cặp2 người giữa sông đứng trên ván. Ở 224 vùng surfer nhỏ, bạn nên kiểm tra lại mức rõ.",
+      "review_flags": [
+        "small_target"
+      ],
+      "confirmed_by_human": false
+    },
+    "crop_probe_ace448c97330cfd0": {
+      "truth": [
+        [
+          "supported",
+          "contradicted"
+        ],
+        [
+          "contradicted",
+          "supported"
+        ]
+      ],
+      "boxes": [
+        [
+          "clear",
+          "clear"
+        ],
+        [
+          "clear",
+          "clear"
+        ]
+      ],
+      "detail_224": [
+        "yes",
+        "yes"
+      ],
+      "notes": "Cặp1 chân đặt trên ván trong sóng. Cặp2 người cao ở bờ giữ ván trắng dưới tay, ván không dưới chân.",
+      "review_flags": [],
+      "confirmed_by_human": false
+    },
+    "fit_reconfirm_235799": {
+      "truth": [
+        [
+          "contradicted",
+          "unclear"
+        ],
+        [
+          "unclear",
+          "contradicted"
+        ]
+      ],
+      "boxes": [
+        [
+          "clear",
+          "clear"
+        ],
+        [
+          "clear",
+          "clear"
+        ]
+      ],
+      "detail_224": [
+        "yes",
+        "unclear"
+      ],
+      "notes": "Xác nhận fit235799: cặp1 chỉ thấy giữ ván dựng chạm nền, chưa đủ gọi carrying. Cặp2 đang thực hiện trick, ván lật/nghiêng, chưa rõ đúng nghĩa standing on ở thời điểm ảnh. Không tự giữ nhóm chỉ vì mô hình fit tốt.",
+      "review_flags": [
+        "fit_label_recheck",
+        "ambiguous_carrying",
+        "ambiguous_support"
+      ],
+      "confirmed_by_human": false
+    }
+  },
+  "training_approved": false,
+  "rubric": "carrying: visible person supporting/holding the board off a supporting surface; motion need not be inferred. Upright board apparently resting on ground or held floating may remain unclear. Standing_on allows visibly supported feet during riding/tricks; unsupported airborne/flip phase may be unclear.",
+  "limits": [
+    "Assistant observed rendered full images and224 previews, not independent human gold",
+    "No phrase model outputs or UPT scores shown in inspection plates; earlier experiment context known",
+    "All proposals need explicit human verification; no split or training approval"
+  ]
+}

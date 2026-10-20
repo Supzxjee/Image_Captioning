@@ -1,0 +1,17 @@
+{
+  "status": "ASSISTANT_PROPOSALS_PENDING_HUMAN",
+  "groups": 21,
+  "human_confirmed": 0,
+  "possible_clear_contrast_indices": [
+    4,
+    11,
+    12,
+    16,
+    18,
+    19,
+    20
+  ],
+  "possible_skateboard": 1,
+  "possible_surfboard": 6,
+  "training_approved": false
+}
