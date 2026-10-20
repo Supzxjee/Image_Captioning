@@ -1,0 +1,53 @@
+{
+  "status": "REPORTED_HEADER_SCHEMA_PASS_REVISION_UNKNOWN",
+  "shards": [
+    {
+      "filename": "visual_part_01_of_03.h5",
+      "image_count": 41095,
+      "model_revision": null,
+      "original_runtime": {
+        "torch": "2.10.0+cu128",
+        "torchvision": "0.25.0+cu128",
+        "transformers": "5.0.0"
+      },
+      "id_array_sha256": "bdd7f3b2d66dbf4a0c0815a0066e7597bc811b62a1c0ea5d30f253d9964bcc04"
+    },
+    {
+      "filename": "visual_part_02_of_03.h5",
+      "image_count": 41096,
+      "model_revision": null,
+      "original_runtime": {
+        "torch": "2.10.0+cu128",
+        "torchvision": "0.25.0+cu128",
+        "transformers": "5.0.0"
+      },
+      "id_array_sha256": "f9f0218f86ffc77888e63dc5f6d81e965224e0b18f5b1f41dfecc4c8bc9e8889"
+    },
+    {
+      "filename": "visual_part_03_of_03.h5",
+      "image_count": 41096,
+      "model_revision": null,
+      "original_runtime": {
+        "torch": "2.10.0+cu128",
+        "torchvision": "0.25.0+cu128",
+        "transformers": "5.0.0"
+      },
+      "id_array_sha256": "2a955aea174031fb9267d7035a60d7fc001c1ec7269c6608026bb9d4e1c33069"
+    }
+  ],
+  "reported_unique_ids": 123287,
+  "reported_duplicate_ids": false,
+  "dataset_json_sha256": "2fd999220673258012acfb411a4e7e66af7d488050b2519b0badcc49b7600b8d",
+  "preprocessing_metadata_matches_protocol": true,
+  "encoder_revision_verified": false,
+  "feature_compatibility_verified": false,
+  "training_approved": false,
+  "limits": [
+    "Exported headers/ID summaries validated; actual HDF5 files and feature values were not independently read locally",
+    "Bilinear224 metadata plus source code supports planned transform, not proof of every historical preprocessing operation",
+    "Null revision is unknown provenance, not evidence of corrupt tensors or proof of a model bug",
+    "Original cache records transformers5.0.0; library/attention/runtime differences must be logged and numeric compatibility checked"
+  ],
+  "next": "Pinned re-encoding of fullframe and crop; compare fullframe with corresponding old rows before any training; same recomputed fullframe G for both arms",
+  "source_export_sha256": "74b500d9db632fefe7dbad725d7610950a2c73ccd520a4b0dd182ae77f26790d"
+}

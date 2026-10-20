@@ -1,8 +1,14 @@
 # Fullframe CE versus pair-crop CE — preparation only
 
-Status: **TRAIN BLOCKED pending human labels and feature compatibility.** No encoder, notebook, inference or training has been run by the agent.
+Status: **Human labels locked; reported metadata schema PASS; TRAIN BLOCKED pending numeric feature compatibility.** No encoder, notebook, inference or training has been run by the agent.
 
-Update20October: human label gate now PASS; see `HUMAN_REVIEW_RESULT.md` and `LOCKED_DATA.json`. Four new groups per family are locked,14fit retained. Training is still blocked pending actual cache metadata and pinned feature compatibility. The preparation instructions below document the original workflow; no additional labels are needed to meet the current probe quota.
+Update20October: human label gate PASS; see `HUMAN_REVIEW_RESULT.md` and `LOCKED_DATA.json`. Four new groups per family are locked,14fit retained. The user supplied actual metadata export; `CACHE_METADATA_AUDIT.json` validates reported headers/ID summaries, with revision unknown. Pinned feature compatibility remains pending. The preparation instructions below document the original workflow; no additional labels or metadata export are needed now.
+
+## Metadata received
+
+Three reported complete shards contain41095+41096+41096=123287uniqueIDs, no reported overlaps, feature shape197x768, FP16storage/FP32compute. Reported CLIPViT-B/16 last_hidden_state, bilinear224square/antialias/CLIPnormalization and datasetJSON SHA agree with protocol expectations. All three `model_revision` entries are null. The export records torch2.10.0+cu128, torchvision0.25.0+cu128 and transformers5.0.0; these are historical metadata, not a mandate to reinstall torch or proof of numerical equivalence under another runtime.
+
+The header audit does not read feature values or certify the encoder revision. The next FULLFRAME preparation must use the pinned CLIP encoder, compare newly encoded fullframe features against the corresponding old cache rows with the locked tolerances, and stop before training on incompatibility. Only after that gate can shared fullframeG and crop/fullframeP feed the matched experiment. Null revision alone is not a reason to discard or rebuild the full123287image cache; only the small locked experiment's images need re-encoding now.
 
 ## Two tasks now
 
