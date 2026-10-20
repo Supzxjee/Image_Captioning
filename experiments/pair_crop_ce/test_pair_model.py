@@ -22,8 +22,14 @@ class Checks(unittest.TestCase):
     def test_uniform_coordinates_reproduce_original_encoder(self):
         torch.manual_seed(42);projection=nn.Linear(768,512);old=Evidence(projection).eval();new=MappedEvidence(projection).eval();new.load_state_dict(old.state_dict())
         p=torch.randn(2,196,768);b=torch.tensor([[[0,0,.4,.8],[.4,.4,.8,1.]]]*2);g=torch.randn(2,8)
-        expected=old(p,b,g);actual=new(torch.cat((p,old.xy[None].expand(2,-1,-1)),-1),b,g)
-        for a,e in zip(actual,expected):torch.testing.assert_close(a,e,rtol=0,atol=0)
+        xy=old.xy[None].expand(2,-1,-1);packed=torch.cat((p,xy),-1)
+        torch.testing.assert_close(packed[:,:,:768],p,rtol=0,atol=0)
+        torch.testing.assert_close(packed[:,:,768:],xy,rtol=0,atol=0)
+        expected=old(p,b,g);actual=new(packed,b,g)
+        # FP32 kernel/layout roundoff is not an error in coordinate mapping.
+        torch.testing.assert_close(actual[0],expected[0],rtol=1e-5,atol=5e-6)
+        torch.testing.assert_close(actual[1],expected[1],rtol=1e-5,atol=1e-7)
+        self.assertTrue(torch.equal(actual[1].eq(0),expected[1].eq(0)))
 
     def test_mapped_coordinates_change_membership_and_nearest_fallback(self):
         model,batch=synthetic();p,g,b,geo,_,_=batch

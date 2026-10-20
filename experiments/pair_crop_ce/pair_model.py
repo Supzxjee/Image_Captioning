@@ -8,7 +8,8 @@ from phrase_model import Evidence,PhraseModel
 class MappedEvidence(Evidence):
     def forward(self,packed,boxes,geo):
         assert packed.shape[1:]==(196,770)
-        patches,xy=packed[:,:,:768],packed[:,:,768:]
+        # Packed xy channels make the feature slice strided; keep projection input layout stable.
+        patches,xy=packed[:,:,:768].contiguous(),packed[:,:,768:]
         union=torch.cat((boxes.min(1).values[:,:2],boxes.max(1).values[:,2:]),-1)
         all_boxes=torch.cat((boxes,union[:,None]),1)
         inside=((xy[:,None]>=all_boxes[:,:,None,:2]).all(-1)&(xy[:,None]<=all_boxes[:,:,None,2:]).all(-1))

@@ -1,5 +1,5 @@
 {
-  "status": "READY_NOT_RUN",
+  "status": "READY_NOT_RUN_AFTER_FP32_PREFLIGHT_FIX",
   "notebooks_same_source_and_manifest": true,
   "notebooks_unexecuted": true,
   "under_1MB": true,
@@ -18,6 +18,17 @@
     "Actual training/inference"
   ],
   "primary_metric": "Blind human joint semantic correctness on8groups; no automatic GO from likelihood",
-  "fullframe_notebook_bytes": 50894,
-  "paircrop_notebook_bytes": 50979
+  "fullframe_notebook_bytes": 51118,
+  "paircrop_notebook_bytes": 51203,
+  "reported_old_kaggle_preflight": {
+    "date": "2026-10-21",
+    "gradient_test": "PASS",
+    "mapping_fallback_test": "PASS",
+    "equivalence_test": "FAIL_bitwise_equality",
+    "max_absolute_error": 2.86102294921875e-06,
+    "training_started": false
+  },
+  "fix": "Contiguous feature slice; preserve exact input-coordinate/mask checks and frozen checks; FP32 output equivalence uses bounded tolerances, not bitwise equality",
+  "post_fix_model_tests": "NOT_RUN_LOCALLY_NO_TORCH; user must rerun Kaggle preflight",
+  "feature_compatibility_thresholds_changed": false
 }
