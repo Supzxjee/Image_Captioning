@@ -1,0 +1,236 @@
+{
+  "status": "HUMAN_LABEL_GATE_PASS",
+  "per_group_human_confirmed": 19,
+  "exported_groups": 21,
+  "whole_export_type": "assistant_proposed_pending_human_verification",
+  "probe_counts": {
+    "skateboard_support": 4,
+    "surfboard_support": 4
+  },
+  "probe_groups": 8,
+  "fit_group_235799_retained": true,
+  "fit_groups": 14,
+  "audit": [
+    {
+      "index": 1,
+      "group_id": "crop_probe_100f80c322d9ac3c",
+      "image_id": 381119,
+      "family": "skateboard_support",
+      "human_confirmed": true,
+      "selected": false,
+      "reasons": [
+        "not_a_clear_two_way_contrast"
+      ]
+    },
+    {
+      "index": 2,
+      "group_id": "crop_probe_11a6923598414ac0",
+      "image_id": 355593,
+      "family": "skateboard_support",
+      "human_confirmed": true,
+      "selected": true,
+      "reasons": []
+    },
+    {
+      "index": 3,
+      "group_id": "crop_probe_146ce85d9f82440b",
+      "image_id": 506398,
+      "family": "skateboard_support",
+      "human_confirmed": true,
+      "selected": false,
+      "reasons": [
+        "not_a_clear_two_way_contrast"
+      ]
+    },
+    {
+      "index": 4,
+      "group_id": "crop_probe_2ccc00fada5ec769",
+      "image_id": 153249,
+      "family": "skateboard_support",
+      "human_confirmed": true,
+      "selected": true,
+      "reasons": []
+    },
+    {
+      "index": 5,
+      "group_id": "crop_probe_96b0eba582f9aecd",
+      "image_id": 487943,
+      "family": "skateboard_support",
+      "human_confirmed": true,
+      "selected": false,
+      "reasons": [
+        "photo_montage_not_natural_same_time_scene"
+      ]
+    },
+    {
+      "index": 6,
+      "group_id": "crop_probe_a7ed012c847be8a7",
+      "image_id": 461543,
+      "family": "skateboard_support",
+      "human_confirmed": true,
+      "selected": true,
+      "reasons": []
+    },
+    {
+      "index": 7,
+      "group_id": "crop_probe_c042676b0b47db95",
+      "image_id": 18464,
+      "family": "skateboard_support",
+      "human_confirmed": true,
+      "selected": false,
+      "reasons": [
+        "not_a_clear_two_way_contrast",
+        "boxes_not_all_clear"
+      ]
+    },
+    {
+      "index": 8,
+      "group_id": "crop_probe_c75899232125146f",
+      "image_id": 563271,
+      "family": "skateboard_support",
+      "human_confirmed": true,
+      "selected": true,
+      "reasons": []
+    },
+    {
+      "index": 9,
+      "group_id": "crop_probe_dbee4e176545957b",
+      "image_id": 333575,
+      "family": "skateboard_support",
+      "human_confirmed": true,
+      "selected": false,
+      "reasons": [
+        "photo_montage_not_natural_same_time_scene"
+      ]
+    },
+    {
+      "index": 10,
+      "group_id": "crop_probe_e37b7a8f4c88de98",
+      "image_id": 337452,
+      "family": "skateboard_support",
+      "human_confirmed": true,
+      "selected": false,
+      "reasons": [
+        "eligible_reserve_after_first_four"
+      ]
+    },
+    {
+      "index": 11,
+      "group_id": "crop_probe_1e651403fd2ebe45",
+      "image_id": 176009,
+      "family": "surfboard_support",
+      "human_confirmed": true,
+      "selected": true,
+      "reasons": []
+    },
+    {
+      "index": 12,
+      "group_id": "crop_probe_1f41d21468ab4228",
+      "image_id": 225682,
+      "family": "surfboard_support",
+      "human_confirmed": true,
+      "selected": true,
+      "reasons": []
+    },
+    {
+      "index": 13,
+      "group_id": "crop_probe_36c55a07cf7f21b5",
+      "image_id": 428665,
+      "family": "surfboard_support",
+      "human_confirmed": true,
+      "selected": false,
+      "reasons": [
+        "boxes_not_all_clear"
+      ]
+    },
+    {
+      "index": 14,
+      "group_id": "crop_probe_86e4942e0fbb5c1a",
+      "image_id": 375110,
+      "family": "surfboard_support",
+      "human_confirmed": true,
+      "selected": false,
+      "reasons": [
+        "not_a_clear_two_way_contrast",
+        "boxes_not_all_clear"
+      ]
+    },
+    {
+      "index": 15,
+      "group_id": "crop_probe_88deea1ae649f226",
+      "image_id": 399809,
+      "family": "surfboard_support",
+      "human_confirmed": false,
+      "selected": false,
+      "reasons": [
+        "not_human_confirmed"
+      ]
+    },
+    {
+      "index": 16,
+      "group_id": "crop_probe_89785c52762edc97",
+      "image_id": 300206,
+      "family": "surfboard_support",
+      "human_confirmed": true,
+      "selected": true,
+      "reasons": []
+    },
+    {
+      "index": 17,
+      "group_id": "crop_probe_8d11477253574efb",
+      "image_id": 131152,
+      "family": "surfboard_support",
+      "human_confirmed": false,
+      "selected": false,
+      "reasons": [
+        "not_human_confirmed"
+      ]
+    },
+    {
+      "index": 18,
+      "group_id": "crop_probe_90bb1900abd51a0f",
+      "image_id": 567486,
+      "family": "surfboard_support",
+      "human_confirmed": true,
+      "selected": true,
+      "reasons": []
+    },
+    {
+      "index": 19,
+      "group_id": "crop_probe_911df8e81acb945b",
+      "image_id": 259420,
+      "family": "surfboard_support",
+      "human_confirmed": true,
+      "selected": false,
+      "reasons": [
+        "eligible_reserve_after_first_four"
+      ]
+    },
+    {
+      "index": 20,
+      "group_id": "crop_probe_ace448c97330cfd0",
+      "image_id": 521976,
+      "family": "surfboard_support",
+      "human_confirmed": true,
+      "selected": false,
+      "reasons": [
+        "eligible_reserve_after_first_four"
+      ]
+    }
+  ],
+  "training_approved": false,
+  "pending": [
+    "Actual HDF5 metadata",
+    "Pinned encoder feature compatibility before training"
+  ],
+  "limits": [
+    "One AI-assisted self-reported human review, no inter-reviewer agreement",
+    "Only explicitly confirmed groups used; remaining AI entries stay unverified",
+    "Old AI notes/flags may disagree with revised choices; confirmed truth/box fields take precedence",
+    "Montage exclusion is structural image review before new model outputs, not performance selection",
+    "New to adaptation only; caption backbone may have seen train/restval images"
+  ],
+  "human_export_sha256": "389536e1ebc09e6e5a8df43dde9b651df97b5f166c99be3237c3c71f3a6d47a8",
+  "assistant_proposal_sha256": "189ca7b2d13cd9fd4ff950d86cf6147eb54ebb4638715fefc5ff239f02689682",
+  "groups_sha256": "9c3d8d36f6bf797d909c59eca0f8c805a8b4b9b6a5140834dbd97289920f0b57"
+}

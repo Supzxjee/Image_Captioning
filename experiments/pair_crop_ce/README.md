@@ -2,6 +2,8 @@
 
 Status: **TRAIN BLOCKED pending human labels and feature compatibility.** No encoder, notebook, inference or training has been run by the agent.
 
+Update20October: human label gate now PASS; see `HUMAN_REVIEW_RESULT.md` and `LOCKED_DATA.json`. Four new groups per family are locked,14fit retained. Training is still blocked pending actual cache metadata and pinned feature compatibility. The preparation instructions below document the original workflow; no additional labels are needed to meet the current probe quota.
+
 ## Two tasks now
 
 1. Open local `review/index.html`: up to10 skateboard and10 surfboard candidate groups, plus one old fit group235799 to reconfirm. Export `pair_crop_candidate_review.json`. Judge only the selected green person and orange object. Both descriptions may be true or uncertain; do not force a contrast. The 224px field is descriptive, not an eligibility filter.

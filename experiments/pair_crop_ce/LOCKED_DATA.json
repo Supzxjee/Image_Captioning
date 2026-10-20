@@ -1,0 +1,2235 @@
+{
+  "status": "LABELS_LOCKED_TRAINING_GATES_PENDING",
+  "fit_groups": [
+    {
+      "group_id": "candidate_50edb6132ebb8519",
+      "family": "skateboard_support",
+      "same_image": true,
+      "events": [
+        {
+          "event_id": "235799_428275_637751",
+          "image_id": 235799,
+          "filename": "COCO_train2014_000000235799.jpg",
+          "filepath": "train2014",
+          "caption_split": "train",
+          "subject_box": [
+            0.75303125,
+            0.05630797773654917,
+            0.9370312500000001,
+            0.770278293135436
+          ],
+          "object_box": [
+            0.81615625,
+            0.42504638218923935,
+            0.912296875,
+            0.7690166975881262
+          ],
+          "width": 640,
+          "height": 539
+        },
+        {
+          "event_id": "235799_425302_643777",
+          "image_id": 235799,
+          "filename": "COCO_train2014_000000235799.jpg",
+          "filepath": "train2014",
+          "caption_split": "train",
+          "subject_box": [
+            0.140515625,
+            0.26940630797773657,
+            0.7421562500000001,
+            0.7914842300556586
+          ],
+          "object_box": [
+            0.57325,
+            0.5686456400742115,
+            0.6789531249999999,
+            0.8974397031539889
+          ],
+          "width": 640,
+          "height": 539
+        }
+      ],
+      "descriptions": [
+        "a person standing on a skateboard",
+        "a person carrying a skateboard"
+      ],
+      "positive_indices": [
+        1,
+        0
+      ]
+    },
+    {
+      "group_id": "candidate_0375a14e14d6378b",
+      "family": "bicycle_posture",
+      "same_image": false,
+      "events": [
+        {
+          "event_id": "263974_228148_129828",
+          "image_id": 263974,
+          "filename": "COCO_train2014_000000263974.jpg",
+          "filepath": "train2014",
+          "caption_split": "train",
+          "subject_box": [
+            0.504328125,
+            0.246125,
+            0.6488437499999999,
+            0.8109166666666667
+          ],
+          "object_box": [
+            0.43965624999999997,
+            0.3954791666666667,
+            0.6691874999999999,
+            0.8092708333333334
+          ],
+          "width": 640,
+          "height": 480
+        },
+        {
+          "event_id": "353288_216284_127528",
+          "image_id": 353288,
+          "filename": "COCO_train2014_000000353288.jpg",
+          "filepath": "train2014",
+          "caption_split": "train",
+          "subject_box": [
+            0.8026458333333333,
+            0.727546875,
+            1,
+            0.9207812499999999
+          ],
+          "object_box": [
+            0.8941874999999999,
+            0.778234375,
+            0.9995833333333333,
+            0.926734375
+          ],
+          "width": 480,
+          "height": 640
+        }
+      ],
+      "descriptions": [
+        "a person sitting on a bicycle",
+        "a person standing beside a bicycle"
+      ],
+      "positive_indices": [
+        0,
+        1
+      ]
+    },
+    {
+      "group_id": "candidate_0000065babcabdfc",
+      "family": "surfboard_support",
+      "same_image": false,
+      "events": [
+        {
+          "event_id": "440092_499148_647130",
+          "image_id": 440092,
+          "filename": "COCO_train2014_000000440092.jpg",
+          "filepath": "train2014",
+          "caption_split": "train",
+          "subject_box": [
+            0.26934375,
+            0.05181086519114688,
+            0.59990625,
+            0.867122736418511
+          ],
+          "object_box": [
+            0.26440625,
+            0.8440241448692153,
+            0.793609375,
+            1
+          ],
+          "width": 640,
+          "height": 497
+        },
+        {
+          "event_id": "160628_506557_649498",
+          "image_id": 160628,
+          "filename": "COCO_train2014_000000160628.jpg",
+          "filepath": "train2014",
+          "caption_split": "train",
+          "subject_box": [
+            0.123796875,
+            0.30852417302798985,
+            0.20465625000000004,
+            0.6282188295165394
+          ],
+          "object_box": [
+            0.036203125,
+            0.3430788804071247,
+            0.28101562500000005,
+            0.5550381679389312
+          ],
+          "width": 640,
+          "height": 393
+        }
+      ],
+      "descriptions": [
+        "a person standing on a surfboard",
+        "a person carrying a surfboard"
+      ],
+      "positive_indices": [
+        0,
+        1
+      ]
+    },
+    {
+      "group_id": "candidate_98144b2702f71aa1",
+      "family": "phone_position",
+      "same_image": true,
+      "events": [
+        {
+          "event_id": "496646_1299408_327809",
+          "image_id": 496646,
+          "filename": "COCO_train2014_000000496646.jpg",
+          "filepath": "train2014",
+          "caption_split": "train",
+          "subject_box": [
+            0.38196875,
+            0.12569444444444444,
+            0.529390625,
+            0.9353611111111112
+          ],
+          "object_box": [
+            0.39396875,
+            0.29147222222222224,
+            0.41726562500000003,
+            0.3304166666666667
+          ],
+          "width": 640,
+          "height": 360
+        },
+        {
+          "event_id": "496646_1209880_1635560",
+          "image_id": 496646,
+          "filename": "COCO_train2014_000000496646.jpg",
+          "filepath": "train2014",
+          "caption_split": "train",
+          "subject_box": [
+            0.7976093750000001,
+            0.08763888888888889,
+            0.9126406250000001,
+            0.7752777777777778
+          ],
+          "object_box": [
+            0.854140625,
+            0.1663888888888889,
+            0.883421875,
+            0.21847222222222223
+          ],
+          "width": 640,
+          "height": 360
+        }
+      ],
+      "descriptions": [
+        "a person holding a cell phone near their ear",
+        "a person looking at a cell phone in their hands"
+      ],
+      "positive_indices": [
+        1,
+        0
+      ]
+    },
+    {
+      "group_id": "candidate_000399513c4cf750",
+      "family": "skateboard_support",
+      "same_image": false,
+      "events": [
+        {
+          "event_id": "520204_421264_640232",
+          "image_id": 520204,
+          "filename": "COCO_train2014_000000520204.jpg",
+          "filepath": "train2014",
+          "caption_split": "train",
+          "subject_box": [
+            0.586046875,
+            0.005620608899297424,
+            1,
+            0.7849180327868852
+          ],
+          "object_box": [
+            0.64325,
+            0.6350819672131147,
+            0.997546875,
+            0.8292974238875879
+          ],
+          "width": 640,
+          "height": 427
+        },
+        {
+          "event_id": "45949_186327_643324",
+          "image_id": 45949,
+          "filename": "COCO_train2014_000000045949.jpg",
+          "filepath": "train2014",
+          "caption_split": "train",
+          "subject_box": [
+            0.14783783783783783,
+            0.1225,
+            0.9378078078078078,
+            0.9581000000000001
+          ],
+          "object_box": [
+            0.25981981981981983,
+            0.5258400000000001,
+            0.5938438438438438,
+            0.94832
+          ],
+          "width": 333,
+          "height": 500
+        }
+      ],
+      "descriptions": [
+        "a person standing on a skateboard",
+        "a person carrying a skateboard"
+      ],
+      "positive_indices": [
+        0,
+        1
+      ]
+    },
+    {
+      "group_id": "candidate_00014bad665432ab",
+      "family": "surfboard_support",
+      "same_image": false,
+      "events": [
+        {
+          "event_id": "160647_1690747_1481322",
+          "image_id": 160647,
+          "filename": "COCO_train2014_000000160647.jpg",
+          "filepath": "train2014",
+          "caption_split": "train",
+          "subject_box": [
+            0.42990625,
+            0.3692688679245283,
+            0.48209374999999993,
+            0.5545518867924528
+          ],
+          "object_box": [
+            0.40964062500000004,
+            0.5475707547169811,
+            0.5993281250000001,
+            0.5713207547169811
+          ],
+          "width": 640,
+          "height": 424
+        },
+        {
+          "event_id": "368370_200697_651017",
+          "image_id": 368370,
+          "filename": "COCO_train2014_000000368370.jpg",
+          "filepath": "train2014",
+          "caption_split": "train",
+          "subject_box": [
+            0.489546875,
+            0.4307692307692308,
+            0.6416875,
+            0.904941724941725
+          ],
+          "object_box": [
+            0.53984375,
+            0.5102797202797202,
+            0.746796875,
+            0.7205827505827506
+          ],
+          "width": 640,
+          "height": 429
+        }
+      ],
+      "descriptions": [
+        "a person standing on a surfboard",
+        "a person carrying a surfboard"
+      ],
+      "positive_indices": [
+        0,
+        1
+      ]
+    },
+    {
+      "group_id": "candidate_001540bda681aca7",
+      "family": "skateboard_support",
+      "same_image": false,
+      "events": [
+        {
+          "event_id": "492881_1685225_638849",
+          "image_id": 492881,
+          "filename": "COCO_train2014_000000492881.jpg",
+          "filepath": "train2014",
+          "caption_split": "train",
+          "subject_box": [
+            0.357515625,
+            0.0651716247139588,
+            0.5431874999999999,
+            0.3910068649885583
+          ],
+          "object_box": [
+            0.45806250000000004,
+            0.26169336384439357,
+            0.5108125,
+            0.40668192219679633
+          ],
+          "width": 640,
+          "height": 437
+        },
+        {
+          "event_id": "503488_458961_639733",
+          "image_id": 503488,
+          "filename": "COCO_train2014_000000503488.jpg",
+          "filepath": "train2014",
+          "caption_split": "train",
+          "subject_box": [
+            0.207859375,
+            0.3682552083333333,
+            0.36359375,
+            0.8766666666666666
+          ],
+          "object_box": [
+            0.1933125,
+            0.5567708333333333,
+            0.36481250000000004,
+            0.6708854166666667
+          ],
+          "width": 640,
+          "height": 384
+        }
+      ],
+      "descriptions": [
+        "a person standing on a skateboard",
+        "a person carrying a skateboard"
+      ],
+      "positive_indices": [
+        0,
+        1
+      ]
+    },
+    {
+      "group_id": "candidate_00030b8165be0a35",
+      "family": "surfboard_support",
+      "same_image": false,
+      "events": [
+        {
+          "event_id": "560632_423074_651486",
+          "image_id": 560632,
+          "filename": "COCO_train2014_000000560632.jpg",
+          "filepath": "train2014",
+          "caption_split": "train",
+          "subject_box": [
+            0.686515625,
+            0.30902083333333336,
+            0.76625,
+            0.5003541666666667
+          ],
+          "object_box": [
+            0.696734375,
+            0.45297916666666665,
+            0.7685625,
+            0.5308958333333333
+          ],
+          "width": 640,
+          "height": 480
+        },
+        {
+          "event_id": "462401_2151516_2230584",
+          "image_id": 462401,
+          "filename": "COCO_train2014_000000462401.jpg",
+          "filepath": "train2014",
+          "caption_split": "train",
+          "subject_box": [
+            0.196671875,
+            0.6941724941724942,
+            0.253453125,
+            0.9134265734265734
+          ],
+          "object_box": [
+            0.200046875,
+            0.7686013986013986,
+            0.2460625,
+            0.8435431235431236
+          ],
+          "width": 640,
+          "height": 429
+        }
+      ],
+      "descriptions": [
+        "a person standing on a surfboard",
+        "a person carrying a surfboard"
+      ],
+      "positive_indices": [
+        0,
+        1
+      ]
+    },
+    {
+      "group_id": "candidate_001e530a457ed66b",
+      "family": "phone_position",
+      "same_image": false,
+      "events": [
+        {
+          "event_id": "540716_443893_327194",
+          "image_id": 540716,
+          "filename": "COCO_train2014_000000540716.jpg",
+          "filepath": "train2014",
+          "caption_split": "train",
+          "subject_box": [
+            0,
+            0.00112,
+            1,
+            0.9898666666666667
+          ],
+          "object_box": [
+            0.6289600000000001,
+            0.31551999999999997,
+            0.7279800000000001,
+            0.67928
+          ],
+          "width": 500,
+          "height": 375
+        },
+        {
+          "event_id": "40346_448119_330120",
+          "image_id": 40346,
+          "filename": "COCO_train2014_000000040346.jpg",
+          "filepath": "train2014",
+          "caption_split": "train",
+          "subject_box": [
+            0.22416,
+            0.15954666666666667,
+            0.9286599999999999,
+            0.9954933333333333
+          ],
+          "object_box": [
+            0.10764,
+            0.3949333333333333,
+            0.26568,
+            0.5619466666666666
+          ],
+          "width": 500,
+          "height": 375
+        }
+      ],
+      "descriptions": [
+        "a person holding a cell phone near their ear",
+        "a person looking at a cell phone in their hands"
+      ],
+      "positive_indices": [
+        0,
+        1
+      ]
+    },
+    {
+      "group_id": "candidate_001e8e9ec1af39cf",
+      "family": "phone_position",
+      "same_image": false,
+      "events": [
+        {
+          "event_id": "436735_447001_322223",
+          "image_id": 436735,
+          "filename": "COCO_train2014_000000436735.jpg",
+          "filepath": "train2014",
+          "caption_split": "train",
+          "subject_box": [
+            0.26059375,
+            0.0037995337995337993,
+            0.9128281250000001,
+            0.9858275058275059
+          ],
+          "object_box": [
+            0.4310625,
+            0.3662937062937063,
+            0.49800000000000005,
+            0.45860139860139854
+          ],
+          "width": 640,
+          "height": 429
+        },
+        {
+          "event_id": "570474_459187_321703",
+          "image_id": 570474,
+          "filename": "COCO_train2014_000000570474.jpg",
+          "filepath": "train2014",
+          "caption_split": "train",
+          "subject_box": [
+            0.08070833333333334,
+            0.0074687500000000006,
+            0.890875,
+            0.852765625
+          ],
+          "object_box": [
+            0.19760416666666666,
+            0.15640625,
+            0.42454166666666665,
+            0.418546875
+          ],
+          "width": 480,
+          "height": 640
+        }
+      ],
+      "descriptions": [
+        "a person holding a cell phone near their ear",
+        "a person looking at a cell phone in their hands"
+      ],
+      "positive_indices": [
+        0,
+        1
+      ]
+    },
+    {
+      "group_id": "candidate_001ebb9a1ca1066d",
+      "family": "phone_position",
+      "same_image": false,
+      "events": [
+        {
+          "event_id": "526325_440753_322064",
+          "image_id": 526325,
+          "filename": "COCO_train2014_000000526325.jpg",
+          "filepath": "train2014",
+          "caption_split": "train",
+          "subject_box": [
+            0,
+            0.12698437499999998,
+            1,
+            0.98734375
+          ],
+          "object_box": [
+            0.27339583333333334,
+            0.356640625,
+            0.42572916666666666,
+            0.6246562499999999
+          ],
+          "width": 480,
+          "height": 640
+        },
+        {
+          "event_id": "200984_469072_322116",
+          "image_id": 200984,
+          "filename": "COCO_train2014_000000200984.jpg",
+          "filepath": "train2014",
+          "caption_split": "train",
+          "subject_box": [
+            0.00553125,
+            0.004696969696969697,
+            0.74609375,
+            0.997979797979798
+          ],
+          "object_box": [
+            0.70575,
+            0.37747474747474746,
+            0.74746875,
+            0.5421212121212121
+          ],
+          "width": 640,
+          "height": 396
+        }
+      ],
+      "descriptions": [
+        "a person holding a cell phone near their ear",
+        "a person looking at a cell phone in their hands"
+      ],
+      "positive_indices": [
+        0,
+        1
+      ]
+    },
+    {
+      "group_id": "candidate_013cfac02989d26d",
+      "family": "skateboard_support",
+      "same_image": false,
+      "events": [
+        {
+          "event_id": "381065_469004_1860183",
+          "image_id": 381065,
+          "filename": "COCO_train2014_000000381065.jpg",
+          "filepath": "train2014",
+          "caption_split": "train",
+          "subject_box": [
+            0.30909375,
+            0.2908745874587459,
+            0.599109375,
+            0.634075907590759
+          ],
+          "object_box": [
+            0.47203125,
+            0.5233003300330034,
+            0.6163281250000001,
+            0.6529867986798681
+          ],
+          "width": 640,
+          "height": 606
+        },
+        {
+          "event_id": "181841_1737358_643638",
+          "image_id": 181841,
+          "filename": "COCO_train2014_000000181841.jpg",
+          "filepath": "train2014",
+          "caption_split": "train",
+          "subject_box": [
+            0.023219999999999998,
+            0.15803571428571428,
+            0.74998,
+            0.9876488095238096
+          ],
+          "object_box": [
+            0,
+            0.3842857142857143,
+            0.7843600000000001,
+            0.8715476190476191
+          ],
+          "width": 500,
+          "height": 336
+        }
+      ],
+      "descriptions": [
+        "a person standing on a skateboard",
+        "a person carrying a skateboard"
+      ],
+      "positive_indices": [
+        0,
+        1
+      ]
+    },
+    {
+      "group_id": "candidate_0006da9d3047a2ad",
+      "family": "surfboard_support",
+      "same_image": false,
+      "events": [
+        {
+          "event_id": "72888_1217782_649945",
+          "image_id": 72888,
+          "filename": "COCO_train2014_000000072888.jpg",
+          "filepath": "train2014",
+          "caption_split": "train",
+          "subject_box": [
+            0.499015625,
+            0.17609411764705885,
+            0.6029375,
+            0.35997647058823534
+          ],
+          "object_box": [
+            0.50478125,
+            0.34110588235294115,
+            0.646390625,
+            0.37785882352941175
+          ],
+          "width": 640,
+          "height": 425
+        },
+        {
+          "event_id": "521602_440034_651930",
+          "image_id": 521602,
+          "filename": "COCO_train2014_000000521602.jpg",
+          "filepath": "train2014",
+          "caption_split": "train",
+          "subject_box": [
+            0.321796875,
+            0.4619672131147541,
+            0.37334375,
+            0.6389929742388759
+          ],
+          "object_box": [
+            0.32818749999999997,
+            0.46704918032786885,
+            0.43603125,
+            0.735807962529274
+          ],
+          "width": 640,
+          "height": 427
+        }
+      ],
+      "descriptions": [
+        "a person standing on a surfboard",
+        "a person carrying a surfboard"
+      ],
+      "positive_indices": [
+        0,
+        1
+      ]
+    },
+    {
+      "group_id": "candidate_000a4fdcfcf04e59",
+      "family": "surfboard_support",
+      "same_image": false,
+      "events": [
+        {
+          "event_id": "202853_1228758_651307",
+          "image_id": 202853,
+          "filename": "COCO_train2014_000000202853.jpg",
+          "filepath": "train2014",
+          "caption_split": "train",
+          "subject_box": [
+            0.16315625,
+            0.16374999999999998,
+            0.318671875,
+            0.5021875
+          ],
+          "object_box": [
+            0.146625,
+            0.40675,
+            0.364046875,
+            0.5280833333333333
+          ],
+          "width": 640,
+          "height": 480
+        },
+        {
+          "event_id": "134754_501718_651087",
+          "image_id": 134754,
+          "filename": "COCO_train2014_000000134754.jpg",
+          "filepath": "train2014",
+          "caption_split": "train",
+          "subject_box": [
+            0.5611875000000001,
+            0.0739344262295082,
+            0.8338437500000001,
+            0.8097423887587821
+          ],
+          "object_box": [
+            0.5937187500000001,
+            0.23302107728337237,
+            0.9265625,
+            0.5723419203747072
+          ],
+          "width": 640,
+          "height": 427
+        }
+      ],
+      "descriptions": [
+        "a person standing on a surfboard",
+        "a person carrying a surfboard"
+      ],
+      "positive_indices": [
+        0,
+        1
+      ]
+    }
+  ],
+  "exposed_development_groups": [
+    {
+      "group_id": "candidate_6fff8a4e958823d8",
+      "family": "surfboard_support",
+      "same_image": true,
+      "events": [
+        {
+          "event_id": "208095_1696282_652228",
+          "image_id": 208095,
+          "filename": "COCO_train2014_000000208095.jpg",
+          "filepath": "train2014",
+          "caption_split": "train",
+          "subject_box": [
+            0.351328125,
+            0.5846250000000001,
+            0.510015625,
+            0.7984166666666667
+          ],
+          "object_box": [
+            0.28778125,
+            0.7078749999999999,
+            0.44643750000000004,
+            0.8418125
+          ],
+          "width": 640,
+          "height": 480
+        },
+        {
+          "event_id": "208095_1754210_652499",
+          "image_id": 208095,
+          "filename": "COCO_train2014_000000208095.jpg",
+          "filepath": "train2014",
+          "caption_split": "train",
+          "subject_box": [
+            0.20393750000000002,
+            0.2593125,
+            0.271640625,
+            0.5892708333333334
+          ],
+          "object_box": [
+            0.174546875,
+            0.3439583333333333,
+            0.38996875,
+            0.4357916666666667
+          ],
+          "width": 640,
+          "height": 480
+        }
+      ],
+      "descriptions": [
+        "a person standing on a surfboard",
+        "a person carrying a surfboard"
+      ],
+      "positive_indices": [
+        0,
+        1
+      ]
+    },
+    {
+      "group_id": "candidate_5d56f9ff08e1a128",
+      "family": "skateboard_support",
+      "same_image": true,
+      "events": [
+        {
+          "event_id": "70642_1251212_643711",
+          "image_id": 70642,
+          "filename": "COCO_train2014_000000070642.jpg",
+          "filepath": "train2014",
+          "caption_split": "train",
+          "subject_box": [
+            0.22189542483660132,
+            0.44687908496732026,
+            0.3434640522875817,
+            0.797843137254902
+          ],
+          "object_box": [
+            0.11926470588235294,
+            0.5263398692810458,
+            0.317859477124183,
+            0.6409803921568628
+          ],
+          "width": 612,
+          "height": 612
+        },
+        {
+          "event_id": "70642_1324829_645151",
+          "image_id": 70642,
+          "filename": "COCO_train2014_000000070642.jpg",
+          "filepath": "train2014",
+          "caption_split": "train",
+          "subject_box": [
+            0.49045751633986934,
+            0.4545424836601307,
+            0.6437418300653596,
+            0.8311111111111111
+          ],
+          "object_box": [
+            0.5219444444444444,
+            0.7749509803921568,
+            0.6130555555555556,
+            0.8710294117647058
+          ],
+          "width": 612,
+          "height": 612
+        }
+      ],
+      "descriptions": [
+        "a person standing on a skateboard",
+        "a person carrying a skateboard"
+      ],
+      "positive_indices": [
+        1,
+        0
+      ]
+    },
+    {
+      "group_id": "candidate_001cceebebd8190e",
+      "family": "phone_position",
+      "same_image": false,
+      "events": [
+        {
+          "event_id": "26939_1708762_1636799",
+          "image_id": 26939,
+          "filename": "COCO_train2014_000000026939.jpg",
+          "filepath": "train2014",
+          "caption_split": "train",
+          "subject_box": [
+            0.43971875000000005,
+            0.25283333333333335,
+            1,
+            1
+          ],
+          "object_box": [
+            0.60403125,
+            0.5500833333333334,
+            0.7945625,
+            0.7148333333333333
+          ],
+          "width": 640,
+          "height": 480
+        },
+        {
+          "event_id": "377570_191729_328175",
+          "image_id": 377570,
+          "filename": "COCO_train2014_000000377570.jpg",
+          "filepath": "train2014",
+          "caption_split": "train",
+          "subject_box": [
+            0.293265625,
+            0.11910416666666666,
+            0.7870781250000001,
+            0.9438125
+          ],
+          "object_box": [
+            0.558640625,
+            0.4267708333333333,
+            0.6239843749999999,
+            0.4796875
+          ],
+          "width": 640,
+          "height": 480
+        }
+      ],
+      "descriptions": [
+        "a person holding a cell phone near their ear",
+        "a person looking at a cell phone in their hands"
+      ],
+      "positive_indices": [
+        0,
+        1
+      ]
+    },
+    {
+      "group_id": "candidate_002524577c397c2e",
+      "family": "skateboard_support",
+      "same_image": false,
+      "events": [
+        {
+          "event_id": "447681_2229087_638263",
+          "image_id": 447681,
+          "filename": "COCO_train2014_000000447681.jpg",
+          "filepath": "train2014",
+          "caption_split": "train",
+          "subject_box": [
+            0.14441108545034642,
+            0.22335937499999997,
+            0.5891916859122402,
+            0.625328125
+          ],
+          "object_box": [
+            0.12727482678983834,
+            0.48409375,
+            0.35018475750577366,
+            0.62265625
+          ],
+          "width": 433,
+          "height": 640
+        },
+        {
+          "event_id": "260040_1705835_643025",
+          "image_id": 260040,
+          "filename": "COCO_train2014_000000260040.jpg",
+          "filepath": "train2014",
+          "caption_split": "train",
+          "subject_box": [
+            0.37015625,
+            0.151943793911007,
+            0.640328125,
+            0.9438875878220141
+          ],
+          "object_box": [
+            0.446765625,
+            0.489672131147541,
+            0.636828125,
+            0.6693208430913349
+          ],
+          "width": 640,
+          "height": 427
+        }
+      ],
+      "descriptions": [
+        "a person standing on a skateboard",
+        "a person carrying a skateboard"
+      ],
+      "positive_indices": [
+        0,
+        1
+      ]
+    },
+    {
+      "group_id": "candidate_0006a3c356ed0407",
+      "family": "surfboard_support",
+      "same_image": false,
+      "events": [
+        {
+          "event_id": "107584_455643_1478747",
+          "image_id": 107584,
+          "filename": "COCO_train2014_000000107584.jpg",
+          "filepath": "train2014",
+          "caption_split": "train",
+          "subject_box": [
+            0.24647887323943662,
+            0.239109375,
+            0.778661971830986,
+            0.4265625
+          ],
+          "object_box": [
+            0.3643192488262911,
+            0.256859375,
+            0.8159389671361502,
+            0.511546875
+          ],
+          "width": 426,
+          "height": 640
+        },
+        {
+          "event_id": "162520_536266_652308",
+          "image_id": 162520,
+          "filename": "COCO_train2014_000000162520.jpg",
+          "filepath": "train2014",
+          "caption_split": "train",
+          "subject_box": [
+            0.31215625,
+            0.14314960629921258,
+            0.41025,
+            0.8801968503937008
+          ],
+          "object_box": [
+            0.266484375,
+            0.3196062992125985,
+            0.3945,
+            0.5833464566929134
+          ],
+          "width": 640,
+          "height": 254
+        }
+      ],
+      "descriptions": [
+        "a person standing on a surfboard",
+        "a person carrying a surfboard"
+      ],
+      "positive_indices": [
+        0,
+        1
+      ]
+    },
+    {
+      "group_id": "candidate_00282b60f1e11ec7",
+      "family": "phone_position",
+      "same_image": false,
+      "events": [
+        {
+          "event_id": "335594_456767_323555",
+          "image_id": 335594,
+          "filename": "COCO_train2014_000000335594.jpg",
+          "filepath": "train2014",
+          "caption_split": "train",
+          "subject_box": [
+            0.01029816513761468,
+            0.03526,
+            0.9071330275229358,
+            0.98134
+          ],
+          "object_box": [
+            0.48993119266055046,
+            0.33818,
+            0.555045871559633,
+            0.42182
+          ],
+          "width": 436,
+          "height": 500
+        },
+        {
+          "event_id": "179201_213590_2137664",
+          "image_id": 179201,
+          "filename": "COCO_train2014_000000179201.jpg",
+          "filepath": "train2014",
+          "caption_split": "train",
+          "subject_box": [
+            0.07921875,
+            0.31235416666666665,
+            0.407859375,
+            0.60675
+          ],
+          "object_box": [
+            0.176421875,
+            0.5243749999999999,
+            0.21590625000000002,
+            0.5709166666666666
+          ],
+          "width": 640,
+          "height": 480
+        }
+      ],
+      "descriptions": [
+        "a person holding a cell phone near their ear",
+        "a person looking at a cell phone in their hands"
+      ],
+      "positive_indices": [
+        0,
+        1
+      ]
+    },
+    {
+      "group_id": "candidate_003b508378285bef",
+      "family": "phone_position",
+      "same_image": false,
+      "events": [
+        {
+          "event_id": "16737_429661_322036",
+          "image_id": 16737,
+          "filename": "COCO_train2014_000000016737.jpg",
+          "filepath": "train2014",
+          "caption_split": "train",
+          "subject_box": [
+            0.02021875,
+            0.010541666666666666,
+            0.616859375,
+            0.9835833333333334
+          ],
+          "object_box": [
+            0.16273437500000001,
+            0.22854166666666667,
+            0.247734375,
+            0.3636041666666667
+          ],
+          "width": 640,
+          "height": 480
+        },
+        {
+          "event_id": "248034_464453_326296",
+          "image_id": 248034,
+          "filename": "COCO_train2014_000000248034.jpg",
+          "filepath": "train2014",
+          "caption_split": "train",
+          "subject_box": [
+            0.002234375,
+            0.013640625,
+            1,
+            0.80334375
+          ],
+          "object_box": [
+            0.246640625,
+            0.168078125,
+            0.377796875,
+            0.34678125
+          ],
+          "width": 640,
+          "height": 640
+        }
+      ],
+      "descriptions": [
+        "a person holding a cell phone near their ear",
+        "a person looking at a cell phone in their hands"
+      ],
+      "positive_indices": [
+        0,
+        1
+      ]
+    }
+  ],
+  "new_probe_groups": [
+    {
+      "group_id": "crop_probe_11a6923598414ac0",
+      "family": "skateboard_support",
+      "same_image": true,
+      "events": [
+        {
+          "event_id": "355593_det_7d17f2e9bee4_det_0a91fbf0b9dd",
+          "image_id": 355593,
+          "filename": "COCO_train2014_000000355593.jpg",
+          "filepath": "train2014",
+          "caption_split": "train",
+          "width": 640,
+          "height": 426,
+          "subject_id": "det_7d17f2e9bee4",
+          "object_id": "det_0a91fbf0b9dd",
+          "classes": [
+            "person",
+            "skateboard"
+          ],
+          "subject_box": [
+            0.44883820774354705,
+            0.025687546730041505,
+            0.6120946472828632,
+            0.8480525970458984
+          ],
+          "object_box": [
+            0.47932727569148104,
+            0.27694934844970703,
+            0.5689121980055682,
+            0.6524877166748047
+          ],
+          "patch_centers": {
+            "subject": 36,
+            "object": 5
+          },
+          "source_hint": {
+            "method": "UPT pair proposal; annotation box if matched IoU>=.5, otherwise detector box; ALL boxes require human confirmation",
+            "predicate": "holding",
+            "box_ids": [
+              "det_7d17f2e9bee4",
+              "det_0a91fbf0b9dd"
+            ]
+          }
+        },
+        {
+          "event_id": "355593_det_1dbb53b84d1a_det_9e5894c1e6fb",
+          "image_id": 355593,
+          "filename": "COCO_train2014_000000355593.jpg",
+          "filepath": "train2014",
+          "caption_split": "train",
+          "width": 640,
+          "height": 426,
+          "subject_id": "det_1dbb53b84d1a",
+          "object_id": "det_9e5894c1e6fb",
+          "classes": [
+            "person",
+            "skateboard"
+          ],
+          "subject_box": [
+            0.21790089476217736,
+            0.022299556732177733,
+            0.4981964390839665,
+            0.8802761840820312
+          ],
+          "object_box": [
+            0.22705799772975646,
+            0.7639916229248047,
+            0.5022848797876769,
+            0.9933286285400391
+          ],
+          "patch_centers": {
+            "subject": 48,
+            "object": 12
+          },
+          "source_hint": {
+            "method": "UPT pair proposal; annotation box if matched IoU>=.5, otherwise detector box; ALL boxes require human confirmation",
+            "predicate": "stand_on",
+            "box_ids": [
+              "det_1dbb53b84d1a",
+              "det_9e5894c1e6fb"
+            ]
+          }
+        }
+      ],
+      "descriptions": [
+        "a person standing on a skateboard",
+        "a person carrying a skateboard"
+      ],
+      "human_truth_matrix": [
+        [
+          "unreviewed",
+          "unreviewed"
+        ],
+        [
+          "unreviewed",
+          "unreviewed"
+        ]
+      ],
+      "truth_status": "CANDIDATE_ONLY_NOT_GOLD",
+      "training_eligible": false,
+      "split": "new_adaptation_probe",
+      "positive_indices": [
+        1,
+        0
+      ],
+      "verified_truth_matrix": [
+        [
+          "contradicted",
+          "supported"
+        ],
+        [
+          "supported",
+          "contradicted"
+        ]
+      ],
+      "verified_boxes": [
+        [
+          "clear",
+          "clear"
+        ],
+        [
+          "clear",
+          "clear"
+        ]
+      ],
+      "human_confirmed": true,
+      "label_origin": "assistant_draft_then_explicit_human_confirmation"
+    },
+    {
+      "group_id": "crop_probe_2ccc00fada5ec769",
+      "family": "skateboard_support",
+      "same_image": true,
+      "events": [
+        {
+          "event_id": "153249_det_92be3a3a0e79_det_452f62dda457",
+          "image_id": 153249,
+          "filename": "COCO_val2014_000000153249.jpg",
+          "filepath": "val2014",
+          "caption_split": "restval",
+          "width": 640,
+          "height": 427,
+          "subject_id": "det_92be3a3a0e79",
+          "object_id": "det_452f62dda457",
+          "classes": [
+            "person",
+            "skateboard"
+          ],
+          "subject_box": [
+            0.07710726803993562,
+            0.15996416091918944,
+            0.31112502911768924,
+            0.5897071838378907
+          ],
+          "object_box": [
+            0.05748527978637797,
+            0.513407096862793,
+            0.2841927955506542,
+            0.6184374237060547
+          ],
+          "patch_centers": {
+            "subject": 18,
+            "object": 6
+          },
+          "source_hint": {
+            "method": "UPT pair proposal; annotation box if matched IoU>=.5, otherwise detector box; ALL boxes require human confirmation",
+            "predicate": "stand_on",
+            "box_ids": [
+              "det_92be3a3a0e79",
+              "det_452f62dda457"
+            ]
+          }
+        },
+        {
+          "event_id": "153249_det_51122ab1be1d_det_f68750559ea3",
+          "image_id": 153249,
+          "filename": "COCO_val2014_000000153249.jpg",
+          "filepath": "val2014",
+          "caption_split": "restval",
+          "width": 640,
+          "height": 427,
+          "subject_id": "det_51122ab1be1d",
+          "object_id": "det_f68750559ea3",
+          "classes": [
+            "person",
+            "skateboard"
+          ],
+          "subject_box": [
+            0.566759123814116,
+            0.5935836029052735,
+            0.6681450850969558,
+            0.9870097351074218
+          ],
+          "object_box": [
+            0.5661942813672852,
+            0.7990638732910156,
+            0.6109817161273717,
+            0.9643712615966797
+          ],
+          "patch_centers": {
+            "subject": 6,
+            "object": 3
+          },
+          "source_hint": {
+            "method": "UPT pair proposal; annotation box if matched IoU>=.5, otherwise detector box; ALL boxes require human confirmation",
+            "predicate": "holding",
+            "box_ids": [
+              "det_51122ab1be1d",
+              "det_f68750559ea3"
+            ]
+          }
+        }
+      ],
+      "descriptions": [
+        "a person standing on a skateboard",
+        "a person carrying a skateboard"
+      ],
+      "human_truth_matrix": [
+        [
+          "unreviewed",
+          "unreviewed"
+        ],
+        [
+          "unreviewed",
+          "unreviewed"
+        ]
+      ],
+      "truth_status": "CANDIDATE_ONLY_NOT_GOLD",
+      "training_eligible": false,
+      "split": "new_adaptation_probe",
+      "positive_indices": [
+        0,
+        1
+      ],
+      "verified_truth_matrix": [
+        [
+          "supported",
+          "contradicted"
+        ],
+        [
+          "contradicted",
+          "supported"
+        ]
+      ],
+      "verified_boxes": [
+        [
+          "clear",
+          "clear"
+        ],
+        [
+          "clear",
+          "clear"
+        ]
+      ],
+      "human_confirmed": true,
+      "label_origin": "assistant_draft_then_explicit_human_confirmation"
+    },
+    {
+      "group_id": "crop_probe_a7ed012c847be8a7",
+      "family": "skateboard_support",
+      "same_image": true,
+      "events": [
+        {
+          "event_id": "461543_det_e145783baff3_det_eeb87de46d20",
+          "image_id": 461543,
+          "filename": "COCO_train2014_000000461543.jpg",
+          "filepath": "train2014",
+          "caption_split": "train",
+          "width": 640,
+          "height": 512,
+          "subject_id": "det_e145783baff3",
+          "object_id": "det_eeb87de46d20",
+          "classes": [
+            "person",
+            "skateboard"
+          ],
+          "subject_box": [
+            0.5097070922851562,
+            0.0007654130458831787,
+            0.94721533203125,
+            0.5689029693603516
+          ],
+          "object_box": [
+            0.5341301879882813,
+            0.5139725875854492,
+            0.7143603515625,
+            0.6883384704589843
+          ],
+          "patch_centers": {
+            "subject": 48,
+            "object": 9
+          },
+          "source_hint": {
+            "method": "UPT pair proposal; annotation box if matched IoU>=.5, otherwise detector box; ALL boxes require human confirmation",
+            "predicate": "stand_on",
+            "box_ids": [
+              "det_e145783baff3",
+              "det_eeb87de46d20"
+            ]
+          }
+        },
+        {
+          "event_id": "461543_det_431db22faec6_det_ee4f967d74f2",
+          "image_id": 461543,
+          "filename": "COCO_train2014_000000461543.jpg",
+          "filepath": "train2014",
+          "caption_split": "train",
+          "width": 640,
+          "height": 512,
+          "subject_id": "det_431db22faec6",
+          "object_id": "det_ee4f967d74f2",
+          "classes": [
+            "person",
+            "skateboard"
+          ],
+          "subject_box": [
+            0.12378665924072266,
+            0.004150032997131348,
+            0.43893804931640623,
+            0.9465483093261718
+          ],
+          "object_box": [
+            0.27790557861328125,
+            0.47428791046142577,
+            0.4081624755859375,
+            0.9541545104980469
+          ],
+          "patch_centers": {
+            "subject": 52,
+            "object": 12
+          },
+          "source_hint": {
+            "method": "UPT pair proposal; annotation box if matched IoU>=.5, otherwise detector box; ALL boxes require human confirmation",
+            "predicate": "holding",
+            "box_ids": [
+              "det_431db22faec6",
+              "det_ee4f967d74f2"
+            ]
+          }
+        }
+      ],
+      "descriptions": [
+        "a person standing on a skateboard",
+        "a person carrying a skateboard"
+      ],
+      "human_truth_matrix": [
+        [
+          "unreviewed",
+          "unreviewed"
+        ],
+        [
+          "unreviewed",
+          "unreviewed"
+        ]
+      ],
+      "truth_status": "CANDIDATE_ONLY_NOT_GOLD",
+      "training_eligible": false,
+      "split": "new_adaptation_probe",
+      "positive_indices": [
+        0,
+        1
+      ],
+      "verified_truth_matrix": [
+        [
+          "supported",
+          "contradicted"
+        ],
+        [
+          "contradicted",
+          "supported"
+        ]
+      ],
+      "verified_boxes": [
+        [
+          "clear",
+          "clear"
+        ],
+        [
+          "clear",
+          "clear"
+        ]
+      ],
+      "human_confirmed": true,
+      "label_origin": "assistant_draft_then_explicit_human_confirmation"
+    },
+    {
+      "group_id": "crop_probe_c75899232125146f",
+      "family": "skateboard_support",
+      "same_image": true,
+      "events": [
+        {
+          "event_id": "563271_det_368121d37a37_det_a96b60278e1c",
+          "image_id": 563271,
+          "filename": "COCO_val2014_000000563271.jpg",
+          "filepath": "val2014",
+          "caption_split": "restval",
+          "width": 500,
+          "height": 345,
+          "subject_id": "det_368121d37a37",
+          "object_id": "det_a96b60278e1c",
+          "classes": [
+            "person",
+            "skateboard"
+          ],
+          "subject_box": [
+            0.20929858229919382,
+            0.2298985481262207,
+            0.5568663866176391,
+            0.6761095428466797
+          ],
+          "object_box": [
+            0.29057895242396464,
+            0.6257204437255859,
+            0.3824408648855425,
+            0.6936032104492188
+          ],
+          "patch_centers": {
+            "subject": 30,
+            "object": 1
+          },
+          "source_hint": {
+            "method": "UPT pair proposal; annotation box if matched IoU>=.5, otherwise detector box; ALL boxes require human confirmation",
+            "predicate": "riding",
+            "box_ids": [
+              "det_368121d37a37",
+              "det_a96b60278e1c"
+            ]
+          }
+        },
+        {
+          "event_id": "563271_det_c3dd8293ef9f_det_d4b122ce139e",
+          "image_id": 563271,
+          "filename": "COCO_val2014_000000563271.jpg",
+          "filepath": "val2014",
+          "caption_split": "restval",
+          "width": 500,
+          "height": 345,
+          "subject_id": "det_c3dd8293ef9f",
+          "object_id": "det_d4b122ce139e",
+          "classes": [
+            "person",
+            "skateboard"
+          ],
+          "subject_box": [
+            0.8529342374892148,
+            0.0006546378135681152,
+            0.9988312215204379,
+            0.8303055572509765
+          ],
+          "object_box": [
+            0.8219682958436692,
+            0.399217529296875,
+            0.9015081107770707,
+            0.7875519561767578
+          ],
+          "patch_centers": {
+            "subject": 24,
+            "object": 5
+          },
+          "source_hint": {
+            "method": "UPT pair proposal; annotation box if matched IoU>=.5, otherwise detector box; ALL boxes require human confirmation",
+            "predicate": "holding",
+            "box_ids": [
+              "det_c3dd8293ef9f",
+              "det_d4b122ce139e"
+            ]
+          }
+        }
+      ],
+      "descriptions": [
+        "a person standing on a skateboard",
+        "a person carrying a skateboard"
+      ],
+      "human_truth_matrix": [
+        [
+          "unreviewed",
+          "unreviewed"
+        ],
+        [
+          "unreviewed",
+          "unreviewed"
+        ]
+      ],
+      "truth_status": "CANDIDATE_ONLY_NOT_GOLD",
+      "training_eligible": false,
+      "split": "new_adaptation_probe",
+      "positive_indices": [
+        0,
+        1
+      ],
+      "verified_truth_matrix": [
+        [
+          "supported",
+          "contradicted"
+        ],
+        [
+          "contradicted",
+          "supported"
+        ]
+      ],
+      "verified_boxes": [
+        [
+          "clear",
+          "clear"
+        ],
+        [
+          "clear",
+          "clear"
+        ]
+      ],
+      "human_confirmed": true,
+      "label_origin": "assistant_draft_then_explicit_human_confirmation"
+    },
+    {
+      "group_id": "crop_probe_1e651403fd2ebe45",
+      "family": "surfboard_support",
+      "same_image": true,
+      "events": [
+        {
+          "event_id": "176009_det_6d0659856894_det_010c457767b8",
+          "image_id": 176009,
+          "filename": "COCO_val2014_000000176009.jpg",
+          "filepath": "val2014",
+          "caption_split": "restval",
+          "width": 640,
+          "height": 427,
+          "subject_id": "det_6d0659856894",
+          "object_id": "det_010c457767b8",
+          "classes": [
+            "person",
+            "surfboard"
+          ],
+          "subject_box": [
+            0.22112991294829024,
+            0.0010114163160324097,
+            0.30673289040509016,
+            0.3113384246826172
+          ],
+          "object_box": [
+            0.15787242033563126,
+            0.0012564361095428467,
+            0.3177367553201887,
+            0.1412871742248535
+          ],
+          "patch_centers": {
+            "subject": 4,
+            "object": 4
+          },
+          "source_hint": {
+            "method": "UPT pair proposal; annotation box if matched IoU>=.5, otherwise detector box; ALL boxes require human confirmation",
+            "predicate": "holding",
+            "box_ids": [
+              "det_6d0659856894",
+              "det_010c457767b8"
+            ]
+          }
+        },
+        {
+          "event_id": "176009_det_5f16844c6907_det_6fe01ef5ba97",
+          "image_id": 176009,
+          "filename": "COCO_val2014_000000176009.jpg",
+          "filepath": "val2014",
+          "caption_split": "restval",
+          "width": 640,
+          "height": 427,
+          "subject_id": "det_5f16844c6907",
+          "object_id": "det_6fe01ef5ba97",
+          "classes": [
+            "person",
+            "surfboard"
+          ],
+          "subject_box": [
+            0.40121083263559476,
+            0.33287284851074217,
+            0.6668980640605452,
+            0.8038196563720703
+          ],
+          "object_box": [
+            0.2710152340492077,
+            0.7428469848632813,
+            0.6778193355302596,
+            0.8541577911376953
+          ],
+          "patch_centers": {
+            "subject": 18,
+            "object": 10
+          },
+          "source_hint": {
+            "method": "UPT pair proposal; annotation box if matched IoU>=.5, otherwise detector box; ALL boxes require human confirmation",
+            "predicate": "riding",
+            "box_ids": [
+              "det_5f16844c6907",
+              "det_6fe01ef5ba97"
+            ]
+          }
+        }
+      ],
+      "descriptions": [
+        "a person standing on a surfboard",
+        "a person carrying a surfboard"
+      ],
+      "human_truth_matrix": [
+        [
+          "unreviewed",
+          "unreviewed"
+        ],
+        [
+          "unreviewed",
+          "unreviewed"
+        ]
+      ],
+      "truth_status": "CANDIDATE_ONLY_NOT_GOLD",
+      "training_eligible": false,
+      "split": "new_adaptation_probe",
+      "positive_indices": [
+        1,
+        0
+      ],
+      "verified_truth_matrix": [
+        [
+          "contradicted",
+          "supported"
+        ],
+        [
+          "supported",
+          "contradicted"
+        ]
+      ],
+      "verified_boxes": [
+        [
+          "clear",
+          "clear"
+        ],
+        [
+          "clear",
+          "clear"
+        ]
+      ],
+      "human_confirmed": true,
+      "label_origin": "assistant_draft_then_explicit_human_confirmation"
+    },
+    {
+      "group_id": "crop_probe_1f41d21468ab4228",
+      "family": "surfboard_support",
+      "same_image": true,
+      "events": [
+        {
+          "event_id": "225682_det_f478025ccf97_654364",
+          "image_id": 225682,
+          "filename": "COCO_train2014_000000225682.jpg",
+          "filepath": "train2014",
+          "caption_split": "train",
+          "width": 640,
+          "height": 427,
+          "subject_id": "det_f478025ccf97",
+          "object_id": 654364,
+          "classes": [
+            "person",
+            "surfboard"
+          ],
+          "subject_box": [
+            0.4084430150532345,
+            0.06876864910125732,
+            0.48125044796444955,
+            0.4256496810913086
+          ],
+          "object_box": [
+            0.32384375,
+            0.1685480093676815,
+            0.51725,
+            0.2763934426229508
+          ],
+          "patch_centers": {
+            "subject": 5,
+            "object": 4
+          },
+          "source_hint": {
+            "method": "UPT pair proposal; annotation box if matched IoU>=.5, otherwise detector box; ALL boxes require human confirmation",
+            "predicate": "holding",
+            "box_ids": [
+              "det_f478025ccf97",
+              654364
+            ]
+          }
+        },
+        {
+          "event_id": "225682_468937_651882",
+          "image_id": 225682,
+          "filename": "COCO_train2014_000000225682.jpg",
+          "filepath": "train2014",
+          "caption_split": "train",
+          "width": 640,
+          "height": 427,
+          "subject_id": 468937,
+          "object_id": 651882,
+          "classes": [
+            "person",
+            "surfboard"
+          ],
+          "subject_box": [
+            0.44948437500000005,
+            0.41946135831381737,
+            0.6121562500000001,
+            0.7635597189695551
+          ],
+          "object_box": [
+            0.32984375,
+            0.7191100702576112,
+            0.557734375,
+            0.7955035128805621
+          ],
+          "patch_centers": {
+            "subject": 15,
+            "object": 3
+          },
+          "source_hint": {
+            "method": "UPT pair proposal; annotation box if matched IoU>=.5, otherwise detector box; ALL boxes require human confirmation",
+            "predicate": "riding",
+            "box_ids": [
+              468937,
+              651882
+            ]
+          }
+        }
+      ],
+      "descriptions": [
+        "a person standing on a surfboard",
+        "a person carrying a surfboard"
+      ],
+      "human_truth_matrix": [
+        [
+          "unreviewed",
+          "unreviewed"
+        ],
+        [
+          "unreviewed",
+          "unreviewed"
+        ]
+      ],
+      "truth_status": "CANDIDATE_ONLY_NOT_GOLD",
+      "training_eligible": false,
+      "split": "new_adaptation_probe",
+      "positive_indices": [
+        1,
+        0
+      ],
+      "verified_truth_matrix": [
+        [
+          "contradicted",
+          "supported"
+        ],
+        [
+          "supported",
+          "contradicted"
+        ]
+      ],
+      "verified_boxes": [
+        [
+          "clear",
+          "clear"
+        ],
+        [
+          "clear",
+          "clear"
+        ]
+      ],
+      "human_confirmed": true,
+      "label_origin": "assistant_draft_then_explicit_human_confirmation"
+    },
+    {
+      "group_id": "crop_probe_89785c52762edc97",
+      "family": "surfboard_support",
+      "same_image": true,
+      "events": [
+        {
+          "event_id": "300206_det_1d9f2bfc59b5_det_e06e1c31cddf",
+          "image_id": 300206,
+          "filename": "COCO_val2014_000000300206.jpg",
+          "filepath": "val2014",
+          "caption_split": "restval",
+          "width": 500,
+          "height": 375,
+          "subject_id": "det_1d9f2bfc59b5",
+          "object_id": "det_e06e1c31cddf",
+          "classes": [
+            "person",
+            "surfboard"
+          ],
+          "subject_box": [
+            0.4302278271759205,
+            0.46355926513671875,
+            0.5223214612892824,
+            0.724145278930664
+          ],
+          "object_box": [
+            0.4406654973414781,
+            0.6547748565673828,
+            0.5171627309487864,
+            0.7575226593017578
+          ],
+          "patch_centers": {
+            "subject": 4,
+            "object": 2
+          },
+          "source_hint": {
+            "method": "UPT pair proposal; annotation box if matched IoU>=.5, otherwise detector box; ALL boxes require human confirmation",
+            "predicate": "stand_on",
+            "box_ids": [
+              "det_1d9f2bfc59b5",
+              "det_e06e1c31cddf"
+            ]
+          }
+        },
+        {
+          "event_id": "300206_det_94ec3b3c2538_det_46f589a8341d",
+          "image_id": 300206,
+          "filename": "COCO_val2014_000000300206.jpg",
+          "filepath": "val2014",
+          "caption_split": "restval",
+          "width": 500,
+          "height": 375,
+          "subject_id": "det_94ec3b3c2538",
+          "object_id": "det_46f589a8341d",
+          "classes": [
+            "person",
+            "surfboard"
+          ],
+          "subject_box": [
+            0.1238955986209032,
+            0.3259254837036133,
+            0.18934037314123328,
+            0.5148037719726563
+          ],
+          "object_box": [
+            0.12181953015068012,
+            0.3684579849243164,
+            0.17106166073797344,
+            0.47355998992919923
+          ],
+          "patch_centers": {
+            "subject": 2,
+            "object": 0
+          },
+          "source_hint": {
+            "method": "UPT pair proposal; annotation box if matched IoU>=.5, otherwise detector box; ALL boxes require human confirmation",
+            "predicate": "holding",
+            "box_ids": [
+              "det_94ec3b3c2538",
+              "det_46f589a8341d"
+            ]
+          }
+        }
+      ],
+      "descriptions": [
+        "a person standing on a surfboard",
+        "a person carrying a surfboard"
+      ],
+      "human_truth_matrix": [
+        [
+          "unreviewed",
+          "unreviewed"
+        ],
+        [
+          "unreviewed",
+          "unreviewed"
+        ]
+      ],
+      "truth_status": "CANDIDATE_ONLY_NOT_GOLD",
+      "training_eligible": false,
+      "split": "new_adaptation_probe",
+      "positive_indices": [
+        0,
+        1
+      ],
+      "verified_truth_matrix": [
+        [
+          "supported",
+          "contradicted"
+        ],
+        [
+          "contradicted",
+          "supported"
+        ]
+      ],
+      "verified_boxes": [
+        [
+          "clear",
+          "clear"
+        ],
+        [
+          "clear",
+          "clear"
+        ]
+      ],
+      "human_confirmed": true,
+      "label_origin": "assistant_draft_then_explicit_human_confirmation"
+    },
+    {
+      "group_id": "crop_probe_90bb1900abd51a0f",
+      "family": "surfboard_support",
+      "same_image": true,
+      "events": [
+        {
+          "event_id": "567486_det_503465c8c5f3_det_515d0265f11b",
+          "image_id": 567486,
+          "filename": "COCO_train2014_000000567486.jpg",
+          "filepath": "train2014",
+          "caption_split": "train",
+          "width": 640,
+          "height": 361,
+          "subject_id": "det_503465c8c5f3",
+          "object_id": "det_515d0265f11b",
+          "classes": [
+            "person",
+            "surfboard"
+          ],
+          "subject_box": [
+            0.7247234782328394,
+            0.2888128199475877,
+            0.9003902586974869,
+            0.99222280624065
+          ],
+          "object_box": [
+            0.5276753911378235,
+            0.6773684075538148,
+            0.914740068073659,
+            0.9933272828447058
+          ],
+          "patch_centers": {
+            "subject": 30,
+            "object": 30
+          },
+          "source_hint": {
+            "method": "UPT pair proposal; annotation box if matched IoU>=.5, otherwise detector box; ALL boxes require human confirmation",
+            "predicate": "holding",
+            "box_ids": [
+              "det_503465c8c5f3",
+              "det_515d0265f11b"
+            ]
+          }
+        },
+        {
+          "event_id": "567486_det_e8cc04c5e2ca_det_835e3fac4a56",
+          "image_id": 567486,
+          "filename": "COCO_train2014_000000567486.jpg",
+          "filepath": "train2014",
+          "caption_split": "train",
+          "width": 640,
+          "height": 361,
+          "subject_id": "det_e8cc04c5e2ca",
+          "object_id": "det_835e3fac4a56",
+          "classes": [
+            "person",
+            "surfboard"
+          ],
+          "subject_box": [
+            0.38810630391972994,
+            0.24097990482411485,
+            0.4933639263087256,
+            0.4949626922607422
+          ],
+          "object_box": [
+            0.4275417914537228,
+            0.43194559787182096,
+            0.5072150606010878,
+            0.5259250478541597
+          ],
+          "patch_centers": {
+            "subject": 8,
+            "object": 1
+          },
+          "source_hint": {
+            "method": "UPT pair proposal; annotation box if matched IoU>=.5, otherwise detector box; ALL boxes require human confirmation",
+            "predicate": "riding",
+            "box_ids": [
+              "det_e8cc04c5e2ca",
+              "det_835e3fac4a56"
+            ]
+          }
+        }
+      ],
+      "descriptions": [
+        "a person standing on a surfboard",
+        "a person carrying a surfboard"
+      ],
+      "human_truth_matrix": [
+        [
+          "unreviewed",
+          "unreviewed"
+        ],
+        [
+          "unreviewed",
+          "unreviewed"
+        ]
+      ],
+      "truth_status": "CANDIDATE_ONLY_NOT_GOLD",
+      "training_eligible": false,
+      "split": "new_adaptation_probe",
+      "positive_indices": [
+        1,
+        0
+      ],
+      "verified_truth_matrix": [
+        [
+          "contradicted",
+          "supported"
+        ],
+        [
+          "supported",
+          "contradicted"
+        ]
+      ],
+      "verified_boxes": [
+        [
+          "clear",
+          "clear"
+        ],
+        [
+          "clear",
+          "clear"
+        ]
+      ],
+      "human_confirmed": true,
+      "label_origin": "assistant_draft_then_explicit_human_confirmation"
+    }
+  ],
+  "selection": "First four human-confirmed valid natural-scene groups/family in original fixed hash order;224visibility not a filter",
+  "training_approved": false,
+  "human_export_sha256": "389536e1ebc09e6e5a8df43dde9b651df97b5f166c99be3237c3c71f3a6d47a8",
+  "assistant_proposal_sha256": "189ca7b2d13cd9fd4ff950d86cf6147eb54ebb4638715fefc5ff239f02689682",
+  "groups_sha256": "9c3d8d36f6bf797d909c59eca0f8c805a8b4b9b6a5140834dbd97289920f0b57"
+}
