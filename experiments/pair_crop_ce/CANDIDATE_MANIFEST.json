@@ -1,0 +1,2689 @@
+{
+  "schema_version": 1,
+  "status": "CANDIDATES_ONLY_TRAIN_BLOCKED",
+  "groups": [
+    {
+      "group_id": "crop_probe_100f80c322d9ac3c",
+      "family": "skateboard_support",
+      "same_image": true,
+      "events": [
+        {
+          "event_id": "381119_det_3f51758a373b_det_19dac4c1372e",
+          "image_id": 381119,
+          "filename": "COCO_train2014_000000381119.jpg",
+          "filepath": "train2014",
+          "caption_split": "train",
+          "width": 640,
+          "height": 480,
+          "subject_id": "det_3f51758a373b",
+          "object_id": "det_19dac4c1372e",
+          "classes": [
+            "person",
+            "skateboard"
+          ],
+          "subject_box": [
+            0.7743334457082551,
+            0.3317656707763672,
+            0.9403263972355769,
+            0.8010453033447266
+          ],
+          "object_box": [
+            0.848849355615326,
+            0.5997725677490234,
+            0.9754721120866557,
+            0.8133727264404297
+          ],
+          "patch_centers": {
+            "subject": 12,
+            "object": 6
+          },
+          "source_hint": {
+            "method": "UPT pair proposal; annotation box if matched IoU>=.5, otherwise detector box; ALL boxes require human confirmation",
+            "predicate": "holding",
+            "box_ids": [
+              "det_3f51758a373b",
+              "det_19dac4c1372e"
+            ]
+          }
+        },
+        {
+          "event_id": "381119_det_4b9d201ab452_det_45b618ca4781",
+          "image_id": 381119,
+          "filename": "COCO_train2014_000000381119.jpg",
+          "filepath": "train2014",
+          "caption_split": "train",
+          "width": 640,
+          "height": 480,
+          "subject_id": "det_4b9d201ab452",
+          "object_id": "det_45b618ca4781",
+          "classes": [
+            "person",
+            "skateboard"
+          ],
+          "subject_box": [
+            0.42909718812294795,
+            0.23075544357299804,
+            0.6389693211882915,
+            0.7731529235839844
+          ],
+          "object_box": [
+            0.5343365696089353,
+            0.6184590911865234,
+            0.6752944001561034,
+            0.7828793334960937
+          ],
+          "patch_centers": {
+            "subject": 24,
+            "object": 4
+          },
+          "source_hint": {
+            "method": "UPT pair proposal; annotation box if matched IoU>=.5, otherwise detector box; ALL boxes require human confirmation",
+            "predicate": "stand_on",
+            "box_ids": [
+              "det_4b9d201ab452",
+              "det_45b618ca4781"
+            ]
+          }
+        }
+      ],
+      "descriptions": [
+        "a person standing on a skateboard",
+        "a person carrying a skateboard"
+      ],
+      "human_truth_matrix": [
+        [
+          "unreviewed",
+          "unreviewed"
+        ],
+        [
+          "unreviewed",
+          "unreviewed"
+        ]
+      ],
+      "truth_status": "CANDIDATE_ONLY_NOT_GOLD",
+      "training_eligible": false,
+      "split": "new_adaptation_probe_candidate"
+    },
+    {
+      "group_id": "crop_probe_11a6923598414ac0",
+      "family": "skateboard_support",
+      "same_image": true,
+      "events": [
+        {
+          "event_id": "355593_det_7d17f2e9bee4_det_0a91fbf0b9dd",
+          "image_id": 355593,
+          "filename": "COCO_train2014_000000355593.jpg",
+          "filepath": "train2014",
+          "caption_split": "train",
+          "width": 640,
+          "height": 426,
+          "subject_id": "det_7d17f2e9bee4",
+          "object_id": "det_0a91fbf0b9dd",
+          "classes": [
+            "person",
+            "skateboard"
+          ],
+          "subject_box": [
+            0.44883820774354705,
+            0.025687546730041505,
+            0.6120946472828632,
+            0.8480525970458984
+          ],
+          "object_box": [
+            0.47932727569148104,
+            0.27694934844970703,
+            0.5689121980055682,
+            0.6524877166748047
+          ],
+          "patch_centers": {
+            "subject": 36,
+            "object": 5
+          },
+          "source_hint": {
+            "method": "UPT pair proposal; annotation box if matched IoU>=.5, otherwise detector box; ALL boxes require human confirmation",
+            "predicate": "holding",
+            "box_ids": [
+              "det_7d17f2e9bee4",
+              "det_0a91fbf0b9dd"
+            ]
+          }
+        },
+        {
+          "event_id": "355593_det_1dbb53b84d1a_det_9e5894c1e6fb",
+          "image_id": 355593,
+          "filename": "COCO_train2014_000000355593.jpg",
+          "filepath": "train2014",
+          "caption_split": "train",
+          "width": 640,
+          "height": 426,
+          "subject_id": "det_1dbb53b84d1a",
+          "object_id": "det_9e5894c1e6fb",
+          "classes": [
+            "person",
+            "skateboard"
+          ],
+          "subject_box": [
+            0.21790089476217736,
+            0.022299556732177733,
+            0.4981964390839665,
+            0.8802761840820312
+          ],
+          "object_box": [
+            0.22705799772975646,
+            0.7639916229248047,
+            0.5022848797876769,
+            0.9933286285400391
+          ],
+          "patch_centers": {
+            "subject": 48,
+            "object": 12
+          },
+          "source_hint": {
+            "method": "UPT pair proposal; annotation box if matched IoU>=.5, otherwise detector box; ALL boxes require human confirmation",
+            "predicate": "stand_on",
+            "box_ids": [
+              "det_1dbb53b84d1a",
+              "det_9e5894c1e6fb"
+            ]
+          }
+        }
+      ],
+      "descriptions": [
+        "a person standing on a skateboard",
+        "a person carrying a skateboard"
+      ],
+      "human_truth_matrix": [
+        [
+          "unreviewed",
+          "unreviewed"
+        ],
+        [
+          "unreviewed",
+          "unreviewed"
+        ]
+      ],
+      "truth_status": "CANDIDATE_ONLY_NOT_GOLD",
+      "training_eligible": false,
+      "split": "new_adaptation_probe_candidate"
+    },
+    {
+      "group_id": "crop_probe_146ce85d9f82440b",
+      "family": "skateboard_support",
+      "same_image": true,
+      "events": [
+        {
+          "event_id": "506398_det_239ca91a9443_det_0eafa22f6678",
+          "image_id": 506398,
+          "filename": "COCO_train2014_000000506398.jpg",
+          "filepath": "train2014",
+          "caption_split": "train",
+          "width": 640,
+          "height": 512,
+          "subject_id": "det_239ca91a9443",
+          "object_id": "det_0eafa22f6678",
+          "classes": [
+            "person",
+            "skateboard"
+          ],
+          "subject_box": [
+            0.5606526489257813,
+            0.3834757995605469,
+            0.7192123413085938,
+            0.77150634765625
+          ],
+          "object_box": [
+            0.5793185424804688,
+            0.563887939453125,
+            0.6527515869140625,
+            0.7718000793457032
+          ],
+          "patch_centers": {
+            "subject": 12,
+            "object": 3
+          },
+          "source_hint": {
+            "method": "UPT pair proposal; annotation box if matched IoU>=.5, otherwise detector box; ALL boxes require human confirmation",
+            "predicate": "holding",
+            "box_ids": [
+              "det_239ca91a9443",
+              "det_0eafa22f6678"
+            ]
+          }
+        },
+        {
+          "event_id": "506398_det_29e64aacd885_det_e659d99cef3d",
+          "image_id": 506398,
+          "filename": "COCO_train2014_000000506398.jpg",
+          "filepath": "train2014",
+          "caption_split": "train",
+          "width": 640,
+          "height": 512,
+          "subject_id": "det_29e64aacd885",
+          "object_id": "det_e659d99cef3d",
+          "classes": [
+            "person",
+            "skateboard"
+          ],
+          "subject_box": [
+            0.15954833984375,
+            0.2854461669921875,
+            0.481466064453125,
+            0.8776181030273438
+          ],
+          "object_box": [
+            0.3315772705078125,
+            0.74123291015625,
+            0.47335775756835935,
+            0.8971057891845703
+          ],
+          "patch_centers": {
+            "subject": 40,
+            "object": 6
+          },
+          "source_hint": {
+            "method": "UPT pair proposal; annotation box if matched IoU>=.5, otherwise detector box; ALL boxes require human confirmation",
+            "predicate": "stand_on",
+            "box_ids": [
+              "det_29e64aacd885",
+              "det_e659d99cef3d"
+            ]
+          }
+        }
+      ],
+      "descriptions": [
+        "a person standing on a skateboard",
+        "a person carrying a skateboard"
+      ],
+      "human_truth_matrix": [
+        [
+          "unreviewed",
+          "unreviewed"
+        ],
+        [
+          "unreviewed",
+          "unreviewed"
+        ]
+      ],
+      "truth_status": "CANDIDATE_ONLY_NOT_GOLD",
+      "training_eligible": false,
+      "split": "new_adaptation_probe_candidate"
+    },
+    {
+      "group_id": "crop_probe_2ccc00fada5ec769",
+      "family": "skateboard_support",
+      "same_image": true,
+      "events": [
+        {
+          "event_id": "153249_det_92be3a3a0e79_det_452f62dda457",
+          "image_id": 153249,
+          "filename": "COCO_val2014_000000153249.jpg",
+          "filepath": "val2014",
+          "caption_split": "restval",
+          "width": 640,
+          "height": 427,
+          "subject_id": "det_92be3a3a0e79",
+          "object_id": "det_452f62dda457",
+          "classes": [
+            "person",
+            "skateboard"
+          ],
+          "subject_box": [
+            0.07710726803993562,
+            0.15996416091918944,
+            0.31112502911768924,
+            0.5897071838378907
+          ],
+          "object_box": [
+            0.05748527978637797,
+            0.513407096862793,
+            0.2841927955506542,
+            0.6184374237060547
+          ],
+          "patch_centers": {
+            "subject": 18,
+            "object": 6
+          },
+          "source_hint": {
+            "method": "UPT pair proposal; annotation box if matched IoU>=.5, otherwise detector box; ALL boxes require human confirmation",
+            "predicate": "stand_on",
+            "box_ids": [
+              "det_92be3a3a0e79",
+              "det_452f62dda457"
+            ]
+          }
+        },
+        {
+          "event_id": "153249_det_51122ab1be1d_det_f68750559ea3",
+          "image_id": 153249,
+          "filename": "COCO_val2014_000000153249.jpg",
+          "filepath": "val2014",
+          "caption_split": "restval",
+          "width": 640,
+          "height": 427,
+          "subject_id": "det_51122ab1be1d",
+          "object_id": "det_f68750559ea3",
+          "classes": [
+            "person",
+            "skateboard"
+          ],
+          "subject_box": [
+            0.566759123814116,
+            0.5935836029052735,
+            0.6681450850969558,
+            0.9870097351074218
+          ],
+          "object_box": [
+            0.5661942813672852,
+            0.7990638732910156,
+            0.6109817161273717,
+            0.9643712615966797
+          ],
+          "patch_centers": {
+            "subject": 6,
+            "object": 3
+          },
+          "source_hint": {
+            "method": "UPT pair proposal; annotation box if matched IoU>=.5, otherwise detector box; ALL boxes require human confirmation",
+            "predicate": "holding",
+            "box_ids": [
+              "det_51122ab1be1d",
+              "det_f68750559ea3"
+            ]
+          }
+        }
+      ],
+      "descriptions": [
+        "a person standing on a skateboard",
+        "a person carrying a skateboard"
+      ],
+      "human_truth_matrix": [
+        [
+          "unreviewed",
+          "unreviewed"
+        ],
+        [
+          "unreviewed",
+          "unreviewed"
+        ]
+      ],
+      "truth_status": "CANDIDATE_ONLY_NOT_GOLD",
+      "training_eligible": false,
+      "split": "new_adaptation_probe_candidate"
+    },
+    {
+      "group_id": "crop_probe_96b0eba582f9aecd",
+      "family": "skateboard_support",
+      "same_image": true,
+      "events": [
+        {
+          "event_id": "487943_det_e556925df903_det_8b0b5b2d0f69",
+          "image_id": 487943,
+          "filename": "COCO_val2014_000000487943.jpg",
+          "filepath": "val2014",
+          "caption_split": "restval",
+          "width": 640,
+          "height": 476,
+          "subject_id": "det_e556925df903",
+          "object_id": "det_8b0b5b2d0f69",
+          "classes": [
+            "person",
+            "skateboard"
+          ],
+          "subject_box": [
+            0.08742132142532703,
+            0.3165374946594238,
+            0.32400793740915695,
+            0.8954175567626953
+          ],
+          "object_box": [
+            0.1106651057753452,
+            0.5805892944335938,
+            0.3249957985101744,
+            0.6516464996337891
+          ],
+          "patch_centers": {
+            "subject": 36,
+            "object": 3
+          },
+          "source_hint": {
+            "method": "UPT pair proposal; annotation box if matched IoU>=.5, otherwise detector box; ALL boxes require human confirmation",
+            "predicate": "holding",
+            "box_ids": [
+              "det_e556925df903",
+              "det_8b0b5b2d0f69"
+            ]
+          }
+        },
+        {
+          "event_id": "487943_det_9fcbc4c75f58_det_36fcb36feaba",
+          "image_id": 487943,
+          "filename": "COCO_val2014_000000487943.jpg",
+          "filepath": "val2014",
+          "caption_split": "restval",
+          "width": 640,
+          "height": 476,
+          "subject_id": "det_9fcbc4c75f58",
+          "object_id": "det_36fcb36feaba",
+          "classes": [
+            "person",
+            "skateboard"
+          ],
+          "subject_box": [
+            0.6321790970203488,
+            0.28398948669433594,
+            0.9438307935138082,
+            0.6544914245605469
+          ],
+          "object_box": [
+            0.7354718727289244,
+            0.60723388671875,
+            0.8867452080305233,
+            0.681230697631836
+          ],
+          "patch_centers": {
+            "subject": 20,
+            "object": 2
+          },
+          "source_hint": {
+            "method": "UPT pair proposal; annotation box if matched IoU>=.5, otherwise detector box; ALL boxes require human confirmation",
+            "predicate": "riding",
+            "box_ids": [
+              "det_9fcbc4c75f58",
+              "det_36fcb36feaba"
+            ]
+          }
+        }
+      ],
+      "descriptions": [
+        "a person standing on a skateboard",
+        "a person carrying a skateboard"
+      ],
+      "human_truth_matrix": [
+        [
+          "unreviewed",
+          "unreviewed"
+        ],
+        [
+          "unreviewed",
+          "unreviewed"
+        ]
+      ],
+      "truth_status": "CANDIDATE_ONLY_NOT_GOLD",
+      "training_eligible": false,
+      "split": "new_adaptation_probe_candidate"
+    },
+    {
+      "group_id": "crop_probe_a7ed012c847be8a7",
+      "family": "skateboard_support",
+      "same_image": true,
+      "events": [
+        {
+          "event_id": "461543_det_e145783baff3_det_eeb87de46d20",
+          "image_id": 461543,
+          "filename": "COCO_train2014_000000461543.jpg",
+          "filepath": "train2014",
+          "caption_split": "train",
+          "width": 640,
+          "height": 512,
+          "subject_id": "det_e145783baff3",
+          "object_id": "det_eeb87de46d20",
+          "classes": [
+            "person",
+            "skateboard"
+          ],
+          "subject_box": [
+            0.5097070922851562,
+            0.0007654130458831787,
+            0.94721533203125,
+            0.5689029693603516
+          ],
+          "object_box": [
+            0.5341301879882813,
+            0.5139725875854492,
+            0.7143603515625,
+            0.6883384704589843
+          ],
+          "patch_centers": {
+            "subject": 48,
+            "object": 9
+          },
+          "source_hint": {
+            "method": "UPT pair proposal; annotation box if matched IoU>=.5, otherwise detector box; ALL boxes require human confirmation",
+            "predicate": "stand_on",
+            "box_ids": [
+              "det_e145783baff3",
+              "det_eeb87de46d20"
+            ]
+          }
+        },
+        {
+          "event_id": "461543_det_431db22faec6_det_ee4f967d74f2",
+          "image_id": 461543,
+          "filename": "COCO_train2014_000000461543.jpg",
+          "filepath": "train2014",
+          "caption_split": "train",
+          "width": 640,
+          "height": 512,
+          "subject_id": "det_431db22faec6",
+          "object_id": "det_ee4f967d74f2",
+          "classes": [
+            "person",
+            "skateboard"
+          ],
+          "subject_box": [
+            0.12378665924072266,
+            0.004150032997131348,
+            0.43893804931640623,
+            0.9465483093261718
+          ],
+          "object_box": [
+            0.27790557861328125,
+            0.47428791046142577,
+            0.4081624755859375,
+            0.9541545104980469
+          ],
+          "patch_centers": {
+            "subject": 52,
+            "object": 12
+          },
+          "source_hint": {
+            "method": "UPT pair proposal; annotation box if matched IoU>=.5, otherwise detector box; ALL boxes require human confirmation",
+            "predicate": "holding",
+            "box_ids": [
+              "det_431db22faec6",
+              "det_ee4f967d74f2"
+            ]
+          }
+        }
+      ],
+      "descriptions": [
+        "a person standing on a skateboard",
+        "a person carrying a skateboard"
+      ],
+      "human_truth_matrix": [
+        [
+          "unreviewed",
+          "unreviewed"
+        ],
+        [
+          "unreviewed",
+          "unreviewed"
+        ]
+      ],
+      "truth_status": "CANDIDATE_ONLY_NOT_GOLD",
+      "training_eligible": false,
+      "split": "new_adaptation_probe_candidate"
+    },
+    {
+      "group_id": "crop_probe_c042676b0b47db95",
+      "family": "skateboard_support",
+      "same_image": true,
+      "events": [
+        {
+          "event_id": "18464_det_1cd5ef0babf9_det_4f28267a87d8",
+          "image_id": 18464,
+          "filename": "COCO_train2014_000000018464.jpg",
+          "filepath": "train2014",
+          "caption_split": "train",
+          "width": 500,
+          "height": 500,
+          "subject_id": "det_1cd5ef0babf9",
+          "object_id": "det_4f28267a87d8",
+          "classes": [
+            "person",
+            "skateboard"
+          ],
+          "subject_box": [
+            0.6176742172241211,
+            0.4818637084960937,
+            0.7573617553710937,
+            0.8483568572998047
+          ],
+          "object_box": [
+            0.626173095703125,
+            0.8140709686279297,
+            0.6910746765136718,
+            0.8525889587402343
+          ],
+          "patch_centers": {
+            "subject": 10,
+            "object": 1
+          },
+          "source_hint": {
+            "method": "UPT pair proposal; annotation box if matched IoU>=.5, otherwise detector box; ALL boxes require human confirmation",
+            "predicate": "riding",
+            "box_ids": [
+              "det_1cd5ef0babf9",
+              "det_4f28267a87d8"
+            ]
+          }
+        },
+        {
+          "event_id": "18464_det_7f05e23cd7eb_det_e1fe49368e54",
+          "image_id": 18464,
+          "filename": "COCO_train2014_000000018464.jpg",
+          "filepath": "train2014",
+          "caption_split": "train",
+          "width": 500,
+          "height": 500,
+          "subject_id": "det_7f05e23cd7eb",
+          "object_id": "det_e1fe49368e54",
+          "classes": [
+            "person",
+            "skateboard"
+          ],
+          "subject_box": [
+            0.4939458465576172,
+            0.5706441497802734,
+            0.5816156768798828,
+            0.830264892578125
+          ],
+          "object_box": [
+            0.4950185012817383,
+            0.7417317199707031,
+            0.5609354400634765,
+            0.8452545928955079
+          ],
+          "patch_centers": {
+            "subject": 4,
+            "object": 2
+          },
+          "source_hint": {
+            "method": "UPT pair proposal; annotation box if matched IoU>=.5, otherwise detector box; ALL boxes require human confirmation",
+            "predicate": "holding",
+            "box_ids": [
+              "det_7f05e23cd7eb",
+              "det_e1fe49368e54"
+            ]
+          }
+        }
+      ],
+      "descriptions": [
+        "a person standing on a skateboard",
+        "a person carrying a skateboard"
+      ],
+      "human_truth_matrix": [
+        [
+          "unreviewed",
+          "unreviewed"
+        ],
+        [
+          "unreviewed",
+          "unreviewed"
+        ]
+      ],
+      "truth_status": "CANDIDATE_ONLY_NOT_GOLD",
+      "training_eligible": false,
+      "split": "new_adaptation_probe_candidate"
+    },
+    {
+      "group_id": "crop_probe_c75899232125146f",
+      "family": "skateboard_support",
+      "same_image": true,
+      "events": [
+        {
+          "event_id": "563271_det_368121d37a37_det_a96b60278e1c",
+          "image_id": 563271,
+          "filename": "COCO_val2014_000000563271.jpg",
+          "filepath": "val2014",
+          "caption_split": "restval",
+          "width": 500,
+          "height": 345,
+          "subject_id": "det_368121d37a37",
+          "object_id": "det_a96b60278e1c",
+          "classes": [
+            "person",
+            "skateboard"
+          ],
+          "subject_box": [
+            0.20929858229919382,
+            0.2298985481262207,
+            0.5568663866176391,
+            0.6761095428466797
+          ],
+          "object_box": [
+            0.29057895242396464,
+            0.6257204437255859,
+            0.3824408648855425,
+            0.6936032104492188
+          ],
+          "patch_centers": {
+            "subject": 30,
+            "object": 1
+          },
+          "source_hint": {
+            "method": "UPT pair proposal; annotation box if matched IoU>=.5, otherwise detector box; ALL boxes require human confirmation",
+            "predicate": "riding",
+            "box_ids": [
+              "det_368121d37a37",
+              "det_a96b60278e1c"
+            ]
+          }
+        },
+        {
+          "event_id": "563271_det_c3dd8293ef9f_det_d4b122ce139e",
+          "image_id": 563271,
+          "filename": "COCO_val2014_000000563271.jpg",
+          "filepath": "val2014",
+          "caption_split": "restval",
+          "width": 500,
+          "height": 345,
+          "subject_id": "det_c3dd8293ef9f",
+          "object_id": "det_d4b122ce139e",
+          "classes": [
+            "person",
+            "skateboard"
+          ],
+          "subject_box": [
+            0.8529342374892148,
+            0.0006546378135681152,
+            0.9988312215204379,
+            0.8303055572509765
+          ],
+          "object_box": [
+            0.8219682958436692,
+            0.399217529296875,
+            0.9015081107770707,
+            0.7875519561767578
+          ],
+          "patch_centers": {
+            "subject": 24,
+            "object": 5
+          },
+          "source_hint": {
+            "method": "UPT pair proposal; annotation box if matched IoU>=.5, otherwise detector box; ALL boxes require human confirmation",
+            "predicate": "holding",
+            "box_ids": [
+              "det_c3dd8293ef9f",
+              "det_d4b122ce139e"
+            ]
+          }
+        }
+      ],
+      "descriptions": [
+        "a person standing on a skateboard",
+        "a person carrying a skateboard"
+      ],
+      "human_truth_matrix": [
+        [
+          "unreviewed",
+          "unreviewed"
+        ],
+        [
+          "unreviewed",
+          "unreviewed"
+        ]
+      ],
+      "truth_status": "CANDIDATE_ONLY_NOT_GOLD",
+      "training_eligible": false,
+      "split": "new_adaptation_probe_candidate"
+    },
+    {
+      "group_id": "crop_probe_dbee4e176545957b",
+      "family": "skateboard_support",
+      "same_image": true,
+      "events": [
+        {
+          "event_id": "333575_det_ef1d9b3a2d56_det_302d2d764afd",
+          "image_id": 333575,
+          "filename": "COCO_train2014_000000333575.jpg",
+          "filepath": "train2014",
+          "caption_split": "train",
+          "width": 640,
+          "height": 481,
+          "subject_id": "det_ef1d9b3a2d56",
+          "object_id": "det_302d2d764afd",
+          "classes": [
+            "person",
+            "skateboard"
+          ],
+          "subject_box": [
+            0.2024287890670891,
+            0.28448509216308593,
+            0.414615315602238,
+            0.7956175994873047
+          ],
+          "object_box": [
+            0.2335083179904106,
+            0.46432830810546877,
+            0.3075732754585438,
+            0.7157064819335938
+          ],
+          "patch_centers": {
+            "subject": 21,
+            "object": 3
+          },
+          "source_hint": {
+            "method": "UPT pair proposal; annotation box if matched IoU>=.5, otherwise detector box; ALL boxes require human confirmation",
+            "predicate": "holding",
+            "box_ids": [
+              "det_ef1d9b3a2d56",
+              "det_302d2d764afd"
+            ]
+          }
+        },
+        {
+          "event_id": "333575_det_59e0bd1143a0_det_6329cb00f479",
+          "image_id": 333575,
+          "filename": "COCO_train2014_000000333575.jpg",
+          "filepath": "train2014",
+          "caption_split": "train",
+          "width": 640,
+          "height": 481,
+          "subject_id": "det_59e0bd1143a0",
+          "object_id": "det_6329cb00f479",
+          "classes": [
+            "person",
+            "skateboard"
+          ],
+          "subject_box": [
+            0.6334624899957413,
+            0.21889474868774414,
+            0.8812433113729147,
+            0.5168690490722656
+          ],
+          "object_box": [
+            0.7540743261351621,
+            0.4604286956787109,
+            0.8880421918137629,
+            0.5425789260864258
+          ],
+          "patch_centers": {
+            "subject": 12,
+            "object": 2
+          },
+          "source_hint": {
+            "method": "UPT pair proposal; annotation box if matched IoU>=.5, otherwise detector box; ALL boxes require human confirmation",
+            "predicate": "riding",
+            "box_ids": [
+              "det_59e0bd1143a0",
+              "det_6329cb00f479"
+            ]
+          }
+        }
+      ],
+      "descriptions": [
+        "a person standing on a skateboard",
+        "a person carrying a skateboard"
+      ],
+      "human_truth_matrix": [
+        [
+          "unreviewed",
+          "unreviewed"
+        ],
+        [
+          "unreviewed",
+          "unreviewed"
+        ]
+      ],
+      "truth_status": "CANDIDATE_ONLY_NOT_GOLD",
+      "training_eligible": false,
+      "split": "new_adaptation_probe_candidate"
+    },
+    {
+      "group_id": "crop_probe_e37b7a8f4c88de98",
+      "family": "skateboard_support",
+      "same_image": true,
+      "events": [
+        {
+          "event_id": "337452_det_17ec805cdd98_det_3f2177bf40b9",
+          "image_id": 337452,
+          "filename": "COCO_train2014_000000337452.jpg",
+          "filepath": "train2014",
+          "caption_split": "train",
+          "width": 500,
+          "height": 368,
+          "subject_id": "det_17ec805cdd98",
+          "object_id": "det_3f2177bf40b9",
+          "classes": [
+            "person",
+            "skateboard"
+          ],
+          "subject_box": [
+            0.5448803418688133,
+            0.3351078414916992,
+            0.8086865391740043,
+            0.8668081665039062
+          ],
+          "object_box": [
+            0.6080049686888525,
+            0.7744289398193359,
+            0.8101711659580744,
+            0.8956800079345704
+          ],
+          "patch_centers": {
+            "subject": 21,
+            "object": 4
+          },
+          "source_hint": {
+            "method": "UPT pair proposal; annotation box if matched IoU>=.5, otherwise detector box; ALL boxes require human confirmation",
+            "predicate": "stand_on",
+            "box_ids": [
+              "det_17ec805cdd98",
+              "det_3f2177bf40b9"
+            ]
+          }
+        },
+        {
+          "event_id": "337452_det_81c577c14679_det_d5871a04ba24",
+          "image_id": 337452,
+          "filename": "COCO_train2014_000000337452.jpg",
+          "filepath": "train2014",
+          "caption_split": "train",
+          "width": 500,
+          "height": 368,
+          "subject_id": "det_81c577c14679",
+          "object_id": "det_d5871a04ba24",
+          "classes": [
+            "person",
+            "skateboard"
+          ],
+          "subject_box": [
+            0.8605375342606181,
+            0.21374279022216797,
+            0.9986133891574586,
+            0.8505715942382812
+          ],
+          "object_box": [
+            0.8931534628402682,
+            0.5265557861328125,
+            0.9890636914781883,
+            0.8634359741210937
+          ],
+          "patch_centers": {
+            "subject": 18,
+            "object": 5
+          },
+          "source_hint": {
+            "method": "UPT pair proposal; annotation box if matched IoU>=.5, otherwise detector box; ALL boxes require human confirmation",
+            "predicate": "holding",
+            "box_ids": [
+              "det_81c577c14679",
+              "det_d5871a04ba24"
+            ]
+          }
+        }
+      ],
+      "descriptions": [
+        "a person standing on a skateboard",
+        "a person carrying a skateboard"
+      ],
+      "human_truth_matrix": [
+        [
+          "unreviewed",
+          "unreviewed"
+        ],
+        [
+          "unreviewed",
+          "unreviewed"
+        ]
+      ],
+      "truth_status": "CANDIDATE_ONLY_NOT_GOLD",
+      "training_eligible": false,
+      "split": "new_adaptation_probe_candidate"
+    },
+    {
+      "group_id": "crop_probe_1e651403fd2ebe45",
+      "family": "surfboard_support",
+      "same_image": true,
+      "events": [
+        {
+          "event_id": "176009_det_6d0659856894_det_010c457767b8",
+          "image_id": 176009,
+          "filename": "COCO_val2014_000000176009.jpg",
+          "filepath": "val2014",
+          "caption_split": "restval",
+          "width": 640,
+          "height": 427,
+          "subject_id": "det_6d0659856894",
+          "object_id": "det_010c457767b8",
+          "classes": [
+            "person",
+            "surfboard"
+          ],
+          "subject_box": [
+            0.22112991294829024,
+            0.0010114163160324097,
+            0.30673289040509016,
+            0.3113384246826172
+          ],
+          "object_box": [
+            0.15787242033563126,
+            0.0012564361095428467,
+            0.3177367553201887,
+            0.1412871742248535
+          ],
+          "patch_centers": {
+            "subject": 4,
+            "object": 4
+          },
+          "source_hint": {
+            "method": "UPT pair proposal; annotation box if matched IoU>=.5, otherwise detector box; ALL boxes require human confirmation",
+            "predicate": "holding",
+            "box_ids": [
+              "det_6d0659856894",
+              "det_010c457767b8"
+            ]
+          }
+        },
+        {
+          "event_id": "176009_det_5f16844c6907_det_6fe01ef5ba97",
+          "image_id": 176009,
+          "filename": "COCO_val2014_000000176009.jpg",
+          "filepath": "val2014",
+          "caption_split": "restval",
+          "width": 640,
+          "height": 427,
+          "subject_id": "det_5f16844c6907",
+          "object_id": "det_6fe01ef5ba97",
+          "classes": [
+            "person",
+            "surfboard"
+          ],
+          "subject_box": [
+            0.40121083263559476,
+            0.33287284851074217,
+            0.6668980640605452,
+            0.8038196563720703
+          ],
+          "object_box": [
+            0.2710152340492077,
+            0.7428469848632813,
+            0.6778193355302596,
+            0.8541577911376953
+          ],
+          "patch_centers": {
+            "subject": 18,
+            "object": 10
+          },
+          "source_hint": {
+            "method": "UPT pair proposal; annotation box if matched IoU>=.5, otherwise detector box; ALL boxes require human confirmation",
+            "predicate": "riding",
+            "box_ids": [
+              "det_5f16844c6907",
+              "det_6fe01ef5ba97"
+            ]
+          }
+        }
+      ],
+      "descriptions": [
+        "a person standing on a surfboard",
+        "a person carrying a surfboard"
+      ],
+      "human_truth_matrix": [
+        [
+          "unreviewed",
+          "unreviewed"
+        ],
+        [
+          "unreviewed",
+          "unreviewed"
+        ]
+      ],
+      "truth_status": "CANDIDATE_ONLY_NOT_GOLD",
+      "training_eligible": false,
+      "split": "new_adaptation_probe_candidate"
+    },
+    {
+      "group_id": "crop_probe_1f41d21468ab4228",
+      "family": "surfboard_support",
+      "same_image": true,
+      "events": [
+        {
+          "event_id": "225682_det_f478025ccf97_654364",
+          "image_id": 225682,
+          "filename": "COCO_train2014_000000225682.jpg",
+          "filepath": "train2014",
+          "caption_split": "train",
+          "width": 640,
+          "height": 427,
+          "subject_id": "det_f478025ccf97",
+          "object_id": 654364,
+          "classes": [
+            "person",
+            "surfboard"
+          ],
+          "subject_box": [
+            0.4084430150532345,
+            0.06876864910125732,
+            0.48125044796444955,
+            0.4256496810913086
+          ],
+          "object_box": [
+            0.32384375,
+            0.1685480093676815,
+            0.51725,
+            0.2763934426229508
+          ],
+          "patch_centers": {
+            "subject": 5,
+            "object": 4
+          },
+          "source_hint": {
+            "method": "UPT pair proposal; annotation box if matched IoU>=.5, otherwise detector box; ALL boxes require human confirmation",
+            "predicate": "holding",
+            "box_ids": [
+              "det_f478025ccf97",
+              654364
+            ]
+          }
+        },
+        {
+          "event_id": "225682_468937_651882",
+          "image_id": 225682,
+          "filename": "COCO_train2014_000000225682.jpg",
+          "filepath": "train2014",
+          "caption_split": "train",
+          "width": 640,
+          "height": 427,
+          "subject_id": 468937,
+          "object_id": 651882,
+          "classes": [
+            "person",
+            "surfboard"
+          ],
+          "subject_box": [
+            0.44948437500000005,
+            0.41946135831381737,
+            0.6121562500000001,
+            0.7635597189695551
+          ],
+          "object_box": [
+            0.32984375,
+            0.7191100702576112,
+            0.557734375,
+            0.7955035128805621
+          ],
+          "patch_centers": {
+            "subject": 15,
+            "object": 3
+          },
+          "source_hint": {
+            "method": "UPT pair proposal; annotation box if matched IoU>=.5, otherwise detector box; ALL boxes require human confirmation",
+            "predicate": "riding",
+            "box_ids": [
+              468937,
+              651882
+            ]
+          }
+        }
+      ],
+      "descriptions": [
+        "a person standing on a surfboard",
+        "a person carrying a surfboard"
+      ],
+      "human_truth_matrix": [
+        [
+          "unreviewed",
+          "unreviewed"
+        ],
+        [
+          "unreviewed",
+          "unreviewed"
+        ]
+      ],
+      "truth_status": "CANDIDATE_ONLY_NOT_GOLD",
+      "training_eligible": false,
+      "split": "new_adaptation_probe_candidate"
+    },
+    {
+      "group_id": "crop_probe_36c55a07cf7f21b5",
+      "family": "surfboard_support",
+      "same_image": true,
+      "events": [
+        {
+          "event_id": "428665_det_24af7bdc9258_det_78f0e14c9a86",
+          "image_id": 428665,
+          "filename": "COCO_train2014_000000428665.jpg",
+          "filepath": "train2014",
+          "caption_split": "train",
+          "width": 640,
+          "height": 427,
+          "subject_id": "det_24af7bdc9258",
+          "object_id": "det_78f0e14c9a86",
+          "classes": [
+            "person",
+            "surfboard"
+          ],
+          "subject_box": [
+            0.20099341461716144,
+            0.6816023254394531,
+            0.335780686990135,
+            0.9807578277587891
+          ],
+          "object_box": [
+            0.06254615179193924,
+            0.7489424133300782,
+            0.45612921249478733,
+            0.9812464904785156
+          ],
+          "patch_centers": {
+            "subject": 8,
+            "object": 20
+          },
+          "source_hint": {
+            "method": "UPT pair proposal; annotation box if matched IoU>=.5, otherwise detector box; ALL boxes require human confirmation",
+            "predicate": "holding",
+            "box_ids": [
+              "det_24af7bdc9258",
+              "det_78f0e14c9a86"
+            ]
+          }
+        },
+        {
+          "event_id": "428665_det_c065cc9fbebc_det_db7d296f6dde",
+          "image_id": 428665,
+          "filename": "COCO_train2014_000000428665.jpg",
+          "filepath": "train2014",
+          "caption_split": "train",
+          "width": 640,
+          "height": 427,
+          "subject_id": "det_c065cc9fbebc",
+          "object_id": "det_db7d296f6dde",
+          "classes": [
+            "person",
+            "surfboard"
+          ],
+          "subject_box": [
+            0.43578989571387616,
+            0.4219707489013672,
+            0.5447976157703034,
+            0.5889057922363281
+          ],
+          "object_box": [
+            0.445526453929707,
+            0.5507957458496093,
+            0.509389793007845,
+            0.6081963348388671
+          ],
+          "patch_centers": {
+            "subject": 4,
+            "object": 1
+          },
+          "source_hint": {
+            "method": "UPT pair proposal; annotation box if matched IoU>=.5, otherwise detector box; ALL boxes require human confirmation",
+            "predicate": "riding",
+            "box_ids": [
+              "det_c065cc9fbebc",
+              "det_db7d296f6dde"
+            ]
+          }
+        }
+      ],
+      "descriptions": [
+        "a person standing on a surfboard",
+        "a person carrying a surfboard"
+      ],
+      "human_truth_matrix": [
+        [
+          "unreviewed",
+          "unreviewed"
+        ],
+        [
+          "unreviewed",
+          "unreviewed"
+        ]
+      ],
+      "truth_status": "CANDIDATE_ONLY_NOT_GOLD",
+      "training_eligible": false,
+      "split": "new_adaptation_probe_candidate"
+    },
+    {
+      "group_id": "crop_probe_86e4942e0fbb5c1a",
+      "family": "surfboard_support",
+      "same_image": true,
+      "events": [
+        {
+          "event_id": "375110_det_60dbe0a6782b_det_7c044d2edd4c",
+          "image_id": 375110,
+          "filename": "COCO_train2014_000000375110.jpg",
+          "filepath": "train2014",
+          "caption_split": "train",
+          "width": 640,
+          "height": 480,
+          "subject_id": "det_60dbe0a6782b",
+          "object_id": "det_7c044d2edd4c",
+          "classes": [
+            "person",
+            "surfboard"
+          ],
+          "subject_box": [
+            0.5916376453850551,
+            0.4123521423339844,
+            0.7194682795826982,
+            0.593106575012207
+          ],
+          "object_box": [
+            0.5653556551763309,
+            0.5466123962402344,
+            0.7540372522865854,
+            0.6104266738891602
+          ],
+          "patch_centers": {
+            "subject": 4,
+            "object": 3
+          },
+          "source_hint": {
+            "method": "UPT pair proposal; annotation box if matched IoU>=.5, otherwise detector box; ALL boxes require human confirmation",
+            "predicate": "riding",
+            "box_ids": [
+              "det_60dbe0a6782b",
+              "det_7c044d2edd4c"
+            ]
+          }
+        },
+        {
+          "event_id": "375110_det_29197385c559_det_ade2f15bcc80",
+          "image_id": 375110,
+          "filename": "COCO_train2014_000000375110.jpg",
+          "filepath": "train2014",
+          "caption_split": "train",
+          "width": 640,
+          "height": 480,
+          "subject_id": "det_29197385c559",
+          "object_id": "det_ade2f15bcc80",
+          "classes": [
+            "person",
+            "surfboard"
+          ],
+          "subject_box": [
+            0.032809509792649946,
+            0.3062807273864746,
+            0.12720835902230154,
+            0.6153186416625976
+          ],
+          "object_box": [
+            0.03190627822732836,
+            0.3231828308105469,
+            0.20230493312928735,
+            0.4166707992553711
+          ],
+          "patch_centers": {
+            "subject": 10,
+            "object": 3
+          },
+          "source_hint": {
+            "method": "UPT pair proposal; annotation box if matched IoU>=.5, otherwise detector box; ALL boxes require human confirmation",
+            "predicate": "holding",
+            "box_ids": [
+              "det_29197385c559",
+              "det_ade2f15bcc80"
+            ]
+          }
+        }
+      ],
+      "descriptions": [
+        "a person standing on a surfboard",
+        "a person carrying a surfboard"
+      ],
+      "human_truth_matrix": [
+        [
+          "unreviewed",
+          "unreviewed"
+        ],
+        [
+          "unreviewed",
+          "unreviewed"
+        ]
+      ],
+      "truth_status": "CANDIDATE_ONLY_NOT_GOLD",
+      "training_eligible": false,
+      "split": "new_adaptation_probe_candidate"
+    },
+    {
+      "group_id": "crop_probe_88deea1ae649f226",
+      "family": "surfboard_support",
+      "same_image": true,
+      "events": [
+        {
+          "event_id": "399809_223280_651389",
+          "image_id": 399809,
+          "filename": "COCO_train2014_000000399809.jpg",
+          "filepath": "train2014",
+          "caption_split": "train",
+          "width": 640,
+          "height": 414,
+          "subject_id": 223280,
+          "object_id": 651389,
+          "classes": [
+            "person",
+            "surfboard"
+          ],
+          "subject_box": [
+            0.626625,
+            0.4542028985507246,
+            0.71115625,
+            0.7305314009661835
+          ],
+          "object_box": [
+            0.617078125,
+            0.6948067632850241,
+            0.707390625,
+            0.762342995169082
+          ],
+          "patch_centers": {
+            "subject": 4,
+            "object": 1
+          },
+          "source_hint": {
+            "method": "UPT pair proposal; annotation box if matched IoU>=.5, otherwise detector box; ALL boxes require human confirmation",
+            "predicate": "stand_on",
+            "box_ids": [
+              223280,
+              651389
+            ]
+          }
+        },
+        {
+          "event_id": "399809_224897_649155",
+          "image_id": 399809,
+          "filename": "COCO_train2014_000000399809.jpg",
+          "filepath": "train2014",
+          "caption_split": "train",
+          "width": 640,
+          "height": 414,
+          "subject_id": 224897,
+          "object_id": 649155,
+          "classes": [
+            "person",
+            "surfboard"
+          ],
+          "subject_box": [
+            0.248578125,
+            0.6147584541062802,
+            0.33321875,
+            0.7655072463768114
+          ],
+          "object_box": [
+            0.2945,
+            0.5654830917874396,
+            0.380671875,
+            0.7782125603864735
+          ],
+          "patch_centers": {
+            "subject": 4,
+            "object": 3
+          },
+          "source_hint": {
+            "method": "UPT pair proposal; annotation box if matched IoU>=.5, otherwise detector box; ALL boxes require human confirmation",
+            "predicate": "holding",
+            "box_ids": [
+              224897,
+              649155
+            ]
+          }
+        }
+      ],
+      "descriptions": [
+        "a person standing on a surfboard",
+        "a person carrying a surfboard"
+      ],
+      "human_truth_matrix": [
+        [
+          "unreviewed",
+          "unreviewed"
+        ],
+        [
+          "unreviewed",
+          "unreviewed"
+        ]
+      ],
+      "truth_status": "CANDIDATE_ONLY_NOT_GOLD",
+      "training_eligible": false,
+      "split": "new_adaptation_probe_candidate"
+    },
+    {
+      "group_id": "crop_probe_89785c52762edc97",
+      "family": "surfboard_support",
+      "same_image": true,
+      "events": [
+        {
+          "event_id": "300206_det_1d9f2bfc59b5_det_e06e1c31cddf",
+          "image_id": 300206,
+          "filename": "COCO_val2014_000000300206.jpg",
+          "filepath": "val2014",
+          "caption_split": "restval",
+          "width": 500,
+          "height": 375,
+          "subject_id": "det_1d9f2bfc59b5",
+          "object_id": "det_e06e1c31cddf",
+          "classes": [
+            "person",
+            "surfboard"
+          ],
+          "subject_box": [
+            0.4302278271759205,
+            0.46355926513671875,
+            0.5223214612892824,
+            0.724145278930664
+          ],
+          "object_box": [
+            0.4406654973414781,
+            0.6547748565673828,
+            0.5171627309487864,
+            0.7575226593017578
+          ],
+          "patch_centers": {
+            "subject": 4,
+            "object": 2
+          },
+          "source_hint": {
+            "method": "UPT pair proposal; annotation box if matched IoU>=.5, otherwise detector box; ALL boxes require human confirmation",
+            "predicate": "stand_on",
+            "box_ids": [
+              "det_1d9f2bfc59b5",
+              "det_e06e1c31cddf"
+            ]
+          }
+        },
+        {
+          "event_id": "300206_det_94ec3b3c2538_det_46f589a8341d",
+          "image_id": 300206,
+          "filename": "COCO_val2014_000000300206.jpg",
+          "filepath": "val2014",
+          "caption_split": "restval",
+          "width": 500,
+          "height": 375,
+          "subject_id": "det_94ec3b3c2538",
+          "object_id": "det_46f589a8341d",
+          "classes": [
+            "person",
+            "surfboard"
+          ],
+          "subject_box": [
+            0.1238955986209032,
+            0.3259254837036133,
+            0.18934037314123328,
+            0.5148037719726563
+          ],
+          "object_box": [
+            0.12181953015068012,
+            0.3684579849243164,
+            0.17106166073797344,
+            0.47355998992919923
+          ],
+          "patch_centers": {
+            "subject": 2,
+            "object": 0
+          },
+          "source_hint": {
+            "method": "UPT pair proposal; annotation box if matched IoU>=.5, otherwise detector box; ALL boxes require human confirmation",
+            "predicate": "holding",
+            "box_ids": [
+              "det_94ec3b3c2538",
+              "det_46f589a8341d"
+            ]
+          }
+        }
+      ],
+      "descriptions": [
+        "a person standing on a surfboard",
+        "a person carrying a surfboard"
+      ],
+      "human_truth_matrix": [
+        [
+          "unreviewed",
+          "unreviewed"
+        ],
+        [
+          "unreviewed",
+          "unreviewed"
+        ]
+      ],
+      "truth_status": "CANDIDATE_ONLY_NOT_GOLD",
+      "training_eligible": false,
+      "split": "new_adaptation_probe_candidate"
+    },
+    {
+      "group_id": "crop_probe_8d11477253574efb",
+      "family": "surfboard_support",
+      "same_image": true,
+      "events": [
+        {
+          "event_id": "131152_det_1b94218d13f2_det_0ab3d2eaf79b",
+          "image_id": 131152,
+          "filename": "COCO_val2014_000000131152.jpg",
+          "filepath": "val2014",
+          "caption_split": "restval",
+          "width": 640,
+          "height": 428,
+          "subject_id": "det_1b94218d13f2",
+          "object_id": "det_0ab3d2eaf79b",
+          "classes": [
+            "person",
+            "surfboard"
+          ],
+          "subject_box": [
+            0.4687677083605508,
+            0.30399036407470703,
+            0.6606538702412991,
+            0.5884532928466797
+          ],
+          "object_box": [
+            0.43269057257917015,
+            0.5380790710449219,
+            0.5744193086656041,
+            0.6537516784667968
+          ],
+          "patch_centers": {
+            "subject": 8,
+            "object": 2
+          },
+          "source_hint": {
+            "method": "UPT pair proposal; annotation box if matched IoU>=.5, otherwise detector box; ALL boxes require human confirmation",
+            "predicate": "riding",
+            "box_ids": [
+              "det_1b94218d13f2",
+              "det_0ab3d2eaf79b"
+            ]
+          }
+        },
+        {
+          "event_id": "131152_det_0998c4023e34_det_5eb7cf6d3228",
+          "image_id": 131152,
+          "filename": "COCO_val2014_000000131152.jpg",
+          "filepath": "val2014",
+          "caption_split": "restval",
+          "width": 640,
+          "height": 428,
+          "subject_id": "det_0998c4023e34",
+          "object_id": "det_5eb7cf6d3228",
+          "classes": [
+            "person",
+            "surfboard"
+          ],
+          "subject_box": [
+            0.3455299453990515,
+            0.26028573989868165,
+            0.47731604942908656,
+            0.5415406036376953
+          ],
+          "object_box": [
+            0.4323367625973296,
+            0.38400165557861327,
+            0.4894625048174906,
+            0.5499154281616211
+          ],
+          "patch_centers": {
+            "subject": 8,
+            "object": 3
+          },
+          "source_hint": {
+            "method": "UPT pair proposal; annotation box if matched IoU>=.5, otherwise detector box; ALL boxes require human confirmation",
+            "predicate": "carry",
+            "box_ids": [
+              "det_0998c4023e34",
+              "det_5eb7cf6d3228"
+            ]
+          }
+        }
+      ],
+      "descriptions": [
+        "a person standing on a surfboard",
+        "a person carrying a surfboard"
+      ],
+      "human_truth_matrix": [
+        [
+          "unreviewed",
+          "unreviewed"
+        ],
+        [
+          "unreviewed",
+          "unreviewed"
+        ]
+      ],
+      "truth_status": "CANDIDATE_ONLY_NOT_GOLD",
+      "training_eligible": false,
+      "split": "new_adaptation_probe_candidate"
+    },
+    {
+      "group_id": "crop_probe_90bb1900abd51a0f",
+      "family": "surfboard_support",
+      "same_image": true,
+      "events": [
+        {
+          "event_id": "567486_det_503465c8c5f3_det_515d0265f11b",
+          "image_id": 567486,
+          "filename": "COCO_train2014_000000567486.jpg",
+          "filepath": "train2014",
+          "caption_split": "train",
+          "width": 640,
+          "height": 361,
+          "subject_id": "det_503465c8c5f3",
+          "object_id": "det_515d0265f11b",
+          "classes": [
+            "person",
+            "surfboard"
+          ],
+          "subject_box": [
+            0.7247234782328394,
+            0.2888128199475877,
+            0.9003902586974869,
+            0.99222280624065
+          ],
+          "object_box": [
+            0.5276753911378235,
+            0.6773684075538148,
+            0.914740068073659,
+            0.9933272828447058
+          ],
+          "patch_centers": {
+            "subject": 30,
+            "object": 30
+          },
+          "source_hint": {
+            "method": "UPT pair proposal; annotation box if matched IoU>=.5, otherwise detector box; ALL boxes require human confirmation",
+            "predicate": "holding",
+            "box_ids": [
+              "det_503465c8c5f3",
+              "det_515d0265f11b"
+            ]
+          }
+        },
+        {
+          "event_id": "567486_det_e8cc04c5e2ca_det_835e3fac4a56",
+          "image_id": 567486,
+          "filename": "COCO_train2014_000000567486.jpg",
+          "filepath": "train2014",
+          "caption_split": "train",
+          "width": 640,
+          "height": 361,
+          "subject_id": "det_e8cc04c5e2ca",
+          "object_id": "det_835e3fac4a56",
+          "classes": [
+            "person",
+            "surfboard"
+          ],
+          "subject_box": [
+            0.38810630391972994,
+            0.24097990482411485,
+            0.4933639263087256,
+            0.4949626922607422
+          ],
+          "object_box": [
+            0.4275417914537228,
+            0.43194559787182096,
+            0.5072150606010878,
+            0.5259250478541597
+          ],
+          "patch_centers": {
+            "subject": 8,
+            "object": 1
+          },
+          "source_hint": {
+            "method": "UPT pair proposal; annotation box if matched IoU>=.5, otherwise detector box; ALL boxes require human confirmation",
+            "predicate": "riding",
+            "box_ids": [
+              "det_e8cc04c5e2ca",
+              "det_835e3fac4a56"
+            ]
+          }
+        }
+      ],
+      "descriptions": [
+        "a person standing on a surfboard",
+        "a person carrying a surfboard"
+      ],
+      "human_truth_matrix": [
+        [
+          "unreviewed",
+          "unreviewed"
+        ],
+        [
+          "unreviewed",
+          "unreviewed"
+        ]
+      ],
+      "truth_status": "CANDIDATE_ONLY_NOT_GOLD",
+      "training_eligible": false,
+      "split": "new_adaptation_probe_candidate"
+    },
+    {
+      "group_id": "crop_probe_911df8e81acb945b",
+      "family": "surfboard_support",
+      "same_image": true,
+      "events": [
+        {
+          "event_id": "259420_det_686edcd78a8b_det_2e6feee64ff3",
+          "image_id": 259420,
+          "filename": "COCO_train2014_000000259420.jpg",
+          "filepath": "train2014",
+          "caption_split": "train",
+          "width": 640,
+          "height": 424,
+          "subject_id": "det_686edcd78a8b",
+          "object_id": "det_2e6feee64ff3",
+          "classes": [
+            "person",
+            "surfboard"
+          ],
+          "subject_box": [
+            0.8620267676833057,
+            0.4912942123413086,
+            0.9473282277534694,
+            0.9030165100097656
+          ],
+          "object_box": [
+            0.7638710609821614,
+            0.563924560546875,
+            0.9419265911415182,
+            0.8148011016845703
+          ],
+          "patch_centers": {
+            "subject": 6,
+            "object": 6
+          },
+          "source_hint": {
+            "method": "UPT pair proposal; annotation box if matched IoU>=.5, otherwise detector box; ALL boxes require human confirmation",
+            "predicate": "holding",
+            "box_ids": [
+              "det_686edcd78a8b",
+              "det_2e6feee64ff3"
+            ]
+          }
+        },
+        {
+          "event_id": "259420_det_967c30ba9a5f_det_9e242beaed98",
+          "image_id": 259420,
+          "filename": "COCO_train2014_000000259420.jpg",
+          "filepath": "train2014",
+          "caption_split": "train",
+          "width": 640,
+          "height": 424,
+          "subject_id": "det_967c30ba9a5f",
+          "object_id": "det_9e242beaed98",
+          "classes": [
+            "person",
+            "surfboard"
+          ],
+          "subject_box": [
+            0.6285624405324409,
+            0.5519847869873047,
+            0.6975493600967015,
+            0.7636627197265625
+          ],
+          "object_box": [
+            0.6346772327438898,
+            0.7297565460205078,
+            0.694498967610812,
+            0.7830765533447266
+          ],
+          "patch_centers": {
+            "subject": 3,
+            "object": 1
+          },
+          "source_hint": {
+            "method": "UPT pair proposal; annotation box if matched IoU>=.5, otherwise detector box; ALL boxes require human confirmation",
+            "predicate": "riding",
+            "box_ids": [
+              "det_967c30ba9a5f",
+              "det_9e242beaed98"
+            ]
+          }
+        }
+      ],
+      "descriptions": [
+        "a person standing on a surfboard",
+        "a person carrying a surfboard"
+      ],
+      "human_truth_matrix": [
+        [
+          "unreviewed",
+          "unreviewed"
+        ],
+        [
+          "unreviewed",
+          "unreviewed"
+        ]
+      ],
+      "truth_status": "CANDIDATE_ONLY_NOT_GOLD",
+      "training_eligible": false,
+      "split": "new_adaptation_probe_candidate"
+    },
+    {
+      "group_id": "crop_probe_ace448c97330cfd0",
+      "family": "surfboard_support",
+      "same_image": true,
+      "events": [
+        {
+          "event_id": "521976_det_29b320264cee_det_20afbe7ad73a",
+          "image_id": 521976,
+          "filename": "COCO_train2014_000000521976.jpg",
+          "filepath": "train2014",
+          "caption_split": "train",
+          "width": 640,
+          "height": 426,
+          "subject_id": "det_29b320264cee",
+          "object_id": "det_20afbe7ad73a",
+          "classes": [
+            "person",
+            "surfboard"
+          ],
+          "subject_box": [
+            0.23637406653309742,
+            0.25783729553222656,
+            0.48877395261435785,
+            0.8168737030029297
+          ],
+          "object_box": [
+            0.10821300700344114,
+            0.6606263732910156,
+            0.36762427489624533,
+            0.8380764770507813
+          ],
+          "patch_centers": {
+            "subject": 28,
+            "object": 9
+          },
+          "source_hint": {
+            "method": "UPT pair proposal; annotation box if matched IoU>=.5, otherwise detector box; ALL boxes require human confirmation",
+            "predicate": "riding",
+            "box_ids": [
+              "det_29b320264cee",
+              "det_20afbe7ad73a"
+            ]
+          }
+        },
+        {
+          "event_id": "521976_det_e21365ab9803_det_9c5b9601d47c",
+          "image_id": 521976,
+          "filename": "COCO_train2014_000000521976.jpg",
+          "filepath": "train2014",
+          "caption_split": "train",
+          "width": 640,
+          "height": 426,
+          "subject_id": "det_e21365ab9803",
+          "object_id": "det_9c5b9601d47c",
+          "classes": [
+            "person",
+            "surfboard"
+          ],
+          "subject_box": [
+            0.6713412345994224,
+            0.034119367599487305,
+            0.8134816445279975,
+            0.6210807037353515
+          ],
+          "object_box": [
+            0.7162446618377915,
+            0.10963252067565918,
+            0.8310636826895555,
+            0.49872657775878904
+          ],
+          "patch_centers": {
+            "subject": 18,
+            "object": 10
+          },
+          "source_hint": {
+            "method": "UPT pair proposal; annotation box if matched IoU>=.5, otherwise detector box; ALL boxes require human confirmation",
+            "predicate": "carry",
+            "box_ids": [
+              "det_e21365ab9803",
+              "det_9c5b9601d47c"
+            ]
+          }
+        }
+      ],
+      "descriptions": [
+        "a person standing on a surfboard",
+        "a person carrying a surfboard"
+      ],
+      "human_truth_matrix": [
+        [
+          "unreviewed",
+          "unreviewed"
+        ],
+        [
+          "unreviewed",
+          "unreviewed"
+        ]
+      ],
+      "truth_status": "CANDIDATE_ONLY_NOT_GOLD",
+      "training_eligible": false,
+      "split": "new_adaptation_probe_candidate"
+    },
+    {
+      "group_id": "fit_reconfirm_235799",
+      "family": "skateboard_support",
+      "same_image": true,
+      "events": [
+        {
+          "event_id": "235799_428275_637751",
+          "image_id": 235799,
+          "filename": "COCO_train2014_000000235799.jpg",
+          "filepath": "train2014",
+          "caption_split": "train",
+          "subject_box": [
+            0.75303125,
+            0.05630797773654917,
+            0.9370312500000001,
+            0.770278293135436
+          ],
+          "object_box": [
+            0.81615625,
+            0.42504638218923935,
+            0.912296875,
+            0.7690166975881262
+          ],
+          "width": 640,
+          "height": 539,
+          "patch_centers": {
+            "subject": 20,
+            "object": 10
+          }
+        },
+        {
+          "event_id": "235799_425302_643777",
+          "image_id": 235799,
+          "filename": "COCO_train2014_000000235799.jpg",
+          "filepath": "train2014",
+          "caption_split": "train",
+          "subject_box": [
+            0.140515625,
+            0.26940630797773657,
+            0.7421562500000001,
+            0.7914842300556586
+          ],
+          "object_box": [
+            0.57325,
+            0.5686456400742115,
+            0.6789531249999999,
+            0.8974397031539889
+          ],
+          "width": 640,
+          "height": 539,
+          "patch_centers": {
+            "subject": 56,
+            "object": 10
+          }
+        }
+      ],
+      "descriptions": [
+        "a person standing on a skateboard",
+        "a person carrying a skateboard"
+      ],
+      "positive_indices": [
+        1,
+        0
+      ],
+      "split": "fit_label_reconfirmation_not_probe",
+      "truth_status": "UNREVIEWED_RECONFIRMATION",
+      "training_eligible": false
+    }
+  ],
+  "groups_sha256": "9c3d8d36f6bf797d909c59eca0f8c805a8b4b9b6a5140834dbd97289920f0b57",
+  "pools": {
+    "skateboard_support": {
+      "candidate_pairs": 21,
+      "distinct_candidate_images": 12,
+      "selected": 10
+    },
+    "surfboard_support": {
+      "candidate_pairs": 25,
+      "distinct_candidate_images": 13,
+      "selected": 10
+    }
+  },
+  "excluded_known_ids": [
+    1837,
+    1947,
+    2470,
+    2752,
+    3236,
+    3272,
+    4843,
+    6253,
+    6780,
+    7049,
+    8571,
+    9669,
+    10265,
+    14873,
+    15919,
+    16069,
+    16737,
+    17308,
+    17520,
+    18554,
+    21079,
+    21983,
+    23127,
+    23639,
+    26939,
+    27902,
+    28759,
+    28782,
+    29456,
+    29525,
+    30238,
+    31157,
+    32206,
+    33593,
+    34378,
+    36433,
+    38370,
+    38380,
+    39078,
+    39911,
+    40346,
+    45084,
+    45089,
+    45128,
+    45437,
+    45949,
+    46042,
+    46441,
+    50274,
+    51899,
+    52440,
+    53939,
+    54130,
+    55385,
+    56456,
+    57614,
+    62872,
+    63248,
+    64823,
+    68459,
+    68778,
+    70642,
+    72002,
+    72646,
+    72888,
+    73172,
+    73639,
+    73903,
+    74650,
+    78614,
+    79852,
+    80553,
+    81401,
+    82053,
+    83593,
+    84550,
+    87027,
+    89033,
+    89181,
+    89248,
+    89390,
+    89788,
+    90148,
+    90251,
+    90862,
+    91926,
+    92098,
+    94179,
+    94681,
+    97632,
+    98596,
+    99046,
+    99293,
+    100209,
+    100611,
+    100668,
+    101094,
+    101575,
+    103437,
+    105184,
+    105219,
+    105714,
+    107584,
+    107843,
+    109324,
+    110423,
+    111922,
+    111936,
+    112253,
+    114540,
+    116512,
+    117371,
+    118186,
+    119979,
+    124841,
+    125550,
+    126001,
+    127986,
+    128615,
+    132626,
+    133229,
+    134639,
+    134648,
+    134754,
+    136300,
+    136302,
+    136953,
+    137150,
+    138103,
+    138131,
+    140074,
+    140990,
+    142380,
+    142637,
+    143348,
+    147674,
+    149896,
+    154020,
+    154911,
+    155191,
+    157017,
+    159176,
+    159577,
+    159948,
+    160614,
+    160628,
+    160647,
+    162520,
+    163962,
+    164572,
+    164663,
+    165334,
+    167743,
+    168763,
+    168900,
+    169810,
+    170080,
+    170525,
+    170636,
+    171210,
+    172874,
+    174135,
+    174228,
+    174738,
+    175180,
+    175188,
+    176736,
+    178874,
+    179153,
+    179201,
+    179526,
+    180778,
+    181038,
+    181475,
+    181837,
+    181841,
+    183790,
+    185328,
+    185991,
+    188478,
+    188693,
+    190229,
+    192955,
+    193025,
+    194842,
+    198424,
+    200984,
+    202490,
+    202853,
+    203671,
+    203809,
+    205159,
+    207647,
+    207734,
+    208095,
+    209842,
+    210472,
+    210751,
+    211205,
+    215732,
+    216059,
+    216899,
+    217653,
+    220152,
+    220772,
+    221202,
+    221311,
+    224508,
+    226298,
+    227109,
+    229193,
+    231019,
+    231315,
+    231524,
+    233901,
+    234671,
+    235799,
+    236057,
+    237467,
+    238709,
+    238982,
+    243176,
+    245118,
+    246735,
+    246980,
+    248034,
+    248052,
+    249435,
+    250026,
+    250192,
+    250749,
+    251314,
+    251696,
+    253264,
+    253538,
+    254199,
+    255495,
+    255983,
+    256606,
+    260040,
+    263603,
+    263957,
+    263974,
+    265810,
+    267417,
+    268313,
+    268804,
+    269986,
+    270809,
+    271250,
+    272632,
+    273200,
+    274267,
+    275544,
+    276265,
+    276711,
+    276835,
+    277156,
+    277284,
+    277575,
+    277729,
+    279632,
+    281215,
+    281563,
+    283678,
+    284543,
+    288548,
+    289012,
+    289569,
+    289693,
+    291262,
+    292226,
+    297811,
+    300624,
+    301537,
+    304295,
+    304445,
+    304866,
+    306800,
+    309285,
+    309728,
+    313541,
+    313601,
+    315381,
+    317306,
+    317874,
+    318445,
+    323588,
+    324817,
+    324823,
+    325530,
+    326229,
+    326480,
+    327110,
+    327843,
+    329386,
+    329469,
+    330752,
+    330952,
+    331278,
+    332352,
+    333492,
+    334758,
+    335138,
+    335518,
+    335594,
+    336552,
+    336683,
+    338317,
+    339248,
+    340282,
+    340406,
+    341429,
+    342340,
+    343159,
+    343215,
+    345879,
+    347700,
+    348370,
+    349934,
+    350560,
+    353288,
+    353809,
+    355064,
+    355440,
+    355555,
+    356015,
+    356374,
+    357413,
+    358706,
+    365164,
+    365259,
+    366948,
+    368219,
+    368370,
+    368460,
+    368586,
+    370234,
+    372130,
+    372443,
+    373686,
+    375759,
+    376817,
+    377570,
+    379777,
+    379944,
+    380429,
+    380440,
+    381065,
+    381723,
+    382527,
+    384626,
+    386880,
+    387124,
+    387333,
+    387976,
+    392793,
+    393251,
+    393534,
+    394583,
+    394905,
+    395198,
+    395216,
+    395241,
+    396106,
+    400175,
+    401291,
+    402041,
+    402407,
+    404766,
+    404865,
+    405361,
+    407779,
+    411238,
+    413012,
+    413073,
+    413248,
+    416598,
+    416625,
+    416705,
+    421086,
+    421840,
+    424692,
+    426500,
+    427040,
+    428019,
+    428164,
+    428683,
+    430621,
+    432019,
+    433232,
+    433336,
+    434370,
+    435096,
+    435716,
+    436735,
+    439084,
+    439938,
+    440066,
+    440092,
+    444278,
+    444362,
+    445495,
+    445964,
+    446956,
+    447681,
+    448839,
+    450175,
+    450878,
+    452457,
+    453853,
+    453968,
+    453979,
+    455073,
+    455123,
+    456245,
+    456302,
+    456545,
+    457011,
+    457033,
+    457190,
+    459543,
+    461535,
+    461870,
+    462381,
+    462401,
+    462899,
+    463429,
+    463505,
+    464340,
+    464854,
+    464888,
+    465235,
+    465265,
+    465529,
+    467889,
+    467979,
+    468966,
+    469941,
+    470097,
+    471900,
+    474190,
+    474423,
+    475664,
+    477471,
+    480939,
+    481036,
+    481222,
+    481667,
+    482810,
+    483833,
+    484362,
+    484646,
+    486620,
+    487502,
+    488203,
+    489827,
+    491900,
+    492096,
+    492881,
+    494128,
+    495476,
+    496058,
+    496646,
+    496902,
+    498218,
+    499865,
+    500076,
+    501647,
+    501814,
+    502134,
+    502756,
+    503488,
+    503535,
+    503689,
+    504122,
+    504494,
+    506417,
+    511328,
+    513015,
+    515123,
+    515937,
+    517113,
+    517485,
+    518124,
+    518649,
+    519053,
+    520204,
+    520569,
+    521602,
+    522256,
+    522338,
+    522661,
+    522719,
+    526325,
+    528230,
+    528712,
+    529613,
+    530758,
+    530896,
+    532704,
+    534655,
+    536607,
+    537617,
+    540716,
+    541174,
+    542450,
+    542723,
+    542925,
+    543521,
+    543585,
+    543831,
+    545525,
+    546586,
+    550028,
+    554886,
+    556342,
+    556599,
+    556830,
+    556838,
+    557746,
+    557944,
+    560384,
+    560632,
+    561028,
+    561713,
+    562296,
+    562826,
+    564349,
+    566245,
+    566547,
+    567036,
+    569301,
+    570474,
+    570581,
+    570768,
+    571799,
+    572505,
+    572807,
+    572879,
+    573287,
+    575601,
+    577556,
+    578345,
+    579051,
+    579414,
+    579729,
+    581657
+  ],
+  "test_used": false,
+  "no_training": true,
+  "selection": "Fixed hash order, max10 unique images/family; UPT proposes; annotation boxes when matched, otherwise UPT boxes requiring human confirmation; no caption output used",
+  "eligibility": "Human 2x2 contrast and clear boxes on original pixels; detail224 is descriptive only, NOT eligibility",
+  "pending": [
+    "Human labels",
+    "Image perceptual duplicate audit",
+    "HDF5 metadata and GPU feature compatibility"
+  ],
+  "provenance_limit": "Known IDs in local experiment JSONs under12MB excluded; other historical exposures not certified; backbone may have seen train/restval",
+  "near_duplicate_flags": [],
+  "near_duplicate_scope": "64bit dHash distance<=6; new candidates vs each other and53oldfeasibilityJPEGs; flags require inspection, not certified exhaustive"
+}
