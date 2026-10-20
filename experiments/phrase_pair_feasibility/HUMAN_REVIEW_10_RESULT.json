@@ -1,0 +1,528 @@
+{
+  "summary": {
+    "groups_total": 30,
+    "groups_with_any_response": 10,
+    "groups_complete": 10,
+    "clear_semantic_contrasts": 9,
+    "contrasts_with_clear_boxes": 9,
+    "contrasts_with_clear_boxes_and_visible_224": 7,
+    "same_image_clear_contrasts": 6,
+    "both_descriptions_supported_events": 0,
+    "unreviewed_groups": 20,
+    "training_approved": false,
+    "status": "HUMAN_FEASIBILITY_REVIEW_ONLY"
+  },
+  "groups": [
+    {
+      "group_id": "candidate_3d1eae17ffcebb6b",
+      "complete": true,
+      "semantic_contrast": false,
+      "boxes_clear": true,
+      "detail_224_visible": true,
+      "index": 1,
+      "family": "bicycle_posture",
+      "same_image": true,
+      "human_annotations": {
+        "truth": [
+          [
+            "supported",
+            "contradicted"
+          ],
+          [
+            "supported",
+            "contradicted"
+          ]
+        ],
+        "boxes": [
+          [
+            "clear",
+            "clear"
+          ],
+          [
+            "clear",
+            "clear"
+          ]
+        ],
+        "detail_224": [
+          "yes",
+          "yes"
+        ],
+        "notes": ""
+      },
+      "event_patch_counts": [
+        {
+          "subject": 5,
+          "object": 4
+        },
+        {
+          "subject": 5,
+          "object": 6
+        }
+      ],
+      "both_upt_selected_pairs_match": false
+    },
+    {
+      "group_id": "candidate_50edb6132ebb8519",
+      "complete": true,
+      "semantic_contrast": true,
+      "boxes_clear": true,
+      "detail_224_visible": true,
+      "index": 2,
+      "family": "skateboard_support",
+      "same_image": true,
+      "human_annotations": {
+        "truth": [
+          [
+            "contradicted",
+            "supported"
+          ],
+          [
+            "supported",
+            "contradicted"
+          ]
+        ],
+        "boxes": [
+          [
+            "clear",
+            "clear"
+          ],
+          [
+            "clear",
+            "clear"
+          ]
+        ],
+        "detail_224": [
+          "yes",
+          "yes"
+        ],
+        "notes": ""
+      },
+      "event_patch_counts": [
+        {
+          "subject": 20,
+          "object": 10
+        },
+        {
+          "subject": 56,
+          "object": 10
+        }
+      ],
+      "both_upt_selected_pairs_match": true
+    },
+    {
+      "group_id": "candidate_6fff8a4e958823d8",
+      "complete": true,
+      "semantic_contrast": true,
+      "boxes_clear": true,
+      "detail_224_visible": true,
+      "index": 3,
+      "family": "surfboard_support",
+      "same_image": true,
+      "human_annotations": {
+        "truth": [
+          [
+            "supported",
+            "contradicted"
+          ],
+          [
+            "contradicted",
+            "supported"
+          ]
+        ],
+        "boxes": [
+          [
+            "clear",
+            "clear"
+          ],
+          [
+            "clear",
+            "clear"
+          ]
+        ],
+        "detail_224": [
+          "yes",
+          "yes"
+        ],
+        "notes": ""
+      },
+      "event_patch_counts": [
+        {
+          "subject": 6,
+          "object": 4
+        },
+        {
+          "subject": 4,
+          "object": 3
+        }
+      ],
+      "both_upt_selected_pairs_match": true
+    },
+    {
+      "group_id": "candidate_b222bbdd458a579c",
+      "complete": true,
+      "semantic_contrast": true,
+      "boxes_clear": true,
+      "detail_224_visible": false,
+      "index": 4,
+      "family": "chair_posture",
+      "same_image": true,
+      "human_annotations": {
+        "truth": [
+          [
+            "contradicted",
+            "supported"
+          ],
+          [
+            "supported",
+            "contradicted"
+          ]
+        ],
+        "boxes": [
+          [
+            "clear",
+            "clear"
+          ],
+          [
+            "clear",
+            "clear"
+          ]
+        ],
+        "detail_224": [
+          "unclear",
+          "yes"
+        ],
+        "notes": ""
+      },
+      "event_patch_counts": [
+        {
+          "subject": 27,
+          "object": 0
+        },
+        {
+          "subject": 54,
+          "object": 8
+        }
+      ],
+      "both_upt_selected_pairs_match": false
+    },
+    {
+      "group_id": "candidate_3f297f5ccbb857d2",
+      "complete": true,
+      "semantic_contrast": true,
+      "boxes_clear": true,
+      "detail_224_visible": false,
+      "index": 5,
+      "family": "phone_position",
+      "same_image": true,
+      "human_annotations": {
+        "truth": [
+          [
+            "contradicted",
+            "supported"
+          ],
+          [
+            "supported",
+            "contradicted"
+          ]
+        ],
+        "boxes": [
+          [
+            "clear",
+            "clear"
+          ],
+          [
+            "clear",
+            "clear"
+          ]
+        ],
+        "detail_224": [
+          "unclear",
+          "unclear"
+        ],
+        "notes": ""
+      },
+      "event_patch_counts": [
+        {
+          "subject": 36,
+          "object": 0
+        },
+        {
+          "subject": 60,
+          "object": 0
+        }
+      ],
+      "both_upt_selected_pairs_match": false
+    },
+    {
+      "group_id": "candidate_0375a14e14d6378b",
+      "complete": true,
+      "semantic_contrast": true,
+      "boxes_clear": true,
+      "detail_224_visible": true,
+      "index": 6,
+      "family": "bicycle_posture",
+      "same_image": false,
+      "human_annotations": {
+        "truth": [
+          [
+            "supported",
+            "contradicted"
+          ],
+          [
+            "contradicted",
+            "supported"
+          ]
+        ],
+        "boxes": [
+          [
+            "clear",
+            "clear"
+          ],
+          [
+            "clear",
+            "clear"
+          ]
+        ],
+        "detail_224": [
+          "yes",
+          "yes"
+        ],
+        "notes": ""
+      },
+      "event_patch_counts": [
+        {
+          "subject": 16,
+          "object": 15
+        },
+        {
+          "subject": 9,
+          "object": 2
+        }
+      ],
+      "both_upt_selected_pairs_match": false
+    },
+    {
+      "group_id": "candidate_5d56f9ff08e1a128",
+      "complete": true,
+      "semantic_contrast": true,
+      "boxes_clear": true,
+      "detail_224_visible": true,
+      "index": 7,
+      "family": "skateboard_support",
+      "same_image": true,
+      "human_annotations": {
+        "truth": [
+          [
+            "contradicted",
+            "supported"
+          ],
+          [
+            "supported",
+            "contradicted"
+          ]
+        ],
+        "boxes": [
+          [
+            "clear",
+            "clear"
+          ],
+          [
+            "clear",
+            "clear"
+          ]
+        ],
+        "detail_224": [
+          "yes",
+          "yes"
+        ],
+        "notes": ""
+      },
+      "event_patch_counts": [
+        {
+          "subject": 10,
+          "object": 4
+        },
+        {
+          "subject": 12,
+          "object": 2
+        }
+      ],
+      "both_upt_selected_pairs_match": true
+    },
+    {
+      "group_id": "candidate_0000065babcabdfc",
+      "complete": true,
+      "semantic_contrast": true,
+      "boxes_clear": true,
+      "detail_224_visible": true,
+      "index": 8,
+      "family": "surfboard_support",
+      "same_image": false,
+      "human_annotations": {
+        "truth": [
+          [
+            "supported",
+            "contradicted"
+          ],
+          [
+            "contradicted",
+            "supported"
+          ]
+        ],
+        "boxes": [
+          [
+            "clear",
+            "clear"
+          ],
+          [
+            "clear",
+            "clear"
+          ]
+        ],
+        "detail_224": [
+          "yes",
+          "yes"
+        ],
+        "notes": ""
+      },
+      "event_patch_counts": [
+        {
+          "subject": 44,
+          "object": 14
+        },
+        {
+          "subject": 5,
+          "object": 9
+        }
+      ],
+      "both_upt_selected_pairs_match": true
+    },
+    {
+      "group_id": "candidate_98144b2702f71aa1",
+      "complete": true,
+      "semantic_contrast": true,
+      "boxes_clear": true,
+      "detail_224_visible": true,
+      "index": 9,
+      "family": "phone_position",
+      "same_image": true,
+      "human_annotations": {
+        "truth": [
+          [
+            "contradicted",
+            "supported"
+          ],
+          [
+            "supported",
+            "contradicted"
+          ]
+        ],
+        "boxes": [
+          [
+            "clear",
+            "clear"
+          ],
+          [
+            "clear",
+            "clear"
+          ]
+        ],
+        "detail_224": [
+          "yes",
+          "yes"
+        ],
+        "notes": ""
+      },
+      "event_patch_counts": [
+        {
+          "subject": 22,
+          "object": 0
+        },
+        {
+          "subject": 20,
+          "object": 0
+        }
+      ],
+      "both_upt_selected_pairs_match": true
+    },
+    {
+      "group_id": "candidate_000399513c4cf750",
+      "complete": true,
+      "semantic_contrast": true,
+      "boxes_clear": true,
+      "detail_224_visible": true,
+      "index": 10,
+      "family": "skateboard_support",
+      "same_image": false,
+      "human_annotations": {
+        "truth": [
+          [
+            "supported",
+            "contradicted"
+          ],
+          [
+            "contradicted",
+            "supported"
+          ]
+        ],
+        "boxes": [
+          [
+            "clear",
+            "clear"
+          ],
+          [
+            "clear",
+            "clear"
+          ]
+        ],
+        "detail_224": [
+          "yes",
+          "yes"
+        ],
+        "notes": ""
+      },
+      "event_patch_counts": [
+        {
+          "subject": 66,
+          "object": 15
+        },
+        {
+          "subject": 121,
+          "object": 24
+        }
+      ],
+      "both_upt_selected_pairs_match": true
+    }
+  ],
+  "limits": [
+    "Self-reported human labels; no inter-reviewer adjudication",
+    "Pixel visibility at224 and patch counts do not prove CLIP features preserve relation evidence",
+    "Feasibility review is not a training/probe split or model result",
+    "First10 enriched for same-image pairs (7/10); later20 are cross-image only, so 9/10 is not a representative mining yield",
+    "Same image may already be familiar to backbone; no unseen-data claim",
+    "Human-visible224 does not prove CLIP action information or full UPT proposal recall"
+  ],
+  "status": "FIRST_10_HUMAN_REVIEW_AUDITED",
+  "groups_sha256": "5fdbe57dd2202a86eaedd33b1a3278e11c08aded2e5f3b96be3fd9c2cc20717a",
+  "source_review_sha256": "c3ad95c7c0d7496fe45487277f45a1b6137999848b1631889297b27d9bbc1053",
+  "reviewer_type": "human_self_reported",
+  "independent_reviewers": 1,
+  "additional": {
+    "first10_indices": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+    ],
+    "first10_unique_images": 13,
+    "usable224_same_image_groups": 4,
+    "usable224_both_selected_upt_pairs_match": 6
+  },
+  "decision": "Continue only the remaining20 of the existing30-group feasibility review. Do not train, mine more groups or claim improved model performance yet."
+}
