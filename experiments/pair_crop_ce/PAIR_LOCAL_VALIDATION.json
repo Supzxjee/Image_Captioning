@@ -1,0 +1,23 @@
+{
+  "status": "READY_NOT_RUN",
+  "notebooks_same_source_and_manifest": true,
+  "notebooks_unexecuted": true,
+  "under_1MB": true,
+  "pure_tests_passed": 7,
+  "checks": [
+    "AST all embedded sources/cells",
+    "Payload roundtrip/source SHA",
+    "Fit-only schedule, group disjointness",
+    "Elementwise+relative feature gate rejection",
+    "Synthetic stage ID/coordinate validation"
+  ],
+  "not_run": [
+    "Kaggle CPU mapped model tests3",
+    "Two-T4 synthetic DDP smoke",
+    "CLIP download/feature compatibility",
+    "Actual training/inference"
+  ],
+  "primary_metric": "Blind human joint semantic correctness on8groups; no automatic GO from likelihood",
+  "fullframe_notebook_bytes": 50894,
+  "paircrop_notebook_bytes": 50979
+}

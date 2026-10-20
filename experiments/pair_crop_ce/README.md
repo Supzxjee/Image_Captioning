@@ -4,6 +4,19 @@ Status: **Human labels locked; reported metadata schema PASS; TRAIN BLOCKED pend
 
 Update20October: human label gate PASS; see `HUMAN_REVIEW_RESULT.md` and `LOCKED_DATA.json`. Four new groups per family are locked,14fit retained. The user supplied actual metadata export; `CACHE_METADATA_AUDIT.json` validates reported headers/ID summaries, with revision unknown. Pinned feature compatibility remains pending. The preparation instructions below document the original workflow; no additional labels or metadata export are needed now.
 
+## Ready notebooks — user runs sequentially
+
+1. **`PAIR_SOURCE_FULLFRAME_CE_2GPU.ipynb`**: attach original baseline checkpoint, original visual-cache, MSCOCOJSON+images. T4x2, InternetON, Save & Run All. No old adaptation files. It re-encodes46full images and58crop views with pinnedCLIP, verifies every old fullframe row with both locked numeric gates, recomputes sharedG from the quantized new fullframe features, then runs the FULLFRAME-CE control for300updates on2T4. Cache extraction usesGPU0; actual training usesboth GPUs.
+2. Preserve the whole **`/kaggle/working/pair_crop_shared`** folder as a dataset. It contains `feature_cache.bin`, sealed receipt,46review JPEGs and fullframe_*references. The `.bin` is a numeric NPZ container read with `allow_pickle=False`; do not extract or alter it. No need to publish the Image_Captioning repo or cache allCOCO again.
+3. **`PAIR_SOURCE_PAIRCROP_CE_2GPU.ipynb`**: attach that shared dataset, same original baseline and COCOJSON. Set `SHARED` to the real mounted folder containing `shared_receipt.json`/`feature_cache.bin`. T4x2, InternetON, Save & Run All. It checks same source/manifest/cache/vocabulary/runtime/control receipts and initial model hash, then trains PAIRCROP-CE withthe same fit schedule. It does not downloadCLIP or re-encodeimages.
+4. Return both `pair_source_fullframe_ce_review.zip` and `pair_source_paircrop_ce_review.zip`. Keep the two `adaptation.bin` files and shared folder separately. Do not change treatment settings after looking at control probe outputs. Stdout intentionally does not print probe scores. No human semantic GO is inferred from these ZIPs until a blinded generation review.
+
+If compatibility fails, training never starts. The first review ZIP includes logs and the compatibility/metadata files available so far; return it without relaxing thresholds. Runtime checks are intentional: if the second Kaggle container differs, investigate instead of deleting guards.
+
+`PAIR_LOCAL_VALIDATION.json`:7pure checksPASS, AST/payloadsource roundtripPASS, both unexecuted notebooks about51KB. Three synthetic mapped-model CPU checks, synthetic2T4DDP smoke, actual CLIP compatibility, GPU training and inference have **not** been run locally; model/smoke checks are mandatory on Kaggle before real data. No peak-memory/time guarantee.
+
+Both notebooks overlay the same hashed sources onto pinned base6e2f9ef. The old phase1worker is reused for DDP, optimizer/frozen-state checks and before/after evaluation; only its model/batch factories are explicitly replaced. New mapped evidence reads768feature channels plus2original-image coordinate channels. These coordinates are not learned input features for the CLIP projection; they feed position/membership/masks only. The control and crop arms have identical parameter counts and initialization; do not require their step60hashes to match because their training evidence differs from update1.
+
 ## Metadata received
 
 Three reported complete shards contain41095+41096+41096=123287uniqueIDs, no reported overlaps, feature shape197x768, FP16storage/FP32compute. Reported CLIPViT-B/16 last_hidden_state, bilinear224square/antialias/CLIPnormalization and datasetJSON SHA agree with protocol expectations. All three `model_revision` entries are null. The export records torch2.10.0+cu128, torchvision0.25.0+cu128 and transformers5.0.0; these are historical metadata, not a mandate to reinstall torch or proof of numerical equivalence under another runtime.
@@ -37,7 +50,7 @@ JPEG decode, dimensions and EXIF orientation were checked. dHash64 distance<=6 f
 - Keep14fit groups unless blind recheck235799 cannot confirm its original contrast; then remove the whole group from both arms, leaving13, no substitute/relabel. Regenerate and lock fit-only schedule/statistics. The7oldholdout groups are exposed development cases.
 - Primary decision: blinded human judgment on new8same-image groups, both target descriptions correct and sufficiently specific; allow paraphrases and distinguish generic, false, wronginstance and unresolved. Include all16events; missing/truncated captions are not full successes.
 - Practical GO: at least6/8groups correct, netgain>=3, regressions<=1, and gain in both families, robust to unresolved judgments. Not statistical proof. Valid run not meeting this stops this variant; missingdata/technicalfailure/unresolveddecision is inconclusive. No crop-margin/seed/step search to rescue results.
-- Two eventual training notebooks, one arm per notebook using2T4, sharing a hashed feature cache from the first run. No training notebooks until labels and input checks resolve.
+- Two training notebooks, one arm per notebook using2T4, share a hashed feature cache from the first run. Actual training is blocked by feature compatibility assertions until input checks pass.
 - After a GO, next milestone must evaluate full captions with real UPT proposals and matched caption CE/SCST+object baseline. Crop/CE/LoRA are not claimed novel, and phrase gains do not imply CIDEr gains.
 
 ## Local validation
