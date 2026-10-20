@@ -1,0 +1,255 @@
+{
+  "status": "MATCHED_ARTIFACT_COMPARISON_PASS",
+  "holdout_groups": 7,
+  "holdout_CROSS_minus_CE_agreement": 0.0,
+  "descriptive_paired_group_bootstrap95": [
+    0.0,
+    0.0
+  ],
+  "CE": {
+    "status": "PHRASE_TECHNICAL_PILOT_COMPLETE",
+    "arm": "CE",
+    "updates": 300,
+    "metrics": {
+      "before": {
+        "fit": {
+          "on": {
+            "groups": 14,
+            "agreement": 0.75,
+            "both_directions_correct": 7,
+            "mean_positive_margin": 0.4759037068911961,
+            "positive_nll": 2.5576257365090505,
+            "captions_changed_vs_off": 27
+          },
+          "off": {
+            "groups": 14,
+            "agreement": 0.7857142857142857,
+            "both_directions_correct": 8,
+            "mean_positive_margin": 0.42409038969448637,
+            "positive_nll": 2.675497089113508,
+            "captions_changed_vs_off": 0
+          }
+        },
+        "adaptation_holdout": {
+          "on": {
+            "groups": 7,
+            "agreement": 0.7142857142857143,
+            "both_directions_correct": 3,
+            "mean_positive_margin": 0.2987655316080366,
+            "positive_nll": 2.4205849511282787,
+            "captions_changed_vs_off": 14
+          },
+          "off": {
+            "groups": 7,
+            "agreement": 0.7142857142857143,
+            "both_directions_correct": 3,
+            "mean_positive_margin": 0.27885386773518156,
+            "positive_nll": 2.547123040471758,
+            "captions_changed_vs_off": 0
+          }
+        }
+      },
+      "after": {
+        "fit": {
+          "on": {
+            "groups": 14,
+            "agreement": 1.0,
+            "both_directions_correct": 14,
+            "mean_positive_margin": 1.4181835438523973,
+            "positive_nll": 0.11727411725691386,
+            "captions_changed_vs_off": 28
+          },
+          "off": {
+            "groups": 14,
+            "agreement": 0.7857142857142857,
+            "both_directions_correct": 8,
+            "mean_positive_margin": 0.4248493952410562,
+            "positive_nll": 2.670412063598633,
+            "captions_changed_vs_off": 0
+          }
+        },
+        "adaptation_holdout": {
+          "on": {
+            "groups": 7,
+            "agreement": 0.9285714285714286,
+            "both_directions_correct": 6,
+            "mean_positive_margin": 0.4814308370862688,
+            "positive_nll": 0.6587059497833252,
+            "captions_changed_vs_off": 14
+          },
+          "off": {
+            "groups": 7,
+            "agreement": 0.7142857142857143,
+            "both_directions_correct": 3,
+            "mean_positive_margin": 0.27935112374169485,
+            "positive_nll": 2.5418604952948436,
+            "captions_changed_vs_off": 0
+          }
+        }
+      }
+    },
+    "initial_sha256": "90f3db3f4eb87e15268b38d7f0b09913525bbd7b6644a184db071606ae3b53c6",
+    "final_sha256": "154277195df0ff5858d29fb581fbe294ddf2534e6ac25b91b52cbdb69c5cca23",
+    "stage_tensor_sha256": "9203f14f5eddd3acee1de8be0951eeb65d61da443b65a20b47579ef973209f0f",
+    "schedule_sha256": "adc9f17836c6296495d1092fad81b801e7cdac04bd91885704240d06d8a6eacc",
+    "manifest_sha256": "f7410841421580c53bce920e5011b232d77eeb28f41aa9635d781f3975506149",
+    "original_parameters_unchanged": true,
+    "semantic_human_evaluation_available": false,
+    "test_used": false,
+    "geometry_control": {
+      "agreement": 0.6428571428571429,
+      "both_directions_correct": 2
+    },
+    "limits": [
+      "14 fit / 7 adaptation holdout groups previously reviewed; no independent benchmark or seed uncertainty",
+      "Likelihood agreement and changed captions do not establish semantic/instance correctness; inspect free generation",
+      "GT boxes and selected feasible groups; not end-to-end UPT or full caption evaluation",
+      "Full-caption baseline A metrics cannot be compared to these phrase scores; no SCST/CIDEr/CHAIR here",
+      "One bicycle group in fit only; no bicycle holdout. Tiny groups/template vocabulary can permit shortcuts."
+    ]
+  },
+  "CROSS": {
+    "status": "PHRASE_TECHNICAL_PILOT_COMPLETE",
+    "arm": "CROSS",
+    "updates": 300,
+    "metrics": {
+      "before": {
+        "fit": {
+          "on": {
+            "groups": 14,
+            "agreement": 0.75,
+            "both_directions_correct": 7,
+            "mean_positive_margin": 0.4759037068911961,
+            "positive_nll": 2.5576257365090505,
+            "captions_changed_vs_off": 27
+          },
+          "off": {
+            "groups": 14,
+            "agreement": 0.7857142857142857,
+            "both_directions_correct": 8,
+            "mean_positive_margin": 0.42409038969448637,
+            "positive_nll": 2.675497089113508,
+            "captions_changed_vs_off": 0
+          }
+        },
+        "adaptation_holdout": {
+          "on": {
+            "groups": 7,
+            "agreement": 0.7142857142857143,
+            "both_directions_correct": 3,
+            "mean_positive_margin": 0.2987655316080366,
+            "positive_nll": 2.4205849511282787,
+            "captions_changed_vs_off": 14
+          },
+          "off": {
+            "groups": 7,
+            "agreement": 0.7142857142857143,
+            "both_directions_correct": 3,
+            "mean_positive_margin": 0.27885386773518156,
+            "positive_nll": 2.547123040471758,
+            "captions_changed_vs_off": 0
+          }
+        }
+      },
+      "after": {
+        "fit": {
+          "on": {
+            "groups": 14,
+            "agreement": 1.0,
+            "both_directions_correct": 14,
+            "mean_positive_margin": 2.0966138328824724,
+            "positive_nll": 0.11985602708799499,
+            "captions_changed_vs_off": 28
+          },
+          "off": {
+            "groups": 14,
+            "agreement": 0.7857142857142857,
+            "both_directions_correct": 8,
+            "mean_positive_margin": 0.425033905676433,
+            "positive_nll": 2.6704975877489363,
+            "captions_changed_vs_off": 0
+          }
+        },
+        "adaptation_holdout": {
+          "on": {
+            "groups": 7,
+            "agreement": 0.9285714285714286,
+            "both_directions_correct": 6,
+            "mean_positive_margin": 0.7209395723683494,
+            "positive_nll": 0.7404148493494306,
+            "captions_changed_vs_off": 14
+          },
+          "off": {
+            "groups": 7,
+            "agreement": 0.7142857142857143,
+            "both_directions_correct": 3,
+            "mean_positive_margin": 0.27945328610283987,
+            "positive_nll": 2.5420076847076416,
+            "captions_changed_vs_off": 0
+          }
+        }
+      }
+    },
+    "initial_sha256": "90f3db3f4eb87e15268b38d7f0b09913525bbd7b6644a184db071606ae3b53c6",
+    "final_sha256": "88feb62476cde8c7a3b0637d218e7a196b328c943af9454ba5cdd4acf8b5a698",
+    "stage_tensor_sha256": "9203f14f5eddd3acee1de8be0951eeb65d61da443b65a20b47579ef973209f0f",
+    "schedule_sha256": "adc9f17836c6296495d1092fad81b801e7cdac04bd91885704240d06d8a6eacc",
+    "manifest_sha256": "f7410841421580c53bce920e5011b232d77eeb28f41aa9635d781f3975506149",
+    "original_parameters_unchanged": true,
+    "semantic_human_evaluation_available": false,
+    "test_used": false,
+    "geometry_control": {
+      "agreement": 0.6428571428571429,
+      "both_directions_correct": 2
+    },
+    "limits": [
+      "14 fit / 7 adaptation holdout groups previously reviewed; no independent benchmark or seed uncertainty",
+      "Likelihood agreement and changed captions do not establish semantic/instance correctness; inspect free generation",
+      "GT boxes and selected feasible groups; not end-to-end UPT or full caption evaluation",
+      "Full-caption baseline A metrics cannot be compared to these phrase scores; no SCST/CIDEr/CHAIR here",
+      "One bicycle group in fit only; no bicycle holdout. Tiny groups/template vocabulary can permit shortcuts."
+    ]
+  },
+  "semantic_human_verdicts_available": false,
+  "interpretation": "Only scoring and sensitivity statistics. Read generated phrases and inspect grounding/binding before any go decision.",
+  "limits": [
+    "7 previously reviewed adaptation groups, not an independent test; no seed variation or exhaustive near-duplicate audit",
+    "Paired group bootstrap is descriptive and does not establish statistical power or full-caption benefit"
+  ],
+  "additional_artifact_checks": {
+    "ce": {
+      "zip_sha256": "5bd4ef43c6296493f88f3d6902429102f0333b161b7b7e8a68bfcf299c296652",
+      "generation_checks": {
+        "fit": {
+          "exact_template_match_normalized": 28,
+          "events": 28,
+          "both_templates_exact": 14,
+          "note": "String identity only, NOT semantic accuracy."
+        },
+        "adaptation_holdout": {
+          "exact_template_match_normalized": 5,
+          "events": 14,
+          "both_templates_exact": 1,
+          "note": "String identity only, NOT semantic accuracy."
+        }
+      }
+    },
+    "cross": {
+      "zip_sha256": "6ed8209a905eb4de276a4d8a24b9d75508b05065d1e9954bfa3632a881dfab1a",
+      "generation_checks": {
+        "fit": {
+          "exact_template_match_normalized": 28,
+          "events": 28,
+          "both_templates_exact": 14,
+          "note": "String identity only, NOT semantic accuracy."
+        },
+        "adaptation_holdout": {
+          "exact_template_match_normalized": 5,
+          "events": 14,
+          "both_templates_exact": 1,
+          "note": "String identity only, NOT semantic accuracy."
+        }
+      }
+    }
+  }
+}
