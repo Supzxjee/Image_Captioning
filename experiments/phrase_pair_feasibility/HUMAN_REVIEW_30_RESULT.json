@@ -1,0 +1,1098 @@
+{
+  "summary": {
+    "groups_total": 30,
+    "groups_with_any_response": 30,
+    "groups_complete": 30,
+    "clear_semantic_contrasts": 26,
+    "contrasts_with_clear_boxes": 26,
+    "contrasts_with_clear_boxes_and_visible_224": 21,
+    "same_image_clear_contrasts": 6,
+    "both_descriptions_supported_events": 0,
+    "unreviewed_groups": 0,
+    "training_approved": false,
+    "status": "HUMAN_FEASIBILITY_REVIEW_ONLY"
+  },
+  "groups": [
+    {
+      "group_id": "candidate_3d1eae17ffcebb6b",
+      "complete": true,
+      "semantic_contrast": false,
+      "boxes_clear": true,
+      "detail_224_visible": true,
+      "index": 1,
+      "family": "bicycle_posture",
+      "same_image": true,
+      "reason": "not_a_clear_two_way_contrast",
+      "human_truth_matrix": [
+        [
+          "supported",
+          "contradicted"
+        ],
+        [
+          "supported",
+          "contradicted"
+        ]
+      ],
+      "human_box_status": [
+        [
+          "clear",
+          "clear"
+        ],
+        [
+          "clear",
+          "clear"
+        ]
+      ],
+      "human_detail_224": [
+        "yes",
+        "yes"
+      ]
+    },
+    {
+      "group_id": "candidate_50edb6132ebb8519",
+      "complete": true,
+      "semantic_contrast": true,
+      "boxes_clear": true,
+      "detail_224_visible": true,
+      "index": 2,
+      "family": "skateboard_support",
+      "same_image": true,
+      "reason": "feasible_for_technical_pilot",
+      "human_truth_matrix": [
+        [
+          "contradicted",
+          "supported"
+        ],
+        [
+          "supported",
+          "contradicted"
+        ]
+      ],
+      "human_box_status": [
+        [
+          "clear",
+          "clear"
+        ],
+        [
+          "clear",
+          "clear"
+        ]
+      ],
+      "human_detail_224": [
+        "yes",
+        "yes"
+      ]
+    },
+    {
+      "group_id": "candidate_6fff8a4e958823d8",
+      "complete": true,
+      "semantic_contrast": true,
+      "boxes_clear": true,
+      "detail_224_visible": true,
+      "index": 3,
+      "family": "surfboard_support",
+      "same_image": true,
+      "reason": "feasible_for_technical_pilot",
+      "human_truth_matrix": [
+        [
+          "supported",
+          "contradicted"
+        ],
+        [
+          "contradicted",
+          "supported"
+        ]
+      ],
+      "human_box_status": [
+        [
+          "clear",
+          "clear"
+        ],
+        [
+          "clear",
+          "clear"
+        ]
+      ],
+      "human_detail_224": [
+        "yes",
+        "yes"
+      ]
+    },
+    {
+      "group_id": "candidate_b222bbdd458a579c",
+      "complete": true,
+      "semantic_contrast": true,
+      "boxes_clear": true,
+      "detail_224_visible": false,
+      "index": 4,
+      "family": "chair_posture",
+      "same_image": true,
+      "reason": "224_detail_not_clear_for_both_events",
+      "human_truth_matrix": [
+        [
+          "contradicted",
+          "supported"
+        ],
+        [
+          "supported",
+          "contradicted"
+        ]
+      ],
+      "human_box_status": [
+        [
+          "clear",
+          "clear"
+        ],
+        [
+          "clear",
+          "clear"
+        ]
+      ],
+      "human_detail_224": [
+        "unclear",
+        "yes"
+      ]
+    },
+    {
+      "group_id": "candidate_3f297f5ccbb857d2",
+      "complete": true,
+      "semantic_contrast": true,
+      "boxes_clear": true,
+      "detail_224_visible": false,
+      "index": 5,
+      "family": "phone_position",
+      "same_image": true,
+      "reason": "224_detail_not_clear_for_both_events",
+      "human_truth_matrix": [
+        [
+          "contradicted",
+          "supported"
+        ],
+        [
+          "supported",
+          "contradicted"
+        ]
+      ],
+      "human_box_status": [
+        [
+          "clear",
+          "clear"
+        ],
+        [
+          "clear",
+          "clear"
+        ]
+      ],
+      "human_detail_224": [
+        "unclear",
+        "unclear"
+      ]
+    },
+    {
+      "group_id": "candidate_0375a14e14d6378b",
+      "complete": true,
+      "semantic_contrast": true,
+      "boxes_clear": true,
+      "detail_224_visible": true,
+      "index": 6,
+      "family": "bicycle_posture",
+      "same_image": false,
+      "reason": "feasible_for_technical_pilot",
+      "human_truth_matrix": [
+        [
+          "supported",
+          "contradicted"
+        ],
+        [
+          "contradicted",
+          "supported"
+        ]
+      ],
+      "human_box_status": [
+        [
+          "clear",
+          "clear"
+        ],
+        [
+          "clear",
+          "clear"
+        ]
+      ],
+      "human_detail_224": [
+        "yes",
+        "yes"
+      ]
+    },
+    {
+      "group_id": "candidate_5d56f9ff08e1a128",
+      "complete": true,
+      "semantic_contrast": true,
+      "boxes_clear": true,
+      "detail_224_visible": true,
+      "index": 7,
+      "family": "skateboard_support",
+      "same_image": true,
+      "reason": "feasible_for_technical_pilot",
+      "human_truth_matrix": [
+        [
+          "contradicted",
+          "supported"
+        ],
+        [
+          "supported",
+          "contradicted"
+        ]
+      ],
+      "human_box_status": [
+        [
+          "clear",
+          "clear"
+        ],
+        [
+          "clear",
+          "clear"
+        ]
+      ],
+      "human_detail_224": [
+        "yes",
+        "yes"
+      ]
+    },
+    {
+      "group_id": "candidate_0000065babcabdfc",
+      "complete": true,
+      "semantic_contrast": true,
+      "boxes_clear": true,
+      "detail_224_visible": true,
+      "index": 8,
+      "family": "surfboard_support",
+      "same_image": false,
+      "reason": "feasible_for_technical_pilot",
+      "human_truth_matrix": [
+        [
+          "supported",
+          "contradicted"
+        ],
+        [
+          "contradicted",
+          "supported"
+        ]
+      ],
+      "human_box_status": [
+        [
+          "clear",
+          "clear"
+        ],
+        [
+          "clear",
+          "clear"
+        ]
+      ],
+      "human_detail_224": [
+        "yes",
+        "yes"
+      ]
+    },
+    {
+      "group_id": "candidate_98144b2702f71aa1",
+      "complete": true,
+      "semantic_contrast": true,
+      "boxes_clear": true,
+      "detail_224_visible": true,
+      "index": 9,
+      "family": "phone_position",
+      "same_image": true,
+      "reason": "feasible_for_technical_pilot",
+      "human_truth_matrix": [
+        [
+          "contradicted",
+          "supported"
+        ],
+        [
+          "supported",
+          "contradicted"
+        ]
+      ],
+      "human_box_status": [
+        [
+          "clear",
+          "clear"
+        ],
+        [
+          "clear",
+          "clear"
+        ]
+      ],
+      "human_detail_224": [
+        "yes",
+        "yes"
+      ]
+    },
+    {
+      "group_id": "candidate_000399513c4cf750",
+      "complete": true,
+      "semantic_contrast": true,
+      "boxes_clear": true,
+      "detail_224_visible": true,
+      "index": 10,
+      "family": "skateboard_support",
+      "same_image": false,
+      "reason": "feasible_for_technical_pilot",
+      "human_truth_matrix": [
+        [
+          "supported",
+          "contradicted"
+        ],
+        [
+          "contradicted",
+          "supported"
+        ]
+      ],
+      "human_box_status": [
+        [
+          "clear",
+          "clear"
+        ],
+        [
+          "clear",
+          "clear"
+        ]
+      ],
+      "human_detail_224": [
+        "yes",
+        "yes"
+      ]
+    },
+    {
+      "group_id": "candidate_00014bad665432ab",
+      "complete": true,
+      "semantic_contrast": true,
+      "boxes_clear": true,
+      "detail_224_visible": true,
+      "index": 11,
+      "family": "surfboard_support",
+      "same_image": false,
+      "reason": "feasible_for_technical_pilot",
+      "human_truth_matrix": [
+        [
+          "supported",
+          "contradicted"
+        ],
+        [
+          "contradicted",
+          "supported"
+        ]
+      ],
+      "human_box_status": [
+        [
+          "clear",
+          "clear"
+        ],
+        [
+          "clear",
+          "clear"
+        ]
+      ],
+      "human_detail_224": [
+        "yes",
+        "yes"
+      ]
+    },
+    {
+      "group_id": "candidate_001cceebebd8190e",
+      "complete": true,
+      "semantic_contrast": true,
+      "boxes_clear": true,
+      "detail_224_visible": true,
+      "index": 12,
+      "family": "phone_position",
+      "same_image": false,
+      "reason": "feasible_for_technical_pilot",
+      "human_truth_matrix": [
+        [
+          "supported",
+          "contradicted"
+        ],
+        [
+          "contradicted",
+          "supported"
+        ]
+      ],
+      "human_box_status": [
+        [
+          "clear",
+          "clear"
+        ],
+        [
+          "clear",
+          "clear"
+        ]
+      ],
+      "human_detail_224": [
+        "yes",
+        "yes"
+      ]
+    },
+    {
+      "group_id": "candidate_0007c891aa2f6c48",
+      "complete": true,
+      "semantic_contrast": false,
+      "boxes_clear": true,
+      "detail_224_visible": true,
+      "index": 13,
+      "family": "skateboard_support",
+      "same_image": false,
+      "reason": "not_a_clear_two_way_contrast",
+      "human_truth_matrix": [
+        [
+          "supported",
+          "contradicted"
+        ],
+        [
+          "supported",
+          "contradicted"
+        ]
+      ],
+      "human_box_status": [
+        [
+          "clear",
+          "clear"
+        ],
+        [
+          "clear",
+          "clear"
+        ]
+      ],
+      "human_detail_224": [
+        "yes",
+        "yes"
+      ]
+    },
+    {
+      "group_id": "candidate_00024f0b9db4d315",
+      "complete": true,
+      "semantic_contrast": true,
+      "boxes_clear": true,
+      "detail_224_visible": false,
+      "index": 14,
+      "family": "surfboard_support",
+      "same_image": false,
+      "reason": "224_detail_not_clear_for_both_events",
+      "human_truth_matrix": [
+        [
+          "supported",
+          "contradicted"
+        ],
+        [
+          "contradicted",
+          "supported"
+        ]
+      ],
+      "human_box_status": [
+        [
+          "clear",
+          "clear"
+        ],
+        [
+          "clear",
+          "clear"
+        ]
+      ],
+      "human_detail_224": [
+        "unclear",
+        "yes"
+      ]
+    },
+    {
+      "group_id": "candidate_001df5812080a273",
+      "complete": true,
+      "semantic_contrast": true,
+      "boxes_clear": true,
+      "detail_224_visible": false,
+      "index": 15,
+      "family": "phone_position",
+      "same_image": false,
+      "reason": "224_detail_not_clear_for_both_events",
+      "human_truth_matrix": [
+        [
+          "supported",
+          "contradicted"
+        ],
+        [
+          "contradicted",
+          "supported"
+        ]
+      ],
+      "human_box_status": [
+        [
+          "clear",
+          "clear"
+        ],
+        [
+          "clear",
+          "clear"
+        ]
+      ],
+      "human_detail_224": [
+        "unclear",
+        "unclear"
+      ]
+    },
+    {
+      "group_id": "candidate_001540bda681aca7",
+      "complete": true,
+      "semantic_contrast": true,
+      "boxes_clear": true,
+      "detail_224_visible": true,
+      "index": 16,
+      "family": "skateboard_support",
+      "same_image": false,
+      "reason": "feasible_for_technical_pilot",
+      "human_truth_matrix": [
+        [
+          "supported",
+          "contradicted"
+        ],
+        [
+          "contradicted",
+          "supported"
+        ]
+      ],
+      "human_box_status": [
+        [
+          "clear",
+          "clear"
+        ],
+        [
+          "clear",
+          "clear"
+        ]
+      ],
+      "human_detail_224": [
+        "yes",
+        "yes"
+      ]
+    },
+    {
+      "group_id": "candidate_00030b8165be0a35",
+      "complete": true,
+      "semantic_contrast": true,
+      "boxes_clear": true,
+      "detail_224_visible": true,
+      "index": 17,
+      "family": "surfboard_support",
+      "same_image": false,
+      "reason": "feasible_for_technical_pilot",
+      "human_truth_matrix": [
+        [
+          "supported",
+          "contradicted"
+        ],
+        [
+          "contradicted",
+          "supported"
+        ]
+      ],
+      "human_box_status": [
+        [
+          "clear",
+          "clear"
+        ],
+        [
+          "clear",
+          "clear"
+        ]
+      ],
+      "human_detail_224": [
+        "yes",
+        "yes"
+      ]
+    },
+    {
+      "group_id": "candidate_001e530a457ed66b",
+      "complete": true,
+      "semantic_contrast": true,
+      "boxes_clear": true,
+      "detail_224_visible": true,
+      "index": 18,
+      "family": "phone_position",
+      "same_image": false,
+      "reason": "feasible_for_technical_pilot",
+      "human_truth_matrix": [
+        [
+          "supported",
+          "contradicted"
+        ],
+        [
+          "contradicted",
+          "supported"
+        ]
+      ],
+      "human_box_status": [
+        [
+          "clear",
+          "clear"
+        ],
+        [
+          "clear",
+          "clear"
+        ]
+      ],
+      "human_detail_224": [
+        "yes",
+        "yes"
+      ]
+    },
+    {
+      "group_id": "candidate_002524577c397c2e",
+      "complete": true,
+      "semantic_contrast": true,
+      "boxes_clear": true,
+      "detail_224_visible": true,
+      "index": 19,
+      "family": "skateboard_support",
+      "same_image": false,
+      "reason": "feasible_for_technical_pilot",
+      "human_truth_matrix": [
+        [
+          "supported",
+          "contradicted"
+        ],
+        [
+          "contradicted",
+          "supported"
+        ]
+      ],
+      "human_box_status": [
+        [
+          "clear",
+          "clear"
+        ],
+        [
+          "clear",
+          "clear"
+        ]
+      ],
+      "human_detail_224": [
+        "yes",
+        "yes"
+      ]
+    },
+    {
+      "group_id": "candidate_0003a3b3e1c4f924",
+      "complete": true,
+      "semantic_contrast": false,
+      "boxes_clear": true,
+      "detail_224_visible": true,
+      "index": 20,
+      "family": "surfboard_support",
+      "same_image": false,
+      "reason": "not_a_clear_two_way_contrast",
+      "human_truth_matrix": [
+        [
+          "contradicted",
+          "contradicted"
+        ],
+        [
+          "contradicted",
+          "supported"
+        ]
+      ],
+      "human_box_status": [
+        [
+          "clear",
+          "clear"
+        ],
+        [
+          "clear",
+          "clear"
+        ]
+      ],
+      "human_detail_224": [
+        "yes",
+        "yes"
+      ]
+    },
+    {
+      "group_id": "candidate_001e8e9ec1af39cf",
+      "complete": true,
+      "semantic_contrast": true,
+      "boxes_clear": true,
+      "detail_224_visible": true,
+      "index": 21,
+      "family": "phone_position",
+      "same_image": false,
+      "reason": "feasible_for_technical_pilot",
+      "human_truth_matrix": [
+        [
+          "supported",
+          "contradicted"
+        ],
+        [
+          "contradicted",
+          "supported"
+        ]
+      ],
+      "human_box_status": [
+        [
+          "clear",
+          "clear"
+        ],
+        [
+          "clear",
+          "clear"
+        ]
+      ],
+      "human_detail_224": [
+        "yes",
+        "yes"
+      ]
+    },
+    {
+      "group_id": "candidate_0040f5fec48dd994",
+      "complete": true,
+      "semantic_contrast": true,
+      "boxes_clear": true,
+      "detail_224_visible": false,
+      "index": 22,
+      "family": "skateboard_support",
+      "same_image": false,
+      "reason": "224_detail_not_clear_for_both_events",
+      "human_truth_matrix": [
+        [
+          "supported",
+          "contradicted"
+        ],
+        [
+          "contradicted",
+          "supported"
+        ]
+      ],
+      "human_box_status": [
+        [
+          "clear",
+          "clear"
+        ],
+        [
+          "clear",
+          "clear"
+        ]
+      ],
+      "human_detail_224": [
+        "unclear",
+        "yes"
+      ]
+    },
+    {
+      "group_id": "candidate_0006a3c356ed0407",
+      "complete": true,
+      "semantic_contrast": true,
+      "boxes_clear": true,
+      "detail_224_visible": true,
+      "index": 23,
+      "family": "surfboard_support",
+      "same_image": false,
+      "reason": "feasible_for_technical_pilot",
+      "human_truth_matrix": [
+        [
+          "supported",
+          "contradicted"
+        ],
+        [
+          "contradicted",
+          "supported"
+        ]
+      ],
+      "human_box_status": [
+        [
+          "clear",
+          "clear"
+        ],
+        [
+          "clear",
+          "clear"
+        ]
+      ],
+      "human_detail_224": [
+        "yes",
+        "yes"
+      ]
+    },
+    {
+      "group_id": "candidate_001ebb9a1ca1066d",
+      "complete": true,
+      "semantic_contrast": true,
+      "boxes_clear": true,
+      "detail_224_visible": true,
+      "index": 24,
+      "family": "phone_position",
+      "same_image": false,
+      "reason": "feasible_for_technical_pilot",
+      "human_truth_matrix": [
+        [
+          "supported",
+          "contradicted"
+        ],
+        [
+          "contradicted",
+          "supported"
+        ]
+      ],
+      "human_box_status": [
+        [
+          "clear",
+          "clear"
+        ],
+        [
+          "clear",
+          "clear"
+        ]
+      ],
+      "human_detail_224": [
+        "yes",
+        "yes"
+      ]
+    },
+    {
+      "group_id": "candidate_013cfac02989d26d",
+      "complete": true,
+      "semantic_contrast": true,
+      "boxes_clear": true,
+      "detail_224_visible": true,
+      "index": 25,
+      "family": "skateboard_support",
+      "same_image": false,
+      "reason": "feasible_for_technical_pilot",
+      "human_truth_matrix": [
+        [
+          "supported",
+          "contradicted"
+        ],
+        [
+          "contradicted",
+          "supported"
+        ]
+      ],
+      "human_box_status": [
+        [
+          "clear",
+          "clear"
+        ],
+        [
+          "clear",
+          "clear"
+        ]
+      ],
+      "human_detail_224": [
+        "yes",
+        "yes"
+      ]
+    },
+    {
+      "group_id": "candidate_0006da9d3047a2ad",
+      "complete": true,
+      "semantic_contrast": true,
+      "boxes_clear": true,
+      "detail_224_visible": true,
+      "index": 26,
+      "family": "surfboard_support",
+      "same_image": false,
+      "reason": "feasible_for_technical_pilot",
+      "human_truth_matrix": [
+        [
+          "supported",
+          "contradicted"
+        ],
+        [
+          "contradicted",
+          "supported"
+        ]
+      ],
+      "human_box_status": [
+        [
+          "clear",
+          "clear"
+        ],
+        [
+          "clear",
+          "clear"
+        ]
+      ],
+      "human_detail_224": [
+        "yes",
+        "yes"
+      ]
+    },
+    {
+      "group_id": "candidate_00282b60f1e11ec7",
+      "complete": true,
+      "semantic_contrast": true,
+      "boxes_clear": true,
+      "detail_224_visible": true,
+      "index": 27,
+      "family": "phone_position",
+      "same_image": false,
+      "reason": "feasible_for_technical_pilot",
+      "human_truth_matrix": [
+        [
+          "supported",
+          "contradicted"
+        ],
+        [
+          "contradicted",
+          "supported"
+        ]
+      ],
+      "human_box_status": [
+        [
+          "clear",
+          "clear"
+        ],
+        [
+          "clear",
+          "clear"
+        ]
+      ],
+      "human_detail_224": [
+        "yes",
+        "yes"
+      ]
+    },
+    {
+      "group_id": "candidate_0143d75c0e53c56a",
+      "complete": true,
+      "semantic_contrast": false,
+      "boxes_clear": true,
+      "detail_224_visible": true,
+      "index": 28,
+      "family": "skateboard_support",
+      "same_image": false,
+      "reason": "not_a_clear_two_way_contrast",
+      "human_truth_matrix": [
+        [
+          "supported",
+          "contradicted"
+        ],
+        [
+          "unclear",
+          "supported"
+        ]
+      ],
+      "human_box_status": [
+        [
+          "clear",
+          "clear"
+        ],
+        [
+          "clear",
+          "clear"
+        ]
+      ],
+      "human_detail_224": [
+        "yes",
+        "yes"
+      ]
+    },
+    {
+      "group_id": "candidate_000a4fdcfcf04e59",
+      "complete": true,
+      "semantic_contrast": true,
+      "boxes_clear": true,
+      "detail_224_visible": true,
+      "index": 29,
+      "family": "surfboard_support",
+      "same_image": false,
+      "reason": "feasible_for_technical_pilot",
+      "human_truth_matrix": [
+        [
+          "supported",
+          "contradicted"
+        ],
+        [
+          "contradicted",
+          "supported"
+        ]
+      ],
+      "human_box_status": [
+        [
+          "clear",
+          "clear"
+        ],
+        [
+          "clear",
+          "clear"
+        ]
+      ],
+      "human_detail_224": [
+        "yes",
+        "yes"
+      ]
+    },
+    {
+      "group_id": "candidate_003b508378285bef",
+      "complete": true,
+      "semantic_contrast": true,
+      "boxes_clear": true,
+      "detail_224_visible": true,
+      "index": 30,
+      "family": "phone_position",
+      "same_image": false,
+      "reason": "feasible_for_technical_pilot",
+      "human_truth_matrix": [
+        [
+          "supported",
+          "contradicted"
+        ],
+        [
+          "contradicted",
+          "supported"
+        ]
+      ],
+      "human_box_status": [
+        [
+          "clear",
+          "clear"
+        ],
+        [
+          "clear",
+          "clear"
+        ]
+      ],
+      "human_detail_224": [
+        "yes",
+        "yes"
+      ]
+    }
+  ],
+  "limits": [
+    "Self-reported human labels; no inter-reviewer adjudication",
+    "Pixel visibility at224 and patch counts do not prove CLIP features preserve relation evidence",
+    "Feasibility review is not a training/probe split or model result",
+    "Purposefully selected feasibility examples; all reviewed before architecture/protocol finalization, not an independent benchmark",
+    "No exhaustive near-duplicate or all-history exposure audit; caption train/restval potentially seen by backbone",
+    "UPT match measures selected JSON objects only; not raw proposal recall or action correctness",
+    "One bicycle group, no eligible chair/horse groups; not broad relation coverage"
+  ],
+  "status": "RECEIVED_HUMAN_REVIEW_AUDITED",
+  "groups_sha256": "5fdbe57dd2202a86eaedd33b1a3278e11c08aded2e5f3b96be3fd9c2cc20717a",
+  "source_review_sha256": "2ba69cbd710f9d1122e671adb5f025f1d54e42a84ea8647759b6a45a88a199a7",
+  "reviewer_type": "human_self_reported",
+  "independent_reviewers": 1,
+  "changed_earlier_group_ids": [],
+  "additional": {
+    "eligible_groups": 21,
+    "eligible_event_views": 42,
+    "eligible_unique_images": 38,
+    "eligible_same_image_groups": 4,
+    "eligible_families": {
+      "skateboard_support": 6,
+      "surfboard_support": 7,
+      "bicycle_posture": 1,
+      "phone_position": 7
+    },
+    "eligible_selected_upt_pairs_found": 38,
+    "eligible_groups_both_selected_upt_pairs_found": 17,
+    "eligible_zero_patch_event_views": 7
+  },
+  "decision": "Stop this annotation round. Feasibility supports a small technical pilot, not an efficacy study. No training/model launch; split remains unassigned."
+}

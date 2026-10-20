@@ -50,5 +50,21 @@ class Checks(unittest.TestCase):
                 self.assertIn(e['caption_split'],('train','restval'));self.assertTrue((root/'images'/e['filename']).is_file())
         self.assertEqual(len(used),53)
 
+    def test_feasible_bundle_targets_follow_human_matrix(self):
+        path=Path(__file__).parent/'FEASIBLE_GROUPS_21.json'
+        if not path.exists():self.skipTest('Final human review not packaged')
+        bundle=json.loads(path.read_text(encoding='utf-8'))
+        self.assertEqual(len(bundle['groups']),21);self.assertFalse(bundle['training_approved'])
+        self.assertEqual(identity(bundle['groups']),bundle['groups_sha256']);used=set()
+        for g in bundle['groups']:
+            self.assertEqual(g['split'],'UNASSIGNED_FEASIBILITY');self.assertFalse(g['training_eligible'])
+            ids={e['image_id'] for e in g['events']};self.assertFalse(ids&used);used|=ids
+            targets=g['target_description_indices'];self.assertEqual(set(targets),{0,1})
+            for i,j in enumerate(targets):
+                self.assertEqual(g['human_truth_matrix'][i][j],'supported')
+                self.assertEqual(g['human_truth_matrix'][i][1-j],'contradicted')
+            self.assertEqual(g['human_detail_224'],['yes','yes'])
+        self.assertEqual(len(used),38)
+
 
 if __name__=='__main__':unittest.main(verbosity=2)
