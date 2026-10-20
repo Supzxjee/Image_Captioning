@@ -1,0 +1,84 @@
+{
+  "status": "CANDIDATES_READY_NO_HUMAN_LABELS",
+  "groups": 30,
+  "event_views": 60,
+  "unique_images": 53,
+  "same_image_groups": 7,
+  "families": {
+    "bicycle_posture": 2,
+    "skateboard_support": 9,
+    "surfboard_support": 9,
+    "chair_posture": 1,
+    "phone_position": 9
+  },
+  "candidate_pool": {
+    "bicycle_posture": {
+      "side_events": [
+        27,
+        2
+      ],
+      "candidate_pairs": 54,
+      "same_image_pairs": 1
+    },
+    "horse_posture": {
+      "side_events": [
+        58,
+        0
+      ],
+      "candidate_pairs": 0,
+      "same_image_pairs": 0
+    },
+    "phone_position": {
+      "side_events": [
+        255,
+        44
+      ],
+      "candidate_pairs": 11220,
+      "same_image_pairs": 3
+    },
+    "surfboard_support": {
+      "side_events": [
+        472,
+        98
+      ],
+      "candidate_pairs": 46256,
+      "same_image_pairs": 3
+    },
+    "skateboard_support": {
+      "side_events": [
+        438,
+        11
+      ],
+      "candidate_pairs": 4818,
+      "same_image_pairs": 2
+    },
+    "chair_posture": {
+      "side_events": [
+        354,
+        1
+      ],
+      "candidate_pairs": 354,
+      "same_image_pairs": 1
+    }
+  },
+  "filtered_pool_notes": {
+    "zero_patch_events": 252
+  },
+  "excluded_known_review_images": 495,
+  "support": {
+    "zero_patch_event_views": 13,
+    "under_4_patch_event_views": 28
+  },
+  "upt_selected_object_pair_matches_at_iou05": 48,
+  "upt_scope": "Selected objects in prompt JSON only. Missing pair does not imply raw detector missed it. Selected-only coverage is not semantic accuracy.",
+  "human_groups_completed": 0,
+  "human_usable_groups": null,
+  "training_started": false,
+  "next": "Review at most first 10 groups initially. Stop and inspect feasibility before expanding; no training until truth matrices and quality are reviewed.",
+  "images_validated": 53,
+  "data_tests_passed": 5,
+  "ui_logic_test": "PASS_isolated_DOM_no_user_labels",
+  "browser_visual_QA": false,
+  "browser_QA_limit": "IAB localhost connection timed out; no browser interaction/visual success claim",
+  "GPU_or_model_run": false
+}

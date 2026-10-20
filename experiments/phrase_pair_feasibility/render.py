@@ -1,0 +1,55 @@
+"""Portable, offline human review. No prefilled truth or invented reviewer identity."""
+import argparse
+import json
+from pathlib import Path
+
+TEMPLATE=r'''<!doctype html><html lang="vi"><meta charset="utf-8"><title>Audit 30 nhóm mô tả–bằng chứng</title>
+<style>
+body{font:16px/1.5 Arial,sans-serif;margin:0;background:#f1f5f9;color:#15263a}main{max-width:1300px;margin:auto;padding:24px}h1{font-size:26px}h2{font-size:20px}button,select,input,textarea{font:inherit;padding:9px;border:1px solid #b6c3d1;border-radius:6px}button{cursor:pointer;background:#fff}button.primary{background:#174975;color:white}button:disabled{opacity:.4;cursor:default}.card{background:white;border:1px solid #d8e1ea;border-radius:10px;padding:18px;margin:16px 0}.toolbar{display:flex;gap:12px;flex-wrap:wrap;align-items:center}.events{display:grid;grid-template-columns:1fr 1fr;gap:18px}.picture{position:relative;width:100%;background:#e8edf2}.picture img{display:block;width:100%;height:auto}.picture svg{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}.small{font-size:14px;color:#475569}.warn{color:#8a3c0c}.label{font-weight:bold}table{width:100%;border-collapse:collapse}th,td{padding:10px;border:1px solid #d9e1ea;text-align:left}td select{width:100%}textarea{box-sizing:border-box;width:100%}label{display:block;margin:10px 0}summary{cursor:pointer}.thumb{position:relative;width:224px;background:#eef2f6}.thumb img{display:block;width:224px;height:224px}.thumb svg{position:absolute;inset:0;width:224px;height:224px;pointer-events:none}.pill{background:#e8eff7;border-radius:5px;padding:4px 8px}#notice{min-height:24px}@media(max-width:800px){.events{grid-template-columns:1fr}main{padding:12px}table{font-size:14px}th,td{padding:5px}}
+</style><main>
+<h1>Kiểm tra tính khả thi: 30 nhóm mô tả ↔ bằng chứng ảnh</h1>
+<div class="card"><b>Chưa huấn luyện. Không có nhãn đúng/sai điền sẵn.</b> Các mô tả là giả thuyết cần kiểm tra, không phải đáp án V-COCO.
+<ol><li>Trong mỗi ảnh, chỉ đánh giá người <b style="color:#14753d">S màu xanh</b> với vật <b style="color:#a64d00">O màu cam</b>.</li>
+<li>Chấm từng mô tả C1/C2 cho từng cặp: đúng, sai hoặc không rõ. <b>Cả hai cùng đúng</b> là câu trả lời hợp lệ; không cố ép thành đối lập.</li>
+<li>Kiểm tra box, rồi xem ảnh resize 224×224: bằng chứng phân biệt còn nhìn được không? Đây là đánh giá pixel, chưa phải thông tin CLIP thực sự giữ được.</li>
+<li>Làm <b>10 nhóm đầu trước</b>, xuất JSON gửi lại để kiểm tra tính khả thi. Chưa cần hoàn tất cả 30.</li></ol>
+<p class="small">Tự lưu trên trình duyệt nếu được phép. Hãy tải JSON trước khi đổi máy/trình duyệt. Không có đáp án nào được gửi ra mạng.</p></div>
+<div class="card toolbar"><label>Tên người chấm <input id="reviewer" placeholder="Nhập tên của bạn" autocomplete="name"></label><button class="primary" id="export">Tải kết quả JSON</button><span id="progress"></span></div>
+<div class="toolbar"><button id="prev">← Trước</button><label>Nhóm <select id="jump"></select></label><button id="next">Tiếp →</button><span id="counter"></span></div>
+<p id="notice" role="status"></p><div id="case"></div>
+<script id="manifest" type="application/json">__MANIFEST__</script>
+<script>
+'use strict';
+const manifest=JSON.parse(document.getElementById('manifest').textContent), groups=manifest.groups;
+const key='phrase-pair-audit-'+manifest.groups_sha256,truthValues=['unreviewed','supported','contradicted','unclear'],qualityValues=['unreviewed','clear','incorrect','unclear'],detailValues=['unreviewed','yes','no','unclear'];
+const fresh=()=>({truth:[['unreviewed','unreviewed'],['unreviewed','unreviewed']],boxes:[['unreviewed','unreviewed'],['unreviewed','unreviewed']],detail_224:['unreviewed','unreviewed'],notes:''});
+let state={reviewer:'',annotations:{}},position=0;
+const $=id=>document.getElementById(id),notice=t=>{$('notice').textContent=t;};
+function validAnswer(a){return a&&['truth','boxes'].every(k=>Array.isArray(a[k])&&a[k].length===2&&a[k].every(row=>Array.isArray(row)&&row.length===2&&row.every(v=>(k==='truth'?truthValues:qualityValues).includes(v))))&&Array.isArray(a.detail_224)&&a.detail_224.length===2&&a.detail_224.every(v=>detailValues.includes(v))&&typeof a.notes==='string';}
+try{const saved=JSON.parse(localStorage.getItem(key));if(saved&&typeof saved.reviewer==='string'&&saved.annotations&&Object.entries(saved.annotations).every(([id,a])=>groups.some(g=>g.group_id===id)&&validAnswer(a)))state=saved;}catch(e){notice('Trình duyệt không khôi phục được dữ liệu; hãy xuất JSON định kỳ.');}
+function answer(g){return state.annotations[g.group_id]||(state.annotations[g.group_id]=fresh());}
+function completed(a){return validAnswer(a)&&a.truth.flat().every(v=>v!=='unreviewed')&&a.boxes.flat().every(v=>v!=='unreviewed')&&a.detail_224.every(v=>v!=='unreviewed');}
+function save(){try{localStorage.setItem(key,JSON.stringify(state));}catch(e){notice('Không tự lưu được; hãy dùng nút tải JSON.');}const count=Object.values(state.annotations).filter(completed).length;$('progress').textContent=`Đã chấm đủ trường: ${count}/30 nhóm`;}
+function element(tag,text,cls){const e=document.createElement(tag);if(text!==undefined)e.textContent=text;if(cls)e.className=cls;return e;}
+function select(values,labels,value,change){const e=element('select');values.forEach((v,i)=>{const o=element('option',labels[i]);o.value=v;e.append(o);});e.value=value;e.addEventListener('change',()=>{change(e.value);save();});return e;}
+function picture(e,thumb=false){const wrap=element('div',undefined,thumb?'thumb':'picture'),img=element('img');img.src='images/'+e.filename;img.alt=`Ảnh COCO ${e.image_id}; xem box S xanh và O cam`;img.onerror=()=>notice('Ảnh không tải được. Giữ nguyên thư mục images cạnh index.html.');wrap.append(img);const ns='http://www.w3.org/2000/svg',svg=document.createElementNS(ns,'svg');svg.setAttribute('viewBox',`0 0 ${e.width} ${e.height}`);svg.setAttribute('preserveAspectRatio',thumb?'none':'xMidYMid meet');[e.subject_box,e.object_box].forEach((b,i)=>{const r=document.createElementNS(ns,'rect');r.setAttribute('x',b[0]*e.width);r.setAttribute('y',b[1]*e.height);r.setAttribute('width',(b[2]-b[0])*e.width);r.setAttribute('height',(b[3]-b[1])*e.height);r.setAttribute('stroke',i?'#ff8800':'#00d65a');r.setAttribute('stroke-width','3');r.setAttribute('fill','none');svg.append(r);const t=document.createElementNS(ns,'text');t.setAttribute('x',b[0]*e.width+3);t.setAttribute('y',Math.max(18,b[1]*e.height+18));t.setAttribute('fill',i?'#ff8800':'#00d65a');t.setAttribute('font-size','20');t.setAttribute('font-weight','bold');t.textContent=i?'O':'S';svg.append(t);});wrap.append(svg);return wrap;}
+function render(){const g=groups[position],a=answer(g),root=$('case');root.replaceChildren();$('jump').value=String(position);$('prev').disabled=position===0;$('next').disabled=position===groups.length-1;$('counter').textContent=`${position+1}/30 · ${g.same_image?'Cùng ảnh, hai cặp mục tiêu':'Hai ảnh khác nhau'}`;
+ const heading=element('div',undefined,'card');heading.append(element('h2',g.group_id));g.descriptions.forEach((s,i)=>heading.append(element('p',`C${i+1}: ${s}`,'label')));root.append(heading);
+ const cards=element('div',undefined,'events');g.events.forEach((e,i)=>{const card=element('section',undefined,'card');card.append(element('h2',`Cặp ${i+1} · COCO ${e.image_id}`),picture(e));['S — người','O — vật'].forEach((label,j)=>{const l=element('label',`Box ${label}: `);l.append(select(qualityValues,['Chưa chấm','Rõ, đúng instance','Box/loại sai','Không rõ'],a.boxes[i][j],v=>{a.boxes[i][j]=v;}));card.append(l);});const details=element('details'),summary=element('summary','Xem ảnh resize 224×224 và số tâm patch');details.append(summary,picture(e,true),element('p',`Tâm patch: S=${e.patch_centers.subject}; O=${e.patch_centers.object}. Số 0 sẽ cần fallback nearest-patch trong module.`,'small'));card.append(details);const q=element('label','Ở ảnh 224×224, còn thấy bằng chứng phân biệt C1/C2? ');q.append(select(detailValues,['Chưa chấm','Có','Không','Không rõ'],a.detail_224[i],v=>{a.detail_224[i]=v;}));card.append(q);cards.append(card);});root.append(cards);
+ const response=element('section',undefined,'card');response.append(element('h2','Chấm mô tả cho đúng cặp S/O'));const table=element('table'),head=element('tr');['Cặp cần đánh giá','C1 có đúng?','C2 có đúng?'].forEach(t=>head.append(element('th',t)));table.append(head);for(let i=0;i<2;i++){const tr=element('tr');tr.append(element('th',`Cặp ${i+1}`));for(let j=0;j<2;j++){const td=element('td');td.append(select(truthValues,['Chưa chấm','Đúng / có bằng chứng','Sai / bị ảnh bác bỏ','Không rõ / không đủ bằng chứng'],a.truth[i][j],v=>{a.truth[i][j]=v;}));tr.append(td);}table.append(tr);}response.append(table);const label=element('label','Ghi chú (nếu box sai hoặc mô tả mơ hồ, nêu ngắn gọn):'),notes=element('textarea');notes.rows=3;notes.value=a.notes;notes.oninput=()=>{a.notes=notes.value;save();};label.append(notes);response.append(label);root.append(response);save();}
+groups.forEach((g,i)=>{const o=element('option',`${i+1}. ${g.family}${g.same_image?' · cùng ảnh':''}`);o.value=String(i);$('jump').append(o);});$('jump').onchange=()=>{position=Number($('jump').value);render();};$('prev').onclick=()=>{if(position>0){position--;render();}};$('next').onclick=()=>{if(position<groups.length-1){position++;render();}};$('reviewer').value=state.reviewer;$('reviewer').oninput=()=>{state.reviewer=$('reviewer').value;save();};
+$('export').onclick=()=>{if(!state.reviewer.trim()){notice('Nhập tên người chấm trước khi xuất.');$('reviewer').focus();return;}const annotations=Object.fromEntries(Object.entries(state.annotations).filter(([id,a])=>a.truth.flat().some(v=>v!=='unreviewed')||a.boxes.flat().some(v=>v!=='unreviewed')||a.detail_224.some(v=>v!=='unreviewed')||a.notes));if(!Object.keys(annotations).length){notice('Chưa có câu trả lời để xuất.');return;}const report={schema_version:1,groups_sha256:manifest.groups_sha256,reviewer:state.reviewer.trim(),reviewer_type:'human_self_reported',annotations,exported_at:new Date().toISOString()},blob=new Blob([JSON.stringify(report,null,2)],{type:'application/json'}),url=URL.createObjectURL(blob),a=element('a');a.href=url;a.download='phrase_pair_feasibility_review.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);notice('Đã xuất JSON. Gửi lại tệp này; chưa dùng làm nhãn huấn luyện tự động.');};render();
+</script></main></html>'''
+
+
+def render(output):
+    output=Path(output);manifest=json.loads((output/'manifest.json').read_text(encoding='utf-8'))
+    assert len(manifest['groups'])==30
+    for group in manifest['groups']:
+        for e in group['events']:assert (output/'images'/e['filename']).is_file(),e['filename']
+    embedded=json.dumps(manifest,ensure_ascii=False).replace('<','\\u003c')
+    (output/'index.html').write_text(TEMPLATE.replace('__MANIFEST__',embedded),encoding='utf-8')
+
+
+if __name__=='__main__':
+    p=argparse.ArgumentParser();p.add_argument('--output',type=Path,required=True);render(p.parse_args().output)
