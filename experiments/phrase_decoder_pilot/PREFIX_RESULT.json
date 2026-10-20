@@ -1,0 +1,1039 @@
+{
+  "status": "SAVED_ARTIFACT_AUDIT_PASS",
+  "archive_sha256": "2dd220117e39522e429ad158fdcac53ca04bb094aa6b17157ae5b4cdcbf8e36c",
+  "findings": {
+    "CE": [
+      {
+        "group_id": "candidate_50edb6132ebb8519",
+        "image_id": 235799,
+        "partition": "fit",
+        "correct_template_preferences": 2,
+        "correct_first_branch_preferences": 2,
+        "prefix_changes_caption": false,
+        "captions": [
+          "a person carrying a skateboard",
+          "a person standing on a skateboard"
+        ],
+        "branch_tokens": [
+          {
+            "top10": [
+              {
+                "token": "carrying",
+                "probability": 0.9049450755119324
+              },
+              {
+                "token": "holding",
+                "probability": 0.036472827196121216
+              },
+              {
+                "token": "with",
+                "probability": 0.01248609647154808
+              },
+              {
+                "token": "is",
+                "probability": 0.005928731523454189
+              },
+              {
+                "token": "standing",
+                "probability": 0.005687166005373001
+              },
+              {
+                "token": "that",
+                "probability": 0.003763423999771476
+              },
+              {
+                "token": "walking",
+                "probability": 0.0032984078861773014
+              },
+              {
+                "token": "on",
+                "probability": 0.003061133436858654
+              },
+              {
+                "token": "holds",
+                "probability": 0.0019471606938168406
+              },
+              {
+                "token": "carries",
+                "probability": 0.0018191190902143717
+              }
+            ],
+            "branch_tokens": [
+              {
+                "token": "standing",
+                "log_probability": -5.169543266296387,
+                "rank": 5
+              },
+              {
+                "token": "carrying",
+                "log_probability": -0.09988106042146683,
+                "rank": 1
+              }
+            ],
+            "description0_minus_description1_logp": -5.069662094116211
+          },
+          {
+            "top10": [
+              {
+                "token": "standing",
+                "probability": 0.8875471949577332
+              },
+              {
+                "token": "on",
+                "probability": 0.024992847815155983
+              },
+              {
+                "token": "walking",
+                "probability": 0.016939206048846245
+              },
+              {
+                "token": "that",
+                "probability": 0.007369336672127247
+              },
+              {
+                "token": "riding",
+                "probability": 0.00718741724267602
+              },
+              {
+                "token": "is",
+                "probability": 0.006217308808118105
+              },
+              {
+                "token": "holding",
+                "probability": 0.006070882081985474
+              },
+              {
+                "token": "with",
+                "probability": 0.005599557887762785
+              },
+              {
+                "token": "stands",
+                "probability": 0.005229386035352945
+              },
+              {
+                "token": "sitting",
+                "probability": 0.004100522957742214
+              }
+            ],
+            "branch_tokens": [
+              {
+                "token": "standing",
+                "log_probability": -0.11929357051849365,
+                "rank": 1
+              },
+              {
+                "token": "carrying",
+                "log_probability": -6.846356391906738,
+                "rank": 16
+              }
+            ],
+            "description0_minus_description1_logp": 6.727062702178955
+          }
+        ]
+      },
+      {
+        "group_id": "candidate_6fff8a4e958823d8",
+        "image_id": 208095,
+        "partition": "adaptation_holdout",
+        "correct_template_preferences": 1,
+        "correct_first_branch_preferences": 1,
+        "prefix_changes_caption": false,
+        "captions": [
+          "a person standing on a surfboard",
+          "a person standing on a surfboard"
+        ],
+        "branch_tokens": [
+          {
+            "top10": [
+              {
+                "token": "standing",
+                "probability": 0.5698944330215454
+              },
+              {
+                "token": "on",
+                "probability": 0.11126353591680527
+              },
+              {
+                "token": "riding",
+                "probability": 0.06944404542446136
+              },
+              {
+                "token": "that",
+                "probability": 0.043757982552051544
+              },
+              {
+                "token": "is",
+                "probability": 0.03777318075299263
+              },
+              {
+                "token": "walking",
+                "probability": 0.027942361310124397
+              },
+              {
+                "token": "with",
+                "probability": 0.0160532183945179
+              },
+              {
+                "token": "holding",
+                "probability": 0.013375652953982353
+              },
+              {
+                "token": "surfing",
+                "probability": 0.00906074047088623
+              },
+              {
+                "token": "in",
+                "probability": 0.007359704002737999
+              }
+            ],
+            "branch_tokens": [
+              {
+                "token": "standing",
+                "log_probability": -0.5623041391372681,
+                "rank": 1
+              },
+              {
+                "token": "carrying",
+                "log_probability": -4.944534778594971,
+                "rank": 11
+              }
+            ],
+            "description0_minus_description1_logp": 4.382230758666992
+          },
+          {
+            "top10": [
+              {
+                "token": "standing",
+                "probability": 0.4754446744918823
+              },
+              {
+                "token": "on",
+                "probability": 0.16104860603809357
+              },
+              {
+                "token": "is",
+                "probability": 0.06397034972906113
+              },
+              {
+                "token": "riding",
+                "probability": 0.0637941062450409
+              },
+              {
+                "token": "that",
+                "probability": 0.03625648841261864
+              },
+              {
+                "token": "holding",
+                "probability": 0.027702108025550842
+              },
+              {
+                "token": "with",
+                "probability": 0.02065950445830822
+              },
+              {
+                "token": "walking",
+                "probability": 0.018256764858961105
+              },
+              {
+                "token": "carrying",
+                "probability": 0.015151419676840305
+              },
+              {
+                "token": "in",
+                "probability": 0.011374065652489662
+              }
+            ],
+            "branch_tokens": [
+              {
+                "token": "standing",
+                "log_probability": -0.7435047626495361,
+                "rank": 1
+              },
+              {
+                "token": "carrying",
+                "log_probability": -4.189661026000977,
+                "rank": 9
+              }
+            ],
+            "description0_minus_description1_logp": 3.4461562633514404
+          }
+        ]
+      },
+      {
+        "group_id": "candidate_5d56f9ff08e1a128",
+        "image_id": 70642,
+        "partition": "adaptation_holdout",
+        "correct_template_preferences": 2,
+        "correct_first_branch_preferences": 1,
+        "prefix_changes_caption": false,
+        "captions": [
+          "a person standing on a skateboard in a skate park.",
+          "a person standing on a skateboard"
+        ],
+        "branch_tokens": [
+          {
+            "top10": [
+              {
+                "token": "standing",
+                "probability": 0.16086186468601227
+              },
+              {
+                "token": "carrying",
+                "probability": 0.13724346458911896
+              },
+              {
+                "token": "is",
+                "probability": 0.10389747470617294
+              },
+              {
+                "token": "walking",
+                "probability": 0.08065026253461838
+              },
+              {
+                "token": "with",
+                "probability": 0.0768219530582428
+              },
+              {
+                "token": "riding",
+                "probability": 0.053135067224502563
+              },
+              {
+                "token": "that",
+                "probability": 0.051729559898376465
+              },
+              {
+                "token": "on",
+                "probability": 0.0474373996257782
+              },
+              {
+                "token": "holding",
+                "probability": 0.040343768894672394
+              },
+              {
+                "token": "<unk>",
+                "probability": 0.025006527081131935
+              }
+            ],
+            "branch_tokens": [
+              {
+                "token": "standing",
+                "log_probability": -1.827209234237671,
+                "rank": 1
+              },
+              {
+                "token": "carrying",
+                "log_probability": -1.9859988689422607,
+                "rank": 2
+              }
+            ],
+            "description0_minus_description1_logp": 0.15878963470458984
+          },
+          {
+            "top10": [
+              {
+                "token": "standing",
+                "probability": 0.48442700505256653
+              },
+              {
+                "token": "walking",
+                "probability": 0.10779420286417007
+              },
+              {
+                "token": "holding",
+                "probability": 0.1040952131152153
+              },
+              {
+                "token": "carrying",
+                "probability": 0.04416589066386223
+              },
+              {
+                "token": "is",
+                "probability": 0.04102177917957306
+              },
+              {
+                "token": "that",
+                "probability": 0.03687957301735878
+              },
+              {
+                "token": "with",
+                "probability": 0.03202066197991371
+              },
+              {
+                "token": "on",
+                "probability": 0.030387790873646736
+              },
+              {
+                "token": "and",
+                "probability": 0.01734149269759655
+              },
+              {
+                "token": "a",
+                "probability": 0.007717362139374018
+              }
+            ],
+            "branch_tokens": [
+              {
+                "token": "standing",
+                "log_probability": -0.7247885465621948,
+                "rank": 1
+              },
+              {
+                "token": "carrying",
+                "log_probability": -3.119802474975586,
+                "rank": 4
+              }
+            ],
+            "description0_minus_description1_logp": 2.3950138092041016
+          }
+        ]
+      },
+      {
+        "group_id": "candidate_98144b2702f71aa1",
+        "image_id": 496646,
+        "partition": "fit",
+        "correct_template_preferences": 2,
+        "correct_first_branch_preferences": 2,
+        "prefix_changes_caption": false,
+        "captions": [
+          "a person looking at a cell phone in their hands",
+          "a person holding a cell phone near their ear"
+        ],
+        "branch_tokens": [
+          {
+            "top10": [
+              {
+                "token": "looking",
+                "probability": 0.8504652976989746
+              },
+              {
+                "token": "holding",
+                "probability": 0.02901555597782135
+              },
+              {
+                "token": "in",
+                "probability": 0.014845029450953007
+              },
+              {
+                "token": "is",
+                "probability": 0.01191055029630661
+              },
+              {
+                "token": "with",
+                "probability": 0.009263264946639538
+              },
+              {
+                "token": "that",
+                "probability": 0.007769876159727573
+              },
+              {
+                "token": "<unk>",
+                "probability": 0.0065220934338867664
+              },
+              {
+                "token": "standing",
+                "probability": 0.005982607137411833
+              },
+              {
+                "token": "sitting",
+                "probability": 0.0028976371977478266
+              },
+              {
+                "token": "and",
+                "probability": 0.0028655449859797955
+              }
+            ],
+            "branch_tokens": [
+              {
+                "token": "holding",
+                "log_probability": -3.5399231910705566,
+                "rank": 2
+              },
+              {
+                "token": "looking",
+                "log_probability": -0.16197165846824646,
+                "rank": 1
+              }
+            ],
+            "description0_minus_description1_logp": -3.3779516220092773
+          },
+          {
+            "top10": [
+              {
+                "token": "holding",
+                "probability": 0.8211910128593445
+              },
+              {
+                "token": "with",
+                "probability": 0.0374750979244709
+              },
+              {
+                "token": "is",
+                "probability": 0.019179582595825195
+              },
+              {
+                "token": "holds",
+                "probability": 0.010434936732053757
+              },
+              {
+                "token": "that",
+                "probability": 0.010059485211968422
+              },
+              {
+                "token": "standing",
+                "probability": 0.007125083822757006
+              },
+              {
+                "token": "<unk>",
+                "probability": 0.007069939281791449
+              },
+              {
+                "token": "a",
+                "probability": 0.006418525706976652
+              },
+              {
+                "token": "looking",
+                "probability": 0.006247079931199551
+              },
+              {
+                "token": "on",
+                "probability": 0.005560635589063168
+              }
+            ],
+            "branch_tokens": [
+              {
+                "token": "holding",
+                "log_probability": -0.19699956476688385,
+                "rank": 1
+              },
+              {
+                "token": "looking",
+                "log_probability": -5.07564115524292,
+                "rank": 9
+              }
+            ],
+            "description0_minus_description1_logp": 4.878641605377197
+          }
+        ]
+      }
+    ],
+    "CROSS": [
+      {
+        "group_id": "candidate_50edb6132ebb8519",
+        "image_id": 235799,
+        "partition": "fit",
+        "correct_template_preferences": 2,
+        "correct_first_branch_preferences": 2,
+        "prefix_changes_caption": false,
+        "captions": [
+          "a person carrying a skateboard",
+          "a person standing on a skateboard"
+        ],
+        "branch_tokens": [
+          {
+            "top10": [
+              {
+                "token": "carrying",
+                "probability": 0.9253791570663452
+              },
+              {
+                "token": "holding",
+                "probability": 0.03957793116569519
+              },
+              {
+                "token": "with",
+                "probability": 0.010301447473466396
+              },
+              {
+                "token": "is",
+                "probability": 0.003892431268468499
+              },
+              {
+                "token": "that",
+                "probability": 0.0022395411506295204
+              },
+              {
+                "token": "holds",
+                "probability": 0.0018807227024808526
+              },
+              {
+                "token": "carries",
+                "probability": 0.001663006842136383
+              },
+              {
+                "token": "walking",
+                "probability": 0.0011639769654721022
+              },
+              {
+                "token": "standing",
+                "probability": 0.0010819952003657818
+              },
+              {
+                "token": "on",
+                "probability": 0.0010104520479217172
+              }
+            ],
+            "branch_tokens": [
+              {
+                "token": "standing",
+                "log_probability": -6.828948497772217,
+                "rank": 9
+              },
+              {
+                "token": "carrying",
+                "log_probability": -0.07755176723003387,
+                "rank": 1
+              }
+            ],
+            "description0_minus_description1_logp": -6.751396656036377
+          },
+          {
+            "top10": [
+              {
+                "token": "standing",
+                "probability": 0.9049034714698792
+              },
+              {
+                "token": "on",
+                "probability": 0.025743169710040092
+              },
+              {
+                "token": "walking",
+                "probability": 0.00972326286137104
+              },
+              {
+                "token": "that",
+                "probability": 0.008172860369086266
+              },
+              {
+                "token": "stands",
+                "probability": 0.005350046791136265
+              },
+              {
+                "token": "riding",
+                "probability": 0.0052305408753454685
+              },
+              {
+                "token": "is",
+                "probability": 0.00520757120102644
+              },
+              {
+                "token": "sitting",
+                "probability": 0.003894997062161565
+              },
+              {
+                "token": "with",
+                "probability": 0.0032184715382754803
+              },
+              {
+                "token": "jumping",
+                "probability": 0.003151657758280635
+              }
+            ],
+            "branch_tokens": [
+              {
+                "token": "standing",
+                "log_probability": -0.09992701560258865,
+                "rank": 1
+              },
+              {
+                "token": "carrying",
+                "log_probability": -10.429128646850586,
+                "rank": 99
+              }
+            ],
+            "description0_minus_description1_logp": 10.329201698303223
+          }
+        ]
+      },
+      {
+        "group_id": "candidate_6fff8a4e958823d8",
+        "image_id": 208095,
+        "partition": "adaptation_holdout",
+        "correct_template_preferences": 1,
+        "correct_first_branch_preferences": 1,
+        "prefix_changes_caption": false,
+        "captions": [
+          "a person standing on a surfboard",
+          "a person standing on a surfboard"
+        ],
+        "branch_tokens": [
+          {
+            "top10": [
+              {
+                "token": "standing",
+                "probability": 0.5674320459365845
+              },
+              {
+                "token": "on",
+                "probability": 0.14488841593265533
+              },
+              {
+                "token": "riding",
+                "probability": 0.06888967007398605
+              },
+              {
+                "token": "that",
+                "probability": 0.04761079326272011
+              },
+              {
+                "token": "is",
+                "probability": 0.0388147197663784
+              },
+              {
+                "token": "walking",
+                "probability": 0.015792366117239
+              },
+              {
+                "token": "with",
+                "probability": 0.012196180410683155
+              },
+              {
+                "token": "in",
+                "probability": 0.00841767992824316
+              },
+              {
+                "token": "holding",
+                "probability": 0.007834745571017265
+              },
+              {
+                "token": "surfing",
+                "probability": 0.007038948591798544
+              }
+            ],
+            "branch_tokens": [
+              {
+                "token": "standing",
+                "log_probability": -0.5666342973709106,
+                "rank": 1
+              },
+              {
+                "token": "carrying",
+                "log_probability": -7.374495029449463,
+                "rank": 39
+              }
+            ],
+            "description0_minus_description1_logp": 6.807860851287842
+          },
+          {
+            "top10": [
+              {
+                "token": "standing",
+                "probability": 0.41617467999458313
+              },
+              {
+                "token": "on",
+                "probability": 0.2286568433046341
+              },
+              {
+                "token": "riding",
+                "probability": 0.06902023404836655
+              },
+              {
+                "token": "is",
+                "probability": 0.06578022241592407
+              },
+              {
+                "token": "that",
+                "probability": 0.046365708112716675
+              },
+              {
+                "token": "with",
+                "probability": 0.019497575238347054
+              },
+              {
+                "token": "holding",
+                "probability": 0.017786450684070587
+              },
+              {
+                "token": "walking",
+                "probability": 0.014408288523554802
+              },
+              {
+                "token": "in",
+                "probability": 0.013500476256012917
+              },
+              {
+                "token": "a",
+                "probability": 0.00859111174941063
+              }
+            ],
+            "branch_tokens": [
+              {
+                "token": "standing",
+                "log_probability": -0.8766502141952515,
+                "rank": 1
+              },
+              {
+                "token": "carrying",
+                "log_probability": -5.991116523742676,
+                "rank": 20
+              }
+            ],
+            "description0_minus_description1_logp": 5.114466190338135
+          }
+        ]
+      },
+      {
+        "group_id": "candidate_5d56f9ff08e1a128",
+        "image_id": 70642,
+        "partition": "adaptation_holdout",
+        "correct_template_preferences": 2,
+        "correct_first_branch_preferences": 1,
+        "prefix_changes_caption": false,
+        "captions": [
+          "a person is standing with a skateboard",
+          "a person standing on a skateboard"
+        ],
+        "branch_tokens": [
+          {
+            "top10": [
+              {
+                "token": "is",
+                "probability": 0.1334836483001709
+              },
+              {
+                "token": "standing",
+                "probability": 0.12165641039609909
+              },
+              {
+                "token": "carrying",
+                "probability": 0.09853305667638779
+              },
+              {
+                "token": "with",
+                "probability": 0.08454488217830658
+              },
+              {
+                "token": "walking",
+                "probability": 0.07058016210794449
+              },
+              {
+                "token": "riding",
+                "probability": 0.059852465987205505
+              },
+              {
+                "token": "that",
+                "probability": 0.0583428330719471
+              },
+              {
+                "token": "holding",
+                "probability": 0.0537143237888813
+              },
+              {
+                "token": "on",
+                "probability": 0.03917636349797249
+              },
+              {
+                "token": "<unk>",
+                "probability": 0.02677176333963871
+              }
+            ],
+            "branch_tokens": [
+              {
+                "token": "standing",
+                "log_probability": -2.1065545082092285,
+                "rank": 2
+              },
+              {
+                "token": "carrying",
+                "log_probability": -2.3173632621765137,
+                "rank": 3
+              }
+            ],
+            "description0_minus_description1_logp": 0.21080875396728516
+          },
+          {
+            "top10": [
+              {
+                "token": "standing",
+                "probability": 0.5322338938713074
+              },
+              {
+                "token": "holding",
+                "probability": 0.09626354277133942
+              },
+              {
+                "token": "walking",
+                "probability": 0.09513714164495468
+              },
+              {
+                "token": "is",
+                "probability": 0.04365239292383194
+              },
+              {
+                "token": "that",
+                "probability": 0.04174339771270752
+              },
+              {
+                "token": "with",
+                "probability": 0.02943127416074276
+              },
+              {
+                "token": "on",
+                "probability": 0.027578361332416534
+              },
+              {
+                "token": "and",
+                "probability": 0.019863266497850418
+              },
+              {
+                "token": "carrying",
+                "probability": 0.009987019002437592
+              },
+              {
+                "token": "looking",
+                "probability": 0.007695564068853855
+              }
+            ],
+            "branch_tokens": [
+              {
+                "token": "standing",
+                "log_probability": -0.6306722164154053,
+                "rank": 1
+              },
+              {
+                "token": "carrying",
+                "log_probability": -4.60646915435791,
+                "rank": 9
+              }
+            ],
+            "description0_minus_description1_logp": 3.975796937942505
+          }
+        ]
+      },
+      {
+        "group_id": "candidate_98144b2702f71aa1",
+        "image_id": 496646,
+        "partition": "fit",
+        "correct_template_preferences": 2,
+        "correct_first_branch_preferences": 2,
+        "prefix_changes_caption": false,
+        "captions": [
+          "a person looking at a cell phone in their hands",
+          "a person holding a cell phone near their ear"
+        ],
+        "branch_tokens": [
+          {
+            "top10": [
+              {
+                "token": "looking",
+                "probability": 0.8765361309051514
+              },
+              {
+                "token": "in",
+                "probability": 0.014090556651353836
+              },
+              {
+                "token": "holding",
+                "probability": 0.012661810033023357
+              },
+              {
+                "token": "is",
+                "probability": 0.012117571197450161
+              },
+              {
+                "token": "that",
+                "probability": 0.007670245599001646
+              },
+              {
+                "token": "with",
+                "probability": 0.007443067617714405
+              },
+              {
+                "token": "<unk>",
+                "probability": 0.006518014241009951
+              },
+              {
+                "token": "standing",
+                "probability": 0.004583962727338076
+              },
+              {
+                "token": "wearing",
+                "probability": 0.002271798439323902
+              },
+              {
+                "token": "a",
+                "probability": 0.0022227594163268805
+              }
+            ],
+            "branch_tokens": [
+              {
+                "token": "holding",
+                "log_probability": -4.369164943695068,
+                "rank": 3
+              },
+              {
+                "token": "looking",
+                "log_probability": -0.13177742063999176,
+                "rank": 1
+              }
+            ],
+            "description0_minus_description1_logp": -4.237387657165527
+          },
+          {
+            "top10": [
+              {
+                "token": "holding",
+                "probability": 0.8398760557174683
+              },
+              {
+                "token": "with",
+                "probability": 0.03888127580285072
+              },
+              {
+                "token": "is",
+                "probability": 0.01762142963707447
+              },
+              {
+                "token": "holds",
+                "probability": 0.011277209036052227
+              },
+              {
+                "token": "that",
+                "probability": 0.008948114700615406
+              },
+              {
+                "token": "carrying",
+                "probability": 0.006331719923764467
+              },
+              {
+                "token": "a",
+                "probability": 0.005472291260957718
+              },
+              {
+                "token": "<unk>",
+                "probability": 0.0054472098127007484
+              },
+              {
+                "token": "standing",
+                "probability": 0.004845800809562206
+              },
+              {
+                "token": "on",
+                "probability": 0.0044184718281030655
+              }
+            ],
+            "branch_tokens": [
+              {
+                "token": "holding",
+                "log_probability": -0.174500972032547,
+                "rank": 1
+              },
+              {
+                "token": "looking",
+                "log_probability": -6.121489524841309,
+                "rank": 18
+              }
+            ],
+            "description0_minus_description1_logp": 5.946988582611084
+          }
+        ]
+      }
+    ]
+  },
+  "limits": [
+    "Saved records verified, no independent inference replay",
+    "Natural outputs already start with a person: prefix equality cannot establish an exposure-bias mechanism",
+    "Two previously inspected holdout groups; no full-caption or semantic accuracy claim"
+  ]
+}
