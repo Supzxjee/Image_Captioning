@@ -1,0 +1,4271 @@
+{
+  "schema_version": 1,
+  "groups": [
+    {
+      "group_id": "candidate_50edb6132ebb8519",
+      "family": "skateboard_support",
+      "same_image": true,
+      "events": [
+        {
+          "event_id": "235799_428275_637751",
+          "image_id": 235799,
+          "filename": "COCO_train2014_000000235799.jpg",
+          "filepath": "train2014",
+          "caption_split": "train",
+          "subject_box": [
+            0.75303125,
+            0.05630797773654917,
+            0.9370312500000001,
+            0.770278293135436
+          ],
+          "object_box": [
+            0.81615625,
+            0.42504638218923935,
+            0.912296875,
+            0.7690166975881262
+          ],
+          "width": 640,
+          "height": 539
+        },
+        {
+          "event_id": "235799_425302_643777",
+          "image_id": 235799,
+          "filename": "COCO_train2014_000000235799.jpg",
+          "filepath": "train2014",
+          "caption_split": "train",
+          "subject_box": [
+            0.140515625,
+            0.26940630797773657,
+            0.7421562500000001,
+            0.7914842300556586
+          ],
+          "object_box": [
+            0.57325,
+            0.5686456400742115,
+            0.6789531249999999,
+            0.8974397031539889
+          ],
+          "width": 640,
+          "height": 539
+        }
+      ],
+      "descriptions": [
+        "a person standing on a skateboard",
+        "a person carrying a skateboard"
+      ],
+      "positive_indices": [
+        1,
+        0
+      ]
+    },
+    {
+      "group_id": "candidate_6fff8a4e958823d8",
+      "family": "surfboard_support",
+      "same_image": true,
+      "events": [
+        {
+          "event_id": "208095_1696282_652228",
+          "image_id": 208095,
+          "filename": "COCO_train2014_000000208095.jpg",
+          "filepath": "train2014",
+          "caption_split": "train",
+          "subject_box": [
+            0.351328125,
+            0.5846250000000001,
+            0.510015625,
+            0.7984166666666667
+          ],
+          "object_box": [
+            0.28778125,
+            0.7078749999999999,
+            0.44643750000000004,
+            0.8418125
+          ],
+          "width": 640,
+          "height": 480
+        },
+        {
+          "event_id": "208095_1754210_652499",
+          "image_id": 208095,
+          "filename": "COCO_train2014_000000208095.jpg",
+          "filepath": "train2014",
+          "caption_split": "train",
+          "subject_box": [
+            0.20393750000000002,
+            0.2593125,
+            0.271640625,
+            0.5892708333333334
+          ],
+          "object_box": [
+            0.174546875,
+            0.3439583333333333,
+            0.38996875,
+            0.4357916666666667
+          ],
+          "width": 640,
+          "height": 480
+        }
+      ],
+      "descriptions": [
+        "a person standing on a surfboard",
+        "a person carrying a surfboard"
+      ],
+      "positive_indices": [
+        0,
+        1
+      ]
+    },
+    {
+      "group_id": "candidate_0375a14e14d6378b",
+      "family": "bicycle_posture",
+      "same_image": false,
+      "events": [
+        {
+          "event_id": "263974_228148_129828",
+          "image_id": 263974,
+          "filename": "COCO_train2014_000000263974.jpg",
+          "filepath": "train2014",
+          "caption_split": "train",
+          "subject_box": [
+            0.504328125,
+            0.246125,
+            0.6488437499999999,
+            0.8109166666666667
+          ],
+          "object_box": [
+            0.43965624999999997,
+            0.3954791666666667,
+            0.6691874999999999,
+            0.8092708333333334
+          ],
+          "width": 640,
+          "height": 480
+        },
+        {
+          "event_id": "353288_216284_127528",
+          "image_id": 353288,
+          "filename": "COCO_train2014_000000353288.jpg",
+          "filepath": "train2014",
+          "caption_split": "train",
+          "subject_box": [
+            0.8026458333333333,
+            0.727546875,
+            1,
+            0.9207812499999999
+          ],
+          "object_box": [
+            0.8941874999999999,
+            0.778234375,
+            0.9995833333333333,
+            0.926734375
+          ],
+          "width": 480,
+          "height": 640
+        }
+      ],
+      "descriptions": [
+        "a person sitting on a bicycle",
+        "a person standing beside a bicycle"
+      ],
+      "positive_indices": [
+        0,
+        1
+      ]
+    },
+    {
+      "group_id": "candidate_5d56f9ff08e1a128",
+      "family": "skateboard_support",
+      "same_image": true,
+      "events": [
+        {
+          "event_id": "70642_1251212_643711",
+          "image_id": 70642,
+          "filename": "COCO_train2014_000000070642.jpg",
+          "filepath": "train2014",
+          "caption_split": "train",
+          "subject_box": [
+            0.22189542483660132,
+            0.44687908496732026,
+            0.3434640522875817,
+            0.797843137254902
+          ],
+          "object_box": [
+            0.11926470588235294,
+            0.5263398692810458,
+            0.317859477124183,
+            0.6409803921568628
+          ],
+          "width": 612,
+          "height": 612
+        },
+        {
+          "event_id": "70642_1324829_645151",
+          "image_id": 70642,
+          "filename": "COCO_train2014_000000070642.jpg",
+          "filepath": "train2014",
+          "caption_split": "train",
+          "subject_box": [
+            0.49045751633986934,
+            0.4545424836601307,
+            0.6437418300653596,
+            0.8311111111111111
+          ],
+          "object_box": [
+            0.5219444444444444,
+            0.7749509803921568,
+            0.6130555555555556,
+            0.8710294117647058
+          ],
+          "width": 612,
+          "height": 612
+        }
+      ],
+      "descriptions": [
+        "a person standing on a skateboard",
+        "a person carrying a skateboard"
+      ],
+      "positive_indices": [
+        1,
+        0
+      ]
+    },
+    {
+      "group_id": "candidate_0000065babcabdfc",
+      "family": "surfboard_support",
+      "same_image": false,
+      "events": [
+        {
+          "event_id": "440092_499148_647130",
+          "image_id": 440092,
+          "filename": "COCO_train2014_000000440092.jpg",
+          "filepath": "train2014",
+          "caption_split": "train",
+          "subject_box": [
+            0.26934375,
+            0.05181086519114688,
+            0.59990625,
+            0.867122736418511
+          ],
+          "object_box": [
+            0.26440625,
+            0.8440241448692153,
+            0.793609375,
+            1
+          ],
+          "width": 640,
+          "height": 497
+        },
+        {
+          "event_id": "160628_506557_649498",
+          "image_id": 160628,
+          "filename": "COCO_train2014_000000160628.jpg",
+          "filepath": "train2014",
+          "caption_split": "train",
+          "subject_box": [
+            0.123796875,
+            0.30852417302798985,
+            0.20465625000000004,
+            0.6282188295165394
+          ],
+          "object_box": [
+            0.036203125,
+            0.3430788804071247,
+            0.28101562500000005,
+            0.5550381679389312
+          ],
+          "width": 640,
+          "height": 393
+        }
+      ],
+      "descriptions": [
+        "a person standing on a surfboard",
+        "a person carrying a surfboard"
+      ],
+      "positive_indices": [
+        0,
+        1
+      ]
+    },
+    {
+      "group_id": "candidate_98144b2702f71aa1",
+      "family": "phone_position",
+      "same_image": true,
+      "events": [
+        {
+          "event_id": "496646_1299408_327809",
+          "image_id": 496646,
+          "filename": "COCO_train2014_000000496646.jpg",
+          "filepath": "train2014",
+          "caption_split": "train",
+          "subject_box": [
+            0.38196875,
+            0.12569444444444444,
+            0.529390625,
+            0.9353611111111112
+          ],
+          "object_box": [
+            0.39396875,
+            0.29147222222222224,
+            0.41726562500000003,
+            0.3304166666666667
+          ],
+          "width": 640,
+          "height": 360
+        },
+        {
+          "event_id": "496646_1209880_1635560",
+          "image_id": 496646,
+          "filename": "COCO_train2014_000000496646.jpg",
+          "filepath": "train2014",
+          "caption_split": "train",
+          "subject_box": [
+            0.7976093750000001,
+            0.08763888888888889,
+            0.9126406250000001,
+            0.7752777777777778
+          ],
+          "object_box": [
+            0.854140625,
+            0.1663888888888889,
+            0.883421875,
+            0.21847222222222223
+          ],
+          "width": 640,
+          "height": 360
+        }
+      ],
+      "descriptions": [
+        "a person holding a cell phone near their ear",
+        "a person looking at a cell phone in their hands"
+      ],
+      "positive_indices": [
+        1,
+        0
+      ]
+    },
+    {
+      "group_id": "candidate_000399513c4cf750",
+      "family": "skateboard_support",
+      "same_image": false,
+      "events": [
+        {
+          "event_id": "520204_421264_640232",
+          "image_id": 520204,
+          "filename": "COCO_train2014_000000520204.jpg",
+          "filepath": "train2014",
+          "caption_split": "train",
+          "subject_box": [
+            0.586046875,
+            0.005620608899297424,
+            1,
+            0.7849180327868852
+          ],
+          "object_box": [
+            0.64325,
+            0.6350819672131147,
+            0.997546875,
+            0.8292974238875879
+          ],
+          "width": 640,
+          "height": 427
+        },
+        {
+          "event_id": "45949_186327_643324",
+          "image_id": 45949,
+          "filename": "COCO_train2014_000000045949.jpg",
+          "filepath": "train2014",
+          "caption_split": "train",
+          "subject_box": [
+            0.14783783783783783,
+            0.1225,
+            0.9378078078078078,
+            0.9581000000000001
+          ],
+          "object_box": [
+            0.25981981981981983,
+            0.5258400000000001,
+            0.5938438438438438,
+            0.94832
+          ],
+          "width": 333,
+          "height": 500
+        }
+      ],
+      "descriptions": [
+        "a person standing on a skateboard",
+        "a person carrying a skateboard"
+      ],
+      "positive_indices": [
+        0,
+        1
+      ]
+    },
+    {
+      "group_id": "candidate_00014bad665432ab",
+      "family": "surfboard_support",
+      "same_image": false,
+      "events": [
+        {
+          "event_id": "160647_1690747_1481322",
+          "image_id": 160647,
+          "filename": "COCO_train2014_000000160647.jpg",
+          "filepath": "train2014",
+          "caption_split": "train",
+          "subject_box": [
+            0.42990625,
+            0.3692688679245283,
+            0.48209374999999993,
+            0.5545518867924528
+          ],
+          "object_box": [
+            0.40964062500000004,
+            0.5475707547169811,
+            0.5993281250000001,
+            0.5713207547169811
+          ],
+          "width": 640,
+          "height": 424
+        },
+        {
+          "event_id": "368370_200697_651017",
+          "image_id": 368370,
+          "filename": "COCO_train2014_000000368370.jpg",
+          "filepath": "train2014",
+          "caption_split": "train",
+          "subject_box": [
+            0.489546875,
+            0.4307692307692308,
+            0.6416875,
+            0.904941724941725
+          ],
+          "object_box": [
+            0.53984375,
+            0.5102797202797202,
+            0.746796875,
+            0.7205827505827506
+          ],
+          "width": 640,
+          "height": 429
+        }
+      ],
+      "descriptions": [
+        "a person standing on a surfboard",
+        "a person carrying a surfboard"
+      ],
+      "positive_indices": [
+        0,
+        1
+      ]
+    },
+    {
+      "group_id": "candidate_001cceebebd8190e",
+      "family": "phone_position",
+      "same_image": false,
+      "events": [
+        {
+          "event_id": "26939_1708762_1636799",
+          "image_id": 26939,
+          "filename": "COCO_train2014_000000026939.jpg",
+          "filepath": "train2014",
+          "caption_split": "train",
+          "subject_box": [
+            0.43971875000000005,
+            0.25283333333333335,
+            1,
+            1
+          ],
+          "object_box": [
+            0.60403125,
+            0.5500833333333334,
+            0.7945625,
+            0.7148333333333333
+          ],
+          "width": 640,
+          "height": 480
+        },
+        {
+          "event_id": "377570_191729_328175",
+          "image_id": 377570,
+          "filename": "COCO_train2014_000000377570.jpg",
+          "filepath": "train2014",
+          "caption_split": "train",
+          "subject_box": [
+            0.293265625,
+            0.11910416666666666,
+            0.7870781250000001,
+            0.9438125
+          ],
+          "object_box": [
+            0.558640625,
+            0.4267708333333333,
+            0.6239843749999999,
+            0.4796875
+          ],
+          "width": 640,
+          "height": 480
+        }
+      ],
+      "descriptions": [
+        "a person holding a cell phone near their ear",
+        "a person looking at a cell phone in their hands"
+      ],
+      "positive_indices": [
+        0,
+        1
+      ]
+    },
+    {
+      "group_id": "candidate_001540bda681aca7",
+      "family": "skateboard_support",
+      "same_image": false,
+      "events": [
+        {
+          "event_id": "492881_1685225_638849",
+          "image_id": 492881,
+          "filename": "COCO_train2014_000000492881.jpg",
+          "filepath": "train2014",
+          "caption_split": "train",
+          "subject_box": [
+            0.357515625,
+            0.0651716247139588,
+            0.5431874999999999,
+            0.3910068649885583
+          ],
+          "object_box": [
+            0.45806250000000004,
+            0.26169336384439357,
+            0.5108125,
+            0.40668192219679633
+          ],
+          "width": 640,
+          "height": 437
+        },
+        {
+          "event_id": "503488_458961_639733",
+          "image_id": 503488,
+          "filename": "COCO_train2014_000000503488.jpg",
+          "filepath": "train2014",
+          "caption_split": "train",
+          "subject_box": [
+            0.207859375,
+            0.3682552083333333,
+            0.36359375,
+            0.8766666666666666
+          ],
+          "object_box": [
+            0.1933125,
+            0.5567708333333333,
+            0.36481250000000004,
+            0.6708854166666667
+          ],
+          "width": 640,
+          "height": 384
+        }
+      ],
+      "descriptions": [
+        "a person standing on a skateboard",
+        "a person carrying a skateboard"
+      ],
+      "positive_indices": [
+        0,
+        1
+      ]
+    },
+    {
+      "group_id": "candidate_00030b8165be0a35",
+      "family": "surfboard_support",
+      "same_image": false,
+      "events": [
+        {
+          "event_id": "560632_423074_651486",
+          "image_id": 560632,
+          "filename": "COCO_train2014_000000560632.jpg",
+          "filepath": "train2014",
+          "caption_split": "train",
+          "subject_box": [
+            0.686515625,
+            0.30902083333333336,
+            0.76625,
+            0.5003541666666667
+          ],
+          "object_box": [
+            0.696734375,
+            0.45297916666666665,
+            0.7685625,
+            0.5308958333333333
+          ],
+          "width": 640,
+          "height": 480
+        },
+        {
+          "event_id": "462401_2151516_2230584",
+          "image_id": 462401,
+          "filename": "COCO_train2014_000000462401.jpg",
+          "filepath": "train2014",
+          "caption_split": "train",
+          "subject_box": [
+            0.196671875,
+            0.6941724941724942,
+            0.253453125,
+            0.9134265734265734
+          ],
+          "object_box": [
+            0.200046875,
+            0.7686013986013986,
+            0.2460625,
+            0.8435431235431236
+          ],
+          "width": 640,
+          "height": 429
+        }
+      ],
+      "descriptions": [
+        "a person standing on a surfboard",
+        "a person carrying a surfboard"
+      ],
+      "positive_indices": [
+        0,
+        1
+      ]
+    },
+    {
+      "group_id": "candidate_001e530a457ed66b",
+      "family": "phone_position",
+      "same_image": false,
+      "events": [
+        {
+          "event_id": "540716_443893_327194",
+          "image_id": 540716,
+          "filename": "COCO_train2014_000000540716.jpg",
+          "filepath": "train2014",
+          "caption_split": "train",
+          "subject_box": [
+            0,
+            0.00112,
+            1,
+            0.9898666666666667
+          ],
+          "object_box": [
+            0.6289600000000001,
+            0.31551999999999997,
+            0.7279800000000001,
+            0.67928
+          ],
+          "width": 500,
+          "height": 375
+        },
+        {
+          "event_id": "40346_448119_330120",
+          "image_id": 40346,
+          "filename": "COCO_train2014_000000040346.jpg",
+          "filepath": "train2014",
+          "caption_split": "train",
+          "subject_box": [
+            0.22416,
+            0.15954666666666667,
+            0.9286599999999999,
+            0.9954933333333333
+          ],
+          "object_box": [
+            0.10764,
+            0.3949333333333333,
+            0.26568,
+            0.5619466666666666
+          ],
+          "width": 500,
+          "height": 375
+        }
+      ],
+      "descriptions": [
+        "a person holding a cell phone near their ear",
+        "a person looking at a cell phone in their hands"
+      ],
+      "positive_indices": [
+        0,
+        1
+      ]
+    },
+    {
+      "group_id": "candidate_002524577c397c2e",
+      "family": "skateboard_support",
+      "same_image": false,
+      "events": [
+        {
+          "event_id": "447681_2229087_638263",
+          "image_id": 447681,
+          "filename": "COCO_train2014_000000447681.jpg",
+          "filepath": "train2014",
+          "caption_split": "train",
+          "subject_box": [
+            0.14441108545034642,
+            0.22335937499999997,
+            0.5891916859122402,
+            0.625328125
+          ],
+          "object_box": [
+            0.12727482678983834,
+            0.48409375,
+            0.35018475750577366,
+            0.62265625
+          ],
+          "width": 433,
+          "height": 640
+        },
+        {
+          "event_id": "260040_1705835_643025",
+          "image_id": 260040,
+          "filename": "COCO_train2014_000000260040.jpg",
+          "filepath": "train2014",
+          "caption_split": "train",
+          "subject_box": [
+            0.37015625,
+            0.151943793911007,
+            0.640328125,
+            0.9438875878220141
+          ],
+          "object_box": [
+            0.446765625,
+            0.489672131147541,
+            0.636828125,
+            0.6693208430913349
+          ],
+          "width": 640,
+          "height": 427
+        }
+      ],
+      "descriptions": [
+        "a person standing on a skateboard",
+        "a person carrying a skateboard"
+      ],
+      "positive_indices": [
+        0,
+        1
+      ]
+    },
+    {
+      "group_id": "candidate_001e8e9ec1af39cf",
+      "family": "phone_position",
+      "same_image": false,
+      "events": [
+        {
+          "event_id": "436735_447001_322223",
+          "image_id": 436735,
+          "filename": "COCO_train2014_000000436735.jpg",
+          "filepath": "train2014",
+          "caption_split": "train",
+          "subject_box": [
+            0.26059375,
+            0.0037995337995337993,
+            0.9128281250000001,
+            0.9858275058275059
+          ],
+          "object_box": [
+            0.4310625,
+            0.3662937062937063,
+            0.49800000000000005,
+            0.45860139860139854
+          ],
+          "width": 640,
+          "height": 429
+        },
+        {
+          "event_id": "570474_459187_321703",
+          "image_id": 570474,
+          "filename": "COCO_train2014_000000570474.jpg",
+          "filepath": "train2014",
+          "caption_split": "train",
+          "subject_box": [
+            0.08070833333333334,
+            0.0074687500000000006,
+            0.890875,
+            0.852765625
+          ],
+          "object_box": [
+            0.19760416666666666,
+            0.15640625,
+            0.42454166666666665,
+            0.418546875
+          ],
+          "width": 480,
+          "height": 640
+        }
+      ],
+      "descriptions": [
+        "a person holding a cell phone near their ear",
+        "a person looking at a cell phone in their hands"
+      ],
+      "positive_indices": [
+        0,
+        1
+      ]
+    },
+    {
+      "group_id": "candidate_0006a3c356ed0407",
+      "family": "surfboard_support",
+      "same_image": false,
+      "events": [
+        {
+          "event_id": "107584_455643_1478747",
+          "image_id": 107584,
+          "filename": "COCO_train2014_000000107584.jpg",
+          "filepath": "train2014",
+          "caption_split": "train",
+          "subject_box": [
+            0.24647887323943662,
+            0.239109375,
+            0.778661971830986,
+            0.4265625
+          ],
+          "object_box": [
+            0.3643192488262911,
+            0.256859375,
+            0.8159389671361502,
+            0.511546875
+          ],
+          "width": 426,
+          "height": 640
+        },
+        {
+          "event_id": "162520_536266_652308",
+          "image_id": 162520,
+          "filename": "COCO_train2014_000000162520.jpg",
+          "filepath": "train2014",
+          "caption_split": "train",
+          "subject_box": [
+            0.31215625,
+            0.14314960629921258,
+            0.41025,
+            0.8801968503937008
+          ],
+          "object_box": [
+            0.266484375,
+            0.3196062992125985,
+            0.3945,
+            0.5833464566929134
+          ],
+          "width": 640,
+          "height": 254
+        }
+      ],
+      "descriptions": [
+        "a person standing on a surfboard",
+        "a person carrying a surfboard"
+      ],
+      "positive_indices": [
+        0,
+        1
+      ]
+    },
+    {
+      "group_id": "candidate_001ebb9a1ca1066d",
+      "family": "phone_position",
+      "same_image": false,
+      "events": [
+        {
+          "event_id": "526325_440753_322064",
+          "image_id": 526325,
+          "filename": "COCO_train2014_000000526325.jpg",
+          "filepath": "train2014",
+          "caption_split": "train",
+          "subject_box": [
+            0,
+            0.12698437499999998,
+            1,
+            0.98734375
+          ],
+          "object_box": [
+            0.27339583333333334,
+            0.356640625,
+            0.42572916666666666,
+            0.6246562499999999
+          ],
+          "width": 480,
+          "height": 640
+        },
+        {
+          "event_id": "200984_469072_322116",
+          "image_id": 200984,
+          "filename": "COCO_train2014_000000200984.jpg",
+          "filepath": "train2014",
+          "caption_split": "train",
+          "subject_box": [
+            0.00553125,
+            0.004696969696969697,
+            0.74609375,
+            0.997979797979798
+          ],
+          "object_box": [
+            0.70575,
+            0.37747474747474746,
+            0.74746875,
+            0.5421212121212121
+          ],
+          "width": 640,
+          "height": 396
+        }
+      ],
+      "descriptions": [
+        "a person holding a cell phone near their ear",
+        "a person looking at a cell phone in their hands"
+      ],
+      "positive_indices": [
+        0,
+        1
+      ]
+    },
+    {
+      "group_id": "candidate_013cfac02989d26d",
+      "family": "skateboard_support",
+      "same_image": false,
+      "events": [
+        {
+          "event_id": "381065_469004_1860183",
+          "image_id": 381065,
+          "filename": "COCO_train2014_000000381065.jpg",
+          "filepath": "train2014",
+          "caption_split": "train",
+          "subject_box": [
+            0.30909375,
+            0.2908745874587459,
+            0.599109375,
+            0.634075907590759
+          ],
+          "object_box": [
+            0.47203125,
+            0.5233003300330034,
+            0.6163281250000001,
+            0.6529867986798681
+          ],
+          "width": 640,
+          "height": 606
+        },
+        {
+          "event_id": "181841_1737358_643638",
+          "image_id": 181841,
+          "filename": "COCO_train2014_000000181841.jpg",
+          "filepath": "train2014",
+          "caption_split": "train",
+          "subject_box": [
+            0.023219999999999998,
+            0.15803571428571428,
+            0.74998,
+            0.9876488095238096
+          ],
+          "object_box": [
+            0,
+            0.3842857142857143,
+            0.7843600000000001,
+            0.8715476190476191
+          ],
+          "width": 500,
+          "height": 336
+        }
+      ],
+      "descriptions": [
+        "a person standing on a skateboard",
+        "a person carrying a skateboard"
+      ],
+      "positive_indices": [
+        0,
+        1
+      ]
+    },
+    {
+      "group_id": "candidate_0006da9d3047a2ad",
+      "family": "surfboard_support",
+      "same_image": false,
+      "events": [
+        {
+          "event_id": "72888_1217782_649945",
+          "image_id": 72888,
+          "filename": "COCO_train2014_000000072888.jpg",
+          "filepath": "train2014",
+          "caption_split": "train",
+          "subject_box": [
+            0.499015625,
+            0.17609411764705885,
+            0.6029375,
+            0.35997647058823534
+          ],
+          "object_box": [
+            0.50478125,
+            0.34110588235294115,
+            0.646390625,
+            0.37785882352941175
+          ],
+          "width": 640,
+          "height": 425
+        },
+        {
+          "event_id": "521602_440034_651930",
+          "image_id": 521602,
+          "filename": "COCO_train2014_000000521602.jpg",
+          "filepath": "train2014",
+          "caption_split": "train",
+          "subject_box": [
+            0.321796875,
+            0.4619672131147541,
+            0.37334375,
+            0.6389929742388759
+          ],
+          "object_box": [
+            0.32818749999999997,
+            0.46704918032786885,
+            0.43603125,
+            0.735807962529274
+          ],
+          "width": 640,
+          "height": 427
+        }
+      ],
+      "descriptions": [
+        "a person standing on a surfboard",
+        "a person carrying a surfboard"
+      ],
+      "positive_indices": [
+        0,
+        1
+      ]
+    },
+    {
+      "group_id": "candidate_00282b60f1e11ec7",
+      "family": "phone_position",
+      "same_image": false,
+      "events": [
+        {
+          "event_id": "335594_456767_323555",
+          "image_id": 335594,
+          "filename": "COCO_train2014_000000335594.jpg",
+          "filepath": "train2014",
+          "caption_split": "train",
+          "subject_box": [
+            0.01029816513761468,
+            0.03526,
+            0.9071330275229358,
+            0.98134
+          ],
+          "object_box": [
+            0.48993119266055046,
+            0.33818,
+            0.555045871559633,
+            0.42182
+          ],
+          "width": 436,
+          "height": 500
+        },
+        {
+          "event_id": "179201_213590_2137664",
+          "image_id": 179201,
+          "filename": "COCO_train2014_000000179201.jpg",
+          "filepath": "train2014",
+          "caption_split": "train",
+          "subject_box": [
+            0.07921875,
+            0.31235416666666665,
+            0.407859375,
+            0.60675
+          ],
+          "object_box": [
+            0.176421875,
+            0.5243749999999999,
+            0.21590625000000002,
+            0.5709166666666666
+          ],
+          "width": 640,
+          "height": 480
+        }
+      ],
+      "descriptions": [
+        "a person holding a cell phone near their ear",
+        "a person looking at a cell phone in their hands"
+      ],
+      "positive_indices": [
+        0,
+        1
+      ]
+    },
+    {
+      "group_id": "candidate_000a4fdcfcf04e59",
+      "family": "surfboard_support",
+      "same_image": false,
+      "events": [
+        {
+          "event_id": "202853_1228758_651307",
+          "image_id": 202853,
+          "filename": "COCO_train2014_000000202853.jpg",
+          "filepath": "train2014",
+          "caption_split": "train",
+          "subject_box": [
+            0.16315625,
+            0.16374999999999998,
+            0.318671875,
+            0.5021875
+          ],
+          "object_box": [
+            0.146625,
+            0.40675,
+            0.364046875,
+            0.5280833333333333
+          ],
+          "width": 640,
+          "height": 480
+        },
+        {
+          "event_id": "134754_501718_651087",
+          "image_id": 134754,
+          "filename": "COCO_train2014_000000134754.jpg",
+          "filepath": "train2014",
+          "caption_split": "train",
+          "subject_box": [
+            0.5611875000000001,
+            0.0739344262295082,
+            0.8338437500000001,
+            0.8097423887587821
+          ],
+          "object_box": [
+            0.5937187500000001,
+            0.23302107728337237,
+            0.9265625,
+            0.5723419203747072
+          ],
+          "width": 640,
+          "height": 427
+        }
+      ],
+      "descriptions": [
+        "a person standing on a surfboard",
+        "a person carrying a surfboard"
+      ],
+      "positive_indices": [
+        0,
+        1
+      ]
+    },
+    {
+      "group_id": "candidate_003b508378285bef",
+      "family": "phone_position",
+      "same_image": false,
+      "events": [
+        {
+          "event_id": "16737_429661_322036",
+          "image_id": 16737,
+          "filename": "COCO_train2014_000000016737.jpg",
+          "filepath": "train2014",
+          "caption_split": "train",
+          "subject_box": [
+            0.02021875,
+            0.010541666666666666,
+            0.616859375,
+            0.9835833333333334
+          ],
+          "object_box": [
+            0.16273437500000001,
+            0.22854166666666667,
+            0.247734375,
+            0.3636041666666667
+          ],
+          "width": 640,
+          "height": 480
+        },
+        {
+          "event_id": "248034_464453_326296",
+          "image_id": 248034,
+          "filename": "COCO_train2014_000000248034.jpg",
+          "filepath": "train2014",
+          "caption_split": "train",
+          "subject_box": [
+            0.002234375,
+            0.013640625,
+            1,
+            0.80334375
+          ],
+          "object_box": [
+            0.246640625,
+            0.168078125,
+            0.377796875,
+            0.34678125
+          ],
+          "width": 640,
+          "height": 640
+        }
+      ],
+      "descriptions": [
+        "a person holding a cell phone near their ear",
+        "a person looking at a cell phone in their hands"
+      ],
+      "positive_indices": [
+        0,
+        1
+      ]
+    }
+  ],
+  "partitions": {
+    "fit": [
+      "candidate_50edb6132ebb8519",
+      "candidate_0375a14e14d6378b",
+      "candidate_0000065babcabdfc",
+      "candidate_98144b2702f71aa1",
+      "candidate_000399513c4cf750",
+      "candidate_00014bad665432ab",
+      "candidate_001540bda681aca7",
+      "candidate_00030b8165be0a35",
+      "candidate_001e530a457ed66b",
+      "candidate_001e8e9ec1af39cf",
+      "candidate_001ebb9a1ca1066d",
+      "candidate_013cfac02989d26d",
+      "candidate_0006da9d3047a2ad",
+      "candidate_000a4fdcfcf04e59"
+    ],
+    "adaptation_holdout": [
+      "candidate_5d56f9ff08e1a128",
+      "candidate_002524577c397c2e",
+      "candidate_6fff8a4e958823d8",
+      "candidate_0006a3c356ed0407",
+      "candidate_00282b60f1e11ec7",
+      "candidate_003b508378285bef",
+      "candidate_001cceebebd8190e"
+    ]
+  },
+  "geometry_fit_mean": [
+    0.11143781244754791,
+    0.1336749643087387,
+    -0.5798753499984741,
+    -1.1524393558502197,
+    0.17117927968502045,
+    0.2243010252714157,
+    0.7228337526321411,
+    0.16339436173439026
+  ],
+  "geometry_fit_std": [
+    0.30310168862342834,
+    0.2540808916091919,
+    1.0859559774398804,
+    0.7419787645339966,
+    0.15002043545246124,
+    0.23115274310112,
+    0.3011530339717865,
+    0.11811969429254532
+  ],
+  "schedule": [
+    [
+      "candidate_001e530a457ed66b",
+      "candidate_0006da9d3047a2ad",
+      "candidate_00030b8165be0a35",
+      "candidate_001540bda681aca7",
+      "candidate_000a4fdcfcf04e59",
+      "candidate_013cfac02989d26d",
+      "candidate_00014bad665432ab",
+      "candidate_0000065babcabdfc"
+    ],
+    [
+      "candidate_001e8e9ec1af39cf",
+      "candidate_98144b2702f71aa1",
+      "candidate_000399513c4cf750",
+      "candidate_50edb6132ebb8519",
+      "candidate_0375a14e14d6378b",
+      "candidate_001ebb9a1ca1066d",
+      "candidate_0000065babcabdfc",
+      "candidate_00014bad665432ab"
+    ],
+    [
+      "candidate_00030b8165be0a35",
+      "candidate_001e8e9ec1af39cf",
+      "candidate_001540bda681aca7",
+      "candidate_013cfac02989d26d",
+      "candidate_000399513c4cf750",
+      "candidate_0006da9d3047a2ad",
+      "candidate_001e530a457ed66b",
+      "candidate_001ebb9a1ca1066d"
+    ],
+    [
+      "candidate_98144b2702f71aa1",
+      "candidate_0375a14e14d6378b",
+      "candidate_000a4fdcfcf04e59",
+      "candidate_50edb6132ebb8519",
+      "candidate_00030b8165be0a35",
+      "candidate_001e530a457ed66b",
+      "candidate_98144b2702f71aa1",
+      "candidate_013cfac02989d26d"
+    ],
+    [
+      "candidate_001ebb9a1ca1066d",
+      "candidate_000a4fdcfcf04e59",
+      "candidate_0375a14e14d6378b",
+      "candidate_0006da9d3047a2ad",
+      "candidate_00014bad665432ab",
+      "candidate_001540bda681aca7",
+      "candidate_0000065babcabdfc",
+      "candidate_50edb6132ebb8519"
+    ],
+    [
+      "candidate_000399513c4cf750",
+      "candidate_001e8e9ec1af39cf",
+      "candidate_001540bda681aca7",
+      "candidate_000a4fdcfcf04e59",
+      "candidate_0000065babcabdfc",
+      "candidate_013cfac02989d26d",
+      "candidate_98144b2702f71aa1",
+      "candidate_001e530a457ed66b"
+    ],
+    [
+      "candidate_001ebb9a1ca1066d",
+      "candidate_00030b8165be0a35",
+      "candidate_50edb6132ebb8519",
+      "candidate_000399513c4cf750",
+      "candidate_001e8e9ec1af39cf",
+      "candidate_0006da9d3047a2ad",
+      "candidate_00014bad665432ab",
+      "candidate_0375a14e14d6378b"
+    ],
+    [
+      "candidate_000399513c4cf750",
+      "candidate_001e530a457ed66b",
+      "candidate_001540bda681aca7",
+      "candidate_0000065babcabdfc",
+      "candidate_00030b8165be0a35",
+      "candidate_0006da9d3047a2ad",
+      "candidate_50edb6132ebb8519",
+      "candidate_0375a14e14d6378b"
+    ],
+    [
+      "candidate_98144b2702f71aa1",
+      "candidate_013cfac02989d26d",
+      "candidate_00014bad665432ab",
+      "candidate_001e8e9ec1af39cf",
+      "candidate_001ebb9a1ca1066d",
+      "candidate_000a4fdcfcf04e59",
+      "candidate_001ebb9a1ca1066d",
+      "candidate_50edb6132ebb8519"
+    ],
+    [
+      "candidate_98144b2702f71aa1",
+      "candidate_001e530a457ed66b",
+      "candidate_0006da9d3047a2ad",
+      "candidate_013cfac02989d26d",
+      "candidate_001e8e9ec1af39cf",
+      "candidate_0000065babcabdfc",
+      "candidate_00014bad665432ab",
+      "candidate_00030b8165be0a35"
+    ],
+    [
+      "candidate_000399513c4cf750",
+      "candidate_001540bda681aca7",
+      "candidate_0375a14e14d6378b",
+      "candidate_000a4fdcfcf04e59",
+      "candidate_50edb6132ebb8519",
+      "candidate_001540bda681aca7",
+      "candidate_00014bad665432ab",
+      "candidate_0375a14e14d6378b"
+    ],
+    [
+      "candidate_000399513c4cf750",
+      "candidate_0006da9d3047a2ad",
+      "candidate_000a4fdcfcf04e59",
+      "candidate_00030b8165be0a35",
+      "candidate_013cfac02989d26d",
+      "candidate_98144b2702f71aa1",
+      "candidate_001e530a457ed66b",
+      "candidate_0000065babcabdfc"
+    ],
+    [
+      "candidate_001ebb9a1ca1066d",
+      "candidate_001e8e9ec1af39cf",
+      "candidate_001ebb9a1ca1066d",
+      "candidate_000399513c4cf750",
+      "candidate_001e530a457ed66b",
+      "candidate_00030b8165be0a35",
+      "candidate_0375a14e14d6378b",
+      "candidate_001e8e9ec1af39cf"
+    ],
+    [
+      "candidate_0000065babcabdfc",
+      "candidate_001540bda681aca7",
+      "candidate_00014bad665432ab",
+      "candidate_013cfac02989d26d",
+      "candidate_98144b2702f71aa1",
+      "candidate_50edb6132ebb8519",
+      "candidate_0006da9d3047a2ad",
+      "candidate_000a4fdcfcf04e59"
+    ],
+    [
+      "candidate_50edb6132ebb8519",
+      "candidate_0375a14e14d6378b",
+      "candidate_013cfac02989d26d",
+      "candidate_001e530a457ed66b",
+      "candidate_000a4fdcfcf04e59",
+      "candidate_001e8e9ec1af39cf",
+      "candidate_00014bad665432ab",
+      "candidate_98144b2702f71aa1"
+    ],
+    [
+      "candidate_0006da9d3047a2ad",
+      "candidate_000399513c4cf750",
+      "candidate_0000065babcabdfc",
+      "candidate_00030b8165be0a35",
+      "candidate_001ebb9a1ca1066d",
+      "candidate_001540bda681aca7",
+      "candidate_001ebb9a1ca1066d",
+      "candidate_000399513c4cf750"
+    ],
+    [
+      "candidate_000a4fdcfcf04e59",
+      "candidate_0375a14e14d6378b",
+      "candidate_013cfac02989d26d",
+      "candidate_0006da9d3047a2ad",
+      "candidate_50edb6132ebb8519",
+      "candidate_00030b8165be0a35",
+      "candidate_001e530a457ed66b",
+      "candidate_0000065babcabdfc"
+    ],
+    [
+      "candidate_98144b2702f71aa1",
+      "candidate_00014bad665432ab",
+      "candidate_001540bda681aca7",
+      "candidate_001e8e9ec1af39cf",
+      "candidate_000a4fdcfcf04e59",
+      "candidate_50edb6132ebb8519",
+      "candidate_00014bad665432ab",
+      "candidate_0000065babcabdfc"
+    ],
+    [
+      "candidate_00030b8165be0a35",
+      "candidate_98144b2702f71aa1",
+      "candidate_000399513c4cf750",
+      "candidate_001e530a457ed66b",
+      "candidate_013cfac02989d26d",
+      "candidate_0375a14e14d6378b",
+      "candidate_001e8e9ec1af39cf",
+      "candidate_001540bda681aca7"
+    ],
+    [
+      "candidate_001ebb9a1ca1066d",
+      "candidate_0006da9d3047a2ad",
+      "candidate_00030b8165be0a35",
+      "candidate_001540bda681aca7",
+      "candidate_001e8e9ec1af39cf",
+      "candidate_0006da9d3047a2ad",
+      "candidate_98144b2702f71aa1",
+      "candidate_0000065babcabdfc"
+    ],
+    [
+      "candidate_50edb6132ebb8519",
+      "candidate_00014bad665432ab",
+      "candidate_000399513c4cf750",
+      "candidate_001e530a457ed66b",
+      "candidate_000a4fdcfcf04e59",
+      "candidate_0375a14e14d6378b",
+      "candidate_013cfac02989d26d",
+      "candidate_001ebb9a1ca1066d"
+    ],
+    [
+      "candidate_0006da9d3047a2ad",
+      "candidate_98144b2702f71aa1",
+      "candidate_50edb6132ebb8519",
+      "candidate_00030b8165be0a35",
+      "candidate_001e8e9ec1af39cf",
+      "candidate_00014bad665432ab",
+      "candidate_001540bda681aca7",
+      "candidate_0375a14e14d6378b"
+    ],
+    [
+      "candidate_001ebb9a1ca1066d",
+      "candidate_0000065babcabdfc",
+      "candidate_001e530a457ed66b",
+      "candidate_000399513c4cf750",
+      "candidate_000a4fdcfcf04e59",
+      "candidate_013cfac02989d26d",
+      "candidate_0375a14e14d6378b",
+      "candidate_98144b2702f71aa1"
+    ],
+    [
+      "candidate_001ebb9a1ca1066d",
+      "candidate_000399513c4cf750",
+      "candidate_000a4fdcfcf04e59",
+      "candidate_001540bda681aca7",
+      "candidate_001e8e9ec1af39cf",
+      "candidate_00030b8165be0a35",
+      "candidate_00014bad665432ab",
+      "candidate_50edb6132ebb8519"
+    ],
+    [
+      "candidate_013cfac02989d26d",
+      "candidate_001e530a457ed66b",
+      "candidate_0000065babcabdfc",
+      "candidate_0006da9d3047a2ad",
+      "candidate_50edb6132ebb8519",
+      "candidate_0006da9d3047a2ad",
+      "candidate_000399513c4cf750",
+      "candidate_001540bda681aca7"
+    ],
+    [
+      "candidate_000a4fdcfcf04e59",
+      "candidate_00014bad665432ab",
+      "candidate_001e530a457ed66b",
+      "candidate_0000065babcabdfc",
+      "candidate_001ebb9a1ca1066d",
+      "candidate_00030b8165be0a35",
+      "candidate_013cfac02989d26d",
+      "candidate_0375a14e14d6378b"
+    ],
+    [
+      "candidate_001e8e9ec1af39cf",
+      "candidate_98144b2702f71aa1",
+      "candidate_0375a14e14d6378b",
+      "candidate_0000065babcabdfc",
+      "candidate_00030b8165be0a35",
+      "candidate_50edb6132ebb8519",
+      "candidate_0006da9d3047a2ad",
+      "candidate_001e8e9ec1af39cf"
+    ],
+    [
+      "candidate_001ebb9a1ca1066d",
+      "candidate_00014bad665432ab",
+      "candidate_001540bda681aca7",
+      "candidate_000399513c4cf750",
+      "candidate_000a4fdcfcf04e59",
+      "candidate_013cfac02989d26d",
+      "candidate_001e530a457ed66b",
+      "candidate_98144b2702f71aa1"
+    ],
+    [
+      "candidate_00030b8165be0a35",
+      "candidate_0000065babcabdfc",
+      "candidate_000399513c4cf750",
+      "candidate_000a4fdcfcf04e59",
+      "candidate_0006da9d3047a2ad",
+      "candidate_001540bda681aca7",
+      "candidate_013cfac02989d26d",
+      "candidate_001ebb9a1ca1066d"
+    ],
+    [
+      "candidate_98144b2702f71aa1",
+      "candidate_001e530a457ed66b",
+      "candidate_001e8e9ec1af39cf",
+      "candidate_50edb6132ebb8519",
+      "candidate_00014bad665432ab",
+      "candidate_0375a14e14d6378b",
+      "candidate_0000065babcabdfc",
+      "candidate_0006da9d3047a2ad"
+    ],
+    [
+      "candidate_50edb6132ebb8519",
+      "candidate_001e8e9ec1af39cf",
+      "candidate_001540bda681aca7",
+      "candidate_001ebb9a1ca1066d",
+      "candidate_013cfac02989d26d",
+      "candidate_00030b8165be0a35",
+      "candidate_000399513c4cf750",
+      "candidate_98144b2702f71aa1"
+    ],
+    [
+      "candidate_001e530a457ed66b",
+      "candidate_0375a14e14d6378b",
+      "candidate_00014bad665432ab",
+      "candidate_000a4fdcfcf04e59",
+      "candidate_001e8e9ec1af39cf",
+      "candidate_000399513c4cf750",
+      "candidate_0000065babcabdfc",
+      "candidate_50edb6132ebb8519"
+    ],
+    [
+      "candidate_00030b8165be0a35",
+      "candidate_001e530a457ed66b",
+      "candidate_013cfac02989d26d",
+      "candidate_00014bad665432ab",
+      "candidate_000a4fdcfcf04e59",
+      "candidate_001ebb9a1ca1066d",
+      "candidate_0375a14e14d6378b",
+      "candidate_98144b2702f71aa1"
+    ],
+    [
+      "candidate_001540bda681aca7",
+      "candidate_0006da9d3047a2ad",
+      "candidate_0000065babcabdfc",
+      "candidate_000a4fdcfcf04e59",
+      "candidate_001ebb9a1ca1066d",
+      "candidate_0006da9d3047a2ad",
+      "candidate_00030b8165be0a35",
+      "candidate_000399513c4cf750"
+    ],
+    [
+      "candidate_001e8e9ec1af39cf",
+      "candidate_001e530a457ed66b",
+      "candidate_98144b2702f71aa1",
+      "candidate_0375a14e14d6378b",
+      "candidate_00014bad665432ab",
+      "candidate_013cfac02989d26d",
+      "candidate_001540bda681aca7",
+      "candidate_50edb6132ebb8519"
+    ],
+    [
+      "candidate_001e8e9ec1af39cf",
+      "candidate_0000065babcabdfc",
+      "candidate_013cfac02989d26d",
+      "candidate_001540bda681aca7",
+      "candidate_000a4fdcfcf04e59",
+      "candidate_00014bad665432ab",
+      "candidate_50edb6132ebb8519",
+      "candidate_001ebb9a1ca1066d"
+    ],
+    [
+      "candidate_001e530a457ed66b",
+      "candidate_0006da9d3047a2ad",
+      "candidate_0375a14e14d6378b",
+      "candidate_98144b2702f71aa1",
+      "candidate_00030b8165be0a35",
+      "candidate_000399513c4cf750",
+      "candidate_000399513c4cf750",
+      "candidate_000a4fdcfcf04e59"
+    ],
+    [
+      "candidate_001e530a457ed66b",
+      "candidate_00014bad665432ab",
+      "candidate_001ebb9a1ca1066d",
+      "candidate_001e8e9ec1af39cf",
+      "candidate_0375a14e14d6378b",
+      "candidate_50edb6132ebb8519",
+      "candidate_0006da9d3047a2ad",
+      "candidate_98144b2702f71aa1"
+    ],
+    [
+      "candidate_013cfac02989d26d",
+      "candidate_00030b8165be0a35",
+      "candidate_001540bda681aca7",
+      "candidate_0000065babcabdfc",
+      "candidate_001e8e9ec1af39cf",
+      "candidate_00014bad665432ab",
+      "candidate_0006da9d3047a2ad",
+      "candidate_000a4fdcfcf04e59"
+    ],
+    [
+      "candidate_50edb6132ebb8519",
+      "candidate_0375a14e14d6378b",
+      "candidate_001ebb9a1ca1066d",
+      "candidate_98144b2702f71aa1",
+      "candidate_0000065babcabdfc",
+      "candidate_00030b8165be0a35",
+      "candidate_001e530a457ed66b",
+      "candidate_013cfac02989d26d"
+    ],
+    [
+      "candidate_001540bda681aca7",
+      "candidate_000399513c4cf750",
+      "candidate_98144b2702f71aa1",
+      "candidate_001ebb9a1ca1066d",
+      "candidate_00014bad665432ab",
+      "candidate_0375a14e14d6378b",
+      "candidate_001540bda681aca7",
+      "candidate_000399513c4cf750"
+    ],
+    [
+      "candidate_0006da9d3047a2ad",
+      "candidate_0000065babcabdfc",
+      "candidate_013cfac02989d26d",
+      "candidate_001e530a457ed66b",
+      "candidate_00030b8165be0a35",
+      "candidate_001e8e9ec1af39cf",
+      "candidate_000a4fdcfcf04e59",
+      "candidate_50edb6132ebb8519"
+    ],
+    [
+      "candidate_013cfac02989d26d",
+      "candidate_00014bad665432ab",
+      "candidate_000a4fdcfcf04e59",
+      "candidate_0000065babcabdfc",
+      "candidate_001e530a457ed66b",
+      "candidate_00030b8165be0a35",
+      "candidate_000399513c4cf750",
+      "candidate_50edb6132ebb8519"
+    ],
+    [
+      "candidate_0006da9d3047a2ad",
+      "candidate_001e8e9ec1af39cf",
+      "candidate_0375a14e14d6378b",
+      "candidate_001540bda681aca7",
+      "candidate_98144b2702f71aa1",
+      "candidate_001ebb9a1ca1066d",
+      "candidate_001e8e9ec1af39cf",
+      "candidate_50edb6132ebb8519"
+    ],
+    [
+      "candidate_0375a14e14d6378b",
+      "candidate_000a4fdcfcf04e59",
+      "candidate_00030b8165be0a35",
+      "candidate_001e530a457ed66b",
+      "candidate_0006da9d3047a2ad",
+      "candidate_0000065babcabdfc",
+      "candidate_001540bda681aca7",
+      "candidate_000399513c4cf750"
+    ],
+    [
+      "candidate_98144b2702f71aa1",
+      "candidate_00014bad665432ab",
+      "candidate_013cfac02989d26d",
+      "candidate_001ebb9a1ca1066d",
+      "candidate_001540bda681aca7",
+      "candidate_0006da9d3047a2ad",
+      "candidate_000a4fdcfcf04e59",
+      "candidate_00014bad665432ab"
+    ],
+    [
+      "candidate_001e530a457ed66b",
+      "candidate_0000065babcabdfc",
+      "candidate_000399513c4cf750",
+      "candidate_98144b2702f71aa1",
+      "candidate_001ebb9a1ca1066d",
+      "candidate_0375a14e14d6378b",
+      "candidate_013cfac02989d26d",
+      "candidate_001e8e9ec1af39cf"
+    ],
+    [
+      "candidate_00030b8165be0a35",
+      "candidate_50edb6132ebb8519",
+      "candidate_001540bda681aca7",
+      "candidate_0375a14e14d6378b",
+      "candidate_98144b2702f71aa1",
+      "candidate_001ebb9a1ca1066d",
+      "candidate_013cfac02989d26d",
+      "candidate_001e8e9ec1af39cf"
+    ],
+    [
+      "candidate_000a4fdcfcf04e59",
+      "candidate_50edb6132ebb8519",
+      "candidate_0006da9d3047a2ad",
+      "candidate_001e530a457ed66b",
+      "candidate_00030b8165be0a35",
+      "candidate_0000065babcabdfc",
+      "candidate_000399513c4cf750",
+      "candidate_00014bad665432ab"
+    ],
+    [
+      "candidate_50edb6132ebb8519",
+      "candidate_98144b2702f71aa1",
+      "candidate_001540bda681aca7",
+      "candidate_00014bad665432ab",
+      "candidate_001e8e9ec1af39cf",
+      "candidate_0006da9d3047a2ad",
+      "candidate_00030b8165be0a35",
+      "candidate_001ebb9a1ca1066d"
+    ],
+    [
+      "candidate_000399513c4cf750",
+      "candidate_0000065babcabdfc",
+      "candidate_001e530a457ed66b",
+      "candidate_013cfac02989d26d",
+      "candidate_000a4fdcfcf04e59",
+      "candidate_0375a14e14d6378b",
+      "candidate_00014bad665432ab",
+      "candidate_98144b2702f71aa1"
+    ],
+    [
+      "candidate_0006da9d3047a2ad",
+      "candidate_001e8e9ec1af39cf",
+      "candidate_0000065babcabdfc",
+      "candidate_000a4fdcfcf04e59",
+      "candidate_001ebb9a1ca1066d",
+      "candidate_013cfac02989d26d",
+      "candidate_001540bda681aca7",
+      "candidate_0375a14e14d6378b"
+    ],
+    [
+      "candidate_50edb6132ebb8519",
+      "candidate_000399513c4cf750",
+      "candidate_00030b8165be0a35",
+      "candidate_001e530a457ed66b",
+      "candidate_000a4fdcfcf04e59",
+      "candidate_98144b2702f71aa1",
+      "candidate_000399513c4cf750",
+      "candidate_00014bad665432ab"
+    ],
+    [
+      "candidate_0375a14e14d6378b",
+      "candidate_001e8e9ec1af39cf",
+      "candidate_0006da9d3047a2ad",
+      "candidate_50edb6132ebb8519",
+      "candidate_001ebb9a1ca1066d",
+      "candidate_001540bda681aca7",
+      "candidate_001e530a457ed66b",
+      "candidate_00030b8165be0a35"
+    ],
+    [
+      "candidate_013cfac02989d26d",
+      "candidate_0000065babcabdfc",
+      "candidate_98144b2702f71aa1",
+      "candidate_0006da9d3047a2ad",
+      "candidate_001ebb9a1ca1066d",
+      "candidate_001e530a457ed66b",
+      "candidate_000a4fdcfcf04e59",
+      "candidate_00030b8165be0a35"
+    ],
+    [
+      "candidate_0375a14e14d6378b",
+      "candidate_001e8e9ec1af39cf",
+      "candidate_013cfac02989d26d",
+      "candidate_00014bad665432ab",
+      "candidate_000399513c4cf750",
+      "candidate_50edb6132ebb8519",
+      "candidate_0000065babcabdfc",
+      "candidate_001540bda681aca7"
+    ],
+    [
+      "candidate_00014bad665432ab",
+      "candidate_00030b8165be0a35",
+      "candidate_000399513c4cf750",
+      "candidate_001ebb9a1ca1066d",
+      "candidate_001e530a457ed66b",
+      "candidate_0375a14e14d6378b",
+      "candidate_50edb6132ebb8519",
+      "candidate_001540bda681aca7"
+    ],
+    [
+      "candidate_000a4fdcfcf04e59",
+      "candidate_0006da9d3047a2ad",
+      "candidate_98144b2702f71aa1",
+      "candidate_0000065babcabdfc",
+      "candidate_013cfac02989d26d",
+      "candidate_001e8e9ec1af39cf",
+      "candidate_000a4fdcfcf04e59",
+      "candidate_001e530a457ed66b"
+    ],
+    [
+      "candidate_00014bad665432ab",
+      "candidate_0006da9d3047a2ad",
+      "candidate_98144b2702f71aa1",
+      "candidate_001e8e9ec1af39cf",
+      "candidate_001ebb9a1ca1066d",
+      "candidate_00030b8165be0a35",
+      "candidate_50edb6132ebb8519",
+      "candidate_001540bda681aca7"
+    ],
+    [
+      "candidate_0375a14e14d6378b",
+      "candidate_013cfac02989d26d",
+      "candidate_0000065babcabdfc",
+      "candidate_000399513c4cf750",
+      "candidate_001e530a457ed66b",
+      "candidate_0375a14e14d6378b",
+      "candidate_013cfac02989d26d",
+      "candidate_00030b8165be0a35"
+    ],
+    [
+      "candidate_0000065babcabdfc",
+      "candidate_0006da9d3047a2ad",
+      "candidate_001e8e9ec1af39cf",
+      "candidate_000399513c4cf750",
+      "candidate_00014bad665432ab",
+      "candidate_001540bda681aca7",
+      "candidate_000a4fdcfcf04e59",
+      "candidate_001ebb9a1ca1066d"
+    ],
+    [
+      "candidate_50edb6132ebb8519",
+      "candidate_98144b2702f71aa1",
+      "candidate_98144b2702f71aa1",
+      "candidate_001e8e9ec1af39cf",
+      "candidate_013cfac02989d26d",
+      "candidate_001540bda681aca7",
+      "candidate_000a4fdcfcf04e59",
+      "candidate_00030b8165be0a35"
+    ],
+    [
+      "candidate_0006da9d3047a2ad",
+      "candidate_0000065babcabdfc",
+      "candidate_000399513c4cf750",
+      "candidate_0375a14e14d6378b",
+      "candidate_50edb6132ebb8519",
+      "candidate_00014bad665432ab",
+      "candidate_001e530a457ed66b",
+      "candidate_001ebb9a1ca1066d"
+    ],
+    [
+      "candidate_001ebb9a1ca1066d",
+      "candidate_0006da9d3047a2ad",
+      "candidate_50edb6132ebb8519",
+      "candidate_0000065babcabdfc",
+      "candidate_00030b8165be0a35",
+      "candidate_000399513c4cf750",
+      "candidate_98144b2702f71aa1",
+      "candidate_0375a14e14d6378b"
+    ],
+    [
+      "candidate_001e530a457ed66b",
+      "candidate_001e8e9ec1af39cf",
+      "candidate_001540bda681aca7",
+      "candidate_000a4fdcfcf04e59",
+      "candidate_013cfac02989d26d",
+      "candidate_00014bad665432ab",
+      "candidate_0375a14e14d6378b",
+      "candidate_00030b8165be0a35"
+    ],
+    [
+      "candidate_001e8e9ec1af39cf",
+      "candidate_000399513c4cf750",
+      "candidate_0000065babcabdfc",
+      "candidate_013cfac02989d26d",
+      "candidate_000a4fdcfcf04e59",
+      "candidate_001540bda681aca7",
+      "candidate_00014bad665432ab",
+      "candidate_98144b2702f71aa1"
+    ],
+    [
+      "candidate_001ebb9a1ca1066d",
+      "candidate_0006da9d3047a2ad",
+      "candidate_001e530a457ed66b",
+      "candidate_50edb6132ebb8519",
+      "candidate_00030b8165be0a35",
+      "candidate_98144b2702f71aa1",
+      "candidate_50edb6132ebb8519",
+      "candidate_0375a14e14d6378b"
+    ],
+    [
+      "candidate_001ebb9a1ca1066d",
+      "candidate_0000065babcabdfc",
+      "candidate_000a4fdcfcf04e59",
+      "candidate_001e8e9ec1af39cf",
+      "candidate_00014bad665432ab",
+      "candidate_001540bda681aca7",
+      "candidate_0006da9d3047a2ad",
+      "candidate_001e530a457ed66b"
+    ],
+    [
+      "candidate_000399513c4cf750",
+      "candidate_013cfac02989d26d",
+      "candidate_98144b2702f71aa1",
+      "candidate_0375a14e14d6378b",
+      "candidate_00014bad665432ab",
+      "candidate_00030b8165be0a35",
+      "candidate_013cfac02989d26d",
+      "candidate_50edb6132ebb8519"
+    ],
+    [
+      "candidate_001e530a457ed66b",
+      "candidate_0006da9d3047a2ad",
+      "candidate_000399513c4cf750",
+      "candidate_001e8e9ec1af39cf",
+      "candidate_0000065babcabdfc",
+      "candidate_000a4fdcfcf04e59",
+      "candidate_001540bda681aca7",
+      "candidate_001ebb9a1ca1066d"
+    ],
+    [
+      "candidate_000399513c4cf750",
+      "candidate_50edb6132ebb8519",
+      "candidate_0000065babcabdfc",
+      "candidate_001540bda681aca7",
+      "candidate_0375a14e14d6378b",
+      "candidate_013cfac02989d26d",
+      "candidate_98144b2702f71aa1",
+      "candidate_001e530a457ed66b"
+    ],
+    [
+      "candidate_00030b8165be0a35",
+      "candidate_00014bad665432ab",
+      "candidate_001ebb9a1ca1066d",
+      "candidate_000a4fdcfcf04e59",
+      "candidate_001e8e9ec1af39cf",
+      "candidate_0006da9d3047a2ad",
+      "candidate_98144b2702f71aa1",
+      "candidate_013cfac02989d26d"
+    ],
+    [
+      "candidate_50edb6132ebb8519",
+      "candidate_000a4fdcfcf04e59",
+      "candidate_0000065babcabdfc",
+      "candidate_00030b8165be0a35",
+      "candidate_001540bda681aca7",
+      "candidate_0006da9d3047a2ad",
+      "candidate_00014bad665432ab",
+      "candidate_001e8e9ec1af39cf"
+    ],
+    [
+      "candidate_001e530a457ed66b",
+      "candidate_000399513c4cf750",
+      "candidate_0375a14e14d6378b",
+      "candidate_001ebb9a1ca1066d",
+      "candidate_0006da9d3047a2ad",
+      "candidate_001540bda681aca7",
+      "candidate_0000065babcabdfc",
+      "candidate_001e530a457ed66b"
+    ],
+    [
+      "candidate_000399513c4cf750",
+      "candidate_00014bad665432ab",
+      "candidate_013cfac02989d26d",
+      "candidate_001ebb9a1ca1066d",
+      "candidate_0375a14e14d6378b",
+      "candidate_001e8e9ec1af39cf",
+      "candidate_00030b8165be0a35",
+      "candidate_98144b2702f71aa1"
+    ],
+    [
+      "candidate_000a4fdcfcf04e59",
+      "candidate_50edb6132ebb8519",
+      "candidate_00014bad665432ab",
+      "candidate_001ebb9a1ca1066d",
+      "candidate_001e8e9ec1af39cf",
+      "candidate_013cfac02989d26d",
+      "candidate_000399513c4cf750",
+      "candidate_000a4fdcfcf04e59"
+    ],
+    [
+      "candidate_001e530a457ed66b",
+      "candidate_0006da9d3047a2ad",
+      "candidate_0375a14e14d6378b",
+      "candidate_50edb6132ebb8519",
+      "candidate_0000065babcabdfc",
+      "candidate_98144b2702f71aa1",
+      "candidate_001540bda681aca7",
+      "candidate_00030b8165be0a35"
+    ],
+    [
+      "candidate_50edb6132ebb8519",
+      "candidate_0006da9d3047a2ad",
+      "candidate_001ebb9a1ca1066d",
+      "candidate_001e8e9ec1af39cf",
+      "candidate_000399513c4cf750",
+      "candidate_98144b2702f71aa1",
+      "candidate_001540bda681aca7",
+      "candidate_00014bad665432ab"
+    ],
+    [
+      "candidate_001e530a457ed66b",
+      "candidate_013cfac02989d26d",
+      "candidate_0000065babcabdfc",
+      "candidate_00030b8165be0a35",
+      "candidate_0375a14e14d6378b",
+      "candidate_000a4fdcfcf04e59",
+      "candidate_50edb6132ebb8519",
+      "candidate_000a4fdcfcf04e59"
+    ],
+    [
+      "candidate_00014bad665432ab",
+      "candidate_0375a14e14d6378b",
+      "candidate_001e530a457ed66b",
+      "candidate_001ebb9a1ca1066d",
+      "candidate_001540bda681aca7",
+      "candidate_001e8e9ec1af39cf",
+      "candidate_98144b2702f71aa1",
+      "candidate_000399513c4cf750"
+    ],
+    [
+      "candidate_0006da9d3047a2ad",
+      "candidate_00030b8165be0a35",
+      "candidate_013cfac02989d26d",
+      "candidate_0000065babcabdfc",
+      "candidate_0000065babcabdfc",
+      "candidate_001ebb9a1ca1066d",
+      "candidate_00030b8165be0a35",
+      "candidate_001540bda681aca7"
+    ],
+    [
+      "candidate_000a4fdcfcf04e59",
+      "candidate_50edb6132ebb8519",
+      "candidate_001e8e9ec1af39cf",
+      "candidate_001e530a457ed66b",
+      "candidate_00014bad665432ab",
+      "candidate_0006da9d3047a2ad",
+      "candidate_98144b2702f71aa1",
+      "candidate_000399513c4cf750"
+    ],
+    [
+      "candidate_013cfac02989d26d",
+      "candidate_0375a14e14d6378b",
+      "candidate_001e8e9ec1af39cf",
+      "candidate_00030b8165be0a35",
+      "candidate_50edb6132ebb8519",
+      "candidate_00014bad665432ab",
+      "candidate_001ebb9a1ca1066d",
+      "candidate_000399513c4cf750"
+    ],
+    [
+      "candidate_0006da9d3047a2ad",
+      "candidate_001e530a457ed66b",
+      "candidate_001540bda681aca7",
+      "candidate_0375a14e14d6378b",
+      "candidate_98144b2702f71aa1",
+      "candidate_000a4fdcfcf04e59",
+      "candidate_0000065babcabdfc",
+      "candidate_013cfac02989d26d"
+    ],
+    [
+      "candidate_000399513c4cf750",
+      "candidate_001e530a457ed66b",
+      "candidate_0375a14e14d6378b",
+      "candidate_98144b2702f71aa1",
+      "candidate_00014bad665432ab",
+      "candidate_0000065babcabdfc",
+      "candidate_001ebb9a1ca1066d",
+      "candidate_00030b8165be0a35"
+    ],
+    [
+      "candidate_013cfac02989d26d",
+      "candidate_50edb6132ebb8519",
+      "candidate_001e8e9ec1af39cf",
+      "candidate_0006da9d3047a2ad",
+      "candidate_001540bda681aca7",
+      "candidate_000a4fdcfcf04e59",
+      "candidate_001e8e9ec1af39cf",
+      "candidate_001e530a457ed66b"
+    ],
+    [
+      "candidate_013cfac02989d26d",
+      "candidate_0375a14e14d6378b",
+      "candidate_0006da9d3047a2ad",
+      "candidate_00014bad665432ab",
+      "candidate_0000065babcabdfc",
+      "candidate_001ebb9a1ca1066d",
+      "candidate_50edb6132ebb8519",
+      "candidate_000a4fdcfcf04e59"
+    ],
+    [
+      "candidate_001540bda681aca7",
+      "candidate_000399513c4cf750",
+      "candidate_98144b2702f71aa1",
+      "candidate_00030b8165be0a35",
+      "candidate_000399513c4cf750",
+      "candidate_0000065babcabdfc",
+      "candidate_0006da9d3047a2ad",
+      "candidate_001ebb9a1ca1066d"
+    ],
+    [
+      "candidate_00030b8165be0a35",
+      "candidate_98144b2702f71aa1",
+      "candidate_00014bad665432ab",
+      "candidate_0375a14e14d6378b",
+      "candidate_013cfac02989d26d",
+      "candidate_000a4fdcfcf04e59",
+      "candidate_001540bda681aca7",
+      "candidate_50edb6132ebb8519"
+    ],
+    [
+      "candidate_001e530a457ed66b",
+      "candidate_001e8e9ec1af39cf",
+      "candidate_000a4fdcfcf04e59",
+      "candidate_50edb6132ebb8519",
+      "candidate_0375a14e14d6378b",
+      "candidate_001e8e9ec1af39cf",
+      "candidate_0000065babcabdfc",
+      "candidate_001ebb9a1ca1066d"
+    ],
+    [
+      "candidate_0006da9d3047a2ad",
+      "candidate_001e530a457ed66b",
+      "candidate_013cfac02989d26d",
+      "candidate_00030b8165be0a35",
+      "candidate_98144b2702f71aa1",
+      "candidate_00014bad665432ab",
+      "candidate_001540bda681aca7",
+      "candidate_000399513c4cf750"
+    ],
+    [
+      "candidate_0375a14e14d6378b",
+      "candidate_0000065babcabdfc",
+      "candidate_000a4fdcfcf04e59",
+      "candidate_000399513c4cf750",
+      "candidate_001540bda681aca7",
+      "candidate_001e8e9ec1af39cf",
+      "candidate_001ebb9a1ca1066d",
+      "candidate_98144b2702f71aa1"
+    ],
+    [
+      "candidate_00014bad665432ab",
+      "candidate_0006da9d3047a2ad",
+      "candidate_001e530a457ed66b",
+      "candidate_013cfac02989d26d",
+      "candidate_50edb6132ebb8519",
+      "candidate_00030b8165be0a35",
+      "candidate_001540bda681aca7",
+      "candidate_001e530a457ed66b"
+    ],
+    [
+      "candidate_013cfac02989d26d",
+      "candidate_0375a14e14d6378b",
+      "candidate_000399513c4cf750",
+      "candidate_0006da9d3047a2ad",
+      "candidate_00014bad665432ab",
+      "candidate_00030b8165be0a35",
+      "candidate_001ebb9a1ca1066d",
+      "candidate_98144b2702f71aa1"
+    ],
+    [
+      "candidate_0000065babcabdfc",
+      "candidate_001e8e9ec1af39cf",
+      "candidate_50edb6132ebb8519",
+      "candidate_000a4fdcfcf04e59",
+      "candidate_98144b2702f71aa1",
+      "candidate_001540bda681aca7",
+      "candidate_001e530a457ed66b",
+      "candidate_000a4fdcfcf04e59"
+    ],
+    [
+      "candidate_000399513c4cf750",
+      "candidate_50edb6132ebb8519",
+      "candidate_00030b8165be0a35",
+      "candidate_013cfac02989d26d",
+      "candidate_0375a14e14d6378b",
+      "candidate_001ebb9a1ca1066d",
+      "candidate_001e8e9ec1af39cf",
+      "candidate_0000065babcabdfc"
+    ],
+    [
+      "candidate_00014bad665432ab",
+      "candidate_0006da9d3047a2ad",
+      "candidate_00030b8165be0a35",
+      "candidate_001e530a457ed66b",
+      "candidate_000a4fdcfcf04e59",
+      "candidate_50edb6132ebb8519",
+      "candidate_000399513c4cf750",
+      "candidate_0000065babcabdfc"
+    ],
+    [
+      "candidate_00014bad665432ab",
+      "candidate_001ebb9a1ca1066d",
+      "candidate_0006da9d3047a2ad",
+      "candidate_001e8e9ec1af39cf",
+      "candidate_0375a14e14d6378b",
+      "candidate_98144b2702f71aa1",
+      "candidate_013cfac02989d26d",
+      "candidate_001540bda681aca7"
+    ],
+    [
+      "candidate_000399513c4cf750",
+      "candidate_0000065babcabdfc",
+      "candidate_0006da9d3047a2ad",
+      "candidate_013cfac02989d26d",
+      "candidate_00030b8165be0a35",
+      "candidate_98144b2702f71aa1",
+      "candidate_50edb6132ebb8519",
+      "candidate_001e8e9ec1af39cf"
+    ],
+    [
+      "candidate_0375a14e14d6378b",
+      "candidate_000a4fdcfcf04e59",
+      "candidate_001ebb9a1ca1066d",
+      "candidate_001540bda681aca7",
+      "candidate_001e530a457ed66b",
+      "candidate_00014bad665432ab",
+      "candidate_50edb6132ebb8519",
+      "candidate_001e530a457ed66b"
+    ],
+    [
+      "candidate_0375a14e14d6378b",
+      "candidate_00014bad665432ab",
+      "candidate_98144b2702f71aa1",
+      "candidate_001e8e9ec1af39cf",
+      "candidate_0006da9d3047a2ad",
+      "candidate_000399513c4cf750",
+      "candidate_000a4fdcfcf04e59",
+      "candidate_001540bda681aca7"
+    ],
+    [
+      "candidate_0000065babcabdfc",
+      "candidate_013cfac02989d26d",
+      "candidate_00030b8165be0a35",
+      "candidate_001ebb9a1ca1066d",
+      "candidate_000a4fdcfcf04e59",
+      "candidate_013cfac02989d26d",
+      "candidate_50edb6132ebb8519",
+      "candidate_0000065babcabdfc"
+    ],
+    [
+      "candidate_001e530a457ed66b",
+      "candidate_001540bda681aca7",
+      "candidate_001ebb9a1ca1066d",
+      "candidate_001e8e9ec1af39cf",
+      "candidate_0006da9d3047a2ad",
+      "candidate_00030b8165be0a35",
+      "candidate_000399513c4cf750",
+      "candidate_0375a14e14d6378b"
+    ],
+    [
+      "candidate_98144b2702f71aa1",
+      "candidate_00014bad665432ab",
+      "candidate_0375a14e14d6378b",
+      "candidate_50edb6132ebb8519",
+      "candidate_001e8e9ec1af39cf",
+      "candidate_001e530a457ed66b",
+      "candidate_001ebb9a1ca1066d",
+      "candidate_001540bda681aca7"
+    ],
+    [
+      "candidate_013cfac02989d26d",
+      "candidate_000399513c4cf750",
+      "candidate_0006da9d3047a2ad",
+      "candidate_98144b2702f71aa1",
+      "candidate_00030b8165be0a35",
+      "candidate_0000065babcabdfc",
+      "candidate_00014bad665432ab",
+      "candidate_000a4fdcfcf04e59"
+    ],
+    [
+      "candidate_013cfac02989d26d",
+      "candidate_0000065babcabdfc",
+      "candidate_50edb6132ebb8519",
+      "candidate_000399513c4cf750",
+      "candidate_001e8e9ec1af39cf",
+      "candidate_000a4fdcfcf04e59",
+      "candidate_00014bad665432ab",
+      "candidate_001ebb9a1ca1066d"
+    ],
+    [
+      "candidate_00030b8165be0a35",
+      "candidate_001540bda681aca7",
+      "candidate_0006da9d3047a2ad",
+      "candidate_0375a14e14d6378b",
+      "candidate_98144b2702f71aa1",
+      "candidate_001e530a457ed66b",
+      "candidate_50edb6132ebb8519",
+      "candidate_0375a14e14d6378b"
+    ],
+    [
+      "candidate_001e530a457ed66b",
+      "candidate_001ebb9a1ca1066d",
+      "candidate_0000065babcabdfc",
+      "candidate_013cfac02989d26d",
+      "candidate_001e8e9ec1af39cf",
+      "candidate_00030b8165be0a35",
+      "candidate_00014bad665432ab",
+      "candidate_000a4fdcfcf04e59"
+    ],
+    [
+      "candidate_0006da9d3047a2ad",
+      "candidate_001540bda681aca7",
+      "candidate_98144b2702f71aa1",
+      "candidate_000399513c4cf750",
+      "candidate_001e530a457ed66b",
+      "candidate_0006da9d3047a2ad",
+      "candidate_001540bda681aca7",
+      "candidate_0000065babcabdfc"
+    ],
+    [
+      "candidate_0375a14e14d6378b",
+      "candidate_000a4fdcfcf04e59",
+      "candidate_50edb6132ebb8519",
+      "candidate_98144b2702f71aa1",
+      "candidate_001e8e9ec1af39cf",
+      "candidate_001ebb9a1ca1066d",
+      "candidate_000399513c4cf750",
+      "candidate_00030b8165be0a35"
+    ],
+    [
+      "candidate_013cfac02989d26d",
+      "candidate_00014bad665432ab",
+      "candidate_001ebb9a1ca1066d",
+      "candidate_001540bda681aca7",
+      "candidate_0006da9d3047a2ad",
+      "candidate_00014bad665432ab",
+      "candidate_0000065babcabdfc",
+      "candidate_0375a14e14d6378b"
+    ],
+    [
+      "candidate_50edb6132ebb8519",
+      "candidate_001e8e9ec1af39cf",
+      "candidate_001e530a457ed66b",
+      "candidate_000399513c4cf750",
+      "candidate_00030b8165be0a35",
+      "candidate_013cfac02989d26d",
+      "candidate_000a4fdcfcf04e59",
+      "candidate_98144b2702f71aa1"
+    ],
+    [
+      "candidate_001540bda681aca7",
+      "candidate_98144b2702f71aa1",
+      "candidate_00014bad665432ab",
+      "candidate_0375a14e14d6378b",
+      "candidate_001e8e9ec1af39cf",
+      "candidate_001ebb9a1ca1066d",
+      "candidate_00030b8165be0a35",
+      "candidate_0006da9d3047a2ad"
+    ],
+    [
+      "candidate_000a4fdcfcf04e59",
+      "candidate_0000065babcabdfc",
+      "candidate_001e530a457ed66b",
+      "candidate_013cfac02989d26d",
+      "candidate_50edb6132ebb8519",
+      "candidate_000399513c4cf750",
+      "candidate_98144b2702f71aa1",
+      "candidate_001ebb9a1ca1066d"
+    ],
+    [
+      "candidate_00014bad665432ab",
+      "candidate_001540bda681aca7",
+      "candidate_0006da9d3047a2ad",
+      "candidate_000a4fdcfcf04e59",
+      "candidate_0000065babcabdfc",
+      "candidate_001e530a457ed66b",
+      "candidate_013cfac02989d26d",
+      "candidate_00030b8165be0a35"
+    ],
+    [
+      "candidate_000399513c4cf750",
+      "candidate_001e8e9ec1af39cf",
+      "candidate_50edb6132ebb8519",
+      "candidate_0375a14e14d6378b",
+      "candidate_013cfac02989d26d",
+      "candidate_00014bad665432ab",
+      "candidate_98144b2702f71aa1",
+      "candidate_001e530a457ed66b"
+    ],
+    [
+      "candidate_001ebb9a1ca1066d",
+      "candidate_000399513c4cf750",
+      "candidate_001e8e9ec1af39cf",
+      "candidate_0000065babcabdfc",
+      "candidate_50edb6132ebb8519",
+      "candidate_0006da9d3047a2ad",
+      "candidate_00030b8165be0a35",
+      "candidate_001540bda681aca7"
+    ],
+    [
+      "candidate_0375a14e14d6378b",
+      "candidate_000a4fdcfcf04e59",
+      "candidate_000399513c4cf750",
+      "candidate_50edb6132ebb8519",
+      "candidate_0375a14e14d6378b",
+      "candidate_00014bad665432ab",
+      "candidate_0000065babcabdfc",
+      "candidate_00030b8165be0a35"
+    ],
+    [
+      "candidate_000a4fdcfcf04e59",
+      "candidate_013cfac02989d26d",
+      "candidate_98144b2702f71aa1",
+      "candidate_001ebb9a1ca1066d",
+      "candidate_001e8e9ec1af39cf",
+      "candidate_001540bda681aca7",
+      "candidate_0006da9d3047a2ad",
+      "candidate_001e530a457ed66b"
+    ],
+    [
+      "candidate_001e530a457ed66b",
+      "candidate_0000065babcabdfc",
+      "candidate_000a4fdcfcf04e59",
+      "candidate_50edb6132ebb8519",
+      "candidate_00014bad665432ab",
+      "candidate_001540bda681aca7",
+      "candidate_00030b8165be0a35",
+      "candidate_0006da9d3047a2ad"
+    ],
+    [
+      "candidate_000399513c4cf750",
+      "candidate_001ebb9a1ca1066d",
+      "candidate_98144b2702f71aa1",
+      "candidate_0375a14e14d6378b",
+      "candidate_013cfac02989d26d",
+      "candidate_001e8e9ec1af39cf",
+      "candidate_000a4fdcfcf04e59",
+      "candidate_001e530a457ed66b"
+    ],
+    [
+      "candidate_001ebb9a1ca1066d",
+      "candidate_98144b2702f71aa1",
+      "candidate_00014bad665432ab",
+      "candidate_0000065babcabdfc",
+      "candidate_0375a14e14d6378b",
+      "candidate_50edb6132ebb8519",
+      "candidate_000399513c4cf750",
+      "candidate_0006da9d3047a2ad"
+    ],
+    [
+      "candidate_001e8e9ec1af39cf",
+      "candidate_013cfac02989d26d",
+      "candidate_00030b8165be0a35",
+      "candidate_001540bda681aca7",
+      "candidate_001e530a457ed66b",
+      "candidate_013cfac02989d26d",
+      "candidate_50edb6132ebb8519",
+      "candidate_0000065babcabdfc"
+    ],
+    [
+      "candidate_00014bad665432ab",
+      "candidate_00030b8165be0a35",
+      "candidate_000a4fdcfcf04e59",
+      "candidate_0375a14e14d6378b",
+      "candidate_001540bda681aca7",
+      "candidate_98144b2702f71aa1",
+      "candidate_001e8e9ec1af39cf",
+      "candidate_001ebb9a1ca1066d"
+    ],
+    [
+      "candidate_0006da9d3047a2ad",
+      "candidate_000399513c4cf750",
+      "candidate_001540bda681aca7",
+      "candidate_001e530a457ed66b",
+      "candidate_0375a14e14d6378b",
+      "candidate_00014bad665432ab",
+      "candidate_0006da9d3047a2ad",
+      "candidate_98144b2702f71aa1"
+    ],
+    [
+      "candidate_000a4fdcfcf04e59",
+      "candidate_00030b8165be0a35",
+      "candidate_013cfac02989d26d",
+      "candidate_001ebb9a1ca1066d",
+      "candidate_001e8e9ec1af39cf",
+      "candidate_000399513c4cf750",
+      "candidate_0000065babcabdfc",
+      "candidate_50edb6132ebb8519"
+    ],
+    [
+      "candidate_98144b2702f71aa1",
+      "candidate_000a4fdcfcf04e59",
+      "candidate_0000065babcabdfc",
+      "candidate_001e530a457ed66b",
+      "candidate_0006da9d3047a2ad",
+      "candidate_013cfac02989d26d",
+      "candidate_001ebb9a1ca1066d",
+      "candidate_000399513c4cf750"
+    ],
+    [
+      "candidate_00014bad665432ab",
+      "candidate_001540bda681aca7",
+      "candidate_50edb6132ebb8519",
+      "candidate_001e8e9ec1af39cf",
+      "candidate_0375a14e14d6378b",
+      "candidate_00030b8165be0a35",
+      "candidate_013cfac02989d26d",
+      "candidate_001540bda681aca7"
+    ],
+    [
+      "candidate_0006da9d3047a2ad",
+      "candidate_00014bad665432ab",
+      "candidate_98144b2702f71aa1",
+      "candidate_000a4fdcfcf04e59",
+      "candidate_0375a14e14d6378b",
+      "candidate_000399513c4cf750",
+      "candidate_001ebb9a1ca1066d",
+      "candidate_001e530a457ed66b"
+    ],
+    [
+      "candidate_00030b8165be0a35",
+      "candidate_0000065babcabdfc",
+      "candidate_50edb6132ebb8519",
+      "candidate_001e8e9ec1af39cf",
+      "candidate_50edb6132ebb8519",
+      "candidate_001e8e9ec1af39cf",
+      "candidate_000399513c4cf750",
+      "candidate_001e530a457ed66b"
+    ],
+    [
+      "candidate_0006da9d3047a2ad",
+      "candidate_00030b8165be0a35",
+      "candidate_98144b2702f71aa1",
+      "candidate_001ebb9a1ca1066d",
+      "candidate_0000065babcabdfc",
+      "candidate_0375a14e14d6378b",
+      "candidate_013cfac02989d26d",
+      "candidate_000a4fdcfcf04e59"
+    ],
+    [
+      "candidate_001540bda681aca7",
+      "candidate_00014bad665432ab",
+      "candidate_013cfac02989d26d",
+      "candidate_000399513c4cf750",
+      "candidate_001e8e9ec1af39cf",
+      "candidate_98144b2702f71aa1",
+      "candidate_001ebb9a1ca1066d",
+      "candidate_001540bda681aca7"
+    ],
+    [
+      "candidate_0000065babcabdfc",
+      "candidate_00014bad665432ab",
+      "candidate_0375a14e14d6378b",
+      "candidate_00030b8165be0a35",
+      "candidate_50edb6132ebb8519",
+      "candidate_001e530a457ed66b",
+      "candidate_0006da9d3047a2ad",
+      "candidate_000a4fdcfcf04e59"
+    ],
+    [
+      "candidate_0000065babcabdfc",
+      "candidate_0375a14e14d6378b",
+      "candidate_000a4fdcfcf04e59",
+      "candidate_001e8e9ec1af39cf",
+      "candidate_013cfac02989d26d",
+      "candidate_0006da9d3047a2ad",
+      "candidate_000399513c4cf750",
+      "candidate_00014bad665432ab"
+    ],
+    [
+      "candidate_98144b2702f71aa1",
+      "candidate_50edb6132ebb8519",
+      "candidate_001540bda681aca7",
+      "candidate_00030b8165be0a35",
+      "candidate_001e530a457ed66b",
+      "candidate_001ebb9a1ca1066d",
+      "candidate_0006da9d3047a2ad",
+      "candidate_001e8e9ec1af39cf"
+    ],
+    [
+      "candidate_98144b2702f71aa1",
+      "candidate_001540bda681aca7",
+      "candidate_000a4fdcfcf04e59",
+      "candidate_013cfac02989d26d",
+      "candidate_00014bad665432ab",
+      "candidate_50edb6132ebb8519",
+      "candidate_0375a14e14d6378b",
+      "candidate_001ebb9a1ca1066d"
+    ],
+    [
+      "candidate_00030b8165be0a35",
+      "candidate_000399513c4cf750",
+      "candidate_0000065babcabdfc",
+      "candidate_001e530a457ed66b",
+      "candidate_50edb6132ebb8519",
+      "candidate_0006da9d3047a2ad",
+      "candidate_000399513c4cf750",
+      "candidate_0000065babcabdfc"
+    ],
+    [
+      "candidate_001ebb9a1ca1066d",
+      "candidate_000a4fdcfcf04e59",
+      "candidate_00014bad665432ab",
+      "candidate_001e8e9ec1af39cf",
+      "candidate_00030b8165be0a35",
+      "candidate_013cfac02989d26d",
+      "candidate_98144b2702f71aa1",
+      "candidate_0375a14e14d6378b"
+    ],
+    [
+      "candidate_001540bda681aca7",
+      "candidate_001e530a457ed66b",
+      "candidate_001e8e9ec1af39cf",
+      "candidate_000a4fdcfcf04e59",
+      "candidate_50edb6132ebb8519",
+      "candidate_00014bad665432ab",
+      "candidate_000399513c4cf750",
+      "candidate_0375a14e14d6378b"
+    ],
+    [
+      "candidate_001ebb9a1ca1066d",
+      "candidate_0000065babcabdfc",
+      "candidate_001e530a457ed66b",
+      "candidate_013cfac02989d26d",
+      "candidate_98144b2702f71aa1",
+      "candidate_0006da9d3047a2ad",
+      "candidate_00030b8165be0a35",
+      "candidate_001540bda681aca7"
+    ],
+    [
+      "candidate_001e8e9ec1af39cf",
+      "candidate_0375a14e14d6378b",
+      "candidate_00030b8165be0a35",
+      "candidate_98144b2702f71aa1",
+      "candidate_013cfac02989d26d",
+      "candidate_001ebb9a1ca1066d",
+      "candidate_0000065babcabdfc",
+      "candidate_50edb6132ebb8519"
+    ],
+    [
+      "candidate_000399513c4cf750",
+      "candidate_001e530a457ed66b",
+      "candidate_00014bad665432ab",
+      "candidate_001540bda681aca7",
+      "candidate_000a4fdcfcf04e59",
+      "candidate_0006da9d3047a2ad",
+      "candidate_50edb6132ebb8519",
+      "candidate_0006da9d3047a2ad"
+    ],
+    [
+      "candidate_001ebb9a1ca1066d",
+      "candidate_000399513c4cf750",
+      "candidate_0375a14e14d6378b",
+      "candidate_0000065babcabdfc",
+      "candidate_98144b2702f71aa1",
+      "candidate_001540bda681aca7",
+      "candidate_001e8e9ec1af39cf",
+      "candidate_000a4fdcfcf04e59"
+    ],
+    [
+      "candidate_013cfac02989d26d",
+      "candidate_00014bad665432ab",
+      "candidate_00030b8165be0a35",
+      "candidate_001e530a457ed66b",
+      "candidate_000399513c4cf750",
+      "candidate_0000065babcabdfc",
+      "candidate_001ebb9a1ca1066d",
+      "candidate_001e530a457ed66b"
+    ],
+    [
+      "candidate_0375a14e14d6378b",
+      "candidate_001e8e9ec1af39cf",
+      "candidate_000a4fdcfcf04e59",
+      "candidate_013cfac02989d26d",
+      "candidate_00030b8165be0a35",
+      "candidate_00014bad665432ab",
+      "candidate_50edb6132ebb8519",
+      "candidate_001540bda681aca7"
+    ],
+    [
+      "candidate_0006da9d3047a2ad",
+      "candidate_98144b2702f71aa1",
+      "candidate_000399513c4cf750",
+      "candidate_001540bda681aca7",
+      "candidate_0000065babcabdfc",
+      "candidate_98144b2702f71aa1",
+      "candidate_000a4fdcfcf04e59",
+      "candidate_013cfac02989d26d"
+    ],
+    [
+      "candidate_50edb6132ebb8519",
+      "candidate_0006da9d3047a2ad",
+      "candidate_001ebb9a1ca1066d",
+      "candidate_00030b8165be0a35",
+      "candidate_0375a14e14d6378b",
+      "candidate_00014bad665432ab",
+      "candidate_001e8e9ec1af39cf",
+      "candidate_001e530a457ed66b"
+    ],
+    [
+      "candidate_50edb6132ebb8519",
+      "candidate_001ebb9a1ca1066d",
+      "candidate_0006da9d3047a2ad",
+      "candidate_98144b2702f71aa1",
+      "candidate_013cfac02989d26d",
+      "candidate_0000065babcabdfc",
+      "candidate_001e530a457ed66b",
+      "candidate_000a4fdcfcf04e59"
+    ],
+    [
+      "candidate_001540bda681aca7",
+      "candidate_001e8e9ec1af39cf",
+      "candidate_00014bad665432ab",
+      "candidate_000399513c4cf750",
+      "candidate_00030b8165be0a35",
+      "candidate_0375a14e14d6378b",
+      "candidate_001540bda681aca7",
+      "candidate_0000065babcabdfc"
+    ],
+    [
+      "candidate_00030b8165be0a35",
+      "candidate_0006da9d3047a2ad",
+      "candidate_013cfac02989d26d",
+      "candidate_00014bad665432ab",
+      "candidate_001ebb9a1ca1066d",
+      "candidate_000399513c4cf750",
+      "candidate_98144b2702f71aa1",
+      "candidate_0375a14e14d6378b"
+    ],
+    [
+      "candidate_001e8e9ec1af39cf",
+      "candidate_50edb6132ebb8519",
+      "candidate_001e530a457ed66b",
+      "candidate_000a4fdcfcf04e59",
+      "candidate_000a4fdcfcf04e59",
+      "candidate_98144b2702f71aa1",
+      "candidate_0375a14e14d6378b",
+      "candidate_001ebb9a1ca1066d"
+    ],
+    [
+      "candidate_0006da9d3047a2ad",
+      "candidate_001e530a457ed66b",
+      "candidate_001540bda681aca7",
+      "candidate_00014bad665432ab",
+      "candidate_001e8e9ec1af39cf",
+      "candidate_50edb6132ebb8519",
+      "candidate_000399513c4cf750",
+      "candidate_013cfac02989d26d"
+    ],
+    [
+      "candidate_0000065babcabdfc",
+      "candidate_00030b8165be0a35",
+      "candidate_001ebb9a1ca1066d",
+      "candidate_00014bad665432ab",
+      "candidate_00030b8165be0a35",
+      "candidate_0006da9d3047a2ad",
+      "candidate_000399513c4cf750",
+      "candidate_50edb6132ebb8519"
+    ],
+    [
+      "candidate_0375a14e14d6378b",
+      "candidate_013cfac02989d26d",
+      "candidate_000a4fdcfcf04e59",
+      "candidate_001e8e9ec1af39cf",
+      "candidate_001540bda681aca7",
+      "candidate_001e530a457ed66b",
+      "candidate_98144b2702f71aa1",
+      "candidate_0000065babcabdfc"
+    ],
+    [
+      "candidate_001540bda681aca7",
+      "candidate_001e530a457ed66b",
+      "candidate_0375a14e14d6378b",
+      "candidate_001ebb9a1ca1066d",
+      "candidate_50edb6132ebb8519",
+      "candidate_00014bad665432ab",
+      "candidate_013cfac02989d26d",
+      "candidate_0006da9d3047a2ad"
+    ],
+    [
+      "candidate_000399513c4cf750",
+      "candidate_000a4fdcfcf04e59",
+      "candidate_98144b2702f71aa1",
+      "candidate_0000065babcabdfc",
+      "candidate_001e8e9ec1af39cf",
+      "candidate_00030b8165be0a35",
+      "candidate_013cfac02989d26d",
+      "candidate_50edb6132ebb8519"
+    ],
+    [
+      "candidate_0006da9d3047a2ad",
+      "candidate_001e530a457ed66b",
+      "candidate_000a4fdcfcf04e59",
+      "candidate_0000065babcabdfc",
+      "candidate_98144b2702f71aa1",
+      "candidate_001ebb9a1ca1066d",
+      "candidate_001540bda681aca7",
+      "candidate_000399513c4cf750"
+    ],
+    [
+      "candidate_001e8e9ec1af39cf",
+      "candidate_00014bad665432ab",
+      "candidate_00030b8165be0a35",
+      "candidate_0375a14e14d6378b",
+      "candidate_0375a14e14d6378b",
+      "candidate_00030b8165be0a35",
+      "candidate_0006da9d3047a2ad",
+      "candidate_0000065babcabdfc"
+    ],
+    [
+      "candidate_000a4fdcfcf04e59",
+      "candidate_001ebb9a1ca1066d",
+      "candidate_50edb6132ebb8519",
+      "candidate_001e530a457ed66b",
+      "candidate_000399513c4cf750",
+      "candidate_013cfac02989d26d",
+      "candidate_00014bad665432ab",
+      "candidate_001e8e9ec1af39cf"
+    ],
+    [
+      "candidate_001540bda681aca7",
+      "candidate_98144b2702f71aa1",
+      "candidate_001540bda681aca7",
+      "candidate_50edb6132ebb8519",
+      "candidate_0006da9d3047a2ad",
+      "candidate_0000065babcabdfc",
+      "candidate_001ebb9a1ca1066d",
+      "candidate_0375a14e14d6378b"
+    ],
+    [
+      "candidate_001e530a457ed66b",
+      "candidate_000a4fdcfcf04e59",
+      "candidate_00014bad665432ab",
+      "candidate_98144b2702f71aa1",
+      "candidate_000399513c4cf750",
+      "candidate_00030b8165be0a35",
+      "candidate_013cfac02989d26d",
+      "candidate_001e8e9ec1af39cf"
+    ],
+    [
+      "candidate_00014bad665432ab",
+      "candidate_98144b2702f71aa1",
+      "candidate_001540bda681aca7",
+      "candidate_0006da9d3047a2ad",
+      "candidate_0000065babcabdfc",
+      "candidate_001e530a457ed66b",
+      "candidate_001e8e9ec1af39cf",
+      "candidate_00030b8165be0a35"
+    ],
+    [
+      "candidate_000399513c4cf750",
+      "candidate_50edb6132ebb8519",
+      "candidate_013cfac02989d26d",
+      "candidate_000a4fdcfcf04e59",
+      "candidate_0375a14e14d6378b",
+      "candidate_001ebb9a1ca1066d",
+      "candidate_50edb6132ebb8519",
+      "candidate_00030b8165be0a35"
+    ],
+    [
+      "candidate_001e8e9ec1af39cf",
+      "candidate_0375a14e14d6378b",
+      "candidate_001e530a457ed66b",
+      "candidate_0006da9d3047a2ad",
+      "candidate_000399513c4cf750",
+      "candidate_000a4fdcfcf04e59",
+      "candidate_001ebb9a1ca1066d",
+      "candidate_98144b2702f71aa1"
+    ],
+    [
+      "candidate_0000065babcabdfc",
+      "candidate_001540bda681aca7",
+      "candidate_013cfac02989d26d",
+      "candidate_00014bad665432ab",
+      "candidate_000a4fdcfcf04e59",
+      "candidate_001ebb9a1ca1066d",
+      "candidate_50edb6132ebb8519",
+      "candidate_0000065babcabdfc"
+    ],
+    [
+      "candidate_98144b2702f71aa1",
+      "candidate_001540bda681aca7",
+      "candidate_001e530a457ed66b",
+      "candidate_001e8e9ec1af39cf",
+      "candidate_00030b8165be0a35",
+      "candidate_0375a14e14d6378b",
+      "candidate_00014bad665432ab",
+      "candidate_013cfac02989d26d"
+    ],
+    [
+      "candidate_000399513c4cf750",
+      "candidate_0006da9d3047a2ad",
+      "candidate_001ebb9a1ca1066d",
+      "candidate_013cfac02989d26d",
+      "candidate_001540bda681aca7",
+      "candidate_000a4fdcfcf04e59",
+      "candidate_0000065babcabdfc",
+      "candidate_98144b2702f71aa1"
+    ],
+    [
+      "candidate_001e8e9ec1af39cf",
+      "candidate_0006da9d3047a2ad",
+      "candidate_00014bad665432ab",
+      "candidate_00030b8165be0a35",
+      "candidate_0375a14e14d6378b",
+      "candidate_001e530a457ed66b",
+      "candidate_000399513c4cf750",
+      "candidate_50edb6132ebb8519"
+    ],
+    [
+      "candidate_000a4fdcfcf04e59",
+      "candidate_000399513c4cf750",
+      "candidate_0006da9d3047a2ad",
+      "candidate_001540bda681aca7",
+      "candidate_0000065babcabdfc",
+      "candidate_001ebb9a1ca1066d",
+      "candidate_013cfac02989d26d",
+      "candidate_0375a14e14d6378b"
+    ],
+    [
+      "candidate_98144b2702f71aa1",
+      "candidate_00014bad665432ab",
+      "candidate_001e530a457ed66b",
+      "candidate_001e8e9ec1af39cf",
+      "candidate_50edb6132ebb8519",
+      "candidate_00030b8165be0a35",
+      "candidate_0006da9d3047a2ad",
+      "candidate_0000065babcabdfc"
+    ],
+    [
+      "candidate_00014bad665432ab",
+      "candidate_001540bda681aca7",
+      "candidate_001ebb9a1ca1066d",
+      "candidate_001e530a457ed66b",
+      "candidate_013cfac02989d26d",
+      "candidate_98144b2702f71aa1",
+      "candidate_001e8e9ec1af39cf",
+      "candidate_0375a14e14d6378b"
+    ],
+    [
+      "candidate_00030b8165be0a35",
+      "candidate_000399513c4cf750",
+      "candidate_000a4fdcfcf04e59",
+      "candidate_50edb6132ebb8519",
+      "candidate_00014bad665432ab",
+      "candidate_001e530a457ed66b",
+      "candidate_000a4fdcfcf04e59",
+      "candidate_50edb6132ebb8519"
+    ],
+    [
+      "candidate_001ebb9a1ca1066d",
+      "candidate_98144b2702f71aa1",
+      "candidate_000399513c4cf750",
+      "candidate_00030b8165be0a35",
+      "candidate_0375a14e14d6378b",
+      "candidate_001540bda681aca7",
+      "candidate_0000065babcabdfc",
+      "candidate_0006da9d3047a2ad"
+    ],
+    [
+      "candidate_013cfac02989d26d",
+      "candidate_001e8e9ec1af39cf",
+      "candidate_001ebb9a1ca1066d",
+      "candidate_001540bda681aca7",
+      "candidate_001e530a457ed66b",
+      "candidate_50edb6132ebb8519",
+      "candidate_0000065babcabdfc",
+      "candidate_013cfac02989d26d"
+    ],
+    [
+      "candidate_000399513c4cf750",
+      "candidate_001e8e9ec1af39cf",
+      "candidate_0375a14e14d6378b",
+      "candidate_00014bad665432ab",
+      "candidate_000a4fdcfcf04e59",
+      "candidate_0006da9d3047a2ad",
+      "candidate_00030b8165be0a35",
+      "candidate_98144b2702f71aa1"
+    ],
+    [
+      "candidate_001e8e9ec1af39cf",
+      "candidate_013cfac02989d26d",
+      "candidate_00014bad665432ab",
+      "candidate_000399513c4cf750",
+      "candidate_001ebb9a1ca1066d",
+      "candidate_0000065babcabdfc",
+      "candidate_001540bda681aca7",
+      "candidate_001e530a457ed66b"
+    ],
+    [
+      "candidate_50edb6132ebb8519",
+      "candidate_000a4fdcfcf04e59",
+      "candidate_0006da9d3047a2ad",
+      "candidate_00030b8165be0a35",
+      "candidate_0375a14e14d6378b",
+      "candidate_98144b2702f71aa1",
+      "candidate_001540bda681aca7",
+      "candidate_00030b8165be0a35"
+    ],
+    [
+      "candidate_00014bad665432ab",
+      "candidate_50edb6132ebb8519",
+      "candidate_000399513c4cf750",
+      "candidate_000a4fdcfcf04e59",
+      "candidate_0000065babcabdfc",
+      "candidate_013cfac02989d26d",
+      "candidate_001ebb9a1ca1066d",
+      "candidate_001e8e9ec1af39cf"
+    ],
+    [
+      "candidate_98144b2702f71aa1",
+      "candidate_001e530a457ed66b",
+      "candidate_0006da9d3047a2ad",
+      "candidate_0375a14e14d6378b",
+      "candidate_013cfac02989d26d",
+      "candidate_98144b2702f71aa1",
+      "candidate_001540bda681aca7",
+      "candidate_00014bad665432ab"
+    ],
+    [
+      "candidate_001e8e9ec1af39cf",
+      "candidate_00030b8165be0a35",
+      "candidate_0006da9d3047a2ad",
+      "candidate_001ebb9a1ca1066d",
+      "candidate_50edb6132ebb8519",
+      "candidate_0375a14e14d6378b",
+      "candidate_000a4fdcfcf04e59",
+      "candidate_000399513c4cf750"
+    ],
+    [
+      "candidate_001e530a457ed66b",
+      "candidate_0000065babcabdfc",
+      "candidate_000a4fdcfcf04e59",
+      "candidate_00014bad665432ab",
+      "candidate_00030b8165be0a35",
+      "candidate_0006da9d3047a2ad",
+      "candidate_013cfac02989d26d",
+      "candidate_001ebb9a1ca1066d"
+    ],
+    [
+      "candidate_98144b2702f71aa1",
+      "candidate_001e8e9ec1af39cf",
+      "candidate_0375a14e14d6378b",
+      "candidate_001e530a457ed66b",
+      "candidate_001540bda681aca7",
+      "candidate_0000065babcabdfc",
+      "candidate_50edb6132ebb8519",
+      "candidate_000399513c4cf750"
+    ],
+    [
+      "candidate_000a4fdcfcf04e59",
+      "candidate_0000065babcabdfc",
+      "candidate_0375a14e14d6378b",
+      "candidate_98144b2702f71aa1",
+      "candidate_001540bda681aca7",
+      "candidate_0006da9d3047a2ad",
+      "candidate_00014bad665432ab",
+      "candidate_00030b8165be0a35"
+    ],
+    [
+      "candidate_000399513c4cf750",
+      "candidate_001e530a457ed66b",
+      "candidate_001ebb9a1ca1066d",
+      "candidate_013cfac02989d26d",
+      "candidate_50edb6132ebb8519",
+      "candidate_001e8e9ec1af39cf",
+      "candidate_001540bda681aca7",
+      "candidate_0000065babcabdfc"
+    ],
+    [
+      "candidate_98144b2702f71aa1",
+      "candidate_000a4fdcfcf04e59",
+      "candidate_50edb6132ebb8519",
+      "candidate_001e530a457ed66b",
+      "candidate_000399513c4cf750",
+      "candidate_00014bad665432ab",
+      "candidate_001e8e9ec1af39cf",
+      "candidate_0006da9d3047a2ad"
+    ],
+    [
+      "candidate_013cfac02989d26d",
+      "candidate_00030b8165be0a35",
+      "candidate_0375a14e14d6378b",
+      "candidate_001ebb9a1ca1066d",
+      "candidate_001ebb9a1ca1066d",
+      "candidate_0000065babcabdfc",
+      "candidate_98144b2702f71aa1",
+      "candidate_0375a14e14d6378b"
+    ],
+    [
+      "candidate_0006da9d3047a2ad",
+      "candidate_00014bad665432ab",
+      "candidate_50edb6132ebb8519",
+      "candidate_000a4fdcfcf04e59",
+      "candidate_013cfac02989d26d",
+      "candidate_00030b8165be0a35",
+      "candidate_000399513c4cf750",
+      "candidate_001e530a457ed66b"
+    ],
+    [
+      "candidate_001e8e9ec1af39cf",
+      "candidate_001540bda681aca7",
+      "candidate_013cfac02989d26d",
+      "candidate_50edb6132ebb8519",
+      "candidate_001ebb9a1ca1066d",
+      "candidate_000399513c4cf750",
+      "candidate_001e530a457ed66b",
+      "candidate_000a4fdcfcf04e59"
+    ],
+    [
+      "candidate_0000065babcabdfc",
+      "candidate_0375a14e14d6378b",
+      "candidate_001e8e9ec1af39cf",
+      "candidate_0006da9d3047a2ad",
+      "candidate_00030b8165be0a35",
+      "candidate_00014bad665432ab",
+      "candidate_001540bda681aca7",
+      "candidate_98144b2702f71aa1"
+    ],
+    [
+      "candidate_98144b2702f71aa1",
+      "candidate_0006da9d3047a2ad",
+      "candidate_000399513c4cf750",
+      "candidate_001e530a457ed66b",
+      "candidate_0000065babcabdfc",
+      "candidate_00014bad665432ab",
+      "candidate_50edb6132ebb8519",
+      "candidate_001540bda681aca7"
+    ],
+    [
+      "candidate_001e8e9ec1af39cf",
+      "candidate_000a4fdcfcf04e59",
+      "candidate_013cfac02989d26d",
+      "candidate_0375a14e14d6378b",
+      "candidate_00030b8165be0a35",
+      "candidate_001ebb9a1ca1066d",
+      "candidate_000399513c4cf750",
+      "candidate_0000065babcabdfc"
+    ],
+    [
+      "candidate_000a4fdcfcf04e59",
+      "candidate_50edb6132ebb8519",
+      "candidate_98144b2702f71aa1",
+      "candidate_00030b8165be0a35",
+      "candidate_013cfac02989d26d",
+      "candidate_001ebb9a1ca1066d",
+      "candidate_001540bda681aca7",
+      "candidate_0375a14e14d6378b"
+    ],
+    [
+      "candidate_00014bad665432ab",
+      "candidate_0006da9d3047a2ad",
+      "candidate_001e530a457ed66b",
+      "candidate_001e8e9ec1af39cf",
+      "candidate_013cfac02989d26d",
+      "candidate_001540bda681aca7",
+      "candidate_000a4fdcfcf04e59",
+      "candidate_000399513c4cf750"
+    ],
+    [
+      "candidate_001ebb9a1ca1066d",
+      "candidate_50edb6132ebb8519",
+      "candidate_0006da9d3047a2ad",
+      "candidate_00030b8165be0a35",
+      "candidate_0000065babcabdfc",
+      "candidate_98144b2702f71aa1",
+      "candidate_001e530a457ed66b",
+      "candidate_001e8e9ec1af39cf"
+    ],
+    [
+      "candidate_0375a14e14d6378b",
+      "candidate_00014bad665432ab",
+      "candidate_013cfac02989d26d",
+      "candidate_0375a14e14d6378b",
+      "candidate_0006da9d3047a2ad",
+      "candidate_00030b8165be0a35",
+      "candidate_0000065babcabdfc",
+      "candidate_00014bad665432ab"
+    ],
+    [
+      "candidate_000399513c4cf750",
+      "candidate_50edb6132ebb8519",
+      "candidate_001ebb9a1ca1066d",
+      "candidate_000a4fdcfcf04e59",
+      "candidate_001e530a457ed66b",
+      "candidate_001540bda681aca7",
+      "candidate_98144b2702f71aa1",
+      "candidate_001e8e9ec1af39cf"
+    ],
+    [
+      "candidate_001e8e9ec1af39cf",
+      "candidate_00030b8165be0a35",
+      "candidate_001e530a457ed66b",
+      "candidate_98144b2702f71aa1",
+      "candidate_000a4fdcfcf04e59",
+      "candidate_0375a14e14d6378b",
+      "candidate_001540bda681aca7",
+      "candidate_0000065babcabdfc"
+    ],
+    [
+      "candidate_50edb6132ebb8519",
+      "candidate_001ebb9a1ca1066d",
+      "candidate_00014bad665432ab",
+      "candidate_000399513c4cf750",
+      "candidate_0006da9d3047a2ad",
+      "candidate_013cfac02989d26d",
+      "candidate_000a4fdcfcf04e59",
+      "candidate_000399513c4cf750"
+    ],
+    [
+      "candidate_00014bad665432ab",
+      "candidate_0006da9d3047a2ad",
+      "candidate_0000065babcabdfc",
+      "candidate_00030b8165be0a35",
+      "candidate_001e8e9ec1af39cf",
+      "candidate_001540bda681aca7",
+      "candidate_98144b2702f71aa1",
+      "candidate_001e530a457ed66b"
+    ],
+    [
+      "candidate_0375a14e14d6378b",
+      "candidate_50edb6132ebb8519",
+      "candidate_001ebb9a1ca1066d",
+      "candidate_013cfac02989d26d",
+      "candidate_98144b2702f71aa1",
+      "candidate_00030b8165be0a35",
+      "candidate_001540bda681aca7",
+      "candidate_0006da9d3047a2ad"
+    ],
+    [
+      "candidate_001e530a457ed66b",
+      "candidate_000399513c4cf750",
+      "candidate_001ebb9a1ca1066d",
+      "candidate_0000065babcabdfc",
+      "candidate_50edb6132ebb8519",
+      "candidate_0375a14e14d6378b",
+      "candidate_000a4fdcfcf04e59",
+      "candidate_001e8e9ec1af39cf"
+    ],
+    [
+      "candidate_00014bad665432ab",
+      "candidate_013cfac02989d26d",
+      "candidate_98144b2702f71aa1",
+      "candidate_00014bad665432ab",
+      "candidate_001e530a457ed66b",
+      "candidate_0000065babcabdfc",
+      "candidate_50edb6132ebb8519",
+      "candidate_000a4fdcfcf04e59"
+    ],
+    [
+      "candidate_0375a14e14d6378b",
+      "candidate_000399513c4cf750",
+      "candidate_0006da9d3047a2ad",
+      "candidate_013cfac02989d26d",
+      "candidate_001e8e9ec1af39cf",
+      "candidate_00030b8165be0a35",
+      "candidate_001540bda681aca7",
+      "candidate_001ebb9a1ca1066d"
+    ],
+    [
+      "candidate_00014bad665432ab",
+      "candidate_0000065babcabdfc",
+      "candidate_013cfac02989d26d",
+      "candidate_001540bda681aca7",
+      "candidate_98144b2702f71aa1",
+      "candidate_0375a14e14d6378b",
+      "candidate_50edb6132ebb8519",
+      "candidate_000a4fdcfcf04e59"
+    ],
+    [
+      "candidate_001e530a457ed66b",
+      "candidate_00030b8165be0a35",
+      "candidate_001e8e9ec1af39cf",
+      "candidate_0006da9d3047a2ad",
+      "candidate_001ebb9a1ca1066d",
+      "candidate_000399513c4cf750",
+      "candidate_013cfac02989d26d",
+      "candidate_001e8e9ec1af39cf"
+    ],
+    [
+      "candidate_001540bda681aca7",
+      "candidate_00030b8165be0a35",
+      "candidate_001e530a457ed66b",
+      "candidate_0006da9d3047a2ad",
+      "candidate_50edb6132ebb8519",
+      "candidate_0375a14e14d6378b",
+      "candidate_00014bad665432ab",
+      "candidate_001ebb9a1ca1066d"
+    ],
+    [
+      "candidate_000a4fdcfcf04e59",
+      "candidate_0000065babcabdfc",
+      "candidate_98144b2702f71aa1",
+      "candidate_000399513c4cf750",
+      "candidate_0000065babcabdfc",
+      "candidate_00030b8165be0a35",
+      "candidate_000399513c4cf750",
+      "candidate_001540bda681aca7"
+    ],
+    [
+      "candidate_50edb6132ebb8519",
+      "candidate_001e8e9ec1af39cf",
+      "candidate_0006da9d3047a2ad",
+      "candidate_0375a14e14d6378b",
+      "candidate_00014bad665432ab",
+      "candidate_001ebb9a1ca1066d",
+      "candidate_000a4fdcfcf04e59",
+      "candidate_98144b2702f71aa1"
+    ],
+    [
+      "candidate_013cfac02989d26d",
+      "candidate_001e530a457ed66b",
+      "candidate_00030b8165be0a35",
+      "candidate_000399513c4cf750",
+      "candidate_000a4fdcfcf04e59",
+      "candidate_0006da9d3047a2ad",
+      "candidate_98144b2702f71aa1",
+      "candidate_50edb6132ebb8519"
+    ],
+    [
+      "candidate_0000065babcabdfc",
+      "candidate_001e530a457ed66b",
+      "candidate_001ebb9a1ca1066d",
+      "candidate_013cfac02989d26d",
+      "candidate_001540bda681aca7",
+      "candidate_001e8e9ec1af39cf",
+      "candidate_00014bad665432ab",
+      "candidate_0375a14e14d6378b"
+    ],
+    [
+      "candidate_001e530a457ed66b",
+      "candidate_50edb6132ebb8519",
+      "candidate_0000065babcabdfc",
+      "candidate_001ebb9a1ca1066d",
+      "candidate_000399513c4cf750",
+      "candidate_98144b2702f71aa1",
+      "candidate_013cfac02989d26d",
+      "candidate_000a4fdcfcf04e59"
+    ],
+    [
+      "candidate_001540bda681aca7",
+      "candidate_0375a14e14d6378b",
+      "candidate_00014bad665432ab",
+      "candidate_00030b8165be0a35",
+      "candidate_001e8e9ec1af39cf",
+      "candidate_0006da9d3047a2ad",
+      "candidate_001e530a457ed66b",
+      "candidate_00030b8165be0a35"
+    ],
+    [
+      "candidate_001e8e9ec1af39cf",
+      "candidate_0375a14e14d6378b",
+      "candidate_000a4fdcfcf04e59",
+      "candidate_0006da9d3047a2ad",
+      "candidate_50edb6132ebb8519",
+      "candidate_0000065babcabdfc",
+      "candidate_001ebb9a1ca1066d",
+      "candidate_98144b2702f71aa1"
+    ],
+    [
+      "candidate_00014bad665432ab",
+      "candidate_013cfac02989d26d",
+      "candidate_000399513c4cf750",
+      "candidate_001540bda681aca7",
+      "candidate_0006da9d3047a2ad",
+      "candidate_50edb6132ebb8519",
+      "candidate_001e530a457ed66b",
+      "candidate_00014bad665432ab"
+    ],
+    [
+      "candidate_00030b8165be0a35",
+      "candidate_001540bda681aca7",
+      "candidate_001e8e9ec1af39cf",
+      "candidate_000399513c4cf750",
+      "candidate_000a4fdcfcf04e59",
+      "candidate_0375a14e14d6378b",
+      "candidate_98144b2702f71aa1",
+      "candidate_0000065babcabdfc"
+    ],
+    [
+      "candidate_001ebb9a1ca1066d",
+      "candidate_013cfac02989d26d",
+      "candidate_000399513c4cf750",
+      "candidate_50edb6132ebb8519",
+      "candidate_98144b2702f71aa1",
+      "candidate_0375a14e14d6378b",
+      "candidate_000a4fdcfcf04e59",
+      "candidate_001e530a457ed66b"
+    ],
+    [
+      "candidate_001540bda681aca7",
+      "candidate_00014bad665432ab",
+      "candidate_001e8e9ec1af39cf",
+      "candidate_013cfac02989d26d",
+      "candidate_00030b8165be0a35",
+      "candidate_001ebb9a1ca1066d",
+      "candidate_0006da9d3047a2ad",
+      "candidate_0000065babcabdfc"
+    ],
+    [
+      "candidate_001540bda681aca7",
+      "candidate_0006da9d3047a2ad",
+      "candidate_0375a14e14d6378b",
+      "candidate_98144b2702f71aa1",
+      "candidate_0000065babcabdfc",
+      "candidate_001e530a457ed66b",
+      "candidate_001e8e9ec1af39cf",
+      "candidate_00014bad665432ab"
+    ],
+    [
+      "candidate_50edb6132ebb8519",
+      "candidate_013cfac02989d26d",
+      "candidate_000399513c4cf750",
+      "candidate_001ebb9a1ca1066d",
+      "candidate_000a4fdcfcf04e59",
+      "candidate_00030b8165be0a35",
+      "candidate_0000065babcabdfc",
+      "candidate_00030b8165be0a35"
+    ],
+    [
+      "candidate_001e8e9ec1af39cf",
+      "candidate_000a4fdcfcf04e59",
+      "candidate_0006da9d3047a2ad",
+      "candidate_013cfac02989d26d",
+      "candidate_98144b2702f71aa1",
+      "candidate_001540bda681aca7",
+      "candidate_001e530a457ed66b",
+      "candidate_001ebb9a1ca1066d"
+    ],
+    [
+      "candidate_0375a14e14d6378b",
+      "candidate_000399513c4cf750",
+      "candidate_00014bad665432ab",
+      "candidate_50edb6132ebb8519",
+      "candidate_98144b2702f71aa1",
+      "candidate_000a4fdcfcf04e59",
+      "candidate_000399513c4cf750",
+      "candidate_0375a14e14d6378b"
+    ],
+    [
+      "candidate_001540bda681aca7",
+      "candidate_0006da9d3047a2ad",
+      "candidate_001ebb9a1ca1066d",
+      "candidate_013cfac02989d26d",
+      "candidate_50edb6132ebb8519",
+      "candidate_0000065babcabdfc",
+      "candidate_001e530a457ed66b",
+      "candidate_00030b8165be0a35"
+    ],
+    [
+      "candidate_001e8e9ec1af39cf",
+      "candidate_00014bad665432ab",
+      "candidate_000a4fdcfcf04e59",
+      "candidate_50edb6132ebb8519",
+      "candidate_0375a14e14d6378b",
+      "candidate_000399513c4cf750",
+      "candidate_98144b2702f71aa1",
+      "candidate_001540bda681aca7"
+    ],
+    [
+      "candidate_001e8e9ec1af39cf",
+      "candidate_00014bad665432ab",
+      "candidate_0000065babcabdfc",
+      "candidate_001ebb9a1ca1066d",
+      "candidate_001e530a457ed66b",
+      "candidate_0006da9d3047a2ad",
+      "candidate_00030b8165be0a35",
+      "candidate_013cfac02989d26d"
+    ],
+    [
+      "candidate_001540bda681aca7",
+      "candidate_50edb6132ebb8519",
+      "candidate_00030b8165be0a35",
+      "candidate_0000065babcabdfc",
+      "candidate_98144b2702f71aa1",
+      "candidate_001e530a457ed66b",
+      "candidate_000399513c4cf750",
+      "candidate_001e8e9ec1af39cf"
+    ],
+    [
+      "candidate_013cfac02989d26d",
+      "candidate_0375a14e14d6378b",
+      "candidate_00014bad665432ab",
+      "candidate_000a4fdcfcf04e59",
+      "candidate_001ebb9a1ca1066d",
+      "candidate_0006da9d3047a2ad",
+      "candidate_00030b8165be0a35",
+      "candidate_50edb6132ebb8519"
+    ],
+    [
+      "candidate_013cfac02989d26d",
+      "candidate_0006da9d3047a2ad",
+      "candidate_98144b2702f71aa1",
+      "candidate_001540bda681aca7",
+      "candidate_001e530a457ed66b",
+      "candidate_000399513c4cf750",
+      "candidate_000a4fdcfcf04e59",
+      "candidate_0000065babcabdfc"
+    ],
+    [
+      "candidate_001ebb9a1ca1066d",
+      "candidate_001e8e9ec1af39cf",
+      "candidate_0375a14e14d6378b",
+      "candidate_00014bad665432ab",
+      "candidate_000a4fdcfcf04e59",
+      "candidate_00030b8165be0a35",
+      "candidate_50edb6132ebb8519",
+      "candidate_0006da9d3047a2ad"
+    ],
+    [
+      "candidate_98144b2702f71aa1",
+      "candidate_013cfac02989d26d",
+      "candidate_001e8e9ec1af39cf",
+      "candidate_0375a14e14d6378b",
+      "candidate_0000065babcabdfc",
+      "candidate_00014bad665432ab",
+      "candidate_001ebb9a1ca1066d",
+      "candidate_001540bda681aca7"
+    ],
+    [
+      "candidate_001e530a457ed66b",
+      "candidate_000399513c4cf750",
+      "candidate_001ebb9a1ca1066d",
+      "candidate_001e8e9ec1af39cf",
+      "candidate_000a4fdcfcf04e59",
+      "candidate_0006da9d3047a2ad",
+      "candidate_50edb6132ebb8519",
+      "candidate_001540bda681aca7"
+    ],
+    [
+      "candidate_0375a14e14d6378b",
+      "candidate_001e530a457ed66b",
+      "candidate_013cfac02989d26d",
+      "candidate_00030b8165be0a35",
+      "candidate_00014bad665432ab",
+      "candidate_98144b2702f71aa1",
+      "candidate_0000065babcabdfc",
+      "candidate_000399513c4cf750"
+    ],
+    [
+      "candidate_50edb6132ebb8519",
+      "candidate_98144b2702f71aa1",
+      "candidate_00030b8165be0a35",
+      "candidate_0006da9d3047a2ad",
+      "candidate_000399513c4cf750",
+      "candidate_001e530a457ed66b",
+      "candidate_0375a14e14d6378b",
+      "candidate_000a4fdcfcf04e59"
+    ],
+    [
+      "candidate_001540bda681aca7",
+      "candidate_013cfac02989d26d",
+      "candidate_0000065babcabdfc",
+      "candidate_001e8e9ec1af39cf",
+      "candidate_00014bad665432ab",
+      "candidate_001ebb9a1ca1066d",
+      "candidate_001e530a457ed66b",
+      "candidate_000a4fdcfcf04e59"
+    ],
+    [
+      "candidate_0000065babcabdfc",
+      "candidate_0375a14e14d6378b",
+      "candidate_001e8e9ec1af39cf",
+      "candidate_013cfac02989d26d",
+      "candidate_0006da9d3047a2ad",
+      "candidate_000399513c4cf750",
+      "candidate_00030b8165be0a35",
+      "candidate_98144b2702f71aa1"
+    ],
+    [
+      "candidate_001ebb9a1ca1066d",
+      "candidate_00014bad665432ab",
+      "candidate_001540bda681aca7",
+      "candidate_50edb6132ebb8519",
+      "candidate_0375a14e14d6378b",
+      "candidate_001e8e9ec1af39cf",
+      "candidate_50edb6132ebb8519",
+      "candidate_000a4fdcfcf04e59"
+    ],
+    [
+      "candidate_001ebb9a1ca1066d",
+      "candidate_0000065babcabdfc",
+      "candidate_001540bda681aca7",
+      "candidate_001e530a457ed66b",
+      "candidate_013cfac02989d26d",
+      "candidate_00014bad665432ab",
+      "candidate_98144b2702f71aa1",
+      "candidate_00030b8165be0a35"
+    ],
+    [
+      "candidate_0006da9d3047a2ad",
+      "candidate_000399513c4cf750",
+      "candidate_013cfac02989d26d",
+      "candidate_98144b2702f71aa1",
+      "candidate_0375a14e14d6378b",
+      "candidate_001e530a457ed66b",
+      "candidate_001540bda681aca7",
+      "candidate_000a4fdcfcf04e59"
+    ],
+    [
+      "candidate_001ebb9a1ca1066d",
+      "candidate_00014bad665432ab",
+      "candidate_00030b8165be0a35",
+      "candidate_50edb6132ebb8519",
+      "candidate_000399513c4cf750",
+      "candidate_0000065babcabdfc",
+      "candidate_001e8e9ec1af39cf",
+      "candidate_0006da9d3047a2ad"
+    ],
+    [
+      "candidate_013cfac02989d26d",
+      "candidate_00014bad665432ab",
+      "candidate_001ebb9a1ca1066d",
+      "candidate_001e8e9ec1af39cf",
+      "candidate_98144b2702f71aa1",
+      "candidate_0375a14e14d6378b",
+      "candidate_50edb6132ebb8519",
+      "candidate_001540bda681aca7"
+    ],
+    [
+      "candidate_000a4fdcfcf04e59",
+      "candidate_001e530a457ed66b",
+      "candidate_00030b8165be0a35",
+      "candidate_000399513c4cf750",
+      "candidate_0000065babcabdfc",
+      "candidate_0006da9d3047a2ad",
+      "candidate_001e8e9ec1af39cf",
+      "candidate_001ebb9a1ca1066d"
+    ],
+    [
+      "candidate_000399513c4cf750",
+      "candidate_013cfac02989d26d",
+      "candidate_000a4fdcfcf04e59",
+      "candidate_00030b8165be0a35",
+      "candidate_0000065babcabdfc",
+      "candidate_0375a14e14d6378b",
+      "candidate_0006da9d3047a2ad",
+      "candidate_98144b2702f71aa1"
+    ],
+    [
+      "candidate_00014bad665432ab",
+      "candidate_001e530a457ed66b",
+      "candidate_001540bda681aca7",
+      "candidate_50edb6132ebb8519",
+      "candidate_0375a14e14d6378b",
+      "candidate_001ebb9a1ca1066d",
+      "candidate_001e530a457ed66b",
+      "candidate_001e8e9ec1af39cf"
+    ],
+    [
+      "candidate_98144b2702f71aa1",
+      "candidate_00014bad665432ab",
+      "candidate_001540bda681aca7",
+      "candidate_013cfac02989d26d",
+      "candidate_00030b8165be0a35",
+      "candidate_000399513c4cf750",
+      "candidate_50edb6132ebb8519",
+      "candidate_000a4fdcfcf04e59"
+    ],
+    [
+      "candidate_0000065babcabdfc",
+      "candidate_0006da9d3047a2ad",
+      "candidate_013cfac02989d26d",
+      "candidate_001ebb9a1ca1066d",
+      "candidate_00030b8165be0a35",
+      "candidate_00014bad665432ab",
+      "candidate_000a4fdcfcf04e59",
+      "candidate_001e8e9ec1af39cf"
+    ],
+    [
+      "candidate_0006da9d3047a2ad",
+      "candidate_001540bda681aca7",
+      "candidate_001e530a457ed66b",
+      "candidate_0000065babcabdfc",
+      "candidate_98144b2702f71aa1",
+      "candidate_000399513c4cf750",
+      "candidate_50edb6132ebb8519",
+      "candidate_0375a14e14d6378b"
+    ],
+    [
+      "candidate_013cfac02989d26d",
+      "candidate_00014bad665432ab",
+      "candidate_0000065babcabdfc",
+      "candidate_50edb6132ebb8519",
+      "candidate_000399513c4cf750",
+      "candidate_000a4fdcfcf04e59",
+      "candidate_0006da9d3047a2ad",
+      "candidate_001e530a457ed66b"
+    ],
+    [
+      "candidate_0375a14e14d6378b",
+      "candidate_00030b8165be0a35",
+      "candidate_001e8e9ec1af39cf",
+      "candidate_001ebb9a1ca1066d",
+      "candidate_001540bda681aca7",
+      "candidate_98144b2702f71aa1",
+      "candidate_001e530a457ed66b",
+      "candidate_001ebb9a1ca1066d"
+    ],
+    [
+      "candidate_0006da9d3047a2ad",
+      "candidate_001e8e9ec1af39cf",
+      "candidate_0375a14e14d6378b",
+      "candidate_00030b8165be0a35",
+      "candidate_000a4fdcfcf04e59",
+      "candidate_98144b2702f71aa1",
+      "candidate_00014bad665432ab",
+      "candidate_50edb6132ebb8519"
+    ],
+    [
+      "candidate_001540bda681aca7",
+      "candidate_000399513c4cf750",
+      "candidate_0000065babcabdfc",
+      "candidate_013cfac02989d26d",
+      "candidate_000399513c4cf750",
+      "candidate_0000065babcabdfc",
+      "candidate_000a4fdcfcf04e59",
+      "candidate_00014bad665432ab"
+    ],
+    [
+      "candidate_00030b8165be0a35",
+      "candidate_001540bda681aca7",
+      "candidate_98144b2702f71aa1",
+      "candidate_50edb6132ebb8519",
+      "candidate_001e8e9ec1af39cf",
+      "candidate_001ebb9a1ca1066d",
+      "candidate_013cfac02989d26d",
+      "candidate_0006da9d3047a2ad"
+    ],
+    [
+      "candidate_001e530a457ed66b",
+      "candidate_0375a14e14d6378b",
+      "candidate_001e8e9ec1af39cf",
+      "candidate_001e530a457ed66b",
+      "candidate_0006da9d3047a2ad",
+      "candidate_00030b8165be0a35",
+      "candidate_0000065babcabdfc",
+      "candidate_000399513c4cf750"
+    ],
+    [
+      "candidate_001540bda681aca7",
+      "candidate_001ebb9a1ca1066d",
+      "candidate_98144b2702f71aa1",
+      "candidate_000a4fdcfcf04e59",
+      "candidate_0375a14e14d6378b",
+      "candidate_00014bad665432ab",
+      "candidate_50edb6132ebb8519",
+      "candidate_013cfac02989d26d"
+    ],
+    [
+      "candidate_000a4fdcfcf04e59",
+      "candidate_0006da9d3047a2ad",
+      "candidate_000399513c4cf750",
+      "candidate_98144b2702f71aa1",
+      "candidate_50edb6132ebb8519",
+      "candidate_0375a14e14d6378b",
+      "candidate_001540bda681aca7",
+      "candidate_013cfac02989d26d"
+    ],
+    [
+      "candidate_001e8e9ec1af39cf",
+      "candidate_00030b8165be0a35",
+      "candidate_0000065babcabdfc",
+      "candidate_001ebb9a1ca1066d",
+      "candidate_00014bad665432ab",
+      "candidate_001e530a457ed66b",
+      "candidate_0375a14e14d6378b",
+      "candidate_001e8e9ec1af39cf"
+    ],
+    [
+      "candidate_001ebb9a1ca1066d",
+      "candidate_0000065babcabdfc",
+      "candidate_013cfac02989d26d",
+      "candidate_001e530a457ed66b",
+      "candidate_00030b8165be0a35",
+      "candidate_001540bda681aca7",
+      "candidate_000399513c4cf750",
+      "candidate_00014bad665432ab"
+    ],
+    [
+      "candidate_0006da9d3047a2ad",
+      "candidate_000a4fdcfcf04e59",
+      "candidate_50edb6132ebb8519",
+      "candidate_98144b2702f71aa1",
+      "candidate_013cfac02989d26d",
+      "candidate_00030b8165be0a35",
+      "candidate_001e8e9ec1af39cf",
+      "candidate_001e530a457ed66b"
+    ],
+    [
+      "candidate_98144b2702f71aa1",
+      "candidate_0000065babcabdfc",
+      "candidate_001540bda681aca7",
+      "candidate_0375a14e14d6378b",
+      "candidate_000a4fdcfcf04e59",
+      "candidate_0006da9d3047a2ad",
+      "candidate_001ebb9a1ca1066d",
+      "candidate_50edb6132ebb8519"
+    ],
+    [
+      "candidate_00014bad665432ab",
+      "candidate_000399513c4cf750",
+      "candidate_013cfac02989d26d",
+      "candidate_001e8e9ec1af39cf",
+      "candidate_0375a14e14d6378b",
+      "candidate_001e530a457ed66b",
+      "candidate_98144b2702f71aa1",
+      "candidate_50edb6132ebb8519"
+    ],
+    [
+      "candidate_000a4fdcfcf04e59",
+      "candidate_000399513c4cf750",
+      "candidate_0006da9d3047a2ad",
+      "candidate_001ebb9a1ca1066d",
+      "candidate_00030b8165be0a35",
+      "candidate_0000065babcabdfc",
+      "candidate_00014bad665432ab",
+      "candidate_001540bda681aca7"
+    ],
+    [
+      "candidate_001540bda681aca7",
+      "candidate_001e8e9ec1af39cf",
+      "candidate_50edb6132ebb8519",
+      "candidate_000a4fdcfcf04e59",
+      "candidate_00030b8165be0a35",
+      "candidate_98144b2702f71aa1",
+      "candidate_0000065babcabdfc",
+      "candidate_0006da9d3047a2ad"
+    ],
+    [
+      "candidate_013cfac02989d26d",
+      "candidate_001ebb9a1ca1066d",
+      "candidate_0375a14e14d6378b",
+      "candidate_00014bad665432ab",
+      "candidate_000399513c4cf750",
+      "candidate_001e530a457ed66b",
+      "candidate_0000065babcabdfc",
+      "candidate_0006da9d3047a2ad"
+    ],
+    [
+      "candidate_0375a14e14d6378b",
+      "candidate_98144b2702f71aa1",
+      "candidate_001e530a457ed66b",
+      "candidate_013cfac02989d26d",
+      "candidate_001ebb9a1ca1066d",
+      "candidate_000399513c4cf750",
+      "candidate_001540bda681aca7",
+      "candidate_001e8e9ec1af39cf"
+    ],
+    [
+      "candidate_000a4fdcfcf04e59",
+      "candidate_50edb6132ebb8519",
+      "candidate_00030b8165be0a35",
+      "candidate_00014bad665432ab",
+      "candidate_98144b2702f71aa1",
+      "candidate_001540bda681aca7",
+      "candidate_00014bad665432ab",
+      "candidate_000399513c4cf750"
+    ],
+    [
+      "candidate_013cfac02989d26d",
+      "candidate_0375a14e14d6378b",
+      "candidate_001e530a457ed66b",
+      "candidate_0006da9d3047a2ad",
+      "candidate_000a4fdcfcf04e59",
+      "candidate_00030b8165be0a35",
+      "candidate_001ebb9a1ca1066d",
+      "candidate_001e8e9ec1af39cf"
+    ],
+    [
+      "candidate_0000065babcabdfc",
+      "candidate_50edb6132ebb8519",
+      "candidate_001e530a457ed66b",
+      "candidate_98144b2702f71aa1",
+      "candidate_0006da9d3047a2ad",
+      "candidate_0375a14e14d6378b",
+      "candidate_000399513c4cf750",
+      "candidate_50edb6132ebb8519"
+    ],
+    [
+      "candidate_001540bda681aca7",
+      "candidate_013cfac02989d26d",
+      "candidate_000a4fdcfcf04e59",
+      "candidate_00014bad665432ab",
+      "candidate_00030b8165be0a35",
+      "candidate_001ebb9a1ca1066d",
+      "candidate_0000065babcabdfc",
+      "candidate_001e8e9ec1af39cf"
+    ],
+    [
+      "candidate_000a4fdcfcf04e59",
+      "candidate_00030b8165be0a35",
+      "candidate_0000065babcabdfc",
+      "candidate_013cfac02989d26d",
+      "candidate_001e8e9ec1af39cf",
+      "candidate_001e530a457ed66b",
+      "candidate_0006da9d3047a2ad",
+      "candidate_50edb6132ebb8519"
+    ],
+    [
+      "candidate_0375a14e14d6378b",
+      "candidate_98144b2702f71aa1",
+      "candidate_000399513c4cf750",
+      "candidate_001ebb9a1ca1066d",
+      "candidate_00014bad665432ab",
+      "candidate_001540bda681aca7",
+      "candidate_0000065babcabdfc",
+      "candidate_001e8e9ec1af39cf"
+    ],
+    [
+      "candidate_001e530a457ed66b",
+      "candidate_00014bad665432ab",
+      "candidate_001540bda681aca7",
+      "candidate_50edb6132ebb8519",
+      "candidate_0375a14e14d6378b",
+      "candidate_001ebb9a1ca1066d",
+      "candidate_013cfac02989d26d",
+      "candidate_98144b2702f71aa1"
+    ],
+    [
+      "candidate_00030b8165be0a35",
+      "candidate_000a4fdcfcf04e59",
+      "candidate_0006da9d3047a2ad",
+      "candidate_000399513c4cf750",
+      "candidate_0006da9d3047a2ad",
+      "candidate_98144b2702f71aa1",
+      "candidate_50edb6132ebb8519",
+      "candidate_001e530a457ed66b"
+    ],
+    [
+      "candidate_0000065babcabdfc",
+      "candidate_001540bda681aca7",
+      "candidate_000399513c4cf750",
+      "candidate_000a4fdcfcf04e59",
+      "candidate_001e8e9ec1af39cf",
+      "candidate_00014bad665432ab",
+      "candidate_001ebb9a1ca1066d",
+      "candidate_0375a14e14d6378b"
+    ],
+    [
+      "candidate_00030b8165be0a35",
+      "candidate_013cfac02989d26d",
+      "candidate_000399513c4cf750",
+      "candidate_001540bda681aca7",
+      "candidate_000a4fdcfcf04e59",
+      "candidate_00030b8165be0a35",
+      "candidate_50edb6132ebb8519",
+      "candidate_013cfac02989d26d"
+    ],
+    [
+      "candidate_001e8e9ec1af39cf",
+      "candidate_0000065babcabdfc",
+      "candidate_001ebb9a1ca1066d",
+      "candidate_0375a14e14d6378b",
+      "candidate_98144b2702f71aa1",
+      "candidate_001e530a457ed66b",
+      "candidate_00014bad665432ab",
+      "candidate_0006da9d3047a2ad"
+    ],
+    [
+      "candidate_001540bda681aca7",
+      "candidate_50edb6132ebb8519",
+      "candidate_000a4fdcfcf04e59",
+      "candidate_000399513c4cf750",
+      "candidate_00014bad665432ab",
+      "candidate_98144b2702f71aa1",
+      "candidate_001ebb9a1ca1066d",
+      "candidate_013cfac02989d26d"
+    ],
+    [
+      "candidate_0375a14e14d6378b",
+      "candidate_001e8e9ec1af39cf",
+      "candidate_0000065babcabdfc",
+      "candidate_001e530a457ed66b",
+      "candidate_0006da9d3047a2ad",
+      "candidate_00030b8165be0a35",
+      "candidate_000a4fdcfcf04e59",
+      "candidate_98144b2702f71aa1"
+    ],
+    [
+      "candidate_50edb6132ebb8519",
+      "candidate_001540bda681aca7",
+      "candidate_001e530a457ed66b",
+      "candidate_000399513c4cf750",
+      "candidate_013cfac02989d26d",
+      "candidate_0006da9d3047a2ad",
+      "candidate_001e8e9ec1af39cf",
+      "candidate_00030b8165be0a35"
+    ],
+    [
+      "candidate_0375a14e14d6378b",
+      "candidate_001ebb9a1ca1066d",
+      "candidate_00014bad665432ab",
+      "candidate_0000065babcabdfc",
+      "candidate_0006da9d3047a2ad",
+      "candidate_001ebb9a1ca1066d",
+      "candidate_98144b2702f71aa1",
+      "candidate_00014bad665432ab"
+    ],
+    [
+      "candidate_001540bda681aca7",
+      "candidate_00030b8165be0a35",
+      "candidate_013cfac02989d26d",
+      "candidate_001e8e9ec1af39cf",
+      "candidate_000399513c4cf750",
+      "candidate_0000065babcabdfc",
+      "candidate_000a4fdcfcf04e59",
+      "candidate_0375a14e14d6378b"
+    ],
+    [
+      "candidate_50edb6132ebb8519",
+      "candidate_001e530a457ed66b",
+      "candidate_0006da9d3047a2ad",
+      "candidate_001ebb9a1ca1066d",
+      "candidate_001540bda681aca7",
+      "candidate_50edb6132ebb8519",
+      "candidate_001e8e9ec1af39cf",
+      "candidate_00030b8165be0a35"
+    ],
+    [
+      "candidate_00014bad665432ab",
+      "candidate_0000065babcabdfc",
+      "candidate_013cfac02989d26d",
+      "candidate_001e530a457ed66b",
+      "candidate_98144b2702f71aa1",
+      "candidate_000399513c4cf750",
+      "candidate_0375a14e14d6378b",
+      "candidate_000a4fdcfcf04e59"
+    ],
+    [
+      "candidate_98144b2702f71aa1",
+      "candidate_0375a14e14d6378b",
+      "candidate_001ebb9a1ca1066d",
+      "candidate_000399513c4cf750",
+      "candidate_001e530a457ed66b",
+      "candidate_00030b8165be0a35",
+      "candidate_001540bda681aca7",
+      "candidate_50edb6132ebb8519"
+    ],
+    [
+      "candidate_00014bad665432ab",
+      "candidate_0006da9d3047a2ad",
+      "candidate_013cfac02989d26d",
+      "candidate_0000065babcabdfc",
+      "candidate_000a4fdcfcf04e59",
+      "candidate_001e8e9ec1af39cf",
+      "candidate_0006da9d3047a2ad",
+      "candidate_001e530a457ed66b"
+    ],
+    [
+      "candidate_0375a14e14d6378b",
+      "candidate_000a4fdcfcf04e59",
+      "candidate_0000065babcabdfc",
+      "candidate_000399513c4cf750",
+      "candidate_00014bad665432ab",
+      "candidate_00030b8165be0a35",
+      "candidate_50edb6132ebb8519",
+      "candidate_013cfac02989d26d"
+    ],
+    [
+      "candidate_001540bda681aca7",
+      "candidate_001e8e9ec1af39cf",
+      "candidate_98144b2702f71aa1",
+      "candidate_001ebb9a1ca1066d",
+      "candidate_013cfac02989d26d",
+      "candidate_0000065babcabdfc",
+      "candidate_001e8e9ec1af39cf",
+      "candidate_98144b2702f71aa1"
+    ],
+    [
+      "candidate_001e530a457ed66b",
+      "candidate_50edb6132ebb8519",
+      "candidate_00014bad665432ab",
+      "candidate_0375a14e14d6378b",
+      "candidate_00030b8165be0a35",
+      "candidate_000399513c4cf750",
+      "candidate_001540bda681aca7",
+      "candidate_001ebb9a1ca1066d"
+    ],
+    [
+      "candidate_000a4fdcfcf04e59",
+      "candidate_0006da9d3047a2ad",
+      "candidate_001540bda681aca7",
+      "candidate_50edb6132ebb8519",
+      "candidate_000399513c4cf750",
+      "candidate_0375a14e14d6378b",
+      "candidate_0006da9d3047a2ad",
+      "candidate_001ebb9a1ca1066d"
+    ],
+    [
+      "candidate_000a4fdcfcf04e59",
+      "candidate_001e530a457ed66b",
+      "candidate_013cfac02989d26d",
+      "candidate_0000065babcabdfc",
+      "candidate_001e8e9ec1af39cf",
+      "candidate_00014bad665432ab",
+      "candidate_98144b2702f71aa1",
+      "candidate_00030b8165be0a35"
+    ],
+    [
+      "candidate_001e8e9ec1af39cf",
+      "candidate_001e530a457ed66b",
+      "candidate_001540bda681aca7",
+      "candidate_0000065babcabdfc",
+      "candidate_000a4fdcfcf04e59",
+      "candidate_50edb6132ebb8519",
+      "candidate_001ebb9a1ca1066d",
+      "candidate_0006da9d3047a2ad"
+    ],
+    [
+      "candidate_013cfac02989d26d",
+      "candidate_000399513c4cf750",
+      "candidate_0375a14e14d6378b",
+      "candidate_00030b8165be0a35",
+      "candidate_98144b2702f71aa1",
+      "candidate_00014bad665432ab",
+      "candidate_50edb6132ebb8519",
+      "candidate_00030b8165be0a35"
+    ],
+    [
+      "candidate_0375a14e14d6378b",
+      "candidate_001ebb9a1ca1066d",
+      "candidate_001540bda681aca7",
+      "candidate_000399513c4cf750",
+      "candidate_001e530a457ed66b",
+      "candidate_0006da9d3047a2ad",
+      "candidate_000a4fdcfcf04e59",
+      "candidate_013cfac02989d26d"
+    ],
+    [
+      "candidate_001e8e9ec1af39cf",
+      "candidate_00014bad665432ab",
+      "candidate_0000065babcabdfc",
+      "candidate_98144b2702f71aa1",
+      "candidate_001e8e9ec1af39cf",
+      "candidate_00014bad665432ab",
+      "candidate_0006da9d3047a2ad",
+      "candidate_013cfac02989d26d"
+    ],
+    [
+      "candidate_000a4fdcfcf04e59",
+      "candidate_0000065babcabdfc",
+      "candidate_000399513c4cf750",
+      "candidate_001ebb9a1ca1066d",
+      "candidate_98144b2702f71aa1",
+      "candidate_00030b8165be0a35",
+      "candidate_001e530a457ed66b",
+      "candidate_001540bda681aca7"
+    ],
+    [
+      "candidate_0375a14e14d6378b",
+      "candidate_50edb6132ebb8519",
+      "candidate_00014bad665432ab",
+      "candidate_0000065babcabdfc",
+      "candidate_000a4fdcfcf04e59",
+      "candidate_0375a14e14d6378b",
+      "candidate_98144b2702f71aa1",
+      "candidate_013cfac02989d26d"
+    ],
+    [
+      "candidate_001540bda681aca7",
+      "candidate_50edb6132ebb8519",
+      "candidate_001e530a457ed66b",
+      "candidate_000399513c4cf750",
+      "candidate_00030b8165be0a35",
+      "candidate_0006da9d3047a2ad",
+      "candidate_001ebb9a1ca1066d",
+      "candidate_001e8e9ec1af39cf"
+    ],
+    [
+      "candidate_00030b8165be0a35",
+      "candidate_013cfac02989d26d",
+      "candidate_0375a14e14d6378b",
+      "candidate_001e530a457ed66b",
+      "candidate_001e8e9ec1af39cf",
+      "candidate_000399513c4cf750",
+      "candidate_0000065babcabdfc",
+      "candidate_98144b2702f71aa1"
+    ],
+    [
+      "candidate_001ebb9a1ca1066d",
+      "candidate_000a4fdcfcf04e59",
+      "candidate_50edb6132ebb8519",
+      "candidate_00014bad665432ab",
+      "candidate_001540bda681aca7",
+      "candidate_0006da9d3047a2ad",
+      "candidate_001540bda681aca7",
+      "candidate_000a4fdcfcf04e59"
+    ],
+    [
+      "candidate_00014bad665432ab",
+      "candidate_013cfac02989d26d",
+      "candidate_00030b8165be0a35",
+      "candidate_98144b2702f71aa1",
+      "candidate_50edb6132ebb8519",
+      "candidate_0000065babcabdfc",
+      "candidate_0375a14e14d6378b",
+      "candidate_001ebb9a1ca1066d"
+    ],
+    [
+      "candidate_001e8e9ec1af39cf",
+      "candidate_000399513c4cf750",
+      "candidate_001e530a457ed66b",
+      "candidate_0006da9d3047a2ad",
+      "candidate_00014bad665432ab",
+      "candidate_013cfac02989d26d",
+      "candidate_000399513c4cf750",
+      "candidate_000a4fdcfcf04e59"
+    ],
+    [
+      "candidate_0375a14e14d6378b",
+      "candidate_001ebb9a1ca1066d",
+      "candidate_00030b8165be0a35",
+      "candidate_50edb6132ebb8519",
+      "candidate_001540bda681aca7",
+      "candidate_001e530a457ed66b",
+      "candidate_001e8e9ec1af39cf",
+      "candidate_98144b2702f71aa1"
+    ],
+    [
+      "candidate_0000065babcabdfc",
+      "candidate_0006da9d3047a2ad",
+      "candidate_50edb6132ebb8519",
+      "candidate_0375a14e14d6378b",
+      "candidate_001540bda681aca7",
+      "candidate_013cfac02989d26d",
+      "candidate_00030b8165be0a35",
+      "candidate_000399513c4cf750"
+    ]
+  ],
+  "schedule_sha256": "adc9f17836c6296495d1092fad81b801e7cdac04bd91885704240d06d8a6eacc",
+  "human_review_sha256": "2ba69cbd710f9d1122e671adb5f025f1d54e42a84ea8647759b6a45a88a199a7",
+  "parent_groups_sha256": "5705d9bca91947f08845f817f00f9ffd7c64001f9dc79091ea63ac7b98a007d4",
+  "seed": 42,
+  "updates": 300,
+  "global_batch_groups": 8,
+  "cross_weight": 0.25,
+  "cross_start_update": 61,
+  "max_length": 20,
+  "test_used": false,
+  "scope": "Tiny adaptation holdout of previously reviewed caption-train/restval images; not an independent test, no hyperparameter/checkpoint search",
+  "split_policy": "Fixed hash/family quotas; one skateboard and one surfboard same-image group held out, remaining same-image groups fit; no performance selection; near-duplicate independence NOT certified",
+  "forbidden_model_inputs": [
+    "predicate text",
+    "UPT scores/classes",
+    "legacy prompts",
+    "references",
+    "human labels except decoder targets"
+  ],
+  "manifest_content_sha256": "f756cb4b20dc6252aefa25da223d1efe0ed850b3e8cd2440ea390c59c571acb6"
+}

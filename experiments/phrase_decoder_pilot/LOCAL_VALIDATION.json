@@ -1,0 +1,24 @@
+{
+  "status": "LOCAL_DATA_AND_PACKAGING_PASS",
+  "notebooks": [
+    {
+      "arm": "CE",
+      "bytes": 38216,
+      "code_cells": 3
+    },
+    {
+      "arm": "CROSS",
+      "bytes": 38246,
+      "code_cells": 3
+    }
+  ],
+  "identical_embedded_code_and_manifest": true,
+  "local_data_tests_passed": 3,
+  "local_synthetic_artifact_audit_tests_passed": 3,
+  "embedded_data_checks": "2passed;1parent-reconstruction test skipped when parent bundle absent",
+  "torch_model_tests_run_locally": false,
+  "DDP_or_GPU_tests_run_locally": false,
+  "notebooks_executed": false,
+  "required_kaggle_preflight": "Synthetic CPU model3tests + two-T4 DDP smoke before real training",
+  "experiment_status": "READY_NOT_RUN"
+}
