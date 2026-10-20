@@ -1,0 +1,12 @@
+{
+  "status": "READY_NOT_RUN",
+  "pure_tests": 3,
+  "ast_and_payload": true,
+  "training_calls_absent": true,
+  "notebook_bytes": 44040,
+  "not_run": [
+    "Kaggle CPU model tests",
+    "saved adapter restore and score/greedy replay",
+    "GPU prefix inference"
+  ]
+}
