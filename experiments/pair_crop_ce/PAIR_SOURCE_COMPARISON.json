@@ -1,0 +1,293 @@
+{
+  "status": "MATCHED_TECHNICAL_PASS_SEMANTIC_REVIEW_PENDING",
+  "archive_sha256": {
+    "FULLFRAME": "45b2f36770c006b65b3a5382c5277b20eb8e2182535f07168d29574d788a2734",
+    "PAIRCROP": "eb8d00a0dc6ed695471444f72d59f432a4f988d2f2e4b0565c52403cc1ec481f"
+  },
+  "matched_checks": [
+    "manifest_sha256",
+    "source_sha256",
+    "stage_sha256",
+    "shared_receipt_sha256",
+    "shared_receipt_file_sha256",
+    "checkpoint_sha256",
+    "dataset_sha256",
+    "base_sha256",
+    "vocabulary_sha256",
+    "optimizer",
+    "loss",
+    "runtime",
+    "initial parameter hash",
+    "frozen parameter hash",
+    "trainable parameter count",
+    "before/off records"
+  ],
+  "summaries": {
+    "FULLFRAME": {
+      "status": "MATCHED_PAIR_SOURCE_CE_COMPLETE",
+      "variant": "FULLFRAME",
+      "updates": 300,
+      "initial_sha256": "90f3db3f4eb87e15268b38d7f0b09913525bbd7b6644a184db071606ae3b53c6",
+      "final_sha256": "18add2458f396b1a139da56e173753062a210a3251383d1a0d398da9c1747042",
+      "shared_receipt_sha256": "b65c7569d364225d3b4b40559ef997f8fd1f779659c838086b7c9ec3312d5702",
+      "metrics": {
+        "before": {
+          "fit": {
+            "on": {
+              "groups": 14,
+              "agreement": 0.75,
+              "both_directions_correct": 7,
+              "mean_positive_margin": 0.4759009139878409,
+              "positive_nll": 2.55762449332646,
+              "captions_changed_vs_off": 27
+            },
+            "off": {
+              "groups": 14,
+              "agreement": 0.7857142857142857,
+              "both_directions_correct": 8,
+              "mean_positive_margin": 0.42408829075949533,
+              "positive_nll": 2.6754972083227977,
+              "captions_changed_vs_off": 0
+            }
+          },
+          "exposed_development": {
+            "on": {
+              "groups": 7,
+              "agreement": 0.7142857142857143,
+              "both_directions_correct": 3,
+              "mean_positive_margin": 0.29876876728875296,
+              "positive_nll": 2.4205828394208635,
+              "captions_changed_vs_off": 14
+            },
+            "off": {
+              "groups": 7,
+              "agreement": 0.7142857142857143,
+              "both_directions_correct": 3,
+              "mean_positive_margin": 0.2788557835987636,
+              "positive_nll": 2.54712244442531,
+              "captions_changed_vs_off": 0
+            }
+          },
+          "new_probe": {
+            "on": {
+              "groups": 8,
+              "agreement": 0.5,
+              "both_directions_correct": 0,
+              "mean_positive_margin": 0.08162504807114601,
+              "positive_nll": 2.950276643037796,
+              "captions_changed_vs_off": 16
+            },
+            "off": {
+              "groups": 8,
+              "agreement": 0.5,
+              "both_directions_correct": 0,
+              "mean_positive_margin": 0.0,
+              "positive_nll": 2.999064326286316,
+              "captions_changed_vs_off": 0
+            }
+          }
+        },
+        "after": {
+          "fit": {
+            "on": {
+              "groups": 14,
+              "agreement": 1.0,
+              "both_directions_correct": 14,
+              "mean_positive_margin": 1.417384194476264,
+              "positive_nll": 0.11728573963046074,
+              "captions_changed_vs_off": 28
+            },
+            "off": {
+              "groups": 14,
+              "agreement": 0.7857142857142857,
+              "both_directions_correct": 8,
+              "mean_positive_margin": 0.424846636397498,
+              "positive_nll": 2.670411084379469,
+              "captions_changed_vs_off": 0
+            }
+          },
+          "exposed_development": {
+            "on": {
+              "groups": 7,
+              "agreement": 0.9285714285714286,
+              "both_directions_correct": 6,
+              "mean_positive_margin": 0.4811675804001944,
+              "positive_nll": 0.6580356912953513,
+              "captions_changed_vs_off": 14
+            },
+            "off": {
+              "groups": 7,
+              "agreement": 0.7142857142857143,
+              "both_directions_correct": 3,
+              "mean_positive_margin": 0.27935309069497244,
+              "positive_nll": 2.541861721447536,
+              "captions_changed_vs_off": 0
+            }
+          },
+          "new_probe": {
+            "on": {
+              "groups": 8,
+              "agreement": 0.5625,
+              "both_directions_correct": 1,
+              "mean_positive_margin": 0.19223934598267078,
+              "positive_nll": 0.900622121989727,
+              "captions_changed_vs_off": 16
+            },
+            "off": {
+              "groups": 8,
+              "agreement": 0.5,
+              "both_directions_correct": 0,
+              "mean_positive_margin": 0.0,
+              "positive_nll": 2.990366220474243,
+              "captions_changed_vs_off": 0
+            }
+          }
+        }
+      },
+      "no_test": true,
+      "human_semantic_verdicts_available": false,
+      "limits": [
+        "8new-to-adaptation groups, not independent whole-system test",
+        "Ranking/exactmatch are not primary success measures; blind human phrase review still needed",
+        "Crop changes framing/context/density; does not isolate resolution",
+        "14fit/7exposeddev; no new SCST/full-caption result"
+      ]
+    },
+    "PAIRCROP": {
+      "status": "MATCHED_PAIR_SOURCE_CE_COMPLETE",
+      "variant": "PAIRCROP",
+      "updates": 300,
+      "initial_sha256": "90f3db3f4eb87e15268b38d7f0b09913525bbd7b6644a184db071606ae3b53c6",
+      "final_sha256": "a299229b57a00f0ea24968f1bba90db4553a8f4364941b9fad2e4901848c192b",
+      "shared_receipt_sha256": "b65c7569d364225d3b4b40559ef997f8fd1f779659c838086b7c9ec3312d5702",
+      "metrics": {
+        "before": {
+          "fit": {
+            "on": {
+              "groups": 14,
+              "agreement": 0.75,
+              "both_directions_correct": 7,
+              "mean_positive_margin": 0.516018054315022,
+              "positive_nll": 2.5598324026380266,
+              "captions_changed_vs_off": 27
+            },
+            "off": {
+              "groups": 14,
+              "agreement": 0.7857142857142857,
+              "both_directions_correct": 8,
+              "mean_positive_margin": 0.42408829075949533,
+              "positive_nll": 2.6754972083227977,
+              "captions_changed_vs_off": 0
+            }
+          },
+          "exposed_development": {
+            "on": {
+              "groups": 7,
+              "agreement": 0.7142857142857143,
+              "both_directions_correct": 3,
+              "mean_positive_margin": 0.31954075608934673,
+              "positive_nll": 2.476048163005284,
+              "captions_changed_vs_off": 13
+            },
+            "off": {
+              "groups": 7,
+              "agreement": 0.7142857142857143,
+              "both_directions_correct": 3,
+              "mean_positive_margin": 0.2788557835987636,
+              "positive_nll": 2.54712244442531,
+              "captions_changed_vs_off": 0
+            }
+          },
+          "new_probe": {
+            "on": {
+              "groups": 8,
+              "agreement": 0.5,
+              "both_directions_correct": 0,
+              "mean_positive_margin": -0.06860574334859848,
+              "positive_nll": 3.1257277727127075,
+              "captions_changed_vs_off": 15
+            },
+            "off": {
+              "groups": 8,
+              "agreement": 0.5,
+              "both_directions_correct": 0,
+              "mean_positive_margin": 0.0,
+              "positive_nll": 2.999064326286316,
+              "captions_changed_vs_off": 0
+            }
+          }
+        },
+        "after": {
+          "fit": {
+            "on": {
+              "groups": 14,
+              "agreement": 1.0,
+              "both_directions_correct": 14,
+              "mean_positive_margin": 1.3923806611980711,
+              "positive_nll": 0.09934748975293976,
+              "captions_changed_vs_off": 28
+            },
+            "off": {
+              "groups": 14,
+              "agreement": 0.7857142857142857,
+              "both_directions_correct": 8,
+              "mean_positive_margin": 0.42493937270981924,
+              "positive_nll": 2.6708757366452898,
+              "captions_changed_vs_off": 0
+            }
+          },
+          "exposed_development": {
+            "on": {
+              "groups": 7,
+              "agreement": 0.8571428571428571,
+              "both_directions_correct": 5,
+              "mean_positive_margin": 0.5248126153435025,
+              "positive_nll": 0.5131951102188655,
+              "captions_changed_vs_off": 14
+            },
+            "off": {
+              "groups": 7,
+              "agreement": 0.7142857142857143,
+              "both_directions_correct": 3,
+              "mean_positive_margin": 0.27961271149771555,
+              "positive_nll": 2.5424651418413435,
+              "captions_changed_vs_off": 0
+            }
+          },
+          "new_probe": {
+            "on": {
+              "groups": 8,
+              "agreement": 0.6875,
+              "both_directions_correct": 3,
+              "mean_positive_margin": 0.5329420678317547,
+              "positive_nll": 0.616734080016613,
+              "captions_changed_vs_off": 16
+            },
+            "off": {
+              "groups": 8,
+              "agreement": 0.5,
+              "both_directions_correct": 0,
+              "mean_positive_margin": 0.0,
+              "positive_nll": 2.9929390847682953,
+              "captions_changed_vs_off": 0
+            }
+          }
+        }
+      },
+      "no_test": true,
+      "human_semantic_verdicts_available": false,
+      "limits": [
+        "8new-to-adaptation groups, not independent whole-system test",
+        "Ranking/exactmatch are not primary success measures; blind human phrase review still needed",
+        "Crop changes framing/context/density; does not isolate resolution",
+        "14fit/7exposeddev; no new SCST/full-caption result"
+      ]
+    }
+  },
+  "limits": [
+    "Teacher-forced ranking is not free-generation semantic accuracy.",
+    "No new full-caption or CIDEr result.",
+    "Shared cache and adapter bytes are not included in review archives."
+  ],
+  "review_sha256": "f4be66e6d2a5c389ab72af83e6458c845a8542cb7c6eebdb0f53dd28d6bdbba1"
+}
