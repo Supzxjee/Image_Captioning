@@ -43,6 +43,19 @@ Không tính việc caption chỉ nói “đi bộ”, “đứng trên bãi bi�
 4. Khóa decision prefix/token theo tokenizer thực tế; không lấy prefix tiếng Anh bằng cách đoán token.
 5. Không gọi các development cases đã xem là held-out confirmation.
 
-Đã gửi Astra bản tóm tắt thiếu dữ liệu, đề nghị chốt một bước nhỏ: oracle một ca với giới hạn kết luận rõ ràng, hoặc mở rộng screen caption đã có. Chưa tự thay gate, chưa thu thập 48 nhóm mới.
+## Phản hồi Astra sau audit
+
+Astra chọn mở rộng sàng lọc có giới hạn, **chưa làm oracle một ảnh, chưa hạ gate 3/4**. Ở 200984, `holding` và `looking` không loại trừ nhau; đoạn sai là **`to his ear`**. Không dùng gradient `looking - holding` làm đại diện cho lỗi này. Phải tìm bản sửa tối thiểu đúng toàn ảnh trước khi khóa prefix/token. Đây cũng là giới hạn của việc chuyển nguyên contrast từ tác vụ chọn cụm sang sửa caption.
+
+Bước kế tiếp tối đa 24 ảnh mới, chưa thực hiện trong audit này:
+
+- Dùng `origin_predictions` đã lưu từ nhánh A với exact-original path nếu provenance checkpoint được xác nhận; ưu tiên hơn proxy masked slots.
+- Chọn caption có khẳng định quan hệ người–ván hoặc điện thoại–tai/mặt bằng quy tắc văn bản, khóa thứ tự hash trước khi xem ảnh; không chọn theo reference/CIDEr.
+- Ghi caption/đoạn sai, bằng chứng nhìn thấy, bản sửa tối thiểu toàn ảnh, nội dung đúng cần bảo vệ. Không tự tạo protected negatives hoặc decision tokens để đủ bảng.
+- Đủ tổng cộng bốn ca hợp lệ thì trình bảng để khóa; hết 24 ảnh chưa đủ thì dừng, báo số thực tế và quyết định lại phạm vi công khai.
+
+Kiểm tra đầu nguồn tiếp theo đã thấy `origin_predictions.json` có 1000 dòng trong artifact A. Trường `image_id` ở đó là **Karpathy imgid**, khác `coco_id`; ví dụ imgid 7936 tương ứng COCO 207561. Khi join ảnh phải dùng bảng `groups.json`, không ghép tên ảnh từ `image_id` trực tiếp. Chưa xem ảnh mới thuộc đợt 24 này.
+
+Chưa tự thay gate, chưa thu thập 48 nhóm mới. Các ảnh đã xem vẫn là development có chủ đích, không phải mẫu đo tỷ lệ lỗi hoặc test độc lập.
 
 Tái tạo audit bằng `audit_existing_data.py`; script có assertions về số nhóm/ảnh/shortlist và checkpoint SHA. SHA của các đầu vào được ghi trong JSON. Local contact sheet là artifact ignored, không push ảnh lên repo.
