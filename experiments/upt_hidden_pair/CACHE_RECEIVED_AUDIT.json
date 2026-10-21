@@ -1,0 +1,278 @@
+{
+  "status": "ARTIFACT_AUDIT_PASS_HDF5_BYTES_NOT_SUPPLIED",
+  "archive_sha256": "5fd2fdd24998880151df7926d173da566b419019a24c126d505183cbe82536bf",
+  "cache_receipt_sha256": "873f6da0e1b4c4f7d7408b67c593c07ce56e5b4ca3fa1db5f9ce5e04aa188920",
+  "images": 11000,
+  "workers": [
+    5500,
+    5500
+  ],
+  "coverage": {
+    "train": {
+      "images": 10000,
+      "with_pairs": 6423,
+      "pair_count_histogram": {
+        "5": 167,
+        "8": 2614,
+        "0": 3577,
+        "2": 988,
+        "3": 523,
+        "4": 568,
+        "1": 1016,
+        "6": 482,
+        "7": 65
+      }
+    },
+    "val": {
+      "images": 1000,
+      "with_pairs": 654,
+      "pair_count_histogram": {
+        "8": 279,
+        "1": 97,
+        "6": 43,
+        "0": 346,
+        "3": 61,
+        "2": 105,
+        "4": 49,
+        "5": 14,
+        "7": 6
+      }
+    }
+  },
+  "selected_pairs": 35215,
+  "model_sha256": "fe318e0409fefce7b133f25b5d6c51883ae8bf63690cefcac1828127a53b84a3",
+  "human32_preoutput": {
+    "rows": [
+      {
+        "image_id": 6337,
+        "coco_id": 532338,
+        "filename": "COCO_val2014_000000532338.jpg",
+        "split": "val",
+        "pair_count": 0
+      },
+      {
+        "image_id": 10796,
+        "coco_id": 16161,
+        "filename": "COCO_val2014_000000016161.jpg",
+        "split": "val",
+        "pair_count": 0
+      },
+      {
+        "image_id": 7942,
+        "coco_id": 103017,
+        "filename": "COCO_val2014_000000103017.jpg",
+        "split": "val",
+        "pair_count": 0
+      },
+      {
+        "image_id": 5732,
+        "coco_id": 423480,
+        "filename": "COCO_val2014_000000423480.jpg",
+        "split": "val",
+        "pair_count": 0
+      },
+      {
+        "image_id": 31300,
+        "coco_id": 396608,
+        "filename": "COCO_val2014_000000396608.jpg",
+        "split": "val",
+        "pair_count": 0
+      },
+      {
+        "image_id": 24921,
+        "coco_id": 224093,
+        "filename": "COCO_val2014_000000224093.jpg",
+        "split": "val",
+        "pair_count": 0
+      },
+      {
+        "image_id": 722,
+        "coco_id": 173383,
+        "filename": "COCO_val2014_000000173383.jpg",
+        "split": "val",
+        "pair_count": 0
+      },
+      {
+        "image_id": 8741,
+        "coco_id": 149252,
+        "filename": "COCO_val2014_000000149252.jpg",
+        "split": "val",
+        "pair_count": 0
+      },
+      {
+        "image_id": 18663,
+        "coco_id": 178810,
+        "filename": "COCO_val2014_000000178810.jpg",
+        "split": "val",
+        "pair_count": 0
+      },
+      {
+        "image_id": 23930,
+        "coco_id": 515585,
+        "filename": "COCO_val2014_000000515585.jpg",
+        "split": "val",
+        "pair_count": 0
+      },
+      {
+        "image_id": 25655,
+        "coco_id": 88846,
+        "filename": "COCO_val2014_000000088846.jpg",
+        "split": "val",
+        "pair_count": 0
+      },
+      {
+        "image_id": 25913,
+        "coco_id": 29594,
+        "filename": "COCO_val2014_000000029594.jpg",
+        "split": "val",
+        "pair_count": 0
+      },
+      {
+        "image_id": 23802,
+        "coco_id": 411082,
+        "filename": "COCO_val2014_000000411082.jpg",
+        "split": "val",
+        "pair_count": 0
+      },
+      {
+        "image_id": 3511,
+        "coco_id": 179191,
+        "filename": "COCO_val2014_000000179191.jpg",
+        "split": "val",
+        "pair_count": 0
+      },
+      {
+        "image_id": 2030,
+        "coco_id": 205474,
+        "filename": "COCO_val2014_000000205474.jpg",
+        "split": "val",
+        "pair_count": 0
+      },
+      {
+        "image_id": 26903,
+        "coco_id": 182348,
+        "filename": "COCO_val2014_000000182348.jpg",
+        "split": "val",
+        "pair_count": 0
+      },
+      {
+        "image_id": 36623,
+        "coco_id": 48850,
+        "filename": "COCO_val2014_000000048850.jpg",
+        "split": "val",
+        "pair_count": 8
+      },
+      {
+        "image_id": 5387,
+        "coco_id": 35826,
+        "filename": "COCO_val2014_000000035826.jpg",
+        "split": "val",
+        "pair_count": 5
+      },
+      {
+        "image_id": 15625,
+        "coco_id": 365611,
+        "filename": "COCO_val2014_000000365611.jpg",
+        "split": "val",
+        "pair_count": 8
+      },
+      {
+        "image_id": 21109,
+        "coco_id": 430670,
+        "filename": "COCO_val2014_000000430670.jpg",
+        "split": "val",
+        "pair_count": 1
+      },
+      {
+        "image_id": 9235,
+        "coco_id": 183709,
+        "filename": "COCO_val2014_000000183709.jpg",
+        "split": "val",
+        "pair_count": 8
+      },
+      {
+        "image_id": 29940,
+        "coco_id": 401403,
+        "filename": "COCO_val2014_000000401403.jpg",
+        "split": "val",
+        "pair_count": 1
+      },
+      {
+        "image_id": 18211,
+        "coco_id": 183391,
+        "filename": "COCO_val2014_000000183391.jpg",
+        "split": "val",
+        "pair_count": 1
+      },
+      {
+        "image_id": 7192,
+        "coco_id": 399879,
+        "filename": "COCO_val2014_000000399879.jpg",
+        "split": "val",
+        "pair_count": 2
+      },
+      {
+        "image_id": 38826,
+        "coco_id": 237230,
+        "filename": "COCO_val2014_000000237230.jpg",
+        "split": "val",
+        "pair_count": 8
+      },
+      {
+        "image_id": 29495,
+        "coco_id": 402765,
+        "filename": "COCO_val2014_000000402765.jpg",
+        "split": "val",
+        "pair_count": 1
+      },
+      {
+        "image_id": 14058,
+        "coco_id": 522622,
+        "filename": "COCO_val2014_000000522622.jpg",
+        "split": "val",
+        "pair_count": 8
+      },
+      {
+        "image_id": 16142,
+        "coco_id": 509020,
+        "filename": "COCO_val2014_000000509020.jpg",
+        "split": "val",
+        "pair_count": 2
+      },
+      {
+        "image_id": 20763,
+        "coco_id": 366931,
+        "filename": "COCO_val2014_000000366931.jpg",
+        "split": "val",
+        "pair_count": 6
+      },
+      {
+        "image_id": 29153,
+        "coco_id": 10693,
+        "filename": "COCO_val2014_000000010693.jpg",
+        "split": "val",
+        "pair_count": 2
+      },
+      {
+        "image_id": 13377,
+        "coco_id": 361124,
+        "filename": "COCO_val2014_000000361124.jpg",
+        "split": "val",
+        "pair_count": 2
+      },
+      {
+        "image_id": 18519,
+        "coco_id": 197775,
+        "filename": "COCO_val2014_000000197775.jpg",
+        "split": "val",
+        "pair_count": 8
+      }
+    ],
+    "with_pairs": 16
+  },
+  "limits": [
+    "Actual HDF5 arrays are absent; byte hashes, per-row feature hashes and all-native topK eligibility cannot be independently replayed from this review.",
+    "Training notebooks verify mounted HDF5 file hashes, row IDs, shapes, padding, source policy and finiteness.",
+    "Detection-confidence coverage is not semantic relation correctness. No caption training result yet."
+  ]
+}
