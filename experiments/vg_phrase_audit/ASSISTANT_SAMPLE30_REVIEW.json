@@ -1,0 +1,224 @@
+{
+  "reviewer_type": "assistant_visual_provisional_not_human",
+  "sample_policy": "Predicate-stratified 30 unique training images; not a representative precision estimate",
+  "counts": {
+    "supported": 23,
+    "unclear": 4,
+    "reject_instance": 1,
+    "reject_event_filter": 1,
+    "reject_extra_event": 1
+  },
+  "human_verified": false,
+  "rows": [
+    {
+      "sample_number": 1,
+      "coco_id": 194210,
+      "region_id": 4825855,
+      "status": "supported",
+      "notes": "Surfboard held against the selected person; both instances visible."
+    },
+    {
+      "sample_number": 2,
+      "coco_id": 53635,
+      "region_id": 1273418,
+      "status": "supported",
+      "notes": "Selected boy is on the skateboard on a ramp; no mismatched instance seen."
+    },
+    {
+      "sample_number": 3,
+      "coco_id": 466784,
+      "region_id": 2476178,
+      "status": "supported",
+      "notes": "Tie belongs to the selected seated person; striped brown tie visible."
+    },
+    {
+      "sample_number": 4,
+      "coco_id": 136070,
+      "region_id": 1274379,
+      "status": "unclear",
+      "notes": "Small distant person/bench; sitting plausible, but full phrase including metal material not confidently verified."
+    },
+    {
+      "sample_number": 5,
+      "coco_id": 130718,
+      "region_id": 693274,
+      "status": "supported",
+      "notes": "Selected person carries the open umbrella; boxes refer to the same interaction."
+    },
+    {
+      "sample_number": 6,
+      "coco_id": 70702,
+      "region_id": 5512695,
+      "status": "unclear",
+      "notes": "Kite and selected person visible, but small person/string gives limited evidence of control of this particular kite."
+    },
+    {
+      "sample_number": 7,
+      "coco_id": 245806,
+      "region_id": 4008143,
+      "status": "reject_instance",
+      "notes": "Person box selects the man holding a baby at the back. The white bowl belongs to the different man cooking in front. VG and UPT agree geometrically on the wrong subject–object relation."
+    },
+    {
+      "sample_number": 8,
+      "coco_id": 445684,
+      "region_id": 3779157,
+      "status": "reject_event_filter",
+      "notes": "Phrase on a skateboard is visually supported, but predicate on a is a spatial variant that slipped the exact-word spatial filter. Excluded under this event-only pilot policy, not labelled false."
+    },
+    {
+      "sample_number": 9,
+      "coco_id": 261298,
+      "region_id": 5713696,
+      "status": "supported",
+      "notes": "Selected reclining person holds and looks toward the phone."
+    },
+    {
+      "sample_number": 10,
+      "coco_id": 397648,
+      "region_id": 2560731,
+      "status": "supported",
+      "notes": "Selected person standing in the selected boat; several boats present but this pair is consistent."
+    },
+    {
+      "sample_number": 11,
+      "coco_id": 97563,
+      "region_id": 4493846,
+      "status": "supported",
+      "notes": "Foreground player is in a throwing pose with the frisbee. An overlapping background defender inside the rectangular subject bbox is not by itself an instance-mapping error."
+    },
+    {
+      "sample_number": 12,
+      "coco_id": 168998,
+      "region_id": 2037687,
+      "status": "supported",
+      "notes": "Selected person visibly brings the pizza to the mouth."
+    },
+    {
+      "sample_number": 13,
+      "coco_id": 69167,
+      "region_id": 342311,
+      "status": "supported",
+      "notes": "Selected boy is seated astride the selected horse."
+    },
+    {
+      "sample_number": 14,
+      "coco_id": 519795,
+      "region_id": 3578368,
+      "status": "supported",
+      "notes": "Snowboard under the selected airborne snowboarder."
+    },
+    {
+      "sample_number": 15,
+      "coco_id": 298547,
+      "region_id": 5964401,
+      "status": "supported",
+      "notes": "Selected seated man and partially occluded chair are consistent; object occlusion is noted."
+    },
+    {
+      "sample_number": 16,
+      "coco_id": 55317,
+      "region_id": 3262693,
+      "status": "supported",
+      "notes": "Selected player reaches toward the airborne frisbee; catching description plausible. Single frame does not establish an exclusive motion label."
+    },
+    {
+      "sample_number": 17,
+      "coco_id": 268881,
+      "region_id": 2776318,
+      "status": "supported",
+      "notes": "Tie visibly worn by the selected person."
+    },
+    {
+      "sample_number": 18,
+      "coco_id": 485830,
+      "region_id": 3191078,
+      "status": "supported",
+      "notes": "Child extends hand to sheep mouth through fence; feeding description supported by visible interaction."
+    },
+    {
+      "sample_number": 19,
+      "coco_id": 467257,
+      "region_id": 3402068,
+      "status": "supported",
+      "notes": "Laptop is on the selected seated person lap/in use; phrasing is a natural noun phrase, not a full sentence."
+    },
+    {
+      "sample_number": 20,
+      "coco_id": 360991,
+      "region_id": 3285358,
+      "status": "supported",
+      "notes": "Dog is visibly held by the selected man on the beach."
+    },
+    {
+      "sample_number": 21,
+      "coco_id": 46508,
+      "region_id": 267887,
+      "status": "unclear",
+      "notes": "Person sits on elephant, but boy-specific full phrase and subject box are hard to verify at this scale."
+    },
+    {
+      "sample_number": 22,
+      "coco_id": 552855,
+      "region_id": 2843633,
+      "status": "supported",
+      "notes": "Selected person extends hand to the selected aircraft tail; panorama artifacts noted."
+    },
+    {
+      "sample_number": 23,
+      "coco_id": 70863,
+      "region_id": 3176562,
+      "status": "supported",
+      "notes": "Loose tie worn on the selected guitar player; unrelated guitar in full image does not negate this phrase."
+    },
+    {
+      "sample_number": 24,
+      "coco_id": 462466,
+      "region_id": 3909797,
+      "status": "supported",
+      "notes": "Selected person cutting the rectangular cake; pair is consistent."
+    },
+    {
+      "sample_number": 25,
+      "coco_id": 187435,
+      "region_id": 3344947,
+      "status": "unclear",
+      "notes": "Girl holds a red object that may be a kite winder, not necessarily a different kite. Multiple kites are present and the line cannot be confidently traced to the selected blue kite. Do not label the relation false from this image alone."
+    },
+    {
+      "sample_number": 26,
+      "coco_id": 180729,
+      "region_id": 2876548,
+      "status": "supported",
+      "notes": "Selected woman seated at the selected table."
+    },
+    {
+      "sample_number": 27,
+      "coco_id": 92216,
+      "region_id": 5694854,
+      "status": "supported",
+      "notes": "Batter follow-through with the foreshortened bat; object box small but consistent with the visible bat."
+    },
+    {
+      "sample_number": 28,
+      "coco_id": 394486,
+      "region_id": 283606,
+      "status": "supported",
+      "notes": "Selected person holds phone at face in a phone-use pose; exact audio activity cannot be proven from a still image."
+    },
+    {
+      "sample_number": 29,
+      "coco_id": 349676,
+      "region_id": 402756,
+      "status": "reject_extra_event",
+      "notes": "Graph has one man–giraffe watching edge, but phrase asserts a second event involving two giraffes mating. That additional event is not established by this image/pair; not a clean single-pair target."
+    },
+    {
+      "sample_number": 30,
+      "coco_id": 510527,
+      "region_id": 858522,
+      "status": "supported",
+      "notes": "Selected person hand visibly adjusts the tie."
+    }
+  ]
+}

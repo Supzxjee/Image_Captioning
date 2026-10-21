@@ -1,0 +1,1952 @@
+[
+  {
+    "vg_image_id": 2415782,
+    "coco_id": 194210,
+    "image_id": 50485,
+    "filename": "COCO_train2014_000000194210.jpg",
+    "filepath": "train2014",
+    "source_split": "train",
+    "region_id": 4825855,
+    "relationship_id": 3176596,
+    "phrase": "A man holding a surfboard",
+    "predicate": "holding",
+    "subject_names": [
+      "man"
+    ],
+    "object_names": [
+      "surfboard"
+    ],
+    "subject_id": 1056395,
+    "object_id": 1056396,
+    "object_class": "surfboard",
+    "pair_slot": 0,
+    "selected_native_row": 2,
+    "proposal_indices": [
+      0,
+      3
+    ],
+    "endpoint_iou": [
+      0.9209559332375561,
+      0.8998124925202955
+    ],
+    "vg_boxes_normalized": [
+      [
+        0.506,
+        0.088659793814433,
+        0.89,
+        0.9938144329896907
+      ],
+      [
+        0.09,
+        0.4350515463917526,
+        0.864,
+        0.7525773195876289
+      ]
+    ],
+    "predicted_boxes_normalized": [
+      [
+        0.4893019199371338,
+        0.07868468761444092,
+        0.9012893438339233,
+        0.9947600364685059
+      ],
+      [
+        0.0778692364692688,
+        0.42681676149368286,
+        0.8936256766319275,
+        0.7616336941719055
+      ]
+    ],
+    "original_wh": [
+      640,
+      621
+    ],
+    "cache_image_sha256": "9efacb84b8c004d1d5270dce31a88e82372153a0c797bc4c096e0cac08e85209",
+    "status": "RULE_FILTERED_CANDIDATE_NOT_HUMAN_VERIFIED"
+  },
+  {
+    "vg_image_id": 2389230,
+    "coco_id": 53635,
+    "image_id": 30365,
+    "filename": "COCO_val2014_000000053635.jpg",
+    "filepath": "val2014",
+    "source_split": "restval",
+    "region_id": 1273418,
+    "relationship_id": 4762893,
+    "phrase": "boy riding on skateboard",
+    "predicate": "riding",
+    "subject_names": [
+      "boy"
+    ],
+    "object_names": [
+      "skateboard"
+    ],
+    "subject_id": 4500355,
+    "object_id": 4500365,
+    "object_class": "skateboard",
+    "pair_slot": 0,
+    "selected_native_row": 2,
+    "proposal_indices": [
+      0,
+      3
+    ],
+    "endpoint_iou": [
+      0.9620758404333225,
+      0.7644328524934987
+    ],
+    "vg_boxes_normalized": [
+      [
+        0.011940298507462687,
+        0.0,
+        0.9671641791044776,
+        0.818
+      ],
+      [
+        0.47761194029850745,
+        0.766,
+        0.9671641791044776,
+        0.864
+      ]
+    ],
+    "predicted_boxes_normalized": [
+      [
+        0.015527188777923584,
+        0.0060558021068573,
+        0.989044725894928,
+        0.8221040964126587
+      ],
+      [
+        0.49294978380203247,
+        0.7533395290374756,
+        0.9975926280021667,
+        0.8708305358886719
+      ]
+    ],
+    "original_wh": [
+      428,
+      640
+    ],
+    "cache_image_sha256": "d765a9bb973cde0e1c979a43286ef22203db07225e45bf1f50785edde3d8619b",
+    "status": "RULE_FILTERED_CANDIDATE_NOT_HUMAN_VERIFIED"
+  },
+  {
+    "vg_image_id": 2364009,
+    "coco_id": 466784,
+    "image_id": 20893,
+    "filename": "COCO_val2014_000000466784.jpg",
+    "filepath": "val2014",
+    "source_split": "restval",
+    "region_id": 2476178,
+    "relationship_id": 4167265,
+    "phrase": "woman wearing a brown tie",
+    "predicate": "wearing",
+    "subject_names": [
+      "woman"
+    ],
+    "object_names": [
+      "tie"
+    ],
+    "subject_id": 1992483,
+    "object_id": 1992484,
+    "object_class": "tie",
+    "pair_slot": 2,
+    "selected_native_row": 19,
+    "proposal_indices": [
+      1,
+      7
+    ],
+    "endpoint_iou": [
+      0.889724724071411,
+      0.5818884122983861
+    ],
+    "vg_boxes_normalized": [
+      [
+        0.616,
+        0.2972972972972973,
+        0.828,
+        0.963963963963964
+      ],
+      [
+        0.654,
+        0.4894894894894895,
+        0.724,
+        0.7327327327327328
+      ]
+    ],
+    "predicted_boxes_normalized": [
+      [
+        0.6187862157821655,
+        0.3232177495956421,
+        0.8225706815719604,
+        0.990583062171936
+      ],
+      [
+        0.6767069697380066,
+        0.4992309808731079,
+        0.7229647040367126,
+        0.7659250497817993
+      ]
+    ],
+    "original_wh": [
+      640,
+      426
+    ],
+    "cache_image_sha256": "91133380139078d5223d858a677de0798bf522cacfd7285ef2b59036f56fd9d6",
+    "status": "RULE_FILTERED_CANDIDATE_NOT_HUMAN_VERIFIED"
+  },
+  {
+    "vg_image_id": 2389209,
+    "coco_id": 136070,
+    "image_id": 115306,
+    "filename": "COCO_train2014_000000136070.jpg",
+    "filepath": "train2014",
+    "source_split": "train",
+    "region_id": 1274379,
+    "relationship_id": 3480970,
+    "phrase": "man sitting on a metal bench",
+    "predicate": "sitting on",
+    "subject_names": [
+      "man"
+    ],
+    "object_names": [
+      "bench"
+    ],
+    "subject_id": 1263107,
+    "object_id": 1263110,
+    "object_class": "bench",
+    "pair_slot": 0,
+    "selected_native_row": 1,
+    "proposal_indices": [
+      0,
+      2
+    ],
+    "endpoint_iou": [
+      0.8469167587120326,
+      0.6518311423073108
+    ],
+    "vg_boxes_normalized": [
+      [
+        0.2914438502673797,
+        0.838,
+        0.4117647058823529,
+        0.986
+      ],
+      [
+        0.1497326203208556,
+        0.878,
+        0.45187165775401067,
+        0.978
+      ]
+    ],
+    "predicted_boxes_normalized": [
+      [
+        0.2836376130580902,
+        0.8342010378837585,
+        0.4185279607772827,
+        0.9900776743888855
+      ],
+      [
+        0.22483056783676147,
+        0.8728952407836914,
+        0.46155357360839844,
+        0.9883106350898743
+      ]
+    ],
+    "original_wh": [
+      479,
+      640
+    ],
+    "cache_image_sha256": "696028ba79403c0e212b0002d6afa6fa82f4931a86055741bdefce2ceb8d40cb",
+    "status": "RULE_FILTERED_CANDIDATE_NOT_HUMAN_VERIFIED"
+  },
+  {
+    "vg_image_id": 2401306,
+    "coco_id": 130718,
+    "image_id": 111637,
+    "filename": "COCO_train2014_000000130718.jpg",
+    "filepath": "train2014",
+    "source_split": "train",
+    "region_id": 693274,
+    "relationship_id": 827201,
+    "phrase": "the woman is carrying an umbrella",
+    "predicate": "carrying",
+    "subject_names": [
+      "woman"
+    ],
+    "object_names": [
+      "umbrella"
+    ],
+    "subject_id": 400795,
+    "object_id": 400796,
+    "object_class": "umbrella",
+    "pair_slot": 2,
+    "selected_native_row": 4,
+    "proposal_indices": [
+      0,
+      5
+    ],
+    "endpoint_iou": [
+      0.8121603530137347,
+      0.8981458958670541
+    ],
+    "vg_boxes_normalized": [
+      [
+        0.2757352941176471,
+        0.106,
+        0.7610294117647058,
+        0.84
+      ],
+      [
+        0.03308823529411765,
+        0.016,
+        0.7683823529411765,
+        0.406
+      ]
+    ],
+    "predicted_boxes_normalized": [
+      [
+        0.26713764667510986,
+        0.09796479344367981,
+        0.6845390796661377,
+        0.8486033082008362
+      ],
+      [
+        0.03430846333503723,
+        0.020542025566101074,
+        0.7675286531448364,
+        0.44406765699386597
+      ]
+    ],
+    "original_wh": [
+      349,
+      640
+    ],
+    "cache_image_sha256": "ae97e278965861844a0721e6ce128dd78964cb72514f71b1788b5463379acee9",
+    "status": "RULE_FILTERED_CANDIDATE_NOT_HUMAN_VERIFIED"
+  },
+  {
+    "vg_image_id": 2417733,
+    "coco_id": 70702,
+    "image_id": 87456,
+    "filename": "COCO_train2014_000000070702.jpg",
+    "filepath": "train2014",
+    "source_split": "train",
+    "region_id": 5512695,
+    "relationship_id": 4256094,
+    "phrase": "man flying a kite",
+    "predicate": "flying",
+    "subject_names": [
+      "man"
+    ],
+    "object_names": [
+      "kite"
+    ],
+    "subject_id": 3792661,
+    "object_id": 3414223,
+    "object_class": "kite",
+    "pair_slot": 0,
+    "selected_native_row": 2,
+    "proposal_indices": [
+      0,
+      3
+    ],
+    "endpoint_iou": [
+      0.8417646915288669,
+      0.6628758308613629
+    ],
+    "vg_boxes_normalized": [
+      [
+        0.146,
+        0.6666666666666666,
+        0.234,
+        0.872
+      ],
+      [
+        0.654,
+        0.128,
+        0.706,
+        0.18133333333333335
+      ]
+    ],
+    "predicted_boxes_normalized": [
+      [
+        0.1412675380706787,
+        0.6618739366531372,
+        0.2274916172027588,
+        0.8769185543060303
+      ],
+      [
+        0.6528259515762329,
+        0.12613946199417114,
+        0.6981266736984253,
+        0.19524236023426056
+      ]
+    ],
+    "original_wh": [
+      640,
+      480
+    ],
+    "cache_image_sha256": "45ddcf2c9d6e9d69ed9b1698b887c9ac415282d8a9e16a31c14185331ba2c72b",
+    "status": "RULE_FILTERED_CANDIDATE_NOT_HUMAN_VERIFIED"
+  },
+  {
+    "vg_image_id": 2331919,
+    "coco_id": 245806,
+    "image_id": 64044,
+    "filename": "COCO_train2014_000000245806.jpg",
+    "filepath": "train2014",
+    "source_split": "train",
+    "region_id": 4008143,
+    "relationship_id": 4464088,
+    "phrase": "man holding a white bowl",
+    "predicate": "holds",
+    "subject_names": [
+      "man"
+    ],
+    "object_names": [
+      "bowl"
+    ],
+    "subject_id": 3414512,
+    "object_id": 3932707,
+    "object_class": "bowl",
+    "pair_slot": 5,
+    "selected_native_row": 19,
+    "proposal_indices": [
+      2,
+      6
+    ],
+    "endpoint_iou": [
+      0.921297233854406,
+      0.7378981085389862
+    ],
+    "vg_boxes_normalized": [
+      [
+        0.7013333333333334,
+        0.198,
+        0.936,
+        0.696
+      ],
+      [
+        0.4186666666666667,
+        0.462,
+        0.5386666666666666,
+        0.512
+      ]
+    ],
+    "predicted_boxes_normalized": [
+      [
+        0.6923701763153076,
+        0.19601872563362122,
+        0.9275415539741516,
+        0.698047399520874
+      ],
+      [
+        0.4220755100250244,
+        0.46876075863838196,
+        0.5504199862480164,
+        0.5145227909088135
+      ]
+    ],
+    "original_wh": [
+      480,
+      640
+    ],
+    "cache_image_sha256": "529111216ed2b5b80b5d8f15a1afde7d225a2fe076a75e9339ca317dbb0ab675",
+    "status": "RULE_FILTERED_CANDIDATE_NOT_HUMAN_VERIFIED"
+  },
+  {
+    "vg_image_id": 2333491,
+    "coco_id": 445684,
+    "image_id": 107752,
+    "filename": "COCO_train2014_000000445684.jpg",
+    "filepath": "train2014",
+    "source_split": "train",
+    "region_id": 3779157,
+    "relationship_id": 4020100,
+    "phrase": "A guy on a skateboard",
+    "predicate": "on a",
+    "subject_names": [
+      "guy"
+    ],
+    "object_names": [
+      "skateboard"
+    ],
+    "subject_id": 2918085,
+    "object_id": 2895228,
+    "object_class": "skateboard",
+    "pair_slot": 0,
+    "selected_native_row": 2,
+    "proposal_indices": [
+      0,
+      3
+    ],
+    "endpoint_iou": [
+      0.9363796692611145,
+      0.6929238428770015
+    ],
+    "vg_boxes_normalized": [
+      [
+        0.44545454545454544,
+        0.006,
+        0.8393939393939394,
+        0.776
+      ],
+      [
+        0.3787878787878788,
+        0.748,
+        0.6272727272727273,
+        0.828
+      ]
+    ],
+    "predicted_boxes_normalized": [
+      [
+        0.439010351896286,
+        0.00552523136138916,
+        0.8566219806671143,
+        0.7812284231185913
+      ],
+      [
+        0.3484383821487427,
+        0.7578480839729309,
+        0.6347182393074036,
+        0.8371747136116028
+      ]
+    ],
+    "original_wh": [
+      423,
+      640
+    ],
+    "cache_image_sha256": "69eee4dcf477e6a107ccf15934d3beb8c379895ddcfe03b01cc9cc1c7230dcea",
+    "status": "RULE_FILTERED_CANDIDATE_NOT_HUMAN_VERIFIED"
+  },
+  {
+    "vg_image_id": 1159298,
+    "coco_id": 261298,
+    "image_id": 70225,
+    "filename": "COCO_train2014_000000261298.jpg",
+    "filepath": "train2014",
+    "source_split": "train",
+    "region_id": 5713696,
+    "relationship_id": 3962125,
+    "phrase": "man looking at cell phone",
+    "predicate": "looking at",
+    "subject_names": [
+      "man"
+    ],
+    "object_names": [
+      "cell phone"
+    ],
+    "subject_id": 1591214,
+    "object_id": 1591215,
+    "object_class": "cell phone",
+    "pair_slot": 0,
+    "selected_native_row": 2,
+    "proposal_indices": [
+      0,
+      3
+    ],
+    "endpoint_iou": [
+      0.6616699225186082,
+      0.8202025956706331
+    ],
+    "vg_boxes_normalized": [
+      [
+        0.21241830065359477,
+        0.46568627450980393,
+        0.6781045751633987,
+        0.8496732026143791
+      ],
+      [
+        0.2875816993464052,
+        0.545751633986928,
+        0.3431372549019608,
+        0.6209150326797386
+      ]
+    ],
+    "predicted_boxes_normalized": [
+      [
+        0.06108636036515236,
+        0.4672487676143646,
+        0.664306640625,
+        0.8902666568756104
+      ],
+      [
+        0.28287339210510254,
+        0.543309211730957,
+        0.3473999500274658,
+        0.6222087144851685
+      ]
+    ],
+    "original_wh": [
+      612,
+      612
+    ],
+    "cache_image_sha256": "68b8af80864c7d58bc3035d98aa4a80463c4b7b8baf61536383543c3430e4522",
+    "status": "RULE_FILTERED_CANDIDATE_NOT_HUMAN_VERIFIED"
+  },
+  {
+    "vg_image_id": 2362246,
+    "coco_id": 397648,
+    "image_id": 93188,
+    "filename": "COCO_train2014_000000397648.jpg",
+    "filepath": "train2014",
+    "source_split": "train",
+    "region_id": 2560731,
+    "relationship_id": 3649666,
+    "phrase": "person standing on the boat",
+    "predicate": "standing on",
+    "subject_names": [
+      "person"
+    ],
+    "object_names": [
+      "boat"
+    ],
+    "subject_id": 2597927,
+    "object_id": 2597928,
+    "object_class": "boat",
+    "pair_slot": 1,
+    "selected_native_row": 43,
+    "proposal_indices": [
+      1,
+      15
+    ],
+    "endpoint_iou": [
+      0.8246295883288992,
+      0.944659961506442
+    ],
+    "vg_boxes_normalized": [
+      [
+        0.448,
+        0.5852272727272727,
+        0.52,
+        0.8409090909090909
+      ],
+      [
+        0.324,
+        0.7642045454545454,
+        0.608,
+        0.9460227272727273
+      ]
+    ],
+    "predicted_boxes_normalized": [
+      [
+        0.4397805333137512,
+        0.5901041030883789,
+        0.5156455039978027,
+        0.8422707915306091
+      ],
+      [
+        0.31751662492752075,
+        0.7672956585884094,
+        0.6131647229194641,
+        0.9459748864173889
+      ]
+    ],
+    "original_wh": [
+      640,
+      451
+    ],
+    "cache_image_sha256": "96e9699a7220cbb7e264578f9591186c11bc373ef3f04bb05d3966a6856571db",
+    "status": "RULE_FILTERED_CANDIDATE_NOT_HUMAN_VERIFIED"
+  },
+  {
+    "vg_image_id": 2317589,
+    "coco_id": 97563,
+    "image_id": 57419,
+    "filename": "COCO_train2014_000000097563.jpg",
+    "filepath": "train2014",
+    "source_split": "train",
+    "region_id": 4493846,
+    "relationship_id": 4586807,
+    "phrase": "man throwing a frisbee",
+    "predicate": "throwing",
+    "subject_names": [
+      "man"
+    ],
+    "object_names": [
+      "frisbee"
+    ],
+    "subject_id": 4064012,
+    "object_id": 4064026,
+    "object_class": "frisbee",
+    "pair_slot": 0,
+    "selected_native_row": 3,
+    "proposal_indices": [
+      0,
+      4
+    ],
+    "endpoint_iou": [
+      0.9689500344581946,
+      0.7565016315310413
+    ],
+    "vg_boxes_normalized": [
+      [
+        0.005988023952095809,
+        0.214,
+        0.8383233532934131,
+        0.896
+      ],
+      [
+        0.6137724550898204,
+        0.196,
+        0.7904191616766467,
+        0.35
+      ]
+    ],
+    "predicted_boxes_normalized": [
+      [
+        0.0035741329193115234,
+        0.21102142333984375,
+        0.8465057611465454,
+        0.9060280919075012
+      ],
+      [
+        0.6175284385681152,
+        0.21493497490882874,
+        0.7746379375457764,
+        0.34592363238334656
+      ]
+    ],
+    "original_wh": [
+      428,
+      640
+    ],
+    "cache_image_sha256": "df292a81dafd96c8c45b13079b21c300a7108ce14e5cd649d2d7f9a34563883f",
+    "status": "RULE_FILTERED_CANDIDATE_NOT_HUMAN_VERIFIED"
+  },
+  {
+    "vg_image_id": 2373203,
+    "coco_id": 168998,
+    "image_id": 45351,
+    "filename": "COCO_train2014_000000168998.jpg",
+    "filepath": "train2014",
+    "source_split": "train",
+    "region_id": 2037687,
+    "relationship_id": 4136768,
+    "phrase": "Woman eating pizza",
+    "predicate": "eating",
+    "subject_names": [
+      "woman"
+    ],
+    "object_names": [
+      "pizza"
+    ],
+    "subject_id": 2595660,
+    "object_id": 2113069,
+    "object_class": "pizza",
+    "pair_slot": 0,
+    "selected_native_row": 2,
+    "proposal_indices": [
+      0,
+      3
+    ],
+    "endpoint_iou": [
+      0.9895173658814019,
+      0.796096583127296
+    ],
+    "vg_boxes_normalized": [
+      [
+        0.142,
+        0.014234875444839857,
+        0.996,
+        0.9928825622775801
+      ],
+      [
+        0.11,
+        0.3096085409252669,
+        0.524,
+        0.7188612099644128
+      ]
+    ],
+    "predicted_boxes_normalized": [
+      [
+        0.14634758234024048,
+        0.011951178312301636,
+        0.9945042729377747,
+        0.9915551543235779
+      ],
+      [
+        0.13475221395492554,
+        0.35681477189064026,
+        0.5403773784637451,
+        0.7229560613632202
+      ]
+    ],
+    "original_wh": [
+      640,
+      360
+    ],
+    "cache_image_sha256": "9324aadb59da4b44b9636e3b5ed731c307fcd1ee06370f49b79ba7d5d4f6cf1b",
+    "status": "RULE_FILTERED_CANDIDATE_NOT_HUMAN_VERIFIED"
+  },
+  {
+    "vg_image_id": 2407428,
+    "coco_id": 69167,
+    "image_id": 64637,
+    "filename": "COCO_train2014_000000069167.jpg",
+    "filepath": "train2014",
+    "source_split": "train",
+    "region_id": 342311,
+    "relationship_id": 338754,
+    "phrase": "blond boy riding horse",
+    "predicate": "rides",
+    "subject_names": [
+      "boy"
+    ],
+    "object_names": [
+      "horse"
+    ],
+    "subject_id": 279591,
+    "object_id": 279593,
+    "object_class": "horse",
+    "pair_slot": 0,
+    "selected_native_row": 9,
+    "proposal_indices": [
+      0,
+      10
+    ],
+    "endpoint_iou": [
+      0.9532080325132366,
+      0.9808102451822717
+    ],
+    "vg_boxes_normalized": [
+      [
+        0.1484375,
+        0.072,
+        0.5807291666666666,
+        0.928
+      ],
+      [
+        0.0078125,
+        0.198,
+        0.9973958333333334,
+        0.998
+      ]
+    ],
+    "predicted_boxes_normalized": [
+      [
+        0.1481001377105713,
+        0.07593417167663574,
+        0.5649845004081726,
+        0.9328436851501465
+      ],
+      [
+        0.0030281245708465576,
+        0.20252278447151184,
+        0.9966585040092468,
+        0.9915001392364502
+      ]
+    ],
+    "original_wh": [
+      492,
+      640
+    ],
+    "cache_image_sha256": "f4ae0acc18255ae9402d65ec42af2f2b2656cfd63b313e5e9f9618119e2abcd1",
+    "status": "RULE_FILTERED_CANDIDATE_NOT_HUMAN_VERIFIED"
+  },
+  {
+    "vg_image_id": 2340924,
+    "coco_id": 519795,
+    "image_id": 46303,
+    "filename": "COCO_train2014_000000519795.jpg",
+    "filepath": "train2014",
+    "source_split": "train",
+    "region_id": 3578368,
+    "relationship_id": 3952731,
+    "phrase": "a snowboarder riding a snowboard",
+    "predicate": "riding a",
+    "subject_names": [
+      "snowboarder"
+    ],
+    "object_names": [
+      "snowboard"
+    ],
+    "subject_id": 2165664,
+    "object_id": 2165665,
+    "object_class": "snowboard",
+    "pair_slot": 0,
+    "selected_native_row": 2,
+    "proposal_indices": [
+      0,
+      3
+    ],
+    "endpoint_iou": [
+      0.8250248257193935,
+      0.7153597626434941
+    ],
+    "vg_boxes_normalized": [
+      [
+        0.354,
+        0.3270588235294118,
+        0.556,
+        0.7458823529411764
+      ],
+      [
+        0.454,
+        0.6752941176470588,
+        0.554,
+        0.7741176470588236
+      ]
+    ],
+    "predicted_boxes_normalized": [
+      [
+        0.3460163474082947,
+        0.323727011680603,
+        0.5490385293960571,
+        0.7004015445709229
+      ],
+      [
+        0.4425799250602722,
+        0.6721880435943604,
+        0.5642809271812439,
+        0.7857000231742859
+      ]
+    ],
+    "original_wh": [
+      640,
+      544
+    ],
+    "cache_image_sha256": "01091438fd0491375b1c3c69546929ced26f91fefe1d2bd7c2141e71b2ceb2a2",
+    "status": "RULE_FILTERED_CANDIDATE_NOT_HUMAN_VERIFIED"
+  },
+  {
+    "vg_image_id": 498088,
+    "coco_id": 298547,
+    "image_id": 33825,
+    "filename": "COCO_val2014_000000298547.jpg",
+    "filepath": "val2014",
+    "source_split": "restval",
+    "region_id": 5964401,
+    "relationship_id": 4053735,
+    "phrase": "a man sitting in a chair",
+    "predicate": "sitting in",
+    "subject_names": [
+      "man"
+    ],
+    "object_names": [
+      "chair"
+    ],
+    "subject_id": 1573831,
+    "object_id": 1573832,
+    "object_class": "chair",
+    "pair_slot": 0,
+    "selected_native_row": 13,
+    "proposal_indices": [
+      0,
+      14
+    ],
+    "endpoint_iou": [
+      0.9087568732744028,
+      0.7313428961621403
+    ],
+    "vg_boxes_normalized": [
+      [
+        0.484375,
+        0.19124087591240876,
+        0.65234375,
+        0.6861313868613139
+      ],
+      [
+        0.5244140625,
+        0.32262773722627736,
+        0.7099609375,
+        0.6875912408759124
+      ]
+    ],
+    "predicted_boxes_normalized": [
+      [
+        0.48179104924201965,
+        0.1875307857990265,
+        0.6638769507408142,
+        0.6821234226226807
+      ],
+      [
+        0.5179159641265869,
+        0.3142683506011963,
+        0.7186869382858276,
+        0.6136177182197571
+      ]
+    ],
+    "original_wh": [
+      640,
+      428
+    ],
+    "cache_image_sha256": "99697445d2a0f8bc44df13f4be7f295e86fc1fe4c8728f3425568b4adcea1ad4",
+    "status": "RULE_FILTERED_CANDIDATE_NOT_HUMAN_VERIFIED"
+  },
+  {
+    "vg_image_id": 2347540,
+    "coco_id": 55317,
+    "image_id": 68629,
+    "filename": "COCO_train2014_000000055317.jpg",
+    "filepath": "train2014",
+    "source_split": "train",
+    "region_id": 3262693,
+    "relationship_id": 2590880,
+    "phrase": "man catching a frisbee",
+    "predicate": "catching",
+    "subject_names": [
+      "man"
+    ],
+    "object_names": [
+      "frisbee"
+    ],
+    "subject_id": 889823,
+    "object_id": 889815,
+    "object_class": "frisbee",
+    "pair_slot": 1,
+    "selected_native_row": 7,
+    "proposal_indices": [
+      1,
+      3
+    ],
+    "endpoint_iou": [
+      0.7358346058883503,
+      0.7144109209371419
+    ],
+    "vg_boxes_normalized": [
+      [
+        0.156,
+        0.09268292682926829,
+        0.388,
+        0.7780487804878049
+      ],
+      [
+        0.29,
+        0.03414634146341464,
+        0.398,
+        0.08292682926829269
+      ]
+    ],
+    "predicted_boxes_normalized": [
+      [
+        0.15898799896240234,
+        0.051467299461364746,
+        0.4011508822441101,
+        0.9238423705101013
+      ],
+      [
+        0.29921144247055054,
+        0.0345928780734539,
+        0.385246217250824,
+        0.07833944261074066
+      ]
+    ],
+    "original_wh": [
+      640,
+      524
+    ],
+    "cache_image_sha256": "7539c95726daa7f63985687d77fe639b962be91163dee6ef9d435be1976ec1e4",
+    "status": "RULE_FILTERED_CANDIDATE_NOT_HUMAN_VERIFIED"
+  },
+  {
+    "vg_image_id": 2357739,
+    "coco_id": 268881,
+    "image_id": 57204,
+    "filename": "COCO_train2014_000000268881.jpg",
+    "filepath": "train2014",
+    "source_split": "train",
+    "region_id": 2776318,
+    "relationship_id": 2272663,
+    "phrase": "Man wearing a tie",
+    "predicate": "wears",
+    "subject_names": [
+      "man"
+    ],
+    "object_names": [
+      "tie"
+    ],
+    "subject_id": 809221,
+    "object_id": 809232,
+    "object_class": "tie",
+    "pair_slot": 0,
+    "selected_native_row": 2,
+    "proposal_indices": [
+      0,
+      3
+    ],
+    "endpoint_iou": [
+      0.9714158394772646,
+      0.9170180460178605
+    ],
+    "vg_boxes_normalized": [
+      [
+        0.04018912529550828,
+        0.014,
+        0.9976359338061466,
+        0.998
+      ],
+      [
+        0.1867612293144208,
+        0.79,
+        0.40425531914893614,
+        0.998
+      ]
+    ],
+    "predicted_boxes_normalized": [
+      [
+        0.022115560248494148,
+        0.016607463359832764,
+        0.9946937561035156,
+        0.9933938384056091
+      ],
+      [
+        0.18332745134830475,
+        0.782820463180542,
+        0.4111993908882141,
+        0.9966812133789062
+      ]
+    ],
+    "original_wh": [
+      542,
+      640
+    ],
+    "cache_image_sha256": "6a0d01ba6d3735443486d3447837cb1d3ebeb2360e9c5bcedb2cdb8888341a35",
+    "status": "RULE_FILTERED_CANDIDATE_NOT_HUMAN_VERIFIED"
+  },
+  {
+    "vg_image_id": 2349041,
+    "coco_id": 485830,
+    "image_id": 53022,
+    "filename": "COCO_train2014_000000485830.jpg",
+    "filepath": "train2014",
+    "source_split": "train",
+    "region_id": 3191078,
+    "relationship_id": 3817595,
+    "phrase": "The child is feeding the sheep",
+    "predicate": "feeding",
+    "subject_names": [
+      "child"
+    ],
+    "object_names": [
+      "sheep"
+    ],
+    "subject_id": 1783292,
+    "object_id": 1783293,
+    "object_class": "sheep",
+    "pair_slot": 0,
+    "selected_native_row": 2,
+    "proposal_indices": [
+      0,
+      3
+    ],
+    "endpoint_iou": [
+      0.6366332721145115,
+      0.8314507347842744
+    ],
+    "vg_boxes_normalized": [
+      [
+        0.156,
+        0.10109289617486339,
+        0.344,
+        0.773224043715847
+      ],
+      [
+        0.458,
+        0.34972677595628415,
+        0.93,
+        0.9836065573770492
+      ]
+    ],
+    "predicted_boxes_normalized": [
+      [
+        0.14094844460487366,
+        0.10648640990257263,
+        0.4074545204639435,
+        0.8414638042449951
+      ],
+      [
+        0.37843695282936096,
+        0.35839542746543884,
+        0.9285364151000977,
+        0.9924883842468262
+      ]
+    ],
+    "original_wh": [
+      640,
+      468
+    ],
+    "cache_image_sha256": "c65567bbd7c95a8408c7efee604b2f64a87bbb24a06e741bdbd51c9d7a44a0b4",
+    "status": "RULE_FILTERED_CANDIDATE_NOT_HUMAN_VERIFIED"
+  },
+  {
+    "vg_image_id": 2344625,
+    "coco_id": 467257,
+    "image_id": 25461,
+    "filename": "COCO_val2014_000000467257.jpg",
+    "filepath": "val2014",
+    "source_split": "restval",
+    "region_id": 3402068,
+    "relationship_id": 4433619,
+    "phrase": "Laptop the man is using",
+    "predicate": "using",
+    "subject_names": [
+      "man"
+    ],
+    "object_names": [
+      "laptop"
+    ],
+    "subject_id": 2061283,
+    "object_id": 2930245,
+    "object_class": "laptop",
+    "pair_slot": 1,
+    "selected_native_row": 3,
+    "proposal_indices": [
+      0,
+      4
+    ],
+    "endpoint_iou": [
+      0.796968815094689,
+      0.7233135786029592
+    ],
+    "vg_boxes_normalized": [
+      [
+        0.49,
+        0.4613333333333333,
+        0.87,
+        0.8666666666666667
+      ],
+      [
+        0.526,
+        0.5786666666666667,
+        0.716,
+        0.7653333333333333
+      ]
+    ],
+    "predicted_boxes_normalized": [
+      [
+        0.49037832021713257,
+        0.4467145800590515,
+        0.8940781950950623,
+        0.924593985080719
+      ],
+      [
+        0.510327160358429,
+        0.5613240003585815,
+        0.7335415482521057,
+        0.7809944152832031
+      ]
+    ],
+    "original_wh": [
+      500,
+      375
+    ],
+    "cache_image_sha256": "0472236cfb8c563e772b7ed59e43e4f0e30b68ae2e6e9a60c89b5408d6c9118f",
+    "status": "RULE_FILTERED_CANDIDATE_NOT_HUMAN_VERIFIED"
+  },
+  {
+    "vg_image_id": 2347070,
+    "coco_id": 360991,
+    "image_id": 93632,
+    "filename": "COCO_train2014_000000360991.jpg",
+    "filepath": "train2014",
+    "source_split": "train",
+    "region_id": 3285358,
+    "relationship_id": 2605370,
+    "phrase": "Man carrying a dog on the beach",
+    "predicate": "carrying a",
+    "subject_names": [
+      "man"
+    ],
+    "object_names": [
+      "dog"
+    ],
+    "subject_id": 893883,
+    "object_id": 893884,
+    "object_class": "dog",
+    "pair_slot": 2,
+    "selected_native_row": 3,
+    "proposal_indices": [
+      0,
+      4
+    ],
+    "endpoint_iou": [
+      0.9518473983999097,
+      0.6888821261480513
+    ],
+    "vg_boxes_normalized": [
+      [
+        0.37910447761194027,
+        0.436,
+        0.6955223880597015,
+        0.912
+      ],
+      [
+        0.5492537313432836,
+        0.564,
+        0.6417910447761194,
+        0.648
+      ]
+    ],
+    "predicted_boxes_normalized": [
+      [
+        0.3748268783092499,
+        0.4382866621017456,
+        0.6912649273872375,
+        0.90361487865448
+      ],
+      [
+        0.5259796977043152,
+        0.5598948001861572,
+        0.6452644467353821,
+        0.6544893980026245
+      ]
+    ],
+    "original_wh": [
+      429,
+      640
+    ],
+    "cache_image_sha256": "56912c92486ee68491fb6150fb7c7511afb6a8cd0a2e3bc775329009e5138eab",
+    "status": "RULE_FILTERED_CANDIDATE_NOT_HUMAN_VERIFIED"
+  },
+  {
+    "vg_image_id": 2408989,
+    "coco_id": 46508,
+    "image_id": 2462,
+    "filename": "COCO_val2014_000000046508.jpg",
+    "filepath": "val2014",
+    "source_split": "restval",
+    "region_id": 267887,
+    "relationship_id": 273220,
+    "phrase": "Boy sitting on elephant",
+    "predicate": "sits on",
+    "subject_names": [
+      "boy"
+    ],
+    "object_names": [
+      "elephant"
+    ],
+    "subject_id": 251143,
+    "object_id": 251135,
+    "object_class": "elephant",
+    "pair_slot": 0,
+    "selected_native_row": 2,
+    "proposal_indices": [
+      0,
+      3
+    ],
+    "endpoint_iou": [
+      0.743724786705724,
+      0.84669160991582
+    ],
+    "vg_boxes_normalized": [
+      [
+        0.5075075075075075,
+        0.168,
+        0.6606606606606606,
+        0.316
+      ],
+      [
+        0.34534534534534533,
+        0.288,
+        0.9429429429429429,
+        0.836
+      ]
+    ],
+    "predicted_boxes_normalized": [
+      [
+        0.4911392331123352,
+        0.1554945707321167,
+        0.6712061166763306,
+        0.32474958896636963
+      ],
+      [
+        0.2953275144100189,
+        0.3040260374546051,
+        0.9617998003959656,
+        0.8530237674713135
+      ]
+    ],
+    "original_wh": [
+      426,
+      640
+    ],
+    "cache_image_sha256": "8629f7c7ea99f61ca7dfa8385af1a7eb46e6db52a2c2ff1a3729b0b76a77c5a8",
+    "status": "RULE_FILTERED_CANDIDATE_NOT_HUMAN_VERIFIED"
+  },
+  {
+    "vg_image_id": 2356313,
+    "coco_id": 552855,
+    "image_id": 116415,
+    "filename": "COCO_train2014_000000552855.jpg",
+    "filepath": "train2014",
+    "source_split": "train",
+    "region_id": 2843633,
+    "relationship_id": 3725536,
+    "phrase": "the man is touching the plane",
+    "predicate": "touching",
+    "subject_names": [
+      "man"
+    ],
+    "object_names": [
+      "plane"
+    ],
+    "subject_id": 2248976,
+    "object_id": 2248978,
+    "object_class": "airplane",
+    "pair_slot": 0,
+    "selected_native_row": 5,
+    "proposal_indices": [
+      0,
+      6
+    ],
+    "endpoint_iou": [
+      0.9175058266224198,
+      0.9176406836781412
+    ],
+    "vg_boxes_normalized": [
+      [
+        0.52,
+        0.5067750677506775,
+        0.714,
+        0.994579945799458
+      ],
+      [
+        0.09,
+        0.056910569105691054,
+        0.86,
+        0.7506775067750677
+      ]
+    ],
+    "predicted_boxes_normalized": [
+      [
+        0.518347978591919,
+        0.5038576722145081,
+        0.7279598712921143,
+        0.9931419491767883
+      ],
+      [
+        0.12201908975839615,
+        0.044567495584487915,
+        0.8783844709396362,
+        0.7528553009033203
+      ]
+    ],
+    "original_wh": [
+      640,
+      472
+    ],
+    "cache_image_sha256": "233f3fc8185debb053c92c1fd3618c0af2ba40fc79881c5515939674899929d9",
+    "status": "RULE_FILTERED_CANDIDATE_NOT_HUMAN_VERIFIED"
+  },
+  {
+    "vg_image_id": 2349343,
+    "coco_id": 70863,
+    "image_id": 75409,
+    "filename": "COCO_train2014_000000070863.jpg",
+    "filepath": "train2014",
+    "source_split": "train",
+    "region_id": 3176562,
+    "relationship_id": 2527001,
+    "phrase": "a man wearing a tie",
+    "predicate": "wearing a",
+    "subject_names": [
+      "man"
+    ],
+    "object_names": [
+      "tie"
+    ],
+    "subject_id": 875497,
+    "object_id": 875504,
+    "object_class": "tie",
+    "pair_slot": 0,
+    "selected_native_row": 2,
+    "proposal_indices": [
+      0,
+      3
+    ],
+    "endpoint_iou": [
+      0.9620509682400711,
+      0.8905493611331714
+    ],
+    "vg_boxes_normalized": [
+      [
+        0.006006006006006006,
+        0.002,
+        0.8858858858858859,
+        0.996
+      ],
+      [
+        0.2552552552552553,
+        0.284,
+        0.5075075075075075,
+        0.626
+      ]
+    ],
+    "predicted_boxes_normalized": [
+      [
+        0.006858766078948975,
+        0.002774566411972046,
+        0.9157800078392029,
+        0.9923577308654785
+      ],
+      [
+        0.24523058533668518,
+        0.2687898874282837,
+        0.5061909556388855,
+        0.6363446712493896
+      ]
+    ],
+    "original_wh": [
+      427,
+      640
+    ],
+    "cache_image_sha256": "735191bf069daa50727a2b0dea680ac70c1de7ca5a806d6d50189fb61a6174f4",
+    "status": "RULE_FILTERED_CANDIDATE_NOT_HUMAN_VERIFIED"
+  },
+  {
+    "vg_image_id": 2338164,
+    "coco_id": 462466,
+    "image_id": 1802,
+    "filename": "COCO_val2014_000000462466.jpg",
+    "filepath": "val2014",
+    "source_split": "restval",
+    "region_id": 3909797,
+    "relationship_id": 4066751,
+    "phrase": "lady cutting square cake",
+    "predicate": "cutting",
+    "subject_names": [
+      "lady"
+    ],
+    "object_names": [
+      "cake"
+    ],
+    "subject_id": 2847558,
+    "object_id": 2847559,
+    "object_class": "cake",
+    "pair_slot": 1,
+    "selected_native_row": 15,
+    "proposal_indices": [
+      1,
+      7
+    ],
+    "endpoint_iou": [
+      0.9234780412341425,
+      0.8698048927195979
+    ],
+    "vg_boxes_normalized": [
+      [
+        0.508,
+        0.1144578313253012,
+        0.746,
+        0.7349397590361446
+      ],
+      [
+        0.388,
+        0.5120481927710844,
+        0.598,
+        0.7048192771084337
+      ]
+    ],
+    "predicted_boxes_normalized": [
+      [
+        0.5059406161308289,
+        0.11451292037963867,
+        0.7532141804695129,
+        0.7611009478569031
+      ],
+      [
+        0.38847580552101135,
+        0.5325940251350403,
+        0.5972978472709656,
+        0.7089652419090271
+      ]
+    ],
+    "original_wh": [
+      640,
+      425
+    ],
+    "cache_image_sha256": "9aa9d4f47b356908e8f606e72d2232f2cf201140a9dd375f1383742aa2621b47",
+    "status": "RULE_FILTERED_CANDIDATE_NOT_HUMAN_VERIFIED"
+  },
+  {
+    "vg_image_id": 2345819,
+    "coco_id": 187435,
+    "image_id": 91718,
+    "filename": "COCO_train2014_000000187435.jpg",
+    "filepath": "train2014",
+    "source_split": "train",
+    "region_id": 3344947,
+    "relationship_id": 3862077,
+    "phrase": "Girl flying a kite",
+    "predicate": "flying a",
+    "subject_names": [
+      "girl"
+    ],
+    "object_names": [
+      "kite"
+    ],
+    "subject_id": 2020541,
+    "object_id": 2985581,
+    "object_class": "kite",
+    "pair_slot": 1,
+    "selected_native_row": 6,
+    "proposal_indices": [
+      0,
+      7
+    ],
+    "endpoint_iou": [
+      0.9706465794869426,
+      0.8509613643672259
+    ],
+    "vg_boxes_normalized": [
+      [
+        0.002,
+        0.20266666666666666,
+        0.664,
+        0.9946666666666667
+      ],
+      [
+        0.734,
+        0.25333333333333335,
+        0.864,
+        0.36533333333333334
+      ]
+    ],
+    "predicted_boxes_normalized": [
+      [
+        0.010760843753814697,
+        0.19937241077423096,
+        0.6560133695602417,
+        0.9947670698165894
+      ],
+      [
+        0.7351365685462952,
+        0.2506081759929657,
+        0.8573846220970154,
+        0.37512192130088806
+      ]
+    ],
+    "original_wh": [
+      640,
+      480
+    ],
+    "cache_image_sha256": "b45788137bf62cc58a3adc21f6c11949484ef7a2ae71f4bf405dfd85426181e1",
+    "status": "RULE_FILTERED_CANDIDATE_NOT_HUMAN_VERIFIED"
+  },
+  {
+    "vg_image_id": 2355633,
+    "coco_id": 180729,
+    "image_id": 11249,
+    "filename": "COCO_val2014_000000180729.jpg",
+    "filepath": "val2014",
+    "source_split": "restval",
+    "region_id": 2876548,
+    "relationship_id": 3735751,
+    "phrase": "a woman sitting at a table",
+    "predicate": "sitting at",
+    "subject_names": [
+      "woman"
+    ],
+    "object_names": [
+      "table"
+    ],
+    "subject_id": 1894517,
+    "object_id": 3450653,
+    "object_class": "dining table",
+    "pair_slot": 2,
+    "selected_native_row": 4,
+    "proposal_indices": [
+      0,
+      5
+    ],
+    "endpoint_iou": [
+      0.9352658538284896,
+      0.9493555005049167
+    ],
+    "vg_boxes_normalized": [
+      [
+        0.08708708708708708,
+        0.068,
+        0.5525525525525525,
+        0.454
+      ],
+      [
+        0.018018018018018018,
+        0.438,
+        0.993993993993994,
+        0.996
+      ]
+    ],
+    "predicted_boxes_normalized": [
+      [
+        0.08761963248252869,
+        0.06694693863391876,
+        0.5665260553359985,
+        0.4671923518180847
+      ],
+      [
+        0.00498160719871521,
+        0.4218699634075165,
+        0.9937412738800049,
+        0.9904020428657532
+      ]
+    ],
+    "original_wh": [
+      427,
+      640
+    ],
+    "cache_image_sha256": "c49c7400c69644e8b9e854844fff75e62e3cb85a56d311216dd6daf5bc09d97e",
+    "status": "RULE_FILTERED_CANDIDATE_NOT_HUMAN_VERIFIED"
+  },
+  {
+    "vg_image_id": 713400,
+    "coco_id": 92216,
+    "image_id": 59836,
+    "filename": "COCO_train2014_000000092216.jpg",
+    "filepath": "train2014",
+    "source_split": "train",
+    "region_id": 5694854,
+    "relationship_id": 4787562,
+    "phrase": "A person is swinging a baseball bat",
+    "predicate": "swinging",
+    "subject_names": [
+      "person"
+    ],
+    "object_names": [
+      "baseball bat"
+    ],
+    "subject_id": 4567672,
+    "object_id": 4567673,
+    "object_class": "baseball bat",
+    "pair_slot": 0,
+    "selected_native_row": 2,
+    "proposal_indices": [
+      0,
+      3
+    ],
+    "endpoint_iou": [
+      0.938575995631358,
+      0.6923851097046906
+    ],
+    "vg_boxes_normalized": [
+      [
+        0.259765625,
+        0.383601756954612,
+        0.5830078125,
+        0.9355783308931186
+      ],
+      [
+        0.47265625,
+        0.5036603221083455,
+        0.5380859375,
+        0.5490483162518301
+      ]
+    ],
+    "predicted_boxes_normalized": [
+      [
+        0.26901841163635254,
+        0.38299086689949036,
+        0.5859670639038086,
+        0.9494859576225281
+      ],
+      [
+        0.4649578928947449,
+        0.5009245872497559,
+        0.5390653014183044,
+        0.5588016510009766
+      ]
+    ],
+    "original_wh": [
+      640,
+      427
+    ],
+    "cache_image_sha256": "98b6b43bfe28ac3efae8d299ae5717a408f4cad56cf96e677245b2891018c7bc",
+    "status": "RULE_FILTERED_CANDIDATE_NOT_HUMAN_VERIFIED"
+  },
+  {
+    "vg_image_id": 2408657,
+    "coco_id": 394486,
+    "image_id": 87548,
+    "filename": "COCO_train2014_000000394486.jpg",
+    "filepath": "train2014",
+    "source_split": "train",
+    "region_id": 283606,
+    "relationship_id": 289163,
+    "phrase": "man talking on phone",
+    "predicate": "talking on",
+    "subject_names": [
+      "man"
+    ],
+    "object_names": [
+      "phone"
+    ],
+    "subject_id": 257452,
+    "object_id": 257453,
+    "object_class": "cell phone",
+    "pair_slot": 1,
+    "selected_native_row": 3,
+    "proposal_indices": [
+      0,
+      4
+    ],
+    "endpoint_iou": [
+      0.9614206009406181,
+      0.6991460139523473
+    ],
+    "vg_boxes_normalized": [
+      [
+        0.009009009009009009,
+        0.478,
+        0.7117117117117117,
+        0.998
+      ],
+      [
+        0.07207207207207207,
+        0.654,
+        0.3993993993993994,
+        0.788
+      ]
+    ],
+    "predicted_boxes_normalized": [
+      [
+        0.0050068199634552,
+        0.46506473422050476,
+        0.7114920616149902,
+        0.9934253096580505
+      ],
+      [
+        0.07424858212471008,
+        0.6189751625061035,
+        0.4064955413341522,
+        0.8056662082672119
+      ]
+    ],
+    "original_wh": [
+      427,
+      640
+    ],
+    "cache_image_sha256": "bb805ac7a4f7dd93528f581cc25c56fd0277f65ec4e82260b220ec6eccd42a26",
+    "status": "RULE_FILTERED_CANDIDATE_NOT_HUMAN_VERIFIED"
+  },
+  {
+    "vg_image_id": 2406163,
+    "coco_id": 349676,
+    "image_id": 11527,
+    "filename": "COCO_val2014_000000349676.jpg",
+    "filepath": "val2014",
+    "source_split": "restval",
+    "region_id": 402756,
+    "relationship_id": 3235719,
+    "phrase": "the man watches as two giraffe mate",
+    "predicate": "watching",
+    "subject_names": [
+      "man"
+    ],
+    "object_names": [
+      "giraffe"
+    ],
+    "subject_id": 1103259,
+    "object_id": 1103261,
+    "object_class": "giraffe",
+    "pair_slot": 1,
+    "selected_native_row": 3,
+    "proposal_indices": [
+      0,
+      4
+    ],
+    "endpoint_iou": [
+      0.917105364007712,
+      0.7034754560622866
+    ],
+    "vg_boxes_normalized": [
+      [
+        0.076,
+        0.34534534534534533,
+        0.288,
+        0.987987987987988
+      ],
+      [
+        0.412,
+        0.07507507507507508,
+        0.604,
+        0.8768768768768769
+      ]
+    ],
+    "predicted_boxes_normalized": [
+      [
+        0.07149539887905121,
+        0.335354208946228,
+        0.2970900535583496,
+        0.9938566088676453
+      ],
+      [
+        0.4041000306606293,
+        0.05952572822570801,
+        0.6685616970062256,
+        0.8870039582252502
+      ]
+    ],
+    "original_wh": [
+      500,
+      333
+    ],
+    "cache_image_sha256": "068690a26ce53d99c65f47f09225a513796786c6682e8247bdd00e463f5295d9",
+    "status": "RULE_FILTERED_CANDIDATE_NOT_HUMAN_VERIFIED"
+  },
+  {
+    "vg_image_id": 2397859,
+    "coco_id": 510527,
+    "image_id": 21894,
+    "filename": "COCO_val2014_000000510527.jpg",
+    "filepath": "val2014",
+    "source_split": "restval",
+    "region_id": 858522,
+    "relationship_id": 943983,
+    "phrase": "man adjusting his tie",
+    "predicate": "adjusting",
+    "subject_names": [
+      "man"
+    ],
+    "object_names": [
+      "tie"
+    ],
+    "subject_id": 430000,
+    "object_id": 430001,
+    "object_class": "tie",
+    "pair_slot": 0,
+    "selected_native_row": 2,
+    "proposal_indices": [
+      0,
+      3
+    ],
+    "endpoint_iou": [
+      0.9859350536716837,
+      0.8961938405925872
+    ],
+    "vg_boxes_normalized": [
+      [
+        0.004,
+        0.042,
+        0.994,
+        1.0
+      ],
+      [
+        0.462,
+        0.682,
+        0.752,
+        0.998
+      ]
+    ],
+    "predicted_boxes_normalized": [
+      [
+        0.004793077707290649,
+        0.03688472509384155,
+        0.9944780468940735,
+        0.9927818179130554
+      ],
+      [
+        0.45771777629852295,
+        0.6736529469490051,
+        0.7347705364227295,
+        0.9950882792472839
+      ]
+    ],
+    "original_wh": [
+      640,
+      640
+    ],
+    "cache_image_sha256": "7bbc02bb22e8ac2476af8f7f330112ca5268c060a75a0b56e31a6c22a7cec68a",
+    "status": "RULE_FILTERED_CANDIDATE_NOT_HUMAN_VERIFIED"
+  }
+]

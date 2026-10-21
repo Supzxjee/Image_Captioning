@@ -1,0 +1,465 @@
+{
+  "status": "DATA_FEASIBILITY_RULE_AUDIT_COMPLETE_PENDING_VISUAL_REVIEW",
+  "model_or_training_executed": false,
+  "source_dataset_sha256": "2fd999220673258012acfb411a4e7e66af7d488050b2519b0badcc49b7600b8d",
+  "cache_review_sha256": "5fd2fdd24998880151df7926d173da566b419019a24c126d505183cbe82536bf",
+  "hidden_receipt_sha256": "873f6da0e1b4c4f7d7408b67c593c07ce56e5b4ca3fa1db5f9ce5e04aa188920",
+  "vg_metadata_images": 108077,
+  "vg_metadata_coco_split_counts": {
+    "restval": 13183,
+    "train": 34027,
+    "val": 2146,
+    "test": 2142
+  },
+  "heldout_all_coco_val_test": 10000,
+  "known_exposed_ids_excluded": 568,
+  "vg_images_in_cache_train_before_exclusion": 4115,
+  "allowed_cached_train_vg_images": 4093,
+  "funnel": {
+    "allowed_cached_train_images_seen": 4093,
+    "allowed_images_with_selected_pairs": 2188,
+    "regions_in_cached_train_with_pairs": 109645,
+    "one_graph_relation": 35754,
+    "human_coco_object_relation": 2223,
+    "explicit_single_edge_phrase": 852
+  },
+  "rejected": {
+    "zero_or_multiple_graph_relations": 73891,
+    "no_selected_pairs_images": 1191,
+    "not_unambiguous_human_to_coco_object": 31861,
+    "spatial_complex_negated_or_length": 801,
+    "phrase_not_lexically_tied_to_edge": 570,
+    "not_exactly_two_resolved_objects": 1670,
+    "image_aspect_mismatch": 714,
+    "multiple_qualifying_selected_pairs": 27,
+    "no_same_class_selected_pair_both_iou_ge_05": 351,
+    "duplicate_image_slot_phrase": 6
+  },
+  "candidates": 468,
+  "candidate_images": 314,
+  "unique_phrases": 440,
+  "predicate_counts": {
+    "holding": 90,
+    "riding": 38,
+    "wearing": 31,
+    "sitting on": 29,
+    "carrying": 13,
+    "flying": 13,
+    "holds": 12,
+    "on a": 11,
+    "looking at": 9,
+    "standing on": 8,
+    "throwing": 8,
+    "sitting in": 7,
+    "riding a": 7,
+    "rides": 7,
+    "eating": 7,
+    "wears": 6,
+    "catching": 6,
+    "using": 5,
+    "feeding": 5,
+    "sits on": 4,
+    "touching": 4,
+    "wearing a": 4,
+    "carrying a": 4,
+    "swinging": 3,
+    "talking on": 3,
+    "watching": 3,
+    "cutting": 3,
+    "sitting at": 3,
+    "flying a": 3,
+    "holding onto": 2,
+    "inside": 2,
+    "getting on": 2,
+    "standing near": 2,
+    "standing next to": 2,
+    "fixing": 2,
+    "tapping": 2,
+    "walking": 2,
+    "pulling": 2,
+    "reading a": 2,
+    "using a": 2,
+    "adjusting": 2,
+    "licking": 2,
+    "pushing": 2,
+    "steering": 2,
+    "throws": 2,
+    "playing with": 2,
+    "waxing": 2,
+    "grabbing": 2,
+    "making": 2,
+    "holding an": 2,
+    "doing trick on": 2,
+    "sitting": 2,
+    "reaching": 2,
+    "posing with": 2,
+    "walking with": 1,
+    "standing": 1,
+    "sitting inside": 1,
+    "entering": 1,
+    "climbing on": 1,
+    "putting on": 1,
+    "tying": 1,
+    "twirling a": 1,
+    "swings": 1,
+    "checking": 1,
+    "shopping with": 1,
+    "hits": 1,
+    "testing": 1,
+    "bathing": 1,
+    "on pink": 1,
+    "looking at a": 1,
+    "adjusts": 1,
+    "licks": 1,
+    "pushing a": 1,
+    "points at": 1,
+    "ready to throw": 1,
+    "balancing a": 1,
+    "standing below": 1,
+    "bent over": 1,
+    "straightening": 1,
+    "photographing": 1,
+    "driving": 1,
+    "has a": 1,
+    "sitting behind": 1,
+    "holding out": 1,
+    "plays with": 1,
+    "leading a": 1,
+    "caught": 1,
+    "playing": 1,
+    "playing catch with": 1,
+    "threw": 1,
+    "past": 1,
+    "preparing": 1,
+    "lying on": 1,
+    "balancing on": 1,
+    "hit": 1,
+    "taking a picture of": 1,
+    "standing behind": 1,
+    "selecting a": 1,
+    "cut": 1,
+    "biting into": 1,
+    "laying on": 1,
+    "laying": 1,
+    "standing by": 1,
+    "standing in": 1,
+    "outside": 1,
+    "hanging off": 1,
+    "walking a": 1,
+    "seated at corner of": 1,
+    "underneath": 1,
+    "sitting in front of": 1,
+    "hitting": 1,
+    "standing in front of": 1,
+    "riding on": 1,
+    "doing a trick on a": 1,
+    "jumping on": 1,
+    "held": 1,
+    "leaning back": 1,
+    "on top of a": 1,
+    "sitting at a": 1,
+    "petting": 1,
+    "seated on": 1,
+    "looking down at": 1,
+    "pointing at": 1,
+    "jumping in air with": 1,
+    "touching a": 1,
+    "holding a": 1
+  },
+  "object_counts": {
+    "tie": 48,
+    "frisbee": 31,
+    "umbrella": 26,
+    "skateboard": 26,
+    "cell phone": 26,
+    "bicycle": 23,
+    "horse": 21,
+    "kite": 21,
+    "surfboard": 17,
+    "tennis racket": 17,
+    "bench": 15,
+    "couch": 12,
+    "pizza": 12,
+    "bus": 11,
+    "elephant": 11,
+    "dog": 11,
+    "motorcycle": 10,
+    "snowboard": 9,
+    "chair": 7,
+    "sports ball": 7,
+    "boat": 7,
+    "laptop": 6,
+    "cat": 6,
+    "suitcase": 5,
+    "toilet": 5,
+    "cake": 5,
+    "backpack": 5,
+    "skis": 5,
+    "bed": 5,
+    "dining table": 4,
+    "sheep": 4,
+    "handbag": 3,
+    "cow": 3,
+    "clock": 3,
+    "fork": 3,
+    "bottle": 3,
+    "baseball bat": 2,
+    "knife": 2,
+    "giraffe": 2,
+    "book": 2,
+    "airplane": 2,
+    "train": 2,
+    "carrot": 2,
+    "donut": 2,
+    "toothbrush": 2,
+    "bowl": 2,
+    "tv": 2,
+    "cup": 1,
+    "spoon": 1,
+    "zebra": 1,
+    "parking meter": 1,
+    "teddy bear": 1,
+    "broccoli": 1,
+    "sandwich": 1,
+    "fire hydrant": 1,
+    "remote": 1,
+    "oven": 1,
+    "refrigerator": 1,
+    "stop sign": 1,
+    "baseball glove": 1
+  },
+  "practical_target": {
+    "images": 1000,
+    "phrases": 2000,
+    "status": "Not a statistical power guarantee; no automatic GO."
+  },
+  "candidates_are_verified": false,
+  "test_used_for_learning": false,
+  "limits": [
+    "Single-edge/two-object/explicit-lexical filters are conservative; rejected does not mean false.",
+    "COCO identity and aspect checked; visual review still must verify image/box orientation and phrase truth.",
+    "Matching uses only the top8 selected cached pairs; no claim about all native UPT proposals.",
+    "No GT replacement at inference; no synthetic phrases, no model scoring, no negatives manufactured.",
+    "Exact COCO IDs prevent known split leakage; unknown visual duplicates/pretraining overlap not exhaustively audited."
+  ],
+  "official_annotation_provenance": {
+    "image_data": {
+      "url": "https://homes.cs.washington.edu/~ranjay/visualgenome/data/dataset/image_data.json.zip",
+      "bytes": 1780854,
+      "sha256": "b87a94918cb2ff4d952cf1dfeca0b9cf6cd6fd204c2f8704645653be1163681a",
+      "official_link_page": "https://homes.cs.washington.edu/~ranjay/visualgenome/api.html",
+      "members": [
+        {
+          "name": "image_data.json",
+          "bytes": 17612822
+        }
+      ]
+    },
+    "region_graphs": {
+      "url": "https://homes.cs.washington.edu/~ranjay/visualgenome/data/dataset/region_graphs.json.zip",
+      "bytes": 331673448,
+      "sha256": "a34a7623a1c03d89d4f7df10b7ed7945eb2d7e67084eee249ab8e3433e6a6dcf",
+      "official_link_page": "https://homes.cs.washington.edu/~ranjay/visualgenome/api.html",
+      "members": [
+        {
+          "name": "region_graphs.json",
+          "bytes": 2783274985
+        }
+      ]
+    }
+  },
+  "sample_image_identity": [
+    {
+      "coco_id": 194210,
+      "url": "http://images.cocodataset.org/train2014/COCO_train2014_000000194210.jpg",
+      "sha256": "9efacb84b8c004d1d5270dce31a88e82372153a0c797bc4c096e0cac08e85209",
+      "byte_identity_matches_cache": true
+    },
+    {
+      "coco_id": 53635,
+      "url": "http://images.cocodataset.org/val2014/COCO_val2014_000000053635.jpg",
+      "sha256": "d765a9bb973cde0e1c979a43286ef22203db07225e45bf1f50785edde3d8619b",
+      "byte_identity_matches_cache": true
+    },
+    {
+      "coco_id": 466784,
+      "url": "http://images.cocodataset.org/val2014/COCO_val2014_000000466784.jpg",
+      "sha256": "91133380139078d5223d858a677de0798bf522cacfd7285ef2b59036f56fd9d6",
+      "byte_identity_matches_cache": true
+    },
+    {
+      "coco_id": 136070,
+      "url": "http://images.cocodataset.org/train2014/COCO_train2014_000000136070.jpg",
+      "sha256": "696028ba79403c0e212b0002d6afa6fa82f4931a86055741bdefce2ceb8d40cb",
+      "byte_identity_matches_cache": true
+    },
+    {
+      "coco_id": 130718,
+      "url": "http://images.cocodataset.org/train2014/COCO_train2014_000000130718.jpg",
+      "sha256": "ae97e278965861844a0721e6ce128dd78964cb72514f71b1788b5463379acee9",
+      "byte_identity_matches_cache": true
+    },
+    {
+      "coco_id": 70702,
+      "url": "http://images.cocodataset.org/train2014/COCO_train2014_000000070702.jpg",
+      "sha256": "45ddcf2c9d6e9d69ed9b1698b887c9ac415282d8a9e16a31c14185331ba2c72b",
+      "byte_identity_matches_cache": true
+    },
+    {
+      "coco_id": 245806,
+      "url": "http://images.cocodataset.org/train2014/COCO_train2014_000000245806.jpg",
+      "sha256": "529111216ed2b5b80b5d8f15a1afde7d225a2fe076a75e9339ca317dbb0ab675",
+      "byte_identity_matches_cache": true
+    },
+    {
+      "coco_id": 445684,
+      "url": "http://images.cocodataset.org/train2014/COCO_train2014_000000445684.jpg",
+      "sha256": "69eee4dcf477e6a107ccf15934d3beb8c379895ddcfe03b01cc9cc1c7230dcea",
+      "byte_identity_matches_cache": true
+    },
+    {
+      "coco_id": 261298,
+      "url": "http://images.cocodataset.org/train2014/COCO_train2014_000000261298.jpg",
+      "sha256": "68b8af80864c7d58bc3035d98aa4a80463c4b7b8baf61536383543c3430e4522",
+      "byte_identity_matches_cache": true
+    },
+    {
+      "coco_id": 397648,
+      "url": "http://images.cocodataset.org/train2014/COCO_train2014_000000397648.jpg",
+      "sha256": "96e9699a7220cbb7e264578f9591186c11bc373ef3f04bb05d3966a6856571db",
+      "byte_identity_matches_cache": true
+    },
+    {
+      "coco_id": 97563,
+      "url": "http://images.cocodataset.org/train2014/COCO_train2014_000000097563.jpg",
+      "sha256": "df292a81dafd96c8c45b13079b21c300a7108ce14e5cd649d2d7f9a34563883f",
+      "byte_identity_matches_cache": true
+    },
+    {
+      "coco_id": 168998,
+      "url": "http://images.cocodataset.org/train2014/COCO_train2014_000000168998.jpg",
+      "sha256": "9324aadb59da4b44b9636e3b5ed731c307fcd1ee06370f49b79ba7d5d4f6cf1b",
+      "byte_identity_matches_cache": true
+    },
+    {
+      "coco_id": 69167,
+      "url": "http://images.cocodataset.org/train2014/COCO_train2014_000000069167.jpg",
+      "sha256": "f4ae0acc18255ae9402d65ec42af2f2b2656cfd63b313e5e9f9618119e2abcd1",
+      "byte_identity_matches_cache": true
+    },
+    {
+      "coco_id": 519795,
+      "url": "http://images.cocodataset.org/train2014/COCO_train2014_000000519795.jpg",
+      "sha256": "01091438fd0491375b1c3c69546929ced26f91fefe1d2bd7c2141e71b2ceb2a2",
+      "byte_identity_matches_cache": true
+    },
+    {
+      "coco_id": 298547,
+      "url": "http://images.cocodataset.org/val2014/COCO_val2014_000000298547.jpg",
+      "sha256": "99697445d2a0f8bc44df13f4be7f295e86fc1fe4c8728f3425568b4adcea1ad4",
+      "byte_identity_matches_cache": true
+    },
+    {
+      "coco_id": 55317,
+      "url": "http://images.cocodataset.org/train2014/COCO_train2014_000000055317.jpg",
+      "sha256": "7539c95726daa7f63985687d77fe639b962be91163dee6ef9d435be1976ec1e4",
+      "byte_identity_matches_cache": true
+    },
+    {
+      "coco_id": 268881,
+      "url": "http://images.cocodataset.org/train2014/COCO_train2014_000000268881.jpg",
+      "sha256": "6a0d01ba6d3735443486d3447837cb1d3ebeb2360e9c5bcedb2cdb8888341a35",
+      "byte_identity_matches_cache": true
+    },
+    {
+      "coco_id": 485830,
+      "url": "http://images.cocodataset.org/train2014/COCO_train2014_000000485830.jpg",
+      "sha256": "c65567bbd7c95a8408c7efee604b2f64a87bbb24a06e741bdbd51c9d7a44a0b4",
+      "byte_identity_matches_cache": true
+    },
+    {
+      "coco_id": 467257,
+      "url": "http://images.cocodataset.org/val2014/COCO_val2014_000000467257.jpg",
+      "sha256": "0472236cfb8c563e772b7ed59e43e4f0e30b68ae2e6e9a60c89b5408d6c9118f",
+      "byte_identity_matches_cache": true
+    },
+    {
+      "coco_id": 360991,
+      "url": "http://images.cocodataset.org/train2014/COCO_train2014_000000360991.jpg",
+      "sha256": "56912c92486ee68491fb6150fb7c7511afb6a8cd0a2e3bc775329009e5138eab",
+      "byte_identity_matches_cache": true
+    },
+    {
+      "coco_id": 46508,
+      "url": "http://images.cocodataset.org/val2014/COCO_val2014_000000046508.jpg",
+      "sha256": "8629f7c7ea99f61ca7dfa8385af1a7eb46e6db52a2c2ff1a3729b0b76a77c5a8",
+      "byte_identity_matches_cache": true
+    },
+    {
+      "coco_id": 552855,
+      "url": "http://images.cocodataset.org/train2014/COCO_train2014_000000552855.jpg",
+      "sha256": "233f3fc8185debb053c92c1fd3618c0af2ba40fc79881c5515939674899929d9",
+      "byte_identity_matches_cache": true
+    },
+    {
+      "coco_id": 70863,
+      "url": "http://images.cocodataset.org/train2014/COCO_train2014_000000070863.jpg",
+      "sha256": "735191bf069daa50727a2b0dea680ac70c1de7ca5a806d6d50189fb61a6174f4",
+      "byte_identity_matches_cache": true
+    },
+    {
+      "coco_id": 462466,
+      "url": "http://images.cocodataset.org/val2014/COCO_val2014_000000462466.jpg",
+      "sha256": "9aa9d4f47b356908e8f606e72d2232f2cf201140a9dd375f1383742aa2621b47",
+      "byte_identity_matches_cache": true
+    },
+    {
+      "coco_id": 187435,
+      "url": "http://images.cocodataset.org/train2014/COCO_train2014_000000187435.jpg",
+      "sha256": "b45788137bf62cc58a3adc21f6c11949484ef7a2ae71f4bf405dfd85426181e1",
+      "byte_identity_matches_cache": true
+    },
+    {
+      "coco_id": 180729,
+      "url": "http://images.cocodataset.org/val2014/COCO_val2014_000000180729.jpg",
+      "sha256": "c49c7400c69644e8b9e854844fff75e62e3cb85a56d311216dd6daf5bc09d97e",
+      "byte_identity_matches_cache": true
+    },
+    {
+      "coco_id": 92216,
+      "url": "http://images.cocodataset.org/train2014/COCO_train2014_000000092216.jpg",
+      "sha256": "98b6b43bfe28ac3efae8d299ae5717a408f4cad56cf96e677245b2891018c7bc",
+      "byte_identity_matches_cache": true
+    },
+    {
+      "coco_id": 394486,
+      "url": "http://images.cocodataset.org/train2014/COCO_train2014_000000394486.jpg",
+      "sha256": "bb805ac7a4f7dd93528f581cc25c56fd0277f65ec4e82260b220ec6eccd42a26",
+      "byte_identity_matches_cache": true
+    },
+    {
+      "coco_id": 349676,
+      "url": "http://images.cocodataset.org/val2014/COCO_val2014_000000349676.jpg",
+      "sha256": "068690a26ce53d99c65f47f09225a513796786c6682e8247bdd00e463f5295d9",
+      "byte_identity_matches_cache": true
+    },
+    {
+      "coco_id": 510527,
+      "url": "http://images.cocodataset.org/val2014/COCO_val2014_000000510527.jpg",
+      "sha256": "7bbc02bb22e8ac2476af8f7f330112ca5268c060a75a0b56e31a6c22a7cec68a",
+      "byte_identity_matches_cache": true
+    }
+  ],
+  "assistant_visual_review_counts": {
+    "supported": 23,
+    "unclear": 4,
+    "reject_instance": 1,
+    "reject_event_filter": 1,
+    "reject_extra_event": 1
+  },
+  "decision": "NOT_READY_FOR_G_T_WITH_CURRENT_STRICT_CACHE_INTERSECTION",
+  "reason": "468 unverified rule candidates on314 images below practical target1000 images/~2000 phrases; provisional sample reveals a definite wrong-instance link, an extra-event phrase and uncertain links.",
+  "candidate_manifest_sha256": "f7fa43d0ea48d27f7b9fce8214d2e1eddaf2ded5c4aeaa2c6cb65834d19b0da8",
+  "sample_manifest_sha256": "4aeb12289c99ee6a00ba1575b9226b0db89bf6711f9e551d5dfe88bd05427526",
+  "known_rule_limit": "Exact spatial-predicate blacklist misses variants such as on a; raw predicate strings are not distinct semantic event classes. These are candidates, never training labels."
+}
