@@ -1,0 +1,220 @@
+{
+  "status": "SOURCE_FEASIBILITY_PASS_NUMERICAL_PARITY_AND_PILOT_NOT_DONE",
+  "date": "2026-10-22",
+  "reference": {
+    "repo": "CrossmodalGroup/CSA-Net",
+    "commit": "0cc570ba7c50ef08c46a21439fe73ef0a5df97ab",
+    "tree_complete": true,
+    "files": [
+      {
+        "path": "README.md",
+        "url": "https://raw.githubusercontent.com/CrossmodalGroup/CSA-Net/0cc570ba7c50ef08c46a21439fe73ef0a5df97ab/README.md",
+        "sha256": "f37f88fb7ee0dcea130d8e74db399c76508e12fabcf75fb9dea631b3dbf0819b",
+        "bytes": 1977
+      },
+      {
+        "path": "requirements.txt",
+        "url": "https://raw.githubusercontent.com/CrossmodalGroup/CSA-Net/0cc570ba7c50ef08c46a21439fe73ef0a5df97ab/requirements.txt",
+        "sha256": "648a3e17a16669bb3666c120f85a8a940fc24e1970f5655010f9dc8436ded5e6",
+        "bytes": 93
+      },
+      {
+        "path": "train_caption.py",
+        "url": "https://raw.githubusercontent.com/CrossmodalGroup/CSA-Net/0cc570ba7c50ef08c46a21439fe73ef0a5df97ab/train_caption.py",
+        "sha256": "080dcee0b7aa1968501e7add0fbd56b01cf8bae7de26b53aa84b49f628dad965",
+        "bytes": 10149
+      },
+      {
+        "path": "models/caption/csa_net.py",
+        "url": "https://raw.githubusercontent.com/CrossmodalGroup/CSA-Net/0cc570ba7c50ef08c46a21439fe73ef0a5df97ab/models/caption/csa_net.py",
+        "sha256": "d6bc6d8072c03cb7d42bc8ffcc48e48cefb03b1b128e081b608902d845b6ded1",
+        "bytes": 10597
+      },
+      {
+        "path": "models/caption/__init__.py",
+        "url": "https://raw.githubusercontent.com/CrossmodalGroup/CSA-Net/0cc570ba7c50ef08c46a21439fe73ef0a5df97ab/models/caption/__init__.py",
+        "sha256": "cc804a643e39072461a2b1e0f558e6d8f6a7b67913b5a952e95d7736dae7a3b0",
+        "bytes": 103
+      },
+      {
+        "path": "models/caption/transformer.py",
+        "url": "https://raw.githubusercontent.com/CrossmodalGroup/CSA-Net/0cc570ba7c50ef08c46a21439fe73ef0a5df97ab/models/caption/transformer.py",
+        "sha256": "4183819ec7f57d5565dd113adccb8a7a7a202b635239497250457cda213f0ad7",
+        "bytes": 10828
+      },
+      {
+        "path": "models/caption/cap_generator.py",
+        "url": "https://raw.githubusercontent.com/CrossmodalGroup/CSA-Net/0cc570ba7c50ef08c46a21439fe73ef0a5df97ab/models/caption/cap_generator.py",
+        "sha256": "1ac4d009f11c4936173d299f7525eb84d3d3b607ed8724cfb1bf200c21d647e8",
+        "bytes": 13248
+      },
+      {
+        "path": "models/caption/detector.py",
+        "url": "https://raw.githubusercontent.com/CrossmodalGroup/CSA-Net/0cc570ba7c50ef08c46a21439fe73ef0a5df97ab/models/caption/detector.py",
+        "sha256": "216816df198110fb44173a4f2f3f4a4e4ad24b8bf2fec72a9c6aa81813904cc7",
+        "bytes": 3089
+      },
+      {
+        "path": "models/caption/base.py",
+        "url": "https://raw.githubusercontent.com/CrossmodalGroup/CSA-Net/0cc570ba7c50ef08c46a21439fe73ef0a5df97ab/models/caption/base.py",
+        "sha256": "2e852dc314acfe6b38c2ad510c202bd0928f9f286fcf79abb11c95e36c1861cb",
+        "bytes": 1494
+      },
+      {
+        "path": "datasets/caption/field.py",
+        "url": "https://raw.githubusercontent.com/CrossmodalGroup/CSA-Net/0cc570ba7c50ef08c46a21439fe73ef0a5df97ab/datasets/caption/field.py",
+        "sha256": "64e487139ded3dd42338d880015663d4ee1575df5b47c666db6534571ffe0db8",
+        "bytes": 10786
+      },
+      {
+        "path": "engine/caption_engine.py",
+        "url": "https://raw.githubusercontent.com/CrossmodalGroup/CSA-Net/0cc570ba7c50ef08c46a21439fe73ef0a5df97ab/engine/caption_engine.py",
+        "sha256": "16b82189c70b47ed0920e0b3e8fa47d526c47439493ac4f6e768767cccd21dd8",
+        "bytes": 17544
+      },
+      {
+        "path": "coco_caption/coco_nouns_emb.pth",
+        "url": "https://raw.githubusercontent.com/CrossmodalGroup/CSA-Net/0cc570ba7c50ef08c46a21439fe73ef0a5df97ab/coco_caption/coco_nouns_emb.pth",
+        "sha256": "9d2a783f6db5c5afa055484bd41a86ba1feb5365af791dbda8875c5687479ed2",
+        "bytes": 19514104
+      },
+      {
+        "path": "coco_caption/coco_verbs_emb.pth",
+        "url": "https://raw.githubusercontent.com/CrossmodalGroup/CSA-Net/0cc570ba7c50ef08c46a21439fe73ef0a5df97ab/coco_caption/coco_verbs_emb.pth",
+        "sha256": "7fc0eb7812bbbe0a004490330318dd64a0ea1f61e7a00dc3102a0fdf61bb40fb",
+        "bytes": 3994360
+      },
+      {
+        "path": "configs/caption/cap_generator/concat.yaml",
+        "url": "https://raw.githubusercontent.com/CrossmodalGroup/CSA-Net/0cc570ba7c50ef08c46a21439fe73ef0a5df97ab/configs/caption/cap_generator/concat.yaml",
+        "sha256": "b477d7ebe397d1707ea7231332d6c776e1535f927f307d1cc4847cd545cc2251",
+        "bytes": 79
+      },
+      {
+        "path": "configs/caption/cap_generator/parallel.yaml",
+        "url": "https://raw.githubusercontent.com/CrossmodalGroup/CSA-Net/0cc570ba7c50ef08c46a21439fe73ef0a5df97ab/configs/caption/cap_generator/parallel.yaml",
+        "sha256": "5991f71df2abcc894417605fb5e3a51ae23debf2c2c2a1a00d4f83efa763cbca",
+        "bytes": 75
+      },
+      {
+        "path": "configs/caption/coco_config_csa_net_end_to_end.yaml",
+        "url": "https://raw.githubusercontent.com/CrossmodalGroup/CSA-Net/0cc570ba7c50ef08c46a21439fe73ef0a5df97ab/configs/caption/coco_config_csa_net_end_to_end.yaml",
+        "sha256": "38907372d3ac99dd76d1dd9c3179d7db47c6cb1114e697533d435955181a4e28",
+        "bytes": 2098
+      }
+    ],
+    "paper_path": "C:\\KhoaLuanTotNghiep\\Paper\\Cascade-Semantic-Prompt-Alignment-Network-for-Image-Captioning.pdf",
+    "paper_sha256": "63ae0db0ee4a1eeeb41a4a241a5ff186bae342caf180fe7e5b2d2875d86575eb",
+    "paper_pages": 16,
+    "status": "REFERENCE_SOURCES_AND_PROTOTYPES_NO_CODE_EXECUTION_NO_TORCH_LOAD"
+  },
+  "prototype_banks": [
+    {
+      "filename": "coco_nouns_emb.pth",
+      "shape": [
+        4764,
+        1024
+      ],
+      "dtype": "float32 from FloatStorage metadata",
+      "bytes": 19514104,
+      "sha256": "9d2a783f6db5c5afa055484bd41a86ba1feb5365af791dbda8875c5687479ed2",
+      "validation": "ZIP CRC + pickle opcode metadata + storage length; no pickle execution or torch.load"
+    },
+    {
+      "filename": "coco_verbs_emb.pth",
+      "shape": [
+        975,
+        1024
+      ],
+      "dtype": "float32 from FloatStorage metadata",
+      "bytes": 3994360,
+      "sha256": "7fc0eb7812bbbe0a004490330318dd64a0ea1f61e7a00dc3102a0fdf61bb40fb",
+      "validation": "ZIP CRC + pickle opcode metadata + storage length; no pickle execution or torch.load"
+    }
+  ],
+  "core": {
+    "input": "reg_feat B x N x512; default official detector N150",
+    "semantic_input": [
+      "4764x1024 nouns",
+      "975x1024 verbs"
+    ],
+    "aggregated_slots": 150,
+    "stages": [
+      "object0",
+      "object1",
+      "relation2"
+    ],
+    "output": [
+      "B x N x512 object",
+      "B x N x512 relation",
+      "B x1x1xN rel_mask"
+    ],
+    "n_layers_argument": "Exposed but forward is hardcoded as two object plus one relation stage",
+    "requires_detector_import": false,
+    "requires_new_regionclip_inference_if_banks_reused": false
+  },
+  "resource_estimate": {
+    "full_core_trainable_parameters": 23161644,
+    "osa_two_stage_parameters": 14865046,
+    "full_core_fp32_parameters_grad_adam_bytes": 370586304,
+    "osa_fp32_parameters_grad_adam_bytes": 237840736,
+    "prototype_file_bytes": 23508464,
+    "pilot_gpu_hours": "Unknown: no benchmark/model execution; cannot infer original two-A800 recipe fits T4x2"
+  },
+  "full_system": {
+    "ready": false,
+    "missing_import": "models/detection/det_module.py",
+    "detector_checkpoint": "coco_caption/detector_checkpoint_4ds.pth referenced, absent in pinned tree; external availability not established",
+    "full_caption_checkpoint": "No downloadable full-caption checkpoint identified in inspected README/tree",
+    "feature_cache": "all_splits.h5 referenced, absent in pinned tree; no matching CSA region cache verified locally",
+    "original_recipe": "Paper p7: SwinB/deformableDETR,2A800,batch32,15XE+30SC,3epochXE warmup,beam5; not current pilot recipe"
+  },
+  "discrepancies": [
+    "Paper Eq6 normalized cosine; released alignment uses raw dot products without F.normalize",
+    "Released code uses region-pooling temperature0.1 and prototype-weighting temperature0.05; Eq8 writes softmax(R) without second scale",
+    "Paper Eq11 weights self branch by G; code weights cross branch by response_gate and adds out_proj; choose explicit reference, not silent fixes",
+    "Released relation mask equals sum(features)==1; validity meaning unexplained; cannot assume ordinary padding mask",
+    "Parallel decoder alpha2 uses fc_alpha1 although fc_alpha2 is defined; code also divides sum by sqrt2",
+    "Paper/config/README differ in warmup,LRate/batch/freeze recipe; pin one declared variant",
+    "Released RL uses beam candidate mean reward baseline, not the current greedy SCST + CE anchor + object reward"
+  ],
+  "inheritance_options": [
+    {
+      "name": "OSA component adaptation",
+      "status": "Smallest component option; not itself a relation-alignment solution",
+      "preserved": "Original noun bank,semantic aggregation,weighted alignment,two object fusion stages",
+      "changed": "Input QFormer32queries instead of detector150regions; current decoder/legacy/recipe retained; no relation stage",
+      "truthful_label": "Kế thừa khối Object Semantic Alignment của CSA-Net trên nền Q-Former, không tái hiện toànCSA-Net"
+    },
+    {
+      "name": "Full CSA-core adaptation",
+      "status": "Source-level feasible, decoder integration undecided",
+      "preserved": "All2object+1relation stages and both original semantic banks",
+      "changed": "QFormerquery representation; feeding both outputs to existing single-memory decoder differs from original parallel adaptive decoder",
+      "truthful_label": "Kế thừa lõi CSA, khai báo đầu vào/readout thay đổi; không so trực tiếp điểm bài gốc"
+    },
+    {
+      "name": "Full-system reproduction",
+      "status": "Not ready from current release/assets",
+      "preserved": "Requires detector/region semantics,dual-streamdecoder,originalvocabulary/features/trainingrecipe",
+      "changed": "Cannot substitute CLIPpatches or UPT1024vectors and claim same input",
+      "truthful_label": "Only call full reproduction after dependencies and recipe verified"
+    }
+  ],
+  "E2": {
+    "status": "CSA-inspired, not faithful OSA/CSA reproduction",
+    "local_source": "captioning/models.py: CascadeSemanticAlignment",
+    "differences": [
+      "Per-image CLIP prompt/object tokens, not frozen global RegionCLIP noun/verb banks",
+      "No learned No→K semantic aggregation; selector pools object context then scores prompt tokens",
+      "Single query-to-semantic attention with512dim residual gate, not2object+1relation SA/CA/FFN scalarfusion stages",
+      "No separate object/relation outputs or original dual-stream decoder"
+    ],
+    "scope": "Inspected current source and TRAIN_E2_RELATION_V2_1.md, not all historic checkpoint artifacts"
+  },
+  "next_gate": "Choose component and reference convention with Astra/user; then verify tensor outputs+input/parameter gradients against released code on synthetic tensors, buffer/mask handling and exact baseline bypass BEFORE any GPU pilot.",
+  "contribution": "Inheritance is a research foundation/control, not novelty. New claim must address a specific limitation and beat matched inherited baseline, with factual evaluation.",
+  "model_or_reference_code_executed": false,
+  "numerical_parity_tested": false,
+  "training_or_inference_executed": false
+}
