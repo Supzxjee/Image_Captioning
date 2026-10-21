@@ -1,6 +1,6 @@
 # Pilot kế tiếp — quyết định Astra sau smoke
 
-Ngày2026-10-22. Trạng thái: **RECIPE_PROPOSED; NOTEBOOK_NOT_IMPLEMENTED**. Người dùng đã cung cấp smoke review; file này lưu quyết định nghiên cứu tiếp theo, không phải kết quả chạy.
+Ngày2026-10-22. Trạng thái: **NOTEBOOK_IMPLEMENTED; USER_RUN_PENDING**. Người dùng đã đồng ý triển khai. Notebook và hướng dẫn: [CSA hai pha](../csa_pilot/README.md). File này lưu quyết định nghiên cứu, chưa phải kết quả chạy pilot.
 
 Giữ core2object+1relation, bank gốc frozen,32QFormerqueries,readout `[M_A;Vo;Vr]`. Khởi tạo mới checkpoint gốc của A và core seed42, không lấy trạng thái sau smoke. Không thêm gate, loss hoặc nguồn dữ liệu.
 
