@@ -1,0 +1,37 @@
+{
+  "status": "READY_NOT_RUN",
+  "pure_data_tests": "5 PASS",
+  "source_syntax": "PASS",
+  "embedded_packet_roundtrip": "3 identical packets PASS",
+  "notebooks": {
+    "UPT_HIDDEN_CACHE_11K_2GPU.ipynb": {
+      "bytes": 53771,
+      "sha256": "811ede4226c8f57d190f6b9310ec529664b5ed1c6fb4393ace0aad23dbe88242",
+      "executed": false
+    },
+    "UPT_HIDDEN_CAPTION_A_2GPU.ipynb": {
+      "bytes": 56512,
+      "sha256": "98d497be45c5d6b9bdf5c339ab4e807000efe15a982c68c1ef1880fbe0fd10a3",
+      "executed": false
+    },
+    "UPT_HIDDEN_CAPTION_H_2GPU.ipynb": {
+      "bytes": 56515,
+      "sha256": "6f4e98d5538f876676a97d87dc6b87150c905ae9344b0563d7f9fe7e67ecb1e1",
+      "executed": false
+    }
+  },
+  "prior_cohort_identity": "PASS using returned A groups, stripped legacy mode only",
+  "runtime_base": "31fdec14486ca8ab7ce364a8ffc596f1f9acdd34",
+  "astra_protocol_review": "Approved A/H with endpoint confidence >.2 after full UPT; see thread01a15544-6a7a-7903-a6e1-23e7b9f6caa6",
+  "astra_new_code_review": "Interrupted by account usage limit; no completed code-review verdict",
+  "not_run": [
+    "torch model tests",
+    "hook synthetic torch tests",
+    "HDF5 roundtrip",
+    "two-GPU DDP smoke",
+    "metrics smoke",
+    "UPT extraction/inference",
+    "caption training/evaluation"
+  ],
+  "limitations": "Local Python has no torch or h5py. All model/data-dependent preflights are in user-run Kaggle notebooks."
+}

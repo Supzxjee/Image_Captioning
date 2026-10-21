@@ -320,7 +320,10 @@ def worker(protocol):
     params = [{'params': [p for p in model.base.parameters() if p.requires_grad], 'lr': cfg['base_lr']}]
     if model.extra is not None:
         params.append({'params': list(model.extra.parameters()), 'lr': cfg['branch_lr']})
-    optimizer = torch.optim.AdamW(params)
+    optimizer = torch.optim.AdamW(params, **cfg.get('adamw_options', {}))
+    if cfg.get('record_optimizer_manifest', False):
+        save(out / f'optimizer_rank{rank}.json',
+             [{k: v for k, v in group.items() if k != 'params'} for group in optimizer.param_groups])
     # No collective calls during sampled/greedy decoding: those use the unwrapped model in no_grad.
     # All ranks execute exactly ONE synchronized loss backward per update.
     ddp = DDP(model, device_ids=[local_rank], output_device=local_rank, broadcast_buffers=False,
@@ -365,17 +368,18 @@ def worker(protocol):
             save(out / f'history_rank{rank}.json', history)
             print(f'[{cfg["arm"]} rank {rank}] {json.dumps(record)}', flush=True)
     if rank == 0:
-        state = {'format': 'upt_alignment_pilot_v1',
+        state = {'format': cfg.get('checkpoint_format', 'upt_alignment_pilot_v1'),
                  'model_state_dict': {k: v.detach().cpu() for k, v in model.state_dict().items()},
                  'arm': cfg['arm'], 'caption_word2idx': tokenizer.word2idx, 'cohort_sha256': cfg['cohort_sha256'],
                  'source_checkpoint_sha256': cfg['source_checkpoint_sha256'],
                  'protocol_sha256': digest(protocol), 'completed_updates': len(train)}
-        temporary = out / 'checkpoint.pth.partial'
+        checkpoint_name = cfg.get('checkpoint_name', 'checkpoint.pth')
+        temporary = out / (checkpoint_name + '.partial')
         # Legacy serialization avoids Kaggle treating a .pth checkpoint as a ZIP to unpack.
         torch.save(state, temporary, _use_new_zipfile_serialization=False)
-        temporary.replace(out / 'checkpoint.pth')
+        temporary.replace(out / checkpoint_name)
     # Evaluation has no DDP communication; different rank runtimes cannot stall loss collectives.
-    conditions = ['on'] if cfg['arm'] == 'A' else ['on', 'off', 'text_swap', 'region_swap']
+    conditions = cfg.get('conditions', ['on'] if cfg['arm'] == 'A' else ['on', 'off', 'text_swap', 'region_swap'])
     for condition in conditions:
         records, detail = predict(model, validation, tokenizer, condition)
         save(out / f'{condition}_rank{rank}.json', records)
