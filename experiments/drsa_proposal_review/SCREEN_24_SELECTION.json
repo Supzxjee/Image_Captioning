@@ -1,0 +1,209 @@
+{
+  "status": "SELECTION_LOCKED_BEFORE_IMAGE_REVIEW",
+  "checkpoint_sha256": "5f8eead3f4e960189345b1a9bf492763fe52ec71f70115b73244ffe9d03d2e75",
+  "source_artifact": "vg_region_caption/review/loaded_A.json",
+  "source_sha256": "26b2d5d45c67718e0398c8d83cddb7f1b405b43fdcabfbddb560d728cd370c32",
+  "captions_sha256": "ee58afce0e96fe782f03a69348564acac5077b9594f32e85b8859c456932b7ae",
+  "noun_regex": "\\b(surfboard|surfboards|skateboard|skateboards|phone|phones)\\b",
+  "relation_regex": "\\b(riding|ride|rides|holding|hold|holds|carrying|carry|carries|standing|sitting|talking|looking|ear)\\b",
+  "order": "sha256(UTF8(drsa-screen-v1: + decimal Karpathy image_id)), ascending",
+  "qualifying_captions": 52,
+  "maximum_images": 24,
+  "rows": [
+    {
+      "order": 1,
+      "image_id": 7936,
+      "coco_id": 207561,
+      "filename": "COCO_val2014_000000207561.jpg",
+      "split": "val",
+      "original_caption": "a group of people riding surfboards on top of a wave."
+    },
+    {
+      "order": 2,
+      "image_id": 16105,
+      "coco_id": 365711,
+      "filename": "COCO_val2014_000000365711.jpg",
+      "split": "val",
+      "original_caption": "a man holding a surfboard on a beach."
+    },
+    {
+      "order": 3,
+      "image_id": 12213,
+      "coco_id": 563882,
+      "filename": "COCO_val2014_000000563882.jpg",
+      "split": "val",
+      "original_caption": "a group of people sitting on a bench with their phones"
+    },
+    {
+      "order": 4,
+      "image_id": 35557,
+      "coco_id": 332087,
+      "filename": "COCO_val2014_000000332087.jpg",
+      "split": "val",
+      "original_caption": "a man riding a wave on top of a surfboard."
+    },
+    {
+      "order": 5,
+      "image_id": 1681,
+      "coco_id": 362005,
+      "filename": "COCO_val2014_000000362005.jpg",
+      "split": "val",
+      "original_caption": "a man riding a skateboard up the side of a ramp."
+    },
+    {
+      "order": 6,
+      "image_id": 17052,
+      "coco_id": 98801,
+      "filename": "COCO_val2014_000000098801.jpg",
+      "split": "val",
+      "original_caption": "a man standing on a beach holding a surfboard."
+    },
+    {
+      "order": 7,
+      "image_id": 19921,
+      "coco_id": 474741,
+      "filename": "COCO_val2014_000000474741.jpg",
+      "split": "val",
+      "original_caption": "a man in a pink shirt and tie holding a cell phone"
+    },
+    {
+      "order": 8,
+      "image_id": 31429,
+      "coco_id": 278967,
+      "filename": "COCO_val2014_000000278967.jpg",
+      "split": "val",
+      "original_caption": "a man riding a wave on top of a surfboard."
+    },
+    {
+      "order": 9,
+      "image_id": 16134,
+      "coco_id": 240275,
+      "filename": "COCO_val2014_000000240275.jpg",
+      "split": "val",
+      "original_caption": "a woman riding a wave on top of a surfboard."
+    },
+    {
+      "order": 10,
+      "image_id": 26378,
+      "coco_id": 454509,
+      "filename": "COCO_val2014_000000454509.jpg",
+      "split": "val",
+      "original_caption": "a man riding a wave on top of a surfboard."
+    },
+    {
+      "order": 11,
+      "image_id": 4618,
+      "coco_id": 13031,
+      "filename": "COCO_val2014_000000013031.jpg",
+      "split": "val",
+      "original_caption": "a man riding a wave on top of a surfboard."
+    },
+    {
+      "order": 12,
+      "image_id": 8932,
+      "coco_id": 362409,
+      "filename": "COCO_val2014_000000362409.jpg",
+      "split": "val",
+      "original_caption": "a man riding a wave on top of a surfboard."
+    },
+    {
+      "order": 13,
+      "image_id": 29162,
+      "coco_id": 41247,
+      "filename": "COCO_val2014_000000041247.jpg",
+      "split": "val",
+      "original_caption": "a group of people riding surfboards on top of a wave."
+    },
+    {
+      "order": 14,
+      "image_id": 17331,
+      "coco_id": 125322,
+      "filename": "COCO_val2014_000000125322.jpg",
+      "split": "val",
+      "original_caption": "a man is standing on a bridge holding a cell phone."
+    },
+    {
+      "order": 15,
+      "image_id": 16020,
+      "coco_id": 71877,
+      "filename": "COCO_val2014_000000071877.jpg",
+      "split": "val",
+      "original_caption": "a man riding a skateboard on top of a cement block."
+    },
+    {
+      "order": 16,
+      "image_id": 30019,
+      "coco_id": 167271,
+      "filename": "COCO_val2014_000000167271.jpg",
+      "split": "val",
+      "original_caption": "a woman laying in bed while talking on a phone."
+    },
+    {
+      "order": 17,
+      "image_id": 36492,
+      "coco_id": 546229,
+      "filename": "COCO_val2014_000000546229.jpg",
+      "split": "val",
+      "original_caption": "a group of young men standing next to each other on skateboards."
+    },
+    {
+      "order": 18,
+      "image_id": 11975,
+      "coco_id": 329498,
+      "filename": "COCO_val2014_000000329498.jpg",
+      "split": "val",
+      "original_caption": "a person holding a surfboard in the water."
+    },
+    {
+      "order": 19,
+      "image_id": 21109,
+      "coco_id": 430670,
+      "filename": "COCO_val2014_000000430670.jpg",
+      "split": "val",
+      "original_caption": "a man riding a skateboard down a flight of stairs."
+    },
+    {
+      "order": 20,
+      "image_id": 9942,
+      "coco_id": 253341,
+      "filename": "COCO_val2014_000000253341.jpg",
+      "split": "val",
+      "original_caption": "a boy is sitting on a skateboard in the street."
+    },
+    {
+      "order": 21,
+      "image_id": 17078,
+      "coco_id": 542758,
+      "filename": "COCO_val2014_000000542758.jpg",
+      "split": "val",
+      "original_caption": "a group of people standing on a beach with surfboards."
+    },
+    {
+      "order": 22,
+      "image_id": 33724,
+      "coco_id": 386089,
+      "filename": "COCO_val2014_000000386089.jpg",
+      "split": "val",
+      "original_caption": "a man in a suit and tie talking on a cell phone"
+    },
+    {
+      "order": 23,
+      "image_id": 23281,
+      "coco_id": 107430,
+      "filename": "COCO_val2014_000000107430.jpg",
+      "split": "val",
+      "original_caption": "a man riding a wave on top of a surfboard."
+    },
+    {
+      "order": 24,
+      "image_id": 39850,
+      "coco_id": 449402,
+      "filename": "COCO_val2014_000000449402.jpg",
+      "split": "val",
+      "original_caption": "a man in a top hat is talking on a cell phone."
+    }
+  ],
+  "selection_uses_reference": false,
+  "selection_uses_cider": false,
+  "model_run": false
+}
