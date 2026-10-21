@@ -1,0 +1,197 @@
+{
+  "status": "CSA_TWO_PHASE_SAVED_ARTIFACT_AUDIT_PASS",
+  "decision": "STOP_CURRENT_CSA_RECIPE_NO_FULL_TRAIN",
+  "date": "2026-10-22",
+  "archive_sha256": "0c0730930856b102a8358d63207653df334e513920ec53b8b7d73d2f3e93ed26",
+  "archive_bytes": 1369525,
+  "metrics": {
+    "A": {
+      "CIDEr": 1.2055125991020814,
+      "chair": {
+        "CHAIRs": 0.052,
+        "CHAIRi": 0.032475490196078434,
+        "Recall": 0.45803873347679064
+      },
+      "counts": {
+        "images": 1000,
+        "hallucinated_captions": 52,
+        "hallucinated_mentions": 53,
+        "object_mentions": 1632,
+        "recalled_unique_objects": 1490,
+        "reference_unique_objects": 3253
+      },
+      "mean_caption_words": 10.213,
+      "mean_CHAIR_tokenized_words": 10.957
+    },
+    "CSA_on": {
+      "CIDEr": 1.199997684210672,
+      "chair": {
+        "CHAIRs": 0.051,
+        "CHAIRi": 0.03111653447223917,
+        "Recall": 0.45926836766062096
+      },
+      "counts": {
+        "images": 1000,
+        "hallucinated_captions": 51,
+        "hallucinated_mentions": 51,
+        "object_mentions": 1639,
+        "recalled_unique_objects": 1494,
+        "reference_unique_objects": 3253
+      }
+    },
+    "CSA_off": {
+      "CIDEr": 1.2129479154412133,
+      "chair": {
+        "CHAIRs": 0.048,
+        "CHAIRi": 0.02962515114873035,
+        "Recall": 0.4626498616661543
+      },
+      "counts": {
+        "images": 1000,
+        "hallucinated_captions": 48,
+        "hallucinated_mentions": 49,
+        "object_mentions": 1654,
+        "recalled_unique_objects": 1505,
+        "reference_unique_objects": 3253
+      }
+    },
+    "original": {
+      "CIDEr": 1.1890655082257537,
+      "chair": {
+        "CHAIRs": 0.058,
+        "CHAIRi": 0.035452322738386305,
+        "Recall": 0.4568090992929603
+      },
+      "counts": {
+        "images": 1000,
+        "hallucinated_captions": 58,
+        "hallucinated_mentions": 58,
+        "object_mentions": 1636,
+        "recalled_unique_objects": 1486,
+        "reference_unique_objects": 3253
+      }
+    }
+  },
+  "comparisons": {
+    "CSA_on_minus_A": {
+      "delta": -0.0055149148914090005,
+      "ci95": [
+        -0.024690382806388435,
+        0.013728802118835134
+      ],
+      "n": 1000,
+      "bootstrap_resamples": 20000,
+      "seed": 42,
+      "scope": "Paired reused-development images; not seed variance or correction for repeated development use."
+    },
+    "CSA_off_minus_A": {
+      "delta": 0.007435316339132102,
+      "ci95": [
+        -0.012887746279866597,
+        0.028659773250213925
+      ],
+      "n": 1000,
+      "bootstrap_resamples": 20000,
+      "seed": 42,
+      "scope": "Paired reused-development images; not seed variance or correction for repeated development use."
+    },
+    "CSA_on_minus_CSA_off": {
+      "delta": -0.012950231230541105,
+      "ci95": [
+        -0.029562424448012537,
+        0.002663415127232502
+      ],
+      "n": 1000,
+      "bootstrap_resamples": 20000,
+      "seed": 42,
+      "scope": "Paired reused-development images; not seed variance or correction for repeated development use."
+    },
+    "CSA_on_minus_original": {
+      "delta": 0.01093217598491841,
+      "ci95": [
+        -0.010713808034781861,
+        0.03277176006930717
+      ],
+      "n": 1000,
+      "bootstrap_resamples": 20000,
+      "seed": 42,
+      "scope": "Paired reused-development images; not seed variance or correction for repeated development use."
+    },
+    "CSA_off_minus_original": {
+      "delta": 0.02388240721545951,
+      "ci95": [
+        0.0023620464254235445,
+        0.04593247370181718
+      ],
+      "n": 1000,
+      "bootstrap_resamples": 20000,
+      "seed": 42,
+      "scope": "Paired reused-development images; not seed variance or correction for repeated development use."
+    }
+  },
+  "gate_checks": {
+    "CSA_on": {
+      "cider_gain_at_least_001": false,
+      "paired_ci_lower_positive": false,
+      "beats_original": true,
+      "chair_s_not_increased": true,
+      "chair_i_not_increased": true,
+      "recall_drop_at_most_001": true
+    },
+    "CSA_off": {
+      "cider_gain_at_least_001": false,
+      "paired_ci_lower_positive": false,
+      "beats_original": true,
+      "chair_s_not_increased": true,
+      "chair_i_not_increased": true,
+      "recall_drop_at_most_001": true
+    }
+  },
+  "caption_changes": {
+    "CSA_on_vs_CSA_off": 267,
+    "CSA_on_vs_A": 384,
+    "CSA_off_vs_A": 363
+  },
+  "source_files_verified": 12,
+  "runtime_differences_vs_A": {
+    "phase1_rank0": [],
+    "phase1_rank1": [],
+    "phase2_rank0": [],
+    "phase2_rank1": []
+  },
+  "phase1_baseline_frozen_pass": true,
+  "phase_transition_pass": true,
+  "sampler_reset_pass": true,
+  "optimizer_reset_pass": true,
+  "identical_original_predictions_scores_chair_vs_A": true,
+  "timing": {
+    "preparation_seconds": 3835.0814638240004,
+    "phase1_training_seconds": 122.40386058199965,
+    "phase2_training_seconds": 519.7047811169996,
+    "scoring_seconds": 23.422517236999738
+  },
+  "peak_allocated_gib": 1.3335638046264648,
+  "peak_reserved_gib": 1.376953125,
+  "clipping": {
+    "1": {
+      "active_rank_steps": 10,
+      "total_rank_steps": 2500
+    },
+    "2": {
+      "active_rank_steps": 2500,
+      "total_rank_steps": 2500
+    }
+  },
+  "test_used": false,
+  "blind_review_done": false,
+  "checkpoint_sha256_worker_reported": "5f4967fc2951a8038c7821d87f18beb01801f30e98dca5f1fa78571af7b0d143",
+  "limits": [
+    "CSA received1250 extra core-only updates; system comparison not matched compute/capacity.",
+    "Off is the jointly adapted baseline after training, not A; it is secondary diagnostic, not a preselected winning arm.",
+    "Runtime/source/seed/sampler policy match A, but historical A did not record actual order/RNG start; no independent order-byte verification against A.",
+    "Stage file layouts differ; absent tensor/checkpoint bytes cannot be rehashed here. Same original predictions/per-image metrics and train targets are verified.",
+    "One seed, repeatedly reused dev, no convergence or all-CSA impossibility conclusion.",
+    "On/off measures removal after coadaptation; no proof of causal linguistic shortcut or calibrated visual grounding.",
+    "CHAIR concerns80COCOobject categories, not relation truth. No new human factuality review."
+  ]
+}
