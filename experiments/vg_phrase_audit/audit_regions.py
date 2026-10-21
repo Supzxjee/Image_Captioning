@@ -136,7 +136,7 @@ def run():
         diagnostic_stratum_counts=dict(Counter(r['diagnostic_group'] for r in inventory)),
         median_region_area_fraction=areas[len(areas)//2],
         whole_image_like_regions_ge_075=sum(a >= .75 for a in areas),
-        sample_sha256=hashlib.sha256(sample_raw.encode()).hexdigest(),
+        sample_sha256=digest(ROOT / 'REGION24_MANIFEST.json'),
         sample_strata=dict(Counter(r['diagnostic_group'] for r in sample)),
         excluded_prior_audit_images=len(prior), sample_selection='Fixed SHA256 ordering, eight per group, all24 images distinct; previous30 excluded. Paired strata require lexical relation cue; human stratum requires human word. Group tags are not GT.',
         policy='Original nonempty phrase + valid original region + established COCO/cache identity/aspect. No pair match, class/edge-count/phrase-length/lexical/spatial blacklist gate.',
