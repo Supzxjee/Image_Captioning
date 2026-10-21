@@ -8,7 +8,7 @@ import subprocess
 import tempfile
 import unittest
 from unittest.mock import patch
-from make_dataset_api_notebook import build, VERSION_PREFLIGHT, KAGGLE_COMMIT
+from make_dataset_api_notebook import build, VERSION_PREFLIGHT, KAGGLE_COMMIT, CREATE_DATASET_SCRIPT
 
 
 class Checks(unittest.TestCase):
@@ -71,17 +71,18 @@ class Checks(unittest.TestCase):
 
     def test_create_is_private_flat_and_failure_removes_only_metadata(self):
         code = next(''.join(c['source']) for c in self.notebook['cells']
-                    if ''.join(c['source']).startswith('metadata_path ='))
+                    if ''.join(c['source']).startswith('CREATE_DATASET_SCRIPT ='))
         scratch = Path(__file__).parent / 'review'; scratch.mkdir(exist_ok=True)
         with tempfile.TemporaryDirectory(dir=scratch) as directory:
             dest = Path(directory)
             (dest / 'features_rank0.h5').write_bytes(b'synthetic')
             def fake_cli(args):
                 self.assertNotIn('--public', args)
-                self.assertIn('create', args)
-                self.assertEqual(args[-2:], ['--dir-mode', 'skip'])
+                self.assertEqual(args[-1], str(dest))
+                self.assertIn('dataset_create_new', args[-2])
                 data = json.loads((dest / 'dataset-metadata.json').read_text())
                 self.assertEqual(data['id'], 'tester/test-cache')
+                self.assertEqual(data['licenses'], [{'name': 'other'}])
                 raise RuntimeError('mock upload failure')
             namespace = dict(DESTINATION=dest, OWNER='tester', SLUG='test-cache', TITLE='Test cache',
                              json=json, sys=__import__('sys'), run_cli=fake_cli)
@@ -89,6 +90,26 @@ class Checks(unittest.TestCase):
                 exec(compile(code, '<test>', 'exec'), namespace)
             self.assertFalse((dest / 'dataset-metadata.json').exists())
             self.assertEqual((dest / 'features_rank0.h5').read_bytes(), b'synthetic')
+
+    def test_create_rejection_never_reports_accepted(self):
+        from types import ModuleType, SimpleNamespace
+        from unittest.mock import MagicMock
+        import sys
+        modules = {name: ModuleType(name) for name in ('kaggle', 'kaggle.api', 'kaggle.api.kaggle_api_extended')}
+        api = MagicMock()
+        modules['kaggle.api.kaggle_api_extended'].KaggleApi = lambda: api
+        with patch.dict('sys.modules', modules), patch.object(sys, 'argv', ['upload', '/synthetic/cache']):
+            for status, error in [('error', 'Please select a valid license'), ('ok', 'unexpected error'), ('', None)]:
+                api.dataset_create_new.return_value = SimpleNamespace(status=status, error=error, url='fake')
+                with redirect_stdout(io.StringIO()) as output:
+                    with self.assertRaisesRegex(RuntimeError, 'creation rejected'):
+                        exec(CREATE_DATASET_SCRIPT, {})
+                self.assertNotIn('accepted', output.getvalue())
+            api.dataset_create_new.return_value = SimpleNamespace(status='ok', error=None, url='fake')
+            with redirect_stdout(io.StringIO()) as output:
+                exec(CREATE_DATASET_SCRIPT, {})
+            self.assertIn('accepted by API', output.getvalue())
+            self.assertEqual(api.dataset_create_new.call_args.kwargs['public'], False)
 
     def test_download_pins_58_filters_files_and_never_falls_back(self):
         code = ''.join(self.notebook['cells'][3]['source'])

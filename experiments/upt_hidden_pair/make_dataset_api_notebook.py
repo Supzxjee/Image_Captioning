@@ -5,6 +5,16 @@ from pathlib import Path
 
 ROOT = Path(__file__).parent
 KAGGLE_COMMIT = '6894864ff4095cf98e9e36d3a694ff5fc9ba3818'
+CREATE_DATASET_SCRIPT = '''import sys
+from kaggle.api.kaggle_api_extended import KaggleApi
+api = KaggleApi()
+api.authenticate()
+result = api.dataset_create_new(sys.argv[1], public=False, quiet=False,
+                                convert_to_csv=False, dir_mode='skip')
+if result is None or str(getattr(result, 'status', '')).lower() != 'ok' or getattr(result, 'error', None):
+    raise RuntimeError('Dataset creation rejected: ' + str(getattr(result, 'error', 'Missing success response')))
+print('Dataset creation accepted by API:', result.url, flush=True)
+'''
 VERSION_PREFLIGHT = '''import tempfile
 from types import SimpleNamespace
 from unittest.mock import patch
@@ -120,24 +130,23 @@ print('Downloaded version 58. Next: verify receipt and every payload hash.', flu
         + "report['next'] = 'Upload verified flat payload to a private Kaggle Dataset.'\n"
         + "(DESTINATION / 'transport_receipt.json').write_text(json.dumps(report, indent=2) + '\\n', encoding='utf-8')\n"
         + "print('Verified cache ready for API upload.', flush=True)\n")
-    add('code', '''metadata_path = DESTINATION / 'dataset-metadata.json'
+    add('code', 'CREATE_DATASET_SCRIPT = ' + repr(CREATE_DATASET_SCRIPT) + '\n' + '''metadata_path = DESTINATION / 'dataset-metadata.json'
 metadata = {
     'title': TITLE,
     'id': f'{OWNER}/{SLUG}',
-    'licenses': [{'name': 'copyright-authors'}],
-    'description': 'Private research cache: frozen UPT hidden interaction features for caption train10000/dev1000. No original images. Original data/model rights retained; see cache receipt for provenance. Not a caption quality result.',
+    'licenses': [{'name': 'other'}],
+    'description': 'Other license: private research cache; original data/model rights and upstream terms retained. Frozen UPT hidden interaction features for caption train10000/dev1000. No original images. See cache receipt for provenance. Not a caption quality result.',
 }
 if metadata_path.exists():
     raise RuntimeError('Có metadata cũ trong staging; dùng DESTINATION mới để tránh ghi đè.')
 # Keep raw HDF5/JSONL unchanged; only the flat verified payload is uploaded.
 try:
     metadata_path.write_text(json.dumps(metadata, indent=2), encoding='utf-8')
-    run_cli([sys.executable, '-m', 'kaggle', 'datasets', 'create',
-             '-p', str(DESTINATION), '--keep-tabular', '--dir-mode', 'skip'])
+    run_cli([sys.executable, '-u', '-c', CREATE_DATASET_SCRIPT, str(DESTINATION)])
 finally:
     metadata_path.unlink(missing_ok=True)
 
-print('Upload request accepted. Kaggle may still be processing the dataset.', flush=True)
+print('API confirmed creation; Kaggle may still be processing the dataset.', flush=True)
 print(f'https://www.kaggle.com/datasets/{OWNER}/{SLUG}', flush=True)
 run_cli([sys.executable, '-m', 'kaggle', 'datasets', 'status', f'{OWNER}/{SLUG}'])
 ''')
