@@ -1,6 +1,9 @@
 # VG region-caption pilot G/T
 
-Hai nhánh kiểm tra liệu chỉ định vùng trong nhiệm vụ mô tả phụ có giúp caption toàn ảnh hơn việc thêm đúng cùng lượng văn bản hay không. **Chưa có kết quả huấn luyện hoặc đóng góp căn chỉnh đã được chứng minh.**
+**Kết quả đã nhận đủ A/G/T:** xem [báo cáo đối chứng](G_T_A_RESULT.md).
+G tốt hơn T trên CIDEr của development nhưng chưa cải thiện đáng tin cậy so với A; chưa mở rộng cấu hình hiện tại.
+
+Hai nhánh kiểm tra liệu chỉ định vùng trong nhiệm vụ mô tả phụ có giúp caption toàn ảnh hơn việc thêm đúng cùng lượng văn bản hay không. **Đã có kết quả pilot; chưa chứng minh đóng góp căn chỉnh nâng baseline.**
 
 | | G | T (đối chứng thiết yếu) |
 |---|---|---|

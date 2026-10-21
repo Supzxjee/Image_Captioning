@@ -1,0 +1,230 @@
+{
+  "status": "MATCHED_G_T_A_ARTIFACT_AUDIT_PASS",
+  "decision": "NO_GO_CURRENT_G_CONFIGURATION_VS_A",
+  "metrics": {
+    "A": {
+      "CIDEr": 1.2055125991020814,
+      "chair": {
+        "CHAIRs": 0.052,
+        "CHAIRi": 0.032475490196078434,
+        "Recall": 0.45803873347679064
+      },
+      "counts": {
+        "images": 1000,
+        "hallucinated_captions": 52,
+        "hallucinated_mentions": 53,
+        "object_mentions": 1632,
+        "recalled_unique_objects": 1490,
+        "reference_unique_objects": 3253
+      },
+      "mean_caption_words": 10.213,
+      "mean_CHAIR_tokenized_words": 10.957
+    },
+    "G": {
+      "CIDEr": 1.2084006473212774,
+      "chair": {
+        "CHAIRs": 0.053,
+        "CHAIRi": 0.03306797305572566,
+        "Recall": 0.4561942822010452
+      },
+      "counts": {
+        "images": 1000,
+        "hallucinated_captions": 53,
+        "hallucinated_mentions": 54,
+        "object_mentions": 1633,
+        "recalled_unique_objects": 1484,
+        "reference_unique_objects": 3253
+      },
+      "mean_caption_words": 10.046,
+      "mean_CHAIR_tokenized_words": 10.762
+    },
+    "original": {
+      "CIDEr": 1.1890655082257537,
+      "chair": {
+        "CHAIRs": 0.058,
+        "CHAIRi": 0.035452322738386305,
+        "Recall": 0.4568090992929603
+      },
+      "counts": {
+        "images": 1000,
+        "hallucinated_captions": 58,
+        "hallucinated_mentions": 58,
+        "object_mentions": 1636,
+        "recalled_unique_objects": 1486,
+        "reference_unique_objects": 3253
+      },
+      "mean_caption_words": 10.088,
+      "mean_CHAIR_tokenized_words": 10.803
+    },
+    "T": {
+      "CIDEr": 1.1857469272550498,
+      "chair": {
+        "CHAIRs": 0.052,
+        "CHAIRi": 0.03263546798029557,
+        "Recall": 0.45527205656317243
+      },
+      "counts": {
+        "images": 1000,
+        "hallucinated_captions": 52,
+        "hallucinated_mentions": 53,
+        "object_mentions": 1624,
+        "recalled_unique_objects": 1481,
+        "reference_unique_objects": 3253
+      },
+      "mean_caption_words": 10.105,
+      "mean_CHAIR_tokenized_words": 10.816
+    }
+  },
+  "comparisons": {
+    "G_minus_A": {
+      "n": 1000,
+      "delta": 0.002888048219196323,
+      "ci95": [
+        -0.017606965361618352,
+        0.02364069822282192
+      ],
+      "positive": 193,
+      "negative": 186,
+      "equal": 621,
+      "bootstrap_resamples": 20000,
+      "bootstrap_seed": 42,
+      "scope": "Paired development-image resampling; does not measure seed variance or selection bias."
+    },
+    "G_minus_original": {
+      "n": 1000,
+      "delta": 0.019335139095523732,
+      "ci95": [
+        0.0003632818782404081,
+        0.03844590382058041
+      ],
+      "positive": 222,
+      "negative": 195,
+      "equal": 583,
+      "bootstrap_resamples": 20000,
+      "bootstrap_seed": 42,
+      "scope": "Paired development-image resampling; does not measure seed variance or selection bias."
+    },
+    "A_minus_original": {
+      "n": 1000,
+      "delta": 0.016447090876327407,
+      "ci95": [
+        -0.0035128621091813726,
+        0.03611277422018343
+      ],
+      "positive": 191,
+      "negative": 170,
+      "equal": 639,
+      "bootstrap_resamples": 20000,
+      "bootstrap_seed": 42,
+      "scope": "Paired development-image resampling; does not measure seed variance or selection bias."
+    },
+    "G_minus_T": {
+      "n": 1000,
+      "delta": 0.022653720066227807,
+      "ci95": [
+        0.0014597943535159719,
+        0.04456269346404009
+      ],
+      "positive": 182,
+      "negative": 155,
+      "equal": 663,
+      "bootstrap_resamples": 20000,
+      "bootstrap_seed": 42,
+      "scope": "Paired development-image resampling; does not measure seed variance or selection bias."
+    },
+    "T_minus_A": {
+      "n": 1000,
+      "delta": -0.01976567184703148,
+      "ci95": [
+        -0.03901154740663617,
+        -0.0012147239249851508
+      ],
+      "positive": 187,
+      "negative": 210,
+      "equal": 603,
+      "bootstrap_resamples": 20000,
+      "bootstrap_seed": 42,
+      "scope": "Paired development-image resampling; does not measure seed variance or selection bias."
+    },
+    "T_minus_original": {
+      "n": 1000,
+      "delta": -0.0033185809707040707,
+      "ci95": [
+        -0.025458742079575027,
+        0.018263057558370276
+      ],
+      "positive": 212,
+      "negative": 215,
+      "equal": 573,
+      "bootstrap_resamples": 20000,
+      "bootstrap_seed": 42,
+      "scope": "Paired development-image resampling; does not measure seed variance or selection bias."
+    }
+  },
+  "gate_checks": {
+    "cider_gain_at_least_001": false,
+    "paired_ci_lower_positive": false,
+    "beats_original": true,
+    "chair_s_not_increased": false,
+    "chair_i_not_increased": false,
+    "recall_drop_at_most_001": true,
+    "G_minus_T_paired_lower_positive": true
+  },
+  "archives": {
+    "A": {
+      "path": "C:\\Users\\leduc\\Downloads\\upt_hidden_caption_A_review.zip",
+      "sha256": "bc8e1194254303652fd468419ffad7a76bfe5c7d1f5a3d5ed5a88826367dd704"
+    },
+    "G": {
+      "path": "C:\\Users\\leduc\\Downloads\\vg_region_caption_G_review.zip",
+      "sha256": "a9132e9d6d9865f3481a82c7a373730574b3eac1d7163340c609a551caa7a40d"
+    },
+    "T": {
+      "path": "C:\\Users\\leduc\\Downloads\\vg_region_caption_T_review.zip",
+      "sha256": "b13aada5fdcb4126d9323cc6b3230e64877ae830fa05c5d0d976c1cb81bec0af"
+    }
+  },
+  "G_T_protocol_differences": [
+    "arm",
+    "output",
+    "stage"
+  ],
+  "G_T_sources_identical": true,
+  "G_T_runtime_optimizer_stage_targets_originals_matched": true,
+  "T_auxiliary": {
+    "draws": 10000,
+    "mean_patches": 196.0,
+    "first100_phrase_loss": 4.57911770105362,
+    "last100_phrase_loss": 3.443706625699997
+  },
+  "G_auxiliary": {
+    "draws": 10000,
+    "mean_patches": 32.258,
+    "first100_phrase_loss": 4.171666587591171,
+    "last100_phrase_loss": 3.202523406147957,
+    "schedule_sha256": "d0e08ebb8172119d73842b2aa4c309b1ff96bdef936086e5391aeb8ea3a2c0b2",
+    "payload_sha256": "2577575829e5536c6bc3f181ec52780b3b4f878440956a920b61f92867bcf686"
+  },
+  "training_seconds": {
+    "G": [
+      481.3456816930002,
+      481.3456727390003
+    ],
+    "T": [
+      498.3640827099989,
+      498.36405894900236
+    ]
+  },
+  "changed_G_T_captions": 349,
+  "gpu_preflight_pass": true,
+  "test_used": false,
+  "model_executed_locally": false,
+  "interpretation": "Region conditioning outperforms the same-text whole-image auxiliary control on reused dev; G does not reliably beat A, and T drops below A. This is not a successful caption-quality gain or proven semantic grounding.",
+  "limits": [
+    "Reused dev1000 and one seed; paired image bootstrap excludes training-seed variance and selection bias.",
+    "Positive G-T can reflect mitigating harm from poorly localized auxiliary supervision; cannot infer G improves baseline.",
+    "CLIP patches contextualized; mask is not complete isolation of visual evidence.",
+    "CHAIR evaluates object hallucination, not relation truth; blind visual review not performed.",
+    "Checkpoint bytes absent; state/checkpoint hashes worker-reported."
+  ]
+}
