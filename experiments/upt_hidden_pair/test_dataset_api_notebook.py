@@ -62,19 +62,19 @@ class Checks(unittest.TestCase):
             self.assertFalse((dest / 'dataset-metadata.json').exists())
             self.assertEqual((dest / 'features_rank0.h5').read_bytes(), b'synthetic')
 
-    def test_download_pins_56_filters_files_and_never_falls_back(self):
+    def test_download_pins_58_filters_files_and_never_falls_back(self):
         code = ''.join(self.notebook['cells'][3]['source'])
         scratch = Path(__file__).parent / 'review'; scratch.mkdir(exist_ok=True)
         with tempfile.TemporaryDirectory(dir=scratch) as directory:
             calls = []
             def fake_cli(args):
                 calls.append(args)
-                self.assertIn('ducanh2403/2-vi-cai-kia-qua-nhieu/56', args)
+                self.assertIn('ducanh2403/2-vi-cai-kia-qua-nhieu/58', args)
                 self.assertIn('--file-pattern', args)
                 pattern = __import__('re').compile(args[-1])
                 self.assertTrue(pattern.search('upt_hidden_pairs_11k/features_rank0.h5'))
                 self.assertFalse(pattern.search('Image_Captioning/checkpoint.pth'))
-            namespace = dict(KERNEL_VERSION='ducanh2403/2-vi-cai-kia-qua-nhieu/56',
+            namespace = dict(KERNEL_VERSION='ducanh2403/2-vi-cai-kia-qua-nhieu/58',
                              Path=Path, sys=__import__('sys'), run_cli=fake_cli)
             with patch.object(tempfile, 'mkdtemp', return_value=directory), redirect_stdout(io.StringIO()):
                 with self.assertRaisesRegex(RuntimeError, '0 cache receipt'):

@@ -17,9 +17,9 @@ def build():
 
     add('markdown', '''# Lưu UPT hidden-pair cache thành Kaggle Dataset bằng API token
 
-CPU, Internet **ON**. Tự tải đúng **Output version 56** của
+CPU, Internet **ON**. Tự tải đúng **Output version 58** của
 `ducanh2403/2-vi-cai-kia-qua-nhieu` bằng API token; không cần gắn Input.
-Không dùng version mới nhất (57), không chạy lại notebook nguồn.
+Khóa đúng version 58, không tự lấy latest, không chạy lại notebook nguồn.
 
 1. Lấy token mới tại https://www.kaggle.com/settings/api (không dùng nội dung kaggle.json).
 2. Add-ons → Secrets: thêm và bật secret tên **KAGGLE_API_TOKEN**.
@@ -31,7 +31,7 @@ Token chỉ nằm trong bộ nhớ và môi trường tiến trình con; không 
 Không chạy UPT, caption model hay training.
 ''')
     add('code', '''from pathlib import Path
-KERNEL_VERSION = 'ducanh2403/2-vi-cai-kia-qua-nhieu/56'
+KERNEL_VERSION = 'ducanh2403/2-vi-cai-kia-qua-nhieu/58'
 OWNER = 'ducanh2403'  # Đổi nếu token thuộc tài khoản khác
 SLUG = 'upt-hidden-pairs-caption11k'
 TITLE = 'UPT hidden pairs caption 11k'
@@ -75,19 +75,19 @@ print('Secret loaded; CLI ready. Token is not displayed.', flush=True)
 ''')
     add('code', r'''import tempfile
 
-if KERNEL_VERSION != 'ducanh2403/2-vi-cai-kia-qua-nhieu/56':
-    raise ValueError('Notebook này khóa Output version 56; không tự chuyển sang latest.')
+if KERNEL_VERSION != 'ducanh2403/2-vi-cai-kia-qua-nhieu/58':
+    raise ValueError('Notebook này khóa Output version 58; không tự chuyển sang latest.')
 # Fresh staging prevents stale files from another version being reused.
-DOWNLOAD = Path(tempfile.mkdtemp(prefix='upt-hidden-v56-', dir='/tmp'))
+DOWNLOAD = Path(tempfile.mkdtemp(prefix='upt-hidden-v58-', dir='/tmp'))
 print('Downloading only six cache payload files from:', KERNEL_VERSION, flush=True)
 run_cli([sys.executable, '-m', 'kaggle', 'kernels', 'output', KERNEL_VERSION,
          '-p', str(DOWNLOAD), '--file-pattern',
          r'(^|/)(cache_receipt\.json|cohort\.json|features_rank[01]\.h5|pairs_rank[01]\.jsonl)$'])
 receipts = list(DOWNLOAD.rglob('cache_receipt.json'))
 if len(receipts) != 1:
-    raise RuntimeError(f'Version 56 trả về {len(receipts)} cache receipt; dừng, không lấy version 57 thay thế.')
+    raise RuntimeError(f'Version 58 trả về {len(receipts)} cache receipt; dừng, không tự lấy version khác thay thế.')
 SOURCE = receipts[0].parent
-print('Downloaded version 56. Next: verify receipt and every payload hash.', flush=True)
+print('Downloaded version 58. Next: verify receipt and every payload hash.', flush=True)
 ''')
     source = (ROOT / 'package_cache_dataset.py').read_text(encoding='utf-8')
     add('code', 'import hashlib\nimport json\nSOURCE_CODE = ' + repr(source) + '\n'
