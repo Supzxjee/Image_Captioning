@@ -1,0 +1,227 @@
+{
+  "review_date": "2026-10-21",
+  "archive_sha256": "45b2f36770c006b65b3a5382c5277b20eb8e2182535f07168d29574d788a2734",
+  "status": "FULLFRAME_TECHNICAL_AUDIT_PASS_WAIT_PAIRCROP",
+  "assertions_passed": [
+    "46 raw and quantized feature comparisons",
+    "300 updates both ranks",
+    "identical initial/final hashes across ranks",
+    "original parameters unchanged",
+    "all archived source hashes match protocol",
+    "manifest hash matches protocol",
+    "29 unique matched before/after groups"
+  ],
+  "summary": {
+    "status": "MATCHED_PAIR_SOURCE_CE_COMPLETE",
+    "variant": "FULLFRAME",
+    "updates": 300,
+    "initial_sha256": "90f3db3f4eb87e15268b38d7f0b09913525bbd7b6644a184db071606ae3b53c6",
+    "final_sha256": "18add2458f396b1a139da56e173753062a210a3251383d1a0d398da9c1747042",
+    "shared_receipt_sha256": "b65c7569d364225d3b4b40559ef997f8fd1f779659c838086b7c9ec3312d5702",
+    "metrics": {
+      "before": {
+        "fit": {
+          "on": {
+            "groups": 14,
+            "agreement": 0.75,
+            "both_directions_correct": 7,
+            "mean_positive_margin": 0.4759009139878409,
+            "positive_nll": 2.55762449332646,
+            "captions_changed_vs_off": 27
+          },
+          "off": {
+            "groups": 14,
+            "agreement": 0.7857142857142857,
+            "both_directions_correct": 8,
+            "mean_positive_margin": 0.42408829075949533,
+            "positive_nll": 2.6754972083227977,
+            "captions_changed_vs_off": 0
+          }
+        },
+        "exposed_development": {
+          "on": {
+            "groups": 7,
+            "agreement": 0.7142857142857143,
+            "both_directions_correct": 3,
+            "mean_positive_margin": 0.29876876728875296,
+            "positive_nll": 2.4205828394208635,
+            "captions_changed_vs_off": 14
+          },
+          "off": {
+            "groups": 7,
+            "agreement": 0.7142857142857143,
+            "both_directions_correct": 3,
+            "mean_positive_margin": 0.2788557835987636,
+            "positive_nll": 2.54712244442531,
+            "captions_changed_vs_off": 0
+          }
+        },
+        "new_probe": {
+          "on": {
+            "groups": 8,
+            "agreement": 0.5,
+            "both_directions_correct": 0,
+            "mean_positive_margin": 0.08162504807114601,
+            "positive_nll": 2.950276643037796,
+            "captions_changed_vs_off": 16
+          },
+          "off": {
+            "groups": 8,
+            "agreement": 0.5,
+            "both_directions_correct": 0,
+            "mean_positive_margin": 0.0,
+            "positive_nll": 2.999064326286316,
+            "captions_changed_vs_off": 0
+          }
+        }
+      },
+      "after": {
+        "fit": {
+          "on": {
+            "groups": 14,
+            "agreement": 1.0,
+            "both_directions_correct": 14,
+            "mean_positive_margin": 1.417384194476264,
+            "positive_nll": 0.11728573963046074,
+            "captions_changed_vs_off": 28
+          },
+          "off": {
+            "groups": 14,
+            "agreement": 0.7857142857142857,
+            "both_directions_correct": 8,
+            "mean_positive_margin": 0.424846636397498,
+            "positive_nll": 2.670411084379469,
+            "captions_changed_vs_off": 0
+          }
+        },
+        "exposed_development": {
+          "on": {
+            "groups": 7,
+            "agreement": 0.9285714285714286,
+            "both_directions_correct": 6,
+            "mean_positive_margin": 0.4811675804001944,
+            "positive_nll": 0.6580356912953513,
+            "captions_changed_vs_off": 14
+          },
+          "off": {
+            "groups": 7,
+            "agreement": 0.7142857142857143,
+            "both_directions_correct": 3,
+            "mean_positive_margin": 0.27935309069497244,
+            "positive_nll": 2.541861721447536,
+            "captions_changed_vs_off": 0
+          }
+        },
+        "new_probe": {
+          "on": {
+            "groups": 8,
+            "agreement": 0.5625,
+            "both_directions_correct": 1,
+            "mean_positive_margin": 0.19223934598267078,
+            "positive_nll": 0.900622121989727,
+            "captions_changed_vs_off": 16
+          },
+          "off": {
+            "groups": 8,
+            "agreement": 0.5,
+            "both_directions_correct": 0,
+            "mean_positive_margin": 0.0,
+            "positive_nll": 2.990366220474243,
+            "captions_changed_vs_off": 0
+          }
+        }
+      }
+    },
+    "no_test": true,
+    "human_semantic_verdicts_available": false,
+    "limits": [
+      "8new-to-adaptation groups, not independent whole-system test",
+      "Ranking/exactmatch are not primary success measures; blind human phrase review still needed",
+      "Crop changes framing/context/density; does not isolate resolution",
+      "14fit/7exposeddev; no new SCST/full-caption result"
+    ]
+  },
+  "protocol": {
+    "arm": "CE",
+    "variant": "FULLFRAME",
+    "checkpoint": "/kaggle/input/datasets/ducanh2403/qformer-scst-object-w05-legacy/qformer_scst_object_w05_legacy.pth",
+    "dataset_json": "/kaggle/input/datasets/vuthetam/mscoco-2014/dataset_coco.json",
+    "visual_cache": "/kaggle/input/datasets/ducanh2403/visual-cache",
+    "coco_images": "/kaggle/working/pair_crop_shared/images",
+    "shared": "/kaggle/working/pair_crop_shared",
+    "output": "/kaggle/working/pair_source_fullframe_ce",
+    "manifest": "/tmp/Image_Captioning-pair-source-fullframe/locked_manifest.json",
+    "manifest_sha256": "d5a1f1385d34c2634b4821b48476dcb2277a7093b7e74e61ce13c33915b928c6",
+    "source_sha256": {
+      "phrase_data.py": "3d076b5257ad18c295d29607efb3cb81605d28075751073a40b3e3ae4d6e81be",
+      "phrase_model.py": "cb3dba8f6e71698db9213f1dbd7137f8c5a0c3613d76765bcadb263ec4844834",
+      "run_phrase.py": "d615ab32d64ff98d3d542124094f2cab8fedd59b3cb8fbb7d5ebc2bdf4c25997",
+      "test_phrase_model.py": "a875e25eb7022108ac8105f709c6cd560fca90cd4b95787c798c1a020e6a611d",
+      "pair_data.py": "5c36012b668c93fcbe5d1d94bdaa8d6267eda31ad6a2ba9ad3f3b88a175ba89f",
+      "pair_model.py": "7b88488041f37f92ad0c1c06dbe8a980c591d2cf898efaf9b7270074286c0e74",
+      "run_pair.py": "a187ff2fbaea618169e7e888a0e34fc9e32fc909cb7c51cf22f18cb39b8a87a2",
+      "test_pair_model.py": "d714e6f9087fa75770b5cd42558f37bd99ec4c8299e7d8633116289a282d52d5",
+      "crop_geometry.py": "2fa29a4ce91342c63a36b9d6ef00884679d39d73245cc2b572a183ecc7193b80",
+      "test_preparation.py": "4a91df7286a3fc472265c28c452f747627984e07a88a308a8087a5f2db6f4981",
+      "test_pair_data.py": "fded5ae16971931c85701ffdd57f7ea4edd26368eb02381838a8f544b861506a",
+      "inspect_visual_metadata.py": "c72bfb01e72049dc811c8d3381a2e3a4423e5bf66cad6fe5ed21d8af2a633b72",
+      "audit_cache_metadata.py": "6fefa2cffffe1e03d14f65c3b9b62a1acf62644c0af133bf506dd4641a62eb98"
+    },
+    "project_commit": "6e2f9ef8553c7a9637916a7cf0ec3a90697b4c33",
+    "stage": "/kaggle/working/pair_crop_shared/feature_cache.bin",
+    "stage_sha256": "1e9532de99a89dad55b3a069ea50f7d57705e6bc2689dedcd5199b762d749877",
+    "stage_tensor_sha256": "1e9532de99a89dad55b3a069ea50f7d57705e6bc2689dedcd5199b762d749877",
+    "shared_receipt_sha256": "b65c7569d364225d3b4b40559ef997f8fd1f779659c838086b7c9ec3312d5702",
+    "shared_receipt_file_sha256": "bb55054dd78e270223fafa6e1313727fa76f55c32d9b11679e821590ed4e727c",
+    "checkpoint_sha256": "5f8eead3f4e960189345b1a9bf492763fe52ec71f70115b73244ffe9d03d2e75",
+    "dataset_sha256": "2fd999220673258012acfb411a4e7e66af7d488050b2519b0badcc49b7600b8d",
+    "base_sha256": "21c212f904b5dd2419b8f9fddbe50c5e1f4229ca5081e3a4efb17e786c89170b",
+    "vocabulary_sha256": "663867e11165ec2849acfb23f6426729e08e435afd2f6fe5f7f765f1d3507272",
+    "optimizer": {
+      "name": "AdamW",
+      "evidence_lr": 0.0001,
+      "adapter_lr": 1e-05,
+      "weight_decay": 0.01,
+      "clip_norm": 1.0
+    },
+    "loss": "positive mean-token CE including EOS; CROSS=0; same expanded scoring compute both arms",
+    "runtime": {
+      "python": "3.13.15 (main, Aug  6 2026, 11:06:22) [GCC 13.3.0]",
+      "platform": "Linux-6.18.48+-x86_64-with-glibc2.39",
+      "torch": "2.11.0+cu128",
+      "cuda": "12.8",
+      "cudnn": 91900,
+      "gpu": {
+        "name": "Tesla T4",
+        "capability": [
+          7,
+          5
+        ]
+      },
+      "packages": {
+        "numpy": "2.1.3",
+        "torchvision": "0.26.0+cu128",
+        "transformers": "4.57.1",
+        "nltk": "3.9.1",
+        "h5py": "3.16.0"
+      },
+      "deterministic_algorithms": true,
+      "warn_only": false,
+      "cudnn_benchmark": false,
+      "cudnn_deterministic": true,
+      "mha_fastpath": false,
+      "sdp_math": true,
+      "sdp_flash": false,
+      "sdp_mem_efficient": false,
+      "cublas_workspace": ":4096:8",
+      "python_hash_seed": "42",
+      "scope": "Controls reduce known nondeterminism; no cross-device/release bitwise guarantee."
+    },
+    "protocol_sha256": "6fb3a038e7960c5e4993f1f1998d25718e2c969b8bd4923def6cb8290ed50cf5"
+  },
+  "limits": [
+    "Archive receipt does not independently verify absent feature_cache.bin or adaptation.bin bytes. PAIRCROP must verify shared assets at runtime.",
+    "No blind semantic judgments yet; ranking metrics do not establish caption correctness.",
+    "Do not alter PAIRCROP hyperparameters after inspecting FULLFRAME metrics."
+  ]
+}
