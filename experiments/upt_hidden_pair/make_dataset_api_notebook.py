@@ -17,9 +17,9 @@ def build():
 
     add('markdown', '''# Lưu UPT hidden-pair cache thành Kaggle Dataset bằng API token
 
-CPU, Internet **ON**. Gắn **Output của notebook cache đã chạy xong** vào Input,
-hoặc dùng các cell này trong chính notebook đang còn `/kaggle/working/upt_hidden_pairs_11k`.
-ZIP review không chứa HDF5 nên không đủ để upload.
+CPU, Internet **ON**. Tự tải đúng **Output version 56** của
+`ducanh2403/2-vi-cai-kia-qua-nhieu` bằng API token; không cần gắn Input.
+Không dùng version mới nhất (57), không chạy lại notebook nguồn.
 
 1. Lấy token mới tại https://www.kaggle.com/settings/api (không dùng nội dung kaggle.json).
 2. Add-ons → Secrets: thêm và bật secret tên **KAGGLE_API_TOKEN**.
@@ -31,7 +31,7 @@ Token chỉ nằm trong bộ nhớ và môi trường tiến trình con; không 
 Không chạy UPT, caption model hay training.
 ''')
     add('code', '''from pathlib import Path
-SOURCE = None  # Tự tìm receipt đúng; hoặc Path('/kaggle/input/.../upt_hidden_pairs_11k')
+KERNEL_VERSION = 'ducanh2403/2-vi-cai-kia-qua-nhieu/56'
 OWNER = 'ducanh2403'  # Đổi nếu token thuộc tài khoản khác
 SLUG = 'upt-hidden-pairs-caption11k'
 TITLE = 'UPT hidden pairs caption 11k'
@@ -73,11 +73,30 @@ def run_cli(args, authenticated=True):
 run_cli([sys.executable, '-m', 'pip', 'install', '--upgrade', '--quiet', 'kaggle'], authenticated=False)
 print('Secret loaded; CLI ready. Token is not displayed.', flush=True)
 ''')
+    add('code', r'''import tempfile
+
+if KERNEL_VERSION != 'ducanh2403/2-vi-cai-kia-qua-nhieu/56':
+    raise ValueError('Notebook này khóa Output version 56; không tự chuyển sang latest.')
+# Fresh staging prevents stale files from another version being reused.
+DOWNLOAD = Path(tempfile.mkdtemp(prefix='upt-hidden-v56-', dir='/tmp'))
+print('Downloading only six cache payload files from:', KERNEL_VERSION, flush=True)
+run_cli([sys.executable, '-m', 'kaggle', 'kernels', 'output', KERNEL_VERSION,
+         '-p', str(DOWNLOAD), '--file-pattern',
+         r'(^|/)(cache_receipt\.json|cohort\.json|features_rank[01]\.h5|pairs_rank[01]\.jsonl)$'])
+receipts = list(DOWNLOAD.rglob('cache_receipt.json'))
+if len(receipts) != 1:
+    raise RuntimeError(f'Version 56 trả về {len(receipts)} cache receipt; dừng, không lấy version 57 thay thế.')
+SOURCE = receipts[0].parent
+print('Downloaded version 56. Next: verify receipt and every payload hash.', flush=True)
+''')
     source = (ROOT / 'package_cache_dataset.py').read_text(encoding='utf-8')
     add('code', 'import hashlib\nimport json\nSOURCE_CODE = ' + repr(source) + '\n'
         + 'assert hashlib.sha256(SOURCE_CODE.encode()).hexdigest() == ' + repr(hashlib.sha256(source.encode()).hexdigest())
         + '\nexec(compile(SOURCE_CODE, "package_cache_dataset.py", "exec"))\n'
         + 'source = locate(SOURCE)\nreport = package(source, DESTINATION)\n'
+        + "report['source_kernel_version'] = KERNEL_VERSION\n"
+        + "report['next'] = 'Upload verified flat payload to a private Kaggle Dataset.'\n"
+        + "(DESTINATION / 'transport_receipt.json').write_text(json.dumps(report, indent=2) + '\\n', encoding='utf-8')\n"
         + "print('Verified cache ready for API upload.', flush=True)\n")
     add('code', '''metadata_path = DESTINATION / 'dataset-metadata.json'
 metadata = {

@@ -42,7 +42,8 @@ class Checks(unittest.TestCase):
             self.assertNotIn('KAGGLE_API_TOKEN', popen.call_args.kwargs['env'])
 
     def test_create_is_private_flat_and_failure_removes_only_metadata(self):
-        code = ''.join(self.notebook['cells'][4]['source'])
+        code = next(''.join(c['source']) for c in self.notebook['cells']
+                    if ''.join(c['source']).startswith('metadata_path ='))
         scratch = Path(__file__).parent / 'review'; scratch.mkdir(exist_ok=True)
         with tempfile.TemporaryDirectory(dir=scratch) as directory:
             dest = Path(directory)
@@ -60,6 +61,29 @@ class Checks(unittest.TestCase):
                 exec(compile(code, '<test>', 'exec'), namespace)
             self.assertFalse((dest / 'dataset-metadata.json').exists())
             self.assertEqual((dest / 'features_rank0.h5').read_bytes(), b'synthetic')
+
+    def test_download_pins_56_filters_files_and_never_falls_back(self):
+        code = ''.join(self.notebook['cells'][3]['source'])
+        scratch = Path(__file__).parent / 'review'; scratch.mkdir(exist_ok=True)
+        with tempfile.TemporaryDirectory(dir=scratch) as directory:
+            calls = []
+            def fake_cli(args):
+                calls.append(args)
+                self.assertIn('ducanh2403/2-vi-cai-kia-qua-nhieu/56', args)
+                self.assertIn('--file-pattern', args)
+                pattern = __import__('re').compile(args[-1])
+                self.assertTrue(pattern.search('upt_hidden_pairs_11k/features_rank0.h5'))
+                self.assertFalse(pattern.search('Image_Captioning/checkpoint.pth'))
+            namespace = dict(KERNEL_VERSION='ducanh2403/2-vi-cai-kia-qua-nhieu/56',
+                             Path=Path, sys=__import__('sys'), run_cli=fake_cli)
+            with patch.object(tempfile, 'mkdtemp', return_value=directory), redirect_stdout(io.StringIO()):
+                with self.assertRaisesRegex(RuntimeError, '0 cache receipt'):
+                    exec(compile(code, '<test>', 'exec'), namespace)
+            self.assertEqual(len(calls), 1)
+            namespace['KERNEL_VERSION'] = 'ducanh2403/2-vi-cai-kia-qua-nhieu/57'
+            with self.assertRaises(ValueError):
+                exec(compile(code, '<test>', 'exec'), namespace)
+            self.assertEqual(len(calls), 1)
 
 
 if __name__ == '__main__':
