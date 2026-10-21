@@ -5,18 +5,18 @@
   "embedded_packet_roundtrip": "3 identical packets PASS",
   "notebooks": {
     "UPT_HIDDEN_CACHE_11K_2GPU.ipynb": {
-      "bytes": 53771,
-      "sha256": "811ede4226c8f57d190f6b9310ec529664b5ed1c6fb4393ace0aad23dbe88242",
+      "bytes": 53894,
+      "sha256": "a6d59e6803816c4dfee5b16feef37e47e8f1ee7d61c1e043ae2327d387dab315",
       "executed": false
     },
     "UPT_HIDDEN_CAPTION_A_2GPU.ipynb": {
-      "bytes": 56512,
-      "sha256": "98d497be45c5d6b9bdf5c339ab4e807000efe15a982c68c1ef1880fbe0fd10a3",
+      "bytes": 56635,
+      "sha256": "de0b65905871cc4dce56cfc5cbf2e6becf4c1d0ed7b9ba362bb718fe4dbbfd53",
       "executed": false
     },
     "UPT_HIDDEN_CAPTION_H_2GPU.ipynb": {
-      "bytes": 56515,
-      "sha256": "6f4e98d5538f876676a97d87dc6b87150c905ae9344b0563d7f9fe7e67ecb1e1",
+      "bytes": 56638,
+      "sha256": "4360a4d46c26b578273f79e2b6e431fbe41bad74cd0b7a9822842533e300cc88",
       "executed": false
     }
   },
@@ -33,5 +33,7 @@
     "UPT extraction/inference",
     "caption training/evaluation"
   ],
-  "limitations": "Local Python has no torch or h5py. All model/data-dependent preflights are in user-run Kaggle notebooks."
+  "limitations": "Local Python has no torch or h5py. All model/data-dependent preflights are in user-run Kaggle notebooks.",
+  "offline_checkout_regression": "PASS all3 notebook checkout helpers: initial local clone, refusal to overwrite tracked changes, fresh checkout preserving prior overlay; no model/notebook run",
+  "bootstrap_fix": "clone with checkout before clean check; new isolated temporary runtime directory on every bootstrap"
 }

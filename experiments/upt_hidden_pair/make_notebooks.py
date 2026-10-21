@@ -39,10 +39,11 @@ def bootstrap(bundle, name):
     packed = base64.b64encode(zlib.compress(json.dumps(bundle, ensure_ascii=False).encode('utf-8'), 9)).decode()
     hashes = {n: hashlib.sha256(s.encode()).hexdigest() for n, s in bundle.items()}
     return code(f'''
-    import base64, hashlib, json, os, shutil, subprocess, sys, zlib
+    import base64, hashlib, json, os, shutil, subprocess, sys, tempfile, zlib
     os.environ.update(PYTHONUNBUFFERED='1', HDF5_USE_FILE_LOCKING='FALSE', PYTHONHASHSEED='42',
         CUBLAS_WORKSPACE_CONFIG=':4096:8', OMP_NUM_THREADS='2', OPENBLAS_NUM_THREADS='2', TOKENIZERS_PARALLELISM='false', HF_HUB_DISABLE_XET='1')
-    REPO = Path('/tmp/Image_Captioning-hidden-{name}')
+    # Isolate each bootstrap: embedded tracked overlays from a prior run are intentional edits.
+    REPO = Path(tempfile.mkdtemp(prefix='Image_Captioning-hidden-{name}-'))/'repo'
     LOG = Path('/tmp/upt_hidden_{name}.log')
     PROJECT_COMMIT = '{COMMIT}'
     def run(args, cwd=None):
@@ -59,7 +60,7 @@ def bootstrap(bundle, name):
             raise RuntimeError(f'Command failed ({{status}}). Saved log: {{LOG}}')
     def checkout(url, path, revision):
         if not path.exists():
-            run(['git','clone','--no-checkout',url,path])
+            run(['git','clone',url,path])
         assert (path/'.git').is_dir(), path
         assert not subprocess.check_output(['git','status','--porcelain','--untracked-files=no'],cwd=path,text=True).strip(), 'Preserve tracked edits; use a fresh runtime path.'
         run(['git','fetch','--depth','1','origin',revision], cwd=path)
