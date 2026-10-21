@@ -52,6 +52,9 @@ def check(phase,device,distributed=False):
     if distributed:
         from torch.nn.parallel import DistributedDataParallel as DDP
         wrapped = DDP(model,device_ids=[device.index],broadcast_buffers=False,find_unused_parameters=True)
+    # Equal model initialization, different rank inputs: equality after a step
+    # now checks gradient synchronization rather than identical local arithmetic.
+    torch.manual_seed(100+int(os.environ.get('RANK','0')))
     batch = dict(visual=torch.randn(2,32,512,device=device),legacy=torch.randn(2,3,512,device=device),
                  legacy_mask=torch.tensor([[1,1,0],[1,0,0]],device=device),
                  captions=torch.tensor([[[1,4,5,2,0]],[[1,6,7,2,0]]],device=device),
