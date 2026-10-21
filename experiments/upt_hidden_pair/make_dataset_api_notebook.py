@@ -4,6 +4,24 @@ import json
 from pathlib import Path
 
 ROOT = Path(__file__).parent
+KAGGLE_COMMIT = '6894864ff4095cf98e9e36d3a694ff5fc9ba3818'
+VERSION_PREFLIGHT = '''import tempfile
+from types import SimpleNamespace
+from unittest.mock import patch
+from kaggle.api.kaggle_api_extended import KaggleApi
+
+# Exercise the installed download implementation without contacting Kaggle.
+api = KaggleApi()
+with tempfile.TemporaryDirectory() as directory, patch.object(api, 'build_kaggle_client') as factory:
+    endpoint = factory.return_value.__enter__.return_value.kernels.kernels_api_client.list_kernel_session_output
+    endpoint.return_value = SimpleNamespace(files=[], next_page_token=None, log=None)
+    api.kernels_output('ducanh2403/2-vi-cai-kia-qua-nhieu/58', path=directory)
+    request = endpoint.call_args.args[0]
+    assert getattr(request, 'version_label', None) == 'v58', 'Installed CLI ignores the requested version; STOP before download.'
+    assert request.user_name == 'ducanh2403'
+    assert request.kernel_slug == '2-vi-cai-kia-qua-nhieu'
+print('Version routing preflight PASS: request.version_label=v58; no network call.', flush=True)
+'''
 
 
 def build():
@@ -20,6 +38,8 @@ def build():
 CPU, Internet **ON**. Tự tải đúng **Output version 58** của
 `ducanh2403/2-vi-cai-kia-qua-nhieu` bằng API token; không cần gắn Input.
 Khóa đúng version 58, không tự lấy latest, không chạy lại notebook nguồn.
+Bản CLI 2.2.4 bỏ qua version khi tải Output; notebook cài source chính thức đã sửa,
+khóa commit và thử request giả lập phải có `version_label=v58` trước khi tải thật.
 
 1. Lấy token mới tại https://www.kaggle.com/settings/api (không dùng nội dung kaggle.json).
 2. Add-ons → Secrets: thêm và bật secret tên **KAGGLE_API_TOKEN**.
@@ -70,9 +90,11 @@ def run_cli(args, authenticated=True):
         raise RuntimeError(f'Lệnh thất bại (exit {code}); xem log đã ẩn token phía trên. Kiểm tra Internet, token, OWNER và slug đã tồn tại.')
 
 # Install before importing kaggle; no credential files are created.
-run_cli([sys.executable, '-m', 'pip', 'install', '--upgrade', '--quiet', 'kaggle'], authenticated=False)
+run_cli([sys.executable, '-m', 'pip', 'install', '--upgrade', '--quiet',
+         'https://github.com/Kaggle/kaggle-cli/archive/6894864ff4095cf98e9e36d3a694ff5fc9ba3818.zip'], authenticated=False)
 print('Secret loaded; CLI ready. Token is not displayed.', flush=True)
-''')
+''' + '\nVERSION_PREFLIGHT = ' + repr(VERSION_PREFLIGHT)
+        + "\nrun_cli([sys.executable, '-u', '-c', VERSION_PREFLIGHT])\n")
     add('code', r'''import tempfile
 
 if KERNEL_VERSION != 'ducanh2403/2-vi-cai-kia-qua-nhieu/58':

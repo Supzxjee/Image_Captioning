@@ -8,7 +8,7 @@ import subprocess
 import tempfile
 import unittest
 from unittest.mock import patch
-from make_dataset_api_notebook import build
+from make_dataset_api_notebook import build, VERSION_PREFLIGHT, KAGGLE_COMMIT
 
 
 class Checks(unittest.TestCase):
@@ -21,6 +21,34 @@ class Checks(unittest.TestCase):
                 self.assertIsNone(cell['execution_count'])
                 self.assertEqual(cell['outputs'], [])
                 ast.parse(''.join(cell['source']))
+
+    def test_installed_download_must_send_v58_not_just_accept_suffix(self):
+        from contextlib import nullcontext
+        from types import ModuleType, SimpleNamespace
+        modules = {name: ModuleType(name) for name in ('kaggle', 'kaggle.api', 'kaggle.api.kaggle_api_extended')}
+        class FakeApi:
+            def build_kaggle_client(self):
+                raise AssertionError('No network allowed')
+            def kernels_output(self, kernel, path):
+                with self.build_kaggle_client() as client:
+                    client.kernels.kernels_api_client.list_kernel_session_output(
+                        SimpleNamespace(user_name='ducanh2403', kernel_slug='2-vi-cai-kia-qua-nhieu',
+                                        version_label=self.label))
+        modules['kaggle.api.kaggle_api_extended'].KaggleApi = FakeApi
+        scratch = Path(__file__).parent / 'review'; scratch.mkdir(exist_ok=True)
+        with tempfile.TemporaryDirectory(dir=scratch) as directory:
+            with patch.dict('sys.modules', modules), patch.object(tempfile, 'TemporaryDirectory', return_value=nullcontext(directory)):
+                for label in ('v58', None):
+                    FakeApi.label = label
+                    with redirect_stdout(io.StringIO()):
+                        if label is None:
+                            with self.assertRaisesRegex(AssertionError, 'ignores the requested version'):
+                                exec(VERSION_PREFLIGHT, {})
+                        else:
+                            exec(VERSION_PREFLIGHT, {})
+        setup = ''.join(self.notebook['cells'][2]['source'])
+        self.assertIn('archive/' + KAGGLE_COMMIT + '.zip', setup)
+        self.assertIn("'-c', VERSION_PREFLIGHT", setup)
 
     def test_cli_token_only_in_child_environment_and_output_redacted(self):
         code = ''.join(self.notebook['cells'][2]['source'])
