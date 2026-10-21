@@ -1,0 +1,289 @@
+{
+  "status": "MATCHED_GV_A_G_T_ARTIFACT_AUDIT_PASS",
+  "decision": "STOP_VG_REGION_CE_CURRENT_CACHE_SCALE",
+  "metrics": {
+    "A": {
+      "CIDEr": 1.2055125991020814,
+      "chair": {
+        "CHAIRs": 0.052,
+        "CHAIRi": 0.032475490196078434,
+        "Recall": 0.45803873347679064
+      },
+      "counts": {
+        "images": 1000,
+        "hallucinated_captions": 52,
+        "hallucinated_mentions": 53,
+        "object_mentions": 1632,
+        "recalled_unique_objects": 1490,
+        "reference_unique_objects": 3253
+      },
+      "mean_caption_words": 10.213,
+      "mean_CHAIR_tokenized_words": 10.957
+    },
+    "G": {
+      "CIDEr": 1.2084006473212774,
+      "chair": {
+        "CHAIRs": 0.053,
+        "CHAIRi": 0.03306797305572566,
+        "Recall": 0.4561942822010452
+      },
+      "counts": {
+        "images": 1000,
+        "hallucinated_captions": 53,
+        "hallucinated_mentions": 54,
+        "object_mentions": 1633,
+        "recalled_unique_objects": 1484,
+        "reference_unique_objects": 3253
+      },
+      "mean_caption_words": 10.046,
+      "mean_CHAIR_tokenized_words": 10.762
+    },
+    "original": {
+      "CIDEr": 1.1890655082257537,
+      "chair": {
+        "CHAIRs": 0.058,
+        "CHAIRi": 0.035452322738386305,
+        "Recall": 0.4568090992929603
+      },
+      "counts": {
+        "images": 1000,
+        "hallucinated_captions": 58,
+        "hallucinated_mentions": 58,
+        "object_mentions": 1636,
+        "recalled_unique_objects": 1486,
+        "reference_unique_objects": 3253
+      },
+      "mean_caption_words": 10.088,
+      "mean_CHAIR_tokenized_words": 10.803
+    },
+    "T": {
+      "CIDEr": 1.1857469272550498,
+      "chair": {
+        "CHAIRs": 0.052,
+        "CHAIRi": 0.03263546798029557,
+        "Recall": 0.45527205656317243
+      },
+      "counts": {
+        "images": 1000,
+        "hallucinated_captions": 52,
+        "hallucinated_mentions": 53,
+        "object_mentions": 1624,
+        "recalled_unique_objects": 1481,
+        "reference_unique_objects": 3253
+      },
+      "mean_caption_words": 10.105,
+      "mean_CHAIR_tokenized_words": 10.816
+    },
+    "GV": {
+      "CIDEr": 1.1932201469848913,
+      "chair": {
+        "CHAIRs": 0.053,
+        "CHAIRi": 0.03302752293577982,
+        "Recall": 0.4586535505687058
+      },
+      "counts": {
+        "images": 1000,
+        "hallucinated_captions": 53,
+        "hallucinated_mentions": 54,
+        "object_mentions": 1635,
+        "recalled_unique_objects": 1492,
+        "reference_unique_objects": 3253
+      },
+      "mean_caption_words": 10.107,
+      "mean_CHAIR_tokenized_words": 10.841
+    }
+  },
+  "comparisons": {
+    "G_minus_A": {
+      "n": 1000,
+      "delta": 0.002888048219196323,
+      "ci95": [
+        -0.017606965361618352,
+        0.02364069822282192
+      ],
+      "positive": 193,
+      "negative": 186,
+      "equal": 621,
+      "bootstrap_resamples": 20000,
+      "bootstrap_seed": 42,
+      "scope": "Paired development-image resampling; does not measure seed variance or selection bias."
+    },
+    "G_minus_original": {
+      "n": 1000,
+      "delta": 0.019335139095523732,
+      "ci95": [
+        0.0003632818782404081,
+        0.03844590382058041
+      ],
+      "positive": 222,
+      "negative": 195,
+      "equal": 583,
+      "bootstrap_resamples": 20000,
+      "bootstrap_seed": 42,
+      "scope": "Paired development-image resampling; does not measure seed variance or selection bias."
+    },
+    "A_minus_original": {
+      "n": 1000,
+      "delta": 0.016447090876327407,
+      "ci95": [
+        -0.0035128621091813726,
+        0.03611277422018343
+      ],
+      "positive": 191,
+      "negative": 170,
+      "equal": 639,
+      "bootstrap_resamples": 20000,
+      "bootstrap_seed": 42,
+      "scope": "Paired development-image resampling; does not measure seed variance or selection bias."
+    },
+    "G_minus_T": {
+      "n": 1000,
+      "delta": 0.022653720066227807,
+      "ci95": [
+        0.0014597943535159719,
+        0.04456269346404009
+      ],
+      "positive": 182,
+      "negative": 155,
+      "equal": 663,
+      "bootstrap_resamples": 20000,
+      "bootstrap_seed": 42,
+      "scope": "Paired development-image resampling; does not measure seed variance or selection bias."
+    },
+    "T_minus_A": {
+      "n": 1000,
+      "delta": -0.01976567184703148,
+      "ci95": [
+        -0.03901154740663617,
+        -0.0012147239249851508
+      ],
+      "positive": 187,
+      "negative": 210,
+      "equal": 603,
+      "bootstrap_resamples": 20000,
+      "bootstrap_seed": 42,
+      "scope": "Paired development-image resampling; does not measure seed variance or selection bias."
+    },
+    "T_minus_original": {
+      "n": 1000,
+      "delta": -0.0033185809707040707,
+      "ci95": [
+        -0.025458742079575027,
+        0.018263057558370276
+      ],
+      "positive": 212,
+      "negative": 215,
+      "equal": 573,
+      "bootstrap_resamples": 20000,
+      "bootstrap_seed": 42,
+      "scope": "Paired development-image resampling; does not measure seed variance or selection bias."
+    },
+    "GV_minus_A": {
+      "n": 1000,
+      "delta": -0.012292452117189932,
+      "ci95": [
+        -0.032403839461576135,
+        0.007695361809742686
+      ],
+      "positive": 189,
+      "negative": 194,
+      "equal": 617,
+      "bootstrap_resamples": 20000,
+      "bootstrap_seed": 42,
+      "scope": "Paired development-image resampling; does not measure seed variance or selection bias."
+    },
+    "GV_minus_G": {
+      "n": 1000,
+      "delta": -0.015180500336386253,
+      "ci95": [
+        -0.03503483232646539,
+        0.0036573619900437376
+      ],
+      "positive": 195,
+      "negative": 193,
+      "equal": 612,
+      "bootstrap_resamples": 20000,
+      "bootstrap_seed": 42,
+      "scope": "Paired development-image resampling; does not measure seed variance or selection bias."
+    },
+    "GV_minus_T": {
+      "n": 1000,
+      "delta": 0.007473219729841549,
+      "ci95": [
+        -0.014701523805620481,
+        0.02976583723277766
+      ],
+      "positive": 212,
+      "negative": 191,
+      "equal": 597,
+      "bootstrap_resamples": 20000,
+      "bootstrap_seed": 42,
+      "scope": "Paired development-image resampling; does not measure seed variance or selection bias."
+    }
+  },
+  "gate_checks": {
+    "cider_gain_at_least_001": false,
+    "paired_ci_lower_positive": false,
+    "beats_original": true,
+    "chair_s_not_increased": false,
+    "chair_i_not_increased": false,
+    "recall_drop_at_most_001": true,
+    "GV_minus_G_paired_lower_positive": false
+  },
+  "archives": {
+    "A": {
+      "path": "C:\\Users\\leduc\\Downloads\\upt_hidden_caption_A_review.zip",
+      "sha256": "bc8e1194254303652fd468419ffad7a76bfe5c7d1f5a3d5ed5a88826367dd704"
+    },
+    "G": {
+      "path": "C:\\Users\\leduc\\Downloads\\vg_region_caption_G_review.zip",
+      "sha256": "a9132e9d6d9865f3481a82c7a373730574b3eac1d7163340c609a551caa7a40d"
+    },
+    "T": {
+      "path": "C:\\Users\\leduc\\Downloads\\vg_region_caption_T_review.zip",
+      "sha256": "b13aada5fdcb4126d9323cc6b3230e64877ae830fa05c5d0d976c1cb81bec0af"
+    },
+    "GV": {
+      "path": "C:\\Users\\leduc\\Downloads\\vg_region_caption_GV_review.zip",
+      "sha256": "9870af052ae995ea5ff4301a48d13675179709773cdbdecfc3dd1523f44c4b8a"
+    }
+  },
+  "GV_G_protocol_difference_keys": [
+    "arm",
+    "auxiliary_gradient_policy",
+    "checkpoint_format",
+    "comparison_limits",
+    "implementation_sha256",
+    "locked_numeric_gate",
+    "output",
+    "promotion_requires",
+    "stage"
+  ],
+  "original_G_sources_preserved": true,
+  "gradient_preflight_pass": true,
+  "gradient_flag_false_rank_steps": 2500,
+  "auxiliary": {
+    "draws": 10000,
+    "mean_patches": 32.258,
+    "first100_phrase_loss": 4.660548161268235,
+    "last100_phrase_loss": 4.3440646958351135
+  },
+  "training_seconds_by_rank": [
+    554.0476690630001,
+    554.0479954489997
+  ],
+  "global_gradient_clipping": {
+    "threshold": 1.0,
+    "rank_steps_above_threshold": 2500,
+    "limit": "Direct decoder auxiliary gradients stop, but global clipping can change the scale of caption decoder updates. Visual-memory adaptation also has indirect effects."
+  },
+  "test_used": false,
+  "model_or_training_executed_locally": false,
+  "interpretation": "GV fails locked baseline improvement and does not support the proposed decoder-gradient harm explanation in this configuration. Point estimates below A/G are not proof of inferiority because paired CIs include zero.",
+  "limits": [
+    "Reused dev1000, one seed; paired image bootstrap excludes seed variance and selection bias.",
+    "No visual/human factual review; CHAIR measures objects, not relation correctness.",
+    "GV isolates direct auxiliary decoder gradient, not all indirect decoder update effects (visual path and global gradient clipping).",
+    "Checkpoint bytes absent; checkpoint/state hashes are worker-reported."
+  ]
+}

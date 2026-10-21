@@ -1,5 +1,7 @@
 # GV — chỉ đưa gradient phrase phụ vào bộ đọc ảnh
 
+**Kết quả ngày22/10/2026:** [GV đã hoàn tất và chưa qua gate](GV_RESULT.md). Theo tiêu chí khóa trước, dừng nhánh VG region-CE với cache/quy mô hiện tại; các mục dưới lưu thiết kế và hướng dẫn của lượt đã chạy.
+
 Một lượt pilot mới theo quyết định Astra sau khi đủ A/G/T. G có CIDEr1.208400647, A1.205512599, T1.185746927; G−A chưa qua gate, G−T có CI dương. **Giả thuyết decoder bị ảnh hưởng xấu bởi văn phong/nhiễu VG chưa được chứng minh.**
 
 ## Chạy
