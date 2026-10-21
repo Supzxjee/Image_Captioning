@@ -1,0 +1,146 @@
+[
+  {
+    "coco_id": 4424,
+    "url": "https://images.cocodataset.org/train2014/COCO_train2014_000000004424.jpg",
+    "sha256": "ce501b6ff179fea0598bc78d0b151519aaffe53c4d8011853585c54162c8f379",
+    "byte_identity_matches_cache": true
+  },
+  {
+    "coco_id": 68912,
+    "url": "https://images.cocodataset.org/train2014/COCO_train2014_000000068912.jpg",
+    "sha256": "0f5ece97f015714a0fd41af8ed0a98cdb5db7c9cd9c37d2b2052ef812a09f921",
+    "byte_identity_matches_cache": true
+  },
+  {
+    "coco_id": 295245,
+    "url": "https://images.cocodataset.org/train2014/COCO_train2014_000000295245.jpg",
+    "sha256": "9d2b6c7f83eb246fe81d9e1913a098e8245e21423e8c9bd9b09dc4a5275a1bec",
+    "byte_identity_matches_cache": true
+  },
+  {
+    "coco_id": 431092,
+    "url": "https://images.cocodataset.org/val2014/COCO_val2014_000000431092.jpg",
+    "sha256": "879f9b0e7c1f7959f5d86565df75d438ff742ebe626a62caa72f62c570fef2b9",
+    "byte_identity_matches_cache": true
+  },
+  {
+    "coco_id": 252292,
+    "url": "https://images.cocodataset.org/val2014/COCO_val2014_000000252292.jpg",
+    "sha256": "c06f32c0fbdff63e4f3d9a57abc27a7392154318e72adab5953b187c17778778",
+    "byte_identity_matches_cache": true
+  },
+  {
+    "coco_id": 527002,
+    "url": "https://images.cocodataset.org/val2014/COCO_val2014_000000527002.jpg",
+    "sha256": "a8453a14d7320290b13071fa02e1238159b64e01828b113450e2ba407a0fc92a",
+    "byte_identity_matches_cache": true
+  },
+  {
+    "coco_id": 198785,
+    "url": "https://images.cocodataset.org/train2014/COCO_train2014_000000198785.jpg",
+    "sha256": "97c4440c1b096a7778f45855e041d8895d3fbda1f5d93a58bad108ac2c8d7405",
+    "byte_identity_matches_cache": true
+  },
+  {
+    "coco_id": 98497,
+    "url": "https://images.cocodataset.org/val2014/COCO_val2014_000000098497.jpg",
+    "sha256": "2314fd57bbc82c8b78f04594f2e61d7dda3e1d18f4e9d2946bc2329ee33f9ea1",
+    "byte_identity_matches_cache": true
+  },
+  {
+    "coco_id": 193743,
+    "url": "https://images.cocodataset.org/val2014/COCO_val2014_000000193743.jpg",
+    "sha256": "bc14d363c9f99e5fe67c311c007789b06bf7faba1e0ec3940d7b946eddcf3e75",
+    "byte_identity_matches_cache": true
+  },
+  {
+    "coco_id": 299346,
+    "url": "https://images.cocodataset.org/train2014/COCO_train2014_000000299346.jpg",
+    "sha256": "51041c265b603246c8b76b8786bb5b2fb2d8563d9a5d9e0cdfe878dbce7af2e5",
+    "byte_identity_matches_cache": true
+  },
+  {
+    "coco_id": 162023,
+    "url": "https://images.cocodataset.org/train2014/COCO_train2014_000000162023.jpg",
+    "sha256": "eaff5f548a3b897cf623f2d45e5b6e285b41f2dc5bb08e94c7d32951795dc3ee",
+    "byte_identity_matches_cache": true
+  },
+  {
+    "coco_id": 195952,
+    "url": "https://images.cocodataset.org/train2014/COCO_train2014_000000195952.jpg",
+    "sha256": "12e6e46452d076335ba50b7d76a46dafcdf1753882b1f43ae744c5c30a2376b7",
+    "byte_identity_matches_cache": true
+  },
+  {
+    "coco_id": 358576,
+    "url": "https://images.cocodataset.org/train2014/COCO_train2014_000000358576.jpg",
+    "sha256": "c750b6b01b8dbaea79365811732b4040e7dde48f2ddb6fd33ffee32afb243de4",
+    "byte_identity_matches_cache": true
+  },
+  {
+    "coco_id": 292988,
+    "url": "https://images.cocodataset.org/val2014/COCO_val2014_000000292988.jpg",
+    "sha256": "4ad133c210cc12253e4da4ec290dc5b1da58b84ba6bdc393af8f02da6ea12393",
+    "byte_identity_matches_cache": true
+  },
+  {
+    "coco_id": 579906,
+    "url": "https://images.cocodataset.org/train2014/COCO_train2014_000000579906.jpg",
+    "sha256": "cebf294b5ef5d9b048c85bc619da9fd8421eda5330e48d0b692fbf36e0ec0370",
+    "byte_identity_matches_cache": true
+  },
+  {
+    "coco_id": 386645,
+    "url": "https://images.cocodataset.org/val2014/COCO_val2014_000000386645.jpg",
+    "sha256": "3d3ac5479cac0a8a9038aa774a9269e27c75bd786b88d01d44360416d984068c",
+    "byte_identity_matches_cache": true
+  },
+  {
+    "coco_id": 535643,
+    "url": "https://images.cocodataset.org/val2014/COCO_val2014_000000535643.jpg",
+    "sha256": "80b4dfe02facaee2d7a8f19dc03a6d0dc320b6578f72a9a844eb6bdfb69905cd",
+    "byte_identity_matches_cache": true
+  },
+  {
+    "coco_id": 303962,
+    "url": "https://images.cocodataset.org/train2014/COCO_train2014_000000303962.jpg",
+    "sha256": "1c3511510453ecda381d07bd5a07264c037efe5fbd056948ed464e97889e2d40",
+    "byte_identity_matches_cache": true
+  },
+  {
+    "coco_id": 78426,
+    "url": "https://images.cocodataset.org/val2014/COCO_val2014_000000078426.jpg",
+    "sha256": "475db6e34f57f03cf611cc4c359d8707df49628491adc27d6b5209607284778b",
+    "byte_identity_matches_cache": true
+  },
+  {
+    "coco_id": 231253,
+    "url": "https://images.cocodataset.org/train2014/COCO_train2014_000000231253.jpg",
+    "sha256": "4058469cd32f04077b16363bdc8f201e5fbda194015412b0d411c0a89ee790e9",
+    "byte_identity_matches_cache": true
+  },
+  {
+    "coco_id": 414112,
+    "url": "https://images.cocodataset.org/train2014/COCO_train2014_000000414112.jpg",
+    "sha256": "3a1862d3041911ad81e457ed90f236d179c395cf5afb7f94a66ac7509c031659",
+    "byte_identity_matches_cache": true
+  },
+  {
+    "coco_id": 370741,
+    "url": "https://images.cocodataset.org/train2014/COCO_train2014_000000370741.jpg",
+    "sha256": "9feeabd2056a991762c03dfb956c882584c775cf2f38573279844e2e53f1a77f",
+    "byte_identity_matches_cache": true
+  },
+  {
+    "coco_id": 280176,
+    "url": "https://images.cocodataset.org/train2014/COCO_train2014_000000280176.jpg",
+    "sha256": "27396f708acde667177cf5a19a072ef03dc4d6edd50611689aa40719bd7fcc5c",
+    "byte_identity_matches_cache": true
+  },
+  {
+    "coco_id": 340393,
+    "url": "https://images.cocodataset.org/train2014/COCO_train2014_000000340393.jpg",
+    "sha256": "8e554bcf36e8c20f1bcf997be9c71631bb7cc66addeec2de092f49b513a18e2c",
+    "byte_identity_matches_cache": true
+  }
+]

@@ -1,0 +1,42 @@
+{
+  "status": "INVENTORY_AND_SAMPLE_LOCKED_BEFORE_VISUAL_REVIEW",
+  "model_or_training_executed": false,
+  "source_dataset_sha256": "2fd999220673258012acfb411a4e7e66af7d488050b2519b0badcc49b7600b8d",
+  "cache_receipt_sha256": "873f6da0e1b4c4f7d7408b67c593c07ce56e5b4ca3fa1db5f9ce5e04aa188920",
+  "source_region_zip_sha256": "a34a7623a1c03d89d4f7df10b7ed7945eb2d7e67084eee249ab8e3433e6a6dcf",
+  "source_metadata_zip_sha256": "b87a94918cb2ff4d952cf1dfeca0b9cf6cd6fd204c2f8704645653be1163681a",
+  "counts": {
+    "allowed_cached_train_images": 4093,
+    "geometry_compatible_images": 3379,
+    "regions_before_minimal_filters": 168646
+  },
+  "rejects": {
+    "image_aspect_mismatch": 714,
+    "invalid_region_box": 123,
+    "empty_phrase": 1
+  },
+  "region_candidates": 168522,
+  "unique_images": 3361,
+  "unique_phrases": 131719,
+  "no_pair_images": 1186,
+  "no_pair_regions": 58965,
+  "diagnostic_stratum_counts": {
+    "spatial_or_other": 51585,
+    "other_description": 45621,
+    "human_object": 12351,
+    "no_selected_UPT_pair": 58965
+  },
+  "median_region_area_fraction": 0.03449999999999998,
+  "whole_image_like_regions_ge_075": 3431,
+  "sample_sha256": "3b25d0e0b70da79d11f4e5a58f2689105da472d82ef562aa7cb54a6925ac9fe0",
+  "sample_strata": {
+    "human_object": 8,
+    "spatial_or_other": 8,
+    "no_selected_UPT_pair": 8
+  },
+  "excluded_prior_audit_images": 30,
+  "sample_selection": "Fixed SHA256 ordering;8perstratum;24distinct;prior30excluded. Paired strata require lexical relation cue; human stratum requires human word. Graph tags alone were found insufficient before any images were viewed;v1 preserved locally, v2 locked before image viewing. Not GT.",
+  "policy": "Original nonempty phrase + valid original region + established COCO/cache identity/aspect. No pair match, class/edge-count/phrase-length/lexical/spatial blacklist gate.",
+  "heldout_policy": "All5000COCOval+5000COCOtest plus568known-exposed IDs excluded; train/restval only.",
+  "constraints": "Restricted to existing cache cohort for image identity/selected-pair strata. These are not full-VG counts or validated supervision labels."
+}

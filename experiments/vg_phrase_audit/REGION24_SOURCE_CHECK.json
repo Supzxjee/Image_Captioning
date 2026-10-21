@@ -1,0 +1,9 @@
+{
+  "sample": 3,
+  "vg_image_id": 2336827,
+  "coco_id": 295245,
+  "official_url": "https://cs.stanford.edu/people/rak248/VG_100K/2336827.jpg",
+  "vg_jpeg_sha256": "9d2b6c7f83eb246fe81d9e1913a098e8245e21423e8c9bd9b09dc4a5275a1bec",
+  "method": "Direct visual comparison of VG source JPEG and COCO JPEG; same doughnut-child scene. Not a byte-equality claim across resized sources.",
+  "inference": "Phrase-image mismatch persists when using VG source image; do not blame COCO lookup alone."
+}

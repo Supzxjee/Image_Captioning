@@ -1,0 +1,866 @@
+[
+  {
+    "coco_id": 4424,
+    "image_id": 82415,
+    "vg_image_id": 2380864,
+    "source_split": "train",
+    "filename": "COCO_train2014_000000004424.jpg",
+    "filepath": "train2014",
+    "original_wh": [
+      438,
+      640
+    ],
+    "cache_image_sha256": "ce501b6ff179fea0598bc78d0b151519aaffe53c4d8011853585c54162c8f379",
+    "vg_wh": [
+      342,
+      500
+    ],
+    "region_id": 1475909,
+    "phrase": "the man has a phone",
+    "vg_region_xywh": [
+      25,
+      275,
+      145,
+      170
+    ],
+    "region_normalized": [
+      0.07309941520467836,
+      0.55,
+      0.49707602339181284,
+      0.89
+    ],
+    "region_area_fraction": 0.1441520467836257,
+    "selected_UPT_pairs": 3,
+    "graph_relationship_count": 1,
+    "diagnostic_group": "human_object",
+    "status": "MINIMAL_RULE_CANDIDATE_NOT_VERIFIED"
+  },
+  {
+    "coco_id": 68912,
+    "image_id": 111821,
+    "vg_image_id": 2399781,
+    "source_split": "train",
+    "filename": "COCO_train2014_000000068912.jpg",
+    "filepath": "train2014",
+    "original_wh": [
+      640,
+      480
+    ],
+    "cache_image_sha256": "0f5ece97f015714a0fd41af8ed0a98cdb5db7c9cd9c37d2b2052ef812a09f921",
+    "vg_wh": [
+      500,
+      375
+    ],
+    "region_id": 766229,
+    "phrase": "sufer wearing red shorts",
+    "vg_region_xywh": [
+      311,
+      187,
+      97,
+      102
+    ],
+    "region_normalized": [
+      0.622,
+      0.49866666666666665,
+      0.816,
+      0.7706666666666667
+    ],
+    "region_area_fraction": 0.052768,
+    "selected_UPT_pairs": 8,
+    "graph_relationship_count": 1,
+    "diagnostic_group": "human_object",
+    "status": "MINIMAL_RULE_CANDIDATE_NOT_VERIFIED"
+  },
+  {
+    "coco_id": 295245,
+    "image_id": 120684,
+    "vg_image_id": 2336827,
+    "source_split": "train",
+    "filename": "COCO_train2014_000000295245.jpg",
+    "filepath": "train2014",
+    "original_wh": [
+      335,
+      500
+    ],
+    "cache_image_sha256": "9d2b6c7f83eb246fe81d9e1913a098e8245e21423e8c9bd9b09dc4a5275a1bec",
+    "vg_wh": [
+      335,
+      500
+    ],
+    "region_id": 3619788,
+    "phrase": "Two surfboards up under a man's arm.",
+    "vg_region_xywh": [
+      214,
+      449,
+      8,
+      15
+    ],
+    "region_normalized": [
+      0.6388059701492538,
+      0.898,
+      0.6626865671641791,
+      0.928
+    ],
+    "region_area_fraction": 0.0007164179104477592,
+    "selected_UPT_pairs": 4,
+    "graph_relationship_count": 1,
+    "diagnostic_group": "human_object",
+    "status": "MINIMAL_RULE_CANDIDATE_NOT_VERIFIED"
+  },
+  {
+    "coco_id": 431092,
+    "image_id": 3584,
+    "vg_image_id": 2397768,
+    "source_split": "restval",
+    "filename": "COCO_val2014_000000431092.jpg",
+    "filepath": "val2014",
+    "original_wh": [
+      640,
+      428
+    ],
+    "cache_image_sha256": "879f9b0e7c1f7959f5d86565df75d438ff742ebe626a62caa72f62c570fef2b9",
+    "vg_wh": [
+      500,
+      334
+    ],
+    "region_id": 862910,
+    "phrase": "woman wearing blue shorts",
+    "vg_region_xywh": [
+      138,
+      97,
+      45,
+      36
+    ],
+    "region_normalized": [
+      0.276,
+      0.2904191616766467,
+      0.366,
+      0.39820359281437123
+    ],
+    "region_area_fraction": 0.009700598802395204,
+    "selected_UPT_pairs": 8,
+    "graph_relationship_count": 1,
+    "diagnostic_group": "human_object",
+    "status": "MINIMAL_RULE_CANDIDATE_NOT_VERIFIED"
+  },
+  {
+    "coco_id": 252292,
+    "image_id": 4220,
+    "vg_image_id": 2405487,
+    "source_split": "restval",
+    "filename": "COCO_val2014_000000252292.jpg",
+    "filepath": "val2014",
+    "original_wh": [
+      640,
+      425
+    ],
+    "cache_image_sha256": "c06f32c0fbdff63e4f3d9a57abc27a7392154318e72adab5953b187c17778778",
+    "vg_wh": [
+      500,
+      332
+    ],
+    "region_id": 435047,
+    "phrase": "person with a yellow shirt standing",
+    "vg_region_xywh": [
+      354,
+      208,
+      32,
+      71
+    ],
+    "region_normalized": [
+      0.708,
+      0.6265060240963856,
+      0.772,
+      0.8403614457831325
+    ],
+    "region_area_fraction": 0.013686746987951819,
+    "selected_UPT_pairs": 8,
+    "graph_relationship_count": 1,
+    "diagnostic_group": "human_object",
+    "status": "MINIMAL_RULE_CANDIDATE_NOT_VERIFIED"
+  },
+  {
+    "coco_id": 527002,
+    "image_id": 20211,
+    "vg_image_id": 2374767,
+    "source_split": "restval",
+    "filename": "COCO_val2014_000000527002.jpg",
+    "filepath": "val2014",
+    "original_wh": [
+      500,
+      333
+    ],
+    "cache_image_sha256": "a8453a14d7320290b13071fa02e1238159b64e01828b113450e2ba407a0fc92a",
+    "vg_wh": [
+      500,
+      333
+    ],
+    "region_id": 1961733,
+    "phrase": "the man is wearing a harness",
+    "vg_region_xywh": [
+      224,
+      122,
+      63,
+      55
+    ],
+    "region_normalized": [
+      0.448,
+      0.3663663663663664,
+      0.574,
+      0.5315315315315315
+    ],
+    "region_area_fraction": 0.020810810810810803,
+    "selected_UPT_pairs": 1,
+    "graph_relationship_count": 1,
+    "diagnostic_group": "human_object",
+    "status": "MINIMAL_RULE_CANDIDATE_NOT_VERIFIED"
+  },
+  {
+    "coco_id": 198785,
+    "image_id": 51900,
+    "vg_image_id": 2355566,
+    "source_split": "train",
+    "filename": "COCO_train2014_000000198785.jpg",
+    "filepath": "train2014",
+    "original_wh": [
+      480,
+      640
+    ],
+    "cache_image_sha256": "97c4440c1b096a7778f45855e041d8895d3fbda1f5d93a58bad108ac2c8d7405",
+    "vg_wh": [
+      375,
+      500
+    ],
+    "region_id": 2879768,
+    "phrase": "a woman wearing a brown leather vest",
+    "vg_region_xywh": [
+      53,
+      42,
+      115,
+      293
+    ],
+    "region_normalized": [
+      0.14133333333333334,
+      0.084,
+      0.448,
+      0.67
+    ],
+    "region_area_fraction": 0.17970666666666668,
+    "selected_UPT_pairs": 3,
+    "graph_relationship_count": 1,
+    "diagnostic_group": "human_object",
+    "status": "MINIMAL_RULE_CANDIDATE_NOT_VERIFIED"
+  },
+  {
+    "coco_id": 98497,
+    "image_id": 12571,
+    "vg_image_id": 2372545,
+    "source_split": "restval",
+    "filename": "COCO_val2014_000000098497.jpg",
+    "filepath": "val2014",
+    "original_wh": [
+      640,
+      480
+    ],
+    "cache_image_sha256": "2314fd57bbc82c8b78f04594f2e61d7dda3e1d18f4e9d2946bc2329ee33f9ea1",
+    "vg_wh": [
+      500,
+      375
+    ],
+    "region_id": 2069039,
+    "phrase": "diagram of a surfer on the sign",
+    "vg_region_xywh": [
+      32,
+      135,
+      204,
+      205
+    ],
+    "region_normalized": [
+      0.064,
+      0.36,
+      0.472,
+      0.9066666666666666
+    ],
+    "region_area_fraction": 0.22303999999999996,
+    "selected_UPT_pairs": 8,
+    "graph_relationship_count": 1,
+    "diagnostic_group": "human_object",
+    "status": "MINIMAL_RULE_CANDIDATE_NOT_VERIFIED"
+  },
+  {
+    "coco_id": 193743,
+    "image_id": 30610,
+    "vg_image_id": 2327201,
+    "source_split": "restval",
+    "filename": "COCO_val2014_000000193743.jpg",
+    "filepath": "val2014",
+    "original_wh": [
+      427,
+      640
+    ],
+    "cache_image_sha256": "bc14d363c9f99e5fe67c311c007789b06bf7faba1e0ec3940d7b946eddcf3e75",
+    "vg_wh": [
+      333,
+      500
+    ],
+    "region_id": 5904526,
+    "phrase": "white line on a court",
+    "vg_region_xywh": [
+      249,
+      398,
+      77,
+      71
+    ],
+    "region_normalized": [
+      0.7477477477477478,
+      0.796,
+      0.978978978978979,
+      0.938
+    ],
+    "region_area_fraction": 0.03283483483483481,
+    "selected_UPT_pairs": 2,
+    "graph_relationship_count": 0,
+    "diagnostic_group": "spatial_or_other",
+    "status": "MINIMAL_RULE_CANDIDATE_NOT_VERIFIED"
+  },
+  {
+    "coco_id": 299346,
+    "image_id": 95618,
+    "vg_image_id": 2347938,
+    "source_split": "train",
+    "filename": "COCO_train2014_000000299346.jpg",
+    "filepath": "train2014",
+    "original_wh": [
+      500,
+      375
+    ],
+    "cache_image_sha256": "51041c265b603246c8b76b8786bb5b2fb2d8563d9a5d9e0cdfe878dbce7af2e5",
+    "vg_wh": [
+      500,
+      375
+    ],
+    "region_id": 3243706,
+    "phrase": "white clouds in blue sky",
+    "vg_region_xywh": [
+      267,
+      37,
+      56,
+      42
+    ],
+    "region_normalized": [
+      0.534,
+      0.09866666666666667,
+      0.646,
+      0.21066666666666667
+    ],
+    "region_area_fraction": 0.012544,
+    "selected_UPT_pairs": 8,
+    "graph_relationship_count": 1,
+    "diagnostic_group": "spatial_or_other",
+    "status": "MINIMAL_RULE_CANDIDATE_NOT_VERIFIED"
+  },
+  {
+    "coco_id": 162023,
+    "image_id": 96046,
+    "vg_image_id": 2347044,
+    "source_split": "train",
+    "filename": "COCO_train2014_000000162023.jpg",
+    "filepath": "train2014",
+    "original_wh": [
+      500,
+      333
+    ],
+    "cache_image_sha256": "eaff5f548a3b897cf623f2d45e5b6e285b41f2dc5bb08e94c7d32951795dc3ee",
+    "vg_wh": [
+      500,
+      333
+    ],
+    "region_id": 3286569,
+    "phrase": "brown pieces of food in person's hand",
+    "vg_region_xywh": [
+      281,
+      198,
+      27,
+      18
+    ],
+    "region_normalized": [
+      0.562,
+      0.5945945945945946,
+      0.616,
+      0.6486486486486487
+    ],
+    "region_area_fraction": 0.0029189189189189157,
+    "selected_UPT_pairs": 3,
+    "graph_relationship_count": 0,
+    "diagnostic_group": "spatial_or_other",
+    "status": "MINIMAL_RULE_CANDIDATE_NOT_VERIFIED"
+  },
+  {
+    "coco_id": 195952,
+    "image_id": 113957,
+    "vg_image_id": 2335631,
+    "source_split": "train",
+    "filename": "COCO_train2014_000000195952.jpg",
+    "filepath": "train2014",
+    "original_wh": [
+      612,
+      612
+    ],
+    "cache_image_sha256": "12e6e46452d076335ba50b7d76a46dafcdf1753882b1f43ae744c5c30a2376b7",
+    "vg_wh": [
+      500,
+      500
+    ],
+    "region_id": 3676760,
+    "phrase": "CHILD'S HEAD IS LAYING DIRECTLY ON BED",
+    "vg_region_xywh": [
+      148,
+      228,
+      138,
+      119
+    ],
+    "region_normalized": [
+      0.296,
+      0.456,
+      0.572,
+      0.694
+    ],
+    "region_area_fraction": 0.06568799999999997,
+    "selected_UPT_pairs": 1,
+    "graph_relationship_count": 1,
+    "diagnostic_group": "spatial_or_other",
+    "status": "MINIMAL_RULE_CANDIDATE_NOT_VERIFIED"
+  },
+  {
+    "coco_id": 358576,
+    "image_id": 82007,
+    "vg_image_id": 2349205,
+    "source_split": "train",
+    "filename": "COCO_train2014_000000358576.jpg",
+    "filepath": "train2014",
+    "original_wh": [
+      640,
+      424
+    ],
+    "cache_image_sha256": "c750b6b01b8dbaea79365811732b4040e7dde48f2ddb6fd33ffee32afb243de4",
+    "vg_wh": [
+      500,
+      331
+    ],
+    "region_id": 3183289,
+    "phrase": "a stack of tomatoes next to the lemons",
+    "vg_region_xywh": [
+      76,
+      40,
+      292,
+      285
+    ],
+    "region_normalized": [
+      0.152,
+      0.12084592145015106,
+      0.736,
+      0.9818731117824774
+    ],
+    "region_area_fraction": 0.5028398791540786,
+    "selected_UPT_pairs": 8,
+    "graph_relationship_count": 4,
+    "diagnostic_group": "spatial_or_other",
+    "status": "MINIMAL_RULE_CANDIDATE_NOT_VERIFIED"
+  },
+  {
+    "coco_id": 292988,
+    "image_id": 29280,
+    "vg_image_id": 2397371,
+    "source_split": "restval",
+    "filename": "COCO_val2014_000000292988.jpg",
+    "filepath": "val2014",
+    "original_wh": [
+      478,
+      640
+    ],
+    "cache_image_sha256": "4ad133c210cc12253e4da4ec290dc5b1da58b84ba6bdc393af8f02da6ea12393",
+    "vg_wh": [
+      374,
+      500
+    ],
+    "region_id": 881757,
+    "phrase": "pine trees on hill",
+    "vg_region_xywh": [
+      249,
+      48,
+      90,
+      142
+    ],
+    "region_normalized": [
+      0.6657754010695187,
+      0.096,
+      0.9064171122994652,
+      0.38
+    ],
+    "region_area_fraction": 0.06834224598930481,
+    "selected_UPT_pairs": 3,
+    "graph_relationship_count": 0,
+    "diagnostic_group": "spatial_or_other",
+    "status": "MINIMAL_RULE_CANDIDATE_NOT_VERIFIED"
+  },
+  {
+    "coco_id": 579906,
+    "image_id": 91827,
+    "vg_image_id": 2415035,
+    "source_split": "train",
+    "filename": "COCO_train2014_000000579906.jpg",
+    "filepath": "train2014",
+    "original_wh": [
+      640,
+      425
+    ],
+    "cache_image_sha256": "cebf294b5ef5d9b048c85bc619da9fd8421eda5330e48d0b692fbf36e0ec0370",
+    "vg_wh": [
+      500,
+      332
+    ],
+    "region_id": 40511,
+    "phrase": "Vehicle with two wheels.",
+    "vg_region_xywh": [
+      162,
+      27,
+      166,
+      243
+    ],
+    "region_normalized": [
+      0.324,
+      0.08132530120481928,
+      0.656,
+      0.8132530120481928
+    ],
+    "region_area_fraction": 0.24300000000000002,
+    "selected_UPT_pairs": 2,
+    "graph_relationship_count": 2,
+    "diagnostic_group": "spatial_or_other",
+    "status": "MINIMAL_RULE_CANDIDATE_NOT_VERIFIED"
+  },
+  {
+    "coco_id": 386645,
+    "image_id": 11629,
+    "vg_image_id": 2404686,
+    "source_split": "restval",
+    "filename": "COCO_val2014_000000386645.jpg",
+    "filepath": "val2014",
+    "original_wh": [
+      640,
+      396
+    ],
+    "cache_image_sha256": "3d3ac5479cac0a8a9038aa774a9269e27c75bd786b88d01d44360416d984068c",
+    "vg_wh": [
+      500,
+      309
+    ],
+    "region_id": 534401,
+    "phrase": "section of a sign post",
+    "vg_region_xywh": [
+      44,
+      228,
+      2,
+      21
+    ],
+    "region_normalized": [
+      0.088,
+      0.7378640776699029,
+      0.092,
+      0.8058252427184466
+    ],
+    "region_area_fraction": 0.00027184466019417486,
+    "selected_UPT_pairs": 8,
+    "graph_relationship_count": 1,
+    "diagnostic_group": "spatial_or_other",
+    "status": "MINIMAL_RULE_CANDIDATE_NOT_VERIFIED"
+  },
+  {
+    "coco_id": 535643,
+    "image_id": 3108,
+    "vg_image_id": 2343065,
+    "source_split": "restval",
+    "filename": "COCO_val2014_000000535643.jpg",
+    "filepath": "val2014",
+    "original_wh": [
+      500,
+      375
+    ],
+    "cache_image_sha256": "80b4dfe02facaee2d7a8f19dc03a6d0dc320b6578f72a9a844eb6bdfb69905cd",
+    "vg_wh": [
+      500,
+      375
+    ],
+    "region_id": 3475578,
+    "phrase": "This is a urinal ",
+    "vg_region_xywh": [
+      31,
+      89,
+      174,
+      264
+    ],
+    "region_normalized": [
+      0.062,
+      0.23733333333333334,
+      0.41,
+      0.9413333333333334
+    ],
+    "region_area_fraction": 0.24499199999999996,
+    "selected_UPT_pairs": 0,
+    "graph_relationship_count": 0,
+    "diagnostic_group": "no_selected_UPT_pair",
+    "status": "MINIMAL_RULE_CANDIDATE_NOT_VERIFIED"
+  },
+  {
+    "coco_id": 303962,
+    "image_id": 95992,
+    "vg_image_id": 2358274,
+    "source_split": "train",
+    "filename": "COCO_train2014_000000303962.jpg",
+    "filepath": "train2014",
+    "original_wh": [
+      500,
+      375
+    ],
+    "cache_image_sha256": "1c3511510453ecda381d07bd5a07264c037efe5fbd056948ed464e97889e2d40",
+    "vg_wh": [
+      500,
+      375
+    ],
+    "region_id": 2750858,
+    "phrase": "the tree is bare",
+    "vg_region_xywh": [
+      170,
+      43,
+      71,
+      85
+    ],
+    "region_normalized": [
+      0.34,
+      0.11466666666666667,
+      0.482,
+      0.3413333333333333
+    ],
+    "region_area_fraction": 0.032186666666666655,
+    "selected_UPT_pairs": 0,
+    "graph_relationship_count": 0,
+    "diagnostic_group": "no_selected_UPT_pair",
+    "status": "MINIMAL_RULE_CANDIDATE_NOT_VERIFIED"
+  },
+  {
+    "coco_id": 78426,
+    "image_id": 29079,
+    "vg_image_id": 2360922,
+    "source_split": "restval",
+    "filename": "COCO_val2014_000000078426.jpg",
+    "filepath": "val2014",
+    "original_wh": [
+      500,
+      334
+    ],
+    "cache_image_sha256": "475db6e34f57f03cf611cc4c359d8707df49628491adc27d6b5209607284778b",
+    "vg_wh": [
+      500,
+      334
+    ],
+    "region_id": 2624063,
+    "phrase": "Cord to the telephone",
+    "vg_region_xywh": [
+      318,
+      135,
+      95,
+      74
+    ],
+    "region_normalized": [
+      0.636,
+      0.4041916167664671,
+      0.826,
+      0.625748502994012
+    ],
+    "region_area_fraction": 0.04209580838323351,
+    "selected_UPT_pairs": 0,
+    "graph_relationship_count": 1,
+    "diagnostic_group": "no_selected_UPT_pair",
+    "status": "MINIMAL_RULE_CANDIDATE_NOT_VERIFIED"
+  },
+  {
+    "coco_id": 231253,
+    "image_id": 122469,
+    "vg_image_id": 2413617,
+    "source_split": "train",
+    "filename": "COCO_train2014_000000231253.jpg",
+    "filepath": "train2014",
+    "original_wh": [
+      375,
+      500
+    ],
+    "cache_image_sha256": "4058469cd32f04077b16363bdc8f201e5fbda194015412b0d411c0a89ee790e9",
+    "vg_wh": [
+      375,
+      500
+    ],
+    "region_id": 95938,
+    "phrase": "A small shelf with items on it",
+    "vg_region_xywh": [
+      165,
+      123,
+      91,
+      46
+    ],
+    "region_normalized": [
+      0.44,
+      0.246,
+      0.6826666666666666,
+      0.338
+    ],
+    "region_area_fraction": 0.022325333333333336,
+    "selected_UPT_pairs": 0,
+    "graph_relationship_count": 0,
+    "diagnostic_group": "no_selected_UPT_pair",
+    "status": "MINIMAL_RULE_CANDIDATE_NOT_VERIFIED"
+  },
+  {
+    "coco_id": 414112,
+    "image_id": 112716,
+    "vg_image_id": 2401792,
+    "source_split": "train",
+    "filename": "COCO_train2014_000000414112.jpg",
+    "filepath": "train2014",
+    "original_wh": [
+      427,
+      640
+    ],
+    "cache_image_sha256": "3a1862d3041911ad81e457ed90f236d179c395cf5afb7f94a66ac7509c031659",
+    "vg_wh": [
+      333,
+      500
+    ],
+    "region_id": 670089,
+    "phrase": "a sad looking dog",
+    "vg_region_xywh": [
+      13,
+      131,
+      318,
+      363
+    ],
+    "region_normalized": [
+      0.03903903903903904,
+      0.262,
+      0.993993993993994,
+      0.988
+    ],
+    "region_area_fraction": 0.6932972972972973,
+    "selected_UPT_pairs": 0,
+    "graph_relationship_count": 0,
+    "diagnostic_group": "no_selected_UPT_pair",
+    "status": "MINIMAL_RULE_CANDIDATE_NOT_VERIFIED"
+  },
+  {
+    "coco_id": 370741,
+    "image_id": 93042,
+    "vg_image_id": 2399334,
+    "source_split": "train",
+    "filename": "COCO_train2014_000000370741.jpg",
+    "filepath": "train2014",
+    "original_wh": [
+      640,
+      484
+    ],
+    "cache_image_sha256": "9feeabd2056a991762c03dfb956c882584c775cf2f38573279844e2e53f1a77f",
+    "vg_wh": [
+      500,
+      378
+    ],
+    "region_id": 787863,
+    "phrase": "the eyes are open",
+    "vg_region_xywh": [
+      198,
+      155,
+      21,
+      32
+    ],
+    "region_normalized": [
+      0.396,
+      0.41005291005291006,
+      0.438,
+      0.4947089947089947
+    ],
+    "region_area_fraction": 0.003555555555555554,
+    "selected_UPT_pairs": 0,
+    "graph_relationship_count": 0,
+    "diagnostic_group": "no_selected_UPT_pair",
+    "status": "MINIMAL_RULE_CANDIDATE_NOT_VERIFIED"
+  },
+  {
+    "coco_id": 280176,
+    "image_id": 76044,
+    "vg_image_id": 2410365,
+    "source_split": "train",
+    "filename": "COCO_train2014_000000280176.jpg",
+    "filepath": "train2014",
+    "original_wh": [
+      500,
+      375
+    ],
+    "cache_image_sha256": "27396f708acde667177cf5a19a072ef03dc4d6edd50611689aa40719bd7fcc5c",
+    "vg_wh": [
+      500,
+      375
+    ],
+    "region_id": 201398,
+    "phrase": "napkin rolled around utensils",
+    "vg_region_xywh": [
+      194,
+      133,
+      172,
+      70
+    ],
+    "region_normalized": [
+      0.388,
+      0.3546666666666667,
+      0.732,
+      0.5413333333333333
+    ],
+    "region_area_fraction": 0.06421333333333332,
+    "selected_UPT_pairs": 0,
+    "graph_relationship_count": 0,
+    "diagnostic_group": "no_selected_UPT_pair",
+    "status": "MINIMAL_RULE_CANDIDATE_NOT_VERIFIED"
+  },
+  {
+    "coco_id": 340393,
+    "image_id": 105133,
+    "vg_image_id": 2352415,
+    "source_split": "train",
+    "filename": "COCO_train2014_000000340393.jpg",
+    "filepath": "train2014",
+    "original_wh": [
+      480,
+      640
+    ],
+    "cache_image_sha256": "8e554bcf36e8c20f1bcf997be9c71631bb7cc66addeec2de092f49b513a18e2c",
+    "vg_wh": [
+      375,
+      500
+    ],
+    "region_id": 3029894,
+    "phrase": "A dirty brown toilet floor",
+    "vg_region_xywh": [
+      194,
+      451,
+      69,
+      42
+    ],
+    "region_normalized": [
+      0.5173333333333333,
+      0.902,
+      0.7013333333333334,
+      0.986
+    ],
+    "region_area_fraction": 0.015455999999999998,
+    "selected_UPT_pairs": 0,
+    "graph_relationship_count": 0,
+    "diagnostic_group": "no_selected_UPT_pair",
+    "status": "MINIMAL_RULE_CANDIDATE_NOT_VERIFIED"
+  }
+]

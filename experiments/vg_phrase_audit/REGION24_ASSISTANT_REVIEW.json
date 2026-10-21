@@ -1,0 +1,294 @@
+{
+  "reviewer_type": "assistant_visual_provisional_not_human",
+  "human_verified": false,
+  "sample_sha256": "c5ce33dc95d0a69077cfb977948427433fca6107e7e05e88f1981c26258409a3",
+  "phrases_or_boxes_edited": false,
+  "whole_image_counts": {
+    "supported": 16,
+    "contradicted": 2,
+    "unclear": 6
+  },
+  "region_counts": {
+    "unclear": 9,
+    "sufficient": 13,
+    "insufficient": 2
+  },
+  "instance_counts": {
+    "correct": 20,
+    "incorrect": 2,
+    "unclear": 2
+  },
+  "jointly_supported": 13,
+  "jointly_supported_by_group": {
+    "human_object": 4,
+    "spatial_or_other": 3,
+    "no_selected_UPT_pair": 6
+  },
+  "limits": "24 purposive stratified samples; not a population precision estimate and not comparable as a matched test with prior30 pair samples. Unclear is not false. AI labels are not training GT.",
+  "rows": [
+    {
+      "number": 1,
+      "coco_id": 4424,
+      "region_id": 1475909,
+      "group": "human_object",
+      "phrase_supported_in_full_image": "supported",
+      "region_evidence_sufficient": "unclear",
+      "correct_instance": "correct",
+      "provisional_clean": false,
+      "notes": "Full image supports the man holding the phone. The original region is mainly phone+hands, so whether it alone supports the full person-linked statement is uncertain."
+    },
+    {
+      "number": 2,
+      "coco_id": 68912,
+      "region_id": 766229,
+      "group": "human_object",
+      "phrase_supported_in_full_image": "supported",
+      "region_evidence_sufficient": "sufficient",
+      "correct_instance": "correct",
+      "provisional_clean": true,
+      "notes": "Selected surfer and red shorts are visible in the original region; original typo sufer retained."
+    },
+    {
+      "number": 3,
+      "coco_id": 295245,
+      "region_id": 3619788,
+      "group": "human_object",
+      "phrase_supported_in_full_image": "contradicted",
+      "region_evidence_sufficient": "insufficient",
+      "correct_instance": "incorrect",
+      "provisional_clean": false,
+      "notes": "COCO/VG original both show a child with doughnuts, not a man with surfboards. Tiny original region does not support the phrase. VG original JPEG was fetched separately and shows the same scene, so this is not explained by switching to a different COCO JPEG."
+    },
+    {
+      "number": 4,
+      "coco_id": 431092,
+      "region_id": 862910,
+      "group": "human_object",
+      "phrase_supported_in_full_image": "supported",
+      "region_evidence_sufficient": "unclear",
+      "correct_instance": "correct",
+      "provisional_clean": false,
+      "notes": "Full image supports a woman in blue shorts; region isolates the shorts/waist and lacks enough person/instance context for a confident region-only judgement."
+    },
+    {
+      "number": 5,
+      "coco_id": 252292,
+      "region_id": 435047,
+      "group": "human_object",
+      "phrase_supported_in_full_image": "supported",
+      "region_evidence_sufficient": "sufficient",
+      "correct_instance": "correct",
+      "provisional_clean": true,
+      "notes": "Standing person and yellow shirt are contained; original region is small in the full frame but the source crop is interpretable."
+    },
+    {
+      "number": 6,
+      "coco_id": 527002,
+      "region_id": 1961733,
+      "group": "human_object",
+      "phrase_supported_in_full_image": "supported",
+      "region_evidence_sufficient": "sufficient",
+      "correct_instance": "correct",
+      "provisional_clean": true,
+      "notes": "Original region contains the person torso and harness at the waist; the wearing relation is visible."
+    },
+    {
+      "number": 7,
+      "coco_id": 198785,
+      "region_id": 2879768,
+      "group": "human_object",
+      "phrase_supported_in_full_image": "unclear",
+      "region_evidence_sufficient": "unclear",
+      "correct_instance": "correct",
+      "provisional_clean": false,
+      "notes": "Woman and vest are correctly localized; brown leather material is not confidently established from the image. No phrase repair."
+    },
+    {
+      "number": 8,
+      "coco_id": 98497,
+      "region_id": 2069039,
+      "group": "human_object",
+      "phrase_supported_in_full_image": "supported",
+      "region_evidence_sufficient": "sufficient",
+      "correct_instance": "correct",
+      "provisional_clean": true,
+      "notes": "Surfer is a depiction on a sign; phrase explicitly says diagram, so no physical-person assertion is substituted."
+    },
+    {
+      "number": 9,
+      "coco_id": 193743,
+      "region_id": 5904526,
+      "group": "spatial_or_other",
+      "phrase_supported_in_full_image": "supported",
+      "region_evidence_sufficient": "sufficient",
+      "correct_instance": "correct",
+      "provisional_clean": true,
+      "notes": "White line and court surface visible in the assigned region."
+    },
+    {
+      "number": 10,
+      "coco_id": 299346,
+      "region_id": 3243706,
+      "group": "spatial_or_other",
+      "phrase_supported_in_full_image": "contradicted",
+      "region_evidence_sufficient": "insufficient",
+      "correct_instance": "incorrect",
+      "provisional_clean": false,
+      "notes": "Scene is a clear blue sky with kites; assigned region is empty blue sky. White clouds are not supported by the examined original image."
+    },
+    {
+      "number": 11,
+      "coco_id": 162023,
+      "region_id": 3286569,
+      "group": "spatial_or_other",
+      "phrase_supported_in_full_image": "unclear",
+      "region_evidence_sufficient": "unclear",
+      "correct_instance": "unclear",
+      "provisional_clean": false,
+      "notes": "Food/hand claim is hard to verify at source detail; region is a tiny patch near the hand and may not contain adequate hand–food evidence."
+    },
+    {
+      "number": 12,
+      "coco_id": 195952,
+      "region_id": 3676760,
+      "group": "spatial_or_other",
+      "phrase_supported_in_full_image": "unclear",
+      "region_evidence_sufficient": "unclear",
+      "correct_instance": "correct",
+      "provisional_clean": false,
+      "notes": "Head on pillow/bed is visible, but child-specific description and directly-on-bed wording cannot both be confidently established."
+    },
+    {
+      "number": 13,
+      "coco_id": 358576,
+      "region_id": 3183289,
+      "group": "spatial_or_other",
+      "phrase_supported_in_full_image": "supported",
+      "region_evidence_sufficient": "sufficient",
+      "correct_instance": "correct",
+      "provisional_clean": true,
+      "notes": "Original full image examined: tomatoes adjacent to lemons, both in the assigned region."
+    },
+    {
+      "number": 14,
+      "coco_id": 292988,
+      "region_id": 881757,
+      "group": "spatial_or_other",
+      "phrase_supported_in_full_image": "supported",
+      "region_evidence_sufficient": "unclear",
+      "correct_instance": "correct",
+      "provisional_clean": false,
+      "notes": "Full frame supports conifer trees on a snowy slope. Crop mainly contains branches and limited ground, leaving the on-hill evidence uncertain."
+    },
+    {
+      "number": 15,
+      "coco_id": 579906,
+      "region_id": 40511,
+      "group": "spatial_or_other",
+      "phrase_supported_in_full_image": "supported",
+      "region_evidence_sufficient": "sufficient",
+      "correct_instance": "correct",
+      "provisional_clean": true,
+      "notes": "Assigned region includes motorcycle and its two wheels; original phrase not expanded."
+    },
+    {
+      "number": 16,
+      "coco_id": 386645,
+      "region_id": 534401,
+      "group": "spatial_or_other",
+      "phrase_supported_in_full_image": "unclear",
+      "region_evidence_sufficient": "unclear",
+      "correct_instance": "unclear",
+      "provisional_clean": false,
+      "notes": "Very narrow region of a distant post; cannot confidently identify a sign post from that strip alone."
+    },
+    {
+      "number": 17,
+      "coco_id": 535643,
+      "region_id": 3475578,
+      "group": "no_selected_UPT_pair",
+      "phrase_supported_in_full_image": "supported",
+      "region_evidence_sufficient": "sufficient",
+      "correct_instance": "correct",
+      "provisional_clean": true,
+      "notes": "Urinal clearly contained and identified; UPT selected-pair count is zero."
+    },
+    {
+      "number": 18,
+      "coco_id": 303962,
+      "region_id": 2750858,
+      "group": "no_selected_UPT_pair",
+      "phrase_supported_in_full_image": "supported",
+      "region_evidence_sufficient": "sufficient",
+      "correct_instance": "correct",
+      "provisional_clean": true,
+      "notes": "Leafless tree branches visibly support bare-tree appearance; not a requirement to contain every pixel of the tree."
+    },
+    {
+      "number": 19,
+      "coco_id": 78426,
+      "region_id": 2624063,
+      "group": "no_selected_UPT_pair",
+      "phrase_supported_in_full_image": "supported",
+      "region_evidence_sufficient": "sufficient",
+      "correct_instance": "correct",
+      "provisional_clean": true,
+      "notes": "Coiled telephone cord and part of its connection are visible in the region."
+    },
+    {
+      "number": 20,
+      "coco_id": 231253,
+      "region_id": 95938,
+      "group": "no_selected_UPT_pair",
+      "phrase_supported_in_full_image": "supported",
+      "region_evidence_sufficient": "sufficient",
+      "correct_instance": "correct",
+      "provisional_clean": true,
+      "notes": "Mirror shelf/ledge and its items are visible within the original region."
+    },
+    {
+      "number": 21,
+      "coco_id": 414112,
+      "region_id": 670089,
+      "group": "no_selected_UPT_pair",
+      "phrase_supported_in_full_image": "unclear",
+      "region_evidence_sufficient": "unclear",
+      "correct_instance": "correct",
+      "provisional_clean": false,
+      "notes": "Dog is well localized; sad-looking is a subjective appearance judgement, not a reliable factual supervision label without further confirmation."
+    },
+    {
+      "number": 22,
+      "coco_id": 370741,
+      "region_id": 787863,
+      "group": "no_selected_UPT_pair",
+      "phrase_supported_in_full_image": "supported",
+      "region_evidence_sufficient": "sufficient",
+      "correct_instance": "correct",
+      "provisional_clean": true,
+      "notes": "Bird head crop shows an open eye; generic plural eyes wording retained rather than rewritten."
+    },
+    {
+      "number": 23,
+      "coco_id": 280176,
+      "region_id": 201398,
+      "group": "no_selected_UPT_pair",
+      "phrase_supported_in_full_image": "supported",
+      "region_evidence_sufficient": "sufficient",
+      "correct_instance": "correct",
+      "provisional_clean": true,
+      "notes": "Napkin wraps the visible utensils in the selected region."
+    },
+    {
+      "number": 24,
+      "coco_id": 340393,
+      "region_id": 3029894,
+      "group": "no_selected_UPT_pair",
+      "phrase_supported_in_full_image": "unclear",
+      "region_evidence_sufficient": "unclear",
+      "correct_instance": "correct",
+      "provisional_clean": false,
+      "notes": "Brown tiled floor is localized, but dirty is not confidently supported by the small dark floor patch."
+    }
+  ]
+}

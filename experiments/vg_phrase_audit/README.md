@@ -1,5 +1,7 @@
 # Visual Genome phrase–pair feasibility audit
 
+**Follow-up:** [Phrase–region audit24](REGION24_RESULT.md) đã hoàn tất theo đề nghị Astra:168.522region candidates/3.361images;13/24mẫu phù hợp đồng thời ba tiêu chí theo trợ lý chấm sơ bộ. Bỏ giới hạn ghép UPT mở được nguồn ứng viên, nhưng inventory chưa là nhãn sạch. Không chạy model/training. Phần dưới giữ kết quả lịch sử của audit phrase–pair.
+
 **Decision: chưa đủ điều kiện chạy G/T với phần giao cache hiện tại.** Không viết hoặc chạy notebook huấn luyện mới. Không kết luận Visual Genome nói chung không phù hợp.
 
 ## Đã làm và kết quả
