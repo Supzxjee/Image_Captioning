@@ -1,0 +1,62 @@
+{
+  "status": "TECHNICAL_SMOKE_REVIEW_AUDIT_PASS",
+  "date": "2026-10-22",
+  "archive_sha256": "e458bd3f375b997cc628bf55fdd3608e1bc16cd0a957405312960d6cb65a2571",
+  "archive_bytes": 35905,
+  "source_files_verified": 9,
+  "reference_sha256_verified": true,
+  "parity": {
+    "status": "CPU_PARITY_AND_INTERFACE_PASS",
+    "tolerance": {
+      "rtol": 0.0001,
+      "atol": 1e-06
+    },
+    "cases": [
+      {
+        "tokens": 32,
+        "output_max_abs": [
+          0.0,
+          0.0
+        ],
+        "parameter_gradients_compared": 93
+      },
+      {
+        "tokens": 150,
+        "output_max_abs": [
+          0.0,
+          0.0
+        ],
+        "parameter_gradients_compared": 93
+      }
+    ],
+    "baseline_bypass_exact": true,
+    "no_caption_quality_evaluation": true
+  },
+  "gpu": "Tesla T4 x2",
+  "core_parameters": 23161644,
+  "images": 8,
+  "updates": 4,
+  "global_batch": 8,
+  "peak_allocated_gib": 1.3263235092163086,
+  "peak_reserved_gib": 1.357421875,
+  "ce_warm_step_seconds": 0.17459609700000556,
+  "scst_step_seconds": [
+    0.8046802169999978,
+    0.43301015800000187
+  ],
+  "synchronized_core_sha256": "a39f7db1e661040e73da7720dd179e915797044dfbe0fd1de3e67e601fc7f602",
+  "baseline_bypass_pass": true,
+  "gradients_finite_nonzero": true,
+  "clip_active_rank_steps": 8,
+  "dev_used": false,
+  "test_used": false,
+  "caption_gain_evaluated": false,
+  "limits": [
+    "Reference and adapter share unchanged author forward; not independent implementation parity.",
+    "Only8train images repeated4steps; loss drop is not generalization or grounding evidence.",
+    "Peak/time excludes setup, fullTRAIN IDF, staging and evaluation; not a worst-case memory bound.",
+    "Bank/source/checkpoint/stage validation enforced by matched worker code; bank/checkpoint/stage bytes absent from reviewZIP.",
+    "Global clipping active8/8ranksteps; reported core norm is preclip.",
+    "Log has unrelated gradio/diffusers dependency warnings and DDP unused-parameter overhead warning; smoke completed."
+  ]
+}
