@@ -354,6 +354,8 @@ def worker(protocol):
                           sample_cider=float(sample_cider.mean()), greedy_cider=float(greedy_cider.mean()),
                           sample_object=float(sample_object.mean()), greedy_object=float(greedy_object.mean()))
         loss, ce, rl = ddp(batch, sample, active, advantage, weight, tokenizer.pad_idx)
+        if hasattr(model, 'training_diagnostics'):
+            record.update(model.training_diagnostics())
         if not torch.isfinite(loss):
             raise FloatingPointError(f'Nonfinite loss, rank {rank}, step {step}.')
         loss.backward()

@@ -1,0 +1,22 @@
+{
+  "status": "OFFLINE_CHECKS_PASS_GPU_PENDING_USER",
+  "date": "2026-10-21",
+  "pure_data_tests_passed": 3,
+  "notebook_artifact_tests_passed": 3,
+  "checks": [
+    "Square-resize patch geometry, no CLS or nearest fallback",
+    "Vocabulary train-only, OOV exclusion, EOS retained, image exclusions",
+    "Deterministic image-first schedule and phrase cap",
+    "Both notebooks unexecuted, syntax valid, <1MB and identical hashed embedded runtime/data",
+    "Payload/schedule integrity; all scheduled auxiliary images in allowed caption-train cohort",
+    "Caption training-loop source equals pinned A except two-line optional diagnostics hook",
+    "No captioning architecture source differences between A bootstrap base and G/T base commit"
+  ],
+  "not_run": [
+    "test_region_model.py synthetic gradient/mask/RNG tests (requires torch)",
+    "test_region_ddp.py two-GPU synthetic synchronized update test",
+    "HDF5 staging and feature metadata checks on actual Kaggle inputs",
+    "Any notebook, model inference, training or caption evaluation"
+  ],
+  "limits": "Local runtime has no torch/h5py. User notebooks run synthetic model/DDP preflight before training. Weak VG annotation noise remains; no performance gain established."
+}
