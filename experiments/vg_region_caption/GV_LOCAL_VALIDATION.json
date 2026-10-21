@@ -1,0 +1,17 @@
+{
+  "status": "OFFLINE_ARTIFACT_PASS_GPU_GRADIENT_PREFLIGHT_PENDING_USER",
+  "model_or_notebook_executed_locally": false,
+  "offline_artifact_tests_passed": 1,
+  "checks": [
+    "All original G embedded runtime/data sources unchanged; exactly four GV-specific sources added",
+    "Generated notebook and all embedded Python sources parse, source hashes match, notebook unexecuted and below1MB",
+    "GV configuration uses original baseline input paths, same data payload, two-GPU preflight and dedicated output"
+  ],
+  "not_run_locally": [
+    "Synthetic auxiliary-only gradient isolation and G forward/visual-gradient equivalence",
+    "Caption-only versus combined CE/SCST decoder gradient equivalence",
+    "Two-GPU DDP preflight",
+    "HDF5 staging, inference, training or evaluation"
+  ],
+  "limits": "User runs numerical/gradient/DDP checks on Kaggle before training. Staging I/O remains unchanged; no speed promise or improvement claim."
+}
