@@ -1,5 +1,7 @@
 {
   "status": "SCREEN_24_COMPLETE_STOP_LIMIT_REACHED_INSUFFICIENT_RELATION_CASES",
+  "astra_decision": "CLOSE_CURRENT_DRSA_ORACLE_DESIGN_BEFORE_NOTEBOOK",
+  "decision_reason": "Insufficient matching whole-image cases, basis coverage and protected contrasts; no empirical result for or against DRSA.",
   "reviewer_type": "assistant_visual_screen_not_human_gold",
   "counts": {
     "object_error": 1,

@@ -46,6 +46,8 @@ def main():
     assert counts == dict(object_error=1, relation_error_candidate=1, supported_core_relation=17, uncertain=5)
     assert [r['coco_id'] for r in rows if r['assistant_status']=='relation_error_candidate'] == [253341]
     result=dict(status='SCREEN_24_COMPLETE_STOP_LIMIT_REACHED_INSUFFICIENT_RELATION_CASES',
+        astra_decision='CLOSE_CURRENT_DRSA_ORACLE_DESIGN_BEFORE_NOTEBOOK',
+        decision_reason='Insufficient matching whole-image cases, basis coverage and protected contrasts; no empirical result for or against DRSA.',
         reviewer_type='assistant_visual_screen_not_human_gold', counts=counts,
         new_relation_error_candidates=[253341], previous_relation_error_candidates=[200984],
         total_relation_error_candidates=2, fully_locked_oracle_cases=0,

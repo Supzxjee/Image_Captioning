@@ -66,3 +66,9 @@ Shortlist basis 8 ảnh cũ chủ yếu đứng/mang ván và điện thoại. N
 Đã đạt giới hạn 24, chỉ bổ sung một ca sai quan hệ; tổng với audit trước là hai ứng viên, chưa đủ bốn. Dừng sàng lọc. Không thêm lỗi đối tượng/omission cho đủ số, không tự mở rộng ảnh, không báo gate 3/4 pass/fail khi thiếu dữ liệu.
 
 Đã gửi Astra summary một lần, không yêu cầu đọc lại artifacts; xin chốt công khai phạm vi hai-ca exploratory hoặc tạm dừng cấu hình này. Chưa viết notebook hoặc chạy oracle. Đây là thiếu điều kiện thực nghiệm, chưa phải bằng chứng DRSA thất bại.
+
+## Quyết định cuối sau phản hồi Astra
+
+**Đóng cấu hình DRSA oracle hiện tại trước khi viết notebook.** Không hạ gate 3/4 thành 2/2, không mở thêm vòng screen. Lý do không chỉ thiếu số ảnh: basis standing/carrying chưa bao phủ đúng hai lỗi, protected contrasts và mục tiêu token chưa khóa. Dùng chính hai ca vừa tìm để thiết kế basis rồi tối ưu trên chúng không đo được chuyển giao sang ảnh khác.
+
+Root đồng ý dừng thiết kế thử này để tránh đổi protocol sau khi xem dữ liệu. Tuy nhiên, audit chỉ bác bỏ giả định dữ liệu cũ đã sẵn sàng; không chứng minh DRSA hoặc căn chỉnh theo gradient không khả thi. Chưa có điểm oracle, gain caption hoặc kết quả thuận/nghịch về phương pháp. Hai ảnh được giữ làm hồ sơ lỗi assistant, chưa yêu cầu người dùng chấm thêm vì chưa mở được phép thử có giá trị quyết định đủ rõ.
