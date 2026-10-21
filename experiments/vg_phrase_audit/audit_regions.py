@@ -122,7 +122,7 @@ def run():
         for row in inventory:
             stream.write(json.dumps(row, ensure_ascii=False) + '\n')
     sample_raw = json.dumps(sample, ensure_ascii=False, indent=2) + '\n'
-    (ROOT / 'REGION24_MANIFEST.json').write_text(sample_raw, encoding='utf-8')
+    (ROOT / 'REGION24_MANIFEST.json').write_bytes(sample_raw.encode('utf-8'))
     areas = sorted(r['region_area_fraction'] for r in inventory)
     report = dict(status='INVENTORY_AND_SAMPLE_LOCKED_BEFORE_VISUAL_REVIEW', model_or_training_executed=False,
         source_dataset_sha256=DATASET_SHA, cache_receipt_sha256=RECEIPT_SHA,

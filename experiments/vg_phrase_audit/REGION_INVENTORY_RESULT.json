@@ -28,7 +28,7 @@
   },
   "median_region_area_fraction": 0.03449999999999998,
   "whole_image_like_regions_ge_075": 3431,
-  "sample_sha256": "c5ce33dc95d0a69077cfb977948427433fca6107e7e05e88f1981c26258409a3",
+  "sample_sha256": "3b25d0e0b70da79d11f4e5a58f2689105da472d82ef562aa7cb54a6925ac9fe0",
   "sample_strata": {
     "human_object": 8,
     "spatial_or_other": 8,
@@ -39,5 +39,5 @@
   "policy": "Original nonempty phrase + valid original region + established COCO/cache identity/aspect. No pair match, class/edge-count/phrase-length/lexical/spatial blacklist gate.",
   "heldout_policy": "All5000COCOval+5000COCOtest plus568known-exposed IDs excluded; train/restval only.",
   "constraints": "Restricted to existing cache cohort for image identity/selected-pair strata. These are not full-VG counts or validated supervision labels.",
-  "checksum_scope": "Exact written manifest bytes; corrected Windows newline translation mismatch without changing sample rows or review labels."
+  "checksum_scope": "Exact UTF-8/LF manifest bytes; newline normalization does not change sample rows or review labels. Git eol=lf is pinned for this hashed manifest."
 }

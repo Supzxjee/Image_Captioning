@@ -1,7 +1,7 @@
 {
   "reviewer_type": "assistant_visual_provisional_not_human",
   "human_verified": false,
-  "sample_sha256": "c5ce33dc95d0a69077cfb977948427433fca6107e7e05e88f1981c26258409a3",
+  "sample_sha256": "3b25d0e0b70da79d11f4e5a58f2689105da472d82ef562aa7cb54a6925ac9fe0",
   "phrases_or_boxes_edited": false,
   "whole_image_counts": {
     "supported": 16,
