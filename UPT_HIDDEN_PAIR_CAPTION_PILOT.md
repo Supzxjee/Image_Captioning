@@ -1,6 +1,8 @@
 # UPT hidden-pair caption pilot — chuẩn bị để người dùng chạy
 
-Theo hướng Astra chủ trì: dùng đặc trưng tương tác bên trong UPT để bổ sung memory của caption decoder, học bằng caption tự nhiên. **Chưa chạy; chưa có kết quả hoặc novelty được chứng minh.**
+Theo hướng Astra chủ trì: dùng đặc trưng tương tác bên trong UPT để bổ sung memory của caption decoder, học bằng caption tự nhiên. **A/H đã chạy xong: H chưa vượt A, NO-GO cho cấu hình hiện tại. Chưa chứng minh novelty hoặc căn chỉnh đúng.**
+
+[Kết quả và kiểm tra matched A/H](experiments/upt_hidden_pair/CAPTION_A_H_RESULT.md). CIDEr original/A/H = 1.189066/1.205513/1.201124; H−A = −.004389, paired95%CI [−.023220,+.014610]. Không tự mở rộng full training.
 
 1. Chạy [notebook cache11k, hai GPU](experiments/upt_hidden_pair/UPT_HIDDEN_CACHE_11K_2GPU.ipynb) với MSCOCO2014 JSON+ảnh. Internet ON, T4×2, Save&RunAll.
 2. **Dùng API token:** chạy [notebook tạo Private Dataset qua API](experiments/upt_hidden_pair/SAVE_UPT_HIDDEN_CACHE_KAGGLE_API.ipynb), CPU + Internet ON, tự tải Output `ducanh2403/2-vi-cai-kia-qua-nhieu/58` (không lấy latest, không cần Input; cài CLI chính thức có sửa lỗi bỏ qua version, preflight phải gửi `version_label=v58`), bật secret `KAGGLE_API_TOKEN`, sửa OWNER đúng tài khoản token. Kiểm tra hash trước upload sáu file cache nguyên byte; không chạy lại UPT. Cache upload nằm ngay gốc dataset, không có folder con `upt_hidden_pairs_11k`; A/H sửa `HIDDEN_CACHE` theo mount thực tế. Chỉ tạo dataset mới, không tự cập nhật dataset trùng slug.

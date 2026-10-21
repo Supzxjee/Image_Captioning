@@ -87,3 +87,8 @@ The upload notebook now installs the official source archive pinned to 6894864ff
 ### Retry a rejected dataset creation without downloading cache again
 
 If the upload log says `Please select a valid license`, replace only the final dataset-creation code cell with the updated notebook cell in the same live session. Keep the verified staging cache. The metadata now uses `other` with upstream-rights/private-research terms in description, replacing the backend-rejected `copyright-authors`. The child process calls dataset_create_new directly and requires status=ok with no error before reporting accepted or checking dataset status. CLI creation can print an error and still return zero; its exit code alone was insufficient. A rejection preserves the cache and removes only this cell's metadata file. Eight synthetic tests pass, including rejected/missing responses never reporting accepted. Real creation with the revised license remains user-run.
+
+
+## Received caption A/H results
+
+[CAPTION_A_H_RESULT.md](CAPTION_A_H_RESULT.md), [machine-readable audit](CAPTION_A_H_RESULT.json), [reproducible analysis](audit_caption_reviews.py). Matched run audit passed, but H failed the locked CIDEr gain gate: A 1.205513 vs H 1.201124, delta -.004389, paired bootstrap95%CI[-.023220,+.014610]. Both have 52/1000 object-hallucinated captions; H_off reaches1.202134. Nonzero gradients and48 off/36 swap caption changes demonstrate sensitivity, not alignment correctness. Current configuration is NO-GO; no automatic full run, seed search or test evaluation. No model was executed during artifact analysis.

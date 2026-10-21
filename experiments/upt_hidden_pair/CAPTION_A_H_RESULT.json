@@ -1,0 +1,321 @@
+{
+  "status": "MATCHED_ARTIFACT_AUDIT_PASS",
+  "decision": "NO_GO_CURRENT_CONFIGURATION",
+  "archives": {
+    "A": {
+      "path": "C:\\Users\\leduc\\Downloads\\upt_hidden_caption_A_review.zip",
+      "sha256": "bc8e1194254303652fd468419ffad7a76bfe5c7d1f5a3d5ed5a88826367dd704"
+    },
+    "H": {
+      "path": "C:\\Users\\leduc\\Downloads\\upt_hidden_caption_H_review.zip",
+      "sha256": "263efcad1dc6ff1eb1d243b5bb5fed37accfce58642558e6069cec1f33128d50"
+    }
+  },
+  "allowed_protocol_differences": [
+    "arm",
+    "output",
+    "stage",
+    "conditions"
+  ],
+  "metrics": {
+    "A": {
+      "CIDEr": 1.2055125991020814,
+      "chair": {
+        "CHAIRs": 0.052,
+        "CHAIRi": 0.032475490196078434,
+        "Recall": 0.45803873347679064
+      },
+      "counts": {
+        "images": 1000,
+        "hallucinated_captions": 52,
+        "hallucinated_mentions": 53,
+        "object_mentions": 1632,
+        "recalled_unique_objects": 1490,
+        "reference_unique_objects": 3253
+      },
+      "mean_caption_words": 10.213,
+      "mean_CHAIR_tokenized_words": 10.957
+    },
+    "H": {
+      "CIDEr": 1.201123876158922,
+      "chair": {
+        "CHAIRs": 0.052,
+        "CHAIRi": 0.03217972070431087,
+        "Recall": 0.4601905932984937
+      },
+      "counts": {
+        "images": 1000,
+        "hallucinated_captions": 52,
+        "hallucinated_mentions": 53,
+        "object_mentions": 1647,
+        "recalled_unique_objects": 1497,
+        "reference_unique_objects": 3253
+      },
+      "mean_caption_words": 10.16,
+      "mean_CHAIR_tokenized_words": 10.932
+    },
+    "H_off": {
+      "CIDEr": 1.2021343329792824,
+      "chair": {
+        "CHAIRs": 0.052,
+        "CHAIRi": 0.03210175651120533,
+        "Recall": 0.46203504457423916
+      },
+      "counts": {
+        "images": 1000,
+        "hallucinated_captions": 52,
+        "hallucinated_mentions": 53,
+        "object_mentions": 1651,
+        "recalled_unique_objects": 1503,
+        "reference_unique_objects": 3253
+      },
+      "mean_caption_words": 10.168,
+      "mean_CHAIR_tokenized_words": 10.942
+    },
+    "original": {
+      "CIDEr": 1.1890655082257537,
+      "chair": {
+        "CHAIRs": 0.058,
+        "CHAIRi": 0.035452322738386305,
+        "Recall": 0.4568090992929603
+      },
+      "counts": {
+        "images": 1000,
+        "hallucinated_captions": 58,
+        "hallucinated_mentions": 58,
+        "object_mentions": 1636,
+        "recalled_unique_objects": 1486,
+        "reference_unique_objects": 3253
+      },
+      "mean_caption_words": 10.088,
+      "mean_CHAIR_tokenized_words": 10.803
+    }
+  },
+  "comparisons": {
+    "H_minus_A": {
+      "all": {
+        "n": 1000,
+        "delta": -0.004388722943159307,
+        "ci95": [
+          -0.02321965392529101,
+          0.014609598787361771
+        ],
+        "positive": 171,
+        "negative": 160,
+        "equal": 669,
+        "bootstrap_resamples": 20000,
+        "bootstrap_seed": 42,
+        "scope": "Paired development-image resampling; does not measure seed variance or selection bias."
+      },
+      "with_pairs": {
+        "n": 654,
+        "delta": 0.002564438214015257,
+        "ci95": [
+          -0.022570242211538537,
+          0.027871315493811857
+        ],
+        "positive": 105,
+        "negative": 102,
+        "equal": 447,
+        "bootstrap_resamples": 20000,
+        "bootstrap_seed": 42,
+        "scope": "Paired development-image resampling; does not measure seed variance or selection bias."
+      },
+      "no_pairs": {
+        "n": 346,
+        "delta": -0.017531403280708912,
+        "ci95": [
+          -0.04451923168644034,
+          0.008069897269936167
+        ],
+        "positive": 66,
+        "negative": 58,
+        "equal": 222,
+        "bootstrap_resamples": 20000,
+        "bootstrap_seed": 42,
+        "scope": "Paired development-image resampling; does not measure seed variance or selection bias."
+      }
+    },
+    "H_minus_original": {
+      "all": {
+        "n": 1000,
+        "delta": 0.012058367933168104,
+        "ci95": [
+          -0.010462827241072486,
+          0.03459374788233051
+        ],
+        "positive": 203,
+        "negative": 169,
+        "equal": 628,
+        "bootstrap_resamples": 20000,
+        "bootstrap_seed": 42,
+        "scope": "Paired development-image resampling; does not measure seed variance or selection bias."
+      },
+      "with_pairs": {
+        "n": 654,
+        "delta": 0.012852300782002718,
+        "ci95": [
+          -0.013830107275387402,
+          0.039509631431315355
+        ],
+        "positive": 122,
+        "negative": 107,
+        "equal": 425,
+        "bootstrap_resamples": 20000,
+        "bootstrap_seed": 42,
+        "scope": "Paired development-image resampling; does not measure seed variance or selection bias."
+      },
+      "no_pairs": {
+        "n": 346,
+        "delta": 0.010557697172654125,
+        "ci95": [
+          -0.029143152613351618,
+          0.04845742783336509
+        ],
+        "positive": 81,
+        "negative": 62,
+        "equal": 203,
+        "bootstrap_resamples": 20000,
+        "bootstrap_seed": 42,
+        "scope": "Paired development-image resampling; does not measure seed variance or selection bias."
+      }
+    },
+    "A_minus_original": {
+      "all": {
+        "n": 1000,
+        "delta": 0.016447090876327407,
+        "ci95": [
+          -0.0035128621091813726,
+          0.03611277422018343
+        ],
+        "positive": 191,
+        "negative": 170,
+        "equal": 639,
+        "bootstrap_resamples": 20000,
+        "bootstrap_seed": 42,
+        "scope": "Paired development-image resampling; does not measure seed variance or selection bias."
+      },
+      "with_pairs": {
+        "n": 654,
+        "delta": 0.01028786256798746,
+        "ci95": [
+          -0.011758819170806862,
+          0.0326472066051714
+        ],
+        "positive": 110,
+        "negative": 99,
+        "equal": 445,
+        "bootstrap_resamples": 20000,
+        "bootstrap_seed": 42,
+        "scope": "Paired development-image resampling; does not measure seed variance or selection bias."
+      },
+      "no_pairs": {
+        "n": 346,
+        "delta": 0.028089100453363037,
+        "ci95": [
+          -0.011424110656333263,
+          0.06635204811623278
+        ],
+        "positive": 81,
+        "negative": 71,
+        "equal": 194,
+        "bootstrap_resamples": 20000,
+        "bootstrap_seed": 42,
+        "scope": "Paired development-image resampling; does not measure seed variance or selection bias."
+      }
+    },
+    "H_minus_H_off": {
+      "all": {
+        "n": 1000,
+        "delta": -0.001010456820360479,
+        "ci95": [
+          -0.007386731989772329,
+          0.005072658447810425
+        ],
+        "positive": 31,
+        "negative": 16,
+        "equal": 953,
+        "bootstrap_resamples": 20000,
+        "bootstrap_seed": 42,
+        "scope": "Paired development-image resampling; does not measure seed variance or selection bias."
+      },
+      "with_pairs": {
+        "n": 654,
+        "delta": -0.0015450410097255032,
+        "ci95": [
+          -0.01117401550848666,
+          0.007606462007702542
+        ],
+        "positive": 31,
+        "negative": 16,
+        "equal": 607,
+        "bootstrap_resamples": 20000,
+        "bootstrap_seed": 42,
+        "scope": "Paired development-image resampling; does not measure seed variance or selection bias."
+      },
+      "no_pairs": {
+        "n": 346,
+        "delta": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "positive": 0,
+        "negative": 0,
+        "equal": 346,
+        "bootstrap_resamples": 20000,
+        "bootstrap_seed": 42,
+        "scope": "Paired development-image resampling; does not measure seed variance or selection bias."
+      }
+    }
+  },
+  "sensitivity": {
+    "off": {
+      "all": 48,
+      "with_pairs": 48,
+      "no_pairs": 0
+    },
+    "pair_swap": {
+      "all": 36,
+      "with_pairs": 36,
+      "no_pairs": 0
+    }
+  },
+  "pair_coverage": {
+    "all": 1000,
+    "with_pairs": 654,
+    "no_pairs": 346
+  },
+  "changed_A_H": 343,
+  "H_branch_gradient": {
+    "positive_steps": 2500,
+    "total_rank_steps": 2500,
+    "maximum": 0.5055256065737308
+  },
+  "locked_numeric_gate": {
+    "CIDEr_delta_H_minus_A_min": 0.01,
+    "paired_bootstrap95_lower_gt": 0.0,
+    "H_CIDEr_gt_original": true,
+    "CHAIRs_increase_max": 0.0,
+    "CHAIRi_increase_max": 0.0,
+    "Recall_drop_max": 0.01
+  },
+  "gate_checks": {
+    "cider_gain_at_least_001": false,
+    "paired_ci_lower_positive": false,
+    "beats_original": true,
+    "chair_s_not_increased": true,
+    "chair_i_not_increased": true,
+    "recall_drop_at_most_001": true
+  },
+  "test_used": false,
+  "model_or_training_executed": false,
+  "limits": [
+    "Reused dev1000, one seed; not confirmatory test evidence.",
+    "CHAIR evaluates object hallucination, not relation truth.",
+    "Sensitivity and nonzero gradients do not prove correct visual-semantic alignment.",
+    "H_off is adapted H without memory, not the matched A control.",
+    "No human factual labels read/generated in this audit; no visual correctness claims.",
+    "Review ZIP does not contain model checkpoint bytes; hashes are worker-reported."
+  ]
+}
