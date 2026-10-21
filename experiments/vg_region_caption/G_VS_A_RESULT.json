@@ -1,0 +1,166 @@
+{
+  "status": "SAVED_G_VS_A_ARTIFACT_AUDIT_PASS",
+  "decision": "G_FAILS_LOCKED_GATE_WAIT_T_FOR_ATTRIBUTION",
+  "archives": {
+    "A": {
+      "path": "C:\\Users\\leduc\\Downloads\\upt_hidden_caption_A_review.zip",
+      "sha256": "bc8e1194254303652fd468419ffad7a76bfe5c7d1f5a3d5ed5a88826367dd704"
+    },
+    "G": {
+      "path": "C:\\Users\\leduc\\Downloads\\vg_region_caption_G_review.zip",
+      "sha256": "a9132e9d6d9865f3481a82c7a373730574b3eac1d7163340c609a551caa7a40d"
+    }
+  },
+  "metrics": {
+    "A": {
+      "CIDEr": 1.2055125991020814,
+      "chair": {
+        "CHAIRs": 0.052,
+        "CHAIRi": 0.032475490196078434,
+        "Recall": 0.45803873347679064
+      },
+      "counts": {
+        "images": 1000,
+        "hallucinated_captions": 52,
+        "hallucinated_mentions": 53,
+        "object_mentions": 1632,
+        "recalled_unique_objects": 1490,
+        "reference_unique_objects": 3253
+      },
+      "mean_caption_words": 10.213,
+      "mean_CHAIR_tokenized_words": 10.957
+    },
+    "G": {
+      "CIDEr": 1.2084006473212774,
+      "chair": {
+        "CHAIRs": 0.053,
+        "CHAIRi": 0.03306797305572566,
+        "Recall": 0.4561942822010452
+      },
+      "counts": {
+        "images": 1000,
+        "hallucinated_captions": 53,
+        "hallucinated_mentions": 54,
+        "object_mentions": 1633,
+        "recalled_unique_objects": 1484,
+        "reference_unique_objects": 3253
+      },
+      "mean_caption_words": 10.046,
+      "mean_CHAIR_tokenized_words": 10.762
+    },
+    "original": {
+      "CIDEr": 1.1890655082257537,
+      "chair": {
+        "CHAIRs": 0.058,
+        "CHAIRi": 0.035452322738386305,
+        "Recall": 0.4568090992929603
+      },
+      "counts": {
+        "images": 1000,
+        "hallucinated_captions": 58,
+        "hallucinated_mentions": 58,
+        "object_mentions": 1636,
+        "recalled_unique_objects": 1486,
+        "reference_unique_objects": 3253
+      },
+      "mean_caption_words": 10.088,
+      "mean_CHAIR_tokenized_words": 10.803
+    }
+  },
+  "comparisons": {
+    "G_minus_A": {
+      "n": 1000,
+      "delta": 0.002888048219196323,
+      "ci95": [
+        -0.017606965361618352,
+        0.02364069822282192
+      ],
+      "positive": 193,
+      "negative": 186,
+      "equal": 621,
+      "bootstrap_resamples": 20000,
+      "bootstrap_seed": 42,
+      "scope": "Paired development-image resampling; does not measure seed variance or selection bias."
+    },
+    "G_minus_original": {
+      "n": 1000,
+      "delta": 0.019335139095523732,
+      "ci95": [
+        0.0003632818782404081,
+        0.03844590382058041
+      ],
+      "positive": 222,
+      "negative": 195,
+      "equal": 583,
+      "bootstrap_resamples": 20000,
+      "bootstrap_seed": 42,
+      "scope": "Paired development-image resampling; does not measure seed variance or selection bias."
+    },
+    "A_minus_original": {
+      "n": 1000,
+      "delta": 0.016447090876327407,
+      "ci95": [
+        -0.0035128621091813726,
+        0.03611277422018343
+      ],
+      "positive": 191,
+      "negative": 170,
+      "equal": 639,
+      "bootstrap_resamples": 20000,
+      "bootstrap_seed": 42,
+      "scope": "Paired development-image resampling; does not measure seed variance or selection bias."
+    }
+  },
+  "gate_checks": {
+    "cider_gain_at_least_001": false,
+    "paired_ci_lower_positive": false,
+    "beats_original": true,
+    "chair_s_not_increased": false,
+    "chair_i_not_increased": false,
+    "recall_drop_at_most_001": true
+  },
+  "protocol_difference_keys": [
+    "arm",
+    "aux_policy",
+    "auxiliary_payload_sha256",
+    "auxiliary_schedule_sha256",
+    "checkpoint_format",
+    "comparison_limits",
+    "evaluation_policy",
+    "implementation_sha256",
+    "locked_numeric_gate",
+    "loss",
+    "output",
+    "phrase_weight",
+    "project_commit",
+    "promotion_requires",
+    "stage"
+  ],
+  "common_source_difference": [
+    "source/run_pilot.py"
+  ],
+  "caption_training_loop_difference": "Only optional two-line diagnostic hook; math unchanged",
+  "changed_G_A_captions": 392,
+  "auxiliary": {
+    "draws": 10000,
+    "mean_patches": 32.258,
+    "first100_phrase_loss": 4.171666587591171,
+    "last100_phrase_loss": 3.202523406147957,
+    "schedule_sha256": "d0e08ebb8172119d73842b2aa4c309b1ff96bdef936086e5391aeb8ea3a2c0b2",
+    "payload_sha256": "2577575829e5536c6bc3f181ec52780b3b4f878440956a920b61f92867bcf686"
+  },
+  "training_seconds_by_rank": [
+    481.3456816930002,
+    481.3456727390003
+  ],
+  "gpu_preflight_pass": true,
+  "test_used": false,
+  "model_or_training_executed_locally": false,
+  "T_received": false,
+  "limits": [
+    "Reused dev1000; one seed, bootstrap does not cover selection bias or training-seed variance.",
+    "T pending: no region-attribution conclusion, even if G beats original.",
+    "CHAIR is object hallucination, not semantic relation correctness. No visual/human review in this audit.",
+    "Checkpoint bytes not in review; checkpoint/state digests are worker-reported."
+  ]
+}
