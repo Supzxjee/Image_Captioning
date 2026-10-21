@@ -68,3 +68,10 @@ Technical failure is invalid, not a negative result. Small/bad valid effects sto
 Local: five pure NumPy selection/identity/sample tests, Python/notebook syntax and embedded payload/source identities. No local torch/h5py/model/DDP/metric smoke tests or real inference were run. User-run preflights cover hook/raw-logit alignment, HDF5 round-trip, masks, CE/SCST gradients, real attention decoder, and DDP with nonempty/one-rank-empty/both-empty batches. A pass on synthetic tests is not a claim of semantic correctness.
 
 If setup fails before Output exists, run `print(LOG.read_text(encoding='utf-8')[-12000:])` and return the first FAIL/ERROR. Output-level failures preserve logs and a small review ZIP. All source/model downloads use pinned public sources; the notebook does not need KAGGLE_API_TOKEN. Keep the completed cache folder and each checkpoint.bin; the review ZIP intentionally excludes them.
+
+
+## Save completed cache with an API token
+
+Use [SAVE_UPT_HIDDEN_CACHE_KAGGLE_API.ipynb](SAVE_UPT_HIDDEN_CACHE_KAGGLE_API.ipynb), CPU and Internet ON. Attach the completed cache notebook Output (the review ZIP has no HDF5). Enable the Kaggle Secret `KAGGLE_API_TOKEN`, set OWNER to the token account, and run. The notebook embeds the verified packaging helper, checks the audited receipt and all six payload hashes, then uploads a flat folder through the official Kaggle CLI. Token stays in memory/child environment, never a credential file. Creation is private; an existing slug is not automatically updated. Wait for Kaggle processing before attaching the dataset to A/H. With this flat upload, HIDDEN_CACHE is the mounted dataset root, without an extra /upt_hidden_pairs_11k. No model execution.
+
+Validation: three synthetic API-notebook tests (syntax/unexecuted cells, token redaction/child environment, private create and metadata cleanup on failure), plus two packaging tests. No real upload or Kaggle authentication was executed locally.
