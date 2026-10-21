@@ -1,5 +1,7 @@
 # Matched FULLFRAME versus PAIRCROP — received results, 21 October 2026
 
+Follow-up: human review is complete. See [PAIR_SOURCE_HUMAN_RESULT.md](PAIR_SOURCE_HUMAN_RESULT.md): FULLFRAME2/8 versus PAIRCROP3/8 joint groups, netgain+1, no surfboard gain; NO_GO for expanding this crop-only variant. The pending-review text below records the earlier technical audit.
+
 Both arms completed 300 CE-only updates on two T4 GPUs. The archives agree on initial parameters, baseline checkpoint, manifest/schedule, feature-cache and receipt hashes, source hashes, vocabulary, optimizer, loss and runtime. Original parameters remain unchanged, frozen hashes agree, and each rank has 848384 trainable parameters. Within each arm, both ranks have the same final hash. Before-training evidence-off records are identical across arms. All archived source hashes and manifest bytes pass verification. No technical reason to invalidate the comparison was found.
 
 ## Teacher-forced ranking, not free-generation semantic accuracy

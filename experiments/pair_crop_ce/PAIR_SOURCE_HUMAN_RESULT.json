@@ -1,0 +1,450 @@
+{
+  "status": "NO_GO_FOR_FULL_SCALE_PAIRCROP",
+  "review_sha256": "f4be66e6d2a5c389ab72af83e6458c845a8542cb7c6eebdb0f53dd28d6bdbba1",
+  "reviewer": "Đức Anh",
+  "reviewer_type": "human_self_reported",
+  "complete": true,
+  "event_status_counts": {
+    "PAIRCROP": {
+      "correct_specific": 11,
+      "wrong_relation_or_fact": 4,
+      "wrong_instance": 1
+    },
+    "FULLFRAME": {
+      "correct_specific": 10,
+      "wrong_relation_or_fact": 5,
+      "wrong_instance": 1
+    }
+  },
+  "correct_events": {
+    "FULLFRAME": 10,
+    "PAIRCROP": 11
+  },
+  "joint_correct_groups": {
+    "FULLFRAME": 2,
+    "PAIRCROP": 3
+  },
+  "family_joint_correct": {
+    "skateboard_support": {
+      "FULLFRAME": 2,
+      "PAIRCROP": 3
+    },
+    "surfboard_support": {
+      "FULLFRAME": 0,
+      "PAIRCROP": 0
+    }
+  },
+  "gains": [
+    "crop_probe_2ccc00fada5ec769"
+  ],
+  "regressions": [],
+  "net_gain": 1,
+  "criteria": {
+    "crop_at_least_6_of_8": false,
+    "net_gain_at_least_3": false,
+    "regressions_at_most_1": true,
+    "gains_in_both_families": false
+  },
+  "unclear_count": 0,
+  "identical_output_label_conflicts": [],
+  "groups": {
+    "crop_probe_11a6923598414ac0": {
+      "family": "skateboard_support",
+      "joint_correct": {
+        "FULLFRAME": false,
+        "PAIRCROP": false
+      },
+      "events": {
+        "FULLFRAME": [
+          {
+            "status": "correct_specific",
+            "correct": true,
+            "truncated": false,
+            "caption": "a person carrying a skateboard",
+            "image_id": 355593,
+            "family": "skateboard_support",
+            "notes": ""
+          },
+          {
+            "status": "wrong_relation_or_fact",
+            "correct": false,
+            "truncated": false,
+            "caption": "a person carrying a skateboard",
+            "image_id": 355593,
+            "family": "skateboard_support",
+            "notes": ""
+          }
+        ],
+        "PAIRCROP": [
+          {
+            "status": "correct_specific",
+            "correct": true,
+            "truncated": false,
+            "caption": "a person carrying a skateboard",
+            "image_id": 355593,
+            "family": "skateboard_support",
+            "notes": ""
+          },
+          {
+            "status": "wrong_relation_or_fact",
+            "correct": false,
+            "truncated": false,
+            "caption": "a person standing on a skateboard",
+            "image_id": 355593,
+            "family": "skateboard_support",
+            "notes": ""
+          }
+        ]
+      }
+    },
+    "crop_probe_2ccc00fada5ec769": {
+      "family": "skateboard_support",
+      "joint_correct": {
+        "FULLFRAME": false,
+        "PAIRCROP": true
+      },
+      "events": {
+        "FULLFRAME": [
+          {
+            "status": "correct_specific",
+            "correct": true,
+            "truncated": false,
+            "caption": "a person standing on a skateboard in a skate park.",
+            "image_id": 153249,
+            "family": "skateboard_support",
+            "notes": ""
+          },
+          {
+            "status": "wrong_relation_or_fact",
+            "correct": false,
+            "truncated": false,
+            "caption": "a person on a skateboard on a ramp.",
+            "image_id": 153249,
+            "family": "skateboard_support",
+            "notes": ""
+          }
+        ],
+        "PAIRCROP": [
+          {
+            "status": "correct_specific",
+            "correct": true,
+            "truncated": false,
+            "caption": "a person standing on a skateboard in a skate park.",
+            "image_id": 153249,
+            "family": "skateboard_support",
+            "notes": ""
+          },
+          {
+            "status": "correct_specific",
+            "correct": true,
+            "truncated": false,
+            "caption": "a person carrying a skateboard",
+            "image_id": 153249,
+            "family": "skateboard_support",
+            "notes": ""
+          }
+        ]
+      }
+    },
+    "crop_probe_a7ed012c847be8a7": {
+      "family": "skateboard_support",
+      "joint_correct": {
+        "FULLFRAME": true,
+        "PAIRCROP": true
+      },
+      "events": {
+        "FULLFRAME": [
+          {
+            "status": "correct_specific",
+            "correct": true,
+            "truncated": false,
+            "caption": "a person standing on a skateboard",
+            "image_id": 461543,
+            "family": "skateboard_support",
+            "notes": ""
+          },
+          {
+            "status": "correct_specific",
+            "correct": true,
+            "truncated": false,
+            "caption": "a person carrying a skateboard",
+            "image_id": 461543,
+            "family": "skateboard_support",
+            "notes": ""
+          }
+        ],
+        "PAIRCROP": [
+          {
+            "status": "correct_specific",
+            "correct": true,
+            "truncated": false,
+            "caption": "a person standing on a skateboard",
+            "image_id": 461543,
+            "family": "skateboard_support",
+            "notes": ""
+          },
+          {
+            "status": "correct_specific",
+            "correct": true,
+            "truncated": false,
+            "caption": "a person carrying a skateboard",
+            "image_id": 461543,
+            "family": "skateboard_support",
+            "notes": ""
+          }
+        ]
+      }
+    },
+    "crop_probe_c75899232125146f": {
+      "family": "skateboard_support",
+      "joint_correct": {
+        "FULLFRAME": true,
+        "PAIRCROP": true
+      },
+      "events": {
+        "FULLFRAME": [
+          {
+            "status": "correct_specific",
+            "correct": true,
+            "truncated": false,
+            "caption": "a person standing on a skateboard",
+            "image_id": 563271,
+            "family": "skateboard_support",
+            "notes": ""
+          },
+          {
+            "status": "correct_specific",
+            "correct": true,
+            "truncated": false,
+            "caption": "a person carrying a skateboard up a ramp.",
+            "image_id": 563271,
+            "family": "skateboard_support",
+            "notes": ""
+          }
+        ],
+        "PAIRCROP": [
+          {
+            "status": "correct_specific",
+            "correct": true,
+            "truncated": false,
+            "caption": "a person standing on a skateboard",
+            "image_id": 563271,
+            "family": "skateboard_support",
+            "notes": ""
+          },
+          {
+            "status": "correct_specific",
+            "correct": true,
+            "truncated": false,
+            "caption": "a person carrying a skateboard on a ramp.",
+            "image_id": 563271,
+            "family": "skateboard_support",
+            "notes": ""
+          }
+        ]
+      }
+    },
+    "crop_probe_1e651403fd2ebe45": {
+      "family": "surfboard_support",
+      "joint_correct": {
+        "FULLFRAME": false,
+        "PAIRCROP": false
+      },
+      "events": {
+        "FULLFRAME": [
+          {
+            "status": "wrong_relation_or_fact",
+            "correct": false,
+            "truncated": false,
+            "caption": "a person on a surfboard in water.",
+            "image_id": 176009,
+            "family": "surfboard_support",
+            "notes": ""
+          },
+          {
+            "status": "correct_specific",
+            "correct": true,
+            "truncated": false,
+            "caption": "a person standing on a surfboard",
+            "image_id": 176009,
+            "family": "surfboard_support",
+            "notes": ""
+          }
+        ],
+        "PAIRCROP": [
+          {
+            "status": "wrong_relation_or_fact",
+            "correct": false,
+            "truncated": false,
+            "caption": "a person standing on a surfboard",
+            "image_id": 176009,
+            "family": "surfboard_support",
+            "notes": ""
+          },
+          {
+            "status": "correct_specific",
+            "correct": true,
+            "truncated": false,
+            "caption": "a person standing on a surfboard",
+            "image_id": 176009,
+            "family": "surfboard_support",
+            "notes": ""
+          }
+        ]
+      }
+    },
+    "crop_probe_1f41d21468ab4228": {
+      "family": "surfboard_support",
+      "joint_correct": {
+        "FULLFRAME": false,
+        "PAIRCROP": false
+      },
+      "events": {
+        "FULLFRAME": [
+          {
+            "status": "wrong_instance",
+            "correct": false,
+            "truncated": false,
+            "caption": "a person standing on a surfboard",
+            "image_id": 225682,
+            "family": "surfboard_support",
+            "notes": ""
+          },
+          {
+            "status": "correct_specific",
+            "correct": true,
+            "truncated": false,
+            "caption": "a person standing on a surfboard",
+            "image_id": 225682,
+            "family": "surfboard_support",
+            "notes": ""
+          }
+        ],
+        "PAIRCROP": [
+          {
+            "status": "wrong_instance",
+            "correct": false,
+            "truncated": false,
+            "caption": "a person standing on a surfboard",
+            "image_id": 225682,
+            "family": "surfboard_support",
+            "notes": ""
+          },
+          {
+            "status": "correct_specific",
+            "correct": true,
+            "truncated": false,
+            "caption": "a person standing on a surfboard",
+            "image_id": 225682,
+            "family": "surfboard_support",
+            "notes": ""
+          }
+        ]
+      }
+    },
+    "crop_probe_89785c52762edc97": {
+      "family": "surfboard_support",
+      "joint_correct": {
+        "FULLFRAME": false,
+        "PAIRCROP": false
+      },
+      "events": {
+        "FULLFRAME": [
+          {
+            "status": "correct_specific",
+            "correct": true,
+            "truncated": false,
+            "caption": "a person standing on a surfboard",
+            "image_id": 300206,
+            "family": "surfboard_support",
+            "notes": ""
+          },
+          {
+            "status": "wrong_relation_or_fact",
+            "correct": false,
+            "truncated": false,
+            "caption": "a person on a surfboard in a body of water",
+            "image_id": 300206,
+            "family": "surfboard_support",
+            "notes": ""
+          }
+        ],
+        "PAIRCROP": [
+          {
+            "status": "correct_specific",
+            "correct": true,
+            "truncated": false,
+            "caption": "a person standing on a surfboard",
+            "image_id": 300206,
+            "family": "surfboard_support",
+            "notes": ""
+          },
+          {
+            "status": "wrong_relation_or_fact",
+            "correct": false,
+            "truncated": false,
+            "caption": "a person standing on a surfboard in a river.",
+            "image_id": 300206,
+            "family": "surfboard_support",
+            "notes": ""
+          }
+        ]
+      }
+    },
+    "crop_probe_90bb1900abd51a0f": {
+      "family": "surfboard_support",
+      "joint_correct": {
+        "FULLFRAME": false,
+        "PAIRCROP": false
+      },
+      "events": {
+        "FULLFRAME": [
+          {
+            "status": "wrong_relation_or_fact",
+            "correct": false,
+            "truncated": false,
+            "caption": "a person standing on a surfboard in a body of water.",
+            "image_id": 567486,
+            "family": "surfboard_support",
+            "notes": ""
+          },
+          {
+            "status": "correct_specific",
+            "correct": true,
+            "truncated": false,
+            "caption": "a person standing on a surfboard in a body of water.",
+            "image_id": 567486,
+            "family": "surfboard_support",
+            "notes": " in a body of water không tự nhiên"
+          }
+        ],
+        "PAIRCROP": [
+          {
+            "status": "wrong_relation_or_fact",
+            "correct": false,
+            "truncated": false,
+            "caption": "a person standing on a surfboard",
+            "image_id": 567486,
+            "family": "surfboard_support",
+            "notes": ""
+          },
+          {
+            "status": "correct_specific",
+            "correct": true,
+            "truncated": false,
+            "caption": "a person standing on a surfboard",
+            "image_id": 567486,
+            "family": "surfboard_support",
+            "notes": ""
+          }
+        ]
+      }
+    }
+  },
+  "limits": [
+    "One AI-assisted human reviewer; identity masking, not independent adjudication.",
+    "8 groups new to adaptation, not a whole-system independent test.",
+    "Phrase-level result; no new full-caption CIDEr or CHAIR measurement."
+  ],
+  "human_export_sha256": "fef7c4d03aedc1aa275fd2cb222ff7c12c07c60410410cf7588b1d329ced1524"
+}
