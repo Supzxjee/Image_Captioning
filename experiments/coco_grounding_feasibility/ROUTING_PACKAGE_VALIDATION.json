@@ -1,20 +1,21 @@
 {
   "status": "LOCAL_DATA_AND_PACKAGING_CHECKS_PASS_GPU_CHECKS_PENDING",
-  "tests_passed": 9,
+  "tests_passed": 10,
   "local_model_inference": false,
   "local_training": false,
   "gpu_runtime_checks_executed": false,
   "caption_gain_measured": false,
   "notebooks": {
     "COCO_ROUTING_B_2GPU.ipynb": {
-      "bytes": 59214,
-      "sha256": "1307bd7327883c1e12bb88945bf94a1820f63c50567eb8ecc2c65bfd593df9d5",
+      "bytes": 59218,
+      "sha256": "5cb27ddbb05495371e9adb20aa14be7563f5b2ad37650718dded0dd8058cf5ef",
       "unexecuted": true
     },
     "COCO_ROUTING_R_2GPU.ipynb": {
-      "bytes": 59218,
-      "sha256": "755248936905393af8c37e3a6d9fbe7cba1a72624f755f340957f5b5c0927e03",
+      "bytes": 59222,
+      "sha256": "a528ded7a842134d404f07c02a6a983cb4889ae0a77fc1c7348fe6ddb9137781",
       "unexecuted": true
     }
-  }
+  },
+  "output_directory_regression_checked": true
 }

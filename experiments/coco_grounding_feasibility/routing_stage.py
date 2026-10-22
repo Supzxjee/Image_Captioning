@@ -26,6 +26,7 @@ def prepare(config):
     out, stage = Path(cfg['output']), Path(cfg['stage'])
     if (out/'protocol.json').exists() or stage.exists():
         raise FileExistsError('Preserve existing stage/protocol; use fresh output/session.')
+    out.mkdir(parents=True,exist_ok=True)
     begin = time.monotonic()
     for key, expected in INPUT_HASHES.items():
         print('Hashing pinned input:',key,flush=True)

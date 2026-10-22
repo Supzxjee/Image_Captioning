@@ -6,6 +6,7 @@ import json
 from pathlib import Path
 import re
 import sys
+import tempfile
 import unittest
 import zipfile
 import zlib
@@ -17,6 +18,31 @@ from routing_data import tensors_for
 
 
 class Checks(unittest.TestCase):
+    def test_prepare_creates_output_before_writes_and_preserves_existing_stage(self):
+        # Exercise the filesystem setup before any ML imports or model work.
+        tree=ast.parse((HERE/'routing_stage.py').read_text(encoding='utf-8'))
+        function=next(n for n in tree.body if isinstance(n,ast.FunctionDef) and n.name=='prepare')
+        prefix=[]
+        for node in function.body:
+            if isinstance(node,ast.Assign) and any(isinstance(t,ast.Name) and t.id=='begin' for t in node.targets):break
+            if not isinstance(node,(ast.Import,ast.ImportFrom)):prefix.append(node)
+        function.body=prefix
+        module=ast.fix_missing_locations(ast.Module(body=[function],type_ignores=[]))
+        namespace=dict(json=json,Path=Path,verify_sources=lambda cfg:None)
+        exec(compile(module,'routing_stage_setup','exec'),namespace)
+        (HERE/'review').mkdir(exist_ok=True)
+        with tempfile.TemporaryDirectory(dir=HERE/'review') as tmp:
+            root=Path(tmp);output=root/'nested'/'output';stage=root/'stage.h5';config=root/'config.json'
+            config.write_text(json.dumps(dict(output=str(output),stage=str(stage))))
+            namespace['prepare'](config)
+            self.assertTrue(output.is_dir())
+            (output/'protocol.json').write_text('preserve')
+            with self.assertRaises(FileExistsError):namespace['prepare'](config)
+            self.assertEqual((output/'protocol.json').read_text(),'preserve')
+            (output/'protocol.json').unlink();stage.write_bytes(b'preserve stage')
+            with self.assertRaises(FileExistsError):namespace['prepare'](config)
+            self.assertEqual(stage.read_bytes(),b'preserve stage')
+
     def test_multitoken_and_empty_image_mapping(self):
         masks={'a':dict(patch_area_fraction=np.ones((14,14)).tolist())}
         rows=[dict(decoder_logit_positions=[3,4],caption_index=4,category='person',mask_key='a')]
