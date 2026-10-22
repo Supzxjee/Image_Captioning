@@ -1,6 +1,6 @@
 # COCO caption–instance grounding: audit khả thi, 22/10/2026
 
-**PARTIAL_BOX_SOURCE_ONLY_INTERFACE_UNVERIFIED_NO_PILOT.** Audit dữ liệu/code, chưa triển khai loss, module, notebook hoặc chạy mô hình. Các số dưới đây là độ phủ dữ liệu cục bộ, không phải kết quả grounding hay caption.
+**PARTIAL_BOX_SOURCE_ONLY_INTERFACE_SMOKE_PASS_NO_PILOT.** Audit dữ liệu/code đã hoàn tất; người dùng đã chạy smoke không cập nhật trọng số, kết quả kỹ thuật ở `SMOKE_RESULT.md`. Root không chạy mô hình. Các số độ phủ dưới đây không phải kết quả grounding hoặc caption.
 
 ## Giả thuyết đang xét
 
@@ -66,13 +66,13 @@ Không thấy lỗi join/offset cơ học trong 12 mẫu đã đọc. **Không �
 
 ## 4. Interface attention
 
-Xem `ATTENTION_INTERFACE.md`. Source hiện tại đọc 197 CLIP tokens gồm CLS → 32 Q ở hai tầng Q-Former; decoder đọc cả **`[legacy memory; Q]`** qua ba tầng. Attention weights chưa được trả về và chưa kiểm runtime gradient/parity.
+Xem `ATTENTION_INTERFACE.md`. Source baseline đọc 197 CLIP tokens gồm CLS → 32 Q ở hai tầng Q-Former; decoder đọc cả **`[legacy memory; Q]`** qua ba tầng. Baseline không trả attention weights. Observer dùng chung input/projection đã được kiểm runtime gradient/parity trên bốn ảnh trong smoke, không đổi các lệnh forward baseline.
 
 Một tích hai ma trận cuối tầng bỏ qua legacy branch, CLS, residual và trộn query. Chuẩn hóa lại chỉ trên Q hoặc chỉ spatial patches còn có thể che khối lượng ở các đường bị bỏ qua. Không gọi nó là truy nguyên nguồn thị giác đầy đủ. Có thể chỉ là routing regularizer nếu định nghĩa/đối chứng rõ.
 
 ## Kết luận và giới hạn thực hiện
 
-**Chưa đủ điều kiện chạy pilot.** Cần giải quyết nguồn annotation train+val đầy đủ, chính sách span/class union và định nghĩa routing/normalization. Chưa thấy nhu cầu đổi kiến trúc lớn chỉ để lấy attention, nhưng chưa chứng minh instrumentation giữ baseline hoặc có gradient đúng. Không thêm grounding head độc lập để thay giả thuyết.
+**Chưa đủ điều kiện chạy pilot.** Còn cần nguồn annotation train+val đầy đủ và chính sách span/class union. Định nghĩa routing đã khóa, instrumentation giữ baseline và có gradient trên batch smoke nhỏ; chưa kiểm lợi ích khi tối ưu. Không thêm grounding head độc lập để thay giả thuyết.
 
 Đã báo summary cho Astra; không yêu cầu đọc lại artifacts. Thiếu nguồn box là thiếu tài nguyên có thể bổ sung, không phải bằng chứng route bị bác bỏ. Không chạy pilot chỉ với 501 ảnh thiên lệch rồi gọi là toàn train10k.
 
@@ -96,4 +96,4 @@ Nếu smoke đạt mới bổ sung full annotation rồi làm sạch span có m�
 
 ## Notebook smoke đã chuẩn bị
 
-Mở `COCO_ROUTING_INTERFACE_SMOKE_2GPU.ipynb` và xem hướng dẫn `SMOKE_RUN.md`. Notebook chưa được thực thi; người dùng chạy trên Kaggle T4×2. Chỉ bốn TRAIN images, zero optimizer updates. Local mới kiểm source/cells, masks, source pin và packaging; numerical/gradient/greedy parity đều đang chờ kết quả runtime.
+Mở `COCO_ROUTING_INTERFACE_SMOKE_2GPU.ipynb` và xem hướng dẫn `SMOKE_RUN.md`. Người dùng đã chạy trên Kaggle T4×2: bốn TRAIN images, zero optimizer updates, hai rank PASS. Local chỉ kiểm source/cells, masks, source pin, packaging và audit receipt; không replay mô hình. Xem `SMOKE_RESULT.md` để phân biệt technical PASS với grounding/caption gain.

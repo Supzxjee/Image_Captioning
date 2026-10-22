@@ -1,6 +1,6 @@
 # COCO noun–patch routing: smoke interface, T4×2
 
-Chạy **COCO_ROUTING_INTERFACE_SMOKE_2GPU.ipynb**, Internet ON, GPU **T4×2**, **Save & Run All**. Người dùng tự chạy. Notebook đã tạo nhưng **chưa chạy PyTorch/GPU ở máy local**, chưa có kết quả runtime.
+Chạy **COCO_ROUTING_INTERFACE_SMOKE_2GPU.ipynb**, Internet ON, GPU **T4×2**, **Save & Run All**. Người dùng tự chạy. **Đã nhận runtime PASS hai rank**, xem `SMOKE_RESULT.md`; root không chạy PyTorch/GPU ở máy local.
 
 ## Bốn dataset cần gắn
 
@@ -47,6 +47,6 @@ ZIP chứa protocol, source, stage receipt, runtime, synthetic checks, completio
 
 ## Kiểm tra local đã thực hiện
 
-Chỉ parse source/cells, kiểm notebook chưa chạy và <1MB, so khớp embedded source, mask/ID/token offsets và việc không có optimizer update. Các test torch, numerical parity, gradient, greedy và GPU memory **đều chờ người dùng chạy Kaggle**.
+Trước khi giao, root chỉ parse source/cells, kiểm notebook chưa chạy và <1MB, so khớp embedded source, mask/ID/token offsets và việc không có optimizer update. Người dùng sau đó đã chạy các test torch, parity, gradient, greedy và GPU memory trên Kaggle; audit kết quả ở `SMOKE_RESULT.md`. Không có model execution local.
 
 Astra đã review **tóm tắt thiết kế**, không đọc code hoặc chạy model: không thấy lỗi thiết kế nghiêm trọng, đồng ý giao notebook có điều kiện chờ runtime PASS. Gradient của graph quan sát chỉ xác nhận loss có đường tối ưu qua các tham số/đầu vào dùng chung; không chứng minh decoder đã dùng đúng vùng khi sinh caption.

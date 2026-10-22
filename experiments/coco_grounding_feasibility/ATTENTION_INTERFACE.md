@@ -1,6 +1,6 @@
 # Audit interface attention hiện tại
 
-Chỉ đọc source, **không chạy torch, forward, backward hoặc parity test**. Không thay `captioning/models.py`.
+Tài liệu này ghi **audit source trước smoke**: chỉ đọc source, không chạy torch/forward/backward/parity; không thay `captioning/models.py`. Sau đó người dùng đã chạy notebook và đạt technical PASS trên bốn ảnh; xem `SMOKE_RESULT.md`. Các câu “chưa xác minh runtime” bên dưới mô tả trạng thái audit ban đầu, không phủ nhận receipt đã nhận.
 
 ## Đường dữ liệu đã xác định
 

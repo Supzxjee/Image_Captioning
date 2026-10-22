@@ -1,0 +1,191 @@
+{
+  "status": "RECEIVED_TECHNICAL_SMOKE_PASS_SOURCE_AUDIT_PASS",
+  "archive_sha256": "c9dd065a1fb563327896ad5c3f22c18eef3e3f324fb79f5ace7d209e7cc7f466",
+  "archive_bytes": 19337,
+  "files": 12,
+  "project_commit": "6acd3c9f0553d4d12d46684bbe7dcb8c38033d6b",
+  "source_sha256": {
+    "route_probe.py": "7cd9071bc4671873f027c66e4e243e9771947dba8b4ebe83dae4cc7d129783bc",
+    "run_route_smoke.py": "1e1d4dd285340d2e8fac5aa069b76c78a079cd8848b8807fcb7a2c3fdd504763",
+    "train4_masks.json": "517129f0660ee14e5ac50e66fd3839b3c72fb02cf0781e3880c5d0eacf011a68"
+  },
+  "baseline_state_sha256": "21c212f904b5dd2419b8f9fddbe50c5e1f4229ca5081e3a4efb17e786c89170b",
+  "images": 4,
+  "gpus": 2,
+  "optimizer_updates": 0,
+  "parameters_added": 0,
+  "logits_max_abs_difference": 0.0,
+  "cpu_cuda_public_mha_checks_passed": true,
+  "future_noun_causal_checks_passed": true,
+  "gradients": {
+    "0": {
+      "decoder.transformer_decoder.layers.2.multihead_attn.in_proj_weight": 2.8208234310150146,
+      "encoder.qformer.layers.1.cross_attn.in_proj_weight": 0.8057623505592346,
+      "encoder.vis_projection.weight": 3.0753021240234375,
+      "encoder.qformer.query_tokens": 1.2015776634216309
+    },
+    "1": {
+      "decoder.transformer_decoder.layers.2.multihead_attn.in_proj_weight": 3.69606351852417,
+      "encoder.qformer.layers.1.cross_attn.in_proj_weight": 1.4446678161621094,
+      "encoder.vis_projection.weight": 6.688584804534912,
+      "encoder.qformer.query_tokens": 2.981332540512085
+    }
+  },
+  "mass_records": [
+    {
+      "coco_id": 64627,
+      "caption": "Main focus of picture is a man on a snowboard",
+      "raw_span": [
+        "man"
+      ],
+      "decoder_logit_positions": [
+        6
+      ],
+      "target_token_positions": [
+        7
+      ],
+      "decoder_q_mass": [
+        0.46671223640441895
+      ],
+      "patch_path_mass": [
+        0.46443742513656616
+      ],
+      "cls_path_mass": [
+        0.0022748219780623913
+      ],
+      "bbox_mass": [
+        0.3792163133621216
+      ]
+    },
+    {
+      "coco_id": 468966,
+      "caption": "A man sitting in bed with a pizza box and a laptop computer on top of it.",
+      "raw_span": [
+        "man"
+      ],
+      "decoder_logit_positions": [
+        1
+      ],
+      "target_token_positions": [
+        2
+      ],
+      "decoder_q_mass": [
+        0.641654372215271
+      ],
+      "patch_path_mass": [
+        0.6320611834526062
+      ],
+      "cls_path_mass": [
+        0.009593191556632519
+      ],
+      "bbox_mass": [
+        0.33079206943511963
+      ]
+    },
+    {
+      "coco_id": 529017,
+      "caption": "A lot of people in the snow on a mountainside.",
+      "raw_span": [
+        "people"
+      ],
+      "decoder_logit_positions": [
+        3
+      ],
+      "target_token_positions": [
+        4
+      ],
+      "decoder_q_mass": [
+        0.6025297045707703
+      ],
+      "patch_path_mass": [
+        0.5974793434143066
+      ],
+      "cls_path_mass": [
+        0.005050381179898977
+      ],
+      "bbox_mass": [
+        0.06609643995761871
+      ]
+    },
+    {
+      "coco_id": 580507,
+      "caption": "A man creating a large splash on his surfboard",
+      "raw_span": [
+        "surfboard"
+      ],
+      "decoder_logit_positions": [
+        8
+      ],
+      "target_token_positions": [
+        9
+      ],
+      "decoder_q_mass": [
+        0.3804872930049896
+      ],
+      "patch_path_mass": [
+        0.3707136809825897
+      ],
+      "cls_path_mass": [
+        0.009773623198270798
+      ],
+      "bbox_mass": [
+        0.08903873711824417
+      ]
+    }
+  ],
+  "resources": [
+    {
+      "rank": 0,
+      "seconds": 1.3484842919999664,
+      "peak_allocated_GiB": 0.30549192428588867,
+      "peak_reserved_GiB": 0.318359375
+    },
+    {
+      "rank": 1,
+      "seconds": 1.348985689000017,
+      "peak_allocated_GiB": 0.30549192428588867,
+      "peak_reserved_GiB": 0.318359375
+    }
+  ],
+  "runtime": {
+    "python": "3.13.15 (main, Aug  6 2026, 11:06:22) [GCC 13.3.0]",
+    "platform": "Linux-6.18.48+-x86_64-with-glibc2.39",
+    "torch": "2.11.0+cu128",
+    "cuda": "12.8",
+    "cudnn": 91900,
+    "gpu": {
+      "name": "Tesla T4",
+      "capability": [
+        7,
+        5
+      ]
+    },
+    "packages": {
+      "numpy": "2.1.3",
+      "torchvision": "0.26.0+cu128",
+      "transformers": "4.57.1",
+      "nltk": "3.9.1",
+      "h5py": "3.16.0"
+    },
+    "deterministic_algorithms": true,
+    "warn_only": false,
+    "cudnn_benchmark": false,
+    "cudnn_deterministic": true,
+    "mha_fastpath": false,
+    "sdp_math": true,
+    "sdp_flash": false,
+    "sdp_mem_efficient": false,
+    "cublas_workspace": ":4096:8",
+    "python_hash_seed": "42",
+    "scope": "Controls reduce known nondeterminism; no cross-device/release bitwise guarantee."
+  },
+  "caption_quality_evaluated": false,
+  "root_model_run": false,
+  "limits": [
+    "No independent tensor replay: model/cache/stage tensors are absent from the small ZIP.",
+    "Real greedy equality, memory/padding and gradient checks verified by matched worker source and receipts, not by local model execution.",
+    "Four TRAIN examples / no optimizer updates; neither causal grounding nor caption gain is established.",
+    "Observer differentiates a shared-parameter probability recomputation; baseline caption forward is unchanged.",
+    "Worker seconds exclude cache preparation, hashing, model setup and synthetic checks; not full notebook duration."
+  ]
+}
