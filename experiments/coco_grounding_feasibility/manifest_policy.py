@@ -16,7 +16,7 @@ POLICY=dict(version='coco-noun-box-v1',ambiguity_exclusions=sorted(AMBIGUOUS),
     source_scope='Exact locked A train10k; never held-out supervision',test_used=False)
 
 
-def context_exclusion(tokens,start,end,label):
+def context_exclusion(tokens,start,end,label,raw_tokens=None):
     if end<len(tokens) and tokens[end] in POLICY['compound_suffixes']:
         return 'compound_head_changes_object'
     if start and tokens[start-1] in POLICY['artificial_prefixes'] and label!='teddy bear':

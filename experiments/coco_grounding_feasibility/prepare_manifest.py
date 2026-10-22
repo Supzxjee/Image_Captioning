@@ -43,7 +43,7 @@ def rectangle_mask(bbox,width,height):
 def filter_span(raw,start,end,label,surface,instances,image,vocab):
     if surface in POLICY['ambiguity_exclusions']:return 'ambiguous_surface',None
     normalized=[re.sub(r'^[^a-z0-9]+|[^a-z0-9]+$','',t) for t in raw]
-    reason=context_exclusion(normalized,start,end,label)
+    reason=context_exclusion(normalized,start,end,label,raw_tokens=raw)
     if reason:return reason,None
     if not instances:return 'no_class_instance',None
     if len(instances)!=1:return 'multiple_class_instances',None
@@ -84,8 +84,15 @@ def write(path,value):
     return sha(raw)
 
 
-def main():
-    assert json.loads((HERE/'MAPPING_POLICY_V1.json').read_text(encoding='utf-8'))==POLICY
+def main(version='v1'):
+    global POLICY,context_exclusion,OUT
+    policy_file='MAPPING_POLICY_V1.json';summary_file='FULL_DATA_PREPARATION.json'
+    if version=='v1.1':
+        from manifest_policy_v11 import POLICY as updated,context_exclusion as updated_context
+        POLICY,context_exclusion=updated,updated_context
+        OUT=HERE/'review/noun_box_train10k_v1_1'
+        policy_file='MAPPING_POLICY_V11.json';summary_file='FULL_DATA_PREPARATION_V11.json'
+    assert json.loads((HERE/policy_file).read_text(encoding='utf-8'))==POLICY
     assert sha(DATA.read_bytes())=='2fd999220673258012acfb411a4e7e66af7d488050b2519b0badcc49b7600b8d'
     a=json.loads((HERE.parent/'vg_region_caption/review/loaded_A.json').read_text(encoding='utf-8'))['json']
     groups=a['groups.json']['train'];assert len(groups)==10000
@@ -143,11 +150,20 @@ def main():
     schedule=[dict(coco_id=r['coco_id'],karpathy_imgid=r['image_id'],
         span_ids=sorted(byimage[r['coco_id']],key=lambda s:hash_order('coco-route-schedule-v1:',s))) for r in groups]
     assert sum(len(r['span_ids']) for r in schedule)==len(rows)
-    sample=manual_sample(rows);assert len(sample)==16 and len({r['span_id'] for r in sample})==16
+    if version=='v1.1':
+        originals=json.loads((HERE/'review/noun_box_train10k_v1/manual16.json').read_text(encoding='utf-8'))
+        retained={r['span_id'] for r in rows};sample=[]
+        for original in originals:
+            start,end=original['span_words'];raw=original['caption'].lower().split();iid=original['coco_id'];label=original['category']
+            reason,_=filter_span(raw,start,end,label,original['surface'],byclass[(iid,label)],images[iid],vocab)
+            if reason is None and original['span_id'] not in retained:reason='person_cap'
+            sample.append(dict(original,v11_kept=original['span_id'] in retained,v11_rejection_reason=reason))
+    else:sample=manual_sample(rows)
+    assert len(sample)==16 and len({r['span_id'] for r in sample})==16
     OUT.mkdir(parents=True,exist_ok=True)
     payloads=dict(policy=POLICY,spans=rows,mask_bank=mask_bank,supervision_schedule=schedule)
     hashes={name+'.json':write(OUT/(name+'.json'),payload) for name,payload in payloads.items()}
-    write(OUT/'manual16.json',[dict(**r,box=mask_bank[r['mask_key']]) for r in sample])
+    write(OUT/'manual16.json',sample if version=='v1.1' else [dict(**r,box=mask_bank[r['mask_key']]) for r in sample])
     result=dict(status='COVERAGE_GATE_PASS_MANUAL_REVIEW_PENDING' if all(gates.values()) else 'COVERAGE_GATE_FAIL_NO_PILOT',
         train_images=10000,captions=captions,lexical_candidate_spans=candidate_count,eligible_before_person_cap=before_cap,
         retained_images=len(image_ids),retained_unique_annotation_spans=len(rows),retained_mask_count=len(mask_bank),
@@ -155,14 +171,17 @@ def main():
         retained_classes=len(counts),classes_with_at_least_50_spans=class_gate,class_span_counts=dict(sorted(counts.items())),
         rejected_by_first_reason=dict(rejected),gates=gates,policy=POLICY,
         source_provenance=provenance,vocabulary_sha256=vocab_sha,
-        implementation_sha256={n:sha((HERE/n).read_bytes()) for n in ['prepare_manifest.py','manifest_policy.py','audit.py']},
+        implementation_sha256={n:sha((HERE/n).read_bytes()) for n in ['prepare_manifest.py','manifest_policy.py','audit.py']+(['manifest_policy_v11.py'] if version=='v1.1' else [])},
         payload_sha256=hashes,unique_span_definition='COCO image + source caption index among first5 + word span + class',
         main_caption_images_preserved=len(schedule),manual16_distinct_classes=len({r['category'] for r in sample}),
         manual_review_completed=False,test_used=False,model_run=False,
         schedule_scope='Per-image supervision only; main minibatch/RNG order and numeric recipe will be locked before pilot.')
     write(OUT/'preparation_summary.json',result)
-    write(HERE/'FULL_DATA_PREPARATION.json',result)
+    write(HERE/summary_file,result)
     print(json.dumps({k:result[k] for k in ['status','retained_images','retained_unique_annotation_spans','person_fraction','classes_with_at_least_50_spans','gates']},indent=2))
 
 
-if __name__=='__main__':main()
+if __name__=='__main__':
+    import argparse
+    parser=argparse.ArgumentParser();parser.add_argument('--version',choices=['v1','v1.1'],default='v1')
+    main(parser.parse_args().version)

@@ -1,0 +1,213 @@
+{
+  "status": "INITIAL_FIXED16_REVIEW_FOUND_SYSTEMATIC_AMBIGUITIES",
+  "reviewer_type": "assistant_visual_review_not_human_gold",
+  "records": [
+    {
+      "order": 1,
+      "span_id": "cd519fa2a74d18f1f0bf7dc0",
+      "coco_id": 47907,
+      "category": "bowl",
+      "caption": "there is a bowl of oranges on a table",
+      "raw_span": [
+        "bowl"
+      ],
+      "status": "compatible_class_level",
+      "note": "Span, source box and visible category compatible; not full-caption or gold-reference certification."
+    },
+    {
+      "order": 2,
+      "span_id": "de00437e007e8cee13087e9f",
+      "coco_id": 291207,
+      "category": "oven",
+      "caption": "Guy stands in front of brick oven as he cuts a pizza up into slices",
+      "raw_span": [
+        "oven"
+      ],
+      "status": "compatible_class_level",
+      "note": "Span, source box and visible category compatible; not full-caption or gold-reference certification."
+    },
+    {
+      "order": 3,
+      "span_id": "1337189a7ada0418dc98f522",
+      "coco_id": 508514,
+      "category": "bed",
+      "caption": "A man laying in bed while listening to ear buds.",
+      "raw_span": [
+        "bed"
+      ],
+      "status": "compatible_class_level",
+      "note": "Span, source box and visible category compatible; not full-caption or gold-reference certification."
+    },
+    {
+      "order": 4,
+      "span_id": "a37ebd033eff1526f21c21ee",
+      "coco_id": 97483,
+      "category": "skis",
+      "caption": "A man on skis racing down a snowy slope.",
+      "raw_span": [
+        "skis"
+      ],
+      "status": "compatible_class_level",
+      "note": "Span, source box and visible category compatible; not full-caption or gold-reference certification."
+    },
+    {
+      "order": 5,
+      "span_id": "5369ba601313112955558210",
+      "coco_id": 241935,
+      "category": "bicycle",
+      "caption": "A store front has a bicycle parked out front. ",
+      "raw_span": [
+        "bicycle"
+      ],
+      "status": "compatible_class_level",
+      "note": "One annotated bicycle box overlaps other bicycles; compatible indefinite class mention, not proof of unique physical instance."
+    },
+    {
+      "order": 6,
+      "span_id": "3c398f698143d96d71209ca8",
+      "coco_id": 212685,
+      "category": "teddy bear",
+      "caption": "A person is holding a teddy bear in front of a little girl.",
+      "raw_span": [
+        "teddy",
+        "bear"
+      ],
+      "status": "compatible_class_level",
+      "note": "Span, source box and visible category compatible; not full-caption or gold-reference certification."
+    },
+    {
+      "order": 7,
+      "span_id": "857f73a95e81ffab7c95c9f2",
+      "coco_id": 427789,
+      "category": "parking meter",
+      "caption": "a red bicycle is parked next to a parking meter and some cars",
+      "raw_span": [
+        "parking",
+        "meter"
+      ],
+      "status": "compatible_class_level",
+      "note": "Span, source box and visible category compatible; not full-caption or gold-reference certification."
+    },
+    {
+      "order": 8,
+      "span_id": "de3fef618b7654e66a1b8075",
+      "coco_id": 190187,
+      "category": "refrigerator",
+      "caption": "A Studio apartment with minimal furniture and a refrigerator.",
+      "raw_span": [
+        "refrigerator."
+      ],
+      "status": "compatible_class_level",
+      "note": "Span, source box and visible category compatible; not full-caption or gold-reference certification."
+    },
+    {
+      "order": 9,
+      "span_id": "c9797fa99f1a3f5f05215888",
+      "coco_id": 421514,
+      "category": "toothbrush",
+      "caption": "A young woman with glasses and a blue sweatshirt stands with her toothbrush next to a white and blue bra that is hanging next to her.",
+      "raw_span": [
+        "toothbrush"
+      ],
+      "status": "compatible_class_level",
+      "note": "Span, source box and visible category compatible; not full-caption or gold-reference certification."
+    },
+    {
+      "order": 10,
+      "span_id": "3c432bf83c818e0b2990c407",
+      "coco_id": 92,
+      "category": "fork",
+      "caption": "a chocolate cake and a fork ready to be eat",
+      "raw_span": [
+        "fork"
+      ],
+      "status": "compatible_class_level",
+      "note": "Span, source box and visible category compatible; not full-caption or gold-reference certification."
+    },
+    {
+      "order": 11,
+      "span_id": "9c0d3ce9b911414d2873b477",
+      "coco_id": 411313,
+      "category": "fire hydrant",
+      "caption": "A fire hydrant in the middle of a cement circle",
+      "raw_span": [
+        "fire",
+        "hydrant"
+      ],
+      "status": "compatible_class_level",
+      "note": "Span, source box and visible category compatible; not full-caption or gold-reference certification."
+    },
+    {
+      "order": 12,
+      "span_id": "ce2bd7f6772a5f74eb9a212e",
+      "coco_id": 292845,
+      "category": "wine glass",
+      "caption": "MAN IN TAN SHIRT HOLDING UP A WINE GLASS AS IF TOASTING",
+      "raw_span": [
+        "wine",
+        "glass"
+      ],
+      "status": "compatible_class_level",
+      "note": "Span, source box and visible category compatible; not full-caption or gold-reference certification."
+    },
+    {
+      "order": 13,
+      "span_id": "5baa84a565fe774e4c8c5098",
+      "coco_id": 558556,
+      "category": "potted plant",
+      "caption": "Two umbrellas are laid next to a potted plant in this street scene.",
+      "raw_span": [
+        "potted",
+        "plant"
+      ],
+      "status": "compatible_class_level",
+      "note": "Span, source box and visible category compatible; not full-caption or gold-reference certification."
+    },
+    {
+      "order": 14,
+      "span_id": "251db1049e5f94674f85a8f9",
+      "coco_id": 510596,
+      "category": "apple",
+      "caption": "An orange sitting next to a green apple.",
+      "raw_span": [
+        "apple."
+      ],
+      "status": "compatible_class_level",
+      "note": "Span, source box and visible category compatible; not full-caption or gold-reference certification."
+    },
+    {
+      "order": 15,
+      "span_id": "9f6b2c796a9b9d8eddf35855",
+      "coco_id": 200612,
+      "category": "train",
+      "caption": "a colorful train going down the track by some trains ",
+      "raw_span": [
+        "trains"
+      ],
+      "status": "mapping_ambiguity",
+      "note": "Plural trains escaped singular ambiguity exclusion; clause some trains has no verified referent correspondence to the one whole-train annotation."
+    },
+    {
+      "order": 16,
+      "span_id": "16757adcaa403b45425f2e0e",
+      "coco_id": 308119,
+      "category": "suitcase",
+      "caption": "A blue suitcase and a red duffle bag sit on the floor at someone's feet. ",
+      "raw_span": [
+        "suitcase"
+      ],
+      "status": "mapping_ambiguity",
+      "note": "Caption blue suitcase points to blue bag; one COCO suitcase annotation covers red duffle. Single annotated class instance does not resolve attribute-conditioned referent."
+    }
+  ],
+  "reviewed_images": 16,
+  "full_images_inspected": [
+    200612,
+    308119,
+    421514
+  ],
+  "not_precision_estimate": true,
+  "policy_v1_coverage_pass": true,
+  "final_mapping_gate_pass": false,
+  "model_run": false
+}
