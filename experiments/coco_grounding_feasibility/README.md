@@ -76,6 +76,20 @@ Một tích hai ma trận cuối tầng bỏ qua legacy branch, CLS, residual v�
 
 Đã báo summary cho Astra; không yêu cầu đọc lại artifacts. Thiếu nguồn box là thiếu tài nguyên có thể bổ sung, không phải bằng chứng route bị bác bỏ. Không chạy pilot chỉ với 501 ảnh thiên lệch rồi gọi là toàn train10k.
 
+## Quyết định Astra sau audit
+
+Astra chọn **kiểm chứng interface attention/gradient trước**, chưa tải thêm annotation hoặc chạy pilot. Định nghĩa phiên bản đầu:
+
+- D là attention decoder tầng cuối, trung bình theo head, trên toàn memory `[L;Q]`; lấy Q slice **không chuẩn hóa lại**.
+- C là attention Q-Former cross-attention tầng cuối, trung bình theo head, trên cả 197 CLS+patch tokens; lấy 196 patch slice **không chuẩn hóa lại**.
+- `a[t,p] = sum_q D[t,q] * C[q,p]`; support là tổng `a[t,p] * bbox_patch_area_fraction[p]`; `L_route = -log(epsilon + support)`.
+
+Định nghĩa này phạt cả việc đọc legacy/CLS thay cho nhánh patch được chọn; không chỉ dồn attention vào box. Đây là can thiệp routing có thể làm hại baseline, không phải phép đo đầy đủ hoặc nhân quả về grounding. Root đồng ý dùng định nghĩa tường minh này cho kiểm tra số học, **chưa đồng ý coi nó có lợi cho caption**.
+
+Bước kế tiếp được đề xuất là một smoke notebook do user chạy Kaggle, **không optimizer update**, kiểm logits/greedy parity với tiêu chí khóa trước, attention gradients đến decoder và Q-Former, CLIP frozen, target-token offset, padding/causal mask, empty/full patch mask và ba loại mass riêng (decoder→Q, Q→patch, bbox). Không thêm head/tham số, không tự nới tolerance khi fail. Audit này chưa tạo hoặc chạy notebook đó.
+
+Nếu smoke đạt mới bổ sung full annotation rồi làm sạch span có mục tiêu; nếu fail phải sửa implementation trước. Các vấn đề pizza box và union person quá rộng vẫn còn mở, không được smoke số học hợp thức hóa thành nhãn grounding sạch.
+
 ## Tái tạo
 
 `audit.py` đọc JSON và source có sẵn; dùng NumPy, không import torch. Đường input và hashes được ghi trong `DATA_AUDIT.json`. Script tạo số liệu cùng 12 bản ghi có đủ raw token, annotation IDs, bbox và geometry. Không tải ảnh/annotation, không đọc trọng số mô hình.
