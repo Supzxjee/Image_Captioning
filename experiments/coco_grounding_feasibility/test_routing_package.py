@@ -7,6 +7,7 @@ from pathlib import Path
 import re
 import sys
 import tempfile
+from types import SimpleNamespace
 import unittest
 import zipfile
 import zlib
@@ -18,6 +19,42 @@ from routing_data import tensors_for
 
 
 class Checks(unittest.TestCase):
+    def test_recovery_reuses_stage_and_never_runs_prepare(self):
+        script=(HERE/'resume_preflight.py').read_text(encoding='utf-8');ast.parse(script)
+        source=(HERE/'routing_preflight.py').read_text(encoding='utf-8')
+        sha=hashlib.sha256(source.encode()).hexdigest()
+        (HERE/'review').mkdir(exist_ok=True)
+        with tempfile.TemporaryDirectory(dir=HERE/'review') as tmp:
+            root=Path(tmp);repo=root/'repo';out=root/'output';repo.mkdir();out.mkdir()
+            (repo/'routing_preflight.py').write_bytes(source.encode('utf-8'))
+            stage=root/'stage.h5';stage.write_bytes(b'preserve existing stage')
+            cfg=dict(stage=str(stage),implementation_sha256={'routing_preflight.py':sha},arm='R',aux_weight=.05)
+            protocol=out/'protocol.json';protocol.write_text(json.dumps(cfg),encoding='utf-8')
+            calls=[]
+            ns=dict(REPO=repo,OUTPUT=out,LOG=root/'missing.log',run=lambda args,cwd:calls.append(args))
+            exec(compile(script,'recovery','exec'),ns)
+            self.assertEqual(json.loads(protocol.read_text()),cfg)
+            self.assertEqual(json.loads((out/'protocol_before_preflight_fix.json').read_text()),cfg)
+            self.assertEqual(stage.read_bytes(),b'preserve existing stage')
+            self.assertEqual([args[args.index('run_routing.py')+1] for args in calls],['preflight','worker','evaluate','archive'])
+            (out/'history_rank0.json').write_text('[]')
+            with self.assertRaises(AssertionError):exec(compile(script,'recovery','exec'),ns)
+
+    def test_actual_five_reference_expansion_rejects_wrong_order(self):
+        tree=ast.parse((HERE/'routing_preflight.py').read_text(encoding='utf-8'))
+        helper=next(n for n in tree.body if isinstance(n,ast.FunctionDef) and n.name=='check_teacher_expansion')
+        namespace=dict(torch=SimpleNamespace(equal=np.array_equal))
+        exec(compile(ast.Module(body=[helper],type_ignores=[]),'expansion_check','exec'),namespace)
+        check=namespace['check_teacher_expansion']
+        memory=np.arange(12).reshape(2,3,2);padding=np.array([[False,False,True],[False,True,True]])
+        targets=np.arange(40).reshape(10,4);masks=np.zeros((10,4),dtype=bool)
+        correct=dict(memory=np.repeat(memory,5,axis=0),padding=np.repeat(padding,5,axis=0),targets=targets,masks=masks)
+        check(correct,memory,padding,targets,masks)
+        wrong=dict(correct,memory=np.tile(memory,(5,1,1)),padding=np.tile(padding,(5,1)))
+        with self.assertRaises(ValueError):check(wrong,memory,padding,targets,masks)
+        wrong=dict(correct,targets=targets[::-1])
+        with self.assertRaises(ValueError):check(wrong,memory,padding,targets,masks)
+
     def test_prepare_creates_output_before_writes_and_preserves_existing_stage(self):
         # Exercise the filesystem setup before any ML imports or model work.
         tree=ast.parse((HERE/'routing_stage.py').read_text(encoding='utf-8'))

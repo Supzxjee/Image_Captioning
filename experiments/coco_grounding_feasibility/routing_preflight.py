@@ -38,7 +38,19 @@ def ddp_checks(rank,local):
         torch.testing.assert_close(loss,expected,rtol=RTOL,atol=ATOL)
 
 
-def preflight(protocol):
+def check_teacher_expansion(observed,memory,padding,targets,masks):
+    if not torch.equal(observed['targets'],targets) or not torch.equal(observed['masks'],masks):
+        raise ValueError('Teacher caption tokens/padding changed.')
+    if observed['memory'].shape[0]!=len(memory)*5 or observed['padding'].shape[0]!=len(memory)*5:
+        raise ValueError('Expected exactly five references per image.')
+    for image in range(len(memory)):
+        for caption in range(5):
+            row=image*5+caption
+            if not torch.equal(observed['memory'][row],memory[image]) or not torch.equal(observed['padding'][row],padding[image]):
+                raise ValueError('Teacher memory is not image-major five-reference expansion.')
+
+
+def _preflight(protocol):
     from captioning.scst_runtime import configure_strict_runtime, model_digest, runtime_manifest
     from run_pilot import corpus,cuda_batch,seed_all
     from run_routing import loader,build
@@ -66,13 +78,19 @@ def preflight(protocol):
         memory,padding=model.memory(batch)
         targets=batch['captions'].flatten(0,1)
         mask=batch['caption_mask'].flatten(0,1)
-        logits=model.teacher(memory,padding,targets[:,:-1],mask[:,:-1])
+        observed={}
+        def capture(module,args,kwargs):
+            observed.update(targets=args[0],memory=args[1],masks=kwargs['tgt_key_padding_mask'],
+                            padding=kwargs['memory_key_padding_mask'])
+        handle=model.decoder.register_forward_pre_hook(capture,with_kwargs=True)
+        try:
+            logits=model.teacher(memory,padding,targets[:,:-1],mask[:,:-1])
+        finally:handle.remove()
+        check_teacher_expansion(observed,memory,padding,targets[:,:-1],mask[:,:-1])
         dw=probe.weights['decoder'];cw=probe.weights['qformer']
         assert dw.shape[0]==len(memory)*5 and cw.shape[0]==len(memory)
-        for j in range(5):
-            single=model.teacher(memory,padding,targets[j::5,:-1],mask[j::5,:-1])
-            torch.testing.assert_close(single,logits[j::5],rtol=RTOL,atol=ATOL)
-            torch.testing.assert_close(probe.weights['decoder'],dw[j::5],rtol=RTOL,atol=ATOL)
+        # Check actual decoder inputs exactly. Different GEMM batch sizes need not
+        # produce matching FP32 logits; same-batch observer parity is checked below.
         parts=route(dw,cw.repeat_interleave(5,0),batch['legacy'].shape[1],dw.new_ones((len(dw),196)))
         aux,_=auxiliary(parts,batch,cfg['arm'])
         aux.backward()
@@ -90,7 +108,16 @@ def preflight(protocol):
     if model_digest(model)!=before:raise ValueError('Preflight changed weights.')
     save(out/f'preflight_rank{rank}.json',dict(status='PREFLIGHT_PASS',rank=rank,optimizer_updates=0,
         synthetic=checks,ddp_uneven_and_zero_counts=True,multiword_mean_checked=True,
-        five_reference_alignment_checked=True,ce_parity_checked=True,finite_nonzero_aux_gradients=True,
+        five_reference_alignment_checked=True,expansion_check='exact actual decoder inputs; image-major five references',
+        cross_batch_logits_comparison=False,same_batch_logits_parity_checked=True,
+        ce_parity_checked=True,finite_nonzero_aux_gradients=True,
         no_added_parameters=True,state_sha256=before,runtime=runtime_manifest()))
     dist.destroy_process_group()
     print('PREFLIGHT PASS, rank',rank,'zero optimizer updates',flush=True)
+
+
+def preflight(protocol):
+    try:
+        _preflight(protocol)
+    finally:
+        if dist.is_initialized():dist.destroy_process_group()

@@ -1,21 +1,25 @@
 {
   "status": "LOCAL_DATA_AND_PACKAGING_CHECKS_PASS_GPU_CHECKS_PENDING",
-  "tests_passed": 10,
+  "tests_passed": 12,
   "local_model_inference": false,
   "local_training": false,
   "gpu_runtime_checks_executed": false,
   "caption_gain_measured": false,
   "notebooks": {
     "COCO_ROUTING_B_2GPU.ipynb": {
-      "bytes": 59218,
-      "sha256": "5cb27ddbb05495371e9adb20aa14be7563f5b2ad37650718dded0dd8058cf5ef",
+      "bytes": 59746,
+      "sha256": "9efc09ef177d6cd71a9e7086dd2c8409ded8b4708d3f8050d52867d4118e22c1",
       "unexecuted": true
     },
     "COCO_ROUTING_R_2GPU.ipynb": {
-      "bytes": 59222,
-      "sha256": "a528ded7a842134d404f07c02a6a983cb4889ae0a77fc1c7348fe6ddb9137781",
+      "bytes": 59750,
+      "sha256": "e61597f40ed04f77d1f69ac5ace6c358c4039069bd9e12ed94f7968d3ba75c27",
       "unexecuted": true
     }
   },
-  "output_directory_regression_checked": true
+  "output_directory_regression_checked": true,
+  "exact_actual_teacher_expansion_regression_checked": true,
+  "cross_batch_logits_check_removed": true,
+  "tolerance_changed": false,
+  "recovery_stage_reuse_and_started_training_guard_checked": true
 }

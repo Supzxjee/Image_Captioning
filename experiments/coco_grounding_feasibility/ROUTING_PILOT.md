@@ -60,6 +60,13 @@ CE parity, finite nonzero auxiliary gradients, unchanged weights and parameter s
 Do not skip FAIL checks or loosen tolerances. User runtime checks remain unexecuted
 until the notebooks run on Kaggle.
 
+Preflight correction: compare actual five-reference decoder input expansion exactly,
+not logits computed at two different batch sizes (FP32 GEMM can round differently).
+Same-batch observer logits/CE parity, original tolerance and gradient checks remain.
+For an already prepared session that failed this old check, `resume_preflight.py`
+updates only the preflight source/protocol hash, preserves a protocol backup,
+and reuses staging. It refuses recovery if training history/checkpoint exists.
+
 Training records actual image order, local/global span counts, person counts,
 Q/spatial/CLS/bbox mass, main and auxiliary loss, and total preclip gradient norm.
 Historical A used the same source sampler/seed but did not byte-log its actual order.
