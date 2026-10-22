@@ -51,6 +51,8 @@ Log có pip dependency warnings với gradio/diffusers không dùng ở smoke; t
 
 Đạt gate kỹ thuật để xem xét bước dữ liệu đầy đủ: nguồn COCO instances train+val, clean noun-span policy, class-union/patch-size và đối chứng vị trí. Không tự chuyển PASS này thành pilot hoặc claim cải thiện caption. Đã gửi summary cho Astra, không yêu cầu đọc lại raw ZIP.
 
+**Astra đã phản hồi và xác nhận technical gate theo audit.** Bước tiếp chốt là full COCO train/val annotations → manifest trên train10k, chưa thêm smoke. Pilot dự kiến B (chỉ Q→patch mass) so R (bbox mass); single-instance, lọc diện tích/ambiguity, cap person và gate coverage khóa trước trong `NEXT_DATA_POLICY.md`. Root đồng ý đối chứng này phân biệt áp lực đọc ảnh với vị trí đúng tốt hơn việc dùng mask sai tùy ý, nhưng vẫn phải ghi gradient/clipping và chưa coi R>B là chứng minh nhân quả.
+
 Rủi ro còn nguyên: token ambiguity, hộp person quá rộng, residual/legacy/CLIP context ngoài attribution, và loss có thể ép bỏ thông tin hữu ích từ legacy/CLS. Việc quan sát đúng xác suất và có gradient chỉ xác nhận có thể tối ưu ràng buộc, chưa xác nhận ràng buộc có ích.
 
 Chi tiết và hash: `SMOKE_RESULT.json`; audit không import torch: `audit_smoke_review.py`.
