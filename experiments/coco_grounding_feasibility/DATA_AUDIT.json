@@ -1,0 +1,1574 @@
+{
+  "status": "PARTIAL_BOX_SOURCE_ONLY_INTERFACE_UNVERIFIED_NO_PILOT",
+  "sources": {
+    "dataset_sha256": "2fd999220673258012acfb411a4e7e66af7d488050b2519b0badcc49b7600b8d",
+    "box_sha256": "2b26ef46c5a06201d863e3f888fc9cac28f60b16a39ff9a66364800f94458680",
+    "artifact_sha256": "26b2d5d45c67718e0398c8d83cddb7f1b405b43fdcabfbddb560d728cd370c32",
+    "tokenizer_sha256": "7e049f14e20a8d17b9b7e6d0b568e050ead5b3c12b23f7b0dfd10b7b359c3db7",
+    "aliases_sha256": "12578e39a363f4e4eea8a465c27e286edc3a6ba1492543fdc21f83ba4fa4cf1b"
+  },
+  "box_scope": {
+    "images": 5400,
+    "annotations": 47423,
+    "categories": 80,
+    "provenance": {
+      "url": "https://s3.amazonaws.com/images.cocodataset.org/annotations/annotations_trainval2014.zip",
+      "etag": "\"0a379cfc70b0e71301e0f377548639bd\"",
+      "archive_bytes": 252872794,
+      "member": "annotations/instances_train2014.json",
+      "member_crc32": "3cd50ca9",
+      "member_compressed_bytes": 107297879,
+      "member_uncompressed_bytes": 332556225,
+      "uncompressed_member_sha256": "777ef504abfeba349930485bb32ecd5b6529129a3e010f7852e1437cb049b732",
+      "network_bytes": 110266458,
+      "ijson_version": "3.4.0",
+      "image_count": 5400,
+      "annotation_count": 47423,
+      "image_pixels_downloaded": false,
+      "output_sha256": "2b26ef46c5a06201d863e3f888fc9cac28f60b16a39ff9a66364800f94458680"
+    },
+    "full_coco_annotations_available": false
+  },
+  "counts": {
+    "train_images": 10000,
+    "captions": 50000,
+    "lexical_candidate_spans": 65236,
+    "spans_without_annotation_source": 61165,
+    "images_with_annotation_source": 508,
+    "spans_with_non_crowd_class_boxes": 3932,
+    "rule_filtered_candidate_spans": 3682,
+    "rule_filtered_multiple_instance_spans": 1783,
+    "rule_filtered_zero_patch_center_spans": 134,
+    "rule_filtered_union_smaller_than_one_patch_area_spans": 190,
+    "matched_spans_excluded_lexical_ambiguity": 249,
+    "spans_without_non_crowd_class_box": 139,
+    "matched_spans_with_unk": 1,
+    "images_with_any_class_box_matched_span": 504,
+    "images_with_rule_filtered_candidate_span": 501,
+    "images_missing_annotation_source": 9492
+  },
+  "class_span_counts": {
+    "person": 2089,
+    "skis": 78,
+    "bowl": 6,
+    "chair": 20,
+    "tennis racket": 26,
+    "baseball bat": 6,
+    "surfboard": 129,
+    "laptop": 116,
+    "frisbee": 148,
+    "cake": 69,
+    "bed": 81,
+    "keyboard": 4,
+    "bench": 30,
+    "fork": 4,
+    "snowboard": 87,
+    "wine glass": 7,
+    "cell phone": 129,
+    "skateboard": 124,
+    "donut": 33,
+    "cup": 6,
+    "dog": 73,
+    "boat": 5,
+    "dining table": 3,
+    "horse": 26,
+    "couch": 30,
+    "cat": 25,
+    "sandwich": 14,
+    "motorcycle": 20,
+    "bicycle": 20,
+    "hot dog": 19,
+    "pizza": 51,
+    "suitcase": 59,
+    "banana": 14,
+    "umbrella": 13,
+    "baseball glove": 3,
+    "clock": 1,
+    "bus": 18,
+    "spoon": 1,
+    "bottle": 3,
+    "scissors": 1,
+    "knife": 5,
+    "teddy bear": 9,
+    "airplane": 1,
+    "backpack": 8,
+    "elephant": 20,
+    "broccoli": 5,
+    "tv": 10,
+    "car": 5,
+    "train": 5,
+    "toilet": 4,
+    "traffic light": 2,
+    "kite": 8,
+    "bird": 4,
+    "toothbrush": 2,
+    "apple": 3
+  },
+  "lexical_policy": {
+    "ambiguity_exclusions": [
+      "ball",
+      "balls",
+      "bear",
+      "bears",
+      "book",
+      "books",
+      "glove",
+      "gloves",
+      "mice",
+      "monitor",
+      "monitors",
+      "mouse",
+      "orange",
+      "oranges",
+      "plant",
+      "plants",
+      "racket",
+      "rackets",
+      "remote",
+      "remotes",
+      "sink",
+      "sinks",
+      "table",
+      "tables",
+      "tie",
+      "ties",
+      "train",
+      "vehicle",
+      "vehicles"
+    ],
+    "matching": "longest alias first; whitespace-token-aligned punctuation normalization",
+    "noun_pos_verified": false,
+    "tokenizer": "Static replay of lower().split(),Counter.most_common(9996),BOS offset,30-token truncation; torch tokenizer not executed",
+    "vocabulary_matches_checkpoint_verified": false
+  },
+  "manual_sample_selection": "First12 ascending SHA256(coco-grounding-audit-v1:coco_id:caption_index:span_words); from rule-filtered candidates before manual reading",
+  "manual_sample": [
+    {
+      "coco_id": 64627,
+      "karpathy_imgid": 72929,
+      "filename": "COCO_train2014_000000064627.jpg",
+      "caption_index": 3,
+      "caption": "Main focus of picture is a man on a snowboard",
+      "raw_whitespace_tokens": [
+        "main",
+        "focus",
+        "of",
+        "picture",
+        "is",
+        "a",
+        "man",
+        "on",
+        "a",
+        "snowboard"
+      ],
+      "span_words": [
+        6,
+        7
+      ],
+      "target_token_positions": [
+        7
+      ],
+      "decoder_logit_positions": [
+        6
+      ],
+      "raw_span": [
+        "man"
+      ],
+      "token_ids": [
+        12
+      ],
+      "category": "person",
+      "annotation_ids": [
+        483856,
+        497568,
+        516533
+      ],
+      "bbox_xywh": [
+        [
+          121.08,
+          59.1,
+          268.11,
+          516.04
+        ],
+        [
+          103.58,
+          286.63,
+          146.3,
+          201.96
+        ],
+        [
+          307.33,
+          107.96,
+          118.11,
+          233.8
+        ]
+      ],
+      "image_size": [
+        427,
+        640
+      ],
+      "geometry": {
+        "normalized_xyxy": [
+          [
+            0.283559718969555,
+            0.09234375,
+            0.9114519906323185,
+            0.8986562499999999
+          ],
+          [
+            0.24257611241217797,
+            0.447859375,
+            0.5851990632318501,
+            0.763421875
+          ],
+          [
+            0.7197423887587822,
+            0.1686875,
+            0.9963466042154566,
+            0.534
+          ]
+        ],
+        "patch_centers_in_union": 118,
+        "patch_area_equivalents": 107.84377467213113,
+        "patches_with_positive_overlap": 126,
+        "union_area_fraction": 0.5502233401639344
+      }
+    },
+    {
+      "coco_id": 529017,
+      "karpathy_imgid": 108696,
+      "filename": "COCO_train2014_000000529017.jpg",
+      "caption_index": 2,
+      "caption": "A lot of people in the snow on a mountainside.",
+      "raw_whitespace_tokens": [
+        "a",
+        "lot",
+        "of",
+        "people",
+        "in",
+        "the",
+        "snow",
+        "on",
+        "a",
+        "mountainside."
+      ],
+      "span_words": [
+        3,
+        4
+      ],
+      "target_token_positions": [
+        4
+      ],
+      "decoder_logit_positions": [
+        3
+      ],
+      "raw_span": [
+        "people"
+      ],
+      "token_ids": [
+        20
+      ],
+      "category": "person",
+      "annotation_ids": [
+        489876,
+        492118,
+        508770,
+        521700,
+        534266,
+        542396,
+        548190,
+        551998,
+        1253636,
+        1694435,
+        1742632,
+        2021307,
+        2022778
+      ],
+      "bbox_xywh": [
+        [
+          239.2,
+          256.61,
+          24.84,
+          70.77
+        ],
+        [
+          261.02,
+          258.79,
+          13.2,
+          48.27
+        ],
+        [
+          362.48,
+          263.53,
+          12.37,
+          42.21
+        ],
+        [
+          409.3,
+          278.72,
+          10.97,
+          24.53
+        ],
+        [
+          419.95,
+          271.65,
+          13.37,
+          32.27
+        ],
+        [
+          178.26,
+          276.87,
+          11.3,
+          24.44
+        ],
+        [
+          207.85,
+          276.59,
+          8.95,
+          23.47
+        ],
+        [
+          47.93,
+          271.29,
+          14.02,
+          31.82
+        ],
+        [
+          9.97,
+          269.7,
+          23.36,
+          40.78
+        ],
+        [
+          121.71,
+          270.99,
+          18.88,
+          31.86
+        ],
+        [
+          382.0,
+          283.66,
+          23.2,
+          46.39
+        ],
+        [
+          34.78,
+          279.85,
+          11.32,
+          22.4
+        ],
+        [
+          137.58,
+          265.06,
+          20.97,
+          39.44
+        ]
+      ],
+      "image_size": [
+        500,
+        375
+      ],
+      "geometry": {
+        "normalized_xyxy": [
+          [
+            0.4784,
+            0.6842933333333334,
+            0.5280799999999999,
+            0.8730133333333333
+          ],
+          [
+            0.52204,
+            0.6901066666666668,
+            0.5484399999999999,
+            0.8188266666666667
+          ],
+          [
+            0.72496,
+            0.7027466666666666,
+            0.7497,
+            0.8153066666666665
+          ],
+          [
+            0.8186,
+            0.7432533333333334,
+            0.8405400000000001,
+            0.8086666666666666
+          ],
+          [
+            0.8399,
+            0.7243999999999999,
+            0.86664,
+            0.8104533333333332
+          ],
+          [
+            0.35652,
+            0.73832,
+            0.37912,
+            0.8034933333333334
+          ],
+          [
+            0.4157,
+            0.7375733333333333,
+            0.4336,
+            0.8001599999999999
+          ],
+          [
+            0.09586,
+            0.7234400000000001,
+            0.12390000000000001,
+            0.8082933333333334
+          ],
+          [
+            0.019940000000000003,
+            0.7192,
+            0.06666,
+            0.8279466666666667
+          ],
+          [
+            0.24342,
+            0.7226400000000001,
+            0.28118,
+            0.8076000000000001
+          ],
+          [
+            0.764,
+            0.7564266666666667,
+            0.8104,
+            0.8801333333333333
+          ],
+          [
+            0.06956,
+            0.7462666666666667,
+            0.0922,
+            0.806
+          ],
+          [
+            0.27516,
+            0.7068266666666667,
+            0.31710000000000005,
+            0.812
+          ]
+        ],
+        "patch_centers_in_union": 6,
+        "patch_area_equivalents": 8.37479692373333,
+        "patches_with_positive_overlap": 29,
+        "union_area_fraction": 0.04272855573333331
+      }
+    },
+    {
+      "coco_id": 468966,
+      "karpathy_imgid": 64749,
+      "filename": "COCO_train2014_000000468966.jpg",
+      "caption_index": 4,
+      "caption": "A man sitting in bed with a pizza box and a laptop computer on top of it.",
+      "raw_whitespace_tokens": [
+        "a",
+        "man",
+        "sitting",
+        "in",
+        "bed",
+        "with",
+        "a",
+        "pizza",
+        "box",
+        "and",
+        "a",
+        "laptop",
+        "computer",
+        "on",
+        "top",
+        "of",
+        "it."
+      ],
+      "span_words": [
+        1,
+        2
+      ],
+      "target_token_positions": [
+        2
+      ],
+      "decoder_logit_positions": [
+        1
+      ],
+      "raw_span": [
+        "man"
+      ],
+      "token_ids": [
+        12
+      ],
+      "category": "person",
+      "annotation_ids": [
+        451885
+      ],
+      "bbox_xywh": [
+        [
+          260.65,
+          44.24,
+          226.98,
+          251.99
+        ]
+      ],
+      "image_size": [
+        640,
+        428
+      ],
+      "geometry": {
+        "normalized_xyxy": [
+          [
+            0.40726562499999996,
+            0.10336448598130842,
+            0.761921875,
+            0.6921261682242991
+          ]
+        ],
+        "patch_centers_in_union": 45,
+        "patch_area_equivalents": 40.92637003212617,
+        "patches_with_positive_overlap": 54,
+        "union_area_fraction": 0.20880801036799068
+      }
+    },
+    {
+      "coco_id": 580507,
+      "karpathy_imgid": 75059,
+      "filename": "COCO_train2014_000000580507.jpg",
+      "caption_index": 2,
+      "caption": "A man creating a large splash on his surfboard",
+      "raw_whitespace_tokens": [
+        "a",
+        "man",
+        "creating",
+        "a",
+        "large",
+        "splash",
+        "on",
+        "his",
+        "surfboard"
+      ],
+      "span_words": [
+        8,
+        9
+      ],
+      "target_token_positions": [
+        9
+      ],
+      "decoder_logit_positions": [
+        8
+      ],
+      "raw_span": [
+        "surfboard"
+      ],
+      "token_ids": [
+        192
+      ],
+      "category": "surfboard",
+      "annotation_ids": [
+        649373
+      ],
+      "bbox_xywh": [
+        [
+          71.25,
+          277.4,
+          253.36,
+          79.43
+        ]
+      ],
+      "image_size": [
+        640,
+        425
+      ],
+      "geometry": {
+        "normalized_xyxy": [
+          [
+            0.111328125,
+            0.6527058823529411,
+            0.507203125,
+            0.8396
+          ]
+        ],
+        "patch_centers_in_union": 15,
+        "patch_area_equivalents": 14.501394929411768,
+        "patches_with_positive_overlap": 21,
+        "union_area_fraction": 0.07398670882352942
+      }
+    },
+    {
+      "coco_id": 395304,
+      "karpathy_imgid": 108681,
+      "filename": "COCO_train2014_000000395304.jpg",
+      "caption_index": 1,
+      "caption": "A man that is snowboarding in the snow.",
+      "raw_whitespace_tokens": [
+        "a",
+        "man",
+        "that",
+        "is",
+        "snowboarding",
+        "in",
+        "the",
+        "snow."
+      ],
+      "span_words": [
+        1,
+        2
+      ],
+      "target_token_positions": [
+        2
+      ],
+      "decoder_logit_positions": [
+        1
+      ],
+      "raw_span": [
+        "man"
+      ],
+      "token_ids": [
+        12
+      ],
+      "category": "person",
+      "annotation_ids": [
+        491639
+      ],
+      "bbox_xywh": [
+        [
+          202.66,
+          146.15,
+          91.26,
+          83.52
+        ]
+      ],
+      "image_size": [
+        640,
+        389
+      ],
+      "geometry": {
+        "normalized_xyxy": [
+          [
+            0.31665625,
+            0.375706940874036,
+            0.45925000000000005,
+            0.5904113110539846
+          ]
+        ],
+        "patch_centers_in_union": 6,
+        "patch_area_equivalents": 6.000638251928024,
+        "patches_with_positive_overlap": 12,
+        "union_area_fraction": 0.03061550128534706
+      }
+    },
+    {
+      "coco_id": 230315,
+      "karpathy_imgid": 59596,
+      "filename": "COCO_train2014_000000230315.jpg",
+      "caption_index": 1,
+      "caption": "A young man ridding a snow board jumping in the air off a snow ramp.",
+      "raw_whitespace_tokens": [
+        "a",
+        "young",
+        "man",
+        "ridding",
+        "a",
+        "snow",
+        "board",
+        "jumping",
+        "in",
+        "the",
+        "air",
+        "off",
+        "a",
+        "snow",
+        "ramp."
+      ],
+      "span_words": [
+        2,
+        3
+      ],
+      "target_token_positions": [
+        3
+      ],
+      "decoder_logit_positions": [
+        2
+      ],
+      "raw_span": [
+        "man"
+      ],
+      "token_ids": [
+        12
+      ],
+      "category": "person",
+      "annotation_ids": [
+        424387
+      ],
+      "bbox_xywh": [
+        [
+          166.79,
+          38.03,
+          157.06,
+          185.9
+        ]
+      ],
+      "image_size": [
+        640,
+        427
+      ],
+      "geometry": {
+        "normalized_xyxy": [
+          [
+            0.260609375,
+            0.0890632318501171,
+            0.5060156250000001,
+            0.5244262295081967
+          ]
+        ],
+        "patch_centers_in_union": 18,
+        "patch_area_equivalents": 20.940796926229517,
+        "patches_with_positive_overlap": 35,
+        "union_area_fraction": 0.10684080064402815
+      }
+    },
+    {
+      "coco_id": 54928,
+      "karpathy_imgid": 115503,
+      "filename": "COCO_train2014_000000054928.jpg",
+      "caption_index": 4,
+      "caption": "A man sleeping on a small bed with white sheets",
+      "raw_whitespace_tokens": [
+        "a",
+        "man",
+        "sleeping",
+        "on",
+        "a",
+        "small",
+        "bed",
+        "with",
+        "white",
+        "sheets"
+      ],
+      "span_words": [
+        1,
+        2
+      ],
+      "target_token_positions": [
+        2
+      ],
+      "decoder_logit_positions": [
+        1
+      ],
+      "raw_span": [
+        "man"
+      ],
+      "token_ids": [
+        12
+      ],
+      "category": "person",
+      "annotation_ids": [
+        457787
+      ],
+      "bbox_xywh": [
+        [
+          4.31,
+          237.3,
+          330.07,
+          237.31
+        ]
+      ],
+      "image_size": [
+        640,
+        480
+      ],
+      "geometry": {
+        "normalized_xyxy": [
+          [
+            0.006734374999999999,
+            0.494375,
+            0.52246875,
+            0.9887708333333334
+          ]
+        ],
+        "patch_centers_in_union": 49,
+        "patch_area_equivalents": 49.975477516927086,
+        "patches_with_positive_overlap": 64,
+        "union_area_fraction": 0.25497692610677086
+      }
+    },
+    {
+      "coco_id": 455667,
+      "karpathy_imgid": 95890,
+      "filename": "COCO_train2014_000000455667.jpg",
+      "caption_index": 3,
+      "caption": "two policemen are riding motorcycles and people watching",
+      "raw_whitespace_tokens": [
+        "two",
+        "policemen",
+        "are",
+        "riding",
+        "motorcycles",
+        "and",
+        "people",
+        "watching"
+      ],
+      "span_words": [
+        6,
+        7
+      ],
+      "target_token_positions": [
+        7
+      ],
+      "decoder_logit_positions": [
+        6
+      ],
+      "raw_span": [
+        "people"
+      ],
+      "token_ids": [
+        20
+      ],
+      "category": "person",
+      "annotation_ids": [
+        199563,
+        222731,
+        223572,
+        226221,
+        228299,
+        230510,
+        256949,
+        260894,
+        261011,
+        1211241,
+        1686757,
+        1691146,
+        2007420
+      ],
+      "bbox_xywh": [
+        [
+          165.22,
+          92.48,
+          137.53,
+          268.37
+        ],
+        [
+          332.02,
+          79.27,
+          126.98,
+          202.94
+        ],
+        [
+          474.2,
+          84.21,
+          48.88,
+          99.55
+        ],
+        [
+          538.75,
+          83.42,
+          43.21,
+          154.72
+        ],
+        [
+          589.84,
+          67.95,
+          50.16,
+          203.17
+        ],
+        [
+          287.03,
+          100.55,
+          21.58,
+          27.53
+        ],
+        [
+          120.62,
+          71.45,
+          46.56,
+          163.37
+        ],
+        [
+          41.4,
+          85.0,
+          58.1,
+          143.99
+        ],
+        [
+          571.84,
+          64.64,
+          40.46,
+          193.05
+        ],
+        [
+          525.28,
+          68.76,
+          34.38,
+          53.49
+        ],
+        [
+          160.55,
+          76.21,
+          47.25,
+          74.35
+        ],
+        [
+          247.48,
+          28.37,
+          35.53,
+          52.25
+        ],
+        [
+          86.38,
+          101.21,
+          43.63,
+          123.32
+        ]
+      ],
+      "image_size": [
+        640,
+        425
+      ],
+      "geometry": {
+        "normalized_xyxy": [
+          [
+            0.25815625,
+            0.21760000000000002,
+            0.473046875,
+            0.8490588235294119
+          ],
+          [
+            0.51878125,
+            0.1865176470588235,
+            0.7171875,
+            0.6640235294117647
+          ],
+          [
+            0.7409375,
+            0.1981411764705882,
+            0.8173125000000001,
+            0.43237647058823525
+          ],
+          [
+            0.841796875,
+            0.19628235294117646,
+            0.9093125000000001,
+            0.5603294117647059
+          ],
+          [
+            0.921625,
+            0.15988235294117648,
+            1.0,
+            0.6379294117647059
+          ],
+          [
+            0.44848437499999994,
+            0.23658823529411763,
+            0.48220312499999995,
+            0.3013647058823529
+          ],
+          [
+            0.18846875000000002,
+            0.16811764705882354,
+            0.26121875,
+            0.5525176470588236
+          ],
+          [
+            0.0646875,
+            0.2,
+            0.15546875,
+            0.5388000000000001
+          ],
+          [
+            0.8935000000000001,
+            0.15209411764705882,
+            0.9567187500000001,
+            0.6063294117647059
+          ],
+          [
+            0.82075,
+            0.16178823529411765,
+            0.8744687499999999,
+            0.2876470588235294
+          ],
+          [
+            0.250859375,
+            0.17931764705882353,
+            0.3246875,
+            0.3542588235294118
+          ],
+          [
+            0.38668749999999996,
+            0.06675294117647058,
+            0.442203125,
+            0.18969411764705885
+          ],
+          [
+            0.13496875,
+            0.23814117647058822,
+            0.203140625,
+            0.5283058823529411
+          ]
+        ],
+        "patch_centers_in_union": 79,
+        "patch_area_equivalents": 78.11734976911765,
+        "patches_with_positive_overlap": 114,
+        "union_area_fraction": 0.39855790698529414
+      }
+    },
+    {
+      "coco_id": 179031,
+      "karpathy_imgid": 112770,
+      "filename": "COCO_train2014_000000179031.jpg",
+      "caption_index": 1,
+      "caption": "a couple of people in skis are walking in the snow",
+      "raw_whitespace_tokens": [
+        "a",
+        "couple",
+        "of",
+        "people",
+        "in",
+        "skis",
+        "are",
+        "walking",
+        "in",
+        "the",
+        "snow"
+      ],
+      "span_words": [
+        3,
+        4
+      ],
+      "target_token_positions": [
+        4
+      ],
+      "decoder_logit_positions": [
+        3
+      ],
+      "raw_span": [
+        "people"
+      ],
+      "token_ids": [
+        20
+      ],
+      "category": "person",
+      "annotation_ids": [
+        1258555,
+        1270822,
+        1274783,
+        1275341,
+        1276650,
+        1277525,
+        1289616,
+        1299226,
+        1299674,
+        1313276,
+        1321028,
+        1747603,
+        2003385
+      ],
+      "bbox_xywh": [
+        [
+          389.66,
+          289.74,
+          92.55,
+          96.14
+        ],
+        [
+          459.68,
+          272.32,
+          32.1,
+          53.99
+        ],
+        [
+          283.69,
+          294.53,
+          10.93,
+          41.36
+        ],
+        [
+          292.75,
+          291.39,
+          15.36,
+          44.17
+        ],
+        [
+          309.29,
+          290.51,
+          12.1,
+          40.97
+        ],
+        [
+          269.75,
+          286.08,
+          13.96,
+          51.3
+        ],
+        [
+          356.51,
+          288.04,
+          20.49,
+          45.16
+        ],
+        [
+          547.47,
+          253.74,
+          19.35,
+          64.65
+        ],
+        [
+          67.33,
+          309.99,
+          27.32,
+          64.94
+        ],
+        [
+          337.07,
+          289.15,
+          13.92,
+          44.34
+        ],
+        [
+          322.25,
+          295.95,
+          17.32,
+          38.21
+        ],
+        [
+          129.1,
+          301.66,
+          35.19,
+          93.97
+        ],
+        [
+          17.2,
+          305.95,
+          11.43,
+          35.91
+        ]
+      ],
+      "image_size": [
+        640,
+        426
+      ],
+      "geometry": {
+        "normalized_xyxy": [
+          [
+            0.60884375,
+            0.6801408450704226,
+            0.7534531250000001,
+            0.9058215962441315
+          ],
+          [
+            0.71825,
+            0.6392488262910798,
+            0.7684062500000001,
+            0.7659859154929578
+          ],
+          [
+            0.443265625,
+            0.6913849765258215,
+            0.46034375,
+            0.7884741784037559
+          ],
+          [
+            0.457421875,
+            0.6840140845070423,
+            0.481421875,
+            0.7876995305164319
+          ],
+          [
+            0.48326562500000003,
+            0.6819483568075118,
+            0.502171875,
+            0.7781220657276996
+          ],
+          [
+            0.421484375,
+            0.6715492957746478,
+            0.443296875,
+            0.7919718309859155
+          ],
+          [
+            0.5570468749999999,
+            0.676150234741784,
+            0.5890625,
+            0.7821596244131457
+          ],
+          [
+            0.855421875,
+            0.5956338028169015,
+            0.88565625,
+            0.747394366197183
+          ],
+          [
+            0.105203125,
+            0.7276760563380282,
+            0.147890625,
+            0.8801173708920188
+          ],
+          [
+            0.526671875,
+            0.6787558685446009,
+            0.5484218750000001,
+            0.7828403755868545
+          ],
+          [
+            0.503515625,
+            0.694718309859155,
+            0.530578125,
+            0.784413145539906
+          ],
+          [
+            0.20171875,
+            0.7081220657276995,
+            0.256703125,
+            0.9287089201877934
+          ],
+          [
+            0.026875,
+            0.7181924882629108,
+            0.044734375,
+            0.8024882629107981
+          ]
+        ],
+        "patch_centers_in_union": 15,
+        "patch_area_equivalents": 15.042657733274652,
+        "patches_with_positive_overlap": 42,
+        "union_area_fraction": 0.0767482537411972
+      }
+    },
+    {
+      "coco_id": 317349,
+      "karpathy_imgid": 44514,
+      "filename": "COCO_train2014_000000317349.jpg",
+      "caption_index": 1,
+      "caption": "An advertisement with two girls talking on the phone.",
+      "raw_whitespace_tokens": [
+        "an",
+        "advertisement",
+        "with",
+        "two",
+        "girls",
+        "talking",
+        "on",
+        "the",
+        "phone."
+      ],
+      "span_words": [
+        8,
+        9
+      ],
+      "target_token_positions": [
+        9
+      ],
+      "decoder_logit_positions": [
+        8
+      ],
+      "raw_span": [
+        "phone."
+      ],
+      "token_ids": [
+        275
+      ],
+      "category": "cell phone",
+      "annotation_ids": [
+        327380,
+        329080
+      ],
+      "bbox_xywh": [
+        [
+          122.73,
+          99.0,
+          25.7,
+          32.81
+        ],
+        [
+          299.05,
+          101.64,
+          14.73,
+          18.89
+        ]
+      ],
+      "image_size": [
+        500,
+        479
+      ],
+      "geometry": {
+        "normalized_xyxy": [
+          [
+            0.24546,
+            0.20668058455114824,
+            0.29686,
+            0.27517745302713986
+          ],
+          [
+            0.5981000000000001,
+            0.21219206680584551,
+            0.62756,
+            0.2516283924843424
+          ]
+        ],
+        "patch_centers_in_union": 2,
+        "patch_area_equivalents": 0.917776506054279,
+        "patches_with_positive_overlap": 6,
+        "union_area_fraction": 0.004682533194154484
+      }
+    },
+    {
+      "coco_id": 126255,
+      "karpathy_imgid": 45309,
+      "filename": "COCO_train2014_000000126255.jpg",
+      "caption_index": 1,
+      "caption": "Young kids playing a game of basketball on a basketball court. ",
+      "raw_whitespace_tokens": [
+        "young",
+        "kids",
+        "playing",
+        "a",
+        "game",
+        "of",
+        "basketball",
+        "on",
+        "a",
+        "basketball",
+        "court."
+      ],
+      "span_words": [
+        1,
+        2
+      ],
+      "target_token_positions": [
+        2
+      ],
+      "decoder_logit_positions": [
+        1
+      ],
+      "raw_span": [
+        "kids"
+      ],
+      "token_ids": [
+        418
+      ],
+      "category": "person",
+      "annotation_ids": [
+        1226811,
+        1240959,
+        1293880,
+        1298682,
+        1302265,
+        1322243,
+        1694872,
+        1699755,
+        2025732,
+        2032743,
+        2160543
+      ],
+      "bbox_xywh": [
+        [
+          19.14,
+          39.98,
+          247.75,
+          418.92
+        ],
+        [
+          156.53,
+          92.91,
+          154.28,
+          361.48
+        ],
+        [
+          225.68,
+          80.31,
+          57.78,
+          81.42
+        ],
+        [
+          188.0,
+          60.99,
+          49.76,
+          52.46
+        ],
+        [
+          294.38,
+          34.79,
+          193.62,
+          410.15
+        ],
+        [
+          431.24,
+          30.68,
+          56.76,
+          244.82
+        ],
+        [
+          275.88,
+          111.59,
+          75.83,
+          203.53
+        ],
+        [
+          92.8,
+          0.0,
+          76.96,
+          56.55
+        ],
+        [
+          283.03,
+          90.7,
+          54.56,
+          71.38
+        ],
+        [
+          374.8,
+          62.19,
+          12.6,
+          29.32
+        ],
+        [
+          375.72,
+          34.67,
+          112.28,
+          265.97
+        ]
+      ],
+      "image_size": [
+        488,
+        500
+      ],
+      "geometry": {
+        "normalized_xyxy": [
+          [
+            0.03922131147540984,
+            0.07995999999999999,
+            0.546905737704918,
+            0.9178000000000001
+          ],
+          [
+            0.32075819672131145,
+            0.18581999999999999,
+            0.636905737704918,
+            0.9087799999999999
+          ],
+          [
+            0.4624590163934426,
+            0.16062,
+            0.580860655737705,
+            0.32346
+          ],
+          [
+            0.38524590163934425,
+            0.12198,
+            0.48721311475409834,
+            0.22690000000000002
+          ],
+          [
+            0.6032377049180327,
+            0.06958,
+            1.0,
+            0.88988
+          ],
+          [
+            0.883688524590164,
+            0.06136,
+            1.0,
+            0.551
+          ],
+          [
+            0.565327868852459,
+            0.22318000000000002,
+            0.720717213114754,
+            0.63024
+          ],
+          [
+            0.1901639344262295,
+            0.0,
+            0.3478688524590164,
+            0.11309999999999999
+          ],
+          [
+            0.5799795081967213,
+            0.1814,
+            0.6917827868852459,
+            0.32415999999999995
+          ],
+          [
+            0.7680327868852459,
+            0.12437999999999999,
+            0.7938524590163936,
+            0.18302
+          ],
+          [
+            0.7699180327868853,
+            0.06934,
+            1.0,
+            0.60128
+          ]
+        ],
+        "patch_centers_in_union": 153,
+        "patch_area_equivalents": 158.11958100491805,
+        "patches_with_positive_overlap": 177,
+        "union_area_fraction": 0.806732556147541
+      }
+    },
+    {
+      "coco_id": 568155,
+      "karpathy_imgid": 76263,
+      "filename": "COCO_train2014_000000568155.jpg",
+      "caption_index": 1,
+      "caption": "Person staring over a laptop computer in a public place.",
+      "raw_whitespace_tokens": [
+        "person",
+        "staring",
+        "over",
+        "a",
+        "laptop",
+        "computer",
+        "in",
+        "a",
+        "public",
+        "place."
+      ],
+      "span_words": [
+        0,
+        1
+      ],
+      "target_token_positions": [
+        1
+      ],
+      "decoder_logit_positions": [
+        0
+      ],
+      "raw_span": [
+        "person"
+      ],
+      "token_ids": [
+        28
+      ],
+      "category": "person",
+      "annotation_ids": [
+        500026
+      ],
+      "bbox_xywh": [
+        [
+          10.84,
+          44.62,
+          629.16,
+          371.65
+        ]
+      ],
+      "image_size": [
+        640,
+        480
+      ],
+      "geometry": {
+        "normalized_xyxy": [
+          [
+            0.0169375,
+            0.09295833333333332,
+            1.0,
+            0.8672291666666666
+          ]
+        ],
+        "patch_centers_in_union": 154,
+        "patch_area_equivalents": 149.186697734375,
+        "patches_with_positive_overlap": 168,
+        "union_area_fraction": 0.76115662109375
+      }
+    }
+  ],
+  "model_run": false,
+  "new_annotations_downloaded": false
+}
