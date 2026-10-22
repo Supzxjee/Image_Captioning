@@ -1,0 +1,18 @@
+{
+  "status": "NOTEBOOK_PREPARED_LOCAL_PACKAGING_CHECKS_PASS_GPU_UNRUN",
+  "notebook_bytes": 20922,
+  "notebook_sha256": "6b7bd1b54305d0582288036c2ce77fd0cb4b2ff77b475bf79b42fcffa6225167",
+  "local_tests_passed": 3,
+  "local_checks": [
+    "Embedded source and unexecuted cells; mask/ID/offset package consistency",
+    "Pinned baseline models.py matches git blob",
+    "No optimizer update call; builder does not import torch"
+  ],
+  "gpu_tests_run": false,
+  "torch_tests_run": false,
+  "model_executed_locally": false,
+  "optimizer_updates": 0,
+  "train_images": 4,
+  "gpus_requested": 2,
+  "baseline_project_commit": "6acd3c9f0553d4d12d46684bbe7dcb8c38033d6b"
+}

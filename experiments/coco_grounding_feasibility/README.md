@@ -93,3 +93,7 @@ Nếu smoke đạt mới bổ sung full annotation rồi làm sạch span có m�
 ## Tái tạo
 
 `audit.py` đọc JSON và source có sẵn; dùng NumPy, không import torch. Đường input và hashes được ghi trong `DATA_AUDIT.json`. Script tạo số liệu cùng 12 bản ghi có đủ raw token, annotation IDs, bbox và geometry. Không tải ảnh/annotation, không đọc trọng số mô hình.
+
+## Notebook smoke đã chuẩn bị
+
+Mở `COCO_ROUTING_INTERFACE_SMOKE_2GPU.ipynb` và xem hướng dẫn `SMOKE_RUN.md`. Notebook chưa được thực thi; người dùng chạy trên Kaggle T4×2. Chỉ bốn TRAIN images, zero optimizer updates. Local mới kiểm source/cells, masks, source pin và packaging; numerical/gradient/greedy parity đều đang chờ kết quả runtime.

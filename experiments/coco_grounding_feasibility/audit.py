@@ -36,7 +36,7 @@ def spans(text, aliases):
     return raw,found
 
 
-def geometry(boxes,width,height):
+def geometry(boxes,width,height,include_mask=False):
     axis=(np.arange(14)+.5)/14
     yy,xx=np.meshgrid(axis,axis,indexing='ij')
     centers=np.zeros((14,14),bool); fraction=np.zeros((14,14))
@@ -62,9 +62,11 @@ def geometry(boxes,width,height):
                     area+=(right-left)*max(0.,high-max(last,low)); last=max(last,high)
             fraction[row,col]=area*196
     assert fraction.min()>=-1e-10 and fraction.max()<=1+1e-10
-    return dict(normalized_xyxy=normalized, patch_centers_in_union=int(centers.sum()),
+    result=dict(normalized_xyxy=normalized, patch_centers_in_union=int(centers.sum()),
         patch_area_equivalents=float(fraction.sum()), patches_with_positive_overlap=int((fraction>0).sum()),
         union_area_fraction=float(fraction.sum()/196))
+    if include_mask: result['patch_area_fraction']=fraction.clip(0,1).tolist()
+    return result
 
 
 def main():
