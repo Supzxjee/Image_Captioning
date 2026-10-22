@@ -1,0 +1,821 @@
+{
+  "status": "COVERAGE_GATE_PASS_MANUAL_REVIEW_PENDING",
+  "train_images": 10000,
+  "captions": 50000,
+  "lexical_candidate_spans": 65236,
+  "eligible_before_person_cap": 18257,
+  "retained_images": 4495,
+  "retained_unique_annotation_spans": 17904,
+  "retained_mask_count": 5602,
+  "person_spans": 4476,
+  "person_fraction": 0.25,
+  "retained_classes": 71,
+  "classes_with_at_least_50_spans": 57,
+  "class_span_counts": {
+    "airplane": 529,
+    "apple": 45,
+    "backpack": 38,
+    "banana": 151,
+    "baseball bat": 71,
+    "baseball glove": 9,
+    "bed": 366,
+    "bench": 445,
+    "bicycle": 277,
+    "bird": 258,
+    "boat": 203,
+    "bottle": 130,
+    "bowl": 149,
+    "broccoli": 59,
+    "bus": 391,
+    "cake": 366,
+    "car": 123,
+    "carrot": 21,
+    "cat": 695,
+    "cell phone": 224,
+    "chair": 122,
+    "clock": 335,
+    "couch": 171,
+    "cow": 100,
+    "cup": 89,
+    "dining table": 22,
+    "dog": 735,
+    "donut": 92,
+    "elephant": 278,
+    "fire hydrant": 186,
+    "fork": 81,
+    "frisbee": 85,
+    "giraffe": 291,
+    "hair drier": 1,
+    "handbag": 16,
+    "horse": 348,
+    "hot dog": 103,
+    "keyboard": 145,
+    "kite": 180,
+    "knife": 92,
+    "laptop": 410,
+    "microwave": 114,
+    "motorcycle": 258,
+    "oven": 102,
+    "parking meter": 78,
+    "person": 4476,
+    "pizza": 360,
+    "potted plant": 6,
+    "refrigerator": 177,
+    "sandwich": 154,
+    "scissors": 92,
+    "sheep": 42,
+    "skateboard": 397,
+    "skis": 151,
+    "snowboard": 116,
+    "spoon": 43,
+    "stop sign": 245,
+    "suitcase": 135,
+    "surfboard": 269,
+    "teddy bear": 181,
+    "tennis racket": 189,
+    "toaster": 7,
+    "toilet": 525,
+    "toothbrush": 22,
+    "traffic light": 30,
+    "truck": 209,
+    "tv": 355,
+    "umbrella": 298,
+    "vase": 235,
+    "wine glass": 40,
+    "zebra": 166
+  },
+  "rejected_by_first_reason": {
+    "ambiguous_surface": 8187,
+    "plural_surface_single_annotation": 12705,
+    "bbox_too_large": 5502,
+    "bbox_too_small": 3202,
+    "artificial_object_modifier": 66,
+    "compound_head_changes_object": 208,
+    "no_class_instance": 1313,
+    "local_color_modifier": 3547,
+    "multiple_class_instances": 11886,
+    "explicit_multiple_units": 291,
+    "depiction_context": 59,
+    "truncated_span": 7,
+    "unknown_token": 6,
+    "person_cap": 353
+  },
+  "gates": {
+    "images": true,
+    "spans": true,
+    "classes": true
+  },
+  "policy": {
+    "version": "coco-noun-box-v1.1",
+    "ambiguity_exclusions": [
+      "ball",
+      "balls",
+      "bear",
+      "bears",
+      "book",
+      "books",
+      "glove",
+      "gloves",
+      "mice",
+      "monitor",
+      "monitors",
+      "mouse",
+      "mouses",
+      "orange",
+      "oranges",
+      "plant",
+      "plants",
+      "racket",
+      "rackets",
+      "remote",
+      "remotes",
+      "sink",
+      "sinks",
+      "table",
+      "tables",
+      "tie",
+      "ties",
+      "train",
+      "trains",
+      "vehicle",
+      "vehicles"
+    ],
+    "compound_suffixes": [
+      "box",
+      "boxes",
+      "bag",
+      "bags",
+      "case",
+      "cases",
+      "cover",
+      "covers",
+      "wrapper",
+      "wrappers",
+      "container",
+      "containers",
+      "holder",
+      "holders",
+      "rack",
+      "racks",
+      "shop",
+      "shops",
+      "store",
+      "stores",
+      "costume",
+      "costumes",
+      "logo",
+      "logos",
+      "sign",
+      "signs",
+      "poster",
+      "posters",
+      "picture",
+      "pictures",
+      "photo",
+      "photos",
+      "photograph",
+      "photographs",
+      "drawing",
+      "drawings",
+      "painting",
+      "paintings",
+      "sculpture",
+      "sculptures",
+      "statue",
+      "statues",
+      "toy",
+      "toys",
+      "figurine",
+      "figurines",
+      "model",
+      "models",
+      "food",
+      "foods",
+      "collar",
+      "collars",
+      "leash",
+      "leashes",
+      "bed",
+      "beds",
+      "bowl",
+      "bowls",
+      "house",
+      "houses"
+    ],
+    "artificial_prefixes": [
+      "toy",
+      "fake",
+      "model",
+      "costume"
+    ],
+    "depiction_cues": [
+      "on a poster",
+      "on the poster",
+      "on a sign",
+      "on the sign",
+      "on a screen",
+      "on the screen",
+      "on a television",
+      "on the television",
+      "in an advertisement",
+      "on an advertisement"
+    ],
+    "count_all_instances_before_crowd_filter": true,
+    "instances_per_class": 1,
+    "crowd_allowed": false,
+    "minimum_patch_area": 4.0,
+    "maximum_image_fraction": 0.5,
+    "patch_grid": 14,
+    "max_caption_length": 30,
+    "person_maximum_fraction": 0.25,
+    "person_cap_order": "sha256(coco-route-person-cap-v1:span_id)",
+    "minimum_images": 2000,
+    "minimum_unique_spans": 5000,
+    "minimum_classes_with_50_spans": 15,
+    "captions_per_image": 5,
+    "manual_records": 16,
+    "manual_selection": "Reuse the original16 v1 hash-selected records, including removed cases; report keep/rejection effects without replacement.",
+    "supervision_schedule": "All retained spans for each main-caption image across its first5references, sorted by fixed per-image span hash; preserve all10k main-caption images. No minibatch/RNG order claim.",
+    "source_scope": "Exact locked A train10k; never held-out supervision",
+    "test_used": false,
+    "plural_alias_pairs": {
+      "person": [
+        "people",
+        "persons"
+      ],
+      "man": [
+        "men"
+      ],
+      "woman": [
+        "women"
+      ],
+      "boy": [
+        "boys"
+      ],
+      "girl": [
+        "girls"
+      ],
+      "child": [
+        "children"
+      ],
+      "kid": [
+        "kids"
+      ],
+      "rider": [
+        "riders"
+      ],
+      "bicycle": [
+        "bicycles"
+      ],
+      "bike": [
+        "bikes"
+      ],
+      "car": [
+        "cars"
+      ],
+      "vehicle": [
+        "vehicles"
+      ],
+      "automobile": [
+        "automobiles"
+      ],
+      "motorcycle": [
+        "motorcycles"
+      ],
+      "motorbike": [
+        "motorbikes"
+      ],
+      "airplane": [
+        "airplanes"
+      ],
+      "plane": [
+        "planes"
+      ],
+      "jet": [
+        "jets"
+      ],
+      "bus": [
+        "buses"
+      ],
+      "train": [
+        "trains"
+      ],
+      "truck": [
+        "trucks"
+      ],
+      "boat": [
+        "boats"
+      ],
+      "ship": [
+        "ships"
+      ],
+      "traffic light": [
+        "traffic lights"
+      ],
+      "traffic signal": [
+        "traffic signals"
+      ],
+      "fire hydrant": [
+        "fire hydrants"
+      ],
+      "stop sign": [
+        "stop signs"
+      ],
+      "parking meter": [
+        "parking meters"
+      ],
+      "bench": [
+        "benches"
+      ],
+      "bird": [
+        "birds"
+      ],
+      "cat": [
+        "cats"
+      ],
+      "dog": [
+        "dogs"
+      ],
+      "horse": [
+        "horses"
+      ],
+      "sheep": [
+        "sheeps"
+      ],
+      "cow": [
+        "cows"
+      ],
+      "elephant": [
+        "elephants"
+      ],
+      "bear": [
+        "bears"
+      ],
+      "zebra": [
+        "zebras"
+      ],
+      "giraffe": [
+        "giraffes"
+      ],
+      "backpack": [
+        "backpacks"
+      ],
+      "umbrella": [
+        "umbrellas"
+      ],
+      "handbag": [
+        "handbags"
+      ],
+      "purse": [
+        "purses"
+      ],
+      "tie": [
+        "ties"
+      ],
+      "suitcase": [
+        "suitcases"
+      ],
+      "frisbee": [
+        "frisbees"
+      ],
+      "ski": [
+        "skis"
+      ],
+      "snowboard": [
+        "snowboards"
+      ],
+      "sports ball": [
+        "sports balls"
+      ],
+      "ball": [
+        "balls"
+      ],
+      "kite": [
+        "kites"
+      ],
+      "baseball bat": [
+        "baseball bats"
+      ],
+      "baseball glove": [
+        "baseball gloves"
+      ],
+      "glove": [
+        "gloves"
+      ],
+      "skateboard": [
+        "skateboards"
+      ],
+      "surfboard": [
+        "surfboards"
+      ],
+      "tennis racket": [
+        "tennis rackets"
+      ],
+      "racket": [
+        "rackets"
+      ],
+      "racquet": [
+        "racquets"
+      ],
+      "bottle": [
+        "bottles"
+      ],
+      "wine glass": [
+        "wine glasses"
+      ],
+      "cup": [
+        "cups"
+      ],
+      "fork": [
+        "forks"
+      ],
+      "knife": [
+        "knifes"
+      ],
+      "spoon": [
+        "spoons"
+      ],
+      "bowl": [
+        "bowls"
+      ],
+      "banana": [
+        "bananas"
+      ],
+      "apple": [
+        "apples"
+      ],
+      "sandwich": [
+        "sandwiches"
+      ],
+      "orange": [
+        "oranges"
+      ],
+      "broccoli": [
+        "broccolis"
+      ],
+      "carrot": [
+        "carrots"
+      ],
+      "hot dog": [
+        "hot dogs"
+      ],
+      "pizza": [
+        "pizzas"
+      ],
+      "donut": [
+        "donuts"
+      ],
+      "doughnut": [
+        "doughnuts"
+      ],
+      "cake": [
+        "cakes"
+      ],
+      "chair": [
+        "chairs"
+      ],
+      "couch": [
+        "couches"
+      ],
+      "sofa": [
+        "sofas"
+      ],
+      "potted plant": [
+        "potted plants"
+      ],
+      "plant": [
+        "plants"
+      ],
+      "bed": [
+        "beds"
+      ],
+      "dining table": [
+        "dining tables"
+      ],
+      "table": [
+        "tables"
+      ],
+      "toilet": [
+        "toilets"
+      ],
+      "tv": [
+        "tvs"
+      ],
+      "television": [
+        "televisions"
+      ],
+      "monitor": [
+        "monitors"
+      ],
+      "laptop": [
+        "laptops"
+      ],
+      "mouse": [
+        "mouses"
+      ],
+      "remote": [
+        "remotes"
+      ],
+      "keyboard": [
+        "keyboards"
+      ],
+      "cell phone": [
+        "cell phones"
+      ],
+      "phone": [
+        "phones"
+      ],
+      "mobile phone": [
+        "mobile phones"
+      ],
+      "microwave": [
+        "microwaves"
+      ],
+      "oven": [
+        "ovens"
+      ],
+      "toaster": [
+        "toasters"
+      ],
+      "sink": [
+        "sinks"
+      ],
+      "refrigerator": [
+        "refrigerators"
+      ],
+      "fridge": [
+        "fridges"
+      ],
+      "book": [
+        "books"
+      ],
+      "clock": [
+        "clocks"
+      ],
+      "vase": [
+        "vases"
+      ],
+      "scissor": [
+        "scissors"
+      ],
+      "teddy bear": [
+        "teddy bears"
+      ],
+      "stuffed bear": [
+        "stuffed bears"
+      ],
+      "hair drier": [
+        "hair driers"
+      ],
+      "hair dryer": [
+        "hair dryers"
+      ],
+      "toothbrush": [
+        "toothbrushes"
+      ]
+    },
+    "plural_surfaces": [
+      "airplanes",
+      "apples",
+      "automobiles",
+      "backpacks",
+      "balls",
+      "bananas",
+      "baseball bats",
+      "baseball gloves",
+      "bears",
+      "beds",
+      "benches",
+      "bicycles",
+      "bikes",
+      "birds",
+      "boats",
+      "books",
+      "bottles",
+      "bowls",
+      "boys",
+      "broccolis",
+      "buses",
+      "cakes",
+      "carrots",
+      "cars",
+      "cats",
+      "cell phones",
+      "chairs",
+      "children",
+      "clocks",
+      "couches",
+      "cows",
+      "cups",
+      "dining tables",
+      "dogs",
+      "donuts",
+      "doughnuts",
+      "elephants",
+      "fire hydrants",
+      "forks",
+      "fridges",
+      "frisbees",
+      "giraffes",
+      "girls",
+      "gloves",
+      "hair driers",
+      "hair dryers",
+      "handbags",
+      "horses",
+      "hot dogs",
+      "jets",
+      "keyboards",
+      "kids",
+      "kites",
+      "knifes",
+      "laptops",
+      "men",
+      "microwaves",
+      "mobile phones",
+      "monitors",
+      "motorbikes",
+      "motorcycles",
+      "mouses",
+      "oranges",
+      "ovens",
+      "parking meters",
+      "people",
+      "persons",
+      "phones",
+      "pizzas",
+      "planes",
+      "plants",
+      "potted plants",
+      "purses",
+      "rackets",
+      "racquets",
+      "refrigerators",
+      "remotes",
+      "riders",
+      "sandwiches",
+      "scissors",
+      "sheeps",
+      "ships",
+      "sinks",
+      "skateboards",
+      "skis",
+      "snowboards",
+      "sofas",
+      "spoons",
+      "sports balls",
+      "stop signs",
+      "stuffed bears",
+      "suitcases",
+      "surfboards",
+      "tables",
+      "teddy bears",
+      "televisions",
+      "tennis rackets",
+      "ties",
+      "toasters",
+      "toilets",
+      "toothbrushes",
+      "traffic lights",
+      "traffic signals",
+      "trains",
+      "trucks",
+      "tvs",
+      "umbrellas",
+      "vases",
+      "vehicles",
+      "wine glasses",
+      "women",
+      "zebras"
+    ],
+    "paired_surface_exceptions": [
+      "skis",
+      "scissors"
+    ],
+    "colors": [
+      "black",
+      "white",
+      "red",
+      "blue",
+      "green",
+      "yellow",
+      "orange",
+      "purple",
+      "pink",
+      "brown",
+      "gray",
+      "grey",
+      "beige",
+      "tan",
+      "gold",
+      "golden",
+      "silver",
+      "multicolored",
+      "multicoloured"
+    ],
+    "color_lookback": 3,
+    "color_boundaries": [
+      "and",
+      "or",
+      "but",
+      "in",
+      "on",
+      "at",
+      "by",
+      "with",
+      "without",
+      "of",
+      "to",
+      "from",
+      "for",
+      "under",
+      "over",
+      "above",
+      "below",
+      "behind",
+      "beside",
+      "between",
+      "near",
+      "against"
+    ],
+    "color_punctuation_boundaries": ".!?,;:",
+    "multiple_quantifiers": [
+      "many",
+      "several",
+      "multiple",
+      "numerous"
+    ],
+    "multiple_unit_patterns": [
+      "pairs of",
+      "sets of",
+      "groups of",
+      "lots of",
+      "lot of"
+    ],
+    "numeral_values": {
+      "two": 2,
+      "three": 3,
+      "four": 4,
+      "five": 5,
+      "six": 6,
+      "seven": 7,
+      "eight": 8,
+      "nine": 9,
+      "ten": 10
+    },
+    "correction_scope": "One stricter v1.1 pass approved after original fixed16; same inputs/gates/sample, no per-image exclusion or threshold relaxation."
+  },
+  "source_provenance": {
+    "source": {
+      "url": "https://s3.amazonaws.com/images.cocodataset.org/annotations/annotations_trainval2014.zip",
+      "bytes": 252872794,
+      "etag": "\"0a379cfc70b0e71301e0f377548639bd\"",
+      "sha256": "031296bbc80c45a1d1f76bf9a90ead27e94e99ec629208449507a4917a3bf009"
+    },
+    "members": [
+      {
+        "member": "annotations/instances_train2014.json",
+        "crc32": "3cd50ca9",
+        "compressed_bytes": 107297879,
+        "uncompressed_bytes": 332556225,
+        "sha256": "777ef504abfeba349930485bb32ecd5b6529129a3e010f7852e1437cb049b732"
+      },
+      {
+        "member": "annotations/instances_val2014.json",
+        "crc32": "264f83bf",
+        "compressed_bytes": 51955093,
+        "uncompressed_bytes": 160682675,
+        "sha256": "e1b4d1bc54906827b1a029981b1c77f2088bd4462569b7615db7929070c3ab47"
+      }
+    ],
+    "ijson_version": "3.4.0",
+    "image_count": 10000,
+    "annotation_count": 71950,
+    "category_count": 80,
+    "split_policy": "Only exact A train10k Karpathy train/restval IDs; no held-out supervision retained.",
+    "cohort_sha256": "4b11628929bca6212e9f3174c2cac7b520c3d9adc39a4546a4cd0bb0253bd0c8",
+    "filtered_file_sha256": "a28e0a35138f14cb4af449a8f53619efca5e41cc23f509d6455e63abd00c43aa",
+    "image_pixels_downloaded": false,
+    "model_run": false
+  },
+  "vocabulary_sha256": "427a33573c9302661282dd4553e87ccd82138f5903cea25823afc7eddb49bd3c",
+  "implementation_sha256": {
+    "prepare_manifest.py": "03301f69212a3c701c1df1750951a1c0100a954b93b6cdfcfa3f2575c651424e",
+    "manifest_policy.py": "f29be2f60bedfff2da16b591d379fb065db8c5d87a23924cf432a31217ab88a6",
+    "audit.py": "cadf9d172e92e1558020520399ec6013d1141b8ab82c34821d6ba4f0dfe244b4",
+    "manifest_policy_v11.py": "dbca5f1f01ac244ac7050da05b70fd791a9902fc1c740a4d8c24d8b5df72bc06"
+  },
+  "payload_sha256": {
+    "policy.json": "fd13046512449449375f94ecda44237a33d5a9223813d036fc6d76f4294abfab",
+    "spans.json": "6e4ec31245a63ea2a1f50f60435fdf526dd2fd6e5f09b835543866ec33fafb7b",
+    "mask_bank.json": "8a2412155fe31a3af9f9368eaf5b9b5314746177f4f4d49d3fb5df76a73431ce",
+    "supervision_schedule.json": "74f1b30f95d732f5b3dbc6de8b002bd6c6b70ca98757cf818d71b3b5645d21d6"
+  },
+  "unique_span_definition": "COCO image + source caption index among first5 + word span + class",
+  "main_caption_images_preserved": 10000,
+  "manual16_distinct_classes": 16,
+  "manual_review_completed": false,
+  "test_used": false,
+  "model_run": false,
+  "schedule_scope": "Per-image supervision only; main minibatch/RNG order and numeric recipe will be locked before pilot."
+}

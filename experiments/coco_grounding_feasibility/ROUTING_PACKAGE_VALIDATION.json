@@ -1,0 +1,20 @@
+{
+  "status": "LOCAL_DATA_AND_PACKAGING_CHECKS_PASS_GPU_CHECKS_PENDING",
+  "tests_passed": 9,
+  "local_model_inference": false,
+  "local_training": false,
+  "gpu_runtime_checks_executed": false,
+  "caption_gain_measured": false,
+  "notebooks": {
+    "COCO_ROUTING_B_2GPU.ipynb": {
+      "bytes": 59214,
+      "sha256": "1307bd7327883c1e12bb88945bf94a1820f63c50567eb8ecc2c65bfd593df9d5",
+      "unexecuted": true
+    },
+    "COCO_ROUTING_R_2GPU.ipynb": {
+      "bytes": 59218,
+      "sha256": "755248936905393af8c37e3a6d9fbe7cba1a72624f755f340957f5b5c0927e03",
+      "unexecuted": true
+    }
+  }
+}

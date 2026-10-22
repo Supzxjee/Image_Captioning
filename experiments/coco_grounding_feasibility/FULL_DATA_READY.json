@@ -1,0 +1,208 @@
+{
+  "status": "DATA_READY_FOR_PILOT_DESIGN_NO_MODEL_RUN",
+  "policy_version": "coco-noun-box-v1.1",
+  "initial_v1": {
+    "images": 4618,
+    "spans": 20683
+  },
+  "final_counts": {
+    "retained_images": 4495,
+    "retained_spans": 17904,
+    "retained_classes": 71,
+    "classes_with_50_spans": 57,
+    "person_spans": 4476,
+    "person_fraction": 0.25
+  },
+  "exact_v1_to_v11_span_removals": {
+    "person_cap": 353,
+    "local_color_modifier": 2019,
+    "plural_surface_single_annotation": 394,
+    "explicit_multiple_units": 10,
+    "ambiguous_surface": 3
+  },
+  "gates": {
+    "images": true,
+    "spans": true,
+    "classes": true
+  },
+  "manual_effects": {
+    "status": "FIXED16_GENERAL_RULE_CORRECTIONS_VERIFIED",
+    "reviewer_type": "assistant_not_human_gold",
+    "original16_reused": true,
+    "new_sample_selected": false,
+    "known_problem_cases_removed": true,
+    "kept": 13,
+    "removed": 3,
+    "note": "13 compatible class-level cases retained; train/suitcase ambiguities removed; valid green-apple example also removed by conservative color rule. Not a precision estimate.",
+    "records": [
+      {
+        "order": 1,
+        "span_id": "cd519fa2a74d18f1f0bf7dc0",
+        "coco_id": 47907,
+        "category": "bowl",
+        "kept": true,
+        "rejection": null
+      },
+      {
+        "order": 2,
+        "span_id": "de00437e007e8cee13087e9f",
+        "coco_id": 291207,
+        "category": "oven",
+        "kept": true,
+        "rejection": null
+      },
+      {
+        "order": 3,
+        "span_id": "1337189a7ada0418dc98f522",
+        "coco_id": 508514,
+        "category": "bed",
+        "kept": true,
+        "rejection": null
+      },
+      {
+        "order": 4,
+        "span_id": "a37ebd033eff1526f21c21ee",
+        "coco_id": 97483,
+        "category": "skis",
+        "kept": true,
+        "rejection": null
+      },
+      {
+        "order": 5,
+        "span_id": "5369ba601313112955558210",
+        "coco_id": 241935,
+        "category": "bicycle",
+        "kept": true,
+        "rejection": null
+      },
+      {
+        "order": 6,
+        "span_id": "3c398f698143d96d71209ca8",
+        "coco_id": 212685,
+        "category": "teddy bear",
+        "kept": true,
+        "rejection": null
+      },
+      {
+        "order": 7,
+        "span_id": "857f73a95e81ffab7c95c9f2",
+        "coco_id": 427789,
+        "category": "parking meter",
+        "kept": true,
+        "rejection": null
+      },
+      {
+        "order": 8,
+        "span_id": "de3fef618b7654e66a1b8075",
+        "coco_id": 190187,
+        "category": "refrigerator",
+        "kept": true,
+        "rejection": null
+      },
+      {
+        "order": 9,
+        "span_id": "c9797fa99f1a3f5f05215888",
+        "coco_id": 421514,
+        "category": "toothbrush",
+        "kept": true,
+        "rejection": null
+      },
+      {
+        "order": 10,
+        "span_id": "3c432bf83c818e0b2990c407",
+        "coco_id": 92,
+        "category": "fork",
+        "kept": true,
+        "rejection": null
+      },
+      {
+        "order": 11,
+        "span_id": "9c0d3ce9b911414d2873b477",
+        "coco_id": 411313,
+        "category": "fire hydrant",
+        "kept": true,
+        "rejection": null
+      },
+      {
+        "order": 12,
+        "span_id": "ce2bd7f6772a5f74eb9a212e",
+        "coco_id": 292845,
+        "category": "wine glass",
+        "kept": true,
+        "rejection": null
+      },
+      {
+        "order": 13,
+        "span_id": "5baa84a565fe774e4c8c5098",
+        "coco_id": 558556,
+        "category": "potted plant",
+        "kept": true,
+        "rejection": null
+      },
+      {
+        "order": 14,
+        "span_id": "251db1049e5f94674f85a8f9",
+        "coco_id": 510596,
+        "category": "apple",
+        "kept": false,
+        "rejection": "local_color_modifier"
+      },
+      {
+        "order": 15,
+        "span_id": "9f6b2c796a9b9d8eddf35855",
+        "coco_id": 200612,
+        "category": "train",
+        "kept": false,
+        "rejection": "ambiguous_surface"
+      },
+      {
+        "order": 16,
+        "span_id": "16757adcaa403b45425f2e0e",
+        "coco_id": 308119,
+        "category": "suitcase",
+        "kept": false,
+        "rejection": "local_color_modifier"
+      }
+    ]
+  },
+  "data_manifest_receipt_sha256": "bde873ba77124333488b263a052419dc80e412c1e089178cdf423d2836e1b146",
+  "dataset_archive_sha256": "46c413e629ba16199798a84eeb13898618c5f01d09be1e65988242d47c6dc966",
+  "dataset_archive_bytes": 2672346,
+  "dataset_file_count": 7,
+  "source_provenance": {
+    "source": {
+      "url": "https://s3.amazonaws.com/images.cocodataset.org/annotations/annotations_trainval2014.zip",
+      "bytes": 252872794,
+      "etag": "\"0a379cfc70b0e71301e0f377548639bd\"",
+      "sha256": "031296bbc80c45a1d1f76bf9a90ead27e94e99ec629208449507a4917a3bf009"
+    },
+    "members": [
+      {
+        "member": "annotations/instances_train2014.json",
+        "crc32": "3cd50ca9",
+        "compressed_bytes": 107297879,
+        "uncompressed_bytes": 332556225,
+        "sha256": "777ef504abfeba349930485bb32ecd5b6529129a3e010f7852e1437cb049b732"
+      },
+      {
+        "member": "annotations/instances_val2014.json",
+        "crc32": "264f83bf",
+        "compressed_bytes": 51955093,
+        "uncompressed_bytes": 160682675,
+        "sha256": "e1b4d1bc54906827b1a029981b1c77f2088bd4462569b7615db7929070c3ab47"
+      }
+    ],
+    "ijson_version": "3.4.0",
+    "image_count": 10000,
+    "annotation_count": 71950,
+    "category_count": 80,
+    "split_policy": "Only exact A train10k Karpathy train/restval IDs; no held-out supervision retained.",
+    "cohort_sha256": "4b11628929bca6212e9f3174c2cac7b520c3d9adc39a4546a4cd0bb0253bd0c8",
+    "filtered_file_sha256": "a28e0a35138f14cb4af449a8f53619efca5e41cc23f509d6455e63abd00c43aa",
+    "image_pixels_downloaded": false,
+    "model_run": false
+  },
+  "weak_supervision_not_gold": true,
+  "model_run": false,
+  "next": "Upload the seven JSON files as a Kaggle dataset; pilot recipe and notebooks to be locked with Astra before training."
+}
