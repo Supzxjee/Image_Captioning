@@ -13,7 +13,7 @@ import unittest
 from contextlib import redirect_stdout
 from unittest.mock import patch
 from package_dataset import package,sha,validate_inventory,locate
-from make_dataset_notebook import build
+from make_dataset_notebook import build,VERSION_PREFLIGHT,KERNEL_VERSION
 
 HERE=Path(__file__).resolve().parent
 
@@ -86,6 +86,50 @@ class Checks(unittest.TestCase):
             self.assertNotIn('synthetic-secret',str(popen.call_args.args))
             process.wait.return_value=0;namespace['run_cli'](['python','pip'],authenticated=False)
             self.assertNotIn('KAGGLE_API_TOKEN',popen.call_args.kwargs['env'])
+
+    def test_download_pins89_filters_payload_and_never_falls_back(self):
+        import re,shutil
+        from types import SimpleNamespace
+        notebook=json.loads((HERE/'SAVE_NATIVE_DETAIL_HL_15K_DATASET.ipynb').read_text(encoding='utf-8'))
+        code=next(''.join(c['source']) for c in notebook['cells'] if c['cell_type']=='code' and 'DOWNLOAD=Path(' in ''.join(c['source']))
+        inventory=json.loads((HERE/'upload_inventory.json').read_text(encoding='utf-8'));calls=[]
+        def fake_cli(args):
+            calls.append(args);self.assertIn(KERNEL_VERSION,args);self.assertIn('--file-pattern',args)
+            pattern=re.compile(args[-1])
+            for name in inventory['files']:self.assertTrue(pattern.search('native_detail_HL_15k/'+name),name)
+            for name in ('notebook.log','native_detail_HL_15k_review.zip','train_020.h5','checkpoint.bin'):self.assertFalse(pattern.search(name),name)
+        with tempfile.TemporaryDirectory(dir=HERE) as tmp,patch.object(tempfile,'mkdtemp',return_value=tmp),patch.object(shutil,'disk_usage',return_value=SimpleNamespace(free=30_000_000_000)),redirect_stdout(io.StringIO()):
+            namespace=dict(KERNEL_VERSION=KERNEL_VERSION,INVENTORY=inventory,Path=Path,re=re,sys=sys,run_cli=fake_cli,sha=sha,locate=locate)
+            with self.assertRaisesRegex(RuntimeError,'0 matching cache receipts'):exec(code,namespace)
+            self.assertEqual(len(calls),1)
+            namespace['KERNEL_VERSION']=KERNEL_VERSION.removesuffix('/89')+'/88'
+            with self.assertRaises(ValueError):exec(code,namespace)
+            self.assertEqual(len(calls),1)
+
+    def test_version_routing_preflight_rejects_ignored_version(self):
+        from types import ModuleType,SimpleNamespace
+        from unittest.mock import MagicMock
+        modules={n:ModuleType(n) for n in ('kaggle','kaggle.api','kaggle.api.kaggle_api_extended')}
+        for label in ('v89',None):
+            api=MagicMock();modules['kaggle.api.kaggle_api_extended'].KaggleApi=lambda:api
+            def fake_output(url,path):
+                self.assertEqual(url,KERNEL_VERSION)
+                with api.build_kaggle_client() as client:
+                    client.kernels.kernels_api_client.list_kernel_session_output(SimpleNamespace(version_label=label,user_name='ducanh2403',kernel_slug='2-vi-cai-kia-qua-nhieu'))
+            api.kernels_output.side_effect=fake_output
+            with patch.dict(sys.modules,modules),patch.object(tempfile,'TemporaryDirectory',return_value=__import__('contextlib').nullcontext('synthetic-no-download')),redirect_stdout(io.StringIO()):
+                if label is None:
+                    with self.assertRaises(AssertionError):exec(VERSION_PREFLIGHT,{})
+                else:exec(VERSION_PREFLIGHT,{})
+
+    def test_transport_receipt_records89_as_valid_json(self):
+        notebook=json.loads((HERE/'SAVE_NATIVE_DETAIL_HL_15K_DATASET.ipynb').read_text(encoding='utf-8'))
+        code=next(''.join(c['source']) for c in notebook['cells'] if c['cell_type']=='code' and 'report=package(' in ''.join(c['source']))
+        with tempfile.TemporaryDirectory(dir=HERE) as tmp,redirect_stdout(io.StringIO()):
+            namespace=dict(package=lambda *a:dict(status='DATASET_FOLDER_READY'),SOURCE='synthetic',DESTINATION=Path(tmp),INVENTORY={},KERNEL_VERSION=KERNEL_VERSION,json=json)
+            exec(code,namespace)
+            report=json.loads((Path(tmp)/'transport_receipt.json').read_text(encoding='utf-8'))
+            self.assertEqual(report['source_kernel_version'],'ducanh2403/2-vi-cai-kia-qua-nhieu/89')
 
 
 if __name__=='__main__':unittest.main(verbosity=2)
