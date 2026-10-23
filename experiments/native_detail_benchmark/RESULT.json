@@ -1,0 +1,57 @@
+{
+  "status": "AUDIT_PASS",
+  "zip_sha256": "d514be28c3ab30d2c4811c2737e8ee26700cdcd8fb557af197721fb7ec01ef39",
+  "implementation_sha256": {
+    "captioning/data.py": "9db178959dd9ed70312cfc2f58e11a0db28148d3328b2feea80786f8f2770463",
+    "captioning/scst_runtime.py": "3452ccfbd43876dc6381b78d1229d1d6b05fe723e3863a04f31c4a784497f669",
+    "captioning/visual_cache.py": "adbcc9678fff499fc767cdbf04a4966186a40729f51c5bfb2525e79f9b6b5fe1",
+    "run_benchmark.py": "d686723ca406bf797593a69e8854657fd2b65f6f299affd48097217a88a4d0f5",
+    "test_tile_data.py": "40200ace3ea544567085f0edcbe218b53a69cb7caa86f10f1462a30d5b7b1a9e",
+    "tile_data.py": "47059a7eeca1b7fd3edfa7bfe2a52bbab4ea6b506bcf322bb6962d163c1512be"
+  },
+  "checked": [
+    "source hashes and local approved source",
+    "input identities and locked disjoint sample",
+    "both rank receipts and progress logs",
+    "release clocks and concurrent timing arithmetic",
+    "matched runtimes and frozen weight digests",
+    "global compatibility receipts and old-cache metadata"
+  ],
+  "measured": {
+    "images": 256,
+    "views": 2048,
+    "two_gpu_wall_seconds": 39.73631074,
+    "preparation_seconds": 920.99857645,
+    "parent_total_seconds": 999.449916801,
+    "peak_allocated_bytes_per_gpu": 716280832,
+    "peak_reserved_bytes_per_gpu": 981467136,
+    "cpu_decode_preprocess_share_per_worker": [
+      0.7275553605585912,
+      0.7217855194843891
+    ],
+    "hdf5_bytes": 102782016,
+    "free_disk_bytes": 20837474304
+  },
+  "projections": {
+    "cache_loop_minutes": 38.80499095703125,
+    "tensor_payload_bytes": 6021120000,
+    "cache_loop_plus_observed_preparation_minutes": 54.15496723119792,
+    "qualification": "Linear resource estimate, not ETA. Excludes full A staging, training, evaluation and changed setup/filesystem conditions."
+  },
+  "compatibility": {
+    "checked_images": 8,
+    "max_absolute_error": 0.0303955078125,
+    "passed_tolerance": {
+      "atol": 0.01,
+      "rtol": 0.005
+    },
+    "old_revision_recorded": false,
+    "bitwise_identity_claim": false
+  },
+  "decision": "Cache extraction is feasible on the measured configuration. Next: prepare resumable full H/L cache for the locked 15000 images; retain A. Training launch requires a separate runtime/quota check.",
+  "limits": [
+    "Review ZIP omits actual HDF5 feature bytes; readback/finite/frozen checks are runtime receipts, not independent re-verification.",
+    "No training, caption-quality result, or full-pilot budget measurement. No local model execution.",
+    "Eight global compatibility examples do not prove compatibility for every image or identity of unrecorded old weights."
+  ]
+}
