@@ -1,0 +1,155 @@
+{
+  "status": "PRE_POLICY_DATA_FEASIBILITY_PASS_CHECKPOINT_BYTES_PENDING",
+  "model_run": false,
+  "train_notebook_created": false,
+  "expected_A_checkpoint_sha256": "630a4b6d4bcef84515bbd44a52b6474811377bda53caa9722c5806795fa7f901",
+  "user_reports_A_checkpoint_available_on_Kaggle": true,
+  "exact_A_bytes_locally_verified": false,
+  "alias_surfaces": 157,
+  "covered_classes": 59,
+  "manifest_spans": 17904,
+  "before_guard": 16679,
+  "after_guard": 16679,
+  "fraction": 0.9315795352993744,
+  "nonperson_spans": 13428,
+  "covered_nonperson": 12203,
+  "nonperson_fraction": 0.9087727137324992,
+  "nonperson_classes_with_at_least50": 50,
+  "deduplicated_region_supervision": {
+    "regions": 5602,
+    "images": 4495,
+    "person_regions": 1257,
+    "person_fraction": 0.22438414851838628,
+    "classes": 71
+  },
+  "feasibility_gates": {
+    "nonperson_at_least_half": true,
+    "nonperson_classes50_at_least15": true
+  },
+  "compound_blocked_manifest_spans": [],
+  "compound_examples_checked": [
+    [
+      "a hot",
+      "dog",
+      "dog",
+      true
+    ],
+    [
+      "a playful",
+      "dog",
+      "dog",
+      false
+    ],
+    [
+      "a hot",
+      "dogs",
+      "dog",
+      true
+    ],
+    [
+      "a cell",
+      "phone",
+      "cell phone",
+      false
+    ]
+  ],
+  "class_counts": {
+    "donut": 92,
+    "person": 4476,
+    "bus": 391,
+    "giraffe": 291,
+    "cat": 695,
+    "umbrella": 298,
+    "dog": 735,
+    "skateboard": 397,
+    "car": 123,
+    "snowboard": 116,
+    "surfboard": 269,
+    "pizza": 360,
+    "chair": 122,
+    "scissors": 92,
+    "bicycle": 277,
+    "spoon": 43,
+    "airplane": 529,
+    "bird": 258,
+    "boat": 203,
+    "suitcase": 135,
+    "bed": 366,
+    "fork": 81,
+    "bowl": 149,
+    "cake": 366,
+    "tennis racket": 86,
+    "tv": 355,
+    "keyboard": 145,
+    "kite": 180,
+    "laptop": 410,
+    "clock": 335,
+    "cell phone": 74,
+    "refrigerator": 177,
+    "toilet": 525,
+    "bench": 445,
+    "horse": 348,
+    "elephant": 278,
+    "skis": 151,
+    "motorcycle": 258,
+    "truck": 209,
+    "frisbee": 85,
+    "zebra": 166,
+    "broccoli": 59,
+    "knife": 92,
+    "bottle": 130,
+    "banana": 151,
+    "cup": 89,
+    "backpack": 38,
+    "sandwich": 154,
+    "toothbrush": 22,
+    "vase": 235,
+    "oven": 102,
+    "cow": 100,
+    "microwave": 114,
+    "sheep": 42,
+    "couch": 171,
+    "carrot": 21,
+    "toaster": 7,
+    "apple": 45,
+    "handbag": 16
+  },
+  "coverage": {
+    "train10k": {
+      "images": 10000,
+      "captions": 50000,
+      "captions_with_candidate": 37833,
+      "mentions": 54539
+    },
+    "val5000": {
+      "images": 5000,
+      "captions": 25000,
+      "captions_with_candidate": 18892,
+      "mentions": 27414
+    },
+    "A_generated_dev1000": {
+      "captions": 1000,
+      "captions_with_candidate": 852,
+      "mentions": 1317
+    }
+  },
+  "split": {
+    "train": 10000,
+    "primary_val": 5000,
+    "secondary_old_dev": 1000,
+    "train_primary_overlap": 0,
+    "primary_historically_reused": true,
+    "test_used": false
+  },
+  "sources_sha256": {
+    "manifest": "6e4ec31245a63ea2a1f50f60435fdf526dd2fd6e5f09b835543866ec33fafb7b",
+    "alias_code": "12578e39a363f4e4eea8a465c27e286edc3a6ba1492543fdc21f83ba4fa4cf1b",
+    "mapping_policy": "153205ee4facbf85749e089d5b99b3fdda77df0b3ef82bff61ac8796b73a9335",
+    "dataset_json": "2fd999220673258012acfb411a4e7e66af7d488050b2519b0badcc49b7600b8d"
+  },
+  "limits": [
+    "Pre-policy coverage audit; not a final whitelist, training implementation or caption performance result.",
+    "Finite known-compound guard is not a perfect semantic/POS parser; globally contextual CLIP patches are not pure local evidence.",
+    "Validation5000 has been used previously; a subset cannot restore independent test status."
+  ]
+}
