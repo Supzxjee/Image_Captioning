@@ -1,8 +1,9 @@
 # Object evidence directly into noun logits — proposal after research review
 
-2026-10-23. **Candidate agreed by Astra after three exchanges; not trained and not a demonstrated improvement.**
-No training notebook has been created. User review and the exact A checkpoint path/hash
-are prerequisites for implementation. Local work here is metadata/lexical auditing only.
+2026-10-23. **Candidate agreed by Astra after three exchanges; not a demonstrated improvement.**
+The user supplied the exact A path and authorized running S on their Kaggle notebook.
+G/S implementations and unexecuted notebooks are being prepared; local work runs metadata
+checks only. Model and DDP checks run on Kaggle before any optimizer update.
 
 ## Why this candidate
 
@@ -28,8 +29,10 @@ explicit vocabulary subset. These differences do not establish novelty or effica
 Use A endpoint bytes SHA256:
 `630a4b6d4bcef84515bbd44a52b6474811377bda53caa9722c5806795fa7f901`.
 Do not silently use original5f8… or reconstruct A and call it the same checkpoint.
-The user reports A is available in Kaggle output/dataset; exact path and byte verification
-remain pending. None of seven top-level Downloads checkpoint candidates matched A.
+The user supplied A at
+`/kaggle/input/datasets/ducanh2403/pair-source-fullframe-ce/upt_hidden_caption_A/checkpoint.bin`.
+Kaggle verifies the file SHA above and stripped `base.` tensor digest
+`d2796e30b4e7454798fac5c513be714dca69918b423910233aee95b161e0e81e`.
 
 Freeze the complete A captioner, including QFormer, legacy branch and decoder.
 Use existing CLIP cache, no detector/CLIP re-encoding:
@@ -125,6 +128,10 @@ Numerical gates, locked before results:
    the eligible vocabulary to detect evasive/incomplete descriptions.
 4. If S passes1–3, S must also beat both inference controls below with paired95% lower>0.
 
+Execution note: independent notebooks cannot know the other arm's results. S computes
+the two inference controls provisionally if its S/A numeric gate passes; interpretation
+still waits for the S/G gate. This changes no training, selection rule or threshold.
+
 No further trained arm: TRAIN-mean uses the mean **post-clip d** over train10k;
 shuffled evidence uses a prelocked seed/derangement of evidence vectors while keeping
 each image and all A inputs unchanged. Apply the same compound guard in all conditions.
@@ -147,6 +154,8 @@ Dedup gives5,602regions on4,495images,71classes;person1,257regions(22.44%).
 All classes remain in supervision even if some have no eligible output word.
 
 The finite guard examples and metadata split checks pass in `audit_feasibility.py`.
-`FEASIBILITY.json` stores input hashes and counts. Exact Kaggle A bytes, visual cache
-coverage, final vocabulary policy and GPU integration remain unverified.
-No model training/inference or training notebook has been executed or created locally.
+`FEASIBILITY.json` stores input hashes and counts. The sealed five-file package contains
+the final 413 raw vocabulary IDs, two hot-dog suffix guards, TRAIN-only targets and
+train10k/val5000 mapping. `DATA_PACKAGE.json` records archive/receipt hashes.
+Exact Kaggle A bytes, visual cache coverage and GPU integration are checked at runtime.
+No model training/inference has been executed locally.
