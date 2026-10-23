@@ -106,7 +106,7 @@ def audit(arm):
     for name,sl in (('first100',slice(0,100)),('last100',slice(-100,None))):
         records=[r for h in history for r in h[sl]]
         trends[name]={k:float(np.mean([r[k] for r in records])) for k in ('ce_loss','presence_loss_global','region_loss_global','correction_abs_mean','correction_saturation_fraction')}
-    result=dict(status='AUDIT_PASS_S_FAILS_A_GATE' if arm=='S' and not gate else 'AUDIT_PASS',arm=arm,zip_sha256=cache['zip_sha256'],
+    result=dict(status=f'AUDIT_PASS_{arm}_FAILS_A_GATE' if not gate else 'AUDIT_PASS',arm=arm,zip_sha256=cache['zip_sha256'],
         source_checkpoint_sha256=A_SHA,frozen_base_sha256=A_BASE_SHA,initial_head_tensor_sha256=done[0]['initial_head_sha256'],final_head_tensor_sha256=done[0]['final_head_sha256'],
         label_receipt_sha256=cfg['label_receipt_sha256'],protocol_sha256=summary['protocol_sha256'],stage_sha256=cfg['stage_sha256'],updates=2500,epochs=2,
         validation_images=5000,historical_A_dev_caption_mismatches=0,metrics=metrics,on_minus_A=difference,S_A_gate=gate,
@@ -120,6 +120,9 @@ def audit(arm):
             'No checkpoint/head bytes included; reported state hashes cannot be independently recomputed here.',
             'No new visual judgment: hallucination transitions are CHAIR labels, not human-verified image correctness.',
             'G is not supplied; no spatial-supervision attribution. Controls correctly skipped after failed S/A gate.'])
+    if arm=='G':
+        result['A_gate']=result.pop('S_A_gate')
+        result['limits'][-1]='Single-arm G audit; interpret spatial-supervision effects only in the matched G/S report. G has no inference controls by design.'
     save(HERE/f'{arm}_RESULT.json',result)
     print(json.dumps(result,ensure_ascii=False,indent=2))
     return result

@@ -1,5 +1,8 @@
 # S completed: the noun-evidence head degrades matched caption quality
 
+G has subsequently been supplied and audited; see the final [matched G/S report](GS_RESULT.md).
+The single-arm analysis below records the earlier S-only decision.
+
 2026-10-23. **Audit PASS; S/A performance gate FAIL. Keep A.**
 S completed 2,500 updates/two train10k epochs on T4×2. Both preflights passed, both
 ranks report identical final head tensors, and the frozen A base digest is unchanged.
