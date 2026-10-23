@@ -1,0 +1,44 @@
+{
+  "status": "RECEIPT_AUDIT_PASS",
+  "zip_sha256": "53a6c2ec27fab6eee2a9af002196e6f248bc8aacbe795cff829ce81f55cacff7",
+  "spec_sha256": "8feb15976e280eb54f8437a3dbe3a6fa6726c50f6abcc86fa12d542c26c1f88a",
+  "manifest_sha256": "6857c40a90c9aac7f7a4dbd504325e5628c75d4ed6e5f7cb24fc9dcdb9e21c6b",
+  "images": {
+    "train": 10000,
+    "val": 5000,
+    "total": 15000
+  },
+  "shards": 30,
+  "hdf5_bytes": 6021652800,
+  "parent_wall_seconds": 3161.5319825889997,
+  "preparation_seconds": 847.9913436900001,
+  "worker_seconds": [
+    2204.7929853309997,
+    2274.2040697619996
+  ],
+  "peak_gpu_allocated_bytes": 715478016,
+  "peak_gpu_reserved_bytes": 964689920,
+  "model_sha256": [
+    "5afb7ecf2d5e841f41cbc470d64c15630c66fea5c9d336c260f8a8b5dd697335",
+    "93e3e39d86c54e5b6d976ec81da6c67a54f5a655518a641708a0c8dfcbe17adb"
+  ],
+  "runtime_sha256": "07daad3787ae7cbc444c4ee200ba2aed721b62eadb14056257047335b60e323a",
+  "fresh_extraction": true,
+  "checks": [
+    "30 per-shard receipts agree with final receipt and exact locked split/order",
+    "all approved source hashes and saved source match",
+    "frozen model identities match passed benchmark and both workers",
+    "two runtime digests and complete per-shard progress logs agree",
+    "all10 notebook tests passed, including4 HDF5 checks",
+    "eight global compatibility receipts passed original mixed tolerance"
+  ],
+  "full_payload_independently_rehashed_locally": false,
+  "trained": false,
+  "caption_evaluated": false,
+  "decision": "Preserve the entire native_detail_HL_15k folder as a Kaggle dataset. Obtain its input mount path, then prepare the shared-adapter H/L pilot and measure training/evaluation cost before the full5000-update run.",
+  "limits": [
+    "The review ZIP omits HDF5 payloads. Hash/readback/finite/frozen assertions are consistent runtime evidence; the consuming notebook must rehash actual input files.",
+    "Fresh full extraction succeeded. Real interrupted full-cache resume has not been demonstrated; its synthetic HDF5 tests passed.",
+    "This establishes cache readiness at receipt level, not caption improvement, novel alignment or full training-budget feasibility."
+  ]
+}
