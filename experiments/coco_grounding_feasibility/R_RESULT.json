@@ -1,0 +1,119 @@
+{
+  "status": "R_COMPLETE_VALID_MEAN_GAIN_BUT_LOCKED_GATE_FAIL_B_PENDING",
+  "archive_sha256": "c44470487564f5a3856538f2f42d6a66e24a649c6e079554e5256701854c63b8",
+  "arm": "R",
+  "source_protocol_history_metric_audit": "PASS",
+  "metrics": {
+    "original": {
+      "CIDEr": 1.1890655082257537,
+      "chair": {
+        "CHAIRs": 0.058,
+        "CHAIRi": 0.035452322738386305,
+        "Recall": 0.4568090992929603
+      },
+      "counts": {
+        "images": 1000,
+        "hallucinated_captions": 58,
+        "hallucinated_mentions": 58,
+        "object_mentions": 1636,
+        "recalled_unique_objects": 1486,
+        "reference_unique_objects": 3253
+      },
+      "mean_caption_words": 10.088,
+      "mean_CHAIR_tokenized_words": 10.803
+    },
+    "A": {
+      "CIDEr": 1.2055125991020814,
+      "chair": {
+        "CHAIRs": 0.052,
+        "CHAIRi": 0.032475490196078434,
+        "Recall": 0.45803873347679064
+      },
+      "counts": {
+        "images": 1000,
+        "hallucinated_captions": 52,
+        "hallucinated_mentions": 53,
+        "object_mentions": 1632,
+        "recalled_unique_objects": 1490,
+        "reference_unique_objects": 3253
+      },
+      "mean_caption_words": 10.213,
+      "mean_CHAIR_tokenized_words": 10.957
+    },
+    "R": {
+      "CIDEr": 1.2120627080404096,
+      "chair": {
+        "CHAIRs": 0.05,
+        "CHAIRi": 0.031384615384615386,
+        "Recall": 0.45557946510913006
+      },
+      "counts": {
+        "images": 1000,
+        "hallucinated_captions": 50,
+        "hallucinated_mentions": 51,
+        "object_mentions": 1625,
+        "recalled_unique_objects": 1482,
+        "reference_unique_objects": 3253
+      },
+      "mean_caption_words": 10.232,
+      "mean_CHAIR_tokenized_words": 11.062
+    }
+  },
+  "R_minus_A": {
+    "delta": 0.0065501089383285796,
+    "paired95_percentile": [
+      -0.015988425993170546,
+      0.029683471148041277
+    ],
+    "resamples": 20000,
+    "seed": 20261023,
+    "unit": "CIDEr raw, not multiplied by100",
+    "higher": 193,
+    "tied": 606,
+    "lower": 201,
+    "scope": "Exploratory paired image bootstrap on reused development1000; not seed variance."
+  },
+  "R_minus_original": {
+    "delta": 0.022997199814655988,
+    "paired95_percentile": [
+      -0.00019616796931335936,
+      0.04671599678064304
+    ],
+    "resamples": 20000,
+    "seed": 20261023,
+    "unit": "CIDEr raw, not multiplied by100",
+    "higher": 231,
+    "tied": 561,
+    "lower": 208,
+    "scope": "Exploratory paired image bootstrap on reused development1000; not seed variance."
+  },
+  "gates": {
+    "R_minus_A_at_least_001": false,
+    "R_minus_A_paired95_lower_positive": false,
+    "R_mean_CIDEr_above_original": true,
+    "CHAIRs_not_above_A": true,
+    "CHAIRi_not_above_A": true,
+    "Recall_at_least_A_minus_001": true
+  },
+  "numeric_gate_pass": false,
+  "hallucination_caption_transitions": {
+    "A_only_fixed": 15,
+    "R_only_new": 13,
+    "both": 37
+  },
+  "actual_image_exposures": 10000,
+  "annotation_span_exposures": 17904,
+  "person_span_exposures": 4476,
+  "clipping": {
+    "R_fraction_preclip_norm_above1": 1.0,
+    "A_fraction_preclip_norm_above1": 1.0
+  },
+  "checkpoint_sha256_reported": "bb8affbc5cd55c57f83d2d34f4524ac9735bfa7c42542e5d457d2df8d9e1ccf7",
+  "checkpoint_bytes_independently_verified": false,
+  "next": "Obtain B results; no numeric promotion or extra blind annotation yet. R-vs-B needed for spatial attribution.",
+  "limits": [
+    "No local model execution; checked receipts and arithmetic, not an independent GPU rerun.",
+    "Historical A sampler/seed/source match; actual A order was not byte-logged.",
+    "Development reused; one seed; attention path regularization is weak noun/class supervision, not causal grounding or relation truth."
+  ]
+}
