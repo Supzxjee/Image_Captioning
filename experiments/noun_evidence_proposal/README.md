@@ -1,5 +1,8 @@
 # Noun evidence G/S pilot
 
+**S result (2026-10-23): completed and audited; performance gate FAIL. Keep A.**
+See [S_RESULT.md](S_RESULT.md). G has not been supplied; no bbox-benefit claim is possible.
+
 G is a global-pooling supervision control. S uses fractional bbox pooling in the region
 loss. Both freeze A and train the same 108,752-parameter patch/class head for 2,500
 updates on two T4 GPUs. At inference both pool globally and apply the same bounded,
@@ -38,7 +41,7 @@ The head file needs the separate exact A checkpoint; it is not a standalone capt
 Matched raw greedy A/endpoint evaluation uses reused val5000, with old dev1000
 secondary. Compare G/S source, label receipt, initial head, frozen base, epoch order
 and runtime before metrics. All numerical gates remain in [DESIGN.md](DESIGN.md).
-No result, novelty or improvement is claimed before the experiments finish.
+No novelty or improvement is claimed from the negative S result.
 
 Local verification is model-free: `python experiments/noun_evidence_proposal/test_metadata.py`.
 The notebook contains GPU preflight; no model was run locally.
