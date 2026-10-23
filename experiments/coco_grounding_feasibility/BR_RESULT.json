@@ -1,0 +1,186 @@
+{
+  "status": "MATCHED_B_R_COMPLETE_NO_LOCKED_CAPTION_GAIN_OR_SPATIAL_ATTRIBUTION",
+  "audit": "PASS",
+  "archives": {
+    "B": "9357eb8f5a6b4bdb6020906b11bb2fd708f63aa883e9fec8d1ebe71ee4d445ba",
+    "R": "c44470487564f5a3856538f2f42d6a66e24a649c6e079554e5256701854c63b8"
+  },
+  "metrics": {
+    "original": {
+      "CIDEr": 1.1890655082257537,
+      "chair": {
+        "CHAIRs": 0.058,
+        "CHAIRi": 0.035452322738386305,
+        "Recall": 0.4568090992929603
+      },
+      "counts": {
+        "images": 1000,
+        "hallucinated_captions": 58,
+        "hallucinated_mentions": 58,
+        "object_mentions": 1636,
+        "recalled_unique_objects": 1486,
+        "reference_unique_objects": 3253
+      },
+      "mean_caption_words": 10.088,
+      "mean_CHAIR_tokenized_words": 10.803
+    },
+    "A": {
+      "CIDEr": 1.2055125991020814,
+      "chair": {
+        "CHAIRs": 0.052,
+        "CHAIRi": 0.032475490196078434,
+        "Recall": 0.45803873347679064
+      },
+      "counts": {
+        "images": 1000,
+        "hallucinated_captions": 52,
+        "hallucinated_mentions": 53,
+        "object_mentions": 1632,
+        "recalled_unique_objects": 1490,
+        "reference_unique_objects": 3253
+      },
+      "mean_caption_words": 10.213,
+      "mean_CHAIR_tokenized_words": 10.957
+    },
+    "B": {
+      "CIDEr": 1.203607324732287,
+      "chair": {
+        "CHAIRs": 0.05,
+        "CHAIRi": 0.031097560975609756,
+        "Recall": 0.4595757762065785
+      },
+      "counts": {
+        "images": 1000,
+        "hallucinated_captions": 50,
+        "hallucinated_mentions": 51,
+        "object_mentions": 1640,
+        "recalled_unique_objects": 1495,
+        "reference_unique_objects": 3253
+      },
+      "mean_caption_words": 10.216,
+      "mean_CHAIR_tokenized_words": 10.983
+    },
+    "R": {
+      "CIDEr": 1.2120627080404096,
+      "chair": {
+        "CHAIRs": 0.05,
+        "CHAIRi": 0.031384615384615386,
+        "Recall": 0.45557946510913006
+      },
+      "counts": {
+        "images": 1000,
+        "hallucinated_captions": 50,
+        "hallucinated_mentions": 51,
+        "object_mentions": 1625,
+        "recalled_unique_objects": 1482,
+        "reference_unique_objects": 3253
+      },
+      "mean_caption_words": 10.232,
+      "mean_CHAIR_tokenized_words": 11.062
+    }
+  },
+  "comparisons": {
+    "R_minus_B": {
+      "delta": 0.008455383308122918,
+      "paired95_percentile": [
+        -0.011347563908685245,
+        0.028581087155148455
+      ],
+      "resamples": 20000,
+      "seed": 20261023,
+      "unit": "CIDEr raw, not multiplied by100",
+      "higher": 162,
+      "tied": 681,
+      "lower": 157,
+      "scope": "Exploratory paired image bootstrap on reused development1000; not seed variance."
+    },
+    "B_minus_A": {
+      "delta": -0.0019052743697943368,
+      "paired95_percentile": [
+        -0.02328217956851059,
+        0.019979698560924727
+      ],
+      "resamples": 20000,
+      "seed": 20261023,
+      "unit": "CIDEr raw, not multiplied by100",
+      "higher": 180,
+      "tied": 632,
+      "lower": 188,
+      "scope": "Exploratory paired image bootstrap on reused development1000; not seed variance."
+    },
+    "R_minus_A": {
+      "delta": 0.0065501089383285796,
+      "paired95_percentile": [
+        -0.015988425993170546,
+        0.029683471148041277
+      ],
+      "resamples": 20000,
+      "seed": 20261023,
+      "unit": "CIDEr raw, not multiplied by100",
+      "higher": 193,
+      "tied": 606,
+      "lower": 201,
+      "scope": "Exploratory paired image bootstrap on reused development1000; not seed variance."
+    }
+  },
+  "locked_R_numeric_gates": {
+    "R_minus_A_at_least_001": false,
+    "R_minus_A_paired95_lower_positive": false,
+    "R_mean_CIDEr_above_original": true,
+    "CHAIRs_not_above_A": true,
+    "CHAIRi_not_above_A": true,
+    "Recall_at_least_A_minus_001": true
+  },
+  "locked_R_numeric_gate_pass": false,
+  "bbox_position_attribution_gate_pass": false,
+  "protocol_differences": [
+    "arm",
+    "output",
+    "preparation_seconds",
+    "stage"
+  ],
+  "same_staged_feature_bytes": true,
+  "same_source_bundles": true,
+  "same_actual_B_R_image_order_and_span_schedule": true,
+  "exposures_per_arm": {
+    "images": 10000,
+    "spans": 17904,
+    "person_spans": 4476,
+    "updates": 1250
+  },
+  "hallucination_transitions": {
+    "A_to_B": {
+      "cleared": 15,
+      "new": 13,
+      "shared": 37
+    },
+    "B_to_R": {
+      "cleared": 7,
+      "new": 7,
+      "shared": 43
+    },
+    "A_to_R": {
+      "cleared": 15,
+      "new": 13,
+      "shared": 37
+    }
+  },
+  "clipping_fraction_preclip_norm_above1": {
+    "B": 1.0,
+    "R": 1.0
+  },
+  "checkpoint_sha256_reported": {
+    "B": "ea7c3bc240cfa61df735f881049cd7888e741792942cfa39827025824b3e51ce",
+    "R": "bb8affbc5cd55c57f83d2d34f4524ac9735bfa7c42542e5d457d2df8d9e1ccf7"
+  },
+  "checkpoint_bytes_independently_verified": false,
+  "test_used": false,
+  "local_model_execution": false,
+  "recommendation": "Do not promote R or scale this recipe based on these results. Keep A as caption baseline; ask Astra to choose a discriminating diagnostic or alternative alignment approach.",
+  "limits": [
+    "Reused development1000, one seed; image bootstrap does not quantify training-seed variance.",
+    "B/R actual image order and staged feature hash match; historical A actual order was not byte-logged.",
+    "A gate failure does not prove all visual-semantic alignment approaches fail; this fixed pilot did not establish a gain.",
+    "Weak noun/class attention-path supervision is not causal grounding or verified relation truth."
+  ]
+}

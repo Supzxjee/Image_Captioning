@@ -33,11 +33,10 @@ def chair(rows):
         CHAIRi=hallucinated/mentions,Recall=recalled/total)
 
 
-def main():
-    cached=load(HERE/'review/loaded_R.json');r=cached['json']
-    a_cache=load(ROOT/'experiments/vg_region_caption/review/loaded_A.json');a=a_cache['json']
+def verify_run(cached,a_cache,arm):
+    r=cached['json'];a=a_cache['json']
     cfg=r['protocol.json'];summary=r['run_summary.json']
-    assert cfg['arm']=='R' and summary['status']=='ROUTING_PILOT_COMPLETE_WAIT_B_R_COMPARISON'
+    assert cfg['arm']==arm and summary['status']=='ROUTING_PILOT_COMPLETE_WAIT_B_R_COMPARISON'
     assert cfg['noun_receipt_sha256']==load(HERE/'FULL_DATA_READY.json')['data_manifest_receipt_sha256']
     assert r['groups.json']==a['groups.json'] and r['origin_predictions.json']==a['origin_predictions.json']
     assert summary['evaluation_reference_tokens_sha256']==a['run_summary.json']['evaluation_reference_tokens_sha256']
@@ -82,6 +81,13 @@ def main():
         sentences=r[condition+'_chair_output.json']['sentences']
         assert len(sentences)==1000 and {s['image_id'] for s in sentences}=={g['coco_id'] for g in r['groups.json']['val']}
         for key,value in chair(sentences).items():np.testing.assert_allclose(value,summary['metrics'][condition]['chair'][key],rtol=0,atol=1e-12)
+    return r,a,cfg,summary,histories
+
+
+def main():
+    cached=load(HERE/'review/loaded_R.json')
+    a_cache=load(ROOT/'experiments/vg_region_caption/review/loaded_A.json')
+    r,a,cfg,summary,histories=verify_run(cached,a_cache,'R')
     ra=paired(r['on_per_image_cider.json'],a['on_per_image_cider.json'])
     ro=paired(r['on_per_image_cider.json'],r['origin_per_image_cider.json'])
     baseline=a['run_summary.json']['metrics']['on'];new=summary['metrics']['on']
