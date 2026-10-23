@@ -48,3 +48,15 @@ No adapter/decoder forward, CE, SCST, reward, optimizer or caption evaluation is
 ## Local checks
 
 `python experiments/native_detail_cache/make_notebook.py` builds the portable unexecuted notebook. `python experiments/native_detail_cache/test_full_cache.py` performs six metadata/packaging checks locally; four HDF5 checks are skipped if h5py is absent and execute in Kaggle before extraction. No local model execution is required or performed.
+
+## Save the audited completed cache as a new dataset
+
+Use `SAVE_NATIVE_DETAIL_HL_15K_DATASET.ipynb`: CPU/no accelerator, Internet ON. Attach **Notebook Output from the completed H/L extraction**, not the review ZIP. It auto-locates the exact approved cache receipt fingerprint; set `SOURCE` explicitly if multiple identical cache folders are attached.
+
+Enable a Kaggle Secret containing the API token; default label is `KAGGLE_API_TOKEN`, configurable through `SECRET_NAME`. Set `OWNER` to the token account and choose the new dataset `SLUG`. The token stays in memory/the authenticated child process environment and is redacted from subprocess output; it is not written to the staged dataset.
+
+The notebook verifies all30 actual HDF5 hashes and33 required JSON files against `upload_inventory.json`, then copies them byte-identically into a flat64-file dataset folder (including its transport receipt). Original historical logs/source stay in the original notebook Output and GitHub audit. Roughly6.4GB free working disk is required. This is a transport-only notebook: no GPU, model, cache regeneration or training.
+
+The API creates a **new Private** dataset, preserving raw HDF5 and disabling CSV conversion. Existing datasets are not updated. The existing validated Kaggle uploader script/pinned official CLI revision is reused. A returned creation acceptance is distinguished from dataset processing readiness; check the dataset page if status is pending or unavailable, rather than rerunning create.
+
+Default target: `ducanh2403/native-detail-hl-15k`. The cache files are directly at the dataset root. After attaching that dataset, send the actual input path containing `cache_spec.json`; do not append the old working folder name. Six model-free transport/notebook tests cover byte-identical repeat-safe copy, missing/corrupt files, unsafe staging/inventory, receipt fingerprint, notebook syntax/source and token redaction. Live Kaggle upload is left to the user.
