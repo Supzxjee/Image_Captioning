@@ -49,7 +49,10 @@ def prepare(config):
     from captioning.object_reward import make_targets,_AnnotationReader
     from run_pilot import corpus
     cfg=json.loads(Path(config).read_text());verify_sources(cfg)
-    if cfg['arm'] not in ('G','S') or cfg['updates']!=2500:raise ValueError('Locked recipe differs.')
+    locked=dict(updates=2500,global_batch_size=8,eval_batch_size=16,seed=42,head_lr=1e-4,weight_decay=.01,
+        max_gradient_norm=1.,warmup_updates=200,scst_weight=.05,object_reward_weight=.5,
+        presence_weight=.1,region_weight=.1,logit_weight=.5,correction_clip=2.,head_parameters=108752)
+    if cfg['arm'] not in ('G','S') or any(cfg.get(k)!=v for k,v in locked.items()):raise ValueError('Locked recipe differs.')
     out,stage=Path(cfg['output']),Path(cfg['stage'])
     if out.exists() or stage.exists():raise FileExistsError('Preserve old output/stage; use a fresh session.')
     out.mkdir(parents=True);begin=time.monotonic()

@@ -1,11 +1,13 @@
 """Model-free regression tests. GPU integration is deliberately run only on Kaggle."""
 import ast
+import base64
 import hashlib
 import json
 from pathlib import Path
 import runpy
 import unittest
 import zipfile
+import zlib
 import numpy as np
 from evidence_data import labels,lexicon,validate_package,normalize,A_SHA
 
@@ -57,6 +59,15 @@ class Checks(unittest.TestCase):
                 if cell['cell_type']=='code':
                     self.assertIsNone(cell['execution_count']);self.assertEqual(cell['outputs'],[]);ast.parse(''.join(cell['source']))
             self.assertIn('/pair-source-fullframe-ce/upt_hidden_caption_A/checkpoint.bin',path.read_text(encoding='utf-8'))
+            tree=ast.parse(''.join(notebook['cells'][2]['source']))
+            assignments={node.targets[0].id:node.value for node in tree.body if isinstance(node,ast.Assign) and isinstance(node.targets[0],ast.Name)}
+            hashes=ast.literal_eval(assignments['SOURCE_HASHES'])
+            call=next(n for n in ast.walk(assignments['SOURCES']) if isinstance(n,ast.Call) and isinstance(n.func,ast.Attribute) and n.func.attr=='b64decode')
+            packed=ast.literal_eval(call.args[0])
+            bundle=json.loads(zlib.decompress(base64.b64decode(packed)))
+            for name,source in bundle.items():self.assertEqual(hashlib.sha256(source.encode()).hexdigest(),hashes[name])
+            for name in ('evidence_data.py','evidence_model.py','evidence_stage.py','evidence_metrics.py','run_evidence.py'):
+                self.assertEqual(bundle[name],(HERE/name).read_text(encoding='utf-8'))
 
 
 if __name__=='__main__':unittest.main(verbosity=2)
