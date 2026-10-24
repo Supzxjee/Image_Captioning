@@ -1,0 +1,68 @@
+{
+  "status": "AUDIT_PASS",
+  "zip_sha256": "7f36d9f4a6a28e7b331fe74f9b2425896611a06405e26a51f30fe97a3b69ee4b",
+  "metrics": {
+    "A": {
+      "CIDEr": 1.1822477754987972,
+      "CHAIRs": 0.0582,
+      "CHAIRi": 0.03782651552488911,
+      "Recall": 0.466034655951783,
+      "mean_words": 10.1456,
+      "mean_object_mentions": 1.6232
+    },
+    "L": {
+      "CIDEr": 1.1726613821662313,
+      "CHAIRs": 0.0562,
+      "CHAIRi": 0.03667119397456476,
+      "Recall": 0.46490457056755397,
+      "mean_words": 10.177,
+      "mean_object_mentions": 1.6198
+    },
+    "H": {
+      "CIDEr": 1.1720876280973542,
+      "CHAIRs": 0.0552,
+      "CHAIRi": 0.036049382716049384,
+      "Recall": 0.46490457056755397,
+      "mean_words": 10.1702,
+      "mean_object_mentions": 1.62
+    }
+  },
+  "paired_CIDEr": {
+    "H_minus_A": {
+      "mean": -0.010160147401442993,
+      "paired95": [
+        -0.017488502640598664,
+        -0.002744430782626812
+      ],
+      "resamples": 20000,
+      "seed": 20261023
+    },
+    "H_minus_L": {
+      "mean": -0.0005737540688770862,
+      "paired95": [
+        -0.0037210616804379906,
+        0.0025506796717042076
+      ],
+      "resamples": 20000,
+      "seed": 20261023
+    }
+  },
+  "flagged_counts": {
+    "A": 291,
+    "L": 281,
+    "H": 276
+  },
+  "H_vs_A_chair": {
+    "removed": 47,
+    "added": 32
+  },
+  "H_L_identical_captions": 4679,
+  "updates": 5000,
+  "image_exposures": 40000,
+  "investment_gate": false,
+  "limits": [
+    "Saved head/actual HDF5 payloads absent from review: rely on Kaggle receipts for those checks.",
+    "CIDEr scorer not rerun locally; per-image aggregation and paired bootstrap reproduced.",
+    "One seed and reused validation; negative result applies to this adapter/recipe only."
+  ]
+}
