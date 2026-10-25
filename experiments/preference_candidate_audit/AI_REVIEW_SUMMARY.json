@@ -1,0 +1,16 @@
+{
+  "status": "AI_PREANNOTATION_COMPLETE_HUMAN_PENDING",
+  "records": 30,
+  "choices": {
+    "tie": 4,
+    "Y": 12,
+    "X": 9,
+    "unclear": 5
+  },
+  "agrees_with_selected_preference": 13,
+  "opposes_selected_preference": 8,
+  "ties_or_unclear": 9,
+  "human_gate_pass": null,
+  "manifest_sha256": "5773d99ba36e19919ff496138a13200386c1360b1649978a7142779bdf633e13",
+  "interpretation": "AI-only screen finds uncertain/mistaken/near-equivalent pairs. Human verification still required; do not alter rules or expand/train automatically."
+}

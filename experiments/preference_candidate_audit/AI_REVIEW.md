@@ -1,0 +1,13 @@
+# AI visual preannotation of the30 preference pairs
+
+2026-10-25. At the user's request, all30 original COCO images were visually inspected through browser screenshots. The choices and rationales are in `prepare_assisted_review.py`; generated `review/assistant_preannotations.json` and `review/assistant_review.html` remain in ignored local review storage. Original review captions, X/Y order and fingerprint were preserved. No model or training was run.
+
+Images were viewed through the valid HTTPS COCO bucket endpoint `https://s3.amazonaws.com/images.cocodataset.org/…`, not by bypassing the certificate warning on the original custom hostname. The new assistant copy uses the same image objects at this endpoint. The user’s original page and any in-progress browser selections were not modified.
+
+Choices were recorded before consulting the hidden preference key. The assistant prefers the selected winner on13pairs, the opposite caption on8, and records4ties plus5unclear cases. These are subjective **AI preannotations**, not human labels, not an estimate of population label accuracy, and not a substitute for the locked human gate. Human-assisted confirmation is not independent of these suggestions; preserve this provenance.
+
+Important cases include COCO101172 (teddy bear in front of the rider, not on the back; helmet attachment ambiguous),176778 (cat beside toilet/tub; repeated toilet versus a questionable sitting claim),40844 (child at a kitchen drawer, neither food preparation nor making a mess is established), and289410 (cat on top of bedding, not under a blanket). Several other pairs are almost equivalent or hinge on uncertain motion, age, scene specificity or word choice. Users should especially check the medium/low-confidence rationales; the assistant's judgments are revisable.
+
+The assistant HTML prefills each selection and displays its rationale, provides a separate editable user note and an initially unchecked confirmation box for every pair. It exports only after the user enters their name and confirms all30; export provenance is `human_verified_ai_assisted`. It does not reveal the hidden model-preference key. The fingerprint is `5773d99ba36e19919ff496138a13200386c1360b1649978a7142779bdf633e13`.
+
+Structural checks confirm30labels,30unchecked human confirmations, unchanged captions/order and AI-only JSON provenance. The browser automation cannot open the local-file review page, so the newly generated local HTML was structurally verified rather than visually inspected in-browser; all30 source images themselves were visually inspected. No rules or thresholds were relaxed. Do not expand the bank or train before reviewing the human-verified result and considering this label-quality concern.
