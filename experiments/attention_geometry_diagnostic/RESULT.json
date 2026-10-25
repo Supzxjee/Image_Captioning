@@ -1,0 +1,381 @@
+{
+  "status": "SAVED_ARTIFACT_AUDIT_PASS",
+  "zip_sha256": "b387d808172f272612e61793bb9e5c3fd608e40a4fa0e663e931eadcc473d20f",
+  "result": {
+    "status": "PREMISE_SIGNAL_GO_DESIGN_ONLY",
+    "images": 138,
+    "contrasts": {
+      "excess_mass": {
+        "uniform": {
+          "mean": 0.17946318283658697,
+          "ci95": [
+            0.15922059522754545,
+            0.20038957809222552
+          ],
+          "n": 138
+        },
+        "image_mean": {
+          "mean": 0.05502469115257747,
+          "ci95": [
+            0.0441117128760714,
+            0.06637882222300709
+          ],
+          "n": 138
+        },
+        "within_image_full_map_derangement": {
+          "mean": 0.10684851607286981,
+          "ci95": [
+            0.08494878167611473,
+            0.12959846418287413
+          ],
+          "n": 138
+        }
+      },
+      "centroid_hit": {
+        "uniform": {
+          "mean": 0.0821256038647343,
+          "ci95": [
+            0.04347826086956522,
+            0.1219806763285024
+          ],
+          "n": 138
+        },
+        "image_mean": {
+          "mean": 0.07004830917874395,
+          "ci95": [
+            0.036231884057971016,
+            0.10628019323671498
+          ],
+          "n": 138
+        },
+        "within_image_full_map_derangement": {
+          "mean": 0.1111111111111111,
+          "ci95": [
+            0.07004830917874395,
+            0.15579710144927536
+          ],
+          "n": 138
+        }
+      },
+      "axis_accuracy": {
+        "uniform": {
+          "mean": 0.24818840579710144,
+          "ci95": [
+            0.17753623188405798,
+            0.31521739130434784
+          ],
+          "n": 138
+        },
+        "image_mean": {
+          "mean": 0.24818840579710144,
+          "ci95": [
+            0.17753623188405798,
+            0.31521739130434784
+          ],
+          "n": 138
+        },
+        "within_image_full_map_derangement": {
+          "mean": 0.5054347826086957,
+          "ci95": [
+            0.3695652173913043,
+            0.6376811594202898
+          ],
+          "n": 138
+        }
+      }
+    },
+    "means": {
+      "true": {
+        "mass": 0.32326402500760226,
+        "excess_mass": 0.17946318283658694,
+        "centroid_hit": 0.2826086956521739,
+        "axis_accuracy": 0.7481884057971014
+      },
+      "uniform": {
+        "mass": 0.1438008421710153,
+        "excess_mass": -1.3530005081954375e-17,
+        "centroid_hit": 0.2004830917874396,
+        "axis_accuracy": 0.5
+      },
+      "image_mean": {
+        "mass": 0.26823933385502474,
+        "excess_mass": 0.12443849168400947,
+        "centroid_hit": 0.21256038647342995,
+        "axis_accuracy": 0.5
+      },
+      "within_image_full_map_derangement": {
+        "mass": 0.2164155089347324,
+        "excess_mass": 0.07261466676371713,
+        "centroid_hit": 0.1714975845410628,
+        "axis_accuracy": 0.2427536231884058
+      }
+    },
+    "phrases_by_size": {
+      "large": {
+        "count": 70,
+        "mean_excess_mass": 0.20054263095864783
+      },
+      "medium": {
+        "count": 167,
+        "mean_excess_mass": 0.19400969412311583
+      },
+      "small": {
+        "count": 61,
+        "mean_excess_mass": 0.10950672192146443
+      }
+    },
+    "entropy_centroid_hit_correlation": -0.2047363422160655,
+    "axis_order_by_direction": {
+      "true": {
+        "x+": {
+          "images": 65,
+          "pairs": 67,
+          "image_mean_accuracy": 0.8461538461538461
+        },
+        "x-": {
+          "images": 37,
+          "pairs": 38,
+          "image_mean_accuracy": 0.6486486486486487
+        },
+        "y+": {
+          "images": 26,
+          "pairs": 27,
+          "image_mean_accuracy": 0.5384615384615384
+        },
+        "y-": {
+          "images": 23,
+          "pairs": 24,
+          "image_mean_accuracy": 0.7608695652173914
+        }
+      },
+      "uniform": {
+        "x+": {
+          "images": 65,
+          "pairs": 67,
+          "image_mean_accuracy": 0.5
+        },
+        "x-": {
+          "images": 37,
+          "pairs": 38,
+          "image_mean_accuracy": 0.5
+        },
+        "y+": {
+          "images": 26,
+          "pairs": 27,
+          "image_mean_accuracy": 0.5
+        },
+        "y-": {
+          "images": 23,
+          "pairs": 24,
+          "image_mean_accuracy": 0.5
+        }
+      },
+      "image_mean": {
+        "x+": {
+          "images": 65,
+          "pairs": 67,
+          "image_mean_accuracy": 0.5
+        },
+        "x-": {
+          "images": 37,
+          "pairs": 38,
+          "image_mean_accuracy": 0.5
+        },
+        "y+": {
+          "images": 26,
+          "pairs": 27,
+          "image_mean_accuracy": 0.5
+        },
+        "y-": {
+          "images": 23,
+          "pairs": 24,
+          "image_mean_accuracy": 0.5
+        }
+      },
+      "within_image_full_map_derangement": {
+        "x+": {
+          "images": 65,
+          "pairs": 67,
+          "image_mean_accuracy": 0.16153846153846155
+        },
+        "x-": {
+          "images": 37,
+          "pairs": 38,
+          "image_mean_accuracy": 0.2702702702702703
+        },
+        "y+": {
+          "images": 26,
+          "pairs": 27,
+          "image_mean_accuracy": 0.4423076923076923
+        },
+        "y-": {
+          "images": 23,
+          "pairs": 24,
+          "image_mean_accuracy": 0.2608695652173913
+        }
+      }
+    },
+    "interpretation": "Not a caption result, predicate evaluation, independent test, or automatic approval to train."
+  },
+  "coverage": {
+    "train_population": 10000,
+    "original_text_missing": 0,
+    "missing_examples": [],
+    "eligible_images": 138,
+    "selected_images": 138,
+    "rejections": {
+      "fewer_than_two_unique_groundable_prompt_classes": 9161,
+      "no_separated_axis_pair_gap_at_least_one_patch": 701
+    },
+    "eligible_fraction": 0.0138,
+    "eligible_classes": {
+      "person": 53,
+      "car": 10,
+      "chair": 12,
+      "bed": 8,
+      "tv": 31,
+      "laptop": 12,
+      "boat": 3,
+      "bench": 3,
+      "toilet": 2,
+      "elephant": 2,
+      "couch": 15,
+      "dog": 19,
+      "oven": 5,
+      "refrigerator": 8,
+      "suitcase": 5,
+      "fire hydrant": 1,
+      "skis": 3,
+      "backpack": 3,
+      "surfboard": 3,
+      "kite": 6,
+      "airplane": 2,
+      "cat": 6,
+      "traffic light": 1,
+      "stop sign": 2,
+      "bird": 5,
+      "motorcycle": 3,
+      "cup": 6,
+      "donut": 1,
+      "umbrella": 6,
+      "banana": 4,
+      "apple": 3,
+      "horse": 4,
+      "keyboard": 9,
+      "wine glass": 2,
+      "bottle": 3,
+      "bowl": 2,
+      "knife": 3,
+      "broccoli": 1,
+      "fork": 2,
+      "teddy bear": 2,
+      "clock": 3,
+      "skateboard": 1,
+      "bicycle": 3,
+      "spoon": 2,
+      "vase": 1,
+      "tennis racket": 1,
+      "cake": 2,
+      "sandwich": 2,
+      "pizza": 2,
+      "truck": 1,
+      "microwave": 6,
+      "scissors": 1,
+      "cell phone": 1,
+      "zebra": 1
+    },
+    "selected_classes": {
+      "dog": 19,
+      "suitcase": 5,
+      "car": 10,
+      "kite": 6,
+      "person": 53,
+      "couch": 15,
+      "bird": 5,
+      "skis": 3,
+      "backpack": 3,
+      "chair": 12,
+      "oven": 5,
+      "boat": 3,
+      "laptop": 12,
+      "bed": 8,
+      "cup": 6,
+      "bowl": 2,
+      "tv": 31,
+      "motorcycle": 3,
+      "umbrella": 6,
+      "airplane": 2,
+      "elephant": 2,
+      "skateboard": 1,
+      "vase": 1,
+      "cat": 6,
+      "keyboard": 9,
+      "scissors": 1,
+      "surfboard": 3,
+      "refrigerator": 8,
+      "microwave": 6,
+      "horse": 4,
+      "tennis racket": 1,
+      "knife": 3,
+      "broccoli": 1,
+      "fork": 2,
+      "pizza": 2,
+      "bicycle": 3,
+      "donut": 1,
+      "bench": 3,
+      "wine glass": 2,
+      "spoon": 2,
+      "apple": 3,
+      "banana": 4,
+      "cake": 2,
+      "clock": 3,
+      "toilet": 2,
+      "fire hydrant": 1,
+      "zebra": 1,
+      "sandwich": 2,
+      "traffic light": 1,
+      "teddy bear": 2,
+      "truck": 1,
+      "cell phone": 1,
+      "stop sign": 2,
+      "bottle": 3
+    },
+    "weak_labels": "Unique GT class instance in sealed reference-noun manifest; automatic prompt alias mapping, not human gold"
+  },
+  "ranks": [
+    {
+      "rank": 0,
+      "seconds": 62.16889582599998,
+      "text_binding_max_abs": 0.0071430206298828125
+    },
+    {
+      "rank": 1,
+      "seconds": 62.568686248000006,
+      "text_binding_max_abs": 0.0050106048583984375
+    }
+  ],
+  "phrase_count": 298,
+  "classes": 54,
+  "axis_constraints": 156,
+  "max_reconstructed_map_abs_error": 1.8388456146656296e-08,
+  "phrase_mean_CLS_mass": 0.018796940508556903,
+  "image_bootstrap_conditional_oracle_gap": {
+    "mean": 0.2512754670202824,
+    "ci95": [
+      0.2374989303036254,
+      0.26519145941744027
+    ],
+    "n": 138
+  },
+  "phrase_mean_conditional_oracle_mass": 0.5734343781139386,
+  "phrase_mean_raw_oracle_mass": 0.5666606657178034,
+  "phrase_mean_actual_raw_mass": 0.31608135797422626,
+  "limitations": [
+    "Restricted weakly labelled TRAIN subset, not population grounding accuracy.",
+    "Oracle maximizes 32 Q maps using GT, selection-biased diagnostic ceiling, not usable inference routing or proof of semantics.",
+    "Conditional patch metrics exclude CLS; raw path masses reported separately.",
+    "Exact parity is one same-shape image per rank; tensor identity/text checks supported by receipts, actual original checkpoint/cache not in ZIP.",
+    "Text binding uses combined rtol=.002 and atol=.002; max absolute error alone can exceed .002.",
+    "No caption generation, no training, no proof of predicate understanding or novelty."
+  ]
+}
