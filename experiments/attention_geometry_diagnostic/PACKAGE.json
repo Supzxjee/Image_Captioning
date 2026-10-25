@@ -1,0 +1,18 @@
+{
+  "status": "PACKAGED_NOT_EXECUTED",
+  "notebook_bytes": 36906,
+  "notebook_sha256": "22113766a88af63729434af91caf332aec471573fee22341f322f0bdb687b379",
+  "sources_sha256": {
+    "diagnostic_data.py": "832d0a9c6379d621d4f79fa2955611992e1964c653e49231de71af797975c176",
+    "run_diagnostic.py": "f65396292a83ae64a9444f77ffd2e13fe99b51ab94f18741f0952ed621df899a",
+    "test_diagnostic.py": "36dce83189f5c159273bd9e9495d8de100e5a770c3de6f2a10bbd96268fcd56c",
+    "route_probe.py": "7cd9071bc4671873f027c66e4e243e9771947dba8b4ebe83dae4cc7d129783bc",
+    "audit.py": "cadf9d172e92e1558020520399ec6013d1141b8ab82c34821d6ba4f0dfe244b4",
+    "manifest_policy.py": "f29be2f60bedfff2da16b591d379fb065db8c5d87a23924cf432a31217ab88a6",
+    "manifest_policy_v11.py": "165106dc3d8e759d9515715cfa5754cd8a9cf70096384d84c1ac035849418547",
+    "pilot_data.py": "93fa39b1de581d774417840be4d5e0b2b8d52bbf9ee53b479adad2c60a45d3d7",
+    "hidden_data.py": "9285d02c5aa7660a5656654e2efe034941bc24d6f7c300958c06fcca6f0d43c7"
+  },
+  "local_model_run": false,
+  "user_runs_kaggle": true
+}
