@@ -1,0 +1,32 @@
+{
+  "status": "SAVED_ARTIFACT_AUDIT_PASS",
+  "zip_sha256": "0787edfd2a6c5b2b93c320513be0c1711b7a893181ec123329b72afccb8d4c61",
+  "trained": false,
+  "sample_images": 2000,
+  "valid_pair_images": 1526,
+  "valid_pair_fraction": 0.763,
+  "distinct_salient_classes": 67,
+  "numeric_screen_pass": true,
+  "greedy_TRAIN_CIDEr": 1.3305009539878516,
+  "guarded_oracle_TRAIN_CIDEr": 1.5092136190761758,
+  "guarded_oracle_gain": 0.17871266508832417,
+  "valid_candidates": 9570,
+  "total_candidates": 10000,
+  "no_EOS_candidates": 2,
+  "UNK_candidates": 429,
+  "mean_unique_captions": 4.8945,
+  "pairs_with_greedy_winner": 591,
+  "eligible_pair_images_with_non_greedy_winner": 935,
+  "images_with_guarded_candidate_better_than_greedy": 773,
+  "human_review_status": "PENDING_30_BLINDED_PAIRS",
+  "review_manifest_sha256": "5773d99ba36e19919ff496138a13200386c1360b1649978a7142779bdf633e13",
+  "preparation_seconds": 650.2826337559999,
+  "worker_seconds": 93.3286509940001,
+  "decision": "Numeric feasibility PASS; human gate and novelty unresolved. No automatic training/full10k bank.",
+  "limits": [
+    "CIDEr scorer not rerun; saved per-candidate scores and source provenance verified, decisions recomputed.",
+    "GPU model/input tensor identities supported by worker receipts; model/HDF5 absent from review.",
+    "Salience reference counts and detector conflicts supported by saved preparation/source; original full raw inputs not reopened.",
+    "TRAIN-only oracle on five candidates, not a learned model gain or a validation result."
+  ]
+}
