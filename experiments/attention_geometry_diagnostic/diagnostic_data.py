@@ -40,10 +40,22 @@ def order(value):return hashlib.sha256(('attention-geometry-v1:'+str(value)).enc
 
 
 def prompt_text(entry):
+    if isinstance(entry,str):return entry if entry.strip() else None
+    if not isinstance(entry,dict):raise ValueError('Prompt text entry must be a string or dictionary.')
     texts=[entry[k] for k in ('prompt','text','prompt_text') if isinstance(entry.get(k),str) and entry[k].strip()]
     if not texts:return None
     if len(set(texts))!=1:raise ValueError('Conflicting text fields in original prompt entry.')
     return texts[0]
+
+
+def text_index(source):
+    if not isinstance(source,dict):raise ValueError('Original text JSON must map image filenames/paths to text or prompt entries.')
+    result={}
+    for key,value in source.items():
+        name=str(key).replace('\\','/').rsplit('/',1)[-1]
+        if name in result:raise ValueError('Duplicate original text filename: '+name)
+        result[name]=prompt_text(value)
+    return result
 
 
 def phrase_positions(text,aliases,tokenized):

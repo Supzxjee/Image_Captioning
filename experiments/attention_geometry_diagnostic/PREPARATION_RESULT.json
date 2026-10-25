@@ -1,0 +1,20 @@
+{
+  "status": "PREPARATION_BLOCKED_MISSING_ORIGINAL_PROMPT_TEXT",
+  "review_sha256": "4cc5c6db0638dda34420728e8252e0b6c40dd3ffecb9a17d7e449982e354b7a7",
+  "train_population": 10000,
+  "original_text_missing": 10000,
+  "first_entry_keys": [
+    "tokens",
+    "mask"
+  ],
+  "first_token_shape": [
+    20,
+    512
+  ],
+  "selected_images": 0,
+  "A_forward_performed": false,
+  "correction": "Support separately supplied original prompt_cache.json; verify selected text embeddings against original cached vectors; preserve cached input tensors. Also archive Q and prompt-to-Q observations.",
+  "historical_text_candidate": "/kaggle/input/models/ducanh2403/promt-cache/maxtext/default/1/prompt_cache.json",
+  "historical_path_proves_matching_source": false,
+  "remaining_blocker": "Original text JSON availability and selected token binding remain unverified."
+}

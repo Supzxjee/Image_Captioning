@@ -27,7 +27,7 @@ def main():
         **Internet ON · GPU T4×2 · Save & Run All.** Hai GPU chia ảnh độc lập; không huấn luyện/DDP collectives.
         Kiểm tra cụm danh từ trong **prompt legacy nguyên bản của A** có attention đúng vùng GT hay không.
         Không thay prompt bằng UPT, không tạo caption mới, không cập nhật checkpoint.
-        Đầu vào: checkpoint A, legacy prompt cache, global visual cache, MSCOCO dataset JSON,
+        Đầu vào: checkpoint A, legacy prompt cache, **JSON prompt gốc**, global visual cache, MSCOCO dataset JSON,
         dataset noun-box TRAIN10k v1.1 đã dùng trong COCO routing B/R. Không cần ảnh gốc/UPT hidden/CHAIR.
         Nếu cache không có văn bản prompt hoặc token-binding khác, notebook dừng và xuất review để kiểm tra.
         ''')]
@@ -39,10 +39,17 @@ def main():
         VISUAL_CACHE=Path('/kaggle/input/datasets/ducanh2403/visual-cache')
         COCO_JSON=Path('/kaggle/input/datasets/vuthetam/mscoco-2014/dataset_coco.json')
         NOUN_MANIFEST=Path('/kaggle/input/datasets/ducanh2403/coco-noun-box-train10k-v11')
+        # Cache .pt gốc chỉ có tokens/mask. Cần thêm JSON văn bản ĐÃ dùng để tạo cache đó.
+        # Đây là path được ghi trong notebook gốc; sửa nếu bạn mount JSON ở dataset khác.
+        PROMPT_TEXT=Path('/kaggle/input/models/ducanh2403/promt-cache/maxtext/default/1/prompt_cache.json')
         OUTPUT=Path('/kaggle/working/attention_geometry_diagnostic_200')
         for p in (CHECKPOINT,LEGACY_PROMPT,COCO_JSON,NOUN_MANIFEST/'manifest_receipt.json'):
             assert p.is_file(),f'Missing input: {p}; sửa đúng mount path trong cell này.'
         assert VISUAL_CACHE.is_dir(),VISUAL_CACHE
+        if not PROMPT_TEXT.is_file():
+            sibling=LEGACY_PROMPT.parent/'prompt_cache.json'
+            if sibling.is_file():PROMPT_TEXT=sibling
+        assert PROMPT_TEXT.is_file(),f'Thiếu JSON prompt GỐC: {PROMPT_TEXT}. Thêm model promt-cache hoặc JSON gốc; không dùng JSON UPT.'
         assert not OUTPUT.exists(),'Giữ output cũ; dùng session/output mới.'
         '''))
     cells.append(nb.bootstrap(sources,'attention-geometry'))
@@ -56,7 +63,7 @@ def main():
         '''))
     cells.append(nb.code('''
         cfg=dict(checkpoint=str(CHECKPOINT),legacy_prompt=str(LEGACY_PROMPT),visual_cache=str(VISUAL_CACHE),
-            dataset_json=str(COCO_JSON),noun_manifest=str(NOUN_MANIFEST),output=str(OUTPUT),
+            dataset_json=str(COCO_JSON),noun_manifest=str(NOUN_MANIFEST),prompt_text_json=str(PROMPT_TEXT),output=str(OUTPUT),
             implementation_sha256=SOURCE_HASHES,project_commit=PROJECT_COMMIT)
         CONFIG=Path('/tmp/attention_geometry_config.json')
         CONFIG.write_text(json.dumps(cfg,indent=2),encoding='utf-8')

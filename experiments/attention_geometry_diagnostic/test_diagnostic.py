@@ -23,6 +23,8 @@ class Checks(unittest.TestCase):
     def test_text_absence_never_uses_reference(self):
         self.assertIsNone(prompt_text(dict(tokens=[])))
         with self.assertRaises(ValueError):prompt_text(dict(prompt='cat',text='dog'))
+        self.assertEqual(text_index({'/images/a.jpg':'cat','b.jpg':{'prompt':'dog'}}),{'a.jpg':'cat','b.jpg':'dog'})
+        with self.assertRaises(ValueError):text_index({'/x/a.jpg':'cat','/y/a.jpg':'dog'})
 
     def test_correct_maps_beat_swapped_and_uniform_area(self):
         left=np.tile(np.r_[np.ones(4),np.zeros(10)],14);right=left.reshape(14,14)[:,::-1].ravel()

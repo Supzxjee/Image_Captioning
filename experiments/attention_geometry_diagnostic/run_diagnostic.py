@@ -38,11 +38,23 @@ def prepare(cfg):
     if set(legacy)!=set(names):raise ValueError('Original legacy cache missing TRAIN images.')
     save(out/'cache_schema.json',dict(bundle_keys=list(bundle),metadata=bundle.get('metadata',{}),
         first_entry_keys=list(legacy[names[0]]),first_token_shape=list(legacy[names[0]]['tokens'].shape)))
+    external={}
+    text_source=cfg.get('prompt_text_json')
+    if text_source:
+        path=Path(text_source)
+        if not path.is_file():raise FileNotFoundError('Attach the ORIGINAL prompt_cache.json used to encode legacy embeddings: '+str(path))
+        external=text_index(json.loads(path.read_text(encoding='utf-8')))
+        cfg['prompt_text_sha256']=digest(path)
+        save(out/'text_source.json',dict(path=str(path),sha256=cfg['prompt_text_sha256'],entries=len(external),
+            status='UNVERIFIED_UNTIL_SELECTED_TEXT_EMBEDDING_BINDING_PASSES'))
     tok=CLIPTokenizerFast.from_pretrained('openai/clip-vit-base-patch16',revision=CLIP_REV)
     rejects=Counter();candidates=[];text_missing=0;class_counts=Counter();missing_examples=[]
     # All eligibility decisions are metadata-only and completed before caption-model loading.
     for r in groups:
         entry=legacy[r['filename']];text=prompt_text(entry)
+        other=external.get(r['filename'])
+        if text and other and text!=other:raise ValueError('Original text sources conflict: '+r['filename'])
+        text=text or other
         if text is None:
             text_missing+=1;rejects['missing_original_prompt_text']+=1
             if len(missing_examples)<3:missing_examples.append(dict(filename=r['filename'],keys=list(entry)))
@@ -81,7 +93,7 @@ def prepare(cfg):
         weak_labels='Unique GT class instance in sealed reference-noun manifest; automatic prompt alias mapping, not human gold')
     save(out/'coverage.json',coverage)
     if not selected:
-        raise RuntimeError('No eligible images. Send review ZIP/cache_schema/coverage; do not substitute prompts or loosen policy.')
+        raise RuntimeError('No eligible images. Read coverage.json: missing_original_prompt_text requires ORIGINAL prompt_cache.json, not UPT text or guessed detections. Send review ZIP for other rejection causes.')
     # Retain only this tiny subset; preserve tensors exactly, with no re-encoding as model input.
     torch.save({r['filename']:legacy[r['filename']] for r in selected},out/'selected_legacy.pt')
     cfg.update(selected=selected,policy=POLICY,input_sha256=dict(checkpoint=A_SHA,dataset_json=DATA_SHA,
@@ -180,6 +192,9 @@ def worker(cfg):
                 maps=torch.stack([conditioned[t['positions']].mean(0) for t in r['phrases']]).cpu().numpy()
                 cls_mass=[float(cls[t['positions']].mean()) for t in r['phrases']]
             key=str(r['coco_id']);saved_maps[key]=maps
+            # Preserve the inputs needed to distinguish absent Q-region capacity from wrong prompt selection.
+            saved_maps['q_full_'+key]=q.cpu().numpy()
+            saved_maps['p_to_q_'+key]=a.cpu().numpy()
             record=dict(coco_id=r['coco_id'],filename=r['filename'],prompt=r['prompt'],phrases=r['phrases'],pairs=r['pairs'],
                 cls_mass=cls_mass,metrics=evaluate_image(maps,r['phrases'],r['pairs'],key))
             records.append(record)
