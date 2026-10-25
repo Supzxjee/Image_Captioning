@@ -1,0 +1,73 @@
+{
+  "status": "HUMAN_ASSISTED_REVIEW_COMPLETE",
+  "records": 30,
+  "reviewer_type": "human_verified_ai_assisted",
+  "manifest_sha256": "5773d99ba36e19919ff496138a13200386c1360b1649978a7142779bdf633e13",
+  "choices": {
+    "tie": 4,
+    "unclear": 4,
+    "X": 10,
+    "Y": 12
+  },
+  "agrees_with_selected_preference": 13,
+  "opposes_selected_preference": 9,
+  "ties": 4,
+  "unclear": 4,
+  "agreement_fraction": 0.43333333333333335,
+  "agreement_among_decisive": 0.5909090909090909,
+  "agrees_coco_ids": [
+    241935,
+    393125,
+    102858,
+    170221,
+    429025,
+    78410,
+    419644,
+    260951,
+    167913,
+    46720,
+    271696,
+    289410,
+    551575
+  ],
+  "opposes_coco_ids": [
+    442811,
+    57940,
+    256875,
+    16335,
+    509589,
+    302713,
+    523795,
+    326731,
+    216333
+  ],
+  "ties_coco_ids": [
+    7592,
+    229188,
+    450543,
+    395717
+  ],
+  "unclear_coco_ids": [
+    101172,
+    176778,
+    40844,
+    9018
+  ],
+  "changes_from_AI": [
+    {
+      "coco_id": 256875,
+      "AI": "unclear",
+      "human": "X"
+    }
+  ],
+  "minimum_agreement_required": 27,
+  "agreement_gate_pass": false,
+  "decision": "STOP_CURRENT_AUTOMATIC_PAIR_RECIPE",
+  "limits": [
+    "Human confirmed AI-prefilled labels; not an independent unassisted review.",
+    "Small deterministic30-pair screen, not a population label-accuracy estimate.",
+    "Ties/unclear are retained and do not become wins; denominator remains30.",
+    "No systematic-error absence is inferred from empty user notes."
+  ],
+  "review_sha256": "7e509c235c42c0623c7947a1a6e306a07765493caed8481cfc280b6acb078fd6"
+}

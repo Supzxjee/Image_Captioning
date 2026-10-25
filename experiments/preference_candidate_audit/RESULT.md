@@ -1,5 +1,7 @@
 # Candidate TRAIN2000 feasibility passes the numeric screen
 
+**Update2026-10-25:** the subsequent [human-assisted review](HUMAN_REVIEW_RESULT.md) fails the locked27/30 preference-agreement screen (13agree/9opposite/4tie/4unclear). Stop this automatic pair recipe; the numeric oracle result below is not authorization to expand or train.
+
 2026-10-25. Review SHA256 `0787edfd2a6c5b2b93c320513be0c1711b7a893181ec123329b72afccb8d4c61`.
 
 Both T4 workers completed1,000 images each with unchanged exact A. No training took place. Saved source hashes, sample order, disjoint TRAIN/val IDs, raw-to-scored candidate identity, token eligibility, sealed support labels, all selected pairs and oracle aggregation pass the independent metadata audit. On-Kaggle synthetic sampling tests passed; greedy parity and frozen-A digests are reported by both workers. Model and actual stage tensors are not included in the small ZIP.
