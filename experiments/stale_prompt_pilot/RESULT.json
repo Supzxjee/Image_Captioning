@@ -1,0 +1,159 @@
+{
+  "status": "MATCHED_AUDIT_PASS_RESEARCH_GATE_FAIL",
+  "metrics": {
+    "A": {
+      "CIDEr": 1.2055125991020814,
+      "chair": {
+        "CHAIRs": 0.052,
+        "CHAIRi": 0.032475490196078434,
+        "Recall": 0.45803873347679064
+      },
+      "counts": {
+        "images": 1000,
+        "hallucinated_captions": 52,
+        "hallucinated_mentions": 53,
+        "object_mentions": 1632,
+        "recalled_unique_objects": 1490,
+        "reference_unique_objects": 3253
+      },
+      "mean_caption_words": 10.213
+    },
+    "C": {
+      "CIDEr": 1.1861272922868575,
+      "chair": {
+        "CHAIRs": 0.055,
+        "CHAIRi": 0.034334763948497854,
+        "Recall": 0.4568090992929603
+      },
+      "counts": {
+        "images": 1000,
+        "hallucinated_captions": 55,
+        "hallucinated_mentions": 56,
+        "object_mentions": 1631,
+        "recalled_unique_objects": 1486,
+        "reference_unique_objects": 3253
+      },
+      "mean_caption_words": 10.265
+    },
+    "T": {
+      "CIDEr": 1.1782054151900916,
+      "chair": {
+        "CHAIRs": 0.044,
+        "CHAIRi": 0.028177833437695678,
+        "Recall": 0.4506609283738088
+      },
+      "counts": {
+        "images": 1000,
+        "hallucinated_captions": 44,
+        "hallucinated_mentions": 45,
+        "object_mentions": 1597,
+        "recalled_unique_objects": 1466,
+        "reference_unique_objects": 3253
+      },
+      "mean_caption_words": 10.305
+    }
+  },
+  "paired_CIDEr": {
+    "C-A": {
+      "mean": -0.01938530681522367,
+      "ci95": [
+        -0.03639476084253913,
+        -0.002480786558341789
+      ],
+      "positive_images": 117,
+      "negative_images": 164,
+      "changed_captions": 291
+    },
+    "T-A": {
+      "mean": -0.02730718391198964,
+      "ci95": [
+        -0.04859069295705612,
+        -0.0059765127590193316
+      ],
+      "positive_images": 153,
+      "negative_images": 213,
+      "changed_captions": 374
+    },
+    "T-C": {
+      "mean": -0.007921877096765968,
+      "ci95": [
+        -0.024298393900074478,
+        0.008235940210891983
+      ],
+      "positive_images": 109,
+      "negative_images": 127,
+      "changed_captions": 243
+    }
+  },
+  "gates": {
+    "T_minus_A_at_least_point01": false,
+    "T_minus_A_CI_positive": false,
+    "T_minus_C_CI_positive": false,
+    "CHAIRs_not_worse": true,
+    "CHAIRi_not_worse": true,
+    "recall_drop_at_most_point005": false
+  },
+  "CHAIR_flag_transitions": {
+    "A->T": {
+      "no_longer_flagged": 16,
+      "newly_flagged": 8,
+      "CHAIRs_delta_ci95": [
+        -0.018,
+        0.001
+      ]
+    },
+    "C->T": {
+      "no_longer_flagged": 16,
+      "newly_flagged": 5,
+      "CHAIRs_delta_ci95": [
+        -0.02,
+        -0.002
+      ]
+    }
+  },
+  "bootstrap": {
+    "unit": "paired image",
+    "resamples": 10000,
+    "seed": 42,
+    "scope": "Single-seed reused development1000; descriptive conditional uncertainty, not final held-out test."
+  },
+  "audit": {
+    "A_predictions_scores_CHAIR_identical": true,
+    "protocol_only_differences": [
+      "arm",
+      "output",
+      "stage",
+      "staging_seconds"
+    ],
+    "sources_verified_per_arm": 14,
+    "stage_SHA_equal": true,
+    "anchor_frozen_state_checks": "Both worker receipts and source/log checks passed; source cache/checkpoint bytes not in ZIP."
+  },
+  "zip_sha256": {
+    "C": "2e9d244b47a3f24b51dc0223c45ef1083168dcb9589a74c77719573043a83a24",
+    "T": "86e8e10f67e782368a5cbfdef1dd78b7d925b6cccc06bd007d11a0445fdfac1c"
+  },
+  "checkpoint_sha256": {
+    "C": "59ffdf2c04ec024140b4af33e58f194d1f2f907ce544e3335b74ecbe2fc6732b",
+    "T": "834f62818a48c81fa360925f6dfe4c4e56d7f0ca9ebc3449b17442b776be1bff"
+  },
+  "timings": {
+    "C": {
+      "staging_seconds": 3770.2670321260002,
+      "max_worker_train_end_seconds": 178.68195070799993
+    },
+    "T": {
+      "staging_seconds": 1132.471754492,
+      "max_worker_train_end_seconds": 194.21696521900003
+    }
+  },
+  "limits": [
+    "No checkpoint/HDF5 bytes in review ZIP; cannot directly verify them locally.",
+    "No post-training four-condition score probe; mechanism change unmeasured.",
+    "Both C and T below A; T-C CI crosses0, so incremental stale-loss damage is not established.",
+    "CHAIR flag improvement alone does not establish semantic alignment."
+  ],
+  "recommendation": "Retain A; do not scale/sweep/add seeds to failed recipe. Await Astra next decision; do not reject all visual-semantic alignment approaches.",
+  "local_model_execution": false,
+  "test_used": false
+}
