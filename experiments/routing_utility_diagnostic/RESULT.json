@@ -1,0 +1,243 @@
+{
+  "audit_status": "SAVED_ARTIFACT_AUDIT_PASS",
+  "zip_sha256": "34c3070226cb88c82be4a4ecbd5332ed7a4b05cb5ec83f208bec2139468ff7f0",
+  "summary": {
+    "status": "ATW_DIAGNOSTIC_COMPLETE",
+    "decision": "NOT_YET_GO",
+    "teacher": {
+      "primary_images": 137,
+      "nonintervened_images": 1,
+      "coverage_guard_pass": true,
+      "positive_teacher_signal": false,
+      "metrics": {
+        "benefit": {
+          "mean": -0.002611622287735451,
+          "ci95": [
+            -0.004846102932304898,
+            -0.00045037834257014475
+          ],
+          "n": 137,
+          "median": -0.0009063571691514394,
+          "positive": 57
+        },
+        "contrast": {
+          "mean": -0.0036062605713025114,
+          "ci95": [
+            -0.006506888759939954,
+            -0.0007487481283397898
+          ],
+          "n": 137,
+          "median": -0.001879870891571045,
+          "positive": 44
+        },
+        "selectivity": {
+          "mean": -0.0038681219961865837,
+          "ci95": [
+            -0.007652695406712092,
+            -0.00015214858700719115
+          ],
+          "n": 137,
+          "median": -0.002590689063072138,
+          "positive": 49
+        }
+      },
+      "note": "Identical primary image set for benefit/selectivity; degenerate images remain unchanged in full138 captions."
+    },
+    "metrics": {
+      "A": {
+        "CIDEr": 1.4853425858762122,
+        "chair": {
+          "CHAIRs": 0.06521739130434782,
+          "CHAIRi": 0.034129692832764506,
+          "Recall": 0.4577114427860697
+        },
+        "counts": {
+          "images": 138,
+          "hallucinated_captions": 9,
+          "hallucinated_mentions": 10,
+          "object_mentions": 293,
+          "correct_objects": 276,
+          "gt_objects": 603
+        },
+        "mean_caption_words": 10.231884057971014
+      },
+      "T": {
+        "CIDEr": 1.4873533860622787,
+        "chair": {
+          "CHAIRs": 0.07246376811594203,
+          "CHAIRi": 0.03754266211604096,
+          "Recall": 0.4560530679933665
+        },
+        "counts": {
+          "images": 138,
+          "hallucinated_captions": 10,
+          "hallucinated_mentions": 11,
+          "object_mentions": 293,
+          "correct_objects": 275,
+          "gt_objects": 603
+        },
+        "mean_caption_words": 10.217391304347826
+      },
+      "W": {
+        "CIDEr": 1.4831810953379474,
+        "chair": {
+          "CHAIRs": 0.06521739130434782,
+          "CHAIRi": 0.03436426116838488,
+          "Recall": 0.45439469320066334
+        },
+        "counts": {
+          "images": 138,
+          "hallucinated_captions": 9,
+          "hallucinated_mentions": 10,
+          "object_mentions": 291,
+          "correct_objects": 274,
+          "gt_objects": 603
+        },
+        "mean_caption_words": 10.22463768115942
+      }
+    },
+    "T_minus": {
+      "A": {
+        "mean": 0.002010800186066483,
+        "ci95": [
+          -0.003922989391066386,
+          0.008888846608535325
+        ],
+        "n": 138
+      },
+      "W": {
+        "mean": 0.004172290724331408,
+        "ci95": [
+          0.0,
+          0.012516872172994223
+        ],
+        "n": 138
+      }
+    },
+    "secondary_intervened_T_minus": {
+      "A": {
+        "mean": 0.002025477559687406,
+        "ci95": [
+          -0.003951624350125265,
+          0.00895372870056843
+        ],
+        "n": 137
+      },
+      "W": {
+        "mean": 0.004202745401151345,
+        "ci95": [
+          0.0,
+          0.012608236203454035
+        ],
+        "n": 137
+      }
+    },
+    "changed_T_vs_A": 3,
+    "nonintervention_reasons": {
+      "q_indistinguishable": 1
+    },
+    "post_fusion_norm_ratio": {
+      "median": 1.0240577962831638,
+      "min": 0.7836247561660085,
+      "max": 1.4118288881311605
+    },
+    "no_metric_tradeoff_guard": false,
+    "trained": false,
+    "test_used": false,
+    "limits": [
+      "GT-informed oracle control, not deployable inference or validated semantic Q identities.",
+      "Reused138 restricted TRAIN images; screening only, not confirmed held-out caption gain.",
+      "Positive CIDEr mean gate is not a significance claim; teacher benefit/selectivity require image-bootstrap95 lower>0.",
+      "50primary images/50%active coverage and no length/recall decrease are conservative budget guards, not calibrated statistical power.",
+      "Nonintervened images remain A in all138 caption metrics; do not promote changed-caption-only win rates.",
+      "Pre-fusion norm matching does not guarantee matched post-gate/LN nuisance; inspect reported ratios.",
+      "A negative frozen small correction does not rule out decoder co-adaptation, all alignment, or larger interventions."
+    ]
+  },
+  "raw_receiver_box_mass_increase": {
+    "mean": 0.022328383829876983,
+    "min": 0.0022796525934083434,
+    "max": 0.05721190174114377
+  },
+  "caption_changes": [
+    {
+      "image_id": 46460,
+      "coco_id": 448409,
+      "receiver": "couch",
+      "donor": "tv",
+      "captions": {
+        "A": "a living room with a couch, a desk, and a television.",
+        "T": "a living room with a desk and a tv",
+        "W": "a living room with a desk and a tv"
+      },
+      "CIDEr": {
+        "A": 1.4801112715584348,
+        "T": 1.813753226566496,
+        "W": 1.813753226566496
+      },
+      "contrasts": {
+        "benefit": -0.05327796936035156,
+        "contrast": -0.006318092346191406,
+        "selectivity": -0.004968911409378052
+      }
+    },
+    {
+      "image_id": 80142,
+      "coco_id": 398225,
+      "receiver": "couch",
+      "donor": "bed",
+      "captions": {
+        "A": "a bedroom with a bed, couch and a dresser",
+        "T": "a bedroom with a bed, couch and a chair.",
+        "W": "a bed sitting in a bedroom next to a window."
+      },
+      "CIDEr": {
+        "A": 1.5849645549230233,
+        "T": 1.7714235289102742,
+        "W": 1.19564740895254
+      },
+      "contrasts": {
+        "benefit": 0.03262034058570862,
+        "contrast": -0.011623412370681763,
+        "selectivity": -0.016133528947830156
+      }
+    },
+    {
+      "image_id": 104863,
+      "coco_id": 131485,
+      "receiver": "person",
+      "donor": "kite",
+      "captions": {
+        "A": "a boy on the beach flying a kite.",
+        "T": "a boy flying a kite on the beach",
+        "W": "a boy flying a kite on the beach"
+      },
+      "CIDEr": {
+        "A": 3.819632870312325,
+        "T": 3.5770223669941874,
+        "W": 3.5770223669941874
+      },
+      "contrasts": {
+        "benefit": -0.0009063571691514394,
+        "contrast": -0.003538262844085649,
+        "selectivity": -0.002590689063072138
+      }
+    }
+  ],
+  "worker_seconds": [
+    72.74288350200004,
+    73.04675046599993
+  ],
+  "evidence": [
+    "All receipt payload and embedded source hashes verified.",
+    "Worker coverage/frozen tensor identity/zero parity supported by source-checked receipts.",
+    "Saved teacher contrasts, primary common cohort, paired bootstrap and CHAIR counts independently reaggregated.",
+    "Positive raw mass increase, <=10% convex weights and matched pre-fusion norms checked for all137 interventions."
+  ],
+  "limits": [
+    "No local model execution; actual before/after memory tensors not in ZIP.",
+    "CIDEr values replayed/reaggregated, not rescored with Java/PTB locally.",
+    "CHAIR word lists reaggregated, not rerun from source captions locally.",
+    "Frozen10%GT-informed Q-mass intervention on restricted reused TRAIN; not a test of all trainable alignment methods."
+  ]
+}
