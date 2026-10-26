@@ -9,7 +9,8 @@ import subprocess
 HERE=Path(__file__).resolve().parent;ROOT=HERE.parents[1]
 spec=importlib.util.spec_from_file_location('helpers',ROOT/'experiments/upt_hidden_pair/make_notebooks.py')
 nb=importlib.util.module_from_spec(spec);spec.loader.exec_module(nb)
-nb.COMMIT='aadedbc'
+nb.COMMIT='aadedbcc199b9ebaad44f4b0fff0b6fa7d6a156b'
+assert len(nb.COMMIT)==40 and all(c in '0123456789abcdef' for c in nb.COMMIT), 'Fetch requires the full pinned commit SHA.'
 
 
 def main():

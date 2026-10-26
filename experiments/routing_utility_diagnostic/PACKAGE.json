@@ -1,7 +1,7 @@
 {
   "status": "PREPARED_UNEXECUTED",
-  "notebook_bytes": 198509,
-  "notebook_sha256": "1b559d8f32d3f8c11bb21413d4559813a250ea7dce9b89b21e826ad2d5cb834a",
+  "notebook_bytes": 198542,
+  "notebook_sha256": "4d250ccce725f57e79a2ac5741ef499046056288be5a52f2e053516a092681b1",
   "cohort_sha256": "b2263515aff870a6247bd97ff41d8c97e924dfadeb506076c5f782bfde197e1c",
   "embedded_sha256": {
     "utility_data.py": "0e6dac99d8b60ced50ca36392dd3c63ec9f73429de3249faeea31fb58903596f",

@@ -7,7 +7,8 @@
   "hashes": "PASS",
   "cohort_images": 138,
   "distinct_Q_candidates": 137,
-  "notebook_bytes": 198509,
+  "notebook_bytes": 198542,
   "local_model_execution": false,
-  "kaggle_tensor_parity_and_actual_metrics": "PENDING_USER_RUN"
+  "kaggle_tensor_parity_and_actual_metrics": "PENDING_USER_RUN",
+  "bootstrap_full_sha_check": "PASS"
 }
