@@ -37,6 +37,9 @@ class Checks(unittest.TestCase):
         self.assertEqual(s['factual_prompt_boost'],1)
         self.assertAlmostEqual(s['stale_hinge'],.9)
         self.assertEqual(s['visual_contrast_original'],1)
+        self.assertEqual(s['prompt_visual_interaction'],0)
+        different=contrast_values(-1,-3,-4,-5)
+        self.assertEqual(different['prompt_visual_interaction'],1)
 
     def test_reference_positions_follow_whitespace_vocab_not_char_count(self):
         aliases=[(('cat',),'cat'),(('dog',),'dog')];vocab={'dog.':4,'dog':5,'cat,dog':6,'cat-dog':7}

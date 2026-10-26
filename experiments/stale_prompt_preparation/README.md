@@ -75,3 +75,5 @@ Known risks: masking exposes shape or removes context, annotations miss instance
 neutral text changes grammar/sequence length or retains indirect clues, model learns
 mask-color detection/global noun suppression/prompt abandonment. This preparation
 does not establish a new visual-semantic alignment method or improved captions.
+
+Review Astra: PROCEED preparation/profile only. `four_condition_interpretation.json` reports per-image factual/occluded prompt boost, their interaction, and clipped absolute alias probabilities; summary.json aggregates these. No additional model forward is required. Masks may preserve recognizable silhouette and scores miss words outside the locked alias set.

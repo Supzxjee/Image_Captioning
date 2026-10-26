@@ -8,7 +8,9 @@
   "no_optimizer_step_ast": "PASS",
   "local_model_execution": false,
   "actual_masks_clip_parity_and_cost_profile": "PENDING_KAGGLE",
-  "notebook_bytes": 47235,
+  "notebook_bytes": 47583,
   "full_pilot_run": false,
-  "early_ten_batch_cost_guard": true
+  "early_ten_batch_cost_guard": true,
+  "astra_static_review": "PROCEED_PREPARATION_PROFILE_ONLY",
+  "interaction_and_absolute_probabilities": "EXPORTED_FROM_EXISTING_SCORES"
 }

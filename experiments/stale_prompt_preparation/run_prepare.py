@@ -240,7 +240,12 @@ def finish(cfg):
     if {r['coco_id'] for r in scores}!={r['coco_id'] for r in cfg['rows'][:128]}:raise ValueError('Fixed score panel changed.')
     if profiles[0]['arms']!=profiles[1]['arms']:raise ValueError('Rank profiles differ.')
     score_summary={k:dict(mean=float(np.mean([r[k] for r in scores])),median=float(np.median([r[k] for r in scores])),
-        positive=sum(r[k]>0 for r in scores)) for k in ('factual_prompt_boost','occluded_prompt_boost','visual_contrast_original','visual_contrast_neutral','stale_hinge')}
+        positive=sum(r[k]>0 for r in scores)) for k in ('factual_prompt_boost','occluded_prompt_boost','prompt_visual_interaction','visual_contrast_original','visual_contrast_neutral','stale_hinge')}
+    absolute_probabilities={k:dict(mean=float(np.mean(np.exp([r['scores'][k] for r in scores]))),
+        quantiles=np.quantile(np.exp([r['scores'][k] for r in scores]),[0,.25,.5,.75,1]).tolist()) for k in ('11','10','01','00')}
+    save(out/'four_condition_interpretation.json',[dict(coco_id=r['coco_id'],target=r['target'],
+        factual_prompt_boost=r['factual_prompt_boost'],occluded_prompt_boost=r['occluded_prompt_boost'],
+        prompt_visual_interaction=r['prompt_visual_interaction'],class_probabilities={k:float(np.exp(v)) for k,v in r['scores'].items()}) for r in scores])
     by_id={r['coco_id']:r for r in cfg['rows']};strata={}
     for s in scores:
         r=by_id[s['coco_id']];area=r['mask_fraction'];size='small' if area<.05 else 'medium' if area<.2 else 'large'
@@ -257,7 +262,9 @@ def finish(cfg):
         target_classes=dict(Counter(r['target'] for r in cfg['rows'])),
         mask_fraction=dict(min=min(r['mask_fraction'] for r in cfg['rows']),max=max(r['mask_fraction'] for r in cfg['rows']),mean=float(np.mean([r['mask_fraction'] for r in cfg['rows']]))),
         costs_within_proposed_budget=costs_ok,metadata_and_cache_seconds=prep,benchmark=profiles[0]['arms'],
-        frozen_A_four_condition_scores=score_summary,stale_boost_prevalence=dict(images=len(scores),active=int((boost>.1).sum()),fraction_above_point1=float((boost>.1).mean()),
+        frozen_A_four_condition_scores=score_summary,absolute_class_probabilities=absolute_probabilities,
+        score_definition='s is clipped log probability of the locked alias set; interaction=(s11-s10)-(s01-s00). Exp(s) inherits clipping; it is not probability of every possible class wording.',
+        stale_boost_prevalence=dict(images=len(scores),active=int((boost>.1).sum()),fraction_above_point1=float((boost>.1).mean()),
             quantiles=np.quantile(boost,[0,.25,.5,.75,1]).tolist(),strata=prevalence),cache_bytes=sum(r['bytes'] for r in ranks),
         forward_backward_profile_batches=50,optimizer_steps=0,full_pilot_run=False,saved_checkpoint=False,
         interpretation='No scientific GO from score summaries or cost gate. Manual mask/text panel and Argon/Astra critique remain; no C/T pilot automatically starts.',

@@ -93,5 +93,6 @@ def union_mask(annotations,height,width,decode):
 def contrast_values(s11,s10,s01,s00):
     # Diagnostic-only scalars; benchmark loss implements the one-sided stop-gradient separately.
     return dict(factual_prompt_boost=s11-s10,occluded_prompt_boost=s01-s00,
+        prompt_visual_interaction=(s11-s10)-(s01-s00),
         visual_contrast_original=s11-s01,visual_contrast_neutral=s10-s00,
         stale_hinge=max(0.,s01-s00-POLICY['loss']['stale_margin']))

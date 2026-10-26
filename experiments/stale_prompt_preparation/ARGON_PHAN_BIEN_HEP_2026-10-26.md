@@ -147,3 +147,20 @@ Nếu không đọc được full method của prior, nói rõ mới đọc abst
 Không bịa conference/quartile/công thức. Không mặc định phải chấp thuận kế hoạch của
 Astra; cũng không bác bỏ cho có. Trả lời vào cơ chế đang xét, không quay lại brainstorm
 mười hướng. Kết thúc bằng việc đầu tiên cụ thể nên làm trước khi khóa C/T pilot.
+
+
+## Đồng bộ sau review triển khai của Astra
+
+Main CE và output KL dùng đủ năm caption mỗi ảnh, chuẩn hóa theo tổng valid tokens
+trên hai GPU (global-token mean). Auxiliary dùng một reference/prefix đã khóa.
+Retained-window policy ở mục2 là bắt buộc: P0 không được lộ suffix ngoài cửa sổ P1.
+
+Hai phản ví dụ cần xét: (1) silhouette sau fill vẫn cho biết đó là người/đối tượng,
+nên COCO mask không cung cấp nhãn bắt buộc xác suất class phải giảm; (2) mô hình đổi
+sang từ ngoài alias set, khiến điểm class giảm mà nội dung caption không đổi.
+Không diễn giải giảm alias probability thành giảm hallucination nếu chưa kiểm caption.
+
+Bộ chuẩn bị báo b1=s11-s10, b0=s01-s00, interaction=b1-b0 theo ảnh và exp(s)
+cho cả bốn điều kiện. exp(s) kế thừa clipping [1e-8,1-1e-8], chỉ bao phủ alias set đã khóa.
+Các phép này dùng lại bốn score có sẵn, không thêm forward hay chọn mẫu theo score.
+Đây là diagnostic; interaction dương hoặc cost gate đạt không tự động duyệt train.
