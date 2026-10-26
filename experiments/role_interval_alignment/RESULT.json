@@ -1,0 +1,207 @@
+{
+  "zip_sha256": "6e0133f9f2de981fc7928ffd02146844f206ae43374354cb4ef50b13e4ca9781",
+  "technical_audit": "PASS: payload/source/protocol/rank/selection/parser-translation/interval replay",
+  "receipt_payload_hashes_checked": 41,
+  "runtime_sources_checked": 9,
+  "images": 128,
+  "active_pairs": 6,
+  "active_required": 16,
+  "active_fraction": 0.046875,
+  "operative_pairs": 8,
+  "operative_required": 8,
+  "interval_operates": 8,
+  "binding_operates": 0,
+  "search_capped_pairs": 0,
+  "parse_counts": {
+    "out_of_scope": 107,
+    "opaque": 128,
+    "graph": 21
+  },
+  "opaque_reasons": {
+    "potential_role_like_spatial_phrase_not_equated_to_action": 91,
+    "unresolved_subject": 5,
+    "unknown_entity_or_pronoun": 13,
+    "mixed_unhandled_on_phrase": 4,
+    "plural_cardinality_not_modeled": 7,
+    "mixed_unhandled_role_like_phrase": 4,
+    "missing_or_ambiguous_target": 2,
+    "coordinated_subject_cardinality": 1,
+    "nonperson_subject": 1
+  },
+  "unit_statuses": {
+    "unknown": 133,
+    "refuted": 8,
+    "supported": 7
+  },
+  "explicit_graph_edge_counts": {
+    "1": 21
+  },
+  "multi_person_scenes": 67,
+  "official_vcoco_train_sha256": "2267afe7adc0a6c3e8ac90fb35f6d3a5bd5cd3c7edebf0622d0cbb7a67fddf19",
+  "ontology_counterexamples": [
+    {
+      "coco_id": 420711,
+      "actor_id": 459204,
+      "object_id": 642762,
+      "object_class": "skateboard",
+      "official_action": "skateboard",
+      "official_label": 1,
+      "official_ride_label": 0
+    },
+    {
+      "coco_id": 280084,
+      "actor_id": 1202304,
+      "object_id": 619023,
+      "object_class": "snowboard",
+      "official_action": "snowboard",
+      "official_label": 1,
+      "official_ride_label": 0
+    },
+    {
+      "coco_id": 24446,
+      "actor_id": 2001124,
+      "object_id": 642333,
+      "object_class": "skateboard",
+      "official_action": "skateboard",
+      "official_label": 1,
+      "official_ride_label": 0
+    },
+    {
+      "coco_id": 354145,
+      "actor_id": 421454,
+      "object_id": 618632,
+      "object_class": "snowboard",
+      "official_action": "snowboard",
+      "official_label": 1,
+      "official_ride_label": 0
+    },
+    {
+      "coco_id": 236141,
+      "actor_id": 1222554,
+      "object_id": 619846,
+      "object_class": "snowboard",
+      "official_action": "snowboard",
+      "official_label": 1,
+      "official_ride_label": 0
+    },
+    {
+      "coco_id": 577980,
+      "actor_id": 514291,
+      "object_id": 2202734,
+      "object_class": "skis",
+      "official_action": "ski",
+      "official_label": 1,
+      "official_ride_label": 0
+    },
+    {
+      "coco_id": 550453,
+      "actor_id": 515307,
+      "object_id": 642161,
+      "object_class": "skateboard",
+      "official_action": "skateboard",
+      "official_label": 1,
+      "official_ride_label": 0
+    },
+    {
+      "coco_id": 414609,
+      "actor_id": 434998,
+      "object_id": 640059,
+      "object_class": "skateboard",
+      "official_action": "skateboard",
+      "official_label": 1,
+      "official_ride_label": 0
+    }
+  ],
+  "positive_advantage_ids": [
+    24446,
+    236141,
+    577980,
+    414609
+  ],
+  "negative_advantage_ids": [
+    142380,
+    553100
+  ],
+  "all_refuted_units": [
+    {
+      "coco_id": 420711,
+      "greedy": "a man riding a skateboard down a street.",
+      "sample": "a young man posing holding onto his skateboard across the sidewalk.",
+      "projected_categories": [
+        "person",
+        "skateboard"
+      ]
+    },
+    {
+      "coco_id": 280084,
+      "greedy": "a person riding a snowboard down a snow covered slope.",
+      "sample": "a man is stir up on a snowboard",
+      "projected_categories": [
+        "person",
+        "snowboard"
+      ]
+    },
+    {
+      "coco_id": 24446,
+      "greedy": "a man riding a skateboard down a street.",
+      "sample": "black at the skateboard in the middle of a street with parked cars.",
+      "projected_categories": [
+        "person",
+        "skateboard"
+      ]
+    },
+    {
+      "coco_id": 354145,
+      "greedy": "a man riding a snowboard down a snow covered slope.",
+      "sample": "a person snowboards down a snowy hill on a snowy day.",
+      "projected_categories": [
+        "person",
+        "snowboard"
+      ]
+    },
+    {
+      "coco_id": 236141,
+      "greedy": "a man riding a snowboard down a snow covered slope.",
+      "sample": "a skier is almost completely covered in snow.",
+      "projected_categories": [
+        "person",
+        "snowboard"
+      ]
+    },
+    {
+      "coco_id": 577980,
+      "greedy": "a man riding skis down a snow covered slope.",
+      "sample": "a man is driving through the snow attached to skis.",
+      "projected_categories": [
+        "person",
+        "skis"
+      ]
+    },
+    {
+      "coco_id": 550453,
+      "greedy": "a man riding a skateboard down a sidewalk.",
+      "sample": "a man on a skate board rides his own <unk>",
+      "projected_categories": [
+        "person",
+        "skateboard"
+      ]
+    },
+    {
+      "coco_id": 414609,
+      "greedy": "a man riding a skateboard up the side of a ramp.",
+      "sample": "black and white photo of a skateboarder doing a trick",
+      "projected_categories": [
+        "person",
+        "skateboard"
+      ]
+    }
+  ],
+  "decision": "NO_GO_CURRENT_RECIPE",
+  "training": false,
+  "human_audit_needed_to_decide_current_gate": false,
+  "explanation": "Fails prespecified active density. Additionally all 8 refuted role units concern ride+skateboard/snowboard/skis; official ride=0 is not automatically English riding=false. Do not use these as caption error labels.",
+  "source_images_human_checked": false,
+  "caption_quality_metrics_computed": false,
+  "raw_stage_and_checkpoint_directly_verified": false,
+  "seconds": 151.245032787323
+}

@@ -1,5 +1,10 @@
 # Role-interval feasibility — user-run only
 
+**Kết quả lượt chạy đầu: NO-GO cho cấu hình hiện tại.** Active6/128<16 và phát hiện
+ontology mismatch khi dùng ride=0 để phủ định riding+skateboard/snowboard/skis.
+Xem RESULT.md. Không dùng scorer hiện tại làm reward training; notebook dưới đây
+được giữ để tái lập lượt feasibility, không là đề nghị chạy/train tiếp.
+
 Đây là bước kiểm tra liệu tín hiệu ngữ nghĩa có đủ tin cậy và đủ dày để thử học.
 **Không có training, optimizer, checkpoint mới hoặc kết quả caption mới trong gói này.**
 

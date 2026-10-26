@@ -7,3 +7,4 @@ __pycache__/
 .test-deps/
 *.pt.partial
 vlm_outputs/
+experiments/role_interval_alignment/review/
