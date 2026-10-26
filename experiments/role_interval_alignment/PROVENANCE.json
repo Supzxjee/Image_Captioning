@@ -1,0 +1,13 @@
+{
+  "status": "METHOD_CANDIDATE_FOR_FEASIBILITY_NOT_TRAIN_APPROVAL",
+  "date": "2026-10-26",
+  "astra_thread": "01a15544-6a7a-7903-a6e1-23e7b9f6caa6",
+  "source": "C:\\Users\\leduc\\OneDrive\\Ta\u0300i li\u00ea\u0323u\\ChatGPT\\\u0110\u1ec1 c\u01b0\u01a1ng\\ASTRA_phuong_phap_thuc_nghiem_sau_CT_2026-10-26.md",
+  "source_sha256": "7b4aa1a87427e8e629367e83e5b6c1375799ea7de13798a03d4ec5d8cde912a9",
+  "specification": "Direct sample-greedy interval advantage; supersedes separate r_safe subtraction.",
+  "local_model_execution": false,
+  "new_GPU_run": false,
+  "novelty": "UNVERIFIED",
+  "caption_gain": "UNMEASURED",
+  "argon_prompt_JSON_audit": "PENDING_NOT_AVAILABLE_LOCALLY"
+}
