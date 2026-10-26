@@ -1,0 +1,34 @@
+{
+  "status": "PREPARED_UNEXECUTED",
+  "notebooks": {
+    "C": {
+      "file": "STALE_PROMPT_C_2GPU.ipynb",
+      "bytes": 53337,
+      "sha256": "af042b5fbf2a9ff7a9759a2458c22c18454c1dec0134c706be595e48c776dbb9"
+    },
+    "T": {
+      "file": "STALE_PROMPT_T_2GPU.ipynb",
+      "bytes": 53337,
+      "sha256": "0f9062e71aa9fb9324d04967096ec1f6b9c8b1417de6a61af348e0946298b7b5"
+    }
+  },
+  "project_commit": "335b136d335fa92ae9be3e4b86772044b770e7f2",
+  "sources_sha256": {
+    "run_stale.py": "c8572f5406d544de85e6a1920e1e790f690f11bc741160cf3f0815a73c430154",
+    "pilot_contract.py": "21b670f79e6614eed9bb26ac502e6fb4ba08163546bf9ad91b5d604128136094",
+    "test_contract.py": "3709487515c6cce01cccc38880b85867c4d582110b8f04b5d6cb6d884fcb598d",
+    "test_pilot_ddp.py": "c852e7a525eac20465b95aa0f58c5afdbc334b8fdffb3de2537bd42b28e538de",
+    "profile_stale.py": "08ed37d60dda8f89a8671fcaed7dd749a10b33baf5ea1a126ee0457bf33dc1c8",
+    "stale_data.py": "21f4962a51380b77d7c98bf6f7ecc89386b30eecb46a4d5f80fcc49e0a8fdcfe",
+    "test_stale_data.py": "54dede035da17d24bdcba5a063ffabd88efff2b304dd9e18a704753925fb2c5f",
+    "test_stale_runtime.py": "a43b98378411af1853121d6207817f8b5cb97d0f4e612914a66653b202f361c3",
+    "run_prepare.py": "46b3e9cb6f4e5d1e4790b13dbdb976117898dc8610488fb1b6c7fa0d7291d3f8",
+    "run_diagnostic.py": "382653c64ecc7047f908ae717d5d963efa177767ad8db4774093207e286ff731",
+    "diagnostic_data.py": "15c0eab863ad6500436d25372e34e3395266774838db39b2bdb8e402ff150312",
+    "hidden_data.py": "9285d02c5aa7660a5656654e2efe034941bc24d6f7c300958c06fcca6f0d43c7",
+    "hidden_metric_smoke.py": "8cf64c56b169cdd2407fdeb668408a80d947578632154405c47c7040558a698b",
+    "pilot_data.py": "93fa39b1de581d774417840be4d5e0b2b8d52bbf9ee53b479adad2c60a45d3d7"
+  },
+  "local_model_execution": false,
+  "independent_Argon_review": "pending"
+}

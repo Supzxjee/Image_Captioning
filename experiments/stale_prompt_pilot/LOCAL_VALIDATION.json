@@ -1,0 +1,10 @@
+{
+  "status": "MODEL_FREE_CHECKS_PASS",
+  "cpu_contract_tests": 4,
+  "runtime_ast": "PASS",
+  "notebook_ast_empty_outputs_and_hashes": "PASS",
+  "local_model_execution": false,
+  "GPU_DDP_optimizer_and_metric_smoke": "PENDING_USER_KAGGLE",
+  "Astra_implementation_review": "PENDING",
+  "full_pilot_run": false
+}
