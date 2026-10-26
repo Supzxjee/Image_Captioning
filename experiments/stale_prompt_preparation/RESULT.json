@@ -1,0 +1,467 @@
+{
+  "status": "PREPARATION_COMPLETE_SCIENTIFIC_DECISION_PENDING",
+  "zip_sha256": "c0fc32e3cebc336600e539b34a39250b0547d09e082e1a985829efc2c80ec565",
+  "images": 2000,
+  "score_images": 128,
+  "classes": 58,
+  "present_payload_hashes_verified": 11,
+  "panel_hashes_verified": 48,
+  "source_hashes_verified": 10,
+  "omitted_payloads_not_directly_verified": [
+    "aux_rank0.h5",
+    "aux_rank1.h5",
+    "benchmark_inputs.h5"
+  ],
+  "summary": {
+    "status": "PREPARATION_COMPLETE_WAIT_PANEL_AND_ARGON",
+    "images": 2000,
+    "score_images": 128,
+    "target_classes": {
+      "keyboard": 10,
+      "cow": 26,
+      "person": 726,
+      "surfboard": 16,
+      "boat": 25,
+      "suitcase": 13,
+      "vase": 26,
+      "bed": 36,
+      "laptop": 28,
+      "donut": 17,
+      "car": 47,
+      "truck": 24,
+      "refrigerator": 17,
+      "toilet": 49,
+      "motorcycle": 33,
+      "umbrella": 16,
+      "couch": 21,
+      "elephant": 31,
+      "dog": 63,
+      "cat": 57,
+      "bench": 35,
+      "pizza": 35,
+      "chair": 35,
+      "airplane": 46,
+      "bird": 30,
+      "banana": 17,
+      "scissors": 10,
+      "sheep": 29,
+      "clock": 33,
+      "skateboard": 24,
+      "cell phone": 17,
+      "bus": 35,
+      "knife": 4,
+      "horse": 45,
+      "giraffe": 55,
+      "spoon": 2,
+      "carrot": 15,
+      "cake": 24,
+      "bicycle": 19,
+      "oven": 8,
+      "train": 7,
+      "kite": 13,
+      "tv": 18,
+      "cup": 13,
+      "zebra": 31,
+      "fork": 6,
+      "sandwich": 17,
+      "bowl": 19,
+      "skis": 15,
+      "microwave": 10,
+      "toothbrush": 3,
+      "apple": 5,
+      "snowboard": 9,
+      "bottle": 11,
+      "tennis racket": 6,
+      "broccoli": 11,
+      "frisbee": 6,
+      "handbag": 1
+    },
+    "mask_fraction": {
+      "min": 0.010074300699300699,
+      "max": 0.39936329039812646,
+      "mean": 0.13702385013330326
+    },
+    "costs_within_proposed_budget": true,
+    "metadata_and_cache_seconds": 1724.8554960989998,
+    "benchmark": {
+      "C": {
+        "forward_backward_batches": 50,
+        "aux_batches": 10,
+        "optimizer_steps": 0,
+        "forward_backward_seconds": 6.839674386000297,
+        "greedy64_seconds": 0.4350808159997541,
+        "peak_allocated_bytes": 924477952,
+        "trainable_parameters": 28906256,
+        "estimated_AdamW_state_bytes": 231250048,
+        "estimated_peak_with_AdamW_bytes": 1155728000,
+        "projected_arm_seconds": 386.6849961000054,
+        "within_2h": true,
+        "estimated_memory_within_T4_headroom": true,
+        "projection": "1.5*(50-forward/backward time*25+64image greedy time*1000/64)+120sec reserve. Optimizer latency unmeasured; memory states estimated, not allocated; not pilot authorization or guaranteed ETA."
+      },
+      "T": {
+        "forward_backward_batches": 50,
+        "aux_batches": 10,
+        "optimizer_steps": 0,
+        "forward_backward_seconds": 6.277922342000238,
+        "greedy64_seconds": 0.3483040699998128,
+        "peak_allocated_bytes": 927798272,
+        "trainable_parameters": 28906256,
+        "estimated_AdamW_state_bytes": 231250048,
+        "estimated_peak_with_AdamW_bytes": 1159048320,
+        "projected_arm_seconds": 363.58546446562957,
+        "within_2h": true,
+        "estimated_memory_within_T4_headroom": true,
+        "projection": "1.5*(50-forward/backward time*25+64image greedy time*1000/64)+120sec reserve. Optimizer latency unmeasured; memory states estimated, not allocated; not pilot authorization or guaranteed ETA."
+      }
+    },
+    "frozen_A_four_condition_scores": {
+      "factual_prompt_boost": {
+        "mean": 0.7487228557292838,
+        "median": 0.3486933708190918,
+        "positive": 105
+      },
+      "occluded_prompt_boost": {
+        "mean": 1.6470031716889935,
+        "median": 1.25332772731781,
+        "positive": 122
+      },
+      "prompt_visual_interaction": {
+        "mean": -0.8982803159597097,
+        "median": -0.4316805303096771,
+        "positive": 16
+      },
+      "visual_contrast_original": {
+        "mean": 0.5940098279388621,
+        "median": 0.16053638607263565,
+        "positive": 94
+      },
+      "visual_contrast_neutral": {
+        "mean": 1.4922901438985718,
+        "median": 0.8638124093413353,
+        "positive": 106
+      },
+      "stale_hinge": {
+        "mean": 1.5561285192437935,
+        "median": 1.15332772731781,
+        "positive": 113
+      }
+    },
+    "absolute_class_probabilities": {
+      "11": {
+        "mean": 0.6096546976799256,
+        "quantiles": [
+          0.005555295541697227,
+          0.37623785217778977,
+          0.6999640088244254,
+          0.852230291566353,
+          0.9948110409169615
+        ]
+      },
+      "10": {
+        "mean": 0.4110951294336195,
+        "quantiles": [
+          0.00026507987697264954,
+          0.10328898541775844,
+          0.31241237284095513,
+          0.7238078819755503,
+          0.9866028510902363
+        ]
+      },
+      "01": {
+        "mean": 0.4779963044796013,
+        "quantiles": [
+          0.0009616024679885203,
+          0.16030187119854528,
+          0.4758635877346166,
+          0.7653923751051652,
+          0.9931898422149045
+        ]
+      },
+      "00": {
+        "mean": 0.2187785016566131,
+        "quantiles": [
+          7.089042353077245e-06,
+          0.01086985584463455,
+          0.06307671586086443,
+          0.3221217286208792,
+          0.9429833751061844
+        ]
+      }
+    },
+    "score_definition": "s is clipped log probability of the locked alias set; interaction=(s11-s10)-(s01-s00). Exp(s) inherits clipping; it is not probability of every possible class wording.",
+    "stale_boost_prevalence": {
+      "images": 128,
+      "active": 113,
+      "fraction_above_point1": 0.8828125,
+      "quantiles": [
+        -0.10475265979766846,
+        0.38189227506518364,
+        1.25332772731781,
+        2.532428875565529,
+        6.442351818084717
+      ],
+      "strata": {
+        "class:keyboard": {
+          "images": 1,
+          "mean": 0.9157293140888214,
+          "fraction_above_margin": 1.0
+        },
+        "mask_size:small": {
+          "images": 32,
+          "mean": 1.3714120559743606,
+          "fraction_above_margin": 0.8125
+        },
+        "class:person": {
+          "images": 38,
+          "mean": 0.5521889903435582,
+          "fraction_above_margin": 0.8157894736842105
+        },
+        "mask_size:medium": {
+          "images": 61,
+          "mean": 1.7734030176748017,
+          "fraction_above_margin": 0.8852459016393442
+        },
+        "class:boat": {
+          "images": 2,
+          "mean": 1.772950615733862,
+          "fraction_above_margin": 1.0
+        },
+        "class:vase": {
+          "images": 2,
+          "mean": 1.4822039157152176,
+          "fraction_above_margin": 1.0
+        },
+        "class:donut": {
+          "images": 1,
+          "mean": 0.3819805383682251,
+          "fraction_above_margin": 1.0
+        },
+        "class:truck": {
+          "images": 2,
+          "mean": 3.517095312476158,
+          "fraction_above_margin": 1.0
+        },
+        "mask_size:large": {
+          "images": 35,
+          "mean": 1.6786753173385347,
+          "fraction_above_margin": 0.9428571428571428
+        },
+        "class:refrigerator": {
+          "images": 3,
+          "mean": 2.1802149017651877,
+          "fraction_above_margin": 1.0
+        },
+        "class:motorcycle": {
+          "images": 3,
+          "mean": 2.520207017660141,
+          "fraction_above_margin": 1.0
+        },
+        "class:couch": {
+          "images": 3,
+          "mean": 1.7203518946965535,
+          "fraction_above_margin": 1.0
+        },
+        "class:bed": {
+          "images": 6,
+          "mean": 1.75773690144221,
+          "fraction_above_margin": 1.0
+        },
+        "class:dog": {
+          "images": 3,
+          "mean": 1.7115478689471881,
+          "fraction_above_margin": 1.0
+        },
+        "class:pizza": {
+          "images": 3,
+          "mean": 3.641743818918864,
+          "fraction_above_margin": 1.0
+        },
+        "class:cat": {
+          "images": 5,
+          "mean": 2.1121208161115645,
+          "fraction_above_margin": 1.0
+        },
+        "class:elephant": {
+          "images": 4,
+          "mean": 2.37319412920624,
+          "fraction_above_margin": 1.0
+        },
+        "class:banana": {
+          "images": 1,
+          "mean": 1.9370638132095337,
+          "fraction_above_margin": 1.0
+        },
+        "class:airplane": {
+          "images": 6,
+          "mean": 1.1704674859841664,
+          "fraction_above_margin": 0.5
+        },
+        "class:sheep": {
+          "images": 3,
+          "mean": 2.6521963079770408,
+          "fraction_above_margin": 1.0
+        },
+        "class:clock": {
+          "images": 2,
+          "mean": 1.6939408779144287,
+          "fraction_above_margin": 1.0
+        },
+        "class:skateboard": {
+          "images": 2,
+          "mean": 2.722275398671627,
+          "fraction_above_margin": 0.5
+        },
+        "class:bus": {
+          "images": 1,
+          "mean": 4.144549369812012,
+          "fraction_above_margin": 1.0
+        },
+        "class:scissors": {
+          "images": 3,
+          "mean": 2.9289604971806207,
+          "fraction_above_margin": 1.0
+        },
+        "class:knife": {
+          "images": 1,
+          "mean": 1.18007792532444,
+          "fraction_above_margin": 1.0
+        },
+        "class:horse": {
+          "images": 4,
+          "mean": 1.8683451935648918,
+          "fraction_above_margin": 1.0
+        },
+        "class:bench": {
+          "images": 3,
+          "mean": 1.1801249831914902,
+          "fraction_above_margin": 1.0
+        },
+        "class:giraffe": {
+          "images": 2,
+          "mean": 5.075063794851303,
+          "fraction_above_margin": 1.0
+        },
+        "class:bird": {
+          "images": 2,
+          "mean": 3.2852443009614944,
+          "fraction_above_margin": 1.0
+        },
+        "class:bicycle": {
+          "images": 1,
+          "mean": 6.442351818084717,
+          "fraction_above_margin": 1.0
+        },
+        "class:kite": {
+          "images": 2,
+          "mean": 0.07518674433231354,
+          "fraction_above_margin": 0.5
+        },
+        "class:cow": {
+          "images": 1,
+          "mean": 4.031411230564117,
+          "fraction_above_margin": 1.0
+        },
+        "class:surfboard": {
+          "images": 1,
+          "mean": 0.07138651609420776,
+          "fraction_above_margin": 0.0
+        },
+        "class:suitcase": {
+          "images": 1,
+          "mean": -0.03134843707084656,
+          "fraction_above_margin": 0.0
+        },
+        "class:laptop": {
+          "images": 4,
+          "mean": 2.876558303833008,
+          "fraction_above_margin": 1.0
+        },
+        "class:car": {
+          "images": 3,
+          "mean": 1.2970634301503499,
+          "fraction_above_margin": 1.0
+        },
+        "class:toilet": {
+          "images": 1,
+          "mean": 0.7750956490635872,
+          "fraction_above_margin": 1.0
+        },
+        "class:umbrella": {
+          "images": 1,
+          "mean": 3.6868905425071716,
+          "fraction_above_margin": 1.0
+        },
+        "class:chair": {
+          "images": 1,
+          "mean": 1.6961584091186523,
+          "fraction_above_margin": 1.0
+        },
+        "class:cell phone": {
+          "images": 1,
+          "mean": 0.8906128406524658,
+          "fraction_above_margin": 1.0
+        },
+        "class:spoon": {
+          "images": 1,
+          "mean": 2.6829192638397217,
+          "fraction_above_margin": 1.0
+        },
+        "class:carrot": {
+          "images": 1,
+          "mean": 3.6652755737304688,
+          "fraction_above_margin": 1.0
+        },
+        "class:cake": {
+          "images": 1,
+          "mean": 0.12072500586509705,
+          "fraction_above_margin": 1.0
+        },
+        "class:oven": {
+          "images": 1,
+          "mean": 0.04056287370622158,
+          "fraction_above_margin": 0.0
+        },
+        "class:train": {
+          "images": 1,
+          "mean": 1.8544071018695831,
+          "fraction_above_margin": 1.0
+        }
+      }
+    },
+    "cache_bytes": 2584678640,
+    "forward_backward_profile_batches": 50,
+    "optimizer_steps": 0,
+    "full_pilot_run": false,
+    "saved_checkpoint": false,
+    "interpretation": "No scientific GO from score summaries or cost gate. Manual mask/text panel and Argon/Astra critique remain; no C/T pilot automatically starts.",
+    "limits": [
+      "Mask artifacts/context loss, incomplete COCO annotations, indirect language cues and prompt abandonment remain risks.",
+      "Profile extrapolation includes safety/scoring reserve but is not a measured1250-update ETA.",
+      "Original image re-encoding parity checked on fixed16, original text binding on all selected images.",
+      "Four-condition scores use the first128 hash-selected TRAIN examples, not held-out caption quality."
+    ]
+  },
+  "interaction_ci95": {
+    "interval": [
+      -1.1229259254138015,
+      -0.6892197091503477
+    ],
+    "unit": "image",
+    "resamples": 10000,
+    "seed": 42,
+    "scope": "Descriptive fixed hash-selected TRAIN128; not held-out efficacy."
+  },
+  "visual_panel_review": {
+    "images": 16,
+    "reviewer_type": "assistant",
+    "human_verified": false,
+    "observations": [
+      "Person82225/554374/275432 and cow213961 retain recognizable silhouette.",
+      "Surfboard568417 retains outline and contextual cues; suitcase10232 retains handle/contour.",
+      "Car166391 appears to retain some tiny cars outside annotated masks; annotation completeness not independently checked."
+    ]
+  },
+  "conclusion": "Input manipulation exposes strong prompt boost on occluded images; does not prove hallucination or improved captions. Await Astra/Argon decision before C/T training.",
+  "local_model_execution": false
+}
