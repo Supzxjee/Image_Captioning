@@ -90,6 +90,8 @@ Ví dụ theo đơn vị weight1:
 - Thay known-false bằng opaque unknown: Δ=[0,2] → không có bonus.
 - Thêm một true fact đồng thời thêm một unknown: Δ=[0,2] → chưa thưởng vì unknown có thể bù mất cải thiện.
 
+Unit case bắt buộc cho lỗi baseline: sampled có một mệnh đề unknown [−1,1], greedy có một mệnh đề supported khác [1,1]. Khoảng chênh lệch trực tiếp là [−2,0], nên a_G=0. Đảo hai caption được [0,2], cũng a_G=0. Cách cũ có thể cho bonus riêng lần lượt0 và1/3, rồi tạo added role advantage0,2×(0−1/3)=−0,0667; đây chính là cập nhật mà công thức mới loại bỏ. Một unknown chung đã canonicalize đúng có thể triệt tiêu; khi đó một thay đổi known-positive khác vẫn có thể nhận tín hiệu. Không có quy tắc “hễ caption chứa unknown thì dừng toàn bộ role term”.
+
 Đây là policy conservatism về sign của cải thiện theo nhãn đã có; không gọi toàn bộ câu unknown là false. Nó có thể rất ít signal — đó là rủi ro phải kiểm trước train.
 
 ## 5. Loss và gradient chính xác
