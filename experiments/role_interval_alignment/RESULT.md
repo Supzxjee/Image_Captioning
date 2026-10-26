@@ -80,3 +80,21 @@ phát triển. Cần tách hai việc: sửa lỗi ánh xạ action/object/negat
 và tìm một phương án có đủ tín hiệu thị giác-ngôn ngữ. Sửa cho qua128 ảnh đã xem
 không phải bằng chứng phương pháp mới hoặc bảo đảm caption gain. Chưa launch
 notebook/GPU/training tiếp theo.
+
+## Astra đã phản hồi sau audit
+
+Astra đồng ý **dừng nhánh role-interval hiện tại, không dùng để train**, giữ A, không yêu cầu
+human-30 để cứu gate. Phản hồi dựa trên báo cáo số liệu/counterexample tôi gửi,
+không nhận đã đọc lại archive hoặc xác minh trace độc lập.
+
+Đã tính thêm một đối chiếu kế toán trên đúng128 cặp cũ: chỉ đổi8 unit bị phủ định
+không được bảo đảm thành unknown, giữ nguyên caption/parser/selection. Kết quả
+còn **2 active, đều âm; 0 dương**. Đây không là inference mới, protocol mới được
+kiểm định hay scorer thay thế đã được cấp phép dùng train. Nó chỉ cho thấy sửa
+phủ định sai không cứu được mật độ hiện tại.
+
+Hướng ưu tiên nghiên cứu tiếp của Astra là bằng chứng dương cụm–vùng phong phú
+hơn hai action, có phép kiểm decoder thực sự sử dụng bằng chứng. Tuy nhiên các
+pilot VG G/COCO R đã chạm một phần hướng ấy; chưa có kiến trúc mới được chốt hoặc
+lý do triển khai ngay một adapter/loss tương tự. Chốt kết quả này trước, không
+mở thêm lượt GPU chỉ để tiếp tục thử.

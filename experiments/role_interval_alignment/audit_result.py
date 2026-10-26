@@ -3,7 +3,7 @@ from collections import Counter
 import hashlib
 import json
 from pathlib import Path
-from role_logic import POLICY,identity,order,compare,select_review
+from role_logic import POLICY,identity,order,compare,select_review,advantage
 from role_parser import PARSER_POLICY,translate
 
 HERE=Path(__file__).resolve().parent
@@ -81,6 +81,16 @@ def main():
         target=row['role_object_id'][j+n]
         assert any(aid==target and c==category for aid,c,_ in scene['instances'])
         ontology_checks.append(dict(coco_id=r['coco_id'],actor_id=actor,object_id=target,object_class=category,official_action=action,official_label=1,official_ride_label=0))
+    corrected=[]
+    for r in cases:
+        v=r['comparison'];bounds={}
+        for key,u in v['units'].items():
+            bounds[key]=(-u['weight'],u['weight']) if u['status']=='refuted' else (u['lower'],u['upper'])
+        lower=sum(bounds[k][0] for k in v['added'])-sum(bounds[k][1] for k in v['removed'])
+        upper=sum(bounds[k][1] for k in v['added'])-sum(bounds[k][0] for k in v['removed'])
+        a=advantage(lower,upper)
+        if a:corrected.append(dict(coco_id=r['coco_id'],role_advantage=a,lower=lower,upper=upper))
+    assert len(corrected)==2 and all(r['role_advantage']<0 for r in corrected)
     result=dict(zip_sha256=cached['zip_sha256'],technical_audit='PASS: payload/source/protocol/rank/selection/parser-translation/interval replay',
         receipt_payload_hashes_checked=len(receipt['payload_sha256']),runtime_sources_checked=len(cfg['implementation_sha256']),images=128,
         active_pairs=len(active),active_required=16,active_fraction=len(active)/128,operative_pairs=len(operative),operative_required=8,
@@ -88,6 +98,7 @@ def main():
         explicit_graph_edge_counts=dict(Counter(len(p['graph']['edges']) for r in cases for p in r['parsed'].values() if p['graph']['edges'])),
         multi_person_scenes=sum(sum(n[1]=='person' for n in r['scene']['instances'])>1 for r in cases),
         official_vcoco_train_sha256=metadata['sources']['vcoco_train'],ontology_counterexamples=ontology_checks,
+        posthoc_bookkeeping_only=dict(change='Replace the eight unlicensed refuted units with unknown; same stored captions/parse/selection; no new inference or gate validation.',active_pairs=len(corrected),positive_pairs=0,negative_pairs=2,cases=corrected),
         positive_advantage_ids=positive,negative_advantage_ids=negative,all_refuted_units=refuted,
         decision='NO_GO_CURRENT_RECIPE',training=False,human_audit_needed_to_decide_current_gate=False,
         explanation='Fails prespecified active density. Additionally all 8 refuted role units concern ride+skateboard/snowboard/skis; official ride=0 is not automatically English riding=false. Do not use these as caption error labels.',

@@ -112,6 +112,26 @@
       "official_ride_label": 0
     }
   ],
+  "posthoc_bookkeeping_only": {
+    "change": "Replace the eight unlicensed refuted units with unknown; same stored captions/parse/selection; no new inference or gate validation.",
+    "active_pairs": 2,
+    "positive_pairs": 0,
+    "negative_pairs": 2,
+    "cases": [
+      {
+        "coco_id": 142380,
+        "role_advantage": -0.3333333333333333,
+        "lower": -1,
+        "upper": -1
+      },
+      {
+        "coco_id": 553100,
+        "role_advantage": -0.3333333333333333,
+        "lower": -1,
+        "upper": -1
+      }
+    ]
+  },
   "positive_advantage_ids": [
     24446,
     236141,
