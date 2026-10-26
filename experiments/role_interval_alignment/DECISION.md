@@ -81,3 +81,20 @@ là partial-annotation interval kết hợp binding nhất quán; novelty vẫn 
 đối chiếu conservative/partial-label RL. Mã/parser/loss/model mới chưa được viết,
 không có GPU run mới. JSON prompt gốc local không có; audit Argon riêng vẫn pending,
 nhưng phương án này không cần JSON đó để dựng prompt trung hòa.
+
+## Cập nhật triển khai feasibility — 2026-10-26
+
+Người dùng đã duyệt chuẩn bị packet. Có notebook unexecuted và mã scorer/parser
+adapter/audit, chưa train hoặc chạy model. Xem README.md để chạy. Metadata builder
+đã kiểm lại2026 FIT/1330 positive links/6284 actor-action labels; replay metadata
+tách biệt1898 ảnh, cap dự kiến1896 trước actual cache coverage.
+
+Theo review code của Astra, packet bổ sung: whole opaque giữ[-3,+3] với cap3edges
+toàn projected caption; mixed unhandled clause phải opaque; worker provenance
+gắn protocol/stage/selection/source/rank/records; hai critical flags cho audit;
+binding search cap báo riêng và không tính là operative effect. Bag comparator
+giữ cùng partial-label evaluator, chỉ bỏ joint identity/inequality để contrast
+không bị lẫn khác biệt xử lý nhãn âm.
+
+Đây là triển khai để falsify feasibility, không là xác nhận parser đúng trên câu
+thật, hiệu quả caption, đóng góp mới hay chấp thuận training.

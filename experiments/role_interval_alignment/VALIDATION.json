@@ -1,0 +1,17 @@
+{
+  "date": "2026-10-26",
+  "cpu_synthetic_tests": 15,
+  "tests_passed": true,
+  "fit_images": 2026,
+  "positive_role_links": 1330,
+  "actor_action_labels": 6284,
+  "disjoint_replay_metadata_images": 1898,
+  "planned_pool_before_cache_check": 1896,
+  "notebook_bytes": 646005,
+  "embedded_roundtrip": true,
+  "local_model_or_parser_execution": false,
+  "kaggle_runtime": "PENDING_USER_RUN",
+  "human_audit": "PENDING",
+  "training": false,
+  "astra_static_review": "Known four blockers closed; fixture strengthened; no runtime PASS"
+}

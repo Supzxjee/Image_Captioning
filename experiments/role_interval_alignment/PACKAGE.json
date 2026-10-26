@@ -1,0 +1,16 @@
+{
+  "notebook_bytes": 646005,
+  "notebook_sha256": "1fcb1669435b947d466cb8e236db3ee972d1daba1ccc010a3e0a8515f21cd025",
+  "source_sha256": {
+    "role_logic.py": "c1d8b42bac004519e3d13ef100f060b722de3ade9af28ddd9e13ec559dc5acca",
+    "role_parser.py": "6a5ef61e86dabc4fc7bcef3258705f3e34b08abc507d8c40ef0cb68b1536734f",
+    "role_review.py": "de9c332905058e27f4f6ede3ecd10ac2f4d46675547e0e52049c141e0ea08754",
+    "run_role.py": "2fa95be25b8c5d2bbe4eaf78e8676b8794afd54eda438b1c1c46ff68ac227de5",
+    "test_role.py": "995c5e5ab49669a5c3437da9a894631b1b5e5519c07b627fa6a322131bb5c26e",
+    "role_metadata.json": "3c2b7826e0c6eec0023a0ad9a1d2fbd3f6f16b73a5555f313db7b902805ca218",
+    "diagnostic_data.py": "15c0eab863ad6500436d25372e34e3395266774838db39b2bdb8e402ff150312",
+    "hidden_data.py": "9285d02c5aa7660a5656654e2efe034941bc24d6f7c300958c06fcca6f0d43c7",
+    "pilot_data.py": "93fa39b1de581d774417840be4d5e0b2b8d52bbf9ee53b479adad2c60a45d3d7"
+  },
+  "model_execution_local": false
+}
