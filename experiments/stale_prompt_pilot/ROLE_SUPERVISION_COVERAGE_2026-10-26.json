@@ -1,0 +1,45 @@
+{
+  "status": "METADATA_ONLY_COVERAGE_AUDIT",
+  "source": "C:\\KhoaLuanTotNghiep\\Code\\output\\vcoco_alignment_week1\\grounded_links_v1",
+  "source_summary_sha256": "90584f4fd6243c3d078c7a4681724a8fb39dd9cf9e7d40ee2b096cd536697aa5",
+  "cohort_stage_sha256": "720d3c0738c4dbae70ee2a1cff8a1cb8c238f3f754a5866579829172889604c0",
+  "statistics": {
+    "relation_fit": {
+      "source_sha256": "4733fddd83630e5eb67aea62da4f0df8e7085710118bf9f6bd44b12d752eaafe",
+      "source_images": 2026,
+      "source_positive_images": 1014,
+      "locked_train_images": 175,
+      "locked_train_positive_images": 85,
+      "locked_train_positive_links": 116,
+      "locked_train_actor_action_labels": 498,
+      "locked_dev_images": 0
+    },
+    "relation_calibration": {
+      "source_sha256": "f20ee72d7461ce75c6bd8ef33dc0b79c61c1a224dc2f75b5c6df9a6a614bdd1a",
+      "source_images": 507,
+      "source_positive_images": 238,
+      "locked_train_images": 58,
+      "locked_train_positive_images": 25,
+      "locked_train_positive_links": 35,
+      "locked_train_actor_action_labels": 172,
+      "locked_dev_images": 0
+    },
+    "relation_dev": {
+      "source_sha256": "7fa194c7651c348f92c5314e39940ae8249d3aef510fbe76f31edf1e2a61a45b",
+      "source_images": 2867,
+      "source_positive_images": 1415,
+      "locked_train_images": 275,
+      "locked_train_positive_images": 132,
+      "locked_train_positive_links": 167,
+      "locked_train_actor_action_labels": 882,
+      "locked_dev_images": 0
+    }
+  },
+  "scope": "Old holding/riding-only positive-link inventory. image_id in this source is COCO ID; compared to coco_id in C/T locked groups. Not all-action or official VCOCO test coverage.",
+  "limits": [
+    "Do not merge old calibration/dev labels into fit automatically.",
+    "Current dev1000 has no overlap with this inventory; not proof official VCOCO has no dev coverage.",
+    "No model, labeling, annotation extraction or split changes."
+  ],
+  "local_model_execution": false
+}
