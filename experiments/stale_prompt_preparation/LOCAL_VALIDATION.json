@@ -1,0 +1,14 @@
+{
+  "status": "MODEL_FREE_VALIDATION_PASS",
+  "cpu_synthetic_tests": 8,
+  "all_runtime_ast": "PASS",
+  "notebook_ast": "PASS",
+  "embedded_preparation_imports": "PASS",
+  "full40_commit": "bf997e18fafe7053ef16b8418ad87efef880c577",
+  "no_optimizer_step_ast": "PASS",
+  "local_model_execution": false,
+  "actual_masks_clip_parity_and_cost_profile": "PENDING_KAGGLE",
+  "notebook_bytes": 47235,
+  "full_pilot_run": false,
+  "early_ten_batch_cost_guard": true
+}

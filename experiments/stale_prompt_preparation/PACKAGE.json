@@ -1,0 +1,19 @@
+{
+  "status": "PREPARED_UNEXECUTED",
+  "bytes": 47235,
+  "sha256": "1b1b3578fe5271d09966a53ad3703859dd622d9f46933ea7c498e2708a7e76c5",
+  "project_commit": "bf997e18fafe7053ef16b8418ad87efef880c577",
+  "sources_sha256": {
+    "stale_data.py": "9068789fcbd873dbd416674cafc9f94cb585c53df8447371390d3cd91ed32d13",
+    "run_prepare.py": "6e4e579e6b1525b2051e2a31e4febad13c38d38473b17cd152026711b6e09d26",
+    "profile_stale.py": "08ed37d60dda8f89a8671fcaed7dd749a10b33baf5ea1a126ee0457bf33dc1c8",
+    "test_stale_data.py": "bbda8e8d795e53926fa41836b7598890aebce572450fd584fb6a70768eafbad2",
+    "test_stale_runtime.py": "a43b98378411af1853121d6207817f8b5cb97d0f4e612914a66653b202f361c3",
+    "diagnostic_data.py": "15c0eab863ad6500436d25372e34e3395266774838db39b2bdb8e402ff150312",
+    "run_diagnostic.py": "382653c64ecc7047f908ae717d5d963efa177767ad8db4774093207e286ff731",
+    "hidden_data.py": "9285d02c5aa7660a5656654e2efe034941bc24d6f7c300958c06fcca6f0d43c7",
+    "pilot_data.py": "93fa39b1de581d774417840be4d5e0b2b8d52bbf9ee53b479adad2c60a45d3d7",
+    "audit.py": "cadf9d172e92e1558020520399ec6013d1141b8ab82c34821d6ba4f0dfe244b4"
+  },
+  "local_model_execution": false
+}
