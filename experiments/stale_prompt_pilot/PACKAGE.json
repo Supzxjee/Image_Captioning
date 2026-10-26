@@ -3,19 +3,19 @@
   "notebooks": {
     "C": {
       "file": "STALE_PROMPT_C_2GPU.ipynb",
-      "bytes": 53337,
-      "sha256": "af042b5fbf2a9ff7a9759a2458c22c18454c1dec0134c706be595e48c776dbb9"
+      "bytes": 53958,
+      "sha256": "62e2728c1e695b5282b9d737a7a90673d01850cd3ed3fb4c2068923161962989"
     },
     "T": {
       "file": "STALE_PROMPT_T_2GPU.ipynb",
-      "bytes": 53337,
-      "sha256": "0f9062e71aa9fb9324d04967096ec1f6b9c8b1417de6a61af348e0946298b7b5"
+      "bytes": 53958,
+      "sha256": "45b249c2aa917a608e764488e63e3089a3cd49294f3c057b0c1a8112f47b14a0"
     }
   },
   "project_commit": "335b136d335fa92ae9be3e4b86772044b770e7f2",
   "sources_sha256": {
     "run_stale.py": "c8572f5406d544de85e6a1920e1e790f690f11bc741160cf3f0815a73c430154",
-    "pilot_contract.py": "21b670f79e6614eed9bb26ac502e6fb4ba08163546bf9ad91b5d604128136094",
+    "pilot_contract.py": "1c7aa8dfd54badc974e69edd2a16e2a4ac55b3af2848a2ea035ba4195ebfe7f4",
     "test_contract.py": "3709487515c6cce01cccc38880b85867c4d582110b8f04b5d6cb6d884fcb598d",
     "test_pilot_ddp.py": "c852e7a525eac20465b95aa0f58c5afdbc334b8fdffb3de2537bd42b28e538de",
     "profile_stale.py": "08ed37d60dda8f89a8671fcaed7dd749a10b33baf5ea1a126ee0457bf33dc1c8",

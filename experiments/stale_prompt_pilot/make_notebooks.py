@@ -37,6 +37,9 @@ def build():
             Gắn output `ducanh2403/stale`, checkpoint A, prompt-cache .pt, visual-cache, MSCOCO JSON.
             Không cần ảnh gốc, prompt JSON hoặc UPT cache. Tự tìm receipt đúng trong thư mục con.
             Stage main inputs có thể tốn I/O đáng kể, cần khoảng8GiB trống; không nằm trong profile6phút.
+            Ngân sách: tối đa2giờ staging RIÊNG +2giờ train/end greedy RIÊNG.
+            Cài đặt, kiểm hash/preflight, sinh A ban đầu và CPU scoring nằm ngoài hai timer;
+            toàn notebook có thể vượt4giờ. Đây không phải trần tổng2giờ hoặc ETA.
             ''')]
         cells.append(nb.code(f'''
             from pathlib import Path
@@ -88,6 +91,8 @@ def build():
             Gửi ZIP review của cả C và T; giữ riêng checkpoint.bin và cache gốc.
             ZIP có log/protocol/predictions/per-imageCIDEr/CHAIR, không có HDF5 hoặc checkpoint lớn.
             Một nhánh hoàn tất chưa đủ tuyên bố thắng: cần so T−A và T−C bằng pairedCI,
+            trước đó kiểm A predictions của C/T trùng nhau cùng cohort/cache/optimizer protocol.
+            Nếu A lệch, giải thích runtime/baseline trước khi quy khác biệt cho stale loss.
             CHAIR/recall và kiểm prompt abandonment/artifact trước claim cơ chế.
             Dừng nếu hash/binding/frozen state lỗi,nonfinite/OOM hoặc projection thực vượt2h/arm.
             Không dùng interim dev để sửa loss/chọn checkpoint/đổi seed.

@@ -5,6 +5,7 @@
   "notebook_ast_empty_outputs_and_hashes": "PASS",
   "local_model_execution": false,
   "GPU_DDP_optimizer_and_metric_smoke": "PENDING_USER_KAGGLE",
-  "Astra_implementation_review": "PENDING",
-  "full_pilot_run": false
+  "Astra_implementation_review": "PROCEED_STATIC_NO_BLOCKER",
+  "full_pilot_run": false,
+  "budget_clarification": "Separate2h stage+2h training/end; setup,initialA,hash/preflight,CPUscoring outside timers; total may exceed4h"
 }

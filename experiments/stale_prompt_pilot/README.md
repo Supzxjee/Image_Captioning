@@ -56,6 +56,9 @@ Main data are staged in physical source order into a local `/tmp` HDF5 (~7.1GB;
 need~8GiB free). Stage time is logged separately and was **not** measured by the
 preparation's~6minute arm projection. The two-hour staging cap is separate from the
 two-hour training/end-greedy cap. On failure do not silently resize data/batch/steps.
+Setup, hash checks/preflight, initial A prediction and CPU scoring are outside
+these two timers. Total notebook runtime may exceed four hours; this is neither
+a total two-hour cap nor an ETA. Actual timings should be used for quota planning.
 All2,000 factual auxiliary inputs must exactly match staged original main inputs.
 
 Before training, run dependency/metric smoke, original synthetic gradient tests,
@@ -74,6 +77,8 @@ Keep both `checkpoint.bin` files and full input cache. ZIPs exclude large stage 
 checkpoint files; they include predictions, per-image CIDEr, CHAIR, protocol/logs.
 
 Only after both arms: paired image-bootstrap T−A and T−C. Gate: T−A>=.01CIDEr,
+first checking identical A predictions and matching cohort/source/cache/optimizer
+protocol across C/T. If A differs, explain runtime/baseline before attribution.
 both95%CI lower bounds>0;CHAIRs/i not worse than A;Recall>=A−.005. A single arm's
 summary has **no GO decision**. Reused development set/one seed are limitations.
 

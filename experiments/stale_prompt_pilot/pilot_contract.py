@@ -11,6 +11,7 @@ CHAIR_SHA='73ce11225febb97df38c5bfad60b3ff6cc25852e9df9a1330673155b4be851c3'
 POLICY=dict(version='stale-prompt-CT-v1',updates=1250,global_batch=8,aux_every=5,aux_images=2000,
     seed=42,lr=5e-6,weight_decay=.01,betas=[.9,.999],eps=1e-8,clip_grad_norm=1.,
     dropout='eval with gradients',max_arm_seconds=7200,staging_max_seconds=7200,
+    timer_scope='Separate2h staging and2h training/endgreedy; setup,hash validation,initial A prediction and CPU scoring outside these timers; total notebook may exceed4h. Not a total2h cap or ETA.',
     checkpoint='end only',selection='No interim dev/selection, no active-case filtering',
     objective='C:mainCE+.1KL(A||student)+.1neutralCE+.1visual; T:C+.1stale',
     gate='T-A CIDEr>=.01, pairedCI95lower(T-A)>0 and lower(T-C)>0; CHAIRs/i not worse than A; Recall>=A-.005',
