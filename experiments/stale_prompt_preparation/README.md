@@ -77,3 +77,17 @@ mask-color detection/global noun suppression/prompt abandonment. This preparatio
 does not establish a new visual-semantic alignment method or improved captions.
 
 Review Astra: PROCEED preparation/profile only. `four_condition_interpretation.json` reports per-image factual/occluded prompt boost, their interaction, and clipped absolute alias probabilities; summary.json aggregates these. No additional model forward is required. Masks may preserve recognizable silhouette and scores miss words outside the locked alias set.
+
+
+## Lưu cache từ Output version98
+
+Chạy `SAVE_STALE_PROMPT_2000_DATASET.ipynb` trên notebook **CPU, Internet ON**.
+Bật secret API token; đổi `SECRET_NAME` nếu dùng tên khác (ví dụ `codex`).
+Nguồn khóa `ducanh2403/2-vi-cai-kia-qua-nhieu/98`, kiểm receipt fingerprint và
+15 root payload hashes, kể cả3HDF5. Giữ48panel files dưới tên phẳng `panel__NAME`.
+CLI khóa commit và kiểm request version_label=v98 trước download; không fallback latest.
+Tạo dataset mới Private `ducanh2403/stale-prompt-preparation-2000`; không ghi đè slug cũ.
+Token không được lưu vào staging/output. Cần khoảng6GiB trống. Đợi xử lý xong rồi gửi
+path chứa `receipt.json`, `protocol.json`, `aux_rank0.h5`, `aux_rank1.h5`, `benchmark_inputs.h5`.
+Notebook không cache lại, không train và không chạy mô hình. Source/log lịch sử giữ ở
+notebook98/GitHub/ZIP review; legacy_subset.pt không cần cho cache auxiliary đã mã hóa.
