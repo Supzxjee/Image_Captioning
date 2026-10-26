@@ -1,0 +1,23 @@
+{
+  "status": "PREPARED_UNEXECUTED",
+  "notebook_bytes": 198509,
+  "notebook_sha256": "1b559d8f32d3f8c11bb21413d4559813a250ea7dce9b89b21e826ad2d5cb834a",
+  "cohort_sha256": "b2263515aff870a6247bd97ff41d8c97e924dfadeb506076c5f782bfde197e1c",
+  "embedded_sha256": {
+    "utility_data.py": "0e6dac99d8b60ced50ca36392dd3c63ec9f73429de3249faeea31fb58903596f",
+    "utility_intervention.py": "890c9fff45415c27eebcf8bc4cff144726a57eea3eceb1d3e3c57b2e1c4a0c03",
+    "run_utility.py": "ad15c1f2a9b197e41d08926bc269f50d3146d3331a8b328811c18a7156312c20",
+    "test_utility_data.py": "e114f70a244b2dc0cf0e73ade4539653604f8add3a0c78ffcf965ccd10b1f9ff",
+    "test_utility_tensors.py": "0c444064176756cc8bd6bcd621779812919108729ae90f24a3634ab33a13ea0e",
+    "cohort.json": "b2263515aff870a6247bd97ff41d8c97e924dfadeb506076c5f782bfde197e1c",
+    "diagnostic_data.py": "15c0eab863ad6500436d25372e34e3395266774838db39b2bdb8e402ff150312",
+    "run_diagnostic.py": "382653c64ecc7047f908ae717d5d963efa177767ad8db4774093207e286ff731",
+    "route_probe.py": "7cd9071bc4671873f027c66e4e243e9771947dba8b4ebe83dae4cc7d129783bc",
+    "audit.py": "cadf9d172e92e1558020520399ec6013d1141b8ab82c34821d6ba4f0dfe244b4",
+    "hidden_data.py": "9285d02c5aa7660a5656654e2efe034941bc24d6f7c300958c06fcca6f0d43c7",
+    "hidden_metric_smoke.py": "8cf64c56b169cdd2407fdeb668408a80d947578632154405c47c7040558a698b",
+    "pilot_data.py": "93fa39b1de581d774417840be4d5e0b2b8d52bbf9ee53b479adad2c60a45d3d7"
+  },
+  "local_model_execution": false,
+  "actual_tensor_and_metric_preflight": "USER_KAGGLE_ONLY"
+}

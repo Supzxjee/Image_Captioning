@@ -1,0 +1,13 @@
+{
+  "status": "MODEL_FREE_PACKAGE_CHECKS_PASS",
+  "cpu_tests": 6,
+  "embedded_imports": "PASS",
+  "all_source_ast": "PASS",
+  "notebook_ast": "PASS",
+  "hashes": "PASS",
+  "cohort_images": 138,
+  "distinct_Q_candidates": 137,
+  "notebook_bytes": 198509,
+  "local_model_execution": false,
+  "kaggle_tensor_parity_and_actual_metrics": "PENDING_USER_RUN"
+}
