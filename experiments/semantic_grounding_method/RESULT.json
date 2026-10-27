@@ -1,0 +1,216 @@
+{
+  "date": "2026-10-28",
+  "status": "COMPLETED_QUALITY_NO_GO",
+  "zip_sha256": {
+    "C": "c0572d14df66cb50f4e2b225026675593a4ea561cb7522fb5d27cb6a3b601118",
+    "H": "ea68cd071e9ce17b26cd66d4d1e5b2b2e89669734549ca672f42c0ecdb07b633",
+    "T": "fd5c54aab19704431193b83014e893547c1f2924ee0f71043b127348551ebac2"
+  },
+  "preparation_receipt_sha256": "d30c2ad5d4632f9e189c3607701defae62c48b21140f18d9c331febe09b1106e",
+  "audit": {
+    "source_payloads": 14,
+    "updates_per_arm": 500,
+    "ranks": 2,
+    "common_initial_head_sha256": "16c63a1e312df4cf8349d4bb5d896e3ad5dd1f471c70c6942deb4af9b73c22d8",
+    "base_unchanged_reported": true,
+    "baseline_captions_exact": true,
+    "runtime_exact": true,
+    "loss_and_auxiliary_scaling_checked": true,
+    "chair_counts_reaggregated": true
+  },
+  "metrics": {
+    "A": {
+      "CIDEr": 1.2055125991020814,
+      "chair": {
+        "CHAIRs": 0.052,
+        "CHAIRi": 0.032475490196078434,
+        "Recall": 0.45803873347679064
+      },
+      "counts": {
+        "hallucinated_captions": 52,
+        "hallucinated_mentions": 53,
+        "object_mentions": 1632,
+        "recalled_unique": 1490,
+        "reference_unique": 3253
+      },
+      "mean_words": 10.213
+    },
+    "C": {
+      "CIDEr": 1.1963970562299704,
+      "chair": {
+        "CHAIRs": 0.052,
+        "CHAIRi": 0.03243574051407589,
+        "Recall": 0.4577313249308331
+      },
+      "counts": {
+        "hallucinated_captions": 52,
+        "hallucinated_mentions": 53,
+        "object_mentions": 1634,
+        "recalled_unique": 1489,
+        "reference_unique": 3253
+      },
+      "mean_words": 10.204
+    },
+    "H": {
+      "CIDEr": 1.2086548906780088,
+      "chair": {
+        "CHAIRs": 0.05,
+        "CHAIRi": 0.03126916002452483,
+        "Recall": 0.45834614202274826
+      },
+      "counts": {
+        "hallucinated_captions": 50,
+        "hallucinated_mentions": 51,
+        "object_mentions": 1631,
+        "recalled_unique": 1491,
+        "reference_unique": 3253
+      },
+      "mean_words": 10.169
+    },
+    "T": {
+      "CIDEr": 1.2010130734121454,
+      "chair": {
+        "CHAIRs": 0.052,
+        "CHAIRi": 0.03251533742331288,
+        "Recall": 0.4568090992929603
+      },
+      "counts": {
+        "hallucinated_captions": 52,
+        "hallucinated_mentions": 53,
+        "object_mentions": 1630,
+        "recalled_unique": 1486,
+        "reference_unique": 3253
+      },
+      "mean_words": 10.196
+    }
+  },
+  "comparisons": {
+    "C-A": {
+      "delta": -0.009115542872110822,
+      "ci95": [
+        -0.0212602019702448,
+        0.002482492926267065
+      ],
+      "images_higher": 50,
+      "images_lower": 50,
+      "images_equal": 900
+    },
+    "H-A": {
+      "delta": 0.0031422915759274847,
+      "ci95": [
+        -0.010934696333934646,
+        0.017171675260407793
+      ],
+      "images_higher": 67,
+      "images_lower": 57,
+      "images_equal": 876
+    },
+    "T-A": {
+      "delta": -0.004499525689935862,
+      "ci95": [
+        -0.02029763946327937,
+        0.010675727440441605
+      ],
+      "images_higher": 84,
+      "images_lower": 84,
+      "images_equal": 832
+    },
+    "T-C": {
+      "delta": 0.004616017182174961,
+      "ci95": [
+        -0.006073820073662475,
+        0.015299204626446508
+      ],
+      "images_higher": 53,
+      "images_lower": 46,
+      "images_equal": 901
+    },
+    "T-H": {
+      "delta": -0.007641817265863349,
+      "ci95": [
+        -0.017686775823694097,
+        0.0012933346477623836
+      ],
+      "images_higher": 32,
+      "images_lower": 42,
+      "images_equal": 926
+    },
+    "H-C": {
+      "delta": 0.012257834448038308,
+      "ci95": [
+        0.0032986949853197113,
+        0.02251070880360572
+      ],
+      "images_higher": 37,
+      "images_lower": 22,
+      "images_equal": 941
+    }
+  },
+  "changed_captions": {
+    "C-A": 102,
+    "H-A": 125,
+    "T-A": 168,
+    "T-C": 101,
+    "T-H": 75,
+    "H-C": 62
+  },
+  "guards": {
+    "cider_gain_at_least_point01": false,
+    "ci_T_A_positive": false,
+    "ci_T_C_positive": false,
+    "ci_T_H_positive": false,
+    "point_T_H_positive": false,
+    "chair_s_not_worse": true,
+    "chair_i_not_worse": false,
+    "recall_guard": true
+  },
+  "training_diagnostics": {
+    "C": {
+      "scope": "Matched update401\u00e2\u20ac\u201c500 training minibatches, not held-out or final fixed-model evaluation.",
+      "groups": 800,
+      "positive_delta_groups": 552,
+      "mean_delta": 0.0027936412155395375,
+      "mean_cg": 0.0002147518757168119,
+      "mean_direction_penalty": 0.00716592286961037,
+      "positive_delta_support_share_median": 0.01465143841320623,
+      "positive_delta_meeting_80percent_support": 5,
+      "maximum_recorded_completeness_residual": 2.201242746746601e-06
+    },
+    "H": {
+      "scope": "Matched update401\u00e2\u20ac\u201c500 training minibatches, not held-out or final fixed-model evaluation.",
+      "groups": 800,
+      "positive_delta_groups": 531,
+      "mean_delta": 0.00044079786515794695,
+      "mean_cg": 9.498627989329044e-05,
+      "mean_direction_penalty": 0.006759791012052565,
+      "positive_delta_support_share_median": 0.015211541598692249,
+      "positive_delta_meeting_80percent_support": 2,
+      "maximum_recorded_completeness_residual": 1.2263080133578796e-06
+    },
+    "T": {
+      "scope": "Matched update401\u00e2\u20ac\u201c500 training minibatches, not held-out or final fixed-model evaluation.",
+      "groups": 800,
+      "positive_delta_groups": 458,
+      "mean_delta": -0.00439806948765181,
+      "mean_cg": -0.00021832320814415784,
+      "mean_direction_penalty": 0.006949101389464556,
+      "positive_delta_support_share_median": 0.010309782347666996,
+      "positive_delta_meeting_80percent_support": 2,
+      "maximum_recorded_completeness_residual": 1.3073515310324524e-06
+    }
+  },
+  "bootstrap": {
+    "resamples": 10000,
+    "seed": 42,
+    "unit": "paired development image",
+    "ci": "percentile95",
+    "shared_draws": true
+  },
+  "limits": [
+    "One training seed and repeatedly reused development1000; image bootstrap does not measure seed variance or selection bias.",
+    "Training attribution diagnostics are not held-out grounding/factuality evidence; gradient dominance cannot be inferred from scalar loss size.",
+    "H-A and H-C are secondary exploratory contrasts; percentile intervals are not multiplicity-adjusted.",
+    "Small reviews do not contain physical checkpoint files; state identity is reported by verified-source workers, not independently rehashed locally."
+  ],
+  "recommendation": "Retain A. Do not scale/sweep/addseed to rescue T recipe. H point gain is descriptive, not a confirmed new best or a novel method."
+}
