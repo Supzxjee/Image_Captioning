@@ -9,3 +9,4 @@ __pycache__/
 vlm_outputs/
 experiments/role_interval_alignment/review/
 experiments/a_error_evidence_audit/review/
+experiments/semantic_grounding_method/review/
