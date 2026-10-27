@@ -1,5 +1,10 @@
 # Decoder-side pre-Q readout — ứng viên pilot, chưa train
 
+**Cập nhật27/10:** phương pháp chính đã chuyển sang
+[explicit joint phrase–region semantic alignment](../semantic_grounding_method/PROPOSAL.md)
+để đáp ứng yêu cầu đề tài. P/Q thuần source-readout ở tài liệu này được giữ làm
+đối chiếu thiết kế/ablation nguồn sau này, không còn là pilot chính được đề xuất.
+
 2026-10-27. Astra chọn giữ giả thuyết đọc token trước Q-Former sau khi root phản
 biện SD-RPR. Đây là thiết kế để xét thực nghiệm, không có kết quả gain hoặc novelty
 đã xác lập. Không triển khai ML/notebook hoặc launch GPU từ attachment Argon.

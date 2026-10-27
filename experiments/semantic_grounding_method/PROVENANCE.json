@@ -1,0 +1,20 @@
+{
+  "date": "2026-10-27",
+  "status": "METHOD_CANDIDATE_NOT_IMPLEMENTED_OR_RUN",
+  "astra_source_sha256": "238f4d921447b3dae1c8a0c7aa65cc25f6e8c205502b8fabb6daec74a46129ce",
+  "label_receipt_sha256": "bde873ba77124333488b263a052419dc80e412c1e089178cdf423d2836e1b146",
+  "verified_label_payload_sha256": {
+    "policy.json": "fd13046512449449375f94ecda44237a33d5a9223813d036fc6d76f4294abfab",
+    "spans.json": "6e4ec31245a63ea2a1f50f60435fdf526dd2fd6e5f09b835543866ec33fafb7b",
+    "mask_bank.json": "8a2412155fe31a3af9f9368eaf5b9b5314746177f4f4d49d3fb5df76a73431ce",
+    "supervision_schedule.json": "74f1b30f95d732f5b3dbc6de8b002bd6c6b70ca98757cf818d71b3b5645d21d6",
+    "source_provenance.json": "fb7bd0f3559f98e9bde188e571a6084256572e080889bf6b203d5f685de17dd4",
+    "manual_review_effects.json": "090f10e4890ccc61124d439b84dda49e7d3567816fc93a2724c7e10b814d82a7"
+  },
+  "existing_head_spans": 17904,
+  "existing_regions": 5602,
+  "existing_images": 4495,
+  "existing_classes": 71,
+  "expanded_modifier_targets": "NOT_GENERATED; existing counts are heads/names only",
+  "local_neural_execution": false
+}

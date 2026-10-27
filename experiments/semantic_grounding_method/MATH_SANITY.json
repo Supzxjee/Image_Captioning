@@ -1,0 +1,11 @@
+{
+  "scope": "Formula sanity only; no neural module/parser/inference/training.",
+  "paired_loss": 0.7031970578284027,
+  "crossed_pair_loss": 5.293832844020895,
+  "independent_marginal_loss_both": 1.3862489622206737,
+  "paired_order_invariance": true,
+  "empty_target_group": "skip, not negative",
+  "stable_tiny_mass_loss": 480.51701859880916,
+  "perfect_semantic_but_max_mass_point2_loss_floor": 1.6094379124341003,
+  "limitations": "Finite positive sets are incomplete; these checks do not establish grounding, caption gain or novelty."
+}
