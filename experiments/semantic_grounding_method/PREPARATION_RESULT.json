@@ -1,0 +1,31 @@
+{
+  "status": "PREPARATION_REVIEW_PASS_FULL_PAYLOAD_CHECK_PENDING",
+  "zip_sha256": "3dedcbfd5ae930f56788ea40e521446dcbca2c7d4fd7476029e7fa461bf29e91",
+  "receipt_sha256": "d30c2ad5d4632f9e189c3607701defae62c48b21140f18d9c331febe09b1106e",
+  "preparation_seconds": 1225.543476476,
+  "preparation_minutes": 20.425724607933333,
+  "copied_inputs": 3000,
+  "training_images": 2000,
+  "development_images": 1000,
+  "training_object_targets": 2000,
+  "heldout_reward_labels_exported": false,
+  "source_manifest_match": true,
+  "policy_match": true,
+  "metadata_hash_match": true,
+  "object_target_payload_hash_match": true,
+  "declared_payload_sha256": {
+    "object_targets.json": "e7a731b67dc04abe89a5a4d5a09a1da2b96300d503b89a5753e086100d747c92",
+    "inputs.h5": "582730b8dca6693294bbe6935d32d46b7f94a588eef3a6955809172db1a3794d",
+    "gain_metadata.json.gz": "62f43f771aec9feba31a2fbbb6fe7db2878f259979faac378b74a754822c7b67",
+    "initial_head.bin": "e9bbacc34a70b785c36318f4e2149c423e6b0d972a680eba0e59aebc4a8d5169"
+  },
+  "not_in_small_review": [
+    "inputs.h5",
+    "gain_metadata.json.gz",
+    "initial_head.bin"
+  ],
+  "full_payload_status": "Cannot verify remote HDF5/initial head from this small ZIP. User-run preflight verifies complete saved dataset.",
+  "model_training": false,
+  "local_neural_execution": false,
+  "pip_conflicts": "Gradio/diffusers warnings; not used in preparation. GPU preflight still unexecuted."
+}
