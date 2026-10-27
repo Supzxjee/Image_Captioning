@@ -1,0 +1,24 @@
+{
+  "status": "STATIC_AND_METADATA_PASS_NEURAL_UNEXECUTED",
+  "tests": {
+    "metadata": 2,
+    "saved_artifact_guards": 2
+  },
+  "notebooks": {
+    "GROUNDED_GAIN_CH_2GPU.ipynb": {
+      "bytes": 16996,
+      "code_cells": 5,
+      "unexecuted": true,
+      "sha256": "7e26ee7a368087506216965a2d9d7f751d7437d31bedad5c8081acc33b8c8a09"
+    },
+    "GROUNDED_GAIN_T_2GPU.ipynb": {
+      "bytes": 16980,
+      "code_cells": 5,
+      "unexecuted": true,
+      "sha256": "090a92de55be16e9579f711196d758671775379f9cce135b71f332d5ef92a13e"
+    }
+  },
+  "local_neural_execution": false,
+  "torch_checks": "USER_RUN_KAGGLE_ONLY",
+  "heldout_grounding": "UNAVAILABLE"
+}
