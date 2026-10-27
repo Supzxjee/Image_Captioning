@@ -1,0 +1,28 @@
+{
+  "scope": "Mathematical counterexamples only, not model/feature measurements.",
+  "fixed_memory_dynamic_attention": {
+    "first_read": [
+      0.9820137900379085,
+      0.017986209962091555
+    ],
+    "second_read": [
+      0.017986209962091555,
+      0.9820137900379085
+    ]
+  },
+  "single_vector_orthogonality_not_information_removal": {
+    "residual": [
+      0.0,
+      3.0
+    ],
+    "still_in_full_memory_span": true
+  },
+  "zero_evidence_nonzero_MLP_with_explicit_bias": 0.8413447460685428,
+  "positive_raw_margin_but_negative_final_contribution": {
+    "raw_difference": 1.0,
+    "negative_gamma": -0.7615941559557649,
+    "different_gates": -0.7
+  },
+  "matrix_weights_if_fusion_hidden128": 425984,
+  "local_neural_execution": false
+}

@@ -1,0 +1,29 @@
+{
+  "scope": "Saved exact A tokenizer, no neural-model execution",
+  "vocabulary_size": 10000,
+  "word2idx_sha256": "663867e11165ec2849acfb23f6426729e08e435afd2f6fe5f7f765f1d3507272",
+  "normalized_variants": {
+    "lemon": {
+      "lemon": 2230,
+      "lemon,": 6420,
+      "lemon.": 7114
+    },
+    "lemons": {
+      "lemons": 2452,
+      "lemons,": 4612,
+      "lemons.": 6918
+    },
+    "helicopter": {
+      "helicopter": 2359,
+      "helicopter.": 7663
+    },
+    "helicopters": {},
+    "ds": {},
+    "tablet": {
+      "tablet": 2133,
+      "tablet.": 5325
+    },
+    "tablets": {}
+  },
+  "source": "word2idx from audited stale-prompt C protocol, carried from audited exact-A preparation; checkpoint bytes not reread"
+}
