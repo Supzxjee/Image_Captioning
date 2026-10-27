@@ -63,6 +63,23 @@ def main():
     assert penalties(.05, [5, -4.95])['cancel'] > 9
     assert abs(penalties(.05, [5, -4.95])['gain']) < 1e-12
     assert penalties(.05, [0, .05])['groundgain'] > 0
+    # A complete valid set can redistribute probability without changing F.
+    # Different paired boxes break the purported cancellation of valid alternatives.
+    nodes, weights = np.polynomial.legendre.leggauss(64)
+    p0 = 1 / (1 + np.exp(-(nodes + 1) / 2))
+    valid0_patch0 = float((weights / 2) @ (p0 * (1-p0)))
+    valid1_patch0 = -valid0_patch0
+    distinct_box_penalties = penalties(0, [valid0_patch0, valid1_patch0], margin=0)
+    assert abs(valid0_patch0 - (1/(1+np.exp(-1))-.5)) < 1e-12
+    assert distinct_box_penalties['cancel'] > .46
+    common_box_support = valid0_patch0 + valid1_patch0
+    assert penalties(0, [common_box_support, 0], margin=0)['cancel'] == 0
+    # Use exact alpha=1 endpoint rather than the final quadrature node.
+    p_end = 1/(1+np.exp(-1))
+    endpoint = float(p_end*(1-p_end))
+    separate_alias_ranking = max(-196*endpoint, 0) + max(196*endpoint, 0)
+    aggregate_alias_ranking = max(-196*(endpoint-endpoint), 0)
+    assert separate_alias_ranking > 0 and aggregate_alias_ranking == 0
     result = dict(
         scope=__doc__, seed=42, quadrature_order=64,
         random_case_completeness_residual=residual,
@@ -77,6 +94,13 @@ def main():
             penalties=group_penalty,
             interpretation='Two-group budget cannot bound cancellation within either group.'),
         cross_group_cancellation_detected=True, outside_only_gain_penalized=True,
+        valid_set_redistribution=dict(total_valid_mass_start=1, total_valid_mass_end=1,
+            delta=0, different_boxes_support=valid0_patch0,
+            different_boxes_penalties=distinct_box_penalties,
+            shared_box_support=common_box_support,
+            same_box_endpoint_ranking_before_aggregation=separate_alias_ranking,
+            same_box_endpoint_ranking_after_aggregation=aggregate_alias_ranking,
+            interpretation='Pair-specific masks can penalize redistribution among valid alternatives. A common mask avoids this example; it does not prove all multi-reference issues solved.'),
         limitations='Synthetic finite logits only. No gradients, phrase trie, model runtime, grounding, caption quality or novelty validated.')
     Path(__file__).with_name('GROUNDED_GAIN_MATH.json').write_text(
         json.dumps(result, indent=2)+'\n', encoding='utf-8')

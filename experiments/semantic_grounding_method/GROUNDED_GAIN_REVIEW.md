@@ -53,3 +53,11 @@ This is more concrete than attention visualization but not yet established origi
 - Choose a falsification condition before implementing. Do not build a new generic audit or consume GPU to answer a question that would not change the decision.
 
 Artifacts: `check_grounded_gain_math.py`, `GROUNDED_GAIN_MATH.json`, `audit_prefix_sets.py`, `PREFIX_SET_INVENTORY.json`. No external account execution or model downloads.
+
+## Protocol review follow-up: valid alternatives with different boxes
+
+The subsequent protocol check found another restriction of the original candidate. Consider two valid one-token alternatives that exhaust a two-word vocabulary, A logits `[0,0]`, patch0 correction `[1,0]`, patch1 correction `[0,0]`. Alternative0 is paired with patch0 and alternative1 with patch1. Valid-set probability stays1 throughout the path, so Delta=0 and m=0. Nevertheless paired CG=+0.23105858, CU=-0.23105858 and Lcancel=0.46211716. The loss penalizes redistribution among valid alternatives, despite no change in total valid mass. This is not a completeness error.
+
+With the SAME mask for both alternatives, their signed contributions cancel within each patch in this example, CG=0 and the extra penalty vanishes. Astra accepted the same-instance AND identical-mask group restriction in protocol v0.3, retaining caption membership and excluding only affected auxiliary groups. No saturation threshold or new loss was added, and no multi-box binding claim remains.
+
+There is a corresponding H-control correction: aggregate signed endpoint contributions across alternatives BEFORE ranking/ReLU. Ranking them separately still gives a nonzero penalty (38.535939 in this toy with scale196), while group-level ranking is zero. Exact values and assertions are in the updated math artifact. This verifies the arithmetic counterexample and repair, not the unimplemented group guards or neural gradients.

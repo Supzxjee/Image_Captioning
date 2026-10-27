@@ -32,5 +32,20 @@
   },
   "cross_group_cancellation_detected": true,
   "outside_only_gain_penalized": true,
+  "valid_set_redistribution": {
+    "total_valid_mass_start": 1,
+    "total_valid_mass_end": 1,
+    "delta": 0,
+    "different_boxes_support": 0.2310585786300049,
+    "different_boxes_penalties": {
+      "gain": 0,
+      "groundgain": 0,
+      "cancel": 0.4621171572600098
+    },
+    "shared_box_support": 0.0,
+    "same_box_endpoint_ranking_before_aggregation": 38.53593891533044,
+    "same_box_endpoint_ranking_after_aggregation": -0.0,
+    "interpretation": "Pair-specific masks can penalize redistribution among valid alternatives. A common mask avoids this example; it does not prove all multi-reference issues solved."
+  },
   "limitations": "Synthetic finite logits only. No gradients, phrase trie, model runtime, grounding, caption quality or novelty validated."
 }
