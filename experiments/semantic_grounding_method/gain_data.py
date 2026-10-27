@@ -113,9 +113,11 @@ def schedule(meta,epoch):
     return ids
 
 
-def checked_cache(root,meta_sha):
+def checked_cache(root,meta_sha,hash_payloads=True):
     root=Path(root);r=json.loads((root/'receipt.json').read_text())
     if r['status']!='PREPARATION_COMPLETE' or r['metadata_sha256']!=meta_sha or r['policy']!=POLICY:raise ValueError('Wrong/incomplete preparation')
+    expected=dict(checkpoint=A_SHA,legacy_prompt=LEGACY_SHA,dataset_json=DATA_SHA,detections=DETECTION_SHA)
+    if r['inputs']!=expected:raise ValueError('Preparation input identities differ')
     for n,h in r['payload_sha256'].items():
-        if Path(n).name!=n or sha(root/n)!=h:raise ValueError('Missing/changed preparation payload: '+n)
+        if Path(n).name!=n or not (root/n).is_file() or (hash_payloads and sha(root/n)!=h):raise ValueError('Missing/changed preparation payload: '+n)
     return r

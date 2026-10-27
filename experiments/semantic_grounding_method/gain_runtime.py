@@ -148,6 +148,11 @@ def preflight(model,f,meta,tok,rank,world):
     try:
         torch.manual_seed(734)
         with torch.no_grad():model.head.o.weight.normal_(0,.02)
+        with torch.no_grad():
+            seq,active,trace=model.generate(mem,pad,z,tok,sample=True,return_trace=True)
+            logits,_=model.logits(seq[:,:-1],mem,pad,z)
+            rescored=logits.log_softmax(-1).gather(2,seq[:,1:,None]).squeeze(-1)
+            torch.testing.assert_close(trace[active],rescored[active],atol=1e-5,rtol=1e-4)
         found=False
         for index,row in enumerate(meta['groups']['train']):
             groups=meta['auxiliary'].get(str(row['coco_id']),[])
@@ -160,7 +165,7 @@ def preflight(model,f,meta,tok,rank,world):
             for key in ('components','cg'):
                 torch.testing.assert_close(r64[key],r128[key],atol=1e-5,rtol=1e-4)
             v64=torch.cat([t.flatten() for t in grads64]);v128=torch.cat([t.flatten() for t in grads128])
-            if not torch.isfinite(v64).all() or not torch.linalg.vector_norm(v128)>0:raise AssertionError('Nonzero finite gradient fixture required')
+            if not torch.isfinite(v64).all() or not torch.isfinite(v128).all() or not torch.linalg.vector_norm(v128)>0:raise AssertionError('Nonzero finite gradient fixture required')
             if torch.linalg.vector_norm(v64-v128)>1e-5+1e-4*torch.linalg.vector_norm(v128):raise AssertionError('64/128 gradient comparison failed')
             found=True;break
         if not found:raise AssertionError('No actual auxiliary fixture')
@@ -168,7 +173,7 @@ def preflight(model,f,meta,tok,rank,world):
         model.head.load_state_dict(initial);model.head.zero_grad(set_to_none=True)
         torch.set_rng_state(rng);torch.cuda.set_rng_state(cuda_rng,rank)
     if model_digest(model.head)!=old:raise AssertionError('Preflight changed initialization')
-    return dict(status='PASS',zero_init_parity=True,quadrature_gradient_fixture=True,distributed_head_parity=True)
+    return dict(status='PASS',zero_init_parity=True,nonzero_sample_rescore_parity=True,quadrature_gradient_fixture=True,distributed_head_parity=True)
 
 
 def worker(cfg,checking=False):
@@ -185,7 +190,16 @@ def worker(cfg,checking=False):
     torch.cuda.set_device(rank);torch.set_num_threads(2);configure_strict_runtime(True)
     dist.init_process_group('nccl');out=Path(cfg['output']);out.mkdir(parents=True,exist_ok=True)
     try:
-        receipt=checked_cache(cfg['prepared'],sha(cfg['metadata']))
+        if sha(cfg['dataset_json'])!=DATA_SHA or sha(Path(cfg['chair'])/'chair.pkl')!=CHAIR_SHA:
+            raise ValueError('Wrong reward/evaluation inputs; stop before training')
+        # One rank hashes the shared mount; broadcast even a failure to avoid a hung peer.
+        verification=[None]
+        if rank==0:
+            try:verification[0]=dict(receipt=checked_cache(cfg['prepared'],sha(cfg['metadata'])),error=None)
+            except Exception as error:verification[0]=dict(receipt=None,error=repr(error))
+        dist.broadcast_object_list(verification,src=0)
+        if verification[0]['error']:raise ValueError(verification[0]['error'])
+        receipt=verification[0]['receipt']
         if receipt['source_sha256']!=cfg['sources']:raise ValueError('Preparation/runtime sources differ')
         model,meta=build(cfg,f'cuda:{rank}');tok=tokenizer(meta)
         with h5py.File(Path(cfg['prepared'])/'inputs.h5','r') as f:
@@ -269,6 +283,7 @@ def worker(cfg,checking=False):
 def evaluate(cfg):
     from pycocoevalcap.tokenizer.ptbtokenizer import PTBTokenizer
     from pycocoevalcap.cider.cider import Cider
+    if sha(cfg['dataset_json'])!=DATA_SHA or sha(Path(cfg['chair'])/'chair.pkl')!=CHAIR_SHA:raise ValueError('Evaluation input identities differ')
     out=Path(cfg['output']);meta=load_metadata(cfg['metadata']);data=json.loads(Path(cfg['dataset_json']).read_text(encoding='utf-8'))
     done=[json.loads((out/f'worker_rank{r}.json').read_text()) for r in (0,1)]
     if any(r['status']!='COMPLETE' or r['updates']!=500 for r in done) or done[0]['final_head_sha256']!=done[1]['final_head_sha256']:raise ValueError('Incomplete or divergent workers')

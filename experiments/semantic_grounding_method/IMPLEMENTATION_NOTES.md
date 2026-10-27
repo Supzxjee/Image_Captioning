@@ -6,6 +6,8 @@ The two experiment notebooks share ONE preparation dataset. First use **PREPARE 
 
 This extra preparation pass is needed for matched immutable data across accounts; it is not a third experiment notebook. Do not run two independent preparations or use a small review ZIP as the preparation dataset.
 
+Share the private preparation dataset with Ngân before attaching it in her account. Select the same Kaggle container image and T4x2 hardware; the final comparison rejects mismatched Torch/CUDA/backend/runtime manifests. User reported25GPUhours remaining on EACH account; this is recorded separately from the conservative7.8device-GPUhour cap and is not pooled across accounts.
+
 Required once during preparation:
 
 - A `/kaggle/input/datasets/ducanh2403/pair-source-fullframe-ce/upt_hidden_caption_A/checkpoint.bin`.
@@ -21,3 +23,5 @@ The pure metadata package contains6,177eligible groups on1,999of2,000selectedima
 Implementation limits explicitly permitted by the protocol: no held-out box-label bank is currently packaged, so held-out/reference and generated-phrase grounding evaluations are marked UNAVAILABLE. Caption metrics and training attribution may be reported, but they do not establish grounding correctness or the proposed paper contribution. A later grounding evaluation would require a separately verified held-out annotation input/policy, not treating missing mappings as negative labels.
 
 The actual throughput,64/128quadrature-gradient tolerance, baseline caption parity and training efficacy remain unverified until user-run preflight. Every failure is archived; a computational stop is INCOMPLETE, not a negative quality result. Do not lower thresholds or reduce the500updates to make a failed preflight pass. The fixed cap is not a runtime prediction.
+
+The small experimental `checkpoint.bin` contains the NEW head and optimizer, not a replacement full A checkpoint. Future inference must load the exact frozenA first and then `head_state_dict`. Preserve both inputs and the run receipts.

@@ -48,18 +48,20 @@ class Captioner(nn.Module):
         return base+self.head(h,z,self.base.decoder.fc_out.weight),base
 
     @torch.no_grad()
-    def generate(self,memory,padding,z,tok,sample=False,baseline=False):
+    def generate(self,memory,padding,z,tok,sample=False,baseline=False,return_trace=False):
         ids=torch.full((len(memory),1),tok.bos_idx,device=memory.device,dtype=torch.long)
-        live=torch.ones(len(memory),device=memory.device,dtype=torch.bool);masks=[]
+        live=torch.ones(len(memory),device=memory.device,dtype=torch.bool);masks=[];chosen=[]
         for _ in range(29):
             h,base=self.states(ids,memory,padding)
             logits=base[:,-1] if baseline else base[:,-1]+self.head(h[:,-1:],z,self.base.decoder.fc_out.weight)[:,0]
             if not torch.isfinite(logits).all():raise FloatingPointError('Nonfinite rollout')
             token=torch.multinomial(logits.softmax(-1),1).flatten() if sample else logits.argmax(-1)
             token=torch.where(live,token,tok.pad_idx);masks.append(live.clone())
+            if return_trace:chosen.append(logits.log_softmax(-1).gather(1,token[:,None]).flatten())
             ids=torch.cat([ids,token[:,None]],1);live=live&token.ne(tok.eos_idx)
             if not live.any():break
-        return ids,torch.stack(masks,1)
+        result=(ids,torch.stack(masks,1))
+        return result+(torch.stack(chosen,1),) if return_trace else result
 
     def auxiliary(self,group,memory,padding,z,nodes=64):
         device=memory.device;traces=[]

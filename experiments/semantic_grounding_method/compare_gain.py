@@ -24,8 +24,13 @@ def compare(paths,out):
     baseline=readers['C']('A_predictions.json')
     if any(r('A_predictions.json')!=baseline for r in readers.values()):raise ValueError('A predictions differ')
     start=readers['C']('worker_rank0.json')['initial_head_sha256']
+    runtime=readers['C']('runtime_rank0.json')
+    runtime_keys=('torch','cuda','cudnn','gpu','packages','deterministic_algorithms','mha_fastpath','sdp_math','sdp_flash','sdp_mem_efficient','cublas_workspace','python_hash_seed')
     for r in readers.values():
         if any(r(f'worker_rank{i}.json')['initial_head_sha256']!=start for i in (0,1)):raise ValueError('Initialization differs')
+        for i in (0,1):
+            current=r(f'runtime_rank{i}.json')
+            if any(current.get(k)!=runtime.get(k) for k in runtime_keys):raise ValueError('Unmatched execution runtime; inspect before attributing a method effect')
     values={k:{r['image_id']:r['CIDEr'] for r in rd('end_per_image_cider.json')} for k,rd in readers.items()}
     values['A']={r['image_id']:r['CIDEr'] for r in readers['C']('A_per_image_cider.json')}
     ids=sorted(values['A'])
@@ -37,7 +42,7 @@ def compare(paths,out):
         for k in boots:boots[k].extend(differences[k][indices].mean(1).tolist())
     result={f'T-{k}':dict(delta=float(differences[k].mean()),ci95=np.quantile(boots[k],[.025,.975]).tolist()) for k in boots}
     t=summaries['T']['metrics']['end'];a=summaries['T']['metrics']['A']
-    guards=dict(cider_delta=result['T-A']['delta']>=.01,confidence=all(v['ci95'][0]>0 for v in result.values()),
+    guards=dict(cider_delta=result['T-A']['delta']>=.01,prior_delta=result['T-H']['delta']>0,confidence=all(v['ci95'][0]>0 for v in result.values()),
         chair_s=t['chair']['CHAIRs']<=a['chair']['CHAIRs'],chair_i=t['chair']['CHAIRi']<=a['chair']['CHAIRi'],recall=t['chair']['Recall']>=a['chair']['Recall']-.005)
     artifact=dict(status='EXPLORATORY_CONTINUATION_GATE_PASS' if all(guards.values()) else 'COMPLETED_QUALITY_NO_GO',
         comparisons=result,guards=guards,bootstrap=dict(resamples=10000,seed=42,unit='paired image',ci='percentile95'),

@@ -62,7 +62,7 @@ def build():
                 assert AVAILABLE_DEVICE_GPU_HOURS >= {4.4 if label=='CH' else 2.2},'Insufficient conservative allocation for this account; do not combine accounts.'
             print('Grounded gain',MODE,ARMS,'— bootstrap started',flush=True)
             '''),nb.code(f'''
-            import hashlib,json,os,shutil,signal,subprocess,sys,tempfile,threading,time
+            import hashlib,json,os,shutil,signal,subprocess,sys,tempfile,threading,time,traceback,zipfile
             os.environ.update(PYTHONUNBUFFERED='1',HDF5_USE_FILE_LOCKING='FALSE',PYTHONHASHSEED='42',
                 CUBLAS_WORKSPACE_CONFIG=':4096:8',OMP_NUM_THREADS='2',OPENBLAS_NUM_THREADS='2',TOKENIZERS_PARALLELISM='false')
             REPO=Path(tempfile.mkdtemp(prefix='grounded-gain-{label.lower()}-'))/'repo'
@@ -71,12 +71,18 @@ def build():
             PROJECT_COMMIT={commit!r}
             SOURCE_HASHES={hashes!r}
             METADATA_SHA={metadata['metadata_sha256']!r}
+            def fail(message):
+                (OUTPUT_ROOT/'grounded_gain_{label.lower()}_failure.json').write_text(json.dumps(dict(error=str(message),stack=traceback.format_stack())))
+                raise RuntimeError(message)
             def run(args,cwd=None,timeout=900):
                 args=list(map(str,args));print('\\nRunning:',' '.join(args),flush=True)
                 with LOG.open('a',encoding='utf-8') as log:
                     log.write('\\nRunning: '+' '.join(args)+'\\n');log.flush()
-                    process=subprocess.Popen(args,cwd=cwd,stdout=subprocess.PIPE,stderr=subprocess.STDOUT,
-                        text=True,errors='replace',bufsize=1,start_new_session=True)
+                    try:
+                        process=subprocess.Popen(args,cwd=cwd,stdout=subprocess.PIPE,stderr=subprocess.STDOUT,
+                            text=True,errors='replace',bufsize=1,start_new_session=True)
+                    except Exception as error:
+                        log.write(traceback.format_exc());log.flush();fail(str(error))
                     def drain():
                         for line in process.stdout:print(line,end='',flush=True);log.write(line);log.flush()
                     reader=threading.Thread(target=drain,daemon=True);reader.start();start=time.monotonic()
@@ -86,24 +92,36 @@ def build():
                                 os.killpg(process.pid,signal.SIGTERM)
                                 try:process.wait(timeout=10)
                                 except subprocess.TimeoutExpired:os.killpg(process.pid,signal.SIGKILL);process.wait()
-                                raise RuntimeError('INCOMPLETE_COMPUTATIONAL_NO_GO: fixed timeout exceeded')
+                                fail('INCOMPLETE_COMPUTATIONAL_NO_GO: fixed timeout exceeded')
                             reader.join(timeout=20)
                             if process.poll() is None:print('Worker(s) active; elapsed',round(time.monotonic()-start,1),'s; see stage log.',flush=True)
                         reader.join()
-                        if process.returncode:raise RuntimeError(f'Command failed ({{process.returncode}}); preserve {{LOG}}')
+                        if process.returncode:fail(f'Command failed ({{process.returncode}}); preserve {{LOG}}')
                     finally:
                         if process.poll() is None:os.killpg(process.pid,signal.SIGTERM);process.wait()
                         reader.join(timeout=5)
+            def preserve_review(output):
+                # stdlib fallback must not run source guards or hide the original failure.
+                try:
+                    output=Path(output);output.mkdir(parents=True,exist_ok=True)
+                    shutil.copyfile(LOG,output/'notebook.log')
+                    with zipfile.ZipFile(str(output)+'_review.zip','w',zipfile.ZIP_DEFLATED) as archive:
+                        for p in sorted(output.rglob('*')):
+                            if p.is_file() and p.suffix in ('.json','.jsonl','.log','.py','.md'):archive.write(p,p.relative_to(output))
+                    print('SEND REVIEW:',str(output)+'_review.zip',flush=True)
+                except Exception as error:
+                    print('Could not build review ZIP; preserve original output/log:',output,LOG,repr(error),flush=True)
             REPO.mkdir()
             run(['git','init',REPO]);run(['git','remote','add','origin','https://github.com/Supzxjee/Image_Captioning.git'],cwd=REPO)
             run(['git','fetch','--depth','1','origin',PROJECT_COMMIT],cwd=REPO)
             run(['git','checkout','--detach','FETCH_HEAD'],cwd=REPO)
-            assert subprocess.check_output(['git','rev-parse','HEAD'],cwd=REPO,text=True).strip()==PROJECT_COMMIT
+            if subprocess.check_output(['git','rev-parse','HEAD'],cwd=REPO,text=True).strip()!=PROJECT_COMMIT:fail('Wrong project commit')
             os.environ['PYTHONPATH']=str(REPO)
             HERE=REPO/'experiments/semantic_grounding_method'
             METADATA=HERE/'data/gain_metadata.json.gz'
-            assert hashlib.sha256(METADATA.read_bytes()).hexdigest()==METADATA_SHA
-            for name,expected in SOURCE_HASHES.items():assert hashlib.sha256((REPO/name).read_bytes()).hexdigest()==expected,name
+            if hashlib.sha256(METADATA.read_bytes()).hexdigest()!=METADATA_SHA:fail('Metadata digest mismatch')
+            for name,expected in SOURCE_HASHES.items():
+                if hashlib.sha256((REPO/name).read_bytes()).hexdigest()!=expected:fail('Source digest mismatch: '+name)
             '''),nb.code('''
             run([sys.executable,'-m','pip','install','-q','transformers==4.57.1','pycocotools','pycocoevalcap==1.2','h5py','numpy','Pillow','nltk==3.9.2','future'])
             run([sys.executable,'-m','pip','install','-q','--no-deps','git+https://github.com/clips/pattern.git@af754685cca3713db0abc4f020f2e94467c19d85'])
@@ -128,18 +146,18 @@ def build():
                     run([sys.executable,'-u',RUNTIME,'prepare','--config',config],cwd=REPO,timeout=1800)
                 except Exception as error:
                     PREPARED_OUTPUT.mkdir(parents=True,exist_ok=True)
-                    (PREPARED_OUTPUT/'failure.json').write_text(json.dumps(dict(status='INCOMPLETE_COMPUTATIONAL_NO_GO',error=str(error))))
+                    (PREPARED_OUTPUT/'failure.json').write_text(json.dumps(dict(status='INCOMPLETE_COMPUTATIONAL_NO_GO',error=str(error),traceback=traceback.format_exc())))
                     raise
                 finally:
                     if PREPARED_OUTPUT.is_dir():
-                        shutil.copyfile(LOG,PREPARED_OUTPUT/'notebook.log')
-                        run([sys.executable,'-u',RUNTIME,'archive','--config',config],cwd=REPO,timeout=120)
+                        preserve_review(PREPARED_OUTPUT)
                 print('PREPARATION COMPLETE. Save entire folder as a private dataset, attach to both accounts:',PREPARED_OUTPUT,flush=True)
                 print('Then switch C/H MODE to train; T already uses train. This pass has NOT trained C/H/T.',flush=True)
             '''),nb.code('''
             if MODE=='train':
                 import torch
                 assert torch.cuda.device_count()==2,'Choose T4x2 on EACH notebook.'
+                assert all('T4' in torch.cuda.get_device_name(i) for i in (0,1)),'Protocol requires the same T4x2 hardware on both accounts.'
                 if PREPARED_ROOT is None:
                     matches=[]
                     for p in Path('/kaggle/input').rglob('receipt.json'):
@@ -150,7 +168,7 @@ def build():
                     PREPARED_ROOT=matches[0]
                 sys.path.insert(0,str(HERE))
                 from gain_data import checked_cache
-                checked_cache(PREPARED_ROOT,METADATA_SHA)
+                checked_cache(PREPARED_ROOT,METADATA_SHA,hash_payloads=False)  # rank0 verifies full payloads before each GPU phase.
                 run([sys.executable,'-u',HERE/'test_gain_model.py'],cwd=REPO,timeout=120)
                 for arm in ARMS:
                     output=OUTPUT_ROOT/('grounded_gain_'+arm)
@@ -177,11 +195,10 @@ def build():
                         assert remaining>0,'Arm time cap exhausted before CPU endpoint scoring.'
                         run([sys.executable,'-u',RUNTIME,'evaluate','--config',config],cwd=REPO,timeout=remaining)
                     except Exception as error:
-                        (output/'failure.json').write_text(json.dumps(dict(status='INCOMPLETE_COMPUTATIONAL_NO_GO',error=str(error),arm=arm)))
+                        (output/'failure.json').write_text(json.dumps(dict(status='INCOMPLETE_COMPUTATIONAL_NO_GO',error=str(error),arm=arm,traceback=traceback.format_exc())))
                         raise
                     finally:
-                        shutil.copyfile(LOG,output/'notebook.log')
-                        run([sys.executable,'-u',RUNTIME,'archive','--config',config],cwd=REPO,timeout=120)
+                        preserve_review(output)
                     print('DONE',arm,'SEND:',str(output)+'_review.zip','KEEP:',output/'checkpoint.bin',flush=True)
             '''),nb.md('''
             Gửi đủ3ZIP review C/H/T; giữ riêng checkpoint.bin và nguyên dataset chuẩn bị.
