@@ -1,0 +1,180 @@
+{
+  "date": "2026-10-27",
+  "scope": "Existing head/name spans only, before modifier expansion; metadata counts, not a model metric or representative language ambiguity rate.",
+  "spans": 17904,
+  "prefix_groups": 14038,
+  "pair_count_distribution": {
+    "1": 13457,
+    "2": 541,
+    "3": 37,
+    "4": 3
+  },
+  "singleton_prefix_groups": 13457,
+  "multi_pair_prefix_groups": 581,
+  "multi_pair_fraction": 0.041387662060122524,
+  "multi_box_prefix_groups": 75,
+  "multi_box_fraction": 0.005342641401909104,
+  "images_with_multi_pair_prefix": 570,
+  "images_with_multi_box_prefix": 74,
+  "same_box_lexical_alternatives_only": 506,
+  "raw_prefix_collision_groups": 0,
+  "multi_pairs_with_UNK_prefix": 0,
+  "receipt_sha256": "bde873ba77124333488b263a052419dc80e412c1e089178cdf423d2836e1b146",
+  "policy": "Exact A token-ID prefix before first head/name token; deduplicate normalized raw head/name plus annotation ID; no generated captions or scores.",
+  "examples": [
+    {
+      "coco_id": 206913,
+      "prefix": [
+        "a"
+      ],
+      "pairs": [
+        {
+          "phrase": "bike",
+          "annotation_id": 241350,
+          "category": "bicycle"
+        },
+        {
+          "phrase": "horse",
+          "annotation_id": 54742,
+          "category": "horse"
+        },
+        {
+          "phrase": "bicycle",
+          "annotation_id": 241350,
+          "category": "bicycle"
+        }
+      ]
+    },
+    {
+      "coco_id": 483996,
+      "prefix": [
+        "a"
+      ],
+      "pairs": [
+        {
+          "phrase": "sandwich",
+          "annotation_id": 1908467,
+          "category": "sandwich"
+        },
+        {
+          "phrase": "hot dog",
+          "annotation_id": 1068851,
+          "category": "hot dog"
+        }
+      ]
+    },
+    {
+      "coco_id": 278463,
+      "prefix": [
+        "a"
+      ],
+      "pairs": [
+        {
+          "phrase": "laptop",
+          "annotation_id": 1104463,
+          "category": "laptop"
+        },
+        {
+          "phrase": "cat",
+          "annotation_id": 47910,
+          "category": "cat"
+        }
+      ]
+    },
+    {
+      "coco_id": 15906,
+      "prefix": [
+        "a"
+      ],
+      "pairs": [
+        {
+          "phrase": "chair",
+          "annotation_id": 377524,
+          "category": "chair"
+        },
+        {
+          "phrase": "clock",
+          "annotation_id": 335291,
+          "category": "clock"
+        }
+      ]
+    },
+    {
+      "coco_id": 263896,
+      "prefix": [
+        "a"
+      ],
+      "pairs": [
+        {
+          "phrase": "woman",
+          "annotation_id": 197644,
+          "category": "person"
+        },
+        {
+          "phrase": "pizza",
+          "annotation_id": 1077533,
+          "category": "pizza"
+        }
+      ]
+    },
+    {
+      "coco_id": 442218,
+      "prefix": [
+        "a"
+      ],
+      "pairs": [
+        {
+          "phrase": "bowl",
+          "annotation_id": 717381,
+          "category": "bowl"
+        },
+        {
+          "phrase": "sandwich",
+          "annotation_id": 312563,
+          "category": "sandwich"
+        }
+      ]
+    },
+    {
+      "coco_id": 152702,
+      "prefix": [
+        "a"
+      ],
+      "pairs": [
+        {
+          "phrase": "woman",
+          "annotation_id": 188979,
+          "category": "person"
+        },
+        {
+          "phrase": "horse",
+          "annotation_id": 55521,
+          "category": "horse"
+        }
+      ]
+    },
+    {
+      "coco_id": 176778,
+      "prefix": [
+        "a"
+      ],
+      "pairs": [
+        {
+          "phrase": "cat",
+          "annotation_id": 51451,
+          "category": "cat"
+        },
+        {
+          "phrase": "toilet",
+          "annotation_id": 1096162,
+          "category": "toilet"
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "Expanded modifiers may change prefix grouping; these are not full-NP counts.",
+    "Repeated or same-box aliases do not establish cross-region semantic binding need.",
+    "No count demonstrates originality or caption benefit."
+  ]
+}

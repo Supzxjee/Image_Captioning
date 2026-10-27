@@ -1,0 +1,36 @@
+{
+  "scope": "Synthetic logit arithmetic only: no neural model, dataset inference or GPU.",
+  "seed": 42,
+  "quadrature_order": 64,
+  "random_case_completeness_residual": 2.7755575615628914e-16,
+  "common_logit_offset_invariance": true,
+  "zero_branch_gain_penalized": true,
+  "competitor_only_suppression": {
+    "target_logit_change": 0,
+    "delta": 0.3798854930417224,
+    "support_contribution": 0.3798854930417226,
+    "interpretation": "Discriminative probability support, not proof of local object recognition."
+  },
+  "identical_total_logits_different_allocation": {
+    "delta": 0.3798854930417224,
+    "support_a": 0.37988549304172237,
+    "support_b": 0.0,
+    "interpretation": "Attribution is conditional on the chosen branch decomposition."
+  },
+  "within_group_cancellation": {
+    "contributions": [
+      3.7988549304172237,
+      -3.4189694373755017,
+      0.0
+    ],
+    "penalties": {
+      "gain": 0,
+      "groundgain": 0,
+      "cancel": 0
+    },
+    "interpretation": "Two-group budget cannot bound cancellation within either group."
+  },
+  "cross_group_cancellation_detected": true,
+  "outside_only_gain_penalized": true,
+  "limitations": "Synthetic finite logits only. No gradients, phrase trie, model runtime, grounding, caption quality or novelty validated."
+}
