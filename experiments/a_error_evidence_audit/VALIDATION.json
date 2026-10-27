@@ -1,0 +1,13 @@
+{
+  "date": "2026-10-27",
+  "checks_passed": 3,
+  "checks": [
+    "source caption/COCO-ID/reference join",
+    "image SHA and offline HTML links/224px shapes",
+    "uncertainty/reference-disagreement preserved"
+  ],
+  "local_model_execution": false,
+  "new_gpu_run": false,
+  "new_metrics": false,
+  "human_gold": false
+}

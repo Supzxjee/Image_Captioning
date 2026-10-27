@@ -8,3 +8,4 @@ __pycache__/
 *.pt.partial
 vlm_outputs/
 experiments/role_interval_alignment/review/
+experiments/a_error_evidence_audit/review/

@@ -1,0 +1,786 @@
+[
+  {
+    "image_id": 17414,
+    "coco_id": 248919,
+    "filename": "COCO_val2014_000000248919.jpg",
+    "filepath": "val2014",
+    "caption_A": "a kitchen with a stove a table and a sink",
+    "references": [
+      "Lots of fruit sits on bowls on the counter of this kitchen. ",
+      "A white stove top oven sitting inside of a kitchen.",
+      "A white stove and table in a small kitchen.",
+      "A very big kitchen with many wooden cabinets.",
+      "A kitchen with a microwave, stove, cutlery and fruits. "
+    ],
+    "automatic": {
+      "chair_flagged": true,
+      "hallucinated_words": [
+        [
+          "sink",
+          "sink"
+        ]
+      ],
+      "gt_object_classes": [
+        "apple",
+        "book",
+        "bowl",
+        "carrot",
+        "chair",
+        "dining table",
+        "knife",
+        "microwave",
+        "orange",
+        "oven"
+      ],
+      "generated_classes": [
+        "dining table",
+        "oven",
+        "sink"
+      ],
+      "unmentioned_classes": [
+        "apple",
+        "book",
+        "bowl",
+        "carrot",
+        "chair",
+        "knife",
+        "microwave",
+        "orange"
+      ],
+      "A_cider_val5000": 1.2061643011932128
+    },
+    "captions": {
+      "A": "a kitchen with a stove a table and a sink",
+      "native_H": "a kitchen with a stove a table and a sink",
+      "native_L": "a kitchen with a stove a table and a sink",
+      "noun_G": "a kitchen with a stove a table and chairs",
+      "noun_S": "a kitchen with a stove a table and chairs",
+      "VG_G": "a kitchen with a stove a table and a sink",
+      "VG_T": "a kitchen with a stove a table and a sink",
+      "VG_GV": "a kitchen with a stove a table and a sink",
+      "stale_C": "a kitchen with a stove a table and a sink",
+      "stale_T": "a kitchen with a stove a table and a sink"
+    },
+    "branch_chair_flags": {
+      "A": true,
+      "native_H": true,
+      "native_L": true,
+      "noun_G": false,
+      "noun_S": false,
+      "VG_G": true,
+      "VG_T": true,
+      "VG_GV": true,
+      "stale_C": true,
+      "stale_T": true
+    },
+    "upt_valid_pairs_recorded": 0,
+    "scope": "Diagnostic candidates, not established errors. References/CHAIR are not human truth; missing mentions may be appropriate.",
+    "selection_stratum": "CHAIR-positive with cross-branch coverage",
+    "review": {
+      "focus": false,
+      "status": "uncertain",
+      "type": "annotation_boundary",
+      "observation": "CHAIR đánh dấu sink; ảnh bếp có góc bị che/khuất. Không lấy việc thiếu nhãn sink làm bằng chứng chắc chắn sink không tồn tại.",
+      "uncertainty": "Giữ làm đối chứng annotation-based flag; chưa xác nhận sai vật."
+    },
+    "image": {
+      "coco_id": 248919,
+      "filename": "COCO_val2014_000000248919.jpg",
+      "url": "http://images.cocodataset.org/val2014/COCO_val2014_000000248919.jpg",
+      "method": "official COCO image CDN",
+      "bytes": 144049,
+      "sha256": "479b393a08ec8ddb3a73086713b6f1107ddd21c582f2b8486320d1366cb5022f",
+      "original_size": [
+        640,
+        427
+      ],
+      "preview224": "PIL bilinear visual aid only; not exact cached model input or evidence the model recognizes a cue."
+    }
+  },
+  {
+    "image_id": 31328,
+    "coco_id": 45962,
+    "filename": "COCO_val2014_000000045962.jpg",
+    "filepath": "val2014",
+    "caption_A": "a bunch of bananas that are sitting on a table.",
+    "references": [
+      "A close up picture of a group of bananas.",
+      "An artistic closeup of a bunch of bananas.",
+      "View from underneath a bunch of bananas hanging in a tree.",
+      "A bunch of bananas are sitting on top of a counter.",
+      "a bunch of bananas are bunched together "
+    ],
+    "automatic": {
+      "chair_flagged": true,
+      "hallucinated_words": [
+        [
+          "table",
+          "dining table"
+        ]
+      ],
+      "gt_object_classes": [
+        "banana"
+      ],
+      "generated_classes": [
+        "banana",
+        "dining table"
+      ],
+      "unmentioned_classes": [],
+      "A_cider_val5000": 2.5367166056427037
+    },
+    "captions": {
+      "A": "a bunch of bananas that are sitting on a table.",
+      "native_H": "a bunch of bananas that are on a table.",
+      "native_L": "a bunch of bananas that are on a table.",
+      "noun_G": "a bunch of bananas that are sitting on a table.",
+      "noun_S": "a bunch of bananas that are sitting on a table.",
+      "VG_G": "a bunch of bananas that are on a table.",
+      "VG_T": "a close up of a bunch of bananas",
+      "VG_GV": "a bunch of bananas that are sitting on a table.",
+      "stale_C": "a bunch of bananas that are on a table.",
+      "stale_T": "a bunch of bananas that are on a table."
+    },
+    "branch_chair_flags": {
+      "A": true,
+      "native_H": true,
+      "native_L": true,
+      "noun_G": true,
+      "noun_S": true,
+      "VG_G": true,
+      "VG_T": false,
+      "VG_GV": true,
+      "stale_C": true,
+      "stale_T": true
+    },
+    "upt_valid_pairs_recorded": 0,
+    "scope": "Diagnostic candidates, not established errors. References/CHAIR are not human truth; missing mentions may be appropriate.",
+    "selection_stratum": "CHAIR-positive with cross-branch coverage",
+    "review": {
+      "focus": false,
+      "status": "uncertain",
+      "type": "unseen_support_surface",
+      "observation": "Ảnh cận cảnh chuối; bề mặt đỡ không hiện rõ. Không thể xác nhận hay phủ định on a table chỉ từ ảnh này.",
+      "uncertainty": "Không đổi thiếu bằng chứng thành false; CHAIR flag chưa là lỗi chắc chắn."
+    },
+    "image": {
+      "coco_id": 45962,
+      "filename": "COCO_val2014_000000045962.jpg",
+      "url": "http://images.cocodataset.org/val2014/COCO_val2014_000000045962.jpg",
+      "method": "official COCO image CDN",
+      "bytes": 85046,
+      "sha256": "80235769899733a72601a0a4db83e39d3d9405e016c98fa15fd0efd0d93f9fd4",
+      "original_size": [
+        640,
+        586
+      ],
+      "preview224": "PIL bilinear visual aid only; not exact cached model input or evidence the model recognizes a cue."
+    }
+  },
+  {
+    "image_id": 14246,
+    "coco_id": 458510,
+    "filename": "COCO_val2014_000000458510.jpg",
+    "filepath": "val2014",
+    "caption_A": "a plate of food with a fork and a sandwich",
+    "references": [
+      "The plate full of food has a side of beans and cheese on it.",
+      "A white plate holding three food items and an eating utensil.",
+      "a plate with some meat and beans on it ",
+      "A plate holds mexican food covered in cheese.",
+      "A dish is shown with unknown food and beans as a side."
+    ],
+    "automatic": {
+      "chair_flagged": true,
+      "hallucinated_words": [
+        [
+          "fork",
+          "fork"
+        ],
+        [
+          "sandwich",
+          "sandwich"
+        ]
+      ],
+      "gt_object_classes": [
+        "dining table",
+        "spoon"
+      ],
+      "generated_classes": [
+        "fork",
+        "sandwich"
+      ],
+      "unmentioned_classes": [
+        "dining table",
+        "spoon"
+      ],
+      "A_cider_val5000": 0.4590109476144857
+    },
+    "captions": {
+      "A": "a plate of food with a fork and a sandwich",
+      "native_H": "a plate of food with a fork and a knife",
+      "native_L": "a plate of food with a fork and a knife",
+      "noun_G": "a plate of food with a fork and knife",
+      "noun_S": "a plate of food with a fork and knife",
+      "VG_G": "a plate of food with a fork and a sandwich",
+      "VG_T": "a plate of food with a fork and a sandwich",
+      "VG_GV": "a plate of food with a fork and a sandwich",
+      "stale_C": "a plate of food with a fork and a knife",
+      "stale_T": "a plate of food with a fork and a knife"
+    },
+    "branch_chair_flags": {
+      "A": true,
+      "native_H": true,
+      "native_L": true,
+      "noun_G": true,
+      "noun_S": true,
+      "VG_G": true,
+      "VG_T": true,
+      "VG_GV": true,
+      "stale_C": true,
+      "stale_T": true
+    },
+    "upt_valid_pairs_recorded": 0,
+    "scope": "Diagnostic candidates, not established errors. References/CHAIR are not human truth; missing mentions may be appropriate.",
+    "selection_stratum": "CHAIR-positive with cross-branch coverage",
+    "review": {
+      "focus": false,
+      "status": "uncertain",
+      "type": "occluded_food_identity",
+      "observation": "Món chính bị phủ sốt/phô mai; dụng cụ ăn bên phải bị khuất một phần. Không chốt sandwich/fork sai chỉ theo CHAIR.",
+      "uncertainty": "References cũng nói unknown food. Giữ ngoài nhóm lỗi rõ."
+    },
+    "image": {
+      "coco_id": 458510,
+      "filename": "COCO_val2014_000000458510.jpg",
+      "url": "http://images.cocodataset.org/val2014/COCO_val2014_000000458510.jpg",
+      "method": "official COCO image CDN",
+      "bytes": 198950,
+      "sha256": "2331710a5b1f578b9323d9413a074220e462f160b3dbce3f02c25e6c93463b15",
+      "original_size": [
+        640,
+        480
+      ],
+      "preview224": "PIL bilinear visual aid only; not exact cached model input or evidence the model recognizes a cue."
+    }
+  },
+  {
+    "image_id": 6071,
+    "coco_id": 371564,
+    "filename": "COCO_val2014_000000371564.jpg",
+    "filepath": "val2014",
+    "caption_A": "a man is holding an umbrella and looking at his phone.",
+    "references": [
+      "A man standing under an umbrella  in the rain using a cell phone.",
+      "a couple of people holding an umbrella ",
+      "Adult man standing under umbrella on rainy day looking at cell phone.",
+      "A man wearing a hat and covered by an umbrella is on his cellphone.",
+      "A person is using their phone under an umbrella."
+    ],
+    "automatic": {
+      "chair_flagged": false,
+      "hallucinated_words": [],
+      "gt_object_classes": [
+        "cell phone",
+        "person",
+        "umbrella"
+      ],
+      "generated_classes": [
+        "cell phone",
+        "person",
+        "umbrella"
+      ],
+      "unmentioned_classes": [],
+      "A_cider_val5000": 1.3543912519199304
+    },
+    "captions": {
+      "A": "a man is holding an umbrella and looking at his phone.",
+      "native_H": "a man is holding an umbrella and looking at his phone.",
+      "native_L": "a man is using his cell phone while holding an umbrella.",
+      "noun_G": "a man is holding an umbrella and looking at his phone.",
+      "noun_S": "a man is holding an umbrella and looking at his phone."
+    },
+    "branch_chair_flags": {
+      "A": false,
+      "native_H": false,
+      "native_L": false,
+      "noun_G": false,
+      "noun_S": false
+    },
+    "upt_valid_pairs_recorded": null,
+    "scope": "Diagnostic candidates, not established errors. References/CHAIR are not human truth; missing mentions may be appropriate.",
+    "selection_stratum": "Unflagged possible action/relation problem",
+    "review": {
+      "focus": false,
+      "status": "acceptable_control",
+      "type": "metric_boundary",
+      "observation": "Người dưới ô đang nhìn/dùng điện thoại. Caption A hợp lý dù không trùng từng chi tiết reference.",
+      "uncertainty": "Không coi mọi thiếu chi tiết là lỗi."
+    },
+    "image": {
+      "coco_id": 371564,
+      "filename": "COCO_val2014_000000371564.jpg",
+      "url": "http://images.cocodataset.org/val2014/COCO_val2014_000000371564.jpg",
+      "method": "official COCO image CDN",
+      "bytes": 64012,
+      "sha256": "1facad51bc1b34723f5a0bf8661a9e99b26e13519772d84e161ceebc19455b2b",
+      "original_size": [
+        640,
+        428
+      ],
+      "preview224": "PIL bilinear visual aid only; not exact cached model input or evidence the model recognizes a cue."
+    }
+  },
+  {
+    "image_id": 18111,
+    "coco_id": 140391,
+    "filename": "COCO_val2014_000000140391.jpg",
+    "filepath": "val2014",
+    "caption_A": "a display case with a variety of desserts and cakes.",
+    "references": [
+      "A couple different pastries on a pastry dish.",
+      "An assortment of pastries on display under glass.",
+      "Two cake plates with glass tops sitting on a table.",
+      "Pastries under serving glasses at a coffee shop",
+      "A table holds different pastries under glass lids."
+    ],
+    "automatic": {
+      "chair_flagged": false,
+      "hallucinated_words": [],
+      "gt_object_classes": [
+        "cake",
+        "dining table",
+        "potted plant"
+      ],
+      "generated_classes": [
+        "cake"
+      ],
+      "unmentioned_classes": [
+        "dining table",
+        "potted plant"
+      ],
+      "A_cider_val5000": 0.06648016221080043
+    },
+    "captions": {
+      "A": "a display case with a variety of desserts and cakes.",
+      "native_H": "a display case with a variety of desserts and cakes.",
+      "native_L": "a display case with a variety of desserts and cakes.",
+      "noun_G": "a display case with cakes and pastries on plates.",
+      "noun_S": "a display case with cakes and pastries on plates.",
+      "VG_G": "a display case with a variety of desserts and cakes.",
+      "VG_T": "a display of a variety of desserts and desserts",
+      "VG_GV": "a display of a variety of desserts and desserts",
+      "stale_C": "a display case with a variety of desserts and cakes.",
+      "stale_T": "a display case with a variety of desserts and cakes."
+    },
+    "branch_chair_flags": {
+      "A": false,
+      "native_H": false,
+      "native_L": false,
+      "noun_G": false,
+      "noun_S": false,
+      "VG_G": false,
+      "VG_T": false,
+      "VG_GV": false,
+      "stale_C": false,
+      "stale_T": false
+    },
+    "upt_valid_pairs_recorded": 0,
+    "scope": "Diagnostic candidates, not established errors. References/CHAIR are not human truth; missing mentions may be appropriate.",
+    "selection_stratum": "Unflagged low reference-overlap, possible missing content",
+    "review": {
+      "focus": false,
+      "status": "acceptable_control",
+      "type": "metric_boundary",
+      "observation": "Bánh/pastries trưng dưới nắp kính; câu mô tả nhóm desserts/cakes có cơ sở, dù display case có thể khái quát.",
+      "uncertainty": "CIDEr thấp không đủ chứng minh sai nội dung."
+    },
+    "image": {
+      "coco_id": 140391,
+      "filename": "COCO_val2014_000000140391.jpg",
+      "url": "http://images.cocodataset.org/val2014/COCO_val2014_000000140391.jpg",
+      "method": "official COCO image CDN",
+      "bytes": 160469,
+      "sha256": "6846bfaea9832a88526baac5d3a45b92f0c275b5b00d466e276e7b853a4e2a1f",
+      "original_size": [
+        640,
+        425
+      ],
+      "preview224": "PIL bilinear visual aid only; not exact cached model input or evidence the model recognizes a cue."
+    }
+  },
+  {
+    "image_id": 31618,
+    "coco_id": 16897,
+    "filename": "COCO_val2014_000000016897.jpg",
+    "filepath": "val2014",
+    "caption_A": "a man is using a laptop while another man works on a computer.",
+    "references": [
+      "a man is on his laptop and so are others",
+      "A series of photos showing a man using a series of electronic devices.",
+      "Several pictures of people using tablets and laptops.",
+      "Many pictures of people using their laptops and notebooks.",
+      "A man wearing a blue shirt is using a laptop computer another person with a checker shirt has his laptop screen facing outward."
+    ],
+    "automatic": {
+      "chair_flagged": false,
+      "hallucinated_words": [],
+      "gt_object_classes": [
+        "cell phone",
+        "chair",
+        "laptop",
+        "person"
+      ],
+      "generated_classes": [
+        "laptop",
+        "person"
+      ],
+      "unmentioned_classes": [
+        "cell phone",
+        "chair"
+      ],
+      "A_cider_val5000": 0.32462933014136325
+    },
+    "captions": {
+      "A": "a man is using a laptop while another man works on a computer.",
+      "native_H": "a man is using a laptop while another man works on a computer.",
+      "native_L": "a man is using a laptop while another man works on a computer.",
+      "noun_G": "a man is using a laptop while another man works on a computer.",
+      "noun_S": "a man is using a laptop while another man works on a computer.",
+      "VG_G": "a man is using a laptop while another man works on his laptop.",
+      "VG_T": "a man is using a laptop while another man works on a computer.",
+      "VG_GV": "a man is using a laptop while another man works on a computer.",
+      "stale_C": "a man is using a laptop while another man works on a computer.",
+      "stale_T": "a group of four pictures showing a man using a laptop computer."
+    },
+    "branch_chair_flags": {
+      "A": false,
+      "native_H": false,
+      "native_L": false,
+      "noun_G": false,
+      "noun_S": false,
+      "VG_G": false,
+      "VG_T": false,
+      "VG_GV": false,
+      "stale_C": false,
+      "stale_T": false
+    },
+    "upt_valid_pairs_recorded": 8,
+    "scope": "Diagnostic candidates, not established errors. References/CHAIR are not human truth; missing mentions may be appropriate.",
+    "selection_stratum": "Unflagged low reference-overlap, possible missing content",
+    "review": {
+      "focus": false,
+      "status": "uncertain",
+      "type": "collage_temporal_binding",
+      "observation": "Ảnh collage nhiều người/thiết bị. Không tự gán các panel thành một sự kiện đồng thời, cũng chưa đủ cơ sở phủ định câu A.",
+      "uncertainty": "Không đưa vào lỗi chắc chắn; binding giữa panel là vấn đề riêng."
+    },
+    "image": {
+      "coco_id": 16897,
+      "filename": "COCO_val2014_000000016897.jpg",
+      "url": "http://images.cocodataset.org/val2014/COCO_val2014_000000016897.jpg",
+      "method": "official COCO image CDN",
+      "bytes": 195241,
+      "sha256": "380d9922d69a402a79b73c4b172823aa97f7a2db98a25cb39f5547acfed0a16b",
+      "original_size": [
+        640,
+        427
+      ],
+      "preview224": "PIL bilinear visual aid only; not exact cached model input or evidence the model recognizes a cue."
+    }
+  },
+  {
+    "image_id": 24853,
+    "coco_id": 85328,
+    "filename": "COCO_val2014_000000085328.jpg",
+    "filepath": "val2014",
+    "caption_A": "a train is pulling into a train station.",
+    "references": [
+      "A commuter train at a stop in a major city.",
+      "A lime green train parked in front of a loading platform.",
+      "turquoise and yellow train on a track ",
+      "A train parked at an outdoor platform with buildings surrounding it.",
+      "A city train stopped at a boarding station."
+    ],
+    "automatic": {
+      "chair_flagged": false,
+      "hallucinated_words": [],
+      "gt_object_classes": [
+        "bench",
+        "handbag",
+        "person",
+        "train"
+      ],
+      "generated_classes": [
+        "train"
+      ],
+      "unmentioned_classes": [
+        "bench",
+        "handbag",
+        "person"
+      ],
+      "A_cider_val5000": 0.3796597433287484
+    },
+    "captions": {
+      "A": "a train is pulling into a train station.",
+      "native_H": "a train is pulling into a train station.",
+      "native_L": "a train is pulling into a train station.",
+      "noun_G": "a train is pulling into a train station.",
+      "noun_S": "a train is pulling into a train station.",
+      "VG_G": "a train is pulling into a train station.",
+      "VG_T": "a train is pulling into a train station.",
+      "VG_GV": "a train is pulling into a train station.",
+      "stale_C": "a train is pulling into a train station.",
+      "stale_T": "a train is pulling into a train station."
+    },
+    "branch_chair_flags": {
+      "A": false,
+      "native_H": false,
+      "native_L": false,
+      "noun_G": false,
+      "noun_S": false,
+      "VG_G": false,
+      "VG_T": false,
+      "VG_GV": false,
+      "stale_C": false,
+      "stale_T": false
+    },
+    "upt_valid_pairs_recorded": 8,
+    "scope": "Diagnostic candidates, not established errors. References/CHAIR are not human truth; missing mentions may be appropriate.",
+    "selection_stratum": "Unflagged low reference-overlap, possible missing content",
+    "review": {
+      "focus": false,
+      "status": "uncertain",
+      "type": "motion_from_still",
+      "observation": "Tàu ở ga; pulling into không thể được xác nhận chắc từ một ảnh tĩnh.",
+      "uncertainty": "Không dùng reference at a stop để coi pulling into chắc chắn sai."
+    },
+    "image": {
+      "coco_id": 85328,
+      "filename": "COCO_val2014_000000085328.jpg",
+      "url": "http://images.cocodataset.org/val2014/COCO_val2014_000000085328.jpg",
+      "method": "official COCO image CDN",
+      "bytes": 253109,
+      "sha256": "f795821ffa0a969b785f7a5131cfaae4401e18df94673f69703f32eebcce94ea",
+      "original_size": [
+        640,
+        511
+      ],
+      "preview224": "PIL bilinear visual aid only; not exact cached model input or evidence the model recognizes a cue."
+    }
+  },
+  {
+    "image_id": 30935,
+    "coco_id": 100811,
+    "filename": "COCO_val2014_000000100811.jpg",
+    "filepath": "val2014",
+    "caption_A": "a seagull is perched on a post with a boat in the background.",
+    "references": [
+      "A row of wooden poles with seagulls resting on them.",
+      "Two seagulls perched on the ends of a pier",
+      "A couple of small birds on a wooden pole.",
+      "Birds are sitting on posts near the water.",
+      "Seagulls sitting on pier posts in the sun"
+    ],
+    "automatic": {
+      "chair_flagged": false,
+      "hallucinated_words": [],
+      "gt_object_classes": [
+        "bird",
+        "boat",
+        "car",
+        "person"
+      ],
+      "generated_classes": [
+        "bird",
+        "boat"
+      ],
+      "unmentioned_classes": [
+        "car",
+        "person"
+      ],
+      "A_cider_val5000": 0.1053248764442056
+    },
+    "captions": {
+      "A": "a seagull is perched on a post with a boat in the background.",
+      "native_H": "a seagull is perched on a post with a boat in the background.",
+      "native_L": "a seagull is perched on a post with a boat in the background.",
+      "noun_G": "a seagull is perched on a post with a boat in the background.",
+      "noun_S": "a seagull is perched on a post with a boat in the background.",
+      "VG_G": "a seagull is perched on a post with a boat in the background.",
+      "VG_T": "a seagull is perched on a post with a boat in the background.",
+      "VG_GV": "a seagull is perched on a post with a boat in the background.",
+      "stale_C": "a seagull is perched on a post with a boat in the background.",
+      "stale_T": "a seagull is perched on a post with a boat in the background."
+    },
+    "branch_chair_flags": {
+      "A": false,
+      "native_H": false,
+      "native_L": false,
+      "noun_G": false,
+      "noun_S": false,
+      "VG_G": false,
+      "VG_T": false,
+      "VG_GV": false,
+      "stale_C": false,
+      "stale_T": false
+    },
+    "upt_valid_pairs_recorded": 8,
+    "scope": "Diagnostic candidates, not established errors. References/CHAIR are not human truth; missing mentions may be appropriate.",
+    "selection_stratum": "Unflagged low reference-overlap, possible missing content",
+    "review": {
+      "focus": false,
+      "status": "acceptable_control",
+      "type": "salient_foreground_selection",
+      "observation": "Một hải âu tiền cảnh trên cọc, tàu phía sau. Câu chọn đối tượng tiền cảnh là hợp lý dù còn các chim khác.",
+      "uncertainty": "Không buộc câu phải liệt kê đủ chim/cọc."
+    },
+    "image": {
+      "coco_id": 100811,
+      "filename": "COCO_val2014_000000100811.jpg",
+      "url": "http://images.cocodataset.org/val2014/COCO_val2014_000000100811.jpg",
+      "method": "official COCO image CDN",
+      "bytes": 103540,
+      "sha256": "728a4236689b296161cf14fd7d50ef1ec9f71ea0daa45cf296ad33134d1eb320",
+      "original_size": [
+        640,
+        427
+      ],
+      "preview224": "PIL bilinear visual aid only; not exact cached model input or evidence the model recognizes a cue."
+    }
+  },
+  {
+    "image_id": 1865,
+    "coco_id": 230982,
+    "filename": "COCO_val2014_000000230982.jpg",
+    "filepath": "val2014",
+    "caption_A": "a man holding a nintendo wii game controller.",
+    "references": [
+      "An overweight man leans back in order to play a video game.",
+      "The person is facing a glass door and holding an object. ",
+      "a male in a white shirt is playing a video game",
+      "a man in a yellow shirt in front of some glass",
+      "A young man plays a video game standing up."
+    ],
+    "automatic": {
+      "chair_flagged": false,
+      "hallucinated_words": [],
+      "gt_object_classes": [
+        "person",
+        "remote"
+      ],
+      "generated_classes": [
+        "person"
+      ],
+      "unmentioned_classes": [
+        "remote"
+      ],
+      "A_cider_val5000": 0.2240086370983163
+    },
+    "captions": {
+      "A": "a man holding a nintendo wii game controller.",
+      "native_H": "a man holding a nintendo wii game controller.",
+      "native_L": "a man holding a nintendo wii game controller.",
+      "noun_G": "a man holding a nintendo wii game controller.",
+      "noun_S": "a man holding a nintendo wii game controller."
+    },
+    "branch_chair_flags": {
+      "A": false,
+      "native_H": false,
+      "native_L": false,
+      "noun_G": false,
+      "noun_S": false
+    },
+    "upt_valid_pairs_recorded": null,
+    "scope": "Diagnostic candidates, not established errors. References/CHAIR are not human truth; missing mentions may be appropriate.",
+    "selection_stratum": "Unflagged low reference-overlap outside dev1000",
+    "review": {
+      "focus": false,
+      "status": "acceptable_control",
+      "type": "metric_boundary",
+      "observation": "Người đứng chơi với thiết bị cầm tay cạnh màn hình. Caption A về Wii controller có cơ sở thị giác.",
+      "uncertainty": "Không gọi sai chỉ vì CIDEr thấp hoặc câu không nói tư thế người."
+    },
+    "image": {
+      "coco_id": 230982,
+      "filename": "COCO_val2014_000000230982.jpg",
+      "url": "http://images.cocodataset.org/val2014/COCO_val2014_000000230982.jpg",
+      "method": "official COCO image CDN",
+      "bytes": 78391,
+      "sha256": "b65b596c515a09cd323c8b2deb1e6dc2f99eee91008ff261901c484301ee746b",
+      "original_size": [
+        427,
+        640
+      ],
+      "preview224": "PIL bilinear visual aid only; not exact cached model input or evidence the model recognizes a cue."
+    }
+  },
+  {
+    "image_id": 38311,
+    "coco_id": 220732,
+    "filename": "COCO_val2014_000000220732.jpg",
+    "filepath": "val2014",
+    "caption_A": "a bus is parked on the side of the road.",
+    "references": [
+      "THERE ARE CITY BUSES THAT ARE LINED ON THE STREET IN FRONT OF THE BUILDING ",
+      "A bus with its serial number that can be seen from the air overlooks a panel truck and another bus.",
+      "a public bus driving on a city street",
+      "A busy city street with buses, trucks and cars.",
+      "Many trucks and city buses drive down the crowded street."
+    ],
+    "automatic": {
+      "chair_flagged": false,
+      "hallucinated_words": [],
+      "gt_object_classes": [
+        "bus",
+        "car",
+        "person",
+        "truck"
+      ],
+      "generated_classes": [],
+      "unmentioned_classes": [
+        "bus",
+        "car",
+        "person",
+        "truck"
+      ],
+      "A_cider_val5000": 0.17954266233684835
+    },
+    "captions": {
+      "A": "a bus is parked on the side of the road.",
+      "native_H": "a bus is parked on the side of the road.",
+      "native_L": "a bus is parked on the side of the road.",
+      "noun_G": "a bus is parked on the side of the road.",
+      "noun_S": "a bus is parked on the side of the road."
+    },
+    "branch_chair_flags": {
+      "A": false,
+      "native_H": false,
+      "native_L": false,
+      "noun_G": false,
+      "noun_S": false
+    },
+    "upt_valid_pairs_recorded": null,
+    "scope": "Diagnostic candidates, not established errors. References/CHAIR are not human truth; missing mentions may be appropriate.",
+    "selection_stratum": "Unflagged low reference-overlap outside dev1000",
+    "review": {
+      "focus": false,
+      "status": "acceptable_control",
+      "type": "metric_boundary",
+      "observation": "Có xe buýt và cảnh đường phố; câu a bus parked on the side có thể đúng dù ảnh có nhiều xe.",
+      "uncertainty": "Singular existential không phủ định các xe còn lại."
+    },
+    "image": {
+      "coco_id": 220732,
+      "filename": "COCO_val2014_000000220732.jpg",
+      "url": "http://images.cocodataset.org/val2014/COCO_val2014_000000220732.jpg",
+      "method": "official COCO image CDN",
+      "bytes": 199382,
+      "sha256": "81b9254c750f52ebc8fcc5fa421ab8a3ac430db19f541bfb7541adada76a6a30",
+      "original_size": [
+        640,
+        480
+      ],
+      "preview224": "PIL bilinear visual aid only; not exact cached model input or evidence the model recognizes a cue."
+    }
+  }
+]

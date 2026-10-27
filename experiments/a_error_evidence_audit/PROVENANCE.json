@@ -1,0 +1,120 @@
+{
+  "date": "2026-10-27",
+  "sources": [
+    {
+      "path": "experiments/native_detail_pilot/review/loaded.json",
+      "cache_sha256": "5940fb8baa14d92a91e86a0236eb42f06ccc818832cd0083d3f4105e06e52e74",
+      "archive_sha256": "7f36d9f4a6a28e7b331fe74f9b2425896611a06405e26a51f30fe97a3b69ee4b",
+      "archive": null
+    },
+    {
+      "path": "experiments/noun_evidence_proposal/review/loaded_G.json",
+      "cache_sha256": "e92c563b275d1a8385c8d97971b5b212ff4924beab65971fa9b4090c92f57ece",
+      "archive_sha256": "8f7695a1b7c64bf3694a3588f637312c6fc76b4097b1fd41a7f7a6cc656da2de",
+      "archive": null
+    },
+    {
+      "path": "experiments/noun_evidence_proposal/review/loaded_S.json",
+      "cache_sha256": "04f927ed5a130eb13e445549d745817cc52f00c952f635685bad502dcc374bbe",
+      "archive_sha256": "d75aa187011d104fd329f777768d9b9df1a91c6b207c6ef4f2799702141dcaf8",
+      "archive": null
+    },
+    {
+      "path": "experiments/vg_region_caption/review/loaded_A.json",
+      "cache_sha256": "26b2d5d45c67718e0398c8d83cddb7f1b405b43fdcabfbddb560d728cd370c32",
+      "archive_sha256": null,
+      "archive": {
+        "path": "C:\\Users\\leduc\\Downloads\\upt_hidden_caption_A_review.zip",
+        "sha256": "bc8e1194254303652fd468419ffad7a76bfe5c7d1f5a3d5ed5a88826367dd704"
+      }
+    },
+    {
+      "path": "experiments/vg_region_caption/review/loaded_G.json",
+      "cache_sha256": "43057c593de299068ec79af770550dd5a56b2e2d309f6e1de708006e8d36ca40",
+      "archive_sha256": null,
+      "archive": {
+        "path": "C:\\Users\\leduc\\Downloads\\vg_region_caption_G_review.zip",
+        "sha256": "a9132e9d6d9865f3481a82c7a373730574b3eac1d7163340c609a551caa7a40d"
+      }
+    },
+    {
+      "path": "experiments/vg_region_caption/review/loaded_T.json",
+      "cache_sha256": "cdba00b1b48ab7d6062efa9fe6d336be2e0f9702e9b540bdafaad4bcd94f279c",
+      "archive_sha256": null,
+      "archive": {
+        "path": "C:\\Users\\leduc\\Downloads\\vg_region_caption_T_review.zip",
+        "sha256": "b13aada5fdcb4126d9323cc6b3230e64877ae830fa05c5d0d976c1cb81bec0af"
+      }
+    },
+    {
+      "path": "experiments/vg_region_caption/review/loaded_GV.json",
+      "cache_sha256": "38431273db550b436633a55baa5496340e2410329994400e5675a4f1c4fa7baa",
+      "archive_sha256": null,
+      "archive": {
+        "path": "C:\\Users\\leduc\\Downloads\\vg_region_caption_GV_review.zip",
+        "sha256": "9870af052ae995ea5ff4301a48d13675179709773cdbdecfc3dd1523f44c4b8a"
+      }
+    },
+    {
+      "path": "experiments/stale_prompt_pilot/review/C_loaded.json",
+      "cache_sha256": "3cd0b05ea1254e2b96f172427db0ca44bb75bc310d67a5f2ca83d790548d8de7",
+      "archive_sha256": "2e9d244b47a3f24b51dc0223c45ef1083168dcb9589a74c77719573043a83a24",
+      "archive": null
+    },
+    {
+      "path": "experiments/stale_prompt_pilot/review/T_loaded.json",
+      "cache_sha256": "a21ac8b95d7e9f51ca7435d33067461775e0f5c7ef08d1b2d5819b9516c3ed61",
+      "archive_sha256": "86e8e10f67e782368a5cbfdef1dd78b7d925b6cccc06bd007d11a0445fdfac1c",
+      "archive": null
+    }
+  ],
+  "branches": {
+    "A": {
+      "images": 5000,
+      "scope": "same reused val5000"
+    },
+    "native_H": {
+      "images": 5000,
+      "scope": "same reused val5000"
+    },
+    "native_L": {
+      "images": 5000,
+      "scope": "same reused val5000"
+    },
+    "noun_G": {
+      "images": 5000,
+      "scope": "same reused val5000"
+    },
+    "noun_S": {
+      "images": 5000,
+      "scope": "same reused val5000"
+    },
+    "VG_G": {
+      "images": 1000,
+      "scope": "reused dev1000 subset; per-image CIDEr IDF differs from val5000"
+    },
+    "VG_T": {
+      "images": 1000,
+      "scope": "reused dev1000 subset; per-image CIDEr IDF differs from val5000"
+    },
+    "VG_GV": {
+      "images": 1000,
+      "scope": "reused dev1000 subset; per-image CIDEr IDF differs from val5000"
+    },
+    "stale_C": {
+      "images": 1000,
+      "scope": "reused dev1000 subset; not rank-comparable CIDEr to val5000"
+    },
+    "stale_T": {
+      "images": 1000,
+      "scope": "reused dev1000 subset; not rank-comparable CIDEr to val5000"
+    }
+  },
+  "dataset_sha256": "2fd999220673258012acfb411a4e7e66af7d488050b2519b0badcc49b7600b8d",
+  "images": 5000,
+  "diagnostic_candidates": 30,
+  "selection_policy": "hash-first within 10 CHAIR+/6 holding-and/10 unflagged low-CIDEr dev/4 unflagged low-CIDEr nondev strata; inspect before confirming any error",
+  "local_neural_execution": false,
+  "fresh_evaluation": false,
+  "novel_method": false
+}

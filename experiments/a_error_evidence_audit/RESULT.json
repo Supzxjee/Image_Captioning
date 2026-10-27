@@ -1,0 +1,77 @@
+{
+  "date": "2026-10-27",
+  "reviewer_type": "assistant_visual_review",
+  "human_verified": false,
+  "training_labels": false,
+  "examined_images": 30,
+  "focus_cases": 20,
+  "controls_or_uncertainty_cases": 10,
+  "focus_status_counts": {
+    "clear_error": 9,
+    "uncertain": 1,
+    "unsupported_claim": 4,
+    "under_specified": 6
+  },
+  "all_status_counts": {
+    "clear_error": 9,
+    "uncertain": 6,
+    "unsupported_claim": 4,
+    "acceptable_control": 5,
+    "under_specified": 6
+  },
+  "source_caches": 9,
+  "image_bytes": 4456219,
+  "branch_observations": {
+    "native_H": {
+      "available": 20,
+      "unchanged_from_A": 15
+    },
+    "native_L": {
+      "available": 20,
+      "unchanged_from_A": 15
+    },
+    "noun_G": {
+      "available": 20,
+      "unchanged_from_A": 15
+    },
+    "noun_S": {
+      "available": 20,
+      "unchanged_from_A": 16
+    },
+    "VG_G": {
+      "available": 14,
+      "unchanged_from_A": 5
+    },
+    "VG_T": {
+      "available": 14,
+      "unchanged_from_A": 6
+    },
+    "VG_GV": {
+      "available": 14,
+      "unchanged_from_A": 7
+    },
+    "stale_C": {
+      "available": 14,
+      "unchanged_from_A": 7
+    },
+    "stale_T": {
+      "available": 14,
+      "unchanged_from_A": 7
+    }
+  },
+  "evidence_ledger": {
+    "original_pixels": "Available and visually inspected; original +224px preview shown.",
+    "references": "Exact five reference strings from SHA-pinned dataset; incomplete and occasionally disagree; not negative labels.",
+    "clip_tokens": "Saved protocol confirms visual cache source/cohort; vectors not in the review ZIP, not probed locally.",
+    "original_prompt": "Embedding source/cohort supported by saved protocols; exact original text not locally recovered; no reconstruction from references.",
+    "upt": "Valid-pair count available only on dev1000 overlap; count is not a relation correctness score; individual hidden vectors/role scores absent.",
+    "regions": "Existing regional supervision/native detail runs have saved captions; auxiliary regions were not caption input at inference for VG G/T. Not an oracle per-case intervention."
+  },
+  "limitations": [
+    "Purposeful diagnostic sample, not a representative error-rate/gain estimate.",
+    "Assistant visual judgments, not independently human-verified gold.",
+    "Cannot separate encoder missing information, poor alignment and decoder non-use from saved captions alone.",
+    "No new inference, training, metric calculation or fresh test.",
+    "Raw per-image CIDEr across dev1000 vs val5000 uses different IDF and is not compared."
+  ]
+}
