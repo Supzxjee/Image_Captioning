@@ -23,6 +23,10 @@ def build():
         if source!=committed:raise ValueError('Commit runtime sources before generating: '+n)
         hashes[n]=hashlib.sha256(source.encode()).hexdigest()
     metadata=json.loads((HERE/'METADATA_PACKAGE.json').read_text())
+    helper=(HERE/'restore_gain_metadata.py').read_text(encoding='utf-8')
+    committed_helper=subprocess.check_output(['git','show',commit+':experiments/semantic_grounding_method/restore_gain_metadata.py'],cwd=ROOT).decode('utf-8').replace('\r\n','\n')
+    if helper!=committed_helper:raise ValueError('Commit restoration helper before generating')
+    helper_sha=hashlib.sha256(helper.encode()).hexdigest()
     records={}
     for label,arms in [('CH',['C','H']),('T',['T'])]:
         cells=[nb.md(f'''
@@ -71,6 +75,7 @@ def build():
             PROJECT_COMMIT={commit!r}
             SOURCE_HASHES={hashes!r}
             METADATA_SHA={metadata['metadata_sha256']!r}
+            RESTORATION_HELPER_SHA={helper_sha!r}
             def fail(message):
                 (OUTPUT_ROOT/'grounded_gain_{label.lower()}_failure.json').write_text(json.dumps(dict(error=str(message),stack=traceback.format_stack())))
                 raise RuntimeError(message)
@@ -122,6 +127,7 @@ def build():
             if hashlib.sha256(METADATA.read_bytes()).hexdigest()!=METADATA_SHA:fail('Metadata digest mismatch')
             for name,expected in SOURCE_HASHES.items():
                 if hashlib.sha256((REPO/name).read_bytes()).hexdigest()!=expected:fail('Source digest mismatch: '+name)
+            if hashlib.sha256((HERE/'restore_gain_metadata.py').read_bytes()).hexdigest()!=RESTORATION_HELPER_SHA:fail('Restoration helper digest mismatch')
             '''),nb.code('''
             run([sys.executable,'-m','pip','install','-q','transformers==4.57.1','pycocotools','pycocoevalcap==1.2','h5py','numpy','Pillow','nltk==3.9.2','future'])
             run([sys.executable,'-m','pip','install','-q','--no-deps','git+https://github.com/clips/pattern.git@af754685cca3713db0abc4f020f2e94467c19d85'])
@@ -168,6 +174,8 @@ def build():
                     PREPARED_ROOT=matches[0]
                 sys.path.insert(0,str(HERE))
                 from gain_data import checked_cache
+                from restore_gain_metadata import restore_metadata_view
+                PREPARED_ROOT=restore_metadata_view(PREPARED_ROOT,METADATA,METADATA_SHA)
                 checked_cache(PREPARED_ROOT,METADATA_SHA,hash_payloads=False)  # rank0 verifies full payloads before each GPU phase.
                 run([sys.executable,'-u',HERE/'test_gain_model.py'],cwd=REPO,timeout=120)
                 for arm in ARMS:
@@ -184,6 +192,8 @@ def build():
                     output.mkdir(parents=True)
                     cfg=dict(CONFIG_BASE,prepared=str(PREPARED_ROOT),output=str(output),arm=arm,
                         quota=dict(available=AVAILABLE_DEVICE_GPU_HOURS,unit=QUOTA_UNIT,reported=REPORTED_QUOTA))
+                    restored=Path(PREPARED_ROOT)/'metadata_restoration.json'
+                    if restored.is_file():cfg['metadata_restoration']=json.loads(restored.read_text())
                     config=output/'protocol.json';config.write_text(json.dumps(cfg,indent=2))
                     for n in SOURCE_HASHES:
                         target=output/'source'/n;target.parent.mkdir(parents=True,exist_ok=True);shutil.copyfile(REPO/n,target)
