@@ -1,0 +1,19 @@
+{
+  "metadata_sha256": "62f43f771aec9feba31a2fbbb6fe7db2878f259979faac378b74a754822c7b67",
+  "bytes": 527521,
+  "coverage": {
+    "selected_images": 2000,
+    "eligible_groups": 6177,
+    "images_with_groups": 1999,
+    "exclusions": {
+      "multiple_instances": 38
+    },
+    "selected_groups_two_epochs": 3601,
+    "scope": "Weak head/name joins; not human gold; no neural execution"
+  },
+  "training_ids_sha256": "52c66f8362229434bb013d929611d56dd9ce11b74cff51f2b9915575dab58f44",
+  "dev_ids_sha256": "f6561b70583c9daf696a4bf9559a80e567f819292186f8a4306c3ab90316e40e",
+  "baseline_predictions_sha256": "d26bfc13a5f7197d68fa9dafe56cca137cac72892d84cca44f230121c76d4e49",
+  "word2idx_sha256": "663867e11165ec2849acfb23f6426729e08e435afd2f6fe5f7f765f1d3507272",
+  "local_neural_execution": false
+}
