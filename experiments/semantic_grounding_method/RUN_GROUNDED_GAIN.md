@@ -35,6 +35,7 @@ Hai bên đều cần checkpoint A và COCO JSON. Không cần gắn lại promp
 - Hai bên dùng cùng container Kaggle, bật Internet, Save & Run All; có thể chạy song song.
 
 `PREPARED_ROOT=None` tự tìm đúng receipt. Nếu báo không tìm thấy, điền đường dẫn thư mục chứa `receipt.json`; không trỏ vào một file HDF5 hoặc review ZIP.
+Nếu dataset thiếu riêng `gain_metadata.json.gz`, bản notebook mới tự khôi phục đúng bytes từ metadata đã khóa hash trong repo vào thư mục tạm; HDF5 chỉ liên kết, không chép lại. Dataset gốc, receipt và cấu hình mô hình không đổi. Với phiên đang chạy notebook cũ, chạy nội dung `HOTFIX_METADATA_CELL.py` trước cell train rồi chạy lại cell train; không cần prepare/upload lại. Các payload khác bị thiếu hoặc metadata có sẵn nhưng sai hash vẫn bị chặn.
 Các kiểm tra baseline, gradient, tích phân và hai GPU sẽ chạy trước train. Nếu thất bại, giữ log/ZIP và gửi lại; không tự hạ tolerance.
 
 ## 3. Gửi kết quả

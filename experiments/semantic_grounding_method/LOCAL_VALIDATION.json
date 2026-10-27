@@ -2,23 +2,26 @@
   "status": "STATIC_AND_METADATA_PASS_NEURAL_UNEXECUTED",
   "tests": {
     "metadata": 2,
-    "saved_artifact_guards": 2
+    "saved_artifact_guards": 2,
+    "metadata_restoration_mocked_link_backend": 4
   },
   "notebooks": {
     "GROUNDED_GAIN_CH_2GPU.ipynb": {
-      "bytes": 16996,
+      "bytes": 17578,
       "code_cells": 5,
       "unexecuted": true,
-      "sha256": "7e26ee7a368087506216965a2d9d7f751d7437d31bedad5c8081acc33b8c8a09"
+      "sha256": "1679063f62beadd5463404404b7092b952dde24cc9e08a8ad8fe4f2d0ee761b2"
     },
     "GROUNDED_GAIN_T_2GPU.ipynb": {
-      "bytes": 16980,
+      "bytes": 17562,
       "code_cells": 5,
       "unexecuted": true,
-      "sha256": "090a92de55be16e9579f711196d758671775379f9cce135b71f332d5ef92a13e"
+      "sha256": "3447c19e975c2121d434ad0d7babd94b3db6f6b5e343a4673c107b6704a11f30"
     }
   },
   "local_neural_execution": false,
   "torch_checks": "USER_RUN_KAGGLE_ONLY",
-  "heldout_grounding": "UNAVAILABLE"
+  "heldout_grounding": "UNAVAILABLE",
+  "restoration_scope": "Synthetic guard/copy logic passed; native links mocked on Windows. Actual Kaggle links and GPU runtime unexecuted.",
+  "model_runtime_manifest_unchanged": true
 }
