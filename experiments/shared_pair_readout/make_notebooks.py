@@ -19,7 +19,7 @@ def cell(kind,text):
 def make(core):
     commit=subprocess.check_output(['git','rev-parse',core],cwd=ROOT,text=True).strip()
     files=['experiments/shared_pair_readout/'+n for n in ('readout_data.py','prepare_readout.py','readout_model.py','run_readout.py',
-        'evaluate_readout.py','metric_preflight.py','test_readout_data.py','DEV_DIMENSIONS.json')]
+        'evaluate_readout.py','metric_preflight.py','test_readout_data.py','reuse_stage.py','test_reuse_stage.py','DEV_DIMENSIONS.json')]
     files+=['captioning/'+n+'.py' for n in ('__init__','models','config','grounded_relations','decoder_relation_memory',
         'scst','scst_runtime','tokenizer','object_reward','object_consistency','visual_cache','semantic_prompts')]
     files+=['experiments/relation_frame_pretrain/frame_data.py','experiments/relation_frames_inventory/V2_MANIFEST.json.gz',
@@ -44,6 +44,9 @@ def make(core):
             → baseline A hiện tại →500updates → caption A/end/off và heldout → metrics/ZIP.
             CPU prepare cap30phút, pha2GPU cap60phút/nhánh, CPU metrics cap15phút; đều là giới hạn, không ETA.
             Dừng khi lỗi/cap, không tự kéo dài hoặc đổi cấu hình. Giữ checkpoint endpoint.bin nếu đã có.
+            Bản v2 tự nhận diện stage cũ trong /kaggle/working nếu còn receipt. Kiểm SHA và nguồn chuẩn bị
+            rồi dùng lại trong output mới; không tiếp tục trọng số/lịch sử train cũ. Nếu stage đã lưu thành Input,
+            đặt PREPARED tới thư mục chứa preparation.json. PREPARED=None để chuẩn bị mới.
             User báo còn25giờ, không suy thành50giờ hoặc khẳng định quota riêng của tài khoản khác.
             '''),cell('code',f'''
             from pathlib import Path
@@ -54,7 +57,10 @@ def make(core):
             LEGACY_PROMPT=Path('/kaggle/input/datasets/ducanh2403/prompt-cache/prompt_clip_tokens_cache.pt')
             VISUAL_CACHE=Path('/kaggle/input/datasets/ducanh2403/visual-cache')
             DETECTIONS=Path('/kaggle/input/datasets/ducanh2403/objectdetectionecache/objectdetectioncache.json')
-            OUTPUT=Path('/kaggle/working/shared_pair_readout_'+ARM)
+            OUTPUT=Path('/kaggle/working/shared_pair_readout_'+ARM+'_v2')
+            OLD_PREPARED=Path('/kaggle/working/shared_pair_readout_'+ARM)
+            PREPARED=OLD_PREPARED if (OLD_PREPARED/'preparation.json').is_file() else None
+            # PREPARED=None forces fresh preparation. Or set a saved output/dataset directory.
             REPORTED_REMAINING_HOURS=25  # User report; account distribution and Kaggle accounting not inferred.
             '''),cell('code',f'''
             import hashlib,json,os,signal,subprocess,sys,tempfile,threading,time,traceback,zipfile
@@ -117,6 +123,7 @@ def make(core):
             sys.path.insert(0,str(REPO));sys.path.insert(0,str(HERE))
             from readout_data import POLICY
             cfg=dict(arm=ARM,cache=str(CACHE),checkpoint=str(CHECKPOINT),dataset_json=str(COCO_JSON),
+                previous_prepared=str(PREPARED) if PREPARED is not None else None,
                 legacy_prompt=str(LEGACY_PROMPT),visual_cache=str(VISUAL_CACHE),detections=str(DETECTIONS),
                 metadata=str(REPO/'experiments/semantic_grounding_method/data/gain_metadata.json.gz'),
                 dimensions=str(HERE/'DEV_DIMENSIONS.json'),chair=str(CHAIR),output=str(OUTPUT),
@@ -128,8 +135,10 @@ def make(core):
             success=False
             try:
                 run([sys.executable,'-u',HERE/'test_readout_data.py'],cwd=REPO)
+                run([sys.executable,'-u',HERE/'test_reuse_stage.py'],cwd=REPO)
                 run([sys.executable,'-u',HERE/'metric_preflight.py'],cwd=REPO)
-                run([sys.executable,'-u',HERE/'run_readout.py','prepare','--config',CONFIG],cwd=REPO,timeout=1800)
+                stage_mode='reuse' if cfg.get('previous_prepared') else 'prepare'
+                run([sys.executable,'-u',HERE/'run_readout.py',stage_mode,'--config',CONFIG],cwd=REPO,timeout=1800)
                 run([sys.executable,'-u','-m','torch.distributed.run','--standalone','--nnodes=1','--nproc_per_node=2',
                     '--max_restarts=0',HERE/'run_readout.py','worker','--config',CONFIG],cwd=REPO,timeout=3600)
                 run([sys.executable,'-u',HERE/'run_readout.py','evaluate','--config',CONFIG],cwd=REPO,timeout=900)
@@ -152,10 +161,12 @@ def make(core):
                 if not success:print('INCOMPLETE; send ZIP/log. No result or method improvement accepted.',flush=True)
             if success:print('DONE',ARM,'; send BOTH I/J reviewZIPs for paired comparison and semantic panel.',flush=True)
             '''),cell('markdown','''
-            Giữ checkpoint.bin. Gửi `shared_pair_readout_I_review.zip` và `shared_pair_readout_J_review.zip`.
+            Giữ checkpoint.bin. Gửi `shared_pair_readout_I_v2_review.zip` và `shared_pair_readout_J_v2_review.zip`.
             ZIP không chứa checkpoint/HDF5. Endpoint hoàn tất chưa có nghĩa phương pháp tốt hơn hoặc đủ để được nhận bài.
             So sánh trên A vừa chạy cùng runtime; nếu khác caption A lịch sử thì báo drift, không thay số lịch sử vào bảng.
             Chưa có chấm semantic panel trong notebook. Không tự tạo Dataset, chọn checkpoint, rerank hoặc chạy seed2.
+            Zero-init residual phải bằng0 chính xác; so logits với teacher dùng atol1e-5/rtol1e-4 và lưu sai số.
+            Greedy zero-init vẫn phải cho đúng cùng token sequence; không hạ kiểm tra này.
             ''')]
         setup=cells[3]['source']
         cells[3]=cell('code','try:\n'+textwrap.indent(setup,'    ')+'''

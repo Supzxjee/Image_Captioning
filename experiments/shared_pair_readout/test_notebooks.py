@@ -43,10 +43,11 @@ class Checks(unittest.TestCase):
         self.assertFalse(package['local_neural_execution']);self.assertFalse(package['kaggle_launched'])
 
     def test_mock_completed_worker_and_evaluator(self):self.flow(None)
+    def test_mock_verified_reuse_skips_fresh_preparation(self):self.flow(None,reuse_previous=True)
     def test_mock_worker_failure_prevents_evaluation(self):self.flow('worker')
     def test_mock_evaluator_failure_is_not_success(self):self.flow('evaluate')
 
-    def flow(self,fail):
+    def flow(self,fail,reuse_previous=False):
         notebook=json.loads((HERE/'SHARED_PAIR_READOUT_I_2GPU.ipynb').read_bytes())
         code=[c['source'] for c in notebook['cells'] if c['cell_type']=='code'][-1]
         parent=ROOT/'experiments/relation_frames_inventory/review'
@@ -54,13 +55,14 @@ class Checks(unittest.TestCase):
             root=Path(temp);out=root/'out';config=root/'config.json';config.write_text('{}')
             log=root/'log.txt';log.write_text('Mock only; no model or process.');review=root/'review.zip';phases=[]
             def run(args,**kwargs):
-                phase=next((x for x in ('prepare','worker','evaluate') if x in args),'test');phases.append(phase)
+                phase=next((x for x in ('prepare','reuse','worker','evaluate') if x in args),'test');phases.append(phase)
                 if phase==fail:raise subprocess.CalledProcessError(1,args)
-                if phase=='prepare':out.mkdir();(out/'inputs.h5').write_bytes(b'mock bytes, not features')
+                if phase in ('prepare','reuse'):out.mkdir();(out/'inputs.h5').write_bytes(b'mock bytes, not features')
                 if phase=='worker':(out/'checkpoint.bin').write_bytes(b'mock checkpoint, not a model')
                 if phase=='evaluate':(out/'summary.json').write_text(json.dumps(dict(status='ENDPOINT_500_EVALUATED_WAIT_MATCHED_I_J')))
             env=dict(run=run,sys=sys,HERE=root,REPO=root,CONFIG=config,LOG=log,REVIEW=review,
-                OUTPUT=out,ARM='I',SOURCE_ASSETS={},SOURCE_COMMIT='mock',zipfile=zipfile,json=json)
+                OUTPUT=out,ARM='I',SOURCE_ASSETS={},SOURCE_COMMIT='mock',zipfile=zipfile,json=json,
+                cfg=dict(previous_prepared='mock-old-preparation' if reuse_previous else None))
             with contextlib.redirect_stdout(io.StringIO()):
                 if fail:
                     with self.assertRaises(subprocess.CalledProcessError):exec(code,env)
@@ -70,6 +72,7 @@ class Checks(unittest.TestCase):
                 self.assertNotIn('inputs.h5',z.namelist());self.assertNotIn('checkpoint.bin',z.namelist())
                 self.assertIn('notebook_config.json',z.namelist())
             if fail=='worker':self.assertNotIn('evaluate',phases)
+            if reuse_previous:self.assertIn('reuse',phases);self.assertNotIn('prepare',phases)
 
 
 if __name__=='__main__':unittest.main(verbosity=2)

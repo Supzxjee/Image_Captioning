@@ -67,5 +67,19 @@ class Checks(unittest.TestCase):
         self.assertEqual((HERE/'readout_model.py').read_text(encoding='utf-8').count("if arm=='I'"),1)
         for path in HERE.glob('*.py'):ast.parse(path.read_text(encoding='utf-8'),filename=path.name)
 
+    def test_zero_residual_keeps_original_vocabulary_path(self):
+        tree=ast.parse((HERE/'readout_model.py').read_text(encoding='utf-8'))
+        cls=next(n for n in tree.body if isinstance(n,ast.ClassDef) and n.name=='Captioner')
+        method=next(n for n in cls.body if isinstance(n,ast.FunctionDef) and n.name=='logits')
+        projections=[n for n in ast.walk(method) if isinstance(n,ast.Call) and isinstance(n.func,ast.Attribute) and n.func.attr=='fc_out']
+        self.assertEqual(len(projections),1)
+        self.assertIsInstance(projections[0].args[0],ast.Name);self.assertEqual(projections[0].args[0].id,'h')
+        residual=[n for n in ast.walk(method) if isinstance(n,ast.Call) and isinstance(n.func,ast.Attribute) and n.func.attr=='linear']
+        self.assertEqual(len(residual),1);self.assertEqual(len(residual[0].args),2)
+        self.assertEqual(residual[0].args[0].id,'delta')
+        # This guards the actual A-prefix kernel path, not just algebraic equality.
+        slicing=next(n for n in method.body if isinstance(n,ast.If))
+        self.assertLess(projections[0].lineno,slicing.lineno)
+
 
 if __name__=='__main__':unittest.main(verbosity=2)

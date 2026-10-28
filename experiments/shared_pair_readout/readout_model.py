@@ -72,10 +72,13 @@ class Captioner(nn.Module):
 
     def logits(self,ids,x,bank=None,last=False,off=False,diagnostics=False):
         h=self.hidden(ids,x)
-        if last:h=h[:,-1:]
+        # Preserve A's full-prefix vocabulary projection/layout, including at zero residual.
+        base_logits=self.base.decoder.fc_out(h)
+        if last:h=h[:,-1:];base_logits=base_logits[:,-1:]
         if bank is None:bank=self.reader.bank(x)
         delta,trace=self.reader.read(h,bank,self.arm,off)
-        logits=self.base.decoder.fc_out(h+delta)
+        # Algebraically fc(h+delta), without re-adding fc.bias or altering fc(h)'s kernel path.
+        logits=base_logits+F.linear(delta,self.base.decoder.fc_out.weight)
         return (logits,trace) if diagnostics else logits
 
     @torch.no_grad()

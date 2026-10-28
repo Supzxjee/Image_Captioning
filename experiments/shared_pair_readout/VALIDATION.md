@@ -13,4 +13,12 @@ Local evidence:
 
 User-run checks still required: actual input mounts/fullSHA and source/HDF5 schema, Java/PTB/METEOR/CHAIR dependencies, A tensor identity, zero residual logit/greedy parity, real-reader outputs versus FP64NumPy oracle, null/self/padding behavior, dropout-free policy sampling/rescore parity, first zero-projection and subsequent branch gradients, frozen scope, serial/global-versus-two-rank gradients, synchronized update, exact restoration, actual throughput/budget. No cap is a runtime promise.
 
+## User-run J initialization correction
+
+The submitted J log reports successful dependency/metric tests and completed cache staging (~504seconds), then fails before training at a bitwise-zero logit comparison. Maximum reported absolute difference5.245208740234375e-6,483993/580000elements unequal. Source/model input preparation is not repeated as an experiment result; no optimizer-training updates or caption gain were obtained.
+
+Correction: preserve A's full-prefix vocabulary projection and add the bias-free projected residual in logits. This is algebraically the same linear readout; applying a zero addition before a projection need not preserve its numerical execution path. The specific CUDA layout/kernel cause was not independently reproduced locally. Logit comparison now uses the already-established model-preflight tolerance1e-5absolute/1e-4relative and exports the actual error. Exact residual-zero and identical greedy token checks remain. Architecture/loss/data/500updates unchanged. Both notebooks repinned together; actual GPU rerun is pending.
+
+Added a static regression guarding the untouched original projection/full-prefix path and four synthetic reuse/hash/provenance tests. Old preparation may be reused only when preparation code and payload hashes match; new attempts still initialize from A. No local Torch execution was used to test the correction.
+
 The user reports25remaining GPU hours; no assumption of50hours or exact per-account split. Each GPU phase has a one-hour two-GPU cap, with CPU setup/staging/evaluation adding notebook-accounting time. Scope is an inherited readout improvement; no novelty, caption gain or journal-acceptance result is established by this package.

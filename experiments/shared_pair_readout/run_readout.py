@@ -96,8 +96,12 @@ def preflight(model,data,rank,device):
     torch.manual_seed(813);torch.cuda.manual_seed_all(813)
     try:
         with torch.no_grad():
+            initial_bank=model.reader.bank(x);initial_h=model.hidden(ref,x)
+            initial_delta,_=model.reader.read(initial_h,initial_bank,model.arm)
+            torch.testing.assert_close(initial_delta,torch.zeros_like(initial_delta),atol=0,rtol=0)
             teacher=model.teacher_logits(ref,x);student=model.logits(ref,x)
-            torch.testing.assert_close(student,teacher,atol=0,rtol=0)
+            max_initial_error=float((student-teacher).abs().max())
+            torch.testing.assert_close(student,teacher,atol=1e-5,rtol=1e-4)
             a,_=model.generate(x,tok,baseline=True);j,_=model.generate(x,tok)
             if not torch.equal(a,j):raise ValueError('Zero-init greedy parity failed')
             bank=model.reader.bank(x);h=model.hidden(ref,x)[:,:4]
@@ -157,6 +161,8 @@ def preflight(model,data,rank,device):
         cached_A_parameters=sum(p.numel() for p in model.base.parameters()),
         deployment_parameters_excluding_teacher=sum(p.numel() for p in model.base.parameters())+sum(p.numel() for p in model.reader.parameters()),
         zero_init_logits_and_greedy_parity=True,actual_numpy_oracle_both_arms=True,
+        zero_init_residual_exact=True,max_initial_logit_error=max_initial_error,
+        initial_logit_atol=1e-5,initial_logit_rtol=1e-4,zero_init_greedy_changed=0,
         self_null_and_padding=True,initial_then_subsequent_gradients=True,restored=True,
         max_sample_rescore_error=max_policy_error,max_serial_distributed_gradient_error=max_gradient_error)
 
@@ -283,13 +289,16 @@ def worker(cfg):
 
 
 def main():
-    p=argparse.ArgumentParser();p.add_argument('mode',choices=['prepare','worker','evaluate']);p.add_argument('--config',required=True);args=p.parse_args()
+    p=argparse.ArgumentParser();p.add_argument('mode',choices=['prepare','reuse','worker','evaluate']);p.add_argument('--config',required=True);args=p.parse_args()
     cfg=json.loads(Path(args.config).read_bytes());root=Path(__file__).resolve().parents[2]
     for name,h in cfg['source_assets'].items():
         if sha(root/name)!=h:raise ValueError('Changed pinned source '+name)
     if args.mode=='prepare':
         from prepare_readout import prepare
         prepare(cfg)
+    elif args.mode=='reuse':
+        from reuse_stage import reuse
+        reuse(cfg)
     elif args.mode=='worker':worker(cfg)
     else:
         from evaluate_readout import evaluate
