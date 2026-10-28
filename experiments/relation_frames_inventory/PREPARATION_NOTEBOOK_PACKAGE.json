@@ -1,0 +1,26 @@
+{
+  "source_commit": "dd49cbb9bf281b69b733bb06a818cffbbc24164e",
+  "assets": {
+    "prepare_frames_cpu.py": {
+      "path": "experiments/relation_frames_inventory/prepare_frames_cpu.py",
+      "sha256": "2a525383ea9d1c791a276fd55138b70e533602db7c866cad193ad03e5f17fa30"
+    },
+    "visual_cache.py": {
+      "path": "captioning/visual_cache.py",
+      "sha256": "adbcc9678fff499fc767cdbf04a4966186a40729f51c5bfb2525e79f9b6b5fe1"
+    },
+    "semantic_prompts.py": {
+      "path": "captioning/semantic_prompts.py",
+      "sha256": "a06f12dea63604f9db9d19b6922815db27a35b648a17059407ffaf26a2a0d511"
+    },
+    "relation_frames_manifest.bin": {
+      "path": "experiments/relation_frames_inventory/V2_MANIFEST.json.gz",
+      "sha256": "6ca6af23d0a31043fecdf33398f5b60098be07cbeea9fb91cbfec4b314c2cfa7"
+    }
+  },
+  "notebook_sha256": "0163e10f71810158a92d71b327d1c9c71aaef10e6ab287c0afa08031253bcd92",
+  "notebook_bytes": 5707,
+  "static_code_compile": true,
+  "executed": false,
+  "neural_execution": false
+}
