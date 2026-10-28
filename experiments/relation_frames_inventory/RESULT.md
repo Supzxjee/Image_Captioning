@@ -3,6 +3,8 @@
 28/10/2026. **METADATA_UPPER_BOUND_PASS_PENDING_GT_DETECTOR**.
 This is a CPU-only data feasibility check, not a model experiment or a training authorization.
 
+Follow-up: complete annotations and the pinned detector cache were subsequently recovered. See `BOX_COVERAGE_RESULT.md`: GT uniqueness passes, fixed pools retain297/72 detector-valid pairs, but the initial four-relation quota fails. This initial inventory remains the historical metadata upper bound, not the final data-gate decision.
+
 ## Result
 
 | Sequential filter | Records | Images | Within-statement one-to-one pair capacity |

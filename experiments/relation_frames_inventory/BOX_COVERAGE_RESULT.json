@@ -1,0 +1,236 @@
+{
+  "status": "DATA_COVERAGE_NO_GO",
+  "policy": {
+    "top_boxes": 12,
+    "sort": "confidence descending, original index tie break",
+    "iou_min": 0.5,
+    "allow_crowd": false,
+    "pool_cap": {
+      "train": 512,
+      "heldout": 128
+    },
+    "within_split_image_reuse": "allowed across different statements; report unique images",
+    "pair_rule": "one-to-one hashed positive/negative image lists per exact statement",
+    "scope": "Existing pinned detector only; no feature extraction or caption scoring"
+  },
+  "metadata_policy": {
+    "version": "vsr-relation-frames-metadata-v1",
+    "relations": [
+      "on",
+      "under",
+      "above",
+      "below",
+      "on top of",
+      "beneath",
+      "in",
+      "inside",
+      "within",
+      "outside",
+      "contains",
+      "touching",
+      "next to",
+      "near",
+      "far from",
+      "far away from"
+    ],
+    "validators_min": 3,
+    "dissent_allowed": 0,
+    "allowed_caption_splits": [
+      "train",
+      "restval"
+    ],
+    "split_rule": "sha256(vsr-frames-v1:image_id) mod 5; 0 heldout, else train",
+    "required_pairs": {
+      "train": 256,
+      "heldout": 64
+    },
+    "required_relations": 4,
+    "per_relation": {
+      "train": 16,
+      "heldout": 8
+    },
+    "source_split_scope": "pooled official random splits; derived image-disjoint cohort"
+  },
+  "candidate_sha256": "c0ee3d2250f927f821acad6159a3cea2482434a87a7196a73456e4e5ce22fc01",
+  "archive_sha256": "031296bbc80c45a1d1f76bf9a90ead27e94e99ec629208449507a4917a3bf009",
+  "detector_sha256": "498825daf8f8773a1c92f4111dc4ccf1f4296343f952b486e0aa56caf82ec04c",
+  "official_member_sha256": {
+    "train": "777ef504abfeba349930485bb32ecd5b6529129a3e010f7852e1437cb049b732",
+    "val": "e1b4d1bc54906827b1a029981b1c77f2088bd4462569b7615db7929070c3ab47"
+  },
+  "ijson_version": "3.4.0",
+  "gt_images_found": 3103,
+  "detector_images_found": 3103,
+  "candidate_images": 3103,
+  "gt_unique": {
+    "train": {
+      "records": 3508,
+      "images": 2467,
+      "statements": 1569,
+      "one_to_one_pair_capacity": 1115,
+      "all_cross_products": 3611,
+      "by_relation": {
+        "above": 48,
+        "below": 35,
+        "beneath": 53,
+        "contains": 81,
+        "far away from": 40,
+        "far from": 18,
+        "in": 67,
+        "inside": 58,
+        "near": 12,
+        "next to": 41,
+        "on": 119,
+        "on top of": 111,
+        "outside": 8,
+        "touching": 292,
+        "under": 123,
+        "within": 9
+      },
+      "conflicting_image_statement_labels": 0,
+      "note": "Upper bounds before full GT uniqueness, detector matching, pool caps and image-reuse policy; Cartesian pairs are not independent examples."
+    },
+    "heldout": {
+      "records": 891,
+      "images": 636,
+      "statements": 659,
+      "one_to_one_pair_capacity": 116,
+      "all_cross_products": 194,
+      "by_relation": {
+        "above": 4,
+        "below": 1,
+        "beneath": 7,
+        "contains": 11,
+        "far away from": 3,
+        "far from": 2,
+        "in": 4,
+        "inside": 6,
+        "near": 1,
+        "next to": 5,
+        "on": 10,
+        "on top of": 9,
+        "outside": 0,
+        "touching": 43,
+        "under": 10,
+        "within": 0
+      },
+      "conflicting_image_statement_labels": 0,
+      "note": "Upper bounds before full GT uniqueness, detector matching, pool caps and image-reuse policy; Cartesian pairs are not independent examples."
+    }
+  },
+  "detector_matched_records": {
+    "train": {
+      "records": 2670,
+      "images": 1933,
+      "statements": 1308,
+      "one_to_one_pair_capacity": 717,
+      "all_cross_products": 2449,
+      "by_relation": {
+        "above": 30,
+        "below": 22,
+        "beneath": 30,
+        "contains": 55,
+        "far away from": 25,
+        "far from": 8,
+        "in": 46,
+        "inside": 38,
+        "near": 6,
+        "next to": 21,
+        "on": 71,
+        "on top of": 72,
+        "outside": 5,
+        "touching": 216,
+        "under": 68,
+        "within": 4
+      },
+      "conflicting_image_statement_labels": 0,
+      "note": "Upper bounds before full GT uniqueness, detector matching, pool caps and image-reuse policy; Cartesian pairs are not independent examples."
+    },
+    "heldout": {
+      "records": 688,
+      "images": 520,
+      "statements": 526,
+      "one_to_one_pair_capacity": 76,
+      "all_cross_products": 122,
+      "by_relation": {
+        "above": 3,
+        "below": 0,
+        "beneath": 5,
+        "contains": 6,
+        "far away from": 1,
+        "far from": 2,
+        "in": 4,
+        "inside": 4,
+        "near": 0,
+        "next to": 2,
+        "on": 6,
+        "on top of": 6,
+        "outside": 0,
+        "touching": 29,
+        "under": 8,
+        "within": 0
+      },
+      "conflicting_image_statement_labels": 0,
+      "note": "Upper bounds before full GT uniqueness, detector matching, pool caps and image-reuse policy; Cartesian pairs are not independent examples."
+    }
+  },
+  "fixed_gt_pool_pairs": {
+    "train": 512,
+    "heldout": 116
+  },
+  "detector_valid_pool_pairs": {
+    "train": 297,
+    "heldout": 72
+  },
+  "detector_valid_pool_relations": {
+    "train": {
+      "far from": 4,
+      "touching": 82,
+      "under": 29,
+      "beneath": 15,
+      "near": 2,
+      "far away from": 14,
+      "on": 27,
+      "contains": 18,
+      "above": 16,
+      "within": 3,
+      "below": 5,
+      "on top of": 36,
+      "next to": 15,
+      "in": 16,
+      "inside": 14,
+      "outside": 1
+    },
+    "heldout": {
+      "contains": 6,
+      "touching": 27,
+      "under": 7,
+      "on": 6,
+      "next to": 2,
+      "above": 3,
+      "far from": 2,
+      "inside": 3,
+      "in": 4,
+      "beneath": 5,
+      "on top of": 6,
+      "far away from": 1
+    }
+  },
+  "common_quota_relations": [
+    "touching"
+  ],
+  "selected_pairs": {
+    "train": 0,
+    "heldout": 0
+  },
+  "rejections": {
+    "class_or_iou_match_failed_top12": 1041
+  },
+  "not_checked": [
+    "Human32-record audit",
+    "RGB and feature availability",
+    "Original prompt builder on new probe images",
+    "Novelty or model performance"
+  ],
+  "local_neural_execution": false
+}

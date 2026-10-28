@@ -12,3 +12,5 @@ experiments/a_error_evidence_audit/review/
 experiments/semantic_grounding_method/review/
 experiments/relation_frames_inventory/sources/*.jsonl
 experiments/relation_frames_inventory/metadata_candidates.json
+experiments/relation_frames_inventory/box_candidate_pairs.json
+experiments/relation_frames_inventory/selected_pairs.json
