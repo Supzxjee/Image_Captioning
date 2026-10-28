@@ -13,7 +13,7 @@ Add Input `ducanh2403/relation-frames-v2-cache-v105` and the dataset holding A a
 
 Endpoint200 only, seed42, global batch16 assertion pairs (8 per rank), AdamW1e-4/weight decay.01, gradient clip1. This is12.5 passes over256training pairs. Both arms process the same ordered positive/negative images with the same model initialization; RelPos does not train on negative-image losses. Holdout64pairs128uniqueimages, 32/32strata; no checkpoint selection on holdout.
 
-Each notebook caps GPU phase (including preflight/evaluation) at .5 device-GPU-hour, equivalent to15wall minutes on two GPUs; not a runtime prediction. Total two-arm cap1device-GPU-hour. CPU hashing/downloading is outside this measured phase and Kaggle's own accounting may differ. If incomplete, send review; do not change budget/test tolerances silently. Current remaining account quota has not been reverified.
+Each notebook caps GPU phase (including integrity rechecks/preflight/evaluation) at .5 device-GPU-hour, equivalent to15wall minutes on two GPUs; not a runtime prediction. Total two-arm cap1device-GPU-hour. Initial CPU preparation/downloading is outside this measured phase and Kaggle's own accounting may differ. If incomplete, send review; do not change budget/test tolerances silently. Current remaining account quota has not been reverified.
 
 ## Implementation choices
 

@@ -11,6 +11,7 @@ HERE=Path(__file__).resolve().parent;ROOT=HERE.parents[1]
 
 def cell(kind,text):
     c=dict(cell_type=kind,metadata={},source=textwrap.dedent(text).strip()+'\n')
+    c['id']=hashlib.sha256((kind+'\n'+c['source']).encode()).hexdigest()[:12]
     if kind=='code':c.update(execution_count=None,outputs=[])
     return c
 

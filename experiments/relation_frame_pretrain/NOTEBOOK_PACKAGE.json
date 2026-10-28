@@ -1,0 +1,48 @@
+{
+  "source_commit": "d0d9d9bc73437c02ce94b4c866ed91e7e27913ca",
+  "assets": {
+    "frame_data.py": {
+      "path": "experiments/relation_frame_pretrain/frame_data.py",
+      "sha256": "87c58a50142f68b1721323f7c53fa08e256bb5bc8aee3d7625262161ae1692de"
+    },
+    "frame_model.py": {
+      "path": "experiments/relation_frame_pretrain/frame_model.py",
+      "sha256": "b8dd8676fa4f487c4f65363a8d569f519604af74b21825e5932bfba94fff37d6"
+    },
+    "run_frames.py": {
+      "path": "experiments/relation_frame_pretrain/run_frames.py",
+      "sha256": "6b0b7b5c34369c268ea2af67d2170de234a061ef03bfb0ae0744e8cb1cf874e7"
+    },
+    "compare_frames.py": {
+      "path": "experiments/relation_frame_pretrain/compare_frames.py",
+      "sha256": "a4e6db13cbe5a6f5493a6e4b241bbe9ccb2d2daa520e9f097477b7d3789157a9"
+    },
+    "test_frame_data.py": {
+      "path": "experiments/relation_frame_pretrain/test_frame_data.py",
+      "sha256": "9e0f6652781644aafdc6c1a26726871b56bd8f62bc6decc79c61d698fb3e7d47"
+    },
+    "scst_runtime.py": {
+      "path": "captioning/scst_runtime.py",
+      "sha256": "3452ccfbd43876dc6381b78d1229d1d6b05fe723e3863a04f31c4a784497f669"
+    },
+    "gain_metadata.bin": {
+      "path": "experiments/semantic_grounding_method/data/gain_metadata.json.gz",
+      "sha256": "62f43f771aec9feba31a2fbbb6fe7db2878f259979faac378b74a754822c7b67"
+    }
+  },
+  "notebooks": [
+    {
+      "file": "PRETRAIN_RELPOS_2GPU.ipynb",
+      "bytes": 8220,
+      "sha256": "ad282f8c05e5f5d581b63ee8e2a40da049a7bc9b35e0eb4d26ee63147c2afa01"
+    },
+    {
+      "file": "PRETRAIN_RELCONTRAST_2GPU.ipynb",
+      "bytes": 8230,
+      "sha256": "3b4a2398ca6876b6dd9c89b97322350d771e0b57be37039573044262dfa946eb"
+    }
+  ],
+  "static_code_compile": true,
+  "local_neural_execution": false,
+  "kaggle_launched": false
+}
