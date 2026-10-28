@@ -1,0 +1,21 @@
+{
+  "status": "STATIC_AND_LOCAL_METADATA_PASS",
+  "dev_image_dimensions": 1000,
+  "dev_predicted_box_banks": 1000,
+  "min_predicted_objects": 0,
+  "max_predicted_objects": 12,
+  "empty_banks": 7,
+  "caption_train_images": 484,
+  "relation_train_pairs": 256,
+  "heldout_images": 128,
+  "heldout_pairs": 64,
+  "train_dev_held_image_overlap": 0,
+  "dimensions_sha256": "534c0501884863464bb10c3bb2f504bd69ba9a290c4345ebf3ee179ad3c60206",
+  "detector_sha256": "498825daf8f8773a1c92f4111dc4ccf1f4296343f952b486e0aa56caf82ec04c",
+  "local_neural_execution": false,
+  "not_checked": [
+    "Actual Kaggle mounts, source HDF5 and original prompt values",
+    "Torch/model/autograd/policy/numerical/two-GPU checks; user-run only",
+    "Learned caption or semantic improvement"
+  ]
+}

@@ -1,0 +1,8009 @@
+{
+  "schema": "fixed_dev1000_dimensions_v1",
+  "source_member": "annotations/instances_val2014.json",
+  "source_member_sha256": "e1b4d1bc54906827b1a029981b1c77f2088bd4462569b7615db7929070c3ab47",
+  "source_url": "https://images.cocodataset.org/annotations/annotations_trainval2014.zip",
+  "purpose": "Original image dimensions only, for normalizing predicted boxes; no GT boxes used as model inputs",
+  "rows": [
+    {
+      "image_id": 73,
+      "coco_id": 556616,
+      "filename": "COCO_val2014_000000556616.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 427
+    },
+    {
+      "image_id": 88,
+      "coco_id": 241876,
+      "filename": "COCO_val2014_000000241876.jpg",
+      "split": "val",
+      "width": 500,
+      "height": 375
+    },
+    {
+      "image_id": 150,
+      "coco_id": 52759,
+      "filename": "COCO_val2014_000000052759.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 360
+    },
+    {
+      "image_id": 195,
+      "coco_id": 505440,
+      "filename": "COCO_val2014_000000505440.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 429
+    },
+    {
+      "image_id": 315,
+      "coco_id": 117407,
+      "filename": "COCO_val2014_000000117407.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 426
+    },
+    {
+      "image_id": 320,
+      "coco_id": 191738,
+      "filename": "COCO_val2014_000000191738.jpg",
+      "split": "val",
+      "width": 500,
+      "height": 375
+    },
+    {
+      "image_id": 324,
+      "coco_id": 555705,
+      "filename": "COCO_val2014_000000555705.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 371
+    },
+    {
+      "image_id": 394,
+      "coco_id": 511204,
+      "filename": "COCO_val2014_000000511204.jpg",
+      "split": "val",
+      "width": 453,
+      "height": 640
+    },
+    {
+      "image_id": 440,
+      "coco_id": 304305,
+      "filename": "COCO_val2014_000000304305.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 480
+    },
+    {
+      "image_id": 442,
+      "coco_id": 468604,
+      "filename": "COCO_val2014_000000468604.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 480
+    },
+    {
+      "image_id": 572,
+      "coco_id": 136501,
+      "filename": "COCO_val2014_000000136501.jpg",
+      "split": "val",
+      "width": 460,
+      "height": 640
+    },
+    {
+      "image_id": 667,
+      "coco_id": 109092,
+      "filename": "COCO_val2014_000000109092.jpg",
+      "split": "val",
+      "width": 500,
+      "height": 400
+    },
+    {
+      "image_id": 700,
+      "coco_id": 280819,
+      "filename": "COCO_val2014_000000280819.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 480
+    },
+    {
+      "image_id": 711,
+      "coco_id": 578210,
+      "filename": "COCO_val2014_000000578210.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 480
+    },
+    {
+      "image_id": 719,
+      "coco_id": 515445,
+      "filename": "COCO_val2014_000000515445.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 480
+    },
+    {
+      "image_id": 722,
+      "coco_id": 173383,
+      "filename": "COCO_val2014_000000173383.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 425
+    },
+    {
+      "image_id": 736,
+      "coco_id": 453757,
+      "filename": "COCO_val2014_000000453757.jpg",
+      "split": "val",
+      "width": 427,
+      "height": 640
+    },
+    {
+      "image_id": 775,
+      "coco_id": 124629,
+      "filename": "COCO_val2014_000000124629.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 427
+    },
+    {
+      "image_id": 924,
+      "coco_id": 377385,
+      "filename": "COCO_val2014_000000377385.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 441
+    },
+    {
+      "image_id": 989,
+      "coco_id": 14941,
+      "filename": "COCO_val2014_000000014941.jpg",
+      "split": "val",
+      "width": 481,
+      "height": 640
+    },
+    {
+      "image_id": 993,
+      "coco_id": 142592,
+      "filename": "COCO_val2014_000000142592.jpg",
+      "split": "val",
+      "width": 480,
+      "height": 640
+    },
+    {
+      "image_id": 996,
+      "coco_id": 239448,
+      "filename": "COCO_val2014_000000239448.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 360
+    },
+    {
+      "image_id": 1058,
+      "coco_id": 389624,
+      "filename": "COCO_val2014_000000389624.jpg",
+      "split": "val",
+      "width": 612,
+      "height": 612
+    },
+    {
+      "image_id": 1127,
+      "coco_id": 504711,
+      "filename": "COCO_val2014_000000504711.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 483
+    },
+    {
+      "image_id": 1153,
+      "coco_id": 436174,
+      "filename": "COCO_val2014_000000436174.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 408
+    },
+    {
+      "image_id": 1226,
+      "coco_id": 379156,
+      "filename": "COCO_val2014_000000379156.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 426
+    },
+    {
+      "image_id": 1237,
+      "coco_id": 274083,
+      "filename": "COCO_val2014_000000274083.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 480
+    },
+    {
+      "image_id": 1268,
+      "coco_id": 138040,
+      "filename": "COCO_val2014_000000138040.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 427
+    },
+    {
+      "image_id": 1301,
+      "coco_id": 101280,
+      "filename": "COCO_val2014_000000101280.jpg",
+      "split": "val",
+      "width": 333,
+      "height": 500
+    },
+    {
+      "image_id": 1309,
+      "coco_id": 385535,
+      "filename": "COCO_val2014_000000385535.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 427
+    },
+    {
+      "image_id": 1327,
+      "coco_id": 284594,
+      "filename": "COCO_val2014_000000284594.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 516
+    },
+    {
+      "image_id": 1355,
+      "coco_id": 441211,
+      "filename": "COCO_val2014_000000441211.jpg",
+      "split": "val",
+      "width": 494,
+      "height": 640
+    },
+    {
+      "image_id": 1399,
+      "coco_id": 393547,
+      "filename": "COCO_val2014_000000393547.jpg",
+      "split": "val",
+      "width": 375,
+      "height": 500
+    },
+    {
+      "image_id": 1422,
+      "coco_id": 504700,
+      "filename": "COCO_val2014_000000504700.jpg",
+      "split": "val",
+      "width": 628,
+      "height": 640
+    },
+    {
+      "image_id": 1450,
+      "coco_id": 107226,
+      "filename": "COCO_val2014_000000107226.jpg",
+      "split": "val",
+      "width": 480,
+      "height": 640
+    },
+    {
+      "image_id": 1461,
+      "coco_id": 437049,
+      "filename": "COCO_val2014_000000437049.jpg",
+      "split": "val",
+      "width": 429,
+      "height": 640
+    },
+    {
+      "image_id": 1484,
+      "coco_id": 56865,
+      "filename": "COCO_val2014_000000056865.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 427
+    },
+    {
+      "image_id": 1564,
+      "coco_id": 118911,
+      "filename": "COCO_val2014_000000118911.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 480
+    },
+    {
+      "image_id": 1584,
+      "coco_id": 574796,
+      "filename": "COCO_val2014_000000574796.jpg",
+      "split": "val",
+      "width": 500,
+      "height": 331
+    },
+    {
+      "image_id": 1591,
+      "coco_id": 576886,
+      "filename": "COCO_val2014_000000576886.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 428
+    },
+    {
+      "image_id": 1599,
+      "coco_id": 337563,
+      "filename": "COCO_val2014_000000337563.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 480
+    },
+    {
+      "image_id": 1629,
+      "coco_id": 323925,
+      "filename": "COCO_val2014_000000323925.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 640
+    },
+    {
+      "image_id": 1630,
+      "coco_id": 85029,
+      "filename": "COCO_val2014_000000085029.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 480
+    },
+    {
+      "image_id": 1636,
+      "coco_id": 166624,
+      "filename": "COCO_val2014_000000166624.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 406
+    },
+    {
+      "image_id": 1649,
+      "coco_id": 508949,
+      "filename": "COCO_val2014_000000508949.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 480
+    },
+    {
+      "image_id": 1681,
+      "coco_id": 362005,
+      "filename": "COCO_val2014_000000362005.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 425
+    },
+    {
+      "image_id": 1756,
+      "coco_id": 528496,
+      "filename": "COCO_val2014_000000528496.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 427
+    },
+    {
+      "image_id": 1762,
+      "coco_id": 489745,
+      "filename": "COCO_val2014_000000489745.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 566
+    },
+    {
+      "image_id": 1833,
+      "coco_id": 545390,
+      "filename": "COCO_val2014_000000545390.jpg",
+      "split": "val",
+      "width": 427,
+      "height": 640
+    },
+    {
+      "image_id": 1975,
+      "coco_id": 335473,
+      "filename": "COCO_val2014_000000335473.jpg",
+      "split": "val",
+      "width": 500,
+      "height": 375
+    },
+    {
+      "image_id": 2030,
+      "coco_id": 205474,
+      "filename": "COCO_val2014_000000205474.jpg",
+      "split": "val",
+      "width": 480,
+      "height": 640
+    },
+    {
+      "image_id": 2035,
+      "coco_id": 386559,
+      "filename": "COCO_val2014_000000386559.jpg",
+      "split": "val",
+      "width": 427,
+      "height": 640
+    },
+    {
+      "image_id": 2055,
+      "coco_id": 392991,
+      "filename": "COCO_val2014_000000392991.jpg",
+      "split": "val",
+      "width": 479,
+      "height": 640
+    },
+    {
+      "image_id": 2150,
+      "coco_id": 433919,
+      "filename": "COCO_val2014_000000433919.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 424
+    },
+    {
+      "image_id": 2175,
+      "coco_id": 522198,
+      "filename": "COCO_val2014_000000522198.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 640
+    },
+    {
+      "image_id": 2206,
+      "coco_id": 91236,
+      "filename": "COCO_val2014_000000091236.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 428
+    },
+    {
+      "image_id": 2270,
+      "coco_id": 534377,
+      "filename": "COCO_val2014_000000534377.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 480
+    },
+    {
+      "image_id": 2272,
+      "coco_id": 78488,
+      "filename": "COCO_val2014_000000078488.jpg",
+      "split": "val",
+      "width": 481,
+      "height": 640
+    },
+    {
+      "image_id": 2318,
+      "coco_id": 456638,
+      "filename": "COCO_val2014_000000456638.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 427
+    },
+    {
+      "image_id": 2417,
+      "coco_id": 143418,
+      "filename": "COCO_val2014_000000143418.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 478
+    },
+    {
+      "image_id": 2460,
+      "coco_id": 118124,
+      "filename": "COCO_val2014_000000118124.jpg",
+      "split": "val",
+      "width": 480,
+      "height": 640
+    },
+    {
+      "image_id": 2586,
+      "coco_id": 292618,
+      "filename": "COCO_val2014_000000292618.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 348
+    },
+    {
+      "image_id": 2596,
+      "coco_id": 154816,
+      "filename": "COCO_val2014_000000154816.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 436
+    },
+    {
+      "image_id": 2606,
+      "coco_id": 471226,
+      "filename": "COCO_val2014_000000471226.jpg",
+      "split": "val",
+      "width": 612,
+      "height": 612
+    },
+    {
+      "image_id": 2626,
+      "coco_id": 261116,
+      "filename": "COCO_val2014_000000261116.jpg",
+      "split": "val",
+      "width": 500,
+      "height": 375
+    },
+    {
+      "image_id": 2686,
+      "coco_id": 317049,
+      "filename": "COCO_val2014_000000317049.jpg",
+      "split": "val",
+      "width": 480,
+      "height": 640
+    },
+    {
+      "image_id": 2738,
+      "coco_id": 216050,
+      "filename": "COCO_val2014_000000216050.jpg",
+      "split": "val",
+      "width": 480,
+      "height": 640
+    },
+    {
+      "image_id": 2763,
+      "coco_id": 237463,
+      "filename": "COCO_val2014_000000237463.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 427
+    },
+    {
+      "image_id": 2832,
+      "coco_id": 176060,
+      "filename": "COCO_val2014_000000176060.jpg",
+      "split": "val",
+      "width": 612,
+      "height": 612
+    },
+    {
+      "image_id": 2868,
+      "coco_id": 341118,
+      "filename": "COCO_val2014_000000341118.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 479
+    },
+    {
+      "image_id": 2870,
+      "coco_id": 4092,
+      "filename": "COCO_val2014_000000004092.jpg",
+      "split": "val",
+      "width": 512,
+      "height": 640
+    },
+    {
+      "image_id": 2872,
+      "coco_id": 289172,
+      "filename": "COCO_val2014_000000289172.jpg",
+      "split": "val",
+      "width": 500,
+      "height": 375
+    },
+    {
+      "image_id": 2974,
+      "coco_id": 406959,
+      "filename": "COCO_val2014_000000406959.jpg",
+      "split": "val",
+      "width": 425,
+      "height": 640
+    },
+    {
+      "image_id": 3044,
+      "coco_id": 168458,
+      "filename": "COCO_val2014_000000168458.jpg",
+      "split": "val",
+      "width": 425,
+      "height": 640
+    },
+    {
+      "image_id": 3109,
+      "coco_id": 202228,
+      "filename": "COCO_val2014_000000202228.jpg",
+      "split": "val",
+      "width": 480,
+      "height": 640
+    },
+    {
+      "image_id": 3118,
+      "coco_id": 43997,
+      "filename": "COCO_val2014_000000043997.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 480
+    },
+    {
+      "image_id": 3133,
+      "coco_id": 441586,
+      "filename": "COCO_val2014_000000441586.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 425
+    },
+    {
+      "image_id": 3156,
+      "coco_id": 575946,
+      "filename": "COCO_val2014_000000575946.jpg",
+      "split": "val",
+      "width": 428,
+      "height": 640
+    },
+    {
+      "image_id": 3190,
+      "coco_id": 552901,
+      "filename": "COCO_val2014_000000552901.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 480
+    },
+    {
+      "image_id": 3199,
+      "coco_id": 202748,
+      "filename": "COCO_val2014_000000202748.jpg",
+      "split": "val",
+      "width": 480,
+      "height": 640
+    },
+    {
+      "image_id": 3245,
+      "coco_id": 58254,
+      "filename": "COCO_val2014_000000058254.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 480
+    },
+    {
+      "image_id": 3273,
+      "coco_id": 332027,
+      "filename": "COCO_val2014_000000332027.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 640
+    },
+    {
+      "image_id": 3282,
+      "coco_id": 11788,
+      "filename": "COCO_val2014_000000011788.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 640
+    },
+    {
+      "image_id": 3328,
+      "coco_id": 176606,
+      "filename": "COCO_val2014_000000176606.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 480
+    },
+    {
+      "image_id": 3443,
+      "coco_id": 351621,
+      "filename": "COCO_val2014_000000351621.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 512
+    },
+    {
+      "image_id": 3511,
+      "coco_id": 179191,
+      "filename": "COCO_val2014_000000179191.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 480
+    },
+    {
+      "image_id": 3605,
+      "coco_id": 330109,
+      "filename": "COCO_val2014_000000330109.jpg",
+      "split": "val",
+      "width": 300,
+      "height": 400
+    },
+    {
+      "image_id": 3617,
+      "coco_id": 485896,
+      "filename": "COCO_val2014_000000485896.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 393
+    },
+    {
+      "image_id": 3696,
+      "coco_id": 538394,
+      "filename": "COCO_val2014_000000538394.jpg",
+      "split": "val",
+      "width": 512,
+      "height": 640
+    },
+    {
+      "image_id": 3729,
+      "coco_id": 85674,
+      "filename": "COCO_val2014_000000085674.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 403
+    },
+    {
+      "image_id": 3753,
+      "coco_id": 526654,
+      "filename": "COCO_val2014_000000526654.jpg",
+      "split": "val",
+      "width": 500,
+      "height": 444
+    },
+    {
+      "image_id": 3768,
+      "coco_id": 162675,
+      "filename": "COCO_val2014_000000162675.jpg",
+      "split": "val",
+      "width": 438,
+      "height": 640
+    },
+    {
+      "image_id": 3840,
+      "coco_id": 201072,
+      "filename": "COCO_val2014_000000201072.jpg",
+      "split": "val",
+      "width": 411,
+      "height": 640
+    },
+    {
+      "image_id": 3846,
+      "coco_id": 142924,
+      "filename": "COCO_val2014_000000142924.jpg",
+      "split": "val",
+      "width": 427,
+      "height": 640
+    },
+    {
+      "image_id": 3878,
+      "coco_id": 463599,
+      "filename": "COCO_val2014_000000463599.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 428
+    },
+    {
+      "image_id": 3987,
+      "coco_id": 523517,
+      "filename": "COCO_val2014_000000523517.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 480
+    },
+    {
+      "image_id": 4003,
+      "coco_id": 240739,
+      "filename": "COCO_val2014_000000240739.jpg",
+      "split": "val",
+      "width": 481,
+      "height": 640
+    },
+    {
+      "image_id": 4022,
+      "coco_id": 568205,
+      "filename": "COCO_val2014_000000568205.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 480
+    },
+    {
+      "image_id": 4042,
+      "coco_id": 305589,
+      "filename": "COCO_val2014_000000305589.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 426
+    },
+    {
+      "image_id": 4077,
+      "coco_id": 140167,
+      "filename": "COCO_val2014_000000140167.jpg",
+      "split": "val",
+      "width": 480,
+      "height": 640
+    },
+    {
+      "image_id": 4170,
+      "coco_id": 392928,
+      "filename": "COCO_val2014_000000392928.jpg",
+      "split": "val",
+      "width": 480,
+      "height": 640
+    },
+    {
+      "image_id": 4195,
+      "coco_id": 36494,
+      "filename": "COCO_val2014_000000036494.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 434
+    },
+    {
+      "image_id": 4247,
+      "coco_id": 27433,
+      "filename": "COCO_val2014_000000027433.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 480
+    },
+    {
+      "image_id": 4250,
+      "coco_id": 93887,
+      "filename": "COCO_val2014_000000093887.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 426
+    },
+    {
+      "image_id": 4264,
+      "coco_id": 278977,
+      "filename": "COCO_val2014_000000278977.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 454
+    },
+    {
+      "image_id": 4298,
+      "coco_id": 149123,
+      "filename": "COCO_val2014_000000149123.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 478
+    },
+    {
+      "image_id": 4300,
+      "coco_id": 292616,
+      "filename": "COCO_val2014_000000292616.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 427
+    },
+    {
+      "image_id": 4302,
+      "coco_id": 16238,
+      "filename": "COCO_val2014_000000016238.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 480
+    },
+    {
+      "image_id": 4309,
+      "coco_id": 259571,
+      "filename": "COCO_val2014_000000259571.jpg",
+      "split": "val",
+      "width": 500,
+      "height": 281
+    },
+    {
+      "image_id": 4364,
+      "coco_id": 422432,
+      "filename": "COCO_val2014_000000422432.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 241
+    },
+    {
+      "image_id": 4383,
+      "coco_id": 460841,
+      "filename": "COCO_val2014_000000460841.jpg",
+      "split": "val",
+      "width": 500,
+      "height": 375
+    },
+    {
+      "image_id": 4426,
+      "coco_id": 78741,
+      "filename": "COCO_val2014_000000078741.jpg",
+      "split": "val",
+      "width": 600,
+      "height": 449
+    },
+    {
+      "image_id": 4439,
+      "coco_id": 565813,
+      "filename": "COCO_val2014_000000565813.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 427
+    },
+    {
+      "image_id": 4476,
+      "coco_id": 230454,
+      "filename": "COCO_val2014_000000230454.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 455
+    },
+    {
+      "image_id": 4480,
+      "coco_id": 487282,
+      "filename": "COCO_val2014_000000487282.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 480
+    },
+    {
+      "image_id": 4618,
+      "coco_id": 13031,
+      "filename": "COCO_val2014_000000013031.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 426
+    },
+    {
+      "image_id": 4729,
+      "coco_id": 117014,
+      "filename": "COCO_val2014_000000117014.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 426
+    },
+    {
+      "image_id": 4742,
+      "coco_id": 301766,
+      "filename": "COCO_val2014_000000301766.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 426
+    },
+    {
+      "image_id": 4745,
+      "coco_id": 16744,
+      "filename": "COCO_val2014_000000016744.jpg",
+      "split": "val",
+      "width": 500,
+      "height": 335
+    },
+    {
+      "image_id": 4776,
+      "coco_id": 456969,
+      "filename": "COCO_val2014_000000456969.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 427
+    },
+    {
+      "image_id": 4877,
+      "coco_id": 543409,
+      "filename": "COCO_val2014_000000543409.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 432
+    },
+    {
+      "image_id": 4895,
+      "coco_id": 308156,
+      "filename": "COCO_val2014_000000308156.jpg",
+      "split": "val",
+      "width": 428,
+      "height": 640
+    },
+    {
+      "image_id": 4995,
+      "coco_id": 462931,
+      "filename": "COCO_val2014_000000462931.jpg",
+      "split": "val",
+      "width": 500,
+      "height": 375
+    },
+    {
+      "image_id": 5111,
+      "coco_id": 110048,
+      "filename": "COCO_val2014_000000110048.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 480
+    },
+    {
+      "image_id": 5161,
+      "coco_id": 314515,
+      "filename": "COCO_val2014_000000314515.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 427
+    },
+    {
+      "image_id": 5181,
+      "coco_id": 111951,
+      "filename": "COCO_val2014_000000111951.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 425
+    },
+    {
+      "image_id": 5239,
+      "coco_id": 235595,
+      "filename": "COCO_val2014_000000235595.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 480
+    },
+    {
+      "image_id": 5254,
+      "coco_id": 84870,
+      "filename": "COCO_val2014_000000084870.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 424
+    },
+    {
+      "image_id": 5264,
+      "coco_id": 61897,
+      "filename": "COCO_val2014_000000061897.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 640
+    },
+    {
+      "image_id": 5320,
+      "coco_id": 186009,
+      "filename": "COCO_val2014_000000186009.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 480
+    },
+    {
+      "image_id": 5387,
+      "coco_id": 35826,
+      "filename": "COCO_val2014_000000035826.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 360
+    },
+    {
+      "image_id": 5533,
+      "coco_id": 354948,
+      "filename": "COCO_val2014_000000354948.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 612
+    },
+    {
+      "image_id": 5645,
+      "coco_id": 242779,
+      "filename": "COCO_val2014_000000242779.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 480
+    },
+    {
+      "image_id": 5663,
+      "coco_id": 341719,
+      "filename": "COCO_val2014_000000341719.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 480
+    },
+    {
+      "image_id": 5670,
+      "coco_id": 347675,
+      "filename": "COCO_val2014_000000347675.jpg",
+      "split": "val",
+      "width": 612,
+      "height": 612
+    },
+    {
+      "image_id": 5671,
+      "coco_id": 10432,
+      "filename": "COCO_val2014_000000010432.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 480
+    },
+    {
+      "image_id": 5732,
+      "coco_id": 423480,
+      "filename": "COCO_val2014_000000423480.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 427
+    },
+    {
+      "image_id": 5740,
+      "coco_id": 384523,
+      "filename": "COCO_val2014_000000384523.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 427
+    },
+    {
+      "image_id": 5758,
+      "coco_id": 92804,
+      "filename": "COCO_val2014_000000092804.jpg",
+      "split": "val",
+      "width": 500,
+      "height": 333
+    },
+    {
+      "image_id": 5817,
+      "coco_id": 504810,
+      "filename": "COCO_val2014_000000504810.jpg",
+      "split": "val",
+      "width": 612,
+      "height": 612
+    },
+    {
+      "image_id": 5826,
+      "coco_id": 403710,
+      "filename": "COCO_val2014_000000403710.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 480
+    },
+    {
+      "image_id": 5843,
+      "coco_id": 513189,
+      "filename": "COCO_val2014_000000513189.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 427
+    },
+    {
+      "image_id": 5854,
+      "coco_id": 299039,
+      "filename": "COCO_val2014_000000299039.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 427
+    },
+    {
+      "image_id": 5933,
+      "coco_id": 39630,
+      "filename": "COCO_val2014_000000039630.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 426
+    },
+    {
+      "image_id": 5990,
+      "coco_id": 341681,
+      "filename": "COCO_val2014_000000341681.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 427
+    },
+    {
+      "image_id": 6019,
+      "coco_id": 259690,
+      "filename": "COCO_val2014_000000259690.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 480
+    },
+    {
+      "image_id": 6020,
+      "coco_id": 333000,
+      "filename": "COCO_val2014_000000333000.jpg",
+      "split": "val",
+      "width": 427,
+      "height": 640
+    },
+    {
+      "image_id": 6060,
+      "coco_id": 232684,
+      "filename": "COCO_val2014_000000232684.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 427
+    },
+    {
+      "image_id": 6200,
+      "coco_id": 459219,
+      "filename": "COCO_val2014_000000459219.jpg",
+      "split": "val",
+      "width": 428,
+      "height": 640
+    },
+    {
+      "image_id": 6250,
+      "coco_id": 579463,
+      "filename": "COCO_val2014_000000579463.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 480
+    },
+    {
+      "image_id": 6337,
+      "coco_id": 532338,
+      "filename": "COCO_val2014_000000532338.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 480
+    },
+    {
+      "image_id": 6368,
+      "coco_id": 476652,
+      "filename": "COCO_val2014_000000476652.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 424
+    },
+    {
+      "image_id": 6370,
+      "coco_id": 62889,
+      "filename": "COCO_val2014_000000062889.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 480
+    },
+    {
+      "image_id": 6401,
+      "coco_id": 321217,
+      "filename": "COCO_val2014_000000321217.jpg",
+      "split": "val",
+      "width": 612,
+      "height": 612
+    },
+    {
+      "image_id": 6434,
+      "coco_id": 299074,
+      "filename": "COCO_val2014_000000299074.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 480
+    },
+    {
+      "image_id": 6588,
+      "coco_id": 338847,
+      "filename": "COCO_val2014_000000338847.jpg",
+      "split": "val",
+      "width": 427,
+      "height": 640
+    },
+    {
+      "image_id": 6589,
+      "coco_id": 156045,
+      "filename": "COCO_val2014_000000156045.jpg",
+      "split": "val",
+      "width": 383,
+      "height": 640
+    },
+    {
+      "image_id": 6594,
+      "coco_id": 324040,
+      "filename": "COCO_val2014_000000324040.jpg",
+      "split": "val",
+      "width": 480,
+      "height": 640
+    },
+    {
+      "image_id": 6628,
+      "coco_id": 238310,
+      "filename": "COCO_val2014_000000238310.jpg",
+      "split": "val",
+      "width": 425,
+      "height": 640
+    },
+    {
+      "image_id": 6654,
+      "coco_id": 565395,
+      "filename": "COCO_val2014_000000565395.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 480
+    },
+    {
+      "image_id": 6656,
+      "coco_id": 17655,
+      "filename": "COCO_val2014_000000017655.jpg",
+      "split": "val",
+      "width": 500,
+      "height": 375
+    },
+    {
+      "image_id": 6667,
+      "coco_id": 28359,
+      "filename": "COCO_val2014_000000028359.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 304
+    },
+    {
+      "image_id": 6685,
+      "coco_id": 211837,
+      "filename": "COCO_val2014_000000211837.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 427
+    },
+    {
+      "image_id": 6692,
+      "coco_id": 463722,
+      "filename": "COCO_val2014_000000463722.jpg",
+      "split": "val",
+      "width": 500,
+      "height": 375
+    },
+    {
+      "image_id": 6731,
+      "coco_id": 188752,
+      "filename": "COCO_val2014_000000188752.jpg",
+      "split": "val",
+      "width": 500,
+      "height": 332
+    },
+    {
+      "image_id": 6772,
+      "coco_id": 373289,
+      "filename": "COCO_val2014_000000373289.jpg",
+      "split": "val",
+      "width": 427,
+      "height": 640
+    },
+    {
+      "image_id": 6783,
+      "coco_id": 460131,
+      "filename": "COCO_val2014_000000460131.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 424
+    },
+    {
+      "image_id": 6789,
+      "coco_id": 528276,
+      "filename": "COCO_val2014_000000528276.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 427
+    },
+    {
+      "image_id": 6798,
+      "coco_id": 26611,
+      "filename": "COCO_val2014_000000026611.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 480
+    },
+    {
+      "image_id": 6818,
+      "coco_id": 4108,
+      "filename": "COCO_val2014_000000004108.jpg",
+      "split": "val",
+      "width": 480,
+      "height": 640
+    },
+    {
+      "image_id": 6819,
+      "coco_id": 206751,
+      "filename": "COCO_val2014_000000206751.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 480
+    },
+    {
+      "image_id": 6912,
+      "coco_id": 518818,
+      "filename": "COCO_val2014_000000518818.jpg",
+      "split": "val",
+      "width": 480,
+      "height": 640
+    },
+    {
+      "image_id": 6995,
+      "coco_id": 204324,
+      "filename": "COCO_val2014_000000204324.jpg",
+      "split": "val",
+      "width": 426,
+      "height": 640
+    },
+    {
+      "image_id": 7027,
+      "coco_id": 500940,
+      "filename": "COCO_val2014_000000500940.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 480
+    },
+    {
+      "image_id": 7033,
+      "coco_id": 53420,
+      "filename": "COCO_val2014_000000053420.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 428
+    },
+    {
+      "image_id": 7038,
+      "coco_id": 58350,
+      "filename": "COCO_val2014_000000058350.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 480
+    },
+    {
+      "image_id": 7047,
+      "coco_id": 271639,
+      "filename": "COCO_val2014_000000271639.jpg",
+      "split": "val",
+      "width": 500,
+      "height": 260
+    },
+    {
+      "image_id": 7059,
+      "coco_id": 246968,
+      "filename": "COCO_val2014_000000246968.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 428
+    },
+    {
+      "image_id": 7061,
+      "coco_id": 257458,
+      "filename": "COCO_val2014_000000257458.jpg",
+      "split": "val",
+      "width": 480,
+      "height": 640
+    },
+    {
+      "image_id": 7068,
+      "coco_id": 128813,
+      "filename": "COCO_val2014_000000128813.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 441
+    },
+    {
+      "image_id": 7102,
+      "coco_id": 408201,
+      "filename": "COCO_val2014_000000408201.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 427
+    },
+    {
+      "image_id": 7145,
+      "coco_id": 497031,
+      "filename": "COCO_val2014_000000497031.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 480
+    },
+    {
+      "image_id": 7175,
+      "coco_id": 277073,
+      "filename": "COCO_val2014_000000277073.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 425
+    },
+    {
+      "image_id": 7192,
+      "coco_id": 399879,
+      "filename": "COCO_val2014_000000399879.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 480
+    },
+    {
+      "image_id": 7206,
+      "coco_id": 429924,
+      "filename": "COCO_val2014_000000429924.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 480
+    },
+    {
+      "image_id": 7305,
+      "coco_id": 444209,
+      "filename": "COCO_val2014_000000444209.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 480
+    },
+    {
+      "image_id": 7335,
+      "coco_id": 569016,
+      "filename": "COCO_val2014_000000569016.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 319
+    },
+    {
+      "image_id": 7346,
+      "coco_id": 259421,
+      "filename": "COCO_val2014_000000259421.jpg",
+      "split": "val",
+      "width": 639,
+      "height": 640
+    },
+    {
+      "image_id": 7396,
+      "coco_id": 496093,
+      "filename": "COCO_val2014_000000496093.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 483
+    },
+    {
+      "image_id": 7435,
+      "coco_id": 213728,
+      "filename": "COCO_val2014_000000213728.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 480
+    },
+    {
+      "image_id": 7441,
+      "coco_id": 67178,
+      "filename": "COCO_val2014_000000067178.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 433
+    },
+    {
+      "image_id": 7456,
+      "coco_id": 266852,
+      "filename": "COCO_val2014_000000266852.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 423
+    },
+    {
+      "image_id": 7544,
+      "coco_id": 239458,
+      "filename": "COCO_val2014_000000239458.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 427
+    },
+    {
+      "image_id": 7562,
+      "coco_id": 293757,
+      "filename": "COCO_val2014_000000293757.jpg",
+      "split": "val",
+      "width": 480,
+      "height": 640
+    },
+    {
+      "image_id": 7614,
+      "coco_id": 477067,
+      "filename": "COCO_val2014_000000477067.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 427
+    },
+    {
+      "image_id": 7650,
+      "coco_id": 57265,
+      "filename": "COCO_val2014_000000057265.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 611
+    },
+    {
+      "image_id": 7678,
+      "coco_id": 46898,
+      "filename": "COCO_val2014_000000046898.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 426
+    },
+    {
+      "image_id": 7681,
+      "coco_id": 140289,
+      "filename": "COCO_val2014_000000140289.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 426
+    },
+    {
+      "image_id": 7689,
+      "coco_id": 20459,
+      "filename": "COCO_val2014_000000020459.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 458
+    },
+    {
+      "image_id": 7700,
+      "coco_id": 358799,
+      "filename": "COCO_val2014_000000358799.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 480
+    },
+    {
+      "image_id": 7782,
+      "coco_id": 249277,
+      "filename": "COCO_val2014_000000249277.jpg",
+      "split": "val",
+      "width": 480,
+      "height": 640
+    },
+    {
+      "image_id": 7853,
+      "coco_id": 389109,
+      "filename": "COCO_val2014_000000389109.jpg",
+      "split": "val",
+      "width": 427,
+      "height": 640
+    },
+    {
+      "image_id": 7933,
+      "coco_id": 394133,
+      "filename": "COCO_val2014_000000394133.jpg",
+      "split": "val",
+      "width": 500,
+      "height": 375
+    },
+    {
+      "image_id": 7936,
+      "coco_id": 207561,
+      "filename": "COCO_val2014_000000207561.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 418
+    },
+    {
+      "image_id": 7942,
+      "coco_id": 103017,
+      "filename": "COCO_val2014_000000103017.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 639
+    },
+    {
+      "image_id": 7945,
+      "coco_id": 379402,
+      "filename": "COCO_val2014_000000379402.jpg",
+      "split": "val",
+      "width": 333,
+      "height": 500
+    },
+    {
+      "image_id": 7967,
+      "coco_id": 88244,
+      "filename": "COCO_val2014_000000088244.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 480
+    },
+    {
+      "image_id": 8035,
+      "coco_id": 15947,
+      "filename": "COCO_val2014_000000015947.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 480
+    },
+    {
+      "image_id": 8073,
+      "coco_id": 240506,
+      "filename": "COCO_val2014_000000240506.jpg",
+      "split": "val",
+      "width": 375,
+      "height": 500
+    },
+    {
+      "image_id": 8079,
+      "coco_id": 53952,
+      "filename": "COCO_val2014_000000053952.jpg",
+      "split": "val",
+      "width": 500,
+      "height": 333
+    },
+    {
+      "image_id": 8135,
+      "coco_id": 161047,
+      "filename": "COCO_val2014_000000161047.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 480
+    },
+    {
+      "image_id": 8198,
+      "coco_id": 429598,
+      "filename": "COCO_val2014_000000429598.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 480
+    },
+    {
+      "image_id": 8216,
+      "coco_id": 318361,
+      "filename": "COCO_val2014_000000318361.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 434
+    },
+    {
+      "image_id": 8306,
+      "coco_id": 538364,
+      "filename": "COCO_val2014_000000538364.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 480
+    },
+    {
+      "image_id": 8307,
+      "coco_id": 505709,
+      "filename": "COCO_val2014_000000505709.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 480
+    },
+    {
+      "image_id": 8387,
+      "coco_id": 87356,
+      "filename": "COCO_val2014_000000087356.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 396
+    },
+    {
+      "image_id": 8410,
+      "coco_id": 496680,
+      "filename": "COCO_val2014_000000496680.jpg",
+      "split": "val",
+      "width": 612,
+      "height": 612
+    },
+    {
+      "image_id": 8422,
+      "coco_id": 145061,
+      "filename": "COCO_val2014_000000145061.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 397
+    },
+    {
+      "image_id": 8463,
+      "coco_id": 138979,
+      "filename": "COCO_val2014_000000138979.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 426
+    },
+    {
+      "image_id": 8487,
+      "coco_id": 475732,
+      "filename": "COCO_val2014_000000475732.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 480
+    },
+    {
+      "image_id": 8498,
+      "coco_id": 90367,
+      "filename": "COCO_val2014_000000090367.jpg",
+      "split": "val",
+      "width": 480,
+      "height": 640
+    },
+    {
+      "image_id": 8562,
+      "coco_id": 419624,
+      "filename": "COCO_val2014_000000419624.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 428
+    },
+    {
+      "image_id": 8590,
+      "coco_id": 174771,
+      "filename": "COCO_val2014_000000174771.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 428
+    },
+    {
+      "image_id": 8624,
+      "coco_id": 271728,
+      "filename": "COCO_val2014_000000271728.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 427
+    },
+    {
+      "image_id": 8701,
+      "coco_id": 470932,
+      "filename": "COCO_val2014_000000470932.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 425
+    },
+    {
+      "image_id": 8721,
+      "coco_id": 157214,
+      "filename": "COCO_val2014_000000157214.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 427
+    },
+    {
+      "image_id": 8724,
+      "coco_id": 214363,
+      "filename": "COCO_val2014_000000214363.jpg",
+      "split": "val",
+      "width": 427,
+      "height": 640
+    },
+    {
+      "image_id": 8741,
+      "coco_id": 149252,
+      "filename": "COCO_val2014_000000149252.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 585
+    },
+    {
+      "image_id": 8776,
+      "coco_id": 166696,
+      "filename": "COCO_val2014_000000166696.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 351
+    },
+    {
+      "image_id": 8794,
+      "coco_id": 182775,
+      "filename": "COCO_val2014_000000182775.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 428
+    },
+    {
+      "image_id": 8836,
+      "coco_id": 550815,
+      "filename": "COCO_val2014_000000550815.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 480
+    },
+    {
+      "image_id": 8932,
+      "coco_id": 362409,
+      "filename": "COCO_val2014_000000362409.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 424
+    },
+    {
+      "image_id": 8963,
+      "coco_id": 435299,
+      "filename": "COCO_val2014_000000435299.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 480
+    },
+    {
+      "image_id": 8975,
+      "coco_id": 27696,
+      "filename": "COCO_val2014_000000027696.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 410
+    },
+    {
+      "image_id": 9028,
+      "coco_id": 32944,
+      "filename": "COCO_val2014_000000032944.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 426
+    },
+    {
+      "image_id": 9139,
+      "coco_id": 80895,
+      "filename": "COCO_val2014_000000080895.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 480
+    },
+    {
+      "image_id": 9181,
+      "coco_id": 316031,
+      "filename": "COCO_val2014_000000316031.jpg",
+      "split": "val",
+      "width": 480,
+      "height": 640
+    },
+    {
+      "image_id": 9235,
+      "coco_id": 183709,
+      "filename": "COCO_val2014_000000183709.jpg",
+      "split": "val",
+      "width": 480,
+      "height": 640
+    },
+    {
+      "image_id": 9250,
+      "coco_id": 240111,
+      "filename": "COCO_val2014_000000240111.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 480
+    },
+    {
+      "image_id": 9273,
+      "coco_id": 438560,
+      "filename": "COCO_val2014_000000438560.jpg",
+      "split": "val",
+      "width": 500,
+      "height": 377
+    },
+    {
+      "image_id": 9327,
+      "coco_id": 154419,
+      "filename": "COCO_val2014_000000154419.jpg",
+      "split": "val",
+      "width": 375,
+      "height": 500
+    },
+    {
+      "image_id": 9338,
+      "coco_id": 196681,
+      "filename": "COCO_val2014_000000196681.jpg",
+      "split": "val",
+      "width": 427,
+      "height": 640
+    },
+    {
+      "image_id": 9402,
+      "coco_id": 332113,
+      "filename": "COCO_val2014_000000332113.jpg",
+      "split": "val",
+      "width": 427,
+      "height": 640
+    },
+    {
+      "image_id": 9495,
+      "coco_id": 31240,
+      "filename": "COCO_val2014_000000031240.jpg",
+      "split": "val",
+      "width": 430,
+      "height": 640
+    },
+    {
+      "image_id": 9520,
+      "coco_id": 159402,
+      "filename": "COCO_val2014_000000159402.jpg",
+      "split": "val",
+      "width": 480,
+      "height": 640
+    },
+    {
+      "image_id": 9525,
+      "coco_id": 472484,
+      "filename": "COCO_val2014_000000472484.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 458
+    },
+    {
+      "image_id": 9562,
+      "coco_id": 226315,
+      "filename": "COCO_val2014_000000226315.jpg",
+      "split": "val",
+      "width": 437,
+      "height": 640
+    },
+    {
+      "image_id": 9586,
+      "coco_id": 410141,
+      "filename": "COCO_val2014_000000410141.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 408
+    },
+    {
+      "image_id": 9624,
+      "coco_id": 197199,
+      "filename": "COCO_val2014_000000197199.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 458
+    },
+    {
+      "image_id": 9716,
+      "coco_id": 299688,
+      "filename": "COCO_val2014_000000299688.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 428
+    },
+    {
+      "image_id": 9724,
+      "coco_id": 498641,
+      "filename": "COCO_val2014_000000498641.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 480
+    },
+    {
+      "image_id": 9837,
+      "coco_id": 383450,
+      "filename": "COCO_val2014_000000383450.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 366
+    },
+    {
+      "image_id": 9942,
+      "coco_id": 253341,
+      "filename": "COCO_val2014_000000253341.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 426
+    },
+    {
+      "image_id": 9948,
+      "coco_id": 18193,
+      "filename": "COCO_val2014_000000018193.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 480
+    },
+    {
+      "image_id": 10033,
+      "coco_id": 402795,
+      "filename": "COCO_val2014_000000402795.jpg",
+      "split": "val",
+      "width": 426,
+      "height": 640
+    },
+    {
+      "image_id": 10107,
+      "coco_id": 239656,
+      "filename": "COCO_val2014_000000239656.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 232
+    },
+    {
+      "image_id": 10112,
+      "coco_id": 167668,
+      "filename": "COCO_val2014_000000167668.jpg",
+      "split": "val",
+      "width": 480,
+      "height": 640
+    },
+    {
+      "image_id": 10125,
+      "coco_id": 134552,
+      "filename": "COCO_val2014_000000134552.jpg",
+      "split": "val",
+      "width": 482,
+      "height": 640
+    },
+    {
+      "image_id": 10151,
+      "coco_id": 413247,
+      "filename": "COCO_val2014_000000413247.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 426
+    },
+    {
+      "image_id": 10155,
+      "coco_id": 288290,
+      "filename": "COCO_val2014_000000288290.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 427
+    },
+    {
+      "image_id": 10200,
+      "coco_id": 266857,
+      "filename": "COCO_val2014_000000266857.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 458
+    },
+    {
+      "image_id": 10211,
+      "coco_id": 49667,
+      "filename": "COCO_val2014_000000049667.jpg",
+      "split": "val",
+      "width": 427,
+      "height": 640
+    },
+    {
+      "image_id": 10251,
+      "coco_id": 220704,
+      "filename": "COCO_val2014_000000220704.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 426
+    },
+    {
+      "image_id": 10286,
+      "coco_id": 377999,
+      "filename": "COCO_val2014_000000377999.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 480
+    },
+    {
+      "image_id": 10406,
+      "coco_id": 183004,
+      "filename": "COCO_val2014_000000183004.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 428
+    },
+    {
+      "image_id": 10417,
+      "coco_id": 483165,
+      "filename": "COCO_val2014_000000483165.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 427
+    },
+    {
+      "image_id": 10459,
+      "coco_id": 486905,
+      "filename": "COCO_val2014_000000486905.jpg",
+      "split": "val",
+      "width": 375,
+      "height": 500
+    },
+    {
+      "image_id": 10460,
+      "coco_id": 309696,
+      "filename": "COCO_val2014_000000309696.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 423
+    },
+    {
+      "image_id": 10509,
+      "coco_id": 578350,
+      "filename": "COCO_val2014_000000578350.jpg",
+      "split": "val",
+      "width": 426,
+      "height": 640
+    },
+    {
+      "image_id": 10572,
+      "coco_id": 67616,
+      "filename": "COCO_val2014_000000067616.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 480
+    },
+    {
+      "image_id": 10655,
+      "coco_id": 148286,
+      "filename": "COCO_val2014_000000148286.jpg",
+      "split": "val",
+      "width": 500,
+      "height": 333
+    },
+    {
+      "image_id": 10692,
+      "coco_id": 311327,
+      "filename": "COCO_val2014_000000311327.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 480
+    },
+    {
+      "image_id": 10735,
+      "coco_id": 545730,
+      "filename": "COCO_val2014_000000545730.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 427
+    },
+    {
+      "image_id": 10745,
+      "coco_id": 440336,
+      "filename": "COCO_val2014_000000440336.jpg",
+      "split": "val",
+      "width": 500,
+      "height": 335
+    },
+    {
+      "image_id": 10757,
+      "coco_id": 359751,
+      "filename": "COCO_val2014_000000359751.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 428
+    },
+    {
+      "image_id": 10796,
+      "coco_id": 16161,
+      "filename": "COCO_val2014_000000016161.jpg",
+      "split": "val",
+      "width": 500,
+      "height": 375
+    },
+    {
+      "image_id": 10811,
+      "coco_id": 422017,
+      "filename": "COCO_val2014_000000422017.jpg",
+      "split": "val",
+      "width": 500,
+      "height": 375
+    },
+    {
+      "image_id": 10889,
+      "coco_id": 473121,
+      "filename": "COCO_val2014_000000473121.jpg",
+      "split": "val",
+      "width": 500,
+      "height": 332
+    },
+    {
+      "image_id": 10892,
+      "coco_id": 5032,
+      "filename": "COCO_val2014_000000005032.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 480
+    },
+    {
+      "image_id": 10919,
+      "coco_id": 438505,
+      "filename": "COCO_val2014_000000438505.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 480
+    },
+    {
+      "image_id": 10929,
+      "coco_id": 499109,
+      "filename": "COCO_val2014_000000499109.jpg",
+      "split": "val",
+      "width": 480,
+      "height": 640
+    },
+    {
+      "image_id": 10978,
+      "coco_id": 87364,
+      "filename": "COCO_val2014_000000087364.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 369
+    },
+    {
+      "image_id": 10980,
+      "coco_id": 227326,
+      "filename": "COCO_val2014_000000227326.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 407
+    },
+    {
+      "image_id": 11016,
+      "coco_id": 28850,
+      "filename": "COCO_val2014_000000028850.jpg",
+      "split": "val",
+      "width": 480,
+      "height": 640
+    },
+    {
+      "image_id": 11026,
+      "coco_id": 232598,
+      "filename": "COCO_val2014_000000232598.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 640
+    },
+    {
+      "image_id": 11042,
+      "coco_id": 50407,
+      "filename": "COCO_val2014_000000050407.jpg",
+      "split": "val",
+      "width": 494,
+      "height": 640
+    },
+    {
+      "image_id": 11063,
+      "coco_id": 33270,
+      "filename": "COCO_val2014_000000033270.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 426
+    },
+    {
+      "image_id": 11118,
+      "coco_id": 292944,
+      "filename": "COCO_val2014_000000292944.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 448
+    },
+    {
+      "image_id": 11160,
+      "coco_id": 292971,
+      "filename": "COCO_val2014_000000292971.jpg",
+      "split": "val",
+      "width": 500,
+      "height": 375
+    },
+    {
+      "image_id": 11221,
+      "coco_id": 113126,
+      "filename": "COCO_val2014_000000113126.jpg",
+      "split": "val",
+      "width": 493,
+      "height": 500
+    },
+    {
+      "image_id": 11273,
+      "coco_id": 69969,
+      "filename": "COCO_val2014_000000069969.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 402
+    },
+    {
+      "image_id": 11413,
+      "coco_id": 349868,
+      "filename": "COCO_val2014_000000349868.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 426
+    },
+    {
+      "image_id": 11453,
+      "coco_id": 18046,
+      "filename": "COCO_val2014_000000018046.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 447
+    },
+    {
+      "image_id": 11504,
+      "coco_id": 333412,
+      "filename": "COCO_val2014_000000333412.jpg",
+      "split": "val",
+      "width": 600,
+      "height": 625
+    },
+    {
+      "image_id": 11573,
+      "coco_id": 231984,
+      "filename": "COCO_val2014_000000231984.jpg",
+      "split": "val",
+      "width": 452,
+      "height": 640
+    },
+    {
+      "image_id": 11643,
+      "coco_id": 529850,
+      "filename": "COCO_val2014_000000529850.jpg",
+      "split": "val",
+      "width": 500,
+      "height": 374
+    },
+    {
+      "image_id": 11787,
+      "coco_id": 451123,
+      "filename": "COCO_val2014_000000451123.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 480
+    },
+    {
+      "image_id": 11824,
+      "coco_id": 288633,
+      "filename": "COCO_val2014_000000288633.jpg",
+      "split": "val",
+      "width": 500,
+      "height": 316
+    },
+    {
+      "image_id": 11860,
+      "coco_id": 165174,
+      "filename": "COCO_val2014_000000165174.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 427
+    },
+    {
+      "image_id": 11862,
+      "coco_id": 564355,
+      "filename": "COCO_val2014_000000564355.jpg",
+      "split": "val",
+      "width": 435,
+      "height": 640
+    },
+    {
+      "image_id": 11894,
+      "coco_id": 378244,
+      "filename": "COCO_val2014_000000378244.jpg",
+      "split": "val",
+      "width": 427,
+      "height": 640
+    },
+    {
+      "image_id": 11899,
+      "coco_id": 145378,
+      "filename": "COCO_val2014_000000145378.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 428
+    },
+    {
+      "image_id": 11971,
+      "coco_id": 372067,
+      "filename": "COCO_val2014_000000372067.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 334
+    },
+    {
+      "image_id": 11975,
+      "coco_id": 329498,
+      "filename": "COCO_val2014_000000329498.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 381
+    },
+    {
+      "image_id": 11981,
+      "coco_id": 257941,
+      "filename": "COCO_val2014_000000257941.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 342
+    },
+    {
+      "image_id": 12074,
+      "coco_id": 309539,
+      "filename": "COCO_val2014_000000309539.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 478
+    },
+    {
+      "image_id": 12103,
+      "coco_id": 219170,
+      "filename": "COCO_val2014_000000219170.jpg",
+      "split": "val",
+      "width": 320,
+      "height": 480
+    },
+    {
+      "image_id": 12133,
+      "coco_id": 260382,
+      "filename": "COCO_val2014_000000260382.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 359
+    },
+    {
+      "image_id": 12188,
+      "coco_id": 142687,
+      "filename": "COCO_val2014_000000142687.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 478
+    },
+    {
+      "image_id": 12202,
+      "coco_id": 293666,
+      "filename": "COCO_val2014_000000293666.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 427
+    },
+    {
+      "image_id": 12207,
+      "coco_id": 229216,
+      "filename": "COCO_val2014_000000229216.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 426
+    },
+    {
+      "image_id": 12213,
+      "coco_id": 563882,
+      "filename": "COCO_val2014_000000563882.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 425
+    },
+    {
+      "image_id": 12299,
+      "coco_id": 337984,
+      "filename": "COCO_val2014_000000337984.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 429
+    },
+    {
+      "image_id": 12318,
+      "coco_id": 167724,
+      "filename": "COCO_val2014_000000167724.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 480
+    },
+    {
+      "image_id": 12322,
+      "coco_id": 257236,
+      "filename": "COCO_val2014_000000257236.jpg",
+      "split": "val",
+      "width": 500,
+      "height": 334
+    },
+    {
+      "image_id": 12399,
+      "coco_id": 175954,
+      "filename": "COCO_val2014_000000175954.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 480
+    },
+    {
+      "image_id": 12432,
+      "coco_id": 314493,
+      "filename": "COCO_val2014_000000314493.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 494
+    },
+    {
+      "image_id": 12649,
+      "coco_id": 214648,
+      "filename": "COCO_val2014_000000214648.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 480
+    },
+    {
+      "image_id": 12669,
+      "coco_id": 172201,
+      "filename": "COCO_val2014_000000172201.jpg",
+      "split": "val",
+      "width": 500,
+      "height": 327
+    },
+    {
+      "image_id": 12674,
+      "coco_id": 531973,
+      "filename": "COCO_val2014_000000531973.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 427
+    },
+    {
+      "image_id": 12780,
+      "coco_id": 581081,
+      "filename": "COCO_val2014_000000581081.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 423
+    },
+    {
+      "image_id": 12817,
+      "coco_id": 191689,
+      "filename": "COCO_val2014_000000191689.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 480
+    },
+    {
+      "image_id": 12834,
+      "coco_id": 29306,
+      "filename": "COCO_val2014_000000029306.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 427
+    },
+    {
+      "image_id": 12965,
+      "coco_id": 267998,
+      "filename": "COCO_val2014_000000267998.jpg",
+      "split": "val",
+      "width": 440,
+      "height": 330
+    },
+    {
+      "image_id": 12992,
+      "coco_id": 9908,
+      "filename": "COCO_val2014_000000009908.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 480
+    },
+    {
+      "image_id": 13032,
+      "coco_id": 561517,
+      "filename": "COCO_val2014_000000561517.jpg",
+      "split": "val",
+      "width": 500,
+      "height": 335
+    },
+    {
+      "image_id": 13130,
+      "coco_id": 562655,
+      "filename": "COCO_val2014_000000562655.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 480
+    },
+    {
+      "image_id": 13143,
+      "coco_id": 457986,
+      "filename": "COCO_val2014_000000457986.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 398
+    },
+    {
+      "image_id": 13170,
+      "coco_id": 295693,
+      "filename": "COCO_val2014_000000295693.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 427
+    },
+    {
+      "image_id": 13206,
+      "coco_id": 430744,
+      "filename": "COCO_val2014_000000430744.jpg",
+      "split": "val",
+      "width": 412,
+      "height": 640
+    },
+    {
+      "image_id": 13221,
+      "coco_id": 272357,
+      "filename": "COCO_val2014_000000272357.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 480
+    },
+    {
+      "image_id": 13260,
+      "coco_id": 103870,
+      "filename": "COCO_val2014_000000103870.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 480
+    },
+    {
+      "image_id": 13297,
+      "coco_id": 255149,
+      "filename": "COCO_val2014_000000255149.jpg",
+      "split": "val",
+      "width": 480,
+      "height": 640
+    },
+    {
+      "image_id": 13377,
+      "coco_id": 361124,
+      "filename": "COCO_val2014_000000361124.jpg",
+      "split": "val",
+      "width": 427,
+      "height": 640
+    },
+    {
+      "image_id": 13394,
+      "coco_id": 536683,
+      "filename": "COCO_val2014_000000536683.jpg",
+      "split": "val",
+      "width": 426,
+      "height": 640
+    },
+    {
+      "image_id": 13529,
+      "coco_id": 64409,
+      "filename": "COCO_val2014_000000064409.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 411
+    },
+    {
+      "image_id": 13536,
+      "coco_id": 112820,
+      "filename": "COCO_val2014_000000112820.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 360
+    },
+    {
+      "image_id": 13596,
+      "coco_id": 92202,
+      "filename": "COCO_val2014_000000092202.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 427
+    },
+    {
+      "image_id": 13645,
+      "coco_id": 274084,
+      "filename": "COCO_val2014_000000274084.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 480
+    },
+    {
+      "image_id": 13646,
+      "coco_id": 389316,
+      "filename": "COCO_val2014_000000389316.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 361
+    },
+    {
+      "image_id": 13700,
+      "coco_id": 201043,
+      "filename": "COCO_val2014_000000201043.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 426
+    },
+    {
+      "image_id": 13733,
+      "coco_id": 396556,
+      "filename": "COCO_val2014_000000396556.jpg",
+      "split": "val",
+      "width": 500,
+      "height": 333
+    },
+    {
+      "image_id": 13770,
+      "coco_id": 251627,
+      "filename": "COCO_val2014_000000251627.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 480
+    },
+    {
+      "image_id": 13842,
+      "coco_id": 304924,
+      "filename": "COCO_val2014_000000304924.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 480
+    },
+    {
+      "image_id": 13851,
+      "coco_id": 113113,
+      "filename": "COCO_val2014_000000113113.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 426
+    },
+    {
+      "image_id": 13942,
+      "coco_id": 1464,
+      "filename": "COCO_val2014_000000001464.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 427
+    },
+    {
+      "image_id": 13994,
+      "coco_id": 551822,
+      "filename": "COCO_val2014_000000551822.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 453
+    },
+    {
+      "image_id": 14011,
+      "coco_id": 447585,
+      "filename": "COCO_val2014_000000447585.jpg",
+      "split": "val",
+      "width": 427,
+      "height": 640
+    },
+    {
+      "image_id": 14058,
+      "coco_id": 522622,
+      "filename": "COCO_val2014_000000522622.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 427
+    },
+    {
+      "image_id": 14069,
+      "coco_id": 208417,
+      "filename": "COCO_val2014_000000208417.jpg",
+      "split": "val",
+      "width": 375,
+      "height": 500
+    },
+    {
+      "image_id": 14246,
+      "coco_id": 458510,
+      "filename": "COCO_val2014_000000458510.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 480
+    },
+    {
+      "image_id": 14376,
+      "coco_id": 219916,
+      "filename": "COCO_val2014_000000219916.jpg",
+      "split": "val",
+      "width": 500,
+      "height": 334
+    },
+    {
+      "image_id": 14377,
+      "coco_id": 249227,
+      "filename": "COCO_val2014_000000249227.jpg",
+      "split": "val",
+      "width": 445,
+      "height": 590
+    },
+    {
+      "image_id": 14402,
+      "coco_id": 235964,
+      "filename": "COCO_val2014_000000235964.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 480
+    },
+    {
+      "image_id": 14484,
+      "coco_id": 520273,
+      "filename": "COCO_val2014_000000520273.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 426
+    },
+    {
+      "image_id": 14530,
+      "coco_id": 340386,
+      "filename": "COCO_val2014_000000340386.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 480
+    },
+    {
+      "image_id": 14533,
+      "coco_id": 334542,
+      "filename": "COCO_val2014_000000334542.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 428
+    },
+    {
+      "image_id": 14537,
+      "coco_id": 581262,
+      "filename": "COCO_val2014_000000581262.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 480
+    },
+    {
+      "image_id": 14577,
+      "coco_id": 296907,
+      "filename": "COCO_val2014_000000296907.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 480
+    },
+    {
+      "image_id": 14646,
+      "coco_id": 139781,
+      "filename": "COCO_val2014_000000139781.jpg",
+      "split": "val",
+      "width": 500,
+      "height": 375
+    },
+    {
+      "image_id": 14647,
+      "coco_id": 499571,
+      "filename": "COCO_val2014_000000499571.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 487
+    },
+    {
+      "image_id": 14839,
+      "coco_id": 270609,
+      "filename": "COCO_val2014_000000270609.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 426
+    },
+    {
+      "image_id": 14859,
+      "coco_id": 107068,
+      "filename": "COCO_val2014_000000107068.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 436
+    },
+    {
+      "image_id": 14868,
+      "coco_id": 481670,
+      "filename": "COCO_val2014_000000481670.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 424
+    },
+    {
+      "image_id": 14894,
+      "coco_id": 185936,
+      "filename": "COCO_val2014_000000185936.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 480
+    },
+    {
+      "image_id": 15133,
+      "coco_id": 120380,
+      "filename": "COCO_val2014_000000120380.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 640
+    },
+    {
+      "image_id": 15178,
+      "coco_id": 91267,
+      "filename": "COCO_val2014_000000091267.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 427
+    },
+    {
+      "image_id": 15194,
+      "coco_id": 404780,
+      "filename": "COCO_val2014_000000404780.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 412
+    },
+    {
+      "image_id": 15234,
+      "coco_id": 377951,
+      "filename": "COCO_val2014_000000377951.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 426
+    },
+    {
+      "image_id": 15385,
+      "coco_id": 511622,
+      "filename": "COCO_val2014_000000511622.jpg",
+      "split": "val",
+      "width": 480,
+      "height": 640
+    },
+    {
+      "image_id": 15406,
+      "coco_id": 302760,
+      "filename": "COCO_val2014_000000302760.jpg",
+      "split": "val",
+      "width": 500,
+      "height": 375
+    },
+    {
+      "image_id": 15416,
+      "coco_id": 170365,
+      "filename": "COCO_val2014_000000170365.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 427
+    },
+    {
+      "image_id": 15425,
+      "coco_id": 339761,
+      "filename": "COCO_val2014_000000339761.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 437
+    },
+    {
+      "image_id": 15485,
+      "coco_id": 190494,
+      "filename": "COCO_val2014_000000190494.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 416
+    },
+    {
+      "image_id": 15625,
+      "coco_id": 365611,
+      "filename": "COCO_val2014_000000365611.jpg",
+      "split": "val",
+      "width": 450,
+      "height": 640
+    },
+    {
+      "image_id": 15700,
+      "coco_id": 273728,
+      "filename": "COCO_val2014_000000273728.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 425
+    },
+    {
+      "image_id": 15740,
+      "coco_id": 525050,
+      "filename": "COCO_val2014_000000525050.jpg",
+      "split": "val",
+      "width": 480,
+      "height": 640
+    },
+    {
+      "image_id": 15825,
+      "coco_id": 225456,
+      "filename": "COCO_val2014_000000225456.jpg",
+      "split": "val",
+      "width": 479,
+      "height": 640
+    },
+    {
+      "image_id": 15876,
+      "coco_id": 373132,
+      "filename": "COCO_val2014_000000373132.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 480
+    },
+    {
+      "image_id": 15908,
+      "coco_id": 324291,
+      "filename": "COCO_val2014_000000324291.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 480
+    },
+    {
+      "image_id": 15984,
+      "coco_id": 353935,
+      "filename": "COCO_val2014_000000353935.jpg",
+      "split": "val",
+      "width": 478,
+      "height": 640
+    },
+    {
+      "image_id": 16020,
+      "coco_id": 71877,
+      "filename": "COCO_val2014_000000071877.jpg",
+      "split": "val",
+      "width": 428,
+      "height": 640
+    },
+    {
+      "image_id": 16077,
+      "coco_id": 537864,
+      "filename": "COCO_val2014_000000537864.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 432
+    },
+    {
+      "image_id": 16086,
+      "coco_id": 532481,
+      "filename": "COCO_val2014_000000532481.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 426
+    },
+    {
+      "image_id": 16090,
+      "coco_id": 528399,
+      "filename": "COCO_val2014_000000528399.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 428
+    },
+    {
+      "image_id": 16104,
+      "coco_id": 32001,
+      "filename": "COCO_val2014_000000032001.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 480
+    },
+    {
+      "image_id": 16105,
+      "coco_id": 365711,
+      "filename": "COCO_val2014_000000365711.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 425
+    },
+    {
+      "image_id": 16134,
+      "coco_id": 240275,
+      "filename": "COCO_val2014_000000240275.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 427
+    },
+    {
+      "image_id": 16142,
+      "coco_id": 509020,
+      "filename": "COCO_val2014_000000509020.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 480
+    },
+    {
+      "image_id": 16164,
+      "coco_id": 75412,
+      "filename": "COCO_val2014_000000075412.jpg",
+      "split": "val",
+      "width": 480,
+      "height": 640
+    },
+    {
+      "image_id": 16166,
+      "coco_id": 480917,
+      "filename": "COCO_val2014_000000480917.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 425
+    },
+    {
+      "image_id": 16168,
+      "coco_id": 261535,
+      "filename": "COCO_val2014_000000261535.jpg",
+      "split": "val",
+      "width": 433,
+      "height": 640
+    },
+    {
+      "image_id": 16213,
+      "coco_id": 76657,
+      "filename": "COCO_val2014_000000076657.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 427
+    },
+    {
+      "image_id": 16220,
+      "coco_id": 243946,
+      "filename": "COCO_val2014_000000243946.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 480
+    },
+    {
+      "image_id": 16239,
+      "coco_id": 337222,
+      "filename": "COCO_val2014_000000337222.jpg",
+      "split": "val",
+      "width": 480,
+      "height": 640
+    },
+    {
+      "image_id": 16283,
+      "coco_id": 544471,
+      "filename": "COCO_val2014_000000544471.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 509
+    },
+    {
+      "image_id": 16295,
+      "coco_id": 481710,
+      "filename": "COCO_val2014_000000481710.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 480
+    },
+    {
+      "image_id": 16309,
+      "coco_id": 562803,
+      "filename": "COCO_val2014_000000562803.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 480
+    },
+    {
+      "image_id": 16357,
+      "coco_id": 194780,
+      "filename": "COCO_val2014_000000194780.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 480
+    },
+    {
+      "image_id": 16386,
+      "coco_id": 22208,
+      "filename": "COCO_val2014_000000022208.jpg",
+      "split": "val",
+      "width": 500,
+      "height": 281
+    },
+    {
+      "image_id": 16434,
+      "coco_id": 431352,
+      "filename": "COCO_val2014_000000431352.jpg",
+      "split": "val",
+      "width": 427,
+      "height": 640
+    },
+    {
+      "image_id": 16495,
+      "coco_id": 450452,
+      "filename": "COCO_val2014_000000450452.jpg",
+      "split": "val",
+      "width": 333,
+      "height": 500
+    },
+    {
+      "image_id": 16498,
+      "coco_id": 487059,
+      "filename": "COCO_val2014_000000487059.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 427
+    },
+    {
+      "image_id": 16526,
+      "coco_id": 206933,
+      "filename": "COCO_val2014_000000206933.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 433
+    },
+    {
+      "image_id": 16538,
+      "coco_id": 319534,
+      "filename": "COCO_val2014_000000319534.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 480
+    },
+    {
+      "image_id": 16554,
+      "coco_id": 193121,
+      "filename": "COCO_val2014_000000193121.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 603
+    },
+    {
+      "image_id": 16654,
+      "coco_id": 538463,
+      "filename": "COCO_val2014_000000538463.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 427
+    },
+    {
+      "image_id": 16672,
+      "coco_id": 167874,
+      "filename": "COCO_val2014_000000167874.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 427
+    },
+    {
+      "image_id": 16718,
+      "coco_id": 99410,
+      "filename": "COCO_val2014_000000099410.jpg",
+      "split": "val",
+      "width": 512,
+      "height": 640
+    },
+    {
+      "image_id": 16730,
+      "coco_id": 511662,
+      "filename": "COCO_val2014_000000511662.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 424
+    },
+    {
+      "image_id": 16771,
+      "coco_id": 503051,
+      "filename": "COCO_val2014_000000503051.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 482
+    },
+    {
+      "image_id": 16806,
+      "coco_id": 508230,
+      "filename": "COCO_val2014_000000508230.jpg",
+      "split": "val",
+      "width": 439,
+      "height": 640
+    },
+    {
+      "image_id": 16814,
+      "coco_id": 30494,
+      "filename": "COCO_val2014_000000030494.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 480
+    },
+    {
+      "image_id": 16822,
+      "coco_id": 472472,
+      "filename": "COCO_val2014_000000472472.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 428
+    },
+    {
+      "image_id": 16828,
+      "coco_id": 566049,
+      "filename": "COCO_val2014_000000566049.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 480
+    },
+    {
+      "image_id": 16919,
+      "coco_id": 460732,
+      "filename": "COCO_val2014_000000460732.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 478
+    },
+    {
+      "image_id": 16980,
+      "coco_id": 397211,
+      "filename": "COCO_val2014_000000397211.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 478
+    },
+    {
+      "image_id": 16991,
+      "coco_id": 505939,
+      "filename": "COCO_val2014_000000505939.jpg",
+      "split": "val",
+      "width": 500,
+      "height": 375
+    },
+    {
+      "image_id": 17010,
+      "coco_id": 246069,
+      "filename": "COCO_val2014_000000246069.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 480
+    },
+    {
+      "image_id": 17052,
+      "coco_id": 98801,
+      "filename": "COCO_val2014_000000098801.jpg",
+      "split": "val",
+      "width": 417,
+      "height": 640
+    },
+    {
+      "image_id": 17057,
+      "coco_id": 421231,
+      "filename": "COCO_val2014_000000421231.jpg",
+      "split": "val",
+      "width": 511,
+      "height": 640
+    },
+    {
+      "image_id": 17078,
+      "coco_id": 542758,
+      "filename": "COCO_val2014_000000542758.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 480
+    },
+    {
+      "image_id": 17172,
+      "coco_id": 122962,
+      "filename": "COCO_val2014_000000122962.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 424
+    },
+    {
+      "image_id": 17177,
+      "coco_id": 559102,
+      "filename": "COCO_val2014_000000559102.jpg",
+      "split": "val",
+      "width": 424,
+      "height": 640
+    },
+    {
+      "image_id": 17217,
+      "coco_id": 140174,
+      "filename": "COCO_val2014_000000140174.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 426
+    },
+    {
+      "image_id": 17231,
+      "coco_id": 273841,
+      "filename": "COCO_val2014_000000273841.jpg",
+      "split": "val",
+      "width": 480,
+      "height": 640
+    },
+    {
+      "image_id": 17238,
+      "coco_id": 345536,
+      "filename": "COCO_val2014_000000345536.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 426
+    },
+    {
+      "image_id": 17270,
+      "coco_id": 528936,
+      "filename": "COCO_val2014_000000528936.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 427
+    },
+    {
+      "image_id": 17279,
+      "coco_id": 470832,
+      "filename": "COCO_val2014_000000470832.jpg",
+      "split": "val",
+      "width": 438,
+      "height": 640
+    },
+    {
+      "image_id": 17298,
+      "coco_id": 458941,
+      "filename": "COCO_val2014_000000458941.jpg",
+      "split": "val",
+      "width": 426,
+      "height": 640
+    },
+    {
+      "image_id": 17331,
+      "coco_id": 125322,
+      "filename": "COCO_val2014_000000125322.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 424
+    },
+    {
+      "image_id": 17414,
+      "coco_id": 248919,
+      "filename": "COCO_val2014_000000248919.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 427
+    },
+    {
+      "image_id": 17478,
+      "coco_id": 6658,
+      "filename": "COCO_val2014_000000006658.jpg",
+      "split": "val",
+      "width": 317,
+      "height": 640
+    },
+    {
+      "image_id": 17552,
+      "coco_id": 524186,
+      "filename": "COCO_val2014_000000524186.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 480
+    },
+    {
+      "image_id": 17555,
+      "coco_id": 456756,
+      "filename": "COCO_val2014_000000456756.jpg",
+      "split": "val",
+      "width": 480,
+      "height": 640
+    },
+    {
+      "image_id": 17588,
+      "coco_id": 493435,
+      "filename": "COCO_val2014_000000493435.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 480
+    },
+    {
+      "image_id": 17681,
+      "coco_id": 312191,
+      "filename": "COCO_val2014_000000312191.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 295
+    },
+    {
+      "image_id": 17711,
+      "coco_id": 279933,
+      "filename": "COCO_val2014_000000279933.jpg",
+      "split": "val",
+      "width": 426,
+      "height": 640
+    },
+    {
+      "image_id": 17717,
+      "coco_id": 304929,
+      "filename": "COCO_val2014_000000304929.jpg",
+      "split": "val",
+      "width": 600,
+      "height": 402
+    },
+    {
+      "image_id": 17744,
+      "coco_id": 45882,
+      "filename": "COCO_val2014_000000045882.jpg",
+      "split": "val",
+      "width": 612,
+      "height": 612
+    },
+    {
+      "image_id": 17909,
+      "coco_id": 282847,
+      "filename": "COCO_val2014_000000282847.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 426
+    },
+    {
+      "image_id": 17912,
+      "coco_id": 544607,
+      "filename": "COCO_val2014_000000544607.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 426
+    },
+    {
+      "image_id": 17920,
+      "coco_id": 426075,
+      "filename": "COCO_val2014_000000426075.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 479
+    },
+    {
+      "image_id": 17932,
+      "coco_id": 272727,
+      "filename": "COCO_val2014_000000272727.jpg",
+      "split": "val",
+      "width": 500,
+      "height": 375
+    },
+    {
+      "image_id": 17965,
+      "coco_id": 327780,
+      "filename": "COCO_val2014_000000327780.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 480
+    },
+    {
+      "image_id": 18007,
+      "coco_id": 332067,
+      "filename": "COCO_val2014_000000332067.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 383
+    },
+    {
+      "image_id": 18089,
+      "coco_id": 483159,
+      "filename": "COCO_val2014_000000483159.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 480
+    },
+    {
+      "image_id": 18111,
+      "coco_id": 140391,
+      "filename": "COCO_val2014_000000140391.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 425
+    },
+    {
+      "image_id": 18140,
+      "coco_id": 124876,
+      "filename": "COCO_val2014_000000124876.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 480
+    },
+    {
+      "image_id": 18156,
+      "coco_id": 501439,
+      "filename": "COCO_val2014_000000501439.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 427
+    },
+    {
+      "image_id": 18178,
+      "coco_id": 100801,
+      "filename": "COCO_val2014_000000100801.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 433
+    },
+    {
+      "image_id": 18184,
+      "coco_id": 482367,
+      "filename": "COCO_val2014_000000482367.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 439
+    },
+    {
+      "image_id": 18204,
+      "coco_id": 358572,
+      "filename": "COCO_val2014_000000358572.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 427
+    },
+    {
+      "image_id": 18211,
+      "coco_id": 183391,
+      "filename": "COCO_val2014_000000183391.jpg",
+      "split": "val",
+      "width": 632,
+      "height": 640
+    },
+    {
+      "image_id": 18255,
+      "coco_id": 561311,
+      "filename": "COCO_val2014_000000561311.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 425
+    },
+    {
+      "image_id": 18271,
+      "coco_id": 9800,
+      "filename": "COCO_val2014_000000009800.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 434
+    },
+    {
+      "image_id": 18296,
+      "coco_id": 574940,
+      "filename": "COCO_val2014_000000574940.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 494
+    },
+    {
+      "image_id": 18335,
+      "coco_id": 167044,
+      "filename": "COCO_val2014_000000167044.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 426
+    },
+    {
+      "image_id": 18395,
+      "coco_id": 541353,
+      "filename": "COCO_val2014_000000541353.jpg",
+      "split": "val",
+      "width": 437,
+      "height": 640
+    },
+    {
+      "image_id": 18459,
+      "coco_id": 285007,
+      "filename": "COCO_val2014_000000285007.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 339
+    },
+    {
+      "image_id": 18475,
+      "coco_id": 291179,
+      "filename": "COCO_val2014_000000291179.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 428
+    },
+    {
+      "image_id": 18519,
+      "coco_id": 197775,
+      "filename": "COCO_val2014_000000197775.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 480
+    },
+    {
+      "image_id": 18547,
+      "coco_id": 99425,
+      "filename": "COCO_val2014_000000099425.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 425
+    },
+    {
+      "image_id": 18597,
+      "coco_id": 503292,
+      "filename": "COCO_val2014_000000503292.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 427
+    },
+    {
+      "image_id": 18598,
+      "coco_id": 299573,
+      "filename": "COCO_val2014_000000299573.jpg",
+      "split": "val",
+      "width": 457,
+      "height": 640
+    },
+    {
+      "image_id": 18616,
+      "coco_id": 362521,
+      "filename": "COCO_val2014_000000362521.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 446
+    },
+    {
+      "image_id": 18648,
+      "coco_id": 183187,
+      "filename": "COCO_val2014_000000183187.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 427
+    },
+    {
+      "image_id": 18663,
+      "coco_id": 178810,
+      "filename": "COCO_val2014_000000178810.jpg",
+      "split": "val",
+      "width": 427,
+      "height": 640
+    },
+    {
+      "image_id": 18688,
+      "coco_id": 561214,
+      "filename": "COCO_val2014_000000561214.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 427
+    },
+    {
+      "image_id": 18711,
+      "coco_id": 447089,
+      "filename": "COCO_val2014_000000447089.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 428
+    },
+    {
+      "image_id": 18798,
+      "coco_id": 137961,
+      "filename": "COCO_val2014_000000137961.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 480
+    },
+    {
+      "image_id": 18916,
+      "coco_id": 475359,
+      "filename": "COCO_val2014_000000475359.jpg",
+      "split": "val",
+      "width": 500,
+      "height": 281
+    },
+    {
+      "image_id": 19007,
+      "coco_id": 550471,
+      "filename": "COCO_val2014_000000550471.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 425
+    },
+    {
+      "image_id": 19083,
+      "coco_id": 265208,
+      "filename": "COCO_val2014_000000265208.jpg",
+      "split": "val",
+      "width": 500,
+      "height": 375
+    },
+    {
+      "image_id": 19137,
+      "coco_id": 29358,
+      "filename": "COCO_val2014_000000029358.jpg",
+      "split": "val",
+      "width": 375,
+      "height": 500
+    },
+    {
+      "image_id": 19179,
+      "coco_id": 314996,
+      "filename": "COCO_val2014_000000314996.jpg",
+      "split": "val",
+      "width": 612,
+      "height": 612
+    },
+    {
+      "image_id": 19243,
+      "coco_id": 44263,
+      "filename": "COCO_val2014_000000044263.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 480
+    },
+    {
+      "image_id": 19248,
+      "coco_id": 412339,
+      "filename": "COCO_val2014_000000412339.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 360
+    },
+    {
+      "image_id": 19322,
+      "coco_id": 262197,
+      "filename": "COCO_val2014_000000262197.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 428
+    },
+    {
+      "image_id": 19345,
+      "coco_id": 96923,
+      "filename": "COCO_val2014_000000096923.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 640
+    },
+    {
+      "image_id": 19486,
+      "coco_id": 393984,
+      "filename": "COCO_val2014_000000393984.jpg",
+      "split": "val",
+      "width": 612,
+      "height": 612
+    },
+    {
+      "image_id": 19494,
+      "coco_id": 404718,
+      "filename": "COCO_val2014_000000404718.jpg",
+      "split": "val",
+      "width": 500,
+      "height": 283
+    },
+    {
+      "image_id": 19516,
+      "coco_id": 370233,
+      "filename": "COCO_val2014_000000370233.jpg",
+      "split": "val",
+      "width": 500,
+      "height": 333
+    },
+    {
+      "image_id": 19533,
+      "coco_id": 575817,
+      "filename": "COCO_val2014_000000575817.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 621
+    },
+    {
+      "image_id": 19567,
+      "coco_id": 419216,
+      "filename": "COCO_val2014_000000419216.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 426
+    },
+    {
+      "image_id": 19605,
+      "coco_id": 294484,
+      "filename": "COCO_val2014_000000294484.jpg",
+      "split": "val",
+      "width": 480,
+      "height": 640
+    },
+    {
+      "image_id": 19611,
+      "coco_id": 496264,
+      "filename": "COCO_val2014_000000496264.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 427
+    },
+    {
+      "image_id": 19630,
+      "coco_id": 255036,
+      "filename": "COCO_val2014_000000255036.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 427
+    },
+    {
+      "image_id": 19651,
+      "coco_id": 545407,
+      "filename": "COCO_val2014_000000545407.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 424
+    },
+    {
+      "image_id": 19736,
+      "coco_id": 141501,
+      "filename": "COCO_val2014_000000141501.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 477
+    },
+    {
+      "image_id": 19802,
+      "coco_id": 310902,
+      "filename": "COCO_val2014_000000310902.jpg",
+      "split": "val",
+      "width": 612,
+      "height": 612
+    },
+    {
+      "image_id": 19819,
+      "coco_id": 359314,
+      "filename": "COCO_val2014_000000359314.jpg",
+      "split": "val",
+      "width": 500,
+      "height": 333
+    },
+    {
+      "image_id": 19921,
+      "coco_id": 474741,
+      "filename": "COCO_val2014_000000474741.jpg",
+      "split": "val",
+      "width": 500,
+      "height": 400
+    },
+    {
+      "image_id": 19939,
+      "coco_id": 275979,
+      "filename": "COCO_val2014_000000275979.jpg",
+      "split": "val",
+      "width": 500,
+      "height": 335
+    },
+    {
+      "image_id": 19999,
+      "coco_id": 332869,
+      "filename": "COCO_val2014_000000332869.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 427
+    },
+    {
+      "image_id": 20022,
+      "coco_id": 26622,
+      "filename": "COCO_val2014_000000026622.jpg",
+      "split": "val",
+      "width": 480,
+      "height": 640
+    },
+    {
+      "image_id": 20073,
+      "coco_id": 370388,
+      "filename": "COCO_val2014_000000370388.jpg",
+      "split": "val",
+      "width": 612,
+      "height": 612
+    },
+    {
+      "image_id": 20076,
+      "coco_id": 98658,
+      "filename": "COCO_val2014_000000098658.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 480
+    },
+    {
+      "image_id": 20223,
+      "coco_id": 118839,
+      "filename": "COCO_val2014_000000118839.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 425
+    },
+    {
+      "image_id": 20230,
+      "coco_id": 146871,
+      "filename": "COCO_val2014_000000146871.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 432
+    },
+    {
+      "image_id": 20255,
+      "coco_id": 376206,
+      "filename": "COCO_val2014_000000376206.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 427
+    },
+    {
+      "image_id": 20379,
+      "coco_id": 347145,
+      "filename": "COCO_val2014_000000347145.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 480
+    },
+    {
+      "image_id": 20402,
+      "coco_id": 165742,
+      "filename": "COCO_val2014_000000165742.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 428
+    },
+    {
+      "image_id": 20446,
+      "coco_id": 347058,
+      "filename": "COCO_val2014_000000347058.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 478
+    },
+    {
+      "image_id": 20493,
+      "coco_id": 544237,
+      "filename": "COCO_val2014_000000544237.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 426
+    },
+    {
+      "image_id": 20526,
+      "coco_id": 446574,
+      "filename": "COCO_val2014_000000446574.jpg",
+      "split": "val",
+      "width": 428,
+      "height": 640
+    },
+    {
+      "image_id": 20660,
+      "coco_id": 449909,
+      "filename": "COCO_val2014_000000449909.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 427
+    },
+    {
+      "image_id": 20763,
+      "coco_id": 366931,
+      "filename": "COCO_val2014_000000366931.jpg",
+      "split": "val",
+      "width": 500,
+      "height": 375
+    },
+    {
+      "image_id": 20777,
+      "coco_id": 567315,
+      "filename": "COCO_val2014_000000567315.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 427
+    },
+    {
+      "image_id": 20782,
+      "coco_id": 166837,
+      "filename": "COCO_val2014_000000166837.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 427
+    },
+    {
+      "image_id": 20848,
+      "coco_id": 44022,
+      "filename": "COCO_val2014_000000044022.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 427
+    },
+    {
+      "image_id": 20910,
+      "coco_id": 458387,
+      "filename": "COCO_val2014_000000458387.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 425
+    },
+    {
+      "image_id": 20915,
+      "coco_id": 478731,
+      "filename": "COCO_val2014_000000478731.jpg",
+      "split": "val",
+      "width": 480,
+      "height": 640
+    },
+    {
+      "image_id": 20931,
+      "coco_id": 183502,
+      "filename": "COCO_val2014_000000183502.jpg",
+      "split": "val",
+      "width": 333,
+      "height": 500
+    },
+    {
+      "image_id": 20948,
+      "coco_id": 304159,
+      "filename": "COCO_val2014_000000304159.jpg",
+      "split": "val",
+      "width": 428,
+      "height": 640
+    },
+    {
+      "image_id": 21019,
+      "coco_id": 138713,
+      "filename": "COCO_val2014_000000138713.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 417
+    },
+    {
+      "image_id": 21031,
+      "coco_id": 25057,
+      "filename": "COCO_val2014_000000025057.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 427
+    },
+    {
+      "image_id": 21099,
+      "coco_id": 194940,
+      "filename": "COCO_val2014_000000194940.jpg",
+      "split": "val",
+      "width": 500,
+      "height": 375
+    },
+    {
+      "image_id": 21101,
+      "coco_id": 160886,
+      "filename": "COCO_val2014_000000160886.jpg",
+      "split": "val",
+      "width": 375,
+      "height": 500
+    },
+    {
+      "image_id": 21109,
+      "coco_id": 430670,
+      "filename": "COCO_val2014_000000430670.jpg",
+      "split": "val",
+      "width": 427,
+      "height": 640
+    },
+    {
+      "image_id": 21163,
+      "coco_id": 447762,
+      "filename": "COCO_val2014_000000447762.jpg",
+      "split": "val",
+      "width": 428,
+      "height": 640
+    },
+    {
+      "image_id": 21228,
+      "coco_id": 466570,
+      "filename": "COCO_val2014_000000466570.jpg",
+      "split": "val",
+      "width": 480,
+      "height": 640
+    },
+    {
+      "image_id": 21275,
+      "coco_id": 563762,
+      "filename": "COCO_val2014_000000563762.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 428
+    },
+    {
+      "image_id": 21280,
+      "coco_id": 137888,
+      "filename": "COCO_val2014_000000137888.jpg",
+      "split": "val",
+      "width": 500,
+      "height": 333
+    },
+    {
+      "image_id": 21327,
+      "coco_id": 31043,
+      "filename": "COCO_val2014_000000031043.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 428
+    },
+    {
+      "image_id": 21373,
+      "coco_id": 530470,
+      "filename": "COCO_val2014_000000530470.jpg",
+      "split": "val",
+      "width": 500,
+      "height": 375
+    },
+    {
+      "image_id": 21412,
+      "coco_id": 464018,
+      "filename": "COCO_val2014_000000464018.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 480
+    },
+    {
+      "image_id": 21424,
+      "coco_id": 492677,
+      "filename": "COCO_val2014_000000492677.jpg",
+      "split": "val",
+      "width": 427,
+      "height": 640
+    },
+    {
+      "image_id": 21429,
+      "coco_id": 493956,
+      "filename": "COCO_val2014_000000493956.jpg",
+      "split": "val",
+      "width": 427,
+      "height": 640
+    },
+    {
+      "image_id": 21436,
+      "coco_id": 408253,
+      "filename": "COCO_val2014_000000408253.jpg",
+      "split": "val",
+      "width": 427,
+      "height": 640
+    },
+    {
+      "image_id": 21717,
+      "coco_id": 537355,
+      "filename": "COCO_val2014_000000537355.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 428
+    },
+    {
+      "image_id": 21809,
+      "coco_id": 402869,
+      "filename": "COCO_val2014_000000402869.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 480
+    },
+    {
+      "image_id": 21842,
+      "coco_id": 561393,
+      "filename": "COCO_val2014_000000561393.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 480
+    },
+    {
+      "image_id": 21849,
+      "coco_id": 571544,
+      "filename": "COCO_val2014_000000571544.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 480
+    },
+    {
+      "image_id": 21884,
+      "coco_id": 524536,
+      "filename": "COCO_val2014_000000524536.jpg",
+      "split": "val",
+      "width": 427,
+      "height": 640
+    },
+    {
+      "image_id": 21900,
+      "coco_id": 4576,
+      "filename": "COCO_val2014_000000004576.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 424
+    },
+    {
+      "image_id": 21905,
+      "coco_id": 180487,
+      "filename": "COCO_val2014_000000180487.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 427
+    },
+    {
+      "image_id": 21945,
+      "coco_id": 103499,
+      "filename": "COCO_val2014_000000103499.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 425
+    },
+    {
+      "image_id": 21986,
+      "coco_id": 469200,
+      "filename": "COCO_val2014_000000469200.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 426
+    },
+    {
+      "image_id": 21995,
+      "coco_id": 448181,
+      "filename": "COCO_val2014_000000448181.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 480
+    },
+    {
+      "image_id": 22020,
+      "coco_id": 560637,
+      "filename": "COCO_val2014_000000560637.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 480
+    },
+    {
+      "image_id": 22057,
+      "coco_id": 572499,
+      "filename": "COCO_val2014_000000572499.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 480
+    },
+    {
+      "image_id": 22085,
+      "coco_id": 257137,
+      "filename": "COCO_val2014_000000257137.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 480
+    },
+    {
+      "image_id": 22114,
+      "coco_id": 77050,
+      "filename": "COCO_val2014_000000077050.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 480
+    },
+    {
+      "image_id": 22141,
+      "coco_id": 118246,
+      "filename": "COCO_val2014_000000118246.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 640
+    },
+    {
+      "image_id": 22149,
+      "coco_id": 549112,
+      "filename": "COCO_val2014_000000549112.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 426
+    },
+    {
+      "image_id": 22157,
+      "coco_id": 43882,
+      "filename": "COCO_val2014_000000043882.jpg",
+      "split": "val",
+      "width": 480,
+      "height": 640
+    },
+    {
+      "image_id": 22192,
+      "coco_id": 176289,
+      "filename": "COCO_val2014_000000176289.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 425
+    },
+    {
+      "image_id": 22227,
+      "coco_id": 372861,
+      "filename": "COCO_val2014_000000372861.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 480
+    },
+    {
+      "image_id": 22243,
+      "coco_id": 57232,
+      "filename": "COCO_val2014_000000057232.jpg",
+      "split": "val",
+      "width": 612,
+      "height": 612
+    },
+    {
+      "image_id": 22244,
+      "coco_id": 345385,
+      "filename": "COCO_val2014_000000345385.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 480
+    },
+    {
+      "image_id": 22247,
+      "coco_id": 578821,
+      "filename": "COCO_val2014_000000578821.jpg",
+      "split": "val",
+      "width": 612,
+      "height": 612
+    },
+    {
+      "image_id": 22298,
+      "coco_id": 78194,
+      "filename": "COCO_val2014_000000078194.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 427
+    },
+    {
+      "image_id": 22421,
+      "coco_id": 389649,
+      "filename": "COCO_val2014_000000389649.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 480
+    },
+    {
+      "image_id": 22513,
+      "coco_id": 68771,
+      "filename": "COCO_val2014_000000068771.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 480
+    },
+    {
+      "image_id": 22538,
+      "coco_id": 57936,
+      "filename": "COCO_val2014_000000057936.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 360
+    },
+    {
+      "image_id": 22551,
+      "coco_id": 369221,
+      "filename": "COCO_val2014_000000369221.jpg",
+      "split": "val",
+      "width": 480,
+      "height": 640
+    },
+    {
+      "image_id": 22555,
+      "coco_id": 94317,
+      "filename": "COCO_val2014_000000094317.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 426
+    },
+    {
+      "image_id": 22591,
+      "coco_id": 336372,
+      "filename": "COCO_val2014_000000336372.jpg",
+      "split": "val",
+      "width": 500,
+      "height": 375
+    },
+    {
+      "image_id": 22628,
+      "coco_id": 185901,
+      "filename": "COCO_val2014_000000185901.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 480
+    },
+    {
+      "image_id": 22666,
+      "coco_id": 505733,
+      "filename": "COCO_val2014_000000505733.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 266
+    },
+    {
+      "image_id": 22681,
+      "coco_id": 448078,
+      "filename": "COCO_val2014_000000448078.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 213
+    },
+    {
+      "image_id": 22734,
+      "coco_id": 545219,
+      "filename": "COCO_val2014_000000545219.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 480
+    },
+    {
+      "image_id": 22764,
+      "coco_id": 358750,
+      "filename": "COCO_val2014_000000358750.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 480
+    },
+    {
+      "image_id": 22808,
+      "coco_id": 52790,
+      "filename": "COCO_val2014_000000052790.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 426
+    },
+    {
+      "image_id": 22865,
+      "coco_id": 169331,
+      "filename": "COCO_val2014_000000169331.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 480
+    },
+    {
+      "image_id": 22878,
+      "coco_id": 240217,
+      "filename": "COCO_val2014_000000240217.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 441
+    },
+    {
+      "image_id": 22950,
+      "coco_id": 133928,
+      "filename": "COCO_val2014_000000133928.jpg",
+      "split": "val",
+      "width": 427,
+      "height": 640
+    },
+    {
+      "image_id": 22986,
+      "coco_id": 117064,
+      "filename": "COCO_val2014_000000117064.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 445
+    },
+    {
+      "image_id": 22989,
+      "coco_id": 513417,
+      "filename": "COCO_val2014_000000513417.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 427
+    },
+    {
+      "image_id": 22995,
+      "coco_id": 557633,
+      "filename": "COCO_val2014_000000557633.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 480
+    },
+    {
+      "image_id": 23044,
+      "coco_id": 38825,
+      "filename": "COCO_val2014_000000038825.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 427
+    },
+    {
+      "image_id": 23095,
+      "coco_id": 289474,
+      "filename": "COCO_val2014_000000289474.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 480
+    },
+    {
+      "image_id": 23112,
+      "coco_id": 230240,
+      "filename": "COCO_val2014_000000230240.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 480
+    },
+    {
+      "image_id": 23180,
+      "coco_id": 237496,
+      "filename": "COCO_val2014_000000237496.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 512
+    },
+    {
+      "image_id": 23193,
+      "coco_id": 260230,
+      "filename": "COCO_val2014_000000260230.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 428
+    },
+    {
+      "image_id": 23204,
+      "coco_id": 164780,
+      "filename": "COCO_val2014_000000164780.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 480
+    },
+    {
+      "image_id": 23209,
+      "coco_id": 110618,
+      "filename": "COCO_val2014_000000110618.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 427
+    },
+    {
+      "image_id": 23256,
+      "coco_id": 217622,
+      "filename": "COCO_val2014_000000217622.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 425
+    },
+    {
+      "image_id": 23270,
+      "coco_id": 272117,
+      "filename": "COCO_val2014_000000272117.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 428
+    },
+    {
+      "image_id": 23281,
+      "coco_id": 107430,
+      "filename": "COCO_val2014_000000107430.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 458
+    },
+    {
+      "image_id": 23283,
+      "coco_id": 506614,
+      "filename": "COCO_val2014_000000506614.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 425
+    },
+    {
+      "image_id": 23336,
+      "coco_id": 382411,
+      "filename": "COCO_val2014_000000382411.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 512
+    },
+    {
+      "image_id": 23341,
+      "coco_id": 504287,
+      "filename": "COCO_val2014_000000504287.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 259
+    },
+    {
+      "image_id": 23416,
+      "coco_id": 128748,
+      "filename": "COCO_val2014_000000128748.jpg",
+      "split": "val",
+      "width": 491,
+      "height": 640
+    },
+    {
+      "image_id": 23527,
+      "coco_id": 345400,
+      "filename": "COCO_val2014_000000345400.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 640
+    },
+    {
+      "image_id": 23581,
+      "coco_id": 437898,
+      "filename": "COCO_val2014_000000437898.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 427
+    },
+    {
+      "image_id": 23590,
+      "coco_id": 195306,
+      "filename": "COCO_val2014_000000195306.jpg",
+      "split": "val",
+      "width": 500,
+      "height": 333
+    },
+    {
+      "image_id": 23592,
+      "coco_id": 14821,
+      "filename": "COCO_val2014_000000014821.jpg",
+      "split": "val",
+      "width": 491,
+      "height": 640
+    },
+    {
+      "image_id": 23637,
+      "coco_id": 359638,
+      "filename": "COCO_val2014_000000359638.jpg",
+      "split": "val",
+      "width": 500,
+      "height": 378
+    },
+    {
+      "image_id": 23658,
+      "coco_id": 160190,
+      "filename": "COCO_val2014_000000160190.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 425
+    },
+    {
+      "image_id": 23732,
+      "coco_id": 237984,
+      "filename": "COCO_val2014_000000237984.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 427
+    },
+    {
+      "image_id": 23745,
+      "coco_id": 425153,
+      "filename": "COCO_val2014_000000425153.jpg",
+      "split": "val",
+      "width": 480,
+      "height": 640
+    },
+    {
+      "image_id": 23800,
+      "coco_id": 321307,
+      "filename": "COCO_val2014_000000321307.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 601
+    },
+    {
+      "image_id": 23801,
+      "coco_id": 161873,
+      "filename": "COCO_val2014_000000161873.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 480
+    },
+    {
+      "image_id": 23802,
+      "coco_id": 411082,
+      "filename": "COCO_val2014_000000411082.jpg",
+      "split": "val",
+      "width": 597,
+      "height": 640
+    },
+    {
+      "image_id": 23868,
+      "coco_id": 303863,
+      "filename": "COCO_val2014_000000303863.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 431
+    },
+    {
+      "image_id": 23913,
+      "coco_id": 281424,
+      "filename": "COCO_val2014_000000281424.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 427
+    },
+    {
+      "image_id": 23930,
+      "coco_id": 515585,
+      "filename": "COCO_val2014_000000515585.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 480
+    },
+    {
+      "image_id": 23951,
+      "coco_id": 44621,
+      "filename": "COCO_val2014_000000044621.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 480
+    },
+    {
+      "image_id": 23952,
+      "coco_id": 261155,
+      "filename": "COCO_val2014_000000261155.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 425
+    },
+    {
+      "image_id": 23963,
+      "coco_id": 270883,
+      "filename": "COCO_val2014_000000270883.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 393
+    },
+    {
+      "image_id": 24029,
+      "coco_id": 30222,
+      "filename": "COCO_val2014_000000030222.jpg",
+      "split": "val",
+      "width": 478,
+      "height": 640
+    },
+    {
+      "image_id": 24030,
+      "coco_id": 573105,
+      "filename": "COCO_val2014_000000573105.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 480
+    },
+    {
+      "image_id": 24169,
+      "coco_id": 569758,
+      "filename": "COCO_val2014_000000569758.jpg",
+      "split": "val",
+      "width": 375,
+      "height": 500
+    },
+    {
+      "image_id": 24209,
+      "coco_id": 295138,
+      "filename": "COCO_val2014_000000295138.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 423
+    },
+    {
+      "image_id": 24211,
+      "coco_id": 446265,
+      "filename": "COCO_val2014_000000446265.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 479
+    },
+    {
+      "image_id": 24252,
+      "coco_id": 283168,
+      "filename": "COCO_val2014_000000283168.jpg",
+      "split": "val",
+      "width": 500,
+      "height": 333
+    },
+    {
+      "image_id": 24362,
+      "coco_id": 194414,
+      "filename": "COCO_val2014_000000194414.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 480
+    },
+    {
+      "image_id": 24364,
+      "coco_id": 129862,
+      "filename": "COCO_val2014_000000129862.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 480
+    },
+    {
+      "image_id": 24417,
+      "coco_id": 147404,
+      "filename": "COCO_val2014_000000147404.jpg",
+      "split": "val",
+      "width": 375,
+      "height": 500
+    },
+    {
+      "image_id": 24490,
+      "coco_id": 189694,
+      "filename": "COCO_val2014_000000189694.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 480
+    },
+    {
+      "image_id": 24504,
+      "coco_id": 40821,
+      "filename": "COCO_val2014_000000040821.jpg",
+      "split": "val",
+      "width": 500,
+      "height": 375
+    },
+    {
+      "image_id": 24512,
+      "coco_id": 217704,
+      "filename": "COCO_val2014_000000217704.jpg",
+      "split": "val",
+      "width": 409,
+      "height": 640
+    },
+    {
+      "image_id": 24541,
+      "coco_id": 24744,
+      "filename": "COCO_val2014_000000024744.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 640
+    },
+    {
+      "image_id": 24660,
+      "coco_id": 166142,
+      "filename": "COCO_val2014_000000166142.jpg",
+      "split": "val",
+      "width": 480,
+      "height": 640
+    },
+    {
+      "image_id": 24677,
+      "coco_id": 302997,
+      "filename": "COCO_val2014_000000302997.jpg",
+      "split": "val",
+      "width": 480,
+      "height": 640
+    },
+    {
+      "image_id": 24679,
+      "coco_id": 492800,
+      "filename": "COCO_val2014_000000492800.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 395
+    },
+    {
+      "image_id": 24713,
+      "coco_id": 258402,
+      "filename": "COCO_val2014_000000258402.jpg",
+      "split": "val",
+      "width": 500,
+      "height": 375
+    },
+    {
+      "image_id": 24762,
+      "coco_id": 355756,
+      "filename": "COCO_val2014_000000355756.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 413
+    },
+    {
+      "image_id": 24853,
+      "coco_id": 85328,
+      "filename": "COCO_val2014_000000085328.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 511
+    },
+    {
+      "image_id": 24885,
+      "coco_id": 292662,
+      "filename": "COCO_val2014_000000292662.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 427
+    },
+    {
+      "image_id": 24908,
+      "coco_id": 414397,
+      "filename": "COCO_val2014_000000414397.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 427
+    },
+    {
+      "image_id": 24921,
+      "coco_id": 224093,
+      "filename": "COCO_val2014_000000224093.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 316
+    },
+    {
+      "image_id": 24944,
+      "coco_id": 514979,
+      "filename": "COCO_val2014_000000514979.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 427
+    },
+    {
+      "image_id": 24946,
+      "coco_id": 25138,
+      "filename": "COCO_val2014_000000025138.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 424
+    },
+    {
+      "image_id": 24988,
+      "coco_id": 466558,
+      "filename": "COCO_val2014_000000466558.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 400
+    },
+    {
+      "image_id": 25016,
+      "coco_id": 235241,
+      "filename": "COCO_val2014_000000235241.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 427
+    },
+    {
+      "image_id": 25041,
+      "coco_id": 150989,
+      "filename": "COCO_val2014_000000150989.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 427
+    },
+    {
+      "image_id": 25055,
+      "coco_id": 115300,
+      "filename": "COCO_val2014_000000115300.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 480
+    },
+    {
+      "image_id": 25056,
+      "coco_id": 133750,
+      "filename": "COCO_val2014_000000133750.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 480
+    },
+    {
+      "image_id": 25079,
+      "coco_id": 308545,
+      "filename": "COCO_val2014_000000308545.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 427
+    },
+    {
+      "image_id": 25128,
+      "coco_id": 31093,
+      "filename": "COCO_val2014_000000031093.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 426
+    },
+    {
+      "image_id": 25204,
+      "coco_id": 397734,
+      "filename": "COCO_val2014_000000397734.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 480
+    },
+    {
+      "image_id": 25262,
+      "coco_id": 323370,
+      "filename": "COCO_val2014_000000323370.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 480
+    },
+    {
+      "image_id": 25344,
+      "coco_id": 174866,
+      "filename": "COCO_val2014_000000174866.jpg",
+      "split": "val",
+      "width": 480,
+      "height": 640
+    },
+    {
+      "image_id": 25354,
+      "coco_id": 70896,
+      "filename": "COCO_val2014_000000070896.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 426
+    },
+    {
+      "image_id": 25374,
+      "coco_id": 398534,
+      "filename": "COCO_val2014_000000398534.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 480
+    },
+    {
+      "image_id": 25392,
+      "coco_id": 203275,
+      "filename": "COCO_val2014_000000203275.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 640
+    },
+    {
+      "image_id": 25450,
+      "coco_id": 113606,
+      "filename": "COCO_val2014_000000113606.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 426
+    },
+    {
+      "image_id": 25452,
+      "coco_id": 3865,
+      "filename": "COCO_val2014_000000003865.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 426
+    },
+    {
+      "image_id": 25558,
+      "coco_id": 245173,
+      "filename": "COCO_val2014_000000245173.jpg",
+      "split": "val",
+      "width": 480,
+      "height": 640
+    },
+    {
+      "image_id": 25617,
+      "coco_id": 332499,
+      "filename": "COCO_val2014_000000332499.jpg",
+      "split": "val",
+      "width": 478,
+      "height": 640
+    },
+    {
+      "image_id": 25648,
+      "coco_id": 210522,
+      "filename": "COCO_val2014_000000210522.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 480
+    },
+    {
+      "image_id": 25655,
+      "coco_id": 88846,
+      "filename": "COCO_val2014_000000088846.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 426
+    },
+    {
+      "image_id": 25668,
+      "coco_id": 239355,
+      "filename": "COCO_val2014_000000239355.jpg",
+      "split": "val",
+      "width": 612,
+      "height": 612
+    },
+    {
+      "image_id": 25751,
+      "coco_id": 105303,
+      "filename": "COCO_val2014_000000105303.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 420
+    },
+    {
+      "image_id": 25771,
+      "coco_id": 16193,
+      "filename": "COCO_val2014_000000016193.jpg",
+      "split": "val",
+      "width": 428,
+      "height": 640
+    },
+    {
+      "image_id": 25913,
+      "coco_id": 29594,
+      "filename": "COCO_val2014_000000029594.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 480
+    },
+    {
+      "image_id": 25936,
+      "coco_id": 36049,
+      "filename": "COCO_val2014_000000036049.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 426
+    },
+    {
+      "image_id": 25973,
+      "coco_id": 519673,
+      "filename": "COCO_val2014_000000519673.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 480
+    },
+    {
+      "image_id": 25984,
+      "coco_id": 206391,
+      "filename": "COCO_val2014_000000206391.jpg",
+      "split": "val",
+      "width": 500,
+      "height": 343
+    },
+    {
+      "image_id": 25996,
+      "coco_id": 409963,
+      "filename": "COCO_val2014_000000409963.jpg",
+      "split": "val",
+      "width": 480,
+      "height": 640
+    },
+    {
+      "image_id": 26044,
+      "coco_id": 212470,
+      "filename": "COCO_val2014_000000212470.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 628
+    },
+    {
+      "image_id": 26068,
+      "coco_id": 223857,
+      "filename": "COCO_val2014_000000223857.jpg",
+      "split": "val",
+      "width": 478,
+      "height": 640
+    },
+    {
+      "image_id": 26091,
+      "coco_id": 21338,
+      "filename": "COCO_val2014_000000021338.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 398
+    },
+    {
+      "image_id": 26171,
+      "coco_id": 348235,
+      "filename": "COCO_val2014_000000348235.jpg",
+      "split": "val",
+      "width": 511,
+      "height": 640
+    },
+    {
+      "image_id": 26189,
+      "coco_id": 13774,
+      "filename": "COCO_val2014_000000013774.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 480
+    },
+    {
+      "image_id": 26237,
+      "coco_id": 302275,
+      "filename": "COCO_val2014_000000302275.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 480
+    },
+    {
+      "image_id": 26251,
+      "coco_id": 294537,
+      "filename": "COCO_val2014_000000294537.jpg",
+      "split": "val",
+      "width": 612,
+      "height": 612
+    },
+    {
+      "image_id": 26319,
+      "coco_id": 249672,
+      "filename": "COCO_val2014_000000249672.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 400
+    },
+    {
+      "image_id": 26378,
+      "coco_id": 454509,
+      "filename": "COCO_val2014_000000454509.jpg",
+      "split": "val",
+      "width": 408,
+      "height": 640
+    },
+    {
+      "image_id": 26495,
+      "coco_id": 392493,
+      "filename": "COCO_val2014_000000392493.jpg",
+      "split": "val",
+      "width": 500,
+      "height": 357
+    },
+    {
+      "image_id": 26515,
+      "coco_id": 396676,
+      "filename": "COCO_val2014_000000396676.jpg",
+      "split": "val",
+      "width": 500,
+      "height": 375
+    },
+    {
+      "image_id": 26572,
+      "coco_id": 365182,
+      "filename": "COCO_val2014_000000365182.jpg",
+      "split": "val",
+      "width": 480,
+      "height": 640
+    },
+    {
+      "image_id": 26575,
+      "coco_id": 171335,
+      "filename": "COCO_val2014_000000171335.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 480
+    },
+    {
+      "image_id": 26593,
+      "coco_id": 288481,
+      "filename": "COCO_val2014_000000288481.jpg",
+      "split": "val",
+      "width": 500,
+      "height": 375
+    },
+    {
+      "image_id": 26597,
+      "coco_id": 58070,
+      "filename": "COCO_val2014_000000058070.jpg",
+      "split": "val",
+      "width": 465,
+      "height": 640
+    },
+    {
+      "image_id": 26606,
+      "coco_id": 355430,
+      "filename": "COCO_val2014_000000355430.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 425
+    },
+    {
+      "image_id": 26642,
+      "coco_id": 2532,
+      "filename": "COCO_val2014_000000002532.jpg",
+      "split": "val",
+      "width": 480,
+      "height": 640
+    },
+    {
+      "image_id": 26672,
+      "coco_id": 132342,
+      "filename": "COCO_val2014_000000132342.jpg",
+      "split": "val",
+      "width": 339,
+      "height": 500
+    },
+    {
+      "image_id": 26717,
+      "coco_id": 560948,
+      "filename": "COCO_val2014_000000560948.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 366
+    },
+    {
+      "image_id": 26766,
+      "coco_id": 309160,
+      "filename": "COCO_val2014_000000309160.jpg",
+      "split": "val",
+      "width": 427,
+      "height": 640
+    },
+    {
+      "image_id": 26775,
+      "coco_id": 270603,
+      "filename": "COCO_val2014_000000270603.jpg",
+      "split": "val",
+      "width": 494,
+      "height": 367
+    },
+    {
+      "image_id": 26777,
+      "coco_id": 180953,
+      "filename": "COCO_val2014_000000180953.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 427
+    },
+    {
+      "image_id": 26795,
+      "coco_id": 407146,
+      "filename": "COCO_val2014_000000407146.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 427
+    },
+    {
+      "image_id": 26808,
+      "coco_id": 61720,
+      "filename": "COCO_val2014_000000061720.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 427
+    },
+    {
+      "image_id": 26855,
+      "coco_id": 330974,
+      "filename": "COCO_val2014_000000330974.jpg",
+      "split": "val",
+      "width": 427,
+      "height": 640
+    },
+    {
+      "image_id": 26883,
+      "coco_id": 561164,
+      "filename": "COCO_val2014_000000561164.jpg",
+      "split": "val",
+      "width": 526,
+      "height": 640
+    },
+    {
+      "image_id": 26886,
+      "coco_id": 574074,
+      "filename": "COCO_val2014_000000574074.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 394
+    },
+    {
+      "image_id": 26894,
+      "coco_id": 492840,
+      "filename": "COCO_val2014_000000492840.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 427
+    },
+    {
+      "image_id": 26903,
+      "coco_id": 182348,
+      "filename": "COCO_val2014_000000182348.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 427
+    },
+    {
+      "image_id": 27006,
+      "coco_id": 408624,
+      "filename": "COCO_val2014_000000408624.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 434
+    },
+    {
+      "image_id": 27100,
+      "coco_id": 416476,
+      "filename": "COCO_val2014_000000416476.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 428
+    },
+    {
+      "image_id": 27128,
+      "coco_id": 462904,
+      "filename": "COCO_val2014_000000462904.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 480
+    },
+    {
+      "image_id": 27180,
+      "coco_id": 444502,
+      "filename": "COCO_val2014_000000444502.jpg",
+      "split": "val",
+      "width": 427,
+      "height": 640
+    },
+    {
+      "image_id": 27233,
+      "coco_id": 255708,
+      "filename": "COCO_val2014_000000255708.jpg",
+      "split": "val",
+      "width": 480,
+      "height": 640
+    },
+    {
+      "image_id": 27325,
+      "coco_id": 447237,
+      "filename": "COCO_val2014_000000447237.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 427
+    },
+    {
+      "image_id": 27329,
+      "coco_id": 269786,
+      "filename": "COCO_val2014_000000269786.jpg",
+      "split": "val",
+      "width": 500,
+      "height": 375
+    },
+    {
+      "image_id": 27345,
+      "coco_id": 484614,
+      "filename": "COCO_val2014_000000484614.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 427
+    },
+    {
+      "image_id": 27352,
+      "coco_id": 411587,
+      "filename": "COCO_val2014_000000411587.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 640
+    },
+    {
+      "image_id": 27499,
+      "coco_id": 195269,
+      "filename": "COCO_val2014_000000195269.jpg",
+      "split": "val",
+      "width": 480,
+      "height": 640
+    },
+    {
+      "image_id": 27537,
+      "coco_id": 452515,
+      "filename": "COCO_val2014_000000452515.jpg",
+      "split": "val",
+      "width": 224,
+      "height": 500
+    },
+    {
+      "image_id": 27616,
+      "coco_id": 43218,
+      "filename": "COCO_val2014_000000043218.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 428
+    },
+    {
+      "image_id": 27656,
+      "coco_id": 190951,
+      "filename": "COCO_val2014_000000190951.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 480
+    },
+    {
+      "image_id": 27674,
+      "coco_id": 302038,
+      "filename": "COCO_val2014_000000302038.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 503
+    },
+    {
+      "image_id": 27778,
+      "coco_id": 581157,
+      "filename": "COCO_val2014_000000581157.jpg",
+      "split": "val",
+      "width": 614,
+      "height": 640
+    },
+    {
+      "image_id": 27828,
+      "coco_id": 90020,
+      "filename": "COCO_val2014_000000090020.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 480
+    },
+    {
+      "image_id": 27861,
+      "coco_id": 452027,
+      "filename": "COCO_val2014_000000452027.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 480
+    },
+    {
+      "image_id": 28064,
+      "coco_id": 14975,
+      "filename": "COCO_val2014_000000014975.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 438
+    },
+    {
+      "image_id": 28091,
+      "coco_id": 512442,
+      "filename": "COCO_val2014_000000512442.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 480
+    },
+    {
+      "image_id": 28143,
+      "coco_id": 285,
+      "filename": "COCO_val2014_000000000285.jpg",
+      "split": "val",
+      "width": 586,
+      "height": 640
+    },
+    {
+      "image_id": 28243,
+      "coco_id": 158635,
+      "filename": "COCO_val2014_000000158635.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 426
+    },
+    {
+      "image_id": 28254,
+      "coco_id": 198154,
+      "filename": "COCO_val2014_000000198154.jpg",
+      "split": "val",
+      "width": 480,
+      "height": 640
+    },
+    {
+      "image_id": 28268,
+      "coco_id": 104406,
+      "filename": "COCO_val2014_000000104406.jpg",
+      "split": "val",
+      "width": 612,
+      "height": 612
+    },
+    {
+      "image_id": 28278,
+      "coco_id": 240742,
+      "filename": "COCO_val2014_000000240742.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 481
+    },
+    {
+      "image_id": 28282,
+      "coco_id": 576085,
+      "filename": "COCO_val2014_000000576085.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 393
+    },
+    {
+      "image_id": 28350,
+      "coco_id": 64736,
+      "filename": "COCO_val2014_000000064736.jpg",
+      "split": "val",
+      "width": 480,
+      "height": 640
+    },
+    {
+      "image_id": 28607,
+      "coco_id": 196594,
+      "filename": "COCO_val2014_000000196594.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 427
+    },
+    {
+      "image_id": 28694,
+      "coco_id": 489305,
+      "filename": "COCO_val2014_000000489305.jpg",
+      "split": "val",
+      "width": 305,
+      "height": 229
+    },
+    {
+      "image_id": 28707,
+      "coco_id": 222825,
+      "filename": "COCO_val2014_000000222825.jpg",
+      "split": "val",
+      "width": 427,
+      "height": 640
+    },
+    {
+      "image_id": 28720,
+      "coco_id": 396295,
+      "filename": "COCO_val2014_000000396295.jpg",
+      "split": "val",
+      "width": 480,
+      "height": 640
+    },
+    {
+      "image_id": 28749,
+      "coco_id": 278338,
+      "filename": "COCO_val2014_000000278338.jpg",
+      "split": "val",
+      "width": 426,
+      "height": 640
+    },
+    {
+      "image_id": 28862,
+      "coco_id": 120068,
+      "filename": "COCO_val2014_000000120068.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 314
+    },
+    {
+      "image_id": 28895,
+      "coco_id": 514248,
+      "filename": "COCO_val2014_000000514248.jpg",
+      "split": "val",
+      "width": 500,
+      "height": 375
+    },
+    {
+      "image_id": 28904,
+      "coco_id": 163112,
+      "filename": "COCO_val2014_000000163112.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 480
+    },
+    {
+      "image_id": 29081,
+      "coco_id": 447948,
+      "filename": "COCO_val2014_000000447948.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 478
+    },
+    {
+      "image_id": 29097,
+      "coco_id": 233362,
+      "filename": "COCO_val2014_000000233362.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 427
+    },
+    {
+      "image_id": 29103,
+      "coco_id": 539838,
+      "filename": "COCO_val2014_000000539838.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 401
+    },
+    {
+      "image_id": 29122,
+      "coco_id": 504561,
+      "filename": "COCO_val2014_000000504561.jpg",
+      "split": "val",
+      "width": 480,
+      "height": 640
+    },
+    {
+      "image_id": 29126,
+      "coco_id": 29573,
+      "filename": "COCO_val2014_000000029573.jpg",
+      "split": "val",
+      "width": 427,
+      "height": 640
+    },
+    {
+      "image_id": 29153,
+      "coco_id": 10693,
+      "filename": "COCO_val2014_000000010693.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 427
+    },
+    {
+      "image_id": 29154,
+      "coco_id": 61997,
+      "filename": "COCO_val2014_000000061997.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 427
+    },
+    {
+      "image_id": 29162,
+      "coco_id": 41247,
+      "filename": "COCO_val2014_000000041247.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 480
+    },
+    {
+      "image_id": 29309,
+      "coco_id": 131282,
+      "filename": "COCO_val2014_000000131282.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 480
+    },
+    {
+      "image_id": 29352,
+      "coco_id": 449312,
+      "filename": "COCO_val2014_000000449312.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 578
+    },
+    {
+      "image_id": 29357,
+      "coco_id": 466960,
+      "filename": "COCO_val2014_000000466960.jpg",
+      "split": "val",
+      "width": 480,
+      "height": 640
+    },
+    {
+      "image_id": 29383,
+      "coco_id": 41671,
+      "filename": "COCO_val2014_000000041671.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 427
+    },
+    {
+      "image_id": 29432,
+      "coco_id": 533097,
+      "filename": "COCO_val2014_000000533097.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 426
+    },
+    {
+      "image_id": 29495,
+      "coco_id": 402765,
+      "filename": "COCO_val2014_000000402765.jpg",
+      "split": "val",
+      "width": 500,
+      "height": 375
+    },
+    {
+      "image_id": 29528,
+      "coco_id": 379048,
+      "filename": "COCO_val2014_000000379048.jpg",
+      "split": "val",
+      "width": 426,
+      "height": 640
+    },
+    {
+      "image_id": 29549,
+      "coco_id": 274779,
+      "filename": "COCO_val2014_000000274779.jpg",
+      "split": "val",
+      "width": 480,
+      "height": 640
+    },
+    {
+      "image_id": 29551,
+      "coco_id": 543570,
+      "filename": "COCO_val2014_000000543570.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 480
+    },
+    {
+      "image_id": 29563,
+      "coco_id": 64150,
+      "filename": "COCO_val2014_000000064150.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 426
+    },
+    {
+      "image_id": 29608,
+      "coco_id": 362434,
+      "filename": "COCO_val2014_000000362434.jpg",
+      "split": "val",
+      "width": 500,
+      "height": 375
+    },
+    {
+      "image_id": 29668,
+      "coco_id": 565469,
+      "filename": "COCO_val2014_000000565469.jpg",
+      "split": "val",
+      "width": 426,
+      "height": 640
+    },
+    {
+      "image_id": 29691,
+      "coco_id": 478689,
+      "filename": "COCO_val2014_000000478689.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 428
+    },
+    {
+      "image_id": 29728,
+      "coco_id": 172083,
+      "filename": "COCO_val2014_000000172083.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 360
+    },
+    {
+      "image_id": 29772,
+      "coco_id": 379740,
+      "filename": "COCO_val2014_000000379740.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 428
+    },
+    {
+      "image_id": 29777,
+      "coco_id": 503108,
+      "filename": "COCO_val2014_000000503108.jpg",
+      "split": "val",
+      "width": 480,
+      "height": 640
+    },
+    {
+      "image_id": 29849,
+      "coco_id": 325958,
+      "filename": "COCO_val2014_000000325958.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 480
+    },
+    {
+      "image_id": 29891,
+      "coco_id": 329687,
+      "filename": "COCO_val2014_000000329687.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 427
+    },
+    {
+      "image_id": 29914,
+      "coco_id": 203483,
+      "filename": "COCO_val2014_000000203483.jpg",
+      "split": "val",
+      "width": 426,
+      "height": 640
+    },
+    {
+      "image_id": 29940,
+      "coco_id": 401403,
+      "filename": "COCO_val2014_000000401403.jpg",
+      "split": "val",
+      "width": 480,
+      "height": 640
+    },
+    {
+      "image_id": 29978,
+      "coco_id": 209062,
+      "filename": "COCO_val2014_000000209062.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 426
+    },
+    {
+      "image_id": 30012,
+      "coco_id": 192714,
+      "filename": "COCO_val2014_000000192714.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 480
+    },
+    {
+      "image_id": 30019,
+      "coco_id": 167271,
+      "filename": "COCO_val2014_000000167271.jpg",
+      "split": "val",
+      "width": 375,
+      "height": 500
+    },
+    {
+      "image_id": 30043,
+      "coco_id": 52147,
+      "filename": "COCO_val2014_000000052147.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 348
+    },
+    {
+      "image_id": 30062,
+      "coco_id": 68217,
+      "filename": "COCO_val2014_000000068217.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 455
+    },
+    {
+      "image_id": 30138,
+      "coco_id": 189936,
+      "filename": "COCO_val2014_000000189936.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 427
+    },
+    {
+      "image_id": 30205,
+      "coco_id": 320020,
+      "filename": "COCO_val2014_000000320020.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 427
+    },
+    {
+      "image_id": 30253,
+      "coco_id": 155355,
+      "filename": "COCO_val2014_000000155355.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 480
+    },
+    {
+      "image_id": 30267,
+      "coco_id": 557965,
+      "filename": "COCO_val2014_000000557965.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 427
+    },
+    {
+      "image_id": 30282,
+      "coco_id": 290875,
+      "filename": "COCO_val2014_000000290875.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 444
+    },
+    {
+      "image_id": 30352,
+      "coco_id": 567898,
+      "filename": "COCO_val2014_000000567898.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 454
+    },
+    {
+      "image_id": 30363,
+      "coco_id": 82468,
+      "filename": "COCO_val2014_000000082468.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 480
+    },
+    {
+      "image_id": 30380,
+      "coco_id": 507750,
+      "filename": "COCO_val2014_000000507750.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 392
+    },
+    {
+      "image_id": 30408,
+      "coco_id": 510351,
+      "filename": "COCO_val2014_000000510351.jpg",
+      "split": "val",
+      "width": 500,
+      "height": 375
+    },
+    {
+      "image_id": 30421,
+      "coco_id": 232592,
+      "filename": "COCO_val2014_000000232592.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 427
+    },
+    {
+      "image_id": 30621,
+      "coco_id": 72004,
+      "filename": "COCO_val2014_000000072004.jpg",
+      "split": "val",
+      "width": 500,
+      "height": 375
+    },
+    {
+      "image_id": 30663,
+      "coco_id": 273825,
+      "filename": "COCO_val2014_000000273825.jpg",
+      "split": "val",
+      "width": 480,
+      "height": 640
+    },
+    {
+      "image_id": 30683,
+      "coco_id": 321603,
+      "filename": "COCO_val2014_000000321603.jpg",
+      "split": "val",
+      "width": 480,
+      "height": 640
+    },
+    {
+      "image_id": 30701,
+      "coco_id": 319687,
+      "filename": "COCO_val2014_000000319687.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 457
+    },
+    {
+      "image_id": 30728,
+      "coco_id": 316008,
+      "filename": "COCO_val2014_000000316008.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 480
+    },
+    {
+      "image_id": 30733,
+      "coco_id": 357743,
+      "filename": "COCO_val2014_000000357743.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 480
+    },
+    {
+      "image_id": 30743,
+      "coco_id": 113590,
+      "filename": "COCO_val2014_000000113590.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 425
+    },
+    {
+      "image_id": 30748,
+      "coco_id": 531069,
+      "filename": "COCO_val2014_000000531069.jpg",
+      "split": "val",
+      "width": 480,
+      "height": 640
+    },
+    {
+      "image_id": 30786,
+      "coco_id": 267112,
+      "filename": "COCO_val2014_000000267112.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 427
+    },
+    {
+      "image_id": 30803,
+      "coco_id": 457848,
+      "filename": "COCO_val2014_000000457848.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 427
+    },
+    {
+      "image_id": 30828,
+      "coco_id": 268725,
+      "filename": "COCO_val2014_000000268725.jpg",
+      "split": "val",
+      "width": 426,
+      "height": 640
+    },
+    {
+      "image_id": 30935,
+      "coco_id": 100811,
+      "filename": "COCO_val2014_000000100811.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 427
+    },
+    {
+      "image_id": 30945,
+      "coco_id": 436349,
+      "filename": "COCO_val2014_000000436349.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 427
+    },
+    {
+      "image_id": 31062,
+      "coco_id": 376247,
+      "filename": "COCO_val2014_000000376247.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 564
+    },
+    {
+      "image_id": 31101,
+      "coco_id": 472610,
+      "filename": "COCO_val2014_000000472610.jpg",
+      "split": "val",
+      "width": 478,
+      "height": 640
+    },
+    {
+      "image_id": 31164,
+      "coco_id": 473415,
+      "filename": "COCO_val2014_000000473415.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 396
+    },
+    {
+      "image_id": 31231,
+      "coco_id": 411484,
+      "filename": "COCO_val2014_000000411484.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 427
+    },
+    {
+      "image_id": 31300,
+      "coco_id": 396608,
+      "filename": "COCO_val2014_000000396608.jpg",
+      "split": "val",
+      "width": 612,
+      "height": 612
+    },
+    {
+      "image_id": 31328,
+      "coco_id": 45962,
+      "filename": "COCO_val2014_000000045962.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 586
+    },
+    {
+      "image_id": 31346,
+      "coco_id": 15067,
+      "filename": "COCO_val2014_000000015067.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 424
+    },
+    {
+      "image_id": 31382,
+      "coco_id": 321071,
+      "filename": "COCO_val2014_000000321071.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 426
+    },
+    {
+      "image_id": 31429,
+      "coco_id": 278967,
+      "filename": "COCO_val2014_000000278967.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 395
+    },
+    {
+      "image_id": 31449,
+      "coco_id": 327771,
+      "filename": "COCO_val2014_000000327771.jpg",
+      "split": "val",
+      "width": 558,
+      "height": 558
+    },
+    {
+      "image_id": 31457,
+      "coco_id": 313428,
+      "filename": "COCO_val2014_000000313428.jpg",
+      "split": "val",
+      "width": 625,
+      "height": 505
+    },
+    {
+      "image_id": 31535,
+      "coco_id": 481370,
+      "filename": "COCO_val2014_000000481370.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 480
+    },
+    {
+      "image_id": 31607,
+      "coco_id": 354584,
+      "filename": "COCO_val2014_000000354584.jpg",
+      "split": "val",
+      "width": 332,
+      "height": 500
+    },
+    {
+      "image_id": 31618,
+      "coco_id": 16897,
+      "filename": "COCO_val2014_000000016897.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 427
+    },
+    {
+      "image_id": 31621,
+      "coco_id": 377881,
+      "filename": "COCO_val2014_000000377881.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 424
+    },
+    {
+      "image_id": 31674,
+      "coco_id": 536073,
+      "filename": "COCO_val2014_000000536073.jpg",
+      "split": "val",
+      "width": 480,
+      "height": 640
+    },
+    {
+      "image_id": 31752,
+      "coco_id": 502749,
+      "filename": "COCO_val2014_000000502749.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 360
+    },
+    {
+      "image_id": 31814,
+      "coco_id": 559776,
+      "filename": "COCO_val2014_000000559776.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 427
+    },
+    {
+      "image_id": 31842,
+      "coco_id": 165681,
+      "filename": "COCO_val2014_000000165681.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 444
+    },
+    {
+      "image_id": 31868,
+      "coco_id": 425303,
+      "filename": "COCO_val2014_000000425303.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 427
+    },
+    {
+      "image_id": 31883,
+      "coco_id": 38259,
+      "filename": "COCO_val2014_000000038259.jpg",
+      "split": "val",
+      "width": 608,
+      "height": 640
+    },
+    {
+      "image_id": 31981,
+      "coco_id": 197997,
+      "filename": "COCO_val2014_000000197997.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 480
+    },
+    {
+      "image_id": 31996,
+      "coco_id": 89503,
+      "filename": "COCO_val2014_000000089503.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 523
+    },
+    {
+      "image_id": 32014,
+      "coco_id": 276886,
+      "filename": "COCO_val2014_000000276886.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 439
+    },
+    {
+      "image_id": 32112,
+      "coco_id": 15070,
+      "filename": "COCO_val2014_000000015070.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 427
+    },
+    {
+      "image_id": 32116,
+      "coco_id": 380088,
+      "filename": "COCO_val2014_000000380088.jpg",
+      "split": "val",
+      "width": 433,
+      "height": 640
+    },
+    {
+      "image_id": 32146,
+      "coco_id": 437554,
+      "filename": "COCO_val2014_000000437554.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 640
+    },
+    {
+      "image_id": 32197,
+      "coco_id": 306495,
+      "filename": "COCO_val2014_000000306495.jpg",
+      "split": "val",
+      "width": 427,
+      "height": 640
+    },
+    {
+      "image_id": 32209,
+      "coco_id": 97334,
+      "filename": "COCO_val2014_000000097334.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 427
+    },
+    {
+      "image_id": 32217,
+      "coco_id": 216161,
+      "filename": "COCO_val2014_000000216161.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 480
+    },
+    {
+      "image_id": 32266,
+      "coco_id": 364636,
+      "filename": "COCO_val2014_000000364636.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 533
+    },
+    {
+      "image_id": 32289,
+      "coco_id": 455548,
+      "filename": "COCO_val2014_000000455548.jpg",
+      "split": "val",
+      "width": 500,
+      "height": 333
+    },
+    {
+      "image_id": 32299,
+      "coco_id": 3761,
+      "filename": "COCO_val2014_000000003761.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 464
+    },
+    {
+      "image_id": 32337,
+      "coco_id": 388082,
+      "filename": "COCO_val2014_000000388082.jpg",
+      "split": "val",
+      "width": 612,
+      "height": 612
+    },
+    {
+      "image_id": 32359,
+      "coco_id": 89071,
+      "filename": "COCO_val2014_000000089071.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 360
+    },
+    {
+      "image_id": 32378,
+      "coco_id": 158583,
+      "filename": "COCO_val2014_000000158583.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 425
+    },
+    {
+      "image_id": 32395,
+      "coco_id": 532527,
+      "filename": "COCO_val2014_000000532527.jpg",
+      "split": "val",
+      "width": 480,
+      "height": 640
+    },
+    {
+      "image_id": 32522,
+      "coco_id": 218294,
+      "filename": "COCO_val2014_000000218294.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 428
+    },
+    {
+      "image_id": 32619,
+      "coco_id": 304404,
+      "filename": "COCO_val2014_000000304404.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 428
+    },
+    {
+      "image_id": 32646,
+      "coco_id": 446301,
+      "filename": "COCO_val2014_000000446301.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 428
+    },
+    {
+      "image_id": 32658,
+      "coco_id": 9186,
+      "filename": "COCO_val2014_000000009186.jpg",
+      "split": "val",
+      "width": 500,
+      "height": 285
+    },
+    {
+      "image_id": 32703,
+      "coco_id": 254990,
+      "filename": "COCO_val2014_000000254990.jpg",
+      "split": "val",
+      "width": 478,
+      "height": 640
+    },
+    {
+      "image_id": 32737,
+      "coco_id": 78176,
+      "filename": "COCO_val2014_000000078176.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 480
+    },
+    {
+      "image_id": 32773,
+      "coco_id": 312341,
+      "filename": "COCO_val2014_000000312341.jpg",
+      "split": "val",
+      "width": 500,
+      "height": 333
+    },
+    {
+      "image_id": 32822,
+      "coco_id": 395463,
+      "filename": "COCO_val2014_000000395463.jpg",
+      "split": "val",
+      "width": 600,
+      "height": 450
+    },
+    {
+      "image_id": 32913,
+      "coco_id": 404263,
+      "filename": "COCO_val2014_000000404263.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 531
+    },
+    {
+      "image_id": 32936,
+      "coco_id": 304036,
+      "filename": "COCO_val2014_000000304036.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 473
+    },
+    {
+      "image_id": 32989,
+      "coco_id": 568972,
+      "filename": "COCO_val2014_000000568972.jpg",
+      "split": "val",
+      "width": 480,
+      "height": 640
+    },
+    {
+      "image_id": 33003,
+      "coco_id": 274931,
+      "filename": "COCO_val2014_000000274931.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 524
+    },
+    {
+      "image_id": 33032,
+      "coco_id": 466921,
+      "filename": "COCO_val2014_000000466921.jpg",
+      "split": "val",
+      "width": 500,
+      "height": 333
+    },
+    {
+      "image_id": 33046,
+      "coco_id": 261906,
+      "filename": "COCO_val2014_000000261906.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 426
+    },
+    {
+      "image_id": 33087,
+      "coco_id": 193261,
+      "filename": "COCO_val2014_000000193261.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 427
+    },
+    {
+      "image_id": 33180,
+      "coco_id": 107306,
+      "filename": "COCO_val2014_000000107306.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 428
+    },
+    {
+      "image_id": 33302,
+      "coco_id": 213592,
+      "filename": "COCO_val2014_000000213592.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 427
+    },
+    {
+      "image_id": 33304,
+      "coco_id": 313718,
+      "filename": "COCO_val2014_000000313718.jpg",
+      "split": "val",
+      "width": 500,
+      "height": 375
+    },
+    {
+      "image_id": 33340,
+      "coco_id": 556130,
+      "filename": "COCO_val2014_000000556130.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 419
+    },
+    {
+      "image_id": 33359,
+      "coco_id": 69906,
+      "filename": "COCO_val2014_000000069906.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 480
+    },
+    {
+      "image_id": 33423,
+      "coco_id": 413948,
+      "filename": "COCO_val2014_000000413948.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 425
+    },
+    {
+      "image_id": 33453,
+      "coco_id": 398309,
+      "filename": "COCO_val2014_000000398309.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 452
+    },
+    {
+      "image_id": 33479,
+      "coco_id": 338581,
+      "filename": "COCO_val2014_000000338581.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 425
+    },
+    {
+      "image_id": 33488,
+      "coco_id": 223289,
+      "filename": "COCO_val2014_000000223289.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 425
+    },
+    {
+      "image_id": 33590,
+      "coco_id": 168367,
+      "filename": "COCO_val2014_000000168367.jpg",
+      "split": "val",
+      "width": 427,
+      "height": 640
+    },
+    {
+      "image_id": 33621,
+      "coco_id": 569058,
+      "filename": "COCO_val2014_000000569058.jpg",
+      "split": "val",
+      "width": 500,
+      "height": 375
+    },
+    {
+      "image_id": 33652,
+      "coco_id": 50352,
+      "filename": "COCO_val2014_000000050352.jpg",
+      "split": "val",
+      "width": 480,
+      "height": 640
+    },
+    {
+      "image_id": 33655,
+      "coco_id": 466945,
+      "filename": "COCO_val2014_000000466945.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 640
+    },
+    {
+      "image_id": 33688,
+      "coco_id": 373748,
+      "filename": "COCO_val2014_000000373748.jpg",
+      "split": "val",
+      "width": 333,
+      "height": 500
+    },
+    {
+      "image_id": 33705,
+      "coco_id": 188544,
+      "filename": "COCO_val2014_000000188544.jpg",
+      "split": "val",
+      "width": 426,
+      "height": 640
+    },
+    {
+      "image_id": 33724,
+      "coco_id": 386089,
+      "filename": "COCO_val2014_000000386089.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 426
+    },
+    {
+      "image_id": 33807,
+      "coco_id": 137803,
+      "filename": "COCO_val2014_000000137803.jpg",
+      "split": "val",
+      "width": 500,
+      "height": 338
+    },
+    {
+      "image_id": 33900,
+      "coco_id": 299887,
+      "filename": "COCO_val2014_000000299887.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 480
+    },
+    {
+      "image_id": 33903,
+      "coco_id": 254045,
+      "filename": "COCO_val2014_000000254045.jpg",
+      "split": "val",
+      "width": 480,
+      "height": 640
+    },
+    {
+      "image_id": 33904,
+      "coco_id": 147386,
+      "filename": "COCO_val2014_000000147386.jpg",
+      "split": "val",
+      "width": 500,
+      "height": 375
+    },
+    {
+      "image_id": 33926,
+      "coco_id": 576981,
+      "filename": "COCO_val2014_000000576981.jpg",
+      "split": "val",
+      "width": 427,
+      "height": 640
+    },
+    {
+      "image_id": 33932,
+      "coco_id": 377352,
+      "filename": "COCO_val2014_000000377352.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 424
+    },
+    {
+      "image_id": 33958,
+      "coco_id": 143224,
+      "filename": "COCO_val2014_000000143224.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 480
+    },
+    {
+      "image_id": 34082,
+      "coco_id": 228467,
+      "filename": "COCO_val2014_000000228467.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 480
+    },
+    {
+      "image_id": 34099,
+      "coco_id": 400152,
+      "filename": "COCO_val2014_000000400152.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 480
+    },
+    {
+      "image_id": 34127,
+      "coco_id": 264753,
+      "filename": "COCO_val2014_000000264753.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 423
+    },
+    {
+      "image_id": 34139,
+      "coco_id": 456833,
+      "filename": "COCO_val2014_000000456833.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 480
+    },
+    {
+      "image_id": 34173,
+      "coco_id": 231580,
+      "filename": "COCO_val2014_000000231580.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 480
+    },
+    {
+      "image_id": 34185,
+      "coco_id": 391415,
+      "filename": "COCO_val2014_000000391415.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 480
+    },
+    {
+      "image_id": 34265,
+      "coco_id": 337180,
+      "filename": "COCO_val2014_000000337180.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 480
+    },
+    {
+      "image_id": 34276,
+      "coco_id": 39513,
+      "filename": "COCO_val2014_000000039513.jpg",
+      "split": "val",
+      "width": 480,
+      "height": 640
+    },
+    {
+      "image_id": 34294,
+      "coco_id": 213799,
+      "filename": "COCO_val2014_000000213799.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 480
+    },
+    {
+      "image_id": 34433,
+      "coco_id": 248956,
+      "filename": "COCO_val2014_000000248956.jpg",
+      "split": "val",
+      "width": 334,
+      "height": 500
+    },
+    {
+      "image_id": 34545,
+      "coco_id": 507887,
+      "filename": "COCO_val2014_000000507887.jpg",
+      "split": "val",
+      "width": 612,
+      "height": 612
+    },
+    {
+      "image_id": 34559,
+      "coco_id": 546091,
+      "filename": "COCO_val2014_000000546091.jpg",
+      "split": "val",
+      "width": 500,
+      "height": 400
+    },
+    {
+      "image_id": 34561,
+      "coco_id": 2212,
+      "filename": "COCO_val2014_000000002212.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 426
+    },
+    {
+      "image_id": 34595,
+      "coco_id": 217562,
+      "filename": "COCO_val2014_000000217562.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 426
+    },
+    {
+      "image_id": 34608,
+      "coco_id": 246999,
+      "filename": "COCO_val2014_000000246999.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 480
+    },
+    {
+      "image_id": 34624,
+      "coco_id": 492758,
+      "filename": "COCO_val2014_000000492758.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 427
+    },
+    {
+      "image_id": 34626,
+      "coco_id": 18982,
+      "filename": "COCO_val2014_000000018982.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 480
+    },
+    {
+      "image_id": 34696,
+      "coco_id": 189740,
+      "filename": "COCO_val2014_000000189740.jpg",
+      "split": "val",
+      "width": 500,
+      "height": 375
+    },
+    {
+      "image_id": 34844,
+      "coco_id": 534467,
+      "filename": "COCO_val2014_000000534467.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 480
+    },
+    {
+      "image_id": 34873,
+      "coco_id": 215596,
+      "filename": "COCO_val2014_000000215596.jpg",
+      "split": "val",
+      "width": 480,
+      "height": 640
+    },
+    {
+      "image_id": 34908,
+      "coco_id": 218924,
+      "filename": "COCO_val2014_000000218924.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 480
+    },
+    {
+      "image_id": 34910,
+      "coco_id": 125944,
+      "filename": "COCO_val2014_000000125944.jpg",
+      "split": "val",
+      "width": 480,
+      "height": 640
+    },
+    {
+      "image_id": 34932,
+      "coco_id": 175440,
+      "filename": "COCO_val2014_000000175440.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 427
+    },
+    {
+      "image_id": 34963,
+      "coco_id": 388829,
+      "filename": "COCO_val2014_000000388829.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 480
+    },
+    {
+      "image_id": 35011,
+      "coco_id": 51181,
+      "filename": "COCO_val2014_000000051181.jpg",
+      "split": "val",
+      "width": 427,
+      "height": 640
+    },
+    {
+      "image_id": 35067,
+      "coco_id": 157847,
+      "filename": "COCO_val2014_000000157847.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 385
+    },
+    {
+      "image_id": 35078,
+      "coco_id": 527440,
+      "filename": "COCO_val2014_000000527440.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 480
+    },
+    {
+      "image_id": 35110,
+      "coco_id": 25551,
+      "filename": "COCO_val2014_000000025551.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 426
+    },
+    {
+      "image_id": 35252,
+      "coco_id": 390087,
+      "filename": "COCO_val2014_000000390087.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 428
+    },
+    {
+      "image_id": 35288,
+      "coco_id": 5728,
+      "filename": "COCO_val2014_000000005728.jpg",
+      "split": "val",
+      "width": 500,
+      "height": 331
+    },
+    {
+      "image_id": 35309,
+      "coco_id": 70187,
+      "filename": "COCO_val2014_000000070187.jpg",
+      "split": "val",
+      "width": 612,
+      "height": 612
+    },
+    {
+      "image_id": 35525,
+      "coco_id": 226119,
+      "filename": "COCO_val2014_000000226119.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 480
+    },
+    {
+      "image_id": 35543,
+      "coco_id": 253282,
+      "filename": "COCO_val2014_000000253282.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 640
+    },
+    {
+      "image_id": 35557,
+      "coco_id": 332087,
+      "filename": "COCO_val2014_000000332087.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 427
+    },
+    {
+      "image_id": 35603,
+      "coco_id": 85338,
+      "filename": "COCO_val2014_000000085338.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 426
+    },
+    {
+      "image_id": 35613,
+      "coco_id": 154423,
+      "filename": "COCO_val2014_000000154423.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 480
+    },
+    {
+      "image_id": 35625,
+      "coco_id": 67156,
+      "filename": "COCO_val2014_000000067156.jpg",
+      "split": "val",
+      "width": 500,
+      "height": 333
+    },
+    {
+      "image_id": 35661,
+      "coco_id": 39499,
+      "filename": "COCO_val2014_000000039499.jpg",
+      "split": "val",
+      "width": 500,
+      "height": 375
+    },
+    {
+      "image_id": 35715,
+      "coco_id": 279674,
+      "filename": "COCO_val2014_000000279674.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 425
+    },
+    {
+      "image_id": 35886,
+      "coco_id": 478742,
+      "filename": "COCO_val2014_000000478742.jpg",
+      "split": "val",
+      "width": 480,
+      "height": 640
+    },
+    {
+      "image_id": 35905,
+      "coco_id": 32258,
+      "filename": "COCO_val2014_000000032258.jpg",
+      "split": "val",
+      "width": 500,
+      "height": 375
+    },
+    {
+      "image_id": 35920,
+      "coco_id": 513497,
+      "filename": "COCO_val2014_000000513497.jpg",
+      "split": "val",
+      "width": 480,
+      "height": 640
+    },
+    {
+      "image_id": 35942,
+      "coco_id": 360951,
+      "filename": "COCO_val2014_000000360951.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 427
+    },
+    {
+      "image_id": 35982,
+      "coco_id": 296404,
+      "filename": "COCO_val2014_000000296404.jpg",
+      "split": "val",
+      "width": 500,
+      "height": 333
+    },
+    {
+      "image_id": 36009,
+      "coco_id": 558992,
+      "filename": "COCO_val2014_000000558992.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 480
+    },
+    {
+      "image_id": 36048,
+      "coco_id": 101053,
+      "filename": "COCO_val2014_000000101053.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 480
+    },
+    {
+      "image_id": 36076,
+      "coco_id": 105918,
+      "filename": "COCO_val2014_000000105918.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 427
+    },
+    {
+      "image_id": 36251,
+      "coco_id": 303847,
+      "filename": "COCO_val2014_000000303847.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 480
+    },
+    {
+      "image_id": 36257,
+      "coco_id": 500514,
+      "filename": "COCO_val2014_000000500514.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 569
+    },
+    {
+      "image_id": 36273,
+      "coco_id": 317250,
+      "filename": "COCO_val2014_000000317250.jpg",
+      "split": "val",
+      "width": 375,
+      "height": 500
+    },
+    {
+      "image_id": 36279,
+      "coco_id": 190018,
+      "filename": "COCO_val2014_000000190018.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 418
+    },
+    {
+      "image_id": 36328,
+      "coco_id": 138589,
+      "filename": "COCO_val2014_000000138589.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 360
+    },
+    {
+      "image_id": 36366,
+      "coco_id": 558661,
+      "filename": "COCO_val2014_000000558661.jpg",
+      "split": "val",
+      "width": 426,
+      "height": 640
+    },
+    {
+      "image_id": 36450,
+      "coco_id": 10012,
+      "filename": "COCO_val2014_000000010012.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 480
+    },
+    {
+      "image_id": 36463,
+      "coco_id": 360706,
+      "filename": "COCO_val2014_000000360706.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 480
+    },
+    {
+      "image_id": 36470,
+      "coco_id": 499617,
+      "filename": "COCO_val2014_000000499617.jpg",
+      "split": "val",
+      "width": 478,
+      "height": 640
+    },
+    {
+      "image_id": 36485,
+      "coco_id": 330449,
+      "filename": "COCO_val2014_000000330449.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 424
+    },
+    {
+      "image_id": 36492,
+      "coco_id": 546229,
+      "filename": "COCO_val2014_000000546229.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 480
+    },
+    {
+      "image_id": 36555,
+      "coco_id": 438788,
+      "filename": "COCO_val2014_000000438788.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 360
+    },
+    {
+      "image_id": 36592,
+      "coco_id": 149469,
+      "filename": "COCO_val2014_000000149469.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 640
+    },
+    {
+      "image_id": 36608,
+      "coco_id": 355214,
+      "filename": "COCO_val2014_000000355214.jpg",
+      "split": "val",
+      "width": 480,
+      "height": 640
+    },
+    {
+      "image_id": 36623,
+      "coco_id": 48850,
+      "filename": "COCO_val2014_000000048850.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 544
+    },
+    {
+      "image_id": 36634,
+      "coco_id": 149783,
+      "filename": "COCO_val2014_000000149783.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 480
+    },
+    {
+      "image_id": 36660,
+      "coco_id": 574525,
+      "filename": "COCO_val2014_000000574525.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 426
+    },
+    {
+      "image_id": 36735,
+      "coco_id": 104166,
+      "filename": "COCO_val2014_000000104166.jpg",
+      "split": "val",
+      "width": 335,
+      "height": 500
+    },
+    {
+      "image_id": 36739,
+      "coco_id": 355919,
+      "filename": "COCO_val2014_000000355919.jpg",
+      "split": "val",
+      "width": 375,
+      "height": 500
+    },
+    {
+      "image_id": 36749,
+      "coco_id": 291256,
+      "filename": "COCO_val2014_000000291256.jpg",
+      "split": "val",
+      "width": 375,
+      "height": 500
+    },
+    {
+      "image_id": 36829,
+      "coco_id": 104495,
+      "filename": "COCO_val2014_000000104495.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 480
+    },
+    {
+      "image_id": 36868,
+      "coco_id": 402333,
+      "filename": "COCO_val2014_000000402333.jpg",
+      "split": "val",
+      "width": 425,
+      "height": 640
+    },
+    {
+      "image_id": 36898,
+      "coco_id": 569251,
+      "filename": "COCO_val2014_000000569251.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 480
+    },
+    {
+      "image_id": 36920,
+      "coco_id": 415874,
+      "filename": "COCO_val2014_000000415874.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 360
+    },
+    {
+      "image_id": 36928,
+      "coco_id": 242189,
+      "filename": "COCO_val2014_000000242189.jpg",
+      "split": "val",
+      "width": 375,
+      "height": 500
+    },
+    {
+      "image_id": 36958,
+      "coco_id": 323760,
+      "filename": "COCO_val2014_000000323760.jpg",
+      "split": "val",
+      "width": 375,
+      "height": 500
+    },
+    {
+      "image_id": 36963,
+      "coco_id": 35266,
+      "filename": "COCO_val2014_000000035266.jpg",
+      "split": "val",
+      "width": 375,
+      "height": 500
+    },
+    {
+      "image_id": 36966,
+      "coco_id": 418226,
+      "filename": "COCO_val2014_000000418226.jpg",
+      "split": "val",
+      "width": 500,
+      "height": 375
+    },
+    {
+      "image_id": 36998,
+      "coco_id": 457078,
+      "filename": "COCO_val2014_000000457078.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 480
+    },
+    {
+      "image_id": 37002,
+      "coco_id": 511469,
+      "filename": "COCO_val2014_000000511469.jpg",
+      "split": "val",
+      "width": 500,
+      "height": 354
+    },
+    {
+      "image_id": 37073,
+      "coco_id": 200231,
+      "filename": "COCO_val2014_000000200231.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 428
+    },
+    {
+      "image_id": 37075,
+      "coco_id": 340272,
+      "filename": "COCO_val2014_000000340272.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 360
+    },
+    {
+      "image_id": 37114,
+      "coco_id": 562171,
+      "filename": "COCO_val2014_000000562171.jpg",
+      "split": "val",
+      "width": 500,
+      "height": 350
+    },
+    {
+      "image_id": 37118,
+      "coco_id": 317120,
+      "filename": "COCO_val2014_000000317120.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 480
+    },
+    {
+      "image_id": 37196,
+      "coco_id": 362352,
+      "filename": "COCO_val2014_000000362352.jpg",
+      "split": "val",
+      "width": 561,
+      "height": 640
+    },
+    {
+      "image_id": 37202,
+      "coco_id": 47425,
+      "filename": "COCO_val2014_000000047425.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 427
+    },
+    {
+      "image_id": 37228,
+      "coco_id": 263588,
+      "filename": "COCO_val2014_000000263588.jpg",
+      "split": "val",
+      "width": 500,
+      "height": 375
+    },
+    {
+      "image_id": 37385,
+      "coco_id": 542676,
+      "filename": "COCO_val2014_000000542676.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 391
+    },
+    {
+      "image_id": 37442,
+      "coco_id": 252393,
+      "filename": "COCO_val2014_000000252393.jpg",
+      "split": "val",
+      "width": 355,
+      "height": 500
+    },
+    {
+      "image_id": 37552,
+      "coco_id": 188579,
+      "filename": "COCO_val2014_000000188579.jpg",
+      "split": "val",
+      "width": 333,
+      "height": 500
+    },
+    {
+      "image_id": 37572,
+      "coco_id": 570116,
+      "filename": "COCO_val2014_000000570116.jpg",
+      "split": "val",
+      "width": 500,
+      "height": 374
+    },
+    {
+      "image_id": 37584,
+      "coco_id": 204137,
+      "filename": "COCO_val2014_000000204137.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 480
+    },
+    {
+      "image_id": 37644,
+      "coco_id": 177065,
+      "filename": "COCO_val2014_000000177065.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 564
+    },
+    {
+      "image_id": 37723,
+      "coco_id": 305622,
+      "filename": "COCO_val2014_000000305622.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 426
+    },
+    {
+      "image_id": 37823,
+      "coco_id": 215278,
+      "filename": "COCO_val2014_000000215278.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 480
+    },
+    {
+      "image_id": 37870,
+      "coco_id": 202860,
+      "filename": "COCO_val2014_000000202860.jpg",
+      "split": "val",
+      "width": 426,
+      "height": 640
+    },
+    {
+      "image_id": 37901,
+      "coco_id": 578813,
+      "filename": "COCO_val2014_000000578813.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 480
+    },
+    {
+      "image_id": 37964,
+      "coco_id": 308506,
+      "filename": "COCO_val2014_000000308506.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 625
+    },
+    {
+      "image_id": 38034,
+      "coco_id": 338325,
+      "filename": "COCO_val2014_000000338325.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 428
+    },
+    {
+      "image_id": 38100,
+      "coco_id": 158994,
+      "filename": "COCO_val2014_000000158994.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 425
+    },
+    {
+      "image_id": 38131,
+      "coco_id": 58174,
+      "filename": "COCO_val2014_000000058174.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 425
+    },
+    {
+      "image_id": 38137,
+      "coco_id": 119402,
+      "filename": "COCO_val2014_000000119402.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 480
+    },
+    {
+      "image_id": 38138,
+      "coco_id": 2006,
+      "filename": "COCO_val2014_000000002006.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 480
+    },
+    {
+      "image_id": 38183,
+      "coco_id": 401926,
+      "filename": "COCO_val2014_000000401926.jpg",
+      "split": "val",
+      "width": 354,
+      "height": 640
+    },
+    {
+      "image_id": 38196,
+      "coco_id": 325519,
+      "filename": "COCO_val2014_000000325519.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 425
+    },
+    {
+      "image_id": 38206,
+      "coco_id": 364703,
+      "filename": "COCO_val2014_000000364703.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 425
+    },
+    {
+      "image_id": 38316,
+      "coco_id": 111376,
+      "filename": "COCO_val2014_000000111376.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 424
+    },
+    {
+      "image_id": 38362,
+      "coco_id": 145781,
+      "filename": "COCO_val2014_000000145781.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 480
+    },
+    {
+      "image_id": 38405,
+      "coco_id": 40813,
+      "filename": "COCO_val2014_000000040813.jpg",
+      "split": "val",
+      "width": 375,
+      "height": 500
+    },
+    {
+      "image_id": 38438,
+      "coco_id": 85162,
+      "filename": "COCO_val2014_000000085162.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 480
+    },
+    {
+      "image_id": 38536,
+      "coco_id": 131725,
+      "filename": "COCO_val2014_000000131725.jpg",
+      "split": "val",
+      "width": 385,
+      "height": 308
+    },
+    {
+      "image_id": 38597,
+      "coco_id": 371873,
+      "filename": "COCO_val2014_000000371873.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 426
+    },
+    {
+      "image_id": 38731,
+      "coco_id": 369185,
+      "filename": "COCO_val2014_000000369185.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 426
+    },
+    {
+      "image_id": 38770,
+      "coco_id": 551907,
+      "filename": "COCO_val2014_000000551907.jpg",
+      "split": "val",
+      "width": 480,
+      "height": 640
+    },
+    {
+      "image_id": 38800,
+      "coco_id": 144562,
+      "filename": "COCO_val2014_000000144562.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 480
+    },
+    {
+      "image_id": 38826,
+      "coco_id": 237230,
+      "filename": "COCO_val2014_000000237230.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 383
+    },
+    {
+      "image_id": 38860,
+      "coco_id": 331282,
+      "filename": "COCO_val2014_000000331282.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 480
+    },
+    {
+      "image_id": 38938,
+      "coco_id": 317206,
+      "filename": "COCO_val2014_000000317206.jpg",
+      "split": "val",
+      "width": 512,
+      "height": 384
+    },
+    {
+      "image_id": 38964,
+      "coco_id": 557172,
+      "filename": "COCO_val2014_000000557172.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 480
+    },
+    {
+      "image_id": 39055,
+      "coco_id": 370165,
+      "filename": "COCO_val2014_000000370165.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 427
+    },
+    {
+      "image_id": 39169,
+      "coco_id": 79565,
+      "filename": "COCO_val2014_000000079565.jpg",
+      "split": "val",
+      "width": 500,
+      "height": 375
+    },
+    {
+      "image_id": 39237,
+      "coco_id": 52949,
+      "filename": "COCO_val2014_000000052949.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 480
+    },
+    {
+      "image_id": 39263,
+      "coco_id": 127997,
+      "filename": "COCO_val2014_000000127997.jpg",
+      "split": "val",
+      "width": 500,
+      "height": 375
+    },
+    {
+      "image_id": 39297,
+      "coco_id": 344154,
+      "filename": "COCO_val2014_000000344154.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 480
+    },
+    {
+      "image_id": 39300,
+      "coco_id": 522393,
+      "filename": "COCO_val2014_000000522393.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 640
+    },
+    {
+      "image_id": 39397,
+      "coco_id": 419604,
+      "filename": "COCO_val2014_000000419604.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 444
+    },
+    {
+      "image_id": 39436,
+      "coco_id": 455741,
+      "filename": "COCO_val2014_000000455741.jpg",
+      "split": "val",
+      "width": 500,
+      "height": 375
+    },
+    {
+      "image_id": 39441,
+      "coco_id": 112349,
+      "filename": "COCO_val2014_000000112349.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 427
+    },
+    {
+      "image_id": 39495,
+      "coco_id": 417410,
+      "filename": "COCO_val2014_000000417410.jpg",
+      "split": "val",
+      "width": 426,
+      "height": 640
+    },
+    {
+      "image_id": 39566,
+      "coco_id": 433059,
+      "filename": "COCO_val2014_000000433059.jpg",
+      "split": "val",
+      "width": 500,
+      "height": 375
+    },
+    {
+      "image_id": 39601,
+      "coco_id": 494846,
+      "filename": "COCO_val2014_000000494846.jpg",
+      "split": "val",
+      "width": 480,
+      "height": 640
+    },
+    {
+      "image_id": 39613,
+      "coco_id": 214199,
+      "filename": "COCO_val2014_000000214199.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 427
+    },
+    {
+      "image_id": 39619,
+      "coco_id": 68950,
+      "filename": "COCO_val2014_000000068950.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 480
+    },
+    {
+      "image_id": 39633,
+      "coco_id": 403038,
+      "filename": "COCO_val2014_000000403038.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 427
+    },
+    {
+      "image_id": 39643,
+      "coco_id": 556873,
+      "filename": "COCO_val2014_000000556873.jpg",
+      "split": "val",
+      "width": 427,
+      "height": 640
+    },
+    {
+      "image_id": 39708,
+      "coco_id": 8583,
+      "filename": "COCO_val2014_000000008583.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 480
+    },
+    {
+      "image_id": 39728,
+      "coco_id": 419119,
+      "filename": "COCO_val2014_000000419119.jpg",
+      "split": "val",
+      "width": 500,
+      "height": 375
+    },
+    {
+      "image_id": 39734,
+      "coco_id": 157635,
+      "filename": "COCO_val2014_000000157635.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 480
+    },
+    {
+      "image_id": 39750,
+      "coco_id": 276057,
+      "filename": "COCO_val2014_000000276057.jpg",
+      "split": "val",
+      "width": 500,
+      "height": 333
+    },
+    {
+      "image_id": 39752,
+      "coco_id": 512191,
+      "filename": "COCO_val2014_000000512191.jpg",
+      "split": "val",
+      "width": 427,
+      "height": 640
+    },
+    {
+      "image_id": 39775,
+      "coco_id": 376416,
+      "filename": "COCO_val2014_000000376416.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 426
+    },
+    {
+      "image_id": 39799,
+      "coco_id": 85157,
+      "filename": "COCO_val2014_000000085157.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 480
+    },
+    {
+      "image_id": 39829,
+      "coco_id": 529148,
+      "filename": "COCO_val2014_000000529148.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 426
+    },
+    {
+      "image_id": 39850,
+      "coco_id": 449402,
+      "filename": "COCO_val2014_000000449402.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 408
+    },
+    {
+      "image_id": 39873,
+      "coco_id": 362779,
+      "filename": "COCO_val2014_000000362779.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 426
+    },
+    {
+      "image_id": 39887,
+      "coco_id": 277046,
+      "filename": "COCO_val2014_000000277046.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 427
+    },
+    {
+      "image_id": 39930,
+      "coco_id": 238410,
+      "filename": "COCO_val2014_000000238410.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 480
+    },
+    {
+      "image_id": 39980,
+      "coco_id": 195165,
+      "filename": "COCO_val2014_000000195165.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 478
+    },
+    {
+      "image_id": 40021,
+      "coco_id": 467386,
+      "filename": "COCO_val2014_000000467386.jpg",
+      "split": "val",
+      "width": 350,
+      "height": 500
+    },
+    {
+      "image_id": 40064,
+      "coco_id": 151095,
+      "filename": "COCO_val2014_000000151095.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 414
+    },
+    {
+      "image_id": 40091,
+      "coco_id": 248087,
+      "filename": "COCO_val2014_000000248087.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 407
+    },
+    {
+      "image_id": 40095,
+      "coco_id": 165455,
+      "filename": "COCO_val2014_000000165455.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 426
+    },
+    {
+      "image_id": 40159,
+      "coco_id": 458401,
+      "filename": "COCO_val2014_000000458401.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 374
+    },
+    {
+      "image_id": 40171,
+      "coco_id": 327656,
+      "filename": "COCO_val2014_000000327656.jpg",
+      "split": "val",
+      "width": 640,
+      "height": 433
+    },
+    {
+      "image_id": 40184,
+      "coco_id": 189966,
+      "filename": "COCO_val2014_000000189966.jpg",
+      "split": "val",
+      "width": 556,
+      "height": 640
+    },
+    {
+      "image_id": 40404,
+      "coco_id": 496718,
+      "filename": "COCO_val2014_000000496718.jpg",
+      "split": "val",
+      "width": 480,
+      "height": 640
+    }
+  ]
+}
