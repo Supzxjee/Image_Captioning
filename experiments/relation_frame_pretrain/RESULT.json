@@ -1,0 +1,121 @@
+{
+  "status": "PRETRAIN_GATE_NO_GO",
+  "RelPos_accuracy": 0.625,
+  "RelContrast_accuracy": 0.640625,
+  "difference": 0.015625,
+  "paired_difference_ci95": [
+    -0.125,
+    0.15625
+  ],
+  "paired_bootstrap_draws": 10000,
+  "seed": 20261028,
+  "stratified": true,
+  "n": 64,
+  "strata": {
+    "projective_containment": {
+      "n": 32,
+      "RelPos": 0.5,
+      "RelContrast": 0.6875
+    },
+    "contact_proximity": {
+      "n": 32,
+      "RelPos": 0.75,
+      "RelContrast": 0.59375
+    }
+  },
+  "limits": "Exploratory reused adaptation-heldout images, one seed, assisted sample audit; no caption/novelty claim.",
+  "next_step": "Caption controls Tune/RelPos/RelContrast only if PASS; no epoch/sweep rescue in this pilot.",
+  "date": "2026-10-28",
+  "audit": "SOURCE_PROTOCOL_PREFLIGHT_AND_FIXED_PAIR_METADATA_PASS",
+  "source_commit": "5a1130cd3913054fcef3121f4ad7bd36be28d33b",
+  "runs": {
+    "RelPos": {
+      "zip_sha256": "d59ca0f30036f036f9ee247c952a26a4e9a2d31ea7488bdfce49335a8fd32378",
+      "checkpoint_sha256_reported": "9650160651c8c9883c1bcf033afa1f27aa9c761cdefb7f75e87edf59ae7dc731",
+      "initial_model_digest": "9748c05db637fab4c9d7ded25c3f84429d9204e122cc471fc4c1032b124b65b3",
+      "frozen_embedding_digest": "28b3a432ca0cc6402ed58b5420ecadc7a40d0d65e641f4c4271f8392e45039d7",
+      "trainable_parameters": 4720672,
+      "frozen_parameters": 5120000,
+      "gpu": "Tesla T4",
+      "torch": "2.11.0+cu128",
+      "model_preflight": "PASS",
+      "logged_updates": [
+        1,
+        200
+      ],
+      "logged_first": {
+        "step": 1,
+        "arm": "RelPos",
+        "loss": 9.179549217224121,
+        "grad_norm": 2.1379964351654053,
+        "seconds": 5.633877966999989,
+        "pos": 9.179549217224121,
+        "truth": 0.7118456959724426,
+        "pair": 0.7075964212417603
+      },
+      "logged_last": {
+        "step": 200,
+        "arm": "RelPos",
+        "loss": 2.6987104415893555,
+        "grad_norm": 1.6900335550308228,
+        "seconds": 10.672965774999966,
+        "pos": 2.6987104415893555,
+        "truth": 0.8370729684829712,
+        "pair": 0.8046274185180664
+      },
+      "device_gpu_hours_reported": 0.006260494399999996,
+      "near_zero_gaps_below_1e_5": 0
+    },
+    "RelContrast": {
+      "zip_sha256": "ab7b34b06d34aa3e8bdd75ed15272294a75dc61a26b9812844ed240dff1763b3",
+      "checkpoint_sha256_reported": "358b3278859e60ca75a078c1f6b9f6584cca5e28b9dd8bd09612885899af9c20",
+      "initial_model_digest": "9748c05db637fab4c9d7ded25c3f84429d9204e122cc471fc4c1032b124b65b3",
+      "frozen_embedding_digest": "28b3a432ca0cc6402ed58b5420ecadc7a40d0d65e641f4c4271f8392e45039d7",
+      "trainable_parameters": 4720672,
+      "frozen_parameters": 5120000,
+      "gpu": "Tesla T4",
+      "torch": "2.11.0+cu128",
+      "model_preflight": "PASS",
+      "logged_updates": [
+        1,
+        200
+      ],
+      "logged_first": {
+        "step": 1,
+        "arm": "RelContrast",
+        "loss": 9.889269828796387,
+        "grad_norm": 3.2876994609832764,
+        "seconds": 5.790442063,
+        "pos": 9.179549217224121,
+        "truth": 0.7118456959724426,
+        "pair": 0.7075964212417603
+      },
+      "logged_last": {
+        "step": 200,
+        "arm": "RelContrast",
+        "loss": 2.7672481536865234,
+        "grad_norm": 1.78547203540802,
+        "seconds": 11.13382914500005,
+        "pos": 2.754718780517578,
+        "truth": 0.024395257234573364,
+        "pair": 0.0006632007425650954
+      },
+      "device_gpu_hours_reported": 0.006527173551666705,
+      "near_zero_gaps_below_1e_5": 0
+    }
+  },
+  "counts": {
+    "RelPos": 40.0,
+    "RelContrast": 41.0,
+    "n": 64
+  },
+  "discordance": {
+    "contrast_only": 13,
+    "pos_only": 12,
+    "both_correct": 28,
+    "both_wrong": 11
+  },
+  "actual_checkpoint_or_hdf5_rehashed_locally": false,
+  "local_neural_execution": false,
+  "interpretation": "Observed-predicate training loss falls, but primary common GRU likelihood gate fails. Training loss is not heldout truth accuracy. Opposite subgroup changes are descriptive, not a mechanism diagnosis."
+}

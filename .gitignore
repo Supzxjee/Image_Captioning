@@ -16,3 +16,5 @@ experiments/relation_frames_inventory/box_candidate_pairs.json
 experiments/relation_frames_inventory/selected_pairs.json
 experiments/relation_frames_inventory/detector_matched_records.json
 experiments/relation_frames_inventory/review/
+# Cached relation-frame review texts (private raw logs/source).
+experiments/relation_frame_pretrain/review/
