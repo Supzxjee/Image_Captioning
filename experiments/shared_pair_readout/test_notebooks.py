@@ -7,6 +7,7 @@ from pathlib import Path
 import subprocess
 import sys
 import tempfile
+import traceback
 import unittest
 import zipfile
 
@@ -14,6 +15,20 @@ HERE=Path(__file__).resolve().parent;ROOT=HERE.parents[1]
 
 
 class Checks(unittest.TestCase):
+    def test_mock_bootstrap_failure_archives_log(self):
+        nb=json.loads((HERE/'SHARED_PAIR_READOUT_I_2GPU.ipynb').read_bytes())
+        code=[c['source'] for c in nb['cells'] if c['cell_type']=='code'][2]
+        parent=ROOT/'experiments/relation_frames_inventory/review'
+        with tempfile.TemporaryDirectory(prefix='shared-bootstrap-mock-',dir=parent) as temp:
+            root=Path(temp);log=root/'log';log.write_text('Mock git failure');review=root/'review.zip'
+            def fail(*args,**kwargs):raise subprocess.CalledProcessError(128,['mockgit'])
+            env=dict(run=fail,REPO=root,LOG=log,REVIEW=review,ARM='I',SOURCE_COMMIT='mock',json=json,zipfile=zipfile,traceback=traceback)
+            with contextlib.redirect_stdout(io.StringIO()):
+                with self.assertRaises(subprocess.CalledProcessError):exec(code,env)
+            with zipfile.ZipFile(review) as z:
+                self.assertEqual(json.loads(z.read('execution_status.json'))['stage'],'bootstrap')
+                self.assertIn('bootstrap_error.txt',z.namelist())
+
     def test_pinned_notebooks_and_single_config_difference(self):
         package=json.loads((HERE/'NOTEBOOK_PACKAGE.json').read_bytes());notebooks=[]
         for r in package['notebooks']:

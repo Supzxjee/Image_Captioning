@@ -154,6 +154,8 @@ def preflight(model,data,rank,device):
     if model_digest(model)!=initial or frozen_digest(model)!=frozen:raise ValueError('Preflight did not restore exact initial state')
     return dict(status='MODEL_PREFLIGHT_PASS',initial_model_digest=initial,frozen_digest=frozen,
         trainable_parameters=sum(p.numel() for p in parameters(model)),new_reader_parameters=sum(p.numel() for p in model.reader.parameters()),
+        cached_A_parameters=sum(p.numel() for p in model.base.parameters()),
+        deployment_parameters_excluding_teacher=sum(p.numel() for p in model.base.parameters())+sum(p.numel() for p in model.reader.parameters()),
         zero_init_logits_and_greedy_parity=True,actual_numpy_oracle_both_arms=True,
         self_null_and_padding=True,initial_then_subsequent_gradients=True,restored=True,
         max_sample_rescore_error=max_policy_error,max_serial_distributed_gradient_error=max_gradient_error)
@@ -170,7 +172,8 @@ def predict(model,data,indices,tok,device,baseline=False,off=False):
             r=data.meta['rows'][i];records.append(dict(image_id=r['image_id'],coco_id=r['coco_id'],caption=text))
         if first%128==0:print(f'Prediction {"A" if baseline else "off" if off else model.arm}: {min(first+8,len(indices))}/{len(indices)} local',flush=True)
     torch.cuda.synchronize();seconds=time.monotonic()-timing
-    return records,dict(seconds=seconds,images=len(indices),images_per_second=len(indices)/seconds,peak_vram_bytes=torch.cuda.max_memory_allocated(device))
+    return records,dict(seconds=seconds,images=len(indices),images_per_second=len(indices)/seconds,peak_vram_bytes=torch.cuda.max_memory_allocated(device),
+        measurement_scope='Common resident student+teacher wrapper and cached inputs; not standalone A memory or end-to-end detector/CLIP cost')
 
 
 def worker(cfg):

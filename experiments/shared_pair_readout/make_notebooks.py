@@ -157,6 +157,16 @@ def make(core):
             So sánh trên A vừa chạy cùng runtime; nếu khác caption A lịch sử thì báo drift, không thay số lịch sử vào bảng.
             Chưa có chấm semantic panel trong notebook. Không tự tạo Dataset, chọn checkpoint, rerank hoặc chạy seed2.
             ''')]
+        setup=cells[3]['source']
+        cells[3]=cell('code','try:\n'+textwrap.indent(setup,'    ')+'''
+except BaseException:
+    with zipfile.ZipFile(REVIEW,'w',zipfile.ZIP_DEFLATED) as z:
+        if LOG.is_file():z.write(LOG,'notebook.log')
+        z.writestr('execution_status.json',json.dumps(dict(success=False,arm=ARM,stage='bootstrap',source_commit=SOURCE_COMMIT)))
+        z.writestr('bootstrap_error.txt',traceback.format_exc())
+    print('BOOTSTRAP FAILED; SEND:',REVIEW,flush=True)
+    raise
+''')
         path=HERE/f'SHARED_PAIR_READOUT_{arm}_2GPU.ipynb'
         nb=dict(nbformat=4,nbformat_minor=5,metadata=dict(kernelspec=dict(display_name='Python3',language='python',name='python3'),language_info=dict(name='python'),kaggle=dict(isGpuEnabled=True,isInternetEnabled=True)),cells=cells)
         path.write_bytes((json.dumps(nb,ensure_ascii=False,indent=2)+'\n').encode())
