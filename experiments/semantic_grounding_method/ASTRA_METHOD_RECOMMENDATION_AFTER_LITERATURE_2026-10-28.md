@@ -1,5 +1,7 @@
 # Khuyến nghị phương pháp sau đợt đọc mở rộng
 
+> Cập nhật cùng ngày: kế hoạch F–C* chưa chạy đã được thay bằng [quyết định I/J cho bài đầu tiên](ASTRA_FIRST_PAPER_DECISION_2026-10-28.md). Giữ tài liệu này làm lịch sử phân tích, không là kế hoạch triển khai hiện hành.
+
 28/10/2026. **Chọn một pilot có giới hạn cho cơ chế đọc chung thực thể–quan hệ ngay trong caption decoder.** Đề xuất này thay khuyến nghị chỉ audit 30 case ở bản reaudit trước; không khôi phục partial interchange, không đổi NO_GO của frame200. Chưa có code hay lần chạy mới.
 
 Bằng chứng và phạm vi đọc ở [ledger](ASTRA_SEARCH_AND_READING_LEDGER_2026-10-28.md), metadata 20 bài ở [CSV](ASTRA_LITERATURE_20_2026-10-28.csv). Những con số/hyperparameter dành cho pilot bên dưới là **đề nghị khóa trước thử nghiệm**, không phải kết quả đã đạt hay giá trị tối ưu được chứng minh. Bản BGRM 25/10 đính kèm là đề xuất cần phản biện; lịch chạy và quota trong đó không được xem là bằng chứng readiness hay lệnh triển khai.

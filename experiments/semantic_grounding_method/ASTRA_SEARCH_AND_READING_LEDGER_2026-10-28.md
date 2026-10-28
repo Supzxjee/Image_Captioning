@@ -1,6 +1,6 @@
 # Tra cứu và đối chiếu phương pháp: 20 bài bổ sung
 
-Ngày 28/10/2026. Tài liệu phục vụ quyết định nghiên cứu, không phải systematic review. Quyết định mới ở [bản đề xuất đi kèm](ASTRA_METHOD_RECOMMENDATION_AFTER_LITERATURE_2026-10-28.md); metadata, loss, giới hạn và độ sâu đọc từng bài ở [CSV](ASTRA_LITERATURE_20_2026-10-28.csv).
+Ngày 28/10/2026. Tài liệu phục vụ quyết định nghiên cứu, không phải systematic review. Quyết định hiện hành ở [bản chốt I/J cho bài đầu tiên](ASTRA_FIRST_PAPER_DECISION_2026-10-28.md); metadata, loss, giới hạn và độ sâu đọc từng bài ở [CSV](ASTRA_LITERATURE_20_2026-10-28.csv).
 
 ## Phạm vi và cách kiểm nguồn
 
