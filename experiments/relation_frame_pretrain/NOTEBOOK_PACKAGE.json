@@ -1,5 +1,5 @@
 {
-  "source_commit": "d0d9d9bc73437c02ce94b4c866ed91e7e27913ca",
+  "source_commit": "5a1130cd3913054fcef3121f4ad7bd36be28d33b",
   "assets": {
     "frame_data.py": {
       "path": "experiments/relation_frame_pretrain/frame_data.py",
@@ -11,7 +11,7 @@
     },
     "run_frames.py": {
       "path": "experiments/relation_frame_pretrain/run_frames.py",
-      "sha256": "6b0b7b5c34369c268ea2af67d2170de234a061ef03bfb0ae0744e8cb1cf874e7"
+      "sha256": "9f68b2e433644b0f039fdadbe8be35750d406aa9dc8fa507de0901eb9ea9c142"
     },
     "compare_frames.py": {
       "path": "experiments/relation_frame_pretrain/compare_frames.py",
@@ -34,12 +34,12 @@
     {
       "file": "PRETRAIN_RELPOS_2GPU.ipynb",
       "bytes": 8220,
-      "sha256": "ad282f8c05e5f5d581b63ee8e2a40da049a7bc9b35e0eb4d26ee63147c2afa01"
+      "sha256": "87912c35fa361c89614c29e88509483f7328e9fdabb76d4fe21ce05c39837bc8"
     },
     {
       "file": "PRETRAIN_RELCONTRAST_2GPU.ipynb",
       "bytes": 8230,
-      "sha256": "3b4a2398ca6876b6dd9c89b97322350d771e0b57be37039573044262dfa946eb"
+      "sha256": "a17bd562fab496e52ee327d2c8b11f17d291889b0ce0047a77cccbc9b27b0bc4"
     }
   ],
   "static_code_compile": true,
