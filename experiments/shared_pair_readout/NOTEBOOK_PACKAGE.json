@@ -1,13 +1,15 @@
 {
-  "source_commit": "a00557e431a58c1171cd81b13b2d11f477ae499e",
+  "source_commit": "8024d1b81a07f026f5ded10905fec7756c4269be",
   "source_assets": {
     "experiments/shared_pair_readout/readout_data.py": "3bdc5e38c942cfeb13f8a83e409e367d6cba1b2fb5da6149c2d400b0c51b889c",
     "experiments/shared_pair_readout/prepare_readout.py": "96cc8200ec0b7c85a1544cac202dc0aef35d6fe2d45cbc94ac75da3be5187991",
-    "experiments/shared_pair_readout/readout_model.py": "69ad8215836852e560e42ed741d8fc01350d920b97e2e2ce4a72da47d17a2031",
-    "experiments/shared_pair_readout/run_readout.py": "711f11a2bf83c0783f5af0df88ecf53a57e6bbb904472904187ca7a02363204b",
+    "experiments/shared_pair_readout/readout_model.py": "cef9a68788e95d5e8428c2c1953d2bab49e67ff25547c38626011d14680a0013",
+    "experiments/shared_pair_readout/run_readout.py": "a6b9fc797687cd275d90d9970d536feee03192dfdb3f4b26f2da3974951612fe",
     "experiments/shared_pair_readout/evaluate_readout.py": "6cfdcaba654aaacc736cc4eb208e82da1256d6d990432e63e9663fe6be76d74c",
     "experiments/shared_pair_readout/metric_preflight.py": "6e29f54e57b0b2e7f6f62de57017061071444d254b09305411716713b86f83f4",
-    "experiments/shared_pair_readout/test_readout_data.py": "9d5f5adde091b16350b4e2131d7846244e85328562ee350bdcde8ef9aad506f7",
+    "experiments/shared_pair_readout/test_readout_data.py": "70af828f217c341f3a29ea9d1ba7d4b701f3328dea655c322d32cf2dc10a9891",
+    "experiments/shared_pair_readout/reuse_stage.py": "6a1b4a6b3e320b62bf90ff5cd0aa3bf0425b40f38d84c71363dacdd44587a25a",
+    "experiments/shared_pair_readout/test_reuse_stage.py": "911f7d95498ebcea4a1c333c398ad784161f5b8622b99990a6a4e7424d248102",
     "experiments/shared_pair_readout/DEV_DIMENSIONS.json": "534c0501884863464bb10c3bb2f504bd69ba9a290c4345ebf3ee179ad3c60206",
     "captioning/__init__.py": "ad259f50a32265d298d027a888f801d378c4669313b8dab06e0653978ce30633",
     "captioning/models.py": "18026877836052c83e75c0d896adcc89822bb35616173c7e8b14b17c9a22e9d8",
@@ -28,13 +30,13 @@
   "notebooks": [
     {
       "file": "SHARED_PAIR_READOUT_I_2GPU.ipynb",
-      "bytes": 13530,
-      "sha256": "52a5eb257f11f7dc970a12eaf562b8e2b55e4aa8a606d69ace7fe95954c876da"
+      "bytes": 14781,
+      "sha256": "29388017be74ca6ce9f7445558b15edcd8333c01b20f99d830fa7f23bd3474b9"
     },
     {
       "file": "SHARED_PAIR_READOUT_J_2GPU.ipynb",
-      "bytes": 13530,
-      "sha256": "883d1430ba222df541144847ebc0fac597174ea357bb69167e8b14dbde69f103"
+      "bytes": 14781,
+      "sha256": "cad2e31340c44c08eb4cf2446ded516f83c25169406423fa483695c6d1de1728"
     }
   ],
   "static_compile": true,

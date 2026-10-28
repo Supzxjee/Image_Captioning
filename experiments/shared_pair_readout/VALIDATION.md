@@ -21,4 +21,6 @@ Correction: preserve A's full-prefix vocabulary projection and add the bias-free
 
 Added a static regression guarding the untouched original projection/full-prefix path and four synthetic reuse/hash/provenance tests. Old preparation may be reused only when preparation code and payload hashes match; new attempts still initialize from A. No local Torch execution was used to test the correction.
 
+Corrected package total:6data/static tests,4synthetic preparation-reuse tests and6notebook/mock-flow tests PASS. Both notebooks pin the same corrected source. Actual GPU rerun remains pending; no scientific endpoint or quality metric exists for the failed J attempt.
+
 The user reports25remaining GPU hours; no assumption of50hours or exact per-account split. Each GPU phase has a one-hour two-GPU cap, with CPU setup/staging/evaluation adding notebook-accounting time. Scope is an inherited readout improvement; no novelty, caption gain or journal-acceptance result is established by this package.
