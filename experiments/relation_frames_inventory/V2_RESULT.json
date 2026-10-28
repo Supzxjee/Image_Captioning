@@ -1,0 +1,139 @@
+{
+  "policy": {
+    "version": "relation-frames-pair-first-v2",
+    "heldout_pairs": 64,
+    "train_pairs": 256,
+    "strata": {
+      "projective_containment": 32,
+      "contact_proximity": 32
+    },
+    "heldout_unique_images": 128,
+    "exclude_caption_adapter_train": true,
+    "priority": "maximize held-out relation coverage, then minimize sum of fixed hash ranks",
+    "tie_rule": "deterministic HiGHS on sorted variables/constraints; no seed search",
+    "train_selection": "remove all held-out image records, hash re-pair; one per available predicate then hash-fill",
+    "solver_seconds_per_stage": 90,
+    "existing_labels_votes_bbox_policy_unchanged": true
+  },
+  "master_sha256": "3e3a1ef97d7f0a14a33f90f41ae7372fce8ad56e6732a0cbb01673f894e136e6",
+  "adapter_metadata_sha256": "62f43f771aec9feba31a2fbbb6fe7db2878f259979faac378b74a754822c7b67",
+  "parent_coverage_report_sha256": "a8a339d63a310384fd7c9fb884bf9b8d618395bcfaf1898bc4ce204cf7c5fa68",
+  "candidates": {
+    "pairs": 1034,
+    "images": 1676,
+    "statements": 684,
+    "by_relation": {
+      "above": 43,
+      "below": 31,
+      "beneath": 54,
+      "contains": 72,
+      "far away from": 30,
+      "far from": 19,
+      "in": 55,
+      "inside": 52,
+      "near": 6,
+      "next to": 41,
+      "on": 110,
+      "on top of": 102,
+      "outside": 8,
+      "touching": 307,
+      "under": 98,
+      "within": 6
+    },
+    "by_stratum": {
+      "projective_containment": 631,
+      "contact_proximity": 403
+    }
+  },
+  "solver": {
+    "scipy": "1.16.3",
+    "numpy": "2.2.6",
+    "stages": [
+      {
+        "stage": "maximum_relation_coverage",
+        "status": 0,
+        "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)"
+      },
+      {
+        "stage": "minimum_hash_rank",
+        "status": 0,
+        "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+        "maximum_relation_coverage": 16
+      }
+    ]
+  },
+  "local_neural_execution": false,
+  "status": "DATA_V2_PASS_PENDING_AUDIT_FEATURES",
+  "train": {
+    "pairs": 256,
+    "images": 484,
+    "statements": 219,
+    "by_relation": {
+      "above": 14,
+      "below": 3,
+      "beneath": 12,
+      "contains": 14,
+      "far away from": 5,
+      "far from": 7,
+      "in": 9,
+      "inside": 12,
+      "near": 1,
+      "next to": 15,
+      "on": 28,
+      "on top of": 27,
+      "outside": 2,
+      "touching": 77,
+      "under": 29,
+      "within": 1
+    },
+    "by_stratum": {
+      "projective_containment": 151,
+      "contact_proximity": 105
+    }
+  },
+  "heldout": {
+    "pairs": 64,
+    "images": 128,
+    "statements": 63,
+    "by_relation": {
+      "above": 1,
+      "below": 2,
+      "beneath": 5,
+      "contains": 2,
+      "far away from": 1,
+      "far from": 1,
+      "in": 5,
+      "inside": 2,
+      "near": 1,
+      "next to": 3,
+      "on": 8,
+      "on top of": 2,
+      "outside": 1,
+      "touching": 26,
+      "under": 3,
+      "within": 1
+    },
+    "by_stratum": {
+      "contact_proximity": 32,
+      "projective_containment": 32
+    }
+  },
+  "remaining_train_pair_capacity": 928,
+  "remaining_records": 3139,
+  "excluded_all_records_on_heldout_images": 219,
+  "checks": {
+    "heldout_images_unique": true,
+    "relational_train_image_disjoint": true,
+    "caption_train2k_image_disjoint": true,
+    "heldout_predicates_seen_in_train": true,
+    "pair_records_unique": true,
+    "bbox_iou_and_classes_valid": true
+  },
+  "manifest_sha256": "6ca6af23d0a31043fecdf33398f5b60098be07cbeea9fb91cbfec4b314c2cfa7",
+  "not_checked": [
+    "32-record label audit",
+    "RGB/frozen feature/probe prompt availability",
+    "Novelty, auxiliary accuracy, free-caption improvement, neural execution"
+  ],
+  "elapsed_seconds": 0.7190000000000509
+}

@@ -162,6 +162,7 @@ def main():
             if len(selected)!=2:rejections['class_or_iou_match_failed_top12']+=1;continue
             matched[split].append(dict(record,predicted=dict(subject=selected[0],object=selected[1])))
     # Lock pools before testing detector coverage, not according to detector success.
+    (HERE/'detector_matched_records.json').write_text(json.dumps(matched,indent=2)+'\n',encoding='utf-8')
     pools={s:pair_rows(rows)[:BOX_POLICY['pool_cap'][s]] for s,rows in unique.items()}
     lookup={(s,r['image_id'],r['statement'],r['label']):r for s,rows in matched.items() for r in rows}
     valid={s:[] for s in cohorts}

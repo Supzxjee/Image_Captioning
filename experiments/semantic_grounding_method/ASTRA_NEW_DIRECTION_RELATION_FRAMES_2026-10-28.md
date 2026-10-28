@@ -1,5 +1,7 @@
 # Hướng mới: học khung quan hệ từ phản chứng có nhãn, rồi đưa khung vào decoder
 
+> DATA UPDATE28/10: exact image-hash/quota policy v1 không qua box-coverage gate; kết quả ấy giữ nguyên. [ASTRA_RELATION_DATA_V2_DECISION_2026-10-28.md](ASTRA_RELATION_DATA_V2_DECISION_2026-10-28.md) thay riêng phần chọn cohort và per-relation quota trước learning bằng pair-first/image-disjoint stratified evaluation. V2 vẫn UNVERIFIED cho tới CPU feasibility report; không tự coi data gate PASS hoặc launch từ thay đổi này.
+
 28/10/2026, Asia/Bangkok. Đề xuất nghiên cứu để root phản biện và user chốt; **chưa code/GPU**. Thay deliverable brainstorm trước: T/Energy diagnostic và duration T không còn là hướng được đề xuất ở lượt này. Không sửa hay che kết quả T500.
 
 ## Quyết định và giả thuyết
