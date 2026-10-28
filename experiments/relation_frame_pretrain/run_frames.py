@@ -104,6 +104,8 @@ def run(config):
             torch.testing.assert_close(whole,individual,rtol=1e-5,atol=1e-5)
             gaps=model.ranking_gap(b)
             if not torch.isfinite(gaps).all():raise ValueError('Nonfinite ranking')
+        # cuDNN GRU must run its forward in training mode to support backward.
+        model.train()
         # Actual model/autograd checks stay in the user-run notebook, never local.
         def require_gradient(name):
             grads=[p.grad for p in getattr(model,name).parameters()]

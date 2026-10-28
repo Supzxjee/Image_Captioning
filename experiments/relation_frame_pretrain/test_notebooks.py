@@ -1,5 +1,6 @@
 """Mock notebook subprocesses only: verify fail/success archives without any job/model."""
 import contextlib
+import ast
 import io
 import json
 from pathlib import Path
@@ -15,6 +16,20 @@ HERE=Path(__file__).resolve().parent
 
 
 class Checks(unittest.TestCase):
+    def test_preflight_enters_training_mode_before_backward(self):
+        tree=ast.parse((HERE/'run_frames.py').read_text(encoding='utf-8'))
+        run=next(n for n in tree.body if isinstance(n,ast.FunctionDef) and n.name=='run')
+        events=sorted((n.lineno,n.func.attr,n.func.value.id if isinstance(n.func.value,ast.Name) else '')
+            for n in ast.walk(run) if isinstance(n,ast.Call) and isinstance(n.func,ast.Attribute)
+            and n.func.attr in ('eval','train','backward'))
+        training=None;backwards=0
+        for _,name,owner in events:
+            if owner=='model' and name in ('eval','train'):training=name=='train'
+            if name=='backward':
+                self.assertTrue(training,'GRU forward/backward checks must follow model.train()')
+                backwards+=1
+        self.assertGreaterEqual(backwards,4)
+
     def test_static_pinned_cells(self):
         package=json.loads((HERE/'NOTEBOOK_PACKAGE.json').read_text())
         self.assertFalse(package['local_neural_execution']);self.assertFalse(package['kaggle_launched'])
