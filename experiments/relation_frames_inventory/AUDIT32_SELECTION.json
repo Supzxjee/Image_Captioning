@@ -1,0 +1,327 @@
+{
+  "manifest_sha256": "6ca6af23d0a31043fecdf33398f5b60098be07cbeea9fb91cbfec4b314c2cfa7",
+  "audit_sha256": "a86f9f8459b5278b2ad8175a984032317ecf48ae5d194513dc7822e02f097dad",
+  "sample_policy": "4 hash-first pairs per split x stratum; 16 pairs/32 records; never score-selected",
+  "records": [
+    {
+      "review_id": "2295d49c67840ddf1a32bb02",
+      "index": 1,
+      "pair_id": "392d78a1cd45c2c8cd35d70a1ae51835e471b634928786cc7865b24cf150856e",
+      "image_id": 437964,
+      "split": "train",
+      "stratum": "projective_containment",
+      "statement": "the laptop is on the person",
+      "source_label": 1
+    },
+    {
+      "review_id": "5a563235347ff5caa78bf202",
+      "index": 2,
+      "pair_id": "392d78a1cd45c2c8cd35d70a1ae51835e471b634928786cc7865b24cf150856e",
+      "image_id": 355762,
+      "split": "train",
+      "stratum": "projective_containment",
+      "statement": "the laptop is on the person",
+      "source_label": 0
+    },
+    {
+      "review_id": "f9a7faa8015a2ea557ffe638",
+      "index": 3,
+      "pair_id": "26e66d5d34d0ecdf8e091d17857a94a7335ad98df00abc304ca4eb18e3f42579",
+      "image_id": 292232,
+      "split": "train",
+      "stratum": "projective_containment",
+      "statement": "the suitcase contains the cat",
+      "source_label": 1
+    },
+    {
+      "review_id": "15a6c91000a8fc1caecc5ab0",
+      "index": 4,
+      "pair_id": "26e66d5d34d0ecdf8e091d17857a94a7335ad98df00abc304ca4eb18e3f42579",
+      "image_id": 308549,
+      "split": "train",
+      "stratum": "projective_containment",
+      "statement": "the suitcase contains the cat",
+      "source_label": 0
+    },
+    {
+      "review_id": "790fce8ea9708f2c8c5f9d88",
+      "index": 5,
+      "pair_id": "2238a0037f5d05fd934d3924ae8f6bd1ba4765be0dc19c9e8930c680fc47410b",
+      "image_id": 543517,
+      "split": "train",
+      "stratum": "projective_containment",
+      "statement": "the person is on the airplane",
+      "source_label": 1
+    },
+    {
+      "review_id": "3f449afb1a1b57f4b45fd667",
+      "index": 6,
+      "pair_id": "2238a0037f5d05fd934d3924ae8f6bd1ba4765be0dc19c9e8930c680fc47410b",
+      "image_id": 201899,
+      "split": "train",
+      "stratum": "projective_containment",
+      "statement": "the person is on the airplane",
+      "source_label": 0
+    },
+    {
+      "review_id": "8866ab25fe31894ab630f0aa",
+      "index": 7,
+      "pair_id": "1e395f153635c2c70a3b1608deaef976a5e051ee29681012c3a484672de4c70a",
+      "image_id": 495055,
+      "split": "train",
+      "stratum": "projective_containment",
+      "statement": "the bed is under the person",
+      "source_label": 1
+    },
+    {
+      "review_id": "5956ecda0382e99e87d5799a",
+      "index": 8,
+      "pair_id": "1e395f153635c2c70a3b1608deaef976a5e051ee29681012c3a484672de4c70a",
+      "image_id": 426152,
+      "split": "train",
+      "stratum": "projective_containment",
+      "statement": "the bed is under the person",
+      "source_label": 0
+    },
+    {
+      "review_id": "60f16500ceaafddf74314278",
+      "index": 9,
+      "pair_id": "44ac5766ca3fddabbb2d01d9e15ee525e0af2fdfc639f49a70b5c4ef19ac55a2",
+      "image_id": 221663,
+      "split": "train",
+      "stratum": "contact_proximity",
+      "statement": "the person is next to the vase",
+      "source_label": 1
+    },
+    {
+      "review_id": "78a194e38d017ac1744bee52",
+      "index": 10,
+      "pair_id": "44ac5766ca3fddabbb2d01d9e15ee525e0af2fdfc639f49a70b5c4ef19ac55a2",
+      "image_id": 358287,
+      "split": "train",
+      "stratum": "contact_proximity",
+      "statement": "the person is next to the vase",
+      "source_label": 0
+    },
+    {
+      "review_id": "2c88921e595188228761e91b",
+      "index": 11,
+      "pair_id": "21a5e8c6107e9dfc8ce972f57b44923d2abda9a8ba6366fdc54213f031df29e3",
+      "image_id": 13943,
+      "split": "train",
+      "stratum": "contact_proximity",
+      "statement": "the horse is next to the bus",
+      "source_label": 1
+    },
+    {
+      "review_id": "e6edadc6487d6bfec9640f8c",
+      "index": 12,
+      "pair_id": "21a5e8c6107e9dfc8ce972f57b44923d2abda9a8ba6366fdc54213f031df29e3",
+      "image_id": 172406,
+      "split": "train",
+      "stratum": "contact_proximity",
+      "statement": "the horse is next to the bus",
+      "source_label": 0
+    },
+    {
+      "review_id": "395f13a00ce52b277ccf7ee6",
+      "index": 13,
+      "pair_id": "4db8c6286ac6f0aa3eb148da27bd24c9505d4d694bb7d4a1bd7e54e3ad01d7fe",
+      "image_id": 516474,
+      "split": "train",
+      "stratum": "contact_proximity",
+      "statement": "the sandwich is touching the person",
+      "source_label": 1
+    },
+    {
+      "review_id": "d40117c8e1b8e11b0c22816b",
+      "index": 14,
+      "pair_id": "4db8c6286ac6f0aa3eb148da27bd24c9505d4d694bb7d4a1bd7e54e3ad01d7fe",
+      "image_id": 141712,
+      "split": "train",
+      "stratum": "contact_proximity",
+      "statement": "the sandwich is touching the person",
+      "source_label": 0
+    },
+    {
+      "review_id": "9f3e29aceeebe01bc04a6cb5",
+      "index": 15,
+      "pair_id": "481f96d54b5c4459702074363102dac7601c9dd0a5690c362eafc6ee5bc29862",
+      "image_id": 93287,
+      "split": "train",
+      "stratum": "contact_proximity",
+      "statement": "the person is next to the horse",
+      "source_label": 1
+    },
+    {
+      "review_id": "1b662eef1172245b29979982",
+      "index": 16,
+      "pair_id": "481f96d54b5c4459702074363102dac7601c9dd0a5690c362eafc6ee5bc29862",
+      "image_id": 497579,
+      "split": "train",
+      "stratum": "contact_proximity",
+      "statement": "the person is next to the horse",
+      "source_label": 0
+    },
+    {
+      "review_id": "e875e74338851073545eddb8",
+      "index": 17,
+      "pair_id": "0951c8d4a701a6717c76626676ce343c21fd370a66e8abd677da4159e0712ae7",
+      "image_id": 427615,
+      "split": "heldout",
+      "stratum": "projective_containment",
+      "statement": "the teddy bear is on the couch",
+      "source_label": 1
+    },
+    {
+      "review_id": "d5c5e322af7231efee7f3611",
+      "index": 18,
+      "pair_id": "0951c8d4a701a6717c76626676ce343c21fd370a66e8abd677da4159e0712ae7",
+      "image_id": 141101,
+      "split": "heldout",
+      "stratum": "projective_containment",
+      "statement": "the teddy bear is on the couch",
+      "source_label": 0
+    },
+    {
+      "review_id": "93339ff97c45c8eb05197dfd",
+      "index": 19,
+      "pair_id": "065e53424eafba8a1ffb83c91d63bea97a3e33c184dd5aa67a617b620593aacf",
+      "image_id": 482127,
+      "split": "heldout",
+      "stratum": "projective_containment",
+      "statement": "the bird is above the book",
+      "source_label": 1
+    },
+    {
+      "review_id": "fcd1a1c55541aa8462e719d8",
+      "index": 20,
+      "pair_id": "065e53424eafba8a1ffb83c91d63bea97a3e33c184dd5aa67a617b620593aacf",
+      "image_id": 112228,
+      "split": "heldout",
+      "stratum": "projective_containment",
+      "statement": "the bird is above the book",
+      "source_label": 0
+    },
+    {
+      "review_id": "133a9b7a7b0a5790f60663d9",
+      "index": 21,
+      "pair_id": "08d75adc1238c1ebcee919cfa436515f083e9beb2be214d7ff47466eec580c5b",
+      "image_id": 475108,
+      "split": "heldout",
+      "stratum": "projective_containment",
+      "statement": "the suitcase is below the cat",
+      "source_label": 1
+    },
+    {
+      "review_id": "ade195d6eac771aaf2502291",
+      "index": 22,
+      "pair_id": "08d75adc1238c1ebcee919cfa436515f083e9beb2be214d7ff47466eec580c5b",
+      "image_id": 324483,
+      "split": "heldout",
+      "stratum": "projective_containment",
+      "statement": "the suitcase is below the cat",
+      "source_label": 0
+    },
+    {
+      "review_id": "017da0cda5071b94f16ac8f3",
+      "index": 23,
+      "pair_id": "066b7ca711fbc235968efd4ed09ecf2ce3077ea4c8ecae6b22a929611c860686",
+      "image_id": 76462,
+      "split": "heldout",
+      "stratum": "projective_containment",
+      "statement": "the banana is within the bowl",
+      "source_label": 1
+    },
+    {
+      "review_id": "54c59c880e57e24875952dde",
+      "index": 24,
+      "pair_id": "066b7ca711fbc235968efd4ed09ecf2ce3077ea4c8ecae6b22a929611c860686",
+      "image_id": 240798,
+      "split": "heldout",
+      "stratum": "projective_containment",
+      "statement": "the banana is within the bowl",
+      "source_label": 0
+    },
+    {
+      "review_id": "75eb4091e83794366fc3694c",
+      "index": 25,
+      "pair_id": "0064de26c412eb66ce0cb5f8ec944881412fd4fe37a3be649a7f453f8de2bb1f",
+      "image_id": 451489,
+      "split": "heldout",
+      "stratum": "contact_proximity",
+      "statement": "the elephant is far from the potted plant",
+      "source_label": 1
+    },
+    {
+      "review_id": "111ef6216ba972e92ce8510c",
+      "index": 26,
+      "pair_id": "0064de26c412eb66ce0cb5f8ec944881412fd4fe37a3be649a7f453f8de2bb1f",
+      "image_id": 69928,
+      "split": "heldout",
+      "stratum": "contact_proximity",
+      "statement": "the elephant is far from the potted plant",
+      "source_label": 0
+    },
+    {
+      "review_id": "da7cfe2ba13bbc9ffacb93e5",
+      "index": 27,
+      "pair_id": "01ca2f809bea27f2087568db3f419f9f215211a2b1b72952a550a66f7285a787",
+      "image_id": 18896,
+      "split": "heldout",
+      "stratum": "contact_proximity",
+      "statement": "the person is touching the elephant",
+      "source_label": 1
+    },
+    {
+      "review_id": "5c2698b9eabd8fd0d3eb3513",
+      "index": 28,
+      "pair_id": "01ca2f809bea27f2087568db3f419f9f215211a2b1b72952a550a66f7285a787",
+      "image_id": 156246,
+      "split": "heldout",
+      "stratum": "contact_proximity",
+      "statement": "the person is touching the elephant",
+      "source_label": 0
+    },
+    {
+      "review_id": "632752f26309a4fbcb01bafa",
+      "index": 29,
+      "pair_id": "167b85f081e7edde73b1ce732905860d665ab33d4a58dcd2e43b864f581ec7bb",
+      "image_id": 364722,
+      "split": "heldout",
+      "stratum": "contact_proximity",
+      "statement": "the bottle is touching the teddy bear",
+      "source_label": 1
+    },
+    {
+      "review_id": "6800743f841d87c15e5711be",
+      "index": 30,
+      "pair_id": "167b85f081e7edde73b1ce732905860d665ab33d4a58dcd2e43b864f581ec7bb",
+      "image_id": 196758,
+      "split": "heldout",
+      "stratum": "contact_proximity",
+      "statement": "the bottle is touching the teddy bear",
+      "source_label": 0
+    },
+    {
+      "review_id": "c9031055e90cb3b09b7d16bb",
+      "index": 31,
+      "pair_id": "0461cafd57d2ceba1694477acff05c4f6e853f5939763dea260a39843bcd6f64",
+      "image_id": 54953,
+      "split": "heldout",
+      "stratum": "contact_proximity",
+      "statement": "the teddy bear is touching the cat",
+      "source_label": 1
+    },
+    {
+      "review_id": "c2720598b8025418625a39d2",
+      "index": 32,
+      "pair_id": "0461cafd57d2ceba1694477acff05c4f6e853f5939763dea260a39843bcd6f64",
+      "image_id": 104510,
+      "split": "heldout",
+      "stratum": "contact_proximity",
+      "statement": "the teddy bear is touching the cat",
+      "source_label": 0
+    }
+  ]
+}

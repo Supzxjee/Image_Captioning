@@ -1,0 +1,258 @@
+[
+  {
+    "image_id": 437964,
+    "file_name": "COCO_train2014_000000437964.jpg",
+    "url": "https://s3.amazonaws.com/images.cocodataset.org/train2014/COCO_train2014_000000437964.jpg",
+    "bytes": 110852,
+    "sha256": "322cc911e0fd6dcfcc8a74447608039a193c8158d1497c68c92e1d7dc03b5000",
+    "scope": "Official COCO JPEG, dimensions verified; no RGB hash in pre-existing detector cache"
+  },
+  {
+    "image_id": 355762,
+    "file_name": "COCO_val2014_000000355762.jpg",
+    "url": "https://s3.amazonaws.com/images.cocodataset.org/val2014/COCO_val2014_000000355762.jpg",
+    "bytes": 92215,
+    "sha256": "8897ae8af9f5062e832c4e45fdac8d700e63d58f061ddab67390c310c9c98384",
+    "scope": "Official COCO JPEG, dimensions verified; no RGB hash in pre-existing detector cache"
+  },
+  {
+    "image_id": 292232,
+    "file_name": "COCO_val2014_000000292232.jpg",
+    "url": "https://s3.amazonaws.com/images.cocodataset.org/val2014/COCO_val2014_000000292232.jpg",
+    "bytes": 84102,
+    "sha256": "4b0c002b9e2fe99d2ed3f6b2e72aad8e9acfb80d21908dcb9788025f38b4529a",
+    "scope": "Official COCO JPEG, dimensions verified; no RGB hash in pre-existing detector cache"
+  },
+  {
+    "image_id": 308549,
+    "file_name": "COCO_train2014_000000308549.jpg",
+    "url": "https://s3.amazonaws.com/images.cocodataset.org/train2014/COCO_train2014_000000308549.jpg",
+    "bytes": 122034,
+    "sha256": "996dd1d25c1d0fca4f0d4b1c0573843262a472f4307b06ef1eafef1b1f710f79",
+    "scope": "Official COCO JPEG, dimensions verified; no RGB hash in pre-existing detector cache"
+  },
+  {
+    "image_id": 543517,
+    "file_name": "COCO_train2014_000000543517.jpg",
+    "url": "https://s3.amazonaws.com/images.cocodataset.org/train2014/COCO_train2014_000000543517.jpg",
+    "bytes": 203307,
+    "sha256": "b7b5a061c2a6676d033e7a760b79d10096fbecc4440cf6cd9e3a0944c834165c",
+    "scope": "Official COCO JPEG, dimensions verified; no RGB hash in pre-existing detector cache"
+  },
+  {
+    "image_id": 201899,
+    "file_name": "COCO_val2014_000000201899.jpg",
+    "url": "https://s3.amazonaws.com/images.cocodataset.org/val2014/COCO_val2014_000000201899.jpg",
+    "bytes": 190212,
+    "sha256": "a41dec0d0b38e0225c27712eeb8d09b98b3b773e9d7e6a16ff42df5a3c3929cf",
+    "scope": "Official COCO JPEG, dimensions verified; no RGB hash in pre-existing detector cache"
+  },
+  {
+    "image_id": 495055,
+    "file_name": "COCO_train2014_000000495055.jpg",
+    "url": "https://s3.amazonaws.com/images.cocodataset.org/train2014/COCO_train2014_000000495055.jpg",
+    "bytes": 98778,
+    "sha256": "472c341907223d24c09d80cce7ff724491a32d2783435233e0c6e90367528035",
+    "scope": "Official COCO JPEG, dimensions verified; no RGB hash in pre-existing detector cache"
+  },
+  {
+    "image_id": 426152,
+    "file_name": "COCO_train2014_000000426152.jpg",
+    "url": "https://s3.amazonaws.com/images.cocodataset.org/train2014/COCO_train2014_000000426152.jpg",
+    "bytes": 165016,
+    "sha256": "ace33f752c749dfe80380f28377629bdfc1add73ac907ef5c46c4d574fdbad85",
+    "scope": "Official COCO JPEG, dimensions verified; no RGB hash in pre-existing detector cache"
+  },
+  {
+    "image_id": 221663,
+    "file_name": "COCO_train2014_000000221663.jpg",
+    "url": "https://s3.amazonaws.com/images.cocodataset.org/train2014/COCO_train2014_000000221663.jpg",
+    "bytes": 153368,
+    "sha256": "b29b8740351ed7192b11ef4ef56eba8beda52193d95d4cc305ff92678a69baf9",
+    "scope": "Official COCO JPEG, dimensions verified; no RGB hash in pre-existing detector cache"
+  },
+  {
+    "image_id": 358287,
+    "file_name": "COCO_train2014_000000358287.jpg",
+    "url": "https://s3.amazonaws.com/images.cocodataset.org/train2014/COCO_train2014_000000358287.jpg",
+    "bytes": 193101,
+    "sha256": "19aa33b7a9efc1a10c49df073a293ee23d553be4972ae91e0ca22a8759d66529",
+    "scope": "Official COCO JPEG, dimensions verified; no RGB hash in pre-existing detector cache"
+  },
+  {
+    "image_id": 13943,
+    "file_name": "COCO_val2014_000000013943.jpg",
+    "url": "https://s3.amazonaws.com/images.cocodataset.org/val2014/COCO_val2014_000000013943.jpg",
+    "bytes": 266377,
+    "sha256": "5f891243e4d86df8290984cd15e8825ac6a455b3422c6077eaed7e381a44e817",
+    "scope": "Official COCO JPEG, dimensions verified; no RGB hash in pre-existing detector cache"
+  },
+  {
+    "image_id": 172406,
+    "file_name": "COCO_train2014_000000172406.jpg",
+    "url": "https://s3.amazonaws.com/images.cocodataset.org/train2014/COCO_train2014_000000172406.jpg",
+    "bytes": 142487,
+    "sha256": "f12b86cea4e6b99194aa4e1aa4a624a5a32bcd6f6169755c5382adeb90196939",
+    "scope": "Official COCO JPEG, dimensions verified; no RGB hash in pre-existing detector cache"
+  },
+  {
+    "image_id": 516474,
+    "file_name": "COCO_train2014_000000516474.jpg",
+    "url": "https://s3.amazonaws.com/images.cocodataset.org/train2014/COCO_train2014_000000516474.jpg",
+    "bytes": 73831,
+    "sha256": "09bdf162d085c984b16b7c0fb55eace421eb1caf4b48038376dd3cc0a3719afe",
+    "scope": "Official COCO JPEG, dimensions verified; no RGB hash in pre-existing detector cache"
+  },
+  {
+    "image_id": 141712,
+    "file_name": "COCO_train2014_000000141712.jpg",
+    "url": "https://s3.amazonaws.com/images.cocodataset.org/train2014/COCO_train2014_000000141712.jpg",
+    "bytes": 166976,
+    "sha256": "07d13937b889d5ea8273cc9f153263c19ecbc3945304c50a03b01585b7fef278",
+    "scope": "Official COCO JPEG, dimensions verified; no RGB hash in pre-existing detector cache"
+  },
+  {
+    "image_id": 93287,
+    "file_name": "COCO_train2014_000000093287.jpg",
+    "url": "https://s3.amazonaws.com/images.cocodataset.org/train2014/COCO_train2014_000000093287.jpg",
+    "bytes": 195800,
+    "sha256": "b4f1a535fd0becb1fe488c7b8884fc7213e006e8b7b384f09e7e2d41692b3735",
+    "scope": "Official COCO JPEG, dimensions verified; no RGB hash in pre-existing detector cache"
+  },
+  {
+    "image_id": 497579,
+    "file_name": "COCO_train2014_000000497579.jpg",
+    "url": "https://s3.amazonaws.com/images.cocodataset.org/train2014/COCO_train2014_000000497579.jpg",
+    "bytes": 173853,
+    "sha256": "9584daf613cd3f7e749c93f32ea6cd916e5810e53feeade08f6fda921a2e3e27",
+    "scope": "Official COCO JPEG, dimensions verified; no RGB hash in pre-existing detector cache"
+  },
+  {
+    "image_id": 427615,
+    "file_name": "COCO_val2014_000000427615.jpg",
+    "url": "https://s3.amazonaws.com/images.cocodataset.org/val2014/COCO_val2014_000000427615.jpg",
+    "bytes": 330271,
+    "sha256": "3fd9411b1d577988df77c9e3f429a61f58bf03fb0605df509d7f944cee498a2e",
+    "scope": "Official COCO JPEG, dimensions verified; no RGB hash in pre-existing detector cache"
+  },
+  {
+    "image_id": 141101,
+    "file_name": "COCO_train2014_000000141101.jpg",
+    "url": "https://s3.amazonaws.com/images.cocodataset.org/train2014/COCO_train2014_000000141101.jpg",
+    "bytes": 146832,
+    "sha256": "8c38d218e9dd31db1e2181f6e25f8ea3b206e70870ded1cc31c3e5dab4ae82fe",
+    "scope": "Official COCO JPEG, dimensions verified; no RGB hash in pre-existing detector cache"
+  },
+  {
+    "image_id": 482127,
+    "file_name": "COCO_train2014_000000482127.jpg",
+    "url": "https://s3.amazonaws.com/images.cocodataset.org/train2014/COCO_train2014_000000482127.jpg",
+    "bytes": 108223,
+    "sha256": "1776fcc20c93b08ad39f45fc31f3b4eef86022139729dcf1d57a0efdcdc0065d",
+    "scope": "Official COCO JPEG, dimensions verified; no RGB hash in pre-existing detector cache"
+  },
+  {
+    "image_id": 112228,
+    "file_name": "COCO_train2014_000000112228.jpg",
+    "url": "https://s3.amazonaws.com/images.cocodataset.org/train2014/COCO_train2014_000000112228.jpg",
+    "bytes": 182383,
+    "sha256": "bade624418dd7e4ac86562779ab3945bbc4bff445f9d7b11f299362d7214a8dd",
+    "scope": "Official COCO JPEG, dimensions verified; no RGB hash in pre-existing detector cache"
+  },
+  {
+    "image_id": 475108,
+    "file_name": "COCO_val2014_000000475108.jpg",
+    "url": "https://s3.amazonaws.com/images.cocodataset.org/val2014/COCO_val2014_000000475108.jpg",
+    "bytes": 102270,
+    "sha256": "e4b8bdb0abec97ee749a001b7771af6894f1f53dc4fb91fb3300489de543fdca",
+    "scope": "Official COCO JPEG, dimensions verified; no RGB hash in pre-existing detector cache"
+  },
+  {
+    "image_id": 324483,
+    "file_name": "COCO_train2014_000000324483.jpg",
+    "url": "https://s3.amazonaws.com/images.cocodataset.org/train2014/COCO_train2014_000000324483.jpg",
+    "bytes": 128367,
+    "sha256": "ded572e91634d83acb272b400110327cddb74e6d71b491057c6781645ab12963",
+    "scope": "Official COCO JPEG, dimensions verified; no RGB hash in pre-existing detector cache"
+  },
+  {
+    "image_id": 76462,
+    "file_name": "COCO_train2014_000000076462.jpg",
+    "url": "https://s3.amazonaws.com/images.cocodataset.org/train2014/COCO_train2014_000000076462.jpg",
+    "bytes": 86741,
+    "sha256": "2f1c242c17abff282276616adae53f52996f1c6dbe612c4adc93b5ec611db090",
+    "scope": "Official COCO JPEG, dimensions verified; no RGB hash in pre-existing detector cache"
+  },
+  {
+    "image_id": 240798,
+    "file_name": "COCO_val2014_000000240798.jpg",
+    "url": "https://s3.amazonaws.com/images.cocodataset.org/val2014/COCO_val2014_000000240798.jpg",
+    "bytes": 93662,
+    "sha256": "910ddba5b53e83e6536a72d202a1e78c390fd741d8b07c65991df3e6330d097c",
+    "scope": "Official COCO JPEG, dimensions verified; no RGB hash in pre-existing detector cache"
+  },
+  {
+    "image_id": 451489,
+    "file_name": "COCO_train2014_000000451489.jpg",
+    "url": "https://s3.amazonaws.com/images.cocodataset.org/train2014/COCO_train2014_000000451489.jpg",
+    "bytes": 268894,
+    "sha256": "4c700a02a4daf8399a23fee6424a90ad94efab3fb58e7daf48c62ca39fe493b7",
+    "scope": "Official COCO JPEG, dimensions verified; no RGB hash in pre-existing detector cache"
+  },
+  {
+    "image_id": 69928,
+    "file_name": "COCO_val2014_000000069928.jpg",
+    "url": "https://s3.amazonaws.com/images.cocodataset.org/val2014/COCO_val2014_000000069928.jpg",
+    "bytes": 269001,
+    "sha256": "20076fcc0e9629670907d1d3e437f05384d1cfa58f76d3f38a16cd3cee1e9506",
+    "scope": "Official COCO JPEG, dimensions verified; no RGB hash in pre-existing detector cache"
+  },
+  {
+    "image_id": 18896,
+    "file_name": "COCO_val2014_000000018896.jpg",
+    "url": "https://s3.amazonaws.com/images.cocodataset.org/val2014/COCO_val2014_000000018896.jpg",
+    "bytes": 154523,
+    "sha256": "814457f2243658ec1f15026a6d2f2c807691547a564901a2aaa139991d3bbd90",
+    "scope": "Official COCO JPEG, dimensions verified; no RGB hash in pre-existing detector cache"
+  },
+  {
+    "image_id": 156246,
+    "file_name": "COCO_val2014_000000156246.jpg",
+    "url": "https://s3.amazonaws.com/images.cocodataset.org/val2014/COCO_val2014_000000156246.jpg",
+    "bytes": 234004,
+    "sha256": "b3fd38984a229069607a7bfa7a16f39467af3d464009e436095b15f0fdb763e5",
+    "scope": "Official COCO JPEG, dimensions verified; no RGB hash in pre-existing detector cache"
+  },
+  {
+    "image_id": 364722,
+    "file_name": "COCO_train2014_000000364722.jpg",
+    "url": "https://s3.amazonaws.com/images.cocodataset.org/train2014/COCO_train2014_000000364722.jpg",
+    "bytes": 100382,
+    "sha256": "2103646c415f0d897105a5cfee2fc039951d1977c6383c01d81951692e29b25a",
+    "scope": "Official COCO JPEG, dimensions verified; no RGB hash in pre-existing detector cache"
+  },
+  {
+    "image_id": 196758,
+    "file_name": "COCO_val2014_000000196758.jpg",
+    "url": "https://s3.amazonaws.com/images.cocodataset.org/val2014/COCO_val2014_000000196758.jpg",
+    "bytes": 94627,
+    "sha256": "f7b06663276ebf50a07f5925d9e72e907bafebffd830e89da3ea12bed7f4c3f5",
+    "scope": "Official COCO JPEG, dimensions verified; no RGB hash in pre-existing detector cache"
+  },
+  {
+    "image_id": 54953,
+    "file_name": "COCO_train2014_000000054953.jpg",
+    "url": "https://s3.amazonaws.com/images.cocodataset.org/train2014/COCO_train2014_000000054953.jpg",
+    "bytes": 154180,
+    "sha256": "900683d5ee41c33ecf01ae370e592f5a0c703ee4f0c234d846b69d76a82eb7d5",
+    "scope": "Official COCO JPEG, dimensions verified; no RGB hash in pre-existing detector cache"
+  },
+  {
+    "image_id": 104510,
+    "file_name": "COCO_train2014_000000104510.jpg",
+    "url": "https://s3.amazonaws.com/images.cocodataset.org/train2014/COCO_train2014_000000104510.jpg",
+    "bytes": 111814,
+    "sha256": "c5fb9fe00c2ffd51a087b21d1b1003431ca4e82117d93ec9f37698e681de6471",
+    "scope": "Official COCO JPEG, dimensions verified; no RGB hash in pre-existing detector cache"
+  }
+]

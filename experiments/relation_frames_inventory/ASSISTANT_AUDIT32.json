@@ -1,0 +1,234 @@
+{
+  "schema_version": 1,
+  "manifest_sha256": "6ca6af23d0a31043fecdf33398f5b60098be07cbeea9fb91cbfec4b314c2cfa7",
+  "audit_sha256": "a86f9f8459b5278b2ad8175a984032317ecf48ae5d194513dc7822e02f097dad",
+  "reviewer": "Codex",
+  "reviewer_type": "assistant_proposed_not_human",
+  "training_approved": false,
+  "annotations": {
+    "2295d49c67840ddf1a32bb02": {
+      "subject_box": "clear",
+      "object_box": "clear",
+      "assertion": "supported",
+      "notes": "Laptop đặt trên đùi người; hai box đúng instance.",
+      "confirmed_by_human": false
+    },
+    "5a563235347ff5caa78bf202": {
+      "subject_box": "clear",
+      "object_box": "clear",
+      "assertion": "contradicted",
+      "notes": "Laptop đặt trên bàn, người đứng cạnh và thao tác; laptop không ở trên người.",
+      "confirmed_by_human": false
+    },
+    "f9a7faa8015a2ea557ffe638": {
+      "subject_box": "clear",
+      "object_box": "clear",
+      "assertion": "supported",
+      "notes": "Mèo nằm trong khoang mở của vali.",
+      "confirmed_by_human": false
+    },
+    "15a6c91000a8fc1caecc5ab0": {
+      "subject_box": "clear",
+      "object_box": "clear",
+      "assertion": "contradicted",
+      "notes": "Mèo nằm trên mặt ngoài của vali đang đóng, không ở bên trong.",
+      "confirmed_by_human": false
+    },
+    "790fce8ea9708f2c8c5f9d88": {
+      "subject_box": "clear",
+      "object_box": "clear",
+      "assertion": "supported",
+      "notes": "Người nhỏ nhưng nhìn thấy trên phần nóc máy bay; bằng chứng sẽ khó hơn ở224px.",
+      "confirmed_by_human": false
+    },
+    "3f449afb1a1b57f4b45fd667": {
+      "subject_box": "clear",
+      "object_box": "clear",
+      "assertion": "contradicted",
+      "notes": "Người chơi ván ở tiền cảnh; máy bay nhỏ trên trời phía trái, tách biệt. BoxO nhỏ nhưng ảnh gốc thấy máy bay.",
+      "confirmed_by_human": false
+    },
+    "8866ab25fe31894ab630f0aa": {
+      "subject_box": "clear",
+      "object_box": "clear",
+      "assertion": "supported",
+      "notes": "Người ngồi trên giường; giường đỡ phía dưới cơ thể.",
+      "confirmed_by_human": false
+    },
+    "5956ecda0382e99e87d5799a": {
+      "subject_box": "clear",
+      "object_box": "clear",
+      "assertion": "contradicted",
+      "notes": "Giường ở phía sau/bên phải người đang ngồi tại bàn, không đỡ phía dưới người.",
+      "confirmed_by_human": false
+    },
+    "60f16500ceaafddf74314278": {
+      "subject_box": "clear",
+      "object_box": "clear",
+      "assertion": "supported",
+      "notes": "Bình trên bàn nhỏ cạnh ghế người; ảnh gốc xác nhận đúng bình.",
+      "confirmed_by_human": false
+    },
+    "78a194e38d017ac1744bee52": {
+      "subject_box": "clear",
+      "object_box": "clear",
+      "assertion": "contradicted",
+      "notes": "Bình ở tiền cảnh, người ở xa phía sau trong cửa hàng; không phải cặp đứng cạnh nhau.",
+      "confirmed_by_human": false
+    },
+    "2c88921e595188228761e91b": {
+      "subject_box": "clear",
+      "object_box": "clear",
+      "assertion": "supported",
+      "notes": "Ngựa và xe buýt cùng sát nhau theo chiều ngang.",
+      "confirmed_by_human": false
+    },
+    "e6edadc6487d6bfec9640f8c": {
+      "subject_box": "clear",
+      "object_box": "clear",
+      "assertion": "contradicted",
+      "notes": "Ngựa ở tiền cảnh, xe buýt nhỏ nằm sâu phía sau, không ở ngay cạnh.",
+      "confirmed_by_human": false
+    },
+    "395f13a00ce52b277ccf7ee6": {
+      "subject_box": "clear",
+      "object_box": "clear",
+      "assertion": "supported",
+      "notes": "Bánh sandwich tiếp xúc với tay/miệng người.",
+      "confirmed_by_human": false
+    },
+    "d40117c8e1b8e11b0c22816b": {
+      "subject_box": "clear",
+      "object_box": "clear",
+      "assertion": "contradicted",
+      "notes": "Tay đỡ khay/giấy bên dưới; không thấy sandwich trực tiếp chạm người.",
+      "confirmed_by_human": false
+    },
+    "9f3e29aceeebe01bc04a6cb5": {
+      "subject_box": "clear",
+      "object_box": "clear",
+      "assertion": "supported",
+      "notes": "Người đứng sát bên ngựa.",
+      "confirmed_by_human": false
+    },
+    "1b662eef1172245b29979982": {
+      "subject_box": "clear",
+      "object_box": "clear",
+      "assertion": "uncertain",
+      "notes": "Người đang cưỡi ngựa. Next to thường diễn đạt đứng bên cạnh, nhưng không nên mặc định riding là phủ định logic của next to; cần thống nhất cách hiểu.",
+      "confirmed_by_human": false
+    },
+    "e875e74338851073545eddb8": {
+      "subject_box": "clear",
+      "object_box": "clear",
+      "assertion": "supported",
+      "notes": "Gấu nằm cùng người trên sofa, được sofa đỡ gián tiếp/trực tiếp.",
+      "confirmed_by_human": false
+    },
+    "d5c5e322af7231efee7f3611": {
+      "subject_box": "clear",
+      "object_box": "clear",
+      "assertion": "contradicted",
+      "notes": "Gấu màu hồng ở sàn phòng phía sau trái; sofa đỏ ở phải.",
+      "confirmed_by_human": false
+    },
+    "93339ff97c45c8eb05197dfd": {
+      "subject_box": "clear",
+      "object_box": "clear",
+      "assertion": "supported",
+      "notes": "Chim đậu trên mép trên sách mở; vị trí ở phía trên sách.",
+      "confirmed_by_human": false
+    },
+    "fcd1a1c55541aa8462e719d8": {
+      "subject_box": "clear",
+      "object_box": "clear",
+      "assertion": "contradicted",
+      "notes": "Instancechim nhỏ là vật trang trí ở phía trước/thấp hơn sách. Có hình chim in trong sách nhưng đó không phải boxS được chọn.",
+      "confirmed_by_human": false
+    },
+    "133a9b7a7b0a5790f60663d9": {
+      "subject_box": "clear",
+      "object_box": "clear",
+      "assertion": "supported",
+      "notes": "Mèo nằm trên phần vali mở, vali ở dưới đỡ mèo.",
+      "confirmed_by_human": false
+    },
+    "ade195d6eac771aaf2502291": {
+      "subject_box": "clear",
+      "object_box": "clear",
+      "assertion": "uncertain",
+      "notes": "Mèo thò ra từ trong vali dựng đứng; hai vật bao quanh/chồng lấp. Below có thể phụ thuộc quy ước, không đủ chắc để xác nhậnFALSE bằng trực quan này.",
+      "confirmed_by_human": false
+    },
+    "017da0cda5071b94f16ac8f3": {
+      "subject_box": "clear",
+      "object_box": "clear",
+      "assertion": "supported",
+      "notes": "Các miếng chuối nằm trong lòng bát.",
+      "confirmed_by_human": false
+    },
+    "54c59c880e57e24875952dde": {
+      "subject_box": "clear",
+      "object_box": "clear",
+      "assertion": "contradicted",
+      "notes": "Chuối nằm trên đĩa ngoài bát kim loại ở sau.",
+      "confirmed_by_human": false
+    },
+    "75eb4091e83794366fc3694c": {
+      "subject_box": "clear",
+      "object_box": "clear",
+      "assertion": "supported",
+      "notes": "Cây chậu được khoanh ở xa phía sau bên trái voi; đánh giá đúng instanceO, không thay bằng chậu rỗng ở gần chân voi.",
+      "confirmed_by_human": false
+    },
+    "111ef6216ba972e92ce8510c": {
+      "subject_box": "clear",
+      "object_box": "clear",
+      "assertion": "contradicted",
+      "notes": "Tượng voi trên bảng hiệu ngay phía trên/sát chậu cây; không xa. Voi là vật trang trí, cần ghi rõ miền ảnh.",
+      "confirmed_by_human": false
+    },
+    "da7cfe2ba13bbc9ffacb93e5": {
+      "subject_box": "clear",
+      "object_box": "clear",
+      "assertion": "supported",
+      "notes": "Người áp cả tay và chân vào voi, tiếp xúc rõ.",
+      "confirmed_by_human": false
+    },
+    "5c2698b9eabd8fd0d3eb3513": {
+      "subject_box": "clear",
+      "object_box": "clear",
+      "assertion": "contradicted",
+      "notes": "Người tựa tay lên tường/lan can trước voi; không thấy chạm trực tiếp voi.",
+      "confirmed_by_human": false
+    },
+    "632752f26309a4fbcb01bafa": {
+      "subject_box": "clear",
+      "object_box": "clear",
+      "assertion": "supported",
+      "notes": "Gấu ôm/sát thân chai, phần lông/chi gấu tiếp xúc chai.",
+      "confirmed_by_human": false
+    },
+    "6800743f841d87c15e5711be": {
+      "subject_box": "clear",
+      "object_box": "clear",
+      "assertion": "contradicted",
+      "notes": "Lọ được gán classbottle và gấu bên trái tách nhau. Thú bông bên phải là instance khác; không đổiO theo câu.",
+      "confirmed_by_human": false
+    },
+    "c9031055e90cb3b09b7d16bb": {
+      "subject_box": "clear",
+      "object_box": "clear",
+      "assertion": "supported",
+      "notes": "Tay gấu bông sát/đặt lên phần đầu/lưng mèo.",
+      "confirmed_by_human": false
+    },
+    "c2720598b8025418625a39d2": {
+      "subject_box": "clear",
+      "object_box": "clear",
+      "assertion": "supported",
+      "notes": "Ảnh gốc cho thấy tay gấu bông có vẻ đang chạm phần thân/đuôi mèo. Khác nhãnFALSE của VSR; đây là gợi ý AI cần người kiểm tra, chưa tự đổi nhãn.",
+      "confirmed_by_human": false
+    }
+  }
+}

@@ -1,0 +1,146 @@
+{
+  "status": "ALL_V2_IDS_PRESENT_HEADERS_ONLY",
+  "manifest_sha256": "6ca6af23d0a31043fecdf33398f5b60098be07cbeea9fb91cbfec4b314c2cfa7",
+  "wanted_images": 612,
+  "found_images": 612,
+  "missing": [],
+  "shards": [
+    {
+      "filename": "visual_part_01_of_03.h5",
+      "complete": true,
+      "shape": [
+        41095,
+        197,
+        768
+      ],
+      "dtype": "float16",
+      "wanted_ids_found": 172,
+      "id_list_sha256": "bc374dcb2550276a7f3b36de78f812dae87ca0debccfa981c807c2e88d293215",
+      "metadata": {
+        "model_id": "openai/clip-vit-base-patch16",
+        "model_revision": null,
+        "output": "vision_model.last_hidden_state",
+        "preprocessing": "bilinear",
+        "image_size": [
+          224,
+          224
+        ],
+        "antialias": true,
+        "mean": [
+          0.48145466,
+          0.4578275,
+          0.40821073
+        ],
+        "std": [
+          0.26862954,
+          0.26130258,
+          0.27577711
+        ],
+        "compute_dtype": "float32",
+        "storage_dtype": "float16",
+        "autocast": false,
+        "dataset_json_sha256": "2fd999220673258012acfb411a4e7e66af7d488050b2519b0badcc49b7600b8d",
+        "part": 1,
+        "parts": 3,
+        "smoke": false,
+        "image_count": 41095,
+        "torch": "2.10.0+cu128",
+        "torchvision": "0.25.0+cu128",
+        "transformers": "5.0.0"
+      }
+    },
+    {
+      "filename": "visual_part_02_of_03.h5",
+      "complete": true,
+      "shape": [
+        41096,
+        197,
+        768
+      ],
+      "dtype": "float16",
+      "wanted_ids_found": 229,
+      "id_list_sha256": "b947b2a27e1a45c1135b4d9391a608085f167f5b7ba6a5a2624e49b4f0e9114a",
+      "metadata": {
+        "model_id": "openai/clip-vit-base-patch16",
+        "model_revision": null,
+        "output": "vision_model.last_hidden_state",
+        "preprocessing": "bilinear",
+        "image_size": [
+          224,
+          224
+        ],
+        "antialias": true,
+        "mean": [
+          0.48145466,
+          0.4578275,
+          0.40821073
+        ],
+        "std": [
+          0.26862954,
+          0.26130258,
+          0.27577711
+        ],
+        "compute_dtype": "float32",
+        "storage_dtype": "float16",
+        "autocast": false,
+        "dataset_json_sha256": "2fd999220673258012acfb411a4e7e66af7d488050b2519b0badcc49b7600b8d",
+        "part": 2,
+        "parts": 3,
+        "smoke": false,
+        "image_count": 41096,
+        "torch": "2.10.0+cu128",
+        "torchvision": "0.25.0+cu128",
+        "transformers": "5.0.0"
+      }
+    },
+    {
+      "filename": "visual_part_03_of_03.h5",
+      "complete": true,
+      "shape": [
+        41096,
+        197,
+        768
+      ],
+      "dtype": "float16",
+      "wanted_ids_found": 211,
+      "id_list_sha256": "1641bd512c189fd433199575315ac95f96b0efc47743b1d942272f38b160cbc4",
+      "metadata": {
+        "model_id": "openai/clip-vit-base-patch16",
+        "model_revision": null,
+        "output": "vision_model.last_hidden_state",
+        "preprocessing": "bilinear",
+        "image_size": [
+          224,
+          224
+        ],
+        "antialias": true,
+        "mean": [
+          0.48145466,
+          0.4578275,
+          0.40821073
+        ],
+        "std": [
+          0.26862954,
+          0.26130258,
+          0.27577711
+        ],
+        "compute_dtype": "float32",
+        "storage_dtype": "float16",
+        "autocast": false,
+        "dataset_json_sha256": "2fd999220673258012acfb411a4e7e66af7d488050b2519b0badcc49b7600b8d",
+        "part": 3,
+        "parts": 3,
+        "smoke": false,
+        "start_row": 0,
+        "image_count": 41096,
+        "torch": "2.10.0+cu128",
+        "torchvision": "0.25.0+cu128",
+        "transformers": "5.0.0"
+      }
+    }
+  ],
+  "feature_values_read": false,
+  "cache_file_bytes_fully_hashed": false,
+  "local_neural_execution": false,
+  "legacy_prompt_coverage": "UNVERIFIED_LOCALLY; CPU Kaggle preparation must check pinned original embedding cache"
+}

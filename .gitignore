@@ -15,3 +15,4 @@ experiments/relation_frames_inventory/metadata_candidates.json
 experiments/relation_frames_inventory/box_candidate_pairs.json
 experiments/relation_frames_inventory/selected_pairs.json
 experiments/relation_frames_inventory/detector_matched_records.json
+experiments/relation_frames_inventory/review/
