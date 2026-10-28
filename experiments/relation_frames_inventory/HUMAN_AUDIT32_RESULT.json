@@ -1,0 +1,90 @@
+{
+  "status": "HUMAN_REVIEW_COMPLETE",
+  "reviewer": "Duc Anh",
+  "raw_export_type": "assistant_proposed_pending_human_verification",
+  "raw_file_confirmations": 31,
+  "chat_supplements": 3,
+  "explicit_assertion_revisions": [
+    {
+      "index": 16,
+      "review_id": "1b662eef1172245b29979982",
+      "previous_assertion": "uncertain",
+      "assertion": "contradicted",
+      "human_reply": "16 22 false nhe"
+    },
+    {
+      "index": 22,
+      "review_id": "ade195d6eac771aaf2502291",
+      "previous_assertion": "uncertain",
+      "assertion": "contradicted",
+      "human_reply": "16 22 false nhe"
+    }
+  ],
+  "effective_confirmations": 32,
+  "records": 32,
+  "confirmed_assertions": {
+    "supported": 16,
+    "contradicted": 16
+  },
+  "pending": [],
+  "uncertain": [],
+  "definite_source_disagreements": [],
+  "box_issues": [],
+  "changes_from_assistant": [
+    {
+      "index": 16,
+      "review_id": "1b662eef1172245b29979982",
+      "image_id": 497579,
+      "split": "train",
+      "statement": "the person is next to the horse",
+      "source_label": 0,
+      "changed_fields": {
+        "assertion": {
+          "assistant": "uncertain",
+          "human": "contradicted"
+        }
+      }
+    },
+    {
+      "index": 22,
+      "review_id": "ade195d6eac771aaf2502291",
+      "image_id": 324483,
+      "split": "heldout",
+      "statement": "the suitcase is below the cat",
+      "source_label": 0,
+      "changed_fields": {
+        "assertion": {
+          "assistant": "uncertain",
+          "human": "contradicted"
+        }
+      }
+    },
+    {
+      "index": 32,
+      "review_id": "c2720598b8025418625a39d2",
+      "image_id": 104510,
+      "split": "heldout",
+      "statement": "the teddy bear is touching the cat",
+      "source_label": 0,
+      "changed_fields": {
+        "assertion": {
+          "assistant": "supported",
+          "human": "contradicted"
+        }
+      }
+    }
+  ],
+  "training_approved": false,
+  "manifest_modified": false,
+  "limits": [
+    "One AI-assisted self-reported human reviewer, not independent double annotation",
+    "Uncertain judgments are preserved; no relabel, exclusion or false-label promotion",
+    "Agreement with VSR is not proof of perfect labels or whole-cohort correctness",
+    "Cache-copy receipt and model preflight are not provided by this review"
+  ],
+  "review_export_sha256": "0daa710272b2a403889f8c3eecbd34d5da09d25e2533c7b0561fe5d8db3f1d09",
+  "supplement_sha256": "dbd59a82e62355ce9baa00917ca3b0d4ca43ff2aa62139c06e1182ad737e1f3b",
+  "manifest_sha256": "6ca6af23d0a31043fecdf33398f5b60098be07cbeea9fb91cbfec4b314c2cfa7",
+  "audit_sha256": "a86f9f8459b5278b2ad8175a984032317ecf48ae5d194513dc7822e02f097dad",
+  "local_neural_execution": false
+}

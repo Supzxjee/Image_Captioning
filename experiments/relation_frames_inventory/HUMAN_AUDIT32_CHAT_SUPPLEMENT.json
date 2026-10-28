@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "review_export_sha256": "0daa710272b2a403889f8c3eecbd34d5da09d25e2533c7b0561fe5d8db3f1d09",
+  "confirmations": [
+    {
+      "review_id": "e6edadc6487d6bfec9640f8c",
+      "index": 12,
+      "image_id": 172406,
+      "subject_box": "clear",
+      "object_box": "clear",
+      "assertion": "contradicted",
+      "confirmed_by_human": true,
+      "origin": "explicit_user_chat_reply",
+      "question": "Tệp có 31/32 bản ghi đã xác nhận. Mẫu #12 (the horse is next to the bus, COCO 172406) vẫn chưa tick xác nhận. Bạn đã tự kiểm tra mẫu này và giữ đánh giá Phát biểu sai, hai box đúng chưa?",
+      "human_reply": "Đã kiểm tra, giữ đánh giá đó",
+      "question_item_id": "request_user_input_async/call_54d215315a374d5da7c9d360a4f0e903/0"
+    },
+    {
+      "review_id": "1b662eef1172245b29979982",
+      "index": 16,
+      "image_id": 497579,
+      "action": "assertion_revision",
+      "previous_assertion": "uncertain",
+      "assertion": "contradicted",
+      "confirmed_by_human": true,
+      "origin": "explicit_user_chat_revision",
+      "human_reply": "16 22 false nhe"
+    },
+    {
+      "review_id": "ade195d6eac771aaf2502291",
+      "index": 22,
+      "image_id": 324483,
+      "action": "assertion_revision",
+      "previous_assertion": "uncertain",
+      "assertion": "contradicted",
+      "confirmed_by_human": true,
+      "origin": "explicit_user_chat_revision",
+      "human_reply": "16 22 false nhe"
+    }
+  ]
+}
