@@ -1,0 +1,22 @@
+{
+  "status": "STATIC_AND_METADATA_PASS",
+  "source_files": [
+    "audit_package.py",
+    "compare_frames.py",
+    "frame_data.py",
+    "frame_model.py",
+    "make_notebooks.py",
+    "run_frames.py",
+    "test_frame_data.py"
+  ],
+  "actual_frozen_manifest_pairs": 320,
+  "predicted_target_bindings": 1280,
+  "images": 612,
+  "vocabulary_size": 10000,
+  "all_lexical_spans_valid": true,
+  "local_neural_execution": false,
+  "not_checked": [
+    "Actual HDF5 payload or neural values",
+    "Torch/autograd/numerical/DDP checks: user-run Kaggle only"
+  ]
+}
