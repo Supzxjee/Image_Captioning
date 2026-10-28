@@ -1,0 +1,19 @@
+{
+  "inventory": {
+    "schema": "relation_frames_v2_transport_v1",
+    "kernel_version": "ducanh2403/2-vi-cai-kia-qua-nhieu/105",
+    "source_review_zip_sha256": "846d4fb94125aa39d6a2825d14a6489c5f60a58e50ae92b30c5cce79fa50eb91",
+    "files": {
+      "inputs.h5": "daf32d52859452eb2beb8c35e2aad6ed6418cf52c68e4ba646be633151a7a1e9",
+      "relation_frames_manifest.bin": "6ca6af23d0a31043fecdf33398f5b60098be07cbeea9fb91cbfec4b314c2cfa7",
+      "images.json": "531ac7ef4d794652a738af572f157f06c44f9b4a57ecb9926ebfa4fb29aa8923",
+      "detector_boxes.json": "57bf20b276f937644cf01751e619add484b44e08711811f829633c6be125c677",
+      "receipt.json": "9bc63a85ce59084d029739d55baec4d2ca359c3afeb78ff320a22b1f310f5915"
+    }
+  },
+  "notebook_bytes": 13211,
+  "notebook_sha256": "a3c504f0d264be948bb87cacd33c1aced05b52ed4c8de89c768326823b3e3ae9",
+  "static_compile": true,
+  "kaggle_api_executed": false,
+  "local_neural_execution": false
+}

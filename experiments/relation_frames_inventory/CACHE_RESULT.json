@@ -1,0 +1,31 @@
+{
+  "status": "DATA_AND_CACHE_METADATA_ACCEPTED_MODEL_PREFLIGHT_PENDING",
+  "zip_sha256": "846d4fb94125aa39d6a2825d14a6489c5f60a58e50ae92b30c5cce79fa50eb91",
+  "receipt_sha256": "9bc63a85ce59084d029739d55baec4d2ca359c3afeb78ff320a22b1f310f5915",
+  "source_commit": "dd49cbb9bf281b69b733bb06a818cffbbc24164e",
+  "preparation_source_sha256": "2a525383ea9d1c791a276fd55138b70e533602db7c866cad193ad03e5f17fa30",
+  "images": 612,
+  "original_prompt_coverage": 612,
+  "predicted_target_bindings_checked": 1280,
+  "seconds": 371.470655795,
+  "checked_payload_sha256": {
+    "relation_frames_manifest.bin": "6ca6af23d0a31043fecdf33398f5b60098be07cbeea9fb91cbfec4b314c2cfa7",
+    "images.json": "531ac7ef4d794652a738af572f157f06c44f9b4a57ecb9926ebfa4fb29aa8923",
+    "detector_boxes.json": "57bf20b276f937644cf01751e619add484b44e08711811f829633c6be125c677"
+  },
+  "declared_payload_sha256": {
+    "inputs.h5": "daf32d52859452eb2beb8c35e2aad6ed6418cf52c68e4ba646be633151a7a1e9",
+    "relation_frames_manifest.bin": "6ca6af23d0a31043fecdf33398f5b60098be07cbeea9fb91cbfec4b314c2cfa7",
+    "images.json": "531ac7ef4d794652a738af572f157f06c44f9b4a57ecb9926ebfa4fb29aa8923",
+    "detector_boxes.json": "57bf20b276f937644cf01751e619add484b44e08711811f829633c6be125c677"
+  },
+  "human_review_status": "HUMAN_REVIEW_COMPLETE",
+  "human_review_receipt_sha256": "659adeaed234b360f8cd36c46945cea9867188a06af364fc17054eaae4af5a50",
+  "original_prep_human_flag": "false is a historical preparation snapshot; separate completed human audit applies",
+  "limits": [
+    "inputs.h5 absent from small ZIP: SHA/readback reported by pinned worker, not independently rehashed here",
+    "Before GPU, verify full HDF5 hash, schema and data against this receipt",
+    "Preparation contains no model training or evidence of caption/grounding gain"
+  ],
+  "local_neural_execution": false
+}
