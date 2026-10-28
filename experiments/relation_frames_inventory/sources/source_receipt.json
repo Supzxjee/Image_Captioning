@@ -1,0 +1,21 @@
+{
+  "repository": "https://github.com/cambridgeltl/visual-spatial-reasoning",
+  "revision": "b27a0af0ee1462d2b6b92c8c83e869d9254a241a",
+  "files": {
+    "train": {
+      "url": "https://raw.githubusercontent.com/cambridgeltl/visual-spatial-reasoning/b27a0af0ee1462d2b6b92c8c83e869d9254a241a/data/splits/random/train.jsonl",
+      "sha256": "8b725a8621f2d0f94745f1fefdcf3ff8a7eb96fd358676296ff9c9a4ff463c6e",
+      "bytes": 2362151
+    },
+    "dev": {
+      "url": "https://raw.githubusercontent.com/cambridgeltl/visual-spatial-reasoning/b27a0af0ee1462d2b6b92c8c83e869d9254a241a/data/splits/random/dev.jsonl",
+      "sha256": "90de24b811597a913310d043758f1119a1ba9ebf1b1ca8f1e27c4907f01980d4",
+      "bytes": 338049
+    },
+    "test": {
+      "url": "https://raw.githubusercontent.com/cambridgeltl/visual-spatial-reasoning/b27a0af0ee1462d2b6b92c8c83e869d9254a241a/data/splits/random/test.jsonl",
+      "sha256": "8ade82a0b93ac9dc1e53f6cf1f11e9d5536776a3715102b6b4d27d4f81d551cc",
+      "bytes": 674712
+    }
+  }
+}
