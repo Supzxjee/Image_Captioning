@@ -1,0 +1,201 @@
+{
+  "status": "MATCHED_I_J_REVIEW_VERIFIED_BASELINE_NOT_IMPROVED",
+  "source_commit": "8024d1b81a07f026f5ded10905fec7756c4269be",
+  "zip_sha256": {
+    "I": "60b4ee2b4c7395ca9331d8829c2718576bb03d481781a742016cca75a7369d83",
+    "J": "7ace8d2ba88299dfbef75932500f029e7152da0f709b502b98bc30c3ddda5761"
+  },
+  "metrics": {
+    "I": {
+      "A": {
+        "CIDEr": 1.2055125991020814,
+        "Bleu_1": 0.763093489965662,
+        "Bleu_2": 0.6069772412006276,
+        "Bleu_3": 0.4633397886861699,
+        "Bleu_4": 0.3517194278720059,
+        "METEOR": 0.2872660124386753,
+        "ROUGE_L": 0.5713406352384716,
+        "chair": {
+          "CHAIRs": 0.052,
+          "CHAIRi": 0.032475490196078434,
+          "Recall": 0.45803873347679064
+        },
+        "counts": {
+          "hallucinated_captions": 52,
+          "hallucinated_mentions": 53,
+          "object_mentions": 1632,
+          "recalled_unique": 1490,
+          "reference_unique": 3253
+        },
+        "mean_words": 10.213
+      },
+      "end": {
+        "CIDEr": 1.0358706680072531,
+        "Bleu_1": 0.7367462565762103,
+        "Bleu_2": 0.5722664175723807,
+        "Bleu_3": 0.42151711288914295,
+        "Bleu_4": 0.304960067412752,
+        "METEOR": 0.2614444094424609,
+        "ROUGE_L": 0.5412318871074537,
+        "chair": {
+          "CHAIRs": 0.083,
+          "CHAIRi": 0.05056513979773944,
+          "Recall": 0.4601905932984937
+        },
+        "counts": {
+          "hallucinated_captions": 83,
+          "hallucinated_mentions": 85,
+          "object_mentions": 1681,
+          "recalled_unique": 1497,
+          "reference_unique": 3253
+        },
+        "mean_words": 9.884
+      },
+      "off": {
+        "CIDEr": 1.1219964949695116,
+        "Bleu_1": 0.7576954232482019,
+        "Bleu_2": 0.5985606601105231,
+        "Bleu_3": 0.4497593589651547,
+        "Bleu_4": 0.33197995386913964,
+        "METEOR": 0.27038142037839724,
+        "ROUGE_L": 0.5593117851389111,
+        "chair": {
+          "CHAIRs": 0.084,
+          "CHAIRi": 0.050505050505050504,
+          "Recall": 0.46510913003381493
+        },
+        "counts": {
+          "hallucinated_captions": 84,
+          "hallucinated_mentions": 85,
+          "object_mentions": 1683,
+          "recalled_unique": 1513,
+          "reference_unique": 3253
+        },
+        "mean_words": 9.875
+      }
+    },
+    "J": {
+      "A": {
+        "CIDEr": 1.2055125991020814,
+        "Bleu_1": 0.763093489965662,
+        "Bleu_2": 0.6069772412006276,
+        "Bleu_3": 0.4633397886861699,
+        "Bleu_4": 0.3517194278720059,
+        "METEOR": 0.2872660124386753,
+        "ROUGE_L": 0.5713406352384716,
+        "chair": {
+          "CHAIRs": 0.052,
+          "CHAIRi": 0.032475490196078434,
+          "Recall": 0.45803873347679064
+        },
+        "counts": {
+          "hallucinated_captions": 52,
+          "hallucinated_mentions": 53,
+          "object_mentions": 1632,
+          "recalled_unique": 1490,
+          "reference_unique": 3253
+        },
+        "mean_words": 10.213
+      },
+      "end": {
+        "CIDEr": 1.1342068495808666,
+        "Bleu_1": 0.7573238392731789,
+        "Bleu_2": 0.5992736720147436,
+        "Bleu_3": 0.4537605277073654,
+        "Bleu_4": 0.34006894297664453,
+        "METEOR": 0.2710719353041779,
+        "ROUGE_L": 0.5573149722408275,
+        "chair": {
+          "CHAIRs": 0.061,
+          "CHAIRi": 0.037014563106796114,
+          "Recall": 0.45434983092529974
+        },
+        "counts": {
+          "hallucinated_captions": 61,
+          "hallucinated_mentions": 61,
+          "object_mentions": 1648,
+          "recalled_unique": 1478,
+          "reference_unique": 3253
+        },
+        "mean_words": 9.37
+      },
+      "off": {
+        "CIDEr": 1.168221219295736,
+        "Bleu_1": 0.7685538199455167,
+        "Bleu_2": 0.6125333627630805,
+        "Bleu_3": 0.4665165569102073,
+        "Bleu_4": 0.35105053581118595,
+        "METEOR": 0.27530256255066565,
+        "ROUGE_L": 0.5660932173066111,
+        "chair": {
+          "CHAIRs": 0.069,
+          "CHAIRi": 0.04244996967859309,
+          "Recall": 0.4568090992929603
+        },
+        "counts": {
+          "hallucinated_captions": 69,
+          "hallucinated_mentions": 70,
+          "object_mentions": 1649,
+          "recalled_unique": 1486,
+          "reference_unique": 3253
+        },
+        "mean_words": 9.436
+      }
+    }
+  },
+  "contrasts": {
+    "J_minus_I": {
+      "mean": 0.09833618157361357,
+      "paired95_ci": [
+        0.06623337802159207,
+        0.13056636734148783
+      ]
+    },
+    "J_minus_A": {
+      "mean": -0.07130574952121443,
+      "paired95_ci": [
+        -0.10804254261650871,
+        -0.03636036298039781
+      ]
+    },
+    "I_minus_A": {
+      "mean": -0.169641931094828,
+      "paired95_ci": [
+        -0.21161081555745898,
+        -0.13002486438650573
+      ]
+    },
+    "J_on_minus_off": {
+      "mean": -0.034014369714869076,
+      "paired95_ci": [
+        -0.0543908163078183,
+        -0.014388838818694275
+      ]
+    },
+    "I_on_minus_off": {
+      "mean": -0.08612582696225846,
+      "paired95_ci": [
+        -0.10995868146754613,
+        -0.06304045932313145
+      ]
+    }
+  },
+  "ranking": {
+    "I": {
+      "held_tail_ranking": 0.6875,
+      "held_predicate_ranking": 0.671875
+    },
+    "J": {
+      "held_tail_ranking": 0.71875,
+      "held_predicate_ranking": 0.671875
+    }
+  },
+  "semantic_panel": "Pending blind review; ranking is not free-caption relation correctness",
+  "limits": [
+    "One seed; reused development and adaptation-heldout data; bootstrap does not measure seed uncertainty.",
+    "No checkpoint or complete HDF5 payload in review ZIP: full tensor/checkpoint hashes remain runtime reports.",
+    "Off simultaneously zeros pair scores and pair values; not an isolated intervention on interaction appearance.",
+    "Metrics were aggregated from exported outputs, not rerun with neural models or external metric engines."
+  ],
+  "recommendation": "Keep A. J beats I in this pilot but does not improve A. Ask research lead before additional training."
+}
