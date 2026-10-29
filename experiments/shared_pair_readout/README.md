@@ -74,3 +74,7 @@ Metadata test: `python experiments/shared_pair_readout/test_panel.py` (requires 
 ### User-requested assisted ratings
 
 All64 images/175 unique captions have AI-proposed visual ratings in `ASSISTANT_PANEL_REVIEW.json`; see `ASSISTANT_PANEL_NOTE.md` for interpretation rules and priority adjudications. `python experiments/shared_pair_readout/make_assisted_panel.py` creates `review/assistant_review.html` with these labels prefilled. This page has175 per-caption confirmation boxes, separate browser draft storage, and assistant-pending export provenance until a named reviewer confirms all captions. Edits revoke the affected confirmation. No arm-level semantic result has been computed from these provisional ratings.
+
+### Mixed annotation screening result
+
+The user returned175 labels with17 unique caption confirmations (158AI-only). [Semantic panel result](SEMANTIC_PANEL_RESULT.md) records the explicit chat clarification for#6X/#49X, all32 pairs, RC/FR/coverage/correctness, uncertainty bounds and stratified pair-bootstrap effects. These mixed labels do not establish independent human accuracy. No semantic gain over A was observed; the recommendation is to stop this recipe, retaining A. Reproduce the metadata-only analysis with `analyze_panel.py` using the ignored imported-review cache. The uploaded user file is preserved; normalized analytic uncertainty is documented separately. No new GPU job was run.

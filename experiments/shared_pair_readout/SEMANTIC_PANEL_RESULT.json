@@ -1,0 +1,482 @@
+{
+  "status": "MIXED_ANNOTATION_SCREEN_NO_J_SEMANTIC_GAIN_OVER_A",
+  "date": "2026-10-29",
+  "panel_sha256": "3d3426aed76a9da9ec1f1a903a58c7c0d5bcf8c5dd35a8070710d50ead81338e",
+  "source_review_sha256": "8549102ade31c673c55c3fd1f89c4887dc8ae4aedb010aaeeb7954fd6868ed89",
+  "annotation_provenance": "AI-proposed; human reviewed selected priority cases, not independent human gold",
+  "unique_ratings": 175,
+  "human_confirmed_unique": 17,
+  "AI_only_unique": 158,
+  "human_changed_labels_unique": 3,
+  "adjudications": [
+    {
+      "image": 6,
+      "caption": "X",
+      "id": "57b263fb37c86f28a8d199b4",
+      "original_relation_correctness": "correct",
+      "analysis_relation_correctness": "uncertain",
+      "reason": "User explicitly retained uncertain target-pair identity in chat; correct/wrong is not scored as definite for unidentified target. Original uploaded JSON retained unchanged."
+    },
+    {
+      "image": 49,
+      "caption": "X",
+      "id": "5e7854d3ace9245dd7844c3d",
+      "original_relation_correctness": "wrong",
+      "analysis_relation_correctness": "uncertain",
+      "reason": "User explicitly retained uncertain target-pair identity in chat; correct/wrong is not scored as definite for unidentified target. Original uploaded JSON retained unchanged."
+    }
+  ],
+  "metrics": {
+    "A": {
+      "images": 64,
+      "positive_images": 32,
+      "negative_images": 32,
+      "asserted_on_positive": 15,
+      "asserted_on_negative": 1,
+      "RC": 0.46875,
+      "FR": 0.03125,
+      "Y": 0.4375,
+      "q_uncertain_positive": 1,
+      "q_uncertain_negative": 1,
+      "RC_uncertainty_bounds": [
+        0.46875,
+        0.5
+      ],
+      "FR_uncertainty_bounds": [
+        0.03125,
+        0.0625
+      ],
+      "Y_uncertainty_bounds": [
+        0.40625,
+        0.46875
+      ],
+      "target_relation_covered": 28,
+      "coverage": 0.4375,
+      "coverage_uncertainty_bounds": [
+        0.4375,
+        0.515625
+      ],
+      "correct": 26,
+      "wrong": 2,
+      "uncertain_when_covered": 0,
+      "target_relation_uncertain": 5,
+      "not_mentioned": 31,
+      "correct_fraction_when_covered": 0.9285714285714286,
+      "confirmed_human_arm_captions": 6
+    },
+    "I": {
+      "images": 64,
+      "positive_images": 32,
+      "negative_images": 32,
+      "asserted_on_positive": 13,
+      "asserted_on_negative": 1,
+      "RC": 0.40625,
+      "FR": 0.03125,
+      "Y": 0.375,
+      "q_uncertain_positive": 0,
+      "q_uncertain_negative": 0,
+      "RC_uncertainty_bounds": [
+        0.40625,
+        0.40625
+      ],
+      "FR_uncertainty_bounds": [
+        0.03125,
+        0.03125
+      ],
+      "Y_uncertainty_bounds": [
+        0.375,
+        0.375
+      ],
+      "target_relation_covered": 28,
+      "coverage": 0.4375,
+      "coverage_uncertainty_bounds": [
+        0.4375,
+        0.453125
+      ],
+      "correct": 24,
+      "wrong": 4,
+      "uncertain_when_covered": 0,
+      "target_relation_uncertain": 1,
+      "not_mentioned": 35,
+      "correct_fraction_when_covered": 0.8571428571428571,
+      "confirmed_human_arm_captions": 7
+    },
+    "J": {
+      "images": 64,
+      "positive_images": 32,
+      "negative_images": 32,
+      "asserted_on_positive": 13,
+      "asserted_on_negative": 1,
+      "RC": 0.40625,
+      "FR": 0.03125,
+      "Y": 0.375,
+      "q_uncertain_positive": 0,
+      "q_uncertain_negative": 1,
+      "RC_uncertainty_bounds": [
+        0.40625,
+        0.40625
+      ],
+      "FR_uncertainty_bounds": [
+        0.03125,
+        0.0625
+      ],
+      "Y_uncertainty_bounds": [
+        0.34375,
+        0.375
+      ],
+      "target_relation_covered": 28,
+      "coverage": 0.4375,
+      "coverage_uncertainty_bounds": [
+        0.4375,
+        0.46875
+      ],
+      "correct": 25,
+      "wrong": 3,
+      "uncertain_when_covered": 0,
+      "target_relation_uncertain": 2,
+      "not_mentioned": 34,
+      "correct_fraction_when_covered": 0.8928571428571429,
+      "confirmed_human_arm_captions": 6
+    }
+  },
+  "by_stratum": {
+    "contact_proximity": {
+      "A": {
+        "images": 32,
+        "positive_images": 16,
+        "negative_images": 16,
+        "asserted_on_positive": 8,
+        "asserted_on_negative": 1,
+        "RC": 0.5,
+        "FR": 0.0625,
+        "Y": 0.4375,
+        "q_uncertain_positive": 0,
+        "q_uncertain_negative": 1,
+        "RC_uncertainty_bounds": [
+          0.5,
+          0.5
+        ],
+        "FR_uncertainty_bounds": [
+          0.0625,
+          0.125
+        ],
+        "Y_uncertainty_bounds": [
+          0.375,
+          0.4375
+        ],
+        "target_relation_covered": 16,
+        "coverage": 0.5,
+        "coverage_uncertainty_bounds": [
+          0.5,
+          0.59375
+        ],
+        "correct": 14,
+        "wrong": 2,
+        "uncertain_when_covered": 0,
+        "target_relation_uncertain": 3,
+        "not_mentioned": 13,
+        "correct_fraction_when_covered": 0.875,
+        "confirmed_human_arm_captions": 3
+      },
+      "I": {
+        "images": 32,
+        "positive_images": 16,
+        "negative_images": 16,
+        "asserted_on_positive": 6,
+        "asserted_on_negative": 1,
+        "RC": 0.375,
+        "FR": 0.0625,
+        "Y": 0.3125,
+        "q_uncertain_positive": 0,
+        "q_uncertain_negative": 0,
+        "RC_uncertainty_bounds": [
+          0.375,
+          0.375
+        ],
+        "FR_uncertainty_bounds": [
+          0.0625,
+          0.0625
+        ],
+        "Y_uncertainty_bounds": [
+          0.3125,
+          0.3125
+        ],
+        "target_relation_covered": 16,
+        "coverage": 0.5,
+        "coverage_uncertainty_bounds": [
+          0.5,
+          0.5
+        ],
+        "correct": 12,
+        "wrong": 4,
+        "uncertain_when_covered": 0,
+        "target_relation_uncertain": 0,
+        "not_mentioned": 16,
+        "correct_fraction_when_covered": 0.75,
+        "confirmed_human_arm_captions": 3
+      },
+      "J": {
+        "images": 32,
+        "positive_images": 16,
+        "negative_images": 16,
+        "asserted_on_positive": 5,
+        "asserted_on_negative": 1,
+        "RC": 0.3125,
+        "FR": 0.0625,
+        "Y": 0.25,
+        "q_uncertain_positive": 0,
+        "q_uncertain_negative": 1,
+        "RC_uncertainty_bounds": [
+          0.3125,
+          0.3125
+        ],
+        "FR_uncertainty_bounds": [
+          0.0625,
+          0.125
+        ],
+        "Y_uncertainty_bounds": [
+          0.1875,
+          0.25
+        ],
+        "target_relation_covered": 13,
+        "coverage": 0.40625,
+        "coverage_uncertainty_bounds": [
+          0.40625,
+          0.4375
+        ],
+        "correct": 11,
+        "wrong": 2,
+        "uncertain_when_covered": 0,
+        "target_relation_uncertain": 1,
+        "not_mentioned": 18,
+        "correct_fraction_when_covered": 0.8461538461538461,
+        "confirmed_human_arm_captions": 3
+      }
+    },
+    "projective_containment": {
+      "A": {
+        "images": 32,
+        "positive_images": 16,
+        "negative_images": 16,
+        "asserted_on_positive": 7,
+        "asserted_on_negative": 0,
+        "RC": 0.4375,
+        "FR": 0.0,
+        "Y": 0.4375,
+        "q_uncertain_positive": 1,
+        "q_uncertain_negative": 0,
+        "RC_uncertainty_bounds": [
+          0.4375,
+          0.5
+        ],
+        "FR_uncertainty_bounds": [
+          0.0,
+          0.0
+        ],
+        "Y_uncertainty_bounds": [
+          0.4375,
+          0.5
+        ],
+        "target_relation_covered": 12,
+        "coverage": 0.375,
+        "coverage_uncertainty_bounds": [
+          0.375,
+          0.4375
+        ],
+        "correct": 12,
+        "wrong": 0,
+        "uncertain_when_covered": 0,
+        "target_relation_uncertain": 2,
+        "not_mentioned": 18,
+        "correct_fraction_when_covered": 1.0,
+        "confirmed_human_arm_captions": 3
+      },
+      "I": {
+        "images": 32,
+        "positive_images": 16,
+        "negative_images": 16,
+        "asserted_on_positive": 7,
+        "asserted_on_negative": 0,
+        "RC": 0.4375,
+        "FR": 0.0,
+        "Y": 0.4375,
+        "q_uncertain_positive": 0,
+        "q_uncertain_negative": 0,
+        "RC_uncertainty_bounds": [
+          0.4375,
+          0.4375
+        ],
+        "FR_uncertainty_bounds": [
+          0.0,
+          0.0
+        ],
+        "Y_uncertainty_bounds": [
+          0.4375,
+          0.4375
+        ],
+        "target_relation_covered": 12,
+        "coverage": 0.375,
+        "coverage_uncertainty_bounds": [
+          0.375,
+          0.40625
+        ],
+        "correct": 12,
+        "wrong": 0,
+        "uncertain_when_covered": 0,
+        "target_relation_uncertain": 1,
+        "not_mentioned": 19,
+        "correct_fraction_when_covered": 1.0,
+        "confirmed_human_arm_captions": 4
+      },
+      "J": {
+        "images": 32,
+        "positive_images": 16,
+        "negative_images": 16,
+        "asserted_on_positive": 8,
+        "asserted_on_negative": 0,
+        "RC": 0.5,
+        "FR": 0.0,
+        "Y": 0.5,
+        "q_uncertain_positive": 0,
+        "q_uncertain_negative": 0,
+        "RC_uncertainty_bounds": [
+          0.5,
+          0.5
+        ],
+        "FR_uncertainty_bounds": [
+          0.0,
+          0.0
+        ],
+        "Y_uncertainty_bounds": [
+          0.5,
+          0.5
+        ],
+        "target_relation_covered": 15,
+        "coverage": 0.46875,
+        "coverage_uncertainty_bounds": [
+          0.46875,
+          0.5
+        ],
+        "correct": 14,
+        "wrong": 1,
+        "uncertain_when_covered": 0,
+        "target_relation_uncertain": 1,
+        "not_mentioned": 16,
+        "correct_fraction_when_covered": 0.9333333333333333,
+        "confirmed_human_arm_captions": 3
+      }
+    }
+  },
+  "paired_contrasts": {
+    "J_minus_A": {
+      "RC": {
+        "difference": -0.0625,
+        "paired95_ci": [
+          -0.21875,
+          0.0625
+        ]
+      },
+      "FR": {
+        "difference": 0.0,
+        "paired95_ci": [
+          0.0,
+          0.0
+        ]
+      },
+      "coverage": {
+        "difference": 0.0,
+        "paired95_ci": [
+          -0.09375,
+          0.09375
+        ]
+      },
+      "correct_per_image": {
+        "difference": -0.015625,
+        "paired95_ci": [
+          -0.109375,
+          0.078125
+        ]
+      },
+      "wrong_per_image": {
+        "difference": 0.015625,
+        "paired95_ci": [
+          0.0,
+          0.046875
+        ]
+      },
+      "Y": {
+        "difference": -0.0625,
+        "paired95_ci": [
+          -0.21875,
+          0.0625
+        ],
+        "conservative_annotation_bounds": [
+          -0.125,
+          -0.03125
+        ]
+      }
+    },
+    "J_minus_I": {
+      "RC": {
+        "difference": 0.0,
+        "paired95_ci": [
+          -0.125,
+          0.125
+        ]
+      },
+      "FR": {
+        "difference": 0.0,
+        "paired95_ci": [
+          0.0,
+          0.0
+        ]
+      },
+      "coverage": {
+        "difference": 0.0,
+        "paired95_ci": [
+          -0.09375,
+          0.09375
+        ]
+      },
+      "correct_per_image": {
+        "difference": 0.015625,
+        "paired95_ci": [
+          -0.078125,
+          0.109375
+        ]
+      },
+      "wrong_per_image": {
+        "difference": -0.015625,
+        "paired95_ci": [
+          -0.0625,
+          0.03125
+        ]
+      },
+      "Y": {
+        "difference": 0.0,
+        "paired95_ci": [
+          -0.125,
+          0.125
+        ],
+        "conservative_annotation_bounds": [
+          -0.03125,
+          0.0
+        ]
+      }
+    }
+  },
+  "bootstrap": {
+    "draws": 10000,
+    "seed": 20261029,
+    "unit": "32 complete pairs; stratified resampling16 per stratum",
+    "unknown_q_point_rule": "Only definite yes counts; unknowns retained in bounds",
+    "limits": "Conditional on mixed labels, not annotation reliability, seed robustness or generalization. Bounds conservative, may allow inconsistent assignments to shared unknowns."
+  },
+  "recommendation": "Keep A; stop current I/J recipe. This panel gives no reason to run conditional J_bypass diagnostic or extend training.",
+  "limits": [
+    "158 of175 unique ratings remain AI-only; 17 human confirmations are targeted, not a random agreement sample.",
+    "Source VSR labels define positive/negative strata; pair labels were not re-audited in this caption panel.",
+    "64 images/32 reused pairs, one training seed. No independent test or broad causal/novelty claim.",
+    "RC/FR measure target assertion expression, not full-caption accuracy; wrong nouns/other relations can fall outside the target pair."
+  ]
+}
