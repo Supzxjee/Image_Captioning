@@ -9,13 +9,15 @@
   "annotation_policy": "GT/ref-conditioned weak negatives; every stored detector hint vetoes; source provenance unknown",
   "quota_user_report_hours": 24,
   "quota_account_distribution": "not inferred",
-  "local_notebook_tests": 6,
-  "total_local_tests": 24,
+  "local_notebook_tests": 7,
+  "total_local_tests": 25,
   "notebook_flow_mock": "Worker failure archives unsuccessful status and skips evaluation; success requires evaluated endpoint",
   "core_source_commit": "33dbef35880c8482b3862b2c195b91729cafbe8b",
   "local_recovery_mock_tests": 6,
   "actual_hdf5_recovery": "Not executed locally; root runtime has no h5py",
   "reported_failure": "C timed out during preparation after at least4750/5000 rows; zero training updates",
   "preparation_seconds": 3600,
-  "outer_prepare_watchdog_seconds": 3720
+  "outer_prepare_watchdog_seconds": 3720,
+  "notebook_package_commit": "e56b562895c7e9321d75938cdda8c46cbf54d167",
+  "root_launched_recovery": false
 }

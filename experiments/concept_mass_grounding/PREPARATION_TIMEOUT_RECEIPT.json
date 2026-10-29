@@ -1,0 +1,15 @@
+{
+  "status": "USER_LOG_PREPARATION_TIMEOUT_NOT_MODEL_RESULT",
+  "arm": "C",
+  "source_log_sha256": "230222f24d4e67ede2c8b2ca091f50824153165abc5ab8f8ebb1bdadc43d48f2",
+  "last_reported_rows": 4750,
+  "required_rows": 5000,
+  "last_stage_seconds": 1786.7,
+  "watchdog_seconds": 1800,
+  "training_started": false,
+  "fix": "prepare3600s with3720s outer close grace; new output and source-checked recovery; no scientific changes",
+  "actual_recovery": "Pending user execution; old HDF5 readability and rows not inspected locally",
+  "original_runtime_core": "80b1844bfd68ba363e15309c475448a39620a56f",
+  "fixed_runtime_core": "33dbef35880c8482b3862b2c195b91729cafbe8b",
+  "fixed_notebook_package": "e56b562895c7e9321d75938cdda8c46cbf54d167"
+}
