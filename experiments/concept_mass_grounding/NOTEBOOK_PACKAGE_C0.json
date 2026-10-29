@@ -1,0 +1,42 @@
+{
+  "source_commit": "bb84be878a56a936027e311f11517e2e749103b5",
+  "source_assets": {
+    "experiments/concept_mass_grounding/concept_data.py": "e06001f4e1683bb28a6db8a9a85e865e1ebb5c94dcdaa1c5af93901b2d177595",
+    "experiments/concept_mass_grounding/concept_model.py": "c5c45d6ba506cd9fec99b406cf19793643a189bb23196bef1c96d6adb84714d0",
+    "experiments/concept_mass_grounding/prepare_concept.py": "472ea3708f3897862d2860613c71ff02c80ce9c3565ed9b382b5edebc65aa1a7",
+    "experiments/concept_mass_grounding/run_concept.py": "b97d06d672c2861015ff0a2e8a835872ec223a03fdb8c301e65b7defe7b6866d",
+    "experiments/concept_mass_grounding/diagnostic_concept.py": "45286ed3e07006f331a6091ed67768b5f19fb31adfa4bf90f90099f12c9bb894",
+    "experiments/concept_mass_grounding/evaluate_concept.py": "a8a7ad23f58d66921154e3ec763dbc0c16816f6c9e6513b2ba10e6060a36281c",
+    "experiments/concept_mass_grounding/test_concept_data.py": "fc68b3992e6018af29123195b8bda527063303ad319a37a940c3138b1be10eee",
+    "experiments/concept_mass_grounding/recover_stage.py": "d3d16ed410f7dc4ce0630a2dc74700642daed495134e010c37e8dc15c41699b4",
+    "experiments/concept_mass_grounding/test_recover_stage.py": "d7892615af99c51dba31f57beab12ffc704f65b874198d706198e74b2688df8e",
+    "experiments/concept_mass_grounding/TRAIN_PRESENCE.json.gz": "dd888949a1a8cc363efd760eb46012a7a6f736ac6b167d98be5303393b614117",
+    "experiments/concept_mass_grounding/DEV_DIAGNOSTIC_GT.json.gz": "4273bb0572e1d7358b3fb885d1bbb8505b29af5db9356adc3670ff33b21b3f01",
+    "experiments/shared_pair_readout/readout_data.py": "3bdc5e38c942cfeb13f8a83e409e367d6cba1b2fb5da6149c2d400b0c51b889c",
+    "experiments/shared_pair_readout/metric_preflight.py": "6e29f54e57b0b2e7f6f62de57017061071444d254b09305411716713b86f83f4",
+    "experiments/relation_frame_pretrain/frame_data.py": "87c58a50142f68b1721323f7c53fa08e256bb5bc8aee3d7625262161ae1692de",
+    "experiments/semantic_grounding_method/data/gain_metadata.json.gz": "62f43f771aec9feba31a2fbbb6fe7db2878f259979faac378b74a754822c7b67",
+    "experiments/coco_grounding_feasibility/MAPPING_POLICY_V11.json": "fd13046512449449375f94ecda44237a33d5a9223813d036fc6d76f4294abfab",
+    "captioning/__init__.py": "ad259f50a32265d298d027a888f801d378c4669313b8dab06e0653978ce30633",
+    "captioning/models.py": "18026877836052c83e75c0d896adcc89822bb35616173c7e8b14b17c9a22e9d8",
+    "captioning/config.py": "4766d1bf82bf82b5199616c7d90ca74242f011e26f08db21b154b1c7d58e72bc",
+    "captioning/grounded_relations.py": "2c6b15048dce17a9bfa596f02af78866f0b7978f65d172414a3648c9aa49c58f",
+    "captioning/decoder_relation_memory.py": "bc5086915bf8f35cf7161311785cf612b25695c5f0dbe03a760d8aca724dfc82",
+    "captioning/scst.py": "3a9a1f32fb27dae0447066e1388a31461f3f0781d52db5861880b037a572a78e",
+    "captioning/scst_runtime.py": "3452ccfbd43876dc6381b78d1229d1d6b05fe723e3863a04f31c4a784497f669",
+    "captioning/tokenizer.py": "df2ace0025aa7d4e12c289ab7bca68046b48d4b6c2b5c12606a19ff5a50a638e",
+    "captioning/object_reward.py": "23282b1faca0b8e177ad8ce300f0b78ad4a5ab7b100e4b359b044025c567800c",
+    "captioning/object_consistency.py": "5fbd75b0ff4a35f0475d460a294894009d6007f468e248a0e4b528aaa8fabf73",
+    "captioning/visual_cache.py": "adbcc9678fff499fc767cdbf04a4966186a40729f51c5bfb2525e79f9b6b5fe1",
+    "captioning/semantic_prompts.py": "a06f12dea63604f9db9d19b6922815db27a35b648a17059407ffaf26a2a0d511"
+  },
+  "notebooks": [
+    {
+      "file": "CONCEPT_MASS_C0_2GPU.ipynb",
+      "bytes": 13964,
+      "sha256": "5bc41c7f8d3fd7d07259895817af37b003777c7b7feec0e19b8aedd2e50058e3"
+    }
+  ],
+  "local_neural_execution": false,
+  "kaggle_launched": false
+}
