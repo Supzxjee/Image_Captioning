@@ -12,7 +12,7 @@ def cell(kind,text):
     if kind=='code':out.update(execution_count=None,outputs=[])
     return out
 
-def make(core):
+def make(core,arms=('C','G')):
     commit=subprocess.check_output(['git','rev-parse',core],cwd=ROOT,text=True).strip()
     names=['concept_data.py','concept_model.py','prepare_concept.py','run_concept.py','diagnostic_concept.py','evaluate_concept.py','test_concept_data.py','recover_stage.py','test_recover_stage.py','TRAIN_PRESENCE.json.gz','DEV_DIAGNOSTIC_GT.json.gz']
     files=['experiments/concept_mass_grounding/'+n for n in names]
@@ -21,7 +21,7 @@ def make(core):
     files+=['captioning/'+n+'.py' for n in ('__init__','models','config','grounded_relations','decoder_relation_memory','scst','scst_runtime','tokenizer','object_reward','object_consistency','visual_cache','semantic_prompts')]
     assets={p:hashlib.sha256(subprocess.check_output(['git','show',commit+':'+p],cwd=ROOT)).hexdigest() for p in files}
     package=[]
-    for arm in ('C','G'):
+    for arm in arms:
         cells=[cell('markdown',f'''
             # Concept-mass grounding — {arm} · T4×2 · endpoint500
             **Internet ON · T4×2 · Save & Run All. Mỗi notebook một nhánh, dùng cả hai GPU.**
@@ -149,6 +149,32 @@ def make(core):
             Endpoint chỉ là pilot; G cần có tín hiệu tốt hơn A cả CIDEr lẫn CHAIR, có ích so C và giữ object recall.
             Không tự đổi lambda, chọn checkpoint, chạy full/seed2 hoặc upload Dataset.
             ''')]
+        if arm=='C0':
+            cells[0]=cell('markdown',"""
+                # C0 — đối chứng bỏ positive preservation · T4×2 · 500 updates
+                Internet ON, T4×2, Save & Run All. User tự chạy.
+
+                C0 = SCST reward gốc A + .1 rollout KL; keep=0, negative=0.
+                So với C đã chạy: chỉ tắt hệ số keep .1→0, vẫn tính và ghi loss keep để theo dõi.
+                C0 khởi tạo từ A, KHÔNG từ checkpoint C. Giữ cùng seed42,4000TRAIN IDs/order,
+                ref schedule,500updates,batch8,optimizer,hai decoder layer cuối và greedy decoding.
+                Đây là ablation được chọn SAU pilot C/G, không phải protocol có trước kết quả.
+
+                Add Input: pair-source-fullframe-ce, prompt-cache, visual-cache,
+                objectdetectionecache, mscoco-2014 của vuthetam. Không cần dataset mới.
+                Notebook C0 chuẩn bị lại đúng cùng stage từ các input gốc; PREVIOUS_PREPARED=None.
+                Không cần chạy lại C hoặc G.
+                Không tải H5/checkpoint về máy local; không xóa output cũ.
+                Prepare cap60phút, GPU phase60phút, metrics15phút; caps không phải ETA.
+                Quota24h là báo cáo cũ, không giả định hiện vẫn còn24h.
+
+                Đánh giá cùng fixeddev1000; chưa dùng test. Chờ so sánh C−C0 và C0−A,
+                gồm CIDEr/CHAIR/recall/length và conditioning, không tự chọn checkpoint tốt nhất.
+                """)
+            cells[1]['source']=cells[1]['source'].replace("PREVIOUS_PREPARED=OLD_PREPARED if (OLD_PREPARED/'inputs.h5').is_file() and (OLD_PREPARED/'protocol.json').is_file() else None", "PREVIOUS_PREPARED=None  # Fresh staging, exact same image schedule as C")
+            cells[3]['source']=cells[3]['source'].replace("policy=POLICY,source_commit=SOURCE_COMMIT","policy=POLICY,objective_weights=policy_module.objective_weights(ARM),post_pilot_ablation=True,source_commit=SOURCE_COMMIT")
+            cells[4]['source']=cells[4]['source'].replace('send BOTH C/G reviewZIPs for matched comparison', 'send C0 ZIP for comparison with completed C and A')
+            cells[-1]=cell('markdown',"Giữ checkpoint.bin, gửi concept_mass_C0_v2_review.zip. Chưa chạy local hay Kaggle bởi assistant. Actual GPU preflight sẽ kiểm trong lượt của bạn.")
         cells[2]['source']='SOURCE_COMMIT='+repr(commit)+'\nSOURCE_ASSETS='+repr(assets)+'\n'+cells[2]['source']
         setup=cells[3]['source'];cells[3]=cell('code','try:\n'+textwrap.indent(setup,'    ')+'''
 except BaseException:
@@ -165,8 +191,8 @@ except BaseException:
             if c['cell_type']=='code':compile(c['source'],str(path),'exec')
         if path.stat().st_size>=1000000:raise ValueError('Notebook too large')
         package.append(dict(file=path.name,bytes=path.stat().st_size,sha256=hashlib.sha256(path.read_bytes()).hexdigest()))
-    (HERE/'NOTEBOOK_PACKAGE.json').write_text(json.dumps(dict(source_commit=commit,source_assets=assets,notebooks=package,local_neural_execution=False,kaggle_launched=False),indent=2)+'\n',encoding='utf8')
+    (HERE/('NOTEBOOK_PACKAGE_C0.json' if arms==('C0',) else 'NOTEBOOK_PACKAGE.json')).write_text(json.dumps(dict(source_commit=commit,source_assets=assets,notebooks=package,local_neural_execution=False,kaggle_launched=False),indent=2)+'\n',encoding='utf8')
     print(json.dumps(package,indent=2))
 
 if __name__=='__main__':
-    p=argparse.ArgumentParser();p.add_argument('--core',required=True);make(p.parse_args().core)
+    p=argparse.ArgumentParser();p.add_argument('--core',required=True);p.add_argument('--arm',choices=['C0']);a=p.parse_args();make(a.core,(a.arm,) if a.arm else ('C','G'))

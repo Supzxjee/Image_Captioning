@@ -20,6 +20,12 @@ POLICY=dict(version='concept-mass-cg-v2',seed=42,updates=500,batch=8,max_len=30,
     diagnostic_classes_minimum=5,diagnostic_prefix='a photo of a',event_chunk=64,
     negative_policy='gt_ref_absence_available_detector_veto_v2',checkpoint_selection='endpoint500 only')
 
+def objective_weights(arm):
+    if arm not in ('C','G','C0'):raise ValueError('Unknown concept-mass arm '+str(arm))
+    return dict(kl=POLICY['kl_weight'],keep=0.0 if arm=='C0' else POLICY['keep_weight'],
+        negative=POLICY['negative_weight'] if arm=='G' else 0.0)
+
+
 def sha(path):
     h=hashlib.sha256()
     with Path(path).open('rb') as f:

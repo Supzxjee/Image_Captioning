@@ -125,6 +125,8 @@ def worker(cfg):
     from captioning.scst import TrainingCider,policy_loss,decode
     from captioning.object_reward import TrainingObjectReward,combine_rewards
     from concept_model import negative_losses,global_mean
+    weights=objective_weights(cfg['arm'])
+    if cfg.get('objective_weights',weights)!=weights:raise ValueError('Effective objective weights differ')
     rank=int(os.environ['LOCAL_RANK']);device=torch.device('cuda',rank);out=Path(cfg['output']);step=0;data=None
     if int(os.environ['WORLD_SIZE'])!=2 or torch.cuda.device_count()!=2:raise ValueError('Require exactly2 GPUs')
     configure_strict_runtime(True);torch.cuda.set_device(rank);torch.set_num_threads(2)
@@ -183,17 +185,17 @@ def worker(cfg):
             with torch.no_grad():aq=model.class_logmass(ref,x,positive,lex,model.logits(ref[:,:-1],x,teacher=True),teacher=True)
             keep_sum=(aq-pq).clamp_min(0).sum() if positive else reference_logits.sum()*0
             keep,keep_count=global_mean(keep_sum,len(positive));keep_total+=len(positive)
-            loss=rl+.1*kl+.1*keep+(.1*neg if cfg['arm']=='G' else 0)
+            loss=rl+weights['kl']*kl+weights['keep']*keep+weights['negative']*neg
             if not torch.isfinite(loss):raise FloatingPointError('Nonfinite objective')
             contributions={}
             if step<=3 or step%25==0:
-                for name,part in [('keep',.1*keep),('negative',.1*neg if cfg['arm']=='G' else logits.sum()*0)]:
+                for name,part in [('keep',weights['keep']*keep),('negative',weights['negative']*neg)]:
                     gs=torch.autograd.grad(part,trainables(model),retain_graph=True,allow_unused=True)
                     contributions[name]=float(torch.sqrt(sum((g.detach().square().sum() for g in gs if g is not None),logits.new_tensor(0.))))
             opt.zero_grad(set_to_none=True);loss.backward();sync(model)
             norm=torch.nn.utils.clip_grad_norm_(trainables(model),1.,error_if_nonfinite=True);opt.step()
             if step<=3 or step%25==0:
-                row=dict(step=step,arm=cfg['arm'],loss=float(loss.detach()),scst=float(rl.detach()),kl=float(kl.detach()),keep=float(keep.detach()),negative=float(neg.detach()),
+                row=dict(step=step,arm=cfg['arm'],objective_weights=weights,loss=float(loss.detach()),scst=float(rl.detach()),kl=float(kl.detach()),keep=float(keep.detach()),negative=float(neg.detach()),
                     negative_monitored_local=monitored_negative,weighted_aux_gradient_norms_local=contributions,global_negative_events=neg_count,global_positive_events=keep_count,local_negative_seen=negative_total,
                     local_negative_classes=sorted(negative_classes),selection_counts=selection_counts,
                     sample_reward=float(sr.mean()),greedy_reward=float(gr.mean()),grad_norm=float(norm),seconds=time.monotonic()-start)
@@ -208,7 +210,7 @@ def worker(cfg):
         if counts[0].item()==0:raise RuntimeError('No usable negative events in entire run: G objective untested; do not accept a C/G comparison')
         if frozen_digest(model)!=fixed:raise ValueError('Frozen tensors drifted')
         final=model_digest(model);same_ranks(final)
-        if rank==0:torch.save(dict(schema='native_concept_mass_v1',arm=cfg['arm'],updates=500,model_state_dict={'base.'+k:v for k,v in model.base.state_dict().items()},caption_word2idx=data.meta['word2idx'],policy=POLICY,source_A_sha256=CHECKPOINT_SHA),out/'checkpoint.bin')
+        if rank==0:torch.save(dict(schema='native_concept_mass_v1',arm=cfg['arm'],objective_weights=weights,updates=500,model_state_dict={'base.'+k:v for k,v in model.base.state_dict().items()},caption_word2idx=data.meta['word2idx'],policy=POLICY,source_A_sha256=CHECKPOINT_SHA),out/'checkpoint.bin')
         end,te=predict(model,data,dev,tok,device);save(out/f'end_rank{rank}.json',end)
         from diagnostic_concept import diagnostic
         diag=diagnostic(model,data,tok,device,cfg,rank);save(out/f'diagnostic_rank{rank}.json',diag)

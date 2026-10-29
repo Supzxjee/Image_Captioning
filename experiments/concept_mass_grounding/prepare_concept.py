@@ -16,7 +16,7 @@ def prepare(cfg):
     from captioning.object_reward import make_targets
     start=time.monotonic();out=Path(cfg['output'])
     if out.exists():raise FileExistsError('Preserve old output; use a fresh session/path')
-    if cfg['policy']!=POLICY or cfg['arm'] not in ('C','G'):raise ValueError('Changed locked recipe')
+    if cfg['policy']!=POLICY or cfg['arm'] not in ('C','G','C0'):raise ValueError('Changed locked recipe')
     for name,expected in [('checkpoint',CHECKPOINT_SHA),('dataset_json',DATA_SHA),('legacy_prompt',LEGACY_SHA),('detections',DETECTION_SHA),('metadata',META_SHA)]:
         print('Hashing pinned input:',name,flush=True)
         if sha(cfg[name])!=expected:raise ValueError('Pinned input differs: '+name)

@@ -58,7 +58,7 @@ def evaluate(cfg):
         result['end_separation']=result['supported']['end_mass']-result['weak_negative']['end_mass'];per_class[c]=result
     save(out/'class_conditioning.json',dict(per_class=per_class,macro_A_separation=float(np.mean([r['A_separation'] for r in per_class.values()])) if per_class else None,
         macro_end_separation=float(np.mean([r['end_separation'] for r in per_class.values()])) if per_class else None,limits='Weak-label diagnostic, fixed neutral prefix; not physical causal grounding'))
-    summary=dict(status='ENDPOINT_500_EVALUATED_WAIT_MATCHED_C_G',arm=cfg['arm'],updates=500,policy=POLICY,metrics=metrics,
+    summary=dict(status='ENDPOINT_500_EVALUATED_WAIT_MATCHED_C_G',arm=cfg['arm'],updates=500,policy=POLICY,objective_weights=objective_weights(cfg['arm']),metrics=metrics,
         end_minus_A_CIDEr=float((per_cider['end']-per_cider['A']).mean()),end_minus_A_CIDEr_paired95_ci=paired_ci(per_cider['end']-per_cider['A']),
         end_minus_A_CHAIRs=float((chair_flags['end']-chair_flags['A']).mean()),end_minus_A_CHAIRs_paired95_ci=paired_ci(chair_flags['end']-chair_flags['A']),
         initial_digest=workers[0]['initial_digest'],final_digest=workers[0]['final_digest'],frozen_digest=workers[0]['final_frozen_digest'],

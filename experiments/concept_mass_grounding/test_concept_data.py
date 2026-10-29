@@ -54,6 +54,13 @@ class Checks(unittest.TestCase):
         events,count=token_events([[1,10001,2]],[target],lex,True)
         self.assertEqual(events,[]);self.assertEqual(count['unknown'],1)
 
+    def test_c0_changes_only_effective_keep_weight(self):
+        c=objective_weights('C');c0=objective_weights('C0')
+        self.assertEqual(c,dict(kl=.1,keep=.1,negative=0.))
+        self.assertEqual(c0,{**c,'keep':0.})
+        self.assertEqual(objective_weights('G'),dict(kl=.1,keep=.1,negative=.1))
+        with self.assertRaises(ValueError):objective_weights('unknown')
+
     def test_locked_train_schedule_and_dev_disjointness(self):
         cohort=json.loads(gzip.decompress((HERE/'TRAIN_PRESENCE.json.gz').read_bytes()));validate_rows(cohort['train_rows'],self.old['groups']['val'])
         order=order_indices();self.assertEqual(order.shape,(500,8));self.assertEqual(len(set(order.flatten())),4000)
