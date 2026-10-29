@@ -155,7 +155,7 @@ def worker(cfg):
         reward=TrainingCider(refs,reference_cache_size=256);del refs
         obj=TrainingObjectReward(json.loads((out/'object_targets.json').read_bytes())['data'],'aliases_v2','unique_count_v2')
         opt=torch.optim.AdamW(trainables(model),lr=POLICY['lr'],weight_decay=.01,betas=(.9,.999),eps=1e-8)
-        exposure=[];negative_total=0;keep_total=0;negative_classes=set();train_start=time.monotonic();torch.cuda.reset_peak_memory_stats(device)
+        exposure=[];negative_total=0;keep_total=0;negative_classes=set();selection_totals={};train_start=time.monotonic();torch.cuda.reset_peak_memory_stats(device)
         for step in range(1,501):
             if time.monotonic()-start>POLICY['gpu_seconds']:raise TimeoutError('GPU phase cap exceeded')
             torch.manual_seed(420000+2*step+rank);torch.cuda.manual_seed_all(420000+2*step+rank)
@@ -169,6 +169,7 @@ def worker(cfg):
             kl=((per*active).sum(-1)/active.sum(-1).clamp_min(1)).mean()
             targets=[data.meta['targets'][i] for i in ix]
             negative,selection_counts=token_events(sample.detach().cpu().tolist(),targets,lex,True)
+            for k,v in selection_counts.items():selection_totals[k]=selection_totals.get(k,0)+v
             # Same event selection/monitoring for C; only G receives the negative gradient.
             if cfg['arm']=='G':logq=model.class_logmass(sample,x,negative,lex,logits);neg_sum=negative_losses(logq).sum() if negative else logits.sum()*0
             else:
@@ -200,6 +201,10 @@ def worker(cfg):
                 print(f'[{cfg["arm"]} rank{rank}] '+json.dumps(row),flush=True)
         torch.cuda.synchronize();train_seconds=time.monotonic()-train_start;peak=torch.cuda.max_memory_allocated(device)
         counts=torch.tensor([negative_total,keep_total],device=device);dist.all_reduce(counts)
+        keys=sorted(selection_totals);totals=torch.tensor([selection_totals[k] for k in keys],device=device);dist.all_reduce(totals)
+        global_selection_totals=dict(zip(keys,map(int,totals.tolist())))
+        class_lists=[None,None];dist.all_gather_object(class_lists,sorted(negative_classes));global_classes=sorted(set().union(*map(set,class_lists)))
+        if global_selection_totals['weak_negative']!=int(counts[0]):raise ValueError('Event exposure count mismatch')
         if counts[0].item()==0:raise RuntimeError('No usable negative events in entire run: G objective untested; do not accept a C/G comparison')
         if frozen_digest(model)!=fixed:raise ValueError('Frozen tensors drifted')
         final=model_digest(model);same_ranks(final)
@@ -211,7 +216,7 @@ def worker(cfg):
         save(out/f'exposure_rank{rank}.json',exposure)
         save(out/f'worker_rank{rank}.json',dict(status='ENDPOINT_500_COMPLETE',updates=500,initial_digest=initial,final_digest=final,
             initial_frozen_digest=fixed,final_frozen_digest=frozen_digest(model),historical_A_caption_mismatches=drift,
-            global_negative_events=int(counts[0]),global_positive_events=int(counts[1]),negative_classes=sorted(negative_classes),
+            global_negative_events=int(counts[0]),global_positive_events=int(counts[1]),negative_classes=global_classes,global_selection_totals=global_selection_totals,
             train_seconds=train_seconds,train_peak_vram_bytes=peak,timings=dict(A=ta,end=te),elapsed_seconds=time.monotonic()-start))
     except Exception as e:save(out/f'failure_rank{rank}.json',dict(status='INCOMPLETE',last_step=step,error=repr(e)));raise
     finally:

@@ -54,6 +54,10 @@ def prepare(cfg):
         targets.append(dict(image_id=row['image_id'],coco_id=row['coco_id'],supported=sorted(gt|hints|reward_support[row['image_id']]),
             unknown=sorted(veto-(gt|hints|reward_support[row['image_id']])),positive_anchor_classes=sorted(gt&safe),negative_eligible=eligible,gt_classes=sorted(gt),reference_hints=sorted(hints),detector_veto_hints=sorted(veto),
             detector_record_available=objects is not None))
+    static_possible=sum(sum(bool(lex['events'][c]) and c not in t['supported'] and c not in t['unknown'] for c in COCO_LABELS) for t in targets if t['negative_eligible'])
+    if static_possible==0:raise RuntimeError('No statically eligible weak-negative classes; do not run either arm')
+    if not any(t['positive_anchor_classes'] for t in targets):raise RuntimeError('No supported preservation anchors')
+    print('Static eligible image/class weak negatives:',static_possible,flush=True)
     out.mkdir(parents=True);save(out/'protocol.json',cfg)
     save(out/'object_targets.json',reward)
     meta=dict(schema='concept-mass-data-v1',rows=rows,word2idx=old['word2idx'],baseline=old['baseline'],
@@ -94,7 +98,7 @@ def prepare(cfg):
             content.update(str((key,str(f[key].dtype),tuple(f[key].shape))).encode())
             for first in range(0,5000,64):content.update(f[key][first:first+64].tobytes())
     receipt=dict(status='PREPARATION_COMPLETE',train_population=10000,scheduled_train=4000,dev=1000,neural_forward=False,feature_extraction=False,
-        policy=POLICY,tensor_content_sha256=content.hexdigest(),input_hashes=dict(checkpoint=CHECKPOINT_SHA,legacy=LEGACY_SHA,data=DATA_SHA,detector=DETECTION_SHA),
+        static_eligible_negative_image_classes=static_possible,policy=POLICY,tensor_content_sha256=content.hexdigest(),input_hashes=dict(checkpoint=CHECKPOINT_SHA,legacy=LEGACY_SHA,data=DATA_SHA,detector=DETECTION_SHA),
         payload_sha256={n:sha(out/n) for n in ('metadata.json','inputs.h5','object_targets.json')},
         detector_upstream_provenance='Unknown; original extractor not available',seconds=time.monotonic()-start)
     save(out/'preparation.json',receipt);print('Preparation COMPLETE; next user GPU preflight.',flush=True)

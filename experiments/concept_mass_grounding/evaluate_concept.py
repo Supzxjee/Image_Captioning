@@ -63,7 +63,7 @@ def evaluate(cfg):
         end_minus_A_CHAIRs=float((chair_flags['end']-chair_flags['A']).mean()),end_minus_A_CHAIRs_paired95_ci=paired_ci(chair_flags['end']-chair_flags['A']),
         initial_digest=workers[0]['initial_digest'],final_digest=workers[0]['final_digest'],frozen_digest=workers[0]['final_frozen_digest'],
         checkpoint_sha256=sha(out/'checkpoint.bin'),source_commit=cfg['source_commit'],source_assets=cfg['source_assets'],
-        tensor_content_sha256=prep['tensor_content_sha256'],preparation_payload_sha256=prep['payload_sha256'],global_negative_events=workers[0]['global_negative_events'],global_positive_events=workers[0]['global_positive_events'],
+        tensor_content_sha256=prep['tensor_content_sha256'],preparation_payload_sha256=prep['payload_sha256'],global_negative_events=workers[0]['global_negative_events'],global_positive_events=workers[0]['global_positive_events'],global_negative_classes=workers[0]['negative_classes'],global_selection_totals=workers[0]['global_selection_totals'],
         historical_A_caption_mismatches=0,test_used=False,gpu_phase_device_hours=sum(w['elapsed_seconds'] for w in workers)/3600,
         limits=['One seed, reused dev1000. No automated checkpoint promotion or acceptance/novelty claim.','Absence is weak annotation supervision, not proven physical absence; metric shortcut and missed objects remain risks.'])
     save(out/'summary.json',summary);print(json.dumps(summary,indent=2),flush=True)
