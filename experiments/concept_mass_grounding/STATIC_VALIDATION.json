@@ -8,5 +8,9 @@
   "native_model_tests": "Pending on user Kaggle runtime",
   "annotation_policy": "GT/ref-conditioned weak negatives; every stored detector hint vetoes; source provenance unknown",
   "quota_user_report_hours": 24,
-  "quota_account_distribution": "not inferred"
+  "quota_account_distribution": "not inferred",
+  "local_notebook_tests": 6,
+  "total_local_tests": 18,
+  "notebook_flow_mock": "Worker failure archives unsuccessful status and skips evaluation; success requires evaluated endpoint",
+  "core_source_commit": "80b1844bfd68ba363e15309c475448a39620a56f"
 }

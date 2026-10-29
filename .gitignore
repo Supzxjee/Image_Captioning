@@ -19,3 +19,4 @@ experiments/relation_frames_inventory/review/
 # Cached relation-frame review texts (private raw logs/source).
 experiments/relation_frame_pretrain/review/
 experiments/shared_pair_readout/review/
+experiments/concept_mass_grounding/review/
