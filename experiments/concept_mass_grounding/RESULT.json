@@ -1,0 +1,158 @@
+{
+  "date": "2026-10-29",
+  "zip_sha256": {
+    "C": "0039595fd38d1e9263b6d12badfab115e04e5779594f3309085e252cb1f32859",
+    "G": "c0553e9439dd9b9770dbac0a7856fdcfd07b57bf058d0f034d187470007e73ea"
+  },
+  "checks_passed": 185,
+  "metrics": {
+    "A": {
+      "CIDEr": 1.2055125991020814,
+      "Bleu_1": 0.763093489965662,
+      "Bleu_2": 0.6069772412006276,
+      "Bleu_3": 0.4633397886861699,
+      "Bleu_4": 0.3517194278720059,
+      "METEOR": 0.2872660124386753,
+      "ROUGE_L": 0.5713406352384716,
+      "chair": {
+        "CHAIRs": 0.052,
+        "CHAIRi": 0.032475490196078434,
+        "Recall": 0.45803873347679064
+      },
+      "counts": {
+        "hallucinated_captions": 52,
+        "hallucinated_mentions": 53,
+        "object_mentions": 1632,
+        "recalled_unique": 1490,
+        "reference_unique": 3253
+      },
+      "mean_words": 10.213
+    },
+    "C": {
+      "CIDEr": 1.2256784649117645,
+      "Bleu_1": 0.7739287144572713,
+      "Bleu_2": 0.6195680021112392,
+      "Bleu_3": 0.47675524932100066,
+      "Bleu_4": 0.3657504261323457,
+      "METEOR": 0.2890273784030728,
+      "ROUGE_L": 0.5777657835909097,
+      "chair": {
+        "CHAIRs": 0.051,
+        "CHAIRi": 0.031862745098039214,
+        "Recall": 0.4586535505687058
+      },
+      "counts": {
+        "hallucinated_captions": 51,
+        "hallucinated_mentions": 52,
+        "object_mentions": 1632,
+        "recalled_unique": 1492,
+        "reference_unique": 3253
+      },
+      "mean_words": 9.987
+    },
+    "G": {
+      "CIDEr": 1.2295351586798402,
+      "Bleu_1": 0.7740997090981268,
+      "Bleu_2": 0.6206401733220962,
+      "Bleu_3": 0.4785299820462918,
+      "Bleu_4": 0.3676552576521199,
+      "METEOR": 0.288521453138184,
+      "ROUGE_L": 0.5775911606584704,
+      "chair": {
+        "CHAIRs": 0.052,
+        "CHAIRi": 0.032455603184323334,
+        "Recall": 0.4577313249308331
+      },
+      "counts": {
+        "hallucinated_captions": 52,
+        "hallucinated_mentions": 53,
+        "object_mentions": 1633,
+        "recalled_unique": 1489,
+        "reference_unique": 3253
+      },
+      "mean_words": 9.968
+    }
+  },
+  "comparisons": {
+    "C-A": {
+      "CIDEr": {
+        "delta": 0.020165865809683423,
+        "paired95_ci": [
+          0.002931394894035268,
+          0.038609952275659894
+        ]
+      },
+      "CHAIRs": {
+        "delta": -0.001,
+        "paired95_ci": [
+          -0.009,
+          0.007
+        ]
+      }
+    },
+    "G-A": {
+      "CIDEr": {
+        "delta": 0.0240225595777589,
+        "paired95_ci": [
+          0.006684421412635773,
+          0.04280734745410855
+        ]
+      },
+      "CHAIRs": {
+        "delta": 0.0,
+        "paired95_ci": [
+          -0.008,
+          0.008
+        ]
+      }
+    },
+    "G-C": {
+      "CIDEr": {
+        "delta": 0.0038566937680754748,
+        "paired95_ci": [
+          -0.0032356779008074496,
+          0.011555245718140249
+        ]
+      },
+      "CHAIRs": {
+        "delta": 0.001,
+        "paired95_ci": [
+          0.0,
+          0.003
+        ]
+      }
+    }
+  },
+  "conditioning": {
+    "C": {
+      "macro_A_separation": 0.101457008401982,
+      "macro_end_separation": 0.10657654373563386,
+      "limits": "Weak-label diagnostic, fixed neutral prefix; not physical causal grounding",
+      "classes": 70,
+      "macro_A_supported": 0.10158658063549332,
+      "macro_end_supported": 0.10670764013122884,
+      "macro_A_weak_negative": 0.0001295722335113427,
+      "macro_end_weak_negative": 0.00013109639559500403
+    },
+    "G": {
+      "macro_A_separation": 0.101457008401982,
+      "macro_end_separation": 0.10629719722818105,
+      "limits": "Weak-label diagnostic, fixed neutral prefix; not physical causal grounding",
+      "classes": 70,
+      "macro_A_supported": 0.10158658063549332,
+      "macro_end_supported": 0.10642853440559838,
+      "macro_A_weak_negative": 0.0001295722335113427,
+      "macro_end_weak_negative": 0.0001313371774173169
+    }
+  },
+  "negative_events": {
+    "C": 213,
+    "G": 211
+  },
+  "decision": "CIDEr gain versus A on reused dev; no demonstrated added benefit of G over C or hallucination reduction. Do not promote G as successful alignment contribution.",
+  "limitations": [
+    "One seed and reused dev1000; bootstrap is image-conditional, not seed robustness.",
+    "Weak annotation-conditioned negative labels are not verified absence.",
+    "Only review texts/hashes verified; checkpoint and HDF5 binaries not supplied or loaded."
+  ]
+}
