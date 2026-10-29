@@ -14,7 +14,7 @@ def cell(kind,text):
 
 def make(core):
     commit=subprocess.check_output(['git','rev-parse',core],cwd=ROOT,text=True).strip()
-    names=['concept_data.py','concept_model.py','prepare_concept.py','run_concept.py','diagnostic_concept.py','evaluate_concept.py','test_concept_data.py','TRAIN_PRESENCE.json.gz','DEV_DIAGNOSTIC_GT.json.gz']
+    names=['concept_data.py','concept_model.py','prepare_concept.py','run_concept.py','diagnostic_concept.py','evaluate_concept.py','test_concept_data.py','recover_stage.py','test_recover_stage.py','TRAIN_PRESENCE.json.gz','DEV_DIAGNOSTIC_GT.json.gz']
     files=['experiments/concept_mass_grounding/'+n for n in names]
     files+=['experiments/shared_pair_readout/readout_data.py','experiments/shared_pair_readout/metric_preflight.py','experiments/relation_frame_pretrain/frame_data.py',
         'experiments/semantic_grounding_method/data/gain_metadata.json.gz','experiments/coco_grounding_feasibility/MAPPING_POLICY_V11.json']
@@ -32,6 +32,9 @@ def make(core):
 
             Add Input: `pair-source-fullframe-ce`, `prompt-cache`, `visual-cache`, `objectdetectionecache`,
             `mscoco-2014` của vuthetam. Không cần RGB, UPT, VSR, checkpoint I/J hoặc dataset mới.
+            Bản v2 giữ output cũ và dùng thư mục output mới. Tự tìm stage cũ nếu còn trong Working.
+            Stage cũ chưa có row journal phải đọc lại nguồn để xác minh từng row, không tin mặc định4.750rows.
+            Đọc lại có thể vẫn tốn I/O; không có cam kết khôi phục tức thì. Dữ liệu/500updates/loss không đổi.
             GT TRAIN10k và GT dev-only diagnostic nhỏ được pin trong Git; nhãn dev không dùng trong training.
 
             Policy đã sửa trước run: GT/ref absence là nhãn yếu, detector chỉ veto mọi hint hợp lệ có sẵn.
@@ -40,7 +43,7 @@ def make(core):
 
             TRAIN population10k; stage đúng4000images trong lịch500updates, batch8 và fixeddev1000.
             Cả hai học hai decoder layer cuối từ cùng A; không thêm model head, CE warmup hoặc sửa logits inference.
-            Giới hạn CPUprepare30phút, GPUphase60phút, CPUevaluation15phút/nhánh; đây là caps, không ETA.
+            Giới hạn CPUprepare60phút, GPUphase60phút, CPUevaluation15phút/nhánh; đây là caps, không ETA.
             User báo24giờ còn lại; không tự cộng quota hai tài khoản. Notebook chuẩn bị/CPUmetrics vẫn có thể tiêu GPU quota khi accelerator bật.
             '''),cell('code',f'''
             from pathlib import Path
@@ -50,7 +53,9 @@ def make(core):
             LEGACY_PROMPT=Path('/kaggle/input/datasets/ducanh2403/prompt-cache/prompt_clip_tokens_cache.pt')
             VISUAL_CACHE=Path('/kaggle/input/datasets/ducanh2403/visual-cache')
             DETECTIONS=Path('/kaggle/input/datasets/ducanh2403/objectdetectionecache/objectdetectioncache.json')
-            OUTPUT=Path('/kaggle/working/concept_mass_'+ARM)
+            OLD_PREPARED=Path('/kaggle/working/concept_mass_'+ARM)
+            PREVIOUS_PREPARED=OLD_PREPARED if (OLD_PREPARED/'inputs.h5').is_file() and (OLD_PREPARED/'protocol.json').is_file() else None
+            OUTPUT=Path('/kaggle/working/concept_mass_'+ARM+'_v2')
             REPORTED_REMAINING_GPU_HOURS=24
             '''),cell('code','''
             import hashlib,json,os,signal,subprocess,sys,tempfile,threading,time,traceback,zipfile
@@ -104,14 +109,16 @@ def make(core):
             cfg=dict(arm=ARM,checkpoint=str(CHECKPOINT),dataset_json=str(COCO_JSON),legacy_prompt=str(LEGACY_PROMPT),
                 visual_cache=str(VISUAL_CACHE),detections=str(DETECTIONS),metadata=str(REPO/'experiments/semantic_grounding_method/data/gain_metadata.json.gz'),
                 chair=str(CHAIR),output=str(OUTPUT),policy=POLICY,source_commit=SOURCE_COMMIT,source_assets=SOURCE_ASSETS,
+                previous_prepared=str(PREVIOUS_PREPARED) if PREVIOUS_PREPARED is not None else None,
                 reported_remaining_gpu_hours=REPORTED_REMAINING_GPU_HOURS,quota_note='User report24h; account distribution/billing not inferred; enabledGPU CPU phases extra')
             CONFIG.write_text(json.dumps(cfg,indent=2),encoding='utf8')
             '''),cell('code','''
             success=False
             try:
                 run([sys.executable,'-u',HERE/'test_concept_data.py'],cwd=REPO)
+                run([sys.executable,'-u',HERE/'test_recover_stage.py'],cwd=REPO)
                 run([sys.executable,'-u',REPO/'experiments/shared_pair_readout/metric_preflight.py'],cwd=REPO)
-                run([sys.executable,'-u',HERE/'run_concept.py','prepare','--config',CONFIG],cwd=REPO,timeout=1800)
+                run([sys.executable,'-u',HERE/'run_concept.py','prepare','--config',CONFIG],cwd=REPO,timeout=3720)
                 run([sys.executable,'-u','-m','torch.distributed.run','--standalone','--nnodes=1','--nproc_per_node=2','--max_restarts=0',
                     HERE/'run_concept.py','worker','--config',CONFIG],cwd=REPO,timeout=3600)
                 run([sys.executable,'-u',HERE/'run_concept.py','evaluate','--config',CONFIG],cwd=REPO,timeout=900)
@@ -133,7 +140,7 @@ def make(core):
                 if not success:print('INCOMPLETE; send ZIP/log, do not accept as a method result.',flush=True)
             if success:print('DONE',ARM,'; send BOTH C/G reviewZIPs for matched comparison, not automatic promotion.',flush=True)
             '''),cell('markdown','''
-            Giữ `checkpoint.bin`. Gửi `concept_mass_C_review.zip` và `concept_mass_G_review.zip`.
+            Giữ `checkpoint.bin`. Gửi `concept_mass_C_v2_review.zip` và `concept_mass_G_v2_review.zip`.
             Hai notebook chưa được assistant chạy. Actual gradients/DDP/numeric parity chỉ được kiểm ở preflight user-run.
             Endpoint chỉ là pilot; G cần có tín hiệu tốt hơn A cả CIDEr lẫn CHAIR, có ích so C và giữ object recall.
             Không tự đổi lambda, chọn checkpoint, chạy full/seed2 hoặc upload Dataset.

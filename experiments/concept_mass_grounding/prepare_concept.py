@@ -71,6 +71,8 @@ def prepare(cfg):
     visual=VisualCache([cfg['visual_cache']]);visual.require_ids([r['coco_id'] for r in rows],'locked TRAIN4000+dev1000')
     expected=dict(dataset_json_sha256=DATA_SHA,image_size=[224,224],preprocessing='bilinear',model_id='openai/clip-vit-base-patch16',
         output='vision_model.last_hidden_state',mean=[.48145466,.4578275,.40821073],std=[.26862954,.26130258,.27577711],antialias=True,compute_dtype='float32',autocast=False)
+    from recover_stage import Previous,row_sha
+    previous=Previous(cfg.get('previous_prepared'),cfg,meta,reward)
     grouped=defaultdict(list)
     for i,r in enumerate(rows):
         file_id,position=visual.index[r['coco_id']];grouped[file_id].append((position,i))
@@ -79,19 +81,25 @@ def prepare(cfg):
             target.attrs['complete']=False
             for k,shape,dtype in [('visual',(197,768),'f2'),('prompt',(20,512),'f4'),('mask',(20,),'u1')]:target.create_dataset(k,(5000,*shape),dtype=dtype)
             target.create_dataset('coco_ids',data=[r['coco_id'] for r in rows]);done=0
+            journal=target.create_dataset('row_sha256',(5000,),dtype='S64')
             handles={k:target[k] for k in ('visual','prompt','mask')}
             for file_id,positions in sorted(grouped.items()):
                 with h5py.File(visual.paths[file_id],'r') as source:
                     info=json.loads(source.attrs['metadata_json']);features=source['features']
                     if str(features.dtype)!='float16' or any(info.get(k)!=v for k,v in expected.items()):raise ValueError('Visual source preprocessing mismatch')
                     for position,i in sorted(positions):
-                        r=rows[i];v=features[position];p=prompts[r['filename']];tokens=p['tokens'].float().numpy();mask=p['mask'].numpy()
-                        if tokens.shape!=(20,512) or mask.shape!=(20,) or not np.isfinite(v).all() or not np.isfinite(tokens).all() or not np.isin(mask,[0,1]).all() or not mask.any():raise ValueError('Malformed cached inputs')
-                        handles['visual'][i]=v;handles['prompt'][i]=tokens;handles['mask'][i]=mask;done+=1
-                        if done==1 or done%250==0:print(f'Staged exact caches {done}/5000; {time.monotonic()-start:.1f}s',flush=True)
+                        r=rows[i];p=prompts[r['filename']];tokens=p['tokens'].float().numpy();mask=p['mask'].numpy()
+                        cached=previous.verified(i,tokens,mask)
+                        if cached is None:
+                            cached=previous.source_checked(i,dict(visual=features[position],prompt=tokens,mask=mask))
+                        for key,value in cached.items():handles[key][i]=value
+                        journal[i]=row_sha(cached).encode('ascii');done+=1
+                        if done==1 or done%250==0:
+                            target.flush()
+                            print(f'Staged verified caches {done}/5000; {time.monotonic()-start:.1f}s; recovery={previous.stats}',flush=True)
                         if time.monotonic()-start>POLICY['prepare_seconds']:raise TimeoutError('Preparation cap; incomplete')
             target.attrs['complete']=True
-    finally:visual.close()
+    finally:visual.close();previous.close()
     content=hashlib.sha256()
     with h5py.File(out/'inputs.h5','r') as f:
         for key in ('coco_ids','visual','prompt','mask'):
@@ -100,5 +108,6 @@ def prepare(cfg):
     receipt=dict(status='PREPARATION_COMPLETE',train_population=10000,scheduled_train=4000,dev=1000,neural_forward=False,feature_extraction=False,
         static_eligible_negative_image_classes=static_possible,policy=POLICY,tensor_content_sha256=content.hexdigest(),input_hashes=dict(checkpoint=CHECKPOINT_SHA,legacy=LEGACY_SHA,data=DATA_SHA,detector=DETECTION_SHA),
         payload_sha256={n:sha(out/n) for n in ('metadata.json','inputs.h5','object_targets.json')},
+        recovery=dict(source=cfg.get('previous_prepared'),counts=previous.stats,legacy_requires_source_revalidation=True),
         detector_upstream_provenance='Unknown; original extractor not available',seconds=time.monotonic()-start)
     save(out/'preparation.json',receipt);print('Preparation COMPLETE; next user GPU preflight.',flush=True)

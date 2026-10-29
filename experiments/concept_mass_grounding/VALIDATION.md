@@ -9,3 +9,5 @@ Root has not run any model, local Torch forward/backward, or Kaggle job. Tests b
 Source metadata package is generated from the already-verified official COCO TRAIN10k extraction SHAa28e0a35138f14cb4af449a8f53619efca5e41cc23f509d6455e63abd00c43aa, with source member/provenance recorded inside. The development diagnostic's separate package records the pinned official val2014 annotation member. No new images/models were downloaded.
 
 Detector completeness was not verified; the supervision protocol was explicitly revised before a run. Every available valid hint is a veto only; negative evidence comes from annotation/reference absence and remains weak. Unknown provenance is exported. Exact runtime stage coverage, resource use, meaningful negative-event exposure and metrics are not yet known.
+
+Preparation v2 adds6 mocked HDF5 recovery/NumPy tests for source-checked legacy rows, trusted journal reuse, corruption rejection, policy mismatch, output preservation and no neural import. Runtime HDF5 I/O/recovery was not tested locally (h5py is unavailable in this root runtime); no claim of actual user-stage recovery is made.

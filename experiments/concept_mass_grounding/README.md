@@ -7,7 +7,7 @@ This is a user-run candidate method, not a demonstrated improvement or novelty c
 - `CONCEPT_MASS_C_2GPU.ipynb`: control, native A continuation with SCST + .1 rollout KL + .1 positive concept preservation.
 - `CONCEPT_MASS_G_2GPU.ipynb`: same, plus .1 negative concept-mass correction.
 
-Use one account per notebook, **T4x2 + Internet ON + Save & Run All**. Both use the existing A checkpoint, original prompt tokens, visual cache, detector JSON and Karpathy COCO JSON. No RGB, UPT, VSR, I/J checkpoints, extra image cache or API token. Preserve previous outputs; new names are `/kaggle/working/concept_mass_C` and `_G`.
+Use one account per notebook, **T4x2 + Internet ON + Save & Run All**. Both use the existing A checkpoint, original prompt tokens, visual cache, detector JSON and Karpathy COCO JSON. No RGB, UPT, VSR, I/J checkpoints, extra image cache or API token. Preserve previous outputs; new names are `/kaggle/working/concept_mass_C_v2` and `_G_v2`.
 
 Inputs already filled:
 
@@ -56,10 +56,22 @@ Local checks are metadata/NumPy/AST/mock only. User GPU preflight checks actual 
 
 User pipeline: CPU metadata test/metric dependency preflight -> CPU copy of the scheduled4000+dev1000 cached rows (no feature extraction) -> actual2GPU preflight -> A captions ->500updates -> endpoint captions -> neutral-prefix diagnostic -> CPU official PTB/CIDEr/BLEU/METEOR/ROUGE/CHAIR evaluation -> review ZIP. Persistent source HDF5 dataset handles avoid the prior per-row metadata lookup overhead.
 
-Caps per arm: CPU prepare1800s, GPU phase3600s, CPU evaluation900s; dependencies have separate900s command caps. These are limits, not measured ETAs. The user reported24remaining GPU hours; no account distribution or billing conversion is assumed. Enabled GPU during preparation/CPUmetrics can still consume Kaggle quota outside the measured GPU phase.
+Caps per arm: CPU prepare3600s (+120s outer termination grace), GPU phase3600s, CPU evaluation900s; dependencies have separate900s command caps. These are limits, not measured ETAs. The user reported24remaining GPU hours; no account distribution or billing conversion is assumed. Enabled GPU during preparation/CPUmetrics can still consume Kaggle quota outside the measured GPU phase.
 
 The diagnostic uses the fixed neutral prefix `a photo of a`, all representable classes with at least5 GT-supported and5 weak-negative dev images, at most32 hash-selected images per class/state, chosen before scores. It reports each support-state mean as well as macro separation. Lowering both states is not claimed as better visual conditioning. This weak-label sensitivity diagnostic is not a causal or independent test.
 
-Send `concept_mass_C_review.zip` and `_G_review.zip`; keep `checkpoint.bin`. Failure archives are marked incomplete, even if a checkpoint exists. One seed and reuseddev1000 are exploratory. A new best is not automatically promoted.
+Send `concept_mass_C_v2_review.zip` and `_G_v2_review.zip`; keep `checkpoint.bin`. Failure archives are marked incomplete, even if a checkpoint exists. One seed and reuseddev1000 are exploratory. A new best is not automatically promoted.
 
 Continue only if G has a useful signal versus both fixedA and matchedC: higher CIDEr, lower CHAIRs/i with absolute counts, and recall no more than .005 below A. Report paired intervals for CIDEr and CHAIRs, recall/length/object counts, and uncertainty; a point-estimate signal is not confirmed robustness. If G only degrades less than C, changes nothing, has no useful negative exposure, or reduces hallucination by omitting content, stop this recipe. Native interface, SCST, UL, aliases and preservation are inherited ideas, not new primitives. No claim of being first or of publication acceptance.
+
+## Preparation timeout correction (v2 packaging)
+
+A user C log reached4750/5000 rows at1786.7s, then the parent1800s cap terminated preparation. No worker/preflight/training began. The original30-minute preparation budget was too tight for that runtime; this is not model evidence.
+
+Both notebooks now give preparation3600s internally and3720s in the outer watchdog for closing files, leaving the scientific C/G policy and GPU/evaluation caps unchanged. They use fresh `_v2` output/log/ZIP paths and auto-detect the prior same-arm `/kaggle/working/concept_mass_C` or `_G` folder. Set `PREVIOUS_PREPARED` explicitly if a saved notebook output is mounted elsewhere. If the current session is gone and no old output is mounted, preparation starts fresh with the larger cap.
+
+Recovery never overwrites the prior folder or resumes model/optimizer weights. Metadata, targets, row IDs, schemas and scientific policy must match; only preparation time may differ. The known old80b1844 preparer had no row journal: every legacy row is compared exactly with original visual/prompt/mask values before it is reused. Unwritten/partial rows are copied from originals. Revalidation requires source reads and may remain I/O-expensive; no instant-recovery promise. An unreadable HDF5 file is rejected without changing it; choose fresh preparation explicitly if recovery cannot read it.
+
+New stages store per-row SHA256 fingerprints after validated writes and flush periodically. A later compatible interrupted stage can reuse journaled rows after checking integrity and original prompt/mask identity. Corrupt journaled rows, mismatched metadata or unknown preparation implementations stop before training. Fingerprints are preparation lineage checks, not new visual evidence or proof that the source cache was extracted correctly.
+
+`test_recover_stage.py` adds6 metadata/array tests with a mocked HDF5 reader. Actual HDF5 recovery on Kaggle remains user-run. Do not restart a still-live kernel if you want to keep its Working files; the restart cell can load the updated notebook in that kernel. Keep old logs/ZIPs. A fresh Save&Run job may have an empty Working directory and therefore cannot recover an unmounted old folder.

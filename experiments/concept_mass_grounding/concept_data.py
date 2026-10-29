@@ -16,7 +16,7 @@ from experiments.shared_pair_readout.readout_data import DATA_SHA,DETECTION_SHA,
 HERE=Path(__file__).resolve().parent
 POLICY=dict(version='concept-mass-cg-v2',seed=42,updates=500,batch=8,max_len=30,lr=5e-6,weight_decay=.01,
     kl_weight=.1,keep_weight=.1,negative_weight=.1,object_reward_weight=.5,gradient_clip=1.,
-    detector_veto=0.0,prepare_seconds=1800,gpu_seconds=3600,evaluate_seconds=900,
+    detector_veto=0.0,prepare_seconds=3600,gpu_seconds=3600,evaluate_seconds=900,
     diagnostic_classes_minimum=5,diagnostic_prefix='a photo of a',event_chunk=64,
     negative_policy='gt_ref_absence_available_detector_veto_v2',checkpoint_selection='endpoint500 only')
 
