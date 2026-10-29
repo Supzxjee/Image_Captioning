@@ -33,6 +33,11 @@ class Checks(unittest.TestCase):
         run=(HERE/'run_concept.py').read_text(encoding='utf8');stage=(HERE/'prepare_concept.py').read_text(encoding='utf8')
         self.assertNotIn('DEV_DIAGNOSTIC_GT',run+stage)
         self.assertGreater(run.index('from diagnostic_concept import diagnostic'),run.index('for step in range(1,501)'))
+    def test_current_kernel_does_not_reuse_old_policy_module(self):
+        for nb in self.notebooks():
+            setup=nb['cells'][3]['source']
+            self.assertIn('spec_from_file_location',setup)
+            self.assertNotIn('from concept_data import POLICY',setup)
     def flow(self,fail=False):
         source=self.notebooks()[0]['cells'][4]['source'];calls=[]
         parent=HERE/'review';parent.mkdir(exist_ok=True)

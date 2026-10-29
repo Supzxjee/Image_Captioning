@@ -33,13 +33,13 @@
   "notebooks": [
     {
       "file": "CONCEPT_MASS_C_2GPU.ipynb",
-      "bytes": 14695,
-      "sha256": "cbfb61a34b9f1960b7425ed9ec2eff15f16f37abd84349d00ee1d9e9ca863573"
+      "bytes": 14950,
+      "sha256": "ba4633442c0d25d9f23ea4769be6b880ddc73e2284e7d6c0cfa043a5c0007c07"
     },
     {
       "file": "CONCEPT_MASS_G_2GPU.ipynb",
-      "bytes": 14695,
-      "sha256": "ea1b1c7cd3ac29577174849f395925939e3bc9977aeebfd843d96f728c70068f"
+      "bytes": 14950,
+      "sha256": "21ff37a244edb29da5c3b8d7b73bcb25e846a1fb5188fbc8bafbd18ee30244a3"
     }
   ],
   "local_neural_execution": false,

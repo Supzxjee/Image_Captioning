@@ -104,7 +104,11 @@ def make(core):
             run(['git','init',CHAIR]);run(['git','remote','add','origin','https://github.com/Maxlinn/CHAIR-metric-standalone.git'],cwd=CHAIR)
             run(['git','fetch','--depth','1','origin','4087a26211aa2339b9a76307cb8f0321ef691d0a'],cwd=CHAIR);run(['git','checkout','--detach','FETCH_HEAD'],cwd=CHAIR)
             if hashlib.sha256((CHAIR/'chair.pkl').read_bytes()).hexdigest()!='73ce11225febb97df38c5bfad60b3ff6cc25852e9df9a1330673155b4be851c3':raise ValueError('Changed CHAIR cache')
-            sys.path.insert(0,str(REPO));sys.path.insert(0,str(HERE));from concept_data import POLICY
+            sys.path.insert(0,str(REPO));sys.path.insert(0,str(HERE))
+            import importlib.util
+            policy_spec=importlib.util.spec_from_file_location('concept_mass_policy_'+SOURCE_COMMIT,HERE/'concept_data.py')
+            policy_module=importlib.util.module_from_spec(policy_spec);policy_spec.loader.exec_module(policy_module)
+            POLICY=policy_module.POLICY
             CONFIG=REPO.parent/'config.json'
             cfg=dict(arm=ARM,checkpoint=str(CHECKPOINT),dataset_json=str(COCO_JSON),legacy_prompt=str(LEGACY_PROMPT),
                 visual_cache=str(VISUAL_CACHE),detections=str(DETECTIONS),metadata=str(REPO/'experiments/semantic_grounding_method/data/gain_metadata.json.gz'),
