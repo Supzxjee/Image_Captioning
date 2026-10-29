@@ -1,13 +1,15 @@
 {
-  "source_commit": "80b1844bfd68ba363e15309c475448a39620a56f",
+  "source_commit": "33dbef35880c8482b3862b2c195b91729cafbe8b",
   "source_assets": {
-    "experiments/concept_mass_grounding/concept_data.py": "011056914e1069e5ed539ad831a2b3b9d15685716d229d9d8e7c1e485cc73456",
+    "experiments/concept_mass_grounding/concept_data.py": "733726ef9b03ea682f15a76b81017a22f6adb130d2cf130d0fa1d393fec2cf33",
     "experiments/concept_mass_grounding/concept_model.py": "c5c45d6ba506cd9fec99b406cf19793643a189bb23196bef1c96d6adb84714d0",
-    "experiments/concept_mass_grounding/prepare_concept.py": "547c6550af47680080a32ae682523f01b33194ab2f6394d6d9a99390188e8f66",
+    "experiments/concept_mass_grounding/prepare_concept.py": "532bb4d6d32df95387c696d71a86b10af92d06606070f2cc8e1b2e8405d2863a",
     "experiments/concept_mass_grounding/run_concept.py": "1ab5a229902542dfef50c175cfcf5387f4e4489f1a6267d4ee31913518c86892",
     "experiments/concept_mass_grounding/diagnostic_concept.py": "45286ed3e07006f331a6091ed67768b5f19fb31adfa4bf90f90099f12c9bb894",
     "experiments/concept_mass_grounding/evaluate_concept.py": "04442924b17c543bfbbb6535de6cdbe64a78113e727662ce97e00dca706b0798",
     "experiments/concept_mass_grounding/test_concept_data.py": "1dac8a7e1a7443b1fdd631f654606c9cfd40106be63f51dd02369f551812a8a3",
+    "experiments/concept_mass_grounding/recover_stage.py": "d3d16ed410f7dc4ce0630a2dc74700642daed495134e010c37e8dc15c41699b4",
+    "experiments/concept_mass_grounding/test_recover_stage.py": "d7892615af99c51dba31f57beab12ffc704f65b874198d706198e74b2688df8e",
     "experiments/concept_mass_grounding/TRAIN_PRESENCE.json.gz": "dd888949a1a8cc363efd760eb46012a7a6f736ac6b167d98be5303393b614117",
     "experiments/concept_mass_grounding/DEV_DIAGNOSTIC_GT.json.gz": "4273bb0572e1d7358b3fb885d1bbb8505b29af5db9356adc3670ff33b21b3f01",
     "experiments/shared_pair_readout/readout_data.py": "3bdc5e38c942cfeb13f8a83e409e367d6cba1b2fb5da6149c2d400b0c51b889c",
@@ -31,13 +33,13 @@
   "notebooks": [
     {
       "file": "CONCEPT_MASS_C_2GPU.ipynb",
-      "bytes": 13723,
-      "sha256": "82e3af3d9d7825679799793ca44854290301ca4f31f6bc727f0bb33eefadad7b"
+      "bytes": 14695,
+      "sha256": "cbfb61a34b9f1960b7425ed9ec2eff15f16f37abd84349d00ee1d9e9ca863573"
     },
     {
       "file": "CONCEPT_MASS_G_2GPU.ipynb",
-      "bytes": 13723,
-      "sha256": "a408ab8338aab9cf88e4aa87ccc2b57319101d987d4d10b48fde93c0f833a346"
+      "bytes": 14695,
+      "sha256": "ea1b1c7cd3ac29577174849f395925939e3bc9977aeebfd843d96f728c70068f"
     }
   ],
   "local_neural_execution": false,
