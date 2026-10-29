@@ -1,0 +1,22 @@
+{
+  "status": "BLIND_PANEL_READY_NOT_ANNOTATED",
+  "date": "2026-10-29",
+  "panel_sha256": "3d3426aed76a9da9ec1f1a903a58c7c0d5bcf8c5dd35a8070710d50ead81338e",
+  "locked_pairs": 32,
+  "images": 64,
+  "source_captions": 192,
+  "unique_caption_ratings": 175,
+  "human_annotations": 0,
+  "offline_image_files": 64,
+  "model_execution": false,
+  "checks": [
+    "Frozen selection, 16 pairs per stratum, deterministic blinding and same-image exact caption deduplication",
+    "64 JPEG identities/dimensions verified",
+    "Browser script syntax and 13 consistency cases pass in Node",
+    "Browser UI not exercised: file URL opening rejected by browser security policy"
+  ],
+  "limits": [
+    "Assisted/human scores not yet available",
+    "Do not publish private key to reviewer or interpret likelihood ranking as semantic caption accuracy"
+  ]
+}

@@ -58,3 +58,15 @@ Timing/VRAM are measured within a common resident student+teacher wrapper; A tim
 The semantic panel is hash-selected16pairs/stratum before training, with32pairs/64images/192A-I-Jcaptions once combined; human review remains pending until both outputs arrive. No automatic success threshold derived after seeing results. Caption superiority, semantic coverage and cost must be assessed together. A positive teacher-forced ranking or attention change alone is not caption success.
 
 One seed and reused development/adaptation-heldout data are exploratory. Model inference on cached CLIP patches is not region-pure evidence; off-reader changes are sensitivity, not causal proof. If J>A but J≈I, no specific shared-readout benefit is established. The failedframe200gate remains unchanged; this is a new recipe from A.
+
+## Locked semantic review after v2
+
+Astra's [post-result decision](ASTRA_RESULT_DECISION_2026-10-28.md) keeps A and stops expansion of the current recipe. Finish the existing 32-pair panel before any new GPU diagnostic. The prior `off` condition disables pair scores/values, not entity contexts or the adapted decoder.
+
+`make_panel.py` reads the already-decoded I/J review caches, verifies the same metadata and frozen selection, and builds `review/index.html`. The page uses 64 locally saved original COCO JPEGs with frozen predicted S/O boxes overlaid in SVG. Images and captions are ordered by fixed hashes. Arm names and positive/negative labels stay in ignored `review/private_key.json`, not the public HTML. Same-image identical captions are scored once then mapped to all originating arms: 192 source captions become 175 ratings. No lowercasing, punctuation removal or cross-image deduplication.
+
+Open `review/index.html` manually in a browser. Fill reviewer name and the three fields per caption: assertion/paraphrase claim; mention of a relation between the target instances; and visual correctness of that relation. A relation different from the assertion is not automatically wrong. Keep uncertain cases. The page saves a local draft and exports `shared_pair_readout_blind_review.json`, including incomplete reviews; the import button restores an exported draft. Download an export before clearing browser storage or moving to another browser. No AI ratings have been inserted.
+
+Keep the private key hidden during review. Analysis after annotation must report RC/FR, target-relation coverage, correct/wrong/uncertain counts, paired differences and uncertainty as specified in the decision, retaining the original 32 pairs. Do not silently replace the frozen panel with model-favorable examples.
+
+Metadata test: `python experiments/shared_pair_readout/test_panel.py` (requires decoded local caches). Script syntax/13 annotation-consistency cases: `node experiments/shared_pair_readout/test_panel.cjs`. All 64 JPEGs were checked locally. Browser UI was not exercised because the browser tool rejected the file protocol; no alternate surface was used to bypass that block.

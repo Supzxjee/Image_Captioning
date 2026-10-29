@@ -1,5 +1,7 @@
 # Chốt hướng cho bài đầu tiên: chia sẻ attention giữa đọc thực thể và đọc cặp
 
+> Kế hoạch I/J v2 đã chạy xong. Cả hai kém A; quyết định tiếp theo ở [đánh giá sau kết quả](../shared_pair_readout/ASTRA_RESULT_DECISION_2026-10-28.md). Nội dung dưới đây giữ nguyên như lịch sử thiết kế trước run.
+
 28/10/2026. Research decision sau cập nhật mục tiêu công bố và phản biện với root/Astra. **Chọn joint reader có công thức đóng; hai arm I/J và A cố định làm mốc.** Chưa viết code hoặc launch GPU.
 
 ## 1. Vì sao đổi lựa chọn

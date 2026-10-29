@@ -93,7 +93,7 @@ def main():
     for name,d in contrasts.items():lines.append(f"| {name} | {d['mean']:+.6f} | [{d['paired95_ci'][0]:+.6f}, {d['paired95_ci'][1]:+.6f}] |")
     lines+=['','Bootstrap: 10,000 paired image resamples, seed 20261028. Intervals are conditional on this run and development set.','',
       'J ranks the positive image above its negative on 46/64 whole-tail pairs versus I 44/64; predicate-only ranking is 43/64 for both. These are likelihood tests, not evidence that generated captions express correct relations. The locked semantic panel is not scored yet.','',
-      'J improves on the matched independent reader, but both degrade the stronger A baseline. Turning the reader off also improves CIDEr within each trained model. This does not establish the cause: off changes pair scores and values together, and training also updates two decoder layers.','',
+      'J improves on the matched independent reader, but both degrade the stronger A baseline. Turning pair scores and pair values off also improves CIDEr within each trained model; entity contexts remain active. This does not establish the cause: off changes pair scores and values together, and training also updates two decoder layers.','',
       'Recommendation: preserve A as the best model. Do not treat this as a successful caption improvement or automatically extend training. Send the evidence to Astra for the next decision.','', '## Limits','']+['- '+x for x in result['limits']]
     (out/'RESULT.md').write_text('\n'.join(lines)+'\n',encoding='utf-8')
     print(json.dumps({'status':result['status'],'contrasts':contrasts},indent=2))
