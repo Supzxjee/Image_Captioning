@@ -22,4 +22,16 @@ class Checks(unittest.TestCase):
                 self.assertTrue(0<=box[1]<box[3]<=card['height'])
         self.assertEqual(public,assemble()[0])
 
+    def test_assistant_proposals_keep_human_provenance_separate(self):
+        import json
+        from make_panel import HERE
+        public,_,_=assemble()
+        draft=json.loads((HERE/'ASSISTANT_PANEL_REVIEW.json').read_text(encoding='utf8'))
+        ids={u['id'] for c in public['cards'] for u in c['captions']}
+        self.assertEqual(set(draft['annotations']),ids)
+        self.assertEqual(draft['panel_sha256'],public['panel_sha256'])
+        self.assertEqual(draft['reviewer_type'],'assistant_proposed_not_human')
+        self.assertTrue(all(a['confirmed_by_human'] is False for a in draft['annotations'].values()))
+        self.assertTrue(all(a['notes'] for a in draft['annotations'].values()))
+
 if __name__=='__main__':unittest.main()

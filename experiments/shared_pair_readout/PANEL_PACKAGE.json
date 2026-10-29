@@ -1,5 +1,5 @@
 {
-  "status": "BLIND_PANEL_READY_NOT_ANNOTATED",
+  "status": "ASSISTANT_PROPOSED_PENDING_HUMAN_VERIFICATION",
   "date": "2026-10-29",
   "panel_sha256": "3d3426aed76a9da9ec1f1a903a58c7c0d5bcf8c5dd35a8070710d50ead81338e",
   "locked_pairs": 32,
@@ -13,10 +13,12 @@
     "Frozen selection, 16 pairs per stratum, deterministic blinding and same-image exact caption deduplication",
     "64 JPEG identities/dimensions verified",
     "Browser script syntax and 13 consistency cases pass in Node",
-    "Browser UI not exercised: file URL opening rejected by browser security policy"
+    "Browser UI not exercised: file URL opening rejected by browser security policy",
+    "All175 AI proposals have valid IDs, notes, unconfirmed human flags; 4 confirmation-gating cases pass"
   ],
   "limits": [
     "Assisted/human scores not yet available",
     "Do not publish private key to reviewer or interpret likelihood ranking as semantic caption accuracy"
-  ]
+  ],
+  "assistant_proposals": 175
 }

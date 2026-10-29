@@ -70,3 +70,7 @@ Open `review/index.html` manually in a browser. Fill reviewer name and the three
 Keep the private key hidden during review. Analysis after annotation must report RC/FR, target-relation coverage, correct/wrong/uncertain counts, paired differences and uncertainty as specified in the decision, retaining the original 32 pairs. Do not silently replace the frozen panel with model-favorable examples.
 
 Metadata test: `python experiments/shared_pair_readout/test_panel.py` (requires decoded local caches). Script syntax/13 annotation-consistency cases: `node experiments/shared_pair_readout/test_panel.cjs`. All 64 JPEGs were checked locally. Browser UI was not exercised because the browser tool rejected the file protocol; no alternate surface was used to bypass that block.
+
+### User-requested assisted ratings
+
+All64 images/175 unique captions have AI-proposed visual ratings in `ASSISTANT_PANEL_REVIEW.json`; see `ASSISTANT_PANEL_NOTE.md` for interpretation rules and priority adjudications. `python experiments/shared_pair_readout/make_assisted_panel.py` creates `review/assistant_review.html` with these labels prefilled. This page has175 per-caption confirmation boxes, separate browser draft storage, and assistant-pending export provenance until a named reviewer confirms all captions. Edits revoke the affected confirmation. No arm-level semantic result has been computed from these provisional ratings.

@@ -1,0 +1,1236 @@
+{
+  "schema_version": 1,
+  "panel_sha256": "3d3426aed76a9da9ec1f1a903a58c7c0d5bcf8c5dd35a8070710d50ead81338e",
+  "reviewer": "Codex",
+  "reviewer_type": "assistant_proposed_not_human",
+  "annotation_origin": "assistant_visual_review",
+  "confirmed_human_count": 0,
+  "method": "Visual inspection of all 64 blinded image cards and 175 unique captions; original images additionally inspected for cards45,49,53. Arm key and positive/negative source labels not read. No automatic relation classifier.",
+  "annotations": {
+    "078b9e48fd0cd53314a44ce7": {
+      "q_claim": "no",
+      "target_relation": "no",
+      "relation_correctness": "not_applicable",
+      "notes": "Caption không nói quan hệ giữa pizza và broccoli; không suy ra từ việc nhắc pizza.",
+      "confirmed_by_human": false
+    },
+    "4b6a6adaa0cb69e434003aee": {
+      "q_claim": "no",
+      "target_relation": "no",
+      "relation_correctness": "not_applicable",
+      "notes": "Caption không nói quan hệ giữa pizza và broccoli; không suy ra từ việc nhắc pizza.",
+      "confirmed_by_human": false
+    },
+    "afd5f5789f9d21adb2f94a94": {
+      "q_claim": "no",
+      "target_relation": "no",
+      "relation_correctness": "not_applicable",
+      "notes": "Caption không nói quan hệ giữa pizza và broccoli; không suy ra từ việc nhắc pizza.",
+      "confirmed_by_human": false
+    },
+    "e1d725eac7019484429660f7": {
+      "q_claim": "no",
+      "target_relation": "no",
+      "relation_correctness": "not_applicable",
+      "notes": "Train track là đường ray, không phải chiếc tàu O; các câu không khẳng định boat on train.",
+      "confirmed_by_human": false
+    },
+    "56b5632138a30b1890240e10": {
+      "q_claim": "no",
+      "target_relation": "no",
+      "relation_correctness": "not_applicable",
+      "notes": "Train track là đường ray, không phải chiếc tàu O; các câu không khẳng định boat on train.",
+      "confirmed_by_human": false
+    },
+    "ca1d33f135f70ea2998f5773": {
+      "q_claim": "no",
+      "target_relation": "no",
+      "relation_correctness": "not_applicable",
+      "notes": "Train track là đường ray, không phải chiếc tàu O; các câu không khẳng định boat on train.",
+      "confirmed_by_human": false
+    },
+    "a187776568cb8d781a834c01": {
+      "q_claim": "no",
+      "target_relation": "no",
+      "relation_correctness": "not_applicable",
+      "notes": "Các câu mô tả người/mèo/giường, không nói quan hệ gấu bông–mèo.",
+      "confirmed_by_human": false
+    },
+    "2dabd3011eb3d7503f4b6979": {
+      "q_claim": "no",
+      "target_relation": "no",
+      "relation_correctness": "not_applicable",
+      "notes": "Các câu mô tả người/mèo/giường, không nói quan hệ gấu bông–mèo.",
+      "confirmed_by_human": false
+    },
+    "43df134231ef905eac5906cc": {
+      "q_claim": "no",
+      "target_relation": "no",
+      "relation_correctness": "not_applicable",
+      "notes": "Các câu mô tả người/mèo/giường, không nói quan hệ gấu bông–mèo.",
+      "confirmed_by_human": false
+    },
+    "e0e884ab5e72c0d731209403": {
+      "q_claim": "no",
+      "target_relation": "no",
+      "relation_correctness": "not_applicable",
+      "notes": "Basket of fruit không xác định quả cam đích hoặc quan hệ riêng với cam; không tự suy diễn từ danh từ fruit.",
+      "confirmed_by_human": false
+    },
+    "eeb12d440dc7531890ac1f86": {
+      "q_claim": "no",
+      "target_relation": "no",
+      "relation_correctness": "not_applicable",
+      "notes": "Basket of fruit không xác định quả cam đích hoặc quan hệ riêng với cam; không tự suy diễn từ danh từ fruit.",
+      "confirmed_by_human": false
+    },
+    "e0ca5e1e2b439c805357c662": {
+      "q_claim": "yes",
+      "target_relation": "yes",
+      "relation_correctness": "correct",
+      "notes": "Person on/laying on bed là cách diễn đạt đảo vai của bed beneath person; được ảnh hỗ trợ.",
+      "confirmed_by_human": false
+    },
+    "7901bc61cd367857a3fc80df": {
+      "q_claim": "yes",
+      "target_relation": "yes",
+      "relation_correctness": "correct",
+      "notes": "Person on/laying on bed là cách diễn đạt đảo vai của bed beneath person; được ảnh hỗ trợ.",
+      "confirmed_by_human": false
+    },
+    "eae2d69797690e825743b848": {
+      "q_claim": "yes",
+      "target_relation": "yes",
+      "relation_correctness": "correct",
+      "notes": "Person on/laying on bed là cách diễn đạt đảo vai của bed beneath person; được ảnh hỗ trợ.",
+      "confirmed_by_human": false
+    },
+    "57b263fb37c86f28a8d199b4": {
+      "q_claim": "no",
+      "target_relation": "uncertain",
+      "relation_correctness": "uncertain",
+      "notes": "X: with a book chỉ sự đi cùng, chưa rõ có một quan hệ cụ thể. Y: under a book không đúng; sách ở phía trước gấu. Z không nhắc sách.",
+      "confirmed_by_human": false
+    },
+    "fbaac9f8b80ba07e8247a3a9": {
+      "q_claim": "no",
+      "target_relation": "yes",
+      "relation_correctness": "wrong",
+      "notes": "X: with a book chỉ sự đi cùng, chưa rõ có một quan hệ cụ thể. Y: under a book không đúng; sách ở phía trước gấu. Z không nhắc sách.",
+      "confirmed_by_human": false
+    },
+    "f7dff61474013fa80e615318": {
+      "q_claim": "no",
+      "target_relation": "no",
+      "relation_correctness": "not_applicable",
+      "notes": "X: with a book chỉ sự đi cùng, chưa rõ có một quan hệ cụ thể. Y: under a book không đúng; sách ở phía trước gấu. Z không nhắc sách.",
+      "confirmed_by_human": false
+    },
+    "1933f31ec9896a5faae30c12": {
+      "q_claim": "no",
+      "target_relation": "no",
+      "relation_correctness": "not_applicable",
+      "notes": "With a book gắn với gấu, không trực tiếp khẳng định sách ở trên giường; không suy quan hệ qua đối tượng trung gian.",
+      "confirmed_by_human": false
+    },
+    "723d2cd742bd61d7c1f196f8": {
+      "q_claim": "no",
+      "target_relation": "no",
+      "relation_correctness": "not_applicable",
+      "notes": "With a book gắn với gấu, không trực tiếp khẳng định sách ở trên giường; không suy quan hệ qua đối tượng trung gian.",
+      "confirmed_by_human": false
+    },
+    "bb411be59b1460911e9f0b80": {
+      "q_claim": "no",
+      "target_relation": "no",
+      "relation_correctness": "not_applicable",
+      "notes": "Không câu nào nói quan hệ gấu bông–ly rượu.",
+      "confirmed_by_human": false
+    },
+    "53b3d7168dc0a5ba788c7889": {
+      "q_claim": "no",
+      "target_relation": "no",
+      "relation_correctness": "not_applicable",
+      "notes": "Không câu nào nói quan hệ gấu bông–ly rượu.",
+      "confirmed_by_human": false
+    },
+    "f1980b769e9dc82953eb8e86": {
+      "q_claim": "no",
+      "target_relation": "no",
+      "relation_correctness": "not_applicable",
+      "notes": "Không câu nào nói quan hệ gấu bông–ly rượu.",
+      "confirmed_by_human": false
+    },
+    "ba251feb50c7100028248c9f": {
+      "q_claim": "no",
+      "target_relation": "no",
+      "relation_correctness": "not_applicable",
+      "notes": "Caption nói người–vòi nước, không nói xe đạp–người.",
+      "confirmed_by_human": false
+    },
+    "7896ec77b84bec221b721f50": {
+      "q_claim": "no",
+      "target_relation": "no",
+      "relation_correctness": "not_applicable",
+      "notes": "Caption nói người–vòi nước, không nói xe đạp–người.",
+      "confirmed_by_human": false
+    },
+    "6ca4e636834964c6143ba96b": {
+      "q_claim": "no",
+      "target_relation": "no",
+      "relation_correctness": "not_applicable",
+      "notes": "Caption nói người–vòi nước, không nói xe đạp–người.",
+      "confirmed_by_human": false
+    },
+    "b52dd4d950c2157a1ed6d13a": {
+      "q_claim": "yes",
+      "target_relation": "yes",
+      "relation_correctness": "correct",
+      "notes": "Cả ba câu đều nói người ở trong vali, phù hợp ảnh.",
+      "confirmed_by_human": false
+    },
+    "de0757c6d328c40e24707733": {
+      "q_claim": "yes",
+      "target_relation": "yes",
+      "relation_correctness": "correct",
+      "notes": "Cả ba câu đều nói người ở trong vali, phù hợp ảnh.",
+      "confirmed_by_human": false
+    },
+    "5609d1efb15a286ceb15fd9f": {
+      "q_claim": "yes",
+      "target_relation": "yes",
+      "relation_correctness": "correct",
+      "notes": "Cả ba câu đều nói người ở trong vali, phù hợp ảnh.",
+      "confirmed_by_human": false
+    },
+    "50530ae6e62349a05cd2d085": {
+      "q_claim": "no",
+      "target_relation": "no",
+      "relation_correctness": "not_applicable",
+      "notes": "Không caption nào nhắc giường. S còn có vẻ không phải giường; không dùng lỗi box để tự đổi nhãn caption.",
+      "confirmed_by_human": false
+    },
+    "db77040e84890673f5457a83": {
+      "q_claim": "no",
+      "target_relation": "no",
+      "relation_correctness": "not_applicable",
+      "notes": "Không caption nào nhắc giường. S còn có vẻ không phải giường; không dùng lỗi box để tự đổi nhãn caption.",
+      "confirmed_by_human": false
+    },
+    "2a33e6e24c8bfba190cc5bbc": {
+      "q_claim": "no",
+      "target_relation": "no",
+      "relation_correctness": "not_applicable",
+      "notes": "Không caption nào nhắc giường. S còn có vẻ không phải giường; không dùng lỗi box để tự đổi nhãn caption.",
+      "confirmed_by_human": false
+    },
+    "b4ab7e99cd2caaf18890db12": {
+      "q_claim": "no",
+      "target_relation": "yes",
+      "relation_correctness": "correct",
+      "notes": "Next to elephant được ảnh hỗ trợ, nhưng không đồng nghĩa touching elephant.",
+      "confirmed_by_human": false
+    },
+    "74e1ef5d2f5556a9b21623b2": {
+      "q_claim": "no",
+      "target_relation": "yes",
+      "relation_correctness": "correct",
+      "notes": "Next to elephant được ảnh hỗ trợ, nhưng không đồng nghĩa touching elephant.",
+      "confirmed_by_human": false
+    },
+    "f42adbcf2131eae7f2f32a63": {
+      "q_claim": "no",
+      "target_relation": "yes",
+      "relation_correctness": "correct",
+      "notes": "Next to elephant được ảnh hỗ trợ, nhưng không đồng nghĩa touching elephant.",
+      "confirmed_by_human": false
+    },
+    "6ba55c79175b5c3a8c0ae523": {
+      "q_claim": "no",
+      "target_relation": "no",
+      "relation_correctness": "not_applicable",
+      "notes": "Các câu nói mèo trên laptop, không phải cuốn sách O nằm bên phải.",
+      "confirmed_by_human": false
+    },
+    "91236256994ec64ef133858b": {
+      "q_claim": "no",
+      "target_relation": "no",
+      "relation_correctness": "not_applicable",
+      "notes": "Các câu nói mèo trên laptop, không phải cuốn sách O nằm bên phải.",
+      "confirmed_by_human": false
+    },
+    "c38f1fab8f7205fffa6257e5": {
+      "q_claim": "no",
+      "target_relation": "no",
+      "relation_correctness": "not_applicable",
+      "notes": "Các câu nói mèo trên laptop, không phải cuốn sách O nằm bên phải.",
+      "confirmed_by_human": false
+    },
+    "15f38f9a98627ace968214d8": {
+      "q_claim": "no",
+      "target_relation": "yes",
+      "relation_correctness": "correct",
+      "notes": "X/Z nói bowl next to orange và phù hợp ảnh; không phải contains. Y không nói đến cam.",
+      "confirmed_by_human": false
+    },
+    "82d1d1ea5da6d280559413fc": {
+      "q_claim": "no",
+      "target_relation": "no",
+      "relation_correctness": "not_applicable",
+      "notes": "X/Z nói bowl next to orange và phù hợp ảnh; không phải contains. Y không nói đến cam.",
+      "confirmed_by_human": false
+    },
+    "c32b848d4f54d6248e00c04e": {
+      "q_claim": "no",
+      "target_relation": "yes",
+      "relation_correctness": "correct",
+      "notes": "X/Z nói bowl next to orange và phù hợp ảnh; không phải contains. Y không nói đến cam.",
+      "confirmed_by_human": false
+    },
+    "fc6a8f81c6a6507dba7cdd9c": {
+      "q_claim": "no",
+      "target_relation": "no",
+      "relation_correctness": "not_applicable",
+      "notes": "Không caption nào nói về chai S.",
+      "confirmed_by_human": false
+    },
+    "d6021b0dae1ba3063935a298": {
+      "q_claim": "no",
+      "target_relation": "no",
+      "relation_correctness": "not_applicable",
+      "notes": "Không caption nào nói về chai S.",
+      "confirmed_by_human": false
+    },
+    "63704de4c23e5ed633e170dc": {
+      "q_claim": "no",
+      "target_relation": "yes",
+      "relation_correctness": "correct",
+      "notes": "Holding suitcase/briefcase là quan hệ khác với in suitcase; quan hệ cầm vali phù hợp ảnh.",
+      "confirmed_by_human": false
+    },
+    "ab35ee04e7a09297f4b91284": {
+      "q_claim": "no",
+      "target_relation": "yes",
+      "relation_correctness": "correct",
+      "notes": "Holding suitcase/briefcase là quan hệ khác với in suitcase; quan hệ cầm vali phù hợp ảnh.",
+      "confirmed_by_human": false
+    },
+    "476d5ade26e4545e3bd86247": {
+      "q_claim": "no",
+      "target_relation": "yes",
+      "relation_correctness": "correct",
+      "notes": "Holding suitcase/briefcase là quan hệ khác với in suitcase; quan hệ cầm vali phù hợp ảnh.",
+      "confirmed_by_human": false
+    },
+    "d292df04043f77b526cffc81": {
+      "q_claim": "no",
+      "target_relation": "no",
+      "relation_correctness": "not_applicable",
+      "notes": "Chỉ Z nói holding doughnut; cầm bánh bao hàm chạm bánh. X/Y không đề cập bánh.",
+      "confirmed_by_human": false
+    },
+    "4448ed09a4c6a35912d3afc9": {
+      "q_claim": "no",
+      "target_relation": "no",
+      "relation_correctness": "not_applicable",
+      "notes": "Chỉ Z nói holding doughnut; cầm bánh bao hàm chạm bánh. X/Y không đề cập bánh.",
+      "confirmed_by_human": false
+    },
+    "6f1b36ffc6ce4e9a8d01287a": {
+      "q_claim": "yes",
+      "target_relation": "yes",
+      "relation_correctness": "correct",
+      "notes": "Chỉ Z nói holding doughnut; cầm bánh bao hàm chạm bánh. X/Y không đề cập bánh.",
+      "confirmed_by_human": false
+    },
+    "2549c12b45eb7cf80a54c49c": {
+      "q_claim": "no",
+      "target_relation": "no",
+      "relation_correctness": "not_applicable",
+      "notes": "Các câu nói người trên giường, không nhắc cuốn sách S.",
+      "confirmed_by_human": false
+    },
+    "ad361c3577fa8cfa42bf0633": {
+      "q_claim": "no",
+      "target_relation": "no",
+      "relation_correctness": "not_applicable",
+      "notes": "Các câu nói người trên giường, không nhắc cuốn sách S.",
+      "confirmed_by_human": false
+    },
+    "3805e41f8d9926029554394c": {
+      "q_claim": "no",
+      "target_relation": "no",
+      "relation_correctness": "not_applicable",
+      "notes": "Các câu nói người trên giường, không nhắc cuốn sách S.",
+      "confirmed_by_human": false
+    },
+    "a489e465da207f89e59d5c85": {
+      "q_claim": "no",
+      "target_relation": "uncertain",
+      "relation_correctness": "uncertain",
+      "notes": "X: with bread and a bottle chưa rõ khẳng định quan hệ cụ thể gấu–chai. Y không nhắc chai. Z next to bottle được ảnh hỗ trợ.",
+      "confirmed_by_human": false
+    },
+    "0ba6e3ef9d72e2401a0f9557": {
+      "q_claim": "no",
+      "target_relation": "no",
+      "relation_correctness": "not_applicable",
+      "notes": "X: with bread and a bottle chưa rõ khẳng định quan hệ cụ thể gấu–chai. Y không nhắc chai. Z next to bottle được ảnh hỗ trợ.",
+      "confirmed_by_human": false
+    },
+    "71a0dec9063e1be62498f601": {
+      "q_claim": "no",
+      "target_relation": "yes",
+      "relation_correctness": "correct",
+      "notes": "X: with bread and a bottle chưa rõ khẳng định quan hệ cụ thể gấu–chai. Y không nhắc chai. Z next to bottle được ảnh hỗ trợ.",
+      "confirmed_by_human": false
+    },
+    "ec8974a4e77e446c9b15f657": {
+      "q_claim": "no",
+      "target_relation": "uncertain",
+      "relation_correctness": "uncertain",
+      "notes": "Phạm vi bổ nghĩa next to/on a bike mơ hồ: có thể là người–xe thay vì chó–xe. Giữ Không rõ cho quan hệ cặp đích; cần người kiểm tra.",
+      "confirmed_by_human": false
+    },
+    "8bedec4eced3205bc6efeea9": {
+      "q_claim": "no",
+      "target_relation": "uncertain",
+      "relation_correctness": "uncertain",
+      "notes": "Phạm vi bổ nghĩa next to/on a bike mơ hồ: có thể là người–xe thay vì chó–xe. Giữ Không rõ cho quan hệ cặp đích; cần người kiểm tra.",
+      "confirmed_by_human": false
+    },
+    "cb07784d459c7ccd02187e92": {
+      "q_claim": "no",
+      "target_relation": "uncertain",
+      "relation_correctness": "uncertain",
+      "notes": "Phạm vi bổ nghĩa next to/on a bike mơ hồ: có thể là người–xe thay vì chó–xe. Giữ Không rõ cho quan hệ cặp đích; cần người kiểm tra.",
+      "confirmed_by_human": false
+    },
+    "21f486017213f873b789b864": {
+      "q_claim": "no",
+      "target_relation": "no",
+      "relation_correctness": "not_applicable",
+      "notes": "Caption chỉ gọi vật là cake, không nói quan hệ suitcase–table. Đây là bánh tạo hình vali; không tự thay lớp đối tượng để chấm quan hệ.",
+      "confirmed_by_human": false
+    },
+    "4d1242c076c5d2ba7436f275": {
+      "q_claim": "no",
+      "target_relation": "no",
+      "relation_correctness": "not_applicable",
+      "notes": "Caption chỉ gọi vật là cake, không nói quan hệ suitcase–table. Đây là bánh tạo hình vali; không tự thay lớp đối tượng để chấm quan hệ.",
+      "confirmed_by_human": false
+    },
+    "b11304bf9fb51b0a2abc1813": {
+      "q_claim": "no",
+      "target_relation": "no",
+      "relation_correctness": "not_applicable",
+      "notes": "Caption chỉ gọi vật là cake, không nói quan hệ suitcase–table. Đây là bánh tạo hình vali; không tự thay lớp đối tượng để chấm quan hệ.",
+      "confirmed_by_human": false
+    },
+    "cbaab5ee20fb4c3223191176": {
+      "q_claim": "no",
+      "target_relation": "yes",
+      "relation_correctness": "correct",
+      "notes": "Next to không đồng nghĩa touching; vị trí gấu cạnh chai được ảnh hỗ trợ. Lỗi loại đồ uống nếu có không phải quan hệ cặp đang chấm.",
+      "confirmed_by_human": false
+    },
+    "618e6e4a42bae48aef90afcd": {
+      "q_claim": "no",
+      "target_relation": "yes",
+      "relation_correctness": "correct",
+      "notes": "Next to không đồng nghĩa touching; vị trí gấu cạnh chai được ảnh hỗ trợ. Lỗi loại đồ uống nếu có không phải quan hệ cặp đang chấm.",
+      "confirmed_by_human": false
+    },
+    "b29a400a9e0e19ade388d93b": {
+      "q_claim": "no",
+      "target_relation": "yes",
+      "relation_correctness": "correct",
+      "notes": "Next to không đồng nghĩa touching; vị trí gấu cạnh chai được ảnh hỗ trợ. Lỗi loại đồ uống nếu có không phải quan hệ cặp đang chấm.",
+      "confirmed_by_human": false
+    },
+    "9f4219e0a51578053d84d3c7": {
+      "q_claim": "no",
+      "target_relation": "no",
+      "relation_correctness": "not_applicable",
+      "notes": "Chỉ Z nói cake next to fork; gần nhau được ảnh hỗ trợ, không khẳng định tiếp xúc.",
+      "confirmed_by_human": false
+    },
+    "83b7171737c6922f3f5adc45": {
+      "q_claim": "no",
+      "target_relation": "no",
+      "relation_correctness": "not_applicable",
+      "notes": "Chỉ Z nói cake next to fork; gần nhau được ảnh hỗ trợ, không khẳng định tiếp xúc.",
+      "confirmed_by_human": false
+    },
+    "0c5ff7a3dd0d0a54d89f9a19": {
+      "q_claim": "no",
+      "target_relation": "yes",
+      "relation_correctness": "correct",
+      "notes": "Chỉ Z nói cake next to fork; gần nhau được ảnh hỗ trợ, không khẳng định tiếp xúc.",
+      "confirmed_by_human": false
+    },
+    "5ba4573e43150396cea15a99": {
+      "q_claim": "no",
+      "target_relation": "yes",
+      "relation_correctness": "correct",
+      "notes": "X front of và Z looking inside phù hợp ảnh, không bao hàm touching. Y in refrigerator sai: trẻ đứng phía trước cửa tủ.",
+      "confirmed_by_human": false
+    },
+    "d6a708c5a7e0aa8785dfde51": {
+      "q_claim": "no",
+      "target_relation": "yes",
+      "relation_correctness": "wrong",
+      "notes": "X front of và Z looking inside phù hợp ảnh, không bao hàm touching. Y in refrigerator sai: trẻ đứng phía trước cửa tủ.",
+      "confirmed_by_human": false
+    },
+    "7e94f90235c4492f021afab7": {
+      "q_claim": "no",
+      "target_relation": "yes",
+      "relation_correctness": "correct",
+      "notes": "X front of và Z looking inside phù hợp ảnh, không bao hàm touching. Y in refrigerator sai: trẻ đứng phía trước cửa tủ.",
+      "confirmed_by_human": false
+    },
+    "6bc30cd9d3dae4a401a8f638": {
+      "q_claim": "yes",
+      "target_relation": "yes",
+      "relation_correctness": "correct",
+      "notes": "Dog on/riding bike bao hàm xe ở dưới chó; quan hệ được ảnh hỗ trợ.",
+      "confirmed_by_human": false
+    },
+    "1cc9fb92183ea178405a9deb": {
+      "q_claim": "yes",
+      "target_relation": "yes",
+      "relation_correctness": "correct",
+      "notes": "Dog on/riding bike bao hàm xe ở dưới chó; quan hệ được ảnh hỗ trợ.",
+      "confirmed_by_human": false
+    },
+    "315343bac37441e07690c3bf": {
+      "q_claim": "yes",
+      "target_relation": "yes",
+      "relation_correctness": "correct",
+      "notes": "Dog on/riding bike bao hàm xe ở dưới chó; quan hệ được ảnh hỗ trợ.",
+      "confirmed_by_human": false
+    },
+    "c24c114963b45738e0d8413f": {
+      "q_claim": "yes",
+      "target_relation": "yes",
+      "relation_correctness": "correct",
+      "notes": "Milking a cow bao hàm tiếp xúc với bò. Z nói touching trực tiếp; ảnh hỗ trợ.",
+      "confirmed_by_human": false
+    },
+    "7cc628902d5a5e6c6b3c387c": {
+      "q_claim": "yes",
+      "target_relation": "yes",
+      "relation_correctness": "correct",
+      "notes": "Milking a cow bao hàm tiếp xúc với bò. Z nói touching trực tiếp; ảnh hỗ trợ.",
+      "confirmed_by_human": false
+    },
+    "0b248fc91ea7ae2bfd395c5c": {
+      "q_claim": "yes",
+      "target_relation": "yes",
+      "relation_correctness": "correct",
+      "notes": "Milking a cow bao hàm tiếp xúc với bò. Z nói touching trực tiếp; ảnh hỗ trợ.",
+      "confirmed_by_human": false
+    },
+    "10ffa13da18eef3515e9a57e": {
+      "q_claim": "yes",
+      "target_relation": "yes",
+      "relation_correctness": "correct",
+      "notes": "A bowl of bananas diễn đạt chuối được chứa trong bát; ảnh hỗ trợ.",
+      "confirmed_by_human": false
+    },
+    "6c4a6709de614047239ccfce": {
+      "q_claim": "yes",
+      "target_relation": "yes",
+      "relation_correctness": "correct",
+      "notes": "A bowl of bananas diễn đạt chuối được chứa trong bát; ảnh hỗ trợ.",
+      "confirmed_by_human": false
+    },
+    "f273eb10de139ca4ce4ce3f7": {
+      "q_claim": "yes",
+      "target_relation": "yes",
+      "relation_correctness": "correct",
+      "notes": "A bowl of bananas diễn đạt chuối được chứa trong bát; ảnh hỗ trợ.",
+      "confirmed_by_human": false
+    },
+    "b2365b73ce0b186878b3dc11": {
+      "q_claim": "no",
+      "target_relation": "yes",
+      "relation_correctness": "correct",
+      "notes": "Cutting pastry không tất yếu bao hàm tay người chạm bánh (có thể qua dao). Có quan hệ cắt người–bánh và ảnh hỗ trợ.",
+      "confirmed_by_human": false
+    },
+    "8c0242f9213ff171eca641eb": {
+      "q_claim": "no",
+      "target_relation": "yes",
+      "relation_correctness": "correct",
+      "notes": "Cutting pastry không tất yếu bao hàm tay người chạm bánh (có thể qua dao). Có quan hệ cắt người–bánh và ảnh hỗ trợ.",
+      "confirmed_by_human": false
+    },
+    "b24dfeaaa5b271153fbbdd4f": {
+      "q_claim": "no",
+      "target_relation": "no",
+      "relation_correctness": "not_applicable",
+      "notes": "Không nói pizza inside oven; stove trong Y không phải oven O. Không chấm lỗi hành động ngoài cặp đích thành lỗi quan hệ pizza–oven.",
+      "confirmed_by_human": false
+    },
+    "91d00c62d782790ed06af64e": {
+      "q_claim": "no",
+      "target_relation": "no",
+      "relation_correctness": "not_applicable",
+      "notes": "Không nói pizza inside oven; stove trong Y không phải oven O. Không chấm lỗi hành động ngoài cặp đích thành lỗi quan hệ pizza–oven.",
+      "confirmed_by_human": false
+    },
+    "581bc9d7a3485ed689753373": {
+      "q_claim": "no",
+      "target_relation": "no",
+      "relation_correctness": "not_applicable",
+      "notes": "Không nói pizza inside oven; stove trong Y không phải oven O. Không chấm lỗi hành động ngoài cặp đích thành lỗi quan hệ pizza–oven.",
+      "confirmed_by_human": false
+    },
+    "41fc72db3cc714aeb22ff291": {
+      "q_claim": "no",
+      "target_relation": "no",
+      "relation_correctness": "not_applicable",
+      "notes": "Caption nói dog–table/glass, không nói dog–bench S ở phía sau.",
+      "confirmed_by_human": false
+    },
+    "64dedf4a023ac5fc1630b820": {
+      "q_claim": "no",
+      "target_relation": "no",
+      "relation_correctness": "not_applicable",
+      "notes": "Caption nói dog–table/glass, không nói dog–bench S ở phía sau.",
+      "confirmed_by_human": false
+    },
+    "b9f4b41a876898f95b91edb3": {
+      "q_claim": "no",
+      "target_relation": "no",
+      "relation_correctness": "not_applicable",
+      "notes": "Caption nói dog–table/glass, không nói dog–bench S ở phía sau.",
+      "confirmed_by_human": false
+    },
+    "a34bcf7bd72ca4ef59274490": {
+      "q_claim": "no",
+      "target_relation": "yes",
+      "relation_correctness": "correct",
+      "notes": "X/Y: cat next to teddy bear được ảnh hỗ trợ, không khẳng định touching. Z chỉ nói hai teddy bears, không nêu mèo O.",
+      "confirmed_by_human": false
+    },
+    "544a8cacbb34eb1cc78548b7": {
+      "q_claim": "no",
+      "target_relation": "yes",
+      "relation_correctness": "correct",
+      "notes": "X/Y: cat next to teddy bear được ảnh hỗ trợ, không khẳng định touching. Z chỉ nói hai teddy bears, không nêu mèo O.",
+      "confirmed_by_human": false
+    },
+    "58f328e7ddd45357def9a794": {
+      "q_claim": "no",
+      "target_relation": "no",
+      "relation_correctness": "not_applicable",
+      "notes": "X/Y: cat next to teddy bear được ảnh hỗ trợ, không khẳng định touching. Z chỉ nói hai teddy bears, không nêu mèo O.",
+      "confirmed_by_human": false
+    },
+    "8ff19152050fcad5ffda3816": {
+      "q_claim": "no",
+      "target_relation": "yes",
+      "relation_correctness": "correct",
+      "notes": "Dog on couch là quan hệ khác next to couch; cả ba câu nói đúng quan hệ trên sofa.",
+      "confirmed_by_human": false
+    },
+    "8f8990a489f3aa51e3425e84": {
+      "q_claim": "no",
+      "target_relation": "yes",
+      "relation_correctness": "correct",
+      "notes": "Dog on couch là quan hệ khác next to couch; cả ba câu nói đúng quan hệ trên sofa.",
+      "confirmed_by_human": false
+    },
+    "bd80a686d0af1ade520cc407": {
+      "q_claim": "no",
+      "target_relation": "yes",
+      "relation_correctness": "correct",
+      "notes": "Dog on couch là quan hệ khác next to couch; cả ba câu nói đúng quan hệ trên sofa.",
+      "confirmed_by_human": false
+    },
+    "89755589f749c8fcf446389f": {
+      "q_claim": "no",
+      "target_relation": "no",
+      "relation_correctness": "not_applicable",
+      "notes": "X chỉ liệt kê bowl/sandwich cùng trên plate, không trực tiếp nói vị trí giữa chúng. Y không nhắc sandwich. Z next to sandwich là quan hệ đúng khác in.",
+      "confirmed_by_human": false
+    },
+    "2eeb28c8aed9b5ffe2cca967": {
+      "q_claim": "no",
+      "target_relation": "no",
+      "relation_correctness": "not_applicable",
+      "notes": "X chỉ liệt kê bowl/sandwich cùng trên plate, không trực tiếp nói vị trí giữa chúng. Y không nhắc sandwich. Z next to sandwich là quan hệ đúng khác in.",
+      "confirmed_by_human": false
+    },
+    "e2798ca716199ebb93b009f8": {
+      "q_claim": "no",
+      "target_relation": "yes",
+      "relation_correctness": "correct",
+      "notes": "X chỉ liệt kê bowl/sandwich cùng trên plate, không trực tiếp nói vị trí giữa chúng. Y không nhắc sandwich. Z next to sandwich là quan hệ đúng khác in.",
+      "confirmed_by_human": false
+    },
+    "7e0336de15e50cb0d70dc136": {
+      "q_claim": "no",
+      "target_relation": "no",
+      "relation_correctness": "not_applicable",
+      "notes": "Không caption nào nhắc người O.",
+      "confirmed_by_human": false
+    },
+    "a0a178a5011946141a3d8201": {
+      "q_claim": "no",
+      "target_relation": "no",
+      "relation_correctness": "not_applicable",
+      "notes": "Không caption nào nhắc người O.",
+      "confirmed_by_human": false
+    },
+    "a1356e8a671b08c68d7f0e79": {
+      "q_claim": "no",
+      "target_relation": "no",
+      "relation_correctness": "not_applicable",
+      "notes": "Không caption nào nhắc người O.",
+      "confirmed_by_human": false
+    },
+    "82434b41ba01514fd76db0fd": {
+      "q_claim": "yes",
+      "target_relation": "yes",
+      "relation_correctness": "correct",
+      "notes": "Scissors in mouth/holding scissors bao hàm chạm người; quan hệ cặp được ảnh hỗ trợ. Không chấm thuộc tính áo vào ô quan hệ.",
+      "confirmed_by_human": false
+    },
+    "93778d1e7441b8476b8b3a11": {
+      "q_claim": "yes",
+      "target_relation": "yes",
+      "relation_correctness": "correct",
+      "notes": "Scissors in mouth/holding scissors bao hàm chạm người; quan hệ cặp được ảnh hỗ trợ. Không chấm thuộc tính áo vào ô quan hệ.",
+      "confirmed_by_human": false
+    },
+    "97e434ae7070f35e658cd929": {
+      "q_claim": "yes",
+      "target_relation": "yes",
+      "relation_correctness": "correct",
+      "notes": "Scissors in mouth/holding scissors bao hàm chạm người; quan hệ cặp được ảnh hỗ trợ. Không chấm thuộc tính áo vào ô quan hệ.",
+      "confirmed_by_human": false
+    },
+    "9cf3cf4aaa119541f006c3b9": {
+      "q_claim": "no",
+      "target_relation": "yes",
+      "relation_correctness": "correct",
+      "notes": "Dog next to suitcase được ảnh hỗ trợ, không khẳng định in suitcase.",
+      "confirmed_by_human": false
+    },
+    "813d92a6249d4e85393452b6": {
+      "q_claim": "yes",
+      "target_relation": "yes",
+      "relation_correctness": "correct",
+      "notes": "X touching được ảnh hỗ trợ. Y front of/Z next to cũng đúng nhưng không đồng nghĩa touching.",
+      "confirmed_by_human": false
+    },
+    "fba6f721792c9487e92b574a": {
+      "q_claim": "no",
+      "target_relation": "yes",
+      "relation_correctness": "correct",
+      "notes": "X touching được ảnh hỗ trợ. Y front of/Z next to cũng đúng nhưng không đồng nghĩa touching.",
+      "confirmed_by_human": false
+    },
+    "09fbd4d16f2cc0caeab50257": {
+      "q_claim": "no",
+      "target_relation": "yes",
+      "relation_correctness": "correct",
+      "notes": "X touching được ảnh hỗ trợ. Y front of/Z next to cũng đúng nhưng không đồng nghĩa touching.",
+      "confirmed_by_human": false
+    },
+    "6cb64172c7b95671b4c6831c": {
+      "q_claim": "yes",
+      "target_relation": "yes",
+      "relation_correctness": "correct",
+      "notes": "Cat on top of TV là diễn đạt đảo vai của TV beneath cat; ảnh hỗ trợ.",
+      "confirmed_by_human": false
+    },
+    "56c39339c55a4cda14f85854": {
+      "q_claim": "yes",
+      "target_relation": "yes",
+      "relation_correctness": "correct",
+      "notes": "Cat on top of TV là diễn đạt đảo vai của TV beneath cat; ảnh hỗ trợ.",
+      "confirmed_by_human": false
+    },
+    "34a078f001f0e74cf06c34fd": {
+      "q_claim": "no",
+      "target_relation": "yes",
+      "relation_correctness": "correct",
+      "notes": "Train next to/near ship là quan hệ đúng khác boat on train.",
+      "confirmed_by_human": false
+    },
+    "e237178728875d6b64a5d9e6": {
+      "q_claim": "no",
+      "target_relation": "yes",
+      "relation_correctness": "correct",
+      "notes": "Train next to/near ship là quan hệ đúng khác boat on train.",
+      "confirmed_by_human": false
+    },
+    "11a3157430a51bc5ff00dfb5": {
+      "q_claim": "no",
+      "target_relation": "yes",
+      "relation_correctness": "correct",
+      "notes": "Train next to/near ship là quan hệ đúng khác boat on train.",
+      "confirmed_by_human": false
+    },
+    "55b00f7a40382d4de90079ef": {
+      "q_claim": "no",
+      "target_relation": "no",
+      "relation_correctness": "not_applicable",
+      "notes": "Không câu nào trực tiếp khẳng định quan hệ sách–giường; Y nói người in bed, không nói sách chạm giường.",
+      "confirmed_by_human": false
+    },
+    "ed55319be7a1f11fa6dea101": {
+      "q_claim": "no",
+      "target_relation": "no",
+      "relation_correctness": "not_applicable",
+      "notes": "Không câu nào trực tiếp khẳng định quan hệ sách–giường; Y nói người in bed, không nói sách chạm giường.",
+      "confirmed_by_human": false
+    },
+    "66654a20b7fc5b408b018c15": {
+      "q_claim": "no",
+      "target_relation": "no",
+      "relation_correctness": "not_applicable",
+      "notes": "Không câu nào trực tiếp khẳng định quan hệ sách–giường; Y nói người in bed, không nói sách chạm giường.",
+      "confirmed_by_human": false
+    },
+    "bf2846e04288e486dafa7741": {
+      "q_claim": "no",
+      "target_relation": "no",
+      "relation_correctness": "not_applicable",
+      "notes": "X nói fork next to fork, không nói cake. Y fork stuck in dessert bao hàm chạm món bánh, ảnh hỗ trợ.",
+      "confirmed_by_human": false
+    },
+    "ebe03c9b6bfc3d31e4c3f76f": {
+      "q_claim": "yes",
+      "target_relation": "yes",
+      "relation_correctness": "correct",
+      "notes": "X nói fork next to fork, không nói cake. Y fork stuck in dessert bao hàm chạm món bánh, ảnh hỗ trợ.",
+      "confirmed_by_human": false
+    },
+    "14a49a04b4f8b863247b9267": {
+      "q_claim": "yes",
+      "target_relation": "yes",
+      "relation_correctness": "wrong",
+      "notes": "Holding book/on top of book bao hàm tiếp xúc nên có khẳng định mục tiêu, nhưng ảnh cho thấy sách nằm riêng trên mặt bàn bên phải, không được gấu cầm hoặc đè lên.",
+      "confirmed_by_human": false
+    },
+    "994b40e4fdf2bd9e354e5ff4": {
+      "q_claim": "yes",
+      "target_relation": "yes",
+      "relation_correctness": "wrong",
+      "notes": "Holding book/on top of book bao hàm tiếp xúc nên có khẳng định mục tiêu, nhưng ảnh cho thấy sách nằm riêng trên mặt bàn bên phải, không được gấu cầm hoặc đè lên.",
+      "confirmed_by_human": false
+    },
+    "efe46db9fde7cab1d9422f48": {
+      "q_claim": "no",
+      "target_relation": "no",
+      "relation_correctness": "not_applicable",
+      "notes": "Không caption nào nói quan hệ bánh–người.",
+      "confirmed_by_human": false
+    },
+    "121936e3dee866effc4aaa59": {
+      "q_claim": "no",
+      "target_relation": "no",
+      "relation_correctness": "not_applicable",
+      "notes": "Không caption nào nói quan hệ bánh–người.",
+      "confirmed_by_human": false
+    },
+    "48fc31772775226e5a6b3dee": {
+      "q_claim": "no",
+      "target_relation": "no",
+      "relation_correctness": "not_applicable",
+      "notes": "Không caption nào nói quan hệ bánh–người.",
+      "confirmed_by_human": false
+    },
+    "8df4bb20d426e8ebd9aa2ad2": {
+      "q_claim": "no",
+      "target_relation": "no",
+      "relation_correctness": "not_applicable",
+      "notes": "Chỉ Y nói cat on book, đúng theo ảnh. X/Z nói quan hệ khác ngoài cặp cat–book.",
+      "confirmed_by_human": false
+    },
+    "3a6357ca96769cfa1230f009": {
+      "q_claim": "yes",
+      "target_relation": "yes",
+      "relation_correctness": "correct",
+      "notes": "Chỉ Y nói cat on book, đúng theo ảnh. X/Z nói quan hệ khác ngoài cặp cat–book.",
+      "confirmed_by_human": false
+    },
+    "b1e3873c84f6b6328aa3a201": {
+      "q_claim": "no",
+      "target_relation": "no",
+      "relation_correctness": "not_applicable",
+      "notes": "Chỉ Y nói cat on book, đúng theo ảnh. X/Z nói quan hệ khác ngoài cặp cat–book.",
+      "confirmed_by_human": false
+    },
+    "c20eec0f09682d90cb7669c7": {
+      "q_claim": "yes",
+      "target_relation": "yes",
+      "relation_correctness": "wrong",
+      "notes": "Các câu on back/standing on top/touching trunk bao hàm chạm voi nhưng quan hệ cụ thể sai: người đang bám thân bên hông, chân trên chân voi; không ở trên lưng và không chạm vòi. Cần kiểm tra kỹ ca này.",
+      "confirmed_by_human": false
+    },
+    "a9351c9d5bebeb2dec0b6a26": {
+      "q_claim": "yes",
+      "target_relation": "yes",
+      "relation_correctness": "wrong",
+      "notes": "Các câu on back/standing on top/touching trunk bao hàm chạm voi nhưng quan hệ cụ thể sai: người đang bám thân bên hông, chân trên chân voi; không ở trên lưng và không chạm vòi. Cần kiểm tra kỹ ca này.",
+      "confirmed_by_human": false
+    },
+    "1bd3666d5f8ddeea1dc707d9": {
+      "q_claim": "yes",
+      "target_relation": "yes",
+      "relation_correctness": "wrong",
+      "notes": "Các câu on back/standing on top/touching trunk bao hàm chạm voi nhưng quan hệ cụ thể sai: người đang bám thân bên hông, chân trên chân voi; không ở trên lưng và không chạm vòi. Cần kiểm tra kỹ ca này.",
+      "confirmed_by_human": false
+    },
+    "aa2dbba33791b14ceea8a819": {
+      "q_claim": "no",
+      "target_relation": "yes",
+      "relation_correctness": "correct",
+      "notes": "X next to cup là quan hệ đúng khác beneath. Y không nhắc cup; Z chỉ liệt kê cup cùng donut, không khẳng định quan hệ cụ thể.",
+      "confirmed_by_human": false
+    },
+    "391730b9a31e761708a9bbfa": {
+      "q_claim": "no",
+      "target_relation": "no",
+      "relation_correctness": "not_applicable",
+      "notes": "X next to cup là quan hệ đúng khác beneath. Y không nhắc cup; Z chỉ liệt kê cup cùng donut, không khẳng định quan hệ cụ thể.",
+      "confirmed_by_human": false
+    },
+    "53ca3da0fce88ae677b6cb09": {
+      "q_claim": "no",
+      "target_relation": "no",
+      "relation_correctness": "not_applicable",
+      "notes": "X next to cup là quan hệ đúng khác beneath. Y không nhắc cup; Z chỉ liệt kê cup cùng donut, không khẳng định quan hệ cụ thể.",
+      "confirmed_by_human": false
+    },
+    "3615c53cfc8844e90848d505": {
+      "q_claim": "no",
+      "target_relation": "yes",
+      "relation_correctness": "wrong",
+      "notes": "X nói on top of suitcase, trong khi thân chó nằm trong phần mở của túi; chấm sai quan hệ này. Y in luggage bag đúng. Cần kiểm tra cách hiểu on top tại miệng túi.",
+      "confirmed_by_human": false
+    },
+    "82bd7ecce55a1e87a1e1e80f": {
+      "q_claim": "yes",
+      "target_relation": "yes",
+      "relation_correctness": "correct",
+      "notes": "X nói on top of suitcase, trong khi thân chó nằm trong phần mở của túi; chấm sai quan hệ này. Y in luggage bag đúng. Cần kiểm tra cách hiểu on top tại miệng túi.",
+      "confirmed_by_human": false
+    },
+    "de720c0d3d0fdcd0f8f64b9b": {
+      "q_claim": "no",
+      "target_relation": "uncertain",
+      "relation_correctness": "uncertain",
+      "notes": "X/Y with broccoli chỉ mô tả kèm nguyên liệu, chưa rõ có khẳng định vị trí giữa cặp; giữ Không rõ về quan hệ cụ thể. Z broccoli on top of pizza đảo vai đúng với pizza under broccoli.",
+      "confirmed_by_human": false
+    },
+    "fec03bd2620b0454a2dc762b": {
+      "q_claim": "no",
+      "target_relation": "uncertain",
+      "relation_correctness": "uncertain",
+      "notes": "X/Y with broccoli chỉ mô tả kèm nguyên liệu, chưa rõ có khẳng định vị trí giữa cặp; giữ Không rõ về quan hệ cụ thể. Z broccoli on top of pizza đảo vai đúng với pizza under broccoli.",
+      "confirmed_by_human": false
+    },
+    "9831ad2432b5406f0c9184d7": {
+      "q_claim": "yes",
+      "target_relation": "yes",
+      "relation_correctness": "correct",
+      "notes": "X/Y with broccoli chỉ mô tả kèm nguyên liệu, chưa rõ có khẳng định vị trí giữa cặp; giữ Không rõ về quan hệ cụ thể. Z broccoli on top of pizza đảo vai đúng với pizza under broccoli.",
+      "confirmed_by_human": false
+    },
+    "5e7854d3ace9245dd7844c3d": {
+      "q_claim": "uncertain",
+      "target_relation": "uncertain",
+      "relation_correctness": "uncertain",
+      "notes": "Có kéo lớn S đặt trên bàn; câu using scissors có thể nói kéo khác gần tay trẻ, không xác định được đúng instance. X/Z giữ Không rõ. Y không trực tiếp nói người tiếp xúc kéo S.",
+      "confirmed_by_human": false
+    },
+    "69f250f3071e38b3dc0b9f12": {
+      "q_claim": "no",
+      "target_relation": "no",
+      "relation_correctness": "not_applicable",
+      "notes": "Có kéo lớn S đặt trên bàn; câu using scissors có thể nói kéo khác gần tay trẻ, không xác định được đúng instance. X/Z giữ Không rõ. Y không trực tiếp nói người tiếp xúc kéo S.",
+      "confirmed_by_human": false
+    },
+    "8dc29b56162fa4a97a8e256f": {
+      "q_claim": "uncertain",
+      "target_relation": "uncertain",
+      "relation_correctness": "uncertain",
+      "notes": "Có kéo lớn S đặt trên bàn; câu using scissors có thể nói kéo khác gần tay trẻ, không xác định được đúng instance. X/Z giữ Không rõ. Y không trực tiếp nói người tiếp xúc kéo S.",
+      "confirmed_by_human": false
+    },
+    "e16cffc28976d4a03639b632": {
+      "q_claim": "yes",
+      "target_relation": "yes",
+      "relation_correctness": "correct",
+      "notes": "Dog standing/on bench bao hàm tiếp xúc giữa chó và ghế; ảnh hỗ trợ.",
+      "confirmed_by_human": false
+    },
+    "89005862445e32b5d7b72097": {
+      "q_claim": "yes",
+      "target_relation": "yes",
+      "relation_correctness": "correct",
+      "notes": "Dog standing/on bench bao hàm tiếp xúc giữa chó và ghế; ảnh hỗ trợ.",
+      "confirmed_by_human": false
+    },
+    "7fa46b551d776865794dc797": {
+      "q_claim": "yes",
+      "target_relation": "yes",
+      "relation_correctness": "correct",
+      "notes": "Dog standing/on bench bao hàm tiếp xúc giữa chó và ghế; ảnh hỗ trợ.",
+      "confirmed_by_human": false
+    },
+    "9e667ffc8fb60e27df095220": {
+      "q_claim": "no",
+      "target_relation": "no",
+      "relation_correctness": "not_applicable",
+      "notes": "X/Z nói horse thay vì cow và không xác định cặp cow–person. Y person next to cow là quan hệ khác touching, phù hợp ảnh.",
+      "confirmed_by_human": false
+    },
+    "7a2a978979f352c3ba45d46d": {
+      "q_claim": "no",
+      "target_relation": "yes",
+      "relation_correctness": "correct",
+      "notes": "X/Z nói horse thay vì cow và không xác định cặp cow–person. Y person next to cow là quan hệ khác touching, phù hợp ảnh.",
+      "confirmed_by_human": false
+    },
+    "04c387d4e7b65e14753ae208": {
+      "q_claim": "no",
+      "target_relation": "no",
+      "relation_correctness": "not_applicable",
+      "notes": "X/Z nói horse thay vì cow và không xác định cặp cow–person. Y person next to cow là quan hệ khác touching, phù hợp ảnh.",
+      "confirmed_by_human": false
+    },
+    "026b034492336c29b904d22a": {
+      "q_claim": "yes",
+      "target_relation": "yes",
+      "relation_correctness": "correct",
+      "notes": "Pizza inside oven được khẳng định trực tiếp và ảnh hỗ trợ.",
+      "confirmed_by_human": false
+    },
+    "749cd289745602b25862ca7a": {
+      "q_claim": "no",
+      "target_relation": "no",
+      "relation_correctness": "not_applicable",
+      "notes": "X không nhắc sandwich hoặc bowl. Y đặt sandwich trong đĩa được ảnh hỗ trợ, nhưng nhãn O gọi bowl còn caption gọi plate; chưa chắc cùng ý với in bowl, cần người phân xử.",
+      "confirmed_by_human": false
+    },
+    "e1769b856bc65b8d1d3b824d": {
+      "q_claim": "uncertain",
+      "target_relation": "yes",
+      "relation_correctness": "correct",
+      "notes": "X không nhắc sandwich hoặc bowl. Y đặt sandwich trong đĩa được ảnh hỗ trợ, nhưng nhãn O gọi bowl còn caption gọi plate; chưa chắc cùng ý với in bowl, cần người phân xử.",
+      "confirmed_by_human": false
+    },
+    "e76d45c003a549f538aa9b9d": {
+      "q_claim": "no",
+      "target_relation": "no",
+      "relation_correctness": "not_applicable",
+      "notes": "Chỉ nói mèo–vali, không nói bàn–vali.",
+      "confirmed_by_human": false
+    },
+    "17513cd0e5422a189d4b4d65": {
+      "q_claim": "no",
+      "target_relation": "no",
+      "relation_correctness": "not_applicable",
+      "notes": "Chỉ nói mèo–vali, không nói bàn–vali.",
+      "confirmed_by_human": false
+    },
+    "bd6448ac1a2b2afe1bbd6a4e": {
+      "q_claim": "no",
+      "target_relation": "no",
+      "relation_correctness": "not_applicable",
+      "notes": "X không nhắc sách. Y book on bed bao hàm tiếp xúc sách–giường và được ảnh hỗ trợ.",
+      "confirmed_by_human": false
+    },
+    "97709e7d8df9534a0b2caa78": {
+      "q_claim": "yes",
+      "target_relation": "yes",
+      "relation_correctness": "correct",
+      "notes": "X không nhắc sách. Y book on bed bao hàm tiếp xúc sách–giường và được ảnh hỗ trợ.",
+      "confirmed_by_human": false
+    },
+    "0e756467b8f267acc5c71271": {
+      "q_claim": "yes",
+      "target_relation": "yes",
+      "relation_correctness": "correct",
+      "notes": "Riding/on bicycle bao hàm người tiếp xúc xe; ảnh hỗ trợ.",
+      "confirmed_by_human": false
+    },
+    "c22243cb9f16249fb0583077": {
+      "q_claim": "yes",
+      "target_relation": "yes",
+      "relation_correctness": "correct",
+      "notes": "Riding/on bicycle bao hàm người tiếp xúc xe; ảnh hỗ trợ.",
+      "confirmed_by_human": false
+    },
+    "942ac90a45ff9872d48ec7c4": {
+      "q_claim": "yes",
+      "target_relation": "yes",
+      "relation_correctness": "correct",
+      "notes": "Riding/on bicycle bao hàm người tiếp xúc xe; ảnh hỗ trợ.",
+      "confirmed_by_human": false
+    },
+    "f857a4f0ca254e0929aa91bc": {
+      "q_claim": "no",
+      "target_relation": "no",
+      "relation_correctness": "not_applicable",
+      "notes": "Không caption nào nói đến sofa O.",
+      "confirmed_by_human": false
+    },
+    "9834608cb29153259570aa56": {
+      "q_claim": "no",
+      "target_relation": "no",
+      "relation_correctness": "not_applicable",
+      "notes": "Không caption nào nói đến sofa O.",
+      "confirmed_by_human": false
+    },
+    "9e71392fb63514c37a639bb2": {
+      "q_claim": "no",
+      "target_relation": "no",
+      "relation_correctness": "not_applicable",
+      "notes": "Không caption nào nói đến sofa O.",
+      "confirmed_by_human": false
+    },
+    "320fd914d19205fc8a1d6da7": {
+      "q_claim": "no",
+      "target_relation": "no",
+      "relation_correctness": "not_applicable",
+      "notes": "Không caption nào nhắc cup S; không tự thay tay người thành cup.",
+      "confirmed_by_human": false
+    },
+    "f8d4ef7eafc12c750e6139e0": {
+      "q_claim": "no",
+      "target_relation": "no",
+      "relation_correctness": "not_applicable",
+      "notes": "Không caption nào nhắc cup S; không tự thay tay người thành cup.",
+      "confirmed_by_human": false
+    },
+    "fe2ec1821888954e30bb9dd9": {
+      "q_claim": "no",
+      "target_relation": "no",
+      "relation_correctness": "not_applicable",
+      "notes": "Không caption nào nhắc cup S; không tự thay tay người thành cup.",
+      "confirmed_by_human": false
+    },
+    "b2f1e1aacaf89842d831aa0a": {
+      "q_claim": "no",
+      "target_relation": "no",
+      "relation_correctness": "not_applicable",
+      "notes": "X/Y nói banana on plate, không phải bowl O. Z next to bowl là quan hệ đúng khác within.",
+      "confirmed_by_human": false
+    },
+    "025112af218cb8b4f7db08cc": {
+      "q_claim": "no",
+      "target_relation": "no",
+      "relation_correctness": "not_applicable",
+      "notes": "X/Y nói banana on plate, không phải bowl O. Z next to bowl là quan hệ đúng khác within.",
+      "confirmed_by_human": false
+    },
+    "b063440c35a667b997103a18": {
+      "q_claim": "no",
+      "target_relation": "yes",
+      "relation_correctness": "correct",
+      "notes": "X/Y nói banana on plate, không phải bowl O. Z next to bowl là quan hệ đúng khác within.",
+      "confirmed_by_human": false
+    },
+    "03f3109d7f48db24978b5607": {
+      "q_claim": "no",
+      "target_relation": "no",
+      "relation_correctness": "not_applicable",
+      "notes": "X liệt kê soda cùng thức ăn trên tray, không trực tiếp nói bottle touching table. Y không nhắc bottle.",
+      "confirmed_by_human": false
+    },
+    "255d3f7211caf94a540a29ce": {
+      "q_claim": "no",
+      "target_relation": "no",
+      "relation_correctness": "not_applicable",
+      "notes": "X liệt kê soda cùng thức ăn trên tray, không trực tiếp nói bottle touching table. Y không nhắc bottle.",
+      "confirmed_by_human": false
+    },
+    "107c41b3657c515b2f427453": {
+      "q_claim": "no",
+      "target_relation": "no",
+      "relation_correctness": "not_applicable",
+      "notes": "Không nói quan hệ sandwich–banana; fruit chung chung không tự thay thế banana.",
+      "confirmed_by_human": false
+    },
+    "a1e7d9eb326837222b1bb2eb": {
+      "q_claim": "no",
+      "target_relation": "no",
+      "relation_correctness": "not_applicable",
+      "notes": "Không nói quan hệ sandwich–banana; fruit chung chung không tự thay thế banana.",
+      "confirmed_by_human": false
+    },
+    "9f7de30b2d9727fb6ac00061": {
+      "q_claim": "no",
+      "target_relation": "no",
+      "relation_correctness": "not_applicable",
+      "notes": "Chỉ nói mèo–ly; không nhắc TV S ở nền.",
+      "confirmed_by_human": false
+    },
+    "0c4c8e41bab90d76a34f74ed": {
+      "q_claim": "no",
+      "target_relation": "no",
+      "relation_correctness": "not_applicable",
+      "notes": "Chỉ nói mèo–ly; không nhắc TV S ở nền.",
+      "confirmed_by_human": false
+    },
+    "6c00d61365155e33d78046fc": {
+      "q_claim": "no",
+      "target_relation": "no",
+      "relation_correctness": "not_applicable",
+      "notes": "Chỉ nói mèo–ly; không nhắc TV S ở nền.",
+      "confirmed_by_human": false
+    },
+    "1caa211412de5126417a4671": {
+      "q_claim": "no",
+      "target_relation": "no",
+      "relation_correctness": "not_applicable",
+      "notes": "Không câu nào xác định sandwich hoặc quan hệ sandwich–banana; không khôi phục các từ <unk>.",
+      "confirmed_by_human": false
+    },
+    "cd17a2bb4639525a831bcf73": {
+      "q_claim": "no",
+      "target_relation": "no",
+      "relation_correctness": "not_applicable",
+      "notes": "Không câu nào xác định sandwich hoặc quan hệ sandwich–banana; không khôi phục các từ <unk>.",
+      "confirmed_by_human": false
+    },
+    "f9dc41ea3415219353c06846": {
+      "q_claim": "no",
+      "target_relation": "no",
+      "relation_correctness": "not_applicable",
+      "notes": "Không câu nào xác định sandwich hoặc quan hệ sandwich–banana; không khôi phục các từ <unk>.",
+      "confirmed_by_human": false
+    },
+    "39bf8489435c804f2185da3d": {
+      "q_claim": "no",
+      "target_relation": "no",
+      "relation_correctness": "not_applicable",
+      "notes": "Caption chỉ nói người/ly/TV, không nhắc gấu bông S.",
+      "confirmed_by_human": false
+    },
+    "a2c2aaeb836c8f2debc00f77": {
+      "q_claim": "no",
+      "target_relation": "no",
+      "relation_correctness": "not_applicable",
+      "notes": "Caption chỉ nói người/ly/TV, không nhắc gấu bông S.",
+      "confirmed_by_human": false
+    },
+    "f8f00c0af453556d68e6c783": {
+      "q_claim": "no",
+      "target_relation": "no",
+      "relation_correctness": "not_applicable",
+      "notes": "Caption chỉ nói người/ly/TV, không nhắc gấu bông S.",
+      "confirmed_by_human": false
+    }
+  }
+}
