@@ -1,0 +1,12 @@
+{
+  "status": "SOURCE_READY_USER_GPU_PREFLIGHT_PENDING",
+  "date": "2026-10-29",
+  "local_neural_execution": false,
+  "kaggle_launched": false,
+  "local_metadata_tests": 12,
+  "static_python_compile": true,
+  "native_model_tests": "Pending on user Kaggle runtime",
+  "annotation_policy": "GT/ref-conditioned weak negatives; every stored detector hint vetoes; source provenance unknown",
+  "quota_user_report_hours": 24,
+  "quota_account_distribution": "not inferred"
+}

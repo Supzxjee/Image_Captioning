@@ -1,5 +1,7 @@
 # Quyết định nghiên cứu sau I/J v2
 
+> Cập nhật29/10: panel hỗn hợp đã hoàn tất; quyết định hiện hành là giữ A, dừng I/J và không chạy conditional J_bypass. Xem [quyết định sau panel](ASTRA_PANEL_DECISION_2026-10-29.md). Nội dung dưới đây giữ lịch sử quy tắc trước khi xem panel.
+
 28/10/2026. Đọc RESULT.md/json và phần implementation liên quan đến off; không đọc lại ZIP, không chạy neural/GPU. Nguồn kết quả: [RESULT](RESULT.md), commit 8024d1b81a07f026f5ded10905fec7756c4269be. Full-checkpoint/H5 digests vẫn là runtime reports như root đã nêu.
 
 **Chốt: giữ A; dừng mở rộng recipe I/J 500 hiện tại; chấm hết panel 32 cặp đã khóa trước. Chưa chạy seed 2, full train, solver hoặc sweep.** Chỉ khi panel cho thấy lợi ích ngữ nghĩa đáng theo đuổi mới xét một phép inference chẩn đoán, trước khi quyết định sửa recipe.
