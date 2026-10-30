@@ -10,7 +10,7 @@ Cập nhật: 30/10/2026, giờ Việt Nam. File này là bản tóm tắt để
 
 ## Hiện đang ở đâu
 
-**User đã đồng ý chốt một evaluation A/C0/C, không training. Protocol khóa tại [EXPANDED_EVAL_PROTOCOL.md](experiments/concept_mass_grounding/EXPANDED_EVAL_PROTOCOL.md): đúng val_extra4000_cg = val5000 trừ currentdev1000, validation đã dùng trong lịch sử, loại dev1000/TRAIN; giữ3checkpoints/greedy/scorer. Chưa có notebook/run mới; manifest đã khóa, còn chờ lấy checkpoint version111(C)/112(C0) và quota hiện tại trước user-run. Evaluation không tự tạo contribution. Astra đã xác nhận sửa nhầm nhóm dev lịch sử; protocol/manifest đã push `bdeeab7`, sheet R214 ở hàng241 đã ghi và đọc lại xác nhận.**
+**Đã chuẩn bị2notebook, chưa chạy: CPU lưu C từv111/C0 từv112 thành PrivateDataset, rồi eval A/C0/C trên val_extra4000_cg đã khóa. [Hướng dẫn](experiments/concept_mass_grounding/EXPANDED_RUN.md), [protocol](experiments/concept_mass_grounding/EXPANDED_EVAL_PROTOCOL.md). Core`13daa4f`;13metadata/statistics/transport/static/mockchecksPASS; actualAPI/HDF5/CUDA/metricsroute chờuser-run. User vừa báo14hGPU. Không training; không tự tạo contribution.**
 
 - [C0_RESULT.md](experiments/concept_mass_grounding/C0_RESULT.md), [C0_RESULT.json](experiments/concept_mass_grounding/C0_RESULT.json), [audit_c0_results.py](experiments/concept_mass_grounding/audit_c0_results.py). Review text cached ignored tại `experiments/concept_mass_grounding/review/C0_loaded.json`, ZIP đã đọc1lần.
 - C0 CIDEr1.230741, CHAIRs52/1000, hallucinated mentions53/1646,recall.460498,words10.044. A52caption/53mentions: chưa giảm hallucination; CHAIRi giảm do mẫu số tăng.
@@ -18,7 +18,7 @@ Cập nhật: 30/10/2026, giờ Việt Nam. File này là bản tóm tắt để
 - Same4000uniqueTRAIN/order/ref/seed42,500updates,batch8,init/frozen/input/tensor/payload hashes;2rankpreflightPASS,Aexact. Effective KL.1 keep0 negative0, zero weighted aux gradient ở46logged rank snapshots.274metadata assertionsPASS; không chạy/load model/H5 local.
 - [C0_PROTOCOL.md](experiments/concept_mass_grounding/C0_PROTOCOL.md), [CONCEPT_MASS_C0_2GPU.ipynb](experiments/concept_mass_grounding/CONCEPT_MASS_C0_2GPU.ipynb). Package7c8b602/corebb84be8; ablation được chọn sau pilot C/G, test chưa dùng.
 - Giữ `/kaggle/working/concept_mass_C0_v2/checkpoint.bin`, SHA256 `5d92cd5cb48077c7332bb3ff9b295cad1df5d76ede818adabef28035f055fa9d`.
-- Người dùng xác nhận nguồn checkpoint: C = notebook version111, C0 = version112 của notebook đang dùng `ducanh2403/2-vi-cai-kia-qua-nhieu`. Chưa có dataset mount; phải lấy đúngversion và xác minh SHA, không tự lấy latest. Chưa có quotaGPU cập nhật.
+- Người dùng xác nhận nguồn checkpoint: C = notebook version111, C0 = version112 của notebook đang dùng `ducanh2403/2-vi-cai-kia-qua-nhieu`. Notebook SAVE_CONCEPT_C_C0_V111_V112_DATASET.ipynb sẽ tải đúngversion vàfullSHA, khônglatest. Mount mặc định dự kiến `/kaggle/input/datasets/ducanh2403/concept-mass-c-c0-v111-v112`; chưa xác nhận dataset đã tạo. User báo14hGPU mới.
 - A checkpoint `/kaggle/input/datasets/ducanh2403/pair-source-fullframe-ce/upt_hidden_caption_A/checkpoint.bin`, SHA256 `630a4b6d4bcef84515bbd44a52b6474811377bda53caa9722c5806795fa7f901`.
 - Kết quả C0 và audit đã push ở commit `5efa385`; sheet R213 đã xác minh. Đã gửi Astra số liệu và giới hạn, không yêu cầu đọc lạiZIP. Quota24h là báo cáo cũ, không coi là hiện tại.
 
@@ -40,9 +40,10 @@ Cập nhật: 30/10/2026, giờ Việt Nam. File này là bản tóm tắt để
 
 ## Bước tiếp theo và điều chưa chốt
 
-1. C0 đã có kết quả: giữ nó làm ứng viên chất lượng/đối chứng, chưa chọn thành mô hình cuối. Hai objective keep/negative chưa có ích lợi riêng rõ trên endpoint; không gọi continuation+KL là phương pháp căn chỉnh mới.
-2. Đọc phản hồi Astra mới nhất, trao đổi với người dùng và ghi quyết định trước nhánh tiếp theo. Không tự tăng steps/hệ số/seed hoặc mở một họ phương pháp mới để cứu claim. C hơn C0 chút ở neutral-prefix separation (.106577 so .106161), chưa thành lợi ích caption.
-3. Người dùng đã đồng ý bàn và chốt một evaluation mở rộng, không training. Protocol/manifest đã khóa trước inference; chưa có run mới. Historical remainder4000 chứa797currentdevIDs nên đã sửa thành val_extra4000_cg theo exactgainmetadata; xem protocol. Mở rộng TRAIN vẫn chưa được duyệt. Tăng ảnh đánh giá độc lập giảm bất định; tăng ảnh huấn luyện đổi mô hình và cần đối chứng cùng ngân sách. Nếu khóa phương pháp rồi đánh giá lớn độc lập cho thấy giảm rõ, đó là bằng chứng có ích. Không dùng test làm vòng tuning tiếp.
+1. User chạy notebookCPU lưuweights111/112, đợi datasetready, attach vào notebookevalT4×2; gửi `concept_mass_expanded_eval_4000_review.zip`. Chưa có kết quảexpanded.
+2. C0 đã có kết quả: giữ nó làm ứng viên chất lượng/đối chứng, chưa chọn thành mô hình cuối. Hai objective keep/negative chưa có ích lợi riêng rõ trên endpoint; không gọi continuation+KL là phương pháp căn chỉnh mới.
+3. Đọc phản hồi Astra mới nhất, trao đổi với người dùng và ghi quyết định trước nhánh tiếp theo. Không tự tăng steps/hệ số/seed hoặc mở một họ phương pháp mới để cứu claim. C hơn C0 chút ở neutral-prefix separation (.106577 so .106161), chưa thành lợi ích caption.
+4. Người dùng đã đồng ý bàn và chốt một evaluation mở rộng, không training. Protocol/manifest đã khóa trước inference; chưa có run mới. Historical remainder4000 chứa797currentdevIDs nên đã sửa thành val_extra4000_cg theo exactgainmetadata; xem protocol. Mở rộng TRAIN vẫn chưa được duyệt. Tăng ảnh đánh giá độc lập giảm bất định; tăng ảnh huấn luyện đổi mô hình và cần đối chứng cùng ngân sách. Nếu khóa phương pháp rồi đánh giá lớn độc lập cho thấy giảm rõ, đó là bằng chứng có ích. Không dùng test làm vòng tuning tiếp.
 
 ## Các điểm phối hợp cần nhớ
 
