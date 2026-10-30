@@ -20,7 +20,7 @@ Chưa có kiểm tra CUDA/model hoặc runtime mới tại thời điểm ghi pr
 
 ## Kiểm tra và phân phối
 
-Worker core `6685ae7`. Hai notebook `RELATION_KV_D_2GPU.ipynb`/`RELATION_KV_E_2GPU.ipynb`, mỗi file12654bytes; raw-source asset hashes tại `KV_DE_NOTEBOOK_PACKAGE.json`. Đã kiểm14test methods:5metadata/NumPy mới,5NumPy construction cũ và4static package/scalar metric; bản rawGit transport10metadata/NumPy tests cũng PASS.7source AST và Module-method-name guard PASS. Lỗi indentation trong generator được bắt ở compile trước bàn giao và đã sửa; không phải lỗi đã xảy ra trên Kaggle. Không chạy Tensor/Torch/model/autograd/HDF5 local hoặc khởi động Kaggle.
+Worker core `1402633` (từ6685ae7; sửa partition caption held theo98uniqueimages để không lặp ảnh ở hai ranks). Hai notebook `RELATION_KV_D_2GPU.ipynb`/`RELATION_KV_E_2GPU.ipynb`, mỗi file12654bytes; raw-source asset hashes tại `KV_DE_NOTEBOOK_PACKAGE.json`. Đã kiểm14test methods:5metadata/NumPy mới,5NumPy construction cũ và4static package/scalar metric; bản rawGit transport10metadata/NumPy tests cũng PASS.7source AST và Module-method-name guard PASS. Lỗi indentation trong generator được bắt ở compile trước bàn giao và đã sửa; không phải lỗi đã xảy ra trên Kaggle. Không chạy Tensor/Torch/model/autograd/HDF5 local hoặc khởi động Kaggle.
 
 Metadata audit supplementary: không có observed opposite containment-orbit pairs ở fit hoặc held; vì vậy diagnostic ấy ghi NOT_MEASURED, không tự gán arg-swap là false. Same-class multi-instance disambiguation không được cohort này kiểm. Code/API packaging tests không chứng minh gradient, CUDA parity, runtime, semantic scores hoặc caption quality.
 
