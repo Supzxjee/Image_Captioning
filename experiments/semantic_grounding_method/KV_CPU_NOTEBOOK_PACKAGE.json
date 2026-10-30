@@ -1,0 +1,28 @@
+{
+  "core_commit": "bfc54da3078ce241282643a4018698942f67f253",
+  "assets": {
+    "experiments/semantic_grounding_method/kv_data.py": "2d6fec1d00fea6dbc34396b60f868549ac86d17b6410f56ff47e3cf01ba28e39",
+    "experiments/semantic_grounding_method/prepare_kv_cpu.py": "9d4f6db2d9483d44f1f891520b2eb5fd8e186d84edfc86018b7945171eecde6b",
+    "experiments/semantic_grounding_method/test_kv_data.py": "d0ad46c4b7df313ffdbc56f9a2a0495795711c7a69c2e26f3388419e0b61ab4d",
+    "experiments/semantic_grounding_method/test_relation_kv_math.py": "0b3eca5419d20e6a544b1b22372b37d0e88e30a5d02e7f3737d7072f99cd2014",
+    "experiments/semantic_grounding_method/test_kv_source_fetch.py": "7e8aefe73db31e0a71b070ed809b5242f48d4864183c69ab8a0bd144f073e3ff",
+    "experiments/semantic_grounding_method/data/gain_metadata.json.gz": "62f43f771aec9feba31a2fbbb6fe7db2878f259979faac378b74a754822c7b67",
+    "experiments/relation_frames_inventory/inventory.py": "8975c6a221e3d769c5449901347717f8776c4ae191fb4fad5d3eb117fe18e578",
+    "experiments/relation_frames_inventory/sources/source_receipt.json": "c54bbd21e7e77b0a64c87bcfe67d98f875b3f53ba75e782221c921ac0c47d05d",
+    "experiments/relation_frames_inventory/V2_MANIFEST.json.gz": "6ca6af23d0a31043fecdf33398f5b60098be07cbeea9fb91cbfec4b314c2cfa7",
+    "experiments/relation_frame_pretrain/frame_data.py": "87c58a50142f68b1721323f7c53fa08e256bb5bc8aee3d7625262161ae1692de",
+    "experiments/concept_mass_grounding/TRAIN_PRESENCE.json.gz": "dd888949a1a8cc363efd760eb46012a7a6f736ac6b167d98be5303393b614117",
+    "fetch_vcoco_coco_instances.py": "790588f4cde7310f6153900d8aa5a6fb0a68856074c4992f90a6250481fcf4ea",
+    "audit_vcoco_alignment_data.py": "610453bc0ba56297b7b1966bf2ff2cb8926010d37a56c062d0dbceffc79f904e",
+    "captioning/__init__.py": "ad259f50a32265d298d027a888f801d378c4669313b8dab06e0653978ce30633",
+    "captioning/object_consistency.py": "5fbd75b0ff4a35f0475d460a294894009d6007f468e248a0e4b528aaa8fabf73",
+    "captioning/supervised_relations.py": "3e29fd60bbf166ae078581fb9ad34da6ce4462ee287f1c4eb9bbda2abd91f984",
+    "captioning/semantic_prompts.py": "a06f12dea63604f9db9d19b6922815db27a35b648a17059407ffaf26a2a0d511",
+    "captioning/visual_cache.py": "adbcc9678fff499fc767cdbf04a4966186a40729f51c5bfb2525e79f9b6b5fe1"
+  },
+  "notebook": "PREPARE_RELATION_KV_CPU.ipynb",
+  "notebook_sha256": "ce7205d070328968c9ed20f5b760867736a71b6434f0ffb4e7c03424a3c68981",
+  "no_model_execution": true,
+  "no_submission": true,
+  "accelerator": "None"
+}

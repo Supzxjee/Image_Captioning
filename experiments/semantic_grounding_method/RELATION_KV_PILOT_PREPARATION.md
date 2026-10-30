@@ -37,3 +37,14 @@ Karpathy JSON local tại `C:/KhoaLuanTotNghiep/Code/output/vcoco_alignment_week
 5. Ngân sách stage/train/eval cụ thể sau speed/memory preflight user-run; fail/incomplete phải archive log, không nhận completed từ tên ZIP. Người dùng tự chạy.
 
 Chưa có notebook training được bàn giao trong file này. Việc chuẩn bị được tiếp tục trong phạm vi đã đồng ý; không mở thêm họ phương pháp hoặc tự hứa đủ điều kiện nhận bài.
+
+
+## Bàn giao bước CPU (30/10/2026)
+
+Nearest review đã đóng tại `KV_NEAREST_METHOD_CLOSURE_2026-10-30.md`; claim là cải tiến kế thừa hẹp, chưa xác nhận mới/hiệu quả. Ontology và feasibility policy của bước CPU được khóa tại `RELATION_KV_CPU_PREPARATION_PROTOCOL.md` trước khi chạy matching; các ghi chú “chưa khóa” phía trên là thời điểm khảo sát nguồn.
+
+Notebook `PREPARE_RELATION_KV_CPU.ipynb`, core `bfc54da`, package `KV_CPU_NOTEBOOK_PACKAGE.json`. Accelerator=None, Internet ON, user Save & Run All. Năm input như expanded: concept-mass-c-c0-v111-v112, prompt-cache, visual-cache, objectdetectionecache, mscoco-2014 của vuthetam. Kiểm path ở cell đầu. Không cần relation-cache cũ hoặc prompt UPT mới.
+
+Đã kiểm19tests:5NumPy math +8synthetic metadata +3mock source +3static package. Bản raw Git export cũng chạy lại16math/metadata/mock tests PASS, không HDF5/Torch/model. Lượt export đầu bị Windows MAX_PATH ở thư mục test lồng sâu; chuyển transport test sang thư mục workspace ngắn đã PASS, không đổi logic nguồn. SHA package dùng raw Git bytes để tránh CRLF mismatch. Notebook 9367bytes, empty outputs, cells compile, GPU disabled, checkpoint chỉ hash. Chưa thực thi pipeline tải metadata/copy cache, CUDA hay mô hình; chưa có runtime đo được.
+
+User gửi `/kaggle/working/relation_kv_preparation_v1_review.zip`, giữ nguyên thư mục `relation_kv_preparation_v1`. `READY_FOR_MODEL_PREFLIGHT` chỉ là data/cache ready; nếu `NEEDS_SOURCE_REVIEW_NO_TRAINING` thì kiểm counts và bàn nguồn, không tự train hoặc nới gate. D/E training notebooks chưa bàn giao; khóa actual cohort/commonloss và ngân sách sau review này.
