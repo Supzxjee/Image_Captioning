@@ -1,5 +1,7 @@
 # Brainstorm: correspondence vùng–từ với bảo toàn lexical mass
 
+**Amendment sau nearest-method review,30/10:** đọc [bản phản biện mới](REGION_LEXICAL_NOVELTY_REVIEW_2026-10-30.md) trước khi dùng bản brainstorm này. Astra chọn SỬA, chưa triển khai: pointer/setloss/direct lexicalization đã có prior gầnNBT; massconstraint chỉ là safeguard, vẫn có phảnvídụEOS thắng do phân tánnounmass ngaycùngprefix. Globalmean key tuyến tính triệt tiêu giữaROI nên controlhaiarm cũ cần sửa. Minimum mới nếuuserchọn: matched unrestrictedcopy/M-local/nonlinearM-global, thêm U-projection evaluation; chưacode/GPU. Nội dung bên dưới giữ làm lịch sử proposal, không phải protocol đã chốt.
+
 30/10/2026. User giữ yêu cầu contribution căn chỉnh, không chọn đổi scope sang empirical-only. **Khuyến nghị một hướng: learned region→lexical pointer ở phân phối từ, giữ native captioner frozen và bảo toàn mass của tập từ đối tượng.** Chưa duyệt code/budget/GPU; đây là phương án để root phản biện/prior-check và user chốt.
 
 ## 1. Giả thuyết và delta

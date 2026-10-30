@@ -2,6 +2,19 @@
 
 Ngày 30/10/2026. Đây là brief để bạn nghiên cứu và phản biện, **chưa phải phương pháp đã chốt hoặc yêu cầu viết code**. Hãy trả lời bằng tiếng Việt. Bạn không cần đọc lại ZIP/log hay đoán nội dung các chat trước; các số liệu cần thiết đã được tổng hợp bên dưới.
 
+## Cập nhật sau khi Astra đối chiếu 5 primary methods
+
+Phần bên dưới giữ lại candidate và các câu hỏi ban đầu để bạn phản biện. Astra đã hoàn thành một focused method review, đọc các sections/equations liên quan (không toàn bộ bài/appendix) của NBT, LSTM-C, CBS, M3ID và HALC. **LSTM-C không phải DCC**; đừng nhầm tên hai phương pháp.
+
+- NBT đã có prefix/state→ROI→lexical output, sentinel và nhiều positive proposals. Positive-set sum của candidate so với average trong NBT chỉ khác một hằng số theo event nếu tập positive cố định, cùng gradient; không nhận set loss là mới.
+- [LSTM-C](https://openaccess.thecvf.com/content_cvpr_2017/papers/Yao_Incorporating_Copying_Mechanism_CVPR_2017_paper.pdf) đã trộn generation/copy và chuẩn hóa; [CBS](https://arxiv.org/pdf/1612.00576) điều khiển nội dung bằng lexical constraints. [M3ID](https://arxiv.org/pdf/2403.14003) và [HALC](https://arxiv.org/pdf/2403.00425) đã đưa visual evidence vào việc sửa token probabilities. Đừng nhận "đưa grounding trực tiếp vào đầu ra" là firstness.
+- Công thức candidate rút gọn thành p_new(w)=p_B(w)*q_c/b_c trong class c: tương đương class logit correction log(q_c/b_c). Correspondence nằm trong cách học q, không phải việc đặt tên probability interface.
+- Cả phản ví dụ EOS và lỗi linear common-key cancellation ở mục6 vẫn có hiệu lực. Nếu giữ control global appearance, đề nghị scorer additive nonlinear v^T tanh(W_h h_t + W_a e_i + W_g geometry_i), thay e_i bằng mean trước tanh; đây là sửa control bằng thành phần chuẩn, không novelty.
+- Astra chọn **SỬA, chưa chọn triển khai**. Khác biệt còn lại là thích nghi grounded lexical generation vào strong frozen host, lấy GT class từ IoU mà không ép detector class đúng, và ràng buộc phạm vi thay đổi xác suất. Chưa chứng minh vấn đề tích hợp vào host thực sự do coupling mass gây ra hoặc thiết kế này đủ mới.
+- Minimum nếu sau này được chọn: U-local pointer/copy không ràng buộc; M-local có mass constraint; M-global nonlinear, cùng ROI lexical values. Có thêm U-projected inference-only giữ learned weights/conditionals tại cùng prefix nhưng đưa mass về host. M−U là tổng hiệu ứng thay thiết kế, không phải pure mass effect. Thêm nhánh không tạo novelty.
+
+**Yêu cầu với Argon:** hãy cân nhắc độ mới cơ chế hiện thấp và chủ động sửa/bỏ candidate nếu cần, không chỉ tìm thêm đối chứng để bảo vệ nó. Nếu đề xuất thay hướng, chỉ rõ closest prior, delta và phép thử quyết định. Không mặc định phải giải quyết bằng probability correction. Các facts chưa có gồm lexical/proposal coverage, số proposal đúngbox nhưng sai detectorclass, local semantic signal thực và quota hiện tại.
+
 ## 1. Điều tôi cần bạn giải quyết
 
 Tôi làm đề tài image captioning có căn chỉnh ngữ nghĩa–thị giác. Tôi cần một phương pháp hoặc cải tiến cụ thể, có cơ sở và có khả năng kiểm chứng để viết bài đầu tiên tại một tạp chí đại học trong nước. Mục tiêu thực nghiệm là tăng CIDEr và giảm hallucination so với baseline mạnh đã có, đồng thời chứng minh cơ chế căn chỉnh góp phần vào kết quả.
