@@ -5,11 +5,12 @@ Cập nhật: 31/10/2026, giờ Việt Nam. File này là bản tóm tắt để
 ## Mục tiêu và cách làm việc
 
 - Tăng CIDEr và giảm hallucination so với baseline mạnh A; cần đóng góp căn chỉnh thị giác–ngữ nghĩa có bằng chứng cho bài báo đầu tiên tại tạp chí đại học trong nước.
-- Cộng sự phải phản biện, không chiều ý. Astra định hướng, agent phản biện/triển khai, người dùng chốt hướng và tự chạy Kaggle.
+- Cộng sự phải phản biện, không chiều ý. Từ31/10, trao đổi Codex1/Codex2 ở tài khoản khác qua [RESEARCH_EXCHANGE.md](RESEARCH_EXCHANGE.md); không nhắn chat Astra cũ. Codex2 dự kiến Astra High dẫn hướng/brainstorm và review độc lập; Codex1 triển khai/phản biện; Gemini bổ sung. Người dùng chốt hướng/ngân sách và tự chạy Kaggle.
 - Không tự chạy mô hình/Torch/autograd local hoặc notebook Kaggle. Kiểm tra metadata/NumPy/static/mock được phép; ghi rõ giới hạn. Quy trình tại [AGENTS.md](AGENTS.md).
 
 ## Hiện đang ở đâu
 
+- Đã tạo file trao đổi GitHub `RESEARCH_EXCHANGE.md`, câu hỏi X001 chờ Codex2 đọc/phản hồi do người dùng chuyển link. Chưa nhận phản hồi; không tự gửi qua thread tools. File có mục tiêu, evidence, D116 recovery, pilot D/E và mẫu trao đổi; workflow-only, không thêm experiment row vào sheet.
 - **Lỗi mới D Saved Output116:** user báo NumPy int64 không serialize tại summary/reporting, có checkpoint.bin; phiên đã kết thúc. [Root cause/recovery](experiments/semantic_grounding_method/KV_JSON_FAILURE_V116.md). Chưa kiểm worker artifacts, không nhận COMPLETE từ checkpoint name. Không yêu cầu retrain; đãbàngiaoCPU-only recovery exact116 tại commitb6bb498 (fixcore744264b), chưauser-run, từ cached outputs. Sửa native int ở paired_false +strict NumPy scalar JSON,4regression+1full synthetic cached-summary testsPASS, khôngTorch/model/GPU. Future D/E notebooksđãrepin744264b/thêm5regression/syntheticchecks trướcGPU,deliveryb6bb498. R220hàng247đãghi/đọclạilỗi+recovery,khôngđánh giámethodfailhoặcyêucầuretrain. Quota20h/account bên dưới là báo cáo trước lượt116, không coi hiện tại còn20h.
 
 
@@ -55,7 +56,7 @@ Cập nhật: 31/10/2026, giờ Việt Nam. File này là bản tóm tắt để
 - Không chứng minh giảm hallucination; G không có lợi ích riêng rõ so với C. G có211weak-negativeevents, không phải zero-event. Neutral-prefix separation G cũng không hơn C. Negative là nhãn yếu từ annotation/reference absence + detector veto, không phải verified visual absence.
 - Quyết định: giữ C như ứng viên tăng chất lượng; dừng mở rộng G hiện tại. C0 kiểm xem preservation có đóng góp ngoài continuation+KL không. Chưa được gọi C là phương pháp grounding đã xác nhận.
 
-## Bước tiếp theo và điều chưa chốt
+## Lịch sử quyết định trước K/V — không phải danh sách công việc đang chờ
 
 1. Dừng mở rộng/tuning C/G/C0 trên cohort này theo protocol đã chốt. Giữ C/C0 làm empirical quality candidates, giữ A làm reference; chưa promote positive preservation thành phương pháp grounding đã có hiệu quả.
 2. Astra đã chốt đóng vòng C/G/C0, không thêm run để cứu gate: [EXPANDED_RESEARCH_DECISION.md](experiments/concept_mass_grounding/EXPANDED_RESEARCH_DECISION.md). Giữ C như practical quality candidate, C0 là đối chứng; chưa đạt dual goal/added alignment benefit. Trình user duyệt scope bài thực nghiệm “Đánh giá bảo toàn xác suất khái niệm trong tinh chỉnh mô hình sinh mô tả ảnh”, hoặc trao đổi lại thời hạn nếu giữ mục tiêu contribution mới đã chứng minh. User không chấp nhận đổi scope thành bài so sánh và đã yêu cầu brainstorm lại một đóng góp căn chỉnh; chưa duyệt candidate/code/GPU mới.
@@ -67,5 +68,5 @@ Cập nhật: 31/10/2026, giờ Việt Nam. File này là bản tóm tắt để
 
 - Repo GitHub: `https://github.com/Supzxjee/Image_Captioning`, branch main.
 - Sheet `Experiment Registry`: `https://docs.google.com/spreadsheets/d/1XZ5iuyCs5JP8VE6dT7AYdVTiY1_nK4C_QdXs5ppw6FA/edit`, sheetId797499113. R213 kết quả C0 ở hàng240 đã ghi và đọc lại xác nhận; R212 ở hàng239; luôn đọc metadata/sentinel mới trước khi ghi.
-- Chat Astra: `01a15544-6a7a-7903-a6e1-23e7b9f6caa6`, host local, tên `Đề xuất hướng căn chỉnh ngữ nghĩa–th`. Người dùng đã ủy quyền trao đổi nghiên cứu trong lịch sử phiên.
+- Chat Astra cũ chỉ là lịch sử; chỉ đạo31/10 đã dừng kênh đó. Không dùng lại quyền nhắn thread từ các đoạn cũ. Kênh hiện tại là `RESEARCH_EXCHANGE.md` với Codex2 ở tài khoản khác, người dùng chuyển link.
 - A có prompt gốc; không gọi A là no-prompt. I/J và các nhánh trước chưa vượt A; chi tiết nằm trong thư mục thực nghiệm, không cần lặp mọi nhánh để tiếp tục C0.
