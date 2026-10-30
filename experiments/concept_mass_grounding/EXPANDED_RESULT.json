@@ -1,0 +1,233 @@
+{
+  "date": "2026-10-30",
+  "status": "AUDITED_EXPANDED_EVALUATION_COMPLETE",
+  "zip_sha256": "4397bbc5a1f47d6234cab232ebd57e5a098a49a7fe7d22e7921d080c1f91665e",
+  "source_commit": "66456737ca25448f8e7e975e45785372040a4fcc",
+  "checks_passed": 28165,
+  "count": 4000,
+  "metrics": {
+    "A": {
+      "CIDEr": 1.1897711291207747,
+      "CHAIRs": 0.05975,
+      "CHAIRi": 0.0391733497840839,
+      "Recall": 0.46808678500986195,
+      "mean_words": 10.12875,
+      "Bleu_1": 0.7657075169043788,
+      "Bleu_2": 0.6082949776666511,
+      "Bleu_3": 0.4654370885290359,
+      "Bleu_4": 0.3526511146504494,
+      "METEOR": 0.2877345337838489,
+      "ROUGE_L": 0.5755566788207223,
+      "counts": {
+        "hallucinated_captions": 239,
+        "hallucinated_mentions": 254,
+        "object_mentions": 6484,
+        "recalled_unique": 5933,
+        "reference_unique": 12675
+      }
+    },
+    "C0": {
+      "CIDEr": 1.2045604293298307,
+      "CHAIRs": 0.05875,
+      "CHAIRi": 0.03814211011996309,
+      "Recall": 0.4710848126232742,
+      "mean_words": 9.995,
+      "Bleu_1": 0.7721316394918283,
+      "Bleu_2": 0.6153391766014211,
+      "Bleu_3": 0.4722036420264101,
+      "Bleu_4": 0.35887157251274215,
+      "METEOR": 0.2889860756350061,
+      "ROUGE_L": 0.5786355602257536,
+      "counts": {
+        "hallucinated_captions": 235,
+        "hallucinated_mentions": 248,
+        "object_mentions": 6502,
+        "recalled_unique": 5971,
+        "reference_unique": 12675
+      }
+    },
+    "C": {
+      "CIDEr": 1.2070416700126538,
+      "CHAIRs": 0.0575,
+      "CHAIRi": 0.03751736915238536,
+      "Recall": 0.4702958579881657,
+      "mean_words": 9.93825,
+      "Bleu_1": 0.773792756539216,
+      "Bleu_2": 0.6172606469684594,
+      "Bleu_3": 0.4742090783609129,
+      "Bleu_4": 0.36062821635286235,
+      "METEOR": 0.28870273582956235,
+      "ROUGE_L": 0.5791112467676683,
+      "counts": {
+        "hallucinated_captions": 230,
+        "hallucinated_mentions": 243,
+        "object_mentions": 6477,
+        "recalled_unique": 5961,
+        "reference_unique": 12675
+      }
+    }
+  },
+  "contrasts": {
+    "C-C0": {
+      "CIDEr": {
+        "delta": 0.0024812406828231826,
+        "paired95_ci": [
+          -0.00135716233511175,
+          0.006262829041919476
+        ]
+      },
+      "CHAIRs": {
+        "delta": -0.0012499999999999942,
+        "paired95_ci": [
+          -0.0027500000000000024,
+          0.0002500000000000002
+        ]
+      },
+      "CHAIRi": {
+        "delta": -0.0006247409675777249,
+        "paired95_ci": [
+          -0.0015275598225897894,
+          0.00023192604749500104
+        ]
+      },
+      "Recall": {
+        "delta": -0.0007889546351084742,
+        "paired95_ci": [
+          -0.001856748035166489,
+          0.00031043909674546003
+        ]
+      },
+      "mean_words": {
+        "delta": -0.05674999999999919,
+        "paired95_ci": [
+          -0.07474999999999987,
+          -0.039250000000000895
+        ]
+      },
+      "McNemar": {
+        "worse": 2,
+        "better": 7,
+        "discordant": 9,
+        "p_two_sided": 0.1796874999999996
+      }
+    },
+    "C-A": {
+      "CIDEr": {
+        "delta": 0.017270540891879183,
+        "paired95_ci": [
+          0.008818907607254522,
+          0.025852987175757087
+        ]
+      },
+      "CHAIRs": {
+        "delta": -0.002249999999999995,
+        "paired95_ci": [
+          -0.006000000000000005,
+          0.0015000000000000013
+        ]
+      },
+      "CHAIRi": {
+        "delta": -0.001655980631698535,
+        "paired95_ci": [
+          -0.0041003317669251645,
+          0.0007594795428554826
+        ]
+      },
+      "Recall": {
+        "delta": 0.00220907297830375,
+        "paired95_ci": [
+          -0.0003124761981485785,
+          0.004726298113749476
+        ]
+      },
+      "mean_words": {
+        "delta": -0.1905000000000001,
+        "paired95_ci": [
+          -0.229750000000001,
+          -0.15075000000000038
+        ]
+      },
+      "McNemar": {
+        "worse": 26,
+        "better": 35,
+        "discordant": 61,
+        "p_two_sided": 0.30567741986311736
+      }
+    },
+    "C0-A": {
+      "CIDEr": {
+        "delta": 0.014789300209056,
+        "paired95_ci": [
+          0.006062943648548707,
+          0.023628838061796158
+        ]
+      },
+      "CHAIRs": {
+        "delta": -0.0010000000000000009,
+        "paired95_ci": [
+          -0.0049999999999999975,
+          0.0029999999999999957
+        ]
+      },
+      "CHAIRi": {
+        "delta": -0.0010312396641208102,
+        "paired95_ci": [
+          -0.0035287765269540004,
+          0.0014331811144831384
+        ]
+      },
+      "Recall": {
+        "delta": 0.002998027613412224,
+        "paired95_ci": [
+          0.00048488375035575515,
+          0.005497571024098383
+        ]
+      },
+      "mean_words": {
+        "delta": -0.13375000000000092,
+        "paired95_ci": [
+          -0.17225000000000001,
+          -0.09600000000000009
+        ]
+      },
+      "McNemar": {
+        "worse": 30,
+        "better": 34,
+        "discordant": 64,
+        "p_two_sided": 0.7079807541347833
+      }
+    }
+  },
+  "decision": {
+    "conditions": {
+      "cider_C_A": true,
+      "hallucination_C_A": false,
+      "hallucination_C_C0": false,
+      "cider_cost_C_C0": true,
+      "recall_C_A": true,
+      "recall_C_C0": true
+    },
+    "preservation_relative": false,
+    "dual_goal_vs_A": false,
+    "joint_pass": false
+  },
+  "manifest_sha256": "8f68ab9c45ab9c2d11618e837b8d945f20c0c3148c3b1705ff352cdf244a6fab",
+  "checkpoint_sha256": {
+    "A": "630a4b6d4bcef84515bbd44a52b6474811377bda53caa9722c5806795fa7f901",
+    "C": "99f7707f73fe5006592ea9ccbf04bce28a53a65a022cddc5c24ba6a78923c2f4",
+    "C0": "5d92cd5cb48077c7332bb3ff9b295cad1df5d76ede818adabef28035f055fa9d"
+  },
+  "timing": {
+    "preparation_seconds": 1447.794338499,
+    "worker_seconds": [
+      181.24548486899994,
+      177.57153275600012
+    ]
+  },
+  "interpretation": "C has higher CIDEr and fewer hallucinations as point estimates, but neither preservation-specific benefit nor dual-goal success passes the prelocked gate. Stop current method claim; no tuning on these4000images.",
+  "limits": [
+    "One seed, historically reused validation, post-pilot evaluation; no independent test.",
+    "Official CIDEr/other caption metrics not rerun locally; saved per-image CIDEr aggregates and paired intervals reproduced.",
+    "No model/checkpoint/HDF5 loading or neural execution locally; binary identities are user-run receipts and source checks."
+  ]
+}

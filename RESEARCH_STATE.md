@@ -10,7 +10,11 @@ Cập nhật: 30/10/2026, giờ Việt Nam. File này là bản tóm tắt để
 
 ## Hiện đang ở đâu
 
-**User chạy eval core13daa4f và fail metadata hash trước prepare/inference. Lỗi đóng gói CRLFWindows vsGitLF, không đổi4000IDs. Đã sửa core6645673 + eol=lf; fixpackage08a58e8đãpush/sheetR216hàng243đãđọclại xác nhận; [receipt/hướng dẫn](experiments/concept_mass_grounding/MANIFEST_LF_FIX.md), [cell sửa phiên đang mở](experiments/concept_mass_grounding/FIX_EXPANDED_MANIFEST_LF_CELL.py). Hai notebooks đã regenerate, CPU-saveweights unchanged.16localtestsPASS +8metadatachecks trên36exportedGitLFassetsPASS(Windows,khôngLinuxOS/CUDA). Actualcache/GPU/metrics chưa chạy. User đã báo14hGPU trước lỗi. Chờ user dùng repaircell+runcellcuối, hoặc notebookeval mới nếu mấtkernel. Khôngtraining.**
+**Expanded4000 đã hoàn tất đúng fixedcore6645673; không dùng hotfixoverlay. [EXPANDED_RESULT.md](experiments/concept_mass_grounding/EXPANDED_RESULT.md), [JSON](experiments/concept_mass_grounding/EXPANDED_RESULT.json), [audit](experiments/concept_mass_grounding/audit_expanded_results.py). C có CIDEr1.207042/230falsecaptions; A1.189771/239; C0 1.204560/235. CIDErC−A+.017271 CI[+.008819,+.025853]; C−C0+.002481 CI[−.001357,+.006263]. HallucinationC−A/C−C0 không qua bootstrap/exactMcNemargates(.306/.180). JointgateFAIL; theo protocol dừngclaim/đầu tư đợt hiện tại, không tuning hay tăngn tiếp. Đã gửi facts cho Astra, chờ quyết định/trao đổi user cho hướng mới hoặc đổi scope; chưa triển khai nhánh mới.**
+
+- 4000uniqueprimary+16devsentinels(excluded),2ranks2000/model,alltensor/checkpoint/source identitiesPASS,paritymismatches0. Metadata/CHAIRcounts/ratios/20kCI kiểm lại, khôngneural/HDF5/officialscorerlocal. ZIP đọc1lần tại `review/expanded_loaded.json` ignored. One seed/reusedval/postpilot; khôngindependenttest/pooled5000.
+- C falsementions254→243 vàfalsecaptions239→230 vsA là positivepointsignal thật, CHAIRi không chỉmẫu số. Nhưng95%CIvẫnchứa0 nên chưa chứngminh giảmhalu hoặcaddedbenefitkeep. Không gọi là no-effect/equivalence/harm.
+- Checkpoint dataset đã đượcuser-run dùng đúng path `/kaggle/input/datasets/ducanh2403/concept-mass-c-c0-v111-v112`(C.bin,C0.bin), hashesfixed. Prep1447.8s,workermax181.25s; quota14h là báo cáo trước lượt này, KHÔNG coi là hiện tại. LỗiCRLFtrướcđó đã được sửa trước evaluation; [receipt](experiments/concept_mass_grounding/MANIFEST_LF_FIX.md) giữ lại lịch sử.
 
 - [C0_RESULT.md](experiments/concept_mass_grounding/C0_RESULT.md), [C0_RESULT.json](experiments/concept_mass_grounding/C0_RESULT.json), [audit_c0_results.py](experiments/concept_mass_grounding/audit_c0_results.py). Review text cached ignored tại `experiments/concept_mass_grounding/review/C0_loaded.json`, ZIP đã đọc1lần.
 - C0 CIDEr1.230741, CHAIRs52/1000, hallucinated mentions53/1646,recall.460498,words10.044. A52caption/53mentions: chưa giảm hallucination; CHAIRi giảm do mẫu số tăng.
@@ -18,7 +22,7 @@ Cập nhật: 30/10/2026, giờ Việt Nam. File này là bản tóm tắt để
 - Same4000uniqueTRAIN/order/ref/seed42,500updates,batch8,init/frozen/input/tensor/payload hashes;2rankpreflightPASS,Aexact. Effective KL.1 keep0 negative0, zero weighted aux gradient ở46logged rank snapshots.274metadata assertionsPASS; không chạy/load model/H5 local.
 - [C0_PROTOCOL.md](experiments/concept_mass_grounding/C0_PROTOCOL.md), [CONCEPT_MASS_C0_2GPU.ipynb](experiments/concept_mass_grounding/CONCEPT_MASS_C0_2GPU.ipynb). Package7c8b602/corebb84be8; ablation được chọn sau pilot C/G, test chưa dùng.
 - Giữ `/kaggle/working/concept_mass_C0_v2/checkpoint.bin`, SHA256 `5d92cd5cb48077c7332bb3ff9b295cad1df5d76ede818adabef28035f055fa9d`.
-- Người dùng xác nhận nguồn checkpoint: C = notebook version111, C0 = version112 của notebook đang dùng `ducanh2403/2-vi-cai-kia-qua-nhieu`. Notebook SAVE_CONCEPT_C_C0_V111_V112_DATASET.ipynb sẽ tải đúngversion vàfullSHA, khônglatest. Mount mặc định dự kiến `/kaggle/input/datasets/ducanh2403/concept-mass-c-c0-v111-v112`; chưa xác nhận dataset đã tạo. User báo14hGPU mới.
+- Người dùng xác nhận nguồn checkpoint: C = notebook version111, C0 = version112 của notebook đang dùng `ducanh2403/2-vi-cai-kia-qua-nhieu`. Notebook SAVE_CONCEPT_C_C0_V111_V112_DATASET.ipynb sẽ tải đúngversion vàfullSHA, khônglatest. Dataset mount đã xác nhận qua lượt evaluationcomplete. User báo14hGPU trước lượt chạy, giờ cần số mới nếu đề xuấtGPUtiếp.
 - A checkpoint `/kaggle/input/datasets/ducanh2403/pair-source-fullframe-ce/upt_hidden_caption_A/checkpoint.bin`, SHA256 `630a4b6d4bcef84515bbd44a52b6474811377bda53caa9722c5806795fa7f901`.
 - Kết quả C0 và audit đã push ở commit `5efa385`; sheet R213 đã xác minh. Đã gửi Astra số liệu và giới hạn, không yêu cầu đọc lạiZIP. Quota24h là báo cáo cũ, không coi là hiện tại.
 
@@ -40,10 +44,9 @@ Cập nhật: 30/10/2026, giờ Việt Nam. File này là bản tóm tắt để
 
 ## Bước tiếp theo và điều chưa chốt
 
-1. Sửa lỗiLF ở phiên evalđangmở hoặc dùng notebookeval mới; KHÔNG bỏ test/assert hoặc chạy lạiCPUupload/training. Repairvariant giữupstream13daa4f với `technical_amendment` và sourcehashoverlay trongconfig/protocol: audit phải xét receipt, không mặc định source khớpGit13daa4fnguyênbản. Gửi `concept_mass_expanded_eval_4000_manifest_lf_fix_review.zip`(repair) hoặc reviewZIP thường(newnotebook). Chưa có kết quảexpanded.
-2. C0 đã có kết quả: giữ nó làm ứng viên chất lượng/đối chứng, chưa chọn thành mô hình cuối. Hai objective keep/negative chưa có ích lợi riêng rõ trên endpoint; không gọi continuation+KL là phương pháp căn chỉnh mới.
-3. Đọc phản hồi Astra mới nhất, trao đổi với người dùng và ghi quyết định trước nhánh tiếp theo. Không tự tăng steps/hệ số/seed hoặc mở một họ phương pháp mới để cứu claim. C hơn C0 chút ở neutral-prefix separation (.106577 so .106161), chưa thành lợi ích caption.
-4. Người dùng đã đồng ý bàn và chốt một evaluation mở rộng, không training. Protocol/manifest đã khóa trước inference; chưa có run mới. Historical remainder4000 chứa797currentdevIDs nên đã sửa thành val_extra4000_cg theo exactgainmetadata; xem protocol. Mở rộng TRAIN vẫn chưa được duyệt. Tăng ảnh đánh giá độc lập giảm bất định; tăng ảnh huấn luyện đổi mô hình và cần đối chứng cùng ngân sách. Nếu khóa phương pháp rồi đánh giá lớn độc lập cho thấy giảm rõ, đó là bằng chứng có ích. Không dùng test làm vòng tuning tiếp.
+1. Dừng mở rộng/tuning C/G/C0 trên cohort này theo protocol đã chốt. Giữ C/C0 làm empirical quality candidates, giữ A làm reference; chưa promote positive preservation thành phương pháp grounding đã có hiệu quả.
+2. Đọc phản hồi Astra sau EXPANDED_RESULT, rồi trao đổi/chốt với user về hướng mới hoặc scope bài. Chưa có quyền tự triển khai kiến trúc/hướng mới, train thêm, seed sweep hoặc lấy test để tuning.
+3. Khi viết báo cáo: ghi cả CIDEr gain đã quan sát, absolute false-count giảm nhưng uncertainty còn rộng; không bỏ C0 hoặc giấu gateFAIL. Không so rawCIDEr dev1000 với4000 do khácIDF; không tự cộng CIDEr để thành5000.
 
 ## Các điểm phối hợp cần nhớ
 
