@@ -10,6 +10,8 @@ Cập nhật: 31/10/2026, giờ Việt Nam. File này là bản tóm tắt để
 
 ## Hiện đang ở đâu
 
+- Yêu cầu mới của user: mở rộng brainstorm tìm phương pháp có đóng góp, không giới hạn K/V/P3/diagnostic/L_real. Đã ghi X006 trong RESEARCH_EXCHANGE, đề nghị3–5hướng khác cơ chế và1hướng ưu tiên có nearestmethod/delta/supervision/phép bác bỏ. Đây là brainstorm, chưa duyệt code/run/budget mới; không phải chờ hoàn tất các audit X004 mới được nghĩ hướng khác.
+
 - **D116 recovery và E endpoint500 đã hoàn tất.** [Kết quả](experiments/semantic_grounding_method/KV_DE_RESULT.md), [JSON](experiments/semantic_grounding_method/KV_DE_RESULT.json), [audit](experiments/semantic_grounding_method/audit_kv_de_results.py).531metadata/NumPyassertionsPASS; ZIPđọcmộtlần/cachedignored `review/kv_D_endpoint_loaded.json`, `kv_E_endpoint_loaded.json`. Khôngrerunmodel/H5/scorerlocal.
 - Cùngdev1000: C0CIDEr1.230741/52falsecaptions; D1.228833/60; E1.221030/55. E−D−.007803CI[−.016504,+.000553]; E−C0−.009711CI[−.026108,+.006888]. Egiảm5falsecaptionvsD(exactp.0625) nhưngtăng3vsC0(p.5078125). **ContinuegateFAIL**, khôngscale/tuning/epochs/seedđểcứuclaim; khôngequivalence/noeffectclaim.
 - EffectiveauxiliarymacroAUROC/queryconcordance:D.832842/.895833,E.824002/.833333 (Epre.837727/.895833). SemanticoperationalgatePASSnhưngactualdecoderconcordanceC0/D/Eđều.697917. Reader-off64:Dđổi1,E0captions,logitsKLkhác0; fullD/Ekhác47captions. Phùhợpcâuhỏirepresentation→captiongap,chưachứngminhnguyênnhân/branchunused/groundingthànhcông.
