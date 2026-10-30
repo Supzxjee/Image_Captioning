@@ -1,15 +1,17 @@
 {
-  "core_commit": "14026330434b09663dbb5075fe4b84b53d375e25",
+  "core_commit": "744264b55496935ad5768536c8d19ec1601d424d",
   "assets": {
     "experiments/semantic_grounding_method/kv_pilot_data.py": "8a7c747495729b5829b99a441c5c93e29d45c07563a598880e3183b469de1528",
     "experiments/semantic_grounding_method/kv_pilot_model.py": "2279384a6947eefe875c96ea3fb6b996f3544548cd0e568b591197f109f585d0",
     "experiments/semantic_grounding_method/kv_pilot_preflight.py": "d674f49a66e6c9385c3db9adb9d7144642234e5ff142066e395e004351db6f8c",
     "experiments/semantic_grounding_method/kv_pilot_training.py": "9f76ef9c04341060ef2f80fd712814210ff78c99d060275d09f684e28e19ab25",
-    "experiments/semantic_grounding_method/kv_pilot_evaluate.py": "05051ec6f28f591b4fa0022eb237bc0f71d4f5191fb91fec1e02023d89e059b1",
+    "experiments/semantic_grounding_method/kv_pilot_evaluate.py": "6386de387919ba696bdc19b5ecbc46ea75e4b61396ae8e79851c3d47e312c734",
     "experiments/semantic_grounding_method/run_kv_pilot.py": "f0b3c8113f96ce56268b3549e038c08d8c5e19df0cc36caab48e346de1bfc8cf",
     "experiments/semantic_grounding_method/test_kv_pilot_data.py": "9ab80f90e56e4416e94f0c6770559ae441f6ab3c1e5a41130a13e74680b99b2e",
     "experiments/semantic_grounding_method/test_relation_kv_math.py": "0b3eca5419d20e6a544b1b22372b37d0e88e30a5d02e7f3737d7072f99cd2014",
-    "experiments/semantic_grounding_method/kv_data.py": "2d6fec1d00fea6dbc34396b60f868549ac86d17b6410f56ff47e3cf01ba28e39",
+    "experiments/semantic_grounding_method/test_kv_json_regression.py": "9b5bd4ae8ca6edeacfc15f1c80f98fb992526f36f8f2d5eca3411a9a533c9462",
+    "experiments/semantic_grounding_method/test_kv_summary_recovery.py": "c154d95eff9008972c8b75a7e5910a69c70531ef945236f1f5d8ce5eb688f4ef",
+    "experiments/semantic_grounding_method/kv_data.py": "37cd1501237cf43a0e919f437b7ea046c824a6db7a8e2748084d93d1fc207901",
     "experiments/semantic_grounding_method/KV_SAVE_V115_PACKAGE.json": "82521c3949d6129d024620aef6fe9e35f3d1074c4051d05a54a0db1ff712c964",
     "experiments/semantic_grounding_method/KV_NATIVE_TEXT_AUDIT.json": "73fe5588e066522d0c236ffa78189ad091526e9c27b598cbc41ad464d7783506",
     "experiments/semantic_grounding_method/data/gain_metadata.json.gz": "62f43f771aec9feba31a2fbbb6fe7db2878f259979faac378b74a754822c7b67",
@@ -32,13 +34,13 @@
   "notebooks": {
     "D": {
       "file": "RELATION_KV_D_2GPU.ipynb",
-      "bytes": 12654,
-      "sha256": "1ecbcde9475f7c83a26c2bf2dce1fdc89ad114ee5628963e95b84690fea2fb09"
+      "bytes": 13068,
+      "sha256": "f19a63e405c2e9b0c0ab525d76d68fdfe5782e036a5d3fd445f5139791fb790f"
     },
     "E": {
       "file": "RELATION_KV_E_2GPU.ipynb",
-      "bytes": 12654,
-      "sha256": "624d4f82496801009c74d86d992a348355592d1a52d3d28cdf75b07fc005cde8"
+      "bytes": 13068,
+      "sha256": "35b0ac2d626e962fb7aac7cafb26e19d937a6844c09d6858b30b282d9bdf807d"
     }
   }
 }
