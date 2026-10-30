@@ -1,5 +1,7 @@
 # Hướng chọn: dùng grounding có chung referent để chọn caption hoàn chỉnh
 
+**Phản hồi người dùng sau khi trình đề xuất, 30/10:** người dùng đánh giá mức cải tiến hiện chưa đủ thuyết phục cho bài báo và chưa chọn triển khai. Root đã phản hồi Astra yêu cầu tìm một delta cơ chế rõ hơn so nearest method. Bản này giữ như ứng viên tham khảo/dự phòng, không phải hướng thực nghiệm đã được chọn; không suy đoán venue chắc chắn chấp nhận hay từ chối. Chưa code/GPU.
+
 30/10/2026. **Astra chọn hướng này để phát triển và để root/user phản biện, chưa duyệt triển khai.** Không quay về pointer/veto. Claim là một cải tiến có kế thừa cho đường quyết định caption, không phát minh graph matching/MAP. Nearest-method/readscope/hash: [reading notes](SHARED_REFERENT_READING_2026-10-30.md).
 
 ## 1. Ba việc và ba hướng đã cân nhắc
