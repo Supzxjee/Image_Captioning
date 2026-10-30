@@ -10,7 +10,7 @@ Cập nhật: 31/10/2026, giờ Việt Nam. File này là bản tóm tắt để
 
 ## Hiện đang ở đâu
 
-- **Lỗi mới D Saved Output116:** user báo NumPy int64 không serialize tại summary/reporting, có checkpoint.bin; phiên đã kết thúc. [Root cause/recovery](experiments/semantic_grounding_method/KV_JSON_FAILURE_V116.md). Chưa kiểm worker artifacts, không nhận COMPLETE từ checkpoint name. Không yêu cầu retrain; đang chuẩn bị CPU-only recovery exact116 từ cached outputs. Sửa native int ở paired_false +strict NumPy scalar JSON,4regression+1full synthetic cached-summary testsPASS, khôngTorch/model/GPU. Future notebooks sẽ thêm tests trước GPU. Quota20h/account bên dưới là báo cáo trước lượt116, không coi hiện tại còn20h.
+- **Lỗi mới D Saved Output116:** user báo NumPy int64 không serialize tại summary/reporting, có checkpoint.bin; phiên đã kết thúc. [Root cause/recovery](experiments/semantic_grounding_method/KV_JSON_FAILURE_V116.md). Chưa kiểm worker artifacts, không nhận COMPLETE từ checkpoint name. Không yêu cầu retrain; đãbàngiaoCPU-only recovery exact116 tại commitb6bb498 (fixcore744264b), chưauser-run, từ cached outputs. Sửa native int ở paired_false +strict NumPy scalar JSON,4regression+1full synthetic cached-summary testsPASS, khôngTorch/model/GPU. Future D/E notebooksđãrepin744264b/thêm5regression/syntheticchecks trướcGPU,deliveryb6bb498. R220hàng247đãghi/đọclạilỗi+recovery,khôngđánh giámethodfailhoặcyêucầuretrain. Quota20h/account bên dưới là báo cáo trước lượt116, không coi hiện tại còn20h.
 
 
 - User đã duyệt giữ K/V làm ứng viên chính, nearest-check rồi pilot D/E nhỏ. Quota mới: khoảng **20 giờ GPU mỗi tài khoản**. Không tự chạy notebook/model; user chạy.
