@@ -144,7 +144,8 @@ def held_diagnostics(model,data,tok,device,rank):
         for i,r in enumerate(facts):
             records.append(dict(r,pre_score=float(pre[i]),effective_score=float(effective[i]),
                                 C0_decoder_score=likelihoods['C0'][i],end_decoder_score=likelihoods['end'][i]))
-    held_indices = [data.row[i] for i in sorted({r['image_id'] for r in rows})]
+    held_image_ids = sorted({r['image_id'] for r in data.aux['partitions']['held']})
+    held_indices = [data.row[i] for i in held_image_ids[rank::2]]
     c0,_ = predict(model,data,tok,held_indices,device,teacher=True)
     end,_ = predict(model,data,tok,held_indices,device)
     return dict(records=records,C0_captions=c0,end_captions=end,relation_caption_truth='NOT_ESTABLISHED',
