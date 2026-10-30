@@ -2,6 +2,8 @@
 
 30/10/2026. **Một corechange để root/user đánh giá; chưa xác nhận novelty, chưa chọn triển khai/code/GPU.** Shared-referent reranking chỉ còn dự phòng sau phản hồi user. Không quay về attribution/T, generic latent planner, scalar veto hoặc mass-envelope.
 
+**Amendment 30/10, sau đoạn lịch sử trên:** user đã đồng ý giữ K/V làm ứng viên chính, hoàn tất nearest-method check rồi chuẩn bị pilot D/E nhỏ. [Nearest-method closure](KV_NEAREST_METHOD_CLOSURE_2026-10-30.md) chọn (a): có cơ sở pilot như cải tiến kế thừa, chưa xác nhận tính mới hoặc hiệu quả. Multi-key/shared-value memory và group averaging đều đã có prior; E còn tương đương logsumexp group addressing với một value/fact, không phải attention operator mới. Đúng một core change giữ nguyên. Ontology, nguồn nhãn, common-loss activation và runtime budget còn phải khóa trong protocol; không suy quyền chạy GPU từ amendment này.
+
 ## Gap → mechanism, viết thẳng
 
 **CSA-Net dùng object/relation word prototypes để chọn/fuse semantic prompts vào region features; cùng nguồn biểu diễn cung cấp cả key lẫn value của cross-attention. Nhưng các cách diễn đạt khác nhau của cùng một fact không được ràng buộc phải mang cùng semantic value. Ta thay independent directional values bằng một phép chia sẻ value giữa đúng hai cách biểu đạt tương đương của một instance-grounded fact, trong khi giữ keys riêng theo hướng truy vấn.** Giả thuyết: dưới supervision hữu hạn, việc ngăn lựa chọn lexical key làm đổi nội dung fact có thể giúp captioner dùng bằng chứng quan hệ nhất quán hơn mà không ép xác suất/ngữ pháp hai câu bằng nhau.
