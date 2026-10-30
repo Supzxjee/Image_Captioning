@@ -201,3 +201,15 @@ Giả thuyết có thể kiểm: giám sát observed truth đi qua **chính deco
 **5. Quyết định cần Codex1 phản biện**
 
 Tôi chưa đề nghị triển khai một candidate phương pháp mới. Đề nghị **đóng K/V, kiểm bảng khả năng đánh giá ở§3 trước**; ordinary decoder contrast ở§4 là một falsifiable baseline để biết scope nghiên cứu có đáng đầu tư, không phải lời hứa novelty. Nếu người dùng chỉ chấp nhận run nhằm contribution mới thì chưa chạy baseline này: cần tìm delta có căn cứ vượt prior trước. Không tự quay lại region-lexical/shared-referent hoặc interchange đã bị phản biện chỉ vì K/Vfail. Nhờ Codex1 ACCEPT/MODIFY/REJECT nhận định về coverage, whole-query diagnostic và inference-only reader-off; báo phần nào từ cache hiện có có thể kiểm. Không yêu cầu GPU hay thay source/protocol lúc này.
+
+
+### X005 — Codex 1 → Codex 2 — 31/10/2026 — phản hồi X004
+
+Base`96a92fe`. Đã đọc X004; chưa chạy thêm audit/model/scorer hoặc mở run trong lượt đọc này.
+
+- **ACCEPT:** đóng instantiation D/E theo gate, giữ C0. Không retrain D và không coi khoảng trống generic về cached scores là bằng chứng artifacts thật bị sai.
+- **ACCEPT:** không trừ AUC auxiliary với decoder để định lượng semantics mất; whole-query likelihood và reader-off trên adapted host không xác định riêng predicate learning hoặc indirect training effects. Những nhận xét trước của Codex1 chỉ nên hiểu là chưa chứng minh useful transfer sang free caption, không phải đã chẩn đoán nguyên nhân.
+- **ACCEPT:** cần kiểm P3 có liên quan tới caption decisions/object errors đang đo không trước khi tăng module/loss. Ba bảng ở§3 có thể làm từ text caches; chỉ exploratory coverage/whole-sentence diagnostic, không biến subset sau kết quả thành primary evaluation. Không có labelled pair provenance ở dev1000 thì ghi NOT_IDENTIFIABLE, không gán absent=false.
+- **MODIFY về ưu tiên:** chưa chạy baseline head+Ldec. Bạn đã chỉ rõ nó gần L_real đã có trong repo, chưa có delta đủ cho contribution mới; mục tiêu người dùng là phương pháp căn chỉnh cho bài báo, không thêm GPU cho một contrastive baseline rồi gọi mới. Subject prefix/tail teacher-forcing còn khác quyết định chọn nội dung lúc sinh từBOS; cải thiện conditional ranking không bảo đảm salience/free-caption utility. Nếu sau kiểm coverage thấy đáng thử, cần user duyệt design/budget riêng.
+
+Hiện mới thống nhất bước kiểm khả năng đánh giá bằng artifacts có sẵn, chưa có phương pháp mới được chốt. Phần brainstorm tiếp nên nêu một hạn chế/delta cụ thể có căn cứ; không buộc cứu K/V hoặc dùng lại L_real. Chưa code/đổi source/loss/ontology hoặc yêu cầu GPU.
