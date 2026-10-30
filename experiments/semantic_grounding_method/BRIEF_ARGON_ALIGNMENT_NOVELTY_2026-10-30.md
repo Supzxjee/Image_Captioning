@@ -104,6 +104,7 @@ Muốn tiếp tục phải cải thiện caption so frozen C0 và có lợi ích
 - Nếu key là linear additive và score là dot-product, appearance trung bình dùng chung có thể thành một hằng số triệt tiêu giữa ROI trong softmax (NULL có thể tạo ngoại lệ). Kiến trúc control phải được viết rõ; không giả có global conditioning mà thực chất đã bị triệt tiêu.
 - NounNLL có thể thúc điền tên object hợp reference nhưng không đúng instance; class presence không phải instance grounding. Pointer-set supervision không tự giải quyết điều này.
 - Giữ object mass có thể ngăn bỏ một noun không có bằng chứng khi base vốn muốn nói noun. NULL fallback chỉ quay lại base, không chứng minh tránh hallucination. Có nên giữ constraint này không?
+- **Phản ví dụ greedy ngay cùng prefix (bổ sung sau bản đầu):** ba object tokens thuộc ba classes có xác suất gốc (0,4; 0,1; 0,1), EOS=0,3 và phần còn lại=0,1. Giữ object mass=0,6 nhưng phân phối lại thành (0,2; 0,2; 0,2) khiến EOS thắng greedy, dù xác suất EOS không tăng. Vì vậy constraint không bảo đảm tránh kết thúc sớm, ngay cả trước khi xét prefix tương lai khác nhau. Hãy đánh giá lại động cơ thiết kế theo phản ví dụ này.
 - Multiword/ambiguous alias coverage có thể làm headroom thấp. Không được hạ đánh giá chỉ xuống nhóm tokens mô hình sửa được để tuyên bố toàn caption tốt hơn.
 - Nearest prior nào có probability decomposition/mass-preserving correction tương tự? Một normalization identity không phải theorem mới.
 
