@@ -8,7 +8,9 @@ Dùng `val_extra4000_cg`: val5000 trong nguồn nhóm đã có, trừ đúng dev
 
 Nguồn archive: `experiments/noun_evidence_proposal/data/noun_evidence_train10k_v1_dataset.zip`, SHA256 `ebf880fcc0ae23388057abc84ce796b64ee1f0f6c16f804d1cdbf98e73fb78fd`.
 Currentdev metadata: `experiments/semantic_grounding_method/data/gain_metadata.json.gz`, SHA256 `62f43f771aec9feba31a2fbbb6fe7db2878f259979faac378b74a754822c7b67`.
-Manifest khóa: `EXPANDED_EVAL_MANIFEST.json`, SHA256 `31559d3f68a133fe9d923489875df21b641b84b8238d3a805ec54de9a99af661`.
+Manifest khóa: `EXPANDED_EVAL_MANIFEST.json`, SHA256 `8f68ab9c45ab9c2d11618e837b8d945f20c0c3148c3b1705ff352cdf244a6fab`.
+
+Packaging correction30/10: original Windows bytes(CRLF) hadSHA`31559d3f68a133fe9d923489875df21b641b84b8238d3a805ec54de9a99af661`; Git normalizes toLF, whose exact blobSHA is above. ParsedJSON and all4000IDs/order are unchanged. Runtime now pinsLF bytes, not a new cohort.
 
 **Correction trước inference:** `audit/vcoco_grounded_caption_week1_groups.json` có historical `caption_tune1000` khác currentdev: overlap203/1000COCOIDs. Historical `caption_validation_remainder4000` còn797currentdevIDs nên không được dùng làm cohort này. Sửa tên cohort để tránh lẫn; ý định loại currentdev giữ nguyên. Đây là metadata correction trước run, không chọn lại ảnh sau output.
 

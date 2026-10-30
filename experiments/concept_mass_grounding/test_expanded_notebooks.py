@@ -24,6 +24,15 @@ class Checks(unittest.TestCase):
    for c in json.loads(raw)['cells']:
     if c['cell_type']=='code':compile(c['source'],'cell','exec');self.assertIsNone(c['execution_count']);self.assertEqual(c['outputs'],[])
   self.assertNotIn('torch',sys.modules)
+ def test_manifest_constant_matches_git_blob_not_windows_checkout(self):
+  package=json.loads((HERE/'EXPANDED_NOTEBOOK_PACKAGE.json').read_text(encoding='utf-8'));core=package['source_commit']
+  path='experiments/concept_mass_grounding/'
+  manifest=subprocess.check_output(['git','show',core+':'+path+'EXPANDED_EVAL_MANIFEST.json'],cwd=ROOT)
+  source=subprocess.check_output(['git','show',core+':'+path+'expanded_data.py'],cwd=ROOT).decode()
+  tree=ast.parse(source)
+  declared=next(ast.literal_eval(n.value) for n in tree.body if isinstance(n,ast.Assign) and any(isinstance(t,ast.Name) and t.id=='MANIFEST_SHA' for t in n.targets))
+  self.assertNotIn(b'\r\n',manifest)
+  self.assertEqual(hashlib.sha256(manifest).hexdigest(),declared)
  def test_export_routes_only_exact_versions_and_patterns(self):
   nb=self.notebook(True);source='\n'.join(c['source'] for c in nb['cells'] if c['cell_type']=='code')
   self.assertIn('version_label=v111',source);self.assertIn('version_label=v112',source)

@@ -5,7 +5,7 @@ from pathlib import Path
 from concept_data import sha,save,DATA_SHA,LEGACY_SHA,META_SHA,CHAIR_SHA
 
 HERE=Path(__file__).resolve().parent
-MANIFEST_SHA='31559d3f68a133fe9d923489875df21b641b84b8238d3a805ec54de9a99af661'
+MANIFEST_SHA='8f68ab9c45ab9c2d11618e837b8d945f20c0c3148c3b1705ff352cdf244a6fab'
 CHECKPOINTS={
  'A':dict(sha256='630a4b6d4bcef84515bbd44a52b6474811377bda53caa9722c5806795fa7f901',digest='552c15d6bd72087328b25ba5852aecbfddd5893d301a7700e2643bc185f82f97'),
  'C':dict(version=111,sha256='99f7707f73fe5006592ea9ccbf04bce28a53a65a022cddc5c24ba6a78923c2f4',digest='0a1cb1b43aee77cf84a24ab97eb0d75a8bfead78128915b56a3efe865a752ab7'),
