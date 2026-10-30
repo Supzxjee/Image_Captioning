@@ -10,7 +10,7 @@ Cập nhật: 30/10/2026, giờ Việt Nam. File này là bản tóm tắt để
 
 ## Hiện đang ở đâu
 
-**User đã đồng ý chốt một evaluation A/C0/C, không training. Protocol khóa tại [EXPANDED_EVAL_PROTOCOL.md](experiments/concept_mass_grounding/EXPANDED_EVAL_PROTOCOL.md): đúng val_extra4000_cg = val5000 trừ currentdev1000, validation đã dùng trong lịch sử, loại dev1000/TRAIN; giữ3checkpoints/greedy/scorer. Chưa có notebook/run mới; manifest đã khóa, còn chờ lấy checkpoint version111(C)/112(C0) và quota hiện tại trước user-run. Evaluation không tự tạo contribution.**
+**User đã đồng ý chốt một evaluation A/C0/C, không training. Protocol khóa tại [EXPANDED_EVAL_PROTOCOL.md](experiments/concept_mass_grounding/EXPANDED_EVAL_PROTOCOL.md): đúng val_extra4000_cg = val5000 trừ currentdev1000, validation đã dùng trong lịch sử, loại dev1000/TRAIN; giữ3checkpoints/greedy/scorer. Chưa có notebook/run mới; manifest đã khóa, còn chờ lấy checkpoint version111(C)/112(C0) và quota hiện tại trước user-run. Evaluation không tự tạo contribution. Astra đã xác nhận sửa nhầm nhóm dev lịch sử; protocol/manifest đã push `bdeeab7`, sheet R214 ở hàng241 đã ghi và đọc lại xác nhận.**
 
 - [C0_RESULT.md](experiments/concept_mass_grounding/C0_RESULT.md), [C0_RESULT.json](experiments/concept_mass_grounding/C0_RESULT.json), [audit_c0_results.py](experiments/concept_mass_grounding/audit_c0_results.py). Review text cached ignored tại `experiments/concept_mass_grounding/review/C0_loaded.json`, ZIP đã đọc1lần.
 - C0 CIDEr1.230741, CHAIRs52/1000, hallucinated mentions53/1646,recall.460498,words10.044. A52caption/53mentions: chưa giảm hallucination; CHAIRi giảm do mẫu số tăng.
