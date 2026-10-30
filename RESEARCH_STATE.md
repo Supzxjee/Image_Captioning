@@ -10,7 +10,7 @@ Cập nhật: 30/10/2026, giờ Việt Nam. File này là bản tóm tắt để
 
 ## Hiện đang ở đâu
 
-**Đã chuẩn bị2notebook, chưa chạy: CPU lưu C từv111/C0 từv112 thành PrivateDataset, rồi eval A/C0/C trên val_extra4000_cg đã khóa. [Hướng dẫn](experiments/concept_mass_grounding/EXPANDED_RUN.md), [protocol](experiments/concept_mass_grounding/EXPANDED_EVAL_PROTOCOL.md). Core`13daa4f`;13metadata/statistics/transport/static/mockchecksPASS; actualAPI/HDF5/CUDA/metricsroute chờuser-run. User vừa báo14hGPU. Không training; không tự tạo contribution.**
+**Đã chuẩn bị2notebook, chưa chạy: CPU lưu C từv111/C0 từv112 thành PrivateDataset, rồi eval A/C0/C trên val_extra4000_cg đã khóa. [Hướng dẫn](experiments/concept_mass_grounding/EXPANDED_RUN.md), [protocol](experiments/concept_mass_grounding/EXPANDED_EVAL_PROTOCOL.md). Package`a6cc94c`đãpush, sheetR215hàng242đãghi/đọc lại xác nhận. Core`13daa4f`;13metadata/statistics/transport/static/mockchecksPASS; actualAPI/HDF5/CUDA/metricsroute chờuser-run. User vừa báo14hGPU. Không training; không tự tạo contribution.**
 
 - [C0_RESULT.md](experiments/concept_mass_grounding/C0_RESULT.md), [C0_RESULT.json](experiments/concept_mass_grounding/C0_RESULT.json), [audit_c0_results.py](experiments/concept_mass_grounding/audit_c0_results.py). Review text cached ignored tại `experiments/concept_mass_grounding/review/C0_loaded.json`, ZIP đã đọc1lần.
 - C0 CIDEr1.230741, CHAIRs52/1000, hallucinated mentions53/1646,recall.460498,words10.044. A52caption/53mentions: chưa giảm hallucination; CHAIRi giảm do mẫu số tăng.
