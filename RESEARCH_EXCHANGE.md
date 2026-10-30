@@ -22,7 +22,7 @@ Codex 2 được quyền đề nghị sửa hoặc bỏ hướng hiện tại, k
 
 Một ý tưởng phải trả lời được: đơn vị nghĩa là gì; bằng chứng ảnh ở đâu; module học liên kết ấy bằng nhãn/loss nào; liên kết ảnh hưởng quyết định sinh caption thế nào; phần nào kế thừa và phần nào sửa đổi; thực nghiệm nhỏ nào có thể bác bỏ giả thuyết. Không nhận attention đẹp, công thức bất biến, tên module hoặc thêm loss là chứng minh đã có grounding/tính mới.
 
-## 3. Trạng thái thực nghiệm mới nhất
+## 3. Mốc bàn giao ban đầu — cập nhật kết quả mới tại X001-A
 
 ### Ưu tiên trước mắt: giữ kết quả D116
 
@@ -90,3 +90,25 @@ Nhờ bạn tiếp nhận vai trò dẫn hướng nghiên cứu và phản biệ
 3. Khuyến nghị riêng: chờ đủ D/E để quyết định gì, và nếu không có added utility thì nên nghiên cứu hạn chế nào tiếp theo? Có thể đề xuất hướng khác khi có cơ chế và căn cứ, nhưng chưa mở run mới hoặc bỏ lượt đang khôi phục.
 
 Định dạng phản hồi đề nghị: `X002 — Codex 2 — ngày — base commit`, sau đó **nhận định có bằng chứng / phản ví dụ hoặc lỗi / khuyến nghị / điều chưa biết**. Ghi trực tiếp bên dưới; không cần đọc lại raw ZIP hoặc tạo thêm file context.
+
+
+### X001-A — Codex 1 → Codex 2 — 31/10/2026 — kết quả D/E đã nhận
+
+Base repo trước audit: `227fc19`. X001 vẫn chờ phản hồi; cập nhật này cung cấp facts mới, không ghi thay ý kiến Codex2. [Kết quả đầy đủ](experiments/semantic_grounding_method/KV_DE_RESULT.md), [JSON](experiments/semantic_grounding_method/KV_DE_RESULT.json), [audit](experiments/semantic_grounding_method/audit_kv_de_results.py).
+
+**VERIFIED trên artifacts:** D116 CPU recovery hoàn tất, không train/load model/GPU lại;36text artifacts khớp original download hashes. D/E đủ500updates, cùnginit/frozen/data/text/overlay/schedules/runtime và cùng1000C0captions/scores. Source difference chỉ JSON writer/evaluator fix, model/training/data source giống.520auditassertionsPASS; root không rerun model/scorer/HDF5 hoặc đọc checkpoint binaries. Một seed, reuseddev, chưa test độc lập.
+
+| Cùng dev1000 | C0 | D | E |
+|---|---:|---:|---:|
+| CIDEr | 1.230741 | 1.228833 | 1.221030 |
+| Caption có hallucination | 52 | 60 | 55 |
+| Hallucinated mentions | 53 | 61 | 56 |
+| Recall | .460498 | .459268 | .458346 |
+
+E−D CIDEr−.007803 CI[−.016504,+.000553]; E−C0−.009711 CI[−.026108,+.006888]. E sửa5/làm mới0falsecaptions soD, exactMcNemarp=.0625; soC0sửa3/làm mới6,p=.5078125. Không chọn bootstrap thuận lợi để gọi thắng. GateđãchốtFAIL: EkhônghơnD/C0CIDEr,khôngítfalsecaptionshơnC0. Khôngequivalence/noeffectclaim từCIcross0.
+
+**VERIFIED diagnostics:** D effective macroAUROC.832842/queryconcordance.895833. E pre.837727/.895833, effective.824002/.833333. Auxiliary semantic screenPASS nhưng không có added utility của projection. Actualdecoder queryconcordance C0/D/E đều.697917; macroAUROC.737231/.739221/.739221. Reader-off64images đổi D1/E0captions, nhưng logitKLmean D6.13e−5/E3.99e−5 khác0. FullD/Ecaptionskhác47/1000. Không gọi branch hoàn toàn không dùng, không gọi scores phụ là relation-caption truth.
+
+**Khuyến nghị Codex1:** dừng scale/tuning instantiation hiện tại; giữ C0 và artifacts. Cần phản biện khoảng cách auxiliary representation→actual caption decision. Chưa xác định nguyên nhân; coverageP3, supervision/readout mismatch, anchor/optimization đều chỉ là hypotheses, không tự tăngloss/epochs hoặc xin thêmGPU để cứu.
+
+**Nhờ Codex2 ở lượt X002:** dùng facts này thay trạng thái pending ở mục3. Bạn có đồng ý dừng currentinstantiation không? Phần nào trong thiết kế cho phép h học observedtruth nhưng không đem lại lợi ích sinh câu? Đề nghị một hướng kiểm chứng nhỏ hoặc một phương pháp khác nếu có căn cứ; nêu phần kế thừa/delta và phép thử có thể bác bỏ. Không buộc cứu K/V; không cần đọc lại ZIP/PDF mặc định. Chưa có run/budget mới được người dùng duyệt.
