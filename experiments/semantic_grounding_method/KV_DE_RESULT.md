@@ -43,7 +43,7 @@ Quan sát phù hợp với **khoảng cách giữa auxiliary representation và 
 
 ## Tính hợp lệ và khôi phục D116
 
-- Cả4workers có ENDPOINT_500_COMPLETE, cùng500updates/globalbatch8, exact4000caption exposures và auxiliary schedules; rank states/frozen tensors/runtime/pooled text/init/data identities khớp. 520metadata/audit assertions PASS, không phải520neural experiments.
+- Cả4workers có ENDPOINT_500_COMPLETE, cùng500updates/globalbatch8, exact4000caption exposures và auxiliary schedules; rank states/frozen tensors/runtime/pooled text/init/data identities khớp. 531metadata/audit assertions PASS, không phải520neural experiments.
 - Initial digest cả hai `5746ba6d4f414a51c41b62ce787f60c0e517a29c5ea48a57a04089263855e508`; frozen digest `89c5548adab445f1c73f0fbe5863071ede5b25f3f52e4ab846b7b086cb5082b7`. C0 captions và per-image scores giống hệt giữa hai runtime.
 - D worker core1402633, E744264b: model/training/data/preflight source hashes giống; chỉ shared JSON writer và evaluator khác do reporting fix, cùng thêm tests trước GPU. Không đổi scientific recipe. E source `.py` archive khớp Git blobs; source receipts đều kiểm.
 - D116 recovery đã hoàn tất: summary_created=true, training_repeated=false, model_loaded=false/GPUfalse. 36text artifacts trong recovery khớp original download hashes, checkpoint hash trong recovery/summary giống nhau. Root không đọc binary checkpoint độc lập; hashes từ user-run recovery/worker và full-source validation là provenance hiện có.
@@ -55,3 +55,10 @@ Giới hạn: một seed, reused development1000, không independent test; CHAIR
 ## Quyết định và phối hợp
 
 Giữ C0 làm reference của lượt này; đóng pilot current instantiation theo gate. Không yêu cầu train lại D do lỗi JSON đã được recovery. Gửi facts qua `RESEARCH_EXCHANGE.md` để Codex2 phản biện đường representation→decoder và đề xuất một quyết định/hypothesis có thể kiểm chứng; không bắt bên kia phải cứu K/V. Chưa có run, nguồn nhãn, loss hoặc budget mới được duyệt.
+
+
+## Bổ sung sau review X002 của Codex2
+
+ACCEPT hai khoảng trống recovery cache mà Codex2 tìm bằng fixture giả: coi cohort/hash copy là đủ chưa ràng buộc đầy đủ score với caption/reference. Audit hiện tại đã bổ sung kiểm **caption trong CHAIR output** theo COCO ID: cả4000records (C0/end củaD/E) khớp đúng predictions; CHAIR input cũng khớp. Không có mismatch thực trong hai ZIP.
+
+CIDEr chưa được root rescore độc lập từ references. Bổ sung kiểm các ảnh có cùngcaption/cùngrefs phải cùng per-imageCIDEr:769D-vs-C0,768E-vs-C0,953D-vs-E đều PASS. C0 full1000scores/captions khớp hai lượt, cache D khớp original116artifacthashes. Đây là thêm bằng chứng consistency, không biến thành independent scorer verification hoặc chứng minh chống mọi cache tráo. Với pipeline scoring tương lai cần receipt gắn hashes predictions/references/scorer/version với per-image cache; không claim đã sửa toàn bộ wrapper recovery từ việc audit hai ZIP. Không có lý do từ lỗi JSON để train lại D.

@@ -71,6 +71,8 @@ def audit():
             chair=J(arm,condition+'_chair_output.json');sentences=chair['sentences']
             check(len(sentences)==1000 and {r['image_id'] for r in sentences}==set(expected.values()),arm+' CHAIR cohort')
             by_id={r['image_id']:r for r in sentences}
+            check(all(by_id[r['coco_id']].get('caption')==r['caption'] for r in rows),arm+' cached CHAIR output bound to captions')
+            check(J(arm,condition+'_chair_input.json')==[dict(image_id=r['coco_id'],caption=r['caption']) for r in rows],arm+' cached CHAIR input')
             f=np.asarray([int(bool(by_id[r['coco_id']]['mscoco_hallucinated_words'])) for r in rows])
             flags[arm][condition]=f
             counts=dict(hallucinated_captions=int(f.sum()),hallucinated_mentions=sum(len(r['mscoco_hallucinated_words']) for r in sentences),
@@ -102,6 +104,11 @@ def audit():
         check(members['D'][name]==members['E'][name],'matched '+name)
     check(predictions['D']['C0']==predictions['E']['C0'],'identical raw C0 captions')
     check(np.array_equal(cider['D']['C0'],cider['E']['C0']),'identical raw C0 scores')
+    shared_caption_checks={}
+    for left,lc,right,rc in [('D','end','D','C0'),('E','end','E','C0'),('D','end','E','end')]:
+        mask=np.asarray([a['caption']==b['caption'] for a,b in zip(predictions[left][lc],predictions[right][rc])])
+        check(np.allclose(cider[left][lc][mask],cider[right][rc][mask],atol=1e-12,rtol=0),'same-caption same-reference CIDEr consistency')
+        shared_caption_checks[left+lc+'-'+right+rc]=int(mask.sum())
     source_diffs={k for k,v in summaries['D']['source_assets'].items() if v!=summaries['E']['source_assets'].get(k)}
     check(source_diffs=={'experiments/semantic_grounding_method/kv_data.py','experiments/semantic_grounding_method/kv_pilot_evaluate.py'},'reporting-only source differences')
     recovery=J('D','recovery_receipt.json')
@@ -134,6 +141,8 @@ def audit():
     result=dict(status='MATCHED_DE_ENDPOINTS_AUDIT_PASS_CONTINUE_GATE_FAIL',assertions=assertions,
         zip_sha256={a:d['zip_sha256'] for a,d in loaded.items()},source_differences=sorted(source_diffs),
         D_recovery_preserved_text_artifacts=preserved,checkpoint_binaries_independently_read=False,
+        cached_CHAIR_output_caption_binding_verified=True,shared_caption_CIDEr_consistency=shared_caption_checks,
+        official_CIDEr_independently_recomputed=False,
         metrics={a:summaries[a]['metrics']['end'] for a in ('D','E')},C0=summaries['D']['metrics']['C0'],
         comparisons=comparisons,changed_DE_captions=changed_DE,intervention=intervention,
         semantic={a:summaries[a]['semantic'] for a in ('D','E')},
