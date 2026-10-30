@@ -1,3 +1,5 @@
+Bản sửa30/10: core6645673 pinLFmanifest bytes, đúngGit/Linux checkout; danh sách4000ảnh không đổi. Phiên original13daa4f bị lỗihash có thể dùng `FIX_EXPANDED_MANIFEST_LF_CELL.py` ở cell mới rồi chạy lại cellcuối; xem `MANIFEST_LF_FIX.md`. Không cần tạo lại datasetweights.
+
 # Chạy A/C0/C trên val_extra4000_cg
 
 ## 1. Lưu checkpoint trước — CPU
@@ -28,6 +30,6 @@ Gửi `/kaggle/working/concept_mass_expanded_eval_4000_review.zip`. Không có c
 
 ## Kiểm tra trước khi giao
 
-13checksPASS:8metadata/statistics/transport và5notebookstatic/mockflow. Transport test dùng fakebytes, không load checkpoint. Notebook code compile và pinnedGitassets/hash verified, mỗi notebook dưới15KB. Không model/Torch/HDF5/API/Kaggle được chạy local bởi assistant. Actual API/upload, cache staging, GPU caption parity và metrics end-to-end chờ người dùng chạy. Khung model/decoding cũ được tái sử dụng, không nhận staticcheck là GPU PASS.
+16localtestsPASS:8metadata/statistics/transport,6notebookstatic/mock/Gitblob,2repair regression. Thêm8metadatachecks lặp trên36assets lấy nguyênbyteGitLF cũngPASS; không phải testLinuxOS/CUDA. Transport test dùng fakebytes, không load checkpoint. Notebook code compile và pinnedGitassets/hash verified, mỗi notebook dưới15KB. Không model/Torch/HDF5/API/Kaggle được chạy local bởi assistant. Actual API/upload, cache staging, GPU caption parity và metrics end-to-end chờ người dùng chạy. Khung model/decoding cũ được tái sử dụng, không nhận staticcheck là GPU PASS.
 
 Thực nghiệm vẫn là one-seed/post-pilot/reusedvalidation. Đánh giá này không tự tạo novelty hoặc bảo đảm giảm hallucination. Không training/sweep/tuning tiếp trên4000ảnh nếu jointgate không được hỗ trợ.

@@ -1,5 +1,5 @@
 {
-  "source_commit": "13daa4f9fcb564edc8077b73f5903b2e1af4f401",
+  "source_commit": "66456737ca25448f8e7e975e45785372040a4fcc",
   "source_assets": {
     "captioning/__init__.py": "ad259f50a32265d298d027a888f801d378c4669313b8dab06e0653978ce30633",
     "captioning/config.py": "4766d1bf82bf82b5199616c7d90ca74242f011e26f08db21b154b1c7d58e72bc",
@@ -16,14 +16,14 @@
     "experiments/coco_grounding_feasibility/MAPPING_POLICY_V11.json": "fd13046512449449375f94ecda44237a33d5a9223813d036fc6d76f4294abfab",
     "experiments/concept_mass_grounding/DEV_DIAGNOSTIC_GT.json.gz": "4273bb0572e1d7358b3fb885d1bbb8505b29af5db9356adc3670ff33b21b3f01",
     "experiments/concept_mass_grounding/EXPANDED_EVAL_MANIFEST.json": "8f68ab9c45ab9c2d11618e837b8d945f20c0c3148c3b1705ff352cdf244a6fab",
-    "experiments/concept_mass_grounding/EXPANDED_EVAL_PROTOCOL.md": "e833ff10cad8c3801197d224e6d7999bb126291f2e62f90d9663bca5c88bc182",
+    "experiments/concept_mass_grounding/EXPANDED_EVAL_PROTOCOL.md": "4ff68970da4ac543b6d2421bb3f13495f6904d402c14588172ca83bb716c6ea1",
     "experiments/concept_mass_grounding/EXPANDED_EVAL_SENTINELS.json": "f74a8c24f542b859b682316cd37158acf3a0a302d3f0286521c68e7f8030d33d",
     "experiments/concept_mass_grounding/TRAIN_PRESENCE.json.gz": "dd888949a1a8cc363efd760eb46012a7a6f736ac6b167d98be5303393b614117",
     "experiments/concept_mass_grounding/concept_data.py": "e06001f4e1683bb28a6db8a9a85e865e1ebb5c94dcdaa1c5af93901b2d177595",
     "experiments/concept_mass_grounding/concept_model.py": "c5c45d6ba506cd9fec99b406cf19793643a189bb23196bef1c96d6adb84714d0",
     "experiments/concept_mass_grounding/diagnostic_concept.py": "45286ed3e07006f331a6091ed67768b5f19fb31adfa4bf90f90099f12c9bb894",
     "experiments/concept_mass_grounding/evaluate_concept.py": "a8a7ad23f58d66921154e3ec763dbc0c16816f6c9e6513b2ba10e6060a36281c",
-    "experiments/concept_mass_grounding/expanded_data.py": "21ec90c9c1eb01829917dad761bc41b79fb795fcf4d0e01c75159f03b3e434ef",
+    "experiments/concept_mass_grounding/expanded_data.py": "e1818410512ad58f4be3429752698396d4c10089efb55401b22b5bcd1b81155e",
     "experiments/concept_mass_grounding/expanded_metrics.py": "bbf4e122cdcfee812539fc0827bc67d3d3ed4dba6d38c5893543c932fbdcda44",
     "experiments/concept_mass_grounding/package_eval_checkpoints.py": "0c841acbf4bbb1330c34318aadd1d1ec046e2bceea78c1b487f8fabe3ab21165",
     "experiments/concept_mass_grounding/prepare_concept.py": "472ea3708f3897862d2860613c71ff02c80ce9c3565ed9b382b5edebc65aa1a7",
@@ -47,7 +47,7 @@
     {
       "file": "CONCEPT_MASS_EXPANDED_EVAL_4000_2GPU.ipynb",
       "bytes": 14702,
-      "sha256": "7f5a5e8c74b936077ed5d02342e013d7c7ddb08cabb405fdd258e3d076037dc7"
+      "sha256": "6014e65af996241bff1c1164834425d29a0a80ed9f0a653c8f7c79de9bcea56a"
     }
   ],
   "local_neural_execution": false,

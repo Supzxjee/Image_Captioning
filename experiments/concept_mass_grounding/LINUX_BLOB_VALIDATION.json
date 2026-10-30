@@ -1,0 +1,9 @@
+{
+  "runtime_core": "66456737ca25448f8e7e975e45785372040a4fcc",
+  "exported_git_blob_files": 36,
+  "metadata_tests_on_exact_git_bytes": 8,
+  "status": "PASS",
+  "neural_execution": false,
+  "actual_linux_os_used": false,
+  "scope": "Raw Git/LF files exported unchanged and metadata suite run on Windows; reproduces Linux checkout bytes, not CUDA/HDF5 execution."
+}

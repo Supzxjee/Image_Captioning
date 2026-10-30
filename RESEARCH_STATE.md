@@ -10,7 +10,7 @@ Cập nhật: 30/10/2026, giờ Việt Nam. File này là bản tóm tắt để
 
 ## Hiện đang ở đâu
 
-**Đã chuẩn bị2notebook, chưa chạy: CPU lưu C từv111/C0 từv112 thành PrivateDataset, rồi eval A/C0/C trên val_extra4000_cg đã khóa. [Hướng dẫn](experiments/concept_mass_grounding/EXPANDED_RUN.md), [protocol](experiments/concept_mass_grounding/EXPANDED_EVAL_PROTOCOL.md). Package`a6cc94c`đãpush, sheetR215hàng242đãghi/đọc lại xác nhận. Core`13daa4f`;13metadata/statistics/transport/static/mockchecksPASS; actualAPI/HDF5/CUDA/metricsroute chờuser-run. User vừa báo14hGPU. Không training; không tự tạo contribution.**
+**User chạy eval core13daa4f và fail metadata hash trước prepare/inference. Lỗi đóng gói CRLFWindows vsGitLF, không đổi4000IDs. Đã sửa core6645673 + eol=lf; [receipt/hướng dẫn](experiments/concept_mass_grounding/MANIFEST_LF_FIX.md), [cell sửa phiên đang mở](experiments/concept_mass_grounding/FIX_EXPANDED_MANIFEST_LF_CELL.py). Hai notebooks đã regenerate, CPU-saveweights unchanged.16localtestsPASS +8metadatachecks trên36exportedGitLFassetsPASS(Windows,khôngLinuxOS/CUDA). Actualcache/GPU/metrics chưa chạy. User đã báo14hGPU trước lỗi. Chờ user dùng repaircell+runcellcuối, hoặc notebookeval mới nếu mấtkernel. Khôngtraining.**
 
 - [C0_RESULT.md](experiments/concept_mass_grounding/C0_RESULT.md), [C0_RESULT.json](experiments/concept_mass_grounding/C0_RESULT.json), [audit_c0_results.py](experiments/concept_mass_grounding/audit_c0_results.py). Review text cached ignored tại `experiments/concept_mass_grounding/review/C0_loaded.json`, ZIP đã đọc1lần.
 - C0 CIDEr1.230741, CHAIRs52/1000, hallucinated mentions53/1646,recall.460498,words10.044. A52caption/53mentions: chưa giảm hallucination; CHAIRi giảm do mẫu số tăng.
@@ -40,7 +40,7 @@ Cập nhật: 30/10/2026, giờ Việt Nam. File này là bản tóm tắt để
 
 ## Bước tiếp theo và điều chưa chốt
 
-1. User chạy notebookCPU lưuweights111/112, đợi datasetready, attach vào notebookevalT4×2; gửi `concept_mass_expanded_eval_4000_review.zip`. Chưa có kết quảexpanded.
+1. Sửa lỗiLF ở phiên evalđangmở hoặc dùng notebookeval mới; KHÔNG bỏ test/assert hoặc chạy lạiCPUupload/training. Repairvariant giữupstream13daa4f với `technical_amendment` và sourcehashoverlay trongconfig/protocol: audit phải xét receipt, không mặc định source khớpGit13daa4fnguyênbản. Gửi `concept_mass_expanded_eval_4000_manifest_lf_fix_review.zip`(repair) hoặc reviewZIP thường(newnotebook). Chưa có kết quảexpanded.
 2. C0 đã có kết quả: giữ nó làm ứng viên chất lượng/đối chứng, chưa chọn thành mô hình cuối. Hai objective keep/negative chưa có ích lợi riêng rõ trên endpoint; không gọi continuation+KL là phương pháp căn chỉnh mới.
 3. Đọc phản hồi Astra mới nhất, trao đổi với người dùng và ghi quyết định trước nhánh tiếp theo. Không tự tăng steps/hệ số/seed hoặc mở một họ phương pháp mới để cứu claim. C hơn C0 chút ở neutral-prefix separation (.106577 so .106161), chưa thành lợi ích caption.
 4. Người dùng đã đồng ý bàn và chốt một evaluation mở rộng, không training. Protocol/manifest đã khóa trước inference; chưa có run mới. Historical remainder4000 chứa797currentdevIDs nên đã sửa thành val_extra4000_cg theo exactgainmetadata; xem protocol. Mở rộng TRAIN vẫn chưa được duyệt. Tăng ảnh đánh giá độc lập giảm bất định; tăng ảnh huấn luyện đổi mô hình và cần đối chứng cùng ngân sách. Nếu khóa phương pháp rồi đánh giá lớn độc lập cho thấy giảm rõ, đó là bằng chứng có ích. Không dùng test làm vòng tuning tiếp.

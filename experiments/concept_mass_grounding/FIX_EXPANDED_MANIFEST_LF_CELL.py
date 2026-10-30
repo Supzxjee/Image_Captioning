@@ -3,6 +3,7 @@
 import hashlib
 import json
 from pathlib import Path
+import time
 
 OLD_MANIFEST_SHA='31559d3f68a133fe9d923489875df21b641b84b8238d3a805ec54de9a99af661'
 LF_MANIFEST_SHA='8f68ab9c45ab9c2d11618e837b8d945f20c0c3148c3b1705ff352cdf244a6fab'
@@ -44,5 +45,9 @@ elif _cfg['technical_amendment'].get('kind')!='manifest_crlf_to_git_lf_pin_only'
 cfg=_cfg
 # Preserve the original failed review ZIP; the final cell will write a new one.
 REVIEW=OUTPUT.with_name(OUTPUT.name+'_manifest_lf_fix_review.zip')
+# A user-triggered retry gets the same original cap; time spent reading this fix
+# should not exhaust the old notebook's wall-clock deadline before work resumes.
+PARENT_DEADLINE=time.monotonic()+8400
+PHASE_DEADLINE=min(PARENT_DEADLINE,time.monotonic()+3720)
 print('LF manifest pin repaired; exact4000IDs/order and all scientific settings unchanged.',flush=True)
 print('Now rerun ONLY the final evaluation cell. No Restart or source/setup rerun needed.',flush=True)

@@ -1,9 +1,11 @@
 {
   "date": "2026-10-30",
-  "runtime_core": "13daa4f9fcb564edc8077b73f5903b2e1af4f401",
+  "runtime_core": "66456737ca25448f8e7e975e45785372040a4fcc",
   "checks": {
     "metadata_statistics_transport": 8,
-    "notebook_static_mock": 5
+    "notebook_static_mock_git_blob": 6,
+    "repair_regression_mock": 2,
+    "metadata_repeated_on_exported_git_bytes": 8
   },
   "all_passed": true,
   "notebooks": [
@@ -15,7 +17,7 @@
     {
       "file": "CONCEPT_MASS_EXPANDED_EVAL_4000_2GPU.ipynb",
       "bytes": 14702,
-      "sha256": "7f5a5e8c74b936077ed5d02342e013d7c7ddb08cabb405fdd258e3d076037dc7"
+      "sha256": "6014e65af996241bff1c1164834425d29a0a80ed9f0a653c8f7c79de9bcea56a"
     }
   ],
   "local_model_execution": false,
@@ -23,10 +25,10 @@
   "local_hdf5_execution": false,
   "kaggle_api_called": false,
   "kaggle_launched": false,
-  "remaining_gpu_hours_user_report": 14,
-  "limitations": [
-    "Actual Kaggle API/download/upload pending user run.",
-    "Actual HDF5 staging and native CUDA parity/inference/official metrics in new route pending user run.",
-    "Source and notebook syntax compiled; statistics/identity/transport exercised on metadata or fake bytes only."
+  "actual_linux_os_used": false,
+  "remaining_gpu_hours_user_report_before_failure": 14,
+  "limits": [
+    "Metadata tests repeated on rawGit/LF files on Windows, not Linux/CUDA.",
+    "Actual HDF5 staging, caption parity and metrics pending user retry."
   ]
 }

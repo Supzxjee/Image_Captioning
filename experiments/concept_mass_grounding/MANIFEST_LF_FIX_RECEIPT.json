@@ -1,0 +1,24 @@
+{
+  "date": "2026-10-30",
+  "failure": "test_exact_current_dev_complement_and_manifest_hash before prepare/inference",
+  "upstream_core": "13daa4f",
+  "root_cause": "Expected hash taken from Windows CRLF working copy; Git/Linux blob is LF",
+  "old_crlf_sha256": "31559d3f68a133fe9d923489875df21b641b84b8238d3a805ec54de9a99af661",
+  "git_lf_sha256": "8f68ab9c45ab9c2d11618e837b8d945f20c0c3148c3b1705ff352cdf244a6fab",
+  "new_core": "66456737ca25448f8e7e975e45785372040a4fcc",
+  "cohort_changed": false,
+  "ids_changed": false,
+  "checkpoints_changed": false,
+  "metrics_policy_changed": false,
+  "checks": {
+    "metadata_statistics_transport": 8,
+    "notebook_static_mock_git_blob": 6,
+    "repair_regression_mock": 2,
+    "metadata_suite_repeated_on_exported_git_bytes": 8
+  },
+  "helper_git_blob_sha256": "666f0cdcb488c1c892bbedbed6d79280fbf91f94ebe4db5c4664be84b2b93d5a",
+  "local_model_execution": false,
+  "kaggle_launched": false,
+  "actual_linux_os_used": false,
+  "retry_parent_cap_seconds": 8400
+}
