@@ -18,8 +18,8 @@ def paired_ci(values):
 
 
 def paired_false(a,b):
-    repaired = sum(x==1 and y==0 for x,y in zip(a,b))
-    introduced = sum(x==0 and y==1 for x,y in zip(a,b))
+    repaired = int(sum(x==1 and y==0 for x,y in zip(a,b)))
+    introduced = int(sum(x==0 and y==1 for x,y in zip(a,b)))
     n = repaired+introduced
     p = min(1.,2*sum(math.comb(n,i) for i in range(min(repaired,introduced)+1))/(2**n)) if n else 1.
     return dict(repaired=repaired,introduced=introduced,exact_mcnemar_p=p)
@@ -48,9 +48,7 @@ def semantic_report(records,groups):
     return results
 
 
-def evaluate(cfg):
-    from pycocoevalcap.tokenizer.ptbtokenizer import PTBTokenizer
-    from pycocoevalcap.cider.cider import Cider
+def evaluate(cfg,reuse_scores=False):
     out = Path(cfg['output'])
     workers = [json.loads((out/f'worker_rank{r}.json').read_bytes()) for r in (0,1)]
     if any(w['status'] != 'ENDPOINT_500_COMPLETE' or w['updates'] != 500 for w in workers):
@@ -60,8 +58,11 @@ def evaluate(cfg):
     if workers[0]['initial_frozen_digest'] != workers[0]['final_frozen_digest']:raise ValueError('Frozen state drift')
     meta = json.loads((Path(cfg['prepared_root'])/'metadata.json').read_bytes())
     expected = {meta['rows'][i]['image_id']:meta['rows'][i] for i in meta['dev_indices']}
-    ptb = PTBTokenizer()
-    refs = ptb.tokenize({i:[dict(caption=s) for s in r['references']] for i,r in sorted(expected.items())})
+    if not reuse_scores:
+        from pycocoevalcap.tokenizer.ptbtokenizer import PTBTokenizer
+        from pycocoevalcap.cider.cider import Cider
+        ptb = PTBTokenizer()
+        refs = ptb.tokenize({i:[dict(caption=s) for s in r['references']] for i,r in sorted(expected.items())})
     metrics,per_cider,flags = {},{},{}
     predictions = {}
     for condition in ('C0','end'):
@@ -70,13 +71,25 @@ def evaluate(cfg):
             raise ValueError('Wrong full1000 prediction cohort')
         predictions[condition] = rows
         save(out/f'{condition}_predictions.json',rows)
-        hyp = ptb.tokenize({r['image_id']:[dict(caption=r['caption'])] for r in rows})
-        cider,per = Cider().compute_score(refs,hyp)
+        if reuse_scores:
+            per_rows = json.loads((out/f'{condition}_per_image_cider.json').read_bytes())
+            if [(r['image_id'],r['coco_id']) for r in per_rows] != [(r['image_id'],r['coco_id']) for r in rows]:
+                raise ValueError('Cached CIDEr cohort/order differs; no training retry')
+            per = np.asarray([r['CIDEr'] for r in per_rows],dtype=float)
+            if len(per)!=1000 or not np.isfinite(per).all():raise ValueError('Invalid cached CIDEr')
+            cider = float(per.mean())
+            cached_input = json.loads((out/f'{condition}_chair_input.json').read_bytes())
+            if cached_input != [dict(image_id=r['coco_id'],caption=r['caption']) for r in rows]:
+                raise ValueError('Cached CHAIR captions differ')
+        else:
+            hyp = ptb.tokenize({r['image_id']:[dict(caption=r['caption'])] for r in rows})
+            cider,per = Cider().compute_score(refs,hyp)
         per_cider[condition] = np.asarray(per)
         save(out/f'{condition}_per_image_cider.json',[dict(image_id=r['image_id'],coco_id=r['coco_id'],CIDEr=float(v)) for r,v in zip(rows,per)])
         save(out/f'{condition}_chair_input.json',[dict(image_id=r['coco_id'],caption=r['caption']) for r in rows])
-        subprocess.run([sys.executable,'-u',str(Path(cfg['chair'])/'chair.py'),'--cap_file',str(out/f'{condition}_chair_input.json'),
-            '--cache',str(Path(cfg['chair'])/'chair.pkl'),'--save_path',str(out/f'{condition}_chair_output.json')],cwd=cfg['chair'],check=True)
+        if not reuse_scores:
+            subprocess.run([sys.executable,'-u',str(Path(cfg['chair'])/'chair.py'),'--cap_file',str(out/f'{condition}_chair_input.json'),
+                '--cache',str(Path(cfg['chair'])/'chair.pkl'),'--save_path',str(out/f'{condition}_chair_output.json')],cwd=cfg['chair'],check=True)
         chair = json.loads((out/f'{condition}_chair_output.json').read_bytes())
         sentences = chair['sentences']
         if len(sentences) != 1000 or {s['image_id'] for s in sentences} != {r['coco_id'] for r in rows}:
@@ -126,6 +139,8 @@ def evaluate(cfg):
         pilot_preparation_payload_sha256=json.loads((out/'preparation.json').read_bytes())['payload_sha256'],
         effective_held_prompt_content_sha256=json.loads((out/'preparation.json').read_bytes())['effective_held_prompt_content_sha256'],
         test_used=False,one_seed=True,reused_development=True,relation_caption_truth='NOT_ESTABLISHED',
-        directional_generalization='NOT_ESTABLISHED',quota_accounting=POLICY['quota_accounting'])
+        directional_generalization='NOT_ESTABLISHED',quota_accounting=POLICY['quota_accounting'],
+        cached_official_scores_reused=reuse_scores)
+    if 'recovery' in cfg:summary['recovery']=cfg['recovery']
     save(out/'summary.json',summary)
-    print(json.dumps(summary,indent=2),flush=True)
+    print((out/'summary.json').read_text(encoding='utf-8'),flush=True)

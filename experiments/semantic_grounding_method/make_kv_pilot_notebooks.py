@@ -12,7 +12,7 @@ ROOT = HERE.parents[1]
 PREFIX = 'experiments/semantic_grounding_method/'
 FILES = [PREFIX+n for n in ('kv_pilot_data.py','kv_pilot_model.py','kv_pilot_preflight.py',
     'kv_pilot_training.py','kv_pilot_evaluate.py','run_kv_pilot.py','test_kv_pilot_data.py',
-    'test_relation_kv_math.py','kv_data.py','KV_SAVE_V115_PACKAGE.json','KV_NATIVE_TEXT_AUDIT.json',
+    'test_relation_kv_math.py','test_kv_json_regression.py','test_kv_summary_recovery.py','kv_data.py','KV_SAVE_V115_PACKAGE.json','KV_NATIVE_TEXT_AUDIT.json',
     'data/gain_metadata.json.gz')]
 FILES += ['experiments/relation_frames_inventory/inventory.py','experiments/shared_pair_readout/metric_preflight.py']
 FILES += ['captioning/'+n+'.py' for n in ('__init__','models','config','grounded_relations',
@@ -131,6 +131,8 @@ def make(revision):
             try:
                 run([sys.executable,'-u',HERE/'test_kv_pilot_data.py'],120)
                 run([sys.executable,'-u',HERE/'test_relation_kv_math.py'],120)
+                run([sys.executable,'-u',HERE/'test_kv_json_regression.py'],120)
+                run([sys.executable,'-u',HERE/'test_kv_summary_recovery.py'],120)
                 run([sys.executable,'-u',REPO/'experiments/shared_pair_readout/metric_preflight.py'],180)
                 run([sys.executable,'-u',HERE/'run_kv_pilot.py','prepare','--config',CONFIG],1800)
                 run([sys.executable,'-u','-m','torch.distributed.run','--standalone','--nnodes=1',

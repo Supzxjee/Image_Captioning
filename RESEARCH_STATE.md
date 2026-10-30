@@ -1,6 +1,6 @@
 # Trạng thái nghiên cứu — đọc trước khi tiếp tục
 
-Cập nhật: 30/10/2026, giờ Việt Nam. File này là bản tóm tắt để tiếp tục công việc; protocol và artifacts được dẫn bên dưới mới là nguồn chi tiết. Không cần đọc toàn bộ lịch sử chat.
+Cập nhật: 31/10/2026, giờ Việt Nam. File này là bản tóm tắt để tiếp tục công việc; protocol và artifacts được dẫn bên dưới mới là nguồn chi tiết. Không cần đọc toàn bộ lịch sử chat.
 
 ## Mục tiêu và cách làm việc
 
@@ -9,6 +9,9 @@ Cập nhật: 30/10/2026, giờ Việt Nam. File này là bản tóm tắt để
 - Không tự chạy mô hình/Torch/autograd local hoặc notebook Kaggle. Kiểm tra metadata/NumPy/static/mock được phép; ghi rõ giới hạn. Quy trình tại [AGENTS.md](AGENTS.md).
 
 ## Hiện đang ở đâu
+
+- **Lỗi mới D Saved Output116:** user báo NumPy int64 không serialize tại summary/reporting, có checkpoint.bin; phiên đã kết thúc. [Root cause/recovery](experiments/semantic_grounding_method/KV_JSON_FAILURE_V116.md). Chưa kiểm worker artifacts, không nhận COMPLETE từ checkpoint name. Không yêu cầu retrain; đang chuẩn bị CPU-only recovery exact116 từ cached outputs. Sửa native int ở paired_false +strict NumPy scalar JSON,4regression+1full synthetic cached-summary testsPASS, khôngTorch/model/GPU. Future notebooks sẽ thêm tests trước GPU. Quota20h/account bên dưới là báo cáo trước lượt116, không coi hiện tại còn20h.
+
 
 - User đã duyệt giữ K/V làm ứng viên chính, nearest-check rồi pilot D/E nhỏ. Quota mới: khoảng **20 giờ GPU mỗi tài khoản**. Không tự chạy notebook/model; user chạy.
 - [Nearest-method closure](experiments/semantic_grounding_method/KV_NEAREST_METHOD_CLOSURE_2026-10-30.md): đủ cơ sở chuẩn bị pilot như một cải tiến kế thừa hẹp; K/V memory, shared values và group averaging đã có prior. Không chứng nhận firstness/novelty hay hiệu quả. [Giả thuyết](experiments/semantic_grounding_method/RELATION_KEY_FACT_VALUE_HYPOTHESIS_2026-10-30.md): D giữ directional K/V; E giữ K và ghép hai equivalent fact views chỉ ở V; cùng dữ liệu/loss/slot/đường caption.

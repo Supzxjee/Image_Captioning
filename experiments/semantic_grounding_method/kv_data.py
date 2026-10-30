@@ -31,9 +31,16 @@ def digest(path):
     return h.hexdigest()
 
 
+def _json_scalar(value):
+    import numpy as np
+    if isinstance(value, np.generic):
+        return value.item()
+    raise TypeError(f'Object of type {type(value).__name__} is not JSON serializable')
+
+
 def canonical(value):
     return json.dumps(value, sort_keys=True, separators=(',', ':'),
-                      ensure_ascii=False, allow_nan=False).encode('utf-8')
+                      ensure_ascii=False, allow_nan=False, default=_json_scalar).encode('utf-8')
 
 
 def identity(value):
