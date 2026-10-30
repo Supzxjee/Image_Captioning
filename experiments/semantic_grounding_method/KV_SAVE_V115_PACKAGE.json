@@ -1,0 +1,22 @@
+{
+  "inventory": {
+    "schema": "relation_kv_transport_v1",
+    "kernel_version": "ducanh2403/2-vi-cai-kia-qua-nhieu/115",
+    "source_review_zip_sha256": "5c133973195263ba2e34514379875a79597f1bdfcac03f7cf44d74d0961482fa",
+    "files": {
+      "auxiliary_facts.json": "5b8cbf537fcd3b333d72be21cdcf8883b432dc53f77375ea5751ff5d386d8bd0",
+      "detector_boxes.json": "9aa664f987986471b937b240341f47e7acbcd64b1bbc6f4cba8ae3d29f3f1a56",
+      "inputs.h5": "960e1995c6e7695597d95f9535f536576a5c74a03c6c26386da4f7c5b2a4da89",
+      "metadata.json": "05345ce2ac719a6c7fd70de618c44a3db84d7e31e94a936704fa0370fcbb6742",
+      "protocol.json": "153e069b1aa3051ee8f805998aac9894bc1ebd4842e962d3ee84a15ff67f45fe",
+      "source_receipts.json": "0a78ea6b5a40c1ebc64158750363bf7d2ad42cb4bb6360350ba2771e6bba0219",
+      "statistics.json": "7e981ca71028beaf7f44880553c1a101ddab9a1b0e28ce26f1cfb7bca73969d4",
+      "cpu_preparation.json": "bcfeb4f263f3860374e3d255f66b0ed8912816413706f3444b3091aa4d8af1a8"
+    }
+  },
+  "notebook_bytes": 12903,
+  "notebook_sha256": "a99bec7d461a943c1316b333ff1d083e2b5a142d7773333d3931e07e1ba6981f",
+  "static_compile": true,
+  "kaggle_api_executed": false,
+  "model_executed": false
+}
