@@ -1,6 +1,6 @@
 # Trạng thái nghiên cứu — đọc trước khi tiếp tục
 
-Cập nhật: 29/10/2026, giờ Việt Nam. File này là bản tóm tắt để tiếp tục công việc; protocol và artifacts được dẫn bên dưới mới là nguồn chi tiết. Không cần đọc toàn bộ lịch sử chat.
+Cập nhật: 30/10/2026, giờ Việt Nam. File này là bản tóm tắt để tiếp tục công việc; protocol và artifacts được dẫn bên dưới mới là nguồn chi tiết. Không cần đọc toàn bộ lịch sử chat.
 
 ## Mục tiêu và cách làm việc
 
@@ -10,17 +10,16 @@ Cập nhật: 29/10/2026, giờ Việt Nam. File này là bản tóm tắt để
 
 ## Hiện đang ở đâu
 
-**Đã chuẩn bị C0; chờ người dùng chạy và gửi kết quả. Chưa có kết quả C0, không biết job đã bắt đầu hay chưa.**
+**C0 đã chạy xong và được kiểm tra; chờ quyết định nghiên cứu tiếp theo từ Astra/người dùng. Chưa triển khai hoặc chạy thêm nhánh mới.**
 
-- Notebook: [CONCEPT_MASS_C0_2GPU.ipynb](experiments/concept_mass_grounding/CONCEPT_MASS_C0_2GPU.ipynb).
-- Protocol: [C0_PROTOCOL.md](experiments/concept_mass_grounding/C0_PROTOCOL.md).
-- Quyết định Astra: [ASTRA_CG_RESULT_DECISION_2026-10-29.md](experiments/concept_mass_grounding/ASTRA_CG_RESULT_DECISION_2026-10-29.md).
-- Package commit `7c8b602`, runtime core `bb84be8`, đã push GitHub. Sheet R212 đã đọc lại và xác nhận.
-- C0 khởi tạo A: SCST reward gốc + .1 rollout KL; keep=0, negative=0. C có thêm .1 keep. Chỉ tắt hệ số keep, vẫn tính/ghi keep để theo dõi. Same seed42,4000unique TRAIN/order/ref,500updates,batch8,optimizer5e-6,last2decoder layers,greedy,fixeddev1000.
-- Đây là ablation được chọn **sau** pilot C/G. C0 không khởi tạo từ C và không cần chạy lại C/G. Notebook dùng stage mới từ5input gốc; xem protocol/cell đầu để biết path đầy đủ.
-- A checkpoint: `/kaggle/input/datasets/ducanh2403/pair-source-fullframe-ce/upt_hidden_caption_A/checkpoint.bin`, SHA256 `630a4b6d4bcef84515bbd44a52b6474811377bda53caa9722c5806795fa7f901`.
-- Output chờ nhận: `/kaggle/working/concept_mass_C0_v2_review.zip`; giữ `/kaggle/working/concept_mass_C0_v2/checkpoint.bin`.
-- Đã kiểm local:13metadata/NumPy +4C0package/static +7notebookstatic/mock PASS. Chưa kiểm CUDA hoặc metric C0. Quota24h là báo cáo cũ, không coi là số hiện tại.
+- [C0_RESULT.md](experiments/concept_mass_grounding/C0_RESULT.md), [C0_RESULT.json](experiments/concept_mass_grounding/C0_RESULT.json), [audit_c0_results.py](experiments/concept_mass_grounding/audit_c0_results.py). Review text cached ignored tại `experiments/concept_mass_grounding/review/C0_loaded.json`, ZIP đã đọc1lần.
+- C0 CIDEr1.230741, CHAIRs52/1000, hallucinated mentions53/1646,recall.460498,words10.044. A52caption/53mentions: chưa giảm hallucination; CHAIRi giảm do mẫu số tăng.
+- C0−A CIDEr+.025229, paired95%CI[+.006253,+.043992]; C−C0−.005063,[-.014020,+.003438]. Gain vẫn có khi keep=0; chưa chứng minh lợi ích riêng của preservation. Không kết luận preservation gây hại hoặc hai nhánh tương đương.
+- Same4000uniqueTRAIN/order/ref/seed42,500updates,batch8,init/frozen/input/tensor/payload hashes;2rankpreflightPASS,Aexact. Effective KL.1 keep0 negative0, zero weighted aux gradient ở46logged rank snapshots.274metadata assertionsPASS; không chạy/load model/H5 local.
+- [C0_PROTOCOL.md](experiments/concept_mass_grounding/C0_PROTOCOL.md), [CONCEPT_MASS_C0_2GPU.ipynb](experiments/concept_mass_grounding/CONCEPT_MASS_C0_2GPU.ipynb). Package7c8b602/corebb84be8; ablation được chọn sau pilot C/G, test chưa dùng.
+- Giữ `/kaggle/working/concept_mass_C0_v2/checkpoint.bin`, SHA256 `5d92cd5cb48077c7332bb3ff9b295cad1df5d76ede818adabef28035f055fa9d`.
+- A checkpoint `/kaggle/input/datasets/ducanh2403/pair-source-fullframe-ce/upt_hidden_caption_A/checkpoint.bin`, SHA256 `630a4b6d4bcef84515bbd44a52b6474811377bda53caa9722c5806795fa7f901`.
+- Đã gửi Astra số liệu và giới hạn, không yêu cầu đọc lạiZIP. Quota24h là báo cáo cũ, không coi là hiện tại.
 
 ## Bằng chứng mới nhất: C/G đã hoàn tất
 
@@ -40,13 +39,13 @@ Cập nhật: 29/10/2026, giờ Việt Nam. File này là bản tóm tắt để
 
 ## Bước tiếp theo và điều chưa chốt
 
-1. Khi có C0 ZIP: kiểm complete/init/scope/source/weights/4000IDs/A parity; đọc ZIP một lần. So C−C0 và C0−A trên cùng1000IDs; CIDEr/CHAIRs/i/recall/length, pairedCI và conditioning. Lưu RESULT, báo Astra dữ kiện ngắn, push và ghi sheet.
-2. Nếu C hơn C0 có bằng chứng, mới có cơ sở đầu tư xác nhận đóng góp preservation. Nếu bất định hoặc C0 tốt hơn, không ép claim hoặc tăng hệ số để cứu giả thuyết.
-3. Người dùng hỏi tăng mẫu có giúp C ít halu hơn A không: **chưa duyệt mở rộng**. Tăng ảnh đánh giá độc lập giảm bất định; tăng ảnh huấn luyện đổi mô hình và cần C0 cùng ngân sách. Nếu khóa phương pháp rồi đánh giá lớn độc lập cho thấy giảm rõ, đó là bằng chứng có ích. Không dùng test làm vòng tuning tiếp.
+1. C0 đã có kết quả: giữ nó làm ứng viên chất lượng/đối chứng, chưa chọn thành mô hình cuối. Hai objective keep/negative chưa có ích lợi riêng rõ trên endpoint; không gọi continuation+KL là phương pháp căn chỉnh mới.
+2. Đọc phản hồi Astra mới nhất, trao đổi với người dùng và ghi quyết định trước nhánh tiếp theo. Không tự tăng steps/hệ số/seed hoặc mở một họ phương pháp mới để cứu claim. C hơn C0 chút ở neutral-prefix separation (.106577 so .106161), chưa thành lợi ích caption.
+3. Người dùng hỏi tăng mẫu có giúp C ít halu hơn A không: **chưa duyệt mở rộng**. Tăng ảnh đánh giá độc lập giảm bất định; tăng ảnh huấn luyện đổi mô hình và cần đối chứng cùng ngân sách. Nếu khóa phương pháp rồi đánh giá lớn độc lập cho thấy giảm rõ, đó là bằng chứng có ích. Không dùng test làm vòng tuning tiếp.
 
 ## Các điểm phối hợp cần nhớ
 
 - Repo GitHub: `https://github.com/Supzxjee/Image_Captioning`, branch main.
-- Sheet `Experiment Registry`: `https://docs.google.com/spreadsheets/d/1XZ5iuyCs5JP8VE6dT7AYdVTiY1_nK4C_QdXs5ppw6FA/edit`, sheetId797499113. R212 ở hàng239 tại lần xác minh cuối; luôn đọc metadata/sentinel mới trước khi ghi.
+- Sheet `Experiment Registry`: `https://docs.google.com/spreadsheets/d/1XZ5iuyCs5JP8VE6dT7AYdVTiY1_nK4C_QdXs5ppw6FA/edit`, sheetId797499113. R213 kết quả C0 dự kiến ở hàng240 (chỉ coi đã ghi khi connector xác nhận); R212 ở hàng239 tại lần xác minh cuối; luôn đọc metadata/sentinel mới trước khi ghi.
 - Chat Astra: `01a15544-6a7a-7903-a6e1-23e7b9f6caa6`, host local, tên `Đề xuất hướng căn chỉnh ngữ nghĩa–th`. Người dùng đã ủy quyền trao đổi nghiên cứu trong lịch sử phiên.
 - A có prompt gốc; không gọi A là no-prompt. I/J và các nhánh trước chưa vượt A; chi tiết nằm trong thư mục thực nghiệm, không cần lặp mọi nhánh để tiếp tục C0.

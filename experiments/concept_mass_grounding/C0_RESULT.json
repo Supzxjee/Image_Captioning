@@ -1,0 +1,190 @@
+{
+  "date": "2026-10-30",
+  "checks_passed": 274,
+  "zip_sha256": {
+    "C": "0039595fd38d1e9263b6d12badfab115e04e5779594f3309085e252cb1f32859",
+    "G": "c0553e9439dd9b9770dbac0a7856fdcfd07b57bf058d0f034d187470007e73ea",
+    "C0": "a71bb24e68d29f4cb6bc866df4a891c5428df1f4726fbbb3d358a077970152b6"
+  },
+  "metrics": {
+    "A": {
+      "CIDEr": 1.2055125991020814,
+      "Bleu_1": 0.763093489965662,
+      "Bleu_2": 0.6069772412006276,
+      "Bleu_3": 0.4633397886861699,
+      "Bleu_4": 0.3517194278720059,
+      "METEOR": 0.2872660124386753,
+      "ROUGE_L": 0.5713406352384716,
+      "chair": {
+        "CHAIRs": 0.052,
+        "CHAIRi": 0.032475490196078434,
+        "Recall": 0.45803873347679064
+      },
+      "counts": {
+        "hallucinated_captions": 52,
+        "hallucinated_mentions": 53,
+        "object_mentions": 1632,
+        "recalled_unique": 1490,
+        "reference_unique": 3253
+      },
+      "mean_words": 10.213
+    },
+    "C0": {
+      "CIDEr": 1.2307412535899604,
+      "Bleu_1": 0.7733200597311325,
+      "Bleu_2": 0.6193055712630069,
+      "Bleu_3": 0.4771732435205139,
+      "Bleu_4": 0.3665861366748231,
+      "METEOR": 0.29005259099049546,
+      "ROUGE_L": 0.5779083497176375,
+      "chair": {
+        "CHAIRs": 0.052,
+        "CHAIRi": 0.03219927095990279,
+        "Recall": 0.4604980018444513
+      },
+      "counts": {
+        "hallucinated_captions": 52,
+        "hallucinated_mentions": 53,
+        "object_mentions": 1646,
+        "recalled_unique": 1498,
+        "reference_unique": 3253
+      },
+      "mean_words": 10.044
+    },
+    "C": {
+      "CIDEr": 1.2256784649117645,
+      "Bleu_1": 0.7739287144572713,
+      "Bleu_2": 0.6195680021112392,
+      "Bleu_3": 0.47675524932100066,
+      "Bleu_4": 0.3657504261323457,
+      "METEOR": 0.2890273784030728,
+      "ROUGE_L": 0.5777657835909097,
+      "chair": {
+        "CHAIRs": 0.051,
+        "CHAIRi": 0.031862745098039214,
+        "Recall": 0.4586535505687058
+      },
+      "counts": {
+        "hallucinated_captions": 51,
+        "hallucinated_mentions": 52,
+        "object_mentions": 1632,
+        "recalled_unique": 1492,
+        "reference_unique": 3253
+      },
+      "mean_words": 9.987
+    },
+    "G": {
+      "CIDEr": 1.2295351586798402,
+      "Bleu_1": 0.7740997090981268,
+      "Bleu_2": 0.6206401733220962,
+      "Bleu_3": 0.4785299820462918,
+      "Bleu_4": 0.3676552576521199,
+      "METEOR": 0.288521453138184,
+      "ROUGE_L": 0.5775911606584704,
+      "chair": {
+        "CHAIRs": 0.052,
+        "CHAIRi": 0.032455603184323334,
+        "Recall": 0.4577313249308331
+      },
+      "counts": {
+        "hallucinated_captions": 52,
+        "hallucinated_mentions": 53,
+        "object_mentions": 1633,
+        "recalled_unique": 1489,
+        "reference_unique": 3253
+      },
+      "mean_words": 9.968
+    }
+  },
+  "comparisons": {
+    "C0-A": {
+      "CIDEr": {
+        "delta": 0.025228654487879334,
+        "paired95_ci": [
+          0.006252924286127629,
+          0.043991879749774504
+        ]
+      },
+      "CHAIRs": {
+        "delta": 0.0,
+        "paired95_ci": [
+          -0.008,
+          0.008
+        ]
+      }
+    },
+    "C-C0": {
+      "CIDEr": {
+        "delta": -0.005062788678195914,
+        "paired95_ci": [
+          -0.014019676794208376,
+          0.0034381572256716583
+        ]
+      },
+      "CHAIRs": {
+        "delta": -0.001,
+        "paired95_ci": [
+          -0.003,
+          0.0
+        ]
+      }
+    },
+    "G-C0": {
+      "CIDEr": {
+        "delta": -0.0012060949101204393,
+        "paired95_ci": [
+          -0.008234714656566064,
+          0.005984909957625966
+        ]
+      },
+      "CHAIRs": {
+        "delta": 0.0,
+        "paired95_ci": [
+          0.0,
+          0.0
+        ]
+      }
+    }
+  },
+  "conditioning": {
+    "C": {
+      "classes": 70,
+      "separation_A": 0.101457008401982,
+      "separation_end": 0.10657654373563386,
+      "supported_A": 0.10158658063549332,
+      "supported_end": 0.10670764013122884,
+      "weak_negative_A": 0.0001295722335113427,
+      "weak_negative_end": 0.00013109639559500403
+    },
+    "G": {
+      "classes": 70,
+      "separation_A": 0.101457008401982,
+      "separation_end": 0.10629719722818105,
+      "supported_A": 0.10158658063549332,
+      "supported_end": 0.10642853440559838,
+      "weak_negative_A": 0.0001295722335113427,
+      "weak_negative_end": 0.0001313371774173169
+    },
+    "C0": {
+      "classes": 70,
+      "separation_A": 0.101457008401982,
+      "separation_end": 0.10616056500667041,
+      "supported_A": 0.10158658063549332,
+      "supported_end": 0.10629034524332286,
+      "weak_negative_A": 0.0001295722335113427,
+      "weak_negative_end": 0.00012978023665246045
+    }
+  },
+  "source_commits": {
+    "C": "33dbef35880c8482b3862b2c195b91729cafbe8b",
+    "G": "33dbef35880c8482b3862b2c195b91729cafbe8b",
+    "C0": "bb84be878a56a936027e311f11517e2e749103b5"
+  },
+  "C0_checkpoint_sha256": "5d92cd5cb48077c7332bb3ff9b295cad1df5d76ede818adabef28035f055fa9d",
+  "decision": "C0 retains the CIDEr gain without positive preservation; current pilot does not establish a separate benefit of keep or negative objectives. No hallucination reduction versus A demonstrated.",
+  "limitations": [
+    "One seed and reused dev1000; post-pilot C0; image bootstrap is not seed robustness.",
+    "No model/checkpoint/HDF5 execution or loading locally; reviewed text reports and pinned sources only.",
+    "C versus C0 interval including zero does not prove equivalence or preservation is universally harmful."
+  ]
+}
