@@ -1,0 +1,252 @@
+{
+  "schema": "concept_mass_eval_parity16_v1",
+  "scope": "16technical parity sentinel images from currentdev; excluded from primary4000metrics",
+  "predictions": {
+    "A": [
+      {
+        "image_id": 73,
+        "coco_id": 556616,
+        "caption": "a parking meter sitting next to a parked car."
+      },
+      {
+        "image_id": 88,
+        "coco_id": 241876,
+        "caption": "a cat is standing on the rim of a toilet"
+      },
+      {
+        "image_id": 150,
+        "coco_id": 52759,
+        "caption": "a plane is parked on the tarmac at an airport."
+      },
+      {
+        "image_id": 195,
+        "coco_id": 505440,
+        "caption": "two giraffes are standing in a grassy area."
+      },
+      {
+        "image_id": 315,
+        "coco_id": 117407,
+        "caption": "a cat sitting on top of a blue truck."
+      },
+      {
+        "image_id": 320,
+        "coco_id": 191738,
+        "caption": "a cat laying on top of a stuffed animal"
+      },
+      {
+        "image_id": 324,
+        "coco_id": 555705,
+        "caption": "two cats sitting next to each other on a sidewalk."
+      },
+      {
+        "image_id": 394,
+        "coco_id": 511204,
+        "caption": "a man riding an elephant down a dirt road."
+      },
+      {
+        "image_id": 440,
+        "coco_id": 304305,
+        "caption": "a couple of elephants standing on top of a grass covered field."
+      },
+      {
+        "image_id": 442,
+        "coco_id": 468604,
+        "caption": "an elephant standing next to a tree in a grassy field."
+      },
+      {
+        "image_id": 572,
+        "coco_id": 136501,
+        "caption": "a baseball player is standing on the field"
+      },
+      {
+        "image_id": 667,
+        "coco_id": 109092,
+        "caption": "a man in a suit is holding a hot dog."
+      },
+      {
+        "image_id": 700,
+        "coco_id": 280819,
+        "caption": "a woman sitting at a table with a plate of food and a drink."
+      },
+      {
+        "image_id": 711,
+        "coco_id": 578210,
+        "caption": "a birthday cake with candles and a cell phone"
+      },
+      {
+        "image_id": 719,
+        "coco_id": 515445,
+        "caption": "a group of people standing on top of a sandy beach."
+      },
+      {
+        "image_id": 722,
+        "coco_id": 173383,
+        "caption": "a wedding cake is on a table with candles and candles on it."
+      }
+    ],
+    "C": [
+      {
+        "image_id": 73,
+        "coco_id": 556616,
+        "caption": "a parking meter sitting next to a parked car."
+      },
+      {
+        "image_id": 88,
+        "coco_id": 241876,
+        "caption": "a cat standing on the rim of a toilet bowl"
+      },
+      {
+        "image_id": 150,
+        "coco_id": 52759,
+        "caption": "a plane is parked on the tarmac at an airport."
+      },
+      {
+        "image_id": 195,
+        "coco_id": 505440,
+        "caption": "two giraffes standing in a grassy area next to trees."
+      },
+      {
+        "image_id": 315,
+        "coco_id": 117407,
+        "caption": "a cat sitting on top of a blue truck."
+      },
+      {
+        "image_id": 320,
+        "coco_id": 191738,
+        "caption": "a cat laying on top of a stuffed animal"
+      },
+      {
+        "image_id": 324,
+        "coco_id": 555705,
+        "caption": "two cats sitting next to each other on a sidewalk."
+      },
+      {
+        "image_id": 394,
+        "coco_id": 511204,
+        "caption": "a man riding an elephant down a dirt road."
+      },
+      {
+        "image_id": 440,
+        "coco_id": 304305,
+        "caption": "a couple of elephants standing on top of a grass field."
+      },
+      {
+        "image_id": 442,
+        "coco_id": 468604,
+        "caption": "an elephant standing next to a tree in a grassy field."
+      },
+      {
+        "image_id": 572,
+        "coco_id": 136501,
+        "caption": "a baseball player standing on a baseball field"
+      },
+      {
+        "image_id": 667,
+        "coco_id": 109092,
+        "caption": "a man in a suit is holding a hot dog."
+      },
+      {
+        "image_id": 700,
+        "coco_id": 280819,
+        "caption": "a woman sitting at a table with plates of food and a drink."
+      },
+      {
+        "image_id": 711,
+        "coco_id": 578210,
+        "caption": "a birthday cake with candles and a cell phone"
+      },
+      {
+        "image_id": 719,
+        "coco_id": 515445,
+        "caption": "a group of people standing on a beach next to the ocean."
+      },
+      {
+        "image_id": 722,
+        "coco_id": 173383,
+        "caption": "a wedding cake is on a table with candles and candles on it."
+      }
+    ],
+    "C0": [
+      {
+        "image_id": 73,
+        "coco_id": 556616,
+        "caption": "a parking meter sitting next to a parked car."
+      },
+      {
+        "image_id": 88,
+        "coco_id": 241876,
+        "caption": "a cat standing on the rim of a toilet bowl"
+      },
+      {
+        "image_id": 150,
+        "coco_id": 52759,
+        "caption": "a plane is parked on the tarmac at an airport."
+      },
+      {
+        "image_id": 195,
+        "coco_id": 505440,
+        "caption": "two giraffes standing in a grassy area next to trees."
+      },
+      {
+        "image_id": 315,
+        "coco_id": 117407,
+        "caption": "a cat sitting on top of a blue truck."
+      },
+      {
+        "image_id": 320,
+        "coco_id": 191738,
+        "caption": "a cat laying on top of a stuffed animal"
+      },
+      {
+        "image_id": 324,
+        "coco_id": 555705,
+        "caption": "two cats sitting next to each other on a sidewalk."
+      },
+      {
+        "image_id": 394,
+        "coco_id": 511204,
+        "caption": "a man riding an elephant down a dirt road."
+      },
+      {
+        "image_id": 440,
+        "coco_id": 304305,
+        "caption": "a couple of elephants standing on top of a grass covered field."
+      },
+      {
+        "image_id": 442,
+        "coco_id": 468604,
+        "caption": "an elephant standing next to a tree in a grassy field."
+      },
+      {
+        "image_id": 572,
+        "coco_id": 136501,
+        "caption": "a baseball player standing on a baseball field"
+      },
+      {
+        "image_id": 667,
+        "coco_id": 109092,
+        "caption": "a man in a suit is holding a hot dog."
+      },
+      {
+        "image_id": 700,
+        "coco_id": 280819,
+        "caption": "a woman sitting at a table with plates of food and a drink"
+      },
+      {
+        "image_id": 711,
+        "coco_id": 578210,
+        "caption": "a birthday cake with candles and a cell phone"
+      },
+      {
+        "image_id": 719,
+        "coco_id": 515445,
+        "caption": "a group of people standing on a beach next to the ocean."
+      },
+      {
+        "image_id": 722,
+        "coco_id": 173383,
+        "caption": "a wedding cake is on a table with candles and candles on it."
+      }
+    ]
+  }
+}
