@@ -1,5 +1,7 @@
 # Phản biện lại region–lexical candidate trước triển khai
 
+**Bước mới hơn cùngngày:** [quyết định sau ArgonCDR-AEV](ASTRA_CDR_AEV_DECISION_2026-10-30.md) BỎ fullCDR-AEV, không đềnghịpilotveto rútgọn và không tựđộng trởlạiGPUba arms trong bảnreview này. Phân tíchprior/toán bên dưới giữ làm bằngchứng; phươngpháp mới chưađượcchốt.
+
 30/10/2026. **Quyết định của Astra: SỬA ứng viên; chưa qua cổng chốt phương pháp/code/GPU.** Không giữ luận điểm bảo toàn lexical mass là đóng góp chính. Không kết luận toàn bộ ứng viên đã bị công bố giống hệt; cũng chưa có bằng chứng đủ để nhận một phương pháp mới. Mục tiêu contribution căn chỉnh, tăng CIDEr và giảm hallucination giữ nguyên; không đổi sang bài empirical-only.
 
 ## 1. Nguồn và độ sâu đọc thực tế
