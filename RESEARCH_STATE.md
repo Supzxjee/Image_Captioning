@@ -10,6 +10,8 @@ Cập nhật: 30/10/2026, giờ Việt Nam. File này là bản tóm tắt để
 
 ## Hiện đang ở đâu
 
+**Mới nhất: user giữ yêu cầu phương pháp/đóng góp thực chất về căn chỉnh và chưa chấp nhận đổi sang bài so sánh. Đang brainstorm với Astra một candidate alignment cụ thể; chưa code/GPU hay chốt phương pháp. [Notes + primaryliterature](experiments/concept_mass_grounding/ALIGNMENT_RESTART_NOTES_2026-10-30.md). Các kết quả/gate C/G/C0 bên dưới được giữ nguyên, không tuning tiếp để cứu claim.**
+
 **Expanded4000 đã hoàn tất đúng fixedcore6645673; không dùng hotfixoverlay. [EXPANDED_RESULT.md](experiments/concept_mass_grounding/EXPANDED_RESULT.md), [JSON](experiments/concept_mass_grounding/EXPANDED_RESULT.json), [audit](experiments/concept_mass_grounding/audit_expanded_results.py). Kết quả/audit đãpush`aa7c09b`, sheetR217hàng244đãghi/đọclại xác nhận. C có CIDEr1.207042/230falsecaptions; A1.189771/239; C0 1.204560/235. CIDErC−A+.017271 CI[+.008819,+.025853]; C−C0+.002481 CI[−.001357,+.006263]. HallucinationC−A/C−C0 không qua bootstrap/exactMcNemargates(.306/.180). JointgateFAIL; theo protocol dừngclaim/đầu tư đợt hiện tại, không tuning hay tăngn tiếp. Đã gửi facts cho Astra, chờ quyết định/trao đổi user cho hướng mới hoặc đổi scope; chưa triển khai nhánh mới.**
 
 - 4000uniqueprimary+16devsentinels(excluded),2ranks2000/model,alltensor/checkpoint/source identitiesPASS,paritymismatches0. Metadata/CHAIRcounts/ratios/20kCI kiểm lại, khôngneural/HDF5/officialscorerlocal. ZIP đọc1lần tại `review/expanded_loaded.json` ignored. One seed/reusedval/postpilot; khôngindependenttest/pooled5000.
@@ -45,7 +47,7 @@ Cập nhật: 30/10/2026, giờ Việt Nam. File này là bản tóm tắt để
 ## Bước tiếp theo và điều chưa chốt
 
 1. Dừng mở rộng/tuning C/G/C0 trên cohort này theo protocol đã chốt. Giữ C/C0 làm empirical quality candidates, giữ A làm reference; chưa promote positive preservation thành phương pháp grounding đã có hiệu quả.
-2. Đọc phản hồi Astra sau EXPANDED_RESULT, rồi trao đổi/chốt với user về hướng mới hoặc scope bài. Chưa có quyền tự triển khai kiến trúc/hướng mới, train thêm, seed sweep hoặc lấy test để tuning.
+2. Astra đã chốt đóng vòng C/G/C0, không thêm run để cứu gate: [EXPANDED_RESEARCH_DECISION.md](experiments/concept_mass_grounding/EXPANDED_RESEARCH_DECISION.md). Giữ C như practical quality candidate, C0 là đối chứng; chưa đạt dual goal/added alignment benefit. Trình user duyệt scope bài thực nghiệm “Đánh giá bảo toàn xác suất khái niệm trong tinh chỉnh mô hình sinh mô tả ảnh”, hoặc trao đổi lại thời hạn nếu giữ mục tiêu contribution mới đã chứng minh. User không chấp nhận đổi scope thành bài so sánh và đã yêu cầu brainstorm lại một đóng góp căn chỉnh; chưa duyệt candidate/code/GPU mới.
 3. Khi viết báo cáo: ghi cả CIDEr gain đã quan sát, absolute false-count giảm nhưng uncertainty còn rộng; không bỏ C0 hoặc giấu gateFAIL. Không so rawCIDEr dev1000 với4000 do khácIDF; không tự cộng CIDEr để thành5000.
 
 ## Các điểm phối hợp cần nhớ
