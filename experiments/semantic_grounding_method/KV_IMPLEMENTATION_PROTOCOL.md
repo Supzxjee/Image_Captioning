@@ -16,3 +16,14 @@ GPU preflight phải kiểm numeric C0 parity, sampled-policy rescore, actual re
 User-run eval: rawC0 và endpoint mỗi arm trên cùng1000dev, held99 observed scores/16query groups và actual decoder query likelihood, fixed64 reader-off intervention. CIDEr/CHAIR/recall/length/paired uncertainty; sparse relation-caption truth NOT_ESTABLISHED nếu chưa verified parsing. Chỉ khi nhận cả hai ZIP mới so E-D/ownC0; không promote từ một arm. Incomplete/failure luôn archive logs, không chấp nhận subset như endpoint.
 
 Chưa có kiểm tra CUDA/model hoặc runtime mới tại thời điểm ghi protocol. Tiếp theo triển khai rồi chạy static/metadata/NumPy tests; người dùng kiểm GPU bằng notebook.
+
+
+## Kiểm tra và phân phối
+
+Worker core `6685ae7`. Hai notebook `RELATION_KV_D_2GPU.ipynb`/`RELATION_KV_E_2GPU.ipynb`, mỗi file12654bytes; raw-source asset hashes tại `KV_DE_NOTEBOOK_PACKAGE.json`. Đã kiểm14test methods:5metadata/NumPy mới,5NumPy construction cũ và4static package/scalar metric; bản rawGit transport10metadata/NumPy tests cũng PASS.7source AST và Module-method-name guard PASS. Lỗi indentation trong generator được bắt ở compile trước bàn giao và đã sửa; không phải lỗi đã xảy ra trên Kaggle. Không chạy Tensor/Torch/model/autograd/HDF5 local hoặc khởi động Kaggle.
+
+Metadata audit supplementary: không có observed opposite containment-orbit pairs ở fit hoặc held; vì vậy diagnostic ấy ghi NOT_MEASURED, không tự gán arg-swap là false. Same-class multi-instance disambiguation không được cohort này kiểm. Code/API packaging tests không chứng minh gradient, CUDA parity, runtime, semantic scores hoặc caption quality.
+
+Mỗi notebook thêm5datasets đã ghi đầu trang. Nguồn/đối chứng/endpoint/loss không đổi sau checks. Khi chạy: source/bootstrap + CPU data/reward/native-prompt overlay validation → GPU actual preflight +20step benchmark/reset →500updates nếu budget vừa →full1000dev/99held/64reader-off →CPU CIDEr/CHAIR →smallreviewZIP. Cả hai cùng nguồn/scorer và ghi runtime; Kaggle base Torch/CUDA image không được script thay, phải kiểm manifest/captions/init identities của hai tài khoản trước quy E−D cho cơ chế.
+
+D/E notebooks chưa được user chạy. C0 raw full1000 được tính riêng trên mỗi runtime để kiểm đối chiếu chéo; không dùng scalar baseline cũ. Giữ checkpoint.bin; common_init.bin là init audit artifact, không checkpoint được chọn qua validation. Chỉ nhận endpoint500 COMPLETE +đủrecords; fail/timeout/OOM/forecastfail phải gửi ZIP, không tự đổigate hoặc tínhmộtphần.

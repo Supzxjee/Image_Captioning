@@ -1,0 +1,44 @@
+{
+  "core_commit": "6685ae7abd21ad8e375a82536e5701ccb350ad47",
+  "assets": {
+    "experiments/semantic_grounding_method/kv_pilot_data.py": "8a7c747495729b5829b99a441c5c93e29d45c07563a598880e3183b469de1528",
+    "experiments/semantic_grounding_method/kv_pilot_model.py": "2279384a6947eefe875c96ea3fb6b996f3544548cd0e568b591197f109f585d0",
+    "experiments/semantic_grounding_method/kv_pilot_preflight.py": "d674f49a66e6c9385c3db9adb9d7144642234e5ff142066e395e004351db6f8c",
+    "experiments/semantic_grounding_method/kv_pilot_training.py": "1dec55d8c6b53421006ee4a1d60ea0e2a590e1c72369a05356c40b1e3bd5e0d9",
+    "experiments/semantic_grounding_method/kv_pilot_evaluate.py": "05051ec6f28f591b4fa0022eb237bc0f71d4f5191fb91fec1e02023d89e059b1",
+    "experiments/semantic_grounding_method/run_kv_pilot.py": "f0b3c8113f96ce56268b3549e038c08d8c5e19df0cc36caab48e346de1bfc8cf",
+    "experiments/semantic_grounding_method/test_kv_pilot_data.py": "9ab80f90e56e4416e94f0c6770559ae441f6ab3c1e5a41130a13e74680b99b2e",
+    "experiments/semantic_grounding_method/test_relation_kv_math.py": "0b3eca5419d20e6a544b1b22372b37d0e88e30a5d02e7f3737d7072f99cd2014",
+    "experiments/semantic_grounding_method/kv_data.py": "2d6fec1d00fea6dbc34396b60f868549ac86d17b6410f56ff47e3cf01ba28e39",
+    "experiments/semantic_grounding_method/KV_SAVE_V115_PACKAGE.json": "82521c3949d6129d024620aef6fe9e35f3d1074c4051d05a54a0db1ff712c964",
+    "experiments/semantic_grounding_method/KV_NATIVE_TEXT_AUDIT.json": "73fe5588e066522d0c236ffa78189ad091526e9c27b598cbc41ad464d7783506",
+    "experiments/semantic_grounding_method/data/gain_metadata.json.gz": "62f43f771aec9feba31a2fbbb6fe7db2878f259979faac378b74a754822c7b67",
+    "experiments/relation_frames_inventory/inventory.py": "8975c6a221e3d769c5449901347717f8776c4ae191fb4fad5d3eb117fe18e578",
+    "experiments/shared_pair_readout/metric_preflight.py": "6e29f54e57b0b2e7f6f62de57017061071444d254b09305411716713b86f83f4",
+    "captioning/__init__.py": "ad259f50a32265d298d027a888f801d378c4669313b8dab06e0653978ce30633",
+    "captioning/models.py": "18026877836052c83e75c0d896adcc89822bb35616173c7e8b14b17c9a22e9d8",
+    "captioning/config.py": "4766d1bf82bf82b5199616c7d90ca74242f011e26f08db21b154b1c7d58e72bc",
+    "captioning/grounded_relations.py": "2c6b15048dce17a9bfa596f02af78866f0b7978f65d172414a3648c9aa49c58f",
+    "captioning/decoder_relation_memory.py": "bc5086915bf8f35cf7161311785cf612b25695c5f0dbe03a760d8aca724dfc82",
+    "captioning/scst.py": "3a9a1f32fb27dae0447066e1388a31461f3f0781d52db5861880b037a572a78e",
+    "captioning/scst_runtime.py": "3452ccfbd43876dc6381b78d1229d1d6b05fe723e3863a04f31c4a784497f669",
+    "captioning/tokenizer.py": "df2ace0025aa7d4e12c289ab7bca68046b48d4b6c2b5c12606a19ff5a50a638e",
+    "captioning/object_reward.py": "23282b1faca0b8e177ad8ce300f0b78ad4a5ab7b100e4b359b044025c567800c",
+    "captioning/object_consistency.py": "5fbd75b0ff4a35f0475d460a294894009d6007f468e248a0e4b528aaa8fabf73",
+    "captioning/semantic_prompts.py": "a06f12dea63604f9db9d19b6922815db27a35b648a17059407ffaf26a2a0d511"
+  },
+  "model_executed_locally": false,
+  "kaggle_submitted": false,
+  "notebooks": {
+    "D": {
+      "file": "RELATION_KV_D_2GPU.ipynb",
+      "bytes": 12654,
+      "sha256": "48ca62cf68f0702ecf7b7897a350743f12063529fe49a40cc7a90a50de5cf97c"
+    },
+    "E": {
+      "file": "RELATION_KV_E_2GPU.ipynb",
+      "bytes": 12654,
+      "sha256": "c5abde5ed32959a1785797790c1637be0c3ed0c79e2c5d741a8f09aa07fe8eae"
+    }
+  }
+}

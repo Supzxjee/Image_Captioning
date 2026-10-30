@@ -4,6 +4,7 @@ import hashlib
 import json
 from pathlib import Path
 import subprocess
+import textwrap
 from make_kv_prepare_notebook import cell
 
 HERE = Path(__file__).resolve().parent
@@ -82,7 +83,7 @@ def make(revision):
             LEGACY_PROMPT=Path('/kaggle/input/datasets/ducanh2403/prompt-cache/prompt_clip_tokens_cache.pt')
             OUTPUT=Path('/kaggle/working/relation_kv_'+ARM+'_pilot')
             REPORTED_GPU_HOURS_PER_ACCOUNT=20
-            '''),cell('code',f'''
+            '''),cell('code',textwrap.dedent(f'''
             CORE={core!r}
             ASSETS={assets!r}
             import hashlib,json,os,signal,subprocess,sys,tempfile,threading,time,zipfile,queue,traceback,urllib.request
@@ -97,7 +98,7 @@ def make(revision):
             REPO=WORK/'repo';REPO.mkdir()
             HERE=REPO/{PREFIX!r};CONFIG=WORK/'config.json'
             print('Bootstrap starting; arm',ARM,'source',CORE,flush=True)
-            '''+RUNNER),cell('code','''
+            ''')+RUNNER),cell('code','''
             try:
                 for i,(relative,expected) in enumerate(ASSETS.items(),1):
                     with urllib.request.urlopen('https://raw.githubusercontent.com/Supzxjee/Image_Captioning/'+CORE+'/'+relative,timeout=60) as response:raw=response.read()
