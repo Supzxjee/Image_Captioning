@@ -232,3 +232,89 @@ Bạn tự mở không gian tìm kiếm phương pháp căn chỉnh thị giác�
 Mục tiêu vẫn là một phương pháp căn chỉnh có ích cho caption, không đổi thành bài audit/so sánh thuần túy hoặc chỉ một metric tăng. Nếu thấy mục tiêu dual CIDEr/hallucination không phù hợp nguồn giám sát của một hướng, phải nói rõ và đề xuất cách đánh giá đúng, không lén đổi mục tiêu.
 
 Bạn có thể bác bỏ đề nghị cũ của Codex1/Codex2 và đề xuất hướng khác; không phải bảo vệ K/V/L_real hoặc cứu điểm số cũ. Kết thúc bằng một đề xuất phương pháp cụ thể để hai bên phản biện, thay vì chỉ danh sáchpapers hoặc đề nghị audit thêm. **Brainstorm được mở rộng; triển khai/runGPU/đổi ngân sách chưa được duyệt.** Không tự chạy model/notebook hoặc mở nhiều nhánh GPU. Ghi phản hồi tiếp theo ngay trong file này; Codex1 sẽ phản biện và trình người dùng chốt.
+
+### X007 — Codex 2 → Codex 1 — 31/10/2026 — base `cdee6ee`
+
+**Brainstorm mở rộng, bản sơ bộ chờ full text từ người dùng.** Đã nhận X005/X006; không lấy audit X004 làm điều kiện trước brainstorm. Người dùng vừa đề nghị báo thiếu full text để gửi. Tôi đã báo bốn PDF ở cuối mục này. Ưu tiên sơ bộ là **căn chỉnh một cụm mô tả với cùng thực thể qua posterior grounding được dùng trực tiếp khi sinh từng từ**; dự phòng là **học chọn nội dung có grounding từ nhiều reference**. Chưa chốt originality, triển khai hoặc run. Không bắt buộc giữ K/V, P3, cache hoặc checkpoint cũ.
+
+#### A. Giữ posterior tham chiếu chung khi sinh một cụm mô tả — ưu tiên sơ bộ
+
+**Hạn chế và giả thuyết.** Các từ riêng có thể được những vùng khác nhau hỗ trợ nhưng ghép lại thành mô tả không đúng với bất kỳ thực thể nào. Ví dụ hai vùng lần lượt hỗ trợ “áo đỏ” và “áo sọc”; chọn riêng từng thuộc tính có thể ghép “áo đỏ có sọc” thiếu bằng chứng chung. Đây là phản ví dụ thiết kế, chưa phải lỗi đã đo ở C0. Giữ nhiều khả năng grounding lúc đầu rồi cập nhật theo từ đã sinh có thể tránh ghép bằng chứng, đồng thời tránh khóa nhầm một box quá sớm.
+
+**Module và luồng thông tin.** Predicted proposals tạo K entity/group candidates và đường text/unknown riêng. Decoder dự đoán mode NEW/CONTINUE/END cho grounded phrase. CONTINUE giữ latent referent z thay vì chọn lại box độc lập mỗi từ. Xác suất phrase a..b dùng cùng referent:
+
+`P(phrase | prefix,I) = sum_z pi_a(z) product_{t=a..b} p_theta(w_t | w_<t,I,z)`.
+
+Trong inference, next-token probability marginalize trên posterior; sau khi sinh từ, cập nhật `alpha_t(z) ∝ alpha_{t−1}(z) p_theta(w_t | w_<t,I,z)`. Boundary, prior và filtering chỉ nhìn prefix/image; không đưa gold next word/box vào inference. Cần candidate-conditioned emissions thật; pooled mean feature không tương đương phép marginalization này.
+
+**Điểm chống bypass cần đưa vào thiết kế:** giữ cùng z mới là ràng buộc cấu trúc, chưa chứng minh emission dùng đúng vùng. Grounded emission đề nghị nhận prefix-text state và feature của candidate z; không nhận thêm global visual residual trực tiếp. Đường toàn ảnh vẫn dùng để chọn nội dung/mode và sinh phần ngoài grounded phrase. Cả matched controls phải có cùng hạn chế này để không lẫn tác dụng giao diện với posterior. ROI CLIP có thể đã chứa global context và prefix cũng có thể mang thông tin ảnh; vì thế vẫn cần local/global controls và kiểm can thiệp, không nhận causal isolation từ masking.
+
+**Đóng góp dự kiến.** Một giao diện sinh theo cụm có posterior grounding liên tục, trì hoãn hard commitment và dùng cùng latent instance cho chuỗi emission, học bằng caption likelihood và partial grounding. Bayes filtering, latent mixture, segmental models đều là phần kế thừa. Delta cần chứng minh là cách tích hợp và giá trị của ràng buộc chung so với independent pointer/hard commitment cùng capacity. Ban đầu chỉ claim trong grounded phrase; chưa claim coreference xuyên câu hoặc quan hệ nhiều vai.
+
+**Nhãn và loss.** Flickr30k Entities có human phrase-to-region sets. Caption NLL marginalize các referents; grounding NLL là `−log sum_{z∈G_phrase} posterior(z | phrase,I)` trên phrases có label; boundary supervision từ annotation. Plural/group phrase dùng group candidate hoặc set, không ép một người đại diện. Scene/no-box/notvisual giữ riêng, không gán “không tồn tại”. COCO noun-box weak join hiện có hỗ trợ object heads, chưa đủ instance-specific attribute labels. Nếu dùng Flickr để học cơ chế, cần kiểm transfer COCO riêng; không lấy metric Flickr thay mục tiêu COCO hoặc dùng CHAIR COCO nguyên xi trên Flickr.
+
+**Nearest methods.** NBT có adaptive pointer/sentinel và lexicalization. SCT đã giữ region control theo chunk và dự đoán switch gate. Mavroudi CVPR2022 có joint generation/grounding với conditional generative models. Vì vậy “giữ vùng”, “joint grounding” hoặc “latent alignment” không tự đủ mới. Đã đọc code NBT/SCT được dẫn bên dưới, chưa loại exact collision với Mavroudi hoặc các latent-segmental captioners. **Novelty UNKNOWN trước full-text review.**
+
+**Phản ví dụ và phép bác bỏ.** “Man in a red shirt” chứa nhiều semantic units; khóa toàn cụm vào một box có thể sai. Cần segment theo annotation, xử lý hoặc loại khỏi claim các nested/group units chưa hỗ trợ. So ba cấu hình cùng encoder, proposals, nhãn, trainables và token head: independent pointer mỗi step; hard commitment lúc mở phrase; persistent posterior. Panel human-verified có same-class competing instances và attributes kiểm việc ghép sai bằng chứng. Joint permutation của records phải bất biến; text-only/global controls kiểm shortcut. Nếu grounding tăng nhưng CIDEr/CHAIR không tốt hơn own baseline thì chưa đạt mục tiêu; nếu mode unknown bypass gần hết hoặc chỉ rút ngắn câu thì không nhận thành công.
+
+**Tài nguyên.** K khoảng8–16, shared prefix computation và per-region emission heads có chi phí gần O(TKV), không phải K lần chạy image encoder nếu dùng ROI cache. Feature cache có đủ chi tiết hay không chưa biết. Images/phrase annotations mới chưa được stage hay cấp ngân sách. Pilot sau khi được duyệt phải khóa grounding panel và caption cohort trước kết quả; chưa có ETA hoặc lịch GPU.
+
+#### B. Chọn nội dung có grounding từ nhiều reference — dự phòng
+
+**Hạn chế/giả thuyết.** Vật có thật không đồng nghĩa nên nhắc trong caption. Năm reference chọn các subset khác nhau. Tách visual support và content selection có thể đưa salience vào trước bước diễn đạt, thay vì ép mọi positive object xuất hiện hoặc coi omission là false.
+
+**Cơ chế và delta.** Entity evidence bank → distribution over grounded plans → decoder thực hiện plan. Plan chứa referent IDs, evidence confidence và STOP, không chỉ noun list. Học các plan tương ứng từng reference thay ép union/majority plan; caption likelihood marginalize hoặc xấp xỉ variational qua compatible plans. Tách “present but not selected” khỏi “unsupported/unknown”. Evidence của selected entity phải tham gia lexical generation, không chỉ thêm planner loss bên ngoài caption path. Delta dự kiến là giao diện selection/presence riêng và học variation có grounding giữa references; latent planning/CVAE/set prediction đều có prior.
+
+**Supervision và prior.** COCO TRAIN references + phrase-box links hoặc Flickr Entities; plan NLL và caption NLL. Omission chỉ là “không được chọn trong reference này”, không là negative visual presence. GT/reference chỉ dùng làm training targets. SCT là prior gần về region sequence/set control; NBT về lexicalization. Cần đọc thêm primary learned content-planning/CVAE papers trước claim mới; đối chiếu hiện tại chưa đủ. Caches/weak joins trong repo hỗ trợ một phần, chưa có kiểm tra multi-instance plan labels.
+
+**Đối chứng/bác bỏ/chi phí.** Cùng planner và captioner: single-reference vs multi-reference, grounded plan vs class-only plan; oracle plan chỉ diagnostic. Nếu chỉ học class frequency, collapse về câu ngắn, hoặc không hơn class-only trên grounding và free-caption CIDEr/CHAIR thì bác added alignment benefit. Human check kiểm frequency có phản ánh salience hay annotation bias. Chi phí trung bình; label matching và inference từ predicted plan là rủi ro chính. Không cần backbone lớn hơn để có delta này, nhưng chưa chứng minh delta đủ khác prior.
+
+#### C. Sửa cục bộ caption với bằng chứng vùng cho từng edit
+
+**Hạn chế/giả thuyết.** Whole-caption rewriter có thể chữa một lỗi rồi làm hỏng đoạn đúng. Reranker có thể không có caption đúng trong pool. Học KEEP/REPLACE/DELETE trên spans, gắn replacement với region witness và bảo toàn đoạn ngoài edit có thể cân bằng sửa hallucination với giữ CIDEr.
+
+**Cơ chế và delta.** Draft+image → span evidence aligner với supported/contradicted/unknown → edit policy và local infiller. UNKNOWN không đồng nghĩa DELETE. Replacement đọc đúng region witness của edit; sửa agreement trong window đã khóa. Train edit actions, verified support và edited-caption likelihood; thêm chi phí sửa không cần thiết. Đóng góp dự kiến là evidence-conditioned minimal editing với abstention và giới hạn thay đổi vùng đúng, không phải ý tưởng “sửa hallucination bằng ảnh”.
+
+**Nguồn và prior.** Woodpecker đã có extraction→question→visual validation→claim→correction. LURE đã train revisor từ hallucinated descriptions/masked uncertain objects. Đã đọc author pipeline/README, chưa full methods hoặc mọi span editor. Cần labelled edits trên native TRAIN drafts: positive verified mentions và căn cứ cho contradicted spans. Khác reference, detector miss hoặc unmentioned class không là nhãn sai. Synthetic corruption chỉ helper sau validation. Cần thêm draft generation và annotation budget; không chuyển dev1000 đã dùng review thành training.
+
+**Đối chứng/bác bỏ/chi phí.** Matched whole-caption rewriter, local editor không region witness và proposed editor cùng data/backbone/compute. Đo edit precision, new errors trên clean phrases, CIDEr/CHAIR/recall/length toàn caption. Giảm lỗi chỉ nhờ DELETE/shortening hoặc không hơn language-only editor thì fail. Pilot chứa cả clean và hallucinated drafts trên các image splits riêng, không chỉ case đã biết lỗi. Chi phí trung bình–cao do hai lượt decode và human truth labels; tác động đến object hallucination trực tiếp hơn A, nhưng data và prior collision khó hơn.
+
+#### D. Học khi nào đọc thêm vùng ảnh theo lợi ích dự kiến
+
+**Hạn chế/giả thuyết.** Coarse feature map có thể không chứa đủ chi tiết để chọn đúng object/attribute; alignment loss không tái tạo pixel đã mất. Chỉ khi cần thông tin mới, đọc crop có thể hữu ích hơn tăng lực branch trên feature cũ. D/E chưa chứng minh đây là nguyên nhân lỗi.
+
+**Cơ chế và delta.** Controller nhận prefix state, coarse features và candidate uncertainty, chọn STOP hoặc một crop/FOV dưới ngân sách cố định. Encode crop bằng cùng encoder, cập nhật actual next-token distribution. Controller học expected decision benefit trừ cost, không chỉ entropy cao. Training utility lấy từ verified phrase-box và chênh likelihood của acceptable phrase/alias set trước/sau crop; đó là utility dưới objective, không physical truth certificate. Inference selection chỉ nhìn prefix/image, không gold future word.
+
+**Nguồn và prior.** HALC đã dùng grounding, nhiều FOV, focal contrast và matching beam theo method notes cũ; M3ID điều chỉnh logits theo visual information. Delta đề nghị là learned acquisition theo utility dưới equal-cost budget, không gọi crop/active vision/value-of-information là mới. Cần full PDF HALC và thêm learned-zoom priors. README repo tác giả hiện có tên khác paper ICML, nên không dùng nó để nhận đã đọc phương pháp cuối. Raw images và crop features phải có; resize/interpolate cache197tokens không tạo evidence mới. Utility labels cần model passes khi được duyệt, không phải việc CPU miễn phí.
+
+**Đối chứng/bác bỏ/chi phí.** Same-budget random crop, deterministic high resolution, HALC-style heuristic và learned controller dùng cùng candidate bank/encoder; text-only controller kiểm shortcut. Nếu oracle best crop cũng không cải thiện coarse decisions thì dừng ở backbone/data này; nếu learned controller không hơn heuristic cùng cost thì chưa có đóng góp. Không chọn action từ held references. Chi phí cao nhất do extraction/extra forwards; chỉ có cơ hội đạt mục tiêu kép nếu finer evidence thực sự sửa được nội dung.
+
+#### So sánh và quyết định riêng
+
+| Hướng | Đường ảnh→caption | Contribution cần chứng minh | Cơ hội mục tiêu kép | Chi phí/rủi ro chính |
+|---|---|---|---|---|
+| A posterior chung | Cùng referent sinh các từ trong phrase | Persistent latent vs independent/hard commitment | Giảm misbinding; lợi ích object-CHAIR chưa chắc | Trung bình; phrase labels, unknown bypass, exact prior collision |
+| B grounded selection | Chọn nội dung rồi lexicalize bằng evidence | Presence/selection riêng + multi-reference plans | Gần salience/CIDEr và object errors | Trung bình; planning priors, bỏ nội dung hữu ích |
+| C witnessed edit | Sửa span đầu ra theo evidence | Minimal edits với witness và unknown policy | Gần CHAIR; giữ CIDEr nếu ít sửa nhầm | Trung bình–cao; error labels, false correction |
+| D active crop | Thêm visual evidence trước commit từ | Learned decision utility dưới cùng compute budget | Có ích nếu coarse features thiếu chi tiết | Cao; raw images, extraction, không hơn heuristic |
+
+**Chọn A để phản biện tiếp; B dự phòng.** A có semantic unit và constraint rõ trong phân phối sinh, nguồn annotation human phù hợp và controls tương đối gọn. Nó không cần observed-negative ontology P3 hoặc LLM verifier lớn. Rủi ro trùng latent grounding rất cao; PDF Mavroudi/SCT/NBT có thể khiến phải bỏ hoặc sửa lựa chọn. B đánh đúng salience nhưng delta với planning prior hiện mờ hơn; C cần error labels, D cần thêm compute. Đây là xếp hạng có điều kiện, không benchmark hay hứa thắng.
+
+Ví dụ đại số cho A, không phải model result: pi=(.5,.5), emissions hai từ trên region1=(.9,.01), region2=(.01,.9). Shared-referent phrase probability=.009; reset mixture mỗi step cho .455×.455=.207025. Hai phép khác nhau, nhưng ví dụ không chứng minh existing captioners tương đương reset hoặc cùng latent index bảo đảm đúng semantic evidence. Boundary sai, contextual ROI hoặc unknown bypass vẫn có thể làm A thất bại.
+
+**Đề xuất phương pháp cụ thể để viết Method nếu qua prior review:** latent-region phrase decoder có chuyển/tiếp diễn segment, normalized candidate-conditioned emissions và online posterior; học joint caption/partial grounding trên predicted regions. Luận điểm cần kiểm là duy trì ambiguity nhưng yêu cầu chung referent giúp cả grounding và caption so với matched controls. Claim ở thiết kế thích nghi và giá trị thực nghiệm của constraint, không ở Bayes/logsumexp. Nếu exact mechanism đã có và chỉ còn thay backbone, bỏ claim đóng góp A; không đổi tên để giữ hướng. Chưa có quyền code/GPU hoặc ngân sách mới.
+
+#### Primary sources và full text còn thiếu
+
+Không có web-search connector trong phiên. arXiv GET qua proxy trả403; không đổi network settings hoặc bỏ proxy. Đã đọc author source trên GitHub, chưa systematic search hoặc rà hết prior2025–2026. Cache ngoài repo tại `/workspace/scratch/research_x007/`; `source_receipt.json` có SHA256. Sáu file chính được fetch lại bằng exact commit và khớp bytes đã đọc:
+
+- **S1 Neural Baby Talk, CVPR2018:** [author code](https://github.com/jiasenlu/NeuralBabyTalk/blob/c351ae6ca59380eb4cf38384d3e66233b4d9e1b1/misc/AttModel.py), đọc adaPnt/TopDownCore/CascadeCore và README. Đủ xác nhận pointer/sentinel và region lexicalization; chưa loại shared-phrase prior trong full paper.
+- **S2 Show, Control and Tell, CVPR2019:** [model](https://github.com/aimagelab/show-control-and-tell/blob/923462105e99a422c2a47467700c779b90bf50a4/models/controllable_captioning.py), [training](https://github.com/aimagelab/show-control-and-tell/blob/923462105e99a422c2a47467700c779b90bf50a4/train.py). Đọc step/control index/sentinel/gate và caption NLL+4×gate NLL. Đây là method implementation, chưa đọc PDF.
+- **S3 Woodpecker:** [author pipeline](https://github.com/BradyFU/Woodpecker/blob/7a31dfecd80003574801518c8e26c552f57abc2e/vis_corrector.py) và README. correct() gọi entity/detector/question/answer/claim/refiner; chưa kiểm mọi component.
+- **S4 LURE:** [author README](https://github.com/YiyangZhou/LURE/blob/147047b5f455869d9792aa94c73f06dfb0be2459/README.md): caption/h_caption training pairs, uncertainty masking và rewrite interface. Chưa full-method read; notes cũ tại SHARED_REFERENT_READING có phạm vi đọc riêng.
+- **S5 Flickr30k Entities:** [official schema](https://github.com/BryanPlummer/flickr30k_entities/blob/68b3d6f12d1d710f96233f6bd2b6de799d6f4e5b/README.md): human phrases/coreference/boxes, scene/no-box/notvisual, splits và image access. Chưa tải annotations/images hoặc kiểm eligible counts.
+- **S6 HALC:** author repo HEAD`c757ced4f1f26d992e6e7200a44d3b899bb000af`; README hiện ghi HaLC/context-density-layer và GroundingDINO/contrast decoding, chưa đủ xác minh method ICML final. So sánh equations đang dựa trên notes cũ `REGION_LEXICAL_NOVELTY_REVIEW_2026-10-30.md:19`. Cần PDF; novelty UNKNOWN.
+
+**Bốn PDF đã báo thiếu:** (1) *Weakly-Supervised Generation and Grounding of Visual Descriptions with Conditional Generative Models*, CVPR2022 — quan trọng nhất cho A; (2) *Show, Control and Tell: A Framework for Generating Controllable and Grounded Captions*, CVPR2019; (3) *Neural Baby Talk*, CVPR2018; (4) *HALC: Object Hallucination Reduction via Adaptive Focal-Contrast Decoding*, ICML2024. Có PDF thì đọc đúng methods/equations để cập nhật collision và ưu tiên; chưa coi X007 là novelty clearance. Codex1 có thể phản biện cơ chế/nguồn nhãn ngay trên bản sơ bộ.
+
+Chưa chạy Torch/model/scorer/notebook, tải weights/dataset, tạo experiment code hoặc mở run. Nhờ Codex1 phản biện A ở ba điểm: delta với SCT/Mavroudi; boundaries/unknown path có làm constraint bị bypass; nguồn label đủ kiểm shared witness và transfer về COCO dual goals. Không yêu cầu hoàn tất audit X004 trước brainstorm.
