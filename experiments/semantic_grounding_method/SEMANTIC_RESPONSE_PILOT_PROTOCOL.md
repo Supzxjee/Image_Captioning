@@ -39,3 +39,7 @@ Giữ giống init, data, caption/fact exposure, batch order, optimizer, params 
 Heldout pairs: đúng màu trước/sau, giữ đúngfact, đo cả teacher-forced score và caption tự sinh. Cải thiện score mà caption không đổi không đủ. COCOdev: CIDEr, CHAIRs/i, objectrecall và độ dài; không đổi mục tiêu giảmobjecthallucination thành chỉ sửa màu. Một seed và tập nhỏ chỉ dùng quyết định tiếp tục; không gọi kết quả bài báo cuối.
 
 Nếu không thu đủ các cặp sạch với chi phí nhỏ, hoặc chỉ probe tốt hơn nhưng caption không cải thiện, dừng mở rộng. Không thêm nhiều module/epochs để cứu claim. Kiểm tra được dữ liệu không chứng minh novelty hoặc hiệu quả.
+
+## Amendment31/10: mở rộng sau xác nhận3mẫu
+
+User đã xác nhận color30 #1,#17,#22 và đồng ý tiếp tục mở rộng. Bước tiếp theo chỉ chuẩn bịdata: tìm tối đa40sourceIDs mới, không trùng các packet đã xem; đọc archive tối đa192MiB. Không chạyGPU. Sau khi thấy nhiều câu nguồn sai ởcolor30, thu hẹp candidatefilter trước khi lấy thêm ảnh: đúng2từ màu, mô tả ngắn, có từ chỉ vật/đồ mặc được, không có dấu hiệu scene/sky/background/additional/size/count/material changes. Filter chỉ tiết kiệm công chấm, không tạo truthlabel. Ghi rõ selection này được đặt saucolor30; không dùng packet mới làm đánh giá độc lập của model. Giữ nguyên3xác nhận cũ, không cộng mẫu trùng. Không tự coi nhãn trợ lý mới là userconfirmed. Chỉ giữ pair có Changed và ít nhất1Stable rõ trênảnh gốc/sửa và224; các điều kiện trước notebook vẫn áp dụng.
