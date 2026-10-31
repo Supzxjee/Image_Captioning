@@ -1,0 +1,22 @@
+{
+  "status": "STATIC_METADATA_PASS",
+  "unit_tests": 4,
+  "asset_images": 30,
+  "pairs": 15,
+  "notebook_code_cells": 3,
+  "notebook_bytes": 7885,
+  "source_commit": "acd4258b529a43f85bc2bd90820c53f0e15ffe99",
+  "source_assets_verified": 11,
+  "notebook_executed": false,
+  "torch_imported_locally": false,
+  "cuda_tested": false,
+  "kaggle_submitted": false,
+  "sheet_registry": {
+    "id": "R222",
+    "row": 249,
+    "verified_cells": 16,
+    "status": "PREPARED_NOT_RUN",
+    "metrics_heading_row": 250,
+    "verification": "live API values/format readback; no UI screenshot"
+  }
+}

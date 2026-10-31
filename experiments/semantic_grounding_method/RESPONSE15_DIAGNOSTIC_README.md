@@ -16,6 +16,8 @@ Gói local ở experiments/semantic_grounding_method/review/semantic_response_co
 - FactStable cònđược ưu tiên ởcảhaiảnh không? Độbiếnđộng contrast bao nhiêu?
 - Captiongreedy thực tế viếtgì trênmỗiảnh? Khácchữ khôngđồngnghĩađúngngữnghĩa; khôngtựchấm bằng việc tìm màu trongcâu.
 
+Captionkhôngnhắcmàu cóthể vẫnđúng trêncảhaiảnh. Vìvậy “captionkhôngđổi” không tựđộng được tính làlỗi; đọc theo nội dung màcaption thực sự khẳngđịnh.
+
 Đây là kiểmtracơchế banđầu trên15developmentpairs. Editedside cốýgiữpromptcũ, khôngphải fullpipeline táitạoprompt. KhôngđoCIDEr/CHAIRgain, khôngchứngminhnovelty haykhả nănggeneralization.
 
 ## Kiểmtra local đã làm
