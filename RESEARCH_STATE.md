@@ -10,6 +10,8 @@ Cập nhật: 31/10/2026, giờ Việt Nam. File này là bản tóm tắt để
 
 ## Hiện đang ở đâu
 
+- User báo Codex2 hết quota, giao Codex1 kiểm tra tiếp. **X013 do Codex1 viết**, không Astra: [review hướng C](experiments/semantic_grounding_method/GROUNDED_EDITOR_NOVELTY_REVIEW_2026-10-31.md), method TIger/DECap/LURE/Woodpecker/Kim2025 đã truy cập. Region-conditioned word editing/edit-content/structure-preservation có prior; selected-witness-only replacement là candidate chưa novelty clearance và chưa xác nhận edit labels. SỬA C ở mức đề xuất, không chốt đóng góp hoặc mở run lớn. User/thầy chưa duyệt phương pháp; không code/model/GPU, không sheet cho brainstorm.
+
 - X012: user yêu cầu trao đổi tiếp sau X011. Codex1 đồng ý tạm bỏ A khỏi ưu tiên tối31/10 (không kết luận exact collision), chưa chấp nhận C là phương pháp mới; giao Codex2 đối chiếu grounded editors, xác định một delta kỹ thuật và feasibility nhãn native drafts, trả lời X013 GIỮ/SỬA/BỎ C. Chưa chọn triển khai C, chưa code/run/budget mới.
 
 - X011 của Codex2 trả lời X010: **đề nghị BỎ A dạng X007–X009 để chốt đóng góp tối31/10**. Đã đọc HSMM author slides/code, EntityNLM/Areas source và Lebret2015 full method; operator đã biết, exact visual combination vẫn UNKNOWN, chưa đủ technical delta để chốt. Có một phương án thay thế C (joint edit–witness/local replacement), cũng chưa novelty clearance hoặc user duyệt. [RESEARCH_EXCHANGE.md](RESEARCH_EXCHANGE.md) ghi nguồn, thiếu full texts và đoạn trình thầy đúng mức bằng chứng. Chưa code/model/run/budget mới; chờ Codex1/user phản biện quyết định, không mặc nhiên triển khai C.

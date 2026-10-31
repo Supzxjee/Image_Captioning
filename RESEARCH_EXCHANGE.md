@@ -524,3 +524,13 @@ Nguồn sơ cấp có thể kiểm lại:
 5. Kết thúc bằng **một khuyến nghị có thể trình thầy tối nay**, tách điều đã xác minh / giả thuyết đóng góp / kiểm chứng còn thiếu. Nếu C không đủ sức, được quyền đề xuất một sửa đổi hoặc hướng khác có nearest-prior rõ, không cần cứu A/C bằng mọi giá và không quay lại brainstorm dài thiếu delta. Nếu nguồn truy cập chặn kết luận, liệt kê đúng 2–3 full texts ưu tiên cần user gửi thay vì nhận đã clearance.
 
 Không mở notebook, stage dữ liệu, code hay chạy model. Không yêu cầu đọc lại review ZIP. Chỉ ghi thay đổi có ý nghĩa vào file trao đổi/state; không cần sheet cho vòng brainstorm. Mục tiêu là một phương án có căn chỉnh thị giác–ngữ nghĩa và cải tiến bảo vệ được cho bài báo trong nước; chưa hứa kết quả vượt baseline hoặc chấp nhận bài.
+
+### X013 — Codex 1 tự tiếp quản khi Codex2 hết quota — 31/10/2026 — focused review hướng C
+
+User cho biết tài khoản bên kia hết quota và yêu cầu Codex1 thực hiện. Đây là nghiên cứu của Codex1, không phải phản hồi Astra. [Đối chiếu chi tiết và giới hạn nguồn](experiments/semantic_grounding_method/GROUNDED_EDITOR_NOVELTY_REVIEW_2026-10-31.md).
+
+**SỬA C ở mức đề xuất, chưa novelty clearance/chưa mở run.** Đã truy cập method TIger2022, DECap2024, LURE, Woodpecker và Kim ICCVW2025. Phát hiện sát nhất: TIger đã cho region features vào Inserter vocab distribution; DECap đã có edit/content heads với KEEP/DELETE/INSERT/REPLACE. Vì vậy dùng region để sửa từ, joint edit/content và giữ cấu trúc không phải delta đủ. Woodpecker có evidence-guided revision; clean/no-edit cũng có prior. Không nhận đã tìm exact collision cho selected-witness bottleneck.
+
+Candidate còn lại để thầy góp ý: một span–action–witness selector và replacement head chỉ đọc masked text state + vùng đã chọn, giám sát trực tiếp witness; copy ngoài window. Đây là khác cấu hình so với bank fusion của TIger/DECap đã đọc, nhưng pointer/ROI restriction/grounded generation đều cũ, chưa xác nhận phần áp dụng này mới. Cần matched bank-fusion control cùng head/labels/budget, native verified edit labels và đo repaired/introduced errors; không hơn oracle hoặc giảm CHAIR nhờ xóa là utility proof. Vẫn thiếu xác nhận tập nhãn TRAIN đủ dùng; VSR/UPT cache không thay edit truth. Không stage/code/model/GPU.
+
+Tìm mới qua web sơ cấp ECVA/arXiv/CVF/ACL, không scholarly MCP; một số PDF/leads trả403/cache miss. Không exhaustive review đến2026. Nguồn, section đọc, queries và phần thiếu nằm trong report; không lấy snippet của leads mới làm bằng chứng. Khuyến nghị không chốt C hiện tại là phương pháp mới hay chạy editor lớn, giữ câu hỏi căn chỉnh vùng–cụm để user/thầy chốt scope tiếp.
