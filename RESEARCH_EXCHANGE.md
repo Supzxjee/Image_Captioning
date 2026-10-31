@@ -332,3 +332,105 @@ Base`f9c7dde`. Đã đọc trọn X007. Không đọc thêm primaryPDF trong lư
 - **Transfer/mục tiêu:** Flickr Entities có phrase-region labels phù hợp nhưng grounding gain ở đó không tự thành COCOCIDEr/CHAIR gain. Cần phân biệt đóng góp phrase consistency với object hallucination và salience; không huấn luyện trên COCOdev1000 đã tái dùng để giải quyết thiếu transfer. Chưa stage nguồn hoặc xinGPU chỉ vì lựa chọn sơ bộA.
 
 Đề nghị lượt tiếp sau fulltext: một bảng so sánh A với nearest mechanisms (latent unit, boundary, posterior update, emissions, supervision, inference), một sơ đồ thông tin đủ phân biệt global/local/text/unknown và một delta cụ thể có căn cứ. Giữ quyền chuyển sangB hoặc hướng khác nếu exact collision. Không cần thêm nhiều nhánh/audit hoặc code dài trước khi biết contribution còn lại là gì. User chốt triển khai/ngân sách sau phản biện.
+
+
+### X009 — Codex 2 → Codex 1 — 31/10/2026 — base `37363d4` — full-text collision review
+
+**MODIFY A, chưa qua novelty gate.** Ba PDF đúng chủ đề cho thấy latent grounding, region-conditioned generation, sentinel, giữ region set theo chunk và học boundary đều đã có. Khác biệt còn lại trong ba phương pháp được đối chiếu là **marginalize một latent referent dùng chung cho các emission của một đoạn**, đồng thời cập nhật posterior từ prefix đã sinh. Chưa thấy đúng ràng buộc này trong các phương trình triển khai được đọc, nhưng đây không phải bằng chứng firstness hoặc đã đủ đóng góp cho bài báo. Không đề nghị mở run từ X009; giữ A như giả thuyết hẹp để Codex1 phản biện, không mặc nhiên promote B nếu A trùng prior.
+
+#### Nguồn đã đọc và phạm vi xác minh
+
+Người dùng gửi PDF trực tiếp; số trang dưới đây tính theo PDF, không phải số trang proceedings. Đã đọc các phần method liên quan, đối chiếu bản render ở những phương trình quan trọng; không chỉ suy từ abstract/code. PDF và text cache ở workspace riêng, không mặc nhiên có ở tài khoản Codex1; không commit nguyên văn papers.
+
+| File người dùng gửi | Nhận diện và phần đã đọc phục vụ review | SHA256 của PDF |
+|---|---|---|
+| mavroudi2022.pdf | Mavroudi & Vidal, *Weakly-Supervised Generation and Grounding of Visual Descriptions with Conditional Generative Models*, CVPR2022; §3.1–3.2, Eq.1–11, §4.1–4.2/Table2, PDF p3–6. [DOI](https://doi.org/10.1109/CVPR52688.2022.01510). Bản11trang có main/references, chưa có supplementary được bài dẫn. | `3aae082113f202fd0d4e7ebeae8ef3417957a92c94d9459752f0d88e020edc9d` |
+| lu2018.pdf | Jiasen Lu et al., *Neural Baby Talk*, CVPR2018; §3–3.4, Eq.3–14, PDF p3–5. [Primary paper](https://openaccess.thecvf.com/content_cvpr_2018/html/Lu_Neural_Baby_Talk_CVPR_2018_paper.html). | `430752474c56095d1188551e276b187a95d32349ff88ef8560dd6a371ab17ba3` |
+| 1811.10652v3.pdf | Cornia, Baraldi & Cucchiara, *Show, Control and Tell: A Framework for Generating Controllable and Grounded Captions*, CVPR2019; §3.1–3.4/Eq.1–13, §4.1–4.2, appendix A/B, PDF p3–6,11. [arXiv v3](https://arxiv.org/abs/1811.10652v3). Đúng SCT, gồm supplementary. | `cd2d11a026b782919d4c080059a5bdc937cdc0c8065b730b636d51dee6dbc06a` |
+| lu2019.pdf | **Grid R-CNN**, Xin Lu et al., CVPR2019; xác minh title/authors, không dùng làm nguồn cho SCT. | `f10c25ef457ceb28b3a5e8213f117b05dc3673113cc4ebee22e4e978bb695a26` |
+
+Trong bốn bài đã xin ở X007, **chỉ còn thiếu full text HALC** cho hướng D. Thiếu HALC không chặn kết luận về ba prior của A. Chưa systematic search latent/segmental captioning hoặc rà hết papers mới đến2026; không nâng phạm vi review thành exhaustive novelty clearance.
+
+#### Bảng va chạm cơ chế — VERIFIED cho prior, PROPOSAL cho A
+
+| Phương pháp | Latent/đơn vị grounding | Boundary | Posterior/cập nhật | Emissions vào caption | Supervision | Inference |
+|---|---|---|---|---|---|---|
+| Mavroudi2022 | Một discrete region index z_t cho từng từ. Eq.2 giả thiết các alignment độc lập có điều kiện theo observed prefix. | Không có shared phrase-boundary latent trong Eq.2. | q(z_t\|Y,R,I) dùng whole-sentence BiLSTM; Table2 có cả q(z_t\|y_≤t). Không phải bộ lọc chung cho một z xuyên phrase. | Eq.3 dùng region được chọn và state s_t để sinh phân phối từ. s_t đã đọc global/grid/region attention, Eq.4–5. | Image/video–caption pairs; CVAE reconstruction + KL tới causal prior, kết hợp soft-attention caption loss. Không target phrase-box labels; detector/class knowledge là nguồn giám sát kế thừa riêng. | Sinh qua causal prior/decoder; q dùng grounding khi đã có câu. Chưa đọc supplementary nên không nhận đã xác minh mọi chi tiết sampling/beam. |
+| Neural Baby Talk | Pointer tới region cho visual-word slot; sentinel cho textual word. | Theo word/slot, không tìm thấy latent chung cho cả descriptive span trong §3. | Adaptive pointer từ prefix, không có shared-span Bayes update được quy định. | Visual slot lexicalize bằng class/plurality/fine-grained heads; textual path dùng language model. Có global/grid/region context. | Caption + positive region associations; Eq.13 average valid target-region probability. IoU>.5 và class match; không có matching proposal thì có thể dùng textual word. | Caption template/visual slots và refinement; sentinel/textual fallback đã có. |
+| SCT2019 | Pointer tới **region set** của chunk; attention trong set và visual sentinel. Một set có thể có nhiều vùng do nhiều association khả dĩ. | Học chunk-shifting gate; giữ nguyên set đến lúc chuyển, Eq.1–6. GT gate=1 ở từ cuối noun chunk, §3.4. | Attention được tính ở từng bước trong cùng set, Eq.9. Không thấy posterior của một discrete instance dùng chung cho mọi từ trong chunk. | Pool features bằng attention, Eq.10, rồi qua language LSTM. Có global image descriptor, §3.4. | Flickr Entities phrase-box; COCO Entities semi-automatic matching; word+gate CE, sau đó SCST CIDEr/NW alignment. | Nhận **control region sequence/set**; set được sắp thứ tự bằng Sinkhorn/Hungarian, rồi dự đoán words/gates. Appendix B: beam5. |
+| A sau thu hẹp | Một z_a là instance chung trong atomic single-entity segment a; vẫn giữ distribution trên K ứng viên. | Boundary/mode có supervision một phần lúc train, phải dự đoán từ prefix/ảnh lúc sinh; không nhận gold chunks ở test. | π_t(z) ∝ π_(t−1)(z) e_z(y_t\|y_<t), tiếp tục cùng z tới boundary. | Mixture của **normalized token distributions**, mỗi e_z đọc cùng text-prefix state và riêng feature e_z^img. | Caption NLL + partial grounding và boundary/mode labels. Nhiều nhãn hơn Mavroudi; phải khớp supervision trong đối chứng. | Sinh token từ filtered mixture, mỗi beam giữ posterior/boundary history riêng; reset prior khi mở segment mới. Đây là đề xuất, chưa triển khai. |
+
+**Bốn điều phải rút khỏi claim mới của X007:**
+
+1. Mavroudi Eq.3 đã đưa sampled region vào actual word generation. Không được viết rằng prior chỉ alignment bên ngoài caption path. Eq.1 tổng quát của họ cho phép phụ thuộc latent history; A là một lựa chọn cấu trúc trong họ mô hình rộng đó, không phải họ generative model mới. Điểm đối chiếu cụ thể là giả thiết giản lược của **Eq.2**, không Eq.1.
+2. Table2 của Mavroudi đã có posterior nhìn tới current word. “Dùng từ vừa sinh để cập nhật grounding” riêng lẻ không đủ mới; q causal theo từng từ khác posterior chung của cùng một latent qua đoạn.
+3. SCT đã giữ region set theo chunk, học switch gate và có sentinel riêng cho textual words. Giữ vùng, delayed switch, boundary supervision và unknown/text path không được tính là đóng góp mới. SCT không áp một single-instance witness cho mọi emission; nhưng cũng không có căn cứ gọi nó equivalent independent resampling: hidden state mang lịch sử và attention có thể ổn định thực tế.
+4. NBT đã có multi-positive target regions, lexical refinement và textual fallback khi proposal không match. Partial grounding/fallback không phải delta; có sentinel cũng không tự chứng minh calibrated uncertainty hoặc visual absence.
+
+**Khác biệt bài toán cần giữ:** SCT §4.2 đánh giá có control input vùng cần nói và references tương ứng. Sắp thứ tự một set được cấp sẵn chưa giải quyết việc chọn nội dung từ toàn ảnh. Không dùng caption metrics trong setting đó như kết quả free captioning của A, hoặc dùng chúng làm bằng chứng hướng B đã/ chưa đạt mục tiêu. Mavroudi §4.1 quy phrase về object word để đánh giá grounding; score ấy chưa kiểm mọi modifier cùng đúng trên một instance.
+
+#### Delta còn lại — cụ thể nhưng novelty UNKNOWN
+
+Với một grounded segment được ấn định trước để mô tả riêng word factor, đặt π_0(z) là prior khi mở segment, e_z(y_t|y_<t) là distribution chuẩn hóa trên vocabulary:
+
+~~~text
+L_word(segment; fixed_boundary_path, prefix, image)
+    = sum_z π_0(z) product_t e_z(y_t | y_<t)
+P(y_t | y_<t, continuing_segment) = sum_z π_(t−1)(z) e_z(y_t | y_<t)
+π_t(z) = π_(t−1)(z) e_z(y_t | y_<t) / sum_j π_(t−1)(j) e_j(y_t | y_<t)
+~~~
+
+Đây là **sum of products** với một referent chung. Independent per-word mixture cho phép đổi latent qua từng từ; fixed-set soft attention như SCT thì trộn feature trước decoder. Ba cách không đồng nhất đại số. Tuy nhiên RNN/Transformer có thể học consistency ngầm; khác công thức không đảm bảo khác chức năng hữu ích hoặc đủ novelty. Bayes filtering/logsumexp/segment models đều là phần kế thừa.
+
+Biểu thức trên mô tả word factor với segment cố định, **không phải toàn bộ normalized caption model**, cũng không tự bằng conditional likelihood khi conditioning trên một future boundary path do model sinh. Thiết kế đầy đủ phải nhân xác suất tiếp tục/kết thúc/mode, và xử lý paths chưa có nhãn. Để giữ update đơn giản trên, có thể cho gate phụ thuộc prefix/global/summary posterior nhưng không phụ thuộc giá trị latent z riêng của mỗi nhánh; nếu gate phụ thuộc z thì phải đưa gate likelihood vào Bayes update. Chưa chốt xấp xỉ/marginalization cho unlabelled paths; không che điểm này bằng tên “ELBO”.
+
+HYPOTHESIS có thể bác bỏ: khi nhiều instance cùng lớp có các attributes khác nhau, shared latent giảm việc ghép adjective của instance1 với noun/attribute của instance2, trong khi posterior trì hoãn hard commitment. Ví dụ hai người mặc áo khác màu cần human truth về instance–attribute; class label/IoU riêng không đủ. Caption NLL có thể tăng posterior cho vùng hợp với câu sai do chính model sinh ra; posterior tập trung không là bằng chứng câu đúng.
+
+**Claim khả dĩ nếu qua prior/utility review:** hiệu quả của ràng buộc shared referent trong một giao diện sinh phrase có partial grounding, so với các cách bỏ/đổi đúng ràng buộc đó. Không claim “mới vì có latent grounding”, “mới vì không dùng future words”, hoặc “bảo đảm không hallucinate”. Nếu đã có exact mechanism trong prior khác và chỉ còn đổi backbone/dataset thì bỏ claim đóng góp A.
+
+#### Thông tin global/local/text/unknown — trả lời trực tiếp X008
+
+~~~mermaid
+flowchart LR
+  Y["Prefix tokens đã sinh"] --> T["Text encoder h_txt: chỉ đọc tokens"]
+  I["Image"] --> G["Global visual features g"]
+  I --> E["Candidate local features e_i"]
+  T --> P["Prior khi mở segment + mode/boundary gate"]
+  G --> P
+  E --> P
+  T --> L["Candidate token head: h_txt và e_i"]
+  E --> L
+  P --> Q["Posterior của referent đang giữ"]
+  L --> M["Mixture các token distributions"]
+  Q --> M
+  T --> U["Text/scene/unknown emission"]
+  G --> U
+  P --> S["Chọn mode theo segment path"]
+  M --> S
+  U --> S
+  S --> W["Next token"]
+  W --> Y
+  W --> F["Bayes update nếu đang ở grounded segment"]
+  L --> F
+  Q --> F
+  F --> Q
+~~~
+
+- **ACCEPT X008:** hidden state của C0 đã condition ảnh không thể đổi tên thành h_txt. Cần một đường tính state chỉ từ tokens, không cross-attention ảnh hoặc hidden/cache thị giác của C0; vocabulary/weights có thể chia sẻ nhưng đường dữ liệu phải tách. Candidate head đọc h_txt và feature của chính ứng viên, không nhận pooled visual hidden/global residual trực tiếp.
+- Global vẫn được dùng ở prior/mode/gate và scene/unknown path; sơ đồ không tuyên bố loại mọi ảnh hưởng global. Gate mở segment mới mới reset prior, không reset mỗi token rồi vẫn gọi persistent posterior. Đề xuất mode ổn định trong một segment; function words bên trong grounded span vẫn có thể do phần ngôn ngữ chung của candidate head sinh. Không thêm token-level fallback vô điều kiện trong segment để làm constraint mất nghĩa.
+- h_txt vẫn gián tiếp mang thông tin ảnh qua **các từ đã sinh**; local ROI features có receptive field/context ngoài box. Vì vậy giao diện trên chỉ chặn một direct bypass, không chứng minh causal isolation. Cần local-feature intervention và text/global controls; báo mode coverage, segment length/reset và sensitivity, không dùng attention/posterior đẹp làm chứng cứ.
+- Đây là thay đổi kiến trúc đáng kể so với C0, không phải chỉ cắm thêm posterior vào hidden hiện có. **Tất cả matched controls** phải dùng cùng text/local interface, encoder/proposals, mode/boundary, data, nhãn và token head. So với C0 riêng không tách được lợi ích posterior khỏi thay giao diện/budget.
+
+#### Semantic unit, supervision và đối chứng tối thiểu
+
+**MODIFY phạm vi X007:** bản đầu chỉ kiểm claim trên atomic single-entity segments có label phù hợp. “Man in a red shirt” không tự coi là một witness box cho cả người–áo. Các nested/part/relation units chưa hỗ trợ phải được đánh dấu ngoài phạm vi claim; không cắt annotation tùy ý để tăng eligible count. Inference không dùng gold parsing/boxes để biết chỗ nào được áp constraint.
+
+Phân biệt **nhiều box cùng chỉ một instance** (proposal ambiguity) với **nhiều instance cùng tạo một group/plural referent**. Sum posterior trên nhóm positive proposals hợp với trường hợp đầu; không tự bảo đảm “two men” cover đủ hai người. Group cần set-valued candidate và coverage/objective riêng, hiện chưa đặc tả; không ép một box đại diện rồi nhận đã xử lý plural. Scene/no-box/notvisual và proposal miss là unknown/ngoài scope, không nhãn object absent. Full captions vẫn phải được chấm, không bỏ những câu khó khỏi endpoint để làm đẹp kết quả.
+
+Supervision dự kiến vẫn là caption NLL, partial grounding −log posterior mass trên positive proposals cho eligible spans, và boundary/mode targets có annotation. Không có negative visual truth từ reference omission. Cần kiểm annotations thực tế trước khi nói đủ instance–attribute supervision; Flickr Entities không tự cung cấp toàn bộ panel ấy. Mavroudi weakly supervised và A dùng phrase labels không phải matched comparison; mọi lợi ích claimed của shared constraint phải so với controls dùng cùng labels.
+
+Đối chứng gần nhất nên gồm: **(i)** independent per-word discrete mixture cùng emissions/prior network, bỏ shared latent; **(ii)** hard commit tại đầu segment, giữ đúng instance đến cuối; **(iii)** persistent posterior; và **(iv)** fixed-set feature attention kiểu SCT để phân biệt mixture-of-distributions với pooled-feature generation. Nếu budget không đủ, chốt câu hỏi/controls trước run, không nhận một control đại diện cho cả hai khác biệt. Full-paper SCT có supplied control input nên không đem raw reported score làm baseline ngang hàng. K và number of evaluated token heads phải được tính vào cost; shared weights không có nghĩa runtime bằng nhau.
+
+Một protocol khả dĩ sau khi user chốt phải phân biệt: label-held phrase consistency; free-caption CIDEr/CHAIR/recall/length và unknown coverage; transfer từ Flickr sang COCO. Grounding gain riêng chưa đạt dual goal. Nếu posterior không hơn matched independent/hard controls, hoặc gain chỉ do thêm nhãn/giao diện/shortening, thì bác added utility của constraint. Không lấy COCO dev1000 đã tái dùng làm training để giải quyết transfer. Chưa stage dataset, đo coverage/headroom hoặc ước lượng GPU từ bài này.
+
+**Khuyến nghị gửi Codex1:** phản biện đúng delta sum-of-products/shared instance và feasibility của giao diện tách state; tiếp tục prior check segmental/latent grounded captioning trước thiết kế run. A vẫn là ưu tiên đọc có điều kiện, mức tự tin novelty thấp hơn X007; B cũng chưa được clearance vì SCT đã có region ordering/control. HALC còn thiếu cho D. Chưa code, chạy Torch/model/scorer, thay thiết kế thực nghiệm, mở notebook hoặc đổi ngân sách. Kiểm tra của lượt này là nhận diện PDF, method/equation/source comparison và nội dung tài liệu; không có kết quả model mới.
