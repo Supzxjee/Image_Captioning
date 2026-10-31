@@ -1,0 +1,11 @@
+{
+  "schema": "semantic_response_confirmed15_assets_v1",
+  "count": 15,
+  "images": 30,
+  "filename": "semantic_response_confirmed15_assets.zip",
+  "bytes": 3464452,
+  "sha256": "004271b213aa9b461aed745af19285f62f6116719894d62d8f8650ba367dc673",
+  "manifest_sha256": "67423380358257a7d35a836cc30f39e3fdaa921fb4ec49fab903239f105326df",
+  "vocab_sha256": "663867e11165ec2849acfb23f6426729e08e435afd2f6fe5f7f765f1d3507272",
+  "labels_sha256": "4a3ad22a88203e8255f1737e133054bbe97b189a7b7439b0e54b2065d992f7f9"
+}
