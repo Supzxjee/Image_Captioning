@@ -1,0 +1,626 @@
+{
+  "schema_version": 1,
+  "revision": "38f969ac98d7db856ee8d57b1a23c4032cfff09e",
+  "source_metadata_sha256": "95fc6968cb6c3425c809beab085ebae6c3afea40ed017318edad3336e8641442",
+  "sampling": "first30 archive matches after >=2 source color-word and VG-to-COCO train/restval filtering; unique VG IDs; not random; not truth labels",
+  "archive_last_member_offset": 23621120,
+  "annotations": [
+    {
+      "sample": 1,
+      "train_index": 27980,
+      "vg_id": 286026,
+      "coco_id": 132991,
+      "karpathy_split": "train",
+      "source_images": [
+        "./VG_100k/286026.jpg",
+        "./edit_image/286026_edit.jpg"
+      ],
+      "reviewer_type": "assistant_visual_review",
+      "human_confirmed": false,
+      "decision": "provisional",
+      "reason": "Cà vạt xanh→đỏ rõ; Stable là nhóm người đứng trước tòa nhà, không phải identity từng mặt. Trùng mẫu #7 của feasibility20, không phải mẫu mới độc lập.",
+      "viewed_224": true,
+      "original_sha256": "a740d51f869cebb10664acf3c7ba66d7a9e4a5bb9d8d9c81daa89ff54f695cd6",
+      "edited_sha256": "a3d592d1ee05da64cca4f5b2a7f7a05b871874a24f6f85de33454310f416524e",
+      "changed_before": "the ties are blue",
+      "changed_after": "the ties are red",
+      "stable_true": "a group of people is in front of a building",
+      "stable_false": "a group of people is in front of a train",
+      "false_alternative_status": "assistant judged false in BOTH viewed images; requires confirmation",
+      "unknown_tokens": []
+    },
+    {
+      "sample": 2,
+      "train_index": 42399,
+      "vg_id": 2328593,
+      "coco_id": 53587,
+      "karpathy_split": "train",
+      "source_images": [
+        "./VG_100k/2328593.jpg",
+        "./edit_image/2328593_edit.jpg"
+      ],
+      "reviewer_type": "assistant_visual_review",
+      "human_confirmed": false,
+      "decision": "reject",
+      "reason": "Đổi cả bầu trời thành gradient nhân tạo; không phải màu một vật và có shortcut hậu cảnh lớn.",
+      "viewed_224": true,
+      "original_sha256": "25d7970a473aed2a8966bf420f574e8b2bde101481dd46428de383b779fdb03b",
+      "edited_sha256": "e7c26ecaf6527b6ce56ba270d0b1bd4dd5bf7e48e27ea2b7ba602bd7af10bfca"
+    },
+    {
+      "sample": 3,
+      "train_index": 4104,
+      "vg_id": 2403964,
+      "coco_id": 373574,
+      "karpathy_split": "restval",
+      "source_images": [
+        "./VG_100k/2403964.jpg",
+        "./edit_image/2403964_edit.jpg"
+      ],
+      "reviewer_type": "assistant_visual_review",
+      "human_confirmed": false,
+      "decision": "reject",
+      "reason": "Ngoài laptop còn đổi tường, khăn, chai và nhiều màu; không can thiệp một vật sạch.",
+      "viewed_224": true,
+      "original_sha256": "d4103b658bd967da042b7bafd6040ba5e760a45695fa2356cd07822e9ae2e8e0",
+      "edited_sha256": "fbbdec32bfad2288f88a18c1e9ddb9ebc7a737e2e981bac2af7d9f36169a9ee2"
+    },
+    {
+      "sample": 4,
+      "train_index": 34352,
+      "vg_id": 2399760,
+      "coco_id": 491804,
+      "karpathy_split": "train",
+      "source_images": [
+        "./VG_100k/2399760.jpg",
+        "./edit_image/2399760_edit.jpg"
+      ],
+      "reviewer_type": "assistant_visual_review",
+      "human_confirmed": false,
+      "decision": "conditional",
+      "reason": "Bus đỏ→xanh rõ; logo, hình dáng/cửa kính cũng đổi, không được coi mọi thuộc tính khác của bus là Stable.",
+      "viewed_224": true,
+      "original_sha256": "0b9b752063b6c1a04fb9187ba1d4d9f3784aee8a61bdfad63339841d71bdaa68",
+      "edited_sha256": "72ea025c0f5e2fbd88d4e464a66574218c1fa6d5f7575ab3a7a2901880d363ea",
+      "changed_before": "the bus is red",
+      "changed_after": "the bus is blue",
+      "stable_true": "the bus is on pavement",
+      "stable_false": "the bus is on water",
+      "false_alternative_status": "assistant judged false in BOTH viewed images; requires confirmation",
+      "unknown_tokens": []
+    },
+    {
+      "sample": 5,
+      "train_index": 37748,
+      "vg_id": 2320565,
+      "coco_id": 262014,
+      "karpathy_split": "restval",
+      "source_images": [
+        "./VG_100k/2320565.jpg",
+        "./edit_image/2320565_edit.jpg"
+      ],
+      "reviewer_type": "assistant_visual_review",
+      "human_confirmed": false,
+      "decision": "conditional",
+      "reason": "Đuôi mèo đen→nâu rõ nhưng mặt và thân có thay đổi phụ; chỉ giữ sự thật mèo cạnh cửa sổ.",
+      "viewed_224": true,
+      "original_sha256": "ec76ff6a3b8778b3b48d3da404ae3bf82d3c876d091a0820479205860f8beaf6",
+      "edited_sha256": "c86b039180fbda4fd0412ee5cf54a9c5ea382b9d60291751488d94d243f6a0b8",
+      "changed_before": "the tail is black",
+      "changed_after": "the tail is brown",
+      "stable_true": "a cat is beside a window",
+      "stable_false": "a cat is beside a car",
+      "false_alternative_status": "assistant judged false in BOTH viewed images; requires confirmation",
+      "unknown_tokens": []
+    },
+    {
+      "sample": 6,
+      "train_index": 43054,
+      "vg_id": 2326534,
+      "coco_id": 216378,
+      "karpathy_split": "train",
+      "source_images": [
+        "./VG_100k/2326534.jpg",
+        "./edit_image/2326534_edit.jpg"
+      ],
+      "reviewer_type": "assistant_visual_review",
+      "human_confirmed": false,
+      "decision": "reject",
+      "reason": "Hai ảnh đều đã có xe xanh/vàng; khác biệt chính là chất lượng ảnh. Nguồn không xác lập màu trước/sau đúng.",
+      "viewed_224": true,
+      "original_sha256": "dc1081c6201f8a8ff8040e4f21a581cc95024822d24008483d82d57d2af8749f",
+      "edited_sha256": "52a549827d64707969528d335f667425a89f88918621dc59da75ed22d45114be"
+    },
+    {
+      "sample": 7,
+      "train_index": 2915,
+      "vg_id": 2376447,
+      "coco_id": 426182,
+      "karpathy_split": "restval",
+      "source_images": [
+        "./VG_100k/2376447.jpg",
+        "./edit_image/2376447_edit.jpg"
+      ],
+      "reviewer_type": "assistant_visual_review",
+      "human_confirmed": false,
+      "decision": "reject",
+      "reason": "Đổi bánh/boong, kích cỡ và cấu trúc ván; không xác định một đối lập màu sạch.",
+      "viewed_224": true,
+      "original_sha256": "7cd942c224a4f9827a1736bbf5a26d035c18544d6a894d3b1c0fffe58d371fb9",
+      "edited_sha256": "ff221001c20377e7f9512456185c7140238c5995138a5747f88a07bff1926c84"
+    },
+    {
+      "sample": 8,
+      "train_index": 25201,
+      "vg_id": 2350058,
+      "coco_id": 122871,
+      "karpathy_split": "restval",
+      "source_images": [
+        "./VG_100k/2350058.jpg",
+        "./edit_image/2350058_edit.jpg"
+      ],
+      "reviewer_type": "assistant_visual_review",
+      "human_confirmed": false,
+      "decision": "reject",
+      "reason": "Thêm xe buýt và đổi bố cục; không thuộc pilot chỉ màu.",
+      "viewed_224": true,
+      "original_sha256": "66605bb89b6a7235d2150e0ddda46b1db49051b80f49dbd319e124e8d54fc88a",
+      "edited_sha256": "9b0488a082f3e1f8ed181d664ba85f0aa7a297d925a717c10cad25a23a3b1b3e"
+    },
+    {
+      "sample": 9,
+      "train_index": 47675,
+      "vg_id": 2335095,
+      "coco_id": 108240,
+      "karpathy_split": "train",
+      "source_images": [
+        "./VG_100k/2335095.jpg",
+        "./edit_image/2335095_edit.jpg"
+      ],
+      "reviewer_type": "assistant_visual_review",
+      "human_confirmed": false,
+      "decision": "reject",
+      "reason": "Toàn cảnh bị đổi tint xanh và texture; không cô lập một vật.",
+      "viewed_224": true,
+      "original_sha256": "188452582e70507d2652b5a7ae28c5ad6a46b5a5f8467096a89dafd134a11fbc",
+      "edited_sha256": "8462c82af0cfaecf1936886c9dde5d3cce5d398ca31505dc37c4f53d102e7ee0"
+    },
+    {
+      "sample": 10,
+      "train_index": 47299,
+      "vg_id": 2412091,
+      "coco_id": 406491,
+      "karpathy_split": "restval",
+      "source_images": [
+        "./VG_100k/2412091.jpg",
+        "./edit_image/2412091_edit.jpg"
+      ],
+      "reviewer_type": "assistant_visual_review",
+      "human_confirmed": false,
+      "decision": "conditional",
+      "reason": "Thực tế sàn xám→nâu, mèo không đổi màu rõ như nguồn nói. Đã sửa nhãn theo ảnh; target sàn ngoài phạm vi vật ban đầu.",
+      "viewed_224": true,
+      "original_sha256": "3f6af3e15ac937aad6ee99526591a62d430cd1965aadee7c5d3fce4d768bbbaf",
+      "edited_sha256": "5c37673737e2e3ab16adb52570228c6827d74a5362011a08c05d8d6326eb4434",
+      "changed_before": "the floor is gray",
+      "changed_after": "the floor is brown",
+      "stable_true": "the shoes are black",
+      "stable_false": "the shoes are white",
+      "false_alternative_status": "assistant judged false in BOTH viewed images; requires confirmation",
+      "unknown_tokens": []
+    },
+    {
+      "sample": 11,
+      "train_index": 29110,
+      "vg_id": 2378579,
+      "coco_id": 125286,
+      "karpathy_split": "restval",
+      "source_images": [
+        "./VG_100k/2378579.jpg",
+        "./edit_image/2378579_edit.jpg"
+      ],
+      "reviewer_type": "assistant_visual_review",
+      "human_confirmed": false,
+      "decision": "reject",
+      "reason": "Đổi biển one-way sang đỏ và nhiều chi tiết, không khớp phát biểu nguồn về đèn bị tuyết che.",
+      "viewed_224": true,
+      "original_sha256": "b3de989520d4ce393ceab8ed49788e4d5a1ee9019a4e49884184e88858760b0d",
+      "edited_sha256": "9df133313cfe5bfba465288c085e3389d3e77582d596bd5f2372761258df0d57"
+    },
+    {
+      "sample": 12,
+      "train_index": 11842,
+      "vg_id": 2367648,
+      "coco_id": 349344,
+      "karpathy_split": "restval",
+      "source_images": [
+        "./VG_100k/2367648.jpg",
+        "./edit_image/2367648_edit.jpg"
+      ],
+      "reviewer_type": "assistant_visual_review",
+      "human_confirmed": false,
+      "decision": "conditional",
+      "reason": "Xe vàng→đen/xám nhưng nhiều cấu trúc và phụ kiện đổi; không dùng như edit một thuộc tính sạch.",
+      "viewed_224": true,
+      "original_sha256": "066acb868f71df58fb8c0f731b23535f20a34feb1ced7767e76224564de1522e",
+      "edited_sha256": "2c190834034ea9433c9cf7a4c55c863b250336611685a60a213f657012a39b99",
+      "changed_before": "the car is yellow",
+      "changed_after": "the car is black",
+      "stable_true": "the car is indoors",
+      "stable_false": "the car is outdoors",
+      "false_alternative_status": "assistant judged false in BOTH viewed images; requires confirmation",
+      "unknown_tokens": []
+    },
+    {
+      "sample": 13,
+      "train_index": 5610,
+      "vg_id": 2343979,
+      "coco_id": 443735,
+      "karpathy_split": "train",
+      "source_images": [
+        "./VG_100k/2343979.jpg",
+        "./edit_image/2343979_edit.jpg"
+      ],
+      "reviewer_type": "assistant_visual_review",
+      "human_confirmed": false,
+      "decision": "reject",
+      "reason": "Thêm biển/cảnh bãi biển mới, không thuộc chỉ màu.",
+      "viewed_224": true,
+      "original_sha256": "d01308b95d58db596ce416d789e32de4e3fcc17fb5dafc7242e121069d2c962c",
+      "edited_sha256": "7370a150b5bc6a6c916d6db22b24b2950b77f90578060f391619b5e1eed1d3a8"
+    },
+    {
+      "sample": 14,
+      "train_index": 25607,
+      "vg_id": 2340462,
+      "coco_id": 287364,
+      "karpathy_split": "train",
+      "source_images": [
+        "./VG_100k/2340462.jpg",
+        "./edit_image/2340462_edit.jpg"
+      ],
+      "reviewer_type": "assistant_visual_review",
+      "human_confirmed": false,
+      "decision": "conditional",
+      "reason": "Cát nâu nhạt→vàng; target vùng nền ngoài pilot vật, có thay texture/ánh sáng.",
+      "viewed_224": true,
+      "original_sha256": "4208d52b8970c926e3a9651054c3eba392a40165232e2eedd470f0253d8ec4c8",
+      "edited_sha256": "d7b1912216b8ba005c8cd9beb5c479be849b8598cc7d9e1d8957b14be79207b3",
+      "changed_before": "the sand is brown",
+      "changed_after": "the sand is yellow",
+      "stable_true": "the umbrella is blue",
+      "stable_false": "the umbrella is red",
+      "false_alternative_status": "assistant judged false in BOTH viewed images; requires confirmation",
+      "unknown_tokens": []
+    },
+    {
+      "sample": 15,
+      "train_index": 17601,
+      "vg_id": 2410708,
+      "coco_id": 454827,
+      "karpathy_split": "train",
+      "source_images": [
+        "./VG_100k/2410708.jpg",
+        "./edit_image/2410708_edit.jpg"
+      ],
+      "reviewer_type": "assistant_visual_review",
+      "human_confirmed": false,
+      "decision": "reject",
+      "reason": "Đổi biển đường, tường và relief; nhiều vật cùng đổi.",
+      "viewed_224": true,
+      "original_sha256": "158d9fe4bc45b3ececbf7210b7868ace466865dd583fd5b5f13ca9640b636476",
+      "edited_sha256": "c72747c33dbf99ec8e768128f7dd055745e5d16e02d09c259b228e45da7a4a20"
+    },
+    {
+      "sample": 16,
+      "train_index": 7909,
+      "vg_id": 2386959,
+      "coco_id": 304560,
+      "karpathy_split": "restval",
+      "source_images": [
+        "./VG_100k/2386959.jpg",
+        "./edit_image/2386959_edit.jpg"
+      ],
+      "reviewer_type": "assistant_visual_review",
+      "human_confirmed": false,
+      "decision": "conditional",
+      "reason": "Mèo đen→trắng nhưng phần đầu/tai/hình thể cũng thay; chỉ giữ fact mèo trên cỏ, không giữ identity.",
+      "viewed_224": true,
+      "original_sha256": "1c2c40504732f0db0d216eea013a40309b7d468ece285044ade3b1bbc1ea747b",
+      "edited_sha256": "6749f97d490e1863bff672955d5e485bff420aa49bb1275f73024f091cd94157",
+      "changed_before": "the cat is black",
+      "changed_after": "the cat is white",
+      "stable_true": "the cat is on grass",
+      "stable_false": "the cat is on snow",
+      "false_alternative_status": "assistant judged false in BOTH viewed images; requires confirmation",
+      "unknown_tokens": []
+    },
+    {
+      "sample": 17,
+      "train_index": 1148,
+      "vg_id": 2332270,
+      "coco_id": 50058,
+      "karpathy_split": "train",
+      "source_images": [
+        "./VG_100k/2332270.jpg",
+        "./edit_image/2332270_edit.jpg"
+      ],
+      "reviewer_type": "assistant_visual_review",
+      "human_confirmed": false,
+      "decision": "provisional",
+      "reason": "Ván đỏ→xanh rõ; người mặc áo vàng và khung cảnh tuyết còn. Logo và bindings trên ván không được gán Stable.",
+      "viewed_224": true,
+      "original_sha256": "ee4dd7165072dd065c659f341123372724ecffb202762d12680abfb13e92554e",
+      "edited_sha256": "42d13e64dc69ec2f2ceb4ddeda461ff19537cc23fd1ab2ad594ea320e32188eb",
+      "changed_before": "the snowboard is red",
+      "changed_after": "the snowboard is blue",
+      "stable_true": "the person is wearing a yellow jacket",
+      "stable_false": "the person is wearing a purple jacket",
+      "false_alternative_status": "assistant judged false in BOTH viewed images; requires confirmation",
+      "unknown_tokens": []
+    },
+    {
+      "sample": 18,
+      "train_index": 48278,
+      "vg_id": 2330086,
+      "coco_id": 103098,
+      "karpathy_split": "train",
+      "source_images": [
+        "./VG_100k/2330086.jpg",
+        "./edit_image/2330086_edit.jpg"
+      ],
+      "reviewer_type": "assistant_visual_review",
+      "human_confirmed": false,
+      "decision": "conditional",
+      "reason": "Mặt bàn nâu→trắng, nhưng khăn/đồ trên bàn cũng đổi; Stable chỉ chọn gương/TV, không mọi đồ vật trên bàn.",
+      "viewed_224": true,
+      "original_sha256": "6d976e29d5122811011fe72884bb5bb24061c64c85e2480c9db6a3f5267d5f94",
+      "edited_sha256": "8f1ac4d17567a8078db3838c85103e94978713eec6f663f501f0bd7eec80e89c",
+      "changed_before": "the counter is brown",
+      "changed_after": "the counter is white",
+      "stable_true": "a television is on the wall",
+      "stable_false": "a bicycle is on the wall",
+      "false_alternative_status": "assistant judged false in BOTH viewed images; requires confirmation",
+      "unknown_tokens": []
+    },
+    {
+      "sample": 19,
+      "train_index": 37478,
+      "vg_id": 2320860,
+      "coco_id": 319088,
+      "karpathy_split": "train",
+      "source_images": [
+        "./VG_100k/2320860.jpg",
+        "./edit_image/2320860_edit.jpg"
+      ],
+      "reviewer_type": "assistant_visual_review",
+      "human_confirmed": false,
+      "decision": "reject",
+      "reason": "Không chỉ giường đổi màu mà cả tường/đèn/đồ phụ; loại khỏi edit màu một target.",
+      "viewed_224": true,
+      "original_sha256": "d2b29efe452e885e69ac46cee9be9febc59dcf65d5aa552848e522e16d1b6eab",
+      "edited_sha256": "97ede4a3f98c75e2e5315d6ff66212106223b83c0454c87d7d1aa8163cee96f7"
+    },
+    {
+      "sample": 20,
+      "train_index": 417,
+      "vg_id": 2334613,
+      "coco_id": 204800,
+      "karpathy_split": "train",
+      "source_images": [
+        "./VG_100k/2334613.jpg",
+        "./edit_image/2334613_edit.jpg"
+      ],
+      "reviewer_type": "assistant_visual_review",
+      "human_confirmed": false,
+      "decision": "reject",
+      "reason": "Màu vật trên mõm chó thay đổi, nhưng gọi là collar/leash sai; không khóa được semantic target.",
+      "viewed_224": true,
+      "original_sha256": "219f67b27c510e5cc4a7ee5a28ee3f834b5fe880f58ced0e2a1ac94c83e2a50d",
+      "edited_sha256": "886df38935833ef81b976515a841df60c62b618df5863a77e61e3892ce646dab"
+    },
+    {
+      "sample": 21,
+      "train_index": 4140,
+      "vg_id": 2348894,
+      "coco_id": 93243,
+      "karpathy_split": "train",
+      "source_images": [
+        "./VG_100k/2348894.jpg",
+        "./edit_image/2348894_edit.jpg"
+      ],
+      "reviewer_type": "assistant_visual_review",
+      "human_confirmed": false,
+      "decision": "reject",
+      "reason": "Đổi chất liệu đất→cỏ và hậu cảnh; không chỉ màu.",
+      "viewed_224": true,
+      "original_sha256": "1152848797816723ec963050051139cb46139661e4f63dca506a38aeac3e0db7",
+      "edited_sha256": "32b5b44f5a356af5d83f0c97910cc516fc0dad5dd719d3f09801d61f32d89acf"
+    },
+    {
+      "sample": 22,
+      "train_index": 36020,
+      "vg_id": 2322560,
+      "coco_id": 286708,
+      "karpathy_split": "restval",
+      "source_images": [
+        "./VG_100k/2322560.jpg",
+        "./edit_image/2322560_edit.jpg"
+      ],
+      "reviewer_type": "assistant_visual_review",
+      "human_confirmed": false,
+      "decision": "provisional",
+      "reason": "Mũ tím/hồng→xanh rõ, mèo đen-trắng còn. Cần người xem xác nhận tên màu tím thay vì hồng trước khi dùng câu canonical.",
+      "viewed_224": true,
+      "original_sha256": "e76ae635c21a85b2d4d10a950552fc64876a513ff2d774a6985d449c2088e52c",
+      "edited_sha256": "4c6cef103de3d5db0c8e2e9fdf20cfa81151fff5908f89af39641770f845e23b",
+      "changed_before": "the hat is purple",
+      "changed_after": "the hat is blue",
+      "stable_true": "the cat is black and white",
+      "stable_false": "the cat is brown",
+      "false_alternative_status": "assistant judged false in BOTH viewed images; requires confirmation",
+      "unknown_tokens": []
+    },
+    {
+      "sample": 23,
+      "train_index": 19200,
+      "vg_id": 2361248,
+      "coco_id": 440387,
+      "karpathy_split": "restval",
+      "source_images": [
+        "./VG_100k/2361248.jpg",
+        "./edit_image/2361248_edit.jpg"
+      ],
+      "reviewer_type": "assistant_visual_review",
+      "human_confirmed": false,
+      "decision": "reject",
+      "reason": "Đổi thời tiết/mây rộng, không phải màu vật trong pilot.",
+      "viewed_224": true,
+      "original_sha256": "fdf0c9ee9394e4638f37cbfc422d7e59d63972d3384c0c4e51e6fce28fcfaec4",
+      "edited_sha256": "4143e724b968cfbdf888169992a26e64695e093c4a8bfaa7f4d6ad3f5c373f5b"
+    },
+    {
+      "sample": 24,
+      "train_index": 23213,
+      "vg_id": 2357430,
+      "coco_id": 149896,
+      "karpathy_split": "train",
+      "source_images": [
+        "./VG_100k/2357430.jpg",
+        "./edit_image/2357430_edit.jpg"
+      ],
+      "reviewer_type": "assistant_visual_review",
+      "human_confirmed": false,
+      "decision": "reject",
+      "reason": "Đổi trang phục, thêm bóng và đổi tư thế/người; không can thiệp màu sạch.",
+      "viewed_224": true,
+      "original_sha256": "52fe2099beef8c50547283ef959249402a06136641b41ac57e27851c1ab3a0e3",
+      "edited_sha256": "1adf92cab8cdc5f4c7de7885be62f084c7ccabcee4b8e8bd679ee943326c349f"
+    },
+    {
+      "sample": 25,
+      "train_index": 32203,
+      "vg_id": 2387366,
+      "coco_id": 345372,
+      "karpathy_split": "train",
+      "source_images": [
+        "./VG_100k/2387366.jpg",
+        "./edit_image/2387366_edit.jpg"
+      ],
+      "reviewer_type": "assistant_visual_review",
+      "human_confirmed": false,
+      "decision": "reject",
+      "reason": "Đổi đồng thời trời/tòa nhà và toàn scene tint.",
+      "viewed_224": true,
+      "original_sha256": "c80bbc542f4f4091a9dcb7b395fbf24fccc7657affb0a9e7076956e6f8703fde",
+      "edited_sha256": "cb7fac8f937abfd22257b46af8454e2bcd39ced534ddb6e9e3f5c9dc39896382"
+    },
+    {
+      "sample": 26,
+      "train_index": 45688,
+      "vg_id": 2414500,
+      "coco_id": 218911,
+      "karpathy_split": "restval",
+      "source_images": [
+        "./VG_100k/2414500.jpg",
+        "./edit_image/2414500_edit.jpg"
+      ],
+      "reviewer_type": "assistant_visual_review",
+      "human_confirmed": false,
+      "decision": "reject",
+      "reason": "Đồ chơi bò được thêm huy chương; mô tả nguồn về mắt/dây không khớp; không thuộc màu.",
+      "viewed_224": true,
+      "original_sha256": "739ebc5a3202a0def952b4e8a34bed41e9f2fc2810038378bda520451be64591",
+      "edited_sha256": "6e4004b046a7bfb048eaf356d1752e0c91941260e694517cdc570a536d402079"
+    },
+    {
+      "sample": 27,
+      "train_index": 49814,
+      "vg_id": 2416563,
+      "coco_id": 483154,
+      "karpathy_split": "train",
+      "source_images": [
+        "./VG_100k/2416563.jpg",
+        "./edit_image/2416563_edit.jpg"
+      ],
+      "reviewer_type": "assistant_visual_review",
+      "human_confirmed": false,
+      "decision": "reject",
+      "reason": "Bỏ phần quả chuối mốc, không phải chỉ đổi màu.",
+      "viewed_224": true,
+      "original_sha256": "df3ca6ff39b243ad9012bb13bcb474cf971ef07db0365c912abf4ef9afc5c9d8",
+      "edited_sha256": "4e679c4537793f62327918135fc144c2e6e4493be850e01d023fe34ef7083e71"
+    },
+    {
+      "sample": 28,
+      "train_index": 50484,
+      "vg_id": 2417329,
+      "coco_id": 251047,
+      "karpathy_split": "train",
+      "source_images": [
+        "./VG_100k/2417329.jpg",
+        "./edit_image/2417329_edit.jpg"
+      ],
+      "reviewer_type": "assistant_visual_review",
+      "human_confirmed": false,
+      "decision": "conditional",
+      "reason": "Rèm trắng→xanh rõ nhưng họa tiết cũng đổi; chỉ Stable cửa sổ/cây ngoài cửa.",
+      "viewed_224": true,
+      "original_sha256": "821fc77283d34419132d4e96bffc9496f2b3a6117f7f9004d6d6a1ac77a09993",
+      "edited_sha256": "160713072e408820199980a079ec18207a51796188ad9bb1466ebac48a75b5aa",
+      "changed_before": "the curtains are white",
+      "changed_after": "the curtains are blue",
+      "stable_true": "trees are outside the window",
+      "stable_false": "boats are outside the window",
+      "false_alternative_status": "assistant judged false in BOTH viewed images; requires confirmation",
+      "unknown_tokens": []
+    },
+    {
+      "sample": 29,
+      "train_index": 24699,
+      "vg_id": 2351946,
+      "coco_id": 539445,
+      "karpathy_split": "restval",
+      "source_images": [
+        "./VG_100k/2351946.jpg",
+        "./edit_image/2351946_edit.jpg"
+      ],
+      "reviewer_type": "assistant_visual_review",
+      "human_confirmed": false,
+      "decision": "reject",
+      "reason": "Đổi cả kiểu dáng và kích thước tàu, không chỉ màu.",
+      "viewed_224": true,
+      "original_sha256": "e574691926e4918fbf08bf091591bc162699cba6769c5fad8e02bbdfb383c37d",
+      "edited_sha256": "0e6dfa7bf3516143a832d9715ba123e1b0572174532ec017836aca0259f1da59"
+    },
+    {
+      "sample": 30,
+      "train_index": 15875,
+      "vg_id": 2392996,
+      "coco_id": 289229,
+      "karpathy_split": "restval",
+      "source_images": [
+        "./VG_100k/2392996.jpg",
+        "./edit_image/2392996_edit.jpg"
+      ],
+      "reviewer_type": "assistant_visual_review",
+      "human_confirmed": false,
+      "decision": "reject",
+      "reason": "Màu cưa không đổi rõ; thêm toàn cảnh cây tuyết, mô tả nguồn không khớp.",
+      "viewed_224": true,
+      "original_sha256": "e97a0f235655dc5f949aec21c84e11e743aa72004421d849ea923613e85c5d20",
+      "edited_sha256": "b455d51f953562851f23e2573c124323858b9265c72cebdbd28c7d33628b550e"
+    }
+  ],
+  "counts": {
+    "provisional": 3,
+    "reject": 19,
+    "conditional": 8
+  },
+  "overlap_with_first_feasibility_ids": [
+    1
+  ],
+  "training_ready": false,
+  "human_confirmed_count": 0,
+  "scope": "data preparation; not trained model evaluation"
+}
