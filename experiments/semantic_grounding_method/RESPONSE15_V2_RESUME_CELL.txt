@@ -1,0 +1,89 @@
+from pathlib import Path
+CHECKPOINT=Path('/kaggle/input/datasets/ducanh2403/concept-mass-c-c0-v111-v112/C0.bin')
+LEGACY_PROMPT=Path('/kaggle/input/datasets/ducanh2403/prompt-cache/prompt_clip_tokens_cache.pt')
+# Tự tìm marker/ZIP. Nếu có nhiều bản, điền root của đúng Dataset.
+ASSETS_INPUT=Path('/kaggle/input')
+OUTPUT=Path('/kaggle/working/semantic_response_C0_15_v2')
+
+
+CORE='33876d88a8a0832dd31474ce381a723f4dcb32f1'
+SOURCE_ASSETS={'experiments/semantic_grounding_method/response15_data.py': 'dfccce1957f2d9077b5c73cbb1828e1d889541666674c3342dde5132fd3a1693', 'experiments/semantic_grounding_method/run_response15_probe.py': '7f9b3cc7dbdf255117ef9d276b7cb768051c23ee3f37d0496ab9eb30154678db', 'experiments/semantic_grounding_method/test_response15_data.py': '323266c491559d509fd3d26c8980c512b650a4a9a59aa5af29fbd23f3c4cbb00', 'experiments/semantic_grounding_method/RESPONSE15_ASSET_RECEIPT.json': '8121893ed51ea29ecf687299ade2258bd80cc364d21892925b3f4f3d5b49d39f', 'captioning/__init__.py': 'ad259f50a32265d298d027a888f801d378c4669313b8dab06e0653978ce30633', 'captioning/config.py': '4766d1bf82bf82b5199616c7d90ca74242f011e26f08db21b154b1c7d58e72bc', 'captioning/models.py': '18026877836052c83e75c0d896adcc89822bb35616173c7e8b14b17c9a22e9d8', 'captioning/grounded_relations.py': '2c6b15048dce17a9bfa596f02af78866f0b7978f65d172414a3648c9aa49c58f', 'captioning/decoder_relation_memory.py': 'bc5086915bf8f35cf7161311785cf612b25695c5f0dbe03a760d8aca724dfc82', 'captioning/semantic_prompts.py': 'a06f12dea63604f9db9d19b6922815db27a35b648a17059407ffaf26a2a0d511', 'captioning/scst_runtime.py': '3452ccfbd43876dc6381b78d1229d1d6b05fe723e3863a04f31c4a784497f669'}
+import hashlib,json,os,queue,signal,subprocess,sys,tempfile,threading,time,traceback,urllib.request,zipfile
+os.environ.update(CUBLAS_WORKSPACE_CONFIG=':4096:8',OMP_NUM_THREADS='2',OPENBLAS_NUM_THREADS='2',
+    PYTHONUNBUFFERED='1',PYTHONHASHSEED='42',TOKENIZERS_PARALLELISM='false')
+LOG=OUTPUT.with_name(OUTPUT.name+'_notebook.log')
+REVIEW=OUTPUT.with_name(OUTPUT.name+'_review.zip')
+for p in (OUTPUT,LOG,REVIEW):
+    if p.exists():raise FileExistsError('Preserve previous output; choose a fresh path/session: '+str(p))
+OUTPUT.parent.mkdir(parents=True,exist_ok=True)
+WORK=Path(tempfile.mkdtemp(prefix='response15-'))
+REPO=WORK/'repo';REPO.mkdir()
+HERE=REPO/'experiments/semantic_grounding_method/'
+CONFIG=WORK/'config.json'
+print('Starting frozen15-pair diagnostic; source',CORE,flush=True)
+
+def run(args,timeout=900,cwd=None):
+    args=list(map(str,args));print('Running:',' '.join(args),flush=True)
+    process=subprocess.Popen(args,cwd=cwd or REPO,stdout=subprocess.PIPE,stderr=subprocess.STDOUT,
+        text=True,errors='replace',bufsize=1,start_new_session=True)
+    messages=queue.Queue()
+    def reader():
+        try:
+            for line in process.stdout:messages.put(line)
+        finally:messages.put(None)
+    thread=threading.Thread(target=reader,daemon=True);thread.start()
+    start=heartbeat=time.monotonic();ended=False
+    with LOG.open('a',encoding='utf-8') as log:
+        try:
+            while not ended or process.poll() is None or not messages.empty():
+                try:
+                    line=messages.get(timeout=1)
+                    if line is None:ended=True
+                    else:print(line,end='',flush=True);log.write(line);log.flush()
+                except queue.Empty:pass
+                now=time.monotonic()
+                if now-heartbeat>=30:
+                    print('Worker active;',round(now-start),'seconds; see phase/step logs.',flush=True);heartbeat=now
+                if now-start>timeout:raise TimeoutError('Locked phase cap exceeded; INCOMPLETE')
+            if process.wait():raise subprocess.CalledProcessError(process.returncode,args)
+        finally:
+            if process.poll() is None:
+                os.killpg(process.pid,signal.SIGTERM)
+                try:process.wait(timeout=10)
+                except subprocess.TimeoutExpired:os.killpg(process.pid,signal.SIGKILL);process.wait()
+            thread.join(timeout=5)
+
+
+success=False
+try:
+    for p in (CHECKPOINT,LEGACY_PROMPT):
+        if not p.is_file():raise FileNotFoundError('Add Input or correct path: '+str(p))
+    for n,expected in SOURCE_ASSETS.items():
+        with urllib.request.urlopen('https://raw.githubusercontent.com/Supzxjee/Image_Captioning/'+CORE+'/'+n,timeout=60) as f:raw=f.read()
+        if hashlib.sha256(raw).hexdigest()!=expected:raise ValueError('Wrong pinned source: '+n)
+        p=REPO/n;p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(raw)
+    os.environ['PYTHONPATH']=str(REPO)
+    run([sys.executable,'-u',HERE/'test_response15_data.py'],timeout=120)
+    # Torch comes from the Kaggle image; never reinstall or replace it here.
+    import importlib.metadata
+    assert importlib.metadata.version('transformers')=='4.57.1', 'Use full v2 notebook to install pinned dependencies'
+    cfg=dict(checkpoint=str(CHECKPOINT),legacy_prompt=str(LEGACY_PROMPT),assets_input=str(ASSETS_INPUT),
+             output=str(OUTPUT),scratch=str(WORK),source_commit=CORE,source_assets=SOURCE_ASSETS,training=False)
+    CONFIG.write_text(json.dumps(cfg,indent=2),encoding='utf-8')
+    run([sys.executable,'-u',HERE/'run_response15_probe.py','--config',CONFIG],timeout=2400)
+    result=json.loads((OUTPUT/'summary.json').read_bytes())
+    success=result['status']=='DIAGNOSTIC_COMPLETE' and result['pairs']==15
+    if not success:raise RuntimeError('Incomplete diagnostic; do not report a subset as15pairs')
+    print(json.dumps(result,ensure_ascii=False,indent=2),flush=True)
+finally:
+    mode='a' if REVIEW.exists() else 'x'
+    with zipfile.ZipFile(REVIEW,mode,zipfile.ZIP_DEFLATED) as z:
+        if LOG.exists():z.write(LOG,'notebook.log')
+        if CONFIG.exists():z.write(CONFIG,'notebook_config.json')
+        for n in SOURCE_ASSETS:
+            if (REPO/n).is_file():z.write(REPO/n,'source/'+n)
+        z.writestr('notebook_status.json',json.dumps(dict(success=success,training=False,source_commit=CORE)))
+        if not success:z.writestr('notebook_error.txt',traceback.format_exc())
+    print('SEND REVIEW ZIP:',REVIEW,flush=True)
+    if not success:print('INCOMPLETE: send this ZIP/log; no model conclusion.',flush=True)
+
