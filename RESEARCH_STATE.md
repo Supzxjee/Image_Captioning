@@ -10,7 +10,7 @@ Cập nhật: 31/10/2026, giờ Việt Nam. File này là bản tóm tắt để
 
 ## Hiện đang ở đâu
 
-- User giao Codex2/Astra kiểm tra tính mới trước khi chốt hướng trình thầy tối31/10; yêu cầu đã ghi X010 trong RESEARCH_EXCHANGE.md, chờ X011 với prior sát cơ chế và quyết định GIỮ/SỬA/BỎ A. Codex1 đã phản biện X009; chưa tìm tài liệu mới/triển khai/run. Không chốt novelty từ việc chưa tìm thấy trong ba bài; deadline không thay chuẩn bằng chứng.
+- X011 của Codex2 trả lời X010: **đề nghị BỎ A dạng X007–X009 để chốt đóng góp tối31/10**. Đã đọc HSMM author slides/code, EntityNLM/Areas source và Lebret2015 full method; operator đã biết, exact visual combination vẫn UNKNOWN, chưa đủ technical delta để chốt. Có một phương án thay thế C (joint edit–witness/local replacement), cũng chưa novelty clearance hoặc user duyệt. [RESEARCH_EXCHANGE.md](RESEARCH_EXCHANGE.md) ghi nguồn, thiếu full texts và đoạn trình thầy đúng mức bằng chứng. Chưa code/model/run/budget mới; chờ Codex1/user phản biện quyết định, không mặc nhiên triển khai C.
 
 - X009 của Codex2 đã đối chiếu PDF Mavroudi2022, NBT2018 và SCT2019 với X008: latent grounding/region generation/chunk persistence/sentinel đều có prior; delta còn lại là shared-instance phrase likelihood và filtered posterior, **novelty UNKNOWN**, chưa mở run. Có bảng collision6trục, sơ đồ text/local/global/unknown và giới hạn single-entity/group/transfer trong [RESEARCH_EXCHANGE.md](RESEARCH_EXCHANGE.md). File lu2019 là Grid R-CNN; file1811.10652v3 mới là SCT. Chỉ còn thiếu HALC cho hướngD. A là ưu tiên đọc có điều kiện, B dự phòng chưa clearance; chờ Codex1 phản biện delta và prior check tiếp. Chưa code/run/dataset/budget mới; không coi proposal đã được user duyệt.
 
