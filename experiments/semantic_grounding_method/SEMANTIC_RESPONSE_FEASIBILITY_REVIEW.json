@@ -1,0 +1,436 @@
+{
+  "schema_version": 1,
+  "purpose": "feasibility only; not training labels or model evaluation",
+  "source_revision": "38f969ac98d7db856ee8d57b1a23c4032cfff09e",
+  "metadata_sha256": "95fc6968cb6c3425c809beab085ebae6c3afea40ed017318edad3336e8641442",
+  "reviewer_type": "assistant_visual_review",
+  "human_confirmed_count": 0,
+  "counts": {
+    "reject": 12,
+    "unavailable": 3,
+    "conditional": 2,
+    "provisional": 3
+  },
+  "sampling": "first 20 matching archive entries; not random; no substitution for failures",
+  "overlap_status": "six available pairs map to Karpathy train/restval; eleven unknown COCO mapping; not independently cleared for training",
+  "native_vocab_source": "C0_loaded.json cached metadata.json word2idx; no checkpoint/model loaded",
+  "native_vocab_sha256": "663867e11165ec2849acfb23f6426729e08e435afd2f6fe5f7f765f1d3507272",
+  "annotations": [
+    {
+      "sample": 1,
+      "train_index": 12907,
+      "source_images": [
+        "./VG_100k/3101.jpg",
+        "./edit_image/3101_edit.jpg"
+      ],
+      "reviewer_type": "assistant_visual_review",
+      "human_confirmed": false,
+      "decision": "reject",
+      "reason": "Nhiều thay đổi đồng thời: mặt bậc, tường và tay vịn; không phải can thiệp một thuộc tính.",
+      "reviewed_views": [
+        "source pair at up to550px display",
+        "224x224 PIL bilinear RGB"
+      ],
+      "coco_id": null,
+      "karpathy_split": "unknown",
+      "edited_sha256": "b10d736fceeef4f3b3213d4b84b282f674471561350652fb62ba25f31fdd7362",
+      "original_sha256": "b583b8f7b6e84a2a01665d2fad0b1cf7ec042ccd1cf8a7c7e1028a7245bee5c4"
+    },
+    {
+      "sample": 2,
+      "train_index": 13123,
+      "source_images": [
+        "./docci/images/qual_test_00007.jpg",
+        "./edit_image/qual_test_00007_edited.jpg"
+      ],
+      "reviewer_type": "assistant_visual_review",
+      "human_confirmed": false,
+      "decision": "unavailable",
+      "reason": "Chưa lấy được ảnh gốc DOCCI trong lượt này; không suy nhãn từ ảnh sửa hoặc metadata.",
+      "source_split_warning": "Tên ảnh chứa test/qual_test phải được kiểm tra split trước fit, dù nằm trong MED SFT JSON."
+    },
+    {
+      "sample": 3,
+      "train_index": 9806,
+      "source_images": [
+        "./VG_100k/2405461.jpg",
+        "./edit_image/2405461_edit.jpg"
+      ],
+      "reviewer_type": "assistant_visual_review",
+      "human_confirmed": false,
+      "decision": "reject",
+      "reason": "Mô tả nguồn nói bỏ que và cầm vành mũ; ảnh sửa vẫn có vật dài gần miệng. Mặt, mũ, bàn tay đều đổi.",
+      "reviewed_views": [
+        "source pair at up to550px display",
+        "224x224 PIL bilinear RGB"
+      ],
+      "coco_id": 19924,
+      "karpathy_split": "restval",
+      "edited_sha256": "f0136ef15f4329f7444db4f86e5b59ac5d4c03d4305db4463171024631afe68e",
+      "original_sha256": "b0bb42c6674456ecd9155b790a6a595646aacfe45ce80bd7667ac75fb7fe8bc8"
+    },
+    {
+      "sample": 4,
+      "train_index": 30668,
+      "source_images": [
+        "./VG_100k/4326.jpg",
+        "./edit_image/4326_edit.jpg"
+      ],
+      "reviewer_type": "assistant_visual_review",
+      "human_confirmed": false,
+      "decision": "conditional",
+      "reason": "Màu sofa đổi rõ, nhưng đường may, khung và hình dáng cũng đổi; chỉ dùng nếu gắn nhãn các thuộc tính liên quan là Changed/Unknown.",
+      "reviewed_views": [
+        "source pair at up to550px display",
+        "224x224 PIL bilinear RGB"
+      ],
+      "coco_id": null,
+      "karpathy_split": "unknown",
+      "edited_sha256": "8495304896ac47aadc0ea53d191406e38b76860ad2a6e2ae4c498695de09f62b",
+      "original_sha256": "40ac47689212f7444a3ea2a9ee7d1c8ad2a80b08be56b162f9a32c1552b05fa3",
+      "changed_before": "the sofa is black",
+      "changed_after": "the sofa is beige",
+      "stable_facts": [
+        "a red chair is in the room",
+        "a television is in the room"
+      ],
+      "visible_at_224": true,
+      "unknown_tokens": []
+    },
+    {
+      "sample": 5,
+      "train_index": 44120,
+      "source_images": [
+        "./VG_100k/2325259.jpg",
+        "./edit_image/2325259_edit.jpg"
+      ],
+      "reviewer_type": "assistant_visual_review",
+      "human_confirmed": false,
+      "decision": "reject",
+      "reason": "Không thấy thay đổi trang phục trắng sang trắng-xanh như nguồn nói; tóc/khuôn mặt thay đổi rõ hơn.",
+      "reviewed_views": [
+        "source pair at up to550px display",
+        "224x224 PIL bilinear RGB"
+      ],
+      "coco_id": null,
+      "karpathy_split": "unknown",
+      "edited_sha256": "f21e2016745aeba5e7e82aff8b0248341a24ef5fa29b577cc405a1fd5cc3443d",
+      "original_sha256": "8acf754e8475b55f6baab97959aaaddbff1da5429cbd0699e34ef0cb272d39e0"
+    },
+    {
+      "sample": 6,
+      "train_index": 33202,
+      "source_images": [
+        "./VG_100k/2359869.jpg",
+        "./edit_image/2359869_edit.jpg"
+      ],
+      "reviewer_type": "assistant_visual_review",
+      "human_confirmed": false,
+      "decision": "reject",
+      "reason": "Ảnh gốc đã có nhiều tàu; nhãn số lượng không đúng. Tàu phải được tô xanh phẳng, có artifact lớn.",
+      "reviewed_views": [
+        "source pair at up to550px display",
+        "224x224 PIL bilinear RGB"
+      ],
+      "coco_id": null,
+      "karpathy_split": "unknown",
+      "edited_sha256": "8d5d898b997303565e447eb6229225a965efbca2f9524512ea8d717ffde40fb7",
+      "original_sha256": "d0b32126f0b7965489b46ffc294625fa2c6b91a126b0268e97f3b1b1fecdf150"
+    },
+    {
+      "sample": 7,
+      "train_index": 27980,
+      "source_images": [
+        "./VG_100k/286026.jpg",
+        "./edit_image/286026_edit.jpg"
+      ],
+      "reviewer_type": "assistant_visual_review",
+      "human_confirmed": false,
+      "decision": "provisional",
+      "reason": "Cà vạt xanh sang đỏ rõ. Không gán nhãn hành động cầm/đeo hoặc identity từng người; có thể có artifact nhỏ ở mặt.",
+      "reviewed_views": [
+        "source pair at up to550px display",
+        "224x224 PIL bilinear RGB"
+      ],
+      "coco_id": 132991,
+      "karpathy_split": "train",
+      "edited_sha256": "a3d592d1ee05da64cca4f5b2a7f7a05b871874a24f6f85de33454310f416524e",
+      "original_sha256": "a740d51f869cebb10664acf3c7ba66d7a9e4a5bb9d8d9c81daa89ff54f695cd6",
+      "changed_before": "the ties are blue",
+      "changed_after": "the ties are red",
+      "stable_facts": [
+        "a group of people is standing in front of a building"
+      ],
+      "visible_at_224": true,
+      "unknown_tokens": []
+    },
+    {
+      "sample": 8,
+      "train_index": 48403,
+      "source_images": [
+        "./VG_100k/2415833.jpg",
+        "./edit_image/2415833_edit.jpg"
+      ],
+      "reviewer_type": "assistant_visual_review",
+      "human_confirmed": false,
+      "decision": "reject",
+      "reason": "Hai ảnh vẫn có nhiều xe máy. Mệnh đề một xe thay hai xe không phù hợp; nhiều chi tiết xe cũng bị sửa.",
+      "reviewed_views": [
+        "source pair at up to550px display",
+        "224x224 PIL bilinear RGB"
+      ],
+      "coco_id": null,
+      "karpathy_split": "unknown",
+      "edited_sha256": "9f7f7ec63dfd2cc142706bc5c030d8d8487484d27b3623e90fc8f69ca81834d6",
+      "original_sha256": "2a68ab55f3b6b20c524416da0f77609a75c21e585e15750c84b7d10ac1088ddc"
+    },
+    {
+      "sample": 9,
+      "train_index": 21205,
+      "source_images": [
+        "./docci/images/train_02295.jpg",
+        "./edit_image/train_02295_edited.jpg"
+      ],
+      "reviewer_type": "assistant_visual_review",
+      "human_confirmed": false,
+      "decision": "unavailable",
+      "reason": "Chưa lấy được ảnh gốc DOCCI trong lượt này; không suy nhãn từ ảnh sửa hoặc metadata.",
+      "source_split_warning": "Tên ảnh chứa test/qual_test phải được kiểm tra split trước fit, dù nằm trong MED SFT JSON."
+    },
+    {
+      "sample": 10,
+      "train_index": 6141,
+      "source_images": [
+        "./VG_100k/2342278.jpg",
+        "./edit_image/2342278_edit.jpg"
+      ],
+      "reviewer_type": "assistant_visual_review",
+      "human_confirmed": false,
+      "decision": "reject",
+      "reason": "Không xác nhận được số sáu→bốn từ ảnh; bố trí và hình dạng đàn bò đổi nhiều.",
+      "reviewed_views": [
+        "source pair at up to550px display",
+        "224x224 PIL bilinear RGB"
+      ],
+      "coco_id": 312446,
+      "karpathy_split": "train",
+      "edited_sha256": "2200f4543fcc24dfc5ce9db67f322d6c1186f0d5035dc2002e6e5b6b80ce8ba5",
+      "original_sha256": "ed622281ee6c79d026e887d40d7dd08d20455d103883c1b1a9bfb856fcc69406"
+    },
+    {
+      "sample": 11,
+      "train_index": 7064,
+      "source_images": [
+        "./VG_100k/2389736.jpg",
+        "./edit_image/2389736_edit.jpg"
+      ],
+      "reviewer_type": "assistant_visual_review",
+      "human_confirmed": false,
+      "decision": "reject",
+      "reason": "Ảnh gốc đã có hai hươu cao cổ. Ảnh sửa bỏ các con vật nhỏ và thay mặt đất/cỏ, không phải thêm một hươu.",
+      "reviewed_views": [
+        "source pair at up to550px display",
+        "224x224 PIL bilinear RGB"
+      ],
+      "coco_id": null,
+      "karpathy_split": "unknown",
+      "edited_sha256": "9a01172ae76c4c41f8cd1f0973b70e69c9eecffb92514c1ff66d20cd8e7fd3dd",
+      "original_sha256": "41857d31307824a789d7bb336d6d4c9402ebe44b24311aa6b9824b390b9b33e5"
+    },
+    {
+      "sample": 12,
+      "train_index": 23503,
+      "source_images": [
+        "./VG_100k/2356350.jpg",
+        "./edit_image/2356350_edit.jpg"
+      ],
+      "reviewer_type": "assistant_visual_review",
+      "human_confirmed": false,
+      "decision": "provisional",
+      "reason": "Có bồn cầu trong ảnh sửa, không thấy bồn cầu trong khung ảnh gốc. Bồn rửa và cửa sổ còn rõ; loại khỏi Stable các vật nhỏ sát vị trí sửa.",
+      "reviewed_views": [
+        "source pair at up to550px display",
+        "224x224 PIL bilinear RGB"
+      ],
+      "coco_id": null,
+      "karpathy_split": "unknown",
+      "edited_sha256": "49b4b5fdb0277e3b99fce525fc1810d03bd7fe91dc7900fe6a99611221acb2c3",
+      "original_sha256": "b9c731319e5d3fd941d9f0a3b0cbae58843af60537c96272fa7a326d01ee0026",
+      "changed_before": "no toilet is visible",
+      "changed_after": "a toilet is visible",
+      "stable_facts": [
+        "a sink is beside a window"
+      ],
+      "visible_at_224": true,
+      "unknown_tokens": []
+    },
+    {
+      "sample": 13,
+      "train_index": 36002,
+      "source_images": [
+        "./VG_100k/2322582.jpg",
+        "./edit_image/2322582_edit.jpg"
+      ],
+      "reviewer_type": "assistant_visual_review",
+      "human_confirmed": false,
+      "decision": "reject",
+      "reason": "Đổi món chính, món bên, sốt và độ mờ ảnh. Nguồn nói thêm đồ uống nhưng ảnh gốc đã có cốc.",
+      "reviewed_views": [
+        "source pair at up to550px display",
+        "224x224 PIL bilinear RGB"
+      ],
+      "coco_id": 165686,
+      "karpathy_split": "restval",
+      "edited_sha256": "3dd04139dc96553cae62bc097084555baa2db6c4e6e604787c366568114acb2b",
+      "original_sha256": "5cb4d9bfb4657b026cb9e76d4beb75aa96da44375b2308e91816cbea0180ab8b"
+    },
+    {
+      "sample": 14,
+      "train_index": 15745,
+      "source_images": [
+        "./VG_100k/2393693.jpg",
+        "./edit_image/2393693_edit.jpg"
+      ],
+      "reviewer_type": "assistant_visual_review",
+      "human_confirmed": false,
+      "decision": "reject",
+      "reason": "Thay cây lớn và cỏ/bố cục nền rộng. Gấu còn nhưng tư thế/chi tiết cũng thay; không dùng làm can thiệp cục bộ sạch.",
+      "reviewed_views": [
+        "source pair at up to550px display",
+        "224x224 PIL bilinear RGB"
+      ],
+      "coco_id": 46612,
+      "karpathy_split": "train",
+      "edited_sha256": "34157ed71e805ee2f11334817ccd65f44a1285ab9b63e9246b7aefbec5de6171",
+      "original_sha256": "c24ab07fad516d90550cfc7fc6ded0ae07551e6a6b9a776122e642bc6a71e500"
+    },
+    {
+      "sample": 15,
+      "train_index": 41370,
+      "source_images": [
+        "./VG_100k/2316396.jpg",
+        "./edit_image/2316396_edit.jpg"
+      ],
+      "reviewer_type": "assistant_visual_review",
+      "human_confirmed": false,
+      "decision": "reject",
+      "reason": "Khác biệt livery không rõ ở mức đáng tin; nguồn nói các xe gốc đồng nhất nhưng ảnh gốc đã có xe nhiều màu.",
+      "reviewed_views": [
+        "source pair at up to550px display",
+        "224x224 PIL bilinear RGB"
+      ],
+      "coco_id": null,
+      "karpathy_split": "unknown",
+      "edited_sha256": "e22fdd6bf10491cf636e9dbc3e4d3daed1b47e2b98ffe5584b57bb84615b81d4",
+      "original_sha256": "22e4a1c2410cbd43ce3369dee98350e7f9c5d75c754d064be19b6b51d0811679"
+    },
+    {
+      "sample": 16,
+      "train_index": 8726,
+      "source_images": [
+        "./docci/images/test_03242.jpg",
+        "./edit_image/test_03242_edited.jpg"
+      ],
+      "reviewer_type": "assistant_visual_review",
+      "human_confirmed": false,
+      "decision": "unavailable",
+      "reason": "Chưa lấy được ảnh gốc DOCCI trong lượt này; không suy nhãn từ ảnh sửa hoặc metadata.",
+      "source_split_warning": "Tên ảnh chứa test/qual_test phải được kiểm tra split trước fit, dù nằm trong MED SFT JSON."
+    },
+    {
+      "sample": 17,
+      "train_index": 18529,
+      "source_images": [
+        "./VG_100k/2405859.jpg",
+        "./edit_image/2405859_edit.jpg"
+      ],
+      "reviewer_type": "assistant_visual_review",
+      "human_confirmed": false,
+      "decision": "provisional",
+      "reason": "Lòng bồn tắm trắng→teal rõ ở224; bồn cầu và ốp gạch còn nguyên ở mức sự thật cần giữ.",
+      "reviewed_views": [
+        "source pair at up to550px display",
+        "224x224 PIL bilinear RGB"
+      ],
+      "coco_id": null,
+      "karpathy_split": "unknown",
+      "edited_sha256": "e4b08860b27339597cf57114ec59d3df2fbee8a52a8389cddb7b0f7ee5772211",
+      "original_sha256": "8faacd252d8a876753b856bb32fa35730f907373ba64f99c7fb3359fa79b9a4e",
+      "changed_before": "the bathtub is white",
+      "changed_after": "the bathtub is teal",
+      "stable_facts": [
+        "a toilet is beside the bathtub"
+      ],
+      "visible_at_224": true,
+      "unknown_tokens": []
+    },
+    {
+      "sample": 18,
+      "train_index": 44409,
+      "source_images": [
+        "./VG_100k/2324926.jpg",
+        "./edit_image/2324926_edit.jpg"
+      ],
+      "reviewer_type": "assistant_visual_review",
+      "human_confirmed": false,
+      "decision": "reject",
+      "reason": "Ngoài thêm lưới kính còn xuất hiện người/đầu lớn che cửa sau và xe ngoài đường; không giữ nội dung khác.",
+      "reviewed_views": [
+        "source pair at up to550px display",
+        "224x224 PIL bilinear RGB"
+      ],
+      "coco_id": null,
+      "karpathy_split": "unknown",
+      "edited_sha256": "99aafdf2faac662d7c2dc849fc9559f66d81f24917ce97684b10aaee58d544ea",
+      "original_sha256": "c5852551c9e816137221dd1afbf9cf0d0c27f1b258fb856ee2f227ce6c06166d"
+    },
+    {
+      "sample": 19,
+      "train_index": 49445,
+      "source_images": [
+        "./VG_100k/2415596.jpg",
+        "./edit_image/2415596_edit.jpg"
+      ],
+      "reviewer_type": "assistant_visual_review",
+      "human_confirmed": false,
+      "decision": "reject",
+      "reason": "Ảnh gốc đã có marina và thuyền. Ảnh sửa chủ yếu làm lá cây sáng/xanh hơn; mô tả nguồn nói thay mặt nước/cây bằng marina là sai.",
+      "reviewed_views": [
+        "source pair at up to550px display",
+        "224x224 PIL bilinear RGB"
+      ],
+      "coco_id": 402097,
+      "karpathy_split": "train",
+      "edited_sha256": "d04a0dc0cf129235d73ab51ff1e8313cc3156e6e4669ca065798e81a8a3d95ac",
+      "original_sha256": "7af31d69fffd5db2d583b9eae42c09c0b173fd426ec9bdbff07fd3757cd1497f"
+    },
+    {
+      "sample": 20,
+      "train_index": 6137,
+      "source_images": [
+        "./VG_100k/2342297.jpg",
+        "./edit_image/2342297_edit.jpg"
+      ],
+      "reviewer_type": "assistant_visual_review",
+      "human_confirmed": false,
+      "decision": "conditional",
+      "reason": "Thân máy bay trắng→xanh rõ, nhưng động cơ, đuôi, logo và độ mờ nền cũng đổi. Không gọi là edit một thuộc tính sạch.",
+      "reviewed_views": [
+        "source pair at up to550px display",
+        "224x224 PIL bilinear RGB"
+      ],
+      "coco_id": null,
+      "karpathy_split": "unknown",
+      "edited_sha256": "ea4f5303cb929e7ef4ff1ddb52c33b751e9254e4d5eb335a1fcfa06163597acd",
+      "original_sha256": "06f56800b2864473e65c6c1db467a2808ebd3d6f0e7c9a2db22a925b443e4859",
+      "changed_before": "the airplane has a white body",
+      "changed_after": "the airplane has a blue body",
+      "stable_facts": [
+        "the airplane is above trees",
+        "the sky is cloudy"
+      ],
+      "visible_at_224": true,
+      "unknown_tokens": []
+    }
+  ]
+}
