@@ -150,15 +150,59 @@ Prompt không còn phù hợp | C | Từ A, học CE caption + KL bám A + CE đ
 Prompt không còn phù hợp | T | Giống C của cùng nhóm, thêm loss hạn chế điểm của mô tả gốc tăng không phù hợp khi ảnh đã bị can thiệp nhưng prompt vẫn cũ.
 Mức hỗ trợ thị giác | C / H / T | C là đối chứng thích nghi chung; H thêm học xếp hạng điểm cuối; T thêm ràng buộc mức tăng điểm phải được hỗ trợ bởi thông tin thị giác tương ứng. Cùng dữ liệu và 500 bước.
 Tiền huấn luyện quan hệ | RelPos / RelContrast | RelPos học phát biểu quan hệ dương. RelContrast bổ sung phân biệt đúng sai và xếp hạng ảnh đúng cho cùng phát biểu. Đây là giai đoạn frame, chưa phải kết quả sinh caption.
-Bộ đọc cặp đối tượng | I / J | I dùng bộ đọc và điểm cặp theo cách độc lập; J ràng buộc dùng chung biểu diễn đọc cặp cho điểm quan hệ và thông tin đưa vào decoder. Hai nhánh cùng học 500 bước.
-Xác suất khái niệm | C0 | Từ A, tiếp tục SCST tối ưu thưởng CIDEr và KL giữ gần A. Không bật loss giữ khái niệm dương hoặc phạt khái niệm âm. Kiến trúc suy luận giữ nguyên.
+Bộ đọc cặp đối tượng | I / J | Cả hai đọc thông tin cặp bằng trọng số cặp. I đọc đối tượng bằng trọng số riêng; J dùng các tổng biên của trọng số cặp để đọc đối tượng. Hai nhánh cùng học 500 bước.
+Xác suất khái niệm | C0 | Từ A, tiếp tục SCST với thưởng CIDEr và đối tượng, cùng KL giữ gần A. Không bật loss giữ khái niệm dương hoặc phạt khái niệm âm. Kiến trúc suy luận giữ nguyên.
 Xác suất khái niệm | C | Giống C0, thêm loss giữ xác suất các khái niệm được dữ liệu hỗ trợ. Đây là C xuất hiện trong bảng đánh giá mở rộng 4.000 ảnh.
 Xác suất khái niệm | G | Giống C, thêm loss giảm xác suất các khái niệm âm tính yếu. Nhãn âm yếu không có nghĩa đã xác minh đối tượng vắng mặt trong ảnh.
-Bộ nhớ quan hệ K/V | D / E | Khởi tạo từ C0. D tách value dùng cho nhiệm vụ phụ và đường caption; E dùng chung value của fact. K là phần dùng để truy vấn hoặc chọn, V là thông tin được đọc vào biểu diễn.
+Bộ nhớ quan hệ K/V | D / E | Khởi tạo từ C0. D không gộp value; E gộp value của các phát biểu tương đương khi hoán đổi vai và đổi quan hệ tương ứng. K dùng để truy vấn, V là thông tin được đọc vào biểu diễn.
 Phản ứng trên ảnh chỉnh sửa | C0 frozen | Dùng nguyên C0, không học thêm. Cho ảnh gốc và ảnh sửa đi qua cùng prompt gốc, chấm cụm Changed/Stable và sinh caption. Đây là diagnostic 15 cặp, không phải một nhánh cải tiến.
 Vùng và cụm qua ảnh chỉnh sửa | G-ind / G-pair | Mới đề xuất trong X018, chưa chạy. G-ind học sinh từ dựa trên vùng với giám sát từng ảnh; G-pair giống hệt nhưng thêm ràng buộc giữ liên kết với cùng đối tượng qua hai ảnh. G ở đây không phải G phạt khái niệm.
 
 Thuật ngữ: CE là cross entropy, học từ mô tả đúng; SCST học từ chênh lệch thưởng giữa câu lấy mẫu và câu greedy; KL hạn chế phân phối từ lệch quá xa mô hình tham chiếu. “Frozen” nghĩa là giữ nguyên trọng số. Việc đổi loss huấn luyện không nhất thiết tạo thêm một khối ở pipeline suy luận.
+
+6 Sơ đồ các pipeline
+
+Sơ đồ tóm tắt các đường tính chính. Mũi tên liền thể hiện luồng khi sinh câu; mũi tên nét đứt dẫn tới mục tiêu huấn luyện. Các loss được đặt ở phía dưới để phân biệt với kiến trúc suy luận.
+
+Pipeline nền A có prompt
+
+![Pipeline nền A có prompt](docs/weekly_reports/2026-10-31/01_A.png)
+
+Prompt đọc các query thị giác qua attention và gate. Memory của decoder gồm query thị giác và prompt đã kết hợp thị giác. Trong các thí nghiệm dùng cache, CLIP features và prompt embeddings được đọc từ cache thay vì trích xuất lại ở mỗi bước.
+
+Nhóm C0 C G khác nhau ở mục tiêu huấn luyện
+
+![Nhóm C0 C G khác nhau ở mục tiêu huấn luyện](docs/weekly_reports/2026-10-31/02_concept.png)
+
+Khởi tạo cùng A; không thêm bộ nhớ vùng khi suy luận. Thưởng đối tượng đã có trong công thức SCST của nhóm này. Loss phạt khái niệm của G là thành phần bổ sung, không phải toàn bộ cơ chế thưởng đối tượng.
+
+Pipeline của các cấu hình C T và C H T
+
+C T trong thí nghiệm prompt không còn phù hợp
+
+![C T trong thí nghiệm prompt không còn phù hợp](docs/weekly_reports/2026-10-31/03_stale.png)
+
+Các điều kiện can thiệp chỉ phục vụ học và so sánh phản ứng. Khi sinh caption thông thường, đầu vào vẫn là ảnh cùng prompt gốc; không cần nhãn tham chiếu làm đầu vào suy luận.
+
+C H T trong thí nghiệm mức hỗ trợ thị giác
+
+![C H T trong thí nghiệm mức hỗ trợ thị giác](docs/weekly_reports/2026-10-31/04_gain.png)
+
+Nhánh bổ sung học phần sửa logits từ các patch. C/H/T có cùng đường sinh câu, khác ràng buộc huấn luyện. Ràng buộc của T chưa đạt mức hỗ trợ mong muốn trong pilot; sơ đồ không hàm ý đã căn chỉnh đúng vùng.
+
+Pipeline bộ đọc vùng và phương pháp dự kiến
+
+I J và D E bổ sung thông tin vùng vào mô hình nền
+
+![I J và D E bổ sung thông tin vùng vào mô hình nền](docs/weekly_reports/2026-10-31/05_readers.png)
+
+Đây là cấu trúc khái quát, không phải cùng một implementation. I/J dùng nền A và khác cách đọc đối tượng; D/E dùng nền C0 và khác cách gộp value của các phát biểu tương đương. Box detector không được coi là bằng chứng chắc chắn rằng quan hệ đúng.
+
+X018 liên kết vùng với cụm khi sinh từ
+
+![X018 liên kết vùng với cụm khi sinh từ](docs/weekly_reports/2026-10-31/06_proposal.png)
+
+Đường căn chỉnh dự kiến là vùng ảnh → expert vùng → xác suất từ, kết hợp với router. Chỉ nhãn correspondence và loss cặp dùng lúc huấn luyện; khi suy luận cần một ảnh, prompt gốc và các vùng detector. Nhánh nền vẫn có đường đi trực tiếp, nên phải kiểm mô hình có dùng thông tin vùng hay chỉ dựa vào nhánh dự phòng.
 
 ## Nguồn kiểm tra nội bộ
 
@@ -180,4 +224,4 @@ Thuật ngữ: CE là cross entropy, học từ mô tả đúng; SCST học từ
 - [semantic_grounding_method/RESPONSE15_C0_V2_RESULT.md](experiments/semantic_grounding_method/RESPONSE15_C0_V2_RESULT.md)
 - [X018 phương pháp dự kiến](RESEARCH_EXCHANGE.md)
 
-Word local: Bao_cao_tuan_31_10_2026.docx. 6 trang, giữ định dạng tuần trước, đã kiểm tra trực quan. Tài liệu tổng hợp, không tạo run mới hoặc ghi kế hoạch thành kết quả.
+Word local: Bao_cao_tuan_31_10_2026.docx. 9 trang, giữ định dạng tuần trước, đã kiểm tra trực quan. Tài liệu tổng hợp, không tạo run mới hoặc ghi kế hoạch thành kết quả.
