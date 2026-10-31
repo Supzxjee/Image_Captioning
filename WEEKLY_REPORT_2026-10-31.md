@@ -136,6 +136,30 @@ Kết luận của tuần
 
 Tuần này đã có bằng chứng tăng CIDEr từ việc tiếp tục huấn luyện với SCST và KL, đồng thời xác định được nhiều cấu hình chưa có ích để dừng đúng lúc. Mục tiêu giảm ảo giác đối tượng và đóng góp căn chỉnh riêng vẫn chưa được xác nhận. Hướng vùng–cụm qua cặp ảnh thay đổi thuộc tính đã có cơ chế và đối chứng cụ thể hơn để trình thầy; bước tiếp theo là kiểm khả thi dữ liệu và làm rõ khác biệt trước khi triển khai.
 
+5 Giải thích các nhánh mô hình và pipeline
+
+Các chữ A, C, T, H là ký hiệu trong từng thí nghiệm, không phải tên phương pháp thống nhất cho cả tuần. Đặc biệt, C và T ở hai nhóm khác nhau có thể có kiến trúc và loss khác nhau. Khi đọc kết quả cần ghép ký hiệu với tên nhóm dưới đây.
+
+Pipeline nền A
+
+A là checkpoint nền đã có trước các thí nghiệm tuần này. Ảnh → đặc trưng CLIP → Q-Former và phần kết hợp prompt gốc → decoder → caption. Prompt gốc được mã hóa bằng CLIP text và đưa vào mô hình; A không phải mô hình không dùng prompt. Trong từng lượt so sánh, A được giữ cố định để làm mốc.
+
+Nhóm thí nghiệm | Ký hiệu | Cấu hình và phần khác biệt
+Kiểm tra query theo vùng | A / T / W | Cùng A cố định, không huấn luyện. A giữ nguyên; T điều chỉnh query theo box đúng; W dùng query từ đối tượng khác làm đối chứng. T ở đây là phép can thiệp, không phải checkpoint đã học.
+Prompt không còn phù hợp | C | Từ A, học CE caption + KL bám A + CE điều kiện trung tính + tương phản thị giác. Không dùng SCST ở lượt này.
+Prompt không còn phù hợp | T | Giống C của cùng nhóm, thêm loss hạn chế điểm của mô tả gốc tăng không phù hợp khi ảnh đã bị can thiệp nhưng prompt vẫn cũ.
+Mức hỗ trợ thị giác | C / H / T | C là đối chứng thích nghi chung; H thêm học xếp hạng điểm cuối; T thêm ràng buộc mức tăng điểm phải được hỗ trợ bởi thông tin thị giác tương ứng. Cùng dữ liệu và 500 bước.
+Tiền huấn luyện quan hệ | RelPos / RelContrast | RelPos học phát biểu quan hệ dương. RelContrast bổ sung phân biệt đúng sai và xếp hạng ảnh đúng cho cùng phát biểu. Đây là giai đoạn frame, chưa phải kết quả sinh caption.
+Bộ đọc cặp đối tượng | I / J | I dùng bộ đọc và điểm cặp theo cách độc lập; J ràng buộc dùng chung biểu diễn đọc cặp cho điểm quan hệ và thông tin đưa vào decoder. Hai nhánh cùng học 500 bước.
+Xác suất khái niệm | C0 | Từ A, tiếp tục SCST tối ưu thưởng CIDEr và KL giữ gần A. Không bật loss giữ khái niệm dương hoặc phạt khái niệm âm. Kiến trúc suy luận giữ nguyên.
+Xác suất khái niệm | C | Giống C0, thêm loss giữ xác suất các khái niệm được dữ liệu hỗ trợ. Đây là C xuất hiện trong bảng đánh giá mở rộng 4.000 ảnh.
+Xác suất khái niệm | G | Giống C, thêm loss giảm xác suất các khái niệm âm tính yếu. Nhãn âm yếu không có nghĩa đã xác minh đối tượng vắng mặt trong ảnh.
+Bộ nhớ quan hệ K/V | D / E | Khởi tạo từ C0. D tách value dùng cho nhiệm vụ phụ và đường caption; E dùng chung value của fact. K là phần dùng để truy vấn hoặc chọn, V là thông tin được đọc vào biểu diễn.
+Phản ứng trên ảnh chỉnh sửa | C0 frozen | Dùng nguyên C0, không học thêm. Cho ảnh gốc và ảnh sửa đi qua cùng prompt gốc, chấm cụm Changed/Stable và sinh caption. Đây là diagnostic 15 cặp, không phải một nhánh cải tiến.
+Vùng và cụm qua ảnh chỉnh sửa | G-ind / G-pair | Mới đề xuất trong X018, chưa chạy. G-ind học sinh từ dựa trên vùng với giám sát từng ảnh; G-pair giống hệt nhưng thêm ràng buộc giữ liên kết với cùng đối tượng qua hai ảnh. G ở đây không phải G phạt khái niệm.
+
+Thuật ngữ: CE là cross entropy, học từ mô tả đúng; SCST học từ chênh lệch thưởng giữa câu lấy mẫu và câu greedy; KL hạn chế phân phối từ lệch quá xa mô hình tham chiếu. “Frozen” nghĩa là giữ nguyên trọng số. Việc đổi loss huấn luyện không nhất thiết tạo thêm một khối ở pipeline suy luận.
+
 ## Nguồn kiểm tra nội bộ
 
 - [preference_candidate_audit/HUMAN_REVIEW_RESULT.md](experiments/preference_candidate_audit/HUMAN_REVIEW_RESULT.md)
@@ -156,4 +180,4 @@ Tuần này đã có bằng chứng tăng CIDEr từ việc tiếp tục huấn 
 - [semantic_grounding_method/RESPONSE15_C0_V2_RESULT.md](experiments/semantic_grounding_method/RESPONSE15_C0_V2_RESULT.md)
 - [X018 phương pháp dự kiến](RESEARCH_EXCHANGE.md)
 
-Word local: Bao_cao_tuan_31_10_2026.docx. 5 trang, giữ định dạng tuần trước, đã kiểm tra trực quan. Tài liệu tổng hợp, không tạo run mới hoặc ghi kế hoạch thành kết quả.
+Word local: Bao_cao_tuan_31_10_2026.docx. 6 trang, giữ định dạng tuần trước, đã kiểm tra trực quan. Tài liệu tổng hợp, không tạo run mới hoặc ghi kế hoạch thành kết quả.
