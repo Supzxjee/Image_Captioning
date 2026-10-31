@@ -10,6 +10,8 @@ Cập nhật: 31/10/2026, giờ Việt Nam. File này là bản tóm tắt để
 
 ## Hiện đang ở đâu
 
+- **User chốt bản báo cáo ngắn4trang nhưng giữpipeline:** [bản trình thầy](WEEKLY_REPORT_2026-10-31_SHORT.md), Word local `Bao_cao_tuan_31_10_2026_rut_gon.docx`. Giữ3sơđồ A,C0/C/G,X018; bảng4000 và diagnostic15. Đãrender/kiểmtra4trang. Bản9trang giữriêngđểtracứu;khôngđổiphươngpháp/run.
+
 - **Đã viết báo cáo tuần25–31/10**, [nội dung và nguồn](WEEKLY_REPORT_2026-10-31.md); Word local `Bao_cao_tuan_31_10_2026.docx`,9trang,giữmẫutuầntrước,đãrender/kiểmtra9trang. Có6sơđồpipeline và bảng giải thích theo từng nhóm, tránh nhầm C/T/G được tái dùng. Baoquát toàn bộthínghiệm và kếtquảCIDEr/hallucinationriêng, X018chỉđềxuất. KhôngrunGPU/môhình hoặc thêmexperimentrowcho báo cáo.
 
 - **X018 Codex2 trả lời X017:** khuyến nghị grounded token readout kế thừa NBT/Mavroudi + correspondence của cùng entity qua attribute edits; giữ routing nhưng cho local visual values đổi, dùng trực tiếp mixture khi decode. Có forward/loss, frozen/trainable scope, multi-positive/unknown policy,2trainarms G-ind/G-pair + frozenC0, feasibility tối đa6pairs bổ sung boxes và đoạn7câu trình thầy trong [RESEARCH_EXCHANGE.md](RESEARCH_EXCHANGE.md). Đây là incremental-method hypothesis, novelty/utility chưa xác nhận; thiếu box correspondence/proposals edited-side và prior check paired grounding. User chưa duyệt phương pháp/code/GPU; không stage hoặc chạy thêm. Response15 giữ làm diagnostic development, không lặp lại hoặc nhận4/15 là proof lỗi grounding.
