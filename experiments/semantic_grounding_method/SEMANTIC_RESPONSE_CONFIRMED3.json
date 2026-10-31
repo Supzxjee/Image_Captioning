@@ -1,0 +1,125 @@
+{
+  "schema_version": 1,
+  "source_revision": "38f969ac98d7db856ee8d57b1a23c4032cfff09e",
+  "source_metadata_sha256": "95fc6968cb6c3425c809beab085ebae6c3afea40ed017318edad3336e8641442",
+  "scope": "confirmed label examples for data-policy/development checks; not an independent test or sufficient training cohort",
+  "training_ready": false,
+  "human_confirmed_count": 3,
+  "source_packet": "SEMANTIC_RESPONSE_COLOR30_REVIEW.json",
+  "annotations": [
+    {
+      "sample": 1,
+      "train_index": 27980,
+      "vg_id": 286026,
+      "coco_id": 132991,
+      "karpathy_split": "train",
+      "source_images": [
+        "./VG_100k/286026.jpg",
+        "./edit_image/286026_edit.jpg"
+      ],
+      "reviewer_type": "assistant_visual_review",
+      "human_confirmed": true,
+      "decision": "provisional",
+      "reason": "Cà vạt xanh→đỏ rõ; Stable là nhóm người đứng trước tòa nhà, không phải identity từng mặt. Trùng mẫu #7 của feasibility20, không phải mẫu mới độc lập.",
+      "viewed_224": true,
+      "original_sha256": "a740d51f869cebb10664acf3c7ba66d7a9e4a5bb9d8d9c81daa89ff54f695cd6",
+      "edited_sha256": "a3d592d1ee05da64cca4f5b2a7f7a05b871874a24f6f85de33454310f416524e",
+      "changed_before": "the ties are blue",
+      "changed_after": "the ties are red",
+      "stable_true": "a group of people is in front of a building",
+      "stable_false": "a group of people is in front of a train",
+      "false_alternative_status": "assistant proposed; explicitly confirmed by user in conversation for both viewed images",
+      "unknown_tokens": [],
+      "human_decision": "confirm",
+      "human_confirmation": {
+        "source": "explicit user message in current conversation",
+        "date": "2026-10-31",
+        "quote": "tôi xác nhận các nhãn đề xuất của 3 cái đó",
+        "scope": [
+          "changed_before",
+          "changed_after",
+          "stable_true",
+          "stable_false"
+        ],
+        "reviewer_type": "human_self_reported",
+        "review_mode": "assistant-proposed labels confirmed by user; not independent blind annotation"
+      }
+    },
+    {
+      "sample": 17,
+      "train_index": 1148,
+      "vg_id": 2332270,
+      "coco_id": 50058,
+      "karpathy_split": "train",
+      "source_images": [
+        "./VG_100k/2332270.jpg",
+        "./edit_image/2332270_edit.jpg"
+      ],
+      "reviewer_type": "assistant_visual_review",
+      "human_confirmed": true,
+      "decision": "provisional",
+      "reason": "Ván đỏ→xanh rõ; người mặc áo vàng và khung cảnh tuyết còn. Logo và bindings trên ván không được gán Stable.",
+      "viewed_224": true,
+      "original_sha256": "ee4dd7165072dd065c659f341123372724ecffb202762d12680abfb13e92554e",
+      "edited_sha256": "42d13e64dc69ec2f2ceb4ddeda461ff19537cc23fd1ab2ad594ea320e32188eb",
+      "changed_before": "the snowboard is red",
+      "changed_after": "the snowboard is blue",
+      "stable_true": "the person is wearing a yellow jacket",
+      "stable_false": "the person is wearing a purple jacket",
+      "false_alternative_status": "assistant proposed; explicitly confirmed by user in conversation for both viewed images",
+      "unknown_tokens": [],
+      "human_decision": "confirm",
+      "human_confirmation": {
+        "source": "explicit user message in current conversation",
+        "date": "2026-10-31",
+        "quote": "tôi xác nhận các nhãn đề xuất của 3 cái đó",
+        "scope": [
+          "changed_before",
+          "changed_after",
+          "stable_true",
+          "stable_false"
+        ],
+        "reviewer_type": "human_self_reported",
+        "review_mode": "assistant-proposed labels confirmed by user; not independent blind annotation"
+      }
+    },
+    {
+      "sample": 22,
+      "train_index": 36020,
+      "vg_id": 2322560,
+      "coco_id": 286708,
+      "karpathy_split": "restval",
+      "source_images": [
+        "./VG_100k/2322560.jpg",
+        "./edit_image/2322560_edit.jpg"
+      ],
+      "reviewer_type": "assistant_visual_review",
+      "human_confirmed": true,
+      "decision": "provisional",
+      "reason": "Mũ tím/hồng→xanh rõ, mèo đen-trắng còn. Cần người xem xác nhận tên màu tím thay vì hồng trước khi dùng câu canonical.",
+      "viewed_224": true,
+      "original_sha256": "e76ae635c21a85b2d4d10a950552fc64876a513ff2d774a6985d449c2088e52c",
+      "edited_sha256": "4c6cef103de3d5db0c8e2e9fdf20cfa81151fff5908f89af39641770f845e23b",
+      "changed_before": "the hat is purple",
+      "changed_after": "the hat is blue",
+      "stable_true": "the cat is black and white",
+      "stable_false": "the cat is brown",
+      "false_alternative_status": "assistant proposed; explicitly confirmed by user in conversation for both viewed images",
+      "unknown_tokens": [],
+      "human_decision": "confirm",
+      "human_confirmation": {
+        "source": "explicit user message in current conversation",
+        "date": "2026-10-31",
+        "quote": "tôi xác nhận các nhãn đề xuất của 3 cái đó",
+        "scope": [
+          "changed_before",
+          "changed_after",
+          "stable_true",
+          "stable_false"
+        ],
+        "reviewer_type": "human_self_reported",
+        "review_mode": "assistant-proposed labels confirmed by user; not independent blind annotation"
+      }
+    }
+  ]
+}

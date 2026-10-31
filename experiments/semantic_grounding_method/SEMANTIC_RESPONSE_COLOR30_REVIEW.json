@@ -16,7 +16,7 @@
         "./edit_image/286026_edit.jpg"
       ],
       "reviewer_type": "assistant_visual_review",
-      "human_confirmed": false,
+      "human_confirmed": true,
       "decision": "provisional",
       "reason": "Cà vạt xanh→đỏ rõ; Stable là nhóm người đứng trước tòa nhà, không phải identity từng mặt. Trùng mẫu #7 của feasibility20, không phải mẫu mới độc lập.",
       "viewed_224": true,
@@ -26,8 +26,22 @@
       "changed_after": "the ties are red",
       "stable_true": "a group of people is in front of a building",
       "stable_false": "a group of people is in front of a train",
-      "false_alternative_status": "assistant judged false in BOTH viewed images; requires confirmation",
-      "unknown_tokens": []
+      "false_alternative_status": "assistant proposed; explicitly confirmed by user in conversation for both viewed images",
+      "unknown_tokens": [],
+      "human_decision": "confirm",
+      "human_confirmation": {
+        "source": "explicit user message in current conversation",
+        "date": "2026-10-31",
+        "quote": "tôi xác nhận các nhãn đề xuất của 3 cái đó",
+        "scope": [
+          "changed_before",
+          "changed_after",
+          "stable_true",
+          "stable_false"
+        ],
+        "reviewer_type": "human_self_reported",
+        "review_mode": "assistant-proposed labels confirmed by user; not independent blind annotation"
+      }
     },
     {
       "sample": 2,
@@ -346,7 +360,7 @@
         "./edit_image/2332270_edit.jpg"
       ],
       "reviewer_type": "assistant_visual_review",
-      "human_confirmed": false,
+      "human_confirmed": true,
       "decision": "provisional",
       "reason": "Ván đỏ→xanh rõ; người mặc áo vàng và khung cảnh tuyết còn. Logo và bindings trên ván không được gán Stable.",
       "viewed_224": true,
@@ -356,8 +370,22 @@
       "changed_after": "the snowboard is blue",
       "stable_true": "the person is wearing a yellow jacket",
       "stable_false": "the person is wearing a purple jacket",
-      "false_alternative_status": "assistant judged false in BOTH viewed images; requires confirmation",
-      "unknown_tokens": []
+      "false_alternative_status": "assistant proposed; explicitly confirmed by user in conversation for both viewed images",
+      "unknown_tokens": [],
+      "human_decision": "confirm",
+      "human_confirmation": {
+        "source": "explicit user message in current conversation",
+        "date": "2026-10-31",
+        "quote": "tôi xác nhận các nhãn đề xuất của 3 cái đó",
+        "scope": [
+          "changed_before",
+          "changed_after",
+          "stable_true",
+          "stable_false"
+        ],
+        "reviewer_type": "human_self_reported",
+        "review_mode": "assistant-proposed labels confirmed by user; not independent blind annotation"
+      }
     },
     {
       "sample": 18,
@@ -448,7 +476,7 @@
         "./edit_image/2322560_edit.jpg"
       ],
       "reviewer_type": "assistant_visual_review",
-      "human_confirmed": false,
+      "human_confirmed": true,
       "decision": "provisional",
       "reason": "Mũ tím/hồng→xanh rõ, mèo đen-trắng còn. Cần người xem xác nhận tên màu tím thay vì hồng trước khi dùng câu canonical.",
       "viewed_224": true,
@@ -458,8 +486,22 @@
       "changed_after": "the hat is blue",
       "stable_true": "the cat is black and white",
       "stable_false": "the cat is brown",
-      "false_alternative_status": "assistant judged false in BOTH viewed images; requires confirmation",
-      "unknown_tokens": []
+      "false_alternative_status": "assistant proposed; explicitly confirmed by user in conversation for both viewed images",
+      "unknown_tokens": [],
+      "human_decision": "confirm",
+      "human_confirmation": {
+        "source": "explicit user message in current conversation",
+        "date": "2026-10-31",
+        "quote": "tôi xác nhận các nhãn đề xuất của 3 cái đó",
+        "scope": [
+          "changed_before",
+          "changed_after",
+          "stable_true",
+          "stable_false"
+        ],
+        "reviewer_type": "human_self_reported",
+        "review_mode": "assistant-proposed labels confirmed by user; not independent blind annotation"
+      }
     },
     {
       "sample": 23,
@@ -621,6 +663,6 @@
     1
   ],
   "training_ready": false,
-  "human_confirmed_count": 0,
+  "human_confirmed_count": 3,
   "scope": "data preparation; not trained model evaluation"
 }

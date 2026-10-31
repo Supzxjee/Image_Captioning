@@ -24,3 +24,11 @@ Local: `review/med_color_pilot/index.html`, ignored khỏiGitHub cùng ảnh. Ba
 - Chưa xuất notebook huấn luyện vì dữ liệu này chưa đủsize/labels và chưa chốt prompt treatment/mask/quota/schedule. Không lấy30cặp lặp lại nhiềuupdate rồi so với baseline lớn để claimđónggóp.
 - Bước tiếp theo: user xem3priority và xuấtreview; sau khi chốt quyước nhãn mới quyết định có đáng mở rộng tập sạch hay không. Không đề nghị chấm hết30mục loại hoặc chạyGPU để bù chất lượngnhãn. Chưa chứng minhnovelty/tăngCIDEr/giảmCHAIR.
 - Không ghi thêm sheetrow hiệu quảmôhình; artifactnày là chuẩn bịdata vàthiếtkế, khôngrun thựchiệm.
+
+## Cập nhật xác nhận qua chat — 31/10/2026
+
+Người dùng nói: “tôi xác nhận các nhãn đề xuất của 3 cái đó”, tham chiếu rõ ba priority #17,#22,#1 vừa được gửi. Đã ghi3humanconfirmations trong mainreview và xuất [confirmed3](SEMANTIC_RESPONSE_CONFIRMED3.json); không cần người dùng tải/gửi lạiJSON cho cùng xác nhận này. Changed/Stable/false-alternative texts và60sourceimagehashes giữ nguyên;27mục còn lại không đổi. #22 được xác nhận theo nhãn purple đã đề xuất, không tự chuyển sangpink.
+
+Đây là assistant-proposed labels được user xác nhận tự báo cáo; không phải người chấm độc lập/blind. Có3VGsourceIDs duy nhất;#1vẫn là mẫu đã xuất hiện ởfeasibility20, không tăng sốpair độc lập. 3mẫu là ví dụ phát triển quyước nhãn, chưa đủfit/heldout, không có kết quảmôhình mới. Những dòng0humanconfirmed phía trên ghi trạng thái trước cập nhật này, không được dùng làm trạng thái hiện tại.
+
+Metadata checksPASS:chỉ3confirmations,27records khác giữ nguyên, mọi label/sourceID/imagehash giữ nguyên, confirmedsubset3uniqueIDs, training_ready=false. Chưamodel/GPU; điều kiện trước notebook tại pilotprotocol vẫn áp dụng.
