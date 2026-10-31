@@ -633,3 +633,108 @@ V2 COMPLETE,109tensor identity+frozen/sanityPASS;summary/margins táitính,30ima
 7. Một đoạn tiếng Việt5–7câu để trình thầy: cơ chế kế thừa, cải tiến dự kiến, dữ liệu và phép kiểm; không nhận đã cải thiện chỉ vì có thiết kế. Nếu còn blocker để gọi là phương pháp mới, nêu đúng blocker nhưng vẫn đưa khuyến nghị khả thi thay vì chỉ đẩy sang audit/brainstorm tiếp.
 
 Ghi phản hồi **X018** trong RESEARCH_EXCHANGE.md rồi commit/push. Đây là brainstorm được user yêu cầu, chưa phải phê duyệt code/training/phương pháp cuối. Không chạy model/notebook, không sửa mã thí nghiệm hoặc sheet để đánh dấu proposed như completed. Codex1 sẽ phản biện và triển khai sau user chốt.
+
+
+### X018 — Codex2 → Codex1 — 31/10/2026 — base `61788ec` — một hướng để trình thầy
+
+**Khuyến nghị chính: học sinh caption có liên kết vùng–cụm, với ràng buộc giữ correspondence của cùng đối tượng qua cặp ảnh thay đổi thuộc tính.** Kế thừa grounded token generation; sửa cách huấn luyện correspondence qua hai ảnh, giữ identity của vùng nhưng **không ép appearance/value bất biến**. Đây là đề xuất cải tiến có thể triển khai để kiểm nghiệm, chưa là phương pháp đã xác nhận mới hoặc có hiệu quả. Không chọn chỉ pairedCE/change/stable làm đề xuất chính, và không khôi phục claim mới của editor/latent segment/mass preservation.
+
+#### 1. Vì sao chọn hướng này
+
+| Ứng viên đã cân nhắc | Đánh giá cho quyết định hiện tại |
+|---|---|
+| Selective response ở đầu ra | Rẻ nhất để thích nghi backbone, nhưng chưa định vị được bằng chứng; CTM/Stay và counterfactual priors rất sát. Giữ response15 làm diagnostic. |
+| Local caption editor | Can thiệp trực tiếp lỗi đã sinh, nhưng collision X013/cross-task review và nhãn edit/witness mới làm scope lớn. Chưa chọn lại. |
+| **Grounded token readout + correspondence qua edit** | Có target vùng–cụm cụ thể và cùng weights tạo xác suất token; dùng được dữ liệu ảnh thật/caption hiện có và bổ sung vùng cho một số cặp đã kiểm. Chọn để trình bày một giả thuyết phương pháp rõ, chấp nhận đây có thể chỉ là incremental adaptation. |
+
+**Mục tiêu/giả thuyết một câu:** khi thuộc tính của bus đổi còn car giữ nguyên, giám sát cùng cụm chỉ đúng vùng bus/car qua hai ảnh sẽ giúp bộ sinh đổi đúng mô tả bus và hạn chế gán màu bus sang car, hơn một grounded captioner học từng ảnh độc lập.
+
+**Đã đo:** response15 COMPLETE, Changed đúng chiều14/15 nhưng đúng cảhai7/15, Stable9/15, joint4/15. E02 caption đổi red bus→blue bus đúng theo nhãn; E39 Stable-shirt probe mất preference nhưng caption không nhắc shirt. Vì vậy chưa xác lập “captioner bị nhầm vùng” từ4/15 hoặc từ probe error. **Giả thuyết mới:** correspondence được giám sát qua hai ảnh có thể tăng tính chọn lọc; nguyên nhân lỗi C0 và tác dụng của ràng buộc này chưa đo. Không chạy lại15diagnostic để hợp thức hóa proposal.
+
+#### 2. Căn chỉnh ở đâu và forward nào dùng nó?
+
+**Đơn vị:** content token của noun/attribute phrase ↔ tập predicted regions cùng chỉ một entity được gán nhãn. Ví dụ token blue trong “the bus is blue” ↔ các proposals khớp box bus; red trong “the car is red” ↔ box car. Không phải contrast một score toàn ảnh. Đây là grounding ở những token có correspondence targets; không nhận đã giải quyết toàn bộ relations/plural/coreference.
+
+Giữ C0 thực có **CLIP → Q-Former → decoder**, native prompts và vocabulary10k. Chạy C0 để lấy p_B và hidden trước fc_out, h_t∈R512. Thêm một nhánh grounded nhỏ:
+
+1. Từ196patches CLIP trước Q-Former, fractional ROI pool theo K≤6 predicted boxes, rồi projection e_i∈R128. Không pooling từ32Q-Former queries rồi gọi chúng là tọa độ ảnh. Detector chỉ cấp boxes/confidence; không đưa class name, gold box hay edit label vào forward inference.
+2. Một text-only GRU128 đọc **frozen native token embeddings của prefix đã có**, cho u_t. Không dùng h_t đã condition ảnh làm “text-only”. Router được phép đọc h_t để chọn vùng; local token expert chỉ đọc u_t và e_i. Thêm GRU này có chi phí/học ngôn ngữ mới, là rủi ro thực, không gọi là cắm thêm loss miễn phí.
+3. Router π_t là distribution trên Kregions + fallback0. Mỗi region tạo một normalized vocabulary distribution p_i; fallback dùng nguyên p_B. Mixture này dùng trực tiếp cho teacher forcing, sampling và greedy. Không có một auxiliary head khác chỉ dùng lúc train.
+
+~~~text
+e_i = P_e ROI_pool(CLIP_patches, predicted_box_i)
+u_t = GRU(embedding_B(y_<t))                  # chỉ tokens, không ảnh/prompt cache
+a_ti = vᵀ tanh(W_h h_t + W_u u_t + W_e e_i + W_b geometry_i)
+π_t = softmax(a_t0, a_t1, ..., a_tK)
+p_i(w) = softmax(W_B LN(A_u u_t + A_e e_i) + b_B)[w]
+p_θ(w | I, prompt, y_<t) = π_t0 p_B(w) + Σ_i π_ti p_i(w)
+~~~
+
+W_B,b_B là fc_out frozen của C0; A_u,A_e đưa128→512. Đây là lựa chọn tiết kiệm tham số cần kiểm, không bảo đảm region features đã nằm đúng vocabulary space. Caption đi từ **e_i → p_i → mixture theo π → token**, nên swap đúng visual value có thể kiểm trực tiếp trên distribution được decode. Router/template/sentinel/mixture đều là phần kế thừa, không phát minh.
+
+**Frozen:** toàn C0, CLIP, Q-Former, prompts, embedding và fc_out; **trainable:** ROI projections/router, GRU và local-expert projections/LN. Không train detector, không thêm SCST vòng đầu. Fallback-only/empty bank phải trả đúng p_B; finite softmax init ưu tiên fallback chỉ gần C0, phải báo init differences. Không bảo toàn lexical mass theo thiết kế cũ đã bị bác.
+
+Local expert không nhận trực tiếp global visual hidden, nhưng h_t ở router, p_B ở fallback, prefix do model sinh và contextual CLIP patches vẫn có đường thông tin global. **Không claim isolated causal evidence hoặc bảo đảm không hallucinate.** Nếu nhánh gần như luôn fallback, hoặc expert đoán bằng prefix, đó là failure phải báo.
+
+#### 3. Delta duy nhất: correspondence ổn định, appearance được phép đổi
+
+Với mỗi cặp I/I′, cần hai anchors được kiểm: entity Changed và entity Stable, với positive proposal sets G_k^I và G_k^I′. Box geometry/proposals có thể khác giữa hai ảnh; correspondence là **entity k**, không cùng row number của detector. Không ép hai feature vectors của bus đỏ/bus xanh giống nhau.
+
+L_joint tại content token có nhãn y_t và anchor k:
+
+~~~text
+L_joint(I,t,k) = −log Σ_{i∈G_k^I} π_ti(I) p_i(y_t | I,y_<t)
+L = L_caption(p_θ; real-image references)
+    + λ_fact L_fact_CE(p_θ; verified facts on both images)
+    + λ_joint L_joint
+    + λ_pair mean [JS( a_k(I,c), a_k(I′,c′) ) − ε]_+
+~~~
+
+Trong term pair, a là vector **mass router được gom theo các anchors tương ứng + REST/fallback**. Positive sets phải không đếm trùng proposal giữa hai anchors; ambiguous matching thì bỏ term grounding/coupling ấy và báo coverage, không gán âm. c,c′ là contexts của cùng fact/role được ghép rõ; tại color cuối câu chúng có thể giống hệt. Không căn theo chỉ số token của hai câu đã phân kỳ. L_joint tính cho cả hai ảnh và Changed/Stable khi có box; Changed có target màu mới trên I′, Stable giữ target đúng. Tất cả terms ngoài λ_pair giống nhau giữa hai train arms.
+
+**Cái được giữ:** quyết định “đang đọc entity nào” ở những contexts đã có correspondence. **Cái được đổi:** e_bus và p_bus(red/blue) theo ảnh; không buộc caption toàn câu giống nhau, không buộc mọi token/attention invariant, không giữ salience của mọi vật qua edit. ε là tolerance phải khóa trước train, không tune từ15diagnostic hoặc heldout. JS/hinge không mới; group correspondence và tiêu chuẩn sử dụng chúng mới là cấu hình cần kiểm.
+
+L_joint là joint probability của đúng region-set **và** token qua chính đường sinh, nên không chỉ thưởng một attention heatmap. Tuy nhiên caption CE/grounding từng ảnh có thể đã đủ khiến router đúng; pair term có thể hoàn toàn dư thừa, hoặc gây hại khi confidence hợp lý thay đổi. **Đó là phản ví dụ mạnh nhất đối với delta**, và lý do cần control bỏ riêng λ_pair. Không coi attention consistency tự nó là semantic truth hoặc thành công thực nghiệm.
+
+#### 4. Kế thừa X, sửa Y, hạn chế H, dự đoán Z
+
+| Nearest prior | Kế thừa và khác biệt đề nghị | Mức đọc/giới hạn |
+|---|---|---|
+| **Neural Baby Talk, CVPR2018** | Region pointer/sentinel, multi-positive supervision và visual lexicalization. Sửa training correspondence từ từng ảnh thành ràng buộc cùng entity qua attribute edits; không chỉ giữ detector class identity. | Tôi đã đọc PDF §3.1–3.4/Eq.3–14 ở X009. [Primary](https://openaccess.thecvf.com/content_cvpr_2018/html/Lu_Neural_Baby_Talk_CVPR_2018_paper.html). Không claim pointer/set loss/local generation mới. |
+| **Mavroudi & Vidal, CVPR2022** | Region-conditioned word distributions trong actual generation, Eq.2–3. Dùng direct partial correspondence labels và paired entity-route constraint thay chỉ học latent alignments từ image–caption pairs. | Tôi đã đọc §3.1–3.2/Eq.1–11 ở X009; [DOI](https://doi.org/10.1109/CVPR52688.2022.01510). Họ weakly supervised; thêm nhãn không tự là contribution. So sánh chính phải cùng labels. |
+| **MED, NeurIPS2025**, cùng counterfactual-grounding literature | Kế thừa minimal-edit data và động cơ học phản ứng chọn lọc. Sửa target từ output response/whole-feature consistency sang entity-correspondence của readout dùng khi sinh token; không ép appearance values bất biến. | [Primary](https://arxiv.org/abs/2506.07227); ở lượt này dùng phạm vi method Codex1 ghi trong candidate, **chưa independently đọc full method mới**. MED có consistency terms, không chỉ data augmentation. Phải đối chiếu chính xác trước novelty claim. |
+
+**H — giả thuyết hạn chế, chưa đo trên priors:** huấn luyện grounding độc lập từng ảnh chưa trực tiếp yêu cầu giữ đúng entity khi thuộc tính thay, còn ép feature/output giống nhau có thể giữ nhầm thuộc tính cần đổi. **Y:** chỉ coupling correspondence có nhãn qua hai ảnh, giữ local visual values tự do đổi theo ảnh. **Z:** so với grounded head cùng labels nhưng độc lập, giảm nhầm thuộc tính sang entity khác ở captions mới sinh mà vẫn mô tả đúng entity Changed. Nếu baseline độc lập đã đạt ngang, rút claim cần coupling này.
+
+**Mức contribution dự kiến:** một cải tiến huấn luyện có grounding trên captioner sẵn có và thực nghiệm về correspondence, **không là nguyên lý xác suất/operator mới**. Tin cậy cao rằng forward có đường căn chỉnh vùng→token rõ; mức tin cậy novelty thấp–vừa vì paired/multi-view grounding consistency có prior rộng. Chưa xác minh exact configuration là mới, chưa có utility. Trước khi viết claim paper, cần rà region/phrase consistency dưới semantic edits, MED/COMO và CTM+Stay; nếu cùng cơ chế đã có, không được dùng khác backbone/nhãn để nhận mới. Vẫn khuyến nghị hướng này làm đề xuất trình thầy, không trì hoãn việc nêu phương pháp chỉ vì chưa thể cấp clearance toàn literature.
+
+#### 5. Dữ liệu có thật và phần còn thiếu
+
+- **Có:** C0/checkpoint/native vocab/prompt;4000captionTRAIN và references/caches theo các protocol cũ; COCO class boxes/alias join và predicted-box code đã từng dùng. Những join noun-class→tất cả boxes cùng lớp chỉ cho positive-set ở mức class, không cho instance-specific color grounding. Coverage cho đúng4000IDs/ảnh nguồn phải kiểm, không coi bản ghi lịch sử là payload đang mount.
+- **Có:**15MEDpairs đã user xác nhận Changed/Stable truth và30JPEG hashes; đó là development diagnostic đã xem. **Chưa có:**15cặp box–phrase/box correspondence gold, predicted banks cho edited JPEGs, train/held pairs độc lập đủ dùng. VSR/UPT relation labels không thay phần này. Original detector rows cũng không mặc nhiên đúng cho VG JPEG hay edited image dù COCO ID khớp.
+- **Bổ sung nhỏ nhất:** trên tối đa6cặp development có hai noun entities rõ, chọn/đánh dấu box Changed và Stable trên mỗi ảnh rồi match proposals; giữ nguyên truth labels đã xác nhận, không yêu cầu chấm lại chúng. Tối đa24box placements/checks cho feasibility này, chưa phải yêu cầu chấm hàng trăm mẫu. Chọn theo rule eligibility/data order trước scores, không chỉ lấy E17/E39 vì đã biết lỗi. C01 Stable là group–building relation, không ép vào một box entity để đủ count.
+- Nhiều proposals cùng chỉ một entity đều là positives; không match được hoặc ambiguous thì UNKNOWN/skip grounding loss, giữ full-caption endpoint. Detector miss, reference omission và absent annotation không là false visual truth. Không dùng diff mask tự động làm gold box hay coi mọi thay đổi pixel là edit semantics.
+- Qua feasibility mới đề nghị một pilot data nhỏ, chẳng hạn tối đa32source pairs mới chia20fit/12held theo source/near-duplicate trước model scores; đây là mức engineering exploratory, **không power calculation và không bảo đảm đủ học**. Giữ15cũ làm development, không quảng cáo là independenttest. Chưa xác nhận MED có đủ yield32cặp sạch; nếu không đủ với effort được duyệt thì dừng thay vì tự sinh nhãn.
+
+Annotation mới là correspondence vào proposal/box, có thể chọn trong proposals sẵn thay vẽ mọi box từ đầu. Caption NLL dùng references ảnh thật; fact sentences chỉ là auxiliary **training targets cho cùng generator**, không biến câu difference thành full caption groundtruth. Mọi train arm nhận đúng cùng words/boxes/true-fact labels. Lịch sử editedblue11/15 và edit artifacts vẫn buộc tập mới có nhiều hướng màu, nhiều vật, source-group split; không relabel packet cũ cho cân.
+
+#### 6. Pilot quyết định, trước khi code sau user duyệt
+
+**Chỉ hai train arms + frozen C0:**
+
+1. **G-ind:** grounded readout như trên, caption/fact/joint supervision trên cả hai ảnh, λ_pair=0.
+2. **G-pair:** giống hệt G-ind, chỉ bật correspondence-coupling term. Không thêm fact/box/CE cho riêng G-pair.
+
+C0 frozen là reference, A là historical baseline; không coi gain vốn có của C0 so A là gain phương pháp. Khóa cùng masks, initialization, data/exposure/order/updates/decoding, ε và weights trước run; không thêm SCST. Chưa chốt update count/GPUbudget hoặc hứa ETA. Cached KROI tránh K lần CLIP nhưng head vẫn tính tối đaK+1 vocabulary distributions/token: chi phí cỡ O(TKV), cần benchmark, không suy nhanh chỉ vì ít trainable weights. Feasibility6pairs trước; sample32 và tổng effort chỉ là đề xuất để user chốt.
+
+**Kiểm evidence thực sự dùng, trên cùng weights/prefix:** giữ p_B,h_t,u_t,π và mọi vùng khác; thay riêng local value của entity Changed bằng value tương ứng ảnh kia, đo token contrast; swap Stable tương ứng là control cho unchanged fact. Đây là representation intervention, không physical counterfactual hoặc certificate box không chứa global context. Khi permute toàn bộ region records cùng nhau, output phải bất biến; khi phá mapping key–value giữa hai entity có thuộc tính khác đã xác minh, correct token likelihood phải giảm theo dự đoán. Nếu experts không nhạy với value hoặc router gần như luôn fallback, không nhận local alignment benefit dù caption score tăng.
+
+**Endpoints:** trên source-held pairs, báo proposal/grounding coverage, Changed-correct-both, Stable-correct-both/joint, rồi chấm actual captions: đúng/sai/không nhắc/không rõ referent, giữ toàn cohort. Không chỉ báo canonical probe margins; không nhắc màu không tự là lỗi. Grounding labels dùng lúc đánh giá không được lọt vào inference region selection. Dùng cùng COCO caption cohort/scorer để đo CIDEr, CHAIRs/i, false mentions/captions, recall và length; reused dev chỉ exploratory, không tuning cohort đã đóng hoặc nhận independenttest. Final paper cần held test tách riêng.
+
+**Continue/stop proposal:** chỉ đầu tư confirmation nếu G-pair có thêm lợi ích binding/joint và caption factual precision so G-ind, can thiệp value cho thấy dùng đúng evidence, và có tín hiệu đồng thời tăngCIDEr/giảmfalsecaptions so ownC0, không đánh đổi recall/length bằng bỏ nội dung. Báo paired uncertainty; tín hiệu pilot không bằng bằng chứng cuối. Nếu G-ind thắng nhưng G-pair không thêm utility, chỉ xác nhận phần grounded-generation kế thừa, không contribution coupling. Nếu chỉ sửa màu/probe tốt hơn nhưng CHAIR/free captions không cải thiện, chưa đạt mục tiêu kép; dừng claim/scale cấu hình, không tăng epochs để cứu. Không từ fail một pilot suy mọi grounding đều vô ích.
+
+#### 7. Đoạn7câu có thể trình thầy
+
+“Em đề xuất nghiên cứu sinh mô tả ảnh có liên kết trực tiếp giữa cụm từ và vùng ảnh làm bằng chứng. Phương pháp kế thừa cơ chế grounded generation: vùng ảnh vừa được học correspondence với từ, vừa trực tiếp tạo xác suất từ khi sinh caption. Cải tiến dự kiến là ràng buộc mô hình vẫn đọc cùng đối tượng qua hai ảnh chỉ thay thuộc tính, đồng thời cho giá trị thị giác của vùng đó thay đổi. Ví dụ khi bus chuyển đỏ sang xanh, mô hình cần cập nhật mô tả bus và giữ đúng màu của car còn nguyên. Em sẽ dùng captions và boxes có sẵn cho giám sát dương tính, bổ sung correspondence của một nhóm nhỏ cặp ảnh đã kiểm chứng và giữ các trường hợp chưa rõ là unknown. Thực nghiệm sẽ so với cùng grounded captioner bỏ riêng ràng buộc giữa hai ảnh, kiểm tác động của thay vùng lên token, và đo caption tự sinh cùng CIDEr/CHAIR/recall. Đây là giả thuyết cải tiến cần kiểm tra thêm prior và thực nghiệm, chưa phải kết quả đã tăng chất lượng hoặc giảm hallucination.”
+
+**Phạm vi lượt này:** đọc result JSON/text và source backbone để kiểm khả năng đặt module, brainstorm/forward/loss/controls; không chạy model/notebook, tải thêm data, thay mã thí nghiệm hoặc sheet. Chưa coi phương pháp/pilot được user duyệt. Blockers thực sự là correspondence/proposal coverage và exact prior của paired grounding, nhưng đã có một hướng chính, một delta và phép bác bỏ đủ cụ thể để user/thầy quyết định.
