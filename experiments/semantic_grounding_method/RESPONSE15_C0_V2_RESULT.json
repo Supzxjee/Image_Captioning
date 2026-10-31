@@ -1,0 +1,736 @@
+{
+  "status": "COMPLETE_USER_RUN_VERIFIED",
+  "zip_sha256": "261708318fb833d85c1828344c6be8bfdd64b39f0d2b4faaec6c295899c5f9e6",
+  "source_commit": "33876d88a8a0832dd31474ce381a723f4dcb32f1",
+  "summary": {
+    "pairs": 15,
+    "changed_both_ranked_correct": 7,
+    "changed_direction_correct": 14,
+    "stable_both_ranked_correct": 9,
+    "greedy_caption_text_changed": 13,
+    "mean_abs_stable_delta": 1.5761369625727335,
+    "caption_semantic_accuracy": "NOT_AUTOMATICALLY_SCORED; inspect captions with images",
+    "interpretation": "Descriptive15-pair diagnostic; no CIDEr/CHAIR gain or independent-test claim",
+    "status": "DIAGNOSTIC_COMPLETE",
+    "training": false,
+    "model_digest": "069e19541f40eebeec2619e7be4c9fb223453cfac56f14196430c6daae0fdf1b",
+    "checkpoint_sha256": "5d92cd5cb48077c7332bb3ff9b295cad1df5d76ede818adabef28035f055fa9d",
+    "runtime": {
+      "python": "3.13.15 (main, Aug  6 2026, 11:06:22) [GCC 13.3.0]",
+      "platform": "Linux-6.18.55+-x86_64-with-glibc2.39",
+      "torch": "2.11.0+cu128",
+      "cuda": "12.8",
+      "cudnn": 91900,
+      "gpu": {
+        "name": "Tesla T4",
+        "capability": [
+          7,
+          5
+        ]
+      },
+      "packages": {
+        "numpy": "2.1.3",
+        "torchvision": "0.26.0+cu128",
+        "transformers": "4.57.1",
+        "nltk": "3.9.1",
+        "h5py": "3.16.0"
+      },
+      "deterministic_algorithms": true,
+      "warn_only": false,
+      "cudnn_benchmark": false,
+      "cudnn_deterministic": true,
+      "mha_fastpath": false,
+      "sdp_math": true,
+      "sdp_flash": false,
+      "sdp_mem_efficient": false,
+      "cublas_workspace": ":4096:8",
+      "python_hash_seed": "42",
+      "scope": "Controls reduce known nondeterminism; no cross-device/release bitwise guarantee."
+    },
+    "seconds": 421.870824425,
+    "prompt_condition": "same original native prompt on both images; no regenerated prompts",
+    "features": "pinned CLIP FP32 -> FP16 cache rounding -> FP32; fresh VG JPEG, not historical cache parity",
+    "clip_revision": "57c216476eefef5ab752ec549e440a49ae4ae5f3",
+    "source_commit": "33876d88a8a0832dd31474ce381a723f4dcb32f1"
+  },
+  "additional_descriptive_counts": {
+    "changed_original_correct": 10,
+    "changed_edited_correct": 12,
+    "stable_original_correct": 11,
+    "stable_edited_correct": 10,
+    "joint_changed_and_stable_both_correct": 4,
+    "stable_preference_lost": [
+      "E17",
+      "E39"
+    ],
+    "stable_preference_gained": [
+      "E37"
+    ],
+    "changed_wrong_direction": [
+      "E05"
+    ]
+  },
+  "verification": {
+    "records": 15,
+    "image_hashes": 30,
+    "pinned_source_hashes": 11,
+    "summary_recomputed": true,
+    "all_candidate_margins_recomputed": true,
+    "strict_tensor_identity_match": {
+      "scope": "bare ImageCaptioningModel; no teacher wrapper",
+      "checkpoint_sha256": "5d92cd5cb48077c7332bb3ff9b295cad1df5d76ede818adabef28035f055fa9d",
+      "expected_tensor_count": 109,
+      "actual_tensor_count": 109,
+      "expected_from_pinned_checkpoint": "069e19541f40eebeec2619e7be4c9fb223453cfac56f14196430c6daae0fdf1b",
+      "actual_loaded": "069e19541f40eebeec2619e7be4c9fb223453cfac56f14196430c6daae0fdf1b",
+      "exact_tensor_map_match": true
+    },
+    "sanity": {
+      "same_input_logits_close": true,
+      "same_input_greedy_equal": true,
+      "rtol": 1e-05,
+      "atol": 1e-05
+    },
+    "partial_equals_final": true,
+    "local_model_execution": false
+  },
+  "records": [
+    {
+      "sample": "C01",
+      "coco_id": 132991,
+      "vg_id": 286026,
+      "expected": {
+        "changed_before": "the ties are blue",
+        "changed_after": "the ties are red",
+        "stable_true": "a group of people is in front of a building",
+        "stable_false": "a group of people is in front of a train"
+      },
+      "candidate_mean_logprobs": {
+        "changed_before": [
+          -6.459216117858887,
+          -8.955907821655273
+        ],
+        "changed_after": [
+          -9.935179710388184,
+          -7.348722457885742
+        ],
+        "stable_true": [
+          -1.968260645866394,
+          -2.4869768619537354
+        ],
+        "stable_false": [
+          -7.261801719665527,
+          -7.47979211807251
+        ]
+      },
+      "changed_d_original": 3.475963592529297,
+      "changed_d_edited": -1.6071853637695312,
+      "stable_d_original": 5.293541073799133,
+      "stable_d_edited": 4.992815256118774,
+      "caption_original": "a group of people standing on steps in front of a building.",
+      "caption_edited": "a group of people standing on steps wearing red ties.",
+      "shared_prompt": true,
+      "prompt_sha256": "99c5dd5cc47cfb46f87b21a7b6b4e2aaa11986d0da366245d7c457173c4e9d49",
+      "mask_sha256": "1be5383f7d924f27a67f41153ad7063943194e5f4a4bd732cbb3b42539cd68e8",
+      "visual_sha256": [
+        "84df3c192249ef73bed0c18e845920b547c64cc3e8c6be20529500e3a0288faa",
+        "7f1109b1057f975df8e2bb091d432d83bbef5e01bc2c3fceb7c2b7a3ccd8a3b4"
+      ]
+    },
+    {
+      "sample": "C17",
+      "coco_id": 50058,
+      "vg_id": 2332270,
+      "expected": {
+        "changed_before": "the snowboard is red",
+        "changed_after": "the snowboard is blue",
+        "stable_true": "the person is wearing a yellow jacket",
+        "stable_false": "the person is wearing a purple jacket"
+      },
+      "candidate_mean_logprobs": {
+        "changed_before": [
+          -10.145331382751465,
+          -10.71986198425293
+        ],
+        "changed_after": [
+          -9.93527889251709,
+          -8.058253288269043
+        ],
+        "stable_true": [
+          -0.9426676034927368,
+          -1.3442939519882202
+        ],
+        "stable_false": [
+          -4.4620680809021,
+          -3.643616199493408
+        ]
+      },
+      "changed_d_original": -0.210052490234375,
+      "changed_d_edited": -2.6616086959838867,
+      "stable_d_original": 3.519400477409363,
+      "stable_d_edited": 2.299322247505188,
+      "caption_original": "a person sitting on a snowy hill with a snowboard.",
+      "caption_edited": "a person sitting on a rock in the snow with a snowboard.",
+      "shared_prompt": true,
+      "prompt_sha256": "060b1b5d01d127534c7e82f35722d823fc60b59b865f7d0ca4fbc6a7e1564941",
+      "mask_sha256": "fb611147fa0a426fcc5f846411f8df85b8cc46da916a2f418a738f98703d2621",
+      "visual_sha256": [
+        "905fc1f8c2116b460a334bead2c857cf58bf30d15aba0d0754b23a48392335af",
+        "860734dc4d9a8638f7bcdc1b6ea39cc1beb1485eeb3efa7c78ead8aa4b98f724"
+      ]
+    },
+    {
+      "sample": "C22",
+      "coco_id": 286708,
+      "vg_id": 2322560,
+      "expected": {
+        "changed_before": "the hat is purple",
+        "changed_after": "the hat is blue",
+        "stable_true": "the cat is black and white",
+        "stable_false": "the cat is brown"
+      },
+      "candidate_mean_logprobs": {
+        "changed_before": [
+          -10.023573875427246,
+          -10.014097213745117
+        ],
+        "changed_after": [
+          -10.097636222839355,
+          -8.423730850219727
+        ],
+        "stable_true": [
+          -3.7006402015686035,
+          -3.4245765209198
+        ],
+        "stable_false": [
+          -11.313827514648438,
+          -11.09106159210205
+        ]
+      },
+      "changed_d_original": 0.07406234741210938,
+      "changed_d_edited": -1.5903663635253906,
+      "stable_d_original": 7.613187313079834,
+      "stable_d_edited": 7.666485071182251,
+      "caption_original": "a black and white cat wearing a pink hat",
+      "caption_edited": "a black and white cat wearing a blue hat",
+      "shared_prompt": true,
+      "prompt_sha256": "31d431d1b25bf9dc978151f1c217f9b9444c49009e1d6f6290f689469d38a9f9",
+      "mask_sha256": "5042bd72fbfdbbf85bfd15a5b0cff70f2d7e21017f801129d110e932e6d1add0",
+      "visual_sha256": [
+        "5c0a1d2b845d64f1cc213f3a0fb0ac8e4942889eaac6b0c57d8f3fcfe8d68550",
+        "18dde3835def358a5c31a5d1f6ac3796ad4a8a226e7f9e8d884a9bf35569d72a"
+      ]
+    },
+    {
+      "sample": "E02",
+      "coco_id": 140581,
+      "vg_id": 2389320,
+      "expected": {
+        "changed_before": "the bus is red",
+        "changed_after": "the bus is blue",
+        "stable_true": "the car is red",
+        "stable_false": "the car is blue"
+      },
+      "candidate_mean_logprobs": {
+        "changed_before": [
+          -3.6205506324768066,
+          -5.846896648406982
+        ],
+        "changed_after": [
+          -7.811375141143799,
+          -5.837291717529297
+        ],
+        "stable_true": [
+          -4.470520496368408,
+          -6.948204517364502
+        ],
+        "stable_false": [
+          -9.33069896697998,
+          -7.156024932861328
+        ]
+      },
+      "changed_d_original": 4.190824508666992,
+      "changed_d_edited": -0.009604930877685547,
+      "stable_d_original": 4.860178470611572,
+      "stable_d_edited": 0.20782041549682617,
+      "caption_original": "a red double decker bus driving down a street.",
+      "caption_edited": "a blue double decker bus driving down a street.",
+      "shared_prompt": true,
+      "prompt_sha256": "ffced6b107cb351395a7fbce519e11ada9ae1d47f8328155f34f8e42178fa2b8",
+      "mask_sha256": "1be5383f7d924f27a67f41153ad7063943194e5f4a4bd732cbb3b42539cd68e8",
+      "visual_sha256": [
+        "84cae9508ac4abf3d1e8e9bcc5a6b4f5d958452e0e57f091f0ca1b58e96f610a",
+        "e499afd1a500e475c434b32e140dfc2081e5f4e1e20b2f2b018ee85e73e92b79"
+      ]
+    },
+    {
+      "sample": "E05",
+      "coco_id": 295015,
+      "vg_id": 2413012,
+      "expected": {
+        "changed_before": "the backpack on the left is blue",
+        "changed_after": "the backpack on the left is red",
+        "stable_true": "the large surfboard is white",
+        "stable_false": "the large surfboard is red"
+      },
+      "candidate_mean_logprobs": {
+        "changed_before": [
+          -8.341147422790527,
+          -8.582090377807617
+        ],
+        "changed_after": [
+          -11.768705368041992,
+          -12.139703750610352
+        ],
+        "stable_true": [
+          -7.778547286987305,
+          -7.408328533172607
+        ],
+        "stable_false": [
+          -10.1022310256958,
+          -9.97689151763916
+        ]
+      },
+      "changed_d_original": 3.427557945251465,
+      "changed_d_edited": 3.5576133728027344,
+      "stable_d_original": 2.323683738708496,
+      "stable_d_edited": 2.5685629844665527,
+      "caption_original": "two people standing on the grass with surfboards",
+      "caption_edited": "two men in wet suits are waxing their surfboards",
+      "shared_prompt": true,
+      "prompt_sha256": "f0f50ad046d341d6e49c91cda0e05c7c2ed93e1f21d08c77a478a75a504d77e2",
+      "mask_sha256": "1be5383f7d924f27a67f41153ad7063943194e5f4a4bd732cbb3b42539cd68e8",
+      "visual_sha256": [
+        "25ebddc6692d66c73c4a0517578c2711cee64d597160d8d45e7e975e8f1455fb",
+        "4e81b9a6a293efa8e876a7944d1efbfe5a3fc49cf0002662270178568e02be61"
+      ]
+    },
+    {
+      "sample": "E09",
+      "coco_id": 274416,
+      "vg_id": 2381935,
+      "expected": {
+        "changed_before": "the vase is beige",
+        "changed_after": "the vase is blue",
+        "stable_true": "the flowers are pink",
+        "stable_false": "the flowers are blue"
+      },
+      "candidate_mean_logprobs": {
+        "changed_before": [
+          -10.33741569519043,
+          -10.750640869140625
+        ],
+        "changed_after": [
+          -9.926518440246582,
+          -6.643916130065918
+        ],
+        "stable_true": [
+          -4.718616962432861,
+          -4.585682392120361
+        ],
+        "stable_false": [
+          -9.140707969665527,
+          -5.999923229217529
+        ]
+      },
+      "changed_d_original": -0.41089725494384766,
+      "changed_d_edited": -4.106724739074707,
+      "stable_d_original": 4.422091007232666,
+      "stable_d_edited": 1.414240837097168,
+      "caption_original": "a vase with some pink flowers in it",
+      "caption_edited": "a blue vase with some pink flowers in it",
+      "shared_prompt": true,
+      "prompt_sha256": "36c09c7d118bc4545e15543a8e94690d6e53173aef383cf5f8557984fc8a4234",
+      "mask_sha256": "5042bd72fbfdbbf85bfd15a5b0cff70f2d7e21017f801129d110e932e6d1add0",
+      "visual_sha256": [
+        "5eaf5ad12bd2fd1bf2f9ab4c3a57b10a88cd1289536d2b71933430752e8ad672",
+        "9a9d9c4c73b847c9cfa9b07c656602d3cac341895e39ad8ac4ad2a2531948abc"
+      ]
+    },
+    {
+      "sample": "E17",
+      "coco_id": 380717,
+      "vg_id": 2340002,
+      "expected": {
+        "changed_before": "the bed cover is white",
+        "changed_after": "the bed cover is blue",
+        "stable_true": "the bathtub is white",
+        "stable_false": "the bathtub is blue"
+      },
+      "candidate_mean_logprobs": {
+        "changed_before": [
+          -4.8966546058654785,
+          -5.820558071136475
+        ],
+        "changed_after": [
+          -7.370627403259277,
+          -3.8328747749328613
+        ],
+        "stable_true": [
+          -4.354377269744873,
+          -4.787092208862305
+        ],
+        "stable_false": [
+          -7.109278678894043,
+          -4.5320210456848145
+        ]
+      },
+      "changed_d_original": 2.473972797393799,
+      "changed_d_edited": -1.9876832962036133,
+      "stable_d_original": 2.75490140914917,
+      "stable_d_edited": -0.25507116317749023,
+      "caption_original": "a bedroom with a bed and a sink",
+      "caption_edited": "a bedroom with a bed and a blue bed",
+      "shared_prompt": true,
+      "prompt_sha256": "ff5ada9f9d562f590b46a243d0efb444c97dd17606bd24130cfa31aacc9d2dcf",
+      "mask_sha256": "1be5383f7d924f27a67f41153ad7063943194e5f4a4bd732cbb3b42539cd68e8",
+      "visual_sha256": [
+        "2be8dd1b1be364f290ec6bda95cd0fbdaf1780861efdc9879ad9cc8483e6f6df",
+        "a1574ac219e43bd534e59b31efc8d7f6fb3b4394afec97a16233e40971901a35"
+      ]
+    },
+    {
+      "sample": "E18",
+      "coco_id": 116043,
+      "vg_id": 2415018,
+      "expected": {
+        "changed_before": "the shirt is yellow",
+        "changed_after": "the shirt is blue",
+        "stable_true": "the hat is red",
+        "stable_false": "the hat is blue"
+      },
+      "candidate_mean_logprobs": {
+        "changed_before": [
+          -11.472776412963867,
+          -11.690919876098633
+        ],
+        "changed_after": [
+          -9.418869018554688,
+          -9.065677642822266
+        ],
+        "stable_true": [
+          -11.267582893371582,
+          -11.098760604858398
+        ],
+        "stable_false": [
+          -10.948565483093262,
+          -10.490215301513672
+        ]
+      },
+      "changed_d_original": -2.0539073944091797,
+      "changed_d_edited": -2.625242233276367,
+      "stable_d_original": -0.3190174102783203,
+      "stable_d_edited": -0.6085453033447266,
+      "caption_original": "a man riding on the back of an elephant",
+      "caption_edited": "a man riding on the back of an elephant",
+      "shared_prompt": true,
+      "prompt_sha256": "323a1f90a97802265fcb48bfe8623d8df982eb9b4428e33e41fab365f5bffaa8",
+      "mask_sha256": "1be5383f7d924f27a67f41153ad7063943194e5f4a4bd732cbb3b42539cd68e8",
+      "visual_sha256": [
+        "9485b12f197e459470a1e9e15957c9d6bb835564f90ecdf0d467c52a08105d79",
+        "a25609eed1173703700c47c00c30fecc42b0f26e7887719f16986a139fe5e532"
+      ]
+    },
+    {
+      "sample": "E19",
+      "coco_id": 140115,
+      "vg_id": 2318041,
+      "expected": {
+        "changed_before": "the shirt is yellow",
+        "changed_after": "the shirt is blue",
+        "stable_true": "the phone is purple",
+        "stable_false": "the phone is blue"
+      },
+      "candidate_mean_logprobs": {
+        "changed_before": [
+          -10.89199161529541,
+          -11.46452522277832
+        ],
+        "changed_after": [
+          -10.258809089660645,
+          -10.398484230041504
+        ],
+        "stable_true": [
+          -10.324562072753906,
+          -10.018192291259766
+        ],
+        "stable_false": [
+          -9.544715881347656,
+          -9.481169700622559
+        ]
+      },
+      "changed_d_original": -0.6331825256347656,
+      "changed_d_edited": -1.0660409927368164,
+      "stable_d_original": -0.77984619140625,
+      "stable_d_edited": -0.537022590637207,
+      "caption_original": "a woman holding a smart phone in her right hand.",
+      "caption_edited": "a woman holding a smart phone in her right hand.",
+      "shared_prompt": true,
+      "prompt_sha256": "97fa9ecd7736e27d234828fd43e8357a238f0ecf51f0cc47714901a78c41a227",
+      "mask_sha256": "1be5383f7d924f27a67f41153ad7063943194e5f4a4bd732cbb3b42539cd68e8",
+      "visual_sha256": [
+        "9960fbddd4e96ebfeabffb925597d3b84b06662af016710ee1b24ee280b1ea21",
+        "2f808fcaabccb2d560ab23484bb1554b8d748cf7d4e165973c8683818385fc01"
+      ]
+    },
+    {
+      "sample": "E21",
+      "coco_id": 441008,
+      "vg_id": 2321918,
+      "expected": {
+        "changed_before": "the surfboard is white",
+        "changed_after": "the surfboard is blue",
+        "stable_true": "the shorts are black",
+        "stable_false": "the shorts are white"
+      },
+      "candidate_mean_logprobs": {
+        "changed_before": [
+          -9.414203643798828,
+          -9.39577865600586
+        ],
+        "changed_after": [
+          -10.37618350982666,
+          -8.46786117553711
+        ],
+        "stable_true": [
+          -7.2731475830078125,
+          -7.1949310302734375
+        ],
+        "stable_false": [
+          -8.15367603302002,
+          -8.153508186340332
+        ]
+      },
+      "changed_d_original": 0.961979866027832,
+      "changed_d_edited": -0.92791748046875,
+      "stable_d_original": 0.880528450012207,
+      "stable_d_edited": 0.9585771560668945,
+      "caption_original": "a man holding a surfboard on a beach.",
+      "caption_edited": "a man holding a blue and yellow surfboard on a beach.",
+      "shared_prompt": true,
+      "prompt_sha256": "240f5a676f1f7c2233f2dc5aa998ff367939af1ea7c9ea3dce0fdf70ee4484a9",
+      "mask_sha256": "d87544c3123c91f2efb258e7e105bbd46609b60a0d4306107124a5e49a66a097",
+      "visual_sha256": [
+        "6f8f76f083dbb7089cfeaf11ad7bbb21a6f7e0a028e30fddebd077fa8711b2bd",
+        "20b7d79f3cdc737140739ae38f1a7c7611645f7a1e4a749dd7a78c1e5213db5d"
+      ]
+    },
+    {
+      "sample": "E30",
+      "coco_id": 402425,
+      "vg_id": 2398378,
+      "expected": {
+        "changed_before": "the truck is gray",
+        "changed_after": "the truck is red",
+        "stable_true": "the parking meters are gray",
+        "stable_false": "the parking meters are red"
+      },
+      "candidate_mean_logprobs": {
+        "changed_before": [
+          -11.162690162658691,
+          -11.534407615661621
+        ],
+        "changed_after": [
+          -8.340654373168945,
+          -7.3356781005859375
+        ],
+        "stable_true": [
+          -7.736996650695801,
+          -7.617249488830566
+        ],
+        "stable_false": [
+          -6.673175811767578,
+          -4.797557830810547
+        ]
+      },
+      "changed_d_original": -2.822035789489746,
+      "changed_d_edited": -4.198729515075684,
+      "stable_d_original": -1.0638208389282227,
+      "stable_d_edited": -2.8196916580200195,
+      "caption_original": "a couple of parking meters sitting next to a truck.",
+      "caption_edited": "a red truck parked next to a parking meter.",
+      "shared_prompt": true,
+      "prompt_sha256": "fea6bcc28c3f23d9fb43bf92e63bbbd42557ed0baba7b23ba2281572154d24d3",
+      "mask_sha256": "1be5383f7d924f27a67f41153ad7063943194e5f4a4bd732cbb3b42539cd68e8",
+      "visual_sha256": [
+        "4561270c6f746847a96f56506b90eb6a33095c4315f9be68847e8b3c739b6be0",
+        "8368f77b62f3462c6485d7cb56f1aa39e5edaaff6aebe92bf8484ba48a9bf49e"
+      ]
+    },
+    {
+      "sample": "E33",
+      "coco_id": 516341,
+      "vg_id": 2401160,
+      "expected": {
+        "changed_before": "the laptop is black",
+        "changed_after": "the laptop is white",
+        "stable_true": "the shirt is black",
+        "stable_false": "the shirt is white"
+      },
+      "candidate_mean_logprobs": {
+        "changed_before": [
+          -6.778068542480469,
+          -6.782496452331543
+        ],
+        "changed_after": [
+          -8.023468971252441,
+          -7.711601257324219
+        ],
+        "stable_true": [
+          -7.935647010803223,
+          -7.888164520263672
+        ],
+        "stable_false": [
+          -9.713249206542969,
+          -9.475436210632324
+        ]
+      },
+      "changed_d_original": 1.2454004287719727,
+      "changed_d_edited": 0.9291048049926758,
+      "stable_d_original": 1.777602195739746,
+      "stable_d_edited": 1.5872716903686523,
+      "caption_original": "a man sitting at a table with a laptop and a lot of <unk>",
+      "caption_edited": "a man sitting at a table with a laptop and a bunch of stickers on it.",
+      "shared_prompt": true,
+      "prompt_sha256": "2715aadd506f2653927e6fb412832cfbc5ae4d48c90f4ba13d11ba374ecb59db",
+      "mask_sha256": "1be5383f7d924f27a67f41153ad7063943194e5f4a4bd732cbb3b42539cd68e8",
+      "visual_sha256": [
+        "34d1c39770c0d406704014285533e74c2adbf521254b97f69f9d8d004739b8df",
+        "cb23b9b146145446c24c7b868c4e03d955157e4b869b1bff3cbe9ae229e5954b"
+      ]
+    },
+    {
+      "sample": "E34",
+      "coco_id": 324513,
+      "vg_id": 2326622,
+      "expected": {
+        "changed_before": "the shirt is white",
+        "changed_after": "the shirt is blue",
+        "stable_true": "the hat is black",
+        "stable_false": "the hat is blue"
+      },
+      "candidate_mean_logprobs": {
+        "changed_before": [
+          -9.294513702392578,
+          -9.429020881652832
+        ],
+        "changed_after": [
+          -10.909820556640625,
+          -10.546621322631836
+        ],
+        "stable_true": [
+          -8.415581703186035,
+          -8.702842712402344
+        ],
+        "stable_false": [
+          -12.433550834655762,
+          -12.01838207244873
+        ]
+      },
+      "changed_d_original": 1.6153068542480469,
+      "changed_d_edited": 1.117600440979004,
+      "stable_d_original": 4.017969131469727,
+      "stable_d_edited": 3.3155393600463867,
+      "caption_original": "a man in sunglasses is eating a hot dog.",
+      "caption_edited": "a man in a blue shirt and sunglasses eating a sandwich.",
+      "shared_prompt": true,
+      "prompt_sha256": "1ceb9fdd4a95ed49189474978108e6694d3ae5ba25ccb71bb5f27b596f657104",
+      "mask_sha256": "fb611147fa0a426fcc5f846411f8df85b8cc46da916a2f418a738f98703d2621",
+      "visual_sha256": [
+        "c45996d47a1e4023763debd31dea008a02c398c94cd8e18b14bd9b743755adf0",
+        "2f8259197f42047dfa6ab9929280379b0937be2f2b3501360e103c8f8b1a76dc"
+      ]
+    },
+    {
+      "sample": "E37",
+      "coco_id": 257109,
+      "vg_id": 2337023,
+      "expected": {
+        "changed_before": "the bus is red",
+        "changed_after": "the bus is blue",
+        "stable_true": "the jeans are blue",
+        "stable_false": "the jeans are red"
+      },
+      "candidate_mean_logprobs": {
+        "changed_before": [
+          -5.16428279876709,
+          -8.857582092285156
+        ],
+        "changed_after": [
+          -7.395871639251709,
+          -5.289714336395264
+        ],
+        "stable_true": [
+          -10.56355094909668,
+          -9.109346389770508
+        ],
+        "stable_false": [
+          -9.2925443649292,
+          -12.674067497253418
+        ]
+      },
+      "changed_d_original": 2.231588840484619,
+      "changed_d_edited": -3.5678677558898926,
+      "stable_d_original": -1.2710065841674805,
+      "stable_d_edited": 3.56472110748291,
+      "caption_original": "a red double decker bus driving down a street.",
+      "caption_edited": "a double decker bus driving down a street.",
+      "shared_prompt": true,
+      "prompt_sha256": "833fb315d0b71dd5866a607a5952ad7a1207592fa5573d5d856012a8d5b041d0",
+      "mask_sha256": "1be5383f7d924f27a67f41153ad7063943194e5f4a4bd732cbb3b42539cd68e8",
+      "visual_sha256": [
+        "8e1e973d2a30557806abce3fc2df519fa4eb8d09d373e7964995cafa328b928f",
+        "9f117025e62101c4e5e5db6e0d2c50b896cf44fceab9b43353e139bf0a0c773e"
+      ]
+    },
+    {
+      "sample": "E39",
+      "coco_id": 175334,
+      "vg_id": 2330991,
+      "expected": {
+        "changed_before": "the suit is black",
+        "changed_after": "the suit is blue",
+        "stable_true": "the shirt is white",
+        "stable_false": "the shirt is blue"
+      },
+      "candidate_mean_logprobs": {
+        "changed_before": [
+          -5.187388896942139,
+          -5.980996131896973
+        ],
+        "changed_after": [
+          -8.047654151916504,
+          -4.284090042114258
+        ],
+        "stable_true": [
+          -6.566126823425293,
+          -5.948883056640625
+        ],
+        "stable_false": [
+          -8.117841720581055,
+          -4.442464351654053
+        ]
+      },
+      "changed_d_original": 2.8602652549743652,
+      "changed_d_edited": -1.6969060897827148,
+      "stable_d_original": 1.5517148971557617,
+      "stable_d_edited": -1.5064187049865723,
+      "caption_original": "a woman in a suit and tie standing in front of a wall.",
+      "caption_edited": "a woman in a blue suit and purple tie",
+      "shared_prompt": true,
+      "prompt_sha256": "21a5acfb9346a97058c27d900d99e826fff6a219722d723973268650a34d22bd",
+      "mask_sha256": "fb611147fa0a426fcc5f846411f8df85b8cc46da916a2f418a738f98703d2621",
+      "visual_sha256": [
+        "40350dcec358860d36a7b1fa0523216b65ba640b8f9ea45ad73133b7e6c3c336",
+        "7d6ebe6bb198f051b7ac90a33c297ef5b26a862a9c0a509d6bd73eb3c40e4554"
+      ]
+    }
+  ],
+  "limitations": [
+    "15 purposive user-confirmed development pairs, not an independent random test",
+    "Shared original prompt; synthetic edits and wording effects confounded",
+    "Teacher-forced candidate ranking is not free-caption semantic accuracy",
+    "No CIDEr/CHAIR or training improvement measured",
+    "No novelty claim; checkpoint binaries not independently reloaded locally"
+  ]
+}
