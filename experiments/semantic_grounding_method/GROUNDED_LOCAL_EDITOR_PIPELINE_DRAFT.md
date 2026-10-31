@@ -2,6 +2,8 @@
 
 31/10/2026. User yêu cầu cụ thể hóa pipeline và tìm prior. Đây là **thiết kế phương pháp**, chưa phải model/code chạy được, chưa chốt protocol GPU. Đọc cùng [review trước](GROUNDED_EDITOR_NOVELTY_REVIEW_2026-10-31.md). Tên mô tả không phải tên phương pháp mới đã clearance.
 
+**Cập nhật sau tìm xuyên bài toán:** [collision review](EDITOR_CROSS_TASK_COLLISION_2026-10-31.md) tìm GRD-DCA có predicted-region masking cho report refinement, W2W và RGRG có grounded masked/region generation. Rút khuyến nghị coi riêng selected-region bottleneck là phần mới; §8 chỉ khác TIger, chưa đủ so literature rộng. Giữ thiết kế để tham khảo, chưa duyệt triển khai như phương pháp mới.
+
 ## 1. Bài toán và phạm vi
 
 Đầu vào: ảnh I và caption c do C0 hiện có sinh. Đầu ra: caption c' giữ nguyên hoặc sửa **một cụm danh từ chỉ một đối tượng**, kèm span và predicted witness box. Mục tiêu cuối vẫn CIDEr và hallucination trên toàn cohort; correctness của từng replacement là phép đo cơ chế.
