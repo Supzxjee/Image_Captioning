@@ -10,6 +10,8 @@ Cập nhật: 31/10/2026, giờ Việt Nam. File này là bản tóm tắt để
 
 ## Hiện đang ở đâu
 
+- Đã đọc X007 (commitf9c7dde):4hướng A persistent phrase-referent posterior/B multi-reference grounded selection/C witnessed minimal edit/D learned visual acquisition. Ưu tiên sơ bộ A, B dự phòng; noveltyUNKNOWN/chờfulltextMavroudi2022,SCT2019,NBT,HALC. X008 đã phản biện text-state visual bypass, semantic unit/group/nesting, nearest collision và COCOtransfer. Chưa code/run/source/budget mới; không coi proposal đã được user duyệt.
+
 - Yêu cầu mới của user: mở rộng brainstorm tìm phương pháp có đóng góp, không giới hạn K/V/P3/diagnostic/L_real. Đã ghi X006 trong RESEARCH_EXCHANGE, đề nghị3–5hướng khác cơ chế và1hướng ưu tiên có nearestmethod/delta/supervision/phép bác bỏ. Đây là brainstorm, chưa duyệt code/run/budget mới; không phải chờ hoàn tất các audit X004 mới được nghĩ hướng khác.
 
 - **D116 recovery và E endpoint500 đã hoàn tất.** [Kết quả](experiments/semantic_grounding_method/KV_DE_RESULT.md), [JSON](experiments/semantic_grounding_method/KV_DE_RESULT.json), [audit](experiments/semantic_grounding_method/audit_kv_de_results.py).531metadata/NumPyassertionsPASS; ZIPđọcmộtlần/cachedignored `review/kv_D_endpoint_loaded.json`, `kv_E_endpoint_loaded.json`. Khôngrerunmodel/H5/scorerlocal.
