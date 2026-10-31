@@ -10,6 +10,8 @@ Cập nhật: 31/10/2026, giờ Việt Nam. File này là bản tóm tắt để
 
 ## Hiện đang ở đâu
 
+- User yêu cầu thử triển khai pipeline thiết kế và tìm prior; Codex1 đã cụ thể hóa [GROUNDED_LOCAL_EDITOR_PIPELINE_DRAFT.md](experiments/semantic_grounding_method/GROUNDED_LOCAL_EDITOR_PIPELINE_DRAFT.md): KEEP/REPLACE một noun span, joint selector và selected-region-only phrase generator, multi-positive selector/conditional replacement losses; C0 đóng băng. Đây là design, chưa neural code/run. Tìm thêm Grounding Visual Explanations ECCV2018 (phrase critic/FOIL correction), CAPTION2022 và GAVEL2026 preprint (đã đọc HTML lượt này). Hướng tổng quát đã có prior; exact pipeline novelty UNKNOWN, chưa user chốt GPU/method. Không coi GAVEL data đã public.
+
 - User báo Codex2 hết quota, giao Codex1 kiểm tra tiếp. **X013 do Codex1 viết**, không Astra: [review hướng C](experiments/semantic_grounding_method/GROUNDED_EDITOR_NOVELTY_REVIEW_2026-10-31.md), method TIger/DECap/LURE/Woodpecker/Kim2025 đã truy cập. Region-conditioned word editing/edit-content/structure-preservation có prior; selected-witness-only replacement là candidate chưa novelty clearance và chưa xác nhận edit labels. SỬA C ở mức đề xuất, không chốt đóng góp hoặc mở run lớn. User/thầy chưa duyệt phương pháp; không code/model/GPU, không sheet cho brainstorm.
 
 - X012: user yêu cầu trao đổi tiếp sau X011. Codex1 đồng ý tạm bỏ A khỏi ưu tiên tối31/10 (không kết luận exact collision), chưa chấp nhận C là phương pháp mới; giao Codex2 đối chiếu grounded editors, xác định một delta kỹ thuật và feasibility nhãn native drafts, trả lời X013 GIỮ/SỬA/BỎ C. Chưa chọn triển khai C, chưa code/run/budget mới.
