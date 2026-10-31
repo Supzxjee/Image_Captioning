@@ -10,7 +10,7 @@ Cập nhật: 31/10/2026, giờ Việt Nam. File này là bản tóm tắt để
 
 ## Hiện đang ở đâu
 
-- **User chốt bản báo cáo ngắn4trang nhưng giữpipeline:** [bản trình thầy](WEEKLY_REPORT_2026-10-31_SHORT.md), Word local `Bao_cao_tuan_31_10_2026_rut_gon.docx`. Giữ3sơđồ A,C0/C/G,X018; bảng4000 và diagnostic15. Đãrender/kiểmtra4trang. Bản9trang giữriêngđểtracứu;khôngđổiphươngpháp/run.
+- **User yêu cầu bỏ lan man, đã sửa bản trình thầy còn3trang:** [nội dung](WEEKLY_REPORT_2026-10-31_SHORT.md), Word local `Bao_cao_tuan_31_10_2026_rut_gon.docx`. Giữ3pipeline A,C0/C/G,X018rútgọn;chỉcôngviệcchính,bảng4000,kếtluận vàhướngtiếp. Bỏsốliệudiagnosticphụ,lịchsửlỗivàliệtkênhánhdài. Đãrender/kiểmtra3trang;9tranggiữriêngtracứu.Khôngthaykếtquả/phươngpháp/run.
 
 - **Đã viết báo cáo tuần25–31/10**, [nội dung và nguồn](WEEKLY_REPORT_2026-10-31.md); Word local `Bao_cao_tuan_31_10_2026.docx`,9trang,giữmẫutuầntrước,đãrender/kiểmtra9trang. Có6sơđồpipeline và bảng giải thích theo từng nhóm, tránh nhầm C/T/G được tái dùng. Baoquát toàn bộthínghiệm và kếtquảCIDEr/hallucinationriêng, X018chỉđềxuất. KhôngrunGPU/môhình hoặc thêmexperimentrowcho báo cáo.
 
