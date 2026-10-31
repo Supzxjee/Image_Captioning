@@ -126,3 +126,39 @@ Các query bổ sung: image caption editing+region grounding pointer; caption co
 4. C0 unchanged và whole-cohort endpoint: CIDEr/CHAIR/recall/length + repaired/introduced errors, clean-caption damage, edit/abstain/proposal/span coverage. Không báo riêng tập đã sửa thành công.
 
 Quyết định hiện tại: pipeline đủ cụ thể để thầy xem xét một hướng cải tiến; **chưa đủ xác nhận novelty/utility để chốt bài hoặc chạy lớn**. Không code neural, model/Torch, tải checkpoint/dataset hay chạy Kaggle trong lượt thiết kế này.
+
+## 8. X–Y–Z–H: chốt một cải tiến để đánh giá, không chốt firstness
+
+Cập nhật sau yêu cầu user “thực hiện” việc xác định chính xác phần kế thừa/cải tiến. Không thay thiết kế thành một phương pháp phản thực chỉ để tìm tên mới.
+
+| Thành phần | Lựa chọn cụ thể | Mức bằng chứng |
+|---|---|---|
+| **X — kế thừa** | Explicit image caption editing của TIger; thêm region-conditioned generation từ lineage grounded captioning. Dùng C0 làm nguồn draft, không tuyên bố tái hiện đầy đủ TIger. | TIger §4.1–4.3 đã đọc: fusion proposals+text, edit heads, MASK vocab head và XE. |
+| **Y — cơ chế cần thay** | Đường sinh từ sửa đọc biểu diễn multimodal từ bank; trong mục method đã đọc, không có nhãn region-ID cho từng edit bắt buộc nối tới head sinh từ. | Mô tả source, không kết luận model thật luôn trộn sai vùng. |
+| **Z — sửa đổi đề xuất** | Dự đoán joint span/action/witness có nhãn; generator dùng masked text và chính witness đã chọn; loss giám sát action–witness và replacement. Copy ngoài window. | Khác cấu hình bank fusion trong TIger đã đọc; chưa exact-collision clearance với toàn literature. |
+| **H — hạn chế giả thuyết** | Caption/edit loss có thể được tối ưu bằng ngữ cảnh hoặc bằng chứng từ instance khác, không cần chọn đúng instance làm căn cứ cho replacement. | Giả thuyết, chưa đo tần suất trên TIger/C0; không viết như established failure của bài trước. |
+
+**Câu đề xuất có thể trình thầy:**
+
+> Kế thừa explicit caption editing, em đề xuất học liên kết giữa thao tác sửa, cụm thay thế và một vùng ảnh cụ thể. So với việc sinh từ sửa từ biểu diễn trộn nhiều vùng, bộ sinh được giới hạn vào vùng đã chọn và được giám sát liên kết vùng–cụm. Giả thuyết là ràng buộc này giúp sửa đúng đối tượng hơn và giảm sửa sai các caption vốn đúng. Đây là cải tiến kiến trúc dự kiến; chưa khẳng định lần đầu được đề xuất hoặc đã cải thiện CIDEr/hallucination.
+
+**Đóng góp dự kiến chỉ có một:** lợi ích của liên kết được giám sát đi qua selected-region token generation trong một local editor. Không liệt kê thêm loss XE, KEEP/REPLACE, đóng băng C0 hoặc copy renderer thành bốn đóng góp mới.
+
+### Kiểm tra thêm các sửa đổi dễ bị nhầm là mới
+
+- [M3ID, CVPR2024, bản arXiv](https://arxiv.org/html/2403.14003), §3–4.2/Eq.1–4: conditioned/unconditioned log distributions để khuếch đại tín hiệu ảnh, có confidence gate và nhánh DPO. **Không** thêm một hiệu có/không ảnh vào editor rồi claim mới về visual dependency. Không đọc CVF PDF bị403; method arXiv đọc được, không nhận đã đối chiếu mọi khác biệt bản cuối.
+- [See or Guess, ACM MM2024](https://arxiv.org/html/2408.16809), §4.1–4.4/Eq.3–6: bounding-box masking và TE/NDE regularization cho captioning; counterfactual captions không là ground-truth. **Không** claim mới chỉ vì bỏ vùng và giảm xác suất từ hoặc giữ prefix để so bằng chứng. Chưa thấy local editor kiểu §2–4 trong method đọc; không suy tất cả prior đều thiếu.
+- Grounding Visual Explanations và TIger vẫn là prior bắt buộc; M3ID/See or Guess không thay thế nearest editing baseline. Pointer/ROI restriction/CE/multi-positive marginal đều là thành phần kế thừa.
+
+### Đối chứng phân biệt cải tiến với thêm nhãn
+
+Giữ cùng predicted bank, text encoder, span parser, edit/witness labels, generator capacity và training schedule:
+
+1. **Bank-fusion editor + supervised witness head:** q vẫn nhận nhãn đúng như proposed, nhưng token generation đọc bank fusion. Đây là đối chứng cho giám sát thêm mà chưa ràng buộc đường sinh.
+2. **Selected-witness editor:** chỉ đổi tập visual inputs của token head theo witness của q. Đây là thay đổi Z cần kiểm; không thay thêm backbone/loss/budget ở riêng nhánh này.
+
+Text-only và oracle witness là diagnostics, C0 nguyên vẹn là reference. Không lấy một mô hình cắt mất nhãn làm đối chứng duy nhất để nhận gain do ràng buộc. Nếu thay token-head inputs làm thay số tham số, phải khớp hoặc báo confound trước run.
+
+Trước pilot phải xác minh được edit targets/witness và có headroom: gồm clean drafts lẫn lỗi thật, không chỉ lỗi thay noun tổng hợp. Nếu GT witness không giúp sửa đúng hơn matched bank control, không scale. Khi dùng predicted witness, phải báo lỗi chọn vùng và lỗi sinh riêng; giảm hallucination riêng tập có sửa thành công không đủ.
+
+**Kết luận mức mới:** đã định vị được một delta cụ thể với TIger, không tìm được exact prior của toàn cấu hình trong lượt focused search, nhưng chưa đủ cơ sở xác nhận một đóng góp mới. Khuyến nghị giữ Z như giả thuyết thực nghiệm để thầy duyệt, không quảng bá đã có phương pháp mới và không thêm các công thức phản thực đã biết để làm tăng vẻ mới. Chưa user duyệt run/code; lượt này chỉ tìm tài liệu, đặc tả và lưu quyết định.
