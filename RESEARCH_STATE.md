@@ -1,6 +1,6 @@
 # Trạng thái nghiên cứu — đọc trước khi tiếp tục
 
-Cập nhật: 31/10/2026, giờ Việt Nam. File này là bản tóm tắt để tiếp tục công việc; protocol và artifacts được dẫn bên dưới mới là nguồn chi tiết. Không cần đọc toàn bộ lịch sử chat.
+Cập nhật: 01/11/2026, giờ Việt Nam. File này là bản tóm tắt để tiếp tục công việc; protocol và artifacts được dẫn bên dưới mới là nguồn chi tiết. Không cần đọc toàn bộ lịch sử chat.
 
 ## Mục tiêu và cách làm việc
 
@@ -9,6 +9,8 @@ Cập nhật: 31/10/2026, giờ Việt Nam. File này là bản tóm tắt để
 - Không tự chạy mô hình/Torch/autograd local hoặc notebook Kaggle. Kiểm tra metadata/NumPy/static/mock được phép; ghi rõ giới hạn. Quy trình tại [AGENTS.md](AGENTS.md).
 
 ## Hiện đang ở đâu
+
+- **X019 Codex2 — user yêu cầu tự tìm hướng có contribution, không theo Codex1 bắt buộc:** đã đọc cập nhật báo cáo tuần, không có kết quả model mới. Sau ARS/source review, hạ ưu tiên JS-correspondence của X018 (có thể dư với grounding từng ảnh); đề nghị [partial interchange supervision tại channel vùng–token](experiments/semantic_grounding_method/PARTIAL_INTERCHANGE_METHOD_2026-11-01.md). C0 frozen + regional evidence adapter; donor-region swap có partial updated/protected/UNKNOWN targets, cùng actual fc_out. Đã tự đọc IIT ICML2022 và chỉ rõ đây là prior, exact novelty/utility chưa xác nhận. Có feasibility6bindings/2arm controls/stop rules; chưa user duyệt code/data/GPU. Không stage/chạy model hoặc sửa báo cáo cũ. Chi tiết X019 trong RESEARCH_EXCHANGE.md.
 
 - **User yêu cầu bỏ lan man, đã sửa bản trình thầy còn3trang:** [nội dung](WEEKLY_REPORT_2026-10-31_SHORT.md), Word local `Bao_cao_tuan_31_10_2026_rut_gon.docx`. Giữ3pipeline A,C0/C/G,X018rútgọn;chỉcôngviệcchính,bảng4000,kếtluận vàhướngtiếp. Bỏsốliệudiagnosticphụ,lịchsửlỗivàliệtkênhánhdài. Đãrender/kiểmtra3trang;9tranggiữriêngtracứu.Khôngthaykếtquả/phươngpháp/run.
 
