@@ -8,11 +8,10 @@ from pathlib import Path
 import shutil
 import time
 import zipfile
-from response15_data import assets, contrast, save, sha, summary
+from response15_data import assets, contrast, save, sha, summary, tensor_map_digest
 
 HERE = Path(__file__).resolve().parent
 C0_SHA = '5d92cd5cb48077c7332bb3ff9b295cad1df5d76ede818adabef28035f055fa9d'
-C0_DIGEST = '969345610f41fd61efc40db59e7665d85ebb01c746146b2c1997a3e866813ee4'
 PROMPT_SHA = 'd7910e9bf87e3aad86d806c77ec336b34793e3bef68a3f662fdcb2e9456ca38d'
 CLIP_REV = '57c216476eefef5ab752ec549e440a49ae4ae5f3'
 
@@ -54,11 +53,24 @@ def run(cfg, out):
     model = ImageCaptioningModel(
         UniversalVisionEncoder(load_backbone=False, visual_adapter='qformer', num_visual_queries=32, qformer_layers=2),
         CaptionDecoder(10000))
-    model.load_state_dict({k[5:]: v for k, v in weights.items()}, strict=True)
+    bare_weights = {k[5:]: v for k, v in weights.items()}
+    model.load_state_dict(bare_weights, strict=True)
     model.requires_grad_(False).eval()
-    if model_digest(model) != C0_DIGEST:
-        raise ValueError('C0 tensor digest differs')
-    del state, weights
+    # Historical9693... is a base+teacher wrapper digest, not this bare captioner.
+    # Bind the loaded bare model to every tensor in the SHA-pinned C0 file instead.
+    expected_tensors = {k: tensor_digest(v) for k, v in bare_weights.items()}
+    actual_tensors = {k: tensor_digest(v) for k, v in model.state_dict().items()}
+    initial_digest = tensor_map_digest(actual_tensors)
+    identity = dict(scope='bare ImageCaptioningModel; no teacher wrapper',
+        checkpoint_sha256=C0_SHA, expected_tensor_count=len(expected_tensors),
+        actual_tensor_count=len(actual_tensors),
+        expected_from_pinned_checkpoint=tensor_map_digest(expected_tensors),
+        actual_loaded=initial_digest, exact_tensor_map_match=expected_tensors == actual_tensors)
+    save(out / 'identity.json', identity)
+    print('Bare C0 identity:', identity, flush=True)
+    if not identity['exact_tensor_map_match']:
+        raise ValueError('Loaded bare C0 tensors differ from pinned checkpoint; see identity.json')
+    del state, weights, bare_weights, expected_tensors, actual_tensors
     rows = manifest['pairs']
     encoded = {r['sample']: [contrast(r['changed_before'], r['changed_after'], vocab),
                               contrast(r['stable_true'], r['stable_false'], vocab)] for r in rows}
@@ -171,11 +183,11 @@ def run(cfg, out):
                 raise TimeoutError('Frozen diagnostic inference cap exceeded')
     if {r['sample'] for r in records} != {r['sample'] for r in rows} or len(records) != 15:
         raise ValueError('Incomplete diagnostic')
-    if model_digest(model) != C0_DIGEST or any(p.requires_grad or p.grad is not None for p in model.parameters()):
+    if model_digest(model) != initial_digest or any(p.requires_grad or p.grad is not None for p in model.parameters()):
         raise ValueError('Frozen C0 changed')
     save(out / 'records.json', records)
     result = dict(summary(records), status='DIAGNOSTIC_COMPLETE', training=False,
-        model_digest=C0_DIGEST, checkpoint_sha256=C0_SHA, runtime=runtime_manifest(),
+        model_digest=initial_digest, checkpoint_sha256=C0_SHA, runtime=runtime_manifest(),
         seconds=time.monotonic()-started, prompt_condition=manifest['prompt_condition'],
         features='pinned CLIP FP32 -> FP16 cache rounding -> FP32; fresh VG JPEG, not historical cache parity',
         clip_revision=CLIP_REV, source_commit=cfg['source_commit'])

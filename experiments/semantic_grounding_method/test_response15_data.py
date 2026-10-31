@@ -6,11 +6,24 @@ import sys
 import shutil
 import uuid
 import unittest
-from response15_data import assets, checked_assets, contrast, safe_path, summary
+from response15_data import assets, checked_assets, contrast, safe_path, summary, tensor_map_digest
 import run_response15_probe
 
 
 class Checks(unittest.TestCase):
+    def test_tensor_identity_scope_and_content(self):
+        a, b = 'a' * 64, 'b' * 64
+        bare = {'encoder.weight': a, 'decoder.weight': b}
+        same = {'decoder.weight': b, 'encoder.weight': a}
+        self.assertEqual(tensor_map_digest(bare), tensor_map_digest(same))
+        wrapper = {'base.'+k: v for k, v in bare.items()}
+        wrapper['teacher.weight'] = b
+        self.assertNotEqual(tensor_map_digest(bare), tensor_map_digest(wrapper))
+        changed = dict(bare, **{'decoder.weight': a})
+        self.assertNotEqual(tensor_map_digest(bare), tensor_map_digest(changed))
+        with self.assertRaises(ValueError):
+            tensor_map_digest({})
+
     def test_imports_do_not_load_neural_modules(self):
         self.assertNotIn('torch', sys.modules)
         self.assertNotIn('transformers', sys.modules)

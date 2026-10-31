@@ -6,7 +6,7 @@ Notebook: [SEMANTIC_RESPONSE_C0_15_DIAGNOSTIC.ipynb](SEMANTIC_RESPONSE_C0_15_DIA
 2. Upload notebook vàoKaggle. AddInput3dataset: gói15cặpvừa tạo, concept-mass-c-c0-v111-v112, prompt-cache.
 3. InternetON vàGPU. Notebook dùngGPU0; vớiT4×2GPU1khôngdùng vì30ảnhkhôngcầnDDP. Kiểm2path CHECKPOINT/LEGACY_PROMPT ởcellđầu. ASSETS_INPUT mặcđịnh/kaggle/input tựtìm gói; nếu gắn nhiều bản thìđiềnđúngrootdataset.
 4. Save&RunAll. Khôngtrain, khôngthaycheckpoint. Sourcecommit/filehashes vàmodel/dataidentities được kiểmtrước probe.
-5. Gửi semantic_response_C0_15_review.zip trongOutput. TrongZIP có summary.json, records.json, ảnh/caption HTML, source vàlog. Nếubootstrap/workerlỗi, gửiZIP/log; statusINCOMPLETE không được coi là kếtquảđủ15cặp.
+5. Gửi semantic_response_C0_15_v2_review.zip trongOutput. TrongZIP có summary.json, records.json, ảnh/caption HTML, source vàlog. Nếubootstrap/workerlỗi, gửiZIP/log; statusINCOMPLETE không được coi là kếtquảđủ15cặp.
 
 Gói local ở experiments/semantic_grounding_method/review/semantic_response_confirmed15_assets.zip; ảnhkhôngpublicGitHub. [Receipt](RESPONSE15_ASSET_RECEIPT.json) ghi fullhash. Không cần thêmCOCOimages/visualcache/UPT/detector hoặcchairmetricdatasets.
 
@@ -22,4 +22,8 @@ Captionkhôngnhắcmàu cóthể vẫnđúng trêncảhaiảnh. Vìvậy “capt
 
 ## Kiểmtra local đã làm
 
-4unittests chỉmetadata/mockPASS (khôngloadTorch/transformers); góiZIPthật/manifest/30imagehashesPASS; ASTsource vànotebookcells kiểm tĩnh. ChưaCUDA/model; người dùng tựchạyKaggle. Notebookkhôngđượcagentexecute/submit.
+5unittests chỉmetadata/mockPASS (khôngloadTorch/transformers); góiZIPthật/manifest/30imagehashesPASS; ASTsource vànotebookcells kiểm tĩnh. ChưaCUDA/model; người dùng tựchạyKaggle. Notebookkhôngđượcagentexecute/submit.
+
+## Nếu lượt đầu báo C0 tensor digest differs
+
+Dùng notebook v2 tại cùng link. Giữ nguyên ba Dataset và gói ảnh; không đổi checkpoint. Lỗi cũ là so digest wrapper base+teacher với bare model. V2 kiểm từng tensor đúng phạm vi, giữ SHA file và kiểm frozen state. Có thể dán toàn bộ [cell sửa độc lập](RESPONSE15_V2_RESUME_CELL.txt) vào cell mới của phiên đang mở: cell tự tải source đã khóa hash, dùng dependencies đã cài và không pip-install lại. Nếu runtime đã tắt, dùng notebook đầy đủ. Output v2 cần chưa tồn tại; nếu đã có, giữ lại và đổi OUTPUT sang tên mới.

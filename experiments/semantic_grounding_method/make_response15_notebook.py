@@ -22,7 +22,7 @@ def make(revision):
     hashes = {n: hashlib.sha256(subprocess.check_output(['git', 'show', core+':'+n], cwd=ROOT)).hexdigest()
               for n in FILES}
     cells = [cell('markdown', """
-        # C0 — semantic response15 diagnostic
+        # C0 — semantic response15 diagnostic · v2 identity-scope fix
         **Internet ON, GPU, Save & Run All. Chưa huấn luyện.**
         Dùng GPU0; nếu chọn T4×2 thì GPU1 không dùng. Không DDP.
 
@@ -34,14 +34,14 @@ def make(revision):
         Không cần MSCOCO images/UPT/visual-cache/detector. Gói15cặp đã chứa30ảnh nguồn và nhãn bạn xác nhận.
         Hai ảnh dùng cùng prompt gốc: edited side là fixed-prompt diagnostic, không phải pipeline tạo lại prompt.
         Notebook kiểm15cặp, không đo tăngCIDEr/giảmCHAIR, không sinh checkpoint hoặc train.
-        Kết thúc gửi semantic_response_C0_15_review.zip; ZIP có log kể cả khi fail.
+        Kết thúc gửi semantic_response_C0_15_v2_review.zip; ZIP có log kể cả khi fail.
         """), cell('code', """
         from pathlib import Path
         CHECKPOINT=Path('/kaggle/input/datasets/ducanh2403/concept-mass-c-c0-v111-v112/C0.bin')
         LEGACY_PROMPT=Path('/kaggle/input/datasets/ducanh2403/prompt-cache/prompt_clip_tokens_cache.pt')
         # Tự tìm marker/ZIP. Nếu có nhiều bản, điền root của đúng Dataset.
         ASSETS_INPUT=Path('/kaggle/input')
-        OUTPUT=Path('/kaggle/working/semantic_response_C0_15')
+        OUTPUT=Path('/kaggle/working/semantic_response_C0_15_v2')
         """), cell('code', textwrap.dedent(f"""
         CORE={core!r}
         SOURCE_ASSETS={hashes!r}

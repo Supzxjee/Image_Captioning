@@ -8,6 +8,19 @@ MARKER = 'semantic_response_confirmed15_manifest.json'
 BUNDLE = 'semantic_response_confirmed15_assets.zip'
 
 
+def tensor_map_digest(fingerprints):
+    """Same aggregation as model_digest, with an explicit caller-owned key scope."""
+    if not fingerprints:
+        raise ValueError('Empty tensor fingerprint map')
+    h = hashlib.sha256()
+    for name, digest in sorted(fingerprints.items()):
+        if not isinstance(name, str) or not isinstance(digest, str) or len(digest) != 64:
+            raise ValueError('Malformed tensor fingerprint')
+        h.update(name.encode())
+        h.update(digest.encode())
+    return h.hexdigest()
+
+
 def sha(path):
     h = hashlib.sha256()
     with Path(path).open('rb') as f:
