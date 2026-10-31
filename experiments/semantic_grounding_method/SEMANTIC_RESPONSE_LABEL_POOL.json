@@ -2,8 +2,8 @@
   "schema_version": 1,
   "purpose": "label-development pool, not an independent evaluation or sufficient training cohort",
   "source_revision": "38f969ac98d7db856ee8d57b1a23c4032cfff09e",
-  "human_confirmed_count": 3,
-  "assistant_only_count": 12,
+  "human_confirmed_count": 15,
+  "assistant_only_count": 0,
   "training_ready": false,
   "pairs": [
     {
@@ -135,7 +135,7 @@
         "./edit_image/2389320_edit.jpg"
       ],
       "reviewer_type": "assistant_visual_review",
-      "human_confirmed": false,
+      "human_confirmed": true,
       "decision": "provisional",
       "reason": "Bus đỏ→xanh rõ; taxi bên trái vẫn đỏ. Không gán Stable cho chữ/biển số trên bus hoặc chi tiết tài xế.",
       "viewed_224": true,
@@ -146,8 +146,23 @@
       "stable_true": "the car is red",
       "stable_false": "the car is blue",
       "unknown_tokens": [],
-      "false_alternative_status": "assistant judged false on both images; not human-confirmed",
-      "packet_id": "expansion40"
+      "false_alternative_status": "assistant proposed; explicitly confirmed by user in conversation for both viewed images",
+      "packet_id": "expansion40",
+      "human_decision": "confirm",
+      "human_confirmation": {
+        "source": "explicit user message in current conversation",
+        "date": "2026-10-31",
+        "quote": "tất cả đều xác nhận 4 nhãn đề xuất",
+        "scope": [
+          "changed_before",
+          "changed_after",
+          "stable_true",
+          "stable_false"
+        ],
+        "reviewer_type": "human_self_reported",
+        "review_mode": "assistant-proposed labels explicitly confirmed by user; not independent blind annotation",
+        "referenced_packet": "expansion40 page showing only 12 provisional pairs"
+      }
     },
     {
       "sample": "E05",
@@ -161,7 +176,7 @@
         "./edit_image/2413012_edit.jpg"
       ],
       "reviewer_type": "assistant_visual_review",
-      "human_confirmed": false,
+      "human_confirmed": true,
       "decision": "provisional",
       "reason": "Ba lô bên trái xanh→đỏ rõ; ván lớn trắng và bối cảnh còn. Không giữ identity khuôn mặt hay mọi texture làm Stable.",
       "viewed_224": true,
@@ -172,8 +187,23 @@
       "stable_true": "the large surfboard is white",
       "stable_false": "the large surfboard is red",
       "unknown_tokens": [],
-      "false_alternative_status": "assistant judged false on both images; not human-confirmed",
-      "packet_id": "expansion40"
+      "false_alternative_status": "assistant proposed; explicitly confirmed by user in conversation for both viewed images",
+      "packet_id": "expansion40",
+      "human_decision": "confirm",
+      "human_confirmation": {
+        "source": "explicit user message in current conversation",
+        "date": "2026-10-31",
+        "quote": "tất cả đều xác nhận 4 nhãn đề xuất",
+        "scope": [
+          "changed_before",
+          "changed_after",
+          "stable_true",
+          "stable_false"
+        ],
+        "reviewer_type": "human_self_reported",
+        "review_mode": "assistant-proposed labels explicitly confirmed by user; not independent blind annotation",
+        "referenced_packet": "expansion40 page showing only 12 provisional pairs"
+      }
     },
     {
       "sample": "E09",
@@ -187,7 +217,7 @@
         "./edit_image/2381935_edit.jpg"
       ],
       "reviewer_type": "assistant_visual_review",
-      "human_confirmed": false,
+      "human_confirmed": true,
       "decision": "provisional",
       "reason": "Bình be→xanh rõ, hoa hồng còn. Có thay độ bóng bình; không gán gloss/texture là Stable.",
       "viewed_224": true,
@@ -198,8 +228,23 @@
       "stable_true": "the flowers are pink",
       "stable_false": "the flowers are blue",
       "unknown_tokens": [],
-      "false_alternative_status": "assistant judged false on both images; not human-confirmed",
-      "packet_id": "expansion40"
+      "false_alternative_status": "assistant proposed; explicitly confirmed by user in conversation for both viewed images",
+      "packet_id": "expansion40",
+      "human_decision": "confirm",
+      "human_confirmation": {
+        "source": "explicit user message in current conversation",
+        "date": "2026-10-31",
+        "quote": "tất cả đều xác nhận 4 nhãn đề xuất",
+        "scope": [
+          "changed_before",
+          "changed_after",
+          "stable_true",
+          "stable_false"
+        ],
+        "reviewer_type": "human_self_reported",
+        "review_mode": "assistant-proposed labels explicitly confirmed by user; not independent blind annotation",
+        "referenced_packet": "expansion40 page showing only 12 provisional pairs"
+      }
     },
     {
       "sample": "E17",
@@ -213,7 +258,7 @@
         "./edit_image/2340002_edit.jpg"
       ],
       "reviewer_type": "assistant_visual_review",
-      "human_confirmed": false,
+      "human_confirmed": true,
       "decision": "provisional",
       "reason": "Chăn phủ giường trắng→xanh rõ; bồn tắm trắng ở phần ảnh trái còn. Không dùng hình chăn/pillow placement làm Stable.",
       "viewed_224": true,
@@ -224,8 +269,23 @@
       "stable_true": "the bathtub is white",
       "stable_false": "the bathtub is blue",
       "unknown_tokens": [],
-      "false_alternative_status": "assistant judged false on both images; not human-confirmed",
-      "packet_id": "expansion40"
+      "false_alternative_status": "assistant proposed; explicitly confirmed by user in conversation for both viewed images",
+      "packet_id": "expansion40",
+      "human_decision": "confirm",
+      "human_confirmation": {
+        "source": "explicit user message in current conversation",
+        "date": "2026-10-31",
+        "quote": "tất cả đều xác nhận 4 nhãn đề xuất",
+        "scope": [
+          "changed_before",
+          "changed_after",
+          "stable_true",
+          "stable_false"
+        ],
+        "reviewer_type": "human_self_reported",
+        "review_mode": "assistant-proposed labels explicitly confirmed by user; not independent blind annotation",
+        "referenced_packet": "expansion40 page showing only 12 provisional pairs"
+      }
     },
     {
       "sample": "E18",
@@ -239,7 +299,7 @@
         "./edit_image/2415018_edit.jpg"
       ],
       "reviewer_type": "assistant_visual_review",
-      "human_confirmed": false,
+      "human_confirmed": true,
       "decision": "provisional",
       "reason": "Áo người trước vàng→xanh rõ; mũ vẫn đỏ. Không giữ chi tiết ngón tay/mặt/ghế ngồi làm Stable.",
       "viewed_224": true,
@@ -250,8 +310,23 @@
       "stable_true": "the hat is red",
       "stable_false": "the hat is blue",
       "unknown_tokens": [],
-      "false_alternative_status": "assistant judged false on both images; not human-confirmed",
-      "packet_id": "expansion40"
+      "false_alternative_status": "assistant proposed; explicitly confirmed by user in conversation for both viewed images",
+      "packet_id": "expansion40",
+      "human_decision": "confirm",
+      "human_confirmation": {
+        "source": "explicit user message in current conversation",
+        "date": "2026-10-31",
+        "quote": "tất cả đều xác nhận 4 nhãn đề xuất",
+        "scope": [
+          "changed_before",
+          "changed_after",
+          "stable_true",
+          "stable_false"
+        ],
+        "reviewer_type": "human_self_reported",
+        "review_mode": "assistant-proposed labels explicitly confirmed by user; not independent blind annotation",
+        "referenced_packet": "expansion40 page showing only 12 provisional pairs"
+      }
     },
     {
       "sample": "E19",
@@ -265,7 +340,7 @@
         "./edit_image/2318041_edit.jpg"
       ],
       "reviewer_type": "assistant_visual_review",
-      "human_confirmed": false,
+      "human_confirmed": true,
       "decision": "provisional",
       "reason": "Áo vàng→xanh rõ; điện thoại vẫn tím. Ảnh gốc đã có chữ trên áo, nên không dùng mô tả nguồn no-text→text.",
       "viewed_224": true,
@@ -276,8 +351,23 @@
       "stable_true": "the phone is purple",
       "stable_false": "the phone is blue",
       "unknown_tokens": [],
-      "false_alternative_status": "assistant judged false on both images; not human-confirmed",
-      "packet_id": "expansion40"
+      "false_alternative_status": "assistant proposed; explicitly confirmed by user in conversation for both viewed images",
+      "packet_id": "expansion40",
+      "human_decision": "confirm",
+      "human_confirmation": {
+        "source": "explicit user message in current conversation",
+        "date": "2026-10-31",
+        "quote": "tất cả đều xác nhận 4 nhãn đề xuất",
+        "scope": [
+          "changed_before",
+          "changed_after",
+          "stable_true",
+          "stable_false"
+        ],
+        "reviewer_type": "human_self_reported",
+        "review_mode": "assistant-proposed labels explicitly confirmed by user; not independent blind annotation",
+        "referenced_packet": "expansion40 page showing only 12 provisional pairs"
+      }
     },
     {
       "sample": "E21",
@@ -291,7 +381,7 @@
         "./edit_image/2321918_edit.jpg"
       ],
       "reviewer_type": "assistant_visual_review",
-      "human_confirmed": false,
+      "human_confirmed": true,
       "decision": "provisional",
       "reason": "Ván lướt trắng→xanh rõ; quần người vẫn đen. Logo trên ván không Stable.",
       "viewed_224": true,
@@ -302,8 +392,23 @@
       "stable_true": "the shorts are black",
       "stable_false": "the shorts are white",
       "unknown_tokens": [],
-      "false_alternative_status": "assistant judged false on both images; not human-confirmed",
-      "packet_id": "expansion40"
+      "false_alternative_status": "assistant proposed; explicitly confirmed by user in conversation for both viewed images",
+      "packet_id": "expansion40",
+      "human_decision": "confirm",
+      "human_confirmation": {
+        "source": "explicit user message in current conversation",
+        "date": "2026-10-31",
+        "quote": "tất cả đều xác nhận 4 nhãn đề xuất",
+        "scope": [
+          "changed_before",
+          "changed_after",
+          "stable_true",
+          "stable_false"
+        ],
+        "reviewer_type": "human_self_reported",
+        "review_mode": "assistant-proposed labels explicitly confirmed by user; not independent blind annotation",
+        "referenced_packet": "expansion40 page showing only 12 provisional pairs"
+      }
     },
     {
       "sample": "E30",
@@ -317,7 +422,7 @@
         "./edit_image/2398378_edit.jpg"
       ],
       "reviewer_type": "assistant_visual_review",
-      "human_confirmed": false,
+      "human_confirmed": true,
       "decision": "provisional",
       "reason": "Xe tải xám→đỏ rõ; đồng hồ đỗ xe tiền cảnh vẫn xám. Không giữ chữ/logo xe làm Stable.",
       "viewed_224": true,
@@ -328,8 +433,23 @@
       "stable_true": "the parking meters are gray",
       "stable_false": "the parking meters are red",
       "unknown_tokens": [],
-      "false_alternative_status": "assistant judged false on both images; not human-confirmed",
-      "packet_id": "expansion40"
+      "false_alternative_status": "assistant proposed; explicitly confirmed by user in conversation for both viewed images",
+      "packet_id": "expansion40",
+      "human_decision": "confirm",
+      "human_confirmation": {
+        "source": "explicit user message in current conversation",
+        "date": "2026-10-31",
+        "quote": "tất cả đều xác nhận 4 nhãn đề xuất",
+        "scope": [
+          "changed_before",
+          "changed_after",
+          "stable_true",
+          "stable_false"
+        ],
+        "reviewer_type": "human_self_reported",
+        "review_mode": "assistant-proposed labels explicitly confirmed by user; not independent blind annotation",
+        "referenced_packet": "expansion40 page showing only 12 provisional pairs"
+      }
     },
     {
       "sample": "E33",
@@ -343,7 +463,7 @@
         "./edit_image/2401160_edit.jpg"
       ],
       "reviewer_type": "assistant_visual_review",
-      "human_confirmed": false,
+      "human_confirmed": true,
       "decision": "provisional",
       "reason": "Lưng laptop đen→trắng rõ; áo người vẫn đen. Sticker/logo trên laptop đổi nên không thuộc Stable.",
       "viewed_224": true,
@@ -354,8 +474,23 @@
       "stable_true": "the shirt is black",
       "stable_false": "the shirt is white",
       "unknown_tokens": [],
-      "false_alternative_status": "assistant judged false on both images; not human-confirmed",
-      "packet_id": "expansion40"
+      "false_alternative_status": "assistant proposed; explicitly confirmed by user in conversation for both viewed images",
+      "packet_id": "expansion40",
+      "human_decision": "confirm",
+      "human_confirmation": {
+        "source": "explicit user message in current conversation",
+        "date": "2026-10-31",
+        "quote": "tất cả đều xác nhận 4 nhãn đề xuất",
+        "scope": [
+          "changed_before",
+          "changed_after",
+          "stable_true",
+          "stable_false"
+        ],
+        "reviewer_type": "human_self_reported",
+        "review_mode": "assistant-proposed labels explicitly confirmed by user; not independent blind annotation",
+        "referenced_packet": "expansion40 page showing only 12 provisional pairs"
+      }
     },
     {
       "sample": "E34",
@@ -369,7 +504,7 @@
         "./edit_image/2326622_edit.jpg"
       ],
       "reviewer_type": "assistant_visual_review",
-      "human_confirmed": false,
+      "human_confirmed": true,
       "decision": "provisional",
       "reason": "Áo trắng→xanh rõ; mũ vẫn đen. Áo gốc đã có hình in, không lấy claim no-graphic của nguồn.",
       "viewed_224": true,
@@ -380,8 +515,23 @@
       "stable_true": "the hat is black",
       "stable_false": "the hat is blue",
       "unknown_tokens": [],
-      "false_alternative_status": "assistant judged false on both images; not human-confirmed",
-      "packet_id": "expansion40"
+      "false_alternative_status": "assistant proposed; explicitly confirmed by user in conversation for both viewed images",
+      "packet_id": "expansion40",
+      "human_decision": "confirm",
+      "human_confirmation": {
+        "source": "explicit user message in current conversation",
+        "date": "2026-10-31",
+        "quote": "tất cả đều xác nhận 4 nhãn đề xuất",
+        "scope": [
+          "changed_before",
+          "changed_after",
+          "stable_true",
+          "stable_false"
+        ],
+        "reviewer_type": "human_self_reported",
+        "review_mode": "assistant-proposed labels explicitly confirmed by user; not independent blind annotation",
+        "referenced_packet": "expansion40 page showing only 12 provisional pairs"
+      }
     },
     {
       "sample": "E37",
@@ -395,7 +545,7 @@
         "./edit_image/2337023_edit.jpg"
       ],
       "reviewer_type": "assistant_visual_review",
-      "human_confirmed": false,
+      "human_confirmed": true,
       "decision": "provisional",
       "reason": "Bus đỏ→xanh rõ; quần jeans vẫn xanh. Chi tiết đầu bus/biển số/logo đổi không thuộc Stable.",
       "viewed_224": true,
@@ -406,8 +556,23 @@
       "stable_true": "the jeans are blue",
       "stable_false": "the jeans are red",
       "unknown_tokens": [],
-      "false_alternative_status": "assistant judged false on both images; not human-confirmed",
-      "packet_id": "expansion40"
+      "false_alternative_status": "assistant proposed; explicitly confirmed by user in conversation for both viewed images",
+      "packet_id": "expansion40",
+      "human_decision": "confirm",
+      "human_confirmation": {
+        "source": "explicit user message in current conversation",
+        "date": "2026-10-31",
+        "quote": "tất cả đều xác nhận 4 nhãn đề xuất",
+        "scope": [
+          "changed_before",
+          "changed_after",
+          "stable_true",
+          "stable_false"
+        ],
+        "reviewer_type": "human_self_reported",
+        "review_mode": "assistant-proposed labels explicitly confirmed by user; not independent blind annotation",
+        "referenced_packet": "expansion40 page showing only 12 provisional pairs"
+      }
     },
     {
       "sample": "E39",
@@ -421,7 +586,7 @@
         "./edit_image/2330991_edit.jpg"
       ],
       "reviewer_type": "assistant_visual_review",
-      "human_confirmed": false,
+      "human_confirmed": true,
       "decision": "provisional",
       "reason": "Bộ suit đen→xanh rõ; áo trong vẫn trắng. Không giữ màu cà vạt/identity mặt/đường may làm Stable.",
       "viewed_224": true,
@@ -432,8 +597,24 @@
       "stable_true": "the shirt is white",
       "stable_false": "the shirt is blue",
       "unknown_tokens": [],
-      "false_alternative_status": "assistant judged false on both images; not human-confirmed",
-      "packet_id": "expansion40"
+      "false_alternative_status": "assistant proposed; explicitly confirmed by user in conversation for both viewed images",
+      "packet_id": "expansion40",
+      "human_decision": "confirm",
+      "human_confirmation": {
+        "source": "explicit user message in current conversation",
+        "date": "2026-10-31",
+        "quote": "tất cả đều xác nhận 4 nhãn đề xuất",
+        "scope": [
+          "changed_before",
+          "changed_after",
+          "stable_true",
+          "stable_false"
+        ],
+        "reviewer_type": "human_self_reported",
+        "review_mode": "assistant-proposed labels explicitly confirmed by user; not independent blind annotation",
+        "referenced_packet": "expansion40 page showing only 12 provisional pairs"
+      }
     }
-  ]
+  ],
+  "labels_confirmed": true
 }

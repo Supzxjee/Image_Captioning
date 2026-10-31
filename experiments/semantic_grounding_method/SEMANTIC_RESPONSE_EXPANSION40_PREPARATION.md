@@ -42,3 +42,11 @@ Localpage: `review/med_color_expansion/index.html` chỉ hiển thị12provision
 Kiểm traPASS:80JPEGdecode;40sourceIDs vàpool15unique;12factsets khôngOOV;72image/linkreferences trongpage tồn tại; JavaScriptsyntax; mockDOMexport15records giữ nguyên3confirmationcũ, chỉ mẫu mới chọnconfirm mới được cộng, needs_revision/notesgiữđúng. Chưa browserUI automation hoặc neural/model test. Ảnh/rawmetadata/page ởreviewignored; chỉpushprotocol/labels/pool/report.
 
 **Bước tiếp theo:** người dùng kiểm12cặp mới và gửiexport hoặc xác nhận qua chat cóIDrõ. Không xin xác nhận lại3mẫu cũ. Sau đó mới quyết định có đủ nhãn và đáng đầu tư mở rộng/train hay không; prompt-condition, trainablemask, quota vàschedule chưa chốt. Chưaxuất/chạy notebook; novelty vẫnUNKNOWN. Không tạo sheetrow hiệuquảmôhình từdatapreparation này.
+
+## Xác nhận12cặp qua chat —31/10/2026
+
+User đã được giải thích rõ confirm/needs_revision/reject và nói: “tất cả đều xác nhận 4 nhãn đề xuất”. Áp dụng cho12provisional đang hiển thị ởpage expansion (E02,E05,E09,E17,E18,E19,E21,E30,E33,E34,E37,E39), không áp dụng cho7conditional/21reject hoặc27mục khác củapacketcolor30.
+
+Đã cập nhật mainexpansionreview human_confirmed_count=12 vàcombinedpool human_confirmed_count=15, assistant_only_count=0; [snapshot15](SEMANTIC_RESPONSE_CONFIRMED15.json). Các từ/ngữ, hướngmàu,ID vàimagehash không đổi;3confirmationcũ giữnguyên provenance. Đây là assistant-origin + human_self_reported confirmation, không phải15nhãn chấm độc lập/blind. Không cần export/uploadJSON để lặp lại xác nhận qua chat này.
+
+Kiểm tra metadataPASS:chínhxác12recordmới đổi status,28recordexpansionkhác giữnguyên,3recordcũ giữnguyên,15uniqueVG/cocoIDs vàlabels/hashes không đổi. Tranglocal đã báo15confirmed và khóa các lựa chọn cũ để không xuất ngược thànhchưa xácnhận. 15cặp có thể làm reference cho kiểm tra dữ liệu/cơ chế bước đầu; chưa đủ để tuyên bố trainpilot cóýnghĩathốngkê hoặc tăngCIDEr/giảmCHAIR. training_ready vẫnfalse; điều kiện prompt/mask/split/near-duplicate/quota/schedule chưa tự coi đã xong. Khôngmodel/GPU/notebook.
