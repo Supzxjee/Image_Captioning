@@ -6,7 +6,7 @@ Ngày: 31/10/2026. Trạng thái: đề xuất để thảo luận; chưa chốt
 
 Các nhánh trước có thể học được điểm quan hệ phụ nhưng caption ít thay đổi. Đề xuất chuyển đơn vị giám sát sang **phản ứng của chính decoder khi một sự thật thị giác thay đổi**.
 
-Ví dụ một cặp ảnh đã kiểm tra: ảnh I có người cầm ván trượt, ảnh I' thay ván bằng vợt; người và áo xanh được giữ nguyên. Bộ sinh phải chuyển ưu tiên ván→vợt, đồng thời giữ nhận biết người/áo xanh. Không yêu cầu hai caption giống từng chữ hoặc bắt caption luôn đề cập tất cả sự thật.
+Ví dụ giả định (chưa phải cặp ảnh đã kiểm tra): ảnh I có người cầm ván trượt, ảnh I' thay ván bằng vợt; người và áo xanh được giữ nguyên. Bộ sinh phải chuyển ưu tiên ván→vợt, đồng thời giữ nhận biết người/áo xanh. Không yêu cầu hai caption giống từng chữ hoặc bắt caption luôn đề cập tất cả sự thật.
 
 Giả thuyết cần thử: giám sát có chọn lọc sự thay đổi và sự ổn định của các cụm mô tả trong decoder có ích hơn chỉ cho xem thêm các cặp ảnh/caption bằng CE. Đây là giả thuyết về hiệu quả, không phải kết quả đã có.
 
@@ -85,3 +85,31 @@ Khuyến nghị: đây là hướng dự phòng đáng thảo luận hơn thêm 
 - Web search đa nhóm từ; đọc các đoạn method được chỉ rõ trong bảng. GRD/editor review của vòng trước vẫn có hiệu lực, không xóa lịch sử.
 - CTM PDF/text cached ignored tại `review/grounding_on_request.pdf` và `.txt`; không đưa full paper vào repo.
 - Chỉ lưu thiết kế và trạng thái; chưa code neural/model/GPU/Kaggle, chưa dataset mới, chưa ghi thêm sheet cho brainstorm.
+
+## 8. Kiểm tra tiếp theo yêu cầu người dùng — 31/10/2026
+
+**Quyết định: SỬA và chỉ giữ như giả thuyết có điều kiện; chưa chốt đóng góp bài báo hoặc mở huấn luyện.**
+
+### Prior sát và đánh giá lại
+
+- Đã đọc HALVA §2 Eq1–3 đầy đủ hơn: likelihood đúng/sai ở phrase và reference-model token regularization là prior. HALVA không tự chứng minh trùng cross-image Stable của candidate, nhưng giảm mạnh phần có thể nhận mới.
+- Đã đọc thêm [Debias Your VLM with Counterfactuals: A Unified Approach](https://openreview.net/pdf/17de59356537f7511f6f4179afd4be4327961002.pdf), bản anonymous under-review ICLR2024, §4.3–4.4 Eq7–9. Caption branch dùng ảnh/caption phản thực và language-model loss; retrieval branch phân biệt neutral query với query chứa thuộc tính bị đổi. Chưa xác minh final publication; không ghi đã accepted ICLR. Không thấy exact selective cross-fact caption loss trong các đoạn đã đọc.
+- CTM+Stay, HALVA, See or Guess, MED, EqSim và COMO vẫn là prior gần. Không tìm thấy exact cấu hình trong lượt tìm có giới hạn; điều này không phải chứng nhận mới.
+- Điểm yếu của bản thiết kế: loss đang cộng các contrast độc lập. Gọi chúng là ma trận R không tạo coupling mới, cũng không tự thành cơ chế căn chỉnh mới. Phần có thể bảo vệ chỉ là **ràng buộc giữ các sự thật không bị tác động, có nhãn hợp lệ, trên actual caption decoder** và giá trị thực nghiệm của nó ngoài change-only/paired-CE. Nguyên lý invariance đã biết; khả năng đây là adaptation/incremental contribution vẫn cao.
+- Stable relative odds có thể đứng yên dù xác suất cả cụm đúng và cụm sai đều giảm. Vì vậy CE cho sự thật đúng trên từng ảnh là điều kiện cần của thiết kế, cùng đánh giá free captions; không được chỉ báo R đẹp là thành công.
+
+### Nguồn dữ liệu đã xác minh thêm
+
+1. GitHub MED redirect tới [Relaxed-System-Lab/hallu_med](https://github.com/Relaxed-System-Lab/hallu_med). GitHub API recursive tree hiện chỉ có README và scripts/utils, không có payload ảnh/nhãn. README nói dataset có sẵn nhưng không đưa link HF trực tiếp.
+2. Tìm được [EasonFan/hallu_med](https://huggingface.co/datasets/EasonFan/hallu_med), public, ungated, metadata license apache-2.0; revision `38f969ac98d7db856ee8d57b1a23c4032cfff09e`. Tên tài khoản phù hợp dấu vết tác giả nhưng chưa có link từ repo xác nhận đây là release chính thức, nên provenance vẫn cần nối lại.
+3. Đã đọc API file metadata: `edit_image.tar` 5,138,954,240 bytes; `bench_images.tar` 66,538,496 bytes; `med_sft_data.json` 26,939,203 bytes; còn `med_bench.json`, `med_real_set.json`. Chưa tải tar ảnh.
+4. Đã đọc JSON train: **50,753 records**. Bản ghi có `messages` (câu hỏi và mô tả khác biệt) cùng `images` (ảnh gốc như `./VG_100k/2336913.jpg`, ảnh sửa `./edit_image/2336913_edit.jpg`). Mẫu đã đọc không có original full caption, Changed span, Stable facts, boxes hay matched-prefix annotations. Không coi tất cả record đều thiếu một trường chỉ từ một mẫu; chưa kiểm tra thống kê toàn schema.
+5. Đã đọc hai benchmark records để xác minh định dạng MCQ; **không chọn chúng để fit/tune hoặc làm tập chấm đầu tiên rồi dùng lại cho đánh giá độc lập**. Các option có cả dạng “not mentioned”, cho thấy không thể tự chuyển câu khác biệt thành truth label mà không kiểm tra ảnh.
+6. Nguồn dự phòng [Intel/COCO-Counterfactuals](https://huggingface.co/datasets/Intel/COCO-Counterfactuals/blob/main/README.md): card CC-BY-4.0, cặp caption thay noun và synthetic image pairs, có examples.jsonl/images.zip. Chưa tải/kiểm tra chất lượng/overlap; không tương đương ảnh thật chỉ thay đúng một vật đã được xác minh.
+
+### Kết luận thực hiện
+
+- Feasibility **một phần**: có candidate payload để kiểm tra, chưa đủ nhãn Stable, chưa kiểm ảnh, license/provenance/overlap/vocab native chưa khóa. Không phải đã có dataset dùng ngay.
+- Khuyến nghị kiểm tra một mẫu nhỏ từ TRAIN có source IDs tách khỏi mọi eval, xác minh ảnh gốc/sửa và tối thiểu một Changed + một Stable thật. Chỉ sau khi nhãn đủ và người dùng chốt mới viết notebook/pilot.
+- Trước khi trình đây là phương pháp mới, phải viết delta hẹp so CTM/See or Guess và chấp nhận khả năng chỉ là cải tiến có điều kiện. Nếu người dùng yêu cầu một nguyên lý căn chỉnh hoàn toàn mới đã được xác lập ngay bây giờ, **kết quả kiểm tra này chưa đáp ứng**.
+- Không neural/model/GPU, không tải ảnh hàng GB, không sửa notebook, không phát sinh kết quả thực nghiệm hoặc sheet row.
