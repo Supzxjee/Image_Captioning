@@ -23,4 +23,6 @@ PAD0/BOS1/EOS2/UNK3. Training maximum sequence 54 including BOS/EOS. Beam5, max2
 
 ## Validation boundary
 
+02/11 asset-inventory stage: CPU-only user notebook reads actual HDF5 metadata/ID/filename tables (not feature arrays), validates full Karpathy and detector coverage, samples RGB headers for dimensions, and builds full TRAIN vocabulary. Known dataset/detector SHA pinned. No GPU, POS/text model, feature extraction or training. Sample geometry is not proof of producer coordinate provenance or all-image dimension validity. Output remains inventory, not training-ready cache. Model revision null is retained as an unknown, not replaced with the text encoder revision. No large HDF5 payload hash implied by checking metadata/ID tables.
+
 Local tests: hand-computed fractional ROI weights, stable sorting, malformed/empty detection distinction, TRAIN-only vocabulary and EOS shift, AST compilation and notebook pin integrity. Runtime script: masks, aggregation normalization, invariance to region padding/permutation, causality, dual-gate gradients, teacher-forcing/step parity, EOS beam handling, beam1/greedy, two XE updates and one RL backward. Runtime script is prepared, never imported or executed by the agent locally. GPU failures must preserve an INCOMPLETE review ZIP.
