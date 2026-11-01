@@ -1,0 +1,363 @@
+{
+  "dataset_json_sha256": "2fd999220673258012acfb411a4e7e66af7d488050b2519b0badcc49b7600b8d",
+  "split_counts": {
+    "restval": 30504,
+    "test": 5000,
+    "train": 82783,
+    "val": 5000
+  },
+  "unique_dataset_ids": 123287,
+  "local_shards": [
+    {
+      "name": "visual_part_01_of_03.h5",
+      "bytes": 12443910016
+    },
+    {
+      "name": "visual_part_02_of_03.h5",
+      "bytes": 12444536256
+    },
+    {
+      "name": "visual_part_03_of_03.h5",
+      "bytes": 12444536256
+    }
+  ],
+  "previous_metadata_report": {
+    "status": "METADATA_ONLY_NO_MODEL_NO_TRAINING",
+    "shards": [
+      {
+        "filename": "visual_part_01_of_03.h5",
+        "bytes": 12443910016,
+        "attributes": {
+          "complete": true,
+          "feature_layout": "features[i] belongs to imgids[i]",
+          "id_key": "coco_id",
+          "metadata_json": "{\"model_id\": \"openai/clip-vit-base-patch16\", \"model_revision\": null, \"output\": \"vision_model.last_hidden_state\", \"preprocessing\": \"bilinear\", \"image_size\": [224, 224], \"antialias\": true, \"mean\": [0.48145466, 0.4578275, 0.40821073], \"std\": [0.26862954, 0.26130258, 0.27577711], \"compute_dtype\": \"float32\", \"storage_dtype\": \"float16\", \"autocast\": false, \"dataset_json_sha256\": \"2fd999220673258012acfb411a4e7e66af7d488050b2519b0badcc49b7600b8d\", \"part\": 1, \"parts\": 3, \"smoke\": false, \"image_count\": 41095, \"torch\": \"2.10.0+cu128\", \"torchvision\": \"0.25.0+cu128\", \"transformers\": \"5.0.0\"}",
+          "rows_written": 41095
+        },
+        "metadata": {
+          "model_id": "openai/clip-vit-base-patch16",
+          "model_revision": null,
+          "output": "vision_model.last_hidden_state",
+          "preprocessing": "bilinear",
+          "image_size": [
+            224,
+            224
+          ],
+          "antialias": true,
+          "mean": [
+            0.48145466,
+            0.4578275,
+            0.40821073
+          ],
+          "std": [
+            0.26862954,
+            0.26130258,
+            0.27577711
+          ],
+          "compute_dtype": "float32",
+          "storage_dtype": "float16",
+          "autocast": false,
+          "dataset_json_sha256": "2fd999220673258012acfb411a4e7e66af7d488050b2519b0badcc49b7600b8d",
+          "part": 1,
+          "parts": 3,
+          "smoke": false,
+          "image_count": 41095,
+          "torch": "2.10.0+cu128",
+          "torchvision": "0.25.0+cu128",
+          "transformers": "5.0.0"
+        },
+        "datasets": {
+          "eval_ids": {
+            "shape": [
+              41095
+            ],
+            "dtype": "int64",
+            "attributes": {}
+          },
+          "features": {
+            "shape": [
+              41095,
+              197,
+              768
+            ],
+            "dtype": "float16",
+            "attributes": {}
+          },
+          "filename": {
+            "shape": [
+              41095
+            ],
+            "dtype": "object",
+            "attributes": {}
+          },
+          "filepath": {
+            "shape": [
+              41095
+            ],
+            "dtype": "object",
+            "attributes": {}
+          },
+          "imgids": {
+            "shape": [
+              41095
+            ],
+            "dtype": "int64",
+            "attributes": {}
+          },
+          "split": {
+            "shape": [
+              41095
+            ],
+            "dtype": "object",
+            "attributes": {}
+          }
+        },
+        "id_summary": {
+          "key": "imgids",
+          "count": 41095,
+          "first": [
+            391895,
+            522418,
+            184613,
+            318219,
+            554625
+          ],
+          "last": [
+            230892,
+            158514,
+            64897,
+            94885,
+            310714
+          ],
+          "sha256": "bdd7f3b2d66dbf4a0c0815a0066e7597bc811b62a1c0ea5d30f253d9964bcc04"
+        }
+      },
+      {
+        "filename": "visual_part_02_of_03.h5",
+        "bytes": 12444536256,
+        "attributes": {
+          "complete": true,
+          "feature_layout": "features[i] belongs to imgids[i]",
+          "id_key": "coco_id",
+          "metadata_json": "{\"model_id\": \"openai/clip-vit-base-patch16\", \"model_revision\": null, \"output\": \"vision_model.last_hidden_state\", \"preprocessing\": \"bilinear\", \"image_size\": [224, 224], \"antialias\": true, \"mean\": [0.48145466, 0.4578275, 0.40821073], \"std\": [0.26862954, 0.26130258, 0.27577711], \"compute_dtype\": \"float32\", \"storage_dtype\": \"float16\", \"autocast\": false, \"dataset_json_sha256\": \"2fd999220673258012acfb411a4e7e66af7d488050b2519b0badcc49b7600b8d\", \"part\": 2, \"parts\": 3, \"smoke\": false, \"image_count\": 41096, \"torch\": \"2.10.0+cu128\", \"torchvision\": \"0.25.0+cu128\", \"transformers\": \"5.0.0\"}",
+          "rows_written": 41096
+        },
+        "metadata": {
+          "model_id": "openai/clip-vit-base-patch16",
+          "model_revision": null,
+          "output": "vision_model.last_hidden_state",
+          "preprocessing": "bilinear",
+          "image_size": [
+            224,
+            224
+          ],
+          "antialias": true,
+          "mean": [
+            0.48145466,
+            0.4578275,
+            0.40821073
+          ],
+          "std": [
+            0.26862954,
+            0.26130258,
+            0.27577711
+          ],
+          "compute_dtype": "float32",
+          "storage_dtype": "float16",
+          "autocast": false,
+          "dataset_json_sha256": "2fd999220673258012acfb411a4e7e66af7d488050b2519b0badcc49b7600b8d",
+          "part": 2,
+          "parts": 3,
+          "smoke": false,
+          "image_count": 41096,
+          "torch": "2.10.0+cu128",
+          "torchvision": "0.25.0+cu128",
+          "transformers": "5.0.0"
+        },
+        "datasets": {
+          "eval_ids": {
+            "shape": [
+              41096
+            ],
+            "dtype": "int64",
+            "attributes": {}
+          },
+          "features": {
+            "shape": [
+              41096,
+              197,
+              768
+            ],
+            "dtype": "float16",
+            "attributes": {}
+          },
+          "filename": {
+            "shape": [
+              41096
+            ],
+            "dtype": "object",
+            "attributes": {}
+          },
+          "filepath": {
+            "shape": [
+              41096
+            ],
+            "dtype": "object",
+            "attributes": {}
+          },
+          "imgids": {
+            "shape": [
+              41096
+            ],
+            "dtype": "int64",
+            "attributes": {}
+          },
+          "split": {
+            "shape": [
+              41096
+            ],
+            "dtype": "object",
+            "attributes": {}
+          }
+        },
+        "id_summary": {
+          "key": "imgids",
+          "count": 41096,
+          "first": [
+            69081,
+            183336,
+            139285,
+            548293,
+            457514
+          ],
+          "last": [
+            426128,
+            223914,
+            520902,
+            285477,
+            397138
+          ],
+          "sha256": "f9f0218f86ffc77888e63dc5f6d81e965224e0b18f5b1f41dfecc4c8bc9e8889"
+        }
+      },
+      {
+        "filename": "visual_part_03_of_03.h5",
+        "bytes": 12444536256,
+        "attributes": {
+          "complete": true,
+          "feature_layout": "features[i] belongs to imgids[i]",
+          "id_key": "coco_id",
+          "metadata_json": "{\"model_id\": \"openai/clip-vit-base-patch16\", \"model_revision\": null, \"output\": \"vision_model.last_hidden_state\", \"preprocessing\": \"bilinear\", \"image_size\": [224, 224], \"antialias\": true, \"mean\": [0.48145466, 0.4578275, 0.40821073], \"std\": [0.26862954, 0.26130258, 0.27577711], \"compute_dtype\": \"float32\", \"storage_dtype\": \"float16\", \"autocast\": false, \"dataset_json_sha256\": \"2fd999220673258012acfb411a4e7e66af7d488050b2519b0badcc49b7600b8d\", \"part\": 3, \"parts\": 3, \"smoke\": false, \"start_row\": 0, \"image_count\": 41096, \"torch\": \"2.10.0+cu128\", \"torchvision\": \"0.25.0+cu128\", \"transformers\": \"5.0.0\"}",
+          "rows_written": 41096
+        },
+        "metadata": {
+          "model_id": "openai/clip-vit-base-patch16",
+          "model_revision": null,
+          "output": "vision_model.last_hidden_state",
+          "preprocessing": "bilinear",
+          "image_size": [
+            224,
+            224
+          ],
+          "antialias": true,
+          "mean": [
+            0.48145466,
+            0.4578275,
+            0.40821073
+          ],
+          "std": [
+            0.26862954,
+            0.26130258,
+            0.27577711
+          ],
+          "compute_dtype": "float32",
+          "storage_dtype": "float16",
+          "autocast": false,
+          "dataset_json_sha256": "2fd999220673258012acfb411a4e7e66af7d488050b2519b0badcc49b7600b8d",
+          "part": 3,
+          "parts": 3,
+          "smoke": false,
+          "start_row": 0,
+          "image_count": 41096,
+          "torch": "2.10.0+cu128",
+          "torchvision": "0.25.0+cu128",
+          "transformers": "5.0.0"
+        },
+        "datasets": {
+          "eval_ids": {
+            "shape": [
+              41096
+            ],
+            "dtype": "int64",
+            "attributes": {}
+          },
+          "features": {
+            "shape": [
+              41096,
+              197,
+              768
+            ],
+            "dtype": "float16",
+            "attributes": {}
+          },
+          "filename": {
+            "shape": [
+              41096
+            ],
+            "dtype": "object",
+            "attributes": {}
+          },
+          "filepath": {
+            "shape": [
+              41096
+            ],
+            "dtype": "object",
+            "attributes": {}
+          },
+          "imgids": {
+            "shape": [
+              41096
+            ],
+            "dtype": "int64",
+            "attributes": {}
+          },
+          "split": {
+            "shape": [
+              41096
+            ],
+            "dtype": "object",
+            "attributes": {}
+          }
+        },
+        "id_summary": {
+          "key": "imgids",
+          "count": 41096,
+          "first": [
+            125042,
+            82990,
+            492772,
+            397575,
+            78253
+          ],
+          "last": [
+            444010,
+            565004,
+            516168,
+            547503,
+            475546
+          ],
+          "sha256": "2a955aea174031fb9267d7035a60d7fc001c1ec7269c6608026bb9d4e1c33069"
+        }
+      }
+    ],
+    "unique_ids": 123287,
+    "overlapping_ids": [],
+    "feature_values_read": false,
+    "encoder_revision_verified": false,
+    "feature_compatibility_verified": false,
+    "next": "Read metadata; later pinned re-encoding must verify feature compatibility before any training. Missing metadata is unknown, not automatically a failure."
+  },
+  "previous_metadata_report_sha256": "74b500d9db632fefe7dbad725d7610950a2c73ccd520a4b0dd182ae77f26790d",
+  "verification_scope": "Dataset JSON and shard existence/sizes checked now. HDF5 profile from previous user-provided metadata report, not independently reopened: local h5py unavailable. No features read or full shard hashes computed.",
+  "detector_available_locally": false
+}
