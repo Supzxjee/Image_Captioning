@@ -1,0 +1,15 @@
+test_all_sources_compile_without_import (__main__.Checks.test_all_sources_compile_without_import) ... ok
+test_empty_not_missing_or_corrupt (__main__.Checks.test_empty_not_missing_or_corrupt) ... ok
+test_fractional_hand_example_and_narrow_box (__main__.Checks.test_fractional_hand_example_and_narrow_box) ... ok
+test_pos_lists_exclude_aux_and_nonwords (__main__.Checks.test_pos_lists_exclude_aux_and_nonwords) ... ok
+test_stable_confidence_sort (__main__.Checks.test_stable_confidence_sort) ... ok
+test_train_only_vocab_and_eos_retention (__main__.Checks.test_train_only_vocab_and_eos_retention) ... ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.032s
+
+OK
+Tiny tensor contracts
+Production dimensions, synthetic inputs/rewards
+Synthetic XE update 1/2: 9.441246
+Synthetic XE update 2/2: 9.154867

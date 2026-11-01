@@ -1,6 +1,6 @@
 # Trạng thái nghiên cứu — đọc trước khi tiếp tục
 
-Cập nhật: 01/11/2026, giờ Việt Nam. File này là bản tóm tắt để tiếp tục công việc; protocol và artifacts được dẫn bên dưới mới là nguồn chi tiết. Không cần đọc toàn bộ lịch sử chat.
+Cập nhật: 02/11/2026, giờ Việt Nam. File này là bản tóm tắt để tiếp tục công việc; protocol và artifacts được dẫn bên dưới mới là nguồn chi tiết. Không cần đọc toàn bộ lịch sử chat.
 
 ## Mục tiêu và cách làm việc
 
@@ -10,7 +10,7 @@ Cập nhật: 01/11/2026, giờ Việt Nam. File này là bản tóm tắt để
 
 ## Hiện đang ở đâu
 
-- **01/11 — đã triển khai core CSA tự viết theo X024/X025**, [README + pipeline](experiments/csa_paper/README.md), [protocol](experiments/csa_paper/IMPLEMENTATION_PROTOCOL.md). Core commit `6c365d3`: aggregation/cosine alignment/2OSA+ORA/parallel decoder/beam/XE/beam-mean loss; không C0/QFormer/author classes. [Notebook core smoke](experiments/csa_paper/CSA_PAPER_CORE_SMOKE.ipynb) khóa Git-blob hashes,5883bytes, chưa chạy; GPU0, synthetic inputs/banks/rewards,2XE+1RLbackward/step,worker cap30min.6NumPy/static tests PASS, notebook AST/emptyoutputs/5sourcehashes/notebookSHA PASS; không Torch/model/autograd/Kaggle/scorer local. User báo20GPUh. JSONactual113287TRAIN/5000val/5000test và3H5file sizes đã kiểm; internals H5 chỉ previous user metadata (h5py unavailable), unknown encoderrevision; detector unavailablelocal. **Chưa actual bank/ROI cache/real-data smoke/trainer/full training**, DDP chưa kiểm; syntheticPASSkhôngcertifysemanticquality. Tiếp: user chạy core smoke, gửi reviewZIP; sauđó kiểmassets và dựng bankTRAINthật trước budgetedpilot. SheetR223hàng250 ghiPREPARED/đọclại; X026bàngiao. Không cần user duyệt lại cùng kiến trúc, không brainstorm novelty lúc này.
+- **02/11 — CSA core smoke user-run COMPLETE**, [result](experiments/csa_paper/CORE_SMOKE_RESULT.md), [audit JSON](experiments/csa_paper/CORE_SMOKE_RESULT.json). ZIP SHA d93d9467…, source6c365d3 +5Git hashes khớp. T4/Torch2.11: tiny tensor/mask/causal/beam/gradient checks hoàn tất; productionD512/8heads/K150/3layers/vocab10000,49.239M trainable parameters,2XE+1syntheticRLupdates. Worker8.33s/peak976.43MiB, không totalwall/quota hay ETAtraining. XE9.441→9.155 không qualityclaim;5beams lặp/hit20cap, khôngEOS. **GO chuẩn bị dữ liệu thật**, không fulltraining: actual TRAINnoun/verb/POS+CLIPbanks/vocab, H5profile/COCOID→row, detector/dimensions/ROIcache và real-data smoke cònphảilàm. ChưaDDP/scorer/CIDEr/CHAIR/newcheckpoint; không agent Torch/modelrun. 20GPUh userbáo01/11 làbudgetgầnnhất, không tựcoilàsốgiờcònhiệnnay. SheetR223hàng250cậpnhậtCOMPLETEsynthetic; X027handoff. Không brainstormnovelty hoặcchạy lạismoke chỉđểtokensđẹp hơn.
 
 - **Codex1 đã reviewX024: ACCEPT choM1/core, chưaGOtraininglớn.** [Review](experiments/csa_inheritance_audit/CSA_PAPER_IMPLEMENTATION_REVIEW.md), X025bàngiao. ĐốichiếutrựctiếpPDFmethod/recipe,acceptpaperprofile và conventionsđãghi;bổsungno regionposition/geometry,beamrawscore/no lengthpenalty. ChưaTorch/model/code mới. BướctiếpM1auditactualfeatures/detector/vocab/bankcontract, rồi `experiments/csa_paper/`;asset/runtime/quota cònkiểm.15XE+30RLlàfullrecipe,nếumỗiảnh5captions thì~265530XE+106230RLupdates ởbatch32,khôngETA;smoke/pilottrước.
 

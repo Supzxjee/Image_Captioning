@@ -33,5 +33,5 @@ Tải `CSA_PAPER_CORE_SMOKE.ipynb` lên Kaggle, bật Internet + GPU. Không c�
 
 - Local: đã kiểm JSON Karpathy, 113287 TRAIN (82783 train +30504 restval),5000 val,5000 test; file H5 tồn tại/kích thước. Metadata H5 đến từ báo cáo user trước đó, chưa mở lại bằng h5py trong lượt này. `LOCAL_ASSET_INVENTORY.json` giữ nguồn và giới hạn; chưa đọc tensor.
 - Local NumPy/static: 6 tests PASS; chưa Torch/gradient/GPU/model/scorer/notebook execution.
-- Đang chờ: user chạy core smoke. Sau đó chuẩn bị bank TRAIN thật bằng POS + CLIP frozen, vocab và join detector/patches/dimensions; chưa có cache CSA mới hay real-data training notebook ở mốc core này.
+- User-run core smoke đã COMPLETE; xem [kết quả](CORE_SMOKE_RESULT.md). Sau đó chuẩn bị bank TRAIN thật bằng POS + CLIP frozen, vocab và join detector/patches/dimensions; chưa có cache CSA mới hay real-data training notebook ở mốc core này.
 - Quota hiện báo20giờ. Chưa ước lượng full recipe trước throughput/VRAM thực; không mở15XE+30RL.

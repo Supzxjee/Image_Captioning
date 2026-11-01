@@ -1,0 +1,18 @@
+{
+  "zip_sha256": "d93d94677a171b7d0911dae74a6ba144c60b0be7ef07dfc08f29a68e75cdb5f8",
+  "source_commit": "6c365d3f9f57da3f69cd43244e7b5fd2d51af128",
+  "verified_source_files": 5,
+  "worker_seconds": 8.333635941000011,
+  "peak_gpu_mib": 976.4296875,
+  "trainable_parameters": 49239288,
+  "xe_losses": [
+    9.441246032714844,
+    9.154867172241211
+  ],
+  "rl_synthetic_loss": 0.0006899833679199219,
+  "all_beams_hit_maximum": true,
+  "review_scope": "Metadata, logs and pinned source identity only; no model or scorer rerun",
+  "status": "USER_RUN_CORE_SMOKE_COMPLETE",
+  "real_data_verified": false,
+  "dual_gpu_checked": false
+}
