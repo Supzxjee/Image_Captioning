@@ -41,3 +41,7 @@ Tải `CSA_PAPER_CORE_SMOKE.ipynb` lên Kaggle, bật Internet + GPU. Không c�
 Sau core smoke COMPLETE, chạy `CSA_PAPER_ASSET_INVENTORY_CPU.ipynb`, Accelerator **None**, Internet ON, Add Input `visual-cache`, `objectdetectionecache`, `mscoco-2014`. Cell đầu có bốn path để chỉnh nếu mount khác. Không cần checkpoint/prompt/UPT/token. Xuất `csa_paper_asset_inventory_review.zip`. Chưa POS/textbank/ROI/training; không dùng GPU. Local3parser/static+6data testsPASS, actual mounted HDF5/detector/RGB traversal chưa chạy.
 
 CPU inventory user-run COMPLETE: xem [kết quả dữ liệu thật](ASSET_INVENTORY_RESULT.md). Không cần chạy lại. H5metadata/ID tables và detector phủ123287ảnh; vocabulary10000 đã tái tạo khớp. Banknoun/verb và ROIcache thực vẫn chưa tạo; bước tiếp thực hiện chúng trước real-data smoke.
+
+## Chuẩn bị noun/verb và ROI thật
+
+Chạy `CSA_PAPER_REAL_PREPARATION_CPU.ipynb` trên **CPU/Accelerator None**, InternetON, cùng3datasetđãdùng. Nó chạy POSspaCy trên toànTRAIN để tạo **danh sách từ** cho bank và poolROI cho256TRAIN+64val. Chưa mã hóaCLIPtext hay huấn luyện captioner. Gửi `csa_paper_real_preparation_review.zip`; giữ **cả folder `csa_paper_real_preparation`, đặc biệt `regions.npz`**, để lưuDatasetcho bướcGPUtiếp. Xem [protocol](REAL_ASSET_PREPARATION_PROTOCOL.md).14localtestsPASS, thực thiPOS/ROI và cài dependency trênKagglechưađượckiểm.

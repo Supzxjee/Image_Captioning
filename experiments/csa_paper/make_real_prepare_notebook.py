@@ -54,7 +54,7 @@ try:
     payload = urllib.request.urlopen({MODEL_URL!r}, timeout=180).read()
     if hashlib.sha256(payload).hexdigest() != {MODEL_SHA!r}: raise RuntimeError('Official POS model wheel SHA differs')
     wheel.write_bytes(payload)
-    run([PYTHON, '-m', 'pip', 'install', '--no-deps', wheel], timeout=180)
+    run([PYTHON, '-m', 'pip', 'install', '--no-deps', '--force-reinstall', wheel], timeout=180)
     (OUTPUT/'software_freeze.txt').write_text(subprocess.check_output([PYTHON, '-m', 'pip', 'freeze', '--all'], text=True), encoding='utf-8')
     run([PYTHON, '-u', SOURCE/'test_real_assets.py'], timeout=120)
     run([PYTHON, '-u', SOURCE/'prepare_real_assets.py', '--config', CONFIG], timeout=7200)
