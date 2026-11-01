@@ -39,3 +39,5 @@ Tải `CSA_PAPER_CORE_SMOKE.ipynb` lên Kaggle, bật Internet + GPU. Không c�
 ## Kiểm dữ liệu thật trên CPU
 
 Sau core smoke COMPLETE, chạy `CSA_PAPER_ASSET_INVENTORY_CPU.ipynb`, Accelerator **None**, Internet ON, Add Input `visual-cache`, `objectdetectionecache`, `mscoco-2014`. Cell đầu có bốn path để chỉnh nếu mount khác. Không cần checkpoint/prompt/UPT/token. Xuất `csa_paper_asset_inventory_review.zip`. Chưa POS/textbank/ROI/training; không dùng GPU. Local3parser/static+6data testsPASS, actual mounted HDF5/detector/RGB traversal chưa chạy.
+
+CPU inventory user-run COMPLETE: xem [kết quả dữ liệu thật](ASSET_INVENTORY_RESULT.md). Không cần chạy lại. H5metadata/ID tables và detector phủ123287ảnh; vocabulary10000 đã tái tạo khớp. Banknoun/verb và ROIcache thực vẫn chưa tạo; bước tiếp thực hiện chúng trước real-data smoke.

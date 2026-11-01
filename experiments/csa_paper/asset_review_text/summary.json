@@ -1,0 +1,243 @@
+{
+  "status": "ASSET_INVENTORY_COMPLETE",
+  "feature_arrays_read": false,
+  "full_h5_payload_hashes_checked": false,
+  "model_executed": false,
+  "training_ready": false,
+  "pos_banks_created": false,
+  "detector_producer_provenance": "UNKNOWN: coordinate semantics/threshold/NMS/top-K not recovered",
+  "all_image_dimensions_verified": false,
+  "dataset_json_sha256": "2fd999220673258012acfb411a4e7e66af7d488050b2519b0badcc49b7600b8d",
+  "detections_sha256": "498825daf8f8773a1c92f4111dc4ccf1f4296343f952b486e0aa56caf82ec04c",
+  "split_counts": {
+    "test": 5000,
+    "restval": 30504,
+    "val": 5000,
+    "train": 82783
+  },
+  "shards": [
+    {
+      "name": "visual_part_01_of_03.h5",
+      "bytes": 12443910016,
+      "shape": [
+        41095,
+        197,
+        768
+      ],
+      "dtype": "float16"
+    },
+    {
+      "name": "visual_part_02_of_03.h5",
+      "bytes": 12444536256,
+      "shape": [
+        41096,
+        197,
+        768
+      ],
+      "dtype": "float16"
+    },
+    {
+      "name": "visual_part_03_of_03.h5",
+      "bytes": 12444536256,
+      "shape": [
+        41096,
+        197,
+        768
+      ],
+      "dtype": "float16"
+    }
+  ],
+  "visual_ids_verified": 123287,
+  "feature_profile": {
+    "model_id": "openai/clip-vit-base-patch16",
+    "output": "vision_model.last_hidden_state",
+    "preprocessing": "bilinear",
+    "image_size": [
+      224,
+      224
+    ],
+    "antialias": true,
+    "dataset_json_sha256": "2fd999220673258012acfb411a4e7e66af7d488050b2519b0badcc49b7600b8d",
+    "model_revision": null,
+    "mean": [
+      0.48145466,
+      0.4578275,
+      0.40821073
+    ],
+    "std": [
+      0.26862954,
+      0.26130258,
+      0.27577711
+    ],
+    "compute_dtype": "float32",
+    "storage_dtype": "float16",
+    "autocast": false
+  },
+  "detection_count_histogram": {
+    "0": 1052,
+    "1": 13166,
+    "2": 20567,
+    "3": 15106,
+    "4": 11311,
+    "5": 8901,
+    "6": 7277,
+    "7": 5918,
+    "8": 5045,
+    "9": 4411,
+    "10": 3775,
+    "11": 3365,
+    "12": 2859,
+    "13": 2539,
+    "14": 2311,
+    "15": 1947,
+    "16": 1684,
+    "17": 1537,
+    "18": 1411,
+    "19": 1178,
+    "20": 1095,
+    "21": 908,
+    "22": 824,
+    "23": 695,
+    "24": 636,
+    "25": 530,
+    "26": 429,
+    "27": 390,
+    "28": 350,
+    "29": 282,
+    "30": 251,
+    "31": 189,
+    "32": 195,
+    "33": 161,
+    "34": 122,
+    "35": 123,
+    "36": 101,
+    "37": 85,
+    "38": 71,
+    "39": 72,
+    "40": 72,
+    "41": 47,
+    "42": 45,
+    "43": 32,
+    "44": 33,
+    "45": 30,
+    "46": 25,
+    "47": 18,
+    "48": 26,
+    "49": 10,
+    "50": 12,
+    "51": 10,
+    "52": 10,
+    "53": 6,
+    "54": 6,
+    "55": 2,
+    "56": 5,
+    "57": 6,
+    "58": 3,
+    "59": 4,
+    "60": 1,
+    "61": 1,
+    "62": 3,
+    "63": 2,
+    "66": 4,
+    "67": 1,
+    "74": 1,
+    "75": 1,
+    "77": 1,
+    "87": 1
+  },
+  "empty_detector_records": 1052,
+  "images_above_cap150": 0,
+  "dimension_samples": [
+    {
+      "filename": "COCO_train2014_000000090477.jpg",
+      "width": 487,
+      "height": 640,
+      "detections": 3,
+      "boxes_needing_boundary_clip": 0
+    },
+    {
+      "filename": "COCO_train2014_000000464443.jpg",
+      "width": 375,
+      "height": 500,
+      "detections": 5,
+      "boxes_needing_boundary_clip": 0
+    },
+    {
+      "filename": "COCO_train2014_000000475357.jpg",
+      "width": 640,
+      "height": 476,
+      "detections": 8,
+      "boxes_needing_boundary_clip": 0
+    },
+    {
+      "filename": "COCO_val2014_000000410437.jpg",
+      "width": 640,
+      "height": 424,
+      "detections": 1,
+      "boxes_needing_boundary_clip": 0
+    },
+    {
+      "filename": "COCO_val2014_000000005694.jpg",
+      "width": 640,
+      "height": 480,
+      "detections": 1,
+      "boxes_needing_boundary_clip": 0
+    },
+    {
+      "filename": "COCO_val2014_000000487050.jpg",
+      "width": 480,
+      "height": 640,
+      "detections": 5,
+      "boxes_needing_boundary_clip": 0
+    },
+    {
+      "filename": "COCO_val2014_000000564142.jpg",
+      "width": 640,
+      "height": 544,
+      "detections": 2,
+      "boxes_needing_boundary_clip": 0
+    },
+    {
+      "filename": "COCO_val2014_000000155285.jpg",
+      "width": 427,
+      "height": 640,
+      "detections": 7,
+      "boxes_needing_boundary_clip": 0
+    },
+    {
+      "filename": "COCO_val2014_000000339919.jpg",
+      "width": 500,
+      "height": 375,
+      "detections": 16,
+      "boxes_needing_boundary_clip": 0
+    },
+    {
+      "filename": "COCO_val2014_000000059015.jpg",
+      "width": 640,
+      "height": 480,
+      "detections": 6,
+      "boxes_needing_boundary_clip": 0
+    },
+    {
+      "filename": "COCO_val2014_000000502959.jpg",
+      "width": 500,
+      "height": 375,
+      "detections": 34,
+      "boxes_needing_boundary_clip": 0
+    },
+    {
+      "filename": "COCO_val2014_000000192782.jpg",
+      "width": 403,
+      "height": 500,
+      "detections": 2,
+      "boxes_needing_boundary_clip": 0
+    }
+  ],
+  "vocabulary": {
+    "size": 10000,
+    "sha256": "924be210aa0daa8b0968a6d69ad2c66b3de603f49c35f4aa67247c75d6173fc7",
+    "train_only": true,
+    "caption_events": 566747
+  },
+  "seconds": 22.092371162000006
+}

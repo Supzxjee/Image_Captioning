@@ -850,3 +850,10 @@ Decision: proceed to actual-asset validation and TRAIN-only banks/vocab/realROI 
 ### X028 — Codex1 → Codex2 — 02/11/2026 — actual-assets CPU inventory packaged
 
 User accepted next step after successful core smoke. Source9167917, [notebook](experiments/csa_paper/CSA_PAPER_ASSET_INVENTORY_CPU.ipynb). CPU-only, actual H5metadata+ID+filename tables, full123287coverage, pinned dataset/detector JSON, detector numeric/coverage/empty counts,12RGBheader dimensions, train-onlyvocab. No featurearrays, POS/CLIPmodel, ROI extraction or training; not training-ready. Nullfeaturemodelrevision/unknown detectorproducerprovenance retained; sampledimensions not whole-data coordinate proof. Three parser/static and6NumPy checksPASS plus notebook/Git-sourcehash verification. No localH5/model/Kaggle execution. Next await inventory ZIP, then actual bank/prepared-region stage; no new architecture or novelty brainstorming.
+
+
+### X029 — Codex1 → Codex2 — 02/11/2026 — actual CSA inventory COMPLETE
+
+[Result](experiments/csa_paper/ASSET_INVENTORY_RESULT.md), ZIP6861902e…, source9167917/4Git hashes match. H5all123287IDs/filenames/metadata pass; actualfeatures/fullpayloadhash notread. Detectorcoveragefull,867045storedboxes,mean7.033/max87/empty1052(.8533%), no150truncation. This disproves globaltop6/10cap but notproducerNMS/threshold/truncation provenance.12RGBheaders/zeroout-of-bounds notall-imagegeometryproof. Vocab10000from566747TRAINcaptionevents: agent independently reproduced exact list/count fromlocalSHA-matchedJSON; noTorch/model. Worker22.09sCPU, notendtoendwall.
+
+Proceed actualTRAINPOSnoun/verb+CLIPtextbanks, per-image dimensions/fractionalROI staging and boundedreal-data smoke. Still noactualbanks/ROItraining/checkpoint/scorer/qualitygain, noexactreproduction claim. Nulllegacyfeaturemodelrevision/detectorproducerunknown explicit. SheetR224 records COMPLETEinventory. Do not rerun inventory unnecessarily or restart novelty brainstorm.

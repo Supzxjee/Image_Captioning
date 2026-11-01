@@ -1,0 +1,14 @@
+test_audit_does_not_import_torch_or_read_features (__main__.Checks.test_audit_does_not_import_torch_or_read_features) ... ok
+test_duplicate_basename_and_degenerate_box (__main__.Checks.test_duplicate_basename_and_degenerate_box) ... ok
+test_source_join_and_empty_distinction (__main__.Checks.test_source_join_and_empty_distinction) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.011s
+
+OK
+Hashing input: dataset_json
+Hashing input: detections
+Reading H5 metadata and ID tables: visual_part_01_of_03.h5
+Reading H5 metadata and ID tables: visual_part_02_of_03.h5
+Reading H5 metadata and ID tables: visual_part_03_of_03.h5
+Reading detector records

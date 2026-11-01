@@ -1,0 +1,20 @@
+{
+  "status": "USER_RUN_ASSET_INVENTORY_COMPLETE",
+  "zip_sha256": "6861902ed82d1a0f087f90c9c0b8656becb4512aa7203fb4308819bfff3c5942",
+  "source_commit": "9167917bd7cdf6a6284a332b4218923bcdb59d4b",
+  "source_files_verified": 4,
+  "visual_ids": 123287,
+  "train_images": 113287,
+  "caption_events": 566747,
+  "vocabulary_size": 10000,
+  "local_train_vocabulary_reproduced": true,
+  "empty_detector_records": 1052,
+  "empty_fraction": 0.008532935345981329,
+  "max_stored_detections": 87,
+  "mean_stored_detections": 7.0327366226771675,
+  "total_stored_detections": 867045,
+  "worker_seconds": 22.092371162000006,
+  "dimension_samples_verified": 12,
+  "training_ready": false,
+  "local_model_run": false
+}
