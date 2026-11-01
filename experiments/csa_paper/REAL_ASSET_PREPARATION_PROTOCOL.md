@@ -21,4 +21,6 @@
 
 ## Checks
 
+Bootstrap amendment02/11 after user failure: default `venv` invoked `ensurepip` and failed before POS/ROI. Create venv with `--without-pip --system-site-packages`; use **base** `python -m pip --python <venv-python>` for both installs and freeze, checking option availability first. No `venv-python -m pip` remains; no global dependency install. This is the [documented pip workflow for a pip-less venv](https://pip.pypa.io/en/stable/topics/python-option/), available since22.3. Preserve failed output/ZIP; fresh notebook/session retries preparation, no completed POS/ROI work exists to resume. Dataset/cohort/POS/ROI/model pins unchanged. Actual Kaggle bootstrap/runtime remains user-run pending; static command checks are not environment success.
+
 Local metadata/NumPy tests: split and deterministic selection, TRAIN-only fake POS stream with held-only sentinel, filtering/count/sorting, encoded EOS, variable-region packing/fallback/box sorting, malformed data failures, source/AST/notebook pinning. No spaCy tagging, HDF5 feature reads, Torch/CLIP/caption model locally. User-run preparation does real POS, headers and ROI pooling; its review ZIP/receipt must be checked before claiming assets built. Full H5 byte hashes are not implied by selected-row verification.

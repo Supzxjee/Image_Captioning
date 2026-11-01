@@ -30,7 +30,7 @@ SOURCE = Path(tempfile.mkdtemp(prefix='csa-real-prepare-'))
 LOG = OUTPUT/'notebook.log'
 CONFIG = SOURCE/'config.json'
 CONFIG.write_text(json.dumps(dict(dataset_json=str(COCO_JSON), detections=str(DETECTIONS), visual_cache=str(VISUAL_CACHE), image_root=str(IMAGE_ROOT), output=str(OUTPUT))), encoding='utf-8')
-(OUTPUT/'source_receipt.json').write_text(json.dumps(dict(commit=COMMIT, sha256=HASHES, pos_model_url={MODEL_URL!r}, pos_model_sha256={MODEL_SHA!r}), indent=2), encoding='utf-8')
+(OUTPUT/'source_receipt.json').write_text(json.dumps(dict(commit=COMMIT, sha256=HASHES, bootstrap_policy='venv_without_pip_base_pip_python', pos_model_url={MODEL_URL!r}, pos_model_sha256={MODEL_SHA!r}), indent=2), encoding='utf-8')
 for name, expected in HASHES.items():
     payload = urllib.request.urlopen(f'https://raw.githubusercontent.com/Supzxjee/Image_Captioning/{{COMMIT}}/{PREFIX}{{name}}', timeout=90).read()
     if hashlib.sha256(payload).hexdigest() != expected: raise RuntimeError('Source differs: '+name)
@@ -45,17 +45,20 @@ try:
     os.environ['OPENBLAS_NUM_THREADS'] = '2'
     os.environ['CUDA_VISIBLE_DEVICES'] = ''
     venv = SOURCE/'pos-env'
-    run([sys.executable, '-m', 'venv', '--system-site-packages', venv], timeout=180)
+    run([sys.executable, '-m', 'venv', '--without-pip', '--system-site-packages', venv], timeout=180)
     PYTHON = venv/'bin/python'
+    if '--python' not in subprocess.check_output([sys.executable, '-m', 'pip', '--help'], text=True):
+        raise RuntimeError('Base pip must support --python (pip>=22.3); do not install into global environment.')
+    PIP = [sys.executable, '-m', 'pip', '--python', str(PYTHON)]
     constraint = SOURCE/'constraints.txt'
     constraint.write_text('numpy=='+np.__version__+chr(10), encoding='utf-8')
-    run([PYTHON, '-m', 'pip', 'install', '--disable-pip-version-check', '--only-binary=:all:', '-c', constraint, 'spacy==3.8.11'], timeout=900)
+    run(PIP + ['install', '--disable-pip-version-check', '--only-binary=:all:', '-c', constraint, 'spacy==3.8.11'], timeout=900)
     wheel = SOURCE/'en_core_web_sm-3.8.0-py3-none-any.whl'
     payload = urllib.request.urlopen({MODEL_URL!r}, timeout=180).read()
     if hashlib.sha256(payload).hexdigest() != {MODEL_SHA!r}: raise RuntimeError('Official POS model wheel SHA differs')
     wheel.write_bytes(payload)
-    run([PYTHON, '-m', 'pip', 'install', '--no-deps', '--force-reinstall', wheel], timeout=180)
-    (OUTPUT/'software_freeze.txt').write_text(subprocess.check_output([PYTHON, '-m', 'pip', 'freeze', '--all'], text=True), encoding='utf-8')
+    run(PIP + ['install', '--no-deps', '--force-reinstall', wheel], timeout=180)
+    (OUTPUT/'software_freeze.txt').write_text(subprocess.check_output(PIP + ['freeze', '--all'], text=True), encoding='utf-8')
     run([PYTHON, '-u', SOURCE/'test_real_assets.py'], timeout=120)
     run([PYTHON, '-u', SOURCE/'prepare_real_assets.py', '--config', CONFIG], timeout=7200)
     summary = json.loads((OUTPUT/'summary.json').read_text(encoding='utf-8'))
@@ -85,7 +88,8 @@ finally:
         **Accelerator None, Internet ON**. Add Input `visual-cache`, `objectdetectionecache`,
         `mscoco-2014`. Không cần checkpoint/prompt/UPT/token. Cell đầu có4path nếu mount khác.
 
-        1. Cài spaCy3.8.11 trong venv tạm, kiểm SHA model en_core_web_sm3.8.0.
+        1. Tạo venv không gọi ensurepip; dùng pip gốc với --python để cài spaCy3.8.11
+           vào venv tạm, kiểm SHA model en_core_web_sm3.8.0.
         2. Pool raw CLIP patches theo box thật cho256TRAIN+64val; không dùng test.
         3. POS toàn566747captionTRAIN để đếm noun/verb lemma, giữ tần suất≥5.
 
