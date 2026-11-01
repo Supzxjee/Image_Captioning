@@ -1,13 +1,13 @@
 {
-  "core_commit": "9b7567ad31cb3709b922239d7a17d29140a93d26",
+  "core_commit": "b8d186d34f553b02f00b093f8ac1433ea7b2956f",
   "sha256": {
     "prepare_real_assets.py": "44a22d92acd239bdc7a1edbe30984daf0853ac8bc196969dd48b19b78df1cc7b",
     "audit_assets.py": "5be2fdf1ee094ef8b23a547b16f423ed3603f7c80b2fe5f2d46cb9224cb90959",
     "data.py": "5a5bb451dc20184d3ea597d4dc8415a120583571f4e1a4dac75e29a306213a71",
     "test_real_assets.py": "0a18eb3b8c5bf519e1c0c7a898760216e4e57ecadc182947640b50eb53bb5c04",
-    "REAL_ASSET_PREPARATION_PROTOCOL.md": "668c751157f550b4d65d9824ac09a4c6098ea8a092b00349283bbe3c41557fec"
+    "REAL_ASSET_PREPARATION_PROTOCOL.md": "4e5b622ade6a20f71d86f0a552172d0f1d6a9c587d0a0d52922f91b0b9f5a0ea"
   },
-  "notebook_sha256": "6c74f7323b5ac78e7a82ae0ad802ebde31752f99d75beb7a01d0425ea6464b2c",
+  "notebook_sha256": "f318f402ec76ffbec4b7d9b7019707e011649e0f9499bb4a1cf2f9fc3bfee0e0",
   "notebook_executed_by_agent": false,
   "user_run_pending": true
 }
