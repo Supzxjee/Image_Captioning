@@ -35,3 +35,7 @@ Tải `CSA_PAPER_CORE_SMOKE.ipynb` lên Kaggle, bật Internet + GPU. Không c�
 - Local NumPy/static: 6 tests PASS; chưa Torch/gradient/GPU/model/scorer/notebook execution.
 - User-run core smoke đã COMPLETE; xem [kết quả](CORE_SMOKE_RESULT.md). Sau đó chuẩn bị bank TRAIN thật bằng POS + CLIP frozen, vocab và join detector/patches/dimensions; chưa có cache CSA mới hay real-data training notebook ở mốc core này.
 - Quota hiện báo20giờ. Chưa ước lượng full recipe trước throughput/VRAM thực; không mở15XE+30RL.
+
+## Kiểm dữ liệu thật trên CPU
+
+Sau core smoke COMPLETE, chạy `CSA_PAPER_ASSET_INVENTORY_CPU.ipynb`, Accelerator **None**, Internet ON, Add Input `visual-cache`, `objectdetectionecache`, `mscoco-2014`. Cell đầu có bốn path để chỉnh nếu mount khác. Không cần checkpoint/prompt/UPT/token. Xuất `csa_paper_asset_inventory_review.zip`. Chưa POS/textbank/ROI/training; không dùng GPU. Local3parser/static+6data testsPASS, actual mounted HDF5/detector/RGB traversal chưa chạy.
