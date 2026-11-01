@@ -1,0 +1,13 @@
+{
+  "core_commit": "6c365d3f9f57da3f69cd43244e7b5fd2d51af128",
+  "sha256": {
+    "data.py": "5a5bb451dc20184d3ea597d4dc8415a120583571f4e1a4dac75e29a306213a71",
+    "model.py": "139edbb1b73caf3dadaf5c960b25542e282f88baf2ce9bdf141de922ceacbc09",
+    "test_data.py": "0a5b114ee4b3cc1b8a0a612ed144fd1b57bda39f792244421ed7c5f19a03521a",
+    "runtime_checks.py": "88e62c44f4b14d13962923b31049bd8399364813ca55624732b903a58b4f84f0",
+    "IMPLEMENTATION_PROTOCOL.md": "154774d6409f50b4f2c45b6b2dbd837624aefbbd3aacb9af72fbdad313defcfc"
+  },
+  "notebook_sha256": "7c4e12498b218c2b4a1cb4323740267e52d089ad30e559956f1868a3fe46511d",
+  "model_run_by_agent": false,
+  "kaggle_submitted": false
+}
