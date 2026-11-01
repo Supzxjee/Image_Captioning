@@ -10,7 +10,7 @@ Cập nhật: 01/11/2026, giờ Việt Nam. File này là bản tóm tắt để
 
 ## Hiện đang ở đâu
 
-- **ƯU TIÊN MỚI user chốt01/11: tái hiện CSA-Net nguyên bản trước, rồi mới cải tiến.** Không tiếp tục coi novelty/X020 là việc trước mắt. [Kế hoạch và assets thiếu](experiments/csa_inheritance_audit/CSA_FULL_REPRODUCTION_PLAN.md). BảnQ-Former+CSAcore/concatmemory trước làadaptation,khôngfullreproduction. OfficialHEAD0cc570b kiểmAPI239entrieskhôngtruncated;thiếu `models/detection/det_module.py` màsourceimport và detector4dscheckpoint trongrelease đãđọc. Cóbanks/core/decoder; cần khôi phụcnguồnđúng, auditrecipe/data/env trướcsmokenotebook. Không tự thayCLIP/UPT hoặc detectorngẫunhiên. ChưafullCSAcode/GPU/modelrunmới;userchạynotebook. X021bàngiaoCodex2 mục tiêu mới.
+- **User chốt lại01/11: tự viết theo bài báo CSA, được dùng detector của mình, rồi mới phát triển thêm.** [Quyết định cập nhật](experiments/csa_inheritance_audit/CSA_FULL_REPRODUCTION_PLAN.md). Không sao chép code tác giả/AST-exec vào implementation mới, không bắt buộc detector/checkpoint gốc; phải có đặc trưng vùng thực và nguồn bank/vocab rõ. Tạm dừng ưu tiên novelty/X020. Bước tiếp: đặc tả paper→module/tensor/test và bộ đặc trưng vùng, sau đó module mới; chưa code/model/GPU run. Không nhận exact full-system reproduction hoặc việc viết lại là novelty; giữ lịch sử adaptation cũ.
 
 - **01/11 user yêu cầu sửa trực tiếp Google Docs báo cáo:** đã thay riêng mục hướng đề xuất X018 bằng X020 và pipeline adapter trước fc_out, nhấn mạnh hoán đổi value/nhãn bộ phận/chưa chạy. Readback xác nhận các mục kết quả trước mục3 nguyên trạng; PDF2trang,đãxemtrang2. Đây là cập nhật báo cáo, không duyệt phương pháp/trainer/GPU. Wordlocal cũ vẫn là bản X018, không tự coi đã đồng bộ với Docs.
 

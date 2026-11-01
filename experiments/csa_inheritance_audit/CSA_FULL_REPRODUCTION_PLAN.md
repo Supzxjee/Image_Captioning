@@ -2,6 +2,16 @@
 
 Ngày 01/11/2026. **User chốt:** “tôi không cần đóng góp mới tôi cần xây dựng y chang csa từ đó mới phát triển thêm”. Đây là thay đổi mục tiêu trước mắt, không phải yêu cầu tiếp tục bảo vệ X018/X020. Ưu tiên tái hiện phương pháp tham chiếu, chưa cần đề xuất novelty. Người dùng tự chạy notebook; agent không chạy mô hình hoặc tự submit Kaggle.
 
+## Quyết định cập nhật sau trao đổi ngày 01 tháng 11
+
+**Phạm vi hiện tại thay cho yêu cầu nguyên bản toàn hệ thống ở bản đầu:** user chấp nhận dùng detector của mình, sau đó chọn “nên tự viết lại chỉ dùng ý tưởng thôi”. Ta tự triển khai theo công thức/kiến trúc trong bài báo CSA; không sao chép code tác giả hoặc dùng lớp reference_class/AST-exec từ pilot cũ trong phần triển khai mới. Detector thay thế phải cung cấp đặc trưng thị giác vùng, không chỉ box/class/confidence. Cách gọi: triển khai lại cơ chế CSA theo bài báo với bộ đặc trưng vùng thay thế, không nhận exact full-system/code parity hoặc benchmark reproduction.
+
+Đã từng đọc code tác giả để audit, nên không mô tả là chưa từng tiếp xúc code. Trích dẫn bài báo và ghi rõ mọi khác biệt. Tự viết lại không biến CSA thành phương pháp mới. Bank ngữ nghĩa/vocab/checkpoint/dataset là tài nguyên riêng cần xác định nguồn và điều kiện sử dụng; không mặc định viết lại code là được dùng lại mọi file nhị phân của tác giả. Có thể tự dựng semantic bank từ nguồn từ vựng và text encoder được xác minh, nhưng phải ghi đây là khác biệt nếu không giống bank tham chiếu.
+
+Bước kế tiếp: bản đặc tả paper equation→module→tensor→test cho semantic aggregation, object alignment hai stage, relation alignment, gate và decoder hai luồng; chốt bộ lấy đặc trưng vùng thay thế và nguồn bank. Sau đó viết module mới theo đặc tả. Không dùng SCST/objectreward/KL của C0 thay recipe CSA mà không khai báo. Local chỉ metadata/static/NumPy; notebook/model do user chạy. Mã/báo cáo pilot cũ được giữ để đối chiếu, không xóa lịch sử hoặc ghi lại thành kết quả bản mới.
+
+**Các mục dưới đây giữ lịch sử kế hoạch tái hiện toàn bộ ban đầu; những yêu cầu detector/checkpoint gốc không còn là blocker bắt buộc của phạm vi hiện tại.**
+
 ## Chuẩn tái hiện
 
 - Bài báo CSA-Net mà người dùng đã cung cấp, cùng code tác giả `CrossmodalGroup/CSA-Net` tại commit `0cc570ba7c50ef08c46a21439fe73ef0a5df97ab`.
