@@ -909,3 +909,8 @@ User supplied `/kaggle/input/datasets/ducanh2403/csa-real-v126-lemma-fixed`. Pro
 ### X037 — Codex1 — 02/11/2026 — real semantic bank + CSA smoke COMPLETE
 
 [Result](experiments/csa_paper/REAL_BANK_SMOKE_RESULT.md), ZIP7b14d35a…, core086094e fiveGitSHAs verified;27metadataassertionsPASS. Frozen5269noun/1594verb512D bank complete; semantic_banks.npz SHAe7760856… reported (binary absentreview). ActualROIvalidation/4TRAIN2XEupdates and2valbeam complete, bankfrozen, gradient/permutationguards pass. Loss9.15211→9.15897 on DIFFERENT batches is not a trend. Both captions repetitive20tokens(space/terrier),noEOS; no qualityevaluation/checkpoint. PeakallocatedCSA1001.1875MiB only, no workerelapsedrecorded. Do not infer alignmentaccuracy/CSAbenefit/recipeETA. Agent executed metadataonly. Nextsavecacheusingexactversion (askeduser), then bounded real-data XE learningpilot beforefullrecipe. No newlexicalaudit or novelty brainstorm needed at this stage.
+
+
+### X038 — Codex1 — 02/11/2026 — Output130 bank transport PREPARED
+
+User confirmed completed cache/smoke version130. SAVE_CSA_BANK_V130_DATASET.ipynb uses previous pinned CLI API/version-label mockpreflight, exact6payload fullSHAs fromreview, unchangedNPZ, transportreceipt, newPrivate csa-semantic-banks-v130. CPUonly/userAPIsecret, noencode/train.29localmetadata/NumPy/mock/static testsPASS. ActualDatasetcreation/mountnotconfirmed. Keep earlier csa-real-v126-lemma-fixed forROI/vocab. No newexperimentrow/run/qualityclaim.
