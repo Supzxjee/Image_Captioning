@@ -1,0 +1,467 @@
+{
+  "schema": "csa_lemma_trace_cases_v1",
+  "source_dataset_sha256": "2fd999220673258012acfb411a4e7e66af7d488050b2519b0badcc49b7600b8d",
+  "selection": "First up to6 TRAIN examples per surface +3 discussed images if not already selected; purposive, not representative",
+  "cases": [
+    {
+      "kind": "train_caption",
+      "coco_id": 372938,
+      "filename": "COCO_val2014_000000372938.jpg",
+      "split": "restval",
+      "sentence_index": 0,
+      "caption": "A group of people riding on the back of a loaded red pickup truck.",
+      "selection_forms": [
+        "riding"
+      ]
+    },
+    {
+      "kind": "train_caption",
+      "coco_id": 384553,
+      "filename": "COCO_val2014_000000384553.jpg",
+      "split": "restval",
+      "sentence_index": 0,
+      "caption": "A man riding an elephant into some water of a creek.",
+      "selection_forms": [
+        "riding"
+      ]
+    },
+    {
+      "kind": "train_caption",
+      "coco_id": 384553,
+      "filename": "COCO_val2014_000000384553.jpg",
+      "split": "restval",
+      "sentence_index": 1,
+      "caption": "man riding an elephant into water surrounded by forest",
+      "selection_forms": [
+        "riding"
+      ]
+    },
+    {
+      "kind": "train_caption",
+      "coco_id": 384553,
+      "filename": "COCO_val2014_000000384553.jpg",
+      "split": "restval",
+      "sentence_index": 2,
+      "caption": "A man riding an elephant in a river.",
+      "selection_forms": [
+        "riding"
+      ]
+    },
+    {
+      "kind": "train_caption",
+      "coco_id": 384553,
+      "filename": "COCO_val2014_000000384553.jpg",
+      "split": "restval",
+      "sentence_index": 3,
+      "caption": "A man in a brown shirt rides an elephant into the water.",
+      "selection_forms": [
+        "rides"
+      ]
+    },
+    {
+      "kind": "train_caption",
+      "coco_id": 384553,
+      "filename": "COCO_val2014_000000384553.jpg",
+      "split": "restval",
+      "sentence_index": 4,
+      "caption": "A man rides an elephant into a river.",
+      "selection_forms": [
+        "rides"
+      ]
+    },
+    {
+      "kind": "train_caption",
+      "coco_id": 79841,
+      "filename": "COCO_val2014_000000079841.jpg",
+      "split": "restval",
+      "sentence_index": 1,
+      "caption": "Two shots of men riding bicycles down city streets.",
+      "selection_forms": [
+        "riding"
+      ]
+    },
+    {
+      "kind": "train_caption",
+      "coco_id": 79841,
+      "filename": "COCO_val2014_000000079841.jpg",
+      "split": "restval",
+      "sentence_index": 2,
+      "caption": "A man riding a bike in front of a tall building.",
+      "selection_forms": [
+        "riding"
+      ]
+    },
+    {
+      "kind": "train_caption",
+      "coco_id": 122851,
+      "filename": "COCO_val2014_000000122851.jpg",
+      "split": "restval",
+      "sentence_index": 2,
+      "caption": "A man attending to several bundles of banana's as a motorcycle rides by.",
+      "selection_forms": [
+        "rides"
+      ]
+    },
+    {
+      "kind": "train_caption",
+      "coco_id": 296649,
+      "filename": "COCO_val2014_000000296649.jpg",
+      "split": "restval",
+      "sentence_index": 3,
+      "caption": "people ride their motorcycles beside some cars, passing by an empty street with stores and apartment buildings",
+      "selection_forms": [
+        "ride"
+      ]
+    },
+    {
+      "kind": "train_caption",
+      "coco_id": 490081,
+      "filename": "COCO_val2014_000000490081.jpg",
+      "split": "restval",
+      "sentence_index": 1,
+      "caption": "Man rides on the back of a wooden cart being pulled by two cows. ",
+      "selection_forms": [
+        "rides"
+      ]
+    },
+    {
+      "kind": "train_caption",
+      "coco_id": 242499,
+      "filename": "COCO_val2014_000000242499.jpg",
+      "split": "restval",
+      "sentence_index": 0,
+      "caption": "People ride on elephants to cross the river.",
+      "selection_forms": [
+        "ride"
+      ]
+    },
+    {
+      "kind": "train_caption",
+      "coco_id": 260166,
+      "filename": "COCO_val2014_000000260166.jpg",
+      "split": "restval",
+      "sentence_index": 1,
+      "caption": "Several people are taking a ride on elephants.",
+      "selection_forms": [
+        "ride"
+      ]
+    },
+    {
+      "kind": "train_caption",
+      "coco_id": 289899,
+      "filename": "COCO_val2014_000000289899.jpg",
+      "split": "restval",
+      "sentence_index": 0,
+      "caption": "A group of people ride in a canal past buildings.",
+      "selection_forms": [
+        "ride"
+      ]
+    },
+    {
+      "kind": "train_caption",
+      "coco_id": 122934,
+      "filename": "COCO_val2014_000000122934.jpg",
+      "split": "restval",
+      "sentence_index": 2,
+      "caption": "The tourists take a leasurely ride in the horse-drawn carriage.",
+      "selection_forms": [
+        "ride"
+      ]
+    },
+    {
+      "kind": "train_caption",
+      "coco_id": 440329,
+      "filename": "COCO_val2014_000000440329.jpg",
+      "split": "restval",
+      "sentence_index": 3,
+      "caption": "A group of people standing in a parking lot as a man rides a bull.",
+      "selection_forms": [
+        "rides"
+      ]
+    },
+    {
+      "kind": "train_caption",
+      "coco_id": 440329,
+      "filename": "COCO_val2014_000000440329.jpg",
+      "split": "restval",
+      "sentence_index": 4,
+      "caption": "A man rides a cow through a parking lot.",
+      "selection_forms": [
+        "rides"
+      ]
+    },
+    {
+      "kind": "train_caption",
+      "coco_id": 497312,
+      "filename": "COCO_val2014_000000497312.jpg",
+      "split": "restval",
+      "sentence_index": 4,
+      "caption": "A woman is watching a girl ride a horse.",
+      "selection_forms": [
+        "ride"
+      ]
+    },
+    {
+      "kind": "train_caption",
+      "coco_id": 409944,
+      "filename": "COCO_val2014_000000409944.jpg",
+      "split": "restval",
+      "sentence_index": 4,
+      "caption": "A poster of an angry tennis player adorns a graffiti-ridden wall.",
+      "selection_forms": [
+        "ridden"
+      ]
+    },
+    {
+      "kind": "train_caption",
+      "coco_id": 328354,
+      "filename": "COCO_val2014_000000328354.jpg",
+      "split": "restval",
+      "sentence_index": 0,
+      "caption": "A dilapidated room with a plaster chunked floor is equipped with debris ridden chairs and a tiny vintage refrigerator.",
+      "selection_forms": [
+        "ridden"
+      ]
+    },
+    {
+      "kind": "train_caption",
+      "coco_id": 46508,
+      "filename": "COCO_val2014_000000046508.jpg",
+      "split": "restval",
+      "sentence_index": 2,
+      "caption": "A elephant being ridden by a little boy.",
+      "selection_forms": [
+        "ridden"
+      ]
+    },
+    {
+      "kind": "train_caption",
+      "coco_id": 162021,
+      "filename": "COCO_val2014_000000162021.jpg",
+      "split": "restval",
+      "sentence_index": 3,
+      "caption": "Three young people ridding skateboards in the city.",
+      "selection_forms": [
+        "ridding"
+      ]
+    },
+    {
+      "kind": "train_caption",
+      "coco_id": 39860,
+      "filename": "COCO_val2014_000000039860.jpg",
+      "split": "restval",
+      "sentence_index": 4,
+      "caption": "A young man in a green outfit ridding a surfboard. ",
+      "selection_forms": [
+        "ridding"
+      ]
+    },
+    {
+      "kind": "train_caption",
+      "coco_id": 460781,
+      "filename": "COCO_val2014_000000460781.jpg",
+      "split": "restval",
+      "sentence_index": 0,
+      "caption": "A young man ridding a snowboard sliding down a railing in the snow.",
+      "selection_forms": [
+        "ridding"
+      ]
+    },
+    {
+      "kind": "train_caption",
+      "coco_id": 136285,
+      "filename": "COCO_val2014_000000136285.jpg",
+      "split": "restval",
+      "sentence_index": 4,
+      "caption": "A man standing next to a horse being ridden by a young boy. ",
+      "selection_forms": [
+        "ridden"
+      ]
+    },
+    {
+      "kind": "train_caption",
+      "coco_id": 477791,
+      "filename": "COCO_val2014_000000477791.jpg",
+      "split": "restval",
+      "sentence_index": 2,
+      "caption": "A cat ridding in a car looking out the window with a small building in the background.",
+      "selection_forms": [
+        "ridding"
+      ]
+    },
+    {
+      "kind": "train_caption",
+      "coco_id": 145562,
+      "filename": "COCO_val2014_000000145562.jpg",
+      "split": "restval",
+      "sentence_index": 4,
+      "caption": "A small train being ridden by a few people.",
+      "selection_forms": [
+        "ridden"
+      ]
+    },
+    {
+      "kind": "train_caption",
+      "coco_id": 227772,
+      "filename": "COCO_val2014_000000227772.jpg",
+      "split": "restval",
+      "sentence_index": 3,
+      "caption": "A young man ridding a skateboard down the handrail of some steps as people watch.",
+      "selection_forms": [
+        "ridding"
+      ]
+    },
+    {
+      "kind": "train_caption",
+      "coco_id": 312078,
+      "filename": "COCO_val2014_000000312078.jpg",
+      "split": "restval",
+      "sentence_index": 2,
+      "caption": "A young person ridding the waves on a surf board.",
+      "selection_forms": [
+        "ridding"
+      ]
+    },
+    {
+      "kind": "train_caption",
+      "coco_id": 246746,
+      "filename": "COCO_val2014_000000246746.jpg",
+      "split": "restval",
+      "sentence_index": 3,
+      "caption": "A horse being ridden in the middle of the grass.",
+      "selection_forms": [
+        "ridden"
+      ]
+    },
+    {
+      "kind": "train_caption",
+      "coco_id": 107558,
+      "filename": "COCO_val2014_000000107558.jpg",
+      "split": "restval",
+      "sentence_index": 3,
+      "caption": "there is a skateboarder that has rode down a ramp",
+      "selection_forms": [
+        "rode"
+      ]
+    },
+    {
+      "kind": "train_caption",
+      "coco_id": 357354,
+      "filename": "COCO_val2014_000000357354.jpg",
+      "split": "restval",
+      "sentence_index": 4,
+      "caption": "An elephant is being rode on the street",
+      "selection_forms": [
+        "rode"
+      ]
+    },
+    {
+      "kind": "train_caption",
+      "coco_id": 493772,
+      "filename": "COCO_val2014_000000493772.jpg",
+      "split": "restval",
+      "sentence_index": 3,
+      "caption": "A person holds an umbrella in the middle of a rode. ",
+      "selection_forms": [
+        "rode"
+      ]
+    },
+    {
+      "kind": "train_caption",
+      "coco_id": 84004,
+      "filename": "COCO_val2014_000000084004.jpg",
+      "split": "restval",
+      "sentence_index": 4,
+      "caption": "A young female surfer just rode a wave at the beach",
+      "selection_forms": [
+        "rode"
+      ]
+    },
+    {
+      "kind": "train_caption",
+      "coco_id": 7726,
+      "filename": "COCO_val2014_000000007726.jpg",
+      "split": "restval",
+      "sentence_index": 1,
+      "caption": "a truck driving down the rode on a rainy day",
+      "selection_forms": [
+        "rode"
+      ]
+    },
+    {
+      "kind": "train_caption",
+      "coco_id": 231782,
+      "filename": "COCO_train2014_000000231782.jpg",
+      "split": "train",
+      "sentence_index": 4,
+      "caption": "Cows walking along side a rode with snow on the mountain behind.",
+      "selection_forms": [
+        "rode"
+      ]
+    },
+    {
+      "kind": "train_caption",
+      "coco_id": 14683,
+      "filename": "COCO_train2014_000000014683.jpg",
+      "split": "train",
+      "sentence_index": 3,
+      "caption": "Two jockeys rid inning in a pasture with sheep.",
+      "selection_forms": [
+        "rid"
+      ]
+    },
+    {
+      "kind": "train_caption",
+      "coco_id": 69167,
+      "filename": "COCO_train2014_000000069167.jpg",
+      "split": "train",
+      "sentence_index": 4,
+      "caption": "A young boy riding bareback on a horse at a fair",
+      "selection_forms": [
+        "visually_discussed_example"
+      ]
+    },
+    {
+      "kind": "train_caption",
+      "coco_id": 263974,
+      "filename": "COCO_train2014_000000263974.jpg",
+      "split": "train",
+      "sentence_index": 0,
+      "caption": "a number of people riding bicycles on a street ",
+      "selection_forms": [
+        "visually_discussed_example"
+      ]
+    },
+    {
+      "kind": "train_caption",
+      "coco_id": 198785,
+      "filename": "COCO_train2014_000000198785.jpg",
+      "split": "train",
+      "sentence_index": 4,
+      "caption": "A group of women riding on the back of a motorcycle.",
+      "selection_forms": [
+        "visually_discussed_example"
+      ]
+    },
+    {
+      "kind": "synthetic_control",
+      "caption": "A boy is riding a horse."
+    },
+    {
+      "kind": "synthetic_control",
+      "caption": "A cyclist rides a bicycle."
+    },
+    {
+      "kind": "synthetic_control",
+      "caption": "People ride horses."
+    },
+    {
+      "kind": "synthetic_control",
+      "caption": "They rid the room of smoke."
+    },
+    {
+      "kind": "synthetic_control",
+      "caption": "They are ridding the room of smoke."
+    }
+  ]
+}

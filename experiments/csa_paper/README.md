@@ -49,3 +49,7 @@ Chạy `CSA_PAPER_REAL_PREPARATION_CPU.ipynb` trên **CPU/Accelerator None**, In
 ## Output126 đã hoàn tất — lưu trước, kiểm từ gốc trước CLIP text
 
 [CPU result](REAL_PREPARATION_RESULT.md):5269noun/1594verb,2180ROIcho320ảnh. Có cờ kiểm tra `rid`18575: chưa tự sửa hoặc coi bank đã đúngngữnghĩa. Chạy `SAVE_CSA_REAL_PREPARATION_V126_DATASET.ipynb` với **CPU/InternetON/KaggleAPIsecret**, không cần AddInput; khóaOutput126, kiểm8fileSHA và tạoPrivateDatasetmới. Sửa SECRET_NAME nếu secretđặt têncodex. Gửi mountpaththực sau khi attach; không xóa126. Chưa mãhóaCLIPtext/training/APIrunbởiagent.
+
+## Kiểm tra token → POS → lemma trước khi sửa bank
+
+`CSA_LEMMA_TRACE_CPU.ipynb`: CPU/InternetON, **không cần Dataset, AddInput hoặc API token**.40captionTRAIN+5câuđốichứng, cùngmodel/phiênbảnvàhashdữliệuPOS126. XuấtbảngHTMLvàJSONgiữnguyênđầura, khôngđổirid→ride. Gửi `csa_lemma_trace_check_review.zip`.20localmetadata/mock/staticchecksPASS, chưaPOSrunbởiagent. Datasetv126chưađượcxácnhận; notebookSAVE126lưuriêng, khônglàprerequisitecủatrace.
