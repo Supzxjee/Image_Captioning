@@ -82,7 +82,7 @@ config=dict(dataset_json='/kaggle/input/datasets/vuthetam/mscoco-2014/dataset_co
     image_root='/kaggle/input/datasets/vuthetam/mscoco-2014/images',prepared_root=str(PREPARED_ROOT),output=str(OUTPUT))
 # Edit paths here only if your mounted Dataset paths differ.
 CONFIG.write_text(json.dumps(config,indent=2),encoding='utf-8')
-run([sys.executable,'-u',SOURCE/'prepare_full_regions.py','--config',CONFIG],timeout=21600)
+run([sys.executable,'-u',SOURCE/'prepare_full_regions.py','--config',CONFIG],timeout=36000)
 receipt=json.loads((OUTPUT/'receipt.json').read_text(encoding='utf-8'))
 if receipt['status']!='FULL_ROI_PREPARATION_COMPLETE':raise RuntimeError('Full ROI incomplete')
 '''
@@ -90,7 +90,7 @@ if receipt['status']!='FULL_ROI_PREPARATION_COMPLETE':raise RuntimeError('Full R
         instructions='''Accelerator NONE + Internet ON. Add FOUR Datasets:
 `mscoco-2014` (vuthetam), `objectdetectionecache`, `visual-cache`, `csa-real-v126-lemma-fixed` (ducanh2403).
 No Secret, checkpoint, bank130, spaCy, CLIP encoding or training. Uses existing rawCLIPpatches+predictedboxes.
-Prepares113287TRAIN+5000val, excludes test. Writes119pairedNPZ/JSONshards. CPUcap6h is notETA; stops early if first-shard projection cannot fit cap.
+Prepares113287TRAIN+5000val, excludes test. Writes119pairedNPZ/JSONshards. CPUcap10h/internal9h50 is notETA; stops early if first-shard projection cannot fit the new cap.
 Keep entire output folder; review ZIP excludes shards. Partial completion is not training-ready; no automatic resume.
 '''
         filename='CSA_FULL_ROI_KARPATHY_CPU.ipynb'

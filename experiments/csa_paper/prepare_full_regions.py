@@ -30,7 +30,7 @@ def chunks(rows,size=1000):
 def prepare(config):
     import h5py
     from PIL import Image
-    started=time.monotonic();deadline=started+21000
+    started=time.monotonic();deadline=started+35400
     out=Path(config['output']);out.mkdir(parents=True,exist_ok=True)
     if (out/'manifest.json').exists() or (out/'progress.json').exists():raise ValueError('Preserve existing shards; this worker does not auto-resume')
     for name,h in [('dataset_json',DATA_SHA),('detections',DETECTION_SHA)]:
@@ -61,7 +61,7 @@ def prepare(config):
             for local_shard,selected in enumerate(chunks(rows)):
                 records=[];metadata=[]
                 for image in selected:
-                    if time.monotonic()>deadline:raise TimeoutError('Internal5h50cap; completed shards retained')
+                    if time.monotonic()>deadline:raise TimeoutError('Internal9h50cap; completed shards retained')
                     name=image['filename'];identity=coco_id(name);path,row=index[identity]
                     if path not in handles:handles[path]=h5py.File(path,'r')
                     f=handles[path]

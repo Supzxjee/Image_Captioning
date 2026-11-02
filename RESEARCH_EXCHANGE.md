@@ -934,3 +934,8 @@ User approvedgreedy/beam/EOSinspection andfullKarpathyROIpreparation, notfulltra
 ### X042 — Codex1 — 02/11/2026 — decode131 input failure, no model conclusion
 
 [Failure](experiments/csa_paper/DECODE_CHECK_INPUT_FAILURE.md), ZIP737bdf25…,10GitSHAs/15metadataassertionsverified. Exact131checkpointSHA99b1f993…downloaded; failedatload_prepared rootmarker count!=1 beforemodel/decode. Missingmount/0marker/multiplemarkerscannotbedistinguishedoldlog, donotassertdeletedDataset/checkpointbug. NewdecodeNBvalidatesbothROIpayload+bankfullSHAsbeforeAPI/checkpointdownload, actionablemissingroot/count errors, nohashbypass/autodiscovery/modelchange.37localchecksPASS; noagentTorch. UsermustattachbothDatasets/correctmounts. FullROIoldnotebookunchanged. NoEOS/greedy/beamresultyet, no newGPUtrainingapproved. R228updated.
+
+
+### X043 — Codex1 — 02/11/2026 — raise CPU ROI cap using measured firstshard
+
+Userpastedlog:first1000images persisted,processing199.8567s,projectedremaining23440.5925s>old6hcap. Notdata/modelerror, notfullcompletion; noZIPauditclaimed. Userrequestsraise cap/reportsreset30GPUh. MinimalfixCPUworker10h/internal9h50;noROIalgorithm/selection/hashes/modelchange. Keepfirstshardprojectionagainstnewcap. Noresumeintroduced; newSaveVersion reprocessesfirst1000(~3.3min), noCLIP/POS. UpdatedROINBonly;decodeoldpinunchanged. Runtime/full119shardsawaituser, preservepartialifdesired;R229.

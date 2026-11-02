@@ -23,3 +23,10 @@ CPU cap6h (notETA), internalstop at5h50min, flushprogress after everycompletedsh
 ## Boundary and next decision
 
 Agent onlymetadata/NumPy/mock/static checks. UserrunsCUDA/HDF5featurepooling/API. Afterdecoderreview andfullROIcomplete, prepare a measuredfew-dozen-update throughput check with full-data batching and calculate a fullXEbudget. Do not extrapolate331s smallpilot or commit full15XE+30RL now. Diagramwork staysatplanningstage asrequested.
+
+
+## Amendment02/11 — CPU cap after first-shard timing
+
+User log (not yet independentZIP audit) reports first1000images completed in199.856697642processingseconds; projectedremaining23440.59249633726seconds (~6.51h). The original6hcap correctly stopped early but was too short for measured throughput. User requests a higher cap and reports GPUquota reset30h. This preparation remains CPU/AcceleratorNone; no GPUtraining budget used by this code.
+
+Increase worker cap to36000s(10h), internal35400s(9h50). Keep exactpooling/selection/hashes/shards and first-shard projection stop against the NEW cap. These remain safetycaps, not promisedruntime. To keep this fix small, no resumeimplementation is introduced: a fresh session reprocesses first1000images (~3.3min at observedprocessingrate), not CLIP/POS. Preserve oldpartialoutput if desired; updatednotebook requiresfreshoutputdirectory and doesnotoverwriteit. Previous6h protocol retained above as historicaldecision. Fullcompletion still awaitsall119shards, no trainingreadyclaim fromfirstshard.
