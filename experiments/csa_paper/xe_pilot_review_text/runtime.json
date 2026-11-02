@@ -1,0 +1,11 @@
+{
+  "device": "Tesla T4",
+  "visible_gpus": 2,
+  "used_gpu": 0,
+  "precision": "FP32,noAMP,noTF32",
+  "software": {
+    "torch": "2.11.0+cu128",
+    "numpy": "2.1.3"
+  },
+  "gpu_total_bytes": 15636037632
+}

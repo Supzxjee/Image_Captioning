@@ -1,0 +1,7 @@
+{
+  "epoch": 15,
+  "updates": 600,
+  "sha256": "99b1f9936b864e549182f2307c369a221e4ca4f17b0f0cad9c60f3fb1cb7017e",
+  "complete_endpoint": true,
+  "selection": "fixed last epoch, no best selection"
+}

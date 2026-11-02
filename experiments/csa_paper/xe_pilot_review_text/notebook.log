@@ -1,0 +1,94 @@
+INITIAL {'epoch': 0, 'val': {'nll': 9.215228891139065, 'target_tokens': 3674, 'caption_events': 320}, 'train_probe': {'nll': 9.224751857956118, 'target_tokens': 1806, 'caption_events': 160}}
+initial beam 8 /64
+initial beam 16 /64
+initial beam 24 /64
+initial beam 32 /64
+initial beam 40 /64
+initial beam 48 /64
+initial beam 56 /64
+initial beam 64 /64
+Timing first10updates: 4.512421141000004 s; estimated remaining TRAIN steps only: 266.23284731900026 s (not a guarantee)
+TRAIN {'epoch': 1, 'step': 10, 'total_updates': 600, 'lr': 1.4957983193277311e-05, 'nll': 8.761001236137302, 'grad_norm': 4.2443671226501465, 'seconds': 26.825367991000007}
+TRAIN {'epoch': 1, 'step': 20, 'total_updates': 600, 'lr': 2.26890756302521e-05, 'nll': 8.449340574203, 'grad_norm': 3.724058151245117, 'seconds': 30.885232262999978}
+TRAIN {'epoch': 1, 'step': 30, 'total_updates': 600, 'lr': 3.0420168067226887e-05, 'nll': 8.050754982780946, 'grad_norm': 3.947762966156006, 'seconds': 34.92332579099997}
+TRAIN {'epoch': 1, 'step': 40, 'total_updates': 600, 'lr': 3.815126050420168e-05, 'nll': 7.740611769936302, 'grad_norm': 4.024217128753662, 'seconds': 38.91788916799999}
+EPOCH {'epoch': 1, 'updates': 40, 'observed_train_nll': 8.434270597539397, 'val': {'nll': 7.66803645516584, 'target_tokens': 3674, 'caption_events': 320}, 'seconds': 20.12615638799997, 'train_probe': {'nll': 7.662826656371124, 'target_tokens': 1806, 'caption_events': 160}}
+TRAIN {'epoch': 2, 'step': 50, 'total_updates': 600, 'lr': 4.5882352941176467e-05, 'nll': 7.550107456261004, 'grad_norm': 3.5942270755767822, 'seconds': 47.10043914199997}
+TRAIN {'epoch': 2, 'step': 60, 'total_updates': 600, 'lr': 5.361344537815126e-05, 'nll': 7.0603473757909345, 'grad_norm': 3.9793946743011475, 'seconds': 51.20969121799999}
+TRAIN {'epoch': 2, 'step': 70, 'total_updates': 600, 'lr': 6.134453781512605e-05, 'nll': 6.912069871690538, 'grad_norm': 3.301445245742798, 'seconds': 55.264404028}
+TRAIN {'epoch': 2, 'step': 80, 'total_updates': 600, 'lr': 6.907563025210085e-05, 'nll': 6.4344826680113245, 'grad_norm': 3.4706413745880127, 'seconds': 59.266598531}
+EPOCH {'epoch': 2, 'updates': 80, 'observed_train_nll': 7.168294473240518, 'val': {'nll': 6.451073942978744, 'target_tokens': 3674, 'caption_events': 320}, 'seconds': 19.883093865999967}
+TRAIN {'epoch': 3, 'step': 90, 'total_updates': 600, 'lr': 7.680672268907564e-05, 'nll': 6.130888063186521, 'grad_norm': 2.661764621734619, 'seconds': 67.09668679999999}
+TRAIN {'epoch': 3, 'step': 100, 'total_updates': 600, 'lr': 8.453781512605043e-05, 'nll': 5.718985082093164, 'grad_norm': 2.284302234649658, 'seconds': 71.14029259099999}
+TRAIN {'epoch': 3, 'step': 110, 'total_updates': 600, 'lr': 9.226890756302521e-05, 'nll': 5.686426883273654, 'grad_norm': 1.528025507926941, 'seconds': 75.17258931499998}
+TRAIN {'epoch': 3, 'step': 120, 'total_updates': 600, 'lr': 0.0001, 'nll': 5.384575737847222, 'grad_norm': 1.3495261669158936, 'seconds': 79.217620382}
+EPOCH {'epoch': 3, 'updates': 120, 'observed_train_nll': 5.835891550439036, 'val': {'nll': 5.556324086113993, 'target_tokens': 3674, 'caption_events': 320}, 'seconds': 20.073563775000025, 'train_probe': {'nll': 5.359059795324721, 'target_tokens': 1806, 'caption_events': 160}}
+TRAIN {'epoch': 4, 'step': 130, 'total_updates': 600, 'lr': 0.0001, 'nll': 5.181527362606389, 'grad_norm': 1.2579392194747925, 'seconds': 87.67319626400001}
+TRAIN {'epoch': 4, 'step': 140, 'total_updates': 600, 'lr': 0.0001, 'nll': 5.325986957023157, 'grad_norm': 1.1853200197219849, 'seconds': 91.646509971}
+TRAIN {'epoch': 4, 'step': 150, 'total_updates': 600, 'lr': 0.0001, 'nll': 5.284136939594764, 'grad_norm': 1.1967555284500122, 'seconds': 95.69846652899997}
+TRAIN {'epoch': 4, 'step': 160, 'total_updates': 600, 'lr': 0.0001, 'nll': 5.295597508623095, 'grad_norm': 1.3631993532180786, 'seconds': 99.69988620599997}
+EPOCH {'epoch': 4, 'updates': 160, 'observed_train_nll': 5.27147178923778, 'val': {'nll': 5.4645432257821005, 'target_tokens': 3674, 'caption_events': 320}, 'seconds': 19.817367681999997}
+TRAIN {'epoch': 5, 'step': 170, 'total_updates': 600, 'lr': 0.0001, 'nll': 5.156799076739406, 'grad_norm': 1.4437133073806763, 'seconds': 107.54052062900001}
+TRAIN {'epoch': 5, 'step': 180, 'total_updates': 600, 'lr': 0.0001, 'nll': 5.058022273009089, 'grad_norm': 1.509921908378601, 'seconds': 111.62273446899997}
+TRAIN {'epoch': 5, 'step': 190, 'total_updates': 600, 'lr': 0.0001, 'nll': 5.023004284903366, 'grad_norm': 1.4513139724731445, 'seconds': 115.741988005}
+TRAIN {'epoch': 5, 'step': 200, 'total_updates': 600, 'lr': 0.0001, 'nll': 4.926839930065991, 'grad_norm': 1.6011192798614502, 'seconds': 119.806494531}
+EPOCH {'epoch': 5, 'updates': 200, 'observed_train_nll': 5.07714894664797, 'val': {'nll': 5.3342477863874525, 'target_tokens': 3674, 'caption_events': 320}, 'seconds': 20.163784619000012, 'train_probe': {'nll': 4.928479605470913, 'target_tokens': 1806, 'caption_events': 160}}
+TRAIN {'epoch': 6, 'step': 210, 'total_updates': 600, 'lr': 0.0001, 'nll': 4.868101295264991, 'grad_norm': 1.4407439231872559, 'seconds': 128.263261102}
+TRAIN {'epoch': 6, 'step': 220, 'total_updates': 600, 'lr': 0.0001, 'nll': 4.926152250501844, 'grad_norm': 1.712415337562561, 'seconds': 132.30524199799999}
+TRAIN {'epoch': 6, 'step': 230, 'total_updates': 600, 'lr': 0.0001, 'nll': 4.6557685150497266, 'grad_norm': 1.4307020902633667, 'seconds': 136.34513110899996}
+TRAIN {'epoch': 6, 'step': 240, 'total_updates': 600, 'lr': 0.0001, 'nll': 4.6051461651396295, 'grad_norm': 1.641120195388794, 'seconds': 140.36447632699998}
+EPOCH {'epoch': 6, 'updates': 240, 'observed_train_nll': 4.828971524230435, 'val': {'nll': 5.166461660087141, 'target_tokens': 3674, 'caption_events': 320}, 'seconds': 19.919034762999956}
+TRAIN {'epoch': 7, 'step': 250, 'total_updates': 600, 'lr': 0.0001, 'nll': 4.520335745304189, 'grad_norm': 1.6891368627548218, 'seconds': 148.19504490100002}
+TRAIN {'epoch': 7, 'step': 260, 'total_updates': 600, 'lr': 0.0001, 'nll': 4.527324273334286, 'grad_norm': 1.7255141735076904, 'seconds': 152.17645847900002}
+TRAIN {'epoch': 7, 'step': 270, 'total_updates': 600, 'lr': 0.0001, 'nll': 4.6080143105700655, 'grad_norm': 1.5759035348892212, 'seconds': 156.208010182}
+TRAIN {'epoch': 7, 'step': 280, 'total_updates': 600, 'lr': 0.0001, 'nll': 4.489405822753906, 'grad_norm': 1.5844913721084595, 'seconds': 160.187215761}
+EPOCH {'epoch': 7, 'updates': 280, 'observed_train_nll': 4.602262391701723, 'val': {'nll': 5.064271502217068, 'target_tokens': 3674, 'caption_events': 320}, 'seconds': 19.82027803899996}
+TRAIN {'epoch': 8, 'step': 290, 'total_updates': 600, 'lr': 0.0001, 'nll': 4.408239495264341, 'grad_norm': 1.5569957494735718, 'seconds': 167.99976880100002}
+TRAIN {'epoch': 8, 'step': 300, 'total_updates': 600, 'lr': 0.0001, 'nll': 4.412520934887627, 'grad_norm': 1.551576852798462, 'seconds': 171.995723235}
+TRAIN {'epoch': 8, 'step': 310, 'total_updates': 600, 'lr': 0.0001, 'nll': 4.386570763966394, 'grad_norm': 1.5491504669189453, 'seconds': 175.990987921}
+TRAIN {'epoch': 8, 'step': 320, 'total_updates': 600, 'lr': 0.0001, 'nll': 4.406841388327538, 'grad_norm': 1.6446633338928223, 'seconds': 180.062153975}
+EPOCH {'epoch': 8, 'updates': 320, 'observed_train_nll': 4.410151477781117, 'val': {'nll': 4.983513086077047, 'target_tokens': 3674, 'caption_events': 320}, 'seconds': 19.763082759999975}
+TRAIN {'epoch': 9, 'step': 330, 'total_updates': 600, 'lr': 0.0001, 'nll': 4.395107565872151, 'grad_norm': 1.8393256664276123, 'seconds': 187.77494256699998}
+TRAIN {'epoch': 9, 'step': 340, 'total_updates': 600, 'lr': 0.0001, 'nll': 4.32513064624154, 'grad_norm': 1.5706990957260132, 'seconds': 191.749929371}
+TRAIN {'epoch': 9, 'step': 350, 'total_updates': 600, 'lr': 0.0001, 'nll': 4.204129165477967, 'grad_norm': 1.6650842428207397, 'seconds': 195.748679794}
+TRAIN {'epoch': 9, 'step': 360, 'total_updates': 600, 'lr': 0.0001, 'nll': 4.181898178592805, 'grad_norm': 1.7602424621582031, 'seconds': 199.68322172399996}
+EPOCH {'epoch': 9, 'updates': 360, 'observed_train_nll': 4.227120219434428, 'val': {'nll': 4.880100136031648, 'target_tokens': 3674, 'caption_events': 320}, 'seconds': 19.541487267000036}
+TRAIN {'epoch': 10, 'step': 370, 'total_updates': 600, 'lr': 0.0001, 'nll': 3.965827098867511, 'grad_norm': 1.6369266510009766, 'seconds': 207.52336843899997}
+TRAIN {'epoch': 10, 'step': 380, 'total_updates': 600, 'lr': 0.0001, 'nll': 4.092973949622548, 'grad_norm': 1.7355618476867676, 'seconds': 211.48401088599996}
+TRAIN {'epoch': 10, 'step': 390, 'total_updates': 600, 'lr': 0.0001, 'nll': 3.9361307265910694, 'grad_norm': 1.7278670072555542, 'seconds': 215.48260812}
+TRAIN {'epoch': 10, 'step': 400, 'total_updates': 600, 'lr': 0.0001, 'nll': 3.857256195761941, 'grad_norm': 1.7686426639556885, 'seconds': 219.439874502}
+EPOCH {'epoch': 10, 'updates': 400, 'observed_train_nll': 4.043665292593149, 'val': {'nll': 4.779466403718221, 'target_tokens': 3674, 'caption_events': 320}, 'seconds': 19.969955690000006, 'train_probe': {'nll': 3.8180994855473074, 'target_tokens': 1806, 'caption_events': 160}}
+TRAIN {'epoch': 11, 'step': 410, 'total_updates': 600, 'lr': 0.0001, 'nll': 3.90502689906529, 'grad_norm': 1.6775096654891968, 'seconds': 227.90695207599998}
+TRAIN {'epoch': 11, 'step': 420, 'total_updates': 600, 'lr': 0.0001, 'nll': 3.7861383611505683, 'grad_norm': 1.7077727317810059, 'seconds': 231.883602285}
+TRAIN {'epoch': 11, 'step': 430, 'total_updates': 600, 'lr': 0.0001, 'nll': 3.6886223273548655, 'grad_norm': 1.7708574533462524, 'seconds': 235.901755515}
+TRAIN {'epoch': 11, 'step': 440, 'total_updates': 600, 'lr': 0.0001, 'nll': 3.8884700765390225, 'grad_norm': 1.8667782545089722, 'seconds': 239.886439006}
+EPOCH {'epoch': 11, 'updates': 440, 'observed_train_nll': 3.8760290036975826, 'val': {'nll': 4.717256515909941, 'target_tokens': 3674, 'caption_events': 320}, 'seconds': 19.607649752999976}
+TRAIN {'epoch': 12, 'step': 450, 'total_updates': 600, 'lr': 0.0001, 'nll': 3.801271202858914, 'grad_norm': 1.6916604042053223, 'seconds': 247.651754407}
+TRAIN {'epoch': 12, 'step': 460, 'total_updates': 600, 'lr': 0.0001, 'nll': 3.7297802498327433, 'grad_norm': 1.7556979656219482, 'seconds': 251.654527164}
+TRAIN {'epoch': 12, 'step': 470, 'total_updates': 600, 'lr': 0.0001, 'nll': 3.729098567256221, 'grad_norm': 1.8570070266723633, 'seconds': 255.68073219999997}
+TRAIN {'epoch': 12, 'step': 480, 'total_updates': 600, 'lr': 0.0001, 'nll': 3.7639822600990214, 'grad_norm': 1.8224709033966064, 'seconds': 259.627368638}
+EPOCH {'epoch': 12, 'updates': 480, 'observed_train_nll': 3.7280035843808426, 'val': {'nll': 4.677018989475772, 'target_tokens': 3674, 'caption_events': 320}, 'seconds': 19.753844209999954}
+TRAIN {'epoch': 13, 'step': 490, 'total_updates': 600, 'lr': 0.0001, 'nll': 3.646563386263913, 'grad_norm': 1.7361948490142822, 'seconds': 267.383434077}
+TRAIN {'epoch': 13, 'step': 500, 'total_updates': 600, 'lr': 0.0001, 'nll': 3.6418006918833385, 'grad_norm': 1.904772162437439, 'seconds': 271.366793243}
+TRAIN {'epoch': 13, 'step': 510, 'total_updates': 600, 'lr': 0.0001, 'nll': 3.7012810404964056, 'grad_norm': 2.5541651248931885, 'seconds': 275.437719867}
+TRAIN {'epoch': 13, 'step': 520, 'total_updates': 600, 'lr': 0.0001, 'nll': 3.5700823150718834, 'grad_norm': 2.118159294128418, 'seconds': 279.38297399899994}
+EPOCH {'epoch': 13, 'updates': 520, 'observed_train_nll': 3.597369611169538, 'val': {'nll': 4.630138984891988, 'target_tokens': 3674, 'caption_events': 320}, 'seconds': 19.882369754000024}
+TRAIN {'epoch': 14, 'step': 530, 'total_updates': 600, 'lr': 0.0001, 'nll': 3.646330775046835, 'grad_norm': 1.7309809923171997, 'seconds': 287.21977905}
+TRAIN {'epoch': 14, 'step': 540, 'total_updates': 600, 'lr': 0.0001, 'nll': 3.2475167256285125, 'grad_norm': 1.8641128540039062, 'seconds': 291.246241032}
+TRAIN {'epoch': 14, 'step': 550, 'total_updates': 600, 'lr': 0.0001, 'nll': 3.7154142252604165, 'grad_norm': 1.9516867399215698, 'seconds': 295.26292146500003}
+TRAIN {'epoch': 14, 'step': 560, 'total_updates': 600, 'lr': 0.0001, 'nll': 3.621849697555172, 'grad_norm': 2.3196194171905518, 'seconds': 299.24534118599996}
+EPOCH {'epoch': 14, 'updates': 560, 'observed_train_nll': 3.473875196668837, 'val': {'nll': 4.5938329639549025, 'target_tokens': 3674, 'caption_events': 320}, 'seconds': 19.829934505999972}
+TRAIN {'epoch': 15, 'step': 570, 'total_updates': 600, 'lr': 0.0001, 'nll': 3.1703041034508805, 'grad_norm': 1.9191621541976929, 'seconds': 307.048192993}
+TRAIN {'epoch': 15, 'step': 580, 'total_updates': 600, 'lr': 0.0001, 'nll': 3.3050289853081027, 'grad_norm': 1.9755456447601318, 'seconds': 311.018253615}
+TRAIN {'epoch': 15, 'step': 590, 'total_updates': 600, 'lr': 0.0001, 'nll': 3.2059742096931703, 'grad_norm': 2.0640649795532227, 'seconds': 315.016438616}
+TRAIN {'epoch': 15, 'step': 600, 'total_updates': 600, 'lr': 0.0001, 'nll': 3.3772305744450266, 'grad_norm': 2.066483736038208, 'seconds': 318.97367113699994}
+EPOCH {'epoch': 15, 'updates': 600, 'observed_train_nll': 3.3680264329176683, 'val': {'nll': 4.5567835110584936, 'target_tokens': 3674, 'caption_events': 320}, 'seconds': 19.75773859200001, 'train_probe': {'nll': 3.173585446041948, 'target_tokens': 1806, 'caption_events': 160}}
+final beam 8 /64
+final beam 16 /64
+final beam 24 /64
+final beam 32 /64
+final beam 40 /64
+final beam 48 /64
+final beam 56 /64
+final beam 64 /64
+REAL XE PILOT COMPLETE. Preserve checkpoint.bin and Dataset inputs.

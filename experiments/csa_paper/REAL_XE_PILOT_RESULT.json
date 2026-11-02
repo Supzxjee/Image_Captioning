@@ -1,0 +1,81 @@
+{
+  "status": "REVIEWED_REAL_XE_PILOT_COMPLETE_CAPTIONS_TOO_SHORT",
+  "zip_sha256": "fce0e6e1615e3a90b87fe3daddb7a94c454ea7f715bd5cb9fd10c61542a6cfb3",
+  "source_commit": "19fed3eea2cd864415bd0503d38bdac4566d1871",
+  "metadata_assertions": 503,
+  "epochs": 15,
+  "updates": 600,
+  "caption_events": 19200,
+  "target_tokens": 219375,
+  "initial_val_nll": 9.215228891139065,
+  "final_val_nll": 4.5567835110584936,
+  "initial_train_probe_nll": 9.224751857956118,
+  "final_train_probe_nll": 3.173585446041948,
+  "initial_generation": {
+    "images": 64,
+    "eos": 0,
+    "single_token_repetition": 55
+  },
+  "final_generation": {
+    "images": 64,
+    "eos": 64,
+    "single_token_repetition": 1
+  },
+  "final_word_lengths": {
+    "2": 63,
+    "1": 1
+  },
+  "unique_final_captions": 29,
+  "final_mean_words": 1.984375,
+  "reference_mean_words": 10.478125,
+  "most_common_final": [
+    [
+      "a table",
+      7
+    ],
+    [
+      "a street",
+      6
+    ],
+    [
+      "a bench",
+      5
+    ],
+    [
+      "a group",
+      4
+    ],
+    [
+      "a laptop",
+      4
+    ],
+    [
+      "a man",
+      4
+    ],
+    [
+      "a snow",
+      3
+    ],
+    [
+      "a plate",
+      3
+    ],
+    [
+      "a kitchen",
+      3
+    ],
+    [
+      "a bed",
+      2
+    ]
+  ],
+  "worker_seconds": 331.797327176,
+  "peak_allocated_mib": 1013.00244140625,
+  "checkpoint_sha256_reported": "99b1f9936b864e549182f2307c369a221e4ca4f17b0f0cad9c60f3fb1cb7017e",
+  "checkpoint_binary_independently_available": false,
+  "local_model_executed": false,
+  "progress_status_note": "progress.json remains RUNNING because writer never updates that field; result.json and endpoint receipt establish completion. No rerun needed.",
+  "interpretation": "Teacher-forced learning demonstrated; free generation almost always two words. EOS/repetition improvement does not establish useful captions or visual grounding.",
+  "next_step_proposed": "Preserve endpoint. Small same-checkpoint greedy-vs-beam/EOS diagnostic before deciding larger-data XE; no retraining or decoding changes approved by this review."
+}

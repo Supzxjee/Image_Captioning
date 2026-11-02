@@ -1,0 +1,13 @@
+{
+  "commit": "19fed3eea2cd864415bd0503d38bdac4566d1871",
+  "sha256": {
+    "run_xe_pilot.py": "4f2c92b4a5a56545863618212ec04daef35ce3da58b6de5a088b10f41ad85ba5",
+    "pilot_data.py": "134cc6de37a6a2afd6d9d242ea74edddde08eb3f2fd90771e34c779ae104f820",
+    "real_bank_data.py": "00e7110105ec98a5ef41969f9e51074815a42a9b69deac90b2614e9679d2bcf9",
+    "model.py": "139edbb1b73caf3dadaf5c960b25542e282f88baf2ce9bdf141de922ceacbc09",
+    "REAL_BANK_INPUT_PACKAGE.json": "c60902e04ea15cf90f652e384937bb317e288753f13b8ede6ab5ef89f8d97129",
+    "SAVE_BANK_V130_PACKAGE.json": "826ba36628d6587860e2d548e950ea953bd4bbb8c0a8dc64393089dbc1e058e1",
+    "REAL_XE_PILOT_PROTOCOL.md": "df1f2e0c6a7b0a183767b7a861203128e9529280053780829dff07ef1ad50e47"
+  },
+  "reported_gpu_hours": 19
+}
