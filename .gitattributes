@@ -1,1 +1,3 @@
 experiments/concept_mass_grounding/EXPANDED_EVAL_MANIFEST.json text eol=lf
+experiments/csa_paper/real_preparation_review_text/** -text
+experiments/csa_paper/SAVE_CSA_REAL_PREPARATION_V126_DATASET.ipynb text eol=lf

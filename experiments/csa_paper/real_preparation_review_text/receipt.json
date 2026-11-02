@@ -1,0 +1,17 @@
+{
+  "status": "CPU_PREPARATION_COMPLETE",
+  "schema": "csa_paper_words_roi_v1",
+  "inputs": {
+    "dataset_json": "2fd999220673258012acfb411a4e7e66af7d488050b2519b0badcc49b7600b8d",
+    "detections": "498825daf8f8773a1c92f4111dc4ccf1f4296343f952b486e0aa56caf82ec04c",
+    "vocabulary": "924be210aa0daa8b0968a6d69ad2c66b3de603f49c35f4aa67247c75d6173fc7"
+  },
+  "payload_sha256": {
+    "vocabulary.json": "924be210aa0daa8b0968a6d69ad2c66b3de603f49c35f4aa67247c75d6173fc7",
+    "bank_words.json": "450fc969e0842ca3270d1f899b7e8fe594639260644ad5815a69430fe48264b1",
+    "pilot_metadata.json": "892e90561dc99b7ca0e4e58615a5a750d11e6df0ce84d4c1482a9322a5c00beb",
+    "regions.npz": "054f79bcf13de02255893d5741e695ebfb453f66bc5e488234fba65702904b6c"
+  },
+  "semantic_embeddings_created": false,
+  "training_ready": false
+}

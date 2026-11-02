@@ -1,0 +1,229 @@
+Collecting spacy==3.8.11
+  Downloading spacy-3.8.11-cp313-cp313-manylinux2014_x86_64.manylinux_2_17_x86_64.whl.metadata (27 kB)
+Requirement already satisfied: spacy-legacy<3.1.0,>=3.0.11 in /usr/local/lib/python3.13/dist-packages (from spacy==3.8.11) (3.0.12)
+Requirement already satisfied: spacy-loggers<2.0.0,>=1.0.0 in /usr/local/lib/python3.13/dist-packages (from spacy==3.8.11) (1.0.5)
+Requirement already satisfied: murmurhash<1.1.0,>=0.28.0 in /usr/local/lib/python3.13/dist-packages (from spacy==3.8.11) (1.0.15)
+Requirement already satisfied: cymem<2.1.0,>=2.0.2 in /usr/local/lib/python3.13/dist-packages (from spacy==3.8.11) (2.0.13)
+Requirement already satisfied: preshed<3.1.0,>=3.0.2 in /usr/local/lib/python3.13/dist-packages (from spacy==3.8.11) (3.0.13)
+Requirement already satisfied: thinc<8.4.0,>=8.3.4 in /usr/local/lib/python3.13/dist-packages (from spacy==3.8.11) (8.3.13)
+Requirement already satisfied: wasabi<1.2.0,>=0.9.1 in /usr/local/lib/python3.13/dist-packages (from spacy==3.8.11) (1.1.3)
+Requirement already satisfied: srsly<3.0.0,>=2.4.3 in /usr/local/lib/python3.13/dist-packages (from spacy==3.8.11) (2.5.3)
+Requirement already satisfied: catalogue<2.1.0,>=2.0.6 in /usr/local/lib/python3.13/dist-packages (from spacy==3.8.11) (2.0.10)
+Collecting weasel<0.5.0,>=0.4.2 (from spacy==3.8.11)
+  Downloading weasel-0.4.3-py3-none-any.whl.metadata (4.6 kB)
+Collecting typer-slim<1.0.0,>=0.3.0 (from spacy==3.8.11)
+  Downloading typer_slim-0.24.0-py3-none-any.whl.metadata (4.2 kB)
+Requirement already satisfied: tqdm<5.0.0,>=4.38.0 in /usr/local/lib/python3.13/dist-packages (from spacy==3.8.11) (4.67.3)
+Requirement already satisfied: numpy>=1.19.0 in /usr/local/lib/python3.13/dist-packages (from spacy==3.8.11) (2.1.3)
+Requirement already satisfied: requests<3.0.0,>=2.13.0 in /usr/local/lib/python3.13/dist-packages (from spacy==3.8.11) (2.34.2)
+Requirement already satisfied: pydantic!=1.8,!=1.8.1,<3.0.0,>=1.7.4 in /usr/local/lib/python3.13/dist-packages (from spacy==3.8.11) (2.13.5)
+Requirement already satisfied: jinja2 in /usr/local/lib/python3.13/dist-packages (from spacy==3.8.11) (3.1.6)
+Requirement already satisfied: setuptools in /usr/local/lib/python3.13/dist-packages (from spacy==3.8.11) (81.0.0)
+Requirement already satisfied: packaging>=20.0 in /usr/local/lib/python3.13/dist-packages (from spacy==3.8.11) (26.3)
+Requirement already satisfied: annotated-types>=0.6.0 in /usr/local/lib/python3.13/dist-packages (from pydantic!=1.8,!=1.8.1,<3.0.0,>=1.7.4->spacy==3.8.11) (0.8.0)
+Requirement already satisfied: pydantic-core==2.46.5 in /usr/local/lib/python3.13/dist-packages (from pydantic!=1.8,!=1.8.1,<3.0.0,>=1.7.4->spacy==3.8.11) (2.46.5)
+Requirement already satisfied: typing-extensions>=4.14.1 in /usr/local/lib/python3.13/dist-packages (from pydantic!=1.8,!=1.8.1,<3.0.0,>=1.7.4->spacy==3.8.11) (4.16.0)
+Requirement already satisfied: typing-inspection>=0.4.2 in /usr/local/lib/python3.13/dist-packages (from pydantic!=1.8,!=1.8.1,<3.0.0,>=1.7.4->spacy==3.8.11) (0.4.4)
+Requirement already satisfied: charset_normalizer<4,>=2 in /usr/local/lib/python3.13/dist-packages (from requests<3.0.0,>=2.13.0->spacy==3.8.11) (3.4.9)
+Requirement already satisfied: idna<4,>=2.5 in /usr/local/lib/python3.13/dist-packages (from requests<3.0.0,>=2.13.0->spacy==3.8.11) (3.19)
+Requirement already satisfied: urllib3<3,>=1.26 in /usr/local/lib/python3.13/dist-packages (from requests<3.0.0,>=2.13.0->spacy==3.8.11) (2.8.0)
+Requirement already satisfied: certifi>=2023.5.7 in /usr/local/lib/python3.13/dist-packages (from requests<3.0.0,>=2.13.0->spacy==3.8.11) (2026.7.22)
+Requirement already satisfied: blis<1.4.0,>=1.3.0 in /usr/local/lib/python3.13/dist-packages (from thinc<8.4.0,>=8.3.4->spacy==3.8.11) (1.3.3)
+Requirement already satisfied: confection<2.0.0,>=1.1.0 in /usr/local/lib/python3.13/dist-packages (from thinc<8.4.0,>=8.3.4->spacy==3.8.11) (1.3.3)
+Requirement already satisfied: typer>=0.24.0 in /usr/local/lib/python3.13/dist-packages (from typer-slim<1.0.0,>=0.3.0->spacy==3.8.11) (0.27.2)
+INFO: pip is looking at multiple versions of weasel to determine which version is compatible with other requirements. This could take a while.
+Collecting weasel<0.5.0,>=0.4.2 (from spacy==3.8.11)
+  Downloading weasel-0.4.2-py3-none-any.whl.metadata (4.6 kB)
+Collecting thinc<8.4.0,>=8.3.4 (from spacy==3.8.11)
+  Downloading thinc-8.3.14-cp313-cp313-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl.metadata (14 kB)
+  Downloading thinc-8.3.13-cp313-cp313-manylinux2014_x86_64.manylinux_2_17_x86_64.whl.metadata (14 kB)
+  Downloading thinc-8.3.12-cp313-cp313-manylinux2014_x86_64.manylinux_2_17_x86_64.whl.metadata (14 kB)
+INFO: pip is still looking at multiple versions of weasel to determine which version is compatible with other requirements. This could take a while.
+  Downloading thinc-8.3.11-cp313-cp313-manylinux2014_x86_64.manylinux_2_17_x86_64.whl.metadata (14 kB)
+Collecting confection<1.1.0,>=0.0.1 (from thinc<8.4.0,>=8.3.4->spacy==3.8.11)
+  Downloading confection-1.0.0-py3-none-any.whl.metadata (19 kB)
+  Downloading confection-0.1.5-py3-none-any.whl.metadata (19 kB)
+Requirement already satisfied: cloudpathlib<1.0.0,>=0.7.0 in /usr/local/lib/python3.13/dist-packages (from weasel<0.5.0,>=0.4.2->spacy==3.8.11) (0.25.0)
+Collecting smart-open<8.0.0,>=5.2.1 (from weasel<0.5.0,>=0.4.2->spacy==3.8.11)
+  Downloading smart_open-7.7.1-py3-none-any.whl.metadata (25 kB)
+Requirement already satisfied: MarkupSafe>=2.0 in /usr/local/lib/python3.13/dist-packages (from jinja2->spacy==3.8.11) (3.0.3)
+Requirement already satisfied: wrapt in /usr/local/lib/python3.13/dist-packages (from smart-open<8.0.0,>=5.2.1->weasel<0.5.0,>=0.4.2->spacy==3.8.11) (1.17.3)
+Requirement already satisfied: shellingham>=1.3.0 in /usr/local/lib/python3.13/dist-packages (from typer>=0.24.0->typer-slim<1.0.0,>=0.3.0->spacy==3.8.11) (1.5.4)
+Requirement already satisfied: rich>=13.8.0 in /usr/local/lib/python3.13/dist-packages (from typer>=0.24.0->typer-slim<1.0.0,>=0.3.0->spacy==3.8.11) (13.9.4)
+Requirement already satisfied: annotated-doc>=0.0.2 in /usr/local/lib/python3.13/dist-packages (from typer>=0.24.0->typer-slim<1.0.0,>=0.3.0->spacy==3.8.11) (0.0.5)
+Requirement already satisfied: markdown-it-py>=2.2.0 in /usr/local/lib/python3.13/dist-packages (from rich>=13.8.0->typer>=0.24.0->typer-slim<1.0.0,>=0.3.0->spacy==3.8.11) (4.2.0)
+Requirement already satisfied: pygments<3.0.0,>=2.13.0 in /usr/local/lib/python3.13/dist-packages (from rich>=13.8.0->typer>=0.24.0->typer-slim<1.0.0,>=0.3.0->spacy==3.8.11) (2.21.0)
+Requirement already satisfied: mdurl~=0.1 in /usr/local/lib/python3.13/dist-packages (from markdown-it-py>=2.2.0->rich>=13.8.0->typer>=0.24.0->typer-slim<1.0.0,>=0.3.0->spacy==3.8.11) (0.1.2)
+Downloading spacy-3.8.11-cp313-cp313-manylinux2014_x86_64.manylinux_2_17_x86_64.whl (32.8 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 32.8/32.8 MB 66.6 MB/s eta 0:00:00
+Downloading thinc-8.3.11-cp313-cp313-manylinux2014_x86_64.manylinux_2_17_x86_64.whl (3.9 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 3.9/3.9 MB 90.5 MB/s eta 0:00:00
+Downloading weasel-0.4.3-py3-none-any.whl (50 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 50.8/50.8 kB 3.6 MB/s eta 0:00:00
+Downloading confection-0.1.5-py3-none-any.whl (35 kB)
+Downloading typer_slim-0.24.0-py3-none-any.whl (3.4 kB)
+Downloading smart_open-7.7.1-py3-none-any.whl (65 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 65.1/65.1 kB 3.5 MB/s eta 0:00:00
+Installing collected packages: smart-open, confection, typer-slim, thinc, weasel, spacy
+  Attempting uninstall: smart-open
+    Found existing installation: smart_open 8.0.1
+    Not uninstalling smart-open at /usr/local/lib/python3.13/dist-packages, outside environment /tmp/csa-real-prepare-ahgvy98d/pos-env
+    Can't uninstall 'smart_open'. No files were found to uninstall.
+  Attempting uninstall: confection
+    Found existing installation: confection 1.3.3
+    Not uninstalling confection at /usr/local/lib/python3.13/dist-packages, outside environment /tmp/csa-real-prepare-ahgvy98d/pos-env
+    Can't uninstall 'confection'. No files were found to uninstall.
+  Attempting uninstall: thinc
+    Found existing installation: thinc 8.3.13
+    Not uninstalling thinc at /usr/local/lib/python3.13/dist-packages, outside environment /tmp/csa-real-prepare-ahgvy98d/pos-env
+    Can't uninstall 'thinc'. No files were found to uninstall.
+  Attempting uninstall: weasel
+    Found existing installation: weasel 1.0.0
+    Not uninstalling weasel at /usr/local/lib/python3.13/dist-packages, outside environment /tmp/csa-real-prepare-ahgvy98d/pos-env
+    Can't uninstall 'weasel'. No files were found to uninstall.
+  Attempting uninstall: spacy
+    Found existing installation: spacy 3.8.16
+    Not uninstalling spacy at /usr/local/lib/python3.13/dist-packages, outside environment /tmp/csa-real-prepare-ahgvy98d/pos-env
+    Can't uninstall 'spacy'. No files were found to uninstall.
+Successfully installed confection-0.1.5 smart-open-7.7.1 spacy-3.8.11 thinc-8.3.11 typer-slim-0.24.0 weasel-0.4.3
+Processing ./en_core_web_sm-3.8.0-py3-none-any.whl
+Installing collected packages: en-core-web-sm
+  Attempting uninstall: en-core-web-sm
+    Found existing installation: en_core_web_sm 3.8.0
+    Not uninstalling en-core-web-sm at /usr/local/lib/python3.13/dist-packages, outside environment /tmp/csa-real-prepare-ahgvy98d/pos-env
+    Can't uninstall 'en_core_web_sm'. No files were found to uninstall.
+Successfully installed en-core-web-sm-3.8.0
+test_actual_pool_pack_contract_and_no_duplicate_images (__main__.Checks.test_actual_pool_pack_contract_and_no_duplicate_images) ... ok
+test_missing_raw_and_insufficient_split_fail (__main__.Checks.test_missing_raw_and_insufficient_split_fail) ... ok
+test_no_caption_encoder_import_and_syntax (__main__.Checks.test_no_caption_encoder_import_and_syntax) ... ok
+test_pilot_is_split_disjoint_deterministic_and_no_test (__main__.Checks.test_pilot_is_split_disjoint_deterministic_and_no_test) ... ok
+test_train_only_pos_frequency_and_corpus_identity (__main__.Checks.test_train_only_pos_frequency_and_corpus_identity) ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.044s
+
+OK
+Actual RGB dimensions/raw CLIP ROI: 32 /320
+Actual RGB dimensions/raw CLIP ROI: 64 /320
+Actual RGB dimensions/raw CLIP ROI: 96 /320
+Actual RGB dimensions/raw CLIP ROI: 128 /320
+Actual RGB dimensions/raw CLIP ROI: 160 /320
+Actual RGB dimensions/raw CLIP ROI: 192 /320
+Actual RGB dimensions/raw CLIP ROI: 224 /320
+Actual RGB dimensions/raw CLIP ROI: 256 /320
+Actual RGB dimensions/raw CLIP ROI: 288 /320
+Actual RGB dimensions/raw CLIP ROI: 320 /320
+Starting full TRAIN POS,566747 captions; CPU only
+TRAIN POS documents: 5000 /566747
+TRAIN POS documents: 10000 /566747
+TRAIN POS documents: 15000 /566747
+TRAIN POS documents: 20000 /566747
+TRAIN POS documents: 25000 /566747
+TRAIN POS documents: 30000 /566747
+TRAIN POS documents: 35000 /566747
+TRAIN POS documents: 40000 /566747
+TRAIN POS documents: 45000 /566747
+TRAIN POS documents: 50000 /566747
+TRAIN POS documents: 55000 /566747
+TRAIN POS documents: 60000 /566747
+TRAIN POS documents: 65000 /566747
+TRAIN POS documents: 70000 /566747
+TRAIN POS documents: 75000 /566747
+TRAIN POS documents: 80000 /566747
+TRAIN POS documents: 85000 /566747
+TRAIN POS documents: 90000 /566747
+TRAIN POS documents: 95000 /566747
+TRAIN POS documents: 100000 /566747
+TRAIN POS documents: 105000 /566747
+TRAIN POS documents: 110000 /566747
+TRAIN POS documents: 115000 /566747
+TRAIN POS documents: 120000 /566747
+TRAIN POS documents: 125000 /566747
+TRAIN POS documents: 130000 /566747
+TRAIN POS documents: 135000 /566747
+TRAIN POS documents: 140000 /566747
+TRAIN POS documents: 145000 /566747
+TRAIN POS documents: 150000 /566747
+TRAIN POS documents: 155000 /566747
+TRAIN POS documents: 160000 /566747
+TRAIN POS documents: 165000 /566747
+TRAIN POS documents: 170000 /566747
+TRAIN POS documents: 175000 /566747
+TRAIN POS documents: 180000 /566747
+TRAIN POS documents: 185000 /566747
+TRAIN POS documents: 190000 /566747
+TRAIN POS documents: 195000 /566747
+TRAIN POS documents: 200000 /566747
+TRAIN POS documents: 205000 /566747
+TRAIN POS documents: 210000 /566747
+TRAIN POS documents: 215000 /566747
+TRAIN POS documents: 220000 /566747
+TRAIN POS documents: 225000 /566747
+TRAIN POS documents: 230000 /566747
+TRAIN POS documents: 235000 /566747
+TRAIN POS documents: 240000 /566747
+TRAIN POS documents: 245000 /566747
+TRAIN POS documents: 250000 /566747
+TRAIN POS documents: 255000 /566747
+TRAIN POS documents: 260000 /566747
+TRAIN POS documents: 265000 /566747
+TRAIN POS documents: 270000 /566747
+TRAIN POS documents: 275000 /566747
+TRAIN POS documents: 280000 /566747
+TRAIN POS documents: 285000 /566747
+TRAIN POS documents: 290000 /566747
+TRAIN POS documents: 295000 /566747
+TRAIN POS documents: 300000 /566747
+TRAIN POS documents: 305000 /566747
+TRAIN POS documents: 310000 /566747
+TRAIN POS documents: 315000 /566747
+TRAIN POS documents: 320000 /566747
+TRAIN POS documents: 325000 /566747
+TRAIN POS documents: 330000 /566747
+TRAIN POS documents: 335000 /566747
+TRAIN POS documents: 340000 /566747
+TRAIN POS documents: 345000 /566747
+TRAIN POS documents: 350000 /566747
+TRAIN POS documents: 355000 /566747
+TRAIN POS documents: 360000 /566747
+TRAIN POS documents: 365000 /566747
+TRAIN POS documents: 370000 /566747
+TRAIN POS documents: 375000 /566747
+TRAIN POS documents: 380000 /566747
+TRAIN POS documents: 385000 /566747
+TRAIN POS documents: 390000 /566747
+TRAIN POS documents: 395000 /566747
+TRAIN POS documents: 400000 /566747
+TRAIN POS documents: 405000 /566747
+TRAIN POS documents: 410000 /566747
+TRAIN POS documents: 415000 /566747
+TRAIN POS documents: 420000 /566747
+TRAIN POS documents: 425000 /566747
+TRAIN POS documents: 430000 /566747
+TRAIN POS documents: 435000 /566747
+TRAIN POS documents: 440000 /566747
+TRAIN POS documents: 445000 /566747
+TRAIN POS documents: 450000 /566747
+TRAIN POS documents: 455000 /566747
+TRAIN POS documents: 460000 /566747
+TRAIN POS documents: 465000 /566747
+TRAIN POS documents: 470000 /566747
+TRAIN POS documents: 475000 /566747
+TRAIN POS documents: 480000 /566747
+TRAIN POS documents: 485000 /566747
+TRAIN POS documents: 490000 /566747
+TRAIN POS documents: 495000 /566747
+TRAIN POS documents: 500000 /566747
+TRAIN POS documents: 505000 /566747
+TRAIN POS documents: 510000 /566747
+TRAIN POS documents: 515000 /566747
+TRAIN POS documents: 520000 /566747
+TRAIN POS documents: 525000 /566747
+TRAIN POS documents: 530000 /566747
+TRAIN POS documents: 535000 /566747
+TRAIN POS documents: 540000 /566747
+TRAIN POS documents: 545000 /566747
+TRAIN POS documents: 550000 /566747
+TRAIN POS documents: 555000 /566747
+TRAIN POS documents: 560000 /566747
+TRAIN POS documents: 565000 /566747

@@ -45,3 +45,7 @@ CPU inventory user-run COMPLETE: xem [kết quả dữ liệu thật](ASSET_INVE
 ## Chuẩn bị noun/verb và ROI thật
 
 Chạy `CSA_PAPER_REAL_PREPARATION_CPU.ipynb` trên **CPU/Accelerator None**, InternetON, cùng3datasetđãdùng. Nó chạy POSspaCy trên toànTRAIN để tạo **danh sách từ** cho bank và poolROI cho256TRAIN+64val. Chưa mã hóaCLIPtext hay huấn luyện captioner. Gửi `csa_paper_real_preparation_review.zip`; giữ **cả folder `csa_paper_real_preparation`, đặc biệt `regions.npz`**, để lưuDatasetcho bướcGPUtiếp. Xem [protocol](REAL_ASSET_PREPARATION_PROTOCOL.md).14localtestsPASS, thực thiPOS/ROI và cài dependency trênKagglechưađượckiểm.
+
+## Output126 đã hoàn tất — lưu trước, kiểm từ gốc trước CLIP text
+
+[CPU result](REAL_PREPARATION_RESULT.md):5269noun/1594verb,2180ROIcho320ảnh. Có cờ kiểm tra `rid`18575: chưa tự sửa hoặc coi bank đã đúngngữnghĩa. Chạy `SAVE_CSA_REAL_PREPARATION_V126_DATASET.ipynb` với **CPU/InternetON/KaggleAPIsecret**, không cần AddInput; khóaOutput126, kiểm8fileSHA và tạoPrivateDatasetmới. Sửa SECRET_NAME nếu secretđặt têncodex. Gửi mountpaththực sau khi attach; không xóa126. Chưa mãhóaCLIPtext/training/APIrunbởiagent.

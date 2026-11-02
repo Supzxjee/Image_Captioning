@@ -1,0 +1,38 @@
+{
+  "lemma_bank_counts": {
+    "rid": 18575,
+    "ride": 881,
+    "riding": 0
+  },
+  "train_surface_counts": {
+    "riding": 17287,
+    "rides": 1872,
+    "ride": 1202,
+    "ridding": 88,
+    "rid": 1
+  },
+  "examples": [
+    {
+      "filename": "COCO_val2014_000000372938.jpg",
+      "caption": "A group of people riding on the back of a loaded red pickup truck."
+    },
+    {
+      "filename": "COCO_val2014_000000384553.jpg",
+      "caption": "A man riding an elephant into some water of a creek."
+    },
+    {
+      "filename": "COCO_val2014_000000384553.jpg",
+      "caption": "man riding an elephant into water surrounded by forest"
+    },
+    {
+      "filename": "COCO_val2014_000000384553.jpg",
+      "caption": "A man riding an elephant in a river."
+    },
+    {
+      "filename": "COCO_val2014_000000079841.jpg",
+      "caption": "Two shots of men riding bicycles down city streets."
+    }
+  ],
+  "interpretation": "Suspected riding->rid lemmatization error; token-level POS/lemma trace not available, no automatic correction applied",
+  "pos_rerun_locally": false
+}
