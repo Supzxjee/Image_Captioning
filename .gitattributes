@@ -5,3 +5,5 @@ experiments/csa_paper/LEMMA_TRACE_CASES.json text eol=lf
 experiments/csa_paper/CSA_LEMMA_TRACE_CPU.ipynb text eol=lf
 experiments/csa_paper/lemma_trace_review_text/** -text
 experiments/csa_paper/CSA_BANK_LEMMA_CORRECTION_CPU.ipynb text eol=lf
+experiments/csa_paper/lemma_correction_review_text/** -text
+experiments/csa_paper/SAVE_CSA_CORRECTED_ASSETS_DATASET.ipynb text eol=lf

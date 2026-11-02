@@ -1,0 +1,36 @@
+{
+  "status": "BANK_LEMMA_CORRECTION_COMPLETE",
+  "original_bank_modified": false,
+  "roi_modified": false,
+  "caption_targets_changed": false,
+  "semantic_embeddings_created": false,
+  "caption_model_executed": false,
+  "gpu_used": false,
+  "dataset_created": false,
+  "train_caption_events_scanned": 566747,
+  "affected_documents_pos_processed": 19090,
+  "delta": {
+    "before_rid": 18575,
+    "before_ride": 881,
+    "after_rid": 88,
+    "after_ride": 19368,
+    "moved_tokens": 18487,
+    "below_minimum_omitted_mass": 0
+  },
+  "redirected_by_surface": {
+    "riding": 16694,
+    "rides": 1793
+  },
+  "full_change_ledger_sha256": "a8d311ef59eda47600093473037d2fd31b65984f435da4fccd771eb718c58a4e",
+  "versions": {
+    "spacy": "3.8.11",
+    "thinc": "8.3.11",
+    "numpy": "2.1.3",
+    "en-core-web-sm": "3.8.0"
+  },
+  "model_files_matched": 26,
+  "noun_words": 5269,
+  "verb_words": 1594,
+  "examples_saved": 20,
+  "seconds": 34.151652196999976
+}

@@ -1,0 +1,21 @@
+{
+  "status": "BANK_LEMMA_CORRECTION_COMPLETE",
+  "amendment": "VERB + riding/rides + original rid -> ride; everything else unchanged",
+  "source_dataset_sha256": "2fd999220673258012acfb411a4e7e66af7d488050b2519b0badcc49b7600b8d",
+  "source_bank_sha256": "450fc969e0842ca3270d1f899b7e8fe594639260644ad5815a69430fe48264b1",
+  "preserved_roi_source_version": 126,
+  "corrected_bank_sha256": "cec76a0229f30361235a4b64e9712ac6bb2e79fc62a9241079a7af3fa95d13ac",
+  "delta": {
+    "before_rid": 18575,
+    "before_ride": 881,
+    "after_rid": 88,
+    "after_ride": 19368,
+    "moved_tokens": 18487,
+    "below_minimum_omitted_mass": 0
+  },
+  "nouns_unchanged": true,
+  "caption_targets_changed": false,
+  "roi_modified": false,
+  "semantic_embeddings_created": false,
+  "caption_model_executed": false
+}

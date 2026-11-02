@@ -1,0 +1,105 @@
+Collecting spacy==3.8.11
+  Downloading spacy-3.8.11-cp313-cp313-manylinux2014_x86_64.manylinux_2_17_x86_64.whl.metadata (27 kB)
+Collecting thinc==8.3.11
+  Downloading thinc-8.3.11-cp313-cp313-manylinux2014_x86_64.manylinux_2_17_x86_64.whl.metadata (14 kB)
+Requirement already satisfied: spacy-legacy<3.1.0,>=3.0.11 in /usr/local/lib/python3.13/dist-packages (from spacy==3.8.11) (3.0.12)
+Requirement already satisfied: spacy-loggers<2.0.0,>=1.0.0 in /usr/local/lib/python3.13/dist-packages (from spacy==3.8.11) (1.0.5)
+Requirement already satisfied: murmurhash<1.1.0,>=0.28.0 in /usr/local/lib/python3.13/dist-packages (from spacy==3.8.11) (1.0.15)
+Requirement already satisfied: cymem<2.1.0,>=2.0.2 in /usr/local/lib/python3.13/dist-packages (from spacy==3.8.11) (2.0.13)
+Requirement already satisfied: preshed<3.1.0,>=3.0.2 in /usr/local/lib/python3.13/dist-packages (from spacy==3.8.11) (3.0.13)
+Requirement already satisfied: wasabi<1.2.0,>=0.9.1 in /usr/local/lib/python3.13/dist-packages (from spacy==3.8.11) (1.1.3)
+Requirement already satisfied: srsly<3.0.0,>=2.4.3 in /usr/local/lib/python3.13/dist-packages (from spacy==3.8.11) (2.5.3)
+Requirement already satisfied: catalogue<2.1.0,>=2.0.6 in /usr/local/lib/python3.13/dist-packages (from spacy==3.8.11) (2.0.10)
+Collecting weasel<0.5.0,>=0.4.2 (from spacy==3.8.11)
+  Downloading weasel-0.4.3-py3-none-any.whl.metadata (4.6 kB)
+Collecting typer-slim<1.0.0,>=0.3.0 (from spacy==3.8.11)
+  Downloading typer_slim-0.24.0-py3-none-any.whl.metadata (4.2 kB)
+Requirement already satisfied: tqdm<5.0.0,>=4.38.0 in /usr/local/lib/python3.13/dist-packages (from spacy==3.8.11) (4.67.3)
+Requirement already satisfied: numpy>=1.19.0 in /usr/local/lib/python3.13/dist-packages (from spacy==3.8.11) (2.1.3)
+Requirement already satisfied: requests<3.0.0,>=2.13.0 in /usr/local/lib/python3.13/dist-packages (from spacy==3.8.11) (2.34.2)
+Requirement already satisfied: pydantic!=1.8,!=1.8.1,<3.0.0,>=1.7.4 in /usr/local/lib/python3.13/dist-packages (from spacy==3.8.11) (2.13.5)
+Requirement already satisfied: jinja2 in /usr/local/lib/python3.13/dist-packages (from spacy==3.8.11) (3.1.6)
+Requirement already satisfied: setuptools in /usr/local/lib/python3.13/dist-packages (from spacy==3.8.11) (81.0.0)
+Requirement already satisfied: packaging>=20.0 in /usr/local/lib/python3.13/dist-packages (from spacy==3.8.11) (26.3)
+Requirement already satisfied: blis<1.4.0,>=1.3.0 in /usr/local/lib/python3.13/dist-packages (from thinc==8.3.11) (1.3.3)
+Collecting confection<1.1.0,>=0.0.1 (from thinc==8.3.11)
+  Downloading confection-1.0.0-py3-none-any.whl.metadata (19 kB)
+Requirement already satisfied: annotated-types>=0.6.0 in /usr/local/lib/python3.13/dist-packages (from pydantic!=1.8,!=1.8.1,<3.0.0,>=1.7.4->spacy==3.8.11) (0.8.0)
+Requirement already satisfied: pydantic-core==2.46.5 in /usr/local/lib/python3.13/dist-packages (from pydantic!=1.8,!=1.8.1,<3.0.0,>=1.7.4->spacy==3.8.11) (2.46.5)
+Requirement already satisfied: typing-extensions>=4.14.1 in /usr/local/lib/python3.13/dist-packages (from pydantic!=1.8,!=1.8.1,<3.0.0,>=1.7.4->spacy==3.8.11) (4.16.0)
+Requirement already satisfied: typing-inspection>=0.4.2 in /usr/local/lib/python3.13/dist-packages (from pydantic!=1.8,!=1.8.1,<3.0.0,>=1.7.4->spacy==3.8.11) (0.4.4)
+Requirement already satisfied: charset_normalizer<4,>=2 in /usr/local/lib/python3.13/dist-packages (from requests<3.0.0,>=2.13.0->spacy==3.8.11) (3.4.9)
+Requirement already satisfied: idna<4,>=2.5 in /usr/local/lib/python3.13/dist-packages (from requests<3.0.0,>=2.13.0->spacy==3.8.11) (3.19)
+Requirement already satisfied: urllib3<3,>=1.26 in /usr/local/lib/python3.13/dist-packages (from requests<3.0.0,>=2.13.0->spacy==3.8.11) (2.8.0)
+Requirement already satisfied: certifi>=2023.5.7 in /usr/local/lib/python3.13/dist-packages (from requests<3.0.0,>=2.13.0->spacy==3.8.11) (2026.7.22)
+Requirement already satisfied: typer>=0.24.0 in /usr/local/lib/python3.13/dist-packages (from typer-slim<1.0.0,>=0.3.0->spacy==3.8.11) (0.27.2)
+  Downloading confection-0.1.5-py3-none-any.whl.metadata (19 kB)
+Requirement already satisfied: cloudpathlib<1.0.0,>=0.7.0 in /usr/local/lib/python3.13/dist-packages (from weasel<0.5.0,>=0.4.2->spacy==3.8.11) (0.25.0)
+Collecting smart-open<8.0.0,>=5.2.1 (from weasel<0.5.0,>=0.4.2->spacy==3.8.11)
+  Downloading smart_open-7.7.1-py3-none-any.whl.metadata (25 kB)
+Requirement already satisfied: MarkupSafe>=2.0 in /usr/local/lib/python3.13/dist-packages (from jinja2->spacy==3.8.11) (3.0.3)
+Requirement already satisfied: wrapt in /usr/local/lib/python3.13/dist-packages (from smart-open<8.0.0,>=5.2.1->weasel<0.5.0,>=0.4.2->spacy==3.8.11) (1.17.3)
+Requirement already satisfied: shellingham>=1.3.0 in /usr/local/lib/python3.13/dist-packages (from typer>=0.24.0->typer-slim<1.0.0,>=0.3.0->spacy==3.8.11) (1.5.4)
+Requirement already satisfied: rich>=13.8.0 in /usr/local/lib/python3.13/dist-packages (from typer>=0.24.0->typer-slim<1.0.0,>=0.3.0->spacy==3.8.11) (13.9.4)
+Requirement already satisfied: annotated-doc>=0.0.2 in /usr/local/lib/python3.13/dist-packages (from typer>=0.24.0->typer-slim<1.0.0,>=0.3.0->spacy==3.8.11) (0.0.5)
+Requirement already satisfied: markdown-it-py>=2.2.0 in /usr/local/lib/python3.13/dist-packages (from rich>=13.8.0->typer>=0.24.0->typer-slim<1.0.0,>=0.3.0->spacy==3.8.11) (4.2.0)
+Requirement already satisfied: pygments<3.0.0,>=2.13.0 in /usr/local/lib/python3.13/dist-packages (from rich>=13.8.0->typer>=0.24.0->typer-slim<1.0.0,>=0.3.0->spacy==3.8.11) (2.21.0)
+Requirement already satisfied: mdurl~=0.1 in /usr/local/lib/python3.13/dist-packages (from markdown-it-py>=2.2.0->rich>=13.8.0->typer>=0.24.0->typer-slim<1.0.0,>=0.3.0->spacy==3.8.11) (0.1.2)
+Downloading spacy-3.8.11-cp313-cp313-manylinux2014_x86_64.manylinux_2_17_x86_64.whl (32.8 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 32.8/32.8 MB 60.7 MB/s eta 0:00:00
+Downloading thinc-8.3.11-cp313-cp313-manylinux2014_x86_64.manylinux_2_17_x86_64.whl (3.9 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 3.9/3.9 MB 89.8 MB/s eta 0:00:00
+Downloading typer_slim-0.24.0-py3-none-any.whl (3.4 kB)
+Downloading weasel-0.4.3-py3-none-any.whl (50 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 50.8/50.8 kB 2.5 MB/s eta 0:00:00
+Downloading confection-0.1.5-py3-none-any.whl (35 kB)
+Downloading smart_open-7.7.1-py3-none-any.whl (65 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 65.1/65.1 kB 2.5 MB/s eta 0:00:00
+Installing collected packages: smart-open, confection, typer-slim, thinc, weasel, spacy
+  Attempting uninstall: smart-open
+    Found existing installation: smart_open 8.0.1
+    Not uninstalling smart-open at /usr/local/lib/python3.13/dist-packages, outside environment /tmp/csa-lemma-correction-rp77g_v7/pos-env
+    Can't uninstall 'smart_open'. No files were found to uninstall.
+  Attempting uninstall: confection
+    Found existing installation: confection 1.3.3
+    Not uninstalling confection at /usr/local/lib/python3.13/dist-packages, outside environment /tmp/csa-lemma-correction-rp77g_v7/pos-env
+    Can't uninstall 'confection'. No files were found to uninstall.
+  Attempting uninstall: thinc
+    Found existing installation: thinc 8.3.13
+    Not uninstalling thinc at /usr/local/lib/python3.13/dist-packages, outside environment /tmp/csa-lemma-correction-rp77g_v7/pos-env
+    Can't uninstall 'thinc'. No files were found to uninstall.
+  Attempting uninstall: weasel
+    Found existing installation: weasel 1.0.0
+    Not uninstalling weasel at /usr/local/lib/python3.13/dist-packages, outside environment /tmp/csa-lemma-correction-rp77g_v7/pos-env
+    Can't uninstall 'weasel'. No files were found to uninstall.
+  Attempting uninstall: spacy
+    Found existing installation: spacy 3.8.16
+    Not uninstalling spacy at /usr/local/lib/python3.13/dist-packages, outside environment /tmp/csa-lemma-correction-rp77g_v7/pos-env
+    Can't uninstall 'spacy'. No files were found to uninstall.
+Successfully installed confection-0.1.5 smart-open-7.7.1 spacy-3.8.11 thinc-8.3.11 typer-slim-0.24.0 weasel-0.4.3
+Processing ./en_core_web_sm-3.8.0-py3-none-any.whl
+Installing collected packages: en-core-web-sm
+  Attempting uninstall: en-core-web-sm
+    Found existing installation: en_core_web_sm 3.8.0
+    Not uninstalling en-core-web-sm at /usr/local/lib/python3.13/dist-packages, outside environment /tmp/csa-lemma-correction-rp77g_v7/pos-env
+    Can't uninstall 'en_core_web_sm'. No files were found to uninstall.
+Successfully installed en-core-web-sm-3.8.0
+Affected TRAIN captions processed: 1000 ; redirected tokens: 961
+Affected TRAIN captions processed: 2000 ; redirected tokens: 1922
+Affected TRAIN captions processed: 3000 ; redirected tokens: 2888
+Affected TRAIN captions processed: 4000 ; redirected tokens: 3851
+Affected TRAIN captions processed: 5000 ; redirected tokens: 4817
+Affected TRAIN captions processed: 6000 ; redirected tokens: 5779
+Affected TRAIN captions processed: 7000 ; redirected tokens: 6750
+Affected TRAIN captions processed: 8000 ; redirected tokens: 7722
+Affected TRAIN captions processed: 9000 ; redirected tokens: 8687
+Affected TRAIN captions processed: 10000 ; redirected tokens: 9654
+Affected TRAIN captions processed: 11000 ; redirected tokens: 10628
+Affected TRAIN captions processed: 12000 ; redirected tokens: 11599
+Affected TRAIN captions processed: 13000 ; redirected tokens: 12569
+Affected TRAIN captions processed: 14000 ; redirected tokens: 13539
+Affected TRAIN captions processed: 15000 ; redirected tokens: 14518
+Affected TRAIN captions processed: 16000 ; redirected tokens: 15482
+Affected TRAIN captions processed: 17000 ; redirected tokens: 16460
+Affected TRAIN captions processed: 18000 ; redirected tokens: 17432
+Affected TRAIN captions processed: 19000 ; redirected tokens: 18398

@@ -1,0 +1,31 @@
+{
+  "status": "USER_RUN_BANK_LEMMA_CORRECTION_COMPLETE",
+  "zip_sha256": "ab9fb2761d6b426f3ae0fe3cb57fd836a0a18c1f9d7f76c2543640278d2701ab",
+  "corrected_bank_sha256": "cec76a0229f30361235a4b64e9712ac6bb2e79fc62a9241079a7af3fa95d13ac",
+  "source_bank_sha256": "450fc969e0842ca3270d1f899b7e8fe594639260644ad5815a69430fe48264b1",
+  "train_caption_events_scanned": 566747,
+  "pos_documents_processed": 19090,
+  "moved_tokens": 18487,
+  "redirected_by_surface": {
+    "riding": 16694,
+    "rides": 1793
+  },
+  "delta": {
+    "before_rid": 18575,
+    "before_ride": 881,
+    "after_rid": 88,
+    "after_ride": 19368,
+    "moved_tokens": 18487,
+    "below_minimum_omitted_mass": 0
+  },
+  "noun_words": 5269,
+  "verb_words": 1594,
+  "nouns_and_unrelated_verbs_independently_verified_unchanged": true,
+  "corrected_bank_independently_rebuilt_from_delta": true,
+  "examples_verified": 20,
+  "worker_seconds": 34.151652196999976,
+  "local_pos_or_model_run": false,
+  "full_change_ledger_independently_recomputed": false,
+  "roi_modified": false,
+  "dataset_created_by_this_run": false
+}

@@ -1,0 +1,10 @@
+{
+  "module_sha256": {
+    "lemma_correction.py": "538de6980996762de4333f96d1f56fb203318c210f68046e87e5e2e1fbfa8dc1",
+    "run_lemma_correction.py": "3bb7bf49db2a70388574cc5e55f6e57c4de4f1d0689ed43364e9f99ca22187bb"
+  },
+  "original_bank_url": "https://raw.githubusercontent.com/Supzxjee/Image_Captioning/28361ce1ccf8ccd71cf9141e7f39b49090f7e6f1/experiments/csa_paper/real_preparation_review_text/bank_words.json",
+  "original_bank_sha256": "450fc969e0842ca3270d1f899b7e8fe594639260644ad5815a69430fe48264b1",
+  "preserved_roi_source_version": 126,
+  "source_environment_sha256": "f77dc3728105f083642466d8364a5fb2a6f14d9bed72e2074fb68cbb2ae89895"
+}
