@@ -10,6 +10,8 @@ Cập nhật: 02/11/2026, giờ Việt Nam. File này là bản tóm tắt để
 
 ## Hiện đang ở đâu
 
+- **User xác nhận fullROI sourceOutput134.** [SAVE_CSA_FULL_ROI_V134_DATASET.ipynb](experiments/csa_paper/SAVE_CSA_FULL_ROI_V134_DATASET.ipynb) PREPARED: CPU/Internet/APIsecret/noInput, pinned134CLIroutepreflight,247fullfileSHA+actual119metadataJSON ID/split/sequence/count checks, unchangedNPZ, newPrivate `csa-full-roi-karpathy-v134`.40localmetadata/NumPy/mock/static testsPASS; noAPI/modelrun. Creation/mountpendinguser; keepbank130 separately. Output134preserveuntilsaved. R229note/X045.
+
 - **FullROI user-run COMPLETE**, [result](experiments/csa_paper/FULL_ROI_RESULT.md), ZIPa7749fde…, source936cd17/7GitSHAs/862metadataassertionsPASS.113287TRAIN+5000val/0test=118287images,833473raw768regions,119pairedNPZ/JSONshards,591757combinedcaptionevents,1004fallback,max87regions,0clipped.1749398178payloadbytes(~1.75GB),worker3431.090s(~57m),nottrainingETA. Reviewexcludesshardpayloads/perimageJSON:actual238SHA/IDcontentsawaittransport/runtimechecks. Preserveentirecachefolder, exactversionasked forDataset-save. Decode131stillinputblocked;fullXE/RLnotrun/scheduled. R229complete/X044.
 
 - **FullROI userlog first1000 done, old6hprojectiongate stopped**:199.8567s/1000,remaining23440.59s(~6.51h),notZIPauditedyet. Userrequestsraise cap/reportsreset30GPUhours. UpdatedCPUROINBcap10h/internal9h50, samepooling/shards/strictguards;CPUonly,noGPUtrain. Smallcapfix,noresume: freshsessionreprocesses1000images, noCLIP/POS. DecodeNBunchanged. NewROIruntime/fullcompletionpendinguser;R229updated/X043.

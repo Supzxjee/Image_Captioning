@@ -944,3 +944,8 @@ Userpastedlog:first1000images persisted,processing199.8567s,projectedremaining23
 ### X044 — Codex1 — 02/11/2026 — full Karpathy ROI COMPLETE
 
 [Result](experiments/csa_paper/FULL_ROI_RESULT.md), ZIPa7749fde…, source936cd17/7GitSHAs/862metadataassertionsPASS.113287TRAIN+5000val/0test;118287images,833473regions,119pairedNPZ/JSONshards (114TRAIN/5val,trainlast287). Combinedcaptionevents591757;1004fallback,max87regions,0clipping.1749398178payloadbytes,worker3431.090s(~57m);newfirst1000processing30.041svsprevious199.857s impliesruntimevariability,nottimeoutfixspeedup. Noagentmodels/features/H5. Reviewexcludes238payloadfiles:globalbyteSHAs/countsverified,shardSHAs/IDdigestsreported,fullcontentsawaittransport/load. Unknownvisionrevision/detectorpolicy/JPEGheader-onlyprovenance retained. Exactsourceversionasked forDataset-save;keepentireoutput. Fulltrainingbenchmark/budgetstillpending,decode131notresolvedfrominputblockedattempt. R229complete;noautomaticfullXE/RLauthorization.
+
+
+### X045 — Codex1 — 02/11/2026 — exactOutput134 fullROI Dataset transport PREPARED
+
+Userconfirmed134. SAVE_CSA_FULL_ROI_V134_DATASET.ipynb CPU/noInput/Internet/Secret, existingpinnedCLI/version-labelpreflight,247fullSHAs (238shardfiles+vocab+8globals), independentactualper-image metadata uniqueIDs/groups/source_split/no test/IDdigest/region+captioncounts/54tokenEOSPADrange beforeupload. BytepreservingNPZ, noarray/model/poolingrun, newPrivate csa-full-roi-karpathy-v134/licenseother/upstreamterms;8GiBdiskgate.40localmetadata/NumPy/mock/static testsPASSinclduplicateID/testleakage/targetpadding/tamper/versionfixtures. UserAPI/runtimepending,nocreationclaim;keepbank130. R229note.
