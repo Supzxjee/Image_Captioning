@@ -1,0 +1,40 @@
+{
+  "date": "2026-11-02",
+  "source_commit": "5a14d1b641732b42877ea8a458b8fc4e746a1643",
+  "sources": {
+    "experiments/csa_paper/model.py": "139edbb1b73caf3dadaf5c960b25542e282f88baf2ce9bdf141de922ceacbc09",
+    "experiments/csa_paper/FULL_XE_10_PROTOCOL.md": "b52d4081cf0657c7c7fba8a00def7efbff928b4979180e08b4e552cc3983a70c",
+    "experiments/csa_paper/run_full_xe.py": "ba0593c8245a8b7bc8b4b82818972d433890a04eb563cdfaf31d7e1ebbb33370",
+    "experiments/csa_paper/full_xe_decode.py": "b8e618559feec6361cfb3b4619899e4968ab71ab67e113ff38b6d3cd99cdc235",
+    "experiments/csa_paper/FULL_ROI_RESULT.md": "340ca6dc5028f29f91d35ac9acfae8c703c561ea2213397d31d0c015c0ca0607",
+    "experiments/csa_paper/LEMMA_CORRECTION_RESULT.md": "09f62fbd3c8b58b4445ceace28da98184aa8f274229ae16b24791dc28d502f5f"
+  },
+  "model_executed": false,
+  "style": "Paper-style compact modules, real documented COCO input, bank cylinders, token stack, frozen/trainable markers; no large slide title/footer",
+  "outputs": {
+    "01_overview.png": "c280475ff2e85927010621c10b09d8d3f93fa35515f19e4dd29bca1a86ee552a",
+    "01_overview.svg": "e99377d2343199d439f28d05e2a1cc3a0ab0afc7afcf4478d6346367d0c6ffce",
+    "CSA_pipeline_editable.pptx": "ddc6455c172a7b4c4593bbe0b3853e111ceb696cbd24d8060af52c50d1f5961b",
+    "CSA_pipeline_vector.pdf": "3fff3acaf48ef051d7d088aa36fa284023acb1f6f466a291d89a20c874f509ab",
+    "README.md": "f3f4db88ceba63313783e6b9a8aaccec76d45dd215e739c2ab091aa5d7d7fd69",
+    "assets/COCO_train2014_000000263974.jpg": "f208e31d4f689c88f1c0a6a1c583f1413c86424b10c52d62b8b6d3e2360e7406",
+    "build_pipeline.mjs": "81103d7c367e35c15a4f9327ce812ce3483b52bdd982a9545d0fb4d5da00248b",
+    "diagram_layout.json": "2c971682bab8a00fdc77a8a1458f1083ab58aadadddeede16b30acc5f62267c4"
+  },
+  "revision": "X051-C; user rejected visual style of v2; rebuilt main figure; style acceptance pending",
+  "image": {
+    "url": "https://images.cocodataset.org/train2014/COCO_train2014_000000263974.jpg",
+    "role": "illustrative input only, not detection/caption output",
+    "sha256": "f208e31d4f689c88f1c0a6a1c583f1413c86424b10c52d62b8b6d3e2360e7406"
+  },
+  "validation": {
+    "package": "pass",
+    "layout_findings": 0,
+    "layout_warnings": 0,
+    "artifact_tool_reimport": true,
+    "native_powerpoint_opened": false,
+    "shapes": 80,
+    "connectors": 48,
+    "pictures": 1
+  }
+}

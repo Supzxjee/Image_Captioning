@@ -1,0 +1,965 @@
+{
+  "width": 1600,
+  "height": 1040,
+  "items": [
+    {
+      "type": "frame",
+      "x": 35,
+      "y": 20,
+      "w": 1530,
+      "h": 210
+    },
+    {
+      "type": "text",
+      "x": 50,
+      "y": 30,
+      "w": 650,
+      "h": 26,
+      "t": "Offline semantic bank construction · TRAIN only",
+      "size": 19,
+      "italic": true,
+      "bold": true,
+      "align": "left",
+      "color": "#232323"
+    },
+    {
+      "type": "shape",
+      "x": 75,
+      "y": 105,
+      "w": 170,
+      "h": 70,
+      "t": "TRAIN captions",
+      "kind": "data",
+      "size": 20,
+      "learn": false,
+      "frozen": false
+    },
+    {
+      "type": "shape",
+      "x": 285,
+      "y": 105,
+      "w": 175,
+      "h": 70,
+      "t": "POS tagging\n+ lemmatization",
+      "kind": "module",
+      "size": 19,
+      "learn": false,
+      "frozen": false
+    },
+    {
+      "type": "shape",
+      "x": 500,
+      "y": 105,
+      "w": 175,
+      "h": 70,
+      "t": "CLIP text encoder",
+      "kind": "module",
+      "size": 19,
+      "learn": false,
+      "frozen": true
+    },
+    {
+      "type": "shape",
+      "x": 715,
+      "y": 105,
+      "w": 145,
+      "h": 70,
+      "t": "L2 normalization",
+      "kind": "module",
+      "size": 18,
+      "learn": false,
+      "frozen": false
+    },
+    {
+      "type": "shape",
+      "x": 955,
+      "y": 85,
+      "w": 210,
+      "h": 105,
+      "t": "Noun bank\n5269 × 512",
+      "kind": "bank",
+      "size": 20,
+      "learn": false,
+      "frozen": false
+    },
+    {
+      "type": "shape",
+      "x": 1270,
+      "y": 85,
+      "w": 210,
+      "h": 105,
+      "t": "Verb bank\n1594 × 512",
+      "kind": "bank",
+      "size": 20,
+      "learn": false,
+      "frozen": false
+    },
+    {
+      "type": "wire",
+      "pts": [
+        [
+          245,
+          140
+        ],
+        [
+          285,
+          140
+        ]
+      ]
+    },
+    {
+      "type": "wire",
+      "pts": [
+        [
+          460,
+          140
+        ],
+        [
+          500,
+          140
+        ]
+      ]
+    },
+    {
+      "type": "wire",
+      "pts": [
+        [
+          675,
+          140
+        ],
+        [
+          715,
+          140
+        ]
+      ]
+    },
+    {
+      "type": "wire",
+      "pts": [
+        [
+          860,
+          140
+        ],
+        [
+          955,
+          140
+        ]
+      ]
+    },
+    {
+      "type": "wire",
+      "pts": [
+        [
+          900,
+          140
+        ],
+        [
+          900,
+          65
+        ],
+        [
+          1375,
+          65
+        ],
+        [
+          1375,
+          85
+        ]
+      ]
+    },
+    {
+      "type": "shape",
+      "x": 970,
+      "y": 270,
+      "w": 180,
+      "h": 60,
+      "t": "Noun aggregator",
+      "kind": "module",
+      "size": 19,
+      "learn": true,
+      "frozen": false
+    },
+    {
+      "type": "shape",
+      "x": 1285,
+      "y": 270,
+      "w": 180,
+      "h": 60,
+      "t": "Verb aggregator",
+      "kind": "module",
+      "size": 19,
+      "learn": true,
+      "frozen": false
+    },
+    {
+      "type": "wire",
+      "pts": [
+        [
+          1060,
+          190
+        ],
+        [
+          1060,
+          270
+        ]
+      ]
+    },
+    {
+      "type": "wire",
+      "pts": [
+        [
+          1375,
+          190
+        ],
+        [
+          1375,
+          270
+        ]
+      ]
+    },
+    {
+      "type": "text",
+      "x": 1090,
+      "y": 235,
+      "w": 180,
+      "h": 24,
+      "t": "K = 150, d = 512",
+      "size": 16,
+      "italic": true,
+      "bold": false,
+      "align": "center",
+      "color": "#232323"
+    },
+    {
+      "type": "frame",
+      "x": 290,
+      "y": 365,
+      "w": 615,
+      "h": 270
+    },
+    {
+      "type": "text",
+      "x": 305,
+      "y": 375,
+      "w": 470,
+      "h": 26,
+      "t": "Offline visual feature extraction",
+      "size": 19,
+      "italic": true,
+      "bold": true,
+      "align": "left",
+      "color": "#232323"
+    },
+    {
+      "type": "photo",
+      "x": 55,
+      "y": 490,
+      "w": 200,
+      "h": 150,
+      "file": "assets/COCO_train2014_000000263974.jpg"
+    },
+    {
+      "type": "text",
+      "x": 55,
+      "y": 648,
+      "w": 200,
+      "h": 28,
+      "t": "Input image I",
+      "size": 19,
+      "italic": true,
+      "bold": false,
+      "align": "center",
+      "color": "#232323"
+    },
+    {
+      "type": "shape",
+      "x": 310,
+      "y": 500,
+      "w": 175,
+      "h": 75,
+      "t": "CLIP vision encoder\nViT-B/16",
+      "kind": "module",
+      "size": 19,
+      "learn": false,
+      "frozen": true
+    },
+    {
+      "type": "shape",
+      "x": 535,
+      "y": 500,
+      "w": 140,
+      "h": 75,
+      "t": "Patch tokens\n196 × 768",
+      "kind": "tokens",
+      "size": 19,
+      "learn": false,
+      "frozen": false
+    },
+    {
+      "type": "shape",
+      "x": 725,
+      "y": 395,
+      "w": 150,
+      "h": 60,
+      "t": "Predicted boxes\nproducer cache",
+      "kind": "data",
+      "size": 18,
+      "learn": false,
+      "frozen": false
+    },
+    {
+      "type": "shape",
+      "x": 725,
+      "y": 500,
+      "w": 150,
+      "h": 75,
+      "t": "ROI pooling\nN × 768 cache",
+      "kind": "module",
+      "size": 19,
+      "learn": false,
+      "frozen": false
+    },
+    {
+      "type": "wire",
+      "pts": [
+        [
+          155,
+          490
+        ],
+        [
+          155,
+          425
+        ],
+        [
+          725,
+          425
+        ]
+      ]
+    },
+    {
+      "type": "wire",
+      "pts": [
+        [
+          255,
+          565
+        ],
+        [
+          282,
+          565
+        ],
+        [
+          282,
+          538
+        ],
+        [
+          310,
+          538
+        ]
+      ]
+    },
+    {
+      "type": "wire",
+      "pts": [
+        [
+          485,
+          538
+        ],
+        [
+          535,
+          538
+        ]
+      ]
+    },
+    {
+      "type": "wire",
+      "pts": [
+        [
+          675,
+          538
+        ],
+        [
+          725,
+          538
+        ]
+      ]
+    },
+    {
+      "type": "wire",
+      "pts": [
+        [
+          800,
+          455
+        ],
+        [
+          800,
+          500
+        ]
+      ]
+    },
+    {
+      "type": "text",
+      "x": 520,
+      "y": 587,
+      "w": 210,
+      "h": 25,
+      "t": "14 × 14 · CLS removed",
+      "size": 16,
+      "italic": true,
+      "bold": false,
+      "align": "center",
+      "color": "#232323"
+    },
+    {
+      "type": "shape",
+      "x": 725,
+      "y": 665,
+      "w": 150,
+      "h": 75,
+      "t": "Visual projection\n768 → 512",
+      "kind": "module",
+      "size": 19,
+      "learn": true,
+      "frozen": false
+    },
+    {
+      "type": "wire",
+      "pts": [
+        [
+          800,
+          575
+        ],
+        [
+          800,
+          665
+        ]
+      ]
+    },
+    {
+      "type": "text",
+      "x": 810,
+      "y": 627,
+      "w": 83,
+      "h": 26,
+      "t": "N × 768",
+      "size": 18,
+      "italic": true,
+      "bold": false,
+      "align": "center",
+      "color": "#232323"
+    },
+    {
+      "type": "text",
+      "x": 300,
+      "y": 678,
+      "w": 360,
+      "h": 52,
+      "t": "N varies per image (max 87)\nEmpty boxes → full-frame fallback",
+      "size": 17,
+      "italic": true,
+      "bold": false,
+      "align": "center",
+      "color": "#232323"
+    },
+    {
+      "type": "frame",
+      "x": 930,
+      "y": 365,
+      "w": 635,
+      "h": 425
+    },
+    {
+      "type": "text",
+      "x": 945,
+      "y": 375,
+      "w": 195,
+      "h": 26,
+      "t": "CSA encoder",
+      "size": 19,
+      "italic": true,
+      "bold": true,
+      "align": "left",
+      "color": "#232323"
+    },
+    {
+      "type": "shape",
+      "x": 1010,
+      "y": 420,
+      "w": 360,
+      "h": 75,
+      "t": "Object alignment 1\n(V₀, Tₒ) → (V₁, T₁)",
+      "kind": "module",
+      "size": 21,
+      "learn": true,
+      "frozen": false
+    },
+    {
+      "type": "shape",
+      "x": 1010,
+      "y": 545,
+      "w": 360,
+      "h": 75,
+      "t": "Object alignment 2\n(V₁, T₁) → Vₒ",
+      "kind": "module",
+      "size": 21,
+      "learn": true,
+      "frozen": false
+    },
+    {
+      "type": "shape",
+      "x": 1010,
+      "y": 670,
+      "w": 360,
+      "h": 75,
+      "t": "Relation alignment\n(Vₒ, Tᵣ) → Vᵣ",
+      "kind": "module",
+      "size": 21,
+      "learn": true,
+      "frozen": false
+    },
+    {
+      "type": "wire",
+      "pts": [
+        [
+          875,
+          702
+        ],
+        [
+          910,
+          702
+        ],
+        [
+          910,
+          458
+        ],
+        [
+          1010,
+          458
+        ]
+      ]
+    },
+    {
+      "type": "text",
+      "x": 785,
+      "y": 753,
+      "w": 140,
+      "h": 26,
+      "t": "V₀: N × 512",
+      "size": 18,
+      "italic": true,
+      "bold": false,
+      "align": "center",
+      "color": "#232323"
+    },
+    {
+      "type": "wire",
+      "pts": [
+        [
+          1060,
+          330
+        ],
+        [
+          1060,
+          350
+        ],
+        [
+          1190,
+          350
+        ],
+        [
+          1190,
+          420
+        ]
+      ]
+    },
+    {
+      "type": "text",
+      "x": 1205,
+      "y": 380,
+      "w": 45,
+      "h": 26,
+      "t": "Tₒ",
+      "size": 18,
+      "italic": true,
+      "bold": false,
+      "align": "center",
+      "color": "#232323"
+    },
+    {
+      "type": "wire",
+      "pts": [
+        [
+          1375,
+          330
+        ],
+        [
+          1535,
+          330
+        ],
+        [
+          1535,
+          708
+        ],
+        [
+          1370,
+          708
+        ]
+      ]
+    },
+    {
+      "type": "text",
+      "x": 1480,
+      "y": 485,
+      "w": 45,
+      "h": 26,
+      "t": "Tᵣ",
+      "size": 18,
+      "italic": true,
+      "bold": false,
+      "align": "center",
+      "color": "#232323"
+    },
+    {
+      "type": "wire",
+      "pts": [
+        [
+          1190,
+          495
+        ],
+        [
+          1190,
+          545
+        ]
+      ]
+    },
+    {
+      "type": "text",
+      "x": 1205,
+      "y": 506,
+      "w": 100,
+      "h": 26,
+      "t": "V₁, T₁",
+      "size": 18,
+      "italic": true,
+      "bold": false,
+      "align": "center",
+      "color": "#232323"
+    },
+    {
+      "type": "wire",
+      "pts": [
+        [
+          1190,
+          620
+        ],
+        [
+          1190,
+          670
+        ]
+      ]
+    },
+    {
+      "type": "text",
+      "x": 1205,
+      "y": 631,
+      "w": 55,
+      "h": 26,
+      "t": "Vₒ",
+      "size": 18,
+      "italic": true,
+      "bold": false,
+      "align": "center",
+      "color": "#232323"
+    },
+    {
+      "type": "wire",
+      "pts": [
+        [
+          1010,
+          582
+        ],
+        [
+          970,
+          582
+        ],
+        [
+          970,
+          813
+        ],
+        [
+          1040,
+          813
+        ],
+        [
+          1040,
+          835
+        ]
+      ]
+    },
+    {
+      "type": "text",
+      "x": 974,
+      "y": 766,
+      "w": 45,
+      "h": 26,
+      "t": "Vₒ",
+      "size": 18,
+      "italic": true,
+      "bold": false,
+      "align": "center",
+      "color": "#232323"
+    },
+    {
+      "type": "wire",
+      "pts": [
+        [
+          1190,
+          745
+        ],
+        [
+          1190,
+          835
+        ]
+      ]
+    },
+    {
+      "type": "text",
+      "x": 1205,
+      "y": 800,
+      "w": 50,
+      "h": 26,
+      "t": "Vᵣ",
+      "size": 18,
+      "italic": true,
+      "bold": false,
+      "align": "center",
+      "color": "#232323"
+    },
+    {
+      "type": "shape",
+      "x": 945,
+      "y": 835,
+      "w": 425,
+      "h": 75,
+      "t": "Parallel adaptive decoder (×3)",
+      "kind": "module",
+      "size": 22,
+      "learn": true,
+      "frozen": false
+    },
+    {
+      "type": "shape",
+      "x": 715,
+      "y": 835,
+      "w": 150,
+      "h": 75,
+      "t": "Linear\n+ softmax",
+      "kind": "module",
+      "size": 20,
+      "learn": true,
+      "frozen": false
+    },
+    {
+      "type": "shape",
+      "x": 430,
+      "y": 835,
+      "w": 210,
+      "h": 75,
+      "t": "Generated caption",
+      "kind": "data",
+      "size": 21,
+      "learn": false,
+      "frozen": false
+    },
+    {
+      "type": "wire",
+      "pts": [
+        [
+          945,
+          872
+        ],
+        [
+          865,
+          872
+        ]
+      ]
+    },
+    {
+      "type": "wire",
+      "pts": [
+        [
+          715,
+          872
+        ],
+        [
+          640,
+          872
+        ]
+      ]
+    },
+    {
+      "type": "text",
+      "x": 390,
+      "y": 916,
+      "w": 295,
+      "h": 44,
+      "t": "VALID: beam 5 → CIDEr\nBest checkpoint selection",
+      "size": 16,
+      "italic": true,
+      "bold": false,
+      "align": "center",
+      "color": "#232323"
+    },
+    {
+      "type": "text",
+      "x": 705,
+      "y": 916,
+      "w": 170,
+      "h": 30,
+      "t": "TRAIN: next-token XE",
+      "size": 16,
+      "italic": true,
+      "bold": false,
+      "align": "center",
+      "color": "#232323"
+    },
+    {
+      "type": "shape",
+      "x": 1010,
+      "y": 965,
+      "w": 235,
+      "h": 55,
+      "t": "Embedding + positions",
+      "kind": "module",
+      "size": 19,
+      "learn": true,
+      "frozen": false
+    },
+    {
+      "type": "shape",
+      "x": 1300,
+      "y": 965,
+      "w": 225,
+      "h": 55,
+      "t": "GT captions (shift right)\nTRAIN only",
+      "kind": "data",
+      "size": 18,
+      "learn": false,
+      "frozen": false
+    },
+    {
+      "type": "shape",
+      "x": 685,
+      "y": 965,
+      "w": 245,
+      "h": 55,
+      "t": "BOS / generated prefix\nVALID & inference",
+      "kind": "data",
+      "size": 18,
+      "learn": false,
+      "frozen": false
+    },
+    {
+      "type": "wire",
+      "pts": [
+        [
+          1300,
+          992
+        ],
+        [
+          1245,
+          992
+        ]
+      ]
+    },
+    {
+      "type": "wire",
+      "pts": [
+        [
+          930,
+          992
+        ],
+        [
+          1010,
+          992
+        ]
+      ]
+    },
+    {
+      "type": "wire",
+      "pts": [
+        [
+          1127,
+          965
+        ],
+        [
+          1127,
+          910
+        ]
+      ]
+    },
+    {
+      "type": "text",
+      "x": 40,
+      "y": 935,
+      "w": 345,
+      "h": 29,
+      "t": "CSA adaptation",
+      "size": 20,
+      "italic": true,
+      "bold": false,
+      "align": "left",
+      "color": "#232323"
+    },
+    {
+      "type": "text",
+      "x": 40,
+      "y": 964,
+      "w": 485,
+      "h": 25,
+      "t": "Cached CLIP ROI + global semantic banks",
+      "size": 16,
+      "italic": true,
+      "bold": false,
+      "align": "left",
+      "color": "#232323"
+    },
+    {
+      "type": "marker",
+      "x": 51,
+      "y": 1007,
+      "kind": "frozen"
+    },
+    {
+      "type": "text",
+      "x": 66,
+      "y": 994,
+      "w": 95,
+      "h": 26,
+      "t": "Frozen",
+      "size": 16,
+      "italic": false,
+      "bold": false,
+      "align": "left",
+      "color": "#232323"
+    },
+    {
+      "type": "marker",
+      "x": 180,
+      "y": 1007,
+      "kind": "learn"
+    },
+    {
+      "type": "text",
+      "x": 196,
+      "y": 994,
+      "w": 135,
+      "h": 26,
+      "t": "Trainable",
+      "size": 16,
+      "italic": false,
+      "bold": false,
+      "align": "left",
+      "color": "#232323"
+    }
+  ]
+}
