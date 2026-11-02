@@ -57,3 +57,7 @@ Chạy `CSA_PAPER_REAL_PREPARATION_CPU.ipynb` trên **CPU/Accelerator None**, In
 ## Trace đã xác nhận lỗi → sửa có điều kiện
 
 [Trace result](LEMMA_TRACE_RESULT.md) xácnhậnriding/ridesVERB→rid sai;rid/ridding thật vẫnđúng. Chạy `CSA_BANK_LEMMA_CORRECTION_CPU.ipynb` với CPU/InternetON, **chỉ AddInput mscoco-2014**. Không cầnDataset126/API/visualcache. Notebook đếm lại các câuTRAIN chứa2dạngtừnày rồi xuất `bank_words_corrected.json` mới, giữbankgốc/captiontargets/ROI. Gửi `csa_bank_lemma_correction_review.zip`.23localtestsvàreplaymetadataPASS, sốtokenchuyểncủatoànbank chưađobiếtnếuuserchưachạy.
+
+## Bank sửa xong — lưu bộ tài nguyên gộp
+
+[Correction result](LEMMA_CORRECTION_RESULT.md):18487tokenschuyểnrid→ride,ridcòn88/ride19368. Tập từ giữ nguyên nên đây là sửa sốliệu/tiềnxửlý, không tự tạo cải thiện mô hình. Dùng `SAVE_CSA_CORRECTED_ASSETS_DATASET.ipynb` (CPU/InternetON/APIsecret/noInput): tải8filegốc126 và thêm `bank_words_corrected.json` cùngcorrectionreceipt, kiểmSHA/táitạodelta, tạoPrivateDatasetmới `csa-real-v126-lemma-fixed`. Không chạy lạiPOS/ROI/model. Gửi mountpaththực saukhiDatasetxửlýxong;phasedataset/APIchưachạybởiagent. LoaderGPUtiếp chọnfileđãsửa.

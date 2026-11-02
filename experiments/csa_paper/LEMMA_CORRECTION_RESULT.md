@@ -22,6 +22,8 @@ Actual redirected tokens: **18487**, comprising16694surface riding and1793surfac
 
 ## Decision
 
+**Important model-effect limit:** both noun and verb word sets are exactly unchanged. rid remains88>=5, ride was already retained; the correction changes frequencies and verb row order only. Current `SemanticAggregation` takes embeddings, not frequency counts: A=softmax(MLP(LWa),word-axis), P=AᵀLWb, which is mathematically invariant to a joint permutation of word rows. Therefore this particular repair supplies no new semantic content to the current bank/module and is not expected by itself to improve CIDEr; no actual CLIP/model parity run has been performed, and floating-point ordering can differ. This is preprocessing/provenance hygiene. Do not add frequency weighting to manufacture an effect or introduce another lexical-audit branch; proceed to the actual model baseline.
+
 **The confirmed riding/rides lemma blocker is resolved.** Use `bank_words_corrected.json` for the next frozen CLIP text encoding. Do not start another whole-bank manual-review gate or rerun ROI. Remaining automated-POS/caption noise and unknown legacy feature provenance are declared adaptation limits, not claims of perfect supervision.
 
 Save the exact original eight Output126 files plus the corrected bank and its correction receipt in a new Private Dataset. Preserve originals and both receipts, explicitly use the corrected file in the future loader. Dataset creation has not yet been confirmed. Once mounted, validate NPZ bytes/contents, encode actual word vectors and run bounded real-data CSA smoke before training/quality evaluation. No CIDEr/CHAIR/novelty or model-improvement result established by this preprocessing fix.

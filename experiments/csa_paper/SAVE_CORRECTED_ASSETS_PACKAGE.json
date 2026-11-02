@@ -1,0 +1,18 @@
+{
+  "source_kernel_version": "ducanh2403/2-vi-cai-kia-qua-nhieu/126",
+  "overlay_commit": "27d884df3b0621b0c7745ad1e7be316628489da9",
+  "overlay": {
+    "bank_words_corrected.json": {
+      "url": "https://raw.githubusercontent.com/Supzxjee/Image_Captioning/27d884df3b0621b0c7745ad1e7be316628489da9/experiments/csa_paper/lemma_correction_review_text/bank_words_corrected.json",
+      "sha256": "cec76a0229f30361235a4b64e9712ac6bb2e79fc62a9241079a7af3fa95d13ac"
+    },
+    "correction_receipt.json": {
+      "url": "https://raw.githubusercontent.com/Supzxjee/Image_Captioning/27d884df3b0621b0c7745ad1e7be316628489da9/experiments/csa_paper/lemma_correction_review_text/correction_receipt.json",
+      "sha256": "aa3f7c738124973715d009c0a75e6ea1cd3d11d4f4a06c1cb22906c9086e2123"
+    }
+  },
+  "notebook_sha256": "56a67cf136b355b079564956d10dce98fda9707ccac9db9fdf2b4ca1887118c0",
+  "notebook_bytes": 18215,
+  "api_executed": false,
+  "model_executed": false
+}
