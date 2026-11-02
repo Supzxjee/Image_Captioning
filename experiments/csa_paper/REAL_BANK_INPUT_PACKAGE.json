@@ -1,0 +1,39 @@
+{
+  "original_kernel_version": "ducanh2403/2-vi-cai-kia-qua-nhieu/126",
+  "original_files_sha256": {
+    "vocabulary.json": "924be210aa0daa8b0968a6d69ad2c66b3de603f49c35f4aa67247c75d6173fc7",
+    "bank_words.json": "450fc969e0842ca3270d1f899b7e8fe594639260644ad5815a69430fe48264b1",
+    "pilot_metadata.json": "892e90561dc99b7ca0e4e58615a5a750d11e6df0ce84d4c1482a9322a5c00beb",
+    "regions.npz": "054f79bcf13de02255893d5741e695ebfb453f66bc5e488234fba65702904b6c",
+    "receipt.json": "b95196eba5dc19ef534485a0855b3ea194097ade05a1d44095194a6548fa1e42",
+    "summary.json": "206cfc43053179d65f9696debfd6b549f8f59a556a79b28c1dd69e42db2a8207",
+    "source_receipt.json": "8cc88416da138a7f2248d6371e6c1f03f67d3329fbf1334bb34289921daceabb",
+    "software_freeze.txt": "117f207643e1c4e13fea4f596069e16c15dca6927f7eca793a2b8ad38fb09b45"
+  },
+  "overlay_sha256": {
+    "bank_words_corrected.json": "cec76a0229f30361235a4b64e9712ac6bb2e79fc62a9241079a7af3fa95d13ac",
+    "correction_receipt.json": "aa3f7c738124973715d009c0a75e6ea1cd3d11d4f4a06c1cb22906c9086e2123"
+  },
+  "selected_bank_file": "bank_words_corrected.json",
+  "train_indices": [
+    0,
+    1,
+    2,
+    108
+  ],
+  "val_indices": [
+    256,
+    257
+  ],
+  "train_ids": [
+    16670,
+    105863,
+    159558,
+    154349
+  ],
+  "val_ids": [
+    234592,
+    535808
+  ],
+  "selection": "first4TRAIN with firstTRAINfallback replacing fourth if none selected; first2val"
+}
