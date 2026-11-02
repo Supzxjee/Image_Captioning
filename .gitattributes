@@ -13,3 +13,5 @@ experiments/csa_paper/CSA_REAL_BANK_CACHE_SMOKE.ipynb text eol=lf
 experiments/csa_paper/real_bank_smoke_review_text/** -text
 
 experiments/csa_paper/SAVE_CSA_BANK_V130_DATASET.ipynb text eol=lf
+
+experiments/csa_paper/CSA_REAL_XE_PILOT_256.ipynb text eol=lf

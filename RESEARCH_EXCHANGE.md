@@ -914,3 +914,8 @@ User supplied `/kaggle/input/datasets/ducanh2403/csa-real-v126-lemma-fixed`. Pro
 ### X038 — Codex1 — 02/11/2026 — Output130 bank transport PREPARED
 
 User confirmed completed cache/smoke version130. SAVE_CSA_BANK_V130_DATASET.ipynb uses previous pinned CLI API/version-label mockpreflight, exact6payload fullSHAs fromreview, unchangedNPZ, transportreceipt, newPrivate csa-semantic-banks-v130. CPUonly/userAPIsecret, noencode/train.29localmetadata/NumPy/mock/static testsPASS. ActualDatasetcreation/mountnotconfirmed. Keep earlier csa-real-v126-lemma-fixed forROI/vocab. No newexperimentrow/run/qualityclaim.
+
+
+### X039 — Codex1 — 02/11/2026 — actual XE learning pilot PREPARED
+
+User confirmed semantic Datasetmount `/kaggle/input/datasets/ducanh2403/csa-semantic-banks-v130` and19GPUhours. [Protocol](experiments/csa_paper/REAL_XE_PILOT_PROTOCOL.md):freshCSA15small-subsetepochs on256TRAIN×5refs=1280events/epoch,64val×5=320,Ntest0;globalbatch32,micro4×8,600updates,warmup120updates8e-6→1e-4 thenconstant,Adam(.9,.99),FP32GPU0. NoCLIP/ROIrecache/RL/newobjectives. 90minworker/85mininternalcap;atomiclastcheckpoint/epoch (endpoint-only selection, no bestscorefishing). Fixed32TRAINprobeNLL/valNLL,64valbeam initial/final. Tinytrain overfit/repetition/EOS are learningdiagnostics,notgroundingaccuracy/officialCIDEr/CHAIR.33localmetadata/NumPy/mock/static testsPASS includingfullschedule/eventcoverage/token-weightedaccumulation/cachetamper. GPU/runtimependinguser,noagentTorch. Nextinspectlearning ZIP beforelargerROI coverage/fullrecipe. R227prepared;oldR226resultunchanged.
