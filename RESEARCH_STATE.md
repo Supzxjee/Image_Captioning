@@ -10,7 +10,7 @@ Cập nhật: 02/11/2026, giờ Việt Nam. File này là bản tóm tắt để
 
 ## Hiện đang ở đâu
 
-- **FullXE10 attempt1 stopped BEFORE TRAIN at beam parity.** User log:DDPsharingbenchmarkCOMPLETE, then bothranks`Batched/per-image beam IDs differ`;0TRAINupdates/no actualtrainingcheckpoint atthispoint, prospectiveprintedpathsnotproof. V2fixusesestablished `model.beam_search` perimage forval;newbatcheddecoderremoved, noIDtolerancewaiver/rootcauseclaim. Samebeam5/max20/rawscore,base/loss/data/10epochsunchanged;valtimepossiblyslower. Separateoutput`csa_full_xe_10_v2`,freshstart/emptyRESUME_ROOT. Fixchecks/notebookpublicationinprogress;noagentTorch/Kaggle.
+- **FullXE10 attempt1 stopped BEFORE TRAIN at beam parity.** User log:DDPsharingbenchmarkCOMPLETE, then bothranks`Batched/per-image beam IDs differ`;0TRAINupdates/no actualtrainingcheckpoint atthispoint, prospectiveprintedpathsnotproof. V2fixusesestablished `model.beam_search` perimage forval;newbatcheddecoderremoved, noIDtolerancewaiver/rootcauseclaim. Samebeam5/max20/rawscore,base/loss/data/10epochsunchanged;valtimepossiblyslower. Separateoutput`csa_full_xe_10_v2`,freshstart/emptyRESUME_ROOT. V2coree655a56;14NumPy/static tests+5mockflows/17GitpinsPASS;notebook9991bytes/unexecuted. ActualV2CUDA/validationpending;noagentTorch/Kaggle.
 
 - **Sơ đồ CSA giao Codex2 theo user nhắc rõ, không giao Codex1 vẽ.** X051 trong `RESEARCH_EXCHANGE.md` bàn giao yêu cầu hình tổng quan chi tiết, có thể thêm2hìnhzoom encoder/decoder; editablePPTX+vector+PNG, sourceforward/bank/cache/To→T1/Vo→Vr/parallelgates/TRAIN-XE vàVALID-selection đã đặc tả. Codex1 chưa vẽ hình; chờ Codex2 thực hiện/push rồi review đúng code, không đổi trainer hay tạo experimentrow.
 
