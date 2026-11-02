@@ -13,3 +13,9 @@
 - Generated notebook9550bytes, all code cells AST-valid/outputs empty. **17 pinned Git-blob hashes** match; base `model.py` unchanged SHA139edbb1…. **5 mocked control flows PASS**: success and prepare/metric/DDP/train-worker failures. Failure cases archive incomplete status; preflight failures do not launch training. No actual pip, network, staging, Torch or model execution in those mocks.
 - Initial mock attempt hit Windows sandbox temp-directory permissions; rerun used a verified workspace child and passed. This was local test infrastructure, not a Kaggle/model failure.
 - User-run guards still required: six existing DDP loss/gradient cases, new batched-vs-per-image beam comparison, Java/PTB/CIDEr, full validation/decode and resumable actual CUDA/Adam/RNG path. Local tests do **not** establish their runtime success. Notebook not submitted/run by agent; no full-training quality/timing result.
+
+## 02/11 — full10 XE V2 after beam preflight failure
+
+- User log establishes old attempt stopped at exact beam-ID parity before TRAIN; DDP benchmark completed. No differing IDs/scores available: root cause not established and no equivalence/tolerance claim.
+- Removed batched beam path; full validation now calls existing `model.beam_search` directly. Trainable model source unchanged, beam5/max20/raw-score policy unchanged. Structural real-input beam guard replaces the need to validate an unused optimization. Original failed gate is not reported as PASS.
+- **14 NumPy/static tests PASS** (`test_full_xe`, `test_full_cache_data`, `test_sharing_data`). Added data-only beam cases for differing EOS stop lengths, unfinished max-length sequences, PAD/BOS content, invalid continuation after EOS, NaN and unsorted scores. No Torch/model execution locally. Actual V2 GPU/validation runtime remains user-run pending.

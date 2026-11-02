@@ -56,8 +56,8 @@ def worker(args):
     import torch.distributed as dist
     from torch.nn import functional as F
     from torch.nn.parallel import DistributedDataParallel as DDP
-    from model import Config,CSACaptioner
-    from full_xe_decode import batched_beam,beam_parity
+    from model import Config,CSACaptioner,beam_search
+    from full_xe_decode import beam_preflight
     rank=int(os.environ['LOCAL_RANK']);world=int(os.environ['WORLD_SIZE'])
     if world!=2 or torch.cuda.device_count()!=2:raise ValueError('Select GPU T4x2')
     torch.cuda.set_device(rank);device=torch.device('cuda',rank)
@@ -92,10 +92,10 @@ def worker(args):
         last_receipt=None
 
         def tensors(indices):return [torch.from_numpy(x).to(device) for x in collate(data,indices)]
-        # Check batching implementation in eval mode before training or restoring RNG.
+        # Use the established decoder; do not require a new batched implementation.
         first_val=np.searchsorted(data['caption_image'],[113287,113288])
         x,valid,_=tensors(first_val)
-        parity=beam_parity(base,x,valid)
+        parity=beam_preflight(base,x,valid)
         if rank==0:save(args.output/'beam_preflight.json',parity)
         del x,valid
 
@@ -163,16 +163,16 @@ def worker(args):
                     nll=F.cross_entropy(logits.flatten(0,1),seq[:,1:].flatten(),ignore_index=0,reduction='sum')
                     if not torch.isfinite(nll):raise ValueError('Nonfinite validation NLL')
                     total+=float(nll);count+=int((seq[:,1:]!=0).sum())
-                # Eight unique images/rank, each expanded tofive decoder beams.
+                # Encode eight images together, then use the original per-image beam loop.
                 first_events=np.searchsorted(data['caption_image'],local_images)
                 for offset in range(0,len(first_events),8):
                     if time.monotonic()>deadline:raise TimeoutError('Validation wall cap; resume from pre-validation checkpoint')
                     x,v,_=tensors(first_events[offset:offset+8]);vo,vr=base.encode(x,v)
-                    seq,scores=batched_beam(base,vo,vr,v)
-                    for j,image in enumerate(local_images[offset:offset+8]):
-                        ids=seq[j,0].cpu().tolist()[1:];ended=2 in ids;content=ids[:ids.index(2)] if ended else ids
+                    predictions=beam_search(base,vo,vr,v,beams=5,maximum=20)
+                    for image,(seq,scores) in zip(local_images[offset:offset+8],predictions):
+                        ids=seq[0].cpu().tolist()[1:];ended=2 in ids;content=ids[:ids.index(2)] if ended else ids
                         rows.append(dict(coco_id=int(data['ids'][image]),caption=' '.join(vocab[t] for t in content if t!=0),
-                            ids=ids,eos=ended,score=float(scores[j,0])))
+                            ids=ids,eos=ended,score=float(scores[0])))
                     if offset%400==0:print('VAL beam',epoch,'rank',rank,offset,'/2500',flush=True)
             save(args.output/f'val_epoch{epoch:02d}_rank{rank}.json',rows)
             sums=torch.tensor([total,count,len(local_events),len(rows)],device=device,dtype=torch.float64)
@@ -190,7 +190,7 @@ def worker(args):
                 metrics[0]=dict(epoch=epoch,updates=state['updates'],val_nll=float(sums[0]/sums[1]),val_target_tokens=int(sums[1]),
                     cider=float(score),validation_images=5000,references=25010,beam=5,max_new_tokens=20,
                     eos_images=sum(x['eos'] for x in rows),mean_words=float(np.mean([len(x['caption'].split()) for x in rows])),
-                    validation_seconds=time.monotonic()-began)
+                    validation_seconds=time.monotonic()-began,decoder='model.beam_search per-image')
                 save(args.output/f'metrics_epoch{epoch:02d}.json',metrics[0])
                 print('VALIDATION',metrics[0],flush=True)
             dist.broadcast_object_list(metrics,src=0)

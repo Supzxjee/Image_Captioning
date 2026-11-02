@@ -18,7 +18,7 @@ FULL_ROOT=Path('/kaggle/input/datasets/ducanh2403/csa-full-roi-karpathy-v134')
 BANK_ROOT=Path('/kaggle/input/datasets/ducanh2403/csa-semantic-banks-v130')
 # Leave empty for a fresh run. For continuation mount the ENTIRE previous output folder.
 RESUME_ROOT=''
-OUTPUT=Path('/kaggle/working/csa_full_xe_10')
+OUTPUT=Path('/kaggle/working/csa_full_xe_10_v2')
 WALL_HOURS=10.5  # Stop limit, not an ETA or a promise of available quota.
 COMMIT={commit!r}
 HASHES={hashes!r}
@@ -65,7 +65,9 @@ finally:
             if p.is_file() and p.suffix in ('.json','.txt','.log'):z.write(p,str(p.relative_to(OUTPUT)))
     print('SEND REVIEW:',review,flush=True)
     print('KEEP ENTIRE FOLDER:',OUTPUT,flush=True)
-    print('LATEST:',OUTPUT/'checkpoint.bin','BEST VALID:',OUTPUT/'best.bin',flush=True)
+    for name in ('checkpoint.bin','best.bin'):
+        if (OUTPUT/name).is_file():print('KEEP CHECKPOINT:',OUTPUT/name,flush=True)
+    if not (OUTPUT/'checkpoint.bin').is_file():print('No training checkpoint exists yet; do not set RESUME_ROOT to this output.',flush=True)
     print('COMPLETE10' if complete else 'INCOMPLETE; preserve output and resume, no automatic restart.',flush=True)
 '''
     nb=dict(nbformat=4,nbformat_minor=5,metadata=dict(kernelspec=dict(display_name='Python 3',language='python',name='python3')),
@@ -79,14 +81,16 @@ After each epoch: all5000val images, beam5/max20/rawscore + CIDEr and NLL; val n
 Frozen CLIP inputs already cached; learned CSA representations recomputed each update.
 
 Train-only estimate≈5.18h; validation/checkpoints/preparation add time, mature decoding not yet timed.
-Wall cap10.5h is a stop limit. Mandatory six DDP guards + batched/per-image beam check must pass before training.
+Wall cap10.5h is a stop limit. Mandatory six DDP guards + original per-image beam contract must pass before training.
+V2 uses the established `model.beam_search` for validation; the new batched decoder was removed after its ID comparison failed.
+The failed first attempt stopped BEFORE training. V2 uses a separate output folder and needs no resume checkpoint.
 Model execution is performed by you on Kaggle; local agent checks were static/NumPy only.
 
 `checkpoint.bin` stores latest model/Adam/cursor/both-rank RNG every1000updates and before/after validation.
 `best.bin` stores greatest valid CIDEr (ties earlier). **Preserve entire output folder**, not just the small review ZIP.
 To resume, mount that complete folder and set `RESUME_ROOT`; use a fresh session/output path and this same pinned notebook.
 Do not point it at checkpoint131/QFormer/A. Extension beyond10epochs needs a separate approved schedule.
-Send `csa_full_xe_10_review.zip`. Hallucination/CHAIR and test metrics are not computed here.
+Send `csa_full_xe_10_v2_review.zip`. Hallucination/CHAIR and test metrics are not computed here.
 '''),cell('code',setup),cell('code',RUNNER.replace('Smoke active;','Full XE active;').replace('Smoke wall cap exceeded','Full XE wall cap exceeded')),cell('code',execute)])
     path=HERE/'CSA_FULL_XE_10_2GPU.ipynb';path.write_bytes((json.dumps(nb,indent=1,ensure_ascii=False)+'\n').encode('utf-8'))
     assert path.stat().st_size<1_000_000

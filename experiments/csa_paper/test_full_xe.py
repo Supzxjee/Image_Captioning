@@ -5,6 +5,7 @@ import unittest
 import numpy as np
 from full_xe_data import TRAIN_EVENTS,STEPS,EPOCHS,learning_rate,epoch_order,validate_state,validate_predictions,is_best
 from sharing_data import rank_events,ddp_loss_multiplier
+from full_xe_decode import check_beam_rows
 
 HERE=Path(__file__).parent
 
@@ -60,14 +61,21 @@ class Checks(unittest.TestCase):
         source=(HERE/'run_full_xe.py').read_text(encoding='utf-8')
         self.assertIn("state['phase']='validate';checkpoint()",source)
         self.assertIn('rng_by_rank=rngs',source);self.assertIn("torch.cuda.set_rng_state(rng['cuda'],device)",source)
-        self.assertIn('beam_parity(base,x,valid)',source);self.assertIn('score,_=Cider().compute_score(refs_ptb,hyps)',source)
+        self.assertIn('beam_preflight(base,x,valid)',source);self.assertIn('score,_=Cider().compute_score(refs_ptb,hyps)',source)
         self.assertNotIn('shared_collate',source);self.assertNotIn('autocast',source)
         tree=ast.parse(source)
         for node in tree.body:
             if isinstance(node,(ast.Import,ast.ImportFrom)):
                 text=ast.unparse(node);self.assertNotIn('import torch',text)
-        decode=(HERE/'full_xe_decode.py').read_text(encoding='utf-8')
-        self.assertIn('logp[:,:,:2]=-torch.inf',decode);self.assertIn('finished.gather',decode)
-        self.assertIn('beam_search(model,vo,vr,valid)',decode)
+        self.assertNotIn('batched_beam(',source)
+        self.assertIn('beam_search(base,vo,vr,v,beams=5,maximum=20)',source)
+
+    def test_reference_beam_contract_handles_different_stop_lengths(self):
+        first=([[1,2,0],[1,4,2],[1,5,2],[1,6,2],[1,7,2]],[-1.,-2.,-3.,-4.,-5.])
+        second=([[1]+[4]*20 for _ in range(5)],[-2.,-3.,-4.,-5.,-6.])
+        check_beam_rows([first,second],2,10000)
+        for seq,scores in [([[1,4,0]]*5,first[1]),([[1,2,4]]*5,first[1]),([[1,4]]*5,first[1]),
+                           (first[0],[0.,float('nan'),-2.,-3.,-4.]),(first[0],[-2.,-1.,-3.,-4.,-5.])]:
+            with self.assertRaises(ValueError):check_beam_rows([(seq,scores)],1,10000)
 
 if __name__=='__main__':unittest.main(verbosity=2)
