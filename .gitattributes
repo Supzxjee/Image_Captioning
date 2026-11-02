@@ -3,3 +3,5 @@ experiments/csa_paper/real_preparation_review_text/** -text
 experiments/csa_paper/SAVE_CSA_REAL_PREPARATION_V126_DATASET.ipynb text eol=lf
 experiments/csa_paper/LEMMA_TRACE_CASES.json text eol=lf
 experiments/csa_paper/CSA_LEMMA_TRACE_CPU.ipynb text eol=lf
+experiments/csa_paper/lemma_trace_review_text/** -text
+experiments/csa_paper/CSA_BANK_LEMMA_CORRECTION_CPU.ipynb text eol=lf

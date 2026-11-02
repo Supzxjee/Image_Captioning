@@ -1,0 +1,5172 @@
+[
+  {
+    "kind": "train_caption",
+    "coco_id": 372938,
+    "filename": "COCO_val2014_000000372938.jpg",
+    "split": "restval",
+    "sentence_index": 0,
+    "caption": "A group of people riding on the back of a loaded red pickup truck.",
+    "selection_forms": [
+      "riding"
+    ],
+    "tokens": [
+      {
+        "index": 0,
+        "surface": "A",
+        "pos": "DET",
+        "tag": "DT",
+        "morph": "Definite=Ind|PronType=Art",
+        "lemma": "a"
+      },
+      {
+        "index": 1,
+        "surface": "group",
+        "pos": "NOUN",
+        "tag": "NN",
+        "morph": "Number=Sing",
+        "lemma": "group"
+      },
+      {
+        "index": 2,
+        "surface": "of",
+        "pos": "ADP",
+        "tag": "IN",
+        "morph": "",
+        "lemma": "of"
+      },
+      {
+        "index": 3,
+        "surface": "people",
+        "pos": "NOUN",
+        "tag": "NNS",
+        "morph": "Number=Plur",
+        "lemma": "people"
+      },
+      {
+        "index": 4,
+        "surface": "riding",
+        "pos": "VERB",
+        "tag": "VBG",
+        "morph": "Aspect=Prog|Tense=Pres|VerbForm=Part",
+        "lemma": "rid"
+      },
+      {
+        "index": 5,
+        "surface": "on",
+        "pos": "ADP",
+        "tag": "IN",
+        "morph": "",
+        "lemma": "on"
+      },
+      {
+        "index": 6,
+        "surface": "the",
+        "pos": "DET",
+        "tag": "DT",
+        "morph": "Definite=Def|PronType=Art",
+        "lemma": "the"
+      },
+      {
+        "index": 7,
+        "surface": "back",
+        "pos": "NOUN",
+        "tag": "NN",
+        "morph": "Number=Sing",
+        "lemma": "back"
+      },
+      {
+        "index": 8,
+        "surface": "of",
+        "pos": "ADP",
+        "tag": "IN",
+        "morph": "",
+        "lemma": "of"
+      },
+      {
+        "index": 9,
+        "surface": "a",
+        "pos": "DET",
+        "tag": "DT",
+        "morph": "Definite=Ind|PronType=Art",
+        "lemma": "a"
+      },
+      {
+        "index": 10,
+        "surface": "loaded",
+        "pos": "ADJ",
+        "tag": "JJ",
+        "morph": "Degree=Pos",
+        "lemma": "loaded"
+      },
+      {
+        "index": 11,
+        "surface": "red",
+        "pos": "ADJ",
+        "tag": "JJ",
+        "morph": "Degree=Pos",
+        "lemma": "red"
+      },
+      {
+        "index": 12,
+        "surface": "pickup",
+        "pos": "NOUN",
+        "tag": "NN",
+        "morph": "Number=Sing",
+        "lemma": "pickup"
+      },
+      {
+        "index": 13,
+        "surface": "truck",
+        "pos": "NOUN",
+        "tag": "NN",
+        "morph": "Number=Sing",
+        "lemma": "truck"
+      },
+      {
+        "index": 14,
+        "surface": ".",
+        "pos": "PUNCT",
+        "tag": ".",
+        "morph": "PunctType=Peri",
+        "lemma": "."
+      }
+    ],
+    "focus": [
+      {
+        "index": 4,
+        "surface": "riding",
+        "pos": "VERB",
+        "tag": "VBG",
+        "morph": "Aspect=Prog|Tense=Pres|VerbForm=Part",
+        "lemma": "rid",
+        "expected_lemma_for_verb": "ride",
+        "status": "MISMATCH"
+      }
+    ]
+  },
+  {
+    "kind": "train_caption",
+    "coco_id": 384553,
+    "filename": "COCO_val2014_000000384553.jpg",
+    "split": "restval",
+    "sentence_index": 0,
+    "caption": "A man riding an elephant into some water of a creek.",
+    "selection_forms": [
+      "riding"
+    ],
+    "tokens": [
+      {
+        "index": 0,
+        "surface": "A",
+        "pos": "DET",
+        "tag": "DT",
+        "morph": "Definite=Ind|PronType=Art",
+        "lemma": "a"
+      },
+      {
+        "index": 1,
+        "surface": "man",
+        "pos": "NOUN",
+        "tag": "NN",
+        "morph": "Number=Sing",
+        "lemma": "man"
+      },
+      {
+        "index": 2,
+        "surface": "riding",
+        "pos": "VERB",
+        "tag": "VBG",
+        "morph": "Aspect=Prog|Tense=Pres|VerbForm=Part",
+        "lemma": "rid"
+      },
+      {
+        "index": 3,
+        "surface": "an",
+        "pos": "DET",
+        "tag": "DT",
+        "morph": "Definite=Ind|PronType=Art",
+        "lemma": "an"
+      },
+      {
+        "index": 4,
+        "surface": "elephant",
+        "pos": "NOUN",
+        "tag": "NN",
+        "morph": "Number=Sing",
+        "lemma": "elephant"
+      },
+      {
+        "index": 5,
+        "surface": "into",
+        "pos": "ADP",
+        "tag": "IN",
+        "morph": "",
+        "lemma": "into"
+      },
+      {
+        "index": 6,
+        "surface": "some",
+        "pos": "DET",
+        "tag": "DT",
+        "morph": "",
+        "lemma": "some"
+      },
+      {
+        "index": 7,
+        "surface": "water",
+        "pos": "NOUN",
+        "tag": "NN",
+        "morph": "Number=Sing",
+        "lemma": "water"
+      },
+      {
+        "index": 8,
+        "surface": "of",
+        "pos": "ADP",
+        "tag": "IN",
+        "morph": "",
+        "lemma": "of"
+      },
+      {
+        "index": 9,
+        "surface": "a",
+        "pos": "DET",
+        "tag": "DT",
+        "morph": "Definite=Ind|PronType=Art",
+        "lemma": "a"
+      },
+      {
+        "index": 10,
+        "surface": "creek",
+        "pos": "NOUN",
+        "tag": "NN",
+        "morph": "Number=Sing",
+        "lemma": "creek"
+      },
+      {
+        "index": 11,
+        "surface": ".",
+        "pos": "PUNCT",
+        "tag": ".",
+        "morph": "PunctType=Peri",
+        "lemma": "."
+      }
+    ],
+    "focus": [
+      {
+        "index": 2,
+        "surface": "riding",
+        "pos": "VERB",
+        "tag": "VBG",
+        "morph": "Aspect=Prog|Tense=Pres|VerbForm=Part",
+        "lemma": "rid",
+        "expected_lemma_for_verb": "ride",
+        "status": "MISMATCH"
+      }
+    ]
+  },
+  {
+    "kind": "train_caption",
+    "coco_id": 384553,
+    "filename": "COCO_val2014_000000384553.jpg",
+    "split": "restval",
+    "sentence_index": 1,
+    "caption": "man riding an elephant into water surrounded by forest",
+    "selection_forms": [
+      "riding"
+    ],
+    "tokens": [
+      {
+        "index": 0,
+        "surface": "man",
+        "pos": "NOUN",
+        "tag": "NN",
+        "morph": "Number=Sing",
+        "lemma": "man"
+      },
+      {
+        "index": 1,
+        "surface": "riding",
+        "pos": "VERB",
+        "tag": "VBG",
+        "morph": "Aspect=Prog|Tense=Pres|VerbForm=Part",
+        "lemma": "rid"
+      },
+      {
+        "index": 2,
+        "surface": "an",
+        "pos": "DET",
+        "tag": "DT",
+        "morph": "Definite=Ind|PronType=Art",
+        "lemma": "an"
+      },
+      {
+        "index": 3,
+        "surface": "elephant",
+        "pos": "NOUN",
+        "tag": "NN",
+        "morph": "Number=Sing",
+        "lemma": "elephant"
+      },
+      {
+        "index": 4,
+        "surface": "into",
+        "pos": "ADP",
+        "tag": "IN",
+        "morph": "",
+        "lemma": "into"
+      },
+      {
+        "index": 5,
+        "surface": "water",
+        "pos": "NOUN",
+        "tag": "NN",
+        "morph": "Number=Sing",
+        "lemma": "water"
+      },
+      {
+        "index": 6,
+        "surface": "surrounded",
+        "pos": "VERB",
+        "tag": "VBN",
+        "morph": "Aspect=Perf|Tense=Past|VerbForm=Part",
+        "lemma": "surround"
+      },
+      {
+        "index": 7,
+        "surface": "by",
+        "pos": "ADP",
+        "tag": "IN",
+        "morph": "",
+        "lemma": "by"
+      },
+      {
+        "index": 8,
+        "surface": "forest",
+        "pos": "NOUN",
+        "tag": "NN",
+        "morph": "Number=Sing",
+        "lemma": "forest"
+      }
+    ],
+    "focus": [
+      {
+        "index": 1,
+        "surface": "riding",
+        "pos": "VERB",
+        "tag": "VBG",
+        "morph": "Aspect=Prog|Tense=Pres|VerbForm=Part",
+        "lemma": "rid",
+        "expected_lemma_for_verb": "ride",
+        "status": "MISMATCH"
+      }
+    ]
+  },
+  {
+    "kind": "train_caption",
+    "coco_id": 384553,
+    "filename": "COCO_val2014_000000384553.jpg",
+    "split": "restval",
+    "sentence_index": 2,
+    "caption": "A man riding an elephant in a river.",
+    "selection_forms": [
+      "riding"
+    ],
+    "tokens": [
+      {
+        "index": 0,
+        "surface": "A",
+        "pos": "DET",
+        "tag": "DT",
+        "morph": "Definite=Ind|PronType=Art",
+        "lemma": "a"
+      },
+      {
+        "index": 1,
+        "surface": "man",
+        "pos": "NOUN",
+        "tag": "NN",
+        "morph": "Number=Sing",
+        "lemma": "man"
+      },
+      {
+        "index": 2,
+        "surface": "riding",
+        "pos": "VERB",
+        "tag": "VBG",
+        "morph": "Aspect=Prog|Tense=Pres|VerbForm=Part",
+        "lemma": "rid"
+      },
+      {
+        "index": 3,
+        "surface": "an",
+        "pos": "DET",
+        "tag": "DT",
+        "morph": "Definite=Ind|PronType=Art",
+        "lemma": "an"
+      },
+      {
+        "index": 4,
+        "surface": "elephant",
+        "pos": "NOUN",
+        "tag": "NN",
+        "morph": "Number=Sing",
+        "lemma": "elephant"
+      },
+      {
+        "index": 5,
+        "surface": "in",
+        "pos": "ADP",
+        "tag": "IN",
+        "morph": "",
+        "lemma": "in"
+      },
+      {
+        "index": 6,
+        "surface": "a",
+        "pos": "DET",
+        "tag": "DT",
+        "morph": "Definite=Ind|PronType=Art",
+        "lemma": "a"
+      },
+      {
+        "index": 7,
+        "surface": "river",
+        "pos": "NOUN",
+        "tag": "NN",
+        "morph": "Number=Sing",
+        "lemma": "river"
+      },
+      {
+        "index": 8,
+        "surface": ".",
+        "pos": "PUNCT",
+        "tag": ".",
+        "morph": "PunctType=Peri",
+        "lemma": "."
+      }
+    ],
+    "focus": [
+      {
+        "index": 2,
+        "surface": "riding",
+        "pos": "VERB",
+        "tag": "VBG",
+        "morph": "Aspect=Prog|Tense=Pres|VerbForm=Part",
+        "lemma": "rid",
+        "expected_lemma_for_verb": "ride",
+        "status": "MISMATCH"
+      }
+    ]
+  },
+  {
+    "kind": "train_caption",
+    "coco_id": 384553,
+    "filename": "COCO_val2014_000000384553.jpg",
+    "split": "restval",
+    "sentence_index": 3,
+    "caption": "A man in a brown shirt rides an elephant into the water.",
+    "selection_forms": [
+      "rides"
+    ],
+    "tokens": [
+      {
+        "index": 0,
+        "surface": "A",
+        "pos": "DET",
+        "tag": "DT",
+        "morph": "Definite=Ind|PronType=Art",
+        "lemma": "a"
+      },
+      {
+        "index": 1,
+        "surface": "man",
+        "pos": "NOUN",
+        "tag": "NN",
+        "morph": "Number=Sing",
+        "lemma": "man"
+      },
+      {
+        "index": 2,
+        "surface": "in",
+        "pos": "ADP",
+        "tag": "IN",
+        "morph": "",
+        "lemma": "in"
+      },
+      {
+        "index": 3,
+        "surface": "a",
+        "pos": "DET",
+        "tag": "DT",
+        "morph": "Definite=Ind|PronType=Art",
+        "lemma": "a"
+      },
+      {
+        "index": 4,
+        "surface": "brown",
+        "pos": "ADJ",
+        "tag": "JJ",
+        "morph": "Degree=Pos",
+        "lemma": "brown"
+      },
+      {
+        "index": 5,
+        "surface": "shirt",
+        "pos": "NOUN",
+        "tag": "NN",
+        "morph": "Number=Sing",
+        "lemma": "shirt"
+      },
+      {
+        "index": 6,
+        "surface": "rides",
+        "pos": "VERB",
+        "tag": "VBZ",
+        "morph": "Number=Sing|Person=3|Tense=Pres|VerbForm=Fin",
+        "lemma": "rid"
+      },
+      {
+        "index": 7,
+        "surface": "an",
+        "pos": "DET",
+        "tag": "DT",
+        "morph": "Definite=Ind|PronType=Art",
+        "lemma": "an"
+      },
+      {
+        "index": 8,
+        "surface": "elephant",
+        "pos": "NOUN",
+        "tag": "NN",
+        "morph": "Number=Sing",
+        "lemma": "elephant"
+      },
+      {
+        "index": 9,
+        "surface": "into",
+        "pos": "ADP",
+        "tag": "IN",
+        "morph": "",
+        "lemma": "into"
+      },
+      {
+        "index": 10,
+        "surface": "the",
+        "pos": "DET",
+        "tag": "DT",
+        "morph": "Definite=Def|PronType=Art",
+        "lemma": "the"
+      },
+      {
+        "index": 11,
+        "surface": "water",
+        "pos": "NOUN",
+        "tag": "NN",
+        "morph": "Number=Sing",
+        "lemma": "water"
+      },
+      {
+        "index": 12,
+        "surface": ".",
+        "pos": "PUNCT",
+        "tag": ".",
+        "morph": "PunctType=Peri",
+        "lemma": "."
+      }
+    ],
+    "focus": [
+      {
+        "index": 6,
+        "surface": "rides",
+        "pos": "VERB",
+        "tag": "VBZ",
+        "morph": "Number=Sing|Person=3|Tense=Pres|VerbForm=Fin",
+        "lemma": "rid",
+        "expected_lemma_for_verb": "ride",
+        "status": "MISMATCH"
+      }
+    ]
+  },
+  {
+    "kind": "train_caption",
+    "coco_id": 384553,
+    "filename": "COCO_val2014_000000384553.jpg",
+    "split": "restval",
+    "sentence_index": 4,
+    "caption": "A man rides an elephant into a river.",
+    "selection_forms": [
+      "rides"
+    ],
+    "tokens": [
+      {
+        "index": 0,
+        "surface": "A",
+        "pos": "DET",
+        "tag": "DT",
+        "morph": "Definite=Ind|PronType=Art",
+        "lemma": "a"
+      },
+      {
+        "index": 1,
+        "surface": "man",
+        "pos": "NOUN",
+        "tag": "NN",
+        "morph": "Number=Sing",
+        "lemma": "man"
+      },
+      {
+        "index": 2,
+        "surface": "rides",
+        "pos": "VERB",
+        "tag": "VBZ",
+        "morph": "Number=Sing|Person=3|Tense=Pres|VerbForm=Fin",
+        "lemma": "rid"
+      },
+      {
+        "index": 3,
+        "surface": "an",
+        "pos": "DET",
+        "tag": "DT",
+        "morph": "Definite=Ind|PronType=Art",
+        "lemma": "an"
+      },
+      {
+        "index": 4,
+        "surface": "elephant",
+        "pos": "NOUN",
+        "tag": "NN",
+        "morph": "Number=Sing",
+        "lemma": "elephant"
+      },
+      {
+        "index": 5,
+        "surface": "into",
+        "pos": "ADP",
+        "tag": "IN",
+        "morph": "",
+        "lemma": "into"
+      },
+      {
+        "index": 6,
+        "surface": "a",
+        "pos": "DET",
+        "tag": "DT",
+        "morph": "Definite=Ind|PronType=Art",
+        "lemma": "a"
+      },
+      {
+        "index": 7,
+        "surface": "river",
+        "pos": "NOUN",
+        "tag": "NN",
+        "morph": "Number=Sing",
+        "lemma": "river"
+      },
+      {
+        "index": 8,
+        "surface": ".",
+        "pos": "PUNCT",
+        "tag": ".",
+        "morph": "PunctType=Peri",
+        "lemma": "."
+      }
+    ],
+    "focus": [
+      {
+        "index": 2,
+        "surface": "rides",
+        "pos": "VERB",
+        "tag": "VBZ",
+        "morph": "Number=Sing|Person=3|Tense=Pres|VerbForm=Fin",
+        "lemma": "rid",
+        "expected_lemma_for_verb": "ride",
+        "status": "MISMATCH"
+      }
+    ]
+  },
+  {
+    "kind": "train_caption",
+    "coco_id": 79841,
+    "filename": "COCO_val2014_000000079841.jpg",
+    "split": "restval",
+    "sentence_index": 1,
+    "caption": "Two shots of men riding bicycles down city streets.",
+    "selection_forms": [
+      "riding"
+    ],
+    "tokens": [
+      {
+        "index": 0,
+        "surface": "Two",
+        "pos": "NUM",
+        "tag": "CD",
+        "morph": "NumType=Card",
+        "lemma": "two"
+      },
+      {
+        "index": 1,
+        "surface": "shots",
+        "pos": "NOUN",
+        "tag": "NNS",
+        "morph": "Number=Plur",
+        "lemma": "shot"
+      },
+      {
+        "index": 2,
+        "surface": "of",
+        "pos": "ADP",
+        "tag": "IN",
+        "morph": "",
+        "lemma": "of"
+      },
+      {
+        "index": 3,
+        "surface": "men",
+        "pos": "NOUN",
+        "tag": "NNS",
+        "morph": "Number=Plur",
+        "lemma": "man"
+      },
+      {
+        "index": 4,
+        "surface": "riding",
+        "pos": "VERB",
+        "tag": "VBG",
+        "morph": "Aspect=Prog|Tense=Pres|VerbForm=Part",
+        "lemma": "rid"
+      },
+      {
+        "index": 5,
+        "surface": "bicycles",
+        "pos": "NOUN",
+        "tag": "NNS",
+        "morph": "Number=Plur",
+        "lemma": "bicycle"
+      },
+      {
+        "index": 6,
+        "surface": "down",
+        "pos": "ADP",
+        "tag": "IN",
+        "morph": "",
+        "lemma": "down"
+      },
+      {
+        "index": 7,
+        "surface": "city",
+        "pos": "NOUN",
+        "tag": "NN",
+        "morph": "Number=Sing",
+        "lemma": "city"
+      },
+      {
+        "index": 8,
+        "surface": "streets",
+        "pos": "NOUN",
+        "tag": "NNS",
+        "morph": "Number=Plur",
+        "lemma": "street"
+      },
+      {
+        "index": 9,
+        "surface": ".",
+        "pos": "PUNCT",
+        "tag": ".",
+        "morph": "PunctType=Peri",
+        "lemma": "."
+      }
+    ],
+    "focus": [
+      {
+        "index": 4,
+        "surface": "riding",
+        "pos": "VERB",
+        "tag": "VBG",
+        "morph": "Aspect=Prog|Tense=Pres|VerbForm=Part",
+        "lemma": "rid",
+        "expected_lemma_for_verb": "ride",
+        "status": "MISMATCH"
+      }
+    ]
+  },
+  {
+    "kind": "train_caption",
+    "coco_id": 79841,
+    "filename": "COCO_val2014_000000079841.jpg",
+    "split": "restval",
+    "sentence_index": 2,
+    "caption": "A man riding a bike in front of a tall building.",
+    "selection_forms": [
+      "riding"
+    ],
+    "tokens": [
+      {
+        "index": 0,
+        "surface": "A",
+        "pos": "DET",
+        "tag": "DT",
+        "morph": "Definite=Ind|PronType=Art",
+        "lemma": "a"
+      },
+      {
+        "index": 1,
+        "surface": "man",
+        "pos": "NOUN",
+        "tag": "NN",
+        "morph": "Number=Sing",
+        "lemma": "man"
+      },
+      {
+        "index": 2,
+        "surface": "riding",
+        "pos": "VERB",
+        "tag": "VBG",
+        "morph": "Aspect=Prog|Tense=Pres|VerbForm=Part",
+        "lemma": "rid"
+      },
+      {
+        "index": 3,
+        "surface": "a",
+        "pos": "DET",
+        "tag": "DT",
+        "morph": "Definite=Ind|PronType=Art",
+        "lemma": "a"
+      },
+      {
+        "index": 4,
+        "surface": "bike",
+        "pos": "NOUN",
+        "tag": "NN",
+        "morph": "Number=Sing",
+        "lemma": "bike"
+      },
+      {
+        "index": 5,
+        "surface": "in",
+        "pos": "ADP",
+        "tag": "IN",
+        "morph": "",
+        "lemma": "in"
+      },
+      {
+        "index": 6,
+        "surface": "front",
+        "pos": "NOUN",
+        "tag": "NN",
+        "morph": "Number=Sing",
+        "lemma": "front"
+      },
+      {
+        "index": 7,
+        "surface": "of",
+        "pos": "ADP",
+        "tag": "IN",
+        "morph": "",
+        "lemma": "of"
+      },
+      {
+        "index": 8,
+        "surface": "a",
+        "pos": "DET",
+        "tag": "DT",
+        "morph": "Definite=Ind|PronType=Art",
+        "lemma": "a"
+      },
+      {
+        "index": 9,
+        "surface": "tall",
+        "pos": "ADJ",
+        "tag": "JJ",
+        "morph": "Degree=Pos",
+        "lemma": "tall"
+      },
+      {
+        "index": 10,
+        "surface": "building",
+        "pos": "NOUN",
+        "tag": "NN",
+        "morph": "Number=Sing",
+        "lemma": "building"
+      },
+      {
+        "index": 11,
+        "surface": ".",
+        "pos": "PUNCT",
+        "tag": ".",
+        "morph": "PunctType=Peri",
+        "lemma": "."
+      }
+    ],
+    "focus": [
+      {
+        "index": 2,
+        "surface": "riding",
+        "pos": "VERB",
+        "tag": "VBG",
+        "morph": "Aspect=Prog|Tense=Pres|VerbForm=Part",
+        "lemma": "rid",
+        "expected_lemma_for_verb": "ride",
+        "status": "MISMATCH"
+      }
+    ]
+  },
+  {
+    "kind": "train_caption",
+    "coco_id": 122851,
+    "filename": "COCO_val2014_000000122851.jpg",
+    "split": "restval",
+    "sentence_index": 2,
+    "caption": "A man attending to several bundles of banana's as a motorcycle rides by.",
+    "selection_forms": [
+      "rides"
+    ],
+    "tokens": [
+      {
+        "index": 0,
+        "surface": "A",
+        "pos": "DET",
+        "tag": "DT",
+        "morph": "Definite=Ind|PronType=Art",
+        "lemma": "a"
+      },
+      {
+        "index": 1,
+        "surface": "man",
+        "pos": "NOUN",
+        "tag": "NN",
+        "morph": "Number=Sing",
+        "lemma": "man"
+      },
+      {
+        "index": 2,
+        "surface": "attending",
+        "pos": "VERB",
+        "tag": "VBG",
+        "morph": "Aspect=Prog|Tense=Pres|VerbForm=Part",
+        "lemma": "attend"
+      },
+      {
+        "index": 3,
+        "surface": "to",
+        "pos": "ADP",
+        "tag": "IN",
+        "morph": "",
+        "lemma": "to"
+      },
+      {
+        "index": 4,
+        "surface": "several",
+        "pos": "ADJ",
+        "tag": "JJ",
+        "morph": "Degree=Pos",
+        "lemma": "several"
+      },
+      {
+        "index": 5,
+        "surface": "bundles",
+        "pos": "NOUN",
+        "tag": "NNS",
+        "morph": "Number=Plur",
+        "lemma": "bundle"
+      },
+      {
+        "index": 6,
+        "surface": "of",
+        "pos": "ADP",
+        "tag": "IN",
+        "morph": "",
+        "lemma": "of"
+      },
+      {
+        "index": 7,
+        "surface": "banana",
+        "pos": "NOUN",
+        "tag": "NN",
+        "morph": "Number=Sing",
+        "lemma": "banana"
+      },
+      {
+        "index": 8,
+        "surface": "'s",
+        "pos": "PART",
+        "tag": "POS",
+        "morph": "",
+        "lemma": "'s"
+      },
+      {
+        "index": 9,
+        "surface": "as",
+        "pos": "ADP",
+        "tag": "IN",
+        "morph": "",
+        "lemma": "as"
+      },
+      {
+        "index": 10,
+        "surface": "a",
+        "pos": "DET",
+        "tag": "DT",
+        "morph": "Definite=Ind|PronType=Art",
+        "lemma": "a"
+      },
+      {
+        "index": 11,
+        "surface": "motorcycle",
+        "pos": "NOUN",
+        "tag": "NN",
+        "morph": "Number=Sing",
+        "lemma": "motorcycle"
+      },
+      {
+        "index": 12,
+        "surface": "rides",
+        "pos": "VERB",
+        "tag": "VBZ",
+        "morph": "Number=Sing|Person=3|Tense=Pres|VerbForm=Fin",
+        "lemma": "rid"
+      },
+      {
+        "index": 13,
+        "surface": "by",
+        "pos": "ADP",
+        "tag": "IN",
+        "morph": "",
+        "lemma": "by"
+      },
+      {
+        "index": 14,
+        "surface": ".",
+        "pos": "PUNCT",
+        "tag": ".",
+        "morph": "PunctType=Peri",
+        "lemma": "."
+      }
+    ],
+    "focus": [
+      {
+        "index": 12,
+        "surface": "rides",
+        "pos": "VERB",
+        "tag": "VBZ",
+        "morph": "Number=Sing|Person=3|Tense=Pres|VerbForm=Fin",
+        "lemma": "rid",
+        "expected_lemma_for_verb": "ride",
+        "status": "MISMATCH"
+      }
+    ]
+  },
+  {
+    "kind": "train_caption",
+    "coco_id": 296649,
+    "filename": "COCO_val2014_000000296649.jpg",
+    "split": "restval",
+    "sentence_index": 3,
+    "caption": "people ride their motorcycles beside some cars, passing by an empty street with stores and apartment buildings",
+    "selection_forms": [
+      "ride"
+    ],
+    "tokens": [
+      {
+        "index": 0,
+        "surface": "people",
+        "pos": "NOUN",
+        "tag": "NNS",
+        "morph": "Number=Plur",
+        "lemma": "people"
+      },
+      {
+        "index": 1,
+        "surface": "ride",
+        "pos": "VERB",
+        "tag": "VBP",
+        "morph": "Tense=Pres|VerbForm=Fin",
+        "lemma": "ride"
+      },
+      {
+        "index": 2,
+        "surface": "their",
+        "pos": "PRON",
+        "tag": "PRP$",
+        "morph": "Number=Plur|Person=3|Poss=Yes|PronType=Prs",
+        "lemma": "their"
+      },
+      {
+        "index": 3,
+        "surface": "motorcycles",
+        "pos": "NOUN",
+        "tag": "NNS",
+        "morph": "Number=Plur",
+        "lemma": "motorcycle"
+      },
+      {
+        "index": 4,
+        "surface": "beside",
+        "pos": "ADP",
+        "tag": "IN",
+        "morph": "",
+        "lemma": "beside"
+      },
+      {
+        "index": 5,
+        "surface": "some",
+        "pos": "DET",
+        "tag": "DT",
+        "morph": "",
+        "lemma": "some"
+      },
+      {
+        "index": 6,
+        "surface": "cars",
+        "pos": "NOUN",
+        "tag": "NNS",
+        "morph": "Number=Plur",
+        "lemma": "car"
+      },
+      {
+        "index": 7,
+        "surface": ",",
+        "pos": "PUNCT",
+        "tag": ",",
+        "morph": "PunctType=Comm",
+        "lemma": ","
+      },
+      {
+        "index": 8,
+        "surface": "passing",
+        "pos": "VERB",
+        "tag": "VBG",
+        "morph": "Aspect=Prog|Tense=Pres|VerbForm=Part",
+        "lemma": "pass"
+      },
+      {
+        "index": 9,
+        "surface": "by",
+        "pos": "ADP",
+        "tag": "IN",
+        "morph": "",
+        "lemma": "by"
+      },
+      {
+        "index": 10,
+        "surface": "an",
+        "pos": "DET",
+        "tag": "DT",
+        "morph": "Definite=Ind|PronType=Art",
+        "lemma": "an"
+      },
+      {
+        "index": 11,
+        "surface": "empty",
+        "pos": "ADJ",
+        "tag": "JJ",
+        "morph": "Degree=Pos",
+        "lemma": "empty"
+      },
+      {
+        "index": 12,
+        "surface": "street",
+        "pos": "NOUN",
+        "tag": "NN",
+        "morph": "Number=Sing",
+        "lemma": "street"
+      },
+      {
+        "index": 13,
+        "surface": "with",
+        "pos": "ADP",
+        "tag": "IN",
+        "morph": "",
+        "lemma": "with"
+      },
+      {
+        "index": 14,
+        "surface": "stores",
+        "pos": "NOUN",
+        "tag": "NNS",
+        "morph": "Number=Plur",
+        "lemma": "store"
+      },
+      {
+        "index": 15,
+        "surface": "and",
+        "pos": "CCONJ",
+        "tag": "CC",
+        "morph": "ConjType=Cmp",
+        "lemma": "and"
+      },
+      {
+        "index": 16,
+        "surface": "apartment",
+        "pos": "NOUN",
+        "tag": "NN",
+        "morph": "Number=Sing",
+        "lemma": "apartment"
+      },
+      {
+        "index": 17,
+        "surface": "buildings",
+        "pos": "NOUN",
+        "tag": "NNS",
+        "morph": "Number=Plur",
+        "lemma": "building"
+      }
+    ],
+    "focus": [
+      {
+        "index": 1,
+        "surface": "ride",
+        "pos": "VERB",
+        "tag": "VBP",
+        "morph": "Tense=Pres|VerbForm=Fin",
+        "lemma": "ride",
+        "expected_lemma_for_verb": "ride",
+        "status": "MATCH"
+      }
+    ]
+  },
+  {
+    "kind": "train_caption",
+    "coco_id": 490081,
+    "filename": "COCO_val2014_000000490081.jpg",
+    "split": "restval",
+    "sentence_index": 1,
+    "caption": "Man rides on the back of a wooden cart being pulled by two cows. ",
+    "selection_forms": [
+      "rides"
+    ],
+    "tokens": [
+      {
+        "index": 0,
+        "surface": "Man",
+        "pos": "PROPN",
+        "tag": "NNP",
+        "morph": "Number=Sing",
+        "lemma": "Man"
+      },
+      {
+        "index": 1,
+        "surface": "rides",
+        "pos": "VERB",
+        "tag": "VBZ",
+        "morph": "Number=Sing|Person=3|Tense=Pres|VerbForm=Fin",
+        "lemma": "rid"
+      },
+      {
+        "index": 2,
+        "surface": "on",
+        "pos": "ADP",
+        "tag": "IN",
+        "morph": "",
+        "lemma": "on"
+      },
+      {
+        "index": 3,
+        "surface": "the",
+        "pos": "DET",
+        "tag": "DT",
+        "morph": "Definite=Def|PronType=Art",
+        "lemma": "the"
+      },
+      {
+        "index": 4,
+        "surface": "back",
+        "pos": "NOUN",
+        "tag": "NN",
+        "morph": "Number=Sing",
+        "lemma": "back"
+      },
+      {
+        "index": 5,
+        "surface": "of",
+        "pos": "ADP",
+        "tag": "IN",
+        "morph": "",
+        "lemma": "of"
+      },
+      {
+        "index": 6,
+        "surface": "a",
+        "pos": "DET",
+        "tag": "DT",
+        "morph": "Definite=Ind|PronType=Art",
+        "lemma": "a"
+      },
+      {
+        "index": 7,
+        "surface": "wooden",
+        "pos": "ADJ",
+        "tag": "JJ",
+        "morph": "Degree=Pos",
+        "lemma": "wooden"
+      },
+      {
+        "index": 8,
+        "surface": "cart",
+        "pos": "NOUN",
+        "tag": "NN",
+        "morph": "Number=Sing",
+        "lemma": "cart"
+      },
+      {
+        "index": 9,
+        "surface": "being",
+        "pos": "AUX",
+        "tag": "VBG",
+        "morph": "VerbForm=Ger",
+        "lemma": "be"
+      },
+      {
+        "index": 10,
+        "surface": "pulled",
+        "pos": "VERB",
+        "tag": "VBN",
+        "morph": "Aspect=Perf|Tense=Past|VerbForm=Part",
+        "lemma": "pull"
+      },
+      {
+        "index": 11,
+        "surface": "by",
+        "pos": "ADP",
+        "tag": "IN",
+        "morph": "",
+        "lemma": "by"
+      },
+      {
+        "index": 12,
+        "surface": "two",
+        "pos": "NUM",
+        "tag": "CD",
+        "morph": "NumType=Card",
+        "lemma": "two"
+      },
+      {
+        "index": 13,
+        "surface": "cows",
+        "pos": "NOUN",
+        "tag": "NNS",
+        "morph": "Number=Plur",
+        "lemma": "cow"
+      },
+      {
+        "index": 14,
+        "surface": ".",
+        "pos": "PUNCT",
+        "tag": ".",
+        "morph": "PunctType=Peri",
+        "lemma": "."
+      }
+    ],
+    "focus": [
+      {
+        "index": 1,
+        "surface": "rides",
+        "pos": "VERB",
+        "tag": "VBZ",
+        "morph": "Number=Sing|Person=3|Tense=Pres|VerbForm=Fin",
+        "lemma": "rid",
+        "expected_lemma_for_verb": "ride",
+        "status": "MISMATCH"
+      }
+    ]
+  },
+  {
+    "kind": "train_caption",
+    "coco_id": 242499,
+    "filename": "COCO_val2014_000000242499.jpg",
+    "split": "restval",
+    "sentence_index": 0,
+    "caption": "People ride on elephants to cross the river.",
+    "selection_forms": [
+      "ride"
+    ],
+    "tokens": [
+      {
+        "index": 0,
+        "surface": "People",
+        "pos": "NOUN",
+        "tag": "NNS",
+        "morph": "Number=Plur",
+        "lemma": "People"
+      },
+      {
+        "index": 1,
+        "surface": "ride",
+        "pos": "VERB",
+        "tag": "VBP",
+        "morph": "Tense=Pres|VerbForm=Fin",
+        "lemma": "ride"
+      },
+      {
+        "index": 2,
+        "surface": "on",
+        "pos": "ADP",
+        "tag": "IN",
+        "morph": "",
+        "lemma": "on"
+      },
+      {
+        "index": 3,
+        "surface": "elephants",
+        "pos": "NOUN",
+        "tag": "NNS",
+        "morph": "Number=Plur",
+        "lemma": "elephant"
+      },
+      {
+        "index": 4,
+        "surface": "to",
+        "pos": "PART",
+        "tag": "TO",
+        "morph": "",
+        "lemma": "to"
+      },
+      {
+        "index": 5,
+        "surface": "cross",
+        "pos": "VERB",
+        "tag": "VB",
+        "morph": "VerbForm=Inf",
+        "lemma": "cross"
+      },
+      {
+        "index": 6,
+        "surface": "the",
+        "pos": "DET",
+        "tag": "DT",
+        "morph": "Definite=Def|PronType=Art",
+        "lemma": "the"
+      },
+      {
+        "index": 7,
+        "surface": "river",
+        "pos": "NOUN",
+        "tag": "NN",
+        "morph": "Number=Sing",
+        "lemma": "river"
+      },
+      {
+        "index": 8,
+        "surface": ".",
+        "pos": "PUNCT",
+        "tag": ".",
+        "morph": "PunctType=Peri",
+        "lemma": "."
+      }
+    ],
+    "focus": [
+      {
+        "index": 1,
+        "surface": "ride",
+        "pos": "VERB",
+        "tag": "VBP",
+        "morph": "Tense=Pres|VerbForm=Fin",
+        "lemma": "ride",
+        "expected_lemma_for_verb": "ride",
+        "status": "MATCH"
+      }
+    ]
+  },
+  {
+    "kind": "train_caption",
+    "coco_id": 260166,
+    "filename": "COCO_val2014_000000260166.jpg",
+    "split": "restval",
+    "sentence_index": 1,
+    "caption": "Several people are taking a ride on elephants.",
+    "selection_forms": [
+      "ride"
+    ],
+    "tokens": [
+      {
+        "index": 0,
+        "surface": "Several",
+        "pos": "ADJ",
+        "tag": "JJ",
+        "morph": "Degree=Pos",
+        "lemma": "several"
+      },
+      {
+        "index": 1,
+        "surface": "people",
+        "pos": "NOUN",
+        "tag": "NNS",
+        "morph": "Number=Plur",
+        "lemma": "people"
+      },
+      {
+        "index": 2,
+        "surface": "are",
+        "pos": "AUX",
+        "tag": "VBP",
+        "morph": "Mood=Ind|Tense=Pres|VerbForm=Fin",
+        "lemma": "be"
+      },
+      {
+        "index": 3,
+        "surface": "taking",
+        "pos": "VERB",
+        "tag": "VBG",
+        "morph": "Aspect=Prog|Tense=Pres|VerbForm=Part",
+        "lemma": "take"
+      },
+      {
+        "index": 4,
+        "surface": "a",
+        "pos": "DET",
+        "tag": "DT",
+        "morph": "Definite=Ind|PronType=Art",
+        "lemma": "a"
+      },
+      {
+        "index": 5,
+        "surface": "ride",
+        "pos": "NOUN",
+        "tag": "NN",
+        "morph": "Number=Sing",
+        "lemma": "ride"
+      },
+      {
+        "index": 6,
+        "surface": "on",
+        "pos": "ADP",
+        "tag": "IN",
+        "morph": "",
+        "lemma": "on"
+      },
+      {
+        "index": 7,
+        "surface": "elephants",
+        "pos": "NOUN",
+        "tag": "NNS",
+        "morph": "Number=Plur",
+        "lemma": "elephant"
+      },
+      {
+        "index": 8,
+        "surface": ".",
+        "pos": "PUNCT",
+        "tag": ".",
+        "morph": "PunctType=Peri",
+        "lemma": "."
+      }
+    ],
+    "focus": [
+      {
+        "index": 5,
+        "surface": "ride",
+        "pos": "NOUN",
+        "tag": "NN",
+        "morph": "Number=Sing",
+        "lemma": "ride",
+        "expected_lemma_for_verb": "ride",
+        "status": "NOT_VERB_REVIEW"
+      }
+    ]
+  },
+  {
+    "kind": "train_caption",
+    "coco_id": 289899,
+    "filename": "COCO_val2014_000000289899.jpg",
+    "split": "restval",
+    "sentence_index": 0,
+    "caption": "A group of people ride in a canal past buildings.",
+    "selection_forms": [
+      "ride"
+    ],
+    "tokens": [
+      {
+        "index": 0,
+        "surface": "A",
+        "pos": "DET",
+        "tag": "DT",
+        "morph": "Definite=Ind|PronType=Art",
+        "lemma": "a"
+      },
+      {
+        "index": 1,
+        "surface": "group",
+        "pos": "NOUN",
+        "tag": "NN",
+        "morph": "Number=Sing",
+        "lemma": "group"
+      },
+      {
+        "index": 2,
+        "surface": "of",
+        "pos": "ADP",
+        "tag": "IN",
+        "morph": "",
+        "lemma": "of"
+      },
+      {
+        "index": 3,
+        "surface": "people",
+        "pos": "NOUN",
+        "tag": "NNS",
+        "morph": "Number=Plur",
+        "lemma": "people"
+      },
+      {
+        "index": 4,
+        "surface": "ride",
+        "pos": "VERB",
+        "tag": "VBP",
+        "morph": "Tense=Pres|VerbForm=Fin",
+        "lemma": "ride"
+      },
+      {
+        "index": 5,
+        "surface": "in",
+        "pos": "ADP",
+        "tag": "IN",
+        "morph": "",
+        "lemma": "in"
+      },
+      {
+        "index": 6,
+        "surface": "a",
+        "pos": "DET",
+        "tag": "DT",
+        "morph": "Definite=Ind|PronType=Art",
+        "lemma": "a"
+      },
+      {
+        "index": 7,
+        "surface": "canal",
+        "pos": "NOUN",
+        "tag": "NN",
+        "morph": "Number=Sing",
+        "lemma": "canal"
+      },
+      {
+        "index": 8,
+        "surface": "past",
+        "pos": "ADJ",
+        "tag": "JJ",
+        "morph": "Degree=Pos",
+        "lemma": "past"
+      },
+      {
+        "index": 9,
+        "surface": "buildings",
+        "pos": "NOUN",
+        "tag": "NNS",
+        "morph": "Number=Plur",
+        "lemma": "building"
+      },
+      {
+        "index": 10,
+        "surface": ".",
+        "pos": "PUNCT",
+        "tag": ".",
+        "morph": "PunctType=Peri",
+        "lemma": "."
+      }
+    ],
+    "focus": [
+      {
+        "index": 4,
+        "surface": "ride",
+        "pos": "VERB",
+        "tag": "VBP",
+        "morph": "Tense=Pres|VerbForm=Fin",
+        "lemma": "ride",
+        "expected_lemma_for_verb": "ride",
+        "status": "MATCH"
+      }
+    ]
+  },
+  {
+    "kind": "train_caption",
+    "coco_id": 122934,
+    "filename": "COCO_val2014_000000122934.jpg",
+    "split": "restval",
+    "sentence_index": 2,
+    "caption": "The tourists take a leasurely ride in the horse-drawn carriage.",
+    "selection_forms": [
+      "ride"
+    ],
+    "tokens": [
+      {
+        "index": 0,
+        "surface": "The",
+        "pos": "DET",
+        "tag": "DT",
+        "morph": "Definite=Def|PronType=Art",
+        "lemma": "the"
+      },
+      {
+        "index": 1,
+        "surface": "tourists",
+        "pos": "NOUN",
+        "tag": "NNS",
+        "morph": "Number=Plur",
+        "lemma": "tourist"
+      },
+      {
+        "index": 2,
+        "surface": "take",
+        "pos": "VERB",
+        "tag": "VBP",
+        "morph": "Tense=Pres|VerbForm=Fin",
+        "lemma": "take"
+      },
+      {
+        "index": 3,
+        "surface": "a",
+        "pos": "DET",
+        "tag": "DT",
+        "morph": "Definite=Ind|PronType=Art",
+        "lemma": "a"
+      },
+      {
+        "index": 4,
+        "surface": "leasurely",
+        "pos": "ADV",
+        "tag": "RB",
+        "morph": "",
+        "lemma": "leasurely"
+      },
+      {
+        "index": 5,
+        "surface": "ride",
+        "pos": "NOUN",
+        "tag": "NN",
+        "morph": "Number=Sing",
+        "lemma": "ride"
+      },
+      {
+        "index": 6,
+        "surface": "in",
+        "pos": "ADP",
+        "tag": "IN",
+        "morph": "",
+        "lemma": "in"
+      },
+      {
+        "index": 7,
+        "surface": "the",
+        "pos": "DET",
+        "tag": "DT",
+        "morph": "Definite=Def|PronType=Art",
+        "lemma": "the"
+      },
+      {
+        "index": 8,
+        "surface": "horse",
+        "pos": "NOUN",
+        "tag": "NN",
+        "morph": "Number=Sing",
+        "lemma": "horse"
+      },
+      {
+        "index": 9,
+        "surface": "-",
+        "pos": "PUNCT",
+        "tag": "HYPH",
+        "morph": "PunctType=Dash",
+        "lemma": "-"
+      },
+      {
+        "index": 10,
+        "surface": "drawn",
+        "pos": "VERB",
+        "tag": "VBN",
+        "morph": "Aspect=Perf|Tense=Past|VerbForm=Part",
+        "lemma": "draw"
+      },
+      {
+        "index": 11,
+        "surface": "carriage",
+        "pos": "NOUN",
+        "tag": "NN",
+        "morph": "Number=Sing",
+        "lemma": "carriage"
+      },
+      {
+        "index": 12,
+        "surface": ".",
+        "pos": "PUNCT",
+        "tag": ".",
+        "morph": "PunctType=Peri",
+        "lemma": "."
+      }
+    ],
+    "focus": [
+      {
+        "index": 5,
+        "surface": "ride",
+        "pos": "NOUN",
+        "tag": "NN",
+        "morph": "Number=Sing",
+        "lemma": "ride",
+        "expected_lemma_for_verb": "ride",
+        "status": "NOT_VERB_REVIEW"
+      }
+    ]
+  },
+  {
+    "kind": "train_caption",
+    "coco_id": 440329,
+    "filename": "COCO_val2014_000000440329.jpg",
+    "split": "restval",
+    "sentence_index": 3,
+    "caption": "A group of people standing in a parking lot as a man rides a bull.",
+    "selection_forms": [
+      "rides"
+    ],
+    "tokens": [
+      {
+        "index": 0,
+        "surface": "A",
+        "pos": "DET",
+        "tag": "DT",
+        "morph": "Definite=Ind|PronType=Art",
+        "lemma": "a"
+      },
+      {
+        "index": 1,
+        "surface": "group",
+        "pos": "NOUN",
+        "tag": "NN",
+        "morph": "Number=Sing",
+        "lemma": "group"
+      },
+      {
+        "index": 2,
+        "surface": "of",
+        "pos": "ADP",
+        "tag": "IN",
+        "morph": "",
+        "lemma": "of"
+      },
+      {
+        "index": 3,
+        "surface": "people",
+        "pos": "NOUN",
+        "tag": "NNS",
+        "morph": "Number=Plur",
+        "lemma": "people"
+      },
+      {
+        "index": 4,
+        "surface": "standing",
+        "pos": "VERB",
+        "tag": "VBG",
+        "morph": "Aspect=Prog|Tense=Pres|VerbForm=Part",
+        "lemma": "stand"
+      },
+      {
+        "index": 5,
+        "surface": "in",
+        "pos": "ADP",
+        "tag": "IN",
+        "morph": "",
+        "lemma": "in"
+      },
+      {
+        "index": 6,
+        "surface": "a",
+        "pos": "DET",
+        "tag": "DT",
+        "morph": "Definite=Ind|PronType=Art",
+        "lemma": "a"
+      },
+      {
+        "index": 7,
+        "surface": "parking",
+        "pos": "NOUN",
+        "tag": "NN",
+        "morph": "Number=Sing",
+        "lemma": "parking"
+      },
+      {
+        "index": 8,
+        "surface": "lot",
+        "pos": "NOUN",
+        "tag": "NN",
+        "morph": "Number=Sing",
+        "lemma": "lot"
+      },
+      {
+        "index": 9,
+        "surface": "as",
+        "pos": "ADP",
+        "tag": "IN",
+        "morph": "",
+        "lemma": "as"
+      },
+      {
+        "index": 10,
+        "surface": "a",
+        "pos": "DET",
+        "tag": "DT",
+        "morph": "Definite=Ind|PronType=Art",
+        "lemma": "a"
+      },
+      {
+        "index": 11,
+        "surface": "man",
+        "pos": "NOUN",
+        "tag": "NN",
+        "morph": "Number=Sing",
+        "lemma": "man"
+      },
+      {
+        "index": 12,
+        "surface": "rides",
+        "pos": "VERB",
+        "tag": "VBZ",
+        "morph": "Number=Sing|Person=3|Tense=Pres|VerbForm=Fin",
+        "lemma": "rid"
+      },
+      {
+        "index": 13,
+        "surface": "a",
+        "pos": "DET",
+        "tag": "DT",
+        "morph": "Definite=Ind|PronType=Art",
+        "lemma": "a"
+      },
+      {
+        "index": 14,
+        "surface": "bull",
+        "pos": "NOUN",
+        "tag": "NN",
+        "morph": "Number=Sing",
+        "lemma": "bull"
+      },
+      {
+        "index": 15,
+        "surface": ".",
+        "pos": "PUNCT",
+        "tag": ".",
+        "morph": "PunctType=Peri",
+        "lemma": "."
+      }
+    ],
+    "focus": [
+      {
+        "index": 12,
+        "surface": "rides",
+        "pos": "VERB",
+        "tag": "VBZ",
+        "morph": "Number=Sing|Person=3|Tense=Pres|VerbForm=Fin",
+        "lemma": "rid",
+        "expected_lemma_for_verb": "ride",
+        "status": "MISMATCH"
+      }
+    ]
+  },
+  {
+    "kind": "train_caption",
+    "coco_id": 440329,
+    "filename": "COCO_val2014_000000440329.jpg",
+    "split": "restval",
+    "sentence_index": 4,
+    "caption": "A man rides a cow through a parking lot.",
+    "selection_forms": [
+      "rides"
+    ],
+    "tokens": [
+      {
+        "index": 0,
+        "surface": "A",
+        "pos": "DET",
+        "tag": "DT",
+        "morph": "Definite=Ind|PronType=Art",
+        "lemma": "a"
+      },
+      {
+        "index": 1,
+        "surface": "man",
+        "pos": "NOUN",
+        "tag": "NN",
+        "morph": "Number=Sing",
+        "lemma": "man"
+      },
+      {
+        "index": 2,
+        "surface": "rides",
+        "pos": "VERB",
+        "tag": "VBZ",
+        "morph": "Number=Sing|Person=3|Tense=Pres|VerbForm=Fin",
+        "lemma": "rid"
+      },
+      {
+        "index": 3,
+        "surface": "a",
+        "pos": "DET",
+        "tag": "DT",
+        "morph": "Definite=Ind|PronType=Art",
+        "lemma": "a"
+      },
+      {
+        "index": 4,
+        "surface": "cow",
+        "pos": "NOUN",
+        "tag": "NN",
+        "morph": "Number=Sing",
+        "lemma": "cow"
+      },
+      {
+        "index": 5,
+        "surface": "through",
+        "pos": "ADP",
+        "tag": "IN",
+        "morph": "",
+        "lemma": "through"
+      },
+      {
+        "index": 6,
+        "surface": "a",
+        "pos": "DET",
+        "tag": "DT",
+        "morph": "Definite=Ind|PronType=Art",
+        "lemma": "a"
+      },
+      {
+        "index": 7,
+        "surface": "parking",
+        "pos": "NOUN",
+        "tag": "NN",
+        "morph": "Number=Sing",
+        "lemma": "parking"
+      },
+      {
+        "index": 8,
+        "surface": "lot",
+        "pos": "NOUN",
+        "tag": "NN",
+        "morph": "Number=Sing",
+        "lemma": "lot"
+      },
+      {
+        "index": 9,
+        "surface": ".",
+        "pos": "PUNCT",
+        "tag": ".",
+        "morph": "PunctType=Peri",
+        "lemma": "."
+      }
+    ],
+    "focus": [
+      {
+        "index": 2,
+        "surface": "rides",
+        "pos": "VERB",
+        "tag": "VBZ",
+        "morph": "Number=Sing|Person=3|Tense=Pres|VerbForm=Fin",
+        "lemma": "rid",
+        "expected_lemma_for_verb": "ride",
+        "status": "MISMATCH"
+      }
+    ]
+  },
+  {
+    "kind": "train_caption",
+    "coco_id": 497312,
+    "filename": "COCO_val2014_000000497312.jpg",
+    "split": "restval",
+    "sentence_index": 4,
+    "caption": "A woman is watching a girl ride a horse.",
+    "selection_forms": [
+      "ride"
+    ],
+    "tokens": [
+      {
+        "index": 0,
+        "surface": "A",
+        "pos": "DET",
+        "tag": "DT",
+        "morph": "Definite=Ind|PronType=Art",
+        "lemma": "a"
+      },
+      {
+        "index": 1,
+        "surface": "woman",
+        "pos": "NOUN",
+        "tag": "NN",
+        "morph": "Number=Sing",
+        "lemma": "woman"
+      },
+      {
+        "index": 2,
+        "surface": "is",
+        "pos": "AUX",
+        "tag": "VBZ",
+        "morph": "Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin",
+        "lemma": "be"
+      },
+      {
+        "index": 3,
+        "surface": "watching",
+        "pos": "VERB",
+        "tag": "VBG",
+        "morph": "Aspect=Prog|Tense=Pres|VerbForm=Part",
+        "lemma": "watch"
+      },
+      {
+        "index": 4,
+        "surface": "a",
+        "pos": "DET",
+        "tag": "DT",
+        "morph": "Definite=Ind|PronType=Art",
+        "lemma": "a"
+      },
+      {
+        "index": 5,
+        "surface": "girl",
+        "pos": "NOUN",
+        "tag": "NN",
+        "morph": "Number=Sing",
+        "lemma": "girl"
+      },
+      {
+        "index": 6,
+        "surface": "ride",
+        "pos": "VERB",
+        "tag": "VB",
+        "morph": "VerbForm=Inf",
+        "lemma": "ride"
+      },
+      {
+        "index": 7,
+        "surface": "a",
+        "pos": "DET",
+        "tag": "DT",
+        "morph": "Definite=Ind|PronType=Art",
+        "lemma": "a"
+      },
+      {
+        "index": 8,
+        "surface": "horse",
+        "pos": "NOUN",
+        "tag": "NN",
+        "morph": "Number=Sing",
+        "lemma": "horse"
+      },
+      {
+        "index": 9,
+        "surface": ".",
+        "pos": "PUNCT",
+        "tag": ".",
+        "morph": "PunctType=Peri",
+        "lemma": "."
+      }
+    ],
+    "focus": [
+      {
+        "index": 6,
+        "surface": "ride",
+        "pos": "VERB",
+        "tag": "VB",
+        "morph": "VerbForm=Inf",
+        "lemma": "ride",
+        "expected_lemma_for_verb": "ride",
+        "status": "MATCH"
+      }
+    ]
+  },
+  {
+    "kind": "train_caption",
+    "coco_id": 409944,
+    "filename": "COCO_val2014_000000409944.jpg",
+    "split": "restval",
+    "sentence_index": 4,
+    "caption": "A poster of an angry tennis player adorns a graffiti-ridden wall.",
+    "selection_forms": [
+      "ridden"
+    ],
+    "tokens": [
+      {
+        "index": 0,
+        "surface": "A",
+        "pos": "DET",
+        "tag": "DT",
+        "morph": "Definite=Ind|PronType=Art",
+        "lemma": "a"
+      },
+      {
+        "index": 1,
+        "surface": "poster",
+        "pos": "NOUN",
+        "tag": "NN",
+        "morph": "Number=Sing",
+        "lemma": "poster"
+      },
+      {
+        "index": 2,
+        "surface": "of",
+        "pos": "ADP",
+        "tag": "IN",
+        "morph": "",
+        "lemma": "of"
+      },
+      {
+        "index": 3,
+        "surface": "an",
+        "pos": "DET",
+        "tag": "DT",
+        "morph": "Definite=Ind|PronType=Art",
+        "lemma": "an"
+      },
+      {
+        "index": 4,
+        "surface": "angry",
+        "pos": "ADJ",
+        "tag": "JJ",
+        "morph": "Degree=Pos",
+        "lemma": "angry"
+      },
+      {
+        "index": 5,
+        "surface": "tennis",
+        "pos": "NOUN",
+        "tag": "NN",
+        "morph": "Number=Sing",
+        "lemma": "tennis"
+      },
+      {
+        "index": 6,
+        "surface": "player",
+        "pos": "NOUN",
+        "tag": "NN",
+        "morph": "Number=Sing",
+        "lemma": "player"
+      },
+      {
+        "index": 7,
+        "surface": "adorns",
+        "pos": "VERB",
+        "tag": "VBZ",
+        "morph": "Number=Sing|Person=3|Tense=Pres|VerbForm=Fin",
+        "lemma": "adorn"
+      },
+      {
+        "index": 8,
+        "surface": "a",
+        "pos": "DET",
+        "tag": "DT",
+        "morph": "Definite=Ind|PronType=Art",
+        "lemma": "a"
+      },
+      {
+        "index": 9,
+        "surface": "graffiti",
+        "pos": "PROPN",
+        "tag": "NNP",
+        "morph": "Number=Sing",
+        "lemma": "graffiti"
+      },
+      {
+        "index": 10,
+        "surface": "-",
+        "pos": "PUNCT",
+        "tag": "HYPH",
+        "morph": "PunctType=Dash",
+        "lemma": "-"
+      },
+      {
+        "index": 11,
+        "surface": "ridden",
+        "pos": "VERB",
+        "tag": "VBN",
+        "morph": "Aspect=Perf|Tense=Past|VerbForm=Part",
+        "lemma": "ride"
+      },
+      {
+        "index": 12,
+        "surface": "wall",
+        "pos": "NOUN",
+        "tag": "NN",
+        "morph": "Number=Sing",
+        "lemma": "wall"
+      },
+      {
+        "index": 13,
+        "surface": ".",
+        "pos": "PUNCT",
+        "tag": ".",
+        "morph": "PunctType=Peri",
+        "lemma": "."
+      }
+    ],
+    "focus": [
+      {
+        "index": 11,
+        "surface": "ridden",
+        "pos": "VERB",
+        "tag": "VBN",
+        "morph": "Aspect=Perf|Tense=Past|VerbForm=Part",
+        "lemma": "ride",
+        "expected_lemma_for_verb": "ride",
+        "status": "MATCH"
+      }
+    ]
+  },
+  {
+    "kind": "train_caption",
+    "coco_id": 328354,
+    "filename": "COCO_val2014_000000328354.jpg",
+    "split": "restval",
+    "sentence_index": 0,
+    "caption": "A dilapidated room with a plaster chunked floor is equipped with debris ridden chairs and a tiny vintage refrigerator.",
+    "selection_forms": [
+      "ridden"
+    ],
+    "tokens": [
+      {
+        "index": 0,
+        "surface": "A",
+        "pos": "DET",
+        "tag": "DT",
+        "morph": "Definite=Ind|PronType=Art",
+        "lemma": "a"
+      },
+      {
+        "index": 1,
+        "surface": "dilapidated",
+        "pos": "ADJ",
+        "tag": "JJ",
+        "morph": "Degree=Pos",
+        "lemma": "dilapidated"
+      },
+      {
+        "index": 2,
+        "surface": "room",
+        "pos": "NOUN",
+        "tag": "NN",
+        "morph": "Number=Sing",
+        "lemma": "room"
+      },
+      {
+        "index": 3,
+        "surface": "with",
+        "pos": "ADP",
+        "tag": "IN",
+        "morph": "",
+        "lemma": "with"
+      },
+      {
+        "index": 4,
+        "surface": "a",
+        "pos": "DET",
+        "tag": "DT",
+        "morph": "Definite=Ind|PronType=Art",
+        "lemma": "a"
+      },
+      {
+        "index": 5,
+        "surface": "plaster",
+        "pos": "NOUN",
+        "tag": "NN",
+        "morph": "Number=Sing",
+        "lemma": "plaster"
+      },
+      {
+        "index": 6,
+        "surface": "chunked",
+        "pos": "VERB",
+        "tag": "VBN",
+        "morph": "Aspect=Perf|Tense=Past|VerbForm=Part",
+        "lemma": "chunk"
+      },
+      {
+        "index": 7,
+        "surface": "floor",
+        "pos": "NOUN",
+        "tag": "NN",
+        "morph": "Number=Sing",
+        "lemma": "floor"
+      },
+      {
+        "index": 8,
+        "surface": "is",
+        "pos": "AUX",
+        "tag": "VBZ",
+        "morph": "Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin",
+        "lemma": "be"
+      },
+      {
+        "index": 9,
+        "surface": "equipped",
+        "pos": "VERB",
+        "tag": "VBN",
+        "morph": "Aspect=Perf|Tense=Past|VerbForm=Part",
+        "lemma": "equip"
+      },
+      {
+        "index": 10,
+        "surface": "with",
+        "pos": "ADP",
+        "tag": "IN",
+        "morph": "",
+        "lemma": "with"
+      },
+      {
+        "index": 11,
+        "surface": "debris",
+        "pos": "NOUN",
+        "tag": "NN",
+        "morph": "Number=Sing",
+        "lemma": "debris"
+      },
+      {
+        "index": 12,
+        "surface": "ridden",
+        "pos": "VERB",
+        "tag": "VBD",
+        "morph": "Tense=Past|VerbForm=Fin",
+        "lemma": "ride"
+      },
+      {
+        "index": 13,
+        "surface": "chairs",
+        "pos": "NOUN",
+        "tag": "NNS",
+        "morph": "Number=Plur",
+        "lemma": "chair"
+      },
+      {
+        "index": 14,
+        "surface": "and",
+        "pos": "CCONJ",
+        "tag": "CC",
+        "morph": "ConjType=Cmp",
+        "lemma": "and"
+      },
+      {
+        "index": 15,
+        "surface": "a",
+        "pos": "DET",
+        "tag": "DT",
+        "morph": "Definite=Ind|PronType=Art",
+        "lemma": "a"
+      },
+      {
+        "index": 16,
+        "surface": "tiny",
+        "pos": "ADJ",
+        "tag": "JJ",
+        "morph": "Degree=Pos",
+        "lemma": "tiny"
+      },
+      {
+        "index": 17,
+        "surface": "vintage",
+        "pos": "NOUN",
+        "tag": "NN",
+        "morph": "Number=Sing",
+        "lemma": "vintage"
+      },
+      {
+        "index": 18,
+        "surface": "refrigerator",
+        "pos": "NOUN",
+        "tag": "NN",
+        "morph": "Number=Sing",
+        "lemma": "refrigerator"
+      },
+      {
+        "index": 19,
+        "surface": ".",
+        "pos": "PUNCT",
+        "tag": ".",
+        "morph": "PunctType=Peri",
+        "lemma": "."
+      }
+    ],
+    "focus": [
+      {
+        "index": 12,
+        "surface": "ridden",
+        "pos": "VERB",
+        "tag": "VBD",
+        "morph": "Tense=Past|VerbForm=Fin",
+        "lemma": "ride",
+        "expected_lemma_for_verb": "ride",
+        "status": "MATCH"
+      }
+    ]
+  },
+  {
+    "kind": "train_caption",
+    "coco_id": 46508,
+    "filename": "COCO_val2014_000000046508.jpg",
+    "split": "restval",
+    "sentence_index": 2,
+    "caption": "A elephant being ridden by a little boy.",
+    "selection_forms": [
+      "ridden"
+    ],
+    "tokens": [
+      {
+        "index": 0,
+        "surface": "A",
+        "pos": "DET",
+        "tag": "DT",
+        "morph": "Definite=Ind|PronType=Art",
+        "lemma": "a"
+      },
+      {
+        "index": 1,
+        "surface": "elephant",
+        "pos": "NOUN",
+        "tag": "NN",
+        "morph": "Number=Sing",
+        "lemma": "elephant"
+      },
+      {
+        "index": 2,
+        "surface": "being",
+        "pos": "AUX",
+        "tag": "VBG",
+        "morph": "VerbForm=Ger",
+        "lemma": "be"
+      },
+      {
+        "index": 3,
+        "surface": "ridden",
+        "pos": "VERB",
+        "tag": "VBN",
+        "morph": "Aspect=Perf|Tense=Past|VerbForm=Part",
+        "lemma": "ride"
+      },
+      {
+        "index": 4,
+        "surface": "by",
+        "pos": "ADP",
+        "tag": "IN",
+        "morph": "",
+        "lemma": "by"
+      },
+      {
+        "index": 5,
+        "surface": "a",
+        "pos": "DET",
+        "tag": "DT",
+        "morph": "Definite=Ind|PronType=Art",
+        "lemma": "a"
+      },
+      {
+        "index": 6,
+        "surface": "little",
+        "pos": "ADJ",
+        "tag": "JJ",
+        "morph": "Degree=Pos",
+        "lemma": "little"
+      },
+      {
+        "index": 7,
+        "surface": "boy",
+        "pos": "NOUN",
+        "tag": "NN",
+        "morph": "Number=Sing",
+        "lemma": "boy"
+      },
+      {
+        "index": 8,
+        "surface": ".",
+        "pos": "PUNCT",
+        "tag": ".",
+        "morph": "PunctType=Peri",
+        "lemma": "."
+      }
+    ],
+    "focus": [
+      {
+        "index": 3,
+        "surface": "ridden",
+        "pos": "VERB",
+        "tag": "VBN",
+        "morph": "Aspect=Perf|Tense=Past|VerbForm=Part",
+        "lemma": "ride",
+        "expected_lemma_for_verb": "ride",
+        "status": "MATCH"
+      }
+    ]
+  },
+  {
+    "kind": "train_caption",
+    "coco_id": 162021,
+    "filename": "COCO_val2014_000000162021.jpg",
+    "split": "restval",
+    "sentence_index": 3,
+    "caption": "Three young people ridding skateboards in the city.",
+    "selection_forms": [
+      "ridding"
+    ],
+    "tokens": [
+      {
+        "index": 0,
+        "surface": "Three",
+        "pos": "NUM",
+        "tag": "CD",
+        "morph": "NumType=Card",
+        "lemma": "three"
+      },
+      {
+        "index": 1,
+        "surface": "young",
+        "pos": "ADJ",
+        "tag": "JJ",
+        "morph": "Degree=Pos",
+        "lemma": "young"
+      },
+      {
+        "index": 2,
+        "surface": "people",
+        "pos": "NOUN",
+        "tag": "NNS",
+        "morph": "Number=Plur",
+        "lemma": "people"
+      },
+      {
+        "index": 3,
+        "surface": "ridding",
+        "pos": "VERB",
+        "tag": "VBG",
+        "morph": "Aspect=Prog|Tense=Pres|VerbForm=Part",
+        "lemma": "rid"
+      },
+      {
+        "index": 4,
+        "surface": "skateboards",
+        "pos": "NOUN",
+        "tag": "NNS",
+        "morph": "Number=Plur",
+        "lemma": "skateboard"
+      },
+      {
+        "index": 5,
+        "surface": "in",
+        "pos": "ADP",
+        "tag": "IN",
+        "morph": "",
+        "lemma": "in"
+      },
+      {
+        "index": 6,
+        "surface": "the",
+        "pos": "DET",
+        "tag": "DT",
+        "morph": "Definite=Def|PronType=Art",
+        "lemma": "the"
+      },
+      {
+        "index": 7,
+        "surface": "city",
+        "pos": "NOUN",
+        "tag": "NN",
+        "morph": "Number=Sing",
+        "lemma": "city"
+      },
+      {
+        "index": 8,
+        "surface": ".",
+        "pos": "PUNCT",
+        "tag": ".",
+        "morph": "PunctType=Peri",
+        "lemma": "."
+      }
+    ],
+    "focus": [
+      {
+        "index": 3,
+        "surface": "ridding",
+        "pos": "VERB",
+        "tag": "VBG",
+        "morph": "Aspect=Prog|Tense=Pres|VerbForm=Part",
+        "lemma": "rid",
+        "expected_lemma_for_verb": "rid",
+        "status": "MATCH"
+      }
+    ]
+  },
+  {
+    "kind": "train_caption",
+    "coco_id": 39860,
+    "filename": "COCO_val2014_000000039860.jpg",
+    "split": "restval",
+    "sentence_index": 4,
+    "caption": "A young man in a green outfit ridding a surfboard. ",
+    "selection_forms": [
+      "ridding"
+    ],
+    "tokens": [
+      {
+        "index": 0,
+        "surface": "A",
+        "pos": "DET",
+        "tag": "DT",
+        "morph": "Definite=Ind|PronType=Art",
+        "lemma": "a"
+      },
+      {
+        "index": 1,
+        "surface": "young",
+        "pos": "ADJ",
+        "tag": "JJ",
+        "morph": "Degree=Pos",
+        "lemma": "young"
+      },
+      {
+        "index": 2,
+        "surface": "man",
+        "pos": "NOUN",
+        "tag": "NN",
+        "morph": "Number=Sing",
+        "lemma": "man"
+      },
+      {
+        "index": 3,
+        "surface": "in",
+        "pos": "ADP",
+        "tag": "IN",
+        "morph": "",
+        "lemma": "in"
+      },
+      {
+        "index": 4,
+        "surface": "a",
+        "pos": "DET",
+        "tag": "DT",
+        "morph": "Definite=Ind|PronType=Art",
+        "lemma": "a"
+      },
+      {
+        "index": 5,
+        "surface": "green",
+        "pos": "ADJ",
+        "tag": "JJ",
+        "morph": "Degree=Pos",
+        "lemma": "green"
+      },
+      {
+        "index": 6,
+        "surface": "outfit",
+        "pos": "NOUN",
+        "tag": "NN",
+        "morph": "Number=Sing",
+        "lemma": "outfit"
+      },
+      {
+        "index": 7,
+        "surface": "ridding",
+        "pos": "VERB",
+        "tag": "VBG",
+        "morph": "Aspect=Prog|Tense=Pres|VerbForm=Part",
+        "lemma": "rid"
+      },
+      {
+        "index": 8,
+        "surface": "a",
+        "pos": "DET",
+        "tag": "DT",
+        "morph": "Definite=Ind|PronType=Art",
+        "lemma": "a"
+      },
+      {
+        "index": 9,
+        "surface": "surfboard",
+        "pos": "NOUN",
+        "tag": "NN",
+        "morph": "Number=Sing",
+        "lemma": "surfboard"
+      },
+      {
+        "index": 10,
+        "surface": ".",
+        "pos": "PUNCT",
+        "tag": ".",
+        "morph": "PunctType=Peri",
+        "lemma": "."
+      }
+    ],
+    "focus": [
+      {
+        "index": 7,
+        "surface": "ridding",
+        "pos": "VERB",
+        "tag": "VBG",
+        "morph": "Aspect=Prog|Tense=Pres|VerbForm=Part",
+        "lemma": "rid",
+        "expected_lemma_for_verb": "rid",
+        "status": "MATCH"
+      }
+    ]
+  },
+  {
+    "kind": "train_caption",
+    "coco_id": 460781,
+    "filename": "COCO_val2014_000000460781.jpg",
+    "split": "restval",
+    "sentence_index": 0,
+    "caption": "A young man ridding a snowboard sliding down a railing in the snow.",
+    "selection_forms": [
+      "ridding"
+    ],
+    "tokens": [
+      {
+        "index": 0,
+        "surface": "A",
+        "pos": "DET",
+        "tag": "DT",
+        "morph": "Definite=Ind|PronType=Art",
+        "lemma": "a"
+      },
+      {
+        "index": 1,
+        "surface": "young",
+        "pos": "ADJ",
+        "tag": "JJ",
+        "morph": "Degree=Pos",
+        "lemma": "young"
+      },
+      {
+        "index": 2,
+        "surface": "man",
+        "pos": "NOUN",
+        "tag": "NN",
+        "morph": "Number=Sing",
+        "lemma": "man"
+      },
+      {
+        "index": 3,
+        "surface": "ridding",
+        "pos": "VERB",
+        "tag": "VBG",
+        "morph": "Aspect=Prog|Tense=Pres|VerbForm=Part",
+        "lemma": "rid"
+      },
+      {
+        "index": 4,
+        "surface": "a",
+        "pos": "DET",
+        "tag": "DT",
+        "morph": "Definite=Ind|PronType=Art",
+        "lemma": "a"
+      },
+      {
+        "index": 5,
+        "surface": "snowboard",
+        "pos": "NOUN",
+        "tag": "NN",
+        "morph": "Number=Sing",
+        "lemma": "snowboard"
+      },
+      {
+        "index": 6,
+        "surface": "sliding",
+        "pos": "VERB",
+        "tag": "VBG",
+        "morph": "Aspect=Prog|Tense=Pres|VerbForm=Part",
+        "lemma": "slide"
+      },
+      {
+        "index": 7,
+        "surface": "down",
+        "pos": "ADP",
+        "tag": "RP",
+        "morph": "",
+        "lemma": "down"
+      },
+      {
+        "index": 8,
+        "surface": "a",
+        "pos": "DET",
+        "tag": "DT",
+        "morph": "Definite=Ind|PronType=Art",
+        "lemma": "a"
+      },
+      {
+        "index": 9,
+        "surface": "railing",
+        "pos": "NOUN",
+        "tag": "NN",
+        "morph": "Number=Sing",
+        "lemma": "railing"
+      },
+      {
+        "index": 10,
+        "surface": "in",
+        "pos": "ADP",
+        "tag": "IN",
+        "morph": "",
+        "lemma": "in"
+      },
+      {
+        "index": 11,
+        "surface": "the",
+        "pos": "DET",
+        "tag": "DT",
+        "morph": "Definite=Def|PronType=Art",
+        "lemma": "the"
+      },
+      {
+        "index": 12,
+        "surface": "snow",
+        "pos": "NOUN",
+        "tag": "NN",
+        "morph": "Number=Sing",
+        "lemma": "snow"
+      },
+      {
+        "index": 13,
+        "surface": ".",
+        "pos": "PUNCT",
+        "tag": ".",
+        "morph": "PunctType=Peri",
+        "lemma": "."
+      }
+    ],
+    "focus": [
+      {
+        "index": 3,
+        "surface": "ridding",
+        "pos": "VERB",
+        "tag": "VBG",
+        "morph": "Aspect=Prog|Tense=Pres|VerbForm=Part",
+        "lemma": "rid",
+        "expected_lemma_for_verb": "rid",
+        "status": "MATCH"
+      }
+    ]
+  },
+  {
+    "kind": "train_caption",
+    "coco_id": 136285,
+    "filename": "COCO_val2014_000000136285.jpg",
+    "split": "restval",
+    "sentence_index": 4,
+    "caption": "A man standing next to a horse being ridden by a young boy. ",
+    "selection_forms": [
+      "ridden"
+    ],
+    "tokens": [
+      {
+        "index": 0,
+        "surface": "A",
+        "pos": "DET",
+        "tag": "DT",
+        "morph": "Definite=Ind|PronType=Art",
+        "lemma": "a"
+      },
+      {
+        "index": 1,
+        "surface": "man",
+        "pos": "NOUN",
+        "tag": "NN",
+        "morph": "Number=Sing",
+        "lemma": "man"
+      },
+      {
+        "index": 2,
+        "surface": "standing",
+        "pos": "VERB",
+        "tag": "VBG",
+        "morph": "Aspect=Prog|Tense=Pres|VerbForm=Part",
+        "lemma": "stand"
+      },
+      {
+        "index": 3,
+        "surface": "next",
+        "pos": "ADV",
+        "tag": "RB",
+        "morph": "",
+        "lemma": "next"
+      },
+      {
+        "index": 4,
+        "surface": "to",
+        "pos": "ADP",
+        "tag": "IN",
+        "morph": "",
+        "lemma": "to"
+      },
+      {
+        "index": 5,
+        "surface": "a",
+        "pos": "DET",
+        "tag": "DT",
+        "morph": "Definite=Ind|PronType=Art",
+        "lemma": "a"
+      },
+      {
+        "index": 6,
+        "surface": "horse",
+        "pos": "NOUN",
+        "tag": "NN",
+        "morph": "Number=Sing",
+        "lemma": "horse"
+      },
+      {
+        "index": 7,
+        "surface": "being",
+        "pos": "AUX",
+        "tag": "VBG",
+        "morph": "VerbForm=Ger",
+        "lemma": "be"
+      },
+      {
+        "index": 8,
+        "surface": "ridden",
+        "pos": "VERB",
+        "tag": "VBN",
+        "morph": "Aspect=Perf|Tense=Past|VerbForm=Part",
+        "lemma": "ride"
+      },
+      {
+        "index": 9,
+        "surface": "by",
+        "pos": "ADP",
+        "tag": "IN",
+        "morph": "",
+        "lemma": "by"
+      },
+      {
+        "index": 10,
+        "surface": "a",
+        "pos": "DET",
+        "tag": "DT",
+        "morph": "Definite=Ind|PronType=Art",
+        "lemma": "a"
+      },
+      {
+        "index": 11,
+        "surface": "young",
+        "pos": "ADJ",
+        "tag": "JJ",
+        "morph": "Degree=Pos",
+        "lemma": "young"
+      },
+      {
+        "index": 12,
+        "surface": "boy",
+        "pos": "NOUN",
+        "tag": "NN",
+        "morph": "Number=Sing",
+        "lemma": "boy"
+      },
+      {
+        "index": 13,
+        "surface": ".",
+        "pos": "PUNCT",
+        "tag": ".",
+        "morph": "PunctType=Peri",
+        "lemma": "."
+      }
+    ],
+    "focus": [
+      {
+        "index": 8,
+        "surface": "ridden",
+        "pos": "VERB",
+        "tag": "VBN",
+        "morph": "Aspect=Perf|Tense=Past|VerbForm=Part",
+        "lemma": "ride",
+        "expected_lemma_for_verb": "ride",
+        "status": "MATCH"
+      }
+    ]
+  },
+  {
+    "kind": "train_caption",
+    "coco_id": 477791,
+    "filename": "COCO_val2014_000000477791.jpg",
+    "split": "restval",
+    "sentence_index": 2,
+    "caption": "A cat ridding in a car looking out the window with a small building in the background.",
+    "selection_forms": [
+      "ridding"
+    ],
+    "tokens": [
+      {
+        "index": 0,
+        "surface": "A",
+        "pos": "DET",
+        "tag": "DT",
+        "morph": "Definite=Ind|PronType=Art",
+        "lemma": "a"
+      },
+      {
+        "index": 1,
+        "surface": "cat",
+        "pos": "NOUN",
+        "tag": "NN",
+        "morph": "Number=Sing",
+        "lemma": "cat"
+      },
+      {
+        "index": 2,
+        "surface": "ridding",
+        "pos": "VERB",
+        "tag": "VBG",
+        "morph": "Aspect=Prog|Tense=Pres|VerbForm=Part",
+        "lemma": "rid"
+      },
+      {
+        "index": 3,
+        "surface": "in",
+        "pos": "ADP",
+        "tag": "IN",
+        "morph": "",
+        "lemma": "in"
+      },
+      {
+        "index": 4,
+        "surface": "a",
+        "pos": "DET",
+        "tag": "DT",
+        "morph": "Definite=Ind|PronType=Art",
+        "lemma": "a"
+      },
+      {
+        "index": 5,
+        "surface": "car",
+        "pos": "NOUN",
+        "tag": "NN",
+        "morph": "Number=Sing",
+        "lemma": "car"
+      },
+      {
+        "index": 6,
+        "surface": "looking",
+        "pos": "VERB",
+        "tag": "VBG",
+        "morph": "Aspect=Prog|Tense=Pres|VerbForm=Part",
+        "lemma": "look"
+      },
+      {
+        "index": 7,
+        "surface": "out",
+        "pos": "ADP",
+        "tag": "IN",
+        "morph": "",
+        "lemma": "out"
+      },
+      {
+        "index": 8,
+        "surface": "the",
+        "pos": "DET",
+        "tag": "DT",
+        "morph": "Definite=Def|PronType=Art",
+        "lemma": "the"
+      },
+      {
+        "index": 9,
+        "surface": "window",
+        "pos": "NOUN",
+        "tag": "NN",
+        "morph": "Number=Sing",
+        "lemma": "window"
+      },
+      {
+        "index": 10,
+        "surface": "with",
+        "pos": "ADP",
+        "tag": "IN",
+        "morph": "",
+        "lemma": "with"
+      },
+      {
+        "index": 11,
+        "surface": "a",
+        "pos": "DET",
+        "tag": "DT",
+        "morph": "Definite=Ind|PronType=Art",
+        "lemma": "a"
+      },
+      {
+        "index": 12,
+        "surface": "small",
+        "pos": "ADJ",
+        "tag": "JJ",
+        "morph": "Degree=Pos",
+        "lemma": "small"
+      },
+      {
+        "index": 13,
+        "surface": "building",
+        "pos": "NOUN",
+        "tag": "NN",
+        "morph": "Number=Sing",
+        "lemma": "building"
+      },
+      {
+        "index": 14,
+        "surface": "in",
+        "pos": "ADP",
+        "tag": "IN",
+        "morph": "",
+        "lemma": "in"
+      },
+      {
+        "index": 15,
+        "surface": "the",
+        "pos": "DET",
+        "tag": "DT",
+        "morph": "Definite=Def|PronType=Art",
+        "lemma": "the"
+      },
+      {
+        "index": 16,
+        "surface": "background",
+        "pos": "NOUN",
+        "tag": "NN",
+        "morph": "Number=Sing",
+        "lemma": "background"
+      },
+      {
+        "index": 17,
+        "surface": ".",
+        "pos": "PUNCT",
+        "tag": ".",
+        "morph": "PunctType=Peri",
+        "lemma": "."
+      }
+    ],
+    "focus": [
+      {
+        "index": 2,
+        "surface": "ridding",
+        "pos": "VERB",
+        "tag": "VBG",
+        "morph": "Aspect=Prog|Tense=Pres|VerbForm=Part",
+        "lemma": "rid",
+        "expected_lemma_for_verb": "rid",
+        "status": "MATCH"
+      }
+    ]
+  },
+  {
+    "kind": "train_caption",
+    "coco_id": 145562,
+    "filename": "COCO_val2014_000000145562.jpg",
+    "split": "restval",
+    "sentence_index": 4,
+    "caption": "A small train being ridden by a few people.",
+    "selection_forms": [
+      "ridden"
+    ],
+    "tokens": [
+      {
+        "index": 0,
+        "surface": "A",
+        "pos": "DET",
+        "tag": "DT",
+        "morph": "Definite=Ind|PronType=Art",
+        "lemma": "a"
+      },
+      {
+        "index": 1,
+        "surface": "small",
+        "pos": "ADJ",
+        "tag": "JJ",
+        "morph": "Degree=Pos",
+        "lemma": "small"
+      },
+      {
+        "index": 2,
+        "surface": "train",
+        "pos": "NOUN",
+        "tag": "NN",
+        "morph": "Number=Sing",
+        "lemma": "train"
+      },
+      {
+        "index": 3,
+        "surface": "being",
+        "pos": "AUX",
+        "tag": "VBG",
+        "morph": "VerbForm=Ger",
+        "lemma": "be"
+      },
+      {
+        "index": 4,
+        "surface": "ridden",
+        "pos": "VERB",
+        "tag": "VBN",
+        "morph": "Aspect=Perf|Tense=Past|VerbForm=Part",
+        "lemma": "ride"
+      },
+      {
+        "index": 5,
+        "surface": "by",
+        "pos": "ADP",
+        "tag": "IN",
+        "morph": "",
+        "lemma": "by"
+      },
+      {
+        "index": 6,
+        "surface": "a",
+        "pos": "DET",
+        "tag": "DT",
+        "morph": "Definite=Ind|PronType=Art",
+        "lemma": "a"
+      },
+      {
+        "index": 7,
+        "surface": "few",
+        "pos": "ADJ",
+        "tag": "JJ",
+        "morph": "Degree=Pos",
+        "lemma": "few"
+      },
+      {
+        "index": 8,
+        "surface": "people",
+        "pos": "NOUN",
+        "tag": "NNS",
+        "morph": "Number=Plur",
+        "lemma": "people"
+      },
+      {
+        "index": 9,
+        "surface": ".",
+        "pos": "PUNCT",
+        "tag": ".",
+        "morph": "PunctType=Peri",
+        "lemma": "."
+      }
+    ],
+    "focus": [
+      {
+        "index": 4,
+        "surface": "ridden",
+        "pos": "VERB",
+        "tag": "VBN",
+        "morph": "Aspect=Perf|Tense=Past|VerbForm=Part",
+        "lemma": "ride",
+        "expected_lemma_for_verb": "ride",
+        "status": "MATCH"
+      }
+    ]
+  },
+  {
+    "kind": "train_caption",
+    "coco_id": 227772,
+    "filename": "COCO_val2014_000000227772.jpg",
+    "split": "restval",
+    "sentence_index": 3,
+    "caption": "A young man ridding a skateboard down the handrail of some steps as people watch.",
+    "selection_forms": [
+      "ridding"
+    ],
+    "tokens": [
+      {
+        "index": 0,
+        "surface": "A",
+        "pos": "DET",
+        "tag": "DT",
+        "morph": "Definite=Ind|PronType=Art",
+        "lemma": "a"
+      },
+      {
+        "index": 1,
+        "surface": "young",
+        "pos": "ADJ",
+        "tag": "JJ",
+        "morph": "Degree=Pos",
+        "lemma": "young"
+      },
+      {
+        "index": 2,
+        "surface": "man",
+        "pos": "NOUN",
+        "tag": "NN",
+        "morph": "Number=Sing",
+        "lemma": "man"
+      },
+      {
+        "index": 3,
+        "surface": "ridding",
+        "pos": "VERB",
+        "tag": "VBG",
+        "morph": "Aspect=Prog|Tense=Pres|VerbForm=Part",
+        "lemma": "rid"
+      },
+      {
+        "index": 4,
+        "surface": "a",
+        "pos": "DET",
+        "tag": "DT",
+        "morph": "Definite=Ind|PronType=Art",
+        "lemma": "a"
+      },
+      {
+        "index": 5,
+        "surface": "skateboard",
+        "pos": "NOUN",
+        "tag": "NN",
+        "morph": "Number=Sing",
+        "lemma": "skateboard"
+      },
+      {
+        "index": 6,
+        "surface": "down",
+        "pos": "ADP",
+        "tag": "IN",
+        "morph": "",
+        "lemma": "down"
+      },
+      {
+        "index": 7,
+        "surface": "the",
+        "pos": "DET",
+        "tag": "DT",
+        "morph": "Definite=Def|PronType=Art",
+        "lemma": "the"
+      },
+      {
+        "index": 8,
+        "surface": "handrail",
+        "pos": "NOUN",
+        "tag": "NN",
+        "morph": "Number=Sing",
+        "lemma": "handrail"
+      },
+      {
+        "index": 9,
+        "surface": "of",
+        "pos": "ADP",
+        "tag": "IN",
+        "morph": "",
+        "lemma": "of"
+      },
+      {
+        "index": 10,
+        "surface": "some",
+        "pos": "DET",
+        "tag": "DT",
+        "morph": "",
+        "lemma": "some"
+      },
+      {
+        "index": 11,
+        "surface": "steps",
+        "pos": "NOUN",
+        "tag": "NNS",
+        "morph": "Number=Plur",
+        "lemma": "step"
+      },
+      {
+        "index": 12,
+        "surface": "as",
+        "pos": "ADP",
+        "tag": "IN",
+        "morph": "",
+        "lemma": "as"
+      },
+      {
+        "index": 13,
+        "surface": "people",
+        "pos": "NOUN",
+        "tag": "NNS",
+        "morph": "Number=Plur",
+        "lemma": "people"
+      },
+      {
+        "index": 14,
+        "surface": "watch",
+        "pos": "VERB",
+        "tag": "VBP",
+        "morph": "Tense=Pres|VerbForm=Fin",
+        "lemma": "watch"
+      },
+      {
+        "index": 15,
+        "surface": ".",
+        "pos": "PUNCT",
+        "tag": ".",
+        "morph": "PunctType=Peri",
+        "lemma": "."
+      }
+    ],
+    "focus": [
+      {
+        "index": 3,
+        "surface": "ridding",
+        "pos": "VERB",
+        "tag": "VBG",
+        "morph": "Aspect=Prog|Tense=Pres|VerbForm=Part",
+        "lemma": "rid",
+        "expected_lemma_for_verb": "rid",
+        "status": "MATCH"
+      }
+    ]
+  },
+  {
+    "kind": "train_caption",
+    "coco_id": 312078,
+    "filename": "COCO_val2014_000000312078.jpg",
+    "split": "restval",
+    "sentence_index": 2,
+    "caption": "A young person ridding the waves on a surf board.",
+    "selection_forms": [
+      "ridding"
+    ],
+    "tokens": [
+      {
+        "index": 0,
+        "surface": "A",
+        "pos": "DET",
+        "tag": "DT",
+        "morph": "Definite=Ind|PronType=Art",
+        "lemma": "a"
+      },
+      {
+        "index": 1,
+        "surface": "young",
+        "pos": "ADJ",
+        "tag": "JJ",
+        "morph": "Degree=Pos",
+        "lemma": "young"
+      },
+      {
+        "index": 2,
+        "surface": "person",
+        "pos": "NOUN",
+        "tag": "NN",
+        "morph": "Number=Sing",
+        "lemma": "person"
+      },
+      {
+        "index": 3,
+        "surface": "ridding",
+        "pos": "VERB",
+        "tag": "VBG",
+        "morph": "Aspect=Prog|Tense=Pres|VerbForm=Part",
+        "lemma": "rid"
+      },
+      {
+        "index": 4,
+        "surface": "the",
+        "pos": "DET",
+        "tag": "DT",
+        "morph": "Definite=Def|PronType=Art",
+        "lemma": "the"
+      },
+      {
+        "index": 5,
+        "surface": "waves",
+        "pos": "NOUN",
+        "tag": "NNS",
+        "morph": "Number=Plur",
+        "lemma": "wave"
+      },
+      {
+        "index": 6,
+        "surface": "on",
+        "pos": "ADP",
+        "tag": "IN",
+        "morph": "",
+        "lemma": "on"
+      },
+      {
+        "index": 7,
+        "surface": "a",
+        "pos": "DET",
+        "tag": "DT",
+        "morph": "Definite=Ind|PronType=Art",
+        "lemma": "a"
+      },
+      {
+        "index": 8,
+        "surface": "surf",
+        "pos": "NOUN",
+        "tag": "NN",
+        "morph": "Number=Sing",
+        "lemma": "surf"
+      },
+      {
+        "index": 9,
+        "surface": "board",
+        "pos": "NOUN",
+        "tag": "NN",
+        "morph": "Number=Sing",
+        "lemma": "board"
+      },
+      {
+        "index": 10,
+        "surface": ".",
+        "pos": "PUNCT",
+        "tag": ".",
+        "morph": "PunctType=Peri",
+        "lemma": "."
+      }
+    ],
+    "focus": [
+      {
+        "index": 3,
+        "surface": "ridding",
+        "pos": "VERB",
+        "tag": "VBG",
+        "morph": "Aspect=Prog|Tense=Pres|VerbForm=Part",
+        "lemma": "rid",
+        "expected_lemma_for_verb": "rid",
+        "status": "MATCH"
+      }
+    ]
+  },
+  {
+    "kind": "train_caption",
+    "coco_id": 246746,
+    "filename": "COCO_val2014_000000246746.jpg",
+    "split": "restval",
+    "sentence_index": 3,
+    "caption": "A horse being ridden in the middle of the grass.",
+    "selection_forms": [
+      "ridden"
+    ],
+    "tokens": [
+      {
+        "index": 0,
+        "surface": "A",
+        "pos": "DET",
+        "tag": "DT",
+        "morph": "Definite=Ind|PronType=Art",
+        "lemma": "a"
+      },
+      {
+        "index": 1,
+        "surface": "horse",
+        "pos": "NOUN",
+        "tag": "NN",
+        "morph": "Number=Sing",
+        "lemma": "horse"
+      },
+      {
+        "index": 2,
+        "surface": "being",
+        "pos": "AUX",
+        "tag": "VBG",
+        "morph": "VerbForm=Ger",
+        "lemma": "be"
+      },
+      {
+        "index": 3,
+        "surface": "ridden",
+        "pos": "VERB",
+        "tag": "VBN",
+        "morph": "Aspect=Perf|Tense=Past|VerbForm=Part",
+        "lemma": "ride"
+      },
+      {
+        "index": 4,
+        "surface": "in",
+        "pos": "ADP",
+        "tag": "IN",
+        "morph": "",
+        "lemma": "in"
+      },
+      {
+        "index": 5,
+        "surface": "the",
+        "pos": "DET",
+        "tag": "DT",
+        "morph": "Definite=Def|PronType=Art",
+        "lemma": "the"
+      },
+      {
+        "index": 6,
+        "surface": "middle",
+        "pos": "NOUN",
+        "tag": "NN",
+        "morph": "Number=Sing",
+        "lemma": "middle"
+      },
+      {
+        "index": 7,
+        "surface": "of",
+        "pos": "ADP",
+        "tag": "IN",
+        "morph": "",
+        "lemma": "of"
+      },
+      {
+        "index": 8,
+        "surface": "the",
+        "pos": "DET",
+        "tag": "DT",
+        "morph": "Definite=Def|PronType=Art",
+        "lemma": "the"
+      },
+      {
+        "index": 9,
+        "surface": "grass",
+        "pos": "NOUN",
+        "tag": "NN",
+        "morph": "Number=Sing",
+        "lemma": "grass"
+      },
+      {
+        "index": 10,
+        "surface": ".",
+        "pos": "PUNCT",
+        "tag": ".",
+        "morph": "PunctType=Peri",
+        "lemma": "."
+      }
+    ],
+    "focus": [
+      {
+        "index": 3,
+        "surface": "ridden",
+        "pos": "VERB",
+        "tag": "VBN",
+        "morph": "Aspect=Perf|Tense=Past|VerbForm=Part",
+        "lemma": "ride",
+        "expected_lemma_for_verb": "ride",
+        "status": "MATCH"
+      }
+    ]
+  },
+  {
+    "kind": "train_caption",
+    "coco_id": 107558,
+    "filename": "COCO_val2014_000000107558.jpg",
+    "split": "restval",
+    "sentence_index": 3,
+    "caption": "there is a skateboarder that has rode down a ramp",
+    "selection_forms": [
+      "rode"
+    ],
+    "tokens": [
+      {
+        "index": 0,
+        "surface": "there",
+        "pos": "PRON",
+        "tag": "EX",
+        "morph": "",
+        "lemma": "there"
+      },
+      {
+        "index": 1,
+        "surface": "is",
+        "pos": "AUX",
+        "tag": "VBZ",
+        "morph": "Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin",
+        "lemma": "be"
+      },
+      {
+        "index": 2,
+        "surface": "a",
+        "pos": "DET",
+        "tag": "DT",
+        "morph": "Definite=Ind|PronType=Art",
+        "lemma": "a"
+      },
+      {
+        "index": 3,
+        "surface": "skateboarder",
+        "pos": "NOUN",
+        "tag": "NN",
+        "morph": "Number=Sing",
+        "lemma": "skateboarder"
+      },
+      {
+        "index": 4,
+        "surface": "that",
+        "pos": "PRON",
+        "tag": "WDT",
+        "morph": "PronType=Rel",
+        "lemma": "that"
+      },
+      {
+        "index": 5,
+        "surface": "has",
+        "pos": "AUX",
+        "tag": "VBZ",
+        "morph": "Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin",
+        "lemma": "have"
+      },
+      {
+        "index": 6,
+        "surface": "rode",
+        "pos": "VERB",
+        "tag": "VBN",
+        "morph": "Aspect=Perf|Tense=Past|VerbForm=Part",
+        "lemma": "ride"
+      },
+      {
+        "index": 7,
+        "surface": "down",
+        "pos": "ADP",
+        "tag": "RP",
+        "morph": "",
+        "lemma": "down"
+      },
+      {
+        "index": 8,
+        "surface": "a",
+        "pos": "DET",
+        "tag": "DT",
+        "morph": "Definite=Ind|PronType=Art",
+        "lemma": "a"
+      },
+      {
+        "index": 9,
+        "surface": "ramp",
+        "pos": "NOUN",
+        "tag": "NN",
+        "morph": "Number=Sing",
+        "lemma": "ramp"
+      }
+    ],
+    "focus": [
+      {
+        "index": 6,
+        "surface": "rode",
+        "pos": "VERB",
+        "tag": "VBN",
+        "morph": "Aspect=Perf|Tense=Past|VerbForm=Part",
+        "lemma": "ride",
+        "expected_lemma_for_verb": "ride",
+        "status": "MATCH"
+      }
+    ]
+  },
+  {
+    "kind": "train_caption",
+    "coco_id": 357354,
+    "filename": "COCO_val2014_000000357354.jpg",
+    "split": "restval",
+    "sentence_index": 4,
+    "caption": "An elephant is being rode on the street",
+    "selection_forms": [
+      "rode"
+    ],
+    "tokens": [
+      {
+        "index": 0,
+        "surface": "An",
+        "pos": "DET",
+        "tag": "DT",
+        "morph": "Definite=Ind|PronType=Art",
+        "lemma": "an"
+      },
+      {
+        "index": 1,
+        "surface": "elephant",
+        "pos": "NOUN",
+        "tag": "NN",
+        "morph": "Number=Sing",
+        "lemma": "elephant"
+      },
+      {
+        "index": 2,
+        "surface": "is",
+        "pos": "AUX",
+        "tag": "VBZ",
+        "morph": "Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin",
+        "lemma": "be"
+      },
+      {
+        "index": 3,
+        "surface": "being",
+        "pos": "AUX",
+        "tag": "VBG",
+        "morph": "VerbForm=Ger",
+        "lemma": "be"
+      },
+      {
+        "index": 4,
+        "surface": "rode",
+        "pos": "VERB",
+        "tag": "VBN",
+        "morph": "Aspect=Perf|Tense=Past|VerbForm=Part",
+        "lemma": "ride"
+      },
+      {
+        "index": 5,
+        "surface": "on",
+        "pos": "ADP",
+        "tag": "IN",
+        "morph": "",
+        "lemma": "on"
+      },
+      {
+        "index": 6,
+        "surface": "the",
+        "pos": "DET",
+        "tag": "DT",
+        "morph": "Definite=Def|PronType=Art",
+        "lemma": "the"
+      },
+      {
+        "index": 7,
+        "surface": "street",
+        "pos": "NOUN",
+        "tag": "NN",
+        "morph": "Number=Sing",
+        "lemma": "street"
+      }
+    ],
+    "focus": [
+      {
+        "index": 4,
+        "surface": "rode",
+        "pos": "VERB",
+        "tag": "VBN",
+        "morph": "Aspect=Perf|Tense=Past|VerbForm=Part",
+        "lemma": "ride",
+        "expected_lemma_for_verb": "ride",
+        "status": "MATCH"
+      }
+    ]
+  },
+  {
+    "kind": "train_caption",
+    "coco_id": 493772,
+    "filename": "COCO_val2014_000000493772.jpg",
+    "split": "restval",
+    "sentence_index": 3,
+    "caption": "A person holds an umbrella in the middle of a rode. ",
+    "selection_forms": [
+      "rode"
+    ],
+    "tokens": [
+      {
+        "index": 0,
+        "surface": "A",
+        "pos": "DET",
+        "tag": "DT",
+        "morph": "Definite=Ind|PronType=Art",
+        "lemma": "a"
+      },
+      {
+        "index": 1,
+        "surface": "person",
+        "pos": "NOUN",
+        "tag": "NN",
+        "morph": "Number=Sing",
+        "lemma": "person"
+      },
+      {
+        "index": 2,
+        "surface": "holds",
+        "pos": "VERB",
+        "tag": "VBZ",
+        "morph": "Number=Sing|Person=3|Tense=Pres|VerbForm=Fin",
+        "lemma": "hold"
+      },
+      {
+        "index": 3,
+        "surface": "an",
+        "pos": "DET",
+        "tag": "DT",
+        "morph": "Definite=Ind|PronType=Art",
+        "lemma": "an"
+      },
+      {
+        "index": 4,
+        "surface": "umbrella",
+        "pos": "NOUN",
+        "tag": "NN",
+        "morph": "Number=Sing",
+        "lemma": "umbrella"
+      },
+      {
+        "index": 5,
+        "surface": "in",
+        "pos": "ADP",
+        "tag": "IN",
+        "morph": "",
+        "lemma": "in"
+      },
+      {
+        "index": 6,
+        "surface": "the",
+        "pos": "DET",
+        "tag": "DT",
+        "morph": "Definite=Def|PronType=Art",
+        "lemma": "the"
+      },
+      {
+        "index": 7,
+        "surface": "middle",
+        "pos": "NOUN",
+        "tag": "NN",
+        "morph": "Number=Sing",
+        "lemma": "middle"
+      },
+      {
+        "index": 8,
+        "surface": "of",
+        "pos": "ADP",
+        "tag": "IN",
+        "morph": "",
+        "lemma": "of"
+      },
+      {
+        "index": 9,
+        "surface": "a",
+        "pos": "DET",
+        "tag": "DT",
+        "morph": "Definite=Ind|PronType=Art",
+        "lemma": "a"
+      },
+      {
+        "index": 10,
+        "surface": "rode",
+        "pos": "NOUN",
+        "tag": "NN",
+        "morph": "Number=Sing",
+        "lemma": "rode"
+      },
+      {
+        "index": 11,
+        "surface": ".",
+        "pos": "PUNCT",
+        "tag": ".",
+        "morph": "PunctType=Peri",
+        "lemma": "."
+      }
+    ],
+    "focus": [
+      {
+        "index": 10,
+        "surface": "rode",
+        "pos": "NOUN",
+        "tag": "NN",
+        "morph": "Number=Sing",
+        "lemma": "rode",
+        "expected_lemma_for_verb": "ride",
+        "status": "NOT_VERB_REVIEW"
+      }
+    ]
+  },
+  {
+    "kind": "train_caption",
+    "coco_id": 84004,
+    "filename": "COCO_val2014_000000084004.jpg",
+    "split": "restval",
+    "sentence_index": 4,
+    "caption": "A young female surfer just rode a wave at the beach",
+    "selection_forms": [
+      "rode"
+    ],
+    "tokens": [
+      {
+        "index": 0,
+        "surface": "A",
+        "pos": "DET",
+        "tag": "DT",
+        "morph": "Definite=Ind|PronType=Art",
+        "lemma": "a"
+      },
+      {
+        "index": 1,
+        "surface": "young",
+        "pos": "ADJ",
+        "tag": "JJ",
+        "morph": "Degree=Pos",
+        "lemma": "young"
+      },
+      {
+        "index": 2,
+        "surface": "female",
+        "pos": "ADJ",
+        "tag": "JJ",
+        "morph": "Degree=Pos",
+        "lemma": "female"
+      },
+      {
+        "index": 3,
+        "surface": "surfer",
+        "pos": "NOUN",
+        "tag": "NN",
+        "morph": "Number=Sing",
+        "lemma": "surfer"
+      },
+      {
+        "index": 4,
+        "surface": "just",
+        "pos": "ADV",
+        "tag": "RB",
+        "morph": "",
+        "lemma": "just"
+      },
+      {
+        "index": 5,
+        "surface": "rode",
+        "pos": "VERB",
+        "tag": "VBD",
+        "morph": "Tense=Past|VerbForm=Fin",
+        "lemma": "ride"
+      },
+      {
+        "index": 6,
+        "surface": "a",
+        "pos": "DET",
+        "tag": "DT",
+        "morph": "Definite=Ind|PronType=Art",
+        "lemma": "a"
+      },
+      {
+        "index": 7,
+        "surface": "wave",
+        "pos": "NOUN",
+        "tag": "NN",
+        "morph": "Number=Sing",
+        "lemma": "wave"
+      },
+      {
+        "index": 8,
+        "surface": "at",
+        "pos": "ADP",
+        "tag": "IN",
+        "morph": "",
+        "lemma": "at"
+      },
+      {
+        "index": 9,
+        "surface": "the",
+        "pos": "DET",
+        "tag": "DT",
+        "morph": "Definite=Def|PronType=Art",
+        "lemma": "the"
+      },
+      {
+        "index": 10,
+        "surface": "beach",
+        "pos": "NOUN",
+        "tag": "NN",
+        "morph": "Number=Sing",
+        "lemma": "beach"
+      }
+    ],
+    "focus": [
+      {
+        "index": 5,
+        "surface": "rode",
+        "pos": "VERB",
+        "tag": "VBD",
+        "morph": "Tense=Past|VerbForm=Fin",
+        "lemma": "ride",
+        "expected_lemma_for_verb": "ride",
+        "status": "MATCH"
+      }
+    ]
+  },
+  {
+    "kind": "train_caption",
+    "coco_id": 7726,
+    "filename": "COCO_val2014_000000007726.jpg",
+    "split": "restval",
+    "sentence_index": 1,
+    "caption": "a truck driving down the rode on a rainy day",
+    "selection_forms": [
+      "rode"
+    ],
+    "tokens": [
+      {
+        "index": 0,
+        "surface": "a",
+        "pos": "DET",
+        "tag": "DT",
+        "morph": "Definite=Ind|PronType=Art",
+        "lemma": "a"
+      },
+      {
+        "index": 1,
+        "surface": "truck",
+        "pos": "NOUN",
+        "tag": "NN",
+        "morph": "Number=Sing",
+        "lemma": "truck"
+      },
+      {
+        "index": 2,
+        "surface": "driving",
+        "pos": "VERB",
+        "tag": "VBG",
+        "morph": "Aspect=Prog|Tense=Pres|VerbForm=Part",
+        "lemma": "drive"
+      },
+      {
+        "index": 3,
+        "surface": "down",
+        "pos": "ADP",
+        "tag": "IN",
+        "morph": "",
+        "lemma": "down"
+      },
+      {
+        "index": 4,
+        "surface": "the",
+        "pos": "DET",
+        "tag": "DT",
+        "morph": "Definite=Def|PronType=Art",
+        "lemma": "the"
+      },
+      {
+        "index": 5,
+        "surface": "rode",
+        "pos": "NOUN",
+        "tag": "NN",
+        "morph": "Number=Sing",
+        "lemma": "rode"
+      },
+      {
+        "index": 6,
+        "surface": "on",
+        "pos": "ADP",
+        "tag": "IN",
+        "morph": "",
+        "lemma": "on"
+      },
+      {
+        "index": 7,
+        "surface": "a",
+        "pos": "DET",
+        "tag": "DT",
+        "morph": "Definite=Ind|PronType=Art",
+        "lemma": "a"
+      },
+      {
+        "index": 8,
+        "surface": "rainy",
+        "pos": "ADJ",
+        "tag": "JJ",
+        "morph": "Degree=Pos",
+        "lemma": "rainy"
+      },
+      {
+        "index": 9,
+        "surface": "day",
+        "pos": "NOUN",
+        "tag": "NN",
+        "morph": "Number=Sing",
+        "lemma": "day"
+      }
+    ],
+    "focus": [
+      {
+        "index": 5,
+        "surface": "rode",
+        "pos": "NOUN",
+        "tag": "NN",
+        "morph": "Number=Sing",
+        "lemma": "rode",
+        "expected_lemma_for_verb": "ride",
+        "status": "NOT_VERB_REVIEW"
+      }
+    ]
+  },
+  {
+    "kind": "train_caption",
+    "coco_id": 231782,
+    "filename": "COCO_train2014_000000231782.jpg",
+    "split": "train",
+    "sentence_index": 4,
+    "caption": "Cows walking along side a rode with snow on the mountain behind.",
+    "selection_forms": [
+      "rode"
+    ],
+    "tokens": [
+      {
+        "index": 0,
+        "surface": "Cows",
+        "pos": "NOUN",
+        "tag": "NNS",
+        "morph": "Number=Plur",
+        "lemma": "cow"
+      },
+      {
+        "index": 1,
+        "surface": "walking",
+        "pos": "VERB",
+        "tag": "VBG",
+        "morph": "Aspect=Prog|Tense=Pres|VerbForm=Part",
+        "lemma": "walk"
+      },
+      {
+        "index": 2,
+        "surface": "along",
+        "pos": "ADP",
+        "tag": "IN",
+        "morph": "",
+        "lemma": "along"
+      },
+      {
+        "index": 3,
+        "surface": "side",
+        "pos": "NOUN",
+        "tag": "NN",
+        "morph": "Number=Sing",
+        "lemma": "side"
+      },
+      {
+        "index": 4,
+        "surface": "a",
+        "pos": "DET",
+        "tag": "DT",
+        "morph": "Definite=Ind|PronType=Art",
+        "lemma": "a"
+      },
+      {
+        "index": 5,
+        "surface": "rode",
+        "pos": "NOUN",
+        "tag": "NN",
+        "morph": "Number=Sing",
+        "lemma": "rode"
+      },
+      {
+        "index": 6,
+        "surface": "with",
+        "pos": "ADP",
+        "tag": "IN",
+        "morph": "",
+        "lemma": "with"
+      },
+      {
+        "index": 7,
+        "surface": "snow",
+        "pos": "NOUN",
+        "tag": "NN",
+        "morph": "Number=Sing",
+        "lemma": "snow"
+      },
+      {
+        "index": 8,
+        "surface": "on",
+        "pos": "ADP",
+        "tag": "IN",
+        "morph": "",
+        "lemma": "on"
+      },
+      {
+        "index": 9,
+        "surface": "the",
+        "pos": "DET",
+        "tag": "DT",
+        "morph": "Definite=Def|PronType=Art",
+        "lemma": "the"
+      },
+      {
+        "index": 10,
+        "surface": "mountain",
+        "pos": "NOUN",
+        "tag": "NN",
+        "morph": "Number=Sing",
+        "lemma": "mountain"
+      },
+      {
+        "index": 11,
+        "surface": "behind",
+        "pos": "ADV",
+        "tag": "RB",
+        "morph": "",
+        "lemma": "behind"
+      },
+      {
+        "index": 12,
+        "surface": ".",
+        "pos": "PUNCT",
+        "tag": ".",
+        "morph": "PunctType=Peri",
+        "lemma": "."
+      }
+    ],
+    "focus": [
+      {
+        "index": 5,
+        "surface": "rode",
+        "pos": "NOUN",
+        "tag": "NN",
+        "morph": "Number=Sing",
+        "lemma": "rode",
+        "expected_lemma_for_verb": "ride",
+        "status": "NOT_VERB_REVIEW"
+      }
+    ]
+  },
+  {
+    "kind": "train_caption",
+    "coco_id": 14683,
+    "filename": "COCO_train2014_000000014683.jpg",
+    "split": "train",
+    "sentence_index": 3,
+    "caption": "Two jockeys rid inning in a pasture with sheep.",
+    "selection_forms": [
+      "rid"
+    ],
+    "tokens": [
+      {
+        "index": 0,
+        "surface": "Two",
+        "pos": "NUM",
+        "tag": "CD",
+        "morph": "NumType=Card",
+        "lemma": "two"
+      },
+      {
+        "index": 1,
+        "surface": "jockeys",
+        "pos": "NOUN",
+        "tag": "NNS",
+        "morph": "Number=Plur",
+        "lemma": "jockey"
+      },
+      {
+        "index": 2,
+        "surface": "rid",
+        "pos": "VERB",
+        "tag": "VBD",
+        "morph": "Tense=Past|VerbForm=Fin",
+        "lemma": "rid"
+      },
+      {
+        "index": 3,
+        "surface": "inning",
+        "pos": "NOUN",
+        "tag": "NN",
+        "morph": "Number=Sing",
+        "lemma": "inning"
+      },
+      {
+        "index": 4,
+        "surface": "in",
+        "pos": "ADP",
+        "tag": "IN",
+        "morph": "",
+        "lemma": "in"
+      },
+      {
+        "index": 5,
+        "surface": "a",
+        "pos": "DET",
+        "tag": "DT",
+        "morph": "Definite=Ind|PronType=Art",
+        "lemma": "a"
+      },
+      {
+        "index": 6,
+        "surface": "pasture",
+        "pos": "NOUN",
+        "tag": "NN",
+        "morph": "Number=Sing",
+        "lemma": "pasture"
+      },
+      {
+        "index": 7,
+        "surface": "with",
+        "pos": "ADP",
+        "tag": "IN",
+        "morph": "",
+        "lemma": "with"
+      },
+      {
+        "index": 8,
+        "surface": "sheep",
+        "pos": "NOUN",
+        "tag": "NN",
+        "morph": "Number=Sing",
+        "lemma": "sheep"
+      },
+      {
+        "index": 9,
+        "surface": ".",
+        "pos": "PUNCT",
+        "tag": ".",
+        "morph": "PunctType=Peri",
+        "lemma": "."
+      }
+    ],
+    "focus": [
+      {
+        "index": 2,
+        "surface": "rid",
+        "pos": "VERB",
+        "tag": "VBD",
+        "morph": "Tense=Past|VerbForm=Fin",
+        "lemma": "rid",
+        "expected_lemma_for_verb": "rid",
+        "status": "MATCH"
+      }
+    ]
+  },
+  {
+    "kind": "train_caption",
+    "coco_id": 69167,
+    "filename": "COCO_train2014_000000069167.jpg",
+    "split": "train",
+    "sentence_index": 4,
+    "caption": "A young boy riding bareback on a horse at a fair",
+    "selection_forms": [
+      "visually_discussed_example"
+    ],
+    "tokens": [
+      {
+        "index": 0,
+        "surface": "A",
+        "pos": "DET",
+        "tag": "DT",
+        "morph": "Definite=Ind|PronType=Art",
+        "lemma": "a"
+      },
+      {
+        "index": 1,
+        "surface": "young",
+        "pos": "ADJ",
+        "tag": "JJ",
+        "morph": "Degree=Pos",
+        "lemma": "young"
+      },
+      {
+        "index": 2,
+        "surface": "boy",
+        "pos": "NOUN",
+        "tag": "NN",
+        "morph": "Number=Sing",
+        "lemma": "boy"
+      },
+      {
+        "index": 3,
+        "surface": "riding",
+        "pos": "VERB",
+        "tag": "VBG",
+        "morph": "Aspect=Prog|Tense=Pres|VerbForm=Part",
+        "lemma": "rid"
+      },
+      {
+        "index": 4,
+        "surface": "bareback",
+        "pos": "NOUN",
+        "tag": "NN",
+        "morph": "Number=Sing",
+        "lemma": "bareback"
+      },
+      {
+        "index": 5,
+        "surface": "on",
+        "pos": "ADP",
+        "tag": "IN",
+        "morph": "",
+        "lemma": "on"
+      },
+      {
+        "index": 6,
+        "surface": "a",
+        "pos": "DET",
+        "tag": "DT",
+        "morph": "Definite=Ind|PronType=Art",
+        "lemma": "a"
+      },
+      {
+        "index": 7,
+        "surface": "horse",
+        "pos": "NOUN",
+        "tag": "NN",
+        "morph": "Number=Sing",
+        "lemma": "horse"
+      },
+      {
+        "index": 8,
+        "surface": "at",
+        "pos": "ADP",
+        "tag": "IN",
+        "morph": "",
+        "lemma": "at"
+      },
+      {
+        "index": 9,
+        "surface": "a",
+        "pos": "DET",
+        "tag": "DT",
+        "morph": "Definite=Ind|PronType=Art",
+        "lemma": "a"
+      },
+      {
+        "index": 10,
+        "surface": "fair",
+        "pos": "ADJ",
+        "tag": "JJ",
+        "morph": "Degree=Pos",
+        "lemma": "fair"
+      }
+    ],
+    "focus": [
+      {
+        "index": 3,
+        "surface": "riding",
+        "pos": "VERB",
+        "tag": "VBG",
+        "morph": "Aspect=Prog|Tense=Pres|VerbForm=Part",
+        "lemma": "rid",
+        "expected_lemma_for_verb": "ride",
+        "status": "MISMATCH"
+      }
+    ]
+  },
+  {
+    "kind": "train_caption",
+    "coco_id": 263974,
+    "filename": "COCO_train2014_000000263974.jpg",
+    "split": "train",
+    "sentence_index": 0,
+    "caption": "a number of people riding bicycles on a street ",
+    "selection_forms": [
+      "visually_discussed_example"
+    ],
+    "tokens": [
+      {
+        "index": 0,
+        "surface": "a",
+        "pos": "DET",
+        "tag": "DT",
+        "morph": "Definite=Ind|PronType=Art",
+        "lemma": "a"
+      },
+      {
+        "index": 1,
+        "surface": "number",
+        "pos": "NOUN",
+        "tag": "NN",
+        "morph": "Number=Sing",
+        "lemma": "number"
+      },
+      {
+        "index": 2,
+        "surface": "of",
+        "pos": "ADP",
+        "tag": "IN",
+        "morph": "",
+        "lemma": "of"
+      },
+      {
+        "index": 3,
+        "surface": "people",
+        "pos": "NOUN",
+        "tag": "NNS",
+        "morph": "Number=Plur",
+        "lemma": "people"
+      },
+      {
+        "index": 4,
+        "surface": "riding",
+        "pos": "VERB",
+        "tag": "VBG",
+        "morph": "Aspect=Prog|Tense=Pres|VerbForm=Part",
+        "lemma": "rid"
+      },
+      {
+        "index": 5,
+        "surface": "bicycles",
+        "pos": "NOUN",
+        "tag": "NNS",
+        "morph": "Number=Plur",
+        "lemma": "bicycle"
+      },
+      {
+        "index": 6,
+        "surface": "on",
+        "pos": "ADP",
+        "tag": "IN",
+        "morph": "",
+        "lemma": "on"
+      },
+      {
+        "index": 7,
+        "surface": "a",
+        "pos": "DET",
+        "tag": "DT",
+        "morph": "Definite=Ind|PronType=Art",
+        "lemma": "a"
+      },
+      {
+        "index": 8,
+        "surface": "street",
+        "pos": "NOUN",
+        "tag": "NN",
+        "morph": "Number=Sing",
+        "lemma": "street"
+      }
+    ],
+    "focus": [
+      {
+        "index": 4,
+        "surface": "riding",
+        "pos": "VERB",
+        "tag": "VBG",
+        "morph": "Aspect=Prog|Tense=Pres|VerbForm=Part",
+        "lemma": "rid",
+        "expected_lemma_for_verb": "ride",
+        "status": "MISMATCH"
+      }
+    ]
+  },
+  {
+    "kind": "train_caption",
+    "coco_id": 198785,
+    "filename": "COCO_train2014_000000198785.jpg",
+    "split": "train",
+    "sentence_index": 4,
+    "caption": "A group of women riding on the back of a motorcycle.",
+    "selection_forms": [
+      "visually_discussed_example"
+    ],
+    "tokens": [
+      {
+        "index": 0,
+        "surface": "A",
+        "pos": "DET",
+        "tag": "DT",
+        "morph": "Definite=Ind|PronType=Art",
+        "lemma": "a"
+      },
+      {
+        "index": 1,
+        "surface": "group",
+        "pos": "NOUN",
+        "tag": "NN",
+        "morph": "Number=Sing",
+        "lemma": "group"
+      },
+      {
+        "index": 2,
+        "surface": "of",
+        "pos": "ADP",
+        "tag": "IN",
+        "morph": "",
+        "lemma": "of"
+      },
+      {
+        "index": 3,
+        "surface": "women",
+        "pos": "NOUN",
+        "tag": "NNS",
+        "morph": "Number=Plur",
+        "lemma": "woman"
+      },
+      {
+        "index": 4,
+        "surface": "riding",
+        "pos": "VERB",
+        "tag": "VBG",
+        "morph": "Aspect=Prog|Tense=Pres|VerbForm=Part",
+        "lemma": "rid"
+      },
+      {
+        "index": 5,
+        "surface": "on",
+        "pos": "ADP",
+        "tag": "IN",
+        "morph": "",
+        "lemma": "on"
+      },
+      {
+        "index": 6,
+        "surface": "the",
+        "pos": "DET",
+        "tag": "DT",
+        "morph": "Definite=Def|PronType=Art",
+        "lemma": "the"
+      },
+      {
+        "index": 7,
+        "surface": "back",
+        "pos": "NOUN",
+        "tag": "NN",
+        "morph": "Number=Sing",
+        "lemma": "back"
+      },
+      {
+        "index": 8,
+        "surface": "of",
+        "pos": "ADP",
+        "tag": "IN",
+        "morph": "",
+        "lemma": "of"
+      },
+      {
+        "index": 9,
+        "surface": "a",
+        "pos": "DET",
+        "tag": "DT",
+        "morph": "Definite=Ind|PronType=Art",
+        "lemma": "a"
+      },
+      {
+        "index": 10,
+        "surface": "motorcycle",
+        "pos": "NOUN",
+        "tag": "NN",
+        "morph": "Number=Sing",
+        "lemma": "motorcycle"
+      },
+      {
+        "index": 11,
+        "surface": ".",
+        "pos": "PUNCT",
+        "tag": ".",
+        "morph": "PunctType=Peri",
+        "lemma": "."
+      }
+    ],
+    "focus": [
+      {
+        "index": 4,
+        "surface": "riding",
+        "pos": "VERB",
+        "tag": "VBG",
+        "morph": "Aspect=Prog|Tense=Pres|VerbForm=Part",
+        "lemma": "rid",
+        "expected_lemma_for_verb": "ride",
+        "status": "MISMATCH"
+      }
+    ]
+  },
+  {
+    "kind": "synthetic_control",
+    "caption": "A boy is riding a horse.",
+    "tokens": [
+      {
+        "index": 0,
+        "surface": "A",
+        "pos": "DET",
+        "tag": "DT",
+        "morph": "Definite=Ind|PronType=Art",
+        "lemma": "a"
+      },
+      {
+        "index": 1,
+        "surface": "boy",
+        "pos": "NOUN",
+        "tag": "NN",
+        "morph": "Number=Sing",
+        "lemma": "boy"
+      },
+      {
+        "index": 2,
+        "surface": "is",
+        "pos": "AUX",
+        "tag": "VBZ",
+        "morph": "Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin",
+        "lemma": "be"
+      },
+      {
+        "index": 3,
+        "surface": "riding",
+        "pos": "VERB",
+        "tag": "VBG",
+        "morph": "Aspect=Prog|Tense=Pres|VerbForm=Part",
+        "lemma": "rid"
+      },
+      {
+        "index": 4,
+        "surface": "a",
+        "pos": "DET",
+        "tag": "DT",
+        "morph": "Definite=Ind|PronType=Art",
+        "lemma": "a"
+      },
+      {
+        "index": 5,
+        "surface": "horse",
+        "pos": "NOUN",
+        "tag": "NN",
+        "morph": "Number=Sing",
+        "lemma": "horse"
+      },
+      {
+        "index": 6,
+        "surface": ".",
+        "pos": "PUNCT",
+        "tag": ".",
+        "morph": "PunctType=Peri",
+        "lemma": "."
+      }
+    ],
+    "focus": [
+      {
+        "index": 3,
+        "surface": "riding",
+        "pos": "VERB",
+        "tag": "VBG",
+        "morph": "Aspect=Prog|Tense=Pres|VerbForm=Part",
+        "lemma": "rid",
+        "expected_lemma_for_verb": "ride",
+        "status": "MISMATCH"
+      }
+    ]
+  },
+  {
+    "kind": "synthetic_control",
+    "caption": "A cyclist rides a bicycle.",
+    "tokens": [
+      {
+        "index": 0,
+        "surface": "A",
+        "pos": "DET",
+        "tag": "DT",
+        "morph": "Definite=Ind|PronType=Art",
+        "lemma": "a"
+      },
+      {
+        "index": 1,
+        "surface": "cyclist",
+        "pos": "NOUN",
+        "tag": "NN",
+        "morph": "Number=Sing",
+        "lemma": "cyclist"
+      },
+      {
+        "index": 2,
+        "surface": "rides",
+        "pos": "VERB",
+        "tag": "VBZ",
+        "morph": "Number=Sing|Person=3|Tense=Pres|VerbForm=Fin",
+        "lemma": "rid"
+      },
+      {
+        "index": 3,
+        "surface": "a",
+        "pos": "DET",
+        "tag": "DT",
+        "morph": "Definite=Ind|PronType=Art",
+        "lemma": "a"
+      },
+      {
+        "index": 4,
+        "surface": "bicycle",
+        "pos": "NOUN",
+        "tag": "NN",
+        "morph": "Number=Sing",
+        "lemma": "bicycle"
+      },
+      {
+        "index": 5,
+        "surface": ".",
+        "pos": "PUNCT",
+        "tag": ".",
+        "morph": "PunctType=Peri",
+        "lemma": "."
+      }
+    ],
+    "focus": [
+      {
+        "index": 2,
+        "surface": "rides",
+        "pos": "VERB",
+        "tag": "VBZ",
+        "morph": "Number=Sing|Person=3|Tense=Pres|VerbForm=Fin",
+        "lemma": "rid",
+        "expected_lemma_for_verb": "ride",
+        "status": "MISMATCH"
+      }
+    ]
+  },
+  {
+    "kind": "synthetic_control",
+    "caption": "People ride horses.",
+    "tokens": [
+      {
+        "index": 0,
+        "surface": "People",
+        "pos": "NOUN",
+        "tag": "NNS",
+        "morph": "Number=Plur",
+        "lemma": "People"
+      },
+      {
+        "index": 1,
+        "surface": "ride",
+        "pos": "VERB",
+        "tag": "VBP",
+        "morph": "Tense=Pres|VerbForm=Fin",
+        "lemma": "ride"
+      },
+      {
+        "index": 2,
+        "surface": "horses",
+        "pos": "NOUN",
+        "tag": "NNS",
+        "morph": "Number=Plur",
+        "lemma": "horse"
+      },
+      {
+        "index": 3,
+        "surface": ".",
+        "pos": "PUNCT",
+        "tag": ".",
+        "morph": "PunctType=Peri",
+        "lemma": "."
+      }
+    ],
+    "focus": [
+      {
+        "index": 1,
+        "surface": "ride",
+        "pos": "VERB",
+        "tag": "VBP",
+        "morph": "Tense=Pres|VerbForm=Fin",
+        "lemma": "ride",
+        "expected_lemma_for_verb": "ride",
+        "status": "MATCH"
+      }
+    ]
+  },
+  {
+    "kind": "synthetic_control",
+    "caption": "They rid the room of smoke.",
+    "tokens": [
+      {
+        "index": 0,
+        "surface": "They",
+        "pos": "PRON",
+        "tag": "PRP",
+        "morph": "Case=Nom|Number=Plur|Person=3|PronType=Prs",
+        "lemma": "they"
+      },
+      {
+        "index": 1,
+        "surface": "rid",
+        "pos": "VERB",
+        "tag": "VBD",
+        "morph": "Tense=Past|VerbForm=Fin",
+        "lemma": "rid"
+      },
+      {
+        "index": 2,
+        "surface": "the",
+        "pos": "DET",
+        "tag": "DT",
+        "morph": "Definite=Def|PronType=Art",
+        "lemma": "the"
+      },
+      {
+        "index": 3,
+        "surface": "room",
+        "pos": "NOUN",
+        "tag": "NN",
+        "morph": "Number=Sing",
+        "lemma": "room"
+      },
+      {
+        "index": 4,
+        "surface": "of",
+        "pos": "ADP",
+        "tag": "IN",
+        "morph": "",
+        "lemma": "of"
+      },
+      {
+        "index": 5,
+        "surface": "smoke",
+        "pos": "NOUN",
+        "tag": "NN",
+        "morph": "Number=Sing",
+        "lemma": "smoke"
+      },
+      {
+        "index": 6,
+        "surface": ".",
+        "pos": "PUNCT",
+        "tag": ".",
+        "morph": "PunctType=Peri",
+        "lemma": "."
+      }
+    ],
+    "focus": [
+      {
+        "index": 1,
+        "surface": "rid",
+        "pos": "VERB",
+        "tag": "VBD",
+        "morph": "Tense=Past|VerbForm=Fin",
+        "lemma": "rid",
+        "expected_lemma_for_verb": "rid",
+        "status": "MATCH"
+      }
+    ]
+  },
+  {
+    "kind": "synthetic_control",
+    "caption": "They are ridding the room of smoke.",
+    "tokens": [
+      {
+        "index": 0,
+        "surface": "They",
+        "pos": "PRON",
+        "tag": "PRP",
+        "morph": "Case=Nom|Number=Plur|Person=3|PronType=Prs",
+        "lemma": "they"
+      },
+      {
+        "index": 1,
+        "surface": "are",
+        "pos": "AUX",
+        "tag": "VBP",
+        "morph": "Mood=Ind|Tense=Pres|VerbForm=Fin",
+        "lemma": "be"
+      },
+      {
+        "index": 2,
+        "surface": "ridding",
+        "pos": "VERB",
+        "tag": "VBG",
+        "morph": "Aspect=Prog|Tense=Pres|VerbForm=Part",
+        "lemma": "rid"
+      },
+      {
+        "index": 3,
+        "surface": "the",
+        "pos": "DET",
+        "tag": "DT",
+        "morph": "Definite=Def|PronType=Art",
+        "lemma": "the"
+      },
+      {
+        "index": 4,
+        "surface": "room",
+        "pos": "NOUN",
+        "tag": "NN",
+        "morph": "Number=Sing",
+        "lemma": "room"
+      },
+      {
+        "index": 5,
+        "surface": "of",
+        "pos": "ADP",
+        "tag": "IN",
+        "morph": "",
+        "lemma": "of"
+      },
+      {
+        "index": 6,
+        "surface": "smoke",
+        "pos": "NOUN",
+        "tag": "NN",
+        "morph": "Number=Sing",
+        "lemma": "smoke"
+      },
+      {
+        "index": 7,
+        "surface": ".",
+        "pos": "PUNCT",
+        "tag": ".",
+        "morph": "PunctType=Peri",
+        "lemma": "."
+      }
+    ],
+    "focus": [
+      {
+        "index": 2,
+        "surface": "ridding",
+        "pos": "VERB",
+        "tag": "VBG",
+        "morph": "Aspect=Prog|Tense=Pres|VerbForm=Part",
+        "lemma": "rid",
+        "expected_lemma_for_verb": "rid",
+        "status": "MATCH"
+      }
+    ]
+  }
+]

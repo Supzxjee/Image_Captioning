@@ -1,0 +1,22 @@
+{
+  "status": "USER_RUN_LEMMA_TRACE_COMPLETE_ERROR_CONFIRMED",
+  "zip_sha256": "0b19128b39de256f5bb1aee0ccbc5624890201efaae369d21d5686bf73c194b2",
+  "source_modules": {
+    "lemma_trace.py": "93f8abeeb21eadfa515155240ed60d27eb4f2b966490f7d29f009488ed942500",
+    "run_lemma_trace.py": "758e887afa613a7f55a835214cde92c02026b3ba889d1631e45b69a859bd5647"
+  },
+  "model_data_files_matched": 26,
+  "case_count": 45,
+  "train_cases": 40,
+  "synthetic_controls": 5,
+  "train_verb_riding_to_rid": 9,
+  "train_verb_rides_to_rid": 6,
+  "synthetic_mismatches": 2,
+  "train_nonverb_focuses": 5,
+  "worker_seconds": 10.96512341099998,
+  "bank_modified": false,
+  "roi_modified": false,
+  "dataset_created": false,
+  "local_pos_or_model_run": false,
+  "dataset_error_rate_estimated": false
+}

@@ -1,0 +1,11 @@
+# Narrow bank lemma correction after confirmed trace
+
+02/11/2026. User-run exact-model45-case trace confirms9TRAINriding and6TRAINrides VERB tokens incorrectly mapped to rid; same error in2synthetic controls. Genuine rid/ridding controls match. Purposeful sample, no whole-dataset error-rate claim.
+
+Approved implementation scope includes fixing preprocessing before CSA training. Minimal operational amendment: **only POS VERB + surface lowercase in {riding,rides} + original lemma lowercase rid → ride**. Other lemmas, POS, literal rid and ridding remain unchanged. Do not fix caption typos/rode-as-road, trust all MATCH rows semantically, or rename the aggregated rid entry wholesale.
+
+To derive exact updated counts, rerun same POS settings only on original TRAIN captions containing whole-word riding/rides. SHA-pinned COCO JSON and baseline bank from126, identical spaCy3.8.11/Thinc8.3.11/NumPy2.1.3 and26model-data hashes. This avoids processing all566747documents or reading image/ROI features. Count actual redirected tokens, subtract that count from old rid and add to ride, fail if subtraction negative or a token changes outside declared rule. Nouns and every unrelated verb remain unchanged. Reapply existing min5 and deterministic sort; any leftover rid count<5 can be omitted by the original frequency rule, not blanket lexical deletion.
+
+Write a **new** `bank_words_corrected.json`, count-delta receipt and bounded example ledger, preserving original126 and raw bank checksum450fc969… . Updated file retains templates/source rules and declares the amendment. No semantic embedding, caption model, GPU, optimizer, dataset upload or raw ROI changes. Dataset126 creation still unconfirmed; correction notebook requires only COCO JSON, not Dataset/API token. Source bank is retrieved from immutable Git commit28361ce and full SHA verified.
+
+Agent checks pure functions, cached token records, count conservation and notebook/static/mock locally; **never executes POS/model/pip/notebook locally**. User runs CPU and sends reviewZIP. Real moved counts/new bank SHA remain unknown until user execution. Specific lemma repair does not certify all bank entries or fix noisy caption annotations. Save original ROI126 separately using existing SAVE126; corrected metadata can later be delivered as an explicit pinned overlay without re-extracting ROI.

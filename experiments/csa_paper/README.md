@@ -53,3 +53,7 @@ Chạy `CSA_PAPER_REAL_PREPARATION_CPU.ipynb` trên **CPU/Accelerator None**, In
 ## Kiểm tra token → POS → lemma trước khi sửa bank
 
 `CSA_LEMMA_TRACE_CPU.ipynb`: CPU/InternetON, **không cần Dataset, AddInput hoặc API token**.40captionTRAIN+5câuđốichứng, cùngmodel/phiênbảnvàhashdữliệuPOS126. XuấtbảngHTMLvàJSONgiữnguyênđầura, khôngđổirid→ride. Gửi `csa_lemma_trace_check_review.zip`.20localmetadata/mock/staticchecksPASS, chưaPOSrunbởiagent. Datasetv126chưađượcxácnhận; notebookSAVE126lưuriêng, khônglàprerequisitecủatrace.
+
+## Trace đã xác nhận lỗi → sửa có điều kiện
+
+[Trace result](LEMMA_TRACE_RESULT.md) xácnhậnriding/ridesVERB→rid sai;rid/ridding thật vẫnđúng. Chạy `CSA_BANK_LEMMA_CORRECTION_CPU.ipynb` với CPU/InternetON, **chỉ AddInput mscoco-2014**. Không cầnDataset126/API/visualcache. Notebook đếm lại các câuTRAIN chứa2dạngtừnày rồi xuất `bank_words_corrected.json` mới, giữbankgốc/captiontargets/ROI. Gửi `csa_bank_lemma_correction_review.zip`.23localtestsvàreplaymetadataPASS, sốtokenchuyểncủatoànbank chưađobiếtnếuuserchưachạy.

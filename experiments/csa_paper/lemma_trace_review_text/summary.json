@@ -1,0 +1,145 @@
+{
+  "status": "LEMMA_TRACE_COMPLETE",
+  "bank_modified": false,
+  "roi_modified": false,
+  "caption_model_executed": false,
+  "gpu_used": false,
+  "dataset_error_rate_estimated": false,
+  "versions": {
+    "spacy": "3.8.11",
+    "thinc": "8.3.11",
+    "numpy": "2.1.3",
+    "en-core-web-sm": "3.8.0"
+  },
+  "model_files_matched": 26,
+  "model_data_identity_verified": true,
+  "case_count": 45,
+  "focus_counts": [
+    {
+      "kind": "synthetic_control",
+      "status": "MATCH",
+      "count": 3
+    },
+    {
+      "kind": "synthetic_control",
+      "status": "MISMATCH",
+      "count": 2
+    },
+    {
+      "kind": "train_caption",
+      "status": "MATCH",
+      "count": 20
+    },
+    {
+      "kind": "train_caption",
+      "status": "MISMATCH",
+      "count": 15
+    },
+    {
+      "kind": "train_caption",
+      "status": "NOT_VERB_REVIEW",
+      "count": 5
+    }
+  ],
+  "transitions": [
+    {
+      "kind": "synthetic_control",
+      "surface": "rid",
+      "pos": "VERB",
+      "lemma": "rid",
+      "count": 1
+    },
+    {
+      "kind": "synthetic_control",
+      "surface": "ridding",
+      "pos": "VERB",
+      "lemma": "rid",
+      "count": 1
+    },
+    {
+      "kind": "synthetic_control",
+      "surface": "ride",
+      "pos": "VERB",
+      "lemma": "ride",
+      "count": 1
+    },
+    {
+      "kind": "synthetic_control",
+      "surface": "rides",
+      "pos": "VERB",
+      "lemma": "rid",
+      "count": 1
+    },
+    {
+      "kind": "synthetic_control",
+      "surface": "riding",
+      "pos": "VERB",
+      "lemma": "rid",
+      "count": 1
+    },
+    {
+      "kind": "train_caption",
+      "surface": "rid",
+      "pos": "VERB",
+      "lemma": "rid",
+      "count": 1
+    },
+    {
+      "kind": "train_caption",
+      "surface": "ridden",
+      "pos": "VERB",
+      "lemma": "ride",
+      "count": 6
+    },
+    {
+      "kind": "train_caption",
+      "surface": "ridding",
+      "pos": "VERB",
+      "lemma": "rid",
+      "count": 6
+    },
+    {
+      "kind": "train_caption",
+      "surface": "ride",
+      "pos": "NOUN",
+      "lemma": "ride",
+      "count": 2
+    },
+    {
+      "kind": "train_caption",
+      "surface": "ride",
+      "pos": "VERB",
+      "lemma": "ride",
+      "count": 4
+    },
+    {
+      "kind": "train_caption",
+      "surface": "rides",
+      "pos": "VERB",
+      "lemma": "rid",
+      "count": 6
+    },
+    {
+      "kind": "train_caption",
+      "surface": "riding",
+      "pos": "VERB",
+      "lemma": "rid",
+      "count": 9
+    },
+    {
+      "kind": "train_caption",
+      "surface": "rode",
+      "pos": "NOUN",
+      "lemma": "rode",
+      "count": 3
+    },
+    {
+      "kind": "train_caption",
+      "surface": "rode",
+      "pos": "VERB",
+      "lemma": "ride",
+      "count": 3
+    }
+  ],
+  "seconds": 10.96512341099998
+}

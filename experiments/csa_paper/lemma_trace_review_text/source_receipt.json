@@ -1,0 +1,11 @@
+{
+  "module_sha256": {
+    "lemma_trace.py": "93f8abeeb21eadfa515155240ed60d27eb4f2b966490f7d29f009488ed942500",
+    "run_lemma_trace.py": "758e887afa613a7f55a835214cde92c02026b3ba889d1631e45b69a859bd5647"
+  },
+  "packet_sha256": "70d986557846b9308862045aead404d95500254dcb19b2ef1226dfd7a751004c",
+  "source_environment_sha256": "f77dc3728105f083642466d8364a5fb2a6f14d9bed72e2074fb68cbb2ae89895",
+  "original_roi_source_version": 126,
+  "dataset_required": false,
+  "bootstrap_policy": "venv_without_pip_base_pip_python"
+}
