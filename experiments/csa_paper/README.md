@@ -23,6 +23,10 @@ flowchart LR
 
 `model.py`: aggregation, cosine selection, 2 OSA + 1 ORA, dual-stream decoder, XE, beam5 và beam-mean loss. `data.py`: fractional pooling, vocab TRAIN-only, EOS và POS-list contracts. Căn chỉnh nằm ở cosine semantic-prototype ↔ region selection và cross-attention/fusion trong ba blocks; không gán từng từ caption thành nhãn box.
 
+## Lượt mới nhất — full TRAIN10 epoch + validation
+
+User đã duyệt10epoch đầu. [Protocol](FULL_XE_10_PROTOCOL.md), notebook `CSA_FULL_XE_10_2GPU.ipynb`: freshCSA,ordinary2GPUFP32/global32captionevents;113287TRAIN/all566747references per epoch. AddInput fullROI134 và semanticbanks130. Mỗi epoch đánh giá đủ5000val bằngbeam5 và CIDEr/NLL, chọnbestCIDEr,tiesearlier;không gộpval vàoTRAIN,khôngtest/RL. Giữ cả `checkpoint.bin` (latest,cursor/Adam/both-rankRNG) và `best.bin` trong toànoutput. Xem protocol đểresume. Benchmarkước tính~5.18hphầntrain/10epochs;val/checkpoint thêm thời gian. NotebookchỉPREPARED,chưauser-run kết quảfull.
+
 ## Lượt chạy đầu tiên
 
 Tải `CSA_PAPER_CORE_SMOKE.ipynb` lên Kaggle, bật Internet + GPU. Không cần dataset/checkpoint/token. Chỉ dùng GPU0. Notebook khóa commit/hash nguồn, giữ log và xuất review ZIP kể cả runtime lỗi. Không pip đổi các thư viện môi trường ở lượt này.
