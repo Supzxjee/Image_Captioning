@@ -973,3 +973,49 @@ User suggested2GPU+feature-sharing and approvedmeasuring. [Protocol](experiments
 ### X050 — Codex1 — 02/11/2026 — user-approved first10 full XE epochs + validation PREPARED
 
 [Protocol](experiments/csa_paper/FULL_XE_10_PROTOCOL.md), [notebook](experiments/csa_paper/CSA_FULL_XE_10_2GPU.ipynb), core224f270/17sourcepins/baseCSAunchanged. User wants10epochs first and valid in same notebook; no val-training merge. Ordinary2GPUFP32/global32CAPTIONS,all566747TRAINrefs once/epoch,177110updates total;3full-epoch warmup8e-6→1e-4 thenflat. Full5000val beam5/max20/rawlogscore + PTB/CIDEr/NLL each epoch;bestCIDEr/tiesearlier,latest forcontinuation. No test/RL/CHAIR/noveltyclaim. Atomic checkpoint every1000updates/pre-postval, model+Adam+cursor+bothrankRNG+source/input/software identities; resume failedval without replaying training epoch, preserve entire output/latest+best. Reuses fullROI134/bank130, no rawfeatures/model agent-run. SixDDPguards and batchedbeam parity must pass on Kaggle before actualtrain. 13NumPy/static tests +5mockcontrolflows +17Gitpins PASS, actualGPU/resume/metric paths unrun. Train-only estimate5.178h plusunmeasuredmatureval/checkpoint/setup;wallcap10.5hstop,notETA/billingpromise. User runs; noautomatic15epoch/RL.
+
+### X051 — Codex1 → Codex2 — 02/11/2026 — USER REQUEST: vẽ pipeline CSA hiện tại
+
+**User giao Codex2 vẽ**, nhắc lại rõ: “cho codex bên kia vẽ mà”. Codex1 chỉ bàn giao đặc tả và sẽ kiểm tra hình sau; chưa tạo hình/PPT. Xin Codex2 thực hiện bản vẽ, không chỉ brainstorm, không mở trainer hay đổi phương pháp.
+
+**Mục đích:** hình chi tiết để trình thầy nhận xét, phong cách sơ đồ bài báo như ảnh mẫu user từng gửi: khung phần offline, module và tensor có nhãn, mũi tên rõ, phân biệt frozen/trainable. Ưu tiên một hình tổng quan ngang dễ đọc; nếu chi tiết quá chật thì thêm hai hình phóng to encoder/decoder riêng. Cần bản **PPTX chỉnh sửa được bằng shape/text/connector**, kèm SVG hoặc PDF vector và PNG xem nhanh. Không nhúng cả sơ đồ thành một ảnh trong PPTX; không cần tạo bộ slide báo cáo dài. Chọn công cụ/skill ở tài khoản của bạn.
+
+#### Nguồn phải đối chiếu trước khi vẽ
+
+- `experiments/csa_paper/model.py` (bản hiện tại không đổi so với benchmark; SHA139edbb1…). Đây là nguồn xác định forward thực tế.
+- `experiments/csa_inheritance_audit/CSA_PAPER_IMPLEMENTATION_SPEC.md` và `CSA_PAPER_IMPLEMENTATION_REVIEW.md` để phân biệt kế thừa/đầu vào thay thế.
+- `experiments/csa_paper/FULL_XE_10_PROTOCOL.md`, `run_full_xe.py`, `full_xe_decode.py` và notebook `CSA_FULL_XE_10_2GPU.ipynb` để ghi đúng TRAIN/VALID.
+- Tên trung thực: **CSA adaptation — cached CLIP ROI + semantic banks**. Tự viết theo ý tưởng CSA, thay feature/text encoder; chưa exact reproduction hay phương pháp mới. Full10epoch mới PREPARED, không vẽ như đã có kết quả.
+
+#### 1. Nhánh offline và đầu vào
+
+- Ảnh → predicted detector boxes (producer cache cũ; không tự gắn nhãn detector là YOLO/DETR khi chưa có chứng cứ producer).
+- Ảnh → frozen CLIP ViT-B/16 visual patch features: bỏ CLS từ197×768 →196×768, grid14×14 → fractional-area ROI pooling theo boxes → **N×768 raw ROI features đã cache**. N thay đổi theo ảnh, tối đa87 trong cache full hiện có; không ghi N=49 hoặc luôn150. Genuine empty detections có một full-frame fallback. CLIP patch có ngữ cảnh toàn ảnh, không gọi là cô lập pixel từng object.
+- Chỉ captions TRAIN → POS/lemma (đã sửa riding/rides→ride) →5269 danh từ/1594 động từ → frozen CLIP text encoder, vector chuẩn hóa512D → hai bank cache:5269×512 và1594×512. Bank toàn cục, không là prompt lấy từ reference của ảnh đang suy luận.
+- Đánh dấu rõ phần này làm offline; train10epoch không chạy lại detector/CLIP. Không cần nhồi hash/path vào hình.
+
+#### 2. Encoder căn chỉnh — khối nào đang học
+
+- Raw ROI N×768 → **learnable visual projection768→512** → V0, N×512.
+- Hai **learnable semantic aggregators** đọc hai bank frozen, mỗi bank tạo **K=150 prototypes512D**: noun prototypes To và verb prototypes Tr. Bank frozen khác với aggregator trainable. Không vẽ thành top-K nearest-neighbor retrieval hoặc triplet UPT.
+- Object stage1: `(V0, To) → (V1, selected noun T1)`.
+- Object stage2: **`(V1, T1) → Vo`**; T1 được truyền từ stage1, không thay bằng bank gốc hoặc To chưa chọn.
+- Object-guided relation stage: **`(Vo, Tr) → Vr`**. Vo vẫn có đường riêng vào decoder, không chỉ Vr.
+- Mỗi stage: cosine prototypes↔incoming region tokens → region-axis softmax với temperature0.1 → relevance → prototype-axis softmax weighting; visual self-attention → Add&Norm/FFN → cross-attention với **Q=visual stream sau self block, K/V=selected prototypes** → Add&Norm/FFN → scalar sigmoid gate trộn own/cross visual streams. Đối chiếu `Alignment.forward`/`Fusion.forward`; nếu thể hiện công thức thì gate*own+(1-gate)*cross. Không tự thêm loss gán từ–box hay loss contrastive.
+- Căn chỉnh của bản này nằm tại cosine prototype–region selection và cross-attention/fusion; không diễn giải rằng đã chứng minh mỗi từ caption bám chính xác một box.
+
+#### 3. Parallel adaptive decoder
+
+- Prefix token IDs → word embedding512D + sinusoidal positions → **3 decoder layers**,8heads,FFN2048 (thông số phụ có thể đặt chú thích).
+- Trong mỗi layer: causal self-attention → hai cross-attention song song, cùng Q là hidden text sau self-attention: object attention K/V=Vo; relation attention K/V=Vr.
+- Hai **vector sigmoid gates** riêng, mỗi gate đọc context tương ứng và **raw embedding của previous word**. Hợp nhất `go⊙co + gr⊙cr` → FFN → layer tiếp. Raw embedding không phải một caption/prompt phụ. Không concat Vo/Vr rồi gọi một attention là parallel decoder.
+- Linear head512→vocab10000 → next-token distribution. Inference: BOS → tự hồi quy → beam5, tối đa20 token mới kể cả EOS, raw cumulative logprob, không length normalization → caption. Không Q-Former/32queries, không C0/A checkpoint, không UPT prompt/retrieval reranker hoặc SCST trong lượt này.
+
+#### 4. TRAIN và VALID — vẽ riêng, tránh nối sai gradient
+
+- TRAIN:113287 ảnh,566747caption events/epoch; prefix reference shift-right đi vào decoder; target next tokens → **XE/CE loss** → backward chỉ các module trainable. Đầu vào CLIP/bank đã frozen. 10epoch đầu;global32caption events;17711updates/epoch. Đưa thông số nhỏ vào chú thích thay vì làm rối đường forward.
+- VALID sau mỗi epoch:5000 ảnh, model eval/frozen weights tạm thời → beam5 tự sinh caption **không nhận reference prefix** → so với raw references bằng PTB/CIDEr → **chọn checkpoint**, không có mũi tên backward từ CIDEr VALID về trọng số.
+- Validation còn có teacher-forced NLL trên25010references, chỉ đo không backward. Nếu vẽ nhánh này cần ghi rõ “teacher-forced NLL, eval only”; đừng làm người xem nhầm reference được cấp cho beam generation. Có thể để ở chú thích nhỏ.
+- `best.bin`: max valid CIDEr, hòa giữ epoch sớm; `checkpoint.bin`: latest để tiếp tục. Test giữ riêng/chưa dùng. Không vẽ CIDEr thành reward SCST của lượt10XE.
+
+**Tiêu chí bàn giao:** chữ đọc được trên màn hình trình chiếu, không mũi tên cắt nhãn/module, legend frozen/trainable/offline và train-only rõ; các nhánh To/T1/Tr và Vo/Vr đúng source. Push file nguồn chỉnh sửa được + exports + ghi chú đối chiếu vào repo, trả lời ngay dưới mục này với đường dẫn. Nếu hình mẫu user không còn trong context, dùng mô tả trên; không cần chặn công việc để xin lại ảnh. Codex1 sẽ review các đường nối theo code trước khi user dùng báo cáo. Không tạo thêm experiment/Sheet row vì đây là sơ đồ của run đã đăng R232.
