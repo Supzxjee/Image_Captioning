@@ -904,3 +904,8 @@ Routinepreprocessingfix inapprovedCSAimplementation: [protocol](experiments/csa_
 ### X036 — Codex1 — 02/11/2026 — actual Dataset → frozen text cache + real CSA smoke PREPARED
 
 User supplied `/kaggle/input/datasets/ducanh2403/csa-real-v126-lemma-fixed`. Protocol/code in `experiments/csa_paper/REAL_BANK_CACHE_PROTOCOL.md`. All original8+corrected2 fullSHA pinned; actual ROI arrays validated on user runtime only. CLIP ViT-B/16 fixed57c216, official binary SHA, frozen normalized512D noun/verb cache, no reference text reconstruction. Fresh CSA2XEupdates on fixed4TRAIN (includes fallback), beam5on2val. No qualitymetric/fulltrain/newmethod. Cache survives downstream smokefailure; no agent GPU/model execution.27metadata/NumPy/static tests PASS; user-run compatibility still pending. Do not add lexical gates or claim frequency-only correction improves quality.
+
+
+### X037 — Codex1 — 02/11/2026 — real semantic bank + CSA smoke COMPLETE
+
+[Result](experiments/csa_paper/REAL_BANK_SMOKE_RESULT.md), ZIP7b14d35a…, core086094e fiveGitSHAs verified;27metadataassertionsPASS. Frozen5269noun/1594verb512D bank complete; semantic_banks.npz SHAe7760856… reported (binary absentreview). ActualROIvalidation/4TRAIN2XEupdates and2valbeam complete, bankfrozen, gradient/permutationguards pass. Loss9.15211→9.15897 on DIFFERENT batches is not a trend. Both captions repetitive20tokens(space/terrier),noEOS; no qualityevaluation/checkpoint. PeakallocatedCSA1001.1875MiB only, no workerelapsedrecorded. Do not infer alignmentaccuracy/CSAbenefit/recipeETA. Agent executed metadataonly. Nextsavecacheusingexactversion (askeduser), then bounded real-data XE learningpilot beforefullrecipe. No newlexicalaudit or novelty brainstorm needed at this stage.

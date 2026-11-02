@@ -1,0 +1,54 @@
+{
+  "status": "USER_RUN_REAL_BANK_CACHE_AND_SMOKE_COMPLETE",
+  "zip_sha256": "7b14d35af654b630f6a5addf9943dbe5910074c9f772e7d8ee38026558f15f9e",
+  "source_commit": "086094e3d6a84cbe10b90ea237e290c7f38fd8d1",
+  "metadata_checks": 27,
+  "noun_words": 5269,
+  "verb_words": 1594,
+  "embedding_dim": 512,
+  "semantic_bank_sha256": "e77608563fb23622d52d27ada06f49e6e578ef573c9fe41861878c36357fa698",
+  "binary_independently_available": false,
+  "cache_manifest_sha256_verified": true,
+  "source_git_hashes_verified": 5,
+  "steps": [
+    {
+      "step": 1,
+      "loss": 9.152113914489746,
+      "grad_norm": 8.601258277893066
+    },
+    {
+      "step": 2,
+      "loss": 9.15897274017334,
+      "grad_norm": 8.20831298828125
+    }
+  ],
+  "train_ids": [
+    16670,
+    105863,
+    159558,
+    154349
+  ],
+  "val_ids": [
+    234592,
+    535808
+  ],
+  "peak_gpu_mib": 1001.1875,
+  "smoke_captions": [
+    {
+      "coco_id": 234592,
+      "repeated_word": "space",
+      "tokens": 20,
+      "eos": false
+    },
+    {
+      "coco_id": 535808,
+      "repeated_word": "terrier",
+      "tokens": 20,
+      "eos": false
+    }
+  ],
+  "quality_evaluation": false,
+  "checkpoint_saved": false,
+  "local_model_execution": false,
+  "next_step": "Preserve/save completed semantic_banks.npz with manifest/receipt; then bounded real-data learning pilot before any long recipe."
+}

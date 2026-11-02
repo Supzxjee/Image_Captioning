@@ -1,0 +1,10 @@
+{
+  "commit": "086094e3d6a84cbe10b90ea237e290c7f38fd8d1",
+  "sha256": {
+    "real_bank_data.py": "00e7110105ec98a5ef41969f9e51074815a42a9b69deac90b2614e9679d2bcf9",
+    "run_real_bank.py": "30a15d904979513ef9351880c7763a1315ff817bdc7cb4043d034d5630d63fa5",
+    "REAL_BANK_INPUT_PACKAGE.json": "c60902e04ea15cf90f652e384937bb317e288753f13b8ede6ab5ef89f8d97129",
+    "REAL_BANK_CACHE_PROTOCOL.md": "d84e2f3f733f5c2b52c9fd1d57c1033019b098703f62389023bcd0e9939f06a8",
+    "model.py": "139edbb1b73caf3dadaf5c960b25542e282f88baf2ce9bdf141de922ceacbc09"
+  }
+}
