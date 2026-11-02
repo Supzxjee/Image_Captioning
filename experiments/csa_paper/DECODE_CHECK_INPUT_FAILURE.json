@@ -1,0 +1,15 @@
+{
+  "status": "INCOMPLETE_PREPARED_INPUT_ROOT_NOT_UNIQUE",
+  "zip_sha256": "737bdf254e38d1d16cc6343c5f19231f6461714d4ddf58458fc2a3113f2833ce",
+  "source_commit": "165dd753fde22746df3a2fd06824a3b6de720218",
+  "git_hashes_verified": 10,
+  "metadata_assertions": 15,
+  "checkpoint_download_version": 131,
+  "checkpoint_sha_verified_by_user_notebook": true,
+  "checkpoint_binary_in_review": false,
+  "model_loaded": false,
+  "greedy_or_beam_results_available": false,
+  "cause_known": "load_prepared could not find exactly one corrected_assets_receipt.json under configured PREPARED_ROOT",
+  "cause_not_established": "Old error does not distinguish absent mount, missing marker, or multiple nested markers. Do not assert dataset was deleted or checkpoint invalid.",
+  "fix": "Validate ROI+bank caches before CLI/API/checkpoint download; actionable missing-directory and marker-count errors. Keep full SHA checks and decoding policy unchanged."
+}

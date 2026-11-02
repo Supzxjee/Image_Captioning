@@ -39,6 +39,14 @@ print('Source pinned:',COMMIT,flush=True)
         api_setup=next(c['source'] for c in old['cells'] if c['cell_type']=='code' and 'def run_cli(' in c['source'])
         api_setup=api_setup.replace('/126','/131').replace('v126','v131').replace('pins126','pins131')
         body='API_SETUP='+repr(api_setup)+'\n'+r'''
+# Validate both cached inputs before API installation, authentication or checkpoint download.
+sys.path.insert(0,str(SOURCE))
+from real_bank_data import load_prepared
+from pilot_data import load_banks
+_,prepared_inputs,regions,images,vocab,words=load_prepared(PREPARED_ROOT)
+load_banks(BANK_ROOT,words,prepared_inputs)
+del regions,images,vocab,words
+print('Both ROI and semantic-bank inputs verified. Now fetching exact checkpoint131.',flush=True)
 KERNEL_VERSION='ducanh2403/2-vi-cai-kia-qua-nhieu/131'
 OWNER='ducanh2403'
 SLUG='csa-decode-check'
@@ -112,5 +120,5 @@ finally:
     path=HERE/filename;path.write_bytes((json.dumps(nb,ensure_ascii=False,indent=1)+'\n').encode('utf-8'));print(path,path.stat().st_size)
 
 if __name__=='__main__':
-    p=argparse.ArgumentParser();p.add_argument('--revision',required=True);args=p.parse_args()
-    for kind in ('decode','roi'):notebook(args.revision,kind)
+    p=argparse.ArgumentParser();p.add_argument('--revision',required=True);p.add_argument('--kind',choices=['decode','roi','both'],default='both');args=p.parse_args()
+    for kind in (('decode','roi') if args.kind=='both' else (args.kind,)):notebook(args.revision,kind)

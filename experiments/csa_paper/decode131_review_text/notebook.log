@@ -1,0 +1,11 @@
+Traceback (most recent call last):
+  File "/tmp/csa_decode_check_v131-40lhvpx2/run_decode_check.py", line 77, in <module>
+    p.add_argument('--bank-root',required=True);p.add_argument('--output',type=Path,required=True);args=p.parse_args();args.output.mkdir(parents=True,exist_ok=True);run(args)
+                                                                                                                                                                     ~~~^^^^^^
+  File "/tmp/csa_decode_check_v131-40lhvpx2/run_decode_check.py", line 17, in run
+    _,inputs,arrays,images,vocab,bank=load_prepared(args.prepared_root);banks,package=load_banks(args.bank_root,bank,inputs)
+                                      ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/csa_decode_check_v131-40lhvpx2/real_bank_data.py", line 49, in load_prepared
+    if len(candidates)!=1: raise ValueError('Expected one corrected assets root')
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: Expected one corrected assets root

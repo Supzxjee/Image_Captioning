@@ -25,6 +25,7 @@ def target_tokens(images,items):
 
 def load_banks(root,bank,inputs):
     root=Path(root)
+    if not root.is_dir():raise FileNotFoundError('Add Input csa-semantic-banks-v130 or correct BANK_ROOT; directory not mounted: '+str(root))
     if not (root/'cache_receipt.json').is_file():
         found=list(root.rglob('cache_receipt.json'))
         if len(found)!=1:raise ValueError('Expected one semantic cache root')

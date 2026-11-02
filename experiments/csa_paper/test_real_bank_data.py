@@ -1,11 +1,22 @@
 """Metadata/NumPy checks only; no model imports."""
 import ast
 import unittest
+import tempfile
 from pathlib import Path
 import numpy as np
-from real_bank_data import validate_arrays, batch, read
+from real_bank_data import validate_arrays, batch, read, load_prepared
 
 class Checks(unittest.TestCase):
+    def test_missing_or_wrong_mount_is_actionable_before_payload_loading(self):
+        with tempfile.TemporaryDirectory(prefix='mount-fixture-',dir=Path(__file__).parent) as d:
+            with self.assertRaisesRegex(FileNotFoundError,'Add Input csa-real-v126-lemma-fixed'):
+                load_prepared(Path(d)/'not-mounted')
+            with self.assertRaisesRegex(ValueError,'found 0'):
+                load_prepared(Path(d))
+            for name in ('first','second'):
+                nested=Path(d)/name;nested.mkdir();(nested/'corrected_assets_receipt.json').write_text('{}',encoding='utf-8')
+            with self.assertRaisesRegex(ValueError,'found 2'):
+                load_prepared(Path(d))
     def fixture(self):
         a=dict(features=np.zeros((3,768),np.float16),boxes=np.array([[0,0,10,10]]*3,np.float32),
             scores=np.ones(3,np.float32),offsets=np.array([0,1,3],np.int64),ids=np.array([5,6],np.int64))

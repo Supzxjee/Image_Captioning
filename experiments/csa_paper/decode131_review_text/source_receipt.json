@@ -1,0 +1,15 @@
+{
+  "commit": "165dd753fde22746df3a2fd06824a3b6de720218",
+  "sha256": {
+    "real_bank_data.py": "00e7110105ec98a5ef41969f9e51074815a42a9b69deac90b2614e9679d2bcf9",
+    "data.py": "5a5bb451dc20184d3ea597d4dc8415a120583571f4e1a4dac75e29a306213a71",
+    "REAL_BANK_INPUT_PACKAGE.json": "c60902e04ea15cf90f652e384937bb317e288753f13b8ede6ab5ef89f8d97129",
+    "PRE_FULL_CHECK_PROTOCOL.md": "3e11fb2dde0e28c2b744a469bdf52e850f01c3696fddad4e78fed0e0eec716f3",
+    "run_decode_check.py": "7215a21cbe7d7cfc148b98ac78291a9eb837ba8075a660a07c2fc9976f3ac565",
+    "model.py": "139edbb1b73caf3dadaf5c960b25542e282f88baf2ce9bdf141de922ceacbc09",
+    "pilot_data.py": "134cc6de37a6a2afd6d9d242ea74edddde08eb3f2fd90771e34c779ae104f820",
+    "SAVE_BANK_V130_PACKAGE.json": "826ba36628d6587860e2d548e950ea953bd4bbb8c0a8dc64393089dbc1e058e1",
+    "xe_pilot_review_text/input_receipt.json": "cf6f9e963c6cb4b79ac2e5c6f203cadd52706c3d05609656121586f846ce1165",
+    "xe_pilot_review_text/captions_final.json": "21a419bf872447f0a13c648834e4d35a30582a3068bfcd1fc3fdaefeb720f337"
+  }
+}

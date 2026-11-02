@@ -44,9 +44,12 @@ def validate_arrays(a, images, vocab):
 
 def load_prepared(root):
     root=Path(root); p=read(HERE/'REAL_BANK_INPUT_PACKAGE.json')
+    if not root.is_dir():
+        raise FileNotFoundError('Add Input csa-real-v126-lemma-fixed or correct PREPARED_ROOT; directory not mounted: '+str(root))
     if not (root/'corrected_assets_receipt.json').is_file():
         candidates=list(root.rglob('corrected_assets_receipt.json'))
-        if len(candidates)!=1: raise ValueError('Expected one corrected assets root')
+        if len(candidates)!=1:
+            raise ValueError(f'Expected one corrected_assets_receipt.json under {root}; found {len(candidates)}. Add the combined csa-real-v126-lemma-fixed Dataset, not only the semantic-bank Dataset.')
         root=candidates[0].parent
     receipt=read(root/'corrected_assets_receipt.json')
     for field, expected in [('original_files_sha256',p['original_files_sha256']),('corrected_overlay_sha256',p['overlay_sha256'])]:

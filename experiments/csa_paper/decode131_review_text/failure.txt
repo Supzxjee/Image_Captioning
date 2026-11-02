@@ -1,0 +1,10 @@
+Traceback (most recent call last):
+  File "/tmp/ipykernel_16/2774263678.py", line 21, in <cell line: 0>
+    run([sys.executable,'-u',SOURCE/'run_decode_check.py','--checkpoint',found[0],
+    ~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+         '--prepared-root',PREPARED_ROOT,'--bank-root',BANK_ROOT,'--output',OUTPUT],timeout=900)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/ipykernel_16/692818752.py", line 24, in run
+    if process.wait(): raise subprocess.CalledProcessError(process.returncode, args)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+subprocess.CalledProcessError: Command '['/usr/bin/python3', '-u', PosixPath('/tmp/csa_decode_check_v131-40lhvpx2/run_decode_check.py'), '--checkpoint', PosixPath('/tmp/csa_decode_check_v131-40lhvpx2/checkpoint-download/csa_real_xe_pilot_256/checkpoint.bin'), '--prepared-root', PosixPath('/kaggle/input/datasets/ducanh2403/csa-real-v126-lemma-fixed'), '--bank-root', PosixPath('/kaggle/input/datasets/ducanh2403/csa-semantic-banks-v130'), '--output', PosixPath('/kaggle/working/csa_decode_check_v131')]' returned non-zero exit status 1.
