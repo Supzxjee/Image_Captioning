@@ -1,5 +1,7 @@
 # Pipeline CSA hiện tại — bàn giao X051-A
 
+**Bản dùng hiện tại: [v2 — bố cục theo ảnh mẫu, đã giảm chữ và đường nối](v2/README.md).** User nhận xét bản đầu xấu/rối; các file ở thư mục này được giữ làm lịch sử. Khi xem hoặc tải để trình bày, dùng [PNG v2](v2/01_overview.png), [PPTX v2](v2/CSA_pipeline_editable.pptx) và [PDF v2](v2/CSA_pipeline_vector.pdf).
+
 Ngày 02/11/2026. Vẽ theo X051 và hình mẫu user gửi trong chat: nền trắng, font serif, nét đen mảnh, khung offline nét đứt; các khối và đường nối giữ chỉnh sửa được. Nội dung là **CSA adaptation — cached CLIP ROI + semantic banks**, không phải pipeline retrieval/BLIP của hình mẫu.
 
 ## File sử dụng

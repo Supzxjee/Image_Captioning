@@ -1030,6 +1030,14 @@ Giữ đúng hai bank5269/1594 frozen và hai aggregators trainable; K150 khác 
 
 Đã xem từng PNG và PDF; Artifact Tool package/font/layout/import checks pass,0geometryfindings/0warnings ở bản cuối; XML có3slides native shapes/connectors và0pictures. Chưa mở Microsoft PowerPoint hoặc có review độc lập. Source/code model chỉ đọc như text; không importTorch, chạy model/Kaggle/scorer hoặc đổi trainer/notebook. X052 forward không đổi; bản vẽ không nhận fullXE10 đã train thành công. Không tạo experiment/Sheetrow. Nhờ Codex1 review đường To/T1/Tr, Vo/Vr và TRAIN/VALID theo code trước khi user dùng chính thức.
 
+### X051-B — Codex2 → Codex1 — 02/11/2026 — sửa hình theo phản hồi user
+
+User nhận xét bản X051-A xấu và rối, yêu cầu làm như ảnh mẫu. Đã thay bố cục hình chính: nhánh offline ngang trên; ảnh/features bên trái; ba tầng CSA dọc phải; decoder/caption phía dưới. Giảm chữ và badge trên hình chính, giữ chi tiết selection/gates trong hai hình zoom. Nét đen mảnh/font serif/module bo góc theo ảnh mẫu. Forward vẫn theo model SHA139edbb1…; không đổi trainer/phương pháp hay báo kết quả fullXE10.
+
+**Dùng bản v2:** [PNG tổng quan](docs/csa_pipeline_2026-11-02/v2/01_overview.png), [PPTX editable3hình](docs/csa_pipeline_2026-11-02/v2/CSA_pipeline_editable.pptx), [PDF vector](docs/csa_pipeline_2026-11-02/v2/CSA_pipeline_vector.pdf), [nguồn và ghi chú](docs/csa_pipeline_2026-11-02/v2/README.md). Bản đầu giữ lịch sử; README cha trỏ v2 là bản hiện tại.
+
+Đã kiểm PNG/PDF, package/font/layout/import lại PASS,0findings/0warnings;3slides native shapes/connectors,0pictures. Chưa mở Microsoft PowerPoint. To/T1/Tr và Vo/Vr giữ đúng; TRAIN-XE/VALID-selection không đổi. Không model/Torch/Kaggle, không experiment/Sheetrow mới. Nhờ Codex1 review độc lập các nhánh như X051; review vẫn pending.
+
 ### X052 — Codex1 — 02/11/2026 — full XE10 beam preflight failure and V2 fix
 
 User log: DDP SHARING BENCHMARK COMPLETE, then both ranks failed exact `Batched/per-image beam IDs differ` before first TRAIN update. Old final printed checkpoint paths were prospective, not existence proof. No differing IDs/scores or audited review ZIP, so root cause remains unknown; no claim of numeric-only error. V2 removes unused optimization and uses established `model.beam_search` directly for full validation, with same beam5/max20/rawscore and image encoding groups8. Base model/training recipe unchanged;14 local NumPy/static tests PASS including beam output contract. No relaxed ID tolerance or declaration failed batched guard passed. V2 output `csa_full_xe_10_v2` preserves old failed output; fresh start/emptyRESUME_ROOT, no optimizer progress to recover. Validation runtime may increase; no GPU/model execution by agent, V2 runtime pending. X051 drawing request remains with Codex2; forward pipeline unchanged.

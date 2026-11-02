@@ -1,0 +1,54 @@
+{
+  "date": "2026-11-02",
+  "source_commit": "5a14d1b641732b42877ea8a458b8fc4e746a1643",
+  "sources": {
+    "experiments/csa_paper/model.py": "139edbb1b73caf3dadaf5c960b25542e282f88baf2ce9bdf141de922ceacbc09",
+    "experiments/csa_paper/FULL_XE_10_PROTOCOL.md": "b52d4081cf0657c7c7fba8a00def7efbff928b4979180e08b4e552cc3983a70c",
+    "experiments/csa_paper/run_full_xe.py": "ba0593c8245a8b7bc8b4b82818972d433890a04eb563cdfaf31d7e1ebbb33370",
+    "experiments/csa_paper/full_xe_decode.py": "b8e618559feec6361cfb3b4619899e4968ab71ab67e113ff38b6d3cd99cdc235",
+    "experiments/csa_paper/FULL_ROI_RESULT.md": "340ca6dc5028f29f91d35ac9acfae8c703c561ea2213397d31d0c015c0ca0607",
+    "experiments/csa_paper/LEMMA_CORRECTION_RESULT.md": "09f62fbd3c8b58b4445ceace28da98184aa8f274229ae16b24791dc28d502f5f"
+  },
+  "model_executed": false,
+  "style": "User-requested redesign: offline top, visual left, vertical CSA right, decoder bottom; monochrome serif; technical details in two zooms.",
+  "outputs": {
+    "01_overview.png": "0d150983aab728c31c0d433916f0b5120011ac0bdef4b4efedbe6e1d091ab2d1",
+    "01_overview.svg": "96ee354aa4f0020a33b682745ef88e2e38c10e762065108820cd2ea123c143a2",
+    "02_encoder.png": "4ec7322c76d9d9b34879e23e8fd9fc88dc7ffa6866ed5215b1e8f2e8a2435f50",
+    "02_encoder.svg": "901822a0a27f379e49420d306ae46b8111fb8bd0100e085469006f704a3e2da5",
+    "03_decoder.png": "af3670b0e5ee822ae90ef9468de64aedd49f1c2e69277bcae602a83b3eda9676",
+    "03_decoder.svg": "211a7ac87a4c5a17b7755e98553bcb0f025eabefc958fd13a52b385c6218e3ce",
+    "CSA_pipeline_editable.pptx": "d4a872435513e470ccd41b89826527dc2b41599e1677878594b99bc83c60a44f",
+    "CSA_pipeline_vector.pdf": "1ebae6e1088cec5c8bf327fee97aeb58f0044a30bd367674378451e5e47da39d",
+    "build_pipeline.mjs": "56ac68af4684072876a6464bd0e1b86ed98f70e52294ab84548786526546fb49",
+    "diagram_layout.json": "bc2060cbfdf9e55eaa7904216ab040b676c18d14a7804b2cb9dd39080a658aed"
+  },
+  "revision": "X051-B; replaces the presentation layout of X051-A without changing the forward graph",
+  "validation": {
+    "package": "pass",
+    "layout_findings": 0,
+    "layout_warnings": 0,
+    "reimport_passed": true,
+    "native_powerpoint_opened": false,
+    "native_elements": [
+      {
+        "slide": 1,
+        "shapes": 60,
+        "connectors": 36,
+        "pictures": 0
+      },
+      {
+        "slide": 2,
+        "shapes": 53,
+        "connectors": 29,
+        "pictures": 0
+      },
+      {
+        "slide": 3,
+        "shapes": 45,
+        "connectors": 31,
+        "pictures": 0
+      }
+    ]
+  }
+}
