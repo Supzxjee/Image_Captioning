@@ -1,0 +1,46 @@
+{
+  "dataset_json_sha256": "2fd999220673258012acfb411a4e7e66af7d488050b2519b0badcc49b7600b8d",
+  "detections_sha256": "498825daf8f8773a1c92f4111dc4ccf1f4296343f952b486e0aa56caf82ec04c",
+  "vocabulary_sha256": "924be210aa0daa8b0968a6d69ad2c66b3de603f49c35f4aa67247c75d6173fc7",
+  "feature_profile": {
+    "model_id": "openai/clip-vit-base-patch16",
+    "output": "vision_model.last_hidden_state",
+    "image_size": [
+      224,
+      224
+    ],
+    "preprocessing": "bilinear",
+    "antialias": true,
+    "dataset_json_sha256": "2fd999220673258012acfb411a4e7e66af7d488050b2519b0badcc49b7600b8d",
+    "mean": [
+      0.48145466,
+      0.4578275,
+      0.40821073
+    ],
+    "std": [
+      0.26862954,
+      0.26130258,
+      0.27577711
+    ],
+    "model_revision": null,
+    "compute_dtype": "float32",
+    "storage_dtype": "float16",
+    "autocast": false
+  },
+  "full_h5_payload_hashed": false,
+  "bank_reencoded": false,
+  "test_selected": false,
+  "source": {
+    "commit": "936cd17f1bc33de16ceccda8d88cfda77e1bf188",
+    "sha256": {
+      "real_bank_data.py": "2c791f8dd856198ec1954a2edd1f9e46520d422f20eff07220e462fc2c9bd9a0",
+      "data.py": "5a5bb451dc20184d3ea597d4dc8415a120583571f4e1a4dac75e29a306213a71",
+      "REAL_BANK_INPUT_PACKAGE.json": "c60902e04ea15cf90f652e384937bb317e288753f13b8ede6ab5ef89f8d97129",
+      "PRE_FULL_CHECK_PROTOCOL.md": "86c6b91587af15fa50517eae452ff4f2b6e3b9efba9dc7c040c8b4df64e5ad5a",
+      "prepare_full_regions.py": "b7ff0b4b0d6216d2bdee89e56db15e530d9756c6ead79d4e2223440c993137a8",
+      "prepare_real_assets.py": "44a22d92acd239bdc7a1edbe30984daf0853ac8bc196969dd48b19b78df1cc7b",
+      "audit_assets.py": "5be2fdf1ee094ef8b23a547b16f423ed3603f7c80b2fe5f2d46cb9224cb90959"
+    }
+  },
+  "order": "WithinTRAIN/val rawH5path,row for sequential I/O"
+}

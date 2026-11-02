@@ -10,6 +10,8 @@ Cập nhật: 02/11/2026, giờ Việt Nam. File này là bản tóm tắt để
 
 ## Hiện đang ở đâu
 
+- **FullROI user-run COMPLETE**, [result](experiments/csa_paper/FULL_ROI_RESULT.md), ZIPa7749fde…, source936cd17/7GitSHAs/862metadataassertionsPASS.113287TRAIN+5000val/0test=118287images,833473raw768regions,119pairedNPZ/JSONshards,591757combinedcaptionevents,1004fallback,max87regions,0clipped.1749398178payloadbytes(~1.75GB),worker3431.090s(~57m),nottrainingETA. Reviewexcludesshardpayloads/perimageJSON:actual238SHA/IDcontentsawaittransport/runtimechecks. Preserveentirecachefolder, exactversionasked forDataset-save. Decode131stillinputblocked;fullXE/RLnotrun/scheduled. R229complete/X044.
+
 - **FullROI userlog first1000 done, old6hprojectiongate stopped**:199.8567s/1000,remaining23440.59s(~6.51h),notZIPauditedyet. Userrequestsraise cap/reportsreset30GPUhours. UpdatedCPUROINBcap10h/internal9h50, samepooling/shards/strictguards;CPUonly,noGPUtrain. Smallcapfix,noresume: freshsessionreprocesses1000images, noCLIP/POS. DecodeNBunchanged. NewROIruntime/fullcompletionpendinguser;R229updated/X043.
 
 - **Decode131 firstattempt INCOMPLETE at inputroot**, [failure](experiments/csa_paper/DECODE_CHECK_INPUT_FAILURE.md), ZIP737bdf25…; source165dd75/10GitSHAs/15metadataassertions verified. Exact131checkpointSHA99b1f993…downloaded; no model/decode result. load_prepared found marker count!=1 (missingmount/0/multipleunknown). UpdateddecodeNBpreflightsbothcachedinputs beforeAPI/download, clearerroot/countmessages, strictSHAunchanged;37localchecksPASS, noagentmodel. Usermustattach/correctbothDatasetpaths. FullROINBnotregenerated/staysoldpin. R228updated/X042.

@@ -22,3 +22,5 @@ experiments/csa_paper/CSA_DECODE_CHECK_V131.ipynb text eol=lf
 experiments/csa_paper/CSA_FULL_ROI_KARPATHY_CPU.ipynb text eol=lf
 
 experiments/csa_paper/decode131_review_text/** -text
+
+experiments/csa_paper/full_roi_review_text/** -text

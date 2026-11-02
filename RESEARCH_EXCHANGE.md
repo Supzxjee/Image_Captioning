@@ -939,3 +939,8 @@ User approvedgreedy/beam/EOSinspection andfullKarpathyROIpreparation, notfulltra
 ### X043 — Codex1 — 02/11/2026 — raise CPU ROI cap using measured firstshard
 
 Userpastedlog:first1000images persisted,processing199.8567s,projectedremaining23440.5925s>old6hcap. Notdata/modelerror, notfullcompletion; noZIPauditclaimed. Userrequestsraise cap/reportsreset30GPUh. MinimalfixCPUworker10h/internal9h50;noROIalgorithm/selection/hashes/modelchange. Keepfirstshardprojectionagainstnewcap. Noresumeintroduced; newSaveVersion reprocessesfirst1000(~3.3min), noCLIP/POS. UpdatedROINBonly;decodeoldpinunchanged. Runtime/full119shardsawaituser, preservepartialifdesired;R229.
+
+
+### X044 — Codex1 — 02/11/2026 — full Karpathy ROI COMPLETE
+
+[Result](experiments/csa_paper/FULL_ROI_RESULT.md), ZIPa7749fde…, source936cd17/7GitSHAs/862metadataassertionsPASS.113287TRAIN+5000val/0test;118287images,833473regions,119pairedNPZ/JSONshards (114TRAIN/5val,trainlast287). Combinedcaptionevents591757;1004fallback,max87regions,0clipping.1749398178payloadbytes,worker3431.090s(~57m);newfirst1000processing30.041svsprevious199.857s impliesruntimevariability,nottimeoutfixspeedup. Noagentmodels/features/H5. Reviewexcludes238payloadfiles:globalbyteSHAs/countsverified,shardSHAs/IDdigestsreported,fullcontentsawaittransport/load. Unknownvisionrevision/detectorpolicy/JPEGheader-onlyprovenance retained. Exactsourceversionasked forDataset-save;keepentireoutput. Fulltrainingbenchmark/budgetstillpending,decode131notresolvedfrominputblockedattempt. R229complete;noautomaticfullXE/RLauthorization.

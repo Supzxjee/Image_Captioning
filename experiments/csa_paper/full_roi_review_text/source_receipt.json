@@ -1,0 +1,12 @@
+{
+  "commit": "936cd17f1bc33de16ceccda8d88cfda77e1bf188",
+  "sha256": {
+    "real_bank_data.py": "2c791f8dd856198ec1954a2edd1f9e46520d422f20eff07220e462fc2c9bd9a0",
+    "data.py": "5a5bb451dc20184d3ea597d4dc8415a120583571f4e1a4dac75e29a306213a71",
+    "REAL_BANK_INPUT_PACKAGE.json": "c60902e04ea15cf90f652e384937bb317e288753f13b8ede6ab5ef89f8d97129",
+    "PRE_FULL_CHECK_PROTOCOL.md": "86c6b91587af15fa50517eae452ff4f2b6e3b9efba9dc7c040c8b4df64e5ad5a",
+    "prepare_full_regions.py": "b7ff0b4b0d6216d2bdee89e56db15e530d9756c6ead79d4e2223440c993137a8",
+    "prepare_real_assets.py": "44a22d92acd239bdc7a1edbe30984daf0853ac8bc196969dd48b19b78df1cc7b",
+    "audit_assets.py": "5be2fdf1ee094ef8b23a547b16f423ed3603f7c80b2fe5f2d46cb9224cb90959"
+  }
+}

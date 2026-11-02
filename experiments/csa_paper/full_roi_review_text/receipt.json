@@ -1,0 +1,8 @@
+{
+  "status": "FULL_ROI_PREPARATION_COMPLETE",
+  "manifest_sha256": "512bf34336be54f2854743bd06004dbc30ff506cda130c03378d77a6d3cf6130",
+  "vocabulary_sha256": "924be210aa0daa8b0968a6d69ad2c66b3de603f49c35f4aa67247c75d6173fc7",
+  "input_receipt_sha256": "18e9481863418c7f2f4c538fa98f3a05377e5b81422cb249d33f81ddefd78f7f",
+  "images": 118287,
+  "test_images": 0
+}
