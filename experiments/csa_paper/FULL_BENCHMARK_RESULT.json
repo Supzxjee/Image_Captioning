@@ -1,0 +1,32 @@
+{
+  "status": "REVIEWED_FULL_CACHE_BENCHMARK_COMPLETE",
+  "zip_sha256": "ae4bb5a8b371729be1f26e95d27f84ed7a5fe8bcca9fb929bcee595609f95501",
+  "source_commit": "eeda5cdf2943bf1407e371ad1485b282325eb4c9",
+  "metadata_assertions": 247,
+  "git_hashes_verified": 11,
+  "input_array_validation_passed_by_user_worker": true,
+  "stage_arrays_independently_available": false,
+  "device": "Tesla T4",
+  "gpus_used": 1,
+  "precision": "FP32",
+  "effective_batch": 32,
+  "microbatch": 4,
+  "accumulation": 8,
+  "median_step_seconds": 0.4141840714999887,
+  "p90_step_seconds": 0.4299953276000167,
+  "updates_per_epoch": 17711,
+  "train_only_hours_per_epoch": 2.0376705806489723,
+  "train_only_hours_15epochs": 30.565058709734586,
+  "scenario_hours_15epochs_including_probed_val": 34.20970244100876,
+  "training_memory": {
+    "allocated_mib": 997.96826171875,
+    "reserved_mib": 1064.0
+  },
+  "stage_seconds": 118.29470830199998,
+  "worker_seconds": 152.221469112,
+  "beam_probe_empty_captions": 32,
+  "beam_executed_decoder_steps_recorded": false,
+  "checkpoint_saved": false,
+  "local_model_execution": false,
+  "recommendation": "Do not schedule15epochs under30h from thisconfiguration. Measure microbatch16/32 with effectivebatch32 and sameFP32/XE before addingDDP/AMP. Not yet a new authorizedrun."
+}

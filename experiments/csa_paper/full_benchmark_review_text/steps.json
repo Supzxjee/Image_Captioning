@@ -1,0 +1,3362 @@
+[
+  {
+    "nll": 9.213774614679448,
+    "target_tokens": 359,
+    "grad_norm": 4.595914363861084,
+    "micro_shapes": [
+      {
+        "batch": 4,
+        "regions": 24,
+        "prefix_length": 12
+      },
+      {
+        "batch": 4,
+        "regions": 9,
+        "prefix_length": 11
+      },
+      {
+        "batch": 4,
+        "regions": 4,
+        "prefix_length": 11
+      },
+      {
+        "batch": 4,
+        "regions": 32,
+        "prefix_length": 14
+      },
+      {
+        "batch": 4,
+        "regions": 5,
+        "prefix_length": 12
+      },
+      {
+        "batch": 4,
+        "regions": 30,
+        "prefix_length": 17
+      },
+      {
+        "batch": 4,
+        "regions": 10,
+        "prefix_length": 13
+      },
+      {
+        "batch": 4,
+        "regions": 6,
+        "prefix_length": 12
+      }
+    ],
+    "step": 1,
+    "timed": false,
+    "seconds": 0.6117779570000152,
+    "event_indices": [
+      549899,
+      521380,
+      20425,
+      261486,
+      238145,
+      232349,
+      236567,
+      228737,
+      270587,
+      542861,
+      497128,
+      163067,
+      510590,
+      3002,
+      285649,
+      416053,
+      114475,
+      244229,
+      86914,
+      391441,
+      411322,
+      479342,
+      466183,
+      76166,
+      454548,
+      521431,
+      439909,
+      339167,
+      185394,
+      219725,
+      64366,
+      171915
+    ]
+  },
+  {
+    "nll": 8.760582934850934,
+    "target_tokens": 348,
+    "grad_norm": 4.5024590492248535,
+    "micro_shapes": [
+      {
+        "batch": 4,
+        "regions": 16,
+        "prefix_length": 11
+      },
+      {
+        "batch": 4,
+        "regions": 11,
+        "prefix_length": 12
+      },
+      {
+        "batch": 4,
+        "regions": 21,
+        "prefix_length": 17
+      },
+      {
+        "batch": 4,
+        "regions": 13,
+        "prefix_length": 14
+      },
+      {
+        "batch": 4,
+        "regions": 10,
+        "prefix_length": 12
+      },
+      {
+        "batch": 4,
+        "regions": 7,
+        "prefix_length": 12
+      },
+      {
+        "batch": 4,
+        "regions": 24,
+        "prefix_length": 12
+      },
+      {
+        "batch": 4,
+        "regions": 31,
+        "prefix_length": 12
+      }
+    ],
+    "step": 2,
+    "timed": false,
+    "seconds": 0.4200788310000121,
+    "event_indices": [
+      70032,
+      89448,
+      113051,
+      300034,
+      12846,
+      235620,
+      31354,
+      175647,
+      284923,
+      314794,
+      79925,
+      422033,
+      475907,
+      291881,
+      468787,
+      82200,
+      555844,
+      439886,
+      415047,
+      30031,
+      51948,
+      2769,
+      217487,
+      392875,
+      460630,
+      186168,
+      31200,
+      436070,
+      382723,
+      306778,
+      416862,
+      437268
+    ]
+  },
+  {
+    "nll": 8.587700625753271,
+    "target_tokens": 363,
+    "grad_norm": 4.119937896728516,
+    "micro_shapes": [
+      {
+        "batch": 4,
+        "regions": 17,
+        "prefix_length": 12
+      },
+      {
+        "batch": 4,
+        "regions": 21,
+        "prefix_length": 12
+      },
+      {
+        "batch": 4,
+        "regions": 6,
+        "prefix_length": 18
+      },
+      {
+        "batch": 4,
+        "regions": 5,
+        "prefix_length": 13
+      },
+      {
+        "batch": 4,
+        "regions": 28,
+        "prefix_length": 11
+      },
+      {
+        "batch": 4,
+        "regions": 5,
+        "prefix_length": 18
+      },
+      {
+        "batch": 4,
+        "regions": 5,
+        "prefix_length": 14
+      },
+      {
+        "batch": 4,
+        "regions": 7,
+        "prefix_length": 13
+      }
+    ],
+    "step": 3,
+    "timed": false,
+    "seconds": 0.4174193110000033,
+    "event_indices": [
+      23602,
+      457454,
+      537389,
+      398825,
+      454569,
+      404234,
+      455050,
+      544989,
+      336116,
+      177820,
+      418190,
+      227562,
+      21074,
+      186609,
+      375230,
+      224992,
+      376023,
+      239976,
+      58497,
+      64409,
+      252369,
+      536878,
+      507924,
+      247010,
+      170552,
+      549928,
+      222802,
+      341335,
+      525544,
+      286525,
+      141407,
+      280043
+    ]
+  },
+  {
+    "nll": 8.439643794654781,
+    "target_tokens": 351,
+    "grad_norm": 3.8701789379119873,
+    "micro_shapes": [
+      {
+        "batch": 4,
+        "regions": 4,
+        "prefix_length": 13
+      },
+      {
+        "batch": 4,
+        "regions": 39,
+        "prefix_length": 15
+      },
+      {
+        "batch": 4,
+        "regions": 12,
+        "prefix_length": 13
+      },
+      {
+        "batch": 4,
+        "regions": 18,
+        "prefix_length": 12
+      },
+      {
+        "batch": 4,
+        "regions": 6,
+        "prefix_length": 11
+      },
+      {
+        "batch": 4,
+        "regions": 5,
+        "prefix_length": 13
+      },
+      {
+        "batch": 4,
+        "regions": 29,
+        "prefix_length": 13
+      },
+      {
+        "batch": 4,
+        "regions": 10,
+        "prefix_length": 12
+      }
+    ],
+    "step": 4,
+    "timed": false,
+    "seconds": 0.42656138000000965,
+    "event_indices": [
+      375123,
+      144134,
+      101521,
+      343466,
+      491199,
+      328811,
+      3684,
+      47755,
+      37695,
+      441563,
+      251896,
+      310509,
+      164603,
+      504693,
+      254687,
+      257904,
+      74595,
+      369572,
+      342020,
+      407002,
+      12901,
+      542871,
+      81427,
+      517537,
+      49580,
+      13571,
+      395804,
+      404846,
+      561463,
+      207413,
+      462162,
+      554496
+    ]
+  },
+  {
+    "nll": 8.345868887145663,
+    "target_tokens": 366,
+    "grad_norm": 3.7815799713134766,
+    "micro_shapes": [
+      {
+        "batch": 4,
+        "regions": 6,
+        "prefix_length": 17
+      },
+      {
+        "batch": 4,
+        "regions": 23,
+        "prefix_length": 17
+      },
+      {
+        "batch": 4,
+        "regions": 23,
+        "prefix_length": 16
+      },
+      {
+        "batch": 4,
+        "regions": 39,
+        "prefix_length": 14
+      },
+      {
+        "batch": 4,
+        "regions": 23,
+        "prefix_length": 15
+      },
+      {
+        "batch": 4,
+        "regions": 23,
+        "prefix_length": 13
+      },
+      {
+        "batch": 4,
+        "regions": 17,
+        "prefix_length": 10
+      },
+      {
+        "batch": 4,
+        "regions": 9,
+        "prefix_length": 13
+      }
+    ],
+    "step": 5,
+    "timed": false,
+    "seconds": 0.46355670299999474,
+    "event_indices": [
+      83677,
+      72446,
+      334042,
+      445001,
+      110071,
+      337321,
+      258748,
+      543469,
+      307116,
+      494882,
+      505539,
+      453997,
+      91222,
+      305804,
+      408689,
+      393348,
+      12512,
+      281512,
+      434258,
+      17430,
+      12227,
+      102508,
+      152249,
+      385492,
+      230264,
+      87254,
+      60779,
+      285295,
+      133287,
+      384591,
+      20952,
+      316269
+    ]
+  },
+  {
+    "nll": 8.222852848403885,
+    "target_tokens": 337,
+    "grad_norm": 3.9685840606689453,
+    "micro_shapes": [
+      {
+        "batch": 4,
+        "regions": 18,
+        "prefix_length": 13
+      },
+      {
+        "batch": 4,
+        "regions": 15,
+        "prefix_length": 10
+      },
+      {
+        "batch": 4,
+        "regions": 18,
+        "prefix_length": 11
+      },
+      {
+        "batch": 4,
+        "regions": 17,
+        "prefix_length": 11
+      },
+      {
+        "batch": 4,
+        "regions": 13,
+        "prefix_length": 12
+      },
+      {
+        "batch": 4,
+        "regions": 6,
+        "prefix_length": 10
+      },
+      {
+        "batch": 4,
+        "regions": 10,
+        "prefix_length": 16
+      },
+      {
+        "batch": 4,
+        "regions": 14,
+        "prefix_length": 13
+      }
+    ],
+    "step": 6,
+    "timed": false,
+    "seconds": 0.4195015750000266,
+    "event_indices": [
+      244531,
+      135635,
+      20479,
+      240473,
+      279491,
+      358782,
+      340385,
+      276413,
+      261257,
+      416044,
+      53949,
+      520245,
+      356403,
+      460436,
+      169065,
+      338783,
+      372480,
+      391317,
+      69038,
+      465592,
+      111577,
+      333236,
+      364101,
+      303681,
+      140270,
+      319774,
+      211775,
+      551693,
+      23358,
+      53453,
+      328848,
+      498989
+    ]
+  },
+  {
+    "nll": 8.129253548635564,
+    "target_tokens": 355,
+    "grad_norm": 3.8485944271087646,
+    "micro_shapes": [
+      {
+        "batch": 4,
+        "regions": 13,
+        "prefix_length": 15
+      },
+      {
+        "batch": 4,
+        "regions": 9,
+        "prefix_length": 13
+      },
+      {
+        "batch": 4,
+        "regions": 12,
+        "prefix_length": 11
+      },
+      {
+        "batch": 4,
+        "regions": 11,
+        "prefix_length": 13
+      },
+      {
+        "batch": 4,
+        "regions": 22,
+        "prefix_length": 11
+      },
+      {
+        "batch": 4,
+        "regions": 6,
+        "prefix_length": 13
+      },
+      {
+        "batch": 4,
+        "regions": 9,
+        "prefix_length": 19
+      },
+      {
+        "batch": 4,
+        "regions": 27,
+        "prefix_length": 12
+      }
+    ],
+    "step": 7,
+    "timed": false,
+    "seconds": 0.42248265199998514,
+    "event_indices": [
+      235997,
+      254697,
+      468599,
+      260288,
+      162987,
+      148512,
+      32977,
+      137979,
+      245764,
+      292061,
+      96980,
+      236998,
+      564266,
+      192987,
+      207788,
+      464752,
+      520954,
+      521754,
+      285908,
+      396152,
+      44832,
+      150840,
+      47771,
+      417320,
+      394952,
+      304465,
+      346486,
+      518037,
+      450161,
+      436566,
+      281314,
+      565619
+    ]
+  },
+  {
+    "nll": 8.098286155721137,
+    "target_tokens": 373,
+    "grad_norm": 3.7650060653686523,
+    "micro_shapes": [
+      {
+        "batch": 4,
+        "regions": 5,
+        "prefix_length": 14
+      },
+      {
+        "batch": 4,
+        "regions": 11,
+        "prefix_length": 12
+      },
+      {
+        "batch": 4,
+        "regions": 3,
+        "prefix_length": 13
+      },
+      {
+        "batch": 4,
+        "regions": 23,
+        "prefix_length": 14
+      },
+      {
+        "batch": 4,
+        "regions": 16,
+        "prefix_length": 14
+      },
+      {
+        "batch": 4,
+        "regions": 40,
+        "prefix_length": 12
+      },
+      {
+        "batch": 4,
+        "regions": 14,
+        "prefix_length": 14
+      },
+      {
+        "batch": 4,
+        "regions": 5,
+        "prefix_length": 16
+      }
+    ],
+    "step": 8,
+    "timed": false,
+    "seconds": 0.4163835330000438,
+    "event_indices": [
+      320479,
+      192010,
+      558669,
+      421184,
+      294855,
+      293116,
+      222416,
+      530055,
+      425016,
+      109330,
+      497872,
+      405599,
+      204286,
+      175601,
+      542857,
+      249392,
+      94019,
+      528165,
+      335277,
+      108840,
+      207722,
+      25342,
+      430410,
+      237015,
+      206733,
+      449987,
+      487283,
+      535603,
+      156509,
+      25411,
+      441970,
+      202545
+    ]
+  },
+  {
+    "nll": 7.9489168385368085,
+    "target_tokens": 402,
+    "grad_norm": 3.930255651473999,
+    "micro_shapes": [
+      {
+        "batch": 4,
+        "regions": 18,
+        "prefix_length": 13
+      },
+      {
+        "batch": 4,
+        "regions": 5,
+        "prefix_length": 16
+      },
+      {
+        "batch": 4,
+        "regions": 11,
+        "prefix_length": 14
+      },
+      {
+        "batch": 4,
+        "regions": 19,
+        "prefix_length": 21
+      },
+      {
+        "batch": 4,
+        "regions": 33,
+        "prefix_length": 16
+      },
+      {
+        "batch": 4,
+        "regions": 18,
+        "prefix_length": 26
+      },
+      {
+        "batch": 4,
+        "regions": 7,
+        "prefix_length": 14
+      },
+      {
+        "batch": 4,
+        "regions": 6,
+        "prefix_length": 15
+      }
+    ],
+    "step": 9,
+    "timed": false,
+    "seconds": 0.41552285099999153,
+    "event_indices": [
+      499286,
+      132319,
+      150804,
+      412651,
+      429095,
+      263830,
+      61934,
+      38409,
+      141777,
+      386740,
+      60421,
+      547156,
+      139262,
+      441353,
+      179324,
+      528032,
+      483565,
+      445154,
+      31693,
+      80694,
+      554202,
+      208046,
+      351536,
+      67792,
+      479231,
+      4163,
+      178130,
+      4005,
+      159780,
+      235220,
+      87905,
+      88529
+    ]
+  },
+  {
+    "nll": 7.934737163175179,
+    "target_tokens": 383,
+    "grad_norm": 3.8280231952667236,
+    "micro_shapes": [
+      {
+        "batch": 4,
+        "regions": 29,
+        "prefix_length": 22
+      },
+      {
+        "batch": 4,
+        "regions": 13,
+        "prefix_length": 13
+      },
+      {
+        "batch": 4,
+        "regions": 16,
+        "prefix_length": 14
+      },
+      {
+        "batch": 4,
+        "regions": 16,
+        "prefix_length": 13
+      },
+      {
+        "batch": 4,
+        "regions": 17,
+        "prefix_length": 16
+      },
+      {
+        "batch": 4,
+        "regions": 14,
+        "prefix_length": 14
+      },
+      {
+        "batch": 4,
+        "regions": 3,
+        "prefix_length": 15
+      },
+      {
+        "batch": 4,
+        "regions": 28,
+        "prefix_length": 13
+      }
+    ],
+    "step": 10,
+    "timed": false,
+    "seconds": 0.4309666400000083,
+    "event_indices": [
+      215016,
+      93928,
+      418350,
+      377004,
+      500754,
+      278649,
+      169178,
+      296467,
+      167250,
+      433578,
+      205757,
+      394344,
+      527954,
+      50468,
+      262040,
+      309868,
+      259925,
+      69462,
+      379769,
+      6847,
+      285573,
+      34606,
+      125771,
+      94957,
+      2670,
+      42035,
+      169714,
+      564097,
+      36088,
+      455219,
+      80222,
+      354612
+    ]
+  },
+  {
+    "nll": 7.775551392860019,
+    "target_tokens": 388,
+    "grad_norm": 4.058873653411865,
+    "micro_shapes": [
+      {
+        "batch": 4,
+        "regions": 6,
+        "prefix_length": 12
+      },
+      {
+        "batch": 4,
+        "regions": 4,
+        "prefix_length": 15
+      },
+      {
+        "batch": 4,
+        "regions": 7,
+        "prefix_length": 15
+      },
+      {
+        "batch": 4,
+        "regions": 21,
+        "prefix_length": 16
+      },
+      {
+        "batch": 4,
+        "regions": 11,
+        "prefix_length": 13
+      },
+      {
+        "batch": 4,
+        "regions": 6,
+        "prefix_length": 19
+      },
+      {
+        "batch": 4,
+        "regions": 4,
+        "prefix_length": 14
+      },
+      {
+        "batch": 4,
+        "regions": 5,
+        "prefix_length": 14
+      }
+    ],
+    "step": 11,
+    "timed": true,
+    "seconds": 0.422115797999993,
+    "event_indices": [
+      249591,
+      102699,
+      133945,
+      101440,
+      231546,
+      356525,
+      532990,
+      250467,
+      103229,
+      149069,
+      551735,
+      60263,
+      18334,
+      422228,
+      453894,
+      217045,
+      292945,
+      86737,
+      478491,
+      324095,
+      184264,
+      423783,
+      344499,
+      10094,
+      415817,
+      86945,
+      136353,
+      147721,
+      467407,
+      355688,
+      480384,
+      95903
+    ]
+  },
+  {
+    "nll": 7.822619053705824,
+    "target_tokens": 382,
+    "grad_norm": 3.7215158939361572,
+    "micro_shapes": [
+      {
+        "batch": 4,
+        "regions": 6,
+        "prefix_length": 12
+      },
+      {
+        "batch": 4,
+        "regions": 12,
+        "prefix_length": 20
+      },
+      {
+        "batch": 4,
+        "regions": 11,
+        "prefix_length": 16
+      },
+      {
+        "batch": 4,
+        "regions": 15,
+        "prefix_length": 32
+      },
+      {
+        "batch": 4,
+        "regions": 5,
+        "prefix_length": 11
+      },
+      {
+        "batch": 4,
+        "regions": 14,
+        "prefix_length": 12
+      },
+      {
+        "batch": 4,
+        "regions": 32,
+        "prefix_length": 13
+      },
+      {
+        "batch": 4,
+        "regions": 20,
+        "prefix_length": 14
+      }
+    ],
+    "step": 12,
+    "timed": true,
+    "seconds": 0.41711824999998726,
+    "event_indices": [
+      27599,
+      474577,
+      294723,
+      558037,
+      52908,
+      405720,
+      376969,
+      108570,
+      327387,
+      305734,
+      93993,
+      211481,
+      179121,
+      74822,
+      454898,
+      114558,
+      159156,
+      287989,
+      54526,
+      87278,
+      217991,
+      228848,
+      266707,
+      174614,
+      367625,
+      416054,
+      420737,
+      328725,
+      25013,
+      4144,
+      368159,
+      93438
+    ]
+  },
+  {
+    "nll": 7.639411863216684,
+    "target_tokens": 363,
+    "grad_norm": 4.02413272857666,
+    "micro_shapes": [
+      {
+        "batch": 4,
+        "regions": 14,
+        "prefix_length": 15
+      },
+      {
+        "batch": 4,
+        "regions": 19,
+        "prefix_length": 13
+      },
+      {
+        "batch": 4,
+        "regions": 24,
+        "prefix_length": 12
+      },
+      {
+        "batch": 4,
+        "regions": 26,
+        "prefix_length": 13
+      },
+      {
+        "batch": 4,
+        "regions": 10,
+        "prefix_length": 11
+      },
+      {
+        "batch": 4,
+        "regions": 14,
+        "prefix_length": 17
+      },
+      {
+        "batch": 4,
+        "regions": 17,
+        "prefix_length": 13
+      },
+      {
+        "batch": 4,
+        "regions": 11,
+        "prefix_length": 13
+      }
+    ],
+    "step": 13,
+    "timed": true,
+    "seconds": 0.40828402099998584,
+    "event_indices": [
+      187588,
+      180395,
+      294577,
+      158048,
+      518752,
+      259659,
+      536273,
+      49660,
+      209867,
+      469414,
+      436254,
+      422567,
+      338232,
+      549587,
+      385995,
+      518271,
+      543750,
+      440560,
+      548516,
+      509433,
+      8317,
+      91097,
+      349057,
+      129957,
+      313103,
+      449604,
+      67796,
+      352978,
+      287374,
+      388425,
+      242966,
+      233247
+    ]
+  },
+  {
+    "nll": 7.743792415570609,
+    "target_tokens": 395,
+    "grad_norm": 3.5738978385925293,
+    "micro_shapes": [
+      {
+        "batch": 4,
+        "regions": 4,
+        "prefix_length": 16
+      },
+      {
+        "batch": 4,
+        "regions": 5,
+        "prefix_length": 16
+      },
+      {
+        "batch": 4,
+        "regions": 23,
+        "prefix_length": 15
+      },
+      {
+        "batch": 4,
+        "regions": 9,
+        "prefix_length": 11
+      },
+      {
+        "batch": 4,
+        "regions": 17,
+        "prefix_length": 19
+      },
+      {
+        "batch": 4,
+        "regions": 7,
+        "prefix_length": 20
+      },
+      {
+        "batch": 4,
+        "regions": 3,
+        "prefix_length": 12
+      },
+      {
+        "batch": 4,
+        "regions": 15,
+        "prefix_length": 15
+      }
+    ],
+    "step": 14,
+    "timed": true,
+    "seconds": 0.4094716380000136,
+    "event_indices": [
+      544810,
+      181314,
+      441832,
+      521266,
+      324208,
+      64660,
+      346355,
+      262034,
+      444970,
+      3099,
+      60038,
+      157506,
+      53837,
+      178611,
+      395368,
+      465267,
+      166752,
+      316288,
+      397648,
+      25297,
+      252904,
+      416601,
+      167805,
+      65631,
+      83790,
+      404304,
+      163338,
+      417991,
+      479189,
+      309380,
+      245418,
+      7886
+    ]
+  },
+  {
+    "nll": 7.747583533702881,
+    "target_tokens": 383,
+    "grad_norm": 3.3429176807403564,
+    "micro_shapes": [
+      {
+        "batch": 4,
+        "regions": 13,
+        "prefix_length": 14
+      },
+      {
+        "batch": 4,
+        "regions": 15,
+        "prefix_length": 14
+      },
+      {
+        "batch": 4,
+        "regions": 6,
+        "prefix_length": 15
+      },
+      {
+        "batch": 4,
+        "regions": 17,
+        "prefix_length": 11
+      },
+      {
+        "batch": 4,
+        "regions": 18,
+        "prefix_length": 15
+      },
+      {
+        "batch": 4,
+        "regions": 18,
+        "prefix_length": 19
+      },
+      {
+        "batch": 4,
+        "regions": 15,
+        "prefix_length": 14
+      },
+      {
+        "batch": 4,
+        "regions": 19,
+        "prefix_length": 18
+      }
+    ],
+    "step": 15,
+    "timed": true,
+    "seconds": 0.40698883499999283,
+    "event_indices": [
+      323338,
+      523366,
+      69501,
+      44793,
+      402060,
+      369140,
+      319693,
+      548319,
+      386282,
+      446046,
+      339482,
+      477580,
+      4446,
+      100582,
+      544304,
+      321027,
+      442425,
+      319859,
+      342978,
+      416810,
+      62623,
+      410858,
+      320237,
+      557955,
+      285737,
+      371651,
+      102733,
+      432249,
+      308563,
+      209113,
+      291088,
+      440965
+    ]
+  },
+  {
+    "nll": 7.502034332792638,
+    "target_tokens": 354,
+    "grad_norm": 3.9054746627807617,
+    "micro_shapes": [
+      {
+        "batch": 4,
+        "regions": 5,
+        "prefix_length": 12
+      },
+      {
+        "batch": 4,
+        "regions": 7,
+        "prefix_length": 12
+      },
+      {
+        "batch": 4,
+        "regions": 6,
+        "prefix_length": 17
+      },
+      {
+        "batch": 4,
+        "regions": 31,
+        "prefix_length": 13
+      },
+      {
+        "batch": 4,
+        "regions": 18,
+        "prefix_length": 12
+      },
+      {
+        "batch": 4,
+        "regions": 10,
+        "prefix_length": 13
+      },
+      {
+        "batch": 4,
+        "regions": 8,
+        "prefix_length": 13
+      },
+      {
+        "batch": 4,
+        "regions": 21,
+        "prefix_length": 11
+      }
+    ],
+    "step": 16,
+    "timed": true,
+    "seconds": 0.40888475899998866,
+    "event_indices": [
+      521715,
+      524055,
+      157543,
+      100045,
+      520638,
+      114710,
+      187609,
+      471938,
+      413189,
+      189283,
+      332677,
+      231448,
+      453109,
+      519797,
+      537155,
+      539606,
+      168063,
+      135097,
+      453422,
+      540801,
+      513955,
+      66751,
+      179583,
+      547386,
+      280351,
+      396352,
+      138059,
+      488964,
+      252897,
+      176660,
+      179438,
+      535821
+    ]
+  },
+  {
+    "nll": 7.518546894032468,
+    "target_tokens": 372,
+    "grad_norm": 3.7001819610595703,
+    "micro_shapes": [
+      {
+        "batch": 4,
+        "regions": 35,
+        "prefix_length": 13
+      },
+      {
+        "batch": 4,
+        "regions": 20,
+        "prefix_length": 20
+      },
+      {
+        "batch": 4,
+        "regions": 23,
+        "prefix_length": 11
+      },
+      {
+        "batch": 4,
+        "regions": 45,
+        "prefix_length": 15
+      },
+      {
+        "batch": 4,
+        "regions": 7,
+        "prefix_length": 14
+      },
+      {
+        "batch": 4,
+        "regions": 17,
+        "prefix_length": 13
+      },
+      {
+        "batch": 4,
+        "regions": 18,
+        "prefix_length": 18
+      },
+      {
+        "batch": 4,
+        "regions": 6,
+        "prefix_length": 13
+      }
+    ],
+    "step": 17,
+    "timed": true,
+    "seconds": 0.41429883799997924,
+    "event_indices": [
+      138291,
+      481630,
+      562911,
+      231068,
+      470289,
+      412036,
+      237189,
+      483982,
+      362045,
+      294717,
+      98001,
+      79349,
+      287694,
+      269081,
+      139509,
+      98055,
+      219142,
+      6077,
+      272248,
+      520087,
+      300541,
+      32411,
+      106482,
+      110136,
+      347758,
+      424445,
+      72432,
+      141162,
+      380053,
+      422548,
+      407379,
+      85366
+    ]
+  },
+  {
+    "nll": 7.427090948520426,
+    "target_tokens": 358,
+    "grad_norm": 3.9256484508514404,
+    "micro_shapes": [
+      {
+        "batch": 4,
+        "regions": 12,
+        "prefix_length": 16
+      },
+      {
+        "batch": 4,
+        "regions": 27,
+        "prefix_length": 13
+      },
+      {
+        "batch": 4,
+        "regions": 6,
+        "prefix_length": 13
+      },
+      {
+        "batch": 4,
+        "regions": 11,
+        "prefix_length": 13
+      },
+      {
+        "batch": 4,
+        "regions": 4,
+        "prefix_length": 13
+      },
+      {
+        "batch": 4,
+        "regions": 3,
+        "prefix_length": 14
+      },
+      {
+        "batch": 4,
+        "regions": 5,
+        "prefix_length": 12
+      },
+      {
+        "batch": 4,
+        "regions": 8,
+        "prefix_length": 20
+      }
+    ],
+    "step": 18,
+    "timed": true,
+    "seconds": 0.4023713569999927,
+    "event_indices": [
+      408596,
+      530071,
+      8919,
+      103548,
+      154002,
+      542296,
+      102244,
+      163611,
+      264420,
+      236222,
+      107153,
+      276495,
+      43401,
+      257827,
+      564597,
+      491104,
+      176168,
+      476981,
+      481763,
+      380339,
+      276974,
+      253977,
+      48841,
+      551350,
+      287934,
+      379736,
+      81430,
+      79232,
+      352067,
+      256699,
+      83874,
+      348853
+    ]
+  },
+  {
+    "nll": 7.539230565286981,
+    "target_tokens": 349,
+    "grad_norm": 3.384652853012085,
+    "micro_shapes": [
+      {
+        "batch": 4,
+        "regions": 21,
+        "prefix_length": 13
+      },
+      {
+        "batch": 4,
+        "regions": 18,
+        "prefix_length": 10
+      },
+      {
+        "batch": 4,
+        "regions": 8,
+        "prefix_length": 11
+      },
+      {
+        "batch": 4,
+        "regions": 9,
+        "prefix_length": 12
+      },
+      {
+        "batch": 4,
+        "regions": 10,
+        "prefix_length": 11
+      },
+      {
+        "batch": 4,
+        "regions": 19,
+        "prefix_length": 16
+      },
+      {
+        "batch": 4,
+        "regions": 21,
+        "prefix_length": 18
+      },
+      {
+        "batch": 4,
+        "regions": 19,
+        "prefix_length": 13
+      }
+    ],
+    "step": 19,
+    "timed": true,
+    "seconds": 0.40286829500001886,
+    "event_indices": [
+      74165,
+      363085,
+      398381,
+      360453,
+      79422,
+      313618,
+      544113,
+      7879,
+      443088,
+      113582,
+      207183,
+      467391,
+      110271,
+      327957,
+      279923,
+      288456,
+      442828,
+      478455,
+      170309,
+      189166,
+      177235,
+      396037,
+      135785,
+      178040,
+      314262,
+      540186,
+      181436,
+      368277,
+      437416,
+      473863,
+      379688,
+      480488
+    ]
+  },
+  {
+    "nll": 7.359722604778757,
+    "target_tokens": 351,
+    "grad_norm": 3.6030683517456055,
+    "micro_shapes": [
+      {
+        "batch": 4,
+        "regions": 23,
+        "prefix_length": 12
+      },
+      {
+        "batch": 4,
+        "regions": 13,
+        "prefix_length": 14
+      },
+      {
+        "batch": 4,
+        "regions": 8,
+        "prefix_length": 11
+      },
+      {
+        "batch": 4,
+        "regions": 16,
+        "prefix_length": 16
+      },
+      {
+        "batch": 4,
+        "regions": 9,
+        "prefix_length": 11
+      },
+      {
+        "batch": 4,
+        "regions": 25,
+        "prefix_length": 13
+      },
+      {
+        "batch": 4,
+        "regions": 5,
+        "prefix_length": 14
+      },
+      {
+        "batch": 4,
+        "regions": 15,
+        "prefix_length": 10
+      }
+    ],
+    "step": 20,
+    "timed": true,
+    "seconds": 0.405941471999995,
+    "event_indices": [
+      51215,
+      448661,
+      23986,
+      303117,
+      211223,
+      235458,
+      73475,
+      474362,
+      67087,
+      233098,
+      511433,
+      113061,
+      68090,
+      191473,
+      144828,
+      11044,
+      270765,
+      455141,
+      441234,
+      109101,
+      227013,
+      4604,
+      73228,
+      321670,
+      378811,
+      453607,
+      470921,
+      99999,
+      4842,
+      527305,
+      84076,
+      494282
+    ]
+  },
+  {
+    "nll": 7.402794581480499,
+    "target_tokens": 383,
+    "grad_norm": 3.403441905975342,
+    "micro_shapes": [
+      {
+        "batch": 4,
+        "regions": 31,
+        "prefix_length": 13
+      },
+      {
+        "batch": 4,
+        "regions": 11,
+        "prefix_length": 14
+      },
+      {
+        "batch": 4,
+        "regions": 14,
+        "prefix_length": 15
+      },
+      {
+        "batch": 4,
+        "regions": 9,
+        "prefix_length": 13
+      },
+      {
+        "batch": 4,
+        "regions": 5,
+        "prefix_length": 15
+      },
+      {
+        "batch": 4,
+        "regions": 12,
+        "prefix_length": 12
+      },
+      {
+        "batch": 4,
+        "regions": 6,
+        "prefix_length": 18
+      },
+      {
+        "batch": 4,
+        "regions": 19,
+        "prefix_length": 15
+      }
+    ],
+    "step": 21,
+    "timed": true,
+    "seconds": 0.42091121299995393,
+    "event_indices": [
+      539157,
+      158964,
+      373090,
+      86155,
+      469495,
+      446325,
+      438502,
+      428602,
+      524053,
+      383374,
+      457771,
+      524077,
+      445063,
+      43985,
+      521823,
+      462656,
+      73257,
+      284938,
+      93137,
+      114277,
+      172590,
+      164047,
+      139309,
+      221841,
+      129095,
+      470690,
+      264510,
+      56103,
+      236410,
+      483626,
+      467490,
+      428705
+    ]
+  },
+  {
+    "nll": 7.42940782757724,
+    "target_tokens": 353,
+    "grad_norm": 3.1892549991607666,
+    "micro_shapes": [
+      {
+        "batch": 4,
+        "regions": 18,
+        "prefix_length": 14
+      },
+      {
+        "batch": 4,
+        "regions": 10,
+        "prefix_length": 12
+      },
+      {
+        "batch": 4,
+        "regions": 20,
+        "prefix_length": 12
+      },
+      {
+        "batch": 4,
+        "regions": 11,
+        "prefix_length": 15
+      },
+      {
+        "batch": 4,
+        "regions": 4,
+        "prefix_length": 13
+      },
+      {
+        "batch": 4,
+        "regions": 13,
+        "prefix_length": 15
+      },
+      {
+        "batch": 4,
+        "regions": 10,
+        "prefix_length": 13
+      },
+      {
+        "batch": 4,
+        "regions": 12,
+        "prefix_length": 15
+      }
+    ],
+    "step": 22,
+    "timed": true,
+    "seconds": 0.40767352400001755,
+    "event_indices": [
+      36748,
+      498113,
+      378041,
+      68943,
+      252915,
+      259720,
+      550261,
+      96509,
+      43174,
+      347797,
+      443884,
+      537624,
+      450264,
+      156060,
+      413631,
+      383475,
+      413985,
+      282644,
+      161151,
+      282943,
+      522617,
+      152340,
+      275326,
+      471778,
+      87023,
+      510954,
+      432304,
+      532755,
+      485242,
+      178763,
+      444091,
+      523369
+    ]
+  },
+  {
+    "nll": 7.227617591318458,
+    "target_tokens": 396,
+    "grad_norm": 3.4965450763702393,
+    "micro_shapes": [
+      {
+        "batch": 4,
+        "regions": 32,
+        "prefix_length": 13
+      },
+      {
+        "batch": 4,
+        "regions": 21,
+        "prefix_length": 16
+      },
+      {
+        "batch": 4,
+        "regions": 23,
+        "prefix_length": 17
+      },
+      {
+        "batch": 4,
+        "regions": 39,
+        "prefix_length": 15
+      },
+      {
+        "batch": 4,
+        "regions": 22,
+        "prefix_length": 13
+      },
+      {
+        "batch": 4,
+        "regions": 25,
+        "prefix_length": 24
+      },
+      {
+        "batch": 4,
+        "regions": 7,
+        "prefix_length": 12
+      },
+      {
+        "batch": 4,
+        "regions": 28,
+        "prefix_length": 14
+      }
+    ],
+    "step": 23,
+    "timed": true,
+    "seconds": 0.4058389150000039,
+    "event_indices": [
+      348858,
+      165475,
+      421366,
+      60958,
+      172808,
+      420398,
+      79067,
+      29254,
+      38275,
+      435515,
+      550696,
+      314985,
+      182889,
+      399634,
+      225833,
+      387616,
+      464368,
+      563425,
+      72168,
+      77793,
+      79039,
+      308332,
+      427943,
+      14204,
+      51014,
+      332446,
+      221372,
+      213108,
+      40820,
+      128327,
+      19897,
+      271792
+    ]
+  },
+  {
+    "nll": 7.022610299955539,
+    "target_tokens": 369,
+    "grad_norm": 3.702796459197998,
+    "micro_shapes": [
+      {
+        "batch": 4,
+        "regions": 24,
+        "prefix_length": 12
+      },
+      {
+        "batch": 4,
+        "regions": 15,
+        "prefix_length": 12
+      },
+      {
+        "batch": 4,
+        "regions": 12,
+        "prefix_length": 15
+      },
+      {
+        "batch": 4,
+        "regions": 16,
+        "prefix_length": 15
+      },
+      {
+        "batch": 4,
+        "regions": 18,
+        "prefix_length": 14
+      },
+      {
+        "batch": 4,
+        "regions": 14,
+        "prefix_length": 17
+      },
+      {
+        "batch": 4,
+        "regions": 11,
+        "prefix_length": 14
+      },
+      {
+        "batch": 4,
+        "regions": 5,
+        "prefix_length": 13
+      }
+    ],
+    "step": 24,
+    "timed": true,
+    "seconds": 0.4162057850000451,
+    "event_indices": [
+      356805,
+      398263,
+      348177,
+      360993,
+      252875,
+      470969,
+      215526,
+      297484,
+      131929,
+      163132,
+      250733,
+      210890,
+      349300,
+      393874,
+      353248,
+      209507,
+      544885,
+      48600,
+      502103,
+      135485,
+      193791,
+      512360,
+      137095,
+      200488,
+      111155,
+      65625,
+      401885,
+      206210,
+      245659,
+      265684,
+      254195,
+      545472
+    ]
+  },
+  {
+    "nll": 7.118470585810674,
+    "target_tokens": 385,
+    "grad_norm": 3.5613584518432617,
+    "micro_shapes": [
+      {
+        "batch": 4,
+        "regions": 5,
+        "prefix_length": 12
+      },
+      {
+        "batch": 4,
+        "regions": 27,
+        "prefix_length": 16
+      },
+      {
+        "batch": 4,
+        "regions": 26,
+        "prefix_length": 12
+      },
+      {
+        "batch": 4,
+        "regions": 14,
+        "prefix_length": 21
+      },
+      {
+        "batch": 4,
+        "regions": 15,
+        "prefix_length": 16
+      },
+      {
+        "batch": 4,
+        "regions": 8,
+        "prefix_length": 17
+      },
+      {
+        "batch": 4,
+        "regions": 4,
+        "prefix_length": 15
+      },
+      {
+        "batch": 4,
+        "regions": 29,
+        "prefix_length": 11
+      }
+    ],
+    "step": 25,
+    "timed": true,
+    "seconds": 0.4067645860000084,
+    "event_indices": [
+      47835,
+      162104,
+      52824,
+      293587,
+      186740,
+      378945,
+      135059,
+      503268,
+      431752,
+      306566,
+      511891,
+      485367,
+      339130,
+      79325,
+      432679,
+      448895,
+      455226,
+      467606,
+      244136,
+      530578,
+      41954,
+      196236,
+      277737,
+      263940,
+      277518,
+      515371,
+      153179,
+      268568,
+      400048,
+      113926,
+      209573,
+      313459
+    ]
+  },
+  {
+    "nll": 6.997805616590711,
+    "target_tokens": 360,
+    "grad_norm": 3.5495336055755615,
+    "micro_shapes": [
+      {
+        "batch": 4,
+        "regions": 8,
+        "prefix_length": 11
+      },
+      {
+        "batch": 4,
+        "regions": 10,
+        "prefix_length": 12
+      },
+      {
+        "batch": 4,
+        "regions": 12,
+        "prefix_length": 12
+      },
+      {
+        "batch": 4,
+        "regions": 6,
+        "prefix_length": 14
+      },
+      {
+        "batch": 4,
+        "regions": 25,
+        "prefix_length": 14
+      },
+      {
+        "batch": 4,
+        "regions": 5,
+        "prefix_length": 14
+      },
+      {
+        "batch": 4,
+        "regions": 14,
+        "prefix_length": 13
+      },
+      {
+        "batch": 4,
+        "regions": 14,
+        "prefix_length": 14
+      }
+    ],
+    "step": 26,
+    "timed": true,
+    "seconds": 0.4068526010000255,
+    "event_indices": [
+      546822,
+      475826,
+      561071,
+      217707,
+      383392,
+      174265,
+      531137,
+      152073,
+      287966,
+      314260,
+      29413,
+      483818,
+      170965,
+      418036,
+      178594,
+      457876,
+      340751,
+      495875,
+      485451,
+      246187,
+      94445,
+      370140,
+      90877,
+      431481,
+      41025,
+      295903,
+      452518,
+      57551,
+      268574,
+      103949,
+      54986,
+      436833
+    ]
+  },
+  {
+    "nll": 6.948094018821508,
+    "target_tokens": 366,
+    "grad_norm": 3.4441354274749756,
+    "micro_shapes": [
+      {
+        "batch": 4,
+        "regions": 39,
+        "prefix_length": 16
+      },
+      {
+        "batch": 4,
+        "regions": 11,
+        "prefix_length": 13
+      },
+      {
+        "batch": 4,
+        "regions": 11,
+        "prefix_length": 16
+      },
+      {
+        "batch": 4,
+        "regions": 15,
+        "prefix_length": 14
+      },
+      {
+        "batch": 4,
+        "regions": 18,
+        "prefix_length": 13
+      },
+      {
+        "batch": 4,
+        "regions": 4,
+        "prefix_length": 16
+      },
+      {
+        "batch": 4,
+        "regions": 5,
+        "prefix_length": 14
+      },
+      {
+        "batch": 4,
+        "regions": 22,
+        "prefix_length": 14
+      }
+    ],
+    "step": 27,
+    "timed": true,
+    "seconds": 0.41406930499999817,
+    "event_indices": [
+      161350,
+      409171,
+      455383,
+      92772,
+      261981,
+      334596,
+      93473,
+      388232,
+      184330,
+      14065,
+      449796,
+      3074,
+      359258,
+      298173,
+      270521,
+      301337,
+      158730,
+      290449,
+      530606,
+      548238,
+      153434,
+      515700,
+      117919,
+      388505,
+      50934,
+      523509,
+      166062,
+      502121,
+      507985,
+      376801,
+      324991,
+      283355
+    ]
+  },
+  {
+    "nll": 6.885635258299526,
+    "target_tokens": 389,
+    "grad_norm": 3.4447946548461914,
+    "micro_shapes": [
+      {
+        "batch": 4,
+        "regions": 18,
+        "prefix_length": 23
+      },
+      {
+        "batch": 4,
+        "regions": 13,
+        "prefix_length": 12
+      },
+      {
+        "batch": 4,
+        "regions": 21,
+        "prefix_length": 19
+      },
+      {
+        "batch": 4,
+        "regions": 27,
+        "prefix_length": 14
+      },
+      {
+        "batch": 4,
+        "regions": 3,
+        "prefix_length": 14
+      },
+      {
+        "batch": 4,
+        "regions": 4,
+        "prefix_length": 12
+      },
+      {
+        "batch": 4,
+        "regions": 9,
+        "prefix_length": 16
+      },
+      {
+        "batch": 4,
+        "regions": 5,
+        "prefix_length": 14
+      }
+    ],
+    "step": 28,
+    "timed": true,
+    "seconds": 0.4131770719999963,
+    "event_indices": [
+      453240,
+      196547,
+      351854,
+      537079,
+      406425,
+      555149,
+      247230,
+      565780,
+      85744,
+      501503,
+      314199,
+      555068,
+      244381,
+      254733,
+      297712,
+      81613,
+      14068,
+      473920,
+      189885,
+      51224,
+      258360,
+      276201,
+      360189,
+      244437,
+      324265,
+      529879,
+      260693,
+      444131,
+      213172,
+      347824,
+      548492,
+      417846
+    ]
+  },
+  {
+    "nll": 6.725119760874155,
+    "target_tokens": 370,
+    "grad_norm": 3.570042610168457,
+    "micro_shapes": [
+      {
+        "batch": 4,
+        "regions": 10,
+        "prefix_length": 11
+      },
+      {
+        "batch": 4,
+        "regions": 15,
+        "prefix_length": 18
+      },
+      {
+        "batch": 4,
+        "regions": 11,
+        "prefix_length": 13
+      },
+      {
+        "batch": 4,
+        "regions": 19,
+        "prefix_length": 14
+      },
+      {
+        "batch": 4,
+        "regions": 7,
+        "prefix_length": 13
+      },
+      {
+        "batch": 4,
+        "regions": 6,
+        "prefix_length": 14
+      },
+      {
+        "batch": 4,
+        "regions": 5,
+        "prefix_length": 14
+      },
+      {
+        "batch": 4,
+        "regions": 14,
+        "prefix_length": 12
+      }
+    ],
+    "step": 29,
+    "timed": true,
+    "seconds": 0.4598769790000006,
+    "event_indices": [
+      475377,
+      458573,
+      385295,
+      440527,
+      309383,
+      417585,
+      6966,
+      48069,
+      315125,
+      242373,
+      96491,
+      505073,
+      290221,
+      436420,
+      432261,
+      230495,
+      303453,
+      332592,
+      334302,
+      403099,
+      145843,
+      98620,
+      252042,
+      359133,
+      59484,
+      189087,
+      409779,
+      519042,
+      233500,
+      18056,
+      24474,
+      356164
+    ]
+  },
+  {
+    "nll": 6.650972219613882,
+    "target_tokens": 364,
+    "grad_norm": 3.8005552291870117,
+    "micro_shapes": [
+      {
+        "batch": 4,
+        "regions": 23,
+        "prefix_length": 16
+      },
+      {
+        "batch": 4,
+        "regions": 7,
+        "prefix_length": 11
+      },
+      {
+        "batch": 4,
+        "regions": 53,
+        "prefix_length": 13
+      },
+      {
+        "batch": 4,
+        "regions": 4,
+        "prefix_length": 11
+      },
+      {
+        "batch": 4,
+        "regions": 36,
+        "prefix_length": 15
+      },
+      {
+        "batch": 4,
+        "regions": 19,
+        "prefix_length": 13
+      },
+      {
+        "batch": 4,
+        "regions": 17,
+        "prefix_length": 14
+      },
+      {
+        "batch": 4,
+        "regions": 12,
+        "prefix_length": 12
+      }
+    ],
+    "step": 30,
+    "timed": true,
+    "seconds": 0.423848248000013,
+    "event_indices": [
+      80993,
+      88217,
+      346077,
+      504036,
+      30214,
+      191772,
+      236962,
+      37671,
+      444506,
+      12430,
+      248173,
+      560392,
+      45352,
+      358129,
+      375539,
+      89242,
+      72660,
+      513942,
+      433811,
+      542970,
+      340967,
+      188907,
+      118439,
+      408212,
+      134005,
+      121371,
+      253957,
+      138840,
+      507021,
+      257261,
+      269459,
+      267879
+    ]
+  },
+  {
+    "nll": 6.938733911001554,
+    "target_tokens": 372,
+    "grad_norm": 2.95568585395813,
+    "micro_shapes": [
+      {
+        "batch": 4,
+        "regions": 22,
+        "prefix_length": 13
+      },
+      {
+        "batch": 4,
+        "regions": 9,
+        "prefix_length": 12
+      },
+      {
+        "batch": 4,
+        "regions": 11,
+        "prefix_length": 19
+      },
+      {
+        "batch": 4,
+        "regions": 6,
+        "prefix_length": 11
+      },
+      {
+        "batch": 4,
+        "regions": 16,
+        "prefix_length": 16
+      },
+      {
+        "batch": 4,
+        "regions": 11,
+        "prefix_length": 15
+      },
+      {
+        "batch": 4,
+        "regions": 6,
+        "prefix_length": 15
+      },
+      {
+        "batch": 4,
+        "regions": 10,
+        "prefix_length": 15
+      }
+    ],
+    "step": 31,
+    "timed": true,
+    "seconds": 0.4350547450000022,
+    "event_indices": [
+      70197,
+      160771,
+      28391,
+      388201,
+      443393,
+      296223,
+      474865,
+      374393,
+      146855,
+      432518,
+      308437,
+      31478,
+      269031,
+      170972,
+      61429,
+      245466,
+      282543,
+      155119,
+      405529,
+      265906,
+      477511,
+      156733,
+      333102,
+      11969,
+      159116,
+      19622,
+      291943,
+      66303,
+      47658,
+      319250,
+      127785,
+      124111
+    ]
+  },
+  {
+    "nll": 6.793104140139416,
+    "target_tokens": 362,
+    "grad_norm": 3.023704767227173,
+    "micro_shapes": [
+      {
+        "batch": 4,
+        "regions": 9,
+        "prefix_length": 12
+      },
+      {
+        "batch": 4,
+        "regions": 5,
+        "prefix_length": 15
+      },
+      {
+        "batch": 4,
+        "regions": 12,
+        "prefix_length": 13
+      },
+      {
+        "batch": 4,
+        "regions": 16,
+        "prefix_length": 13
+      },
+      {
+        "batch": 4,
+        "regions": 33,
+        "prefix_length": 13
+      },
+      {
+        "batch": 4,
+        "regions": 8,
+        "prefix_length": 14
+      },
+      {
+        "batch": 4,
+        "regions": 6,
+        "prefix_length": 18
+      },
+      {
+        "batch": 4,
+        "regions": 7,
+        "prefix_length": 12
+      }
+    ],
+    "step": 32,
+    "timed": true,
+    "seconds": 0.4244246519999706,
+    "event_indices": [
+      294169,
+      475866,
+      282487,
+      557204,
+      307553,
+      235228,
+      373715,
+      151043,
+      138683,
+      204299,
+      538607,
+      2480,
+      473805,
+      409348,
+      566090,
+      65367,
+      525437,
+      277617,
+      244857,
+      241035,
+      548316,
+      334080,
+      363688,
+      278756,
+      505789,
+      246140,
+      428521,
+      131663,
+      483940,
+      301113,
+      259554,
+      315071
+    ]
+  },
+  {
+    "nll": 6.570956556909928,
+    "target_tokens": 359,
+    "grad_norm": 3.253176689147949,
+    "micro_shapes": [
+      {
+        "batch": 4,
+        "regions": 9,
+        "prefix_length": 17
+      },
+      {
+        "batch": 4,
+        "regions": 5,
+        "prefix_length": 13
+      },
+      {
+        "batch": 4,
+        "regions": 13,
+        "prefix_length": 11
+      },
+      {
+        "batch": 4,
+        "regions": 11,
+        "prefix_length": 13
+      },
+      {
+        "batch": 4,
+        "regions": 13,
+        "prefix_length": 11
+      },
+      {
+        "batch": 4,
+        "regions": 10,
+        "prefix_length": 13
+      },
+      {
+        "batch": 4,
+        "regions": 26,
+        "prefix_length": 19
+      },
+      {
+        "batch": 4,
+        "regions": 9,
+        "prefix_length": 12
+      }
+    ],
+    "step": 33,
+    "timed": true,
+    "seconds": 0.42181814899998926,
+    "event_indices": [
+      52102,
+      112244,
+      361254,
+      233260,
+      53255,
+      476027,
+      313437,
+      297965,
+      23204,
+      313933,
+      440189,
+      131656,
+      71427,
+      191728,
+      508661,
+      39759,
+      61769,
+      59585,
+      429736,
+      490974,
+      263507,
+      99106,
+      560938,
+      481612,
+      354873,
+      301669,
+      133454,
+      301069,
+      306265,
+      123271,
+      81760,
+      417182
+    ]
+  },
+  {
+    "nll": 6.624112161357751,
+    "target_tokens": 356,
+    "grad_norm": 2.92740797996521,
+    "micro_shapes": [
+      {
+        "batch": 4,
+        "regions": 12,
+        "prefix_length": 16
+      },
+      {
+        "batch": 4,
+        "regions": 16,
+        "prefix_length": 16
+      },
+      {
+        "batch": 4,
+        "regions": 19,
+        "prefix_length": 13
+      },
+      {
+        "batch": 4,
+        "regions": 10,
+        "prefix_length": 13
+      },
+      {
+        "batch": 4,
+        "regions": 6,
+        "prefix_length": 11
+      },
+      {
+        "batch": 4,
+        "regions": 6,
+        "prefix_length": 14
+      },
+      {
+        "batch": 4,
+        "regions": 25,
+        "prefix_length": 11
+      },
+      {
+        "batch": 4,
+        "regions": 9,
+        "prefix_length": 12
+      }
+    ],
+    "step": 34,
+    "timed": true,
+    "seconds": 0.4125131119999992,
+    "event_indices": [
+      168752,
+      53569,
+      272859,
+      24608,
+      295953,
+      67289,
+      16422,
+      390228,
+      59930,
+      524912,
+      561508,
+      128503,
+      466752,
+      308342,
+      470352,
+      64776,
+      236676,
+      394122,
+      170678,
+      177548,
+      248640,
+      67256,
+      286024,
+      229865,
+      543442,
+      23541,
+      489110,
+      367805,
+      21167,
+      389582,
+      173077,
+      433039
+    ]
+  },
+  {
+    "nll": 6.553280418743716,
+    "target_tokens": 373,
+    "grad_norm": 3.0075905323028564,
+    "micro_shapes": [
+      {
+        "batch": 4,
+        "regions": 27,
+        "prefix_length": 12
+      },
+      {
+        "batch": 4,
+        "regions": 7,
+        "prefix_length": 17
+      },
+      {
+        "batch": 4,
+        "regions": 15,
+        "prefix_length": 11
+      },
+      {
+        "batch": 4,
+        "regions": 17,
+        "prefix_length": 11
+      },
+      {
+        "batch": 4,
+        "regions": 11,
+        "prefix_length": 15
+      },
+      {
+        "batch": 4,
+        "regions": 7,
+        "prefix_length": 16
+      },
+      {
+        "batch": 4,
+        "regions": 7,
+        "prefix_length": 18
+      },
+      {
+        "batch": 4,
+        "regions": 8,
+        "prefix_length": 14
+      }
+    ],
+    "step": 35,
+    "timed": true,
+    "seconds": 0.4089065170000481,
+    "event_indices": [
+      99655,
+      198748,
+      512111,
+      343145,
+      556355,
+      143456,
+      370138,
+      367726,
+      24772,
+      205796,
+      291424,
+      22739,
+      363715,
+      32924,
+      527737,
+      454166,
+      545829,
+      245628,
+      85708,
+      309098,
+      548942,
+      130253,
+      558518,
+      77312,
+      189012,
+      332271,
+      357210,
+      374395,
+      450959,
+      357454,
+      27879,
+      70749
+    ]
+  },
+  {
+    "nll": 6.563496273570291,
+    "target_tokens": 353,
+    "grad_norm": 2.7631988525390625,
+    "micro_shapes": [
+      {
+        "batch": 4,
+        "regions": 23,
+        "prefix_length": 14
+      },
+      {
+        "batch": 4,
+        "regions": 23,
+        "prefix_length": 14
+      },
+      {
+        "batch": 4,
+        "regions": 6,
+        "prefix_length": 12
+      },
+      {
+        "batch": 4,
+        "regions": 15,
+        "prefix_length": 13
+      },
+      {
+        "batch": 4,
+        "regions": 5,
+        "prefix_length": 12
+      },
+      {
+        "batch": 4,
+        "regions": 30,
+        "prefix_length": 11
+      },
+      {
+        "batch": 4,
+        "regions": 30,
+        "prefix_length": 12
+      },
+      {
+        "batch": 4,
+        "regions": 6,
+        "prefix_length": 13
+      }
+    ],
+    "step": 36,
+    "timed": true,
+    "seconds": 0.4331157409999946,
+    "event_indices": [
+      196358,
+      504533,
+      545886,
+      162954,
+      285961,
+      423582,
+      214814,
+      204663,
+      440521,
+      93690,
+      443145,
+      5610,
+      372365,
+      313120,
+      140629,
+      456904,
+      271435,
+      273431,
+      450131,
+      542761,
+      98848,
+      367031,
+      368972,
+      408353,
+      30867,
+      539252,
+      210214,
+      323458,
+      185889,
+      265551,
+      133785,
+      437648
+    ]
+  },
+  {
+    "nll": 6.398027722882029,
+    "target_tokens": 359,
+    "grad_norm": 2.7555856704711914,
+    "micro_shapes": [
+      {
+        "batch": 4,
+        "regions": 17,
+        "prefix_length": 13
+      },
+      {
+        "batch": 4,
+        "regions": 14,
+        "prefix_length": 16
+      },
+      {
+        "batch": 4,
+        "regions": 31,
+        "prefix_length": 11
+      },
+      {
+        "batch": 4,
+        "regions": 14,
+        "prefix_length": 18
+      },
+      {
+        "batch": 4,
+        "regions": 12,
+        "prefix_length": 13
+      },
+      {
+        "batch": 4,
+        "regions": 11,
+        "prefix_length": 13
+      },
+      {
+        "batch": 4,
+        "regions": 16,
+        "prefix_length": 11
+      },
+      {
+        "batch": 4,
+        "regions": 27,
+        "prefix_length": 16
+      }
+    ],
+    "step": 37,
+    "timed": true,
+    "seconds": 0.42964861500001916,
+    "event_indices": [
+      415448,
+      564752,
+      283414,
+      150395,
+      211430,
+      330297,
+      46804,
+      311067,
+      529627,
+      250749,
+      413167,
+      527255,
+      252044,
+      279459,
+      464280,
+      482766,
+      79121,
+      51449,
+      487276,
+      401756,
+      530094,
+      358310,
+      264263,
+      337819,
+      563953,
+      321024,
+      457311,
+      481786,
+      448781,
+      181533,
+      153346,
+      305700
+    ]
+  },
+  {
+    "nll": 6.478742162493683,
+    "target_tokens": 371,
+    "grad_norm": 2.72269606590271,
+    "micro_shapes": [
+      {
+        "batch": 4,
+        "regions": 18,
+        "prefix_length": 14
+      },
+      {
+        "batch": 4,
+        "regions": 8,
+        "prefix_length": 17
+      },
+      {
+        "batch": 4,
+        "regions": 26,
+        "prefix_length": 12
+      },
+      {
+        "batch": 4,
+        "regions": 35,
+        "prefix_length": 14
+      },
+      {
+        "batch": 4,
+        "regions": 7,
+        "prefix_length": 14
+      },
+      {
+        "batch": 4,
+        "regions": 20,
+        "prefix_length": 12
+      },
+      {
+        "batch": 4,
+        "regions": 10,
+        "prefix_length": 17
+      },
+      {
+        "batch": 4,
+        "regions": 6,
+        "prefix_length": 14
+      }
+    ],
+    "step": 38,
+    "timed": true,
+    "seconds": 0.42307541499997114,
+    "event_indices": [
+      410759,
+      284248,
+      368162,
+      326818,
+      528738,
+      378690,
+      247951,
+      390487,
+      401320,
+      478488,
+      209682,
+      114587,
+      330429,
+      465525,
+      531788,
+      360130,
+      45764,
+      266447,
+      375755,
+      10164,
+      408400,
+      559895,
+      173566,
+      355387,
+      358977,
+      261811,
+      78776,
+      56624,
+      555018,
+      247377,
+      261090,
+      327661
+    ]
+  },
+  {
+    "nll": 6.4469948032924105,
+    "target_tokens": 350,
+    "grad_norm": 2.6908645629882812,
+    "micro_shapes": [
+      {
+        "batch": 4,
+        "regions": 11,
+        "prefix_length": 13
+      },
+      {
+        "batch": 4,
+        "regions": 10,
+        "prefix_length": 12
+      },
+      {
+        "batch": 4,
+        "regions": 10,
+        "prefix_length": 14
+      },
+      {
+        "batch": 4,
+        "regions": 8,
+        "prefix_length": 14
+      },
+      {
+        "batch": 4,
+        "regions": 12,
+        "prefix_length": 14
+      },
+      {
+        "batch": 4,
+        "regions": 13,
+        "prefix_length": 14
+      },
+      {
+        "batch": 4,
+        "regions": 22,
+        "prefix_length": 11
+      },
+      {
+        "batch": 4,
+        "regions": 11,
+        "prefix_length": 13
+      }
+    ],
+    "step": 39,
+    "timed": true,
+    "seconds": 0.4219283979999773,
+    "event_indices": [
+      53813,
+      482695,
+      181690,
+      135098,
+      524351,
+      490494,
+      126416,
+      360742,
+      370673,
+      313086,
+      194126,
+      82732,
+      482037,
+      179989,
+      524862,
+      136380,
+      450671,
+      8252,
+      484585,
+      382390,
+      473339,
+      409560,
+      359192,
+      156418,
+      426367,
+      495274,
+      438421,
+      254166,
+      232118,
+      476265,
+      426642,
+      270347
+    ]
+  },
+  {
+    "nll": 6.193810743741711,
+    "target_tokens": 377,
+    "grad_norm": 2.911669969558716,
+    "micro_shapes": [
+      {
+        "batch": 4,
+        "regions": 18,
+        "prefix_length": 13
+      },
+      {
+        "batch": 4,
+        "regions": 16,
+        "prefix_length": 18
+      },
+      {
+        "batch": 4,
+        "regions": 18,
+        "prefix_length": 13
+      },
+      {
+        "batch": 4,
+        "regions": 9,
+        "prefix_length": 19
+      },
+      {
+        "batch": 4,
+        "regions": 11,
+        "prefix_length": 12
+      },
+      {
+        "batch": 4,
+        "regions": 7,
+        "prefix_length": 16
+      },
+      {
+        "batch": 4,
+        "regions": 16,
+        "prefix_length": 13
+      },
+      {
+        "batch": 4,
+        "regions": 14,
+        "prefix_length": 13
+      }
+    ],
+    "step": 40,
+    "timed": true,
+    "seconds": 0.42104899399998885,
+    "event_indices": [
+      245508,
+      301586,
+      524411,
+      336441,
+      248320,
+      434890,
+      515023,
+      346917,
+      477971,
+      48719,
+      256893,
+      359469,
+      468029,
+      74788,
+      481039,
+      175372,
+      369442,
+      368837,
+      485513,
+      279100,
+      368798,
+      480773,
+      54178,
+      358994,
+      160993,
+      68089,
+      207347,
+      300391,
+      492008,
+      544811,
+      67526,
+      75953
+    ]
+  }
+]

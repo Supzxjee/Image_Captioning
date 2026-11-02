@@ -1,0 +1,307 @@
+{
+  "status": "FULL_CACHE_XE_BENCHMARK_COMPLETE",
+  "actual_optimizer_updates": 40,
+  "warmup_updates": 10,
+  "timed_updates": 30,
+  "effective_batch": 32,
+  "microbatch": 4,
+  "accumulation": 8,
+  "precision": "FP32",
+  "gpus_used": 1,
+  "bank_buffers_unchanged": true,
+  "checkpoint_saved": false,
+  "train_caption_events": 566747,
+  "val_caption_events": 25010,
+  "updates_per_full_epoch": 17711,
+  "train_step_seconds": {
+    "median": 0.4141840714999887,
+    "p90": 0.4299953276000167,
+    "mean": 0.41683652763333234
+  },
+  "training_memory": {
+    "allocated_mib": 997.96826171875,
+    "reserved_mib": 1064.0
+  },
+  "stress": {
+    "nll": 9.174538318021797,
+    "target_tokens": 405,
+    "grad_norm": 5.0803117752075195,
+    "micro_shapes": [
+      {
+        "batch": 4,
+        "regions": 87,
+        "prefix_length": 50
+      },
+      {
+        "batch": 4,
+        "regions": 10,
+        "prefix_length": 13
+      },
+      {
+        "batch": 4,
+        "regions": 10,
+        "prefix_length": 12
+      },
+      {
+        "batch": 4,
+        "regions": 15,
+        "prefix_length": 14
+      },
+      {
+        "batch": 4,
+        "regions": 18,
+        "prefix_length": 13
+      },
+      {
+        "batch": 4,
+        "regions": 18,
+        "prefix_length": 22
+      },
+      {
+        "batch": 4,
+        "regions": 18,
+        "prefix_length": 12
+      },
+      {
+        "batch": 4,
+        "regions": 6,
+        "prefix_length": 15
+      }
+    ],
+    "peak_allocated_mib": 521.39892578125,
+    "optimizer_steps": 0,
+    "event_indices": [
+      145141,
+      94633,
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29
+    ]
+  },
+  "teacher_probe": {
+    "images": 32,
+    "caption_events": 160,
+    "seconds": 0.6801680929999634,
+    "nll": 6.327405313540511,
+    "target_tokens": 1802
+  },
+  "beam_probe": {
+    "images": 32,
+    "seconds": 4.917732610999963,
+    "outputs": [
+      {
+        "coco_id": 184613,
+        "tokens": 0,
+        "eos": true
+      },
+      {
+        "coco_id": 403013,
+        "tokens": 0,
+        "eos": true
+      },
+      {
+        "coco_id": 562150,
+        "tokens": 0,
+        "eos": true
+      },
+      {
+        "coco_id": 360772,
+        "tokens": 0,
+        "eos": true
+      },
+      {
+        "coco_id": 340559,
+        "tokens": 0,
+        "eos": true
+      },
+      {
+        "coco_id": 321107,
+        "tokens": 0,
+        "eos": true
+      },
+      {
+        "coco_id": 129001,
+        "tokens": 0,
+        "eos": true
+      },
+      {
+        "coco_id": 556616,
+        "tokens": 0,
+        "eos": true
+      },
+      {
+        "coco_id": 472621,
+        "tokens": 0,
+        "eos": true
+      },
+      {
+        "coco_id": 364521,
+        "tokens": 0,
+        "eos": true
+      },
+      {
+        "coco_id": 310391,
+        "tokens": 0,
+        "eos": true
+      },
+      {
+        "coco_id": 241876,
+        "tokens": 0,
+        "eos": true
+      },
+      {
+        "coco_id": 462341,
+        "tokens": 0,
+        "eos": true
+      },
+      {
+        "coco_id": 268556,
+        "tokens": 0,
+        "eos": true
+      },
+      {
+        "coco_id": 386912,
+        "tokens": 0,
+        "eos": true
+      },
+      {
+        "coco_id": 74331,
+        "tokens": 0,
+        "eos": true
+      },
+      {
+        "coco_id": 78371,
+        "tokens": 0,
+        "eos": true
+      },
+      {
+        "coco_id": 52759,
+        "tokens": 0,
+        "eos": true
+      },
+      {
+        "coco_id": 128939,
+        "tokens": 0,
+        "eos": true
+      },
+      {
+        "coco_id": 339974,
+        "tokens": 0,
+        "eos": true
+      },
+      {
+        "coco_id": 9426,
+        "tokens": 0,
+        "eos": true
+      },
+      {
+        "coco_id": 242139,
+        "tokens": 0,
+        "eos": true
+      },
+      {
+        "coco_id": 143931,
+        "tokens": 0,
+        "eos": true
+      },
+      {
+        "coco_id": 40102,
+        "tokens": 0,
+        "eos": true
+      },
+      {
+        "coco_id": 403020,
+        "tokens": 0,
+        "eos": true
+      },
+      {
+        "coco_id": 505440,
+        "tokens": 0,
+        "eos": true
+      },
+      {
+        "coco_id": 29913,
+        "tokens": 0,
+        "eos": true
+      },
+      {
+        "coco_id": 431573,
+        "tokens": 0,
+        "eos": true
+      },
+      {
+        "coco_id": 332654,
+        "tokens": 0,
+        "eos": true
+      },
+      {
+        "coco_id": 176649,
+        "tokens": 0,
+        "eos": true
+      },
+      {
+        "coco_id": 173574,
+        "tokens": 0,
+        "eos": true
+      },
+      {
+        "coco_id": 460347,
+        "tokens": 0,
+        "eos": true
+      }
+    ],
+    "fresh_model_after_updates": 40
+  },
+  "projection": {
+    "train_only_hours_1epoch": 2.0376705806489723,
+    "train_only_hours_15epochs": 30.565058709734586,
+    "p90_train_only_hours_15epochs": 31.7318635296829,
+    "teacher_seconds_per_full_val": 106.31877503705678,
+    "beam_seconds_per_full_val": 768.3957204687441,
+    "limitations": "Scenario only: excludes officialmetric/checkpoint/coldcache costs; maturecaptionlength and throughput may differ. No fullrun auto-start."
+  },
+  "full_cache_manifest_sha256": "512bf34336be54f2854743bd06004dbc30ff506cda130c03378d77a6d3cf6130",
+  "bank_package": {
+    "kernel_version": "ducanh2403/2-vi-cai-kia-qua-nhieu/130",
+    "files": {
+      "semantic_banks.npz": "e77608563fb23622d52d27ada06f49e6e578ef573c9fe41861878c36357fa698",
+      "cache_manifest.json": "1fe9b24391bc580acf13cf488224e92a187389d680fa40293d0f22ce15b1d8ea",
+      "cache_receipt.json": "a50d8a43ab4eb0f69f1bf91644054c4a6b30da65cb54194f804815793868de24",
+      "smoke_summary.json": "d59ffc2496f71ac5c65c995ab19d60affa28865c58c71eb624bb9257ebaefc90",
+      "notebook.log": "2c0bb4ffab63bad3993a379797d05583472bdffa7ee2c99c4df5feaf1d7d20ca",
+      "source_receipt.json": "5e26da5acd1d597441e0497763ef3c0afcf0e19e90731e9a2ad8717afc75c537"
+    },
+    "source_review_zip_sha256": "7b14d35af654b630f6a5addf9943dbe5910074c9f772e7d8ee38026558f15f9e"
+  },
+  "stage_seconds": 118.29470830199998,
+  "worker_seconds": 152.221469112,
+  "quality_metrics": false,
+  "grounding_accuracy": false
+}

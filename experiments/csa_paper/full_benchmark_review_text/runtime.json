@@ -1,0 +1,10 @@
+{
+  "device": "Tesla T4",
+  "used_gpu": 0,
+  "visible_gpus": 2,
+  "precision": "FP32,noAMP,noTF32",
+  "software": {
+    "torch": "2.11.0+cu128",
+    "numpy": "2.1.3"
+  }
+}
