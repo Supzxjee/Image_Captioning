@@ -1,0 +1,2249 @@
+[
+  {
+    "stem": "01_overview",
+    "title": "CSA adaptation — cached CLIP ROI + semantic banks",
+    "items": [
+      {
+        "type": "text",
+        "x": 40,
+        "y": 22,
+        "w": 1840,
+        "h": 55,
+        "t": "CSA adaptation — cached CLIP ROI + semantic banks",
+        "size": 36,
+        "bold": true,
+        "color": "#151515",
+        "align": "left"
+      },
+      {
+        "type": "text",
+        "x": 42,
+        "y": 79,
+        "w": 1835,
+        "h": 35,
+        "t": "Pipeline hiện tại • tự triển khai theo CSA, thay feature/text encoder • sơ đồ kiến trúc và run XE10, chưa phải kết quả huấn luyện",
+        "size": 21,
+        "bold": false,
+        "color": "#444444",
+        "align": "left"
+      },
+      {
+        "type": "frame",
+        "x": 40,
+        "y": 125,
+        "w": 860,
+        "h": 245,
+        "t": "OFFLINE · visual inputs"
+      },
+      {
+        "type": "text",
+        "x": 56,
+        "y": 133,
+        "w": 301,
+        "h": 30,
+        "t": "OFFLINE · visual inputs",
+        "size": 21,
+        "bold": true,
+        "color": "#444444",
+        "align": "left"
+      },
+      {
+        "type": "frame",
+        "x": 925,
+        "y": 125,
+        "w": 950,
+        "h": 245,
+        "t": "OFFLINE · semantic banks toàn cục từ TRAIN"
+      },
+      {
+        "type": "text",
+        "x": 941,
+        "y": 133,
+        "w": 529,
+        "h": 30,
+        "t": "OFFLINE · semantic banks toàn cục từ TRAIN",
+        "size": 21,
+        "bold": true,
+        "color": "#444444",
+        "align": "left"
+      },
+      {
+        "type": "box",
+        "x": 60,
+        "y": 225,
+        "w": 120,
+        "h": 65,
+        "t": "Ảnh RGB",
+        "kind": "frozen",
+        "size": 22
+      },
+      {
+        "type": "box",
+        "x": 220,
+        "y": 175,
+        "w": 210,
+        "h": 65,
+        "t": "Predicted boxes\nproducer cache",
+        "kind": "frozen",
+        "size": 20
+      },
+      {
+        "type": "box",
+        "x": 220,
+        "y": 265,
+        "w": 210,
+        "h": 85,
+        "t": "CLIP ViT-B/16\n197×768 → 196×768\npatch grid 14×14",
+        "kind": "frozen",
+        "size": 19
+      },
+      {
+        "type": "box",
+        "x": 480,
+        "y": 230,
+        "w": 195,
+        "h": 90,
+        "t": "Fractional-area\nROI pooling",
+        "kind": "frozen",
+        "size": 22
+      },
+      {
+        "type": "box",
+        "x": 720,
+        "y": 235,
+        "w": 155,
+        "h": 80,
+        "t": "ROI cache\nN×768",
+        "kind": "frozen",
+        "size": 22
+      },
+      {
+        "type": "arrow",
+        "pts": [
+          [
+            180,
+            250
+          ],
+          [
+            195,
+            250
+          ],
+          [
+            195,
+            207
+          ],
+          [
+            220,
+            207
+          ]
+        ],
+        "color": "#222222",
+        "dash": false
+      },
+      {
+        "type": "arrow",
+        "pts": [
+          [
+            180,
+            260
+          ],
+          [
+            195,
+            260
+          ],
+          [
+            195,
+            307
+          ],
+          [
+            220,
+            307
+          ]
+        ],
+        "color": "#222222",
+        "dash": false
+      },
+      {
+        "type": "arrow",
+        "pts": [
+          [
+            430,
+            207
+          ],
+          [
+            575,
+            207
+          ],
+          [
+            575,
+            230
+          ]
+        ],
+        "color": "#222222",
+        "dash": false
+      },
+      {
+        "type": "arrow",
+        "pts": [
+          [
+            430,
+            307
+          ],
+          [
+            455,
+            307
+          ],
+          [
+            455,
+            285
+          ],
+          [
+            480,
+            285
+          ]
+        ],
+        "color": "#222222",
+        "dash": false
+      },
+      {
+        "type": "arrow",
+        "pts": [
+          [
+            675,
+            275
+          ],
+          [
+            720,
+            275
+          ]
+        ],
+        "color": "#222222",
+        "dash": false
+      },
+      {
+        "type": "box",
+        "x": 945,
+        "y": 185,
+        "w": 180,
+        "h": 80,
+        "t": "Captions TRAIN\n113,287 ảnh",
+        "kind": "frozen",
+        "size": 21
+      },
+      {
+        "type": "box",
+        "x": 1160,
+        "y": 185,
+        "w": 180,
+        "h": 80,
+        "t": "POS + lemma\nriding/rides → ride",
+        "kind": "frozen",
+        "size": 20
+      },
+      {
+        "type": "box",
+        "x": 1375,
+        "y": 185,
+        "w": 190,
+        "h": 80,
+        "t": "Frozen CLIP text\nL2-normalized 512D",
+        "kind": "frozen",
+        "size": 20
+      },
+      {
+        "type": "box",
+        "x": 1610,
+        "y": 175,
+        "w": 245,
+        "h": 145,
+        "t": "Noun bank: 5269×512\n\nVerb bank: 1594×512",
+        "kind": "frozen",
+        "size": 22
+      },
+      {
+        "type": "arrow",
+        "pts": [
+          [
+            1125,
+            225
+          ],
+          [
+            1160,
+            225
+          ]
+        ],
+        "color": "#222222",
+        "dash": false
+      },
+      {
+        "type": "arrow",
+        "pts": [
+          [
+            1340,
+            225
+          ],
+          [
+            1375,
+            225
+          ]
+        ],
+        "color": "#222222",
+        "dash": false
+      },
+      {
+        "type": "arrow",
+        "pts": [
+          [
+            1565,
+            225
+          ],
+          [
+            1610,
+            225
+          ]
+        ],
+        "color": "#222222",
+        "dash": false
+      },
+      {
+        "type": "text",
+        "x": 945,
+        "y": 292,
+        "w": 610,
+        "h": 53,
+        "t": "Banks không đổi theo ảnh suy luận;\nTRAIN XE10 không chạy lại detector/CLIP.",
+        "size": 19,
+        "bold": false,
+        "color": "#444444",
+        "align": "left"
+      },
+      {
+        "type": "frame",
+        "x": 40,
+        "y": 390,
+        "w": 1835,
+        "h": 385,
+        "t": "CSA encoder + decoder · T"
+      },
+      {
+        "type": "text",
+        "x": 56,
+        "y": 398,
+        "w": 325,
+        "h": 30,
+        "t": "CSA encoder + decoder · T",
+        "size": 21,
+        "bold": true,
+        "color": "#444444",
+        "align": "left"
+      },
+      {
+        "type": "box",
+        "x": 325,
+        "y": 440,
+        "w": 300,
+        "h": 70,
+        "t": "Noun semantic aggregator\nTo: 150×512",
+        "kind": "learn",
+        "size": 21
+      },
+      {
+        "type": "box",
+        "x": 965,
+        "y": 440,
+        "w": 300,
+        "h": 70,
+        "t": "Verb semantic aggregator\nTr: 150×512",
+        "kind": "learn",
+        "size": 21
+      },
+      {
+        "type": "arrow",
+        "pts": [
+          [
+            1680,
+            320
+          ],
+          [
+            1680,
+            377
+          ],
+          [
+            475,
+            377
+          ],
+          [
+            475,
+            440
+          ]
+        ],
+        "color": "#222222",
+        "dash": false
+      },
+      {
+        "type": "arrow",
+        "pts": [
+          [
+            1805,
+            320
+          ],
+          [
+            1805,
+            385
+          ],
+          [
+            1115,
+            385
+          ],
+          [
+            1115,
+            440
+          ]
+        ],
+        "color": "#222222",
+        "dash": false
+      },
+      {
+        "type": "box",
+        "x": 65,
+        "y": 595,
+        "w": 190,
+        "h": 95,
+        "t": "Visual projection\n768 → 512\nV0: N×512",
+        "kind": "learn",
+        "size": 22
+      },
+      {
+        "type": "box",
+        "x": 325,
+        "y": 595,
+        "w": 250,
+        "h": 95,
+        "t": "Object stage 1\n(V0, To) → (V1, T1)",
+        "kind": "learn",
+        "size": 22
+      },
+      {
+        "type": "box",
+        "x": 645,
+        "y": 595,
+        "w": 250,
+        "h": 95,
+        "t": "Object stage 2\n(V1, T1) → Vo",
+        "kind": "learn",
+        "size": 22
+      },
+      {
+        "type": "box",
+        "x": 965,
+        "y": 595,
+        "w": 250,
+        "h": 95,
+        "t": "Relation stage\n(Vo, Tr) → Vr",
+        "kind": "learn",
+        "size": 22
+      },
+      {
+        "type": "box",
+        "x": 1305,
+        "y": 595,
+        "w": 260,
+        "h": 95,
+        "t": "Parallel decoder\n3 layers · Vo và Vr",
+        "kind": "learn",
+        "size": 22
+      },
+      {
+        "type": "box",
+        "x": 1640,
+        "y": 595,
+        "w": 225,
+        "h": 95,
+        "t": "Linear 512 → 10000\nNext-token\ndistribution",
+        "kind": "learn",
+        "size": 20
+      },
+      {
+        "type": "arrow",
+        "pts": [
+          [
+            798,
+            315
+          ],
+          [
+            798,
+            360
+          ],
+          [
+            25,
+            360
+          ],
+          [
+            25,
+            642
+          ],
+          [
+            65,
+            642
+          ]
+        ],
+        "color": "#222222",
+        "dash": false
+      },
+      {
+        "type": "arrow",
+        "pts": [
+          [
+            255,
+            642
+          ],
+          [
+            325,
+            642
+          ]
+        ],
+        "color": "#222222",
+        "dash": false
+      },
+      {
+        "type": "text",
+        "x": 260,
+        "y": 607,
+        "w": 65,
+        "h": 30,
+        "t": "V0",
+        "size": 20,
+        "bold": false,
+        "color": "#222222",
+        "align": "center"
+      },
+      {
+        "type": "arrow",
+        "pts": [
+          [
+            475,
+            510
+          ],
+          [
+            475,
+            595
+          ]
+        ],
+        "color": "#222222",
+        "dash": false
+      },
+      {
+        "type": "text",
+        "x": 483,
+        "y": 545,
+        "w": 60,
+        "h": 30,
+        "t": "To",
+        "size": 20,
+        "bold": false,
+        "color": "#222222",
+        "align": "center"
+      },
+      {
+        "type": "arrow",
+        "pts": [
+          [
+            575,
+            642
+          ],
+          [
+            645,
+            642
+          ]
+        ],
+        "color": "#222222",
+        "dash": false
+      },
+      {
+        "type": "text",
+        "x": 568,
+        "y": 607,
+        "w": 85,
+        "h": 30,
+        "t": "V1 + T1",
+        "size": 20,
+        "bold": false,
+        "color": "#222222",
+        "align": "center"
+      },
+      {
+        "type": "arrow",
+        "pts": [
+          [
+            895,
+            642
+          ],
+          [
+            965,
+            642
+          ]
+        ],
+        "color": "#222222",
+        "dash": false
+      },
+      {
+        "type": "text",
+        "x": 900,
+        "y": 607,
+        "w": 60,
+        "h": 30,
+        "t": "Vo",
+        "size": 20,
+        "bold": false,
+        "color": "#222222",
+        "align": "center"
+      },
+      {
+        "type": "arrow",
+        "pts": [
+          [
+            1115,
+            510
+          ],
+          [
+            1115,
+            595
+          ]
+        ],
+        "color": "#222222",
+        "dash": false
+      },
+      {
+        "type": "text",
+        "x": 1120,
+        "y": 545,
+        "w": 65,
+        "h": 30,
+        "t": "Tr",
+        "size": 20,
+        "bold": false,
+        "color": "#222222",
+        "align": "center"
+      },
+      {
+        "type": "arrow",
+        "pts": [
+          [
+            1215,
+            642
+          ],
+          [
+            1305,
+            642
+          ]
+        ],
+        "color": "#222222",
+        "dash": false
+      },
+      {
+        "type": "text",
+        "x": 1220,
+        "y": 607,
+        "w": 75,
+        "h": 30,
+        "t": "Vr",
+        "size": 20,
+        "bold": false,
+        "color": "#222222",
+        "align": "center"
+      },
+      {
+        "type": "arrow",
+        "pts": [
+          [
+            895,
+            665
+          ],
+          [
+            930,
+            665
+          ],
+          [
+            930,
+            735
+          ],
+          [
+            1435,
+            735
+          ],
+          [
+            1435,
+            690
+          ]
+        ],
+        "color": "#222222",
+        "dash": false
+      },
+      {
+        "type": "text",
+        "x": 1030,
+        "y": 739,
+        "w": 230,
+        "h": 30,
+        "t": "Vo · nhánh riêng",
+        "size": 20,
+        "bold": false,
+        "color": "#222222",
+        "align": "center"
+      },
+      {
+        "type": "arrow",
+        "pts": [
+          [
+            1565,
+            642
+          ],
+          [
+            1640,
+            642
+          ]
+        ],
+        "color": "#222222",
+        "dash": false
+      },
+      {
+        "type": "box",
+        "x": 1305,
+        "y": 455,
+        "w": 260,
+        "h": 70,
+        "t": "Prefix token IDs\nTRAIN ref / VALID tự sinh",
+        "kind": "purple",
+        "size": 21
+      },
+      {
+        "type": "arrow",
+        "pts": [
+          [
+            1435,
+            525
+          ],
+          [
+            1435,
+            595
+          ]
+        ],
+        "color": "#222222",
+        "dash": false
+      },
+      {
+        "type": "frame",
+        "x": 40,
+        "y": 810,
+        "w": 875,
+        "h": 160,
+        "t": "TRAIN · 113,287 ảnh / 566,747 caption events"
+      },
+      {
+        "type": "text",
+        "x": 56,
+        "y": 818,
+        "w": 553,
+        "h": 30,
+        "t": "TRAIN · 113,287 ảnh / 566,747 caption events",
+        "size": 21,
+        "bold": true,
+        "color": "#444444",
+        "align": "left"
+      },
+      {
+        "type": "box",
+        "x": 60,
+        "y": 860,
+        "w": 240,
+        "h": 68,
+        "t": "GT caption prefix\nshift-right",
+        "kind": "orange",
+        "size": 22
+      },
+      {
+        "type": "box",
+        "x": 345,
+        "y": 860,
+        "w": 230,
+        "h": 68,
+        "t": "Cùng mạng CSA\nở phía trên",
+        "kind": "learn",
+        "size": 22
+      },
+      {
+        "type": "box",
+        "x": 630,
+        "y": 860,
+        "w": 265,
+        "h": 68,
+        "t": "Targets next tokens\nXE / CE loss",
+        "kind": "orange",
+        "size": 22
+      },
+      {
+        "type": "arrow",
+        "pts": [
+          [
+            300,
+            894
+          ],
+          [
+            345,
+            894
+          ]
+        ],
+        "color": "#222222",
+        "dash": false
+      },
+      {
+        "type": "arrow",
+        "pts": [
+          [
+            575,
+            894
+          ],
+          [
+            630,
+            894
+          ]
+        ],
+        "color": "#222222",
+        "dash": false
+      },
+      {
+        "type": "arrow",
+        "pts": [
+          [
+            895,
+            894
+          ],
+          [
+            932,
+            894
+          ],
+          [
+            932,
+            790
+          ],
+          [
+            690,
+            790
+          ],
+          [
+            690,
+            775
+          ]
+        ],
+        "color": "#222222",
+        "dash": true
+      },
+      {
+        "type": "text",
+        "x": 960,
+        "y": 776,
+        "w": 340,
+        "h": 30,
+        "t": "Backward: chỉ module T",
+        "size": 20,
+        "bold": false,
+        "color": "#222222",
+        "align": "center"
+      },
+      {
+        "type": "text",
+        "x": 60,
+        "y": 935,
+        "w": 830,
+        "h": 28,
+        "t": "10 epochs · global32 · 17,711 updates/epoch · không SCST/RL",
+        "size": 20,
+        "bold": false,
+        "color": "#444444",
+        "align": "center"
+      },
+      {
+        "type": "frame",
+        "x": 950,
+        "y": 810,
+        "w": 925,
+        "h": 160,
+        "t": "VALID · 5000 ảnh sau mỗi epoch / không backward"
+      },
+      {
+        "type": "text",
+        "x": 966,
+        "y": 818,
+        "w": 589,
+        "h": 30,
+        "t": "VALID · 5000 ảnh sau mỗi epoch / không backward",
+        "size": 21,
+        "bold": true,
+        "color": "#444444",
+        "align": "left"
+      },
+      {
+        "type": "box",
+        "x": 970,
+        "y": 860,
+        "w": 250,
+        "h": 68,
+        "t": "BOS → beam5 captions\nkhông reference prefix",
+        "kind": "green",
+        "size": 21
+      },
+      {
+        "type": "box",
+        "x": 1260,
+        "y": 860,
+        "w": 240,
+        "h": 68,
+        "t": "PTB / CIDEr\n+ raw references",
+        "kind": "green",
+        "size": 22
+      },
+      {
+        "type": "box",
+        "x": 1540,
+        "y": 860,
+        "w": 315,
+        "h": 68,
+        "t": "best.bin: max CIDEr\ncheckpoint.bin: latest",
+        "kind": "green",
+        "size": 22
+      },
+      {
+        "type": "arrow",
+        "pts": [
+          [
+            1220,
+            894
+          ],
+          [
+            1260,
+            894
+          ]
+        ],
+        "color": "#222222",
+        "dash": false
+      },
+      {
+        "type": "arrow",
+        "pts": [
+          [
+            1500,
+            894
+          ],
+          [
+            1540,
+            894
+          ]
+        ],
+        "color": "#222222",
+        "dash": false
+      },
+      {
+        "type": "text",
+        "x": 970,
+        "y": 935,
+        "w": 885,
+        "h": 28,
+        "t": "NLL: 25,010 refs, teacher forcing, eval only · TEST chưa dùng",
+        "size": 20,
+        "bold": false,
+        "color": "#444444",
+        "align": "center"
+      },
+      {
+        "type": "box",
+        "x": 45,
+        "y": 990,
+        "w": 195,
+        "h": 32,
+        "t": "F · frozen / cache",
+        "kind": "frozen",
+        "size": 18
+      },
+      {
+        "type": "box",
+        "x": 260,
+        "y": 990,
+        "w": 195,
+        "h": 32,
+        "t": "T · trainable",
+        "kind": "learn",
+        "size": 18
+      },
+      {
+        "type": "box",
+        "x": 475,
+        "y": 990,
+        "w": 195,
+        "h": 32,
+        "t": "TRAIN only",
+        "kind": "orange",
+        "size": 18
+      },
+      {
+        "type": "text",
+        "x": 700,
+        "y": 990,
+        "w": 1165,
+        "h": 32,
+        "t": "Khung OFFLINE: chuẩn bị trước • Mũi tên: luồng dữ liệu • Nét đứt: gradient TRAIN",
+        "size": 18,
+        "bold": false,
+        "color": "#444444",
+        "align": "left"
+      },
+      {
+        "type": "text",
+        "x": 42,
+        "y": 1032,
+        "w": 1830,
+        "h": 28,
+        "t": "CSA adaptation • cached CLIP ROI + semantic banks • 02/11/2026                                      1/3",
+        "size": 19,
+        "bold": false,
+        "color": "#444444",
+        "align": "left"
+      }
+    ]
+  },
+  {
+    "stem": "02_encoder",
+    "title": "Encoder CSA — hai stage object, một stage relation",
+    "items": [
+      {
+        "type": "text",
+        "x": 40,
+        "y": 22,
+        "w": 1840,
+        "h": 55,
+        "t": "Encoder CSA — hai stage object, một stage relation",
+        "size": 36,
+        "bold": true,
+        "color": "#151515",
+        "align": "left"
+      },
+      {
+        "type": "text",
+        "x": 42,
+        "y": 79,
+        "w": 1835,
+        "h": 35,
+        "t": "Đối chiếu CSACaptioner.encode, Alignment.forward và Fusion.forward • To/T1/Tr là semantic prototypes, không phải UPT triplets",
+        "size": 21,
+        "bold": false,
+        "color": "#444444",
+        "align": "left"
+      },
+      {
+        "type": "box",
+        "x": 45,
+        "y": 160,
+        "w": 245,
+        "h": 90,
+        "t": "ROI cache frozen\nN×768; explicit valid mask",
+        "kind": "frozen",
+        "size": 22
+      },
+      {
+        "type": "box",
+        "x": 345,
+        "y": 160,
+        "w": 245,
+        "h": 90,
+        "t": "Learnable projection\nV0: N×512",
+        "kind": "learn",
+        "size": 22
+      },
+      {
+        "type": "arrow",
+        "pts": [
+          [
+            290,
+            205
+          ],
+          [
+            345,
+            205
+          ]
+        ],
+        "color": "#222222",
+        "dash": false
+      },
+      {
+        "type": "box",
+        "x": 650,
+        "y": 155,
+        "w": 300,
+        "h": 100,
+        "t": "Noun bank 5269×512\nfrozen → learned aggregator\nTo: 150×512",
+        "kind": "purple",
+        "size": 21
+      },
+      {
+        "type": "box",
+        "x": 1230,
+        "y": 155,
+        "w": 300,
+        "h": 100,
+        "t": "Verb bank 1594×512\nfrozen → learned aggregator\nTr: 150×512",
+        "kind": "purple",
+        "size": 21
+      },
+      {
+        "type": "box",
+        "x": 345,
+        "y": 340,
+        "w": 310,
+        "h": 115,
+        "t": "Object stage 1\nV0 + To\n→ V1 và selected noun T1",
+        "kind": "learn",
+        "size": 22
+      },
+      {
+        "type": "box",
+        "x": 835,
+        "y": 340,
+        "w": 310,
+        "h": 115,
+        "t": "Object stage 2\nV1 + T1\n→ Vo",
+        "kind": "learn",
+        "size": 22
+      },
+      {
+        "type": "box",
+        "x": 1375,
+        "y": 340,
+        "w": 310,
+        "h": 115,
+        "t": "Relation stage\nVo + Tr\n→ Vr",
+        "kind": "learn",
+        "size": 22
+      },
+      {
+        "type": "arrow",
+        "pts": [
+          [
+            467,
+            250
+          ],
+          [
+            467,
+            340
+          ]
+        ],
+        "color": "#222222",
+        "dash": false
+      },
+      {
+        "type": "arrow",
+        "pts": [
+          [
+            800,
+            255
+          ],
+          [
+            800,
+            295
+          ],
+          [
+            580,
+            295
+          ],
+          [
+            580,
+            340
+          ]
+        ],
+        "color": "#222222",
+        "dash": false
+      },
+      {
+        "type": "text",
+        "x": 650,
+        "y": 263,
+        "w": 70,
+        "h": 30,
+        "t": "To",
+        "size": 20,
+        "bold": false,
+        "color": "#222222",
+        "align": "center"
+      },
+      {
+        "type": "arrow",
+        "pts": [
+          [
+            655,
+            380
+          ],
+          [
+            835,
+            380
+          ]
+        ],
+        "color": "#222222",
+        "dash": false
+      },
+      {
+        "type": "text",
+        "x": 690,
+        "y": 340,
+        "w": 90,
+        "h": 30,
+        "t": "V1",
+        "size": 20,
+        "bold": false,
+        "color": "#222222",
+        "align": "center"
+      },
+      {
+        "type": "arrow",
+        "pts": [
+          [
+            655,
+            430
+          ],
+          [
+            835,
+            430
+          ]
+        ],
+        "color": "#222222",
+        "dash": false
+      },
+      {
+        "type": "text",
+        "x": 670,
+        "y": 455,
+        "w": 150,
+        "h": 30,
+        "t": "T1 · carry",
+        "size": 20,
+        "bold": false,
+        "color": "#222222",
+        "align": "center"
+      },
+      {
+        "type": "arrow",
+        "pts": [
+          [
+            1145,
+            390
+          ],
+          [
+            1375,
+            390
+          ]
+        ],
+        "color": "#222222",
+        "dash": false
+      },
+      {
+        "type": "text",
+        "x": 1210,
+        "y": 350,
+        "w": 80,
+        "h": 30,
+        "t": "Vo",
+        "size": 20,
+        "bold": false,
+        "color": "#222222",
+        "align": "center"
+      },
+      {
+        "type": "arrow",
+        "pts": [
+          [
+            1380,
+            255
+          ],
+          [
+            1530,
+            255
+          ],
+          [
+            1530,
+            340
+          ]
+        ],
+        "color": "#222222",
+        "dash": false
+      },
+      {
+        "type": "text",
+        "x": 1450,
+        "y": 270,
+        "w": 70,
+        "h": 30,
+        "t": "Tr",
+        "size": 20,
+        "bold": false,
+        "color": "#222222",
+        "align": "center"
+      },
+      {
+        "type": "arrow",
+        "pts": [
+          [
+            1050,
+            455
+          ],
+          [
+            1050,
+            510
+          ],
+          [
+            1220,
+            510
+          ]
+        ],
+        "color": "#222222",
+        "dash": false
+      },
+      {
+        "type": "text",
+        "x": 1100,
+        "y": 472,
+        "w": 100,
+        "h": 30,
+        "t": "Vo",
+        "size": 20,
+        "bold": false,
+        "color": "#222222",
+        "align": "center"
+      },
+      {
+        "type": "arrow",
+        "pts": [
+          [
+            1685,
+            400
+          ],
+          [
+            1820,
+            400
+          ],
+          [
+            1820,
+            510
+          ],
+          [
+            1490,
+            510
+          ]
+        ],
+        "color": "#222222",
+        "dash": false
+      },
+      {
+        "type": "text",
+        "x": 1650,
+        "y": 450,
+        "w": 200,
+        "h": 30,
+        "t": "Vr → decoder",
+        "size": 20,
+        "bold": false,
+        "color": "#222222",
+        "align": "center"
+      },
+      {
+        "type": "box",
+        "x": 1220,
+        "y": 480,
+        "w": 270,
+        "h": 60,
+        "t": "Decoder nhận Vo và Vr",
+        "kind": "purple",
+        "size": 21
+      },
+      {
+        "type": "text",
+        "x": 45,
+        "y": 515,
+        "w": 900,
+        "h": 34,
+        "t": "BÊN TRONG MỖI STAGE",
+        "size": 25,
+        "bold": true,
+        "color": "#151515",
+        "align": "left"
+      },
+      {
+        "type": "frame",
+        "x": 40,
+        "y": 560,
+        "w": 1835,
+        "h": 340,
+        "t": "Alignment / selection"
+      },
+      {
+        "type": "text",
+        "x": 56,
+        "y": 568,
+        "w": 277,
+        "h": 30,
+        "t": "Alignment / selection",
+        "size": 21,
+        "bold": true,
+        "color": "#444444",
+        "align": "left"
+      },
+      {
+        "type": "box",
+        "x": 65,
+        "y": 625,
+        "w": 235,
+        "h": 105,
+        "t": "Incoming prototypes P\n+ incoming regions V\nP: K×512, V: N×512",
+        "kind": "purple",
+        "size": 21
+      },
+      {
+        "type": "box",
+        "x": 355,
+        "y": 625,
+        "w": 270,
+        "h": 105,
+        "t": "Cosine S: K×N\nSoftmax theo vùng, τ=0.1\nRk = Σn wkn Skn",
+        "kind": "learn",
+        "size": 21
+      },
+      {
+        "type": "box",
+        "x": 680,
+        "y": 625,
+        "w": 275,
+        "h": 105,
+        "t": "Softmax theo prototype\nSelected T = softmax(R)⊙P\nK=150, không top-K retrieval",
+        "kind": "learn",
+        "size": 20
+      },
+      {
+        "type": "arrow",
+        "pts": [
+          [
+            300,
+            678
+          ],
+          [
+            355,
+            678
+          ]
+        ],
+        "color": "#222222",
+        "dash": false
+      },
+      {
+        "type": "arrow",
+        "pts": [
+          [
+            625,
+            678
+          ],
+          [
+            680,
+            678
+          ]
+        ],
+        "color": "#222222",
+        "dash": false
+      },
+      {
+        "type": "box",
+        "x": 1010,
+        "y": 605,
+        "w": 310,
+        "h": 115,
+        "t": "Visual self-attention\nAdd & Norm → FFN\nOwn stream: N×512",
+        "kind": "learn",
+        "size": 22
+      },
+      {
+        "type": "box",
+        "x": 1390,
+        "y": 605,
+        "w": 430,
+        "h": 115,
+        "t": "Cross-attention\nQ = own visual stream\nK,V = selected semantic T\nAdd & Norm → FFN = cross",
+        "kind": "learn",
+        "size": 22
+      },
+      {
+        "type": "arrow",
+        "pts": [
+          [
+            180,
+            625
+          ],
+          [
+            180,
+            600
+          ],
+          [
+            1165,
+            600
+          ],
+          [
+            1165,
+            605
+          ]
+        ],
+        "color": "#222222",
+        "dash": false
+      },
+      {
+        "type": "text",
+        "x": 725,
+        "y": 565,
+        "w": 200,
+        "h": 28,
+        "t": "V từ stage",
+        "size": 18,
+        "bold": false,
+        "color": "#444444",
+        "align": "left"
+      },
+      {
+        "type": "arrow",
+        "pts": [
+          [
+            1320,
+            660
+          ],
+          [
+            1390,
+            660
+          ]
+        ],
+        "color": "#222222",
+        "dash": false
+      },
+      {
+        "type": "text",
+        "x": 1325,
+        "y": 620,
+        "w": 60,
+        "h": 30,
+        "t": "Q",
+        "size": 20,
+        "bold": false,
+        "color": "#222222",
+        "align": "center"
+      },
+      {
+        "type": "arrow",
+        "pts": [
+          [
+            955,
+            700
+          ],
+          [
+            980,
+            700
+          ],
+          [
+            980,
+            750
+          ],
+          [
+            1605,
+            750
+          ],
+          [
+            1605,
+            720
+          ]
+        ],
+        "color": "#222222",
+        "dash": false
+      },
+      {
+        "type": "text",
+        "x": 680,
+        "y": 755,
+        "w": 280,
+        "h": 30,
+        "t": "Selected T → K,V",
+        "size": 20,
+        "bold": false,
+        "color": "#222222",
+        "align": "center"
+      },
+      {
+        "type": "box",
+        "x": 1010,
+        "y": 810,
+        "w": 810,
+        "h": 65,
+        "t": "Scalar sigmoid gate G: N×1 → G⊙own + (1−G)⊙cross",
+        "kind": "learn",
+        "size": 23
+      },
+      {
+        "type": "arrow",
+        "pts": [
+          [
+            1165,
+            720
+          ],
+          [
+            1165,
+            810
+          ]
+        ],
+        "color": "#222222",
+        "dash": false
+      },
+      {
+        "type": "arrow",
+        "pts": [
+          [
+            1775,
+            720
+          ],
+          [
+            1840,
+            720
+          ],
+          [
+            1840,
+            842
+          ],
+          [
+            1820,
+            842
+          ]
+        ],
+        "color": "#222222",
+        "dash": false
+      },
+      {
+        "type": "text",
+        "x": 55,
+        "y": 920,
+        "w": 1800,
+        "h": 57,
+        "t": "N thay đổi theo ảnh, max87 trong cache full; empty detections → 1 full-frame fallback.\nROI dùng contextual CLIP patches; selection/attention chưa chứng minh mỗi từ caption gắn chính xác một box.",
+        "size": 22,
+        "bold": false,
+        "color": "#444444",
+        "align": "left"
+      },
+      {
+        "type": "box",
+        "x": 45,
+        "y": 990,
+        "w": 195,
+        "h": 32,
+        "t": "F · frozen / cache",
+        "kind": "frozen",
+        "size": 18
+      },
+      {
+        "type": "box",
+        "x": 260,
+        "y": 990,
+        "w": 195,
+        "h": 32,
+        "t": "T · trainable",
+        "kind": "learn",
+        "size": 18
+      },
+      {
+        "type": "box",
+        "x": 475,
+        "y": 990,
+        "w": 195,
+        "h": 32,
+        "t": "TRAIN only",
+        "kind": "orange",
+        "size": 18
+      },
+      {
+        "type": "text",
+        "x": 700,
+        "y": 990,
+        "w": 1165,
+        "h": 32,
+        "t": "Khung OFFLINE: chuẩn bị trước • Mũi tên: luồng dữ liệu • Nét đứt: gradient TRAIN",
+        "size": 18,
+        "bold": false,
+        "color": "#444444",
+        "align": "left"
+      },
+      {
+        "type": "text",
+        "x": 42,
+        "y": 1032,
+        "w": 1830,
+        "h": 28,
+        "t": "CSA adaptation • cached CLIP ROI + semantic banks • 02/11/2026                                      2/3",
+        "size": 19,
+        "bold": false,
+        "color": "#444444",
+        "align": "left"
+      }
+    ]
+  },
+  {
+    "stem": "03_decoder",
+    "title": "Parallel adaptive decoder và TRAIN / VALID",
+    "items": [
+      {
+        "type": "text",
+        "x": 40,
+        "y": 22,
+        "w": 1840,
+        "h": 55,
+        "t": "Parallel adaptive decoder và TRAIN / VALID",
+        "size": 36,
+        "bold": true,
+        "color": "#151515",
+        "align": "left"
+      },
+      {
+        "type": "text",
+        "x": 42,
+        "y": 79,
+        "w": 1835,
+        "h": 35,
+        "t": "Vo và Vr được đọc bằng hai cross-attention riêng • Cùng Q là hidden text sau causal self-attention",
+        "size": 21,
+        "bold": false,
+        "color": "#444444",
+        "align": "left"
+      },
+      {
+        "type": "box",
+        "x": 45,
+        "y": 180,
+        "w": 215,
+        "h": 80,
+        "t": "Prefix token IDs\nTRAIN: reference shift",
+        "kind": "purple",
+        "size": 22
+      },
+      {
+        "type": "box",
+        "x": 315,
+        "y": 180,
+        "w": 255,
+        "h": 100,
+        "t": "Word embedding 512D\nraw embedding e_prev\n+ sinusoidal position",
+        "kind": "learn",
+        "size": 21
+      },
+      {
+        "type": "box",
+        "x": 650,
+        "y": 180,
+        "w": 285,
+        "h": 100,
+        "t": "Causal self-attention\nAdd & Norm\nHidden text H",
+        "kind": "learn",
+        "size": 22
+      },
+      {
+        "type": "arrow",
+        "pts": [
+          [
+            260,
+            220
+          ],
+          [
+            315,
+            220
+          ]
+        ],
+        "color": "#222222",
+        "dash": false
+      },
+      {
+        "type": "arrow",
+        "pts": [
+          [
+            570,
+            220
+          ],
+          [
+            650,
+            220
+          ]
+        ],
+        "color": "#222222",
+        "dash": false
+      },
+      {
+        "type": "frame",
+        "x": 1000,
+        "y": 135,
+        "w": 850,
+        "h": 550,
+        "t": "PARALLEL CA + GATES · trong mỗi layer"
+      },
+      {
+        "type": "text",
+        "x": 1016,
+        "y": 143,
+        "w": 469,
+        "h": 30,
+        "t": "PARALLEL CA + GATES · trong mỗi layer",
+        "size": 21,
+        "bold": true,
+        "color": "#444444",
+        "align": "left"
+      },
+      {
+        "type": "box",
+        "x": 1040,
+        "y": 230,
+        "w": 285,
+        "h": 95,
+        "t": "Object cross-attention\nQ=H; K,V=Vo\nContext co",
+        "kind": "learn",
+        "size": 22
+      },
+      {
+        "type": "box",
+        "x": 1040,
+        "y": 430,
+        "w": 285,
+        "h": 95,
+        "t": "Relation cross-attention\nQ=H; K,V=Vr\nContext cr",
+        "kind": "learn",
+        "size": 22
+      },
+      {
+        "type": "box",
+        "x": 1385,
+        "y": 230,
+        "w": 400,
+        "h": 95,
+        "t": "go = sigmoid(Wo[co; e_prev])\nVector gate riêng: 512D",
+        "kind": "learn",
+        "size": 23
+      },
+      {
+        "type": "box",
+        "x": 1385,
+        "y": 430,
+        "w": 400,
+        "h": 95,
+        "t": "gr = sigmoid(Wr[cr; e_prev])\nVector gate riêng: 512D",
+        "kind": "learn",
+        "size": 23
+      },
+      {
+        "type": "arrow",
+        "pts": [
+          [
+            935,
+            225
+          ],
+          [
+            970,
+            225
+          ],
+          [
+            970,
+            278
+          ],
+          [
+            1040,
+            278
+          ]
+        ],
+        "color": "#222222",
+        "dash": false
+      },
+      {
+        "type": "text",
+        "x": 933,
+        "y": 270,
+        "w": 30,
+        "h": 30,
+        "t": "H",
+        "size": 20,
+        "bold": false,
+        "color": "#222222",
+        "align": "center"
+      },
+      {
+        "type": "arrow",
+        "pts": [
+          [
+            970,
+            278
+          ],
+          [
+            970,
+            478
+          ],
+          [
+            1040,
+            478
+          ]
+        ],
+        "color": "#222222",
+        "dash": false
+      },
+      {
+        "type": "box",
+        "x": 655,
+        "y": 365,
+        "w": 235,
+        "h": 70,
+        "t": "Object stream Vo\nN×512",
+        "kind": "purple",
+        "size": 22
+      },
+      {
+        "type": "box",
+        "x": 655,
+        "y": 520,
+        "w": 235,
+        "h": 70,
+        "t": "Relation stream Vr\nN×512",
+        "kind": "purple",
+        "size": 22
+      },
+      {
+        "type": "arrow",
+        "pts": [
+          [
+            890,
+            400
+          ],
+          [
+            920,
+            400
+          ],
+          [
+            920,
+            310
+          ],
+          [
+            1040,
+            310
+          ]
+        ],
+        "color": "#222222",
+        "dash": false
+      },
+      {
+        "type": "arrow",
+        "pts": [
+          [
+            890,
+            555
+          ],
+          [
+            1020,
+            555
+          ],
+          [
+            1020,
+            510
+          ],
+          [
+            1040,
+            510
+          ]
+        ],
+        "color": "#222222",
+        "dash": false
+      },
+      {
+        "type": "arrow",
+        "pts": [
+          [
+            1325,
+            278
+          ],
+          [
+            1385,
+            278
+          ]
+        ],
+        "color": "#222222",
+        "dash": false
+      },
+      {
+        "type": "arrow",
+        "pts": [
+          [
+            1325,
+            478
+          ],
+          [
+            1385,
+            478
+          ]
+        ],
+        "color": "#222222",
+        "dash": false
+      },
+      {
+        "type": "arrow",
+        "pts": [
+          [
+            443,
+            180
+          ],
+          [
+            443,
+            120
+          ],
+          [
+            1585,
+            120
+          ],
+          [
+            1585,
+            230
+          ]
+        ],
+        "color": "#222222",
+        "dash": false
+      },
+      {
+        "type": "text",
+        "x": 445,
+        "y": 138,
+        "w": 500,
+        "h": 30,
+        "t": "raw e_prev · không phải prompt phụ",
+        "size": 20,
+        "bold": false,
+        "color": "#222222",
+        "align": "center"
+      },
+      {
+        "type": "arrow",
+        "pts": [
+          [
+            1585,
+            190
+          ],
+          [
+            1818,
+            190
+          ],
+          [
+            1818,
+            478
+          ],
+          [
+            1785,
+            478
+          ]
+        ],
+        "color": "#222222",
+        "dash": false
+      },
+      {
+        "type": "box",
+        "x": 1150,
+        "y": 595,
+        "w": 600,
+        "h": 65,
+        "t": "go⊙co + gr⊙cr → FFN → layer tiếp",
+        "kind": "learn",
+        "size": 25
+      },
+      {
+        "type": "arrow",
+        "pts": [
+          [
+            1585,
+            325
+          ],
+          [
+            1585,
+            355
+          ],
+          [
+            1832,
+            355
+          ],
+          [
+            1832,
+            570
+          ],
+          [
+            1630,
+            570
+          ],
+          [
+            1630,
+            595
+          ]
+        ],
+        "color": "#222222",
+        "dash": false
+      },
+      {
+        "type": "arrow",
+        "pts": [
+          [
+            1585,
+            525
+          ],
+          [
+            1585,
+            595
+          ]
+        ],
+        "color": "#222222",
+        "dash": false
+      },
+      {
+        "type": "box",
+        "x": 1070,
+        "y": 720,
+        "w": 350,
+        "h": 70,
+        "t": "Linear 512 → vocab10000\nNext-token distribution",
+        "kind": "learn",
+        "size": 23
+      },
+      {
+        "type": "arrow",
+        "pts": [
+          [
+            1450,
+            660
+          ],
+          [
+            1450,
+            695
+          ],
+          [
+            1245,
+            695
+          ],
+          [
+            1245,
+            720
+          ]
+        ],
+        "color": "#222222",
+        "dash": false
+      },
+      {
+        "type": "box",
+        "x": 1470,
+        "y": 720,
+        "w": 380,
+        "h": 70,
+        "t": "BOS → beam5 → caption\nmax20 · raw logprob · stop EOS",
+        "kind": "green",
+        "size": 21
+      },
+      {
+        "type": "arrow",
+        "pts": [
+          [
+            1420,
+            755
+          ],
+          [
+            1470,
+            755
+          ]
+        ],
+        "color": "#222222",
+        "dash": false
+      },
+      {
+        "type": "box",
+        "x": 45,
+        "y": 695,
+        "w": 900,
+        "h": 110,
+        "t": "TRAIN · targets next token → XE loss → backward\n113,287 ảnh · 566,747 caption events/epoch\n10 epochs; global32; không SCST/RL",
+        "kind": "orange",
+        "size": 24
+      },
+      {
+        "type": "box",
+        "x": 45,
+        "y": 845,
+        "w": 900,
+        "h": 125,
+        "t": "VALID · eval, không nhận reference prefix khi sinh\n5000 ảnh → beam5 captions + raw refs → PTB / CIDEr\nTeacher-forced NLL trên25,010 refs là nhánh đo riêng",
+        "kind": "green",
+        "size": 23
+      },
+      {
+        "type": "box",
+        "x": 1010,
+        "y": 845,
+        "w": 840,
+        "h": 125,
+        "t": "Checkpoint selection · không có gradient VALID\nbest.bin: CIDEr lớn nhất; hòa chọn epoch sớm\ncheckpoint.bin: latest để resume · TEST chưa dùng",
+        "kind": "green",
+        "size": 23
+      },
+      {
+        "type": "box",
+        "x": 45,
+        "y": 990,
+        "w": 195,
+        "h": 32,
+        "t": "F · frozen / cache",
+        "kind": "frozen",
+        "size": 18
+      },
+      {
+        "type": "box",
+        "x": 260,
+        "y": 990,
+        "w": 195,
+        "h": 32,
+        "t": "T · trainable",
+        "kind": "learn",
+        "size": 18
+      },
+      {
+        "type": "box",
+        "x": 475,
+        "y": 990,
+        "w": 195,
+        "h": 32,
+        "t": "TRAIN only",
+        "kind": "orange",
+        "size": 18
+      },
+      {
+        "type": "text",
+        "x": 700,
+        "y": 990,
+        "w": 1165,
+        "h": 32,
+        "t": "Khung OFFLINE: chuẩn bị trước • Mũi tên: luồng dữ liệu • Nét đứt: gradient TRAIN",
+        "size": 18,
+        "bold": false,
+        "color": "#444444",
+        "align": "left"
+      },
+      {
+        "type": "text",
+        "x": 42,
+        "y": 1032,
+        "w": 1830,
+        "h": 28,
+        "t": "CSA adaptation • cached CLIP ROI + semantic banks • 02/11/2026                                      3/3",
+        "size": 19,
+        "bold": false,
+        "color": "#444444",
+        "align": "left"
+      }
+    ]
+  }
+]

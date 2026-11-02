@@ -1,0 +1,24 @@
+{
+  "date": "2026-11-02",
+  "source_commit": "5a14d1b641732b42877ea8a458b8fc4e746a1643",
+  "sources": {
+    "experiments/csa_paper/model.py": "139edbb1b73caf3dadaf5c960b25542e282f88baf2ce9bdf141de922ceacbc09",
+    "experiments/csa_paper/FULL_XE_10_PROTOCOL.md": "b52d4081cf0657c7c7fba8a00def7efbff928b4979180e08b4e552cc3983a70c",
+    "experiments/csa_paper/run_full_xe.py": "ba0593c8245a8b7bc8b4b82818972d433890a04eb563cdfaf31d7e1ebbb33370",
+    "experiments/csa_paper/full_xe_decode.py": "b8e618559feec6361cfb3b4619899e4968ab71ab67e113ff38b6d3cd99cdc235",
+    "experiments/csa_paper/FULL_ROI_RESULT.md": "340ca6dc5028f29f91d35ac9acfae8c703c561ea2213397d31d0c015c0ca0607",
+    "experiments/csa_paper/LEMMA_CORRECTION_RESULT.md": "09f62fbd3c8b58b4445ceace28da98184aa8f274229ae16b24791dc28d502f5f"
+  },
+  "model_executed": false,
+  "style": "User-supplied paper diagram reference; editable monochrome serif diagram",
+  "outputs": {
+    "01_overview.png": "3a15034f742af7a5e03a7c30e3678e9daeb2d6ee12eba9621b94dbb8fc3e2f7b",
+    "01_overview.svg": "8367c1ebe80941df862fb38d00691ef16f69959b2ec42a6047adf96b67cd75cc",
+    "02_encoder.png": "4f40ee8a5b6d2808bd5ca63fe8b003775db4978bc1d7cb3d62b2cd815e37db56",
+    "02_encoder.svg": "5cc2522a7047865f11544c4cc66553b7e332b054f7851dc95ae8313265c32700",
+    "03_decoder.png": "1d4ea6fa3e52cc5bd20c90ad74d9978758a501ace17e61fe38a69fd7935bffc8",
+    "03_decoder.svg": "3db8fb13d4356f18905085b97f3a8b4c8f1c8f26b2d19e82471dfddee427fc12",
+    "CSA_pipeline_editable.pptx": "e4542a984d4d9ded976708147d767dcecb79bdd6b01e4346e97f1a694ad6fc06",
+    "CSA_pipeline_vector.pdf": "7ae2230a79f1e6c95498b1d0e8d89bea0cc0affa2056f7c9be03c6062902afe3"
+  }
+}
