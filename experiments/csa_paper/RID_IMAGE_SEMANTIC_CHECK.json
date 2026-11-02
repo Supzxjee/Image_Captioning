@@ -1,0 +1,66 @@
+{
+  "purpose": "Illustrative semantic image/caption check, not POS trace or random sample",
+  "pos_model_run_locally": false,
+  "examples": [
+    {
+      "coco_id": 69167,
+      "split": "train",
+      "filename": "COCO_train2014_000000069167.jpg",
+      "captions": [
+        "A young man riding on the back of a white horse.",
+        "A small boy riding a very pretty small horse by some people.",
+        "No one standing next to the boy well he is riding the pony.",
+        "A young boy riding bareback on a horse at a fair"
+      ],
+      "selected_caption": "A young boy riding bareback on a horse at a fair",
+      "selection_category": "horse",
+      "local_image_relative_to_repo": "experiments/vg_phrase_audit/review/images/COCO_train2014_000000069167.jpg",
+      "image_sha256": "f4ae0acc18255ae9402d65ec42af2f2b2656cfd63b313e5e9f9618119e2abcd1",
+      "assistant_visual_assessment": {
+        "status": "supported_for_riding",
+        "observation": "Boy is visibly seated astride a pony/horse holding reins; riding is appropriate. Motion itself cannot be inferred from a still image."
+      }
+    },
+    {
+      "coco_id": 263974,
+      "split": "train",
+      "filename": "COCO_train2014_000000263974.jpg",
+      "captions": [
+        "a number of people riding bicycles on a street ",
+        "People are riding bikes down a street with a tree.",
+        "People riding bikes in the street with mopeds parked on the sidewalk.",
+        "Two adults and a child riding bicycles on a city street"
+      ],
+      "selected_caption": "a number of people riding bicycles on a street ",
+      "selection_category": "bicycle",
+      "local_image_relative_to_repo": "experiments/phrase_pair_feasibility/review/images/COCO_train2014_000000263974.jpg",
+      "image_sha256": "f208e31d4f689c88f1c0a6a1c583f1413c86424b10c52d62b8b6d3e2360e7406",
+      "assistant_visual_assessment": {
+        "status": "supported_for_riding",
+        "observation": "People are astride bicycles at a street crossing; ride is appropriate, but active pedaling/motion is not established by the frame."
+      }
+    },
+    {
+      "coco_id": 198785,
+      "split": "train",
+      "filename": "COCO_train2014_000000198785.jpg",
+      "captions": [
+        "A group of women riding on the back of a motorcycle."
+      ],
+      "selected_caption": "A group of women riding on the back of a motorcycle.",
+      "selection_category": "motorcycle",
+      "local_image_relative_to_repo": "experiments/vg_phrase_audit/review/images/COCO_train2014_000000198785.jpg",
+      "image_sha256": "97c4440c1b096a7778f45855e041d8895d3fbda1f5d93a58bad108ac2c8d7405",
+      "assistant_visual_assessment": {
+        "status": "group_riding_not_supported",
+        "observation": "Three people pose beside/on a stationary motorcycle; the central person may be astride it, but the image does not support the entire group riding on its back."
+      }
+    }
+  ],
+  "schema": "csa_riding_visual_examples_v1",
+  "selection": "Three purposive locally available TRAIN images, horse/bicycle/motorcycle; not a random/representative sample",
+  "annotation_provenance": "assistant_visual_review, not human-confirmed training labels",
+  "conclusion": "Two riding captions visually plausible; group-riding motorcycle caption not supported. Does not establish token-to-lemma mapping or an error rate for the dataset.",
+  "pos_trace_available": false,
+  "bank_modified": false
+}
