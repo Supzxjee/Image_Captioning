@@ -1,0 +1,248 @@
+[
+  {
+    "shared": false,
+    "case": "batch32",
+    "global_nll": 9.197305526099377,
+    "reference_nll": 9.197305679321289,
+    "gradients": {
+      "base.project.weight": {
+        "relative_l2": 7.935089717695034e-07,
+        "max_abs": 5.029141902923584e-08,
+        "reference_norm": 1.1078861951828003
+      },
+      "base.noun_agg.wa.weight": {
+        "relative_l2": 5.155269014722823e-05,
+        "max_abs": 5.494910082504134e-14,
+        "reference_norm": 4.910950313075091e-09
+      },
+      "base.verb_agg.wa.weight": {
+        "relative_l2": 0.00011815747806290048,
+        "max_abs": 9.658940314238862e-14,
+        "reference_norm": 4.271710096759307e-09
+      },
+      "base.decoder.0.gate_o.weight": {
+        "relative_l2": 5.491216541294544e-06,
+        "max_abs": 6.423306331271306e-12,
+        "reference_norm": 4.473736771615222e-05
+      },
+      "base.head.bias": {
+        "relative_l2": 6.898193236812173e-08,
+        "max_abs": 7.450580596923828e-09,
+        "reference_norm": 0.17766869068145752
+      }
+    },
+    "global_tokens": 361,
+    "encoded_images_global": 32,
+    "caption_events_global": 32,
+    "local_tokens": 183,
+    "local_captions": 16,
+    "encoded_images_local": 16,
+    "regions": 18,
+    "prefix_length": 20
+  },
+  {
+    "shared": false,
+    "case": "tail27",
+    "global_nll": 9.179328377016128,
+    "reference_nll": 9.179327964782715,
+    "gradients": {
+      "base.project.weight": {
+        "relative_l2": 5.500527298449014e-07,
+        "max_abs": 5.21540641784668e-08,
+        "reference_norm": 1.323148250579834
+      },
+      "base.noun_agg.wa.weight": {
+        "relative_l2": 6.876959755167531e-05,
+        "max_abs": 1.2592704656810838e-13,
+        "reference_norm": 7.080397157466223e-09
+      },
+      "base.verb_agg.wa.weight": {
+        "relative_l2": 0.00012272410714895854,
+        "max_abs": 1.2370660051885807e-13,
+        "reference_norm": 5.751310094836981e-09
+      },
+      "base.decoder.0.gate_o.weight": {
+        "relative_l2": 5.573648339362002e-06,
+        "max_abs": 8.355982572538778e-12,
+        "reference_norm": 6.119176396168768e-05
+      },
+      "base.head.bias": {
+        "relative_l2": 5.8334369445508486e-08,
+        "max_abs": 4.6566128730773926e-09,
+        "reference_norm": 0.19795583188533783
+      }
+    },
+    "global_tokens": 310,
+    "encoded_images_global": 27,
+    "caption_events_global": 27,
+    "local_tokens": 183,
+    "local_captions": 16,
+    "encoded_images_local": 16,
+    "regions": 11,
+    "prefix_length": 15
+  },
+  {
+    "shared": false,
+    "case": "stress32",
+    "global_nll": 9.14641143422068,
+    "reference_nll": 9.146411895751953,
+    "gradients": {
+      "base.project.weight": {
+        "relative_l2": 3.1265196637230123e-07,
+        "max_abs": 2.9802322387695312e-08,
+        "reference_norm": 1.2681626081466675
+      },
+      "base.noun_agg.wa.weight": {
+        "relative_l2": 7.984726315904074e-05,
+        "max_abs": 9.992007221626409e-14,
+        "reference_norm": 6.263890295343799e-09
+      },
+      "base.verb_agg.wa.weight": {
+        "relative_l2": 0.00010135468820715779,
+        "max_abs": 1.0791367799356522e-13,
+        "reference_norm": 5.223124599496032e-09
+      },
+      "base.decoder.0.gate_o.weight": {
+        "relative_l2": 4.07908723051849e-06,
+        "max_abs": 1.864464138634503e-11,
+        "reference_norm": 0.00010748807108029723
+      },
+      "base.head.bias": {
+        "relative_l2": 5.312727664918867e-08,
+        "max_abs": 7.450580596923828e-09,
+        "reference_norm": 0.20128706097602844
+      }
+    },
+    "global_tokens": 405,
+    "encoded_images_global": 32,
+    "caption_events_global": 32,
+    "local_tokens": 217,
+    "local_captions": 16,
+    "encoded_images_local": 16,
+    "regions": 87,
+    "prefix_length": 50
+  },
+  {
+    "shared": true,
+    "case": "batch32",
+    "global_nll": 9.197305526099377,
+    "reference_nll": 9.197305679321289,
+    "gradients": {
+      "base.project.weight": {
+        "relative_l2": 8.167534430029532e-07,
+        "max_abs": 6.332993507385254e-08,
+        "reference_norm": 1.1078861951828003
+      },
+      "base.noun_agg.wa.weight": {
+        "relative_l2": 5.214841680921285e-05,
+        "max_abs": 5.505318423359995e-14,
+        "reference_norm": 4.910950313075091e-09
+      },
+      "base.verb_agg.wa.weight": {
+        "relative_l2": 0.00011804407581422401,
+        "max_abs": 1.01946229236205e-13,
+        "reference_norm": 4.271710096759307e-09
+      },
+      "base.decoder.0.gate_o.weight": {
+        "relative_l2": 5.5030763267614654e-06,
+        "max_abs": 7.844391802791506e-12,
+        "reference_norm": 4.473736771615222e-05
+      },
+      "base.head.bias": {
+        "relative_l2": 6.917374172774928e-08,
+        "max_abs": 7.450580596923828e-09,
+        "reference_norm": 0.17766869068145752
+      }
+    },
+    "global_tokens": 361,
+    "encoded_images_global": 8,
+    "caption_events_global": 32,
+    "local_tokens": 183,
+    "local_captions": 16,
+    "encoded_images_local": 4,
+    "regions": 18,
+    "prefix_length": 20
+  },
+  {
+    "shared": true,
+    "case": "tail27",
+    "global_nll": 9.179328377016128,
+    "reference_nll": 9.179327964782715,
+    "gradients": {
+      "base.project.weight": {
+        "relative_l2": 5.579642066118801e-07,
+        "max_abs": 7.078051567077637e-08,
+        "reference_norm": 1.323148250579834
+      },
+      "base.noun_agg.wa.weight": {
+        "relative_l2": 6.921985309484279e-05,
+        "max_abs": 1.224020884649235e-13,
+        "reference_norm": 7.080397157466223e-09
+      },
+      "base.verb_agg.wa.weight": {
+        "relative_l2": 0.00011956615919387484,
+        "max_abs": 1.1862733018119798e-13,
+        "reference_norm": 5.751310094836981e-09
+      },
+      "base.decoder.0.gate_o.weight": {
+        "relative_l2": 4.970322386413783e-06,
+        "max_abs": 6.679101716144942e-12,
+        "reference_norm": 6.119176396168768e-05
+      },
+      "base.head.bias": {
+        "relative_l2": 6.264847423421281e-08,
+        "max_abs": 6.51925802230835e-09,
+        "reference_norm": 0.19795583188533783
+      }
+    },
+    "global_tokens": 310,
+    "encoded_images_global": 7,
+    "caption_events_global": 27,
+    "local_tokens": 183,
+    "local_captions": 16,
+    "encoded_images_local": 4,
+    "regions": 11,
+    "prefix_length": 15
+  },
+  {
+    "shared": true,
+    "case": "stress32",
+    "global_nll": 9.14641143422068,
+    "reference_nll": 9.146411895751953,
+    "gradients": {
+      "base.project.weight": {
+        "relative_l2": 3.187235711458108e-07,
+        "max_abs": 2.9802322387695312e-08,
+        "reference_norm": 1.2681626081466675
+      },
+      "base.noun_agg.wa.weight": {
+        "relative_l2": 8.006075814483996e-05,
+        "max_abs": 9.869882688917642e-14,
+        "reference_norm": 6.263890295343799e-09
+      },
+      "base.verb_agg.wa.weight": {
+        "relative_l2": 9.750354782509034e-05,
+        "max_abs": 1.0785816684233396e-13,
+        "reference_norm": 5.223124599496032e-09
+      },
+      "base.decoder.0.gate_o.weight": {
+        "relative_l2": 3.6708222154348878e-06,
+        "max_abs": 9.038103598868474e-12,
+        "reference_norm": 0.00010748807108029723
+      },
+      "base.head.bias": {
+        "relative_l2": 5.3157047761989757e-08,
+        "max_abs": 7.450580596923828e-09,
+        "reference_norm": 0.20128706097602844
+      }
+    },
+    "global_tokens": 405,
+    "encoded_images_global": 9,
+    "caption_events_global": 32,
+    "local_tokens": 217,
+    "local_captions": 16,
+    "encoded_images_local": 5,
+    "regions": 87,
+    "prefix_length": 50
+  }
+]

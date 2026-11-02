@@ -32,3 +32,5 @@ experiments/csa_paper/CSA_FULL_XE_BENCHMARK.ipynb text eol=lf
 experiments/csa_paper/full_benchmark_review_text/** -text
 
 experiments/csa_paper/CSA_DDP_SHARING_BENCHMARK.ipynb text eol=lf
+
+experiments/csa_paper/ddp_sharing_review_text/** -text

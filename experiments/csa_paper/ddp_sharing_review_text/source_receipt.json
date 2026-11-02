@@ -1,0 +1,17 @@
+{
+  "commit": "a92b7ea0cdc97391e3c196fda8e5b4e40eff3e5b",
+  "sha256": {
+    "run_sharing_benchmark.py": "51706ae5cbd96fb0484cb0487a05f14f1b34f4332bd9cb57a299d7d3d5a14d18",
+    "sharing_data.py": "68a065f5c055a55b41eae0ea554fbb7f8fd1124e8f5422679fcb1d4878f14829",
+    "full_cache_data.py": "58cf4d08310fe03e01441af2ddeb12fd3404f59e82259194a32fe98c8b002bc1",
+    "model.py": "139edbb1b73caf3dadaf5c960b25542e282f88baf2ce9bdf141de922ceacbc09",
+    "real_bank_data.py": "2c791f8dd856198ec1954a2edd1f9e46520d422f20eff07220e462fc2c9bd9a0",
+    "pilot_data.py": "0edab33c7ad7cc54c28efdf6007f23fa6dc4547bdda32e5c0d7d888a3369394d",
+    "package_full_roi_dataset.py": "be3e7d0f96add450a5295add6466e19977da90f486e5e726e3ea40a505cceecb",
+    "SAVE_FULL_ROI_V134_PACKAGE.json": "a73636ca75806d6b1d7b4d88f80f3ce1c59b3061eb3e9a5e730097ddd89c505c",
+    "SAVE_BANK_V130_PACKAGE.json": "826ba36628d6587860e2d548e950ea953bd4bbb8c0a8dc64393089dbc1e058e1",
+    "REAL_BANK_INPUT_PACKAGE.json": "c60902e04ea15cf90f652e384937bb317e288753f13b8ede6ab5ef89f8d97129",
+    "lemma_correction_review_text/bank_words_corrected.json": "cec76a0229f30361235a4b64e9712ac6bb2e79fc62a9241079a7af3fa95d13ac",
+    "DDP_SHARING_BENCHMARK_PROTOCOL.md": "6537e5e44fb8eb1504c4234b87d4e4e87929cf80fed3884f3caa1ef09468b2f1"
+  }
+}

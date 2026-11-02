@@ -1,0 +1,39 @@
+{
+  "mode": "shared",
+  "global_batch": 32,
+  "microbatch_per_rank": 16,
+  "accumulation": 1,
+  "world_size": 2,
+  "precision": "FP32",
+  "warmup_updates": 10,
+  "timed_updates": 30,
+  "median_seconds": 0.09948135700000194,
+  "p90_seconds": 0.10213118430001487,
+  "mean_seconds": 0.10054916963334222,
+  "mean_encoder_images_global": 8.0,
+  "per_rank": [
+    {
+      "rank": 0,
+      "device": "Tesla T4",
+      "local_captions": 16,
+      "torch_version": "2.11.0+cu128",
+      "numpy_version": "2.1.3",
+      "cuda_version": "12.8",
+      "peak_allocated_mib": 1182.66943359375,
+      "peak_reserved_mib": 1422.0
+    },
+    {
+      "rank": 1,
+      "device": "Tesla T4",
+      "local_captions": 16,
+      "torch_version": "2.11.0+cu128",
+      "numpy_version": "2.1.3",
+      "cuda_version": "12.8",
+      "peak_allocated_mib": 1184.33740234375,
+      "peak_reserved_mib": 1256.0
+    }
+  ],
+  "bank_buffers_unchanged": true,
+  "train_only_hours_per_epoch": 0.48942064272973174,
+  "train_only_hours_15epochs": 7.341309640945976
+}
