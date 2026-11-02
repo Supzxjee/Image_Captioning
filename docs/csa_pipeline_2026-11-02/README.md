@@ -1,6 +1,6 @@
 # Pipeline CSA hiện tại — bàn giao X051-A
 
-**Bản đề xuất mới nhất: [v3 — dựng lại dạng hình bài báo](v3/README.md).** User vẫn thấy v2 chưa đạt; v3 bỏ tiêu đề/chân trang lớn, dùng ảnh COCO thật, bank dạng cylinder, token chồng thẻ và ký hiệu frozen/trainable. [PNG v3](v3/01_overview.png), [PPTX v3](v3/CSA_pipeline_editable.pptx), [PDF v3](v3/CSA_pipeline_vector.pdf). Chưa có user chấp nhận thẩm mỹ. V1/v2 được giữ lịch sử; hình zoom encoder/decoder vẫn ở v2.
+**Bản mới nhất: [v3 — hình bài báo, đã chỉnh đường nối](v3/README.md).** User nhận xét v3 “khá ổn rồi”, yêu cầu đường đi rõ và không chồng chéo; đã sửa cổng/nhãn và kiểm25tuyến/39đoạn,0giao cắt không chủ đích hoặc đi xuyên module/nhãn. [PNG v3](v3/01_overview.png), [PPTX v3](v3/CSA_pipeline_editable.pptx), [PDF v3](v3/CSA_pipeline_vector.pdf). V1/v2 được giữ lịch sử; hình zoom encoder/decoder vẫn ở v2. Chờ user xem phần đường nối đã sửa và Codex1 review forward.
 
 Ngày 02/11/2026. Vẽ theo X051 và hình mẫu user gửi trong chat: nền trắng, font serif, nét đen mảnh, khung offline nét đứt; các khối và đường nối giữ chỉnh sửa được. Nội dung là **CSA adaptation — cached CLIP ROI + semantic banks**, không phải pipeline retrieval/BLIP của hình mẫu.
 

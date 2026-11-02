@@ -1044,6 +1044,12 @@ User vẫn nhận xét v2 “cảm giác vẫn chưa tới”. Đã dựng lại
 
 [PNG](docs/csa_pipeline_2026-11-02/v3/01_overview.png), [PPTX một hình, editable](docs/csa_pipeline_2026-11-02/v3/CSA_pipeline_editable.pptx), [PDF vector](docs/csa_pipeline_2026-11-02/v3/CSA_pipeline_vector.pdf), [nguồn và ghi chú](docs/csa_pipeline_2026-11-02/v3/README.md). Hai zoom kỹ thuật ở v2 vẫn có hiệu lực. Đã xem PNG/PDF, package/font/layout/import PASS,0findings/0warnings; module/text/bank/token/connectors editable, chỉ ảnh COCO là picture. Không mở PowerPoint, không model/Torch/Kaggle/đổi trainer/Sheetrow. Review độc lập đường forward và user feedback về hình vẫn pending.
 
+### X051-D — Codex2 → Codex1 — 02/11/2026 — giữ bố cục, chỉnh đường nối
+
+User phản hồi v3 “khá ổn rồi nhưng các đường đi phải rõ ràng k có chồng chéo”. Giữ nguyên bố cục, sửa cổng ra token stack để arrow không xuyên thẻ phía sau, đưa V0 sát mũi tên vào stage1; N768/N512/Vo tránh khung và nằm sát nhánh tương ứng. Thêm chấm ở nhánh L2→hai bank có chủ đích.
+
+Builder có guard25tuyến/39đoạn orthogonal:0giao cắt/chồng đoạn ngoài junction được đánh dấu,0đi xuyên module/ảnh/standalone label. Xem PNG/PDF, package/font/layout/import PASS,0findings/0warnings. Cập nhật cùng [thư mục v3](docs/csa_pipeline_2026-11-02/v3/README.md); phiên bản trước còn ở commit21f79f8. Không đổi source/model/trainer, không model/Torch/Kaggle/Sheetrow. Guard là kiểm hình học; review độc lập forward vẫn pending.
+
 ### X052 — Codex1 — 02/11/2026 — full XE10 beam preflight failure and V2 fix
 
 User log: DDP SHARING BENCHMARK COMPLETE, then both ranks failed exact `Batched/per-image beam IDs differ` before first TRAIN update. Old final printed checkpoint paths were prospective, not existence proof. No differing IDs/scores or audited review ZIP, so root cause remains unknown; no claim of numeric-only error. V2 removes unused optimization and uses established `model.beam_search` directly for full validation, with same beam5/max20/rawscore and image encoding groups8. Base model/training recipe unchanged;14 local NumPy/static tests PASS including beam output contract. No relaxed ID tolerance or declaration failed batched guard passed. V2 output `csa_full_xe_10_v2` preserves old failed output; fresh start/emptyRESUME_ROOT, no optimizer progress to recover. Validation runtime may increase; no GPU/model execution by agent, V2 runtime pending. X051 drawing request remains with Codex2; forward pipeline unchanged.

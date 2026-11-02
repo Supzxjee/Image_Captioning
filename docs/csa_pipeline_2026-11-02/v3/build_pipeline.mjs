@@ -29,6 +29,7 @@ shape(1270,85,210,105,'Verb bank\n1594 × 512','bank',20);
 wire([[245,140],[285,140]]);wire([[460,140],[500,140]]);wire([[675,140],[715,140]]);
 wire([[860,140],[955,140]]);
 wire([[900,140],[900,65],[1375,65],[1375,85]]);
+items.push({type:'junction',x:900,y:140});
 // Learned aggregators remain outside the offline bank band.
 shape(970,270,180,60,'Noun aggregator','module',19,true);
 shape(1285,270,180,60,'Verb aggregator','module',19,true);
@@ -44,23 +45,24 @@ shape(725,395,150,60,'Predicted boxes\nproducer cache','data',18);
 shape(725,500,150,75,'ROI pooling\nN × 768 cache','module',19);
 wire([[155,490],[155,425],[725,425]]);
 wire([[255,565],[282,565],[282,538],[310,538]]);
-wire([[485,538],[535,538]]);wire([[675,538],[725,538]]);wire([[800,455],[800,500]]);
+wire([[485,538],[535,538]]);wire([[685,538],[725,538]]);wire([[800,455],[800,500]]);
 txt(520,587,210,25,'14 × 14 · CLS removed',16,true);
 shape(725,665,150,75,'Visual projection\n768 → 512','module',19,true);
-wire([[800,575],[800,665]],'N × 768',810,627,83);
+wire([[800,575],[800,665]],'N × 768',810,593,83);
 txt(300,678,360,52,'N varies per image (max 87)\nEmpty boxes → full-frame fallback',17,true);
 // Three alignment stages. Semantics enter from above / right, visual from left.
 frame(930,365,635,425,'CSA encoder',195);
 shape(1010,420,360,75,'Object alignment 1\n(V₀, Tₒ) → (V₁, T₁)','module',21,true);
 shape(1010,545,360,75,'Object alignment 2\n(V₁, T₁) → Vₒ','module',21,true);
 shape(1010,670,360,75,'Relation alignment\n(Vₒ, Tᵣ) → Vᵣ','module',21,true);
-wire([[875,702],[910,702],[910,458],[1010,458]],'V₀: N × 512',785,753,140);
+wire([[875,702],[910,702],[910,458],[1010,458]],'V₀',945,426,50);
+txt(730,746,140,26,'N × 512',17,true);
 wire([[1060,330],[1060,350],[1190,350],[1190,420]],'Tₒ',1205,380,45);
 wire([[1375,330],[1535,330],[1535,708],[1370,708]],'Tᵣ',1480,485,45);
 wire([[1190,495],[1190,545]],'V₁, T₁',1205,506,100);
 wire([[1190,620],[1190,670]],'Vₒ',1205,631,55);
 // Vo is retained independently, avoiding the Tr wire on the right side.
-wire([[1010,582],[970,582],[970,813],[1040,813],[1040,835]],'Vₒ',974,766,45);
+wire([[1010,582],[970,582],[970,813],[1040,813],[1040,835]],'Vₒ',979,750,45);
 wire([[1190,745],[1190,835]],'Vᵣ',1205,800,50);
 shape(945,835,425,75,'Parallel adaptive decoder (×3)','module',22,true);
 shape(715,835,150,75,'Linear\n+ softmax','module',20,true);
@@ -77,6 +79,44 @@ txt(40,935,345,29,'CSA adaptation',20,true,false,'left');
 txt(40,964,485,25,'Cached CLIP ROI + global semantic banks',16,true,false,'left');
 marker(51,1007,'frozen');txt(66,994,95,26,'Frozen',16,false,false,'left');
 marker(180,1007,'learn');txt(196,994,135,26,'Trainable',16,false,false,'left');
+
+// Inspect the actual orthogonal routes, including the rear token cards.
+// Only a marked junction may connect separate data paths.
+function auditRoutes(){
+ const eps=1e-6,between=(v,a,b)=>v>=Math.min(a,b)-eps&&v<=Math.max(a,b)+eps;
+ const wires=items.filter(a=>a.type==='wire'),segments=[];
+ wires.forEach((a,wi)=>{for(let k=1;k<a.pts.length;k++){
+  const [x,y]=a.pts[k-1],[u,v]=a.pts[k];
+  if(!((x===u)!==(y===v)))throw new Error(`Route ${wi} is not a nonzero orthogonal segment`);
+  segments.push({x,y,u,v,wi,k,h:y===v});
+ }});
+ const hits=[],junctions=items.filter(a=>a.type==='junction');
+ for(let i=0;i<segments.length;i++)for(let j=i+1;j<segments.length;j++){
+  const a=segments[i],b=segments[j];if(a.wi===b.wi&&Math.abs(a.k-b.k)<=1)continue;
+  let hit;
+  if(a.h!==b.h){const h=a.h?a:b,v=a.h?b:a;
+   if(between(v.x,h.x,h.u)&&between(h.y,v.y,v.v))hit=[v.x,h.y];
+  }else if(a.h?a.y===b.y:a.x===b.x){
+   const lo=Math.max(Math.min(a.h?a.x:a.y,a.h?a.u:a.v),Math.min(b.h?b.x:b.y,b.h?b.u:b.v));
+   const hi=Math.min(Math.max(a.h?a.x:a.y,a.h?a.u:a.v),Math.max(b.h?b.x:b.y,b.h?b.u:b.v));
+   if(hi>lo+eps){hits.push({kind:'overlapping_routes',routes:[a.wi,b.wi]});continue;}
+   if(Math.abs(hi-lo)<eps)hit=a.h?[lo,a.y]:[a.x,lo];
+  }
+  if(hit&&!junctions.some(p=>Math.abs(p.x-hit[0])<eps&&Math.abs(p.y-hit[1])<eps))hits.push({kind:'route_intersection',routes:[a.wi,b.wi],point:hit});
+ }
+ const blocks=items.filter(a=>a.type==='shape'||a.type==='photo').map(a=>({...a,x:a.x,y:a.y-(a.kind==='tokens'?10:0),w:a.w+(a.kind==='tokens'?10:0),h:a.h+(a.kind==='tokens'?10:0)}));
+ const labels=items.filter(a=>a.type==='text');
+ function through(s,r){return s.h?s.y>r.y+eps&&s.y<r.y+r.h-eps&&Math.min(Math.max(s.x,s.u),r.x+r.w)>Math.max(Math.min(s.x,s.u),r.x)+eps:s.x>r.x+eps&&s.x<r.x+r.w-eps&&Math.min(Math.max(s.y,s.v),r.y+r.h)>Math.max(Math.min(s.y,s.v),r.y)+eps;}
+ for(const s of segments){
+  for(const r of blocks)if(through(s,r))hits.push({kind:'route_through_module',route:s.wi,module:r.t||r.type});
+  for(const r of labels)if(through(s,r))hits.push({kind:'route_through_label',route:s.wi,label:r.t});
+ }
+ const result={route_count:wires.length,segment_count:segments.length,marked_junctions:junctions.map(({x,y})=>({x,y})),findings:hits,scope:'Orthogonal data paths, expanded token-stack outline, module/photo rectangles, standalone labels; group frames are intentional entry/exit boundaries.'};
+ if(hits.length)throw new Error('Routing audit failed: '+JSON.stringify(hits));
+ return result;
+}
+const routingAudit=auditRoutes();
+await fs.writeFile(path.join(work,'routing-audit.json'),JSON.stringify(routingAudit,null,2));
 
 const deck=Presentation.create({slideSize:{width:W,height:H}});
 const slide=deck.slides.add();slide.background.fill='#ffffff';
@@ -108,6 +148,10 @@ function renderMarker(a){const {x,y}=a;
 }
 for(const a of items){
  if(a.type==='text'){renderText(a);continue;}
+ if(a.type==='junction'){
+  slide.shapes.add({geometry:'ellipse',name:`branch-junction-${index++}`,position:{left:a.x-2.5,top:a.y-2.5,width:5,height:5},fill:INK,line:{fill:'none',width:0}});
+  svg+=`<circle cx="${a.x}" cy="${a.y}" r="2.5" fill="${INK}"/>`;continue;
+ }
  if(a.type==='marker'){renderMarker(a);continue;}
  if(a.type==='photo'){
   const blob=new Uint8Array(await fs.readFile(path.join(out,a.file)));

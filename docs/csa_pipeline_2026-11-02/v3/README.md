@@ -2,6 +2,10 @@
 
 Thiết kế trước khi dựng, 02/11/2026: bỏ tiêu đề/chân trang dạng slide; dùng tỷ lệ hình bài báo, khối nhỏ và chữ serif; bank dạng cylinder, token features dạng chồng thẻ; ảnh COCO đầu vào thực đã có trong audit; đánh dấu frozen/trainable bằng ký hiệu nhỏ. Giữ nội dung CSA theo X051, không thay forward, trainer hoặc kết quả. Bản này là đề xuất tiếp theo, chưa được user chấp nhận về thẩm mỹ.
 
+**Chỉnh tiếp theo phản hồi user:** user nhận xét “khá ổn rồi” và yêu cầu đường đi rõ, không chồng chéo. Giữ bố cục v3; chỉnh điểm nối token stack, đặt nhãn tensor sát đúng nhánh, thêm dấu chấm tại điểm chia nhánh L2 có chủ đích. Kiểm tra hình học đường–đường, đường–module/ảnh và đường–nhãn trước khi xuất; giao với khung nhóm nét đứt là cổng vào/ra nhóm, không phải giao giữa hai luồng dữ liệu.
+
+Đã kiểm 25tuyến/39đoạn dữ liệu:0giao cắt không chủ đích,0đoạn đi xuyên module/ảnh/nhãn; chỉ điểm chia nhánh L2 có dấu chấm là nối hai tuyến. Tính cả đường bao hai thẻ token phía sau khi kiểm cổng ra. Nhãn N×768 tránh viền nhóm; V0 nằm sát mũi tên vào stage1, N×512 dưới projector; nhánh Vo riêng vào decoder được đặt nhãn trong hành lang của nó. Guard nằm trong builder, kết quả lưu vào trace; không coi kiểm hình học là review thuật toán độc lập.
+
 Ảnh minh họa COCO TRAIN263974 đã ghi tại `experiments/csa_paper/RID_IMAGE_SEMANTIC_CHECK.json`; chỉ minh họa đầu vào, không phải kết quả caption/detection của mô hình. Không vẽ thêm box detection hoặc câu caption giả trên ảnh. Hai hình zoom kỹ thuật vẫn có ở bản v2.
 
 ## File xem và chỉnh sửa

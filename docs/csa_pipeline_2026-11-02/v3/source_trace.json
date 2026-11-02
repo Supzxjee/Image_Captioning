@@ -12,16 +12,16 @@
   "model_executed": false,
   "style": "Paper-style compact modules, real documented COCO input, bank cylinders, token stack, frozen/trainable markers; no large slide title/footer",
   "outputs": {
-    "01_overview.png": "c280475ff2e85927010621c10b09d8d3f93fa35515f19e4dd29bca1a86ee552a",
-    "01_overview.svg": "e99377d2343199d439f28d05e2a1cc3a0ab0afc7afcf4478d6346367d0c6ffce",
-    "CSA_pipeline_editable.pptx": "ddc6455c172a7b4c4593bbe0b3853e111ceb696cbd24d8060af52c50d1f5961b",
-    "CSA_pipeline_vector.pdf": "3fff3acaf48ef051d7d088aa36fa284023acb1f6f466a291d89a20c874f509ab",
-    "README.md": "f3f4db88ceba63313783e6b9a8aaccec76d45dd215e739c2ab091aa5d7d7fd69",
+    "01_overview.png": "a6e5dce7fdfc0ad9ac6dcbadfd40aa670c47892ac81f9eb568b32afb660dd01c",
+    "01_overview.svg": "49dce8216f10163903bca95acc8c230afbf6e15f513530894c98b94c801479d3",
+    "CSA_pipeline_editable.pptx": "19ef62338f7b259091bb4c21659f837c19ec8fbab923318e0fcb7c88af59809e",
+    "CSA_pipeline_vector.pdf": "79d1d22f4da1ebc3da7722f8c1e208b36758e49c25fd32ff655b8719ecc80bae",
+    "README.md": "3f0ca051e46d2a859c38f81d08b35b1d36affe88fdc940f0a248ef7623ab466c",
     "assets/COCO_train2014_000000263974.jpg": "f208e31d4f689c88f1c0a6a1c583f1413c86424b10c52d62b8b6d3e2360e7406",
-    "build_pipeline.mjs": "81103d7c367e35c15a4f9327ce812ce3483b52bdd982a9545d0fb4d5da00248b",
-    "diagram_layout.json": "2c971682bab8a00fdc77a8a1458f1083ab58aadadddeede16b30acc5f62267c4"
+    "build_pipeline.mjs": "ec3cd13c3c3d5e055fec5aad1baa62487c53e78fc3d7a5dfdaa18582669cf7a3",
+    "diagram_layout.json": "9ed64c90528476464ce861003127320646d08ca5919925cfbfb768c37472dd94"
   },
-  "revision": "X051-C; user rejected visual style of v2; rebuilt main figure; style acceptance pending",
+  "revision": "X051-D; user finds v3 fairly good; preserve layout and correct connectors/labels; routing review completed",
   "image": {
     "url": "https://images.cocodataset.org/train2014/COCO_train2014_000000263974.jpg",
     "role": "illustrative input only, not detection/caption output",
@@ -33,8 +33,20 @@
     "layout_warnings": 0,
     "artifact_tool_reimport": true,
     "native_powerpoint_opened": false,
-    "shapes": 80,
+    "shapes": 82,
     "connectors": 48,
-    "pictures": 1
+    "pictures": 1,
+    "routing": {
+      "route_count": 25,
+      "segment_count": 39,
+      "marked_junctions": [
+        {
+          "x": 900,
+          "y": 140
+        }
+      ],
+      "findings": [],
+      "scope": "Orthogonal data paths, expanded token-stack outline, module/photo rectangles, standalone labels; group frames are intentional entry/exit boundaries."
+    }
   }
 }
