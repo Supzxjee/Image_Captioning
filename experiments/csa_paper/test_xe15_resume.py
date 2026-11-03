@@ -2,14 +2,52 @@
 import ast
 import copy
 import json
+import hashlib
 from pathlib import Path
+import shutil
+import tempfile
 import unittest
+from unittest.mock import patch
 from full_xe_data import learning_rate,validate_state,STEPS,TRAIN_EVENTS
-from xe15_resume_data import check_resume_identity
+from xe15_resume_data import check_resume_identity,resolve_resume_root
 from real_bank_data import HERE,read
 
 
 class Checks(unittest.TestCase):
+    def fixture(self,root):
+        source=root/'input';source.mkdir();receipts=root/'pinned';receipts.mkdir()
+        package={}
+        for n,raw in (('checkpoint.bin',b'latest139-fixture'),('best.bin',b'best9-fixture')):
+            (source/n).write_bytes(raw);package[n]=hashlib.sha256(raw).hexdigest()
+        for n,key in (('checkpoint_receipt.json','checkpoint.bin'),('best_receipt.json','best.bin')):
+            (receipts/n).write_text(json.dumps(dict(sha256=package[key],updates=177110)),encoding='utf-8')
+        return source,receipts,package
+
+    def test_missing_receipts_recover_only_exact139_binary_fixtures(self):
+        with tempfile.TemporaryDirectory(dir=HERE) as directory:
+            root=Path(directory);source,receipts,package=self.fixture(root);destination=root/'verified'
+            # Windows fixture substitutes copying tiny bytes for Linux read-only symlinks.
+            with patch.object(Path,'symlink_to',lambda self,target:shutil.copyfile(target,self)):
+                actual=resolve_resume_root(source,destination,package,receipts)
+            self.assertEqual(actual,destination)
+            self.assertEqual((destination/'checkpoint.bin').read_bytes(),(source/'checkpoint.bin').read_bytes())
+            self.assertFalse((source/'checkpoint_receipt.json').exists())
+            self.assertEqual(read(destination/'checkpoint_receipt.json')['sha256'],package['checkpoint.bin'])
+
+    def test_duplicate_identical_receipts_and_directory_are_safe(self):
+        with tempfile.TemporaryDirectory(dir=HERE) as directory:
+            root=Path(directory);source,receipts,package=self.fixture(root)
+            for n in ('checkpoint_receipt.json','best_receipt.json'):shutil.copy2(receipts/n,source/n)
+            shutil.copytree(source,root/'duplicate');(root/'checkpoint_receipt.json').mkdir()
+            actual=resolve_resume_root(root,root/'verified',package,receipts)
+            self.assertIn(actual,(source,root/'duplicate'))
+
+    def test_no_rollback_when_non139_latest_present_without_valid_receipts(self):
+        with tempfile.TemporaryDirectory(dir=HERE) as directory:
+            root=Path(directory);source,receipts,package=self.fixture(root)
+            (source/'later').mkdir();(source/'later/checkpoint.bin').write_bytes(b'later-progress')
+            with self.assertRaisesRegex(ValueError,'non139 latest'):resolve_resume_root(source,root/'verified',package,receipts)
+
     def state(self,epoch=11,cursor=0,phase='train'):
         return dict(epoch=epoch,batch_cursor=cursor,phase=phase,updates=(epoch-1)*STEPS+cursor,
             caption_events=(epoch-1)*TRAIN_EVENTS+min(cursor*32,TRAIN_EVENTS),history=[dict(epoch=i) for i in range(1,epoch)])

@@ -8,7 +8,8 @@ from make_full_xe_notebook import FILES as BASE_FILES
 FILES=list(dict.fromkeys(BASE_FILES+['xe15_resume_data.py','test_xe15_resume.py','XE15_CONTINUATION_PROTOCOL.md',
     'score_xe15_quality.py','full_xe10_review_text/input_identity.json','SAVE_XE139_PACKAGE.json',
     'run_best9_decode.py','saved_quality_data.py','best9_saved_text.json.gz','BEST9_SAVED_TEXT_PACKAGE.json',
-    'saved_quality_review_text/comparison.json']))
+    'saved_quality_review_text/comparison.json','full_xe10_review_text/checkpoint_receipt.json',
+    'full_xe10_review_text/best_receipt.json']))
 
 
 def make(revision):
@@ -43,11 +44,11 @@ training_complete=False;quality_complete=False;parent_deadline=time.monotonic()+
 common=['--bank-root',BANK_ROOT,'--stage',STAGE,'--output',OUTPUT,'--target-epochs','15']
 try:
     # Fail missing/changed checkpoints before staging/training. Recursive directory lookup accepts nested mount folders.
-    receipts=list(RESUME_ROOT.rglob('checkpoint_receipt.json'))
-    if len(receipts)!=1:raise RuntimeError('Expected one checkpoint_receipt.json under RESUME_ROOT.')
-    RESUME_ROOT=receipts[0].parent
+    sys.path.insert(0,str(SOURCE))
+    from xe15_resume_data import resolve_resume_root
+    RESUME_ROOT=resolve_resume_root(RESUME_ROOT,SOURCE/'verified-resume139')
     digest=lambda p:hashlib.file_digest(Path(p).open('rb'),'sha256').hexdigest()
-    receipt=json.loads(receipts[0].read_text(encoding='utf-8'))
+    receipt=json.loads((RESUME_ROOT/'checkpoint_receipt.json').read_text(encoding='utf-8'))
     best=json.loads((RESUME_ROOT/'best_receipt.json').read_text(encoding='utf-8'))
     if digest(RESUME_ROOT/'checkpoint.bin')!=receipt['sha256'] or digest(RESUME_ROOT/'best.bin')!=best['sha256']:raise ValueError('Checkpoint/best bytes differ from receipts')
     if not 177110<=receipt['updates']<=265665:raise ValueError('Expected latest epoch10 or interrupted11–15 output')
@@ -95,9 +96,9 @@ finally:
 **T4×2, Internet ON, Save Version → Save & Run All.** Add Input:
 - `csa-full-roi-karpathy-v134`
 - `csa-semantic-banks-v130`
-- `csa-full-xe10-v139` (latest `checkpoint.bin`, `best.bin` and their receipts)
+- `csa-full-xe10-v139` (latest `checkpoint.bin` and `best.bin`)
 
-Paths prefilled. No API token or mounted review ZIP. Mandatory resume from latest epoch10/177110updates; never from best9/fresh weights.
+Paths prefilled. No API token or mounted review ZIP. Missing/extracted receipts for original139 are restored from pinned metadata only after exact SHA verification of both binaries; inputDataset untouched. Mandatory resume from latest epoch10/177110updates; never from best9/fresh weights. Interrupted15run still needs its own verified receipts.
 Five additional fullTRAIN epochs:88555updates; absolute endpoint15=265665updates. Same model/Adam/RNG/data/global32/FP32; LR remains1e-4, no warmup restart/SCST/architecture change. TwoT4DDP, ordinary features; six current-environment gradient/loss checks before actual training.
 Full5000val NLL/CIDEr and originalbeam5/max20 after every epoch. Keep oldbest9 unless a new validationCIDEr exceeds it (earlier ties). No TEST.
 Then CPUscore savedbest9 and11–15 CIDEr/BLEU4/ROUGE-L/CHAIRs/i/recall/counts/length, with oldbest9 metric replay. Selection is stillCIDEr, not post-hoc CHAIR. Training and CPUscore completion reported separately; scorer failure does not erase training checkpoint.
@@ -107,6 +108,31 @@ Send `csa_full_xe_15_review.zip`. Local agent checks are metadata/NumPy/static o
 '''),cell('code',setup),cell('code',RUNNER.replace('Smoke active;','CSA continuation active;').replace('Smoke wall cap exceeded','Continuation phase cap exceeded')),cell('code',execute)])
     p=HERE/'CSA_FULL_XE_11_TO_15_2GPU.ipynb';p.write_text(json.dumps(notebook,indent=1,ensure_ascii=False)+'\n',encoding='utf-8')
     print(p.name,p.stat().st_size,'bytes; unexecuted')
+    recovery=f'''
+# CURRENT failed receipt-lookup session only. Then rerun the last execution cell.
+import hashlib,json,sys,urllib.request
+from pathlib import Path
+if not all(n in globals() for n in ('SOURCE','OUTPUT','RESUME_ROOT','run')):raise RuntimeError('Use the corrected full notebook in a fresh session; current globals missing.')
+SOURCE=Path(SOURCE);OUTPUT=Path(OUTPUT)
+if (OUTPUT/'checkpoint.bin').exists() or (OUTPUT/'progress.json').exists():raise RuntimeError('Training progress exists; preserve it, do not apply first-lookup recovery.')
+COMMIT={commit!r}
+HASHES={hashes!r}
+for n,h in HASHES.items():
+    raw=urllib.request.urlopen(f'https://raw.githubusercontent.com/Supzxjee/Image_Captioning/{{COMMIT}}/{PREFIX}{{n}}',timeout=90).read()
+    if hashlib.sha256(raw).hexdigest()!=h:raise ValueError('Changed source:'+n)
+    p=SOURCE/n;p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(raw)
+sys.path.insert(0,str(SOURCE));sys.modules.pop('xe15_resume_data',None)
+from xe15_resume_data import resolve_resume_root
+RESUME_ROOT=resolve_resume_root(RESUME_ROOT,SOURCE/'verified-resume139')
+for n in ('failure.txt','run_status.json','source_receipt.json'):
+    p=OUTPUT/n;previous=OUTPUT/('before_receipt_fix_'+n)
+    if p.exists() and not previous.exists():p.rename(previous)
+(OUTPUT/'source_receipt.json').write_text(json.dumps(dict(commit=COMMIT,sha256=HASHES),indent=2),encoding='utf-8')
+print('Verified resume root:',RESUME_ROOT)
+print('Now rerun ONLY the last execution cell. Do not rerun setup.')
+'''
+    cell('code',recovery)
+    (HERE/'RECOVER_XE15_RECEIPT_CELL.py').write_text(recovery.strip()+'\n',encoding='utf-8')
 
 
 if __name__=='__main__':
