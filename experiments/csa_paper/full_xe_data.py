@@ -9,12 +9,12 @@ TRAIN_EVENTS=566747
 STEPS=math.ceil(TRAIN_EVENTS/32)
 EPOCHS=10
 
-def learning_rate(step):
-    if not 1<=step<=EPOCHS*STEPS:raise ValueError('Update outside approved ten epochs')
+def learning_rate(step,total_epochs=EPOCHS):
+    if total_epochs not in (10,15) or not 1<=step<=total_epochs*STEPS:raise ValueError('Update outside approved epoch horizon')
     return 8e-6+(1e-4-8e-6)*min((step-1)/(3*STEPS-1),1)
 
-def epoch_order(data,epoch):
-    if not 1<=epoch<=EPOCHS:raise ValueError('Epoch outside1..10')
+def epoch_order(data,epoch,total_epochs=EPOCHS):
+    if total_epochs not in (10,15) or not 1<=epoch<=total_epochs:raise ValueError('Epoch outside approved horizon')
     return grouped_order(data,TRAIN_EVENTS,seed=42+epoch)
 
 def validation_references(root):
@@ -38,11 +38,11 @@ def validate_predictions(rows,refs):
         raise ValueError('Missing/duplicate/foreign validation prediction')
     if any(not isinstance(x['caption'],str) or not math.isfinite(x['score']) for x in rows):raise ValueError('Invalid prediction')
 
-def validate_state(state):
+def validate_state(state,total_epochs=EPOCHS):
     epoch=state['epoch'];cursor=state['batch_cursor'];phase=state['phase']
-    if type(epoch)!=int or type(cursor)!=int or not 1<=epoch<=EPOCHS+1 or not 0<=cursor<=STEPS or phase not in ('train','validate'):
+    if total_epochs not in (10,15) or type(epoch)!=int or type(cursor)!=int or not 1<=epoch<=total_epochs+1 or not 0<=cursor<=STEPS or phase not in ('train','validate'):
         raise ValueError('Bad resume cursor')
-    if epoch==EPOCHS+1 and (cursor or phase!='train'):raise ValueError('Bad completed cursor')
+    if epoch==total_epochs+1 and (cursor or phase!='train'):raise ValueError('Bad completed cursor')
     if phase=='validate' and cursor!=STEPS:raise ValueError('Validation without complete training epoch')
     if state['updates']!=(epoch-1)*STEPS+cursor:raise ValueError('Update/cursor mismatch')
     if state['caption_events']!=(epoch-1)*TRAIN_EVENTS+min(cursor*32,TRAIN_EVENTS):raise ValueError('Caption exposure mismatch')

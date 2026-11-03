@@ -1,4 +1,4 @@
-"""USER-RUN ONLY: ordinary two-GPU full CSA XE and validation, first10 epochs."""
+"""USER-RUN ONLY: ordinary two-GPU full CSA XE and validation, first10 epochs or explicit continuation to15."""
 import argparse
 from datetime import timedelta
 import importlib.metadata
@@ -76,12 +76,12 @@ def worker(args):
         # Vocabulary is pinned as part of ROI source package; preserve it beside source.
         vocab=read(args.output/'vocabulary.json')
         if len(vocab)!=10000:raise ValueError('Expected vocabulary10000')
-        identity=dict(schema='csa_full_xe10_v1',source=read(args.output/'source_receipt.json')['sha256'],
+        identity=dict(schema='csa_full_xe10_v1' if args.target_epochs==10 else 'csa_full_xe15_v1',source=read(args.output/'source_receipt.json')['sha256'],
             stage_sha256=stage['files_sha256'],bank_package=bank_package,
             validation_references_sha256=sha(args.output/'validation_references.json'),
             ptb_sha256=sha(args.output/'validation_ptb.json'),
             software={k:importlib.metadata.version(k) for k in ('torch','numpy','pycocoevalcap')},
-            cuda=torch.version.cuda,world_size=2,global_batch=32,seed=42,precision='FP32',epochs=10)
+            cuda=torch.version.cuda,world_size=2,global_batch=32,seed=42,precision='FP32',epochs=args.target_epochs)
         random.seed(42+rank);np.random.seed(42+rank);torch.manual_seed(42)
         base=CSACaptioner(Config(vocab=10000),*[torch.from_numpy(x) for x in banks]).to(device)
         model=DDP(base,device_ids=[rank],output_device=rank,broadcast_buffers=False,find_unused_parameters=False)
@@ -99,13 +99,19 @@ def worker(args):
         if rank==0:save(args.output/'beam_preflight.json',parity)
         del x,valid
 
+        if args.target_epochs==15 and not args.resume_root:raise ValueError('Epoch15 extension requires latest checkpoint; no fresh start')
         if args.resume_root:
             root=Path(args.resume_root);receipt=read(root/'checkpoint_receipt.json')
             checkpoint=root/'checkpoint.bin'
             if sha(checkpoint)!=receipt['sha256']:raise ValueError('Resume checkpoint SHA differs')
             ck=torch.load(checkpoint,map_location='cpu',weights_only=False)
-            if ck['identity']!=identity:raise ValueError('Resume source/input/policy/software identities differ')
-            state=ck['state'];validate_state(state)
+            state=ck['state']
+            if args.target_epochs==15:
+                from xe15_resume_data import check_resume_identity
+                migration=check_resume_identity(ck['identity'],identity,receipt['sha256'],state)
+                if rank==0:save(args.output/'resume_migration.json',dict(kind=migration,checkpoint_sha256=receipt['sha256'],previous_identity=ck['identity'],current_identity=identity))
+            elif ck['identity']!=identity:raise ValueError('Resume source/input/policy/software identities differ')
+            validate_state(state,total_epochs=args.target_epochs)
             base.load_state_dict(ck['model'],strict=True);optimizer.load_state_dict(ck['optimizer'])
             rng=ck['rng_by_rank'][rank]
             random.setstate(rng['python']);np.random.set_state(rng['numpy']);torch.set_rng_state(rng['torch'])
@@ -120,7 +126,8 @@ def worker(args):
             last_receipt=receipt
             del ck
             print('RESUMED',rank,state['epoch'],state['batch_cursor'],state['phase'],flush=True)
-        validate_state(state)
+        validate_state(state,total_epochs=args.target_epochs)
+        initial_updates=state['updates']
         if rank==0:
             save(args.output/'input_identity.json',identity)
             save(args.output/'runtime.json',dict(world_size=world,devices=[torch.cuda.get_device_name(i) for i in range(2)],
@@ -133,7 +140,7 @@ def worker(args):
 
         def checkpoint():
             nonlocal last_receipt
-            validate_state(state);bank_guard()
+            validate_state(state,total_epochs=args.target_epochs);bank_guard()
             rng=dict(python=random.getstate(),numpy=np.random.get_state(),torch=torch.get_rng_state(),cuda=torch.cuda.get_rng_state(device))
             rngs=[None,None];dist.all_gather_object(rngs,rng)
             if rank==0:
@@ -196,10 +203,10 @@ def worker(args):
             dist.broadcast_object_list(metrics,src=0)
             return metrics[0]
 
-        while state['epoch']<=EPOCHS:
+        while state['epoch']<=args.target_epochs:
             epoch=state['epoch'];began=time.monotonic()
             if state['phase']=='train':
-                order=epoch_order(data,epoch);base.train()
+                order=epoch_order(data,epoch,total_epochs=args.target_epochs);base.train()
                 for batch in range(state['batch_cursor'],STEPS):
                     if batch%25==0 and stop_due():
                         checkpoint()
@@ -210,7 +217,7 @@ def worker(args):
                     token_count=torch.tensor(int((seq[:,1:]!=0).sum()),device=device,dtype=torch.long)
                     dist.all_reduce(token_count)
                     if int(token_count)!=denominator:raise ValueError('DDP token denominator mismatch')
-                    step=state['updates']+1;lr=learning_rate(step)
+                    step=state['updates']+1;lr=learning_rate(step,total_epochs=args.target_epochs)
                     for group in optimizer.param_groups:group['lr']=lr
                     optimizer.zero_grad(set_to_none=True);logits=model(x,v,seq[:,:-1])
                     nll=F.cross_entropy(logits.flatten(0,1),seq[:,1:].flatten(),ignore_index=0,reduction='sum')
@@ -224,7 +231,7 @@ def worker(args):
                     state['updates']=step;state['batch_cursor']=batch+1;state['caption_events']+=len(indices)
                     state['target_tokens']+=denominator;state['epoch_tokens']+=denominator;state['epoch_nll_sum']+=float(observed)
                     if step%100==0 and rank==0:
-                        print('TRAIN',dict(epoch=epoch,step=step,total_updates=EPOCHS*STEPS,batch=batch+1,
+                        print('TRAIN',dict(epoch=epoch,step=step,total_updates=args.target_epochs*STEPS,batch=batch+1,
                             lr=lr,nll=float(observed)/denominator,grad_norm=float(norm),seconds=time.monotonic()-start),flush=True)
                     if step%1000==0:checkpoint()
                 state['phase']='validate';checkpoint()
@@ -244,12 +251,13 @@ def worker(args):
                 atomic_json(args.output/'best_receipt.json',dict(**last_receipt,validated_epoch=epoch,cider=metrics['cider'],selection='max validation CIDEr; earlier ties'))
             dist.barrier(device_ids=[rank])
         if rank==0:
-            save(args.output/'result.json',dict(status='FULL_XE_10_COMPLETE',completed_epochs=10,updates=state['updates'],
+            save(args.output/'result.json',dict(status=f'FULL_XE_{args.target_epochs}_COMPLETE',completed_epochs=args.target_epochs,updates=state['updates'],
+                initial_updates_this_session=initial_updates,added_updates_this_session=state['updates']-initial_updates,
                 caption_events=state['caption_events'],train_images=113287,val_images=5000,test_images=0,
                 history=state['history'],best_epoch=state['best_epoch'],best_cider=state['best_cider'],
                 session_seconds=time.monotonic()-start,selection='max validation CIDEr; earlier ties',
                 precision='FP32',global_batch=32,feature_sharing=False,rl=False,chair_computed=False))
-            print('FULL XE10 COMPLETE. Preserve entire output folder including checkpoint.bin and best.bin.',flush=True)
+            print(f'FULL XE{args.target_epochs} COMPLETE. Preserve entire output folder including checkpoint.bin and best.bin.',flush=True)
     finally:
         if dist.is_initialized():dist.destroy_process_group()
 
@@ -258,4 +266,5 @@ if __name__=='__main__':
     p=argparse.ArgumentParser();p.add_argument('mode',choices=['prepare','metric_preflight','worker'])
     p.add_argument('--full-root');p.add_argument('--bank-root',required=True);p.add_argument('--stage',type=Path,required=True)
     p.add_argument('--output',type=Path,required=True);p.add_argument('--resume-root',default='');p.add_argument('--wall-seconds',type=float,default=36900)
+    p.add_argument('--target-epochs',type=int,choices=(10,15),default=10)
     args=p.parse_args();args.output.mkdir(parents=True,exist_ok=True);globals()[args.mode](args)

@@ -1,0 +1,13 @@
+# Approved continuation: CSA epochs11–15 XE, 03/11/2026
+
+User approved after frozen best9 greedy/beam check. Available GPU quota reported23h; that is not an elapsed runtime allowance/billing estimate. Reuse frozen ROI134/banks130/checkpoint139. No fresh start, SCST, architecture change, altered loss or TEST.
+
+Resume exact epoch10 latest checkpoint SHA272f843a… (177110updates; next cursor epoch11/train/batch0). Keep Adam and both-rank Python/NumPy/Torch/CUDA RNG states. Retain exact old best9 SHAf09e11c3… and historical CIDEr1.002932588. Identity migration is explicit: exact legacy139 checkpoint and recorded input identity only; new horizon15/source map/schema recorded. All operational data/software/CUDA/bank hashes and unchanged source files must match. No general identity bypass. A subsequent interruption resumes only an identical current15epoch identity. Mandatory resume; never fallback to fresh weights or best9.
+
+Same fullTRAIN113287/566747captionevents per epoch; ordinary2T4 FP32/global32, 17711updates/epoch, same deterministic42+epoch order/dropout/loss/clip1/Adam. Warmup already finished; LR remains1e-4, not restarted. New work88555updates/2833735captionevents; final absolute265665updates/8501205events. Full5000val NLL/CIDEr and original beam5/max20/rawscore after each new epoch. Best by greatest validationCIDEr among oldbest9 and newepochs, ties earlier. No validation gradient.
+
+New output `csa_full_xe_15` preserves inputDataset. Save resumable latest+best/checkpoint receipts; interrupted-state and no-false-completion guards retained. Carry savedbest9 captions from source-pinned139text bundle; no mounted reviewZIP needed. Keep full output folder. Fullmodel/Adam/RNG source checkpoint required, not small reviewZIP. New result distinguishes15 totalepochs from5 addedepochs.
+
+Notebook uses6h parent training/preparation stopcap (not ETA); measured full10 user worker was6.035h, so roughly3h for5 additional epochs is contextual only. Stagefull cache once; previous successful six DDP guards rerun in current environment, discard temporary models. After training score savedbest9 and epochs11–15 full5000 with pinned currentmetric/CHAIR stack; score functions never run models. ReferenceCIDEr and rawbaselineCHAIR counts must replay. CIDEr selection remains fixed before CHAIR. Rawcaptions/metrics archived even if CPUscoringfails; training completion and scoring completion reported separately. No automatictrainingrestart.
+
+Agent checks metadata/NumPy/static/mock only; user runs all Kaggle/Torch/scorers. Full end-to-end CUDA/runtime is pending user. Completing15XE is baseline development, not a novel alignment contribution or a guaranteed quality gain.
