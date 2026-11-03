@@ -1,0 +1,11 @@
+{
+  "source_review_sha256": "7ff1ba033f560b2a0565cb30d7bae137eba8fca9a59db45e9e947b7cb9db286f",
+  "files_sha256": {
+    "validation_references.json": "607ccf4b728f65213a2e8de10a0dd0f0004f829a55be95b351acb0f2abcf1662",
+    "vocabulary.json": "924be210aa0daa8b0968a6d69ad2c66b3de603f49c35f4aa67247c75d6173fc7",
+    "input_identity.json": "b7d1f08ecc045ea6779c5c04776b52d5b92933a88d58fe792b3f897c5cd98c5b",
+    "val_epoch09_rank0.json": "9657276d14c9417ee51c74e8ade2dac29f0789b9b12370311e734ad1931cf7d9",
+    "val_epoch09_rank1.json": "11fed821aa46d4fcc3ec94e5ca65694bd1e77c766f79a446738a54809fec822b"
+  },
+  "bundle_sha256": "42594e90ec2f47646e7e68347a17471213038bc182814ca9d29ea374e8010861"
+}

@@ -1,0 +1,125 @@
+{
+  "status": "BEST9_DECODE_REVIEW_COMPLETE",
+  "zip_sha256": "10c75a46248b29435b5b55e667ac91fca3d3f504b8e79aa21df5a42b92668cd8",
+  "metadata_checks": 63,
+  "source_commit": "4c680ae60faa1073ddebc2af9b02e9f23bb3f9e6",
+  "source_hashes_verified": 11,
+  "result": {
+    "status": "BEST9_DECODE_COMPLETE",
+    "metrics": {
+      "full5000": {
+        "beam5": {
+          "CIDEr": 1.0029325883893672,
+          "Bleu_4": 0.3355283865813089,
+          "ROUGE_L": 0.5359684752926039,
+          "CHAIRs": 0.0566,
+          "CHAIRi": 0.040945945945945944,
+          "Recall": 0.40149422400803614,
+          "counts": {
+            "images": 5000,
+            "hallucinated_captions": 283,
+            "hallucinated_mentions": 303,
+            "object_mentions": 7400,
+            "recalled_unique": 6395,
+            "reference_unique": 15928
+          },
+          "images": 5000,
+          "mean_words": 8.263,
+          "short_le2": 409,
+          "empty": 0,
+          "eos": 4925
+        },
+        "greedy": {
+          "CIDEr": 0.9438689873960099,
+          "Bleu_4": 0.29015359712147104,
+          "ROUGE_L": 0.5298801959676025,
+          "CHAIRs": 0.0804,
+          "CHAIRi": 0.05261502987108269,
+          "Recall": 0.42780010045203415,
+          "counts": {
+            "images": 5000,
+            "hallucinated_captions": 402,
+            "hallucinated_mentions": 502,
+            "object_mentions": 9541,
+            "recalled_unique": 6814,
+            "reference_unique": 15928
+          },
+          "images": 5000,
+          "mean_words": 10.197,
+          "short_le2": 77,
+          "empty": 0,
+          "eos": 4558
+        }
+      },
+      "common4000": {
+        "beam5": {
+          "CIDEr": 1.0177409742237555,
+          "Bleu_4": 0.338523849748464,
+          "ROUGE_L": 0.5378703687684094,
+          "CHAIRs": 0.058,
+          "CHAIRi": 0.041596212377409535,
+          "Recall": 0.4031558185404339,
+          "counts": {
+            "images": 4000,
+            "hallucinated_captions": 232,
+            "hallucinated_mentions": 246,
+            "object_mentions": 5914,
+            "recalled_unique": 5110,
+            "reference_unique": 12675
+          },
+          "images": 4000,
+          "mean_words": 8.26175,
+          "short_le2": 325,
+          "empty": 0,
+          "eos": 3938
+        },
+        "greedy": {
+          "CIDEr": 0.9556788742466121,
+          "Bleu_4": 0.29274716111040966,
+          "ROUGE_L": 0.5311939714900964,
+          "CHAIRs": 0.0805,
+          "CHAIRi": 0.05198736509607792,
+          "Recall": 0.42998027613412226,
+          "counts": {
+            "images": 4000,
+            "hallucinated_captions": 322,
+            "hallucinated_mentions": 395,
+            "object_mentions": 7598,
+            "recalled_unique": 5450,
+            "reference_unique": 12675
+          },
+          "images": 4000,
+          "mean_words": 10.187,
+          "short_le2": 68,
+          "empty": 0,
+          "eos": 3647
+        }
+      }
+    },
+    "changed_captions": 3653,
+    "checkpoint_sha256": "f09e11c374477be93cc142a238dbd0e206060f33fa4fab5988e767ea7d259fe6",
+    "epoch": 9,
+    "optimizer_steps": 0,
+    "max_new_tokens": 20,
+    "beam_reference": "saved Output139 epoch9",
+    "beam_sample_replay_images": 16,
+    "training": false,
+    "test_used": false,
+    "development_reused": true
+  },
+  "paired_hallucinations": {
+    "full5000": {
+      "beam_to_greedy_repaired": 62,
+      "beam_to_greedy_introduced": 181
+    },
+    "common4000": {
+      "beam_to_greedy_repaired": 49,
+      "beam_to_greedy_introduced": 139
+    }
+  },
+  "worker_seconds": [
+    165.38435419099994,
+    166.35266792100003
+  ],
+  "local_model_or_scorer_execution": false
+}

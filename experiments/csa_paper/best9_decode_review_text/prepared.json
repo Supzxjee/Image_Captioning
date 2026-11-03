@@ -1,0 +1,12 @@
+{
+  "checkpoint": "/kaggle/input/datasets/ducanh2403/csa-full-xe10-v139/best.bin",
+  "checkpoint_sha256": "f09e11c374477be93cc142a238dbd0e206060f33fa4fab5988e767ea7d259fe6",
+  "staged_sha256": {
+    "features.npy": "661fa4457643492b862a734918069bbed4536cacbccbee0da736a3443f95e5cd",
+    "offsets.npy": "f9b3a2badd613ef14c041943eaf19b64e5f2afd0f216c9fc90191489be837d4d",
+    "ids.npy": "8eb7a7f6521c418827ec9499e577276c0a6f8a4a37ec2fab2c2325b97095da0d"
+  },
+  "validation_images": 5000,
+  "training_images": 0,
+  "test_used": false
+}

@@ -1,0 +1,13 @@
+{
+  "complete": true,
+  "summary": {
+    "images": 2500,
+    "mean_words": 10.1896,
+    "short_le2": 37,
+    "empty": 0,
+    "eos": 2280
+  },
+  "seconds": 165.38435419099994,
+  "optimizer_steps": 0,
+  "device": "Tesla T4"
+}

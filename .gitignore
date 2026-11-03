@@ -22,3 +22,4 @@ experiments/shared_pair_readout/review/
 experiments/concept_mass_grounding/review/
 experiments/csa_paper/review/full_xe10_v2_loaded.json
 experiments/csa_paper/review/saved_quality_v2_loaded.json
+experiments/csa_paper/review/best9_decode_loaded.json
