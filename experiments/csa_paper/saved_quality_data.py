@@ -17,7 +17,10 @@ def common_refs(references,bundle):
     if any(len(x['references'])!=5 for x in selected):raise ValueError('Missing reference')
     digest=hashlib.sha256(json.dumps(selected,ensure_ascii=False,separators=(',',':')).encode()).hexdigest()
     if digest!=bundle['reference_sha256']:raise ValueError('Old/new reference identities differ')
-    return selected
+    order=bundle.get('legacy_order',sorted(ids))
+    if len(order)!=len(ids) or set(order)!=set(ids):raise ValueError('Wrong legacy input order')
+    by_id={x['coco_id']:x for x in selected}
+    return [by_id[i] for i in order]
 
 def chair_counts(chair,rows):
     sentences=chair['sentences'];ids={x['coco_id'] for x in rows};mapping={x['coco_id']:x['caption'] for x in rows}
@@ -32,3 +35,9 @@ def chair_counts(chair,rows):
                 Recall=counts['recalled_unique']/max(1,counts['reference_unique']))
     if any(not math.isfinite(v) or abs(v-chair['overall_metrics'][k])>1e-12 for k,v in metric.items()):raise ValueError('CHAIR count aggregation differs')
     return metric,counts
+
+def align_cider_scores(references,values,rows):
+    if len(references)!=len(values):raise ValueError('CIDEr score/reference length mismatch')
+    indexed={r['coco_id']:float(v) for r,v in zip(references,values)}
+    if len(indexed)!=len(references) or {r['coco_id'] for r in rows}!=set(indexed):raise ValueError('CIDEr score IDs differ')
+    return [indexed[r['coco_id']] for r in rows]
