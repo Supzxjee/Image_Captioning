@@ -76,14 +76,18 @@ def worker(args):
         # Vocabulary is pinned as part of ROI source package; preserve it beside source.
         vocab=read(args.output/'vocabulary.json')
         if len(vocab)!=10000:raise ValueError('Expected vocabulary10000')
-        identity=dict(schema='csa_full_xe10_v1' if args.target_epochs==10 else 'csa_full_xe15_v1',source=read(args.output/'source_receipt.json')['sha256'],
+        identity=dict(schema=('plain_full_xe10_v1' if args.arm=='plain' else ('csa_full_xe10_v1' if args.target_epochs==10 else 'csa_full_xe15_v1')),source=read(args.output/'source_receipt.json')['sha256'],
             stage_sha256=stage['files_sha256'],bank_package=bank_package,
             validation_references_sha256=sha(args.output/'validation_references.json'),
             ptb_sha256=sha(args.output/'validation_ptb.json'),
             software={k:importlib.metadata.version(k) for k in ('torch','numpy','pycocoevalcap')},
             cuda=torch.version.cuda,world_size=2,global_batch=32,seed=42,precision='FP32',epochs=args.target_epochs)
+        if args.arm=='plain':identity['arm']='plain'
         random.seed(42+rank);np.random.seed(42+rank);torch.manual_seed(42)
-        base=CSACaptioner(Config(vocab=10000),*[torch.from_numpy(x) for x in banks]).to(device)
+        if args.arm=='plain':
+            from plain_model import PlainCaptioner
+            base=PlainCaptioner(Config(vocab=10000)).to(device)
+        else:base=CSACaptioner(Config(vocab=10000),*[torch.from_numpy(x) for x in banks]).to(device)
         model=DDP(base,device_ids=[rank],output_device=rank,broadcast_buffers=False,find_unused_parameters=False)
         torch.cuda.manual_seed(4242+rank)
         optimizer=torch.optim.Adam(base.parameters(),lr=8e-6,betas=(.9,.99),eps=1e-8,weight_decay=0)
@@ -131,9 +135,10 @@ def worker(args):
         if rank==0:
             save(args.output/'input_identity.json',identity)
             save(args.output/'runtime.json',dict(world_size=world,devices=[torch.cuda.get_device_name(i) for i in range(2)],
-                software=identity['software'],precision='FP32',resume_root=args.resume_root))
+                software=identity['software'],precision='FP32',resume_root=args.resume_root,arm=args.arm,trainable_parameters=sum(p.numel() for p in base.parameters() if p.requires_grad)))
 
         def bank_guard():
+            if args.arm=='plain':return
             for name,array in zip(('nouns','verbs'),banks):
                 value=getattr(base,name)
                 if value.requires_grad or not torch.equal(value.detach().cpu(),torch.from_numpy(array)):raise ValueError('Frozen bank changed')
@@ -251,12 +256,12 @@ def worker(args):
                 atomic_json(args.output/'best_receipt.json',dict(**last_receipt,validated_epoch=epoch,cider=metrics['cider'],selection='max validation CIDEr; earlier ties'))
             dist.barrier(device_ids=[rank])
         if rank==0:
-            save(args.output/'result.json',dict(status=f'FULL_XE_{args.target_epochs}_COMPLETE',completed_epochs=args.target_epochs,updates=state['updates'],
+            save(args.output/'result.json',dict(status=(f'PLAIN_XE_{args.target_epochs}_COMPLETE' if args.arm=='plain' else f'FULL_XE_{args.target_epochs}_COMPLETE'),completed_epochs=args.target_epochs,updates=state['updates'],
                 initial_updates_this_session=initial_updates,added_updates_this_session=state['updates']-initial_updates,
                 caption_events=state['caption_events'],train_images=113287,val_images=5000,test_images=0,
                 history=state['history'],best_epoch=state['best_epoch'],best_cider=state['best_cider'],
                 session_seconds=time.monotonic()-start,selection='max validation CIDEr; earlier ties',
-                precision='FP32',global_batch=32,feature_sharing=False,rl=False,chair_computed=False))
+                precision='FP32',global_batch=32,feature_sharing=False,rl=False,chair_computed=False,arm=args.arm))
             print(f'FULL XE{args.target_epochs} COMPLETE. Preserve entire output folder including checkpoint.bin and best.bin.',flush=True)
     finally:
         if dist.is_initialized():dist.destroy_process_group()
@@ -266,5 +271,6 @@ if __name__=='__main__':
     p=argparse.ArgumentParser();p.add_argument('mode',choices=['prepare','metric_preflight','worker'])
     p.add_argument('--full-root');p.add_argument('--bank-root',required=True);p.add_argument('--stage',type=Path,required=True)
     p.add_argument('--output',type=Path,required=True);p.add_argument('--resume-root',default='');p.add_argument('--wall-seconds',type=float,default=36900)
+    p.add_argument('--arm',choices=('csa','plain'),default='csa')
     p.add_argument('--target-epochs',type=int,choices=(10,15),default=10)
     args=p.parse_args();args.output.mkdir(parents=True,exist_ok=True);globals()[args.mode](args)
