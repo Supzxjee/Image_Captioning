@@ -1,0 +1,10 @@
+{
+  "payload_sha256": "d198bac711e0ee21ef66379646e88d906c8fa441f80c39933c15f6748d4d73ee",
+  "source_review_zip_sha256": "4397bbc5a1f47d6234cab232ebd57e5a098a49a7fe7d22e7921d080c1f91665e",
+  "schema": "csa_saved_caption_comparison_v1",
+  "count": 4000,
+  "shared_word_types": 6916,
+  "reference_prefix_mismatches_explained": 8,
+  "new_review_zip_sha256": "7ff1ba033f560b2a0565cb30d7bae137eba8fca9a59db45e9e947b7cb9db286f",
+  "kernel_version": "ducanh2403/2-vi-cai-kia-qua-nhieu/139"
+}
