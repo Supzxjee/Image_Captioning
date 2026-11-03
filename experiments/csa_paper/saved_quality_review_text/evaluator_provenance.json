@@ -1,0 +1,12 @@
+{
+  "packages": {
+    "pycocoevalcap": "1.2",
+    "numpy": "2.1.3",
+    "nltk": "3.9.2"
+  },
+  "tokenizer_sha256": "ded90551127b8a4bf683873432ccafa83330a9997f6d0b695cb71a618808b8c1",
+  "cider_sha256": "268b71cb096ccd10cf4a7cd49a9a72072001922f1876f4e88833e1eb4649cfcb",
+  "cider_scorer_sha256": "299037838373391c3335e066c867ba2d6dd8617d2c8fb2c4193f32620a774adc",
+  "original_legacy_keys_order_restored": true,
+  "full5000_original_rank_concat_order": true
+}

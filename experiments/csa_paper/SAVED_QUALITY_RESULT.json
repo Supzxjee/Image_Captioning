@@ -1,0 +1,222 @@
+{
+  "status": "SAVED_QUALITY_REVIEW_COMPLETE",
+  "zip_sha256": "274f0277f29ca201d3b945889faa79daf765f385925c3f3c607389bdf93517cc",
+  "source_commit": "3a6532941a98384a8501e7dcfb5be3453ec407ab",
+  "source_files": 5,
+  "metadata_checks": 78,
+  "metrics": {
+    "common4000": {
+      "A": {
+        "CIDEr": 1.1897711291207747,
+        "Bleu_4": 0.3526511146504494,
+        "ROUGE_L": 0.5755566788207223,
+        "CHAIRs": 0.05975,
+        "CHAIRi": 0.0391733497840839,
+        "Recall": 0.46808678500986195,
+        "counts": {
+          "images": 4000,
+          "hallucinated_captions": 239,
+          "hallucinated_mentions": 254,
+          "object_mentions": 6484,
+          "recalled_unique": 5933,
+          "reference_unique": 12675
+        },
+        "mean_words": 10.12875
+      },
+      "C0": {
+        "CIDEr": 1.2045604293298307,
+        "Bleu_4": 0.35887157251274215,
+        "ROUGE_L": 0.5786355602257536,
+        "CHAIRs": 0.05875,
+        "CHAIRi": 0.03814211011996309,
+        "Recall": 0.4710848126232742,
+        "counts": {
+          "images": 4000,
+          "hallucinated_captions": 235,
+          "hallucinated_mentions": 248,
+          "object_mentions": 6502,
+          "recalled_unique": 5971,
+          "reference_unique": 12675
+        },
+        "mean_words": 9.995
+      },
+      "C": {
+        "CIDEr": 1.2070416700126538,
+        "Bleu_4": 0.36062821635286235,
+        "ROUGE_L": 0.5791112467676683,
+        "CHAIRs": 0.0575,
+        "CHAIRi": 0.03751736915238536,
+        "Recall": 0.4702958579881657,
+        "counts": {
+          "images": 4000,
+          "hallucinated_captions": 230,
+          "hallucinated_mentions": 243,
+          "object_mentions": 6477,
+          "recalled_unique": 5961,
+          "reference_unique": 12675
+        },
+        "mean_words": 9.93825
+      },
+      "CSA9": {
+        "CIDEr": 1.0177409742237555,
+        "Bleu_4": 0.338523849748464,
+        "ROUGE_L": 0.5378703687684094,
+        "CHAIRs": 0.058,
+        "CHAIRi": 0.041596212377409535,
+        "Recall": 0.4031558185404339,
+        "counts": {
+          "images": 4000,
+          "hallucinated_captions": 232,
+          "hallucinated_mentions": 246,
+          "object_mentions": 5914,
+          "recalled_unique": 5110,
+          "reference_unique": 12675
+        },
+        "mean_words": 8.26175
+      },
+      "CSA10": {
+        "CIDEr": 1.0077372333023777,
+        "Bleu_4": 0.3331427386868293,
+        "ROUGE_L": 0.5345788318861974,
+        "CHAIRs": 0.06275,
+        "CHAIRi": 0.0447427293064877,
+        "Recall": 0.40449704142011833,
+        "counts": {
+          "images": 4000,
+          "hallucinated_captions": 251,
+          "hallucinated_mentions": 260,
+          "object_mentions": 5811,
+          "recalled_unique": 5127,
+          "reference_unique": 12675
+        },
+        "mean_words": 8.08725
+      }
+    },
+    "full5000": {
+      "CSA9": {
+        "CIDEr": 1.0029325883893672,
+        "Bleu_4": 0.3355283865813089,
+        "ROUGE_L": 0.5359684752926039,
+        "CHAIRs": 0.0566,
+        "CHAIRi": 0.040945945945945944,
+        "Recall": 0.40149422400803614,
+        "counts": {
+          "images": 5000,
+          "hallucinated_captions": 283,
+          "hallucinated_mentions": 303,
+          "object_mentions": 7400,
+          "recalled_unique": 6395,
+          "reference_unique": 15928
+        },
+        "mean_words": 8.263
+      },
+      "CSA10": {
+        "CIDEr": 0.9971786691135524,
+        "Bleu_4": 0.3308527586315697,
+        "ROUGE_L": 0.5335957451150101,
+        "CHAIRs": 0.0616,
+        "CHAIRi": 0.04388022630053815,
+        "Recall": 0.40224761426418887,
+        "counts": {
+          "images": 5000,
+          "hallucinated_captions": 308,
+          "hallucinated_mentions": 318,
+          "object_mentions": 7247,
+          "recalled_unique": 6407,
+          "reference_unique": 15928
+        },
+        "mean_words": 8.085
+      }
+    }
+  },
+  "paired": {
+    "CSA9_minus_A": {
+      "CIDEr_delta": -0.1720301548970192,
+      "paired95_CIDEr": [
+        -0.19413228247513944,
+        -0.14961483279858226
+      ],
+      "repaired": 174,
+      "introduced": 167,
+      "resamples": 10000,
+      "exact_McNemar_p": 0.7452969771158205
+    },
+    "CSA9_minus_C": {
+      "CIDEr_delta": -0.1893006957888982,
+      "paired95_CIDEr": [
+        -0.2115287668058189,
+        -0.16722824521797786
+      ],
+      "repaired": 166,
+      "introduced": 168,
+      "resamples": 10000,
+      "exact_McNemar_p": 0.9563743653627912
+    },
+    "CSA10_minus_CSA9": {
+      "CIDEr_delta": -0.010003740921377876,
+      "paired95_CIDEr": [
+        -0.026375846808740843,
+        0.00686943499161194
+      ],
+      "repaired": 111,
+      "introduced": 130,
+      "resamples": 10000,
+      "exact_McNemar_p": 0.2462042946879853
+    }
+  },
+  "loss_history": [
+    {
+      "epoch": 1,
+      "train_nll": 4.08496022593823,
+      "val_nll": 3.339067497729339
+    },
+    {
+      "epoch": 2,
+      "train_nll": 3.2010700417882907,
+      "val_nll": 3.06238992561661
+    },
+    {
+      "epoch": 3,
+      "train_nll": 2.9128138690289154,
+      "val_nll": 2.9263974520832097
+    },
+    {
+      "epoch": 4,
+      "train_nll": 2.75041142831437,
+      "val_nll": 2.757025344544224
+    },
+    {
+      "epoch": 5,
+      "train_nll": 2.638444274039122,
+      "val_nll": 2.6351128116390132
+    },
+    {
+      "epoch": 6,
+      "train_nll": 2.5649158583701683,
+      "val_nll": 2.523538074467943
+    },
+    {
+      "epoch": 7,
+      "train_nll": 2.508348677442679,
+      "val_nll": 2.4923116363879956
+    },
+    {
+      "epoch": 8,
+      "train_nll": 2.469920999191205,
+      "val_nll": 2.463262250349954
+    },
+    {
+      "epoch": 9,
+      "train_nll": 2.4410584348232036,
+      "val_nll": 2.446409034822752
+    },
+    {
+      "epoch": 10,
+      "train_nll": 2.417764821359954,
+      "val_nll": 2.4354520345125557
+    }
+  ],
+  "old_comparable_val_nll": null,
+  "official_metrics_rerun_locally": false,
+  "model_executed_by_agent": false
+}

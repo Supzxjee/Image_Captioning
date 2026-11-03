@@ -43,3 +43,6 @@ This establishes that the self-written CSA adaptation can complete fullTRAIN XE 
 **CHAIR has not been computed.** First preserve best/latest, then evaluate object hallucination on the already-generated best9 captions using the proper annotations/scorer; that needs no new GPU caption generation. After that discuss extending XE to15 or matched SCST/branch experiments; none is auto-approved by this result. Image-conditioned-bank stream remains an unapproved candidate, not a demonstrated fix. Do not interrupt baseline assessment with a new full pipeline claim.
 
 Audit127grouped metadata checks pass:17Git blobs, cache/input/reference identities, exact val IDs against five pinned fullROI shard digests, six DDP guards, all per-epoch records/caption summaries, checkpoint-selection arithmetic, all1771progress logs and actual3epoch warmup. These checks verify artifact consistency; official CIDEr was not recomputed locally, visual semantics were not independently judged, payload arrays/weights were not opened.
+
+
+Subsequent CPU evaluation (03/11/2026): [saved-caption quality comparison COMPLETE](SAVED_QUALITY_RESULT.md). CHAIR was absent from this training review, and has now been computed separately for saved epoch9/10 captions; best9 full5000 CHAIRs5.66%, CHAIRi4.095%, recall40.149%.

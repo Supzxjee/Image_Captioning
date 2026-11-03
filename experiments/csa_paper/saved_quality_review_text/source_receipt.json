@@ -1,0 +1,10 @@
+{
+  "commit": "3a6532941a98384a8501e7dcfb5be3453ec407ab",
+  "sha256": {
+    "score_saved_quality.py": "19bced5082a59d51c933413a40662ecd0fbf5e79031f408ea4b8fad39e043bf5",
+    "saved_quality_data.py": "f8a092506e3adf96292203190ea2f83de397d3028a3ddc6293d58fd360199a1e",
+    "comparison_baseline4000.json.gz": "8360e82244995afb12fc4eb0ede17d4a092d7f7b846105c7fcd59cb15cc7e046",
+    "COMPARISON_INPUTS.json": "68ad3fdf4af3ac4f38e0125ceb8d87e2085bdf02e7d3e60d9ca41bcc321dce69",
+    "QUALITY_COMPARISON_PROTOCOL.md": "7ef4fe5b3f000822ce89b46bee774e937a30533d7863dddd28de5a823c7e6ceb"
+  }
+}
