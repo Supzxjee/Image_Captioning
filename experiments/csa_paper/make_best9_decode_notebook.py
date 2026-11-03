@@ -6,7 +6,7 @@ from make_smoke_notebook import HERE,ROOT,PREFIX,cell,RUNNER
 
 FILES=['run_best9_decode.py','model.py','real_bank_data.py','saved_quality_data.py','SAVE_XE139_PACKAGE.json',
        'SAVE_FULL_ROI_V134_PACKAGE.json','comparison_baseline4000.json.gz','saved_quality_review_text/comparison.json',
-       'DECODE_BEST9_PROTOCOL.md']
+       'DECODE_BEST9_PROTOCOL.md','best9_saved_text.json.gz','BEST9_SAVED_TEXT_PACKAGE.json']
 
 
 def make(revision):
@@ -60,15 +60,36 @@ finally:
         kaggle=dict(isGpuEnabled=True,isInternetEnabled=True)),cells=[cell('markdown','''# CSA best epoch9 — greedy vs saved beam5
 Select **GPU T4 x2**, Internet ON. Add Input:
 1. `csa-full-roi-karpathy-v134`.
-2. Your saved checkpoint139 Dataset containing `best.bin` and `csa_full_xe_10_v2_review.zip`.
+2. Your saved checkpoint139 Dataset containing `best.bin`.
 
-No API token, original images or separate semantic-bank Dataset required. Exact SHA lookup under CHECKPOINT_ROOT; set that path to your Dataset folder if several mounted copies exist.
+No API token, original images, review ZIP or separate semantic-bank Dataset required. The exact five saved text files from Output139 are bundled with pinned source; byte hashes and original review identity are checked. Exact SHA lookup under CHECKPOINT_ROOT; set that path to your Dataset folder if several mounted copies exist.
 Frozen epoch9; no training, no resume, no TEST. Validation5000 only; max20 tokens for both decoders. Existing beam_search(width1) generates greedy; beam5 saved captions are reused. Two independent GPU workers, no DDP collectives/backward. First8 original images per GPU replay beam5 as a guard.
 Reports same full5000/common4000 CIDEr/BLEU4/ROUGE-L/CHAIR/recall/counts/length. Saved beam metrics must replay before COMPLETE. A search diagnostic does not establish a new alignment method. GPU phase capped90min, not an ETA. CPU metrics afterward may take up to40min. No automatic15epoch/RL training.
 Send `csa_best9_greedy_beam5_review.zip`; checkpoint/ROI arrays excluded from review.
 '''),cell('code',setup),cell('code',RUNNER.replace('Smoke active;','Decode/metrics active;').replace('Smoke wall cap exceeded','Phase wall cap exceeded')),cell('code',execute)])
     out=HERE/'CSA_BEST9_GREEDY_BEAM5.ipynb';out.write_text(json.dumps(nb,indent=1,ensure_ascii=False)+'\n',encoding='utf-8')
     print(out.name,out.stat().st_size,'bytes; unexecuted')
+    recovery=f'''
+# Paste ONE new cell in the CURRENT failed session, then rerun the last execution cell.
+import hashlib,json,urllib.request
+from pathlib import Path
+if not all(n in globals() for n in ('SOURCE','OUTPUT','run')):raise RuntimeError('Use the corrected full notebook in a fresh session; current globals missing.')
+SOURCE=Path(SOURCE);OUTPUT=Path(OUTPUT)
+if (OUTPUT/'prepared.json').exists() or list(OUTPUT.glob('greedy_rank*.json')):raise RuntimeError('This recovery is only for the missing-review prepare failure; preserve later progress.')
+COMMIT={commit!r}
+HASHES={hashes!r}
+for n,h in HASHES.items():
+    raw=urllib.request.urlopen(f'https://raw.githubusercontent.com/Supzxjee/Image_Captioning/{{COMMIT}}/{PREFIX}{{n}}',timeout=90).read()
+    if hashlib.sha256(raw).hexdigest()!=h:raise ValueError('Changed source:'+n)
+    p=SOURCE/n;p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(raw)
+for name in ('failure.txt','run_status.json','source_receipt.json'):
+    p=OUTPUT/name;previous=OUTPUT/('before_prepare_fix_'+name)
+    if p.exists() and not previous.exists():p.rename(previous)
+(OUTPUT/'source_receipt.json').write_text(json.dumps(dict(commit=COMMIT,sha256=HASHES),indent=2),encoding='utf-8')
+print('Fixed source and exact saved text ready. Rerun only the last execution cell; do not rerun setup.')
+'''
+    cell('code',recovery)  # AST validation only.
+    (HERE/'RECOVER_BEST9_PREPARE_CELL.py').write_text(recovery.strip()+'\n',encoding='utf-8')
 
 
 if __name__=='__main__':

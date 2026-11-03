@@ -1,5 +1,7 @@
 """USER RUN ONLY: frozen best9 greedy diagnostic; no training or test images."""
 import argparse
+import gzip
+import hashlib
 import json
 import math
 import os
@@ -7,7 +9,6 @@ from pathlib import Path
 import subprocess
 import sys
 import time
-import zipfile
 import numpy as np
 from real_bank_data import read, save, sha, validate_arrays, HERE
 from saved_quality_data import check_rows, common_refs, chair_counts, align_cider_scores
@@ -38,14 +39,27 @@ def summary(rows):
                 empty=sum(n==0 for n in lengths),eos=sum(r['eos'] for r in rows))
 
 
+def saved_text(root=HERE):
+    root=Path(root);package=read(root/'BEST9_SAVED_TEXT_PACKAGE.json')
+    bundle=root/'best9_saved_text.json.gz'
+    if sha(bundle)!=package['bundle_sha256']:raise ValueError('Changed saved text bundle')
+    expected=read(root/'SAVE_XE139_PACKAGE.json')['files']['csa_full_xe_10_v2_review.zip']
+    if package['source_review_sha256']!=expected:raise ValueError('Wrong source review identity')
+    entries=json.loads(gzip.decompress(bundle.read_bytes()))
+    if set(entries)!=set(package['files_sha256']):raise ValueError('Saved text members differ')
+    raw={n:v.encode('utf-8') for n,v in entries.items()}
+    for n,h in package['files_sha256'].items():
+        if hashlib.sha256(raw[n]).hexdigest()!=h:raise ValueError('Changed saved text payload: '+n)
+    return raw,package
+
+
 def prepare(args):
-    package=read(HERE/'SAVE_XE139_PACKAGE.json')
     checkpoint=unique_file(args.checkpoint_root,'best.bin',BEST_SHA)
-    review=unique_file(args.checkpoint_root,'csa_full_xe_10_v2_review.zip',package['files']['csa_full_xe_10_v2_review.zip'])
-    with zipfile.ZipFile(review) as z:
-        for name in ('validation_references.json','vocabulary.json','input_identity.json','validation_ptb.json'):
-            (args.output/name).write_bytes(z.read(name))
-        beam=json.loads(z.read('val_epoch09_rank0.json'))+json.loads(z.read('val_epoch09_rank1.json'))
+    raw,package=saved_text()
+    for name in ('validation_references.json','vocabulary.json','input_identity.json'):
+        (args.output/name).write_bytes(raw[name])
+    beam=json.loads(raw['val_epoch09_rank0.json'])+json.loads(raw['val_epoch09_rank1.json'])
+    save(args.output/'saved_text_receipt.json',package)
     refs=read(args.output/'validation_references.json');vocab=read(args.output/'vocabulary.json')
     check_rows(beam,{r['coco_id'] for r in refs})
     if len(refs)!=5000 or len(vocab)!=10000:raise ValueError('Wrong full validation/vocabulary')

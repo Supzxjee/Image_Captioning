@@ -5,12 +5,30 @@ import json
 from pathlib import Path
 import tempfile
 import unittest
-from run_best9_decode import tokens,summary,unique_file
+from run_best9_decode import tokens,summary,unique_file,saved_text
 
 HERE=Path(__file__).resolve().parent
 
 
 class Checks(unittest.TestCase):
+    def test_saved_text_exact_source_and_coverage(self):
+        raw,package=saved_text()
+        self.assertEqual(len(raw),5)
+        refs=json.loads(raw['validation_references.json'])
+        beam=json.loads(raw['val_epoch09_rank0.json'])+json.loads(raw['val_epoch09_rank1.json'])
+        self.assertEqual(len(refs),5000);self.assertEqual(len(beam),5000)
+        self.assertEqual({r['coco_id'] for r in refs},{r['coco_id'] for r in beam})
+        self.assertEqual(len(json.loads(raw['vocabulary.json'])),10000)
+        self.assertEqual(package['source_review_sha256'],'7ff1ba033f560b2a0565cb30d7bae137eba8fca9a59db45e9e947b7cb9db286f')
+
+    def test_saved_text_rejects_changed_bundle(self):
+        with tempfile.TemporaryDirectory(dir=HERE) as d:
+            root=Path(d)
+            for n in ('best9_saved_text.json.gz','BEST9_SAVED_TEXT_PACKAGE.json','SAVE_XE139_PACKAGE.json'):
+                (root/n).write_bytes((HERE/n).read_bytes())
+            p=root/'best9_saved_text.json.gz';p.write_bytes(p.read_bytes()+b'changed')
+            with self.assertRaisesRegex(ValueError,'Changed saved text bundle'):saved_text(root)
+
     def test_tokens_eos_padding_and_invalid(self):
         self.assertEqual(tokens([3,4,2,0,0]),[3,4,2])
         self.assertEqual(tokens([3,4]),[3,4])
