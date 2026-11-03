@@ -25,7 +25,7 @@ flowchart LR
 
 ## Lượt mới nhất — full TRAIN10 epoch + validation
 
-User đã duyệt10epoch đầu. [Protocol](FULL_XE_10_PROTOCOL.md), notebook `CSA_FULL_XE_10_2GPU.ipynb`: freshCSA,ordinary2GPUFP32/global32captionevents;113287TRAIN/all566747references per epoch. AddInput fullROI134 và semanticbanks130. Mỗi epoch đánh giá đủ5000val bằngbeam5 và CIDEr/NLL, chọnbestCIDEr,tiesearlier;không gộpval vàoTRAIN,khôngtest/RL. Giữ cả `checkpoint.bin` (latest,cursor/Adam/both-rankRNG) và `best.bin` trong toànoutput. Xem protocol đểresume. Benchmarkước tính~5.18hphầntrain/10epochs;val/checkpoint thêm thời gian. NotebookchỉPREPARED,chưauser-run kết quảfull.
+User đã duyệt10epoch đầu. [Protocol](FULL_XE_10_PROTOCOL.md), notebook `CSA_FULL_XE_10_2GPU.ipynb`: freshCSA,ordinary2GPUFP32/global32captionevents;113287TRAIN/all566747references per epoch. AddInput fullROI134 và semanticbanks130. Mỗi epoch đánh giá đủ5000val bằngbeam5 và CIDEr/NLL, chọnbestCIDEr,tiesearlier;không gộpval vàoTRAIN,khôngtest/RL. Giữ cả `checkpoint.bin` (latest,cursor/Adam/both-rankRNG) và `best.bin` trong toànoutput. Xem protocol đểresume. Benchmarkước tính~5.18hphầntrain/10epochs;val/checkpoint thêm thời gian. User-run V2 đã COMPLETE10epochs ở Output139: bestCIDEr1.002933 tại9,last10=.997179;CHAIRchưađo. Xem [kết quả](FULL_XE_10_RESULT.md);lưu cảbest/latest bằng `SAVE_CSA_XE10_V139_DATASET.ipynb` (CPU/APIsecret/noAddInput).
 
 ## Lượt chạy đầu tiên
 
