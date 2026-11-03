@@ -1113,3 +1113,8 @@ User run failed beforeGPU: exactreviewZIP absent under confirmed checkpoint139Da
 ### X062 — Codex1 — 03/11/2026 — XE15 initial receipt lookup failure fixed
 
 Userlog stopped at len(rglob checkpoint_receipt)!=1 before staging/train. Missing/duplicate/directorycause unresolved fromlog, no new training progress. Corefd87b16 matches validmetadata/binaries instead of rawpathcount, identicalduplicates accepted/differentcheckpoints rejected. No validpair→only exactSHA latest139272f843a+best9f09e11c3 canrecover source-pinnedoriginalreceipts into temp symlinkroot; unverifiednon139latest blocksrollback. No inputDataset edit/weightdeserialization/genericnewreceiptfabrication. NewfullNB and current-session recovery update30sourcepins/stageroot; thenrerun oldlastcell withoutsetup.8metadata/resume/statictests+30Gitpins/actualnotebookmigration/recoveryAST PASS; tinyWindowsfixturemocksymlinkcopy, noagentmodel/Kaggle. ActualLinuxsymlink/CUDA/resume pendinguser; same23hreportedbudget/5epochschedule, no change.
+
+
+### X063 — Codex1 — 03/11/2026 — packaged static-test dependency fixed
+
+Userreceipt resolution succeeded,7fullXEchecksPASS; resume suite failed only AST-reading missing make_xe15_notebook.py before stage/train. Local checkout hid missingpackage dependency. Added generator toFILESpins; verified isolated folder populated solely by31FILES:14runtime metadata/static checksPASS, notebook-only cellcheck intentionallyskipped as authoringartifact notdistributed.31GitpinsPASS; no agentmodel/Torch/scorer orCUDA. Freshnotebook/recovery regenerated. Currentsession can fetchjustmissinggenerator fromitsalready-pinnedCOMMIT, addSHA tosource receipt andrerunlastcell; no setup/stage/trainrestart. No scientificpolicy/tolerancechange; newupdates0 atreportedfailure.
