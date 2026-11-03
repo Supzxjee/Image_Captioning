@@ -1,0 +1,8 @@
+{
+  "sha256": "e02593ea079bdb563a1afe0c5898abdbf81297aa5e688b3b0df839cb820e5b25",
+  "epoch": 16,
+  "batch_cursor": 0,
+  "phase": "train",
+  "updates": 265665,
+  "caption_events": 8501205
+}

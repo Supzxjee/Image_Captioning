@@ -1,0 +1,14 @@
+{
+  "world_size": 2,
+  "devices": [
+    "Tesla T4",
+    "Tesla T4"
+  ],
+  "software": {
+    "torch": "2.11.0+cu128",
+    "numpy": "2.1.3",
+    "pycocoevalcap": "1.2"
+  },
+  "precision": "FP32",
+  "resume_root": "/kaggle/input/datasets/ducanh2403/csa-full-xe10-v139"
+}
