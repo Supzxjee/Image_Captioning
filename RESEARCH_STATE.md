@@ -1,6 +1,6 @@
 # Trạng thái nghiên cứu — đọc trước khi tiếp tục
 
-Cập nhật: 02/11/2026, giờ Việt Nam. File này là bản tóm tắt để tiếp tục công việc; protocol và artifacts được dẫn bên dưới mới là nguồn chi tiết. Không cần đọc toàn bộ lịch sử chat.
+Cập nhật: 03/11/2026, giờ Việt Nam. File này là bản tóm tắt để tiếp tục công việc; protocol và artifacts được dẫn bên dưới mới là nguồn chi tiết. Không cần đọc toàn bộ lịch sử chat.
 
 ## Mục tiêu và cách làm việc
 
@@ -9,6 +9,8 @@ Cập nhật: 02/11/2026, giờ Việt Nam. File này là bản tóm tắt để
 - Không tự chạy mô hình/Torch/autograd local hoặc notebook Kaggle. Kiểm tra metadata/NumPy/static/mock được phép; ghi rõ giới hạn. Quy trình tại [AGENTS.md](AGENTS.md).
 
 ## Hiện đang ở đâu
+
+- **FullCSA XE10 V2 user-run COMPLETE**, [result](experiments/csa_paper/FULL_XE_10_RESULT.md)/JSON, ZIP7ff1ba03…, coree655a56/17Gitpins/127metadata checksPASS. Full113287TRAIN/177110updates/5667470captionevents;10full5000val evaluations. CIDEr bestepoch9=1.002933,epoch10=.997179;validNLL3.3391→2.4355. Best9mean8.263words,409≤2words/0empty,4925EOS/5000;captionquality/hallucinationnotestablished. Worker6.035h,validation40.77min,phase-minusval5.346h includesoverhead. Keepboth`best.bin`(validated9/SHAf09e11c3…)and`checkpoint.bin`(trained10/SHA272f843a…);reportedreceiptcursor10/11=next epoch,notextraepochs. WeightsabsentZIP;exactSaveVersionasked/pendinguserfortransport. CHAIRnotcomputed;recommendCPUCHAIRfromsavedbestcaptionsbeforefurtherGPU. NofullCSA-vsQFormer/novelty/testgainclaim;no15epochs/SCST/newbranchauto-approved. NoagentTorch/features/model/scorer;largeJSONcacheignored.
 
 - **User muốn thêm luồng có đóng góp CIDEr/hallucination, không chỉ ít tài nguyên.** Brainstorm [image-conditioned noun-bank candidate](experiments/csa_paper/IMAGE_CONDITIONED_BANK_CANDIDATE.md): V0→object evidence→bounded reweighting trước noun aggregation, tạoTo riêng từngảnh;existingCSAalreadyimage-dependentselection, khôngphảichưaalignment. Currentaggregatorbank-only/To chungmọiảnh làinsertionpoint. G/Slogitbias/IJ/readersđãfailđượcthamchiếu;novelty/utilitychưaxácnhận,labels/negativepolicy/loss/budgetchưachốt. Khôngđổifull10run/code/notebook/GPU;chờtraođổiuser.
 

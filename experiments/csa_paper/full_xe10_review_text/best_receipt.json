@@ -1,0 +1,11 @@
+{
+  "sha256": "f09e11c374477be93cc142a238dbd0e206060f33fa4fab5988e767ea7d259fe6",
+  "epoch": 10,
+  "batch_cursor": 0,
+  "phase": "train",
+  "updates": 159399,
+  "caption_events": 5100723,
+  "validated_epoch": 9,
+  "cider": 1.0029325883893672,
+  "selection": "max validation CIDEr; earlier ties"
+}

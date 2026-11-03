@@ -1,0 +1,7 @@
+{
+  "passed": true,
+  "pycocoevalcap": "1.2",
+  "metric": "CIDEr",
+  "reference_images": 5000,
+  "sample_score": 10.0
+}

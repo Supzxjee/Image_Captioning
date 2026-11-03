@@ -1,0 +1,9 @@
+{
+  "images": 2,
+  "beams": 5,
+  "maximum": 20,
+  "passed": true,
+  "decoder": "model.beam_search per-image",
+  "batched_decoder": false,
+  "checks": "width/finite sorted scores/BOS/EOS/PAD/maximum"
+}
