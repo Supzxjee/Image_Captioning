@@ -12,6 +12,8 @@ def make(revision):
     hashes={n:hashlib.sha256(subprocess.check_output(['git','show',commit+':'+PREFIX+n],cwd=ROOT)).hexdigest() for n in FILES}
     old=json.loads((HERE/'SAVE_CSA_XE10_V139_DATASET.ipynb').read_text(encoding='utf-8'))
     auth=next(c['source'] for c in old['cells'] if c['cell_type']=='code' and 'def run_cli(' in c['source'])
+    # Read-only download needs no Dataset owner/slug/title validation.
+    auth='\n'.join(line for line in auth.splitlines() if not (line.startswith('if ') and any(n in line for n in ('OWNER','SLUG','TITLE'))))+'\n'
     setup=f'''
 import hashlib,json,os,queue,signal,subprocess,sys,tempfile,threading,time,traceback,urllib.request,zipfile,re,shutil
 from pathlib import Path

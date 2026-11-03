@@ -22,6 +22,10 @@ CIDEr, BLEU4, ROUGE-L from pycocoevalcap1.2/PTB; CHAIRs/i, raw hallucinated-capt
 
 No new generation, LM, Torch or checkpoint loads. CPU notebook downloads only the small139review and pinned compressed baseline text bundle, not1.2GB weights. Internet/Secret required for exact139 API route; AcceleratorNone/noAddInput. Never silently fall back to latest version. Keep original per-image outputs and comparison report; failures do not publish partial comparisons as complete.
 
+### Authentication-cell fix,03/11
+
+First user attempt failed with `NameError: OWNER` before authentication/download/scoring. The generator reused the Dataset transport authentication cell including two irrelevant OWNER/SLUG/TITLE upload guards, but the read-only scorer intentionally has no such globals. Remove those two checks in the generator and regenerate the notebook; retain exact139 routing, nonempty Secret handling, credential isolation and token redaction. Seven tests now pass, including executing the full auth cell with mocked Secrets/Popen and **no upload globals**, wrong-version/empty-secret failures, and credential redaction. These mocks contact no API/install nothing. Scorer source pins remain7078365 unchanged. If continuing the current failed session, delete only those two guards and rerun the auth cell onward; the setup cell already created OUTPUT and should not be rerun against that same directory. Fresh session can run the corrected notebook from the start. No metric result exists from the failed attempt.
+
 ## Improvement decisions to discuss after metrics
 
 1. Small decode diagnostic on the **same best9checkpoint** (greedy vs existing raw-score beam5) is useful because409/5000captions are≤2words. Raw beam scores can prefer short sequences; actual cause not yet established, and no new policy/length-normalization sweep is approved.
