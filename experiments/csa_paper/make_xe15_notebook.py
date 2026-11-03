@@ -5,7 +5,7 @@ import subprocess
 from make_smoke_notebook import HERE,ROOT,PREFIX,cell,RUNNER
 from make_full_xe_notebook import FILES as BASE_FILES
 
-FILES=list(dict.fromkeys(BASE_FILES+['xe15_resume_data.py','test_xe15_resume.py','XE15_CONTINUATION_PROTOCOL.md',
+FILES=list(dict.fromkeys(BASE_FILES+['make_xe15_notebook.py','xe15_resume_data.py','test_xe15_resume.py','XE15_CONTINUATION_PROTOCOL.md',
     'score_xe15_quality.py','full_xe10_review_text/input_identity.json','SAVE_XE139_PACKAGE.json',
     'run_best9_decode.py','saved_quality_data.py','best9_saved_text.json.gz','BEST9_SAVED_TEXT_PACKAGE.json',
     'saved_quality_review_text/comparison.json','full_xe10_review_text/checkpoint_receipt.json',
