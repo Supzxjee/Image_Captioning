@@ -1126,3 +1126,10 @@ Userreceipt resolution succeeded,7fullXEchecksPASS; resume suite failed only AST
 
 
 X064 provenance follow-up: user confirmed exact SaveVersion147 on notebook ducanh2403/2-vi-cai-kia-qua-nhieu. Preserve csa_full_xe_15 output; best/latest same e02593ea…; Dataset transport not prepared/executed this review.
+
+
+### X065 — Codex1 — 04/11/2026 — approved plain10XE +lockedCSA10 KarpathyTEST notebooks
+
+User corrected scope: compare EXACT10epoch, notbaseline10vsCSA15 orbest9; twoindependentT4x2 notebooks, quota20/30h. [Protocol](experiments/csa_paper/PLAIN_VS_CSA10_PROTOCOL.md), plaintraining+CSA10TEST notebooks in csa_paper; core63e11db. Plain3vanillavisualselfattention/FFN layers replaceCSAsemantics; Vo=Vr=sharedV, sameprojection/dualdecoder/head/vocab/ROI/LR/order/10XE/FP32/global32/beam5. Commoninitialweights matchseed42 viaoriginalinitializer thensemanticmodules discarded; notpretrained, parametercountunmatched. Banks130input onlyassetvalidation/DDPpreflight, no semanticforward. SmokeactualTRAINgradients/commoninit +6DDPguards beforefreshtrain;primarycheckpoint10 notbest. Notebook1TRAIN/VALIDonly; baselineTEST lateraftercachefromnotebook2saved.
+
+Notebook2locks139latest10SHA272f843a/177110, no15/best9. ExistingROI134hasnoTEST; rawvisual-cacheinventorycovers123287IDs. Build5000TESTROI fromsameH5/profile/boxcache/headers/vocab, preservesNPZ/metadata/receiptforbothmodels; no freshencoder/detector.2independentinferenceworkersbeam5/max20 andseparateteacherNLL; officialCIDEr/BLEU4/ROUGE/CHAIRs/i/recall/counts/length, no TESTtuning/training. PathsrawCOCO/visual/detector/checkpoint prefilledfrompriorruns; missinginputs failbeforemodel.12metadata/NumPy/staticchecks onisolated33-filepackage PASS,33Gitpins+allcellASTeach+unchangedmodel139edbb1; noagentmodels/Torch/scorers/Kaggle. Runtimeincludingplainsmoke/TESTcoveragepoolingstillpendinguser. Use30haccounttrain/20hTEST,10.5h/2helapsedstopcapsnotETA/billing. NonewCSAcontributionclaim/newmethodyet.
