@@ -1,0 +1,13 @@
+{
+  "kernel_version": "ducanh2403/2-vi-cai-kia-qua-nhieu/139",
+  "files": {
+    "result.json": "723e3897a7b62dfeddbcaeb5711e47409feec8b3042d0b99f454f8e215d0295e",
+    "progress.json": "c8757e5f6f20c857c2debbeedf5042a65a661dd207ea9783bd9fdd548418b097",
+    "input_identity.json": "b7d1f08ecc045ea6779c5c04776b52d5b92933a88d58fe792b3f897c5cd98c5b",
+    "best_receipt.json": "9bc44a09f17074b5087cbf13e7b13461048e70e0aaee3f89a12f6834517599f9",
+    "checkpoint_receipt.json": "a46cc05fe4af3fe52699dc0a557a816d33cbb08fa69694eefcb1e84cfcc52f68",
+    "best.bin": "f09e11c374477be93cc142a238dbd0e206060f33fa4fab5988e767ea7d259fe6",
+    "checkpoint.bin": "272f843a21b3a63c61323f748ed916fa3ae0cf2777549061439c07b410006950",
+    "csa_full_xe_10_v2_review.zip": "7ff1ba033f560b2a0565cb30d7bae137eba8fca9a59db45e9e947b7cb9db286f"
+  }
+}
