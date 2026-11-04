@@ -88,5 +88,6 @@ or a controlled speed comparison.
 - GROUND checkpoint: `b1000f1f3fd5511fc20f4ddcbe3c92881813f630b03a5a925c6b6e37aeed9db6`.
 
 Preserve entire `csa_grounding_30k_XE_v1`/`csa_grounding_30k_GROUND_v1` outputs;
-Save Versions/notebook sources requested, pending. Do not infer exact source
-versions from earlier154/51; those belong to the10k study.
+User reports Save Versions XE157 and GROUND52. Exact notebook-owner mapping
+was not repeated; confirm it before a version-pinned download. Earlier154/51
+belong to the10k study and must not be substituted.

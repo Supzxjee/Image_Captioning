@@ -301,5 +301,10 @@
     "limitation": "Descriptive only: both image pool and sampler changed; not pure image-count effect or a second seed."
   },
   "decision": "Do not claim grounding gain or scale solely from positive point estimates. No automatic more updates/lambda sweep/TEST; discuss bounded next step.",
-  "limitations": "One seed, reused VALID, weak labels. Full checkpoint/stage bytes absent ZIP; runtime source/receipts support identity, not local independent binary verification. CHAIR only object hallucination, not relation truth."
+  "limitations": "One seed, reused VALID, weak labels. Full checkpoint/stage bytes absent ZIP; runtime source/receipts support identity, not local independent binary verification. CHAIR only object hallucination, not relation truth.",
+  "save_versions_reported": {
+    "XE": 157,
+    "GROUND": 52
+  },
+  "source_notebook_owners_explicitly_confirmed": false
 }
