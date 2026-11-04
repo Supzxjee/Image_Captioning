@@ -4,11 +4,13 @@ Cập nhật: 04/11/2026, giờ Việt Nam. File này là bản tóm tắt để
 
 ## Mục tiêu và cách làm việc
 
-- Tăng CIDEr và giảm hallucination so với baseline mạnh A; cần đóng góp căn chỉnh thị giác–ngữ nghĩa có bằng chứng cho bài báo đầu tiên tại tạp chí đại học trong nước.
+- Theo yêu cầu mới nhất04/11: tăng CIDEr và giảm hallucination với pipeline có căn chỉnh thị giác–ngữ nghĩa; người dùng KHÔNG yêu cầu phương pháp mới. Không tự áp lại tiêu chí novelty. A lịch sử khác kiến trúc chỉ là mốc tham khảo; đối chứng CSA/NoCSA phải ghi đúng cấu hình.
 - Cộng sự phải phản biện, không chiều ý. Từ31/10, trao đổi Codex1/Codex2 ở tài khoản khác qua [RESEARCH_EXCHANGE.md](RESEARCH_EXCHANGE.md); không nhắn chat Astra cũ. Codex2 dự kiến Astra High dẫn hướng/brainstorm và review độc lập; Codex1 triển khai/phản biện; Gemini bổ sung. Người dùng chốt hướng/ngân sách và tự chạy Kaggle.
 - Không tự chạy mô hình/Torch/autograd local hoặc notebook Kaggle. Kiểm tra metadata/NumPy/static/mock được phép; ghi rõ giới hạn. Quy trình tại [AGENTS.md](AGENTS.md).
 
 ## Hiện đang ở đâu
+
+- **04/11 targeted effectiveness search, proposal only.** [Evidence and options](experiments/csa_paper/EFFECTIVENESS_METHOD_SEARCH.md). Prioritize existing CSA + second-stage SCST/CE/object reward for practical quality, with matched SCST/CE control to isolate object term; no guaranteed CSA gain. Additional alignment alternative: ECCV2020 cyclical localization/reconstruction (Flickr30k CIDEr59.6→61.4, grounding improves; NOT COCO/CHAIR proof). EACL2023 ObjMLM is a second candidate, needs causal-decoder adaptation; SCST alone may increase hallucination. Generic ITC/AoA not prioritized without incremental evidence. Correction: from-scratch comparison fits changed alignment modules/losses, NOT a blanket requirement for second-stage SCST. No code/notebook/model/newGPUbudget approved or executed.
 
 - **04/11 user reminds prior object reward; live Sheet R119–R128 rechecked.** QFormer historical recipe CE+.05SCST(CIDEr+.5Robj), Robj=.5salientrecall−unsupporteduniqueclasscount (training labels only), NOT decoder word-region loss. R127 VALID4000 fixedCIDEr1.208609→1.238974/CHAIRs3.50→2.95%(140→118). R128 TEST5000 fixed1.221815→1.247342,CHAIRs3.48→3.44%(174→172); raw1.188245→1.212024/4.32→3.98%(216→199). CIDEr conditionalCI positive, fixedhallu change small. SCST+CE selected originalfallback, so finalcomparison does NOT isolate object reward; not transferable gain proof on CSA. Correction: consider reusing full known SCST+CE+object recipe as candidate on BOTH CSA controls before attributing grounding benefit; do not present object reward as new/untried or already present in CSA pilots. No newSCSTtrainer/run/budget approved by this Sheet question.
 
