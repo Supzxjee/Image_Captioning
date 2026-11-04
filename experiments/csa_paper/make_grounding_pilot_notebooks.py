@@ -11,6 +11,10 @@ FILES=['grounding_pilot_data.py','grounding_model.py','run_grounding_pilot.py','
        'grounding_audit_v2_review_text/summary.json','GROUNDING_PILOT_PROTOCOL.md','package_grounding150.py',
        'make_grounding_pilot_notebooks.py','make_smoke_notebook.py']
 
+GPU_PROBE="""import json,torch
+print(json.dumps(dict(torch_version=torch.__version__,cuda_built=torch.backends.cuda.is_built(),cuda_version=torch.version.cuda,available=torch.cuda.is_available(),device_count=torch.cuda.device_count())))
+"""
+
 
 def pins(commit,names):
     return {n:hashlib.sha256(subprocess.check_output(['git','show',commit+':'+PREFIX+n],cwd=ROOT)).hexdigest() for n in names}
@@ -87,9 +91,15 @@ FULL_ROOT=Path('/kaggle/input/datasets/ducanh2403/csa-full-roi-karpathy-v134')
 AUDIT_ROOT=Path('/kaggle/input/datasets/ducanh2403/csa-grounding-audit10k-v150')
 CHECKPOINT_ROOT=Path('/kaggle/input/datasets/ducanh2403/csa-full-xe10-v139')
 RESUME_ROOT='' # Exact prior SAME-ARM output folder containing checkpoint.bin + receipt; otherwise fresh continuation.
-OUTPUT=Path('/kaggle/working/csa_grounding_pilot_'+ARM+'_v2')
+OUTPUT=Path('/kaggle/working/csa_grounding_pilot_'+ARM+'_v3')
 for p in (FULL_ROOT,AUDIT_ROOT,CHECKPOINT_ROOT):
     if not p.is_dir():raise FileNotFoundError('Attach all three input Datasets before GPU: '+str(p))
+GPU_ENV=json.loads(subprocess.check_output([sys.executable,'-c',{GPU_PROBE!r}],text=True,timeout=60))
+print('GPU environment:',GPU_ENV,flush=True)
+if not GPU_ENV['cuda_built']:
+    raise RuntimeError('CPU-only PyTorch environment. Select Settings > Accelerator > GPU T4 x2 and restart the Kaggle session. If already selected, use a fresh GPU session; do not reinstall torch blindly.')
+if not GPU_ENV['available'] or GPU_ENV['device_count']!=2:
+    raise RuntimeError('Need exactly two usable CUDA GPUs. Select T4 x2, restart, and check GPU quota/session allocation before running again.')
 if OUTPUT.exists():raise RuntimeError('Preserve prior output; use fresh runtime/output path for resume.')
 if min(shutil.disk_usage('/tmp').free,shutil.disk_usage('/kaggle/working').free)<8*1024**3:raise RuntimeError('Need8GiB free for readonly stage and atomic checkpoints.')
 OUTPUT.mkdir(parents=True)
@@ -97,6 +107,7 @@ SOURCE=Path(tempfile.mkdtemp(prefix='csa-grounding-'+ARM+'-'));STAGE=SOURCE/'sta
 os.environ['OMP_NUM_THREADS']='1'
 '''+source_setup(commit,hashes)+'''
 (OUTPUT/'source_receipt.json').write_text(json.dumps(dict(commit=COMMIT,sha256=HASHES),indent=2),encoding='utf-8')
+(OUTPUT/'gpu_environment.json').write_text(json.dumps(GPU_ENV,indent=2),encoding='utf-8')
 CONFIG=SOURCE/'config.json';CHAIR=SOURCE/'chair'
 cfg=dict(arm=ARM,full_root=str(FULL_ROOT),audit_root=str(AUDIT_ROOT),checkpoint_root=str(CHECKPOINT_ROOT),output=str(OUTPUT),stage=str(STAGE),chair=str(CHAIR),resume_root=RESUME_ROOT,worker_seconds=9000)
 CONFIG.write_text(json.dumps(cfg),encoding='utf-8')
@@ -139,7 +150,7 @@ finally:
     print('KEEP CHECKPOINT:',OUTPUT/'checkpoint.bin' if (OUTPUT/'checkpoint.bin').is_file() else 'No checkpoint yet',flush=True)
     print('COMPLETE endpoint2000 + VALID5000' if complete else 'INCOMPLETE: preserve output/logs; no automatic restart.',flush=True)
 '''
-        nb=dict(nbformat=4,nbformat_minor=5,metadata=dict(kernelspec=dict(display_name='Python 3',language='python',name='python3')),
+        nb=dict(nbformat=4,nbformat_minor=5,metadata=dict(kernelspec=dict(display_name='Python 3',language='python',name='python3'),kaggle=dict(isInternetEnabled=True,isGpuEnabled=True)),
             cells=[cell('markdown',f'''# CSA10 continuation — {arm}, two GPUs
             **T4 ×2**, Internet ON, Save Version → Save & Run All. One notebook per account;
             both run two GPUs. No API secrets needed for these training notebooks.
@@ -157,7 +168,10 @@ finally:
 
             V2 fixes missing author-generator source required by the packaged AST test.
             The old run stopped before training; leave RESUME_ROOT empty for that failure.
-            Output has a fresh _v2 name to preserve the failed run. Same data/weights/loss/2000updates;
+            V3 checks CUDA build, availability and exactly two GPUs BEFORE staging/installing
+            dependencies. Select T4 x2 explicitly after import; metadata alone does not guarantee
+            accelerator allocation. A CPU-only environment must be restarted as a GPU session.
+            Output has a fresh _v3 name to preserve the failed run. Same data/weights/loss/2000updates;
             reuse existing label Dataset, do not rerun its CPU save notebook.
 
             Parent4h stop cap, not ETA/billing guarantee. Checkpoints every500updates plus endpoint;

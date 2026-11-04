@@ -1198,3 +1198,8 @@ User explicitly chose checkpoint continuation then fixed2000updates/arm and VALI
 ### X075 — Codex1 — 04/11/2026 — fix missing packaged generator AST dependency
 
 User XE log test_generator_sources_parse FileNotFound make_grounding_pilot_notebooks.py; stopped before training/no checkpoint. Fixed FILES includes generator+make_smoke helper for both notebooks; no method/data/optimizer change. Isolated declared-bundle regression test runs7 data checks with clean PYTHONPATH, passes; author repo presence alone was insufficient. New _v2 outputs preserve old failure. Same-session SHA-pinned RECOVER_GROUNDING_BUNDLE_CELL.py adds ONLY original generator source (AST input, not executed), renames failure to pre_packaging_fix_failure and records receipt, then user reruns existing last execution cell without setup. CPU Dataset150 remains valid; no resave/cache redo. No local models/CUDA/autograd, no actual training outcome yet.
+
+
+### X076 — Codex1 — 04/11/2026 — XE CPU-only Torch environment before DDP
+
+User pasted log:119shards staged,metric preflight2images passed,3 neural tiny CPU tests PASS; no _cuda_setDevice at first GPU call on both ranks. No training/checkpoint/quality result; Accelerator setting not observed. V3 early subprocessprobe cuda.is_built/is_available/device_count2 before source download/output/stage/pip, plus GPU-enabled notebook metadata. User must choose T4x2 and restart; no blind torch pip reinstall, no data/model/loss changes, no resave150. Local isolated bundle7data tests still PASS; no agent Torch/model execution. Source https://docs.pytorch.org/docs/stable/backends.html distinguishes build support from actual CUDA availability.

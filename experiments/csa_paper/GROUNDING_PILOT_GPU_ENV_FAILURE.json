@@ -1,0 +1,14 @@
+{
+  "status": "PRETRAINING_CUDA_ENV_FAILURE",
+  "evidence": "User pasted log 84ab8f1e-cd30-4336-a8e0-5f3418ba6954",
+  "arm": "XE",
+  "data_stage_complete": true,
+  "metric_preflight_images": 2,
+  "torch_cpu_unit_tests_passed": 3,
+  "ddp_preflight_passed": false,
+  "error": "AttributeError: module torch._C has no attribute _cuda_setDevice",
+  "training_started": false,
+  "checkpoint_exists": false,
+  "accelerator_setting_unconfirmed": true,
+  "fix": "V3 early subprocess CUDA build/availability/count2 guard and GPU-enabled metadata; user must select T4x2/restart; no automatic torch reinstall"
+}
