@@ -336,5 +336,10 @@
   },
   "local_model_execution": false,
   "test_used": false,
-  "limitations": "One seed, fixed short pilot, reused VALID; label/stage/checkpoint binaries absent from ZIP. Stored source/counts checked, no independent model/scorer replay. Baseline CIDEr per-image unavailable: no baseline CIDEr CI. CHAIR object-level only."
+  "limitations": "One seed, fixed short pilot, reused VALID; label/stage/checkpoint binaries absent from ZIP. Stored source/counts checked, no independent model/scorer replay. Baseline CIDEr per-image unavailable: no baseline CIDEr CI. CHAIR object-level only.",
+  "user_reported_save_versions": {
+    "CE": 159,
+    "OBJECT": 53,
+    "notebook_owner_mapping_reconfirmed": false
+  }
 }

@@ -47,7 +47,7 @@ Preserve entire outputs, particularly checkpoint.bin + optimizer/RNG/identity + 
 
 - CE: `/kaggle/working/csa15_scst_ce_pilot500/checkpoint.bin`, SHA daef7f333ff6ace7eb46ee0baf20e15fa96554a60d7b6eac7b20f0c08d43077b.
 - OBJECT: `/kaggle/working/csa15_scst_ce_object_pilot500/checkpoint.bin`, SHA b2795aa97e882bd340a31596f57c29607008a93ab7268644cac7cbc542f7b707.
-- Source notebook SaveVersions pending user reply. These SHAvalues are from runtime receipts; checkpoints are not in smallZIPs.
+- User confirms SaveVersions: SCST+CE without object159; SCST+CE+object53. Notebook-owner mapping was not repeated in this reply; confirm before exact API transport. These SHAvalues are from runtime receipts; checkpoints are not in smallZIPs.
 
 ## Recommendation
 
