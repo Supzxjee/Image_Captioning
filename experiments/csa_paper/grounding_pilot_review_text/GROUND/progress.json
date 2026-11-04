@@ -1,0 +1,8 @@
+{
+  "updates": 2000,
+  "caption_events": 64000,
+  "nll_sum": 1706587.459136963,
+  "tokens": 734154,
+  "ground_sum": 35632.636833667755,
+  "ground_mentions": 67734
+}

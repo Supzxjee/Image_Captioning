@@ -1,0 +1,10 @@
+{
+  "complete": true,
+  "arm": "GROUND",
+  "updates": 2000,
+  "images": 2500,
+  "nll_sum": 345186.61347961426,
+  "nll_tokens": 142996,
+  "seconds": 423.85345677699996,
+  "validation_seconds": 217.55388974799996
+}

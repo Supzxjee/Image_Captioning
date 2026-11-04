@@ -1,0 +1,241 @@
+{
+  "status": "MATCHED_PILOT_COMPLETE_BELOW_PREDECLARED_GAIN_GATES",
+  "checks": 81,
+  "zip_sha256": {
+    "XE": "d1b1bc58b6153130c31de9e914eacbee164dce5e7a523d529ff777cf68c2872a",
+    "GROUND": "ce7c0d274bdf5ec7cb9866890213d4c5175acdd7dd40acc85a9285734488999e"
+  },
+  "source_commit": "1f4a7ebb2759fdcca2dbf5712db0fe69c84e8d7b",
+  "metrics": {
+    "XE": {
+      "CIDEr": 1.0298750568903452,
+      "Bleu_4": 0.34252442423408475,
+      "ROUGE_L": 0.5411932034387616,
+      "CHAIRs": 0.0596,
+      "CHAIRi": 0.04317958783120707,
+      "Recall": 0.40224761426418887,
+      "counts": {
+        "images": 5000,
+        "hallucinated_captions": 298,
+        "hallucinated_mentions": 308,
+        "object_mentions": 7133,
+        "recalled_unique": 6407,
+        "reference_unique": 15928
+      },
+      "NLL": 2.3979156197976366,
+      "train_NLL": 2.3227221049577667,
+      "train_ground": 0.6000569529601955,
+      "mean_words": 8.11,
+      "short_le2": 427
+    },
+    "GROUND": {
+      "CIDEr": 1.0352974300756403,
+      "Bleu_4": 0.34257346319340876,
+      "ROUGE_L": 0.5411119156948595,
+      "CHAIRs": 0.0584,
+      "CHAIRi": 0.0421728808825583,
+      "Recall": 0.40369161225514816,
+      "counts": {
+        "images": 5000,
+        "hallucinated_captions": 292,
+        "hallucinated_mentions": 302,
+        "object_mentions": 7161,
+        "recalled_unique": 6430,
+        "reference_unique": 15928
+      },
+      "NLL": 2.3995252746796707,
+      "train_NLL": 2.3245633193266846,
+      "train_ground": 0.5260672163709179,
+      "mean_words": 8.099,
+      "short_le2": 428
+    }
+  },
+  "delta": {
+    "CIDEr": 0.0054223731852951484,
+    "Bleu_4": 4.903895932401037e-05,
+    "ROUGE_L": -8.128774390214755e-05,
+    "CHAIRs": -0.0011999999999999997,
+    "CHAIRi": -0.0010067069486487668,
+    "Recall": 0.0014439979909592893,
+    "NLL": 0.0016096548820341283,
+    "train_NLL": 0.0018412143689179317,
+    "train_ground": -0.07398973658927754,
+    "mean_words": -0.010999999999999233,
+    "short_le2": 1
+  },
+  "paired95CI": {
+    "CIDEr": [
+      -0.0006761742996232777,
+      0.011299324017578263
+    ],
+    "CHAIRs": [
+      -0.0040000000000000036,
+      0.0016000000000000042
+    ],
+    "CHAIRi": [
+      -0.0029898644358344667,
+      0.0009420305961192876
+    ],
+    "Recall": [
+      -0.0003797756815402245,
+      0.0031995483297771582
+    ]
+  },
+  "bootstrap": {
+    "resamples": 10000,
+    "seed": 20261104,
+    "unit": "image",
+    "ratio_metrics_recomputed": true
+  },
+  "changed_captions": 838,
+  "repaired_captions": 29,
+  "introduced_captions": 23,
+  "screening_gates": {
+    "CIDEr": false,
+    "CHAIRs": false,
+    "CHAIRi": true,
+    "Recall": true,
+    "short_le2": true
+  },
+  "checkpoint_sha256": {
+    "XE": "eb5c09cce7d78f68499420a295aca3f01e752282509d62d750e5743a5fd8dbd8",
+    "GROUND": "b2b9b9928fef31cc1927ce94fbef8087d1f83d5c4b9ba4d4512d2909f928ef23"
+  },
+  "worker_seconds": {
+    "XE": [
+      452.041570653,
+      448.770833682
+    ],
+    "GROUND": [
+      423.85345677699996,
+      435.82135558899995
+    ]
+  },
+  "examples": [
+    {
+      "kind": "repaired",
+      "coco_id": 16161,
+      "XE": "an orange and a banana sitting on a table",
+      "GROUND": "an orange and orange sitting next to a banana"
+    },
+    {
+      "kind": "repaired",
+      "coco_id": 36230,
+      "XE": "a young boy eating food from a table",
+      "GROUND": "a young boy eating food from a plate"
+    },
+    {
+      "kind": "repaired",
+      "coco_id": 36494,
+      "XE": "a group of people sitting in a train station",
+      "GROUND": "a large group of people sitting in a building"
+    },
+    {
+      "kind": "repaired",
+      "coco_id": 48554,
+      "XE": "a group of people playing a game of frisbee",
+      "GROUND": "a group of people that are on skateboards"
+    },
+    {
+      "kind": "repaired",
+      "coco_id": 54955,
+      "XE": "a young boy sitting in a train car",
+      "GROUND": "a little boy sitting on a train"
+    },
+    {
+      "kind": "repaired",
+      "coco_id": 85029,
+      "XE": "a group of people standing around a table with bananas",
+      "GROUND": "a group of people standing around a bunch of bananas"
+    },
+    {
+      "kind": "repaired",
+      "coco_id": 89670,
+      "XE": "a cake sitting on top of a table",
+      "GROUND": "a close up of a cake on a plate"
+    },
+    {
+      "kind": "repaired",
+      "coco_id": 135139,
+      "XE": "a bunch of bananas sitting on top of a table",
+      "GROUND": "bunches of green bananas sitting on the ground"
+    },
+    {
+      "kind": "repaired",
+      "coco_id": 140203,
+      "XE": "a white van with people walking down a street",
+      "GROUND": "a white bus with people walking down a street"
+    },
+    {
+      "kind": "repaired",
+      "coco_id": 189932,
+      "XE": "an orange and white cell phone sitting on a table",
+      "GROUND": "a close up of a cell phone on a table"
+    },
+    {
+      "kind": "introduced",
+      "coco_id": 19559,
+      "XE": "a couple of toothbrushes sitting next to each other",
+      "GROUND": "a couple of toothbrushes sitting on a sink"
+    },
+    {
+      "kind": "introduced",
+      "coco_id": 38294,
+      "XE": "a stuffed animal that is sitting on a rock",
+      "GROUND": "a black and white bear sitting on a rock"
+    },
+    {
+      "kind": "introduced",
+      "coco_id": 38709,
+      "XE": "a group of people standing in a tent",
+      "GROUND": "a crowd of people standing around an elephant"
+    },
+    {
+      "kind": "introduced",
+      "coco_id": 60213,
+      "XE": "a bed with a bed and a bed",
+      "GROUND": "a bed with a bag of luggage on it"
+    },
+    {
+      "kind": "introduced",
+      "coco_id": 74331,
+      "XE": "a close up of a box of bananas",
+      "GROUND": "a box of bananas sitting on a table"
+    },
+    {
+      "kind": "introduced",
+      "coco_id": 97315,
+      "XE": "a close up of a plate of food on a table",
+      "GROUND": "a close up of a pizza on a table"
+    },
+    {
+      "kind": "introduced",
+      "coco_id": 117064,
+      "XE": "a small brown and white photo of a baby elephant",
+      "GROUND": "a dog and a baby elephant walking in the dirt"
+    },
+    {
+      "kind": "introduced",
+      "coco_id": 119460,
+      "XE": "a store filled with lots of toothbrushes in a store",
+      "GROUND": "a display case filled with lots of scissors"
+    },
+    {
+      "kind": "introduced",
+      "coco_id": 124262,
+      "XE": "a bunch of sandwiches sitting on a counter",
+      "GROUND": "a bunch of sandwiches sitting on a table"
+    },
+    {
+      "kind": "introduced",
+      "coco_id": 131516,
+      "XE": "a teddy bear sitting on top of a teddy bear sitting on a teddy bear sitting on a teddy bear",
+      "GROUND": "a bed"
+    }
+  ],
+  "test_used": false,
+  "labels_human_verified": false,
+  "local_model_execution": false,
+  "decision": "Do not claim grounding gain or scale solely from positive point estimates. No automatic more updates/lambda sweep/TEST; discuss bounded next step.",
+  "limitations": "One seed, reused VALID, weak labels. Full checkpoint/stage bytes absent ZIP; runtime source/receipts support identity, not local independent binary verification. CHAIR only object hallucination, not relation truth."
+}

@@ -1,0 +1,10 @@
+{
+  "complete": true,
+  "arm": "XE",
+  "updates": 2000,
+  "images": 2500,
+  "nll_sum": 342906.293258667,
+  "nll_tokens": 143875,
+  "seconds": 448.770833682,
+  "validation_seconds": 217.69508771199992
+}

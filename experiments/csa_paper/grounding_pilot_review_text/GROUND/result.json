@@ -1,0 +1,31 @@
+{
+  "status": "CSA_GROUNDING_PILOT_COMPLETE",
+  "arm": "GROUND",
+  "updates": 2000,
+  "caption_events": 64000,
+  "validation_images": 5000,
+  "test_used": false,
+  "labels_human_verified": false,
+  "metrics": {
+    "CIDEr": 1.0352974300756403,
+    "Bleu_4": 0.34257346319340876,
+    "ROUGE_L": 0.5411119156948595,
+    "CHAIRs": 0.0584,
+    "CHAIRi": 0.0421728808825583,
+    "Recall": 0.40369161225514816,
+    "counts": {
+      "images": 5000,
+      "hallucinated_captions": 292,
+      "hallucinated_mentions": 302,
+      "object_mentions": 7161,
+      "recalled_unique": 6430,
+      "reference_unique": 15928
+    },
+    "NLL": 2.3995252746796707,
+    "train_NLL": 2.3245633193266846,
+    "train_ground": 0.5260672163709179,
+    "mean_words": 8.099,
+    "short_le2": 428
+  },
+  "selection": "fixed update2000 endpoint, no checkpoint selection"
+}

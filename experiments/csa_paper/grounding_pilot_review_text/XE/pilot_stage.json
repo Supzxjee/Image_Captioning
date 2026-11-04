@@ -1,0 +1,27 @@
+{
+  "status": "GROUNDING_PILOT_STAGE_COMPLETE",
+  "checkpoint": "/kaggle/input/datasets/ducanh2403/csa-full-xe10-v139/checkpoint.bin",
+  "checkpoint_sha256": "272f843a21b3a63c61323f748ed916fa3ae0cf2777549061439c07b410006950",
+  "labels_sha256": "905592f2ed674ec8f07298d335328126685a248976e7b6d154b427dc397997d8",
+  "batches_sha256": "a84219dda60ee21965283c031429ec229fac0de6334bd1e94bce0328562c8257",
+  "source_stage": {
+    "features.npy": "29f787bcbd90c7bf91da58de995b8548a08beb625fa494ec15ba514501581170",
+    "offsets.npy": "39ead8e5cd1980c9dfafa47342556dfb2177496bdb0a415df8cee56f1d727406",
+    "ids.npy": "7464d251fc35d1e04909762ee49db29b3e3805247e6869ba952a1aa89426f510",
+    "sequences.npy": "1bdcd962dafa515ea93f19f75a6652e8153b20cc40d994d915c4392fe335d3f0",
+    "caption_image.npy": "6f34ac05d64de32db5ffc0e60ca915177a225d539f3cf1b4dbc6f8f30edfb34e",
+    "group.npy": "44228599c839df48a4b9cc4252315026ed0cf12d71ee607b8e240f18f3c8e134"
+  },
+  "audit_payload_sha256": {
+    "summary.json": "a044c0d2e2d88deb1926b88311a6b289f48e46c9493c0c8ebf4a5bc2230b8cb6",
+    "cohort.json": "1faedfb6d48c1d66aecffab139195bc154cf357af73d0f695b36af7d5535c834",
+    "lexicon.json": "c70b8238dd54e3f33a8469f50b5881275fdc4012b96d316b65ee261e68ffbdd7",
+    "mentions.jsonl": "a21b1189521ec151248b53e73cbb116ead4c6884b180636750807b6f9ca56a9c",
+    "train10k_instances.json": "91d05efbce7a99af285064fca873c89f9ceb91727b6866da6c6958bc0d41d6f2"
+  },
+  "caption_events": 50022,
+  "eligible_mentions": 52956,
+  "updates": 2000,
+  "events_seen": 64000,
+  "reviewed_by_human": false
+}
