@@ -45,8 +45,8 @@ def worker(a):
     arrays,metadata,vocab=load_test(a.output)
     arm=getattr(a,'arm','csa')
     if arm=='plain':
-        from plain_test_data import PLAIN_SHA,exact_file
-        if read(a.output/'test_receipt.json')!=read(HERE/'csa10_test_review_text/test_receipt.json'):raise ValueError('PlainTEST cache differs from CSA TEST')
+        from plain_test_data import PLAIN_SHA,exact_file,check_test_equivalence
+        check_test_equivalence(read(a.output/'test_receipt.json'))
         checkpoint_sha=PLAIN_SHA;path=exact_file(a.checkpoint_root,'checkpoint.bin',checkpoint_sha)
     else:checkpoint_sha=CHECKPOINT_SHA;path=unique_file(a.checkpoint_root,'checkpoint.bin',checkpoint_sha)
     # Exact original user checkpoint SHA is verified before loading its optimizer/RNG pickle.

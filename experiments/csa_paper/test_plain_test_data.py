@@ -7,10 +7,17 @@ from pathlib import Path
 import tempfile
 import unittest
 from real_bank_data import HERE,read
-from plain_test_data import stage_inputs,exact_file,PLAIN_SHA,PLAIN_VERSION,TEST_VERSION
+from plain_test_data import stage_inputs,exact_file,check_test_equivalence,PLAIN_SHA,PLAIN_VERSION,TEST_VERSION
 
 
 class Checks(unittest.TestCase):
+    def test_regenerated_test_must_match_bytes_profile_not_elapsed_time(self):
+        import copy
+        expected=read(HERE/'csa10_test_review_text/test_receipt.json');actual=copy.deepcopy(expected)
+        actual['seconds']+=100;check_test_equivalence(actual,expected)
+        actual['files']['test_regions.npz']='changed'
+        with self.assertRaises(ValueError):check_test_equivalence(actual,expected)
+
     def fixture(self,root):
         p=root/'plain';t=root/'test';out=root/'output'
         for d in (p,t,out):d.mkdir()

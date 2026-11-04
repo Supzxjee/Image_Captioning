@@ -8,6 +8,13 @@ PLAIN_VERSION='ducanh3/notebook7bc83c4c76/45'
 TEST_VERSION='ducanh2403/2-vi-cai-kia-qua-nhieu/143'
 
 
+def check_test_equivalence(actual,expected=None):
+    expected=expected or read(HERE/'csa10_test_review_text/test_receipt.json')
+    # Processing seconds may differ; fixed data/profile/byte identities must not.
+    fields=('status','images','group','dataset_json_sha256','detector_sha256','feature_profile','training_images','validation_images','files','test_id_order_sha256')
+    if any(actual.get(k)!=expected.get(k) for k in fields):raise ValueError('PlainTEST cache differs from CSA TEST data/profile/bytes')
+
+
 def exact_file(root,name,digest):
     found=[p for p in sorted(Path(root).rglob(name)) if p.is_file() and sha(p)==digest]
     if not found:raise ValueError('Missing exact version payload: '+name+'; no latest/version substitution')
