@@ -26,6 +26,19 @@ def schedule(events_by_image,updates=2000):
     return np.asarray(result[:updates*32],np.int64).reshape(updates,32)
 
 
+def round_robin_schedule(events_by_image,updates=2000):
+    """Approved30k study: visit each image before another caption from that image."""
+    if updates!=2000 or not events_by_image or any(not len(e) for e in events_by_image):raise ValueError('Fixed nonempty pilot schedule required')
+    rng=np.random.default_rng(42)
+    references=[rng.permutation(e) for e in events_by_image]
+    result=[];round_index=0
+    while len(result)<updates*32:
+        order=np.random.default_rng(42+round_index).permutation(len(references))
+        result.extend(int(references[i][round_index%len(references[i])]) for i in order)
+        round_index+=1
+    return np.asarray(result[:updates*32],np.int64).reshape(updates,32)
+
+
 def locate_audit(root):
     expected=sha(HERE/'grounding_audit_v2_review_text/summary.json')
     matches=[p.parent for p in Path(root).rglob('summary.json') if sha(p)==expected]

@@ -97,11 +97,20 @@ def run(cfg):
     for name in ('manifest.json','vocabulary.json'):
         if sha(root/name)!=expected[name]: raise ValueError('Changed v134 '+name)
     if sha(cfg['dataset_json'])!=DATA_SHA: raise ValueError('Changed Karpathy dataset JSON')
-    dataset=read(cfg['dataset_json']);selected=cohort(dataset['images']); wanted={int(r['cocoid']):r for r in selected}
+    image_count=cfg.get('image_count',10000)
+    if image_count not in (10000,30000):raise ValueError('Only approved10k/30k cohorts supported')
+    dataset=read(cfg['dataset_json'])
+    selected=cohort(dataset['images'],count=30000) if image_count==30000 else cohort(dataset['images'])
+    wanted={int(r['cocoid']):r for r in selected}
+    if image_count==30000:
+        prefix=[dict(coco_id=int(r['cocoid']),filename=r['filename'],split=r['split']) for r in selected[:10000]]
+        prefix_sha=hashlib.sha256((json.dumps(prefix,ensure_ascii=False,indent=2,allow_nan=False)+'\n').encode()).hexdigest()
+        if prefix_sha!='1faedfb6d48c1d66aecffab139195bc154cf357af73d0f695b36af7d5535c834':raise ValueError('30k cohort must extend exact original10k prefix')
     save(out/'cohort.json',[dict(coco_id=i,filename=r['filename'],split=r['split']) for i,r in wanted.items()])
     images,anns,categories,provenance=annotations_for(wanted,work,cfg.get('annotation_archive'))
     save(out/'annotation_provenance.json',provenance); lookup=lexicon(categories);save(out/'lexicon.json',lookup)
-    save(out/'train10k_instances.json',dict(images=list(images.values()),annotations=dict(anns),categories=categories))
+    instances_name='train10k_instances.json' if image_count==10000 else 'train_instances.json'
+    save(out/instances_name,dict(images=list(images.values()),annotations=dict(anns),categories=categories))
     vocab=read(root/'vocabulary.json'); word2id={w:i for i,w in enumerate(vocab)}
     mapped=[];seen=set(); payloads={}; counts=Counter();per_class=defaultdict(Counter);catnames={c['id']:c['name'] for c in categories}
     for entry in read(root/'manifest.json')['shards']:
@@ -137,7 +146,7 @@ def run(cfg):
                         mention_id=f'{identity}:{ci}:{label["start"]}:{label["end"]}',width=m['width'],height=m['height'],
                         proposal_boxes=b.tolist(),image_url='https://images.cocodataset.org/'+('train2014/' if 'train2014' in m['filename'] else 'val2014/')+m['filename'])
                     mapped.append(label);counts[label['status']]+=1;per_class[label['category']][label['status']]+=1
-        print('Audited ROI boxes:',len(seen),'/10000',flush=True)
+        print('Audited ROI boxes:',len(seen),'/',image_count,flush=True)
     if seen!=set(wanted):raise ValueError('TRAIN coverage incomplete')
     with (out/'mentions.jsonl').open('w',encoding='utf-8') as f:
         for r in mapped:f.write(json.dumps(r,ensure_ascii=False,allow_nan=False)+'\n')
@@ -153,6 +162,9 @@ def run(cfg):
         invalid_gt_policy='Skip entire category mention if any same-category noncrowd GT has nonpositive width/height; retain XE',
         training_ready=False,model_executed=False,test_used=False,seconds=time.monotonic()-start,
         checked_roi_payloads=payloads,lexicon_sha256=sha(out/'lexicon.json'),cohort_sha256=sha(out/'cohort.json'))
+    if image_count==30000:
+        summary.update(original10k_prefix_sha256=prefix_sha,instances_file=instances_name,
+            planned_updates=2000,planned_caption_events=64000,sampler='round_robin_one_caption_per_image_seed42',sampler_decision_pending=False)
     save(out/'summary.json',summary)
     print(json.dumps({k:v for k,v in summary.items() if k not in ('per_class','checked_roi_payloads')},indent=2),flush=True)
 
