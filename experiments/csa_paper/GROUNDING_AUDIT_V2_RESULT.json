@@ -1,0 +1,40 @@
+{
+  "status": "DATA_PREPARATION_COMPLETE_REVIEW_PENDING",
+  "zip_sha256": "9ba6ee8e1930c5b4bdd39924c86182bdcf2c834ac2448ffe76af9a9a05c6c449",
+  "metadata_checks": 847,
+  "source_commit": "691c03dd352295dbdfd7bb0c3f2a0bb44bb8d0eb",
+  "images": 10000,
+  "mapped_mentions": 58575,
+  "counts": {
+    "captions": 50022,
+    "content_tokens": 524001,
+    "captions_with_mapped_mention": 39843,
+    "eligible": 52956,
+    "missing_gt": 2069,
+    "no_positive": 1132,
+    "crowd": 2412,
+    "unknown_token": 1,
+    "invalid_gt": 5
+  },
+  "positive_coverage": 0.9790711433219937,
+  "eligible_fraction_of_mapped": 0.9040717029449424,
+  "caption_mapping_fraction": 0.7965095358042461,
+  "classes_observed": 78,
+  "eligible_person_fraction": 0.32523226829820984,
+  "worker_seconds": 289.072659568,
+  "sample_statuses": {
+    "review_100.json": {
+      "eligible": 96,
+      "missing_gt": 1,
+      "crowd": 2,
+      "no_positive": 1
+    },
+    "review_eligible_100.json": {
+      "eligible": 100
+    }
+  },
+  "training_ready": false,
+  "human_review_pending": true,
+  "model_executed": false,
+  "limits": "Actual NPZ/GT/full mention labels absent ZIP; sample geometry checks do not verify image semantics or region_kinds. No human labels or caption-quality result."
+}

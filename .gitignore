@@ -29,3 +29,6 @@ experiments/csa_paper/review/csa_epoch10_karpathy_test_loaded.json
 experiments/csa_paper/review/plain_self_test_loaded.json
 
 experiments/csa_paper/review/grounding_audit_10k_loaded.json
+
+experiments/csa_paper/review/grounding_audit_v2_loaded.json
+experiments/csa_paper/review/grounding_audit_v2/
