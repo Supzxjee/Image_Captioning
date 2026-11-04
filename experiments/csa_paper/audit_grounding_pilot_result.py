@@ -11,14 +11,16 @@ HERE=Path(__file__).resolve().parent
 ROOT=HERE.parents[1]
 
 
-def run():
+def run(study_images=10000):
+    if study_images not in (10000,30000):raise ValueError('Expected locked10k/30k study')
+    cache_prefix='grounding_pilot_' if study_images==10000 else 'grounding_30k_'
     checks=0;arms={}
     def check(condition):
         nonlocal checks
         if not condition:raise AssertionError('Audit failed at '+str(checks+1))
         checks+=1
     for arm in ('XE','GROUND'):
-        bundle=json.loads((HERE/'review'/('grounding_pilot_'+arm+'_loaded.json')).read_text(encoding='utf-8'))
+        bundle=json.loads((HERE/'review'/(cache_prefix+arm+'_loaded.json')).read_text(encoding='utf-8'))
         text={Path(n).name:t for n,t in bundle['text'].items()};d={n:json.loads(t) for n,t in text.items() if n.endswith('.json')}
         result=d['result.json'];m=result['metrics'];p=d['progress.json'];identity=d['identity.json'];source=d['source_receipt.json']
         check(result['status']=='CSA_GROUNDING_PILOT_COMPLETE' and result['arm']==arm)
@@ -42,7 +44,14 @@ def run():
         check(all(w['complete'] and w['images']==2500 and w['updates']==2000 and w['arm']==arm for w in workers))
         check(sum(w['nll_tokens'] for w in workers)==286871)
         check(abs(sum(w['nll_sum'] for w in workers)/286871-m['NLL'])<1e-12)
-        check(p['updates']==2000 and p['caption_events']==64000 and p['tokens']==734154 and p['ground_mentions']==67734)
+        expected_tokens,expected_mentions=(734154,67734) if study_images==10000 else (733666,67380)
+        check(p['updates']==2000 and p['caption_events']==64000 and p['tokens']==expected_tokens and p['ground_mentions']==expected_mentions)
+        if study_images==30000:
+            stage=d['pilot_stage.json']
+            check(result['train_images']==stage['train_images']==stage['unique_images_exposed']==30000)
+            check(stage['image_exposure_histogram']=={'2':26000,'3':4000})
+            check(stage['caption_events']==150076 and stage['eligible_mentions']==158197)
+            check(result['sampler']==stage['sampler']=='round_robin_one_caption_per_image_seed42')
         check(abs(p['nll_sum']/p['tokens']-m['train_NLL'])<1e-12 and abs(p['ground_sum']/p['ground_mentions']-m['train_ground'])<1e-12)
         check(d['instrumentation_parity.json']['passed'])
         cider={r['coco_id']:r['CIDEr'] for r in d['cider_per_image.json']}
@@ -76,17 +85,26 @@ def run():
     examples=[]
     for group,population in [('repaired',repaired),('introduced',introduced)]:
         for i in population[:10]:examples.append(dict(kind=group,coco_id=i,XE=a['rows'][i]['caption'],GROUND=b['rows'][i]['caption']))
-    result=dict(status='MATCHED_PILOT_COMPLETE_BELOW_PREDECLARED_GAIN_GATES',checks=checks,
+    historical=None
+    if study_images==30000:
+        old=json.loads((HERE/'GROUNDING_PILOT_RESULT.json').read_text(encoding='utf-8'))
+        old_cache=json.loads((HERE/'review/grounding_pilot_XE_loaded.json').read_text(encoding='utf-8'))
+        old_text={Path(n).name:t for n,t in old_cache['text'].items()}
+        check(old_text['validation_references.json']==a['text']['validation_references.json'])
+        historical=dict(metrics=old['metrics'],delta_30k_minus_10k={arm:{k:arms[arm]['data']['result.json']['metrics'][k]-old['metrics'][arm][k] for k in ('CIDEr','CHAIRs','CHAIRi','Recall','NLL')} for arm in ('XE','GROUND')},
+            limitation='Descriptive only: both image pool and sampler changed; not pure image-count effect or a second seed.')
+    result=dict(status='MATCHED_PILOT_COMPLETE_BELOW_PREDECLARED_GAIN_GATES' if not all(gates.values()) else 'MATCHED_PILOT_COMPLETE_POINT_GATES_PASS',checks=checks,study_images=study_images,
         zip_sha256={k:v['bundle']['zip_sha256'] for k,v in arms.items()},source_commit=a['data']['source_receipt.json']['commit'],
         metrics=dict(XE=metrics_a,GROUND=metrics_b),delta=delta,paired95CI=ci,bootstrap=dict(resamples=10000,seed=20261104,unit='image',ratio_metrics_recomputed=True),
         changed_captions=len(changed),repaired_captions=len(repaired),introduced_captions=len(introduced),screening_gates=gates,
         checkpoint_sha256={k:v['data']['checkpoint_receipt.json']['sha256'] for k,v in arms.items()},
         worker_seconds={k:[v['data'][f'worker{r}.json']['seconds'] for r in (0,1)] for k,v in arms.items()},examples=examples,
         test_used=False,labels_human_verified=False,local_model_execution=False,
+        historical10k=historical,
         decision='Do not claim grounding gain or scale solely from positive point estimates. No automatic more updates/lambda sweep/TEST; discuss bounded next step.',
         limitations='One seed, reused VALID, weak labels. Full checkpoint/stage bytes absent ZIP; runtime source/receipts support identity, not local independent binary verification. CHAIR only object hallucination, not relation truth.')
-    target=HERE/'GROUNDING_PILOT_RESULT.json';target.write_text(json.dumps(result,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
-    out=HERE/'grounding_pilot_review_text';out.mkdir(exist_ok=True)
+    target=HERE/('GROUNDING_PILOT_RESULT.json' if study_images==10000 else 'GROUNDING_30K_PILOT_RESULT.json');target.write_text(json.dumps(result,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+    out=HERE/('grounding_pilot_review_text' if study_images==10000 else 'grounding_30k_pilot_review_text');out.mkdir(exist_ok=True)
     for arm,v in arms.items():
         sub=out/arm;sub.mkdir(exist_ok=True)
         for name in ('source_receipt.json','run_status.json','identity.json','pilot_stage.json','progress.json','checkpoint_receipt.json','worker0.json','worker1.json','instrumentation_parity.json','result.json'):
@@ -94,4 +112,6 @@ def run():
     print(json.dumps({k:v for k,v in result.items() if k not in ('examples',)},indent=2))
 
 
-if __name__=='__main__':run()
+if __name__=='__main__':
+    import argparse
+    p=argparse.ArgumentParser();p.add_argument('--images',type=int,choices=(10000,30000),default=10000);run(p.parse_args().images)

@@ -1,0 +1,34 @@
+{
+  "status": "GROUNDING_PILOT_STAGE_COMPLETE",
+  "checkpoint": "/kaggle/input/datasets/ducanh2403/csa-full-xe10-v139/checkpoint.bin",
+  "checkpoint_sha256": "272f843a21b3a63c61323f748ed916fa3ae0cf2777549061439c07b410006950",
+  "labels_sha256": "2d48898036a58af4e5f0f1a12fcc9b2ae0b2f043f0f3643497589cf770fae690",
+  "batches_sha256": "652c47dac5f2b0e7704fa881d84cd4e06602ea4aede25ffc9cef9706ddb6053a",
+  "source_stage": {
+    "features.npy": "29f787bcbd90c7bf91da58de995b8548a08beb625fa494ec15ba514501581170",
+    "offsets.npy": "39ead8e5cd1980c9dfafa47342556dfb2177496bdb0a415df8cee56f1d727406",
+    "ids.npy": "7464d251fc35d1e04909762ee49db29b3e3805247e6869ba952a1aa89426f510",
+    "sequences.npy": "1bdcd962dafa515ea93f19f75a6652e8153b20cc40d994d915c4392fe335d3f0",
+    "caption_image.npy": "6f34ac05d64de32db5ffc0e60ca915177a225d539f3cf1b4dbc6f8f30edfb34e",
+    "group.npy": "44228599c839df48a4b9cc4252315026ed0cf12d71ee607b8e240f18f3c8e134"
+  },
+  "audit_payload_sha256": {
+    "summary.json": "bfcbe0c861bec7770b004a866e0b78aadbbdfd1e8b418d2a5b47cf741bb4658f",
+    "cohort.json": "8bb5e06e20d79c18846c75230e94c0b36b504cac53bfac7a8caa8834d4cd1212",
+    "lexicon.json": "3de4683942476950c0193c00178c59a761e05014610073afc99b2130fdd4f094",
+    "mentions.jsonl": "130450bf398e03717c5de3364a5b9b6f313ea4eef3cbb930e65bbfc8c6233b66",
+    "train_instances.json": "e7bf460b01e6777270ecc52b3609576efaf682e3c83925dd04a52a5d9e699ef9"
+  },
+  "caption_events": 150076,
+  "eligible_mentions": 158197,
+  "updates": 2000,
+  "events_seen": 64000,
+  "reviewed_by_human": false,
+  "train_images": 30000,
+  "sampler": "round_robin_one_caption_per_image_seed42",
+  "unique_images_exposed": 30000,
+  "image_exposure_histogram": {
+    "2": 26000,
+    "3": 4000
+  }
+}

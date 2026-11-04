@@ -1,0 +1,305 @@
+{
+  "status": "MATCHED_PILOT_COMPLETE_BELOW_PREDECLARED_GAIN_GATES",
+  "checks": 100,
+  "study_images": 30000,
+  "zip_sha256": {
+    "XE": "a5c7e4e2e42460b0d82c8e1af0cd81a2dc56a2a534d8276d5b623c135f9db16e",
+    "GROUND": "c96af03c9a3913abc510578f931ee3f2209f7d6c53d371c30dddf940d850a9cb"
+  },
+  "source_commit": "85004b225198a0eeeb8d93f487f443d0573c7fe7",
+  "metrics": {
+    "XE": {
+      "CIDEr": 1.038046412612743,
+      "Bleu_4": 0.3436663016681195,
+      "ROUGE_L": 0.5403250016377199,
+      "CHAIRs": 0.0566,
+      "CHAIRi": 0.04079909960607766,
+      "Recall": 0.4018709191361125,
+      "counts": {
+        "images": 5000,
+        "hallucinated_captions": 283,
+        "hallucinated_mentions": 290,
+        "object_mentions": 7108,
+        "recalled_unique": 6401,
+        "reference_unique": 15928
+      },
+      "NLL": 2.396444632447711,
+      "train_NLL": 2.32721117842542,
+      "train_ground": 0.5967093305652875,
+      "mean_words": 8.12,
+      "short_le2": 431
+    },
+    "GROUND": {
+      "CIDEr": 1.042326444141598,
+      "Bleu_4": 0.3426289847803257,
+      "ROUGE_L": 0.5407708466805727,
+      "CHAIRs": 0.0556,
+      "CHAIRi": 0.040168539325842696,
+      "Recall": 0.40249874434957306,
+      "counts": {
+        "images": 5000,
+        "hallucinated_captions": 278,
+        "hallucinated_mentions": 286,
+        "object_mentions": 7120,
+        "recalled_unique": 6411,
+        "reference_unique": 15928
+      },
+      "NLL": 2.3975782607802496,
+      "train_NLL": 2.3290020357689505,
+      "train_ground": 0.5264696413648344,
+      "mean_words": 8.1042,
+      "short_le2": 429
+    }
+  },
+  "delta": {
+    "CIDEr": 0.004280031528854922,
+    "Bleu_4": -0.0010373168877937933,
+    "ROUGE_L": 0.00044584504285283266,
+    "CHAIRs": -0.0010000000000000009,
+    "CHAIRi": -0.0006305602802349625,
+    "Recall": 0.0006278252134605533,
+    "NLL": 0.0011336283325387164,
+    "train_NLL": 0.001790857343530572,
+    "train_ground": -0.07023968920045309,
+    "mean_words": -0.015799999999998704,
+    "short_le2": -2
+  },
+  "paired95CI": {
+    "CIDEr": [
+      -0.0019075817514774217,
+      0.010305654017412645
+    ],
+    "CHAIRs": [
+      -0.0034000000000000002,
+      0.0013999999999999985
+    ],
+    "CHAIRi": [
+      -0.0023347097816274233,
+      0.0010726965396289647
+    ],
+    "Recall": [
+      -0.0011869678423699083,
+      0.002393855351521988
+    ]
+  },
+  "bootstrap": {
+    "resamples": 10000,
+    "seed": 20261104,
+    "unit": "image",
+    "ratio_metrics_recomputed": true
+  },
+  "changed_captions": 866,
+  "repaired_captions": 21,
+  "introduced_captions": 16,
+  "screening_gates": {
+    "CIDEr": false,
+    "CHAIRs": false,
+    "CHAIRi": true,
+    "Recall": true,
+    "short_le2": true
+  },
+  "checkpoint_sha256": {
+    "XE": "728a71d598512df13829b483af719e2bbf215fd3a1cb76142ba8575516e9852f",
+    "GROUND": "b1000f1f3fd5511fc20f4ddcbe3c92881813f630b03a5a925c6b6e37aeed9db6"
+  },
+  "worker_seconds": {
+    "XE": [
+      467.863470487,
+      459.109143054
+    ],
+    "GROUND": [
+      465.77389424500006,
+      465.93053437500004
+    ]
+  },
+  "examples": [
+    {
+      "kind": "repaired",
+      "coco_id": 29358,
+      "XE": "a man eating a hot dog in his mouth",
+      "GROUND": "a man taking a bite of a doughnut"
+    },
+    {
+      "kind": "repaired",
+      "coco_id": 130240,
+      "XE": "a young boy in a baseball uniform throwing a ball",
+      "GROUND": "a young boy in a baseball uniform holding a glove"
+    },
+    {
+      "kind": "repaired",
+      "coco_id": 140203,
+      "XE": "a white van with people walking on the side of the road",
+      "GROUND": "a white bus with people walking down a street"
+    },
+    {
+      "kind": "repaired",
+      "coco_id": 162580,
+      "XE": "a young boy sitting in a chair holding a cake",
+      "GROUND": "a young boy sitting in a chair holding a teddy bear"
+    },
+    {
+      "kind": "repaired",
+      "coco_id": 197880,
+      "XE": "a little girl laying in bed with a cat",
+      "GROUND": "a little girl laying in bed in a bed"
+    },
+    {
+      "kind": "repaired",
+      "coco_id": 222825,
+      "XE": "a white refrigerator freezer sitting next to a sink",
+      "GROUND": "a white refrigerator freezer sitting inside of a kitchen"
+    },
+    {
+      "kind": "repaired",
+      "coco_id": 226268,
+      "XE": "a book",
+      "GROUND": "a cell phone sitting on a table"
+    },
+    {
+      "kind": "repaired",
+      "coco_id": 229858,
+      "XE": "a brown bear walking through the woods",
+      "GROUND": "a tree"
+    },
+    {
+      "kind": "repaired",
+      "coco_id": 236512,
+      "XE": "a man in a suit sitting at a table",
+      "GROUND": "a man in a suit holding a glass of wine"
+    },
+    {
+      "kind": "repaired",
+      "coco_id": 239041,
+      "XE": "a bathroom with a toilet and a mirror",
+      "GROUND": "a bathroom with a sink and a mirror"
+    },
+    {
+      "kind": "introduced",
+      "coco_id": 76822,
+      "XE": "a man riding skis down a snow covered slope",
+      "GROUND": "a man riding a snowboard down a snow covered slope"
+    },
+    {
+      "kind": "introduced",
+      "coco_id": 89670,
+      "XE": "a cake sitting on top of a white plate",
+      "GROUND": "a close up of a cake on a table"
+    },
+    {
+      "kind": "introduced",
+      "coco_id": 92679,
+      "XE": "a brown cow standing on top of a dirt field",
+      "GROUND": "a brown cow standing next to a banana"
+    },
+    {
+      "kind": "introduced",
+      "coco_id": 113126,
+      "XE": "a table topped with various items on it",
+      "GROUND": "a table topped with scissors and a knife"
+    },
+    {
+      "kind": "introduced",
+      "coco_id": 136870,
+      "XE": "a man flying through the air while riding skis",
+      "GROUND": "a man flying through the air while riding a snowboard"
+    },
+    {
+      "kind": "introduced",
+      "coco_id": 191772,
+      "XE": "a teddy bear sitting on top of a teddy bear",
+      "GROUND": "a teddy bear sitting on top of a chair"
+    },
+    {
+      "kind": "introduced",
+      "coco_id": 279892,
+      "XE": "a group of cows standing on a lush green field",
+      "GROUND": "a group of people standing on top of a lush green field"
+    },
+    {
+      "kind": "introduced",
+      "coco_id": 333412,
+      "XE": "a living room filled with furniture and flowers",
+      "GROUND": "a living room with a table and chairs"
+    },
+    {
+      "kind": "introduced",
+      "coco_id": 368096,
+      "XE": "a blue and white bowl filled with oranges",
+      "GROUND": "a blue and orange and orange on a table"
+    },
+    {
+      "kind": "introduced",
+      "coco_id": 369310,
+      "XE": "a young boy is playing a video game",
+      "GROUND": "a young child riding on a skateboard in a living room"
+    }
+  ],
+  "test_used": false,
+  "labels_human_verified": false,
+  "local_model_execution": false,
+  "historical10k": {
+    "metrics": {
+      "XE": {
+        "CIDEr": 1.0298750568903452,
+        "Bleu_4": 0.34252442423408475,
+        "ROUGE_L": 0.5411932034387616,
+        "CHAIRs": 0.0596,
+        "CHAIRi": 0.04317958783120707,
+        "Recall": 0.40224761426418887,
+        "counts": {
+          "images": 5000,
+          "hallucinated_captions": 298,
+          "hallucinated_mentions": 308,
+          "object_mentions": 7133,
+          "recalled_unique": 6407,
+          "reference_unique": 15928
+        },
+        "NLL": 2.3979156197976366,
+        "train_NLL": 2.3227221049577667,
+        "train_ground": 0.6000569529601955,
+        "mean_words": 8.11,
+        "short_le2": 427
+      },
+      "GROUND": {
+        "CIDEr": 1.0352974300756403,
+        "Bleu_4": 0.34257346319340876,
+        "ROUGE_L": 0.5411119156948595,
+        "CHAIRs": 0.0584,
+        "CHAIRi": 0.0421728808825583,
+        "Recall": 0.40369161225514816,
+        "counts": {
+          "images": 5000,
+          "hallucinated_captions": 292,
+          "hallucinated_mentions": 302,
+          "object_mentions": 7161,
+          "recalled_unique": 6430,
+          "reference_unique": 15928
+        },
+        "NLL": 2.3995252746796707,
+        "train_NLL": 2.3245633193266846,
+        "train_ground": 0.5260672163709179,
+        "mean_words": 8.099,
+        "short_le2": 428
+      }
+    },
+    "delta_30k_minus_10k": {
+      "XE": {
+        "CIDEr": 0.00817135572239791,
+        "CHAIRs": -0.0030000000000000027,
+        "CHAIRi": -0.0023804882251294082,
+        "Recall": -0.0003766951280763653,
+        "NLL": -0.0014709873499256787
+      },
+      "GROUND": {
+        "CIDEr": 0.007029014065957684,
+        "CHAIRs": -0.002800000000000004,
+        "CHAIRi": -0.002004341556715604,
+        "Recall": -0.0011928679055751013,
+        "NLL": -0.0019470138994210906
+      }
+    },
+    "limitation": "Descriptive only: both image pool and sampler changed; not pure image-count effect or a second seed."
+  },
+  "decision": "Do not claim grounding gain or scale solely from positive point estimates. No automatic more updates/lambda sweep/TEST; discuss bounded next step.",
+  "limitations": "One seed, reused VALID, weak labels. Full checkpoint/stage bytes absent ZIP; runtime source/receipts support identity, not local independent binary verification. CHAIR only object hallucination, not relation truth."
+}

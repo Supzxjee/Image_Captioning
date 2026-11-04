@@ -37,3 +37,6 @@ experiments/csa_paper/review/grounding_pilot_XE_loaded.json
 experiments/csa_paper/review/grounding_pilot_GROUND_loaded.json
 
 experiments/csa_paper/review/grounding_audit_30k_loaded.json
+
+experiments/csa_paper/review/grounding_30k_XE_loaded.json
+experiments/csa_paper/review/grounding_30k_GROUND_loaded.json
