@@ -79,11 +79,21 @@ try:
     run([sys.executable,'-u',SOURCE/'test_plain_test_data.py'],timeout=120)
     run([sys.executable,'-m','pip','install','--quiet','--upgrade','--force-reinstall','https://github.com/Kaggle/kaggle-cli/archive/6894864ff4095cf98e9e36d3a694ff5fc9ba3818.zip'],timeout=300)
     run([sys.executable,'-u','-c',ROUTING_PREFLIGHT],timeout=120)
-    plain=OUTPUT/'inputs_plain45';plain.mkdir();test=SOURCE/'inputs_test143';test.mkdir()
-    run_cli([sys.executable,'-m','kaggle','kernels','output',PLAIN_VERSION,'-p',str(plain),'--file-pattern',r'(^|/)checkpoint\.bin$'],SECRET_PLAIN)
-    run_cli([sys.executable,'-m','kaggle','kernels','output',TEST_VERSION,'-p',str(test),'--file-pattern',r'(^|/)(test_regions\.npz|test_metadata\.json|vocabulary\.json)$'],SECRET_TEST)
     sys.path.insert(0,str(SOURCE))
-    from plain_test_data import stage_inputs
+    from plain_test_data import stage_inputs,exact_file,PLAIN_SHA
+    plain=OUTPUT/'inputs_plain45';plain.mkdir(exist_ok=True);test=SOURCE/'inputs_test143';test.mkdir(exist_ok=True)
+    try:exact_file(plain,'checkpoint.bin',PLAIN_SHA);plain_ready=True
+    except ValueError:plain_ready=False
+    if not plain_ready:
+        run_cli([sys.executable,'-m','kaggle','kernels','output',PLAIN_VERSION,'-p',str(plain),'--file-pattern',r'(^|/)checkpoint[.]bin$'],SECRET_PLAIN)
+    else:print('Reusing SHA-verified baseline checkpoint; no repeat download.',flush=True)
+    expected=json.loads((SOURCE/'csa10_test_review_text/test_receipt.json').read_text(encoding='utf-8'))
+    try:
+        for n,h in expected['files'].items():exact_file(test,n,h)
+        test_ready=True
+    except ValueError:test_ready=False
+    if not test_ready:
+        run_cli([sys.executable,'-m','kaggle','kernels','output',TEST_VERSION,'-p',str(test),'--file-pattern',r'(^|/)(test_regions[.]npz|test_metadata[.]json|vocabulary[.]json)$'],SECRET_TEST)
     checkpoint=stage_inputs(plain,test,OUTPUT)
     print('Exact baseline45 and SAME TESTcache143 SHA-verified.',flush=True)
 '''+deps+'''
@@ -112,6 +122,31 @@ ScoresCIDEr/BLEU4/ROUGE-L/CHAIRs/i/recall/counts/length/NLL andcompareswithlocke
 90minelapsedstopcap, notETA/billing. Send plain_epoch10_karpathy_test_review.zip; preservewholeoutputcache/checkpoint. Localagentchecksaremetadata/NumPy/static only; userCUDA/API/scorerspending.
 '''),cell('code',setup),cell('code',runner),cell('code',auth+'\nROUTING_PREFLIGHT='+repr(routing)),cell('code',execute)])
     out=HERE/'PLAIN_EPOCH10_KARPATHY_TEST_2GPU.ipynb';out.write_text(json.dumps(nb,indent=1,ensure_ascii=False)+'\n',encoding='utf-8');print(out.name,out.stat().st_size,'bytes; unexecuted')
+    recovery=f'''
+# First enable an APISecret that can read ducanh2403 output143 and set SECRET_TEST to its name.
+# CURRENT failed API-download session only. This cell continues the corrected execution automatically.
+import hashlib,json,sys,urllib.request
+from pathlib import Path
+if not all(n in globals() for n in ('SOURCE','OUTPUT','run','run_cli','SECRET_TEST','TOKENS')):raise RuntimeError('Use the corrected full notebook; current-session globals missing.')
+SOURCE=Path(SOURCE);OUTPUT=Path(OUTPUT)
+if (OUTPUT/'result.json').exists() or list(OUTPUT.glob('test_worker*.json')):raise RuntimeError('Inference progress exists; preserve it rather than applying first-download recovery.')
+COMMIT={commit!r}
+HASHES={hashes!r}
+for n,h in HASHES.items():
+    raw=urllib.request.urlopen(f'https://raw.githubusercontent.com/Supzxjee/Image_Captioning/{{COMMIT}}/{PREFIX}{{n}}',timeout=90).read()
+    if hashlib.sha256(raw).hexdigest()!=h:raise ValueError('Changed source:'+n)
+    p=SOURCE/n;p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(raw)
+sys.path.insert(0,str(SOURCE));sys.modules.pop('plain_test_data',None)
+TOKENS.pop(SECRET_TEST,None) # Refresh a replaced Secret value; never print it.
+for n in ('failure.txt','run_status.json','source_receipt.json'):
+    p=OUTPUT/n;previous=OUTPUT/('before_download_fix_'+n)
+    if p.exists() and not previous.exists():p.rename(previous)
+(OUTPUT/'source_receipt.json').write_text(json.dumps(dict(commit=COMMIT,sha256=HASHES),indent=2),encoding='utf-8')
+EXECUTION_CODE={execute!r}
+exec(compile(EXECUTION_CODE,'plain_test_download_recovery','exec'))
+'''
+    cell('code',recovery)
+    (HERE/'RECOVER_PLAIN_TEST_DOWNLOAD_CELL.py').write_text(recovery.strip()+'\n',encoding='utf-8')
 
 
 if __name__=='__main__':
