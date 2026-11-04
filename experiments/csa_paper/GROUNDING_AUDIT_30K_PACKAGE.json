@@ -1,0 +1,13 @@
+{
+  "core_commit": "24ccd81a411ee0e05cd1abd61fbc8b1044b56075",
+  "sha256": {
+    "grounding_labels.py": "9949320f8aa29220dd5d825ce6ee67a0a87b1a82422639ce5457ee736c2db86c",
+    "run_grounding_audit.py": "e1164bf171914e5e5ff516af9349fadaad3afcefabdf16f1b62450dd989a69fa",
+    "test_grounding_labels.py": "11ceed8178718552bd5e50a828f0fa14ed15a899b2e72f7a058093b0cad828f5",
+    "SAVE_FULL_ROI_V134_PACKAGE.json": "a73636ca75806d6b1d7b4d88f80f3ce1c59b3061eb3e9a5e730097ddd89c505c",
+    "GROUNDED_ATTENTION_AUDIT_PROTOCOL.md": "f8570d9585df465c95f7d3b2ae1570e70606207e0a42058860722e2e6100d5f9",
+    "GROUNDING_30K_PROTOCOL.md": "d376c3922aed18da014faf422341aa0574cf8588f336442a6d06693cba160213"
+  },
+  "notebook_sha256": "7213397eacfeccb59a65822e191d7904d43c066a3b4252bcf15724d19191b953",
+  "user_run_pending": true
+}
