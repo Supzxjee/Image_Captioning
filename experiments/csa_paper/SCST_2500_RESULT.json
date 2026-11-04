@@ -1,0 +1,571 @@
+{
+  "status": "CSA_SCST_PILOT_REVIEW_COMPLETE",
+  "updates": 2500,
+  "metadata_checks": 134,
+  "zip_sha256": {
+    "CE": "294d47362f972c0a385fa7eb108e3ba7354f34bdc16acd28cead1f411e60f9c7",
+    "OBJECT": "b095e24c62ad0cf706389f1f42fa709fae2cdbbdf5572c986e6a953de518f5dc"
+  },
+  "metrics": {
+    "CSA15": {
+      "CIDEr": 1.0094525759199886,
+      "Bleu_4": 0.3322736676440799,
+      "ROUGE_L": 0.5351295911755986,
+      "CHAIRs": 0.0586,
+      "CHAIRi": 0.04440998167207105,
+      "Recall": 0.4011803114013059,
+      "counts": {
+        "images": 5000,
+        "hallucinated_captions": 293,
+        "hallucinated_mentions": 315,
+        "object_mentions": 7093,
+        "recalled_unique": 6390,
+        "reference_unique": 15928
+      },
+      "mean_words": 8.2212,
+      "short_le2": 425,
+      "empty": 0,
+      "NLL": 2.405520341899239
+    },
+    "CE": {
+      "CIDEr": 1.034778245316635,
+      "Bleu_4": 0.34088783746284795,
+      "ROUGE_L": 0.5403001523822268,
+      "CHAIRs": 0.0518,
+      "CHAIRi": 0.03827408256880734,
+      "Recall": 0.39866901054746356,
+      "counts": {
+        "images": 5000,
+        "hallucinated_captions": 259,
+        "hallucinated_mentions": 267,
+        "object_mentions": 6976,
+        "recalled_unique": 6350,
+        "reference_unique": 15928
+      },
+      "NLL": 2.375194495505782,
+      "mean_words": 8.2784,
+      "short_le2": 418
+    },
+    "OBJECT": {
+      "CIDEr": 1.032307383400166,
+      "Bleu_4": 0.3413295873230051,
+      "ROUGE_L": 0.5403215648351112,
+      "CHAIRs": 0.0502,
+      "CHAIRi": 0.03707962058062662,
+      "Recall": 0.3981039678553491,
+      "counts": {
+        "images": 5000,
+        "hallucinated_captions": 251,
+        "hallucinated_mentions": 258,
+        "object_mentions": 6958,
+        "recalled_unique": 6341,
+        "reference_unique": 15928
+      },
+      "NLL": 2.3749630196794276,
+      "mean_words": 8.284,
+      "short_le2": 414
+    }
+  },
+  "comparisons": {
+    "CE->OBJECT": {
+      "paired95CI": {
+        "CIDEr": [
+          -0.008565438389335956,
+          0.0036220643459919043
+        ],
+        "CHAIRs": [
+          -0.004200000000000002,
+          0.0010000000000000009
+        ],
+        "CHAIRi": [
+          -0.0031025795546083595,
+          0.0007121720164487106
+        ],
+        "Recall": [
+          -0.0023577881606972966,
+          0.0012390653681045073
+        ]
+      },
+      "changed": 865,
+      "repairs": 26,
+      "new_hallucinations": 18,
+      "examples": [
+        {
+          "kind": "repaired",
+          "coco_id": 5282,
+          "before": "a train traveling down a river next to a bridge",
+          "after": "a boat traveling down a river next to a bridge"
+        },
+        {
+          "kind": "repaired",
+          "coco_id": 19881,
+          "before": "a vase of flowers sitting on top of a table",
+          "after": "a vase of flowers sitting on top of a shelf"
+        },
+        {
+          "kind": "repaired",
+          "coco_id": 22420,
+          "before": "a pile of books sitting on top of a table",
+          "after": "a pile of books sitting on top of a shelf"
+        },
+        {
+          "kind": "repaired",
+          "coco_id": 30012,
+          "before": "a table",
+          "after": "a pizza sitting on it"
+        },
+        {
+          "kind": "repaired",
+          "coco_id": 36032,
+          "before": "a person riding skis down a snow covered slope",
+          "after": "a person is snowboarding down a snowy hill"
+        },
+        {
+          "kind": "introduced",
+          "coco_id": 16161,
+          "before": "a couple of bananas sitting on top of each other",
+          "after": "an orange and a banana sitting on a table"
+        },
+        {
+          "kind": "introduced",
+          "coco_id": 31736,
+          "before": "a herd of sheep standing on top of a lush green field",
+          "after": "a herd of cattle standing on top of a lush green field"
+        },
+        {
+          "kind": "introduced",
+          "coco_id": 41257,
+          "before": "a close up of a cat laying on its back",
+          "after": "a close up of a cat laying on a couch"
+        },
+        {
+          "kind": "introduced",
+          "coco_id": 75719,
+          "before": "a yellow bird sitting on top of a person",
+          "after": "a couple of birds standing on top of a chair"
+        },
+        {
+          "kind": "introduced",
+          "coco_id": 151988,
+          "before": "a couple of people that are sitting on a bench",
+          "after": "a man sitting on a bench next to a suitcase"
+        }
+      ]
+    },
+    "CSA15->CE": {
+      "paired95CI": {
+        "CHAIRs": [
+          -0.0114,
+          -0.0022000000000000006
+        ],
+        "CHAIRi": [
+          -0.00963038855854345,
+          -0.002625464924954358
+        ],
+        "Recall": [
+          -0.005696779424072346,
+          0.000631455679855512
+        ]
+      },
+      "changed": 2338,
+      "repairs": 90,
+      "new_hallucinations": 56,
+      "examples": [
+        {
+          "kind": "repaired",
+          "coco_id": 3067,
+          "before": "a cat sitting on a table next to a banana",
+          "after": "a cat sitting on a table next to a phone"
+        },
+        {
+          "kind": "repaired",
+          "coco_id": 7386,
+          "before": "a motorcycle parked next to a small car",
+          "after": "a motorcycle that is sitting in the grass"
+        },
+        {
+          "kind": "repaired",
+          "coco_id": 10440,
+          "before": "a fighter jet flying in the sky",
+          "after": "an air"
+        },
+        {
+          "kind": "repaired",
+          "coco_id": 14821,
+          "before": "a cat sitting on top of a blue chair",
+          "after": "a living room filled with lots of items"
+        },
+        {
+          "kind": "repaired",
+          "coco_id": 16161,
+          "before": "an orange and a banana on a table",
+          "after": "a couple of bananas sitting on top of each other"
+        },
+        {
+          "kind": "introduced",
+          "coco_id": 2495,
+          "before": "a very dirty toilet in a public restroom",
+          "after": "a bathroom with a toilet and sink"
+        },
+        {
+          "kind": "introduced",
+          "coco_id": 5282,
+          "before": "a boat traveling down a river next to a bridge",
+          "after": "a train traveling down a river next to a bridge"
+        },
+        {
+          "kind": "introduced",
+          "coco_id": 6012,
+          "before": "a banana sitting next to a green apple",
+          "after": "a green apple and a banana on a table"
+        },
+        {
+          "kind": "introduced",
+          "coco_id": 29697,
+          "before": "a white refrigerator freezer sitting inside of a kitchen",
+          "after": "a kitchen with a refrigerator and a sink"
+        },
+        {
+          "kind": "introduced",
+          "coco_id": 30012,
+          "before": "a pizza",
+          "after": "a table"
+        }
+      ]
+    },
+    "CSA15->OBJECT": {
+      "paired95CI": {
+        "CHAIRs": [
+          -0.012999999999999998,
+          -0.0038000000000000048
+        ],
+        "CHAIRi": [
+          -0.010864514233350065,
+          -0.0038460168297969545
+        ],
+        "Recall": [
+          -0.0063046487475035785,
+          0.00012704426309929472
+        ]
+      },
+      "changed": 2410,
+      "repairs": 90,
+      "new_hallucinations": 48,
+      "examples": [
+        {
+          "kind": "repaired",
+          "coco_id": 3067,
+          "before": "a cat sitting on a table next to a banana",
+          "after": "a cat sitting on a table next to a phone"
+        },
+        {
+          "kind": "repaired",
+          "coco_id": 7386,
+          "before": "a motorcycle parked next to a small car",
+          "after": "a motorcycle that is sitting in the grass"
+        },
+        {
+          "kind": "repaired",
+          "coco_id": 10440,
+          "before": "a fighter jet flying in the sky",
+          "after": "a helicopter flying in the sky"
+        },
+        {
+          "kind": "repaired",
+          "coco_id": 14821,
+          "before": "a cat sitting on top of a blue chair",
+          "after": "a living room filled with lots of items"
+        },
+        {
+          "kind": "repaired",
+          "coco_id": 19881,
+          "before": "a vase of flowers sitting on top of a table",
+          "after": "a vase of flowers sitting on top of a shelf"
+        },
+        {
+          "kind": "introduced",
+          "coco_id": 2495,
+          "before": "a very dirty toilet in a public restroom",
+          "after": "a bathroom with a toilet and sink"
+        },
+        {
+          "kind": "introduced",
+          "coco_id": 6012,
+          "before": "a banana sitting next to a green apple",
+          "after": "a green apple and a banana on a table"
+        },
+        {
+          "kind": "introduced",
+          "coco_id": 29697,
+          "before": "a white refrigerator freezer sitting inside of a kitchen",
+          "after": "a kitchen with a refrigerator and a sink"
+        },
+        {
+          "kind": "introduced",
+          "coco_id": 57232,
+          "before": "a wooden chair sitting on top of a wooden floor",
+          "after": "a wooden bench with many different types of wooden boards"
+        },
+        {
+          "kind": "introduced",
+          "coco_id": 75719,
+          "before": "a couple of birds standing on the ground",
+          "after": "a couple of birds standing on top of a chair"
+        }
+      ]
+    },
+    "CE500->CE": {
+      "paired95CI": {
+        "CIDEr": [
+          0.002109671108875444,
+          0.020723633267789834
+        ],
+        "CHAIRs": [
+          -0.0102,
+          -0.002599999999999998
+        ],
+        "CHAIRi": [
+          -0.007806567775160327,
+          -0.002172688906166263
+        ],
+        "Recall": [
+          -0.003968941804300369,
+          0.0012537180965635076
+        ]
+      },
+      "changed": 1737,
+      "repairs": 64,
+      "new_hallucinations": 32,
+      "examples": [
+        {
+          "kind": "repaired",
+          "coco_id": 661,
+          "before": "a hot dog sitting on top of a bun",
+          "after": "a close up of a sandwich on a bun"
+        },
+        {
+          "kind": "repaired",
+          "coco_id": 3067,
+          "before": "a cat sitting on a table next to a banana",
+          "after": "a cat sitting on a table next to a phone"
+        },
+        {
+          "kind": "repaired",
+          "coco_id": 7386,
+          "before": "a motorcycle parked next to a red car",
+          "after": "a motorcycle that is sitting in the grass"
+        },
+        {
+          "kind": "repaired",
+          "coco_id": 10440,
+          "before": "a fighter jet flying in the sky",
+          "after": "an air"
+        },
+        {
+          "kind": "repaired",
+          "coco_id": 16161,
+          "before": "an orange and a banana sitting on a table",
+          "after": "a couple of bananas sitting on top of each other"
+        },
+        {
+          "kind": "introduced",
+          "coco_id": 5282,
+          "before": "a boat traveling down a river next to a bridge",
+          "after": "a train traveling down a river next to a bridge"
+        },
+        {
+          "kind": "introduced",
+          "coco_id": 6012,
+          "before": "a green apple sitting next to a green apple",
+          "after": "a green apple and a banana on a table"
+        },
+        {
+          "kind": "introduced",
+          "coco_id": 29697,
+          "before": "a white refrigerator freezer sitting inside of a kitchen",
+          "after": "a kitchen with a refrigerator and a sink"
+        },
+        {
+          "kind": "introduced",
+          "coco_id": 30012,
+          "before": "a pizza sitting on it",
+          "after": "a table"
+        },
+        {
+          "kind": "introduced",
+          "coco_id": 70657,
+          "before": "a close up of a plate of food on a table",
+          "after": "a white plate topped with pancakes and bananas"
+        }
+      ]
+    },
+    "OBJECT500->OBJECT": {
+      "paired95CI": {
+        "CIDEr": [
+          0.0016309929062680584,
+          0.019801926154979055
+        ],
+        "CHAIRs": [
+          -0.008199999999999999,
+          -0.0010000000000000009
+        ],
+        "CHAIRi": [
+          -0.005903163821339241,
+          -0.0008013998097218926
+        ],
+        "Recall": [
+          -0.004339546199056947,
+          0.0008905244189369704
+        ]
+      },
+      "changed": 1829,
+      "repairs": 53,
+      "new_hallucinations": 30,
+      "examples": [
+        {
+          "kind": "repaired",
+          "coco_id": 661,
+          "before": "a hot dog sitting on top of a bun",
+          "after": "a close up of a sandwich on a bun"
+        },
+        {
+          "kind": "repaired",
+          "coco_id": 3067,
+          "before": "a cat sitting on a table next to a banana",
+          "after": "a cat sitting on a table next to a phone"
+        },
+        {
+          "kind": "repaired",
+          "coco_id": 10440,
+          "before": "a fighter jet flying in the sky",
+          "after": "a helicopter flying in the sky"
+        },
+        {
+          "kind": "repaired",
+          "coco_id": 19881,
+          "before": "a vase of flowers sitting on top of a table",
+          "after": "a vase of flowers sitting on top of a shelf"
+        },
+        {
+          "kind": "repaired",
+          "coco_id": 26611,
+          "before": "a wooden spoon filled with carrots and carrots",
+          "after": "a wooden bowl filled with carrots and carrots"
+        },
+        {
+          "kind": "introduced",
+          "coco_id": 29697,
+          "before": "a white refrigerator freezer sitting inside of a kitchen",
+          "after": "a kitchen with a refrigerator and a sink"
+        },
+        {
+          "kind": "introduced",
+          "coco_id": 71673,
+          "before": "a cat sitting on the floor next to a banana",
+          "after": "a cat sitting on a table next to a banana"
+        },
+        {
+          "kind": "introduced",
+          "coco_id": 75719,
+          "before": "a yellow bird sitting on top of a yellow bird",
+          "after": "a couple of birds standing on top of a chair"
+        },
+        {
+          "kind": "introduced",
+          "coco_id": 131282,
+          "before": "a person cutting vegetables on a plate",
+          "after": "a person holding a bowl of food on a table"
+        },
+        {
+          "kind": "introduced",
+          "coco_id": 135139,
+          "before": "bunches of green bananas sitting on the ground",
+          "after": "a pile of green bananas sitting on top of a table"
+        }
+      ]
+    }
+  },
+  "checkpoint_sha256": {
+    "CE": "bf429b5de9b2adf6d694e4edd9f39a5c1828a91854f0138bb2333a763bd62f35",
+    "OBJECT": "e12ca68fa6761d17a1e6100521630052cc8421f978745d60106bfdb610ef0de9"
+  },
+  "worker_seconds": {
+    "CE": [
+      1256.054004613,
+      1265.898661164
+    ],
+    "OBJECT": [
+      1325.933687923,
+      1321.717978142
+    ]
+  },
+  "bootstrap": {
+    "resamples": 10000,
+    "seed": 20261104,
+    "unit": "image",
+    "ratio_metrics_recomputed": true
+  },
+  "local_model_execution": false,
+  "test_used": false,
+  "historical500": {
+    "CSA15": {
+      "CIDEr": 1.0094525759199886,
+      "Bleu_4": 0.3322736676440799,
+      "ROUGE_L": 0.5351295911755986,
+      "CHAIRs": 0.0586,
+      "CHAIRi": 0.04440998167207105,
+      "Recall": 0.4011803114013059,
+      "counts": {
+        "images": 5000,
+        "hallucinated_captions": 293,
+        "hallucinated_mentions": 315,
+        "object_mentions": 7093,
+        "recalled_unique": 6390,
+        "reference_unique": 15928
+      },
+      "mean_words": 8.2212,
+      "short_le2": 425,
+      "empty": 0,
+      "NLL": 2.405520341899239
+    },
+    "CE": {
+      "CIDEr": 1.0234652215465516,
+      "Bleu_4": 0.33768949531390385,
+      "ROUGE_L": 0.536760980586918,
+      "CHAIRs": 0.0582,
+      "CHAIRi": 0.04323787921746527,
+      "Recall": 0.3999874434957308,
+      "counts": {
+        "images": 5000,
+        "hallucinated_captions": 291,
+        "hallucinated_mentions": 305,
+        "object_mentions": 7054,
+        "recalled_unique": 6371,
+        "reference_unique": 15928
+      },
+      "NLL": 2.388992279145392,
+      "mean_words": 8.2618,
+      "short_le2": 424
+    },
+    "OBJECT": {
+      "CIDEr": 1.0215169342437818,
+      "Bleu_4": 0.3371688947805954,
+      "ROUGE_L": 0.5364333688741421,
+      "CHAIRs": 0.0548,
+      "CHAIRi": 0.04043126684636118,
+      "Recall": 0.3997990959316926,
+      "counts": {
+        "images": 5000,
+        "hallucinated_captions": 274,
+        "hallucinated_mentions": 285,
+        "object_mentions": 7049,
+        "recalled_unique": 6368,
+        "reference_unique": 15928
+      },
+      "NLL": 2.3897003839559425,
+      "mean_words": 8.287,
+      "short_le2": 419
+    }
+  },
+  "limitations": "One seed, fixed short pilot, reused VALID; label/stage/checkpoint binaries absent from ZIP. Stored source/counts checked, no independent model/scorer replay. Baseline CIDEr per-image unavailable: no baseline CIDEr CI. CHAIR object-level only."
+}

@@ -42,3 +42,5 @@ experiments/csa_paper/review/grounding_30k_XE_loaded.json
 experiments/csa_paper/review/grounding_30k_GROUND_loaded.json
 experiments/csa_paper/scst_ce_review_text/
 experiments/csa_paper/scst_object_review_text/
+experiments/csa_paper/scst2500_ce_review_text/
+experiments/csa_paper/scst2500_object_review_text/
