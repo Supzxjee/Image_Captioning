@@ -1,0 +1,29 @@
+{
+  "status": "DATA_PREPARATION_COMPLETE",
+  "zip_sha256": "f84920a0eb35a2b7aff351b14fe211f8cbc2b727d654ba4a129914832c47c18a",
+  "checks": 245,
+  "images": 30000,
+  "mapped_mentions": 174465,
+  "counts": {
+    "captions": 150076,
+    "content_tokens": 1569697,
+    "captions_with_mapped_mention": 119339,
+    "eligible": 158197,
+    "no_positive": 3360,
+    "missing_gt": 6047,
+    "crowd": 6855,
+    "unknown_token": 1,
+    "invalid_gt": 5
+  },
+  "conditional_proposal_coverage": 0.9792023867737083,
+  "eligible_fraction": 0.906754936520219,
+  "caption_mapping_fraction": 0.7951904368453317,
+  "classes": 79,
+  "prefix10k_exact": true,
+  "lexicon_mapping_unchanged": true,
+  "worker_seconds": 339.315778399,
+  "human_review_pending": true,
+  "model_executed": false,
+  "instances_file": "train_instances.json",
+  "limits": "Actual ROI/full mentions/filteredGT absent review; metadata hashes/source evidence only, no independent binary/model/scorer verification."
+}
