@@ -1,0 +1,334 @@
+{
+  "status": "CSA_SCST_FULL1_REVIEW_COMPLETE",
+  "metadata_checks": 197,
+  "zip_sha256": {
+    "CE": "7f1b9fbc05666582ea6ad263a0d86a1c26eb1880b3fe2b7094e67493ad5e8c0a",
+    "OBJECT": "7f891d6b3faf07dd201573cedae0b76ac7419f948436da66dddeea3d1e5a239c"
+  },
+  "metrics": {
+    "CE": {
+      "original": {
+        "CIDEr": 1.0094525759199886,
+        "Bleu_4": 0.3322736676440799,
+        "ROUGE_L": 0.5351295911755986,
+        "CHAIRs": 0.0586,
+        "CHAIRi": 0.04440998167207105,
+        "Recall": 0.4011803114013059,
+        "counts": {
+          "images": 5000,
+          "hallucinated_captions": 293,
+          "hallucinated_mentions": 315,
+          "object_mentions": 7093,
+          "recalled_unique": 6390,
+          "reference_unique": 15928
+        },
+        "NLL": 2.405520341899239,
+        "mean_words": 8.2212,
+        "short_le2": 425
+      },
+      "mid": {
+        "CIDEr": 1.0536454323079183,
+        "Bleu_4": 0.347702268572191,
+        "ROUGE_L": 0.5427572841192561,
+        "CHAIRs": 0.0542,
+        "CHAIRi": 0.03948681397006415,
+        "Recall": 0.3996107483676544,
+        "counts": {
+          "images": 5000,
+          "hallucinated_captions": 271,
+          "hallucinated_mentions": 277,
+          "object_mentions": 7015,
+          "recalled_unique": 6365,
+          "reference_unique": 15928
+        },
+        "NLL": 2.3663602596051994,
+        "mean_words": 8.3324,
+        "short_le2": 423
+      },
+      "end": {
+        "CIDEr": 1.0631029131024006,
+        "Bleu_4": 0.34829378731737376,
+        "ROUGE_L": 0.5449286537695498,
+        "CHAIRs": 0.052,
+        "CHAIRi": 0.03736878936319104,
+        "Recall": 0.4053867403314917,
+        "counts": {
+          "images": 5000,
+          "hallucinated_captions": 260,
+          "hallucinated_mentions": 267,
+          "object_mentions": 7145,
+          "recalled_unique": 6457,
+          "reference_unique": 15928
+        },
+        "NLL": 2.365263713825221,
+        "mean_words": 8.4164,
+        "short_le2": 407
+      }
+    },
+    "OBJECT": {
+      "original": {
+        "CIDEr": 1.0094525759199886,
+        "Bleu_4": 0.3322736676440799,
+        "ROUGE_L": 0.5351295911755986,
+        "CHAIRs": 0.0586,
+        "CHAIRi": 0.04440998167207105,
+        "Recall": 0.4011803114013059,
+        "counts": {
+          "images": 5000,
+          "hallucinated_captions": 293,
+          "hallucinated_mentions": 315,
+          "object_mentions": 7093,
+          "recalled_unique": 6390,
+          "reference_unique": 15928
+        },
+        "NLL": 2.405520341899239,
+        "mean_words": 8.2212,
+        "short_le2": 425
+      },
+      "mid": {
+        "CIDEr": 1.0546989700752059,
+        "Bleu_4": 0.34740153196661844,
+        "ROUGE_L": 0.5428678694244263,
+        "CHAIRs": 0.0514,
+        "CHAIRi": 0.038106071377790415,
+        "Recall": 0.4017453540934204,
+        "counts": {
+          "images": 5000,
+          "hallucinated_captions": 257,
+          "hallucinated_mentions": 268,
+          "object_mentions": 7033,
+          "recalled_unique": 6399,
+          "reference_unique": 15928
+        },
+        "NLL": 2.3668309639744294,
+        "mean_words": 8.3152,
+        "short_le2": 421
+      },
+      "end": {
+        "CIDEr": 1.056063429601604,
+        "Bleu_4": 0.3449258435287816,
+        "ROUGE_L": 0.5423457356190473,
+        "CHAIRs": 0.0512,
+        "CHAIRi": 0.03716168840274856,
+        "Recall": 0.406767955801105,
+        "counts": {
+          "images": 5000,
+          "hallucinated_captions": 256,
+          "hallucinated_mentions": 265,
+          "object_mentions": 7131,
+          "recalled_unique": 6479,
+          "reference_unique": 15928
+        },
+        "NLL": 2.3649065320147575,
+        "mean_words": 8.3886,
+        "short_le2": 419
+      }
+    }
+  },
+  "comparisons": {
+    "CE_end->OBJECT_end": {
+      "delta": {
+        "CIDEr": -0.007039483500795196,
+        "CHAIRs": -0.0007999999999999952,
+        "CHAIRi": -0.00020710096044247728,
+        "Recall": 0.001381215469613284
+      },
+      "paired95CI": {
+        "CIDEr": [
+          -0.013618789388526713,
+          -0.0005308379661558399
+        ],
+        "CHAIRs": [
+          -0.0034000000000000002,
+          0.001800000000000003
+        ],
+        "CHAIRi": [
+          -0.002053159633165631,
+          0.001680511265459441
+        ],
+        "Recall": [
+          -0.0006247784089657788,
+          0.0034567430388775934
+        ]
+      },
+      "repairs": 25,
+      "new_flags": 21,
+      "changed": 1064
+    },
+    "CE_original->CE_end": {
+      "delta": {
+        "CIDEr": 0.05365033718241086,
+        "CHAIRs": -0.006600000000000002,
+        "CHAIRi": -0.0070411923088800135,
+        "Recall": 0.0042064289301858016
+      },
+      "paired95CI": {
+        "CIDEr": [
+          0.04148020061156764,
+          0.06607718045146559
+        ],
+        "CHAIRs": [
+          -0.012000000000000004,
+          -0.0013999999999999985
+        ],
+        "CHAIRi": [
+          -0.01105877659474191,
+          -0.003115909016903413
+        ],
+        "Recall": [
+          0.0007576630550623908,
+          0.007593676846818102
+        ]
+      },
+      "repairs": 109,
+      "new_flags": 76,
+      "changed": 2971
+    },
+    "OBJECT_original->OBJECT_end": {
+      "delta": {
+        "CIDEr": 0.04661085368161566,
+        "CHAIRs": -0.007399999999999997,
+        "CHAIRi": -0.007248293269322491,
+        "Recall": 0.0055876443997990854
+      },
+      "paired95CI": {
+        "CIDEr": [
+          0.034284918626255996,
+          0.05905978603681997
+        ],
+        "CHAIRs": [
+          -0.0126,
+          -0.0022000000000000006
+        ],
+        "CHAIRi": [
+          -0.01116143104837417,
+          -0.003371792510110678
+        ],
+        "Recall": [
+          0.002180559969186231,
+          0.00903373782020864
+        ]
+      },
+      "repairs": 108,
+      "new_flags": 71,
+      "changed": 3000
+    },
+    "CE_mid->CE_end": {
+      "delta": {
+        "CIDEr": 0.009457480794480944,
+        "CHAIRs": -0.0022000000000000006,
+        "CHAIRi": -0.0021180246068731104,
+        "Recall": 0.005775991963837268
+      },
+      "paired95CI": {
+        "CIDEr": [
+          0.0005913616447876469,
+          0.018502684790066046
+        ],
+        "CHAIRs": [
+          -0.006199999999999997,
+          0.0016000000000000042
+        ],
+        "CHAIRi": [
+          -0.004925088389543679,
+          0.0007300718840941179
+        ],
+        "Recall": [
+          0.003218364909261333,
+          0.008313942839296958
+        ]
+      },
+      "repairs": 55,
+      "new_flags": 44,
+      "changed": 1702
+    },
+    "OBJECT_mid->OBJECT_end": {
+      "delta": {
+        "CIDEr": 0.0013644595263988535,
+        "CHAIRs": -0.0001999999999999988,
+        "CHAIRi": -0.0009443829750418534,
+        "Recall": 0.005022601707684593
+      },
+      "paired95CI": {
+        "CIDEr": [
+          -0.007446981609239034,
+          0.010065273262851716
+        ],
+        "CHAIRs": [
+          -0.003799999999999998,
+          0.0034000000000000002
+        ],
+        "CHAIRi": [
+          -0.0036571172852255247,
+          0.0017858672738892993
+        ],
+        "Recall": [
+          0.002487956810366411,
+          0.0075856612356542796
+        ]
+      },
+      "repairs": 43,
+      "new_flags": 42,
+      "changed": 1728
+    }
+  },
+  "selected": {
+    "CE": {
+      "selected_name": "end",
+      "eligible_names": [
+        "original",
+        "mid",
+        "end"
+      ],
+      "checkpoint_sha256": "58ce5dc0e30ac26add9bac8e24a2e9e03b91532bfdeece588997395bf9cfc16b",
+      "best_path": "/kaggle/working/csa15_scst_ce_full1/best.bin",
+      "rule": "maxCIDEr with CHAIRs/i<=original and recall>=original-.005; earlier ties; original fallback",
+      "test_used": false,
+      "metrics_sha256": {
+        "original": "88b95203530db2a117a2f3fc555c4c33dd9d2037351673e13b2a120290d1710a",
+        "mid": "86aa9356c2967a4ce0d423904bbea588bdf4c3822a409b758332a0bba11c182d",
+        "end": "2f376b916678dcee9209d0ce9887faf8178b2bd17750e82c194c9c0c7f51f0f6"
+      }
+    },
+    "OBJECT": {
+      "selected_name": "end",
+      "eligible_names": [
+        "original",
+        "mid",
+        "end"
+      ],
+      "checkpoint_sha256": "a98487d77a6476f782565e53cea4660c3bf9c85034047a8bef6680d80e42fb0b",
+      "best_path": "/kaggle/working/csa15_scst_ce_object_full1/best.bin",
+      "rule": "maxCIDEr with CHAIRs/i<=original and recall>=original-.005; earlier ties; original fallback",
+      "test_used": false,
+      "metrics_sha256": {
+        "original": "e1836524fdb5e2fdd4d9655705223509887503f53e9c753c6877db7ecd8cc981",
+        "mid": "525e12a7e6ffa34669bd741bbf3fe5f77200b4ce792ee8435635a6bffb7e5246",
+        "end": "49c83fb16d99c1fb991dcabfc7b05d275584dee9417934fb3645fb4264e80e43"
+      }
+    }
+  },
+  "user_reported_save_versions": {
+    "CE": 161,
+    "OBJECT": 55
+  },
+  "worker_seconds": {
+    "CE": [
+      5800.6118847650005,
+      5802.193276816
+    ],
+    "OBJECT": [
+      5996.967070872999,
+      5997.146205559
+    ]
+  },
+  "bootstrap": {
+    "resamples": 10000,
+    "seed": 20261105,
+    "unit": "image",
+    "ratio_metrics_recomputed": true
+  },
+  "test_used": false,
+  "local_model_or_scorer_execution": false,
+  "limitations": "One seed/reusedVALID and validation-based checkpoint selection; conditional unadjusted intervals omit seed/selection variability. Binaries/target payloads absent ZIP, runtime receipts are not independent local binary verification. CHAIR measures COCO object classes, not relation correctness."
+}

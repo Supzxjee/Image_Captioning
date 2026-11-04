@@ -1,6 +1,6 @@
 # Trạng thái nghiên cứu — đọc trước khi tiếp tục
 
-Cập nhật: 04/11/2026, giờ Việt Nam. File này là bản tóm tắt để tiếp tục công việc; protocol và artifacts được dẫn bên dưới mới là nguồn chi tiết. Không cần đọc toàn bộ lịch sử chat.
+Cập nhật: 05/11/2026, giờ Việt Nam. File này là bản tóm tắt để tiếp tục công việc; protocol và artifacts được dẫn bên dưới mới là nguồn chi tiết. Không cần đọc toàn bộ lịch sử chat.
 
 ## Mục tiêu và cách làm việc
 
@@ -9,6 +9,8 @@ Cập nhật: 04/11/2026, giờ Việt Nam. File này là bản tóm tắt để
 - Không tự chạy mô hình/Torch/autograd local hoặc notebook Kaggle. Kiểm tra metadata/NumPy/static/mock được phép; ghi rõ giới hạn. Quy trình tại [AGENTS.md](AGENTS.md).
 
 ## Hiện đang ở đâu
+
+- **R245 fullTRAINSCST1epoch COMPLETE; recommend CE main, OBJECT ablation.** [Result](experiments/csa_paper/SCST_FULL1_RESULT.md)/JSON.197metadata/source/countchecksPASS/25Gitpins eachc4b83f1;113287uniqueonce/14161updates/last7split4/3, identicalnormalizedinputs exceptobjectweight. FreshORIGINALcaptions/metricsidentical; bothselectEND(all3eligible). VALID5000 ORIGINAL→CEend→OBJend CIDEr1.009453→1.063103→1.056063;CHAIRs5.86→5.20→5.12%(293→260→256);CHAIRi4.441→3.737→3.716%;recall40.118→40.539→40.677%;NLL2.405520→2.365264→2.364907. CE+5.365CIDErpoints/net33fewerflags;OBJ+4.661/net37, bothrecallup. OBJ−CE CIDEr−.007039CI[-.013619,−.000531],CHAIRs−.08ppCI[-.34,.18],CHAIRi/recallCIscontain0;25repairs21new/1064changed. MainCIDErfavorsCE,objectbenefitnotestablished; don'tblindlypushobject5epochs. CEmid→end+.009457CIDErCI[.000591,.018503];OBJ+.001364CIcontains0. Compared2500CIDErupbutflagsCE259→260/OBJ251→256,coverageup;notallmetricssuperior. UserSaveVersionsCE161/OBJECT55, ownernotrepeated; preserveendbest/latestSHA58ce5dc0/a98487d7+mid/RNG/Adam/receipts/selection.567trainingrecords/evalfileSHA/sealedlog/6phasecoverage/selectionchecksPASS;userneural/DDP4/3PASS. Noagentmodel/scorer, noTEST/autofurthertrain. NextfreezeCEasmain+OBJcomparator, discussmatchedTESTvsCSA15orboundedCEextension; userstillchosesbudget/scope.
 
 - **R245 user approves ONEfullTRAINSCSTepoch first; notebooks PREPARED, NOT RUN.** [Protocol](experiments/csa_paper/SCST_FULL1_PROTOCOL.md). LatestGPUquota19h/24h. Sourcec4b83f1(sharedworker+fullhelpers), twoCSA15_SCST_CE/SCST_CE_OBJECT_FULL1_2GPU notebooks. Same4inputs/exact147CSA15/freshAdam5e-6/scst.05/object0,.5/FP32/dropoutOFF/clip1. Actualplanned113287uniqueTRAINonce/14161updates/global8,lastbatch7split4/3maskedNOTduplicates; CEglobaltokens/SCSTglobalimages correctDDPscaling. ORIGINAL0/MID7081(56648images)/END14161 VALID5000beam5+NLL; freshbaseline, CPUmetricsall3 then maxCIDEr eligibleCHAIRs/i≤original/recall≥original−.005/earlierties/originalfallback. Keepmid/latest/bestweights+selection; atomic500/milestones/RNG/optimizer/cursor/evaluationSHA+sealedtraininglog forsamestudyresume. Parent4hstopcap/25stepmeasuredgatewithpendingVALIDmargin,notETA/billing;noautomatic5epochs/TEST.15safeNumPy/parser/AST/metadata/mockedselectiontestsPASS;104notebookAST/pins/isolatedbundles/parity/unchangedchecksPASS. Model/policycore+old2500notebooksbyteunchanged; actualnewuneven4/3neuralDDPguard/userCUDA/scorers NOTagent-run, includedbeforetraining. NextuserimporttwoFULL1notebooks/attachsame4Datasets/T4x2;no pilotDataset/API needed.
 
