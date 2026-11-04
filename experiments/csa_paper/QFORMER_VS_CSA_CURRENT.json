@@ -1,0 +1,66 @@
+{
+  "status": "HISTORICAL_PIPELINE_COMPARISON",
+  "validation5000_object_metrics": {
+    "QFormer_original": {
+      "CHAIRs": 0.0428,
+      "CHAIRi": 0.029793103448275862,
+      "Recall": 0.42911853340030137,
+      "counts": {
+        "hallucinated_captions": 214,
+        "hallucinated_mentions": 216,
+        "object_mentions": 7250,
+        "correct_unique_objects": 6835,
+        "reference_unique_objects": 15928
+      }
+    },
+    "QFormer_object": {
+      "CHAIRs": 0.0388,
+      "CHAIRi": 0.026779614701461948,
+      "Recall": 0.43527122049221495,
+      "counts": {
+        "hallucinated_captions": 194,
+        "hallucinated_mentions": 196,
+        "object_mentions": 7319,
+        "correct_unique_objects": 6933,
+        "reference_unique_objects": 15928
+      }
+    },
+    "CSA_object2500": {
+      "CHAIRs": 0.0502,
+      "CHAIRi": 0.03707962058062662,
+      "Recall": 0.3981039678553491,
+      "counts": {
+        "images": 5000,
+        "hallucinated_captions": 251,
+        "hallucinated_mentions": 258,
+        "object_mentions": 6958,
+        "recalled_unique": 6341,
+        "reference_unique": 15928
+      }
+    }
+  },
+  "caption_metrics_context": {
+    "QFormer_object_VALID4000": {
+      "Bleu_1": 0.7731813592645526,
+      "Bleu_2": 0.6148683705168951,
+      "Bleu_3": 0.48007778507933935,
+      "Bleu_4": 0.37413353290820833,
+      "METEOR": 0.2849447796825212,
+      "ROUGE_L": 0.5733093933465013,
+      "CIDEr": 1.1957046135264822
+    },
+    "CSA_object_VALID5000": {
+      "CIDEr": 1.032307383400166,
+      "Bleu_4": 0.3413295873230051,
+      "ROUGE_L": 0.5403215648351112,
+      "NLL": 2.3749630196794276
+    }
+  },
+  "sources": [
+    "audit/scst_full_train_w05_result.json",
+    "experiments/csa_paper/SCST_2500_RESULT.json"
+  ],
+  "matched_CIDEr_comparison_available": false,
+  "local_model_or_metric_scorer_run": false,
+  "limitation": "Object metrics recombined from audited disjoint1000/4000 VALID count totals, not averaging rates. Existing KarpathyVALID provenance; original QFormer per-image ID/caption payload not reopened here. Different training exposure, inputs/vocab/decoding and tune-based checkpoint selection versus fixedCSAendpoint; delivered-pipeline context, not architecture ablation. CIDEr cohorts/IDF differ; no arithmetic gap claimed. RawNLL incomparable across vocabularies."
+}
