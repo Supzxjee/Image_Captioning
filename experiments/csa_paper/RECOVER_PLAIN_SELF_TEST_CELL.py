@@ -1,0 +1,123 @@
+# Add3rawDatasets first, then execute thiscell in thecurrentfailedAPI session.
+# Uses a NEW outputfolder and finds the alreadydownloadedbaselinecheckpoint under /kaggle/working.
+
+import hashlib,json,os,queue,signal,subprocess,sys,tempfile,threading,time,traceback,urllib.request,zipfile
+from pathlib import Path
+COCO_JSON=Path('/kaggle/input/datasets/vuthetam/mscoco-2014/dataset_coco.json')
+VISUAL_CACHE=Path('/kaggle/input/datasets/ducanh2403/visual-cache')
+DETECTIONS=Path('/kaggle/input/datasets/ducanh2403/objectdetectionecache/objectdetectioncache.json')
+IMAGE_ROOT=COCO_JSON.parent/'images'
+SECRET_PLAIN='KAGGLE_API_TOKEN' # Only needed if own checkpoint45 is not already under /kaggle/working.
+PLAIN_VERSION='ducanh3/notebook7bc83c4c76/45'
+OUTPUT=Path('/kaggle/working/plain_epoch10_karpathy_test_self')
+COMMIT='62690383e95fc2ddf3867a6a14b6a035b8d38b96'
+HASHES={'run_sharing_benchmark.py': '51706ae5cbd96fb0484cb0487a05f14f1b34f4332bd9cb57a299d7d3d5a14d18', 'sharing_data.py': '68a065f5c055a55b41eae0ea554fbb7f8fd1124e8f5422679fcb1d4878f14829', 'full_cache_data.py': '58cf4d08310fe03e01441af2ddeb12fd3404f59e82259194a32fe98c8b002bc1', 'model.py': '139edbb1b73caf3dadaf5c960b25542e282f88baf2ce9bdf141de922ceacbc09', 'real_bank_data.py': '2c791f8dd856198ec1954a2edd1f9e46520d422f20eff07220e462fc2c9bd9a0', 'pilot_data.py': '0edab33c7ad7cc54c28efdf6007f23fa6dc4547bdda32e5c0d7d888a3369394d', 'package_full_roi_dataset.py': 'be3e7d0f96add450a5295add6466e19977da90f486e5e726e3ea40a505cceecb', 'SAVE_FULL_ROI_V134_PACKAGE.json': 'a73636ca75806d6b1d7b4d88f80f3ce1c59b3061eb3e9a5e730097ddd89c505c', 'SAVE_BANK_V130_PACKAGE.json': '826ba36628d6587860e2d548e950ea953bd4bbb8c0a8dc64393089dbc1e058e1', 'REAL_BANK_INPUT_PACKAGE.json': 'c60902e04ea15cf90f652e384937bb317e288753f13b8ede6ab5ef89f8d97129', 'lemma_correction_review_text/bank_words_corrected.json': 'cec76a0229f30361235a4b64e9712ac6bb2e79fc62a9241079a7af3fa95d13ac', 'DDP_SHARING_BENCHMARK_PROTOCOL.md': '6537e5e44fb8eb1504c4234b87d4e4e87929cf80fed3884f3caa1ef09468b2f1', 'run_full_xe.py': 'e3a56c95963d64d1f00e4b21aa18eddd0f2a834d58556136996c7a2323e56101', 'full_xe_data.py': 'a7a5a3b4d70c9d3a357aa464dfe397a6cba8d851e33065299fb98721ddca7135', 'full_xe_decode.py': 'b8e618559feec6361cfb3b4619899e4968ab71ab67e113ff38b6d3cd99cdc235', 'test_full_xe.py': 'aee46db054fd18bcf9306d8d8240414d67ca39dccb74d7ab0337e5d9ef7cb1fa', 'FULL_XE_10_PROTOCOL.md': 'b52d4081cf0657c7c7fba8a00def7efbff928b4979180e08b4e552cc3983a70c', 'plain_model.py': 'dcb90639bd7943bea9baffca5edced2846b9e3f68d2f999491870059b7faf2de', 'run_plain_smoke.py': 'e8c2125223815787a6970d1a8636e46da0ffe5d1c4c3a5ee81fe8dcfea2fa61b', 'prepare_test_regions.py': '3c61ed502f3091293c537a32ec2c0f82c72f4bf97cc86cfabe4b035c365692b7', 'run_csa10_test.py': '51cac6edc11f7dcacc2b1dd251cd00fbf23a95510f0de1ef343a19a97ace468a', 'test_comparison_setup.py': '57402ad74206efe792d9b3fdf0f01916948bb25ba7f3773ae68ed33f3f14a4be', 'make_comparison_notebooks.py': '9c49a556c01538607aef76d293a81cfed94aa27aab28c57fed0b71871d164f4d', 'PLAIN_VS_CSA10_PROTOCOL.md': '11eb4fbac432fb2988aa90c68bf9c6c56dd96b388c18a1c2e1e9ce8cb8449d4e', 'prepare_real_assets.py': '44a22d92acd239bdc7a1edbe30984daf0853ac8bc196969dd48b19b78df1cc7b', 'audit_assets.py': '5be2fdf1ee094ef8b23a547b16f423ed3603f7c80b2fe5f2d46cb9224cb90959', 'data.py': '5a5bb451dc20184d3ea597d4dc8415a120583571f4e1a4dac75e29a306213a71', 'run_best9_decode.py': 'fdc6b027ac13d510be72aa25a963eb89e5467e09f179bfaf0756469aef77a648', 'saved_quality_data.py': 'f8a092506e3adf96292203190ea2f83de397d3028a3ddc6293d58fd360199a1e', 'best9_saved_text.json.gz': '42594e90ec2f47646e7e68347a17471213038bc182814ca9d29ea374e8010861', 'BEST9_SAVED_TEXT_PACKAGE.json': '898d67c3eead66c89f5d2c091b24e5e3eb44d884e86550b2b26f45d6708032e5', 'SAVE_XE139_PACKAGE.json': '452ee35118a3d0285bc7f522bb8c8fc7a0e3e0dac70cac9c2333e7583cd4e423', 'full_roi_review_text/input_receipt.json': '18e9481863418c7f2f4c538fa98f3a05377e5b81422cb249d33f81ddefd78f7f', 'plain_test_data.py': '5416d24ff2df7a34b52e76ab4cd93bbab90f6a0fdc564842c415217ec63514ab', 'compare_plain_test.py': '6c8f4f060fb9fc0db39b52e2a30e4ba12c6b72761f74bc6b774bee93b52aee2b', 'test_plain_test_data.py': '54778f85b7b74a444aadee6ddf3fddd89cd33c71c07245ba2035d47ff0ce91c8', 'make_plain_test_notebook.py': '5c99000503c7b6c1ab45ac2737475c4ff4b7f5a9de40c77409b34c6aea91359a', 'PLAIN10_TEST_PROTOCOL.md': '953e1c5ea9089c96df03b5859e58450d58d5da76e295420b8e45a4a3d5f68dd0', 'plain10_review_text/input_identity.json': '47d48206554155eddefad10949dcea78965f39ca9cc37cba9872afa0cd7516c5', 'plain10_review_text/checkpoint_receipt.json': '870d83fc3a991e85c57a50b66f0360292ca40461bf4fb8c5d31c5f9ca5aa9ffa', 'csa10_test_review_text/test_receipt.json': '6d03e618447c3170130ca8ca8fd001ea5b96028eed3266d8d04249f078fa498c', 'csa10_test_review_text/result.json': '0d1a992dc4c16f74bad63f89ede487b5529610db86561b092968e65897de4d7a', 'csa10_test_saved_text.json.gz': '20f64c0ece8694357a248471498557f4ea6b5933e3986bbd5c99b7be361f943a', 'CSA10_TEST_TEXT_PACKAGE.json': 'c502cdbfd7a729757d9ff470709bf00fbee5de07b7fdbb0f3192468ebe7ec83d', 'make_plain_self_test_notebook.py': '02dea3b49203749364e1c8500d2405bb8b2f364df80af301ea6824202b1a4875', 'PLAIN_SELF_TEST_PROTOCOL.md': '4b02f9a4870130b1105532db8bd1e8ea4c4bc752eb0637d396aebecd7ba96682'}
+if OUTPUT.exists():raise RuntimeError('Preserve existing output; use a fresh session/path.')
+if not COCO_JSON.is_file() or not DETECTIONS.is_file() or not VISUAL_CACHE.is_dir():raise FileNotFoundError('Add mscoco-2014, visual-cache and objectdetectionecache Datasets first.')
+OUTPUT.mkdir(parents=True);SOURCE=Path(tempfile.mkdtemp(prefix='plain-self-test-'));LOG=OUTPUT/'notebook.log';TOKENS={}
+def redact(line):
+    for token in TOKENS.values():line=line.replace(token,'[REDACTED]')
+    return line
+for n,h in HASHES.items():
+    raw=urllib.request.urlopen(f'https://raw.githubusercontent.com/Supzxjee/Image_Captioning/{COMMIT}/experiments/csa_paper/{n}',timeout=90).read()
+    if hashlib.sha256(raw).hexdigest()!=h:raise ValueError('Changed source:'+n)
+    p=SOURCE/n;p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(raw)
+(OUTPUT/'source_receipt.json').write_text(json.dumps(dict(commit=COMMIT,sha256=HASHES),indent=2),encoding='utf-8')
+
+
+def run(args, timeout=1800, environment=None):
+    print('Running:', ' '.join(map(str, args)), flush=True)
+    process = subprocess.Popen(list(map(str, args)), cwd=SOURCE, env=environment, stdout=subprocess.PIPE,
+        stderr=subprocess.STDOUT, text=True, errors='replace', bufsize=1, start_new_session=True)
+    messages = queue.Queue()
+    def reader():
+        try:
+            for line in process.stdout: messages.put(line)
+        finally: messages.put(None)
+    thread = threading.Thread(target=reader, daemon=True); thread.start()
+    started = heartbeat = time.monotonic(); ended = False
+    with LOG.open('a', encoding='utf-8') as log:
+        try:
+            while not ended or process.poll() is None or not messages.empty():
+                try:
+                    line = messages.get(timeout=1)
+                    if line is None: ended = True
+                    else: line=redact(line); print(line, end='', flush=True); log.write(line); log.flush()
+                except queue.Empty: pass
+                now = time.monotonic()
+                if now-heartbeat >= 30:
+                    print('Plain selfTEST active;', round(now-started), 'seconds', flush=True); heartbeat=now
+                if now-started > timeout: raise TimeoutError('Phase cap exceeded')
+            if process.wait(): raise subprocess.CalledProcessError(process.returncode, args)
+        finally:
+            if process.poll() is None:
+                os.killpg(process.pid, signal.SIGTERM)
+                try: process.wait(timeout=10)
+                except subprocess.TimeoutExpired: os.killpg(process.pid, signal.SIGKILL); process.wait()
+            thread.join(timeout=5)
+
+from kaggle_secrets import UserSecretsClient
+def run_cli(args,secret):
+    if secret not in TOKENS:
+        try:
+            token=UserSecretsClient().get_secret(secret).strip()
+            if not token:raise ValueError('Empty')
+        except Exception:raise RuntimeError('Enable the configured API Secret in Add-ons > Secrets; do not paste token in code/chat.') from None
+        TOKENS[secret]=token
+    env=os.environ.copy()
+    for key in ('KAGGLE_API_TOKEN','KAGGLE_USERNAME','KAGGLE_KEY'):env.pop(key,None)
+    env['KAGGLE_API_TOKEN']=TOKENS[secret];env['PYTHONUNBUFFERED']='1'
+    run(args,timeout=900,environment=env)
+
+OWN_ROUTING_PREFLIGHT="\nimport tempfile\nfrom types import SimpleNamespace\nfrom unittest.mock import patch\nfrom kaggle.api.kaggle_api_extended import KaggleApi\napi=KaggleApi()\nwith tempfile.TemporaryDirectory() as directory,patch.object(api,'build_kaggle_client') as factory:\n    endpoint=factory.return_value.__enter__.return_value.kernels.kernels_api_client.list_kernel_session_output\n    endpoint.return_value=SimpleNamespace(files=[],next_page_token=None,log=None)\n    api.kernels_output('ducanh3/notebook7bc83c4c76/45',path=directory)\n    request=endpoint.call_args.args[0]\n    assert request.version_label=='v45' and request.user_name=='ducanh3' and request.kernel_slug=='notebook7bc83c4c76'\nprint('Own45 API routing mock PASS; no foreign notebook API.',flush=True)\n"
+
+complete=False;deadline=time.monotonic()+7200
+try:
+    sys.path.insert(0,str(SOURCE))
+    from plain_test_data import exact_file,PLAIN_SHA,check_test_equivalence
+    run([sys.executable,'-u',SOURCE/'test_comparison_setup.py'],timeout=120)
+    run([sys.executable,'-u',SOURCE/'test_plain_test_data.py'],timeout=120)
+    try:checkpoint=exact_file('/kaggle/working','checkpoint.bin',PLAIN_SHA)
+    except ValueError:checkpoint=None
+    if checkpoint is None:
+        if PLAIN_VERSION!='ducanh3/notebook7bc83c4c76/45':raise ValueError('Own checkpoint must be exact45')
+        run([sys.executable,'-m','pip','install','--quiet','--upgrade','--force-reinstall','https://github.com/Kaggle/kaggle-cli/archive/6894864ff4095cf98e9e36d3a694ff5fc9ba3818.zip'],timeout=300)
+        run([sys.executable,'-u','-c',OWN_ROUTING_PREFLIGHT],timeout=120)
+        own=OUTPUT/'inputs_plain45';own.mkdir()
+        run_cli([sys.executable,'-m','kaggle','kernels','output',PLAIN_VERSION,'-p',str(own),'--file-pattern',r'(^|/)checkpoint[.]bin$'],SECRET_PLAIN)
+        checkpoint=exact_file(own,'checkpoint.bin',PLAIN_SHA)
+    print('Using exact own baseline checkpoint:',checkpoint,flush=True)
+    (OUTPUT/'test_lock.json').write_text(json.dumps(dict(epoch=10,updates=177110,checkpoint_sha256=PLAIN_SHA,checkpoint=str(checkpoint),beam=5,max_new_tokens=20,selection='exact10 prelocked',foreign_cache_api=False)),encoding='utf-8')
+    run([sys.executable,'-m','pip','install','-q','pycocoevalcap==1.2','nltk==3.9.2','future'],timeout=300)
+    run([sys.executable,'-m','pip','install','-q','--no-deps','git+https://github.com/clips/pattern.git@af754685cca3713db0abc4f020f2e94467c19d85'],timeout=300)
+    run([sys.executable,'-c',"import nltk;from pattern.en import singularize;assert singularize('umbrellas')=='umbrella';assert nltk.download('punkt');assert nltk.download('punkt_tab')"],timeout=300)
+    run(['java','-version'],timeout=30)
+    CHAIR=SOURCE/'chair'
+    run(['git','init',CHAIR],timeout=60)
+    run(['git','-C',CHAIR,'remote','add','origin','https://github.com/Maxlinn/CHAIR-metric-standalone.git'],timeout=60)
+    run(['git','-C',CHAIR,'fetch','--depth','1','origin','4087a26211aa2339b9a76307cb8f0321ef691d0a'],timeout=300)
+    run(['git','-C',CHAIR,'checkout','--detach','FETCH_HEAD'],timeout=60)
+    if hashlib.sha256((CHAIR/'chair.pkl').read_bytes()).hexdigest()!='73ce11225febb97df38c5bfad60b3ff6cc25852e9df9a1330673155b4be851c3':raise ValueError('Changed CHAIR cache')
+
+
+    CONFIG=SOURCE/'test_config.json'
+    CONFIG.write_text(json.dumps(dict(dataset_json=str(COCO_JSON),detections=str(DETECTIONS),visual_cache=str(VISUAL_CACHE),image_root=str(IMAGE_ROOT),output=str(OUTPUT))),encoding='utf-8')
+    run([sys.executable,'-u',SOURCE/'prepare_test_regions.py','--config',CONFIG],timeout=min(3720,deadline-time.monotonic()))
+    check_test_equivalence(json.loads((OUTPUT/'test_receipt.json').read_text(encoding='utf-8')))
+    print('Own TEST cache matches CSA TEST NPZ/metadata/vocab bytes and profile exactly.',flush=True)
+    launch=[sys.executable,'-u','-m','torch.distributed.run','--standalone','--nnodes=1','--nproc_per_node=2','--max_restarts=0']
+    run([*launch,SOURCE/'run_csa10_test.py','worker','--arm','plain','--output',OUTPUT,'--checkpoint-root',checkpoint.parent],timeout=min(2460,deadline-time.monotonic()))
+    run([sys.executable,'-u',SOURCE/'run_csa10_test.py','score','--arm','plain','--output',OUTPUT,'--chair',CHAIR],timeout=min(1200,deadline-time.monotonic()))
+    run([sys.executable,'-u',SOURCE/'compare_plain_test.py','--output',OUTPUT],timeout=min(600,deadline-time.monotonic()))
+    complete=json.loads((OUTPUT/'comparison.json').read_text(encoding='utf-8'))['status']=='PLAIN10_VS_CSA10_TEST_COMPLETE'
+except BaseException:
+    (OUTPUT/'failure.txt').write_text(redact(traceback.format_exc()),encoding='utf-8');raise
+finally:
+    (OUTPUT/'run_status.json').write_text(json.dumps(dict(complete=complete,training=False,test_used=True,foreign_cache_api=False)),encoding='utf-8')
+    archive=Path(str(OUTPUT)+'_review.zip')
+    with zipfile.ZipFile(archive,'w',zipfile.ZIP_DEFLATED) as z:
+        for p in sorted(OUTPUT.rglob('*')):
+            if p.is_file() and p.suffix in ('.json','.txt','.log'):z.write(p,str(p.relative_to(OUTPUT)))
+    print('SEND REVIEW:',archive,flush=True)
+    print('KEEP ENTIRE OUTPUT:',OUTPUT,flush=True)
+    print('COMPLETE' if complete else 'INCOMPLETE; preserve logs/progress, no automatic retraining.',flush=True)
