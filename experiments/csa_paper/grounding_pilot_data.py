@@ -39,27 +39,31 @@ def round_robin_schedule(events_by_image,updates=2000):
     return np.asarray(result[:updates*32],np.int64).reshape(updates,32)
 
 
-def locate_audit(root):
-    expected=sha(HERE/'grounding_audit_v2_review_text/summary.json')
+def locate_audit(root,study_images=10000):
+    if study_images not in (10000,30000):raise ValueError('Only locked10k/30k studies supported')
+    summary_folder='grounding_audit_v2_review_text' if study_images==10000 else 'grounding_audit_30k_review_text'
+    expected=sha(HERE/summary_folder/'summary.json')
     matches=[p.parent for p in Path(root).rglob('summary.json') if sha(p)==expected]
-    if len(matches)!=1:raise ValueError('Attach saved audit V2 output150: expected unique exact summary.json')
+    if len(matches)!=1:raise ValueError('Attach the complete matching audit Dataset: expected unique exact summary.json for '+str(study_images))
     return matches[0]
 
 
 def prepare(cfg):
-    out=Path(cfg['output']);stage=Path(cfg['stage']);audit=locate_audit(cfg['audit_root'])
-    for name in ('mentions.jsonl','train10k_instances.json','cohort.json','lexicon.json','source_receipt.json'):
+    study_images=cfg.get('study_images',10000)
+    out=Path(cfg['output']);stage=Path(cfg['stage']);audit=locate_audit(cfg['audit_root'],study_images)
+    instances_name='train10k_instances.json' if study_images==10000 else 'train_instances.json'
+    for name in ('mentions.jsonl',instances_name,'cohort.json','lexicon.json','source_receipt.json'):
         if not (audit/name).is_file():raise FileNotFoundError('Need entire audit folder, not small review ZIP: '+name)
     summary=read(audit/'summary.json');cohort=read(audit/'cohort.json')
     if sha(audit/'cohort.json')!=summary['cohort_sha256'] or sha(audit/'lexicon.json')!=summary['lexicon_sha256']:raise ValueError('Audit identity differs')
-    if len(cohort)!=10000 or {r['split'] for r in cohort}-{'train','restval'}:raise ValueError('Wrong TRAIN population')
+    if len(cohort)!=study_images or len({r['coco_id'] for r in cohort})!=study_images or {r['split'] for r in cohort}-{'train','restval'}:raise ValueError('Wrong TRAIN population')
     ck=exact_checkpoint(cfg['checkpoint_root']) # check missing input before expensive stage
     data,vocab,stage_receipt=stage_full(cfg['full_root'],stage)
     index={int(i):j for j,i in enumerate(data['ids'])};images=[index[r['coco_id']] for r in cohort]
     if any(data['group'][i]!=0 for i in images):raise ValueError('TRAIN/VALID overlap')
     event_map={i:list(range(*np.searchsorted(data['caption_image'],[i,i+1]).tolist())) for i in images}
     image_events=[event_map[i] for i in images];wanted={r['coco_id'] for r in cohort}
-    if sum(map(len,image_events))!=50022:raise ValueError('Audit caption event coverage differs')
+    if sum(map(len,image_events))!=summary['counts']['captions']:raise ValueError('Audit caption event coverage differs')
     labels=defaultdict(list);seen=set();counts=Counter();lookup=read(audit/'lexicon.json')
     with (audit/'mentions.jsonl').open(encoding='utf-8') as f:
         for line in f:
@@ -75,17 +79,23 @@ def prepare(cfg):
             n=int(data['offsets'][image+1]-data['offsets'][image])
             if not regions or len(set(regions))!=len(regions) or any(type(j)!=int or not 0<=j<n for j in regions):raise ValueError('Bad positive region indices')
             labels[str(event)].append([position,regions])
-    if len(seen)!=58575 or counts['eligible']!=52956 or any(counts[k]!=summary['counts'].get(k,0) for k in counts):raise ValueError('Incomplete label file')
+    if len(seen)!=summary['mapped_mentions'] or counts['eligible']!=summary['counts']['eligible'] or any(counts[k]!=summary['counts'].get(k,0) for k in counts):raise ValueError('Incomplete label file')
     for event,rows in labels.items():
         if len({r[0] for r in rows})!=len(rows):raise ValueError('Duplicate target mention')
-    batches=schedule(image_events);np.save(stage/'batches.npy',batches)
+    batches=round_robin_schedule(image_events) if study_images==30000 else schedule(image_events)
+    exposure=Counter(data['caption_image'][batches.ravel()].tolist())
+    if study_images==30000 and (len(exposure)!=30000 or Counter(exposure.values())!={2:26000,3:4000}):raise ValueError('30k round-robin exposure differs')
+    np.save(stage/'batches.npy',batches)
     save(stage/'grounding_labels.json',dict(labels));save(out/'vocabulary.json',vocab)
     from full_xe_data import validation_references
     refs=validation_references(cfg['full_root']);save(out/'validation_references.json',refs)
     receipt=dict(status='GROUNDING_PILOT_STAGE_COMPLETE',checkpoint=str(ck),checkpoint_sha256=CHECKPOINT_SHA,
         labels_sha256=sha(stage/'grounding_labels.json'),batches_sha256=sha(stage/'batches.npy'),source_stage=stage_receipt['files_sha256'],
-        audit_payload_sha256={n:sha(audit/n) for n in ('summary.json','cohort.json','lexicon.json','mentions.jsonl','train10k_instances.json')},
-        caption_events=50022,eligible_mentions=52956,updates=2000,events_seen=64000,reviewed_by_human=False)
+        audit_payload_sha256={n:sha(audit/n) for n in ('summary.json','cohort.json','lexicon.json','mentions.jsonl',instances_name)},
+        caption_events=summary['counts']['captions'],eligible_mentions=counts['eligible'],updates=2000,events_seen=64000,reviewed_by_human=False)
+    if study_images==30000:
+        receipt.update(train_images=30000,sampler='round_robin_one_caption_per_image_seed42',
+            unique_images_exposed=len(exposure),image_exposure_histogram={str(k):v for k,v in sorted(Counter(exposure.values()).items())})
     save(out/'pilot_stage.json',receipt)
     print('Grounding pilot staged:64,000 matched events/2,000 updates; weak labels unreviewed.',flush=True)
 

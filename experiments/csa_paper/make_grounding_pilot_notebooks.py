@@ -31,14 +31,16 @@ for name,expected in HASHES.items():
 '''
 
 
-def save_notebook(commit):
-    names=['package_grounding150.py','real_bank_data.py','grounding_audit_v2_review_text/summary.json']
+def save_notebook(commit,study_images=10000):
+    version=150 if study_images==10000 else 155
+    folder='grounding_audit_v2_review_text' if study_images==10000 else 'grounding_audit_30k_review_text'
+    names=['package_grounding150.py','real_bank_data.py',folder+'/summary.json']
     hashes=pins(commit,names)
     old=json.loads((HERE/'SAVE_CSA_XE10_V139_DATASET.ipynb').read_text(encoding='utf-8'))
-    setup=next(c['source'] for c in old['cells'] if c['cell_type']=='code' and 'def run_cli(' in c['source']).replace('139','150')
+    setup=next(c['source'] for c in old['cells'] if c['cell_type']=='code' and 'def run_cli(' in c['source']).replace('139',str(version))
     upload=next(c['source'] for c in old['cells'] if c['cell_type']=='code' and 'CREATE_DATASET_SCRIPT=' in c['source'])
     upload=upload.replace('Private checkpoints from exact notebook139: CSA XE10 latest and validation-best epoch9, original binary bytes, receipts and complete small review ZIP. Retains upstream model/data terms. No model/training rerun.',
-        'Private weak category-word/region labels from exact CSA audit output150. TRAIN10k only; original labels and provenance preserved. No model/checkpoint/features. Retains COCO upstream terms. Human label review pending.')
+        f'Private weak category-word/region labels from exact CSA audit output{version}. TRAIN{study_images//1000}k only; original labels and provenance preserved. No model/checkpoint/features. Retains COCO upstream terms. Human label review pending.')
     config='''
 import hashlib,json,os,re,subprocess,sys,tempfile,urllib.request
 from pathlib import Path
@@ -50,26 +52,28 @@ SECRET_NAME='KAGGLE_API_TOKEN' # Change to codex if that is the secret's name.
 DESTINATION=Path('/kaggle/working/csa_grounding_audit10k_v150_dataset')
 SOURCE=Path(tempfile.mkdtemp(prefix='save-grounding150-'))
 '''
-    execute='''
+    if study_images==30000:config=config.replace('150','155').replace('10k','30k')
+    execute=f'''
 sys.path.insert(0,str(SOURCE))
-from package_grounding150 import package,NAMES
-DOWNLOAD=Path(tempfile.mkdtemp(prefix='audit150-download-'))
+from package_grounding150 import package,names_for
+NAMES=names_for({study_images})
+DOWNLOAD=Path(tempfile.mkdtemp(prefix='audit{version}-download-'))
 pattern=r'(^|/)(?:'+'|'.join(re.escape(n) for n in NAMES)+r')$'
 run_cli([sys.executable,'-m','kaggle','kernels','output',KERNEL_VERSION,'-p',str(DOWNLOAD),'--file-pattern',pattern])
-package(DOWNLOAD,DESTINATION)
+package(DOWNLOAD,DESTINATION,study_images={study_images},source_version={version})
 '''
     nb=dict(nbformat=4,nbformat_minor=5,metadata=dict(kernelspec=dict(display_name='Python 3',language='python',name='python3')),
-        cells=[cell('markdown','''# Save complete grounding labels — exact Output150
+        cells=[cell('markdown',f'''# Save complete grounding labels — exact Output{version}
         Accelerator **None**, Internet ON. No Add Input. Enable secret `KAGGLE_API_TOKEN`
-        belonging to the account that can read private source150; if named `codex`, change SECRET_NAME.
+        belonging to the account that can read private source{version}; if named `codex`, change SECRET_NAME.
         Downloads full TRAIN label output, verifies reviewed summary/cohort/lexicon and copies
-        unchanged into a NEW private Dataset. No training. Keep source150 until Dataset is ready.
+        unchanged into a NEW private Dataset. No training. Keep source{version} until Dataset is ready.
         If creation/status fails, preserve payload; do not repeatedly create/overwrite.
         '''),cell('code',config),cell('code',source_setup(commit,hashes)),cell('code',setup),cell('code',execute),cell('code',upload),
-        cell('markdown','''Expected mount: `/kaggle/input/datasets/ducanh2403/csa-grounding-audit10k-v150`.
+        cell('markdown',f'''Expected mount: `/kaggle/input/datasets/ducanh2403/csa-grounding-audit{study_images//1000}k-v{version}`.
         Share this private Dataset and the CSA checkpoint/ROI inputs with the second account
         before running its GPU arm. Send actual mount if different.''')])
-    write('SAVE_CSA_GROUNDING_AUDIT_V150_DATASET.ipynb',nb)
+    write(f'SAVE_CSA_GROUNDING_AUDIT_V{version}_DATASET.ipynb',nb)
 
 
 def write(name,nb):
@@ -78,8 +82,13 @@ def write(name,nb):
     print(name,target.stat().st_size,'bytes; unexecuted')
 
 
-def make(revision,pilot_only=False):
-    commit=subprocess.check_output(['git','rev-parse',revision],cwd=ROOT,text=True).strip();hashes=pins(commit,FILES)
+def make(revision,pilot_only=False,study_images=10000):
+    if study_images not in (10000,30000):raise ValueError('Only approved10k/30k studies')
+    files=FILES+(['grounding_audit_30k_review_text/summary.json','GROUNDING_30K_PROTOCOL.md','grounding_labels.py','test_grounding_30k_data.py','test_grounding_30k_pipeline.py'] if study_images==30000 else [])
+    commit=subprocess.check_output(['git','rev-parse',revision],cwd=ROOT,text=True).strip();hashes=pins(commit,files)
+    version=150 if study_images==10000 else 155
+    output_prefix='csa_grounding_pilot_' if study_images==10000 else 'csa_grounding_30k_'
+    output_suffix='_v3' if study_images==10000 else '_v1'
     for arm,budget in [('XE',20),('GROUND',23)]:
         setup=f'''
 import hashlib,json,os,queue,signal,subprocess,sys,tempfile,threading,time,traceback,urllib.request,zipfile,shutil
@@ -88,10 +97,10 @@ ARM={arm!r}
 AVAILABLE_GPU_HOURS={budget} # Last user report; cap below is not a billing estimate.
 WALL_HOURS=4
 FULL_ROOT=Path('/kaggle/input/datasets/ducanh2403/csa-full-roi-karpathy-v134')
-AUDIT_ROOT=Path('/kaggle/input/datasets/ducanh2403/csa-grounding-audit10k-v150')
+AUDIT_ROOT=Path('/kaggle/input/datasets/ducanh2403/csa-grounding-audit{study_images//1000}k-v{version}')
 CHECKPOINT_ROOT=Path('/kaggle/input/datasets/ducanh2403/csa-full-xe10-v139')
 RESUME_ROOT='' # Exact prior SAME-ARM output folder containing checkpoint.bin + receipt; otherwise fresh continuation.
-OUTPUT=Path('/kaggle/working/csa_grounding_pilot_'+ARM+'_v3')
+OUTPUT=Path('/kaggle/working/'+{output_prefix!r}+ARM+{output_suffix!r})
 for p in (FULL_ROOT,AUDIT_ROOT,CHECKPOINT_ROOT):
     if not p.is_dir():raise FileNotFoundError('Attach all three input Datasets before GPU: '+str(p))
 GPU_ENV=json.loads(subprocess.check_output([sys.executable,'-c',{GPU_PROBE!r}],text=True,timeout=60))
@@ -113,6 +122,7 @@ cfg=dict(arm=ARM,full_root=str(FULL_ROOT),audit_root=str(AUDIT_ROOT),checkpoint_
 CONFIG.write_text(json.dumps(cfg),encoding='utf-8')
 print('Prepared',ARM,'source',COMMIT,'fixed2000updates; VALID only.',flush=True)
 '''
+        if study_images==30000:setup=setup.replace('worker_seconds=9000)','worker_seconds=9000,study_images=30000)')
         execute='''
 complete=False;parent_deadline=time.monotonic()+WALL_HOURS*3600
 try:
@@ -150,6 +160,8 @@ finally:
     print('KEEP CHECKPOINT:',OUTPUT/'checkpoint.bin' if (OUTPUT/'checkpoint.bin').is_file() else 'No checkpoint yet',flush=True)
     print('COMPLETE endpoint2000 + VALID5000' if complete else 'INCOMPLETE: preserve output/logs; no automatic restart.',flush=True)
 '''
+        if study_images==30000:
+            execute=execute.replace("run([sys.executable,'-u',SOURCE/'test_grounding_pilot_data.py'],timeout=120)","run([sys.executable,'-u',SOURCE/'test_grounding_pilot_data.py'],timeout=120)\n    run([sys.executable,'-u',SOURCE/'test_grounding_30k_data.py'],timeout=120)\n    run([sys.executable,'-u',SOURCE/'test_grounding_30k_pipeline.py'],timeout=120)")
         nb=dict(nbformat=4,nbformat_minor=5,metadata=dict(kernelspec=dict(display_name='Python 3',language='python',name='python3'),kaggle=dict(isInternetEnabled=True,isGpuEnabled=True)),
             cells=[cell('markdown',f'''# CSA10 continuation — {arm}, two GPUs
             **T4 ×2**, Internet ON, Save Version → Save & Run All. One notebook per account;
@@ -179,11 +191,31 @@ finally:
             from CSA10, not fresh random weights. Both CPU cache staging and user-run neural/DDP
             preflights must pass; assistant has not run models locally.
             '''),cell('code',setup),cell('code',RUNNER.replace('Smoke active;','Grounding pilot active;')),cell('code',execute)])
-        write(f'CSA_GROUNDING_{arm}_2000_2GPU.ipynb',nb)
-    if not pilot_only:save_notebook(commit)
-    (HERE/'GROUNDING_PILOT_PACKAGE.json').write_text(json.dumps(dict(core_commit=commit,sha256=hashes,user_run_pending=True,source_audit_version=150),indent=2)+'\n',encoding='utf-8')
+        if study_images==30000:
+            nb['cells'][0]=cell('markdown',f'''# CSA — TRAIN30k {arm}, matched continuation
+            **GPU T4×2**, Internet ON, Save Version → Save & Run All.
+            Add3Datasets: `csa-full-roi-karpathy-v134`, `csa-full-xe10-v139`,
+            `csa-grounding-audit30k-v155`. No API token/rawimages/bank130 required.
+            Source checkpoint is ORIGINAL epoch10 `checkpoint.bin`, not previous pilot/best9/epoch15.
+
+            {'XE only' if arm=='XE' else 'XE +0.1 grounding'}; freshAdam1e-5/global32/FP32/clip1;
+            fixed2,000updates/64,000events. Round-robin: one caption perimage perpass,
+            all30kimages used twice+4kthird. This is not a full150,076-reference epoch.
+            Same schedule/input/init/attention path for both arms. Compare endpoint on
+            VALID5000 beam5/max20, CIDEr/CHAIR/recall/NLL. No TEST or checkpoint selection.
+
+            Old10k differed in sampler+pool; cross-study changes do not isolate image-count effect.
+            Weak labels remain automatic/unreviewed. Parent4h cap is notETA/billing guarantee.
+            Early CUDA guard checks usable2GPUs before staging; don't run this notebook with None.
+            Keep wholeoutput, atomiccheckpoint every500updates; same-arm/same-study resume only.
+            ''')
+        tag='' if study_images==10000 else '30K_'
+        write(f'CSA_GROUNDING_{tag}{arm}_2000_2GPU.ipynb',nb)
+    if not pilot_only:save_notebook(commit,study_images=study_images)
+    package_name='GROUNDING_PILOT_PACKAGE.json' if study_images==10000 else 'GROUNDING_PILOT_30K_PACKAGE.json'
+    (HERE/package_name).write_text(json.dumps(dict(core_commit=commit,sha256=hashes,user_run_pending=True,source_audit_version=version,study_images=study_images),indent=2)+'\n',encoding='utf-8')
 
 
 if __name__=='__main__':
-    p=argparse.ArgumentParser();p.add_argument('revision');p.add_argument('--pilot-only',action='store_true')
-    a=p.parse_args();make(a.revision,pilot_only=a.pilot_only)
+    p=argparse.ArgumentParser();p.add_argument('revision');p.add_argument('--pilot-only',action='store_true');p.add_argument('--images',type=int,choices=(10000,30000),default=10000)
+    a=p.parse_args();make(a.revision,pilot_only=a.pilot_only,study_images=a.images)

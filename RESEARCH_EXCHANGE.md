@@ -1218,3 +1218,8 @@ User approved expand30k withsame2000updates, then explicitly chose option1 after
 ### X079 — Codex1 — 04/11/2026 — TRAIN30k labels complete
 
 Result experiments/csa_paper/GROUNDING_AUDIT_30K_RESULT.md/JSON. ZIPf84920a0… source24ccd81,245metadata/source/count checksPASS,6pins/228ROIhashidentities.30kTRAIN/150076refs/174465mapped/158197eligible;97.92%conditionalpositivecoverage,79classes;exact10kprefix and unchangedparsedlexicon. JSONrawlexiconSHAchanged duekeyorder, not synonyms. Skip6855crowd/6047missingGT/3360no-positive/5invalidGT/1UNK. CPU339s, no model/scorer/quality result. Fullmentions/filteredGT absent review; preservewholeoutput. Asked actualSaveVersion/currentGPUs for exacttransport andmatched30kpilot. No guessedversion, no using priorpilot endpoints. Lockedroundrobinoption1/2kupdates/global32/64kevents; 10kcomparison changes sampler+pool.
+
+
+### X080 — Codex1 — 04/11/2026 — exact155 transport and matched30k pilots prepared
+
+User confirms SaveVersion155 of oldducanh2403 notebook; budgets“nhưcũ”20/23h. CPU transport uses exact155+sealedsummary/cohort/lexicon, fullmentions/train_instances filename, byte copies/PrivateDataset expectedcsa-grounding-audit30k-v155. Two new30k GPUarms use ORIGINALCSA10, roundrobinseed42,2k/global32/64kevents; exposureguard30kunique/26k2x/4k3x. Sharedloss/model/trainingrecipe unchanged, labels158197/refs150076/mapped174465. Old10k artifacts preserved; crossstudy sampler+poolconfounding retained.7olddatafixtures in isolatedbundle+4sampling+3newtransport/stagefixturesPASS; no actualmodels/CUDA/API/featurearrays run. GPU preflights remain user-run, fresh output dirs, noTEST/SCST/lambdasweep. Datasetactualmountpending, share3inputs withNgân. Newnotebooks source-pinned after corecommit; publication follows.

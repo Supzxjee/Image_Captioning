@@ -168,7 +168,10 @@ def score(cfg):
         mean_words=sum(len(r['caption'].split()) for r in rows)/5000,short_le2=sum(len(r['caption'].split())<=2 for r in rows))
     if not all(np.isfinite(v) for k,v in point.items() if k!='counts'):raise ValueError('Nonfinite pilot metric')
     save(out/'cider_per_image.json',[dict(coco_id=int(i),CIDEr=float(v)) for i,v in zip(ref,per_image)])
-    save(out/'result.json',dict(status='CSA_GROUNDING_PILOT_COMPLETE',arm=cfg['arm'],updates=2000,caption_events=64000,validation_images=5000,test_used=False,labels_human_verified=False,metrics=point,selection='fixed update2000 endpoint, no checkpoint selection'))
+    stage_receipt=read(out/'pilot_stage.json')
+    save(out/'result.json',dict(status='CSA_GROUNDING_PILOT_COMPLETE',arm=cfg['arm'],updates=2000,caption_events=64000,
+        train_images=stage_receipt.get('train_images',10000),sampler=stage_receipt.get('sampler','grouped_image_references_seed42'),
+        validation_images=5000,test_used=False,labels_human_verified=False,metrics=point,selection='fixed update2000 endpoint, no checkpoint selection'))
     print('PILOT COMPLETE',cfg['arm'],point,flush=True)
 
 

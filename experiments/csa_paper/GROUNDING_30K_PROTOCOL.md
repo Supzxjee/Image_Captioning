@@ -33,3 +33,20 @@ causality. Within30k the XE/GROUND contrast remains matched.
 No quota from before the last
 two pilots is assumed current. After labels arrive and sampler is chosen, prepare
 exactly two new matched arms; no seed sweep/fulltrain/SCST/TEST automatically.
+
+## Artifact/budget confirmation and implementation, 2026-11-04
+
+User confirms source **Output155** of `ducanh2403/2-vi-cai-kia-qua-nhieu` and
+budgets “như cũ”, interpreted as20h/23h per account as previously confirmed.
+Audit source24ccd81 complete:30k images/150076refs/174465mapped/158197eligible.
+Seal exact summary/cohort/label files via CPU byte-preserving save155. Dataset
+slug `csa-grounding-audit30k-v155`; creation/mount remains user-run/unconfirmed.
+
+Emit two new30k GPU notebooks using original139latest272f843a and same recipe as
+the10k pilot: lambda0/.1, freshAdam1e-5/betas(.9,.99),global32/FP32/clip1,
+2,000updates/64kevents, original inference MHA/beam5/max20/VALID5000. Source-file
+instrumentation and early CUDA/DDP/metric guards remain. Store actual30k exposure
+histogram in both stage receipts; require30k unique,26k2x/4k3x. Do not reuse
+old10k pilot endpoints, replace the detector, increase lambda/updates or run TEST.
+Automatic unreviewed weak-label status remains explicit. Parent4hcap is a hard
+stop limit, not ETA or quota-billing forecast. Preserve old notebooks/data/results.
