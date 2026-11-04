@@ -1,0 +1,43 @@
+{
+  "status": "KARPATHY_TEST_ROI_COMPLETE",
+  "images": 5000,
+  "group": "test",
+  "dataset_json_sha256": "2fd999220673258012acfb411a4e7e66af7d488050b2519b0badcc49b7600b8d",
+  "detector_sha256": "498825daf8f8773a1c92f4111dc4ccf1f4296343f952b486e0aa56caf82ec04c",
+  "feature_profile": {
+    "model_id": "openai/clip-vit-base-patch16",
+    "output": "vision_model.last_hidden_state",
+    "image_size": [
+      224,
+      224
+    ],
+    "preprocessing": "bilinear",
+    "antialias": true,
+    "dataset_json_sha256": "2fd999220673258012acfb411a4e7e66af7d488050b2519b0badcc49b7600b8d",
+    "mean": [
+      0.48145466,
+      0.4578275,
+      0.40821073
+    ],
+    "std": [
+      0.26862954,
+      0.26130258,
+      0.27577711
+    ],
+    "model_revision": null,
+    "compute_dtype": "float32",
+    "storage_dtype": "float16",
+    "autocast": false
+  },
+  "full_h5_payload_hashed": false,
+  "neural_extraction": false,
+  "training_images": 0,
+  "validation_images": 0,
+  "files": {
+    "test_regions.npz": "7fb385e1a03c5241c4d65cc240d0434e041284a9a829198c5167f0725be57b1a",
+    "test_metadata.json": "4271b46b7ab67117433bfdf84f6eb9ba66515ada9b3c4ae4d2e507bc2cede018",
+    "vocabulary.json": "924be210aa0daa8b0968a6d69ad2c66b3de603f49c35f4aa67247c75d6173fc7"
+  },
+  "test_id_order_sha256": "e4105a76a6d00c2993aee4f1fc1f846d124ddd98f2883521ea9cd4e2b0a922af",
+  "seconds": 1384.8423266129998
+}

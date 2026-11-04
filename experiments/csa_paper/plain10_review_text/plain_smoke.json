@@ -1,0 +1,10 @@
+{
+  "passed": true,
+  "common_initial_weights_exact": true,
+  "three_visual_layers": true,
+  "semantic_bank_used": false,
+  "all_gradients_finite": true,
+  "loss": 9.219722747802734,
+  "optimizer_steps": 0,
+  "trainable_parameters": 39010576
+}

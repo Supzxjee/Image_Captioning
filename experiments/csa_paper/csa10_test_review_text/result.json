@@ -1,0 +1,30 @@
+{
+  "status": "CSA10_KARPATHY_TEST_COMPLETE",
+  "metrics": {
+    "CIDEr": 1.0192066011235086,
+    "Bleu_4": 0.33337781104467246,
+    "ROUGE_L": 0.5346489585634825,
+    "CHAIRs": 0.0618,
+    "CHAIRi": 0.04611847443873411,
+    "Recall": 0.41432744824082307,
+    "counts": {
+      "images": 5000,
+      "hallucinated_captions": 309,
+      "hallucinated_mentions": 341,
+      "object_mentions": 7394,
+      "recalled_unique": 6524,
+      "reference_unique": 15746
+    },
+    "NLL": 2.4527533740005945,
+    "mean_words": 8.1216,
+    "short_le2": 388
+  },
+  "images": 5000,
+  "checkpoint_sha256": "272f843a21b3a63c61323f748ed916fa3ae0cf2777549061439c07b410006950",
+  "epoch": 10,
+  "beam": 5,
+  "max_new_tokens": 20,
+  "training": false,
+  "checkpoint_selection": "locked exact epoch10 beforeTEST",
+  "test_used": true
+}

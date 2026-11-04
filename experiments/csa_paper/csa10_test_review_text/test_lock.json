@@ -1,0 +1,1 @@
+{"epoch": 10, "updates": 177110, "checkpoint_sha256": "272f843a21b3a63c61323f748ed916fa3ae0cf2777549061439c07b410006950", "checkpoint": "/kaggle/input/datasets/ducanh2403/csa-full-xe10-v139/checkpoint.bin", "beam": 5, "max_new_tokens": 20, "selection": "fixed beforeTEST"}

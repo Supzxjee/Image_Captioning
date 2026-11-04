@@ -1,0 +1,144 @@
+{
+  "status": "PLAIN10_TRAIN_AND_CSA10_TEST_REVIEW_COMPLETE",
+  "metadata_checks": 98,
+  "source_hashes_verified": 33,
+  "source_commit": "63e11dbe9a17ef035ad72d7d404757ec03432711",
+  "zip_sha256": {
+    "plain_full_xe_10": "d8952be8a1963f2bf0350784c92ae39da6959cdc11fb905fb1734dbe27cf7634",
+    "csa_epoch10_karpathy_test": "956010e67d0587c083ce053db38cd5d9087b2d4ebe16cf90241e5cb0c91a0f6a"
+  },
+  "plain": {
+    "epoch": 10,
+    "validation": {
+      "epoch": 10,
+      "updates": 177110,
+      "val_nll": 2.768792636015411,
+      "val_target_tokens": 286871,
+      "cider": 0.5600243446418399,
+      "validation_images": 5000,
+      "references": 25010,
+      "beam": 5,
+      "max_new_tokens": 20,
+      "eos_images": 4717,
+      "mean_words": 5.3292,
+      "validation_seconds": 259.42334638800094,
+      "decoder": "model.beam_search per-image",
+      "observed_train_nll": 2.5021765700677996,
+      "phase_seconds_this_session": 1580.0877219939994
+    },
+    "checkpoint": {
+      "sha256": "a75d7bad5a0d8dc976546b70145a29d76748142ad82190f4f04180418987135f",
+      "epoch": 11,
+      "batch_cursor": 0,
+      "phase": "train",
+      "updates": 177110,
+      "caption_events": 5667470
+    },
+    "best_receipt": {
+      "sha256": "a75d7bad5a0d8dc976546b70145a29d76748142ad82190f4f04180418987135f",
+      "epoch": 11,
+      "batch_cursor": 0,
+      "phase": "train",
+      "updates": 177110,
+      "caption_events": 5667470,
+      "validated_epoch": 10,
+      "cider": 0.5600243446418399,
+      "selection": "max validation CIDEr; earlier ties"
+    },
+    "parameters": 39010576,
+    "session_seconds": 15883.058877252999,
+    "test_available": false
+  },
+  "csa_test": {
+    "status": "CSA10_KARPATHY_TEST_COMPLETE",
+    "metrics": {
+      "CIDEr": 1.0192066011235086,
+      "Bleu_4": 0.33337781104467246,
+      "ROUGE_L": 0.5346489585634825,
+      "CHAIRs": 0.0618,
+      "CHAIRi": 0.04611847443873411,
+      "Recall": 0.41432744824082307,
+      "counts": {
+        "images": 5000,
+        "hallucinated_captions": 309,
+        "hallucinated_mentions": 341,
+        "object_mentions": 7394,
+        "recalled_unique": 6524,
+        "reference_unique": 15746
+      },
+      "NLL": 2.4527533740005945,
+      "mean_words": 8.1216,
+      "short_le2": 388
+    },
+    "images": 5000,
+    "checkpoint_sha256": "272f843a21b3a63c61323f748ed916fa3ae0cf2777549061439c07b410006950",
+    "epoch": 10,
+    "beam": 5,
+    "max_new_tokens": 20,
+    "training": false,
+    "checkpoint_selection": "locked exact epoch10 beforeTEST",
+    "test_used": true
+  },
+  "csa_validation10": {
+    "epoch": 10,
+    "updates": 177110,
+    "val_nll": 2.4354520345125557,
+    "val_target_tokens": 286871,
+    "cider": 0.9971786691135524,
+    "validation_images": 5000,
+    "references": 25010,
+    "beam": 5,
+    "max_new_tokens": 20,
+    "eos_images": 4949,
+    "mean_words": 8.085,
+    "validation_seconds": 230.83731799200177,
+    "decoder": "model.beam_search per-image",
+    "observed_train_nll": 2.417764821359954,
+    "phase_seconds_this_session": 2158.4559783570003
+  },
+  "test_cache_receipt": {
+    "status": "KARPATHY_TEST_ROI_COMPLETE",
+    "images": 5000,
+    "group": "test",
+    "dataset_json_sha256": "2fd999220673258012acfb411a4e7e66af7d488050b2519b0badcc49b7600b8d",
+    "detector_sha256": "498825daf8f8773a1c92f4111dc4ccf1f4296343f952b486e0aa56caf82ec04c",
+    "feature_profile": {
+      "model_id": "openai/clip-vit-base-patch16",
+      "output": "vision_model.last_hidden_state",
+      "image_size": [
+        224,
+        224
+      ],
+      "preprocessing": "bilinear",
+      "antialias": true,
+      "dataset_json_sha256": "2fd999220673258012acfb411a4e7e66af7d488050b2519b0badcc49b7600b8d",
+      "mean": [
+        0.48145466,
+        0.4578275,
+        0.40821073
+      ],
+      "std": [
+        0.26862954,
+        0.26130258,
+        0.27577711
+      ],
+      "model_revision": null,
+      "compute_dtype": "float32",
+      "storage_dtype": "float16",
+      "autocast": false
+    },
+    "full_h5_payload_hashed": false,
+    "neural_extraction": false,
+    "training_images": 0,
+    "validation_images": 0,
+    "files": {
+      "test_regions.npz": "7fb385e1a03c5241c4d65cc240d0434e041284a9a829198c5167f0725be57b1a",
+      "test_metadata.json": "4271b46b7ab67117433bfdf84f6eb9ba66515ada9b3c4ae4d2e507bc2cede018",
+      "vocabulary.json": "924be210aa0daa8b0968a6d69ad2c66b3de603f49c35f4aa67247c75d6173fc7"
+    },
+    "test_id_order_sha256": "e4105a76a6d00c2993aee4f1fc1f846d124ddd98f2883521ea9cd4e2b0a922af",
+    "seconds": 1384.8423266129998
+  },
+  "local_models_scorers_or_binary_arrays_read": false,
+  "baseline_test_still_required": true
+}

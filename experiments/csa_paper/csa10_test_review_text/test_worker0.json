@@ -1,0 +1,13 @@
+{
+  "complete": true,
+  "images": 2500,
+  "nll_sum": 350390.37774658203,
+  "nll_tokens": 143043,
+  "seconds": 260.8094908180001,
+  "checkpoint_sha256": "272f843a21b3a63c61323f748ed916fa3ae0cf2777549061439c07b410006950",
+  "epoch": 10,
+  "optimizer_steps": 0,
+  "beam": 5,
+  "max_new_tokens": 20,
+  "test_used": true
+}
