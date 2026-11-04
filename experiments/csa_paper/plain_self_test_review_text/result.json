@@ -1,0 +1,30 @@
+{
+  "status": "PLAIN10_KARPATHY_TEST_COMPLETE",
+  "metrics": {
+    "CIDEr": 0.5692195543902082,
+    "Bleu_4": 0.15083901082079265,
+    "ROUGE_L": 0.403298856397154,
+    "CHAIRs": 0.0392,
+    "CHAIRi": 0.04428543801972539,
+    "Recall": 0.24063254159786612,
+    "counts": {
+      "images": 5000,
+      "hallucinated_captions": 196,
+      "hallucinated_mentions": 229,
+      "object_mentions": 5171,
+      "recalled_unique": 3789,
+      "reference_unique": 15746
+    },
+    "NLL": 2.7840305245185006,
+    "mean_words": 5.1618,
+    "short_le2": 1853
+  },
+  "images": 5000,
+  "checkpoint_sha256": "a75d7bad5a0d8dc976546b70145a29d76748142ad82190f4f04180418987135f",
+  "epoch": 10,
+  "beam": 5,
+  "max_new_tokens": 20,
+  "training": false,
+  "checkpoint_selection": "locked exact epoch10 beforeTEST",
+  "test_used": true
+}

@@ -1,0 +1,1 @@
+{"epoch": 10, "updates": 177110, "checkpoint_sha256": "a75d7bad5a0d8dc976546b70145a29d76748142ad82190f4f04180418987135f", "checkpoint": "/kaggle/working/plain_epoch10_karpathy_test_self/inputs_plain45/plain_full_xe_10/checkpoint.bin", "beam": 5, "max_new_tokens": 20, "selection": "exact10 prelocked", "foreign_cache_api": false}

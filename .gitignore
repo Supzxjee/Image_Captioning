@@ -26,3 +26,4 @@ experiments/csa_paper/review/best9_decode_loaded.json
 experiments/csa_paper/review/xe15_loaded.json
 experiments/csa_paper/review/plain_full_xe_10_loaded.json
 experiments/csa_paper/review/csa_epoch10_karpathy_test_loaded.json
+experiments/csa_paper/review/plain_self_test_loaded.json

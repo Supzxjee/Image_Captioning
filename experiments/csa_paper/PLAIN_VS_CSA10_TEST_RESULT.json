@@ -1,0 +1,134 @@
+{
+  "status": "PLAIN_VS_CSA10_TEST_REVIEW_COMPLETE",
+  "zip_sha256": "ebca3334a96547e9526eafcd6b15bdd895c8aa2e064f3d141c42acdfb13702ce",
+  "metadata_checks": 69,
+  "source_commit": "62690383e95fc2ddf3867a6a14b6a035b8d38b96",
+  "source_hashes_verified": 46,
+  "comparison": {
+    "status": "PLAIN10_VS_CSA10_TEST_COMPLETE",
+    "images": 5000,
+    "epoch": 10,
+    "beam": 5,
+    "max_new_tokens": 20,
+    "plain": {
+      "CIDEr": 0.5692195543902082,
+      "Bleu_4": 0.15083901082079265,
+      "ROUGE_L": 0.403298856397154,
+      "CHAIRs": 0.0392,
+      "CHAIRi": 0.04428543801972539,
+      "Recall": 0.24063254159786612,
+      "counts": {
+        "images": 5000,
+        "hallucinated_captions": 196,
+        "hallucinated_mentions": 229,
+        "object_mentions": 5171,
+        "recalled_unique": 3789,
+        "reference_unique": 15746
+      },
+      "NLL": 2.7840305245185006,
+      "mean_words": 5.1618,
+      "short_le2": 1853
+    },
+    "csa": {
+      "CIDEr": 1.0192066011235086,
+      "Bleu_4": 0.33337781104467246,
+      "ROUGE_L": 0.5346489585634825,
+      "CHAIRs": 0.0618,
+      "CHAIRi": 0.04611847443873411,
+      "Recall": 0.41432744824082307,
+      "counts": {
+        "images": 5000,
+        "hallucinated_captions": 309,
+        "hallucinated_mentions": 341,
+        "object_mentions": 7394,
+        "recalled_unique": 6524,
+        "reference_unique": 15746
+      },
+      "NLL": 2.4527533740005945,
+      "mean_words": 8.1216,
+      "short_le2": 388
+    },
+    "csa_minus_plain": {
+      "CIDEr": 0.44998704673330037,
+      "Bleu_4": 0.1825388002238798,
+      "ROUGE_L": 0.13135010216632848,
+      "CHAIRs": 0.022600000000000002,
+      "CHAIRi": 0.0018330364190087198,
+      "Recall": 0.17369490664295695,
+      "NLL": -0.3312771505179062
+    },
+    "paired_hallucination": {
+      "plain_to_csa_repaired": 91,
+      "plain_to_csa_introduced": 204
+    },
+    "metric_replay": {
+      "plain": {
+        "CIDEr": 0.5692195543902082,
+        "Bleu_4": 0.15083901082079265,
+        "ROUGE_L": 0.403298856397154
+      },
+      "csa": {
+        "CIDEr": 1.0192066011235086,
+        "Bleu_4": 0.33337781104467246,
+        "ROUGE_L": 0.5346489585634825
+      }
+    },
+    "selection": "exact10 prelocked",
+    "new_training": false,
+    "limitations": [
+      "One seed; encoder parameter capacity differs.",
+      "CHAIR assesses objects, not general relational truth.",
+      "Inherited CSA versus plain is not a novel alignment method."
+    ]
+  },
+  "baseline_checkpoint_sha256": "a75d7bad5a0d8dc976546b70145a29d76748142ad82190f4f04180418987135f",
+  "plain_test_cache_receipt": {
+    "status": "KARPATHY_TEST_ROI_COMPLETE",
+    "images": 5000,
+    "group": "test",
+    "dataset_json_sha256": "2fd999220673258012acfb411a4e7e66af7d488050b2519b0badcc49b7600b8d",
+    "detector_sha256": "498825daf8f8773a1c92f4111dc4ccf1f4296343f952b486e0aa56caf82ec04c",
+    "feature_profile": {
+      "model_id": "openai/clip-vit-base-patch16",
+      "output": "vision_model.last_hidden_state",
+      "image_size": [
+        224,
+        224
+      ],
+      "preprocessing": "bilinear",
+      "antialias": true,
+      "dataset_json_sha256": "2fd999220673258012acfb411a4e7e66af7d488050b2519b0badcc49b7600b8d",
+      "mean": [
+        0.48145466,
+        0.4578275,
+        0.40821073
+      ],
+      "std": [
+        0.26862954,
+        0.26130258,
+        0.27577711
+      ],
+      "model_revision": null,
+      "compute_dtype": "float32",
+      "storage_dtype": "float16",
+      "autocast": false
+    },
+    "full_h5_payload_hashed": false,
+    "neural_extraction": false,
+    "training_images": 0,
+    "validation_images": 0,
+    "files": {
+      "test_regions.npz": "7fb385e1a03c5241c4d65cc240d0434e041284a9a829198c5167f0725be57b1a",
+      "test_metadata.json": "4271b46b7ab67117433bfdf84f6eb9ba66515ada9b3c4ae4d2e507bc2cede018",
+      "vocabulary.json": "924be210aa0daa8b0968a6d69ad2c66b3de603f49c35f4aa67247c75d6173fc7"
+    },
+    "test_id_order_sha256": "e4105a76a6d00c2993aee4f1fc1f846d124ddd98f2883521ea9cd4e2b0a922af",
+    "seconds": 1243.642576611
+  },
+  "worker_seconds": [
+    244.07630294,
+    245.01786262199994
+  ],
+  "checkpoint_or_npz_bytes_locally_verified": false,
+  "local_models_or_scorers_executed": false
+}
