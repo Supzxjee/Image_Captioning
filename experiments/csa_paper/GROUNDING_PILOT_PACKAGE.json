@@ -1,5 +1,5 @@
 {
-  "core_commit": "8a93845a15add168e995aa9abca80df32aa6f6ab",
+  "core_commit": "1f4a7ebb2759fdcca2dbf5712db0fe69c84e8d7b",
   "sha256": {
     "grounding_pilot_data.py": "175ebdb3307fa76847b94746122e7281ffb7789a55d575527e6dcf70b13db392",
     "grounding_model.py": "dbda9b5fc6cf5eb9116d87b692db7516979e0e113b993c0b0fc2f5b8402110e2",
@@ -16,7 +16,9 @@
     "SAVE_FULL_ROI_V134_PACKAGE.json": "a73636ca75806d6b1d7b4d88f80f3ce1c59b3061eb3e9a5e730097ddd89c505c",
     "grounding_audit_v2_review_text/summary.json": "a044c0d2e2d88deb1926b88311a6b289f48e46c9493c0c8ebf4a5bc2230b8cb6",
     "GROUNDING_PILOT_PROTOCOL.md": "dc9f88709776eb9dec35e4c8da80e3b14240b7691727160407eaa3a50b2aaa52",
-    "package_grounding150.py": "92b84ab703a5de7bb9806f84ebb3010bf50a3e273d0b93061d9e6db54649c1fe"
+    "package_grounding150.py": "92b84ab703a5de7bb9806f84ebb3010bf50a3e273d0b93061d9e6db54649c1fe",
+    "make_grounding_pilot_notebooks.py": "78457d827dfff94ab26f28072d5a457b69c57bfa72ab5c6ad89a58f6e6eadeb0",
+    "make_smoke_notebook.py": "9de13e286efb3ddd29a2eed331219a9e60dcb384fc2f28e062f64dd8dd1c6054"
   },
   "user_run_pending": true,
   "source_audit_version": 150
