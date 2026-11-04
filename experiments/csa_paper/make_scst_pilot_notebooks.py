@@ -54,10 +54,12 @@ def write(name,nb):
     p=HERE/name;p.write_text(json.dumps(nb,ensure_ascii=False,indent=1)+'\n',encoding='utf-8');print(name,p.stat().st_size)
 
 
-def make(revision,updates=500):
-    if updates not in (500,2500):raise ValueError('Only approved500/2500 horizons')
+def make(revision,updates=500,full1=False):
+    if full1:updates=14161
+    if updates not in (500,2500,14161) or (updates==14161 and not full1):raise ValueError('Only approved studies')
     commit=subprocess.check_output(['git','rev-parse',revision],cwd=ROOT,text=True).strip()
     files=FILES+(['SCST_2500_PROTOCOL.md','test_scst_2500_data.py'] if updates==2500 else [])
+    if full1:files+=['SCST_FULL1_PROTOCOL.md','scst_full_data.py','test_scst_full_data.py','test_scst_full_model.py','test_scst_2500_data.py']
     mapping={PREFIX+n:n for n in files};mapping.update({n:n for n in EXTERNAL})
     hashes={n:hashlib.sha256(subprocess.check_output(['git','show',commit+':'+n],cwd=ROOT)).hexdigest() for n in mapping}
     for arm in ('SCST_CE','SCST_CE_OBJECT'):
@@ -180,13 +182,52 @@ finally:
             not ETA/billing guarantee. Keep wholeoutput if interrupted; do not compare partialruns.
             Author tested NumPy/AST/package only; actual policy/gradient/DDP checks run here.
             '''
+        if full1:
+            setup=setup.replace('User reports unchanged20h/23h.','Latest user quota19h/24h; cap is not billing estimate.')
+            setup=setup.replace("'_pilot'+str(UPDATES)","'_full1'")
+            setup=setup.replace('cfg=dict(arm=ARM,','cfg=dict(study=\'full1\',arm=ARM,')
+            execute=execute.replace("run([sys.executable,'-u',SOURCE/'test_scst_pilot_data.py'],timeout=120)",
+                "run([sys.executable,'-u',SOURCE/'test_scst_pilot_data.py'],timeout=120)\n    run([sys.executable,'-u',SOURCE/'test_scst_2500_data.py'],timeout=120)\n    run([sys.executable,'-u',SOURCE/'test_scst_full_data.py'],timeout=120)")
+            execute=execute.replace("run([*launch,SOURCE/'test_scst_pilot_model.py','--ddp'],timeout=300)",
+                "run([*launch,SOURCE/'test_scst_pilot_model.py','--ddp'],timeout=300)\n    run([*launch,SOURCE/'test_scst_full_model.py'],timeout=300)")
+            execute=execute.replace('if remaining<2400:','if remaining<3600:').replace("cfg['worker_seconds']=remaining-900", "cfg['worker_seconds']=remaining-1800")
+            execute=execute.replace('timeout=min(900,deadline-time.monotonic())','timeout=min(1800,deadline-time.monotonic())')
+            execute=execute.replace("['status']=='CSA_SCST_PILOT_COMPLETE'","['status']=='CSA_SCST_FULL1_COMPLETE'")
+            execute=execute.replace("print(f'COMPLETE fixed{UPDATES} + VALID5000'", "print('COMPLETE fullTRAIN1epoch + original/MID/END VALID5000'")
+            intro=f'''# CSA15 → {arm}, ONE full-TRAIN SCST epoch
+            **GPU T4x2**, Internet ON, Save Version → Save & Run All. One arm/account,2GPUs each.
+            Latest user quota19h/24h. Four-hour STOPcap is not ETA/billing; measured projection
+            preserves a checkpoint if the allocated runtime cannot finish. No automatic restart.
+
+            Same4inputs as2500: `csa-full-roi-karpathy-v134`, `csa-full-xe15-v147`,
+            `mscoco-2014/dataset_coco.json`, `objectdetectionecache/objectdetectioncache.json`.
+            No newDataset for oldpilotoutputs, no APIsecret/newfeature extraction/rawimages/bank130.
+            Both start FRESH from exactCSA15 weights +freshAdam. NOT old500/2500weights.
+            Leave RESUME_ROOT empty first. Explicitresume accepts only entire SAMEfull1arm/source
+            output with checkpoint/receipt/MIDweights (if reached) and evaluation payloads.
+
+            {'CE+.05SCST(CIDEr-D)' if arm=='SCST_CE' else 'CE+.05SCST(CIDEr-D+.5Robj)'}.
+            Adam5e-6/FP32/dropoutOFF/clip1/global8 nominal. Exactly113287TRAIN/restval images,
+            each once,14161updates; final7images split4/3 with corrected DDP image/token scaling.
+            Paddedsentinel is NOT trained. Objecttargets cover allTRAIN; rewardIDF unchanged.
+
+            Fresh ORIGINAL evaluation beforetraining, MID after7081updates, END after14161,
+            each VALID5000 beam5/max20 +NLL/CIDEr/B4/ROUGE/CHAIR/recall. NoTEST/reranking.
+            Select maxCIDEr among eligible ORIGINAL/MID/END: CHAIRs/i≤ORIGINAL,
+            recall≥ORIGINAL−.005; exactties earlier; originalfallback explicitlyreported.
+            Keep checkpoint.bin(latest), mid.bin, best.bin and locked_selection.json.
+            Atomic500update/milestone checkpoints +optimizer/RNG/evaluationSHA for resume.
+            Agent checks metadata/NumPy/static only; actualpolicy/gradient/DDP/uneven4/3tests run here.
+            '''
         nb=dict(nbformat=4,nbformat_minor=5,metadata=dict(kernelspec=dict(display_name='Python 3',language='python',name='python3'),
             kaggle=dict(isInternetEnabled=True,isGpuEnabled=True)),cells=[cell('markdown',intro),cell('code',setup),
             cell('code',RUNNER.replace('Smoke active;','CSA SCST active;')),cell('code',execute)])
-        write('CSA15_'+arm+f'_PILOT{updates}_2GPU.ipynb',nb)
+        name='CSA15_'+arm+('_FULL1_2GPU.ipynb' if full1 else f'_PILOT{updates}_2GPU.ipynb')
+        write(name,nb)
     if updates==500:save147()
 
 
 if __name__=='__main__':
     p=argparse.ArgumentParser();p.add_argument('--revision',default='HEAD');p.add_argument('--updates',type=int,choices=(500,2500),default=500)
-    a=p.parse_args();make(a.revision,a.updates)
+    p.add_argument('--full1',action='store_true')
+    a=p.parse_args();make(a.revision,a.updates,a.full1)

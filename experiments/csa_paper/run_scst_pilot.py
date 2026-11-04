@@ -5,10 +5,11 @@ import json
 import os
 from pathlib import Path
 import random
+import shutil
 import time
 import numpy as np
 from real_bank_data import read,save,sha
-from scst_pilot_data import prepare,exact_checkpoint,CHECKPOINT_SHA,MODEL_SHA,study_updates
+from scst_pilot_data import prepare,exact_checkpoint,CHECKPOINT_SHA,MODEL_SHA,study_updates,seen_events
 from full_cache_data import collate
 
 
@@ -25,7 +26,7 @@ def worker(cfg):
     from scst_pilot_model import PolicyReader,rollout,captions,policy_loss,selected_logps
     from captioning.scst import TrainingCider
     from captioning.object_reward import TrainingObjectReward
-    updates=study_updates(cfg)
+    updates=study_updates(cfg);full=cfg.get('study')=='full1'
     rank=int(os.environ['LOCAL_RANK']);world=int(os.environ['WORLD_SIZE'])
     if world!=2 or torch.cuda.device_count()!=2:raise ValueError('Select T4x2')
     torch.cuda.set_device(rank);device=torch.device('cuda',rank)
@@ -58,10 +59,12 @@ def worker(cfg):
         optimizer=torch.optim.Adam(base.parameters(),lr=5e-6,betas=(.9,.99),eps=1e-8,weight_decay=0)
         if cfg['arm'] not in ('SCST_CE','SCST_CE_OBJECT'):raise ValueError('Unknown arm')
         weight=0. if cfg['arm']=='SCST_CE' else .5
-        identity=dict(schema='csa15_scst_pilot_v1',arm=cfg['arm'],object_weight=weight,scst_weight=.05,
+        identity=dict(schema='csa15_scst_full1_v1' if full else 'csa15_scst_pilot_v1',arm=cfg['arm'],object_weight=weight,scst_weight=.05,
             checkpoint_sha256=CHECKPOINT_SHA,stage=receipt,source=read(out/'source_receipt.json'),
             updates=updates,global_batch=8,seed=42,lr=5e-6,maximum_actions=20,dropout=False)
-        state=dict(updates=0,image_events=0);random.seed(42+rank);np.random.seed(42+rank)
+        state=dict(updates=0,image_events=0)
+        if full:state.update(validated=[],validation_files={})
+        random.seed(42+rank);np.random.seed(42+rank)
         torch.manual_seed(4242+rank);torch.cuda.manual_seed(4242+rank)
         if cfg.get('resume_root'):
             root=Path(cfg['resume_root']);r=read(root/'checkpoint_receipt.json')
@@ -71,10 +74,23 @@ def worker(cfg):
             base.load_state_dict(restored['model']);optimizer.load_state_dict(restored['optimizer']);state=restored['state']
             rng=restored['rng_by_rank'][rank];random.setstate(rng['python']);np.random.set_state(rng['numpy'])
             torch.set_rng_state(rng['torch']);torch.cuda.set_rng_state(rng['cuda'],device);del restored
-        if not 0<=state['updates']<=updates or state['image_events']!=state['updates']*8:raise ValueError('Bad resume cursor')
+            if full:
+                from scst_full_data import copy_evaluations,MID
+                if rank==0:
+                    copy_evaluations(root,out,state['validation_files'])
+                    if state['updates']>=MID:
+                        mr=read(root/'mid_receipt.json')
+                        if sha(root/'mid.bin')!=mr['sha256']:raise ValueError('Missing/changed MID resume weights')
+                        shutil.copy2(root/'mid.bin',out/'mid.bin');save(out/'mid_receipt.json',mr)
+                dist.barrier(device_ids=[rank])
+        if not 0<=state['updates']<=updates or state['image_events']!=seen_events(cfg,state['updates']):raise ValueError('Bad resume cursor')
+        if full:
+            from scst_full_data import validate_state,local_batch
+            validate_state(state)
         if rank==0:save(out/'identity.json',identity)
 
-        def checkpoint():
+        def checkpoint(tag=None):
+            if full:validate_state(state)
             rng=dict(python=random.getstate(),numpy=np.random.get_state(),torch=torch.get_rng_state(),cuda=torch.cuda.get_rng_state(device))
             rngs=[None,None];dist.all_gather_object(rngs,rng)
             if rank==0:
@@ -83,6 +99,9 @@ def worker(cfg):
                 os.replace(temp,out/'checkpoint.bin')
                 atomic(out/'checkpoint_receipt.json',dict(sha256=sha(out/'checkpoint.bin'),**state,arm=cfg['arm']))
                 atomic(out/'progress.json',state)
+                if tag=='mid':
+                    shutil.copy2(out/'checkpoint.bin',out/'mid.bin')
+                    save(out/'mid_receipt.json',read(out/'checkpoint_receipt.json'))
             dist.barrier(device_ids=[rank])
 
         # Actual loaded-model rollout/rescore replay, before any optimizer update.
@@ -93,12 +112,60 @@ def worker(cfg):
             torch.testing.assert_close(logp,replay,rtol=1e-4,atol=2e-5)
         save(out/f'policy_replay_rank{rank}.json',dict(passed=True,max_abs=float((logp-replay).abs().max()),dropout=False))
         del x,v,vo,vr,seq,mask,logp,replay
+        def validate(destination):
+            destination.mkdir(parents=True,exist_ok=True)
+            base.eval();rows=[];nll_total=0.;nll_tokens=0
+            images=np.flatnonzero(data['group']==1)[rank::2]
+            if len(images)!=2500:raise ValueError('VALID must have2500images/rank')
+            with torch.inference_mode():
+                for offset in range(0,len(images),8):
+                    if time.monotonic()>deadline:raise TimeoutError('VALID cap; endpoint weights preserved')
+                    ix=images[offset:offset+8];ev=np.searchsorted(data['caption_image'],ix)
+                    x,v,_=[torch.from_numpy(a).to(device) for a in collate(data,ev)]
+                    vo,vr=base.encode(x,v)
+                    for i,(seq,scores) in zip(ix,beam_search(base,vo,vr,v,beams=5,maximum=20)):
+                        rows.append(dict(coco_id=int(data['ids'][i]),caption=captions(seq[:1],vocab)[0],ids=seq[0].cpu().tolist(),score=float(scores[0])))
+                    if offset%400==0:print('VALID',rank,len(rows),'/2500',flush=True)
+                ev=np.flatnonzero(np.isin(data['caption_image'],images))
+                for offset in range(0,len(ev),16):
+                    if time.monotonic()>deadline:raise TimeoutError('VALID NLL cap; endpoint preserved')
+                    x,v,seq=[torch.from_numpy(a).to(device) for a in collate(data,ev[offset:offset+16])]
+                    value=F.cross_entropy(base(x,v,seq[:,:-1]).flatten(0,1),seq[:,1:].flatten(),ignore_index=0,reduction='sum')
+                    nll_total+=float(value);nll_tokens+=int((seq[:,1:]!=0).sum())
+            save(destination/f'val_rank{rank}.json',rows)
+            save(destination/f'worker{rank}.json',dict(complete=True,**state,images=len(rows),nll_sum=nll_total,nll_tokens=nll_tokens,
+                torch_version=torch.__version__,seconds=time.monotonic()-start))
+            dist.barrier(device_ids=[rank])
+
+        def full_validation(name):
+            from scst_full_data import PHASE_STEPS
+            if state['updates']!=PHASE_STEPS[name]:raise ValueError('Evaluation at wrong full1 cursor')
+            destination=out/'evaluations'/name
+            validate(destination)
+            files=None
+            if rank==0:
+                files={str((destination/n).relative_to(out)).replace('\\','/'):sha(destination/n)
+                    for n in ('val_rank0.json','val_rank1.json','worker0.json','worker1.json')}
+            payload=[files];dist.broadcast_object_list(payload,src=0)
+            state['validation_files'].update(payload[0]);state['validated'].append(name)
+            checkpoint()
+
+        if full:
+            from scst_full_data import MID
+            if 'original' not in state['validated']:full_validation('original')
+            if state['updates']==MID and 'mid' not in state['validated']:full_validation('mid')
         began=time.monotonic();initial=state['updates']
         for step in range(initial,updates):
-            stop=torch.tensor(int(time.monotonic()>deadline-900),device=device);dist.all_reduce(stop,op=dist.ReduceOp.MAX)
+            margin=900*(2-int('mid' in state['validated'])) if full else 900
+            stop=torch.tensor(int(time.monotonic()>deadline-margin),device=device);dist.all_reduce(stop,op=dist.ReduceOp.MAX)
             if int(stop):checkpoint();raise TimeoutError('Saved before worker cap; resume same arm only')
-            local=slice(rank*4,rank*4+4);batch_ids=ids[step,local].tolist()
-            x,v,ce=[torch.from_numpy(a).to(device) for a in collate(data,events[step,local])]
+            if full:
+                local_events,local_ids=local_batch(events,ids,step,rank)
+            else:
+                local=slice(rank*4,rank*4+4);local_events=events[step,local];local_ids=ids[step,local]
+            batch_ids=local_ids.tolist()
+            if not batch_ids:raise ValueError('Unexpected empty SCST rank')
+            x,v,ce=[torch.from_numpy(a).to(device) for a in collate(data,local_events)]
             with torch.no_grad():
                 vo,vr=base.encode(x,v)
                 sample,mask,_=rollout(base,vo,vr,v,True);greedy,_,_=rollout(base,vo,vr,v,False)
@@ -111,50 +178,35 @@ def worker(cfg):
             logits,ce_logits=reader(x,v,sample[:,:-1],ce[:,:-1])
             rl=policy_loss(logits,sample[:,1:],mask,advantage)
             nll=F.cross_entropy(ce_logits.flatten(0,1),ce[:,1:].flatten(),ignore_index=0,reduction='sum')
-            tokens=torch.tensor(int((ce[:,1:]!=0).sum()),device=device);dist.all_reduce(tokens)
-            loss=nll*(world/int(tokens))+.05*rl
+            denominators=torch.tensor([int((ce[:,1:]!=0).sum()),len(batch_ids)],device=device);dist.all_reduce(denominators)
+            tokens=int(denominators[0]);images_in_batch=int(denominators[1])
+            loss=nll*(world/tokens)+.05*rl*(world*len(batch_ids)/images_in_batch)
             if not torch.isfinite(loss):raise ValueError('Nonfinite SCST loss')
             loss.backward();norm=torch.nn.utils.clip_grad_norm_(base.parameters(),1,error_if_nonfinite=True);optimizer.step()
-            state=dict(updates=step+1,image_events=(step+1)*8)
-            stats=torch.tensor([float(nll.detach()),float(rl.detach()),float(sc.mean()),float(gc.mean()),float(so.mean()),float(go.mean()),
-                np.mean([d['unsupported_count'] for d in sd]),np.mean([d['unsupported_count'] for d in gd])],device=device,dtype=torch.float64)
+            state.update(updates=step+1,image_events=seen_events(cfg,step+1))
+            stats=torch.tensor([float(nll.detach()),float(rl.detach())*len(batch_ids),float(sc.sum()),float(gc.sum()),float(so.sum()),float(go.sum()),
+                sum(d['unsupported_count'] for d in sd),sum(d['unsupported_count'] for d in gd)],device=device,dtype=torch.float64)
             dist.all_reduce(stats)
-            if (step+1)%25==0:
-                report=dict(**state,ce_loss=float(stats[0])/int(tokens),scst_loss=float(stats[1])/2,
-                    sample_cider=float(stats[2])/2,greedy_cider=float(stats[3])/2,
-                    sample_object_reward=float(stats[4])/2,greedy_object_reward=float(stats[5])/2,
-                    sample_unsupported_count=float(stats[6])/2,greedy_unsupported_count=float(stats[7])/2,
+            if (step+1)%25==0 or step+1==updates:
+                report=dict(updates=state['updates'],image_events=state['image_events'],ce_loss=float(stats[0])/int(tokens),scst_loss=float(stats[1])/images_in_batch,
+                    sample_cider=float(stats[2])/images_in_batch,greedy_cider=float(stats[3])/images_in_batch,
+                    sample_object_reward=float(stats[4])/images_in_batch,greedy_object_reward=float(stats[5])/images_in_batch,
+                    sample_unsupported_count=float(stats[6])/images_in_batch,greedy_unsupported_count=float(stats[7])/images_in_batch,
                     grad_norm=float(norm),seconds=time.monotonic()-start)
                 if rank==0:
                     print('SCST',cfg['arm'],report,flush=True)
                     with (out/'training.jsonl').open('a',encoding='utf-8') as f:f.write(json.dumps(report,allow_nan=False)+'\n')
-                remaining=(time.monotonic()-began)/(step+1-initial)*(updates-step-1)+900
+                remaining=(time.monotonic()-began)/(step+1-initial)*(updates-step-1)+margin
                 projected_stop=torch.tensor(int(remaining>deadline-time.monotonic()),device=device)
                 dist.all_reduce(projected_stop,op=dist.ReduceOp.MAX)
                 if int(projected_stop):checkpoint();raise TimeoutError('Measured pilot projection exceeds worker cap; checkpoint preserved')
-            if (step+1)%100==0:checkpoint()
-        checkpoint();base.eval();rows=[];nll_total=0.;nll_tokens=0
-        images=np.flatnonzero(data['group']==1)[rank::2]
-        if len(images)!=2500:raise ValueError('VALID must have2500images/rank')
-        with torch.inference_mode():
-            for offset in range(0,len(images),8):
-                if time.monotonic()>deadline:raise TimeoutError('VALID cap; endpoint weights preserved')
-                ix=images[offset:offset+8];ev=np.searchsorted(data['caption_image'],ix)
-                x,v,_=[torch.from_numpy(a).to(device) for a in collate(data,ev)]
-                vo,vr=base.encode(x,v)
-                for i,(seq,scores) in zip(ix,beam_search(base,vo,vr,v,beams=5,maximum=20)):
-                    rows.append(dict(coco_id=int(data['ids'][i]),caption=captions(seq[:1],vocab)[0],ids=seq[0].cpu().tolist(),score=float(scores[0])))
-                if offset%400==0:print('VALID',rank,len(rows),'/2500',flush=True)
-            ev=np.flatnonzero(np.isin(data['caption_image'],images))
-            for offset in range(0,len(ev),16):
-                if time.monotonic()>deadline:raise TimeoutError('VALID NLL cap; endpoint preserved')
-                x,v,seq=[torch.from_numpy(a).to(device) for a in collate(data,ev[offset:offset+16])]
-                value=F.cross_entropy(base(x,v,seq[:,:-1]).flatten(0,1),seq[:,1:].flatten(),ignore_index=0,reduction='sum')
-                nll_total+=float(value);nll_tokens+=int((seq[:,1:]!=0).sum())
-        save(out/f'val_rank{rank}.json',rows)
-        save(out/f'worker{rank}.json',dict(complete=True,**state,images=len(rows),nll_sum=nll_total,nll_tokens=nll_tokens,
-            torch_version=torch.__version__,seconds=time.monotonic()-start))
-        dist.barrier(device_ids=[rank])
+            if (step+1)%(500 if full else 100)==0:checkpoint()
+            if full and step+1==MID:
+                checkpoint('mid');full_validation('mid')
+        checkpoint()
+        if full:
+            if 'end' not in state['validated']:full_validation('end')
+        else:validate(out)
     finally:
         if dist.is_initialized():dist.destroy_process_group()
 
@@ -167,9 +219,14 @@ def score(cfg):
     from pycocoevalcap.rouge.rouge import Rouge
     from saved_quality_data import check_rows,chair_counts
     updates=study_updates(cfg)
+    evaluation_step=cfg.get('evaluation_step',updates)
+    if cfg.get('study')=='full1':
+        from scst_full_data import PHASE_STEPS
+        if evaluation_step not in PHASE_STEPS.values():raise ValueError('Unapproved evaluation cursor')
+    elif evaluation_step!=updates:raise ValueError('Pilot must score only its endpoint')
     out=Path(cfg['output']);chair=Path(cfg['chair']);refs=read(out/'validation_references.json')
     rows=read(out/'val_rank0.json')+read(out/'val_rank1.json');workers=[read(out/f'worker{r}.json') for r in (0,1)]
-    if len(refs)!=5000 or not all(w['complete'] and w['updates']==updates and w['image_events']==updates*8 and w['images']==2500 for w in workers):raise ValueError('Incomplete endpoint/VALID')
+    if len(refs)!=5000 or not all(w['complete'] and w['updates']==evaluation_step and w['image_events']==seen_events(cfg,evaluation_step) and w['images']==2500 for w in workers):raise ValueError('Incomplete endpoint/VALID')
     check_rows(rows,{r['coco_id'] for r in refs})
     ptb=PTBTokenizer();ref=ptb.tokenize({r['coco_id']:[dict(caption=c) for c in r['references']] for r in refs})
     hyp=ptb.tokenize({r['coco_id']:[dict(caption=r['caption'])] for r in rows})
@@ -183,8 +240,8 @@ def score(cfg):
         mean_words=sum(len(r['caption'].split()) for r in rows)/5000,short_le2=sum(len(r['caption'].split())<=2 for r in rows))
     if any(not np.isfinite(v) for k,v in point.items() if k!='counts'):raise ValueError('Nonfinite metric')
     save(out/'cider_per_image.json',[dict(coco_id=int(i),CIDEr=float(v)) for i,v in zip(ref,per)])
-    save(out/'result.json',dict(status='CSA_SCST_PILOT_COMPLETE',arm=cfg['arm'],updates=updates,image_events=updates*8,
-        validation_images=5000,test_used=False,selection=f'fixed endpoint{updates}; no checkpoint selection',metrics=point))
+    save(out/'result.json',dict(status='CSA_SCST_PILOT_COMPLETE',arm=cfg['arm'],updates=evaluation_step,image_events=seen_events(cfg,evaluation_step),
+        validation_images=5000,test_used=False,selection=f'fixed endpoint{evaluation_step}; no checkpoint selection',metrics=point))
     print('CSA SCST PILOT COMPLETE',cfg['arm'],point,flush=True)
 
 
@@ -208,4 +265,8 @@ def metric_preflight(cfg):
 
 if __name__=='__main__':
     p=argparse.ArgumentParser();p.add_argument('mode',choices=('prepare','metric_preflight','worker','score'));p.add_argument('--config',required=True)
-    a=p.parse_args();globals()[a.mode](read(a.config))
+    a=p.parse_args();cfg=read(a.config)
+    if a.mode=='score' and cfg.get('study')=='full1':
+        from scst_full_data import score as full_score
+        full_score(cfg)
+    else:globals()[a.mode](cfg)

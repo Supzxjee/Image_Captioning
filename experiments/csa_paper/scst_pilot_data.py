@@ -21,9 +21,19 @@ def exact_checkpoint(root):
 
 
 def study_updates(cfg):
+    if cfg.get('study')=='full1':
+        if cfg.get('updates')!=14161 or type(cfg['updates'])!=int:raise ValueError('Full1 must be exactly14161updates')
+        return 14161
     value=cfg.get('updates',500)
     if type(value)!=int or value not in (500,2500):raise ValueError('Only approved500/2500 horizons supported')
     return value
+
+
+def seen_events(cfg,step):
+    if cfg.get('study')=='full1':
+        from scst_full_data import image_events
+        return image_events(step)
+    return step*8
 
 
 def schedule(train_ids, pool=10000, updates=500, batch=8):
@@ -38,10 +48,11 @@ def schedule(train_ids, pool=10000, updates=500, batch=8):
 
 def event_schedule(data, ids):
     index={int(i):j for j,i in enumerate(data['ids'])}
-    result=np.empty(ids.shape,np.int64)
+    result=np.full(ids.shape,-1,np.int64)
     first_reference={};visits={}
     for step,row in enumerate(ids):
         for j,coco in enumerate(row):
+            if int(coco)<0:continue
             image=index[int(coco)]
             if data['group'][image]!=0:raise ValueError('Held-out image in SCST schedule')
             lo,hi=np.searchsorted(data['caption_image'],[image,image+1])
@@ -65,7 +76,11 @@ def prepare(cfg):
         (train if r['split'] in ('train','restval') else heldout).append(row)
     if len(train)!=113287:raise ValueError('Wrong Karpathy TRAIN count')
     updates=study_updates(cfg)
-    pool,ids=schedule([r['coco_id'] for r in train],updates=updates);wanted=set(pool)
+    if cfg.get('study')=='full1':
+        from scst_full_data import full_schedule
+        pool,ids=full_schedule([r['coco_id'] for r in train])
+    else:pool,ids=schedule([r['coco_id'] for r in train],updates=updates)
+    wanted=set(pool)
     targets=make_targets(dict(train=[r for r in train if r['coco_id'] in wanted],val=heldout),
         dataset,Path(cfg['chair'])/'chair.pkl',read(cfg['detections']),
         parser_version='aliases_v2',penalty_version='unique_count_v2')
@@ -76,19 +91,25 @@ def prepare(cfg):
     del dataset
     data,vocab,staged=stage_full(cfg['full_root'],cfg['stage'])
     events=event_schedule(data,ids)
-    if not np.array_equal(data['ids'][data['caption_image'][events]],ids):raise ValueError('Schedule join differs')
+    present=events>=0
+    if not np.array_equal(present,ids>=0) or not np.array_equal(data['ids'][data['caption_image'][events[present]]],ids[present]):raise ValueError('Schedule join differs')
     save(out/'object_targets.json',targets);save(out/'training_references.json',refs)
     save(out/'validation_references.json',validation_references(cfg['full_root']));save(out/'vocabulary.json',vocab)
     np.save(out/'events.npy',events);np.save(out/'coco_ids.npy',ids)
     files=['object_targets.json','training_references.json','validation_references.json','vocabulary.json','events.npy','coco_ids.npy']
     receipt=dict(status='CSA_SCST_STAGE_COMPLETE',checkpoint_sha256=CHECKPOINT_SHA,
         dataset_json_sha256=DATA_SHA,detections_sha256=DETECTION_SHA,pool_ids=pool,
-        train_images=113287,pool_images=10000,unique_exposed=len(np.unique(ids)),updates=updates,global_batch=8,
+        train_images=113287,pool_images=len(pool),unique_exposed=len(np.unique(ids[ids>=0])),updates=updates,global_batch=8,
         files_sha256={n:sha(out/n) for n in files},source_stage=staged['files_sha256'])
     if updates==2500:
         unique,counts=np.unique(ids,return_counts=True)
         if len(unique)!=10000 or not (counts==2).all():raise ValueError('Expected two exposures perTRAINpool image')
         receipt.update(image_events=20000,image_exposure_histogram={'2':10000},
             sampler='two_complete_permutations_seed42_43_reference_rotation')
+    if cfg.get('study')=='full1':
+        unique,counts=np.unique(ids[ids>=0],return_counts=True)
+        if len(unique)!=113287 or not (counts==1).all() or int((ids<0).sum())!=1:raise ValueError('Full1 image coverage differs')
+        receipt.update(study='full1',image_events=113287,image_exposure_histogram={'1':113287},last_batch_images=7,
+            sampler='one_complete_train_permutation_seed42_no_duplicate_padding')
     save(out/'pilot_stage.json',receipt)
-    print(f'SCST staged:{updates}updates/global8/{len(np.unique(ids))}unique TRAIN images; fixed full-TRAIN reward IDF.',flush=True)
+    print(f'SCST staged:{updates}updates/global8/{receipt["unique_exposed"]}unique TRAIN images; fixed full-TRAIN reward IDF.',flush=True)
