@@ -54,22 +54,25 @@ def write(name,nb):
     p=HERE/name;p.write_text(json.dumps(nb,ensure_ascii=False,indent=1)+'\n',encoding='utf-8');print(name,p.stat().st_size)
 
 
-def make(revision):
+def make(revision,updates=500):
+    if updates not in (500,2500):raise ValueError('Only approved500/2500 horizons')
     commit=subprocess.check_output(['git','rev-parse',revision],cwd=ROOT,text=True).strip()
-    mapping={PREFIX+n:n for n in FILES};mapping.update({n:n for n in EXTERNAL})
+    files=FILES+(['SCST_2500_PROTOCOL.md','test_scst_2500_data.py'] if updates==2500 else [])
+    mapping={PREFIX+n:n for n in files};mapping.update({n:n for n in EXTERNAL})
     hashes={n:hashlib.sha256(subprocess.check_output(['git','show',commit+':'+n],cwd=ROOT)).hexdigest() for n in mapping}
     for arm in ('SCST_CE','SCST_CE_OBJECT'):
         setup=f'''
 import hashlib,json,os,queue,signal,subprocess,sys,tempfile,threading,time,traceback,urllib.request,zipfile,shutil
 from pathlib import Path
 ARM={arm!r}
+UPDATES={updates}
 WALL_HOURS=4 # Stop cap, NOT an ETA or billing estimate. User reports unchanged20h/23h.
 FULL_ROOT=Path('/kaggle/input/datasets/ducanh2403/csa-full-roi-karpathy-v134')
 CHECKPOINT_ROOT=Path('/kaggle/input/datasets/ducanh2403/csa-full-xe15-v147')
 COCO_JSON=Path('/kaggle/input/datasets/vuthetam/mscoco-2014/dataset_coco.json')
 DETECTIONS=Path('/kaggle/input/datasets/ducanh2403/objectdetectionecache/objectdetectioncache.json')
 RESUME_ROOT='' # Same-arm prior output ONLY. Empty for first run; never automatically retries.
-OUTPUT=Path('/kaggle/working/csa15_'+ARM.lower()+'_pilot500')
+OUTPUT=Path('/kaggle/working/csa15_'+ARM.lower()+'_pilot'+str(UPDATES))
 for p in (FULL_ROOT,CHECKPOINT_ROOT,COCO_JSON,DETECTIONS):
     if not p.exists():raise FileNotFoundError('Attach all4inputs before GPU: '+str(p))
 probe="import json,torch;print(json.dumps(dict(version=torch.__version__,built=torch.backends.cuda.is_built(),available=torch.cuda.is_available(),count=torch.cuda.device_count())))"
@@ -91,7 +94,7 @@ os.environ['OMP_NUM_THREADS']='1'
 (OUTPUT/'gpu_environment.json').write_text(json.dumps(GPU_ENV),encoding='utf-8')
 CHAIR=SOURCE/'chair';CONFIG=SOURCE/'config.json'
 cfg=dict(arm=ARM,full_root=str(FULL_ROOT),checkpoint_root=str(CHECKPOINT_ROOT),dataset_json=str(COCO_JSON),detections=str(DETECTIONS),
-    output=str(OUTPUT),stage=str(STAGE),chair=str(CHAIR),resume_root=RESUME_ROOT,worker_seconds=9000)
+    output=str(OUTPUT),stage=str(STAGE),chair=str(CHAIR),resume_root=RESUME_ROOT,worker_seconds=9000,updates=UPDATES)
 CONFIG.write_text(json.dumps(cfg),encoding='utf-8')
 '''
         execute='''
@@ -121,7 +124,7 @@ try:
 except BaseException:
     (OUTPUT/'failure.txt').write_text(traceback.format_exc(),encoding='utf-8');raise
 finally:
-    (OUTPUT/'run_status.json').write_text(json.dumps(dict(complete=complete,arm=ARM,updates_requested=500,test_used=False)),encoding='utf-8')
+    (OUTPUT/'run_status.json').write_text(json.dumps(dict(complete=complete,arm=ARM,updates_requested=UPDATES,test_used=False)),encoding='utf-8')
     archive=OUTPUT.with_name(OUTPUT.name+'_review.zip')
     with zipfile.ZipFile(archive,'w',zipfile.ZIP_DEFLATED) as z:
         for p in sorted(OUTPUT.rglob('*')):
@@ -130,7 +133,7 @@ finally:
     print('SEND REVIEW:',archive,flush=True)
     print('KEEP ENTIRE OUTPUT:',OUTPUT,flush=True)
     print('KEEP CHECKPOINT:',OUTPUT/'checkpoint.bin' if (OUTPUT/'checkpoint.bin').is_file() else 'No checkpoint yet',flush=True)
-    print('COMPLETE fixed500 + VALID5000' if complete else 'INCOMPLETE; preserve logs/weights; no automatic restart.',flush=True)
+    print(f'COMPLETE fixed{UPDATES} + VALID5000' if complete else 'INCOMPLETE; preserve logs/weights; no automatic restart.',flush=True)
 '''
         intro=f'''# CSA epoch15 → {arm}, two GPUs
         Run **SAVE_CSA_XE15_V147_DATASET** on CPU first. Then select **T4x2**, Internet ON,
@@ -151,12 +154,39 @@ finally:
         partial weights if remaining budget is insufficient. Do not compare partial arms.
         Local author checks are NumPy/AST only; real policy/DDP/CUDA tests run here before training.
         '''
+        if updates==2500:
+            execute=execute.replace("run([sys.executable,'-u',SOURCE/'test_scst_pilot_data.py'],timeout=120)",
+                "run([sys.executable,'-u',SOURCE/'test_scst_pilot_data.py'],timeout=120)\n    run([sys.executable,'-u',SOURCE/'test_scst_2500_data.py'],timeout=120)")
+            intro=f'''# CSA epoch15 → {arm}, fixed2500updates
+            **T4x2**, Internet ON, Save Version → Save & Run All. One arm/account,2GPUs each.
+            Start FRESH from the existing `csa-full-xe15-v147` Dataset with freshAdam.
+            Do NOT load pilot159/53 weights/optimizer. No new Dataset or API token required.
+            Leave RESUME_ROOT empty for this first run. Optional resume is only a partial
+            output of this SAME2500study/arm/source, never the old500pilot.
+
+            Attach4inputs: csa-full-roi-karpathy-v134; csa-full-xe15-v147;
+            mscoco-2014 (dataset_coco.json); objectdetectionecache. Edit cell1 mount paths.
+            No rawimages/bank130/newCLIP extraction. Same model/reward as the500pilot:
+            {'CE+.05SCST(CIDEr-D)' if arm=='SCST_CE' else 'CE+.05SCST(CIDEr-D+.5Robj)'};
+            Adam5e-6/global8=4perGPU/FP32/dropoutOFF/clip1.
+
+            Fixed2500updates=20000image events: same10kTRAINpool,2complete shuffledpasses,
+            every image twice; secondvisit rotates CEreference. Same first500schedule as oldpilot.
+            This is fresh2500updates, NOT500+2500 or resuming the pilot checkpoint.
+            Only endpoint2500 is evaluated on VALID5000 beam5/max20, CIDEr/B4/ROUGE,
+            CHAIRs/i/recall/NLL. No TEST, intermediate checkpoint selection or reranking.
+
+            Atomic100update checkpoints;25step measured runtime gate; parent4h STOP cap,
+            not ETA/billing guarantee. Keep wholeoutput if interrupted; do not compare partialruns.
+            Author tested NumPy/AST/package only; actual policy/gradient/DDP checks run here.
+            '''
         nb=dict(nbformat=4,nbformat_minor=5,metadata=dict(kernelspec=dict(display_name='Python 3',language='python',name='python3'),
             kaggle=dict(isInternetEnabled=True,isGpuEnabled=True)),cells=[cell('markdown',intro),cell('code',setup),
             cell('code',RUNNER.replace('Smoke active;','CSA SCST active;')),cell('code',execute)])
-        write('CSA15_'+arm+'_PILOT500_2GPU.ipynb',nb)
-    save147()
+        write('CSA15_'+arm+f'_PILOT{updates}_2GPU.ipynb',nb)
+    if updates==500:save147()
 
 
 if __name__=='__main__':
-    p=argparse.ArgumentParser();p.add_argument('--revision',default='HEAD');a=p.parse_args();make(a.revision)
+    p=argparse.ArgumentParser();p.add_argument('--revision',default='HEAD');p.add_argument('--updates',type=int,choices=(500,2500),default=500)
+    a=p.parse_args();make(a.revision,a.updates)

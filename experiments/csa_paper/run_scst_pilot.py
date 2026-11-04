@@ -1,4 +1,4 @@
-"""USER-RUN ONLY: paired two-GPU CSA15 SCST continuation, fixed500 endpoint."""
+"""USER-RUN ONLY: paired two-GPU CSA15 SCST, approved fixed500/2500 endpoint."""
 import argparse
 from datetime import timedelta
 import json
@@ -8,7 +8,7 @@ import random
 import time
 import numpy as np
 from real_bank_data import read,save,sha
-from scst_pilot_data import prepare,exact_checkpoint,CHECKPOINT_SHA,MODEL_SHA
+from scst_pilot_data import prepare,exact_checkpoint,CHECKPOINT_SHA,MODEL_SHA,study_updates
 from full_cache_data import collate
 
 
@@ -25,6 +25,7 @@ def worker(cfg):
     from scst_pilot_model import PolicyReader,rollout,captions,policy_loss,selected_logps
     from captioning.scst import TrainingCider
     from captioning.object_reward import TrainingObjectReward
+    updates=study_updates(cfg)
     rank=int(os.environ['LOCAL_RANK']);world=int(os.environ['WORLD_SIZE'])
     if world!=2 or torch.cuda.device_count()!=2:raise ValueError('Select T4x2')
     torch.cuda.set_device(rank);device=torch.device('cuda',rank)
@@ -42,6 +43,7 @@ def worker(cfg):
         if sha(Path(__file__).with_name('model.py'))!=MODEL_SHA:raise ValueError('CSA core changed')
         data={k:np.load(stage/(k+'.npy'),mmap_mode='r',allow_pickle=False) for k in staged['shapes']}
         events=np.load(out/'events.npy',allow_pickle=False);ids=np.load(out/'coco_ids.npy',allow_pickle=False)
+        if events.shape!=(updates,8) or ids.shape!=events.shape or receipt['updates']!=updates:raise ValueError('Study schedule/horizon differs')
         vocab=read(out/'vocabulary.json');references={int(k):v for k,v in read(out/'training_references.json').items()}
         cider=TrainingCider(references,reference_cache_size=2048)
         target=read(out/'object_targets.json')
@@ -58,7 +60,7 @@ def worker(cfg):
         weight=0. if cfg['arm']=='SCST_CE' else .5
         identity=dict(schema='csa15_scst_pilot_v1',arm=cfg['arm'],object_weight=weight,scst_weight=.05,
             checkpoint_sha256=CHECKPOINT_SHA,stage=receipt,source=read(out/'source_receipt.json'),
-            updates=500,global_batch=8,seed=42,lr=5e-6,maximum_actions=20,dropout=False)
+            updates=updates,global_batch=8,seed=42,lr=5e-6,maximum_actions=20,dropout=False)
         state=dict(updates=0,image_events=0);random.seed(42+rank);np.random.seed(42+rank)
         torch.manual_seed(4242+rank);torch.cuda.manual_seed(4242+rank)
         if cfg.get('resume_root'):
@@ -69,7 +71,7 @@ def worker(cfg):
             base.load_state_dict(restored['model']);optimizer.load_state_dict(restored['optimizer']);state=restored['state']
             rng=restored['rng_by_rank'][rank];random.setstate(rng['python']);np.random.set_state(rng['numpy'])
             torch.set_rng_state(rng['torch']);torch.cuda.set_rng_state(rng['cuda'],device);del restored
-        if not 0<=state['updates']<=500 or state['image_events']!=state['updates']*8:raise ValueError('Bad resume cursor')
+        if not 0<=state['updates']<=updates or state['image_events']!=state['updates']*8:raise ValueError('Bad resume cursor')
         if rank==0:save(out/'identity.json',identity)
 
         def checkpoint():
@@ -92,7 +94,7 @@ def worker(cfg):
         save(out/f'policy_replay_rank{rank}.json',dict(passed=True,max_abs=float((logp-replay).abs().max()),dropout=False))
         del x,v,vo,vr,seq,mask,logp,replay
         began=time.monotonic();initial=state['updates']
-        for step in range(initial,500):
+        for step in range(initial,updates):
             stop=torch.tensor(int(time.monotonic()>deadline-900),device=device);dist.all_reduce(stop,op=dist.ReduceOp.MAX)
             if int(stop):checkpoint();raise TimeoutError('Saved before worker cap; resume same arm only')
             local=slice(rank*4,rank*4+4);batch_ids=ids[step,local].tolist()
@@ -126,7 +128,7 @@ def worker(cfg):
                 if rank==0:
                     print('SCST',cfg['arm'],report,flush=True)
                     with (out/'training.jsonl').open('a',encoding='utf-8') as f:f.write(json.dumps(report,allow_nan=False)+'\n')
-                remaining=(time.monotonic()-began)/(step+1-initial)*(500-step-1)+900
+                remaining=(time.monotonic()-began)/(step+1-initial)*(updates-step-1)+900
                 projected_stop=torch.tensor(int(remaining>deadline-time.monotonic()),device=device)
                 dist.all_reduce(projected_stop,op=dist.ReduceOp.MAX)
                 if int(projected_stop):checkpoint();raise TimeoutError('Measured pilot projection exceeds worker cap; checkpoint preserved')
@@ -164,9 +166,10 @@ def score(cfg):
     from pycocoevalcap.bleu.bleu import Bleu
     from pycocoevalcap.rouge.rouge import Rouge
     from saved_quality_data import check_rows,chair_counts
+    updates=study_updates(cfg)
     out=Path(cfg['output']);chair=Path(cfg['chair']);refs=read(out/'validation_references.json')
     rows=read(out/'val_rank0.json')+read(out/'val_rank1.json');workers=[read(out/f'worker{r}.json') for r in (0,1)]
-    if len(refs)!=5000 or not all(w['complete'] and w['updates']==500 and w['images']==2500 for w in workers):raise ValueError('Incomplete endpoint/VALID')
+    if len(refs)!=5000 or not all(w['complete'] and w['updates']==updates and w['image_events']==updates*8 and w['images']==2500 for w in workers):raise ValueError('Incomplete endpoint/VALID')
     check_rows(rows,{r['coco_id'] for r in refs})
     ptb=PTBTokenizer();ref=ptb.tokenize({r['coco_id']:[dict(caption=c) for c in r['references']] for r in refs})
     hyp=ptb.tokenize({r['coco_id']:[dict(caption=r['caption'])] for r in rows})
@@ -180,8 +183,8 @@ def score(cfg):
         mean_words=sum(len(r['caption'].split()) for r in rows)/5000,short_le2=sum(len(r['caption'].split())<=2 for r in rows))
     if any(not np.isfinite(v) for k,v in point.items() if k!='counts'):raise ValueError('Nonfinite metric')
     save(out/'cider_per_image.json',[dict(coco_id=int(i),CIDEr=float(v)) for i,v in zip(ref,per)])
-    save(out/'result.json',dict(status='CSA_SCST_PILOT_COMPLETE',arm=cfg['arm'],updates=500,image_events=4000,
-        validation_images=5000,test_used=False,selection='fixed endpoint500; no checkpoint selection',metrics=point))
+    save(out/'result.json',dict(status='CSA_SCST_PILOT_COMPLETE',arm=cfg['arm'],updates=updates,image_events=updates*8,
+        validation_images=5000,test_used=False,selection=f'fixed endpoint{updates}; no checkpoint selection',metrics=point))
     print('CSA SCST PILOT COMPLETE',cfg['arm'],point,flush=True)
 
 
