@@ -19,14 +19,16 @@ COMMIT={commit!r}
 HASHES={hashes!r}
 FULL_ROOT=Path('/kaggle/input/datasets/ducanh2403/csa-full-roi-karpathy-v134')
 COCO_JSON=Path('/kaggle/input/datasets/vuthetam/mscoco-2014/dataset_coco.json')
-OUTPUT=Path('/kaggle/working/csa_grounding_data_audit_10k')
+PREVIOUS_SOURCE=globals().get('SOURCE')
+ANNOTATION_ARCHIVE=(Path(PREVIOUS_SOURCE)/'work'/'annotations_trainval2014.zip') if PREVIOUS_SOURCE else None
+OUTPUT=Path('/kaggle/working/csa_grounding_data_audit_10k_v2')
 if OUTPUT.exists():raise RuntimeError('Preserve previous output; use a fresh session.')
 if not FULL_ROOT.is_dir() or not COCO_JSON.is_file():raise FileNotFoundError('Attach both datasets; check FULL_ROOT and COCO_JSON before running.')
 OUTPUT.mkdir(parents=True)
 SOURCE=Path(tempfile.mkdtemp(prefix='csa-grounding-audit-'))
 LOG=OUTPUT/'notebook.log'
 CONFIG=SOURCE/'config.json'
-CONFIG.write_text(json.dumps(dict(full_root=str(FULL_ROOT),dataset_json=str(COCO_JSON),output=str(OUTPUT),work=str(SOURCE/'work'))),encoding='utf-8')
+CONFIG.write_text(json.dumps(dict(full_root=str(FULL_ROOT),dataset_json=str(COCO_JSON),output=str(OUTPUT),work=str(SOURCE/'work'),annotation_archive=str(ANNOTATION_ARCHIVE) if ANNOTATION_ARCHIVE else None)),encoding='utf-8')
 for name,expected in HASHES.items():
     data=urllib.request.urlopen(f'https://raw.githubusercontent.com/Supzxjee/Image_Captioning/{{COMMIT}}/{PREFIX}{{name}}',timeout=90).read()
     if hashlib.sha256(data).hexdigest()!=expected:raise ValueError('Changed source '+name)
@@ -69,7 +71,13 @@ finally:
             chỉ giữ nhãn của 10.000 TRAIN/restval. Không huấn luyện hoặc chấm TEST.
             Sửa FULL_ROOT/COCO_JSON nếu mount khác; không bỏ kiểm hash.
 
-            Save & Run All. Gửi `csa_grounding_data_audit_10k_review.zip`.
+            V2: annotation GT có box không dương được ghi invalid_gt và bỏ grounding cho cả
+            mention cùng lớp; vẫn giữ XE, không thay IoU/ROI/hash/cohort. Không huấn luyện lại.
+            Nếu dùng phiên cũ, chạy lại cell setup mới rồi runner và execution; source cũ
+            còn trong biến SOURCE thì archive annotation đã tải được dùng lại sau kiểm SHA.
+            Nếu mở phiên mới, chạy All. V2 kiểm lại box từ đầu, không khôi phục 5.964 ảnh
+            trước vì V1 chỉ giữ nhãn trong RAM trước khi thất bại.
+            Gửi `csa_grounding_data_audit_10k_v2_review.zip`.
             Giữ toàn bộ folder output, gồm mentions.jsonl và train10k_instances.json,
             để tái sử dụng. Trang review chưa điền nhãn; ảnh cần Internet để hiển thị.
             Hai giờ là cap CPU, không phải ETA. Không bật GPU cho notebook này.

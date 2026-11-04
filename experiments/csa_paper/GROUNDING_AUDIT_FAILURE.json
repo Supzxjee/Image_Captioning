@@ -1,0 +1,13 @@
+{
+  "status": "INCOMPLETE_GT_VALIDATION",
+  "zip_sha256": "3c1dda40be41c37b4899f6f1b1c057a76f9a1647db46c50e30b2bf16023ee562",
+  "source_commit": "45576b316b87582b82890584775cb2f321b9bb67",
+  "metadata_checks": 11,
+  "completed_images_reported": 5964,
+  "cohort_images": 10000,
+  "summary_present": false,
+  "exact_offending_annotation_unavailable": true,
+  "model_executed": false,
+  "fix": "finite nonpositive GT category => invalid_gt skip, keep nonfinite hard failure",
+  "local_fixture_tests": 16
+}

@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "/tmp/ipykernel_16/3713468306.py", line 5, in <cell line: 0>
+    run([sys.executable,'-u',SOURCE/'run_grounding_audit.py','--config',CONFIG],timeout=7200)
+    ~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/ipykernel_16/1286427793.py", line 24, in run
+    if process.wait(): raise subprocess.CalledProcessError(process.returncode, args)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+subprocess.CalledProcessError: Command '['/usr/bin/python3', '-u', PosixPath('/tmp/csa-grounding-audit-_oo5qtyi/run_grounding_audit.py'), '--config', PosixPath('/tmp/csa-grounding-audit-_oo5qtyi/config.json')]' returned non-zero exit status 1.

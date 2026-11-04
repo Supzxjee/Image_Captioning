@@ -42,6 +42,18 @@ class Checks(unittest.TestCase):
     def test_missing_gt_not_negative(self):
         self.assertEqual(positive_set(self.boxes,['predicted_roi']*3,[],2)[1],'missing_gt')
 
+    def test_degenerate_gt_skips_whole_mention(self):
+        for bad in ([0,0,0,10],[0,0,10,0],[0,0,-1,10]):
+            gt=self.gt+[dict(id=99,category_id=2,bbox=bad,iscrowd=0)]
+            p,status,_=positive_set(self.boxes,['predicted_roi']*3,gt,2)
+            self.assertEqual((p,status),([],'invalid_gt'))
+            row=list(caption_labels(['dog'],[1,4,2],['<pad>','<bos>','<eos>','<unk>','dog'],self.boxes,['predicted_roi']*3,gt,self.lookup))[0]
+            self.assertEqual(row['invalid_gt_annotations'],[dict(id=99,bbox=bad)])
+
+    def test_nonfinite_gt_still_fails(self):
+        gt=[dict(category_id=2,bbox=[0,0,float('nan'),10],iscrowd=0)]
+        with self.assertRaisesRegex(ValueError,'Nonfinite'):positive_set(self.boxes,['predicted_roi']*3,gt,2)
+
     def test_prediction_offset(self):
         vocab=['<pad>','<bos>','<eos>','<unk>','a','dog']
         row=list(caption_labels(['a','dog'],[1,4,5,2],vocab,self.boxes,['predicted_roi']*3,self.gt,self.lookup))[0]

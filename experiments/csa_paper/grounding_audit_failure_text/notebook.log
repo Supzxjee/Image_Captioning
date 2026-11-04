@@ -1,0 +1,125 @@
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 148.9/148.9 kB 4.3 MB/s eta 0:00:00
+test_all_same_class_instances_are_positive (__main__.Checks.test_all_same_class_instances_are_positive) ... ok
+test_audit_does_not_access_feature_array (__main__.Checks.test_audit_does_not_access_feature_array) ... ok
+test_complete_fixture_join_without_network_or_features (__main__.Checks.test_complete_fixture_join_without_network_or_features) ... Audited ROI boxes: 1 /10000
+{
+  "status": "CSA_GROUNDING_DATA_AUDIT_COMPLETE",
+  "images": 1,
+  "mapped_mentions": 1,
+  "counts": {
+    "captions": 1,
+    "content_tokens": 2,
+    "captions_with_mapped_mention": 1,
+    "eligible": 1
+  },
+  "positive_coverage_denominator": 1,
+  "positive_coverage": 1.0,
+  "coverage_gate_pass": true,
+  "manual_review_pending": true,
+  "training_ready": false,
+  "model_executed": false,
+  "test_used": false,
+  "seconds": 0.011406520000036835,
+  "lexicon_sha256": "23d86439e14ee24155d153f191677020e9e2b49829812acb53a617ef800e210c",
+  "cohort_sha256": "9ec2b0c8bae9c88e677855d39d4404582fbde8d7e1ba035a82f60b322586aaa0"
+}
+ok
+test_compound_blocks_dog (__main__.Checks.test_compound_blocks_dog) ... ok
+test_corrupt_boxes_fail (__main__.Checks.test_corrupt_boxes_fail) ... ok
+test_crowd_category_skipped (__main__.Checks.test_crowd_category_skipped) ... ok
+test_fallback_excluded (__main__.Checks.test_fallback_excluded) ... ok
+test_irregular_and_person_alias (__main__.Checks.test_irregular_and_person_alias) ... ok
+test_misaligned_sequence_fails (__main__.Checks.test_misaligned_sequence_fails) ... ok
+test_missing_gt_not_negative (__main__.Checks.test_missing_gt_not_negative) ... ok
+test_prediction_offset (__main__.Checks.test_prediction_offset) ... ok
+test_review_has_no_preconfirmed_answers (__main__.Checks.test_review_has_no_preconfirmed_answers) ... ok
+test_train_only_deterministic_cohort (__main__.Checks.test_train_only_deterministic_cohort) ... ok
+test_unknown_and_truncated_skip (__main__.Checks.test_unknown_and_truncated_skip) ... ok
+
+----------------------------------------------------------------------
+Ran 14 tests in 0.033s
+
+OK
+Downloading official COCO annotations only; no images/features.
+Filtered official train annotations to TRAIN cohort.
+Filtered official val annotations to TRAIN cohort.
+Audited ROI boxes: 80 /10000
+Audited ROI boxes: 150 /10000
+Audited ROI boxes: 251 /10000
+Audited ROI boxes: 342 /10000
+Audited ROI boxes: 426 /10000
+Audited ROI boxes: 506 /10000
+Audited ROI boxes: 592 /10000
+Audited ROI boxes: 670 /10000
+Audited ROI boxes: 756 /10000
+Audited ROI boxes: 850 /10000
+Audited ROI boxes: 964 /10000
+Audited ROI boxes: 1045 /10000
+Audited ROI boxes: 1130 /10000
+Audited ROI boxes: 1227 /10000
+Audited ROI boxes: 1330 /10000
+Audited ROI boxes: 1423 /10000
+Audited ROI boxes: 1520 /10000
+Audited ROI boxes: 1610 /10000
+Audited ROI boxes: 1698 /10000
+Audited ROI boxes: 1793 /10000
+Audited ROI boxes: 1877 /10000
+Audited ROI boxes: 1952 /10000
+Audited ROI boxes: 2054 /10000
+Audited ROI boxes: 2130 /10000
+Audited ROI boxes: 2216 /10000
+Audited ROI boxes: 2311 /10000
+Audited ROI boxes: 2405 /10000
+Audited ROI boxes: 2500 /10000
+Audited ROI boxes: 2592 /10000
+Audited ROI boxes: 2695 /10000
+Audited ROI boxes: 2787 /10000
+Audited ROI boxes: 2881 /10000
+Audited ROI boxes: 2964 /10000
+Audited ROI boxes: 3049 /10000
+Audited ROI boxes: 3142 /10000
+Audited ROI boxes: 3229 /10000
+Audited ROI boxes: 3327 /10000
+Audited ROI boxes: 3404 /10000
+Audited ROI boxes: 3490 /10000
+Audited ROI boxes: 3581 /10000
+Audited ROI boxes: 3656 /10000
+Audited ROI boxes: 3737 /10000
+Audited ROI boxes: 3845 /10000
+Audited ROI boxes: 3937 /10000
+Audited ROI boxes: 4003 /10000
+Audited ROI boxes: 4096 /10000
+Audited ROI boxes: 4178 /10000
+Audited ROI boxes: 4248 /10000
+Audited ROI boxes: 4346 /10000
+Audited ROI boxes: 4437 /10000
+Audited ROI boxes: 4520 /10000
+Audited ROI boxes: 4608 /10000
+Audited ROI boxes: 4697 /10000
+Audited ROI boxes: 4792 /10000
+Audited ROI boxes: 4893 /10000
+Audited ROI boxes: 4984 /10000
+Audited ROI boxes: 5070 /10000
+Audited ROI boxes: 5158 /10000
+Audited ROI boxes: 5253 /10000
+Audited ROI boxes: 5342 /10000
+Audited ROI boxes: 5423 /10000
+Audited ROI boxes: 5511 /10000
+Audited ROI boxes: 5593 /10000
+Audited ROI boxes: 5694 /10000
+Audited ROI boxes: 5768 /10000
+Audited ROI boxes: 5868 /10000
+Audited ROI boxes: 5964 /10000
+Traceback (most recent call last):
+  File "/tmp/csa-grounding-audit-_oo5qtyi/run_grounding_audit.py", line 161, in <module>
+    p=argparse.ArgumentParser();p.add_argument('--config',required=True);run(read(p.parse_args().config))
+                                                                         ~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/csa-grounding-audit-_oo5qtyi/run_grounding_audit.py", line 129, in run
+    labels=list(caption_labels(tokens,seq,vocab,b,m['region_kinds'],anns[identity],lookup))
+  File "/tmp/csa-grounding-audit-_oo5qtyi/grounding_labels.py", line 84, in caption_labels
+    p, status, gt = positive_set(boxes,kinds,annotations,row['category_id'])
+                    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/csa-grounding-audit-_oo5qtyi/grounding_labels.py", line 60, in positive_set
+    if not np.isfinite(xywh).all() or (xywh[:,2:]<=0).any(): raise ValueError('Corrupt GT')
+                                                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: Corrupt GT

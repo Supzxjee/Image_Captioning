@@ -1,0 +1,10 @@
+{
+  "commit": "45576b316b87582b82890584775cb2f321b9bb67",
+  "sha256": {
+    "grounding_labels.py": "c111eca77a9227484a4ead370d99945d4d5fd85c855380ec9469ba8649977ab1",
+    "run_grounding_audit.py": "fcfff7ced43aa33ebba7c64eda653975ad3f86c505acb26e2f45b224797f04e5",
+    "test_grounding_labels.py": "6c6bff742426561bf068a3a355bc0a541a23882d01c4a2123553eff54c44d156",
+    "SAVE_FULL_ROI_V134_PACKAGE.json": "a73636ca75806d6b1d7b4d88f80f3ce1c59b3061eb3e9a5e730097ddd89c505c",
+    "GROUNDED_ATTENTION_AUDIT_PROTOCOL.md": "330a2d7182d7cc11eda9c22ac0b88de76684f4a375bef633d72ee24091941a2e"
+  }
+}

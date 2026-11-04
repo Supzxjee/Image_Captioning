@@ -45,3 +45,13 @@ all denominators. A complete audit means preparation complete, not training-read
 After review, prepare matched XE vs XE+.1 grounding, 2,000 updates per arm from
 CSA10, fresh Adam LR1e-5, global32, same order and attention implementation. These
 pilot settings remain provisional until label review and current GPU budget.
+
+## V2 amendment after failed V1, 2026-11-04
+
+V1 stopped at the combined GT guard after 5,964 images; no actual coverage summary.
+See GROUNDING_AUDIT_FAILURE.md. Finite GT boxes with nonpositive width/height now
+make their entire category mention `invalid_gt` (no grounding), preserving XE.
+Do not simply remove the bad instance and treat remaining instances as exhaustive.
+Log invalid IDs/boxes and skip counts. Nonfinite GT still fails. Such invalid-GT
+mentions are reported separately and excluded from eligible/noncrowd-valid-GT
+proposal coverage denominator. No change to labels based on downstream metrics.

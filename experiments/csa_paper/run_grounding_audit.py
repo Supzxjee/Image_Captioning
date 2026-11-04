@@ -16,6 +16,7 @@ URL = 'https://s3.amazonaws.com/images.cocodataset.org/annotations/annotations_t
 MEMBERS = {'train':'777ef504abfeba349930485bb32ecd5b6529129a3e010f7852e1437cb049b732',
            'val':'e1b4d1bc54906827b1a029981b1c77f2088bd4462569b7615db7929070c3ab47'}
 DATA_SHA = '2fd999220673258012acfb411a4e7e66af7d488050b2519b0badcc49b7600b8d'
+ARCHIVE_SHA = '031296bbc80c45a1d1f76bf9a90ead27e94e99ec629208449507a4917a3bf009'
 
 
 def read(p): return json.loads(Path(p).read_text(encoding='utf-8'))
@@ -27,12 +28,15 @@ def sha(p):
     return h.hexdigest()
 
 
-def annotations_for(wanted, work):
+def annotations_for(wanted, work, previous_archive=None):
     import ijson
-    archive=work/'annotations_trainval2014.zip'
-    print('Downloading official COCO annotations only; no images/features.',flush=True)
-    with urlopen(URL,timeout=90) as response,archive.open('wb') as f:
-        while block:=response.read(4<<20): f.write(block)
+    archive=Path(previous_archive) if previous_archive and Path(previous_archive).is_file() else work/'annotations_trainval2014.zip'
+    if not archive.is_file():
+        print('Downloading official COCO annotations only; no images/features.',flush=True)
+        with urlopen(URL,timeout=90) as response,archive.open('wb') as f:
+            while block:=response.read(4<<20): f.write(block)
+    if sha(archive)!=ARCHIVE_SHA: raise ValueError('Changed official annotation archive')
+    print('Official archive verified (existing copy reused when present).',flush=True)
     images={}; annotations=defaultdict(list); categories=None; provenance={}
     with zipfile.ZipFile(archive) as z:
         for split, expected in MEMBERS.items():
@@ -95,7 +99,7 @@ def run(cfg):
     if sha(cfg['dataset_json'])!=DATA_SHA: raise ValueError('Changed Karpathy dataset JSON')
     dataset=read(cfg['dataset_json']);selected=cohort(dataset['images']); wanted={int(r['cocoid']):r for r in selected}
     save(out/'cohort.json',[dict(coco_id=i,filename=r['filename'],split=r['split']) for i,r in wanted.items()])
-    images,anns,categories,provenance=annotations_for(wanted,work)
+    images,anns,categories,provenance=annotations_for(wanted,work,cfg.get('annotation_archive'))
     save(out/'annotation_provenance.json',provenance); lookup=lexicon(categories);save(out/'lexicon.json',lookup)
     save(out/'train10k_instances.json',dict(images=list(images.values()),annotations=dict(anns),categories=categories))
     vocab=read(root/'vocabulary.json'); word2id={w:i for i,w in enumerate(vocab)}
@@ -146,6 +150,7 @@ def run(cfg):
         per_class={k:dict(v) for k,v in sorted(per_class.items())},positive_coverage_denominator=denom,
         positive_coverage=counts['eligible']/denom if denom else None,
         coverage_gate_pass=bool(denom and counts['eligible']/denom>=.8),manual_review_pending=True,
+        invalid_gt_policy='Skip entire category mention if any same-category noncrowd GT has nonpositive width/height; retain XE',
         training_ready=False,model_executed=False,test_used=False,seconds=time.monotonic()-start,
         checked_roi_payloads=payloads,lexicon_sha256=sha(out/'lexicon.json'),cohort_sha256=sha(out/'cohort.json'))
     save(out/'summary.json',summary)

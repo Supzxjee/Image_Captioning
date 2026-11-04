@@ -57,8 +57,11 @@ def positive_set(boxes, kinds, annotations, category):
     if any(a['iscrowd'] for a in gt): return [], 'crowd', []
     if not gt: return [], 'missing_gt', []
     xywh = np.asarray([a['bbox'] for a in gt],dtype=np.float64)
-    if not np.isfinite(xywh).all() or (xywh[:,2:]<=0).any(): raise ValueError('Corrupt GT')
+    if not np.isfinite(xywh).all(): raise ValueError('Nonfinite GT')
     target = np.concatenate((xywh[:,:2],xywh[:,:2]+xywh[:,2:]),axis=1)
+    # Official annotations can contain unusable boxes. Skip this category mention,
+    # not just the bad instance: missing an instance could create false negatives.
+    if (xywh[:,2:]<=0).any(): return [], 'invalid_gt', target.tolist()
     area = np.maximum(0,np.minimum(boxes[:,None,2:],target[None,:,2:])-
                       np.maximum(boxes[:,None,:2],target[None,:,:2])).prod(-1)
     union = (boxes[:,2:]-boxes[:,:2]).prod(-1)[:,None]+xywh[:,2:].prod(-1)[None,:]-area
@@ -83,5 +86,8 @@ def caption_labels(tokens, sequence, vocabulary, boxes, kinds, annotations, look
         else:
             p, status, gt = positive_set(boxes,kinds,annotations,row['category_id'])
             row.update(status=status, positive_regions=p, gt_boxes=gt)
+            if status == 'invalid_gt':
+                row['invalid_gt_annotations'] = [dict(id=a.get('id'),bbox=a['bbox']) for a in annotations
+                    if a['category_id']==row['category_id'] and (a['bbox'][2]<=0 or a['bbox'][3]<=0)]
         row['target_id'] = expected
         yield row
