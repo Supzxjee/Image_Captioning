@@ -15,3 +15,7 @@ Report candidate diversity, all-five-short images, rank0 short<=2words, oracle c
 ## Runtime and preservation
 
 User-run T4x2/Internet, fullROI134 Dataset, enabled Kaggle API Secret for exact161; no new Dataset needed.2h whole-notebook STOPcap with measured projection after32images/rank plus20min metrics reserve; not ETA/billing. Preserve partialJSONL/logs/reviewZIP on failure, no auto retry. Local checks metadata/NumPy/mock only; actual Torch/model/scorers user-run. Publish pinned notebook after safe checks. Results and reranker decision pending user output.
+
+## Prepared handoff
+
+Sourceb37d996; `CSA_CE161_CANDIDATE_DIAGNOSTIC_2GPU.ipynb` (11.4KB) uses11SHA-pinned files.6safe tests PASS, repeated from the isolated exactGit bundle: token/text/score replay failures, oracle alignment/ties/nonfinite rejection, FP32 padding/order, historical5000snapshot, AST/no training, VALID-only staging fixture with tamper rejection. Three notebook codecells parse; exact161 best.bin regex and<1MB notebook limit checked. Before real GPU decoding the notebook replays all5000 historical metrics on saved text. No Torch/model/scorer/API execution by author; actual runtime/quality unknown. Default SECRET_NAME=`codex`, change to actual enabled Secret name if different. Checkpoint download can be replaced with a mounted file via CHECKPOINT_ROOT, but must have the exact SHA.
