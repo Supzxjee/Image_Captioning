@@ -8,7 +8,8 @@ from make_smoke_notebook import HERE,ROOT,PREFIX,cell,RUNNER
 FILES=['grounding_pilot_data.py','grounding_model.py','run_grounding_pilot.py','test_grounding_model.py',
        'test_grounding_pilot_data.py','model.py','real_bank_data.py','full_cache_data.py','package_full_roi_dataset.py',
        'full_xe_data.py','sharing_data.py','saved_quality_data.py','SAVE_FULL_ROI_V134_PACKAGE.json',
-       'grounding_audit_v2_review_text/summary.json','GROUNDING_PILOT_PROTOCOL.md','package_grounding150.py']
+       'grounding_audit_v2_review_text/summary.json','GROUNDING_PILOT_PROTOCOL.md','package_grounding150.py',
+       'make_grounding_pilot_notebooks.py','make_smoke_notebook.py']
 
 
 def pins(commit,names):
@@ -73,7 +74,7 @@ def write(name,nb):
     print(name,target.stat().st_size,'bytes; unexecuted')
 
 
-def make(revision):
+def make(revision,pilot_only=False):
     commit=subprocess.check_output(['git','rev-parse',revision],cwd=ROOT,text=True).strip();hashes=pins(commit,FILES)
     for arm,budget in [('XE',20),('GROUND',23)]:
         setup=f'''
@@ -86,7 +87,7 @@ FULL_ROOT=Path('/kaggle/input/datasets/ducanh2403/csa-full-roi-karpathy-v134')
 AUDIT_ROOT=Path('/kaggle/input/datasets/ducanh2403/csa-grounding-audit10k-v150')
 CHECKPOINT_ROOT=Path('/kaggle/input/datasets/ducanh2403/csa-full-xe10-v139')
 RESUME_ROOT='' # Exact prior SAME-ARM output folder containing checkpoint.bin + receipt; otherwise fresh continuation.
-OUTPUT=Path('/kaggle/working/csa_grounding_pilot_'+ARM)
+OUTPUT=Path('/kaggle/working/csa_grounding_pilot_'+ARM+'_v2')
 for p in (FULL_ROOT,AUDIT_ROOT,CHECKPOINT_ROOT):
     if not p.is_dir():raise FileNotFoundError('Attach all three input Datasets before GPU: '+str(p))
 if OUTPUT.exists():raise RuntimeError('Preserve prior output; use fresh runtime/output path for resume.')
@@ -154,15 +155,21 @@ finally:
             Fixed endpoint then VALID5000 CIDEr/BLEU4/ROUGE-L/CHAIR/recall/NLL; no TEST or best selection.
             Weak labels are NOT human-verified; this is an exploratory pilot.
 
+            V2 fixes missing author-generator source required by the packaged AST test.
+            The old run stopped before training; leave RESUME_ROOT empty for that failure.
+            Output has a fresh _v2 name to preserve the failed run. Same data/weights/loss/2000updates;
+            reuse existing label Dataset, do not rerun its CPU save notebook.
+
             Parent4h stop cap, not ETA/billing guarantee. Checkpoints every500updates plus endpoint;
             preserve whole output for same-arm resume. First new session still initializes weights
             from CSA10, not fresh random weights. Both CPU cache staging and user-run neural/DDP
             preflights must pass; assistant has not run models locally.
             '''),cell('code',setup),cell('code',RUNNER.replace('Smoke active;','Grounding pilot active;')),cell('code',execute)])
         write(f'CSA_GROUNDING_{arm}_2000_2GPU.ipynb',nb)
-    save_notebook(commit)
+    if not pilot_only:save_notebook(commit)
     (HERE/'GROUNDING_PILOT_PACKAGE.json').write_text(json.dumps(dict(core_commit=commit,sha256=hashes,user_run_pending=True,source_audit_version=150),indent=2)+'\n',encoding='utf-8')
 
 
 if __name__=='__main__':
-    p=argparse.ArgumentParser();p.add_argument('revision');make(p.parse_args().revision)
+    p=argparse.ArgumentParser();p.add_argument('revision');p.add_argument('--pilot-only',action='store_true')
+    a=p.parse_args();make(a.revision,pilot_only=a.pilot_only)
