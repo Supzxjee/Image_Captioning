@@ -65,6 +65,15 @@ def copy_evaluations(root,out,files):
         if (root/name).resolve()!=target.resolve():shutil.copy2(root/name,target)
 
 
+def copy_training_log(root,out,receipt):
+    source=Path(root)/'training.jsonl';expected=receipt.get('training_log_sha256')
+    if expected is None:
+        if source.exists():raise ValueError('Unsealed resume training log')
+        return
+    if sha(source)!=expected:raise ValueError('Resume training log hash differs')
+    if source.resolve()!=(Path(out)/'training.jsonl').resolve():shutil.copy2(source,Path(out)/'training.jsonl')
+
+
 def score(cfg):
     from run_scst_pilot import score as score_phase
     from scst_pilot_data import exact_checkpoint,CHECKPOINT_SHA

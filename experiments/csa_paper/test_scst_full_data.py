@@ -6,7 +6,7 @@ import unittest
 from unittest.mock import patch
 import numpy as np
 from real_bank_data import sha
-from scst_full_data import full_schedule,local_batch,image_events,selected_name,copy_evaluations,validate_state,UPDATES,MID
+from scst_full_data import full_schedule,local_batch,image_events,selected_name,copy_evaluations,copy_training_log,validate_state,UPDATES,MID
 from scst_pilot_data import event_schedule,study_updates,seen_events
 
 
@@ -62,6 +62,11 @@ class Checks(unittest.TestCase):
             f.write_text('changed',encoding='utf-8')
             with self.assertRaises(ValueError):copy_evaluations(root,out,files)
             with self.assertRaises(ValueError):copy_evaluations(root,out,{'../escape':'x'})
+            log=root/'training.jsonl';log.write_text('history',encoding='utf-8')
+            receipt=dict(training_log_sha256=sha(log));copy_training_log(root,out,receipt)
+            self.assertEqual((out/'training.jsonl').read_bytes(),log.read_bytes())
+            log.write_text('changed',encoding='utf-8')
+            with self.assertRaises(ValueError):copy_training_log(root,out,receipt)
 
     def test_full_scoring_selection_orchestration_without_scorers(self):
         import json

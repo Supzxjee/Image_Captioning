@@ -75,9 +75,10 @@ def worker(cfg):
             rng=restored['rng_by_rank'][rank];random.setstate(rng['python']);np.random.set_state(rng['numpy'])
             torch.set_rng_state(rng['torch']);torch.cuda.set_rng_state(rng['cuda'],device);del restored
             if full:
-                from scst_full_data import copy_evaluations,MID
+                from scst_full_data import copy_evaluations,copy_training_log,MID
                 if rank==0:
                     copy_evaluations(root,out,state['validation_files'])
+                    copy_training_log(root,out,r)
                     if state['updates']>=MID:
                         mr=read(root/'mid_receipt.json')
                         if sha(root/'mid.bin')!=mr['sha256']:raise ValueError('Missing/changed MID resume weights')
@@ -97,7 +98,9 @@ def worker(cfg):
                 temp=out/'checkpoint.tmp'
                 torch.save(dict(model=base.state_dict(),optimizer=optimizer.state_dict(),state=state,identity=identity,rng_by_rank=rngs),temp)
                 os.replace(temp,out/'checkpoint.bin')
-                atomic(out/'checkpoint_receipt.json',dict(sha256=sha(out/'checkpoint.bin'),**state,arm=cfg['arm']))
+                receipt=dict(sha256=sha(out/'checkpoint.bin'),**state,arm=cfg['arm'])
+                if full:receipt['training_log_sha256']=sha(out/'training.jsonl') if (out/'training.jsonl').is_file() else None
+                atomic(out/'checkpoint_receipt.json',receipt)
                 atomic(out/'progress.json',state)
                 if tag=='mid':
                     shutil.copy2(out/'checkpoint.bin',out/'mid.bin')
