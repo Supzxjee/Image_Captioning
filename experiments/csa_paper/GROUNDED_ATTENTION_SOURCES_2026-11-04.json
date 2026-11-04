@@ -1,0 +1,215 @@
+{
+  "status": "PROPOSAL_ONLY_NOT_APPROVED_NOT_RUN",
+  "date": "2026-11-04",
+  "timezone": "Asia/Bangkok",
+  "research_question": "Can category-level word-region supervision of existing CSA decoder object attention improve CIDEr and reduce object hallucination without losing recall?",
+  "scope": "Focused comparison of three primary methods, not systematic retrieval or novelty clearance.",
+  "retrieval": {
+    "method": "Primary CVF and arXiv PDFs/landing pages; Crossref metadata for LightCap; PDF text extraction and visual equation inspection for GVD/NBT. No web search tool was available.",
+    "private_pdf_cache": "/workspace/csa-grounded-sources",
+    "full_pdfs_committed": false,
+    "network": "Configured session proxy, environment policy unrestricted; approved sandbox network access.",
+    "access_limits": [
+      {
+        "source": "AAAI publisher landing for LightCap",
+        "outcome": "HTTP 503; used author arXiv full text and Crossref title/venue/DOI metadata."
+      },
+      {
+        "source": "A guessed ICCV 2017 Improved Image Captioning paper URL",
+        "outcome": "HTTP 404; excluded from selected sources, no method claim based on it."
+      }
+    ]
+  },
+  "sources": [
+    {
+      "id": "gvd",
+      "title": "Grounded Video Description",
+      "authors": [
+        "Luowei Zhou",
+        "Yannis Kalantidis",
+        "Xinlei Chen",
+        "Jason J. Corso",
+        "Marcus Rohrbach"
+      ],
+      "venue": "CVPR 2019",
+      "landing_url": "https://openaccess.thecvf.com/content_CVPR_2019/html/Zhou_Grounded_Video_Description_CVPR_2019_paper.html",
+      "method_pdf_url": "https://openaccess.thecvf.com/content_CVPR_2019/papers/Zhou_Grounded_Video_Description_CVPR_2019_paper.pdf",
+      "pdf_fingerprint": {
+        "sha256": "025474b56ba76ea24d6f3b10f1dd2d81d8b0ffeadf2a40cfccd0f309386f9504",
+        "bytes": 668131
+      },
+      "assistant_read_scope": [
+        "Sections 4.1–4.4, equations 1–8",
+        "Section 5 including evaluation and tables 2–4",
+        "Visual inspection of PDF page 5 equations"
+      ],
+      "source_supported_claims": [
+        "Supervised attention, region classification and grounding losses alongside caption loss.",
+        "Original attention term is -sum gamma_i log alpha_i, not marginal positive-set mass.",
+        "Positive regions overlap annotated object boxes with IoU > 0.5.",
+        "Table 2 ANet validation: Unsup CIDEr 44.6 vs Sup. Attn. 47.0.",
+        "Table 4 Flickr30k Entities test: Our Unsup. (w/o SelfAttn) CIDEr 60.1 vs full GVD 62.3; not attention-only effect.",
+        "Page 6 explicitly says method not applied to COCO because of absent exact word-box correspondence and 80-category annotations."
+      ],
+      "limits_and_adaptation": [
+        "Evidence does not establish CSA/COCO CHAIR reduction.",
+        "Proposal borrows direct attention supervision, not full GVD encoding/classification/grounding architecture."
+      ],
+      "access_date": "2026-11-04",
+      "human_read_attested": false,
+      "author_code_run": false
+    },
+    {
+      "id": "nbt",
+      "title": "Neural Baby Talk",
+      "authors": [
+        "Jiasen Lu",
+        "Jianwei Yang",
+        "Dhruv Batra",
+        "Devi Parikh"
+      ],
+      "venue": "CVPR 2018",
+      "landing_url": "https://openaccess.thecvf.com/content_cvpr_2018/html/Lu_Neural_Baby_Talk_CVPR_2018_paper.html",
+      "method_pdf_url": "https://openaccess.thecvf.com/content_cvpr_2018/papers/Lu_Neural_Baby_Talk_CVPR_2018_paper.pdf",
+      "pdf_fingerprint": {
+        "sha256": "efd72f118493208a544e6eec4ee6459a988cc23f457f9727c874fb52c2c04348",
+        "bytes": 1774751
+      },
+      "assistant_read_scope": [
+        "Sections 3.1–3.4, equations 4–13, visual-word extraction",
+        "COCO visual-word annotation construction",
+        "Visual inspection of PDF page 5 equations"
+      ],
+      "source_supported_claims": [
+        "Region/sentinel pointer creates slots and lexical refinement emits visual words.",
+        "Equation 13 includes -log((1/m) sum positive region probability), coupled with refinement likelihood.",
+        "For a fixed positive set, positive mean vs sum differs by an additive log m for gradients of the region distribution.",
+        "COCO weak category-word mapping uses 80 categories and 413 fine-grained labels.",
+        "Positive proposals require IoU > 0.5 and category agreement with detector prediction; unmatched words use textual path."
+      ],
+      "limits_and_adaptation": [
+        "Proposal borrows multi-positive category matching and marginalization, not full NBT.",
+        "Removing detector category agreement and using actual CSA Transformer attention are project adaptations.",
+        "Weak category grounding does not disambiguate same-class instances."
+      ],
+      "access_date": "2026-11-04",
+      "human_read_attested": false,
+      "author_code_run": false
+    },
+    {
+      "id": "lightcap",
+      "title": "Efficient Image Captioning for Edge Devices",
+      "authors": [
+        "Ning Wang",
+        "Jiangrong Xie",
+        "Hang Luo",
+        "Qinglin Cheng",
+        "Jihao Wu",
+        "Mingbo Jia",
+        "Linlin Li"
+      ],
+      "venue": "AAAI 2023",
+      "landing_url": "https://arxiv.org/abs/2212.08985",
+      "method_pdf_url": "https://arxiv.org/pdf/2212.08985",
+      "pdf_fingerprint": {
+        "sha256": "18280bb1017577b753fb2727046884c494ea8f9b959b62ef166c9c4c8810fe83",
+        "bytes": 2336844
+      },
+      "assistant_read_scope": [
+        "Sections 3.1–3.2, equations 1–2",
+        "Start of section 3.3 for distillation scope; abstract",
+        "Crossref metadata for publication identity"
+      ],
+      "source_supported_claims": [
+        "Frozen CLIP grid features, region concept extractor projected into CLIP text space, and concept-conditioned channel modulation.",
+        "Pretraining uses caption and concept-corruption contrastive objectives; caption-only fine-tuning described.",
+        "Final system results include pretraining/distillation/ensemble effects."
+      ],
+      "limits_and_adaptation": [
+        "Concept similarity is not verified presence.",
+        "Random concept replacement may create false negatives; no adoption as absence ground truth.",
+        "Not selected for first pilot; no verified CHAIR improvement for current CSA."
+      ],
+      "access_date": "2026-11-04",
+      "human_read_attested": false,
+      "author_code_run": false,
+      "doi": "10.1609/aaai.v37i2.25359"
+    }
+  ],
+  "repo_context": {
+    "repository": "https://github.com/Supzxjee/Image_Captioning",
+    "base_commit": "44ed8830ceaa3ad684a3aba12241b3a50d9a04bf",
+    "source_fingerprints": {
+      "AGENTS.md": {
+        "sha256": "3c40b228e98dbf78bbc0d58e3f02ef857907a62391b7cb24bc5d4eddf7ff1cbc",
+        "bytes": 4592
+      },
+      "experiments/csa_paper/model.py": {
+        "sha256": "139edbb1b73caf3dadaf5c960b25542e282f88baf2ce9bdf141de922ceacbc09",
+        "bytes": 10541
+      },
+      "experiments/csa_paper/plain_model.py": {
+        "sha256": "dcb90639bd7943bea9baffca5edced2846b9e3f68d2f999491870059b7faf2de",
+        "bytes": 1645
+      },
+      "experiments/csa_paper/PLAIN_VS_CSA10_TEST_RESULT.md": {
+        "sha256": "c29de804bd763262935092af54c2aab18b2ea75845e7cbb670d54e0d923801de",
+        "bytes": 4590
+      },
+      "experiments/csa_paper/IMAGE_CONDITIONED_BANK_CANDIDATE.md": {
+        "sha256": "41ae96a41d86abb1092fd2c4925354b9b0cb1f7ffcb8b444c2b6417236d8c573",
+        "bytes": 4533
+      },
+      "experiments/noun_evidence_proposal/GS_RESULT.md": {
+        "sha256": "26cace6c684443a96b9cced049d15848ec6271087e79518435d384216a6e1085",
+        "bytes": 5308
+      },
+      "experiments/semantic_grounding_method/ASTRA_CDR_AEV_DECISION_2026-10-30.md": {
+        "sha256": "93ada45d66b4315d7fe16bccf5c90c7988246ec830c4cad8107e426de7d6424e",
+        "bytes": 9234
+      }
+    },
+    "state_read": "RESEARCH_STATE.md and RESEARCH_EXCHANGE.md through X069 before authoring X070."
+  },
+  "proposed_not_established": {
+    "mechanism": "Final decoder layer actual pre-dropout object attention, averaged across 8 heads; positive mass loss on category-matched TRAIN ROI sets.",
+    "loss": "L_XE + lambda * mean_eligible(-log sum_positive a); lambda=0.1 proposed.",
+    "labels": "All noncrowd instances of the category; IoU>=0.5 proposed; uncertain/crowd/absent-positive cases skipped for grounding only.",
+    "false_negatives": "Outside-positive regions remain implicit softmax competitors; missing annotations and low-IoU support remain risks.",
+    "pilot": "10k TRAIN audit; two matched 2000-update arms from fixed CSA10; full VALID5000; no TEST tuning.",
+    "success_thresholds": "Proposed before approval, not empirically validated; see proposal.",
+    "actual_cache_annotation_coverage": "NOT_AUDITED",
+    "memory_runtime_budget": "UNKNOWN_RECONFIRM_BEFORE_RUN",
+    "novelty": "NOT_ESTABLISHED"
+  },
+  "verification_limits": {
+    "torch_model_autograd_run": false,
+    "kaggle_run": false,
+    "trainer_notebook_written": false,
+    "metric_scorer_run": false,
+    "independent_review": "One native same-family agent technical critique; not human or cross-family verification.",
+    "skill": "academic-research-suite (focused source verification and synthesis)"
+  },
+  "artifacts": {
+    "experiments/csa_paper/GROUNDED_ATTENTION_PROPOSAL_2026-11-04.md": {
+      "sha256": "230a29e5b8f3bc04e57daf060397687d4af3b4e3b1e3e3dec090834a80e85581",
+      "bytes": 21489
+    },
+    "experiments/csa_paper/GROUNDED_ATTENTION_PIPELINE_2026-11-04.dot": {
+      "sha256": "8fab779da46741f629e8517e778dc41e701c42ffac13e7848e48765485af6cb0",
+      "bytes": 2170
+    },
+    "experiments/csa_paper/GROUNDED_ATTENTION_PIPELINE_2026-11-04.pdf": {
+      "sha256": "084b830d8e33ce1c7775beaccb49bc4bc86f8978592ab0087d41653dd784a218",
+      "bytes": 24500
+    },
+    "experiments/csa_paper/GROUNDED_ATTENTION_PIPELINE_2026-11-04.png": {
+      "sha256": "b66d3cca5f3724635ea059d4633f285e7e2439e61c66ed1ddeb44b2154fc54fa",
+      "bytes": 196798
+    },
+    "experiments/csa_paper/GROUNDED_ATTENTION_PIPELINE_2026-11-04.svg": {
+      "sha256": "2e94f8666c34be7d17db60c2f4adc839866ede2e9c86d1eb2b4f799fc659c65b",
+      "bytes": 12753
+    }
+  }
+}

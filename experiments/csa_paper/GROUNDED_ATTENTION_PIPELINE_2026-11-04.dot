@@ -1,0 +1,35 @@
+digraph CSA_grounded_attention {
+ graph [rankdir=TB, bgcolor="white", pad=0.2, nodesep=0.5, ranksep=0.5,
+        splines=polyline, fontname="Liberation Serif", fontsize=20,
+        label="Proposed CSA: category-level word–region supervision", labelloc=t];
+ node [shape=box, style="rounded", color="#333333", penwidth=1.1,
+       fontname="Liberation Serif", fontsize=16, margin="0.15,0.10"];
+ edge [color="#333333", arrowsize=0.7, fontname="Liberation Serif", fontsize=13];
+ r [label="Frozen CLIP ROI cache\nR: B × N × 768 + valid mask"];
+ enc [label="Existing projection 768 → 512\nCSA object1 → object2 → relation\nFrozen banks + learned aggregators"];
+ dec [label="Existing 3-layer parallel decoder\nFinal-layer H: B × L × 512\nObject: Q=H, K/V=Vo; relation: Q=H, K/V=Vr\nSame vector gates + FFN"];
+ pref [label="Prefix IDs\nEmbedding + positions\nTRAIN: reference shift-right\nInference: BOS / generated prefix"];
+ out [label="Existing vocabulary head\nB × L × 10,000\nNext-token distribution"];
+ cap [label="Inference: beam 5\nGenerated caption"];
+ gt [label="TRAIN-only annotations\nCaptions + GT category boxes\nCached proposal boxes / row IDs", color="#47728b"];
+ pos [label="Audited positive sets P\nAll matching category instances\nIoU ≥ 0.5; skip uncertain / no-positive", color="#47728b"];
+ align [label="ADDED training-only loss\nActual pre-dropout object attention\nA: B × 8 × L × N → head mean a\nLground = −log Σ(n in P) a[n]", color="#47728b", fillcolor="#edf4f7", style="rounded,filled"];
+ xe [label="Existing LXE\nNext-token targets", color="#47728b"];
+ total [label="L = LXE + λ Lground\nλ = 0.1 proposed for pilot\nNo new inference module", color="#47728b"];
+ r -> enc;
+ enc -> dec [label="Vo, Vr: B × N × 512"];
+ pref -> dec;
+ dec -> out;
+ out -> cap;
+ gt -> pos [color="#47728b"];
+ pos -> align [color="#47728b"];
+ dec -> align [style=dashed, color="#47728b", label="same attention used by forward"];
+ out -> xe [color="#47728b"];
+ align -> total [color="#47728b"];
+ xe -> total [color="#47728b"];
+ {rank=same; r; gt;}
+ {rank=same; enc; pos;}
+ {rank=same; pref; dec;}
+ {rank=same; out; align;}
+ {rank=same; cap; xe;}
+}
