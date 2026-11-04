@@ -42,11 +42,24 @@ def worker(a):
     rank=int(os.environ['LOCAL_RANK'])
     if int(os.environ['WORLD_SIZE'])!=2 or torch.cuda.device_count()!=2:raise ValueError('Select T4x2')
     torch.cuda.set_device(rank);device=torch.device('cuda',rank);torch.backends.cuda.matmul.allow_tf32=False;torch.backends.cudnn.allow_tf32=False
-    arrays,metadata,vocab=load_test(a.output);path=unique_file(a.checkpoint_root,'checkpoint.bin',CHECKPOINT_SHA)
+    arrays,metadata,vocab=load_test(a.output)
+    arm=getattr(a,'arm','csa')
+    if arm=='plain':
+        from plain_test_data import PLAIN_SHA,exact_file
+        if read(a.output/'test_receipt.json')!=read(HERE/'csa10_test_review_text/test_receipt.json'):raise ValueError('PlainTEST cache differs from CSA TEST')
+        checkpoint_sha=PLAIN_SHA;path=exact_file(a.checkpoint_root,'checkpoint.bin',checkpoint_sha)
+    else:checkpoint_sha=CHECKPOINT_SHA;path=unique_file(a.checkpoint_root,'checkpoint.bin',checkpoint_sha)
     # Exact original user checkpoint SHA is verified before loading its optimizer/RNG pickle.
     ck=torch.load(path,map_location='cpu',weights_only=False);original,_=saved_text()
-    if ck['identity']!=json.loads(original['input_identity.json']) or ck['state']['updates']!=177110 or ck['state']['epoch']!=11:raise ValueError('Not fixed CSAepoch10 checkpoint')
-    base=CSACaptioner(Config(vocab=10000),ck['model']['nouns'],ck['model']['verbs']);base.load_state_dict(ck['model'],strict=True);del ck
+    expected_identity=read(HERE/'plain10_review_text/input_identity.json') if arm=='plain' else json.loads(original['input_identity.json'])
+    if arm=='plain' and any(sha(HERE/n)!=expected_identity['source'][n] for n in ('model.py','plain_model.py')):
+        raise ValueError('Plain inference architecture source differs from training')
+    if ck['identity']!=expected_identity or ck['state']['updates']!=177110 or ck['state']['epoch']!=11:raise ValueError('Not fixed epoch10 checkpoint/identity')
+    if arm=='plain':
+        from plain_model import PlainCaptioner
+        base=PlainCaptioner(Config(vocab=10000))
+    else:base=CSACaptioner(Config(vocab=10000),ck['model']['nouns'],ck['model']['verbs'])
+    base.load_state_dict(ck['model'],strict=True);del ck
     base.to(device).eval().requires_grad_(False);indices=list(range(rank,5000,2));rows=[];start=time.monotonic();nll_sum=0.;nll_tokens=0
     with torch.inference_mode():
         for offset in range(0,len(indices),8):
@@ -68,7 +81,7 @@ def worker(a):
     check_rows(rows,{metadata[i]['coco_id'] for i in indices})
     save(a.output/f'test_rank{rank}.json',rows)
     save(a.output/f'test_worker{rank}.json',dict(complete=True,images=len(rows),nll_sum=nll_sum,nll_tokens=nll_tokens,seconds=time.monotonic()-start,
-        checkpoint_sha256=CHECKPOINT_SHA,epoch=10,optimizer_steps=0,beam=5,max_new_tokens=20,test_used=True))
+        checkpoint_sha256=checkpoint_sha,epoch=10,optimizer_steps=0,beam=5,max_new_tokens=20,test_used=True))
 
 
 def score(a):
@@ -91,11 +104,17 @@ def score(a):
         NLL=sum(w['nll_sum'] for w in workers)/sum(w['nll_tokens'] for w in workers),
         mean_words=sum(len(r['caption'].split()) for r in rows)/5000,short_le2=sum(len(r['caption'].split())<=2 for r in rows))
     if not all(math.isfinite(v) for k,v in point.items() if k!='counts'):raise ValueError('Nonfinite TEST score')
-    save(a.output/'result.json',dict(status='CSA10_KARPATHY_TEST_COMPLETE',metrics=point,images=5000,checkpoint_sha256=CHECKPOINT_SHA,
+    arm=getattr(a,'arm','csa')
+    checkpoint_sha=CHECKPOINT_SHA
+    if arm=='plain':
+        from plain_test_data import PLAIN_SHA
+        checkpoint_sha=PLAIN_SHA
+    save(a.output/'result.json',dict(status='PLAIN10_KARPATHY_TEST_COMPLETE' if arm=='plain' else 'CSA10_KARPATHY_TEST_COMPLETE',metrics=point,images=5000,checkpoint_sha256=checkpoint_sha,
         epoch=10,beam=5,max_new_tokens=20,training=False,checkpoint_selection='locked exact epoch10 beforeTEST',test_used=True))
     print('KARPATHY TEST5000',point,flush=True)
 
 
 if __name__=='__main__':
     p=argparse.ArgumentParser();p.add_argument('mode',choices=('worker','score'));p.add_argument('--output',type=Path,required=True)
+    p.add_argument('--arm',choices=('csa','plain'),default='csa')
     p.add_argument('--checkpoint-root',type=Path);p.add_argument('--chair',type=Path);a=p.parse_args();globals()[a.mode](a)
