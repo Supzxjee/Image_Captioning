@@ -22,3 +22,9 @@ Giữ toàn bộ `/kaggle/working/csa_prompt_text_cache_v2` trong Output169, đ�
 Tiếp theo: chuẩn bị cùng đầu vào cho hai tài khoản, rồi hai nhánh **CONTROL / PROMPT, cùng checkpoint161, 500 update × global batch8 = 4.000 lượt ảnh**, giữ bank danh từ/động từ, cùng CE + 0,05 SCST. Kiểm checkpoint thật/CUDA/DDP trước train; VALID5000, chưa mở TEST. Người dùng báo còn 15 giờ GPU; chưa phân biệt mỗi tài khoản hay tổng, không tự cộng thành 30 giờ. Notebook lưu tài sản dùng CPU, không cần ngân sách GPU.
 
 Lượt cache đầu thiếu `review_examples.json` được giữ trong lịch sử; V2 đã tải đủ và hoàn tất. Không cần phục hồi hoặc chạy lại lượt lỗi.
+
+## Phát hành và nhật ký
+
+[Notebook lưu đầu vào](SAVE_CSA_PROMPT_INPUTS_V169_DATASET.ipynb) đã phát hành ở commit `f546fd3`: CPU/Internet/Secret `codex`, tải đúng169 và chỉ best161, kiểm 10 file cache + một trọng số; không giải tuần tự trọng số. Bốn fixture metadata/NumPy/transport/static PASS, gồm thiếu payload, sai checkpoint, không ghi đè và regex đủ file; notebook 11.9KB, outputs rỗng. Chưa chạy API tải/upload hoặc tạo Dataset bởi tác giả. Sau khi Dataset xử lý xong cần path mount thực tế để điền hai notebook pilot.
+
+Đã cập nhật và đọc lại tab **Kết quả mới** P03 (`M15:P15`), ghi bước tiếp ở P01 (`O16`), cùng R249 của **Experiment Registry**. Số liệu caption để trống, validation trạng thái giữ nguyên; đã xem cả hai tab trên giao diện Google Sheets ở zoom100%. Các điểm TEST/VALID lịch sử không thay đổi.
