@@ -31,6 +31,22 @@ def resolve_inputs(cfg,locked=None):
     return checkpoint,files
 
 
+def rebuild_cache(cfg,locked=None):
+    from prepare_test_regions import prepare as original_prepare
+    locked=locked or read(HERE/'RERANK_TEST_INPUTS.json')
+    visual=Path(cfg['visual_cache']);root=Path(cfg['test_root'])
+    if not visual.is_dir():raise FileNotFoundError('Add original visual-cache H5 Dataset before restoring TEST cache: '+str(visual))
+    if root.exists():raise ValueError('Preserve existing TEST restoration output; no automatic retry')
+    root.mkdir(parents=True)
+    image_root=Path(cfg['coco_root'])/'images'
+    if not image_root.is_dir():image_root=Path(cfg['coco_root'])
+    original_prepare(dict(dataset_json=cfg['dataset_json'],detections=cfg['detections'],visual_cache=str(visual),image_root=str(image_root),output=str(root)))
+    for n,h in locked['test_receipt']['files'].items():exact_file(root,n,h)
+    save(Path(cfg['output'])/'cache_restoration.json',dict(status='EXACT_TEST_CACHE_RESTORED',mode='original_H5_CPU_pooling',
+        reference_cache_version=locked['test_cache_version'],file_sha256=locked['test_receipt']['files'],neural_extraction=False))
+    print('Restored TEST NPZ/metadata/vocab byte-for-byte match prelocked reference; no model forward.',flush=True)
+
+
 def prepare(cfg):
     from PIL import Image
     out=Path(cfg['output']);locked=read(HERE/'RERANK_TEST_INPUTS.json');checkpoint,files=resolve_inputs(cfg,locked)
@@ -61,7 +77,8 @@ def prepare(cfg):
     save(out/'inference_inputs.json',payload);save(out/'test_references.json',refs)
     save(out/'test_lock.json',dict(status='CSA161_FIXED_RERANK_TEST_LOCKED',test_used=True,training=False,
         checkpoint=str(checkpoint),checkpoint_sha256=locked['checkpoint_sha256'],checkpoint_version=locked['checkpoint_version'],
-        cache_version=locked['test_cache_version'],cache_files={n:str(p) for n,p in files.items()},cache_sha256=locked['test_receipt']['files'],
+        cache_version=locked['test_cache_version'],cache_input_mode=cfg.get('test_cache_mode','verified_mounted'),
+        cache_files={n:str(p) for n,p in files.items()},cache_sha256=locked['test_receipt']['files'],
         images=5000,beam=5,max_new_tokens=20,selector=locked['frozen_selector'],clip=locked['clip'],
         inference_sha256=sha(out/'inference_inputs.json'),references_sha256=sha(out/'test_references.json'),
         policy_selection='two prelocked policies; no TEST tuning/fallback; prior project TEST exposure declared'))

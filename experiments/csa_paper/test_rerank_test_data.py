@@ -4,12 +4,32 @@ import json
 from pathlib import Path
 import tempfile
 import unittest
+from unittest.mock import patch
+from types import SimpleNamespace
 import numpy as np
 from real_bank_data import read,save,sha
-from rerank_test_data import resolve_inputs,fixed_rank,read_beams,load_features,checked_lock
+from rerank_test_data import resolve_inputs,fixed_rank,read_beams,load_features,checked_lock,rebuild_cache
 
 
 class Checks(unittest.TestCase):
+    def test_cpu_restoration_requires_original_cache_and_exact_bytes(self):
+        with tempfile.TemporaryDirectory() as d:
+            root=Path(d);visual=root/'h5';visual.mkdir();output=root/'out';output.mkdir()
+            payloads={n:n.encode() for n in ('test_regions.npz','test_metadata.json','vocabulary.json')}
+            import hashlib
+            expected=dict(test_cache_version='reference143',test_receipt=dict(files={n:hashlib.sha256(v).hexdigest() for n,v in payloads.items()}))
+            cfg=dict(visual_cache=str(visual),test_root=str(root/'cache'),coco_root=str(root),dataset_json='fixture.json',detections='fixture_detector.json',output=str(output))
+            def fake_prepare(c):
+                for n,raw in payloads.items():(Path(c['output'])/n).write_bytes(raw)
+            with patch.dict('sys.modules',{'prepare_test_regions':SimpleNamespace(prepare=fake_prepare)}):
+                rebuild_cache(cfg,expected)
+                self.assertEqual(read(output/'cache_restoration.json')['mode'],'original_H5_CPU_pooling')
+                with self.assertRaises(ValueError):rebuild_cache(cfg,expected)
+                cfg['test_root']=str(root/'wrong_cache');payloads['test_regions.npz']=b'changed'
+                with self.assertRaises(ValueError):rebuild_cache(cfg,expected)
+                cfg['test_root']=str(root/'third_cache');cfg['visual_cache']=str(root/'missing')
+                with self.assertRaises(FileNotFoundError):rebuild_cache(cfg,expected)
+
     def test_lock_rejects_test_time_policy_changes(self):
         expected=read(Path(__file__).with_name('RERANK_TEST_INPUTS.json'))
         with tempfile.TemporaryDirectory() as d:

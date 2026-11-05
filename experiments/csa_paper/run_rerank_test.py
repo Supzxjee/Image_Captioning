@@ -9,7 +9,7 @@ import time
 import numpy as np
 from real_bank_data import read,save,sha
 from candidate_data import MODEL_SHA,content,image_batch
-from rerank_test_data import prepare,load_features,read_beams,fixed_rank,checked_lock,POLICIES
+from rerank_test_data import prepare,rebuild_cache,load_features,read_beams,fixed_rank,checked_lock,POLICIES
 
 
 def prefetch(cfg):
@@ -150,5 +150,5 @@ def score(cfg):
 
 
 if __name__=='__main__':
-    p=argparse.ArgumentParser();p.add_argument('mode',choices=['prepare','prefetch','decode','text_preflight','worker','score']);p.add_argument('--config',required=True)
+    p=argparse.ArgumentParser();p.add_argument('mode',choices=['rebuild_cache','prepare','prefetch','decode','text_preflight','worker','score']);p.add_argument('--config',required=True)
     a=p.parse_args();globals()[a.mode](read(a.config))

@@ -7,7 +7,9 @@ from make_smoke_notebook import HERE,ROOT,PREFIX,cell,RUNNER
 
 FILES=['rerank_test_data.py','run_rerank_test.py','test_rerank_test_data.py','make_rerank_test_notebook.py',
     'RERANK_TEST_PROTOCOL.md','RERANK_TEST_INPUTS.json','make_smoke_notebook.py','real_bank_data.py',
-    'candidate_data.py','rerank_data.py','plain_test_data.py','full_xe_decode.py','saved_quality_data.py','model.py']
+    'candidate_data.py','rerank_data.py','plain_test_data.py','full_xe_decode.py','saved_quality_data.py','model.py',
+    'prepare_test_regions.py','prepare_real_assets.py','audit_assets.py','data.py','run_best9_decode.py',
+    'best9_saved_text.json.gz','BEST9_SAVED_TEXT_PACKAGE.json','SAVE_XE139_PACKAGE.json','full_roi_review_text/input_receipt.json']
 EXTERNAL=['captioning/__init__.py','captioning/multiscore_reranking.py','captioning/object_consistency.py']
 
 
@@ -22,12 +24,14 @@ COCO_ROOT=Path('/kaggle/input/datasets/vuthetam/mscoco-2014')
 DATASET_JSON=COCO_ROOT/'dataset_coco.json'
 DETECTIONS=Path('/kaggle/input/datasets/ducanh2403/objectdetectionecache/objectdetectioncache.json')
 CHECKPOINT_ROOT='' # Optional mounted root containing exact161 best.bin; otherwise download your own exact161.
-TEST_ROOT='' # Optional mounted exact143 cache; otherwise download your own exact143.
+TEST_ROOT='' # Optional mounted exact TEST cache; otherwise CPU restore from original raw H5, exact byte hashes required.
+VISUAL_CACHE=Path('/kaggle/input/datasets/ducanh2403/visual-cache')
 SECRET_NAME='codex' # Enabled API Secret name. Change if yours is KAGGLE_API_TOKEN.
 WALL_HOURS=2 # STOP cap, not ETA or billing. Last reported quota16h before VALID164.
-OUTPUT=Path('/kaggle/working/csa_ce161_fixed_rerank_test5000')
+OUTPUT=Path('/kaggle/working/csa_ce161_fixed_rerank_test5000_v2')
 for p in (COCO_ROOT,DATASET_JSON,DETECTIONS):
     if not p.exists():raise FileNotFoundError('Attach the same2rawDatasets as164 before GPU: '+str(p))
+if not TEST_ROOT and not VISUAL_CACHE.is_dir():raise FileNotFoundError('Add THIRD Dataset visual-cache for CPU TEST restoration: '+str(VISUAL_CACHE))
 if OUTPUT.exists():raise RuntimeError('Preserve previous output/scores; fresh runtime/path required.')
 if min(shutil.disk_usage('/tmp').free,shutil.disk_usage('/kaggle/working').free)<6*1024**3:raise RuntimeError('Need6GiB free for immutable inputs/CLIP assets.')
 GPU=json.loads(subprocess.check_output([sys.executable,'-c',"import json,torch;print(json.dumps(dict(built=torch.backends.cuda.is_built(),available=torch.cuda.is_available(),count=torch.cuda.device_count())))"],text=True,timeout=60))
@@ -53,11 +57,18 @@ try:
     locked=json.loads((SOURCE/'RERANK_TEST_INPUTS.json').read_text(encoding='utf-8'))
     downloads=[]
     if not CHECKPOINT_ROOT:
+        from plain_test_data import exact_file
+        prior=Path('/kaggle/working/csa_ce161_fixed_rerank_test5000/inputs161')
+        if prior.is_dir():
+            try:
+                reused=exact_file(prior,'best.bin',locked['checkpoint_sha256']);CHECKPOINT_ROOT=str(reused.parent)
+                print('Reusing verified161weights already downloaded:',reused,flush=True)
+            except ValueError:pass
+    if not CHECKPOINT_ROOT:
         CHECKPOINT_ROOT=str(OUTPUT/'inputs161');Path(CHECKPOINT_ROOT).mkdir()
         downloads.append((locked['checkpoint_version'],CHECKPOINT_ROOT,r'(^|/)best\.bin$'))
-    if not TEST_ROOT:
-        TEST_ROOT=str(OUTPUT/'inputs143');Path(TEST_ROOT).mkdir()
-        downloads.append((locked['test_cache_version'],TEST_ROOT,r'(^|/)(test_regions\.npz|test_metadata\.json|vocabulary\.json)$'))
+    restore_cache=not bool(TEST_ROOT)
+    if restore_cache:TEST_ROOT=str(OUTPUT/'restored_test_cache')
     if downloads:
         run([sys.executable,'-m','pip','install','-q','kaggle==2.2.5'],timeout=300)
         routing="""
@@ -66,14 +77,14 @@ from unittest.mock import patch
 from kaggle.api.kaggle_api_extended import KaggleApi
 import tempfile
 api=KaggleApi()
-for version in ('161','143'):
+for version in ('161',):
     with tempfile.TemporaryDirectory() as directory,patch.object(api,'build_kaggle_client') as factory:
         endpoint=factory.return_value.__enter__.return_value.kernels.kernels_api_client.list_kernel_session_output
         endpoint.return_value=SimpleNamespace(files=[],next_page_token=None,log=None)
         api.kernels_output('ducanh2403/2-vi-cai-kia-qua-nhieu/'+version,path=directory)
         request=endpoint.call_args.args[0]
         assert (request.user_name,request.kernel_slug,request.version_label)==('ducanh2403','2-vi-cai-kia-qua-nhieu','v'+version)
-print('Exact own161/143 API routing mock PASS; no network.',flush=True)
+print('Exact own161 API routing mock PASS; no143cache download.',flush=True)
 """
         run([sys.executable,'-c',routing],timeout=60)
         from kaggle_secrets import UserSecretsClient
@@ -83,14 +94,19 @@ print('Exact own161/143 API routing mock PASS; no network.',flush=True)
         for key in ('KAGGLE_API_TOKEN','KAGGLE_USERNAME','KAGGLE_KEY'):env.pop(key,None)
         env['KAGGLE_API_TOKEN']=token;env['PYTHONUNBUFFERED']='1'
         for version,directory,pattern in downloads:
-            if version not in ('ducanh2403/2-vi-cai-kia-qua-nhieu/161','ducanh2403/2-vi-cai-kia-qua-nhieu/143'):raise ValueError('No latest/version fallback.')
+            if version!='ducanh2403/2-vi-cai-kia-qua-nhieu/161':raise ValueError('No latest/version fallback.')
             print('Downloading frozen own input',version,flush=True)
             command=[sys.executable,'-c','from kaggle.cli import main; main()','kernels','output',version,'-p',directory,'--file-pattern',pattern]
             subprocess.run(command,env=env,check=True,timeout=900)
         env.pop('KAGGLE_API_TOKEN',None);del env,token
     cfg=dict(checkpoint_root=CHECKPOINT_ROOT,test_root=TEST_ROOT,coco_root=str(COCO_ROOT),dataset_json=str(DATASET_JSON),detections=str(DETECTIONS),
-        output=str(OUTPUT),chair=str(CHAIR),model_cache=str(SOURCE/'model_cache'))
+        output=str(OUTPUT),chair=str(CHAIR),model_cache=str(SOURCE/'model_cache'),visual_cache=str(VISUAL_CACHE),
+        test_cache_mode='CPU_original_H5_exact_byte_match' if restore_cache else 'verified_mounted')
     CONFIG.write_text(json.dumps(cfg),encoding='utf-8')
+    if restore_cache:
+        remaining=DEADLINE-time.monotonic()-1800
+        if remaining<1800:raise TimeoutError('Insufficient CPU restoration/inference reserve; preserve weights.')
+        run([sys.executable,'-u',SOURCE/'run_rerank_test.py','rebuild_cache','--config',CONFIG],timeout=min(3720,remaining))
     run([sys.executable,'-u',SOURCE/'run_rerank_test.py','prepare','--config',CONFIG],timeout=min(900,DEADLINE-time.monotonic()))
     run([sys.executable,'-m','pip','install','-q','pycocoevalcap==1.2','nltk==3.9.2','future'],timeout=300)
     run([sys.executable,'-m','pip','install','-q','--no-deps','git+https://github.com/clips/pattern.git@af754685cca3713db0abc4f020f2e94467c19d85'],timeout=300)
@@ -134,10 +150,13 @@ finally:
 '''
     intro='''# CSA161 — TEST5000 có và không reranking, cấu hình đã khóa
     Chạy trên **notebook của bạn**, **T4x2**, Internet ON, Save Version → Save & Run All.
-    Attach2Datasets như lượt164: **mscoco-2014 có JPEG + dataset_coco.json** và **objectdetectionecache**.
+    Attach3Datasets: **mscoco-2014 có JPEG + dataset_coco.json**, **objectdetectionecache**, **visual-cache gốc**.
     Bật Secret API (mặc định `codex`, sửa cell đầu nếu tên khác).
-    Tự tải đúng **best.bin161** và **cache TEST143** của chính bạn, kiểm SHA trước khi chạy.
-    Không cần Dataset checkpoint mới, ROI134, bank, visualH5 hay BLIP.
+    Tái dùng best.bin161 đã tải trong phiên lỗi nếu còn, hoặc tải đúng161. Giữ output cũ, ghi folder **_v2**.
+    Version143 không trả file cache: tạo lại TESTROI bằng CPU từ visual-cache H5 gốc, dùng đúng mã cũ;
+    bắt buộc NPZ/metadata/vocab khớp cả ba SHA đã chốt. Không chạy lại CLIP hay train để tạo cache.
+    Nếu đã có cache TEST đúng SHA được mount, điền TEST_ROOT để bỏ qua CPU restore/visual-cache.
+    Không cần Dataset checkpoint mới, ROI134, bank hay BLIP. CPU pooling cũ từng khoảng23phút, không đảm bảo thời gian.
 
     Bộ ứng viên163 là VALID nên không dùng làm TEST. Lượt này sinh5câu cho5000TESTảnh một lần,
     rồi so cùng checkpoint: decoder rank0 và công thức cũ .3decoder+.4CLIP+.3đối tượng.
