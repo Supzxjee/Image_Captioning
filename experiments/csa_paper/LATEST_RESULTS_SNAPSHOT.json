@@ -1,5 +1,5 @@
 {
-  "date": "2026-11-05",
+  "date": "2026-11-06",
   "scale": "CIDEr/BLEU/ROUGE ×100; CHAIR/Recall percent; blanks mean not measured",
   "headers": [
     "ID",
@@ -258,7 +258,7 @@
       "P04",
       "Full cache prompt trước XE từ đầu",
       "TRAIN113287 + VALID5000",
-      "CPU: tạo lại toàn bộ cache",
+      "CPU cache xong; chưa train",
       null,
       null,
       null,
@@ -267,10 +267,10 @@
       null,
       null,
       null,
-      "Chuẩn bị",
-      "Fresh V3 / chưa chạy",
-      "Theo yêu cầu mới: tạo lại mapping118.287 ảnh và encode toàn bộ text từ ROI134/UPT/detector. Không169/API/output173.24safe testsPASS; cache thực chưa chạy.",
-      "https://github.com/Supzxjee/Image_Captioning/blob/main/experiments/csa_paper/CSA_PROMPT_FULL_CACHE_FRESH_CPU.ipynb"
+      "Hoàn tất",
+      "175 / fresh V3",
+      "118.287 ảnh;410 text×512D mã hóa mới. TRAIN335.723 object slots/54.574 relation links.51metadata checksPASS;3payload đầy đủ sẽ kiểm khi lưu Dataset. Chưa đo caption.",
+      "https://github.com/Supzxjee/Image_Captioning/blob/main/experiments/csa_paper/FULL_PROMPT_FRESH_V175_RESULT.md"
     ]
   ]
 }

@@ -1,5 +1,9 @@
 # Đưa prompt vào từ đầu giai đoạn XE
 
+## Cập nhật06/11 — cache full mới hoàn tất, nguồn175
+
+Người dùng thay kế hoạch incremental/recovery bằng rebuild toàn bộ từ đầu. Cache175 đã báo COMPLETE:113287TRAIN+5000VALID,410text×512float32, frozenCLIPCPU, noTEST/no caption training. Không reuse169 hoặc yêu cầu record mới giống169. Các phần incremental bên dưới là lịch sử, không phải hướng tiếp tục. Review ZIP/metadata/source51checksPASS; prompt_links/prompt_texts/embeddings đầy đủ không có trong ZIP nhỏ, sẽ kiểm cả14fileSHA và hình dạng/norm vectors trong bước lưu Dataset175. Chuẩn bị notebook CPU transport đúng175, không chạy lại cache/model; giữ nguyên bytes và tạo Dataset Private, không checkpoint cũ. Sau khi có path Dataset, mới chuẩn bị hai notebook freshXE cùnginit/banks130/ROI134; sốepoch và ngân sách mới vẫn chưa chốt.
+
 05/11/2026. Người dùng đồng ý chuyển sang huấn luyện captioner từ đầu, sau khi pilot fine-tune161 cho chênh CIDEr +0,2251điểm có CI chứa0 và zero/roll/off không đổi0/64caption. Đây là giả thuyết về cách học, chưa chứng minh fine-tune là nguyên nhân prompt yếu hoặc scratch sẽ tăng điểm. Thay ưu tiên rerank172/56 bằng xây dựng đối chứng scratch; giữ nguyên các kết quả cũ.
 
 ## Đã chốt
