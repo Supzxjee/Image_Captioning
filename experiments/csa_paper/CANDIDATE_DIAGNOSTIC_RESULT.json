@@ -1,0 +1,173 @@
+{
+  "status": "CANDIDATE_STORED_TEXT_AUDIT_PASS",
+  "checks": 73,
+  "source": "43f48dad830744e2c0cffe71c8ae1bc1a7bf1ac9",
+  "zip_sha256": "6a224d60284a9fc6dd9fd20fbf914139eef0b3e94c882d9918106b9458cba19f",
+  "metrics": {
+    "rank0": {
+      "CIDEr": 1.0631029131024006,
+      "Bleu_4": 0.34829378731737376,
+      "ROUGE_L": 0.5449286537695498,
+      "CHAIRs": 0.052,
+      "CHAIRi": 0.03736878936319104,
+      "Recall": 0.4053867403314917,
+      "counts": {
+        "images": 5000,
+        "hallucinated_captions": 260,
+        "hallucinated_mentions": 267,
+        "object_mentions": 7145,
+        "recalled_unique": 6457,
+        "reference_unique": 15928
+      },
+      "short_le2": 407
+    },
+    "rank1": {
+      "CIDEr": 1.0653454546063668,
+      "Bleu_4": 0.3440433017852529,
+      "ROUGE_L": 0.5502171129310088,
+      "CHAIRs": 0.0568,
+      "CHAIRi": 0.038602460088981945,
+      "Recall": 0.4197011551983928,
+      "counts": {
+        "images": 5000,
+        "hallucinated_captions": 284,
+        "hallucinated_mentions": 295,
+        "object_mentions": 7642,
+        "recalled_unique": 6685,
+        "reference_unique": 15928
+      },
+      "short_le2": 141
+    },
+    "rank2": {
+      "CIDEr": 1.0553959888770488,
+      "Bleu_4": 0.3334075185693786,
+      "ROUGE_L": 0.5507456926817915,
+      "CHAIRs": 0.0672,
+      "CHAIRi": 0.04386072083078803,
+      "Recall": 0.43200652938222,
+      "counts": {
+        "images": 5000,
+        "hallucinated_captions": 336,
+        "hallucinated_mentions": 359,
+        "object_mentions": 8185,
+        "recalled_unique": 6881,
+        "reference_unique": 15928
+      },
+      "short_le2": 31
+    },
+    "rank3": {
+      "CIDEr": 1.0321820123418712,
+      "Bleu_4": 0.31841340014968894,
+      "ROUGE_L": 0.5472244445044347,
+      "CHAIRs": 0.0662,
+      "CHAIRi": 0.042491605881671876,
+      "Recall": 0.44010547463586136,
+      "counts": {
+        "images": 5000,
+        "hallucinated_captions": 331,
+        "hallucinated_mentions": 367,
+        "object_mentions": 8637,
+        "recalled_unique": 7010,
+        "reference_unique": 15928
+      },
+      "short_le2": 4
+    },
+    "rank4": {
+      "CIDEr": 0.9856379761042017,
+      "Bleu_4": 0.3001193653470919,
+      "ROUGE_L": 0.5410501888866817,
+      "CHAIRs": 0.071,
+      "CHAIRi": 0.04309143530925073,
+      "Recall": 0.4502134605725766,
+      "counts": {
+        "images": 5000,
+        "hallucinated_captions": 355,
+        "hallucinated_mentions": 402,
+        "object_mentions": 9329,
+        "recalled_unique": 7171,
+        "reference_unique": 15928
+      },
+      "short_le2": 0
+    },
+    "reference_oracle_diagnostic_only": {
+      "CIDEr": 1.4143435882055704,
+      "Bleu_4": 0.46700776527065735,
+      "ROUGE_L": 0.621427554936197,
+      "CHAIRs": 0.0484,
+      "CHAIRi": 0.03263608870967742,
+      "Recall": 0.4469487694625816,
+      "counts": {
+        "images": 5000,
+        "hallucinated_captions": 242,
+        "hallucinated_mentions": 259,
+        "object_mentions": 7936,
+        "recalled_unique": 7119,
+        "reference_unique": 15928
+      },
+      "short_le2": 61
+    }
+  },
+  "oracle_headroom_publication_points": 35.12406751031698,
+  "changes": {
+    "changed_captions": 3835,
+    "strictly_higher_per_image_cider": 3835,
+    "CHAIR_repairs": 79,
+    "CHAIR_new_flags": 61,
+    "short_to_long": 347,
+    "long_to_short": 1
+  },
+  "oracle_rank_counts": {
+    "0": 1165,
+    "1": 1133,
+    "2": 1038,
+    "3": 927,
+    "4": 737
+  },
+  "unique_candidate_histogram": {
+    "1": 0,
+    "2": 0,
+    "3": 0,
+    "4": 0,
+    "5": 5000
+  },
+  "all_five_short": 0,
+  "workers": [
+    {
+      "complete": true,
+      "images": 2500,
+      "rank0_replayed": 2500,
+      "max_score_error": 0.0,
+      "checkpoint_sha256": "58ce5dc0e30ac26add9bac8e24a2e9e03b91532bfdeece588997395bf9cfc16b",
+      "candidates_sha256": "9010f88223114d0a0681519094f1c1e26e7d799317163250380573f06ee54bf4",
+      "seconds": 221.403651598,
+      "torch_version": "2.11.0+cu128"
+    },
+    {
+      "complete": true,
+      "images": 2500,
+      "rank0_replayed": 2500,
+      "max_score_error": 0.0,
+      "checkpoint_sha256": "58ce5dc0e30ac26add9bac8e24a2e9e03b91532bfdeece588997395bf9cfc16b",
+      "candidates_sha256": "7b3504629110403f01149815cd179d103d1aa6179871fc26ae1e546517dff8ec",
+      "seconds": 219.80018015000002,
+      "torch_version": "2.11.0+cu128"
+    }
+  ],
+  "mean_words": {
+    "rank0": 8.4164,
+    "rank1": 8.989,
+    "rank2": 9.713,
+    "rank3": 10.5338,
+    "rank4": 11.6404,
+    "reference_oracle_diagnostic_only": 9.3776
+  },
+  "test_used": false,
+  "actual_reranking": false,
+  "oracle_uses_references": true,
+  "limitations": [
+    "No author model/scorer execution; BLEU/ROUGE oracle values are stored user-run outputs, not independently recomputed.",
+    "Checkpoint/feature binary payloads absent from ZIP; SHA checks are recorded user-run evidence.",
+    "Oracle is reference-dependent CIDEr upper bound within these five beams, not an inference-only method or upper bound for minimum hallucination.",
+    "CHAIR evaluates object mentions, not all relation/attribute correctness; no human quality confirmation."
+  ]
+}
