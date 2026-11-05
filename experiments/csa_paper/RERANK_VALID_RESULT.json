@@ -1,0 +1,206 @@
+{
+  "status": "RERANK_STORED_TEXT_AUDIT_PASS",
+  "checks": 78,
+  "source": "f72d54d0695ff864a5d4c3f15c08cab7d350b327",
+  "zip_sha256": "883954a53f5aeef78d096ba08dcec02cdac5c8996abc1c0bf1600300c3ca07b0",
+  "metrics": {
+    "decoder_rank0": {
+      "CIDEr": 1.0631029131024006,
+      "Bleu_4": 0.34829378731737376,
+      "ROUGE_L": 0.5449286537695498,
+      "CHAIRs": 0.052,
+      "CHAIRi": 0.03736878936319104,
+      "Recall": 0.4053867403314917,
+      "counts": {
+        "images": 5000,
+        "hallucinated_captions": 260,
+        "hallucinated_mentions": 267,
+        "object_mentions": 7145,
+        "recalled_unique": 6457,
+        "reference_unique": 15928
+      },
+      "mean_words": 8.4164,
+      "short_le2": 407
+    },
+    "clip_object_fixed": {
+      "CIDEr": 1.1524155290033753,
+      "Bleu_4": 0.36662258165778605,
+      "ROUGE_L": 0.5667302595334605,
+      "CHAIRs": 0.0412,
+      "CHAIRi": 0.027366020524515394,
+      "Recall": 0.43922651933701656,
+      "counts": {
+        "images": 5000,
+        "hallucinated_captions": 206,
+        "hallucinated_mentions": 216,
+        "object_mentions": 7893,
+        "recalled_unique": 6996,
+        "reference_unique": 15928
+      },
+      "mean_words": 9.2676,
+      "short_le2": 60
+    },
+    "blip_itm": {
+      "CIDEr": 1.1306095337795266,
+      "Bleu_4": 0.3572659254082516,
+      "ROUGE_L": 0.5620418736390775,
+      "CHAIRs": 0.0436,
+      "CHAIRi": 0.02797029702970297,
+      "Recall": 0.4453792064289302,
+      "counts": {
+        "images": 5000,
+        "hallucinated_captions": 218,
+        "hallucinated_mentions": 226,
+        "object_mentions": 8080,
+        "recalled_unique": 7094,
+        "reference_unique": 15928
+      },
+      "mean_words": 9.8736,
+      "short_le2": 111
+    }
+  },
+  "changes": {
+    "clip_object_fixed": {
+      "changed_captions": 3027,
+      "rank_histogram": {
+        "0": 1973,
+        "1": 1357,
+        "2": 885,
+        "3": 585,
+        "4": 200
+      },
+      "CHAIR_repairs": 89,
+      "CHAIR_new_flags": 35
+    },
+    "blip_itm": {
+      "changed_captions": 4207,
+      "rank_histogram": {
+        "0": 793,
+        "1": 919,
+        "2": 941,
+        "3": 1060,
+        "4": 1287
+      },
+      "CHAIR_repairs": 102,
+      "CHAIR_new_flags": 60
+    }
+  },
+  "comparisons": {
+    "clip_object_fixed_minus_decoder_rank0": {
+      "delta": {
+        "CIDEr": 0.0893126159009745,
+        "CHAIRs": -0.010799999999999997,
+        "CHAIRi": -0.010002768838675645,
+        "Recall": 0.03383977900552487
+      },
+      "paired_image_bootstrap95": {
+        "CIDEr": [
+          0.07650903984809186,
+          0.1022393074226049
+        ],
+        "CHAIRs": [
+          -0.015199999999999998,
+          -0.006400000000000003
+        ],
+        "CHAIRi": [
+          -0.013000900886102881,
+          -0.007055344066929191
+        ],
+        "Recall": [
+          0.03021848223952073,
+          0.03765316711701081
+        ]
+      }
+    },
+    "blip_itm_minus_decoder_rank0": {
+      "delta": {
+        "CIDEr": 0.06750662067712754,
+        "CHAIRs": -0.008399999999999998,
+        "CHAIRi": -0.009398492333488068,
+        "Recall": 0.039992466097438506
+      },
+      "paired_image_bootstrap95": {
+        "CIDEr": [
+          0.05280999083273971,
+          0.08181187685850702
+        ],
+        "CHAIRs": [
+          -0.013400000000000002,
+          -0.0034000000000000002
+        ],
+        "CHAIRi": [
+          -0.012850077260877493,
+          -0.006047172399188081
+        ],
+        "Recall": [
+          0.03574770582355104,
+          0.0441985582721647
+        ]
+      }
+    },
+    "clip_object_fixed_minus_blip_itm": {
+      "delta": {
+        "CIDEr": 0.021805995223846963,
+        "CHAIRs": -0.0023999999999999994,
+        "CHAIRi": -0.0006042765051875766,
+        "Recall": -0.006152687091913633
+      },
+      "paired_image_bootstrap95": {
+        "CIDEr": [
+          0.00994818698959351,
+          0.033760135136593
+        ],
+        "CHAIRs": [
+          -0.006400000000000003,
+          0.0014000000000000054
+        ],
+        "CHAIRi": [
+          -0.0032400561579492672,
+          0.0019848613250367346
+        ],
+        "Recall": [
+          -0.00957551775425262,
+          -0.0025639219197172718
+        ]
+      }
+    }
+  },
+  "bootstrap": {
+    "repeats": 10000,
+    "seed": 20261105,
+    "unit": "paired image",
+    "ratios_recomputed": true,
+    "limitation": "conditional unadjusted intervals; omit training-seed variance, repeated VALID exposure and policy-choice uncertainty"
+  },
+  "whole_recipe_vs_CSA15": {
+    "CIDEr_points": 14.296295308338669,
+    "CHAIR_flags_before": 293,
+    "CHAIR_flags_after": 206,
+    "note": "CSA15 XE -> SCST+CE full1 + fixed reranker; combined stages, not isolated rerank effect"
+  },
+  "models": {
+    "clip": {
+      "id": "openai/clip-vit-base-patch16",
+      "revision": "57c216476eefef5ab752ec549e440a49ae4ae5f3"
+    },
+    "blip": {
+      "id": "Salesforce/blip-itm-base-coco",
+      "revision": "bed8ad38cb2d04a5a4bdf2d071b3c3c0a4aa724c"
+    }
+  },
+  "worker_seconds": [
+    936.203796089,
+    928.9504098860002
+  ],
+  "max_saved_probability_replay_error": 8.966425102396869e-08,
+  "actual_reranking": true,
+  "test_used": false,
+  "training": false,
+  "oracle_used_for_selection": false,
+  "limitations": [
+    "No author model/scorer execution; stored CIDEr per-image means/CHAIR counts/selection rechecked, not official scorers rerun.",
+    "No raw JPEGs, detector source or model weights in ZIP: their SHA/forward claims are user-run evidence, not independently verified here.",
+    "External BLIP COCO finetuning split unverified; detector absence is not true absence; CLIP processor differs old cached-CLS source.",
+    "CHAIR is object-category hallucination, not full relation/attribute truth or human confirmation."
+  ]
+}
