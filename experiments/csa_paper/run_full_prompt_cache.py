@@ -11,7 +11,7 @@ from prompt_text_cache import encode_cpu
 
 def inspect(cfg):
     base,old_texts,old_vectors,old_manifest=checked_base(cfg['base_root'])
-    texts,validation=checked_mapping(cfg['mapping_root'],base)
+    texts,validation=checked_mapping(cfg['mapping_root'],base,Path(cfg['output'])/'comparison_diagnostic.json')
     new=sorted(set(texts)-set(old_texts))
     if not set(old_texts)<=set(texts):raise ValueError('FullTRAIN cache lost old169texts')
     plan=dict(status='FULL_PROMPT_CACHE_PLAN_VALIDATED',images=validation['images'],validation=validation,
@@ -45,6 +45,9 @@ def cache(cfg):
     save(out/'reuse_report.json',dict(base169_receipt_sha256=BASE_RECEIPT_SHA,base169_manifest_sha256=BASE_MANIFEST_SHA,
         reused_vectors=len(old_texts),new_vectors=len(new),total_vectors=len(texts),reused_vectors_exact=True,
         old169_records_exactly_preserved=validation['old169_records_exactly_preserved'],
+        old169_records_model_inputs_preserved=validation.get('old169_records_model_inputs_preserved',validation['old169_records_exactly_preserved']),
+        old169_records_safe_derived_drift=validation.get('old169_records_safe_derived_drift',0),
+        comparison_policy=validation.get('comparison_policy','exact_v1'),
         model_executed_for_new_texts=encoded['model_executed'],existing_vectors_reencoded=False))
     manifest=dict(schema='csa_prompt_full_karpathy_v1',status='FULL_PROMPT_TEXT_CACHE_COMPLETE',
         model=old_manifest['model'],revision=old_manifest['revision'],files_sha256=old_manifest['files_sha256'],
@@ -54,6 +57,7 @@ def cache(cfg):
         new_encoding=encoded,training=False,test_used=False,seconds=time.monotonic()-started)
     save(out/'cache_manifest.json',manifest)
     names=list(MAPPING_FILES)+['prompt_embeddings.npy','mapping_receipt.json','reuse_report.json','cache_manifest.json']
+    if (out/'comparison_diagnostic.json').is_file():names.append('comparison_diagnostic.json')
     save(out/'cache_receipt.json',dict(schema=manifest['schema'],status=manifest['status'],payload_sha256={n:sha(out/n) for n in names}))
     print('FULL PROMPT TEXT CACHE COMPLETE:118287images,',len(texts),'vectors. No caption training/TEST.',flush=True)
 

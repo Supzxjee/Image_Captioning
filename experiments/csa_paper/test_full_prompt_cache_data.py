@@ -10,6 +10,7 @@ import numpy as np
 import full_prompt_cache_data as data
 from run_prompt_mapping_audit import mapping_cohort
 from run_full_prompt_cache import incremental_vectors,cache
+from recover_full_prompt_mapping import preserve
 
 
 def row(i,text='a person',group='train'):
@@ -93,6 +94,49 @@ class Checks(unittest.TestCase):
                 (mapping/'review_examples.json').unlink();partial=top/'partial';partial.mkdir();cfg['output']=str(partial)
                 with self.assertRaises(FileNotFoundError):cache(cfg)
                 self.assertFalse((partial/'cache_receipt.json').exists())
+
+    def test_derived_roundoff_requires_identical_fp32_and_preserves_strict_source_fields(self):
+        old=dict(objects=[dict(IoU=.75,roi_bbox=[.1],bbox=[.1],roi=1,confidence=.9)],relations=[dict(geometry=[1.])])
+        new=deepcopy(old);new['relations'][0]['geometry'][0]=float(np.nextafter(1.,2.))
+        d=data.record_differences(new,old);self.assertEqual(len(d),1);self.assertTrue(d[0]['safe'])
+        for path,value in [('bbox',float(np.nextafter(.1,1.))),('roi',True),('confidence',float(np.nextafter(.9,1.)))]:
+            new=deepcopy(old);new['objects'][0][path]=[value] if path=='bbox' else value
+            self.assertFalse(all(d['safe'] for d in data.record_differences(new,old)))
+        new=deepcopy(old);new['relations'][0]['geometry'][0]=1.+1e-5
+        self.assertFalse(data.record_differences(new,old)[0]['safe'])
+        old['relations'][0]['geometry'][0]=1e-14;new=deepcopy(old);new['relations'][0]['geometry'][0]+=1e-17
+        self.assertFalse(data.record_differences(new,old)[0]['safe'])
+
+    def test_diagnostic_reports_all_record_differences_and_stops_semantic_changes(self):
+        rows,cohort,texts,summary=self.fixture();rows[0]['objects'][0]['IoU']=.75
+        old={1:deepcopy(rows[0])};rows[0]['objects'][0]['IoU']=float(np.nextafter(.75,1.))
+        with tempfile.TemporaryDirectory() as name:
+            diagnostic=Path(name)/'comparison_diagnostic.json'
+            v=data.validate_records(iter(rows),cohort,texts,summary,old,diagnostic)
+            self.assertEqual(v['old169_records_exactly_preserved'],0);self.assertEqual(v['old169_records_model_inputs_preserved'],1)
+            self.assertEqual(v['old169_records_safe_derived_drift'],1)
+            report=json.loads(diagnostic.read_text(encoding='utf-8'));self.assertEqual(report['unsafe_records'],0)
+            rows[0]['objects'][0]['text']='different text'
+            texts=['a person','different text']
+            with self.assertRaisesRegex(ValueError,'existing169'):data.validate_records(iter(rows),cohort,texts,summary,old,diagnostic)
+            report=json.loads(diagnostic.read_text(encoding='utf-8'))
+            self.assertEqual(report['unsafe_records'],1);self.assertEqual(report['first_unsafe']['coco_id'],1)
+            self.assertEqual(report['first_unsafe']['path'],'objects[0].text')
+
+    def test_recovery_checks_original_source_and_every173_payload_preserving_bytes(self):
+        with tempfile.TemporaryDirectory() as name:
+            top=Path(name);download=top/'download';root=download/'old/mapping';root.mkdir(parents=True)
+            for n in data.MAPPING_FILES:(root/n).write_text('{}',encoding='utf-8')
+            receipt=dict(status='PROMPT_ROI_MAPPING_AUDIT_COMPLETE',payload_sha256={n:hashlib.sha256((root/n).read_bytes()).hexdigest() for n in data.MAPPING_FILES})
+            (root/'receipt.json').write_text(json.dumps(receipt),encoding='utf-8')
+            source=dict(commit='fixture-source',sha256={'fixture':'a'})
+            (download/'source_receipt.json').write_text(json.dumps(source),encoding='utf-8')
+            destination=top/'out/mapping';preserve(download,destination,source)
+            self.assertTrue(all((destination/n).read_bytes()==(root/n).read_bytes() for n in data.MAPPING_FILES))
+            with self.assertRaises(FileExistsError):preserve(download,destination,source)
+            with self.assertRaises(ValueError):preserve(download,top/'wrong-source',dict(commit='wrong'))
+            (root/'review_examples.json').unlink()
+            with self.assertRaises(ValueError):preserve(download,top/'missing-file',source)
 
 
 if __name__=='__main__':unittest.main(verbosity=2)
