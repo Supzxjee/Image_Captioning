@@ -1,0 +1,30 @@
+{
+  "status": "PAIRED_PROMPT_SCRATCH_XE10_AUTHOR_SAFE_CHECKS_PASS",
+  "notebooks": [
+    {
+      "arm": "CONTROL",
+      "notebook": "CSA_PROMPT_SCRATCH_CONTROL_XE10_2GPU.ipynb",
+      "source": "8420162b6760af0b6cb2199ba07e8e511b4a2509",
+      "source_files": 50,
+      "bytes": 18796,
+      "code_cells_AST": 3,
+      "empty_outputs": true
+    },
+    {
+      "arm": "PROMPT",
+      "notebook": "CSA_PROMPT_SCRATCH_PROMPT_XE10_2GPU.ipynb",
+      "source": "8420162b6760af0b6cb2199ba07e8e511b4a2509",
+      "source_files": 50,
+      "bytes": 18794,
+      "code_cells_AST": 3,
+      "empty_outputs": true
+    }
+  ],
+  "safe_fixture_tests": 22,
+  "isolated_exact_git_bundle": true,
+  "matched_setup_only_ARM_differs": true,
+  "guard_cli_flags_match": true,
+  "old_model_adapter_fullXE_unchanged": true,
+  "actual_Torch_CUDA_DDP_metrics_not_author_run": true,
+  "user_run_neural_guards_required": true
+}

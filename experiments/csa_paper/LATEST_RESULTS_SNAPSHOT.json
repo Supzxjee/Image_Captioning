@@ -268,9 +268,45 @@
       null,
       null,
       "Hoàn tất",
-      "175 / fresh V3",
-      "118.287 ảnh;410 text×512D mã hóa mới. TRAIN335.723 object slots/54.574 relation links.51metadata checksPASS;3payload đầy đủ sẽ kiểm khi lưu Dataset. Chưa đo caption.",
+      "175 / Dataset đã lưu",
+      "Cache118.287 ảnh/410text×512D xong. Người dùng cung cấp mount csa-prompt-full-karpathy-v175; notebook train sẽ kiểm toàn bộ payload trước model.",
       "https://github.com/Supzxjee/Image_Captioning/blob/main/experiments/csa_paper/FULL_PROMPT_FRESH_V175_RESULT.md"
+    ],
+    [
+      "P05",
+      "CSA XE từ đầu / đối chứng",
+      "VALID5000 / chưa chạy",
+      "Kế hoạch10epoch XE / T4×2",
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      "Chưa chạy",
+      "Cache175 / chưa có lượt train",
+      "Freshseed42/global32/image-sharing, banks130/ROI134; source8420162;22safe testsPASS. Neural/DDP guards do người dùng chạy.",
+      "https://github.com/Supzxjee/Image_Captioning/blob/main/experiments/csa_paper/CSA_PROMPT_SCRATCH_CONTROL_XE10_2GPU.ipynb"
+    ],
+    [
+      "P06",
+      "CSA XE từ đầu + prompt đối tượng–quan hệ",
+      "VALID5000 / chưa chạy",
+      "Kế hoạch10epoch XE / T4×2",
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      "Chưa chạy",
+      "Cache175 / chưa có lượt train",
+      "Freshseed42/global32/image-sharing, banks130/ROI134; source8420162;22safe testsPASS. Neural/DDP guards do người dùng chạy.",
+      "https://github.com/Supzxjee/Image_Captioning/blob/main/experiments/csa_paper/CSA_PROMPT_SCRATCH_PROMPT_XE10_2GPU.ipynb"
     ]
   ]
 }
