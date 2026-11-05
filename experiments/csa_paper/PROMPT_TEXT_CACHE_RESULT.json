@@ -1,0 +1,71 @@
+{
+  "status": "PROMPT_TEXT_CACHE_STORED_REVIEW_PASS",
+  "checks": 57,
+  "zip_sha256": "e7415b3559fac5af37119e761dc8b243d3898ad70b8d332212d180011584c52c",
+  "user_reported_output_source": "ducanh2403/2-vi-cai-kia-qua-nhieu/169",
+  "source": "418a717969eda67eb7f362efc1e22e14521b2337",
+  "mapping_source": "ducanh2403/2-vi-cai-kia-qua-nhieu/167",
+  "texts": 318,
+  "embedding_shape": [
+    318,
+    512
+  ],
+  "dtype": "float32",
+  "device": "cpu",
+  "frozen": true,
+  "cohort": {
+    "images": 15000,
+    "unique_texts": 318,
+    "groups": {
+      "train": {
+        "images": 10000,
+        "kept_objects": 29670,
+        "mapped_relations": 4839
+      },
+      "val": {
+        "images": 5000,
+        "kept_objects": 14690,
+        "mapped_relations": 2319
+      }
+    },
+    "test_used": false
+  },
+  "model": "openai/clip-vit-base-patch16",
+  "revision": "57c216476eefef5ab752ec549e440a49ae4ae5f3",
+  "clip_assets_sha256": {
+    "merges.txt": "9fd691f7c8039210e0fced15865466c65820d09b63988b0174bfe25de299051a",
+    "pytorch_model.bin": "ec89c7b09c749a60aae3c9cd910516f24b58214a7df060b48962d14c469cfbf0",
+    "special_tokens_map.json": "f8c0d6c39aee3f8431078ef6646567b0aba7f2246e9c54b8b99d55c22b707cbf",
+    "config.json": "eaf1c9089a8553c913d27ea66407f8bfc2be9989c80c9f331ddb3d63d4c5e8ad",
+    "tokenizer.json": "a83e0809aa4c3af7208b2df632a7a69668c6d48775b3c3fe4e1b1199d1f8b8f4",
+    "preprocessor_config.json": "910e70b3956ac9879ebc90b22fb3bc8a75b6a0677814500101a4c072bd7857bd",
+    "tokenizer_config.json": "3f74b6a4d97fee70b3b96921a687fc5e3f2fb583f5f81e7c178c0c22281beade",
+    "vocab.json": "3f0c4f7d2086b61b38487075278ea9ed04edb53a03cbb045b86c27190fa8fb69"
+  },
+  "max_tokens": 13,
+  "truncation": false,
+  "phase_seconds": 19.458774749999975,
+  "payload_sha256": {
+    "prompt_embeddings.npy": "a6b77754db9f620b697d3e5d43c1cba784ccda477fdd98cbb707a2ddf9f38e56",
+    "prompt_texts.json": "fbc6882106041babd46bda7ae7b6497eda1fab50fe64dc181f5970d474537f58",
+    "prompt_links.jsonl": "14e50c67fdc25b9247a8fb333bcf4733a360894330595207274d70672fb10ee9",
+    "cohort.json": "da60b2a7b9c5304f3f3e1a1e61da8c713187d3f175c9671815a0bf63e4aac3e6",
+    "summary.json": "5cd88ae3a98bc7c18478135dc17b9677a90f01bde9fe5e792f8ef8f6e2d4d449",
+    "cache_manifest.json": "24c1c75fda9be90f6e1409aedc8d2bbecb04cb78e5570443a3f813b402b66486"
+  },
+  "user_neural_fixture_tests": 3,
+  "actual_checkpoint161_smoke": false,
+  "caption_training": false,
+  "test_used": false,
+  "local_author_models_or_scorers_executed": false,
+  "user_gpu_budget": "15h reported; per-account versus combined not specified, do not assume30h",
+  "next_step": "Preserve complete version169 cache; prepare paired500-update CONTROL/PROMPT from exact161, real-loaded checkpoint/CUDA/DDP guards before training.",
+  "limits": [
+    "Embedding NPY/links/texts and originalCLIP weights absent review; their hashes/norm checks are user-run evidence.",
+    "Three CPU fixtures use a small randomly initialized CSA, not the loaded161 captioner or CUDA/DDP.",
+    "Opened adapter text sensitivity/finite gradients in fixtures are not learned caption or relation-grounding performance.",
+    "19.46s phase excludes setup/API/dependency installs/fixture tests and is not training ETA or GPU billing.",
+    "Torch version is not recorded in the cache manifest; do not infer it from older runs.",
+    "Pip dependency conflict warnings did not stop this run; COMPLETE and logs verified, no author model rerun."
+  ]
+}

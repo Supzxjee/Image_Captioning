@@ -213,10 +213,10 @@
       null,
       null,
       null,
-      "Chuẩn bị",
-      "Exact167 / sửa tải V2",
-      "Lượt đầu dừng trướcCLIP: thiếu review_examples.json. V2 tải đủ6files/giữ5payloadSHA; cell phục hồi chỉ tải file thiếu, giữ output lỗi.12safe testsPASS; chưa cache/train.",
-      "https://github.com/Supzxjee/Image_Captioning/blob/main/experiments/csa_paper/CSA_PROMPT_TEXT_CACHE_CPU.ipynb"
+      "Hoàn tất",
+      "Version169 / mapping167",
+      "318×512 float32 frozenCLIP CPU;57storedchecksPASS;7+5safe và3CPU neuralfixturesPASS. Chưa loaded161/CUDA/DDP/train hoặc điểm caption mới.",
+      "https://github.com/Supzxjee/Image_Captioning/blob/main/experiments/csa_paper/PROMPT_TEXT_CACHE_RESULT.md"
     ],
     [
       "P01",
@@ -233,7 +233,7 @@
       null,
       "Chưa chạy",
       "Chưa có",
-      "Dự kiến500updates/global8; checkpoint161; chờ mapping và quota mới.",
+      "Dự kiến500updates/global8; checkpoint161; cache169 xong. Chờ chung đầu vào và loaded161/CUDA/DDP preflight; báo15hGPU chưa rõ mỗi bên/tổng.",
       "https://github.com/Supzxjee/Image_Captioning/blob/main/experiments/csa_paper/PROMPT_ADAPTER_IMPLEMENTATION.md"
     ],
     [
