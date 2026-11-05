@@ -126,6 +126,11 @@ def worker(args):
                     best=read(root/'best_receipt.json')
                     if sha(root/'best.bin')!=best['sha256']:raise ValueError('Missing/changed best checkpoint; preserve whole output folder')
                     shutil.copy2(root/'best.bin',args.output/'best.bin');atomic_json(args.output/'best_receipt.json',best)
+                for previous in state['history']:
+                    for n,h in previous['prediction_sha256'].items():
+                        if n not in (f"val_epoch{previous['epoch']:02d}_rank0.json",f"val_epoch{previous['epoch']:02d}_rank1.json") or sha(root/n)!=h:raise ValueError('Missing/changed saved validation captions on resume')
+                        shutil.copy2(root/n,args.output/n)
+                    atomic_json(args.output/f"metrics_epoch{previous['epoch']:02d}.json",previous)
             last_receipt=receipt
             del ck
             print('RESUMED',rank,state['epoch'],state['batch_cursor'],state['phase'],flush=True)
@@ -200,7 +205,8 @@ def worker(args):
                 metrics[0]=dict(epoch=epoch,updates=state['updates'],val_nll=float(sums[0]/sums[1]),val_target_tokens=int(sums[1]),
                     cider=float(score),validation_images=5000,references=25010,beam=5,max_new_tokens=20,
                     eos_images=sum(x['eos'] for x in rows),mean_words=float(np.mean([len(x['caption'].split()) for x in rows])),
-                    validation_seconds=time.monotonic()-began,decoder='model.beam_search per-image')
+                    validation_seconds=time.monotonic()-began,decoder='model.beam_search per-image',
+                    prediction_sha256={f'val_epoch{epoch:02d}_rank{r}.json':sha(args.output/f'val_epoch{epoch:02d}_rank{r}.json') for r in (0,1)})
                 save(args.output/f'metrics_epoch{epoch:02d}.json',metrics[0])
                 print('VALIDATION',metrics[0],flush=True)
             dist.broadcast_object_list(metrics,src=0)

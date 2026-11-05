@@ -36,6 +36,7 @@ class Checks(unittest.TestCase):
         source=Path(__file__).with_name('run_prompt_scratch.py').read_text(encoding='utf-8')
         self.assertIn('shared=True',source);self.assertIn("feature_sharing=True",source);self.assertIn('common_init_sha256',source)
         self.assertIn("choices=(10,)",source);self.assertIn("choices=('CONTROL','PROMPT')",source)
+        self.assertIn("previous['prediction_sha256']",source);self.assertIn('Missing/changed saved validation captions on resume',source)
         self.assertNotIn('58ce5dc0',source);self.assertNotIn('SCST',source)
         for n in ('prompt_scratch_data.py','prompt_scratch_model.py','prompt_scratch_preflight.py','test_prompt_scratch_model.py','run_prompt_scratch.py','make_prompt_scratch_notebooks.py'):ast.parse(Path(__file__).with_name(n).read_text(encoding='utf-8'))
         tree=ast.parse(Path(__file__).with_name('prompt_scratch_data.py').read_text(encoding='utf-8'))
