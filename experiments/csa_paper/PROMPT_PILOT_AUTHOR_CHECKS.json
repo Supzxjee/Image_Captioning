@@ -1,0 +1,27 @@
+{
+  "notebooks": [
+    {
+      "arm": "CONTROL",
+      "bytes": 14728,
+      "source": "fc54bdea66479e66c8e7662831be167325ffef8e",
+      "source_files": 25,
+      "code_cells": 3,
+      "ast": true,
+      "metadata_only_bundle_tests": true,
+      "no_author_neural_execution": true
+    },
+    {
+      "arm": "PROMPT",
+      "bytes": 14762,
+      "source": "fc54bdea66479e66c8e7662831be167325ffef8e",
+      "source_files": 25,
+      "code_cells": 3,
+      "ast": true,
+      "metadata_only_bundle_tests": true,
+      "no_author_neural_execution": true
+    }
+  ],
+  "checks": "5 data/NumPy/AST tests PASS from isolated exact Git bundle; source hashes and both notebook cells verified",
+  "neural_execution": false,
+  "notebook_execution": false
+}

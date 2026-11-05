@@ -4,6 +4,8 @@
 
 ## Bước đã triển khai
 
+- **Hai trainer500 đã chuẩn bị sau khi user xác nhận Dataset169:** [protocol](PROMPT_PILOT_PROTOCOL.md), `CSA_PROMPT_CONTROL_PILOT500_2GPU.ipynb` và `CSA_PROMPT_PROMPT_PILOT500_2GPU.ipynb`. Nguồn `fc54bde`/25pins;5safe data/NumPy/ASTtestsPASS từ exactbundle, chưa chạy Torch/neural/notebook bởi tác giả. Giữ banks, same161 + freshAdam5e-6 + CE/.05SCST/global8/4000events; actualCUDA/DDPsmoke táchprocess trước train. FullVALID ORIGINAL/END rank0 +all5beams; fixedrerank chấm tiếp, không gọi bước này đã rerank. Dataset169 cùngROI134+COCOJSON; không Secret trên GPU. Parent3h STOPcap mỗi notebook, nguồnquota15h còn chưa rõ mỗi bên/tổng. Các câu “trainer chưa viết” bên dưới là lịch sử trước mốc này.
+
 - `prompt_adapter_data.py`: join instance UPT với ROI theo nhãn+IoU≥.5, tái dựng đúng thứ tự confidence-sort/clip/cap150 của cache134; loại collision/ambiguity, không dùng preview/GT/reference để tạo prompt. Giữ cả hai instance cùng lớp và thứ tự S/O. Có packing8object/3relation slots để nối module.
 - `prompt_adapter_model.py`: wrapper quanh captioner hiện có; object/relation residual adapters gắn text với ROI/cặpROI, cập nhật trực tiếp Vo/Vr. Output projection zero-init và empty-row handling giữ đường base. Chỉ viết code/đọc source; chưa có model execution.
 - `CSA_PROMPT_ROI_AUDIT_CPU.ipynb`: notebook đầu tiên cần chạy. CPU, InternetON, không cần checkpoint/ảnhJPEG/APIsecret/bank130; chỉ cần ROI134, UPT prompt cache và detectorJSON đã chốt. Audit TRAIN10k + fullVALID5000, không TEST. Hash chính xác nguồn/dữ liệu, kiểm box/mapping rồi xuất summary + examples + file liên kết đầy đủ để giữ.

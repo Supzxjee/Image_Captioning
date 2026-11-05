@@ -26,3 +26,9 @@ Kiểm tất cả SHA cache/weight/ROI/COCO; cache318×512/L2/15k IDs và roi_co
 Người dùng báo15h, chưa rõ tổng hay mỗi bên. Mỗi notebook có **parent STOPcap3h**, mọi subprocess bị chặn bởi deadline; worker dành thời gian cho VALID và lưu checkpoint, không tự retry/retrain. Hai notebook ×2GPU×3h tối đa12GPU-device-hours theo cấu hình, **không xác nhận cách Kaggle tính quota/billing**; không hứa hoàn tất trong cap. Projection từ25updates thực sẽ dừng/bảo toàn nếu không kịp. Chuẩn bị, smoke và metrics cũng tính trong parentcap.
 
 Đọc END PROMPT so END CONTROL trước, rồi so cả hai ORIGINAL. Báo chênh lệch và CI theo ảnh khi đã có hai ZIP; mục tiêu CIDEr tăng, CHAIRs/i không xấu hơn, recall không giảm quá0.5điểm%. Mức +1CIDEr×100 là practical signal để cân nhắc, không phải ngưỡng p-value hoặc bảo đảm. Chỉ mở rộng sau kiểm cả sensitivity và chất lượng/rerank; nếu không hơn đối chứng, không tự tăng epoch. Chưa có gain/novelty hoặc quan hệ đúng được chứng minh.
+
+## Phát hành trước lượt chạy
+
+Hai notebook `CSA_PROMPT_CONTROL_PILOT500_2GPU.ipynb` / `CSA_PROMPT_PROMPT_PILOT500_2GPU.ipynb`: nguồn `fc54bdea66479e66c8e7662831be167325ffef8e`, 25filepins, mỗi notebook14.7KB. Tất cả3codecell ASTPASS, execution_countnull/outputs rỗng, đúngT4×2/sharedmount/không APIsecret/phaseorder. Năm safe fixture metadata/NumPy/ASTPASS từ chính Gitbundle độc lập, kiểm thiếu cachefile/saiweights/split/ROIcount/schedule/scaling. SHAcoreCSA giữ `139edbb1…`. Xem `PROMPT_PILOT_AUTHOR_CHECKS.json`.
+
+Tác giả chưa chạy CUDA, Torch/autograd, metric scorer hay notebook. Kiểm thực nằm trong notebook người dùng. Chưa có gain, chưa rerank. Nếu gián đoạn: giữ cả folder/checkpoint/optimizer/RNG/cursor, gửi review trước; notebook không tự resume/restart và không tự coi partial500 là hoàn tất. Việc có output SaveVersion không tự chứng minh đủ500update/VALID; trạng thái phải qua worker +score complete.
