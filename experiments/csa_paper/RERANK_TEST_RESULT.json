@@ -1,0 +1,122 @@
+{
+  "status": "RERANK_TEST_STORED_TEXT_AUDIT_PASS",
+  "checks": 95,
+  "user_reported_output_source": "ducanh2403/2-vi-cai-kia-qua-nhieu/166",
+  "zip_sha256": "3983dfdf20a62fba0ad8791b453431cf92526bb7034ebf08f8c3094e75dc6e15",
+  "source": "19e7dfe1fb0b9de9f6d047c644a3b429289bb6f4",
+  "checkpoint_sha256": "58ce5dc0e30ac26add9bac8e24a2e9e03b91532bfdeece588997395bf9cfc16b",
+  "metrics": {
+    "decoder_rank0": {
+      "CIDEr": 1.0810528152201389,
+      "Bleu_4": 0.348912312054926,
+      "ROUGE_L": 0.5456197097915532,
+      "CHAIRs": 0.0556,
+      "CHAIRi": 0.040955157573233376,
+      "Recall": 0.41394639908548203,
+      "counts": {
+        "images": 5000,
+        "hallucinated_captions": 278,
+        "hallucinated_mentions": 295,
+        "object_mentions": 7203,
+        "recalled_unique": 6518,
+        "reference_unique": 15746
+      },
+      "mean_words": 8.4278,
+      "short_le2": 401
+    },
+    "clip_object_fixed": {
+      "CIDEr": 1.170633435521099,
+      "Bleu_4": 0.36414158168780547,
+      "ROUGE_L": 0.5678065265047023,
+      "CHAIRs": 0.044,
+      "CHAIRi": 0.029567854435178165,
+      "Recall": 0.44639908548202717,
+      "counts": {
+        "images": 5000,
+        "hallucinated_captions": 220,
+        "hallucinated_mentions": 234,
+        "object_mentions": 7914,
+        "recalled_unique": 7029,
+        "reference_unique": 15746
+      },
+      "mean_words": 9.2188,
+      "short_le2": 61
+    }
+  },
+  "changes": {
+    "changed_captions": 2971,
+    "rank_histogram": {
+      "0": 2029,
+      "1": 1326,
+      "2": 931,
+      "3": 505,
+      "4": 209
+    },
+    "CHAIR_repairs": 94,
+    "CHAIR_new_flags": 36
+  },
+  "delta": {
+    "CIDEr": 0.08958062030096059,
+    "CHAIRs": -0.0116,
+    "CHAIRi": -0.011387303138055211,
+    "Recall": 0.03245268639654514
+  },
+  "paired_image_bootstrap95": {
+    "CIDEr": [
+      0.07696409329586137,
+      0.10227720215834972
+    ],
+    "CHAIRs": [
+      -0.0162,
+      -0.006999999999999999
+    ],
+    "CHAIRi": [
+      -0.01458470894779899,
+      -0.008302708738918748
+    ],
+    "Recall": [
+      0.028734909456740454,
+      0.036200299542899515
+    ]
+  },
+  "bootstrap": {
+    "repeats": 10000,
+    "seed": 20261105,
+    "unit": "paired image",
+    "ratios_recomputed": true,
+    "limitation": "conditional; training seeds and prior project TEST exposure not represented"
+  },
+  "descriptive_vs_CSA10": {
+    "CIDEr_points": 15.142683439759042,
+    "CHAIR_flags_before": 309,
+    "CHAIR_flags_after": 220,
+    "limitation": "extra XE epochs, SCST and reranking; not isolated CSA/alignment or matched training budget"
+  },
+  "cache_mode": "CPU_original_H5_exact_byte_match",
+  "cache_reference_version": "ducanh2403/2-vi-cai-kia-qua-nhieu/143",
+  "cache_files_sha256": {
+    "test_regions.npz": "7fb385e1a03c5241c4d65cc240d0434e041284a9a829198c5167f0725be57b1a",
+    "test_metadata.json": "4271b46b7ab67117433bfdf84f6eb9ba66515ada9b3c4ae4d2e507bc2cede018",
+    "vocabulary.json": "924be210aa0daa8b0968a6d69ad2c66b3de603f49c35f4aa67247c75d6173fc7"
+  },
+  "cache_restore_seconds": 165.139107082,
+  "decode_seconds": [
+    222.82342229699998,
+    221.48073688099998
+  ],
+  "score_seconds": [
+    88.63376623900001,
+    88.26582111100004
+  ],
+  "test_used": true,
+  "training": false,
+  "tuned_on_test": false,
+  "oracle_used_for_selection": false,
+  "prior_project_test_exposure": true,
+  "limitations": [
+    "No author Torch/model/scorer execution; selection/counts/metric means replayed, not official scorers rerun.",
+    "Cache metadata/vocabulary SHA independently checked; NPZ/weights/JPEG/H5/detector binaries absent ZIP, their checks are user-run evidence.",
+    "Detector absence may be a miss/topK; CHAIR object-category metric does not establish all relation/attribute truth or human quality.",
+    "Frozen choice was made on VALID164; TEST has earlier project exposure, no clean-never-seen or multi-seed guarantee."
+  ]
+}
