@@ -49,9 +49,8 @@ def validate_links(root):
     return texts,dict(images=len(seen),unique_texts=len(texts),groups={k:dict(v) for k,v in counts.items()},test_used=False)
 
 
-def cache(cfg):
-    root,receipt=checked_source(cfg['source_root']);texts,validation=validate_links(root)
-    out=Path(cfg['output']);out.mkdir(parents=True,exist_ok=False)
+def encode_cpu(texts,hf_cache):
+    if not texts or len(set(texts))!=len(texts):raise ValueError('Need unique nonempty prompt texts')
     # Neural imports and execution occur only in the user-run cache phase.
     import torch
     from huggingface_hub import hf_hub_download
@@ -61,7 +60,7 @@ def cache(cfg):
     spec=read(Path(__file__).with_name('RERANK_TEST_INPUTS.json'))['clip'];files={};started=time.monotonic()
     for name,want in spec['files_sha256'].items():
         print('Pinned CLIP asset:',name,flush=True)
-        path=Path(hf_hub_download(spec['id'],name,revision=spec['revision'],cache_dir=cfg['hf_cache'],token=False))
+        path=Path(hf_hub_download(spec['id'],name,revision=spec['revision'],cache_dir=hf_cache,token=False))
         files[name]=sha(path)
         if files[name]!=want:raise ValueError('Changed CLIP asset:'+name)
     tokenizer=CLIPTokenizer.from_pretrained(path.parent,local_files_only=True)
@@ -81,14 +80,21 @@ def cache(cfg):
             chunks.append((vectors/norms).numpy())
         print('CLIP text CPU',min(start+32,len(texts)),'/',len(texts),flush=True)
     result=np.concatenate(chunks)
-    if result.shape!=(318,512) or result.dtype!=np.float32 or not np.allclose(np.linalg.norm(result,axis=1),1,rtol=0,atol=2e-6):raise ValueError('Embedding cache shape/norm differs')
+    if result.shape!=(len(texts),512) or result.dtype!=np.float32 or not np.allclose(np.linalg.norm(result,axis=1),1,rtol=0,atol=2e-6):raise ValueError('Embedding cache shape/norm differs')
+    return result,dict(spec=spec,files_sha256=files,loading_info=info,max_tokens=maximum,seconds=time.monotonic()-started)
+
+
+def cache(cfg):
+    root,receipt=checked_source(cfg['source_root']);texts,validation=validate_links(root)
+    out=Path(cfg['output']);out.mkdir(parents=True,exist_ok=False);started=time.monotonic()
+    result,encoded=encode_cpu(texts,cfg['hf_cache']);spec=encoded['spec']
     np.save(out/'prompt_embeddings.npy',result)
     for n in ('prompt_texts.json','prompt_links.jsonl','cohort.json','summary.json'):shutil.copy2(root/n,out/n)
     manifest=dict(status='PROMPT_TEXT_CACHE_COMPLETE',source_version='ducanh2403/2-vi-cai-kia-qua-nhieu/167',
         mapping_receipt_sha256=RECEIPT_SHA,source_payload_sha256=receipt['payload_sha256'],validation=validation,
-        model=spec['id'],revision=spec['revision'],files_sha256=files,loading_info=info,
+        model=spec['id'],revision=spec['revision'],files_sha256=encoded['files_sha256'],loading_info=encoded['loading_info'],
         texts=318,shape=[318,512],dtype='float32',device='cpu',frozen=True,training=False,test_used=False,
-        max_tokens=maximum,truncation=False,seconds=time.monotonic()-started)
+        max_tokens=encoded['max_tokens'],truncation=False,seconds=time.monotonic()-started)
     save(out/'cache_manifest.json',manifest)
     names=('prompt_embeddings.npy','prompt_texts.json','prompt_links.jsonl','cohort.json','summary.json','cache_manifest.json')
     save(out/'cache_receipt.json',dict(status='PROMPT_TEXT_CACHE_COMPLETE',payload_sha256={n:sha(out/n) for n in names}))

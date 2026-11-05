@@ -1,0 +1,109 @@
+"""Author CPU-only full Karpathy prompt preparation; no model, API or notebook execution."""
+import argparse
+import hashlib
+import json
+from pathlib import Path
+import subprocess
+from make_smoke_notebook import cell,RUNNER
+from make_prompt_adapter_notebook import FILES as AUDIT_FILES,EXTERNAL
+
+HERE=Path(__file__).resolve().parent;ROOT=HERE.parents[1];PREFIX='experiments/csa_paper/'
+FILES=AUDIT_FILES+['prompt_text_cache.py','test_prompt_text_cache_data.py','make_prompt_text_cache_notebook.py',
+    'make_smoke_notebook.py','RERANK_TEST_INPUTS.json','RECOVER_PROMPT_TEXT_167_CELL.py',
+    'full_prompt_cache_data.py','run_full_prompt_cache.py','test_full_prompt_cache_data.py',
+    'make_full_prompt_cache_notebook.py','PROMPT_SCRATCH_XE_PLAN.md']
+
+
+def make(revision):
+    revision=subprocess.check_output(['git','rev-parse',revision],cwd=ROOT,text=True).strip()
+    mapping={PREFIX+n:n for n in FILES};mapping.update({n:n for n in EXTERNAL})
+    hashes={n:hashlib.sha256(subprocess.check_output(['git','show',revision+':'+n],cwd=ROOT)).hexdigest() for n in mapping}
+    setup='''
+import hashlib,json,os,queue,signal,subprocess,sys,tempfile,threading,time,traceback,urllib.request,zipfile,shutil
+from pathlib import Path
+FULL_ROOT=Path('/kaggle/input/datasets/ducanh2403/csa-full-roi-karpathy-v134')
+PROMPTS=Path('/kaggle/input/datasets/ducanh2403/upt-prompts-full-all-actions-v2/prompt_cache.json')
+DETECTIONS=Path('/kaggle/input/datasets/ducanh2403/objectdetectionecache/objectdetectioncache.json')
+BASE_ROOT=Path('/kaggle/input/datasets/ducanh2403/csa-prompt-pilot-inputs-v169')
+OUTPUT=Path('/kaggle/working/csa_prompt_full_karpathy_cache_v1')
+WALL_HOURS=4 # CPU STOPcap, not ETA or a claim about Kaggle session limits.
+PARENT_DEADLINE=time.monotonic()+WALL_HOURS*3600
+for p in (FULL_ROOT,PROMPTS,DETECTIONS,BASE_ROOT):
+    if not p.exists():raise FileNotFoundError('Attach all4inputDatasets before starting: '+str(p))
+if OUTPUT.exists():raise RuntimeError('Preserve existing output; fresh runtime/output path required')
+if min(shutil.disk_usage('/tmp').free,shutil.disk_usage('/kaggle/working').free)<6*1024**3:raise RuntimeError('Need6GiB free for readonly metadata/download/copies; no files removed')
+OUTPUT.mkdir(parents=True);SOURCE=Path(tempfile.mkdtemp(prefix='csa-full-prompt-',dir='/tmp'));LOG=OUTPUT/'notebook.log'
+'''
+    setup+='REVISION='+repr(revision)+'\nMAPPING='+repr(mapping)+'\nHASHES='+repr(hashes)+'\n'
+    setup+='''
+for original,destination in MAPPING.items():
+    remaining=PARENT_DEADLINE-time.monotonic()
+    if remaining<=0:raise TimeoutError('CPU parent cap during source download')
+    raw=urllib.request.urlopen('https://raw.githubusercontent.com/Supzxjee/Image_Captioning/'+REVISION+'/'+original,timeout=min(90,remaining)).read()
+    if hashlib.sha256(raw).hexdigest()!=HASHES[original]:raise ValueError('Changed pinned source:'+original)
+    target=SOURCE/destination;target.parent.mkdir(parents=True,exist_ok=True);target.write_bytes(raw)
+(OUTPUT/'source_receipt.json').write_text(json.dumps(dict(commit=REVISION,sha256=HASHES),indent=2),encoding='utf-8')
+os.environ['PYTHONPATH']=str(SOURCE);os.environ['OMP_NUM_THREADS']='1'
+CONFIG=SOURCE/'config.json';MAPPING_ROOT=OUTPUT/'mapping'
+cfg=dict(full_root=str(FULL_ROOT),prompts=str(PROMPTS),detections=str(DETECTIONS),base_root=str(BASE_ROOT),
+    output=str(OUTPUT),mapping_root=str(MAPPING_ROOT),hf_cache=str(SOURCE/'hf-cache'))
+CONFIG.write_text(json.dumps(cfg),encoding='utf-8')
+MAP_CONFIG=SOURCE/'mapping_config.json'
+MAP_CONFIG.write_text(json.dumps(dict(full_root=str(FULL_ROOT),prompts=str(PROMPTS),detections=str(DETECTIONS),
+    output=str(MAPPING_ROOT),scope='full',wall_seconds=10800)),encoding='utf-8')
+'''
+    runner=RUNNER.replace("print('Running:',", "if time.monotonic()>=PARENT_DEADLINE:raise TimeoutError('CPU parent cap exceeded')\n    timeout=min(timeout,max(.01,PARENT_DEADLINE-time.monotonic()))\n    print('Running:',")
+    runner=runner.replace('Smoke active;','Full prompt CPU active;').replace('Smoke wall cap exceeded','Full prompt CPU phase/parent cap exceeded')
+    final='''
+complete=False
+try:
+    run([sys.executable,'-u',SOURCE/'test_prompt_adapter_data.py'],timeout=120)
+    run([sys.executable,'-u',SOURCE/'test_prompt_text_cache_data.py'],timeout=120)
+    run([sys.executable,'-u',SOURCE/'test_full_prompt_cache_data.py'],timeout=120)
+    # Verify reusable169 bytes and embedding space before processing full Karpathy.
+    run([sys.executable,'-c',"from full_prompt_cache_data import checked_base;from pathlib import Path;import sys;r,t,a,m=checked_base(Path(sys.argv[1]));print('Exact169 base verified:',len(t),a.shape,'No weights/model loaded.',flush=True)",BASE_ROOT],timeout=180)
+    run([sys.executable,'-u',SOURCE/'run_prompt_mapping_audit.py','--config',MAP_CONFIG],timeout=10800)
+    run([sys.executable,'-u',SOURCE/'run_full_prompt_cache.py','inspect','--config',CONFIG],timeout=900)
+    plan=json.loads((OUTPUT/'cache_plan.json').read_text(encoding='utf-8'))
+    print('NEW text vectors to encode:',plan['encode_new_count'],'; reuse318 unchanged.',flush=True)
+    if plan['encode_new_count']:
+        DEPS=SOURCE/'hf-deps'
+        run([sys.executable,'-m','pip','install','-q','--no-deps','--target',DEPS,
+            'transformers==4.57.1','tokenizers==0.22.1','huggingface-hub==0.36.2','safetensors==0.6.2','ftfy==6.3.1'],timeout=300)
+        os.environ['PYTHONPATH']=str(DEPS)+os.pathsep+str(SOURCE)
+        run([sys.executable,'-c',"from importlib.metadata import version;expected={'transformers':'4.57.1','tokenizers':'0.22.1','huggingface-hub':'0.36.2','safetensors':'0.6.2'};assert all(version(k)==v for k,v in expected.items());print('Isolated HF dependency versions PASS')"],timeout=60)
+    run([sys.executable,'-u',SOURCE/'run_full_prompt_cache.py','cache','--config',CONFIG],timeout=3600)
+    receipt=json.loads((OUTPUT/'cache_receipt.json').read_text(encoding='utf-8'))
+    complete=receipt['status']=='FULL_PROMPT_TEXT_CACHE_COMPLETE'
+    if not complete:raise RuntimeError('Incomplete full cache')
+except BaseException:
+    (OUTPUT/'failure.txt').write_text(traceback.format_exc(),encoding='utf-8');raise
+finally:
+    (OUTPUT/'run_status.json').write_text(json.dumps(dict(complete=complete,training=False,test_used=False,caption_weights_loaded=False)),encoding='utf-8')
+    REVIEW=OUTPUT.with_name(OUTPUT.name+'_review.zip')
+    with zipfile.ZipFile(REVIEW,'w',zipfile.ZIP_DEFLATED) as z:
+        for name in ('cache_plan.json','cache_manifest.json','cache_receipt.json','mapping_receipt.json','reuse_report.json',
+            'summary.json','cohort.json','review_examples.json','source_receipt.json','failure.txt','notebook.log','run_status.json'):
+            if (OUTPUT/name).is_file():z.write(OUTPUT/name,name)
+        # Preserve mapping diagnostics even when the later cache phase did not start.
+        for name in ('summary.json','receipt.json','cohort.json','review_examples.json','failure.json'):
+            if (MAPPING_ROOT/name).is_file():z.write(MAPPING_ROOT/name,'mapping/'+name)
+    print('SEND REVIEW:',REVIEW,'\\nKEEP ENTIRE OUTPUT:',OUTPUT,flush=True)
+    print('FULL prompt cache ready for review; no caption training.' if complete else 'INCOMPLETE; preserve output/logs; do not use a partial cache.',flush=True)
+'''
+    intro='''# Full Karpathy prompt cache trước XE từ đầu
+**Accelerator None, Internet ON.** CPU map liên kết và frozenCLIP chỉ cho text mới; không UPT inference, caption training, TEST, API Secret hoặc checkpointload.
+
+Gắn4Datasets: `csa-full-roi-karpathy-v134`, `upt-prompts-full-all-actions-v2`, `objectdetectionecache`, `csa-prompt-pilot-inputs-v169`. Sửa4path ở cell đầu nếu mount khác.
+Kiểm toàn bộ113287TRAIN+5000VALID, cùngIoU/instance/cap8object/3relation. Giữ318vector169 byte-identical; nếu cótext mới chỉ encode phần mới cùngCLIP/revision/assetSHA/frozenFP32CPU. Không lấy prompt từ captionthamchiếu.
+Fullmapping phải giữ chính xác15000record169 đã có. Dừng nếu thiếu ảnh/record/vector hoặc đổi nguồn, không coi ảnhthiếuprompt lànegative/no_objects.
+Chạy Save Version → Save & Run All vớiCPU. Cap4h là giới hạn dừng, không phảiETA/Kagglequota. Giữwholeoutput, gửireviewZIP. Sau review sẽ lưuDataset trước hai nhánhXEfromscratch; notebook này chưa huấn luyện và không thay kết quả172/56.
+'''
+    nb=dict(nbformat=4,nbformat_minor=5,metadata=dict(kernelspec=dict(display_name='Python 3',language='python',name='python3'),
+        kaggle=dict(isInternetEnabled=True,isGpuEnabled=False)),cells=[cell('markdown',intro),cell('code',setup),cell('code',runner),cell('code',final)])
+    path=HERE/'CSA_PROMPT_FULL_KARPATHY_CACHE_CPU.ipynb'
+    path.write_text(json.dumps(nb,ensure_ascii=False,indent=1)+'\n',encoding='utf-8');print(path.name,path.stat().st_size,'bytes;source',revision)
+
+
+if __name__=='__main__':
+    p=argparse.ArgumentParser();p.add_argument('--revision',required=True);make(p.parse_args().revision)

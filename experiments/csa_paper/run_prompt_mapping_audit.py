@@ -14,6 +14,14 @@ from prompt_adapter_data import PROMPT_SHA,cohort,detector_regions,join_entry,in
 HERE=Path(__file__).resolve().parent
 
 
+def mapping_cohort(train,val,scope='pilot'):
+    if scope not in ('pilot','full'):raise ValueError('Unknown mapping scope')
+    if len(train)!=113287 or len(set(train))!=113287 or len(val)!=5000 or len(set(val))!=5000 or set(train)&set(val):
+        raise ValueError('Wrong full Karpathy metadata coverage')
+    pool=cohort(train) if scope=='pilot' else sorted(train)
+    return dict(train=pool,val=val,test=[],selection='hash42 TRAIN10k; fullVALID5000; no relation-based selection' if scope=='pilot' else 'all Karpathy TRAIN113287; fullVALID5000; no relation-based selection')
+
+
 def audit(cfg):
     started=time.monotonic();out=Path(cfg['output']);out.mkdir(parents=True,exist_ok=False)
     print('CPU prompt/ROI audit: no Torch, CLIP, UPT, training, or TEST evaluation.',flush=True)
@@ -46,8 +54,8 @@ def audit(cfg):
         metadata.extend(rows);shards.append((entry,rows))
     train=[r['coco_id'] for r in metadata if r['group']=='train'];val=[r['coco_id'] for r in metadata if r['group']=='val']
     if len(train)!=113287 or len(val)!=5000:raise ValueError('Metadata coverage differs')
-    pool=cohort(train);wanted=set(pool+val)
-    save(out/'cohort.json',dict(train=pool,val=val,test=[],selection='hash42 TRAIN10k; fullVALID5000; no relation-based selection'))
+    groups=mapping_cohort(train,val,cfg.get('scope','pilot'));pool=groups['train'];wanted=set(pool+val);expected_images=len(wanted)
+    save(out/'cohort.json',groups)
     totals={g:Counter() for g in ('train','val')};samples={};texts=set();count=0
     with (out/'prompt_links.jsonl').open('w',encoding='utf-8',newline='\n') as target:
         for number,(entry,rows) in enumerate(shards,1):
@@ -78,16 +86,16 @@ def audit(cfg):
                     samples.setdefault(bucket,[])
                     if len(samples[bucket])<5:samples[bucket].append(record)
                     count+=1
-            print('ROI metadata shard',number,'/',len(shards),'mapped',count,'/15000',flush=True)
+            print('ROI metadata shard',number,'/',len(shards),'mapped',count,'/',expected_images,flush=True)
             if time.monotonic()-started>cfg.get('wall_seconds',7200):raise TimeoutError('CPU audit cap; preserve partial output')
-    if count!=15000 or any(totals[g]['images']!=n for g,n in [('train',10000),('val',5000)]):raise ValueError('Incomplete cohort')
+    if count!=expected_images or any(totals[g]['images']!=n for g,n in [('train',len(pool)),('val',5000)]):raise ValueError('Incomplete cohort')
     for group,c in totals.items():
         c['mapped_object_percent']=100*c.get('mapped_objects',0)/max(c.get('objects',0),1)
         c['mapped_relation_percent']=100*c.get('mapped_relations',0)/max(c.get('relations',0),1)
     save(out/'prompt_texts.json',sorted(texts))
     save(out/'review_examples.json',[r for bucket in sorted(samples) for r in samples[bucket]])
     summary=dict(status='PROMPT_ROI_MAPPING_AUDIT_COMPLETE',images=count,test_used=False,training=False,model_executed=False,
-        scope='TRAIN10k + fullVALID5000; mapping coverage, not prompt truth or caption quality',counts={g:dict(c) for g,c in totals.items()},
+        scope=('TRAIN10k' if len(pool)==10000 else 'TRAINfull113287')+' + fullVALID5000; mapping coverage, not prompt truth or caption quality',counts={g:dict(c) for g,c in totals.items()},
         unique_texts=len(texts),IoU_threshold=.5,object_cap=8,relation_cap=3,seconds=time.monotonic()-started,
         ready_to_train=False,next_step='Review mapping coverage/modes and example pairs, then lock pilot cache/training protocol. No automatic training.')
     save(out/'summary.json',summary)
