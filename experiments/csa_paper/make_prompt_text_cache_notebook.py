@@ -43,6 +43,7 @@ try:
     run([sys.executable,'-u',SOURCE/'test_prompt_adapter_data.py'],timeout=120)
     run([sys.executable,'-u',SOURCE/'test_prompt_text_cache_data.py'],timeout=120)
     sys.path.insert(0,str(SOURCE))
+    sys.modules.pop('prompt_text_cache',None) # A replaced notebook may share the failed kernel's data-module cache.
     from prompt_text_cache import checked_source,validate_links,source_pattern
     if LOCAL_SOURCE_ROOT:
         SOURCE_ROOT=Path(LOCAL_SOURCE_ROOT)
