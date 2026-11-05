@@ -258,7 +258,7 @@
       "P04",
       "Full cache prompt trước XE từ đầu",
       "TRAIN113287 + VALID5000",
-      "CPU mapping xong / cache chờ",
+      "CPU: tạo lại toàn bộ cache",
       null,
       null,
       null,
@@ -268,9 +268,9 @@
       null,
       null,
       "Chuẩn bị",
-      "Mapping173 / phục hồi V2",
-      "173log:118287ảnh/410texts;inspectdiff dừng trướcCLIP. Recover173 khôngmaplại;diagnostic,derived≤1e-12/equalFP32,semanticstrict.22safe testsPASS;actualrecoverychưa chạy.",
-      "https://github.com/Supzxjee/Image_Captioning/blob/main/experiments/csa_paper/CSA_PROMPT_FULL_CACHE_RECOVER173_CPU.ipynb"
+      "Fresh V3 / chưa chạy",
+      "Theo yêu cầu mới: tạo lại mapping118.287 ảnh và encode toàn bộ text từ ROI134/UPT/detector. Không169/API/output173.24safe testsPASS; cache thực chưa chạy.",
+      "https://github.com/Supzxjee/Image_Captioning/blob/main/experiments/csa_paper/CSA_PROMPT_FULL_CACHE_FRESH_CPU.ipynb"
     ]
   ]
 }

@@ -1,0 +1,15 @@
+{
+  "status": "FRESH_FULL_CACHE_AUTHOR_SAFE_CHECKS_PASS",
+  "notebook": "CSA_PROMPT_FULL_CACHE_FRESH_CPU.ipynb",
+  "source": "7dfb63a5c53d7b8f7f43d6c32a270287fcf4127b",
+  "source_files": 28,
+  "bytes": 14470,
+  "safe_fixture_tests": 24,
+  "isolated_exact_git_bundle": true,
+  "code_cells_AST": 3,
+  "API_or_models_executed": false,
+  "actual_Kaggle_cache_complete": false,
+  "old169_required": false,
+  "output173_required": false,
+  "all_texts_encoded_in_user_run": true
+}
