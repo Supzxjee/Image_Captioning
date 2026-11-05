@@ -83,5 +83,18 @@ class Checks(unittest.TestCase):
             if n=='run_candidates.py':
                 self.assertFalse(any(isinstance(x,ast.Attribute) and x.attr in ('backward','step','train') for x in ast.walk(tree)))
 
+    def test_transport_pins_package_supported_entry_and_version_routing(self):
+        tree=ast.parse(Path(__file__).with_name('make_candidate_notebook.py').read_text(encoding='utf-8'))
+        execution=next(ast.literal_eval(x.value) for x in ast.walk(tree) if isinstance(x,ast.Assign)
+            and any(isinstance(t,ast.Name) and t.id=='execute' for t in x.targets))
+        code=ast.parse(execution)
+        command=next(x.value for x in ast.walk(code) if isinstance(x,ast.Assign) and any(isinstance(t,ast.Name) and t.id=='command' for t in x.targets))
+        self.assertEqual(ast.literal_eval(command.elts[1]),'-c')
+        self.assertEqual(ast.literal_eval(command.elts[2]),'from kaggle.cli import main; main()')
+        self.assertIn("'kaggle==2.2.5'",execution)
+        self.assertIn("request.version_label)==('ducanh2403','2-vi-cai-kia-qua-nhieu','v161')",execution)
+        self.assertIn('download.mkdir(exist_ok=True)',execution)
+        self.assertLess(execution.index("'kaggle==2.2.5'"),execution.index('token=UserSecretsClient'))
+
 
 if __name__=='__main__':unittest.main(verbosity=2)

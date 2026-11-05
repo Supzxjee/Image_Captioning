@@ -53,15 +53,33 @@ try:
         found=[root] if root.is_file() else list(root.rglob('best.bin'))+list(root.rglob('checkpoint.bin'))
     else:
         if KERNEL_VERSION!='ducanh2403/2-vi-cai-kia-qua-nhieu/161':raise ValueError('No version/latest fallback.')
+        run([sys.executable,'-m','pip','install','-q','kaggle==2.2.5'],timeout=300)
+        routing="""
+from importlib.metadata import version
+from types import SimpleNamespace
+from unittest.mock import patch
+import tempfile
+from kaggle.api.kaggle_api_extended import KaggleApi
+assert version('kaggle')=='2.2.5'
+api=KaggleApi()
+with tempfile.TemporaryDirectory() as directory,patch.object(api,'build_kaggle_client') as factory:
+    endpoint=factory.return_value.__enter__.return_value.kernels.kernels_api_client.list_kernel_session_output
+    endpoint.return_value=SimpleNamespace(files=[],next_page_token=None,log=None)
+    api.kernels_output('ducanh2403/2-vi-cai-kia-qua-nhieu/161',path=directory)
+    request=endpoint.call_args.args[0]
+    assert (request.user_name,request.kernel_slug,request.version_label)==('ducanh2403','2-vi-cai-kia-qua-nhieu','v161')
+print('Pinned Kaggle2.2.5 exact161 routing mock PASS; no network.',flush=True)
+"""
+        run([sys.executable,'-c',routing],timeout=60)
         from kaggle_secrets import UserSecretsClient
         token=UserSecretsClient().get_secret(SECRET_NAME).strip()
         if not token:raise RuntimeError('Enabled API Secret is empty.')
         environment=os.environ.copy()
         for key in ('KAGGLE_API_TOKEN','KAGGLE_USERNAME','KAGGLE_KEY'):environment.pop(key,None)
         environment['KAGGLE_API_TOKEN']=token;environment['PYTHONUNBUFFERED']='1'
-        download=OUTPUT/'checkpoint161';download.mkdir()
+        download=OUTPUT/'checkpoint161';download.mkdir(exist_ok=True)
         print('Downloading ONLY best.bin from exact161; no Dataset creation.',flush=True)
-        command=[sys.executable,'-m','kaggle','kernels','output',KERNEL_VERSION,'-p',str(download),'--file-pattern',r'(^|/)best\.bin$']
+        command=[sys.executable,'-c','from kaggle.cli import main; main()','kernels','output',KERNEL_VERSION,'-p',str(download),'--file-pattern',r'(^|/)best\.bin$']
         subprocess.run(command,env=environment,check=True,timeout=900)
         environment.pop('KAGGLE_API_TOKEN',None);del token,environment
         found=list(download.rglob('best.bin'))
