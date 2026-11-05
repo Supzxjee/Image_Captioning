@@ -123,6 +123,7 @@ def run():
         CHAIR_flags_before=original['counts']['hallucinated_captions'],CHAIR_flags_after=206,
         note='CSA15 XE -> SCST+CE full1 + fixed reranker; combined stages, not isolated rerank effect')
     report=dict(status='RERANK_STORED_TEXT_AUDIT_PASS',checks=checks,source=source['commit'],
+        user_reported_output_source='ducanh2403/2-vi-cai-kia-qua-nhieu/164',
         zip_sha256=read(folder/'saved_text_receipt.json')['zip_sha256'],metrics=result['metrics'],changes=result['changes'],
         comparisons=comparisons,bootstrap=dict(repeats=repeats,seed=20261105,unit='paired image',ratios_recomputed=True,
             limitation='conditional unadjusted intervals; omit training-seed variance, repeated VALID exposure and policy-choice uncertainty'),

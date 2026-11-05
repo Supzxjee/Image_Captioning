@@ -202,5 +202,6 @@
     "No raw JPEGs, detector source or model weights in ZIP: their SHA/forward claims are user-run evidence, not independently verified here.",
     "External BLIP COCO finetuning split unverified; detector absence is not true absence; CLIP processor differs old cached-CLS source.",
     "CHAIR is object-category hallucination, not full relation/attribute truth or human confirmation."
-  ]
+  ],
+  "user_reported_output_source": "ducanh2403/2-vi-cai-kia-qua-nhieu/164"
 }
