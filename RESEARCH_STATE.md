@@ -4,11 +4,13 @@ Cập nhật: 05/11/2026, giờ Việt Nam. File này là bản tóm tắt để
 
 ## Mục tiêu và cách làm việc
 
-- Theo yêu cầu mới nhất04/11: tăng CIDEr và giảm hallucination với pipeline có căn chỉnh thị giác–ngữ nghĩa; người dùng KHÔNG yêu cầu phương pháp mới. Không tự áp lại tiêu chí novelty. A lịch sử khác kiến trúc chỉ là mốc tham khảo; đối chứng CSA/NoCSA phải ghi đúng cấu hình.
+- Theo đề cương người dùng nhắc lại05/11: **bắt buộc prompt đối tượng–quan hệ riêng ảnh → VLM semantic encoding → hợp nhất/căn chỉnh → Transformer sinh nhiều caption → kiểm soát hallucination/rerank**. Tăng CIDEr/giảm hallucination, không yêu cầu novelty; giữ hướng khác Fact-RAG của Tâm cùng lab. Global noun/verb banks không thay thế prompt riêng ảnh. A lịch sử khác kiến trúc chỉ là mốc tham khảo; đối chứng CSA/NoCSA phải ghi đúng cấu hình.
 - Cộng sự phải phản biện, không chiều ý. Từ31/10, trao đổi Codex1/Codex2 ở tài khoản khác qua [RESEARCH_EXCHANGE.md](RESEARCH_EXCHANGE.md); không nhắn chat Astra cũ. Codex2 dự kiến Astra High dẫn hướng/brainstorm và review độc lập; Codex1 triển khai/phản biện; Gemini bổ sung. Người dùng chốt hướng/ngân sách và tự chạy Kaggle.
 - Không tự chạy mô hình/Torch/autograd local hoặc notebook Kaggle. Kiểm tra metadata/NumPy/static/mock được phép; ghi rõ giới hạn. Quy trình tại [AGENTS.md](AGENTS.md).
 
 ## Hiện đang ở đâu
+
+- **05/11 scope correction: prompt is MANDATORY, current CSA is not full thesis pipeline.** [Scope reconciliation](experiments/csa_paper/PROMPT_SCOPE_RECONCILIATION_2026-11-05.md). User pasted authoritativeproposal requiring objectlabels+triplesfromqueryimage→prompts→VLM→fusion/alignment→candidates/rerank. CSA117.06 usesglobalnoun/verb banks,notUPTprompt;preserveascomparison,donotretrofitmethodlabel. Withdrawbank-onlycandidateascompleteproposal. DiscussreuseUPTcache/prompt→CLIPtext→region/pair-groundedsemanticinputtoCSA;actualschema/provenance/boxlinks/placement/fallback/loss/checkpoint/budgetunlocked. Relations/attribute/actiontruthnotestablishedbyCHAIR;prototypeweb/METEOR/SPICEinventorynotyetverified. Noimplementation/GPUapproved;priorretrievalrecommendationwithdrawn.
 
 - **05/11 user rejects Fact-RAG transfer to keep lab topics distinct.** Tâm focusesretrieval;userrequiresdirectiondirectlyaboutvisual-semanticalignment. Withdrawretrievalrecommendationbelow(noimplementation). Discuss existing02/11 [image-conditionedbankcandidate](experiments/csa_paper/IMAGE_CONDITIONED_BANK_CANDIDATE.md): ownROI→region-sensitiveconceptsupport→softreweightnounaggregationbeforeCSA,keepobject1/object2/relation/decoder/rerank. ExistingCSAalreadyalignsimages;differenceisearlierimageconditionedaggregation,notfirstalignment/newmethodguarantee. G/Slogitbiasfailed;decoderGROUND30k+.428CIDErpoints/5fewerflagsnotrobust. NeedknownTRAINlabels/unknownnegativepolicy/calibratedsupport(notsoftmaxabsence)/matchedVALIDpilot. Noapprovalforcode/GPU/TEST;preserve117.06. Reviewnotesupdated;noSheetexperimentrowforthisbrainstorm.
 
