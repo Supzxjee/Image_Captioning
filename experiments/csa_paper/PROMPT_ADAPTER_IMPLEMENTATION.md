@@ -31,6 +31,10 @@ R249 chưa có điểm CIDEr/CHAIR mới. Hai nhánh500update chưa được ch�
 
 ## Bằng chứng kiểm tra và phát hành
 
+**Cập nhật sau output167:** mapping đã hoàn tất; [kết quả](PROMPT_MAPPING_RESULT.md)/JSON,715metadata/text/sample checksPASS. Giữ7.158/7.772quan hệ đã chọn (92.10%),14.627/15.000ảnh còn prompt (97.51%), nhưng chỉ3.694ảnh có quan hệ (24.63%). Dùng tiếp mappedROI cho pilot là khả thi, không hạIoU hay re-extract ngay. Không xem mapping là xác minh quan hệ/caption gain.
+
+Bước tiếp đã chuẩn bị: `CSA_PROMPT_TEXT_CACHE_CPU.ipynb`, lấy đúng167 bằng API Secret `codex` hoặc LOCAL_SOURCE_ROOT có payload đúngSHA. Không cần AddInput/GPU/checkpoint161 nếu tải own167 quaAPI. Kiểm5payloadSHA, đủ15000links và318texts trước downloadmodel; CLIP FP32/frozen/CPU cùngrevision57c216 và8assetSHA của pipeline cũ, cache318×512. Chạy3neural fixture tests do người dùng thực hiện, chưa phải loaded161/CUDA/DDP smoke. Không train, không TEST; giữwholeoutput `csa_prompt_text_cache_v1` và gửi smallreviewZIP. Ba safe fixture/static checks của transport/cache boundary PASS; neural/cache vẫn chưa chạy bởi tác giả. Khóa thời gian riêng cho từngpha(900sAPI/180sfixtures/1800sCPUencoding) là STOPcaps, không phải ETA/billing. Không tự thayTorch hoặc tạoDataset.
+
 Notebook8.4KB, source `14c5bf0e6b19480d9666db4af517e930967c4ea1`,16filepins. Bảy local-safe fixture/static testsPASS, lặp lại PASS từ thư mục tạm chỉ chứa chính xác16Gitblobs mà notebook tải; ba codecells ASTPASS, metadataCPU/outputs rỗng/nguồnSHA đúng. Không thực thi notebook hoặc bất kỳ Torch/model/CLIP/scorer nào để đạt các kiểm tra này. Neural fixture tests chưa chạy; user-run model smoke sẽ làm sau data audit, không đưa model tests vào notebookCPU.
 
 Trong Sheet cũ đã tạo tab **Kết quả mới** (`gid=20261105`),9dòng số liệu hoàn tất +3dòng chuẩn bị/chưa chạy, TEST/VALID tách rõ, số liệu chưa đo để trống. Readback đủ16cột/12dòng+validation trạng thái, đã xem Google-rendered screenshot. Dùng filtered range và validation thông thường; connector addTable lỗi nội bộ nên không gọi đây là native Table. Registry cũ được giữ nguyên ngoài cập nhật trạng thái R249. Snapshot số liệu ở `LATEST_RESULTS_SNAPSHOT.json`.
