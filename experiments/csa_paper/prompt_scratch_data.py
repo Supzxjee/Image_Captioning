@@ -3,7 +3,7 @@ import json
 from pathlib import Path
 import numpy as np
 from real_bank_data import read,save,sha
-from full_prompt_cache_data import checked_mapping,validate_vectors
+from full_prompt_cache_data import validate_vectors
 from full_cache_data import collate
 from sharing_data import shared_collate
 from prompt_adapter_data import tensor_batch
