@@ -1,0 +1,217 @@
+{
+  "status": "PROMPT_PILOT500_STORED_REVIEW_PASS",
+  "checks": 220253,
+  "source": "fc54bdea66479e66c8e7662831be167325ffef8e",
+  "source_files": 25,
+  "zip_sha256": {
+    "CONTROL": "bfebb843a9405e627f353b87faba61d4fbac80a47326d5429cb71421bd070141",
+    "PROMPT": "a92a11bb16040ab5ade68ec91c8f6b646fed296b3aa9070d2e07893fd90a178f"
+  },
+  "user_reported_sources": {
+    "CONTROL": "ducanh2403/2-vi-cai-kia-qua-nhieu/172",
+    "PROMPT": "ducanh3/notebook7bc83c4c76/56"
+  },
+  "checkpoint_sha256": {
+    "CONTROL": "c8d26b5ec872a8c537764f7367750166845fd8abdabbdcf5109167d9f746248f",
+    "PROMPT": "831fbc7e781dae6320ee330b23b4bb05541c199726aee1bb081f2ce0588994d8"
+  },
+  "initial_checkpoint_sha256": "58ce5dc0e30ac26add9bac8e24a2e9e03b91532bfdeece588997395bf9cfc16b",
+  "cache_receipt_sha256": "3c3416d1d6d21ba693e4b5c9833d89b0479e89a712196453340fb9ad79d21a42",
+  "metrics": {
+    "CONTROL": {
+      "original": {
+        "CIDEr": 1.0631029131024006,
+        "Bleu_4": 0.34829378731737376,
+        "ROUGE_L": 0.5449286537695498,
+        "CHAIRs": 0.052,
+        "CHAIRi": 0.03736878936319104,
+        "Recall": 0.4053867403314917,
+        "counts": {
+          "images": 5000,
+          "hallucinated_captions": 260,
+          "hallucinated_mentions": 267,
+          "object_mentions": 7145,
+          "recalled_unique": 6457,
+          "reference_unique": 15928
+        },
+        "NLL": 2.365263713825221,
+        "mean_words": 8.4164,
+        "short_le2": 407
+      },
+      "end": {
+        "CIDEr": 1.0575249699288833,
+        "Bleu_4": 0.34719429277017444,
+        "ROUGE_L": 0.5432092604124633,
+        "CHAIRs": 0.0526,
+        "CHAIRi": 0.038271430588899875,
+        "Recall": 0.4032521346057258,
+        "counts": {
+          "images": 5000,
+          "hallucinated_captions": 263,
+          "hallucinated_mentions": 271,
+          "object_mentions": 7081,
+          "recalled_unique": 6423,
+          "reference_unique": 15928
+        },
+        "NLL": 2.3667763885819637,
+        "mean_words": 8.382,
+        "short_le2": 424
+      }
+    },
+    "PROMPT": {
+      "original": {
+        "CIDEr": 1.0631029131024006,
+        "Bleu_4": 0.34829378731737376,
+        "ROUGE_L": 0.5449286537695498,
+        "CHAIRs": 0.052,
+        "CHAIRi": 0.03736878936319104,
+        "Recall": 0.4053867403314917,
+        "counts": {
+          "images": 5000,
+          "hallucinated_captions": 260,
+          "hallucinated_mentions": 267,
+          "object_mentions": 7145,
+          "recalled_unique": 6457,
+          "reference_unique": 15928
+        },
+        "NLL": 2.365263713825221,
+        "mean_words": 8.4164,
+        "short_le2": 407
+      },
+      "end": {
+        "CIDEr": 1.0597761028159507,
+        "Bleu_4": 0.3469811558502319,
+        "ROUGE_L": 0.5432840337507338,
+        "CHAIRs": 0.0524,
+        "CHAIRi": 0.03800508618253744,
+        "Recall": 0.4032521346057258,
+        "counts": {
+          "images": 5000,
+          "hallucinated_captions": 262,
+          "hallucinated_mentions": 269,
+          "object_mentions": 7078,
+          "recalled_unique": 6423,
+          "reference_unique": 15928
+        },
+        "NLL": 2.366885629045944,
+        "mean_words": 8.373,
+        "short_le2": 425
+      }
+    }
+  },
+  "comparisons": {
+    "PROMPT_minus_CONTROL": {
+      "CIDEr_delta": 0.0022511328870672047,
+      "CIDEr_paired95CI": [
+        -0.002569050834936002,
+        0.006840739011281448
+      ],
+      "CHAIRs_delta": -0.0002,
+      "CHAIRs_paired95CI": [
+        -0.0024,
+        0.0022
+      ],
+      "repaired_captions": 16,
+      "new_hallucinated_captions": 15,
+      "McNemar_exact_p": 1.0,
+      "changed_captions": 534
+    },
+    "CONTROL_minus_original": {
+      "CIDEr_delta": -0.005577943173517253,
+      "CIDEr_paired95CI": [
+        -0.012200216335010769,
+        0.0011235073658137935
+      ],
+      "CHAIRs_delta": 0.0006,
+      "CHAIRs_paired95CI": [
+        -0.002,
+        0.0032
+      ],
+      "repaired_captions": 22,
+      "new_hallucinated_captions": 25,
+      "McNemar_exact_p": 0.7708669945730264,
+      "changed_captions": 976
+    },
+    "PROMPT_minus_original": {
+      "CIDEr_delta": -0.0033268102864500476,
+      "CIDEr_paired95CI": [
+        -0.009570004165447987,
+        0.0032005831921364013
+      ],
+      "CHAIRs_delta": 0.0004,
+      "CHAIRs_paired95CI": [
+        -0.002,
+        0.0028
+      ],
+      "repaired_captions": 18,
+      "new_hallucinated_captions": 20,
+      "McNemar_exact_p": 0.8714146793645341,
+      "changed_captions": 948
+    }
+  },
+  "probe": {
+    "images": 64,
+    "selection": "first64sortedVALIDIDs_not_random_or_relation_stratified",
+    "modes": {
+      "zero": {
+        "changed_captions": 0,
+        "max_abs_logit_difference": 0.0028085708618164062,
+        "mean_max_abs_logit_difference": 0.0014940714463591576,
+        "rows_with_nonzero_logit_difference": 63,
+        "token_weighted_delta_NLL": -1.9409379906417256e-06
+      },
+      "shuffle": {
+        "changed_captions": 0,
+        "max_abs_logit_difference": 0.002444744110107422,
+        "mean_max_abs_logit_difference": 0.0007394440472126007,
+        "rows_with_nonzero_logit_difference": 61,
+        "token_weighted_delta_NLL": -6.9556315300872975e-06
+      },
+      "off": {
+        "changed_captions": 0,
+        "max_abs_logit_difference": 0.08580684661865234,
+        "mean_max_abs_logit_difference": 0.03848786931484938,
+        "rows_with_nonzero_logit_difference": 63,
+        "token_weighted_delta_NLL": -0.00019471619010630233
+      }
+    }
+  },
+  "runtime": {
+    "CONTROL": {
+      "worker_seconds": [
+        770.229717781,
+        770.2074304009999
+      ],
+      "recorded_25_to_500_update_interval_seconds": 197.03092653299996,
+      "torch_versions": [
+        "2.11.0+cu128",
+        "2.11.0+cu128"
+      ]
+    },
+    "PROMPT": {
+      "worker_seconds": [
+        727.003047091,
+        727.2139289019999
+      ],
+      "recorded_25_to_500_update_interval_seconds": 188.1231433559999,
+      "torch_versions": [
+        "2.11.0+cu128",
+        "2.11.0+cu128"
+      ]
+    }
+  },
+  "updates": 500,
+  "image_events": 4000,
+  "validation_images": 5000,
+  "test_used": false,
+  "rerank_measured": false,
+  "local_models_or_scorers_executed": false,
+  "limitations": [
+    "Single seed; reused VALID,4000TRAIN exposures, no TEST or fixed rerank yet.",
+    "Binaries/staged arrays/training references absent review; actual hash checks are user-run evidence. Agent checked saved text/count/source only, did not independently rerun metric scorers.",
+    "64probes are sorted-ID convenience subset, not representative or relation-stratified; numerical differences do not prove semantic grounding.",
+    "Paired2000-image bootstrap95CI uses stored per-image scores; no correction for model selection/multiple historical trials.",
+    "Architecture has additional trainable visual+geometry parameters; no isolated text-contribution control. No verified relation accuracy."
+  ],
+  "decision": "No meaningful joint rank0 gain: do not automatically expand training. Keep161; finish preplanned same fixed rerank of existing candidates if continuing, no resampling."
+}

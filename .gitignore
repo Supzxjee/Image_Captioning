@@ -51,3 +51,5 @@ experiments/csa_paper/rerank163_review_text/
 experiments/csa_paper/rerank_test_v2_review_text/
 experiments/csa_paper/prompt_mapping_review_text/
 experiments/csa_paper/prompt_text_review_text/
+experiments/csa_paper/prompt_pilot_control_review_text/
+experiments/csa_paper/prompt_pilot_prompt_review_text/
