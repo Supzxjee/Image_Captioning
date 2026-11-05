@@ -1,0 +1,25 @@
+{
+  "status": "RECOVERY173_AUTHOR_SAFE_CHECKS_PASS",
+  "notebooks": [
+    {
+      "notebook": "CSA_PROMPT_FULL_CACHE_RECOVER173_CPU.ipynb",
+      "source": "f1d55c06dabfe354b7214ed37873a49fd8c20326",
+      "source_files": 28,
+      "bytes": 19906,
+      "AST": true,
+      "actual_models_or_API": false
+    },
+    {
+      "notebook": "CSA_PROMPT_FULL_KARPATHY_CACHE_CPU.ipynb",
+      "source": "f1d55c06dabfe354b7214ed37873a49fd8c20326",
+      "source_files": 28,
+      "bytes": 15222,
+      "AST": true,
+      "actual_models_or_API": false
+    }
+  ],
+  "safe_fixture_tests": 22,
+  "isolated_exact_git_bundle": true,
+  "actual173_fields_unknown": true,
+  "actual_recovery_or_CLIP_not_run": true
+}

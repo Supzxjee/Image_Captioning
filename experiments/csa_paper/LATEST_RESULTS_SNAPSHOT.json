@@ -258,7 +258,7 @@
       "P04",
       "Full cache prompt trước XE từ đầu",
       "TRAIN113287 + VALID5000",
-      "CPU / chưa train",
+      "CPU mapping xong / cache chờ",
       null,
       null,
       null,
@@ -268,9 +268,9 @@
       null,
       null,
       "Chuẩn bị",
-      "CPU notebook / source e294c5c",
-      "Fullmapping;reuse318vectors169;chỉencode text mới,giữ15koldrecords.19safe testsPASS;actualcache/train/TEST chưa chạy. HaiXEfromscratch sau review.",
-      "https://github.com/Supzxjee/Image_Captioning/blob/main/experiments/csa_paper/CSA_PROMPT_FULL_KARPATHY_CACHE_CPU.ipynb"
+      "Mapping173 / phục hồi V2",
+      "173log:118287ảnh/410texts;inspectdiff dừng trướcCLIP. Recover173 khôngmaplại;diagnostic,derived≤1e-12/equalFP32,semanticstrict.22safe testsPASS;actualrecoverychưa chạy.",
+      "https://github.com/Supzxjee/Image_Captioning/blob/main/experiments/csa_paper/CSA_PROMPT_FULL_CACHE_RECOVER173_CPU.ipynb"
     ]
   ]
 }

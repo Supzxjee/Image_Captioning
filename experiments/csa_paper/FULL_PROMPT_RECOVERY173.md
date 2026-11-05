@@ -19,3 +19,9 @@
 Không map lại118287ảnh, không cầnROI134/UPT/detector ở bước phục hồi, không xóaOutput173. Nếu guard đạt, chỉ encode textmới (410−318=92 khi xác nhận318subset), frozenCLIPCPU, rồi tạo receiptCOMPLETE. Nếu guard không đạt, giữdiagnostic, không bypass hoặc tạo fullcache giả.
 
 Giữwholeoutput `/kaggle/working/csa_prompt_full_karpathy_cache_v2`; gửi `csa_prompt_full_karpathy_cache_v2_review.zip` kể cả khi dừng. NoXE/SCST/TEST/GPU. Rootreceipt gồm9payload nền +comparisondiagnostic khi có; dùng danh sách trong receipt khi lưuDataset sau đó.
+
+## Kiểm tra trước phát hành
+
+Source `f1d55c06dabfe354b7214ed37873a49fd8c20326`,28filepins, recovery19.9KB. 22safe testsPASS từ exactGitbundle (7mapping+5cache+10full/recovery). Cả3codecellsAST/CPU/outputs rỗngPASS; codeCLI preflight bên trongstring cũngASTPASS; khôi phục chỉ đọcBASE_ROOT, không có lệnh maplại trong cell thực thi, original173source kỳvọng e294c5c/27pins. Freshfullnotebook cũng được cập nhậtguard/diagnostic, nhưng người dùng173 nên dùng notebook phục hồi.
+
+Tác giả chưa tảiAPI173, chưa thấy cặp record thực tế bị lệch, chưa chạyCLIP/model hoặc xác nhận cacheV2 hoàn tất. Diagnostic thực tế vẫn là bước cần lấy từ người dùng; không khẳng định guard mới chắc sẽqua. Xem `RECOVERY173_AUTHOR_CHECKS.json`.
