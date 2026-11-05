@@ -38,7 +38,7 @@ def validate_vectors(texts,vectors):
         raise ValueError('Invalid vector shape/dtype/norm')
 
 
-def checked_mapping(root,base_root,diagnostic_path=None):
+def checked_mapping(root,base_root=None,diagnostic_path=None):
     root=Path(root);r=read(root/'receipt.json')
     if r['status']!='PROMPT_ROI_MAPPING_AUDIT_COMPLETE' or set(r['payload_sha256'])!=set(MAPPING_FILES):raise ValueError('Incomplete full mapping receipt')
     if r['source_inputs_sha256']!={'prompts':PROMPT_SHA,'detections':DETECTION_SHA}:raise ValueError('Mapping inference sources changed')
@@ -48,10 +48,11 @@ def checked_mapping(root,base_root,diagnostic_path=None):
     if len(cohort['train'])!=113287 or len(cohort['val'])!=5000 or cohort['test'] or summary['images']!=118287 or summary['test_used']:
         raise ValueError('Expected full113287TRAIN+5000VALID/noTEST')
     old={}
-    with (Path(base_root)/'prompt_links.jsonl').open(encoding='utf-8') as f:
-        for line in f:
-            row=json.loads(line);old[row['coco_id']]=row
-    if len(old)!=15000:raise ValueError('Wrong169link coverage')
+    if base_root is not None:
+        with (Path(base_root)/'prompt_links.jsonl').open(encoding='utf-8') as f:
+            for line in f:
+                row=json.loads(line);old[row['coco_id']]=row
+        if len(old)!=15000:raise ValueError('Wrong169link coverage')
     with (root/'prompt_links.jsonl').open(encoding='utf-8') as f:
         validation=validate_records(map(json.loads,f),cohort,texts,summary,old,diagnostic_path)
     return texts,validation
@@ -108,7 +109,7 @@ def validate_records(rows,cohort,texts,summary,old_records,diagnostic_path=None)
         if len(chunk)==128:tensor_batch(chunk,dummy,texts);chunk=[]
     if chunk:tensor_batch(chunk,dummy,texts)
     if seen!=set(expected) or used!=set(texts) or matched!=set(old_records):raise ValueError('Incomplete inference/text/base169coverage')
-    diagnostic=dict(policy='derived_fp64_atol1e-12_same_finite_fp32_v1',compared_records=len(matched),exact_records=exact,
+    diagnostic=dict(policy='derived_fp64_atol1e-12_same_finite_fp32_v1' if old_records else 'no_prior_cache_comparison',compared_records=len(matched),exact_records=exact,
         safe_derived_drift_records=safe_drift,unsafe_records=unsafe,max_accepted_abs_delta=maximum,
         difference_fields=dict(diff_fields),examples=examples,first_unsafe=first_bad,semantic_or_fp32_changes_allowed=False)
     if diagnostic_path is not None:save(Path(diagnostic_path),diagnostic)

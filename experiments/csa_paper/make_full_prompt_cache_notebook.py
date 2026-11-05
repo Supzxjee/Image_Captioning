@@ -15,7 +15,8 @@ FILES=AUDIT_FILES+['prompt_text_cache.py','test_prompt_text_cache_data.py','make
     'make_full_prompt_cache_notebook.py','PROMPT_SCRATCH_XE_PLAN.md','recover_full_prompt_mapping.py']
 
 
-def make(revision,recover=False):
+def make(revision,recover=False,fresh=False):
+    if recover and fresh:raise ValueError('Choose recovery OR fresh rebuild')
     revision=subprocess.check_output(['git','rev-parse',revision],cwd=ROOT,text=True).strip()
     mapping={PREFIX+n:n for n in FILES};mapping.update({n:n for n in EXTERNAL})
     hashes={n:hashlib.sha256(subprocess.check_output(['git','show',revision+':'+n],cwd=ROOT)).hexdigest() for n in mapping}
@@ -140,11 +141,27 @@ Tải đúng173 gồm5mappingpayload+receipt+source receipt; kiểm toàn bộSH
 So toàn bộ15krecord169; ghi `comparison_diagnostic.json`. Chỉcho phép sai số FP64≤1e-12 ở trường tính toán IoU/roi_bbox/geometry nếu float32 hữu hạn giốngbit. Các trường ngữ nghĩa/ID/ROI/text/boxnguồn/S/O/confidence/threshold giữ chính xác; bất kỳ lệch thực thìdừng, khôngencode/COMPLETE.
 Nếu đạtguard: reuse318vector, encodechỉtextmới frozenCLIPCPU. Giữwholeoutputv2 và gửireviewZIP kể cả khi dừng. Chưa biết trường lệchthực trước diagnostic; không khẳng định nguyênnhân từlog173.
 '''
+    if fresh:
+        setup=setup.replace("BASE_ROOT=Path('/kaggle/input/datasets/ducanh2403/csa-prompt-pilot-inputs-v169')\n",'')
+        setup=setup.replace('for p in (FULL_ROOT,PROMPTS,DETECTIONS,BASE_ROOT):','for p in (FULL_ROOT,PROMPTS,DETECTIONS):')
+        setup=setup.replace('Attach all4inputDatasets','Attach all3inputDatasets')
+        setup=setup.replace('base_root=str(BASE_ROOT),','rebuild_all=True,')
+        setup=setup.replace('csa_prompt_full_karpathy_cache_v1','csa_prompt_full_karpathy_cache_fresh_v3')
+        final='\n'.join(line for line in final.split('\n') if '# Verify reusable169' not in line and "checked_base;from pathlib" not in line)
+        final=final.replace("'; reuse318 unchanged.'","'; fresh encoding of ALL unique texts.'")
+        intro='''# Tạo lại toàn bộ cache prompt Karpathy từ đầu
+**Accelerator None, Internet ON. Không cần API Secret hoặc cache169/output173.**
+
+Gắn3Datasets: `csa-full-roi-karpathy-v134`, `upt-prompts-full-all-actions-v2`, `objectdetectionecache`. Kiểm3path trong cell đầu.
+Tạo mới mapping113287TRAIN+5000VALID từ ROI134/UPT/detector, sau đó encode TOÀN BỘ text duy nhất bằng frozenCLIP FP32 CPU cùng revision và SHA assets đã khóa. Không so record với169, không tái dùng vectors169, không dùng caption tham chiếu để tạo prompt, không TEST/train mô hình caption/UPT inference.
+Vẫn kiểm SHA đầu vào, đủsplit/ROI/text/tensorpacking và toàn bộ payload trước receipt COMPLETE. Cache mới không được khẳng định giống bit với169; cần review trước XE từ đầu.
+Save Version → Save & Run All, CPU. Cap4h là giới hạn dừng, không phải ETA. Giữ toàn bộ `/kaggle/working/csa_prompt_full_karpathy_cache_fresh_v3`, gửi ZIP review cả khi lỗi.
+'''
     nb=dict(nbformat=4,nbformat_minor=5,metadata=dict(kernelspec=dict(display_name='Python 3',language='python',name='python3'),
         kaggle=dict(isInternetEnabled=True,isGpuEnabled=False)),cells=[cell('markdown',intro),cell('code',setup),cell('code',runner),cell('code',final)])
-    path=HERE/('CSA_PROMPT_FULL_CACHE_RECOVER173_CPU.ipynb' if recover else 'CSA_PROMPT_FULL_KARPATHY_CACHE_CPU.ipynb')
+    path=HERE/('CSA_PROMPT_FULL_CACHE_FRESH_CPU.ipynb' if fresh else 'CSA_PROMPT_FULL_CACHE_RECOVER173_CPU.ipynb' if recover else 'CSA_PROMPT_FULL_KARPATHY_CACHE_CPU.ipynb')
     path.write_text(json.dumps(nb,ensure_ascii=False,indent=1)+'\n',encoding='utf-8');print(path.name,path.stat().st_size,'bytes;source',revision)
 
 
 if __name__=='__main__':
-    p=argparse.ArgumentParser();p.add_argument('--revision',required=True);p.add_argument('--recover173',action='store_true');a=p.parse_args();make(a.revision,a.recover173)
+    p=argparse.ArgumentParser();p.add_argument('--revision',required=True);p.add_argument('--recover173',action='store_true');p.add_argument('--fresh',action='store_true');a=p.parse_args();make(a.revision,a.recover173,a.fresh)

@@ -95,6 +95,40 @@ class Checks(unittest.TestCase):
                 with self.assertRaises(FileNotFoundError):cache(cfg)
                 self.assertFalse((partial/'cache_receipt.json').exists())
 
+    def test_fresh_cache_encodes_every_text_without_reading169_and_checks_model_identity(self):
+        with tempfile.TemporaryDirectory() as name:
+            top=Path(name);mapping=top/'mapping';mapping.mkdir();out=top/'out';out.mkdir()
+            for n in data.MAPPING_FILES+('receipt.json',):(mapping/n).write_text('{}',encoding='utf-8')
+            spec=json.loads(Path(__file__).with_name('RERANK_TEST_INPUTS.json').read_text(encoding='utf-8'))['clip']
+            validation=dict(images=118287,old169_records_exactly_preserved=0,comparison_policy='no_prior_cache_comparison')
+            encoded=dict(spec=spec,files_sha256=spec['files_sha256'],max_tokens=4,seconds=.1)
+            cfg=dict(rebuild_all=True,mapping_root=str(mapping),output=str(out),hf_cache='fixture')
+            with patch('run_full_prompt_cache.checked_base',side_effect=AssertionError('Fresh must not read169')),patch('run_full_prompt_cache.checked_mapping',return_value=(['a horse','a person'],validation)) as check,patch('run_full_prompt_cache.encode_cpu',return_value=(vectors(2),encoded)) as encode:
+                cache(cfg);encode.assert_called_once_with(['a horse','a person'],'fixture');check.assert_called_once_with(str(mapping),None,None)
+                report=json.loads((out/'reuse_report.json').read_text(encoding='utf-8'))
+                self.assertEqual((report['cache_mode'],report['reused_vectors'],report['new_vectors']),('fresh_all',0,2))
+                self.assertIsNone(report['base169_receipt_sha256']);data.checked_payloads(out,json.loads((out/'cache_receipt.json').read_text(encoding='utf-8')))
+                np.testing.assert_array_equal(np.load(out/'prompt_embeddings.npy'),vectors(2))
+                cfg['output']=str(top/'wrong');Path(cfg['output']).mkdir();encoded['files_sha256']={}
+                with self.assertRaisesRegex(ValueError,'CLIP space'):cache(cfg)
+                self.assertFalse((Path(cfg['output'])/'cache_receipt.json').exists())
+
+    def test_fresh_mapping_validates_receipt_and_stream_without_old_records(self):
+        rows,cohort,texts,summary=self.fixture()
+        summary.update(images=118287,test_used=False)
+        # Full cohort size gate stays active; only the expensive stream is mocked here.
+        cohort=dict(train=list(range(113287)),val=list(range(200000,205000)),test=[])
+        with tempfile.TemporaryDirectory() as name:
+            root=Path(name)
+            for n,v in [('cohort.json',cohort),('prompt_texts.json',texts),('summary.json',summary),('review_examples.json',[])]:data.save(root/n,v)
+            (root/'prompt_links.jsonl').write_text('\n'.join(json.dumps(r) for r in rows)+'\n',encoding='utf-8')
+            receipt=dict(status='PROMPT_ROI_MAPPING_AUDIT_COMPLETE',source_inputs_sha256={'prompts':data.PROMPT_SHA,'detections':data.DETECTION_SHA},roi_package_sha256=data.sha(Path(data.__file__).with_name('SAVE_FULL_ROI_V134_PACKAGE.json')),payload_sha256={n:data.sha(root/n) for n in data.MAPPING_FILES})
+            data.save(root/'receipt.json',receipt)
+            with patch.object(data,'validate_records',return_value={}) as validate:
+                self.assertEqual(data.checked_mapping(root)[0],texts);self.assertEqual(validate.call_args.args[4],{})
+            (root/'prompt_links.jsonl').write_text('changed',encoding='utf-8')
+            with self.assertRaisesRegex(ValueError,'Missing/changed payload'):data.checked_mapping(root)
+
     def test_derived_roundoff_requires_identical_fp32_and_preserves_strict_source_fields(self):
         old=dict(objects=[dict(IoU=.75,roi_bbox=[.1],bbox=[.1],roi=1,confidence=.9)],relations=[dict(geometry=[1.])])
         new=deepcopy(old);new['relations'][0]['geometry'][0]=float(np.nextafter(1.,2.))

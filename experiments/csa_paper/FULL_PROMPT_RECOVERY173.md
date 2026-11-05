@@ -4,6 +4,10 @@
 
 ## Bằng chứng từ log
 
+## Quyết định thay thế — 05/11/2026
+
+Người dùng yêu cầu cache lại từ đầu sau lượt phục hồi dừng. Log mới chỉ tới mock API routing PASS rồi INCOMPLETE, không có traceback cuối nên chưa xác định lỗi thực tế. Không tiếp tục vòng phục hồi173. Chuẩn bị notebook CPU riêng: đọc ROI134 + UPT prompt đầy đủ + detector gốc, tạo mới toàn bộ mapping113287TRAIN/5000VALID và encode toàn bộ text bằng frozen CLIP cùng revision/assets. Không đọc169, không API/KaggleSecret, không yêu cầu mapping/vectors mới giống bản cũ. Vẫn kiểm SHA nguồn, đủ split, tensor packing/ROI và receipt đầy đủ; TEST/caption training không chạy. Đây là cache mới cần review trước huấn luyện, không coi tương đương bit với169.
+
 19safe tests và exact169 base318×512 PASS. Mapping **113287TRAIN+5000VALID=118287ảnh hoàn tất**,410unique texts,252,71giây của pha mapping (không toàn notebook/billing). TRAIN giữ335723object slots/54574relations; VALID14690/2319, cùng countsVALID như167. Đây là coverage, không precision quan hệ. Dừng tại `inspect`, trước CLIP cho textmới: `row != old_records[i]` trảTrue nhưng exception không ghiCOCO ID/trường/giá trị. **Chưa xác định được trường lệch từ log; không khẳng định nguyên nhân là roundoff.**
 
 ## Sửa và điều kiện cho tiếp tục
