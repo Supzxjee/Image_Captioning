@@ -27,3 +27,11 @@
 5. Kiểm textzero/roll/adapteroff trên tập cố định có phân tầng object-only/relation/empty để khắc phục64sortedIDprobe cũ; không coi sensitivity là relationaccuracy. Chỉ sau đó quyết định SCST hoặc mở rộng.
 
 Trạng thái hiện tại: **chuẩn bị CPU fullpromptcache118287ảnh trước**, tái sử dụng318vector169, chỉ encode text mới, không captionweights. FullXEepoch/cap sẽ chốt sau cache review và đối chiếu quota; chưa có notebook scratch train phát hành hoặc modelrun do tác giả. Không ghi điểm caption mới lên Sheet.
+
+## Notebook CPU đã chuẩn bị
+
+[CSA_PROMPT_FULL_KARPATHY_CACHE_CPU.ipynb](CSA_PROMPT_FULL_KARPATHY_CACHE_CPU.ipynb), source `e294c5c5fb2faed7e4d359636cd2e2f218a3b58e`/27filepins,14.7KB. AcceleratorNone/InternetON; gắn4Datasets: ROI134, UPTpromptfull-all-actions-v2, objectdetectionecache, sharedprompt169. Không cầnbank130/ảnhJPEG/COCOJSON/APISecret lúcchuẩnbị; không deserialize captionweights trong Dataset169.
+
+19safe metadata/NumPy/static/mock fixturesPASS từ đúng27Gitblobs tải trong notebook;3codecellsAST/emptyoutputs/CPU/scopefull/inspect-before-conditional-CLIP PASS. Trong fixture có dòng “FULL…COMPLETE” của dữ liệu mô phỏng; **không phải actualfullcache/modelrun**. FrozenCLIP thực chỉ do người dùng chạy nếu cótextmới; kiểm8assetSHA,FP32/L2/no-truncation. 318vectors không mã hóa lại; kiểm nguyên15koldrecords. Nếu chưa đủ113287TRAIN/5000VALID hoặc thiếufile, không đánh dấuCOMPLETE.
+
+Giữ toàn bộ `/kaggle/working/csa_prompt_full_karpathy_cache_v1`, gửi reviewZIP cùng tên `_review.zip`. Root có9payload trong `cache_receipt.json`; thư mục con `mapping` giữ chẩn đoán nên khi lưuDataset ở bước sau chỉ cần copy đúngcontract, không chọn vài file thủ công. Cap4hCPU là giới hạn dừng, không phảiETA/quota; actualcoverage/newtextcount/elapsed chờ outputngườidùng. Chưa chốt2notebookXEepoch10/15 hoặc SCST.

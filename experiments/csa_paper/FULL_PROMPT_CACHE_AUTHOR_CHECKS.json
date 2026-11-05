@@ -1,0 +1,14 @@
+{
+  "status": "FULL_PROMPT_CACHE_AUTHOR_SAFE_CHECKS_PASS",
+  "source": "e294c5c5fb2faed7e4d359636cd2e2f218a3b58e",
+  "files": 27,
+  "notebook_bytes": 14664,
+  "code_cells": 3,
+  "safe_fixture_tests": 19,
+  "isolated_exact_git_bundle": true,
+  "notebook_execution": false,
+  "model_execution": false,
+  "api_execution": false,
+  "actual_full_mapping": false,
+  "next": "User runs CPU notebook and sends full-cache review; no XE trainer or epoch count claimed ready."
+}
