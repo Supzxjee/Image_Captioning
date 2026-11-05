@@ -2,6 +2,8 @@
 
 05/11/2026. Phạm vi: đọc báo cáo tuần12 của Vũ Thế Tâm và bốn hình pipeline, đối chiếu mã CSA hiện tại; đề xuất kế thừa, **chưa duyệt triển khai hoặc GPU**. Nguồn local: `C:/Users/leduc/Downloads/Báo cáo kết quả nghiên cứu tuần 12.docx`. Các kết quả của Tâm là số liệu báo cáo, chưa có code/checkpoint/split/metric-replay để kiểm chứng độc lập.
 
+**Cập nhật sau phản hồi người dùng 05/11:** hai sinh viên cùng lab cần giữ hướng khác nhau; không tiếp tục đề xuất Fact RAG vì làm hai đề tài quá giống. Phần retrieval bên dưới là lịch sử brainstorm, không còn là khuyến nghị hiện tại. Chuyển thảo luận về căn chỉnh trực tiếp vùng ảnh–bank ngữ nghĩa trong CSA, tham chiếu `IMAGE_CONDITIONED_BANK_CANDIDATE.md`; đây vẫn là ứng viên chưa được duyệt triển khai, không phải phương pháp đã chứng minh tốt hơn.
+
 ## Bằng chứng trong báo cáo
 
 Kho offline chứa caption TRAIN, vector CLIP ViT-H/14 1024 chiều và objects/attributes/triplets từ FACTUAL + SimpleNLG. Ảnh truy hồi top10 bằng CLIP; tùy cấu hình BLIP ITM xếp lại trước khi chọn K. Facts được gom và loại trùng, mã hóa bằng CLIP ViT-B/32; visual patches làm Q, fact embeddings làm K/V trong cross-attention, AddNorm/FFN tạo fused memory cho decoder4lớp. ITM ở đây chọn **ngữ cảnh trước sinh câu**, khác ITM chọn caption đầu ra mình đã thử.
