@@ -25,3 +25,5 @@ Giữwholeoutput `/kaggle/working/csa_prompt_full_karpathy_cache_v2`; gửi `csa
 Source `f1d55c06dabfe354b7214ed37873a49fd8c20326`,28filepins, recovery19.9KB. 22safe testsPASS từ exactGitbundle (7mapping+5cache+10full/recovery). Cả3codecellsAST/CPU/outputs rỗngPASS; codeCLI preflight bên trongstring cũngASTPASS; khôi phục chỉ đọcBASE_ROOT, không có lệnh maplại trong cell thực thi, original173source kỳvọng e294c5c/27pins. Freshfullnotebook cũng được cập nhậtguard/diagnostic, nhưng người dùng173 nên dùng notebook phục hồi.
 
 Tác giả chưa tảiAPI173, chưa thấy cặp record thực tế bị lệch, chưa chạyCLIP/model hoặc xác nhận cacheV2 hoàn tất. Diagnostic thực tế vẫn là bước cần lấy từ người dùng; không khẳng định guard mới chắc sẽqua. Xem `RECOVERY173_AUTHOR_CHECKS.json`.
+
+Phân phối: notebook/source đã push `6bfbb5f`. Sheet “Kết quả mới” P04/row18 đã cập nhật nguồn173, link notebook phục hồi và trạng thái chuẩn bị; tám ô thang đo vẫn trống. Readback giá trị/link và kiểm tra giao diện Google PASS; không thay số liệu pilot trước.
