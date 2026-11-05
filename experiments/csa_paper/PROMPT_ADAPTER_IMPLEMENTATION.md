@@ -28,3 +28,11 @@ Mặc định output `/kaggle/working/csa_prompt_roi_audit_v1`, giữ nguyên fo
 ## Tình trạng đối chứng và kết quả
 
 R249 chưa có điểm CIDEr/CHAIR mới. Hai nhánh500update chưa được chạy; số500×8=4000imageevents, không phải fullTRAINepoch. Khi đo sẽ so cùng lịch/train/control và VALID5000 trước/sau cùng fixedrerank, kèm prompt-off/text-swap sensitivity. Giữ nhận định kết quả cũ D/E cho thấy prompt có thể bị bỏ qua; gradient hoặc attention không chứng minh caption dùng prompt đúng.
+
+## Bằng chứng kiểm tra và phát hành
+
+Notebook8.4KB, source `14c5bf0e6b19480d9666db4af517e930967c4ea1`,16filepins. Bảy local-safe fixture/static testsPASS, lặp lại PASS từ thư mục tạm chỉ chứa chính xác16Gitblobs mà notebook tải; ba codecells ASTPASS, metadataCPU/outputs rỗng/nguồnSHA đúng. Không thực thi notebook hoặc bất kỳ Torch/model/CLIP/scorer nào để đạt các kiểm tra này. Neural fixture tests chưa chạy; user-run model smoke sẽ làm sau data audit, không đưa model tests vào notebookCPU.
+
+Trong Sheet cũ đã tạo tab **Kết quả mới** (`gid=20261105`),9dòng số liệu hoàn tất +3dòng chuẩn bị/chưa chạy, TEST/VALID tách rõ, số liệu chưa đo để trống. Readback đủ16cột/12dòng+validation trạng thái, đã xem Google-rendered screenshot. Dùng filtered range và validation thông thường; connector addTable lỗi nội bộ nên không gọi đây là native Table. Registry cũ được giữ nguyên ngoài cập nhật trạng thái R249. Snapshot số liệu ở `LATEST_RESULTS_SNAPSHOT.json`.
+
+Người dùng đã làm rõ **giữ cả bank danh từ/động từ và prompt**, wrapper giữ nguyên `base` chứa bank/CSA/decoder. Thứ tự kế tiếp: người dùng chạy notebookCPU→gửi reviewZIP→đánh giá mapping→cacheCLIPprompt và matched500trainer. Chưa có kết quả caption mới; không gán117.06 cho prototype mới.
