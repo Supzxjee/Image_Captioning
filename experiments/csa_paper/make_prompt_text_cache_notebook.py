@@ -12,7 +12,7 @@ HERE=Path(__file__).resolve().parent;ROOT=HERE.parents[1];PREFIX='experiments/cs
 
 def make(revision):
     revision=subprocess.check_output(['git','rev-parse',revision],cwd=ROOT,text=True).strip()
-    files=AUDIT_FILES+['prompt_text_cache.py','test_prompt_text_cache_data.py','make_prompt_text_cache_notebook.py','make_smoke_notebook.py','RERANK_TEST_INPUTS.json']
+    files=AUDIT_FILES+['prompt_text_cache.py','test_prompt_text_cache_data.py','make_prompt_text_cache_notebook.py','make_smoke_notebook.py','RERANK_TEST_INPUTS.json','RECOVER_PROMPT_TEXT_167_CELL.py']
     mapping={PREFIX+n:n for n in files};mapping.update({n:n for n in EXTERNAL})
     hashes={n:hashlib.sha256(subprocess.check_output(['git','show',revision+':'+n],cwd=ROOT)).hexdigest() for n in mapping}
     setup='''
@@ -20,7 +20,7 @@ import hashlib,json,os,queue,signal,subprocess,sys,tempfile,threading,time,trace
 from pathlib import Path
 LOCAL_SOURCE_ROOT='' # Optional folder/mount containing the full exact mapping167 output.
 SECRET_NAME='codex' # Enabled Kaggle API Secret, used only if LOCAL_SOURCE_ROOT is empty.
-OUTPUT=Path('/kaggle/working/csa_prompt_text_cache_v1')
+OUTPUT=Path('/kaggle/working/csa_prompt_text_cache_v2')
 if OUTPUT.exists():raise RuntimeError('Preserve existing output; use a fresh runtime/output path.')
 SOURCE=Path(tempfile.mkdtemp(prefix='csa-prompt-text-',dir='/tmp'))
 LOG=SOURCE/'notebook.log'
@@ -42,6 +42,8 @@ complete=False
 try:
     run([sys.executable,'-u',SOURCE/'test_prompt_adapter_data.py'],timeout=120)
     run([sys.executable,'-u',SOURCE/'test_prompt_text_cache_data.py'],timeout=120)
+    sys.path.insert(0,str(SOURCE))
+    from prompt_text_cache import checked_source,validate_links,source_pattern
     if LOCAL_SOURCE_ROOT:
         SOURCE_ROOT=Path(LOCAL_SOURCE_ROOT)
     else:
@@ -55,11 +57,9 @@ try:
         env['KAGGLE_API_TOKEN']=token
         SOURCE_ROOT=SOURCE/'download167';SOURCE_ROOT.mkdir()
         cli=[sys.executable,'-c','from kaggle.cli import main; main()','kernels','output','ducanh2403/2-vi-cai-kia-qua-nhieu/167',
-             '-p',str(SOURCE_ROOT),'--file-pattern',r'(^|/)(receipt.json|summary.json|cohort.json|prompt_links.jsonl|prompt_texts.json)$']
+             '-p',str(SOURCE_ROOT),'--file-pattern',source_pattern()]
         run(cli,timeout=900,environment=env)
         del token,env
-    sys.path.insert(0,str(SOURCE))
-    from prompt_text_cache import checked_source,validate_links
     VERIFIED_ROOT,_=checked_source(SOURCE_ROOT)
     _,validation=validate_links(VERIFIED_ROOT)
     print('Exact167 payload SHA and full15000links/318texts PASS',validation,flush=True)

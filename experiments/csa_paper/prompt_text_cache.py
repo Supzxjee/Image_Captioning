@@ -3,6 +3,7 @@ import argparse
 from collections import Counter
 import json
 from pathlib import Path
+import re
 import shutil
 import time
 import numpy as np
@@ -10,6 +11,11 @@ from real_bank_data import read,save,sha
 from prompt_adapter_data import tensor_batch
 
 RECEIPT_SHA='2edaef51011684a01d948bb54df6607b9b8a7dba6da3de713e6245adae91429a'
+SOURCE_FILES=('receipt.json','summary.json','cohort.json','prompt_links.jsonl','prompt_texts.json','review_examples.json')
+
+
+def source_pattern():
+    return r'(^|/)('+ '|'.join(re.escape(n) for n in SOURCE_FILES)+r')$'
 
 
 def checked_source(root):
