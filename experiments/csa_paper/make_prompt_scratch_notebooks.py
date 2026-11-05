@@ -12,7 +12,7 @@ from make_prompt_adapter_notebook import EXTERNAL
 
 HERE=Path(__file__).resolve().parent;ROOT=HERE.parents[1];PREFIX='experiments/csa_paper/'
 FILES=list(dict.fromkeys(XE_FILES+PROMPT_FILES+['prompt_scratch_data.py','prompt_scratch_model.py','prompt_scratch_preflight.py',
-    'test_prompt_scratch_data.py','test_prompt_scratch_model.py','run_prompt_scratch.py','make_prompt_scratch_notebooks.py','FULL_PROMPT_FRESH_V175_RESULT.json']))
+    'test_prompt_scratch_data.py','test_prompt_scratch_model.py','run_prompt_scratch.py','make_prompt_scratch_notebooks.py','FULL_PROMPT_FRESH_V175_RESULT.json','cuda_runtime_guard.py','test_cuda_runtime_data.py']))
 
 
 def make(revision):
@@ -27,7 +27,7 @@ FULL_ROOT=Path('/kaggle/input/datasets/ducanh2403/csa-full-roi-karpathy-v134')
 BANK_ROOT=Path('/kaggle/input/datasets/ducanh2403/csa-semantic-banks-v130')
 PROMPT_ROOT=Path('/kaggle/input/datasets/ducanh2403/csa-prompt-full-karpathy-v175')
 RESUME_ROOT='' # Fresh run: empty. Same-arm continuation: entire previous output folder.
-OUTPUT=Path('/kaggle/working/csa_prompt_scratch_'+ARM+'_xe10')
+OUTPUT=Path('/kaggle/working/csa_prompt_scratch_'+ARM+'_xe10_v2')
 WALL_HOURS=10.5 # STOPcap within reported15h; not ETA or guaranteed session/quota.
 PARENT_DEADLINE=time.monotonic()+WALL_HOURS*3600
 for p in (FULL_ROOT,BANK_ROOT,PROMPT_ROOT):
@@ -53,6 +53,8 @@ os.environ['OMP_NUM_THREADS']='1';os.environ['PYTHONPATH']=str(SOURCE)
 common=['--bank-root',BANK_ROOT,'--prompt-root',PROMPT_ROOT,'--stage',STAGE,'--output',OUTPUT,'--arm',ARM]
 launch=[sys.executable,'-u','-m','torch.distributed.run','--standalone','--nnodes=1','--nproc_per_node=2','--max_restarts=0']
 try:
+    run([sys.executable,'-u',SOURCE/'cuda_runtime_guard.py','--output',OUTPUT],timeout=60)
+    run([sys.executable,'-u',SOURCE/'test_cuda_runtime_data.py'],timeout=60)
     run([sys.executable,'-u',SOURCE/'test_prompt_adapter_data.py'],timeout=120)
     run([sys.executable,'-u',SOURCE/'test_prompt_scratch_data.py'],timeout=120)
     # Neural fixtures run here on Kaggle only; no trained weights survive these processes.
@@ -83,8 +85,9 @@ finally:
         if (OUTPUT/n).is_file():print('KEEP CHECKPOINT:',OUTPUT/n,flush=True)
     print('COMPLETE10' if complete else 'INCOMPLETE; preserve output/logs, no automatic restart.',flush=True)
 '''
-        intro=f'''# CSA {arm} — XE từ đầu, full Karpathy10epoch
+        intro=f'''# CSA {arm} V2 — XE từ đầu, full Karpathy10epoch
 **T4×2, Internet ON; Save Version → Save & Run All.** Gắn3Datasets: ROI134, semantic-banks130 và prompt-full175 (path ở cell đầu). Không API Secret/ảnhJPEG/COCOJSON/checkpoint caption cũ.
+V2 kiểm CUDA-enabledPyTorch/2GPU/NCCL ngay trước các tests và staging, ghi `cuda_runtime.json`; không tự cài lại Torch. Khi thay Accelerator hãy restart session. Lỗi cũCONTROL dừng trướctrain nên không có trọng số cần resume; dùngoutputV2mới, giữoutputV1 để xemlog. Nhánh đãtrain ổn bằngV1 có thể tiếp tục với cùngnotebookV1; không dùngV2 đểnạpcheckpointV1 vìsourceidentitykhác.
 Hai notebook độc lập, chạy song song mỗi notebook2GPU. Cùng fresh commonseed42, bank danh từ/động từ CLIP giữ nguyên, global32caption, groupedimage-sharing, Adam(.9,.99), clip1, FP32. Warmup3epoch8e-6→1e-4;10epoch177110updates/5667470captionevents. NhánhCONTROL khóa/bypass adapter; PROMPT dùng object–relation prompt đúng instance/ROI, zero-output ởstep0 rồi học từupdate1. Ảnh thiếu mappedprompt có residual0; không coi là nhãn âm.
 Mỗi epoch đánh giá đủ5000VALID với originalbeam5/max20/CIDEr/NLL và lưu captions. CHAIR/BLEU/ROUGE chấm từ captions đã lưu sautrain; chưa có TEST/SCST/rerank ở bước này. Chỉso với nhánhCONTROL cùng lượt; CSA10cũ là tham khảo do encoderdropout-sharing khác.
 4DDP guards cho loss/gradient sharing ởclosed/opened +batch32/tail27 và neuralfixtures phải PASS trướctrain. Guard weights bị bỏ; mainworker khởi tạo mới. So `common_init_sha256` của hai output khi review. Không cam kết tăngCIDEr hoặc hội tụ10epochs.
@@ -93,7 +96,7 @@ Parentcap10.5h là giới hạn dừng, không phảiETA/quota. Checkpoint lates
         nb=dict(nbformat=4,nbformat_minor=5,metadata=dict(kernelspec=dict(display_name='Python 3',language='python',name='python3'),kaggle=dict(isInternetEnabled=True,isGpuEnabled=True)),cells=[cell('markdown',intro),cell('code',setup),cell('code',runner),cell('code',final)])
         for c in nb['cells']:
             if c['cell_type']=='code':ast.parse(c['source'])
-        path=HERE/f'CSA_PROMPT_SCRATCH_{arm}_XE10_2GPU.ipynb';path.write_text(json.dumps(nb,ensure_ascii=False,indent=1)+'\n',encoding='utf-8')
+        path=HERE/f'CSA_PROMPT_SCRATCH_{arm}_XE10_2GPU_V2.ipynb';path.write_text(json.dumps(nb,ensure_ascii=False,indent=1)+'\n',encoding='utf-8')
         print(path.name,path.stat().st_size,'bytes;',len(hashes),'source pins;',revision)
 
 

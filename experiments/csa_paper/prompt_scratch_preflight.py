@@ -18,7 +18,10 @@ def worker(args):
     from model import Config,CSACaptioner
     from prompt_scratch_model import ScratchCaptioner,to_device
     from run_sharing_benchmark import bank_arrays
-    rank=int(os.environ['LOCAL_RANK']);torch.cuda.set_device(rank);device=torch.device('cuda',rank)
+    rank=int(os.environ['LOCAL_RANK'])
+    from cuda_runtime_guard import check_runtime
+    check_runtime(args.output,rank)
+    torch.cuda.set_device(rank);device=torch.device('cuda',rank)
     if int(os.environ['WORLD_SIZE'])!=2 or torch.cuda.device_count()!=2:raise ValueError('Select T4x2')
     torch.backends.cuda.matmul.allow_tf32=False;torch.backends.cudnn.allow_tf32=False
     dist.init_process_group('nccl',timeout=timedelta(seconds=600))

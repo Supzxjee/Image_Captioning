@@ -62,6 +62,8 @@ def worker(args):
     from prompt_scratch_model import ScratchCaptioner,to_device,beam_preflight
     from prompt_scratch_data import checked_cache,batch as prompt_batch
     rank=int(os.environ['LOCAL_RANK']);world=int(os.environ['WORLD_SIZE'])
+    from cuda_runtime_guard import check_runtime
+    check_runtime(args.output,rank)
     if world!=2 or torch.cuda.device_count()!=2:raise ValueError('Select GPU T4x2')
     torch.cuda.set_device(rank);device=torch.device('cuda',rank)
     torch.backends.cuda.matmul.allow_tf32=False;torch.backends.cudnn.allow_tf32=False

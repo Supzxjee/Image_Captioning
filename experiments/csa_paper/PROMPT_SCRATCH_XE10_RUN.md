@@ -1,5 +1,11 @@
 # Hai nhánh CSA từ đầu — full Karpathy, 10 epoch XE
 
+## 06/11: CONTROL dừng trước train do môi trường CUDA
+
+**Người dùng sau đó báo “sửa được rồi”.** Giữ hai notebookV1 đang phát hành và không yêu cầu chạy lại/cache lại hoặc đổi source giữa phiên. Chưa nhận logDDP/train sau khắc phục, nên chưa xác nhận runtimeguards hoặc huấn luyện đã qua. Guard metadata đã viết/3fixturePASS và sửa thứ tựset_device ở source; generatorV2 được chuẩn bị cho lần cần dùng sau, **chưa tạo/phát hành notebookV2**. Không chạy thêm model/API hoặc dùng lý do hardening để bắt người dùng restart phiên đã sửa.
+
+Log người dùng:7adapterdata+3scratchdata+3adapterneural+2readerneuralPASS;119ROIshards và full175join118287/410text xong;PTB/CIDEr/5000VALIDreferencePASS. Dừng ở `torch.cuda.set_device`, `_cuda_setDevice` không có trong `torch._C`, trước DDP/train. Chưa biết cài đặtAccelerator thực tế hoặc Torchversion/CUDAbuild từlog; không quy kết lỗi cho model/cache hoặc khẳng định pipmetric đã thayTorch. Bổ sung runtimeguard đầu notebook, ghiTorchversion/path/CUDAbuild/devicecount/NCCL rồi mới staging/tests; chuyển `set_device` sau guard trong cảhaiworker. Không tự pipthayTorch. GiữV1 immutable;V2 dùngoutputmới để không ghi đè lần lỗi, cùngcấu hình/train/seed/adapter. Khôngtựchạymodel/Kaggle. NếuGPUchưa bật, người dùng chọnT4×2 vàrestart; nếuGPUđãbật màguardvẫnsai thì lấyreportmôi trường, không bypass.
+
 Người dùng chốt06/11/2026:10epoch, báo15giờGPU khi hỏi mỗi bên. Không chạy notebook/model thay người dùng.
 
 | Notebook | Cơ chế |
