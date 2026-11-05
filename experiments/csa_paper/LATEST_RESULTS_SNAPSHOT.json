@@ -195,10 +195,28 @@
       null,
       null,
       null,
+      "Hoàn tất",
+      "Version167",
+      "MappingCPU15k hoàn tất: quan hệ7158/7772=92.10%;14627ảnh có prompt;3694ảnh có quan hệ. Không có metric caption mới.",
+      "https://github.com/Supzxjee/Image_Captioning/blob/main/experiments/csa_paper/PROMPT_MAPPING_RESULT.md"
+    ],
+    [
+      "P03",
+      "Cache318prompt CLIP + fixture smoke",
+      "TRAIN10k + VALID5k",
+      "CLIP frozen / CPU",
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
       "Chuẩn bị",
-      "Chưa có",
-      "CPU audit TRAIN10k+VALID5000; chỉ đo mapping, chưa train.",
-      "https://github.com/Supzxjee/Image_Captioning/blob/main/experiments/csa_paper/PROMPT_ADAPTER_IMPLEMENTATION.md"
+      "Nguồn exact167",
+      "Đủ15000links/318texts và5SHA trước CLIP; neuralfixtures user-run; chưa train161/CUDA/DDP.",
+      "https://github.com/Supzxjee/Image_Captioning/blob/main/experiments/csa_paper/CSA_PROMPT_TEXT_CACHE_CPU.ipynb"
     ],
     [
       "P01",
