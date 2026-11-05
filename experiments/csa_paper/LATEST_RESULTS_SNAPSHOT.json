@@ -214,8 +214,8 @@
       null,
       null,
       "Chuẩn bị",
-      "Nguồn exact167",
-      "Đủ15000links/318texts và5SHA trước CLIP; neuralfixtures user-run; chưa train161/CUDA/DDP.",
+      "Exact167 / sửa tải V2",
+      "Lượt đầu dừng trướcCLIP: thiếu review_examples.json. V2 tải đủ6files/giữ5payloadSHA; cell phục hồi chỉ tải file thiếu, giữ output lỗi.12safe testsPASS; chưa cache/train.",
       "https://github.com/Supzxjee/Image_Captioning/blob/main/experiments/csa_paper/CSA_PROMPT_TEXT_CACHE_CPU.ipynb"
     ],
     [
