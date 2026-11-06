@@ -1,0 +1,13 @@
+{
+  "status": "AUTHOR_METADATA_STATIC_PASS",
+  "source": "f3a8a658c5cce50e879c4d905bf46211420e0b5d",
+  "source_files": 33,
+  "checks": [
+    "3 fixtures PASS in exact isolated Git bundle",
+    "3codecells AST/emptyoutputs PASS",
+    "CPU metadata/no Secrets/checkpoints PASS"
+  ],
+  "models_executed": false,
+  "notebooks_executed": false,
+  "test_caption_scores": false
+}

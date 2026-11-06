@@ -341,7 +341,7 @@
       2.423685141331236,
       "Hoàn tất",
       "60 / END14161",
-      "FullTRAIN113287/14161updates; VALID5000/noTEST. C10/P9 initial XE epochs differ. PROMPT rerank:72fewer CHAIR flags; CIDEr CI includes0.",
+      "FullTRAIN113287/14161updates; VALID5000/noTEST. C10/P9 initial XE epochs differ. PROMPT rerank:72fewer CHAIR flags; CIDEr CI includes0. TEST approved, pending required TEST ROI/prompt cache;175 onlyTRAIN/VALID. No newTEST score.",
       "https://github.com/Supzxjee/Image_Captioning/blob/main/experiments/csa_paper/PROMPT_SCST_RESULT.md"
     ],
     [
@@ -377,7 +377,7 @@
       2.423685141331236,
       "Hoàn tất",
       "60 / END14161",
-      "FullTRAIN113287/14161updates; VALID5000/noTEST. C10/P9 initial XE epochs differ. PROMPT rerank:72fewer CHAIR flags; CIDEr CI includes0.",
+      "FullTRAIN113287/14161updates; VALID5000/noTEST. C10/P9 initial XE epochs differ. PROMPT rerank:72fewer CHAIR flags; CIDEr CI includes0. TEST approved, pending required TEST ROI/prompt cache;175 onlyTRAIN/VALID. No newTEST score.",
       "https://github.com/Supzxjee/Image_Captioning/blob/main/experiments/csa_paper/PROMPT_SCST_RESULT.md"
     ]
   ]
