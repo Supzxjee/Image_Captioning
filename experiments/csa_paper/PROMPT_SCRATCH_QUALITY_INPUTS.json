@@ -1,0 +1,15 @@
+{
+  "payload_sha256": "e8eb7623eaad1c36bf5d813e7ea3f9d9dd45fa4bce055d378f3e9b1f5d96555a",
+  "source_review_sha256": {
+    "CONTROL": "b83083dce090e1feb8632182ef4a43ac475d793714d50a0a2ab6f5456fc2e440",
+    "PROMPT": "0cf92943eacc99eaf1f6a6e40c1f252bb3b8ea654cc0b2c38608cb6aab6252bb"
+  },
+  "expected_CIDEr": {
+    "CONTROL10": 0.9945869315089895,
+    "PROMPT9": 0.9884528187965552,
+    "PROMPT10": 0.9790003778171876
+  },
+  "images": 5000,
+  "test_used": false,
+  "selection_locked_before_CHAIR": true
+}

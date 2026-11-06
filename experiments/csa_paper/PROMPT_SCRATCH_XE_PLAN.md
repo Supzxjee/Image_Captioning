@@ -1,5 +1,9 @@
 # Đưa prompt vào từ đầu giai đoạn XE
 
+## Review hai nhánh10epoch — 06/11/2026
+
+Đã nhận hai ZIP, người dùng xác nhận nguồnCONTROL178/PROMPT58. Cảhai hoàn tất177110updates/5667470captionevents, samecommoninit/inputs/software. CIDErVALIDbestCONTROL10=.99458693 vsPROMPT9=.98845282; endpointPROMPT10=.97900038. Không có cải thiện cuối10epoch; chưa cóCHAIR. Bước tiếp theo chuẩn bị **CPU score savedcaptions** trên đúng5000VALID:CONTROL10/PROMPT9/PROMPT10; giữ nguyên lựa chọnbest đã khóa bằngCIDEr, không chọn lại theoCHAIR. Tái lậpCIDEr từPTBrefs đã lưu, thêmBLEU4/ROUGE/CHAIR/recall vàpairedCI; không model/checkpoint/GPU/TEST hoặc tự mở rộngtrain. Kết quảCPU còn chờngườidùngchạy, không gọi làđãgiảmhallu.
+
 ## Cập nhật06/11 — cache full mới hoàn tất, nguồn175
 
 ### Đã chốt sau lưu Dataset
