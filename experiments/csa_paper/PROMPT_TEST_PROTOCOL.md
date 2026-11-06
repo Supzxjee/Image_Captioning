@@ -1,0 +1,15 @@
+# Locked TEST5000 prompt evaluation
+
+06/11/2026. User approves TEST evaluation, not new training. Latest GPU quota10h/10h. Author does not run notebooks/models locally.
+
+- Sources CONTROL: ducanh2403/2-vi-cai-kia-qua-nhieu/180, PROMPT: ducanh3/notebook7bc83c4c76/60. Exact final checkpoint SHAs from PROMPT_SCST_RESULT.json; no best/latest reselection. No optimizer or weight update.
+- Exact full Karpathy TEST5000, original ROI/H5 pooling profile and vocabulary; TEST cache must match previous143 NPZ/metadata/vocab byte hashes. Cache175 has TRAIN+VALID only, so TEST prompt-to-ROI mapping is a required preparation step, not a cached input already available.
+- Reuse exact UPT all-actions promptJSON/PROMPT_SHA and original detector SHA; same confidence/IoU=.5/objectcap8/relationcap3, object ordering/fallback. Prompt records exclude captions/sequences/ground-truth annotations. Encode with the same pinned CLIP text space; reuse175 vectors byte-for-byte for known strings, encode only new TEST strings without learning.
+- Main: CONTROL normal and PROMPT normal, per-image beam5/max20/raw logprob, both decoder rank0 and frozen .3decoder+.4CLIP+.3object selector/conf>=.5/penalty1/earlier ties. Same official CLIP assets as VALID164. No coefficient tuning, BLIP, oracle or TEST-based checkpoint fallback.
+- Prompt intervention: SAME PROMPT60 weights, ROI/link/geometry/masks and decoding. Normal / all text embeddings zero / foreign-image text swap, objects and relations swapped only within their respective slot type. Fix donor list by hash42 ordering of all valid (COCO ID, slot) entries per type, cycle forward to first foreign-image donor. Keep target ROI/pairs/geometry/masks exactly; record donor IDs/slots/texts and unchanged-text fraction. Do not use target references or choose donors based on results. Empty prompt slots remain empty. Diagnostic primary scores BEFORE reranking; zero/shuffle may be out-of-distribution, not a substitute for matched training ablation.
+- Report all six conditions: CONTROL raw/rerank, PROMPT raw/rerank/zero/shuffle. Metrics CIDEr/BLEU4/ROUGE-L/CHAIRs/i/recall and caption length; paired image statistics with fixed reference corpus. CHAIR is object-level, not relation truth.
+- One seed, C10/P9 initial XE histories differ. Prior project TEST exposure is disclosed. TEST results must not be used to tune these policies; later changes are development, not fresh independent confirmation.
+
+## Execution dependency
+
+First user runs CPU preparation of TEST ROI + structured prompts + text vectors. No caption model, scoring or GPU required. Review its coverage and payload identities before authoring model evaluation against the resulting concrete receipt; no assumption that raw promptJSON covers TEST. Preparation must stop with missing IDs/changed identity; no substitute prompts or relaxed thresholds. After user supplies the preparation review/output, prepare two own-account frozen-evaluation notebooks using that verified cache. No extra training is authorized.
