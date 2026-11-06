@@ -1,0 +1,106 @@
+{
+  "schema": "prompt_test_additional_metrics_v1",
+  "policies": [
+    "normal",
+    "fixed_rerank"
+  ],
+  "images": 5000,
+  "arms": {
+    "CONTROL": {
+      "version": "ducanh2403/2-vi-cai-kia-qua-nhieu/184",
+      "payload_sha256": {
+        "test_references.json": "311ff29fc3dab1dde650a01b141c2498fbc44a4d7f96f63059dfffe0bdd6e776",
+        "test_lock.json": "d175e5145536097b87baed230745f8d402df0a952186c929a048ca107ccefc86",
+        "run_status.json": "3fa355e2560ceec0b6762d11bcb279234f786be1805ff92840e85a775d0e2531",
+        "result.json": "84c1b4170a191d5d8548c528d801e5575caed11b30f55aa01d75c5ad382f39ce",
+        "normal_captions.json": "1a7972c830fe1a0486be0ef1b660c0005587286e26a67c0eb9cdcc7d8392ec21",
+        "fixed_rerank_captions.json": "ae1111ed22ee15379a370129f44269e9e569b8490ea9c8c1f13adce9149e6a06"
+      },
+      "checkpoint_sha256": "10d18a66e4e01ae7dba97802750a6a57f4305b904949f0cc50fdc368772cebd4",
+      "metrics": {
+        "normal": {
+          "CIDEr": 1.055605937846093,
+          "Bleu_4": 0.34382930287222396,
+          "ROUGE_L": 0.5404077175960521,
+          "CHAIRs": 0.0562,
+          "CHAIRi": 0.041556268302886626,
+          "Recall": 0.4082941699479233,
+          "counts": {
+            "images": 5000,
+            "hallucinated_captions": 281,
+            "hallucinated_mentions": 298,
+            "object_mentions": 7171,
+            "recalled_unique": 6429,
+            "reference_unique": 15746
+          },
+          "mean_words": 8.3184
+        },
+        "fixed_rerank": {
+          "CIDEr": 1.14367115579243,
+          "Bleu_4": 0.3611049306400787,
+          "ROUGE_L": 0.5635044637512016,
+          "CHAIRs": 0.0454,
+          "CHAIRi": 0.030988061976123953,
+          "Recall": 0.4405563317667979,
+          "counts": {
+            "images": 5000,
+            "hallucinated_captions": 227,
+            "hallucinated_mentions": 244,
+            "object_mentions": 7874,
+            "recalled_unique": 6937,
+            "reference_unique": 15746
+          },
+          "mean_words": 9.1474
+        }
+      }
+    },
+    "PROMPT": {
+      "version": "ducanh3/notebook7bc83c4c76/61",
+      "payload_sha256": {
+        "test_references.json": "311ff29fc3dab1dde650a01b141c2498fbc44a4d7f96f63059dfffe0bdd6e776",
+        "test_lock.json": "ffc885e401c908e5845d1fd3a33d6f5480f4ec1edef8c4d2e33fcf0512a89f92",
+        "run_status.json": "22fcfbbd11aeacb66f9d06a46f0941fd26cf1e232617a6226ca9d3772d980af8",
+        "result.json": "cb68e4eca1c039533e4e33081a2b8a7790a16f32eb8707f1299630b78e6a3ddb",
+        "normal_captions.json": "690f2376162e00ff6b51d46e536adf0ce600db3680c23f6658ccdba7c5c1e8f4",
+        "fixed_rerank_captions.json": "860d5376ebbd0bcfe8ba86fb97ab36b7d4e6ff63f645eb7a141aa2334f2d3666"
+      },
+      "checkpoint_sha256": "be2759b4a6f57af9bf8baeb13ee097bae2d8703d265b0791d9d39bb9c3dcbc63",
+      "metrics": {
+        "normal": {
+          "CIDEr": 1.073603286292523,
+          "Bleu_4": 0.34645242048088,
+          "ROUGE_L": 0.5448142287978902,
+          "CHAIRs": 0.0376,
+          "CHAIRi": 0.026764987027174655,
+          "Recall": 0.4241077098945764,
+          "counts": {
+            "images": 5000,
+            "hallucinated_captions": 188,
+            "hallucinated_mentions": 196,
+            "object_mentions": 7323,
+            "recalled_unique": 6678,
+            "reference_unique": 15746
+          },
+          "mean_words": 8.1666
+        },
+        "fixed_rerank": {
+          "CIDEr": 1.1535224810581564,
+          "Bleu_4": 0.3617312853322773,
+          "ROUGE_L": 0.5663509919270447,
+          "CHAIRs": 0.032,
+          "CHAIRi": 0.02118116122601545,
+          "Recall": 0.4517972818493586,
+          "counts": {
+            "images": 5000,
+            "hallucinated_captions": 160,
+            "hallucinated_mentions": 170,
+            "object_mentions": 8026,
+            "recalled_unique": 7114,
+            "reference_unique": 15746
+          },
+          "mean_words": 9.083
+        }
+      }
+    }
+  }
+}
