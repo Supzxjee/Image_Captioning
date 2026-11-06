@@ -51,7 +51,8 @@
         }
       },
       "source_commit": "a58d5b979cbfa041d86680b0ca0c73e0bd16a290",
-      "extra_save_version": null
+      "extra_save_version": 185,
+      "extra_version_provenance": "User confirmed; not independently retrieved through Kaggle API."
     },
     "PROMPT": {
       "archive_sha256": "8fe98cd8c436a380be6c5016506a2566caecb5886ba971a2e3c7cb3431d3c68f",
@@ -102,7 +103,8 @@
         }
       },
       "source_commit": "a58d5b979cbfa041d86680b0ca0c73e0bd16a290",
-      "extra_save_version": null
+      "extra_save_version": 62,
+      "extra_version_provenance": "User confirmed; not independently retrieved through Kaggle API."
     }
   },
   "prompt_minus_control_x100": {

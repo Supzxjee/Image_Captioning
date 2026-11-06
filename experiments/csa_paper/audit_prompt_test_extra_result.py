@@ -71,7 +71,8 @@ for arm in ('CONTROL', 'PROMPT'):
     environments[arm]=env
     results[arm]=dict(archive_sha256=cached['archive_sha256'],source_version=spec['version'],
         checkpoint_sha256=spec['checkpoint_sha256'],metrics=result['metrics'],display_x100=result['display_x100'],
-        source_commit=source['commit'],extra_save_version=None)
+        source_commit=source['commit'],extra_save_version={'CONTROL':185,'PROMPT':62}[arm],
+        extra_version_provenance='User confirmed; not independently retrieved through Kaggle API.')
 
 check('same-evaluator-and-models',environments['CONTROL']['evaluator_files']==environments['PROMPT']['evaluator_files']
       and environments['CONTROL']['corenlp_archive_sha256']==environments['PROMPT']['corenlp_archive_sha256'])

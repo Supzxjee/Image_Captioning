@@ -1,6 +1,6 @@
 # TEST5000 — đủ tám chỉ số cho CONTROL và PROMPT
 
-Hai lượt chấm CPU COMPLETE, đúng caption từ CONTROL184 và PROMPT61; cùng refs Karpathy TEST5000. Đây là bổ sung chỉ số, không huấn luyện/sinh câu/chọn câu lại. Trọng số vẫn là CONTROL180/PROMPT60. Save Version của hai lượt bổ sung chưa được người dùng cung cấp.
+Hai lượt chấm CPU COMPLETE, đúng caption từ CONTROL184 và PROMPT61; cùng refs Karpathy TEST5000. Đây là bổ sung chỉ số, không huấn luyện/sinh câu/chọn câu lại. Trọng số vẫn là CONTROL180/PROMPT60. Người dùng xác nhận output chấm bổ sung: CONTROL185 (`ducanh2403/2-vi-cai-kia-qua-nhieu/185`), PROMPT62 (`ducanh3/notebook7bc83c4c76/62`). Đây là nguồn tự báo cáo đã xác nhận, chưa tải lại qua API; không thay nguồn caption184/61 hoặc trọng số180/60.
 
 ## Kết quả
 
