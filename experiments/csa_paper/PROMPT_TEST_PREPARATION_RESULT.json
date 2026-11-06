@@ -1,0 +1,91 @@
+{
+  "status": "TEST_PREPARATION_METADATA_REVIEW_PASS",
+  "checks": 48,
+  "summary": {
+    "status": "PROMPT_TEST_PREPARATION_COMPLETE",
+    "test_images": 5000,
+    "caption_generation": false,
+    "caption_training": false,
+    "caption_scoring": false,
+    "with_objects": 4865,
+    "with_relations": 1136,
+    "objects": 14593,
+    "relations": 2228,
+    "texts": 258,
+    "reused_texts": 257,
+    "new_texts": [
+      "a person hugging an elephant"
+    ],
+    "source175_files": {
+      "cohort.json": "d97eaa8cecd07a4de825e3be99926f751f610e103ff9582c2b482e53d2c9980d",
+      "prompt_texts.json": "35f28b5f9f6cbbc2eaa6a0fc3ea816f8722013a5804814da6555edcfe97f04c2",
+      "prompt_links.jsonl": "e90c79b3b04540630b4bd2d279a4070ef05da7f4b65970c952851c37e2423bf0",
+      "summary.json": "28d650c5403fcf851e9a8f5883824ceba2d46144a9d2222be36cb056e07b5122",
+      "review_examples.json": "17b4ed35145338ac3fe65b28b293e4a11d8ac39fba1199ff3a46b29219329df7",
+      "prompt_embeddings.npy": "f59b4b08c578e98195f68c2af7899a181c83678e406ddbf3a661ba36cc87e98c",
+      "mapping_receipt.json": "134c64c5c018e37fc138c98a6ce59e8a8b306433d20c53c9559b781683eaf09d",
+      "reuse_report.json": "de76c927e7839bfb553ca09ea3373474ba2afeae6b12b7f1e9959d8ed41358ef",
+      "cache_manifest.json": "05f40a246b19cb37717a4aadb7bcb20f2e0dd0ebabe60e983d83b9f328e9f56a",
+      "cache_receipt.json": "72c532cd73b832c5cdf8f0ff747a882413e006fa84670f61a6a54abd272613cb",
+      "run_status.json": "fc1f7837f14785888c4ff30c193ca71b72ce34931f93c918cc23a9945089d8e9",
+      "source_receipt.json": "7df1b07aa9e8ef821e4608f406c355142d3435dbd7aa5bbf805daf4e6afd5365",
+      "notebook.log": "5c656006b117092d6cc19ef472d18e7fb264a6f1a00876be16f694af87facd74",
+      "cache_plan.json": "4f1fd4c729fe72db06de781ad2a99af8755eef225cae23ecd989778438aeb057"
+    },
+    "new_encoding": {
+      "spec": {
+        "id": "openai/clip-vit-base-patch16",
+        "revision": "57c216476eefef5ab752ec549e440a49ae4ae5f3",
+        "files_sha256": {
+          "merges.txt": "9fd691f7c8039210e0fced15865466c65820d09b63988b0174bfe25de299051a",
+          "pytorch_model.bin": "ec89c7b09c749a60aae3c9cd910516f24b58214a7df060b48962d14c469cfbf0",
+          "special_tokens_map.json": "f8c0d6c39aee3f8431078ef6646567b0aba7f2246e9c54b8b99d55c22b707cbf",
+          "config.json": "eaf1c9089a8553c913d27ea66407f8bfc2be9989c80c9f331ddb3d63d4c5e8ad",
+          "tokenizer.json": "a83e0809aa4c3af7208b2df632a7a69668c6d48775b3c3fe4e1b1199d1f8b8f4",
+          "preprocessor_config.json": "910e70b3956ac9879ebc90b22fb3bc8a75b6a0677814500101a4c072bd7857bd",
+          "tokenizer_config.json": "3f74b6a4d97fee70b3b96921a687fc5e3f2fb583f5f81e7c178c0c22281beade",
+          "vocab.json": "3f0c4f7d2086b61b38487075278ea9ed04edb53a03cbb045b86c27190fa8fb69"
+        }
+      },
+      "files_sha256": {
+        "merges.txt": "9fd691f7c8039210e0fced15865466c65820d09b63988b0174bfe25de299051a",
+        "pytorch_model.bin": "ec89c7b09c749a60aae3c9cd910516f24b58214a7df060b48962d14c469cfbf0",
+        "special_tokens_map.json": "f8c0d6c39aee3f8431078ef6646567b0aba7f2246e9c54b8b99d55c22b707cbf",
+        "config.json": "eaf1c9089a8553c913d27ea66407f8bfc2be9989c80c9f331ddb3d63d4c5e8ad",
+        "tokenizer.json": "a83e0809aa4c3af7208b2df632a7a69668c6d48775b3c3fe4e1b1199d1f8b8f4",
+        "preprocessor_config.json": "910e70b3956ac9879ebc90b22fb3bc8a75b6a0677814500101a4c072bd7857bd",
+        "tokenizer_config.json": "3f74b6a4d97fee70b3b96921a687fc5e3f2fb583f5f81e7c178c0c22281beade",
+        "vocab.json": "3f0c4f7d2086b61b38487075278ea9ed04edb53a03cbb045b86c27190fa8fb69"
+      },
+      "loading_info": {
+        "missing_keys": [],
+        "unexpected_keys": [],
+        "mismatched_keys": [],
+        "error_msgs": []
+      },
+      "max_tokens": 7,
+      "seconds": 14.177083713999991
+    }
+  },
+  "transport_inventory": {
+    "cache_version": "ducanh2403/2-vi-cai-kia-qua-nhieu/181",
+    "cache_files": {
+      "test_regions.npz": "7fb385e1a03c5241c4d65cc240d0434e041284a9a829198c5167f0725be57b1a",
+      "test_metadata.json": "4271b46b7ab67117433bfdf84f6eb9ba66515ada9b3c4ae4d2e507bc2cede018",
+      "vocabulary.json": "924be210aa0daa8b0968a6d69ad2c66b3de603f49c35f4aa67247c75d6173fc7",
+      "test_receipt.json": "7a212068c7e73f6f0791906c1ec81d56e3178fd62317bdf0a5e528350d95055d",
+      "prompt_links.jsonl": "54e25cd17c9842c07fb4ef0b3da4ed4ad276571d3711d51bf0b3ac1a86cc3c55",
+      "prompt_texts.json": "afdad5d42734adfbd38883f1fa7a22aaba1b76ee8cd7510635fd3e8b22d44553",
+      "prompt_embeddings.npy": "7119776b70380376a343dd9130bed6d2e5fc19594d83cf4bdd724a7343a4fb35",
+      "summary.json": "3c9b863b73d9efdeda7f5979d25c829c74d805505a856c965141dc275a0e8847",
+      "source_coverage.json": "b5f66a8bcb40027dcdd11b0d71c92551d68a11f91a6daf56e1157cdd0b5a7a3c",
+      "receipt.json": "f86708aa99a3a07087a55164cd3fa099d01e01eef15a91da38540dc28a5c3742"
+    },
+    "source_review_zip_sha256": "44f752a96e5fd228f704f45a0cc7de0160b97a4636ad958ec4c59a2e77b1de8a"
+  },
+  "limitations": [
+    "NPZ/metadata/vector binaries absent review ZIP; their payload hashes are user-run evidence.",
+    "Slot packing used dummy vectors; real258x512 vector validation occurs during transport.",
+    "No author models/scorers/API; no new TEST captions or accuracy scores."
+  ]
+}
