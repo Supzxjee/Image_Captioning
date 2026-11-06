@@ -1,0 +1,15 @@
+{
+  "status": "AUTHOR_METADATA_STATIC_PASS",
+  "source": "ee72401571ed1959d67af5a6f2429ba774cdfc54",
+  "source_files": 40,
+  "checks": [
+    "3 intervention/static fixtures PASS in exact40fileGitbundle",
+    "CONTROL:3AST/emptyoutputs/own-version/checkpoint-regex/3h/metric-first PASS",
+    "PROMPT:3AST/emptyoutputs/own-version/checkpoint-regex/3h/metric-first PASS",
+    "Same executable pipeline; only configured arm/source differs"
+  ],
+  "models_executed": false,
+  "notebooks_executed": false,
+  "scorers_executed": false,
+  "kaggle_api_executed": false
+}
