@@ -2,6 +2,10 @@
 
 06/11/2026, UTC+7. Bản vẽ theo toàn bộ cấu hình trong [yêu cầu gốc](USER_BRIEF.txt), dùng skill `diagram-design` v2.6.142. Không thay thế hình cũ trong báo cáo Word; không sửa mô hình hoặc notebook.
 
+## Bản thử theo ảnh mẫu mới
+
+[Biến thể theo phong cách hình tham khảo](reference_style/README.md): cascade nằm trên, khung prompt nét đứt cam/xanh phía dưới, attention/FFN dạng thanh đứng, decoder bên phải. Có SVG/PDF/PNG/HTML và cùng nội dung kiến trúc; bản ba panel dưới đây vẫn được giữ.
+
 ## Tệp bàn giao
 
 - [SVG chỉnh sửa được](upt-csa-architecture.svg): chữ vẫn là SVG text, module/đường nối có ID; mở bằng Inkscape, Illustrator hoặc Figma.

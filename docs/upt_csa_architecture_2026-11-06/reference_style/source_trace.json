@@ -1,0 +1,11 @@
+{
+  "date": "2026-11-06",
+  "style_source": "User-supplied architecture reference image in conversation",
+  "architecture_source": "../USER_BRIEF.txt",
+  "architecture_brief_sha256": "a2a428347ef377bdc566b053ca36dbbe1bfd730701f3352157fe1da2f1b59343",
+  "photo": "docs/csa_pipeline_2026-11-02/v3/assets/COCO_train2014_000000263974.jpg",
+  "photo_sha256": "f208e31d4f689c88f1c0a6a1c583f1413c86424b10c52d62b8b6d3e2360e7406",
+  "photo_boxes_and_phrase_examples": "Hand-authored illustration, not model output",
+  "skill": "diagram-design 2.6.142",
+  "model_or_scorer_execution": false
+}

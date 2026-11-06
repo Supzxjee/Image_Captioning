@@ -1,0 +1,17 @@
+{
+  "status": "PASS",
+  "routes_checked": 54,
+  "nodes_checked": 35,
+  "issues": [],
+  "pdfs": {
+    "upt-csa-reference-style.pdf": {
+      "pages": 1,
+      "text_characters": 1493,
+      "raster_images": 1,
+      "vector_drawings": 225
+    }
+  },
+  "render_report": "render_audit.json",
+  "source_brief_sha256": "a2a428347ef377bdc566b053ca36dbbe1bfd730701f3352157fe1da2f1b59343",
+  "limits": "Reference-style visual variant follows the previous brief; photos and box overlays are illustrative, and raster images are allowed only for the input photo. Unrounded axis-aligned route envelopes are checked conservatively; actual SVG corners are rounded."
+}

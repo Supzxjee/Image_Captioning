@@ -1,0 +1,1172 @@
+{
+  "canvas": [
+    2200,
+    1160
+  ],
+  "nodes": [
+    {
+      "id": "noun-bank",
+      "x": 536,
+      "y": 24,
+      "w": 736,
+      "h": 64,
+      "kind": "node"
+    },
+    {
+      "id": "verb-bank",
+      "x": 1368,
+      "y": 24,
+      "w": 320,
+      "h": 64,
+      "kind": "node"
+    },
+    {
+      "id": "input-image",
+      "x": 48,
+      "y": 812,
+      "w": 232,
+      "h": 174,
+      "kind": "image"
+    },
+    {
+      "id": "roi-example",
+      "x": 48,
+      "y": 336,
+      "w": 232,
+      "h": 174,
+      "kind": "image"
+    },
+    {
+      "id": "clip-visual",
+      "x": 48,
+      "y": 152,
+      "w": 232,
+      "h": 120,
+      "kind": "node"
+    },
+    {
+      "id": "detectors",
+      "x": 48,
+      "y": 568,
+      "w": 232,
+      "h": 120,
+      "kind": "node"
+    },
+    {
+      "id": "roi-projection",
+      "x": 312,
+      "y": 160,
+      "w": 176,
+      "h": 144,
+      "kind": "node"
+    },
+    {
+      "id": "obj1",
+      "x": 536,
+      "y": 136,
+      "w": 320,
+      "h": 172,
+      "kind": "fusion"
+    },
+    {
+      "id": "obj2",
+      "x": 952,
+      "y": 136,
+      "w": 320,
+      "h": 172,
+      "kind": "fusion"
+    },
+    {
+      "id": "rel",
+      "x": 1368,
+      "y": 136,
+      "w": 320,
+      "h": 172,
+      "kind": "fusion"
+    },
+    {
+      "id": "matching",
+      "x": 384,
+      "y": 744,
+      "w": 304,
+      "h": 96,
+      "kind": "node"
+    },
+    {
+      "id": "object-phrases",
+      "x": 384,
+      "y": 888,
+      "w": 200,
+      "h": 104,
+      "kind": "pool"
+    },
+    {
+      "id": "object-text",
+      "x": 632,
+      "y": 888,
+      "w": 64,
+      "h": 112,
+      "kind": "encoder"
+    },
+    {
+      "id": "object-slots",
+      "x": 720,
+      "y": 624,
+      "w": 256,
+      "h": 112,
+      "kind": "node"
+    },
+    {
+      "id": "object-mha",
+      "x": 720,
+      "y": 448,
+      "w": 200,
+      "h": 112,
+      "kind": "node"
+    },
+    {
+      "id": "object-wout",
+      "x": 944,
+      "y": 448,
+      "w": 32,
+      "h": 112,
+      "kind": "projection"
+    },
+    {
+      "id": "object-sum",
+      "x": 1006,
+      "y": 482,
+      "w": 36,
+      "h": 36,
+      "kind": "sum"
+    },
+    {
+      "id": "vo-updated",
+      "x": 1060,
+      "y": 472,
+      "w": 20,
+      "h": 59,
+      "kind": "tokens"
+    },
+    {
+      "id": "relation-phrases",
+      "x": 1144,
+      "y": 888,
+      "w": 192,
+      "h": 104,
+      "kind": "pool"
+    },
+    {
+      "id": "relation-text",
+      "x": 1376,
+      "y": 888,
+      "w": 64,
+      "h": 112,
+      "kind": "encoder"
+    },
+    {
+      "id": "relation-slots",
+      "x": 1372,
+      "y": 624,
+      "w": 256,
+      "h": 112,
+      "kind": "node"
+    },
+    {
+      "id": "relation-mha",
+      "x": 1372,
+      "y": 448,
+      "w": 200,
+      "h": 112,
+      "kind": "node"
+    },
+    {
+      "id": "relation-wout",
+      "x": 1596,
+      "y": 448,
+      "w": 32,
+      "h": 112,
+      "kind": "projection"
+    },
+    {
+      "id": "relation-sum",
+      "x": 1658,
+      "y": 482,
+      "w": 36,
+      "h": 36,
+      "kind": "sum"
+    },
+    {
+      "id": "vr-updated",
+      "x": 1712,
+      "y": 472,
+      "w": 20,
+      "h": 59,
+      "kind": "tokens"
+    },
+    {
+      "id": "prefix",
+      "x": 1848,
+      "y": 1000,
+      "w": 288,
+      "h": 64,
+      "kind": "node"
+    },
+    {
+      "id": "embedding",
+      "x": 1848,
+      "y": 864,
+      "w": 288,
+      "h": 64,
+      "kind": "node"
+    },
+    {
+      "id": "causal-sa",
+      "x": 1848,
+      "y": 760,
+      "w": 288,
+      "h": 64,
+      "kind": "node"
+    },
+    {
+      "id": "parallel-ca",
+      "x": 1848,
+      "y": 616,
+      "w": 288,
+      "h": 104,
+      "kind": "node"
+    },
+    {
+      "id": "gated-ffn",
+      "x": 1848,
+      "y": 472,
+      "w": 288,
+      "h": 104,
+      "kind": "node"
+    },
+    {
+      "id": "vocab",
+      "x": 1848,
+      "y": 352,
+      "w": 288,
+      "h": 64,
+      "kind": "node"
+    },
+    {
+      "id": "beam",
+      "x": 1848,
+      "y": 248,
+      "w": 288,
+      "h": 64,
+      "kind": "node"
+    },
+    {
+      "id": "rerank",
+      "x": 1848,
+      "y": 128,
+      "w": 288,
+      "h": 80,
+      "kind": "node"
+    },
+    {
+      "id": "vo-port",
+      "x": 1768,
+      "y": 612,
+      "w": 20,
+      "h": 59,
+      "kind": "tokens"
+    },
+    {
+      "id": "vr-port",
+      "x": 1768,
+      "y": 712,
+      "w": 20,
+      "h": 59,
+      "kind": "tokens"
+    }
+  ],
+  "routes": [
+    {
+      "id": "image-clip",
+      "points": [
+        [
+          48,
+          900
+        ],
+        [
+          24,
+          900
+        ],
+        [
+          24,
+          212
+        ],
+        [
+          48,
+          212
+        ]
+      ],
+      "src": "input-image",
+      "dst": "clip-visual"
+    },
+    {
+      "id": "image-detectors",
+      "points": [
+        [
+          164,
+          812
+        ],
+        [
+          164,
+          688
+        ]
+      ],
+      "src": "input-image",
+      "dst": "detectors"
+    },
+    {
+      "id": "detectors-rois",
+      "points": [
+        [
+          164,
+          568
+        ],
+        [
+          164,
+          510
+        ]
+      ],
+      "src": "detectors",
+      "dst": "roi-example"
+    },
+    {
+      "id": "patches-roi",
+      "points": [
+        [
+          280,
+          212
+        ],
+        [
+          312,
+          212
+        ]
+      ],
+      "src": "clip-visual",
+      "dst": "roi-projection"
+    },
+    {
+      "id": "boxes-roi",
+      "points": [
+        [
+          280,
+          400
+        ],
+        [
+          296,
+          400
+        ],
+        [
+          296,
+          272
+        ],
+        [
+          312,
+          272
+        ]
+      ],
+      "src": "roi-example",
+      "dst": "roi-projection"
+    },
+    {
+      "id": "obj1-internal0",
+      "points": [
+        [
+          600,
+          236
+        ],
+        [
+          616,
+          236
+        ]
+      ],
+      "src": "obj1",
+      "dst": "obj1"
+    },
+    {
+      "id": "obj1-internal1",
+      "points": [
+        [
+          656,
+          236
+        ],
+        [
+          672,
+          236
+        ]
+      ],
+      "src": "obj1",
+      "dst": "obj1"
+    },
+    {
+      "id": "obj1-internal2",
+      "points": [
+        [
+          712,
+          236
+        ],
+        [
+          728,
+          236
+        ]
+      ],
+      "src": "obj1",
+      "dst": "obj1"
+    },
+    {
+      "id": "obj1-internal3",
+      "points": [
+        [
+          768,
+          236
+        ],
+        [
+          784,
+          236
+        ]
+      ],
+      "src": "obj1",
+      "dst": "obj1"
+    },
+    {
+      "id": "obj2-internal0",
+      "points": [
+        [
+          1016,
+          236
+        ],
+        [
+          1032,
+          236
+        ]
+      ],
+      "src": "obj2",
+      "dst": "obj2"
+    },
+    {
+      "id": "obj2-internal1",
+      "points": [
+        [
+          1072,
+          236
+        ],
+        [
+          1088,
+          236
+        ]
+      ],
+      "src": "obj2",
+      "dst": "obj2"
+    },
+    {
+      "id": "obj2-internal2",
+      "points": [
+        [
+          1128,
+          236
+        ],
+        [
+          1144,
+          236
+        ]
+      ],
+      "src": "obj2",
+      "dst": "obj2"
+    },
+    {
+      "id": "obj2-internal3",
+      "points": [
+        [
+          1184,
+          236
+        ],
+        [
+          1200,
+          236
+        ]
+      ],
+      "src": "obj2",
+      "dst": "obj2"
+    },
+    {
+      "id": "rel-internal0",
+      "points": [
+        [
+          1432,
+          236
+        ],
+        [
+          1448,
+          236
+        ]
+      ],
+      "src": "rel",
+      "dst": "rel"
+    },
+    {
+      "id": "rel-internal1",
+      "points": [
+        [
+          1488,
+          236
+        ],
+        [
+          1504,
+          236
+        ]
+      ],
+      "src": "rel",
+      "dst": "rel"
+    },
+    {
+      "id": "rel-internal2",
+      "points": [
+        [
+          1544,
+          236
+        ],
+        [
+          1560,
+          236
+        ]
+      ],
+      "src": "rel",
+      "dst": "rel"
+    },
+    {
+      "id": "rel-internal3",
+      "points": [
+        [
+          1600,
+          236
+        ],
+        [
+          1616,
+          236
+        ]
+      ],
+      "src": "rel",
+      "dst": "rel"
+    },
+    {
+      "id": "v-obj1",
+      "points": [
+        [
+          488,
+          232
+        ],
+        [
+          536,
+          232
+        ]
+      ],
+      "src": "roi-projection",
+      "dst": "obj1"
+    },
+    {
+      "id": "obj1-obj2",
+      "points": [
+        [
+          856,
+          232
+        ],
+        [
+          952,
+          232
+        ]
+      ],
+      "src": "obj1",
+      "dst": "obj2"
+    },
+    {
+      "id": "obj2-rel",
+      "points": [
+        [
+          1272,
+          232
+        ],
+        [
+          1368,
+          232
+        ]
+      ],
+      "src": "obj2",
+      "dst": "rel"
+    },
+    {
+      "id": "pn-obj1",
+      "points": [
+        [
+          600,
+          88
+        ],
+        [
+          600,
+          136
+        ]
+      ],
+      "src": "noun-bank",
+      "dst": "obj1"
+    },
+    {
+      "id": "pv-rel",
+      "points": [
+        [
+          1600,
+          88
+        ],
+        [
+          1600,
+          136
+        ]
+      ],
+      "src": "verb-bank",
+      "dst": "rel"
+    },
+    {
+      "id": "vo-object-q",
+      "points": [
+        [
+          1040,
+          308
+        ],
+        [
+          1040,
+          344
+        ],
+        [
+          820,
+          344
+        ],
+        [
+          820,
+          448
+        ]
+      ],
+      "src": "obj2",
+      "dst": "object-mha"
+    },
+    {
+      "id": "vo-object-residual",
+      "points": [
+        [
+          1168,
+          308
+        ],
+        [
+          1168,
+          368
+        ],
+        [
+          1024,
+          368
+        ],
+        [
+          1024,
+          484
+        ]
+      ],
+      "src": "obj2",
+      "dst": "object-sum"
+    },
+    {
+      "id": "vr-relation-q",
+      "points": [
+        [
+          1472,
+          308
+        ],
+        [
+          1472,
+          448
+        ]
+      ],
+      "src": "rel",
+      "dst": "relation-mha"
+    },
+    {
+      "id": "vr-relation-residual",
+      "points": [
+        [
+          1632,
+          308
+        ],
+        [
+          1632,
+          368
+        ],
+        [
+          1676,
+          368
+        ],
+        [
+          1676,
+          484
+        ]
+      ],
+      "src": "rel",
+      "dst": "relation-sum"
+    },
+    {
+      "id": "detectors-matching",
+      "points": [
+        [
+          280,
+          628
+        ],
+        [
+          320,
+          628
+        ],
+        [
+          320,
+          792
+        ],
+        [
+          384,
+          792
+        ]
+      ],
+      "src": "detectors",
+      "dst": "matching"
+    },
+    {
+      "id": "matching-object-phrases",
+      "points": [
+        [
+          484,
+          840
+        ],
+        [
+          484,
+          888
+        ]
+      ],
+      "src": "matching",
+      "dst": "object-phrases"
+    },
+    {
+      "id": "object-phrases-clip",
+      "points": [
+        [
+          584,
+          940
+        ],
+        [
+          632,
+          940
+        ]
+      ],
+      "src": "object-phrases",
+      "dst": "object-text"
+    },
+    {
+      "id": "object-text-slots",
+      "points": [
+        [
+          696,
+          940
+        ],
+        [
+          848,
+          940
+        ],
+        [
+          848,
+          736
+        ]
+      ],
+      "src": "object-text",
+      "dst": "object-slots"
+    },
+    {
+      "id": "object-slots-mha",
+      "points": [
+        [
+          820,
+          624
+        ],
+        [
+          820,
+          560
+        ]
+      ],
+      "src": "object-slots",
+      "dst": "object-mha"
+    },
+    {
+      "id": "object-mask",
+      "points": [
+        [
+          648,
+          500
+        ],
+        [
+          720,
+          500
+        ]
+      ],
+      "src": null,
+      "dst": "object-mha"
+    },
+    {
+      "id": "object-mha-wout",
+      "points": [
+        [
+          920,
+          500
+        ],
+        [
+          944,
+          500
+        ]
+      ],
+      "src": "object-mha",
+      "dst": "object-wout"
+    },
+    {
+      "id": "object-wout-sum",
+      "points": [
+        [
+          976,
+          500
+        ],
+        [
+          1006,
+          500
+        ]
+      ],
+      "src": "object-wout",
+      "dst": "object-sum"
+    },
+    {
+      "id": "object-sum-memory",
+      "points": [
+        [
+          1042,
+          500
+        ],
+        [
+          1060,
+          500
+        ]
+      ],
+      "src": "object-sum",
+      "dst": "vo-updated"
+    },
+    {
+      "id": "links-relation-phrases",
+      "points": [
+        [
+          1240,
+          852
+        ],
+        [
+          1240,
+          888
+        ]
+      ],
+      "src": null,
+      "dst": "relation-phrases"
+    },
+    {
+      "id": "relation-phrases-clip",
+      "points": [
+        [
+          1336,
+          940
+        ],
+        [
+          1376,
+          940
+        ]
+      ],
+      "src": "relation-phrases",
+      "dst": "relation-text"
+    },
+    {
+      "id": "relation-text-slots",
+      "points": [
+        [
+          1440,
+          940
+        ],
+        [
+          1500,
+          940
+        ],
+        [
+          1500,
+          736
+        ]
+      ],
+      "src": "relation-text",
+      "dst": "relation-slots"
+    },
+    {
+      "id": "relation-slots-mha",
+      "points": [
+        [
+          1472,
+          624
+        ],
+        [
+          1472,
+          560
+        ]
+      ],
+      "src": "relation-slots",
+      "dst": "relation-mha"
+    },
+    {
+      "id": "relation-mask",
+      "points": [
+        [
+          1332,
+          500
+        ],
+        [
+          1372,
+          500
+        ]
+      ],
+      "src": null,
+      "dst": "relation-mha"
+    },
+    {
+      "id": "relation-mha-wout",
+      "points": [
+        [
+          1572,
+          500
+        ],
+        [
+          1596,
+          500
+        ]
+      ],
+      "src": "relation-mha",
+      "dst": "relation-wout"
+    },
+    {
+      "id": "relation-wout-sum",
+      "points": [
+        [
+          1628,
+          500
+        ],
+        [
+          1658,
+          500
+        ]
+      ],
+      "src": "relation-wout",
+      "dst": "relation-sum"
+    },
+    {
+      "id": "relation-sum-memory",
+      "points": [
+        [
+          1694,
+          500
+        ],
+        [
+          1712,
+          500
+        ]
+      ],
+      "src": "relation-sum",
+      "dst": "vr-updated"
+    },
+    {
+      "id": "prefix-embedding",
+      "points": [
+        [
+          1992,
+          1000
+        ],
+        [
+          1992,
+          928
+        ]
+      ],
+      "src": "prefix",
+      "dst": "embedding"
+    },
+    {
+      "id": "embedding-sa",
+      "points": [
+        [
+          1992,
+          864
+        ],
+        [
+          1992,
+          824
+        ]
+      ],
+      "src": "embedding",
+      "dst": "causal-sa"
+    },
+    {
+      "id": "sa-ca",
+      "points": [
+        [
+          1992,
+          760
+        ],
+        [
+          1992,
+          720
+        ]
+      ],
+      "src": "causal-sa",
+      "dst": "parallel-ca"
+    },
+    {
+      "id": "ca-ffn",
+      "points": [
+        [
+          1992,
+          616
+        ],
+        [
+          1992,
+          576
+        ]
+      ],
+      "src": "parallel-ca",
+      "dst": "gated-ffn"
+    },
+    {
+      "id": "ffn-vocab",
+      "points": [
+        [
+          1992,
+          472
+        ],
+        [
+          1992,
+          416
+        ]
+      ],
+      "src": "gated-ffn",
+      "dst": "vocab"
+    },
+    {
+      "id": "vocab-beam",
+      "points": [
+        [
+          1992,
+          352
+        ],
+        [
+          1992,
+          312
+        ]
+      ],
+      "src": "vocab",
+      "dst": "beam"
+    },
+    {
+      "id": "beam-rerank",
+      "points": [
+        [
+          1992,
+          248
+        ],
+        [
+          1992,
+          208
+        ]
+      ],
+      "src": "beam",
+      "dst": "rerank"
+    },
+    {
+      "id": "vo-parallel-ca",
+      "points": [
+        [
+          1788,
+          648
+        ],
+        [
+          1848,
+          648
+        ]
+      ],
+      "src": "vo-port",
+      "dst": "parallel-ca"
+    },
+    {
+      "id": "vr-parallel-ca",
+      "points": [
+        [
+          1788,
+          736
+        ],
+        [
+          1812,
+          736
+        ],
+        [
+          1812,
+          688
+        ],
+        [
+          1848,
+          688
+        ]
+      ],
+      "src": "vr-port",
+      "dst": "parallel-ca"
+    },
+    {
+      "id": "rerank-caption",
+      "points": [
+        [
+          2136,
+          176
+        ],
+        [
+          2176,
+          176
+        ],
+        [
+          2176,
+          52
+        ],
+        [
+          2112,
+          52
+        ]
+      ],
+      "src": "rerank",
+      "dst": null
+    },
+    {
+      "id": "image-yolo-rerank",
+      "points": [
+        [
+          1788,
+          176
+        ],
+        [
+          1848,
+          176
+        ]
+      ],
+      "src": null,
+      "dst": "rerank"
+    }
+  ]
+}
