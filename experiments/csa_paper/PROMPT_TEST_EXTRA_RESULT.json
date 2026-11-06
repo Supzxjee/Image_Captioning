@@ -1,0 +1,137 @@
+{
+  "status": "PROMPT_TEST_EXTRA_REVIEW_COMPLETE",
+  "checks": 85,
+  "arms": {
+    "CONTROL": {
+      "archive_sha256": "f91bd568d624d5bd52ddbf7e1674fc57c0e57cc913ec99e4dbf92468b59408f1",
+      "source_version": "ducanh2403/2-vi-cai-kia-qua-nhieu/184",
+      "checkpoint_sha256": "10d18a66e4e01ae7dba97802750a6a57f4305b904949f0cc50fdc368772cebd4",
+      "metrics": {
+        "normal": {
+          "Bleu_1": 0.7099749256305014,
+          "Bleu_4": 0.34382930287222396,
+          "CIDEr": 1.055605937846093,
+          "ROUGE_L": 0.5404077175960521,
+          "METEOR": 0.2607666036524972,
+          "SPICE": 0.19246945612393787,
+          "CHAIRs": 0.0562,
+          "CHAIRi": 0.041556268302886626
+        },
+        "fixed_rerank": {
+          "Bleu_1": 0.7503206738658994,
+          "Bleu_4": 0.3611049306400787,
+          "CIDEr": 1.14367115579243,
+          "ROUGE_L": 0.5635044637512016,
+          "METEOR": 0.2768588607480594,
+          "SPICE": 0.20946487595791954,
+          "CHAIRs": 0.0454,
+          "CHAIRi": 0.030988061976123953
+        }
+      },
+      "display_x100": {
+        "normal": {
+          "Bleu_1": 70.99749256305013,
+          "Bleu_4": 34.38293028722239,
+          "CIDEr": 105.5605937846093,
+          "ROUGE_L": 54.040771759605214,
+          "METEOR": 26.076660365249722,
+          "SPICE": 19.246945612393787,
+          "CHAIRs": 5.62,
+          "CHAIRi": 4.1556268302886625
+        },
+        "fixed_rerank": {
+          "Bleu_1": 75.03206738658994,
+          "Bleu_4": 36.11049306400787,
+          "CIDEr": 114.36711557924299,
+          "ROUGE_L": 56.35044637512016,
+          "METEOR": 27.68588607480594,
+          "SPICE": 20.946487595791954,
+          "CHAIRs": 4.54,
+          "CHAIRi": 3.0988061976123955
+        }
+      },
+      "source_commit": "a58d5b979cbfa041d86680b0ca0c73e0bd16a290",
+      "extra_save_version": null
+    },
+    "PROMPT": {
+      "archive_sha256": "8fe98cd8c436a380be6c5016506a2566caecb5886ba971a2e3c7cb3431d3c68f",
+      "source_version": "ducanh3/notebook7bc83c4c76/61",
+      "checkpoint_sha256": "be2759b4a6f57af9bf8baeb13ee097bae2d8703d265b0791d9d39bb9c3dcbc63",
+      "metrics": {
+        "normal": {
+          "Bleu_1": 0.713103224148096,
+          "Bleu_4": 0.34645242048088,
+          "CIDEr": 1.073603286292523,
+          "ROUGE_L": 0.5448142287978902,
+          "METEOR": 0.2613614418680224,
+          "SPICE": 0.19366287590817172,
+          "CHAIRs": 0.0376,
+          "CHAIRi": 0.026764987027174655
+        },
+        "fixed_rerank": {
+          "Bleu_1": 0.7561460587134602,
+          "Bleu_4": 0.3617312853322773,
+          "CIDEr": 1.1535224810581564,
+          "ROUGE_L": 0.5663509919270447,
+          "METEOR": 0.27739298325181266,
+          "SPICE": 0.2116091265177709,
+          "CHAIRs": 0.032,
+          "CHAIRi": 0.02118116122601545
+        }
+      },
+      "display_x100": {
+        "normal": {
+          "Bleu_1": 71.3103224148096,
+          "Bleu_4": 34.645242048088,
+          "CIDEr": 107.36032862925231,
+          "ROUGE_L": 54.48142287978902,
+          "METEOR": 26.13614418680224,
+          "SPICE": 19.366287590817173,
+          "CHAIRs": 3.7600000000000002,
+          "CHAIRi": 2.6764987027174656
+        },
+        "fixed_rerank": {
+          "Bleu_1": 75.61460587134601,
+          "Bleu_4": 36.173128533227725,
+          "CIDEr": 115.35224810581563,
+          "ROUGE_L": 56.63509919270447,
+          "METEOR": 27.739298325181267,
+          "SPICE": 21.16091265177709,
+          "CHAIRs": 3.2,
+          "CHAIRi": 2.118116122601545
+        }
+      },
+      "source_commit": "a58d5b979cbfa041d86680b0ca0c73e0bd16a290",
+      "extra_save_version": null
+    }
+  },
+  "prompt_minus_control_x100": {
+    "normal": {
+      "Bleu_1": 0.3128298517594663,
+      "Bleu_4": 0.26231176086560226,
+      "CIDEr": 1.7997348446430195,
+      "ROUGE_L": 0.44065112018381036,
+      "METEOR": 0.05948382155251952,
+      "SPICE": 0.11934197842338456,
+      "CHAIRs": -1.8599999999999999,
+      "CHAIRi": -1.479128127571197
+    },
+    "fixed_rerank": {
+      "Bleu_1": 0.5825384847560788,
+      "Bleu_4": 0.06263546921985719,
+      "CIDEr": 0.9851325265726407,
+      "ROUGE_L": 0.2846528175843188,
+      "METEOR": 0.05341225037532871,
+      "SPICE": 0.21442505598513462,
+      "CHAIRs": -1.3400000000000003,
+      "CHAIRi": -0.9806900750108504
+    }
+  },
+  "chair_provenance": "Carried from audited scores using identical raw caption/reference/result SHA; not recomputed.",
+  "limits": [
+    "One seed; unequal selected initial XE epochs C10/P9 and added adapter capacity.",
+    "Prior TEST exposure; no new tuning or causal isolation claim.",
+    "METEOR/SPICE differences are point estimates; no new significance test.",
+    "Author audited stored metadata, did not rerun Java, scorers or models."
+  ]
+}
