@@ -10,6 +10,8 @@ Cập nhật: 06/11/2026, giờ Việt Nam. File này là bản tóm tắt để
 
 ## Hiện đang ở đâu
 
+- **06/11 bản pipeline kiểu bài báo đã giao.** [Hình và caption](docs/weekly_reports/2026-11-06/PAPER_FIGURE_CAPTION.md): ba panel architecture / adapter / training, module-tensor-arrow thay đoạn văn. PNG3600×2030 + SVG/PDF vector, cùng mã dựng. Đã xem PNG và PDF render bằng Poppler; glyph/bố cục/memory/SCST kiểm tra; có caption Việt/Anh. Bản Downloads sẵn; chưa thay Word. Không mô hình/GPU/Sheet row mới.
+
 - **06/11 pipeline chi tiết đã vẽ theo yêu cầu.** [PNG/SVG và nguồn](docs/weekly_reports/2026-11-06/PIPELINE_DETAIL.md): CSA object1→object2→relation, bank150prototypes/mỗi loại, hai adapter Q/K/V+mask+residual, hai memory và decoder3layers, beam5/selector. Khối XE/SCST+CE tách riêng TRAIN, không có object reward trong loss hiện tại. Đã đối chiếu mã và xem PNG cuối; SVG XML/kích thước PASS; bản Downloads đã giao. Không sửa Word tóm tắt, không model/GPU/Sheet row mới.
 
 - **06/11 báo cáo Word hoàn tất (3 trang).** [Tài liệu và QA](docs/weekly_reports/2026-11-06/README.md): pipeline có bank từ/UPT prompt–ROI/CSA, lịch XE và SCST+CE, bảng TEST5000 và zero/shuffle, giới hạn C10/P9/adapter/OOD/one seed/prior TEST. Đã render bằng Word COM + Poppler và xem đủ3trang; không có LibreOffice nên không claim render_docx PASS. Bản giao đã sao chép Downloads/Bao_cao_nghien_cuu_06_11_2026.docx. Không thêm run/model/scorer/Sheet row.
