@@ -1,0 +1,46 @@
+{
+  "panel-a-overall": {
+    "viewBox": [
+      0,
+      0,
+      2400,
+      968
+    ],
+    "overflow": [],
+    "textNodes": 94,
+    "font": "Arial, \"Liberation Sans\", sans-serif"
+  },
+  "panel-b-adapters": {
+    "viewBox": [
+      0,
+      952,
+      1504,
+      824
+    ],
+    "overflow": [],
+    "textNodes": 39,
+    "font": "Arial, \"Liberation Sans\", sans-serif"
+  },
+  "panel-c-training": {
+    "viewBox": [
+      1488,
+      952,
+      912,
+      824
+    ],
+    "overflow": [],
+    "textNodes": 20,
+    "font": "Arial, \"Liberation Sans\", sans-serif"
+  },
+  "upt-csa-architecture": {
+    "viewBox": [
+      0,
+      0,
+      2400,
+      1840
+    ],
+    "overflow": [],
+    "textNodes": 158,
+    "font": "Arial, \"Liberation Sans\", sans-serif"
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "date": "2026-11-06",
+  "timezone": "Asia/Bangkok",
+  "base_commit": "9bcd820e13c0dfa6650068e22747a15c044f9bbd",
+  "primary_source": "USER_BRIEF.txt",
+  "primary_source_sha256": "a2a428347ef377bdc566b053ca36dbbe1bfd730701f3352157fe1da2f1b59343",
+  "static_crosschecks": {
+    "experiments/csa_paper/prompt_adapter_model.py": "83e5fdb2662940ded06e56df3a0fdf512dc1046b2352e563b59f22a6117e245c",
+    "experiments/csa_paper/prompt_scst_rerank.py": "2f998867793a3abc3efcaac7836ad178e1521b4a48b71b7171849b2bf9791dc7",
+    "experiments/csa_paper/PROMPT_ADAPTER_IMPLEMENTATION.md": "85a58c42b82ea8abf1c117a7358efa3255bf6d1235f2836ba77ecf54d22a71d0",
+    "docs/weekly_reports/2026-11-06/PAPER_FIGURE_CAPTION.md": "f16f2c47b05e4a4b1779991e082bcdeba0ba35ea6949ea58c632fd17963895b0"
+  },
+  "skill": {
+    "name": "diagram-design",
+    "version": "2.6.142"
+  },
+  "no_model_notebook_scorer_execution": true
+}

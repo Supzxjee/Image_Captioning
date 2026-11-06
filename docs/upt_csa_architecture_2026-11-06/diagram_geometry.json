@@ -1,0 +1,1414 @@
+{
+  "canvas": [
+    2400,
+    1840
+  ],
+  "nodes": [
+    {
+      "id": "train-captions",
+      "x": 200,
+      "y": 88,
+      "w": 224,
+      "h": 104,
+      "kind": "node"
+    },
+    {
+      "id": "global-bank",
+      "x": 472,
+      "y": 88,
+      "w": 432,
+      "h": 104,
+      "kind": "node"
+    },
+    {
+      "id": "semantic-aggregation",
+      "x": 952,
+      "y": 88,
+      "w": 248,
+      "h": 104,
+      "kind": "node"
+    },
+    {
+      "id": "prototypes",
+      "x": 1248,
+      "y": 88,
+      "w": 384,
+      "h": 104,
+      "kind": "node"
+    },
+    {
+      "id": "image",
+      "x": 48,
+      "y": 312,
+      "w": 104,
+      "h": 104,
+      "kind": "node"
+    },
+    {
+      "id": "clip-visual",
+      "x": 200,
+      "y": 256,
+      "w": 224,
+      "h": 104,
+      "kind": "node"
+    },
+    {
+      "id": "patches",
+      "x": 472,
+      "y": 256,
+      "w": 200,
+      "h": 104,
+      "kind": "node"
+    },
+    {
+      "id": "roi-pool",
+      "x": 720,
+      "y": 256,
+      "w": 184,
+      "h": 104,
+      "kind": "node"
+    },
+    {
+      "id": "visual-projection",
+      "x": 952,
+      "y": 256,
+      "w": 200,
+      "h": 104,
+      "kind": "node"
+    },
+    {
+      "id": "yolo",
+      "x": 200,
+      "y": 448,
+      "w": 224,
+      "h": 104,
+      "kind": "node"
+    },
+    {
+      "id": "yolo-boxes",
+      "x": 472,
+      "y": 448,
+      "w": 200,
+      "h": 104,
+      "kind": "node"
+    },
+    {
+      "id": "object-fusion-1",
+      "x": 1200,
+      "y": 256,
+      "w": 224,
+      "h": 104,
+      "kind": "node"
+    },
+    {
+      "id": "object-fusion-2",
+      "x": 1200,
+      "y": 408,
+      "w": 224,
+      "h": 104,
+      "kind": "node"
+    },
+    {
+      "id": "relation-fusion",
+      "x": 1200,
+      "y": 560,
+      "w": 224,
+      "h": 104,
+      "kind": "node"
+    },
+    {
+      "id": "verb-prototype-port",
+      "x": 1080,
+      "y": 568,
+      "w": 88,
+      "h": 80,
+      "kind": "node"
+    },
+    {
+      "id": "upt",
+      "x": 200,
+      "y": 656,
+      "w": 224,
+      "h": 104,
+      "kind": "node"
+    },
+    {
+      "id": "prompt-construction",
+      "x": 472,
+      "y": 656,
+      "w": 256,
+      "h": 104,
+      "kind": "node"
+    },
+    {
+      "id": "prompt-text",
+      "x": 776,
+      "y": 656,
+      "w": 288,
+      "h": 104,
+      "kind": "node"
+    },
+    {
+      "id": "roi-matching",
+      "x": 776,
+      "y": 808,
+      "w": 288,
+      "h": 96,
+      "kind": "node"
+    },
+    {
+      "id": "linked-slots",
+      "x": 1200,
+      "y": 752,
+      "w": 240,
+      "h": 104,
+      "kind": "node"
+    },
+    {
+      "id": "yolo-boxes-port",
+      "x": 472,
+      "y": 784,
+      "w": 240,
+      "h": 48,
+      "kind": "node"
+    },
+    {
+      "id": "object-links-port",
+      "x": 1496,
+      "y": 256,
+      "w": 232,
+      "h": 104,
+      "kind": "node"
+    },
+    {
+      "id": "object-adapter",
+      "x": 1496,
+      "y": 408,
+      "w": 232,
+      "h": 104,
+      "kind": "node"
+    },
+    {
+      "id": "relation-adapter",
+      "x": 1496,
+      "y": 560,
+      "w": 232,
+      "h": 104,
+      "kind": "node"
+    },
+    {
+      "id": "prefix",
+      "x": 1816,
+      "y": 256,
+      "w": 264,
+      "h": 104,
+      "kind": "node"
+    },
+    {
+      "id": "decoder",
+      "x": 1816,
+      "y": 408,
+      "w": 264,
+      "h": 208,
+      "kind": "node"
+    },
+    {
+      "id": "head-beam",
+      "x": 2128,
+      "y": 408,
+      "w": 232,
+      "h": 160,
+      "kind": "node"
+    },
+    {
+      "id": "rerank",
+      "x": 2016,
+      "y": 640,
+      "w": 344,
+      "h": 160,
+      "kind": "node"
+    },
+    {
+      "id": "rerank-evidence",
+      "x": 1752,
+      "y": 704,
+      "w": 216,
+      "h": 64,
+      "kind": "node"
+    },
+    {
+      "id": "selected-caption",
+      "x": 2016,
+      "y": 848,
+      "w": 344,
+      "h": 64,
+      "kind": "node"
+    },
+    {
+      "id": "object-slot-input",
+      "x": 56,
+      "y": 1120,
+      "w": 352,
+      "h": 104,
+      "kind": "node"
+    },
+    {
+      "id": "object-mlp",
+      "x": 456,
+      "y": 1120,
+      "w": 128,
+      "h": 104,
+      "kind": "node"
+    },
+    {
+      "id": "object-slots",
+      "x": 632,
+      "y": 1120,
+      "w": 176,
+      "h": 104,
+      "kind": "node"
+    },
+    {
+      "id": "object-mha",
+      "x": 856,
+      "y": 1120,
+      "w": 216,
+      "h": 104,
+      "kind": "node"
+    },
+    {
+      "id": "object-wout",
+      "x": 1120,
+      "y": 1120,
+      "w": 128,
+      "h": 104,
+      "kind": "node"
+    },
+    {
+      "id": "object-memory",
+      "x": 872,
+      "y": 1032,
+      "w": 184,
+      "h": 56,
+      "kind": "node"
+    },
+    {
+      "id": "object-sum",
+      "x": 1302,
+      "y": 1154,
+      "w": 36,
+      "h": 36,
+      "kind": "sum"
+    },
+    {
+      "id": "object-mask",
+      "x": 736,
+      "y": 1264,
+      "w": 416,
+      "h": 48,
+      "kind": "node"
+    },
+    {
+      "id": "relation-slot-input",
+      "x": 56,
+      "y": 1440,
+      "w": 352,
+      "h": 104,
+      "kind": "node"
+    },
+    {
+      "id": "relation-mlp",
+      "x": 456,
+      "y": 1440,
+      "w": 128,
+      "h": 104,
+      "kind": "node"
+    },
+    {
+      "id": "relation-slots",
+      "x": 632,
+      "y": 1440,
+      "w": 176,
+      "h": 104,
+      "kind": "node"
+    },
+    {
+      "id": "relation-mha",
+      "x": 856,
+      "y": 1440,
+      "w": 216,
+      "h": 104,
+      "kind": "node"
+    },
+    {
+      "id": "relation-wout",
+      "x": 1120,
+      "y": 1440,
+      "w": 128,
+      "h": 104,
+      "kind": "node"
+    },
+    {
+      "id": "relation-memory",
+      "x": 872,
+      "y": 1352,
+      "w": 184,
+      "h": 56,
+      "kind": "node"
+    },
+    {
+      "id": "relation-sum",
+      "x": 1302,
+      "y": 1474,
+      "w": 36,
+      "h": 36,
+      "kind": "sum"
+    },
+    {
+      "id": "relation-mask",
+      "x": 736,
+      "y": 1584,
+      "w": 416,
+      "h": 48,
+      "kind": "node"
+    },
+    {
+      "id": "train-prefix",
+      "x": 1544,
+      "y": 1096,
+      "w": 320,
+      "h": 88,
+      "kind": "node"
+    },
+    {
+      "id": "xe-model",
+      "x": 1912,
+      "y": 1096,
+      "w": 432,
+      "h": 88,
+      "kind": "node"
+    },
+    {
+      "id": "scst-model",
+      "x": 1544,
+      "y": 1360,
+      "w": 192,
+      "h": 104,
+      "kind": "node"
+    },
+    {
+      "id": "sampling",
+      "x": 1784,
+      "y": 1336,
+      "w": 224,
+      "h": 72,
+      "kind": "node"
+    },
+    {
+      "id": "greedy",
+      "x": 1784,
+      "y": 1456,
+      "w": 224,
+      "h": 72,
+      "kind": "node"
+    },
+    {
+      "id": "advantage",
+      "x": 2072,
+      "y": 1376,
+      "w": 272,
+      "h": 128,
+      "kind": "node"
+    },
+    {
+      "id": "train-refs",
+      "x": 2072,
+      "y": 1544,
+      "w": 272,
+      "h": 56,
+      "kind": "node"
+    }
+  ],
+  "routes": [
+    {
+      "id": "caption-bank",
+      "points": [
+        [
+          424,
+          140
+        ],
+        [
+          472,
+          140
+        ]
+      ],
+      "src": "train-captions",
+      "dst": "global-bank"
+    },
+    {
+      "id": "bank-aggregate",
+      "points": [
+        [
+          904,
+          140
+        ],
+        [
+          952,
+          140
+        ]
+      ],
+      "src": "global-bank",
+      "dst": "semantic-aggregation"
+    },
+    {
+      "id": "aggregate-prototypes",
+      "points": [
+        [
+          1200,
+          140
+        ],
+        [
+          1248,
+          140
+        ]
+      ],
+      "src": "semantic-aggregation",
+      "dst": "prototypes"
+    },
+    {
+      "id": "image-clip",
+      "points": [
+        [
+          152,
+          336
+        ],
+        [
+          176,
+          336
+        ],
+        [
+          176,
+          308
+        ],
+        [
+          200,
+          308
+        ]
+      ],
+      "src": "image",
+      "dst": "clip-visual"
+    },
+    {
+      "id": "image-yolo",
+      "points": [
+        [
+          152,
+          376
+        ],
+        [
+          184,
+          376
+        ],
+        [
+          184,
+          500
+        ],
+        [
+          200,
+          500
+        ]
+      ],
+      "src": "image",
+      "dst": "yolo"
+    },
+    {
+      "id": "clip-patches",
+      "points": [
+        [
+          424,
+          308
+        ],
+        [
+          472,
+          308
+        ]
+      ],
+      "src": "clip-visual",
+      "dst": "patches"
+    },
+    {
+      "id": "patches-pool",
+      "points": [
+        [
+          672,
+          308
+        ],
+        [
+          720,
+          308
+        ]
+      ],
+      "src": "patches",
+      "dst": "roi-pool"
+    },
+    {
+      "id": "yolo-boxes",
+      "points": [
+        [
+          424,
+          500
+        ],
+        [
+          472,
+          500
+        ]
+      ],
+      "src": "yolo",
+      "dst": "yolo-boxes"
+    },
+    {
+      "id": "boxes-pool",
+      "points": [
+        [
+          572,
+          448
+        ],
+        [
+          572,
+          408
+        ],
+        [
+          812,
+          408
+        ],
+        [
+          812,
+          360
+        ]
+      ],
+      "src": "yolo-boxes",
+      "dst": "roi-pool"
+    },
+    {
+      "id": "pool-project",
+      "points": [
+        [
+          904,
+          308
+        ],
+        [
+          952,
+          308
+        ]
+      ],
+      "src": "roi-pool",
+      "dst": "visual-projection"
+    },
+    {
+      "id": "visual-object1",
+      "points": [
+        [
+          1152,
+          308
+        ],
+        [
+          1200,
+          308
+        ]
+      ],
+      "src": "visual-projection",
+      "dst": "object-fusion-1"
+    },
+    {
+      "id": "noun-prototypes-object1",
+      "points": [
+        [
+          1320,
+          192
+        ],
+        [
+          1320,
+          256
+        ]
+      ],
+      "src": "prototypes",
+      "dst": "object-fusion-1"
+    },
+    {
+      "id": "object1-object2",
+      "points": [
+        [
+          1320,
+          360
+        ],
+        [
+          1320,
+          408
+        ]
+      ],
+      "src": "object-fusion-1",
+      "dst": "object-fusion-2"
+    },
+    {
+      "id": "object2-relation",
+      "points": [
+        [
+          1320,
+          512
+        ],
+        [
+          1320,
+          560
+        ]
+      ],
+      "src": "object-fusion-2",
+      "dst": "relation-fusion"
+    },
+    {
+      "id": "verb-relation",
+      "points": [
+        [
+          1168,
+          608
+        ],
+        [
+          1200,
+          608
+        ]
+      ],
+      "src": "verb-prototype-port",
+      "dst": "relation-fusion"
+    },
+    {
+      "id": "image-upt",
+      "points": [
+        [
+          100,
+          416
+        ],
+        [
+          100,
+          708
+        ],
+        [
+          200,
+          708
+        ]
+      ],
+      "src": "image",
+      "dst": "upt"
+    },
+    {
+      "id": "upt-construction",
+      "points": [
+        [
+          424,
+          696
+        ],
+        [
+          472,
+          696
+        ]
+      ],
+      "src": "upt",
+      "dst": "prompt-construction"
+    },
+    {
+      "id": "construction-text",
+      "points": [
+        [
+          728,
+          708
+        ],
+        [
+          776,
+          708
+        ]
+      ],
+      "src": "prompt-construction",
+      "dst": "prompt-text"
+    },
+    {
+      "id": "upt-match",
+      "points": [
+        [
+          312,
+          760
+        ],
+        [
+          312,
+          856
+        ],
+        [
+          776,
+          856
+        ]
+      ],
+      "src": "upt",
+      "dst": "roi-matching"
+    },
+    {
+      "id": "yolo-match",
+      "points": [
+        [
+          712,
+          808
+        ],
+        [
+          744,
+          808
+        ],
+        [
+          744,
+          832
+        ],
+        [
+          776,
+          832
+        ]
+      ],
+      "src": "yolo-boxes-port",
+      "dst": "roi-matching"
+    },
+    {
+      "id": "text-linked",
+      "points": [
+        [
+          1064,
+          708
+        ],
+        [
+          1136,
+          708
+        ],
+        [
+          1136,
+          784
+        ],
+        [
+          1200,
+          784
+        ]
+      ],
+      "src": "prompt-text",
+      "dst": "linked-slots"
+    },
+    {
+      "id": "match-linked",
+      "points": [
+        [
+          1064,
+          856
+        ],
+        [
+          1120,
+          856
+        ],
+        [
+          1120,
+          824
+        ],
+        [
+          1200,
+          824
+        ]
+      ],
+      "src": "roi-matching",
+      "dst": "linked-slots"
+    },
+    {
+      "id": "vo-object-adapter",
+      "points": [
+        [
+          1424,
+          448
+        ],
+        [
+          1496,
+          448
+        ]
+      ],
+      "src": "object-fusion-2",
+      "dst": "object-adapter"
+    },
+    {
+      "id": "vr-relation-adapter",
+      "points": [
+        [
+          1424,
+          600
+        ],
+        [
+          1496,
+          600
+        ]
+      ],
+      "src": "relation-fusion",
+      "dst": "relation-adapter"
+    },
+    {
+      "id": "slots-object-adapter",
+      "points": [
+        [
+          1612,
+          360
+        ],
+        [
+          1612,
+          408
+        ]
+      ],
+      "src": "object-links-port",
+      "dst": "object-adapter"
+    },
+    {
+      "id": "slots-relation-adapter",
+      "points": [
+        [
+          1440,
+          824
+        ],
+        [
+          1476,
+          824
+        ],
+        [
+          1476,
+          628
+        ],
+        [
+          1496,
+          628
+        ]
+      ],
+      "src": "linked-slots",
+      "dst": "relation-adapter"
+    },
+    {
+      "id": "prefix-decoder",
+      "points": [
+        [
+          1948,
+          360
+        ],
+        [
+          1948,
+          408
+        ]
+      ],
+      "src": "prefix",
+      "dst": "decoder"
+    },
+    {
+      "id": "object-adapter-decoder",
+      "points": [
+        [
+          1728,
+          448
+        ],
+        [
+          1816,
+          448
+        ]
+      ],
+      "src": "object-adapter",
+      "dst": "decoder"
+    },
+    {
+      "id": "relation-adapter-decoder",
+      "points": [
+        [
+          1728,
+          588
+        ],
+        [
+          1816,
+          588
+        ]
+      ],
+      "src": "relation-adapter",
+      "dst": "decoder"
+    },
+    {
+      "id": "decoder-head",
+      "points": [
+        [
+          2080,
+          488
+        ],
+        [
+          2128,
+          488
+        ]
+      ],
+      "src": "decoder",
+      "dst": "head-beam"
+    },
+    {
+      "id": "beam-rerank",
+      "points": [
+        [
+          2244,
+          568
+        ],
+        [
+          2244,
+          640
+        ]
+      ],
+      "src": "head-beam",
+      "dst": "rerank"
+    },
+    {
+      "id": "evidence-rerank",
+      "points": [
+        [
+          1968,
+          736
+        ],
+        [
+          2016,
+          736
+        ]
+      ],
+      "src": "rerank-evidence",
+      "dst": "rerank"
+    },
+    {
+      "id": "rerank-caption",
+      "points": [
+        [
+          2188,
+          800
+        ],
+        [
+          2188,
+          848
+        ]
+      ],
+      "src": "rerank",
+      "dst": "selected-caption"
+    },
+    {
+      "id": "object-slot-input-mlp",
+      "points": [
+        [
+          408,
+          1172
+        ],
+        [
+          456,
+          1172
+        ]
+      ],
+      "src": "object-slot-input",
+      "dst": "object-mlp"
+    },
+    {
+      "id": "object-mlp-slots",
+      "points": [
+        [
+          584,
+          1172
+        ],
+        [
+          632,
+          1172
+        ]
+      ],
+      "src": "object-mlp",
+      "dst": "object-slots"
+    },
+    {
+      "id": "object-slots-mha",
+      "points": [
+        [
+          808,
+          1172
+        ],
+        [
+          856,
+          1172
+        ]
+      ],
+      "src": "object-slots",
+      "dst": "object-mha"
+    },
+    {
+      "id": "object-mha-wout",
+      "points": [
+        [
+          1072,
+          1172
+        ],
+        [
+          1120,
+          1172
+        ]
+      ],
+      "src": "object-mha",
+      "dst": "object-wout"
+    },
+    {
+      "id": "object-wout-sum",
+      "points": [
+        [
+          1248,
+          1172
+        ],
+        [
+          1302,
+          1172
+        ]
+      ],
+      "src": "object-wout",
+      "dst": "object-sum"
+    },
+    {
+      "id": "object-memory-mha",
+      "points": [
+        [
+          916,
+          1088
+        ],
+        [
+          916,
+          1120
+        ]
+      ],
+      "src": "object-memory",
+      "dst": "object-mha"
+    },
+    {
+      "id": "object-memory-sum",
+      "points": [
+        [
+          1012,
+          1088
+        ],
+        [
+          1012,
+          1104
+        ],
+        [
+          1320,
+          1104
+        ],
+        [
+          1320,
+          1154
+        ]
+      ],
+      "src": "object-memory",
+      "dst": "object-sum"
+    },
+    {
+      "id": "object-sum-None",
+      "points": [
+        [
+          1338,
+          1172
+        ],
+        [
+          1380,
+          1172
+        ]
+      ],
+      "src": "object-sum",
+      "dst": null
+    },
+    {
+      "id": "object-mask-mha",
+      "points": [
+        [
+          964,
+          1264
+        ],
+        [
+          964,
+          1224
+        ]
+      ],
+      "src": "object-mask",
+      "dst": "object-mha"
+    },
+    {
+      "id": "relation-slot-input-mlp",
+      "points": [
+        [
+          408,
+          1492
+        ],
+        [
+          456,
+          1492
+        ]
+      ],
+      "src": "relation-slot-input",
+      "dst": "relation-mlp"
+    },
+    {
+      "id": "relation-mlp-slots",
+      "points": [
+        [
+          584,
+          1492
+        ],
+        [
+          632,
+          1492
+        ]
+      ],
+      "src": "relation-mlp",
+      "dst": "relation-slots"
+    },
+    {
+      "id": "relation-slots-mha",
+      "points": [
+        [
+          808,
+          1492
+        ],
+        [
+          856,
+          1492
+        ]
+      ],
+      "src": "relation-slots",
+      "dst": "relation-mha"
+    },
+    {
+      "id": "relation-mha-wout",
+      "points": [
+        [
+          1072,
+          1492
+        ],
+        [
+          1120,
+          1492
+        ]
+      ],
+      "src": "relation-mha",
+      "dst": "relation-wout"
+    },
+    {
+      "id": "relation-wout-sum",
+      "points": [
+        [
+          1248,
+          1492
+        ],
+        [
+          1302,
+          1492
+        ]
+      ],
+      "src": "relation-wout",
+      "dst": "relation-sum"
+    },
+    {
+      "id": "relation-memory-mha",
+      "points": [
+        [
+          916,
+          1408
+        ],
+        [
+          916,
+          1440
+        ]
+      ],
+      "src": "relation-memory",
+      "dst": "relation-mha"
+    },
+    {
+      "id": "relation-memory-sum",
+      "points": [
+        [
+          1012,
+          1408
+        ],
+        [
+          1012,
+          1424
+        ],
+        [
+          1320,
+          1424
+        ],
+        [
+          1320,
+          1474
+        ]
+      ],
+      "src": "relation-memory",
+      "dst": "relation-sum"
+    },
+    {
+      "id": "relation-sum-None",
+      "points": [
+        [
+          1338,
+          1492
+        ],
+        [
+          1380,
+          1492
+        ]
+      ],
+      "src": "relation-sum",
+      "dst": null
+    },
+    {
+      "id": "relation-mask-mha",
+      "points": [
+        [
+          964,
+          1584
+        ],
+        [
+          964,
+          1544
+        ]
+      ],
+      "src": "relation-mask",
+      "dst": "relation-mha"
+    },
+    {
+      "id": "teacher-forcing",
+      "points": [
+        [
+          1864,
+          1140
+        ],
+        [
+          1912,
+          1140
+        ]
+      ],
+      "src": "train-prefix",
+      "dst": "xe-model"
+    },
+    {
+      "id": "model-sample",
+      "points": [
+        [
+          1736,
+          1384
+        ],
+        [
+          1760,
+          1384
+        ],
+        [
+          1760,
+          1372
+        ],
+        [
+          1784,
+          1372
+        ]
+      ],
+      "src": "scst-model",
+      "dst": "sampling"
+    },
+    {
+      "id": "model-greedy",
+      "points": [
+        [
+          1736,
+          1440
+        ],
+        [
+          1760,
+          1440
+        ],
+        [
+          1760,
+          1492
+        ],
+        [
+          1784,
+          1492
+        ]
+      ],
+      "src": "scst-model",
+      "dst": "greedy"
+    },
+    {
+      "id": "sample-advantage",
+      "points": [
+        [
+          2008,
+          1372
+        ],
+        [
+          2040,
+          1372
+        ],
+        [
+          2040,
+          1412
+        ],
+        [
+          2072,
+          1412
+        ]
+      ],
+      "src": "sampling",
+      "dst": "advantage"
+    },
+    {
+      "id": "greedy-advantage",
+      "points": [
+        [
+          2008,
+          1492
+        ],
+        [
+          2056,
+          1492
+        ],
+        [
+          2056,
+          1468
+        ],
+        [
+          2072,
+          1468
+        ]
+      ],
+      "src": "greedy",
+      "dst": "advantage"
+    },
+    {
+      "id": "refs-advantage",
+      "points": [
+        [
+          2208,
+          1544
+        ],
+        [
+          2208,
+          1504
+        ]
+      ],
+      "src": "train-refs",
+      "dst": "advantage"
+    }
+  ],
+  "palette": {
+    "paper": "#ffffff",
+    "ink": "#26333e",
+    "line": "#53616c",
+    "muted": "#52616e",
+    "border": "#82909b",
+    "visual": "#eaf3fb",
+    "semantic": "#edf5e9",
+    "decoder": "#f1edf8",
+    "rank": "#fcf0df",
+    "plain": "#ffffff",
+    "rule": "#c7d0d6"
+  }
+}

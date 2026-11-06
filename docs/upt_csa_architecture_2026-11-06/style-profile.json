@@ -1,0 +1,20 @@
+{
+  "profile": "paper-cv-pastel",
+  "source": "User-specified white scientific-figure style, four pastel categories.",
+  "font_source": "system",
+  "font_family": "Arial, Liberation Sans, sans-serif",
+  "palette": {
+    "paper": "#ffffff",
+    "ink": "#26333e",
+    "line": "#53616c",
+    "muted": "#52616e",
+    "border": "#82909b",
+    "visual": "#eaf3fb",
+    "semantic": "#edf5e9",
+    "decoder": "#f1edf8",
+    "rank": "#fcf0df",
+    "plain": "#ffffff",
+    "rule": "#c7d0d6"
+  },
+  "instruction_priority": "Explicit user styling overrides the default skin and per-diagram node cap; three requested panels and separately exported panels preserve detail."
+}

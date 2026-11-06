@@ -1,0 +1,226 @@
+Hãy vẽ một sơ đồ kiến trúc mô hình theo phong cách hình minh họa trong bài báo khoa học về computer vision/image captioning.
+
+Mục tiêu: người đọc nhìn sơ đồ phải hiểu dữ liệu đi qua những module nào, thông tin thị giác và ngữ nghĩa được kết hợp ở đâu, decoder đọc gì và caption cuối được chọn như thế nào.
+
+YÊU CẦU TRÌNH BÀY
+- Bố cục ngang, nền trắng, đường nét mảnh, các module thẳng hàng.
+- Dùng các khối xử lý, biểu diễn tensor/token, mũi tên và ký hiệu phép cộng residual.
+- Màu pastel nhẹ để phân biệt thị giác, ngữ nghĩa, decoder và reranking.
+- Chỉ ghi tên module, tensor và công thức ngắn trong hình. Không biến sơ đồ thành các hộp chứa đoạn văn.
+- Dùng tiếng Anh trong hình; viết chú thích giải thích bằng tiếng Việt bên ngoài.
+- Chia thành ba panel:
+  (a) Overall architecture.
+  (b) Region-linked prompt adapters.
+  (c) Training objective.
+- Xuất SVG chỉnh sửa được, PDF vector và PNG rõ nét.
+- Đọc kỹ cấu hình dưới đây trước khi vẽ. Đây là mô hình đã triển khai, không tự thêm cơ chế mới.
+
+(a) OVERALL ARCHITECTURE
+
+1. Nhánh thị giác:
+Input image I
+→ frozen CLIP visual encoder
+→ patch features: 14×14×768, bỏ CLS token.
+
+Cùng ảnh:
+→ YOLO detections
+→ bounding boxes và object labels.
+
+Patch features + YOLO boxes
+→ ROI pooling
+→ region features R ∈ R^(N×768)
+→ Linear projection 768→512
+→ V ∈ R^(N×512).
+
+2. Bank ngữ nghĩa:
+Caption TRAIN
+→ trích danh từ và động từ, chuẩn hóa lemma
+→ frozen CLIP text encoder
+→ noun bank và verb bank.
+
+Hai bank embedding được giữ cố định.
+Mỗi bank đi qua một Semantic Aggregation được học, tạo 150 semantic prototypes:
+- Noun prototypes Pn.
+- Verb prototypes Pv.
+
+Phân biệt rõ bank toàn cục với prompt riêng từng ảnh; đây là hai nguồn ngữ nghĩa khác nhau.
+
+3. Cascade Semantic Alignment — CSA:
+V + Pn
+→ Object Fusion 1
+→ V1 và noun prototypes đã chọn.
+
+V1 + noun prototypes đã chọn
+→ Object Fusion 2
+→ object memory Vo.
+
+Vo + Pv
+→ Relation Fusion
+→ relation memory Vr.
+
+Giữ rõ thứ tự Object Fusion 1 → Object Fusion 2 → Relation Fusion.
+Vo và Vr là hai memory riêng; không gộp thành một memory duy nhất.
+
+Nếu thể hiện chi tiết một Fusion block:
+- Prototype–ROI cosine alignment, temperature 0.1.
+- Visual self-attention + residual/norm + FFN.
+- Cross-attention: Q = visual features; K,V = selected semantic prototypes.
+- Residual/norm + FFN.
+- Sigmoid gate trộn visual branch và semantic branch.
+
+Có thể đưa chi tiết Fusion vào inset nhỏ nếu hình chính bị chật.
+
+4. Nhánh prompt riêng ảnh:
+Input image I
+→ frozen UPT human–object interaction detector
+→ subject/object boxes, object labels, actions và relation scores
+→ filtering + prompt construction
+→ object phrases và relation phrases
+→ frozen CLIP text encoder
+→ object text embeddings to và relation text embeddings tr.
+
+Song song:
+UPT boxes + YOLO boxes
+→ matching theo class label và IoU ≥ 0.5
+→ object-to-ROI index i và ordered relation pair (s,o).
+
+Chỉ sử dụng prompt nối được với ROI hợp lệ.
+Không nối được thì bỏ slot đó, không gán prompt vào toàn ảnh.
+
+Text embeddings + ROI links + geometry
+→ hai prompt adapters ở panel (b).
+
+5. Sau adapter:
+Object memory Vo → Object Prompt Adapter → Vo′.
+Relation memory Vr → Relation Prompt Adapter → Vr′.
+
+Hai memory Vo′ và Vr′ được cấp riêng cho Transformer Decoder.
+
+6. Transformer Decoder:
+Token prefix
+→ word embedding + positional encoding
+→ 3 decoder layers.
+
+Mỗi layer:
+- Causal masked self-attention.
+- Object cross-attention: Q = hidden state; K,V = Vo′.
+- Relation cross-attention: Q = hidden state; K,V = Vr′.
+- Hai gate sử dụng context tương ứng và embedding từ.
+- Gated fusion: go ⊙ co + gr ⊙ cr.
+- FFN.
+
+Sau cùng:
+Linear vocabulary head
+→ next-token distribution
+→ autoregressive beam search, beam width = 5
+→ five candidate captions y1,…,y5.
+Tối đa 20 token sinh.
+
+7. Reranking:
+Mỗi ứng viên nhận:
+D = accumulated raw decoder log-probability, min–max trong 5 câu.
+C = CLIPScore giữa ảnh và caption, min–max trong 5 câu.
+O = normalized object-consistency score giữa đối tượng trong caption và YOLO detections.
+
+Score:
+S(y) = 0.3 D(y) + 0.4 C(y) + 0.3 O(y).
+
+Chọn argmax S.
+Hòa điểm thì ưu tiên beam rank trước.
+Không dùng caption tham chiếu để chọn câu.
+
+Cần thể hiện ảnh và YOLO labels cũng là đầu vào của bộ chấm reranking.
+
+(b) REGION-LINKED PROMPT ADAPTERS
+
+Vẽ hai nhánh riêng, có Q/K/V, mask và đường cộng residual.
+
+Object adapter:
+Input slot:
+[to; Vo[i]; bi]
+→ MLP
+→ object prompt slots.
+
+Q = Vo.
+K,V = object prompt slots.
+Masked multi-head attention:
+chỉ ROI i được đọc slot gắn với nó.
+
+Attention output
+→ Wout
+→ cộng residual với Vo
+→ Vo′.
+
+Relation adapter:
+Input slot:
+[tr; Vo[s]; Vo[o]; bs; bo]
+→ MLP
+→ relation prompt slots.
+
+Q = Vr.
+K,V = relation prompt slots.
+Masked multi-head attention:
+chỉ ROI s hoặc o được đọc slot của cặp tương ứng.
+
+Attention output
+→ Wout
+→ cộng residual với Vr
+→ Vr′.
+
+Lưu ý chính xác:
+- Relation slot sử dụng Vo[s] và Vo[o], không dùng Vo′.
+- s,o có thứ tự.
+- Object geometry có 4 chiều; relation geometry là hai box, tổng 8 chiều.
+- Mỗi adapter có output projection Wout khởi tạo bằng 0.
+- Không có slot hợp lệ thì residual update bằng 0.
+- Hidden dimension 512, attention 8 heads.
+
+(c) TRAINING OBJECTIVE
+
+Đây là panel chỉ dùng khi huấn luyện, tách khỏi luồng suy luận.
+
+Giai đoạn 1:
+XE / Cross-Entropy, teacher forcing với caption TRAIN dịch phải.
+LCE = − mean log p(y*t | I, y*<t).
+
+Giai đoạn 2:
+Cùng mô hình, cùng ảnh:
+- Sampling → sampled caption ys.
+- Greedy decoding → baseline caption yg.
+
+Dùng caption tham chiếu TRAIN Ytrain:
+A = CIDEr(ys,Ytrain) − CIDEr(yg,Ytrain).
+
+LSCST = − mean_batch [stopgrad(A) × Σt log p(ys_t | I,ys_<t)].
+
+Loss:
+L = LCE + 0.05 LSCST.
+
+Không có object-reward term trong loss của cấu hình hiện tại.
+Điểm object consistency O chỉ dùng ở reranking.
+CHAIR là metric hậu kiểm, không phải module chọn câu hay loss.
+
+PHÂN BIỆT THÀNH PHẦN
+Frozen:
+CLIP encoders, semantic bank embeddings, YOLO và UPT.
+
+Learned:
+Visual projection, semantic aggregation, CSA fusion blocks, hai prompt adapters và Transformer Decoder.
+
+NHỮNG ĐIỀU KHÔNG ĐƯỢC VẼ SAI
+- Không thêm Q-Former, BLIP/BLIP-2 hoặc retrieval datastore.
+- Không bỏ noun/verb banks.
+- Không xem bank toàn cục là prompt riêng ảnh.
+- Không biến UPT relation predictions thành ground-truth relations.
+- Không vẽ prompt text đi thẳng vào decoder mà bỏ adapter.
+- Không cho caption tham chiếu TEST tham gia sinh hoặc reranking.
+- Không khẳng định đây là tái hiện nguyên bản CSA-Net hay một phương pháp mới đã được chứng minh.
+
+Trước khi xuất, tự kiểm tra:
+1. Mũi tên đầu vào/đầu ra đúng.
+2. Có đủ hai memory Vo/Vr và Vo′/Vr′.
+3. Q/K/V của CSA và adapter không bị đảo.
+4. Không có chữ tràn hoặc mũi tên xuyên qua box.
+5. Khi thu hình về chiều rộng một trang báo, tên module vẫn đọc được.
+
+Hãy tạo hình kiến trúc có thể dùng trong bài báo, kèm caption tiếng Việt ngắn và danh sách các chỗ đã giản lược khi vẽ.

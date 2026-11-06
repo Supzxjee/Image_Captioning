@@ -1,0 +1,35 @@
+{
+  "status": "PASS",
+  "routes_checked": 57,
+  "nodes_checked": 53,
+  "issues": [],
+  "pdfs": {
+    "panel-c-training.pdf": {
+      "pages": 1,
+      "text_characters": 401,
+      "raster_images": 0,
+      "vector_drawings": 25
+    },
+    "panel-a-overall.pdf": {
+      "pages": 1,
+      "text_characters": 1167,
+      "raster_images": 0,
+      "vector_drawings": 126
+    },
+    "upt-csa-architecture.pdf": {
+      "pages": 1,
+      "text_characters": 2096,
+      "raster_images": 0,
+      "vector_drawings": 220
+    },
+    "panel-b-adapters.pdf": {
+      "pages": 1,
+      "text_characters": 439,
+      "raster_images": 0,
+      "vector_drawings": 69
+    }
+  },
+  "render_report": "render_audit.json",
+  "source_brief_sha256": "a2a428347ef377bdc566b053ca36dbbe1bfd730701f3352157fe1da2f1b59343",
+  "limits": "Figure follows user-supplied architecture, not an implementation audit or a model/metric result. Unrounded axis-aligned route envelopes are checked conservatively; actual SVG corners are rounded."
+}
