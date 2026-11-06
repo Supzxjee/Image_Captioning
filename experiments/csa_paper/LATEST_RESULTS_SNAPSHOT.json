@@ -278,17 +278,17 @@
       "VALID5000",
       "10epoch XE /177110updates",
       99.45869315089895,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
+      32.98777391810642,
+      53.26959007118567,
+      6.6000000000000005,
+      4.823644221385752,
+      39.76644902059267,
+      330,
       2.4482110634978933,
       "Hoàn tất",
       "178 / best epoch10",
-      "Samecommoninit/208checksPASS; CHAIR/BLEU/ROUGE chưa đo. Best10=endpoint.",
-      "https://github.com/Supzxjee/Image_Captioning/blob/main/experiments/csa_paper/PROMPT_SCRATCH_XE10_RESULT.md"
+      "CPU replay/count/paired32checksPASS. Best10:330captionhalu;recall39,77%.",
+      "https://github.com/Supzxjee/Image_Captioning/blob/main/experiments/csa_paper/PROMPT_SCRATCH_QUALITY_RESULT.md"
     ],
     [
       "P06",
@@ -296,17 +296,17 @@
       "VALID5000",
       "10epoch XE /177110updates",
       98.84528187965552,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
+      32.30829468150648,
+      52.99312096341523,
+      4.3999999999999995,
+      3.145084096813893,
+      40.53867403314917,
+      220,
       2.5162846554651717,
       "Hoàn tất",
       "58 / best epoch9",
-      "Samecommoninit/208checksPASS; CHAIR/BLEU/ROUGE chưa đo. Best9;endpoint10CIDEr97,90/NLL2,5021;Δbest−0,6134điểm.",
-      "https://github.com/Supzxjee/Image_Captioning/blob/main/experiments/csa_paper/PROMPT_SCRATCH_XE10_RESULT.md"
+      "CPU replay/count/paired32checksPASS. Best9:220halu(−110/−33,33%);recall40,54%;CIDEr−0,61điểm. Endpoint10:189halu/CIDEr97,90. Mộtseed/VALID, chưaTEST.",
+      "https://github.com/Supzxjee/Image_Captioning/blob/main/experiments/csa_paper/PROMPT_SCRATCH_QUALITY_RESULT.md"
     ]
   ]
 }

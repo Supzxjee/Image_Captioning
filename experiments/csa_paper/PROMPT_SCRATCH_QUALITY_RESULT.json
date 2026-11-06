@@ -1,0 +1,173 @@
+{
+  "status": "PROMPT_SCRATCH_QUALITY_REVIEW_COMPLETE",
+  "archive_sha256": "b92492b79ce3f782e827db99d6d1b604942ef1ddc09f548876026220feb71510",
+  "metadata_checks": 32,
+  "checks": [
+    "complete",
+    "no_replay_mismatch",
+    "expected_source",
+    "source/score_prompt_scratch_quality.py",
+    "source/saved_quality_data.py",
+    "source/test_prompt_scratch_quality_data.py",
+    "source/make_prompt_scratch_quality_notebook.py",
+    "source/prompt_scratch_valid5000_saved.json.gz",
+    "source/PROMPT_SCRATCH_QUALITY_INPUTS.json",
+    "evaluator",
+    "CONTROL10/point",
+    "CONTROL10/input",
+    "CONTROL10/counts",
+    "CONTROL10/per_image_ids",
+    "CONTROL10/per_image_values",
+    "CONTROL10/caption_lengths",
+    "PROMPT9/point",
+    "PROMPT9/input",
+    "PROMPT9/counts",
+    "PROMPT9/per_image_ids",
+    "PROMPT9/per_image_values",
+    "PROMPT9/caption_lengths",
+    "PROMPT10/point",
+    "PROMPT10/input",
+    "PROMPT10/counts",
+    "PROMPT10/per_image_ids",
+    "PROMPT10/per_image_values",
+    "PROMPT10/caption_lengths",
+    "PROMPT9/paired_statistics",
+    "PROMPT9/net_hallucination_counts",
+    "PROMPT10/paired_statistics",
+    "PROMPT10/net_hallucination_counts"
+  ],
+  "metrics": {
+    "CONTROL10": {
+      "CIDEr": 0.9945869315089895,
+      "Bleu_4": 0.3298777391810642,
+      "ROUGE_L": 0.5326959007118567,
+      "CHAIRs": 0.066,
+      "CHAIRi": 0.04823644221385752,
+      "Recall": 0.39766449020592665,
+      "counts": {
+        "images": 5000,
+        "hallucinated_captions": 330,
+        "hallucinated_mentions": 346,
+        "object_mentions": 7173,
+        "recalled_unique": 6334,
+        "reference_unique": 15928
+      },
+      "mean_words": 8.1054,
+      "epoch": 10
+    },
+    "PROMPT9": {
+      "CIDEr": 0.9884528187965552,
+      "Bleu_4": 0.32308294681506483,
+      "ROUGE_L": 0.5299312096341523,
+      "CHAIRs": 0.044,
+      "CHAIRi": 0.03145084096813893,
+      "Recall": 0.4053867403314917,
+      "counts": {
+        "images": 5000,
+        "hallucinated_captions": 220,
+        "hallucinated_mentions": 230,
+        "object_mentions": 7313,
+        "recalled_unique": 6457,
+        "reference_unique": 15928
+      },
+      "mean_words": 7.7278,
+      "epoch": 9
+    },
+    "PROMPT10": {
+      "CIDEr": 0.9790003778171876,
+      "Bleu_4": 0.3216922311837591,
+      "ROUGE_L": 0.5303702261463844,
+      "CHAIRs": 0.0378,
+      "CHAIRi": 0.027585250901025784,
+      "Recall": 0.40023857358111503,
+      "counts": {
+        "images": 5000,
+        "hallucinated_captions": 189,
+        "hallucinated_mentions": 199,
+        "object_mentions": 7214,
+        "recalled_unique": 6375,
+        "reference_unique": 15928
+      },
+      "mean_words": 7.7134,
+      "epoch": 10
+    }
+  },
+  "comparisons": {
+    "PROMPT9": {
+      "CIDEr_delta": -0.006134112712434082,
+      "CIDEr_paired95": [
+        -0.02216544914083684,
+        0.009653216203363969
+      ],
+      "CHAIRs_delta": -0.022,
+      "CHAIRs_paired95": [
+        -0.0294,
+        -0.015595000000000027
+      ],
+      "repaired": 212,
+      "introduced": 102,
+      "resamples": 2000,
+      "conditional_on_fixed_corpus_IDF_and_selected_checkpoints": true,
+      "CIDEr_delta_points": -0.6134112712434082,
+      "CIDEr_paired95_points": [
+        -2.2165449140836837,
+        0.9653216203363969
+      ],
+      "CHAIRs_delta_pp": -2.1999999999999997,
+      "hallucinated_caption_relative_reduction": 0.3333333333333333,
+      "recalled_unique_delta": 123,
+      "object_mentions_delta": 140,
+      "changed_captions": 4206
+    },
+    "PROMPT10": {
+      "CIDEr_delta": -0.015586553691801742,
+      "CIDEr_paired95": [
+        -0.029706680315156407,
+        -0.0007613764606241932
+      ],
+      "CHAIRs_delta": -0.0282,
+      "CHAIRs_paired95": [
+        -0.0352,
+        -0.0216
+      ],
+      "repaired": 227,
+      "introduced": 86,
+      "resamples": 2000,
+      "conditional_on_fixed_corpus_IDF_and_selected_checkpoints": true,
+      "CIDEr_delta_points": -1.558655369180174,
+      "CIDEr_paired95_points": [
+        -2.9706680315156406,
+        -0.07613764606241932
+      ],
+      "CHAIRs_delta_pp": -2.82,
+      "hallucinated_caption_relative_reduction": 0.42727272727272725,
+      "recalled_unique_delta": 41,
+      "object_mentions_delta": 41,
+      "changed_captions": 3817
+    }
+  },
+  "evaluator_provenance": {
+    "packages": {
+      "pycocoevalcap": "1.2",
+      "numpy": "2.1.3",
+      "nltk": "3.9.2"
+    },
+    "tokenizer_sha256": "ded90551127b8a4bf683873432ccafa83330a9997f6d0b695cb71a618808b8c1",
+    "cider_sha256": "268b71cb096ccd10cf4a7cd49a9a72072001922f1876f4e88833e1eb4649cfcb",
+    "chair_cache_sha256": "73ce11225febb97df38c5bfad60b3ff6cc25852e9df9a1330673155b4be851c3",
+    "reference_tokens_reused_exactly": true
+  },
+  "model_or_scorer_executed_by_author": false,
+  "selection_unchanged": {
+    "CONTROL": 10,
+    "PROMPT": 9
+  },
+  "test_used": false,
+  "limits": [
+    "One seed, reused VALID5000; exploratory comparison, not TEST.",
+    "Best epochs locked by prior CIDEr; not reselected using CHAIR.",
+    "CHAIR evaluates objects, not relation or attribute correctness.",
+    "CIDEr CI including zero does not establish equivalence or noninferiority.",
+    "No text-zero/shuffle/off result yet; semantic text contribution versus adapter/ROI capacity is unresolved."
+  ]
+}
