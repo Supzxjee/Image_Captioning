@@ -49,4 +49,6 @@ SHA trọng số trên là receipt trong ZIP, chưa đọc/deserialize binary �
 
 Chuẩn bị notebook CPU `CSA_PROMPT_SCRATCH_QUALITY_VALID5000_CPU.ipynb`: chấm **caption đã lưu** củaCONTROL10/PROMPT9/PROMPT10 trên cùng5kVALID/cachedreferencePTB; replayCIDEr≤1e−7, thêmBLEU4/ROUGE-L/CHAIRs/CHAIRi/Recall vàpairedCI. Không APISecret/AddInput/model/checkpoint/newgeneration/GPU/TEST. Best10/9 khóa trướcCHAIR, không lựa lại theo metric mới. Bản payload583.294bytes được seal từhaiZIP đã audit; không đặt data trong notebook để tránh ngưỡng1MB. 3safe package/synthetic paired/ASTfixturesPASS; actualscorers chỉ do người dùng chạy. Chưa có kết quảCPU, chưa mở rộng train.
 
+[Notebook CPU](CSA_PROMPT_SCRATCH_QUALITY_VALID5000_CPU.ipynb) đã chuẩn bị:7.320bytes,6source/payloadpins17bf52c.3codecellsAST/emptyoutputs/AcceleratorNone/noAPI/sourceSHA/3fixtures từexactGitbundlePASS. [Authorchecks](PROMPT_SCRATCH_QUALITY_AUTHOR_CHECKS.json). Người dùng chọnCPU/InternetON, Save&RunAll rồi gửi `csa_prompt_scratch_quality_valid5000_review.zip`; không cần output178/58 gắnInput vì captions đã khóa trong payload. Tác giả chưa chạy evaluator.
+
 CachedZIPtexts ở `.review_cache/prompt_scratch_xe10` ngoài repo; không cần đọc ZIP lại để tiếp tục phân tích.

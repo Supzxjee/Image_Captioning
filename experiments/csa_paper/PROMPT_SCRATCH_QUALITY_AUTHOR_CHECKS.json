@@ -1,0 +1,14 @@
+{
+  "status": "PROMPT_SCRATCH_QUALITY_AUTHOR_SAFE_CHECKS_PASS",
+  "notebook": "CSA_PROMPT_SCRATCH_QUALITY_VALID5000_CPU.ipynb",
+  "source": "17bf52c3f17c7b44e67f873d2405dcda2bb55a92",
+  "source_files": 6,
+  "bytes": 7320,
+  "code_cells_AST": 3,
+  "isolated_exact_git_bundle": true,
+  "safe_fixtures": 3,
+  "CPU": true,
+  "API_required": false,
+  "model_or_scorer_run_by_author": false,
+  "actual_quality_results_pending": true
+}
