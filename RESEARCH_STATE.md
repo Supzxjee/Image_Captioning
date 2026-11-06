@@ -1,6 +1,6 @@
 # Trạng thái nghiên cứu — đọc trước khi tiếp tục
 
-Cập nhật: 06/11/2026, giờ Việt Nam. File này là bản tóm tắt để tiếp tục công việc; protocol và artifacts được dẫn bên dưới mới là nguồn chi tiết. Không cần đọc toàn bộ lịch sử chat.
+Cập nhật: 07/11/2026, giờ Việt Nam. File này là bản tóm tắt để tiếp tục công việc; protocol và artifacts được dẫn bên dưới mới là nguồn chi tiết. Không cần đọc toàn bộ lịch sử chat.
 
 ## Mục tiêu và cách làm việc
 
@@ -9,6 +9,8 @@ Cập nhật: 06/11/2026, giờ Việt Nam. File này là bản tóm tắt để
 - Không tự chạy mô hình/Torch/autograd local hoặc notebook Kaggle. Kiểm tra metadata/NumPy/static/mock được phép; ghi rõ giới hạn. Quy trình tại [AGENTS.md](AGENTS.md).
 
 ## Hiện đang ở đâu
+
+- **07/11 user duyệt chấmNoCSA10/CSA10; mộtCPU notebook READY.** [Run](experiments/csa_paper/PLAIN_CSA10_EXTRA_RUN.md), sourcec6306eb/5pins; snapshot512496B/5000ảnh×2caption/25010refs, matchesTEST184/61. KhôngSecret/API/Dataset/GPU/checkpoint/inference. Dùngscorerbyte-identicala58/185-62, smokeCOCO1.2/Java8/CoreNLP, 3metricmới+replay3cũ+carryCHAIR, 4hCPUcap/log/archive.4fixturesPASS repeatedisolatedGitbundle; notebookAST/CPU/empty/noAPI/noTorchPASS; noactualauthorJava/scorer/model. Sheet A44:L47/note49 pending48cellsPASS,10oldmetricvalues/6missingblank, C/Ptablegiữnguyên, APIformatonly. Downloads notebookđãcopy. NextuserrunCPU bấtkỳaccount/sendplain_csa10_TEST_extra_v1_review.zip; chưa cóBLEU1/METEOR/SPICE cho2baseline, không mởtrain hoặcCSA15run.
 
 - **07/11 rà soát8metric trong báo cáo.** [Coverage](experiments/csa_paper/METRIC_COVERAGE_REVIEW_2026-11-07.md): C/P TEST normal+rerank đãđủ, nhưng Word06/11 chưa cập nhậtB1/METEOR/SPICE. NoCSA10,CSA10 vàCSA15+SCST hai policyTEST166 đều thiếu3metricđó; cached5000caption+refs hiện có nên không cần sinh lại. Zero/shuffle vàVALIDstage cũng thiếu3, ưu tiên thấp. Chỉmetadata/text/DOCXread; chưa viết/chạy thêmnotebook, không sửaWord/Sheet. Khuyếnnghị ưu tiên bảngbaselineNoCSA10/CSA10 rồi mốcCSA15 nếubáocáogiữmốcđó.
 
