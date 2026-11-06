@@ -10,7 +10,7 @@ import numpy as np
 from prompt_scst_data import SOURCES,PHASES,EVAL_NAMES,source_checkpoint,check_source,validate_state,copy_evaluations,validate_candidates
 from scst_full_data import full_schedule,local_batch,image_events,UPDATES
 from real_bank_data import sha,save
-from prompt_scst_rerank import fixed_rank
+from prompt_scst_rerank import fixed_rank,validation_image_paths,validation_detections,prepare_images
 
 
 class Checks(unittest.TestCase):
@@ -73,6 +73,35 @@ class Checks(unittest.TestCase):
         with self.assertRaises(ValueError):validate_candidates([row],{1})
         with self.assertRaises(ValueError):fixed_rank(row,[float('nan')]*5,{})
 
+    def test_jpeg_single_scan_nested_missing_and_duplicate(self):
+        with tempfile.TemporaryDirectory() as folder:
+            root=Path(folder);(root/'images/val2014').mkdir(parents=True);(root/'images/val2014/a.jpg').write_bytes(b'fixture')
+            records=[dict(filename='a.jpg')];found=validation_image_paths(root,records)
+            self.assertEqual(found['a.jpg'],(root/'images/val2014/a.jpg').resolve())
+            with self.assertRaises(FileNotFoundError):validation_image_paths(root,[dict(filename='missing.jpg')])
+            (root/'a.jpg').write_bytes(b'duplicate')
+            with self.assertRaisesRegex(ValueError,'Ambiguous'):validation_image_paths(root,records)
+
+    def test_filtered_detector_preserves_selected_confidences(self):
+        from captioning.object_consistency import index_detections
+        source={'nested/a.jpg':[dict(label='dog',conf=.9),dict(label='cat',conf=.3)],'other.jpg':[dict(label='person',conf=.8)]}
+        selected=validation_detections(source,{'a.jpg'})
+        self.assertEqual(selected,{'a.jpg':index_detections(source)['a.jpg']})
+        with self.assertRaises(ValueError):validation_detections(source,{'missing.jpg'})
+        with self.assertRaises(ValueError):validation_detections({**source,'other/a.jpg':[]},{'a.jpg'})
+
+    def test_parallel_jpeg_hash_order_and_corruption_guard(self):
+        from PIL import Image
+        with tempfile.TemporaryDirectory() as folder:
+            root=Path(folder);paths={}
+            for name in ('a.jpg','b.jpg'):
+                path=root/name;Image.new('RGB',(2,2)).save(path);paths[name]=path
+            val={2:dict(filename='b.jpg'),1:dict(filename='a.jpg')};detected={'a.jpg':{'dog':.9},'b.jpg':{}}
+            rows=prepare_images(val,paths,detected,workers=2)
+            self.assertEqual([r['coco_id'] for r in rows],[1,2]);self.assertEqual(rows[0]['image_sha256'],sha(paths['a.jpg']))
+            paths['b.jpg'].write_bytes(b'not an image')
+            with self.assertRaises(OSError):prepare_images(val,paths,detected,workers=2)
+
     def test_sources_parse_and_scope_guards(self):
         here=Path(__file__).parent
         for name in ('prompt_scst_data.py','run_prompt_scst.py','prompt_scst_rerank.py','make_prompt_scst_notebooks.py'):
@@ -84,6 +113,9 @@ class Checks(unittest.TestCase):
         self.assertNotIn('TrainingObjectReward',text)
         rerank=(here/'prompt_scst_rerank.py').read_text(encoding='utf-8');self.assertNotIn('Blip',rerank)
         self.assertIn('truncation=False',rerank);self.assertIn('same', (here/'PROMPT_SCST_PROTOCOL.md').read_text(encoding='utf-8').lower())
+        generator=(here/'make_prompt_scst_notebooks.py').read_text(encoding='utf-8')
+        self.assertIn("'prepare','--config',CONFIG],timeout=1800)",generator)
+        self.assertIn("'_full1_v2'",generator);self.assertIn('No SCST checkpoint saved yet',generator)
 
 
 if __name__=='__main__':unittest.main(verbosity=2)

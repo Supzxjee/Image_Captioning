@@ -20,6 +20,12 @@
 
 ## Runtime and checks
 
+### V2 operational amendment,06/11/2026
+
+User reports PROMPT V1 successfully staged allROI119shards and TRAIN schedule, then hit the600s subprocess deadline in reranking `prepare`, before metric/model/DDP guards or training. No per-step log was present, so the exact slow substep is not established by this trace. This is not model divergence and no SCST checkpoint is evidenced by the printed filename. User explicitly requests a fresh run, not recovery.
+
+V2 retains sourceXE178/58, model/loss/schedule, four-hour parent cap and selector. It replaces repeated per-JPEG path probes with one directory scan, indexes only selectedVALID detector entries after verifying the full source SHA, and hashes/verifies images with8I/O threads in stable COCO-ID order. Hash-stage/path-scan/progress logs identify where time is spent. Rerank preparation cap is1800s within the unchanged parent cap. Output `_full1_v2` preserves V1; missing checkpoint is now reported honestly. This is an I/O fix, not a new experiment/model or an increase in total parent GPU budget. Actual mounted-Kaggle speed remains unmeasured by author.
+
 - Each notebook uses its own account's exact source version, never requests the other account's private output. Kaggle Secret `codex` (or configured name) only if downloading weights; accept a local mount with the exact SHA instead. Attach ROI134, prompt175, COCO2014 raw JPEGs+datasetJSON, original detectorJSON; no bank130 input needed because banks are inside source weights.
 - User reports current quota10h/15h. Both notebooks use a4h parent wall STOPcap; this is not an ETA or Kaggle billing/quota guarantee. Preparation, guards, training, metrics and reranking all count against this cap. Runtime projection/checkpoint protects partial training; never mark partial as complete or restart training automatically.
 - User-run loaded-model sampling/rescoring parity + finite/DDP-gradient checks discard their updates. Author runs only NumPy/AST/mock tests and validates the exact Git source bundle, not Torch/models/scorers/notebooks.

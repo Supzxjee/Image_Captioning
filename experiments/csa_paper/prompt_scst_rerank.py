@@ -1,5 +1,6 @@
 """USER-RUN frozen CLIP; reuse fixed164 selector, no BLIP or reference-based selection."""
 import argparse
+from concurrent.futures import ThreadPoolExecutor
 import hashlib
 import io
 import json
@@ -13,6 +14,56 @@ from prompt_scst_data import PHASES,validate_candidates,DATA_SHA,DETECTION_SHA
 from captioning.multiscore_reranking import rerank_multiscore
 
 
+def validation_image_paths(root,records):
+    """One directory scan instead of four mounted-file probes per image."""
+    root=Path(root).resolve();wanted={r['filename'] for r in records};found={};pending=[root];scanned=0
+    print('JPEG path scan START:',root,'wanted',len(wanted),flush=True)
+    while pending:
+        with os.scandir(pending.pop()) as entries:
+            for entry in entries:
+                scanned+=1
+                if entry.name in wanted:
+                    if entry.is_symlink() or not entry.is_file(follow_symlinks=False):raise ValueError('Expected regular JPEG:'+entry.path)
+                    if entry.name in found:raise ValueError('Ambiguous JPEG filename:'+entry.name)
+                    found[entry.name]=Path(entry.path)
+                elif entry.is_dir(follow_symlinks=False):pending.append(Path(entry.path))
+                if scanned%25000==0:print('JPEG path scan:',scanned,'entries;',len(found),'/',len(wanted),'found',flush=True)
+    missing=wanted-set(found)
+    if missing:raise FileNotFoundError('Missing JPEGs under '+str(root)+': '+', '.join(sorted(missing)[:5]))
+    print('JPEG paths COMPLETE:',len(found),flush=True)
+    return found
+
+
+def validation_detections(source,names):
+    from pathlib import PurePosixPath
+    from captioning.object_consistency import index_detections
+    # The full file SHA is still checked; only VALID entries need object indexing.
+    subset={k:v for k,v in source.items() if PurePosixPath(str(k).replace('\\','/')).name in names}
+    indexed=index_detections(subset)
+    if set(indexed)!=set(names):raise ValueError('Missing VALID detector records')
+    return indexed
+
+
+def checked_jpeg(item):
+    from PIL import Image
+    i,path,detected=item
+    if any(not np.isfinite(s) or not .5<=s<=1 for s in detected.values()):raise ValueError('Invalid detector confidence')
+    raw=path.read_bytes()
+    with Image.open(io.BytesIO(raw)) as image:image.verify()
+    return dict(coco_id=i,image_path=str(path),image_sha256=hashlib.sha256(raw).hexdigest(),detected=detected)
+
+
+def prepare_images(val,paths,detected,workers=8):
+    started=time.monotonic();inputs=[]
+    items=((i,paths[val[i]['filename']],detected[val[i]['filename']]) for i in sorted(val))
+    print('JPEG hash/verify START:',len(val),'images,',workers,'I/O threads',flush=True)
+    with ThreadPoolExecutor(max_workers=workers) as pool:
+        for row in pool.map(checked_jpeg,items):
+            inputs.append(row)
+            if len(inputs)%100==0 or len(inputs)==len(val):print('JPEG hash/verify:',len(inputs),'/',len(val),'elapsed',round(time.monotonic()-started,1),'s',flush=True)
+    return inputs
+
+
 def fixed_rank(row,scores,detected):
     if len(scores)!=5 or not np.isfinite(scores).all() or any(not 0<=s<=2.50001 for s in scores):raise ValueError('Invalid CLIP scores')
     enriched=[dict(c,clipscore=float(s)) for c,s in zip(row['candidates'],scores)]
@@ -21,30 +72,26 @@ def fixed_rank(row,scores,detected):
 
 
 def prepare(cfg):
-    from PIL import Image
-    from rerank_data import image_paths
-    from captioning.object_consistency import index_detections
-    out=Path(cfg['output'])
+    out=Path(cfg['output']);started=time.monotonic()
     for key,h in (('dataset_json',DATA_SHA),('detections',DETECTION_SHA)):
+        print('Rerank preparation HASH START:',key,flush=True);began=time.monotonic()
         if sha(cfg[key])!=h:raise ValueError('Changed input:'+key)
+        print('Rerank preparation HASH PASS:',key,round(time.monotonic()-began,1),'s',flush=True)
+    print('Loading COCO metadata; VALID5000 only.',flush=True)
     val={int(Path(r['filename']).stem.split('_')[-1]):r for r in read(cfg['dataset_json'])['images'] if r['split']=='val'}
     refs=read(out/'validation_references.json')
     if len(val)!=5000 or set(val)!={r['coco_id'] for r in refs}:raise ValueError('Wrong VALID5000')
     if any([s['raw'] for s in val[r['coco_id']]['sentences']]!=r['references'] for r in refs):raise ValueError('VALID reference provenance differs')
-    paths=image_paths(cfg['coco_root'],list(val.values()));detected=index_detections(read(cfg['detections']));inputs=[]
-    for i in sorted(val):
-        name=val[i]['filename'];path=paths[name]
-        if name not in detected:raise ValueError('Missing detector record:'+name)
-        d=detected[name]
-        if any(not np.isfinite(s) or not .5<=s<=1 for s in d.values()):raise ValueError('Invalid detector confidence')
-        raw=path.read_bytes()
-        with Image.open(io.BytesIO(raw)) as image:image.verify()
-        inputs.append(dict(coco_id=i,image_path=str(path),image_sha256=hashlib.sha256(raw).hexdigest(),detected=d))
+    print('Loading detector JSON and indexing5000VALID entries.',flush=True)
+    detected=validation_detections(read(cfg['detections']),{r['filename'] for r in val.values()})
+    print('VALID detector index COMPLETE:',len(detected),flush=True)
+    paths=validation_image_paths(cfg['coco_root'],list(val.values()))
+    inputs=prepare_images(val,paths,detected)
     save(out/'rerank_inputs.json',inputs) # Images/detections only; no references or quality labels.
     save(out/'rerank_prepared.json',dict(input_sha256=sha(out/'rerank_inputs.json'),references_sha256=sha(out/'validation_references.json'),
         dataset_sha256=DATA_SHA,detector_sha256=DETECTION_SHA,images=5000,test_used=False,
         selector='.3minmax(raw decoder)+.4minmax(CLIPScore)+.3normalized detector consistency; earlier ties'))
-    print('VALID JPEG/detector inputs checked before training.',flush=True)
+    print('VALID JPEG/detector inputs checked before training;',round(time.monotonic()-started,1),'seconds.',flush=True)
 
 
 def prefetch(cfg):

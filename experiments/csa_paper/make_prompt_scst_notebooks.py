@@ -61,7 +61,7 @@ PROMPT_ROOT=Path('/kaggle/input/datasets/ducanh2403/csa-prompt-full-karpathy-v17
 COCO_ROOT=Path('/kaggle/input/datasets/vuthetam/mscoco-2014')
 COCO_JSON=COCO_ROOT/'dataset_coco.json'
 DETECTIONS=Path('/kaggle/input/datasets/ducanh2403/objectdetectionecache/objectdetectioncache.json')
-OUTPUT=Path('/kaggle/working/csa_prompt_scst_'+ARM+'_full1_v1')
+OUTPUT=Path('/kaggle/working/csa_prompt_scst_'+ARM+'_full1_v2')
 PARENT_DEADLINE=time.monotonic()+WALL_HOURS*3600
 for p in (FULL_ROOT,PROMPT_ROOT,COCO_ROOT,COCO_JSON,DETECTIONS):
     if not p.exists():raise FileNotFoundError('Attach inputs BEFORE GPU; correct this path: '+str(p))
@@ -132,7 +132,7 @@ try:
     run([sys.executable,'-c',"from importlib.metadata import version;from transformers import CLIPModel,CLIPProcessor;assert version('transformers')=='4.57.1';assert version('huggingface-hub')=='0.36.2';print('Isolated HF imports PASS')"],timeout=60)
     run([sys.executable,'-u',SOURCE/'prompt_scst_rerank.py','prefetch','--config',CONFIG],timeout=1200)
     run([sys.executable,'-u',SOURCE/'run_prompt_scst.py','prepare','--config',CONFIG],timeout=1800)
-    run([sys.executable,'-u',SOURCE/'prompt_scst_rerank.py','prepare','--config',CONFIG],timeout=600)
+    run([sys.executable,'-u',SOURCE/'prompt_scst_rerank.py','prepare','--config',CONFIG],timeout=1800)
     run([sys.executable,'-u',SOURCE/'run_prompt_scst.py','metric_preflight','--config',CONFIG],timeout=240)
     run([sys.executable,'-u',SOURCE/'test_prompt_adapter_model.py'],timeout=180)
     launch=[sys.executable,'-u','-m','torch.distributed.run','--standalone','--nnodes=1','--nproc_per_node=2','--max_restarts=0']
@@ -158,10 +158,11 @@ finally:
     with zipfile.ZipFile(REVIEW,'w',zipfile.ZIP_DEFLATED) as z:
         for p in sorted(OUTPUT.rglob('*')):
             if p.is_file() and p.suffix in ('.json','.jsonl','.log','.txt') and p.name!='training_references.json':z.write(p,str(p.relative_to(OUTPUT)))
-    print('SEND REVIEW:',REVIEW,'\\nKEEP ENTIRE OUTPUT:',OUTPUT,'\\nCHECKPOINT:',OUTPUT/'checkpoint.bin',flush=True)
+    checkpoint=OUTPUT/'checkpoint.bin'
+    print('SEND REVIEW:',REVIEW,'\\nKEEP ENTIRE OUTPUT:',OUTPUT,'\\nCHECKPOINT:',checkpoint if checkpoint.is_file() else 'No SCST checkpoint saved yet',flush=True)
     print('COMPLETE — ORIGINAL/END, rank0/fixed rerank, full VALID5000.' if complete else 'INCOMPLETE — preserve output. No automatic restart or partial-model ranking.',flush=True)
 '''
-        intro=f'''# CSA + prompt → SCST + CE + fixed rerank — {arm}
+        intro=f'''# CSA + prompt → SCST + CE + fixed rerank — {arm} V2
 
 Một notebook/một tài khoản, **GPU T4 ×2**, Internet ON, Save Version → Save & Run All. Nạp **selected {arm} từ {version}**, không train từ đầu, không reset adapter.
 
@@ -174,6 +175,7 @@ Giữ nguyên kiến trúc. CONTROL tắt adapter; PROMPT dùng adapter đã h�
 Trước/sau học: fullVALID5000, beam5/max20; cùng fixed rerank .3decoder+.4CLIP+.3object. KhôngBLIP/TEST/tuning/oracle. C10/P9 có số epoch XE ban đầu khác nhau; không gọi là bằng nhau tổng ngân sách.
 
 Giới hạn4giờ theo đồng hồ notebook, không phải cam kết thời gian hay quota tính phí. Lưu checkpoint mỗi500update và khi dừng; giữ cả output nếu incomplete. Hai tài khoản có quota10/15giờ theo báo cáo mới; không tự tăngcap/epoch.
+V2 sửa chuẩn bị JPEG: quét thư mục một lần, chỉ index detectorVALID,8luồng đọc/kiểmảnh,log từng bước/mỗi100ảnh; cap chuẩn bị30phút nằm trong cap tổng4giờ. Output mới `_full1_v2`; không xóa outputV1. Không đổi mô hình/loss/nguồn XE.
 Tác giả chỉ kiểm NumPy/metadata/AST/mock, không chạy model/DDP/notebook. Gửi ZIPreview và giữ checkpoint.bin/nguồn XE/candidates.
 '''
         nb=dict(nbformat=4,nbformat_minor=5,metadata=dict(kernelspec=dict(display_name='Python 3',language='python',name='python3'),
