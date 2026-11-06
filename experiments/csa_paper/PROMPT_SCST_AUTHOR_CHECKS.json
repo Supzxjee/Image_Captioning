@@ -1,33 +1,35 @@
 {
   "status": "AUTHOR_STATIC_METADATA_PASS",
-  "revision": "3d39c94e068196528c1567c548386e007032faf7",
+  "revision": "4386953d73f9a0158958bf64caa5681e96720376",
+  "version": 2,
   "checks": [
     {
-      "check": "7 NumPy/metadata/AST fixtures from isolated exact Git bundle",
+      "check": "10 NumPy/metadata/AST/JPEG I-O fixtures PASS in isolated exact Git bundle",
       "passed": true,
-      "source_files": 45
+      "source_files": 43
     },
     {
-      "check": "CONTROL notebook3AST/emptyoutputs/arm/version/4h/regex",
+      "check": "CONTROL V2:3AST/emptyoutputs/source/4h/1800sprepare/newoutput/missingcheckpointmessage",
       "passed": true,
-      "bytes": 22037
+      "bytes": 22077
     },
     {
-      "check": "PROMPT notebook3AST/emptyoutputs/arm/version/4h/regex",
+      "check": "PROMPT V2:3AST/emptyoutputs/source/4h/1800sprepare/newoutput/missingcheckpointmessage",
       "passed": true,
-      "bytes": 22018
+      "bytes": 22058
     },
     {
-      "check": "Identical execution pipeline across arms",
+      "check": "Matched execution pipeline across arms",
       "passed": true
     },
     {
-      "check": "6 historical model source hashes match exact pinned Git bytes",
+      "check": "5 training/model/data implementations byte-identical to V1",
       "passed": true
     }
   ],
   "neural_executed": false,
   "notebooks_executed": false,
   "kaggle_api_executed": false,
-  "scorers_executed": false
+  "scorers_executed": false,
+  "limitation": "Real Kaggle mount I/O speed is unmeasured; user must run V2."
 }

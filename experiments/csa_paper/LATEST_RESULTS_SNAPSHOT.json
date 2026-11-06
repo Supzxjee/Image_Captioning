@@ -340,8 +340,8 @@
       null,
       null,
       "Chưa chạy",
-      "58 / best9 → chưa chạy",
-      "1 lượt113287TRAIN/14161update/global8; ORIGINAL+END VALID5000. CE+.05SCST/freshAdam5e-6; giữ bank/adapter; không thưởng đối tượng. 4h STOPcap, không TEST.",
+      "58 / best9; V1 timeout trước SCST",
+      "V1 hết600s ở chuẩn bị rerank, chưa train SCST. V2 quétJPEG1lần/indexVALID/8luồng/log100ảnh, cap chuẩn bị1800s trong4h tổng. Người dùng yêu cầu chạy lại từ đầu; mô hình/loss/lịch TRAIN giữ nguyên.",
       "https://github.com/Supzxjee/Image_Captioning/blob/main/experiments/csa_paper/CSA_PROMPT_SCST_PROMPT_FULL1_2GPU.ipynb"
     ],
     [
@@ -376,8 +376,8 @@
       null,
       null,
       "Chưa chạy",
-      "58 / best9 → chưa chạy",
-      "1 lượt113287TRAIN/14161update/global8; ORIGINAL+END VALID5000. Cùng5beams/.3decoder+.4CLIP+.3object; không tuning. 4h STOPcap, không TEST.",
+      "58 / best9; V1 timeout trước SCST",
+      "V1 hết600s ở chuẩn bị rerank, chưa train SCST. V2 quétJPEG1lần/indexVALID/8luồng/log100ảnh, cap chuẩn bị1800s trong4h tổng. Người dùng yêu cầu chạy lại từ đầu; mô hình/loss/lịch TRAIN giữ nguyên.",
       "https://github.com/Supzxjee/Image_Captioning/blob/main/experiments/csa_paper/CSA_PROMPT_SCST_PROMPT_FULL1_2GPU.ipynb"
     ]
   ]
