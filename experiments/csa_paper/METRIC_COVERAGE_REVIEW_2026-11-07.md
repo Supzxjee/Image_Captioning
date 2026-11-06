@@ -12,14 +12,14 @@ Bản Word `docs/weekly_reports/2026-11-06/Bao_cao_nghien_cuu_06_11_2026.docx` v
 
 | Cấu hình | Cohort | Đã lưu trong8chỉ số | Còn thiếu |
 |---|---|---|---|
-| NoCSA, XE10 | TEST5000 | BLEU4, ROUGE-L, CIDEr, CHAIRs/i | BLEU1, METEOR, SPICE |
-| CSA, XE10 | TEST5000 | BLEU4, ROUGE-L, CIDEr, CHAIRs/i | BLEU1, METEOR, SPICE |
+| NoCSA, XE10 | TEST5000 | Đã đủ8, CPU186 | Không |
+| CSA, XE10 | TEST5000 | Đã đủ8, CPU186 | Không |
 | CSA, XE15 + SCST/CE, trước rerank | TEST5000 | BLEU4, ROUGE-L, CIDEr, CHAIRs/i | BLEU1, METEOR, SPICE |
 | Cùng CSA15+SCST/CE, sau rerank | TEST5000 | BLEU4, ROUGE-L, CIDEr, CHAIRs/i | BLEU1, METEOR, SPICE |
 
 Nguồn: PLAIN_VS_CSA10_TEST_RESULT.json (`comparison/plain`, `comparison/csa`); RERANK_TEST_RESULT.json (`metrics/decoder_rank0`, `metrics/clip_object_fixed`). Mốc117.0633CIDEr là dòng thứ4, không phải PROMPT mới.
 
-Textcache local xác nhận có5000caption độc nhất và5000metadata córefs cho mỗiNoCSA10/CSA10 (`review/plain_self_test_loaded.json`, `review/csa_epoch10_karpathy_test_loaded.json`: test_chair_input.json/test_metadata.json). Cache TEST166 có5000caption mỗi policy và5000references tại `rerank_test_v2_review_text`. Vì thế có thể chuẩn bị chấm bổ sung từ câu đã lưu, không cần train/inference. Bước này chưa được chuẩn bị/chạy trong lượt rà soát.
+Textcache local xác nhận có5000caption độc nhất và5000metadata córefs cho mỗiNoCSA10/CSA10 (`review/plain_self_test_loaded.json`, `review/csa_epoch10_karpathy_test_loaded.json`: test_chair_input.json/test_metadata.json). Cache TEST166 có5000caption mỗi policy và5000references tại `rerank_test_v2_review_text`. Vì thế có thể chuẩn bị chấm bổ sung từ câu đã lưu, không cần train/inference. Sau rà soát đã chạy bổ sungNoCSA10/CSA10 vàauditCPU186: [kếtquảđủ8](PLAIN_CSA10_EXTRA_RESULT.md). Hai policyCSA15+SCST vẫn chưa bổ sung.
 
 ## Những bảng phụ chưa đủ nhưng chưa cần ưu tiên
 
@@ -29,4 +29,4 @@ Textcache local xác nhận có5000caption độc nhất và5000metadata córefs
 
 ## Khuyến nghị
 
-Ưu tiên bổ sung3metric còn thiếu choNoCSA10 vàCSA10, rồi hai policy củaCSA15+SCST nếu giữ mốc cũ trong bài. Không cần chấm lại toàn bộpilot. Cập nhật Word bằng bảng8metric hiện có là công việc dàn trang riêng; lượt này chưa sửaWord/Sheet và chưa khởi độngrun nào.
+NoCSA10/CSA10 đã bổ sung đủ3metric ởCPU186. Nếu giữ mốcCSA15+SCST trongbài, bước còn lại là bổ sunghai policy của mốc này. Không cần chấm lại toàn bộpilot. Cập nhật Word bằng bảng8metric hiện có là công việc dàn trang riêng; lượt này chưa sửaWord/Sheet và chưa khởi độngrun nào.

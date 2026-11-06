@@ -1,0 +1,90 @@
+{
+  "status": "PLAIN_CSA10_EXTRA_REVIEW_COMPLETE",
+  "checks": 43,
+  "archive_sha256": "6909a9ce526415c5c1a6df5e76b40931146354f9feb2168d5b85ff6c5915ae8b",
+  "source_commit": "c6306eb181361f031cdfdca52155669d9ff80a25",
+  "snapshot_sha256": "440afb486d28e44066b6acc1d67ec4e26f9e4eb0b48419c491d7b6eef88bbfae",
+  "metrics": {
+    "NoCSA10": {
+      "Bleu_1": 0.35385091096244936,
+      "Bleu_4": 0.15083901082079265,
+      "CIDEr": 0.5692195543902082,
+      "ROUGE_L": 0.403298856397154,
+      "METEOR": 0.16766942084760364,
+      "SPICE": 0.11644128886978901,
+      "CHAIRs": 0.0392,
+      "CHAIRi": 0.04428543801972539
+    },
+    "CSA10": {
+      "Bleu_1": 0.7034679205835703,
+      "Bleu_4": 0.33337781104467246,
+      "CIDEr": 1.0192066011235086,
+      "ROUGE_L": 0.5346489585634825,
+      "METEOR": 0.2525009961363894,
+      "SPICE": 0.18658689257412295,
+      "CHAIRs": 0.0618,
+      "CHAIRi": 0.04611847443873411
+    }
+  },
+  "display_x100": {
+    "NoCSA10": {
+      "Bleu_1": 35.385091096244935,
+      "Bleu_4": 15.083901082079265,
+      "CIDEr": 56.92195543902082,
+      "ROUGE_L": 40.3298856397154,
+      "METEOR": 16.766942084760363,
+      "SPICE": 11.644128886978901,
+      "CHAIRs": 3.92,
+      "CHAIRi": 4.428543801972539
+    },
+    "CSA10": {
+      "Bleu_1": 70.34679205835704,
+      "Bleu_4": 33.33778110446725,
+      "CIDEr": 101.92066011235086,
+      "ROUGE_L": 53.46489585634825,
+      "METEOR": 25.250099613638938,
+      "SPICE": 18.658689257412295,
+      "CHAIRs": 6.18,
+      "CHAIRi": 4.611847443873411
+    }
+  },
+  "csa_minus_plain_x100": {
+    "CIDEr": 44.99870467333004,
+    "CHAIRi": 0.18330364190087198,
+    "METEOR": 8.483157528878573,
+    "SPICE": 7.014560370433394,
+    "Bleu_4": 18.253880022387982,
+    "Bleu_1": 34.9617009621121,
+    "CHAIRs": 2.2600000000000002,
+    "ROUGE_L": 13.135010216632848
+  },
+  "historical_sources": {
+    "NoCSA10": {
+      "archive_sha256": "ebca3334a96547e9526eafcd6b15bdd895c8aa2e064f3d141c42acdfb13702ce",
+      "checkpoint_sha256": "a75d7bad5a0d8dc976546b70145a29d76748142ad82190f4f04180418987135f",
+      "epoch": 10,
+      "beam": 5,
+      "maximum": 20,
+      "raw_caption_sha256": "eab8b0ea88c49fa310faa8d7766c43fc4bc5849b27fef7ba9131401d77e11a12",
+      "raw_metadata_sha256": "4271b46b7ab67117433bfdf84f6eb9ba66515ada9b3c4ae4d2e507bc2cede018",
+      "raw_result_sha256": "f43079706145a69d687bf9375574e4ecc56376df3c9ebb27c9689aee9eff1c7e"
+    },
+    "CSA10": {
+      "archive_sha256": "956010e67d0587c083ce053db38cd5d9087b2d4ebe16cf90241e5cb0c91a0f6a",
+      "checkpoint_sha256": "272f843a21b3a63c61323f748ed916fa3ae0cf2777549061439c07b410006950",
+      "epoch": 10,
+      "beam": 5,
+      "maximum": 20,
+      "raw_caption_sha256": "7070dc9776a2b902386ddb83d7c13e714b6b233cbd29cfbe34c7424fc3cfeacb",
+      "raw_metadata_sha256": "4271b46b7ab67117433bfdf84f6eb9ba66515ada9b3c4ae4d2e507bc2cede018",
+      "raw_result_sha256": "0d1a992dc4c16f74bad63f89ede487b5529610db86561b092968e65897de4d7a"
+    }
+  },
+  "extra_save_version": 186,
+  "limits": [
+    "CHAIR carried from exact-caption historical audit, not recomputed.",
+    "Single seed, different encoder capacity; NoCSA has many short captions.",
+    "No author local scorer/model execution; no significance claim from point estimates."
+  ],
+  "extra_version_provenance": "User confirmed186; notebookducanh2403/2-vi-cai-kia-qua-nhieu inferred from continuing source, not independently API fetched."
+}
