@@ -1,0 +1,33 @@
+{
+  "status": "AUTHOR_STATIC_METADATA_PASS",
+  "revision": "3d39c94e068196528c1567c548386e007032faf7",
+  "checks": [
+    {
+      "check": "7 NumPy/metadata/AST fixtures from isolated exact Git bundle",
+      "passed": true,
+      "source_files": 45
+    },
+    {
+      "check": "CONTROL notebook3AST/emptyoutputs/arm/version/4h/regex",
+      "passed": true,
+      "bytes": 22037
+    },
+    {
+      "check": "PROMPT notebook3AST/emptyoutputs/arm/version/4h/regex",
+      "passed": true,
+      "bytes": 22018
+    },
+    {
+      "check": "Identical execution pipeline across arms",
+      "passed": true
+    },
+    {
+      "check": "6 historical model source hashes match exact pinned Git bytes",
+      "passed": true
+    }
+  ],
+  "neural_executed": false,
+  "notebooks_executed": false,
+  "kaggle_api_executed": false,
+  "scorers_executed": false
+}
