@@ -1,0 +1,185 @@
+{
+  "status": "PROMPT_TEST_STORED_REVIEW_COMPLETE",
+  "checks": 139,
+  "arms": {
+    "CONTROL": {
+      "archive_sha256": "748808d33aaf29d6b38c35bc16322f9c0ab971f99e805c18cdd04e356c5c3666",
+      "metrics": {
+        "normal": {
+          "CIDEr": 1.055605937846093,
+          "Bleu_4": 0.34382930287222396,
+          "ROUGE_L": 0.5404077175960521,
+          "CHAIRs": 0.0562,
+          "CHAIRi": 0.041556268302886626,
+          "Recall": 0.4082941699479233,
+          "counts": {
+            "images": 5000,
+            "hallucinated_captions": 281,
+            "hallucinated_mentions": 298,
+            "object_mentions": 7171,
+            "recalled_unique": 6429,
+            "reference_unique": 15746
+          },
+          "mean_words": 8.3184
+        },
+        "fixed_rerank": {
+          "CIDEr": 1.14367115579243,
+          "Bleu_4": 0.3611049306400787,
+          "ROUGE_L": 0.5635044637512016,
+          "CHAIRs": 0.0454,
+          "CHAIRi": 0.030988061976123953,
+          "Recall": 0.4405563317667979,
+          "counts": {
+            "images": 5000,
+            "hallucinated_captions": 227,
+            "hallucinated_mentions": 244,
+            "object_mentions": 7874,
+            "recalled_unique": 6937,
+            "reference_unique": 15746
+          },
+          "mean_words": 9.1474
+        }
+      },
+      "checkpoint_sha256": "10d18a66e4e01ae7dba97802750a6a57f4305b904949f0cc50fdc368772cebd4"
+    },
+    "PROMPT": {
+      "archive_sha256": "3dd2997f582f3b7c75e4def0bfcc60238ed8fdde93b1b6a52e7771cbd54a61ec",
+      "metrics": {
+        "normal": {
+          "CIDEr": 1.073603286292523,
+          "Bleu_4": 0.34645242048088,
+          "ROUGE_L": 0.5448142287978902,
+          "CHAIRs": 0.0376,
+          "CHAIRi": 0.026764987027174655,
+          "Recall": 0.4241077098945764,
+          "counts": {
+            "images": 5000,
+            "hallucinated_captions": 188,
+            "hallucinated_mentions": 196,
+            "object_mentions": 7323,
+            "recalled_unique": 6678,
+            "reference_unique": 15746
+          },
+          "mean_words": 8.1666
+        },
+        "zero": {
+          "CIDEr": 0.893709641803848,
+          "Bleu_4": 0.29466119963360093,
+          "ROUGE_L": 0.5017753822806137,
+          "CHAIRs": 0.0514,
+          "CHAIRi": 0.04580929759077027,
+          "Recall": 0.3285913882890893,
+          "counts": {
+            "images": 5000,
+            "hallucinated_captions": 257,
+            "hallucinated_mentions": 270,
+            "object_mentions": 5894,
+            "recalled_unique": 5174,
+            "reference_unique": 15746
+          },
+          "mean_words": 7.8678
+        },
+        "shuffle": {
+          "CIDEr": 0.8961822499898763,
+          "Bleu_4": 0.2990020425935407,
+          "ROUGE_L": 0.5059367783710818,
+          "CHAIRs": 0.1078,
+          "CHAIRi": 0.08828149544454916,
+          "Recall": 0.3423726660739235,
+          "counts": {
+            "images": 5000,
+            "hallucinated_captions": 539,
+            "hallucinated_mentions": 562,
+            "object_mentions": 6366,
+            "recalled_unique": 5391,
+            "reference_unique": 15746
+          },
+          "mean_words": 8.078
+        },
+        "fixed_rerank": {
+          "CIDEr": 1.1535224810581564,
+          "Bleu_4": 0.3617312853322773,
+          "ROUGE_L": 0.5663509919270447,
+          "CHAIRs": 0.032,
+          "CHAIRi": 0.02118116122601545,
+          "Recall": 0.4517972818493586,
+          "counts": {
+            "images": 5000,
+            "hallucinated_captions": 160,
+            "hallucinated_mentions": 170,
+            "object_mentions": 8026,
+            "recalled_unique": 7114,
+            "reference_unique": 15746
+          },
+          "mean_words": 9.083
+        }
+      },
+      "checkpoint_sha256": "be2759b4a6f57af9bf8baeb13ee097bae2d8703d265b0791d9d39bb9c3dcbc63"
+    }
+  },
+  "comparisons": {
+    "PROMPT_minus_CONTROL_raw": {
+      "CIDEr_points": 1.7997348446430024,
+      "CHAIRs_pp": -1.8599999999999999,
+      "CI95": [
+        [
+          0.5088860535843371,
+          -2.4605
+        ],
+        [
+          3.1007378920367232,
+          -1.28
+        ]
+      ]
+    },
+    "PROMPT_minus_CONTROL_rerank": {
+      "CIDEr_points": 0.9851325265726283,
+      "CHAIRs_pp": -1.34,
+      "CI95": [
+        [
+          -0.38627875396653555,
+          -1.92
+        ],
+        [
+          2.427607553645292,
+          -0.7795000000000026
+        ]
+      ]
+    },
+    "normal_minus_zero": {
+      "CIDEr_points": 17.98936444886751,
+      "CHAIRs_pp": -1.38,
+      "CI95": [
+        [
+          16.347950083589684,
+          -1.96
+        ],
+        [
+          19.5535141476083,
+          -0.84
+        ]
+      ]
+    },
+    "normal_minus_shuffle": {
+      "CIDEr_points": 17.742103630264687,
+      "CHAIRs_pp": -7.02,
+      "CI95": [
+        [
+          16.21020933274692,
+          -7.8405
+        ],
+        [
+          19.2020301041162,
+          -6.239999999999999
+        ]
+      ]
+    }
+  },
+  "donor_slots": 16821,
+  "unchanged_donor_texts": 2105,
+  "limits": [
+    "One seed, fixed-IDF conditional bootstrap, prior TEST exposure.",
+    "C10/P9 initial XE training differs; zero/shuffle are OOD sensitivity, not a matched training ablation.",
+    "No author model/scorer/CLIP execution; raw image and binary checkpoint identity checks remain user-run evidence."
+  ]
+}
