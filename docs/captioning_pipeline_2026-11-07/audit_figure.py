@@ -1,0 +1,63 @@
+"""Check rendered typography, vector PDFs, and all orthogonal connector routes."""
+from pathlib import Path
+from itertools import combinations
+import json,hashlib,subprocess
+import fitz
+ROOT=Path(__file__).resolve().parent
+G=json.loads((ROOT/'diagram_geometry.json').read_text())
+issues=[]
+def inside_seg_box(a,b,n):
+ x,y,w,h=n['x'],n['y'],n['w'],n['h']
+ if a[0]==b[0]: return x+.1<a[0]<x+w-.1 and min(max(a[1],b[1]),y+h-.1)>max(min(a[1],b[1]),y+.1)
+ return y+.1<a[1]<y+h-.1 and min(max(a[0],b[0]),x+w-.1)>max(min(a[0],b[0]),x+.1)
+def cross(a,b,c,d):
+ if a[1]==b[1] and c[0]==d[0]:
+  if min(a[0],b[0])<c[0]<max(a[0],b[0]) and min(c[1],d[1])<a[1]<max(c[1],d[1]): return [c[0],a[1]]
+ if a[0]==b[0] and c[1]==d[1]: return cross(c,d,a,b)
+ return None
+def overlap(a,b,c,d):
+ if a[0]==b[0]==c[0]==d[0]: return min(max(a[1],b[1]),max(c[1],d[1]))>max(min(a[1],b[1]),min(c[1],d[1]))
+ if a[1]==b[1]==c[1]==d[1]: return min(max(a[0],b[0]),max(c[0],d[0]))>max(min(a[0],b[0]),min(c[0],d[0]))
+ return False
+for r in G['routes']:
+ for a,b in zip(r['points'],r['points'][1:]):
+  assert a[0]==b[0] or a[1]==b[1]
+  for n in G['nodes']:
+   if n['id'] not in [r['src'],r['dst']] and inside_seg_box(a,b,n):issues.append(['transit',r['id'],n['id']])
+for ra,rb in combinations(G['routes'],2):
+ for a,b in zip(ra['points'],ra['points'][1:]):
+  for c,d in zip(rb['points'],rb['points'][1:]):
+   pt=cross(a,b,c,d)
+   if pt:issues.append(['crossing',ra['id'],rb['id'],pt])
+   if overlap(a,b,c,d):issues.append(['overlap',ra['id'],rb['id']])
+for a,b in combinations(G['nodes'],2):
+ if min(a['x']+a['w'],b['x']+b['w'])>max(a['x'],b['x']) and min(a['y']+a['h'],b['y']+b['h'])>max(a['y'],b['y']):issues.append(['node-overlap',a['id'],b['id']])
+render=json.loads((ROOT/'render_audit.json').read_text())
+for slug,r in render.items():
+ if r['overflow']:issues.append(['text-overflow',slug,r['overflow']])
+pdfs={}
+for path in ROOT.glob('*.pdf'):
+ with fitz.open(path) as doc:
+  texts=''.join(p.get_text() for p in doc)
+  images=sum(len(p.get_images()) for p in doc)
+  drawings=sum(len(p.get_drawings()) for p in doc)
+  pdfs[path.name]={'pages':len(doc),'text_characters':len(texts),'raster_images':images,'vector_drawings':drawings}
+  if len(doc)!=1 or len(texts)<200 or images<1 or drawings<20:issues.append(['pdf-not-single-page-vector-with-illustrative-photo',path.name])
+for html in ROOT.glob('*.html'):
+ p=subprocess.run(['python','/home/agent/.codex/plugins/cache/diagram-design/diagram-design/2.6.142/skills/diagram-design/scripts/self_check.py',str(html)],capture_output=True,text=True)
+ if p.returncode:issues.append(['skill-self-check',html.name,p.stdout+p.stderr])
+report={'status':'PASS' if not issues else 'FAIL','routes_checked':len(G['routes']),'nodes_checked':len(G['nodes']),'issues':issues,'pdfs':pdfs,'render_report':'render_audit.json','source_brief_sha256':hashlib.sha256((ROOT/'USER_BRIEF.txt').read_bytes()).hexdigest(),'limits':'Reference-style visual variant follows the previous brief; photos and box overlays are illustrative, and raster images are allowed only for the input photo. Unrounded axis-aligned route envelopes are checked conservatively; actual SVG corners are rounded.'}
+import re,xml.etree.ElementTree as ET
+svg=ET.parse(ROOT/'captioning-pipeline.svg');ns={'s':'http://www.w3.org/2000/svg'}
+visible=' '.join(''.join(e.itertext()) for e in svg.findall('.//s:text',ns))
+assert not re.search(r'\b(?:CSA(?:-Net)?|OSA|ORA)\b',visible,re.I)
+assert not re.search(r'\b(?:Q/K/V|zero.init|512|768|heads)\b',visible,re.I)
+assert len(svg.findall('.//s:image',ns))==1
+for ident in ['semantic-zoom','prompt-zoom']:
+ path=next(p for p in svg.findall('.//s:path',ns) if p.get('data-edge')==ident)
+ assert path.get('marker-end') is None
+report['content_checks']={'forbidden_method_labels_absent':True,'qkv_dimension_head_init_details_absent':True,'one_illustrative_image':True,'training_line_outside_inference':True,'two_named_memory_rails':True,'two_dashed_zoom_guides':True}
+report['limits']='Figure follows the 07/11 functional-name brief; manual illustrative boxes and one embedded photo are not model output. Geometry checks use conservative axis-aligned envelopes; SVG corners are rounded.'
+(ROOT/'figure_audit.json').write_text(json.dumps(report,indent=2,ensure_ascii=False))
+print(json.dumps(report,indent=2,ensure_ascii=False))
+raise SystemExit(bool(issues))

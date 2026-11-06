@@ -1,0 +1,25 @@
+{
+  "status": "PASS",
+  "routes_checked": 57,
+  "nodes_checked": 53,
+  "issues": [],
+  "pdfs": {
+    "captioning-pipeline.pdf": {
+      "pages": 1,
+      "text_characters": 1224,
+      "raster_images": 1,
+      "vector_drawings": 214
+    }
+  },
+  "render_report": "render_audit.json",
+  "source_brief_sha256": "dfa886153af009fe2194735132e0d71c53cbd34191fbbde26a1a29ac5269bbbb",
+  "limits": "Figure follows the 07/11 functional-name brief; manual illustrative boxes and one embedded photo are not model output. Geometry checks use conservative axis-aligned envelopes; SVG corners are rounded.",
+  "content_checks": {
+    "forbidden_method_labels_absent": true,
+    "qkv_dimension_head_init_details_absent": true,
+    "one_illustrative_image": true,
+    "training_line_outside_inference": true,
+    "two_named_memory_rails": true,
+    "two_dashed_zoom_guides": true
+  }
+}

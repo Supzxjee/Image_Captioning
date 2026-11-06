@@ -1,0 +1,1385 @@
+{
+  "canvas": [
+    2560,
+    1344
+  ],
+  "nodes": [
+    {
+      "id": "clip-visual",
+      "x": 48,
+      "y": 688,
+      "w": 200,
+      "h": 80,
+      "kind": "node"
+    },
+    {
+      "id": "yolo",
+      "x": 280,
+      "y": 688,
+      "w": 176,
+      "h": 80,
+      "kind": "node"
+    },
+    {
+      "id": "patches",
+      "x": 48,
+      "y": 552,
+      "w": 200,
+      "h": 80,
+      "kind": "node"
+    },
+    {
+      "id": "boxes",
+      "x": 280,
+      "y": 552,
+      "w": 176,
+      "h": 80,
+      "kind": "node"
+    },
+    {
+      "id": "roi-pooling",
+      "x": 160,
+      "y": 416,
+      "w": 256,
+      "h": 80,
+      "kind": "node"
+    },
+    {
+      "id": "projection",
+      "x": 160,
+      "y": 280,
+      "w": 256,
+      "h": 80,
+      "kind": "node"
+    },
+    {
+      "id": "input-image",
+      "x": 80,
+      "y": 888,
+      "w": 264,
+      "h": 198,
+      "kind": "image"
+    },
+    {
+      "id": "v-main",
+      "x": 504,
+      "y": 224,
+      "w": 20,
+      "h": 32,
+      "kind": "tokens"
+    },
+    {
+      "id": "semantic-overview",
+      "x": 576,
+      "y": 180,
+      "w": 320,
+      "h": 112,
+      "kind": "node"
+    },
+    {
+      "id": "prompt-overview",
+      "x": 1104,
+      "y": 180,
+      "w": 336,
+      "h": 112,
+      "kind": "node"
+    },
+    {
+      "id": "vo-main",
+      "x": 968,
+      "y": 196,
+      "w": 20,
+      "h": 32,
+      "kind": "tokens"
+    },
+    {
+      "id": "vr-main",
+      "x": 968,
+      "y": 244,
+      "w": 20,
+      "h": 32,
+      "kind": "tokens"
+    },
+    {
+      "id": "noun-bank",
+      "x": 576,
+      "y": 504,
+      "w": 208,
+      "h": 80,
+      "kind": "node"
+    },
+    {
+      "id": "verb-bank",
+      "x": 824,
+      "y": 504,
+      "w": 224,
+      "h": 80,
+      "kind": "node"
+    },
+    {
+      "id": "noun-aggregation",
+      "x": 576,
+      "y": 632,
+      "w": 208,
+      "h": 80,
+      "kind": "node"
+    },
+    {
+      "id": "noun-prototypes",
+      "x": 670.0,
+      "y": 752,
+      "w": 20,
+      "h": 32,
+      "kind": "tokens"
+    },
+    {
+      "id": "verb-aggregation",
+      "x": 824,
+      "y": 632,
+      "w": 224,
+      "h": 80,
+      "kind": "node"
+    },
+    {
+      "id": "verb-prototypes",
+      "x": 926.0,
+      "y": 752,
+      "w": 20,
+      "h": 32,
+      "kind": "tokens"
+    },
+    {
+      "id": "object-fusion-1",
+      "x": 624,
+      "y": 824,
+      "w": 208,
+      "h": 64,
+      "kind": "node"
+    },
+    {
+      "id": "object-fusion-2",
+      "x": 624,
+      "y": 928,
+      "w": 208,
+      "h": 64,
+      "kind": "node"
+    },
+    {
+      "id": "relation-fusion",
+      "x": 824,
+      "y": 1072,
+      "w": 224,
+      "h": 64,
+      "kind": "node"
+    },
+    {
+      "id": "v-inset",
+      "x": 576,
+      "y": 840,
+      "w": 20,
+      "h": 32,
+      "kind": "tokens"
+    },
+    {
+      "id": "vo-inset",
+      "x": 864,
+      "y": 944,
+      "w": 20,
+      "h": 32,
+      "kind": "tokens"
+    },
+    {
+      "id": "vr-inset",
+      "x": 926,
+      "y": 1172,
+      "w": 20,
+      "h": 32,
+      "kind": "tokens"
+    },
+    {
+      "id": "upt",
+      "x": 1136,
+      "y": 504,
+      "w": 224,
+      "h": 64,
+      "kind": "node"
+    },
+    {
+      "id": "region-matching",
+      "x": 1416,
+      "y": 520,
+      "w": 176,
+      "h": 64,
+      "kind": "node"
+    },
+    {
+      "id": "phrases",
+      "x": 1136,
+      "y": 616,
+      "w": 224,
+      "h": 64,
+      "kind": "node"
+    },
+    {
+      "id": "clip-text",
+      "x": 1136,
+      "y": 728,
+      "w": 224,
+      "h": 64,
+      "kind": "node"
+    },
+    {
+      "id": "relation-text",
+      "x": 1214,
+      "y": 824,
+      "w": 20,
+      "h": 32,
+      "kind": "tokens"
+    },
+    {
+      "id": "object-text",
+      "x": 1250,
+      "y": 824,
+      "w": 20,
+      "h": 32,
+      "kind": "tokens"
+    },
+    {
+      "id": "object-slots",
+      "x": 1136,
+      "y": 944,
+      "w": 144,
+      "h": 64,
+      "kind": "node"
+    },
+    {
+      "id": "object-attention",
+      "x": 1320,
+      "y": 944,
+      "w": 128,
+      "h": 64,
+      "kind": "node"
+    },
+    {
+      "id": "object-sum",
+      "x": 1486,
+      "y": 958,
+      "w": 36,
+      "h": 36,
+      "kind": "sum"
+    },
+    {
+      "id": "object-updated",
+      "x": 1568,
+      "y": 960,
+      "w": 20,
+      "h": 32,
+      "kind": "tokens"
+    },
+    {
+      "id": "relation-slots",
+      "x": 1136,
+      "y": 1104,
+      "w": 144,
+      "h": 64,
+      "kind": "node"
+    },
+    {
+      "id": "relation-attention",
+      "x": 1320,
+      "y": 1104,
+      "w": 128,
+      "h": 64,
+      "kind": "node"
+    },
+    {
+      "id": "relation-sum",
+      "x": 1486,
+      "y": 1118,
+      "w": 36,
+      "h": 36,
+      "kind": "sum"
+    },
+    {
+      "id": "relation-updated",
+      "x": 1568,
+      "y": 1120,
+      "w": 20,
+      "h": 32,
+      "kind": "tokens"
+    },
+    {
+      "id": "gated-ffn",
+      "x": 1696,
+      "y": 236,
+      "w": 256,
+      "h": 64,
+      "kind": "node"
+    },
+    {
+      "id": "parallel-attention",
+      "x": 1696,
+      "y": 332,
+      "w": 256,
+      "h": 88,
+      "kind": "node"
+    },
+    {
+      "id": "masked-self-attention",
+      "x": 1696,
+      "y": 452,
+      "w": 256,
+      "h": 48,
+      "kind": "node"
+    },
+    {
+      "id": "embedding",
+      "x": 1696,
+      "y": 576,
+      "w": 256,
+      "h": 64,
+      "kind": "node"
+    },
+    {
+      "id": "prefix",
+      "x": 1696,
+      "y": 696,
+      "w": 256,
+      "h": 64,
+      "kind": "node"
+    },
+    {
+      "id": "vo-decoder",
+      "x": 1592,
+      "y": 328,
+      "w": 20,
+      "h": 32,
+      "kind": "tokens"
+    },
+    {
+      "id": "vr-decoder",
+      "x": 1592,
+      "y": 384,
+      "w": 20,
+      "h": 32,
+      "kind": "tokens"
+    },
+    {
+      "id": "vocab",
+      "x": 2016,
+      "y": 236,
+      "w": 224,
+      "h": 64,
+      "kind": "node"
+    },
+    {
+      "id": "beam",
+      "x": 2304,
+      "y": 236,
+      "w": 224,
+      "h": 64,
+      "kind": "node"
+    },
+    {
+      "id": "candidates",
+      "x": 2304,
+      "y": 344,
+      "w": 212,
+      "h": 48,
+      "kind": "tokens"
+    },
+    {
+      "id": "likelihood",
+      "x": 2032,
+      "y": 520,
+      "w": 144,
+      "h": 88,
+      "kind": "node"
+    },
+    {
+      "id": "alignment",
+      "x": 2200,
+      "y": 520,
+      "w": 144,
+      "h": 88,
+      "kind": "node"
+    },
+    {
+      "id": "consistency",
+      "x": 2368,
+      "y": 520,
+      "w": 144,
+      "h": 88,
+      "kind": "node"
+    },
+    {
+      "id": "select",
+      "x": 2144,
+      "y": 648,
+      "w": 256,
+      "h": 56,
+      "kind": "node"
+    },
+    {
+      "id": "final-caption",
+      "x": 2208,
+      "y": 824,
+      "w": 320,
+      "h": 72,
+      "kind": "node"
+    }
+  ],
+  "routes": [
+    {
+      "id": "image-clip",
+      "points": [
+        [
+          148,
+          888
+        ],
+        [
+          148,
+          768
+        ]
+      ],
+      "src": "input-image",
+      "dst": "clip-visual"
+    },
+    {
+      "id": "image-yolo",
+      "points": [
+        [
+          316,
+          888
+        ],
+        [
+          368,
+          888
+        ],
+        [
+          368,
+          768
+        ]
+      ],
+      "src": "input-image",
+      "dst": "yolo"
+    },
+    {
+      "id": "clip-patches",
+      "points": [
+        [
+          148,
+          688
+        ],
+        [
+          148,
+          632
+        ]
+      ],
+      "src": "clip-visual",
+      "dst": "patches"
+    },
+    {
+      "id": "yolo-boxes",
+      "points": [
+        [
+          368,
+          688
+        ],
+        [
+          368,
+          632
+        ]
+      ],
+      "src": "yolo",
+      "dst": "boxes"
+    },
+    {
+      "id": "patches-pool",
+      "points": [
+        [
+          148,
+          552
+        ],
+        [
+          148,
+          520
+        ],
+        [
+          224,
+          520
+        ],
+        [
+          224,
+          496
+        ]
+      ],
+      "src": "patches",
+      "dst": "roi-pooling"
+    },
+    {
+      "id": "boxes-pool",
+      "points": [
+        [
+          368,
+          552
+        ],
+        [
+          368,
+          496
+        ]
+      ],
+      "src": "boxes",
+      "dst": "roi-pooling"
+    },
+    {
+      "id": "pool-projection",
+      "points": [
+        [
+          288,
+          416
+        ],
+        [
+          288,
+          360
+        ]
+      ],
+      "src": "roi-pooling",
+      "dst": "projection"
+    },
+    {
+      "id": "projection-v",
+      "points": [
+        [
+          416,
+          320
+        ],
+        [
+          514,
+          320
+        ],
+        [
+          514,
+          256
+        ]
+      ],
+      "src": "projection",
+      "dst": "v-main"
+    },
+    {
+      "id": "v-semantic",
+      "points": [
+        [
+          524,
+          236
+        ],
+        [
+          576,
+          236
+        ]
+      ],
+      "src": "v-main",
+      "dst": "semantic-overview"
+    },
+    {
+      "id": "vo-from-fusion",
+      "points": [
+        [
+          896,
+          212
+        ],
+        [
+          968,
+          212
+        ]
+      ],
+      "src": "semantic-overview",
+      "dst": "vo-main"
+    },
+    {
+      "id": "vo-into-conditioning",
+      "points": [
+        [
+          988,
+          212
+        ],
+        [
+          1104,
+          212
+        ]
+      ],
+      "src": "vo-main",
+      "dst": "prompt-overview"
+    },
+    {
+      "id": "vr-from-fusion",
+      "points": [
+        [
+          896,
+          260
+        ],
+        [
+          968,
+          260
+        ]
+      ],
+      "src": "semantic-overview",
+      "dst": "vr-main"
+    },
+    {
+      "id": "vr-into-conditioning",
+      "points": [
+        [
+          988,
+          260
+        ],
+        [
+          1104,
+          260
+        ]
+      ],
+      "src": "vr-main",
+      "dst": "prompt-overview"
+    },
+    {
+      "id": "semantic-zoom",
+      "points": [
+        [
+          736,
+          292
+        ],
+        [
+          736,
+          352
+        ],
+        [
+          812,
+          352
+        ],
+        [
+          812,
+          416
+        ]
+      ],
+      "src": null,
+      "dst": null
+    },
+    {
+      "id": "prompt-zoom",
+      "points": [
+        [
+          1272,
+          292
+        ],
+        [
+          1272,
+          352
+        ],
+        [
+          1384,
+          352
+        ],
+        [
+          1384,
+          416
+        ]
+      ],
+      "src": null,
+      "dst": null
+    },
+    {
+      "id": "noun-bank-aggregate",
+      "points": [
+        [
+          680.0,
+          584
+        ],
+        [
+          680.0,
+          632
+        ]
+      ],
+      "src": "noun-bank",
+      "dst": "noun-aggregation"
+    },
+    {
+      "id": "noun-aggregate-prototypes",
+      "points": [
+        [
+          680.0,
+          712
+        ],
+        [
+          680.0,
+          752
+        ]
+      ],
+      "src": "noun-aggregation",
+      "dst": "noun-prototypes"
+    },
+    {
+      "id": "verb-bank-aggregate",
+      "points": [
+        [
+          936.0,
+          584
+        ],
+        [
+          936.0,
+          632
+        ]
+      ],
+      "src": "verb-bank",
+      "dst": "verb-aggregation"
+    },
+    {
+      "id": "verb-aggregate-prototypes",
+      "points": [
+        [
+          936.0,
+          712
+        ],
+        [
+          936.0,
+          752
+        ]
+      ],
+      "src": "verb-aggregation",
+      "dst": "verb-prototypes"
+    },
+    {
+      "id": "v-object1",
+      "points": [
+        [
+          596,
+          856
+        ],
+        [
+          624,
+          856
+        ]
+      ],
+      "src": "v-inset",
+      "dst": "object-fusion-1"
+    },
+    {
+      "id": "noun-object1",
+      "points": [
+        [
+          680,
+          784
+        ],
+        [
+          680,
+          824
+        ]
+      ],
+      "src": "noun-prototypes",
+      "dst": "object-fusion-1"
+    },
+    {
+      "id": "object1-object2",
+      "points": [
+        [
+          728,
+          888
+        ],
+        [
+          728,
+          928
+        ]
+      ],
+      "src": "object-fusion-1",
+      "dst": "object-fusion-2"
+    },
+    {
+      "id": "object2-vo",
+      "points": [
+        [
+          832,
+          960
+        ],
+        [
+          864,
+          960
+        ]
+      ],
+      "src": "object-fusion-2",
+      "dst": "vo-inset"
+    },
+    {
+      "id": "vo-relation",
+      "points": [
+        [
+          874,
+          976
+        ],
+        [
+          874,
+          1072
+        ]
+      ],
+      "src": "vo-inset",
+      "dst": "relation-fusion"
+    },
+    {
+      "id": "verb-relation",
+      "points": [
+        [
+          936,
+          784
+        ],
+        [
+          936,
+          1072
+        ]
+      ],
+      "src": "verb-prototypes",
+      "dst": "relation-fusion"
+    },
+    {
+      "id": "relation-vr",
+      "points": [
+        [
+          936,
+          1136
+        ],
+        [
+          936,
+          1172
+        ]
+      ],
+      "src": "relation-fusion",
+      "dst": "vr-inset"
+    },
+    {
+      "id": "yolo-region-matching",
+      "points": [
+        [
+          1504,
+          496
+        ],
+        [
+          1504,
+          520
+        ]
+      ],
+      "src": null,
+      "dst": "region-matching"
+    },
+    {
+      "id": "upt-matching",
+      "points": [
+        [
+          1360,
+          536
+        ],
+        [
+          1416,
+          536
+        ]
+      ],
+      "src": "upt",
+      "dst": "region-matching"
+    },
+    {
+      "id": "upt-phrases",
+      "points": [
+        [
+          1248,
+          568
+        ],
+        [
+          1248,
+          616
+        ]
+      ],
+      "src": "upt",
+      "dst": "phrases"
+    },
+    {
+      "id": "phrases-clip",
+      "points": [
+        [
+          1248,
+          680
+        ],
+        [
+          1248,
+          728
+        ]
+      ],
+      "src": "phrases",
+      "dst": "clip-text"
+    },
+    {
+      "id": "clip-embeddings",
+      "points": [
+        [
+          1248,
+          792
+        ],
+        [
+          1248,
+          812
+        ]
+      ],
+      "src": "clip-text",
+      "dst": null
+    },
+    {
+      "id": "object-slots-attention",
+      "points": [
+        [
+          1280,
+          976
+        ],
+        [
+          1320,
+          976
+        ]
+      ],
+      "src": "object-slots",
+      "dst": "object-attention"
+    },
+    {
+      "id": "object-attention-residual",
+      "points": [
+        [
+          1448,
+          976
+        ],
+        [
+          1486,
+          976
+        ]
+      ],
+      "src": "object-attention",
+      "dst": "object-sum"
+    },
+    {
+      "id": "object-updated-memory",
+      "points": [
+        [
+          1522,
+          976
+        ],
+        [
+          1568,
+          976
+        ]
+      ],
+      "src": "object-sum",
+      "dst": "object-updated"
+    },
+    {
+      "id": "object-residual",
+      "points": [
+        [
+          1504,
+          930
+        ],
+        [
+          1504,
+          958
+        ]
+      ],
+      "src": null,
+      "dst": "object-sum"
+    },
+    {
+      "id": "relation-slots-attention",
+      "points": [
+        [
+          1280,
+          1136
+        ],
+        [
+          1320,
+          1136
+        ]
+      ],
+      "src": "relation-slots",
+      "dst": "relation-attention"
+    },
+    {
+      "id": "relation-attention-residual",
+      "points": [
+        [
+          1448,
+          1136
+        ],
+        [
+          1486,
+          1136
+        ]
+      ],
+      "src": "relation-attention",
+      "dst": "relation-sum"
+    },
+    {
+      "id": "relation-updated-memory",
+      "points": [
+        [
+          1522,
+          1136
+        ],
+        [
+          1568,
+          1136
+        ]
+      ],
+      "src": "relation-sum",
+      "dst": "relation-updated"
+    },
+    {
+      "id": "relation-residual",
+      "points": [
+        [
+          1504,
+          1090
+        ],
+        [
+          1504,
+          1118
+        ]
+      ],
+      "src": null,
+      "dst": "relation-sum"
+    },
+    {
+      "id": "matching-object-slots",
+      "points": [
+        [
+          1592,
+          552
+        ],
+        [
+          1616,
+          552
+        ],
+        [
+          1616,
+          1020
+        ],
+        [
+          1248,
+          1020
+        ],
+        [
+          1248,
+          1008
+        ]
+      ],
+      "src": "region-matching",
+      "dst": "object-slots"
+    },
+    {
+      "id": "matching-relation-slots",
+      "points": [
+        [
+          1592,
+          528
+        ],
+        [
+          1624,
+          528
+        ],
+        [
+          1624,
+          1200
+        ],
+        [
+          1248,
+          1200
+        ],
+        [
+          1248,
+          1168
+        ]
+      ],
+      "src": "region-matching",
+      "dst": "relation-slots"
+    },
+    {
+      "id": "object-text-slots",
+      "points": [
+        [
+          1260,
+          856
+        ],
+        [
+          1260,
+          872
+        ],
+        [
+          1120,
+          872
+        ],
+        [
+          1120,
+          972
+        ],
+        [
+          1136,
+          972
+        ]
+      ],
+      "src": "object-text",
+      "dst": "object-slots"
+    },
+    {
+      "id": "relation-text-slots",
+      "points": [
+        [
+          1224,
+          856
+        ],
+        [
+          1224,
+          864
+        ],
+        [
+          1116,
+          864
+        ],
+        [
+          1116,
+          1132
+        ],
+        [
+          1136,
+          1132
+        ]
+      ],
+      "src": "relation-text",
+      "dst": "relation-slots"
+    },
+    {
+      "id": "prefix-embedding",
+      "points": [
+        [
+          1824,
+          696
+        ],
+        [
+          1824,
+          640
+        ]
+      ],
+      "src": "prefix",
+      "dst": "embedding"
+    },
+    {
+      "id": "embedding-decoder",
+      "points": [
+        [
+          1824,
+          576
+        ],
+        [
+          1824,
+          500
+        ]
+      ],
+      "src": "embedding",
+      "dst": "masked-self-attention"
+    },
+    {
+      "id": "self-parallel",
+      "points": [
+        [
+          1824,
+          452
+        ],
+        [
+          1824,
+          420
+        ]
+      ],
+      "src": "masked-self-attention",
+      "dst": "parallel-attention"
+    },
+    {
+      "id": "parallel-gated",
+      "points": [
+        [
+          1824,
+          332
+        ],
+        [
+          1824,
+          300
+        ]
+      ],
+      "src": "parallel-attention",
+      "dst": "gated-ffn"
+    },
+    {
+      "id": "vo-conditioned-output",
+      "points": [
+        [
+          1440,
+          212
+        ],
+        [
+          1504,
+          212
+        ],
+        [
+          1504,
+          344
+        ],
+        [
+          1592,
+          344
+        ]
+      ],
+      "src": "prompt-overview",
+      "dst": "vo-decoder"
+    },
+    {
+      "id": "vo-decoder-input",
+      "points": [
+        [
+          1612,
+          344
+        ],
+        [
+          1696,
+          344
+        ]
+      ],
+      "src": "vo-decoder",
+      "dst": "parallel-attention"
+    },
+    {
+      "id": "vr-conditioned-output",
+      "points": [
+        [
+          1440,
+          260
+        ],
+        [
+          1472,
+          260
+        ],
+        [
+          1472,
+          400
+        ],
+        [
+          1592,
+          400
+        ]
+      ],
+      "src": "prompt-overview",
+      "dst": "vr-decoder"
+    },
+    {
+      "id": "vr-decoder-input",
+      "points": [
+        [
+          1612,
+          400
+        ],
+        [
+          1696,
+          400
+        ]
+      ],
+      "src": "vr-decoder",
+      "dst": "parallel-attention"
+    },
+    {
+      "id": "decoder-vocab",
+      "points": [
+        [
+          1952,
+          268
+        ],
+        [
+          2016,
+          268
+        ]
+      ],
+      "src": "gated-ffn",
+      "dst": "vocab"
+    },
+    {
+      "id": "vocab-beam",
+      "points": [
+        [
+          2240,
+          268
+        ],
+        [
+          2304,
+          268
+        ]
+      ],
+      "src": "vocab",
+      "dst": "beam"
+    },
+    {
+      "id": "beam-candidates",
+      "points": [
+        [
+          2416,
+          300
+        ],
+        [
+          2416,
+          344
+        ]
+      ],
+      "src": "beam",
+      "dst": "candidates"
+    },
+    {
+      "id": "candidate-rerank",
+      "points": [
+        [
+          2416,
+          392
+        ],
+        [
+          2416,
+          440
+        ]
+      ],
+      "src": "candidates",
+      "dst": null
+    },
+    {
+      "id": "evidence-rerank",
+      "points": [
+        [
+          2096,
+          772
+        ],
+        [
+          2096,
+          728
+        ]
+      ],
+      "src": null,
+      "dst": null
+    },
+    {
+      "id": "rerank-final",
+      "points": [
+        [
+          2368,
+          728
+        ],
+        [
+          2368,
+          824
+        ]
+      ],
+      "src": null,
+      "dst": "final-caption"
+    }
+  ]
+}

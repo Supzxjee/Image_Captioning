@@ -1,0 +1,176 @@
+Hãy vẽ lại pipeline mô hình chú thích ảnh theo phong cách hình kiến trúc trong bài báo khoa học, tham khảo bố cục của ảnh mẫu tôi gửi.
+
+Mục tiêu là làm rõ luồng xử lý bằng hình khối, token màu và mũi tên. Không tạo một sơ đồ chứa quá nhiều chữ.
+
+QUY TẮC ĐẶT TÊN
+- Không dùng “CSA”, “CSA-Net”, “OSA”, “ORA” hoặc tên viết tắt của phương pháp khác trong hình.
+- Dùng tên mô tả chức năng của từng module.
+- Việc đổi tên chỉ để trình bày rõ kiến trúc đang triển khai, không được tự thêm cơ chế hoặc gợi ý rằng mọi thành phần đều là đóng góp mới.
+
+BỐ CỤC
+Chia thành ba vùng, giống cách tổ chức của hình mẫu:
+
+1. Bên trái: ảnh và trích xuất đặc trưng.
+2. Chính giữa: luồng căn chỉnh ở trên, hai khung phóng to cơ chế ở dưới.
+3. Bên phải: sinh và lựa chọn caption.
+
+Dùng nền trắng, nét mảnh, màu pastel nhẹ. Tên module bằng tiếng Anh, ngắn gọn. Chỉ ghi thông tin cần thiết trong hình; giải thích dài đưa xuống caption.
+
+LUỒNG CHÍNH PHÍA TRÊN
+
+Input image
+→ Visual region extraction
+→ Cascaded semantic fusion
+→ Region-linked prompt conditioning
+→ Transformer decoder
+→ Five candidate captions
+→ Caption reranking
+→ Final caption.
+
+Đây là các khối tổng quan. Hai khối giữa phải được nối bằng nét đứt tới phần phóng to bên dưới.
+
+VÙNG TRÁI — VISUAL REGION EXTRACTION
+
+Cùng một ảnh đi vào:
+- Frozen CLIP visual encoder → patch features.
+- YOLO detector → bounding boxes.
+
+Patch features + bounding boxes
+→ ROI pooling
+→ Linear projection
+→ region tokens V.
+
+Dùng một ảnh có box minh họa và một dãy token để biểu diễn đầu ra. Không cần ghi kích thước tensor ở hình chính.
+
+KHUNG PHÓNG TO THỨ NHẤT
+Tên: “Semantic bank–region alignment”
+
+Thể hiện hai nguồn ngữ nghĩa toàn cục:
+- TRAIN noun bank.
+- TRAIN verb bank.
+
+Các bank được tạo bằng CLIP text encoder giữ cố định.
+Mỗi bank đi qua “Learned semantic aggregation” để tạo semantic prototypes.
+
+Luồng xử lý đúng:
+V + noun prototypes
+→ Object fusion 1
+→ Object fusion 2
+→ object memory Vo.
+
+Vo + verb prototypes
+→ Relation fusion
+→ relation memory Vr.
+
+Giữ hai memory riêng biệt, thể hiện bằng hai dãy token khác màu.
+
+Trong một fusion block, có thể vẽ ngắn:
+Visual self-attention
+→ Semantic cross-attention
+→ Gated fusion.
+
+Các residual, normalization và FFN được gói trong block, không cần vẽ hết.
+Có thể dùng ma trận nhỏ minh họa liên kết prototype–region, nhưng ghi rõ đây là minh họa, không phải attention đo được.
+
+KHUNG PHÓNG TO THỨ HAI
+Tên: “Image-specific prompt–region alignment”
+
+Ảnh
+→ UPT interaction detector
+→ object phrases và relation phrases
+→ Frozen CLIP text encoder
+→ prompt embeddings.
+
+Song song:
+UPT boxes + YOLO boxes
+→ Region matching
+→ object-to-region links và ordered subject–object links.
+
+Chỉ những prompt nối được với ROI hợp lệ mới được dùng.
+
+Tách hai nhánh gọn:
+
+Object phrase + linked object region
+→ Object prompt adapter
+→ updated object memory Vo′.
+
+Relation phrase + linked subject/object regions
+→ Relation prompt adapter
+→ updated relation memory Vr′.
+
+Trong mỗi adapter chỉ cần thể hiện:
+Linked text–region slots
+→ Masked attention
+→ Residual update.
+
+Giữ một đường cộng residual bằng ký hiệu ⊕.
+Không ghi Q/K/V, kích thước tensor, số head, zero-init hoặc các chuỗi vector dài trong hình tổng quan.
+
+QUAN TRỌNG VỀ KIẾN TRÚC
+- Bank danh từ/động từ là nguồn ngữ nghĩa toàn cục, khác với prompt riêng của từng ảnh.
+- Hai prompt adapters nằm SAU các bước semantic fusion.
+- Relation adapter lấy đặc trưng subject/object từ Vo gốc.
+- Vo′ và Vr′ đi riêng vào decoder.
+- Không tự thêm đường prompt đi trực tiếp vào decoder.
+- Không biến kiến trúc thành một phương pháp khác chỉ để giống hình mẫu.
+
+VÙNG PHẢI — CAPTION GENERATION AND SELECTION
+
+Token prefix
+→ Embedding + positional encoding
+→ Transformer decoder ×3.
+
+Bên trong decoder chỉ cần:
+Masked self-attention
+→ Parallel cross-attention
+→ Gated fusion + FFN.
+
+Parallel cross-attention đọc riêng hai memory Vo′ và Vr′.
+
+Sau decoder:
+Vocabulary projection + Softmax
+→ Beam search, K=5
+→ Five candidate captions
+→ Caption reranking
+→ Final caption.
+
+Reranking nhận:
+- Decoder likelihood.
+- Image–text alignment.
+- Object consistency.
+
+Trong hình tổng quan chỉ ghi ba thành phần này, không cần nhét công thức chuẩn hóa.
+Ảnh và nhãn YOLO là đầu vào phụ của bước chấm điểm.
+
+PHẦN HUẤN LUYỆN
+Không đưa SCST và CE vào chuỗi suy luận như những module xử lý caption.
+Chỉ ghi một dòng nhỏ:
+“Training: cross-entropy pretraining followed by SCST + cross-entropy.”
+
+Nếu cần giải thích loss, tạo hình huấn luyện RIÊNG, không nhồi vào hình này.
+
+YÊU CẦU VỀ ĐƯỜNG NỐI
+- Đọc được theo luồng trái → phải.
+- Hạn chế dây dài hoặc giao nhau.
+- Khung phóng to liên kết với khối tổng quan bằng nét đứt.
+- Khi phải lặp token memory để tránh dây chéo, dùng cùng ký hiệu và màu.
+- Các box chỉ có một hoặc hai dòng chữ.
+- Tránh lặp lại ảnh đầu vào nếu không cần thiết.
+
+ẢNH VÀ CÂU MINH HỌA
+Có thể dùng ảnh minh họa cùng các cụm như “person”, “bicycle”, “person riding a bicycle”, nhưng phải ghi trong caption rằng đây là ví dụ minh họa, không phải đầu ra thực nghiệm đã xác minh.
+
+ĐẦU RA
+1. SVG có thể chỉnh sửa.
+2. PDF vector.
+3. PNG rõ nét.
+4. Caption tiếng Việt ngắn giải thích hình.
+5. Ghi riêng các chi tiết đã được giản lược.
+
+Trước khi xuất, kiểm tra:
+- Không còn tên CSA/CSA-Net/OSA/ORA.
+- Có cả semantic banks và image-specific prompts.
+- Hai prompt adapters ở đúng vị trí sau semantic fusion.
+- Decoder nhận riêng Vo′ và Vr′.
+- Không có chữ tràn, mũi tên xuyên box hoặc sơ đồ quá dày.
+- Hình vẫn đọc được khi đặt ngang chiều rộng một trang bài báo.

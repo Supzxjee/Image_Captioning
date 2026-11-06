@@ -1,0 +1,14 @@
+{
+  "date": "2026-11-07",
+  "timezone": "Asia/Bangkok",
+  "base_commit": "ed8fff3412b80c0cfefa5424f38a15b940744da2",
+  "primary_source": "USER_BRIEF.txt",
+  "brief_sha256": "dfa886153af009fe2194735132e0d71c53cbd34191fbbde26a1a29ac5269bbbb",
+  "photo": "docs/csa_pipeline_2026-11-02/v3/assets/COCO_train2014_000000263974.jpg",
+  "photo_sha256": "f208e31d4f689c88f1c0a6a1c583f1413c86424b10c52d62b8b6d3e2360e7406",
+  "primitives_file": "../upt_csa_architecture_2026-11-06/build_figure.py",
+  "primitives_sha256": "1a5a24749b38dce9616241de62467fa5cc5e763232250ea1e67cff56784763f6",
+  "skill": "diagram-design 2.6.142",
+  "changes": "Functional naming and a main overview with two mechanism zooms, no architecture change.",
+  "model_scorer_notebook_execution": false
+}
