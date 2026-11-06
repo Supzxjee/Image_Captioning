@@ -1,0 +1,222 @@
+{
+  "status": "PROMPT_SCST_STORED_OUTPUT_REVIEW_COMPLETE",
+  "checks": 162,
+  "arms": {
+    "CONTROL": {
+      "save_version": 180,
+      "archive_sha256": "c49533570cc6a8565fbd3b5a53a34f3e2c364159873580d3b8c569c3b2db4693",
+      "checkpoint_sha256": "10d18a66e4e01ae7dba97802750a6a57f4305b904949f0cc50fdc368772cebd4",
+      "metrics": {
+        "original": {
+          "decoder_rank0": {
+            "CIDEr": 0.9945869315089895,
+            "Bleu_4": 0.3298777391810642,
+            "ROUGE_L": 0.5326959007118567,
+            "CHAIRs": 0.066,
+            "CHAIRi": 0.04823644221385752,
+            "Recall": 0.39766449020592665,
+            "counts": {
+              "images": 5000,
+              "hallucinated_captions": 330,
+              "hallucinated_mentions": 346,
+              "object_mentions": 7173,
+              "recalled_unique": 6334,
+              "reference_unique": 15928
+            },
+            "NLL": 2.4482110634978933,
+            "mean_words": 8.1054,
+            "short_le2": 413
+          },
+          "fixed_rerank": {
+            "CIDEr": 1.0758065043364915,
+            "Bleu_4": 0.3460532088135452,
+            "ROUGE_L": 0.5539778680335543,
+            "CHAIRs": 0.052,
+            "CHAIRi": 0.03418477570212225,
+            "Recall": 0.4284279256654947,
+            "counts": {
+              "images": 5000,
+              "hallucinated_captions": 260,
+              "hallucinated_mentions": 269,
+              "object_mentions": 7869,
+              "recalled_unique": 6824,
+              "reference_unique": 15928
+            },
+            "NLL": 2.4482110634978933,
+            "mean_words": 8.9822,
+            "short_le2": 89
+          },
+          "changed_captions": 2972
+        },
+        "end": {
+          "decoder_rank0": {
+            "CIDEr": 1.0518206838735409,
+            "Bleu_4": 0.3477854152597873,
+            "ROUGE_L": 0.5421923413109451,
+            "CHAIRs": 0.055,
+            "CHAIRi": 0.04043654680285434,
+            "Recall": 0.40300100452034154,
+            "counts": {
+              "images": 5000,
+              "hallucinated_captions": 275,
+              "hallucinated_mentions": 289,
+              "object_mentions": 7147,
+              "recalled_unique": 6419,
+              "reference_unique": 15928
+            },
+            "NLL": 2.3974220430689623,
+            "mean_words": 8.322,
+            "short_le2": 425
+          },
+          "fixed_rerank": {
+            "CIDEr": 1.1425220628550852,
+            "Bleu_4": 0.3644874153842396,
+            "ROUGE_L": 0.5655353803392843,
+            "CHAIRs": 0.0446,
+            "CHAIRi": 0.029824114198317615,
+            "Recall": 0.4359618282270216,
+            "counts": {
+              "images": 5000,
+              "hallucinated_captions": 223,
+              "hallucinated_mentions": 234,
+              "object_mentions": 7846,
+              "recalled_unique": 6944,
+              "reference_unique": 15928
+            },
+            "NLL": 2.3974220430689623,
+            "mean_words": 9.1692,
+            "short_le2": 67
+          },
+          "changed_captions": 3061
+        }
+      },
+      "worker_seconds": 5813.349909079
+    },
+    "PROMPT": {
+      "save_version": 60,
+      "archive_sha256": "bce34142bc69c800f5a58dbd1e9386529f0dd887418ff59b266685e997900ff9",
+      "checkpoint_sha256": "be2759b4a6f57af9bf8baeb13ee097bae2d8703d265b0791d9d39bb9c3dcbc63",
+      "metrics": {
+        "original": {
+          "decoder_rank0": {
+            "CIDEr": 0.9884528187965552,
+            "Bleu_4": 0.32308294681506483,
+            "ROUGE_L": 0.5299312096341523,
+            "CHAIRs": 0.044,
+            "CHAIRi": 0.03145084096813893,
+            "Recall": 0.4053867403314917,
+            "counts": {
+              "images": 5000,
+              "hallucinated_captions": 220,
+              "hallucinated_mentions": 230,
+              "object_mentions": 7313,
+              "recalled_unique": 6457,
+              "reference_unique": 15928
+            },
+            "NLL": 2.5162846554651717,
+            "mean_words": 7.7278,
+            "short_le2": 532
+          },
+          "fixed_rerank": {
+            "CIDEr": 1.0785295176858343,
+            "Bleu_4": 0.3445219320121369,
+            "ROUGE_L": 0.5555542061158738,
+            "CHAIRs": 0.0324,
+            "CHAIRi": 0.020724125320004876,
+            "Recall": 0.44305625313912606,
+            "counts": {
+              "images": 5000,
+              "hallucinated_captions": 162,
+              "hallucinated_mentions": 170,
+              "object_mentions": 8203,
+              "recalled_unique": 7057,
+              "reference_unique": 15928
+            },
+            "NLL": 2.5162846554651717,
+            "mean_words": 8.9944,
+            "short_le2": 107
+          },
+          "changed_captions": 3188
+        },
+        "end": {
+          "decoder_rank0": {
+            "CIDEr": 1.0583651905121678,
+            "Bleu_4": 0.3484809633300911,
+            "ROUGE_L": 0.5434731192458938,
+            "CHAIRs": 0.0406,
+            "CHAIRi": 0.028551724137931035,
+            "Recall": 0.41442742340532396,
+            "counts": {
+              "images": 5000,
+              "hallucinated_captions": 203,
+              "hallucinated_mentions": 207,
+              "object_mentions": 7250,
+              "recalled_unique": 6601,
+              "reference_unique": 15928
+            },
+            "NLL": 2.423685141331236,
+            "mean_words": 8.1488,
+            "short_le2": 450
+          },
+          "fixed_rerank": {
+            "CIDEr": 1.1380042073490821,
+            "Bleu_4": 0.3628308543006039,
+            "ROUGE_L": 0.5656794197258752,
+            "CHAIRs": 0.0302,
+            "CHAIRi": 0.019274092615769713,
+            "Recall": 0.4459442491210447,
+            "counts": {
+              "images": 5000,
+              "hallucinated_captions": 151,
+              "hallucinated_mentions": 154,
+              "object_mentions": 7990,
+              "recalled_unique": 7103,
+              "reference_unique": 15928
+            },
+            "NLL": 2.423685141331236,
+            "mean_words": 9.0682,
+            "short_le2": 76
+          },
+          "changed_captions": 3035
+        }
+      },
+      "worker_seconds": 6474.931807971
+    }
+  },
+  "paired_prompt_minus_control": {
+    "decoder_rank0": {
+      "CIDEr_points": 0.6544506638626751,
+      "CHAIRs_pp": -1.44,
+      "CI95": [
+        [
+          -0.7351772653150791,
+          -2.08
+        ],
+        [
+          2.08637987294636,
+          -0.8200000000000001
+        ]
+      ]
+    },
+    "fixed_rerank": {
+      "CIDEr_points": -0.45178555060029796,
+      "CHAIRs_pp": -1.44,
+      "CI95": [
+        [
+          -1.7919373777456022,
+          -2.02
+        ],
+        [
+          0.964869475310965,
+          -0.8999999999999999
+        ]
+      ]
+    }
+  },
+  "limits": [
+    "One seed/reused VALID, conditional fixed-IDF bootstrap.",
+    "C10/P9 initial XE histories unequal; text-only causal effect not isolated.",
+    "No author model/scorer execution; binary checkpoint bytes absent review ZIP.",
+    "Selector membership and all20000 fixed choices replayed; CLIP forwards and official metrics not independently rerun."
+  ]
+}
