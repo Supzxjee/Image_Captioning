@@ -95,7 +95,7 @@ try:
             route="from types import SimpleNamespace;from unittest.mock import patch;from kaggle.api.kaggle_api_extended import KaggleApi;import tempfile;api=KaggleApi();source="+repr(KERNEL_VERSION)+";owner,slug,version=source.split('/');ctx=tempfile.TemporaryDirectory();root=ctx.__enter__();p=patch.object(api,'build_kaggle_client');f=p.__enter__();ep=f.return_value.__enter__.return_value.kernels.kernels_api_client.list_kernel_session_output;ep.return_value=SimpleNamespace(files=[],next_page_token=None,log=None);api.kernels_output(source,path=root);r=ep.call_args.args[0];assert (r.user_name,r.kernel_slug,r.version_label)==(owner,slug,'v'+version);p.__exit__(None,None,None);ctx.__exit__(None,None,None);print('Exact own-version API route PASS')"
             run([sys.executable,'-c',route],60,api_env)
             downloaded=OUTPUT/'saved_inputs';downloaded.mkdir()
-            pattern=r'(^|/)(test_references\.json|test_lock\.json|run_status\.json|result\.json|normal_captions\.json|fixed_rerank_captions\.json)$'
+            pattern=r'(^|/)(test_references[.]json|test_lock[.]json|run_status[.]json|result[.]json|normal_captions[.]json|fixed_rerank_captions[.]json)$'
             run([sys.executable,'-c','from kaggle.cli import main;main()','kernels','output',KERNEL_VERSION,'-p',downloaded,'--file-pattern',pattern],900,api_env)
             SOURCE_ROOT=str(downloaded)
         finally:

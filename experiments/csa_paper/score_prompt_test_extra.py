@@ -102,7 +102,7 @@ def environment(out):
     lib = spice_dir / 'lib'
     lib.mkdir(exist_ok=True)
     archive = assets / 'corenlp.zip'
-    download('https://nlp.stanford.edu/software/stanford-corenlp-full-2015-12-09.zip', archive)
+    download('https://downloads.cs.stanford.edu/nlp/software/stanford-corenlp-full-2015-12-09.zip', archive)
     for suffix in ('.jar', '-models.jar'):
         name = 'stanford-corenlp-3.6.0' + suffix
         member = 'stanford-corenlp-full-2015-12-09/' + name

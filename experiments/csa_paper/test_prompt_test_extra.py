@@ -77,6 +77,26 @@ class Checks(unittest.TestCase):
             combine(self.root, 'CONTROL', self.manifest)
         self.assertFalse((self.root/'metrics_x100.csv').exists())
 
+    def test_complete_export_has_eight_metrics_and_scales(self):
+        receipt = dict(arm='CONTROL', tokenized_sha256={'references_ptb.json': 'abc'})
+        save(self.root/'input_receipt.json', receipt)
+        save(self.root/'environment.json', dict(test_fixture=True))
+        manifest = copy.deepcopy(self.manifest)
+        for policy in manifest['policies']:
+            manifest['arms']['CONTROL']['metrics'][policy].update(CHAIRs=.04, CHAIRi=.02)
+            values = dict(basic=dict(Bleu_1=.7, Bleu_4=.3, CIDEr=1.1, ROUGE_L=.5),
+                          meteor=dict(METEOR=.25), spice=dict(SPICE=.2))
+            for mode, point in values.items():
+                save(self.root/f'{policy}_{mode}.json', dict(images=5000, metrics=point,
+                    tokenized_sha256=receipt['tokenized_sha256']))
+        combine(self.root, 'CONTROL', manifest)
+        result = read(self.root/'result.json')
+        self.assertEqual(result['status'], 'PROMPT_TEST_EIGHT_METRICS_COMPLETE')
+        self.assertEqual(set(result['metrics']['normal']), set(KEYS))
+        self.assertAlmostEqual(result['display_x100']['normal']['CIDEr'], 110.)
+        self.assertAlmostEqual(result['display_x100']['normal']['CHAIRs'], 4.)
+        self.assertTrue((self.root/'metrics_x100.csv').is_file())
+
     def test_sources_parse_no_model_imports_and_all_keys(self):
         tree = ast.parse((HERE/'score_prompt_test_extra.py').read_text(encoding='utf-8-sig'))
         for n in ast.walk(tree):
