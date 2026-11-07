@@ -53,3 +53,8 @@ Title/footer changed to Báo cáo nghiên cứu tuần13; header date and openin
 ## Explanation follows diagram flow 08/11
 
 User requested tracing pipeline rather than listing independent definitions. Rewrote only explanatory paragraphs below four captions: M1 two left-to-right steps; M2 four upper-cascade steps then lower generic-stage visual/semantic branch and gate join; M3 four UPT split/encoding/matching/package/slot/attention/residual steps; overview three connected preparation/image/decoder-selection stages. Bold leads match visible blocks. All4 table XMLs, four embedded image hashes and training/results paragraph XMLs unchanged. All6 portrait WordCOM/Poppler pages inspected. Download Bao_cao_nghien_cuu_tuan_13_theo_luong.docx verified byte-identical. Existing week13 download was locked by an open application and deliberately left untouched; previous download aliases were not refreshed. rewrite_pipeline_flow.py is the latest rebuild step. No model/metric/Sheet changes.
+
+
+## Connected prose 08/11
+
+User rejected numbered Bước labels and requested văn xuôi. convert_flow_to_prose.py removes14 bold mini-headings, connects paragraph openings naturally while retaining the diagram traversal order and technical content. Figures, all4 table XMLs and training/results paragraph XMLs unchanged. All6 portrait WordCOM/Poppler pages inspected. Download Bao_cao_nghien_cuu_tuan_13_van_xuoi.docx verified byte-identical. Prior open Downloads intentionally not overwritten. New final rebuild step convert_flow_to_prose.py follows rewrite_pipeline_flow.py. No model/metric/Sheet changes.

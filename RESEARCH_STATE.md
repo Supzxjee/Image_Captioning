@@ -10,6 +10,8 @@ Cập nhật: 08/11/2026, giờ Việt Nam. File này là bản tóm tắt để
 
 ## Hiện đang ở đâu
 
+- **08/11 connected-prose explanation COMPLETE.** User requested no numbered Bước labels. [Word/script/QA](docs/weekly_reports/2026-11-07/README.md):14 explanation paragraphs now natural connected prose following diagram order, no bold mini-headings. Figures/table XMLs and training/results XMLs unchanged. All6 portrait WordCOM/Poppler pages inspected. Download Bao_cao_nghien_cuu_tuan_13_van_xuoi.docx verified; earlier open downloads not overwritten. No model/metric/Sheet changes.
+
 - **08/11 flow-based explanation rewrite COMPLETE.** User requested explanation follow diagram arrows. [Word/script/QA](docs/weekly_reports/2026-11-07/README.md): M1 two steps, M2 four cascade steps plus lower-stage branch/join detail, M3 four preparation/update steps, overview three connected stages; bold leads name exact blocks. Four image hashes/table XMLs and training/results paragraph XMLs unchanged. All6 portrait WordCOM/Poppler pages inspected. Download Bao_cao_nghien_cuu_tuan_13_theo_luong.docx verified; older week13 download locked/open and left untouched (aliases not refreshed). No model/metric/Sheet changes.
 
 - **08/11 six week13 annotations COMPLETE.** [Word/script/QA](docs/weekly_reports/2026-11-07/README.md): title/footer tuần13, removed update date/opening summary; heading Các khối chức năng; explained V extraction and generic X per stage; removed M3 two Only slots labels from SVG/PNG/PDF and Word. All4 table XMLs/22 bold winners unchanged. All6 portrait pages and M3 PDF render inspected. Downloads Bao_cao_nghien_cuu_tuan_13.docx, older aliases and module ZIP refreshed. No model/metric/Sheet changes.
