@@ -48,3 +48,8 @@ Each module stays on one page: M1 page1, M2 page2, M3 page3; overview/training p
 ## Six review annotations applied 08/11
 
 Title/footer changed to Báo cáo nghiên cứu tuần13; header date and opening summary removed. Module is a valid technical term; section heading changed to Các khối chức năng của mô hình for readability. Two paragraphs after M2 caption explain V from CLIP patches/YOLO boxes/ROI pooling/768→512 projection and generic X = V/V1/Vo for the three alignment stages. M3 Only slots... labels removed in vector source and exports and embedded figure refreshed. All4 table XMLs, numbers and22 bold winners retained. All6 portrait WordCOM/Poppler pages inspected, plus M3 PDF render. Downloads Bao_cao_nghien_cuu_tuan_13.docx and prior aliases refreshed. apply_week13_comments.py is final rebuild step. No model/metric/Sheet change.
+
+
+## Explanation follows diagram flow 08/11
+
+User requested tracing pipeline rather than listing independent definitions. Rewrote only explanatory paragraphs below four captions: M1 two left-to-right steps; M2 four upper-cascade steps then lower generic-stage visual/semantic branch and gate join; M3 four UPT split/encoding/matching/package/slot/attention/residual steps; overview three connected preparation/image/decoder-selection stages. Bold leads match visible blocks. All4 table XMLs, four embedded image hashes and training/results paragraph XMLs unchanged. All6 portrait WordCOM/Poppler pages inspected. Download Bao_cao_nghien_cuu_tuan_13_theo_luong.docx verified byte-identical. Existing week13 download was locked by an open application and deliberately left untouched; previous download aliases were not refreshed. rewrite_pipeline_flow.py is the latest rebuild step. No model/metric/Sheet changes.
