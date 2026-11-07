@@ -1,0 +1,241 @@
+{
+  "inputi": {
+    "x": 65,
+    "y": 145,
+    "w": 145,
+    "h": 65,
+    "lines": [
+      "Image I"
+    ],
+    "size": 23
+  },
+  "upt": {
+    "x": 265,
+    "y": 145,
+    "w": 190,
+    "h": 65,
+    "lines": [
+      "UPT detector"
+    ],
+    "size": 24
+  },
+  "phrases": {
+    "x": 520,
+    "y": 125,
+    "w": 220,
+    "h": 65,
+    "lines": [
+      "Object / relation",
+      "phrases"
+    ],
+    "size": 23
+  },
+  "textencoder": {
+    "x": 805,
+    "y": 125,
+    "w": 205,
+    "h": 65,
+    "lines": [
+      "CLIP text encoder"
+    ],
+    "size": 24
+  },
+  "embeddings": {
+    "x": 1075,
+    "y": 125,
+    "w": 195,
+    "h": 65,
+    "lines": [
+      "Text embeddings",
+      "to, tr"
+    ],
+    "size": 23
+  },
+  "uptboxes": {
+    "x": 520,
+    "y": 240,
+    "w": 220,
+    "h": 55,
+    "lines": [
+      "UPT boxes / classes"
+    ],
+    "size": 23
+  },
+  "yoloboxes": {
+    "x": 805,
+    "y": 240,
+    "w": 205,
+    "h": 55,
+    "lines": [
+      "YOLO boxes B"
+    ],
+    "size": 23
+  },
+  "match": {
+    "x": 1075,
+    "y": 235,
+    "w": 220,
+    "h": 65,
+    "lines": [
+      "Class + IoU \u2265 0.5",
+      "matching"
+    ],
+    "size": 24
+  },
+  "links": {
+    "x": 1370,
+    "y": 125,
+    "w": 320,
+    "h": 175,
+    "lines": [
+      "Prompt package",
+      "to, tr embeddings",
+      "ROI links + box geometry"
+    ],
+    "size": 24
+  },
+  "slot-input-o": {
+    "x": 65,
+    "y": 505,
+    "w": 330,
+    "h": 85,
+    "lines": [
+      "to + original Vo[i]",
+      "+ box geometry"
+    ],
+    "size": 23
+  },
+  "mlp-o": {
+    "x": 455,
+    "y": 505,
+    "w": 165,
+    "h": 85,
+    "lines": [
+      "Slot MLP"
+    ],
+    "size": 24
+  },
+  "z-o": {
+    "x": 680,
+    "y": 505,
+    "w": 150,
+    "h": 85,
+    "lines": [
+      "Slots Zo"
+    ],
+    "size": 23
+  },
+  "attention-o": {
+    "x": 950,
+    "y": 505,
+    "w": 230,
+    "h": 85,
+    "lines": [
+      "Masked cross-",
+      "attention"
+    ],
+    "size": 24
+  },
+  "project-o": {
+    "x": 1240,
+    "y": 505,
+    "w": 170,
+    "h": 85,
+    "lines": [
+      "Projection"
+    ],
+    "size": 24
+  },
+  "result-o": {
+    "x": 1580,
+    "y": 505,
+    "w": 150,
+    "h": 85,
+    "lines": [
+      "Vo\u2032"
+    ],
+    "size": 23
+  },
+  "memory-o": {
+    "x": 950,
+    "y": 445,
+    "w": 230,
+    "h": 40,
+    "lines": [
+      "Vo (query + residual)"
+    ],
+    "size": 21
+  },
+  "slot-input-r": {
+    "x": 65,
+    "y": 820,
+    "w": 330,
+    "h": 85,
+    "lines": [
+      "tr + original Vo[s], Vo[o]",
+      "+ pair geometry"
+    ],
+    "size": 23
+  },
+  "mlp-r": {
+    "x": 455,
+    "y": 820,
+    "w": 165,
+    "h": 85,
+    "lines": [
+      "Slot MLP"
+    ],
+    "size": 24
+  },
+  "z-r": {
+    "x": 680,
+    "y": 820,
+    "w": 150,
+    "h": 85,
+    "lines": [
+      "Slots Zr"
+    ],
+    "size": 23
+  },
+  "attention-r": {
+    "x": 950,
+    "y": 820,
+    "w": 230,
+    "h": 85,
+    "lines": [
+      "Masked cross-",
+      "attention"
+    ],
+    "size": 24
+  },
+  "project-r": {
+    "x": 1240,
+    "y": 820,
+    "w": 170,
+    "h": 85,
+    "lines": [
+      "Projection"
+    ],
+    "size": 24
+  },
+  "result-r": {
+    "x": 1580,
+    "y": 820,
+    "w": 150,
+    "h": 85,
+    "lines": [
+      "Vr\u2032"
+    ],
+    "size": 23
+  },
+  "memory-r": {
+    "x": 950,
+    "y": 760,
+    "w": 230,
+    "h": 40,
+    "lines": [
+      "Vr (query + residual)"
+    ],
+    "size": 21
+  }
+}

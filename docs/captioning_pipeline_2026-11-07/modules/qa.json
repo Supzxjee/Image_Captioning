@@ -1,0 +1,38 @@
+{
+  "00-overall": {
+    "connectors": 10,
+    "orthogonal": true,
+    "ids_unique": true,
+    "text_width_check": true,
+    "no_wire_through_operation_body": true,
+    "pdf_single_page_selectable_text": true,
+    "png_and_poppler_pdf_visually_inspected": true
+  },
+  "01-bank": {
+    "connectors": 8,
+    "orthogonal": true,
+    "ids_unique": true,
+    "text_width_check": true,
+    "no_wire_through_operation_body": true,
+    "pdf_single_page_selectable_text": true,
+    "png_and_poppler_pdf_visually_inspected": true
+  },
+  "02-bank-region": {
+    "connectors": 26,
+    "orthogonal": true,
+    "ids_unique": true,
+    "text_width_check": true,
+    "no_wire_through_operation_body": true,
+    "pdf_single_page_selectable_text": true,
+    "png_and_poppler_pdf_visually_inspected": true
+  },
+  "03-prompt-region": {
+    "connectors": 27,
+    "orthogonal": true,
+    "ids_unique": true,
+    "text_width_check": true,
+    "no_wire_through_operation_body": true,
+    "pdf_single_page_selectable_text": true,
+    "png_and_poppler_pdf_visually_inspected": true
+  }
+}

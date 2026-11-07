@@ -1,0 +1,256 @@
+{
+  "nounbank": {
+    "x": 65,
+    "y": 125,
+    "w": 190,
+    "h": 65,
+    "lines": [
+      "Noun bank"
+    ],
+    "size": 23
+  },
+  "nounagg": {
+    "x": 325,
+    "y": 125,
+    "w": 220,
+    "h": 65,
+    "lines": [
+      "Semantic",
+      "aggregation"
+    ],
+    "size": 24
+  },
+  "pn": {
+    "x": 615,
+    "y": 125,
+    "w": 150,
+    "h": 65,
+    "lines": [
+      "Pn"
+    ],
+    "size": 23
+  },
+  "verbbank": {
+    "x": 925,
+    "y": 125,
+    "w": 190,
+    "h": 65,
+    "lines": [
+      "Verb bank"
+    ],
+    "size": 23
+  },
+  "verbagg": {
+    "x": 1185,
+    "y": 125,
+    "w": 220,
+    "h": 65,
+    "lines": [
+      "Semantic",
+      "aggregation"
+    ],
+    "size": 24
+  },
+  "pv": {
+    "x": 1475,
+    "y": 125,
+    "w": 150,
+    "h": 65,
+    "lines": [
+      "Pv"
+    ],
+    "size": 23
+  },
+  "v": {
+    "x": 65,
+    "y": 285,
+    "w": 190,
+    "h": 65,
+    "lines": [
+      "Regions V"
+    ],
+    "size": 23
+  },
+  "obj1": {
+    "x": 325,
+    "y": 275,
+    "w": 220,
+    "h": 85,
+    "lines": [
+      "Object alignment",
+      "stage 1"
+    ],
+    "size": 24
+  },
+  "obj2": {
+    "x": 820,
+    "y": 275,
+    "w": 220,
+    "h": 85,
+    "lines": [
+      "Object alignment",
+      "stage 2"
+    ],
+    "size": 24
+  },
+  "relstage": {
+    "x": 1320,
+    "y": 275,
+    "w": 220,
+    "h": 85,
+    "lines": [
+      "Relation alignment"
+    ],
+    "size": 24
+  },
+  "vrout": {
+    "x": 1630,
+    "y": 285,
+    "w": 120,
+    "h": 65,
+    "lines": [
+      "Vr"
+    ],
+    "size": 23
+  },
+  "vo-output": {
+    "x": 1090,
+    "y": 365,
+    "w": 180,
+    "h": 55,
+    "lines": [
+      "Vo \u2192 M3"
+    ],
+    "size": 23
+  },
+  "x": {
+    "x": 60,
+    "y": 560,
+    "w": 155,
+    "h": 65,
+    "lines": [
+      "Regions X"
+    ],
+    "size": 23
+  },
+  "p": {
+    "x": 60,
+    "y": 760,
+    "w": 155,
+    "h": 65,
+    "lines": [
+      "Semantics P"
+    ],
+    "size": 23
+  },
+  "similarity": {
+    "x": 280,
+    "y": 760,
+    "w": 210,
+    "h": 65,
+    "lines": [
+      "Cosine similarity"
+    ],
+    "size": 24
+  },
+  "weight": {
+    "x": 550,
+    "y": 760,
+    "w": 210,
+    "h": 65,
+    "lines": [
+      "Relevance weighting"
+    ],
+    "size": 21
+  },
+  "t": {
+    "x": 820,
+    "y": 760,
+    "w": 175,
+    "h": 65,
+    "lines": [
+      "Selected T"
+    ],
+    "size": 23
+  },
+  "self": {
+    "x": 280,
+    "y": 560,
+    "w": 190,
+    "h": 65,
+    "lines": [
+      "Self-attention"
+    ],
+    "size": 24
+  },
+  "selfnorm": {
+    "x": 520,
+    "y": 560,
+    "w": 155,
+    "h": 65,
+    "lines": [
+      "Add & Norm"
+    ],
+    "size": 23
+  },
+  "selfffn": {
+    "x": 725,
+    "y": 560,
+    "w": 145,
+    "h": 65,
+    "lines": [
+      "FFN"
+    ],
+    "size": 24
+  },
+  "cross": {
+    "x": 1055,
+    "y": 650,
+    "w": 190,
+    "h": 80,
+    "lines": [
+      "Cross-attention"
+    ],
+    "size": 24
+  },
+  "crossnorm": {
+    "x": 1300,
+    "y": 650,
+    "w": 160,
+    "h": 80,
+    "lines": [
+      "Add & Norm"
+    ],
+    "size": 23
+  },
+  "crossffn": {
+    "x": 1510,
+    "y": 650,
+    "w": 120,
+    "h": 80,
+    "lines": [
+      "FFN"
+    ],
+    "size": 24
+  },
+  "gate": {
+    "x": 1495,
+    "y": 780,
+    "w": 150,
+    "h": 65,
+    "lines": [
+      "Gated fusion"
+    ],
+    "size": 24
+  },
+  "stageout": {
+    "x": 1685,
+    "y": 780,
+    "w": 90,
+    "h": 65,
+    "lines": [
+      "X\u2032"
+    ],
+    "size": 23
+  }
+}

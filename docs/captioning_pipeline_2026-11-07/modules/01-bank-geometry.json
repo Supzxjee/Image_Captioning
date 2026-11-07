@@ -1,0 +1,65 @@
+{
+  "captions": {
+    "x": 30,
+    "y": 120,
+    "w": 180,
+    "h": 70,
+    "lines": [
+      "TRAIN",
+      "captions"
+    ],
+    "size": 23
+  },
+  "pos": {
+    "x": 260,
+    "y": 120,
+    "w": 190,
+    "h": 70,
+    "lines": [
+      "POS tagging"
+    ],
+    "size": 24
+  },
+  "lemma": {
+    "x": 500,
+    "y": 120,
+    "w": 190,
+    "h": 70,
+    "lines": [
+      "Lemmatization"
+    ],
+    "size": 24
+  },
+  "words": {
+    "x": 740,
+    "y": 120,
+    "w": 190,
+    "h": 70,
+    "lines": [
+      "Noun / verb",
+      "lemmas"
+    ],
+    "size": 23
+  },
+  "clip": {
+    "x": 980,
+    "y": 120,
+    "w": 190,
+    "h": 70,
+    "lines": [
+      "CLIP text",
+      "encoder"
+    ],
+    "size": 24
+  },
+  "output": {
+    "x": 1450,
+    "y": 115,
+    "w": 120,
+    "h": 80,
+    "lines": [
+      "To M2"
+    ],
+    "size": 23
+  }
+}

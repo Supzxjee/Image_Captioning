@@ -1,0 +1,116 @@
+{
+  "train": {
+    "x": 390,
+    "y": 100,
+    "w": 210,
+    "h": 70,
+    "lines": [
+      "TRAIN captions"
+    ],
+    "size": 23
+  },
+  "M1": {
+    "x": 685,
+    "y": 90,
+    "w": 305,
+    "h": 90,
+    "lines": [
+      "M1 \u00b7 Semantic bank",
+      "construction"
+    ],
+    "size": 24
+  },
+  "image": {
+    "x": 40,
+    "y": 305,
+    "w": 135,
+    "h": 80,
+    "lines": [
+      "Image I"
+    ],
+    "size": 23
+  },
+  "visual": {
+    "x": 225,
+    "y": 305,
+    "w": 250,
+    "h": 80,
+    "lines": [
+      "Visual region",
+      "extraction"
+    ],
+    "size": 24
+  },
+  "M2": {
+    "x": 685,
+    "y": 300,
+    "w": 305,
+    "h": 90,
+    "lines": [
+      "M2 \u00b7 Bank\u2013region",
+      "alignment"
+    ],
+    "size": 24
+  },
+  "M3": {
+    "x": 1120,
+    "y": 300,
+    "w": 305,
+    "h": 90,
+    "lines": [
+      "M3 \u00b7 Prompt\u2013region",
+      "alignment"
+    ],
+    "size": 24
+  },
+  "decoder": {
+    "x": 1530,
+    "y": 300,
+    "w": 260,
+    "h": 90,
+    "lines": [
+      "Transformer decoder"
+    ],
+    "size": 24
+  },
+  "auxiliary": {
+    "x": 1120,
+    "y": 95,
+    "w": 305,
+    "h": 80,
+    "lines": [
+      "Image I + YOLO boxes B"
+    ],
+    "size": 23
+  },
+  "beam": {
+    "x": 1530,
+    "y": 480,
+    "w": 260,
+    "h": 70,
+    "lines": [
+      "Beam search \u00b7 K = 5"
+    ],
+    "size": 24
+  },
+  "rerank": {
+    "x": 1120,
+    "y": 480,
+    "w": 305,
+    "h": 70,
+    "lines": [
+      "Caption reranking"
+    ],
+    "size": 24
+  },
+  "final": {
+    "x": 685,
+    "y": 480,
+    "w": 305,
+    "h": 70,
+    "lines": [
+      "Final caption"
+    ],
+    "size": 23
+  }
+}
