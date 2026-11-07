@@ -19,3 +19,8 @@ render_docx.py attempted: LibreOffice soffice.exe absent. Fallback Microsoft Wor
 ## Portrait result tables
 
 User requested portrait page2, metrics down rows and configurations across columns. Transposed only the two TEST result tables: 8 metric rows ×2/4 configurations. All48 numeric strings, prose, other two tables and pipeline image preserved. All3 sections portrait; no landscape page remains. Table font11pt retained, vertical cell padding30twips and paragraph spacing0 avoid an orphaned note page. Final3-page WordCOM/Poppler render inspected page by page. Builder sequence: update_report.py → insert_pipeline.py → transpose_result_tables.py. Final Word in Downloads original name, *_pipeline.docx and *_bang_doc.docx. No new model/metric/Sheet run.
+
+
+## Best-result emphasis and descriptive names 08/11
+
+User requested best numeric cells bold, arrows removed, and no CSA name in report. highlight_best_results.py selects within each of4 tables: quality metrics maximize, CHAIR/counts minimize, ties all bold. Exactly22 numeric cells bold; all metric strings preserved. Up/down arrows and their former legend removed. Method names in prose/headings/configurations are now descriptive bank-alignment terms, including historical comparison; architecture and provenance unchanged. Visible source link points to experiments root. Original font formatting retained. WordCOM+Poppler final3 portrait pages inspected. Downloads *_hoan_chinh.docx and previous aliases refreshed. Builder order now update_report.py → insert_pipeline.py → transpose_result_tables.py → highlight_best_results.py. No models/scorers/Sheet edits.

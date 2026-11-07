@@ -1,6 +1,6 @@
 # Trạng thái nghiên cứu — đọc trước khi tiếp tục
 
-Cập nhật: 07/11/2026, giờ Việt Nam. File này là bản tóm tắt để tiếp tục công việc; protocol và artifacts được dẫn bên dưới mới là nguồn chi tiết. Không cần đọc toàn bộ lịch sử chat.
+Cập nhật: 08/11/2026, giờ Việt Nam. File này là bản tóm tắt để tiếp tục công việc; protocol và artifacts được dẫn bên dưới mới là nguồn chi tiết. Không cần đọc toàn bộ lịch sử chat.
 
 ## Mục tiêu và cách làm việc
 
@@ -9,6 +9,8 @@ Cập nhật: 07/11/2026, giờ Việt Nam. File này là bản tóm tắt để
 - Không tự chạy mô hình/Torch/autograd local hoặc notebook Kaggle. Kiểm tra metadata/NumPy/static/mock được phép; ghi rõ giới hạn. Quy trình tại [AGENTS.md](AGENTS.md).
 
 ## Hiện đang ở đâu
+
+- **08/11 report emphasis and names COMPLETE.** User requested best scores bold, ↑/↓ removed, no CSA name in report. [Word/script/QA](docs/weekly_reports/2026-11-07/README.md):22 within-table best numeric cells bold across4 tables (quality high, CHAIR/counts low), all values preserved; method labels now descriptive bank-alignment terms. Architecture/provenance unchanged. Font formatting retained, all3 portrait pages WordCOM/Poppler inspected. Downloads *_hoan_chinh.docx plus prior aliases refreshed. No model/scorer/Sheet changes.
 
 - **07/11 portrait tables COMPLETE.** User requested metrics vertically/configurations horizontally. [Word/script/QA](docs/weekly_reports/2026-11-07/README.md): two TEST tables transposed to8metric rows ×2/4 configs, all48 numeric strings preserved. Entire report portrait, still3pages; table font11 retained, spacing adjusted to avoid orphan note page. WordCOM+Poppler all3pages inspected. Downloads *_bang_doc.docx plus original/pipeline aliases refreshed. Prose, pipeline and other tables unchanged; no model/metric/Sheet changes.
 
