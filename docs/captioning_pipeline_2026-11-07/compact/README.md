@@ -1,3 +1,7 @@
+**Latest single-figure redraw:** [Connected pipeline, source and QA](CONNECTED_README.md). Files `pipeline-compact.*` are distinct from the earlier `captioning-pipeline-*` versions preserved below.
+
+---
+
 # Bố cục pipeline gọn, một luồng kỹ thuật liên tục
 
 07/11/2026 (UTC+7). Người dùng duyệt thực hiện bốn điều chỉnh sau khi so cách trình bày với hình mẫu: bỏ overview lặp, đưa cơ chế vào luồng chính, thu nhánh thị giác, đặt decoder sát memory và gom beam/reranking ở cuối. [Ghi nhận phạm vi](LAYOUT_BRIEF.md). Dùng diagram-design v2.6.142, giữ kiến trúc và các quy ước đã chốt.

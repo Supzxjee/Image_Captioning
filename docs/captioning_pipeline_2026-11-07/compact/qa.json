@@ -1,0 +1,29 @@
+{
+  "unique_ids": true,
+  "required_connections": [
+    "pn-object1",
+    "pv-relation",
+    "vo-relation",
+    "prompt-text-consumers",
+    "prompt-text-relation",
+    "roi-links-consumers",
+    "roi-links-relation",
+    "vo-prime-decoder",
+    "vr-prime-decoder",
+    "detail-h-gate",
+    "image-upt"
+  ],
+  "single_clean_photo": true,
+  "forbidden_names_absent": true,
+  "estimated_box_text_overflow": [],
+  "model_run": false,
+  "pdf_pages": 1,
+  "pdf_text_selectable": true,
+  "visual_review": "Final SVG PNG and Poppler PDF rendering inspected; intended wire crossings have no junction dots. Compact overview, not an implementation atlas.",
+  "limitations": "Approximate font-width check only; no automated claim of zero connector crossings.",
+  "outputs": {
+    "svg": "865087ae754b035c09b07f256c12f544c13e5bd952d67583364cf10230141960",
+    "png": "cb8488c41aa2c344180e48f3538f61c2873c4a46df0f5a0d20f02f21efdce7e5",
+    "pdf": "7a78bcdf9883837041f22c9b7fd6aef90520be3119a8ddbe862a9d51f6594777"
+  }
+}
