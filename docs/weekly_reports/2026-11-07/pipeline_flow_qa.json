@@ -1,0 +1,14 @@
+{
+  "pages": 6,
+  "explanation_order": "diagram traversal with named nodes, branches and joins",
+  "M1_steps": 2,
+  "M2_steps": 4,
+  "M2_stage_detail_separate": true,
+  "M3_steps": 4,
+  "overview_stages": 3,
+  "all_table_xmls_unchanged": true,
+  "all_four_embedded_images_unchanged": true,
+  "training_and_results_paragraph_xmls_unchanged": true,
+  "all_pages_visually_inspected": true,
+  "renderer": "Word COM + Poppler; packaged renderer unavailable due missing LibreOffice"
+}
