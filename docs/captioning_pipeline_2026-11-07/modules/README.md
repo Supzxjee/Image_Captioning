@@ -12,3 +12,7 @@ Visual plan: established serif font, thin orthogonal wires, ivory nouns/bank and
 - 03-prompt-region: preparation results connect physically to both lanes through one prompt-package data bus (not a new neural layer). Input boxes combine text, original Vo regions and geometry by concatenation; plus symbols there are descriptive, while circled + is actual residual addition. Object/relation lanes have separate weights. Mask only allows linked ROIs/endpoints; unmatched ROIs receive zero delta.
 
 All SVG/PNG and four one-page selectable-text PDFs inspected after final edits. Native SVG text/shapes remain editable. Unique IDs, text widths, orthogonal wires, and no operation-body crossings checked. Same scientific model; no experiment/metric/Sheet changes. Prior drafts preserved. These are review drafts, not user-accepted final figures.
+
+## Label cleanup
+
+User requested M1 title suffix (offline, TRAIN only) and output note removed, M2 two explanatory captions removed, M3 bottom explanatory caption removed. These annotations are removed from the drawings only; scope and architecture remain as documented above. Node positions, arrows and diagram dimensions unchanged. Three affected PDF renders inspected.

@@ -56,7 +56,7 @@ label(837,616,'M1 is prepared offline. M2 and M3 operate on each image.',22,Fals
 save('00-overall')
 
 # M1: offline preparation, clear one-step data flow.
-start(1600,300,'M1 · Semantic bank construction (offline, TRAIN only)')
+start(1600,300,'M1 · Semantic bank construction')
 data('captions',30,120,180,70,['TRAIN','captions'])
 module('pos',260,120,190,70,['POS tagging'])
 module('lemma',500,120,190,70,['Lemmatization'])
@@ -69,7 +69,6 @@ arrow('clip-verb',[(1210,155),(1210,220),(1250,220)])
 data('output',1450,115,120,80,['To M2'],size=23)
 arrow('noun-output',[(1400,99),(1425,99),(1425,140),(1450,140)])
 arrow('verb-output',[(1400,220),(1425,220),(1425,170),(1450,170)])
-label(800,280,'Output: two fixed banks of 512-dimensional text embeddings.',22,False,True)
 save('01-bank')
 
 # M2 top: exact cascade. Bottom: one shared stage, with distinct processing operations.
@@ -97,7 +96,6 @@ arrow('relation-vr',[(1540,317),(1630,317)])
 data('vo-output',1090,365,180,55,['Vo → M3'],OBJ)
 arrow('vo-output-link',[(1180,317),(1180,365)])
 ns['nodes'].append('<circle cx="1180" cy="317" r="2.5" fill="#465158"/>')
-label(910,465,'Outputs to M3: Vo (object memory) and Vr (relation memory).',23,False,True)
 
 frame(30,510,1760,375,'Inside each alignment stage')
 data('x',60,560,155,65,['Regions X'])
@@ -129,7 +127,6 @@ arrow('crossnorm-ffn',[(1460,690),(1510,690)])
 arrow('ffn-gate',[(1570,730),(1570,780)])
 arrow('h-gate',[(915,592),(1710,592),(1710,755),(1620,755),(1620,780)])
 arrow('gate-out',[(1645,812),(1685,812)])
-label(910,931,'Attention reads T for each region; the learned gate combines visual-only H with the cross-attention output.',23,False,True)
 save('02-bank-region')
 
 # M3: preparation on top, independent object/relation lanes below; repeated inputs are named tensors.
@@ -176,7 +173,6 @@ for row,title,sub,fill in [(430,'Object prompt update','o',OBJ),(745,'Relation p
  arrow('q-'+sub,[(1065,row+55),(1065,row+75)])
  arrow('residual-'+sub,[(1180,row+35),(1500,row+35),(1500,row+106)])
  label(910,row+202,mask,22,False,True)
-label(900,1005,'The two lanes use separate parameters. Unmatched ROIs receive no prompt update. Original Vo is used in both slot builders.',22,False,True)
 ns['nodes'].append('<circle cx="45" cy="547" r="2.5" fill="#465158"/>')
 save('03-prompt-region')
 print('Four source-grounded module figures generated.')

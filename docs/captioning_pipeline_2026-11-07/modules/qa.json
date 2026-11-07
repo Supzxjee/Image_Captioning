@@ -34,5 +34,10 @@
     "no_wire_through_operation_body": true,
     "pdf_single_page_selectable_text": true,
     "png_and_poppler_pdf_visually_inspected": true
+  },
+  "label_cleanup": {
+    "requested_title_suffix_and_four_caption_lines_removed": true,
+    "node_and_edge_geometry_unchanged": true,
+    "three_pdf_renders_inspected": true
   }
 }

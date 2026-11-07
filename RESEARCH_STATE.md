@@ -10,6 +10,8 @@ Cập nhật: 07/11/2026, giờ Việt Nam. File này là bản tóm tắt để
 
 ## Hiện đang ở đâu
 
+- **07/11 module annotation cleanup COMPLETE.** M1 title suffix/output note, M2 two explanatory captions, M3 bottom caption removed as requested. Module nodes/wires/main overview unchanged; three PDF renders inspected and Downloads folder/ZIP refreshed. Source/scope remains in modules/README.md; no model or metrics changes.
+
 - **07/11 three-module figure set COMPLETE, awaiting layout review.** User clarified detailed modules first, names only in overview; exactly M1 bank construction, M2 bank–region alignment, M3 prompt–region alignment. [Source/captions/QA](docs/captioning_pipeline_2026-11-07/modules/README.md). Four SVG/PNG/PDF figures; M2 exact two-object/one-relation cascade + stage mechanism; M3 preparation physically feeds two update lanes using original Vo. All4 PNG/PopplerPDFs inspected; IDs/fontwidth/orthogonal/no operation-body transit PASS. Downloads Pipeline_3_module_07_11_2026 folder/ZIP. No architecture/model/metric/Sheet changes; previous drafts retained.
 
 - **07/11 user rejects detailed bank/alignment trial as confusing.** New pedagogical alignment-simple.svg/png shows only regions→bank-conditioned alignment→ROI-linked prompt update→decoder→caption with two auxiliary inputs. It deliberately hides separate object/relation memories and candidate/rerank machinery; not a full architecture or replacement model. Downloads Can_chinh_gian_luoc.*. Await review; no experiments.
