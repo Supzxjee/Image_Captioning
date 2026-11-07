@@ -2,6 +2,10 @@
 
 07/11/2026, UTC+7. Vẽ bằng diagram-design v2.6.142 theo [brief mới](USER_BRIEF.txt). Việc đổi tên chỉ phục vụ trình bày; không sửa mô hình hoặc hàm ý mọi thành phần là đóng góp mới.
 
+## Bản mới có icon tham số
+
+[Bản theo brief bổ sung](parameter_icons/README.md): ảnh gốc không bbox, icon frozen/trainable vector, ba màu chỉ định, query/residual riêng và ba điểm rerank hội tụ. SVG/PDF/PNG/HTML có ở thư mục này; bản ban đầu dưới đây vẫn giữ nguyên.
+
 ## Bàn giao
 
 - [SVG chỉnh sửa được](captioning-pipeline.svg): chữ, module và mũi tên giữ dạng vector; chỉ ảnh minh họa là raster nhúng.

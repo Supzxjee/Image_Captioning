@@ -1,0 +1,49 @@
+{
+  "status": "PASS",
+  "routes_checked": 67,
+  "nodes_checked": 58,
+  "issues": [],
+  "pdfs": {
+    "captioning-pipeline.pdf": {
+      "pages": 1,
+      "text_characters": 1424,
+      "raster_images": 1,
+      "vector_drawings": 311
+    }
+  },
+  "render_report": "render_audit.json",
+  "source_brief_sha256": "a8e27f75ba209180f9e371a4eb313f6fbbddab9cd278d86577cbc546cd52d150",
+  "limits": "Figure follows the 07/11 parameter-icon brief; the original input photo has no added overlays, and diagrams/tokens are not newly measured model output. Geometry checks use conservative axis-aligned envelopes; SVG corners are rounded.",
+  "content_checks": {
+    "forbidden_method_labels_absent": true,
+    "qkv_head_init_details_absent": true,
+    "one_illustrative_image": true,
+    "training_line_outside_inference": true,
+    "two_named_memory_rails": true,
+    "two_dashed_zoom_guides": true,
+    "visual_query_and_residual_paths_present": true,
+    "original_image_without_box_overlays": true,
+    "data_rectangles_are_square_cornered": true
+  },
+  "parameter_badges": {
+    "clip-visual": "frozen",
+    "yolo": "frozen",
+    "bank-text-encoder": "frozen",
+    "upt": "frozen",
+    "clip-text": "frozen",
+    "alignment": "frozen",
+    "projection": "trainable",
+    "semantic-overview": "trainable",
+    "prompt-overview": "trainable",
+    "noun-aggregation": "trainable",
+    "verb-aggregation": "trainable",
+    "object-fusion-1": "trainable",
+    "object-fusion-2": "trainable",
+    "relation-fusion": "trainable",
+    "embedding": "trainable",
+    "vocab": "trainable",
+    "decoder": "trainable",
+    "object-adapter": "trainable",
+    "relation-adapter": "trainable"
+  }
+}

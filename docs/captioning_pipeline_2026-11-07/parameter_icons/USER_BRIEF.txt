@@ -1,0 +1,435 @@
+Hãy vẽ một sơ đồ kiến trúc mô hình chú thích ảnh theo phong cách hình minh họa trong bài báo khoa học. Tham khảo cách bố trí của hình mẫu đính kèm: các vùng chức năng rõ ràng, tensor được biểu diễn bằng token stack, module có icon frozen/trainable và màu sắc nhẹ.
+
+Đây là mô hình đã triển khai. Vẽ đúng mô tả bên dưới, không tự thêm hoặc thay đổi cơ chế.
+
+Không dùng các tên CSA, CSA-Net, OSA hoặc ORA trong hình. Dùng tên mô tả chức năng của module.
+
+────────────────────────────────────
+1. PHONG CÁCH VÀ QUY ƯỚC
+────────────────────────────────────
+
+- Bố cục ngang, nền trắng, nhiều khoảng trắng.
+- Phong cách học thuật, không dùng hiệu ứng 3D, gradient hoặc bóng đổ.
+- Một font thống nhất: Arial hoặc Helvetica.
+- Tên module ngắn gọn bằng tiếng Anh.
+- Module xử lý: hình chữ nhật bo góc.
+- Dữ liệu đầu vào/đầu ra: hình chữ nhật vuông góc hoặc token stack.
+- Mũi tên liền có đầu mũi tên: luồng dữ liệu.
+- Nét đứt không đầu mũi tên: liên kết phần tổng quan với phần phóng to.
+- Không để đường nối đi xuyên box hoặc chữ.
+- Mỗi box chính tối đa hai dòng chữ.
+- Các chi tiết dài đưa vào caption hoặc hình phụ.
+
+MÀU SẮC ĐƠN GIẢN
+
+Chỉ dùng ba nhóm màu pastel:
+- Xám xanh nhạt #EDF3F8: trích xuất thị giác, decoder và các bước chung.
+- Cam nhạt #FCEBDD: danh từ, đối tượng và object memory.
+- Xanh nhạt #E2F1F5: động từ, quan hệ và relation memory.
+
+Chữ màu gần đen #263238.
+Đường nối màu xám đậm #56616B.
+Dùng cùng màu cho cùng loại dữ liệu xuyên suốt hình:
+- Vo và Vo′: cam.
+- Vr và Vr′: xanh.
+- Input image, patch features và V: trung tính.
+
+Khung phóng to có nền trắng và viền nét đứt nhạt.
+Không tô kín các vùng lớn bằng màu đậm.
+
+ICON THAM SỐ
+
+Đặt icon vector nhỏ ở góc trên bên phải module:
+- Bông tuyết ❄: frozen parameters.
+- Ngọn lửa 🔥: trainable parameters.
+
+Dùng icon vector đơn sắc, không dùng emoji màu phụ thuộc hệ điều hành.
+
+Không có icon nghĩa là dữ liệu hoặc thao tác không có tham số được học.
+
+Chú giải:
+❄ Frozen parameters
+🔥 Trainable parameters
+
+Các icon chỉ mô tả khả năng cập nhật trọng số trong giai đoạn huấn luyện. Khi suy luận, mọi trọng số đều giữ nguyên.
+
+────────────────────────────────────
+2. BỐ CỤC TỔNG THỂ
+────────────────────────────────────
+
+Chia hình thành bốn vùng:
+
+A. Visual region extraction — bên trái.
+B. Cascaded semantic fusion — giữa phía trên.
+C. Region-linked prompt conditioning — giữa, nối tiếp vùng B.
+D. Caption generation and selection — bên phải.
+
+Luồng chính:
+
+Input image
+→ Visual region extraction
+→ Cascaded semantic fusion
+→ Region-linked prompt conditioning
+→ Transformer decoder
+→ Five candidate captions
+→ Caption reranking
+→ Final caption.
+
+Phía dưới vùng B và C, đặt hai khung phóng to:
+- Semantic bank–region alignment.
+- Image-specific prompt–region alignment.
+
+Nối mỗi khung phóng to với khối tổng quan tương ứng bằng nét đứt không đầu mũi tên.
+
+Không vẽ hai lần cùng một luồng dữ liệu bằng các đường liền chồng chéo. Phần phóng to chỉ giải thích cơ chế của khối tổng quan.
+
+────────────────────────────────────
+3. VISUAL REGION EXTRACTION
+────────────────────────────────────
+
+Đặt ảnh đầu vào I ở dưới cùng.
+Ảnh I phải là ảnh gốc, không có bbox vẽ sẵn.
+
+Từ ảnh I tách hai nhánh song song:
+
+Nhánh trái:
+Input image I
+→ CLIP ViT-B/16 ❄
+→ Patch features.
+
+Ghi nhỏ:
+Frozen visual encoder.
+
+Patch features là token stack vuông góc, ghi:
+14 × 14 × 768.
+
+Nhánh phải:
+Input image I
+→ YOLO detector ❄
+→ Bounding boxes B.
+
+Không ghi phiên bản YOLO cụ thể vì chưa xác minh được checkpoint tạo cache.
+
+Có thể minh họa đầu ra YOLO bằng ảnh có bbox.
+Ghi rõ “Bounding boxes B” cạnh ảnh đó.
+Mũi tên sang ROI pooling biểu diễn tọa độ box, không phải ảnh đã vẽ khung.
+
+Hai nhánh hội tụ:
+
+Patch features + Bounding boxes B
+→ ROI pooling
+→ Linear projection 🔥
+→ Region features V.
+
+Ghi trong Linear:
+768 → 512.
+
+Ghi tại đầu ra:
+V: N × 512.
+
+ROI pooling không có icon vì không có tham số học.
+Region features là dữ liệu nên không bo góc.
+
+CLIP chỉ trích xuất patch features một lần cho ảnh. Không vẽ việc chạy CLIP riêng cho từng crop.
+
+────────────────────────────────────
+4. SEMANTIC BANK–REGION ALIGNMENT
+────────────────────────────────────
+
+Phân biệt rõ bank ngữ nghĩa toàn cục với prompt riêng ảnh.
+
+Chuẩn bị bank từ caption TRAIN:
+- Trích danh từ và động từ, chuẩn hóa lemma.
+- Mã hóa bằng CLIP text encoder ❄.
+- Tạo TRAIN noun bank và TRAIN verb bank.
+
+Các bank embedding được giữ cố định.
+Vẽ bank bằng box vuông góc hoặc token stack:
+- Noun bank màu cam.
+- Verb bank màu xanh.
+Có thể ghi nhỏ “Fixed embeddings”.
+
+Không dùng caption VALID hoặc TEST để xây dựng bank.
+
+Nhánh danh từ:
+TRAIN noun bank
+→ Learned semantic aggregation 🔥
+→ Noun prototypes Pn.
+
+Nhánh động từ:
+TRAIN verb bank
+→ Learned semantic aggregation 🔥
+→ Verb prototypes Pv.
+
+Mỗi bộ prototype có kích thước:
+150 × 512.
+
+Luồng hợp nhất chính:
+
+V + Pn
+→ Object fusion 1 🔥
+→ V1 và selected noun prototypes T1.
+
+V1 + T1
+→ Object fusion 2 🔥
+→ Object memory Vo.
+
+Vo + Pv
+→ Relation fusion 🔥
+→ Relation memory Vr.
+
+BẮT BUỘC:
+- Tách một nhánh Vo ngay sau Object fusion 2 làm đầu ra đối tượng.
+- Vo đồng thời tiếp tục đi vào Relation fusion.
+- Vr là đầu ra quan hệ.
+- Không gộp Vo và Vr thành một memory duy nhất.
+
+Vo: N × 512, token stack màu cam.
+Vr: N × 512, token stack màu xanh.
+
+Trong hình chính, giữ các Fusion dưới dạng module gọn.
+
+Nếu cần minh họa bên trong một Fusion, dùng inset nhỏ gồm:
+- Visual self-attention.
+- Semantic prototype–region alignment.
+- Semantic cross-attention.
+- Gated fusion.
+
+Có thể gói FFN, normalization và residual trong module và giải thích ở caption. Không nhồi tất cả chi tiết vào luồng chính.
+
+────────────────────────────────────
+5. IMAGE-SPECIFIC PROMPT–REGION ALIGNMENT
+────────────────────────────────────
+
+Nhánh này tạo thông tin ngữ nghĩa riêng cho từng ảnh.
+
+Input image I
+→ UPT interaction detector ❄
+→ Object phrases và Relation phrases
+→ CLIP text encoder ❄
+→ Prompt embeddings.
+
+Dùng:
+- Cam cho object phrases và object text embeddings to.
+- Xanh cho relation phrases và relation text embeddings tr.
+
+UPT cung cấp dự đoán đối tượng–hành động và box liên quan; không thể hiện chúng như ground-truth relations.
+
+Nhánh liên kết vùng:
+
+UPT boxes + YOLO boxes
+→ Region matching
+→ Valid region links.
+
+Region matching dùng:
+- Nhãn đối tượng tương thích.
+- IoU ≥ 0.5.
+
+Đầu ra gồm:
+- Object-to-region index i.
+- Ordered subject–object pair (s,o).
+- Tọa độ các box tương ứng.
+
+Không có icon trainable cho Region matching.
+Prompt không nối được với ROI hợp lệ sẽ bị bỏ khỏi các slot sử dụng; không tự gán vào toàn ảnh.
+
+HAI ADAPTER
+
+Vẽ hai nhánh riêng:
+
+Object prompt adapter 🔥:
+Object text embedding to
++ linked region Vo[i]
++ box coordinates bi
+→ Linked slot projection
+→ Masked attention
+→ Output projection
+→ Residual addition with Vo
+→ Updated object memory Vo′.
+
+Relation prompt adapter 🔥:
+Relation text embedding tr
++ subject region Vo[s]
++ object region Vo[o]
++ coordinates bs, bo
+→ Linked slot projection
+→ Masked attention
+→ Output projection
+→ Residual addition with Vr
+→ Updated relation memory Vr′.
+
+Trong hình tổng quan có thể rút gọn mỗi nhánh thành:
+Linked slots → Masked attention → ⊕ residual.
+
+Nhưng phải giữ đúng:
+- Vo đi vào Masked attention của object adapter làm visual query.
+- Vr đi vào Masked attention của relation adapter làm visual query.
+- Vo/Vr cũng có đường residual riêng đi vào dấu ⊕.
+- Không chỉ vẽ Vo/Vr đi vào dấu cộng rồi bỏ đầu vào query.
+- Relation slot sử dụng Vo gốc, không sử dụng Vo′.
+- Subject và object có thứ tự.
+- Vo′ và Vr′ tiếp tục là hai memory riêng.
+
+Nếu có inset kỹ thuật:
+Object slot = MLP[to; Vo[i]; bi].
+Relation slot = MLP[tr; Vo[s]; Vo[o]; bs; bo].
+Keys/values là các slot, queries là memory thị giác tương ứng.
+Mask chỉ cho ROI liên kết đọc slot tương ứng.
+Output projection Wout khởi tạo bằng 0.
+Không có slot hợp lệ thì residual update bằng 0.
+
+Không ghi các vector ghép dài hoặc kích thước 1.544 chiều trên hình chính.
+
+────────────────────────────────────
+6. CAPTION GENERATION
+────────────────────────────────────
+
+Đầu vào văn bản:
+
+Token prefix
+→ Word embedding 🔥 + fixed positional encoding
+→ Transformer decoder.
+
+Positional encoding cố định không có icon trainable.
+Có thể gộp vào một box nhưng phải đặt icon 🔥 cạnh riêng phần Word embedding hoặc giải thích rõ trong caption.
+
+Decoder gồm 3 layer.
+Khung ×3 chỉ bao:
+
+Masked self-attention
+→ Parallel cross-attention
+→ Gated fusion + FFN.
+
+Đặt icon 🔥 cho khung Transformer decoder.
+Nếu đã gắn icon cho toàn khung, không cần lặp icon tại mọi thành phần bên trong.
+
+Parallel cross-attention nhận riêng:
+- Object memory Vo′.
+- Relation memory Vr′.
+
+Dùng hai mũi tên riêng và giữ màu memory nhất quán.
+
+Sau decoder:
+
+Vocabulary projection 🔥
+→ Softmax
+→ Beam search K=5
+→ Five candidate captions y1,…,y5.
+
+Vocabulary projection có tham số học.
+Softmax và Beam search không có tham số học, không gắn icon 🔥.
+
+Nếu gộp “Vocabulary projection + Softmax” trong cùng box, icon 🔥 đại diện cho phần projection và cần giải thích ở caption.
+
+Caption được sinh tự hồi quy từ BOS.
+Không cần vẽ đường hồi tiếp dài nếu làm rối hình; ghi ở caption.
+
+────────────────────────────────────
+7. CAPTION RERANKING
+────────────────────────────────────
+
+Năm caption ứng viên đi vào khối Caption reranking.
+
+Vẽ ba thành phần chấm điểm:
+
+1. Decoder likelihood — D.
+2. Image–text alignment — C.
+3. Object consistency — O.
+
+Image–text alignment sử dụng CLIP ❄.
+Object consistency sử dụng nhãn đối tượng YOLO và đối tượng được nhắc trong caption.
+
+Ảnh I và nhãn YOLO là đầu vào phụ của bước chấm điểm.
+
+Ba điểm hội tụ vào:
+
+Weighted scoring and selection
+→ Final caption.
+
+Công thức cố định:
+S(y) = 0.3 D(y) + 0.4 C(y) + 0.3 O(y).
+
+D và C được min–max trong năm ứng viên.
+O được chuẩn hóa theo bộ chấm nhất quán đối tượng.
+Chọn caption có S cao nhất; hòa điểm thì ưu tiên beam đứng trước.
+
+Các phép tính điểm, hệ số cố định và phép chọn caption không có icon trainable.
+
+Không dùng caption tham chiếu hoặc điểm CHAIR để chọn caption.
+CHAIR chỉ dùng đánh giá kết quả sau cùng.
+
+Có thể đặt công thức và quy tắc chuẩn hóa trong caption hình nếu không đủ chỗ.
+
+────────────────────────────────────
+8. TRAINING
+────────────────────────────────────
+
+Không đặt CE hoặc SCST vào luồng suy luận như một module xử lý caption.
+
+Ở cuối hình chính chỉ ghi:
+“Training: cross-entropy pretraining followed by SCST + cross-entropy.”
+
+Nếu cần giải thích chi tiết, tạo hình phụ riêng:
+
+Cùng mô hình và ảnh TRAIN:
+- Sampling → sampled caption ys.
+- Greedy decoding → baseline caption yg.
+
+Chấm bằng CIDEr với caption tham chiếu TRAIN:
+A = CIDEr(ys, Ytrain) − CIDEr(yg, Ytrain).
+
+Loss:
+L = LCE + 0.05 LSCST.
+
+Không thêm object-reward term vào loss của cấu hình đang vẽ.
+Object consistency nằm ở reranking.
+
+────────────────────────────────────
+9. CÁCH GIỮ HÌNH GỌN
+────────────────────────────────────
+
+Hình chính chỉ cần giữ các kích thước quan trọng:
+- Patch features: 14×14×768.
+- Linear projection: 768→512.
+- Region memories: N×512.
+- Semantic prototypes: 150×512.
+- Decoder ×3.
+- Beam K=5.
+
+Không đưa toàn bộ Q/K/V, công thức attention, mask, gate và loss vào hình chính.
+Dùng inset hoặc caption khi cần.
+
+Không tự thêm:
+- Retrieval datastore.
+- Retrieved captions.
+- BLIP reranker.
+- Q-Former.
+
+Các thành phần này không thuộc cấu hình đang mô tả.
+
+Ảnh, bbox hoặc ma trận attention chỉ để minh họa phải được ghi rõ trong caption. Không trình bày ma trận minh họa như attention đo được từ mô hình.
+
+────────────────────────────────────
+10. ĐẦU RA VÀ KIỂM TRA
+────────────────────────────────────
+
+Xuất:
+1. SVG chỉnh sửa được.
+2. PDF vector.
+3. PNG rõ nét.
+4. Caption tiếng Việt ngắn.
+5. Danh sách các chi tiết đã giản lược.
+
+Trước khi xuất, kiểm tra:
+- Ảnh I không có bbox vẽ sẵn.
+- Module bo góc; dữ liệu vuông góc hoặc token stack.
+- Icon ❄/🔥 được dùng đúng, không gắn 🔥 cho thao tác không có tham số.
+- Có cả bank toàn cục và prompt riêng ảnh.
+- Hai adapter nằm sau semantic fusion.
+- Masked attention có visual-query input.
+- Relation slot dùng Vo gốc.
+- Decoder nhận riêng Vo′ và Vr′.
+- Khung ×3 chỉ bao decoder layer.
+- Reranking kết hợp ba điểm trước khi chọn caption.
+- Không có chữ tràn, đường nối xuyên box hoặc đường chéo khó theo dõi.
+- Khi đặt hình ngang chiều rộng một trang bài báo, tên module vẫn đọc được.

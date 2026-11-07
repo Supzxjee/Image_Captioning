@@ -1,0 +1,21 @@
+{
+  "date": "2026-11-07",
+  "timezone": "Asia/Bangkok",
+  "base_commit": "b5bed5b65cd2c718e0045df284c4438037f47a67",
+  "primary_source": "USER_BRIEF.txt",
+  "brief_sha256": "a8e27f75ba209180f9e371a4eb313f6fbbddab9cd278d86577cbc546cd52d150",
+  "photo": "docs/csa_pipeline_2026-11-02/v3/assets/COCO_train2014_000000263974.jpg",
+  "photo_sha256": "f208e31d4f689c88f1c0a6a1c583f1413c86424b10c52d62b8b6d3e2360e7406",
+  "input_photo_has_overlays": false,
+  "badge_style": "Monochrome vector snowflake and flame paths, no emoji",
+  "palette": {
+    "shared": "#EDF3F8",
+    "object": "#FCEBDD",
+    "relation": "#E2F1F5",
+    "ink": "#263238",
+    "line": "#56616B"
+  },
+  "skill": "diagram-design 2.6.142",
+  "model_or_scorer_execution": false,
+  "html_caption_update": "Verified SVG markup and exported SVG bytes unchanged after updating only the external caption."
+}
