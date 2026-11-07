@@ -29,3 +29,8 @@ User accepted the composition and requested straight arrows. Keep the layout fix
 ## Compact footer refinement
 
 User requested removal of Frozen/Trainable legend and Training note. Removed those footer annotations and cropped canvas height from1040 to995px; all module positions and46 orthogonal connectors remain unchanged. Per-module status icons remain. No architecture, experiment or scoring change.
+
+
+## Trial modular bank and alignment explanation
+
+Review variant: [main](pipeline-modular-bank.svg), [offline bank preparation](bank-preparation-detail.svg), [alignment mechanisms](alignment-mechanism-detail.svg), each with PDF/PNG. Source: build_bank_variant.py. Prior accepted diagram preserved. Detail A follows model.py Alignment/Fusion: semantic reweighting, region-to-text cross-attention, learned gate; second object stage consumes T1. Detail B follows prompt_adapter_model.py: slot construction with original Vo, linked-ROI mask, memory-query attention, projection and residual. Standard normalization/FFN is abbreviated. No new loss or localization-performance claim. PNG/PDF renders inspected, unique IDs and orthogonal connector checks PASS.

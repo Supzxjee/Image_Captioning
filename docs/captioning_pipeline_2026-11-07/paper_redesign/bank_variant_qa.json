@@ -1,0 +1,20 @@
+{
+  "pipeline-modular-bank": {
+    "unique_ids": true,
+    "orthogonal_connectors": true,
+    "one_page_pdf_with_text": true,
+    "model_run": false
+  },
+  "bank-preparation-detail": {
+    "unique_ids": true,
+    "orthogonal_connectors": true,
+    "one_page_pdf_with_text": true,
+    "model_run": false
+  },
+  "alignment-mechanism-detail": {
+    "unique_ids": true,
+    "orthogonal_connectors": true,
+    "one_page_pdf_with_text": true,
+    "model_run": false
+  }
+}
