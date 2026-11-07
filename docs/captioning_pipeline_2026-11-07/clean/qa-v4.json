@@ -1,0 +1,28 @@
+{
+  "approximate_font_width": "PASS",
+  "node_overlap": [],
+  "edge_body_transit": [],
+  "shared_routes": [],
+  "required_nodes_routes": [
+    "object-slot",
+    "object-attn",
+    "object-output",
+    "object-sum",
+    "relation-slot",
+    "relation-attn",
+    "relation-output",
+    "relation-sum",
+    "text-object-slot",
+    "text-relation-slot",
+    "links-object-slot",
+    "links-relation-slot",
+    "vo-prime-decoder",
+    "vr-prime-decoder"
+  ],
+  "model_run": false,
+  "notation": "Repeated I/B/Vo are identical auxiliary tensor references; main memories fully connected.",
+  "limitations": "Not a zero-crossings claim. Standard Norm/FFN omitted.",
+  "pdf_pages": 1,
+  "pdf_text_selectable": true,
+  "visual_review": "Final PNG and Poppler PDF inspected. Conditioning headings moved off the prompt text bus. The two memory rails into the decoder are disjoint; repeated auxiliary inputs are explicitly documented."
+}

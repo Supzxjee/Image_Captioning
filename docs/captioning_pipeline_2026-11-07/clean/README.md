@@ -1,3 +1,5 @@
+**Latest V4 (parallel conditioning lanes):** [Decision/QA](V4_DECISION.md) · [SVG](pipeline-clean-v4.svg) · [PNG](pipeline-clean-v4.png) · [PDF](pipeline-clean-v4.pdf). Rerouted after user rejected V3 wire density. Repeated I/B/Vo auxiliary sources are the same tensors, not new model runs. Prior drafts below preserved.
+
 **Latest V3 (separate operations):** [Decision/QA](V3_DECISION.md) · [SVG](pipeline-clean-v3.svg) · [PNG](pipeline-clean-v3.png) · [PDF](pipeline-clean-v3.pdf). User rejected V2 grouping; V3 splits ROI/projection, separate bank and slot branches, attention/projection/residual, embedding/position, head/softmax/beam and scorers/selection. Older drafts below are preserved.
 
 **Latest V2:** [Decision and QA](V2_DECISION.md) · [SVG](pipeline-clean-v2.svg) · [PNG](pipeline-clean-v2.png) · [PDF](pipeline-clean-v2.pdf). Fusion is expanded at its point of use; no detached detail panel. Earlier files below remain intact.
