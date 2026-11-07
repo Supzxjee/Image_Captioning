@@ -1,0 +1,16 @@
+{
+  "pages": 6,
+  "added_paragraphs": 8,
+  "all_existing_text_preserved_in_order": true,
+  "all_table_xmls_unchanged": true,
+  "figures": 4,
+  "all_pages_portrait_and_visually_inspected": true,
+  "source_checks": [
+    "prepare_real_assets.py",
+    "run_real_bank.py",
+    "model.py",
+    "prompt_adapter_model.py"
+  ],
+  "no_model_or_scorer_run": true,
+  "renderer": "Word COM + Poppler; LibreOffice missing"
+}

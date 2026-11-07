@@ -1,6 +1,6 @@
 # Báo cáo tổng hợp ngày07/11/2026
 
-**Bản hiện tại sau sửa08/11:5 trang dọc, đủ4 hình (M1, M2, M3, pipeline tổng thể); bảng đã đảo chiều, điểm tốt nhất tô đậm, không còn tên CSA/mũi tên lên xuống/đoạn nguồn ở cuối.**
+**Bản hiện tại sau sửa08/11:6 trang dọc, mỗi module có hình và phần giải thích cách hoạt động, sau đó là pipeline tổng thể và các bảng kết quả. Bảng đã đảo chiều, điểm tốt nhất tô đậm, không còn tên CSA/mũi tên lên xuống/đoạn nguồn ở cuối.**
 
 Bản Word cập nhật từ báo cáo06/11, giữ sơ đồ overview và phần huấn luyện. Tổng3trang: portrait–landscape–portrait. Trang2 có hai bảng đủ8metrics: NoCSA10/CSA10 vàCONTROL/PROMPT trước/sau rerank (48giátrị). Trang3 giữ VALID vàprobe tách riêng, giới hạnCI/seed/epoch/adapter/TESTexposure; mốcCSA15điểm117.06được ghi là thamkhảo và3metriccònthiếu. Khôngquy toànbộ tăngđiểm cho riêngprompt. Bảncũ được giữ nguyên.
 
@@ -36,3 +36,10 @@ Removed exactly the two final paragraphs requested: source/version note and GitH
 ## Missing module figures corrected 08/11
 
 User correctly noted previous report contained only overall diagram. add_module_figures.py now inserts M1 and M2 onpage1, M3 onpage2, then overview/training onpage3, results onpages4–5. Module detail comes before overall as requested; section/figure numbering updated. Existing4 result-table XMLs including bold winners unchanged. All4 embedded PNG hashes match latest cleaned figures. All5 portrait pages rendered in Word/Poppler and visually inspected, no clipping/blank pages; the dedicated M3 page intentionally retains whitespace for readable full-width drawing. Final Downloads *_du_module.docx and previous aliases refreshed. Builder step add_module_figures.py runs last, guarded against duplication. No model/metric/Sheet changes.
+
+
+## Module operation explanations 08/11
+
+Added8 paragraphs under module captions: M1 POS/lemma/CLIP templates/512d fixed shared banks; M2 learned150-vector aggregation, cosine relevance, self/cross attention with Q/K/V roles, norm/FFN/gate, exact two-object plus relation cascade; M3 UPT human–object phrases, CLIP text, class/IoU matching, slot definition and originalVo inputs, linked masked attention and residual, unmatched ROI/no-delta and detector-dependence limitation. Source code read only, no model execution. Original text remains in order, all4 table XMLs and22 bold winners unchanged.
+
+Each module stays on one page: M1 page1, M2 page2, M3 page3; overview/training page4, results pages5–6. All6 WordCOM/Poppler pages inspected. Downloads *_giai_thich.docx and prior aliases refreshed. explain_module_operation.py runs last and guards against double insertion.
