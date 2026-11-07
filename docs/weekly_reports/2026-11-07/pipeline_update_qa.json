@@ -1,0 +1,14 @@
+{
+  "pages": 3,
+  "changed_text_paragraphs": [
+    5,
+    6,
+    7
+  ],
+  "table_xmls_unchanged": true,
+  "section_settings_unchanged": true,
+  "figure_sha_matches_approved_png": true,
+  "all_pages_visually_inspected": true,
+  "renderer": "Microsoft Word COM + Poppler; LibreOffice unavailable",
+  "no_model_or_scoring_run": true
+}

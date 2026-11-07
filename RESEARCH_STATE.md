@@ -10,6 +10,8 @@ Cập nhật: 07/11/2026, giờ Việt Nam. File này là bản tóm tắt để
 
 ## Hiện đang ở đâu
 
+- **07/11 report main pipeline replaced COMPLETE.** User requested approved overview in report. [Word/script/QA](docs/weekly_reports/2026-11-07/README.md): page1 picture replaced with current three-module overview, caption and M1/M2/M3 references adjusted; all4 table XMLs/section settings unchanged. WordCOM+Poppler 3page render inspected (LibreOffice absent); download Bao_cao_nghien_cuu_07_11_2026_pipeline.docx plus original filename refreshed. Detailed module figures stay separate, no appendix added. No experiment/metric/Sheet changes.
+
 - **07/11 main overview small labels removed.** User requested all small lines removed from pipeline chính: free-standing wire labels and explanatory captions deleted, title/boxes/10 arrows retained. Module details unchanged. PNG/Poppler PDF inspected, Downloads folder/ZIP refreshed. No model/metric changes.
 
 - **07/11 module annotation cleanup COMPLETE.** M1 title suffix/output note, M2 two explanatory captions, M3 bottom caption removed as requested. Module nodes/wires/main overview unchanged; three PDF renders inspected and Downloads folder/ZIP refreshed. Source/scope remains in modules/README.md; no model or metrics changes.
