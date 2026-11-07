@@ -1,5 +1,7 @@
 # Báo cáo tổng hợp ngày07/11/2026
 
+**Bản hiện tại sau sửa08/11:5 trang dọc, đủ4 hình (M1, M2, M3, pipeline tổng thể); bảng đã đảo chiều, điểm tốt nhất tô đậm, không còn tên CSA/mũi tên lên xuống/đoạn nguồn ở cuối.**
+
 Bản Word cập nhật từ báo cáo06/11, giữ sơ đồ overview và phần huấn luyện. Tổng3trang: portrait–landscape–portrait. Trang2 có hai bảng đủ8metrics: NoCSA10/CSA10 vàCONTROL/PROMPT trước/sau rerank (48giátrị). Trang3 giữ VALID vàprobe tách riêng, giới hạnCI/seed/epoch/adapter/TESTexposure; mốcCSA15điểm117.06được ghi là thamkhảo và3metriccònthiếu. Khôngquy toànbộ tăngđiểm cho riêngprompt. Bảncũ được giữ nguyên.
 
 - `Bao_cao_nghien_cuu_07_11_2026.docx`: báo cáo giao người dùng; bảncopytrongDownloads cùngtên.
@@ -29,3 +31,8 @@ User requested best numeric cells bold, arrows removed, and no CSA name in repor
 ## Source note removal 08/11
 
 Removed exactly the two final paragraphs requested: source/version note and GitHub link. Other paragraph XML and all4 table XMLs unchanged, including22 bold numeric winners. Source provenance remains in repo research files. Final WordCOM/Poppler3 pages visually inspected; renderer log notes missing LibreOffice. Downloads *_da_sua.docx plus previous aliases refreshed. Run remove_report_sources.py last if rebuilding.
+
+
+## Missing module figures corrected 08/11
+
+User correctly noted previous report contained only overall diagram. add_module_figures.py now inserts M1 and M2 onpage1, M3 onpage2, then overview/training onpage3, results onpages4–5. Module detail comes before overall as requested; section/figure numbering updated. Existing4 result-table XMLs including bold winners unchanged. All4 embedded PNG hashes match latest cleaned figures. All5 portrait pages rendered in Word/Poppler and visually inspected, no clipping/blank pages; the dedicated M3 page intentionally retains whitespace for readable full-width drawing. Final Downloads *_du_module.docx and previous aliases refreshed. Builder step add_module_figures.py runs last, guarded against duplication. No model/metric/Sheet changes.

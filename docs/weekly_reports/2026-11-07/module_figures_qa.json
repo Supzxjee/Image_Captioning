@@ -1,0 +1,16 @@
+{
+  "pages": 5,
+  "inline_figures": 4,
+  "order": [
+    "M1",
+    "M2",
+    "M3",
+    "overall"
+  ],
+  "all_embedded_image_hashes_match_latest_approved_pngs": true,
+  "all_table_xmls_unchanged": true,
+  "all_pages_portrait": true,
+  "all_pages_visually_inspected": true,
+  "no_csa_label_or_up_down_arrows_or_source_footer": true,
+  "renderer": "Word COM + Poppler; packaged renderer unavailable due missing LibreOffice"
+}
