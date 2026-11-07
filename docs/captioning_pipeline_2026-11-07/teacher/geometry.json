@@ -1,0 +1,306 @@
+{
+  "train-words": {
+    "x": 300,
+    "y": 75,
+    "w": 170,
+    "h": 65,
+    "lines": [
+      "Nouns / verbs",
+      "from TRAIN"
+    ],
+    "size": 23
+  },
+  "bank-text": {
+    "x": 520,
+    "y": 90,
+    "w": 170,
+    "h": 65,
+    "lines": [
+      "CLIP text",
+      "encoder"
+    ],
+    "size": 24
+  },
+  "noun-aggregation": {
+    "x": 750,
+    "y": 200,
+    "w": 180,
+    "h": 55,
+    "lines": [
+      "Semantic",
+      "aggregation"
+    ],
+    "size": 21
+  },
+  "verb-aggregation": {
+    "x": 1000,
+    "y": 200,
+    "w": 180,
+    "h": 55,
+    "lines": [
+      "Semantic",
+      "aggregation"
+    ],
+    "size": 21
+  },
+  "clip-visual": {
+    "x": 240,
+    "y": 340,
+    "w": 160,
+    "h": 65,
+    "lines": [
+      "CLIP ViT-B/16",
+      "Visual encoder"
+    ],
+    "size": 20
+  },
+  "yolo": {
+    "x": 240,
+    "y": 510,
+    "w": 160,
+    "h": 65,
+    "lines": [
+      "YOLO detector"
+    ],
+    "size": 21
+  },
+  "roi": {
+    "x": 430,
+    "y": 340,
+    "w": 160,
+    "h": 65,
+    "lines": [
+      "ROI pooling"
+    ],
+    "size": 25
+  },
+  "project": {
+    "x": 430,
+    "y": 450,
+    "w": 160,
+    "h": 65,
+    "lines": [
+      "Linear",
+      "projection"
+    ],
+    "size": 24
+  },
+  "boxes": {
+    "x": 420,
+    "y": 530,
+    "w": 170,
+    "h": 50,
+    "lines": [
+      "Boxes B"
+    ],
+    "size": 25
+  },
+  "object-alignment": {
+    "x": 750,
+    "y": 420,
+    "w": 180,
+    "h": 80,
+    "lines": [
+      "Object",
+      "alignment"
+    ],
+    "size": 26
+  },
+  "relation-alignment": {
+    "x": 1000,
+    "y": 620,
+    "w": 180,
+    "h": 80,
+    "lines": [
+      "Relation",
+      "alignment"
+    ],
+    "size": 26
+  },
+  "object-attention": {
+    "x": 1260,
+    "y": 340,
+    "w": 180,
+    "h": 70,
+    "lines": [
+      "Masked cross-",
+      "attention"
+    ],
+    "size": 23
+  },
+  "relation-attention": {
+    "x": 1260,
+    "y": 540,
+    "w": 180,
+    "h": 70,
+    "lines": [
+      "Masked cross-",
+      "attention"
+    ],
+    "size": 23
+  },
+  "object-output": {
+    "x": 1470,
+    "y": 355,
+    "w": 90,
+    "h": 40,
+    "lines": [
+      "Linear"
+    ],
+    "size": 19
+  },
+  "relation-output": {
+    "x": 1470,
+    "y": 555,
+    "w": 90,
+    "h": 40,
+    "lines": [
+      "Linear"
+    ],
+    "size": 19
+  },
+  "upt": {
+    "x": 640,
+    "y": 850,
+    "w": 160,
+    "h": 65,
+    "lines": [
+      "UPT detector"
+    ],
+    "size": 22
+  },
+  "prompt-texts": {
+    "x": 840,
+    "y": 850,
+    "w": 180,
+    "h": 80,
+    "lines": [
+      "Object / relation",
+      "prompts"
+    ],
+    "size": 22
+  },
+  "image-text": {
+    "x": 1040,
+    "y": 440,
+    "w": 180,
+    "h": 60,
+    "lines": [
+      "CLIP text",
+      "encoder"
+    ],
+    "size": 24
+  },
+  "slots": {
+    "x": 1260,
+    "y": 440,
+    "w": 180,
+    "h": 60,
+    "lines": [
+      "Slot MLPs"
+    ],
+    "size": 25
+  },
+  "matching": {
+    "x": 1440,
+    "y": 660,
+    "w": 180,
+    "h": 70,
+    "lines": [
+      "ROI matching",
+      "Class + IoU"
+    ],
+    "size": 24
+  },
+  "prefix": {
+    "x": 1720,
+    "y": 280,
+    "w": 190,
+    "h": 55,
+    "lines": [
+      "Token prefix"
+    ],
+    "size": 25
+  },
+  "decoder": {
+    "x": 1700,
+    "y": 430,
+    "w": 230,
+    "h": 100,
+    "lines": [
+      "Transformer",
+      "decoder"
+    ],
+    "size": 27
+  },
+  "beam": {
+    "x": 1700,
+    "y": 600,
+    "w": 230,
+    "h": 65,
+    "lines": [
+      "Beam search"
+    ],
+    "size": 27
+  },
+  "candidates": {
+    "x": 1700,
+    "y": 710,
+    "w": 230,
+    "h": 55,
+    "lines": [
+      "5 captions"
+    ],
+    "size": 27
+  },
+  "score-d": {
+    "x": 1700,
+    "y": 820,
+    "w": 60,
+    "h": 55,
+    "lines": [
+      "D"
+    ],
+    "size": 27
+  },
+  "score-c": {
+    "x": 1785,
+    "y": 820,
+    "w": 60,
+    "h": 55,
+    "lines": [
+      "C"
+    ],
+    "size": 27
+  },
+  "score-o": {
+    "x": 1870,
+    "y": 820,
+    "w": 60,
+    "h": 55,
+    "lines": [
+      "O"
+    ],
+    "size": 27
+  },
+  "selection-final": {
+    "x": 1700,
+    "y": 930,
+    "w": 230,
+    "h": 65,
+    "lines": [
+      "Weighted selection"
+    ],
+    "size": 23
+  },
+  "final": {
+    "x": 1700,
+    "y": 1040,
+    "w": 230,
+    "h": 55,
+    "lines": [
+      "Final caption"
+    ],
+    "size": 27
+  }
+}

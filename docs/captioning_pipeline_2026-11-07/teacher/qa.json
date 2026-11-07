@@ -1,0 +1,29 @@
+{
+  "approximate_Arial_width": "PASS",
+  "unique_ids": true,
+  "one_photo": true,
+  "required_connections": [
+    "pn-object",
+    "pv-relation",
+    "vo-attention",
+    "vr-attention",
+    "text-slots",
+    "vo-slots",
+    "links-slots",
+    "slots-object-kv",
+    "slots-relation-kv",
+    "vo-prime-decoder",
+    "vr-prime-decoder",
+    "candidate-scores",
+    "candidate-c",
+    "candidate-d"
+  ],
+  "node_body_transit": [],
+  "model_run": false,
+  "scope": "Teacher-facing inference overview; standard implementation internals intentionally omitted.",
+  "pdf_pages": 1,
+  "pdf_selectable_text": true,
+  "visual_review": "Final PNG, Poppler PDF and 1440px slide preview inspected. Local mechanism compared side-by-side with supplied DFCap Figure2 at similar display width. Pn wire rerouted off Alignment heading; scorer fan-out corrected before final export.",
+  "reference_comparison": "Private QA only, outside Git; third-party figure crop not republished.",
+  "limitations": "Overview-level abstractions; no assertion of measured region-word grounding. Some perpendicular crossings remain, distinguished from junctions."
+}
