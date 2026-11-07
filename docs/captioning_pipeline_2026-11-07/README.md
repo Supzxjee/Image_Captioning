@@ -2,6 +2,10 @@
 
 07/11/2026, UTC+7. Vẽ bằng diagram-design v2.6.142 theo [brief mới](USER_BRIEF.txt). Việc đổi tên chỉ phục vụ trình bày; không sửa mô hình hoặc hàm ý mọi thành phần là đóng góp mới.
 
+## Bản bố cục gọn mới nhất
+
+[Bản compact theo điều chỉnh đã duyệt](compact/README.md): bỏ overview lặp, nối trực tiếp hai memory sau adapter vào decoder, thu gọn nhánh thị giác và gom caption selection ở cuối. SVG/PDF/PNG/HTML cùng mã nguồn/QA được giữ riêng; các bản dưới không bị ghi đè.
+
 ## Bản mới có icon tham số
 
 [Bản theo brief bổ sung](parameter_icons/README.md): ảnh gốc không bbox, icon frozen/trainable vector, ba màu chỉ định, query/residual riêng và ba điểm rerank hội tụ. SVG/PDF/PNG/HTML có ở thư mục này; bản ban đầu dưới đây vẫn giữ nguyên.

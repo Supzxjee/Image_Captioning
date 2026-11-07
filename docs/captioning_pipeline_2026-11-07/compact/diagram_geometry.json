@@ -1,0 +1,1462 @@
+{
+  "canvas": [
+    2400,
+    1120
+  ],
+  "nodes": [
+    {
+      "id": "input-image",
+      "x": 56,
+      "y": 656,
+      "w": 256,
+      "h": 192,
+      "kind": "image"
+    },
+    {
+      "id": "clip-visual",
+      "x": 48,
+      "y": 520,
+      "w": 168,
+      "h": 80,
+      "kind": "node"
+    },
+    {
+      "id": "yolo",
+      "x": 240,
+      "y": 520,
+      "w": 120,
+      "h": 80,
+      "kind": "node"
+    },
+    {
+      "id": "patches",
+      "x": 48,
+      "y": 400,
+      "w": 168,
+      "h": 80,
+      "kind": "node"
+    },
+    {
+      "id": "boxes",
+      "x": 240,
+      "y": 400,
+      "w": 120,
+      "h": 80,
+      "kind": "node"
+    },
+    {
+      "id": "roi-pooling",
+      "x": 96,
+      "y": 280,
+      "w": 240,
+      "h": 64,
+      "kind": "node"
+    },
+    {
+      "id": "projection",
+      "x": 96,
+      "y": 160,
+      "w": 240,
+      "h": 64,
+      "kind": "node"
+    },
+    {
+      "id": "v",
+      "x": 384,
+      "y": 176,
+      "w": 20,
+      "h": 32,
+      "kind": "tokens"
+    },
+    {
+      "id": "object-fusion-1",
+      "x": 432,
+      "y": 160,
+      "w": 224,
+      "h": 64,
+      "kind": "node"
+    },
+    {
+      "id": "object-fusion-2",
+      "x": 720,
+      "y": 160,
+      "w": 224,
+      "h": 64,
+      "kind": "node"
+    },
+    {
+      "id": "relation-fusion",
+      "x": 720,
+      "y": 352,
+      "w": 224,
+      "h": 64,
+      "kind": "node"
+    },
+    {
+      "id": "vo",
+      "x": 984,
+      "y": 176,
+      "w": 20,
+      "h": 32,
+      "kind": "tokens"
+    },
+    {
+      "id": "vr",
+      "x": 984,
+      "y": 368,
+      "w": 20,
+      "h": 32,
+      "kind": "tokens"
+    },
+    {
+      "id": "noun-bank",
+      "x": 432,
+      "y": 624,
+      "w": 224,
+      "h": 64,
+      "kind": "node"
+    },
+    {
+      "id": "noun-aggregation",
+      "x": 432,
+      "y": 512,
+      "w": 224,
+      "h": 64,
+      "kind": "node"
+    },
+    {
+      "id": "noun-prototypes",
+      "x": 534,
+      "y": 448,
+      "w": 20,
+      "h": 32,
+      "kind": "tokens"
+    },
+    {
+      "id": "verb-bank",
+      "x": 720,
+      "y": 624,
+      "w": 224,
+      "h": 64,
+      "kind": "node"
+    },
+    {
+      "id": "verb-aggregation",
+      "x": 720,
+      "y": 512,
+      "w": 224,
+      "h": 64,
+      "kind": "node"
+    },
+    {
+      "id": "verb-prototypes",
+      "x": 822,
+      "y": 448,
+      "w": 20,
+      "h": 32,
+      "kind": "tokens"
+    },
+    {
+      "id": "train-lemmas",
+      "x": 432,
+      "y": 768,
+      "w": 224,
+      "h": 48,
+      "kind": "node"
+    },
+    {
+      "id": "bank-text-encoder",
+      "x": 720,
+      "y": 752,
+      "w": 224,
+      "h": 80,
+      "kind": "node"
+    },
+    {
+      "id": "upt",
+      "x": 1064,
+      "y": 152,
+      "w": 224,
+      "h": 64,
+      "kind": "node"
+    },
+    {
+      "id": "object-phrases",
+      "x": 1064,
+      "y": 248,
+      "w": 112,
+      "h": 64,
+      "kind": "node"
+    },
+    {
+      "id": "relation-phrases",
+      "x": 1200,
+      "y": 248,
+      "w": 112,
+      "h": 64,
+      "kind": "node"
+    },
+    {
+      "id": "clip-text",
+      "x": 1064,
+      "y": 368,
+      "w": 248,
+      "h": 64,
+      "kind": "node"
+    },
+    {
+      "id": "region-matching",
+      "x": 1064,
+      "y": 584,
+      "w": 248,
+      "h": 80,
+      "kind": "node"
+    },
+    {
+      "id": "prepared-input",
+      "x": 1316.8,
+      "y": 444.8,
+      "w": 6.4,
+      "h": 6.4,
+      "kind": "junction"
+    },
+    {
+      "id": "prepared-fork",
+      "x": 1336.8,
+      "y": 444.8,
+      "w": 6.4,
+      "h": 6.4,
+      "kind": "junction"
+    },
+    {
+      "id": "object-slots",
+      "x": 1336,
+      "y": 224,
+      "w": 112,
+      "h": 64,
+      "kind": "node"
+    },
+    {
+      "id": "object-attention",
+      "x": 1480,
+      "y": 224,
+      "w": 112,
+      "h": 64,
+      "kind": "node"
+    },
+    {
+      "id": "object-sum",
+      "x": 1606,
+      "y": 238,
+      "w": 36,
+      "h": 36,
+      "kind": "sum"
+    },
+    {
+      "id": "object-updated",
+      "x": 1664,
+      "y": 240,
+      "w": 20,
+      "h": 32,
+      "kind": "tokens"
+    },
+    {
+      "id": "relation-slots",
+      "x": 1336,
+      "y": 544,
+      "w": 112,
+      "h": 64,
+      "kind": "node"
+    },
+    {
+      "id": "relation-attention",
+      "x": 1480,
+      "y": 544,
+      "w": 112,
+      "h": 64,
+      "kind": "node"
+    },
+    {
+      "id": "relation-sum",
+      "x": 1606,
+      "y": 558,
+      "w": 36,
+      "h": 36,
+      "kind": "sum"
+    },
+    {
+      "id": "relation-updated",
+      "x": 1664,
+      "y": 560,
+      "w": 20,
+      "h": 32,
+      "kind": "tokens"
+    },
+    {
+      "id": "object-visual-fork",
+      "x": 1532.8,
+      "y": 108.8,
+      "w": 6.4,
+      "h": 6.4,
+      "kind": "junction"
+    },
+    {
+      "id": "relation-visual-fork",
+      "x": 1532.8,
+      "y": 700.8,
+      "w": 6.4,
+      "h": 6.4,
+      "kind": "junction"
+    },
+    {
+      "id": "gated-ffn",
+      "x": 1744,
+      "y": 128,
+      "w": 240,
+      "h": 64,
+      "kind": "node"
+    },
+    {
+      "id": "parallel-attention",
+      "x": 1744,
+      "y": 224,
+      "w": 240,
+      "h": 80,
+      "kind": "node"
+    },
+    {
+      "id": "masked-self-attention",
+      "x": 1744,
+      "y": 336,
+      "w": 240,
+      "h": 64,
+      "kind": "node"
+    },
+    {
+      "id": "embedding",
+      "x": 1744,
+      "y": 488,
+      "w": 240,
+      "h": 72,
+      "kind": "node"
+    },
+    {
+      "id": "prefix",
+      "x": 1744,
+      "y": 608,
+      "w": 240,
+      "h": 56,
+      "kind": "node"
+    },
+    {
+      "id": "vocab",
+      "x": 2024,
+      "y": 128,
+      "w": 320,
+      "h": 64,
+      "kind": "node"
+    },
+    {
+      "id": "beam",
+      "x": 2024,
+      "y": 248,
+      "w": 320,
+      "h": 64,
+      "kind": "node"
+    },
+    {
+      "id": "candidates",
+      "x": 2024,
+      "y": 360,
+      "w": 320,
+      "h": 80,
+      "kind": "data"
+    },
+    {
+      "id": "likelihood",
+      "x": 2048,
+      "y": 520,
+      "w": 272,
+      "h": 56,
+      "kind": "node"
+    },
+    {
+      "id": "alignment",
+      "x": 2048,
+      "y": 608,
+      "w": 272,
+      "h": 56,
+      "kind": "node"
+    },
+    {
+      "id": "consistency",
+      "x": 2048,
+      "y": 696,
+      "w": 272,
+      "h": 56,
+      "kind": "node"
+    },
+    {
+      "id": "select",
+      "x": 2048,
+      "y": 824,
+      "w": 272,
+      "h": 64,
+      "kind": "node"
+    },
+    {
+      "id": "final-caption",
+      "x": 2024,
+      "y": 952,
+      "w": 320,
+      "h": 64,
+      "kind": "node"
+    }
+  ],
+  "routes": [
+    {
+      "id": "image-clip",
+      "points": [
+        [
+          140,
+          656
+        ],
+        [
+          140,
+          600
+        ]
+      ],
+      "src": "input-image",
+      "dst": "clip-visual"
+    },
+    {
+      "id": "image-yolo",
+      "points": [
+        [
+          280,
+          656
+        ],
+        [
+          280,
+          632
+        ],
+        [
+          300,
+          632
+        ],
+        [
+          300,
+          600
+        ]
+      ],
+      "src": "input-image",
+      "dst": "yolo"
+    },
+    {
+      "id": "clip-patches",
+      "points": [
+        [
+          132,
+          520
+        ],
+        [
+          132,
+          480
+        ]
+      ],
+      "src": "clip-visual",
+      "dst": "patches"
+    },
+    {
+      "id": "yolo-boxes",
+      "points": [
+        [
+          300,
+          520
+        ],
+        [
+          300,
+          480
+        ]
+      ],
+      "src": "yolo",
+      "dst": "boxes"
+    },
+    {
+      "id": "patches-pool",
+      "points": [
+        [
+          132,
+          400
+        ],
+        [
+          132,
+          376
+        ],
+        [
+          160,
+          376
+        ],
+        [
+          160,
+          344
+        ]
+      ],
+      "src": "patches",
+      "dst": "roi-pooling"
+    },
+    {
+      "id": "boxes-pool",
+      "points": [
+        [
+          300,
+          400
+        ],
+        [
+          300,
+          344
+        ]
+      ],
+      "src": "boxes",
+      "dst": "roi-pooling"
+    },
+    {
+      "id": "pool-project",
+      "points": [
+        [
+          216,
+          280
+        ],
+        [
+          216,
+          224
+        ]
+      ],
+      "src": "roi-pooling",
+      "dst": "projection"
+    },
+    {
+      "id": "project-v",
+      "points": [
+        [
+          336,
+          192
+        ],
+        [
+          384,
+          192
+        ]
+      ],
+      "src": "projection",
+      "dst": "v"
+    },
+    {
+      "id": "v-object1",
+      "points": [
+        [
+          404,
+          192
+        ],
+        [
+          432,
+          192
+        ]
+      ],
+      "src": "v",
+      "dst": "object-fusion-1"
+    },
+    {
+      "id": "object1-object2",
+      "points": [
+        [
+          656,
+          192
+        ],
+        [
+          720,
+          192
+        ]
+      ],
+      "src": "object-fusion-1",
+      "dst": "object-fusion-2"
+    },
+    {
+      "id": "object2-vo",
+      "points": [
+        [
+          944,
+          192
+        ],
+        [
+          984,
+          192
+        ]
+      ],
+      "src": "object-fusion-2",
+      "dst": "vo"
+    },
+    {
+      "id": "object2-relation",
+      "points": [
+        [
+          832,
+          224
+        ],
+        [
+          832,
+          352
+        ]
+      ],
+      "src": "object-fusion-2",
+      "dst": "relation-fusion"
+    },
+    {
+      "id": "relation-vr",
+      "points": [
+        [
+          944,
+          384
+        ],
+        [
+          984,
+          384
+        ]
+      ],
+      "src": "relation-fusion",
+      "dst": "vr"
+    },
+    {
+      "id": "noun-bank-aggregation",
+      "points": [
+        [
+          544,
+          624
+        ],
+        [
+          544,
+          576
+        ]
+      ],
+      "src": "noun-bank",
+      "dst": "noun-aggregation"
+    },
+    {
+      "id": "noun-aggregate-prototypes",
+      "points": [
+        [
+          544,
+          512
+        ],
+        [
+          544,
+          480
+        ]
+      ],
+      "src": "noun-aggregation",
+      "dst": "noun-prototypes"
+    },
+    {
+      "id": "verb-bank-aggregation",
+      "points": [
+        [
+          832,
+          624
+        ],
+        [
+          832,
+          576
+        ]
+      ],
+      "src": "verb-bank",
+      "dst": "verb-aggregation"
+    },
+    {
+      "id": "verb-aggregate-prototypes",
+      "points": [
+        [
+          832,
+          512
+        ],
+        [
+          832,
+          480
+        ]
+      ],
+      "src": "verb-aggregation",
+      "dst": "verb-prototypes"
+    },
+    {
+      "id": "noun-object1",
+      "points": [
+        [
+          544,
+          448
+        ],
+        [
+          544,
+          224
+        ]
+      ],
+      "src": "noun-prototypes",
+      "dst": "object-fusion-1"
+    },
+    {
+      "id": "verb-relation",
+      "points": [
+        [
+          832,
+          448
+        ],
+        [
+          832,
+          416
+        ]
+      ],
+      "src": "verb-prototypes",
+      "dst": "relation-fusion"
+    },
+    {
+      "id": "lemmas-text",
+      "points": [
+        [
+          656,
+          792
+        ],
+        [
+          720,
+          792
+        ]
+      ],
+      "src": "train-lemmas",
+      "dst": "bank-text-encoder"
+    },
+    {
+      "id": "text-noun-bank",
+      "points": [
+        [
+          776,
+          752
+        ],
+        [
+          776,
+          720
+        ],
+        [
+          544,
+          720
+        ],
+        [
+          544,
+          688
+        ]
+      ],
+      "src": "bank-text-encoder",
+      "dst": "noun-bank"
+    },
+    {
+      "id": "text-verb-bank",
+      "points": [
+        [
+          888,
+          752
+        ],
+        [
+          888,
+          688
+        ]
+      ],
+      "src": "bank-text-encoder",
+      "dst": "verb-bank"
+    },
+    {
+      "id": "upt-object",
+      "points": [
+        [
+          1128,
+          216
+        ],
+        [
+          1128,
+          232
+        ],
+        [
+          1120,
+          232
+        ],
+        [
+          1120,
+          248
+        ]
+      ],
+      "src": "upt",
+      "dst": "object-phrases"
+    },
+    {
+      "id": "upt-relation",
+      "points": [
+        [
+          1216,
+          216
+        ],
+        [
+          1216,
+          232
+        ],
+        [
+          1256,
+          232
+        ],
+        [
+          1256,
+          248
+        ]
+      ],
+      "src": "upt",
+      "dst": "relation-phrases"
+    },
+    {
+      "id": "object-text",
+      "points": [
+        [
+          1120,
+          312
+        ],
+        [
+          1120,
+          368
+        ]
+      ],
+      "src": "object-phrases",
+      "dst": "clip-text"
+    },
+    {
+      "id": "relation-text",
+      "points": [
+        [
+          1256,
+          312
+        ],
+        [
+          1256,
+          368
+        ]
+      ],
+      "src": "relation-phrases",
+      "dst": "clip-text"
+    },
+    {
+      "id": "yolo-matching",
+      "points": [
+        [
+          1188,
+          568
+        ],
+        [
+          1188,
+          584
+        ]
+      ],
+      "src": null,
+      "dst": "region-matching"
+    },
+    {
+      "id": "upt-matching",
+      "points": [
+        [
+          1064,
+          168
+        ],
+        [
+          1056,
+          168
+        ],
+        [
+          1056,
+          624
+        ],
+        [
+          1064,
+          624
+        ]
+      ],
+      "src": "upt",
+      "dst": "region-matching"
+    },
+    {
+      "id": "text-prepared",
+      "points": [
+        [
+          1312,
+          400
+        ],
+        [
+          1320,
+          400
+        ],
+        [
+          1320,
+          448
+        ]
+      ],
+      "src": "clip-text",
+      "dst": "prepared-input"
+    },
+    {
+      "id": "links-prepared",
+      "points": [
+        [
+          1312,
+          624
+        ],
+        [
+          1320,
+          624
+        ],
+        [
+          1320,
+          448
+        ]
+      ],
+      "src": "region-matching",
+      "dst": "prepared-input"
+    },
+    {
+      "id": "prepared-branch",
+      "points": [
+        [
+          1320,
+          448
+        ],
+        [
+          1340,
+          448
+        ]
+      ],
+      "src": "prepared-input",
+      "dst": "prepared-fork"
+    },
+    {
+      "id": "object-slots-attention",
+      "points": [
+        [
+          1448,
+          256
+        ],
+        [
+          1480,
+          256
+        ]
+      ],
+      "src": "object-slots",
+      "dst": "object-attention"
+    },
+    {
+      "id": "object-attention-sum",
+      "points": [
+        [
+          1592,
+          256
+        ],
+        [
+          1606,
+          256
+        ]
+      ],
+      "src": "object-attention",
+      "dst": "object-sum"
+    },
+    {
+      "id": "object-sum-output",
+      "points": [
+        [
+          1642,
+          256
+        ],
+        [
+          1664,
+          256
+        ]
+      ],
+      "src": "object-sum",
+      "dst": "object-updated"
+    },
+    {
+      "id": "relation-slots-attention",
+      "points": [
+        [
+          1448,
+          576
+        ],
+        [
+          1480,
+          576
+        ]
+      ],
+      "src": "relation-slots",
+      "dst": "relation-attention"
+    },
+    {
+      "id": "relation-attention-sum",
+      "points": [
+        [
+          1592,
+          576
+        ],
+        [
+          1606,
+          576
+        ]
+      ],
+      "src": "relation-attention",
+      "dst": "relation-sum"
+    },
+    {
+      "id": "relation-sum-output",
+      "points": [
+        [
+          1642,
+          576
+        ],
+        [
+          1664,
+          576
+        ]
+      ],
+      "src": "relation-sum",
+      "dst": "relation-updated"
+    },
+    {
+      "id": "prepared-object-slots",
+      "points": [
+        [
+          1340,
+          448
+        ],
+        [
+          1340,
+          304
+        ],
+        [
+          1392,
+          304
+        ],
+        [
+          1392,
+          288
+        ]
+      ],
+      "src": "prepared-fork",
+      "dst": "object-slots"
+    },
+    {
+      "id": "prepared-relation-slots",
+      "points": [
+        [
+          1340,
+          448
+        ],
+        [
+          1360,
+          448
+        ],
+        [
+          1360,
+          528
+        ],
+        [
+          1392,
+          528
+        ],
+        [
+          1392,
+          544
+        ]
+      ],
+      "src": "prepared-fork",
+      "dst": "relation-slots"
+    },
+    {
+      "id": "vo-adapter",
+      "points": [
+        [
+          1004,
+          192
+        ],
+        [
+          1024,
+          192
+        ],
+        [
+          1024,
+          112
+        ],
+        [
+          1536,
+          112
+        ]
+      ],
+      "src": "vo",
+      "dst": "object-visual-fork"
+    },
+    {
+      "id": "object-visual-query",
+      "points": [
+        [
+          1536,
+          112
+        ],
+        [
+          1536,
+          224
+        ]
+      ],
+      "src": "object-visual-fork",
+      "dst": "object-attention"
+    },
+    {
+      "id": "object-residual",
+      "points": [
+        [
+          1536,
+          112
+        ],
+        [
+          1624,
+          112
+        ],
+        [
+          1624,
+          238
+        ]
+      ],
+      "src": "object-visual-fork",
+      "dst": "object-sum"
+    },
+    {
+      "id": "vr-adapter",
+      "points": [
+        [
+          1004,
+          384
+        ],
+        [
+          1024,
+          384
+        ],
+        [
+          1024,
+          704
+        ],
+        [
+          1536,
+          704
+        ]
+      ],
+      "src": "vr",
+      "dst": "relation-visual-fork"
+    },
+    {
+      "id": "relation-visual-query",
+      "points": [
+        [
+          1536,
+          704
+        ],
+        [
+          1536,
+          608
+        ]
+      ],
+      "src": "relation-visual-fork",
+      "dst": "relation-attention"
+    },
+    {
+      "id": "relation-residual",
+      "points": [
+        [
+          1536,
+          704
+        ],
+        [
+          1624,
+          704
+        ],
+        [
+          1624,
+          594
+        ]
+      ],
+      "src": "relation-visual-fork",
+      "dst": "relation-sum"
+    },
+    {
+      "id": "object-memory-decoder",
+      "points": [
+        [
+          1684,
+          256
+        ],
+        [
+          1744,
+          256
+        ]
+      ],
+      "src": "object-updated",
+      "dst": "parallel-attention"
+    },
+    {
+      "id": "relation-memory-decoder",
+      "points": [
+        [
+          1684,
+          576
+        ],
+        [
+          1704,
+          576
+        ],
+        [
+          1704,
+          280
+        ],
+        [
+          1744,
+          280
+        ]
+      ],
+      "src": "relation-updated",
+      "dst": "parallel-attention"
+    },
+    {
+      "id": "self-cross",
+      "points": [
+        [
+          1864,
+          336
+        ],
+        [
+          1864,
+          304
+        ]
+      ],
+      "src": "masked-self-attention",
+      "dst": "parallel-attention"
+    },
+    {
+      "id": "cross-ffn",
+      "points": [
+        [
+          1864,
+          224
+        ],
+        [
+          1864,
+          192
+        ]
+      ],
+      "src": "parallel-attention",
+      "dst": "gated-ffn"
+    },
+    {
+      "id": "prefix-embedding",
+      "points": [
+        [
+          1864,
+          608
+        ],
+        [
+          1864,
+          560
+        ]
+      ],
+      "src": "prefix",
+      "dst": "embedding"
+    },
+    {
+      "id": "embedding-self",
+      "points": [
+        [
+          1864,
+          488
+        ],
+        [
+          1864,
+          400
+        ]
+      ],
+      "src": "embedding",
+      "dst": "masked-self-attention"
+    },
+    {
+      "id": "decoder-vocab",
+      "points": [
+        [
+          1984,
+          160
+        ],
+        [
+          2024,
+          160
+        ]
+      ],
+      "src": "gated-ffn",
+      "dst": "vocab"
+    },
+    {
+      "id": "vocab-beam",
+      "points": [
+        [
+          2184,
+          192
+        ],
+        [
+          2184,
+          248
+        ]
+      ],
+      "src": "vocab",
+      "dst": "beam"
+    },
+    {
+      "id": "beam-candidates",
+      "points": [
+        [
+          2184,
+          312
+        ],
+        [
+          2184,
+          360
+        ]
+      ],
+      "src": "beam",
+      "dst": "candidates"
+    },
+    {
+      "id": "candidates-rerank",
+      "points": [
+        [
+          2184,
+          440
+        ],
+        [
+          2184,
+          464
+        ]
+      ],
+      "src": "candidates",
+      "dst": null
+    },
+    {
+      "id": "d-select",
+      "points": [
+        [
+          2320,
+          548
+        ],
+        [
+          2352,
+          548
+        ],
+        [
+          2352,
+          812
+        ],
+        [
+          2240,
+          812
+        ],
+        [
+          2240,
+          824
+        ]
+      ],
+      "src": "likelihood",
+      "dst": "select"
+    },
+    {
+      "id": "c-select",
+      "points": [
+        [
+          2320,
+          636
+        ],
+        [
+          2340,
+          636
+        ],
+        [
+          2340,
+          808
+        ],
+        [
+          2176,
+          808
+        ],
+        [
+          2176,
+          824
+        ]
+      ],
+      "src": "alignment",
+      "dst": "select"
+    },
+    {
+      "id": "o-select",
+      "points": [
+        [
+          2320,
+          724
+        ],
+        [
+          2328,
+          724
+        ],
+        [
+          2328,
+          804
+        ],
+        [
+          2112,
+          804
+        ],
+        [
+          2112,
+          824
+        ]
+      ],
+      "src": "consistency",
+      "dst": "select"
+    },
+    {
+      "id": "rerank-evidence",
+      "points": [
+        [
+          2072,
+          916
+        ],
+        [
+          2072,
+          904
+        ]
+      ],
+      "src": null,
+      "dst": null
+    },
+    {
+      "id": "selection-final",
+      "points": [
+        [
+          2272,
+          904
+        ],
+        [
+          2272,
+          952
+        ]
+      ],
+      "src": null,
+      "dst": "final-caption"
+    }
+  ]
+}

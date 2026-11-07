@@ -1,0 +1,54 @@
+{
+  "status": "PASS",
+  "routes_checked": 60,
+  "nodes_checked": 51,
+  "issues": [],
+  "pdfs": {
+    "captioning-pipeline-compact.pdf": {
+      "pages": 1,
+      "text_characters": 1286,
+      "raster_images": 1,
+      "vector_drawings": 262
+    }
+  },
+  "render_report": "render_audit.json",
+  "source_brief_sha256": "88d3c1a4d8a9ea8899d229ad08fa1f840597538dc47b2d9722f8b7039f34c98d",
+  "limits": "Compact technical-flow variant follows the user-approved 07/11 layout revision; the original input photo has no added overlays, and diagrams/tokens are not newly measured model output. Geometry checks use conservative axis-aligned envelopes; SVG connectors use straight orthogonal segments and sharp 90-degree elbows.",
+  "content_checks": {
+    "forbidden_method_labels_absent": true,
+    "qkv_head_init_details_absent": true,
+    "one_illustrative_image": true,
+    "training_line_outside_inference": true,
+    "two_named_memory_rails": true,
+    "no_duplicated_overview_or_zoom_guides": true,
+    "updated_memories_appear_once": true,
+    "visual_query_and_residual_paths_present": true,
+    "original_image_without_box_overlays": true,
+    "data_rectangles_are_square_cornered": true
+  },
+  "colored_badges": {
+    "frozen": "#1677B8",
+    "trainable_stroke": "#D95F1A",
+    "trainable_fill": "#F6A23A"
+  },
+  "straight_orthogonal_connectors": true,
+  "parameter_badges": {
+    "clip-visual": "frozen",
+    "yolo": "frozen",
+    "bank-text-encoder": "frozen",
+    "upt": "frozen",
+    "clip-text": "frozen",
+    "alignment": "frozen",
+    "projection": "trainable",
+    "noun-aggregation": "trainable",
+    "verb-aggregation": "trainable",
+    "object-fusion-1": "trainable",
+    "object-fusion-2": "trainable",
+    "relation-fusion": "trainable",
+    "embedding": "trainable",
+    "vocab": "trainable",
+    "decoder": "trainable",
+    "object-adapter": "trainable",
+    "relation-adapter": "trainable"
+  }
+}
