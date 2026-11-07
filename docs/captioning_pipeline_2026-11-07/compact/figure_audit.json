@@ -6,7 +6,7 @@
   "pdfs": {
     "captioning-pipeline-compact.pdf": {
       "pages": 1,
-      "text_characters": 1286,
+      "text_characters": 1321,
       "raster_images": 1,
       "vector_drawings": 262
     }
@@ -26,6 +26,8 @@
     "original_image_without_box_overlays": true,
     "data_rectangles_are_square_cornered": true
   },
+  "slot_input_labels_and_rerank_caption": true,
+  "aggregation_badges_clear_of_prototype_dimensions": true,
   "colored_badges": {
     "frozen": "#1677B8",
     "trainable_stroke": "#D95F1A",

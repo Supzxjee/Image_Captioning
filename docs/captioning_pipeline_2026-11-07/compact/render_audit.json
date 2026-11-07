@@ -1,5 +1,6 @@
 {
   "captioning-pipeline-compact": {
+    "aggregationBadgeLabelOverlap": [],
     "viewBox": [
       0,
       0,
@@ -7,7 +8,7 @@
       1120
     ],
     "overflow": [],
-    "textNodes": 96,
+    "textNodes": 100,
     "font": "Arial, \"Liberation Sans\", sans-serif"
   }
 }

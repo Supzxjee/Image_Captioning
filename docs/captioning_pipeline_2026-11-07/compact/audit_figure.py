@@ -35,6 +35,7 @@ for a,b in combinations(G['nodes'],2):
 render=json.loads((ROOT/'render_audit.json').read_text())
 for slug,r in render.items():
  if r['overflow']:issues.append(['text-overflow',slug,r['overflow']])
+ if r.get('aggregationBadgeLabelOverlap'):issues.append(['aggregation-badge-label-overlap',slug,r['aggregationBadgeLabelOverlap']])
 pdfs={}
 for path in ROOT.glob('*.pdf'):
  with fitz.open(path) as doc:
@@ -77,6 +78,15 @@ for group in svg.findall('.//s:g',ns):
  if kind:assert group.get('stroke')==('#1677B8' if kind=='frozen' else '#D95F1A')
 for path in svg.findall('.//s:path',ns):
  if path.get('data-edge'):assert not re.search('[QqCcAaSsTt]',path.get('d','')),path.get('data-edge')
+assert visible.count('Slot MLP')==2
+assert 'tₒ + Vₒ[i] + box' in visible
+assert 'tᵣ + Vₒ[s], Vₒ[o] + boxes' in visible
+assert 'Linked slots' not in visible
+assert 'S = 0.3D + 0.4C + 0.3O' in (ROOT/'captioning-pipeline-compact.html').read_text()
+for key in ['prepared-object-slots','prepared-relation-slots','d-select','c-select','o-select']:
+ route=next(r for r in G['routes'] if r['id']==key);assert len(route['points'])==2,key
+report['slot_input_labels_and_rerank_caption']=True
+report['aggregation_badges_clear_of_prototype_dimensions']=True
 report['colored_badges']={'frozen':'#1677B8','trainable_stroke':'#D95F1A','trainable_fill':'#F6A23A'}
 report['straight_orthogonal_connectors']=True
 report['parameter_badges']=badges
