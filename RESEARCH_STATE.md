@@ -10,6 +10,8 @@ Cập nhật: 07/11/2026, giờ Việt Nam. File này là bản tóm tắt để
 
 ## Hiện đang ở đâu
 
+- **07/11 V4 mở cơ chế theo brief mới: COMPLETE.** [SVG/PDF/PNG/panel/caption/QA](docs/captioning_pipeline_2026-11-07/mechanisms_v4/README.md): master3600×3776, PNG7200×7552; overview + ROI weighted pooling + A bank/aggregation, B fusion chung, C UPT/matching/hai adapter, D decoder, E rerank, F training; PDF8trang panel riêng. Đủ QKV/residual/concat Vo gốc/zero-init/e thô/3fusion/2memory/selector .3-.4-.3; Stage2 XE tính lại current batch, SCST sampled logp+detached CIDEr advantage. 175routes/164nodes không giao/chồng/transit; Chromium text/icon/loose-label/canvas/hash PASS, skill checks9HTML PASS; đã xem PNG và PDF. MasterPDF1trang/671vector drawings/1ảnh gốc. Chỉ đồ họa/static, không sửa hoặc chạy model/notebook/metric/Word/Sheet; V3 giữ nguyên.
+
 - **07/11 giao ảnhI vàbbox đểchènpipeline.** [Assets/provenance](docs/visual_region_extraction_2026-11-07/examples/README.md), COCOtrain263974. Tìm lạioriginaldetectorJSONlocal trongCode/.tmp/hoi_caption_validation_audit/inputs; toànfileSHA498825da… khớpDETECTION_SHA. Đãrender20cachedbboxvàbảngọn5person/bicyclebboxthật (display-onlyfilterghiJSON), inputphoto sạch; đãxem/copy3ảnhDownloads. Khôngmodel/detectorforward hoặcvẽbboxgiả. YOLOproducer/versionvẫnunknown; khôngđổicache/metrics/Word/Sheet.
 
 - **07/11 redraw Visualregionextraction COMPLETE.** [SVG/PNG/source/QA](docs/visual_region_extraction_2026-11-07/README.md), Downloads Visual_region_extraction_07_11_2026.svg/png. Userapprovedroundedmodules/squaredata: frozenCLIPViT-B16,YOLOgeneric→patch/Bcoordinates→ROIpool→Linear768-512→V; cleaninputphoto,no fabricatedbbox. Fourroundedmodule/XML+PNG1800×2880+visualQA PASS. No model/metric/Word/Sheet changes.

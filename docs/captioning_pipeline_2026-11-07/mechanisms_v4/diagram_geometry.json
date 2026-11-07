@@ -1,0 +1,4511 @@
+[
+  {
+    "slug": "panel-overview-v4",
+    "w": 3600,
+    "h": 688,
+    "title": "Image captioning architecture · overview",
+    "nodes": [
+      {
+        "id": "o-image",
+        "x": 56,
+        "y": 320,
+        "w": 144,
+        "h": 108,
+        "kind": "image"
+      },
+      {
+        "id": "o-clip",
+        "x": 248,
+        "y": 176,
+        "w": 208,
+        "h": 64,
+        "kind": "module"
+      },
+      {
+        "id": "o-patches",
+        "x": 248,
+        "y": 280,
+        "w": 208,
+        "h": 64,
+        "kind": "data"
+      },
+      {
+        "id": "o-yolo",
+        "x": 248,
+        "y": 456,
+        "w": 208,
+        "h": 64,
+        "kind": "module"
+      },
+      {
+        "id": "o-boxes",
+        "x": 248,
+        "y": 560,
+        "w": 208,
+        "h": 64,
+        "kind": "data"
+      },
+      {
+        "id": "o-roi",
+        "x": 512,
+        "y": 320,
+        "w": 192,
+        "h": 80,
+        "kind": "module"
+      },
+      {
+        "id": "o-descriptors",
+        "x": 512,
+        "y": 448,
+        "w": 192,
+        "h": 64,
+        "kind": "data"
+      },
+      {
+        "id": "o-project",
+        "x": 512,
+        "y": 560,
+        "w": 192,
+        "h": 64,
+        "kind": "module"
+      },
+      {
+        "id": "o-object1",
+        "x": 792,
+        "y": 208,
+        "w": 176,
+        "h": 80,
+        "kind": "module"
+      },
+      {
+        "id": "o-object2",
+        "x": 1016,
+        "y": 208,
+        "w": 176,
+        "h": 80,
+        "kind": "module"
+      },
+      {
+        "id": "o-relation",
+        "x": 1016,
+        "y": 432,
+        "w": 176,
+        "h": 80,
+        "kind": "module"
+      },
+      {
+        "id": "o-Pn",
+        "x": 792,
+        "y": 88,
+        "w": 176,
+        "h": 64,
+        "kind": "data"
+      },
+      {
+        "id": "o-Pv",
+        "x": 792,
+        "y": 440,
+        "w": 176,
+        "h": 64,
+        "kind": "data"
+      },
+      {
+        "id": "o-Vo",
+        "x": 1240,
+        "y": 216,
+        "w": 136,
+        "h": 64,
+        "kind": "data"
+      },
+      {
+        "id": "o-Vr",
+        "x": 1240,
+        "y": 440,
+        "w": 136,
+        "h": 64,
+        "kind": "data"
+      },
+      {
+        "id": "o-vo-fork",
+        "x": 1396,
+        "y": 244,
+        "w": 8,
+        "h": 8,
+        "kind": "junction"
+      },
+      {
+        "id": "o-object-adapter",
+        "x": 2112,
+        "y": 208,
+        "w": 288,
+        "h": 80,
+        "kind": "module"
+      },
+      {
+        "id": "o-relation-adapter",
+        "x": 2112,
+        "y": 432,
+        "w": 288,
+        "h": 80,
+        "kind": "module"
+      },
+      {
+        "id": "o-upt",
+        "x": 1480,
+        "y": 552,
+        "w": 192,
+        "h": 64,
+        "kind": "module"
+      },
+      {
+        "id": "o-phrases",
+        "x": 1720,
+        "y": 552,
+        "w": 176,
+        "h": 64,
+        "kind": "data"
+      },
+      {
+        "id": "o-prompt-text",
+        "x": 1944,
+        "y": 552,
+        "w": 200,
+        "h": 64,
+        "kind": "module"
+      },
+      {
+        "id": "o-matching",
+        "x": 1480,
+        "y": 132,
+        "w": 528,
+        "h": 64,
+        "kind": "module"
+      },
+      {
+        "id": "o-decoder",
+        "x": 2504,
+        "y": 208,
+        "w": 424,
+        "h": 304,
+        "kind": "module"
+      },
+      {
+        "id": "o-beam",
+        "x": 3024,
+        "y": 208,
+        "w": 520,
+        "h": 80,
+        "kind": "module"
+      },
+      {
+        "id": "o-candidates",
+        "x": 3024,
+        "y": 336,
+        "w": 520,
+        "h": 64,
+        "kind": "data"
+      },
+      {
+        "id": "o-rerank",
+        "x": 3024,
+        "y": 448,
+        "w": 520,
+        "h": 80,
+        "kind": "module"
+      },
+      {
+        "id": "o-final",
+        "x": 3024,
+        "y": 576,
+        "w": 520,
+        "h": 56,
+        "kind": "data"
+      }
+    ],
+    "routes": [
+      {
+        "id": "o-image-clip",
+        "points": [
+          [
+            128,
+            320
+          ],
+          [
+            128,
+            208
+          ],
+          [
+            248,
+            208
+          ]
+        ],
+        "src": "o-image",
+        "dst": "o-clip",
+        "guide": false
+      },
+      {
+        "id": "o-image-yolo",
+        "points": [
+          [
+            128,
+            428
+          ],
+          [
+            128,
+            488
+          ],
+          [
+            248,
+            488
+          ]
+        ],
+        "src": "o-image",
+        "dst": "o-yolo",
+        "guide": false
+      },
+      {
+        "id": "o-clip-patches",
+        "points": [
+          [
+            352,
+            240
+          ],
+          [
+            352,
+            280
+          ]
+        ],
+        "src": "o-clip",
+        "dst": "o-patches",
+        "guide": false
+      },
+      {
+        "id": "o-yolo-boxes",
+        "points": [
+          [
+            352,
+            520
+          ],
+          [
+            352,
+            560
+          ]
+        ],
+        "src": "o-yolo",
+        "dst": "o-boxes",
+        "guide": false
+      },
+      {
+        "id": "o-patches-roi",
+        "points": [
+          [
+            456,
+            312
+          ],
+          [
+            480,
+            312
+          ],
+          [
+            480,
+            344
+          ],
+          [
+            512,
+            344
+          ]
+        ],
+        "src": "o-patches",
+        "dst": "o-roi",
+        "guide": false
+      },
+      {
+        "id": "o-boxes-roi",
+        "points": [
+          [
+            456,
+            592
+          ],
+          [
+            488,
+            592
+          ],
+          [
+            488,
+            376
+          ],
+          [
+            512,
+            376
+          ]
+        ],
+        "src": "o-boxes",
+        "dst": "o-roi",
+        "guide": false
+      },
+      {
+        "id": "o-roi-descriptors",
+        "points": [
+          [
+            608,
+            400
+          ],
+          [
+            608,
+            448
+          ]
+        ],
+        "src": "o-roi",
+        "dst": "o-descriptors",
+        "guide": false
+      },
+      {
+        "id": "o-descriptors-projection",
+        "points": [
+          [
+            608,
+            512
+          ],
+          [
+            608,
+            560
+          ]
+        ],
+        "src": "o-descriptors",
+        "dst": "o-project",
+        "guide": false
+      },
+      {
+        "id": "o-visual-semantic",
+        "points": [
+          [
+            704,
+            592
+          ],
+          [
+            744,
+            592
+          ],
+          [
+            744,
+            248
+          ],
+          [
+            792,
+            248
+          ]
+        ],
+        "src": "o-project",
+        "dst": "o-object1",
+        "guide": false
+      },
+      {
+        "id": "o-Pn-object1",
+        "points": [
+          [
+            880,
+            152
+          ],
+          [
+            880,
+            208
+          ]
+        ],
+        "src": "o-Pn",
+        "dst": "o-object1",
+        "guide": false
+      },
+      {
+        "id": "o-object1-object2",
+        "points": [
+          [
+            968,
+            248
+          ],
+          [
+            1016,
+            248
+          ]
+        ],
+        "src": "o-object1",
+        "dst": "o-object2",
+        "guide": false
+      },
+      {
+        "id": "o-object2-Vo",
+        "points": [
+          [
+            1192,
+            248
+          ],
+          [
+            1240,
+            248
+          ]
+        ],
+        "src": "o-object2",
+        "dst": "o-Vo",
+        "guide": false
+      },
+      {
+        "id": "o-vo-fork-edge",
+        "points": [
+          [
+            1376,
+            248
+          ],
+          [
+            1400,
+            248
+          ]
+        ],
+        "src": "o-Vo",
+        "dst": "o-vo-fork",
+        "guide": true
+      },
+      {
+        "id": "o-vo-relation",
+        "points": [
+          [
+            1400,
+            248
+          ],
+          [
+            1400,
+            376
+          ],
+          [
+            1104,
+            376
+          ],
+          [
+            1104,
+            432
+          ]
+        ],
+        "src": "o-vo-fork",
+        "dst": "o-relation",
+        "guide": false
+      },
+      {
+        "id": "o-Pv-relation",
+        "points": [
+          [
+            968,
+            472
+          ],
+          [
+            1016,
+            472
+          ]
+        ],
+        "src": "o-Pv",
+        "dst": "o-relation",
+        "guide": false
+      },
+      {
+        "id": "o-relation-Vr",
+        "points": [
+          [
+            1192,
+            472
+          ],
+          [
+            1240,
+            472
+          ]
+        ],
+        "src": "o-relation",
+        "dst": "o-Vr",
+        "guide": false
+      },
+      {
+        "id": "o-vo-adapter",
+        "points": [
+          [
+            1400,
+            248
+          ],
+          [
+            2112,
+            248
+          ]
+        ],
+        "src": "o-vo-fork",
+        "dst": "o-object-adapter",
+        "guide": false
+      },
+      {
+        "id": "o-vr-adapter",
+        "points": [
+          [
+            1376,
+            472
+          ],
+          [
+            2112,
+            472
+          ]
+        ],
+        "src": "o-Vr",
+        "dst": "o-relation-adapter",
+        "guide": false
+      },
+      {
+        "id": "o-upt-phrases",
+        "points": [
+          [
+            1672,
+            584
+          ],
+          [
+            1720,
+            584
+          ]
+        ],
+        "src": "o-upt",
+        "dst": "o-phrases",
+        "guide": false
+      },
+      {
+        "id": "o-phrases-text",
+        "points": [
+          [
+            1896,
+            584
+          ],
+          [
+            1944,
+            584
+          ]
+        ],
+        "src": "o-phrases",
+        "dst": "o-prompt-text",
+        "guide": false
+      },
+      {
+        "id": "o-object-memory-decoder",
+        "points": [
+          [
+            2400,
+            248
+          ],
+          [
+            2504,
+            248
+          ]
+        ],
+        "src": "o-object-adapter",
+        "dst": "o-decoder",
+        "guide": false
+      },
+      {
+        "id": "o-relation-memory-decoder",
+        "points": [
+          [
+            2400,
+            472
+          ],
+          [
+            2504,
+            472
+          ]
+        ],
+        "src": "o-relation-adapter",
+        "dst": "o-decoder",
+        "guide": false
+      },
+      {
+        "id": "o-decoder-beam",
+        "points": [
+          [
+            2928,
+            248
+          ],
+          [
+            3024,
+            248
+          ]
+        ],
+        "src": "o-decoder",
+        "dst": "o-beam",
+        "guide": false
+      },
+      {
+        "id": "o-beam-candidates",
+        "points": [
+          [
+            3284,
+            288
+          ],
+          [
+            3284,
+            336
+          ]
+        ],
+        "src": "o-beam",
+        "dst": "o-candidates",
+        "guide": false
+      },
+      {
+        "id": "o-candidates-rerank",
+        "points": [
+          [
+            3284,
+            400
+          ],
+          [
+            3284,
+            448
+          ]
+        ],
+        "src": "o-candidates",
+        "dst": "o-rerank",
+        "guide": false
+      },
+      {
+        "id": "o-rerank-final",
+        "points": [
+          [
+            3284,
+            528
+          ],
+          [
+            3284,
+            576
+          ]
+        ],
+        "src": "o-rerank",
+        "dst": "o-final",
+        "guide": false
+      }
+    ]
+  },
+  {
+    "slug": "panel-a-banks-v4",
+    "w": 1040,
+    "h": 1140,
+    "title": "A · TRAIN banks and semantic aggregation",
+    "nodes": [
+      {
+        "id": "a-train",
+        "x": 32,
+        "y": 96,
+        "w": 208,
+        "h": 72,
+        "kind": "data"
+      },
+      {
+        "id": "a-pos",
+        "x": 288,
+        "y": 96,
+        "w": 208,
+        "h": 72,
+        "kind": "module"
+      },
+      {
+        "id": "a-lemmas",
+        "x": 544,
+        "y": 96,
+        "w": 208,
+        "h": 72,
+        "kind": "data"
+      },
+      {
+        "id": "a-text",
+        "x": 800,
+        "y": 96,
+        "w": 208,
+        "h": 72,
+        "kind": "module"
+      },
+      {
+        "id": "a-nouns",
+        "x": 544,
+        "y": 240,
+        "w": 208,
+        "h": 64,
+        "kind": "data"
+      },
+      {
+        "id": "a-verbs",
+        "x": 800,
+        "y": 240,
+        "w": 208,
+        "h": 64,
+        "kind": "data"
+      },
+      {
+        "id": "a-noun-agg",
+        "x": 544,
+        "y": 352,
+        "w": 208,
+        "h": 80,
+        "kind": "module"
+      },
+      {
+        "id": "a-noun-p",
+        "x": 544,
+        "y": 480,
+        "w": 208,
+        "h": 64,
+        "kind": "data"
+      },
+      {
+        "id": "a-verb-agg",
+        "x": 800,
+        "y": 352,
+        "w": 208,
+        "h": 80,
+        "kind": "module"
+      },
+      {
+        "id": "a-verb-p",
+        "x": 800,
+        "y": 480,
+        "w": 208,
+        "h": 64,
+        "kind": "data"
+      },
+      {
+        "id": "a-E",
+        "x": 48,
+        "y": 744,
+        "w": 104,
+        "h": 64,
+        "kind": "data"
+      },
+      {
+        "id": "a-bank-fork",
+        "x": 172,
+        "y": 772,
+        "w": 8,
+        "h": 8,
+        "kind": "junction"
+      },
+      {
+        "id": "a-wa",
+        "x": 224,
+        "y": 696,
+        "w": 128,
+        "h": 64,
+        "kind": "module"
+      },
+      {
+        "id": "a-mlp",
+        "x": 400,
+        "y": 696,
+        "w": 144,
+        "h": 64,
+        "kind": "module"
+      },
+      {
+        "id": "a-softmax",
+        "x": 592,
+        "y": 696,
+        "w": 184,
+        "h": 64,
+        "kind": "module"
+      },
+      {
+        "id": "a-A",
+        "x": 824,
+        "y": 696,
+        "w": 144,
+        "h": 64,
+        "kind": "data"
+      },
+      {
+        "id": "a-wb",
+        "x": 224,
+        "y": 872,
+        "w": 200,
+        "h": 64,
+        "kind": "module"
+      },
+      {
+        "id": "a-transformed",
+        "x": 472,
+        "y": 872,
+        "w": 256,
+        "h": 64,
+        "kind": "data"
+      },
+      {
+        "id": "a-product",
+        "x": 824,
+        "y": 872,
+        "w": 144,
+        "h": 64,
+        "kind": "module"
+      }
+    ],
+    "routes": [
+      {
+        "id": "a-train-next",
+        "points": [
+          [
+            240,
+            132
+          ],
+          [
+            288,
+            132
+          ]
+        ],
+        "src": "a-train",
+        "dst": "a-pos",
+        "guide": false
+      },
+      {
+        "id": "a-pos-next",
+        "points": [
+          [
+            496,
+            132
+          ],
+          [
+            544,
+            132
+          ]
+        ],
+        "src": "a-pos",
+        "dst": "a-lemmas",
+        "guide": false
+      },
+      {
+        "id": "a-lemmas-next",
+        "points": [
+          [
+            752,
+            132
+          ],
+          [
+            800,
+            132
+          ]
+        ],
+        "src": "a-lemmas",
+        "dst": "a-text",
+        "guide": false
+      },
+      {
+        "id": "a-text-nouns",
+        "points": [
+          [
+            848,
+            168
+          ],
+          [
+            848,
+            200
+          ],
+          [
+            648,
+            200
+          ],
+          [
+            648,
+            240
+          ]
+        ],
+        "src": "a-text",
+        "dst": "a-nouns",
+        "guide": false
+      },
+      {
+        "id": "a-text-verbs",
+        "points": [
+          [
+            952,
+            168
+          ],
+          [
+            952,
+            216
+          ],
+          [
+            904,
+            216
+          ],
+          [
+            904,
+            240
+          ]
+        ],
+        "src": "a-text",
+        "dst": "a-verbs",
+        "guide": false
+      },
+      {
+        "id": "a-noun-aggregate",
+        "points": [
+          [
+            648,
+            304
+          ],
+          [
+            648,
+            352
+          ]
+        ],
+        "src": "a-nouns",
+        "dst": "a-noun-agg",
+        "guide": false
+      },
+      {
+        "id": "a-noun-prototype",
+        "points": [
+          [
+            648,
+            432
+          ],
+          [
+            648,
+            480
+          ]
+        ],
+        "src": "a-noun-agg",
+        "dst": "a-noun-p",
+        "guide": false
+      },
+      {
+        "id": "a-verb-aggregate",
+        "points": [
+          [
+            904,
+            304
+          ],
+          [
+            904,
+            352
+          ]
+        ],
+        "src": "a-verbs",
+        "dst": "a-verb-agg",
+        "guide": false
+      },
+      {
+        "id": "a-verb-prototype",
+        "points": [
+          [
+            904,
+            432
+          ],
+          [
+            904,
+            480
+          ]
+        ],
+        "src": "a-verb-agg",
+        "dst": "a-verb-p",
+        "guide": false
+      },
+      {
+        "id": "a-zoom",
+        "points": [
+          [
+            544,
+            392
+          ],
+          [
+            520,
+            392
+          ],
+          [
+            520,
+            576
+          ],
+          [
+            448,
+            576
+          ],
+          [
+            448,
+            608
+          ]
+        ],
+        "src": null,
+        "dst": null,
+        "guide": true
+      },
+      {
+        "id": "a-E-fork",
+        "points": [
+          [
+            152,
+            776
+          ],
+          [
+            176,
+            776
+          ]
+        ],
+        "src": "a-E",
+        "dst": "a-bank-fork",
+        "guide": true
+      },
+      {
+        "id": "a-wa-input",
+        "points": [
+          [
+            176,
+            776
+          ],
+          [
+            176,
+            728
+          ],
+          [
+            224,
+            728
+          ]
+        ],
+        "src": "a-bank-fork",
+        "dst": "a-wa",
+        "guide": false
+      },
+      {
+        "id": "a-wa-next",
+        "points": [
+          [
+            352,
+            728
+          ],
+          [
+            400,
+            728
+          ]
+        ],
+        "src": "a-wa",
+        "dst": "a-mlp",
+        "guide": false
+      },
+      {
+        "id": "a-mlp-next",
+        "points": [
+          [
+            544,
+            728
+          ],
+          [
+            592,
+            728
+          ]
+        ],
+        "src": "a-mlp",
+        "dst": "a-softmax",
+        "guide": false
+      },
+      {
+        "id": "a-softmax-next",
+        "points": [
+          [
+            776,
+            728
+          ],
+          [
+            824,
+            728
+          ]
+        ],
+        "src": "a-softmax",
+        "dst": "a-A",
+        "guide": false
+      },
+      {
+        "id": "a-wb-input",
+        "points": [
+          [
+            176,
+            776
+          ],
+          [
+            176,
+            904
+          ],
+          [
+            224,
+            904
+          ]
+        ],
+        "src": "a-bank-fork",
+        "dst": "a-wb",
+        "guide": false
+      },
+      {
+        "id": "a-wb-transformed",
+        "points": [
+          [
+            424,
+            904
+          ],
+          [
+            472,
+            904
+          ]
+        ],
+        "src": "a-wb",
+        "dst": "a-transformed",
+        "guide": false
+      },
+      {
+        "id": "a-transformed-product",
+        "points": [
+          [
+            728,
+            904
+          ],
+          [
+            824,
+            904
+          ]
+        ],
+        "src": "a-transformed",
+        "dst": "a-product",
+        "guide": false
+      },
+      {
+        "id": "a-weights-product",
+        "points": [
+          [
+            896,
+            760
+          ],
+          [
+            896,
+            872
+          ]
+        ],
+        "src": "a-A",
+        "dst": "a-product",
+        "guide": false
+      },
+      {
+        "id": "a-product-P",
+        "points": [
+          [
+            896,
+            936
+          ],
+          [
+            896,
+            976
+          ]
+        ],
+        "src": "a-product",
+        "dst": null,
+        "guide": false
+      }
+    ]
+  },
+  {
+    "slug": "panel-b-fusion-v4",
+    "w": 1200,
+    "h": 1140,
+    "title": "B · Semantic fusion mechanism",
+    "nodes": [
+      {
+        "id": "b-X",
+        "x": 32,
+        "y": 112,
+        "w": 176,
+        "h": 64,
+        "kind": "data"
+      },
+      {
+        "id": "b-P",
+        "x": 288,
+        "y": 112,
+        "w": 208,
+        "h": 64,
+        "kind": "data"
+      },
+      {
+        "id": "b-cosine",
+        "x": 32,
+        "y": 240,
+        "w": 208,
+        "h": 72,
+        "kind": "module"
+      },
+      {
+        "id": "b-region-softmax",
+        "x": 288,
+        "y": 240,
+        "w": 256,
+        "h": 72,
+        "kind": "module"
+      },
+      {
+        "id": "b-relevance",
+        "x": 592,
+        "y": 240,
+        "w": 240,
+        "h": 72,
+        "kind": "module"
+      },
+      {
+        "id": "b-proto-softmax",
+        "x": 880,
+        "y": 240,
+        "w": 272,
+        "h": 72,
+        "kind": "module"
+      },
+      {
+        "id": "b-T",
+        "x": 880,
+        "y": 360,
+        "w": 272,
+        "h": 64,
+        "kind": "data"
+      },
+      {
+        "id": "b-X-update",
+        "x": 32,
+        "y": 400,
+        "w": 280,
+        "h": 48,
+        "kind": "data"
+      },
+      {
+        "id": "b-x-fork",
+        "x": 168,
+        "y": 464,
+        "w": 8,
+        "h": 8,
+        "kind": "junction"
+      },
+      {
+        "id": "b-sa",
+        "x": 32,
+        "y": 488,
+        "w": 280,
+        "h": 64,
+        "kind": "module"
+      },
+      {
+        "id": "b-sa-norm",
+        "x": 32,
+        "y": 592,
+        "w": 280,
+        "h": 64,
+        "kind": "module"
+      },
+      {
+        "id": "b-ff-s",
+        "x": 32,
+        "y": 704,
+        "w": 280,
+        "h": 64,
+        "kind": "module"
+      },
+      {
+        "id": "b-ff-s-norm",
+        "x": 32,
+        "y": 816,
+        "w": 280,
+        "h": 64,
+        "kind": "module"
+      },
+      {
+        "id": "b-own-ff-fork",
+        "x": 168,
+        "y": 676,
+        "w": 8,
+        "h": 8,
+        "kind": "junction"
+      },
+      {
+        "id": "b-H",
+        "x": 32,
+        "y": 928,
+        "w": 280,
+        "h": 64,
+        "kind": "data"
+      },
+      {
+        "id": "b-ca",
+        "x": 448,
+        "y": 488,
+        "w": 280,
+        "h": 64,
+        "kind": "module"
+      },
+      {
+        "id": "b-ca-norm",
+        "x": 448,
+        "y": 592,
+        "w": 280,
+        "h": 64,
+        "kind": "module"
+      },
+      {
+        "id": "b-H-query-fork",
+        "x": 396,
+        "y": 620,
+        "w": 8,
+        "h": 8,
+        "kind": "junction"
+      },
+      {
+        "id": "b-H-output-fork",
+        "x": 396,
+        "y": 956,
+        "w": 8,
+        "h": 8,
+        "kind": "junction"
+      },
+      {
+        "id": "b-ff-c",
+        "x": 448,
+        "y": 704,
+        "w": 280,
+        "h": 64,
+        "kind": "module"
+      },
+      {
+        "id": "b-ff-c-norm",
+        "x": 448,
+        "y": 816,
+        "w": 280,
+        "h": 64,
+        "kind": "module"
+      },
+      {
+        "id": "b-cross-ff-fork",
+        "x": 584,
+        "y": 676,
+        "w": 8,
+        "h": 8,
+        "kind": "junction"
+      },
+      {
+        "id": "b-C",
+        "x": 448,
+        "y": 928,
+        "w": 280,
+        "h": 64,
+        "kind": "data"
+      },
+      {
+        "id": "b-gate-input",
+        "x": 864,
+        "y": 552,
+        "w": 288,
+        "h": 64,
+        "kind": "data"
+      },
+      {
+        "id": "b-gate",
+        "x": 864,
+        "y": 672,
+        "w": 288,
+        "h": 80,
+        "kind": "module"
+      },
+      {
+        "id": "b-mix",
+        "x": 864,
+        "y": 800,
+        "w": 288,
+        "h": 80,
+        "kind": "module"
+      },
+      {
+        "id": "b-updated",
+        "x": 864,
+        "y": 928,
+        "w": 288,
+        "h": 64,
+        "kind": "data"
+      }
+    ],
+    "routes": [
+      {
+        "id": "b-X-cosine",
+        "points": [
+          [
+            88,
+            176
+          ],
+          [
+            88,
+            240
+          ]
+        ],
+        "src": "b-X",
+        "dst": "b-cosine",
+        "guide": false
+      },
+      {
+        "id": "b-P-cosine",
+        "points": [
+          [
+            392,
+            176
+          ],
+          [
+            392,
+            208
+          ],
+          [
+            184,
+            208
+          ],
+          [
+            184,
+            240
+          ]
+        ],
+        "src": "b-P",
+        "dst": "b-cosine",
+        "guide": false
+      },
+      {
+        "id": "b-cosine-next",
+        "points": [
+          [
+            240,
+            276
+          ],
+          [
+            288,
+            276
+          ]
+        ],
+        "src": "b-cosine",
+        "dst": "b-region-softmax",
+        "guide": false
+      },
+      {
+        "id": "b-region-softmax-next",
+        "points": [
+          [
+            544,
+            276
+          ],
+          [
+            592,
+            276
+          ]
+        ],
+        "src": "b-region-softmax",
+        "dst": "b-relevance",
+        "guide": false
+      },
+      {
+        "id": "b-relevance-next",
+        "points": [
+          [
+            832,
+            276
+          ],
+          [
+            880,
+            276
+          ]
+        ],
+        "src": "b-relevance",
+        "dst": "b-proto-softmax",
+        "guide": false
+      },
+      {
+        "id": "b-selected-T",
+        "points": [
+          [
+            1016,
+            312
+          ],
+          [
+            1016,
+            360
+          ]
+        ],
+        "src": "b-proto-softmax",
+        "dst": "b-T",
+        "guide": false
+      },
+      {
+        "id": "b-X-update-fork",
+        "points": [
+          [
+            172,
+            448
+          ],
+          [
+            172,
+            468
+          ]
+        ],
+        "src": "b-X-update",
+        "dst": "b-x-fork",
+        "guide": true
+      },
+      {
+        "id": "b-x-sa",
+        "points": [
+          [
+            172,
+            468
+          ],
+          [
+            172,
+            488
+          ]
+        ],
+        "src": "b-x-fork",
+        "dst": "b-sa",
+        "guide": false
+      },
+      {
+        "id": "b-sa-norm",
+        "points": [
+          [
+            172,
+            552
+          ],
+          [
+            172,
+            592
+          ]
+        ],
+        "src": "b-sa",
+        "dst": "b-sa-norm",
+        "guide": false
+      },
+      {
+        "id": "b-sa-residual",
+        "points": [
+          [
+            172,
+            468
+          ],
+          [
+            336,
+            468
+          ],
+          [
+            336,
+            624
+          ],
+          [
+            312,
+            624
+          ]
+        ],
+        "src": "b-x-fork",
+        "dst": "b-sa-norm",
+        "guide": false
+      },
+      {
+        "id": "b-sa-ff-fork",
+        "points": [
+          [
+            172,
+            656
+          ],
+          [
+            172,
+            680
+          ]
+        ],
+        "src": "b-sa-norm",
+        "dst": "b-own-ff-fork",
+        "guide": true
+      },
+      {
+        "id": "b-own-ff",
+        "points": [
+          [
+            172,
+            680
+          ],
+          [
+            172,
+            704
+          ]
+        ],
+        "src": "b-own-ff-fork",
+        "dst": "b-ff-s",
+        "guide": false
+      },
+      {
+        "id": "b-own-ff-norm",
+        "points": [
+          [
+            172,
+            768
+          ],
+          [
+            172,
+            816
+          ]
+        ],
+        "src": "b-ff-s",
+        "dst": "b-ff-s-norm",
+        "guide": false
+      },
+      {
+        "id": "b-own-ff-residual",
+        "points": [
+          [
+            172,
+            680
+          ],
+          [
+            352,
+            680
+          ],
+          [
+            352,
+            848
+          ],
+          [
+            312,
+            848
+          ]
+        ],
+        "src": "b-own-ff-fork",
+        "dst": "b-ff-s-norm",
+        "guide": false
+      },
+      {
+        "id": "b-own-H",
+        "points": [
+          [
+            172,
+            880
+          ],
+          [
+            172,
+            928
+          ]
+        ],
+        "src": "b-ff-s-norm",
+        "dst": "b-H",
+        "guide": false
+      },
+      {
+        "id": "b-H-out",
+        "points": [
+          [
+            312,
+            960
+          ],
+          [
+            400,
+            960
+          ]
+        ],
+        "src": "b-H",
+        "dst": "b-H-output-fork",
+        "guide": true
+      },
+      {
+        "id": "b-H-query-bus",
+        "points": [
+          [
+            400,
+            960
+          ],
+          [
+            400,
+            624
+          ]
+        ],
+        "src": "b-H-output-fork",
+        "dst": "b-H-query-fork",
+        "guide": true
+      },
+      {
+        "id": "b-H-query",
+        "points": [
+          [
+            400,
+            624
+          ],
+          [
+            400,
+            520
+          ],
+          [
+            448,
+            520
+          ]
+        ],
+        "src": "b-H-query-fork",
+        "dst": "b-ca",
+        "guide": false
+      },
+      {
+        "id": "b-H-residual",
+        "points": [
+          [
+            400,
+            624
+          ],
+          [
+            448,
+            624
+          ]
+        ],
+        "src": "b-H-query-fork",
+        "dst": "b-ca-norm",
+        "guide": false
+      },
+      {
+        "id": "b-T-KV",
+        "points": [
+          [
+            1016,
+            424
+          ],
+          [
+            1016,
+            456
+          ],
+          [
+            588,
+            456
+          ],
+          [
+            588,
+            488
+          ]
+        ],
+        "src": "b-T",
+        "dst": "b-ca",
+        "guide": false
+      },
+      {
+        "id": "b-ca-norm",
+        "points": [
+          [
+            588,
+            552
+          ],
+          [
+            588,
+            592
+          ]
+        ],
+        "src": "b-ca",
+        "dst": "b-ca-norm",
+        "guide": false
+      },
+      {
+        "id": "b-cross-fork",
+        "points": [
+          [
+            588,
+            656
+          ],
+          [
+            588,
+            680
+          ]
+        ],
+        "src": "b-ca-norm",
+        "dst": "b-cross-ff-fork",
+        "guide": true
+      },
+      {
+        "id": "b-cross-ff",
+        "points": [
+          [
+            588,
+            680
+          ],
+          [
+            588,
+            704
+          ]
+        ],
+        "src": "b-cross-ff-fork",
+        "dst": "b-ff-c",
+        "guide": false
+      },
+      {
+        "id": "b-cross-ff-norm",
+        "points": [
+          [
+            588,
+            768
+          ],
+          [
+            588,
+            816
+          ]
+        ],
+        "src": "b-ff-c",
+        "dst": "b-ff-c-norm",
+        "guide": false
+      },
+      {
+        "id": "b-cross-ff-residual",
+        "points": [
+          [
+            588,
+            680
+          ],
+          [
+            752,
+            680
+          ],
+          [
+            752,
+            848
+          ],
+          [
+            728,
+            848
+          ]
+        ],
+        "src": "b-cross-ff-fork",
+        "dst": "b-ff-c-norm",
+        "guide": false
+      },
+      {
+        "id": "b-cross-C",
+        "points": [
+          [
+            588,
+            880
+          ],
+          [
+            588,
+            928
+          ]
+        ],
+        "src": "b-ff-c-norm",
+        "dst": "b-C",
+        "guide": false
+      },
+      {
+        "id": "b-concat-gate",
+        "points": [
+          [
+            1008,
+            616
+          ],
+          [
+            1008,
+            672
+          ]
+        ],
+        "src": "b-gate-input",
+        "dst": "b-gate",
+        "guide": false
+      },
+      {
+        "id": "b-gate-mix",
+        "points": [
+          [
+            1008,
+            752
+          ],
+          [
+            1008,
+            800
+          ]
+        ],
+        "src": "b-gate",
+        "dst": "b-mix",
+        "guide": false
+      },
+      {
+        "id": "b-C-mix",
+        "points": [
+          [
+            728,
+            960
+          ],
+          [
+            800,
+            960
+          ],
+          [
+            800,
+            824
+          ],
+          [
+            864,
+            824
+          ]
+        ],
+        "src": "b-C",
+        "dst": "b-mix",
+        "guide": false
+      },
+      {
+        "id": "b-H-mix",
+        "points": [
+          [
+            400,
+            960
+          ],
+          [
+            400,
+            1008
+          ],
+          [
+            824,
+            1008
+          ],
+          [
+            824,
+            856
+          ],
+          [
+            864,
+            856
+          ]
+        ],
+        "src": "b-H-output-fork",
+        "dst": "b-mix",
+        "guide": false
+      },
+      {
+        "id": "b-mix-updated",
+        "points": [
+          [
+            1008,
+            880
+          ],
+          [
+            1008,
+            928
+          ]
+        ],
+        "src": "b-mix",
+        "dst": "b-updated",
+        "guide": false
+      }
+    ]
+  },
+  {
+    "slug": "panel-c-adapters-v4",
+    "w": 1248,
+    "h": 1580,
+    "title": "C · Image-specific prompt–region alignment",
+    "nodes": [
+      {
+        "id": "cp-I",
+        "x": 48,
+        "y": 112,
+        "w": 144,
+        "h": 80,
+        "kind": "data"
+      },
+      {
+        "id": "cp-upt",
+        "x": 240,
+        "y": 112,
+        "w": 240,
+        "h": 80,
+        "kind": "module"
+      },
+      {
+        "id": "cp-phrases",
+        "x": 528,
+        "y": 112,
+        "w": 296,
+        "h": 80,
+        "kind": "data"
+      },
+      {
+        "id": "cp-text",
+        "x": 872,
+        "y": 112,
+        "w": 328,
+        "h": 80,
+        "kind": "module"
+      },
+      {
+        "id": "cp-upt-boxes",
+        "x": 240,
+        "y": 240,
+        "w": 240,
+        "h": 64,
+        "kind": "data"
+      },
+      {
+        "id": "cp-yolo-boxes",
+        "x": 48,
+        "y": 352,
+        "w": 432,
+        "h": 64,
+        "kind": "data"
+      },
+      {
+        "id": "cp-match",
+        "x": 528,
+        "y": 240,
+        "w": 296,
+        "h": 64,
+        "kind": "module"
+      },
+      {
+        "id": "cp-links",
+        "x": 872,
+        "y": 240,
+        "w": 328,
+        "h": 64,
+        "kind": "data"
+      },
+      {
+        "id": "cp-embeddings",
+        "x": 872,
+        "y": 352,
+        "w": 328,
+        "h": 64,
+        "kind": "data"
+      },
+      {
+        "id": "co-input",
+        "x": 48,
+        "y": 600,
+        "w": 552,
+        "h": 80,
+        "kind": "data"
+      },
+      {
+        "id": "co-concat",
+        "x": 256,
+        "y": 720,
+        "w": 344,
+        "h": 48,
+        "kind": "module"
+      },
+      {
+        "id": "co-mlp",
+        "x": 256,
+        "y": 808,
+        "w": 344,
+        "h": 80,
+        "kind": "module"
+      },
+      {
+        "id": "co-slots",
+        "x": 256,
+        "y": 928,
+        "w": 344,
+        "h": 56,
+        "kind": "data"
+      },
+      {
+        "id": "co-memory",
+        "x": 48,
+        "y": 1032,
+        "w": 144,
+        "h": 64,
+        "kind": "data"
+      },
+      {
+        "id": "co-memory-fork",
+        "x": 212,
+        "y": 1060,
+        "w": 8,
+        "h": 8,
+        "kind": "junction"
+      },
+      {
+        "id": "co-attention",
+        "x": 256,
+        "y": 1024,
+        "w": 344,
+        "h": 112,
+        "kind": "module"
+      },
+      {
+        "id": "co-output",
+        "x": 256,
+        "y": 1192,
+        "w": 344,
+        "h": 80,
+        "kind": "module"
+      },
+      {
+        "id": "co-sum",
+        "x": 408,
+        "y": 1324,
+        "w": 40,
+        "h": 40,
+        "kind": "sum"
+      },
+      {
+        "id": "co-updated",
+        "x": 256,
+        "y": 1416,
+        "w": 344,
+        "h": 64,
+        "kind": "data"
+      },
+      {
+        "id": "cr-input",
+        "x": 672,
+        "y": 600,
+        "w": 552,
+        "h": 80,
+        "kind": "data"
+      },
+      {
+        "id": "cr-concat",
+        "x": 880,
+        "y": 720,
+        "w": 344,
+        "h": 48,
+        "kind": "module"
+      },
+      {
+        "id": "cr-mlp",
+        "x": 880,
+        "y": 808,
+        "w": 344,
+        "h": 80,
+        "kind": "module"
+      },
+      {
+        "id": "cr-slots",
+        "x": 880,
+        "y": 928,
+        "w": 344,
+        "h": 56,
+        "kind": "data"
+      },
+      {
+        "id": "cr-memory",
+        "x": 672,
+        "y": 1032,
+        "w": 144,
+        "h": 64,
+        "kind": "data"
+      },
+      {
+        "id": "cr-memory-fork",
+        "x": 836,
+        "y": 1060,
+        "w": 8,
+        "h": 8,
+        "kind": "junction"
+      },
+      {
+        "id": "cr-attention",
+        "x": 880,
+        "y": 1024,
+        "w": 344,
+        "h": 112,
+        "kind": "module"
+      },
+      {
+        "id": "cr-output",
+        "x": 880,
+        "y": 1192,
+        "w": 344,
+        "h": 80,
+        "kind": "module"
+      },
+      {
+        "id": "cr-sum",
+        "x": 1032,
+        "y": 1324,
+        "w": 40,
+        "h": 40,
+        "kind": "sum"
+      },
+      {
+        "id": "cr-updated",
+        "x": 880,
+        "y": 1416,
+        "w": 344,
+        "h": 64,
+        "kind": "data"
+      }
+    ],
+    "routes": [
+      {
+        "id": "cp-I-upt",
+        "points": [
+          [
+            192,
+            152
+          ],
+          [
+            240,
+            152
+          ]
+        ],
+        "src": "cp-I",
+        "dst": "cp-upt",
+        "guide": false
+      },
+      {
+        "id": "cp-upt-phrases",
+        "points": [
+          [
+            480,
+            152
+          ],
+          [
+            528,
+            152
+          ]
+        ],
+        "src": "cp-upt",
+        "dst": "cp-phrases",
+        "guide": false
+      },
+      {
+        "id": "cp-phrases-text",
+        "points": [
+          [
+            824,
+            152
+          ],
+          [
+            872,
+            152
+          ]
+        ],
+        "src": "cp-phrases",
+        "dst": "cp-text",
+        "guide": false
+      },
+      {
+        "id": "cp-upt-box-output",
+        "points": [
+          [
+            360,
+            192
+          ],
+          [
+            360,
+            240
+          ]
+        ],
+        "src": "cp-upt",
+        "dst": "cp-upt-boxes",
+        "guide": false
+      },
+      {
+        "id": "cp-upt-matching",
+        "points": [
+          [
+            480,
+            272
+          ],
+          [
+            528,
+            272
+          ]
+        ],
+        "src": "cp-upt-boxes",
+        "dst": "cp-match",
+        "guide": false
+      },
+      {
+        "id": "cp-yolo-matching",
+        "points": [
+          [
+            480,
+            384
+          ],
+          [
+            496,
+            384
+          ],
+          [
+            496,
+            288
+          ],
+          [
+            528,
+            288
+          ]
+        ],
+        "src": "cp-yolo-boxes",
+        "dst": "cp-match",
+        "guide": false
+      },
+      {
+        "id": "cp-match-links",
+        "points": [
+          [
+            824,
+            272
+          ],
+          [
+            872,
+            272
+          ]
+        ],
+        "src": "cp-match",
+        "dst": "cp-links",
+        "guide": false
+      },
+      {
+        "id": "cp-text-embeddings",
+        "points": [
+          [
+            1200,
+            152
+          ],
+          [
+            1224,
+            152
+          ],
+          [
+            1224,
+            384
+          ],
+          [
+            1200,
+            384
+          ]
+        ],
+        "src": "cp-text",
+        "dst": "cp-embeddings",
+        "guide": false
+      },
+      {
+        "id": "co-input-concat",
+        "points": [
+          [
+            428,
+            680
+          ],
+          [
+            428,
+            720
+          ]
+        ],
+        "src": "co-input",
+        "dst": "co-concat",
+        "guide": false
+      },
+      {
+        "id": "co-concat-mlp",
+        "points": [
+          [
+            428,
+            768
+          ],
+          [
+            428,
+            808
+          ]
+        ],
+        "src": "co-concat",
+        "dst": "co-mlp",
+        "guide": false
+      },
+      {
+        "id": "co-mlp-slots",
+        "points": [
+          [
+            428,
+            888
+          ],
+          [
+            428,
+            928
+          ]
+        ],
+        "src": "co-mlp",
+        "dst": "co-slots",
+        "guide": false
+      },
+      {
+        "id": "co-memory-out",
+        "points": [
+          [
+            192,
+            1064
+          ],
+          [
+            216,
+            1064
+          ]
+        ],
+        "src": "co-memory",
+        "dst": "co-memory-fork",
+        "guide": true
+      },
+      {
+        "id": "co-query",
+        "points": [
+          [
+            216,
+            1064
+          ],
+          [
+            256,
+            1064
+          ]
+        ],
+        "src": "co-memory-fork",
+        "dst": "co-attention",
+        "guide": false
+      },
+      {
+        "id": "co-slots-KV",
+        "points": [
+          [
+            428,
+            984
+          ],
+          [
+            428,
+            1024
+          ]
+        ],
+        "src": "co-slots",
+        "dst": "co-attention",
+        "guide": false
+      },
+      {
+        "id": "co-attn-output",
+        "points": [
+          [
+            428,
+            1136
+          ],
+          [
+            428,
+            1192
+          ]
+        ],
+        "src": "co-attention",
+        "dst": "co-output",
+        "guide": false
+      },
+      {
+        "id": "co-delta",
+        "points": [
+          [
+            428,
+            1272
+          ],
+          [
+            428,
+            1324
+          ]
+        ],
+        "src": "co-output",
+        "dst": "co-sum",
+        "guide": false
+      },
+      {
+        "id": "co-residual",
+        "points": [
+          [
+            216,
+            1064
+          ],
+          [
+            216,
+            1344
+          ],
+          [
+            408,
+            1344
+          ]
+        ],
+        "src": "co-memory-fork",
+        "dst": "co-sum",
+        "guide": false
+      },
+      {
+        "id": "co-updated-edge",
+        "points": [
+          [
+            428,
+            1364
+          ],
+          [
+            428,
+            1416
+          ]
+        ],
+        "src": "co-sum",
+        "dst": "co-updated",
+        "guide": false
+      },
+      {
+        "id": "cr-input-concat",
+        "points": [
+          [
+            1052,
+            680
+          ],
+          [
+            1052,
+            720
+          ]
+        ],
+        "src": "cr-input",
+        "dst": "cr-concat",
+        "guide": false
+      },
+      {
+        "id": "cr-concat-mlp",
+        "points": [
+          [
+            1052,
+            768
+          ],
+          [
+            1052,
+            808
+          ]
+        ],
+        "src": "cr-concat",
+        "dst": "cr-mlp",
+        "guide": false
+      },
+      {
+        "id": "cr-mlp-slots",
+        "points": [
+          [
+            1052,
+            888
+          ],
+          [
+            1052,
+            928
+          ]
+        ],
+        "src": "cr-mlp",
+        "dst": "cr-slots",
+        "guide": false
+      },
+      {
+        "id": "cr-memory-out",
+        "points": [
+          [
+            816,
+            1064
+          ],
+          [
+            840,
+            1064
+          ]
+        ],
+        "src": "cr-memory",
+        "dst": "cr-memory-fork",
+        "guide": true
+      },
+      {
+        "id": "cr-query",
+        "points": [
+          [
+            840,
+            1064
+          ],
+          [
+            880,
+            1064
+          ]
+        ],
+        "src": "cr-memory-fork",
+        "dst": "cr-attention",
+        "guide": false
+      },
+      {
+        "id": "cr-slots-KV",
+        "points": [
+          [
+            1052,
+            984
+          ],
+          [
+            1052,
+            1024
+          ]
+        ],
+        "src": "cr-slots",
+        "dst": "cr-attention",
+        "guide": false
+      },
+      {
+        "id": "cr-attn-output",
+        "points": [
+          [
+            1052,
+            1136
+          ],
+          [
+            1052,
+            1192
+          ]
+        ],
+        "src": "cr-attention",
+        "dst": "cr-output",
+        "guide": false
+      },
+      {
+        "id": "cr-delta",
+        "points": [
+          [
+            1052,
+            1272
+          ],
+          [
+            1052,
+            1324
+          ]
+        ],
+        "src": "cr-output",
+        "dst": "cr-sum",
+        "guide": false
+      },
+      {
+        "id": "cr-residual",
+        "points": [
+          [
+            840,
+            1064
+          ],
+          [
+            840,
+            1344
+          ],
+          [
+            1032,
+            1344
+          ]
+        ],
+        "src": "cr-memory-fork",
+        "dst": "cr-sum",
+        "guide": false
+      },
+      {
+        "id": "cr-updated-edge",
+        "points": [
+          [
+            1052,
+            1364
+          ],
+          [
+            1052,
+            1416
+          ]
+        ],
+        "src": "cr-sum",
+        "dst": "cr-updated",
+        "guide": false
+      }
+    ]
+  },
+  {
+    "slug": "panel-d-decoder-v4",
+    "w": 1360,
+    "h": 1344,
+    "title": "D · Caption generation and parallel decoder",
+    "nodes": [
+      {
+        "id": "d-prefix",
+        "x": 40,
+        "y": 88,
+        "w": 192,
+        "h": 72,
+        "kind": "data"
+      },
+      {
+        "id": "d-embedding",
+        "x": 280,
+        "y": 88,
+        "w": 240,
+        "h": 72,
+        "kind": "module"
+      },
+      {
+        "id": "d-scale",
+        "x": 568,
+        "y": 88,
+        "w": 144,
+        "h": 72,
+        "kind": "data"
+      },
+      {
+        "id": "d-pe-sum",
+        "x": 764,
+        "y": 104,
+        "w": 40,
+        "h": 40,
+        "kind": "sum"
+      },
+      {
+        "id": "d-position",
+        "x": 856,
+        "y": 88,
+        "w": 456,
+        "h": 72,
+        "kind": "module"
+      },
+      {
+        "id": "d-sa",
+        "x": 608,
+        "y": 280,
+        "w": 352,
+        "h": 64,
+        "kind": "module"
+      },
+      {
+        "id": "d-input-fork",
+        "x": 780,
+        "y": 200,
+        "w": 8,
+        "h": 8,
+        "kind": "junction"
+      },
+      {
+        "id": "d-sa-norm",
+        "x": 608,
+        "y": 392,
+        "w": 352,
+        "h": 64,
+        "kind": "module"
+      },
+      {
+        "id": "d-H",
+        "x": 780,
+        "y": 476,
+        "w": 8,
+        "h": 8,
+        "kind": "junction"
+      },
+      {
+        "id": "d-vo",
+        "x": 40,
+        "y": 552,
+        "w": 96,
+        "h": 72,
+        "kind": "data"
+      },
+      {
+        "id": "d-vr",
+        "x": 1224,
+        "y": 552,
+        "w": 96,
+        "h": 72,
+        "kind": "data"
+      },
+      {
+        "id": "do-ca",
+        "x": 176,
+        "y": 544,
+        "w": 352,
+        "h": 88,
+        "kind": "module"
+      },
+      {
+        "id": "do-gate",
+        "x": 176,
+        "y": 688,
+        "w": 352,
+        "h": 80,
+        "kind": "module"
+      },
+      {
+        "id": "dr-ca",
+        "x": 832,
+        "y": 544,
+        "w": 352,
+        "h": 88,
+        "kind": "module"
+      },
+      {
+        "id": "dr-gate",
+        "x": 832,
+        "y": 688,
+        "w": 352,
+        "h": 80,
+        "kind": "module"
+      },
+      {
+        "id": "d-weighted",
+        "x": 528,
+        "y": 824,
+        "w": 304,
+        "h": 72,
+        "kind": "module"
+      },
+      {
+        "id": "d-z-fork",
+        "x": 676,
+        "y": 916,
+        "w": 8,
+        "h": 8,
+        "kind": "junction"
+      },
+      {
+        "id": "d-ffn",
+        "x": 528,
+        "y": 944,
+        "w": 304,
+        "h": 48,
+        "kind": "module"
+      },
+      {
+        "id": "d-ffn-norm",
+        "x": 528,
+        "y": 1024,
+        "w": 304,
+        "h": 48,
+        "kind": "module"
+      },
+      {
+        "id": "d-vocab",
+        "x": 48,
+        "y": 1168,
+        "w": 272,
+        "h": 64,
+        "kind": "module"
+      },
+      {
+        "id": "d-softmax",
+        "x": 368,
+        "y": 1168,
+        "w": 176,
+        "h": 64,
+        "kind": "module"
+      },
+      {
+        "id": "d-beam",
+        "x": 592,
+        "y": 1168,
+        "w": 352,
+        "h": 64,
+        "kind": "module"
+      },
+      {
+        "id": "d-candidates",
+        "x": 992,
+        "y": 1168,
+        "w": 320,
+        "h": 64,
+        "kind": "data"
+      }
+    ],
+    "routes": [
+      {
+        "id": "d-prefix-embedding",
+        "points": [
+          [
+            232,
+            124
+          ],
+          [
+            280,
+            124
+          ]
+        ],
+        "src": "d-prefix",
+        "dst": "d-embedding",
+        "guide": false
+      },
+      {
+        "id": "d-embedding-scale",
+        "points": [
+          [
+            520,
+            124
+          ],
+          [
+            568,
+            124
+          ]
+        ],
+        "src": "d-embedding",
+        "dst": "d-scale",
+        "guide": false
+      },
+      {
+        "id": "d-scale-sum",
+        "points": [
+          [
+            712,
+            124
+          ],
+          [
+            764,
+            124
+          ]
+        ],
+        "src": "d-scale",
+        "dst": "d-pe-sum",
+        "guide": false
+      },
+      {
+        "id": "d-position-sum",
+        "points": [
+          [
+            856,
+            124
+          ],
+          [
+            804,
+            124
+          ]
+        ],
+        "src": "d-position",
+        "dst": "d-pe-sum",
+        "guide": false
+      },
+      {
+        "id": "d-sum-fork",
+        "points": [
+          [
+            784,
+            144
+          ],
+          [
+            784,
+            204
+          ]
+        ],
+        "src": "d-pe-sum",
+        "dst": "d-input-fork",
+        "guide": true
+      },
+      {
+        "id": "d-input-sa",
+        "points": [
+          [
+            784,
+            204
+          ],
+          [
+            784,
+            280
+          ]
+        ],
+        "src": "d-input-fork",
+        "dst": "d-sa",
+        "guide": false
+      },
+      {
+        "id": "d-sa-norm-edge",
+        "points": [
+          [
+            784,
+            344
+          ],
+          [
+            784,
+            392
+          ]
+        ],
+        "src": "d-sa",
+        "dst": "d-sa-norm",
+        "guide": false
+      },
+      {
+        "id": "d-sa-residual",
+        "points": [
+          [
+            784,
+            204
+          ],
+          [
+            1016,
+            204
+          ],
+          [
+            1016,
+            424
+          ],
+          [
+            960,
+            424
+          ]
+        ],
+        "src": "d-input-fork",
+        "dst": "d-sa-norm",
+        "guide": false
+      },
+      {
+        "id": "d-norm-H",
+        "points": [
+          [
+            784,
+            456
+          ],
+          [
+            784,
+            480
+          ]
+        ],
+        "src": "d-sa-norm",
+        "dst": "d-H",
+        "guide": true
+      },
+      {
+        "id": "do-H-query",
+        "points": [
+          [
+            784,
+            480
+          ],
+          [
+            352,
+            480
+          ],
+          [
+            352,
+            544
+          ]
+        ],
+        "src": "d-H",
+        "dst": "do-ca",
+        "guide": false
+      },
+      {
+        "id": "do-context-gate",
+        "points": [
+          [
+            352,
+            632
+          ],
+          [
+            352,
+            688
+          ]
+        ],
+        "src": "do-ca",
+        "dst": "do-gate",
+        "guide": false
+      },
+      {
+        "id": "dr-H-query",
+        "points": [
+          [
+            784,
+            480
+          ],
+          [
+            1008,
+            480
+          ],
+          [
+            1008,
+            544
+          ]
+        ],
+        "src": "d-H",
+        "dst": "dr-ca",
+        "guide": false
+      },
+      {
+        "id": "dr-context-gate",
+        "points": [
+          [
+            1008,
+            632
+          ],
+          [
+            1008,
+            688
+          ]
+        ],
+        "src": "dr-ca",
+        "dst": "dr-gate",
+        "guide": false
+      },
+      {
+        "id": "d-vo-kv",
+        "points": [
+          [
+            136,
+            588
+          ],
+          [
+            176,
+            588
+          ]
+        ],
+        "src": "d-vo",
+        "dst": "do-ca",
+        "guide": false
+      },
+      {
+        "id": "d-vr-kv",
+        "points": [
+          [
+            1224,
+            588
+          ],
+          [
+            1184,
+            588
+          ]
+        ],
+        "src": "d-vr",
+        "dst": "dr-ca",
+        "guide": false
+      },
+      {
+        "id": "do-gated",
+        "points": [
+          [
+            352,
+            768
+          ],
+          [
+            352,
+            860
+          ],
+          [
+            528,
+            860
+          ]
+        ],
+        "src": "do-gate",
+        "dst": "d-weighted",
+        "guide": false
+      },
+      {
+        "id": "dr-gated",
+        "points": [
+          [
+            1008,
+            768
+          ],
+          [
+            1008,
+            860
+          ],
+          [
+            832,
+            860
+          ]
+        ],
+        "src": "dr-gate",
+        "dst": "d-weighted",
+        "guide": false
+      },
+      {
+        "id": "d-z-out",
+        "points": [
+          [
+            680,
+            896
+          ],
+          [
+            680,
+            920
+          ]
+        ],
+        "src": "d-weighted",
+        "dst": "d-z-fork",
+        "guide": true
+      },
+      {
+        "id": "d-z-ffn",
+        "points": [
+          [
+            680,
+            920
+          ],
+          [
+            680,
+            944
+          ]
+        ],
+        "src": "d-z-fork",
+        "dst": "d-ffn",
+        "guide": false
+      },
+      {
+        "id": "d-ffn-norm-edge",
+        "points": [
+          [
+            680,
+            992
+          ],
+          [
+            680,
+            1024
+          ]
+        ],
+        "src": "d-ffn",
+        "dst": "d-ffn-norm",
+        "guide": false
+      },
+      {
+        "id": "d-ffn-residual",
+        "points": [
+          [
+            680,
+            920
+          ],
+          [
+            880,
+            920
+          ],
+          [
+            880,
+            1048
+          ],
+          [
+            832,
+            1048
+          ]
+        ],
+        "src": "d-z-fork",
+        "dst": "d-ffn-norm",
+        "guide": false
+      },
+      {
+        "id": "d-layer-head",
+        "points": [
+          [
+            680,
+            1072
+          ],
+          [
+            680,
+            1120
+          ],
+          [
+            184,
+            1120
+          ],
+          [
+            184,
+            1168
+          ]
+        ],
+        "src": "d-ffn-norm",
+        "dst": "d-vocab",
+        "guide": false
+      },
+      {
+        "id": "d-vocab-next",
+        "points": [
+          [
+            320,
+            1200
+          ],
+          [
+            368,
+            1200
+          ]
+        ],
+        "src": "d-vocab",
+        "dst": "d-softmax",
+        "guide": false
+      },
+      {
+        "id": "d-softmax-next",
+        "points": [
+          [
+            544,
+            1200
+          ],
+          [
+            592,
+            1200
+          ]
+        ],
+        "src": "d-softmax",
+        "dst": "d-beam",
+        "guide": false
+      },
+      {
+        "id": "d-beam-next",
+        "points": [
+          [
+            944,
+            1200
+          ],
+          [
+            992,
+            1200
+          ]
+        ],
+        "src": "d-beam",
+        "dst": "d-candidates",
+        "guide": false
+      },
+      {
+        "id": "d-autoregressive-feedback",
+        "points": [
+          [
+            768,
+            1232
+          ],
+          [
+            768,
+            1280
+          ],
+          [
+            16,
+            1280
+          ],
+          [
+            16,
+            124
+          ],
+          [
+            40,
+            124
+          ]
+        ],
+        "src": "d-beam",
+        "dst": "d-prefix",
+        "guide": false
+      }
+    ]
+  },
+  {
+    "slug": "panel-e-reranking-v4",
+    "w": 1280,
+    "h": 1344,
+    "title": "E · Caption reranking",
+    "nodes": [
+      {
+        "id": "e-candidates",
+        "x": 40,
+        "y": 104,
+        "w": 1200,
+        "h": 64,
+        "kind": "data"
+      },
+      {
+        "id": "e-logp",
+        "x": 40,
+        "y": 280,
+        "w": 352,
+        "h": 80,
+        "kind": "module"
+      },
+      {
+        "id": "e-D-minmax",
+        "x": 40,
+        "y": 432,
+        "w": 352,
+        "h": 80,
+        "kind": "module"
+      },
+      {
+        "id": "e-clip",
+        "x": 464,
+        "y": 280,
+        "w": 352,
+        "h": 80,
+        "kind": "module"
+      },
+      {
+        "id": "e-cosine",
+        "x": 464,
+        "y": 432,
+        "w": 352,
+        "h": 80,
+        "kind": "module"
+      },
+      {
+        "id": "e-C-minmax",
+        "x": 464,
+        "y": 584,
+        "w": 352,
+        "h": 80,
+        "kind": "module"
+      },
+      {
+        "id": "e-mentions",
+        "x": 888,
+        "y": 280,
+        "w": 352,
+        "h": 80,
+        "kind": "module"
+      },
+      {
+        "id": "e-supported",
+        "x": 888,
+        "y": 432,
+        "w": 352,
+        "h": 80,
+        "kind": "data"
+      },
+      {
+        "id": "e-consistency",
+        "x": 888,
+        "y": 584,
+        "w": 352,
+        "h": 88,
+        "kind": "module"
+      },
+      {
+        "id": "e-O-normalize",
+        "x": 888,
+        "y": 736,
+        "w": 352,
+        "h": 72,
+        "kind": "module"
+      },
+      {
+        "id": "e-D",
+        "x": 40,
+        "y": 888,
+        "w": 352,
+        "h": 64,
+        "kind": "data"
+      },
+      {
+        "id": "e-C",
+        "x": 464,
+        "y": 888,
+        "w": 352,
+        "h": 64,
+        "kind": "data"
+      },
+      {
+        "id": "e-O",
+        "x": 888,
+        "y": 888,
+        "w": 352,
+        "h": 64,
+        "kind": "data"
+      },
+      {
+        "id": "e-weighted",
+        "x": 40,
+        "y": 1008,
+        "w": 1200,
+        "h": 80,
+        "kind": "module"
+      },
+      {
+        "id": "e-select",
+        "x": 40,
+        "y": 1144,
+        "w": 520,
+        "h": 72,
+        "kind": "module"
+      },
+      {
+        "id": "e-final",
+        "x": 720,
+        "y": 1144,
+        "w": 520,
+        "h": 72,
+        "kind": "data"
+      }
+    ],
+    "routes": [
+      {
+        "id": "e-candidates-D",
+        "points": [
+          [
+            72,
+            168
+          ],
+          [
+            72,
+            280
+          ]
+        ],
+        "src": "e-candidates",
+        "dst": "e-logp",
+        "guide": false
+      },
+      {
+        "id": "e-candidates-C",
+        "points": [
+          [
+            496,
+            168
+          ],
+          [
+            496,
+            280
+          ]
+        ],
+        "src": "e-candidates",
+        "dst": "e-clip",
+        "guide": false
+      },
+      {
+        "id": "e-candidates-O",
+        "points": [
+          [
+            920,
+            168
+          ],
+          [
+            920,
+            280
+          ]
+        ],
+        "src": "e-candidates",
+        "dst": "e-mentions",
+        "guide": false
+      },
+      {
+        "id": "e-logp-minmax",
+        "points": [
+          [
+            216,
+            360
+          ],
+          [
+            216,
+            432
+          ]
+        ],
+        "src": "e-logp",
+        "dst": "e-D-minmax",
+        "guide": false
+      },
+      {
+        "id": "e-D-score",
+        "points": [
+          [
+            216,
+            512
+          ],
+          [
+            216,
+            888
+          ]
+        ],
+        "src": "e-D-minmax",
+        "dst": "e-D",
+        "guide": false
+      },
+      {
+        "id": "e-clip-cosine",
+        "points": [
+          [
+            640,
+            360
+          ],
+          [
+            640,
+            432
+          ]
+        ],
+        "src": "e-clip",
+        "dst": "e-cosine",
+        "guide": false
+      },
+      {
+        "id": "e-cosine-minmax",
+        "points": [
+          [
+            640,
+            512
+          ],
+          [
+            640,
+            584
+          ]
+        ],
+        "src": "e-cosine",
+        "dst": "e-C-minmax",
+        "guide": false
+      },
+      {
+        "id": "e-C-score",
+        "points": [
+          [
+            640,
+            664
+          ],
+          [
+            640,
+            888
+          ]
+        ],
+        "src": "e-C-minmax",
+        "dst": "e-C",
+        "guide": false
+      },
+      {
+        "id": "e-mentioned-consistency",
+        "points": [
+          [
+            1240,
+            320
+          ],
+          [
+            1256,
+            320
+          ],
+          [
+            1256,
+            628
+          ],
+          [
+            1240,
+            628
+          ]
+        ],
+        "src": "e-mentions",
+        "dst": "e-consistency",
+        "guide": false
+      },
+      {
+        "id": "e-supported-consistency",
+        "points": [
+          [
+            1064,
+            512
+          ],
+          [
+            1064,
+            584
+          ]
+        ],
+        "src": "e-supported",
+        "dst": "e-consistency",
+        "guide": false
+      },
+      {
+        "id": "e-consistency-normalize",
+        "points": [
+          [
+            1064,
+            672
+          ],
+          [
+            1064,
+            736
+          ]
+        ],
+        "src": "e-consistency",
+        "dst": "e-O-normalize",
+        "guide": false
+      },
+      {
+        "id": "e-O-score",
+        "points": [
+          [
+            1064,
+            808
+          ],
+          [
+            1064,
+            888
+          ]
+        ],
+        "src": "e-O-normalize",
+        "dst": "e-O",
+        "guide": false
+      },
+      {
+        "id": "e-D-weighted",
+        "points": [
+          [
+            216,
+            952
+          ],
+          [
+            216,
+            1008
+          ]
+        ],
+        "src": "e-D",
+        "dst": "e-weighted",
+        "guide": false
+      },
+      {
+        "id": "e-C-weighted",
+        "points": [
+          [
+            640,
+            952
+          ],
+          [
+            640,
+            1008
+          ]
+        ],
+        "src": "e-C",
+        "dst": "e-weighted",
+        "guide": false
+      },
+      {
+        "id": "e-O-weighted",
+        "points": [
+          [
+            1064,
+            952
+          ],
+          [
+            1064,
+            1008
+          ]
+        ],
+        "src": "e-O",
+        "dst": "e-weighted",
+        "guide": false
+      },
+      {
+        "id": "e-weighted-select",
+        "points": [
+          [
+            640,
+            1088
+          ],
+          [
+            640,
+            1120
+          ],
+          [
+            300,
+            1120
+          ],
+          [
+            300,
+            1144
+          ]
+        ],
+        "src": "e-weighted",
+        "dst": "e-select",
+        "guide": false
+      },
+      {
+        "id": "e-select-final",
+        "points": [
+          [
+            560,
+            1180
+          ],
+          [
+            720,
+            1180
+          ]
+        ],
+        "src": "e-select",
+        "dst": "e-final",
+        "guide": false
+      }
+    ]
+  },
+  {
+    "slug": "panel-f-training-v4",
+    "w": 848,
+    "h": 1344,
+    "title": "F · Training only",
+    "nodes": [
+      {
+        "id": "f-refs",
+        "x": 48,
+        "y": 152,
+        "w": 288,
+        "h": 64,
+        "kind": "data"
+      },
+      {
+        "id": "f-shift",
+        "x": 48,
+        "y": 272,
+        "w": 288,
+        "h": 64,
+        "kind": "module"
+      },
+      {
+        "id": "f-decoder",
+        "x": 400,
+        "y": 272,
+        "w": 376,
+        "h": 64,
+        "kind": "module"
+      },
+      {
+        "id": "f-predicted",
+        "x": 400,
+        "y": 384,
+        "w": 376,
+        "h": 64,
+        "kind": "data"
+      },
+      {
+        "id": "f-targets",
+        "x": 48,
+        "y": 480,
+        "w": 288,
+        "h": 56,
+        "kind": "data"
+      },
+      {
+        "id": "f-LCE",
+        "x": 400,
+        "y": 480,
+        "w": 376,
+        "h": 56,
+        "kind": "data"
+      },
+      {
+        "id": "f-policy",
+        "x": 48,
+        "y": 656,
+        "w": 720,
+        "h": 64,
+        "kind": "module"
+      },
+      {
+        "id": "f-sample",
+        "x": 48,
+        "y": 768,
+        "w": 312,
+        "h": 64,
+        "kind": "data"
+      },
+      {
+        "id": "f-greedy",
+        "x": 456,
+        "y": 768,
+        "w": 312,
+        "h": 64,
+        "kind": "data"
+      },
+      {
+        "id": "f-reward-refs",
+        "x": 48,
+        "y": 880,
+        "w": 264,
+        "h": 64,
+        "kind": "data"
+      },
+      {
+        "id": "f-reward",
+        "x": 368,
+        "y": 880,
+        "w": 400,
+        "h": 64,
+        "kind": "module"
+      },
+      {
+        "id": "f-advantage",
+        "x": 368,
+        "y": 992,
+        "w": 400,
+        "h": 56,
+        "kind": "data"
+      },
+      {
+        "id": "f-LSCST",
+        "x": 368,
+        "y": 1096,
+        "w": 400,
+        "h": 56,
+        "kind": "data"
+      },
+      {
+        "id": "f-current-XE",
+        "x": 48,
+        "y": 992,
+        "w": 264,
+        "h": 80,
+        "kind": "data"
+      },
+      {
+        "id": "f-sampled-logp",
+        "x": 48,
+        "y": 1096,
+        "w": 264,
+        "h": 56,
+        "kind": "data"
+      },
+      {
+        "id": "f-total",
+        "x": 24,
+        "y": 1216,
+        "w": 800,
+        "h": 64,
+        "kind": "module"
+      }
+    ],
+    "routes": [
+      {
+        "id": "f-refs-shift",
+        "points": [
+          [
+            192,
+            216
+          ],
+          [
+            192,
+            272
+          ]
+        ],
+        "src": "f-refs",
+        "dst": "f-shift",
+        "guide": false
+      },
+      {
+        "id": "f-shift-decoder",
+        "points": [
+          [
+            336,
+            304
+          ],
+          [
+            400,
+            304
+          ]
+        ],
+        "src": "f-shift",
+        "dst": "f-decoder",
+        "guide": false
+      },
+      {
+        "id": "f-decoder-predicted",
+        "points": [
+          [
+            588,
+            336
+          ],
+          [
+            588,
+            384
+          ]
+        ],
+        "src": "f-decoder",
+        "dst": "f-predicted",
+        "guide": false
+      },
+      {
+        "id": "f-predicted-LCE",
+        "points": [
+          [
+            588,
+            448
+          ],
+          [
+            588,
+            480
+          ]
+        ],
+        "src": "f-predicted",
+        "dst": "f-LCE",
+        "guide": false
+      },
+      {
+        "id": "f-targets-LCE",
+        "points": [
+          [
+            336,
+            508
+          ],
+          [
+            400,
+            508
+          ]
+        ],
+        "src": "f-targets",
+        "dst": "f-LCE",
+        "guide": false
+      },
+      {
+        "id": "f-refs-targets",
+        "points": [
+          [
+            48,
+            184
+          ],
+          [
+            16,
+            184
+          ],
+          [
+            16,
+            508
+          ],
+          [
+            48,
+            508
+          ]
+        ],
+        "src": "f-refs",
+        "dst": "f-targets",
+        "guide": false
+      },
+      {
+        "id": "f-policy-sample",
+        "points": [
+          [
+            204,
+            720
+          ],
+          [
+            204,
+            768
+          ]
+        ],
+        "src": "f-policy",
+        "dst": "f-sample",
+        "guide": false
+      },
+      {
+        "id": "f-policy-greedy",
+        "points": [
+          [
+            612,
+            720
+          ],
+          [
+            612,
+            768
+          ]
+        ],
+        "src": "f-policy",
+        "dst": "f-greedy",
+        "guide": false
+      },
+      {
+        "id": "f-sample-reward",
+        "points": [
+          [
+            204,
+            832
+          ],
+          [
+            204,
+            856
+          ],
+          [
+            488,
+            856
+          ],
+          [
+            488,
+            880
+          ]
+        ],
+        "src": "f-sample",
+        "dst": "f-reward",
+        "guide": false
+      },
+      {
+        "id": "f-greedy-reward",
+        "points": [
+          [
+            612,
+            832
+          ],
+          [
+            612,
+            880
+          ]
+        ],
+        "src": "f-greedy",
+        "dst": "f-reward",
+        "guide": false
+      },
+      {
+        "id": "f-references-reward",
+        "points": [
+          [
+            312,
+            912
+          ],
+          [
+            368,
+            912
+          ]
+        ],
+        "src": "f-reward-refs",
+        "dst": "f-reward",
+        "guide": false
+      },
+      {
+        "id": "f-current-policy-XE",
+        "points": [
+          [
+            48,
+            688
+          ],
+          [
+            32,
+            688
+          ],
+          [
+            32,
+            1032
+          ],
+          [
+            48,
+            1032
+          ]
+        ],
+        "src": "f-policy",
+        "dst": "f-current-XE",
+        "guide": false
+      },
+      {
+        "id": "f-current-refs-XE",
+        "points": [
+          [
+            180,
+            944
+          ],
+          [
+            180,
+            992
+          ]
+        ],
+        "src": "f-reward-refs",
+        "dst": "f-current-XE",
+        "guide": false
+      },
+      {
+        "id": "f-logp-policy-loss",
+        "points": [
+          [
+            312,
+            1124
+          ],
+          [
+            368,
+            1124
+          ]
+        ],
+        "src": "f-sampled-logp",
+        "dst": "f-LSCST",
+        "guide": false
+      },
+      {
+        "id": "f-reward-advantage",
+        "points": [
+          [
+            568,
+            944
+          ],
+          [
+            568,
+            992
+          ]
+        ],
+        "src": "f-reward",
+        "dst": "f-advantage",
+        "guide": false
+      },
+      {
+        "id": "f-advantage-loss",
+        "points": [
+          [
+            568,
+            1048
+          ],
+          [
+            568,
+            1096
+          ]
+        ],
+        "src": "f-advantage",
+        "dst": "f-LSCST",
+        "guide": false
+      },
+      {
+        "id": "f-scst-total",
+        "points": [
+          [
+            568,
+            1152
+          ],
+          [
+            568,
+            1216
+          ]
+        ],
+        "src": "f-LSCST",
+        "dst": "f-total",
+        "guide": false
+      },
+      {
+        "id": "f-current-XE-total",
+        "points": [
+          [
+            48,
+            1048
+          ],
+          [
+            40,
+            1048
+          ],
+          [
+            40,
+            1192
+          ],
+          [
+            180,
+            1192
+          ],
+          [
+            180,
+            1216
+          ]
+        ],
+        "src": "f-current-XE",
+        "dst": "f-total",
+        "guide": false
+      }
+    ]
+  },
+  {
+    "slug": "panel-roi-pooling-v4",
+    "w": 2272,
+    "h": 392,
+    "title": "Box-weighted ROI pooling · visual detail",
+    "nodes": [
+      {
+        "id": "r-patches",
+        "x": 32,
+        "y": 96,
+        "w": 256,
+        "h": 64,
+        "kind": "data"
+      },
+      {
+        "id": "r-boxes",
+        "x": 32,
+        "y": 248,
+        "w": 256,
+        "h": 64,
+        "kind": "data"
+      },
+      {
+        "id": "r-weights",
+        "x": 368,
+        "y": 144,
+        "w": 360,
+        "h": 112,
+        "kind": "module"
+      },
+      {
+        "id": "r-mean",
+        "x": 824,
+        "y": 144,
+        "w": 440,
+        "h": 112,
+        "kind": "module"
+      },
+      {
+        "id": "r-descriptors",
+        "x": 1360,
+        "y": 144,
+        "w": 248,
+        "h": 112,
+        "kind": "data"
+      },
+      {
+        "id": "r-projection",
+        "x": 1704,
+        "y": 144,
+        "w": 256,
+        "h": 112,
+        "kind": "module"
+      },
+      {
+        "id": "r-V",
+        "x": 2056,
+        "y": 144,
+        "w": 176,
+        "h": 112,
+        "kind": "data"
+      }
+    ],
+    "routes": [
+      {
+        "id": "r-patches-weights",
+        "points": [
+          [
+            288,
+            128
+          ],
+          [
+            320,
+            128
+          ],
+          [
+            320,
+            176
+          ],
+          [
+            368,
+            176
+          ]
+        ],
+        "src": "r-patches",
+        "dst": "r-weights",
+        "guide": false
+      },
+      {
+        "id": "r-boxes-weights",
+        "points": [
+          [
+            288,
+            280
+          ],
+          [
+            336,
+            280
+          ],
+          [
+            336,
+            224
+          ],
+          [
+            368,
+            224
+          ]
+        ],
+        "src": "r-boxes",
+        "dst": "r-weights",
+        "guide": false
+      },
+      {
+        "id": "r-weights-mean",
+        "points": [
+          [
+            728,
+            200
+          ],
+          [
+            824,
+            200
+          ]
+        ],
+        "src": "r-weights",
+        "dst": "r-mean",
+        "guide": false
+      },
+      {
+        "id": "r-mean-descriptors",
+        "points": [
+          [
+            1264,
+            200
+          ],
+          [
+            1360,
+            200
+          ]
+        ],
+        "src": "r-mean",
+        "dst": "r-descriptors",
+        "guide": false
+      },
+      {
+        "id": "r-descriptors-projection",
+        "points": [
+          [
+            1608,
+            200
+          ],
+          [
+            1704,
+            200
+          ]
+        ],
+        "src": "r-descriptors",
+        "dst": "r-projection",
+        "guide": false
+      },
+      {
+        "id": "r-projection-V",
+        "points": [
+          [
+            1960,
+            200
+          ],
+          [
+            2056,
+            200
+          ]
+        ],
+        "src": "r-projection",
+        "dst": "r-V",
+        "guide": false
+      }
+    ]
+  },
+  {
+    "slug": "captioning-mechanisms-v4",
+    "w": 3600,
+    "h": 3776,
+    "title": "Image captioning · architecture and mechanisms",
+    "nodes": [],
+    "routes": [
+      {
+        "id": "zoom-A",
+        "points": [
+          [
+            880,
+            656
+          ],
+          [
+            880,
+            704
+          ],
+          [
+            544,
+            704
+          ],
+          [
+            544,
+            744
+          ]
+        ],
+        "src": null,
+        "dst": null,
+        "guide": true
+      },
+      {
+        "id": "zoom-B",
+        "points": [
+          [
+            1104,
+            656
+          ],
+          [
+            1104,
+            720
+          ],
+          [
+            1696,
+            720
+          ],
+          [
+            1696,
+            744
+          ]
+        ],
+        "src": null,
+        "dst": null,
+        "guide": true
+      },
+      {
+        "id": "zoom-C",
+        "points": [
+          [
+            2256,
+            656
+          ],
+          [
+            2256,
+            704
+          ],
+          [
+            2952,
+            704
+          ],
+          [
+            2952,
+            744
+          ]
+        ],
+        "src": null,
+        "dst": null,
+        "guide": true
+      }
+    ]
+  }
+]

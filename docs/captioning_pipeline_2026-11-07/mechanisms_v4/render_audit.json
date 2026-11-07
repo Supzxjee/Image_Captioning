@@ -1,0 +1,137 @@
+{
+  "captioning-mechanisms-v4": {
+    "iconTextOverlap": [],
+    "looseTextStrokeOverlap": [],
+    "outsideCanvas": [],
+    "viewBox": [
+      0,
+      0,
+      3600,
+      3776
+    ],
+    "overflow": [],
+    "textNodes": 305,
+    "font": "Arial, \"Liberation Sans\", sans-serif",
+    "html_sha256": "6e3b4201ddb47962814e20446ff4b6838b8c63b1cca67adfc1ec6ac00be4a36b"
+  },
+  "panel-a-banks-v4": {
+    "iconTextOverlap": [],
+    "looseTextStrokeOverlap": [],
+    "outsideCanvas": [],
+    "viewBox": [
+      0,
+      0,
+      1040,
+      1140
+    ],
+    "overflow": [],
+    "textNodes": 40,
+    "font": "Arial, \"Liberation Sans\", sans-serif",
+    "html_sha256": "7745ceea644766fe6f2f38838f19f629775bc36701cef1324b8ecbb76f1ecef2"
+  },
+  "panel-b-fusion-v4": {
+    "iconTextOverlap": [],
+    "looseTextStrokeOverlap": [],
+    "outsideCanvas": [],
+    "viewBox": [
+      0,
+      0,
+      1200,
+      1140
+    ],
+    "overflow": [],
+    "textNodes": 36,
+    "font": "Arial, \"Liberation Sans\", sans-serif",
+    "html_sha256": "4e2590aa5c395c3ee4e555d52ea36bac54127739206c95b8cafdf294638cb354"
+  },
+  "panel-c-adapters-v4": {
+    "iconTextOverlap": [],
+    "looseTextStrokeOverlap": [],
+    "outsideCanvas": [],
+    "viewBox": [
+      0,
+      0,
+      1248,
+      1580
+    ],
+    "overflow": [],
+    "textNodes": 51,
+    "font": "Arial, \"Liberation Sans\", sans-serif",
+    "html_sha256": "aa08391426acaf23721514ac9cfd02e28d180134e91bf6f57ee59db84659e381"
+  },
+  "panel-d-decoder-v4": {
+    "iconTextOverlap": [],
+    "looseTextStrokeOverlap": [],
+    "outsideCanvas": [],
+    "viewBox": [
+      0,
+      0,
+      1360,
+      1344
+    ],
+    "overflow": [],
+    "textNodes": 37,
+    "font": "Arial, \"Liberation Sans\", sans-serif",
+    "html_sha256": "e37d97fa13d2672902c055370e5a17226646e6176c6b9b6f1ce61d6eee403e51"
+  },
+  "panel-e-reranking-v4": {
+    "iconTextOverlap": [],
+    "looseTextStrokeOverlap": [],
+    "outsideCanvas": [],
+    "viewBox": [
+      0,
+      0,
+      1280,
+      1344
+    ],
+    "overflow": [],
+    "textNodes": 33,
+    "font": "Arial, \"Liberation Sans\", sans-serif",
+    "html_sha256": "f4bbdc87e89ed42e17b17061a2f50949010897e1c8b4b52384a45339d06163da"
+  },
+  "panel-f-training-v4": {
+    "iconTextOverlap": [],
+    "looseTextStrokeOverlap": [],
+    "outsideCanvas": [],
+    "viewBox": [
+      0,
+      0,
+      848,
+      1344
+    ],
+    "overflow": [],
+    "textNodes": 21,
+    "font": "Arial, \"Liberation Sans\", sans-serif",
+    "html_sha256": "32c4d048db4a9579cf85e765764d621ae64e367190f64b0658a0f178f6e05477"
+  },
+  "panel-overview-v4": {
+    "iconTextOverlap": [],
+    "looseTextStrokeOverlap": [],
+    "outsideCanvas": [],
+    "viewBox": [
+      0,
+      0,
+      3600,
+      688
+    ],
+    "overflow": [],
+    "textNodes": 67,
+    "font": "Arial, \"Liberation Sans\", sans-serif",
+    "html_sha256": "9ff767e31e754ac63ff2b7d6269c34d0b2960a09c538c791abdb09f01dd1e003"
+  },
+  "panel-roi-pooling-v4": {
+    "iconTextOverlap": [],
+    "looseTextStrokeOverlap": [],
+    "outsideCanvas": [],
+    "viewBox": [
+      0,
+      0,
+      2272,
+      392
+    ],
+    "overflow": [],
+    "textNodes": 16,
+    "font": "Arial, \"Liberation Sans\", sans-serif",
+    "html_sha256": "b91b9d9ffd32a0ff5305ccaa7cc517a28100c3292d25dc9b73c08792c107fabb"
+  }
+}

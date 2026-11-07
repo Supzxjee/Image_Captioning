@@ -1,0 +1,18 @@
+{
+  "date": "2026-11-07",
+  "timezone": "Asia/Bangkok",
+  "skill": "diagram-design 2.6.142",
+  "source_sha256": {
+    "experiments/csa_paper/model.py": "139edbb1b73caf3dadaf5c960b25542e282f88baf2ce9bdf141de922ceacbc09",
+    "experiments/csa_paper/prompt_adapter_model.py": "83e5fdb2662940ded06e56df3a0fdf512dc1046b2352e563b59f22a6117e245c",
+    "experiments/csa_paper/prompt_adapter_data.py": "d8b8b61a518d9d4e2d413386d08e60963586bf3b17a16e5c96ee3f54eeaf36c0",
+    "experiments/csa_paper/prepare_real_assets.py": "44a22d92acd239bdc7a1edbe30984daf0853ac8bc196969dd48b19b78df1cc7b",
+    "experiments/csa_paper/data.py": "5a5bb451dc20184d3ea597d4dc8415a120583571f4e1a4dac75e29a306213a71",
+    "experiments/csa_paper/scst_pilot_model.py": "0b5e2d384ffc7195c82888f3f7904eac145ba7291ebed27dc8342ed8e1ac9576",
+    "experiments/csa_paper/run_prompt_scst.py": "72ca4a21f9292c3792c84b7f608c3eac6cb465ce3ec2b9f20ae394eecb5c197b",
+    "experiments/csa_paper/prompt_scst_rerank.py": "2f998867793a3abc3efcaac7836ad178e1521b4a48b71b7171849b2bf9791dc7",
+    "captioning/multiscore_reranking.py": "d1baa60e244c86b32e721486d7923ead1391c3a2fb744651c257995f2d0bb443",
+    "docs/captioning_pipeline_2026-11-07/mechanisms_v4/USER_BRIEF.txt": "2979b521aedd9753adad076fcf7238a74f8b4486bf3934418a47a5aac348c7b6"
+  },
+  "model_execution": false
+}

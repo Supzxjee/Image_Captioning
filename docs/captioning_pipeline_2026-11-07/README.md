@@ -2,7 +2,11 @@
 
 07/11/2026, UTC+7. Vẽ bằng diagram-design v2.6.142 theo [brief mới](USER_BRIEF.txt). Việc đổi tên chỉ phục vụ trình bày; không sửa mô hình hoặc hàm ý mọi thành phần là đóng góp mới.
 
-## Bản bố cục gọn mới nhất
+## V4 mở cơ chế — bản mới nhất theo brief chi tiết
+
+[Master và từng panel](mechanisms_v4/README.md): mở bank/aggregation, fusion chung, UPT/matching, hai adapter, decoder, ba điểm reranking và training riêng. SVG/PDF vector, PNG7200×7552 và PDF8trang panel. Các bản trước giữ nguyên.
+
+## Bản bố cục gọn
 
 [Bản compact theo điều chỉnh đã duyệt](compact/README.md): bỏ overview lặp, nối trực tiếp hai memory sau adapter vào decoder, thu gọn nhánh thị giác và gom caption selection ở cuối. SVG/PDF/PNG/HTML cùng mã nguồn/QA được giữ riêng; các bản dưới không bị ghi đè.
 

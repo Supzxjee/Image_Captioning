@@ -1,0 +1,125 @@
+{
+  "status": "PASS",
+  "figures": {
+    "panel-overview-v4": {
+      "nodes": 27,
+      "routes": 26,
+      "issues": []
+    },
+    "panel-a-banks-v4": {
+      "nodes": 19,
+      "routes": 20,
+      "issues": []
+    },
+    "panel-b-fusion-v4": {
+      "nodes": 27,
+      "routes": 31,
+      "issues": []
+    },
+    "panel-c-adapters-v4": {
+      "nodes": 29,
+      "routes": 28,
+      "issues": []
+    },
+    "panel-d-decoder-v4": {
+      "nodes": 23,
+      "routes": 26,
+      "issues": []
+    },
+    "panel-e-reranking-v4": {
+      "nodes": 16,
+      "routes": 17,
+      "issues": []
+    },
+    "panel-f-training-v4": {
+      "nodes": 16,
+      "routes": 18,
+      "issues": []
+    },
+    "panel-roi-pooling-v4": {
+      "nodes": 7,
+      "routes": 6,
+      "issues": []
+    },
+    "captioning-mechanisms-v4": {
+      "nodes": 0,
+      "routes": 3,
+      "issues": []
+    }
+  },
+  "content_checks": {
+    "two_slot_mlps": true,
+    "no_forbidden_method_names": true,
+    "concat_and_original_region_inputs": true,
+    "three_fusions": true,
+    "adapter_empty_and_zero_init": true,
+    "decoder_raw_e_and_separate_memories": true,
+    "rerank_and_training": true,
+    "one_clean_photo": true,
+    "stage2_current_batch_XE_and_policy_logp": true
+  },
+  "pdfs": {
+    "captioning-mechanisms-v4-panels.pdf": {
+      "pages": 8,
+      "selectable_text": 5923,
+      "vector_drawings": 674,
+      "raster_images": 1
+    },
+    "panel-roi-pooling-v4.pdf": {
+      "pages": 1,
+      "selectable_text": 388,
+      "vector_drawings": 26,
+      "raster_images": 0
+    },
+    "panel-d-decoder-v4.pdf": {
+      "pages": 1,
+      "selectable_text": 650,
+      "vector_drawings": 96,
+      "raster_images": 0
+    },
+    "captioning-mechanisms-v4.pdf": {
+      "pages": 1,
+      "selectable_text": 6113,
+      "vector_drawings": 671,
+      "raster_images": 1
+    },
+    "panel-c-adapters-v4.pdf": {
+      "pages": 1,
+      "selectable_text": 1070,
+      "vector_drawings": 114,
+      "raster_images": 0
+    },
+    "panel-b-fusion-v4.pdf": {
+      "pages": 1,
+      "selectable_text": 680,
+      "vector_drawings": 107,
+      "raster_images": 0
+    },
+    "panel-overview-v4.pdf": {
+      "pages": 1,
+      "selectable_text": 1269,
+      "vector_drawings": 123,
+      "raster_images": 1
+    },
+    "panel-a-banks-v4.pdf": {
+      "pages": 1,
+      "selectable_text": 660,
+      "vector_drawings": 81,
+      "raster_images": 0
+    },
+    "panel-e-reranking-v4.pdf": {
+      "pages": 1,
+      "selectable_text": 746,
+      "vector_drawings": 60,
+      "raster_images": 0
+    },
+    "panel-f-training-v4.pdf": {
+      "pages": 1,
+      "selectable_text": 460,
+      "vector_drawings": 67,
+      "raster_images": 0
+    }
+  },
+  "issues": [],
+  "limits": "Static and graphics only. No model or notebook was run. Master checks its zoom guides; translated panels and overview are checked separately. Named tensor ports avoid long crossing buses."
+}

@@ -1,0 +1,451 @@
+Tôi đã đối chiếu lại mã. Những phần cần mở rõ là **tạo bank, tổng hợp ngữ nghĩa, fusion, hai adapter, decoder và reranking**. Riêng huấn luyện nên có một khung nhỏ tách khỏi luồng suy luận.
+
+Bạn gửi nguyên prompt này cho bên vẽ:
+
+---
+
+**Hãy vẽ một sơ đồ kiến trúc mô hình chú thích ảnh theo phong cách bài báo khoa học. Sơ đồ phải thể hiện cơ chế xử lý bên trong, không chỉ ghi tên chung như “Fusion” hoặc “Alignment”.**
+
+### 1. Bố cục và phong cách
+
+- Nền trắng, chữ rõ, đường nối gọn, màu pastel đơn giản.
+- Luồng chính đi từ trái sang phải, gồm:
+  1. **Visual region extraction**
+  2. **Semantic bank–region alignment**
+  3. **Image-specific prompt–region alignment**
+  4. **Caption generation**
+  5. **Caption reranking**
+- Có thể chia hình thành hai hàng nếu cần; ưu tiên khả năng đọc hơn việc ép toàn bộ vào một hàng.
+- Các cơ chế dài hoặc lặp lại được thể hiện bằng **khung phóng to nét đứt**, có đường dẫn rõ tới module tương ứng.
+- Module xử lý dùng hình chữ nhật bo góc.
+- Dữ liệu, vector, bank và token dùng hình chữ nhật vuông góc hoặc chồng các thanh nhỏ.
+- Màu xanh xám nhạt cho xử lý thị giác và decoder; cam nhạt cho ngữ nghĩa đối tượng; xanh lam nhạt cho ngữ nghĩa quan hệ.
+- ❄️ biểu thị tham số đóng băng; 🔥 biểu thị tham số được huấn luyện.
+- Không gắn icon tham số lên dữ liệu hoặc phép tính cố định.
+- Không sử dụng các tên **CSA, CSA-Net, OSA, ORA** trong hình.
+- Dùng nhãn tiếng Anh, diễn đạt ngắn gọn. Không đặt đoạn văn dài trong box.
+
+### 2. Visual region extraction
+
+Ảnh đầu vào **Input image \(I\)** phải là ảnh sạch, chưa có bounding box. Tách thành hai nhánh song song:
+
+**Nhánh đặc trưng:**
+
+```text
+Input image I
+→ CLIP visual encoder ❄️
+  CLIP ViT-B/16
+→ Patch features
+  14 × 14 × 768
+```
+
+Ảnh được đưa về 224×224 trước khi mã hóa; patch features không bao gồm CLS token.
+
+**Nhánh phát hiện:**
+
+```text
+Input image I
+→ YOLO detector ❄️
+→ Bounding boxes B
+  (x1, y1, x2, y2)
+```
+
+Không ghi phiên bản YOLO cụ thể.
+
+Hai nhánh cùng đi vào:
+
+```text
+Patch features + Bounding boxes
+→ Box-weighted ROI pooling
+→ Region descriptors: N × 768
+→ Linear projection 🔥: 768 → 512
+→ Visual region features V: N × 512
+```
+
+Thể hiện ROI pooling tổng hợp đặc trưng patch theo phần diện tích giao với từng box. Không thay bằng module RoIAlign hoặc encoder ảnh crop.
+
+### 3. Semantic bank–region alignment
+
+Phân biệt rõ **chuẩn bị bank dùng chung** và **căn chỉnh theo ảnh**.
+
+**Chuẩn bị bank offline, chỉ từ TRAIN:**
+
+```text
+TRAIN reference captions
+→ spaCy POS tagging + lemmatization
+→ Noun lemmas / Verb lemmas
+→ Frozen CLIP text encoder ❄️
+→ Fixed noun bank En / Fixed verb bank Ev
+```
+
+Mỗi embedding có 512 chiều. Bank được xây dựng một lần; không lấy từ caption tham chiếu của ảnh VALID hoặc TEST.
+
+**Tổng hợp ngữ nghĩa:**
+
+Mỗi bank đi qua một module **Learned semantic aggregation 🔥** riêng, tạo:
+
+- \(P_n\): 150×512.
+- \(P_v\): 150×512.
+
+Thêm khung phóng to cho aggregation:
+
+```text
+Bank embeddings E
+ ├→ Linear Wa → MLP → Softmax over bank entries → Weights A
+ └→ Linear Wb → Transformed embeddings
+
+Aᵀ × Transformed embeddings → 150 semantic prototypes
+```
+
+Có thể ghi công thức nhỏ:
+
+\[
+A=\operatorname{softmax}_{\text{bank}}(\operatorname{MLP}(EW_a)),
+\qquad P=A^\top(EW_b).
+\]
+
+Không vẽ 150 prototypes như 150 từ được chọn rời rạc.
+
+**Luồng hợp nhất chính:**
+
+```text
+V + Pn
+→ Object fusion 1 🔥
+→ V1, T1
+
+V1 + T1
+→ Object fusion 2 🔥
+→ Vo
+
+Vo + Pv
+→ Relation fusion 🔥
+→ Vr
+```
+
+Giữ hai đầu ra riêng:
+
+- \(V_o\): object-semantic region features.
+- \(V_r\): relation-semantic region features.
+
+Cả hai có kích thước N×512.
+
+### 4. Khung phóng to Semantic fusion block
+
+Khung này mô tả cấu trúc chung của ba fusion, với chú thích **“Same structure, separate parameters”**.
+
+Đầu vào:
+
+- Region features \(X\).
+- Semantic prototypes \(P\).
+
+**Nhánh chọn ngữ nghĩa:**
+
+```text
+X and P
+→ Cosine similarity
+→ Masked softmax over valid regions, τ = 0.1
+→ Prototype relevance
+→ Softmax over prototypes
+→ Relevance-weighted semantic features T
+```
+
+Đây là chọn mềm bằng trọng số, không phải hard top-K.
+
+**Nhánh cập nhật đặc trưng:**
+
+```text
+X
+→ Multi-head self-attention
+→ Add & Norm
+→ Feed Forward
+→ Add & Norm
+→ H
+```
+
+Sau đó:
+
+```text
+H → Query
+T → Key, Value
+
+→ Multi-head cross-attention
+→ Add & Norm, residual from H
+→ Feed Forward
+→ Add & Norm
+→ C
+```
+
+Cuối cùng:
+
+```text
+H and C
+→ Learned sigmoid gate 🔥
+→ Weighted fusion
+→ Updated region features
+```
+
+Ghi công thức:
+
+\[
+g=\sigma(W_g[H;C]),\qquad
+X'=g\odot H+(1-g)\odot C.
+\]
+
+Khung có hai đầu ra \(X'\) và \(T\). Với Object fusion 1, chúng tương ứng \(V_1,T_1\).
+
+Vẽ rõ các đường residual. Không rút toàn bộ thành một box Cross-attention.
+
+### 5. Image-specific prompt–region alignment
+
+Từ **cùng ảnh đầu vào \(I\)**:
+
+```text
+Image I
+→ UPT interaction detector ❄️
+→ Object phrases + Relation phrases
+→ Frozen CLIP text encoder ❄️
+→ Object text embeddings to
+  Relation text embeddings tr
+```
+
+Ví dụ minh họa có thể dùng:
+
+- Object phrase: “a bicycle”.
+- Relation phrase: “a person riding a bicycle”.
+
+UPT đồng thời cung cấp nhãn và box của người–vật. Các box này đi vào:
+
+```text
+UPT boxes/classes + YOLO boxes/classes
+→ Class-consistent matching
+  IoU ≥ 0.5
+→ Object ROI index i
+  Ordered relation ROI pair (s, o)
+```
+
+Chú thích nhỏ: **“Unmatched slots are omitted.”**
+
+Không vẽ UPT trực tiếp tạo ra các đặc trưng ROI dùng cho decoder.
+
+### 6. Mở rõ hai prompt adapter
+
+**Object adapter 🔥**
+
+Tạo slot bằng nối vector:
+
+```text
+Object text to
++ Original object-region feature Vo[i]
++ Normalized box bi
+→ Concatenation
+→ Slot MLP: Linear → GELU → Linear
+→ Object slots So
+```
+
+Attention:
+
+```text
+Query: Vo
+Key, Value: So
+Mask: only linked ROI i may attend to the slot
+→ Masked multi-head cross-attention
+→ Output projection Wo 🔥, zero-initialized
+→ Residual addition with Vo
+→ Vo′
+```
+
+**Relation adapter 🔥**
+
+Tạo slot:
+
+```text
+Relation text tr
++ Original Vo[s]
++ Original Vo[o]
++ Normalized boxes bs, bo
+→ Concatenation
+→ Slot MLP: Linear → GELU → Linear
+→ Relation slots Sr
+```
+
+Attention:
+
+```text
+Query: Vr
+Key, Value: Sr
+Mask: only linked endpoints s and o may attend to the slot
+→ Masked multi-head cross-attention
+→ Output projection Wr 🔥, zero-initialized
+→ Residual addition with Vr
+→ Vr′
+```
+
+Chú thích bắt buộc:
+
+- **“Both slot builders use original Vo.”**
+- **“No valid linked slot → zero residual.”**
+- Dấu nối đầu vào MLP là **concatenation**, không phải cộng vector.
+- Không thêm một gate mới trong adapter.
+- \(V_o'\) và \(V_r'\) đi riêng tới decoder.
+
+### 7. Caption generation — mở rõ decoder
+
+Đầu vào ngôn ngữ:
+
+```text
+Token prefix
+→ Learned word embedding 🔥
++ Fixed sinusoidal positional encoding
+→ Decoder input
+```
+
+Vẽ cấu trúc **một decoder layer**, bao bằng khung có nhãn **×3**, dimension512, heads8.
+
+Bên trong:
+
+```text
+Decoder input
+→ Causal masked self-attention
+→ Add & Norm
+→ H
+```
+
+Từ \(H\), tách hai cross-attention song song:
+
+```text
+Object cross-attention:
+Q = H
+K, V = Vo′
+→ Co
+
+Relation cross-attention:
+Q = H
+K, V = Vr′
+→ Cr
+```
+
+Hai gate được học:
+
+\[
+g_o=\sigma(W_o[C_o;e]),\qquad
+g_r=\sigma(W_r[C_r;e]),
+\]
+
+với \(e\) là word embedding đầu vào, chưa cộng positional encoding.
+
+Sau đó:
+
+```text
+go ⊙ Co + gr ⊙ Cr
+→ Feed Forward
+→ Add & Norm
+→ Layer output
+```
+
+Không tự thêm đường residual từ \(H\) vào phép gated fusion nếu không được mô tả ở trên.
+
+Đầu ra decoder:
+
+```text
+Vocabulary projection 🔥
+→ Softmax
+→ Autoregressive beam search, beam width = 5
+→ Five candidate captions y1 … y5
+```
+
+Thể hiện một mũi tên hồi tiếp nhỏ từ token đã sinh về token prefix. Giới hạn sinh tối đa20 token mới.
+
+### 8. Caption reranking — mở rõ ba điểm
+
+Cùng năm ứng viên đi vào ba nhánh chấm điểm:
+
+**D — Decoder likelihood**
+
+```text
+Candidate token log-probabilities
+→ Summed sequence log-probability
+→ Min–max normalization
+```
+
+Không tự thêm length normalization.
+
+**C — Image–text alignment**
+
+```text
+Input image + Candidate caption
+→ Frozen CLIP image/text encoders ❄️
+→ Cosine-based CLIPScore
+→ Min–max normalization
+```
+
+**O — Object consistency**
+
+```text
+Candidate caption
+→ Mentioned object extraction
+
+YOLO detections
+→ Supported object labels
+
+Mentioned objects + Supported labels
+→ Detector-based object consistency
+→ Normalized score
+```
+
+Gộp ba nhánh:
+
+\[
+S(y)=0.3D(y)+0.4C(y)+0.3O(y).
+\]
+
+```text
+Weighted score
+→ Select highest-scoring candidate
+→ Final caption
+```
+
+Ghi nhỏ: **“Equal scores: earlier beam wins.”**
+
+Không dùng caption tham chiếu hoặc CHAIR để chọn câu. CHAIR chỉ là độ đo đánh giá sau khi sinh caption. Không thêm BLIP ITM vào hình.
+
+### 9. Khung huấn luyện riêng
+
+Đặt ở mép dưới, tách khỏi luồng inference, ghi **“Training only”**.
+
+Hai giai đoạn:
+
+```text
+Stage 1: Cross-entropy training
+TRAIN reference caption, shifted right → Decoder
+Predicted token distribution + Target tokens → LCE
+```
+
+```text
+Stage 2: SCST + cross-entropy
+Current model
+ ├→ Sampled caption ys
+ └→ Greedy caption yg
+
+TRAIN references → CIDEr reward
+→ Advantage: r(ys) − r(yg)
+→ LSCST
+
+Total loss = LCE + 0.05 LSCST
+```
+
+Ghi: **“References are used only during training and evaluation.”**
+
+Không thêm object reward vào cấu hình này. Reranking là bước lựa chọn khi suy luận, không vẽ như một loss được backpropagate.
+
+### 10. Yêu cầu kiểm tra hình trước khi giao
+
+- Mọi attention đều chỉ rõ nguồn **Q, K, V**.
+- Giữ đủ ba semantic fusion và hai prompt adapter.
+- Phân biệt bank dùng chung với prompt riêng của ảnh.
+- Không gộp hai memory đối tượng–quan hệ trước parallel cross-attention.
+- Không vẽ bank là nhãn chắc chắn có trong ảnh.
+- Chỉ một khung chi tiết dùng chung cho các fusion; không lặp lại toàn bộ ba lần.
+- Có legend giải thích icon, màu và ký hiệu.
+- Xuất bản vector **SVG/PDF** và PNG độ phân giải cao; giữ chữ dễ đọc khi đặt trong trang báo.
+
+---
