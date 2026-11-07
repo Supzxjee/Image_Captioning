@@ -6,7 +6,7 @@ import json
 import xml.etree.ElementTree as ET
 
 R=Path(__file__).resolve().parent
-W,H=2000,1040
+W,H=2000,995
 INK,LINE='#252b2e','#465158'
 NEUTRAL,OBJ,REL='#f4f7f8','#fff0e1','#eaf4f6'
 back,edges,nodes,labels=[],[],[],[]
@@ -179,10 +179,7 @@ arrow('o-select',[(1125,820),(1125,842),(970,842),(970,865)])
 arrow('selection-caption',[(820,892),(560,892)])
 label(920,970,'S = 0.3D + 0.4C + 0.3O',21,False,True)
 
-# Restrained publication legend, outside all data paths.
-labels.append(icon(85,1000,'frozen'));label(103,1007,'Frozen',20,anchor='start')
-labels.append(icon(235,1000,'train'));label(253,1007,'Trainable',20,anchor='start')
-label(1300,1020,'Training: cross-entropy → SCST + cross-entropy',21,False,True)
+# Footer legend removed at user request; module status icons remain.
 for x,y in [(990,440),(1380,365),(1380,565),(1410,460)]:nodes.append(f'<circle cx="{x}" cy="{y}" r="2.3" fill="{LINE}"/>')
 
 svg=f'<svg xmlns="http://www.w3.org/2000/svg" width="{W}" height="{H}" viewBox="0 0 {W} {H}"><defs><marker id="arrow" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0 0L7 3.5L0 7Z" fill="{LINE}"/></marker></defs><rect width="100%" height="100%" fill="white"/><g font-family="Times New Roman, serif">'+''.join(back+edges+nodes+labels)+'</g></svg>'

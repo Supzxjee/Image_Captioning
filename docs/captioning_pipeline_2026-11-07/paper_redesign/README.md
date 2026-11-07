@@ -24,3 +24,8 @@ Alignment boxes represent the checked neural modules, not proof of perfect regio
 ## Accepted layout / straight-arrow refinement
 
 User accepted the composition and requested straight arrows. Keep the layout fixed. All46 connectors now explicitly use horizontal/vertical polyline segments, miter joins and butt caps; no curved connector commands. Decoder→beam is a single horizontal segment instead of a tiny dogleg. Curves in bank silhouettes/icons and rounded module corners are decorative shapes, not connectors. Final PNG/Poppler PDF inspected after update. Downloads original names refreshed, plus Pipeline_mui_ten_thang_07_11_2026.*.
+
+
+## Compact footer refinement
+
+User requested removal of Frozen/Trainable legend and Training note. Removed those footer annotations and cropped canvas height from1040 to995px; all module positions and46 orthogonal connectors remain unchanged. Per-module status icons remain. No architecture, experiment or scoring change.
