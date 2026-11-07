@@ -1,0 +1,18 @@
+{
+  "status": "PASS",
+  "pages": 6,
+  "all_pages_visually_inspected": true,
+  "portrait": true,
+  "tables_xml_unchanged": 4,
+  "figure_hashes_unchanged": [
+    "a2e37712f19b9a98007a15527a54815b895f1887b6a052cb802cabf42bc34cef",
+    "01c2d04dd260a8acaab337474d1866936b74caadf43ca9aac2a0dc6fe399fa16",
+    "eb6d4f84db68ef2c5b9a0de7abb8f57125bd9981e193a080adaffd752f9831db",
+    "0be9329f5e7027fd87a701c5e0bb344408f972a36921a16ca21c9e9835150dfd",
+    "4366a653ba0ae65e15570f624275da521109db09ea885e40c25e371bf257df74"
+  ],
+  "sha256": "208e28cfa62da879dc292fc831fa6cb0fc98c339b5857700198806863e8ab97f",
+  "delivered": "C:\\Users\\leduc\\Downloads\\Bao_cao_nghien_cuu_tuan_13_hai_nhom_thuc_nghiem.docx",
+  "render": "Word COM plus Poppler; packaged LibreOffice unavailable",
+  "scope": "Section3 introduces two experiment groups, CONTROL/PROMPT definitions; section4 matching group headings. Numeric data unchanged."
+}

@@ -68,3 +68,8 @@ User noted spaCy had disappeared during prose conversion and requested explicit 
 ## Visual extraction figure added 08/11
 
 User requested missing visual-extraction detail. add_visual_extraction.py inserts heading, Figure2 and two connected prose paragraphs after M1 and before M2. First page now holds M1 plus visual extraction; remaining modules stay onpages2–3, overview/training4, results5–6. Report remains6 portrait pages with5 figures; all captions renumbered1–5 and original caption typography retained. CLIP patches/YOLO boxes→ROI pooling→learned projection are explicit; V→M2 and B/classes→M3 are separate outputs. Existing four figure hashes and all4 table XMLs/training-results paragraph XMLs unchanged. All6 WordCOM/Poppler pages inspected, source/vector figure checks PASS. Download Bao_cao_nghien_cuu_tuan_13_day_du_pipeline.docx verified; open older Downloads not overwritten. Rebuild: modules/build_visual.py and add_visual_extraction.py after name_implementation_tools.py. No GPU/model/scorer/Sheet changes.
+
+
+## 08/11 Align experiment groups
+
+`clarify_experiment_groups.py` updates section3 to introduce both bank and image-specific prompt comparisons, defines CONTROL/PROMPT explicitly, and aligns section4 headings. Older bank10 runs remain distinct from current CONTROL/PROMPT. Numeric table XMLs and five figure hashes unchanged. Six portrait pages rendered through Word COM/Poppler and inspected; `experiment_groups_qa.json`. Delivered `Bao_cao_nghien_cuu_tuan_13_hai_nhom_thuc_nghiem.docx`. No experiments or Sheet changes.
