@@ -1,0 +1,111 @@
+{
+  "image": {
+    "x": 30,
+    "y": 235,
+    "w": 130,
+    "h": 80,
+    "lines": [
+      "Image I"
+    ],
+    "size": 23
+  },
+  "clip": {
+    "x": 220,
+    "y": 80,
+    "w": 215,
+    "h": 85,
+    "lines": [
+      "OpenAI CLIP",
+      "ViT-B/16"
+    ],
+    "size": 24
+  },
+  "patches": {
+    "x": 495,
+    "y": 80,
+    "w": 205,
+    "h": 85,
+    "lines": [
+      "Patch features",
+      "14 \u00d7 14 \u00d7 768"
+    ],
+    "size": 23
+  },
+  "yolo": {
+    "x": 220,
+    "y": 385,
+    "w": 215,
+    "h": 85,
+    "lines": [
+      "YOLO detector"
+    ],
+    "size": 24
+  },
+  "boxes": {
+    "x": 495,
+    "y": 385,
+    "w": 205,
+    "h": 85,
+    "lines": [
+      "Boxes B",
+      "+ object classes"
+    ],
+    "size": 23
+  },
+  "roi": {
+    "x": 800,
+    "y": 205,
+    "w": 170,
+    "h": 85,
+    "lines": [
+      "ROI pooling"
+    ],
+    "size": 24
+  },
+  "pooled": {
+    "x": 1010,
+    "y": 205,
+    "w": 155,
+    "h": 85,
+    "lines": [
+      "ROI features",
+      "N \u00d7 768"
+    ],
+    "size": 22
+  },
+  "projection": {
+    "x": 1205,
+    "y": 205,
+    "w": 180,
+    "h": 85,
+    "lines": [
+      "Linear projection",
+      "768 to 512"
+    ],
+    "size": 22
+  },
+  "visual-output": {
+    "x": 1430,
+    "y": 205,
+    "w": 175,
+    "h": 85,
+    "lines": [
+      "Regions V",
+      "N \u00d7 512",
+      "to M2"
+    ],
+    "size": 22
+  },
+  "box-output": {
+    "x": 1010,
+    "y": 385,
+    "w": 230,
+    "h": 85,
+    "lines": [
+      "Boxes B",
+      "Object classes",
+      "to M3"
+    ],
+    "size": 22
+  }
+}

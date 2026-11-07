@@ -1,0 +1,20 @@
+{
+  "pages": 6,
+  "figures": 5,
+  "visual_extraction_before_M2": true,
+  "caption_numbers": [
+    1,
+    2,
+    3,
+    4,
+    5
+  ],
+  "all_tables_training_results_unchanged": true,
+  "five_embedded_image_hashes_verified": true,
+  "all_pages_portrait_and_visually_inspected": true,
+  "visual_figure_connectors": 10,
+  "visual_figure_orthogonal_ids_textwidth_no_body_transit_checks": true,
+  "visual_pdf_render_inspected": true,
+  "no_model_or_detector_run": true,
+  "download_hash_verified": true
+}

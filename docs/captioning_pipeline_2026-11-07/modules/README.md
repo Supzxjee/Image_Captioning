@@ -25,3 +25,8 @@ User requested small lines removed from the main figure: all free-standing edge 
 ## Week13 annotation edit
 
 Removed exactly the two Only slots linked to... labels in M3 at user request. Mask semantics retained in report prose. Same nodes, geometry and arrows; updated M3 SVG/PNG/PDF and embedded Word image.
+
+
+## Visual extraction detail 08/11
+
+build_visual.py creates 04-visual-extraction.svg/png/pdf: same image branches to frozen CLIP ViT-B/16 patch features and existing YOLO boxes/classes, both feed ROI pooling, pooled N×768 regions pass through learned768→512 projection to V for M2; B/classes also feed M3. It expands the existing overview block, not a fourth semantic module or new detector execution.10 orthogonal connectors/unique IDs/textwidth/no body transit PASS; PNG/Poppler PDF inspected. YOLO version deliberately unspecified.

@@ -1,0 +1,31 @@
+"""Detail the existing visual extraction block; no new architecture or detector run."""
+from pathlib import Path
+R=Path(__file__).resolve().parent
+source=(R/'build.py').read_text(encoding='utf-8')
+ns={'__file__':str(R/'build.py')}
+exec(source[:source.index('# OVERVIEW:')],ns)
+start,save,box,data,arrow=[ns[k] for k in ('start','save','box','data','arrow')]
+start(1640,540,'Visual region extraction')
+data('image',30,235,130,80,['Image I'])
+box('clip',220,80,215,85,['OpenAI CLIP','ViT-B/16'],size=24)
+data('patches',495,80,205,85,['Patch features','14 × 14 × 768'])
+box('yolo',220,385,215,85,'YOLO detector',size=24)
+data('boxes',495,385,205,85,['Boxes B','+ object classes'])
+box('roi',800,205,170,85,'ROI pooling',size=24)
+data('pooled',1010,205,155,85,['ROI features','N × 768'],size=22)
+box('projection',1205,205,180,85,['Linear projection','768 to 512'],size=22)
+data('visual-output',1430,205,175,85,['Regions V','N × 512','to M2'],size=22)
+data('box-output',1010,385,230,85,['Boxes B','Object classes','to M3'],size=22)
+arrow('i-clip',[(160,275),(190,275),(190,122),(220,122)])
+arrow('i-yolo',[(190,275),(190,427),(220,427)])
+arrow('clip-patches',[(435,122),(495,122)])
+arrow('yolo-boxes',[(435,427),(495,427)])
+arrow('patches-roi',[(700,122),(885,122),(885,205)])
+arrow('boxes-roi',[(700,427),(750,427),(750,247),(800,247)])
+arrow('boxes-output',[(750,427),(1010,427)])
+arrow('roi-pooled',[(970,247),(1010,247)])
+arrow('pooled-project',[(1165,247),(1205,247)])
+arrow('project-v',[(1385,247),(1430,247)])
+for x,y in [(190,275),(750,427)]:ns['ns']['nodes'].append(f'<circle cx="{x}" cy="{y}" r="2.5" fill="#465158"/>')
+save('04-visual-extraction')
+print('Visual extraction source generated; CLIP/YOLO are existing branches, not new model runs.')
