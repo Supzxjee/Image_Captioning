@@ -1,0 +1,26 @@
+{
+  "box_text_width": "Approximate Arial check PASS",
+  "boxes": 25,
+  "required_connections": [
+    "image-upt",
+    "pn-object1",
+    "pv-relation",
+    "t1-selection",
+    "v1-selection",
+    "self-gate-bypass",
+    "vo-relation",
+    "vo-slots",
+    "matching-slots",
+    "slots-object",
+    "slots-relation",
+    "vo-prime",
+    "vr-prime"
+  ],
+  "unique_ids": true,
+  "model_run": false,
+  "scope": "Expanded real Object fusion 2 in place; no detached mechanism inset.",
+  "pdf_pages": 1,
+  "pdf_text_selectable": true,
+  "visual_check": "SVG PNG and Poppler PDF inspected; feature V label moved clear of the verb-prototype wire.",
+  "limitations": "Not a claim that all crossings are absent. Norm/FFN and separate stage parameters described rather than individually drawn."
+}

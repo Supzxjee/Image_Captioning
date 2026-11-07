@@ -10,6 +10,8 @@ Cập nhật: 07/11/2026, giờ Việt Nam. File này là bản tóm tắt để
 
 ## Hiện đang ở đâu
 
+- **07/11 user-approved clean V2 COMPLETE.** [Diagram/decision/QA](docs/captioning_pipeline_2026-11-07/clean/V2_DECISION.md): Objectfusion2 expanded at point of use (selection/self/cross/gate), no detached inset; actual object1/object2/relation stages remain. Slots between 2consumers, separate text/Vo/ROI inputs and 2memory outputs to nearbydecoder; short selectionbranch. OnepagePDF/PNG visuallychecked, approximate text+13routes/uniqueIDs PASS. Downloads Pipeline_clean_V2_07_11_2026.*. Prior drafts preserved; no model/metrics/Sheet changes.
+
 - **07/11 user rejects boxed compact; sparse redraw COMPLETE.** [Clean SVG/PNG/PDF/source/QA](docs/captioning_pipeline_2026-11-07/clean/README.md). Bỏ sectionframes/paragraphs; 3 nhánh TRAINbanks/visual/prompt, 3fusion/2updates/2memory, one shared mechanism inset. 2220×1140, 1pagevectorPDF inspected; text-width/static connections PASS. Downloads Pipeline_clean_07_11_2026.*. Old compact preserved, no model/notebook/metric/Word/Sheet changes.
 
 - **07/11 pipeline gọn một hình COMPLETE.** Theo yêu cầu mới thay atlas8trang bằng [compact connected diagram](docs/captioning_pipeline_2026-11-07/compact/CONNECTED_README.md): TRAINbanks trên, ảnh/vùng trái, prompt dưới, 3fusion/2adapter nối trực tiếp, 2memory riêng vào decoder và rerank. Một shared fusion inset; no CSA/OSA/ORA labels. SVG/PNG/PDF1trang text-selectable đã xem; staticrequiredconnections/fontwidth checks PASS, no zero-crossing claim. Downloads Pipeline_chu_thich_anh_gon_07_11_2026.*. Giữ nguyên bản cũ; không model/Kaggle/metric/Word/Sheet changes.
