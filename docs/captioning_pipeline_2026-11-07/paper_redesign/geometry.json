@@ -1,0 +1,330 @@
+{
+  "lemmas": {
+    "x": 320,
+    "y": 80,
+    "w": 170,
+    "h": 65,
+    "lines": [
+      "Noun / verb",
+      "lemmas"
+    ],
+    "size": 23
+  },
+  "bank-text": {
+    "x": 530,
+    "y": 80,
+    "w": 170,
+    "h": 65,
+    "lines": [
+      "CLIP text",
+      "encoder"
+    ],
+    "size": 23
+  },
+  "noun-agg": {
+    "x": 950,
+    "y": 62,
+    "w": 180,
+    "h": 50,
+    "lines": [
+      "Semantic",
+      "aggregation"
+    ],
+    "size": 21
+  },
+  "verb-agg": {
+    "x": 950,
+    "y": 159,
+    "w": 180,
+    "h": 50,
+    "lines": [
+      "Semantic",
+      "aggregation"
+    ],
+    "size": 21
+  },
+  "image-source": {
+    "x": 1230,
+    "y": 62,
+    "w": 170,
+    "h": 55,
+    "lines": [
+      "Image I"
+    ],
+    "size": 23
+  },
+  "upt": {
+    "x": 1450,
+    "y": 62,
+    "w": 170,
+    "h": 55,
+    "lines": [
+      "UPT detector"
+    ],
+    "size": 23
+  },
+  "prompts": {
+    "x": 1670,
+    "y": 62,
+    "w": 220,
+    "h": 55,
+    "lines": [
+      "Object / relation",
+      "phrases"
+    ],
+    "size": 22
+  },
+  "private-text": {
+    "x": 1230,
+    "y": 165,
+    "w": 170,
+    "h": 60,
+    "lines": [
+      "CLIP text",
+      "encoder"
+    ],
+    "size": 23
+  },
+  "matching": {
+    "x": 1460,
+    "y": 165,
+    "w": 190,
+    "h": 60,
+    "lines": [
+      "ROI matching",
+      "Class + IoU"
+    ],
+    "size": 22
+  },
+  "box-source": {
+    "x": 1700,
+    "y": 165,
+    "w": 190,
+    "h": 60,
+    "lines": [
+      "YOLO boxes B"
+    ],
+    "size": 23
+  },
+  "visual": {
+    "x": 250,
+    "y": 330,
+    "w": 160,
+    "h": 70,
+    "lines": [
+      "CLIP ViT-B/16",
+      "Visual encoder"
+    ],
+    "size": 21
+  },
+  "yolo": {
+    "x": 250,
+    "y": 500,
+    "w": 160,
+    "h": 60,
+    "lines": [
+      "YOLO detector"
+    ],
+    "size": 22
+  },
+  "roi": {
+    "x": 445,
+    "y": 330,
+    "w": 160,
+    "h": 70,
+    "lines": [
+      "ROI pooling"
+    ],
+    "size": 25
+  },
+  "project": {
+    "x": 445,
+    "y": 450,
+    "w": 160,
+    "h": 65,
+    "lines": [
+      "Linear",
+      "projection"
+    ],
+    "size": 24
+  },
+  "boxes": {
+    "x": 445,
+    "y": 550,
+    "w": 160,
+    "h": 45,
+    "lines": [
+      "Boxes B"
+    ],
+    "size": 25
+  },
+  "object-alignment": {
+    "x": 750,
+    "y": 400,
+    "w": 180,
+    "h": 80,
+    "lines": [
+      "Object",
+      "alignment"
+    ],
+    "size": 25
+  },
+  "relation-alignment": {
+    "x": 1000,
+    "y": 550,
+    "w": 180,
+    "h": 80,
+    "lines": [
+      "Relation",
+      "alignment"
+    ],
+    "size": 25
+  },
+  "slots": {
+    "x": 1210,
+    "y": 430,
+    "w": 180,
+    "h": 60,
+    "lines": [
+      "Slot MLPs"
+    ],
+    "size": 25
+  },
+  "object-attn": {
+    "x": 1440,
+    "y": 330,
+    "w": 180,
+    "h": 70,
+    "lines": [
+      "Masked cross-",
+      "attention"
+    ],
+    "size": 22
+  },
+  "relation-attn": {
+    "x": 1440,
+    "y": 530,
+    "w": 180,
+    "h": 70,
+    "lines": [
+      "Masked cross-",
+      "attention"
+    ],
+    "size": 22
+  },
+  "object-output": {
+    "x": 1660,
+    "y": 342,
+    "w": 90,
+    "h": 45,
+    "lines": [
+      "Projection"
+    ],
+    "size": 18
+  },
+  "relation-output": {
+    "x": 1660,
+    "y": 542,
+    "w": 90,
+    "h": 45,
+    "lines": [
+      "Projection"
+    ],
+    "size": 18
+  },
+  "decoder": {
+    "x": 1690,
+    "y": 710,
+    "w": 250,
+    "h": 80,
+    "lines": [
+      "Transformer decoder",
+      "\u00d73"
+    ],
+    "size": 25
+  },
+  "prefix": {
+    "x": 1690,
+    "y": 920,
+    "w": 250,
+    "h": 55,
+    "lines": [
+      "Token prefix"
+    ],
+    "size": 25
+  },
+  "beam": {
+    "x": 1510,
+    "y": 730,
+    "w": 160,
+    "h": 70,
+    "lines": [
+      "Beam search",
+      "K = 5"
+    ],
+    "size": 23
+  },
+  "candidates": {
+    "x": 1310,
+    "y": 730,
+    "w": 160,
+    "h": 70,
+    "lines": [
+      "Five candidate",
+      "captions"
+    ],
+    "size": 23
+  },
+  "score-d": {
+    "x": 620,
+    "y": 755,
+    "w": 170,
+    "h": 65,
+    "lines": [
+      "Decoder",
+      "likelihood"
+    ],
+    "size": 23
+  },
+  "score-c": {
+    "x": 830,
+    "y": 755,
+    "w": 170,
+    "h": 65,
+    "lines": [
+      "CLIPScore"
+    ],
+    "size": 25
+  },
+  "score-o": {
+    "x": 1040,
+    "y": 755,
+    "w": 170,
+    "h": 65,
+    "lines": [
+      "Object",
+      "consistency"
+    ],
+    "size": 23
+  },
+  "select": {
+    "x": 820,
+    "y": 865,
+    "w": 200,
+    "h": 55,
+    "lines": [
+      "Weighted selection"
+    ],
+    "size": 23
+  },
+  "final": {
+    "x": 360,
+    "y": 865,
+    "w": 200,
+    "h": 55,
+    "lines": [
+      "Final caption"
+    ],
+    "size": 26
+  }
+}

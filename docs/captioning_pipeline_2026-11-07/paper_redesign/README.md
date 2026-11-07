@@ -1,0 +1,21 @@
+# Paper-style redesign, 07/11/2026
+
+User approved a fresh design using Tam's supplied diagram as the primary visual reference, after rejecting the teacher overview as insufficiently professional. Keep the checked architecture but rebuild the composition: Times New Roman, thin neutral strokes, mathematical subscripts, meaningful feature stacks, two compact preparation strips, central attention core, and a bottom generator/selection path flowing right-to-left. No long caption column. One operation per visible processing box, with standard internal details omitted consistently rather than multiple operation lists inside boxes.
+
+Scope: graphics only, no model/scorer/Kaggle/metric/Sheet change. Object alignment represents two cascaded separately parameterized object stages; relation alignment follows object memory. Slot builders are two separate MLP instances shown as a stack; both use original Vo. Masked attention, learned output projection and residual remain visible. Two feature streams feed the standard decoder. Vocabulary projection, softmax, positional details and standard norm/FFN are intentionally omitted from this presentation-level figure. Beam width5, three fixed scoring components and weighted selection remain visible. Auxiliary input symbols I and B repeated in the preparation strip are the same actual input/YOLO cache tensors, not new detector executions. No reference captions/CHAIR at inference. Semantic banks are TRAIN-only, separate from image-specific UPT prompts.
+
+Main editable source: `build.py` → SVG. Export PDF and PNG, inspect the actual render and a side-by-side comparison with the user-supplied reference before delivery. Reference comparison stays private outside Git. Keep all earlier drafts; do not replace reports automatically.
+
+
+## Delivery / validation
+
+- [SVG](captioning-paper.svg) is editable vector geometry/text; [PDF](captioning-paper.pdf) is a single vector page with selectable text and one embedded example photo; [PNG](captioning-paper.png) is the preview. [Slide-size preview](slide-preview.png).
+- Downloads: Pipeline_phong_cach_bai_bao_07_11_2026.svg/png/pdf. Earlier drafts are retained, not accepted final designs.
+- Final PNG and Poppler PDF inspected. Compared to Tam's supplied reference at equal display width; private comparison remains outside Git. Serif text, mathematical subscripts/primes, thin consistent strokes and bottom right-to-left generator flow replace the prior card/vertical-caption layout.
+- Approximate Times New Roman box-text widths, unique IDs, 14 required routes and no connector through operation-box interiors PASS. Some independent perpendicular crossings remain, explicitly without junction dots. No zero-crossing claim, no model execution.
+
+### Caption / explanation
+
+The upper-left strip builds fixed noun and verb semantic banks from TRAIN text using frozen CLIP; separate learned aggregations produce prototypes. Visual region features are obtained from CLIP patches and YOLO boxes, then projected. Two cascaded object-alignment stages produce Vo; relation alignment produces Vr. Image-specific UPT phrases are separately encoded and matched to the existing YOLO regions. Two stacked Slot MLPs (separate parameters) combine text, original Vo region(s), and normalized box geometry. Their object/relation slots supply key/value inputs to separate masked attention updates; Vo/Vr supply queries. Learned output projections and residual additions produce two memories for the decoder. Beam search returns five candidates; decoder likelihood, CLIPScore and detector-supported object consistency are normalized and combined with fixed weights0.3/0.4/0.3. Repeated input symbols I/B denote the same image/detection tensors; no additional detector run is implied. CLIPScore also reads I, and object consistency reads YOLO labels, not reference captions.
+
+Alignment boxes represent the checked neural modules, not proof of perfect region/word localization. The figure is the inference overview. Current training uses cross-entropy followed by SCST+CE with TRAIN references; CHAIR and test references are never used to select candidates. No new object reward, retrieval datastore or BLIP reranker was introduced.

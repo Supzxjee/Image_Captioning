@@ -1,0 +1,29 @@
+{
+  "font": "Times New Roman",
+  "approximate_text_width": "PASS",
+  "unique_ids": true,
+  "required_routes": [
+    "pn-alignment",
+    "pv-alignment",
+    "vo-query",
+    "vr-query",
+    "vo-slots",
+    "text-slots",
+    "links-slots",
+    "slots-object",
+    "slots-relation",
+    "vo-decoder",
+    "vr-decoder",
+    "candidates-scores",
+    "candidate-c",
+    "candidate-o"
+  ],
+  "operation_body_transit": [],
+  "model_run": false,
+  "limitations": "Overview abstractions; some independent perpendicular crossings remain and have no junction dots.",
+  "pdf_pages": 1,
+  "pdf_selectable_text": true,
+  "pdf_embedded_images": 1,
+  "visual_review": "Final PNG and Poppler PDF inspected, and compared side-by-side with user Tam reference at matching display width. Duplicated slot-output arrow removed; final-caption data box moved outside scoring frame; frame heading moved clear of input wires.",
+  "reference_comparison": "Private review cache outside Git; no user-reference image republished."
+}
