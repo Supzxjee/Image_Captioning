@@ -16,3 +16,7 @@ All SVG/PNG and four one-page selectable-text PDFs inspected after final edits. 
 ## Label cleanup
 
 User requested M1 title suffix (offline, TRAIN only) and output note removed, M2 two explanatory captions removed, M3 bottom explanatory caption removed. These annotations are removed from the drawings only; scope and architecture remain as documented above. Node positions, arrows and diagram dimensions unchanged. Three affected PDF renders inspected.
+
+## Overview annotation cleanup
+
+User requested small lines removed from the main figure: all free-standing edge labels and explanatory footnotes removed; title, named input/output blocks, M1/M2/M3 and all10 arrows retained. Module detail figures unchanged. Updated PNG/Poppler PDF inspected.

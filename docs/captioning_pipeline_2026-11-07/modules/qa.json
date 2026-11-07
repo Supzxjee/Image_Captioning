@@ -39,5 +39,11 @@
     "requested_title_suffix_and_four_caption_lines_removed": true,
     "node_and_edge_geometry_unchanged": true,
     "three_pdf_renders_inspected": true
+  },
+  "overview_annotation_cleanup": {
+    "all_free_standing_small_labels_removed": true,
+    "all_10_connectors_preserved": true,
+    "module_details_unchanged": true,
+    "pdf_render_inspected": true
   }
 }
