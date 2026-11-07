@@ -61,8 +61,9 @@ def feature(key,x,y,base,sub='',prime=False,fill=NEUTRAL):
 
 
 def arrow(key,pts):
+    assert all(x1==x2 or y1==y2 for (x1,y1),(x2,y2) in zip(pts,pts[1:])), f'Diagonal connector: {key}'
     p=' '.join(f'{x},{y}' for x,y in pts)
-    edges.append(f'<g id="{key}"><polyline points="{p}" fill="none" stroke="white" stroke-width="6"/><polyline points="{p}" fill="none" stroke="{LINE}" stroke-width="1.25" marker-end="url(#arrow)"/></g>')
+    edges.append(f'<g id="{key}"><polyline points="{p}" fill="none" stroke="white" stroke-width="6" stroke-linejoin="miter" stroke-linecap="butt"/><polyline points="{p}" fill="none" stroke="{LINE}" stroke-width="1.25" stroke-linejoin="miter" stroke-linecap="butt" marker-end="url(#arrow)"/></g>')
 
 
 def plus(key,x,y):
@@ -160,7 +161,7 @@ box('candidates',1310,730,160,70,['Five candidate','captions'],data=True,size=23
 arrow('vo-decoder',[(1811,365),(1960,365),(1960,735),(1940,735)])
 arrow('vr-decoder',[(1811,565),(1980,565),(1980,770),(1940,770)])
 arrow('prefix-decoder',[(1815,920),(1815,790)])
-arrow('decoder-beam',[(1690,750),(1680,750),(1680,765),(1670,765)])
+arrow('decoder-beam',[(1690,765),(1670,765)])
 arrow('beam-captions',[(1510,765),(1470,765)])
 
 frame(600,700,650,240,'Candidate scoring and selection')

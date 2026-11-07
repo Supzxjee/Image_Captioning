@@ -25,5 +25,14 @@
   "pdf_selectable_text": true,
   "pdf_embedded_images": 1,
   "visual_review": "Final PNG and Poppler PDF inspected, and compared side-by-side with user Tam reference at matching display width. Duplicated slot-output arrow removed; final-caption data box moved outside scoring frame; frame heading moved clear of input wires.",
-  "reference_comparison": "Private review cache outside Git; no user-reference image republished."
+  "reference_comparison": "Private review cache outside Git; no user-reference image republished.",
+  "arrow_refinement": {
+    "connectors": 46,
+    "all_segments_horizontal_or_vertical": true,
+    "linejoin": "miter",
+    "linecap": "butt",
+    "curved_connector_paths": 0,
+    "decoder_to_beam": "One straight horizontal segment",
+    "layout": "Unchanged"
+  }
 }
