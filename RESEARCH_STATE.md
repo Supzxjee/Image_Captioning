@@ -10,6 +10,8 @@ Cập nhật: 07/11/2026, giờ Việt Nam. File này là bản tóm tắt để
 
 ## Hiện đang ở đâu
 
+- **07/11 giao ảnhI vàbbox đểchènpipeline.** [Assets/provenance](docs/visual_region_extraction_2026-11-07/examples/README.md), COCOtrain263974. Tìm lạioriginaldetectorJSONlocal trongCode/.tmp/hoi_caption_validation_audit/inputs; toànfileSHA498825da… khớpDETECTION_SHA. Đãrender20cachedbboxvàbảngọn5person/bicyclebboxthật (display-onlyfilterghiJSON), inputphoto sạch; đãxem/copy3ảnhDownloads. Khôngmodel/detectorforward hoặcvẽbboxgiả. YOLOproducer/versionvẫnunknown; khôngđổicache/metrics/Word/Sheet.
+
 - **07/11 redraw Visualregionextraction COMPLETE.** [SVG/PNG/source/QA](docs/visual_region_extraction_2026-11-07/README.md), Downloads Visual_region_extraction_07_11_2026.svg/png. Userapprovedroundedmodules/squaredata: frozenCLIPViT-B16,YOLOgeneric→patch/Bcoordinates→ROIpool→Linear768-512→V; cleaninputphoto,no fabricatedbbox. Fourroundedmodule/XML+PNG1800×2880+visualQA PASS. No model/metric/Word/Sheet changes.
 
 - **07/11 user yêu cầu tổng hợp và cập nhậtWord: COMPLETE3pages.** [Report/QA](docs/weekly_reports/2026-11-07/README.md), Bao_cao_nghien_cuu_07_11_2026.docx; Downloads đãcopy. Giữoverview+training; page2landscapehai bảng8metrics/6conditions/48valuesmatchauditedJSON; táchNoCSA-CSA/CONTROL-PROMPT, page3VALID/probe/CI/limits vàmốcCSA15cònthiếu3metrics. KhôngclaimCSAgiảmhaluởXE10 hoặcPROMPTcaoCIDErnhất. 3sections4tables1figure; WordCOMPDF+Poppler final3PNG đãxem, render_docx thiếuLibreOfficefallback cóghiQA. Khôngmodel/scorer/Java/Kaggle hoặcSheetrow mới. Bản06/11giữnguyên, báo cáo07/11 làbảnmới nhấthiệntại.

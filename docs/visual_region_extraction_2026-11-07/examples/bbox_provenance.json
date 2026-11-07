@@ -1,0 +1,261 @@
+{
+  "image_id": 263974,
+  "image_sha256": "f208e31d4f689c88f1c0a6a1c583f1413c86424b10c52d62b8b6d3e2360e7406",
+  "detector_cache_sha256": "498825daf8f8773a1c92f4111dc4ccf1f4296343f952b486e0aa56caf82ec04c",
+  "all_objects": [
+    {
+      "label": "bicycle",
+      "bbox": [
+        282.65,
+        192.93,
+        434.81,
+        390.44
+      ],
+      "conf": 0.9266
+    },
+    {
+      "label": "person",
+      "bbox": [
+        87.69,
+        57.84,
+        198.91,
+        230.01
+      ],
+      "conf": 0.9127
+    },
+    {
+      "label": "person",
+      "bbox": [
+        3.25,
+        0.16,
+        46.04,
+        92.57
+      ],
+      "conf": 0.892
+    },
+    {
+      "label": "car",
+      "bbox": [
+        0.45,
+        387.63,
+        196.3,
+        476.74
+      ],
+      "conf": 0.8849
+    },
+    {
+      "label": "motorcycle",
+      "bbox": [
+        478.99,
+        129.44,
+        639.71,
+        323.86
+      ],
+      "conf": 0.8828
+    },
+    {
+      "label": "bicycle",
+      "bbox": [
+        536.44,
+        173.84,
+        639.46,
+        357.75
+      ],
+      "conf": 0.8663
+    },
+    {
+      "label": "person",
+      "bbox": [
+        143.66,
+        139.46,
+        248.75,
+        352.29
+      ],
+      "conf": 0.8656
+    },
+    {
+      "label": "person",
+      "bbox": [
+        323.48,
+        122.37,
+        413.62,
+        386.13
+      ],
+      "conf": 0.8585
+    },
+    {
+      "label": "bicycle",
+      "bbox": [
+        148.64,
+        212.04,
+        274.17,
+        359.4
+      ],
+      "conf": 0.8544
+    },
+    {
+      "label": "person",
+      "bbox": [
+        155.17,
+        0.0,
+        191.14,
+        43.01
+      ],
+      "conf": 0.7381
+    },
+    {
+      "label": "handbag",
+      "bbox": [
+        82.57,
+        141.59,
+        122.07,
+        184.08
+      ],
+      "conf": 0.7187
+    },
+    {
+      "label": "person",
+      "bbox": [
+        421.33,
+        0.42,
+        483.88,
+        125.64
+      ],
+      "conf": 0.6011
+    },
+    {
+      "label": "bicycle",
+      "bbox": [
+        86.24,
+        137.64,
+        173.47,
+        260.68
+      ],
+      "conf": 0.4649
+    },
+    {
+      "label": "person",
+      "bbox": [
+        116.81,
+        0.38,
+        151.8,
+        75.9
+      ],
+      "conf": 0.4326
+    },
+    {
+      "label": "person",
+      "bbox": [
+        338.21,
+        0.42,
+        363.12,
+        48.79
+      ],
+      "conf": 0.4081
+    },
+    {
+      "label": "fire hydrant",
+      "bbox": [
+        0.12,
+        167.52,
+        29.04,
+        271.21
+      ],
+      "conf": 0.3837
+    },
+    {
+      "label": "motorcycle",
+      "bbox": [
+        265.86,
+        35.73,
+        537.11,
+        276.33
+      ],
+      "conf": 0.3722
+    },
+    {
+      "label": "handbag",
+      "bbox": [
+        326.8,
+        37.36,
+        386.73,
+        80.58
+      ],
+      "conf": 0.3418
+    },
+    {
+      "label": "motorcycle",
+      "bbox": [
+        265.54,
+        27.44,
+        438.3,
+        229.2
+      ],
+      "conf": 0.2965
+    },
+    {
+      "label": "handbag",
+      "bbox": [
+        150.78,
+        87.61,
+        198.9,
+        143.35
+      ],
+      "conf": 0.2627
+    }
+  ],
+  "display_subset": [
+    {
+      "label": "bicycle",
+      "bbox": [
+        282.65,
+        192.93,
+        434.81,
+        390.44
+      ],
+      "conf": 0.9266
+    },
+    {
+      "label": "person",
+      "bbox": [
+        87.69,
+        57.84,
+        198.91,
+        230.01
+      ],
+      "conf": 0.9127
+    },
+    {
+      "label": "person",
+      "bbox": [
+        143.66,
+        139.46,
+        248.75,
+        352.29
+      ],
+      "conf": 0.8656
+    },
+    {
+      "label": "person",
+      "bbox": [
+        323.48,
+        122.37,
+        413.62,
+        386.13
+      ],
+      "conf": 0.8585
+    },
+    {
+      "label": "bicycle",
+      "bbox": [
+        148.64,
+        212.04,
+        274.17,
+        359.4
+      ],
+      "conf": 0.8544
+    }
+  ],
+  "subset_note": "Five actual cached foreground person/bicycle boxes for display only: conf>=.85,x2<450,area>5000. Full raw20-box image also provided. No detector/model run and no changes to cache or evaluation.",
+  "detector_model_version_unknown": true
+}
