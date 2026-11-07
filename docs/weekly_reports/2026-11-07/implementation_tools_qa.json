@@ -1,0 +1,22 @@
+{
+  "pages": 6,
+  "paragraphs_edited": 6,
+  "tools_named": [
+    "spaCy / en_core_web_sm",
+    "OpenAI CLIP ViT-B/16",
+    "Transformers",
+    "PyTorch",
+    "UPT",
+    "YOLO (version not invented)"
+  ],
+  "verified_source_files": [
+    "prepare_real_assets.py",
+    "run_real_bank.py",
+    "prompt_text_cache.py",
+    "model.py"
+  ],
+  "all_table_xmls_and_images_unchanged": true,
+  "training_and_results_xmls_unchanged": true,
+  "all_pages_visually_inspected": true,
+  "download_hash_verified": true
+}

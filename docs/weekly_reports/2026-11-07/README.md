@@ -58,3 +58,8 @@ User requested tracing pipeline rather than listing independent definitions. Rew
 ## Connected prose 08/11
 
 User rejected numbered Bước labels and requested văn xuôi. convert_flow_to_prose.py removes14 bold mini-headings, connects paragraph openings naturally while retaining the diagram traversal order and technical content. Figures, all4 table XMLs and training/results paragraph XMLs unchanged. All6 portrait WordCOM/Poppler pages inspected. Download Bao_cao_nghien_cuu_tuan_13_van_xuoi.docx verified byte-identical. Prior open Downloads intentionally not overwritten. New final rebuild step convert_flow_to_prose.py follows rewrite_pipeline_flow.py. No model/metric/Sheet changes.
+
+
+## Implementation tool names 08/11
+
+User noted spaCy had disappeared during prose conversion and requested explicit tool names. Updated6 explanatory paragraphs: M1 now explicitly names spaCy with en_core_web_sm for POS tagging/lemmatization; fixed-bank and image-specific text encoding name OpenAI CLIP ViT-B/16, with Transformers loading stated in M1; M2 names PyTorch and visual OpenAI CLIP ViT-B/16; UPT role clarified and YOLO retained without inventing a version. Verified from preparation/cache/model source only. Diagram flow and prose style retained; all4 table XMLs, images and training/results paragraph XMLs unchanged. All6 WordCOM/Poppler pages inspected. Download Bao_cao_nghien_cuu_tuan_13_co_cong_cu.docx verified; older open downloads left untouched. name_implementation_tools.py is final rebuild step. No model/scorer/Sheet changes.

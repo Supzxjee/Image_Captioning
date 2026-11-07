@@ -10,6 +10,8 @@ Cập nhật: 08/11/2026, giờ Việt Nam. File này là bản tóm tắt để
 
 ## Hiện đang ở đâu
 
+- **08/11 explicit implementation names COMPLETE.** User requested tools named after spaCy omission. [Word/script/QA](docs/weekly_reports/2026-11-07/README.md):6 paragraphs now name spaCy/en_core_web_sm, OpenAI CLIP ViT-B/16, Transformers, PyTorch; UPT/YOLO roles clear, no guessed YOLO version. Source checked read-only. Prose flow retained; table XMLs/images/training-results XMLs unchanged. All6 portrait WordCOM/Poppler pages inspected. Download Bao_cao_nghien_cuu_tuan_13_co_cong_cu.docx verified, old open copies not overwritten. No model/metric/Sheet changes.
+
 - **08/11 connected-prose explanation COMPLETE.** User requested no numbered Bước labels. [Word/script/QA](docs/weekly_reports/2026-11-07/README.md):14 explanation paragraphs now natural connected prose following diagram order, no bold mini-headings. Figures/table XMLs and training/results XMLs unchanged. All6 portrait WordCOM/Poppler pages inspected. Download Bao_cao_nghien_cuu_tuan_13_van_xuoi.docx verified; earlier open downloads not overwritten. No model/metric/Sheet changes.
 
 - **08/11 flow-based explanation rewrite COMPLETE.** User requested explanation follow diagram arrows. [Word/script/QA](docs/weekly_reports/2026-11-07/README.md): M1 two steps, M2 four cascade steps plus lower-stage branch/join detail, M3 four preparation/update steps, overview three connected stages; bold leads name exact blocks. Four image hashes/table XMLs and training/results paragraph XMLs unchanged. All6 portrait WordCOM/Poppler pages inspected. Download Bao_cao_nghien_cuu_tuan_13_theo_luong.docx verified; older week13 download locked/open and left untouched (aliases not refreshed). No model/metric/Sheet changes.
