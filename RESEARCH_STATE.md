@@ -10,6 +10,8 @@ Cập nhật: 07/11/2026, giờ Việt Nam. File này là bản tóm tắt để
 
 ## Hiện đang ở đâu
 
+- **07/11 user rejects detailed bank/alignment trial as confusing.** New pedagogical alignment-simple.svg/png shows only regions→bank-conditioned alignment→ROI-linked prompt update→decoder→caption with two auxiliary inputs. It deliberately hides separate object/relation memories and candidate/rerank machinery; not a full architecture or replacement model. Downloads Can_chinh_gian_luoc.*. Await review; no experiments.
+
 - **07/11 bank-module/alignment explanation trial delivered.** paper_redesign/build_bank_variant.py emits main with modular banks, separate TRAIN-only bank preparation, detail A bank-driven selection/cross-attention/gate and detail B linked-ROI prompt attention/residual. model.py/prompt_adapter_model.py read statically; no model run. SVG IDs/orthogonal wires and one-page text PDFs checked, PNG/PDF renders inspected. Prior accepted figure preserved. Downloads Pipeline_bank_module.*, Chi_tiet_tao_bank.*, Chi_tiet_can_chinh.*. Await user layout review; no metrics/Sheet change.
 
 - **07/11 compact footer cleanup COMPLETE.** Approved paper_redesign composition retained; removed Frozen/Trainable legend and Training note as requested, cropped height1040→995px. Per-module icons retained, node positions/46 straight orthogonal connectors unchanged. SVG checks and single-page selectable-text PDF PASS; final Poppler render inspected. Downloads Pipeline_gon_07_11_2026.* plus previous accepted filenames refreshed. No model/metric/Sheet changes.
