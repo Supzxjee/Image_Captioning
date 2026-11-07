@@ -10,6 +10,8 @@ Cập nhật: 07/11/2026, giờ Việt Nam. File này là bản tóm tắt để
 
 ## Hiện đang ở đâu
 
+- **07/11 portrait tables COMPLETE.** User requested metrics vertically/configurations horizontally. [Word/script/QA](docs/weekly_reports/2026-11-07/README.md): two TEST tables transposed to8metric rows ×2/4 configs, all48 numeric strings preserved. Entire report portrait, still3pages; table font11 retained, spacing adjusted to avoid orphan note page. WordCOM+Poppler all3pages inspected. Downloads *_bang_doc.docx plus original/pipeline aliases refreshed. Prose, pipeline and other tables unchanged; no model/metric/Sheet changes.
+
 - **07/11 report main pipeline replaced COMPLETE.** User requested approved overview in report. [Word/script/QA](docs/weekly_reports/2026-11-07/README.md): page1 picture replaced with current three-module overview, caption and M1/M2/M3 references adjusted; all4 table XMLs/section settings unchanged. WordCOM+Poppler 3page render inspected (LibreOffice absent); download Bao_cao_nghien_cuu_07_11_2026_pipeline.docx plus original filename refreshed. Detailed module figures stay separate, no appendix added. No experiment/metric/Sheet changes.
 
 - **07/11 main overview small labels removed.** User requested all small lines removed from pipeline chính: free-standing wire labels and explanatory captions deleted, title/boxes/10 arrows retained. Module details unchanged. PNG/Poppler PDF inspected, Downloads folder/ZIP refreshed. No model/metric changes.

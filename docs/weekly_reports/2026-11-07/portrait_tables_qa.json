@@ -1,0 +1,24 @@
+{
+  "transpose": [
+    {
+      "table": 0,
+      "metrics_rows": 8,
+      "config_columns": 2,
+      "all_numeric_strings_exact": true
+    },
+    {
+      "table": 1,
+      "metrics_rows": 8,
+      "config_columns": 4,
+      "all_numeric_strings_exact": true
+    }
+  ],
+  "all_prose_and_other_tables_unchanged": true,
+  "all_sections_portrait": true,
+  "verified_numeric_cells": 48,
+  "pages": 3,
+  "all_pages_visually_inspected": true,
+  "font_size_table_pt": 11,
+  "cell_padding_vertical_twips": 30,
+  "renderer": "Word COM + Poppler; render_docx.py unavailable because LibreOffice absent"
+}
