@@ -13,7 +13,9 @@
 
 **Kiến trúc mô hình chú thích ảnh với ngữ nghĩa toàn cục và prompt riêng ảnh.** CLIP và box YOLO tạo region features. Bank danh từ/động từ từ TRAIN được tổng hợp để hợp nhất tuần tự với các vùng, tạo hai memory riêng. Prompt từ UPT được nối với ROI hợp lệ và cập nhật memory qua adapter; mỗi adapter nhận cả visual query và đường residual. Relation slot dùng `Vo` gốc. Decoder đọc riêng `Vo′/Vr′`, sinh năm ứng viên và chọn caption bằng ba điểm reranking. Ảnh I là ảnh gốc không vẽ bbox; biểu diễn token chỉ minh họa.
 
-**Icon tham số.** Bông tuyết: frozen; ngọn lửa: trainable trong giai đoạn huấn luyện. Tất cả đều là icon vector đơn sắc, không dùng emoji. Khi suy luận, mọi trọng số giữ nguyên. Lửa tại box `Word embedding / Fixed position` chỉ áp dụng cho word embedding; positional encoding cố định. Lửa tại `Vocabulary projection / + softmax` chỉ áp dụng cho projection; softmax không có tham số học. Bông tuyết tại image–text alignment biểu thị CLIP đóng băng dùng để chấm điểm.
+**Icon tham số.** Bông tuyết xanh dương: frozen; ngọn lửa cam đỏ: trainable trong giai đoạn huấn luyện. Tất cả đều là icon vector có màu cố định, không dùng emoji. Khi suy luận, mọi trọng số giữ nguyên. Lửa tại box `Word embedding / Fixed position` chỉ áp dụng cho word embedding; positional encoding cố định. Lửa tại `Vocabulary projection / + softmax` chỉ áp dụng cho projection; softmax không có tham số học. Bông tuyết tại image–text alignment biểu thị CLIP đóng băng dùng để chấm điểm.
+
+**Điều chỉnh theo phản hồi mới nhất:** bông tuyết xanh `#1677B8`; lửa viền `#D95F1A`, nền cam `#F6A23A`. Toàn bộ mũi tên/zoom guides là đường thẳng ngang/dọc, đổi hướng bằng góc vuông 90°. Yêu cầu mới này cập nhật quy ước icon đơn sắc và connector bo góc của brief/skill ban đầu.
 
 ## Chi tiết giữ đúng
 
@@ -37,7 +39,7 @@ Không dùng tên viết tắt phương pháp bị cấm trong hình; không th�
 
 ## QA và tái tạo
 
-[Audit](figure_audit.json), [đo chữ](render_audit.json), [nguồn và hash](source_trace.json). Kiểm 67 tuyến và 58 đối tượng: không phát hiện giao cắt, chồng nét, transit qua module khác, node chồng nhau hoặc text overflow. Kiểm riêng badge map, một ảnh không có box overlay, square data rectangles, query/residual ở cả hai adapter, hai zoom guides không arrowhead và các nhãn bị cấm. Đã xem PNG và PDF render. PDF có 311 vector drawings và một ảnh raster gốc.
+[Audit](figure_audit.json), [đo chữ](render_audit.json), [nguồn và hash](source_trace.json). Kiểm 67 tuyến và 58 đối tượng: không phát hiện giao cắt, chồng nét, transit qua module khác, node chồng nhau hoặc text overflow. Kiểm riêng màu icon/legend, connector không có lệnh curve và badge map, một ảnh không có box overlay, square data rectangles, query/residual ở cả hai adapter, hai zoom guides không arrowhead và các nhãn bị cấm. Đã xem PNG và PDF render. PDF có 311 vector drawings và một ảnh raster gốc.
 
 `build_pipeline.py` dùng lại primitives của bản trước rồi dựng riêng hình này. `render_figure.py` gọi các helper SVG/PNG của skill qua Chromium hệ thống/local HTTP; không sửa skill. `audit_figure.py` kiểm geometry/PDF/content. Cần đường dẫn skill hiện có, Playwright, Chromium và PyMuPDF nếu tái tạo trên máy khác.
 

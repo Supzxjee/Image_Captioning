@@ -7,7 +7,7 @@
   "photo": "docs/csa_pipeline_2026-11-02/v3/assets/COCO_train2014_000000263974.jpg",
   "photo_sha256": "f208e31d4f689c88f1c0a6a1c583f1413c86424b10c52d62b8b6d3e2360e7406",
   "input_photo_has_overlays": false,
-  "badge_style": "Monochrome vector snowflake and flame paths, no emoji",
+  "badge_style": "Colored vector snowflake (#1677B8) and flame (#D95F1A stroke, #F6A23A fill), no emoji",
   "palette": {
     "shared": "#EDF3F8",
     "object": "#FCEBDD",
@@ -17,5 +17,10 @@
   },
   "skill": "diagram-design 2.6.142",
   "model_or_scorer_execution": false,
-  "html_caption_update": "Verified SVG markup and exported SVG bytes unchanged after updating only the external caption."
+  "html_caption_update": "Verified SVG markup and exported SVG bytes unchanged after updating only the external caption.",
+  "latest_user_revisions": [
+    "Colored snowflake/flame for easier distinction.",
+    "Prefer straight horizontal/vertical arrows with sharp right-angle turns; no curved or diagonal connectors."
+  ],
+  "connector_style": "Straight orthogonal paths, sharp 90-degree elbows"
 }

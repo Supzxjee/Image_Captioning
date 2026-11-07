@@ -4,6 +4,15 @@ import html,base64,json
 ROOT=Path(__file__).resolve().parent
 PRIMITIVES=ROOT.parents[1]/'upt_csa_architecture_2026-11-06/build_figure.py'
 exec(compile(PRIMITIVES.read_text().split('\ndef write_html')[0].replace('step=ss+8','step=ss+4'),'figure_primitives','exec'),globals())
+# User revision: straight orthogonal connectors, without rounded elbows.
+def straight_route(self,id,points,src=None,dst=None,dash=False,color=None):
+ p=[tuple(v) for v in points]
+ for a,b in zip(p,p[1:]):assert a[0]==b[0] or a[1]==b[1],(id,a,b)
+ d='M '+str(p[0][0])+','+str(p[0][1])+''.join(' L '+str(x)+','+str(y) for x,y in p[1:])
+ ds=' stroke-dasharray="7 5"' if dash else ''
+ self.edges.append(f'<path data-edge="{id}" d="{d}" fill="none" stroke="{color or C["line"]}" stroke-width="1.7"{ds} marker-end="url(#arrow)"/>')
+ self.routes.append(dict(id=id,points=p,src=src,dst=dst))
+Canvas.route=straight_route
 C.update({'visual':'#EDF3F8','semantic':'#FCEBDD','decoder':'#EDF3F8','rank':'#EDF3F8','relation':'#E2F1F5','border':'#8a969e','line':'#56616B','ink':'#263238'})
 c=Canvas();ORANGE='#FCEBDD';BLUE='#E2F1F5'
 def frame(id,x,y,w,h,title,color='#a8b4bc',fs=28,dashed=False):
@@ -176,7 +185,7 @@ c.box('final-caption',2208,824,320,72,'Final caption',(),fill='rank',fs=32)
 edge('rerank-final',[(2368,728),(2368,824)],None,'final-caption')
 # Training is explicitly outside the inference graph.
 c.plain(1280,1392,'Training: cross-entropy pretraining followed by SCST + cross-entropy.',28)
-# Icon badges are vector paths, monochrome, anchored at the module's upper-right corner.
+# Icon badges are color-coded vector paths, anchored at the module's upper-right corner.
 def icon(kind,x,y,module=None):
  attrs=f' data-icon-kind="{kind}" data-module="{module or "legend"}"'
  if kind=='frozen':
@@ -187,7 +196,9 @@ def icon(kind,x,y,module=None):
   glyph=''.join(f'<path d="{p}"/>' for p in paths)
  else:
   glyph='<path d="M11 0 C15 7 7 8 13 12 C15 10 16 8 16 6 C22 14 19 23 10 23 C1 23 -1 15 4 9 C4 13 6 14 7 13 C3 7 11 6 11 0 Z"/><path d="M10 14 C15 18 14 21 10 21 C6 21 6 18 10 14 Z"/>'
- return f'<g{attrs} transform="translate({x} {y})" fill="none" stroke="#263238" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">{glyph}</g>'
+ stroke='#1677B8' if kind=='frozen' else '#D95F1A'
+ fill='none' if kind=='frozen' else '#F6A23A'
+ return f'<g{attrs} transform="translate({x} {y})" fill="{fill}" stroke="{stroke}" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">{glyph}</g>'
 frozen=['clip-visual','yolo','bank-text-encoder','upt','clip-text','alignment']
 learned=['projection','semantic-overview','prompt-overview','noun-aggregation','verb-aggregation',
  'object-fusion-1','object-fusion-2','relation-fusion','embedding','vocab']

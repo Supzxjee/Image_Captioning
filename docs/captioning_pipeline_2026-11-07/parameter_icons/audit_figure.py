@@ -46,7 +46,7 @@ for path in ROOT.glob('*.pdf'):
 for html in ROOT.glob('*.html'):
  p=subprocess.run(['python','/home/agent/.codex/plugins/cache/diagram-design/diagram-design/2.6.142/skills/diagram-design/scripts/self_check.py',str(html)],capture_output=True,text=True)
  if p.returncode:issues.append(['skill-self-check',html.name,p.stdout+p.stderr])
-report={'status':'PASS' if not issues else 'FAIL','routes_checked':len(G['routes']),'nodes_checked':len(G['nodes']),'issues':issues,'pdfs':pdfs,'render_report':'render_audit.json','source_brief_sha256':hashlib.sha256((ROOT/'USER_BRIEF.txt').read_bytes()).hexdigest(),'limits':'Reference-style visual variant follows the previous brief; photos and box overlays are illustrative, and raster images are allowed only for the input photo. Unrounded axis-aligned route envelopes are checked conservatively; actual SVG corners are rounded.'}
+report={'status':'PASS' if not issues else 'FAIL','routes_checked':len(G['routes']),'nodes_checked':len(G['nodes']),'issues':issues,'pdfs':pdfs,'render_report':'render_audit.json','source_brief_sha256':hashlib.sha256((ROOT/'USER_BRIEF.txt').read_bytes()).hexdigest(),'limits':'Reference-style visual variant follows the previous brief; photos and box overlays are illustrative, and raster images are allowed only for the input photo. Unrounded axis-aligned route envelopes are checked conservatively; actual SVG connectors use straight orthogonal segments and sharp 90-degree elbows.'}
 import re,xml.etree.ElementTree as ET
 svg=ET.parse(ROOT/'captioning-pipeline.svg');ns={'s':'http://www.w3.org/2000/svg'}
 visible=' '.join(''.join(e.itertext()) for e in svg.findall('.//s:text',ns))
@@ -57,7 +57,7 @@ for ident in ['semantic-zoom','prompt-zoom']:
  path=next(p for p in svg.findall('.//s:path',ns) if p.get('data-edge')==ident)
  assert path.get('marker-end') is None
 report['content_checks']={'forbidden_method_labels_absent':True,'qkv_head_init_details_absent':True,'one_illustrative_image':True,'training_line_outside_inference':True,'two_named_memory_rails':True,'two_dashed_zoom_guides':True,'visual_query_and_residual_paths_present':True}
-report['limits']='Figure follows the 07/11 parameter-icon brief; the original input photo has no added overlays, and diagrams/tokens are not newly measured model output. Geometry checks use conservative axis-aligned envelopes; SVG corners are rounded.'
+report['limits']='Figure follows the 07/11 parameter-icon brief; the original input photo has no added overlays, and diagrams/tokens are not newly measured model output. Geometry checks use conservative axis-aligned envelopes; SVG connectors use straight orthogonal segments and sharp 90-degree elbows.'
 # Exact badge map: no trainable badges on pooling, matching, beam, or scoring.
 badges={g.get('data-module'):g.get('data-icon-kind') for g in svg.findall('.//s:g',ns) if g.get('data-module')!='legend' and g.get('data-icon-kind')}
 for key in ['clip-visual','yolo','bank-text-encoder','upt','clip-text','alignment']:assert badges[key]=='frozen',key
@@ -71,6 +71,13 @@ for key in ['object','relation']:
 for key in ['noun-bank','verb-bank','patches','boxes','prefix','final-caption']:
  rect=svg.find('.//s:rect[@data-node-id="'+key+'"]',ns);assert rect is not None and rect.get('rx')=='0',key
 assert all(str(a) in visible for a in ['768','512','150'])
+for group in svg.findall('.//s:g',ns):
+ kind=group.get('data-icon-kind')
+ if kind:assert group.get('stroke')==('#1677B8' if kind=='frozen' else '#D95F1A')
+for path in svg.findall('.//s:path',ns):
+ if path.get('data-edge'):assert not re.search('[QqCcAaSsTt]',path.get('d','')),path.get('data-edge')
+report['colored_badges']={'frozen':'#1677B8','trainable_stroke':'#D95F1A','trainable_fill':'#F6A23A'}
+report['straight_orthogonal_connectors']=True
 report['parameter_badges']=badges
 report['content_checks']['original_image_without_box_overlays']=True
 report['content_checks']['data_rectangles_are_square_cornered']=True
