@@ -1,0 +1,419 @@
+{
+  "lemmas": {
+    "x": 400,
+    "y": 90,
+    "w": 230,
+    "h": 75,
+    "lines": [
+      "TRAIN noun / verb",
+      "lemmas"
+    ],
+    "size": 25
+  },
+  "bank-encoder": {
+    "x": 680,
+    "y": 90,
+    "w": 230,
+    "h": 70,
+    "lines": [
+      "CLIP text encoder"
+    ],
+    "size": 24
+  },
+  "noun-bank": {
+    "x": 680,
+    "y": 175,
+    "w": 200,
+    "h": 45,
+    "lines": [
+      "Noun bank"
+    ],
+    "size": 25
+  },
+  "verb-bank": {
+    "x": 940,
+    "y": 175,
+    "w": 200,
+    "h": 45,
+    "lines": [
+      "Verb bank"
+    ],
+    "size": 25
+  },
+  "noun-aggregation": {
+    "x": 680,
+    "y": 240,
+    "w": 200,
+    "h": 50,
+    "lines": [
+      "Semantic",
+      "aggregation"
+    ],
+    "size": 20
+  },
+  "verb-aggregation": {
+    "x": 940,
+    "y": 240,
+    "w": 200,
+    "h": 50,
+    "lines": [
+      "Semantic",
+      "aggregation"
+    ],
+    "size": 20
+  },
+  "visual": {
+    "x": 270,
+    "y": 375,
+    "w": 190,
+    "h": 80,
+    "lines": [
+      "CLIP ViT-B/16",
+      "Visual encoder"
+    ],
+    "size": 24
+  },
+  "patches": {
+    "x": 510,
+    "y": 310,
+    "w": 200,
+    "h": 55,
+    "lines": [
+      "Patch features"
+    ],
+    "size": 25
+  },
+  "roi": {
+    "x": 510,
+    "y": 410,
+    "w": 200,
+    "h": 60,
+    "lines": [
+      "ROI pooling"
+    ],
+    "size": 26
+  },
+  "projection": {
+    "x": 510,
+    "y": 510,
+    "w": 200,
+    "h": 60,
+    "lines": [
+      "Linear projection"
+    ],
+    "size": 24
+  },
+  "yolo": {
+    "x": 270,
+    "y": 690,
+    "w": 190,
+    "h": 75,
+    "lines": [
+      "YOLO detector"
+    ],
+    "size": 24
+  },
+  "boxes": {
+    "x": 510,
+    "y": 695,
+    "w": 200,
+    "h": 60,
+    "lines": [
+      "Boxes B"
+    ],
+    "size": 26
+  },
+  "object1": {
+    "x": 770,
+    "y": 365,
+    "w": 170,
+    "h": 100,
+    "lines": [
+      "Object fusion 1"
+    ],
+    "size": 22
+  },
+  "selection": {
+    "x": 1210,
+    "y": 350,
+    "w": 170,
+    "h": 50,
+    "lines": [
+      "Semantic selection"
+    ],
+    "size": 18
+  },
+  "self": {
+    "x": 1020,
+    "y": 420,
+    "w": 160,
+    "h": 65,
+    "lines": [
+      "Self-attention"
+    ],
+    "size": 21
+  },
+  "cross": {
+    "x": 1210,
+    "y": 420,
+    "w": 170,
+    "h": 65,
+    "lines": [
+      "Cross-attention"
+    ],
+    "size": 20
+  },
+  "gate": {
+    "x": 1420,
+    "y": 420,
+    "w": 140,
+    "h": 65,
+    "lines": [
+      "Learned gate"
+    ],
+    "size": 20
+  },
+  "object-slot": {
+    "x": 1660,
+    "y": 390,
+    "w": 250,
+    "h": 60,
+    "lines": [
+      "Object Slot MLP"
+    ],
+    "size": 25
+  },
+  "object-attn": {
+    "x": 1660,
+    "y": 500,
+    "w": 250,
+    "h": 60,
+    "lines": [
+      "Masked cross-attention"
+    ],
+    "size": 22
+  },
+  "object-output": {
+    "x": 1660,
+    "y": 610,
+    "w": 250,
+    "h": 60,
+    "lines": [
+      "Output projection"
+    ],
+    "size": 25
+  },
+  "relation": {
+    "x": 1320,
+    "y": 720,
+    "w": 270,
+    "h": 90,
+    "lines": [
+      "Relation fusion"
+    ],
+    "size": 26
+  },
+  "relation-slot": {
+    "x": 1660,
+    "y": 800,
+    "w": 250,
+    "h": 60,
+    "lines": [
+      "Relation Slot MLP"
+    ],
+    "size": 25
+  },
+  "relation-attn": {
+    "x": 1660,
+    "y": 910,
+    "w": 250,
+    "h": 60,
+    "lines": [
+      "Masked cross-attention"
+    ],
+    "size": 22
+  },
+  "relation-output": {
+    "x": 1660,
+    "y": 1020,
+    "w": 250,
+    "h": 60,
+    "lines": [
+      "Output projection"
+    ],
+    "size": 25
+  },
+  "upt": {
+    "x": 770,
+    "y": 650,
+    "w": 170,
+    "h": 65,
+    "lines": [
+      "UPT detector"
+    ],
+    "size": 23
+  },
+  "phrases": {
+    "x": 1020,
+    "y": 650,
+    "w": 210,
+    "h": 65,
+    "lines": [
+      "Object / relation",
+      "phrases"
+    ],
+    "size": 24
+  },
+  "text-prompt": {
+    "x": 1320,
+    "y": 580,
+    "w": 270,
+    "h": 70,
+    "lines": [
+      "CLIP text encoder"
+    ],
+    "size": 25
+  },
+  "matching": {
+    "x": 1320,
+    "y": 880,
+    "w": 270,
+    "h": 75,
+    "lines": [
+      "UPT\u2013YOLO ROI matching",
+      "Class + IoU \u2265 0.5"
+    ],
+    "size": 21
+  },
+  "prefix": {
+    "x": 2010,
+    "y": 250,
+    "w": 270,
+    "h": 55,
+    "lines": [
+      "Token prefix"
+    ],
+    "size": 27
+  },
+  "embedding": {
+    "x": 2010,
+    "y": 350,
+    "w": 270,
+    "h": 60,
+    "lines": [
+      "Word embedding"
+    ],
+    "size": 27
+  },
+  "positions": {
+    "x": 1710,
+    "y": 250,
+    "w": 200,
+    "h": 60,
+    "lines": [
+      "Sinusoidal",
+      "positions"
+    ],
+    "size": 23
+  },
+  "decoder": {
+    "x": 2010,
+    "y": 520,
+    "w": 270,
+    "h": 100,
+    "lines": [
+      "Transformer decoder \u00d73"
+    ],
+    "size": 23
+  },
+  "vocab": {
+    "x": 2010,
+    "y": 680,
+    "w": 270,
+    "h": 60,
+    "lines": [
+      "Vocabulary projection"
+    ],
+    "size": 24
+  },
+  "softmax": {
+    "x": 2010,
+    "y": 785,
+    "w": 270,
+    "h": 55,
+    "lines": [
+      "Softmax"
+    ],
+    "size": 27
+  },
+  "beam": {
+    "x": 2010,
+    "y": 890,
+    "w": 270,
+    "h": 60,
+    "lines": [
+      "Beam search (K = 5)"
+    ],
+    "size": 25
+  },
+  "candidates": {
+    "x": 2010,
+    "y": 1020,
+    "w": 270,
+    "h": 55,
+    "lines": [
+      "Five candidate captions"
+    ],
+    "size": 23
+  },
+  "score-d": {
+    "x": 1390,
+    "y": 1180,
+    "w": 270,
+    "h": 60,
+    "lines": [
+      "Decoder likelihood"
+    ],
+    "size": 25
+  },
+  "score-c": {
+    "x": 1700,
+    "y": 1180,
+    "w": 270,
+    "h": 60,
+    "lines": [
+      "CLIPScore"
+    ],
+    "size": 27
+  },
+  "score-o": {
+    "x": 2010,
+    "y": 1180,
+    "w": 270,
+    "h": 60,
+    "lines": [
+      "Object consistency"
+    ],
+    "size": 25
+  },
+  "selection-final": {
+    "x": 1700,
+    "y": 1290,
+    "w": 270,
+    "h": 60,
+    "lines": [
+      "Weighted selection"
+    ],
+    "size": 25
+  },
+  "final": {
+    "x": 2050,
+    "y": 1290,
+    "w": 230,
+    "h": 60,
+    "lines": [
+      "Final caption"
+    ],
+    "size": 27
+  }
+}
