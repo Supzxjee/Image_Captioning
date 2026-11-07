@@ -10,6 +10,8 @@ Cập nhật: 08/11/2026, giờ Việt Nam. File này là bản tóm tắt để
 
 ## Hiện đang ở đâu
 
+- **08/11 report source-note deletion COMPLETE.** Removed only requested source/version paragraph and final GitHub link. Other paragraphs/table XML unchanged; all3 WordCOM/Poppler pages inspected. Downloads *_da_sua.docx and prior aliases refreshed. Provenance retained in repository; no model/metric/Sheet changes.
+
 - **08/11 report emphasis and names COMPLETE.** User requested best scores bold, ↑/↓ removed, no CSA name in report. [Word/script/QA](docs/weekly_reports/2026-11-07/README.md):22 within-table best numeric cells bold across4 tables (quality high, CHAIR/counts low), all values preserved; method labels now descriptive bank-alignment terms. Architecture/provenance unchanged. Font formatting retained, all3 portrait pages WordCOM/Poppler inspected. Downloads *_hoan_chinh.docx plus prior aliases refreshed. No model/scorer/Sheet changes.
 
 - **07/11 portrait tables COMPLETE.** User requested metrics vertically/configurations horizontally. [Word/script/QA](docs/weekly_reports/2026-11-07/README.md): two TEST tables transposed to8metric rows ×2/4 configs, all48 numeric strings preserved. Entire report portrait, still3pages; table font11 retained, spacing adjusted to avoid orphan note page. WordCOM+Poppler all3pages inspected. Downloads *_bang_doc.docx plus original/pipeline aliases refreshed. Prose, pipeline and other tables unchanged; no model/metric/Sheet changes.

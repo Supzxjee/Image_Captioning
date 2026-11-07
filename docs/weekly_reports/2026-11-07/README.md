@@ -24,3 +24,8 @@ User requested portrait page2, metrics down rows and configurations across colum
 ## Best-result emphasis and descriptive names 08/11
 
 User requested best numeric cells bold, arrows removed, and no CSA name in report. highlight_best_results.py selects within each of4 tables: quality metrics maximize, CHAIR/counts minimize, ties all bold. Exactly22 numeric cells bold; all metric strings preserved. Up/down arrows and their former legend removed. Method names in prose/headings/configurations are now descriptive bank-alignment terms, including historical comparison; architecture and provenance unchanged. Visible source link points to experiments root. Original font formatting retained. WordCOM+Poppler final3 portrait pages inspected. Downloads *_hoan_chinh.docx and previous aliases refreshed. Builder order now update_report.py → insert_pipeline.py → transpose_result_tables.py → highlight_best_results.py. No models/scorers/Sheet edits.
+
+
+## Source note removal 08/11
+
+Removed exactly the two final paragraphs requested: source/version note and GitHub link. Other paragraph XML and all4 table XMLs unchanged, including22 bold numeric winners. Source provenance remains in repo research files. Final WordCOM/Poppler3 pages visually inspected; renderer log notes missing LibreOffice. Downloads *_da_sua.docx plus previous aliases refreshed. Run remove_report_sources.py last if rebuilding.
