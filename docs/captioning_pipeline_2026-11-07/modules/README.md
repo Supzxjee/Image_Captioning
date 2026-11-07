@@ -20,3 +20,8 @@ User requested M1 title suffix (offline, TRAIN only) and output note removed, M2
 ## Overview annotation cleanup
 
 User requested small lines removed from the main figure: all free-standing edge labels and explanatory footnotes removed; title, named input/output blocks, M1/M2/M3 and all10 arrows retained. Module detail figures unchanged. Updated PNG/Poppler PDF inspected.
+
+
+## Week13 annotation edit
+
+Removed exactly the two Only slots linked to... labels in M3 at user request. Mask semantics retained in report prose. Same nodes, geometry and arrows; updated M3 SVG/PNG/PDF and embedded Word image.

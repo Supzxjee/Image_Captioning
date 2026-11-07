@@ -43,3 +43,8 @@ User correctly noted previous report contained only overall diagram. add_module_
 Added8 paragraphs under module captions: M1 POS/lemma/CLIP templates/512d fixed shared banks; M2 learned150-vector aggregation, cosine relevance, self/cross attention with Q/K/V roles, norm/FFN/gate, exact two-object plus relation cascade; M3 UPT human–object phrases, CLIP text, class/IoU matching, slot definition and originalVo inputs, linked masked attention and residual, unmatched ROI/no-delta and detector-dependence limitation. Source code read only, no model execution. Original text remains in order, all4 table XMLs and22 bold winners unchanged.
 
 Each module stays on one page: M1 page1, M2 page2, M3 page3; overview/training page4, results pages5–6. All6 WordCOM/Poppler pages inspected. Downloads *_giai_thich.docx and prior aliases refreshed. explain_module_operation.py runs last and guards against double insertion.
+
+
+## Six review annotations applied 08/11
+
+Title/footer changed to Báo cáo nghiên cứu tuần13; header date and opening summary removed. Module is a valid technical term; section heading changed to Các khối chức năng của mô hình for readability. Two paragraphs after M2 caption explain V from CLIP patches/YOLO boxes/ROI pooling/768→512 projection and generic X = V/V1/Vo for the three alignment stages. M3 Only slots... labels removed in vector source and exports and embedded figure refreshed. All4 table XMLs, numbers and22 bold winners retained. All6 portrait WordCOM/Poppler pages inspected, plus M3 PDF render. Downloads Bao_cao_nghien_cuu_tuan_13.docx and prior aliases refreshed. apply_week13_comments.py is final rebuild step. No model/metric/Sheet change.

@@ -10,6 +10,8 @@ Cập nhật: 08/11/2026, giờ Việt Nam. File này là bản tóm tắt để
 
 ## Hiện đang ở đâu
 
+- **08/11 six week13 annotations COMPLETE.** [Word/script/QA](docs/weekly_reports/2026-11-07/README.md): title/footer tuần13, removed update date/opening summary; heading Các khối chức năng; explained V extraction and generic X per stage; removed M3 two Only slots labels from SVG/PNG/PDF and Word. All4 table XMLs/22 bold winners unchanged. All6 portrait pages and M3 PDF render inspected. Downloads Bao_cao_nghien_cuu_tuan_13.docx, older aliases and module ZIP refreshed. No model/metric/Sheet changes.
+
 - **08/11 module explanations COMPLETE.** User requested operation text in report. [Word/script/QA](docs/weekly_reports/2026-11-07/README.md):8 paragraphs explain M1 fixed banks, M2 aggregation/relevance/attention/gate/cascade, M3 ROI matching/slots/masked residual updates and detector limitation. Source code checked read-only. Original prose in order, all4 table XMLs/bold values preserved. Now6 portrait pages: modules1–3, overview4, results5–6; all WordCOM/Poppler pages inspected. Downloads *_giai_thich.docx plus aliases refreshed. No model/scorer/Sheet changes.
 
 - **08/11 missing module figures corrected COMPLETE.** Earlier report had only overview; user identified omission. [Word/script/QA](docs/weekly_reports/2026-11-07/README.md): inserted latest M1/M2 onpage1, M3 onpage2 before overview/training onpage3; results nowpages4–5. Exactly4 figures, embedded PNG hashes checked; all4 table XMLs/bold winners preserved. All5 portrait pages WordCOM/Poppler visually inspected. No CSA labels/updown arrows/source footer returned. Downloads *_du_module.docx and older aliases refreshed. No model/metric/Sheet changes.

@@ -148,8 +148,8 @@ label(1530,387,'Feeds both updates',21,False,True)
 
 for row,title,sub,fill in [(430,'Object prompt update','o',OBJ),(745,'Relation prompt update','r',REL)]:
  frame(30,row,1740,225,title)
- if sub=='o':slotlines=['to + original Vo[i]','+ box geometry'];memory='Vo';output='Vo′';mask='Only slots linked to ROI i'
- else:slotlines=['tr + original Vo[s], Vo[o]','+ pair geometry'];memory='Vr';output='Vr′';mask='Only slots linked to s or o'
+ if sub=='o':slotlines=['to + original Vo[i]','+ box geometry'];memory='Vo';output='Vo′'
+ else:slotlines=['tr + original Vo[s], Vo[o]','+ pair geometry'];memory='Vr';output='Vr′'
  data('slot-input-'+sub,65,row+75,330,85,slotlines,fill,size=23)
  module('mlp-'+sub,455,row+75,165,85,['Slot MLP'],fill)
  data('z-'+sub,680,row+75,150,85,['Slots Z'+sub],fill)
@@ -167,7 +167,6 @@ for row,title,sub,fill in [(430,'Object prompt update','o',OBJ),(745,'Relation p
  data('memory-'+sub,950,row+15,230,40,[memory+' (query + residual)'],size=21)
  arrow('q-'+sub,[(1065,row+55),(1065,row+75)])
  arrow('residual-'+sub,[(1180,row+35),(1500,row+35),(1500,row+106)])
- label(910,row+202,mask,22,False,True)
 ns['nodes'].append('<circle cx="45" cy="547" r="2.5" fill="#465158"/>')
 save('03-prompt-region')
 print('Four source-grounded module figures generated.')
