@@ -1,0 +1,306 @@
+{
+  "lemmas": {
+    "x": 45,
+    "y": 60,
+    "w": 190,
+    "h": 65,
+    "lines": [
+      "TRAIN noun / verb",
+      "lemmas"
+    ],
+    "size": 21
+  },
+  "bank-clip": {
+    "x": 275,
+    "y": 60,
+    "w": 200,
+    "h": 65,
+    "lines": [
+      "CLIP text",
+      "encoder"
+    ],
+    "size": 25
+  },
+  "banks": {
+    "x": 515,
+    "y": 60,
+    "w": 230,
+    "h": 65,
+    "lines": [
+      "Fixed noun / verb",
+      "embedding banks"
+    ],
+    "size": 24
+  },
+  "aggregate": {
+    "x": 785,
+    "y": 60,
+    "w": 235,
+    "h": 65,
+    "lines": [
+      "Learned semantic",
+      "aggregation"
+    ],
+    "size": 24
+  },
+  "visual": {
+    "x": 270,
+    "y": 300,
+    "w": 190,
+    "h": 70,
+    "lines": [
+      "CLIP ViT-B/16",
+      "Visual encoder"
+    ],
+    "size": 23
+  },
+  "yolo": {
+    "x": 270,
+    "y": 490,
+    "w": 190,
+    "h": 70,
+    "lines": [
+      "YOLO detector"
+    ],
+    "size": 24
+  },
+  "roi": {
+    "x": 510,
+    "y": 300,
+    "w": 220,
+    "h": 70,
+    "lines": [
+      "ROI pooling",
+      "Linear 768 \u2192 512"
+    ],
+    "size": 24
+  },
+  "object1": {
+    "x": 800,
+    "y": 300,
+    "w": 200,
+    "h": 70,
+    "lines": [
+      "Object fusion 1"
+    ],
+    "size": 24
+  },
+  "object2": {
+    "x": 1090,
+    "y": 300,
+    "w": 200,
+    "h": 70,
+    "lines": [
+      "Object fusion 2"
+    ],
+    "size": 24
+  },
+  "relation": {
+    "x": 1090,
+    "y": 500,
+    "w": 200,
+    "h": 70,
+    "lines": [
+      "Relation fusion"
+    ],
+    "size": 25
+  },
+  "object-adapter": {
+    "x": 1370,
+    "y": 300,
+    "w": 240,
+    "h": 70,
+    "lines": [
+      "Masked cross-attention",
+      "+ residual"
+    ],
+    "size": 21
+  },
+  "relation-adapter": {
+    "x": 1370,
+    "y": 500,
+    "w": 240,
+    "h": 70,
+    "lines": [
+      "Masked cross-attention",
+      "+ residual"
+    ],
+    "size": 21
+  },
+  "prefix": {
+    "x": 1700,
+    "y": 285,
+    "w": 230,
+    "h": 60,
+    "lines": [
+      "Token prefix",
+      "Embedding + position"
+    ],
+    "size": 22
+  },
+  "decoder": {
+    "x": 1700,
+    "y": 395,
+    "w": 230,
+    "h": 100,
+    "lines": [
+      "Transformer decoder \u00d73",
+      "Parallel cross-attention",
+      "+ gated fusion"
+    ],
+    "size": 20
+  },
+  "beam": {
+    "x": 1990,
+    "y": 395,
+    "w": 190,
+    "h": 100,
+    "lines": [
+      "Vocabulary head",
+      "+ softmax",
+      "Beam search: 5"
+    ],
+    "size": 23
+  },
+  "candidates": {
+    "x": 1990,
+    "y": 555,
+    "w": 190,
+    "h": 60,
+    "lines": [
+      "Five candidate",
+      "captions"
+    ],
+    "size": 23
+  },
+  "rerank": {
+    "x": 1990,
+    "y": 685,
+    "w": 190,
+    "h": 80,
+    "lines": [
+      "D + C + O",
+      "Weighted reranking"
+    ],
+    "size": 20
+  },
+  "final": {
+    "x": 1990,
+    "y": 850,
+    "w": 190,
+    "h": 55,
+    "lines": [
+      "Final caption"
+    ],
+    "size": 25
+  },
+  "upt": {
+    "x": 510,
+    "y": 710,
+    "w": 180,
+    "h": 65,
+    "lines": [
+      "UPT detector"
+    ],
+    "size": 24
+  },
+  "phrases": {
+    "x": 750,
+    "y": 710,
+    "w": 220,
+    "h": 65,
+    "lines": [
+      "Object / relation",
+      "phrases"
+    ],
+    "size": 24
+  },
+  "prompt-text": {
+    "x": 1030,
+    "y": 710,
+    "w": 205,
+    "h": 65,
+    "lines": [
+      "CLIP text encoder",
+      "to / tr"
+    ],
+    "size": 23
+  },
+  "matching": {
+    "x": 750,
+    "y": 850,
+    "w": 330,
+    "h": 65,
+    "lines": [
+      "UPT\u2013YOLO ROI matching",
+      "Class + IoU \u2265 0.5"
+    ],
+    "size": 24
+  },
+  "slots": {
+    "x": 1320,
+    "y": 710,
+    "w": 290,
+    "h": 100,
+    "lines": [
+      "Object / relation Slot MLPs",
+      "Text + Vo region(s)",
+      "+ box(es)"
+    ],
+    "size": 21
+  },
+  "selection": {
+    "x": 60,
+    "y": 1015,
+    "w": 260,
+    "h": 60,
+    "lines": [
+      "Semantic selection",
+      "Cosine relevance \u2192 T"
+    ],
+    "size": 23
+  },
+  "self-attn": {
+    "x": 390,
+    "y": 1015,
+    "w": 220,
+    "h": 60,
+    "lines": [
+      "Self-attention",
+      "Q = K = V = X"
+    ],
+    "size": 23
+  },
+  "cross-attn": {
+    "x": 715,
+    "y": 1015,
+    "w": 260,
+    "h": 60,
+    "lines": [
+      "Cross-attention",
+      "Q = H; K = V = T"
+    ],
+    "size": 23
+  },
+  "gate": {
+    "x": 1080,
+    "y": 1015,
+    "w": 255,
+    "h": 60,
+    "lines": [
+      "Learned gate",
+      "Mix visual + semantic"
+    ],
+    "size": 23
+  },
+  "updated": {
+    "x": 1430,
+    "y": 1015,
+    "w": 255,
+    "h": 60,
+    "lines": [
+      "Updated region features"
+    ],
+    "size": 22
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "boxes": 28,
+  "approximate_text_width_check": "PASS",
+  "required_connections": [
+    "image-upt",
+    "yolo-matching",
+    "matching-slots",
+    "text-slots",
+    "slots-object",
+    "slots-relation",
+    "vo-relation",
+    "vo-prime-decoder",
+    "vr-prime-decoder"
+  ],
+  "unique_ids": true,
+  "model_execution": false,
+  "limitations": "Intentional connector crossings without junctions; no all-crossings-free claim.",
+  "pdf_pages": 1,
+  "pdf_selectable_text": true,
+  "visual_review": "PNG and Poppler-rendered PDF inspected. Section heading moved off the Pn wire. Previous files preserved."
+}
