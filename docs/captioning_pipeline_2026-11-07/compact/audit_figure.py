@@ -36,20 +36,21 @@ render=json.loads((ROOT/'render_audit.json').read_text())
 for slug,r in render.items():
  if r['overflow']:issues.append(['text-overflow',slug,r['overflow']])
  if r.get('aggregationBadgeLabelOverlap'):issues.append(['aggregation-badge-label-overlap',slug,r['aggregationBadgeLabelOverlap']])
+ if r.get('aggregationBadgeModuleTextOverlap'):issues.append(['aggregation-badge-module-text-overlap',slug,r['aggregationBadgeModuleTextOverlap']])
 pdfs={}
-for path in ROOT.glob('*.pdf'):
+for path in ROOT.glob('captioning-pipeline-v3.pdf'):
  with fitz.open(path) as doc:
   texts=''.join(p.get_text() for p in doc)
   images=sum(len(p.get_images()) for p in doc)
   drawings=sum(len(p.get_drawings()) for p in doc)
   pdfs[path.name]={'pages':len(doc),'text_characters':len(texts),'raster_images':images,'vector_drawings':drawings}
   if len(doc)!=1 or len(texts)<200 or images<1 or drawings<20:issues.append(['pdf-not-single-page-vector-with-illustrative-photo',path.name])
-for html in ROOT.glob('*.html'):
+for html in ROOT.glob('captioning-pipeline-v3.html'):
  p=subprocess.run(['python','/home/agent/.codex/plugins/cache/diagram-design/diagram-design/2.6.142/skills/diagram-design/scripts/self_check.py',str(html)],capture_output=True,text=True)
  if p.returncode:issues.append(['skill-self-check',html.name,p.stdout+p.stderr])
 report={'status':'PASS' if not issues else 'FAIL','routes_checked':len(G['routes']),'nodes_checked':len(G['nodes']),'issues':issues,'pdfs':pdfs,'render_report':'render_audit.json','source_brief_sha256':hashlib.sha256((ROOT/'LAYOUT_BRIEF.md').read_bytes()).hexdigest(),'limits':'Reference-style visual variant follows the previous brief; photos and box overlays are illustrative, and raster images are allowed only for the input photo. Unrounded axis-aligned route envelopes are checked conservatively; actual SVG connectors use straight orthogonal segments and sharp 90-degree elbows.'}
 import re,xml.etree.ElementTree as ET
-svg=ET.parse(ROOT/'captioning-pipeline-compact.svg');ns={'s':'http://www.w3.org/2000/svg'}
+svg=ET.parse(ROOT/'captioning-pipeline-v3.svg');ns={'s':'http://www.w3.org/2000/svg'}
 visible=' '.join(''.join(e.itertext()) for e in svg.findall('.//s:text',ns))
 assert not re.search(r'\b(?:CSA(?:-Net)?|OSA|ORA)\b',visible,re.I)
 assert not re.search(r'\b(?:Q/K/V|zero.init|heads)\b',visible,re.I)
@@ -82,7 +83,10 @@ assert visible.count('Slot MLP')==2
 assert 'tₒ + Vₒ[i] + box' in visible
 assert 'tᵣ + Vₒ[s], Vₒ[o] + boxes' in visible
 assert 'Linked slots' not in visible
-assert 'S = 0.3D + 0.4C + 0.3O' in (ROOT/'captioning-pipeline-compact.html').read_text()
+for module in ['noun-aggregation','verb-aggregation']:
+ g=svg.find('.//s:g[@data-module="'+module+'"]',ns)
+ assert g.get('transform').endswith('520)'),module
+assert 'S = 0.3D + 0.4C + 0.3O' in (ROOT/'captioning-pipeline-v3.html').read_text()
 for key in ['prepared-object-slots','prepared-relation-slots','d-select','c-select','o-select']:
  route=next(r for r in G['routes'] if r['id']==key);assert len(route['points'])==2,key
 report['slot_input_labels_and_rerank_caption']=True

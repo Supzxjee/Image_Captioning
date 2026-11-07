@@ -31,11 +31,16 @@
     1120
   ],
   "model_or_scorer_execution": false,
-  "latest_revision_base": "4b0be42d8c60b64e0f2cf5f9c66702f881311f55",
+  "latest_revision_base": "465e633",
   "latest_user_revisions": [
     "Rename Linked slots to Slot MLP and explicitly label object/relation region-feature inputs.",
     "Include S = 0.3D + 0.4C + 0.3O and D/C min-max over five candidates in the figure caption.",
     "Move both aggregation flame icons clear of prototype size labels.",
-    "Align avoidable elbow connectors as single horizontal/vertical segments; align rerank score inputs vertically."
-  ]
+    "Align avoidable elbow connectors as single horizontal/vertical segments; align rerank score inputs vertically.",
+    "Deliver with a unique V3 basename; retain earlier exported artifacts.",
+    "Explicitly state text embeddings, original Vo region features and box coordinates in the caption.",
+    "Place aggregation flame icons inside upper-right module corners, clear of both size labels and module text; include detail crops."
+  ],
+  "delivery_revision": "v3",
+  "delivery_basename": "captioning-pipeline-v3"
 }

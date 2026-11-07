@@ -51,7 +51,9 @@ c.plain(864,300,'Vₒ',22)
 wire('relation-vr',[(944,384),(984,384)],'relation-fusion','vr')
 for key,x,colour in [('noun',432,'semantic'),('verb',720,'relation')]:
  c.box(key+'-bank',x,624,224,64,'TRAIN '+key+' bank',('Fixed embeddings',),fill=colour,fs=24,ss=20)
- c.box(key+'-aggregation',x,512,224,64,'Learned semantic',('aggregation',),fill=colour,fs=23,ss=23)
+ c.box(key+'-aggregation',x,512,224,64,'Learned semantic',('aggregation',),fill=colour,fs=21,ss=23)
+ # Reserve the upper-right corner for the flame badge.
+ c.nodes[-1]=c.nodes[-1].replace(f'x="{x+112.0}"',f'x="{x+100.0}"')
  centre=x+112
  token(key+'-prototypes',centre-10,448,'Pₙ' if key=='noun' else 'Pᵥ',ORANGE if key=='noun' else BLUE,'right')
  wire(key+'-bank-aggregation',[(centre,624),(centre,576)],key+'-bank',key+'-aggregation')
@@ -152,8 +154,9 @@ learned=['projection','noun-aggregation','verb-aggregation','object-fusion-1','o
 node_map={n['id']:n for n in c.meta}
 for key in frozen+learned:
  n=node_map[key]
- bx=n['x']+n['w']+16 if key.endswith('-aggregation') else n['x']+n['w']-22
- c.nodes.append(icon('frozen' if key in frozen else 'trainable',bx,n['y']-22,key))
+ bx=n['x']+n['w']-22
+ by=n['y']+8 if key.endswith('-aggregation') else n['y']-22
+ c.nodes.append(icon('frozen' if key in frozen else 'trainable',bx,by,key))
 c.nodes.append(icon('trainable',1986,34,'decoder'))
 for key,y in [('object',144),('relation',464)]:c.nodes.append(icon('trainable',1642,y-22,key+'-adapter'))
 c.plain(1200,1048,'Training: cross-entropy pretraining followed by SCST + cross-entropy.',25)
@@ -164,9 +167,9 @@ for j,item in enumerate(c.nodes):
  for key in ['patches','boxes','noun-bank','verb-bank','train-lemmas','object-phrases','relation-phrases','prefix','final-caption']:
   if item.startswith('<g id="'+key+'">'):item=item.replace('rx="6"','rx="0"')
  c.nodes[j]=item
-slug='captioning-pipeline-compact'
+slug='captioning-pipeline-v3'
 svg=c.svg(slug,(0,0,2400,1120))
-caption='Luồng kỹ thuật được trình bày liên tục: các vùng ảnh đi trực tiếp qua hai object fusion và một relation fusion, rồi hai prompt adapter cập nhật memory trước decoder. Không lặp các block tổng quan hoặc memory sau adapter. Nhánh chuẩn bị prompt kết hợp text embeddings với valid region links; các chấm nhỏ chỉ điểm nối/tách dữ liệu, không phải module mới. Relation slot dùng Vo gốc. Icon tuyết xanh/lửa cam áp dụng khi huấn luyện; fixed position và softmax không có trọng số học. Ảnh chỉ minh họa. Reranking: S = 0.3D + 0.4C + 0.3O; D/C được min–max trong cùng 5 ứng viên.'
+caption='Luồng kỹ thuật được trình bày liên tục: các vùng ảnh đi trực tiếp qua hai object fusion và một relation fusion, rồi hai prompt adapter cập nhật memory trước decoder. Không lặp các block tổng quan hoặc memory sau adapter. Mỗi Slot MLP nhận embedding chữ, đặc trưng vùng từ Vo gốc và tọa độ box; relation nhận Vo[s], Vo[o] theo thứ tự. Nhánh chuẩn bị prompt kết hợp text embeddings với valid region links; các chấm nhỏ chỉ điểm nối/tách dữ liệu, không phải module mới. Relation slot dùng Vo gốc. Icon tuyết xanh/lửa cam áp dụng khi huấn luyện; fixed position và softmax không có trọng số học. Ảnh chỉ minh họa. Reranking: S = 0.3D + 0.4C + 0.3O; D/C được min–max trong cùng 5 ứng viên.'
 doc='<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Compact image captioning architecture</title><style>body{margin:0;background:#fff;font-family:Arial,"Liberation Sans",sans-serif}.diagram-container{width:100%;overflow-x:auto}svg{width:100%;min-width:2400px;display:block}figcaption{max-width:1100px;margin:20px auto;padding:0 24px;line-height:1.6;font-size:16px}@media print{.diagram-container{overflow:visible}svg{min-width:0}figcaption{display:none}}</style></head><body><main><div class="diagram-container">'+svg+'</div><figcaption lang="vi">'+html.escape(caption)+'</figcaption></main></body></html>'
 (ROOT/(slug+'.html')).write_text(doc)
 (ROOT/'diagram_geometry.json').write_text(json.dumps({'canvas':[2400,1120],'nodes':c.meta,'routes':c.routes},indent=2))

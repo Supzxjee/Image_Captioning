@@ -4,13 +4,15 @@
 
 ## Bàn giao
 
-[SVG chỉnh sửa được](captioning-pipeline-compact.svg) · [PDF vector](captioning-pipeline-compact.pdf) · [PNG 4800×2240](captioning-pipeline-compact.png) · [HTML](captioning-pipeline-compact.html).
+[V3 — SVG chỉnh sửa được](captioning-pipeline-v3.svg) · [PDF vector](captioning-pipeline-v3.pdf) · [PNG 4800×2240](captioning-pipeline-v3.png) · [HTML](captioning-pipeline-v3.html).
+
+V3 dùng tên file mới để phân biệt rõ với các lần bàn giao trước. Ảnh kiểm tra phóng to: [hai Slot MLP và đầu vào](slot-mlp-detail-v3.png) · [hai icon lửa trong góc module](aggregation-detail-v3.png). Các file `captioning-pipeline-compact.*` là bản trước, giữ nguyên.
 
 Các bản trước giữ nguyên. Canvas mới 2400×1120, so với 2560×1472 của bản icon trước: chiều cao giảm khoảng 24%, diện tích canvas giảm khoảng 29%. Đây là so sánh bố cục, không phải tốc độ hoặc chất lượng mô hình.
 
 ## Caption tiếng Việt
 
-**Kiến trúc mô hình chú thích ảnh kết hợp bank ngữ nghĩa và prompt gắn vùng.** Region features đi trực tiếp qua hai object fusion và một relation fusion. Hai adapter kết hợp prompt UPT với các vùng hợp lệ, cập nhật riêng object/relation memory trước decoder. Decoder đọc trực tiếp hai memory sau adapter, sinh năm caption rồi chọn bằng điểm kết hợp. Các bank toàn cục vẫn khác với prompt riêng ảnh; relation slot dùng `Vo` gốc. Ảnh và token chỉ minh họa, không phải kết quả chạy mới. Reranking dùng **S = 0.3D + 0.4C + 0.3O**, với **D/C được min–max trên cùng 5 ứng viên**.
+**Kiến trúc mô hình chú thích ảnh kết hợp bank ngữ nghĩa và prompt gắn vùng.** Region features đi trực tiếp qua hai object fusion và một relation fusion. Hai adapter kết hợp prompt UPT với các vùng hợp lệ, cập nhật riêng object/relation memory trước decoder. Mỗi Slot MLP nhận **embedding chữ, đặc trưng vùng từ Vo gốc và tọa độ box**; relation nhận `Vo[s]`, `Vo[o]` theo thứ tự. Decoder đọc trực tiếp hai memory sau adapter, sinh năm caption rồi chọn bằng điểm kết hợp. Các bank toàn cục vẫn khác với prompt riêng ảnh. Ảnh và token chỉ minh họa, không phải kết quả chạy mới. Reranking dùng **S = 0.3D + 0.4C + 0.3O**, với **D/C được min–max trên cùng 5 ứng viên**.
 
 ## Những điểm đổi về trình bày
 
@@ -24,7 +26,7 @@ Các bản trước giữ nguyên. Canvas mới 2400×1120, so với 2560×1472 
 
 - Hai box bo góc được đổi thành **Slot MLP**, thể hiện bước xử lý học được. Nhãn đầu vào: object `tₒ + Vo[i] + box`; relation `tᵣ + Vo[s], Vo[o] + boxes`. Cả hai vẫn dùng đặc trưng vùng gốc, không chỉ text/index.
 - Công thức reranking và min–max D/C đã thêm trực tiếp vào caption của HTML và đoạn caption phía trên. Weighted scoring and selection giữ nguyên chức năng.
-- Hai icon lửa của semantic aggregation được dịch sang góc phải xa hơn, không còn chạm `150×512`. Đo bounding boxes trong Chromium xác nhận không giao nhau.
+- V3 đặt hai icon lửa của semantic aggregation bên trong góc trên phải module, tách khỏi dòng `150×512`; thu và căn chữ module để dành chỗ. Đo bounding boxes trong Chromium xác nhận icon không giao với nhãn kích thước hoặc chữ bên trong module; đã xem hai ảnh phóng to.
 - Căn cổng để mũi tên ảnh→YOLO, patches→ROI, UPT→phrases, text→bank, metadata→Slot MLP và ba điểm→weighted scoring là một đoạn thẳng. Ba thành phần điểm được đặt ngang để đi thẳng xuống selection. Các đoạn bus/phân nhánh còn lại vẫn chỉ ngang/dọc, góc vuông.
 
 ## Chi tiết được gói và quy ước

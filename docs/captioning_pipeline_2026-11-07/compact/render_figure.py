@@ -29,13 +29,13 @@ def local_goto(self,url,*a,**kw):
  return original_goto(self,url,*a,**kw)
 Page.goto=local_goto
 reports={}
-for html in sorted(ROOT.glob('*.html')):
+for html in sorted(ROOT.glob('captioning-pipeline-v3.html')):
  subprocess.run(['python',str(SKILL/'scripts/export_svg.py'),str(html),'--system-fonts'],check=True,capture_output=True)
  export.rasterize(html,html.with_suffix('.png'),2)
  print('PNG',html.stem,flush=True)
 with sync_playwright() as p:
  browser=p.chromium.launch()
- for html in sorted(ROOT.glob('*.html')):
+ for html in sorted(ROOT.glob('captioning-pipeline-v3.html')):
   page=browser.new_page()
   page.goto(html.as_uri(),wait_until='load')
   page.evaluate('document.fonts.ready')
@@ -49,15 +49,16 @@ with sync_playwright() as p:
      outside.push({node:t.dataset.owner,text:t.textContent,bbox:{x:b.x,y:b.y,w:b.width,h:b.height},nodebox:{x:n.x,y:n.y,w:n.width,h:n.height}});
    }
    const dims=[...svg.querySelectorAll('text')].filter(t=>t.textContent==='150×512');
-   const collisions=[];
+   const collisions=[]; const moduleTextCollisions=[];
    for(const id of ['noun-aggregation','verb-aggregation']) {
     const g=svg.querySelector('g[data-icon-kind][data-module="'+id+'"]');
     const a=g.getBoundingClientRect();
+    for(const t of svg.querySelectorAll('text[data-owner="'+id+'"]')){const b=t.getBoundingClientRect();if(a.left<b.right && a.right>b.left && a.top<b.bottom && a.bottom>b.top) moduleTextCollisions.push({icon:id,text:t.textContent});}
     for(const t of dims){const b=t.getBoundingClientRect();
      if(a.left<b.right && a.right>b.left && a.top<b.bottom && a.bottom>b.top) collisions.push({icon:id,text:t.textContent});
     }
    }
-   return {aggregationBadgeLabelOverlap:collisions,viewBox:[v.x,v.y,v.width,v.height],overflow:outside,textNodes:svg.querySelectorAll('text').length,font:getComputedStyle(svg.querySelector('text')).fontFamily};
+   return {aggregationBadgeLabelOverlap:collisions,aggregationBadgeModuleTextOverlap:moduleTextCollisions,viewBox:[v.x,v.y,v.width,v.height],overflow:outside,textNodes:svg.querySelectorAll('text').length,font:getComputedStyle(svg.querySelector('text')).fontFamily};
   }''')
   w,h=audit['viewBox'][2:]
   page.pdf(path=str(html.with_suffix('.pdf')),width=f'{w}px',height=f'{h}px',print_background=True,margin=dict(top='0',right='0',bottom='0',left='0'))

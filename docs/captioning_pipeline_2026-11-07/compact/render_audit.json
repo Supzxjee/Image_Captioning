@@ -1,6 +1,7 @@
 {
-  "captioning-pipeline-compact": {
+  "captioning-pipeline-v3": {
     "aggregationBadgeLabelOverlap": [],
+    "aggregationBadgeModuleTextOverlap": [],
     "viewBox": [
       0,
       0,
