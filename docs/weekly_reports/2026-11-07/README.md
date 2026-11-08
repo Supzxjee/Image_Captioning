@@ -73,3 +73,10 @@ User requested missing visual-extraction detail. add_visual_extraction.py insert
 ## 08/11 Align experiment groups
 
 `clarify_experiment_groups.py` updates section3 to introduce both bank and image-specific prompt comparisons, defines CONTROL/PROMPT explicitly, and aligns section4 headings. Older bank10 runs remain distinct from current CONTROL/PROMPT. Numeric table XMLs and five figure hashes unchanged. Six portrait pages rendered through Word COM/Poppler and inspected; `experiment_groups_qa.json`. Delivered `Bao_cao_nghien_cuu_tuan_13_hai_nhom_thuc_nghiem.docx`. No experiments or Sheet changes.
+
+
+## 08/11 SPICE and qualitative report update
+
+New `Bao_cao_nghien_cuu_tuan_13_bo_sung_SPICE.docx`, built by `add_spice_qualitative.py` from the user-edited Downloads report (source SHA in `spice_qualitative_qa.json`). Preserves3existing table XMLs/5figure hashes; adds SPICE subsets, caption trainable params/worker phase timings with exclusions, and4photos/caption pairs including improvements and failures. Corrects XE/split/loss description and conclusion numbering; no standalone manuscript outline per user correction. Eight portrait pages rendered via Word COM/Poppler and all inspected. New Downloads copy verified; prior user file untouched.
+
+24original COCO JPEGs fetched through public S3 path and match saved TEST inference SHA. Assistant notes: `experiments/csa_paper/paper_analysis/visual_review_24.json`; user confirmation still pending. Selected IDs359270/559364/321014/359465, actual captions unchanged, policy labels explicit; photos retained in qualitative_assets. CHAIR removal does not imply complete visual truth: waterski example has malformed PROMPT; unselected knife/keyboard image has visible keyboard at edge, so it is a focus/coverage issue rather than entirely nonexistent keyboard. No scorer/model/training/Sheet changes this turn.

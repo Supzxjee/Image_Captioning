@@ -1,0 +1,23 @@
+{
+  "status": "PASS",
+  "pages": 8,
+  "all_pages_visually_inspected": true,
+  "source_user_file_sha256": "5e63a15341e56b4d5fb9fdf09e9fb90ba37340664c06fa503b983ed5234138ad",
+  "new_file_sha256": "98c0a88d0336c348a6dd714d5a1d15d8682be15759e4a30a6f8b125c87f5c1fe",
+  "original_tables_xml_unchanged": 3,
+  "original_figures_hash_unchanged": [
+    "a2e37712f19b9a98007a15527a54815b895f1887b6a052cb802cabf42bc34cef",
+    "01c2d04dd260a8acaab337474d1866936b74caadf43ca9aac2a0dc6fe399fa16",
+    "eb6d4f84db68ef2c5b9a0de7abb8f57125bd9981e193a080adaffd752f9831db",
+    "0be9329f5e7027fd87a701c5e0bb344408f972a36921a16ca21c9e9835150dfd",
+    "4366a653ba0ae65e15570f624275da521109db09ea885e40c25e371bf257df74"
+  ],
+  "new_photos": 4,
+  "assistant_reviewed_images": 24,
+  "all_original_jpeg_sha_match_test_inputs": true,
+  "user_visual_confirmation": false,
+  "render": "Word COM + Poppler; packaged renderer missing LibreOffice, log retained",
+  "manuscript_outline_created": false,
+  "models_or_scorers_executed": false,
+  "output": "C:\\Users\\leduc\\Downloads\\Bao_cao_nghien_cuu_tuan_13_bo_sung_SPICE.docx"
+}
