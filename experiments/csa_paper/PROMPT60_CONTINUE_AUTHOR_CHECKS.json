@@ -1,0 +1,11 @@
+{
+  "status": "AUTHOR_STATIC_DATA_READY",
+  "bundle_files": 46,
+  "revision": "8768210c025979e5f532daa0ac5e7629b2b1b166",
+  "isolated_data_tests": 6,
+  "old_data_regression_tests": 10,
+  "model_sources_unchanged": 3,
+  "model_run": false,
+  "scorer_run": false,
+  "kaggle_run": false
+}
