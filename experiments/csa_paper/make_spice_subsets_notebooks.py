@@ -19,7 +19,7 @@ def cell(kind, code):
 
 def make(revision):
     revision = subprocess.check_output(['git', 'rev-parse', revision], cwd=ROOT, text=True).strip()
-    files = ['score_prompt_test_extra.py', 'score_spice_subsets.py', 'test_spice_subsets_data.py', 'PROMPT_TEST_EXTRA_INPUTS.json', 'PROMPT_TEST_EXTRA_RESULT.json']
+    files = ['score_prompt_test_extra.py', 'score_spice_subsets.py', 'test_spice_subsets_data.py', 'compare_spice_subsets.py', 'PROMPT_TEST_EXTRA_INPUTS.json', 'PROMPT_TEST_EXTRA_RESULT.json']
     payload = {n: subprocess.check_output(['git', 'show', revision+':experiments/csa_paper/'+n], cwd=ROOT) for n in files}
     hashes = {n: hashlib.sha256(raw).hexdigest() for n, raw in payload.items()}
     manifest = json.loads(payload['PROMPT_TEST_EXTRA_INPUTS.json'])
