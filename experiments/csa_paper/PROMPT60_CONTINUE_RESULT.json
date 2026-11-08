@@ -1,0 +1,273 @@
+{
+  "status": "PROMPT60_CONTINUE_REVIEW_COMPLETE",
+  "source_version": 69,
+  "source_notebook": "ducanh3/notebook7bc83c4c76",
+  "archive_sha256": "4d2159597817883bbd9feed3a9f9b058d3e711acfc0488990028fcc00983b17b",
+  "checks": 15117,
+  "metrics": {
+    "original": {
+      "decoder_rank0": {
+        "CIDEr": 1.0583651905121678,
+        "Bleu_4": 0.3484809633300911,
+        "ROUGE_L": 0.5434731192458938,
+        "CHAIRs": 0.0406,
+        "CHAIRi": 0.028551724137931035,
+        "Recall": 0.41442742340532396,
+        "counts": {
+          "images": 5000,
+          "hallucinated_captions": 203,
+          "hallucinated_mentions": 207,
+          "object_mentions": 7250,
+          "recalled_unique": 6601,
+          "reference_unique": 15928
+        },
+        "NLL": 2.423685141331236,
+        "mean_words": 8.1488,
+        "short_le2": 450
+      },
+      "fixed_rerank": {
+        "CIDEr": 1.1380042073490821,
+        "Bleu_4": 0.3628308543006039,
+        "ROUGE_L": 0.5656794197258752,
+        "CHAIRs": 0.0302,
+        "CHAIRi": 0.019274092615769713,
+        "Recall": 0.4459442491210447,
+        "counts": {
+          "images": 5000,
+          "hallucinated_captions": 151,
+          "hallucinated_mentions": 154,
+          "object_mentions": 7990,
+          "recalled_unique": 7103,
+          "reference_unique": 15928
+        },
+        "NLL": 2.423685141331236,
+        "mean_words": 9.0682,
+        "short_le2": 76
+      },
+      "changed_captions": 3035
+    },
+    "mid": {
+      "decoder_rank0": {
+        "CIDEr": 1.0538030328418735,
+        "Bleu_4": 0.347957212882227,
+        "ROUGE_L": 0.5438463826520344,
+        "CHAIRs": 0.038,
+        "CHAIRi": 0.02755741127348643,
+        "Recall": 0.4106604721245605,
+        "counts": {
+          "images": 5000,
+          "hallucinated_captions": 190,
+          "hallucinated_mentions": 198,
+          "object_mentions": 7185,
+          "recalled_unique": 6541,
+          "reference_unique": 15928
+        },
+        "NLL": 2.4215468210640627,
+        "mean_words": 8.1226,
+        "short_le2": 445
+      },
+      "fixed_rerank": {
+        "CIDEr": 1.1427783673892846,
+        "Bleu_4": 0.36440311296064604,
+        "ROUGE_L": 0.5668433931314272,
+        "CHAIRs": 0.027,
+        "CHAIRi": 0.017685699848408287,
+        "Recall": 0.444060773480663,
+        "counts": {
+          "images": 5000,
+          "hallucinated_captions": 135,
+          "hallucinated_mentions": 140,
+          "object_mentions": 7916,
+          "recalled_unique": 7073,
+          "reference_unique": 15928
+        },
+        "NLL": 2.4215468210640627,
+        "mean_words": 9.0704,
+        "short_le2": 65
+      },
+      "changed_captions": 3078
+    },
+    "end": {
+      "decoder_rank0": {
+        "CIDEr": 1.0649840162987803,
+        "Bleu_4": 0.35281560874891366,
+        "ROUGE_L": 0.5462556528144693,
+        "CHAIRs": 0.0404,
+        "CHAIRi": 0.029123494819378325,
+        "Recall": 0.4108488196885987,
+        "counts": {
+          "images": 5000,
+          "hallucinated_captions": 202,
+          "hallucinated_mentions": 208,
+          "object_mentions": 7142,
+          "recalled_unique": 6544,
+          "reference_unique": 15928
+        },
+        "NLL": 2.4194343505433,
+        "mean_words": 8.033,
+        "short_le2": 445
+      },
+      "fixed_rerank": {
+        "CIDEr": 1.1506277043824957,
+        "Bleu_4": 0.3690832348905705,
+        "ROUGE_L": 0.5687136503403657,
+        "CHAIRs": 0.0296,
+        "CHAIRi": 0.019196542079837273,
+        "Recall": 0.4431190356604721,
+        "counts": {
+          "images": 5000,
+          "hallucinated_captions": 148,
+          "hallucinated_mentions": 151,
+          "object_mentions": 7866,
+          "recalled_unique": 7058,
+          "reference_unique": 15928
+        },
+        "NLL": 2.4194343505433,
+        "mean_words": 8.9462,
+        "short_le2": 75
+      },
+      "changed_captions": 3092
+    }
+  },
+  "selection": {
+    "selected_name": "original",
+    "eligible_names": [
+      "original"
+    ],
+    "sha256": "be2759b4a6f57af9bf8baeb13ee097bae2d8703d265b0791d9d39bb9c3dcbc63",
+    "test_used": false,
+    "improved": false,
+    "rule": "max fixed-rerank CIDEr with CHAIRs/i<=original and Recall>=original; earlier ties; original fallback"
+  },
+  "comparisons": {
+    "mid/decoder_rank0": {
+      "metric_order": [
+        "CIDEr_points",
+        "CHAIRs_pp",
+        "CHAIRi_pp",
+        "Recall_pp"
+      ],
+      "delta": [
+        -0.4562157670293914,
+        -0.2599999999999998,
+        -0.09943128644446064,
+        -0.3766951280763422
+      ],
+      "CI95": [
+        [
+          -1.3793100152270519,
+          -0.6200000000000001,
+          -0.34784392663641617,
+          -0.6610765829649937
+        ],
+        [
+          0.4834987646847077,
+          0.10000000000000053,
+          0.16409252247870335,
+          -0.1001558677219263
+        ]
+      ],
+      "flags_repaired": 50,
+      "flags_introduced": 37
+    },
+    "mid/fixed_rerank": {
+      "metric_order": [
+        "CIDEr_points",
+        "CHAIRs_pp",
+        "CHAIRi_pp",
+        "Recall_pp"
+      ],
+      "delta": [
+        0.47741600402024176,
+        -0.31999999999999984,
+        -0.15883927673614262,
+        -0.18834756403817465
+      ],
+      "CI95": [
+        [
+          -0.4628391054729789,
+          -0.6999999999999997,
+          -0.4102909126447099,
+          -0.47298992439053045
+        ],
+        [
+          1.3924944205592116,
+          0.040000000000000036,
+          0.0744601521801574,
+          0.06899813753237692
+        ]
+      ],
+      "flags_repaired": 49,
+      "flags_introduced": 33
+    },
+    "end/decoder_rank0": {
+      "metric_order": [
+        "CIDEr_points",
+        "CHAIRs_pp",
+        "CHAIRi_pp",
+        "Recall_pp"
+      ],
+      "delta": [
+        0.6618825786612206,
+        -0.019999999999999574,
+        0.057177068144729226,
+        -0.3578603716725297
+      ],
+      "CI95": [
+        [
+          -0.2552354149711338,
+          -0.40000000000000036,
+          -0.21556122415547427,
+          -0.6347169543391666
+        ],
+        [
+          1.6291714750596415,
+          0.3799999999999999,
+          0.3468753593376963,
+          -0.07588980989093949
+        ]
+      ],
+      "flags_repaired": 48,
+      "flags_introduced": 47
+    },
+    "end/fixed_rerank": {
+      "metric_order": [
+        "CIDEr_points",
+        "CHAIRs_pp",
+        "CHAIRi_pp",
+        "Recall_pp"
+      ],
+      "delta": [
+        1.2623497033413855,
+        -0.06000000000000005,
+        -0.007755053593244021,
+        -0.2825213460572584
+      ],
+      "CI95": [
+        [
+          0.23579100233840508,
+          -0.4005000000000003,
+          -0.23379209600588993,
+          -0.5576476545854616
+        ],
+        [
+          2.292332839975979,
+          0.2599999999999998,
+          0.20482037328576333,
+          0.0
+        ]
+      ],
+      "flags_repaired": 37,
+      "flags_introduced": 34
+    }
+  },
+  "mid_sha256": "fd0708b7389034e24f3926d68fd7b7f715a5cc470c81d2f8af8edbfb7b504abc",
+  "end_sha256": "c4acaf39d4444919b5c19ceb5ba3182251b752ea4d1392649c4919c048c352c2",
+  "worker_seconds": 6111.730189476,
+  "limits": [
+    "One seed/reused VALID; conditional fixed-corpus paired2000bootstrap, not training variance or new TEST.",
+    "Checkpoint binaries not in review ZIP: SHA and Adam/RNG restoration are runtime receipts/pinned code, not independently loaded weights.",
+    "No local model, CUDA or official scorer execution.",
+    "Multiple checkpoint/policy/metric comparisons are unadjusted; operational selection guard differs from statistical testing."
+  ]
+}

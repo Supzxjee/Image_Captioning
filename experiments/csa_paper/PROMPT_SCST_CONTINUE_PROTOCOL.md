@@ -11,3 +11,7 @@ Original replay before any training must match source60 fullVALID rank0 CIDEr an
 Four-hour parent STOP cap (not predicted runtime or billed quota); reserve score/rerank time, measured throughput stop, atomic checkpoints every500 updates and on cap. No auto restart or epoch extension. User runs notebook on Ngân account for own-source60 download; alternative local input accepts only exact SHA. Separate optional same-recipe resume is supported; no model/notebook/scorer execution by author. Local checks limited to metadata/NumPy/static/mock.
 
 Question: can further training improve CIDEr while retaining current hallucination/recall? Improvement is not guaranteed; do not relax guards or choose TEST checkpoints after seeing results.
+
+## Completion — Ngân69
+
+Completed one added epoch. END fixed-rerank CIDEr improves +1.2623points and CHAIR flags151→148, but recall44.5944→44.3119%; MID also loses recall. Original60 is sole eligible checkpoint under the unchanged guard. Preserve MID/END as tradeoff candidates; no automatic extra epoch/TEST/guard relaxation. [Result](PROMPT60_CONTINUE_RESULT.md).

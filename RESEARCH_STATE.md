@@ -1,6 +1,6 @@
 # Trạng thái nghiên cứu — đọc trước khi tiếp tục
 
-Cập nhật: 08/11/2026, giờ Việt Nam. File này là bản tóm tắt để tiếp tục công việc; protocol và artifacts được dẫn bên dưới mới là nguồn chi tiết. Không cần đọc toàn bộ lịch sử chat.
+Cập nhật: 09/11/2026, giờ Việt Nam. File này là bản tóm tắt để tiếp tục công việc; protocol và artifacts được dẫn bên dưới mới là nguồn chi tiết. Không cần đọc toàn bộ lịch sử chat.
 
 ## Mục tiêu và cách làm việc
 
@@ -10,7 +10,7 @@ Cập nhật: 08/11/2026, giờ Việt Nam. File này là bản tóm tắt để
 
 ## Hiện đang ở đâu
 
-- **08/11 PROMPT60 continuation notebook READY, user approved.** [Protocol](experiments/csa_paper/PROMPT_SCST_CONTINUE_PROTOCOL.md), [run](experiments/csa_paper/PROMPT60_CONTINUE_RUN.md), [QA](experiments/csa_paper/PROMPT60_CONTINUE_AUTHOR_CHECKS.json). ExactNgân60 checkpoint be2759b4; XE9selected+1SCST epoch; restore model/Adam/RNG, addedepoch14161updates/113287TRAIN order43+perimageCErotation. Original/MID7081/END VALID5000+fixedrerank, strictCHAIRs/i/Recallguards maxCIDEr earlier-tie/originalfallback; no TEST/newweights. Sourcebundle8768210/46pins;6isolatedNumPy/mock/ASTtests+10olddataregressions PASS;3model sourceSHAs unchanged. Budget13h userreported,4hparentSTOPcap+measuredguard. Downloads notebook ready; actualCUDA/DDP/model/metric gates pending user Kaggle. No localmodels/scorers or Word edits. SheetKết quả mới A94:L96 pending/ready only; verify readback before final.
+- **09/11 PROMPT epoch2 review COMPLETE, Ngân69 userconfirmed.** [Result/audit](experiments/csa_paper/PROMPT60_CONTINUE_RESULT.md):15117cached-data/source/seal/15kselector checks PASS; exactoriginal60 caption/token/metric replay. Added14161updates/113287TRAIN, restoreAdam/RNG code/runtimechecked; no localbinary/scorer/model execution. Fixedrerank original/MID/END CIDEr113.8004/114.2778/115.0628, flags151/135/148, Recall44.5944/44.4061/44.3119%. END CIDEr+1.2623 CI95[+.2358,+2.2923] conditional2000pairedbootstrap; recall−.2825pp CI[−.5576,0], CHAIRnet−3(37repaired/34introduced) CIcontains0. Onlyoriginaleligible(strictrecallguard), best.bin stayssource60 be2759b4; preserveMID fd0708b7/END c4acaf39 tradeoffcandidates. Do not call noimprovement; noautoguardrelax/extraepoch/TEST. Worker6111.7s excludesstaging/rerank/scoring, notbilling. ZIPread1cached ../.review_cache/prompt60_epoch2/archive_text.json; no Word edit. SheetKết quả mới A94:L96 update/readback before final.
 
 - **08/11 VALID weight calibration COMPLETE, CPU190.** [Results/audit](experiments/csa_paper/valid_rerank_diagnostic/CALIBRATION_RESULT.md):187073 cached-data checks PASS; source/split/CHAIR parity/66grid/lock/CHECK replay. Only1/66 TUNE rules meets each-arm CIDEr+CHAIRs/i+recall guards: original D=.3/C=.4/O=.3. Lock unchanged; check_accept=false means no strict new improvement, not runtime failure. CHECK3000 C/P CIDEr115.8524/115.2108; CHAIRs4.3333/2.9%; recall43.8714/44.8797%. Separate subset IDF/reusedVALID, not newTEST/globaloptimum proof. Keep oldselector and TESTresults; no repeatTEST/regrid/relaxguards. Userconfirmed190. ZIPread1/cache ../.review_cache/valid_weight_calibration_v1/archive_text.json; no localofficialscorer/model/Word edit. Sheet Kết quả mới A89:L91 update results, verify readback before final.
 
