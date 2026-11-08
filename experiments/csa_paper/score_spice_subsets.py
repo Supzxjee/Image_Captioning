@@ -7,6 +7,7 @@ from score_prompt_test_extra import read, save, environment, smoke, tokenize, ja
 
 HERE = Path(__file__).resolve().parent
 CATEGORIES = ('All', 'Objects', 'Relations', 'Attributes')
+ALIASES = {'Object': 'Objects', 'Relation': 'Relations', 'Attribute': 'Attributes'}
 
 
 def summarize(rows):
@@ -20,8 +21,27 @@ def summarize(rows):
 
 
 def clean(score):
-    return {category: {key: float(value) if math.isfinite(float(value)) else None
+    return {ALIASES.get(category, category): {key: float(value) if value is not None and math.isfinite(float(value)) else None
                        for key, value in part.items()} for category, part in score.items()}
+
+
+def validate_categories(rows):
+    for category in CATEGORIES:
+        if not any(category in r['scores'] for r in rows):
+            observed = sorted({k for r in rows for k in r['scores']})
+            raise ValueError(f'Missing SPICE category: {category}; observed={observed}')
+
+
+def subset_smoke(out):
+    smoke(out)
+    from pycocoevalcap.spice.spice import Spice
+    point, scores = Spice().compute_score(
+        {1: ['a red dog is sitting on a couch']}, {1: ['a red dog is sitting on a couch']})
+    rows = [dict(coco_id=1, scores=clean(scores[0]))]
+    validate_categories(rows)
+    if not math.isfinite(float(point)) or point <= 0:
+        raise ValueError('Subset smoke failed')
+    save(out/'subset_smoke.json', dict(passed=True, categories=list(rows[0]['scores']), rows=rows))
 
 
 def score(out, arm, manifest):
@@ -41,8 +61,19 @@ def score(out, arm, manifest):
         if len(reference) != 5000 or set(reference) != set(hyp):
             raise ValueError('Incomplete TEST cohort')
         print('SPICE subsets:', arm, policy, '5000 saved captions', flush=True)
-        scorer = Spice()
-        point, scores = scorer.compute_score(reference, hyp)
+        saved_path = out / (policy+'_spice_raw.json')
+        if saved_path.is_file():
+            raw = read(saved_path)
+            if raw['tokenized_sha256'] != receipt['tokenized_sha256'] or raw['arm'] != arm or raw['policy'] != policy:
+                raise ValueError('Saved SPICE identity differs')
+            point, scores = raw['point'], raw['scores']
+            print('Reusing saved SPICE values:', policy, flush=True)
+        else:
+            scorer = Spice()
+            point, scores = scorer.compute_score(reference, hyp)
+            # Preserve expensive scorer output before validating its category schema.
+            save(saved_path, dict(arm=arm, policy=policy, point=float(point),
+                tokenized_sha256=receipt['tokenized_sha256'], scores=[clean(s) for s in scores]))
         # pycocoevalcap returns per-image scores in sorted input-key order.
         if len(scores) != 5000 or not math.isfinite(float(point)):
             raise ValueError('Incomplete/nonfinite SPICE result')
@@ -51,9 +82,7 @@ def score(out, arm, manifest):
         rows = [dict(coco_id=int(i), scores=clean(s)) for i, s in zip(sorted(reference), scores)]
         if any(r['scores'].get('All', {}).get('f') is None for r in rows):
             raise ValueError('Undefined All score')
-        for category in CATEGORIES:
-            if not any(category in r['scores'] for r in rows):
-                raise ValueError('Missing SPICE category: '+category)
+        validate_categories(rows)
         save(out / (policy+'_spice_per_image.json'), rows)
         points[policy] = summarize(rows)
     save(out/'result.json', dict(status='SPICE_SUBSETS_COMPLETE', arm=arm, images=5000,
@@ -78,6 +107,6 @@ if __name__ == '__main__':
         environment(a.output)
     else:
         java_path(a.output)
-        if a.mode == 'smoke': smoke(a.output)
+        if a.mode == 'smoke': subset_smoke(a.output)
         elif a.mode == 'tokenize': tokenize(a.output, a.input, a.arm, manifest)
         else: score(a.output, a.arm, manifest)

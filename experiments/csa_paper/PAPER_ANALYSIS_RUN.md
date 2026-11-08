@@ -17,3 +17,8 @@ Khi nhận đủ hai đầu ra, dùng compare_spice_subsets.py để tính chên
 ## Kiểm tra và giới hạn
 
 Hai pure-data tests PASS (undefined/paired denominators), AST toàn bộ code cell PASS, input payload SHA được kiểm lại từ text cache, không import Torch hay chạy model/scorer/Kaggle local. CPU Java/SPICE/API runtime chưa thực thi; chưa có số SPICE con mới. Một seed, khác capacity và checkpoint khởi đầu C10/P9, TEST đã được xem vẫn là giới hạn. Không huấn luyện mới; RegionCLIP tạm hoãn. Không sửa báo cáo Word.
+
+
+## V2 schema fix
+
+User CONTROL runtime completed SPICE but postprocessing failed on plural Objects. Official SpiceScorer.java uses singular Object/Relation/Attribute. V2 normalizes names, checks actual subset schema during one-caption smoke, preserves raw scores before validation and reuses saved results only with matching arm/policy/token SHA. Original failed call did not preserve raw scores; only parser cache may remain if /tmp session survives. Use recovery cell for live runtime, otherwise fresh V2 own-account notebook. No historical scores changed; Java V2 runtime pending. Three data tests PASS.

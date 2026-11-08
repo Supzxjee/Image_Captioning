@@ -36,7 +36,7 @@ Four-hour CPU STOPcap (not ETA); heartbeat30s, logs and review preserved on fail
         setup += f'ARM={arm!r}\nKERNEL_VERSION={manifest["arms"][arm]["version"]!r}\nREVISION={revision!r}\nHASHES={hashes!r}\n'
         setup += '''SECRET_NAME='codex'
 SOURCE_ROOT='' # Optional mounted exact output; blank downloads own version.
-OUTPUT=Path('/kaggle/working/csa_prompt_TEST_spice_subsets_'+ARM+'_v1')
+OUTPUT=Path('/kaggle/working/csa_prompt_TEST_spice_subsets_'+ARM+'_v2')
 if OUTPUT.exists():raise RuntimeError('Preserve previous output; use a fresh session or output path.')
 if shutil.disk_usage('/kaggle/working').free < 3*1024**3:raise RuntimeError('Need 3GiB free for Java/CoreNLP and metric caches')
 OUTPUT.mkdir(parents=True)
@@ -125,7 +125,7 @@ finally:
 '''
         nb = dict(nbformat=4, nbformat_minor=5, metadata=dict(kernelspec=dict(display_name='Python 3',language='python',name='python3'),
             kaggle=dict(isInternetEnabled=True,isGpuEnabled=False)), cells=[cell('markdown',header),cell('code',setup),cell('code',execution)])
-        path = HERE/f'CSA_PROMPT_SPICE_SUBSETS_{arm}_CPU.ipynb'
+        path = HERE/f'CSA_PROMPT_SPICE_SUBSETS_{arm}_CPU_v2.ipynb'
         path.write_text(json.dumps(nb,ensure_ascii=False,indent=1)+'\n',encoding='utf-8')
         for c in nb['cells']:
             if c['cell_type']=='code':
