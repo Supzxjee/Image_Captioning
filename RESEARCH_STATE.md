@@ -10,6 +10,8 @@ Cập nhật: 08/11/2026, giờ Việt Nam. File này là bản tóm tắt để
 
 ## Hiện đang ở đâu
 
+- **08/11 paper analysis IN PROGRESS.** User approved analysis of saved CONTROL/PROMPT captions: SPICE subsets, parameters/timing, balanced error examples. [Protocol](experiments/csa_paper/PAPER_ANALYSIS_PROTOCOL.md). RegionCLIP deferred; no new training or local model/scorer run. Preparing own-account CPU notebooks on exact184/61 captions.
+
 - **08/11 report experiment groups clarified COMPLETE.** [Report/script/QA](docs/weekly_reports/2026-11-07/README.md): section3 now introduces bank10 and prompt comparison groups and defines CONTROL/PROMPT; section4 uses matching group headings. Historical bank10 separate from current CONTROL. All4 table XMLs/5 figure hashes unchanged. Six portrait WordCOM/Poppler pages visually inspected. Downloads `Bao_cao_nghien_cuu_tuan_13_hai_nhom_thuc_nghiem.docx` verified; no model/metric/Sheet changes.
 
 - **08/11 visual extraction detail/report COMPLETE.** User requested missing detail. [Word/script/QA](docs/weekly_reports/2026-11-07/README.md), [SVG/PNG/PDF source](docs/captioning_pipeline_2026-11-07/modules/README.md): new Figure2 before M2 shows CLIP patches + YOLO boxes→ROI pooling→768→512 projection→V to M2, B/classes to M3, plus2 prose paragraphs. Existing semantic modules M1–M3 unchanged. Now5 verified figures, still6 portrait pages; captions1–5 updated, all tables/training/results XML unchanged. All pages and vector PDF render inspected;10 orthogonal wires/body-transit/font/ID checks PASS. Downloads Bao_cao_nghien_cuu_tuan_13_day_du_pipeline.docx verified; older open files left untouched. No model/detector/scorer/Sheet runs.

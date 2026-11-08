@@ -1,0 +1,52 @@
+{
+  "CONTROL": {
+    "trainable_caption_parameters": 49239288,
+    "xe10_worker_seconds": 21290.585188746998,
+    "scst_full1_worker_seconds": 5813.349909079,
+    "test5000_phases": {
+      "beam5": {
+        "rank_seconds": [
+          214.64406097,
+          216.304755703
+        ],
+        "max_rank_seconds": 216.304755703
+      },
+      "rerank": {
+        "rank_seconds": [
+          97.09606809399997,
+          98.951628658
+        ],
+        "max_rank_seconds": 98.951628658
+      }
+    }
+  },
+  "PROMPT": {
+    "trainable_caption_parameters": 53708024,
+    "xe10_worker_seconds": 18941.205230182,
+    "scst_full1_worker_seconds": 6474.931807971,
+    "test5000_phases": {
+      "beam5": {
+        "rank_seconds": [
+          205.65626031200003,
+          204.41798490199994
+        ],
+        "max_rank_seconds": 205.65626031200003
+      },
+      "rerank": {
+        "rank_seconds": [
+          88.15184081899997,
+          88.50238100199999
+        ],
+        "max_rank_seconds": 88.50238100199999
+      }
+    }
+  },
+  "parameter_delta": 4468736,
+  "limits": [
+    "Frozen CLIP/YOLO/UPT and rerank encoder parameters excluded from caption trainable count.",
+    "Two T4 workers: max rank seconds is a phase proxy, not measured end-to-end latency.",
+    "Preprocessing, prompt/feature extraction, model loading, barriers and CPU scoring excluded from inference timing.",
+    "Worker times from separate sessions; not a controlled speed benchmark or GPU quota consumption.",
+    "XE workers ran 10 epochs; selected SCST starts C10/P9."
+  ]
+}

@@ -1,0 +1,672 @@
+{
+  "status": "AUTOMATED_SHORTLIST_NOT_VISUAL_TRUTH",
+  "group_counts": {
+    "normal": {
+      "flag_removed": 170,
+      "flag_introduced": 77,
+      "neither_flagged": 4642,
+      "both_flagged": 111
+    },
+    "fixed_rerank": {
+      "flag_removed": 137,
+      "flag_introduced": 70,
+      "neither_flagged": 4703,
+      "both_flagged": 90
+    }
+  },
+  "selection": "3 per CHAIR flag transition per policy, deterministic SHA order; not best examples or representative sample.",
+  "items": [
+    {
+      "coco_id": 359270,
+      "policy": "normal",
+      "group": "flag_removed",
+      "image_url": "https://images.cocodataset.org/val2014/COCO_val2014_000000359270.jpg",
+      "CONTROL": {
+        "caption": "a man in a suit holding a cell phone",
+        "mscoco_hallucinated_words": [
+          [
+            "cell phone",
+            "cell phone"
+          ]
+        ]
+      },
+      "PROMPT": {
+        "caption": "a man in a black shirt and tie",
+        "mscoco_hallucinated_words": []
+      },
+      "references": [
+        "A man in a suit and tie holding a violin bow.",
+        "The man in the dark suit stands in the dark room.",
+        "A man in a suit holds two lit incense sticks at a ceremony.",
+        "A man standing in a darkened room next to flowers.",
+        "A man holding a stick with some flowers behind him"
+      ],
+      "visually_verified": false
+    },
+    {
+      "coco_id": 181799,
+      "policy": "normal",
+      "group": "flag_removed",
+      "image_url": "https://images.cocodataset.org/val2014/COCO_val2014_000000181799.jpg",
+      "CONTROL": {
+        "caption": "a white bowl filled with lots of vegetables",
+        "mscoco_hallucinated_words": [
+          [
+            "bowl",
+            "bowl"
+          ]
+        ]
+      },
+      "PROMPT": {
+        "caption": "a white plate topped with a salad and carrots",
+        "mscoco_hallucinated_words": []
+      },
+      "references": [
+        "A white plate topped with a lush green and red salad.",
+        "A plate of salad, featuring beans, carrots, broccoli, mushrooms, lettuce, and cucumbers.",
+        "A plate has beans, mushrooms, broccoli, and carrots on it.",
+        "A dinner plate full of vegetable salad and beans.",
+        "A big salad has beets, cucumber slices, mushrooms, beans, carrots, and other vegetables."
+      ],
+      "visually_verified": false
+    },
+    {
+      "coco_id": 77282,
+      "policy": "normal",
+      "group": "flag_removed",
+      "image_url": "https://images.cocodataset.org/val2014/COCO_val2014_000000077282.jpg",
+      "CONTROL": {
+        "caption": "a vase full of flowers sitting on a table",
+        "mscoco_hallucinated_words": [
+          [
+            "table",
+            "dining table"
+          ]
+        ]
+      },
+      "PROMPT": {
+        "caption": "a vase full of flowers in a vase",
+        "mscoco_hallucinated_words": []
+      },
+      "references": [
+        "Flowers in a glass vase sitting in a window.",
+        "A vase sitting in front of a window filled with flowers. ",
+        "A pot of several flowers standing next to a window",
+        "A vase with flowers in a windowsill catching the sunlight.",
+        "A vase is filled with a bouquet of mixed flowers by a window."
+      ],
+      "visually_verified": false
+    },
+    {
+      "coco_id": 200291,
+      "policy": "normal",
+      "group": "flag_introduced",
+      "image_url": "https://images.cocodataset.org/val2014/COCO_val2014_000000200291.jpg",
+      "CONTROL": {
+        "caption": "a plate of food on a blue plate",
+        "mscoco_hallucinated_words": []
+      },
+      "PROMPT": {
+        "caption": "a plate with a sandwich and a fork on it",
+        "mscoco_hallucinated_words": [
+          [
+            "fork",
+            "fork"
+          ]
+        ]
+      },
+      "references": [
+        "Assorted food items displayed on light blue plates.",
+        "A couple of plates of food sitting on a table.",
+        "Two plates holding a spoon and some food.",
+        "A plate of tater tots with mustard next to a tuna sandwich and tomatoes.",
+        "A couple of plates topped with food on a table."
+      ],
+      "visually_verified": false
+    },
+    {
+      "coco_id": 99053,
+      "policy": "normal",
+      "group": "flag_introduced",
+      "image_url": "https://images.cocodataset.org/val2014/COCO_val2014_000000099053.jpg",
+      "CONTROL": {
+        "caption": "a bowl of noodles and vegetables in a bowl",
+        "mscoco_hallucinated_words": []
+      },
+      "PROMPT": {
+        "caption": "a bowl filled with broccoli and a spoon",
+        "mscoco_hallucinated_words": [
+          [
+            "spoon",
+            "spoon"
+          ]
+        ]
+      },
+      "references": [
+        "A bowl of noodles, meat and broccoli with a fork.",
+        "A bowl of noodles, meat, broccoli and carrots in a sauce with a fork.",
+        "A bowl full of chinese food with a fork",
+        "A bowl of food that looks like worms and some greens.\n",
+        "A yellow and black bowl holding noodles, beef and broccoli."
+      ],
+      "visually_verified": false
+    },
+    {
+      "coco_id": 540280,
+      "policy": "normal",
+      "group": "flag_introduced",
+      "image_url": "https://images.cocodataset.org/val2014/COCO_val2014_000000540280.jpg",
+      "CONTROL": {
+        "caption": "a light blue umbrella hanging from the ceiling",
+        "mscoco_hallucinated_words": []
+      },
+      "PROMPT": {
+        "caption": "a umbrella sitting on top of a table",
+        "mscoco_hallucinated_words": [
+          [
+            "table",
+            "dining table"
+          ]
+        ]
+      },
+      "references": [
+        "Photography equipment and a light sitting in a room.",
+        "A large umbrella set up with a black light.",
+        "A light that is sitting underneath a umbrella.",
+        "It is a lighting rig setup by a photographer ",
+        "A digital camera beside an umbrella type photography lighting equipment"
+      ],
+      "visually_verified": false
+    },
+    {
+      "coco_id": 240274,
+      "policy": "normal",
+      "group": "neither_flagged",
+      "image_url": "https://images.cocodataset.org/val2014/COCO_val2014_000000240274.jpg",
+      "CONTROL": {
+        "caption": "a man standing next to a surfboard on a beach",
+        "mscoco_hallucinated_words": []
+      },
+      "PROMPT": {
+        "caption": "a man standing next to a surfboard on a beach",
+        "mscoco_hallucinated_words": []
+      },
+      "references": [
+        "A man that is holding a surfboard in the snow.",
+        "A man is holding a surfboard at the beach. ",
+        "A surfer poses while holding a blue surfboard at a beach.",
+        "A middle aged man standing on the beach holding a surfboard. ",
+        "A man is standing with a surfboard at the beach"
+      ],
+      "visually_verified": false
+    },
+    {
+      "coco_id": 445233,
+      "policy": "normal",
+      "group": "neither_flagged",
+      "image_url": "https://images.cocodataset.org/val2014/COCO_val2014_000000445233.jpg",
+      "CONTROL": {
+        "caption": "a man and a woman preparing food in a kitchen",
+        "mscoco_hallucinated_words": []
+      },
+      "PROMPT": {
+        "caption": "a man and a woman preparing food in a kitchen",
+        "mscoco_hallucinated_words": []
+      },
+      "references": [
+        "A man and a woman putting toppings on a pizza.",
+        "Two people stand close as they prepare a homemade pizza.",
+        "There is no image to provide a caption for.",
+        "The man and woman are making a pizza in the kitchen.",
+        "a couple working on putting some toppings on a pizza "
+      ],
+      "visually_verified": false
+    },
+    {
+      "coco_id": 315841,
+      "policy": "normal",
+      "group": "neither_flagged",
+      "image_url": "https://images.cocodataset.org/val2014/COCO_val2014_000000315841.jpg",
+      "CONTROL": {
+        "caption": "a baby elephant standing next to a car",
+        "mscoco_hallucinated_words": []
+      },
+      "PROMPT": {
+        "caption": "a baby elephant standing next to a car",
+        "mscoco_hallucinated_words": []
+      },
+      "references": [
+        "A small gray elephant standing on a grass covered field.",
+        "Baby elephant standing in the grass beside a truck.",
+        "two elephants and one is a baby and a side view mirror",
+        "A young elephant came near a stopped vehicle.",
+        "A young elephant is in the grass next to a vehicle."
+      ],
+      "visually_verified": false
+    },
+    {
+      "coco_id": 477202,
+      "policy": "normal",
+      "group": "both_flagged",
+      "image_url": "https://images.cocodataset.org/val2014/COCO_val2014_000000477202.jpg",
+      "CONTROL": {
+        "caption": "a group of dogs sitting on a bench",
+        "mscoco_hallucinated_words": [
+          [
+            "bench",
+            "bench"
+          ]
+        ]
+      },
+      "PROMPT": {
+        "caption": "a group of dogs sitting on a bench",
+        "mscoco_hallucinated_words": [
+          [
+            "bench",
+            "bench"
+          ]
+        ]
+      },
+      "references": [
+        "dogs standing around with someone watching them ",
+        "A couple of dogs standing on a city street.",
+        "A group of dogs in the aisle of a bus with bicycle in background.",
+        "A group of dogs standing in the aisle with people seated.",
+        "There are dogs and people inside a bus."
+      ],
+      "visually_verified": false
+    },
+    {
+      "coco_id": 495985,
+      "policy": "normal",
+      "group": "both_flagged",
+      "image_url": "https://images.cocodataset.org/val2014/COCO_val2014_000000495985.jpg",
+      "CONTROL": {
+        "caption": "a woman holding a pair of scissors in her hand",
+        "mscoco_hallucinated_words": [
+          [
+            "scissors",
+            "scissors"
+          ]
+        ]
+      },
+      "PROMPT": {
+        "caption": "a woman is holding a pair of scissors",
+        "mscoco_hallucinated_words": [
+          [
+            "scissors",
+            "scissors"
+          ]
+        ]
+      },
+      "references": [
+        "A woman with ear protection on swings a bat.",
+        "A young girl practices multitasking by listening to headphones as she readies to bat a baseball.",
+        "A woman holding a baseball bat while wearing headphones.",
+        "a close up of a person with a bat",
+        "A woman is holding a baseball bat, with headphones on."
+      ],
+      "visually_verified": false
+    },
+    {
+      "coco_id": 553968,
+      "policy": "normal",
+      "group": "both_flagged",
+      "image_url": "https://images.cocodataset.org/val2014/COCO_val2014_000000553968.jpg",
+      "CONTROL": {
+        "caption": "a living room with a couch and a table",
+        "mscoco_hallucinated_words": [
+          [
+            "table",
+            "dining table"
+          ]
+        ]
+      },
+      "PROMPT": {
+        "caption": "a living room with two couches and a table",
+        "mscoco_hallucinated_words": [
+          [
+            "table",
+            "dining table"
+          ]
+        ]
+      },
+      "references": [
+        "A small bedroom with sofa at the end of the bed.",
+        "A bed sitting inside of a bedroom next to a window.",
+        "A bedroom with a loveseat and lots of pillows.",
+        "A bedroom decorated with floral wallpaper, a green couch, and coordinating pillows on both the coach and bed. ",
+        "A bed and couch with pillows on them and other items in a room"
+      ],
+      "visually_verified": false
+    },
+    {
+      "coco_id": 359465,
+      "policy": "fixed_rerank",
+      "group": "flag_removed",
+      "image_url": "https://images.cocodataset.org/val2014/COCO_val2014_000000359465.jpg",
+      "CONTROL": {
+        "caption": "a person on a surfboard in the water",
+        "mscoco_hallucinated_words": [
+          [
+            "surfboard",
+            "surfboard"
+          ]
+        ]
+      },
+      "PROMPT": {
+        "caption": "a body of water skiing in the water",
+        "mscoco_hallucinated_words": []
+      },
+      "references": [
+        "A pair of skis in the open water.",
+        "Two water skies sticking up off the water .",
+        "A man falls into the sea while surfing on violent waves",
+        "A pair of skis of a wakeboarder are splashing through the water.",
+        "Person water skiing behind a boat with just skis showing."
+      ],
+      "visually_verified": false
+    },
+    {
+      "coco_id": 559364,
+      "policy": "fixed_rerank",
+      "group": "flag_removed",
+      "image_url": "https://images.cocodataset.org/val2014/COCO_val2014_000000559364.jpg",
+      "CONTROL": {
+        "caption": "a man standing next to a bunch of toilets",
+        "mscoco_hallucinated_words": [
+          [
+            "toilet",
+            "toilet"
+          ]
+        ]
+      },
+      "PROMPT": {
+        "caption": "a man standing next to a bunch of suit cases on a bench",
+        "mscoco_hallucinated_words": []
+      },
+      "references": [
+        "A man stands with a flag-decked statue depicting a child with piles of luggage.",
+        "An older man standing next to a pile of luggage.",
+        "A man is standing behind a statue of suitcases and a little girl.",
+        "A gray-haired man in a suit poses next to a statue covered in colorful origami. ",
+        "A man poses with a statue of a girl and luggage"
+      ],
+      "visually_verified": false
+    },
+    {
+      "coco_id": 556073,
+      "policy": "fixed_rerank",
+      "group": "flag_removed",
+      "image_url": "https://images.cocodataset.org/val2014/COCO_val2014_000000556073.jpg",
+      "CONTROL": {
+        "caption": "a pair of scissors sitting on top of a desk",
+        "mscoco_hallucinated_words": [
+          [
+            "scissors",
+            "scissors"
+          ]
+        ]
+      },
+      "PROMPT": {
+        "caption": "a keyboard sitting on top of a desk",
+        "mscoco_hallucinated_words": []
+      },
+      "references": [
+        "A table with a pocketknife and other items on it.",
+        "a close up of a knife next to a set of keys and a keyboard",
+        "A knife, dental floss, a mini remote controller, and some thread.",
+        "a knife sitting on a table next to a keychain and keyboard ",
+        "A black knife that has been set next to a keyboard."
+      ],
+      "visually_verified": false
+    },
+    {
+      "coco_id": 158744,
+      "policy": "fixed_rerank",
+      "group": "flag_introduced",
+      "image_url": "https://images.cocodataset.org/val2014/COCO_val2014_000000158744.jpg",
+      "CONTROL": {
+        "caption": "a man walking down the street with a bag",
+        "mscoco_hallucinated_words": []
+      },
+      "PROMPT": {
+        "caption": "a man standing next to a parking meter",
+        "mscoco_hallucinated_words": [
+          [
+            "parking meter",
+            "parking meter"
+          ]
+        ]
+      },
+      "references": [
+        "a man is holding some stuff standing by the curb",
+        "There is a man standing next to the street.",
+        "a split photo of a person standing on a street corner ",
+        "A pair of chairs on a curb, and a man carrying a chair on the sidewalk.",
+        "Image of the front of a house next to an image of a woman holding a small table. "
+      ],
+      "visually_verified": false
+    },
+    {
+      "coco_id": 538934,
+      "policy": "fixed_rerank",
+      "group": "flag_introduced",
+      "image_url": "https://images.cocodataset.org/val2014/COCO_val2014_000000538934.jpg",
+      "CONTROL": {
+        "caption": "a kitchen with a lot of items on the counter",
+        "mscoco_hallucinated_words": []
+      },
+      "PROMPT": {
+        "caption": "a kitchen with a table and a sink",
+        "mscoco_hallucinated_words": [
+          [
+            "table",
+            "dining table"
+          ],
+          [
+            "sink",
+            "sink"
+          ]
+        ]
+      },
+      "references": [
+        "A view of a kitchen with a bunch of cleaning supplies around it.",
+        "a brown breakfast bar in a large kitchen",
+        "A counter and a trash can in a room.",
+        "The counter in this kitchen is very cluttered.",
+        "a counter top with all sorts of cleaning supplies"
+      ],
+      "visually_verified": false
+    },
+    {
+      "coco_id": 321014,
+      "policy": "fixed_rerank",
+      "group": "flag_introduced",
+      "image_url": "https://images.cocodataset.org/val2014/COCO_val2014_000000321014.jpg",
+      "CONTROL": {
+        "caption": "a cat laying on the floor next to a knife",
+        "mscoco_hallucinated_words": []
+      },
+      "PROMPT": {
+        "caption": "a black and white cat laying on top of scissors",
+        "mscoco_hallucinated_words": [
+          [
+            "scissors",
+            "scissors"
+          ]
+        ]
+      },
+      "references": [
+        "Black and white photo of a cat surrounded by kitchen knives",
+        "THERE IS A CAT IN THE MIDDLE OF A BUNCH OF KNIVES",
+        "A cat sits on a counter, surrounded by knives.",
+        "a cat sitting on a floor with knives all around it",
+        "A cat on the floor with knives laying around it.\n"
+      ],
+      "visually_verified": false
+    },
+    {
+      "coco_id": 10684,
+      "policy": "fixed_rerank",
+      "group": "neither_flagged",
+      "image_url": "https://images.cocodataset.org/val2014/COCO_val2014_000000010684.jpg",
+      "CONTROL": {
+        "caption": "a man riding a wave on top of a surfboard",
+        "mscoco_hallucinated_words": []
+      },
+      "PROMPT": {
+        "caption": "a man riding a wave on top of a surfboard",
+        "mscoco_hallucinated_words": []
+      },
+      "references": [
+        "A man riding a wave on top of a surfboard.",
+        "A man on a surfboard is riding a big wave.",
+        "A man that is on a surfboard in the water.",
+        "A surfer almost horizontal on the crest of a wave",
+        "A man surfing waves on his surf board"
+      ],
+      "visually_verified": false
+    },
+    {
+      "coco_id": 466882,
+      "policy": "fixed_rerank",
+      "group": "neither_flagged",
+      "image_url": "https://images.cocodataset.org/val2014/COCO_val2014_000000466882.jpg",
+      "CONTROL": {
+        "caption": "a group of people playing tennis on a blue tennis court",
+        "mscoco_hallucinated_words": []
+      },
+      "PROMPT": {
+        "caption": "a group of people playing a game of tennis",
+        "mscoco_hallucinated_words": []
+      },
+      "references": [
+        "There are people playing a game of tennis.",
+        "Group of men playing on a tennis court with crowd watching. ",
+        "A group of people standing on a court holding racquets.",
+        "A view of a double tennis match of men. ",
+        "A group of guys are playing a round of tennis."
+      ],
+      "visually_verified": false
+    },
+    {
+      "coco_id": 524638,
+      "policy": "fixed_rerank",
+      "group": "neither_flagged",
+      "image_url": "https://images.cocodataset.org/val2014/COCO_val2014_000000524638.jpg",
+      "CONTROL": {
+        "caption": "a young boy playing with a frisbee in a park",
+        "mscoco_hallucinated_words": []
+      },
+      "PROMPT": {
+        "caption": "a young boy throwing a frisbee in a park",
+        "mscoco_hallucinated_words": []
+      },
+      "references": [
+        "A young boy standing next to a green frisbee.",
+        "a young boy in a gray sweater throwing a green Frisbee in a park",
+        "a llittle boy in a sweater is throwing a frisbee",
+        "A young boy throwing a frisbee in a yard.",
+        "A young bow throws a Frisbee behind him"
+      ],
+      "visually_verified": false
+    },
+    {
+      "coco_id": 408364,
+      "policy": "fixed_rerank",
+      "group": "both_flagged",
+      "image_url": "https://images.cocodataset.org/val2014/COCO_val2014_000000408364.jpg",
+      "CONTROL": {
+        "caption": "a young boy standing next to a red truck",
+        "mscoco_hallucinated_words": [
+          [
+            "truck",
+            "truck"
+          ]
+        ]
+      },
+      "PROMPT": {
+        "caption": "a young boy holding a baseball bat next to a sign",
+        "mscoco_hallucinated_words": [
+          [
+            "baseball bat",
+            "baseball bat"
+          ]
+        ]
+      },
+      "references": [
+        "A young man standing next to a race car with the red sox logo on it's hood.",
+        "A young boy standing in front of a sponsored car.",
+        "A man standing near a red sox nascar",
+        "A young boy  standing by a Red Sox car wearing Red Sox shirt and visor",
+        "A young man standing next to a racecar on a display lot."
+      ],
+      "visually_verified": false
+    },
+    {
+      "coco_id": 405440,
+      "policy": "fixed_rerank",
+      "group": "both_flagged",
+      "image_url": "https://images.cocodataset.org/val2014/COCO_val2014_000000405440.jpg",
+      "CONTROL": {
+        "caption": "a bunch of electronic devices on a table",
+        "mscoco_hallucinated_words": [
+          [
+            "table",
+            "dining table"
+          ]
+        ]
+      },
+      "PROMPT": {
+        "caption": "a bunch of remote controls on a table",
+        "mscoco_hallucinated_words": [
+          [
+            "table",
+            "dining table"
+          ]
+        ]
+      },
+      "references": [
+        "A circuit board sitting on top of a map.",
+        "Remote with exposed electrical units with wires and keyboard",
+        "A keyboard, a remote control, and two circuit boards with wires, all on top of a map.",
+        "A remote control, various electronic componets, and a computer keyboard sitting on a map.",
+        "someone has an electronic device torn apart "
+      ],
+      "visually_verified": false
+    },
+    {
+      "coco_id": 443949,
+      "policy": "fixed_rerank",
+      "group": "both_flagged",
+      "image_url": "https://images.cocodataset.org/val2014/COCO_val2014_000000443949.jpg",
+      "CONTROL": {
+        "caption": "a stove top with two knives and a spoon",
+        "mscoco_hallucinated_words": [
+          [
+            "knife",
+            "knife"
+          ]
+        ]
+      },
+      "PROMPT": {
+        "caption": "a couple of scissors sitting on top of a stove",
+        "mscoco_hallucinated_words": [
+          [
+            "scissors",
+            "scissors"
+          ]
+        ]
+      },
+      "references": [
+        "Cooking utensils in a glass next to an oven.",
+        "A bowl with kitchen utensils sits next to the stove",
+        "Some cooking utensils are sitting in a pitcher.",
+        "Kitchen cooking utensils in glass container next to modern oven.",
+        "A glass sitting on a table next to an oven."
+      ],
+      "visually_verified": false
+    }
+  ]
+}
