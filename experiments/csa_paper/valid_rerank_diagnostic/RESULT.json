@@ -1,0 +1,75 @@
+{
+  "status": "STORED_VALID_RERANK_DIAGNOSTIC_COMPLETE",
+  "checks": 20045,
+  "test_used": false,
+  "summary": {
+    "CONTROL": {
+      "source_version": 180,
+      "images": 5000,
+      "rank0_CIDEr_x100": 105.18206838735411,
+      "selected_CIDEr_x100": 114.25220628550852,
+      "changed_rank": 3061,
+      "selected_rank_counts": {
+        "0": 1939,
+        "1": 1354,
+        "2": 958,
+        "4": 201,
+        "3": 548
+      },
+      "cider_improved": 1834,
+      "cider_worsened": 1225,
+      "cider_tied": 1941,
+      "positive_CIDEr_contribution_x100": 16.651966204427445,
+      "negative_CIDEr_contribution_x100": -7.581828306273029,
+      "rank0_selected_oracle_x100": 121.83403459178155,
+      "chair_flags_removed": 93,
+      "chair_flags_introduced": 41,
+      "identical_five": 0,
+      "mean_unique_captions": 5.0,
+      "any_repeated_trigram": 906,
+      "selected_repeated_trigram": 209,
+      "decoder_rank0_repeated_trigram": 124,
+      "selected_repeats_clean_alternative": 151,
+      "object_score_all_equal": 2553,
+      "clip_spread_below_001": 39
+    },
+    "PROMPT": {
+      "source_version": 60,
+      "images": 5000,
+      "rank0_CIDEr_x100": 105.83651905121678,
+      "selected_CIDEr_x100": 113.80042073490822,
+      "changed_rank": 3035,
+      "selected_rank_counts": {
+        "1": 1299,
+        "2": 981,
+        "0": 1965,
+        "3": 542,
+        "4": 213
+      },
+      "cider_improved": 1756,
+      "cider_worsened": 1278,
+      "cider_tied": 1966,
+      "positive_CIDEr_contribution_x100": 15.754059193645167,
+      "negative_CIDEr_contribution_x100": -7.790157509953722,
+      "rank0_selected_oracle_x100": 121.59057824486196,
+      "chair_flags_removed": 85,
+      "chair_flags_introduced": 33,
+      "identical_five": 0,
+      "mean_unique_captions": 5.0,
+      "any_repeated_trigram": 1063,
+      "selected_repeated_trigram": 227,
+      "decoder_rank0_repeated_trigram": 119,
+      "selected_repeats_clean_alternative": 165,
+      "object_score_all_equal": 2682,
+      "clip_spread_below_001": 35
+    }
+  },
+  "bundle_sha256": "05efaac0660f030f892ab1fb4f8bc4d530862b378b109dd187caff85b16abbae",
+  "bundle_bytes": 6147502,
+  "limits": [
+    "CIDEr and CHAIR values reused for rank0 and selected only. All-five oracle not yet measured.",
+    "Repeated trigram is a diagnostic heuristic, not grammatical/visual truth.",
+    "Rank0/selected oracle uses references and is not deployable.",
+    "No selector weights changed, no official scorer/model run, no user report edited."
+  ]
+}

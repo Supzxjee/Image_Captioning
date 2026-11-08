@@ -1,0 +1,2888 @@
+[
+  {
+    "arm": "CONTROL",
+    "group": "selected_lower_CIDEr",
+    "coco_id": 303926,
+    "selected_rank": 2,
+    "candidates": [
+      {
+        "rank": 0,
+        "caption": "a man holding a child on a skateboard",
+        "ids": [
+          1,
+          4,
+          12,
+          27,
+          4,
+          156,
+          5,
+          4,
+          91,
+          2,
+          0,
+          0,
+          0,
+          0
+        ],
+        "logprob": -7.908885478973389,
+        "clipscore": 0.806419849395752,
+        "original_rank": 0,
+        "decoder_score": 1.0,
+        "clip_score_normalized": 0.13952522559219974,
+        "object_score": 0.96865,
+        "combined_score": 0.6464050902368799,
+        "object_consistency": {
+          "score": 0.9373,
+          "mentioned": [
+            "skateboard",
+            "person"
+          ],
+          "supported": [
+            "skateboard",
+            "person"
+          ],
+          "hallucinated": [],
+          "support": 0.9373,
+          "hallucination_rate": 0.0
+        },
+        "D_contribution": 0.3,
+        "C_contribution": 0.0558100902368799,
+        "O_contribution": 0.290595,
+        "repeated_trigram": false
+      },
+      {
+        "rank": 1,
+        "caption": "a man and a child are playing with a skateboard",
+        "ids": [
+          1,
+          4,
+          12,
+          10,
+          4,
+          156,
+          20,
+          56,
+          9,
+          4,
+          91,
+          2,
+          0,
+          0
+        ],
+        "logprob": -8.47184944152832,
+        "clipscore": 0.7907775044441223,
+        "original_rank": 1,
+        "decoder_score": 0.7134468603378044,
+        "clip_score_normalized": 0.008999317118248957,
+        "object_score": 0.96865,
+        "combined_score": 0.5082287849486409,
+        "object_consistency": {
+          "score": 0.9373,
+          "mentioned": [
+            "skateboard",
+            "person"
+          ],
+          "supported": [
+            "skateboard",
+            "person"
+          ],
+          "hallucinated": [],
+          "support": 0.9373,
+          "hallucination_rate": 0.0
+        },
+        "D_contribution": 0.2140340581013413,
+        "C_contribution": 0.003599726847299583,
+        "O_contribution": 0.290595,
+        "repeated_trigram": false
+      },
+      {
+        "rank": 2,
+        "caption": "a man holding a child on a skateboard in a living room",
+        "ids": [
+          1,
+          4,
+          12,
+          27,
+          4,
+          156,
+          5,
+          4,
+          91,
+          8,
+          4,
+          123,
+          44,
+          2
+        ],
+        "logprob": -9.48660945892334,
+        "clipscore": 0.9095399379730225,
+        "original_rank": 2,
+        "decoder_score": 0.19692593123866375,
+        "clip_score_normalized": 1.0,
+        "object_score": 0.96865,
+        "combined_score": 0.7496727793715992,
+        "object_consistency": {
+          "score": 0.9373,
+          "mentioned": [
+            "skateboard",
+            "person"
+          ],
+          "supported": [
+            "skateboard",
+            "person"
+          ],
+          "hallucinated": [],
+          "support": 0.9373,
+          "hallucination_rate": 0.0
+        },
+        "D_contribution": 0.05907777937159912,
+        "C_contribution": 0.4,
+        "O_contribution": 0.290595,
+        "repeated_trigram": false
+      },
+      {
+        "rank": 3,
+        "caption": "a man holding a child on a skate board",
+        "ids": [
+          1,
+          4,
+          12,
+          27,
+          4,
+          156,
+          5,
+          4,
+          248,
+          119,
+          2,
+          0,
+          0,
+          0
+        ],
+        "logprob": -9.531535148620605,
+        "clipscore": 0.8380525708198547,
+        "original_rank": 3,
+        "decoder_score": 0.17405839745228063,
+        "clip_score_normalized": 0.4034811550997042,
+        "object_score": 0.97305,
+        "combined_score": 0.5055249812755659,
+        "object_consistency": {
+          "score": 0.9461,
+          "mentioned": [
+            "person"
+          ],
+          "supported": [
+            "person"
+          ],
+          "hallucinated": [],
+          "support": 0.9461,
+          "hallucination_rate": 0.0
+        },
+        "D_contribution": 0.05221751923568419,
+        "C_contribution": 0.1613924620398817,
+        "O_contribution": 0.291915,
+        "repeated_trigram": false
+      },
+      {
+        "rank": 4,
+        "caption": "a man and a child are playing on a skateboard",
+        "ids": [
+          1,
+          4,
+          12,
+          10,
+          4,
+          156,
+          20,
+          56,
+          5,
+          4,
+          91,
+          2,
+          0,
+          0
+        ],
+        "logprob": -9.873491287231445,
+        "clipscore": 0.7896990180015564,
+        "original_rank": 4,
+        "decoder_score": 0.0,
+        "clip_score_normalized": 0.0,
+        "object_score": 0.96865,
+        "combined_score": 0.290595,
+        "object_consistency": {
+          "score": 0.9373,
+          "mentioned": [
+            "skateboard",
+            "person"
+          ],
+          "supported": [
+            "skateboard",
+            "person"
+          ],
+          "hallucinated": [],
+          "support": 0.9373,
+          "hallucination_rate": 0.0
+        },
+        "D_contribution": 0.0,
+        "C_contribution": 0.0,
+        "O_contribution": 0.290595,
+        "repeated_trigram": false
+      }
+    ],
+    "detected": {
+      "person": 0.9461,
+      "skateboard": 0.9285,
+      "chair": 0.907,
+      "cell phone": 0.705,
+      "book": 0.6007
+    },
+    "image_path": "/kaggle/input/datasets/vuthetam/mscoco-2014/images/val2014/COCO_val2014_000000303926.jpg",
+    "image_sha256": "5f84c5d4b0af8aa49f8c4060146625a74bc6fe5a67d1dd68d6c290d50f6c4603",
+    "rank0_CIDEr": 2.20661508095425,
+    "selected_CIDEr": 1.5840365246228771,
+    "delta_CIDEr": -0.622578556331373,
+    "rank0_CHAIR": false,
+    "selected_CHAIR": false
+  },
+  {
+    "arm": "CONTROL",
+    "group": "selected_lower_CIDEr",
+    "coco_id": 53450,
+    "selected_rank": 2,
+    "candidates": [
+      {
+        "rank": 0,
+        "caption": "a double decker bus driving down a street",
+        "ids": [
+          1,
+          4,
+          267,
+          351,
+          64,
+          232,
+          32,
+          4,
+          24,
+          2,
+          0,
+          0,
+          0,
+          0
+        ],
+        "logprob": -5.948260307312012,
+        "clipscore": 0.6355488300323486,
+        "original_rank": 0,
+        "decoder_score": 1.0,
+        "clip_score_normalized": 0.0,
+        "object_score": 0.98475,
+        "combined_score": 0.595425,
+        "object_consistency": {
+          "score": 0.9695,
+          "mentioned": [
+            "bus"
+          ],
+          "supported": [
+            "bus"
+          ],
+          "hallucinated": [],
+          "support": 0.9695,
+          "hallucination_rate": 0.0
+        },
+        "D_contribution": 0.3,
+        "C_contribution": 0.0,
+        "O_contribution": 0.295425,
+        "repeated_trigram": false
+      },
+      {
+        "rank": 1,
+        "caption": "a double decker bus driving down the street",
+        "ids": [
+          1,
+          4,
+          267,
+          351,
+          64,
+          232,
+          32,
+          7,
+          24,
+          2,
+          0,
+          0,
+          0,
+          0
+        ],
+        "logprob": -6.491196632385254,
+        "clipscore": 0.641786515712738,
+        "original_rank": 1,
+        "decoder_score": 0.7961131460839943,
+        "clip_score_normalized": 0.13453498776148262,
+        "object_score": 0.98475,
+        "combined_score": 0.5880729389297914,
+        "object_consistency": {
+          "score": 0.9695,
+          "mentioned": [
+            "bus"
+          ],
+          "supported": [
+            "bus"
+          ],
+          "hallucinated": [],
+          "support": 0.9695,
+          "hallucination_rate": 0.0
+        },
+        "D_contribution": 0.2388339438251983,
+        "C_contribution": 0.05381399510459305,
+        "O_contribution": 0.295425,
+        "repeated_trigram": false
+      },
+      {
+        "rank": 2,
+        "caption": "a blue and white bus driving down a street",
+        "ids": [
+          1,
+          4,
+          60,
+          10,
+          22,
+          64,
+          232,
+          32,
+          4,
+          24,
+          2,
+          0,
+          0,
+          0
+        ],
+        "logprob": -6.587589263916016,
+        "clipscore": 0.6819136142730713,
+        "original_rank": 2,
+        "decoder_score": 0.7599151805475375,
+        "clip_score_normalized": 1.0,
+        "object_score": 0.98475,
+        "combined_score": 0.9233995541642612,
+        "object_consistency": {
+          "score": 0.9695,
+          "mentioned": [
+            "bus"
+          ],
+          "supported": [
+            "bus"
+          ],
+          "hallucinated": [],
+          "support": 0.9695,
+          "hallucination_rate": 0.0
+        },
+        "D_contribution": 0.22797455416426124,
+        "C_contribution": 0.4,
+        "O_contribution": 0.295425,
+        "repeated_trigram": false
+      },
+      {
+        "rank": 3,
+        "caption": "a blue bus driving down a street",
+        "ids": [
+          1,
+          4,
+          60,
+          64,
+          232,
+          32,
+          4,
+          24,
+          2,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "logprob": -6.898741722106934,
+        "clipscore": 0.6781922578811646,
+        "original_rank": 3,
+        "decoder_score": 0.643069257998112,
+        "clip_score_normalized": 0.9197374375218546,
+        "object_score": 0.98475,
+        "combined_score": 0.8562407524081754,
+        "object_consistency": {
+          "score": 0.9695,
+          "mentioned": [
+            "bus"
+          ],
+          "supported": [
+            "bus"
+          ],
+          "hallucinated": [],
+          "support": 0.9695,
+          "hallucination_rate": 0.0
+        },
+        "D_contribution": 0.19292077739943359,
+        "C_contribution": 0.36789497500874185,
+        "O_contribution": 0.295425,
+        "repeated_trigram": false
+      },
+      {
+        "rank": 4,
+        "caption": "a blue and white bus parked on the side of a street",
+        "ids": [
+          1,
+          4,
+          60,
+          10,
+          22,
+          64,
+          69,
+          5,
+          7,
+          68,
+          6,
+          4,
+          24,
+          2
+        ],
+        "logprob": -8.611189842224121,
+        "clipscore": 0.6812083721160889,
+        "original_rank": 4,
+        "decoder_score": 0.0,
+        "clip_score_normalized": 0.9847892712425694,
+        "object_score": 0.98475,
+        "combined_score": 0.6893407084970278,
+        "object_consistency": {
+          "score": 0.9695,
+          "mentioned": [
+            "bus"
+          ],
+          "supported": [
+            "bus"
+          ],
+          "hallucinated": [],
+          "support": 0.9695,
+          "hallucination_rate": 0.0
+        },
+        "D_contribution": 0.0,
+        "C_contribution": 0.3939157084970278,
+        "O_contribution": 0.295425,
+        "repeated_trigram": false
+      }
+    ],
+    "detected": {
+      "bus": 0.9695,
+      "car": 0.6913
+    },
+    "image_path": "/kaggle/input/datasets/vuthetam/mscoco-2014/images/val2014/COCO_val2014_000000053450.jpg",
+    "image_sha256": "ac8a3dcc0751024d3dcb7cacf82b696dc759957ccb4256a0aa2e97b85bf07b41",
+    "rank0_CIDEr": 1.2968471666368508,
+    "selected_CIDEr": 0.5742425453483601,
+    "delta_CIDEr": -0.7226046212884908,
+    "rank0_CHAIR": false,
+    "selected_CHAIR": false
+  },
+  {
+    "arm": "CONTROL",
+    "group": "introduced_CHAIR",
+    "coco_id": 526732,
+    "selected_rank": 2,
+    "candidates": [
+      {
+        "rank": 0,
+        "caption": "a number of glass vases on a shelf",
+        "ids": [
+          1,
+          4,
+          399,
+          6,
+          176,
+          566,
+          5,
+          4,
+          467,
+          2,
+          0,
+          0,
+          0,
+          0
+        ],
+        "logprob": -8.97132396697998,
+        "clipscore": 0.7430136203765869,
+        "original_rank": 0,
+        "decoder_score": 1.0,
+        "clip_score_normalized": 0.43898582427986566,
+        "object_score": 0.9747,
+        "combined_score": 0.7680043297119463,
+        "object_consistency": {
+          "score": 0.9494,
+          "mentioned": [
+            "vase"
+          ],
+          "supported": [
+            "vase"
+          ],
+          "hallucinated": [],
+          "support": 0.9494,
+          "hallucination_rate": 0.0
+        },
+        "D_contribution": 0.3,
+        "C_contribution": 0.17559432971194627,
+        "O_contribution": 0.29241,
+        "repeated_trigram": false
+      },
+      {
+        "rank": 1,
+        "caption": "a bunch of glass vases sitting on a shelf",
+        "ids": [
+          1,
+          4,
+          170,
+          6,
+          176,
+          566,
+          14,
+          5,
+          4,
+          467,
+          2,
+          0,
+          0,
+          0
+        ],
+        "logprob": -9.04966926574707,
+        "clipscore": 0.7198994159698486,
+        "original_rank": 1,
+        "decoder_score": 0.9662721881344416,
+        "clip_score_normalized": 0.01986178780948593,
+        "object_score": 0.9747,
+        "combined_score": 0.5902363715641268,
+        "object_consistency": {
+          "score": 0.9494,
+          "mentioned": [
+            "vase"
+          ],
+          "supported": [
+            "vase"
+          ],
+          "hallucinated": [],
+          "support": 0.9494,
+          "hallucination_rate": 0.0
+        },
+        "D_contribution": 0.2898816564403325,
+        "C_contribution": 0.007944715123794372,
+        "O_contribution": 0.29241,
+        "repeated_trigram": false
+      },
+      {
+        "rank": 2,
+        "caption": "a number of glass vases on a table",
+        "ids": [
+          1,
+          4,
+          399,
+          6,
+          176,
+          566,
+          5,
+          4,
+          25,
+          2,
+          0,
+          0,
+          0,
+          0
+        ],
+        "logprob": -9.248348236083984,
+        "clipscore": 0.7739529013633728,
+        "original_rank": 2,
+        "decoder_score": 0.880740483761375,
+        "clip_score_normalized": 1.0,
+        "object_score": 0.48735,
+        "combined_score": 0.8104271451284125,
+        "object_consistency": {
+          "score": -0.02529999999999999,
+          "mentioned": [
+            "dining table",
+            "vase"
+          ],
+          "supported": [
+            "vase"
+          ],
+          "hallucinated": [
+            "dining table"
+          ],
+          "support": 0.4747,
+          "hallucination_rate": 0.5
+        },
+        "D_contribution": 0.2642221451284125,
+        "C_contribution": 0.4,
+        "O_contribution": 0.146205,
+        "repeated_trigram": false
+      },
+      {
+        "rank": 3,
+        "caption": "a bunch of glass vases sitting on a table",
+        "ids": [
+          1,
+          4,
+          170,
+          6,
+          176,
+          566,
+          14,
+          5,
+          4,
+          25,
+          2,
+          0,
+          0,
+          0
+        ],
+        "logprob": -9.311155319213867,
+        "clipscore": 0.7501146793365479,
+        "original_rank": 3,
+        "decoder_score": 0.8537019056084378,
+        "clip_score_normalized": 0.567747534704359,
+        "object_score": 0.48735,
+        "combined_score": 0.629414585564275,
+        "object_consistency": {
+          "score": -0.02529999999999999,
+          "mentioned": [
+            "dining table",
+            "vase"
+          ],
+          "supported": [
+            "vase"
+          ],
+          "hallucinated": [
+            "dining table"
+          ],
+          "support": 0.4747,
+          "hallucination_rate": 0.5
+        },
+        "D_contribution": 0.2561105716825313,
+        "C_contribution": 0.2270990138817436,
+        "O_contribution": 0.146205,
+        "repeated_trigram": false
+      },
+      {
+        "rank": 4,
+        "caption": "a bunch of glass vases sitting on top of a glass table",
+        "ids": [
+          1,
+          4,
+          170,
+          6,
+          176,
+          566,
+          14,
+          5,
+          33,
+          6,
+          4,
+          176,
+          25,
+          2
+        ],
+        "logprob": -11.294193267822266,
+        "clipscore": 0.7188040614128113,
+        "original_rank": 4,
+        "decoder_score": 0.0,
+        "clip_score_normalized": 0.0,
+        "object_score": 0.48735,
+        "combined_score": 0.146205,
+        "object_consistency": {
+          "score": -0.02529999999999999,
+          "mentioned": [
+            "dining table",
+            "vase"
+          ],
+          "supported": [
+            "vase"
+          ],
+          "hallucinated": [
+            "dining table"
+          ],
+          "support": 0.4747,
+          "hallucination_rate": 0.5
+        },
+        "D_contribution": 0.0,
+        "C_contribution": 0.0,
+        "O_contribution": 0.146205,
+        "repeated_trigram": false
+      }
+    ],
+    "detected": {
+      "vase": 0.9494,
+      "wine glass": 0.9242
+    },
+    "image_path": "/kaggle/input/datasets/vuthetam/mscoco-2014/images/val2014/COCO_val2014_000000526732.jpg",
+    "image_sha256": "8524c324619d5832b2308df8bea2505b4010accef1d51f422cf5aa7163802070",
+    "rank0_CIDEr": 1.413905008984333,
+    "selected_CIDEr": 1.379574936731168,
+    "delta_CIDEr": -0.03433007225316498,
+    "rank0_CHAIR": false,
+    "selected_CHAIR": true
+  },
+  {
+    "arm": "CONTROL",
+    "group": "introduced_CHAIR",
+    "coco_id": 333412,
+    "selected_rank": 1,
+    "candidates": [
+      {
+        "rank": 0,
+        "caption": "a living room with a bench surrounded by flowers",
+        "ids": [
+          1,
+          4,
+          123,
+          44,
+          9,
+          4,
+          101,
+          405,
+          49,
+          199,
+          2,
+          0
+        ],
+        "logprob": -11.140854835510254,
+        "clipscore": 0.5494189858436584,
+        "original_rank": 0,
+        "decoder_score": 1.0,
+        "clip_score_normalized": 0.21211646676350038,
+        "object_score": 0.0,
+        "combined_score": 0.3848465867054002,
+        "object_consistency": {
+          "score": -1.0,
+          "mentioned": [
+            "bench"
+          ],
+          "supported": [],
+          "hallucinated": [
+            "bench"
+          ],
+          "support": 0.0,
+          "hallucination_rate": 1.0
+        },
+        "D_contribution": 0.3,
+        "C_contribution": 0.08484658670540016,
+        "O_contribution": 0.0,
+        "repeated_trigram": false
+      },
+      {
+        "rank": 1,
+        "caption": "a living room with a couch and a fire place",
+        "ids": [
+          1,
+          4,
+          123,
+          44,
+          9,
+          4,
+          171,
+          10,
+          4,
+          150,
+          630,
+          2
+        ],
+        "logprob": -11.191646575927734,
+        "clipscore": 0.587851345539093,
+        "original_rank": 1,
+        "decoder_score": 0.9270940991106299,
+        "clip_score_normalized": 0.8167376665950885,
+        "object_score": 0.87485,
+        "combined_score": 0.8672782963712243,
+        "object_consistency": {
+          "score": 0.7497,
+          "mentioned": [
+            "couch"
+          ],
+          "supported": [
+            "couch"
+          ],
+          "hallucinated": [],
+          "support": 0.7497,
+          "hallucination_rate": 0.0
+        },
+        "D_contribution": 0.27812822973318896,
+        "C_contribution": 0.32669506663803544,
+        "O_contribution": 0.262455,
+        "repeated_trigram": false
+      },
+      {
+        "rank": 2,
+        "caption": "a living room with a table and a fire place",
+        "ids": [
+          1,
+          4,
+          123,
+          44,
+          9,
+          4,
+          25,
+          10,
+          4,
+          150,
+          630,
+          2
+        ],
+        "logprob": -11.303235054016113,
+        "clipscore": 0.599500298500061,
+        "original_rank": 2,
+        "decoder_score": 0.7669212352347721,
+        "clip_score_normalized": 1.0,
+        "object_score": 0.0,
+        "combined_score": 0.6300763705704316,
+        "object_consistency": {
+          "score": -1.0,
+          "mentioned": [
+            "dining table"
+          ],
+          "supported": [],
+          "hallucinated": [
+            "dining table"
+          ],
+          "support": 0.0,
+          "hallucination_rate": 1.0
+        },
+        "D_contribution": 0.23007637057043162,
+        "C_contribution": 0.4,
+        "O_contribution": 0.0,
+        "repeated_trigram": false
+      },
+      {
+        "rank": 3,
+        "caption": "a living room with a couch and a chair",
+        "ids": [
+          1,
+          4,
+          123,
+          44,
+          9,
+          4,
+          171,
+          10,
+          4,
+          167,
+          2,
+          0
+        ],
+        "logprob": -11.511346817016602,
+        "clipscore": 0.5420328378677368,
+        "original_rank": 3,
+        "decoder_score": 0.4681999186877239,
+        "clip_score_normalized": 0.0959169493067075,
+        "object_score": 0.9183,
+        "combined_score": 0.4543167553290002,
+        "object_consistency": {
+          "score": 0.8366,
+          "mentioned": [
+            "chair",
+            "couch"
+          ],
+          "supported": [
+            "chair",
+            "couch"
+          ],
+          "hallucinated": [],
+          "support": 0.8366,
+          "hallucination_rate": 0.0
+        },
+        "D_contribution": 0.14045997560631718,
+        "C_contribution": 0.038366779722683,
+        "O_contribution": 0.27549,
+        "repeated_trigram": false
+      },
+      {
+        "rank": 4,
+        "caption": "a living room with a couch and a table",
+        "ids": [
+          1,
+          4,
+          123,
+          44,
+          9,
+          4,
+          171,
+          10,
+          4,
+          25,
+          2,
+          0
+        ],
+        "logprob": -11.837530136108398,
+        "clipscore": 0.5359359383583069,
+        "original_rank": 4,
+        "decoder_score": 0.0,
+        "clip_score_normalized": 0.0,
+        "object_score": 0.437425,
+        "combined_score": 0.1312275,
+        "object_consistency": {
+          "score": -0.12514999999999998,
+          "mentioned": [
+            "couch",
+            "dining table"
+          ],
+          "supported": [
+            "couch"
+          ],
+          "hallucinated": [
+            "dining table"
+          ],
+          "support": 0.37485,
+          "hallucination_rate": 0.5
+        },
+        "D_contribution": 0.0,
+        "C_contribution": 0.0,
+        "O_contribution": 0.1312275,
+        "repeated_trigram": false
+      }
+    ],
+    "detected": {
+      "chair": 0.9235,
+      "potted plant": 0.778,
+      "couch": 0.7497
+    },
+    "image_path": "/kaggle/input/datasets/vuthetam/mscoco-2014/images/val2014/COCO_val2014_000000333412.jpg",
+    "image_sha256": "e9f6ec83c4a7d1c0174b56377a5951785c2619e5b14dbb13abf04a139dd02aa6",
+    "rank0_CIDEr": 0.131582207904484,
+    "selected_CIDEr": 0.47852194033395656,
+    "delta_CIDEr": 0.34693973242947257,
+    "rank0_CHAIR": false,
+    "selected_CHAIR": true
+  },
+  {
+    "arm": "CONTROL",
+    "group": "selected_repeat_with_clean_alternative",
+    "coco_id": 501858,
+    "selected_rank": 3,
+    "candidates": [
+      {
+        "rank": 0,
+        "caption": "a table",
+        "ids": [
+          1,
+          4,
+          25,
+          2,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "logprob": -3.5975682735443115,
+        "clipscore": 0.5342455506324768,
+        "original_rank": 0,
+        "decoder_score": 1.0,
+        "clip_score_normalized": 0.0,
+        "object_score": 0.0,
+        "combined_score": 0.3,
+        "object_consistency": {
+          "score": -1.0,
+          "mentioned": [
+            "dining table"
+          ],
+          "supported": [],
+          "hallucinated": [
+            "dining table"
+          ],
+          "support": 0.0,
+          "hallucination_rate": 1.0
+        },
+        "D_contribution": 0.3,
+        "C_contribution": 0.0,
+        "O_contribution": 0.0,
+        "repeated_trigram": false
+      },
+      {
+        "rank": 1,
+        "caption": "a close up of a pizza with cheese and cheese and cheese and cheese and cheese and cheese and cheese",
+        "ids": [
+          1,
+          4,
+          128,
+          35,
+          6,
+          4,
+          67,
+          9,
+          329,
+          10,
+          329,
+          10,
+          329,
+          10,
+          329,
+          10,
+          329,
+          10,
+          329,
+          10,
+          329
+        ],
+        "logprob": -21.545530319213867,
+        "clipscore": 0.6571462154388428,
+        "original_rank": 1,
+        "decoder_score": 0.038647197399181314,
+        "clip_score_normalized": 0.8300608839035262,
+        "object_score": 0.974,
+        "combined_score": 0.6358185127811649,
+        "object_consistency": {
+          "score": 0.948,
+          "mentioned": [
+            "pizza"
+          ],
+          "supported": [
+            "pizza"
+          ],
+          "hallucinated": [],
+          "support": 0.948,
+          "hallucination_rate": 0.0
+        },
+        "D_contribution": 0.011594159219754393,
+        "C_contribution": 0.33202435356141047,
+        "O_contribution": 0.29219999999999996,
+        "repeated_trigram": true
+      },
+      {
+        "rank": 2,
+        "caption": "a pizza sitting on a pizza with cheese and cheese and cheese and cheese and cheese and cheese and cheese",
+        "ids": [
+          1,
+          4,
+          67,
+          14,
+          5,
+          4,
+          67,
+          9,
+          329,
+          10,
+          329,
+          10,
+          329,
+          10,
+          329,
+          10,
+          329,
+          10,
+          329,
+          10,
+          329
+        ],
+        "logprob": -21.5986270904541,
+        "clipscore": 0.6808679103851318,
+        "original_rank": 2,
+        "decoder_score": 0.03580315696099853,
+        "clip_score_normalized": 0.9902752416194056,
+        "object_score": 0.974,
+        "combined_score": 0.6990510437360618,
+        "object_consistency": {
+          "score": 0.948,
+          "mentioned": [
+            "pizza"
+          ],
+          "supported": [
+            "pizza"
+          ],
+          "hallucinated": [],
+          "support": 0.948,
+          "hallucination_rate": 0.0
+        },
+        "D_contribution": 0.01074094708829956,
+        "C_contribution": 0.39611009664776226,
+        "O_contribution": 0.29219999999999996,
+        "repeated_trigram": true
+      },
+      {
+        "rank": 3,
+        "caption": "a close up of a pizza on a pizza with cheese and cheese and cheese and cheese and cheese and",
+        "ids": [
+          1,
+          4,
+          128,
+          35,
+          6,
+          4,
+          67,
+          5,
+          4,
+          67,
+          9,
+          329,
+          10,
+          329,
+          10,
+          329,
+          10,
+          329,
+          10,
+          329,
+          10
+        ],
+        "logprob": -21.834409713745117,
+        "clipscore": 0.682307779788971,
+        "original_rank": 3,
+        "decoder_score": 0.02317385202216391,
+        "clip_score_normalized": 1.0,
+        "object_score": 0.974,
+        "combined_score": 0.6991521556066491,
+        "object_consistency": {
+          "score": 0.948,
+          "mentioned": [
+            "pizza"
+          ],
+          "supported": [
+            "pizza"
+          ],
+          "hallucinated": [],
+          "support": 0.948,
+          "hallucination_rate": 0.0
+        },
+        "D_contribution": 0.006952155606649173,
+        "C_contribution": 0.4,
+        "O_contribution": 0.29219999999999996,
+        "repeated_trigram": true
+      },
+      {
+        "rank": 4,
+        "caption": "a pizza with cheese and cheese and cheese and cheese and cheese and cheese and cheese and cheese and cheese",
+        "ids": [
+          1,
+          4,
+          67,
+          9,
+          329,
+          10,
+          329,
+          10,
+          329,
+          10,
+          329,
+          10,
+          329,
+          10,
+          329,
+          10,
+          329,
+          10,
+          329,
+          10,
+          329
+        ],
+        "logprob": -22.267053604125977,
+        "clipscore": 0.6578469276428223,
+        "original_rank": 4,
+        "decoder_score": 0.0,
+        "clip_score_normalized": 0.8347934359390549,
+        "object_score": 0.974,
+        "combined_score": 0.6261173743756219,
+        "object_consistency": {
+          "score": 0.948,
+          "mentioned": [
+            "pizza"
+          ],
+          "supported": [
+            "pizza"
+          ],
+          "hallucinated": [],
+          "support": 0.948,
+          "hallucination_rate": 0.0
+        },
+        "D_contribution": 0.0,
+        "C_contribution": 0.33391737437562197,
+        "O_contribution": 0.29219999999999996,
+        "repeated_trigram": true
+      }
+    ],
+    "detected": {
+      "pizza": 0.948
+    },
+    "image_path": "/kaggle/input/datasets/vuthetam/mscoco-2014/images/val2014/COCO_val2014_000000501858.jpg",
+    "image_sha256": "4251b9b4ff43823069d95b48066e34156849ddeb57b57255789800f00a927662",
+    "rank0_CIDEr": 6.02510185889205e-08,
+    "selected_CIDEr": 0.13395910999922336,
+    "delta_CIDEr": 0.13395904974820477,
+    "rank0_CHAIR": true,
+    "selected_CHAIR": false
+  },
+  {
+    "arm": "CONTROL",
+    "group": "selected_repeat_with_clean_alternative",
+    "coco_id": 461953,
+    "selected_rank": 0,
+    "candidates": [
+      {
+        "rank": 0,
+        "caption": "two hot dogs on a plate on a plate",
+        "ids": [
+          1,
+          16,
+          257,
+          286,
+          5,
+          4,
+          45,
+          5,
+          4,
+          45,
+          2,
+          0
+        ],
+        "logprob": -6.5954976081848145,
+        "clipscore": 0.8315548896789551,
+        "original_rank": 0,
+        "decoder_score": 1.0,
+        "clip_score_normalized": 1.0,
+        "object_score": 0.9532499999999999,
+        "combined_score": 0.9859749999999999,
+        "object_consistency": {
+          "score": 0.9065,
+          "mentioned": [
+            "hot dog"
+          ],
+          "supported": [
+            "hot dog"
+          ],
+          "hallucinated": [],
+          "support": 0.9065,
+          "hallucination_rate": 0.0
+        },
+        "D_contribution": 0.3,
+        "C_contribution": 0.4,
+        "O_contribution": 0.285975,
+        "repeated_trigram": true
+      },
+      {
+        "rank": 1,
+        "caption": "two hot dogs on a plate with ketchup",
+        "ids": [
+          1,
+          16,
+          257,
+          286,
+          5,
+          4,
+          45,
+          9,
+          1079,
+          2,
+          0,
+          0
+        ],
+        "logprob": -7.011246204376221,
+        "clipscore": 0.7916653156280518,
+        "original_rank": 1,
+        "decoder_score": 0.759786844050503,
+        "clip_score_normalized": 0.0751503559899173,
+        "object_score": 0.9532499999999999,
+        "combined_score": 0.5439711956111177,
+        "object_consistency": {
+          "score": 0.9065,
+          "mentioned": [
+            "hot dog"
+          ],
+          "supported": [
+            "hot dog"
+          ],
+          "hallucinated": [],
+          "support": 0.9065,
+          "hallucination_rate": 0.0
+        },
+        "D_contribution": 0.2279360532151509,
+        "C_contribution": 0.030060142395966924,
+        "O_contribution": 0.285975,
+        "repeated_trigram": false
+      },
+      {
+        "rank": 2,
+        "caption": "two hot dogs on a plate with mustard",
+        "ids": [
+          1,
+          16,
+          257,
+          286,
+          5,
+          4,
+          45,
+          9,
+          1086,
+          2,
+          0,
+          0
+        ],
+        "logprob": -7.132595539093018,
+        "clipscore": 0.8096015453338623,
+        "original_rank": 2,
+        "decoder_score": 0.689673061510457,
+        "clip_score_normalized": 0.4910062795736965,
+        "object_score": 0.9532499999999999,
+        "combined_score": 0.6892794302826157,
+        "object_consistency": {
+          "score": 0.9065,
+          "mentioned": [
+            "hot dog"
+          ],
+          "supported": [
+            "hot dog"
+          ],
+          "hallucinated": [],
+          "support": 0.9065,
+          "hallucination_rate": 0.0
+        },
+        "D_contribution": 0.2069019184531371,
+        "C_contribution": 0.19640251182947863,
+        "O_contribution": 0.285975,
+        "repeated_trigram": false
+      },
+      {
+        "rank": 3,
+        "caption": "two hot dogs on a plate with ketchup on it",
+        "ids": [
+          1,
+          16,
+          257,
+          286,
+          5,
+          4,
+          45,
+          9,
+          1079,
+          5,
+          29,
+          2
+        ],
+        "logprob": -8.245719909667969,
+        "clipscore": 0.788424015045166,
+        "original_rank": 3,
+        "decoder_score": 0.0465268898346201,
+        "clip_score_normalized": 0.0,
+        "object_score": 0.9532499999999999,
+        "combined_score": 0.299933066950386,
+        "object_consistency": {
+          "score": 0.9065,
+          "mentioned": [
+            "hot dog"
+          ],
+          "supported": [
+            "hot dog"
+          ],
+          "hallucinated": [],
+          "support": 0.9065,
+          "hallucination_rate": 0.0
+        },
+        "D_contribution": 0.013958066950386028,
+        "C_contribution": 0.0,
+        "O_contribution": 0.285975,
+        "repeated_trigram": false
+      },
+      {
+        "rank": 4,
+        "caption": "two hot dogs on a plate with mustard on it",
+        "ids": [
+          1,
+          16,
+          257,
+          286,
+          5,
+          4,
+          45,
+          9,
+          1086,
+          5,
+          29,
+          2
+        ],
+        "logprob": -8.32624626159668,
+        "clipscore": 0.8107566833496094,
+        "original_rank": 4,
+        "decoder_score": 0.0,
+        "clip_score_normalized": 0.5177884402777163,
+        "object_score": 0.9532499999999999,
+        "combined_score": 0.4930903761110865,
+        "object_consistency": {
+          "score": 0.9065,
+          "mentioned": [
+            "hot dog"
+          ],
+          "supported": [
+            "hot dog"
+          ],
+          "hallucinated": [],
+          "support": 0.9065,
+          "hallucination_rate": 0.0
+        },
+        "D_contribution": 0.0,
+        "C_contribution": 0.20711537611108655,
+        "O_contribution": 0.285975,
+        "repeated_trigram": false
+      }
+    ],
+    "detected": {
+      "hot dog": 0.9065
+    },
+    "image_path": "/kaggle/input/datasets/vuthetam/mscoco-2014/images/val2014/COCO_val2014_000000461953.jpg",
+    "image_sha256": "78c6acd7ff0ecd0e3984187c514610ae964feb082716462b78e6e5b29192669b",
+    "rank0_CIDEr": 1.0737939242288361,
+    "selected_CIDEr": 1.0737939242288361,
+    "delta_CIDEr": 0.0,
+    "rank0_CHAIR": false,
+    "selected_CHAIR": false
+  },
+  {
+    "arm": "PROMPT",
+    "group": "selected_lower_CIDEr",
+    "coco_id": 373857,
+    "selected_rank": 1,
+    "candidates": [
+      {
+        "rank": 0,
+        "caption": "a living room with a television and a tv",
+        "ids": [
+          1,
+          4,
+          123,
+          44,
+          9,
+          4,
+          291,
+          10,
+          4,
+          293,
+          2,
+          0,
+          0
+        ],
+        "logprob": -6.637217044830322,
+        "clipscore": 0.7779587507247925,
+        "original_rank": 0,
+        "decoder_score": 1.0,
+        "clip_score_normalized": 0.5864030134536029,
+        "object_score": 0.96675,
+        "combined_score": 0.8245862053814411,
+        "object_consistency": {
+          "score": 0.9335,
+          "mentioned": [
+            "tv"
+          ],
+          "supported": [
+            "tv"
+          ],
+          "hallucinated": [],
+          "support": 0.9335,
+          "hallucination_rate": 0.0
+        },
+        "D_contribution": 0.3,
+        "C_contribution": 0.23456120538144118,
+        "O_contribution": 0.290025,
+        "repeated_trigram": false
+      },
+      {
+        "rank": 1,
+        "caption": "a living room with a television and a television",
+        "ids": [
+          1,
+          4,
+          123,
+          44,
+          9,
+          4,
+          291,
+          10,
+          4,
+          291,
+          2,
+          0,
+          0
+        ],
+        "logprob": -6.792978286743164,
+        "clipscore": 0.7866072654724121,
+        "original_rank": 1,
+        "decoder_score": 0.8998717188297447,
+        "clip_score_normalized": 0.9343072869086925,
+        "object_score": 0.96675,
+        "combined_score": 0.9337094304124004,
+        "object_consistency": {
+          "score": 0.9335,
+          "mentioned": [
+            "tv"
+          ],
+          "supported": [
+            "tv"
+          ],
+          "hallucinated": [],
+          "support": 0.9335,
+          "hallucination_rate": 0.0
+        },
+        "D_contribution": 0.2699615156489234,
+        "C_contribution": 0.373722914763477,
+        "O_contribution": 0.290025,
+        "repeated_trigram": false
+      },
+      {
+        "rank": 2,
+        "caption": "a living room with a tv and a tv",
+        "ids": [
+          1,
+          4,
+          123,
+          44,
+          9,
+          4,
+          293,
+          10,
+          4,
+          293,
+          2,
+          0,
+          0
+        ],
+        "logprob": -6.880156517028809,
+        "clipscore": 0.7633814215660095,
+        "original_rank": 2,
+        "decoder_score": 0.8438307792046568,
+        "clip_score_normalized": 0.0,
+        "object_score": 0.96675,
+        "combined_score": 0.543174233761397,
+        "object_consistency": {
+          "score": 0.9335,
+          "mentioned": [
+            "tv"
+          ],
+          "supported": [
+            "tv"
+          ],
+          "hallucinated": [],
+          "support": 0.9335,
+          "hallucination_rate": 0.0
+        },
+        "D_contribution": 0.25314923376139703,
+        "C_contribution": 0.0,
+        "O_contribution": 0.290025,
+        "repeated_trigram": false
+      },
+      {
+        "rank": 3,
+        "caption": "a living room with a tv and a television",
+        "ids": [
+          1,
+          4,
+          123,
+          44,
+          9,
+          4,
+          293,
+          10,
+          4,
+          291,
+          2,
+          0,
+          0
+        ],
+        "logprob": -7.015476226806641,
+        "clipscore": 0.7787716388702393,
+        "original_rank": 3,
+        "decoder_score": 0.7568429651495158,
+        "clip_score_normalized": 0.6191031091226026,
+        "object_score": 0.96675,
+        "combined_score": 0.7647191331938957,
+        "object_consistency": {
+          "score": 0.9335,
+          "mentioned": [
+            "tv"
+          ],
+          "supported": [
+            "tv"
+          ],
+          "hallucinated": [],
+          "support": 0.9335,
+          "hallucination_rate": 0.0
+        },
+        "D_contribution": 0.22705288954485472,
+        "C_contribution": 0.24764124364904105,
+        "O_contribution": 0.290025,
+        "repeated_trigram": false
+      },
+      {
+        "rank": 4,
+        "caption": "a living room with a television and a television in it",
+        "ids": [
+          1,
+          4,
+          123,
+          44,
+          9,
+          4,
+          291,
+          10,
+          4,
+          291,
+          8,
+          29,
+          2
+        ],
+        "logprob": -8.19283390045166,
+        "clipscore": 0.7882403135299683,
+        "original_rank": 4,
+        "decoder_score": 0.0,
+        "clip_score_normalized": 1.0,
+        "object_score": 0.96675,
+        "combined_score": 0.690025,
+        "object_consistency": {
+          "score": 0.9335,
+          "mentioned": [
+            "tv"
+          ],
+          "supported": [
+            "tv"
+          ],
+          "hallucinated": [],
+          "support": 0.9335,
+          "hallucination_rate": 0.0
+        },
+        "D_contribution": 0.0,
+        "C_contribution": 0.4,
+        "O_contribution": 0.290025,
+        "repeated_trigram": false
+      }
+    ],
+    "detected": {
+      "tv": 0.9335,
+      "clock": 0.9192,
+      "chair": 0.9167
+    },
+    "image_path": "/kaggle/input/datasets/vuthetam/mscoco-2014/images/val2014/COCO_val2014_000000373857.jpg",
+    "image_sha256": "61901e7aed04b791b22256537a637957638f1efac4695f23edadaf9cbe92b936",
+    "rank0_CIDEr": 1.906630458827424,
+    "selected_CIDEr": 1.31694794161221,
+    "delta_CIDEr": -0.589682517215214,
+    "rank0_CHAIR": false,
+    "selected_CHAIR": false
+  },
+  {
+    "arm": "PROMPT",
+    "group": "selected_lower_CIDEr",
+    "coco_id": 139917,
+    "selected_rank": 3,
+    "candidates": [
+      {
+        "rank": 0,
+        "caption": "a young boy is playing a video game",
+        "ids": [
+          1,
+          4,
+          50,
+          80,
+          11,
+          56,
+          4,
+          303,
+          93,
+          2,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "logprob": -6.179694175720215,
+        "clipscore": 0.8404953479766846,
+        "original_rank": 0,
+        "decoder_score": 1.0,
+        "clip_score_normalized": 0.11434232098132513,
+        "object_score": 0.9612,
+        "combined_score": 0.6340969283925301,
+        "object_consistency": {
+          "score": 0.9224,
+          "mentioned": [
+            "person"
+          ],
+          "supported": [
+            "person"
+          ],
+          "hallucinated": [],
+          "support": 0.9224,
+          "hallucination_rate": 0.0
+        },
+        "D_contribution": 0.3,
+        "C_contribution": 0.04573692839253005,
+        "O_contribution": 0.28836,
+        "repeated_trigram": false
+      },
+      {
+        "rank": 1,
+        "caption": "a little boy standing in front of a tv",
+        "ids": [
+          1,
+          4,
+          147,
+          80,
+          18,
+          8,
+          41,
+          6,
+          4,
+          293,
+          2,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "logprob": -6.507794380187988,
+        "clipscore": 0.8442522287368774,
+        "original_rank": 1,
+        "decoder_score": 0.8665882312794326,
+        "clip_score_normalized": 0.1816615667238074,
+        "object_score": 0.967725,
+        "combined_score": 0.6229585960733527,
+        "object_consistency": {
+          "score": 0.93545,
+          "mentioned": [
+            "person",
+            "tv"
+          ],
+          "supported": [
+            "person",
+            "tv"
+          ],
+          "hallucinated": [],
+          "support": 0.93545,
+          "hallucination_rate": 0.0
+        },
+        "D_contribution": 0.2599764693838298,
+        "C_contribution": 0.07266462668952296,
+        "O_contribution": 0.29031749999999995,
+        "repeated_trigram": false
+      },
+      {
+        "rank": 2,
+        "caption": "a little boy standing in front of a television",
+        "ids": [
+          1,
+          4,
+          147,
+          80,
+          18,
+          8,
+          41,
+          6,
+          4,
+          291,
+          2,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "logprob": -6.998749732971191,
+        "clipscore": 0.8341142535209656,
+        "original_rank": 2,
+        "decoder_score": 0.6669564691356493,
+        "clip_score_normalized": 0.0,
+        "object_score": 0.967725,
+        "combined_score": 0.4904044407406948,
+        "object_consistency": {
+          "score": 0.93545,
+          "mentioned": [
+            "tv",
+            "person"
+          ],
+          "supported": [
+            "tv",
+            "person"
+          ],
+          "hallucinated": [],
+          "support": 0.93545,
+          "hallucination_rate": 0.0
+        },
+        "D_contribution": 0.2000869407406948,
+        "C_contribution": 0.0,
+        "O_contribution": 0.29031749999999995,
+        "repeated_trigram": false
+      },
+      {
+        "rank": 3,
+        "caption": "a little boy standing in front of a tv in front of a tv",
+        "ids": [
+          1,
+          4,
+          147,
+          80,
+          18,
+          8,
+          41,
+          6,
+          4,
+          293,
+          8,
+          41,
+          6,
+          4,
+          293,
+          2
+        ],
+        "logprob": -8.335644721984863,
+        "clipscore": 0.8899211883544922,
+        "original_rank": 3,
+        "decoder_score": 0.12334959949867534,
+        "clip_score_normalized": 1.0,
+        "object_score": 0.967725,
+        "combined_score": 0.7273223798496026,
+        "object_consistency": {
+          "score": 0.93545,
+          "mentioned": [
+            "person",
+            "tv"
+          ],
+          "supported": [
+            "person",
+            "tv"
+          ],
+          "hallucinated": [],
+          "support": 0.93545,
+          "hallucination_rate": 0.0
+        },
+        "D_contribution": 0.0370048798496026,
+        "C_contribution": 0.4,
+        "O_contribution": 0.29031749999999995,
+        "repeated_trigram": true
+      },
+      {
+        "rank": 4,
+        "caption": "a little boy standing in front of a television in front of a tv",
+        "ids": [
+          1,
+          4,
+          147,
+          80,
+          18,
+          8,
+          41,
+          6,
+          4,
+          291,
+          8,
+          41,
+          6,
+          4,
+          293,
+          2
+        ],
+        "logprob": -8.638998985290527,
+        "clipscore": 0.8862284421920776,
+        "original_rank": 4,
+        "decoder_score": 0.0,
+        "clip_score_normalized": 0.933829976983504,
+        "object_score": 0.967725,
+        "combined_score": 0.6638494907934016,
+        "object_consistency": {
+          "score": 0.93545,
+          "mentioned": [
+            "tv",
+            "person"
+          ],
+          "supported": [
+            "tv",
+            "person"
+          ],
+          "hallucinated": [],
+          "support": 0.93545,
+          "hallucination_rate": 0.0
+        },
+        "D_contribution": 0.0,
+        "C_contribution": 0.3735319907934016,
+        "O_contribution": 0.29031749999999995,
+        "repeated_trigram": true
+      }
+    ],
+    "detected": {
+      "tv": 0.9485,
+      "person": 0.9224,
+      "dog": 0.8958,
+      "remote": 0.7309,
+      "vase": 0.6792,
+      "bottle": 0.5988,
+      "couch": 0.5067
+    },
+    "image_path": "/kaggle/input/datasets/vuthetam/mscoco-2014/images/val2014/COCO_val2014_000000139917.jpg",
+    "image_sha256": "0b8919d48ede2d56979d16f367c57f4031e92854ab16df7bc527b1a6a71d9005",
+    "rank0_CIDEr": 1.2096587276066055,
+    "selected_CIDEr": 0.19640185236291077,
+    "delta_CIDEr": -1.0132568752436948,
+    "rank0_CHAIR": false,
+    "selected_CHAIR": false
+  },
+  {
+    "arm": "PROMPT",
+    "group": "introduced_CHAIR",
+    "coco_id": 107257,
+    "selected_rank": 1,
+    "candidates": [
+      {
+        "rank": 0,
+        "caption": "a pile of trash",
+        "ids": [
+          1,
+          4,
+          424,
+          6,
+          817,
+          2,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "logprob": -6.378069877624512,
+        "clipscore": 0.5588983297348022,
+        "original_rank": 0,
+        "decoder_score": 1.0,
+        "clip_score_normalized": 0.0,
+        "object_score": 0.5,
+        "combined_score": 0.44999999999999996,
+        "object_consistency": {
+          "score": 0.0,
+          "mentioned": [],
+          "supported": [],
+          "hallucinated": [],
+          "support": 0.0,
+          "hallucination_rate": 0.0
+        },
+        "D_contribution": 0.3,
+        "C_contribution": 0.0,
+        "O_contribution": 0.15,
+        "repeated_trigram": false
+      },
+      {
+        "rank": 1,
+        "caption": "a trash on the side of a refrigerator",
+        "ids": [
+          1,
+          4,
+          817,
+          5,
+          7,
+          68,
+          6,
+          4,
+          251,
+          2,
+          0,
+          0,
+          0,
+          0
+        ],
+        "logprob": -9.616216659545898,
+        "clipscore": 0.6663447618484497,
+        "original_rank": 1,
+        "decoder_score": 0.5381821821968861,
+        "clip_score_normalized": 1.0,
+        "object_score": 0.0,
+        "combined_score": 0.5614546546590659,
+        "object_consistency": {
+          "score": -1.0,
+          "mentioned": [
+            "refrigerator"
+          ],
+          "supported": [],
+          "hallucinated": [
+            "refrigerator"
+          ],
+          "support": 0.0,
+          "hallucination_rate": 1.0
+        },
+        "D_contribution": 0.1614546546590658,
+        "C_contribution": 0.4,
+        "O_contribution": 0.0,
+        "repeated_trigram": false
+      },
+      {
+        "rank": 2,
+        "caption": "a pile of trash on the side of trash",
+        "ids": [
+          1,
+          4,
+          424,
+          6,
+          817,
+          5,
+          7,
+          68,
+          6,
+          817,
+          2,
+          0,
+          0,
+          0
+        ],
+        "logprob": -10.756820678710938,
+        "clipscore": 0.5822283625602722,
+        "original_rank": 2,
+        "decoder_score": 0.37551158861875733,
+        "clip_score_normalized": 0.21713175920810007,
+        "object_score": 0.5,
+        "combined_score": 0.34950618026886726,
+        "object_consistency": {
+          "score": 0.0,
+          "mentioned": [],
+          "supported": [],
+          "hallucinated": [],
+          "support": 0.0,
+          "hallucination_rate": 0.0
+        },
+        "D_contribution": 0.11265347658562719,
+        "C_contribution": 0.08685270368324004,
+        "O_contribution": 0.15,
+        "repeated_trigram": false
+      },
+      {
+        "rank": 3,
+        "caption": "a pile of trash on the side of a refrigerator",
+        "ids": [
+          1,
+          4,
+          424,
+          6,
+          817,
+          5,
+          7,
+          68,
+          6,
+          4,
+          251,
+          2,
+          0,
+          0
+        ],
+        "logprob": -11.81721019744873,
+        "clipscore": 0.6428301334381104,
+        "original_rank": 3,
+        "decoder_score": 0.22428102170967812,
+        "clip_score_normalized": 0.7811502164588617,
+        "object_score": 0.0,
+        "combined_score": 0.37974439309644814,
+        "object_consistency": {
+          "score": -1.0,
+          "mentioned": [
+            "refrigerator"
+          ],
+          "supported": [],
+          "hallucinated": [
+            "refrigerator"
+          ],
+          "support": 0.0,
+          "hallucination_rate": 1.0
+        },
+        "D_contribution": 0.06728430651290343,
+        "C_contribution": 0.31246008658354474,
+        "O_contribution": 0.0,
+        "repeated_trigram": false
+      },
+      {
+        "rank": 4,
+        "caption": "a pile of trash on the side of trash on the street",
+        "ids": [
+          1,
+          4,
+          424,
+          6,
+          817,
+          5,
+          7,
+          68,
+          6,
+          817,
+          5,
+          7,
+          24,
+          2
+        ],
+        "logprob": -13.389810562133789,
+        "clipscore": 0.6334794759750366,
+        "original_rank": 4,
+        "decoder_score": 0.0,
+        "clip_score_normalized": 0.6941239906537701,
+        "object_score": 0.5,
+        "combined_score": 0.427649596261508,
+        "object_consistency": {
+          "score": 0.0,
+          "mentioned": [],
+          "supported": [],
+          "hallucinated": [],
+          "support": 0.0,
+          "hallucination_rate": 0.0
+        },
+        "D_contribution": 0.0,
+        "C_contribution": 0.27764959626150804,
+        "O_contribution": 0.15,
+        "repeated_trigram": true
+      }
+    ],
+    "detected": {
+      "oven": 0.8486,
+      "car": 0.579
+    },
+    "image_path": "/kaggle/input/datasets/vuthetam/mscoco-2014/images/val2014/COCO_val2014_000000107257.jpg",
+    "image_sha256": "903286cd1db65f2451c285499d941da6d1f6d0a8206558c84b9c0dfdc341b487",
+    "rank0_CIDEr": 0.2838406469830855,
+    "selected_CIDEr": 0.6029989653020462,
+    "delta_CIDEr": 0.31915831831896074,
+    "rank0_CHAIR": false,
+    "selected_CHAIR": true
+  },
+  {
+    "arm": "PROMPT",
+    "group": "introduced_CHAIR",
+    "coco_id": 487421,
+    "selected_rank": 2,
+    "candidates": [
+      {
+        "rank": 0,
+        "caption": "a plate of pasta and vegetables in a bowl",
+        "ids": [
+          1,
+          4,
+          45,
+          6,
+          899,
+          10,
+          210,
+          8,
+          4,
+          164,
+          2,
+          0,
+          0
+        ],
+        "logprob": -7.314141750335693,
+        "clipscore": 0.7211315035820007,
+        "original_rank": 0,
+        "decoder_score": 1.0,
+        "clip_score_normalized": 0.4916325842503996,
+        "object_score": 0.0,
+        "combined_score": 0.49665303370015984,
+        "object_consistency": {
+          "score": -1.0,
+          "mentioned": [
+            "bowl"
+          ],
+          "supported": [],
+          "hallucinated": [
+            "bowl"
+          ],
+          "support": 0.0,
+          "hallucination_rate": 1.0
+        },
+        "D_contribution": 0.3,
+        "C_contribution": 0.19665303370015985,
+        "O_contribution": 0.0,
+        "repeated_trigram": false
+      },
+      {
+        "rank": 1,
+        "caption": "a bowl of pasta and vegetables in a bowl",
+        "ids": [
+          1,
+          4,
+          164,
+          6,
+          899,
+          10,
+          210,
+          8,
+          4,
+          164,
+          2,
+          0,
+          0
+        ],
+        "logprob": -7.418700218200684,
+        "clipscore": 0.7057484984397888,
+        "original_rank": 1,
+        "decoder_score": 0.9429734233136556,
+        "clip_score_normalized": 0.0,
+        "object_score": 0.0,
+        "combined_score": 0.28289202699409666,
+        "object_consistency": {
+          "score": -1.0,
+          "mentioned": [
+            "bowl"
+          ],
+          "supported": [],
+          "hallucinated": [
+            "bowl"
+          ],
+          "support": 0.0,
+          "hallucination_rate": 1.0
+        },
+        "D_contribution": 0.28289202699409666,
+        "C_contribution": 0.0,
+        "O_contribution": 0.0,
+        "repeated_trigram": false
+      },
+      {
+        "rank": 2,
+        "caption": "a plate of pasta and vegetables on a table",
+        "ids": [
+          1,
+          4,
+          45,
+          6,
+          899,
+          10,
+          210,
+          5,
+          4,
+          25,
+          2,
+          0,
+          0
+        ],
+        "logprob": -7.8311333656311035,
+        "clipscore": 0.7370381355285645,
+        "original_rank": 2,
+        "decoder_score": 0.7180308529969153,
+        "clip_score_normalized": 1.0,
+        "object_score": 0.0,
+        "combined_score": 0.6154092558990746,
+        "object_consistency": {
+          "score": -1.0,
+          "mentioned": [
+            "dining table"
+          ],
+          "supported": [],
+          "hallucinated": [
+            "dining table"
+          ],
+          "support": 0.0,
+          "hallucination_rate": 1.0
+        },
+        "D_contribution": 0.2154092558990746,
+        "C_contribution": 0.4,
+        "O_contribution": 0.0,
+        "repeated_trigram": false
+      },
+      {
+        "rank": 3,
+        "caption": "a bowl of pasta and vegetables on a table",
+        "ids": [
+          1,
+          4,
+          164,
+          6,
+          899,
+          10,
+          210,
+          5,
+          4,
+          25,
+          2,
+          0,
+          0
+        ],
+        "logprob": -7.954957485198975,
+        "clipscore": 0.7176946401596069,
+        "original_rank": 3,
+        "decoder_score": 0.6504967183223901,
+        "clip_score_normalized": 0.38179227473697647,
+        "object_score": 0.0,
+        "combined_score": 0.3478659253915076,
+        "object_consistency": {
+          "score": -1.0,
+          "mentioned": [
+            "dining table",
+            "bowl"
+          ],
+          "supported": [],
+          "hallucinated": [
+            "dining table",
+            "bowl"
+          ],
+          "support": 0.0,
+          "hallucination_rate": 1.0
+        },
+        "D_contribution": 0.195149015496717,
+        "C_contribution": 0.1527169098947906,
+        "O_contribution": 0.0,
+        "repeated_trigram": false
+      },
+      {
+        "rank": 4,
+        "caption": "a plate of pasta and vegetables on top of a table",
+        "ids": [
+          1,
+          4,
+          45,
+          6,
+          899,
+          10,
+          210,
+          5,
+          33,
+          6,
+          4,
+          25,
+          2
+        ],
+        "logprob": -9.147645950317383,
+        "clipscore": 0.7237243056297302,
+        "original_rank": 4,
+        "decoder_score": 0.0,
+        "clip_score_normalized": 0.5744971454587363,
+        "object_score": 0.0,
+        "combined_score": 0.22979885818349455,
+        "object_consistency": {
+          "score": -1.0,
+          "mentioned": [
+            "dining table"
+          ],
+          "supported": [],
+          "hallucinated": [
+            "dining table"
+          ],
+          "support": 0.0,
+          "hallucination_rate": 1.0
+        },
+        "D_contribution": 0.0,
+        "C_contribution": 0.22979885818349455,
+        "O_contribution": 0.0,
+        "repeated_trigram": false
+      }
+    ],
+    "detected": {
+      "broccoli": 0.6659
+    },
+    "image_path": "/kaggle/input/datasets/vuthetam/mscoco-2014/images/val2014/COCO_val2014_000000487421.jpg",
+    "image_sha256": "94674e92bacc5e680a5a67e7ead081eed27772e95d1cac919225ea09461c45e3",
+    "rank0_CIDEr": 0.7677995205211673,
+    "selected_CIDEr": 0.6183058357925675,
+    "delta_CIDEr": -0.1494936847285998,
+    "rank0_CHAIR": false,
+    "selected_CHAIR": true
+  },
+  {
+    "arm": "PROMPT",
+    "group": "selected_repeat_with_clean_alternative",
+    "coco_id": 511674,
+    "selected_rank": 2,
+    "candidates": [
+      {
+        "rank": 0,
+        "caption": "a man is holding a pair of scissors",
+        "ids": [
+          1,
+          4,
+          12,
+          11,
+          27,
+          4,
+          280,
+          6,
+          398,
+          2,
+          0,
+          0,
+          0,
+          0
+        ],
+        "logprob": -5.0458984375,
+        "clipscore": 0.899574875831604,
+        "original_rank": 0,
+        "decoder_score": 1.0,
+        "clip_score_normalized": 0.0,
+        "object_score": 0.965975,
+        "combined_score": 0.5897924999999999,
+        "object_consistency": {
+          "score": 0.9319500000000001,
+          "mentioned": [
+            "scissors",
+            "person"
+          ],
+          "supported": [
+            "scissors",
+            "person"
+          ],
+          "hallucinated": [],
+          "support": 0.9319500000000001,
+          "hallucination_rate": 0.0
+        },
+        "D_contribution": 0.3,
+        "C_contribution": 0.0,
+        "O_contribution": 0.2897925,
+        "repeated_trigram": false
+      },
+      {
+        "rank": 1,
+        "caption": "a man holding a pair of scissors in his hands",
+        "ids": [
+          1,
+          4,
+          12,
+          27,
+          4,
+          280,
+          6,
+          398,
+          8,
+          40,
+          364,
+          2,
+          0,
+          0
+        ],
+        "logprob": -5.693875312805176,
+        "clipscore": 0.9179991483688354,
+        "original_rank": 1,
+        "decoder_score": 0.536240262590122,
+        "clip_score_normalized": 0.2720743304380891,
+        "object_score": 0.965975,
+        "combined_score": 0.5594943109522723,
+        "object_consistency": {
+          "score": 0.9319500000000001,
+          "mentioned": [
+            "scissors",
+            "person"
+          ],
+          "supported": [
+            "scissors",
+            "person"
+          ],
+          "hallucinated": [],
+          "support": 0.9319500000000001,
+          "hallucination_rate": 0.0
+        },
+        "D_contribution": 0.1608720787770366,
+        "C_contribution": 0.10882973217523564,
+        "O_contribution": 0.2897925,
+        "repeated_trigram": false
+      },
+      {
+        "rank": 2,
+        "caption": "a man holding a pair of scissors and a pair of scissors",
+        "ids": [
+          1,
+          4,
+          12,
+          27,
+          4,
+          280,
+          6,
+          398,
+          10,
+          4,
+          280,
+          6,
+          398,
+          2
+        ],
+        "logprob": -5.701727390289307,
+        "clipscore": 0.9519962072372437,
+        "original_rank": 2,
+        "decoder_score": 0.5306204981649679,
+        "clip_score_normalized": 0.7741146150569133,
+        "object_score": 0.965975,
+        "combined_score": 0.7586244954722557,
+        "object_consistency": {
+          "score": 0.9319500000000001,
+          "mentioned": [
+            "scissors",
+            "person"
+          ],
+          "supported": [
+            "scissors",
+            "person"
+          ],
+          "hallucinated": [],
+          "support": 0.9319500000000001,
+          "hallucination_rate": 0.0
+        },
+        "D_contribution": 0.15918614944949036,
+        "C_contribution": 0.30964584602276535,
+        "O_contribution": 0.2897925,
+        "repeated_trigram": true
+      },
+      {
+        "rank": 3,
+        "caption": "a man holding a pair of scissors in his hand",
+        "ids": [
+          1,
+          4,
+          12,
+          27,
+          4,
+          280,
+          6,
+          398,
+          8,
+          40,
+          186,
+          2,
+          0,
+          0
+        ],
+        "logprob": -5.7042388916015625,
+        "clipscore": 0.9118921756744385,
+        "original_rank": 3,
+        "decoder_score": 0.5288230062582887,
+        "clip_score_normalized": 0.181891637825715,
+        "object_score": 0.965975,
+        "combined_score": 0.5211960570077726,
+        "object_consistency": {
+          "score": 0.9319500000000001,
+          "mentioned": [
+            "scissors",
+            "person"
+          ],
+          "supported": [
+            "scissors",
+            "person"
+          ],
+          "hallucinated": [],
+          "support": 0.9319500000000001,
+          "hallucination_rate": 0.0
+        },
+        "D_contribution": 0.15864690187748662,
+        "C_contribution": 0.072756655130286,
+        "O_contribution": 0.2897925,
+        "repeated_trigram": false
+      },
+      {
+        "rank": 4,
+        "caption": "a man holding a pair of scissors with scissors",
+        "ids": [
+          1,
+          4,
+          12,
+          27,
+          4,
+          280,
+          6,
+          398,
+          9,
+          398,
+          2,
+          0,
+          0,
+          0
+        ],
+        "logprob": -6.443123817443848,
+        "clipscore": 0.9672926664352417,
+        "original_rank": 4,
+        "decoder_score": 0.0,
+        "clip_score_normalized": 1.0,
+        "object_score": 0.965975,
+        "combined_score": 0.6897925,
+        "object_consistency": {
+          "score": 0.9319500000000001,
+          "mentioned": [
+            "scissors",
+            "person"
+          ],
+          "supported": [
+            "scissors",
+            "person"
+          ],
+          "hallucinated": [],
+          "support": 0.9319500000000001,
+          "hallucination_rate": 0.0
+        },
+        "D_contribution": 0.0,
+        "C_contribution": 0.4,
+        "O_contribution": 0.2897925,
+        "repeated_trigram": false
+      }
+    ],
+    "detected": {
+      "person": 0.9437,
+      "scissors": 0.9202
+    },
+    "image_path": "/kaggle/input/datasets/vuthetam/mscoco-2014/images/val2014/COCO_val2014_000000511674.jpg",
+    "image_sha256": "c892c7d6e3cc992674bba466aee26bbc581bc7d26867aea93639a6b36eecdce1",
+    "rank0_CIDEr": 1.6696278912254856,
+    "selected_CIDEr": 1.4698145061941617,
+    "delta_CIDEr": -0.19981338503132395,
+    "rank0_CHAIR": false,
+    "selected_CHAIR": false
+  },
+  {
+    "arm": "PROMPT",
+    "group": "selected_repeat_with_clean_alternative",
+    "coco_id": 85338,
+    "selected_rank": 3,
+    "candidates": [
+      {
+        "rank": 0,
+        "caption": "a table",
+        "ids": [
+          1,
+          4,
+          25,
+          2,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "logprob": -3.4226083755493164,
+        "clipscore": 0.5707792043685913,
+        "original_rank": 0,
+        "decoder_score": 1.0,
+        "clip_score_normalized": 0.3859431507416922,
+        "object_score": 0.0,
+        "combined_score": 0.4543772602966769,
+        "object_consistency": {
+          "score": -1.0,
+          "mentioned": [
+            "dining table"
+          ],
+          "supported": [],
+          "hallucinated": [
+            "dining table"
+          ],
+          "support": 0.0,
+          "hallucination_rate": 1.0
+        },
+        "D_contribution": 0.3,
+        "C_contribution": 0.1543772602966769,
+        "O_contribution": 0.0,
+        "repeated_trigram": false
+      },
+      {
+        "rank": 1,
+        "caption": "a plate",
+        "ids": [
+          1,
+          4,
+          45,
+          2,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "logprob": -3.777954578399658,
+        "clipscore": 0.578839898109436,
+        "original_rank": 1,
+        "decoder_score": 0.985352430297782,
+        "clip_score_normalized": 0.47559990055523327,
+        "object_score": 0.5,
+        "combined_score": 0.6358456893114279,
+        "object_consistency": {
+          "score": 0.0,
+          "mentioned": [],
+          "supported": [],
+          "hallucinated": [],
+          "support": 0.0,
+          "hallucination_rate": 0.0
+        },
+        "D_contribution": 0.2956057290893346,
+        "C_contribution": 0.19023996022209333,
+        "O_contribution": 0.15,
+        "repeated_trigram": false
+      },
+      {
+        "rank": 2,
+        "caption": "a close up of a close up of it",
+        "ids": [
+          1,
+          4,
+          128,
+          35,
+          6,
+          4,
+          128,
+          35,
+          6,
+          29,
+          2,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "logprob": -10.866378784179688,
+        "clipscore": 0.536080539226532,
+        "original_rank": 2,
+        "decoder_score": 0.6931636104927165,
+        "clip_score_normalized": 0.0,
+        "object_score": 0.5,
+        "combined_score": 0.35794908314781493,
+        "object_consistency": {
+          "score": 0.0,
+          "mentioned": [],
+          "supported": [],
+          "hallucinated": [],
+          "support": 0.0,
+          "hallucination_rate": 0.0
+        },
+        "D_contribution": 0.20794908314781493,
+        "C_contribution": 0.0,
+        "O_contribution": 0.15,
+        "repeated_trigram": true
+      },
+      {
+        "rank": 3,
+        "caption": "a close up of a close up of a pizza with a pizza with a pizza with a pizza with",
+        "ids": [
+          1,
+          4,
+          128,
+          35,
+          6,
+          4,
+          128,
+          35,
+          6,
+          4,
+          67,
+          9,
+          4,
+          67,
+          9,
+          4,
+          67,
+          9,
+          4,
+          67,
+          9
+        ],
+        "logprob": -26.898895263671875,
+        "clipscore": 0.6259866952896118,
+        "original_rank": 3,
+        "decoder_score": 0.032294292763644754,
+        "clip_score_normalized": 1.0,
+        "object_score": 0.9832000000000001,
+        "combined_score": 0.7046482878290934,
+        "object_consistency": {
+          "score": 0.9664,
+          "mentioned": [
+            "pizza"
+          ],
+          "supported": [
+            "pizza"
+          ],
+          "hallucinated": [],
+          "support": 0.9664,
+          "hallucination_rate": 0.0
+        },
+        "D_contribution": 0.009688287829093426,
+        "C_contribution": 0.4,
+        "O_contribution": 0.29496,
+        "repeated_trigram": true
+      },
+      {
+        "rank": 4,
+        "caption": "a close up of a close up view of a pizza with a pizza with a pizza with a pizza",
+        "ids": [
+          1,
+          4,
+          128,
+          35,
+          6,
+          4,
+          128,
+          35,
+          168,
+          6,
+          4,
+          67,
+          9,
+          4,
+          67,
+          9,
+          4,
+          67,
+          9,
+          4,
+          67
+        ],
+        "logprob": -27.68234634399414,
+        "clipscore": 0.6207847595214844,
+        "original_rank": 4,
+        "decoder_score": 0.0,
+        "clip_score_normalized": 0.9421403828623519,
+        "object_score": 0.9832000000000001,
+        "combined_score": 0.6718161531449408,
+        "object_consistency": {
+          "score": 0.9664,
+          "mentioned": [
+            "pizza"
+          ],
+          "supported": [
+            "pizza"
+          ],
+          "hallucinated": [],
+          "support": 0.9664,
+          "hallucination_rate": 0.0
+        },
+        "D_contribution": 0.0,
+        "C_contribution": 0.3768561531449408,
+        "O_contribution": 0.29496,
+        "repeated_trigram": true
+      }
+    ],
+    "detected": {
+      "pizza": 0.9664
+    },
+    "image_path": "/kaggle/input/datasets/vuthetam/mscoco-2014/images/val2014/COCO_val2014_000000085338.jpg",
+    "image_sha256": "d3f5b971444e15d9eb20aaa5628eb4a7f5cd50748488c8a6f74a27a8084da72c",
+    "rank0_CIDEr": 5.719976355402565e-08,
+    "selected_CIDEr": 0.0015902141821961245,
+    "delta_CIDEr": 0.0015901569824325705,
+    "rank0_CHAIR": true,
+    "selected_CHAIR": false
+  }
+]

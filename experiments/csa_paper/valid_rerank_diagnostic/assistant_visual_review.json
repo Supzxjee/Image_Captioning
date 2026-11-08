@@ -1,0 +1,55 @@
+{
+  "status": "ASSISTANT_REVIEW_OF_6_VALID_IMAGES",
+  "original_JPEG_sha_match": true,
+  "representative_sample": false,
+  "items": [
+    {
+      "coco_id": 373857,
+      "group": "selected_lower_CIDEr",
+      "selected_rank": 1,
+      "image_sha256": "61901e7aed04b791b22256537a637957638f1efac4695f23edadaf9cbe92b936",
+      "assistant_note": "Ảnh có một TV. Cả năm câu đều lặp TV/television như hai vật riêng; chưa thấy ứng viên tốt cho cảnh này. Đây là lỗi bộ sinh ứng viên, không chỉ bộ chọn.",
+      "user_verified": false
+    },
+    {
+      "coco_id": 139917,
+      "group": "selected_lower_CIDEr",
+      "selected_rank": 3,
+      "image_sha256": "0b8919d48ede2d56979d16f367c57f4031e92854ab16df7bc527b1a6a71d9005",
+      "assistant_note": "Ảnh có bé trai cầm bộ điều khiển, màn hình trò chơi. Rank0 mô tả chơi game phù hợp hơn; selected rank3 lặp in front of a tv. CLIP đóng góp0,4 so rank0 0,046, thắng phần giảm điểm decoder. Bộ chọn bỏ qua ứng viên tốt hơn về nội dung/ngôn ngữ trong ví dụ này.",
+      "user_verified": false
+    },
+    {
+      "coco_id": 107257,
+      "group": "introduced_CHAIR",
+      "selected_rank": 1,
+      "image_sha256": "903286cd1db65f2451c285499d941da6d1f6d0a8206558c84b9c0dfdc341b487",
+      "assistant_note": "Ảnh có bếp nấu bị bỏ bên túi rác, không phải refrigerator. Không ứng viên nào gọi đúng stove/oven; rank0 pile of trash chung chung ít sai hơn. Vừa thiếu ứng viên cụ thể đúng, vừa chọn thêm refrigerator sai.",
+      "user_verified": false
+    },
+    {
+      "coco_id": 487421,
+      "group": "introduced_CHAIR",
+      "selected_rank": 2,
+      "image_sha256": "94674e92bacc5e680a5a67e7ead081eed27772e95d1cac919225ea09461c45e3",
+      "assistant_note": "Ảnh crop sát mì và rau; bàn không hiện rõ. Chọn thêm on a table làm CHAIR đánh dấu nhưng không thể xác minh chắc bàn không tồn tại. Object score cả5bằng0 nên không giúp phân biệt ứng viên; không coi CHAIR là nhãn sự thật thị giác.",
+      "user_verified": false
+    },
+    {
+      "coco_id": 511674,
+      "group": "selected_repeat_with_clean_alternative",
+      "selected_rank": 2,
+      "image_sha256": "c892c7d6e3cc992674bba466aee26bbc581bc7d26867aea93639a6b36eecdce1",
+      "assistant_note": "Ảnh có hai chiếc kéo ở hai tay. Câu selected nhắc a pair of scissors and a pair of scissors bị heuristic repeated-trigram bắt, nhưng có cơ sở về số vật. Không được tự động coi mọi repeated-trigram là lỗi hoặc lọc cứng.",
+      "user_verified": false
+    },
+    {
+      "coco_id": 85338,
+      "group": "selected_repeat_with_clean_alternative",
+      "selected_rank": 3,
+      "image_sha256": "d3f5b971444e15d9eb20aaa5628eb4a7f5cd50748488c8a6f74a27a8084da72c",
+      "assistant_note": "Ảnh có món ăn với thịt và rau trên nền bánh/đĩa; loại món khó chốt từ ảnh. Các câu đầy đủ đều lặp nặng; hai câu không lặp chỉ a table/a plate. Không có câu vừa đầy đủ vừa trôi chảy trong bộ5; đổi bộ chọn đơn thuần khó giải quyết.",
+      "user_verified": false
+    }
+  ]
+}
