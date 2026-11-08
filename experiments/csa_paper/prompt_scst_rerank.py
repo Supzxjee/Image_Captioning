@@ -106,9 +106,9 @@ def prefetch(cfg):
     print('Same CLIP model/processor bytes as164. No BLIP.',flush=True)
 
 
-def candidate_sets(out,expected):
+def candidate_sets(out,expected,phases=PHASES):
     result={}
-    for phase in PHASES:
+    for phase in phases:
         d=Path(out)/'evaluations'/phase;rows=read(d/'candidates_rank0.json')+read(d/'candidates_rank1.json');validate_candidates(rows,expected)
         result[phase]={r['coco_id']:r for r in rows}
     return result
@@ -124,7 +124,8 @@ def worker(cfg):
     torch.cuda.set_device(rank);device=torch.device('cuda',rank);torch.backends.cuda.matmul.allow_tf32=False;torch.backends.cudnn.allow_tf32=False
     out=Path(cfg['output']);prepared=read(out/'rerank_prepared.json')
     if sha(out/'rerank_inputs.json')!=prepared['input_sha256']:raise ValueError('Changed rerank inputs')
-    inputs=read(out/'rerank_inputs.json');candidates=candidate_sets(out,{r['coco_id'] for r in inputs});asset=read(out/'clip_assets.json')
+    inputs=read(out/'rerank_inputs.json');phases=cfg.get('phase_steps',PHASES)
+    candidates=candidate_sets(out,{r['coco_id'] for r in inputs},phases);asset=read(out/'clip_assets.json')
     locked=read(Path(__file__).with_name('RERANK_TEST_INPUTS.json'))['clip']
     if {k:v for k,v in asset.items() if k!='path'}!=locked:raise ValueError('Wrong CLIP asset receipt')
     for n,h in locked['files_sha256'].items():
@@ -140,7 +141,7 @@ def worker(cfg):
             with Image.open(io.BytesIO(raw)) as image:image=image.convert('RGB')
             pixels=processor(images=image,return_tensors='pt')['pixel_values'].to(device);image_feature=F.normalize(model.get_image_features(pixel_values=pixels).float(),dim=-1)
             points={}
-            for phase in PHASES:
+            for phase in phases:
                 beam=candidates[phase][row['coco_id']];text=[c['caption'] for c in beam['candidates']]
                 tokens=processor.tokenizer(text,padding=True,truncation=False,return_tensors='pt')
                 if tokens['input_ids'].shape[1]>77:raise ValueError('Would truncate candidate text')
@@ -150,22 +151,23 @@ def worker(cfg):
             f.write(json.dumps(dict(coco_id=row['coco_id'],image_sha256=row['image_sha256'],phases=points),allow_nan=False)+'\n');f.flush();count+=1
             if count%100==0:print('CLIP rerank',rank,count,'/2500, ORIGINAL+END',flush=True)
             if count==25 and (time.monotonic()-started)/count*(2500-count)>cfg['rerank_seconds']-(time.monotonic()-started):raise TimeoutError('Measured CLIP projection exceeds cap')
-    save(out/f'rerank_worker{rank}.json',dict(complete=True,images=count,candidate_pairs=count*10,scores_sha256=sha(path),seconds=time.monotonic()-started,training=False))
+    save(out/f'rerank_worker{rank}.json',dict(complete=True,images=count,candidate_pairs=count*5*len(phases),scores_sha256=sha(path),seconds=time.monotonic()-started,training=False))
 
 
 def score(cfg):
     from run_scst_pilot import score as score_phase
     out=Path(cfg['output']);prepared=read(out/'rerank_prepared.json');inputs=read(out/'rerank_inputs.json')
     if sha(out/'rerank_inputs.json')!=prepared['input_sha256'] or sha(out/'validation_references.json')!=prepared['references_sha256']:raise ValueError('Changed evaluation inputs')
-    candidates=candidate_sets(out,{r['coco_id'] for r in inputs});scores={}
+    phases=cfg.get('phase_steps',PHASES)
+    candidates=candidate_sets(out,{r['coco_id'] for r in inputs},phases);scores={}
     for rank in (0,1):
         worker=read(out/f'rerank_worker{rank}.json');path=out/f'rerank_scores_rank{rank}.jsonl'
         rows=[json.loads(line) for line in path.read_text(encoding='utf-8').splitlines()]
-        if not worker['complete'] or worker['images']!=2500 or worker['candidate_pairs']!=25000 or sha(path)!=worker['scores_sha256']:raise ValueError('Incomplete rerank worker')
+        if not worker['complete'] or worker['images']!=2500 or worker['candidate_pairs']!=2500*5*len(phases) or sha(path)!=worker['scores_sha256']:raise ValueError('Incomplete rerank worker')
         if [r['coco_id'] for r in rows]!=[r['coco_id'] for r in inputs[rank::2]]:raise ValueError('Rerank IDs/order differ')
         scores.update({r['coco_id']:r for r in rows})
     metrics=read(out/'training_result.json')['metrics'];result={}
-    for phase,step in PHASES.items():
+    for phase,step in phases.items():
         selected={};ranks={}
         for row in inputs:
             s=scores[row['coco_id']];p=s['phases'][phase];beam=candidates[phase][row['coco_id']]
