@@ -1,0 +1,17 @@
+{
+  "status": "PREPARED_WITH_STORED_DATA_CHECKS",
+  "stored_selector_checks": 20045,
+  "old_archive_identity_and_score_hashes_verified": true,
+  "unit_tests": 3,
+  "notebook_AST": true,
+  "bundle_captions": 50000,
+  "bundle_VALID_images_per_arm": 5000,
+  "user_official_CIDEr_runtime_pending": true,
+  "model_or_scorer_executed_locally": false,
+  "user_report_edited": false,
+  "sheet": {
+    "range": "K\u1ebft qu\u1ea3 m\u1edbi!A63:L77",
+    "readback_verified": true,
+    "native_visual_verified": false
+  }
+}

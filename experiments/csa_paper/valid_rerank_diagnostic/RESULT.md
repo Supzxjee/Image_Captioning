@@ -39,3 +39,6 @@ Reranking có ích tổng thể: PROMPT+7,9639CIDEr và giảm52cờCHAIR (bỏ8
 Một notebook CPU duy nhất chấm CIDEr cho cả5rank ở cả2nhánh từ gói VALID6MB. Cùng5000refs/IDF cho từngrank; bắt buộc replay CIDEr từngảnh rank0 và câu đã chọn trước khi tính oracle5câu. Không cần inputDataset/checkpoint/APIsecret/GPU. Oracle dùng tham chiếu chỉ để chẩn đoán dư địa bộ chọn, không áp dụng lúc suy luận. Chưa có điểm oracle5câu; chưa đổi bất cứ quy tắc/trọng số nào.
 
 Pure-data3tests PASS; mã scorer/notebook chỉ static/fixture tại máy tác giả. Java/CIDEr runtime do người dùng chạy. Source cachedZIP180/60, bundleSHA tại RESULT.json. RegionCLIP và training tiếp vẫn tạm hoãn.
+
+
+Notebook: `../VALID_CANDIDATE_ORACLE_CPU.ipynb`, pin590be7. Code cells/50000candidate package checked; actual Java/CIDEr not run by author. Sheet Kết quả mới A63:L77 saved/readback content and formats verified (no native visualQA). Supplemental archive identity/rerank score hashes verified against historical audit. No user report changes.
