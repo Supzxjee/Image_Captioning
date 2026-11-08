@@ -1,0 +1,186 @@
+{
+  "status": "SPICE_SUBSETS_REVIEW_COMPLETE",
+  "checks": 85,
+  "arms": {
+    "CONTROL": {
+      "archive_sha256": "8e0ef057b4babf44c0f2256e90df54af4231a68164a0aded26ea355076fee35a",
+      "scoring_version": 188,
+      "scoring_notebook": "ducanh2403/2-vi-cai-kia-qua-nhieu",
+      "caption_source": "ducanh2403/2-vi-cai-kia-qua-nhieu/184",
+      "subsets": {
+        "normal": {
+          "All": {
+            "f_x100": 19.246945612393784,
+            "finite_images": 5000,
+            "undefined_images": 0
+          },
+          "Objects": {
+            "f_x100": 35.05053062469007,
+            "finite_images": 5000,
+            "undefined_images": 0
+          },
+          "Relations": {
+            "f_x100": 5.3840733861804075,
+            "finite_images": 4998,
+            "undefined_images": 2
+          },
+          "Attributes": {
+            "f_x100": 9.132772881029883,
+            "finite_images": 4989,
+            "undefined_images": 11
+          }
+        },
+        "fixed_rerank": {
+          "All": {
+            "f_x100": 20.946487595791954,
+            "finite_images": 5000,
+            "undefined_images": 0
+          },
+          "Objects": {
+            "f_x100": 37.91154477634508,
+            "finite_images": 5000,
+            "undefined_images": 0
+          },
+          "Relations": {
+            "f_x100": 5.978082696294412,
+            "finite_images": 4998,
+            "undefined_images": 2
+          },
+          "Attributes": {
+            "f_x100": 10.483519254856443,
+            "finite_images": 4989,
+            "undefined_images": 11
+          }
+        }
+      }
+    },
+    "PROMPT": {
+      "archive_sha256": "25c24b96dcbcd790a7ea33e3b87073aa293825873dbba3985901746ab73983db",
+      "scoring_version": 64,
+      "scoring_notebook": "ducanh3/notebook7bc83c4c76",
+      "caption_source": "ducanh3/notebook7bc83c4c76/61",
+      "subsets": {
+        "normal": {
+          "All": {
+            "f_x100": 19.36628759081717,
+            "finite_images": 5000,
+            "undefined_images": 0
+          },
+          "Objects": {
+            "f_x100": 35.39465815436713,
+            "finite_images": 5000,
+            "undefined_images": 0
+          },
+          "Relations": {
+            "f_x100": 5.605504146852239,
+            "finite_images": 4998,
+            "undefined_images": 2
+          },
+          "Attributes": {
+            "f_x100": 8.870191661856545,
+            "finite_images": 4989,
+            "undefined_images": 11
+          }
+        },
+        "fixed_rerank": {
+          "All": {
+            "f_x100": 21.16091265177709,
+            "finite_images": 5000,
+            "undefined_images": 0
+          },
+          "Objects": {
+            "f_x100": 38.22000863086003,
+            "finite_images": 5000,
+            "undefined_images": 0
+          },
+          "Relations": {
+            "f_x100": 6.346656309291181,
+            "finite_images": 4998,
+            "undefined_images": 2
+          },
+          "Attributes": {
+            "f_x100": 10.432522249198167,
+            "finite_images": 4989,
+            "undefined_images": 11
+          }
+        }
+      }
+    }
+  },
+  "comparisons": {
+    "normal": {
+      "All": {
+        "common_finite_images": 5000,
+        "prompt_minus_control_x100": 0.11934197842338536,
+        "CI95_points": [
+          -0.10038949896418413,
+          0.3331237345898851
+        ]
+      },
+      "Objects": {
+        "common_finite_images": 5000,
+        "prompt_minus_control_x100": 0.3441275296770652,
+        "CI95_points": [
+          0.008575945421107865,
+          0.6618921997335311
+        ]
+      },
+      "Relations": {
+        "common_finite_images": 4998,
+        "prompt_minus_control_x100": 0.22143076067183062,
+        "CI95_points": [
+          -0.05873955272600177,
+          0.48771664070273407
+        ]
+      },
+      "Attributes": {
+        "common_finite_images": 4989,
+        "prompt_minus_control_x100": -0.26258121917333793,
+        "CI95_points": [
+          -0.6202072808874414,
+          0.08348888404899395
+        ]
+      }
+    },
+    "fixed_rerank": {
+      "All": {
+        "common_finite_images": 5000,
+        "prompt_minus_control_x100": 0.21442505598513312,
+        "CI95_points": [
+          -0.01184391287286982,
+          0.43691883053554587
+        ]
+      },
+      "Objects": {
+        "common_finite_images": 5000,
+        "prompt_minus_control_x100": 0.30846385451493813,
+        "CI95_points": [
+          -0.027557757481596383,
+          0.6368476501826345
+        ]
+      },
+      "Relations": {
+        "common_finite_images": 4998,
+        "prompt_minus_control_x100": 0.3685736129967693,
+        "CI95_points": [
+          0.09029267190453487,
+          0.6431757068642238
+        ]
+      },
+      "Attributes": {
+        "common_finite_images": 4989,
+        "prompt_minus_control_x100": -0.05099700565827807,
+        "CI95_points": [
+          -0.41059663276127145,
+          0.32343092980105415
+        ]
+      }
+    }
+  },
+  "limits": [
+    "Conditional paired bootstrap 2000 draws seed42; one trained seed, not training variability; multiple subcategory comparisons unadjusted.",
+    "Prior TEST exposure; C10/P9 start and adapter parameter count differ.",
+    "SPICE reference scene-graph overlap is not region localization or visual relation verification.",
+    "No model/Java/official scorer run by author. Source SaveVersions188/64 user-confirmed; not fetched again."
+  ]
+}
