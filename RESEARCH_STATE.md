@@ -10,7 +10,7 @@ Cập nhật: 08/11/2026, giờ Việt Nam. File này là bản tóm tắt để
 
 ## Hiện đang ở đâu
 
-- **08/11 paper analysis IN PROGRESS.** User approved analysis of saved CONTROL/PROMPT captions: SPICE subsets, parameters/timing, balanced error examples. [Protocol](experiments/csa_paper/PAPER_ANALYSIS_PROTOCOL.md). RegionCLIP deferred; no new training or local model/scorer run. Preparing own-account CPU notebooks on exact184/61 captions.
+- **08/11 paper analysis PREPARED; await user CPU runs.** [Run instructions/results](experiments/csa_paper/PAPER_ANALYSIS_RUN.md), [protocol](experiments/csa_paper/PAPER_ANALYSIS_PROTOCOL.md). Two own-account CPU notebooks pinned4aabab2 replay SPICE All and retain per-image Objects/Relations/Attributes on exact184/61 captions. Data tests2/AST PASS; Java/API runtime not executed. Existing costs:49.239M/53.708M caption trainable params, timings exclude extraction/loading. Deterministic24-case CHAIR shortlist saved, not visually verified; after rerank137flags removed/70introduced/90both/4703neither. RegionCLIP/object-only training deferred; no model/scorer local, no Word changes. Next receive CPU ZIPs and visually review examples before paper claims.
 
 - **08/11 report experiment groups clarified COMPLETE.** [Report/script/QA](docs/weekly_reports/2026-11-07/README.md): section3 now introduces bank10 and prompt comparison groups and defines CONTROL/PROMPT; section4 uses matching group headings. Historical bank10 separate from current CONTROL. All4 table XMLs/5 figure hashes unchanged. Six portrait WordCOM/Poppler pages visually inspected. Downloads `Bao_cao_nghien_cuu_tuan_13_hai_nhom_thuc_nghiem.docx` verified; no model/metric/Sheet changes.
 

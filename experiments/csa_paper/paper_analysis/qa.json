@@ -1,0 +1,12 @@
+{
+  "status": "PREPARED_NOT_RUNTIME_CERTIFIED",
+  "unit_data_tests": 2,
+  "notebook_ast": "PASS",
+  "cpu_only": true,
+  "pinned_commit": "4aabab2a6e973c753bdf37dad0a4ab9b93d61192",
+  "models_or_official_scorers_executed_locally": false,
+  "costs": "metadata verified",
+  "examples": 24,
+  "examples_visually_verified": false,
+  "SPICE_subsets": "await user CPU runs"
+}
