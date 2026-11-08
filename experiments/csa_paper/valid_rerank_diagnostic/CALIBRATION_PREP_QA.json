@@ -1,0 +1,8 @@
+{
+  "status": "STATIC_FIXTURE_READY",
+  "metadata_checks": 30002,
+  "synthetic_tests": 4,
+  "official_metrics_run": false,
+  "calibration_run": false,
+  "model_run": false
+}
