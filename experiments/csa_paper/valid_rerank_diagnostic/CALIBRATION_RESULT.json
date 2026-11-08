@@ -1,0 +1,113 @@
+{
+  "status": "VALID_WEIGHT_CALIBRATION_REVIEW_COMPLETE",
+  "source_version": 190,
+  "source_notebook": "ducanh2403/2-vi-cai-kia-qua-nhieu",
+  "archive_sha256": "48ce19c97c504de6ed7a0a5b9b93e70ae14a03959c48382369ee88703b2f80f3",
+  "checks": 187073,
+  "grid_rules": 66,
+  "eligible_rules": 1,
+  "selected_weights": {
+    "decoder": 0.3,
+    "CLIP": 0.4,
+    "object": 0.3
+  },
+  "unchanged": true,
+  "TUNE_original": {
+    "CONTROL": {
+      "CIDEr": 1.1509361152496331,
+      "CHAIRs": 0.0465,
+      "CHAIRi": 0.03075937199615508,
+      "Recall": 0.4318713906664586,
+      "counts": [
+        93,
+        96,
+        3121,
+        2767,
+        6407
+      ],
+      "images": 2000
+    },
+    "PROMPT": {
+      "CIDEr": 1.1487847040640033,
+      "CHAIRs": 0.032,
+      "CHAIRi": 0.020754716981132074,
+      "Recall": 0.44170438582800065,
+      "counts": [
+        64,
+        66,
+        3180,
+        2830,
+        6407
+      ],
+      "images": 2000
+    }
+  },
+  "CHECK": {
+    "CONTROL": {
+      "CIDEr": 1.1585239463799384,
+      "CHAIRs": 0.043333333333333335,
+      "CHAIRi": 0.029206349206349208,
+      "Recall": 0.4387144207541225,
+      "counts": [
+        130,
+        138,
+        4725,
+        4177,
+        9521
+      ],
+      "images": 3000
+    },
+    "PROMPT": {
+      "CIDEr": 1.1521082582019144,
+      "CHAIRs": 0.029,
+      "CHAIRi": 0.018295218295218296,
+      "Recall": 0.44879739523159334,
+      "counts": [
+        87,
+        88,
+        4810,
+        4273,
+        9521
+      ],
+      "images": 3000
+    }
+  },
+  "unconstrained_TUNE_max_mean": {
+    "weights": [
+      0.3,
+      0.4
+    ],
+    "arms": {
+      "CONTROL": {
+        "CIDEr": 1.1542010985494204,
+        "CHAIRs": 0.0425,
+        "CHAIRi": 0.028405422853453842,
+        "Recall": 0.4298423599188388,
+        "counts": [
+          85,
+          88,
+          3098,
+          2754,
+          6407
+        ],
+        "images": 2000
+      },
+      "PROMPT": {
+        "CIDEr": 1.1461464981054799,
+        "CHAIRs": 0.0305,
+        "CHAIRi": 0.02001906577693041,
+        "Recall": 0.4385828000624317,
+        "counts": [
+          61,
+          63,
+          3147,
+          2810,
+          6407
+        ],
+        "images": 2000
+      }
+    }
+  },
+  "decision": "Retain original weights; no new improvement under predeclared joint guards.",
+  "limitation": "Reused VALID internal split, one model pair. Does not prove global optimality or impossibility of better reranking. No official scorer/model executed locally."
+}

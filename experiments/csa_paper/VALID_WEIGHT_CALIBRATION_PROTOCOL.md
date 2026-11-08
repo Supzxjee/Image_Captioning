@@ -15,3 +15,7 @@ CHECK acceptance: each arm satisfies the same nonworsening guards, and mean CIDE
 Official pycocoevalcap1.2 CIDEr/PTB and pinned standalone CHAIR parser/cache. First reproduce historical fullVALID rank0/selected per-image CIDEr and CHAIR counts. Then recompute CIDEr with TUNE reference corpus alone, and separately CHECK corpus alone (independent IDF). Do not compare their absolute scores to fullVALID scores. CHAIR uses its standard fixed COCO object annotations, solely for evaluation; inference selection still uses existing detector-derived scores. CHAIR does not measure all relation/attribute errors.
 
 Local validation: metadata and synthetic fixtures only. Official metrics/search run by user in one CPU Kaggle notebook (Internet ON; no Dataset/API token/GPU). One-hour STOP cap is not an ETA. Preserve logs/raw per-candidate scores and the review ZIP on failure. Do not edit the user's report.
+
+## Completion — CPU190
+
+Completed 08/11/2026. Original is the sole eligible TUNE rule; retain original. No new TEST or weight policy. See [audited result](valid_rerank_diagnostic/CALIBRATION_RESULT.md). Initial design above preserved.
