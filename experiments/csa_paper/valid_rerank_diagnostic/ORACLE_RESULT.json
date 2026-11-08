@@ -1,0 +1,252 @@
+{
+  "status": "VALID_CANDIDATE_ORACLE_REVIEW_COMPLETE",
+  "checks": 20030,
+  "archive_sha256": "4336187d233f200135d740d7dbee29aa3b4199a3239eee2542f8d46bffcffb64",
+  "source_commit": "590be700ec6ef5fc4b9ae4b705b0c56250b1209c",
+  "bundle_sha256": "05efaac0660f030f892ab1fb4f8bc4d530862b378b109dd187caff85b16abbae",
+  "arms": {
+    "CONTROL": {
+      "images": 5000,
+      "rank0_CIDEr_x100": 105.18206838735411,
+      "selected_CIDEr_x100": 114.25220628550852,
+      "oracle_CIDEr_x100": 140.24719369793084,
+      "oracle_minus_selected_points": 25.99498741242232,
+      "available_gain_over_rank0_points": 35.06512531057673,
+      "fraction_oracle_gain_captured": 0.2586654922182348,
+      "selected_is_CIDEr_best": 1497,
+      "source_version": 180,
+      "oracle_rank_counts": {
+        "3": 915,
+        "4": 761,
+        "2": 1045,
+        "0": 1127,
+        "1": 1152
+      },
+      "selected_below_best_images": 3503,
+      "oracle_gap_quantiles_raw": {
+        "0": 0.0,
+        "0.25": 0.0,
+        "0.5": 0.11919367086901023,
+        "0.75": 0.3735518493022879,
+        "0.9": 0.7084760794648535,
+        "1": 2.784259803290996
+      },
+      "decoder_argmax_CIDEr_x100": 105.1820683873541,
+      "clip_argmax_CIDEr_x100": 110.59777091346508,
+      "object_argmax_CIDEr_x100": 108.76721514209872
+    },
+    "PROMPT": {
+      "images": 5000,
+      "rank0_CIDEr_x100": 105.83651905121678,
+      "selected_CIDEr_x100": 113.80042073490822,
+      "oracle_CIDEr_x100": 139.7454356184202,
+      "oracle_minus_selected_points": 25.945014883511988,
+      "available_gain_over_rank0_points": 33.90891656720342,
+      "fraction_oracle_gain_captured": 0.2348615788979259,
+      "selected_is_CIDEr_best": 1504,
+      "source_version": 60,
+      "oracle_rank_counts": {
+        "4": 718,
+        "1": 1090,
+        "2": 1092,
+        "0": 1186,
+        "3": 914
+      },
+      "selected_below_best_images": 3496,
+      "oracle_gap_quantiles_raw": {
+        "0": 0.0,
+        "0.25": 0.0,
+        "0.5": 0.11702882359796529,
+        "0.75": 0.3648241922529787,
+        "0.9": 0.703375007419802,
+        "1": 3.590173051513547
+      },
+      "decoder_argmax_CIDEr_x100": 105.83651905121677,
+      "clip_argmax_CIDEr_x100": 110.56843078735103,
+      "object_argmax_CIDEr_x100": 109.17503945840534
+    }
+  },
+  "example_oracles": {
+    "CONTROL": [
+      {
+        "coco_id": 303926,
+        "group": "selected_lower_CIDEr",
+        "selected_rank": 2,
+        "selected_CIDEr": 1.5840365246228771,
+        "oracle_rank": 0,
+        "all_five_CIDEr": [
+          2.20661508095425,
+          0.8993702454823639,
+          1.5840365246228771,
+          1.1690404626107749,
+          0.9632367445467969
+        ]
+      },
+      {
+        "coco_id": 53450,
+        "group": "selected_lower_CIDEr",
+        "selected_rank": 2,
+        "selected_CIDEr": 0.5742425453483601,
+        "oracle_rank": 0,
+        "all_five_CIDEr": [
+          1.2968471666368508,
+          1.2880132043298502,
+          0.5742425453483601,
+          0.5326327413027168,
+          0.7360968380260557
+        ]
+      },
+      {
+        "coco_id": 526732,
+        "group": "introduced_CHAIR",
+        "selected_rank": 2,
+        "selected_CIDEr": 1.379574936731168,
+        "oracle_rank": 1,
+        "all_five_CIDEr": [
+          1.413905008984333,
+          1.772030002358906,
+          1.379574936731168,
+          1.7654270964134202,
+          1.625122835743704
+        ]
+      },
+      {
+        "coco_id": 333412,
+        "group": "introduced_CHAIR",
+        "selected_rank": 1,
+        "selected_CIDEr": 0.47852194033395656,
+        "oracle_rank": 2,
+        "all_five_CIDEr": [
+          0.131582207904484,
+          0.47852194033395656,
+          0.5134220878986233,
+          0.00647462892745591,
+          0.007023665426313568
+        ]
+      },
+      {
+        "coco_id": 501858,
+        "group": "selected_repeat_with_clean_alternative",
+        "selected_rank": 3,
+        "selected_CIDEr": 0.13395910999922336,
+        "oracle_rank": 3,
+        "all_five_CIDEr": [
+          6.02510185889205e-08,
+          0.1020637962518265,
+          0.1011222246555735,
+          0.13395910999922336,
+          0.07785824426911708
+        ]
+      },
+      {
+        "coco_id": 461953,
+        "group": "selected_repeat_with_clean_alternative",
+        "selected_rank": 0,
+        "selected_CIDEr": 1.0737939242288361,
+        "oracle_rank": 0,
+        "all_five_CIDEr": [
+          1.0737939242288361,
+          0.6572075816759684,
+          0.6765004322570651,
+          0.6643370326498979,
+          0.6838617824378248
+        ]
+      }
+    ],
+    "PROMPT": [
+      {
+        "coco_id": 373857,
+        "group": "selected_lower_CIDEr",
+        "selected_rank": 1,
+        "selected_CIDEr": 1.31694794161221,
+        "oracle_rank": 3,
+        "all_five_CIDEr": [
+          1.906630458827424,
+          1.31694794161221,
+          1.164664749086327,
+          1.9346289412198678,
+          1.2199085961815086
+        ]
+      },
+      {
+        "coco_id": 139917,
+        "group": "selected_lower_CIDEr",
+        "selected_rank": 3,
+        "selected_CIDEr": 0.19640185236291077,
+        "oracle_rank": 0,
+        "all_five_CIDEr": [
+          1.2096587276066055,
+          0.3418231678745075,
+          0.3443235139329538,
+          0.19640185236291077,
+          0.23351669484853926
+        ]
+      },
+      {
+        "coco_id": 107257,
+        "group": "introduced_CHAIR",
+        "selected_rank": 1,
+        "selected_CIDEr": 0.6029989653020462,
+        "oracle_rank": 3,
+        "all_five_CIDEr": [
+          0.2838406469830855,
+          0.6029989653020462,
+          0.4578892650340815,
+          0.6372781215640864,
+          0.4733225811911151
+        ]
+      },
+      {
+        "coco_id": 487421,
+        "group": "introduced_CHAIR",
+        "selected_rank": 2,
+        "selected_CIDEr": 0.6183058357925675,
+        "oracle_rank": 3,
+        "all_five_CIDEr": [
+          0.7677995205211673,
+          0.6397844541295785,
+          0.6183058357925675,
+          0.7859459973055118,
+          0.6156977525879602
+        ]
+      },
+      {
+        "coco_id": 511674,
+        "group": "selected_repeat_with_clean_alternative",
+        "selected_rank": 2,
+        "selected_CIDEr": 1.4698145061941617,
+        "oracle_rank": 1,
+        "all_five_CIDEr": [
+          1.6696278912254856,
+          2.4471952936056174,
+          1.4698145061941617,
+          2.2547674157820414,
+          1.6562905151123735
+        ]
+      },
+      {
+        "coco_id": 85338,
+        "group": "selected_repeat_with_clean_alternative",
+        "selected_rank": 3,
+        "selected_CIDEr": 0.0015902141821961245,
+        "oracle_rank": 1,
+        "all_five_CIDEr": [
+          5.719976355402565e-08,
+          0.175382843892739,
+          0.07629982687970953,
+          0.0015902141821961245,
+          0.0015634358415401806
+        ]
+      }
+    ]
+  },
+  "scoring_run_version": 189,
+  "scoring_run_notebook": "ducanh2403/2-vi-cai-kia-qua-nhieu",
+  "limits": [
+    "Oracle uses VALID references; not deployable, not achievable-gain guarantee, not visual truth.",
+    "Selected-is-best counts allow CIDEr ties; not caption accuracy. Capture ratio is fraction of CIDEr headroom, not accuracy.",
+    "CIDEr oracle does not optimize CHAIR, relation truth or linguistic quality.",
+    "Same generation/weights; no new model training. VALID reused, one seed; no official scorer/model local.",
+    "Component-only argmax probes are fixed diagnostics, no weight search or TEST tuning."
+  ]
+}

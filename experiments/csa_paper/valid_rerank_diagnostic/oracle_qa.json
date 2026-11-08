@@ -1,0 +1,14 @@
+{
+  "status": "PASS",
+  "data_checks": 20030,
+  "archive_sha256": "4336187d233f200135d740d7dbee29aa3b4199a3239eee2542f8d46bffcffb64",
+  "version189_user_confirmed": true,
+  "source_commit": "590be700ec6ef5fc4b9ae4b705b0c56250b1209c",
+  "official_metric_or_model_run_by_author": false,
+  "user_report_edited": false,
+  "sheet": {
+    "range": "K\u1ebft qu\u1ea3 m\u1edbi!A80:L87",
+    "readback_verified": true,
+    "native_visual_verified": false
+  }
+}
