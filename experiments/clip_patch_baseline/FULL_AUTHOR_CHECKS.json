@@ -1,0 +1,12 @@
+{
+  "source_commit": "e719322ceeb331e03e86d545934d2a04a3ee1c25",
+  "source_pins": 15,
+  "isolated_data_tests": 7,
+  "smoke_regression_tests": 5,
+  "model_initializer_matches_smoke": true,
+  "notebook_code_cells_parse": true,
+  "notebook_bytes": 12893,
+  "neural_or_scorer_executed_locally": false,
+  "smoke_save_version": 192,
+  "full_run_status": "READY_NOT_RUN"
+}
