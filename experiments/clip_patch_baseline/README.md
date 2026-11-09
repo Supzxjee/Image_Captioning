@@ -1,5 +1,10 @@
 # Baseline CLIP patch và decoder chuẩn
 
+## TEST5000 hoàn tất — kltnnnnnff/version8
+
+[Đủ8thangđo](TEST199_RESULT.md)/[sốliệu](TEST199_RESULT.json), checkpoint199cốđịnh: CIDEr120,51; CHAIRs5,16%, CHAIRi3,60%; BLEU1 77,16/BLEU4 37,17/METEOR28,79/ROUGE57,58/SPICE21,65. KhôngSCST/bank/prompt/rerank; cùngTESTrefsold5000. Khôngchạy lại notebook TEST. So vớiPROMPTcũCIDEr115,35/CHAIRs3,20%, CIDErmới cao hơn nhưngảo giác nhiều hơn; khôngcôlậptácđộngprompt. Giữ199weights vàoutputchấmkltnnnnnffv8. Pháttriểntiếpsẽchốt riêng; khôngauto thêmepoch/Wordedit.
+
+
 ## TEST199 dùng bản V2 sửa tương thích CUDA
 
 Dùng **CLIP_PATCH_199_TEST5000_V2_2GPU.ipynb**, T4×2/cùng2Dataset/InternetON/Secret nhưtrước. V1retryđãtải đúngcheckpoint vàstage5000TEST559s,nhưngdừngvìso sánhchuỗiTorchbuild quá chặt: train2.11.0+cu128, runtime2.11.0+cu130. [Audit](TEST199_BUILD_FAILURE.json)/[amendment](TEST199_BUILD_V2_PROTOCOL.md). V2cho phépchính2buildnày/giữpublic2.11.0,ghi provenance+strictweights+actualGPUbeampathcheck; khôngcàilạiTorch/train/tune/rerank. Kiểmcheckpoint/runtimeTRƯỚCexpensiveNLP/stage. Nếufile199đãtải vẫnởknownWorkingpaththìreuseSHA;khôngbắtbuộctải lại. [QAV2](TEST199_V2_AUTHOR_CHECKS.json):6isolatedmetadata/mocktestsPASS,model/beam/TESTlockunchanged; actualGPUV2chưađo. Gửi **clip_patch_199_test5000_v2_review.zip**.

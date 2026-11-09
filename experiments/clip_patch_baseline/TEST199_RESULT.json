@@ -1,0 +1,162 @@
+{
+  "status": "TEST199_V2_REVIEWED_COMPLETE",
+  "evaluation_source": {
+    "notebook_slug": "kltnnnnnff",
+    "save_version": 8,
+    "owner": null,
+    "user_confirmed": true
+  },
+  "checkpoint_source_version": "ducanh2403/2-vi-cai-kia-qua-nhieu/199",
+  "checkpoint_sha256": "5061e305d98edf54930a200090a41c983c354d1ba2dfcf700b715cf20a5b80b7",
+  "source_commit": "fc17e9984b37bad99e1c21a1c06337d80ebf16ec",
+  "archive_sha256": "ec33c9f817ff7b400be467b731a4d73903b69b0a58beed9678a2f54bb5c7d1f1",
+  "checks_passed": 5056,
+  "images": 5000,
+  "metrics": {
+    "BLEU_1": 0.7716226865162872,
+    "BLEU_4": 0.37167523449416334,
+    "CIDEr": 1.2051445498745914,
+    "ROUGE_L": 0.575849765471024,
+    "METEOR": 0.2878676248072809,
+    "SPICE": 0.21647453602041697,
+    "CHAIRs": 0.0516,
+    "CHAIRi": 0.03595750476709343,
+    "Recall": 0.43725390575384226,
+    "NLL": 2.121833581996203
+  },
+  "display_x100": {
+    "BLEU_1": 77.16226865162872,
+    "BLEU_4": 37.167523449416336,
+    "CIDEr": 120.51445498745915,
+    "ROUGE_L": 57.58497654710239,
+    "METEOR": 28.78676248072809,
+    "SPICE": 21.647453602041697,
+    "CHAIRs": 5.16,
+    "CHAIRi": 3.5957504767093433,
+    "Recall": 43.725390575384225
+  },
+  "chair_counts": {
+    "images": 5000,
+    "hallucinated_captions": 258,
+    "hallucinated_mentions": 264,
+    "object_mentions": 7342,
+    "recalled_unique": 6885,
+    "reference_unique": 15746
+  },
+  "runtime_policy": {
+    "training_torch": "2.11.0+cu128",
+    "inference_torch": "2.11.0+cu130",
+    "cuda_wheel_changed": true,
+    "policy": "Observed CUDA builds of the same publicTorch2.11.0; strictweights and GPU beam-path checks required.",
+    "bitwise_cross_build_equivalence_established": false
+  },
+  "mean_words": 9.3906,
+  "empty_captions": 0,
+  "short_le2": 0,
+  "stage_seconds": 559.938982248,
+  "inference_worker_seconds": 104.23992512399991,
+  "timing_scope": "worker includes checkpoint/stage verification, beam generation and teacher NLL, excludes setup/staging/CPUmetrics; no exact totalbilling claim",
+  "same_historical_test_refs": true,
+  "historical_system_points": {
+    "old_CONTROL_SCST_rerank": {
+      "CIDEr": 1.14367115579243,
+      "Bleu_4": 0.3611049306400787,
+      "ROUGE_L": 0.5635044637512016,
+      "CHAIRs": 0.0454,
+      "CHAIRi": 0.030988061976123953,
+      "Recall": 0.4405563317667979,
+      "counts": {
+        "images": 5000,
+        "hallucinated_captions": 227,
+        "hallucinated_mentions": 244,
+        "object_mentions": 7874,
+        "recalled_unique": 6937,
+        "reference_unique": 15746
+      },
+      "mean_words": 9.1474
+    },
+    "old_PROMPT_SCST_rerank": {
+      "CIDEr": 1.1535224810581564,
+      "Bleu_4": 0.3617312853322773,
+      "ROUGE_L": 0.5663509919270447,
+      "CHAIRs": 0.032,
+      "CHAIRi": 0.02118116122601545,
+      "Recall": 0.4517972818493586,
+      "counts": {
+        "images": 5000,
+        "hallucinated_captions": 160,
+        "hallucinated_mentions": 170,
+        "object_mentions": 8026,
+        "recalled_unique": 7114,
+        "reference_unique": 15746
+      },
+      "mean_words": 9.083
+    },
+    "old_bank_XE10": {
+      "CIDEr": 1.0192066011235086,
+      "Bleu_4": 0.33337781104467246,
+      "ROUGE_L": 0.5346489585634825,
+      "CHAIRs": 0.0618,
+      "CHAIRi": 0.04611847443873411,
+      "Recall": 0.41432744824082307,
+      "counts": {
+        "images": 5000,
+        "hallucinated_captions": 309,
+        "hallucinated_mentions": 341,
+        "object_mentions": 7394,
+        "recalled_unique": 6524,
+        "reference_unique": 15746
+      },
+      "NLL": 2.4527533740005945,
+      "mean_words": 8.1216,
+      "short_le2": 388
+    },
+    "old_plain_ROI_XE10": {
+      "CIDEr": 0.5692195543902082,
+      "Bleu_4": 0.15083901082079265,
+      "ROUGE_L": 0.403298856397154,
+      "CHAIRs": 0.0392,
+      "CHAIRi": 0.04428543801972539,
+      "Recall": 0.24063254159786612,
+      "counts": {
+        "images": 5000,
+        "hallucinated_captions": 196,
+        "hallucinated_mentions": 229,
+        "object_mentions": 5171,
+        "recalled_unique": 3789,
+        "reference_unique": 15746
+      },
+      "NLL": 2.7840305245185006,
+      "mean_words": 5.1618,
+      "short_le2": 1853
+    }
+  },
+  "descriptive_system_comparisons": {
+    "old_CONTROL_SCST_rerank": {
+      "CIDEr_delta_points": 6.147339408216146,
+      "CHAIRs_delta_pp": 0.6199999999999997,
+      "CHAIRi_delta_pp": 0.4969442790969478
+    },
+    "old_PROMPT_SCST_rerank": {
+      "CIDEr_delta_points": 5.162206881643505,
+      "CHAIRs_delta_pp": 1.96,
+      "CHAIRi_delta_pp": 1.477634354107798
+    },
+    "old_bank_XE10": {
+      "CIDEr_delta_points": 18.593794875108284,
+      "CHAIRs_delta_pp": -1.02,
+      "CHAIRi_delta_pp": -1.016096967164068
+    },
+    "old_plain_ROI_XE10": {
+      "CIDEr_delta_points": 63.59249954843832,
+      "CHAIRs_delta_pp": 1.2400000000000002,
+      "CHAIRi_delta_pp": -0.8327933252631959
+    }
+  },
+  "limits": [
+    "No local model/scorer/checkpoint/feature payload execution; stored source/seal/counts/arithmetic audit only.",
+    "BLEU/METEOR/ROUGE runtime-reported; CIDEr/SPICE perimage means and CHAIR counts replayed, no official scorer rerun.",
+    "CUDAcu128 training/cu130 inference, actual firstbatch pathguard passed; bitwise crossbuild equivalence unproven.",
+    "One seed, prior project TESTexposure; no tuning this run. Historical architectures/training/selection differ, not isolated bank/prompt effect."
+  ]
+}
