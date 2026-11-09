@@ -1,0 +1,14 @@
+{
+  "status": "FULL_LOCAL_V2_PREPARATION_TIMEOUT_NO_TRAIN",
+  "archive_sha256": "9691f008e030354faad4715e18ad9931645ee8790dd66a11e95573c82bb8d94c",
+  "save_version": null,
+  "prepared_images": 60159,
+  "expected_images": 118287,
+  "percent": 50.858505161175785,
+  "stage_seconds": 1786.5905814340001,
+  "phase_cap_seconds": 1800,
+  "main_training_started": false,
+  "GPU_preflight_started": false,
+  "model_quality_measured": false,
+  "next": "User explicitly requests fresh rerun; V3 preparation cap5400 under unchanged parent10.5h, no recovery of partial /tmp."
+}
