@@ -1,0 +1,22 @@
+{
+  "status": "TEST199_STOPPED_BY_EXACT_BUILD_GUARD",
+  "archive_sha256": "a529a3c4449973a005cec878f87222cc1c4bca329d53e1f80409a0d13960fcf2",
+  "source_version": 199,
+  "run_save_version": null,
+  "checkpoint_source": {
+    "version": "ducanh2403/2-vi-cai-kia-qua-nhieu/199",
+    "sha256": "5061e305d98edf54930a200090a41c983c354d1ba2dfcf700b715cf20a5b80b7",
+    "path": "/kaggle/working/clip_patch_199_test5000_v1/inputs199/clip_patch_baseline_full_xe10_v3/best.bin",
+    "origin": "exact own SaveVersion199 API"
+  },
+  "training_torch": "2.11.0+cu128",
+  "inference_torch": "2.11.0+cu130",
+  "stage_complete": true,
+  "stage_seconds": 559.4365283929999,
+  "images": 5000,
+  "caption_workers_complete": false,
+  "model_inference_not_started": true,
+  "metric_environment_and_synthetic_smoke_passed": true,
+  "explanation": "Exact build-string equality was overly restrictive; source and CUDA wheel have the same public Torch2.11.0 release. No proof of bit-identical cross-build output.",
+  "next": "Allow only observed2.11.0cu128/cu130 pair, preserve checkpointSHA/model/rules, record build shift and require strictweights plus actualGPUbeampathguard; preflight checkpoint before expensive stage. No Torch reinstall or retraining."
+}

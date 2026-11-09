@@ -14,6 +14,12 @@ import test199_data as d
 import run_test199 as run
 
 class Checks(unittest.TestCase):
+    def test_observed_cuda_build_change_requires_same_framework_release(self):
+        self.assertFalse(d.runtime_policy('2.11.0+cu128','2.11.0+cu128')['cuda_wheel_changed'])
+        policy=d.runtime_policy('2.11.0+cu128','2.11.0+cu130');self.assertTrue(policy['cuda_wheel_changed']);self.assertFalse(policy['bitwise_cross_build_equivalence_established'])
+        for current in ('2.11.0+cpu','2.11.0','2.12.0+cu130','2.11.0+cu129'):
+            with self.assertRaises(RuntimeError):d.runtime_policy('2.11.0+cu128',current)
+        with self.assertRaises(RuntimeError):d.runtime_policy('2.10.0+cu128','2.11.0+cu130')
     def test_frozen_checkpoint_and_decoding_rule(self):
         gold=d.lock();self.assertEqual(len(gold['expected_test_ids']),5000)
         for key,value in [('beam_width',4),('max_new_tokens',21),('reranking',True),('source_version',d.VERSION.replace('/199','/200')),('checkpoint_sha256','0'*64)]:
@@ -60,7 +66,7 @@ class Checks(unittest.TestCase):
             out=Path(td);d.save(out/'scoring_lock.json',dict(files_sha256={}));d.save(out/'chair_counts.json',{});d.save(out/'environment.json',dict(fixture=True))
             parts={'basic':dict(BLEU_1=.7,BLEU_4=.3,CIDEr=1.1,ROUGE_L=.5),'meteor':dict(METEOR=.2),'spice':dict(SPICE=.15),'chair':dict(CHAIRs=.05,CHAIRi=.03,Recall=.4)}
             for mode,metrics in parts.items():d.save(out/(mode+'.json'),dict(images=5000,metrics=metrics,input_sha256={}))
-            with patch.object(run,'inputs',return_value=(out,[],[],[dict(NLL_sum=6,NLL_tokens=3)])),patch('builtins.print'):
+            with patch.object(run,'inputs',return_value=(out,[],[],[dict(NLL_sum=6,NLL_tokens=3,runtime_policy=d.runtime_policy('2.11.0+cu128','2.11.0+cu130'))])),patch('builtins.print'):
                 run.combine(dict(output=str(out)));self.assertEqual(d.read(out/'result.json')['metrics']['NLL'],2.)
                 parts['spice']={};d.save(out/'spice.json',dict(images=5000,metrics={},input_sha256={}))
                 with self.assertRaises(ValueError):run.combine(dict(output=str(out)))

@@ -10,6 +10,9 @@ Cập nhật: 10/11/2026, giờ Việt Nam. File này là bản tóm tắt để
 
 ## Hiện đang ở đâu
 
+- **10/11 TEST199 retry reached complete stage, blocked by exactTorchbuildguard; fixingV2.** [Failure](experiments/clip_patch_baseline/TEST199_BUILD_FAILURE.json), [amendment](experiments/clip_patch_baseline/TEST199_BUILD_V2_PROTOCOL.md). ZIPcachedonce ../.review_cache/clip_patch_test199_v1_retry/archive_text.json. Secret/API fixed, exact199checkpoint verified/runtime; stage5000TEST559.44s/metricenv+smokePASS. Torchtrained2.11.0+cu128/current2.11.0+cu130; strictstringguardstopped beforebeam, noTESTscores. V2willallowonlytheseobservedCUDA2.11.0builds/recordshift, retainSHA/strictweights/GPUbeampathchecks, earlypreflightbeforeexpensivestage. NoTorchreinstall/train/codepolicytuning; authorno model/scorer execution.
+
+
 - **10/11 TEST199 V1 failed setup: Secret unreadable, no inference.** [Audit](experiments/clip_patch_baseline/TEST199_SETUP_RESULT.json). ZIPonce ../.review_cache/clip_patch_test199_v1/archive_text.json; sourcecf09014/versionunknown. 5datatests/CUDA2T4/CLIexact199routemockPASS; pipwarningsdidnotstop. FailureexplicitEnable ownKaggleAPISecretcodex/KAGGLE_API_TOKEN; neithername returnednonemptytoken, individualexceptionscaught so cannotdistinguishmissing/disabled/misnamed/transientservice. No checkpointdownload/model/TESTmetrics yet; fixnotebookSecretlabel/accessor mountknownSHAweights, no code/trainchange required. SeparateCancellingbackend issue notexplained.
 
 

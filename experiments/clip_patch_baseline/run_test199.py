@@ -10,8 +10,19 @@ import sys
 import time
 import numpy as np
 from real_bank_data import read,save,sha
-from test199_data import prepare,load,lock,validate_lock,checkpoint,CHECKPOINT_SHA,TEST_SIZE
+from test199_data import prepare,load,lock,validate_lock,checkpoint,runtime_policy,CHECKPOINT_SHA,TEST_SIZE
 from saved_quality_data import check_rows,chair_counts
+
+def checked_weights(cfg):
+    import torch
+    ck=torch.load(checkpoint(cfg['checkpoint_root']),map_location='cpu',weights_only=False)
+    if ck['state']['updates']!=177110 or ck['state']['best_epoch']!=10 or ck['identity']['source']['commit']!=lock()['training_commit']:raise ValueError('Unexpected fixed199 training state')
+    return ck,runtime_policy(ck['identity']['software']['torch'],str(torch.__version__))
+
+def checkpoint_preflight(cfg):
+    ck,policy=checked_weights(cfg);del ck
+    save(Path(cfg['output'])/'checkpoint_runtime_preflight.json',dict(checkpoint_sha256=CHECKPOINT_SHA,runtime_policy=policy,models_executed=False))
+    print('Checkpoint/runtime metadata PASS:',policy,flush=True)
 
 def worker(cfg):
     import torch
@@ -27,10 +38,8 @@ def worker(cfg):
     torch.backends.cuda.matmul.allow_tf32=False;torch.backends.cudnn.allow_tf32=False
     dist.init_process_group('nccl',timeout=timedelta(seconds=1200));started=time.monotonic();deadline=started+cfg['worker_seconds']
     try:
-        data,words,receipt,locked=load(cfg,verify=rank==0);dist.barrier(device_ids=[rank]);path=checkpoint(cfg['checkpoint_root'])
-        ck=torch.load(path,map_location='cpu',weights_only=False)
-        if ck['state']['updates']!=177110 or ck['state']['best_epoch']!=10 or ck['identity']['source']['commit']!=locked['training_commit']:raise ValueError('Unexpected fixed199 training state')
-        if ck['identity']['software']['torch']!=str(torch.__version__):raise RuntimeError('Torch version differs from training; preserve log, do not blindly reinstall')
+        data,words,receipt,locked=load(cfg,verify=rank==0);dist.barrier(device_ids=[rank])
+        ck,policy=checked_weights(cfg);save(out/f'runtime_policy_rank{rank}.json',policy)
         model=PatchCaptioner(len(words)).to(device);model.load_state_dict(ck['model'],strict=True);del ck;model.eval();rows=[];images=np.arange(TEST_SIZE)[rank::2]
         with torch.inference_mode():
             for offset in range(0,len(images),8):
@@ -47,7 +56,7 @@ def worker(cfg):
                 x,seq=caption_batch(data,ev[offset:offset+32]);x=torch.from_numpy(x).to(device);seq=torch.from_numpy(seq).to(device)
                 logits=model(x,seq[:,:-1]);nll_sum+=float(F.cross_entropy(logits.flatten(0,1),seq[:,1:].flatten(),ignore_index=0,reduction='sum'));tokens+=int((seq[:,1:]!=0).sum())
         if len(rows)!=2500:raise ValueError('Incomplete TEST rank')
-        save(out/f'worker{rank}.json',dict(complete=True,rank=rank,images=len(rows),NLL_sum=nll_sum,NLL_tokens=tokens,seconds=time.monotonic()-started,training=False,checkpoint_sha256=CHECKPOINT_SHA,caption_sha256=sha(out/f'captions_rank{rank}.json')))
+        save(out/f'worker{rank}.json',dict(complete=True,rank=rank,images=len(rows),NLL_sum=nll_sum,NLL_tokens=tokens,seconds=time.monotonic()-started,training=False,checkpoint_sha256=CHECKPOINT_SHA,caption_sha256=sha(out/f'captions_rank{rank}.json'),runtime_policy=policy,first_GPU_beam_path_check_passed=True))
         dist.barrier(device_ids=[rank])
     finally:
         if dist.is_initialized():dist.destroy_process_group()
@@ -57,6 +66,7 @@ def inputs(cfg):
     if saved['stage_receipt_sha256']!=sha(out/'stage_receipt.json') or sha(out/'test_references.json')!=receipt['output_files_sha256']['test_references.json']:raise ValueError('Changed TEST references/receipt')
     refs=read(out/'test_references.json');workers=[read(out/f'worker{r}.json') for r in (0,1)]
     if not all(w['complete'] and w['images']==2500 and w['checkpoint_sha256']==CHECKPOINT_SHA for w in workers):raise ValueError('Incomplete TEST model output')
+    if workers[0]['runtime_policy']!=workers[1]['runtime_policy'] or not all(w['first_GPU_beam_path_check_passed'] for w in workers):raise ValueError('Runtime/beam guards differ between ranks')
     rows=[]
     for rank,w in enumerate(workers):
         if sha(out/f'captions_rank{rank}.json')!=w['caption_sha256']:raise ValueError('Changed TEST rank captions')
@@ -118,11 +128,11 @@ def combine(cfg):
     required={'BLEU_1','BLEU_4','METEOR','ROUGE_L','CIDEr','SPICE','CHAIRs','CHAIRi','Recall'}
     if set(metrics)!=required or not all(math.isfinite(v) for v in metrics.values()):raise ValueError('Need all eight metrics and recall')
     metrics['NLL']=sum(w['NLL_sum'] for w in workers)/sum(w['NLL_tokens'] for w in workers)
-    save(out/'result.json',dict(status='CLIP_PATCH_199_TEST5000_COMPLETE',images=5000,checkpoint_sha256=CHECKPOINT_SHA,source_version=lock()['source_version'],epoch=10,metrics=metrics,display_x100={k:100*v for k,v in metrics.items() if k!='NLL'},beam_width=5,max_new_tokens=20,training=False,reranking=False,test_tuning=False,prior_project_test_exposure=True,chair_counts=read(out/'chair_counts.json'),environment=read(out/'environment.json')))
+    save(out/'result.json',dict(status='CLIP_PATCH_199_TEST5000_COMPLETE',images=5000,checkpoint_sha256=CHECKPOINT_SHA,source_version=lock()['source_version'],epoch=10,metrics=metrics,display_x100={k:100*v for k,v in metrics.items() if k!='NLL'},beam_width=5,max_new_tokens=20,training=False,reranking=False,test_tuning=False,prior_project_test_exposure=True,chair_counts=read(out/'chair_counts.json'),environment=read(out/'environment.json'),runtime_policy=workers[0]['runtime_policy']))
     print('TEST5000 COMPLETE',metrics,flush=True)
 
 if __name__=='__main__':
-    p=argparse.ArgumentParser();p.add_argument('mode',choices=('prepare','worker','environment','smoke','tokenize','basic','meteor','spice','chair','combine'));p.add_argument('--config',required=True);a=p.parse_args();cfg=read(a.config)
+    p=argparse.ArgumentParser();p.add_argument('mode',choices=('checkpoint_preflight','prepare','worker','environment','smoke','tokenize','basic','meteor','spice','chair','combine'));p.add_argument('--config',required=True);a=p.parse_args();cfg=read(a.config)
     if a.mode in ('environment','smoke','basic','meteor','spice','chair'):
         import score_prompt_test_extra as cpu
         if a.mode=='environment':cpu.environment(Path(cfg['output']))

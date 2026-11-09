@@ -13,6 +13,13 @@ HERE=Path(__file__).resolve().parent;TEST_SIZE=5000
 CHECKPOINT_SHA='5061e305d98edf54930a200090a41c983c354d1ba2dfcf700b715cf20a5b80b7'
 VERSION='ducanh2403/2-vi-cai-kia-qua-nhieu/199'
 
+def runtime_policy(training,current):
+    if training!='2.11.0+cu128' or current not in ('2.11.0+cu128','2.11.0+cu130'):
+        raise RuntimeError('Unreviewed Torch runtime; expected training2.11.0+cu128 and CUDA inference2.11.0+cu128/cu130. Preserve log; do not blindly reinstall.')
+    return dict(training_torch=training,inference_torch=current,cuda_wheel_changed=training!=current,
+        policy='Observed CUDA builds of the same publicTorch2.11.0; strictweights and GPU beam-path checks required.',
+        bitwise_cross_build_equivalence_established=False)
+
 def validate_lock(lock):
     if lock['source_version']!=VERSION or lock['checkpoint_sha256']!=CHECKPOINT_SHA or lock['epoch']!=10 or lock['updates']!=177110:raise ValueError('Wrong fixed199 checkpoint')
     if lock['beam_width']!=5 or lock['max_new_tokens']!=20 or lock['length_normalization'] or lock['reranking']:raise ValueError('Changed TEST decoding rule')
