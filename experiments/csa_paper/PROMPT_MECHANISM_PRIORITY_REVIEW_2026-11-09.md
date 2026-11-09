@@ -2,7 +2,26 @@
 
 **Trạng thái: đề xuất để người dùng chốt, chưa phải protocol chạy đã duyệt.** Không code trainer/notebook, chạy model/scorer, đổi selector, TEST, Word hoặc Sheet. Đọc file context người dùng `ASTRA_CONTEXT_HUONG_PHAT_TRIEN_09_11_2026.md`, AGENTS/RESEARCH_STATE và các nguồn dưới đây tại Git `ae8ca55`. Checkout cũ đã fast-forward trước khi đọc báo cáo69/190.
 
-## Kết luận ưu tiên
+## Cập nhật theo yêu cầu mới: ưu tiên chất lượng trước SCST
+
+**09/11/2026, sau bản review bên dưới:** người dùng muốn các độ đo tốt hơn **trước SCST**. Vì vậy, ưu tiên hiện tại là cải thiện checkpoint XE; pilot A/Z/U bên dưới lùi lại thành lựa chọn chẩn đoán cơ chế. Người dùng chưa duyệt recipe, ngân sách hoặc triển khai lượt chạy mới.
+
+Khuyến nghị cụ thể: thử **continuation XE ngắn với LR giảm**, tối đa hai epoch bổ sung, trước khi mở module/loss mới. Cơ sở từ source đã dùng trong lượt XE (`8420162`): `full_xe_data.learning_rate` warmup từ8e−6 đến1e−4 trong3epoch rồi giữ1e−4 đến hết10epoch, chưa có decay; file này không đổi so với HEAD lúc review. PROMPT9→10: NLL VALID2.516285→2.502108 nhưng CIDEr98.8453→97.9000. Đây là cơ sở thử pha tinh chỉnh, **không chứng minh LR cao là nguyên nhân hoặc thêm XE sẽ thắng CONTROL**. XE teacher forcing và chất lượng caption tự sinh có thể diễn biến khác nhau.
+
+Đề xuất để chốt:
+
+- Khởi đầu từ **CONTROL178 epoch10** và **PROMPT58 latest epoch10**; mỗi nhánh giữ model, adapter đã học (nếu có), Adam và RNG của chính nó. Cả hai đã có177110updates. Giữ PROMPT best9 làm mốc lịch sử/fallback, không khởi tạo lại adapter hoặc lấy checkpoint60/69 đã SCST rồi gọi là trước SCST.
+- Epoch11 LR2e−5; epoch12 LR1e−5. Đây là recipe thử đầu tiên, chưa phải LR tối ưu đã được xác nhận. Cùng fullTRAIN113287,566747captionevents/epoch,17711updates/epoch, global32, FP32, Adam/dropout/lossXE và mọi bank/ROI/prompt/mask như nguồn. Encoders tiếp tục frozen. Không đổi đồng thời beam/reranker/architecture.
+- Đánh giá mỗi endpoint trên cùng VALID5000 với beam5/max20, **beam rank0 trước rerank** là kết quả chính. Báo CIDEr/BLEU/ROUGE/CHAIRs/CHAIRi, recall/mentions/length; SPICE nếu bổ sung phải chấm cùng caption của hai nhánh, không suy ra từ kết quả SPICE hậu SCST. Rerank giữ nguyên và báo riêng nếu cần.
+- Báo cả hai endpoint11/12 với ngân sách khớp; checkpoint triển khai đề xuất chọn maxCIDEr trong tập checkpoint XE lịch sử và continuation của từng nhánh, đồng thời trình bày toàn bộ metrics của **cùng checkpoint** và mọi đánh đổi CHAIR. Không lấy mỗi metric từ một epoch khác, không tự thêm guard recall cứng hoặc thay quy tắc sau xem kết quả. Lưu các checkpoint tradeoff, không mặc định epoch12 là tốt nhất.
+- Mục tiêu: CIDEr/BLEU/ROUGE tốt hơn mốc XE của chính PROMPT và kiểm khả năng vượt CONTROL cùng lịch; duy trì lợi thế hallucination. CHAIR là độ đo cần giảm. Không yêu cầu mọi metric tăng tuyệt đối để chứng minh một cải thiện cục bộ; nếu CHAIR xấu đi phải báo đánh đổi và để người dùng quyết định, không gọi là cải thiện toàn diện.
+- Nếu NLL tiếp tục giảm nhưng chất lượng caption không khá hơn sau ngân sách đã định, không tự nối thêm epoch. Khi đó ưu tiên chẩn đoán đóng góp object/relation, adapter/mask và chất lượng slots để chọn sửa cơ chế có đối chứng. Một recipe thất bại không chứng minh mọi tối ưu XE vô ích.
+
+Đây là thử **recipe thêm cập nhật + LR thấp**, không tách nhân quả riêng của LR. Muốn claim LR gây gain cần thêm nhánh continuation giữ1e−4. Nếu chỉ chạy PROMPT, có thể báo cải thiện tuyệt đối so checkpoint cũ, nhưng không gán gain so CONTROL chưa học tiếp cho riêng prompt. TEST không dùng chọn lịch/checkpoint. CI paired nếu tính chỉ có điều kiện theo một seed/reusedVALID; seed độc lập là bước xác nhận sau khi có tín hiệu.
+
+Lưu ý triển khai sau khi được duyệt: runner hiện tại chỉ nhận horizon10/15, identity resume chứa epochs/source/software và ghi LR mỗi step. **Không chỉ đổi target_epochs thành12 hoặc sửa LR lúc tạo optimizer**. Cần protocol continuation rõ nguồn và schedule override, xác minh availability/receipt của hai checkpoint và quota hiện tại. Review này chỉ đọc source/metadata; không sửa trainer hoặc chạy neural/scorer.
+
+## Khuyến nghị ban đầu, trước khi người dùng đổi ưu tiên
 
 Ưu tiên **đối chứng huấn luyện để tách giá trị embedding chữ riêng ảnh khỏi phần adapter/ROI, sau đó kiểm riêng mask gắn vùng nếu bước đầu có tín hiệu**. Đây là sửa thiết kế thực nghiệm; chưa có bằng chứng đủ mạnh để ưu tiên module/loss mới. Thí nghiệm giúp quyết định thành phần cần phát triển, không tự tạo ra một pipeline có điểm cao hơn.
 
