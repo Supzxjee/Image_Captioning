@@ -60,7 +60,7 @@ class Checks(unittest.TestCase):
             out=Path(td);d.save(out/'scoring_lock.json',dict(files_sha256={}));d.save(out/'chair_counts.json',{});d.save(out/'environment.json',dict(fixture=True))
             parts={'basic':dict(BLEU_1=.7,BLEU_4=.3,CIDEr=1.1,ROUGE_L=.5),'meteor':dict(METEOR=.2),'spice':dict(SPICE=.15),'chair':dict(CHAIRs=.05,CHAIRi=.03,Recall=.4)}
             for mode,metrics in parts.items():d.save(out/(mode+'.json'),dict(images=5000,metrics=metrics,input_sha256={}))
-            with patch.object(run,'inputs',return_value=(out,[],[],[dict(NLL_sum=6,NLL_tokens=3)])):
+            with patch.object(run,'inputs',return_value=(out,[],[],[dict(NLL_sum=6,NLL_tokens=3)])),patch('builtins.print'):
                 run.combine(dict(output=str(out)));self.assertEqual(d.read(out/'result.json')['metrics']['NLL'],2.)
                 parts['spice']={};d.save(out/'spice.json',dict(images=5000,metrics={},input_sha256={}))
                 with self.assertRaises(ValueError):run.combine(dict(output=str(out)))
