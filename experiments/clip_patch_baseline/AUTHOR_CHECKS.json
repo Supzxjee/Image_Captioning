@@ -1,0 +1,11 @@
+{
+  "status": "STATIC_DATA_PACKAGE_READY",
+  "source_revision": "e6df0f1a298356ee86e49ae4d736dc2a23fabda9",
+  "pinned_files": 8,
+  "isolated_NumPy_mock_tests": 5,
+  "notebook_AST": true,
+  "data_imports_torch": false,
+  "local_model_run": false,
+  "local_cuda_run": false,
+  "user_runtime_pending": true
+}
