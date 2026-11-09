@@ -1,5 +1,12 @@
 # Baseline CLIP patch và decoder chuẩn
 
+## Đang xử lý: luồng đọc cache quá chậm
+
+Fullv1 dừng trước update đầu: fullH5 median1,403s/update, conservativeprojection148,38h; không phải CUDA/OOM. [Kết quả](FULL_V1_RESULT.md). Không chạy lại fullGPU cũ hoặc tăng cap để né vấn đề.
+
+Chạy **CLIP_PATCH_CACHE_IO_PROBE_CPU.ipynb**, Accelerator **None**, InternetON, gắn cùng `visual-cache` và `vuthetam/mscoco-2014`. Không tokenAPI, model hoặc scorer. So sánh4readers trên cùng2048TRAINcaptionevents: mountedH5 hai lượt, stage mẫu~0,6GB localfloat16, localmemmap hai lượt, kiểm hash đặc trưng. Ghi disk/RAM/staging/read+stack/startup; không chép full35GB. [Protocol](IO_PROBE_PROTOCOL.md), [authorchecks](IO_AUTHOR_CHECKS.json). Gửi **clip_patch_cache_io_probe_v1_review.zip**. Chưa đo Kaggle thật, không hứa speedup hay suy ra thời gian train từ local sample nhỏ.
+
+
 ## Lượt full10XE mới
 
 Smoke192 đã hoàn tất: [kết quả](SMOKE_RESULT.md). Notebook **CLIP_PATCH_BASELINE_FULL_XE10_2GPU.ipynb** train mới10epoch XE trên113287TRAIN, cùng cache và T4×2; không nạp trọng số smoke hoặc mô hình cũ. Vẫn chỉ cần `visual-cache` và `vuthetam/mscoco-2014`; không API token/ROI/bank/prompt.

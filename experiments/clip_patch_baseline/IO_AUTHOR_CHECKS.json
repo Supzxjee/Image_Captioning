@@ -1,0 +1,11 @@
+{
+  "status": "CPU_NOTEBOOK_READY",
+  "source_commit": "a3a927ba3c27cbad9bbe77b76fc0fe7cb41e0f40",
+  "source_pins": 8,
+  "isolated_NumPy_mock_tests_passed": 5,
+  "four_process_synthetic_delivery_test": true,
+  "notebook_code_AST": true,
+  "notebook_bytes": 7969,
+  "real_Kaggle_IO_measured": false,
+  "model_or_scorer_executed": false
+}
