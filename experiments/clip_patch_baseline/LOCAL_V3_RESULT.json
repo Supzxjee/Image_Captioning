@@ -1,0 +1,120 @@
+{
+  "status": "FULL_LOCAL_V3_REVIEWED_COMPLETE",
+  "source": {
+    "owner": "ducanh2403",
+    "notebook": "2-vi-cai-kia-qua-nhieu",
+    "save_version": 199,
+    "owner_inherited_from_session": true,
+    "commit": "9aaddf5694f72373b8ab2482fafe7d7992abbe5e"
+  },
+  "archive_sha256": "cb5e50dad87dcd16386a867a48f64b9f4acdd8ec6ce8790de2dc05f58a5989c9",
+  "checks_passed": 1928,
+  "metrics": {
+    "epoch": 10,
+    "CIDEr": 1.190941956075831,
+    "BLEU_1": 0.772054294028915,
+    "BLEU_4": 0.37072436323388375,
+    "ROUGE_L": 0.5737398375066639,
+    "CHAIRs": 0.0538,
+    "CHAIRi": 0.03784153005464481,
+    "Recall": 0.4304997488699146,
+    "counts": {
+      "images": 5000,
+      "hallucinated_captions": 269,
+      "hallucinated_mentions": 277,
+      "object_mentions": 7320,
+      "recalled_unique": 6857,
+      "reference_unique": 15928
+    },
+    "NLL": 2.1016132440864914,
+    "mean_words": 9.4154,
+    "short_le2": 0
+  },
+  "epoch_curve": [
+    {
+      "epoch": 1,
+      "CIDEr": 1.060103887655366,
+      "NLL": 2.466060783837046,
+      "TRAIN_online_NLL": 3.188475579586853
+    },
+    {
+      "epoch": 2,
+      "CIDEr": 1.1162383676672443,
+      "NLL": 2.264584080708383,
+      "TRAIN_online_NLL": 2.378859061832604
+    },
+    {
+      "epoch": 3,
+      "CIDEr": 1.1585798941719747,
+      "NLL": 2.1904015882775245,
+      "TRAIN_online_NLL": 2.224812783682584
+    },
+    {
+      "epoch": 4,
+      "CIDEr": 1.1719318427466292,
+      "NLL": 2.1489039242424894,
+      "TRAIN_online_NLL": 2.135180336139079
+    },
+    {
+      "epoch": 5,
+      "CIDEr": 1.1710821502422972,
+      "NLL": 2.120342052980491,
+      "TRAIN_online_NLL": 2.0646582426979565
+    },
+    {
+      "epoch": 6,
+      "CIDEr": 1.1657346270306894,
+      "NLL": 2.105799255591302,
+      "TRAIN_online_NLL": 2.0025140683809
+    },
+    {
+      "epoch": 7,
+      "CIDEr": 1.183351704319469,
+      "NLL": 2.0986610868253393,
+      "TRAIN_online_NLL": 1.9466501132456278
+    },
+    {
+      "epoch": 8,
+      "CIDEr": 1.1828148049521088,
+      "NLL": 2.0965879033872965,
+      "TRAIN_online_NLL": 1.89873657003947
+    },
+    {
+      "epoch": 9,
+      "CIDEr": 1.1849742364349811,
+      "NLL": 2.099186907427229,
+      "TRAIN_online_NLL": 1.862466336287305
+    },
+    {
+      "epoch": 10,
+      "CIDEr": 1.190941956075831,
+      "NLL": 2.1016132440864914,
+      "TRAIN_online_NLL": 1.838866154033411
+    }
+  ],
+  "train_images": 113287,
+  "validation_images": 5000,
+  "epochs": 10,
+  "updates": 177110,
+  "caption_events": 5667470,
+  "best_epoch": 10,
+  "checkpoint_sha256": "5061e305d98edf54930a200090a41c983c354d1ba2dfcf700b715cf20a5b80b7",
+  "stage_seconds": 2689.281534157,
+  "worker_seconds": 15923.060208009,
+  "timing_scope": "worker includes train/validation/checkpoints; stage excludes setup, preflight and final scoring; no exact billed/GPU-hours claim",
+  "preflight_median_step_seconds": 0.07115812250003728,
+  "main_log_last_update_seconds": 15781.401013325998,
+  "test_used": false,
+  "SCST": false,
+  "reranking": false,
+  "metrics_not_measured": [
+    "METEOR",
+    "SPICE",
+    "TEST metrics"
+  ],
+  "author_limits": [
+    "Cached metadata/seals/counts/arithmetic audited, not checkpoint weights or features reloaded.",
+    "Official scorers not rerun locally; BLEU/ROUGE remain runtime-reported, CIDEr average and CHAIR counts replayed.",
+    "One seed on reused VALID, no independent TEST result or isolated prompt/bank effect."
+  ]
+}

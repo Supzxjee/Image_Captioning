@@ -1,5 +1,10 @@
 # Baseline CLIP patch và decoder chuẩn
 
+## Hoàn tất baseline mới — version199
+
+Full10XE đã xong, **không chạy lại notebook train**. [Kết quả](LOCAL_V3_RESULT.md)/[số liệu](LOCAL_V3_RESULT.json): best=endepoch10 VALID5000 CIDEr119,09; CHAIRs5,38%, CHAIRi3,78%; B1 77,21/B4 37,07/ROUGE57,37; noSCST/bank/prompt/rerank/TEST. Giữbest.bin/checkpoint.bin trongoutputv199 (sameSHA5061e305...). Stage44m49 +worker4h25m23, khôngphảientirebilling. Audit1928cacheddata/sourcechecksPASS; METEOR/SPICE/TESTchưađo, chưaclaimpromptgain. Bướcđềxuấttiếp:freezecheckpointvàTEST5000/missingmetrics; chờquyếtđịnhuser,khôngtựtrainthêm.
+
+
 ## Chạy mới bằng LOCAL V3
 
 Dùng **CLIP_PATCH_BASELINE_FULL_XE10_LOCAL_V3_2GPU.ipynb**, T4×2/InternetON, haiDataset nhưV2. V2 dừng vì30phútprep chỉchép60159/118287ảnh, chưa train. V3 bắtđầu mới nhưuser yêu cầu, tăngchỉ thời gianprep nội bộvàoutercall lên5400s(90phút), tổngcap10,5giờ giữnguyên. Không lấy lại/tmp hoặccheckpointV2. [Kết quảV2](LOCAL_V2_RESULT.md), [amendmentV3](LOCAL_STAGE_V3_PROTOCOL.md), [QAV3](LOCAL_V3_AUTHOR_CHECKS.json). Môhình/stagecode/trainrecipe/data/sampler/VALIDmetrics khôngđổi; GPUfullIOpreflight/budgetgatesvẫn bắtbuộc. Gửi **clip_patch_baseline_full_xe10_v3_review.zip**, giữbest/latest nếuđãtạo. Chưađo fullstageGPUthật;90phútlàcapkhôngphảiETA.
