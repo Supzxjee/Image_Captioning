@@ -1,0 +1,14 @@
+{
+  "status": "FULL_LOCAL_V3_READY_FRESH_RUN_NOT_EXECUTED",
+  "source_commit": "9aaddf5694f72373b8ab2482fafe7d7992abbe5e",
+  "source_pins": 18,
+  "inner_prepare_seconds": 5400,
+  "outer_prepare_seconds": 5400,
+  "parent_hours": 10.5,
+  "fresh_resume_root_empty": true,
+  "all_notebook_code_AST": true,
+  "isolated_NumPy_mock_tests_passed": 12,
+  "stage_trainer_model_scorer_and_tests_unchanged_from_V2": true,
+  "real_IO_neural_or_scorer_run_locally": false,
+  "notebook_bytes": 13760
+}
