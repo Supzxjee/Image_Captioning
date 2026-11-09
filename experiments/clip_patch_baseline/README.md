@@ -1,5 +1,10 @@
 # Baseline CLIP patch và decoder chuẩn
 
+## TEST199 dùng bản V2 sửa tương thích CUDA
+
+Dùng **CLIP_PATCH_199_TEST5000_V2_2GPU.ipynb**, T4×2/cùng2Dataset/InternetON/Secret nhưtrước. V1retryđãtải đúngcheckpoint vàstage5000TEST559s,nhưngdừngvìso sánhchuỗiTorchbuild quá chặt: train2.11.0+cu128, runtime2.11.0+cu130. [Audit](TEST199_BUILD_FAILURE.json)/[amendment](TEST199_BUILD_V2_PROTOCOL.md). V2cho phépchính2buildnày/giữpublic2.11.0,ghi provenance+strictweights+actualGPUbeampathcheck; khôngcàilạiTorch/train/tune/rerank. Kiểmcheckpoint/runtimeTRƯỚCexpensiveNLP/stage. Nếufile199đãtải vẫnởknownWorkingpaththìreuseSHA;khôngbắtbuộctải lại. [QAV2](TEST199_V2_AUTHOR_CHECKS.json):6isolatedmetadata/mocktestsPASS,model/beam/TESTlockunchanged; actualGPUV2chưađo. Gửi **clip_patch_199_test5000_v2_review.zip**.
+
+
 ## TEST5000 checkpoint199 — notebook sẵn sàng
 
 Chạy **CLIP_PATCH_199_TEST5000_2GPU.ipynb** trênT4×2/InternetON, haiDataset `visual-cache` và `vuthetam/mscoco-2014`. BậtSecret `codex` hoặc `KAGGLE_API_TOKEN` củaown199; hoặcđiềnCHECKPOINT_ROOTfile/rootđúngSHA nếuđãmountcheckpoint. Không cầnDatasetcheckpoint/cacheTESTmới/detector/ROI/bank/prompt. Chỉstage5000TESTpatch~1,4GiB, khôngcopyfull.

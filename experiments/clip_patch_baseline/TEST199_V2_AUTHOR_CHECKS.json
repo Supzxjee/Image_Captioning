@@ -1,0 +1,18 @@
+{
+  "status": "TEST199_V2_READY_NOT_RUN",
+  "source_commit": "fc17e9984b37bad99e1c21a1c06337d80ebf16ec",
+  "source_pins": 17,
+  "isolated_NumPy_mock_tests_passed": 6,
+  "notebook_code_AST": true,
+  "secret_names_is_tuple": true,
+  "checkpoint_preflight_before_environment_and_stage": true,
+  "model_beam_feature_profile_and_test_lock_unchanged": true,
+  "allowed_inference_builds": [
+    "2.11.0+cu128",
+    "2.11.0+cu130"
+  ],
+  "training_build": "2.11.0+cu128",
+  "cross_build_identical_output_established": false,
+  "actual_runtime_guards": "Strictweights load, twoT4, per-rankbuildprovenance, firstGPUbeam likelihood rescore andcompletefixedTEST5000 beforepoints",
+  "author_models_API_or_scorers_executed": false
+}
