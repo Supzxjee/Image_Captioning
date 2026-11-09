@@ -1,0 +1,17 @@
+{
+  "status": "TEST199_SETUP_FAILED_SECRET_UNREADABLE",
+  "archive_sha256": "a1fd23677208965e505ff61cdd74de458886b6cf9df24496fb19a681a1b68cfb",
+  "source_commit": "cf090147cbd2ce8ff6c25670a631da7522ed75a7",
+  "save_version": null,
+  "CUDA_runtime_passed": true,
+  "data_unit_tests_passed": 5,
+  "CLI_version_routing_mock_passed": true,
+  "checkpoint_download_started": false,
+  "model_inference_started": false,
+  "TEST_metrics_available": false,
+  "observed_error": "RuntimeError: Enable own Kaggle API Secret codex or KAGGLE_API_TOKEN",
+  "root_cause_limit": "Neither configured Secret name returned a nonempty value; per-name exceptions were caught, so missing/disabled/misnamed vs transient secret-service error cannot be distinguished from ZIP.",
+  "pip_warning_not_stopping_cause": true,
+  "cancelling_backend_issue_explained": false,
+  "action": "Enable own-account API token Secret with notebook-access label codex or KAGGLE_API_TOKEN, or set SECRET_NAMES to its exact label; alternatively mount exact199 checkpoint. No model/training changes or new checkpoint needed."
+}

@@ -1,6 +1,6 @@
 # Trạng thái nghiên cứu — đọc trước khi tiếp tục
 
-Cập nhật: 09/11/2026, giờ Việt Nam. File này là bản tóm tắt để tiếp tục công việc; protocol và artifacts được dẫn bên dưới mới là nguồn chi tiết. Không cần đọc toàn bộ lịch sử chat.
+Cập nhật: 10/11/2026, giờ Việt Nam. File này là bản tóm tắt để tiếp tục công việc; protocol và artifacts được dẫn bên dưới mới là nguồn chi tiết. Không cần đọc toàn bộ lịch sử chat.
 
 ## Mục tiêu và cách làm việc
 
@@ -9,6 +9,9 @@ Cập nhật: 09/11/2026, giờ Việt Nam. File này là bản tóm tắt để
 - Không tự chạy mô hình/Torch/autograd local hoặc notebook Kaggle. Kiểm tra metadata/NumPy/static/mock được phép; ghi rõ giới hạn. Quy trình tại [AGENTS.md](AGENTS.md).
 
 ## Hiện đang ở đâu
+
+- **10/11 TEST199 V1 failed setup: Secret unreadable, no inference.** [Audit](experiments/clip_patch_baseline/TEST199_SETUP_RESULT.json). ZIPonce ../.review_cache/clip_patch_test199_v1/archive_text.json; sourcecf09014/versionunknown. 5datatests/CUDA2T4/CLIexact199routemockPASS; pipwarningsdidnotstop. FailureexplicitEnable ownKaggleAPISecretcodex/KAGGLE_API_TOKEN; neithername returnednonemptytoken, individualexceptionscaught so cannotdistinguishmissing/disabled/misnamed/transientservice. No checkpointdownload/model/TESTmetrics yet; fixnotebookSecretlabel/accessor mountknownSHAweights, no code/trainchange required. SeparateCancellingbackend issue notexplained.
+
 
 - **09/11 fixed baseline199 TEST5000 notebook READY, userapproved.** [Protocol](experiments/clip_patch_baseline/TEST199_PROTOCOL.md), [notebook](experiments/clip_patch_baseline/CLIP_PATCH_199_TEST5000_2GPU.ipynb), [QA](experiments/clip_patch_baseline/TEST199_AUTHOR_CHECKS.json). Sourcecf09014/16pins,5isolatedNumPy/mocktests/AST/runnerenv-redaction-deadline/model-beam-profileunchangedPASS; noauthorAPI/model/scorer. Exactown199bestepoch10SHA5061e305...; optionalmountedcheckpointelseenabledSecretcodex/KAGGLE_API_TOKEN exact199downloadonly/pinnedCLIroutecheck. Same2rawDatasets/T4x2, stageonly5000TEST1.4GiB/noTRAINVALIDfeatures; fixedbeam5/max20/rank0/no lengthnorm/rerank/training/tuning. CaptionssavedbeforeCPUbasic/METEOR/SPICE/CHAIR(all8+Recall,NLL); phaseoutputs/seals/preservefailure, noautoGPUrerun. Cap2hnotETA; priorprojectTESTexposuredeclared. Downloads CLIP_PATCH_199_TEST5000_2GPU.ipynb ready; user sends clip_patch_199_test5000_v1_review.zip. No newDataset/Wordedit/train or TESTpoint claimed. Published4c72e46; Sheet Kết quả mới A124:L126 readyprotocol written/readbackAPI values+format verified; nativevisual notinspected.
 
