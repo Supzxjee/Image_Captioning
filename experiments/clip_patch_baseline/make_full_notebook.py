@@ -9,10 +9,11 @@ HERE=Path(__file__).resolve().parent;ROOT=HERE.parents[1];PREFIX='experiments/cl
 sys.path.insert(0,str(ROOT/'experiments/csa_paper'))
 from make_smoke_notebook import RUNNER,cell
 
-def make(revision):
+def make(revision,local_stage=False):
     revision=subprocess.check_output(['git','rev-parse',revision],cwd=ROOT,text=True).strip()
     files=('full_data.py','full_runtime.py','run_full.py','patch_model.py','patch_beam.py','score_full.py','patch_data.py','test_full_data.py','make_full_notebook.py','SMOKE_SOURCE.json','FULL_XE10_PROTOCOL.md')
     mapping={PREFIX+n:n for n in files};mapping.update({'experiments/csa_paper/'+n:n for n in ('data.py','real_bank_data.py','cuda_runtime_guard.py','saved_quality_data.py')})
+    if local_stage:mapping.update({PREFIX+n:n for n in ('local_stage.py','test_local_stage.py','LOCAL_STAGE_V2_PROTOCOL.md')})
     hashes={n:hashlib.sha256(subprocess.check_output(['git','show',revision+':'+n],cwd=ROOT)).hexdigest() for n in mapping}
     setup=f'''import hashlib,json,os,queue,signal,subprocess,sys,tempfile,threading,time,traceback,urllib.request,zipfile,shutil,tarfile
 from pathlib import Path
@@ -102,8 +103,25 @@ Atomic checkpoints every500updates/phase transitions, Adam/RNG/cursor/history re
 
 Author verified metadata/NumPy/mock/AST only; actual full IO/neural/CUDA/evaluator run by user. Old pipeline results preserved; bank/prompt integration and fair matched comparisons come after this baseline result.
 '''
+    if local_stage:
+        setup=setup.replace("clip_patch_baseline_full_xe10_v1", "clip_patch_baseline_full_xe10_v2")
+        setup=setup.replace("if min(shutil.disk_usage('/tmp').free,shutil.disk_usage('/kaggle/working').free)<4*1024**3:raise RuntimeError('Need4GiB free for metadata/checkpoints; no36GB patch copy')", "if shutil.disk_usage('/tmp').free<38*1024**3 or shutil.disk_usage('/kaggle/working').free<4*1024**3:raise RuntimeError('Need38GiB temporary scratch and4GiB Working; sequential local stage required')")
+        setup=setup.replace("cfg=dict(output=", "cfg=dict(feature_storage='local_fp16_memmap_v2',prepare_seconds=1800,output=")
+        execution=execution.replace("SOURCE/'test_full_data.py'],120)", "SOURCE/'test_full_data.py'],120)\n    run([sys.executable,'-u',SOURCE/'test_local_stage.py'],120)")
+        execution=execution.replace('clip_patch_baseline_full_xe10_v1','clip_patch_baseline_full_xe10_v2')
+        intro='''# Full baseline10XE V2 — local FP16 cache, T4×2
+
+InternetON, Accelerator **GPU T4×2**, Save & Run All. Attach only `ducanh2403/visual-cache` and `vuthetam/mscoco-2014`; same paths below. No API token/bank/prompt/old checkpoint. V1 stopped at0mainupdates; this V2 starts fresh seed42, same architecture/10XE/allTRAINcaptionevents/global32/schedule/VALID policy.
+
+V2 copies all113287TRAIN+5000VALID patches sequentially to **/tmp local float16 memmap (~33.17GiB)** before training. No CLIP recomputation, no fullRAM preload, no TESTfeature reads. Need38GiB /tmp plus4GiB Working. Preserve all196×768patchvalues; exact source/destination byte checks,256smoke rawrowSHA, mapping coverage and file seals. Stage includes sequential SHA verification; progress/heartbeat may continue while sealing. Prepare cap1800s; parent10.5h STOPcap unchanged, not ETA/billing promise.
+
+Fulllocalcorpus exceeds prior RAM31GiB, unlike smallCPUprobe. Actual fullIO/DDP/math/beam preflight mandatory, warmupupdates discarded, only train if measured projection fits remaining cap. Periodic budget gate remains; no automatic extension. Fixed10epochs/177110updates, global32; eachVALID5000 beam5/NLL/CIDEr. Best=maxVALIDCIDEr, keepbothbest/latest withAdam/RNG/cursor. Finalbest/end quality uses savedcaptions: BLEU1/4,ROUGE-L,CHAIRs/i/recall. METEOR/SPICE/TEST later; noSCST/reranking/prompt/bank.
+
+Send `clip_patch_baseline_full_xe10_v2_review.zip`. Preserve outputfolder/checkpoint.bin/best.bin once created; /tmp is disposable so resume requires exactV2 metadata/cache restaging and preservedcheckpointoutput. No resume fromV1differentcode. Author verified onlyNumPy/mock/AST; realfullIO/GPU/scorers remain user-run.
+'''
     nb=dict(nbformat=4,nbformat_minor=5,metadata=dict(kernelspec=dict(display_name='Python 3',language='python',name='python3'),kaggle=dict(isInternetEnabled=True,isGpuEnabled=True)),cells=[cell('markdown',intro),cell('code',setup),cell('code',runner),cell('code',execution)])
-    p=HERE/'CLIP_PATCH_BASELINE_FULL_XE10_2GPU.ipynb';p.write_text(json.dumps(nb,ensure_ascii=False,indent=1)+'\n',encoding='utf-8');print(p.name,p.stat().st_size,'bytes',len(mapping),'pins',revision)
+    name='CLIP_PATCH_BASELINE_FULL_XE10_LOCAL_V2_2GPU.ipynb' if local_stage else 'CLIP_PATCH_BASELINE_FULL_XE10_2GPU.ipynb'
+    p=HERE/name;p.write_text(json.dumps(nb,ensure_ascii=False,indent=1)+'\n',encoding='utf-8');print(p.name,p.stat().st_size,'bytes',len(mapping),'pins',revision)
 
 if __name__=='__main__':
-    p=argparse.ArgumentParser();p.add_argument('--revision',required=True);make(p.parse_args().revision)
+    p=argparse.ArgumentParser();p.add_argument('--revision',required=True);p.add_argument('--local-stage',action='store_true');a=p.parse_args();make(a.revision,a.local_stage)

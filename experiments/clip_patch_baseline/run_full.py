@@ -31,6 +31,7 @@ def distributed(cfg,guard=False):
     dist.init_process_group('nccl',timeout=timedelta(seconds=1200));started=time.monotonic();deadline=started+cfg['worker_seconds']
     try:
         data,words,stage=load_stage(cfg['stage'],verify=rank==0);dist.barrier(device_ids=[rank])
+        if cfg.get('feature_storage') and stage.get('feature_storage')!=cfg['feature_storage']:raise ValueError('Required local stage incomplete; do not fall back to mounted H5')
         torch.manual_seed(42);model=PatchCaptioner(len(words)).to(device);wrapped=DDP(model,device_ids=[rank],broadcast_buffers=False)
         if guard:preflight(cfg,model,wrapped,data,words,rank,device,out,deadline);return
         guards=[read(out/f'preflight_rank{r}.json') for r in (0,1)]
@@ -152,5 +153,9 @@ def distributed(cfg,guard=False):
 if __name__=='__main__':
     p=argparse.ArgumentParser();p.add_argument('mode',choices=('prepare','preflight','worker'));p.add_argument('--config',required=True)
     a=p.parse_args();cfg=read(a.config)
-    if a.mode=='prepare':prepare(cfg)
+    if a.mode=='prepare':
+        deadline=time.monotonic()+cfg.get('prepare_seconds',1800);prepare(cfg)
+        if cfg.get('feature_storage')=='local_fp16_memmap_v2':
+            from local_stage import stage_local
+            stage_local(cfg,deadline)
     else:distributed(cfg,guard=a.mode=='preflight')

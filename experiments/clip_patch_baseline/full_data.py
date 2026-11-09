@@ -97,9 +97,24 @@ class FeatureReader:
     def __init__(self,root,capacity=256):
         self.data,_,self.meta=load_stage(root,verify=False);self.handles={};self.cache=OrderedDict();self.capacity=capacity
         self.golden=read(Path(__file__).with_name('SMOKE_SOURCE.json'))['raw_selected_row_sha256']
+        self.local=None;self.local_rows=None
+        if self.meta.get('feature_storage')=='local_fp16_memmap_v2':
+            spec=self.meta['local_features']
+            if spec['file']!='local_patches.npy' or spec['rows']!='local_rows.npy':raise ValueError('Unexpected local payload names')
+            self.local=np.load(Path(root)/spec['file'],mmap_mode='r',allow_pickle=False)
+            self.local_rows=np.load(Path(root)/spec['rows'],mmap_mode='r',allow_pickle=False)
+            if self.local.shape!=(len(self.data['ids']),196,768) or self.local.dtype!=np.float16 or self.local_rows.shape!=(len(self.data['ids']),):raise ValueError('Invalid local patch mapping/shape')
     def get(self,image):
         image=int(image)
         if image in self.cache:self.cache.move_to_end(image);return self.cache[image]
+        if self.local is not None:
+            row=int(self.local_rows[image])
+            if not 0<=row<len(self.local):raise ValueError('Invalid local row')
+            value=self.local[row]
+            if not np.isfinite(value).all():raise ValueError('Nonfinite local feature')
+            self.cache[image]=value
+            if len(self.cache)>self.capacity:self.cache.popitem(last=False)
+            return value
         import h5py
         file,row=map(int,self.data['locations'][image]);source=self.meta['sources'][file]
         if file not in self.handles:
@@ -112,8 +127,11 @@ class FeatureReader:
         if len(self.cache)>self.capacity:self.cache.popitem(last=False)
         return value
     def close(self):
+        self.cache.clear()
         for f in self.handles.values():f.close()
         self.handles.clear()
+        if self.local is not None:self.local._mmap.close();self.local=None
+        if self.local_rows is not None:self.local_rows._mmap.close();self.local_rows=None
 
 class CaptionBatches:
     def __init__(self,root,events,rank=None,cursor=0,batch_size=32):
