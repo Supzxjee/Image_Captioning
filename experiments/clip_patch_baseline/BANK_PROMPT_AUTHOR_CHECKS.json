@@ -62,5 +62,17 @@
     "Real IO/memory/throughput/projection",
     "Official metric scorer"
   ],
-  "limitation": "Combined bank+prompt addition, extra parameters/compute; no guarantee of metric improvement."
+  "limitation": "Combined bank+prompt addition, extra parameters/compute; no guarantee of metric improvement.",
+  "github_notebook_blob_sha256": "5b1696fb4b2f2819b764a168357b96ec40fb5c11f284e0e4fd8b16a17d738cfd",
+  "github_notebook_matches_git_blob": true,
+  "github_notebook_JSON_matches_downloads": true,
+  "local_notebook_line_endings": "Windows working copy may use CRLF; Git blob LF, parsed JSON identical.",
+  "pinned_neural_source_remote_SHA_verified": true,
+  "sheet_log": {
+    "tab": "Kết quả mới",
+    "range": "A129:L131",
+    "status": "READY GPU unrun",
+    "API_values_and_format_readback_verified": true,
+    "native_visual_check": false
+  }
 }
