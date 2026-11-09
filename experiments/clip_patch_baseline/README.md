@@ -1,5 +1,17 @@
 # Baseline CLIP patch và decoder chuẩn
 
+## Lượt full10XE mới
+
+Smoke192 đã hoàn tất: [kết quả](SMOKE_RESULT.md). Notebook **CLIP_PATCH_BASELINE_FULL_XE10_2GPU.ipynb** train mới10epoch XE trên113287TRAIN, cùng cache và T4×2; không nạp trọng số smoke hoặc mô hình cũ. Vẫn chỉ cần `visual-cache` và `vuthetam/mscoco-2014`; không API token/ROI/bank/prompt.
+
+Đọc H5 trực tiếp với CPU LRU và prefetch, chỉ stage metadata/caption arrays nhỏ. Đo fullIO, gradient và beam trước train; parent10,5giờ STOPcap không phải cam kết runtime/quota tính phí. Kiểm tra quota tài khoản trước chạy. Khởi tạo mới seed42, global32, Adam1e-4 peak, warmup1epoch rồi cosine1e-5, khôngSCST/rerank/TEST. [Protocol đã khóa](FULL_XE10_PROTOCOL.md).
+
+Mỗi epoch chấm VALID5000 beam5/max20 và NLL/CIDEr; maxCIDEr chọnbest, tiesearlier. Giữ `best.bin` và `checkpoint.bin` endpoint10. BLEU1/4, ROUGE-L, CHAIRs/i và recall cuối lượt lấy từ đúng caption của best/end; METEOR/SPICE/TEST làm riêng sau, không ghi là đã đo ở đây. Nếu interruption, giữ cảfolder; `RESUME_ROOT` chỉ dành cho exactrecipe và state/Adam/RNG/receipts, không tự train lại.
+
+Gửi **clip_patch_baseline_full_xe10_v1_review.zip** sau chạy. Chưa có kết quả full; không hứa110CIDEr. Decoder mới giữ nguyên initializer/state layout của smoke, chỉ tách encode/decode để beam dùng lại projectedmemory.
+
+## Lượt smoke đã chạy
+
 Lượt đầu là kiểm tra dữ liệu, việc học và tốc độ; chưa phải train full hoặc đánh giá chất lượng caption.
 
 Import **CLIP_PATCH_BASELINE_SMOKE_2GPU.ipynb** lên Kaggle. Chọn **GPU T4×2**, Internet ON, Save & Run All. Gắn hai Dataset:

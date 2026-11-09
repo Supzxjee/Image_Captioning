@@ -1,0 +1,89 @@
+{
+  "status": "PATCH_SMOKE_REVIEW_COMPLETE",
+  "source_version": 192,
+  "archive_sha256": "d6353b2adca467be2f2435e12fe31e317c17b2e9267efeccb2415c02e4d9b45a",
+  "checks": 20,
+  "result": {
+    "status": "CLIP_PATCH_BASELINE_TRAIN_SMOKE_COMPLETE",
+    "workers": [
+      {
+        "complete": true,
+        "rank": 0,
+        "updates": 200,
+        "TRAIN_images": 256,
+        "caption_events": 6400,
+        "TRAIN_probe_NLL_before": 9.216239929199219,
+        "TRAIN_probe_NLL_after": 3.7612509727478027,
+        "training_loss_last25": 4.1193118137364335,
+        "parameters": 27461904,
+        "steady_step_median_seconds": 0.056359252999982346,
+        "steady_step_p90_seconds": 0.05825458640006218,
+        "global_caption_events_per_second": 567.7860918420978,
+        "GPU_name": "Tesla T4",
+        "final_memory_logit_mean_change": 0.207056924700737,
+        "steady_load_H2D_median_seconds": 0.008578209000006609,
+        "peak_allocated_GiB": 0.6669368743896484,
+        "peak_reserved_GiB": 0.791015625,
+        "seconds": 20.70518283399997,
+        "sample_TRAIN_captions": [
+          "a man in a snow in the snow",
+          "a man in a snow in the snow",
+          "a man in a snow in the snow",
+          "a man in a snow in the snow",
+          "a man in a snow in the snow",
+          "a man is a woman on a street",
+          "a man is a woman on a street",
+          "a man is a woman on a street"
+        ],
+        "test_used": false,
+        "validation_used": false,
+        "limits": "Tiny TRAIN pool learning/benchmark only; page-cache throughput does not guarantee full-corpus IO. Peak memory includes final global32 TRAIN probe. Not CIDEr or convergence evidence."
+      },
+      {
+        "complete": true,
+        "rank": 1,
+        "updates": 200,
+        "TRAIN_images": 256,
+        "caption_events": 6400,
+        "TRAIN_probe_NLL_before": 9.216239929199219,
+        "TRAIN_probe_NLL_after": 3.7612509727478027,
+        "training_loss_last25": 4.1193118137364335,
+        "parameters": 27461904,
+        "steady_step_median_seconds": 0.05640094399996087,
+        "steady_step_p90_seconds": 0.058235731200011284,
+        "global_caption_events_per_second": 567.3663901799622,
+        "GPU_name": "Tesla T4",
+        "final_memory_logit_mean_change": 0.207056924700737,
+        "steady_load_H2D_median_seconds": 0.008568005000029189,
+        "peak_allocated_GiB": 0.667168140411377,
+        "peak_reserved_GiB": 0.830078125,
+        "seconds": 20.705556993000073,
+        "sample_TRAIN_captions": [
+          "a man in a snow in the snow",
+          "a man in a snow in the snow",
+          "a man in a snow in the snow",
+          "a man in a snow in the snow",
+          "a man in a snow in the snow",
+          "a man is a woman on a street",
+          "a man is a woman on a street",
+          "a man is a woman on a street"
+        ],
+        "test_used": false,
+        "validation_used": false,
+        "limits": "Tiny TRAIN pool learning/benchmark only; page-cache throughput does not guarantee full-corpus IO. Peak memory includes final global32 TRAIN probe. Not CIDEr or convergence evidence."
+      }
+    ],
+    "stage_seconds": 83.03400495700004,
+    "architecture": "frozen CLIP-B16 raw196patches -> Linear/LayerNorm512 -> standard4layer causal Transformer decoder -> vocab",
+    "test_used": false,
+    "validation_used": false,
+    "full_training_complete": false,
+    "training_quality_evaluated": false,
+    "recommended_next": "Review learning/runtime/IO before deciding full XE epochs and a full-corpus staging strategy."
+  },
+  "limits": [
+    "TRAIN256 only; not a quality/convergence result.",
+    "No neural, official scorer or feature-array replay by author.",
+    "Model revision in raw cache metadata is null; inherited provenance limitation."
+  ]
+}

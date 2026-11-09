@@ -20,14 +20,19 @@ class PatchCaptioner(nn.Module):
             elif isinstance(module,nn.Embedding):nn.init.normal_(module.weight,std=.02);module.weight.data[0].zero_()
             elif isinstance(module,nn.MultiheadAttention):nn.init.xavier_uniform_(module.in_proj_weight);nn.init.zeros_(module.in_proj_bias)
 
-    def forward(self,patches,prefix):
-        if patches.ndim!=3 or patches.shape[1:]!=(196,768) or prefix.ndim!=2 or len(prefix)!=len(patches):raise ValueError('Wrong patch/prefix shape')
+    def encode(self,patches):
+        if patches.ndim!=3 or patches.shape[1:]!=(196,768):raise ValueError('Wrong patch shape')
+        return self.project(patches)
+
+    def decode(self,memory,prefix):
+        if prefix.ndim!=2 or len(prefix)!=len(memory):raise ValueError('Wrong memory/prefix shape')
         if prefix.shape[1]>len(self.positions) or (prefix==0).all(1).any():raise ValueError('Empty or too long prefix')
-        memory=self.project(patches)
         text=self.dropout(self.embedding(prefix)*math.sqrt(self.dim)+self.positions[:prefix.shape[1]])
         causal=torch.ones(prefix.shape[1],prefix.shape[1],dtype=torch.bool,device=prefix.device).triu(1)
         output=self.decoder(text,memory,tgt_mask=causal,tgt_key_padding_mask=prefix==0)
         return self.head(output)
+
+    def forward(self,patches,prefix):return self.decode(self.encode(patches),prefix)
 
     @torch.no_grad()
     def greedy(self,patches,maximum=20):
