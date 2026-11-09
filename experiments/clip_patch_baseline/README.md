@@ -1,5 +1,12 @@
 # Baseline CLIP patch và decoder chuẩn
 
+## TEST5000 checkpoint199 — notebook sẵn sàng
+
+Chạy **CLIP_PATCH_199_TEST5000_2GPU.ipynb** trênT4×2/InternetON, haiDataset `visual-cache` và `vuthetam/mscoco-2014`. BậtSecret `codex` hoặc `KAGGLE_API_TOKEN` củaown199; hoặcđiềnCHECKPOINT_ROOTfile/rootđúngSHA nếuđãmountcheckpoint. Không cầnDatasetcheckpoint/cacheTESTmới/detector/ROI/bank/prompt. Chỉstage5000TESTpatch~1,4GiB, khôngcopyfull.
+
+Đúngbest199epoch10SHA5061e305..., fixedbeam5/max20/rawlogprob/noSCST/rerank/tuning. Haiworker2500ảnh; captionlưutrướcCPUphases, đủBLEU1/4/METEOR/ROUGE-L/CIDEr/SPICE/CHAIRs/i +Recall/NLLmớicomplete. [Protocol](TEST199_PROTOCOL.md)/[QA](TEST199_AUTHOR_CHECKS.json). Cap2hSTOP khôngETA; tácgiảchỉchạy5NumPy/mocktests/AST, chưaKaggle/model/scorer. Gửi **clip_patch_199_test5000_v1_review.zip**, giữoutputnếuphaseCPUlỗiđểkhôngsinhcaptionlại.
+
+
 ## Hoàn tất baseline mới — version199
 
 Full10XE đã xong, **không chạy lại notebook train**. [Kết quả](LOCAL_V3_RESULT.md)/[số liệu](LOCAL_V3_RESULT.json): best=endepoch10 VALID5000 CIDEr119,09; CHAIRs5,38%, CHAIRi3,78%; B1 77,21/B4 37,07/ROUGE57,37; noSCST/bank/prompt/rerank/TEST. Giữbest.bin/checkpoint.bin trongoutputv199 (sameSHA5061e305...). Stage44m49 +worker4h25m23, khôngphảientirebilling. Audit1928cacheddata/sourcechecksPASS; METEOR/SPICE/TESTchưađo, chưaclaimpromptgain. Bướcđềxuấttiếp:freezecheckpointvàTEST5000/missingmetrics; chờquyếtđịnhuser,khôngtựtrainthêm.

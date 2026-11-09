@@ -1,0 +1,33 @@
+{
+  "status": "TEST199_NOTEBOOK_READY_NOT_RUN",
+  "source_commit": "cf090147cbd2ce8ff6c25670a631da7522ed75a7",
+  "source_pins": 16,
+  "notebook_code_AST": true,
+  "notebook_bytes": 14878,
+  "isolated_NumPy_mock_tests_passed": 5,
+  "trained_model_beam_profile_sources_unchanged": true,
+  "notebook_runner_env_redaction_deadline_verified": true,
+  "exact_source_version": "ducanh2403/2-vi-cai-kia-qua-nhieu/199",
+  "expected_checkpoint_sha256": "5061e305d98edf54930a200090a41c983c354d1ba2dfcf700b715cf20a5b80b7",
+  "metrics": [
+    "BLEU_1",
+    "BLEU_4",
+    "METEOR",
+    "ROUGE_L",
+    "CIDEr",
+    "SPICE",
+    "CHAIRs",
+    "CHAIRi",
+    "Recall",
+    "NLL"
+  ],
+  "training": false,
+  "models_API_or_scorers_executed_locally": false,
+  "real_runtime_guards": [
+    "own199API routing mock and authenticated fetch",
+    "checkpoint binarySHA and training identity",
+    "CUDA2T4/Torch version/beam path likelihood",
+    "actual synthetic PTB/METEOR/SPICE smoke",
+    "complete fixed5000TEST and all8metrics before success"
+  ]
+}
