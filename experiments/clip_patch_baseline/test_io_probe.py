@@ -54,6 +54,20 @@ class Checks(unittest.TestCase):
         self.assertEqual(reports[0]['feature_stream_sha256'],reports[1]['feature_stream_sha256']);self.assertEqual(reports[0]['events'],16)
         with patch.object(probe,'load_stage',return_value=(dict(caption_image=np.array([probe.TRAIN_IMAGES])),[],{})),patch.object(probe,'FeatureReader',Reader):
             q=queue.Queue();probe.run_worker(0,'mounted','stage','local',[[0]],q,Go(),time.monotonic()+30);q.get();self.assertIn('NonTRAIN',q.get()['error'])
+    def test_four_process_local_delivery_fixture(self):
+        import json
+        with tempfile.TemporaryDirectory() as td:
+            root=Path(td);stage=root/'stage';local=root/'local';out=root/'out'
+            for p in (stage,local,out):p.mkdir()
+            np.save(stage/'caption_image.npy',np.arange(2048,dtype=np.int32)%16)
+            for name in ('sequences','ids','locations'):np.save(stage/(name+'.npy'),np.zeros(1,np.int32))
+            (stage/'manifest.json').write_text(json.dumps(dict(status='FULL_PATCH_METADATA_COMPLETE',train_caption_events=566747,test_features_used=False)))
+            (stage/'vocabulary.json').write_text('["<pad>"]')
+            np.save(local/'image_indices.npy',np.arange(16,dtype=np.int64));np.save(local/'patches.npy',np.ones((16,196,768),np.float16))
+            result=probe.measure('local',stage,local,probe.tasks(np.arange(2048)),time.monotonic()+90,out,'fixture')
+            self.assertEqual(result['events'],2048);self.assertTrue(result['not_GPU_step_time']);self.assertEqual(len(result['workers']),4)
+            self.assertEqual(len({r['feature_stream_sha256'] for r in result['workers']}),1)
+            self.assertTrue((out/'fixture.json').is_file())
     def test_source_parse_and_no_neural_or_api_calls(self):
         source=Path(__file__).with_name('io_probe.py').read_text(encoding='utf-8');tree=ast.parse(source)
         imports=[n.module or '' for n in ast.walk(tree) if isinstance(n,ast.ImportFrom)]+[a.name for n in ast.walk(tree) if isinstance(n,ast.Import) for a in n.names]
