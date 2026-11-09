@@ -1,0 +1,12 @@
+{
+  "status": "FULL_LOCAL_V2_READY_NOT_RUN",
+  "source_commit": "c91bac47fe8121882d3077960d841f426340ef7b",
+  "source_pins": 18,
+  "isolated_metadata_mock_tests_passed": 12,
+  "notebook_code_AST": true,
+  "notebook_bytes": 13679,
+  "model_beam_runtime_scorer_sources_unchanged_from_v1": true,
+  "training_evaluation_core_AST_unchanged_except_required_storage_guard": true,
+  "parent_cap_hours": 10.5,
+  "real_fullstage_GPU_or_scorer_executed": false
+}

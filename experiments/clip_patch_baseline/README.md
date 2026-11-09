@@ -1,13 +1,14 @@
 # Baseline CLIP patch và decoder chuẩn
 
-## Đang xử lý: luồng đọc cache quá chậm
+## Dùng bản full LOCAL V2 mới
 
-Fullv1 dừng trước update đầu: fullH5 median1,403s/update, conservativeprojection148,38h; không phải CUDA/OOM. [Kết quả](FULL_V1_RESULT.md). Không chạy lại fullGPU cũ hoặc tăng cap để né vấn đề.
+**CLIP_PATCH_BASELINE_FULL_XE10_LOCAL_V2_2GPU.ipynb** là bản thay thế V1 bị dừng0update. T4×2, InternetON, cùng2Dataset `visual-cache` và `vuthetam/mscoco-2014`, khôngAPI/ROI/bank/prompt. V2 đọc tuần tự H5 và chép33,17GiB TRAIN+VALID patchFP16 sang /tmp memmap; không nạp hết vàoRAM, không tríchCLIP lại, không đọcTESTfeature. Cần38GiBscratch và4GiBWorking; kiểm tra ở runtime. Chuẩn bị cap30phút, tổng10,5giờ giữ nguyên, chưa phảiETA.
 
-Chạy **CLIP_PATCH_CACHE_IO_PROBE_CPU.ipynb**, Accelerator **None**, InternetON, gắn cùng `visual-cache` và `vuthetam/mscoco-2014`. Không tokenAPI, model hoặc scorer. So sánh4readers trên cùng2048TRAINcaptionevents: mountedH5 hai lượt, stage mẫu~0,6GB localfloat16, localmemmap hai lượt, kiểm hash đặc trưng. Ghi disk/RAM/staging/read+stack/startup; không chép full35GB. [Protocol](IO_PROBE_PROTOCOL.md), [authorchecks](IO_AUTHOR_CHECKS.json). Gửi **clip_patch_cache_io_probe_v1_review.zip**. Chưa đo Kaggle thật, không hứa speedup hay suy ra thời gian train từ local sample nhỏ.
+Giữ mô hình/khởi tạo/captionshuffle/10XE/global32/Adam/LR/VALIDbeam5 như V1. Sau stage+SHA, đo lại fullIO/DDP/beam trước train;64update thử bị bỏ. Runtimeprojection/cap vẫn được kiểm, không hứa speedup24× từ mẫuCPU. Fullcorpus33GiB vượtRAMquan sát31GiB. Không dùng lại trọng số V1 (chưa train). [Amendment](LOCAL_STAGE_V2_PROTOCOL.md), [QA](LOCAL_V2_AUTHOR_CHECKS.json). Gửi **clip_patch_baseline_full_xe10_v2_review.zip**; giữ cảoutputfolder/best.bin/checkpoint.bin nếu đã tạo.
 
+CPUprobe COMPLETE: [kết quả](IO_RESULT.md). Mounted lượt1/2 .936/.046s, local .039s; featurehashkhớp, không phải fullGPU timing. [V1 stopped](FULL_V1_RESULT.md). Không chạy lại notebook V1 cũ.
 
-## Lượt full10XE mới
+## Lịch sử: bản full10XE V1
 
 Smoke192 đã hoàn tất: [kết quả](SMOKE_RESULT.md). Notebook **CLIP_PATCH_BASELINE_FULL_XE10_2GPU.ipynb** train mới10epoch XE trên113287TRAIN, cùng cache và T4×2; không nạp trọng số smoke hoặc mô hình cũ. Vẫn chỉ cần `visual-cache` và `vuthetam/mscoco-2014`; không API token/ROI/bank/prompt.
 
