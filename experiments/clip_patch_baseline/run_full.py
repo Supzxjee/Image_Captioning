@@ -32,7 +32,16 @@ def distributed(cfg,guard=False):
     try:
         data,words,stage=load_stage(cfg['stage'],verify=rank==0);dist.barrier(device_ids=[rank])
         if cfg.get('feature_storage') and stage.get('feature_storage')!=cfg['feature_storage']:raise ValueError('Required local stage incomplete; do not fall back to mounted H5')
-        torch.manual_seed(42);model=PatchCaptioner(len(words)).to(device);wrapped=DDP(model,device_ids=[rank],broadcast_buffers=False)
+        context=None
+        torch.manual_seed(42)
+        if cfg.get('semantic'):
+            from semantic_training import make_model,context_for
+            if stage.get('semantic',{}).get('method')!='bank_prompt_patch_v1':raise ValueError('Semantic stage missing/incomplete')
+            model=make_model(len(words),cfg);context=context_for(cfg)
+        else:model=PatchCaptioner(len(words))
+        model=model.to(device);wrapped=DDP(model,device_ids=[rank],broadcast_buffers=False)
+        def predict(net,x,prefix,events):return net(x,prefix,context.events(data,events,device)) if context else net(x,prefix)
+        def memory_for(x,indices):return model.encode(x,context.images(indices,device)) if context else model.encode(x)
         if guard:preflight(cfg,model,wrapped,data,words,rank,device,out,deadline);return
         guards=[read(out/f'preflight_rank{r}.json') for r in (0,1)]
         if not all(g['passed'] and g['initial_tensor_sha256']==tensor_digest(model) for g in guards):raise ValueError('Fresh initialization/preflight mismatch')
@@ -40,7 +49,7 @@ def distributed(cfg,guard=False):
         refs=read(Path(cfg['stage'])/'validation_references.json')
         identity=dict(schema='clip_patch_full_xe10_v1',source=read(out/'source_receipt.json'),stage_files=stage['files_sha256'],raw_sources=stage['sources'],feature_profile=stage['feature_profile'],
             initial_sha256=guards[0]['initial_tensor_sha256'],global_batch=32,epochs=10,lr='warmup1epoch8e-6to1e-4_then_cosine_to1e-5',dropout=.1,clip1=True,seed=42,
-            software={k:importlib.metadata.version(k) for k in ('torch','numpy','pycocoevalcap')},test_used=False)
+            method='bank_prompt_patch_v1' if context else 'plain_patch_v1',software={k:importlib.metadata.version(k) for k in ('torch','numpy','pycocoevalcap')},test_used=False)
         optimizer=torch.optim.Adam(model.parameters(),lr=8e-6,betas=(.9,.99),eps=1e-8,weight_decay=0)
         state=dict(epoch=1,batch_cursor=0,phase='train',updates=0,caption_events=0,history=[],best_epoch=None,best_CIDEr=None,epoch_nll_sum=0.,epoch_tokens=0)
         random.seed(42+rank);np.random.seed(42+rank);torch.manual_seed(4242+rank);torch.cuda.manual_seed(4242+rank)
@@ -90,12 +99,12 @@ def distributed(cfg,guard=False):
             with torch.inference_mode():
                 for x,index in loader(ImageBatches(cfg['stage'],images)):
                     if time.monotonic()>deadline-60:raise TimeoutError('VALID decode deadline; preserve training checkpoint')
-                    memory=model.encode(x.to(device,non_blocking=True));seq,scores=beam_search(model,memory)
+                    memory=memory_for(x.to(device,non_blocking=True),index);seq,scores=beam_search(model,memory)
                     for i,s,v in zip(index.tolist(),seq[:,0].cpu().tolist(),scores[:,0].cpu().tolist()):rows.append(dict(coco_id=int(data['ids'][i]),caption=text_from_ids(s,words),ids=s,score=float(v)))
                 ev=np.flatnonzero(np.isin(data['caption_image'],images))
-                for x,seq,_ in loader(CaptionBatches(cfg['stage'],ev,rank=None)):
+                for x,seq,event_ids in loader(CaptionBatches(cfg['stage'],ev,rank=None)):
                     if time.monotonic()>deadline-60:raise TimeoutError('VALID NLL deadline')
-                    x=x.to(device,non_blocking=True);seq=seq.to(device,non_blocking=True);logits=model(x,seq[:,:-1])
+                    x=x.to(device,non_blocking=True);seq=seq.to(device,non_blocking=True);logits=predict(model,x,seq[:,:-1],event_ids)
                     nll_sum+=float(F.cross_entropy(logits.flatten(0,1),seq[:,1:].flatten(),ignore_index=0,reduction='sum'));tokens+=int((seq[:,1:]!=0).sum())
             if len(rows)!=2500:raise ValueError('Incomplete VALID worker')
             save(folder/f'val_rank{rank}.json',rows);save(folder/f'worker{rank}.json',dict(complete=True,epoch=epoch,images=2500,NLL_sum=nll_sum,NLL_tokens=tokens))
@@ -124,7 +133,7 @@ def distributed(cfg,guard=False):
                     x,seq,ev=next(it);x=x.to(device,non_blocking=True);seq=seq.to(device,non_blocking=True)
                     lr=learning_rate(state['updates']+1)
                     for g in optimizer.param_groups:g['lr']=lr
-                    optimizer.zero_grad(set_to_none=True);logits=wrapped(x,seq[:,:-1]);count=torch.tensor([int((seq[:,1:]!=0).sum()),len(ev)],device=device);dist.all_reduce(count)
+                    optimizer.zero_grad(set_to_none=True);logits=predict(wrapped,x,seq[:,:-1],ev);count=torch.tensor([int((seq[:,1:]!=0).sum()),len(ev)],device=device);dist.all_reduce(count)
                     nll=F.cross_entropy(logits.flatten(0,1),seq[:,1:].flatten(),ignore_index=0,reduction='sum');loss=nll*(2/int(count[0]))
                     if not torch.isfinite(loss):raise ValueError('Nonfinite XE')
                     loss.backward();norm=torch.nn.utils.clip_grad_norm_(model.parameters(),1,error_if_nonfinite=True);optimizer.step()
@@ -154,8 +163,16 @@ if __name__=='__main__':
     p=argparse.ArgumentParser();p.add_argument('mode',choices=('prepare','preflight','worker'));p.add_argument('--config',required=True)
     a=p.parse_args();cfg=read(a.config)
     if a.mode=='prepare':
-        deadline=time.monotonic()+cfg.get('prepare_seconds',1800);prepare(cfg)
+        deadline=time.monotonic()+cfg.get('prepare_seconds',1800)
+        if cfg.get('semantic'):
+            from semantic_data import checked_inputs
+            checked_inputs(cfg)
+            print('Frozen bank130/prompt175 exact source precheck PASS before patch copy.',flush=True)
+        prepare(cfg)
         if cfg.get('feature_storage')=='local_fp16_memmap_v2':
             from local_stage import stage_local
             stage_local(cfg,deadline)
+        if cfg.get('semantic'):
+            from semantic_data import stage_semantics
+            stage_semantics(cfg,deadline)
     else:distributed(cfg,guard=a.mode=='preflight')

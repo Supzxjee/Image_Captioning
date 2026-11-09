@@ -9,11 +9,17 @@ HERE=Path(__file__).resolve().parent;ROOT=HERE.parents[1];PREFIX='experiments/cl
 sys.path.insert(0,str(ROOT/'experiments/csa_paper'))
 from make_smoke_notebook import RUNNER,cell
 
-def make(revision,local_stage=False):
+def make(revision,local_stage=False,semantic=False):
+    if semantic and not local_stage:raise ValueError("Semantic full run requires local staging")
     revision=subprocess.check_output(['git','rev-parse',revision],cwd=ROOT,text=True).strip()
     files=('full_data.py','full_runtime.py','run_full.py','patch_model.py','patch_beam.py','score_full.py','patch_data.py','test_full_data.py','make_full_notebook.py','SMOKE_SOURCE.json','FULL_XE10_PROTOCOL.md')
     mapping={PREFIX+n:n for n in files};mapping.update({'experiments/csa_paper/'+n:n for n in ('data.py','real_bank_data.py','cuda_runtime_guard.py','saved_quality_data.py')})
     if local_stage:mapping.update({PREFIX+n:n for n in ('local_stage.py','test_local_stage.py','LOCAL_STAGE_V3_PROTOCOL.md')})
+    if semantic:
+        mapping.update({PREFIX+n:n for n in ('semantic_data.py','semantic_patch_model.py','semantic_training.py','test_semantic_data.py','BANK_PROMPT_SCRATCH_PROTOCOL.md')})
+        mapping.update({'experiments/csa_paper/model.py':'bank_layers.py','experiments/csa_paper/SAVE_BANK_V130_PACKAGE.json':'SAVE_BANK_V130_PACKAGE.json',
+            'experiments/csa_paper/lemma_correction_review_text/bank_words_corrected.json':'bank_words_corrected.json',
+            'experiments/csa_paper/FULL_PROMPT_FRESH_V175_RESULT.json':'FULL_PROMPT_FRESH_V175_RESULT.json'})
     hashes={n:hashlib.sha256(subprocess.check_output(['git','show',revision+':'+n],cwd=ROOT)).hexdigest() for n in mapping}
     setup=f'''import hashlib,json,os,queue,signal,subprocess,sys,tempfile,threading,time,traceback,urllib.request,zipfile,shutil,tarfile
 from pathlib import Path
@@ -120,9 +126,35 @@ Fulllocalcorpus exceeds prior RAM31GiB, unlike smallCPUprobe. Actual fullIO/DDP/
 
 Send `clip_patch_baseline_full_xe10_v3_review.zip`. Preserve outputfolder/checkpoint.bin/best.bin once created; /tmp is disposable so resume requires exactV3 metadata/cache restaging and preservedcheckpointoutput. No resume fromV1/V2differentcode. Author verified onlyNumPy/mock/AST; realfullIO/GPU/scorers remain user-run.
 '''
+    if semantic:
+        setup=setup.replace("RESUME_ROOT=''", "BANK_ROOT=Path('/kaggle/input/datasets/ducanh2403/csa-semantic-banks-v130')\nPROMPT_ROOT=Path('/kaggle/input/datasets/ducanh2403/csa-prompt-full-karpathy-v175')\nRESUME_ROOT=''")
+        setup=setup.replace('for p in (VISUAL_CACHE,COCO_JSON):','for p in (VISUAL_CACHE,COCO_JSON,BANK_ROOT,PROMPT_ROOT):')
+        setup=setup.replace('clip_patch_baseline_full_xe10_v3','clip_patch_bank_prompt_xe10_v1').replace('38*1024**3','40*1024**3').replace('Need38GiB','Need40GiB')
+        setup=setup.replace("cfg=dict(feature_storage=", "cfg=dict(semantic=True,bank_root=str(BANK_ROOT),prompt_root=str(PROMPT_ROOT),feature_storage=")
+        execution=execution.replace("SOURCE/'test_local_stage.py'],120)","SOURCE/'test_local_stage.py'],120)\n    run([sys.executable,'-u',SOURCE/'test_semantic_data.py'],120)")
+        execution=execution.replace('FULL10 COMPLETE; no TEST or prompt/bank yet.','BANK+PROMPT FULL10 COMPLETE; VALID only, no TEST/SCST/rerank.')
+        intro='''# Bank + prompt on CLIP patch backbone — fresh 10 epochs XE
+
+GPU **T4 ×2**, Internet ON, Save & Run All. Attach FOUR Datasets:
+- `ducanh2403/visual-cache`
+- `vuthetam/mscoco-2014`
+- `ducanh2403/csa-semantic-banks-v130`
+- `ducanh2403/csa-prompt-full-karpathy-v175`
+
+No API Secret or checkpoint input. Starts fresh seed42; baseline199 weights are NOT loaded. Same 4-layer decoder, core initialization digest, all113287TRAIN/566747captionevents, global32,177110updates, warmup/cosine/Adam/FP32 as baseline199. Adds learned noun/verb banks and image-specific object/relation prompt adapters. This tests their COMBINED addition; extra parameters/compute are measured, not a pure prompt ablation. No promise of improved CIDEr or hallucination.
+
+Reuses fixed bank130/text175; no CLIP/UPT inference. Matched YOLO boxes map into fractional-area 14×14 patch pools/masks, resolve relation endpoints by instance ID. Original ROI indices never index patches. New residual outputs start at zero, yielding the original patch memory; trainable modules then learn through XE. Bank/text vectors remain frozen.
+
+Sequential local FP16 patch stage~33.17GiB plus~1.2GiB semantic memmaps, needs40GiB /tmp and4GiB Working. Parent10.5h STOP cap includes setup/preparation; prep90min, not ETA or guaranteed billing. Real GPU/core-initialization/empty-slot/nonzero-mask/DDP-gradient/beam/IO-memory guards before training.64 probe updates discarded, main worker starts fresh. Full run proceeds only if measured projection fits; keep atomic checkpoints if capped, no automatic restart/extension.
+
+Each epoch: VALID5000 beam5/max20 and XE NLL/CIDEr; best=maxVALIDCIDEr, earlier ties. Saved best/end captions: BLEU1/4, ROUGE-L, CHAIRs/i and recall. METEOR/SPICE/TEST later. No SCST or reranking. Preserve best.bin AND checkpoint.bin with receipts, cursor, Adam and RNG. Send `clip_patch_bank_prompt_xe10_v1_review.zip`.
+
+Budget confirmed26h yours/30h Ngân. Run this NEW branch on ONE account; baseline199 is already complete. Author checks only NumPy/mock/AST, not local Torch, models, CUDA or scorers.
+'''
     nb=dict(nbformat=4,nbformat_minor=5,metadata=dict(kernelspec=dict(display_name='Python 3',language='python',name='python3'),kaggle=dict(isInternetEnabled=True,isGpuEnabled=True)),cells=[cell('markdown',intro),cell('code',setup),cell('code',runner),cell('code',execution)])
     name='CLIP_PATCH_BASELINE_FULL_XE10_LOCAL_V3_2GPU.ipynb' if local_stage else 'CLIP_PATCH_BASELINE_FULL_XE10_2GPU.ipynb'
+    if semantic:name='CLIP_PATCH_BANK_PROMPT_SCRATCH_XE10_2GPU.ipynb'
     p=HERE/name;p.write_text(json.dumps(nb,ensure_ascii=False,indent=1)+'\n',encoding='utf-8');print(p.name,p.stat().st_size,'bytes',len(mapping),'pins',revision)
 
 if __name__=='__main__':
-    p=argparse.ArgumentParser();p.add_argument('--revision',required=True);p.add_argument('--local-stage',action='store_true');a=p.parse_args();make(a.revision,a.local_stage)
+    p=argparse.ArgumentParser();p.add_argument('--revision',required=True);p.add_argument('--local-stage',action='store_true');p.add_argument('--semantic',action='store_true');a=p.parse_args();make(a.revision,a.local_stage,a.semantic)

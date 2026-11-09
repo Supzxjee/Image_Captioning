@@ -47,9 +47,9 @@ def score(cfg):
         binary='best.bin' if name.startswith('best') else 'checkpoint.bin'
         if sha(out/binary)!=receipt['sha256']:raise ValueError('Changed '+binary)
     save(out/'result.json',dict(status='CLIP_PATCH_FULL_XE10_COMPLETE',epochs=10,updates=10*STEPS,caption_events=10*TRAIN_EVENTS,train_images=113287,validation_images=5000,
-        best_epoch=state['best_epoch'],metrics_by_epoch=results,receipts=receipts,test_used=False,SCST=False,reranking=False,
+        method=read(out/'identity.json').get('method','plain_patch_v1'),best_epoch=state['best_epoch'],metrics_by_epoch=results,receipts=receipts,test_used=False,SCST=False,reranking=False,
         metrics_not_measured=['METEOR','SPICE','TEST metrics'],selection='maxVALID CIDEr among fixed10epochs; earlier ties; all metrics use same saved checkpoint captions',
-        limits=['One seed and reused VALID.','New architecture/patch IO/LR schedule differ from old plain: not an isolated bank-effect comparison.','No guarantee of110CIDEr or full convergence.']))
+        limits=(['Combined bank+prompt addition; parameter count and compute increase.','Geometric patch support is not ground-truth localization.'] if cfg.get('semantic') else [])+['One seed and reused VALID.','New architecture/patch IO/LR schedule differ from old plain: not an isolated bank-effect comparison.','No guarantee of110CIDEr or full convergence.']))
 
 if __name__=='__main__':
     p=argparse.ArgumentParser();p.add_argument('mode',choices=('probe','score'));p.add_argument('--config',required=True)
