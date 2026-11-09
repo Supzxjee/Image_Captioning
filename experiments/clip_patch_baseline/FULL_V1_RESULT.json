@@ -1,0 +1,17 @@
+{
+  "status": "FULL_XE10_STOPPED_BEFORE_TRAINING",
+  "save_version": null,
+  "archive_sha256": "7f0c30bd6a16335844ca9e6b1921f1e353ba05bb3d3afe67c9c00a3803639df4",
+  "author_checks": "cached JSON/source arithmetic only; no model/scorer/binary execution",
+  "updates": 0,
+  "discarded_preflight_updates": 64,
+  "full_median_step_seconds": 1.4026414905000024,
+  "full_p90_step_seconds": 2.2095958119999977,
+  "projection_hours": 148.3837923972312,
+  "available_hours": 10.114455416218611,
+  "median_train_only_hours": 69.00606510623761,
+  "peak_GiB": 0.7900876998901367,
+  "cache_GiB": 34.769049406051636,
+  "preflight_passed": true,
+  "next": "Propose CPU-only sequential/local-cache IO comparison; do not extend wall cap or change sampling/model without a measured plan."
+}
