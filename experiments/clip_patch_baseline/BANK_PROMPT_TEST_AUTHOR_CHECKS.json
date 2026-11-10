@@ -67,5 +67,14 @@
     "Torch/model/CUDA/beam inference",
     "Official scorers"
   ],
-  "result_pending_user": true
+  "result_pending_user": true,
+  "github_notebook_blob_sha256": "25c21f76c633dc1a4dabfa793d80396abe36d281976a4ccf8f290281877fa1eb",
+  "remote_Git_blob_and_Downloads_JSON_match": true,
+  "sheet_protocol": {
+    "tab": "Kết quả mới",
+    "range": "A134:L136",
+    "values_format_API_readback": true,
+    "native_visual_check": false,
+    "status": "READY unrun"
+  }
 }
