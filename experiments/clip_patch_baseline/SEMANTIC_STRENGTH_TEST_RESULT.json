@@ -1,0 +1,177 @@
+{
+  "status": "SEMANTIC_STRENGTH_TEST_REVIEWED_COMPLETE",
+  "evaluation_source": {
+    "notebook_slug": "kltnnnnnff",
+    "save_version": 14,
+    "owner": "ducanh2403",
+    "version_user_confirmed": true,
+    "notebook_inherited_from_session": true
+  },
+  "checkpoint_source_version": "ducanh2403/kltnnnnnff/12",
+  "checkpoint_sha256": "456681d45b8b9ce8e3d34f3452c5f6b7bebdef21fd2ad3e6f344790ccbe4ccf9",
+  "source_commit": "29fa3bd7b0353941eb40038249a13b4e832c36f1",
+  "archive_sha256": "4945ce495dbb9cf777b370de64aa1e152baf399f4c44a27f7b754338720bbdca",
+  "checks_passed": 5074,
+  "images": 5000,
+  "epoch": 8,
+  "metrics": {
+    "BLEU_1": 0.7729496073586494,
+    "BLEU_4": 0.37105026813968905,
+    "CIDEr": 1.2091047167277467,
+    "ROUGE_L": 0.5731459850957302,
+    "METEOR": 0.2851807449453806,
+    "SPICE": 0.2157701964672121,
+    "CHAIRs": 0.0394,
+    "CHAIRi": 0.028307097486882076,
+    "Recall": 0.43376095516321606,
+    "NLL": 2.1171816683907685
+  },
+  "display_x100": {
+    "BLEU_1": 77.29496073586493,
+    "BLEU_4": 37.105026813968905,
+    "CIDEr": 120.91047167277466,
+    "ROUGE_L": 57.314598509573024,
+    "METEOR": 28.51807449453806,
+    "SPICE": 21.57701964672121,
+    "CHAIRs": 3.94,
+    "CHAIRi": 2.8307097486882076,
+    "Recall": 43.376095516321605
+  },
+  "chair_counts": {
+    "images": 5000,
+    "hallucinated_captions": 197,
+    "hallucinated_mentions": 205,
+    "object_mentions": 7242,
+    "recalled_unique": 6830,
+    "reference_unique": 15746
+  },
+  "baseline199": {
+    "metrics": {
+      "BLEU_1": 0.7716226865162872,
+      "BLEU_4": 0.37167523449416334,
+      "CIDEr": 1.2051445498745914,
+      "ROUGE_L": 0.575849765471024,
+      "METEOR": 0.2878676248072809,
+      "SPICE": 0.21647453602041697,
+      "CHAIRs": 0.0516,
+      "CHAIRi": 0.03595750476709343,
+      "Recall": 0.43725390575384226,
+      "NLL": 2.121833581996203
+    },
+    "chair_counts": {
+      "images": 5000,
+      "hallucinated_captions": 258,
+      "hallucinated_mentions": 264,
+      "object_mentions": 7342,
+      "recalled_unique": 6885,
+      "reference_unique": 15746
+    }
+  },
+  "delta_raw": {
+    "BLEU_1": 0.0013269208423621892,
+    "BLEU_4": -0.0006249663544742878,
+    "CIDEr": 0.003960166853155256,
+    "ROUGE_L": -0.0027037803752937295,
+    "METEOR": -0.0026868798619003043,
+    "SPICE": -0.0007043395532048691,
+    "CHAIRs": -0.012200000000000003,
+    "CHAIRi": -0.0076504072802113555,
+    "Recall": -0.0034929505906262093,
+    "NLL": -0.004651913605434377
+  },
+  "delta_display": {
+    "BLEU_1": 0.13269208423621892,
+    "BLEU_4": -0.06249663544742878,
+    "CIDEr": 0.3960166853155256,
+    "ROUGE_L": -0.27037803752937295,
+    "METEOR": -0.2686879861900304,
+    "SPICE": -0.07043395532048691,
+    "CHAIRs": -1.2200000000000002,
+    "CHAIRi": -0.7650407280211355,
+    "Recall": -0.3492950590626209
+  },
+  "paired": {
+    "CHAIR_flags_removed": 142,
+    "CHAIR_flags_introduced": 81,
+    "CIDEr_delta_CI95_points": [
+      -0.9979154943107335,
+      1.9193239722285353
+    ],
+    "CHAIRs_delta_CI95_pp": [
+      -1.7999999999999998,
+      -0.64
+    ],
+    "samples": 2000,
+    "seed": 42,
+    "limits": "Saved-caption conditional bootstrap, fixed reference IDF; no seed variation, multiple-testing or selection correction; not a formal equivalence/noninferiority test."
+  },
+  "runtime_policy": {
+    "training_torch": "2.11.0+cu130",
+    "inference_torch": "2.11.0+cu130",
+    "cuda_wheel_changed": false,
+    "policy": "Same publicTorch2.11.0 observed CUDA wheels; strictstate and actual GPU beam-path check required.",
+    "bitwise_cross_build_equivalence_established": false
+  },
+  "mean_words": 9.317,
+  "empty_captions": 0,
+  "short_le2": 0,
+  "stage_seconds": 538.528398135,
+  "inference_worker_seconds": 125.1827828459999,
+  "same_historical_test_refs": true,
+  "training": false,
+  "reranking": false,
+  "test_tuning": false,
+  "prior_project_test_exposure": true,
+  "limits": [
+    "No local Torch/model/scorer/checkpoint/feature load; text/seal/arithmetic audit only.",
+    "BLEU/METEOR/ROUGE runtime-reported; CIDEr/SPICE saved per-image means and CHAIR counts replayed, no official scorer rerun.",
+    "Combined system vs plain baseline does not isolate M2/M3/text/masks; strength comparison adds 1025 parameters.",
+    "CIDEr point improves slightly; conditional interval and declines in METEOR/ROUGE/SPICE and recall must be reported.",
+    "One seed; prior project TEST exposure. Model selection was fixed on VALID before this TEST."
+  ],
+  "previous_bank_prompt": {
+    "metrics": {
+      "BLEU_1": 0.7695295091360377,
+      "BLEU_4": 0.3665534838941401,
+      "CIDEr": 1.2045198285530834,
+      "ROUGE_L": 0.5732367925343549,
+      "METEOR": 0.28654743770779645,
+      "SPICE": 0.21600762872329643,
+      "CHAIRs": 0.0416,
+      "CHAIRi": 0.029299014238773274,
+      "Recall": 0.4386510859900927,
+      "NLL": 2.1235277323692157
+    },
+    "chair_counts": {
+      "images": 5000,
+      "hallucinated_captions": 208,
+      "hallucinated_mentions": 214,
+      "object_mentions": 7304,
+      "recalled_unique": 6907,
+      "reference_unique": 15746
+    },
+    "delta_display": {
+      "BLEU_1": 0.34200982226116894,
+      "BLEU_4": 0.4496784245548946,
+      "CIDEr": 0.4584888174663293,
+      "ROUGE_L": -0.009080743862466267,
+      "METEOR": -0.13666927624158554,
+      "SPICE": -0.023743225608433005,
+      "CHAIRs": -0.22000000000000006,
+      "CHAIRi": -0.09919167518911975,
+      "Recall": -0.4890130826876671
+    },
+    "paired": {
+      "CIDEr_delta_CI95_points": [
+        -0.9977309396945222,
+        1.845788719285045
+      ],
+      "CHAIRs_delta_CI95_pp": [
+        -0.72,
+        0.26
+      ],
+      "CHAIR_flags_removed": 84,
+      "CHAIR_flags_introduced": 73
+    }
+  }
+}
