@@ -1,0 +1,63 @@
+{
+  "status": "STATIC_NUMPY_MOCK_PASS_GPU_PENDING",
+  "revision": "423fac4e244ce125abe4f30b99353a72852e4087",
+  "source_files": 40,
+  "reachable_local_modules": [
+    "bank_layers",
+    "csa_full_data",
+    "csa_full_runtime",
+    "csa_patch_model",
+    "csa_shared_model",
+    "csa_sharing_data",
+    "cuda_runtime_guard",
+    "data",
+    "full_data",
+    "full_runtime",
+    "gradient_agreement",
+    "local_stage",
+    "memory_fusion",
+    "patch_beam",
+    "patch_data",
+    "patch_model",
+    "real_bank_data",
+    "run_csa_full",
+    "saved_quality_data",
+    "score_csa_full",
+    "score_full",
+    "semantic_data",
+    "semantic_patch_model",
+    "semantic_training"
+  ],
+  "missing_module_regression": "PASS",
+  "import_precheck_before_staging": true,
+  "model_recipe_bytes_unchanged": true,
+  "tests": [
+    {
+      "file": "test_csa_full_data.py",
+      "result": "test_all_full_events_once_deterministic_and_tail (__main__.Checks.test_all_full_events_once_deterministic_and_tail) ... ok\ntest_horizon_and_progressive_epoch_budget (__main__.Checks.test_horizon_and_progressive_epoch_budget) ... ok\ntest_runner_static_accelerate_sharing_resume_no_legacy_model (__main__.Checks.test_runner_static_accelerate_sharing_resume_no_legacy_model) ... ok\ntest_unique_collation_caption_order_tail_and_cursor (__main__.Checks.test_unique_collation_caption_order_tail_and_cursor) ... ok\n\n----------------------------------------------------------------------\nRan 4 tests in 3.226s\n\nOK\n"
+    },
+    {
+      "file": "test_full_data.py",
+      "result": "test_encoding_matches_existing_vocabulary_policy (__main__.Checks.test_encoding_matches_existing_vocabulary_policy) ... ok\ntest_full_prepare_reads_only_headers_no_feature_arrays (__main__.Checks.test_full_prepare_reads_only_headers_no_feature_arrays) ... ok\ntest_full_sources_parse_and_scope (__main__.Checks.test_full_sources_parse_and_scope) ... ok\ntest_loader_pickle_drops_open_reader (__main__.Checks.test_loader_pickle_drops_open_reader) ... ok\ntest_lr_fixed_horizon_and_unequal_final_batch (__main__.Checks.test_lr_fixed_horizon_and_unequal_final_batch) ... ok\ntest_resume_cursor_and_validation_history (__main__.Checks.test_resume_cursor_and_validation_history) ... ok\ntest_schedule_is_complete_shuffled_and_TRAIN_only (__main__.Checks.test_schedule_is_complete_shuffled_and_TRAIN_only) ... ok\n\n----------------------------------------------------------------------\nRan 7 tests in 0.787s\n\nOK\n"
+    },
+    {
+      "file": "test_semantic_data.py",
+      "result": "test_area_pool_equivalence_and_edges (__main__.Checks.test_area_pool_equivalence_and_edges) ... ok\ntest_bank_word_order_and_frozen_vectors (__main__.Checks.test_bank_word_order_and_frozen_vectors) ... ok\ntest_exact_root_seal_nested_and_tampering (__main__.Checks.test_exact_root_seal_nested_and_tampering) ... ok\ntest_frozen_metadata_and_neural_source_contracts (__main__.Checks.test_frozen_metadata_and_neural_source_contracts) ... ok\ntest_instance_link_not_roi_number_and_empty (__main__.Checks.test_instance_link_not_roi_number_and_empty) ... ok\ntest_reject_broken_links_geometry_and_reference_fields (__main__.Checks.test_reject_broken_links_geometry_and_reference_fields) ... ok\ntest_small_stage_full_coverage_and_context_memmaps (__main__.Checks.test_small_stage_full_coverage_and_context_memmaps) ... ok\n\n----------------------------------------------------------------------\nRan 7 tests in 0.995s\n\nOK\n"
+    },
+    {
+      "file": "test_local_stage.py",
+      "result": "test_changed_sealed_map_rejected (__main__.Checks.test_changed_sealed_map_rejected) ... ok\ntest_deadline_never_seals_partial_stage (__main__.Checks.test_deadline_never_seals_partial_stage) ... ok\ntest_full_local_stage_bytes_mapping_and_no_TEST (__main__.Checks.test_full_local_stage_bytes_mapping_and_no_TEST) ... ok\ntest_insufficient_disk_refuses_before_allocation (__main__.Checks.test_insufficient_disk_refuses_before_allocation) ... ok\ntest_sources_parse_and_loader_only_change (__main__.Checks.test_sources_parse_and_loader_only_change) ... ok\n\n----------------------------------------------------------------------\nRan 5 tests in 1.037s\n\nOK\n"
+    },
+    {
+      "file": "test_gradient_agreement.py",
+      "result": "test_invalid_shape_and_nonfinite_rejected (__main__.Checks.test_invalid_shape_and_nonfinite_rejected) ... ok\ntest_near_zero_absolute_guard (__main__.Checks.test_near_zero_absolute_guard) ... ok\ntest_reject_wrong_normalization_and_localized_missing_gradient (__main__.Checks.test_reject_wrong_normalization_and_localized_missing_gradient) ... ok\ntest_scaled_small_relative_error_and_report (__main__.Checks.test_scaled_small_relative_error_and_report) ... ok\n\n----------------------------------------------------------------------\nRan 4 tests in 0.004s\n\nOK\n"
+    }
+  ],
+  "not_run": [
+    "Torch/Accelerate import locally",
+    "model",
+    "Kaggle",
+    "CUDA",
+    "official scorers"
+  ]
+}

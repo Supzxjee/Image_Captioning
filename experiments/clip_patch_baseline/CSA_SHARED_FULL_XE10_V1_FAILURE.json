@@ -1,0 +1,28 @@
+{
+  "status": "FAILED_BEFORE_MODEL_CONSTRUCTION",
+  "archive_sha256": "efe2bb45f2997bf1dc4868b1766c64df2a5bd3a88eeba0a5e74972ac65d5ef42",
+  "source": "64e2f07f03b9ef6ab8d83b60948fb7d1d8dbccd8",
+  "run_status": {
+    "complete": false,
+    "epochs_requested": 10,
+    "test_used": false,
+    "SCST": false,
+    "reranking": false
+  },
+  "raw_stage": {
+    "status": "LOCAL_PATCH_STAGE_COMPLETE",
+    "images": 118287,
+    "patch_bytes": 35611011072,
+    "seconds": 2566.421199813,
+    "smoke_raw_rows_replayed": 256,
+    "all_copy_blocks_byte_equal": true,
+    "test_features_read": false
+  },
+  "optimizer_updates": 0,
+  "checkpoint_created": false,
+  "quality_metrics": null,
+  "cause": "Packaged source omitted memory_fusion.py required transitively by semantic_patch_model.py",
+  "fix": "V2 packages module, statically checks reachable local imports, performs Kaggle class import before staging",
+  "user_execution": "Save Version; /tmp stage not present in saved Output",
+  "no_local_model_execution": true
+}
