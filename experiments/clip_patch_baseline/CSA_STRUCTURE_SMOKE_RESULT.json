@@ -1,0 +1,51 @@
+{
+  "status": "CSA_STRUCTURE_SMOKE_REVIEWED_COMPLETE",
+  "evaluation_source": {
+    "notebook_slug": "kltnnnnnff",
+    "save_version": 15,
+    "version_user_confirmed": true,
+    "notebook_inherited_from_session": true
+  },
+  "archive_sha256": "8c6b638707dad0652dbd91386bf1d718e2b523fbe75c95bb514ff2b4637d57e8",
+  "source_commit": "0323747b13122800aa6b5e6ffd9b2d2913054ee8",
+  "checks_passed": 52,
+  "images": 256,
+  "updates": 200,
+  "global_caption_events": 6400,
+  "TRAIN_probe_NLL_before": 9.239455223083496,
+  "TRAIN_probe_NLL_after": 4.358259677886963,
+  "trainable_parameters": 53183736,
+  "steady_step_median_seconds": 0.244246234000002,
+  "steady_step_p90_seconds": 0.2495206451999934,
+  "global_caption_events_per_second": 131.01532611552872,
+  "guard_peak_allocated_GiB": 2.643240451812744,
+  "train_and_final_probe_peak_allocated_GiB": 1.9914908409118652,
+  "raw_stage_seconds": 78.90742974,
+  "worker_seconds": 60.57271481299995,
+  "semantic_objects": 779,
+  "semantic_relations": 109,
+  "first_rank_samples": [
+    "a",
+    "a",
+    "a",
+    "a",
+    "a",
+    "a",
+    "a",
+    "a"
+  ],
+  "all_sample_captions_single_a": true,
+  "approximate_train_only_hours_per_full_epoch": 1.2016236251038985,
+  "approximate_train_only_hours_for10": 12.016236251038988,
+  "full_training_complete": false,
+  "quality_evaluated": false,
+  "test_used": false,
+  "validation_used": false,
+  "limits": [
+    "Model/gradient/beam guards reported by user-run pinned code; no local model or binary validation. Metadata/source/log/arithmetic audit only.",
+    "Raw H5/NPY payloads absent from review ZIP; original staged SHA checks reported by runtime, not rehashed locally.",
+    "Eight TRAIN examples from first rank all decode as a; functional PASS is not caption quality, convergence or CIDEr evidence.",
+    "Tiny cached pool, variable caption lengths and early EOS: full-epoch timing is arithmetic only, excludes setup/staging/VALID/scorers/checkpoints and is not an ETA or billing estimate. Beam8 timing is not usable as mature-model VALID ETA.",
+    "Paper structure with CLIP substitutions and extra UPT prompt adapters, not exact full-system CSA. No new training decision or automatic restart."
+  ]
+}
