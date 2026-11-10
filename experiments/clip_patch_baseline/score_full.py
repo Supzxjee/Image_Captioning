@@ -41,6 +41,7 @@ def score(cfg):
         metric,counts=chair_counts(read(dest/'chair_output.json'),rows)
         result=dict(epoch=epoch,CIDEr=float(cider),BLEU_1=float(bleu[0]),BLEU_4=float(bleu[3]),ROUGE_L=float(rouge),**metric,counts=counts,NLL=state['history'][epoch-1]['NLL'],
             mean_words=float(np.mean([len(r['caption'].split()) for r in rows])),short_le2=sum(len(r['caption'].split())<=2 for r in rows))
+        if cfg.get('semantic_strength_gate'):result['semantic_strength']=state['history'][epoch-1]['semantic_strength']
         save(dest/'result.json',result);save(dest/'cider_per_image.json',[dict(coco_id=i,CIDEr=float(v)) for i,v in zip(ref,per)]);results[str(epoch)]=result
     receipts={n:read(out/n) for n in ('best_receipt.json','checkpoint_receipt.json')}
     for name,receipt in receipts.items():

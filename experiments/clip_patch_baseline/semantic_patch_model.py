@@ -3,6 +3,7 @@ import torch
 from torch import nn
 from patch_model import PatchCaptioner
 from bank_layers import Config,SemanticAggregation,Alignment
+from memory_fusion import fuse_memory
 
 
 class BankMemory(nn.Module):
@@ -33,7 +34,7 @@ class PromptMemory(nn.Module):
 
 
 class SemanticPatchCaptioner(nn.Module):
-    def __init__(self,vocab,nouns,verbs):
+    def __init__(self,vocab,nouns,verbs,strength_gate=False):
         super().__init__()
         # Construct the baseline FIRST; never reinitialize its modules recursively.
         self.base=PatchCaptioner(vocab)
@@ -42,19 +43,31 @@ class SemanticPatchCaptioner(nn.Module):
         self.object_prompt=PromptMemory(512+512+4)
         self.relation_prompt=PromptMemory(512+512+512+8)
         self.gate=nn.Linear(1024,512);nn.init.zeros_(self.gate.weight);nn.init.zeros_(self.gate.bias)
+        self.strength_gate=nn.Linear(1024,1) if strength_gate else None
+        if self.strength_gate is not None:
+            nn.init.zeros_(self.strength_gate.weight);nn.init.zeros_(self.strength_gate.bias)
     @property
     def project(self):return self.base.project
     @property
     def head(self):return self.base.head
-    def memories(self,patches,p):
-        visual=self.base.encode(patches);mo=self.object_bank(visual,self.noun_bank);mr=self.relation_bank(mo,self.verb_bank)
+    def memories(self,patches,p,visual=None):
+        if visual is None:visual=self.base.encode(patches)
+        mo=self.object_bank(visual,self.noun_bank);mr=self.relation_bank(mo,self.verb_bank)
         obj=torch.cat((p['object_text'],torch.bmm(p['object_weights'],mo),p['object_box']),-1)
         rel=torch.cat((p['relation_text'],torch.bmm(p['subject_weights'],mo),torch.bmm(p['target_weights'],mo),p['relation_geometry']),-1)
         vo=self.object_prompt(mo,obj,p['object_weights'],p['object_valid'])
         vr=self.relation_prompt(mr,rel,p['subject_weights']+p['target_weights'],p['relation_valid'])
         return vo,vr
     def encode(self,patches,p):
+        if self.strength_gate is not None:return self.encode_with_gate(patches,p)[0]
         vo,vr=self.memories(patches,p);gate=self.gate(torch.cat((vo,vr),-1)).sigmoid()
         return gate*vo+(1-gate)*vr
+    def encode_with_gate(self,patches,p):
+        if self.strength_gate is None:raise ValueError('Strength-gated model required')
+        visual=self.base.encode(patches);vo,vr=self.memories(patches,p,visual)
+        branch=self.gate(torch.cat((vo,vr),-1)).sigmoid()
+        delta=branch*(vo-visual)+(1-branch)*(vr-visual)
+        strength=self.strength_gate(torch.cat((visual,delta),-1)).sigmoid()
+        return fuse_memory(visual,vo,vr,branch,strength),strength
     def decode(self,memory,prefix):return self.base.decode(memory,prefix)
     def forward(self,patches,prefix,p):return self.decode(self.encode(patches,p),prefix)

@@ -14,7 +14,7 @@ def make(revision,semantic=False):
     mapping={PREFIX+n:n for n in ('TEST199_LOCK.json','TEST199_PROTOCOL.md','TEST199_BUILD_V2_PROTOCOL.md','SMOKE_SOURCE.json','test199_data.py','run_test199.py','test_test199.py','patch_model.py','patch_beam.py','patch_data.py','full_data.py','make_test199_notebook.py')}
     mapping.update({'experiments/csa_paper/'+n:n for n in ('data.py','real_bank_data.py','cuda_runtime_guard.py','saved_quality_data.py','score_prompt_test_extra.py')})
     if semantic:
-        mapping.update({PREFIX+n:n for n in ('semantic_test_data.py','semantic_data.py','semantic_patch_model.py','test_semantic_test.py','BANK_PROMPT_TEST_PROTOCOL.md')})
+        mapping.update({PREFIX+n:n for n in ('semantic_test_data.py','semantic_data.py','semantic_patch_model.py','memory_fusion.py','test_semantic_test.py','BANK_PROMPT_TEST_PROTOCOL.md')})
         mapping.update({'experiments/csa_paper/model.py':'bank_layers.py','experiments/csa_paper/PROMPT_TEST_PREPARATION_RESULT.json':'PROMPT_TEST_PREPARATION_RESULT.json'})
     hashes={n:hashlib.sha256(subprocess.check_output(['git','show',revision+':'+n],cwd=ROOT)).hexdigest() for n in mapping}
     setup=f"""import hashlib,json,os,queue,signal,subprocess,sys,tempfile,threading,time,traceback,urllib.request,zipfile,shutil

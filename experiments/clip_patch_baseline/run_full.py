@@ -49,7 +49,7 @@ def distributed(cfg,guard=False):
         refs=read(Path(cfg['stage'])/'validation_references.json')
         identity=dict(schema='clip_patch_full_xe10_v1',source=read(out/'source_receipt.json'),stage_files=stage['files_sha256'],raw_sources=stage['sources'],feature_profile=stage['feature_profile'],
             initial_sha256=guards[0]['initial_tensor_sha256'],global_batch=32,epochs=10,lr='warmup1epoch8e-6to1e-4_then_cosine_to1e-5',dropout=.1,clip1=True,seed=42,
-            method='bank_prompt_patch_v1' if context else 'plain_patch_v1',software={k:importlib.metadata.version(k) for k in ('torch','numpy','pycocoevalcap')},test_used=False)
+            method=('bank_prompt_strength_v1' if cfg.get('semantic_strength_gate') else 'bank_prompt_patch_v1') if context else 'plain_patch_v1',software={k:importlib.metadata.version(k) for k in ('torch','numpy','pycocoevalcap')},test_used=False)
         optimizer=torch.optim.Adam(model.parameters(),lr=8e-6,betas=(.9,.99),eps=1e-8,weight_decay=0)
         state=dict(epoch=1,batch_cursor=0,phase='train',updates=0,caption_events=0,history=[],best_epoch=None,best_CIDEr=None,epoch_nll_sum=0.,epoch_tokens=0)
         random.seed(42+rank);np.random.seed(42+rank);torch.manual_seed(4242+rank);torch.cuda.manual_seed(4242+rank)
@@ -95,11 +95,16 @@ def distributed(cfg,guard=False):
         if projected>deadline-time.monotonic():checkpoint();raise TimeoutError('Measured full IO/train/decode projection exceeds cap; no automatic train extension')
         def validate(epoch):
             wrapped.eval();folder=out/'evaluations'/f'epoch_{epoch:02d}';folder.mkdir(parents=True,exist_ok=True);rows=[];nll_sum=0.;tokens=0
-            images=np.arange(TRAIN_IMAGES,TRAIN_IMAGES+VALID_IMAGES)[rank::2]
+            images=np.arange(TRAIN_IMAGES,TRAIN_IMAGES+VALID_IMAGES)[rank::2];gate_stats=None
             with torch.inference_mode():
                 for x,index in loader(ImageBatches(cfg['stage'],images)):
                     if time.monotonic()>deadline-60:raise TimeoutError('VALID decode deadline; preserve training checkpoint')
-                    memory=memory_for(x.to(device,non_blocking=True),index);seq,scores=beam_search(model,memory)
+                    xx=x.to(device,non_blocking=True)
+                    if cfg.get('semantic_strength_gate'):
+                        from memory_fusion import update_gate_stats
+                        memory,alpha=model.encode_with_gate(xx,context.images(index,device));gate_stats=update_gate_stats(gate_stats,alpha.cpu().numpy())
+                    else:memory=memory_for(xx,index)
+                    seq,scores=beam_search(model,memory)
                     for i,s,v in zip(index.tolist(),seq[:,0].cpu().tolist(),scores[:,0].cpu().tolist()):rows.append(dict(coco_id=int(data['ids'][i]),caption=text_from_ids(s,words),ids=s,score=float(v)))
                 ev=np.flatnonzero(np.isin(data['caption_image'],images))
                 for x,seq,event_ids in loader(CaptionBatches(cfg['stage'],ev,rank=None)):
@@ -107,7 +112,12 @@ def distributed(cfg,guard=False):
                     x=x.to(device,non_blocking=True);seq=seq.to(device,non_blocking=True);logits=predict(model,x,seq[:,:-1],event_ids)
                     nll_sum+=float(F.cross_entropy(logits.flatten(0,1),seq[:,1:].flatten(),ignore_index=0,reduction='sum'));tokens+=int((seq[:,1:]!=0).sum())
             if len(rows)!=2500:raise ValueError('Incomplete VALID worker')
-            save(folder/f'val_rank{rank}.json',rows);save(folder/f'worker{rank}.json',dict(complete=True,epoch=epoch,images=2500,NLL_sum=nll_sum,NLL_tokens=tokens))
+            save(folder/f'val_rank{rank}.json',rows)
+            worker=dict(complete=True,epoch=epoch,images=2500,NLL_sum=nll_sum,NLL_tokens=tokens)
+            if cfg.get('semantic_strength_gate'):
+                if gate_stats['count']!=2500*196:raise ValueError('Incomplete VALID strength diagnostics')
+                worker['semantic_strength_accumulator']=gate_stats
+            save(folder/f'worker{rank}.json',worker)
             dist.barrier(device_ids=[rank]);point=[None]
             if rank==0:
                 from pycocoevalcap.tokenizer.ptbtokenizer import PTBTokenizer
@@ -120,6 +130,9 @@ def distributed(cfg,guard=False):
                 save(folder/'cider_per_image.json',[dict(coco_id=i,CIDEr=float(s)) for i,s in zip(gts,per)])
                 workers=[read(folder/f'worker{r}.json') for r in (0,1)]
                 value=dict(epoch=epoch,CIDEr=float(cider),NLL=sum(w['NLL_sum'] for w in workers)/sum(w['NLL_tokens'] for w in workers),TRAIN_online_NLL=state['epoch_nll_sum']/state['epoch_tokens'])
+                if cfg.get('semantic_strength_gate'):
+                    from memory_fusion import merge_gate_stats
+                    value['semantic_strength']=merge_gate_stats([w['semantic_strength_accumulator'] for w in workers])
                 save(folder/'result.json',value);value['files_sha256']={p.name:sha(p) for p in folder.iterdir() if p.is_file()};point[0]=value
                 print('FULL VALID',value,flush=True)
             dist.broadcast_object_list(point,src=0);return point[0]

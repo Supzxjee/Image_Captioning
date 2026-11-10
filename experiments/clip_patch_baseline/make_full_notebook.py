@@ -9,17 +9,19 @@ HERE=Path(__file__).resolve().parent;ROOT=HERE.parents[1];PREFIX='experiments/cl
 sys.path.insert(0,str(ROOT/'experiments/csa_paper'))
 from make_smoke_notebook import RUNNER,cell
 
-def make(revision,local_stage=False,semantic=False):
+def make(revision,local_stage=False,semantic=False,strength_gate=False):
+    if strength_gate and not semantic:raise ValueError("Strength gate requires semantic modules")
     if semantic and not local_stage:raise ValueError("Semantic full run requires local staging")
     revision=subprocess.check_output(['git','rev-parse',revision],cwd=ROOT,text=True).strip()
     files=('full_data.py','full_runtime.py','run_full.py','patch_model.py','patch_beam.py','score_full.py','patch_data.py','test_full_data.py','make_full_notebook.py','SMOKE_SOURCE.json','FULL_XE10_PROTOCOL.md')
     mapping={PREFIX+n:n for n in files};mapping.update({'experiments/csa_paper/'+n:n for n in ('data.py','real_bank_data.py','cuda_runtime_guard.py','saved_quality_data.py')})
     if local_stage:mapping.update({PREFIX+n:n for n in ('local_stage.py','test_local_stage.py','LOCAL_STAGE_V3_PROTOCOL.md')})
     if semantic:
-        mapping.update({PREFIX+n:n for n in ('semantic_data.py','semantic_patch_model.py','semantic_training.py','test_semantic_data.py','BANK_PROMPT_SCRATCH_PROTOCOL.md')})
+        mapping.update({PREFIX+n:n for n in ('semantic_data.py','semantic_patch_model.py','memory_fusion.py','semantic_training.py','test_semantic_data.py','BANK_PROMPT_SCRATCH_PROTOCOL.md')})
         mapping.update({'experiments/csa_paper/model.py':'bank_layers.py','experiments/csa_paper/SAVE_BANK_V130_PACKAGE.json':'SAVE_BANK_V130_PACKAGE.json',
             'experiments/csa_paper/lemma_correction_review_text/bank_words_corrected.json':'bank_words_corrected.json',
             'experiments/csa_paper/FULL_PROMPT_FRESH_V175_RESULT.json':'FULL_PROMPT_FRESH_V175_RESULT.json'})
+    if strength_gate:mapping.update({PREFIX+n:n for n in ('SEMANTIC_STRENGTH_PROTOCOL.md','test_memory_fusion.py')})
     hashes={n:hashlib.sha256(subprocess.check_output(['git','show',revision+':'+n],cwd=ROOT)).hexdigest() for n in mapping}
     setup=f'''import hashlib,json,os,queue,signal,subprocess,sys,tempfile,threading,time,traceback,urllib.request,zipfile,shutil,tarfile
 from pathlib import Path
@@ -151,10 +153,18 @@ Each epoch: VALID5000 beam5/max20 and XE NLL/CIDEr; best=maxVALIDCIDEr, earlier 
 
 Budget confirmed26h yours/30h Ngân. Run this NEW branch on ONE account; baseline199 is already complete. Author checks only NumPy/mock/AST, not local Torch, models, CUDA or scorers.
 '''
+    if strength_gate:
+        setup=setup.replace('semantic=True,','semantic=True,semantic_strength_gate=True,').replace('clip_patch_bank_prompt_xe10_v1','clip_patch_semantic_strength_xe10_v1')
+        execution=execution.replace("SOURCE/'test_semantic_data.py'],120)", "SOURCE/'test_semantic_data.py'],120)\n    run([sys.executable,'-u',SOURCE/'test_memory_fusion.py'],120)")
+        intro=intro.replace('# Bank + prompt on CLIP patch backbone — fresh 10 epochs XE','# Semantic strength gate — full bank + prompt, fresh 10 epochs XE')
+        intro=intro.replace('clip_patch_bank_prompt_xe10_v1_review.zip','clip_patch_semantic_strength_xe10_v1_review.zip')
+        intro=intro.replace('Budget confirmed26h yours/30h Ngân.','Budget confirmed15h yours/30h Ngân; user explicitly selects OWN15h account.')
+        intro+='\nThis variant keeps all M2/M3 modules and adds1025parameters: one learned scalar per patch controlling total semantic residual, separate from the object/relation mixture gate. Original model already has visual residuals; this is not a newly discovered visual path. M=V+alpha*delta. Alpha starts.5; semantic outputs start0, so initial memory still equals baselineV. Actual GPU guards force nonzero semantic output and check alpha endpoints. All5000VALID gate statistics logged every epoch, but checkpoint selection stays maxCIDEr. No guarantee of improvement, gate values are not calibrated confidence.\n'
     nb=dict(nbformat=4,nbformat_minor=5,metadata=dict(kernelspec=dict(display_name='Python 3',language='python',name='python3'),kaggle=dict(isInternetEnabled=True,isGpuEnabled=True)),cells=[cell('markdown',intro),cell('code',setup),cell('code',runner),cell('code',execution)])
     name='CLIP_PATCH_BASELINE_FULL_XE10_LOCAL_V3_2GPU.ipynb' if local_stage else 'CLIP_PATCH_BASELINE_FULL_XE10_2GPU.ipynb'
     if semantic:name='CLIP_PATCH_BANK_PROMPT_SCRATCH_XE10_2GPU.ipynb'
+    if strength_gate:name='CLIP_PATCH_SEMANTIC_STRENGTH_XE10_2GPU.ipynb'
     p=HERE/name;p.write_text(json.dumps(nb,ensure_ascii=False,indent=1)+'\n',encoding='utf-8');print(p.name,p.stat().st_size,'bytes',len(mapping),'pins',revision)
 
 if __name__=='__main__':
-    p=argparse.ArgumentParser();p.add_argument('--revision',required=True);p.add_argument('--local-stage',action='store_true');p.add_argument('--semantic',action='store_true');a=p.parse_args();make(a.revision,a.local_stage,a.semantic)
+    p=argparse.ArgumentParser();p.add_argument('--revision',required=True);p.add_argument('--local-stage',action='store_true');p.add_argument('--semantic',action='store_true');p.add_argument('--strength-gate',action='store_true');a=p.parse_args();make(a.revision,a.local_stage,a.semantic,a.strength_gate)

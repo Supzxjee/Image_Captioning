@@ -12,7 +12,7 @@ def make_model(vocab,cfg):
     from semantic_patch_model import SemanticPatchCaptioner
     from full_runtime import tensor_digest
     banks=[torch.from_numpy(np.load(Path(cfg['stage'])/('sem_'+kind+'_bank.npy'),allow_pickle=False)) for kind in ('noun','verb')]
-    model=SemanticPatchCaptioner(vocab,*banks)
+    model=SemanticPatchCaptioner(vocab,*banks,strength_gate=cfg.get('semantic_strength_gate',False))
     if tensor_digest(model.base)!=BASE_INIT:raise ValueError('Core baseline initialization differs from199')
     return model
 
@@ -42,5 +42,21 @@ def neural_guards(model,x,p):
             changed=slots.clone();changed[0,0,:512]+=1
             if torch.allclose(test(visual,changed,support,valid)[0,0],result[0,0],rtol=0,atol=1e-7):raise ValueError('Prompt text channel has no effect with active output')
             del test
-    return dict(core_initial_sha256=BASE_INIT,initial_memory_equal_baseline=True,empty_slot_finite_identity=True,nonzero_adapter_mask_locality=True,
+    strength=model.strength_gate is not None
+    if strength:
+        with torch.no_grad():
+            probe=copy.deepcopy(model).eval();x=x[:2];p={k:v[:2] for k,v in p.items()}
+            probe.object_bank.attention.out_proj.bias.copy_(torch.linspace(-.2,.2,512,device=x.device))
+            visual=probe.base.encode(x);vo,vr=probe.memories(x,p,visual);branch=probe.gate(torch.cat((vo,vr),-1)).sigmoid();old=branch*vo+(1-branch)*vr
+            if torch.allclose(old,visual,rtol=0,atol=1e-4):raise ValueError('Nonzero strength probe needs semantic residual')
+            probe.strength_gate.bias.fill_(-80)
+            torch.testing.assert_close(probe.encode(x,p),visual,rtol=1e-5,atol=1e-5)
+            probe.strength_gate.bias.fill_(80)
+            torch.testing.assert_close(probe.encode(x,p),old,rtol=1e-5,atol=1e-5)
+            probe.strength_gate.bias.zero_();half,alpha=probe.encode_with_gate(x,p)
+            torch.testing.assert_close(half,visual+.5*(old-visual),rtol=1e-5,atol=1e-5)
+            if alpha.shape!=(2,196,1) or not torch.isfinite(alpha).all() or not torch.equal(alpha,torch.full_like(alpha,.5)):raise ValueError('Wrong initialized patch strength')
+            del probe
+    return dict(core_initial_sha256=BASE_INIT,initial_memory_equal_baseline=True,empty_slot_finite_identity=True,nonzero_adapter_mask_locality=True,strength_gate_present=strength,
+        nonzero_strength_endpoints_passed=strength,
         trainable_parameters=sum(v.numel() for v in model.parameters()),frozen_bank_values=model.noun_bank.numel()+model.verb_bank.numel())
