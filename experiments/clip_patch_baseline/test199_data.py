@@ -44,9 +44,9 @@ def selected_test_rows(ds,locked):
     if [int(r['cocoid']) for r in rows]!=locked['expected_test_ids']:raise ValueError('Wrong TEST IDs')
     return rows
 
-def prepare(cfg):
+def prepare(cfg,locked=None,weight_path=None):
     import h5py
-    started=time.monotonic();out=Path(cfg['output']);stage=Path(cfg['stage']);stage.mkdir(parents=True,exist_ok=False);locked=lock();weight_path=checkpoint(cfg['checkpoint_root'])
+    started=time.monotonic();out=Path(cfg['output']);stage=Path(cfg['stage']);stage.mkdir(parents=True,exist_ok=False);locked=lock() if locked is None else locked;weight_path=checkpoint(cfg['checkpoint_root']) if weight_path is None else weight_path
     if sha(cfg['dataset_json'])!=DATA_SHA:raise ValueError('Changed COCO dataset JSON')
     ds=read(cfg['dataset_json']);rows=selected_test_rows(ds,locked);wanted={int(r['cocoid']):i for i,r in enumerate(rows)};words=vocabulary(ds);lookup={w:i for i,w in enumerate(words)}
     gold=read(HERE/'SMOKE_SOURCE.json');save(out/'vocabulary.json',words)
@@ -88,8 +88,8 @@ def prepare(cfg):
         output_files_sha256={n:sha(out/n) for n in ('vocabulary.json','test_references.json')})
     save(out/'stage_receipt.json',receipt);save(out/'test_lock.json',dict(**locked,checkpoint=str(weight_path),stage_receipt_sha256=sha(out/'stage_receipt.json')))
 
-def load(cfg,verify=True):
-    out=Path(cfg['output']);stage=Path(cfg['stage']);r=read(out/'stage_receipt.json');locked=validate_lock(read(out/'test_lock.json'))
+def load(cfg,verify=True,validator=None):
+    out=Path(cfg['output']);stage=Path(cfg['stage']);r=read(out/'stage_receipt.json');locked=(validator or validate_lock)(read(out/'test_lock.json'))
     if r['status']!='PATCH_TEST199_STAGE_COMPLETE' or r['images']!=TEST_SIZE or r['TRAIN_VALID_features_read']:raise ValueError('Invalid TEST stage scope')
     if locked['stage_receipt_sha256']!=sha(out/'stage_receipt.json'):raise ValueError('Changed TEST receipt')
     if verify:

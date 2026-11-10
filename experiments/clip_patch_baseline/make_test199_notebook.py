@@ -9,10 +9,13 @@ HERE=Path(__file__).resolve().parent;ROOT=HERE.parents[1];PREFIX='experiments/cl
 sys.path.insert(0,str(ROOT/'experiments/csa_paper'))
 from make_smoke_notebook import RUNNER,cell
 
-def make(revision):
+def make(revision,semantic=False):
     revision=subprocess.check_output(['git','rev-parse',revision],cwd=ROOT,text=True).strip()
     mapping={PREFIX+n:n for n in ('TEST199_LOCK.json','TEST199_PROTOCOL.md','TEST199_BUILD_V2_PROTOCOL.md','SMOKE_SOURCE.json','test199_data.py','run_test199.py','test_test199.py','patch_model.py','patch_beam.py','patch_data.py','full_data.py','make_test199_notebook.py')}
     mapping.update({'experiments/csa_paper/'+n:n for n in ('data.py','real_bank_data.py','cuda_runtime_guard.py','saved_quality_data.py','score_prompt_test_extra.py')})
+    if semantic:
+        mapping.update({PREFIX+n:n for n in ('semantic_test_data.py','semantic_data.py','semantic_patch_model.py','test_semantic_test.py','BANK_PROMPT_TEST_PROTOCOL.md')})
+        mapping.update({'experiments/csa_paper/model.py':'bank_layers.py','experiments/csa_paper/PROMPT_TEST_PREPARATION_RESULT.json':'PROMPT_TEST_PREPARATION_RESULT.json'})
     hashes={n:hashlib.sha256(subprocess.check_output(['git','show',revision+':'+n],cwd=ROOT)).hexdigest() for n in mapping}
     setup=f"""import hashlib,json,os,queue,signal,subprocess,sys,tempfile,threading,time,traceback,urllib.request,zipfile,shutil
 from pathlib import Path
@@ -62,6 +65,8 @@ with tempfile.TemporaryDirectory() as directory,patch.object(api,'build_kaggle_c
     assert (request.user_name,request.kernel_slug,request.version_label)==('ducanh2403','2-vi-cai-kia-qua-nhieu','v199')
 print('Exact own199 API routing mock PASS; no network.',flush=True)
 """
+    if semantic:
+        routing=routing.replace('ducanh2403/2-vi-cai-kia-qua-nhieu/199','ducanh2403/kltnnnnnff/9').replace("('ducanh2403','2-vi-cai-kia-qua-nhieu','v199')","('ducanh2403','kltnnnnnff','v9')").replace('Exact own199','Exact own9')
     execution='ROUTING_PREFLIGHT='+repr(routing)+'\n'+"""complete=False
 try:
     for path,name in MAPPING.items():download('https://raw.githubusercontent.com/Supzxjee/Image_Captioning/'+REVISION+'/'+path,HASHES[path],SOURCE/name)
@@ -135,8 +140,37 @@ V2 cho phép Torch2.11.0 CUDAcu128/cu130 đã quan sát, ghi rõ khác biệtbui
 
 Cap2giờgồmcảdownload/scorerCPU, khôngphảiETA/quota. StanfordCoreNLP/JavaMeteorspicecóthểcầnthờigian. MỗiCPUphase lưukếtquảriêng; nếulỗi, giữoutputcaption đểphụchồiCPU, khôngtựchạymôhìnhlại. Gửi **clip_patch_199_test5000_v2_review.zip**. Tácgiảchỉkiểmmetadata/NumPy/mock/AST; chưa chạyCUDA/scorerslocal.
 """
+    if semantic:
+        setup=setup.replace("CHECKPOINT_ROOT=''", "PROMPT_TEST_ROOT=Path('/kaggle/input/datasets/ducanh2403/csa-prompt-test-cache-v181')\nCHECKPOINT_ROOT=''")
+        setup=setup.replace('exact199','exact bank+prompt best9').replace('own199','own kltnnnnnff/9').replace('clip_patch_199_test5000_v2','clip_patch_bank_prompt_test5000_v1')
+        setup=setup.replace('for p in (VISUAL_CACHE,COCO_JSON):','for p in (VISUAL_CACHE,COCO_JSON,PROMPT_TEST_ROOT):')
+        setup=setup.replace('cfg=dict(output=',"cfg=dict(semantic=True,prompt_test_root=str(PROMPT_TEST_ROOT),output=")
+        execution=execution.replace('ducanh2403/2-vi-cai-kia-qua-nhieu/199','ducanh2403/kltnnnnnff/9')
+        execution=execution.replace("'2-vi-cai-kia-qua-nhieu', 'v199'", "'kltnnnnnff', 'v9'")
+        execution=execution.replace('from test199_data import checkpoint,VERSION,CHECKPOINT_SHA','from semantic_test_data import checkpoint,VERSION,CHECKPOINT_SHA,prompt_inputs')
+        execution=execution.replace("Path('/kaggle/working/clip_patch_199_test5000_v1/inputs199/clip_patch_baseline_full_xe10_v3/best.bin')", "Path('/kaggle/working/clip_patch_bank_prompt_xe10_v1/best.bin')")
+        execution=execution.replace("SOURCE/'test_test199.py'],120)","SOURCE/'test_test199.py'],120)\n    run([sys.executable,'-u',SOURCE/'test_semantic_test.py'],120)")
+        execution=execution.replace("cfg['checkpoint_root']=str(weights);write_config()", "cfg['checkpoint_root']=str(weights);write_config()\n    prompt_inputs(cfg) # exact TEST181 seal/scope check before expensive setup/stage")
+        execution=execution.replace("TOKENS.append(token)","if token.startswith('sk-'):raise RuntimeError('Use a Kaggle API Secret, not an OpenAI key.')\n        TOKENS.append(token)")
+        execution=execution.replace('exact199 bytes','exact best9 bytes').replace('exact own SaveVersion199 API','exact own kltnnnnnff/9 API')
+        execution=execution.replace('CLIP_PATCH_199_TEST5000_COMPLETE','CLIP_PATCH_BANK_PROMPT_TEST5000_COMPLETE').replace("source_version='199'","source_version='ducanh2403/kltnnnnnff/9'")
+        intro='''# Bank + prompt, best epoch9 — TEST5000
+
+**T4 ×2**, Internet ON, Save & Run All. Attach THREE Datasets:
+- `ducanh2403/visual-cache`
+- `vuthetam/mscoco-2014`
+- `ducanh2403/csa-prompt-test-cache-v181`
+
+Enable your **Kaggle API** Secret `codex` or `KAGGLE_API_TOKEN` (not an OpenAI key). Blank CHECKPOINT_ROOT downloads only best.bin from **ducanh2403/kltnnnnnff/9**, exact SHA7c11be52. User confirmed notebook slug/version; default owner is own ducanh2403. Missing access fails early; no latest/other checkpoint fallback. Alternatively mount the exact knownSHA file/root and set CHECKPOINT_ROOT. No API token printed.
+
+Best epoch9 is159399updates; the full experiment ran10epochs but epoch10 has different weights. Keep epoch9 chosen on VALID before TEST. Model frozen, no training/selection/reranking. Frozen TRAIN noun/verb banks are inside the checkpoint; no bank130 or prompt175 dataset needed. TEST181 only supplies258 fixed prompt embeddings +instance links. Uses exact same ROI-box→14×14patch pooling/masks as training; old ROI feature arrays and old181 vocabulary are NOT used. No CLIP/UPT inference.
+
+Only5000TEST patches staged (~1.4GiB), no full33GiB copy or TRAIN/VALID feature reads. Same5000IDs/rawreferences, TRAIN vocabulary and beam5/max20/rawlogprob/rank0 as baseline199. Captions saved before teacherNLL and CPUscoring. Metrics: BLEU1/4,METEOR,ROUGE-L,CIDEr,SPICE,CHAIRs/i (+Recall,NLL). Complete only when all eight metrics finished. Previous project TEST exposure disclosed; no TEST tuning.
+
+Parent2h STOP cap inherited from baselineTEST, not ETA/billing. Latest answer confirmed cache path but did not supply remaining GPU hours; check account quota before launch. GPUweights/runtime/firstbeam-path guards before full decode. No Torch reinstall. Preserve caption/output on errors; no automatic model rerun. Send **clip_patch_bank_prompt_test5000_v1_review.zip**. Author checks NumPy/mock/AST only; models/CUDA/scorers run only by user.
+'''
     nb=dict(nbformat=4,nbformat_minor=5,metadata=dict(kernelspec=dict(display_name='Python 3',language='python',name='python3'),kaggle=dict(isInternetEnabled=True,isGpuEnabled=True)),cells=[cell('markdown',intro),cell('code',setup),cell('code',runner),cell('code',execution)])
-    p=HERE/'CLIP_PATCH_199_TEST5000_V2_2GPU.ipynb';p.write_text(json.dumps(nb,ensure_ascii=False,indent=1)+'\n',encoding='utf-8');print(p.name,p.stat().st_size,'bytes',len(mapping),'pins',revision)
+    p=HERE/('CLIP_PATCH_BANK_PROMPT_TEST5000_2GPU.ipynb' if semantic else 'CLIP_PATCH_199_TEST5000_V2_2GPU.ipynb');p.write_text(json.dumps(nb,ensure_ascii=False,indent=1)+'\n',encoding='utf-8');print(p.name,p.stat().st_size,'bytes',len(mapping),'pins',revision)
 
 if __name__=='__main__':
-    p=argparse.ArgumentParser();p.add_argument('--revision',required=True);make(p.parse_args().revision)
+    p=argparse.ArgumentParser();p.add_argument('--revision',required=True);p.add_argument('--semantic',action='store_true');a=p.parse_args();make(a.revision,a.semantic)

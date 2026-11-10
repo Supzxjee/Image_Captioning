@@ -69,7 +69,7 @@ def audit():
     rng=np.random.default_rng(42);samples=np.concatenate([values[rng.integers(0,5000,(100,5000))].mean(1) for _ in range(20)])
     ci=(np.quantile(samples,[.025,.975],axis=0)*100).T.tolist()
     repaired=sum(bool(oldchair[i]['mscoco_hallucinated_words']) and not newchair[i]['mscoco_hallucinated_words'] for i in ids);introduced=sum(not oldchair[i]['mscoco_hallucinated_words'] and bool(newchair[i]['mscoco_hallucinated_words']) for i in ids)
-    summary=dict(status='BANK_PROMPT_FULL10_REVIEWED_COMPLETE',save_version=9,notebook=None,source_commit=source['commit'],archive_sha256=archived['archive_sha256'],checks_passed=len(checks),best_epoch=9,
+    summary=dict(status='BANK_PROMPT_FULL10_REVIEWED_COMPLETE',save_version=9,notebook="kltnnnnnff",owner=None,source_commit=source['commit'],archive_sha256=archived['archive_sha256'],checks_passed=len(checks),best_epoch=9,
         best=best,end=end,baseline199=base,delta_best=delta(best),delta_end=delta(end),epoch_curve=curve,receipts=result['receipts'],epochs=10,updates=177110,caption_events=5667470,
         stage_seconds=stage['local_stage']['seconds'],semantic_stage_seconds=sem['seconds'],worker_seconds=get('training_complete.json')['worker_seconds'],baseline_worker_seconds=baseline('training_complete.json')['worker_seconds'],
         trainable_parameters=get('preflight_rank0.json')['semantic']['trainable_parameters'],baseline_parameters=27461904,software=identity['software'],baseline_software=baseline('identity.json')['software'],

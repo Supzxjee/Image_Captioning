@@ -1,7 +1,7 @@
 {
   "status": "BANK_PROMPT_FULL10_REVIEWED_COMPLETE",
   "save_version": 9,
-  "notebook": null,
+  "notebook": "kltnnnnnff",
   "source_commit": "f5f6eb05d7c89917b0719637dae4e948ad73f531",
   "archive_sha256": "035c9b5b95cb9a105fd72bf20566e9ef1ef013c8a4781a9e8f44a508d13e3d72",
   "checks_passed": 1934,
@@ -208,5 +208,6 @@
     "Combined bank+prompt addition increases parameters; no isolated M2/M3/prompt causality.",
     "Same recipe/core/data; Torch CUDA build differs cu128 to cu130.",
     "No TEST result for new model, and no METEOR/SPICE in this run."
-  ]
+  ],
+  "owner": null
 }

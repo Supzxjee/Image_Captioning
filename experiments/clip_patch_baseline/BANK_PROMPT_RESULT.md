@@ -1,6 +1,6 @@
 # Bank + prompt trên CLIP patch — kết quả 10 epoch XE
 
-Lượt chạy hoàn tất, người dùng xác nhận Save Version **9**; tên notebook/tài khoản chưa được xác nhận trong câu trả lời. ZIP SHA `035c9b5b95cb9a105fd72bf20566e9ef1ef013c8a4781a9e8f44a508d13e3d72`; source `f5f6eb0`. ZIP được đọc một lần, text cache tại `../.review_cache/clip_patch_bank_prompt_xe10_v1/archive_text.json`. Audit `review_bank_prompt.py`: **1.934 kiểm tra PASS**, không tải trọng số/Torch hoặc chạy lại scorer local.
+Lượt chạy hoàn tất, người dùng xác nhận Save Version **9**; notebook `kltnnnnnff` được người dùng xác nhận sau đó; tên chủ tài khoản chưa cung cấp riêng. ZIP SHA `035c9b5b95cb9a105fd72bf20566e9ef1ef013c8a4781a9e8f44a508d13e3d72`; source `f5f6eb0`. ZIP được đọc một lần, text cache tại `../.review_cache/clip_patch_bank_prompt_xe10_v1/archive_text.json`. Audit `review_bank_prompt.py`: **1.934 kiểm tra PASS**, không tải trọng số/Torch hoặc chạy lại scorer local.
 
 113.287 ảnh TRAIN, 566.747 caption/epoch, 10 epoch, 177.110 update, 5.667.470 lượt caption, global batch32. Khởi tạo mới, không SCST/rerank/TEST. Mã core decoder và lịch học giữ nguyên baseline199; SHA core ban đầu khớp, GPU đã qua kiểm tra khởi tạo bộ nhớ bằng baseline, mask/empty slots, gradient DDP và beam. Byte seals của dữ liệu/caption/vocabulary/VALID references và patch cache khớp baseline.
 
