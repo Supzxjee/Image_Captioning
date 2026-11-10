@@ -1,0 +1,41 @@
+{
+  "status": "AUTHOR_METADATA_STATIC_PASS_GPU_PENDING",
+  "source_commit": "0323747b13122800aa6b5e6ffd9b2d2913054ee8",
+  "source_pins": {
+    "experiments/clip_patch_baseline/csa_patch_model.py": "99b6441c4205b142256192cc3d840a905e00ecc1e730f30e1f5eb2c3cf8dc220",
+    "experiments/clip_patch_baseline/csa_structure_data.py": "3bce011b00f67d272444cdd4d6e17acbbb744c8d9614549fb06c73be79aba1a2",
+    "experiments/clip_patch_baseline/csa_structure_runtime.py": "85a9806799ad2d2cb5da0bb458c373af830881f5cd17770a597d4b0274309cd9",
+    "experiments/clip_patch_baseline/run_csa_structure_smoke.py": "e4c5c9f7fa9ed1fb244b9745170d02f680df36a7305116c645fc66cc5530ab2c",
+    "experiments/clip_patch_baseline/test_csa_structure_data.py": "55b45cf9cb6570a8f3d8cff1bbca7b80a0a29fd8dd3d8a24bbf942abc5f7cf16",
+    "experiments/clip_patch_baseline/semantic_data.py": "a57af931f9e6be85f6efeee668b09fcca14c8a3bd54ebd695d9014ede2ab0540",
+    "experiments/clip_patch_baseline/semantic_patch_model.py": "10a385859ea1389a71f14a7a76e16a6989feb73fd581ca89659eab50ec53a0f3",
+    "experiments/clip_patch_baseline/memory_fusion.py": "a70947e22263ddd27a7896a94cfb35cfff73102370288c53f86529964ea8f087",
+    "experiments/clip_patch_baseline/patch_data.py": "3706ffec9c128c8fe12c4f21ba071939268fdd526ed614034cca8dfec55674d5",
+    "experiments/clip_patch_baseline/patch_model.py": "dfe6b1d83bfc1e3c7961268fb104bc1f4092129e7d9400841568a3204dc57a70",
+    "experiments/clip_patch_baseline/patch_beam.py": "53fcb5b22bb9f05d795fbd4f539cfd4ff0af39c1dea679f7df1a933edf2754be",
+    "experiments/clip_patch_baseline/full_data.py": "ab69cf61d4ad0456d9a869929750ab10f3a2a33b6c76683689539e57e4015a74",
+    "experiments/clip_patch_baseline/test_semantic_data.py": "e9d9132db2e83b47e7f29cd1c465389cb4f16db2cd62a1cf27f048a06e29a572",
+    "experiments/clip_patch_baseline/CSA_STRUCTURE_PROTOCOL.md": "0519a80e74f7a3c4ed6a39978fe7cc6b864fec142fcb977520def08791328177",
+    "experiments/clip_patch_baseline/make_csa_structure_notebook.py": "68526f40aca7f4ba17691227db0ebec6ac0d9c12efe9c810cd820f245f44e777",
+    "experiments/csa_paper/data.py": "5a5bb451dc20184d3ea597d4dc8415a120583571f4e1a4dac75e29a306213a71",
+    "experiments/csa_paper/real_bank_data.py": "2c791f8dd856198ec1954a2edd1f9e46520d422f20eff07220e462fc2c9bd9a0",
+    "experiments/csa_paper/cuda_runtime_guard.py": "640b5debc81607e3504930e4042571636cc3fbd525a6d0e5eb45abdd141fb773",
+    "experiments/csa_paper/SAVE_BANK_V130_PACKAGE.json": "826ba36628d6587860e2d548e950ea953bd4bbb8c0a8dc64393089dbc1e058e1",
+    "experiments/csa_paper/FULL_PROMPT_FRESH_V175_RESULT.json": "452e94530b07b117be6873f004404b558e29e87cb09e97e27a1548d0bfd5f81a",
+    "experiments/csa_paper/model.py": "139edbb1b73caf3dadaf5c960b25542e282f88baf2ce9bdf141de922ceacbc09",
+    "experiments/csa_paper/lemma_correction_review_text/bank_words_corrected.json": "cec76a0229f30361235a4b64e9712ac6bb2e79fc62a9241079a7af3fa95d13ac"
+  },
+  "isolated_packaged_tests": 6,
+  "semantic_data_regression_tests": 7,
+  "notebook_cells_parse": true,
+  "notebook_bytes": 12658,
+  "torch_import_blocked_in_author_tests": true,
+  "guard_limit": "No local Torch/model/autograd/scorer/Kaggle API or notebook executed. GPU guards, speed, memory and learning are USER-RUN pending.",
+  "historical_model_sources_unchanged": true,
+  "training_scope": "TRAIN256,200XEupdates/global32,T4x2; no VALID/TEST/SCST/rerank",
+  "budget_hours_last_reported": {
+    "own": 6,
+    "Ngan": 30
+  },
+  "wall_cap_seconds": 4500
+}
