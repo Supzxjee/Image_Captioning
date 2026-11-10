@@ -23,3 +23,10 @@ Allow progress toward requested10epochs within cap: do NOT require whole10fit be
 After EVERY epoch: VALID5000beam5/max20/rawcumulativelogprob/rank0, teacherforcedNLL/CIDEr, meanlength andshortcaptioncount; savecaps/perimageCIDEr/workerstats. Inspectepoch1qualitativeprogress in logs; fixedtraininghorizon10, no adaptivehyperparamchange. Best=maxVALIDCIDEr, earlier ties. Finalbest/end savedcaption scoring: BLEU1/4,ROUGE-L,CHAIRs/i,Recall; METEOR/SPICE/TEST later, not claimed measured here. No referencecaption selection/re-ranking.
 
 Preservecheckpoint.bin ANDbest.bin/receipts, optimizer/RNG, completedvalidationfiles. Incompletecaprun is not full10qualityresult and must not be ranked ascomplete. Newoutput`csa_structure_shared_full_xe10_v1`, notebook`CLIP_PATCH_CSA_SHARED_FULL_XE10_ACCELERATE_2GPU.ipynb`. AuthoronlyNumPy/mock/AST checks; actualfullIO/Accelerate/GPU/scorers user-run. Pushcode/results and log oldSheet, no unsolicitedWord edits.
+
+
+## Amendment 11/11: V1 packaging failure / fresh V2
+
+V1 review SHA efe2bb45f2997bf1dc4868b1766c64df2a5bd3a88eeba0a5e74972ac65d5ef42: full raw stage completed (118287 TRAIN+VALID images, 2566.4s), semantic stage completed, then model-module import failed because memory_fusion.py was absent from the packaged mapping. No model construction, optimizer updates, checkpoint, or quality result. CUDA2/NCCL were available; this is an author packaging error, not a GPU/data error.
+
+User ran Save Version; /tmp staging is not saved in Output. V2 restages with the same four inputs/architecture/recipe/budget. Add missing module, static reachable local-import closure check in generator, and Kaggle import-only class precheck BEFORE expensive preparation. Preserve V1 notebook. New notebook CLIP_PATCH_CSA_SHARED_FULL_XE10_ACCELERATE_V2_2GPU.ipynb/output csa_structure_shared_full_xe10_v2. No local neural imports/models/Kaggle execution authorized.
