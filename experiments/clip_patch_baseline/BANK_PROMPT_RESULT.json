@@ -1,0 +1,212 @@
+{
+  "status": "BANK_PROMPT_FULL10_REVIEWED_COMPLETE",
+  "save_version": 9,
+  "notebook": null,
+  "source_commit": "f5f6eb05d7c89917b0719637dae4e948ad73f531",
+  "archive_sha256": "035c9b5b95cb9a105fd72bf20566e9ef1ef013c8a4781a9e8f44a508d13e3d72",
+  "checks_passed": 1934,
+  "best_epoch": 9,
+  "best": {
+    "epoch": 9,
+    "CIDEr": 1.2058041428224269,
+    "BLEU_1": 0.7772379113534452,
+    "BLEU_4": 0.37440267856495896,
+    "ROUGE_L": 0.5768017640612961,
+    "CHAIRs": 0.0458,
+    "CHAIRi": 0.031825568797399784,
+    "Recall": 0.4365268709191361,
+    "counts": {
+      "images": 5000,
+      "hallucinated_captions": 229,
+      "hallucinated_mentions": 235,
+      "object_mentions": 7384,
+      "recalled_unique": 6953,
+      "reference_unique": 15928
+    },
+    "NLL": 2.1005906563413275,
+    "mean_words": 9.4262,
+    "short_le2": 0
+  },
+  "end": {
+    "epoch": 10,
+    "CIDEr": 1.2043076629475178,
+    "BLEU_1": 0.7766525540922755,
+    "BLEU_4": 0.37606904720964074,
+    "ROUGE_L": 0.5751822607904349,
+    "CHAIRs": 0.0442,
+    "CHAIRi": 0.03074610549330418,
+    "Recall": 0.43313661476644905,
+    "counts": {
+      "images": 5000,
+      "hallucinated_captions": 221,
+      "hallucinated_mentions": 225,
+      "object_mentions": 7318,
+      "recalled_unique": 6899,
+      "reference_unique": 15928
+    },
+    "NLL": 2.1065701199915288,
+    "mean_words": 9.4006,
+    "short_le2": 0
+  },
+  "baseline199": {
+    "epoch": 10,
+    "CIDEr": 1.190941956075831,
+    "BLEU_1": 0.772054294028915,
+    "BLEU_4": 0.37072436323388375,
+    "ROUGE_L": 0.5737398375066639,
+    "CHAIRs": 0.0538,
+    "CHAIRi": 0.03784153005464481,
+    "Recall": 0.4304997488699146,
+    "counts": {
+      "images": 5000,
+      "hallucinated_captions": 269,
+      "hallucinated_mentions": 277,
+      "object_mentions": 7320,
+      "recalled_unique": 6857,
+      "reference_unique": 15928
+    },
+    "NLL": 2.1016132440864914,
+    "mean_words": 9.4154,
+    "short_le2": 0
+  },
+  "delta_best": {
+    "CIDEr": 0.014862186746595896,
+    "BLEU_1": 0.00518361732453021,
+    "BLEU_4": 0.0036783153310752104,
+    "ROUGE_L": 0.0030619265546322216,
+    "CHAIRs": -0.008,
+    "CHAIRi": -0.006015961257245024,
+    "Recall": 0.006027122049221512,
+    "NLL": -0.0010225877451639498
+  },
+  "delta_end": {
+    "CIDEr": 0.013365706871686811,
+    "BLEU_1": 0.004598260063360504,
+    "BLEU_4": 0.005344683975756992,
+    "ROUGE_L": 0.0014424232837709772,
+    "CHAIRs": -0.009599999999999997,
+    "CHAIRi": -0.007095424561340626,
+    "Recall": 0.002636865896534446,
+    "NLL": 0.00495687590503735
+  },
+  "epoch_curve": [
+    {
+      "epoch": 1,
+      "CIDEr": 1.055656468192495,
+      "NLL": 2.461143425222868,
+      "TRAIN_online_NLL": 3.1810472275797306
+    },
+    {
+      "epoch": 2,
+      "CIDEr": 1.1314917572197676,
+      "NLL": 2.2564368599890336,
+      "TRAIN_online_NLL": 2.3724914668124035
+    },
+    {
+      "epoch": 3,
+      "CIDEr": 1.1751780153637827,
+      "NLL": 2.180800704647284,
+      "TRAIN_online_NLL": 2.2137618078450405
+    },
+    {
+      "epoch": 4,
+      "CIDEr": 1.181370872750216,
+      "NLL": 2.1372674432272856,
+      "TRAIN_online_NLL": 2.1205321880016457
+    },
+    {
+      "epoch": 5,
+      "CIDEr": 1.1838727383285355,
+      "NLL": 2.113263662055623,
+      "TRAIN_online_NLL": 2.0461510002279355
+    },
+    {
+      "epoch": 6,
+      "CIDEr": 1.1887371926587413,
+      "NLL": 2.099232336833305,
+      "TRAIN_online_NLL": 1.9798056535526065
+    },
+    {
+      "epoch": 7,
+      "CIDEr": 1.1950515393593417,
+      "NLL": 2.094246404278227,
+      "TRAIN_online_NLL": 1.9195812330626243
+    },
+    {
+      "epoch": 8,
+      "CIDEr": 1.1960419607593056,
+      "NLL": 2.0960090611914985,
+      "TRAIN_online_NLL": 1.8676469322970946
+    },
+    {
+      "epoch": 9,
+      "CIDEr": 1.2058041428224269,
+      "NLL": 2.1005906563413275,
+      "TRAIN_online_NLL": 1.8274509028343155
+    },
+    {
+      "epoch": 10,
+      "CIDEr": 1.2043076629475178,
+      "NLL": 2.1065701199915288,
+      "TRAIN_online_NLL": 1.8012714331377433
+    }
+  ],
+  "receipts": {
+    "best_receipt.json": {
+      "sha256": "7c11be52fce9cd90dadc55fa514d4017d540f40f630232a68bfe4306c754158b",
+      "epoch": 9,
+      "CIDEr": 1.2058041428224269,
+      "test_used": false
+    },
+    "checkpoint_receipt.json": {
+      "sha256": "82f195d565ed628ce77c1d5d963574dc6e32d76d2336cfb3ab04f6a3099cff49",
+      "updates": 177110,
+      "epoch": 11,
+      "phase": "train",
+      "training_log_sha256": "4d08b9ea690909023a3d646774e3e3ea35d38e97776d84e34d94f7d1a33e4f3e"
+    }
+  },
+  "epochs": 10,
+  "updates": 177110,
+  "caption_events": 5667470,
+  "stage_seconds": 1618.0335966469997,
+  "semantic_stage_seconds": 56.52777342299987,
+  "worker_seconds": 25750.234184159,
+  "baseline_worker_seconds": 15923.060208009,
+  "trainable_parameters": 34800888,
+  "baseline_parameters": 27461904,
+  "software": {
+    "torch": "2.11.0+cu130",
+    "numpy": "2.1.3",
+    "pycocoevalcap": "1.2"
+  },
+  "baseline_software": {
+    "torch": "2.11.0+cu128",
+    "numpy": "2.1.3",
+    "pycocoevalcap": "1.2"
+  },
+  "paired_best": {
+    "repaired": 148,
+    "introduced": 108,
+    "CIDEr_delta_CI95_points": [
+      -0.050366324951960396,
+      3.026723195596366
+    ],
+    "CHAIRs_delta_CI95_pp": [
+      -1.4200000000000002,
+      -0.2
+    ],
+    "bootstrap_samples": 2000,
+    "seed": 42,
+    "limits": "Conditional on saved captions, one seed, reused VALID and selected checkpoint; no seed variability or selection correction."
+  },
+  "test_used": false,
+  "SCST": false,
+  "reranking": false,
+  "author_limits": [
+    "No local Torch/model/scorer or binary checkpoint/feature reload. CIDEr saved-score arithmetic and CHAIR count replay only; BLEU/ROUGE runtime-reported.",
+    "Combined bank+prompt addition increases parameters; no isolated M2/M3/prompt causality.",
+    "Same recipe/core/data; Torch CUDA build differs cu128 to cu130.",
+    "No TEST result for new model, and no METEOR/SPICE in this run."
+  ]
+}
