@@ -44,7 +44,6 @@
   "checkpoint_epoch": 8,
   "checkpoint_updates": 141688,
   "trained_neural_sources_unchanged": true,
-  "learned_strength_gate_strict_load": true,
   "scorers_and_TEST5000_cohort_reused": true,
   "source_checkpoint_preflight_before_stage": true,
   "parent_cap_hours": 2,
@@ -56,5 +55,14 @@
     "Real cache/binary reads",
     "Torch/model/CUDA/beam inference",
     "Official CPU scorers"
-  ]
+  ],
+  "learned_strength_gate_strict_load_source_verified": true,
+  "remote_Git_blob_and_Downloads_JSON_match": true,
+  "github_notebook_blob_sha256": "cd2c3961a88e4a2c30369b20a83396a876080cdaa48e709bd83d106c3dc06288",
+  "sheet_protocol": {
+    "range": "Kết quả mới!A144:L146",
+    "status": "READY unrun",
+    "values_format_API_readback_verified": true,
+    "native_visual_check": false
+  }
 }
