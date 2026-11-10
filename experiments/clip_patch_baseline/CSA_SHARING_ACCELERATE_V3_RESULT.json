@@ -1,0 +1,70 @@
+{
+  "status": "CSA_SHARING_ACCELERATE_V3_REVIEWED_COMPLETE",
+  "evaluation_source": {
+    "notebook_slug": "kltnnnnnff",
+    "save_version": null,
+    "version_user_confirmed": false
+  },
+  "archive_sha256": "a1eaa8468815edc48eeb72cf26561f4a098d0df185553fe384d34873a87b6c9a",
+  "source_commit": "fa9abcc2b1cc862c44dc7ad1233fea1b8247e197",
+  "checks_passed": 103,
+  "per_parameter_diagnostics_replayed": 1080,
+  "parity_cases": 6,
+  "max_relative_gradient_error": 4.637522377948307e-05,
+  "max_absolute_gradient_error": 3.7495046854019165e-06,
+  "by_order": {
+    "random": {
+      "modes": {
+        "ordinary": {
+          "median_seconds": 0.2468671330000234,
+          "p90_seconds": 0.25092994870003055,
+          "peak_allocated_GiB": 2.159672260284424,
+          "mean_encoded_images_global": 32.0
+        },
+        "shared": {
+          "median_seconds": 0.24503046749998703,
+          "p90_seconds": 0.24857429630000638,
+          "peak_allocated_GiB": 2.112494468688965,
+          "mean_encoded_images_global": 31.1
+        }
+      },
+      "speedup": 1.0074956617386222,
+      "update_time_reduction_percent": 0.7439894803801916,
+      "peak_memory_reduction_percent": 2.184488473693036
+    },
+    "grouped": {
+      "modes": {
+        "ordinary": {
+          "median_seconds": 0.2590256939999733,
+          "p90_seconds": 0.26221970470001565,
+          "peak_allocated_GiB": 1.992842197418213,
+          "mean_encoded_images_global": 32.0
+        },
+        "shared": {
+          "median_seconds": 0.14353916099997832,
+          "p90_seconds": 0.145456467400021,
+          "peak_allocated_GiB": 1.548262119293213,
+          "mean_encoded_images_global": 8.0
+        }
+      },
+      "speedup": 1.804564637242184,
+      "update_time_reduction_percent": 44.58497194490941,
+      "peak_memory_reduction_percent": 22.30884506063585
+    }
+  },
+  "grouped_shared_vs_random_ordinary_speedup": 1.7198591052100456,
+  "train_only_epoch_hours_arithmetic": 0.7061728001307267,
+  "train_only10_hours_arithmetic": 7.061728001307267,
+  "no_native_DDP_vs_Accelerate_comparison": true,
+  "quality_evaluated": false,
+  "full_training_complete": false,
+  "checkpoint_saved": false,
+  "test_used": false,
+  "validation_used": false,
+  "limits": [
+    "Text/source/seal/NumPy arithmetic audit; no local Torch/Accelerate/model/scorer/Kaggle API. Raw gradient and feature tensors not in ZIP; diagnostics replay from saved scalars only.",
+    "Tiny TRAIN256 pool and short benchmark, not full-data speed or end-to-end ETA/billing. No new validated caption metric.",
+    "Grouping changes sampler and shared encoder dropout correlations; eval parity does not prove equal training trajectory or final CIDEr/CHAIR.",
+    "All modes here use Accelerate: speed difference is sharing within sampler, not evidence Accelerate beats native DDP."
+  ]
+}
