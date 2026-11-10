@@ -1,0 +1,357 @@
+{
+  "status": "SEMANTIC_STRENGTH_FULL10_REVIEWED_COMPLETE",
+  "save_version": 12,
+  "notebook": "kltnnnnnff",
+  "notebook_inherited_from_session": true,
+  "owner": null,
+  "source_commit": "cc6a20ea7f7f3263a7a637100ab1166dd6ff6a1b",
+  "archive_sha256": "63647dd102dcee6c69f5ef20e99a7a8a331dd986ec85d05c735ce97125dbbc68",
+  "checks_passed": 1960,
+  "best_epoch": 8,
+  "best": {
+    "epoch": 8,
+    "CIDEr": 1.2025860972116986,
+    "BLEU_1": 0.775541956128409,
+    "BLEU_4": 0.376161449437884,
+    "ROUGE_L": 0.5754737232771072,
+    "CHAIRs": 0.038,
+    "CHAIRi": 0.026585433397950706,
+    "Recall": 0.4280512305374184,
+    "counts": {
+      "images": 5000,
+      "hallucinated_captions": 190,
+      "hallucinated_mentions": 192,
+      "object_mentions": 7222,
+      "recalled_unique": 6818,
+      "reference_unique": 15928
+    },
+    "NLL": 2.0966182542666445,
+    "mean_words": 9.3096,
+    "short_le2": 0,
+    "semantic_strength": {
+      "patches": 980000,
+      "mean": 0.49070499136018025,
+      "minimum": 0.000254889513598755,
+      "maximum": 0.9992037415504456,
+      "fraction_below_point1": 0.14283877551020407,
+      "fraction_above_point9": 0.14845816326530611,
+      "interpretation": "Learned residual strength, not a calibrated confidence or grounding accuracy."
+    }
+  },
+  "end": {
+    "epoch": 10,
+    "CIDEr": 1.2020953427509924,
+    "BLEU_1": 0.7756866084734773,
+    "BLEU_4": 0.37438885668984945,
+    "ROUGE_L": 0.5747693584742231,
+    "CHAIRs": 0.0406,
+    "CHAIRi": 0.028056663457571174,
+    "Recall": 0.4318809643395279,
+    "counts": {
+      "images": 5000,
+      "hallucinated_captions": 203,
+      "hallucinated_mentions": 204,
+      "object_mentions": 7271,
+      "recalled_unique": 6879,
+      "reference_unique": 15928
+    },
+    "NLL": 2.1067589593875873,
+    "mean_words": 9.394,
+    "short_le2": 0,
+    "semantic_strength": {
+      "patches": 980000,
+      "mean": 0.4948959037251439,
+      "minimum": 0.00012478703865781426,
+      "maximum": 0.9995496869087219,
+      "fraction_below_point1": 0.15544591836734695,
+      "fraction_above_point9": 0.17017551020408164,
+      "interpretation": "Learned residual strength, not a calibrated confidence or grounding accuracy."
+    }
+  },
+  "old_bank_prompt_best": {
+    "epoch": 9,
+    "CIDEr": 1.2058041428224269,
+    "BLEU_1": 0.7772379113534452,
+    "BLEU_4": 0.37440267856495896,
+    "ROUGE_L": 0.5768017640612961,
+    "CHAIRs": 0.0458,
+    "CHAIRi": 0.031825568797399784,
+    "Recall": 0.4365268709191361,
+    "counts": {
+      "images": 5000,
+      "hallucinated_captions": 229,
+      "hallucinated_mentions": 235,
+      "object_mentions": 7384,
+      "recalled_unique": 6953,
+      "reference_unique": 15928
+    },
+    "NLL": 2.1005906563413275,
+    "mean_words": 9.4262,
+    "short_le2": 0
+  },
+  "old_bank_prompt_end": {
+    "epoch": 10,
+    "CIDEr": 1.2043076629475178,
+    "BLEU_1": 0.7766525540922755,
+    "BLEU_4": 0.37606904720964074,
+    "ROUGE_L": 0.5751822607904349,
+    "CHAIRs": 0.0442,
+    "CHAIRi": 0.03074610549330418,
+    "Recall": 0.43313661476644905,
+    "counts": {
+      "images": 5000,
+      "hallucinated_captions": 221,
+      "hallucinated_mentions": 225,
+      "object_mentions": 7318,
+      "recalled_unique": 6899,
+      "reference_unique": 15928
+    },
+    "NLL": 2.1065701199915288,
+    "mean_words": 9.4006,
+    "short_le2": 0
+  },
+  "plain199_VALID": {
+    "epoch": 10,
+    "CIDEr": 1.190941956075831,
+    "BLEU_1": 0.772054294028915,
+    "BLEU_4": 0.37072436323388375,
+    "ROUGE_L": 0.5737398375066639,
+    "CHAIRs": 0.0538,
+    "CHAIRi": 0.03784153005464481,
+    "Recall": 0.4304997488699146,
+    "counts": {
+      "images": 5000,
+      "hallucinated_captions": 269,
+      "hallucinated_mentions": 277,
+      "object_mentions": 7320,
+      "recalled_unique": 6857,
+      "reference_unique": 15928
+    },
+    "NLL": 2.1016132440864914,
+    "mean_words": 9.4154,
+    "short_le2": 0
+  },
+  "delta_best_vs_old": {
+    "CIDEr": -0.0032180456107282485,
+    "BLEU_1": -0.0016959552250361831,
+    "BLEU_4": 0.0017587708729250306,
+    "ROUGE_L": -0.0013280407841889108,
+    "CHAIRs": -0.007800000000000001,
+    "CHAIRi": -0.005240135399449078,
+    "Recall": -0.00847564038171772,
+    "NLL": -0.003972402074682968
+  },
+  "delta_best_vs_plain": {
+    "CIDEr": 0.011644141135867647,
+    "CHAIRs": -0.0158,
+    "CHAIRi": -0.011256096656694102,
+    "NLL": -0.004994989819846918
+  },
+  "delta_endpoint_vs_old": {
+    "CIDEr": -0.002212320196525397,
+    "CHAIRs": -0.003600000000000006,
+    "CHAIRi": -0.002689442035733007,
+    "NLL": 0.00018883939605851552
+  },
+  "epoch_curve": [
+    {
+      "epoch": 1,
+      "CIDEr": 1.0592718511735824,
+      "NLL": 2.4622759948000907,
+      "TRAIN_online_NLL": 3.1811161689016836,
+      "semantic_strength": {
+        "patches": 980000,
+        "mean": 0.42196485973554,
+        "minimum": 0.016489552333950996,
+        "maximum": 0.9702789783477783,
+        "fraction_below_point1": 0.059831632653061226,
+        "fraction_above_point9": 0.0118,
+        "interpretation": "Learned residual strength, not a calibrated confidence or grounding accuracy."
+      }
+    },
+    {
+      "epoch": 2,
+      "CIDEr": 1.1224205892803176,
+      "NLL": 2.2577868062610924,
+      "TRAIN_online_NLL": 2.3728839574429403,
+      "semantic_strength": {
+        "patches": 980000,
+        "mean": 0.4040239494511677,
+        "minimum": 0.004894726909697056,
+        "maximum": 0.9864789843559265,
+        "fraction_below_point1": 0.11351632653061225,
+        "fraction_above_point9": 0.0205265306122449,
+        "interpretation": "Learned residual strength, not a calibrated confidence or grounding accuracy."
+      }
+    },
+    {
+      "epoch": 3,
+      "CIDEr": 1.175905695497711,
+      "NLL": 2.1820556111273937,
+      "TRAIN_online_NLL": 2.2149328078698796,
+      "semantic_strength": {
+        "patches": 980000,
+        "mean": 0.42841374477086425,
+        "minimum": 0.002852766076102853,
+        "maximum": 0.9901003241539001,
+        "fraction_below_point1": 0.11292755102040816,
+        "fraction_above_point9": 0.03626836734693877,
+        "interpretation": "Learned residual strength, not a calibrated confidence or grounding accuracy."
+      }
+    },
+    {
+      "epoch": 4,
+      "CIDEr": 1.1777293911579272,
+      "NLL": 2.1386756547112666,
+      "TRAIN_online_NLL": 2.121570428330973,
+      "semantic_strength": {
+        "patches": 980000,
+        "mean": 0.46287156867863166,
+        "minimum": 0.002323755994439125,
+        "maximum": 0.9942342638969421,
+        "fraction_below_point1": 0.10443775510204081,
+        "fraction_above_point9": 0.06261428571428572,
+        "interpretation": "Learned residual strength, not a calibrated confidence or grounding accuracy."
+      }
+    },
+    {
+      "epoch": 5,
+      "CIDEr": 1.1924864349113444,
+      "NLL": 2.1140298634644634,
+      "TRAIN_online_NLL": 2.046987146578839,
+      "semantic_strength": {
+        "patches": 980000,
+        "mean": 0.4648295706053118,
+        "minimum": 0.0014395720791071653,
+        "maximum": 0.996428906917572,
+        "fraction_below_point1": 0.11281836734693877,
+        "fraction_above_point9": 0.07638163265306122,
+        "interpretation": "Learned residual strength, not a calibrated confidence or grounding accuracy."
+      }
+    },
+    {
+      "epoch": 6,
+      "CIDEr": 1.1838198520859162,
+      "NLL": 2.102032689166819,
+      "TRAIN_online_NLL": 1.9806013410407939,
+      "semantic_strength": {
+        "patches": 980000,
+        "mean": 0.46513620508138276,
+        "minimum": 0.0008061243570409715,
+        "maximum": 0.9975436329841614,
+        "fraction_below_point1": 0.1305887755102041,
+        "fraction_above_point9": 0.09740816326530612,
+        "interpretation": "Learned residual strength, not a calibrated confidence or grounding accuracy."
+      }
+    },
+    {
+      "epoch": 7,
+      "CIDEr": 1.2019642879773946,
+      "NLL": 2.095757431248939,
+      "TRAIN_online_NLL": 1.9201259308619818,
+      "semantic_strength": {
+        "patches": 980000,
+        "mean": 0.4719539737281672,
+        "minimum": 0.0004100687219761312,
+        "maximum": 0.9986112117767334,
+        "fraction_below_point1": 0.14258979591836735,
+        "fraction_above_point9": 0.11773979591836735,
+        "interpretation": "Learned residual strength, not a calibrated confidence or grounding accuracy."
+      }
+    },
+    {
+      "epoch": 8,
+      "CIDEr": 1.2025860972116986,
+      "NLL": 2.0966182542666445,
+      "TRAIN_online_NLL": 1.8679745694601362,
+      "semantic_strength": {
+        "patches": 980000,
+        "mean": 0.49070499136018025,
+        "minimum": 0.000254889513598755,
+        "maximum": 0.9992037415504456,
+        "fraction_below_point1": 0.14283877551020407,
+        "fraction_above_point9": 0.14845816326530611,
+        "interpretation": "Learned residual strength, not a calibrated confidence or grounding accuracy."
+      }
+    },
+    {
+      "epoch": 9,
+      "CIDEr": 1.2015515511947146,
+      "NLL": 2.1014911720718983,
+      "TRAIN_online_NLL": 1.827885803787179,
+      "semantic_strength": {
+        "patches": 980000,
+        "mean": 0.4947724206759905,
+        "minimum": 0.00019743807206396013,
+        "maximum": 0.999450147151947,
+        "fraction_below_point1": 0.15040714285714285,
+        "fraction_above_point9": 0.16380102040816327,
+        "interpretation": "Learned residual strength, not a calibrated confidence or grounding accuracy."
+      }
+    },
+    {
+      "epoch": 10,
+      "CIDEr": 1.2020953427509924,
+      "NLL": 2.1067589593875873,
+      "TRAIN_online_NLL": 1.8018441511427836,
+      "semantic_strength": {
+        "patches": 980000,
+        "mean": 0.4948959037251439,
+        "minimum": 0.00012478703865781426,
+        "maximum": 0.9995496869087219,
+        "fraction_below_point1": 0.15544591836734695,
+        "fraction_above_point9": 0.17017551020408164,
+        "interpretation": "Learned residual strength, not a calibrated confidence or grounding accuracy."
+      }
+    }
+  ],
+  "receipts": {
+    "best_receipt.json": {
+      "sha256": "456681d45b8b9ce8e3d34f3452c5f6b7bebdef21fd2ad3e6f344790ccbe4ccf9",
+      "epoch": 8,
+      "CIDEr": 1.2025860972116986,
+      "test_used": false
+    },
+    "checkpoint_receipt.json": {
+      "sha256": "523063b6fd698a79c970f8de21553ad68ed0c0729bae462618685b84d813fb17",
+      "updates": 177110,
+      "epoch": 11,
+      "phase": "train",
+      "training_log_sha256": "72cd73a11c56f99385a14fb0ee4ebaffe658cb01868f7b2fdd5d57c9d06f7cc2"
+    }
+  },
+  "epochs": 10,
+  "updates": 177110,
+  "caption_events": 5667470,
+  "stage_seconds": 1957.8683331350003,
+  "semantic_stage_seconds": 56.71027164499992,
+  "worker_seconds": 27203.12209199,
+  "old_bank_worker_seconds": 25750.234184159,
+  "trainable_parameters": 34801913,
+  "old_bank_parameters": 34800888,
+  "extra_parameters": 1025,
+  "paired_best": {
+    "CHAIR_flags_removed": 125,
+    "CHAIR_flags_introduced": 86,
+    "CIDEr_delta_CI95_points": [
+      -1.7330531848174802,
+      1.0965622310800724
+    ],
+    "CHAIRs_delta_CI95_pp": [
+      -1.34,
+      -0.2
+    ],
+    "bootstrap_samples": 2000,
+    "seed": 42,
+    "limits": "Conditional on saved captions, one seed, reused VALID and selected checkpoints; no seed or selection correction."
+  },
+  "test_used": false,
+  "SCST": false,
+  "reranking": false,
+  "author_limits": [
+    "No local Torch/model/scorer or binary checkpoint/feature reload. CIDEr saved-score arithmetic and CHAIR counts only; BLEU/ROUGE runtime-reported.",
+    "Gated best8 vsoldbest9 follow same maxVALIDCIDEr within10epoch policy; selected weights have different exposure. End10 comparison also reported.",
+    "Alpha is learned strength, not calibrated confidence, direct localization proof or evidence of prompt-specific contribution.",
+    "No TEST/METEOR/SPICE for strength-gated variant. Extra gate did not increase VALID CIDEr over previous bank+prompt."
+  ]
+}
