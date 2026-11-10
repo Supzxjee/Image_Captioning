@@ -16,5 +16,12 @@
   "previous_main_updates": 0,
   "previous_deficit_seconds": 407.36224490429595,
   "repeat_projection_extra_margin_seconds": 3192.637755095704,
-  "neural_or_scorer_or_Kaggle_executed_locally": false
+  "neural_or_scorer_or_Kaggle_executed_locally": false,
+  "remote_Git_blob_and_Downloads_JSON_match": true,
+  "github_notebook_blob_sha256": "96eed50190d3ec9379c06f18d8c60bab4891414620c50530236e9da25c26a31d",
+  "sheet_status": {
+    "range": "K\u1ebft qu\u1ea3 m\u1edbi!A139:L141",
+    "values_format_API_readback_verified": true,
+    "native_visual_check": false
+  }
 }
