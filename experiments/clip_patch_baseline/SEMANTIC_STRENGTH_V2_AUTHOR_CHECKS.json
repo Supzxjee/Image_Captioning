@@ -1,0 +1,20 @@
+{
+  "status": "CAP_ONLY_STATIC_PASS_GPU_UNRUN",
+  "original_notebook": "57db104:experiments/clip_patch_baseline/CLIP_PATCH_SEMANTIC_STRENGTH_XE10_2GPU.ipynb",
+  "original_Git_blob_sha256": "402817e57eed3e34f29e07be6711c777f35761f0b149db2ef52516a4398be09e",
+  "new_notebook_sha256": "e9d904c2e23adfe7c7fb0d786eef23358dee8d42d37f618b6844e17bc0d50575",
+  "parent_hours_old": 10.5,
+  "parent_hours_new": 11.5,
+  "user_budget_hours_before_failed_run": 15,
+  "actual_remaining_quota_unmeasured": true,
+  "setup_only_expected_changes": true,
+  "runner_and_execution_cells_unchanged": true,
+  "all_code_AST": true,
+  "model_code_revision": "cc6a20ea7f7f3263a7a637100ab1166dd6ff6a1b",
+  "projection_guard_margin_unchanged": true,
+  "epochs_10_unchanged": true,
+  "previous_main_updates": 0,
+  "previous_deficit_seconds": 407.36224490429595,
+  "repeat_projection_extra_margin_seconds": 3192.637755095704,
+  "neural_or_scorer_or_Kaggle_executed_locally": false
+}
