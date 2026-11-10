@@ -72,5 +72,14 @@
     "No guarantee of CIDEr improvement or hallucination preservation.",
     "Scalar alpha is learned residual strength, not calibrated confidence or proof of semantic grounding."
   ],
-  "default_resume_root_empty_AST_verified": true
+  "default_resume_root_empty_AST_verified": true,
+  "github_notebook_blob_sha256": "402817e57eed3e34f29e07be6711c777f35761f0b149db2ef52516a4398be09e",
+  "GitHub_Git_blob_and_Downloads_JSON_match": true,
+  "sheet_protocol": {
+    "tab": "Kết quả mới",
+    "range": "A139:L141",
+    "status": "READY unrun",
+    "values_format_API_readback_verified": true,
+    "native_visual_check": false
+  }
 }
