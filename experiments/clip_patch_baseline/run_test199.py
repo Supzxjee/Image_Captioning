@@ -14,7 +14,9 @@ from test199_data import prepare,load,lock,validate_lock,checkpoint,runtime_poli
 from saved_quality_data import check_rows,chair_counts
 
 def contracts(cfg):
-    if cfg.get('semantic'):
+    if cfg.get('semantic_strength_gate'):
+        import strength_test_data as module
+    elif cfg.get('semantic'):
         import semantic_test_data as module
     else:
         import test199_data as module
@@ -55,7 +57,7 @@ def worker(cfg):
         if cfg.get('semantic'):
             from semantic_patch_model import SemanticPatchCaptioner
             from semantic_data import SemanticContext
-            model=SemanticPatchCaptioner(len(words),ck['model']['noun_bank'],ck['model']['verb_bank']);context=SemanticContext(cfg['stage'])
+            model=SemanticPatchCaptioner(len(words),ck['model']['noun_bank'],ck['model']['verb_bank'],strength_gate=cfg.get('semantic_strength_gate',False));context=SemanticContext(cfg['stage'])
         else:model=PatchCaptioner(len(words))
         model=model.to(device);model.load_state_dict(ck['model'],strict=True);del ck;model.eval();rows=[];images=np.arange(TEST_SIZE)[rank::2]
         with torch.inference_mode():
@@ -145,7 +147,7 @@ def combine(cfg):
     required={'BLEU_1','BLEU_4','METEOR','ROUGE_L','CIDEr','SPICE','CHAIRs','CHAIRi','Recall'}
     if set(metrics)!=required or not all(math.isfinite(v) for v in metrics.values()):raise ValueError('Need all eight metrics and recall')
     metrics['NLL']=sum(w['NLL_sum'] for w in workers)/sum(w['NLL_tokens'] for w in workers)
-    save(out/'result.json',dict(status='CLIP_PATCH_BANK_PROMPT_TEST5000_COMPLETE' if cfg.get('semantic') else 'CLIP_PATCH_199_TEST5000_COMPLETE',images=5000,checkpoint_sha256=contracts(cfg).CHECKPOINT_SHA,source_version=contracts(cfg).lock()['source_version'],epoch=contracts(cfg).lock()['epoch'],metrics=metrics,display_x100={k:100*v for k,v in metrics.items() if k!='NLL'},beam_width=5,max_new_tokens=20,training=False,reranking=False,test_tuning=False,prior_project_test_exposure=True,chair_counts=read(out/'chair_counts.json'),environment=read(out/'environment.json'),runtime_policy=workers[0]['runtime_policy']))
+    save(out/'result.json',dict(status='CLIP_PATCH_STRENGTH_TEST5000_COMPLETE' if cfg.get('semantic_strength_gate') else 'CLIP_PATCH_BANK_PROMPT_TEST5000_COMPLETE' if cfg.get('semantic') else 'CLIP_PATCH_199_TEST5000_COMPLETE',images=5000,checkpoint_sha256=contracts(cfg).CHECKPOINT_SHA,source_version=contracts(cfg).lock()['source_version'],epoch=contracts(cfg).lock()['epoch'],metrics=metrics,display_x100={k:100*v for k,v in metrics.items() if k!='NLL'},beam_width=5,max_new_tokens=20,training=False,reranking=False,test_tuning=False,prior_project_test_exposure=True,chair_counts=read(out/'chair_counts.json'),environment=read(out/'environment.json'),runtime_policy=workers[0]['runtime_policy']))
     print('TEST5000 COMPLETE',metrics,flush=True)
 
 if __name__=='__main__':

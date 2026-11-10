@@ -9,13 +9,15 @@ HERE=Path(__file__).resolve().parent;ROOT=HERE.parents[1];PREFIX='experiments/cl
 sys.path.insert(0,str(ROOT/'experiments/csa_paper'))
 from make_smoke_notebook import RUNNER,cell
 
-def make(revision,semantic=False):
+def make(revision,semantic=False,strength_gate=False):
+    if strength_gate and not semantic:raise ValueError("Strength TEST requires semantic inputs")
     revision=subprocess.check_output(['git','rev-parse',revision],cwd=ROOT,text=True).strip()
     mapping={PREFIX+n:n for n in ('TEST199_LOCK.json','TEST199_PROTOCOL.md','TEST199_BUILD_V2_PROTOCOL.md','SMOKE_SOURCE.json','test199_data.py','run_test199.py','test_test199.py','patch_model.py','patch_beam.py','patch_data.py','full_data.py','make_test199_notebook.py')}
     mapping.update({'experiments/csa_paper/'+n:n for n in ('data.py','real_bank_data.py','cuda_runtime_guard.py','saved_quality_data.py','score_prompt_test_extra.py')})
     if semantic:
         mapping.update({PREFIX+n:n for n in ('semantic_test_data.py','semantic_data.py','semantic_patch_model.py','memory_fusion.py','test_semantic_test.py','BANK_PROMPT_TEST_PROTOCOL.md')})
         mapping.update({'experiments/csa_paper/model.py':'bank_layers.py','experiments/csa_paper/PROMPT_TEST_PREPARATION_RESULT.json':'PROMPT_TEST_PREPARATION_RESULT.json'})
+    if strength_gate:mapping.update({PREFIX+n:n for n in ('strength_test_data.py','test_strength_test.py','SEMANTIC_STRENGTH_TEST_PROTOCOL.md')})
     hashes={n:hashlib.sha256(subprocess.check_output(['git','show',revision+':'+n],cwd=ROOT)).hexdigest() for n in mapping}
     setup=f"""import hashlib,json,os,queue,signal,subprocess,sys,tempfile,threading,time,traceback,urllib.request,zipfile,shutil
 from pathlib import Path
@@ -67,6 +69,7 @@ print('Exact own199 API routing mock PASS; no network.',flush=True)
 """
     if semantic:
         routing=routing.replace('ducanh2403/2-vi-cai-kia-qua-nhieu/199','ducanh2403/kltnnnnnff/9').replace("('ducanh2403','2-vi-cai-kia-qua-nhieu','v199')","('ducanh2403','kltnnnnnff','v9')").replace('Exact own199','Exact own9')
+    if strength_gate:routing=routing.replace('ducanh2403/kltnnnnnff/9','ducanh2403/kltnnnnnff/12').replace("'v9'","'v12'").replace('Exact own9','Exact own12')
     execution='ROUTING_PREFLIGHT='+repr(routing)+'\n'+"""complete=False
 try:
     for path,name in MAPPING.items():download('https://raw.githubusercontent.com/Supzxjee/Image_Captioning/'+REVISION+'/'+path,HASHES[path],SOURCE/name)
@@ -169,8 +172,20 @@ Only5000TEST patches staged (~1.4GiB), no full33GiB copy or TRAIN/VALID feature 
 
 Parent2h STOP cap inherited from baselineTEST, not ETA/billing. Latest answer confirmed cache path but did not supply remaining GPU hours; check account quota before launch. GPUweights/runtime/firstbeam-path guards before full decode. No Torch reinstall. Preserve caption/output on errors; no automatic model rerun. Send **clip_patch_bank_prompt_test5000_v1_review.zip**. Author checks NumPy/mock/AST only; models/CUDA/scorers run only by user.
 '''
+    if strength_gate:
+        setup=setup.replace('semantic=True,','semantic=True,semantic_strength_gate=True,').replace('clip_patch_bank_prompt_test5000_v1','clip_patch_strength_test5000_v1')
+        setup=setup.replace('exact bank+prompt best9','exact strength best8').replace('own kltnnnnnff/9','own kltnnnnnff/12')
+        execution=execution.replace('ducanh2403/kltnnnnnff/9','ducanh2403/kltnnnnnff/12')
+        execution=execution.replace('from semantic_test_data import checkpoint,VERSION,CHECKPOINT_SHA,prompt_inputs','from strength_test_data import checkpoint,VERSION,CHECKPOINT_SHA,prompt_inputs')
+        execution=execution.replace('/kaggle/working/clip_patch_bank_prompt_xe10_v1/best.bin','/kaggle/working/clip_patch_semantic_strength_xe10_v2/best.bin').replace('exact best9 bytes','exact best8 bytes')
+        execution=execution.replace("SOURCE/'test_semantic_test.py'],120)","SOURCE/'test_semantic_test.py'],120)\n    run([sys.executable,'-u',SOURCE/'test_strength_test.py'],120)")
+        execution=execution.replace('CLIP_PATCH_BANK_PROMPT_TEST5000_COMPLETE','CLIP_PATCH_STRENGTH_TEST5000_COMPLETE')
+        execution=execution.replace('exact own kltnnnnnff/9 API','exact own kltnnnnnff/12 API')
+        intro=intro.replace('# Bank + prompt, best epoch9','# Strength-gated bank + prompt, best epoch8').replace('ducanh2403/kltnnnnnff/9','ducanh2403/kltnnnnnff/12').replace('SHA7c11be52','SHA456681d4').replace('Best epoch9 is159399updates','Best epoch8 is141688updates').replace('Keep epoch9 chosen','Keep epoch8 chosen').replace('clip_patch_bank_prompt_test5000_v1_review.zip','clip_patch_strength_test5000_v1_review.zip')
+        intro=intro.replace('Latest answer confirmed cache path but did not supply remaining GPU hours; check account quota before launch.','Remaining GPU quota after training is not measured; check the selected own account before launching.')
+        intro+='\nRestore the learned scalar strength gate strictly from the epoch8 checkpoint; do not initialize it to.5 at inference. Same TEST/scorer/beam rules as baseline199 and bank+promptTEST10. This evaluates the frozen VALID-selected model, not another epoch or a TEST-tuned gate.\n'
     nb=dict(nbformat=4,nbformat_minor=5,metadata=dict(kernelspec=dict(display_name='Python 3',language='python',name='python3'),kaggle=dict(isInternetEnabled=True,isGpuEnabled=True)),cells=[cell('markdown',intro),cell('code',setup),cell('code',runner),cell('code',execution)])
-    p=HERE/('CLIP_PATCH_BANK_PROMPT_TEST5000_2GPU.ipynb' if semantic else 'CLIP_PATCH_199_TEST5000_V2_2GPU.ipynb');p.write_text(json.dumps(nb,ensure_ascii=False,indent=1)+'\n',encoding='utf-8');print(p.name,p.stat().st_size,'bytes',len(mapping),'pins',revision)
+    p=HERE/('CLIP_PATCH_STRENGTH_TEST5000_2GPU.ipynb' if strength_gate else 'CLIP_PATCH_BANK_PROMPT_TEST5000_2GPU.ipynb' if semantic else 'CLIP_PATCH_199_TEST5000_V2_2GPU.ipynb');p.write_text(json.dumps(nb,ensure_ascii=False,indent=1)+'\n',encoding='utf-8');print(p.name,p.stat().st_size,'bytes',len(mapping),'pins',revision)
 
 if __name__=='__main__':
-    p=argparse.ArgumentParser();p.add_argument('--revision',required=True);p.add_argument('--semantic',action='store_true');a=p.parse_args();make(a.revision,a.semantic)
+    p=argparse.ArgumentParser();p.add_argument('--revision',required=True);p.add_argument('--semantic',action='store_true');p.add_argument('--strength-gate',action='store_true');a=p.parse_args();make(a.revision,a.semantic,a.strength_gate)
