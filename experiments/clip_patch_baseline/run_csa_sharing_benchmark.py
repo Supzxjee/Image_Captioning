@@ -11,6 +11,7 @@ from patch_data import load_stage
 from run_csa_structure_smoke import prepare
 from csa_structure_data import checked_semantics
 from csa_sharing_data import image_plan, benchmark_orders, local_events
+from gradient_agreement import gradient_agreement
 
 
 def worker(cfg):
@@ -81,11 +82,22 @@ def worker(cfg):
             if rank == 0:
                 reference = copy.deepcopy(accelerator.unwrap_model(model)).eval()
                 x, seq, p, _ = tensors(events, False)
-                logits = reference(x, seq[:,:-1], p)
-                loss = F.cross_entropy(logits.flatten(0,1), seq[:,1:].flatten(), ignore_index=0, reduction='sum')/(seq[:,1:] != 0).sum()
-                loss.backward(); reference_nll = float(loss.detach())
+                with torch.no_grad():
+                    logits = reference(x, seq[:,:-1], p)
+                    loss = F.cross_entropy(logits.flatten(0,1), seq[:,1:].flatten(), ignore_index=0, reduction='sum')/(seq[:,1:] != 0).sum()
+                reference_nll = float(loss.detach()); denominator=int((seq[:,1:] != 0).sum())
+                del x, seq, p, logits, loss
+                # Same token objective, rank-shaped ordinary microbatches avoid
+                # comparing full32 vs16 kernels at ReLU boundaries in FP32.
+                reference.zero_grad(set_to_none=True); micro_nll=0.
+                for reference_rank in (0,1):
+                    x,seq,p,_=tensors(local_events(events,reference_rank),False)
+                    logits=reference(x,seq[:,:-1],p)
+                    loss=F.cross_entropy(logits.flatten(0,1),seq[:,1:].flatten(),ignore_index=0,reduction='sum')/denominator
+                    loss.backward(); micro_nll+=float(loss.detach())
+                    del x,seq,p,logits,loss
                 reference_grads = {n: v.grad.detach().cpu().clone() for n,v in reference.named_parameters()}
-                del reference, x, seq, p, logits, loss
+                del reference
             for shared in (False, True):
                 model.zero_grad(set_to_none=True)
                 ev = local_events(events, rank); x, seq, p, inverse = tensors(ev, shared)
@@ -101,25 +113,26 @@ def worker(cfg):
                 finally: handle.remove()
                 if encoded != [image_count]: raise ValueError('Actual encoder row count differs')
                 stats = torch.tensor([float(nll), tokens, image_count, caption_count], device=device, dtype=torch.float64); dist.all_reduce(stats)
-                error = [None]; max_relative = 0.; max_absolute = 0.
+                error = [None]; max_relative = 0.; max_absolute = 0.; diagnostics={}
                 if rank == 0:
                     try:
                         if abs(float(stats[0]/stats[1])-reference_nll) > 5e-5: raise ValueError('Global token loss differs')
+                        if abs(micro_nll-reference_nll)>5e-5:raise ValueError('Reference micro/global token objective differs')
                         for name, v in accelerator.unwrap_model(model).named_parameters():
                             if v.grad is None or not torch.isfinite(v.grad).all(): raise ValueError('Missing/nonfinite gradient '+name)
-                            a = v.grad.detach().cpu(); b = reference_grads[name]; difference = a-b
-                            absolute = float(difference.abs().max()); norm = float(b.double().norm())
-                            relative = float(difference.double().norm())/max(norm, 1e-30)
-                            max_absolute = max(max_absolute, absolute)
-                            if norm > 1e-7:
-                                max_relative = max(max_relative, relative)
-                                if relative > .01 or absolute > 5e-5: raise ValueError('Gradient parity '+name)
-                            elif absolute > 3e-7: raise ValueError('Nearzero gradient parity '+name)
+                            diagnostic=gradient_agreement(v.grad.detach().cpu().numpy(),reference_grads[name].numpy())
+                            diagnostics[name]=diagnostic
+                            max_absolute=max(max_absolute,diagnostic['max_abs_error'])
+                            if diagnostic['reference_norm']>1e-7:max_relative=max(max_relative,diagnostic['relative_l2'])
+                        failed=[n for n,d in diagnostics.items() if not d['passed']]
+                        if failed:raise ValueError('Gradient parity '+', '.join(failed))
                     except BaseException as exc: error[0] = str(exc)
                     parity.append(dict(case=label, shared=shared, passed=error[0] is None, error=error[0],
                                        global_NLL=float(stats[0]/stats[1]), reference_NLL=reference_nll,
+                                       reference_micro_NLL=micro_nll, reference_gradient='ordinary_single_GPU_rank_shaped_microbatch_sum',
                                        global_tokens=int(stats[1]), encoded_images_global=int(stats[2]), captions=int(stats[3]),
-                                       max_relative_gradient_error=max_relative, max_absolute_gradient_error=max_absolute))
+                                       max_relative_gradient_error=max_relative, max_absolute_gradient_error=max_absolute,
+                                       gradient_diagnostics=diagnostics))
                     save(out/'parity.json', parity)
                 dist.broadcast_object_list(error, src=0)
                 if error[0]: raise ValueError(error[0])

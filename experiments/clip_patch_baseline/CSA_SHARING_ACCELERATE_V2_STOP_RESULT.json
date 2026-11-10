@@ -1,0 +1,33 @@
+{
+  "status": "ACCELERATE_SHARING_V2_STOP_REVIEWED",
+  "source_commit": "7c7074791c69e5def9ee50696a8be22d98aa4695",
+  "archive_sha256": "f062df32b791d73e73511d611448ec03c2268e387aad6b9712a906672e9a3e8a",
+  "checks_passed": 39,
+  "evaluation_source": {
+    "notebook_slug": "kltnnnnnff",
+    "save_version": null,
+    "version_user_confirmed": false
+  },
+  "completed_optimizer_updates": 0,
+  "benchmark_complete": false,
+  "performance_measured": false,
+  "quality_evaluated": false,
+  "first_rejected_case": {
+    "case": "grouped32",
+    "shared": false,
+    "passed": false,
+    "error": "Gradient parity core.decoder.2.ffn.net.0.weight",
+    "global_NLL": 9.165918355252309,
+    "reference_NLL": 9.16591739654541,
+    "global_tokens": 379,
+    "encoded_images_global": 32,
+    "captions": 32,
+    "max_relative_gradient_error": 0.0009195794827078931,
+    "max_absolute_gradient_error": 7.647206075489521e-05
+  },
+  "loss_absolute_difference": 9.587068987571001e-07,
+  "relative_gradient_error_percent": 0.0919579482707893,
+  "conclusion": "Accelerate initialized successfully; ordinary(nonsharing) gradient check rejected before any timing/training. Insufficient diagnostics to prove numerical error or correctness. No speed/quality conclusion.",
+  "correction": "V3 same model/FP32/optimizer/samplers/caps. Ordinary rank-shaped gradient reference with full-global scalarNLL check; per-tensor scale-aware diagnostics and relativeL2 .005. Actual GPU retry pending, not retroactive PASS.",
+  "models_run_locally": false
+}
