@@ -1,0 +1,71 @@
+{
+  "status": "AUTHOR_NUMPY_MOCK_STATIC_PASS_GPU_UNRUN",
+  "source_commit": "aae9afc7966ee4aa36dd67c4b4839ff788e775fe",
+  "pinned_files": {
+    "experiments/clip_patch_baseline/TEST199_LOCK.json": "a93e320cc0c1444dab2de21ea2765107b949dc6f49353fd8c9c458ad8b60e8e3",
+    "experiments/clip_patch_baseline/TEST199_PROTOCOL.md": "2cd1f33ae85544688b4dca30e0e3a31da37454178044dfc48419030e45bde988",
+    "experiments/clip_patch_baseline/TEST199_BUILD_V2_PROTOCOL.md": "7213afcf56f4df32fdae98f72e35f1516d3d7cdcdf657b4b388a6e724af011d8",
+    "experiments/clip_patch_baseline/SMOKE_SOURCE.json": "6413058df1575ae8266c6f7ec29eea3cb60917147126bc55961de47c949abe49",
+    "experiments/clip_patch_baseline/test199_data.py": "0291e01b2f0f110e937904d40f4b5d1e69351605a2cff5c0cde55aef0fa412c4",
+    "experiments/clip_patch_baseline/run_test199.py": "3108367500cc3de3867d02ee5e0240b646a93f38aca184a79118964736d8e7f3",
+    "experiments/clip_patch_baseline/test_test199.py": "ff7e3942a9e0db932694bff15a3485b2e132163731879871cbb1c5f611ac79be",
+    "experiments/clip_patch_baseline/patch_model.py": "dfe6b1d83bfc1e3c7961268fb104bc1f4092129e7d9400841568a3204dc57a70",
+    "experiments/clip_patch_baseline/patch_beam.py": "53fcb5b22bb9f05d795fbd4f539cfd4ff0af39c1dea679f7df1a933edf2754be",
+    "experiments/clip_patch_baseline/patch_data.py": "3706ffec9c128c8fe12c4f21ba071939268fdd526ed614034cca8dfec55674d5",
+    "experiments/clip_patch_baseline/full_data.py": "ab69cf61d4ad0456d9a869929750ab10f3a2a33b6c76683689539e57e4015a74",
+    "experiments/clip_patch_baseline/make_test199_notebook.py": "d2d3a5a3d2bda3268732396f920f847b9fab5b11c60799197a0b667673481a64",
+    "experiments/csa_paper/data.py": "5a5bb451dc20184d3ea597d4dc8415a120583571f4e1a4dac75e29a306213a71",
+    "experiments/csa_paper/real_bank_data.py": "2c791f8dd856198ec1954a2edd1f9e46520d422f20eff07220e462fc2c9bd9a0",
+    "experiments/csa_paper/cuda_runtime_guard.py": "640b5debc81607e3504930e4042571636cc3fbd525a6d0e5eb45abdd141fb773",
+    "experiments/csa_paper/saved_quality_data.py": "f8a092506e3adf96292203190ea2f83de397d3028a3ddc6293d58fd360199a1e",
+    "experiments/csa_paper/score_prompt_test_extra.py": "8704765eb1c3c2713a7d31b92cba7454e905fcb3f0af37de627d81dc6d0f9bd7",
+    "experiments/clip_patch_baseline/semantic_test_data.py": "a0f23b6d85a902a7f362a7a2ef03108fbaf603dc4326e61aeabbfe164bb3abdc",
+    "experiments/clip_patch_baseline/semantic_data.py": "a57af931f9e6be85f6efeee668b09fcca14c8a3bd54ebd695d9014ede2ab0540",
+    "experiments/clip_patch_baseline/semantic_patch_model.py": "e028734b1835ca41b51a63c838ebb05bde658a5e34ed0f6d1ea08796d1d24b8a",
+    "experiments/clip_patch_baseline/test_semantic_test.py": "fd8756b0f2fa22efa35c5b79498fd5b1daffb5a0b18c25e8655b03f60927b951",
+    "experiments/clip_patch_baseline/BANK_PROMPT_TEST_PROTOCOL.md": "56e233a6d86dbfe269e21ced39c3253a0712cfe87cfb72399441728038857e7f",
+    "experiments/csa_paper/model.py": "139edbb1b73caf3dadaf5c960b25542e282f88baf2ce9bdf141de922ceacbc09",
+    "experiments/csa_paper/PROMPT_TEST_PREPARATION_RESULT.json": "d99891923634188aa2d75185f0ef9894e3ab9e3be780a5a17e411076c3c9d205"
+  },
+  "notebook_sha256": "e7e4b3dda92f25c8a713ae39b6178d615ccdd5bccd68da78bf8bd05695ab66cd",
+  "isolated_tests": 13,
+  "test_output": {
+    "test_test199.py": "test_all_eight_metrics_required_before_complete (__main__.Checks.test_all_eight_metrics_required_before_complete) ... ok\ntest_checkpoint_accepts_exact_file_or_both_names_and_rejects_other (__main__.Checks.test_checkpoint_accepts_exact_file_or_both_names_and_rejects_other) ... ok\ntest_frozen_checkpoint_and_decoding_rule (__main__.Checks.test_frozen_checkpoint_and_decoding_rule) ... ok\ntest_observed_cuda_build_change_requires_same_framework_release (__main__.Checks.test_observed_cuda_build_change_requires_same_framework_release) ... ok\ntest_only_TEST_features_exact_bytes_vocab_and_seal (__main__.Checks.test_only_TEST_features_exact_bytes_vocab_and_seal) ... TEST patches staged 2 / 2 0 s\nok\ntest_source_parse_no_training_no_neural_import_during_audit (__main__.Checks.test_source_parse_no_training_no_neural_import_during_audit) ... ok\n\n----------------------------------------------------------------------\nRan 6 tests in 0.381s\n\nOK\n",
+    "test_semantic_test.py": "test_best_snapshot_not_final_epoch10 (__main__.Checks.test_best_snapshot_not_final_epoch10) ... ok\ntest_exact_weights_lookup_and_runtime (__main__.Checks.test_exact_weights_lookup_and_runtime) ... ok\ntest_fixed_checkpoint_epoch9_and_decode (__main__.Checks.test_fixed_checkpoint_epoch9_and_decode) ... ok\ntest_no_training_or_neural_import_source (__main__.Checks.test_no_training_or_neural_import_source) ... ok\ntest_prompt181_payloads_and_ID_scope_without_ROI_or_old_vocab (__main__.Checks.test_prompt181_payloads_and_ID_scope_without_ROI_or_old_vocab) ... ok\ntest_shared_scorer_complete_requires_all8_for_new_method (__main__.Checks.test_shared_scorer_complete_requires_all8_for_new_method) ... ok\ntest_stage_geometry_joins_logical_TEST_ids_and_seals (__main__.Checks.test_stage_geometry_joins_logical_TEST_ids_and_seals) ... ok\n\n----------------------------------------------------------------------\nRan 7 tests in 0.595s\n\nOK\n"
+  },
+  "all_source_and_notebook_AST": true,
+  "exact_API_route_mock_source_AST": "ducanh2403/kltnnnnnff/9 -> v9 (execution only on user Kaggle)",
+  "source_owner": "ducanh2403 default from own account, not separately confirmed",
+  "checkpoint_sha256": "7c11be52fce9cd90dadc55fa514d4017d540f40f630232a68bfe4306c754158b",
+  "epoch": 9,
+  "updates": 159399,
+  "inference_model_sources_identical_training": true,
+  "scorers_reused_baseline199": true,
+  "early_checkpoint_prompt_preflights": true,
+  "TEST_images": 5000,
+  "metrics": [
+    "BLEU_1",
+    "BLEU_4",
+    "METEOR",
+    "ROUGE_L",
+    "CIDEr",
+    "SPICE",
+    "CHAIRs",
+    "CHAIRi"
+  ],
+  "extra_metrics": [
+    "Recall",
+    "NLL"
+  ],
+  "training": false,
+  "reranking": false,
+  "test_tuning": false,
+  "parent_cap_hours": 2,
+  "unexecuted": [
+    "Kaggle/API/credentials/network checkpoint access",
+    "Real dataset binary reading",
+    "Torch/model/CUDA/beam inference",
+    "Official scorers"
+  ],
+  "result_pending_user": true
+}
