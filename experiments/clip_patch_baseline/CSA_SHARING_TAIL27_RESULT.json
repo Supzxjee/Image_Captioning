@@ -1,0 +1,187 @@
+{
+  "archive_sha256": "0f008811153df67c004b7dfc1dfa811a861860dd31fba56c639b2ac11cf71078",
+  "status": {
+    "complete": true,
+    "optimizer_updates": 0
+  },
+  "inputs": {
+    "coco_ids": [
+      134413,
+      245102,
+      299959,
+      205656,
+      260990,
+      17585
+    ],
+    "event_ids": [
+      216091,
+      216092,
+      89658,
+      89659,
+      89660,
+      89661,
+      89662,
+      281849,
+      281850,
+      281851,
+      281852,
+      281853,
+      6035,
+      6036,
+      6037,
+      6038,
+      6039,
+      355564,
+      355565,
+      355566,
+      355567,
+      355568,
+      297474,
+      297475,
+      297476,
+      297477,
+      297478
+    ],
+    "feature_rows": 6,
+    "global_tokens": 303
+  },
+  "ranks": [
+    {
+      "torch_version": "2.11.0+cu128",
+      "gpu": "Tesla T4",
+      "initial_tensor_sha256": "407696b4c212b3c4f2f3b009f6c64f992d786d6bf9bcd82e07cef49666871c60",
+      "caption_events": 16,
+      "ordinary_nll_sum": 1678.9677734375,
+      "shared_nll_sum": 1678.9677734375,
+      "neuron_933_sign_changes": [],
+      "local_gradients": {
+        "core.decoder.1.ffn.net.0.weight": {
+          "passed": true,
+          "reference_norm": 0.03799710373568112,
+          "reference_max_abs": 0.0006161071360111237,
+          "error_norm": 6.516035444300974e-08,
+          "relative_l2": 1.7148768731502295e-06,
+          "max_abs_error": 9.458744898438454e-10,
+          "max_abs_limit": 3.3805356800556186e-06,
+          "scale_relative_max_error": 1.5352435226894821e-06,
+          "max_error_index": [
+            736,
+            118
+          ],
+          "actual_at_max": 0.00015176447050180286,
+          "reference_at_max": 0.0001517654163762927
+        },
+        "core.decoder.1.ffn.net.0.bias": {
+          "passed": true,
+          "reference_norm": 0.0038702539714290515,
+          "reference_max_abs": 0.0004469777341000736,
+          "error_norm": 6.384798710984586e-09,
+          "relative_l2": 1.6497105249728778e-06,
+          "max_abs_error": 6.693881005048752e-10,
+          "max_abs_limit": 2.534888670500368e-06,
+          "scale_relative_max_error": 1.497587126688969e-06,
+          "max_error_index": [
+            1643
+          ],
+          "actual_at_max": 0.00016102318477351218,
+          "reference_at_max": 0.0001610238541616127
+        }
+      }
+    },
+    {
+      "torch_version": "2.11.0+cu128",
+      "gpu": "Tesla T4",
+      "initial_tensor_sha256": "407696b4c212b3c4f2f3b009f6c64f992d786d6bf9bcd82e07cef49666871c60",
+      "caption_events": 11,
+      "ordinary_nll_sum": 1120.44921875,
+      "shared_nll_sum": 1120.44921875,
+      "neuron_933_sign_changes": [
+        {
+          "event_index": 20,
+          "token": 3,
+          "valid_target": true,
+          "ordinary": 4.470348358154297e-08,
+          "shared": 0.0
+        }
+      ],
+      "local_gradients": {
+        "core.decoder.1.ffn.net.0.weight": {
+          "passed": false,
+          "reference_norm": 0.032366612161509115,
+          "reference_max_abs": 0.0005034800851717591,
+          "error_norm": 4.6003802517678965e-05,
+          "relative_l2": 0.0014213351180568541,
+          "max_abs_error": 6.54857058179914e-06,
+          "max_abs_limit": 2.8174004258587958e-06,
+          "scale_relative_max_error": 0.013006612922068478,
+          "max_error_index": [
+            933,
+            203
+          ],
+          "actual_at_max": 1.3165341442800127e-05,
+          "reference_at_max": 6.616770861000987e-06
+        },
+        "core.decoder.1.ffn.net.0.bias": {
+          "passed": false,
+          "reference_norm": 0.0032940267969546015,
+          "reference_max_abs": 0.00037064054049551487,
+          "error_norm": 4.48665885444103e-06,
+          "relative_l2": 0.001362059002856031,
+          "max_abs_error": 4.486657417146489e-06,
+          "max_abs_limit": 2.1532027024775744e-06,
+          "scale_relative_max_error": 0.012105144815373434,
+          "max_error_index": [
+            933
+          ],
+          "actual_at_max": -4.7135890781646594e-06,
+          "reference_at_max": -2.2693166101817042e-07
+        }
+      }
+    }
+  ],
+  "ddp": {
+    "passed": false,
+    "ordinary_nll": 9.238999974216172,
+    "shared_nll": 9.238999974216172,
+    "failed_parameters": [
+      "core.decoder.1.ffn.net.0.weight",
+      "core.decoder.1.ffn.net.0.bias"
+    ],
+    "optimizer_updates": 0
+  },
+  "failed_diagnostics": {
+    "core.decoder.1.ffn.net.0.weight": {
+      "passed": false,
+      "reference_norm": 0.030512813532084095,
+      "reference_max_abs": 0.0004884345689788461,
+      "error_norm": 2.3001632209039096e-05,
+      "relative_l2": 0.0007538351776329304,
+      "max_abs_error": 3.274243681516964e-06,
+      "max_abs_limit": 2.7421728448942304e-06,
+      "scale_relative_max_error": 0.0067035461645606215,
+      "max_error_index": [
+        933,
+        203
+      ],
+      "actual_at_max": 1.384965162287699e-05,
+      "reference_at_max": 1.0575407941360027e-05
+    },
+    "core.decoder.1.ffn.net.0.bias": {
+      "passed": false,
+      "reference_norm": 0.003138023050190294,
+      "reference_max_abs": 0.00037498970050364733,
+      "error_norm": 2.2433013353974614e-06,
+      "relative_l2": 0.000714877264926854,
+      "max_abs_error": 2.2432977857533842e-06,
+      "max_abs_limit": 2.1749485025182365e-06,
+      "scale_relative_max_error": 0.0059822917342540844,
+      "max_error_index": [
+        933
+      ],
+      "actual_at_max": -8.512652129866183e-06,
+      "reference_at_max": -6.2693543441127986e-06
+    }
+  },
+  "parameters_checked": 180,
+  "interpretation": "Rank1 activation moves from positive to zero at the failing neuron before reduction. Consistent with a numerical ReLU boundary effect. Probe has no evidence about training quality. Current parity criterion fails."
+}
