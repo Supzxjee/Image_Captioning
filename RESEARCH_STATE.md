@@ -10,6 +10,8 @@ Cập nhật: 12/11/2026, giờ Việt Nam. File này là bản tóm tắt để
 
 ## Hiện đang ở đâu
 
+- **12/11 fixed per-caption epoch9 TEST notebook ready.** CLIP_PATCH_CSA_PER_CAPTION_BEST9_TEST5000_2GPU.ipynb uses exact best SHA b0c5bde0 and pinned CSA architecture, prompt181 and fixed TEST5000/beam5; mount resume Output. Source hashes, AST, mock checkpoint contract and baseline/semantic data tests passed. GPU scoring pending.
+
 - **12/11 per-caption full10 complete:** resumed from 124177 and finished 177110 updates, 10 VALID epochs. Best epoch9 CIDEr120.2955 / CHAIRs4.00% / CHAIRi2.7915%; epoch10 CIDEr119.6139 / CHAIRs3.86% / CHAIRi2.7537%. Keep both checkpoints. ZIP contains receipts only. Resume worker 14529.6s plus patch stage 2642.1s, timing excludes other setup/scoring. VALID only. [Result](experiments/clip_patch_baseline/CSA_PER_CAPTION_FULL_XE10_RESULT.json).
 
 - **11/11 exact resume notebook ready.** CLIP_PATCH_CSA_PER_CAPTION_RESUME124177_2GPU.ipynb continues epoch 8 cursor 200 with original pinned worker. Full mounted prior Output required. Pre-staging hashes verify checkpoint, best, log and epochs 1–7 validation. Static checks passed; GPU resume pending.

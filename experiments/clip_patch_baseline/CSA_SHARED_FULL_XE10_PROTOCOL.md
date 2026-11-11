@@ -38,3 +38,7 @@ User requests ordinary per-caption encoding after V2 tail27 failure. Keep image-
 ## Amendment 11/11: targeted feature-sharing probe
 
 User approved checking feature sharing before committing to a full run. Replay epoch 1 tail27, with the same frozen inputs, rank split, seed and FP32 execution. Read full metadata to recover the sampler and scan prompt links for the selected images. Read only their H5 feature rows. Compare local and DDP gradients and log the decoder neuron 933 ReLU sign changes. Retain the previous gradient criterion and leave the full training notebook independent.
+
+## 12/11 TEST decision
+
+User approved TEST evaluation of the per-caption epoch 9 VALID-selected checkpoint. Pin its SHA and training identity, use the existing Karpathy TEST5000 cohort, prompt181 cache and beam-5 recipe. Mount the resumed Output. Preserve epoch 10 separately. No training or reranking. Compare with baseline TEST only after scoring.
