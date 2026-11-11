@@ -34,3 +34,7 @@ User ran Save Version; /tmp staging is not saved in Output. V2 restages with the
 ## Amendment 11/11: no feature sharing
 
 User requests ordinary per-caption encoding after V2 tail27 failure. Keep image-grouped batches, FP32, Accelerate, data and schedule. Compare ordinary rank-shaped reference with ordinary DDP on both batch sizes, with existing limits. New method identity and output. Prior ordinary benchmark implies approximately 12.7h for 10 epochs of training alone, so use checkpoint continuation within the existing session cap.
+
+## Amendment 11/11: targeted feature-sharing probe
+
+User approved checking feature sharing before committing to a full run. Replay epoch 1 tail27, with the same frozen inputs, rank split, seed and FP32 execution. Read full metadata to recover the sampler and scan prompt links for the selected images. Read only their H5 feature rows. Compare local and DDP gradients and log the decoder neuron 933 ReLU sign changes. Retain the previous gradient criterion and leave the full training notebook independent.

@@ -10,6 +10,8 @@ Cập nhật: 11/11/2026, giờ Việt Nam. File này là bản tóm tắt để
 
 ## Hiện đang ở đâu
 
+- **11/11 tail27 feature sharing probe ready.** [Notebook](experiments/clip_patch_baseline/CLIP_PATCH_CSA_SHARING_TAIL27_PROBE_2GPU.ipynb) uses V2 pinned model, exact epoch-1 tail metadata and selected H5 rows, FP32 on two GPUs, neuron 933 sign/local and DDP gradient diagnostics, zero optimizer updates. Compares ordinary DDP with shared DDP, distinct from V2 single-device accumulated reference. Notebook AST and download copy checked; GPU result pending.
+
 - **11/11 per-caption full10 notebook ready after user requested removing feature sharing.** [Notebook](experiments/clip_patch_baseline/CLIP_PATCH_CSA_PER_CAPTION_FULL_XE10_ACCELERATE_2GPU.ipynb). Source 5eb0122, 39 pins, 23 reachable modules and 27 isolated tests PASS. Ordinary per-caption encode in worker and both gradient comparison paths, grouped sampler/FP32/Accelerate/10XE preserved. Existing stage repeated per session; checkpoint continuation may be required under 11.5h cap. GPU and training pending.
 
 - **11/11 shared full10 V2 stopped at GPU gradient preflight.** 118287 images staged in 2293.05s. First32 passed, tail27 failed for two FFN tensors. No main updates, checkpoint or quality metrics. [V2 result](experiments/clip_patch_baseline/CSA_SHARED_FULL_XE10_V2_RESULT.json). Diagnose exact tail27 with a small probe before restaging; retain parity limits.
