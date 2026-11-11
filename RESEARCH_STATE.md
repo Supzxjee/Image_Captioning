@@ -10,6 +10,8 @@ Cập nhật: 12/11/2026, giờ Việt Nam. File này là bản tóm tắt để
 
 ## Hiện đang ở đâu
 
+- **12/11 fixed CSA-only rerank TEST notebook ready.** CLIP_PATCH_CSA_PER_CAPTION_BEST9_RERANK_TEST5000_2GPU.ipynb replays original TEST top1 SHA and five beams from epoch9, transfers VALID164 .3/.4/.3 frozen policy, and scores both CSA policies including METEOR/SPICE. Requires detector Dataset in addition to prior four. AST/policy smoke PASS, GPU metrics pending.
+
 - **12/11 per-caption epoch9 TEST5000 complete.** CIDEr121.6375 vs baseline199 120.5145; CHAIRs3.96% vs5.16%, CHAIRi2.8017% vs3.5958%, Recall43.49% vs43.73%. Checkpoint SHA, cohort/decode lock, workers, CHAIR counts and NLL checked from saved artifacts. One seed, descriptive system comparison. [Result](experiments/clip_patch_baseline/CSA_PER_CAPTION_BEST9_TEST5000_RESULT.json).
 
 - **12/11 fixed per-caption epoch9 TEST notebook ready.** CLIP_PATCH_CSA_PER_CAPTION_BEST9_TEST5000_2GPU.ipynb uses exact best SHA b0c5bde0 and pinned CSA architecture, prompt181 and fixed TEST5000/beam5; mount resume Output. Source hashes, AST, mock checkpoint contract and baseline/semantic data tests passed. GPU scoring pending.

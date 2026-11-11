@@ -42,3 +42,7 @@ User approved checking feature sharing before committing to a full run. Replay e
 ## 12/11 TEST decision
 
 User approved TEST evaluation of the per-caption epoch 9 VALID-selected checkpoint. Pin its SHA and training identity, use the existing Karpathy TEST5000 cohort, prompt181 cache and beam-5 recipe. Mount the resumed Output. Preserve epoch 10 separately. No training or reranking. Compare with baseline TEST only after scoring.
+
+## 12/11 fixed rerank decision
+
+User requested reranking only the completed CSA per-caption TEST system. Replay the five beams with the exact epoch9 checkpoint. Require original top1 caption files to match their saved worker SHA receipts. Transfer the fixed VALID164 decoder/CLIP/object weights .3/.4/.3 without TEST tuning. Use pinned CLIP and detector inputs. Score top1 and reranked captions on the same TEST5000. Keep baseline unchanged.
