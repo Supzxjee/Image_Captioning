@@ -1,4 +1,4 @@
-"""USER-RUN CSA full10XE: Accelerate, image-grouped sharing, exact cursor/checkpoints."""
+"""USER-RUN CSA full10XE: Accelerate, image-grouped per-caption encoding, exact cursor/checkpoints."""
 import argparse
 from datetime import timedelta
 import importlib.metadata
@@ -10,10 +10,9 @@ import shutil
 import time
 import numpy as np
 from real_bank_data import read,save,sha
-from full_data import prepare,load_stage,ImageBatches,loader,learning_rate,validate_state,STEPS,TRAIN_EVENTS,TRAIN_IMAGES,VALID_IMAGES
+from full_data import prepare,load_stage,CaptionBatches,ImageBatches,loader,learning_rate,validate_state,STEPS,TRAIN_EVENTS,TRAIN_IMAGES,VALID_IMAGES
 
-from csa_full_data import SharedCaptionBatches as CaptionBatches,order_for_epoch,current_epoch_projection
-from csa_sharing_data import image_plan
+from csa_full_data import order_for_epoch,current_epoch_projection
 
 def atomic(path,value):
     temp=path.with_suffix('.tmp');save(temp,value);os.replace(temp,path)
@@ -47,8 +46,7 @@ def distributed(cfg,guard=False):
         context=SemanticContext(cfg['stage']);model=make_model(len(words),cfg).to(device)
         wrapped=accelerator.prepare_model(model)
         def predict(net,x,prefix,events):
-            first,inverse=image_plan(data['caption_image'],events,True)
-            return net(x,prefix,context.events(data,events[first],device),torch.from_numpy(inverse).to(device))
+            return net(x,prefix,context.events(data,events,device))
         def memory_for(x,indices):return model.encode(x,context.images(indices,device))
         if guard:preflight(cfg,model,wrapped,data,words,rank,device,out,deadline,accelerator);return
         guards=[read(out/f'preflight_rank{r}.json') for r in (0,1)]
@@ -56,8 +54,8 @@ def distributed(cfg,guard=False):
         step_est=max(g['full_IO_step_p90_seconds'] for g in guards);val_est=max(g['decode_seconds']/g['decode_images']*2500 for g in guards)
         refs=read(Path(cfg['stage'])/'validation_references.json')
         identity=dict(schema='clip_patch_full_xe10_v1',source=read(out/'source_receipt.json'),stage_files=stage['files_sha256'],raw_sources=stage['sources'],feature_profile=stage['feature_profile'],
-            initial_sha256=guards[0]['initial_tensor_sha256'],global_batch=32,epochs=10,lr='warmup1epoch8e-6to1e-4_then_cosine_to1e-5',dropout=.2,clip1=True,seed=42,framework='Accelerate',sharing=True,sampler='image_grouped_42_plus_epoch',
-            method='csa_structure_patch_prompt_grouped_shared_accelerate_v1',software={k:importlib.metadata.version(k) for k in ('torch','numpy','pycocoevalcap','accelerate')},test_used=False)
+            initial_sha256=guards[0]['initial_tensor_sha256'],global_batch=32,epochs=10,lr='warmup1epoch8e-6to1e-4_then_cosine_to1e-5',dropout=.2,clip1=True,seed=42,framework='Accelerate',sharing=False,sampler='image_grouped_42_plus_epoch',
+            method='csa_structure_patch_prompt_grouped_per_caption_accelerate_v1',software={k:importlib.metadata.version(k) for k in ('torch','numpy','pycocoevalcap','accelerate')},test_used=False)
         optimizer=accelerator.prepare_optimizer(torch.optim.Adam(model.parameters(),lr=8e-6,betas=(.9,.99),eps=1e-8,weight_decay=0))
         state=dict(epoch=1,batch_cursor=0,phase='train',updates=0,caption_events=0,history=[],best_epoch=None,best_CIDEr=None,epoch_nll_sum=0.,epoch_tokens=0)
         random.seed(42+rank);np.random.seed(42+rank);torch.manual_seed(4242+rank);torch.cuda.manual_seed(4242+rank)

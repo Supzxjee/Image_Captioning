@@ -30,3 +30,7 @@ Preservecheckpoint.bin ANDbest.bin/receipts, optimizer/RNG, completedvalidationf
 V1 review SHA efe2bb45f2997bf1dc4868b1766c64df2a5bd3a88eeba0a5e74972ac65d5ef42: full raw stage completed (118287 TRAIN+VALID images, 2566.4s), semantic stage completed, then model-module import failed because memory_fusion.py was absent from the packaged mapping. No model construction, optimizer updates, checkpoint, or quality result. CUDA2/NCCL were available; this is an author packaging error, not a GPU/data error.
 
 User ran Save Version; /tmp staging is not saved in Output. V2 restages with the same four inputs/architecture/recipe/budget. Add missing module, static reachable local-import closure check in generator, and Kaggle import-only class precheck BEFORE expensive preparation. Preserve V1 notebook. New notebook CLIP_PATCH_CSA_SHARED_FULL_XE10_ACCELERATE_V2_2GPU.ipynb/output csa_structure_shared_full_xe10_v2. No local neural imports/models/Kaggle execution authorized.
+
+## Amendment 11/11: no feature sharing
+
+User requests ordinary per-caption encoding after V2 tail27 failure. Keep image-grouped batches, FP32, Accelerate, data and schedule. Compare ordinary rank-shaped reference with ordinary DDP on both batch sizes, with existing limits. New method identity and output. Prior ordinary benchmark implies approximately 12.7h for 10 epochs of training alone, so use checkpoint continuation within the existing session cap.

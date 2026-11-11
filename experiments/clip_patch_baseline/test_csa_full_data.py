@@ -55,12 +55,13 @@ class Checks(TestCase):
         state.update(epoch=11,phase='train',batch_cursor=0)
         self.assertEqual(d.current_epoch_projection(state,.2,200),900)
 
-    def test_runner_static_accelerate_sharing_resume_no_legacy_model(self):
+    def test_runner_static_accelerate_per_caption_resume(self):
         source=(HERE/'run_csa_full.py').read_text(encoding='utf-8');tree=ast.parse(source)
         for value in ('accelerator.prepare_model(model)','accelerator.prepare_optimizer','accelerator.backward(loss)',
-                      'image_plan(data[\'caption_image\'],events,True)','current_epoch_projection(state,measured,val_est)',
+                      'context.events(data,events,device)','current_epoch_projection(state,measured,val_est)',
                       "optimizer.load_state_dict(ck['optimizer'])","rng_by_rank",'mean_words','short_le2'):
             self.assertIn(value,source)
+        self.assertNotIn('image_plan',source);self.assertNotIn('SharedCaptionBatches',source)
         self.assertNotIn('DDP(',source);self.assertNotIn('remaining=(10*STEPS',source)
         call=next(n for n in ast.walk(tree) if isinstance(n,ast.Call) and isinstance(n.func,ast.Name) and n.func.id=='Accelerator')
         self.assertEqual(ast.literal_eval(next(k.value for k in call.keywords if k.arg=='mixed_precision')),'no')

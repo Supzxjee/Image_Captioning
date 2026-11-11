@@ -5,19 +5,19 @@ import time
 import numpy as np
 from real_bank_data import save
 from full_runtime import tensor_digest
-from csa_full_data import SharedCaptionBatches,order_for_epoch
+from csa_full_data import order_for_epoch
 from full_data import CaptionBatches,ImageBatches,loader
-from csa_sharing_data import image_plan,local_events
+from csa_sharing_data import local_events
 from gradient_agreement import gradient_agreement
 
 
 def make_model(vocab,cfg):
     import torch
-    from csa_shared_model import SharedCSAPatchCaptioner
-    if not cfg.get('csa_shared_full') or cfg.get('semantic_strength_gate'):
-        raise ValueError('Need CSAsharedfull configuration, no old strength gate')
+    from csa_patch_model import CSAPatchCaptioner
+    if not cfg.get('csa_per_caption_full') or cfg.get('semantic_strength_gate'):
+        raise ValueError('Need CSA per-caption configuration, no old strength gate')
     banks=[torch.from_numpy(np.load(Path(cfg['stage'])/('sem_'+k+'_bank.npy'),allow_pickle=False)) for k in ('noun','verb')]
-    return SharedCSAPatchCaptioner(vocab,*banks)
+    return CSAPatchCaptioner(vocab,*banks)
 
 
 def preflight(cfg,model,wrapped,data,words,rank,device,out,deadline,accelerator):
@@ -27,27 +27,26 @@ def preflight(cfg,model,wrapped,data,words,rank,device,out,deadline,accelerator)
     from semantic_data import SemanticContext
     from patch_beam import beam_search,check_paths
     context=SemanticContext(cfg['stage']);order=order_for_epoch(data,1);model.eval();initial=tensor_digest(model)
-    def inputs(events,shared):
-        ds=(SharedCaptionBatches if shared else CaptionBatches)(cfg['stage'],events)
+    def inputs(events):
+        ds=CaptionBatches(cfg['stage'],events)
         x,seq,ev=ds[0];ds.reader.close()
-        first,inverse=image_plan(data['caption_image'],ev,shared)
-        return torch.from_numpy(x).to(device),torch.from_numpy(seq).to(device),context.events(data,ev[first],device),None if inverse is None else torch.from_numpy(inverse).to(device)
+        return torch.from_numpy(x).to(device),torch.from_numpy(seq).to(device),context.events(data,ev,device)
     parity=[]
     for label,events in [('first32',order[:32]),('tail27',order[-27:])]:
         denominator=int((data['sequences'][events,1:]!=0).sum());reference_grads=None;reference_nll=None
         if rank==0:
             reference=copy.deepcopy(model).eval();reference_nll=0.
             for rr in (0,1):
-                x,seq,p,_=inputs(local_events(events,rr),False);logits=reference(x,seq[:,:-1],p)
+                x,seq,p=inputs(local_events(events,rr));logits=reference(x,seq[:,:-1],p)
                 loss=F.cross_entropy(logits.flatten(0,1),seq[:,1:].flatten(),ignore_index=0,reduction='sum')/denominator
                 loss.backward();reference_nll+=float(loss.detach())
                 del x,seq,p,logits,loss
             reference_grads={n:v.grad.detach().cpu().clone() for n,v in reference.named_parameters()};del reference
-        ev=local_events(events,rank);x,seq,p,inverse=inputs(ev,True)
+        ev=local_events(events,rank);x,seq,p=inputs(ev)
         with torch.no_grad():
-            expected=wrapped(x,seq[:,:-1],p,inverse);changed=seq[:,:-1].clone();changed[:,3]=(changed[:,3]+7)%len(words)
-            torch.testing.assert_close(expected[:,:3],model(x,changed,p,inverse)[:,:3],rtol=1e-4,atol=5e-5)
-        wrapped.zero_grad(set_to_none=True);logits=wrapped(x,seq[:,:-1],p,inverse)
+            expected=wrapped(x,seq[:,:-1],p);changed=seq[:,:-1].clone();changed[:,3]=(changed[:,3]+7)%len(words)
+            torch.testing.assert_close(expected[:,:3],model(x,changed,p)[:,:3],rtol=1e-4,atol=5e-5)
+        wrapped.zero_grad(set_to_none=True);logits=wrapped(x,seq[:,:-1],p)
         nll=F.cross_entropy(logits.flatten(0,1),seq[:,1:].flatten(),ignore_index=0,reduction='sum')
         total=torch.tensor(int((seq[:,1:]!=0).sum()),device=device);dist.all_reduce(total)
         if int(total)!=denominator:raise ValueError('Wrong full-data globaltokens')
@@ -68,26 +67,25 @@ def preflight(cfg,model,wrapped,data,words,rank,device,out,deadline,accelerator)
             save(out/'full_parity.json',parity)
         dist.broadcast_object_list(error,src=0)
         if error[0]:raise ValueError(error[0])
-        del x,seq,p,inverse,logits,nll,reference_grads,expected,changed
+        del x,seq,p,logits,nll,reference_grads,expected,changed
     guard_peak=torch.cuda.max_memory_allocated(device)/1024**3;wrapped.zero_grad(set_to_none=True)
     optimizer=accelerator.prepare_optimizer(torch.optim.Adam(model.parameters(),lr=1e-4,betas=(.9,.99),eps=1e-8,weight_decay=0))
     wrapped.train();times=[];encoded=[];torch.cuda.reset_peak_memory_stats(device)
-    ds=SharedCaptionBatches(cfg['stage'],order[:64*32],rank)
+    ds=CaptionBatches(cfg['stage'],order[:64*32],rank)
     iterator=iter(loader(ds))
     for _ in range(64):
         if time.monotonic()>deadline-120:raise TimeoutError('Full data preflight cap')
         torch.cuda.synchronize(device);started=time.monotonic()
         x,seq,events=next(iterator)
         x=x.to(device,non_blocking=True);seq=seq.to(device,non_blocking=True)
-        first,inverse=image_plan(data['caption_image'],events,True);p=context.events(data,events[first],device)
-        inverse=torch.from_numpy(inverse).to(device);optimizer.zero_grad(set_to_none=True)
-        logits=wrapped(x,seq[:,:-1],p,inverse);count=torch.tensor(int((seq[:,1:]!=0).sum()),device=device);dist.all_reduce(count)
+        p=context.events(data,events,device);optimizer.zero_grad(set_to_none=True)
+        logits=wrapped(x,seq[:,:-1],p);count=torch.tensor(int((seq[:,1:]!=0).sum()),device=device);dist.all_reduce(count)
         loss=F.cross_entropy(logits.flatten(0,1),seq[:,1:].flatten(),ignore_index=0,reduction='sum')*(2/int(count))
         accelerator.backward(loss);norm=accelerator.clip_grad_norm_(model.parameters(),1)
         if not torch.isfinite(loss) or not torch.isfinite(norm):raise ValueError('Nonfinite preflighttrain')
         optimizer.step();torch.cuda.synchronize(device);times.append(time.monotonic()-started);encoded.append(len(x))
     if len(times)!=64:raise ValueError('Incomplete64step preflight')
-    del optimizer,ds,iterator,x,seq,events,logits,loss,p,inverse
+    del optimizer,ds,iterator,x,seq,events,logits,loss,p
     probe=copy.deepcopy(model).eval();indices=np.arange(64)[rank::2]
     with torch.inference_mode():
         # Check real beam scoring before altering ONLY the separate timing copy.
@@ -105,9 +103,9 @@ def preflight(cfg,model,wrapped,data,words,rank,device,out,deadline,accelerator)
             if batch_index:seen+=len(ii);decode_times.append(time.monotonic()-began)
         decode_seconds=sum(decode_times);del batches,iterator
     save(out/f'preflight_rank{rank}.json',dict(passed=True,rank=rank,initial_tensor_sha256=initial,discarded_benchmark_updates=64,
-        causal=True,shared_DDP_gradient_parity=True,beam_score_rescore=True,forced20token_decode=True,
+        causal=True,ordinary_DDP_gradient_parity=True,beam_score_rescore=True,forced20token_decode=True,
         full_IO_step_median_seconds=float(np.median(times[16:])),full_IO_step_p90_seconds=float(np.quantile(times[16:],.9)),
-        mean_unique_images_local=float(np.mean(encoded)),decode_images=seen,decode_seconds=decode_seconds,
+        mean_encoded_images_local=float(np.mean(encoded)),decode_images=seen,decode_seconds=decode_seconds,
         peak_allocated_GiB=torch.cuda.max_memory_allocated(device)/1024**3,gradient_guard_peak_GiB=guard_peak,
         limits='TRAIN-only sampled full-loader preflight; forcedEOS-suppressed beam timing copy, not captions/VALID quality/billing.64updates discarded, mainworker recreated fresh.'))
     del probe;dist.barrier(device_ids=[rank])

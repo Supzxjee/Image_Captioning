@@ -8,10 +8,10 @@ import score_full
 def score(cfg):
     score_full.score(cfg)
     path=Path(cfg['output'])/'result.json';r=read(path)
-    if r['method']!='csa_structure_patch_prompt_grouped_shared_accelerate_v1':raise ValueError('Wrong fulltraining method')
-    r.update(status='CSA_SHARED_FULL_XE10_COMPLETE',framework='Accelerate1.15.0',precision='FP32',feature_sharing=True,sampler='image_grouped_42_plus_epoch')
+    if r['method']!='csa_structure_patch_prompt_grouped_per_caption_accelerate_v1':raise ValueError('Wrong fulltraining method')
+    r.update(status='CSA_PER_CAPTION_FULL_XE10_COMPLETE',framework='Accelerate1.15.0',precision='FP32',feature_sharing=False,sampler='image_grouped_42_plus_epoch')
     r['limits']+=['Restored CSA structure with CLIP substitutions and added UPT prompts, not exact originalCSA replication.',
-                  'Grouped batches/shared encoder dropout change optimization versus random-caption baseline.']
+                  'Grouped batches change sampling versus random-caption baseline.']
     save(path,r)
 
 
