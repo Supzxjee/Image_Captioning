@@ -1,0 +1,75 @@
+{
+  "status": "STOPPED_AT_GRADIENT_PREFLIGHT",
+  "archive_sha256": "74e6387a40edc4cc4d0c6490adf31b109a2789c4343368110dcb35f39bd526f4",
+  "stage": {
+    "status": "LOCAL_PATCH_STAGE_COMPLETE",
+    "images": 118287,
+    "patch_bytes": 35611011072,
+    "seconds": 2293.051421844,
+    "smoke_raw_rows_replayed": 256,
+    "all_copy_blocks_byte_equal": true,
+    "test_features_read": false
+  },
+  "cases": [
+    {
+      "case": "first32",
+      "passed": true,
+      "error": null,
+      "NLL": 9.231456043956044,
+      "reference_NLL": 9.231456279754639,
+      "global_tokens": 364,
+      "caption_events": 32,
+      "encoded_images": 8,
+      "parameters_checked": 180,
+      "failed_parameters": {}
+    },
+    {
+      "case": "tail27",
+      "passed": false,
+      "error": "Full-data gradient parity core.decoder.1.ffn.net.0.weight,core.decoder.1.ffn.net.0.bias",
+      "NLL": 9.238999974216172,
+      "reference_NLL": 9.239000082015991,
+      "global_tokens": 303,
+      "caption_events": 27,
+      "encoded_images": 7,
+      "parameters_checked": 180,
+      "failed_parameters": {
+        "core.decoder.1.ffn.net.0.weight": {
+          "passed": false,
+          "reference_norm": 0.03051281365049474,
+          "reference_max_abs": 0.0004884345107711852,
+          "error_norm": 2.3001818771002226e-05,
+          "relative_l2": 0.0007538412889245063,
+          "max_abs_error": 3.27426732837921e-06,
+          "max_abs_limit": 2.742172553855926e-06,
+          "scale_relative_max_error": 0.006703595377012769,
+          "max_error_index": [
+            933,
+            203
+          ],
+          "actual_at_max": 1.3849669812771026e-05,
+          "reference_at_max": 1.0575402484391816e-05
+        },
+        "core.decoder.1.ffn.net.0.bias": {
+          "passed": false,
+          "reference_norm": 0.0031380230672204794,
+          "reference_max_abs": 0.00037498970050364733,
+          "error_norm": 2.2433249615642696e-06,
+          "relative_l2": 0.0007148847900443595,
+          "max_abs_error": 2.2433214326156303e-06,
+          "max_abs_limit": 2.1749485025182365e-06,
+          "scale_relative_max_error": 0.0059823547942853715,
+          "max_error_index": [
+            933
+          ],
+          "actual_at_max": -8.512673957739025e-06,
+          "reference_at_max": -6.269352525123395e-06
+        }
+      }
+    }
+  ],
+  "main_optimizer_updates": 0,
+  "checkpoint_created": false,
+  "quality_metrics": null,
+  "next_step": "Diagnose tail27 on exact inputs in a small GPU run before attempting full staging again. Retain parity limits pending evidence."
+}
