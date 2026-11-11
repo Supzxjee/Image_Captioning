@@ -1,6 +1,6 @@
 # Trạng thái nghiên cứu — đọc trước khi tiếp tục
 
-Cập nhật: 11/11/2026, giờ Việt Nam. File này là bản tóm tắt để tiếp tục công việc; protocol và artifacts được dẫn bên dưới mới là nguồn chi tiết. Không cần đọc toàn bộ lịch sử chat.
+Cập nhật: 12/11/2026, giờ Việt Nam. File này là bản tóm tắt để tiếp tục công việc; protocol và artifacts được dẫn bên dưới mới là nguồn chi tiết. Không cần đọc toàn bộ lịch sử chat.
 
 ## Mục tiêu và cách làm việc
 
@@ -9,6 +9,8 @@ Cập nhật: 11/11/2026, giờ Việt Nam. File này là bản tóm tắt để
 - Không tự chạy mô hình/Torch/autograd local hoặc notebook Kaggle. Kiểm tra metadata/NumPy/static/mock được phép; ghi rõ giới hạn. Quy trình tại [AGENTS.md](AGENTS.md).
 
 ## Hiện đang ở đâu
+
+- **12/11 per-caption full10 complete:** resumed from 124177 and finished 177110 updates, 10 VALID epochs. Best epoch9 CIDEr120.2955 / CHAIRs4.00% / CHAIRi2.7915%; epoch10 CIDEr119.6139 / CHAIRs3.86% / CHAIRi2.7537%. Keep both checkpoints. ZIP contains receipts only. Resume worker 14529.6s plus patch stage 2642.1s, timing excludes other setup/scoring. VALID only. [Result](experiments/clip_patch_baseline/CSA_PER_CAPTION_FULL_XE10_RESULT.json).
 
 - **11/11 exact resume notebook ready.** CLIP_PATCH_CSA_PER_CAPTION_RESUME124177_2GPU.ipynb continues epoch 8 cursor 200 with original pinned worker. Full mounted prior Output required. Pre-staging hashes verify checkpoint, best, log and epochs 1–7 validation. Static checks passed; GPU resume pending.
 
