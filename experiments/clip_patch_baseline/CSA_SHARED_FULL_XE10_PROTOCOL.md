@@ -98,3 +98,7 @@ V1 verified mounted Dataset in 79.9 seconds and stopped on both ranks before opt
 ### 13/11 recover merged V2 VALID scoring
 
 2500 train updates and both VALID decoders completed. V2 broad textual replacement inadvertently changed len(refs)!=5000 into !=25000. Recover from the exact saved caption files and references on CPU, with original PTB/CIDEr/CHAIR assets and unchanged promotion gates. No GPU work needed.
+
+### 13/11 SCST-only trial
+
+User approved fresh SCST-only from epoch9, Adam 5e-6 and global8, same seeded TRAIN prefix and cached CIDEr-D reward. Preserve checkpoints at updates 500 and 1000 and score each on VALID top1. Retain epoch9 promotion thresholds. Do not extend past 1000 or use TEST automatically.
