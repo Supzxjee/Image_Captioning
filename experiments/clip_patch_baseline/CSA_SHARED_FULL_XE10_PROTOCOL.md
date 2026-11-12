@@ -78,3 +78,7 @@ User requested all Karpathy TRAIN + VALID. FP16 patches alone are 35.61 GB, abov
 ## 12/11 cached 2500-update SCST experiment
 
 Part 0 CPU Output is complete according to its review receipt. Start from the exact epoch 9 XE checkpoint again with the same seed, recipe and 4,000-image prefix as the 500-update pilot. Use the first 20,000 TRAIN rows from the verified Part 0 mount. Evaluate top-1 on VALID5000 only at update 2500. Report the preset CIDEr/CHAIRs/Recall gates, and preserve the checkpoint even if the gate fails. Any rerank and TEST evaluation will be separate after review.
+
+## 12/11 publish full SCST cache
+
+User requested one private Dataset from CPU Outputs 0, 1 and 2 after all runs complete. Pin all reviewed receipts and ordered ID lists, check the mounted payload hashes and NPY headers, and stage only in /tmp. Keep the four large FP16 patch arrays as separate directly mappable files. Group smaller payloads with exact logical paths in one ZIP stored with a .bin suffix to preserve bytes on upload. Keep shared VALID/reward assets from part 0. User executes upload with their Kaggle Secret. Preserve small audit logs and manifest under Working.
