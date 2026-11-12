@@ -58,3 +58,7 @@ Run exactly 500 updates from epoch9 best, Adam fresh at 5e-6, global batch 8, 4,
 ## 12/11 VALID margin diagnostic
 
 After SCST500 CIDEr dropped, replay the fixed epoch9 VALID reranker using saved per-image scores only. Use a deterministic SHA-based 2500/2500 VALID split. Try margins 0, .02, .04, .06, .08, .10, .15, .20. On calibration, require at least 90% of fixed rerank CIDEr gain over top1, and Recall at most .10 pp below fixed rerank. Among eligible margins minimize CHAIRs, breaking ties by higher CIDEr then smaller margin. Promote only if holdout meets the same quality bounds and improves CHAIRs versus fixed rerank. No TEST use, scorer rerun, or GPU.
+
+## 12/11 locked margin TEST replay
+
+User approved applying the VALID-selected margin .06 once to the saved epoch9 TEST5000 beams. Compare with the existing fixed selector using saved image-level CIDEr and CHAIR records on the same corpus. Retain margin regardless of TEST outcome in this report, no threshold sweep on TEST. No new model or official scorer run.

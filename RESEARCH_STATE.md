@@ -10,6 +10,8 @@ Cập nhật: 12/11/2026, giờ Việt Nam. File này là bản tóm tắt để
 
 ## Hiện đang ở đâu
 
+- **12/11 fixed margin .06 TEST replay complete.** CIDEr 125.3433, CHAIRs 3.30%, CHAIRi 2.2733%, Recall 44.7987%. Compared with frozen selector; no TEST tuning or GPU. [Result](experiments/clip_patch_baseline/CSA_RERANK_TEST_MARGIN_RESULT.json).
+
 - **12/11 VALID margin diagnostic complete.** 5000 saved selections replayed; calibration margin 0.06, holdout promotion gate True. [Result](experiments/clip_patch_baseline/CSA_RERANK_VALID_MARGIN_RESULT.json). No GPU, scorer rerun or TEST.
 
 - **12/11 SCST+XE500 pilot complete:** VALID top1 CIDEr119.5148 vs epoch9 120.2955, CHAIRs3.88% vs4.00%, Recall42.82% vs42.70%. 500 updates reported by 254.5s in worker, excluding setup/VALID. No TEST/rerank. Recommend keeping epoch9, no automatic 2500 continuation. [Result](experiments/clip_patch_baseline/CSA_PER_CAPTION_SCST_XE_PILOT500_RESULT.json).

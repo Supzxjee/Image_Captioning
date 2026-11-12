@@ -1,0 +1,41 @@
+{
+  "archive_sha256": "b2fd599ac86221a1e297113e248476bbb52882efd1ea1c11999f058649da19c3",
+  "images": 5000,
+  "checkpoint_sha256": "b0c5bde0921a4c828ac094b264f502654224aa9365ee40cdce1c15c82fe9aeef",
+  "margin": 0.06,
+  "top1": {
+    "CIDEr": 1.2163754848645763,
+    "CHAIRs": 0.0396,
+    "CHAIRi": 0.028016946836135027,
+    "Recall": 0.4349041026292392,
+    "flags": 198,
+    "switched": 0
+  },
+  "fixed_rerank": {
+    "CIDEr": 1.2523065111706482,
+    "CHAIRs": 0.0332,
+    "CHAIRi": 0.022655007949125595,
+    "Recall": 0.4490029213768576,
+    "flags": 166,
+    "switched": 2925
+  },
+  "margin_rerank": {
+    "CIDEr": 1.2534331691676157,
+    "CHAIRs": 0.033,
+    "CHAIRi": 0.022733315607551183,
+    "Recall": 0.4479867902959482,
+    "flags": 165,
+    "switched": 2393
+  },
+  "delta_vs_fixed": {
+    "CIDEr": 0.0011266579969675394,
+    "CHAIRs": -0.0001999999999999988,
+    "CHAIRi": 7.830765842558804e-05,
+    "Recall": -0.0010161310809094215,
+    "flags": -1,
+    "switched": -532
+  },
+  "metrics_scope": "Replay saved per-image CIDEr on original TEST corpus and CHAIR counts. Other metrics not recomputed.",
+  "prior_project_test_exposure": true,
+  "tuned_on_test": false
+}
