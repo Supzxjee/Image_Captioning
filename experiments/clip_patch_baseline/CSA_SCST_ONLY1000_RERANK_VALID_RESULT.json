@@ -1,0 +1,102 @@
+{
+  "status": "CSA_PER_CAPTION_FIXED_RERANK_VALID5000_COMPLETE",
+  "images": 5000,
+  "test_used": false,
+  "training": false,
+  "checkpoint_sha256": "56a90b2223b3bb64e433a342d048389dc3e80693fa574c2c1543e31e39a4377b",
+  "metrics": {
+    "decoder_rank0": {
+      "CIDEr": 1.2192872054015549,
+      "BLEU_1": 0.7840645366800049,
+      "BLEU_4": 0.38751749565626503,
+      "METEOR": 0.28752745320066553,
+      "SPICE": 0.21824169124747886,
+      "ROUGE_L": 0.5840794857862843,
+      "CHAIRs": 0.0466,
+      "CHAIRi": 0.03214190450786877,
+      "Recall": 0.4346433952787544,
+      "counts": {
+        "images": 5000,
+        "hallucinated_captions": 233,
+        "hallucinated_mentions": 241,
+        "object_mentions": 7498,
+        "recalled_unique": 6923,
+        "reference_unique": 15928
+      },
+      "mean_words": 9.1386,
+      "short_le2": 0
+    },
+    "clip_object_fixed": {
+      "CIDEr": 1.2468805966365206,
+      "BLEU_1": 0.7938555743243076,
+      "BLEU_4": 0.38779134541723737,
+      "METEOR": 0.2922192106991034,
+      "SPICE": 0.22661055569723526,
+      "ROUGE_L": 0.587005142010974,
+      "CHAIRs": 0.0396,
+      "CHAIRi": 0.026118438065683994,
+      "Recall": 0.4493345052737318,
+      "counts": {
+        "images": 5000,
+        "hallucinated_captions": 198,
+        "hallucinated_mentions": 202,
+        "object_mentions": 7734,
+        "recalled_unique": 7157,
+        "reference_unique": 15928
+      },
+      "mean_words": 9.472,
+      "short_le2": 0
+    }
+  },
+  "changes": {
+    "changed_captions": 2743,
+    "rank_histogram": {
+      "0": 2257,
+      "1": 1221,
+      "2": 783,
+      "3": 509,
+      "4": 230
+    },
+    "CHAIR_repairs": 69,
+    "CHAIR_new_flags": 34
+  },
+  "selector": {
+    "decoder_weight": 0.3,
+    "clip_weight": 0.4,
+    "object_weight": 0.3,
+    "min_detection_confidence": 0.5,
+    "hallucination_penalty": 1.0,
+    "tie_break": "earlier beam"
+  },
+  "tuned_on_test": false,
+  "oracle_used_for_selection": false,
+  "prior_project_test_exposure": true,
+  "selection": "both prelocked policies reported; fixed VALID164 policy",
+  "NLL_note": "same frozen captioner; reranking changes output only, no target-conditioned pass",
+  "comparison": {
+    "images": 5000,
+    "split": "val",
+    "xe9_fixed_rerank": {
+      "CIDEr": 1.236969320694076,
+      "CHAIRs": 0.0346,
+      "CHAIRi": 0.023370070375780108,
+      "Recall": 0.44161225514816677
+    },
+    "scst1000_fixed_rerank": {
+      "CIDEr": 1.2468805966365206,
+      "CHAIRs": 0.0396,
+      "CHAIRi": 0.026118438065683994,
+      "Recall": 0.4493345052737318
+    },
+    "delta": {
+      "CIDEr": 0.009911275942444675,
+      "CHAIRs": 0.0050000000000000044,
+      "CHAIRi": 0.0027483676899038856,
+      "Recall": 0.007722250125565044
+    },
+    "chair_s_cap": 0.042,
+    "extension_gate": true
+  },
+  "kaggle_source": "ducanh3/notebook7bc83c4c76/92",
+  "archive_sha256": "892e8d03568c13c72d428a841c2debf427d027cf1b6f2bee7366792cee481c09"
+}
