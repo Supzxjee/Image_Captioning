@@ -10,6 +10,8 @@ Cập nhật: 12/11/2026, giờ Việt Nam. File này là bản tóm tắt để
 
 ## Hiện đang ở đâu
 
+- **12/11 paper draft and qualitative cases prepared.** Method/results draft and three case records in experiments/clip_patch_baseline/CSA_PAPER_METHOD_RESULTS_DRAFT.md and CSA_TEST_QUALITATIVE_CASES.json. Exact prompt181 SHA matched TEST stage. Two relation-bearing examples illustrate CHAIR repair and new flag; visual confirmation/figure pending.
+
 - **12/11 paired TEST bootstrap complete:** CIDEr_x100 3.5931 [2.3691, 4.8151], CHAIRs_percentage_points -0.6400 [-1.0400, -0.2400]. 10000 paired image resamples, frozen checkpoint/selector and fixed reference IDF. [Result](experiments/clip_patch_baseline/CSA_RERANK_TEST_PAIRED_BOOTSTRAP_RESULT.json).
 
 - **12/11 fixed margin .06 TEST replay complete.** CIDEr 125.3433, CHAIRs 3.30%, CHAIRi 2.2733%, Recall 44.7987%. Compared with frozen selector; no TEST tuning or GPU. [Result](experiments/clip_patch_baseline/CSA_RERANK_TEST_MARGIN_RESULT.json).

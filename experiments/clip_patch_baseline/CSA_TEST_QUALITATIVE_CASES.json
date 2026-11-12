@@ -1,0 +1,344 @@
+{
+  "prompt_links_sha256": "54e25cd17c9842c07fb4ef0b3da4ed4ad276571d3711d51bf0b3ac1a86cc3c55",
+  "cases": [
+    {
+      "prompt": {
+        "coco_id": 157102,
+        "filename": "COCO_val2014_000000157102.jpg",
+        "group": "test",
+        "roi_count": 5,
+        "source_mode": "object_relation",
+        "objects": [
+          {
+            "instance_id": "det_83b8b1feac0d",
+            "upt_index": 0,
+            "roi": 0,
+            "label": "person",
+            "bbox": [
+              0.020030884742736815,
+              0.05657494135242913,
+              0.7490158081054688,
+              0.7059401177554819
+            ],
+            "roi_bbox": [
+              0.025979167222976683,
+              0.06112499833106995,
+              0.7440208435058594,
+              0.7045468807220459
+            ],
+            "IoU": 0.9759733020537777,
+            "confidence": 0.9974914789199829,
+            "text": "a person"
+          },
+          {
+            "instance_id": "det_6329a6e77c43",
+            "upt_index": 3,
+            "roi": 3,
+            "label": "scissors",
+            "bbox": [
+              0.35092063903808596,
+              0.38919737280868905,
+              0.533411865234375,
+              0.6017688515038696
+            ],
+            "roi_bbox": [
+              0.3634374936421712,
+              0.4004687309265137,
+              0.5156041781107584,
+              0.5837031364440918
+            ],
+            "IoU": 0.7187529141870391,
+            "confidence": 0.9902802109718323,
+            "text": "scissors"
+          }
+        ],
+        "relations": [
+          {
+            "subject_instance": "det_83b8b1feac0d",
+            "object_instance": "det_6329a6e77c43",
+            "subject_roi": 0,
+            "object_roi": 3,
+            "text": "a person holding scissors",
+            "predicate": "holding",
+            "score": 0.9310861825942993,
+            "threshold": 0.5,
+            "geometry": [
+              0.07907283657695822,
+              0.1759034619550116,
+              -1.3849509543064393,
+              -1.1167169318321424,
+              0.08194820430289614,
+              0.08194820430289614,
+              1.0,
+              0.12794603667084628
+            ]
+          },
+          {
+            "subject_instance": "det_83b8b1feac0d",
+            "object_instance": "det_6329a6e77c43",
+            "subject_roi": 0,
+            "object_roi": 3,
+            "text": "a person cutting with scissors",
+            "predicate": "cut_with",
+            "score": 0.7249144911766052,
+            "threshold": 0.5,
+            "geometry": [
+              0.07907283657695822,
+              0.1759034619550116,
+              -1.3849509543064393,
+              -1.1167169318321424,
+              0.08194820430289614,
+              0.08194820430289614,
+              1.0,
+              0.12794603667084628
+            ]
+          }
+        ],
+        "counts": {
+          "objects": 2,
+          "relations": 2,
+          "mapped_objects": 2,
+          "kept_objects": 2,
+          "mapped_relations": 2,
+          "capped_objects": 0
+        }
+      },
+      "top1": "a little boy that is holding a toothbrush",
+      "rerank": "a little boy that is sitting at a table",
+      "top1_flags": [
+        [
+          "toothbrush",
+          "toothbrush"
+        ]
+      ],
+      "rerank_flags": [],
+      "references": [
+        "The young child is cutting up some paper.",
+        "There is a boy in a blue pajamas holding a pair of scissors.",
+        "A little child wearing blue holds a pair of yellow scissors and some paper.",
+        "A toddler plays with scissors and construction paper",
+        "A CHILD IS CUTTING PAPER AT THE TABLE"
+      ]
+    },
+    {
+      "prompt": {
+        "coco_id": 165029,
+        "filename": "COCO_val2014_000000165029.jpg",
+        "group": "test",
+        "roi_count": 4,
+        "source_mode": "object_relation",
+        "objects": [
+          {
+            "instance_id": "det_2d31e558717b",
+            "upt_index": 0,
+            "roi": 2,
+            "label": "person",
+            "bbox": [
+              0.2731886041153472,
+              0.0680159330368042,
+              0.6706876396368011,
+              0.9918377685546875
+            ],
+            "roi_bbox": [
+              0.2818125009536743,
+              0.07816631097529235,
+              0.6596406459808349,
+              0.9891471293435168
+            ],
+            "IoU": 0.9373013366527805,
+            "confidence": 0.9802222847938538,
+            "text": "a person"
+          },
+          {
+            "instance_id": "det_b271fd01ee17",
+            "upt_index": 3,
+            "roi": 0,
+            "label": "snowboard",
+            "bbox": [
+              0.07891866682211704,
+              0.520883903503418,
+              0.7676524189390468,
+              0.9965066528320312
+            ],
+            "roi_bbox": [
+              0.15017187595367432,
+              0.5270788847510495,
+              0.7529218673706055,
+              0.9891684721273654
+            ],
+            "IoU": 0.8502554211244323,
+            "confidence": 0.9969158172607422,
+            "text": "a snowboard"
+          },
+          {
+            "instance_id": "det_1b0324bc7704",
+            "upt_index": 1,
+            "roi": 1,
+            "label": "person",
+            "bbox": [
+              0.5754665301329056,
+              0.04947763442993164,
+              0.9130163428763749,
+              0.9905213928222656
+            ],
+            "roi_bbox": [
+              0.5786718845367431,
+              0.004605543893029186,
+              0.9080469131469726,
+              0.988507431453225
+            ],
+            "IoU": 0.9304033887198362,
+            "confidence": 0.9324741959571838,
+            "text": "a person"
+          }
+        ],
+        "relations": [
+          {
+            "subject_instance": "det_2d31e558717b",
+            "object_instance": "det_b271fd01ee17",
+            "subject_roi": 2,
+            "object_roi": 0,
+            "text": "a person holding a snowboard",
+            "predicate": "holding",
+            "score": 0.8458808064460754,
+            "threshold": 0.5,
+            "geometry": [
+              -0.12239672212454049,
+              0.2476326263101736,
+              0.5496622620657032,
+              -0.6638942377706212,
+              0.3688074259236613,
+              0.5097886269242148,
+              0.5714792407915775,
+              0.23388472973916208
+            ]
+          }
+        ],
+        "counts": {
+          "objects": 3,
+          "relations": 1,
+          "mapped_objects": 3,
+          "kept_objects": 3,
+          "mapped_relations": 1,
+          "capped_objects": 0
+        }
+      },
+      "top1": "a man and a woman standing next to each other",
+      "rerank": "a man and a woman holding a skateboard",
+      "top1_flags": [],
+      "rerank_flags": [
+        [
+          "skateboard",
+          "skateboard"
+        ]
+      ],
+      "references": [
+        "A man with a snowboard next to a man with a mask.",
+        "Man with snowboard standing next to another wearing a mask and crazy hands.",
+        "A man holding a snowboard next to a man in scary costume.",
+        "A man wearing a mask with a sbowboarder.",
+        "Snowboarder holding a pink board being hugged by man in costume. "
+      ]
+    },
+    {
+      "prompt": {
+        "coco_id": 48731,
+        "filename": "COCO_val2014_000000048731.jpg",
+        "group": "test",
+        "roi_count": 3,
+        "source_mode": "object_only",
+        "objects": [
+          {
+            "instance_id": "det_14542bb6cfc8",
+            "upt_index": 3,
+            "roi": 1,
+            "label": "dog",
+            "bbox": [
+              0.517929088595391,
+              0.061506332397460936,
+              0.9277699063437734,
+              0.7671610514322916
+            ],
+            "roi_bbox": [
+              0.5689843654632568,
+              0.07177777820163303,
+              0.9221094131469727,
+              0.7549722459581163
+            ],
+            "IoU": 0.8341908178399646,
+            "confidence": 0.9156513214111328,
+            "text": "a dog"
+          },
+          {
+            "instance_id": "det_ec13293176e7",
+            "upt_index": 4,
+            "roi": 2,
+            "label": "frisbee",
+            "bbox": [
+              0.4700662165052982,
+              0.6365274658203125,
+              0.5915132194913962,
+              0.7671943359375
+            ],
+            "roi_bbox": [
+              0.47426562309265136,
+              0.6040277693006727,
+              0.6031562328338623,
+              0.7615000406901041
+            ],
+            "IoU": 0.6811086891695797,
+            "confidence": 0.870398998260498,
+            "text": "a frisbee"
+          },
+          {
+            "instance_id": "det_01a102735cf1",
+            "upt_index": 5,
+            "roi": 0,
+            "label": "dog",
+            "bbox": [
+              0.2411814959355073,
+              0.1475904235839844,
+              0.6277264811808421,
+              0.7545547688802083
+            ],
+            "roi_bbox": [
+              0.2459843635559082,
+              0.15936110814412435,
+              0.621859359741211,
+              0.7335555182562934
+            ],
+            "IoU": 0.9198969381328079,
+            "confidence": 0.8081934452056885,
+            "text": "a dog"
+          }
+        ],
+        "relations": [],
+        "counts": {
+          "objects": 3,
+          "relations": 0,
+          "mapped_objects": 3,
+          "kept_objects": 3,
+          "mapped_relations": 0,
+          "capped_objects": 0
+        }
+      },
+      "top1": "two dogs playing with a frisbee in the snow",
+      "rerank": "two dogs playing with a yellow ball in the snow",
+      "top1_flags": [],
+      "rerank_flags": [
+        [
+          "ball",
+          "sports ball"
+        ]
+      ],
+      "references": [
+        "two dogs sharing a frisby in their mouth in the snow",
+        "two dogs on the snow playing frisbee together",
+        "A couple of dogs fighting over a frisbee.",
+        "Two dogs fighting over a Frisbee in the snow.",
+        "there are two dogs trying to get the frisbee"
+      ]
+    }
+  ],
+  "visual_confirmation": false
+}
