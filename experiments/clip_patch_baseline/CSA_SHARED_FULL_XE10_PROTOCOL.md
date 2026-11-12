@@ -102,3 +102,6 @@ V1 verified mounted Dataset in 79.9 seconds and stopped on both ranks before opt
 ### 13/11 SCST-only trial
 
 User approved fresh SCST-only from epoch9, Adam 5e-6 and global8, same seeded TRAIN prefix and cached CIDEr-D reward. Preserve checkpoints at updates 500 and 1000 and score each on VALID top1. Retain epoch9 promotion thresholds. Do not extend past 1000 or use TEST automatically.
+
+### 13/11 SCST1000 fixed rerank on VALID
+User approved inference-only comparison. Pin the reviewed SCST1000 checkpoint by SHA, generate beam5 on the same VALID5000, apply fixed VALID164 selector (0.3 decoder / 0.4 CLIP / 0.3 object), and compare with saved XE9 under the same selector. Report paired configuration deltas and prior CHAIRs cap 4.20%; consider extension only if CIDEr improves over XE9 rerank and CHAIRs stays within cap. No TEST or training in this notebook.
