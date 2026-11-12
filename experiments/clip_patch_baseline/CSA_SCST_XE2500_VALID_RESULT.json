@@ -1,0 +1,47 @@
+{
+  "status": "CSA_SCST_XE2500_VALID_COMPLETE",
+  "updates": 2500,
+  "images": 5000,
+  "split": "val",
+  "test_used": false,
+  "reranking": false,
+  "metrics": {
+    "CIDEr": 1.1941426793394887,
+    "BLEU_1": 0.76845673127845,
+    "BLEU_4": 0.3708060491094942,
+    "ROUGE_L": 0.5757277004958862,
+    "NLL": 2.1740942783740613,
+    "CHAIRs": 0.0404,
+    "CHAIRi": 0.028279762725893227,
+    "Recall": 0.42623053741838274
+  },
+  "reference": {
+    "CIDEr": 1.202954787733369,
+    "CHAIRs": 0.04,
+    "CHAIRi": 0.027915291529152914,
+    "Recall": 0.4269839276745354
+  },
+  "delta": {
+    "CIDEr": -0.008812108393880358,
+    "CHAIRs": 0.0003999999999999976,
+    "CHAIRi": 0.00036447119674031317,
+    "Recall": -0.0007533902561526751
+  },
+  "checkpoint": {
+    "sha256": "d58f232ad2fb4d829a152610c08bb4ffb84ed2ecb3edbd1a0a85169bf15f3e2c",
+    "updates": 2500,
+    "source_sha256": "b0c5bde0921a4c828ac094b264f502654224aa9365ee40cdce1c15c82fe9aeef"
+  },
+  "gates": {
+    "CIDEr": false,
+    "CHAIRs": true,
+    "Recall": true
+  },
+  "gate_passed": false,
+  "recovered_from_saved_captions": true,
+  "archive_sha256": "72f728e692952bc661ed65d05e4e74a4361107f7d0bffcd4a3eafbf3a545debf",
+  "source_output": "ducanh3/notebook7bc83c4c76/89",
+  "hallucinated_captions": 202,
+  "training_worker_seconds": 991.368525348,
+  "decision": "Retain epoch9 XE plus fixed rerank as main system."
+}

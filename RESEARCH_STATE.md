@@ -10,6 +10,8 @@ Cập nhật: 13/11/2026, giờ Việt Nam. File này là bản tóm tắt để
 
 ## Hiện đang ở đâu
 
+- **13/11 SCST+XE2500 VALID scoring recovered, promotion gate failed.** CIDEr119.4143 vs120.2955, CHAIRs4.04% vs4.00%, Recall42.62% vs42.70%. 5000 IDs, CIDEr mean and CHAIR flags verified. Retain epoch9 XE plus fixed rerank. [Result](experiments/clip_patch_baseline/CSA_SCST_XE2500_VALID_RESULT.json).
+
 - **13/11 CPU recovery API notebook ready.** RECOVER_CSA_SCST_XE2500_VALID_METRICS_V89_CPU.ipynb pins ducanh3/notebook7bc83c4c76/89 and requests six SHA-verified scoring files only. User-run API/CPU scoring pending.
 
 - **13/11 SCST XE2500 V2 training and VALID decoding complete, CPU scoring pending.** 2500 updates/5000 saved captions, checkpoint d58f232a, worker train logged991.37s. Reference guard accidentally expected25000 rows. RECOVER_CSA_SCST_XE2500_VALID_METRICS_CPU.ipynb scores SHA-verified saved Output only, uses original gates. Syntax, caption/refs/receipt coverage checked; Kaggle CPU run pending.
