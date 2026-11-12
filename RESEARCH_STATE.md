@@ -10,6 +10,8 @@ Cập nhật: 13/11/2026, giờ Việt Nam. File này là bản tóm tắt để
 
 ## Hiện đang ở đâu
 
+- **13/11 frozen SCST1500 TEST notebook ready.** Exact v94 checkpoint via API, TEST181, beam5, frozen VALID164 rerank and saved XE9 TEST comparator. Source AST, lineage mock and split routing checked. User-run GPU pending.
+
 - **13/11 SCST1500 v94 CPU recovery complete.** Fixed VALID5000 rerank CIDEr125.7582/CHAIRs4.06% vs SCST1000 124.6881/3.96%; passes gate. XE9 remains lower-hallucination at 3.46%. Verified per-image CIDEr and CHAIR counts; no TEST. [Result](experiments/clip_patch_baseline/CSA_SCST_ONLY1500_RERANK_VALID_RESULT.json).
 
 - **13/11 SCST1000 fixed VALID rerank complete.** Exact source checkpoint v92. CIDEr124.6881 vs XE9 123.6969; CHAIRs3.96% vs3.46%; passes extension gate (CIDEr gain, CHAIRs <=4.20%). XE9 remains the lower-hallucination configuration. No TEST or further training. [Result](experiments/clip_patch_baseline/CSA_SCST_ONLY1000_RERANK_VALID_RESULT.json).
