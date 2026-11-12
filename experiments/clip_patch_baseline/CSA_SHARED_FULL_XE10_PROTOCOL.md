@@ -50,3 +50,7 @@ User requested reranking only the completed CSA per-caption TEST system. Replay 
 ## 12/11 improvement plan
 
 Keep CSA epoch9 and defer prompt ablation. First measure the fixed VALID164 selector on this checkpoint's VALID5000 beams. Then prepare the 500-update SCST + XE pilot and extend to 2500 only after checking cost and behavior. Proposed promotion gates at 2500: CIDEr +1 point, CHAIRs at most +0.2 pp and Recall at least -0.5 pp versus epoch9 top1 on VALID. Keep TEST out of policy/checkpoint selection.
+
+## 12/11 SCST pilot implementation
+
+Run exactly 500 updates from epoch9 best, Adam fresh at 5e-6, global batch 8, 4,000 distinct seeded TRAIN images, first caption for XE and first five references per TRAIN image for CIDEr-D reward and its fixed TRAIN IDF. Loss is global-token mean XE plus .05 times mean sequence SCST. Match sampled and rescored action distributions with dropout disabled, EOS counted and BOS/PAD blocked. Reuse the same bank and prompt175 geometry. Stage selected TRAIN and VALID features only, report the 500-update VALID top1 regardless of outcome. Keep checkpoints. No TEST decode, rerank or automatic extension in this pilot.
