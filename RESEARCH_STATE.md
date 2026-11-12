@@ -10,6 +10,8 @@ Cập nhật: 12/11/2026, giờ Việt Nam. File này là bản tóm tắt để
 
 ## Hiện đang ở đâu
 
+- **12/11 full SCST cache notebooks ready.** CPU CACHE_PART=0/1/2, 40000+40000+33287 TRAIN in original seed42 order, part0 adds VALID5000/IDF/PTB/Java/CHAIR. Separate saved outputs to respect Kaggle 20 GB limit. Part0 supported by new cached 500 runner. AST, NumPy coverage and mock shard seal passed. Actual Kaggle build/mount pending.
+
 - **12/11 reusable SCST cache notebooks ready.** CLIP_PATCH_CSA_SCST_REUSABLE_CACHE_CPU.ipynb builds VALID5000 and seeded TRAIN20000 (or4000), normalized TRAIN refs/IDF, PTB VALID references and pinned Java/CHAIR assets. CLIP_PATCH_CSA_SCST_PILOT500_CACHED_2GPU.ipynb mounts exact cache read-only and keeps 500-step recipe. AST/phase routes verified, real CPU build/mounted GPU speed pending; no 2500 training started.
 
 - **12/11 paper draft and qualitative cases prepared.** Method/results draft and three case records in experiments/clip_patch_baseline/CSA_PAPER_METHOD_RESULTS_DRAFT.md and CSA_TEST_QUALITATIVE_CASES.json. Exact prompt181 SHA matched TEST stage. Two relation-bearing examples illustrate CHAIR repair and new flag; visual confirmation/figure pending.

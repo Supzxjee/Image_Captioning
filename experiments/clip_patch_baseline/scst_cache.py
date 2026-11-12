@@ -49,7 +49,7 @@ def load_reward(stage):
 
 def seal(root, train, valid, meta, images):
     root, train, valid, meta = map(Path, (root, train, valid, meta))
-    if images not in (4000, 20000):
+    if images not in (4000, 20000, 40000):
         raise ValueError('Unsupported cache schedule size')
     (root/'train').mkdir()
     for name in ('pilot_ids.npy', 'pilot_sequences.npy', 'pilot_patches.npy', *REWARD):
@@ -68,14 +68,15 @@ def seal(root, train, valid, meta, images):
     save(root/'test_lock.json', lock)
     files = {p.relative_to(root).as_posix(): sha(p) for p in sorted(root.rglob('*')) if p.is_file()}
     save(root/'scst_cache_receipt.json', dict(schema=SCHEMA, source_sha256=SOURCE_SHA,
-         train_images=images, validation_images=5000, test_used=False, files_sha256=files))
+         train_images=images, train_start=0, train_stop=images, validation_images=5000, test_used=False, files_sha256=files))
 
 
 def mount(cfg, root, destination):
     root, destination = Path(root), Path(destination)
     manifest = read(root/'scst_cache_receipt.json')
     if (manifest['schema'] != SCHEMA or manifest['source_sha256'] != SOURCE_SHA
-            or manifest['train_images'] not in (4000, 20000)
+            or manifest['train_images'] not in (4000, 20000, 40000)
+            or manifest.get('train_start', 0) != 0
             or manifest['validation_images'] != 5000 or manifest['test_used']):
         raise ValueError('Wrong SCST cache identity')
     required = set((*VALID_META, *ASSETS, *(f'train/{n}' for n in REWARD),
@@ -104,3 +105,19 @@ def mount(cfg, root, destination):
         t.extractall(jre, filter='data')
     java, = jre.rglob('bin/java')
     save(destination/'environment.json', dict(java=str(java), cached=True))
+
+
+def seal_train_shard(root, train, start, stop):
+    if (start, stop) not in ((40000,80000),(80000,113287)):
+        raise ValueError('Wrong full-cache shard range')
+    root, train = Path(root), Path(train)
+    dest = root/'train'
+    dest.mkdir(parents=True)
+    for name in ('pilot_ids.npy','pilot_sequences.npy','pilot_patches.npy'):
+        shutil.move(train/name,dest/name)
+    for path in train.glob('sem_*.npy'):
+        shutil.move(path,dest/path.name)
+    files = {p.relative_to(root).as_posix():sha(p) for p in sorted(dest.iterdir())}
+    save(root/'scst_train_shard_receipt.json',dict(schema=SCHEMA,source_sha256=SOURCE_SHA,
+         train_images=stop-start,train_start=start,train_stop=stop,validation_images=0,
+         test_used=False,files_sha256=files))
