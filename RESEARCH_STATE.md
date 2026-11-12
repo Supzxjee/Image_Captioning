@@ -10,6 +10,8 @@ Cập nhật: 13/11/2026, giờ Việt Nam. File này là bản tóm tắt để
 
 ## Hiện đang ở đâu
 
+- **13/11 SCST1000 to 1500 notebook ready.** Fetch exact v92 through Kaggle API, restore Adam, train on rows 8000:12000 with a fresh fixed RNG seed, then score VALID5000 with the same reranker. Syntax and exact 500-step/4000-row coverage checked. Kaggle pending.
+
 - **13/11 SCST1000 fixed VALID rerank complete.** Exact source checkpoint v92. CIDEr124.6881 vs XE9 123.6969; CHAIRs3.96% vs3.46%; passes extension gate (CIDEr gain, CHAIRs <=4.20%). XE9 remains the lower-hallucination configuration. No TEST or further training. [Result](experiments/clip_patch_baseline/CSA_SCST_ONLY1000_RERANK_VALID_RESULT.json).
 
 - **13/11 SCST-only pilot complete.** VALID5000 top1 CIDEr120.6622/121.9287 at500/1000 vs XE120.2955. CHAIRs4.36%/4.66% vs4.00%, so neither passed the full gate. Retain XE epoch9 as primary and keep SCST1000 as a diagnostic candidate. [Result](experiments/clip_patch_baseline/CSA_SCST_ONLY1000_VALID_RESULT.json).

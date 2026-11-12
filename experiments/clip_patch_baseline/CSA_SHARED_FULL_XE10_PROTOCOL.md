@@ -106,3 +106,6 @@ User approved fresh SCST-only from epoch9, Adam 5e-6 and global8, same seeded TR
 ### 13/11 SCST1000 fixed rerank on VALID
 User approved inference-only comparison. Pin the reviewed SCST1000 checkpoint by SHA, generate beam5 on the same VALID5000, apply fixed VALID164 selector (0.3 decoder / 0.4 CLIP / 0.3 object), and compare with saved XE9 under the same selector. Report paired configuration deltas and prior CHAIRs cap 4.20%; consider extension only if CIDEr improves over XE9 rerank and CHAIRs stays within cap. No TEST or training in this notebook.
 Transport update: user specified Kaggle API and exact ducanh3/notebook7bc83c4c76/92; fetch only update1000/pilot_checkpoint.bin, verify reviewed SHA, and keep the same VALID comparison.
+
+### 13/11 SCST1000 to 1500
+User approved 500 more updates. Resume exact v92 checkpoint and Adam state, use cache rows 8000:12000 in the same seeded schedule, keep pure CIDEr-D SCST. v92 did not save RNG state; extension uses a fresh explicit per-rank seed. Evaluate beam5 top1 and fixed VALID164 rerank on VALID5000. Compare with SCST1000 rerank CIDEr124.6881 and CHAIRs cap4.20%, also report XE9 rerank. No TEST or automatic further training.
