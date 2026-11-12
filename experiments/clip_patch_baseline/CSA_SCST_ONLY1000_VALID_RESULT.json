@@ -1,0 +1,91 @@
+{
+  "status": "CSA_SCST_ONLY1000_VALID_COMPLETE",
+  "images": 5000,
+  "split": "val",
+  "test_used": false,
+  "reranking": false,
+  "reference": {
+    "CIDEr": 1.202954787733369,
+    "CHAIRs": 0.04,
+    "CHAIRi": 0.027915291529152914,
+    "Recall": 0.4269839276745354
+  },
+  "checkpoints": {
+    "500": {
+      "metrics": {
+        "BLEU_1": 0.7817303918801048,
+        "BLEU_4": 0.3794093734266859,
+        "CIDEr": 1.206621606586215,
+        "ROUGE_L": 0.580132930178464,
+        "CHAIRs": 0.0436,
+        "CHAIRi": 0.030249593054801953,
+        "Recall": 0.43194374686087394,
+        "NLL": 2.1925639147111404
+      },
+      "delta": {
+        "CIDEr": 0.003666818852845921,
+        "CHAIRs": 0.003599999999999999,
+        "CHAIRi": 0.0023343015256490386,
+        "Recall": 0.004959819186338532
+      },
+      "checkpoint": {
+        "sha256": "2dca157b4d0e7795fa9e88cd13bfc7188a4cd412224cbb2defc142ad1341c32e",
+        "updates": 500,
+        "source_sha256": "b0c5bde0921a4c828ac094b264f502654224aa9365ee40cdce1c15c82fe9aeef"
+      },
+      "gates": {
+        "CIDEr": false,
+        "CHAIRs": false,
+        "Recall": true
+      },
+      "gate_passed": false,
+      "chair_counts": {
+        "images": 5000,
+        "hallucinated_captions": 218,
+        "hallucinated_mentions": 223,
+        "object_mentions": 7372,
+        "recalled_unique": 6880,
+        "reference_unique": 15928
+      }
+    },
+    "1000": {
+      "metrics": {
+        "BLEU_1": 0.7840645366800049,
+        "BLEU_4": 0.38751749565626503,
+        "CIDEr": 1.2192872054015549,
+        "ROUGE_L": 0.5840794857862843,
+        "CHAIRs": 0.0466,
+        "CHAIRi": 0.03214190450786877,
+        "Recall": 0.4346433952787544,
+        "NLL": 2.2490790814880097
+      },
+      "delta": {
+        "CIDEr": 0.016332417668185828,
+        "CHAIRs": 0.006600000000000002,
+        "CHAIRi": 0.0042266129787158525,
+        "Recall": 0.0076594676042189835
+      },
+      "checkpoint": {
+        "sha256": "56a90b2223b3bb64e433a342d048389dc3e80693fa574c2c1543e31e39a4377b",
+        "updates": 1000,
+        "source_sha256": "b0c5bde0921a4c828ac094b264f502654224aa9365ee40cdce1c15c82fe9aeef"
+      },
+      "gates": {
+        "CIDEr": true,
+        "CHAIRs": false,
+        "Recall": true
+      },
+      "gate_passed": false,
+      "chair_counts": {
+        "images": 5000,
+        "hallucinated_captions": 233,
+        "hallucinated_mentions": 241,
+        "object_mentions": 7498,
+        "recalled_unique": 6923,
+        "reference_unique": 15928
+      }
+    }
+  },
+  "review_sha256": "fde171a543df0f6acff7a2e3d982ba14978b422316cc79b39d056ba3039c9ffc",
+  "verification": "Same 5000 unique per-image IDs, CIDEr means, CHAIR count ratios and scoring input hashes verified. Checkpoint bytes absent from review."
+}

@@ -10,7 +10,7 @@ Cập nhật: 13/11/2026, giờ Việt Nam. File này là bản tóm tắt để
 
 ## Hiện đang ở đâu
 
-- **13/11 SCST-only pilot notebook ready.** CLIP_PATCH_CSA_SCST_ONLY1000_MERGED_DATASET_2GPU.ipynb starts exact XE epoch9, same Adam5e-6/global8/seeded first8000 TRAIN, only policy loss. Preserves 500/1000 checkpoints, scores both on VALID5000 with corrected cohort checks and frozen gates. AST checked; GPU pending.
+- **13/11 SCST-only pilot complete.** VALID5000 top1 CIDEr120.6622/121.9287 at500/1000 vs XE120.2955. CHAIRs4.36%/4.66% vs4.00%, so neither passed the full gate. Retain XE epoch9 as primary and keep SCST1000 as a diagnostic candidate. [Result](experiments/clip_patch_baseline/CSA_SCST_ONLY1000_VALID_RESULT.json).
 
 - **13/11 SCST+XE2500 VALID scoring recovered, promotion gate failed.** CIDEr119.4143 vs120.2955, CHAIRs4.04% vs4.00%, Recall42.62% vs42.70%. 5000 IDs, CIDEr mean and CHAIR flags verified. Retain epoch9 XE plus fixed rerank. [Result](experiments/clip_patch_baseline/CSA_SCST_XE2500_VALID_RESULT.json).
 
