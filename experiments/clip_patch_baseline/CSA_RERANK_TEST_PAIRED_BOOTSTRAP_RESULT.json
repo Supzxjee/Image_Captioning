@@ -1,0 +1,32 @@
+{
+  "images": 5000,
+  "replicates": 10000,
+  "seed": 42,
+  "interval": "paired image percentile 95%",
+  "archive_sha256": "b2fd599ac86221a1e297113e248476bbb52882efd1ea1c11999f058649da19c3",
+  "checkpoint_sha256": "b0c5bde0921a4c828ac094b264f502654224aa9365ee40cdce1c15c82fe9aeef",
+  "comparison": "fixed rerank minus CSA decoder top1",
+  "repairs": 68,
+  "new_flags": 36,
+  "scope": "Frozen policies, one trained checkpoint, fixed TEST CIDEr reference IDF. Per-image scores replayed. Does not capture training-seed uncertainty.",
+  "metrics": {
+    "CIDEr_x100": {
+      "top1": 121.63754848645776,
+      "rerank": 125.23065111706522,
+      "difference": 3.5931026306074467,
+      "ci95": [
+        2.3690795177789763,
+        4.815099822497042
+      ]
+    },
+    "CHAIRs_percentage_points": {
+      "top1": 3.9600000000000004,
+      "rerank": 3.32,
+      "difference": -0.64,
+      "ci95": [
+        -1.04,
+        -0.24
+      ]
+    }
+  }
+}

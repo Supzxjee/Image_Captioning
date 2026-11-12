@@ -62,3 +62,7 @@ After SCST500 CIDEr dropped, replay the fixed epoch9 VALID reranker using saved 
 ## 12/11 locked margin TEST replay
 
 User approved applying the VALID-selected margin .06 once to the saved epoch9 TEST5000 beams. Compare with the existing fixed selector using saved image-level CIDEr and CHAIR records on the same corpus. Retain margin regardless of TEST outcome in this report, no threshold sweep on TEST. No new model or official scorer run.
+
+## 12/11 paired TEST uncertainty
+
+For fixed CSA top1 versus fixed rerank, resample the same 5000 image pairs with replacement, 10000 replicates, NumPy seed 42, percentile 95% intervals. Use saved per-image CIDEr with fixed TEST reference IDF and saved binary CHAIR flags. Report conditional image-level uncertainty for these two frozen policies and one training seed.
