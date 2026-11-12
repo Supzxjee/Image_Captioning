@@ -46,3 +46,7 @@ User approved TEST evaluation of the per-caption epoch 9 VALID-selected checkpoi
 ## 12/11 fixed rerank decision
 
 User requested reranking only the completed CSA per-caption TEST system. Replay the five beams with the exact epoch9 checkpoint. Require original top1 caption files to match their saved worker SHA receipts. Transfer the fixed VALID164 decoder/CLIP/object weights .3/.4/.3 without TEST tuning. Use pinned CLIP and detector inputs. Score top1 and reranked captions on the same TEST5000. Keep baseline unchanged.
+
+## 12/11 improvement plan
+
+Keep CSA epoch9 and defer prompt ablation. First measure the fixed VALID164 selector on this checkpoint's VALID5000 beams. Then prepare the 500-update SCST + XE pilot and extend to 2500 only after checking cost and behavior. Proposed promotion gates at 2500: CIDEr +1 point, CHAIRs at most +0.2 pp and Recall at least -0.5 pp versus epoch9 top1 on VALID. Keep TEST out of policy/checkpoint selection.
