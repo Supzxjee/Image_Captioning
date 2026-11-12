@@ -1,0 +1,203 @@
+{
+  "archive_sha256": "f62a4b0aa031b60ae2f8217e59f6fab706dbaf012fdf19b9700f4421983b020c",
+  "split": "VALID only; SHA256 csa-margin-v1:coco_id sorted halves",
+  "calibration_top1": {
+    "CIDEr": 1.1916386180396132,
+    "CHAIRs": 0.038,
+    "CHAIRi": 0.02640893002994827,
+    "Recall": 0.43451248890579436,
+    "flags": 95,
+    "switched": 0
+  },
+  "holdout_top1": {
+    "CIDEr": 1.214270957427124,
+    "CHAIRs": 0.042,
+    "CHAIRi": 0.02945262572936927,
+    "Recall": 0.41959955229449075,
+    "flags": 105,
+    "switched": 0
+  },
+  "calibration": [
+    {
+      "margin": 0,
+      "CIDEr": 1.231876597129668,
+      "CHAIRs": 0.0328,
+      "CHAIRi": 0.02225130890052356,
+      "Recall": 0.4508685178141245,
+      "flags": 82,
+      "switched": 1452,
+      "eligible": true
+    },
+    {
+      "margin": 0.02,
+      "CIDEr": 1.2355879085935904,
+      "CHAIRs": 0.0324,
+      "CHAIRi": 0.022001047668936617,
+      "Recall": 0.4509953087358945,
+      "flags": 81,
+      "switched": 1357,
+      "eligible": true
+    },
+    {
+      "margin": 0.04,
+      "CIDEr": 1.2322265448904457,
+      "CHAIRs": 0.0324,
+      "CHAIRi": 0.022058823529411766,
+      "Recall": 0.4506149359705845,
+      "flags": 81,
+      "switched": 1250,
+      "eligible": true
+    },
+    {
+      "margin": 0.06,
+      "CIDEr": 1.2316568964992347,
+      "CHAIRs": 0.032,
+      "CHAIRi": 0.021847854698604896,
+      "Recall": 0.4499809813617345,
+      "flags": 80,
+      "switched": 1166,
+      "eligible": true
+    },
+    {
+      "margin": 0.08,
+      "CIDEr": 1.233233815331781,
+      "CHAIRs": 0.032,
+      "CHAIRi": 0.021940259053661114,
+      "Recall": 0.4484594903004945,
+      "flags": 80,
+      "switched": 1092,
+      "eligible": false
+    },
+    {
+      "margin": 0.1,
+      "CIDEr": 1.2294762158985288,
+      "CHAIRs": 0.0324,
+      "CHAIRi": 0.022269353128313893,
+      "Recall": 0.44681120831748444,
+      "flags": 81,
+      "switched": 987,
+      "eligible": false
+    },
+    {
+      "margin": 0.15,
+      "CIDEr": 1.2257375591456374,
+      "CHAIRs": 0.0324,
+      "CHAIRi": 0.022145144076840984,
+      "Recall": 0.44440218080385446,
+      "flags": 81,
+      "switched": 751,
+      "eligible": false
+    },
+    {
+      "margin": 0.2,
+      "CIDEr": 1.2202110811315716,
+      "CHAIRs": 0.0332,
+      "CHAIRi": 0.02277599142550911,
+      "Recall": 0.4425003169773044,
+      "flags": 83,
+      "switched": 527,
+      "eligible": false
+    }
+  ],
+  "holdout": [
+    {
+      "margin": 0,
+      "CIDEr": 1.242062044258484,
+      "CHAIRs": 0.0364,
+      "CHAIRi": 0.024521692266235517,
+      "Recall": 0.4325332670065912,
+      "flags": 91,
+      "switched": 1410,
+      "eligible": true
+    },
+    {
+      "margin": 0.02,
+      "CIDEr": 1.2430131091011825,
+      "CHAIRs": 0.0352,
+      "CHAIRi": 0.02377093462992977,
+      "Recall": 0.4317870911578162,
+      "flags": 88,
+      "switched": 1319,
+      "eligible": true
+    },
+    {
+      "margin": 0.04,
+      "CIDEr": 1.2451372995214713,
+      "CHAIRs": 0.034,
+      "CHAIRi": 0.023004059539918808,
+      "Recall": 0.4317870911578162,
+      "flags": 85,
+      "switched": 1233,
+      "eligible": true
+    },
+    {
+      "margin": 0.06,
+      "CIDEr": 1.247776626445523,
+      "CHAIRs": 0.0344,
+      "CHAIRi": 0.023268398268398268,
+      "Recall": 0.4316627285163537,
+      "flags": 86,
+      "switched": 1145,
+      "eligible": true
+    },
+    {
+      "margin": 0.08,
+      "CIDEr": 1.2489035039699714,
+      "CHAIRs": 0.0352,
+      "CHAIRi": 0.023822414726583648,
+      "Recall": 0.43104091530904115,
+      "flags": 88,
+      "switched": 1058,
+      "eligible": false
+    },
+    {
+      "margin": 0.1,
+      "CIDEr": 1.2483375647845691,
+      "CHAIRs": 0.0352,
+      "CHAIRi": 0.023880597014925373,
+      "Recall": 0.4304191021017286,
+      "flags": 88,
+      "switched": 958,
+      "eligible": false
+    },
+    {
+      "margin": 0.15,
+      "CIDEr": 1.2454555426646494,
+      "CHAIRs": 0.0348,
+      "CHAIRi": 0.023835616438356164,
+      "Recall": 0.426812585499316,
+      "flags": 87,
+      "switched": 721,
+      "eligible": false
+    },
+    {
+      "margin": 0.2,
+      "CIDEr": 1.23657099112344,
+      "CHAIRs": 0.0344,
+      "CHAIRi": 0.023684935279537318,
+      "Recall": 0.42544459644322846,
+      "flags": 86,
+      "switched": 507,
+      "eligible": false
+    }
+  ],
+  "selected_margin": 0.06,
+  "holdout_gate_passed": true,
+  "full_valid_fixed": {
+    "CIDEr": 1.2369693206940753,
+    "CHAIRs": 0.0346,
+    "CHAIRi": 0.023370070375780108,
+    "Recall": 0.44161225514816677,
+    "flags": 173,
+    "switched": 2862
+  },
+  "full_valid_selected": {
+    "CIDEr": 1.2397167614723787,
+    "CHAIRs": 0.0332,
+    "CHAIRi": 0.02254836557705137,
+    "Recall": 0.44073329984932197,
+    "flags": 166,
+    "switched": 2311
+  },
+  "test_used": false
+}

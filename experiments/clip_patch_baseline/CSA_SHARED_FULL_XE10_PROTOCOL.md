@@ -54,3 +54,7 @@ Keep CSA epoch9 and defer prompt ablation. First measure the fixed VALID164 sele
 ## 12/11 SCST pilot implementation
 
 Run exactly 500 updates from epoch9 best, Adam fresh at 5e-6, global batch 8, 4,000 distinct seeded TRAIN images, first caption for XE and first five references per TRAIN image for CIDEr-D reward and its fixed TRAIN IDF. Loss is global-token mean XE plus .05 times mean sequence SCST. Match sampled and rescored action distributions with dropout disabled, EOS counted and BOS/PAD blocked. Reuse the same bank and prompt175 geometry. Stage selected TRAIN and VALID features only, report the 500-update VALID top1 regardless of outcome. Keep checkpoints. No TEST decode, rerank or automatic extension in this pilot.
+
+## 12/11 VALID margin diagnostic
+
+After SCST500 CIDEr dropped, replay the fixed epoch9 VALID reranker using saved per-image scores only. Use a deterministic SHA-based 2500/2500 VALID split. Try margins 0, .02, .04, .06, .08, .10, .15, .20. On calibration, require at least 90% of fixed rerank CIDEr gain over top1, and Recall at most .10 pp below fixed rerank. Among eligible margins minimize CHAIRs, breaking ties by higher CIDEr then smaller margin. Promote only if holdout meets the same quality bounds and improves CHAIRs versus fixed rerank. No TEST use, scorer rerun, or GPU.
