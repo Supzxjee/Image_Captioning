@@ -94,3 +94,7 @@ User reports publication finished. Keep the original Part 0 notebook available. 
 ### 12/11 merged runner V2 vocabulary fix
 
 V1 verified mounted Dataset in 79.9 seconds and stopped on both ranks before optimizer updates because the trainer expected train/vocabulary.json. The sealed Dataset stores the shared vocabulary at Part 0 root, and mount copies it into the run Output. V2 reads that verified copy. Add a metadata-only loader precheck before torchrun. Dataset bytes and recipe unchanged; use a new Output path.
+
+### 13/11 recover merged V2 VALID scoring
+
+2500 train updates and both VALID decoders completed. V2 broad textual replacement inadvertently changed len(refs)!=5000 into !=25000. Recover from the exact saved caption files and references on CPU, with original PTB/CIDEr/CHAIR assets and unchanged promotion gates. No GPU work needed.

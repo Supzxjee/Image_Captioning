@@ -1,6 +1,6 @@
 # Trạng thái nghiên cứu — đọc trước khi tiếp tục
 
-Cập nhật: 12/11/2026, giờ Việt Nam. File này là bản tóm tắt để tiếp tục công việc; protocol và artifacts được dẫn bên dưới mới là nguồn chi tiết. Không cần đọc toàn bộ lịch sử chat.
+Cập nhật: 13/11/2026, giờ Việt Nam. File này là bản tóm tắt để tiếp tục công việc; protocol và artifacts được dẫn bên dưới mới là nguồn chi tiết. Không cần đọc toàn bộ lịch sử chat.
 
 ## Mục tiêu và cách làm việc
 
@@ -9,6 +9,8 @@ Cập nhật: 12/11/2026, giờ Việt Nam. File này là bản tóm tắt để
 - Không tự chạy mô hình/Torch/autograd local hoặc notebook Kaggle. Kiểm tra metadata/NumPy/static/mock được phép; ghi rõ giới hạn. Quy trình tại [AGENTS.md](AGENTS.md).
 
 ## Hiện đang ở đâu
+
+- **13/11 SCST XE2500 V2 training and VALID decoding complete, CPU scoring pending.** 2500 updates/5000 saved captions, checkpoint d58f232a, worker train logged991.37s. Reference guard accidentally expected25000 rows. RECOVER_CSA_SCST_XE2500_VALID_METRICS_CPU.ipynb scores SHA-verified saved Output only, uses original gates. Syntax, caption/refs/receipt coverage checked; Kaggle CPU run pending.
 
 - **12/11 merged 2500 V1 verified cache in 79.9s, then stopped before training** due to wrong vocabulary path. V2 CLIP_PATCH_CSA_SCST_XE2500_MERGED_DATASET_V2_2GPU.ipynb reads shared sealed vocabulary from Output and prechecks all trainer inputs against reviewed receipt layout. AST/receipt check passed. GPU V2 pending.
 

@@ -1,0 +1,21 @@
+{
+  "archive_sha256": "720f3182ee302200d556da27a1f4f11b43cc952d355db524ac01663ee6a2678a",
+  "updates": 2500,
+  "checkpoint": {
+    "sha256": "d58f232ad2fb4d829a152610c08bb4ffb84ed2ecb3edbd1a0a85169bf15f3e2c",
+    "updates": 2500,
+    "source_sha256": "b0c5bde0921a4c828ac094b264f502654224aa9365ee40cdce1c15c82fe9aeef"
+  },
+  "validation_captions": 5000,
+  "training_seconds": 991.368525348,
+  "decode_worker_seconds": 202.56840451899984,
+  "scoring_status": "pending CPU recovery",
+  "files_sha256": {
+    "captions_rank0.json": "028a0474148dc3aaa051c5a9002e0147d46e66e7cbdee94cf757f413a754ffe3",
+    "captions_rank1.json": "ba3eadc14dc46dc5da34045da4e28790611a53329565665aa4d63f0fb20a6f06",
+    "test_references.json": "219cbe174a62e04b75c4f110242e12c51edb32a4c42210713db93b330340e75e",
+    "pilot_checkpoint_receipt.json": "af1a8dd7141852260ebc25080ce73a19f50129b484f542c442010c6da2d44964",
+    "worker0.json": "e5fe96f8a98ee1e890d84f953103f1f018461ad5fd75fffcd991ba8b2b26e040",
+    "worker1.json": "74022eadc0ec2f27149453d0a061bcec494925573a078dc4d640e1c532521e86"
+  }
+}
