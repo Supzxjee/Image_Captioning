@@ -1,0 +1,45 @@
+{
+  "status": "CSA_SCST_XE_PILOT500_VALID_COMPLETE",
+  "updates": 500,
+  "images": 5000,
+  "split": "val",
+  "test_used": false,
+  "reranking": false,
+  "metrics": {
+    "BLEU_1": 0.7728786778835725,
+    "BLEU_4": 0.37398632502060625,
+    "CIDEr": 1.1951478526444643,
+    "ROUGE_L": 0.576822971041946,
+    "CHAIRs": 0.0388,
+    "CHAIRi": 0.027212754260582738,
+    "Recall": 0.4282395781014566
+  },
+  "reference": {
+    "CIDEr": 1.202954787733369,
+    "CHAIRs": 0.04,
+    "CHAIRi": 0.027915291529152914,
+    "Recall": 0.4269839276745354
+  },
+  "delta": {
+    "CIDEr": -0.007806935088904732,
+    "CHAIRs": -0.0011999999999999997,
+    "CHAIRi": -0.0007025372685701761,
+    "Recall": 0.0012556504269211621
+  },
+  "checkpoint": {
+    "sha256": "ce3f3a326a355e7db1ec2a2595b04ea28762649f22f99b3b78a9d2c3edadb17e",
+    "updates": 500,
+    "source_sha256": "b0c5bde0921a4c828ac094b264f502654224aa9365ee40cdce1c15c82fe9aeef"
+  },
+  "archive_sha256": "aaf82aba1421b902d52e8f26e772500b0213a78a081267738f82f3cac98882d4",
+  "counts": {
+    "images": 5000,
+    "hallucinated_captions": 194,
+    "hallucinated_mentions": 198,
+    "object_mentions": 7276,
+    "recalled_unique": 6821,
+    "reference_unique": 15928
+  },
+  "training_worker_seconds_through_update500": 254.50735851700006,
+  "recommendation": "Keep epoch9; do not automatically extend this recipe based on pilot. CIDEr decreased and hallucination reduction was small; use frozen VALID rerank candidate diagnostics first."
+}
