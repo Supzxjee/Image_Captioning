@@ -66,3 +66,7 @@ User approved applying the VALID-selected margin .06 once to the saved epoch9 TE
 ## 12/11 paired TEST uncertainty
 
 For fixed CSA top1 versus fixed rerank, resample the same 5000 image pairs with replacement, 10000 replicates, NumPy seed 42, percentile 95% intervals. Use saved per-image CIDEr with fixed TEST reference IDF and saved binary CHAIR flags. Report conditional image-level uncertainty for these two frozen policies and one training seed.
+
+## 12/11 reusable SCST preparation
+
+Build a CPU-only Kaggle Output with VALID5000 patches, prompt tensors, vocabulary, references and PTB reference tokens, plus up to 20,000 seeded TRAIN patches, prompt tensors, caption targets and TRAIN reward statistics. Default 20,000 covers 2,500 global8 updates and preserves the first 4,000 pilot images. Cache pinned Java and CHAIR assets. Seal payloads by SHA256 and mount read-only in a separate cache-enabled 500-update runner. No 2,500-update training is initiated by this change. Measure actual mounted throughput and setup times before claiming GPU savings.

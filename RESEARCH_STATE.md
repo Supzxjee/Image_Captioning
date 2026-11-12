@@ -10,6 +10,8 @@ Cập nhật: 12/11/2026, giờ Việt Nam. File này là bản tóm tắt để
 
 ## Hiện đang ở đâu
 
+- **12/11 reusable SCST cache notebooks ready.** CLIP_PATCH_CSA_SCST_REUSABLE_CACHE_CPU.ipynb builds VALID5000 and seeded TRAIN20000 (or4000), normalized TRAIN refs/IDF, PTB VALID references and pinned Java/CHAIR assets. CLIP_PATCH_CSA_SCST_PILOT500_CACHED_2GPU.ipynb mounts exact cache read-only and keeps 500-step recipe. AST/phase routes verified, real CPU build/mounted GPU speed pending; no 2500 training started.
+
 - **12/11 paper draft and qualitative cases prepared.** Method/results draft and three case records in experiments/clip_patch_baseline/CSA_PAPER_METHOD_RESULTS_DRAFT.md and CSA_TEST_QUALITATIVE_CASES.json. Exact prompt181 SHA matched TEST stage. Two relation-bearing examples illustrate CHAIR repair and new flag; visual confirmation/figure pending.
 
 - **12/11 paired TEST bootstrap complete:** CIDEr_x100 3.5931 [2.3691, 4.8151], CHAIRs_percentage_points -0.6400 [-1.0400, -0.2400]. 10000 paired image resamples, frozen checkpoint/selector and fixed reference IDF. [Result](experiments/clip_patch_baseline/CSA_RERANK_TEST_PAIRED_BOOTSTRAP_RESULT.json).
