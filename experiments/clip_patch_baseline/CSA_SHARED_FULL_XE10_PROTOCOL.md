@@ -90,3 +90,7 @@ User supplied ducanh3/notebook7bc83c4c76 Save Versions 82/83/84 in part order. A
 ### Read the merged Dataset
 
 User reports publication finished. Keep the original Part 0 notebook available. The Dataset consumer checks all three reviewed part identities in its manifest, reconstructs a local Part 0 view of only the small files, links the two required mounted NPY arrays, and verifies the original Part 0 receipt and every used payload before training. Full patch arrays are never copied. The GPU route is user-run.
+
+### 12/11 merged runner V2 vocabulary fix
+
+V1 verified mounted Dataset in 79.9 seconds and stopped on both ranks before optimizer updates because the trainer expected train/vocabulary.json. The sealed Dataset stores the shared vocabulary at Part 0 root, and mount copies it into the run Output. V2 reads that verified copy. Add a metadata-only loader precheck before torchrun. Dataset bytes and recipe unchanged; use a new Output path.
