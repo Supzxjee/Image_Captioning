@@ -10,6 +10,8 @@ Cập nhật: 12/11/2026, giờ Việt Nam. File này là bản tóm tắt để
 
 ## Hiện đang ở đâu
 
+- **12/11 user reports merged Dataset published; Dataset-backed 2500 notebook ready.** CLIP_PATCH_CSA_SCST_XE2500_MERGED_DATASET_2GPU.ipynb opens only Part0 arrays through verified links, stages smaller metadata, and checks all three manifest identities. AST and mock materialization pass. Actual Kaggle mount/throughput/training pending.
+
 - **12/11 exact Output API transport ready.** Source ducanh3/notebook7bc83c4c76 versions82/83/84 map to parts0/1/2. SAVE_CSA_SCST_FULL_CACHE_V82_V84_DATASET_CPU.ipynb checks reviewed receipts before payload downloads, validates all bytes and creates private Dataset. Syntax/route-order checks passed; actual API access and upload pending.
 
 - **12/11 all three full SCST CPU Outputs reviewed.** 113287 ordered TRAIN IDs unique across 40000/40000/33287. SAVE_CSA_SCST_FULL_CACHE_AS_DATASET_CPU.ipynb pins all three receipts and payloads, stages a private Dataset under /tmp, preserves four NPY patch files and a metadata bundle. AST and hash-copy mock passed. Upload and mount pending user; cached2500 notebook still uses original Part0.

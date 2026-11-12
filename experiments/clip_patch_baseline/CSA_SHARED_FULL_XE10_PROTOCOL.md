@@ -86,3 +86,7 @@ User requested one private Dataset from CPU Outputs 0, 1 and 2 after all runs co
 ### Exact Output versions
 
 User supplied ducanh3/notebook7bc83c4c76 Save Versions 82/83/84 in part order. API transport pins those versions, fetches and checks all three receipts before any large payload download, then validates and publishes as a private Dataset. Reuse downloaded patch files by moving them within /tmp after SHA checks to avoid a second full copy.
+
+### Read the merged Dataset
+
+User reports publication finished. Keep the original Part 0 notebook available. The Dataset consumer checks all three reviewed part identities in its manifest, reconstructs a local Part 0 view of only the small files, links the two required mounted NPY arrays, and verifies the original Part 0 receipt and every used payload before training. Full patch arrays are never copied. The GPU route is user-run.
