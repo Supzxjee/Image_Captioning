@@ -109,3 +109,4 @@ Transport update: user specified Kaggle API and exact ducanh3/notebook7bc83c4c76
 
 ### 13/11 SCST1000 to 1500
 User approved 500 more updates. Resume exact v92 checkpoint and Adam state, use cache rows 8000:12000 in the same seeded schedule, keep pure CIDEr-D SCST. v92 did not save RNG state; extension uses a fresh explicit per-rank seed. Evaluate beam5 top1 and fixed VALID164 rerank on VALID5000. Compare with SCST1000 rerank CIDEr124.6881 and CHAIRs cap4.20%, also report XE9 rerank. No TEST or automatic further training.
+SCST1500 recovery: saved log reports full CLIP scoring and CoreNLP network failure. Replay both frozen policies from archived beams and score shards on CPU with the original scorer and HTTPS CoreNLP preparation. Preserve original comparison and gate; do not rerun training or inference.
