@@ -10,6 +10,8 @@ Cập nhật: 12/11/2026, giờ Việt Nam. File này là bản tóm tắt để
 
 ## Hiện đang ở đâu
 
+- **12/11 exact Output API transport ready.** Source ducanh3/notebook7bc83c4c76 versions82/83/84 map to parts0/1/2. SAVE_CSA_SCST_FULL_CACHE_V82_V84_DATASET_CPU.ipynb checks reviewed receipts before payload downloads, validates all bytes and creates private Dataset. Syntax/route-order checks passed; actual API access and upload pending.
+
 - **12/11 all three full SCST CPU Outputs reviewed.** 113287 ordered TRAIN IDs unique across 40000/40000/33287. SAVE_CSA_SCST_FULL_CACHE_AS_DATASET_CPU.ipynb pins all three receipts and payloads, stages a private Dataset under /tmp, preserves four NPY patch files and a metadata bundle. AST and hash-copy mock passed. Upload and mount pending user; cached2500 notebook still uses original Part0.
 
 - **12/11 full SCST cache Part 0 ready; cached 2500 notebook prepared.** CPU receipt covers 40000 TRAIN/5000 VALID; first4000 IDs exactly match pilot. CLIP_PATCH_CSA_SCST_XE2500_FULL_CACHE_2GPU.ipynb locks receipt, reads first20000, restarts from epoch9, and checks preset VALID gates. Static checks passed. Actual mounted payload/SHA checks and GPU run pending.

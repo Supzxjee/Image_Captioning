@@ -8,7 +8,8 @@
       "train_start": 0,
       "train_stop": 40000,
       "ids_sha256": "f1fd1507bb3dc6b5dd4ddc57a83e723e2610ec7a45e7a6b05813fa633e519480",
-      "source_sha256": "b0c5bde0921a4c828ac094b264f502654224aa9365ee40cdce1c15c82fe9aeef"
+      "source_sha256": "b0c5bde0921a4c828ac094b264f502654224aa9365ee40cdce1c15c82fe9aeef",
+      "notebook_version": "ducanh3/notebook7bc83c4c76/82"
     },
     {
       "part": 1,
@@ -18,7 +19,8 @@
       "train_start": 40000,
       "train_stop": 80000,
       "ids_sha256": "570fab90751d77fda57aebe84a17537a7cba57d3244fc06a5cdcb55ff2c1d885",
-      "source_sha256": "b0c5bde0921a4c828ac094b264f502654224aa9365ee40cdce1c15c82fe9aeef"
+      "source_sha256": "b0c5bde0921a4c828ac094b264f502654224aa9365ee40cdce1c15c82fe9aeef",
+      "notebook_version": "ducanh3/notebook7bc83c4c76/83"
     },
     {
       "part": 2,
@@ -28,7 +30,8 @@
       "train_start": 80000,
       "train_stop": 113287,
       "ids_sha256": "22d47e2713dbe61777a97a8104ba4bc2490e253c4ff8fd71d0e871d57b2d38fb",
-      "source_sha256": "b0c5bde0921a4c828ac094b264f502654224aa9365ee40cdce1c15c82fe9aeef"
+      "source_sha256": "b0c5bde0921a4c828ac094b264f502654224aa9365ee40cdce1c15c82fe9aeef",
+      "notebook_version": "ducanh3/notebook7bc83c4c76/84"
     }
   ],
   "ordered_train_ids_sha256": "6165b0fe756398f3625c4504ebe62f25f07657ce0cffc571a2ce7613ada6e263",

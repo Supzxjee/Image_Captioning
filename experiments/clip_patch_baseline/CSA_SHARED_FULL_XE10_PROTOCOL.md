@@ -82,3 +82,7 @@ Part 0 CPU Output is complete according to its review receipt. Start from the ex
 ## 12/11 publish full SCST cache
 
 User requested one private Dataset from CPU Outputs 0, 1 and 2 after all runs complete. Pin all reviewed receipts and ordered ID lists, check the mounted payload hashes and NPY headers, and stage only in /tmp. Keep the four large FP16 patch arrays as separate directly mappable files. Group smaller payloads with exact logical paths in one ZIP stored with a .bin suffix to preserve bytes on upload. Keep shared VALID/reward assets from part 0. User executes upload with their Kaggle Secret. Preserve small audit logs and manifest under Working.
+
+### Exact Output versions
+
+User supplied ducanh3/notebook7bc83c4c76 Save Versions 82/83/84 in part order. API transport pins those versions, fetches and checks all three receipts before any large payload download, then validates and publishes as a private Dataset. Reuse downloaded patch files by moving them within /tmp after SHA checks to avoid a second full copy.
