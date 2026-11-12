@@ -10,9 +10,7 @@ Cập nhật: 13/11/2026, giờ Việt Nam. File này là bản tóm tắt để
 
 ## Hiện đang ở đâu
 
-- **13/11 SCST1500 v94 CPU recovery ready.** Log shows both CLIP ranks completed; SPICE CoreNLP download failed before final metrics. Recovery fetches review ZIP from exact v94, replays saved scores/beams, and prepares CoreNLP over HTTPS. Syntax and CPU phase routing checked. User-run recovery pending.
-
-- **13/11 SCST1000 to 1500 notebook ready.** Fetch exact v92 through Kaggle API, restore Adam, train on rows 8000:12000 with a fresh fixed RNG seed, then score VALID5000 with the same reranker. Syntax and exact 500-step/4000-row coverage checked. Kaggle pending.
+- **13/11 SCST1500 v94 CPU recovery complete.** Fixed VALID5000 rerank CIDEr125.7582/CHAIRs4.06% vs SCST1000 124.6881/3.96%; passes gate. XE9 remains lower-hallucination at 3.46%. Verified per-image CIDEr and CHAIR counts; no TEST. [Result](experiments/clip_patch_baseline/CSA_SCST_ONLY1500_RERANK_VALID_RESULT.json).
 
 - **13/11 SCST1000 fixed VALID rerank complete.** Exact source checkpoint v92. CIDEr124.6881 vs XE9 123.6969; CHAIRs3.96% vs3.46%; passes extension gate (CIDEr gain, CHAIRs <=4.20%). XE9 remains the lower-hallucination configuration. No TEST or further training. [Result](experiments/clip_patch_baseline/CSA_SCST_ONLY1000_RERANK_VALID_RESULT.json).
 
