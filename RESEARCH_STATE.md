@@ -10,6 +10,8 @@ Cập nhật: 12/11/2026, giờ Việt Nam. File này là bản tóm tắt để
 
 ## Hiện đang ở đâu
 
+- **12/11 CSA epoch9 VALID rerank reference complete:** CIDEr120.2955 to123.6969, CHAIRs4.00% to3.46%, CHAIRi2.7915% to2.3370%, Recall42.70% to44.16%. Fixed weights, 25000 candidates, no TEST. Next SCST+XE500 pilot. [Result](experiments/clip_patch_baseline/CSA_PER_CAPTION_BEST9_RERANK_VALID5000_RESULT.json).
+
 - **12/11 improvement plan started.** Fixed rerank reference notebook CLIP_PATCH_CSA_PER_CAPTION_BEST9_RERANK_VALID5000_2GPU.ipynb ready, using exact epoch9 and prompt175 VALID, fixed VALID164 weights, mocked VALID-only cohort route/AST passed. User-run metrics pending. SCST+XE500 pilot not yet implemented; 2500 continuation gated by pilot.
 
 - **12/11 CSA epoch9 fixed rerank complete on TEST5000.** Top1 replay hashes and metrics match original; 25000 candidates scored. CIDEr 121.6375 to 125.2307, CHAIRs 3.96% to 3.32%, CHAIRi 2.8017% to 2.2655%, Recall 43.49% to 44.90%. 68 repaired CHAIR flags, 36 new. Fixed VALID164 policy. [Result](experiments/clip_patch_baseline/CSA_PER_CAPTION_BEST9_RERANK_TEST5000_RESULT.json).

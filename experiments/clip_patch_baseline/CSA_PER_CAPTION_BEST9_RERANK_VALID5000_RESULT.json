@@ -1,0 +1,93 @@
+{
+  "status": "CSA_PER_CAPTION_FIXED_RERANK_VALID5000_COMPLETE",
+  "images": 5000,
+  "test_used": false,
+  "training": false,
+  "checkpoint_sha256": "b0c5bde0921a4c828ac094b264f502654224aa9365ee40cdce1c15c82fe9aeef",
+  "metrics": {
+    "decoder_rank0": {
+      "CIDEr": 1.202954787733369,
+      "BLEU_1": 0.779211751922854,
+      "BLEU_4": 0.379421025758623,
+      "METEOR": 0.28739574821796565,
+      "SPICE": 0.21599838810443725,
+      "ROUGE_L": 0.5782564553162609,
+      "CHAIRs": 0.04,
+      "CHAIRi": 0.027915291529152914,
+      "Recall": 0.4269839276745354,
+      "counts": {
+        "images": 5000,
+        "hallucinated_captions": 200,
+        "hallucinated_mentions": 203,
+        "object_mentions": 7272,
+        "recalled_unique": 6801,
+        "reference_unique": 15928
+      },
+      "mean_words": 9.2932,
+      "short_le2": 0
+    },
+    "clip_object_fixed": {
+      "CIDEr": 1.236969320694076,
+      "BLEU_1": 0.7822404032891042,
+      "BLEU_4": 0.37999420540398726,
+      "METEOR": 0.29455517796898223,
+      "SPICE": 0.22565418174861246,
+      "ROUGE_L": 0.5831181738965074,
+      "CHAIRs": 0.0346,
+      "CHAIRi": 0.023370070375780108,
+      "Recall": 0.44161225514816677,
+      "counts": {
+        "images": 5000,
+        "hallucinated_captions": 173,
+        "hallucinated_mentions": 176,
+        "object_mentions": 7531,
+        "recalled_unique": 7034,
+        "reference_unique": 15928
+      },
+      "mean_words": 9.6804,
+      "short_le2": 0
+    }
+  },
+  "changes": {
+    "changed_captions": 2862,
+    "rank_histogram": {
+      "0": 2138,
+      "1": 1261,
+      "2": 851,
+      "3": 507,
+      "4": 243
+    },
+    "CHAIR_repairs": 62,
+    "CHAIR_new_flags": 35
+  },
+  "selector": {
+    "decoder_weight": 0.3,
+    "clip_weight": 0.4,
+    "object_weight": 0.3,
+    "min_detection_confidence": 0.5,
+    "hallucination_penalty": 1.0,
+    "tie_break": "earlier beam"
+  },
+  "tuned_on_test": false,
+  "oracle_used_for_selection": false,
+  "prior_project_test_exposure": true,
+  "selection": "both prelocked policies reported; fixed VALID164 policy",
+  "NLL_note": "same frozen captioner; reranking changes output only, no target-conditioned pass",
+  "archive_sha256": "f62a4b0aa031b60ae2f8217e59f6fab706dbaf012fdf19b9700f4421983b020c",
+  "delta": {
+    "CIDEr": 0.03401453296070689,
+    "BLEU_1": 0.00302865136625019,
+    "BLEU_4": 0.0005731796453642413,
+    "METEOR": 0.007159429751016577,
+    "SPICE": 0.009655793644175209,
+    "ROUGE_L": 0.004861718580246532,
+    "CHAIRs": -0.005400000000000002,
+    "CHAIRi": -0.004545221153372806,
+    "Recall": 0.014628327473631353
+  },
+  "pilot_promotion_gate": {
+    "CIDEr_min": 1.212954787733369,
+    "CHAIRs_max": 0.042,
+    "Recall_min": 0.4219839276745354
+  }
+}
