@@ -74,3 +74,7 @@ Build a CPU-only Kaggle Output with VALID5000 patches, prompt tensors, vocabular
 ## 12/11 full reusable SCST cache
 
 User requested all Karpathy TRAIN + VALID. FP16 patches alone are 35.61 GB, above the 20 GB saved Notebook Output limit documented at https://www.kaggle.com/docs/notebooks. Use three CPU Output versions with contiguous slices of the same seeded permutation: [0,40000), [40000,80000), [80000,113287). Part 0 also contains VALID5000, normalized TRAIN reward refs and IDF, cached PTB and scorer assets. Each part records range and file digests. The cache-backed pilot may consume part 0 directly. No model execution for the CPU builds. Preserve the prior small notebooks.
+
+## 12/11 cached 2500-update SCST experiment
+
+Part 0 CPU Output is complete according to its review receipt. Start from the exact epoch 9 XE checkpoint again with the same seed, recipe and 4,000-image prefix as the 500-update pilot. Use the first 20,000 TRAIN rows from the verified Part 0 mount. Evaluate top-1 on VALID5000 only at update 2500. Report the preset CIDEr/CHAIRs/Recall gates, and preserve the checkpoint even if the gate fails. Any rerank and TEST evaluation will be separate after review.
