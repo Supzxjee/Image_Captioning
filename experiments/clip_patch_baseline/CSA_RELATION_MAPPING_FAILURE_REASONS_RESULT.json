@@ -1,0 +1,3974 @@
+{
+  "images": 130,
+  "lost_relations": 207,
+  "counts": {
+    "subject": {
+      "matched": 163,
+      "no_same_class_roi": 16,
+      "below_iou": 20,
+      "collision": 8
+    },
+    "object": {
+      "no_same_class_roi": 52,
+      "below_iou": 103,
+      "matched": 41,
+      "collision": 11
+    }
+  },
+  "joint": {
+    "matched / no_same_class_roi": 49,
+    "matched / below_iou": 103,
+    "no_same_class_roi / no_same_class_roi": 3,
+    "below_iou / matched": 20,
+    "no_same_class_roi / matched": 13,
+    "collision / matched": 8,
+    "matched / collision": 11
+  },
+  "records": [
+    {
+      "coco_id": 317595,
+      "filename": "COCO_val2014_000000317595.jpg",
+      "relation": "a person holding a hot dog",
+      "subject": {
+        "reason": "matched",
+        "best_iou": 0.9580926778377571,
+        "roi": 0,
+        "same_class_rois": 3,
+        "label": "person"
+      },
+      "object": {
+        "reason": "no_same_class_roi",
+        "best_iou": null,
+        "roi": null,
+        "same_class_rois": 0,
+        "label": "hot dog"
+      }
+    },
+    {
+      "coco_id": 317595,
+      "filename": "COCO_val2014_000000317595.jpg",
+      "relation": "a person eating a hot dog",
+      "subject": {
+        "reason": "matched",
+        "best_iou": 0.9580926778377571,
+        "roi": 0,
+        "same_class_rois": 3,
+        "label": "person"
+      },
+      "object": {
+        "reason": "no_same_class_roi",
+        "best_iou": null,
+        "roi": null,
+        "same_class_rois": 0,
+        "label": "hot dog"
+      }
+    },
+    {
+      "coco_id": 505099,
+      "filename": "COCO_val2014_000000505099.jpg",
+      "relation": "a person wielding a baseball bat",
+      "subject": {
+        "reason": "matched",
+        "best_iou": 0.9663042541096319,
+        "roi": 0,
+        "same_class_rois": 15,
+        "label": "person"
+      },
+      "object": {
+        "reason": "below_iou",
+        "best_iou": 0.3856833006931701,
+        "roi": null,
+        "same_class_rois": 1,
+        "label": "baseball bat"
+      }
+    },
+    {
+      "coco_id": 505099,
+      "filename": "COCO_val2014_000000505099.jpg",
+      "relation": "a person holding a baseball bat",
+      "subject": {
+        "reason": "matched",
+        "best_iou": 0.9663042541096319,
+        "roi": 0,
+        "same_class_rois": 15,
+        "label": "person"
+      },
+      "object": {
+        "reason": "below_iou",
+        "best_iou": 0.3856833006931701,
+        "roi": null,
+        "same_class_rois": 1,
+        "label": "baseball bat"
+      }
+    },
+    {
+      "coco_id": 377715,
+      "filename": "COCO_val2014_000000377715.jpg",
+      "relation": "a person wielding a baseball bat",
+      "subject": {
+        "reason": "matched",
+        "best_iou": 0.9504938029251462,
+        "roi": 0,
+        "same_class_rois": 8,
+        "label": "person"
+      },
+      "object": {
+        "reason": "below_iou",
+        "best_iou": 0.3449785465062621,
+        "roi": null,
+        "same_class_rois": 1,
+        "label": "baseball bat"
+      }
+    },
+    {
+      "coco_id": 377715,
+      "filename": "COCO_val2014_000000377715.jpg",
+      "relation": "a person holding a baseball bat",
+      "subject": {
+        "reason": "matched",
+        "best_iou": 0.9504938029251462,
+        "roi": 0,
+        "same_class_rois": 8,
+        "label": "person"
+      },
+      "object": {
+        "reason": "below_iou",
+        "best_iou": 0.3449785465062621,
+        "roi": null,
+        "same_class_rois": 1,
+        "label": "baseball bat"
+      }
+    },
+    {
+      "coco_id": 276693,
+      "filename": "COCO_val2014_000000276693.jpg",
+      "relation": "a person wearing skis",
+      "subject": {
+        "reason": "matched",
+        "best_iou": 0.8901925968627281,
+        "roi": 1,
+        "same_class_rois": 1,
+        "label": "person"
+      },
+      "object": {
+        "reason": "below_iou",
+        "best_iou": 0.4426071703396232,
+        "roi": null,
+        "same_class_rois": 1,
+        "label": "skis"
+      }
+    },
+    {
+      "coco_id": 276693,
+      "filename": "COCO_val2014_000000276693.jpg",
+      "relation": "a person standing on skis",
+      "subject": {
+        "reason": "matched",
+        "best_iou": 0.8901925968627281,
+        "roi": 1,
+        "same_class_rois": 1,
+        "label": "person"
+      },
+      "object": {
+        "reason": "below_iou",
+        "best_iou": 0.4426071703396232,
+        "roi": null,
+        "same_class_rois": 1,
+        "label": "skis"
+      }
+    },
+    {
+      "coco_id": 166624,
+      "filename": "COCO_val2014_000000166624.jpg",
+      "relation": "a person standing on skis",
+      "subject": {
+        "reason": "matched",
+        "best_iou": 0.9363683236311856,
+        "roi": 0,
+        "same_class_rois": 1,
+        "label": "person"
+      },
+      "object": {
+        "reason": "below_iou",
+        "best_iou": 0.33773216068567563,
+        "roi": null,
+        "same_class_rois": 1,
+        "label": "skis"
+      }
+    },
+    {
+      "coco_id": 166624,
+      "filename": "COCO_val2014_000000166624.jpg",
+      "relation": "a person wearing skis",
+      "subject": {
+        "reason": "matched",
+        "best_iou": 0.9363683236311856,
+        "roi": 0,
+        "same_class_rois": 1,
+        "label": "person"
+      },
+      "object": {
+        "reason": "below_iou",
+        "best_iou": 0.33773216068567563,
+        "roi": null,
+        "same_class_rois": 1,
+        "label": "skis"
+      }
+    },
+    {
+      "coco_id": 166624,
+      "filename": "COCO_val2014_000000166624.jpg",
+      "relation": "a person on skis",
+      "subject": {
+        "reason": "matched",
+        "best_iou": 0.9363683236311856,
+        "roi": 0,
+        "same_class_rois": 1,
+        "label": "person"
+      },
+      "object": {
+        "reason": "below_iou",
+        "best_iou": 0.33773216068567563,
+        "roi": null,
+        "same_class_rois": 1,
+        "label": "skis"
+      }
+    },
+    {
+      "coco_id": 122542,
+      "filename": "COCO_val2014_000000122542.jpg",
+      "relation": "a person standing on skis",
+      "subject": {
+        "reason": "matched",
+        "best_iou": 0.9226436497597679,
+        "roi": 1,
+        "same_class_rois": 2,
+        "label": "person"
+      },
+      "object": {
+        "reason": "below_iou",
+        "best_iou": 0.4664380096437739,
+        "roi": null,
+        "same_class_rois": 2,
+        "label": "skis"
+      }
+    },
+    {
+      "coco_id": 199977,
+      "filename": "COCO_val2014_000000199977.jpg",
+      "relation": "a person and skis (interaction: jumping)",
+      "subject": {
+        "reason": "no_same_class_roi",
+        "best_iou": null,
+        "roi": null,
+        "same_class_rois": 0,
+        "label": "person"
+      },
+      "object": {
+        "reason": "no_same_class_roi",
+        "best_iou": null,
+        "roi": null,
+        "same_class_rois": 0,
+        "label": "skis"
+      }
+    },
+    {
+      "coco_id": 199977,
+      "filename": "COCO_val2014_000000199977.jpg",
+      "relation": "a person wearing skis",
+      "subject": {
+        "reason": "no_same_class_roi",
+        "best_iou": null,
+        "roi": null,
+        "same_class_rois": 0,
+        "label": "person"
+      },
+      "object": {
+        "reason": "no_same_class_roi",
+        "best_iou": null,
+        "roi": null,
+        "same_class_rois": 0,
+        "label": "skis"
+      }
+    },
+    {
+      "coco_id": 199977,
+      "filename": "COCO_val2014_000000199977.jpg",
+      "relation": "a person on skis",
+      "subject": {
+        "reason": "no_same_class_roi",
+        "best_iou": null,
+        "roi": null,
+        "same_class_rois": 0,
+        "label": "person"
+      },
+      "object": {
+        "reason": "no_same_class_roi",
+        "best_iou": null,
+        "roi": null,
+        "same_class_rois": 0,
+        "label": "skis"
+      }
+    },
+    {
+      "coco_id": 409241,
+      "filename": "COCO_val2014_000000409241.jpg",
+      "relation": "a person riding a train",
+      "subject": {
+        "reason": "below_iou",
+        "best_iou": 0.4105662940917991,
+        "roi": null,
+        "same_class_rois": 2,
+        "label": "person"
+      },
+      "object": {
+        "reason": "matched",
+        "best_iou": 0.9625746945910592,
+        "roi": 0,
+        "same_class_rois": 1,
+        "label": "train"
+      }
+    },
+    {
+      "coco_id": 154816,
+      "filename": "COCO_val2014_000000154816.jpg",
+      "relation": "a person wielding a baseball bat",
+      "subject": {
+        "reason": "matched",
+        "best_iou": 0.9509181441196961,
+        "roi": 1,
+        "same_class_rois": 13,
+        "label": "person"
+      },
+      "object": {
+        "reason": "below_iou",
+        "best_iou": 0.1469380114203556,
+        "roi": null,
+        "same_class_rois": 1,
+        "label": "baseball bat"
+      }
+    },
+    {
+      "coco_id": 154816,
+      "filename": "COCO_val2014_000000154816.jpg",
+      "relation": "a person holding a baseball bat",
+      "subject": {
+        "reason": "matched",
+        "best_iou": 0.9509181441196961,
+        "roi": 1,
+        "same_class_rois": 13,
+        "label": "person"
+      },
+      "object": {
+        "reason": "below_iou",
+        "best_iou": 0.1469380114203556,
+        "roi": null,
+        "same_class_rois": 1,
+        "label": "baseball bat"
+      }
+    },
+    {
+      "coco_id": 202228,
+      "filename": "COCO_val2014_000000202228.jpg",
+      "relation": "a person holding a hair drier",
+      "subject": {
+        "reason": "matched",
+        "best_iou": 0.9718327119544007,
+        "roi": 0,
+        "same_class_rois": 1,
+        "label": "person"
+      },
+      "object": {
+        "reason": "no_same_class_roi",
+        "best_iou": null,
+        "roi": null,
+        "same_class_rois": 0,
+        "label": "hair drier"
+      }
+    },
+    {
+      "coco_id": 58225,
+      "filename": "COCO_val2014_000000058225.jpg",
+      "relation": "a person holding a sandwich",
+      "subject": {
+        "reason": "matched",
+        "best_iou": 0.9260565654636348,
+        "roi": 0,
+        "same_class_rois": 1,
+        "label": "person"
+      },
+      "object": {
+        "reason": "no_same_class_roi",
+        "best_iou": null,
+        "roi": null,
+        "same_class_rois": 0,
+        "label": "sandwich"
+      }
+    },
+    {
+      "coco_id": 328791,
+      "filename": "COCO_val2014_000000328791.jpg",
+      "relation": "a person holding a bicycle",
+      "subject": {
+        "reason": "matched",
+        "best_iou": 0.8639951823652421,
+        "roi": 1,
+        "same_class_rois": 8,
+        "label": "person"
+      },
+      "object": {
+        "reason": "below_iou",
+        "best_iou": 0.34210882328466385,
+        "roi": null,
+        "same_class_rois": 1,
+        "label": "bicycle"
+      }
+    },
+    {
+      "coco_id": 548550,
+      "filename": "COCO_val2014_000000548550.jpg",
+      "relation": "a person holding a hot dog",
+      "subject": {
+        "reason": "no_same_class_roi",
+        "best_iou": null,
+        "roi": null,
+        "same_class_rois": 0,
+        "label": "person"
+      },
+      "object": {
+        "reason": "matched",
+        "best_iou": 0.9921608300140242,
+        "roi": 0,
+        "same_class_rois": 1,
+        "label": "hot dog"
+      }
+    },
+    {
+      "coco_id": 36032,
+      "filename": "COCO_val2014_000000036032.jpg",
+      "relation": "a person riding a snowboard",
+      "subject": {
+        "reason": "matched",
+        "best_iou": 0.7947229280231625,
+        "roi": 0,
+        "same_class_rois": 2,
+        "label": "person"
+      },
+      "object": {
+        "reason": "no_same_class_roi",
+        "best_iou": null,
+        "roi": null,
+        "same_class_rois": 0,
+        "label": "snowboard"
+      }
+    },
+    {
+      "coco_id": 36032,
+      "filename": "COCO_val2014_000000036032.jpg",
+      "relation": "a person standing on a snowboard",
+      "subject": {
+        "reason": "matched",
+        "best_iou": 0.7947229280231625,
+        "roi": 0,
+        "same_class_rois": 2,
+        "label": "person"
+      },
+      "object": {
+        "reason": "no_same_class_roi",
+        "best_iou": null,
+        "roi": null,
+        "same_class_rois": 0,
+        "label": "snowboard"
+      }
+    },
+    {
+      "coco_id": 36032,
+      "filename": "COCO_val2014_000000036032.jpg",
+      "relation": "a person wearing a snowboard",
+      "subject": {
+        "reason": "matched",
+        "best_iou": 0.7947229280231625,
+        "roi": 0,
+        "same_class_rois": 2,
+        "label": "person"
+      },
+      "object": {
+        "reason": "no_same_class_roi",
+        "best_iou": null,
+        "roi": null,
+        "same_class_rois": 0,
+        "label": "snowboard"
+      }
+    },
+    {
+      "coco_id": 236166,
+      "filename": "COCO_val2014_000000236166.jpg",
+      "relation": "a person wearing a backpack",
+      "subject": {
+        "reason": "matched",
+        "best_iou": 0.9487926519703432,
+        "roi": 0,
+        "same_class_rois": 1,
+        "label": "person"
+      },
+      "object": {
+        "reason": "no_same_class_roi",
+        "best_iou": null,
+        "roi": null,
+        "same_class_rois": 0,
+        "label": "backpack"
+      }
+    },
+    {
+      "coco_id": 13031,
+      "filename": "COCO_val2014_000000013031.jpg",
+      "relation": "a person riding a boat",
+      "subject": {
+        "reason": "collision",
+        "best_iou": 0.6068459528595834,
+        "roi": 1,
+        "same_class_rois": 1,
+        "label": "person"
+      },
+      "object": {
+        "reason": "matched",
+        "best_iou": 0.7455789975479359,
+        "roi": 0,
+        "same_class_rois": 1,
+        "label": "boat"
+      }
+    },
+    {
+      "coco_id": 13031,
+      "filename": "COCO_val2014_000000013031.jpg",
+      "relation": "a person driving a boat",
+      "subject": {
+        "reason": "collision",
+        "best_iou": 0.6068459528595834,
+        "roi": 1,
+        "same_class_rois": 1,
+        "label": "person"
+      },
+      "object": {
+        "reason": "matched",
+        "best_iou": 0.7455789975479359,
+        "roi": 0,
+        "same_class_rois": 1,
+        "label": "boat"
+      }
+    },
+    {
+      "coco_id": 13031,
+      "filename": "COCO_val2014_000000013031.jpg",
+      "relation": "a person sitting on a boat",
+      "subject": {
+        "reason": "collision",
+        "best_iou": 0.6068459528595834,
+        "roi": 1,
+        "same_class_rois": 1,
+        "label": "person"
+      },
+      "object": {
+        "reason": "matched",
+        "best_iou": 0.7455789975479359,
+        "roi": 0,
+        "same_class_rois": 1,
+        "label": "boat"
+      }
+    },
+    {
+      "coco_id": 105973,
+      "filename": "COCO_val2014_000000105973.jpg",
+      "relation": "a person holding a baseball bat",
+      "subject": {
+        "reason": "matched",
+        "best_iou": 0.936582185141219,
+        "roi": 1,
+        "same_class_rois": 3,
+        "label": "person"
+      },
+      "object": {
+        "reason": "below_iou",
+        "best_iou": 0.3346828653620142,
+        "roi": null,
+        "same_class_rois": 1,
+        "label": "baseball bat"
+      }
+    },
+    {
+      "coco_id": 105973,
+      "filename": "COCO_val2014_000000105973.jpg",
+      "relation": "a person wielding a baseball bat",
+      "subject": {
+        "reason": "matched",
+        "best_iou": 0.936582185141219,
+        "roi": 1,
+        "same_class_rois": 3,
+        "label": "person"
+      },
+      "object": {
+        "reason": "below_iou",
+        "best_iou": 0.3346828653620142,
+        "roi": null,
+        "same_class_rois": 1,
+        "label": "baseball bat"
+      }
+    },
+    {
+      "coco_id": 561745,
+      "filename": "COCO_val2014_000000561745.jpg",
+      "relation": "a person wielding a baseball bat",
+      "subject": {
+        "reason": "matched",
+        "best_iou": 0.7974912162762922,
+        "roi": 1,
+        "same_class_rois": 3,
+        "label": "person"
+      },
+      "object": {
+        "reason": "below_iou",
+        "best_iou": 0.4328114908158486,
+        "roi": null,
+        "same_class_rois": 1,
+        "label": "baseball bat"
+      }
+    },
+    {
+      "coco_id": 561745,
+      "filename": "COCO_val2014_000000561745.jpg",
+      "relation": "a person holding a baseball bat",
+      "subject": {
+        "reason": "matched",
+        "best_iou": 0.7974912162762922,
+        "roi": 1,
+        "same_class_rois": 3,
+        "label": "person"
+      },
+      "object": {
+        "reason": "below_iou",
+        "best_iou": 0.4328114908158486,
+        "roi": null,
+        "same_class_rois": 1,
+        "label": "baseball bat"
+      }
+    },
+    {
+      "coco_id": 561745,
+      "filename": "COCO_val2014_000000561745.jpg",
+      "relation": "a person swinging a baseball bat",
+      "subject": {
+        "reason": "matched",
+        "best_iou": 0.7974912162762922,
+        "roi": 1,
+        "same_class_rois": 3,
+        "label": "person"
+      },
+      "object": {
+        "reason": "below_iou",
+        "best_iou": 0.4328114908158486,
+        "roi": null,
+        "same_class_rois": 1,
+        "label": "baseball bat"
+      }
+    },
+    {
+      "coco_id": 63549,
+      "filename": "COCO_val2014_000000063549.jpg",
+      "relation": "a person wearing skis",
+      "subject": {
+        "reason": "matched",
+        "best_iou": 0.9526276377358279,
+        "roi": 1,
+        "same_class_rois": 1,
+        "label": "person"
+      },
+      "object": {
+        "reason": "below_iou",
+        "best_iou": 0.48526559494181815,
+        "roi": null,
+        "same_class_rois": 1,
+        "label": "skis"
+      }
+    },
+    {
+      "coco_id": 562994,
+      "filename": "COCO_val2014_000000562994.jpg",
+      "relation": "a person holding a tennis racket",
+      "subject": {
+        "reason": "matched",
+        "best_iou": 0.9534913143466921,
+        "roi": 0,
+        "same_class_rois": 12,
+        "label": "person"
+      },
+      "object": {
+        "reason": "no_same_class_roi",
+        "best_iou": null,
+        "roi": null,
+        "same_class_rois": 0,
+        "label": "tennis racket"
+      }
+    },
+    {
+      "coco_id": 562994,
+      "filename": "COCO_val2014_000000562994.jpg",
+      "relation": "a person swinging a tennis racket",
+      "subject": {
+        "reason": "matched",
+        "best_iou": 0.9534913143466921,
+        "roi": 0,
+        "same_class_rois": 12,
+        "label": "person"
+      },
+      "object": {
+        "reason": "no_same_class_roi",
+        "best_iou": null,
+        "roi": null,
+        "same_class_rois": 0,
+        "label": "tennis racket"
+      }
+    },
+    {
+      "coco_id": 562994,
+      "filename": "COCO_val2014_000000562994.jpg",
+      "relation": "a person carrying a tennis racket",
+      "subject": {
+        "reason": "matched",
+        "best_iou": 0.9534913143466921,
+        "roi": 0,
+        "same_class_rois": 12,
+        "label": "person"
+      },
+      "object": {
+        "reason": "no_same_class_roi",
+        "best_iou": null,
+        "roi": null,
+        "same_class_rois": 0,
+        "label": "tennis racket"
+      }
+    },
+    {
+      "coco_id": 162580,
+      "filename": "COCO_val2014_000000162580.jpg",
+      "relation": "a person holding a teddy bear",
+      "subject": {
+        "reason": "matched",
+        "best_iou": 0.744249459110578,
+        "roi": 0,
+        "same_class_rois": 1,
+        "label": "person"
+      },
+      "object": {
+        "reason": "no_same_class_roi",
+        "best_iou": null,
+        "roi": null,
+        "same_class_rois": 0,
+        "label": "teddy bear"
+      }
+    },
+    {
+      "coco_id": 259690,
+      "filename": "COCO_val2014_000000259690.jpg",
+      "relation": "a person sitting on a bicycle",
+      "subject": {
+        "reason": "matched",
+        "best_iou": 0.8863213028073148,
+        "roi": 3,
+        "same_class_rois": 11,
+        "label": "person"
+      },
+      "object": {
+        "reason": "no_same_class_roi",
+        "best_iou": null,
+        "roi": null,
+        "same_class_rois": 0,
+        "label": "bicycle"
+      }
+    },
+    {
+      "coco_id": 66485,
+      "filename": "COCO_val2014_000000066485.jpg",
+      "relation": "a person catching a frisbee",
+      "subject": {
+        "reason": "matched",
+        "best_iou": 0.9369420559439028,
+        "roi": 0,
+        "same_class_rois": 4,
+        "label": "person"
+      },
+      "object": {
+        "reason": "no_same_class_roi",
+        "best_iou": null,
+        "roi": null,
+        "same_class_rois": 0,
+        "label": "frisbee"
+      }
+    },
+    {
+      "coco_id": 66485,
+      "filename": "COCO_val2014_000000066485.jpg",
+      "relation": "a person catching a frisbee",
+      "subject": {
+        "reason": "matched",
+        "best_iou": 0.9295327360083858,
+        "roi": 1,
+        "same_class_rois": 4,
+        "label": "person"
+      },
+      "object": {
+        "reason": "no_same_class_roi",
+        "best_iou": null,
+        "roi": null,
+        "same_class_rois": 0,
+        "label": "frisbee"
+      }
+    },
+    {
+      "coco_id": 463722,
+      "filename": "COCO_val2014_000000463722.jpg",
+      "relation": "a person riding a horse",
+      "subject": {
+        "reason": "below_iou",
+        "best_iou": 0.0,
+        "roi": null,
+        "same_class_rois": 6,
+        "label": "person"
+      },
+      "object": {
+        "reason": "matched",
+        "best_iou": 0.8058127136325013,
+        "roi": 0,
+        "same_class_rois": 2,
+        "label": "horse"
+      }
+    },
+    {
+      "coco_id": 226008,
+      "filename": "COCO_val2014_000000226008.jpg",
+      "relation": "a person riding a boat",
+      "subject": {
+        "reason": "matched",
+        "best_iou": 0.9108017028826779,
+        "roi": 0,
+        "same_class_rois": 2,
+        "label": "person"
+      },
+      "object": {
+        "reason": "no_same_class_roi",
+        "best_iou": null,
+        "roi": null,
+        "same_class_rois": 0,
+        "label": "boat"
+      }
+    },
+    {
+      "coco_id": 439522,
+      "filename": "COCO_val2014_000000439522.jpg",
+      "relation": "a person wearing skis",
+      "subject": {
+        "reason": "matched",
+        "best_iou": 0.9845721317963065,
+        "roi": 0,
+        "same_class_rois": 1,
+        "label": "person"
+      },
+      "object": {
+        "reason": "no_same_class_roi",
+        "best_iou": null,
+        "roi": null,
+        "same_class_rois": 0,
+        "label": "skis"
+      }
+    },
+    {
+      "coco_id": 439522,
+      "filename": "COCO_val2014_000000439522.jpg",
+      "relation": "a person standing on skis",
+      "subject": {
+        "reason": "matched",
+        "best_iou": 0.9845721317963065,
+        "roi": 0,
+        "same_class_rois": 1,
+        "label": "person"
+      },
+      "object": {
+        "reason": "no_same_class_roi",
+        "best_iou": null,
+        "roi": null,
+        "same_class_rois": 0,
+        "label": "skis"
+      }
+    },
+    {
+      "coco_id": 439522,
+      "filename": "COCO_val2014_000000439522.jpg",
+      "relation": "a person on skis",
+      "subject": {
+        "reason": "matched",
+        "best_iou": 0.9845721317963065,
+        "roi": 0,
+        "same_class_rois": 1,
+        "label": "person"
+      },
+      "object": {
+        "reason": "no_same_class_roi",
+        "best_iou": null,
+        "roi": null,
+        "same_class_rois": 0,
+        "label": "skis"
+      }
+    },
+    {
+      "coco_id": 25005,
+      "filename": "COCO_val2014_000000025005.jpg",
+      "relation": "a person wearing skis",
+      "subject": {
+        "reason": "matched",
+        "best_iou": 0.9604377499521268,
+        "roi": 0,
+        "same_class_rois": 1,
+        "label": "person"
+      },
+      "object": {
+        "reason": "below_iou",
+        "best_iou": 0.45225490228673815,
+        "roi": null,
+        "same_class_rois": 3,
+        "label": "skis"
+      }
+    },
+    {
+      "coco_id": 25005,
+      "filename": "COCO_val2014_000000025005.jpg",
+      "relation": "a person standing on skis",
+      "subject": {
+        "reason": "matched",
+        "best_iou": 0.9604377499521268,
+        "roi": 0,
+        "same_class_rois": 1,
+        "label": "person"
+      },
+      "object": {
+        "reason": "below_iou",
+        "best_iou": 0.45225490228673815,
+        "roi": null,
+        "same_class_rois": 3,
+        "label": "skis"
+      }
+    },
+    {
+      "coco_id": 528276,
+      "filename": "COCO_val2014_000000528276.jpg",
+      "relation": "a person riding a skateboard",
+      "subject": {
+        "reason": "matched",
+        "best_iou": 0.8869823570314502,
+        "roi": 0,
+        "same_class_rois": 1,
+        "label": "person"
+      },
+      "object": {
+        "reason": "below_iou",
+        "best_iou": 0.4995846216256837,
+        "roi": null,
+        "same_class_rois": 2,
+        "label": "skateboard"
+      }
+    },
+    {
+      "coco_id": 528276,
+      "filename": "COCO_val2014_000000528276.jpg",
+      "relation": "a person standing on a skateboard",
+      "subject": {
+        "reason": "matched",
+        "best_iou": 0.8869823570314502,
+        "roi": 0,
+        "same_class_rois": 1,
+        "label": "person"
+      },
+      "object": {
+        "reason": "below_iou",
+        "best_iou": 0.4995846216256837,
+        "roi": null,
+        "same_class_rois": 2,
+        "label": "skateboard"
+      }
+    },
+    {
+      "coco_id": 57265,
+      "filename": "COCO_val2014_000000057265.jpg",
+      "relation": "a person holding an umbrella",
+      "subject": {
+        "reason": "matched",
+        "best_iou": 0.9356056359574535,
+        "roi": 1,
+        "same_class_rois": 3,
+        "label": "person"
+      },
+      "object": {
+        "reason": "below_iou",
+        "best_iou": 0.49658642353168225,
+        "roi": null,
+        "same_class_rois": 1,
+        "label": "umbrella"
+      }
+    },
+    {
+      "coco_id": 57265,
+      "filename": "COCO_val2014_000000057265.jpg",
+      "relation": "a person standing under an umbrella",
+      "subject": {
+        "reason": "matched",
+        "best_iou": 0.9356056359574535,
+        "roi": 1,
+        "same_class_rois": 3,
+        "label": "person"
+      },
+      "object": {
+        "reason": "below_iou",
+        "best_iou": 0.49658642353168225,
+        "roi": null,
+        "same_class_rois": 1,
+        "label": "umbrella"
+      }
+    },
+    {
+      "coco_id": 57265,
+      "filename": "COCO_val2014_000000057265.jpg",
+      "relation": "a person carrying an umbrella",
+      "subject": {
+        "reason": "matched",
+        "best_iou": 0.9356056359574535,
+        "roi": 1,
+        "same_class_rois": 3,
+        "label": "person"
+      },
+      "object": {
+        "reason": "below_iou",
+        "best_iou": 0.49658642353168225,
+        "roi": null,
+        "same_class_rois": 1,
+        "label": "umbrella"
+      }
+    },
+    {
+      "coco_id": 134103,
+      "filename": "COCO_val2014_000000134103.jpg",
+      "relation": "a person straddling a horse",
+      "subject": {
+        "reason": "collision",
+        "best_iou": 0.6940023249558365,
+        "roi": 4,
+        "same_class_rois": 5,
+        "label": "person"
+      },
+      "object": {
+        "reason": "matched",
+        "best_iou": 0.69950082167332,
+        "roi": 6,
+        "same_class_rois": 4,
+        "label": "horse"
+      }
+    },
+    {
+      "coco_id": 207561,
+      "filename": "COCO_val2014_000000207561.jpg",
+      "relation": "a person riding a surfboard",
+      "subject": {
+        "reason": "matched",
+        "best_iou": 0.6411610432997034,
+        "roi": 1,
+        "same_class_rois": 5,
+        "label": "person"
+      },
+      "object": {
+        "reason": "below_iou",
+        "best_iou": 0.24060622290935046,
+        "roi": null,
+        "same_class_rois": 5,
+        "label": "surfboard"
+      }
+    },
+    {
+      "coco_id": 334309,
+      "filename": "COCO_val2014_000000334309.jpg",
+      "relation": "a person holding a sandwich",
+      "subject": {
+        "reason": "matched",
+        "best_iou": 0.9720323827573888,
+        "roi": 0,
+        "same_class_rois": 2,
+        "label": "person"
+      },
+      "object": {
+        "reason": "no_same_class_roi",
+        "best_iou": null,
+        "roi": null,
+        "same_class_rois": 0,
+        "label": "sandwich"
+      }
+    },
+    {
+      "coco_id": 334309,
+      "filename": "COCO_val2014_000000334309.jpg",
+      "relation": "a person holding a knife",
+      "subject": {
+        "reason": "matched",
+        "best_iou": 0.9720323827573888,
+        "roi": 0,
+        "same_class_rois": 2,
+        "label": "person"
+      },
+      "object": {
+        "reason": "no_same_class_roi",
+        "best_iou": null,
+        "roi": null,
+        "same_class_rois": 0,
+        "label": "knife"
+      }
+    },
+    {
+      "coco_id": 22420,
+      "filename": "COCO_val2014_000000022420.jpg",
+      "relation": "a person reading a book",
+      "subject": {
+        "reason": "no_same_class_roi",
+        "best_iou": null,
+        "roi": null,
+        "same_class_rois": 0,
+        "label": "person"
+      },
+      "object": {
+        "reason": "matched",
+        "best_iou": 0.9753885330073898,
+        "roi": 1,
+        "same_class_rois": 7,
+        "label": "book"
+      }
+    },
+    {
+      "coco_id": 296825,
+      "filename": "COCO_val2014_000000296825.jpg",
+      "relation": "a person riding a car",
+      "subject": {
+        "reason": "matched",
+        "best_iou": 0.6783859779247062,
+        "roi": 3,
+        "same_class_rois": 3,
+        "label": "person"
+      },
+      "object": {
+        "reason": "no_same_class_roi",
+        "best_iou": null,
+        "roi": null,
+        "same_class_rois": 0,
+        "label": "car"
+      }
+    },
+    {
+      "coco_id": 515444,
+      "filename": "COCO_val2014_000000515444.jpg",
+      "relation": "a person eating a hot dog",
+      "subject": {
+        "reason": "matched",
+        "best_iou": 0.9713156491879745,
+        "roi": 0,
+        "same_class_rois": 7,
+        "label": "person"
+      },
+      "object": {
+        "reason": "collision",
+        "best_iou": 0.8989464357599063,
+        "roi": 4,
+        "same_class_rois": 1,
+        "label": "hot dog"
+      }
+    },
+    {
+      "coco_id": 515444,
+      "filename": "COCO_val2014_000000515444.jpg",
+      "relation": "a person holding a hot dog",
+      "subject": {
+        "reason": "matched",
+        "best_iou": 0.9713156491879745,
+        "roi": 0,
+        "same_class_rois": 7,
+        "label": "person"
+      },
+      "object": {
+        "reason": "collision",
+        "best_iou": 0.8989464357599063,
+        "roi": 4,
+        "same_class_rois": 1,
+        "label": "hot dog"
+      }
+    },
+    {
+      "coco_id": 515444,
+      "filename": "COCO_val2014_000000515444.jpg",
+      "relation": "a person eating a hot dog",
+      "subject": {
+        "reason": "matched",
+        "best_iou": 0.9713156491879745,
+        "roi": 0,
+        "same_class_rois": 7,
+        "label": "person"
+      },
+      "object": {
+        "reason": "collision",
+        "best_iou": 0.5140261971179398,
+        "roi": 4,
+        "same_class_rois": 1,
+        "label": "hot dog"
+      }
+    },
+    {
+      "coco_id": 314757,
+      "filename": "COCO_val2014_000000314757.jpg",
+      "relation": "a person sitting on a couch",
+      "subject": {
+        "reason": "matched",
+        "best_iou": 0.9604486629566068,
+        "roi": 0,
+        "same_class_rois": 7,
+        "label": "person"
+      },
+      "object": {
+        "reason": "below_iou",
+        "best_iou": 0.39869631121370536,
+        "roi": null,
+        "same_class_rois": 2,
+        "label": "couch"
+      }
+    },
+    {
+      "coco_id": 270097,
+      "filename": "COCO_val2014_000000270097.jpg",
+      "relation": "a person reading a laptop",
+      "subject": {
+        "reason": "matched",
+        "best_iou": 0.9323347332919162,
+        "roi": 0,
+        "same_class_rois": 1,
+        "label": "person"
+      },
+      "object": {
+        "reason": "no_same_class_roi",
+        "best_iou": null,
+        "roi": null,
+        "same_class_rois": 0,
+        "label": "laptop"
+      }
+    },
+    {
+      "coco_id": 80895,
+      "filename": "COCO_val2014_000000080895.jpg",
+      "relation": "a person reading a cell phone",
+      "subject": {
+        "reason": "matched",
+        "best_iou": 0.9858958649123368,
+        "roi": 0,
+        "same_class_rois": 9,
+        "label": "person"
+      },
+      "object": {
+        "reason": "below_iou",
+        "best_iou": 0.4907163526688554,
+        "roi": null,
+        "same_class_rois": 4,
+        "label": "cell phone"
+      }
+    },
+    {
+      "coco_id": 80895,
+      "filename": "COCO_val2014_000000080895.jpg",
+      "relation": "a person holding a cell phone",
+      "subject": {
+        "reason": "matched",
+        "best_iou": 0.9858958649123368,
+        "roi": 0,
+        "same_class_rois": 9,
+        "label": "person"
+      },
+      "object": {
+        "reason": "below_iou",
+        "best_iou": 0.4907163526688554,
+        "roi": null,
+        "same_class_rois": 4,
+        "label": "cell phone"
+      }
+    },
+    {
+      "coco_id": 384635,
+      "filename": "COCO_val2014_000000384635.jpg",
+      "relation": "a person driving a train",
+      "subject": {
+        "reason": "below_iou",
+        "best_iou": 0.4369032195521159,
+        "roi": null,
+        "same_class_rois": 2,
+        "label": "person"
+      },
+      "object": {
+        "reason": "matched",
+        "best_iou": 0.9421816288772381,
+        "roi": 0,
+        "same_class_rois": 1,
+        "label": "train"
+      }
+    },
+    {
+      "coco_id": 434993,
+      "filename": "COCO_val2014_000000434993.jpg",
+      "relation": "a person standing on a skateboard",
+      "subject": {
+        "reason": "matched",
+        "best_iou": 0.8920383090251359,
+        "roi": 0,
+        "same_class_rois": 3,
+        "label": "person"
+      },
+      "object": {
+        "reason": "below_iou",
+        "best_iou": 0.44462978663464575,
+        "roi": null,
+        "same_class_rois": 1,
+        "label": "skateboard"
+      }
+    },
+    {
+      "coco_id": 434993,
+      "filename": "COCO_val2014_000000434993.jpg",
+      "relation": "a person riding a skateboard",
+      "subject": {
+        "reason": "matched",
+        "best_iou": 0.8920383090251359,
+        "roi": 0,
+        "same_class_rois": 3,
+        "label": "person"
+      },
+      "object": {
+        "reason": "below_iou",
+        "best_iou": 0.44462978663464575,
+        "roi": null,
+        "same_class_rois": 1,
+        "label": "skateboard"
+      }
+    },
+    {
+      "coco_id": 18193,
+      "filename": "COCO_val2014_000000018193.jpg",
+      "relation": "a person eating a pizza",
+      "subject": {
+        "reason": "matched",
+        "best_iou": 0.9677462234462244,
+        "roi": 0,
+        "same_class_rois": 1,
+        "label": "person"
+      },
+      "object": {
+        "reason": "below_iou",
+        "best_iou": 0.0,
+        "roi": null,
+        "same_class_rois": 1,
+        "label": "pizza"
+      }
+    },
+    {
+      "coco_id": 18193,
+      "filename": "COCO_val2014_000000018193.jpg",
+      "relation": "a person holding a pizza",
+      "subject": {
+        "reason": "matched",
+        "best_iou": 0.9677462234462244,
+        "roi": 0,
+        "same_class_rois": 1,
+        "label": "person"
+      },
+      "object": {
+        "reason": "below_iou",
+        "best_iou": 0.0,
+        "roi": null,
+        "same_class_rois": 1,
+        "label": "pizza"
+      }
+    },
+    {
+      "coco_id": 118740,
+      "filename": "COCO_val2014_000000118740.jpg",
+      "relation": "a person riding a surfboard",
+      "subject": {
+        "reason": "matched",
+        "best_iou": 0.8518228114781711,
+        "roi": 0,
+        "same_class_rois": 1,
+        "label": "person"
+      },
+      "object": {
+        "reason": "below_iou",
+        "best_iou": 0.3453393668824706,
+        "roi": null,
+        "same_class_rois": 1,
+        "label": "surfboard"
+      }
+    },
+    {
+      "coco_id": 377999,
+      "filename": "COCO_val2014_000000377999.jpg",
+      "relation": "a person riding a boat",
+      "subject": {
+        "reason": "below_iou",
+        "best_iou": 0.48566864135405374,
+        "roi": null,
+        "same_class_rois": 4,
+        "label": "person"
+      },
+      "object": {
+        "reason": "matched",
+        "best_iou": 0.9082872366462104,
+        "roi": 0,
+        "same_class_rois": 1,
+        "label": "boat"
+      }
+    },
+    {
+      "coco_id": 377999,
+      "filename": "COCO_val2014_000000377999.jpg",
+      "relation": "a person sailing a boat",
+      "subject": {
+        "reason": "below_iou",
+        "best_iou": 0.48566864135405374,
+        "roi": null,
+        "same_class_rois": 4,
+        "label": "person"
+      },
+      "object": {
+        "reason": "matched",
+        "best_iou": 0.9082872366462104,
+        "roi": 0,
+        "same_class_rois": 1,
+        "label": "boat"
+      }
+    },
+    {
+      "coco_id": 199017,
+      "filename": "COCO_val2014_000000199017.jpg",
+      "relation": "a person riding an elephant",
+      "subject": {
+        "reason": "below_iou",
+        "best_iou": 0.4766209009538442,
+        "roi": null,
+        "same_class_rois": 2,
+        "label": "person"
+      },
+      "object": {
+        "reason": "matched",
+        "best_iou": 0.7690262498295686,
+        "roi": 0,
+        "same_class_rois": 1,
+        "label": "elephant"
+      }
+    },
+    {
+      "coco_id": 199017,
+      "filename": "COCO_val2014_000000199017.jpg",
+      "relation": "a person riding an elephant",
+      "subject": {
+        "reason": "collision",
+        "best_iou": 0.7387214384157976,
+        "roi": 2,
+        "same_class_rois": 2,
+        "label": "person"
+      },
+      "object": {
+        "reason": "matched",
+        "best_iou": 0.7690262498295686,
+        "roi": 0,
+        "same_class_rois": 1,
+        "label": "elephant"
+      }
+    },
+    {
+      "coco_id": 266491,
+      "filename": "COCO_val2014_000000266491.jpg",
+      "relation": "a person wearing skis",
+      "subject": {
+        "reason": "matched",
+        "best_iou": 0.9313894957206452,
+        "roi": 1,
+        "same_class_rois": 2,
+        "label": "person"
+      },
+      "object": {
+        "reason": "no_same_class_roi",
+        "best_iou": null,
+        "roi": null,
+        "same_class_rois": 0,
+        "label": "skis"
+      }
+    },
+    {
+      "coco_id": 266491,
+      "filename": "COCO_val2014_000000266491.jpg",
+      "relation": "a person standing on skis",
+      "subject": {
+        "reason": "matched",
+        "best_iou": 0.9313894957206452,
+        "roi": 1,
+        "same_class_rois": 2,
+        "label": "person"
+      },
+      "object": {
+        "reason": "no_same_class_roi",
+        "best_iou": null,
+        "roi": null,
+        "same_class_rois": 0,
+        "label": "skis"
+      }
+    },
+    {
+      "coco_id": 189248,
+      "filename": "COCO_val2014_000000189248.jpg",
+      "relation": "a person riding a surfboard",
+      "subject": {
+        "reason": "matched",
+        "best_iou": 0.833734185823179,
+        "roi": 1,
+        "same_class_rois": 5,
+        "label": "person"
+      },
+      "object": {
+        "reason": "below_iou",
+        "best_iou": 0.38958256347953496,
+        "roi": null,
+        "same_class_rois": 5,
+        "label": "surfboard"
+      }
+    },
+    {
+      "coco_id": 336431,
+      "filename": "COCO_val2014_000000336431.jpg",
+      "relation": "a person holding a toothbrush",
+      "subject": {
+        "reason": "matched",
+        "best_iou": 0.9418915234074303,
+        "roi": 1,
+        "same_class_rois": 1,
+        "label": "person"
+      },
+      "object": {
+        "reason": "below_iou",
+        "best_iou": 0.4997046437267972,
+        "roi": null,
+        "same_class_rois": 2,
+        "label": "toothbrush"
+      }
+    },
+    {
+      "coco_id": 374829,
+      "filename": "COCO_val2014_000000374829.jpg",
+      "relation": "a person wielding a baseball bat",
+      "subject": {
+        "reason": "matched",
+        "best_iou": 0.9518569908839406,
+        "roi": 0,
+        "same_class_rois": 18,
+        "label": "person"
+      },
+      "object": {
+        "reason": "below_iou",
+        "best_iou": 0.40757085818730676,
+        "roi": null,
+        "same_class_rois": 1,
+        "label": "baseball bat"
+      }
+    },
+    {
+      "coco_id": 374829,
+      "filename": "COCO_val2014_000000374829.jpg",
+      "relation": "a person holding a baseball bat",
+      "subject": {
+        "reason": "matched",
+        "best_iou": 0.9518569908839406,
+        "roi": 0,
+        "same_class_rois": 18,
+        "label": "person"
+      },
+      "object": {
+        "reason": "below_iou",
+        "best_iou": 0.40757085818730676,
+        "roi": null,
+        "same_class_rois": 1,
+        "label": "baseball bat"
+      }
+    },
+    {
+      "coco_id": 425676,
+      "filename": "COCO_val2014_000000425676.jpg",
+      "relation": "a person holding a baseball bat",
+      "subject": {
+        "reason": "matched",
+        "best_iou": 0.9439627198737273,
+        "roi": 0,
+        "same_class_rois": 2,
+        "label": "person"
+      },
+      "object": {
+        "reason": "below_iou",
+        "best_iou": 0.06750255307207732,
+        "roi": null,
+        "same_class_rois": 1,
+        "label": "baseball bat"
+      }
+    },
+    {
+      "coco_id": 425676,
+      "filename": "COCO_val2014_000000425676.jpg",
+      "relation": "a person wielding a baseball bat",
+      "subject": {
+        "reason": "matched",
+        "best_iou": 0.9439627198737273,
+        "roi": 0,
+        "same_class_rois": 2,
+        "label": "person"
+      },
+      "object": {
+        "reason": "below_iou",
+        "best_iou": 0.06750255307207732,
+        "roi": null,
+        "same_class_rois": 1,
+        "label": "baseball bat"
+      }
+    },
+    {
+      "coco_id": 31113,
+      "filename": "COCO_val2014_000000031113.jpg",
+      "relation": "a person holding a hair drier",
+      "subject": {
+        "reason": "matched",
+        "best_iou": 0.9562143759082609,
+        "roi": 0,
+        "same_class_rois": 1,
+        "label": "person"
+      },
+      "object": {
+        "reason": "no_same_class_roi",
+        "best_iou": null,
+        "roi": null,
+        "same_class_rois": 0,
+        "label": "hair drier"
+      }
+    },
+    {
+      "coco_id": 564355,
+      "filename": "COCO_val2014_000000564355.jpg",
+      "relation": "a person standing on skis",
+      "subject": {
+        "reason": "matched",
+        "best_iou": 0.9380493789968177,
+        "roi": 1,
+        "same_class_rois": 3,
+        "label": "person"
+      },
+      "object": {
+        "reason": "below_iou",
+        "best_iou": 0.3999944525131418,
+        "roi": null,
+        "same_class_rois": 1,
+        "label": "skis"
+      }
+    },
+    {
+      "coco_id": 564355,
+      "filename": "COCO_val2014_000000564355.jpg",
+      "relation": "a person wearing skis",
+      "subject": {
+        "reason": "matched",
+        "best_iou": 0.9380493789968177,
+        "roi": 1,
+        "same_class_rois": 3,
+        "label": "person"
+      },
+      "object": {
+        "reason": "below_iou",
+        "best_iou": 0.3999944525131418,
+        "roi": null,
+        "same_class_rois": 1,
+        "label": "skis"
+      }
+    },
+    {
+      "coco_id": 48554,
+      "filename": "COCO_val2014_000000048554.jpg",
+      "relation": "a person riding a skateboard",
+      "subject": {
+        "reason": "matched",
+        "best_iou": 0.778157188875725,
+        "roi": 5,
+        "same_class_rois": 6,
+        "label": "person"
+      },
+      "object": {
+        "reason": "below_iou",
+        "best_iou": 0.46303150913969465,
+        "roi": null,
+        "same_class_rois": 2,
+        "label": "skateboard"
+      }
+    },
+    {
+      "coco_id": 575349,
+      "filename": "COCO_val2014_000000575349.jpg",
+      "relation": "a person holding a donut",
+      "subject": {
+        "reason": "matched",
+        "best_iou": 0.9483727287029413,
+        "roi": 0,
+        "same_class_rois": 2,
+        "label": "person"
+      },
+      "object": {
+        "reason": "below_iou",
+        "best_iou": 0.15460716968326516,
+        "roi": null,
+        "same_class_rois": 1,
+        "label": "donut"
+      }
+    },
+    {
+      "coco_id": 142687,
+      "filename": "COCO_val2014_000000142687.jpg",
+      "relation": "a person inspecting an oven",
+      "subject": {
+        "reason": "matched",
+        "best_iou": 0.9550060555353338,
+        "roi": 0,
+        "same_class_rois": 1,
+        "label": "person"
+      },
+      "object": {
+        "reason": "collision",
+        "best_iou": 0.5958107766645545,
+        "roi": 2,
+        "same_class_rois": 1,
+        "label": "oven"
+      }
+    },
+    {
+      "coco_id": 314493,
+      "filename": "COCO_val2014_000000314493.jpg",
+      "relation": "a person riding an airplane",
+      "subject": {
+        "reason": "below_iou",
+        "best_iou": 0.429337496465954,
+        "roi": null,
+        "same_class_rois": 1,
+        "label": "person"
+      },
+      "object": {
+        "reason": "matched",
+        "best_iou": 0.9235248776905325,
+        "roi": 0,
+        "same_class_rois": 1,
+        "label": "airplane"
+      }
+    },
+    {
+      "coco_id": 314493,
+      "filename": "COCO_val2014_000000314493.jpg",
+      "relation": "a person flying an airplane",
+      "subject": {
+        "reason": "below_iou",
+        "best_iou": 0.429337496465954,
+        "roi": null,
+        "same_class_rois": 1,
+        "label": "person"
+      },
+      "object": {
+        "reason": "matched",
+        "best_iou": 0.9235248776905325,
+        "roi": 0,
+        "same_class_rois": 1,
+        "label": "airplane"
+      }
+    },
+    {
+      "coco_id": 314493,
+      "filename": "COCO_val2014_000000314493.jpg",
+      "relation": "a person sitting on an airplane",
+      "subject": {
+        "reason": "below_iou",
+        "best_iou": 0.429337496465954,
+        "roi": null,
+        "same_class_rois": 1,
+        "label": "person"
+      },
+      "object": {
+        "reason": "matched",
+        "best_iou": 0.9235248776905325,
+        "roi": 0,
+        "same_class_rois": 1,
+        "label": "airplane"
+      }
+    },
+    {
+      "coco_id": 16546,
+      "filename": "COCO_val2014_000000016546.jpg",
+      "relation": "a person standing on skis",
+      "subject": {
+        "reason": "matched",
+        "best_iou": 0.8928279551925647,
+        "roi": 0,
+        "same_class_rois": 2,
+        "label": "person"
+      },
+      "object": {
+        "reason": "no_same_class_roi",
+        "best_iou": null,
+        "roi": null,
+        "same_class_rois": 0,
+        "label": "skis"
+      }
+    },
+    {
+      "coco_id": 16546,
+      "filename": "COCO_val2014_000000016546.jpg",
+      "relation": "a person wearing skis",
+      "subject": {
+        "reason": "matched",
+        "best_iou": 0.8928279551925647,
+        "roi": 0,
+        "same_class_rois": 2,
+        "label": "person"
+      },
+      "object": {
+        "reason": "no_same_class_roi",
+        "best_iou": null,
+        "roi": null,
+        "same_class_rois": 0,
+        "label": "skis"
+      }
+    },
+    {
+      "coco_id": 548209,
+      "filename": "COCO_val2014_000000548209.jpg",
+      "relation": "a person wearing skis",
+      "subject": {
+        "reason": "matched",
+        "best_iou": 0.7855154225286668,
+        "roi": 1,
+        "same_class_rois": 3,
+        "label": "person"
+      },
+      "object": {
+        "reason": "below_iou",
+        "best_iou": 0.44152194146885476,
+        "roi": null,
+        "same_class_rois": 3,
+        "label": "skis"
+      }
+    },
+    {
+      "coco_id": 389123,
+      "filename": "COCO_val2014_000000389123.jpg",
+      "relation": "a person riding a boat",
+      "subject": {
+        "reason": "matched",
+        "best_iou": 0.5640510377512725,
+        "roi": 1,
+        "same_class_rois": 2,
+        "label": "person"
+      },
+      "object": {
+        "reason": "no_same_class_roi",
+        "best_iou": null,
+        "roi": null,
+        "same_class_rois": 0,
+        "label": "boat"
+      }
+    },
+    {
+      "coco_id": 310369,
+      "filename": "COCO_val2014_000000310369.jpg",
+      "relation": "a person eating a pizza",
+      "subject": {
+        "reason": "matched",
+        "best_iou": 0.9549807404086852,
+        "roi": 1,
+        "same_class_rois": 5,
+        "label": "person"
+      },
+      "object": {
+        "reason": "below_iou",
+        "best_iou": 0.0,
+        "roi": null,
+        "same_class_rois": 2,
+        "label": "pizza"
+      }
+    },
+    {
+      "coco_id": 570594,
+      "filename": "COCO_val2014_000000570594.jpg",
+      "relation": "a person riding an elephant",
+      "subject": {
+        "reason": "below_iou",
+        "best_iou": 0.3183668905303236,
+        "roi": null,
+        "same_class_rois": 3,
+        "label": "person"
+      },
+      "object": {
+        "reason": "matched",
+        "best_iou": 0.9033594998258202,
+        "roi": 2,
+        "same_class_rois": 2,
+        "label": "elephant"
+      }
+    },
+    {
+      "coco_id": 497855,
+      "filename": "COCO_val2014_000000497855.jpg",
+      "relation": "a person inspecting a banana",
+      "subject": {
+        "reason": "no_same_class_roi",
+        "best_iou": null,
+        "roi": null,
+        "same_class_rois": 0,
+        "label": "person"
+      },
+      "object": {
+        "reason": "matched",
+        "best_iou": 0.9426218552757003,
+        "roi": 1,
+        "same_class_rois": 4,
+        "label": "banana"
+      }
+    },
+    {
+      "coco_id": 497855,
+      "filename": "COCO_val2014_000000497855.jpg",
+      "relation": "a person holding a banana",
+      "subject": {
+        "reason": "no_same_class_roi",
+        "best_iou": null,
+        "roi": null,
+        "same_class_rois": 0,
+        "label": "person"
+      },
+      "object": {
+        "reason": "matched",
+        "best_iou": 0.9426218552757003,
+        "roi": 1,
+        "same_class_rois": 4,
+        "label": "banana"
+      }
+    },
+    {
+      "coco_id": 161187,
+      "filename": "COCO_val2014_000000161187.jpg",
+      "relation": "a person riding a train",
+      "subject": {
+        "reason": "no_same_class_roi",
+        "best_iou": null,
+        "roi": null,
+        "same_class_rois": 0,
+        "label": "person"
+      },
+      "object": {
+        "reason": "matched",
+        "best_iou": 0.9384052509791406,
+        "roi": 0,
+        "same_class_rois": 1,
+        "label": "train"
+      }
+    },
+    {
+      "coco_id": 543402,
+      "filename": "COCO_val2014_000000543402.jpg",
+      "relation": "a person holding an umbrella",
+      "subject": {
+        "reason": "no_same_class_roi",
+        "best_iou": null,
+        "roi": null,
+        "same_class_rois": 0,
+        "label": "person"
+      },
+      "object": {
+        "reason": "matched",
+        "best_iou": 0.9094479602978545,
+        "roi": 1,
+        "same_class_rois": 1,
+        "label": "umbrella"
+      }
+    },
+    {
+      "coco_id": 481670,
+      "filename": "COCO_val2014_000000481670.jpg",
+      "relation": "a person wearing skis",
+      "subject": {
+        "reason": "matched",
+        "best_iou": 0.9314212352085722,
+        "roi": 0,
+        "same_class_rois": 2,
+        "label": "person"
+      },
+      "object": {
+        "reason": "below_iou",
+        "best_iou": 0.472290494595287,
+        "roi": null,
+        "same_class_rois": 2,
+        "label": "skis"
+      }
+    },
+    {
+      "coco_id": 481670,
+      "filename": "COCO_val2014_000000481670.jpg",
+      "relation": "a person standing on skis",
+      "subject": {
+        "reason": "matched",
+        "best_iou": 0.9314212352085722,
+        "roi": 0,
+        "same_class_rois": 2,
+        "label": "person"
+      },
+      "object": {
+        "reason": "below_iou",
+        "best_iou": 0.472290494595287,
+        "roi": null,
+        "same_class_rois": 2,
+        "label": "skis"
+      }
+    },
+    {
+      "coco_id": 76822,
+      "filename": "COCO_val2014_000000076822.jpg",
+      "relation": "a person on skis",
+      "subject": {
+        "reason": "matched",
+        "best_iou": 0.8120958843082551,
+        "roi": 0,
+        "same_class_rois": 4,
+        "label": "person"
+      },
+      "object": {
+        "reason": "below_iou",
+        "best_iou": 0.0,
+        "roi": null,
+        "same_class_rois": 1,
+        "label": "skis"
+      }
+    },
+    {
+      "coco_id": 76822,
+      "filename": "COCO_val2014_000000076822.jpg",
+      "relation": "a person wearing skis",
+      "subject": {
+        "reason": "matched",
+        "best_iou": 0.8120958843082551,
+        "roi": 0,
+        "same_class_rois": 4,
+        "label": "person"
+      },
+      "object": {
+        "reason": "below_iou",
+        "best_iou": 0.0,
+        "roi": null,
+        "same_class_rois": 1,
+        "label": "skis"
+      }
+    },
+    {
+      "coco_id": 163543,
+      "filename": "COCO_val2014_000000163543.jpg",
+      "relation": "a person on skis",
+      "subject": {
+        "reason": "matched",
+        "best_iou": 0.8424131769264956,
+        "roi": 0,
+        "same_class_rois": 1,
+        "label": "person"
+      },
+      "object": {
+        "reason": "below_iou",
+        "best_iou": 0.24204849076775742,
+        "roi": null,
+        "same_class_rois": 1,
+        "label": "skis"
+      }
+    },
+    {
+      "coco_id": 163543,
+      "filename": "COCO_val2014_000000163543.jpg",
+      "relation": "a person wearing skis",
+      "subject": {
+        "reason": "matched",
+        "best_iou": 0.8424131769264956,
+        "roi": 0,
+        "same_class_rois": 1,
+        "label": "person"
+      },
+      "object": {
+        "reason": "below_iou",
+        "best_iou": 0.24204849076775742,
+        "roi": null,
+        "same_class_rois": 1,
+        "label": "skis"
+      }
+    },
+    {
+      "coco_id": 263251,
+      "filename": "COCO_val2014_000000263251.jpg",
+      "relation": "a person standing under an umbrella",
+      "subject": {
+        "reason": "matched",
+        "best_iou": 0.9681845202129594,
+        "roi": 0,
+        "same_class_rois": 3,
+        "label": "person"
+      },
+      "object": {
+        "reason": "collision",
+        "best_iou": 0.6687007970249417,
+        "roi": 4,
+        "same_class_rois": 1,
+        "label": "umbrella"
+      }
+    },
+    {
+      "coco_id": 263251,
+      "filename": "COCO_val2014_000000263251.jpg",
+      "relation": "a person holding an umbrella",
+      "subject": {
+        "reason": "matched",
+        "best_iou": 0.9681845202129594,
+        "roi": 0,
+        "same_class_rois": 3,
+        "label": "person"
+      },
+      "object": {
+        "reason": "collision",
+        "best_iou": 0.6687007970249417,
+        "roi": 4,
+        "same_class_rois": 1,
+        "label": "umbrella"
+      }
+    },
+    {
+      "coco_id": 82986,
+      "filename": "COCO_val2014_000000082986.jpg",
+      "relation": "a person catching a frisbee",
+      "subject": {
+        "reason": "matched",
+        "best_iou": 0.8658824724843119,
+        "roi": 0,
+        "same_class_rois": 3,
+        "label": "person"
+      },
+      "object": {
+        "reason": "below_iou",
+        "best_iou": 0.4025115252245476,
+        "roi": null,
+        "same_class_rois": 1,
+        "label": "frisbee"
+      }
+    },
+    {
+      "coco_id": 328921,
+      "filename": "COCO_val2014_000000328921.jpg",
+      "relation": "a person wearing a tie",
+      "subject": {
+        "reason": "below_iou",
+        "best_iou": 0.0,
+        "roi": null,
+        "same_class_rois": 2,
+        "label": "person"
+      },
+      "object": {
+        "reason": "matched",
+        "best_iou": 0.951658208380181,
+        "roi": 4,
+        "same_class_rois": 3,
+        "label": "tie"
+      }
+    },
+    {
+      "coco_id": 322145,
+      "filename": "COCO_val2014_000000322145.jpg",
+      "relation": "a person wearing skis",
+      "subject": {
+        "reason": "matched",
+        "best_iou": 0.9136528718976689,
+        "roi": 0,
+        "same_class_rois": 1,
+        "label": "person"
+      },
+      "object": {
+        "reason": "below_iou",
+        "best_iou": 0.25250109589605374,
+        "roi": null,
+        "same_class_rois": 1,
+        "label": "skis"
+      }
+    },
+    {
+      "coco_id": 322145,
+      "filename": "COCO_val2014_000000322145.jpg",
+      "relation": "a person standing on skis",
+      "subject": {
+        "reason": "matched",
+        "best_iou": 0.9136528718976689,
+        "roi": 0,
+        "same_class_rois": 1,
+        "label": "person"
+      },
+      "object": {
+        "reason": "below_iou",
+        "best_iou": 0.25250109589605374,
+        "roi": null,
+        "same_class_rois": 1,
+        "label": "skis"
+      }
+    },
+    {
+      "coco_id": 322145,
+      "filename": "COCO_val2014_000000322145.jpg",
+      "relation": "a person on skis",
+      "subject": {
+        "reason": "matched",
+        "best_iou": 0.9136528718976689,
+        "roi": 0,
+        "same_class_rois": 1,
+        "label": "person"
+      },
+      "object": {
+        "reason": "below_iou",
+        "best_iou": 0.25250109589605374,
+        "roi": null,
+        "same_class_rois": 1,
+        "label": "skis"
+      }
+    },
+    {
+      "coco_id": 391463,
+      "filename": "COCO_val2014_000000391463.jpg",
+      "relation": "a person carrying a kite",
+      "subject": {
+        "reason": "matched",
+        "best_iou": 0.8841866889932282,
+        "roi": 0,
+        "same_class_rois": 7,
+        "label": "person"
+      },
+      "object": {
+        "reason": "no_same_class_roi",
+        "best_iou": null,
+        "roi": null,
+        "same_class_rois": 0,
+        "label": "kite"
+      }
+    },
+    {
+      "coco_id": 391463,
+      "filename": "COCO_val2014_000000391463.jpg",
+      "relation": "a person holding a kite",
+      "subject": {
+        "reason": "matched",
+        "best_iou": 0.8841866889932282,
+        "roi": 0,
+        "same_class_rois": 7,
+        "label": "person"
+      },
+      "object": {
+        "reason": "no_same_class_roi",
+        "best_iou": null,
+        "roi": null,
+        "same_class_rois": 0,
+        "label": "kite"
+      }
+    },
+    {
+      "coco_id": 314996,
+      "filename": "COCO_val2014_000000314996.jpg",
+      "relation": "a person holding a surfboard",
+      "subject": {
+        "reason": "matched",
+        "best_iou": 0.8552975829476075,
+        "roi": 1,
+        "same_class_rois": 1,
+        "label": "person"
+      },
+      "object": {
+        "reason": "below_iou",
+        "best_iou": 0.2760060893890035,
+        "roi": null,
+        "same_class_rois": 1,
+        "label": "surfboard"
+      }
+    },
+    {
+      "coco_id": 366822,
+      "filename": "COCO_val2014_000000366822.jpg",
+      "relation": "a person holding a snowboard",
+      "subject": {
+        "reason": "matched",
+        "best_iou": 0.9646033661868055,
+        "roi": 0,
+        "same_class_rois": 4,
+        "label": "person"
+      },
+      "object": {
+        "reason": "below_iou",
+        "best_iou": 0.49359334782980324,
+        "roi": null,
+        "same_class_rois": 3,
+        "label": "snowboard"
+      }
+    },
+    {
+      "coco_id": 376206,
+      "filename": "COCO_val2014_000000376206.jpg",
+      "relation": "a person riding a surfboard",
+      "subject": {
+        "reason": "matched",
+        "best_iou": 0.844734841792058,
+        "roi": 0,
+        "same_class_rois": 1,
+        "label": "person"
+      },
+      "object": {
+        "reason": "below_iou",
+        "best_iou": 0.44786242367913254,
+        "roi": null,
+        "same_class_rois": 1,
+        "label": "surfboard"
+      }
+    },
+    {
+      "coco_id": 376206,
+      "filename": "COCO_val2014_000000376206.jpg",
+      "relation": "a person standing on a surfboard",
+      "subject": {
+        "reason": "matched",
+        "best_iou": 0.844734841792058,
+        "roi": 0,
+        "same_class_rois": 1,
+        "label": "person"
+      },
+      "object": {
+        "reason": "below_iou",
+        "best_iou": 0.44786242367913254,
+        "roi": null,
+        "same_class_rois": 1,
+        "label": "surfboard"
+      }
+    },
+    {
+      "coco_id": 435309,
+      "filename": "COCO_val2014_000000435309.jpg",
+      "relation": "a person holding a remote",
+      "subject": {
+        "reason": "matched",
+        "best_iou": 0.978529575273342,
+        "roi": 1,
+        "same_class_rois": 2,
+        "label": "person"
+      },
+      "object": {
+        "reason": "no_same_class_roi",
+        "best_iou": null,
+        "roi": null,
+        "same_class_rois": 0,
+        "label": "remote"
+      }
+    },
+    {
+      "coco_id": 304596,
+      "filename": "COCO_val2014_000000304596.jpg",
+      "relation": "a person riding a skateboard",
+      "subject": {
+        "reason": "matched",
+        "best_iou": 0.9812069709770244,
+        "roi": 0,
+        "same_class_rois": 1,
+        "label": "person"
+      },
+      "object": {
+        "reason": "below_iou",
+        "best_iou": 0.027167594119543573,
+        "roi": null,
+        "same_class_rois": 1,
+        "label": "skateboard"
+      }
+    },
+    {
+      "coco_id": 492677,
+      "filename": "COCO_val2014_000000492677.jpg",
+      "relation": "a person holding a cell phone",
+      "subject": {
+        "reason": "matched",
+        "best_iou": 0.9537562851905707,
+        "roi": 0,
+        "same_class_rois": 1,
+        "label": "person"
+      },
+      "object": {
+        "reason": "no_same_class_roi",
+        "best_iou": null,
+        "roi": null,
+        "same_class_rois": 0,
+        "label": "cell phone"
+      }
+    },
+    {
+      "coco_id": 36607,
+      "filename": "COCO_val2014_000000036607.jpg",
+      "relation": "a person holding a cell phone",
+      "subject": {
+        "reason": "below_iou",
+        "best_iou": 0.3766649414336037,
+        "roi": null,
+        "same_class_rois": 3,
+        "label": "person"
+      },
+      "object": {
+        "reason": "matched",
+        "best_iou": 0.9243492593684113,
+        "roi": 0,
+        "same_class_rois": 1,
+        "label": "cell phone"
+      }
+    },
+    {
+      "coco_id": 135155,
+      "filename": "COCO_val2014_000000135155.jpg",
+      "relation": "a person wearing skis",
+      "subject": {
+        "reason": "matched",
+        "best_iou": 0.8443552107319947,
+        "roi": 0,
+        "same_class_rois": 3,
+        "label": "person"
+      },
+      "object": {
+        "reason": "below_iou",
+        "best_iou": 0.4601811108294064,
+        "roi": null,
+        "same_class_rois": 2,
+        "label": "skis"
+      }
+    },
+    {
+      "coco_id": 135155,
+      "filename": "COCO_val2014_000000135155.jpg",
+      "relation": "a person standing on skis",
+      "subject": {
+        "reason": "matched",
+        "best_iou": 0.8443552107319947,
+        "roi": 0,
+        "same_class_rois": 3,
+        "label": "person"
+      },
+      "object": {
+        "reason": "below_iou",
+        "best_iou": 0.4601811108294064,
+        "roi": null,
+        "same_class_rois": 2,
+        "label": "skis"
+      }
+    },
+    {
+      "coco_id": 135155,
+      "filename": "COCO_val2014_000000135155.jpg",
+      "relation": "a person on skis",
+      "subject": {
+        "reason": "matched",
+        "best_iou": 0.8443552107319947,
+        "roi": 0,
+        "same_class_rois": 3,
+        "label": "person"
+      },
+      "object": {
+        "reason": "below_iou",
+        "best_iou": 0.4601811108294064,
+        "roi": null,
+        "same_class_rois": 2,
+        "label": "skis"
+      }
+    },
+    {
+      "coco_id": 111909,
+      "filename": "COCO_val2014_000000111909.jpg",
+      "relation": "a person riding a boat",
+      "subject": {
+        "reason": "matched",
+        "best_iou": 0.655029926869006,
+        "roi": 4,
+        "same_class_rois": 6,
+        "label": "person"
+      },
+      "object": {
+        "reason": "collision",
+        "best_iou": 0.8645480813374626,
+        "roi": 3,
+        "same_class_rois": 1,
+        "label": "boat"
+      }
+    },
+    {
+      "coco_id": 352729,
+      "filename": "COCO_val2014_000000352729.jpg",
+      "relation": "a person riding a surfboard",
+      "subject": {
+        "reason": "matched",
+        "best_iou": 0.9540730528575737,
+        "roi": 0,
+        "same_class_rois": 2,
+        "label": "person"
+      },
+      "object": {
+        "reason": "below_iou",
+        "best_iou": 0.4714367025864361,
+        "roi": null,
+        "same_class_rois": 1,
+        "label": "surfboard"
+      }
+    },
+    {
+      "coco_id": 217622,
+      "filename": "COCO_val2014_000000217622.jpg",
+      "relation": "a person riding a surfboard",
+      "subject": {
+        "reason": "matched",
+        "best_iou": 0.8902605996218733,
+        "roi": 0,
+        "same_class_rois": 1,
+        "label": "person"
+      },
+      "object": {
+        "reason": "below_iou",
+        "best_iou": 0.4587651166601786,
+        "roi": null,
+        "same_class_rois": 1,
+        "label": "surfboard"
+      }
+    },
+    {
+      "coco_id": 217622,
+      "filename": "COCO_val2014_000000217622.jpg",
+      "relation": "a person standing on a surfboard",
+      "subject": {
+        "reason": "matched",
+        "best_iou": 0.8902605996218733,
+        "roi": 0,
+        "same_class_rois": 1,
+        "label": "person"
+      },
+      "object": {
+        "reason": "below_iou",
+        "best_iou": 0.4587651166601786,
+        "roi": null,
+        "same_class_rois": 1,
+        "label": "surfboard"
+      }
+    },
+    {
+      "coco_id": 15303,
+      "filename": "COCO_val2014_000000015303.jpg",
+      "relation": "a person riding a surfboard",
+      "subject": {
+        "reason": "matched",
+        "best_iou": 0.9134126956193424,
+        "roi": 0,
+        "same_class_rois": 1,
+        "label": "person"
+      },
+      "object": {
+        "reason": "below_iou",
+        "best_iou": 0.4531423979250723,
+        "roi": null,
+        "same_class_rois": 1,
+        "label": "surfboard"
+      }
+    },
+    {
+      "coco_id": 15303,
+      "filename": "COCO_val2014_000000015303.jpg",
+      "relation": "a person standing on a surfboard",
+      "subject": {
+        "reason": "matched",
+        "best_iou": 0.9134126956193424,
+        "roi": 0,
+        "same_class_rois": 1,
+        "label": "person"
+      },
+      "object": {
+        "reason": "below_iou",
+        "best_iou": 0.4531423979250723,
+        "roi": null,
+        "same_class_rois": 1,
+        "label": "surfboard"
+      }
+    },
+    {
+      "coco_id": 438907,
+      "filename": "COCO_val2014_000000438907.jpg",
+      "relation": "a person standing on a skateboard",
+      "subject": {
+        "reason": "matched",
+        "best_iou": 0.9602280285102983,
+        "roi": 0,
+        "same_class_rois": 2,
+        "label": "person"
+      },
+      "object": {
+        "reason": "below_iou",
+        "best_iou": 0.40827144377971925,
+        "roi": null,
+        "same_class_rois": 2,
+        "label": "skateboard"
+      }
+    },
+    {
+      "coco_id": 271681,
+      "filename": "COCO_val2014_000000271681.jpg",
+      "relation": "a person holding a pizza",
+      "subject": {
+        "reason": "matched",
+        "best_iou": 0.9781731312936718,
+        "roi": 0,
+        "same_class_rois": 10,
+        "label": "person"
+      },
+      "object": {
+        "reason": "no_same_class_roi",
+        "best_iou": null,
+        "roi": null,
+        "same_class_rois": 0,
+        "label": "pizza"
+      }
+    },
+    {
+      "coco_id": 124116,
+      "filename": "COCO_val2014_000000124116.jpg",
+      "relation": "a person packing a suitcase",
+      "subject": {
+        "reason": "no_same_class_roi",
+        "best_iou": null,
+        "roi": null,
+        "same_class_rois": 0,
+        "label": "person"
+      },
+      "object": {
+        "reason": "matched",
+        "best_iou": 0.9878171137356779,
+        "roi": 1,
+        "same_class_rois": 1,
+        "label": "suitcase"
+      }
+    },
+    {
+      "coco_id": 94607,
+      "filename": "COCO_val2014_000000094607.jpg",
+      "relation": "a person holding a donut",
+      "subject": {
+        "reason": "matched",
+        "best_iou": 0.9926330313474531,
+        "roi": 0,
+        "same_class_rois": 1,
+        "label": "person"
+      },
+      "object": {
+        "reason": "below_iou",
+        "best_iou": 0.0,
+        "roi": null,
+        "same_class_rois": 3,
+        "label": "donut"
+      }
+    },
+    {
+      "coco_id": 467580,
+      "filename": "COCO_val2014_000000467580.jpg",
+      "relation": "a person riding a surfboard",
+      "subject": {
+        "reason": "matched",
+        "best_iou": 0.9104875027573638,
+        "roi": 0,
+        "same_class_rois": 1,
+        "label": "person"
+      },
+      "object": {
+        "reason": "no_same_class_roi",
+        "best_iou": null,
+        "roi": null,
+        "same_class_rois": 0,
+        "label": "surfboard"
+      }
+    },
+    {
+      "coco_id": 467580,
+      "filename": "COCO_val2014_000000467580.jpg",
+      "relation": "a person standing on a surfboard",
+      "subject": {
+        "reason": "matched",
+        "best_iou": 0.9104875027573638,
+        "roi": 0,
+        "same_class_rois": 1,
+        "label": "person"
+      },
+      "object": {
+        "reason": "no_same_class_roi",
+        "best_iou": null,
+        "roi": null,
+        "same_class_rois": 0,
+        "label": "surfboard"
+      }
+    },
+    {
+      "coco_id": 472878,
+      "filename": "COCO_val2014_000000472878.jpg",
+      "relation": "a person riding a surfboard",
+      "subject": {
+        "reason": "matched",
+        "best_iou": 0.8786701032428169,
+        "roi": 1,
+        "same_class_rois": 1,
+        "label": "person"
+      },
+      "object": {
+        "reason": "below_iou",
+        "best_iou": 0.38879895431956907,
+        "roi": null,
+        "same_class_rois": 1,
+        "label": "surfboard"
+      }
+    },
+    {
+      "coco_id": 442417,
+      "filename": "COCO_val2014_000000442417.jpg",
+      "relation": "a person holding a cell phone",
+      "subject": {
+        "reason": "matched",
+        "best_iou": 0.9523383606321064,
+        "roi": 0,
+        "same_class_rois": 1,
+        "label": "person"
+      },
+      "object": {
+        "reason": "no_same_class_roi",
+        "best_iou": null,
+        "roi": null,
+        "same_class_rois": 0,
+        "label": "cell phone"
+      }
+    },
+    {
+      "coco_id": 442417,
+      "filename": "COCO_val2014_000000442417.jpg",
+      "relation": "a person talking on a cell phone",
+      "subject": {
+        "reason": "matched",
+        "best_iou": 0.9523383606321064,
+        "roi": 0,
+        "same_class_rois": 1,
+        "label": "person"
+      },
+      "object": {
+        "reason": "no_same_class_roi",
+        "best_iou": null,
+        "roi": null,
+        "same_class_rois": 0,
+        "label": "cell phone"
+      }
+    },
+    {
+      "coco_id": 294537,
+      "filename": "COCO_val2014_000000294537.jpg",
+      "relation": "a person standing on skis",
+      "subject": {
+        "reason": "matched",
+        "best_iou": 0.9323536668489021,
+        "roi": 1,
+        "same_class_rois": 3,
+        "label": "person"
+      },
+      "object": {
+        "reason": "below_iou",
+        "best_iou": 0.4852938574014861,
+        "roi": null,
+        "same_class_rois": 3,
+        "label": "skis"
+      }
+    },
+    {
+      "coco_id": 167656,
+      "filename": "COCO_val2014_000000167656.jpg",
+      "relation": "a person carrying a tennis racket",
+      "subject": {
+        "reason": "matched",
+        "best_iou": 0.9449379553456574,
+        "roi": 0,
+        "same_class_rois": 7,
+        "label": "person"
+      },
+      "object": {
+        "reason": "no_same_class_roi",
+        "best_iou": null,
+        "roi": null,
+        "same_class_rois": 0,
+        "label": "tennis racket"
+      }
+    },
+    {
+      "coco_id": 376368,
+      "filename": "COCO_val2014_000000376368.jpg",
+      "relation": "a person riding a boat",
+      "subject": {
+        "reason": "collision",
+        "best_iou": 0.7262623712210482,
+        "roi": 1,
+        "same_class_rois": 6,
+        "label": "person"
+      },
+      "object": {
+        "reason": "matched",
+        "best_iou": 0.8869648979356569,
+        "roi": 0,
+        "same_class_rois": 3,
+        "label": "boat"
+      }
+    },
+    {
+      "coco_id": 376368,
+      "filename": "COCO_val2014_000000376368.jpg",
+      "relation": "a person standing on a boat",
+      "subject": {
+        "reason": "collision",
+        "best_iou": 0.7262623712210482,
+        "roi": 1,
+        "same_class_rois": 6,
+        "label": "person"
+      },
+      "object": {
+        "reason": "matched",
+        "best_iou": 0.8869648979356569,
+        "roi": 0,
+        "same_class_rois": 3,
+        "label": "boat"
+      }
+    },
+    {
+      "coco_id": 365129,
+      "filename": "COCO_val2014_000000365129.jpg",
+      "relation": "a person riding a boat",
+      "subject": {
+        "reason": "no_same_class_roi",
+        "best_iou": null,
+        "roi": null,
+        "same_class_rois": 0,
+        "label": "person"
+      },
+      "object": {
+        "reason": "matched",
+        "best_iou": 0.7728933506195905,
+        "roi": 1,
+        "same_class_rois": 13,
+        "label": "boat"
+      }
+    },
+    {
+      "coco_id": 365129,
+      "filename": "COCO_val2014_000000365129.jpg",
+      "relation": "a person sitting on a boat",
+      "subject": {
+        "reason": "no_same_class_roi",
+        "best_iou": null,
+        "roi": null,
+        "same_class_rois": 0,
+        "label": "person"
+      },
+      "object": {
+        "reason": "matched",
+        "best_iou": 0.7728933506195905,
+        "roi": 1,
+        "same_class_rois": 13,
+        "label": "boat"
+      }
+    },
+    {
+      "coco_id": 538414,
+      "filename": "COCO_val2014_000000538414.jpg",
+      "relation": "a person wielding a baseball bat",
+      "subject": {
+        "reason": "matched",
+        "best_iou": 0.9302476782624343,
+        "roi": 1,
+        "same_class_rois": 3,
+        "label": "person"
+      },
+      "object": {
+        "reason": "below_iou",
+        "best_iou": 0.34579309266466524,
+        "roi": null,
+        "same_class_rois": 1,
+        "label": "baseball bat"
+      }
+    },
+    {
+      "coco_id": 538414,
+      "filename": "COCO_val2014_000000538414.jpg",
+      "relation": "a person holding a baseball bat",
+      "subject": {
+        "reason": "matched",
+        "best_iou": 0.9302476782624343,
+        "roi": 1,
+        "same_class_rois": 3,
+        "label": "person"
+      },
+      "object": {
+        "reason": "below_iou",
+        "best_iou": 0.34579309266466524,
+        "roi": null,
+        "same_class_rois": 1,
+        "label": "baseball bat"
+      }
+    },
+    {
+      "coco_id": 231079,
+      "filename": "COCO_val2014_000000231079.jpg",
+      "relation": "a person riding a surfboard",
+      "subject": {
+        "reason": "matched",
+        "best_iou": 0.937952695534244,
+        "roi": 0,
+        "same_class_rois": 1,
+        "label": "person"
+      },
+      "object": {
+        "reason": "below_iou",
+        "best_iou": 0.27672212881100827,
+        "roi": null,
+        "same_class_rois": 1,
+        "label": "surfboard"
+      }
+    },
+    {
+      "coco_id": 467791,
+      "filename": "COCO_val2014_000000467791.jpg",
+      "relation": "a person wielding a baseball bat",
+      "subject": {
+        "reason": "matched",
+        "best_iou": 0.9129931489500727,
+        "roi": 2,
+        "same_class_rois": 6,
+        "label": "person"
+      },
+      "object": {
+        "reason": "below_iou",
+        "best_iou": 0.2989689657747141,
+        "roi": null,
+        "same_class_rois": 1,
+        "label": "baseball bat"
+      }
+    },
+    {
+      "coco_id": 467791,
+      "filename": "COCO_val2014_000000467791.jpg",
+      "relation": "a person holding a baseball bat",
+      "subject": {
+        "reason": "matched",
+        "best_iou": 0.9129931489500727,
+        "roi": 2,
+        "same_class_rois": 6,
+        "label": "person"
+      },
+      "object": {
+        "reason": "below_iou",
+        "best_iou": 0.2989689657747141,
+        "roi": null,
+        "same_class_rois": 1,
+        "label": "baseball bat"
+      }
+    },
+    {
+      "coco_id": 73927,
+      "filename": "COCO_val2014_000000073927.jpg",
+      "relation": "a person wielding a baseball bat",
+      "subject": {
+        "reason": "matched",
+        "best_iou": 0.9149802756066252,
+        "roi": 0,
+        "same_class_rois": 3,
+        "label": "person"
+      },
+      "object": {
+        "reason": "below_iou",
+        "best_iou": 0.472211339394478,
+        "roi": null,
+        "same_class_rois": 1,
+        "label": "baseball bat"
+      }
+    },
+    {
+      "coco_id": 557596,
+      "filename": "COCO_val2014_000000557596.jpg",
+      "relation": "a person holding a tennis racket",
+      "subject": {
+        "reason": "matched",
+        "best_iou": 0.9712327594246208,
+        "roi": 0,
+        "same_class_rois": 9,
+        "label": "person"
+      },
+      "object": {
+        "reason": "below_iou",
+        "best_iou": 0.48443020673348536,
+        "roi": null,
+        "same_class_rois": 1,
+        "label": "tennis racket"
+      }
+    },
+    {
+      "coco_id": 557596,
+      "filename": "COCO_val2014_000000557596.jpg",
+      "relation": "a person swinging a tennis racket",
+      "subject": {
+        "reason": "matched",
+        "best_iou": 0.9712327594246208,
+        "roi": 0,
+        "same_class_rois": 9,
+        "label": "person"
+      },
+      "object": {
+        "reason": "below_iou",
+        "best_iou": 0.48443020673348536,
+        "roi": null,
+        "same_class_rois": 1,
+        "label": "tennis racket"
+      }
+    },
+    {
+      "coco_id": 557596,
+      "filename": "COCO_val2014_000000557596.jpg",
+      "relation": "a person carrying a tennis racket",
+      "subject": {
+        "reason": "matched",
+        "best_iou": 0.9712327594246208,
+        "roi": 0,
+        "same_class_rois": 9,
+        "label": "person"
+      },
+      "object": {
+        "reason": "below_iou",
+        "best_iou": 0.48443020673348536,
+        "roi": null,
+        "same_class_rois": 1,
+        "label": "tennis racket"
+      }
+    },
+    {
+      "coco_id": 133620,
+      "filename": "COCO_val2014_000000133620.jpg",
+      "relation": "a person holding a cell phone",
+      "subject": {
+        "reason": "matched",
+        "best_iou": 0.9577472594794273,
+        "roi": 0,
+        "same_class_rois": 1,
+        "label": "person"
+      },
+      "object": {
+        "reason": "no_same_class_roi",
+        "best_iou": null,
+        "roi": null,
+        "same_class_rois": 0,
+        "label": "cell phone"
+      }
+    },
+    {
+      "coco_id": 163112,
+      "filename": "COCO_val2014_000000163112.jpg",
+      "relation": "a person sitting on a bench",
+      "subject": {
+        "reason": "matched",
+        "best_iou": 0.9626396342324481,
+        "roi": 0,
+        "same_class_rois": 1,
+        "label": "person"
+      },
+      "object": {
+        "reason": "below_iou",
+        "best_iou": 0.37880031344906767,
+        "roi": null,
+        "same_class_rois": 1,
+        "label": "bench"
+      }
+    },
+    {
+      "coco_id": 210394,
+      "filename": "COCO_val2014_000000210394.jpg",
+      "relation": "a person riding a bus",
+      "subject": {
+        "reason": "matched",
+        "best_iou": 0.7532812590084702,
+        "roi": 9,
+        "same_class_rois": 17,
+        "label": "person"
+      },
+      "object": {
+        "reason": "no_same_class_roi",
+        "best_iou": null,
+        "roi": null,
+        "same_class_rois": 0,
+        "label": "bus"
+      }
+    },
+    {
+      "coco_id": 210394,
+      "filename": "COCO_val2014_000000210394.jpg",
+      "relation": "a person riding a bus",
+      "subject": {
+        "reason": "matched",
+        "best_iou": 0.9086436199581096,
+        "roi": 11,
+        "same_class_rois": 17,
+        "label": "person"
+      },
+      "object": {
+        "reason": "no_same_class_roi",
+        "best_iou": null,
+        "roi": null,
+        "same_class_rois": 0,
+        "label": "bus"
+      }
+    },
+    {
+      "coco_id": 210394,
+      "filename": "COCO_val2014_000000210394.jpg",
+      "relation": "a person sitting on a bus",
+      "subject": {
+        "reason": "matched",
+        "best_iou": 0.7532812590084702,
+        "roi": 9,
+        "same_class_rois": 17,
+        "label": "person"
+      },
+      "object": {
+        "reason": "no_same_class_roi",
+        "best_iou": null,
+        "roi": null,
+        "same_class_rois": 0,
+        "label": "bus"
+      }
+    },
+    {
+      "coco_id": 29573,
+      "filename": "COCO_val2014_000000029573.jpg",
+      "relation": "a person wearing a tie",
+      "subject": {
+        "reason": "matched",
+        "best_iou": 0.8901837876537663,
+        "roi": 0,
+        "same_class_rois": 1,
+        "label": "person"
+      },
+      "object": {
+        "reason": "below_iou",
+        "best_iou": 0.4890404467406889,
+        "roi": null,
+        "same_class_rois": 1,
+        "label": "tie"
+      }
+    },
+    {
+      "coco_id": 379048,
+      "filename": "COCO_val2014_000000379048.jpg",
+      "relation": "a person holding a baseball bat",
+      "subject": {
+        "reason": "no_same_class_roi",
+        "best_iou": null,
+        "roi": null,
+        "same_class_rois": 0,
+        "label": "person"
+      },
+      "object": {
+        "reason": "matched",
+        "best_iou": 0.9280924183340138,
+        "roi": 0,
+        "same_class_rois": 1,
+        "label": "baseball bat"
+      }
+    },
+    {
+      "coco_id": 214604,
+      "filename": "COCO_val2014_000000214604.jpg",
+      "relation": "a person holding a baseball bat",
+      "subject": {
+        "reason": "matched",
+        "best_iou": 0.9215694228605844,
+        "roi": 1,
+        "same_class_rois": 10,
+        "label": "person"
+      },
+      "object": {
+        "reason": "below_iou",
+        "best_iou": 0.31128286081488493,
+        "roi": null,
+        "same_class_rois": 1,
+        "label": "baseball bat"
+      }
+    },
+    {
+      "coco_id": 214604,
+      "filename": "COCO_val2014_000000214604.jpg",
+      "relation": "a person wielding a baseball bat",
+      "subject": {
+        "reason": "matched",
+        "best_iou": 0.9215694228605844,
+        "roi": 1,
+        "same_class_rois": 10,
+        "label": "person"
+      },
+      "object": {
+        "reason": "below_iou",
+        "best_iou": 0.31128286081488493,
+        "roi": null,
+        "same_class_rois": 1,
+        "label": "baseball bat"
+      }
+    },
+    {
+      "coco_id": 131869,
+      "filename": "COCO_val2014_000000131869.jpg",
+      "relation": "a person holding a tennis racket",
+      "subject": {
+        "reason": "matched",
+        "best_iou": 0.863555785418373,
+        "roi": 0,
+        "same_class_rois": 2,
+        "label": "person"
+      },
+      "object": {
+        "reason": "below_iou",
+        "best_iou": 0.4859632776835211,
+        "roi": null,
+        "same_class_rois": 2,
+        "label": "tennis racket"
+      }
+    },
+    {
+      "coco_id": 131869,
+      "filename": "COCO_val2014_000000131869.jpg",
+      "relation": "a person carrying a tennis racket",
+      "subject": {
+        "reason": "matched",
+        "best_iou": 0.863555785418373,
+        "roi": 0,
+        "same_class_rois": 2,
+        "label": "person"
+      },
+      "object": {
+        "reason": "below_iou",
+        "best_iou": 0.4859632776835211,
+        "roi": null,
+        "same_class_rois": 2,
+        "label": "tennis racket"
+      }
+    },
+    {
+      "coco_id": 131869,
+      "filename": "COCO_val2014_000000131869.jpg",
+      "relation": "a person swinging a tennis racket",
+      "subject": {
+        "reason": "matched",
+        "best_iou": 0.863555785418373,
+        "roi": 0,
+        "same_class_rois": 2,
+        "label": "person"
+      },
+      "object": {
+        "reason": "below_iou",
+        "best_iou": 0.4859632776835211,
+        "roi": null,
+        "same_class_rois": 2,
+        "label": "tennis racket"
+      }
+    },
+    {
+      "coco_id": 308362,
+      "filename": "COCO_val2014_000000308362.jpg",
+      "relation": "a person riding a bus",
+      "subject": {
+        "reason": "below_iou",
+        "best_iou": 0.4937782853206924,
+        "roi": null,
+        "same_class_rois": 5,
+        "label": "person"
+      },
+      "object": {
+        "reason": "matched",
+        "best_iou": 0.9651059245787025,
+        "roi": 0,
+        "same_class_rois": 2,
+        "label": "bus"
+      }
+    },
+    {
+      "coco_id": 571384,
+      "filename": "COCO_val2014_000000571384.jpg",
+      "relation": "a person riding a bus",
+      "subject": {
+        "reason": "below_iou",
+        "best_iou": 0.0,
+        "roi": null,
+        "same_class_rois": 7,
+        "label": "person"
+      },
+      "object": {
+        "reason": "matched",
+        "best_iou": 0.9294437179058666,
+        "roi": 0,
+        "same_class_rois": 1,
+        "label": "bus"
+      }
+    },
+    {
+      "coco_id": 197997,
+      "filename": "COCO_val2014_000000197997.jpg",
+      "relation": "a person riding a bus",
+      "subject": {
+        "reason": "below_iou",
+        "best_iou": 0.0,
+        "roi": null,
+        "same_class_rois": 1,
+        "label": "person"
+      },
+      "object": {
+        "reason": "matched",
+        "best_iou": 0.9549389269270653,
+        "roi": 0,
+        "same_class_rois": 1,
+        "label": "bus"
+      }
+    },
+    {
+      "coco_id": 5282,
+      "filename": "COCO_val2014_000000005282.jpg",
+      "relation": "a person riding a boat",
+      "subject": {
+        "reason": "below_iou",
+        "best_iou": 0.3776910714383801,
+        "roi": null,
+        "same_class_rois": 1,
+        "label": "person"
+      },
+      "object": {
+        "reason": "matched",
+        "best_iou": 0.790464423207395,
+        "roi": 0,
+        "same_class_rois": 1,
+        "label": "boat"
+      }
+    },
+    {
+      "coco_id": 574108,
+      "filename": "COCO_val2014_000000574108.jpg",
+      "relation": "a person wearing skis",
+      "subject": {
+        "reason": "matched",
+        "best_iou": 0.941841307091594,
+        "roi": 0,
+        "same_class_rois": 3,
+        "label": "person"
+      },
+      "object": {
+        "reason": "collision",
+        "best_iou": 0.6794165784048523,
+        "roi": 1,
+        "same_class_rois": 1,
+        "label": "skis"
+      }
+    },
+    {
+      "coco_id": 574108,
+      "filename": "COCO_val2014_000000574108.jpg",
+      "relation": "a person standing on skis",
+      "subject": {
+        "reason": "matched",
+        "best_iou": 0.941841307091594,
+        "roi": 0,
+        "same_class_rois": 3,
+        "label": "person"
+      },
+      "object": {
+        "reason": "collision",
+        "best_iou": 0.6794165784048523,
+        "roi": 1,
+        "same_class_rois": 1,
+        "label": "skis"
+      }
+    },
+    {
+      "coco_id": 574108,
+      "filename": "COCO_val2014_000000574108.jpg",
+      "relation": "a person on skis",
+      "subject": {
+        "reason": "matched",
+        "best_iou": 0.941841307091594,
+        "roi": 0,
+        "same_class_rois": 3,
+        "label": "person"
+      },
+      "object": {
+        "reason": "collision",
+        "best_iou": 0.6794165784048523,
+        "roi": 1,
+        "same_class_rois": 1,
+        "label": "skis"
+      }
+    },
+    {
+      "coco_id": 204757,
+      "filename": "COCO_val2014_000000204757.jpg",
+      "relation": "a person holding a knife",
+      "subject": {
+        "reason": "matched",
+        "best_iou": 0.9813610610803322,
+        "roi": 0,
+        "same_class_rois": 1,
+        "label": "person"
+      },
+      "object": {
+        "reason": "no_same_class_roi",
+        "best_iou": null,
+        "roi": null,
+        "same_class_rois": 0,
+        "label": "knife"
+      }
+    },
+    {
+      "coco_id": 204757,
+      "filename": "COCO_val2014_000000204757.jpg",
+      "relation": "a person wielding a knife",
+      "subject": {
+        "reason": "matched",
+        "best_iou": 0.9813610610803322,
+        "roi": 0,
+        "same_class_rois": 1,
+        "label": "person"
+      },
+      "object": {
+        "reason": "no_same_class_roi",
+        "best_iou": null,
+        "roi": null,
+        "same_class_rois": 0,
+        "label": "knife"
+      }
+    },
+    {
+      "coco_id": 161978,
+      "filename": "COCO_val2014_000000161978.jpg",
+      "relation": "a person standing on a skateboard",
+      "subject": {
+        "reason": "collision",
+        "best_iou": 0.8845763522883691,
+        "roi": 3,
+        "same_class_rois": 19,
+        "label": "person"
+      },
+      "object": {
+        "reason": "matched",
+        "best_iou": 0.9176537005175871,
+        "roi": 6,
+        "same_class_rois": 12,
+        "label": "skateboard"
+      }
+    },
+    {
+      "coco_id": 122766,
+      "filename": "COCO_val2014_000000122766.jpg",
+      "relation": "a person standing on a skateboard",
+      "subject": {
+        "reason": "matched",
+        "best_iou": 0.9829137021900042,
+        "roi": 0,
+        "same_class_rois": 1,
+        "label": "person"
+      },
+      "object": {
+        "reason": "below_iou",
+        "best_iou": 0.45005081356776727,
+        "roi": null,
+        "same_class_rois": 1,
+        "label": "skateboard"
+      }
+    },
+    {
+      "coco_id": 525439,
+      "filename": "COCO_val2014_000000525439.jpg",
+      "relation": "a person standing on a skateboard",
+      "subject": {
+        "reason": "matched",
+        "best_iou": 0.9852710396366937,
+        "roi": 1,
+        "same_class_rois": 1,
+        "label": "person"
+      },
+      "object": {
+        "reason": "below_iou",
+        "best_iou": 0.41611812113118307,
+        "roi": null,
+        "same_class_rois": 1,
+        "label": "skateboard"
+      }
+    },
+    {
+      "coco_id": 499400,
+      "filename": "COCO_val2014_000000499400.jpg",
+      "relation": "a person holding a surfboard",
+      "subject": {
+        "reason": "matched",
+        "best_iou": 0.9222380859066601,
+        "roi": 3,
+        "same_class_rois": 4,
+        "label": "person"
+      },
+      "object": {
+        "reason": "below_iou",
+        "best_iou": 0.4097166011519947,
+        "roi": null,
+        "same_class_rois": 3,
+        "label": "surfboard"
+      }
+    },
+    {
+      "coco_id": 317188,
+      "filename": "COCO_val2014_000000317188.jpg",
+      "relation": "a person holding a knife",
+      "subject": {
+        "reason": "matched",
+        "best_iou": 0.9491310418027263,
+        "roi": 0,
+        "same_class_rois": 1,
+        "label": "person"
+      },
+      "object": {
+        "reason": "no_same_class_roi",
+        "best_iou": null,
+        "roi": null,
+        "same_class_rois": 0,
+        "label": "knife"
+      }
+    },
+    {
+      "coco_id": 317188,
+      "filename": "COCO_val2014_000000317188.jpg",
+      "relation": "a person wielding a knife",
+      "subject": {
+        "reason": "matched",
+        "best_iou": 0.9491310418027263,
+        "roi": 0,
+        "same_class_rois": 1,
+        "label": "person"
+      },
+      "object": {
+        "reason": "no_same_class_roi",
+        "best_iou": null,
+        "roi": null,
+        "same_class_rois": 0,
+        "label": "knife"
+      }
+    },
+    {
+      "coco_id": 461262,
+      "filename": "COCO_val2014_000000461262.jpg",
+      "relation": "a person holding a baseball bat",
+      "subject": {
+        "reason": "matched",
+        "best_iou": 0.9688598633175879,
+        "roi": 0,
+        "same_class_rois": 6,
+        "label": "person"
+      },
+      "object": {
+        "reason": "below_iou",
+        "best_iou": 0.3172337156900508,
+        "roi": null,
+        "same_class_rois": 1,
+        "label": "baseball bat"
+      }
+    },
+    {
+      "coco_id": 461262,
+      "filename": "COCO_val2014_000000461262.jpg",
+      "relation": "a person wielding a baseball bat",
+      "subject": {
+        "reason": "matched",
+        "best_iou": 0.9688598633175879,
+        "roi": 0,
+        "same_class_rois": 6,
+        "label": "person"
+      },
+      "object": {
+        "reason": "below_iou",
+        "best_iou": 0.3172337156900508,
+        "roi": null,
+        "same_class_rois": 1,
+        "label": "baseball bat"
+      }
+    },
+    {
+      "coco_id": 30347,
+      "filename": "COCO_val2014_000000030347.jpg",
+      "relation": "a person reading a laptop",
+      "subject": {
+        "reason": "matched",
+        "best_iou": 0.9281747167350612,
+        "roi": 1,
+        "same_class_rois": 4,
+        "label": "person"
+      },
+      "object": {
+        "reason": "below_iou",
+        "best_iou": 0.4835184361319553,
+        "roi": null,
+        "same_class_rois": 2,
+        "label": "laptop"
+      }
+    },
+    {
+      "coco_id": 82396,
+      "filename": "COCO_val2014_000000082396.jpg",
+      "relation": "a person riding a horse",
+      "subject": {
+        "reason": "below_iou",
+        "best_iou": 0.4823978842320228,
+        "roi": null,
+        "same_class_rois": 1,
+        "label": "person"
+      },
+      "object": {
+        "reason": "matched",
+        "best_iou": 0.9124707459375694,
+        "roi": 0,
+        "same_class_rois": 1,
+        "label": "horse"
+      }
+    },
+    {
+      "coco_id": 82396,
+      "filename": "COCO_val2014_000000082396.jpg",
+      "relation": "a person straddling a horse",
+      "subject": {
+        "reason": "below_iou",
+        "best_iou": 0.4823978842320228,
+        "roi": null,
+        "same_class_rois": 1,
+        "label": "person"
+      },
+      "object": {
+        "reason": "matched",
+        "best_iou": 0.9124707459375694,
+        "roi": 0,
+        "same_class_rois": 1,
+        "label": "horse"
+      }
+    },
+    {
+      "coco_id": 82396,
+      "filename": "COCO_val2014_000000082396.jpg",
+      "relation": "a person and a horse (interaction: jumping)",
+      "subject": {
+        "reason": "below_iou",
+        "best_iou": 0.4823978842320228,
+        "roi": null,
+        "same_class_rois": 1,
+        "label": "person"
+      },
+      "object": {
+        "reason": "matched",
+        "best_iou": 0.9124707459375694,
+        "roi": 0,
+        "same_class_rois": 1,
+        "label": "horse"
+      }
+    },
+    {
+      "coco_id": 4375,
+      "filename": "COCO_val2014_000000004375.jpg",
+      "relation": "a person standing on skis",
+      "subject": {
+        "reason": "matched",
+        "best_iou": 0.782621408535004,
+        "roi": 1,
+        "same_class_rois": 17,
+        "label": "person"
+      },
+      "object": {
+        "reason": "below_iou",
+        "best_iou": 0.4804092193208496,
+        "roi": null,
+        "same_class_rois": 3,
+        "label": "skis"
+      }
+    },
+    {
+      "coco_id": 4375,
+      "filename": "COCO_val2014_000000004375.jpg",
+      "relation": "a person wearing skis",
+      "subject": {
+        "reason": "matched",
+        "best_iou": 0.782621408535004,
+        "roi": 1,
+        "same_class_rois": 17,
+        "label": "person"
+      },
+      "object": {
+        "reason": "below_iou",
+        "best_iou": 0.4804092193208496,
+        "roi": null,
+        "same_class_rois": 3,
+        "label": "skis"
+      }
+    },
+    {
+      "coco_id": 83573,
+      "filename": "COCO_val2014_000000083573.jpg",
+      "relation": "a person wearing skis",
+      "subject": {
+        "reason": "matched",
+        "best_iou": 0.8165743942703946,
+        "roi": 2,
+        "same_class_rois": 6,
+        "label": "person"
+      },
+      "object": {
+        "reason": "collision",
+        "best_iou": 0.5296370629595772,
+        "roi": 7,
+        "same_class_rois": 3,
+        "label": "skis"
+      }
+    },
+    {
+      "coco_id": 46101,
+      "filename": "COCO_val2014_000000046101.jpg",
+      "relation": "a person holding a tennis racket",
+      "subject": {
+        "reason": "matched",
+        "best_iou": 0.8432587085899156,
+        "roi": 0,
+        "same_class_rois": 11,
+        "label": "person"
+      },
+      "object": {
+        "reason": "below_iou",
+        "best_iou": 0.0,
+        "roi": null,
+        "same_class_rois": 1,
+        "label": "tennis racket"
+      }
+    },
+    {
+      "coco_id": 563885,
+      "filename": "COCO_val2014_000000563885.jpg",
+      "relation": "a person holding a teddy bear",
+      "subject": {
+        "reason": "matched",
+        "best_iou": 0.9813186215061294,
+        "roi": 1,
+        "same_class_rois": 1,
+        "label": "person"
+      },
+      "object": {
+        "reason": "no_same_class_roi",
+        "best_iou": null,
+        "roi": null,
+        "same_class_rois": 0,
+        "label": "teddy bear"
+      }
+    },
+    {
+      "coco_id": 409346,
+      "filename": "COCO_val2014_000000409346.jpg",
+      "relation": "a person holding a spoon",
+      "subject": {
+        "reason": "matched",
+        "best_iou": 0.9381024323515437,
+        "roi": 1,
+        "same_class_rois": 2,
+        "label": "person"
+      },
+      "object": {
+        "reason": "below_iou",
+        "best_iou": 0.38777495565706066,
+        "roi": null,
+        "same_class_rois": 1,
+        "label": "spoon"
+      }
+    },
+    {
+      "coco_id": 55167,
+      "filename": "COCO_val2014_000000055167.jpg",
+      "relation": "a person driving a bus",
+      "subject": {
+        "reason": "below_iou",
+        "best_iou": 0.44873430002900605,
+        "roi": null,
+        "same_class_rois": 7,
+        "label": "person"
+      },
+      "object": {
+        "reason": "matched",
+        "best_iou": 0.8964244364139136,
+        "roi": 0,
+        "same_class_rois": 1,
+        "label": "bus"
+      }
+    },
+    {
+      "coco_id": 13004,
+      "filename": "COCO_val2014_000000013004.jpg",
+      "relation": "a person holding a banana",
+      "subject": {
+        "reason": "no_same_class_roi",
+        "best_iou": null,
+        "roi": null,
+        "same_class_rois": 0,
+        "label": "person"
+      },
+      "object": {
+        "reason": "matched",
+        "best_iou": 0.9137447334885422,
+        "roi": 0,
+        "same_class_rois": 1,
+        "label": "banana"
+      }
+    },
+    {
+      "coco_id": 83925,
+      "filename": "COCO_val2014_000000083925.jpg",
+      "relation": "a person holding a baseball bat",
+      "subject": {
+        "reason": "matched",
+        "best_iou": 0.9650113889071714,
+        "roi": 0,
+        "same_class_rois": 4,
+        "label": "person"
+      },
+      "object": {
+        "reason": "below_iou",
+        "best_iou": 0.41687028656928626,
+        "roi": null,
+        "same_class_rois": 1,
+        "label": "baseball bat"
+      }
+    },
+    {
+      "coco_id": 83925,
+      "filename": "COCO_val2014_000000083925.jpg",
+      "relation": "a person wielding a baseball bat",
+      "subject": {
+        "reason": "matched",
+        "best_iou": 0.9650113889071714,
+        "roi": 0,
+        "same_class_rois": 4,
+        "label": "person"
+      },
+      "object": {
+        "reason": "below_iou",
+        "best_iou": 0.41687028656928626,
+        "roi": null,
+        "same_class_rois": 1,
+        "label": "baseball bat"
+      }
+    },
+    {
+      "coco_id": 83925,
+      "filename": "COCO_val2014_000000083925.jpg",
+      "relation": "a person swinging a baseball bat",
+      "subject": {
+        "reason": "matched",
+        "best_iou": 0.9650113889071714,
+        "roi": 0,
+        "same_class_rois": 4,
+        "label": "person"
+      },
+      "object": {
+        "reason": "below_iou",
+        "best_iou": 0.41687028656928626,
+        "roi": null,
+        "same_class_rois": 1,
+        "label": "baseball bat"
+      }
+    },
+    {
+      "coco_id": 511379,
+      "filename": "COCO_val2014_000000511379.jpg",
+      "relation": "a person checking a clock",
+      "subject": {
+        "reason": "no_same_class_roi",
+        "best_iou": null,
+        "roi": null,
+        "same_class_rois": 0,
+        "label": "person"
+      },
+      "object": {
+        "reason": "matched",
+        "best_iou": 0.7979085518530188,
+        "roi": 0,
+        "same_class_rois": 1,
+        "label": "clock"
+      }
+    },
+    {
+      "coco_id": 511379,
+      "filename": "COCO_val2014_000000511379.jpg",
+      "relation": "a person setting a clock",
+      "subject": {
+        "reason": "no_same_class_roi",
+        "best_iou": null,
+        "roi": null,
+        "same_class_rois": 0,
+        "label": "person"
+      },
+      "object": {
+        "reason": "matched",
+        "best_iou": 0.7979085518530188,
+        "roi": 0,
+        "same_class_rois": 1,
+        "label": "clock"
+      }
+    },
+    {
+      "coco_id": 327656,
+      "filename": "COCO_val2014_000000327656.jpg",
+      "relation": "a person inspecting a bus",
+      "subject": {
+        "reason": "matched",
+        "best_iou": 0.8836857883545163,
+        "roi": 1,
+        "same_class_rois": 1,
+        "label": "person"
+      },
+      "object": {
+        "reason": "no_same_class_roi",
+        "best_iou": null,
+        "roi": null,
+        "same_class_rois": 0,
+        "label": "bus"
+      }
+    }
+  ],
+  "near_threshold": {
+    "subject": {
+      "0.45": 7,
+      "0.4": 13
+    },
+    "object": {
+      "0.45": 37,
+      "0.4": 56
+    }
+  },
+  "input_sha256": "3a510b55f0ada3f79dd0ac6daeb12a4bdae93488f7a5ccc880f2cad4bcbe47c4",
+  "scope": "Relation endpoint occurrences among lost relations. Near-threshold counts precede collision re-evaluation and visual verification."
+}
