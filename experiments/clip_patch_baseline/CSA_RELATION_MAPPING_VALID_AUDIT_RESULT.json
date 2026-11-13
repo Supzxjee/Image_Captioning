@@ -1,0 +1,58 @@
+{
+  "images": 5000,
+  "summary": {
+    "all": {
+      "relations": 2526,
+      "lost": 207,
+      "loss_percent": 8.194774346793348
+    },
+    "at_least_1pct": {
+      "relations": 2416,
+      "lost": 174,
+      "loss_percent": 7.201986754966887
+    },
+    "at_least_1pct/multiple_people": {
+      "relations": 935,
+      "lost": 80,
+      "loss_percent": 8.556149732620321
+    },
+    "at_least_1pct/one_person": {
+      "relations": 1481,
+      "lost": 94,
+      "loss_percent": 6.347062795408508
+    },
+    "multiple_people": {
+      "relations": 1027,
+      "lost": 112,
+      "loss_percent": 10.905550146056475
+    },
+    "one_person": {
+      "relations": 1499,
+      "lost": 95,
+      "loss_percent": 6.337558372248165
+    },
+    "small_under_1pct": {
+      "relations": 110,
+      "lost": 33,
+      "loss_percent": 30.0
+    },
+    "small_under_1pct/multiple_people": {
+      "relations": 92,
+      "lost": 32,
+      "loss_percent": 34.78260869565217
+    },
+    "small_under_1pct/one_person": {
+      "relations": 18,
+      "lost": 1,
+      "loss_percent": 5.555555555555555
+    }
+  },
+  "lost_images": 130,
+  "missing_kept_endpoint": {
+    "subject_only": 41,
+    "object_only": 163,
+    "both": 3
+  },
+  "source_sha256": "4966dc71f154ac98bc10065a24e05e26f261f868f4a83d17749d31b525e5b5fd",
+  "scope": "UPT proposals and final kept object rows, not ground truth or a per-endpoint failure code. No caption gains tested."
+}
