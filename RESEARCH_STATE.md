@@ -10,6 +10,8 @@ Cập nhật: 13/11/2026, giờ Việt Nam. File này là bản tóm tắt để
 
 ## Hiện đang ở đâu
 
+- **Relation audit follow-up prepared.** Blind five-beam review for the five neither-labeled VALID pairs; pinned v175 prompt row extractor ready. Await visual labels and Kaggle CPU prompt rows before attributing errors.
+
 - **13/11 relation audit labeled 36/36.** 21 both valid, 6 selected correct only, 5 neither, 2 unclear, 2 opportunities to switch to the correct alternative. Sparse yield under conservative trigger; recommend retaining current rerank and deferring verifier. [Result](experiments/clip_patch_baseline/CSA_RELATION_VALID_AUDIT_RESULT.json).
 
 - **13/11 external baseline replay complete.** tamvuu/cap-baseline/4 supplied captions, exact Karpathy TEST5000: CIDEr110.7442/CHAIRs10.18% vs local baseline120.5145/5.16%. CIDEr and CHAIRs reproduce reported seed42 rounded values; exact training metadata unverified. [Result](experiments/clip_patch_baseline/TAM_BASELINE_V4_TEST5000_RESULT.json).
