@@ -1,0 +1,125 @@
+{
+  "status": "CSA_PER_CAPTION_FIXED_RERANK_TEST5000_COMPLETE",
+  "images": 5000,
+  "test_used": true,
+  "training": false,
+  "checkpoint_sha256": "80e1280b9eef216c5db421a738c7a5e0550bb34b1a62a2a13b2c8e76d40b1a24",
+  "metrics": {
+    "decoder_rank0": {
+      "CIDEr": 1.235522574737326,
+      "BLEU_1": 0.7804649133601036,
+      "BLEU_4": 0.3824448768128361,
+      "METEOR": 0.2889092908287013,
+      "SPICE": 0.21881235618998343,
+      "ROUGE_L": 0.5836478009958446,
+      "CHAIRs": 0.0494,
+      "CHAIRi": 0.03341665570319695,
+      "Recall": 0.446462593674584,
+      "counts": {
+        "images": 5000,
+        "hallucinated_captions": 247,
+        "hallucinated_mentions": 254,
+        "object_mentions": 7601,
+        "recalled_unique": 7030,
+        "reference_unique": 15746
+      },
+      "mean_words": 9.1436,
+      "short_le2": 0
+    },
+    "clip_object_fixed": {
+      "CIDEr": 1.266418399702484,
+      "BLEU_1": 0.7889597322544264,
+      "BLEU_4": 0.38760607320758156,
+      "METEOR": 0.29361404585013173,
+      "SPICE": 0.22714809216924908,
+      "ROUGE_L": 0.5872409924389855,
+      "CHAIRs": 0.0384,
+      "CHAIRi": 0.025505603503800076,
+      "Recall": 0.45656039629112155,
+      "counts": {
+        "images": 5000,
+        "hallucinated_captions": 192,
+        "hallucinated_mentions": 198,
+        "object_mentions": 7763,
+        "recalled_unique": 7189,
+        "reference_unique": 15746
+      },
+      "mean_words": 9.4418,
+      "short_le2": 0
+    }
+  },
+  "changes": {
+    "changed_captions": 2712,
+    "rank_histogram": {
+      "0": 2288,
+      "1": 1234,
+      "2": 776,
+      "3": 498,
+      "4": 204
+    },
+    "CHAIR_repairs": 88,
+    "CHAIR_new_flags": 33
+  },
+  "selector": {
+    "decoder_weight": 0.3,
+    "clip_weight": 0.4,
+    "object_weight": 0.3,
+    "min_detection_confidence": 0.5,
+    "hallucination_penalty": 1.0,
+    "tie_break": "earlier beam"
+  },
+  "tuned_on_test": false,
+  "oracle_used_for_selection": false,
+  "prior_project_test_exposure": true,
+  "selection": "both prelocked policies reported; no TEST-based fallback",
+  "NLL_note": "same frozen captioner; reranking changes output only, no target-conditioned pass",
+  "comparison": {
+    "images": 5000,
+    "split": "test",
+    "xe9_checkpoint_sha256": "b0c5bde0921a4c828ac094b264f502654224aa9365ee40cdce1c15c82fe9aeef",
+    "scst1500_checkpoint_sha256": "80e1280b9eef216c5db421a738c7a5e0550bb34b1a62a2a13b2c8e76d40b1a24",
+    "xe9_fixed_rerank": {
+      "BLEU_1": 0.7810048233175155,
+      "BLEU_4": 0.37742088919478367,
+      "METEOR": 0.2946472701957009,
+      "ROUGE_L": 0.5843746619216413,
+      "CIDEr": 1.2523065111706522,
+      "SPICE": 0.2284092128972504,
+      "CHAIRs": 0.0332,
+      "CHAIRi": 0.022655007949125595,
+      "Recall": 0.4490029213768576
+    },
+    "scst1500_fixed_rerank": {
+      "BLEU_1": 0.7889597322544264,
+      "BLEU_4": 0.38760607320758156,
+      "METEOR": 0.29361404585013173,
+      "ROUGE_L": 0.5872409924389855,
+      "CIDEr": 1.266418399702484,
+      "SPICE": 0.22714809216924908,
+      "CHAIRs": 0.0384,
+      "CHAIRi": 0.025505603503800076,
+      "Recall": 0.45656039629112155
+    },
+    "delta_vs_xe9": {
+      "BLEU_1": 0.007954908936910865,
+      "BLEU_4": 0.010185184012797888,
+      "METEOR": -0.0010332243455691836,
+      "ROUGE_L": 0.0028663305173441955,
+      "CIDEr": 0.014111888531831873,
+      "SPICE": -0.0012611207280013303,
+      "CHAIRs": 0.005199999999999996,
+      "CHAIRi": 0.002850595554674481,
+      "Recall": 0.007557474914263951
+    },
+    "prior_project_test_exposure": true,
+    "test_tuning": false
+  },
+  "checkpoint_source": {
+    "version": "csa_scst_only1500_rerank_valid5000",
+    "kaggle_source": "ducanh3/notebook7bc83c4c76/94",
+    "sha256": "80e1280b9eef216c5db421a738c7a5e0550bb34b1a62a2a13b2c8e76d40b1a24",
+    "path": "/tmp/clip-patch199-test-uhwqu4qg/scst_v94/csa_scst_only1500_rerank_valid5000/update1500/pilot_checkpoint.bin",
+    "origin": "Kaggle API exact version ducanh3/notebook7bc83c4c76/94, verified by SHA256"
+  },
+  "archive_sha256": "9b24f0add1afb5b864ece94f51aad63861421279d018659c38bd8c1b2bb01a19"
+}
