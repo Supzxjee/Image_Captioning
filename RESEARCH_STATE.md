@@ -10,6 +10,8 @@ Cập nhật: 13/11/2026, giờ Việt Nam. File này là bản tóm tắt để
 
 ## Hiện đang ở đâu
 
+- **VALID endpoint failure replay ready.** CPU notebook pins UPT, YOLO, ROI134 and v175 mapping. Replays original join on all 130 affected images and categorizes 207 losses by role. Kaggle pending.
+
 - **VALID relation mapping coverage audit complete.** 207/2526 lost over 130 images. Subjects under 1%: 33/110 lost vs 174/2416. Small subjects with multiple UPT person proposals: 32/92. Among all lost relations, 163 lack only the object in the kept list, 41 only the subject, 3 both. Inspect endpoint failure reasons before modifying matching. [Result](experiments/clip_patch_baseline/CSA_RELATION_MAPPING_VALID_AUDIT_RESULT.json).
 
 - **Relation audit follow-up complete.** Five VALID prompt exports checked. Horse prompt describes the standing man holding the horse, not the girl on it; elephant has no relation slot; motorcycle sit_on is present, with generic person label and unsupported woman in all beams. No clear case here establishes decoder relation underuse. Keep current alignment pending broader evidence. [Result](experiments/clip_patch_baseline/CSA_RELATION_FIVE_BEAMS_RESULT.json).
