@@ -1,6 +1,6 @@
 {
   "confirmation": "Assistant draft confirmed by user in chat; no revised export supplied.",
-  "prompt_rows_verified": false,
+  "prompt_rows_verified": true,
   "records": [
     {
       "coco_id": 195862,
@@ -41,6 +41,583 @@
       "status": "checked",
       "correct_beams": [],
       "selected_beam": 1
+    }
+  ],
+  "prompt_verification_scope": "User-exported rows; checked VALID IDs and ROI endpoint consistency. Full cache SHA not independently recomputed.",
+  "prompt_extract_sha256": "d589268378f1d61d2be66b5d7552b9ebdbc150937dfa957f15120b982dcdfb3d",
+  "prompt_rows": [
+    {
+      "coco_id": 195862,
+      "filename": "COCO_val2014_000000195862.jpg",
+      "group": "val",
+      "roi_count": 3,
+      "source_mode": "object_relation",
+      "objects": [
+        {
+          "instance_id": "det_b011908b8c83",
+          "upt_index": 0,
+          "roi": 1,
+          "label": "person",
+          "bbox": [
+            0.6102700635132141,
+            0.1261741828918457,
+            0.9435265471877606,
+            0.9905351257324219
+          ],
+          "roi_bbox": [
+            0.6221718788146973,
+            0.1335128766312253,
+            0.9396406173706054,
+            0.9889461329725923
+          ],
+          "IoU": 0.942786498329728,
+          "confidence": 0.9938173890113831,
+          "text": "a person"
+        },
+        {
+          "instance_id": "det_a5013854c066",
+          "upt_index": 3,
+          "roi": 0,
+          "label": "horse",
+          "bbox": [
+            0.01689097362324235,
+            0.03226494789123535,
+            0.762005192722451,
+            0.9899220275878906
+          ],
+          "roi_bbox": [
+            0.01681250035762787,
+            0.04271662709863739,
+            0.753125,
+            0.9876581053543985
+          ],
+          "IoU": 0.9748612195286489,
+          "confidence": 0.9961503744125366,
+          "text": "a horse"
+        },
+        {
+          "instance_id": "det_e5b41462dd81",
+          "upt_index": 1,
+          "roi": 2,
+          "label": "person",
+          "bbox": [
+            0.5155413120960175,
+            0.14189434051513672,
+            0.7137528547552648,
+            0.5292888259887696
+          ],
+          "roi_bbox": [
+            0.5279062271118165,
+            0.15564402595895235,
+            0.7103750228881835,
+            0.5127400525559865
+          ],
+          "IoU": 0.8485769832671262,
+          "confidence": 0.9612312912940979,
+          "text": "a person"
+        }
+      ],
+      "relations": [
+        {
+          "subject_instance": "det_b011908b8c83",
+          "object_instance": "det_a5013854c066",
+          "subject_roi": 1,
+          "object_roi": 0,
+          "text": "a person holding a horse",
+          "predicate": "holding",
+          "score": 0.705544650554657,
+          "threshold": 0.5,
+          "geometry": [
+            -1.1626187070857383,
+            -0.05467758228091034,
+            0.8046251060980941,
+            0.10249932001742587,
+            0.15054833303657555,
+            0.45498740367801144,
+            0.18367085206319975,
+            0.39032203695321055
+          ]
+        }
+      ],
+      "counts": {
+        "objects": 3,
+        "relations": 1,
+        "mapped_objects": 3,
+        "kept_objects": 3,
+        "mapped_relations": 1,
+        "capped_objects": 0
+      }
+    },
+    {
+      "coco_id": 199017,
+      "filename": "COCO_val2014_000000199017.jpg",
+      "group": "val",
+      "roi_count": 3,
+      "source_mode": "object_relation",
+      "objects": [
+        {
+          "instance_id": "det_b996c1963ee9",
+          "upt_index": 6,
+          "roi": 0,
+          "label": "elephant",
+          "bbox": [
+            0.37604461669921874,
+            0.6685687850456651,
+            0.5923358154296875,
+            0.7503586387157837
+          ],
+          "roi_bbox": [
+            0.38717715518252627,
+            0.6804400024414062,
+            0.5911411594700169,
+            0.7471400146484375
+          ],
+          "IoU": 0.7690262498295686,
+          "confidence": 0.9940570592880249,
+          "text": "an elephant"
+        }
+      ],
+      "relations": [],
+      "counts": {
+        "objects": 5,
+        "relations": 2,
+        "unmatched_objects": 2,
+        "colliding_objects": 2,
+        "unmatched_relations": 2,
+        "mapped_objects": 1,
+        "kept_objects": 1,
+        "mapped_relations": 0,
+        "capped_objects": 0
+      }
+    },
+    {
+      "coco_id": 217827,
+      "filename": "COCO_val2014_000000217827.jpg",
+      "group": "val",
+      "roi_count": 13,
+      "source_mode": "object_relation",
+      "objects": [
+        {
+          "instance_id": "det_813e67c11629",
+          "upt_index": 0,
+          "roi": 4,
+          "label": "person",
+          "bbox": [
+            0.4442374871312031,
+            0.17824708938598632,
+            0.7101486753283986,
+            0.9147879791259765
+          ],
+          "roi_bbox": [
+            0.44773435592651367,
+            0.17733021363162324,
+            0.7015781402587891,
+            0.9415456874588334
+          ],
+          "IoU": 0.9215634957429977,
+          "confidence": 0.9820311069488525,
+          "text": "a person"
+        },
+        {
+          "instance_id": "det_c6b4e646391c",
+          "upt_index": 3,
+          "roi": 0,
+          "label": "surfboard",
+          "bbox": [
+            0.3082528134203633,
+            0.35178306579589846,
+            0.752490376909143,
+            0.9927980041503907
+          ],
+          "roi_bbox": [
+            0.3194999933242798,
+            0.3625761295649151,
+            0.7439843654632569,
+            0.9886416718887222
+          ],
+          "IoU": 0.9332501714098135,
+          "confidence": 0.986461341381073,
+          "text": "a surfboard"
+        },
+        {
+          "instance_id": "det_de01621b13ab",
+          "upt_index": 1,
+          "roi": 1,
+          "label": "person",
+          "bbox": [
+            0.074317333994556,
+            0.03879711151123047,
+            0.3341087614923243,
+            0.9932996368408203
+          ],
+          "roi_bbox": [
+            0.08171874880790711,
+            0.044918033501582626,
+            0.3240781307220459,
+            0.9896018678187207
+          ],
+          "IoU": 0.9233033724806383,
+          "confidence": 0.9149484634399414,
+          "text": "a person"
+        },
+        {
+          "instance_id": "det_a628070b01eb",
+          "upt_index": 2,
+          "roi": 2,
+          "label": "person",
+          "bbox": [
+            0.6206552029849093,
+            0.10907957077026367,
+            0.8220556925693286,
+            0.8751361083984375
+          ],
+          "roi_bbox": [
+            0.631125020980835,
+            0.12351288449289648,
+            0.8152656555175781,
+            0.8767916033921253
+          ],
+          "IoU": 0.8953054379372999,
+          "confidence": 0.8304824233055115,
+          "text": "a person"
+        }
+      ],
+      "relations": [
+        {
+          "subject_instance": "det_813e67c11629",
+          "object_instance": "det_c6b4e646391c",
+          "subject_roi": 4,
+          "object_roi": 0,
+          "text": "a person holding a surfboard",
+          "predicate": "holding",
+          "score": 0.8711686134338379,
+          "threshold": 0.5,
+          "geometry": [
+            -0.17607941351578474,
+            0.17076173566081695,
+            0.5131970981713165,
+            -0.13891199194248044,
+            0.4524196237764776,
+            0.7643905737926201,
+            0.5257331552224805,
+            0.1342054368002242
+          ]
+        }
+      ],
+      "counts": {
+        "objects": 4,
+        "relations": 1,
+        "mapped_objects": 4,
+        "kept_objects": 4,
+        "mapped_relations": 1,
+        "capped_objects": 0
+      }
+    },
+    {
+      "coco_id": 546160,
+      "filename": "COCO_val2014_000000546160.jpg",
+      "group": "val",
+      "roi_count": 9,
+      "source_mode": "object_relation",
+      "objects": [
+        {
+          "instance_id": "det_0f7c99293af9",
+          "upt_index": 0,
+          "roi": 0,
+          "label": "person",
+          "bbox": [
+            0.2279243119266055,
+            0.1359565544128418,
+            0.9123939342355609,
+            0.9927803039550781
+          ],
+          "roi_bbox": [
+            0.237890625,
+            0.1400468366207507,
+            0.9084843635559082,
+            0.989016387725044
+          ],
+          "IoU": 0.9707467252134618,
+          "confidence": 0.9953644275665283,
+          "text": "a person"
+        },
+        {
+          "instance_id": "det_7520a3744f76",
+          "upt_index": 5,
+          "roi": 3,
+          "label": "umbrella",
+          "bbox": [
+            0.20750340707506906,
+            0.00221465528011322,
+            0.9924395818129691,
+            0.340470085144043
+          ],
+          "roi_bbox": [
+            0.2184999942779541,
+            0.0033489460129927694,
+            0.9890312194824219,
+            0.340515208188488
+          ],
+          "IoU": 0.9782283378763765,
+          "confidence": 0.9665865302085876,
+          "text": "an umbrella"
+        },
+        {
+          "instance_id": "det_49bfeae4222a",
+          "upt_index": 1,
+          "roi": 1,
+          "label": "person",
+          "bbox": [
+            0.017269089979564677,
+            0.30108524322509767,
+            0.2822323402232981,
+            0.9929178619384765
+          ],
+          "roi_bbox": [
+            0.007468750327825546,
+            0.31004683697809937,
+            0.28428125381469727,
+            0.9912177985948478
+          ],
+          "IoU": 0.9430649795397552,
+          "confidence": 0.8965012431144714,
+          "text": "a person"
+        },
+        {
+          "instance_id": "det_d006d864b933",
+          "upt_index": 2,
+          "roi": 2,
+          "label": "person",
+          "bbox": [
+            0.6457979712911801,
+            0.34478767395019533,
+            0.9805941800458715,
+            0.9933059692382813
+          ],
+          "roi_bbox": [
+            0.6570781230926513,
+            0.35145200778505564,
+            0.9847031593322754,
+            0.9876814759587237
+          ],
+          "IoU": 0.9367182022197535,
+          "confidence": 0.8911030292510986,
+          "text": "a person"
+        },
+        {
+          "instance_id": "det_35fca4cf31eb",
+          "upt_index": 8,
+          "roi": 4,
+          "label": "umbrella",
+          "bbox": [
+            0.0005219578742980957,
+            0.30814111709594727,
+            0.12957221533080954,
+            0.7701806640625
+          ],
+          "roi_bbox": [
+            0.00043750000186264514,
+            0.3195316216426376,
+            0.1300624966621399,
+            0.7535363226361241
+          ],
+          "IoU": 0.9354105321218414,
+          "confidence": 0.5794084072113037,
+          "text": "an umbrella"
+        }
+      ],
+      "relations": [
+        {
+          "subject_instance": "det_0f7c99293af9",
+          "object_instance": "det_7520a3744f76",
+          "subject_roi": 0,
+          "object_roi": 3,
+          "text": "a person holding an umbrella",
+          "predicate": "holding",
+          "score": 0.6799818873405457,
+          "threshold": 0.5,
+          "geometry": [
+            0.043555433858946654,
+            -0.45870117300303426,
+            0.1369581440547516,
+            -0.9294309179013553,
+            0.19660701298658997,
+            0.2386879808600822,
+            0.5272263449703559,
+            0.394155122403922
+          ]
+        },
+        {
+          "subject_instance": "det_0f7c99293af9",
+          "object_instance": "det_7520a3744f76",
+          "subject_roi": 0,
+          "object_roi": 3,
+          "text": "a person carrying an umbrella",
+          "predicate": "carry",
+          "score": 0.5732603669166565,
+          "threshold": 0.5,
+          "geometry": [
+            0.043555433858946654,
+            -0.45870117300303426,
+            0.1369581440547516,
+            -0.9294309179013553,
+            0.19660701298658997,
+            0.2386879808600822,
+            0.5272263449703559,
+            0.394155122403922
+          ]
+        },
+        {
+          "subject_instance": "det_0f7c99293af9",
+          "object_instance": "det_7520a3744f76",
+          "subject_roi": 0,
+          "object_roi": 3,
+          "text": "a person standing under an umbrella",
+          "predicate": "stand_under",
+          "score": 0.5503816604614258,
+          "threshold": 0.5,
+          "geometry": [
+            0.043555433858946654,
+            -0.45870117300303426,
+            0.1369581440547516,
+            -0.9294309179013553,
+            0.19660701298658997,
+            0.2386879808600822,
+            0.5272263449703559,
+            0.394155122403922
+          ]
+        }
+      ],
+      "counts": {
+        "objects": 7,
+        "relations": 3,
+        "unmatched_objects": 2,
+        "mapped_objects": 5,
+        "kept_objects": 5,
+        "mapped_relations": 3,
+        "capped_objects": 0
+      }
+    },
+    {
+      "coco_id": 147386,
+      "filename": "COCO_val2014_000000147386.jpg",
+      "group": "val",
+      "roi_count": 9,
+      "source_mode": "object_relation",
+      "objects": [
+        {
+          "instance_id": "det_284790dc4b58",
+          "upt_index": 0,
+          "roi": 1,
+          "label": "person",
+          "bbox": [
+            0.30683357854274157,
+            0.06788501262664795,
+            0.7372215514335131,
+            0.9945050811767578
+          ],
+          "roi_bbox": [
+            0.32155999755859377,
+            0.07663999938964844,
+            0.73502001953125,
+            0.99013330078125
+          ],
+          "IoU": 0.9470590576876827,
+          "confidence": 0.9946803450584412,
+          "text": "a person"
+        },
+        {
+          "instance_id": "det_ee92ffd99682",
+          "upt_index": 3,
+          "roi": 0,
+          "label": "motorcycle",
+          "bbox": [
+            0.025491565969155833,
+            0.19189422607421874,
+            0.8287121055273804,
+            0.9942259216308593
+          ],
+          "roi_bbox": [
+            0.03990000152587891,
+            0.19237333170572918,
+            0.8275399780273438,
+            0.9890133463541667
+          ],
+          "IoU": 0.9736460648493009,
+          "confidence": 0.9963562488555908,
+          "text": "a motorcycle"
+        }
+      ],
+      "relations": [
+        {
+          "subject_instance": "det_284790dc4b58",
+          "object_instance": "det_ee92ffd99682",
+          "subject_roi": 1,
+          "object_roi": 0,
+          "text": "a person sitting on a motorcycle",
+          "predicate": "sit_on",
+          "score": 0.9112254977226257,
+          "threshold": 0.5,
+          "geometry": [
+            -0.22055850818106032,
+            0.06676417773644465,
+            0.6239422563395316,
+            -0.14402152316920266,
+            0.4947605250217889,
+            0.8658691116112515,
+            0.5358278974383388,
+            0.11330567342965105
+          ]
+        },
+        {
+          "subject_instance": "det_284790dc4b58",
+          "object_instance": "det_ee92ffd99682",
+          "subject_roi": 1,
+          "object_roi": 0,
+          "text": "a person straddling a motorcycle",
+          "predicate": "straddle",
+          "score": 0.8991420269012451,
+          "threshold": 0.5,
+          "geometry": [
+            -0.22055850818106032,
+            0.06676417773644465,
+            0.6239422563395316,
+            -0.14402152316920266,
+            0.4947605250217889,
+            0.8658691116112515,
+            0.5358278974383388,
+            0.11330567342965105
+          ]
+        },
+        {
+          "subject_instance": "det_284790dc4b58",
+          "object_instance": "det_ee92ffd99682",
+          "subject_roi": 1,
+          "object_roi": 0,
+          "text": "a person holding a motorcycle",
+          "predicate": "holding",
+          "score": 0.7466204166412354,
+          "threshold": 0.5,
+          "geometry": [
+            -0.22055850818106032,
+            0.06676417773644465,
+            0.6239422563395316,
+            -0.14402152316920266,
+            0.4947605250217889,
+            0.8658691116112515,
+            0.5358278974383388,
+            0.11330567342965105
+          ]
+        }
+      ],
+      "counts": {
+        "objects": 2,
+        "relations": 3,
+        "mapped_objects": 2,
+        "kept_objects": 2,
+        "mapped_relations": 3,
+        "capped_objects": 0
+      }
     }
   ]
 }
