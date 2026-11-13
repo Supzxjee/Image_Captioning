@@ -113,3 +113,6 @@ SCST1500 recovery: saved log reports full CLIP scoring and CoreNLP network failu
 
 ### 13/11 Frozen SCST1500 TEST evaluation
 User approved a single Karpathy TEST5000 comparison, with checkpoint pinned to SCST1500 from v94 (SHA 80e1280b), existing TEST181 prompt cache and identical beam5 and VALID164 reranker to XE9. Report eight metrics plus recall and saved XE9 deltas. Prior project TEST exposure is recorded. No TEST tuning or additional training.
+
+### External baseline scoring comparison
+Check the saved captions from tamvuu/cap-baseline/4 against the frozen Karpathy TEST IDs using the pinned dataset_coco.json imgid to cocoid mapping. Replay CIDEr and CHAIR on CPU without decoding. The reported seed association remains provisional until confirmed.

@@ -10,6 +10,8 @@ Cập nhật: 13/11/2026, giờ Việt Nam. File này là bản tóm tắt để
 
 ## Hiện đang ở đâu
 
+- **13/11 external baseline replay ready.** User file contains 5000 unique imgids and nonempty captions. CPU notebook pins tamvuu/cap-baseline/4 and input caption fingerprint; exact COCO mapping and scoring pending user-run.
+
 - **13/11 frozen SCST1500 TEST complete.** Same TEST5000 and fixed reranker: CIDEr126.6418 vs XE9 125.2307; CHAIRs3.84% vs3.32%. Verified checkpoint lineage, selector, per-image CIDEr and CHAIR counts. Report the CIDEr/ hallucination tradeoff with prior TEST exposure. [Result](experiments/clip_patch_baseline/CSA_SCST_ONLY1500_RERANK_TEST_RESULT.json).
 
 - **13/11 SCST1500 v94 CPU recovery complete.** Fixed VALID5000 rerank CIDEr125.7582/CHAIRs4.06% vs SCST1000 124.6881/3.96%; passes gate. XE9 remains lower-hallucination at 3.46%. Verified per-image CIDEr and CHAIR counts; no TEST. [Result](experiments/clip_patch_baseline/CSA_SCST_ONLY1500_RERANK_VALID_RESULT.json).
