@@ -1,0 +1,28 @@
+{
+  "source": "tamvuu/cap-baseline/4",
+  "predictions_sha256": "56c7ba3ac3b931bc78f9002876c4b345c914846156cea3de29f6b920b68570fe",
+  "images": 5000,
+  "split": "test",
+  "metrics": {
+    "CIDEr": 1.107442481078503,
+    "BLEU_1": 0.7267851610904444,
+    "BLEU_4": 0.33057344902371577,
+    "ROUGE_L": 0.5567842575008972,
+    "CHAIRs": 0.1018,
+    "CHAIRi": 0.07210197848891249,
+    "Recall": 0.4291248571065667
+  },
+  "CIDEr_x100": 110.74424810785031,
+  "archive_sha256": "3b3c012746fcd2f7947c6655096e50d18e99f54a55b3bdbf75de2d1f8c8824fa",
+  "hallucinated_captions": 509,
+  "delta_ours_minus_tam": {
+    "CIDEr": 0.09770206879608834,
+    "BLEU_1": 0.04483752542584274,
+    "BLEU_4": 0.04110178547044757,
+    "ROUGE_L": 0.019065507970126738,
+    "CHAIRs": -0.0502,
+    "CHAIRi": -0.03614447372181906,
+    "Recall": 0.008129048647275539
+  },
+  "verification": "Frozen TEST IDs, supplied caption fingerprint and multiset, CIDEr mean and CHAIR counts checked. Exact training config and seed metadata unverified."
+}
