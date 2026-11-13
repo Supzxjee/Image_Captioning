@@ -1,0 +1,267 @@
+{
+  "images_screened": 5000,
+  "labeled": 36,
+  "labels_sha256": "93ce8d90cd74aef28793a202ba2ed4945ad94fcf1c1d4758571a711e50bbf1b5",
+  "counts": {
+    "both": 21,
+    "selected_correct": 6,
+    "neither": 5,
+    "repair_opportunity": 2,
+    "unclear": 2
+  },
+  "records": [
+    {
+      "index": 1,
+      "coco_id": 23751,
+      "label": "both",
+      "selected": "B",
+      "outcome": "both"
+    },
+    {
+      "index": 2,
+      "coco_id": 209028,
+      "label": "A",
+      "selected": "A",
+      "outcome": "selected_correct"
+    },
+    {
+      "index": 3,
+      "coco_id": 299887,
+      "label": "both",
+      "selected": "A",
+      "outcome": "both"
+    },
+    {
+      "index": 4,
+      "coco_id": 25228,
+      "label": "both",
+      "selected": "B",
+      "outcome": "both"
+    },
+    {
+      "index": 5,
+      "coco_id": 195862,
+      "label": "neither",
+      "selected": "B",
+      "outcome": "neither"
+    },
+    {
+      "index": 6,
+      "coco_id": 499400,
+      "label": "A",
+      "selected": "B",
+      "outcome": "repair_opportunity"
+    },
+    {
+      "index": 7,
+      "coco_id": 73182,
+      "label": "both",
+      "selected": "B",
+      "outcome": "both"
+    },
+    {
+      "index": 8,
+      "coco_id": 464200,
+      "label": "unclear",
+      "selected": "B",
+      "outcome": "unclear"
+    },
+    {
+      "index": 9,
+      "coco_id": 430245,
+      "label": "both",
+      "selected": "A",
+      "outcome": "both"
+    },
+    {
+      "index": 10,
+      "coco_id": 139781,
+      "label": "B",
+      "selected": "B",
+      "outcome": "selected_correct"
+    },
+    {
+      "index": 11,
+      "coco_id": 432818,
+      "label": "B",
+      "selected": "B",
+      "outcome": "selected_correct"
+    },
+    {
+      "index": 12,
+      "coco_id": 456638,
+      "label": "A",
+      "selected": "A",
+      "outcome": "selected_correct"
+    },
+    {
+      "index": 13,
+      "coco_id": 217827,
+      "label": "neither",
+      "selected": "A",
+      "outcome": "neither"
+    },
+    {
+      "index": 14,
+      "coco_id": 528786,
+      "label": "both",
+      "selected": "B",
+      "outcome": "both"
+    },
+    {
+      "index": 15,
+      "coco_id": 544334,
+      "label": "both",
+      "selected": "A",
+      "outcome": "both"
+    },
+    {
+      "index": 16,
+      "coco_id": 29776,
+      "label": "both",
+      "selected": "A",
+      "outcome": "both"
+    },
+    {
+      "index": 17,
+      "coco_id": 68950,
+      "label": "both",
+      "selected": "A",
+      "outcome": "both"
+    },
+    {
+      "index": 18,
+      "coco_id": 492362,
+      "label": "both",
+      "selected": "B",
+      "outcome": "both"
+    },
+    {
+      "index": 19,
+      "coco_id": 104406,
+      "label": "both",
+      "selected": "B",
+      "outcome": "both"
+    },
+    {
+      "index": 20,
+      "coco_id": 98801,
+      "label": "both",
+      "selected": "B",
+      "outcome": "both"
+    },
+    {
+      "index": 21,
+      "coco_id": 214468,
+      "label": "A",
+      "selected": "B",
+      "outcome": "repair_opportunity"
+    },
+    {
+      "index": 22,
+      "coco_id": 235130,
+      "label": "both",
+      "selected": "A",
+      "outcome": "both"
+    },
+    {
+      "index": 23,
+      "coco_id": 377352,
+      "label": "both",
+      "selected": "A",
+      "outcome": "both"
+    },
+    {
+      "index": 24,
+      "coco_id": 546160,
+      "label": "neither",
+      "selected": "B",
+      "outcome": "neither"
+    },
+    {
+      "index": 25,
+      "coco_id": 465887,
+      "label": "both",
+      "selected": "A",
+      "outcome": "both"
+    },
+    {
+      "index": 26,
+      "coco_id": 199017,
+      "label": "neither",
+      "selected": "B",
+      "outcome": "neither"
+    },
+    {
+      "index": 27,
+      "coco_id": 111825,
+      "label": "both",
+      "selected": "B",
+      "outcome": "both"
+    },
+    {
+      "index": 28,
+      "coco_id": 455555,
+      "label": "both",
+      "selected": "A",
+      "outcome": "both"
+    },
+    {
+      "index": 29,
+      "coco_id": 558661,
+      "label": "A",
+      "selected": "A",
+      "outcome": "selected_correct"
+    },
+    {
+      "index": 30,
+      "coco_id": 568972,
+      "label": "unclear",
+      "selected": "B",
+      "outcome": "unclear"
+    },
+    {
+      "index": 31,
+      "coco_id": 147386,
+      "label": "neither",
+      "selected": "A",
+      "outcome": "neither"
+    },
+    {
+      "index": 32,
+      "coco_id": 94002,
+      "label": "both",
+      "selected": "A",
+      "outcome": "both"
+    },
+    {
+      "index": 33,
+      "coco_id": 295945,
+      "label": "B",
+      "selected": "B",
+      "outcome": "selected_correct"
+    },
+    {
+      "index": 34,
+      "coco_id": 413043,
+      "label": "both",
+      "selected": "B",
+      "outcome": "both"
+    },
+    {
+      "index": 35,
+      "coco_id": 373785,
+      "label": "both",
+      "selected": "B",
+      "outcome": "both"
+    },
+    {
+      "index": 36,
+      "coco_id": 378163,
+      "label": "both",
+      "selected": "B",
+      "outcome": "both"
+    }
+  ],
+  "scope": "Rule-screened candidate pairs; results apply to the audited pair only. No visual verifier evaluated."
+}
