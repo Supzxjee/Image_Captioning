@@ -1,0 +1,889 @@
+{
+  "split": "val",
+  "validation_images": 5000,
+  "screen": {
+    "proposed": 29,
+    "contested_roi": 8
+  },
+  "counts": {
+    "verified": 22,
+    "unclear": 3,
+    "rejected": 4
+  },
+  "verified_images": 15,
+  "labels_sha256": "cd7baed9c62f05cc02aab0394541567845cdfd7bac840f0ecd82f248935f10c4",
+  "review_sha256": "197ead0e6c6481afece86cbad50fb97263b0cd22330cf23cf2c9da086256e76a",
+  "records": [
+    {
+      "case_id": 1,
+      "same_object": "yes",
+      "relation_correct": "yes",
+      "coco_id": 122542,
+      "filename": "COCO_val2014_000000122542.jpg",
+      "text": "a person standing on skis",
+      "subject_roi": [
+        0.11083999633789063,
+        0.2975375430362003,
+        0.24894000244140624,
+        0.8497898227817662
+      ],
+      "upt_object": [
+        0.18878441905101867,
+        0.7772064208984375,
+        0.4084931055175375,
+        0.9135649108886719
+      ],
+      "yolo_object": [
+        0.2298800048828125,
+        0.8189789826447541,
+        0.39933999633789063,
+        0.9014414194467906
+      ],
+      "object_roi": 2,
+      "iou": 0.4664380096437739,
+      "predicate": "stand_on",
+      "object_instance": "det_144dfc0835ff"
+    },
+    {
+      "case_id": 2,
+      "same_object": "yes",
+      "relation_correct": "yes",
+      "coco_id": 25005,
+      "filename": "COCO_val2014_000000025005.jpg",
+      "text": "a person wearing skis",
+      "subject_roi": [
+        0.07140515168880132,
+        0.10479687452316284,
+        0.8845667247191525,
+        0.8936093330383301
+      ],
+      "upt_object": [
+        0.35732078552246094,
+        0.863229835898405,
+        0.9918666839599609,
+        0.9108060020720392
+      ],
+      "yolo_object": [
+        0.3631381675845287,
+        0.8786874771118164,
+        0.9970491574575527,
+        0.9004843711853028
+      ],
+      "object_roi": 3,
+      "iou": 0.45225490228673815,
+      "predicate": "wear",
+      "object_instance": "det_23e07b93f9a7"
+    },
+    {
+      "case_id": 3,
+      "same_object": "yes",
+      "relation_correct": "yes",
+      "coco_id": 25005,
+      "filename": "COCO_val2014_000000025005.jpg",
+      "text": "a person standing on skis",
+      "subject_roi": [
+        0.07140515168880132,
+        0.10479687452316284,
+        0.8845667247191525,
+        0.8936093330383301
+      ],
+      "upt_object": [
+        0.35732078552246094,
+        0.863229835898405,
+        0.9918666839599609,
+        0.9108060020720392
+      ],
+      "yolo_object": [
+        0.3631381675845287,
+        0.8786874771118164,
+        0.9970491574575527,
+        0.9004843711853028
+      ],
+      "object_roi": 3,
+      "iou": 0.45225490228673815,
+      "predicate": "stand_on",
+      "object_instance": "det_23e07b93f9a7"
+    },
+    {
+      "case_id": 4,
+      "same_object": "yes",
+      "relation_correct": "unclear",
+      "coco_id": 528276,
+      "filename": "COCO_val2014_000000528276.jpg",
+      "text": "a person riding a skateboard",
+      "subject_roi": [
+        0.4466562271118164,
+        0.42374707831711067,
+        0.5098437309265137,
+        0.6044964756842799
+      ],
+      "upt_object": [
+        0.447643340479045,
+        0.579435043334961,
+        0.5115289250645069,
+        0.611900520324707
+      ],
+      "yolo_object": [
+        0.45098438262939455,
+        0.588501155236845,
+        0.5077812671661377,
+        0.6067446992324722
+      ],
+      "object_roi": 1,
+      "iou": 0.4995846216256837,
+      "predicate": "riding",
+      "object_instance": "det_42d34fd955e5"
+    },
+    {
+      "case_id": 5,
+      "same_object": "yes",
+      "relation_correct": "yes",
+      "coco_id": 528276,
+      "filename": "COCO_val2014_000000528276.jpg",
+      "text": "a person standing on a skateboard",
+      "subject_roi": [
+        0.4466562271118164,
+        0.42374707831711067,
+        0.5098437309265137,
+        0.6044964756842799
+      ],
+      "upt_object": [
+        0.447643340479045,
+        0.579435043334961,
+        0.5115289250645069,
+        0.611900520324707
+      ],
+      "yolo_object": [
+        0.45098438262939455,
+        0.588501155236845,
+        0.5077812671661377,
+        0.6067446992324722
+      ],
+      "object_roi": 1,
+      "iou": 0.4995846216256837,
+      "predicate": "stand_on",
+      "object_instance": "det_42d34fd955e5"
+    },
+    {
+      "case_id": 6,
+      "same_object": "no",
+      "relation_correct": "unclear",
+      "coco_id": 80895,
+      "filename": "COCO_val2014_000000080895.jpg",
+      "text": "a person reading a cell phone",
+      "subject_roi": [
+        0.2789843797683716,
+        0.005958333114782969,
+        0.9984531402587891,
+        0.989437484741211
+      ],
+      "upt_object": [
+        0.3227850822749326,
+        0.5727752304077148,
+        0.4334103582500293,
+        0.8142823028564453
+      ],
+      "yolo_object": [
+        0.3194531202316284,
+        0.6810000101725261,
+        0.43704686164855955,
+        0.8032916386922201
+      ],
+      "object_roi": 2,
+      "iou": 0.4907163526688554,
+      "predicate": "read",
+      "object_instance": "det_213caa1e50f1"
+    },
+    {
+      "case_id": 7,
+      "same_object": "no",
+      "relation_correct": "yes",
+      "coco_id": 80895,
+      "filename": "COCO_val2014_000000080895.jpg",
+      "text": "a person holding a cell phone",
+      "subject_roi": [
+        0.2789843797683716,
+        0.005958333114782969,
+        0.9984531402587891,
+        0.989437484741211
+      ],
+      "upt_object": [
+        0.3227850822749326,
+        0.5727752304077148,
+        0.4334103582500293,
+        0.8142823028564453
+      ],
+      "yolo_object": [
+        0.3194531202316284,
+        0.6810000101725261,
+        0.43704686164855955,
+        0.8032916386922201
+      ],
+      "object_roi": 2,
+      "iou": 0.4907163526688554,
+      "predicate": "holding",
+      "object_instance": "det_213caa1e50f1"
+    },
+    {
+      "case_id": 8,
+      "same_object": "yes",
+      "relation_correct": "yes",
+      "coco_id": 336431,
+      "filename": "COCO_val2014_000000336431.jpg",
+      "text": "a person holding a toothbrush",
+      "subject_roi": [
+        0.10564732551574707,
+        0.10807812213897705,
+        0.9012276785714286,
+        0.9904999732971191
+      ],
+      "upt_object": [
+        0.18619701385498047,
+        0.10627414549712333,
+        0.34645469665527345,
+        0.437118770779745
+      ],
+      "yolo_object": [
+        0.25430803639548166,
+        0.10932812690734864,
+        0.3379241057804653,
+        0.42618751525878906
+      ],
+      "object_roi": 2,
+      "iou": 0.4997046437267972,
+      "predicate": "holding",
+      "object_instance": "det_b468a0f6162a"
+    },
+    {
+      "case_id": 9,
+      "same_object": "yes",
+      "relation_correct": "yes",
+      "coco_id": 48554,
+      "filename": "COCO_val2014_000000048554.jpg",
+      "text": "a person riding a skateboard",
+      "subject_roi": [
+        0.24497999572753906,
+        0.6193993829034112,
+        0.293,
+        0.7670870944186374
+      ],
+      "upt_object": [
+        0.2389288020074417,
+        0.7423151397705078,
+        0.30412870561153466,
+        0.7773525238037109
+      ],
+      "yolo_object": [
+        0.24302000427246093,
+        0.7547447502434075,
+        0.29779998779296873,
+        0.7740540833802553
+      ],
+      "object_roi": 8,
+      "iou": 0.46303150913969465,
+      "predicate": "riding",
+      "object_instance": "det_7f57fa797f59"
+    },
+    {
+      "case_id": 10,
+      "same_object": "yes",
+      "relation_correct": "yes",
+      "coco_id": 366822,
+      "filename": "COCO_val2014_000000366822.jpg",
+      "text": "a person holding a snowboard",
+      "subject_roi": [
+        0.10280000305175781,
+        0.2394666748046875,
+        0.4184400024414062,
+        0.984106689453125
+      ],
+      "upt_object": [
+        0.17442721139646605,
+        0.497357177734375,
+        0.3944267000982059,
+        0.9937321472167969
+      ],
+      "yolo_object": [
+        0.18547999572753907,
+        0.504933349609375,
+        0.378739990234375,
+        0.7838400065104166
+      ],
+      "object_roi": 5,
+      "iou": 0.49359334782980324,
+      "predicate": "holding",
+      "object_instance": "det_996a84230a99"
+    },
+    {
+      "case_id": 11,
+      "same_object": "yes",
+      "relation_correct": "yes",
+      "coco_id": 135155,
+      "filename": "COCO_val2014_000000135155.jpg",
+      "text": "a person wearing skis",
+      "subject_roi": [
+        0.24198436737060547,
+        0.5503333409627279,
+        0.2982968807220459,
+        0.7495625178019206
+      ],
+      "upt_object": [
+        0.24347825613970156,
+        0.7067706298828125,
+        0.2982381280322907,
+        0.7617987823486329
+      ],
+      "yolo_object": [
+        0.2506718635559082,
+        0.7242708206176758,
+        0.2935312509536743,
+        0.756624984741211
+      ],
+      "object_roi": 2,
+      "iou": 0.4601811108294064,
+      "predicate": "wear",
+      "object_instance": "det_9cfe365b73f8"
+    },
+    {
+      "case_id": 12,
+      "same_object": "yes",
+      "relation_correct": "yes",
+      "coco_id": 135155,
+      "filename": "COCO_val2014_000000135155.jpg",
+      "text": "a person standing on skis",
+      "subject_roi": [
+        0.24198436737060547,
+        0.5503333409627279,
+        0.2982968807220459,
+        0.7495625178019206
+      ],
+      "upt_object": [
+        0.24347825613970156,
+        0.7067706298828125,
+        0.2982381280322907,
+        0.7617987823486329
+      ],
+      "yolo_object": [
+        0.2506718635559082,
+        0.7242708206176758,
+        0.2935312509536743,
+        0.756624984741211
+      ],
+      "object_roi": 2,
+      "iou": 0.4601811108294064,
+      "predicate": "stand_on",
+      "object_instance": "det_9cfe365b73f8"
+    },
+    {
+      "case_id": 13,
+      "same_object": "yes",
+      "relation_correct": "yes",
+      "coco_id": 135155,
+      "filename": "COCO_val2014_000000135155.jpg",
+      "text": "a person on skis",
+      "subject_roi": [
+        0.24198436737060547,
+        0.5503333409627279,
+        0.2982968807220459,
+        0.7495625178019206
+      ],
+      "upt_object": [
+        0.24347825613970156,
+        0.7067706298828125,
+        0.2982381280322907,
+        0.7617987823486329
+      ],
+      "yolo_object": [
+        0.2506718635559082,
+        0.7242708206176758,
+        0.2935312509536743,
+        0.756624984741211
+      ],
+      "object_roi": 2,
+      "iou": 0.4601811108294064,
+      "predicate": "riding",
+      "object_instance": "det_9cfe365b73f8"
+    },
+    {
+      "case_id": 14,
+      "same_object": "yes",
+      "relation_correct": "yes",
+      "coco_id": 217622,
+      "filename": "COCO_val2014_000000217622.jpg",
+      "text": "a person riding a surfboard",
+      "subject_roi": [
+        0.49721875190734866,
+        0.4014117790670956,
+        0.6520156383514404,
+        0.6470823759191177
+      ],
+      "upt_object": [
+        0.38414143407067586,
+        0.6071509552001954,
+        0.5678990259519051,
+        0.7169354248046875
+      ],
+      "yolo_object": [
+        0.3900781154632568,
+        0.6401647231158089,
+        0.5268437385559082,
+        0.7078352625229779
+      ],
+      "object_roi": 1,
+      "iou": 0.4587651166601786,
+      "predicate": "riding",
+      "object_instance": "det_ec1d734e05e5"
+    },
+    {
+      "case_id": 15,
+      "same_object": "yes",
+      "relation_correct": "unclear",
+      "coco_id": 217622,
+      "filename": "COCO_val2014_000000217622.jpg",
+      "text": "a person standing on a surfboard",
+      "subject_roi": [
+        0.49721875190734866,
+        0.4014117790670956,
+        0.6520156383514404,
+        0.6470823759191177
+      ],
+      "upt_object": [
+        0.38414143407067586,
+        0.6071509552001954,
+        0.5678990259519051,
+        0.7169354248046875
+      ],
+      "yolo_object": [
+        0.3900781154632568,
+        0.6401647231158089,
+        0.5268437385559082,
+        0.7078352625229779
+      ],
+      "object_roi": 1,
+      "iou": 0.4587651166601786,
+      "predicate": "stand_on",
+      "object_instance": "det_ec1d734e05e5"
+    },
+    {
+      "case_id": 16,
+      "same_object": "yes",
+      "relation_correct": "yes",
+      "coco_id": 15303,
+      "filename": "COCO_val2014_000000015303.jpg",
+      "text": "a person riding a surfboard",
+      "subject_roi": [
+        0.3430156230926514,
+        0.07981481501665065,
+        0.6162343978881836,
+        0.4853968140940187
+      ],
+      "upt_object": [
+        0.24849180845884947,
+        0.12514110986886515,
+        0.7213850050001173,
+        0.5332218543395608
+      ],
+      "yolo_object": [
+        0.25679688453674315,
+        0.140343913325557,
+        0.4888750076293945,
+        0.5171428458400504
+      ],
+      "object_roi": 1,
+      "iou": 0.4531423979250723,
+      "predicate": "riding",
+      "object_instance": "det_8c3c806398b9"
+    },
+    {
+      "case_id": 17,
+      "same_object": "yes",
+      "relation_correct": "no",
+      "coco_id": 15303,
+      "filename": "COCO_val2014_000000015303.jpg",
+      "text": "a person standing on a surfboard",
+      "subject_roi": [
+        0.3430156230926514,
+        0.07981481501665065,
+        0.6162343978881836,
+        0.4853968140940187
+      ],
+      "upt_object": [
+        0.24849180845884947,
+        0.12514110986886515,
+        0.7213850050001173,
+        0.5332218543395608
+      ],
+      "yolo_object": [
+        0.25679688453674315,
+        0.140343913325557,
+        0.4888750076293945,
+        0.5171428458400504
+      ],
+      "object_roi": 1,
+      "iou": 0.4531423979250723,
+      "predicate": "stand_on",
+      "object_instance": "det_8c3c806398b9"
+    },
+    {
+      "case_id": 18,
+      "same_object": "yes",
+      "relation_correct": "yes",
+      "coco_id": 294537,
+      "filename": "COCO_val2014_000000294537.jpg",
+      "text": "a person standing on skis",
+      "subject_roi": [
+        0.6600163279016034,
+        0.3567156822852839,
+        0.7906045851364635,
+        0.6740849812825521
+      ],
+      "upt_object": [
+        0.6648792266845703,
+        0.6503560638427734,
+        0.8082583618164062,
+        0.6794855499267578
+      ],
+      "yolo_object": [
+        0.6729738322737949,
+        0.6641340068742341,
+        0.8082516240138634,
+        0.6802450940499898
+      ],
+      "object_roi": 6,
+      "iou": 0.4852938574014861,
+      "predicate": "stand_on",
+      "object_instance": "det_3b75773100c5"
+    },
+    {
+      "case_id": 19,
+      "same_object": "yes",
+      "relation_correct": "yes",
+      "coco_id": 73927,
+      "filename": "COCO_val2014_000000073927.jpg",
+      "text": "a person wielding a baseball bat",
+      "subject_roi": [
+        0.29689061641693115,
+        0.08419928771321035,
+        0.4328437328338623,
+        0.5433451696647019
+      ],
+      "upt_object": [
+        0.22514622777073948,
+        0.11282872909154647,
+        0.3213210922103744,
+        0.15677779760116187
+      ],
+      "yolo_object": [
+        0.23212499618530275,
+        0.12145907853421792,
+        0.3069062471389771,
+        0.14814946999329265
+      ],
+      "object_roi": 4,
+      "iou": 0.472211339394478,
+      "predicate": "wield",
+      "object_instance": "det_13178f55a325"
+    },
+    {
+      "case_id": 20,
+      "same_object": "yes",
+      "relation_correct": "yes",
+      "coco_id": 557596,
+      "filename": "COCO_val2014_000000557596.jpg",
+      "text": "a person holding a tennis racket",
+      "subject_roi": [
+        0.20867611499542885,
+        0.1059999942779541,
+        0.8394090007664746,
+        0.8384843826293945
+      ],
+      "upt_object": [
+        0.1826953887939453,
+        0.0019924268249637824,
+        0.37513137817382813,
+        0.21899378752905474
+      ],
+      "yolo_object": [
+        0.20144207821388335,
+        0.0006250000093132258,
+        0.371702117559194,
+        0.12146874666213989
+      ],
+      "object_roi": 1,
+      "iou": 0.48443020673348536,
+      "predicate": "holding",
+      "object_instance": "det_791a8dcda111"
+    },
+    {
+      "case_id": 21,
+      "same_object": "yes",
+      "relation_correct": "yes",
+      "coco_id": 557596,
+      "filename": "COCO_val2014_000000557596.jpg",
+      "text": "a person swinging a tennis racket",
+      "subject_roi": [
+        0.20867611499542885,
+        0.1059999942779541,
+        0.8394090007664746,
+        0.8384843826293945
+      ],
+      "upt_object": [
+        0.1826953887939453,
+        0.0019924268249637824,
+        0.37513137817382813,
+        0.21899378752905474
+      ],
+      "yolo_object": [
+        0.20144207821388335,
+        0.0006250000093132258,
+        0.371702117559194,
+        0.12146874666213989
+      ],
+      "object_roi": 1,
+      "iou": 0.48443020673348536,
+      "predicate": "swing",
+      "object_instance": "det_791a8dcda111"
+    },
+    {
+      "case_id": 22,
+      "same_object": "yes",
+      "relation_correct": "no",
+      "coco_id": 557596,
+      "filename": "COCO_val2014_000000557596.jpg",
+      "text": "a person carrying a tennis racket",
+      "subject_roi": [
+        0.20867611499542885,
+        0.1059999942779541,
+        0.8394090007664746,
+        0.8384843826293945
+      ],
+      "upt_object": [
+        0.1826953887939453,
+        0.0019924268249637824,
+        0.37513137817382813,
+        0.21899378752905474
+      ],
+      "yolo_object": [
+        0.20144207821388335,
+        0.0006250000093132258,
+        0.371702117559194,
+        0.12146874666213989
+      ],
+      "object_roi": 1,
+      "iou": 0.48443020673348536,
+      "predicate": "carry",
+      "object_instance": "det_791a8dcda111"
+    },
+    {
+      "case_id": 23,
+      "same_object": "yes",
+      "relation_correct": "yes",
+      "coco_id": 29573,
+      "filename": "COCO_val2014_000000029573.jpg",
+      "text": "a person wearing a tie",
+      "subject_roi": [
+        0.11227165954732783,
+        0.016781249642372133,
+        0.9212646484375,
+        0.9995937347412109
+      ],
+      "upt_object": [
+        0.3052156257629395,
+        0.1722833857723233,
+        0.36412139892578127,
+        0.30072869053475554
+      ],
+      "yolo_object": [
+        0.3138641786240303,
+        0.17942187786102295,
+        0.34658080911748024,
+        0.3175156354904175
+      ],
+      "object_roi": 1,
+      "iou": 0.4890404467406889,
+      "predicate": "wear",
+      "object_instance": "det_1cc5319b5533"
+    },
+    {
+      "case_id": 24,
+      "same_object": "yes",
+      "relation_correct": "yes",
+      "coco_id": 131869,
+      "filename": "COCO_val2014_000000131869.jpg",
+      "text": "a person holding a tennis racket",
+      "subject_roi": [
+        0.37256001790364585,
+        0.36207998657226564,
+        0.5568800048828125,
+        0.580260009765625
+      ],
+      "upt_object": [
+        0.5389320755004883,
+        0.3366272373449959,
+        0.645422592163086,
+        0.40266532969519525
+      ],
+      "yolo_object": [
+        0.5575733235677083,
+        0.34682000732421875,
+        0.63517333984375,
+        0.3908599853515625
+      ],
+      "object_roi": 3,
+      "iou": 0.4859632776835211,
+      "predicate": "holding",
+      "object_instance": "det_a2fd79bb295e"
+    },
+    {
+      "case_id": 25,
+      "same_object": "yes",
+      "relation_correct": "yes",
+      "coco_id": 131869,
+      "filename": "COCO_val2014_000000131869.jpg",
+      "text": "a person carrying a tennis racket",
+      "subject_roi": [
+        0.37256001790364585,
+        0.36207998657226564,
+        0.5568800048828125,
+        0.580260009765625
+      ],
+      "upt_object": [
+        0.5389320755004883,
+        0.3366272373449959,
+        0.645422592163086,
+        0.40266532969519525
+      ],
+      "yolo_object": [
+        0.5575733235677083,
+        0.34682000732421875,
+        0.63517333984375,
+        0.3908599853515625
+      ],
+      "object_roi": 3,
+      "iou": 0.4859632776835211,
+      "predicate": "carry",
+      "object_instance": "det_a2fd79bb295e"
+    },
+    {
+      "case_id": 26,
+      "same_object": "yes",
+      "relation_correct": "yes",
+      "coco_id": 131869,
+      "filename": "COCO_val2014_000000131869.jpg",
+      "text": "a person swinging a tennis racket",
+      "subject_roi": [
+        0.37256001790364585,
+        0.36207998657226564,
+        0.5568800048828125,
+        0.580260009765625
+      ],
+      "upt_object": [
+        0.5389320755004883,
+        0.3366272373449959,
+        0.645422592163086,
+        0.40266532969519525
+      ],
+      "yolo_object": [
+        0.5575733235677083,
+        0.34682000732421875,
+        0.63517333984375,
+        0.3908599853515625
+      ],
+      "object_roi": 3,
+      "iou": 0.4859632776835211,
+      "predicate": "swing",
+      "object_instance": "det_a2fd79bb295e"
+    },
+    {
+      "case_id": 27,
+      "same_object": "yes",
+      "relation_correct": "unclear",
+      "coco_id": 30347,
+      "filename": "COCO_val2014_000000030347.jpg",
+      "text": "a person reading a laptop",
+      "subject_roi": [
+        0.33767999267578125,
+        0.06202666727701823,
+        0.7047999877929687,
+        0.39909334309895833
+      ],
+      "upt_object": [
+        0.5591247444081262,
+        0.2494676399230957,
+        0.6684231355534709,
+        0.47418941497802736
+      ],
+      "yolo_object": [
+        0.5750399780273437,
+        0.25002667236328124,
+        0.74497998046875,
+        0.46072001139322916
+      ],
+      "object_roi": 9,
+      "iou": 0.4835184361319553,
+      "predicate": "read",
+      "object_instance": "det_9e266df88e55"
+    },
+    {
+      "case_id": 28,
+      "same_object": "yes",
+      "relation_correct": "yes",
+      "coco_id": 4375,
+      "filename": "COCO_val2014_000000004375.jpg",
+      "text": "a person standing on skis",
+      "subject_roi": [
+        0.09051999664306641,
+        0.6816816816816816,
+        0.1280800018310547,
+        0.8420120560013138
+      ],
+      "upt_object": [
+        0.057249559947195695,
+        0.8205406951904297,
+        0.15579083877042568,
+        0.8533350372314453
+      ],
+      "yolo_object": [
+        0.06206000137329101,
+        0.8312012268616272,
+        0.1563000030517578,
+        0.8478078298024587
+      ],
+      "object_roi": 13,
+      "iou": 0.4804092193208496,
+      "predicate": "stand_on",
+      "object_instance": "det_dfaaade63641"
+    },
+    {
+      "case_id": 29,
+      "same_object": "yes",
+      "relation_correct": "yes",
+      "coco_id": 4375,
+      "filename": "COCO_val2014_000000004375.jpg",
+      "text": "a person wearing skis",
+      "subject_roi": [
+        0.09051999664306641,
+        0.6816816816816816,
+        0.1280800018310547,
+        0.8420120560013138
+      ],
+      "upt_object": [
+        0.057249559947195695,
+        0.8205406951904297,
+        0.15579083877042568,
+        0.8533350372314453
+      ],
+      "yolo_object": [
+        0.06206000137329101,
+        0.8312012268616272,
+        0.1563000030517578,
+        0.8478078298024587
+      ],
+      "object_roi": 13,
+      "iou": 0.4804092193208496,
+      "predicate": "wear",
+      "object_instance": "det_dfaaade63641"
+    }
+  ],
+  "scope": "Human review of selected fallback proposals. No caption generation, cache modification or model training."
+}
