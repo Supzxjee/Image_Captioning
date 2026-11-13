@@ -10,7 +10,7 @@ Cập nhật: 13/11/2026, giờ Việt Nam. File này là bản tóm tắt để
 
 ## Hiện đang ở đâu
 
-- **Relation audit follow-up prepared.** Blind five-beam review for the five neither-labeled VALID pairs; pinned v175 prompt row extractor ready. Await visual labels and Kaggle CPU prompt rows before attributing errors.
+- **Relation audit follow-up labels confirmed.** Five-image full-beam review: 2 alternate-caption opportunities, 1 selected caption accepted, 1 no accepted beam, 1 visually unclear. v175 prompt/ROI rows still pending; source of generation errors remains unresolved. [Result](experiments/clip_patch_baseline/CSA_RELATION_FIVE_BEAMS_RESULT.json).
 
 - **13/11 relation audit labeled 36/36.** 21 both valid, 6 selected correct only, 5 neither, 2 unclear, 2 opportunities to switch to the correct alternative. Sparse yield under conservative trigger; recommend retaining current rerank and deferring verifier. [Result](experiments/clip_patch_baseline/CSA_RELATION_VALID_AUDIT_RESULT.json).
 

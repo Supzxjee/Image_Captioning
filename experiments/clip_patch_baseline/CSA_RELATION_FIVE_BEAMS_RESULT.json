@@ -1,0 +1,46 @@
+{
+  "confirmation": "Assistant draft confirmed by user in chat; no revised export supplied.",
+  "prompt_rows_verified": false,
+  "records": [
+    {
+      "coco_id": 195862,
+      "status": "checked",
+      "correct_beams": [
+        2
+      ],
+      "selected_beam": 0
+    },
+    {
+      "coco_id": 217827,
+      "status": "checked",
+      "correct_beams": [
+        0,
+        4,
+        1
+      ],
+      "selected_beam": 0
+    },
+    {
+      "coco_id": 546160,
+      "status": "unclear",
+      "correct_beams": [],
+      "selected_beam": 3
+    },
+    {
+      "coco_id": 199017,
+      "status": "checked",
+      "correct_beams": [
+        4,
+        0,
+        3
+      ],
+      "selected_beam": 1
+    },
+    {
+      "coco_id": 147386,
+      "status": "checked",
+      "correct_beams": [],
+      "selected_beam": 1
+    }
+  ]
+}
