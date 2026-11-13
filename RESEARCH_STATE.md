@@ -10,7 +10,7 @@ Cập nhật: 13/11/2026, giờ Việt Nam. File này là bản tóm tắt để
 
 ## Hiện đang ở đâu
 
-- **17-image fallback pilot stopped before inference: Kaggle API denied kernels.get on v94.** Notebook accepts an explicit mounted exact-v94 checkpoint with unchanged SHA check. Static checks passed; authorized checkpoint access and GPU run pending.
+- **17-image VALID fallback caption pilot complete.** Exact v94 replay, 17/17 control captions match history; 27/29 proposals applied, 2 blocked by capacity. Five selected captions changed: two equivalent edits, snowboard and baseball examples more specific, laptop posture benefit unclear. No full VALID metric comparison. [Result](experiments/clip_patch_baseline/CSA_RELATION_FALLBACK_CAPTION_PILOT_RESULT.json).
 
 - **VALID selective object IoU fallback review complete.** 29 proposals from 37 near-threshold losses; 22 verified on 15 images, 4 rejected, 3 unclear. 75.86% verified among proposed; coverage limited to 0.30% of VALID images. No caption gains tested. [Result](experiments/clip_patch_baseline/CSA_RELATION_OBJECT_IOU_FALLBACK_RESULT.json).
 

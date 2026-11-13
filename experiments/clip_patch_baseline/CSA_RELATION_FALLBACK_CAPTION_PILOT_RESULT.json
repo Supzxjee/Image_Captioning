@@ -1,0 +1,3830 @@
+{
+  "images": 17,
+  "proposals": 29,
+  "applied": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22,
+    23,
+    24,
+    25,
+    26,
+    27
+  ],
+  "blocked": [
+    {
+      "case_id": 28,
+      "reason": "slot_capacity"
+    },
+    {
+      "case_id": 29,
+      "reason": "slot_capacity"
+    }
+  ],
+  "new_clip_texts": [],
+  "records": [
+    {
+      "coco_id": 122542,
+      "control": {
+        "candidates": [
+          {
+            "ids": [
+              1,
+              4,
+              12,
+              10,
+              23,
+              18,
+              5,
+              157,
+              8,
+              7,
+              74,
+              2,
+              0
+            ],
+            "caption": "a man and woman standing on skis in the snow",
+            "logprob": -4.786560535430908,
+            "clipscore": 0.8118925094604492
+          },
+          {
+            "ids": [
+              1,
+              4,
+              12,
+              10,
+              4,
+              23,
+              18,
+              5,
+              157,
+              8,
+              7,
+              74,
+              2
+            ],
+            "caption": "a man and a woman standing on skis in the snow",
+            "logprob": -4.870022296905518,
+            "clipscore": 0.8088731169700623
+          },
+          {
+            "ids": [
+              1,
+              4,
+              12,
+              10,
+              23,
+              18,
+              8,
+              7,
+              74,
+              5,
+              157,
+              2,
+              0
+            ],
+            "caption": "a man and woman standing in the snow on skis",
+            "logprob": -4.95461368560791,
+            "clipscore": 0.8121106028556824
+          },
+          {
+            "ids": [
+              1,
+              4,
+              12,
+              10,
+              4,
+              23,
+              18,
+              8,
+              7,
+              74,
+              5,
+              157,
+              2
+            ],
+            "caption": "a man and a woman standing in the snow on skis",
+            "logprob": -5.206818103790283,
+            "clipscore": 0.8110256195068359
+          },
+          {
+            "ids": [
+              1,
+              4,
+              12,
+              10,
+              4,
+              23,
+              5,
+              157,
+              8,
+              7,
+              74,
+              2,
+              0
+            ],
+            "caption": "a man and a woman on skis in the snow",
+            "logprob": -5.262452602386475,
+            "clipscore": 0.7850924730300903
+          }
+        ],
+        "rank": 0,
+        "caption": "a man and woman standing on skis in the snow"
+      },
+      "fallback": {
+        "candidates": [
+          {
+            "ids": [
+              1,
+              4,
+              12,
+              10,
+              4,
+              23,
+              18,
+              5,
+              157,
+              8,
+              7,
+              74,
+              2,
+              0
+            ],
+            "caption": "a man and a woman standing on skis in the snow",
+            "logprob": -4.726963043212891,
+            "clipscore": 0.8088731169700623
+          },
+          {
+            "ids": [
+              1,
+              4,
+              12,
+              10,
+              23,
+              18,
+              5,
+              157,
+              8,
+              7,
+              74,
+              2,
+              0,
+              0
+            ],
+            "caption": "a man and woman standing on skis in the snow",
+            "logprob": -4.7895941734313965,
+            "clipscore": 0.8118925094604492
+          },
+          {
+            "ids": [
+              1,
+              4,
+              12,
+              10,
+              4,
+              23,
+              18,
+              8,
+              7,
+              74,
+              5,
+              157,
+              2,
+              0
+            ],
+            "caption": "a man and a woman standing in the snow on skis",
+            "logprob": -5.134585857391357,
+            "clipscore": 0.8110256195068359
+          },
+          {
+            "ids": [
+              1,
+              4,
+              12,
+              10,
+              4,
+              23,
+              5,
+              157,
+              8,
+              7,
+              74,
+              2,
+              0,
+              0
+            ],
+            "caption": "a man and a woman on skis in the snow",
+            "logprob": -5.14382791519165,
+            "clipscore": 0.7850924730300903
+          },
+          {
+            "ids": [
+              1,
+              4,
+              12,
+              10,
+              4,
+              23,
+              47,
+              157,
+              5,
+              4,
+              74,
+              132,
+              234,
+              2
+            ],
+            "caption": "a man and a woman riding skis on a snow covered slope",
+            "logprob": -5.456148624420166,
+            "clipscore": 0.761241614818573
+          }
+        ],
+        "rank": 0,
+        "caption": "a man and a woman standing on skis in the snow"
+      },
+      "historical": "a man and woman standing on skis in the snow",
+      "control_matches_history": true
+    },
+    {
+      "coco_id": 25005,
+      "control": {
+        "candidates": [
+          {
+            "ids": [
+              1,
+              4,
+              12,
+              47,
+              157,
+              32,
+              4,
+              74,
+              132,
+              234,
+              2,
+              0
+            ],
+            "caption": "a man riding skis down a snow covered slope",
+            "logprob": -2.829284429550171,
+            "clipscore": 0.7285524606704712
+          },
+          {
+            "ids": [
+              1,
+              4,
+              12,
+              47,
+              157,
+              241,
+              74,
+              132,
+              209,
+              2,
+              0,
+              0
+            ],
+            "caption": "a man riding skis across snow covered ground",
+            "logprob": -3.0253539085388184,
+            "clipscore": 0.7578176856040955
+          },
+          {
+            "ids": [
+              1,
+              4,
+              31,
+              5,
+              30,
+              157,
+              8,
+              7,
+              74,
+              2,
+              0,
+              0
+            ],
+            "caption": "a person on some skis in the snow",
+            "logprob": -3.8899388313293457,
+            "clipscore": 0.7253769636154175
+          },
+          {
+            "ids": [
+              1,
+              4,
+              12,
+              5,
+              30,
+              157,
+              8,
+              7,
+              74,
+              2,
+              0,
+              0
+            ],
+            "caption": "a man on some skis in the snow",
+            "logprob": -4.0195488929748535,
+            "clipscore": 0.7106956243515015
+          },
+          {
+            "ids": [
+              1,
+              4,
+              12,
+              47,
+              157,
+              5,
+              33,
+              6,
+              74,
+              132,
+              209,
+              2
+            ],
+            "caption": "a man riding skis on top of snow covered ground",
+            "logprob": -4.314706802368164,
+            "clipscore": 0.7282850742340088
+          }
+        ],
+        "rank": 1,
+        "caption": "a man riding skis across snow covered ground"
+      },
+      "fallback": {
+        "candidates": [
+          {
+            "ids": [
+              1,
+              4,
+              12,
+              47,
+              157,
+              32,
+              4,
+              74,
+              132,
+              234,
+              2,
+              0
+            ],
+            "caption": "a man riding skis down a snow covered slope",
+            "logprob": -2.7763540744781494,
+            "clipscore": 0.7285524606704712
+          },
+          {
+            "ids": [
+              1,
+              4,
+              12,
+              47,
+              157,
+              241,
+              74,
+              132,
+              209,
+              2,
+              0,
+              0
+            ],
+            "caption": "a man riding skis across snow covered ground",
+            "logprob": -3.022167444229126,
+            "clipscore": 0.7578176856040955
+          },
+          {
+            "ids": [
+              1,
+              4,
+              12,
+              5,
+              30,
+              157,
+              8,
+              7,
+              74,
+              2,
+              0,
+              0
+            ],
+            "caption": "a man on some skis in the snow",
+            "logprob": -3.907721996307373,
+            "clipscore": 0.7106956243515015
+          },
+          {
+            "ids": [
+              1,
+              4,
+              12,
+              47,
+              157,
+              5,
+              33,
+              6,
+              74,
+              132,
+              209,
+              2
+            ],
+            "caption": "a man riding skis on top of snow covered ground",
+            "logprob": -4.310102939605713,
+            "clipscore": 0.7282850742340088
+          },
+          {
+            "ids": [
+              1,
+              4,
+              12,
+              47,
+              157,
+              32,
+              4,
+              74,
+              132,
+              36,
+              2,
+              0
+            ],
+            "caption": "a man riding skis down a snow covered field",
+            "logprob": -4.838098049163818,
+            "clipscore": 0.7079852819442749
+          }
+        ],
+        "rank": 1,
+        "caption": "a man riding skis across snow covered ground"
+      },
+      "historical": "a man riding skis across snow covered ground",
+      "control_matches_history": true
+    },
+    {
+      "coco_id": 528276,
+      "control": {
+        "candidates": [
+          {
+            "ids": [
+              1,
+              4,
+              12,
+              47,
+              4,
+              91,
+              32,
+              4,
+              191,
+              2,
+              0,
+              0,
+              0,
+              0
+            ],
+            "caption": "a man riding a skateboard down a sidewalk",
+            "logprob": -3.593529224395752,
+            "clipscore": 0.7945668697357178
+          },
+          {
+            "ids": [
+              1,
+              4,
+              12,
+              47,
+              4,
+              91,
+              32,
+              4,
+              24,
+              2,
+              0,
+              0,
+              0,
+              0
+            ],
+            "caption": "a man riding a skateboard down a street",
+            "logprob": -5.06689453125,
+            "clipscore": 0.7738063335418701
+          },
+          {
+            "ids": [
+              1,
+              4,
+              31,
+              47,
+              4,
+              248,
+              119,
+              8,
+              4,
+              138,
+              2,
+              0,
+              0,
+              0
+            ],
+            "caption": "a person riding a skate board in a park",
+            "logprob": -5.135266304016113,
+            "clipscore": 0.8386123776435852
+          },
+          {
+            "ids": [
+              1,
+              4,
+              12,
+              47,
+              4,
+              91,
+              21,
+              13,
+              4,
+              138,
+              2,
+              0,
+              0,
+              0
+            ],
+            "caption": "a man riding a skateboard next to a park",
+            "logprob": -5.61251974105835,
+            "clipscore": 0.8754885792732239
+          },
+          {
+            "ids": [
+              1,
+              4,
+              12,
+              47,
+              4,
+              91,
+              32,
+              4,
+              191,
+              21,
+              13,
+              4,
+              138,
+              2
+            ],
+            "caption": "a man riding a skateboard down a sidewalk next to a park",
+            "logprob": -7.26505184173584,
+            "clipscore": 0.8680907487869263
+          }
+        ],
+        "rank": 3,
+        "caption": "a man riding a skateboard next to a park"
+      },
+      "fallback": {
+        "candidates": [
+          {
+            "ids": [
+              1,
+              4,
+              12,
+              47,
+              4,
+              91,
+              32,
+              4,
+              191,
+              2,
+              0,
+              0,
+              0,
+              0
+            ],
+            "caption": "a man riding a skateboard down a sidewalk",
+            "logprob": -3.469557762145996,
+            "clipscore": 0.7945668697357178
+          },
+          {
+            "ids": [
+              1,
+              4,
+              31,
+              47,
+              4,
+              248,
+              119,
+              8,
+              4,
+              138,
+              2,
+              0,
+              0,
+              0
+            ],
+            "caption": "a person riding a skate board in a park",
+            "logprob": -4.876904010772705,
+            "clipscore": 0.8386123776435852
+          },
+          {
+            "ids": [
+              1,
+              4,
+              31,
+              47,
+              4,
+              248,
+              119,
+              5,
+              4,
+              191,
+              2,
+              0,
+              0,
+              0
+            ],
+            "caption": "a person riding a skate board on a sidewalk",
+            "logprob": -5.036014080047607,
+            "clipscore": 0.7674772143363953
+          },
+          {
+            "ids": [
+              1,
+              4,
+              12,
+              47,
+              4,
+              91,
+              21,
+              13,
+              4,
+              138,
+              2,
+              0,
+              0,
+              0
+            ],
+            "caption": "a man riding a skateboard next to a park",
+            "logprob": -5.4521260261535645,
+            "clipscore": 0.8754885792732239
+          },
+          {
+            "ids": [
+              1,
+              4,
+              12,
+              47,
+              4,
+              91,
+              32,
+              4,
+              191,
+              21,
+              13,
+              4,
+              138,
+              2
+            ],
+            "caption": "a man riding a skateboard down a sidewalk next to a park",
+            "logprob": -7.186395645141602,
+            "clipscore": 0.8680907487869263
+          }
+        ],
+        "rank": 3,
+        "caption": "a man riding a skateboard next to a park"
+      },
+      "historical": "a man riding a skateboard next to a park",
+      "control_matches_history": true
+    },
+    {
+      "coco_id": 80895,
+      "control": {
+        "candidates": [
+          {
+            "ids": [
+              1,
+              4,
+              12,
+              10,
+              4,
+              23,
+              72,
+              17,
+              106,
+              175,
+              611,
+              2,
+              0
+            ],
+            "caption": "a man and a woman looking at their cell phones",
+            "logprob": -3.1482748985290527,
+            "clipscore": 0.7394499182701111
+          },
+          {
+            "ids": [
+              1,
+              4,
+              12,
+              10,
+              4,
+              23,
+              20,
+              72,
+              17,
+              106,
+              175,
+              611,
+              2
+            ],
+            "caption": "a man and a woman are looking at their cell phones",
+            "logprob": -4.511116981506348,
+            "clipscore": 0.7273454666137695
+          },
+          {
+            "ids": [
+              1,
+              4,
+              12,
+              10,
+              23,
+              72,
+              17,
+              106,
+              175,
+              611,
+              2,
+              0,
+              0
+            ],
+            "caption": "a man and woman looking at their cell phones",
+            "logprob": -4.5842132568359375,
+            "clipscore": 0.7595741152763367
+          },
+          {
+            "ids": [
+              1,
+              4,
+              12,
+              10,
+              4,
+              23,
+              72,
+              17,
+              106,
+              1748,
+              2,
+              0,
+              0
+            ],
+            "caption": "a man and a woman looking at their cellphones",
+            "logprob": -4.657796859741211,
+            "clipscore": 0.7419005632400513
+          },
+          {
+            "ids": [
+              1,
+              4,
+              12,
+              10,
+              4,
+              23,
+              72,
+              17,
+              4,
+              175,
+              116,
+              2,
+              0
+            ],
+            "caption": "a man and a woman looking at a cell phone",
+            "logprob": -4.822303771972656,
+            "clipscore": 0.7559283971786499
+          }
+        ],
+        "rank": 0,
+        "caption": "a man and a woman looking at their cell phones"
+      },
+      "fallback": {
+        "candidates": [
+          {
+            "ids": [
+              1,
+              4,
+              12,
+              10,
+              4,
+              23,
+              72,
+              17,
+              106,
+              175,
+              611,
+              2,
+              0
+            ],
+            "caption": "a man and a woman looking at their cell phones",
+            "logprob": -3.2561726570129395,
+            "clipscore": 0.7394499182701111
+          },
+          {
+            "ids": [
+              1,
+              4,
+              12,
+              10,
+              4,
+              23,
+              72,
+              17,
+              106,
+              1748,
+              2,
+              0,
+              0
+            ],
+            "caption": "a man and a woman looking at their cellphones",
+            "logprob": -4.506885051727295,
+            "clipscore": 0.7419005632400513
+          },
+          {
+            "ids": [
+              1,
+              4,
+              12,
+              10,
+              4,
+              23,
+              20,
+              72,
+              17,
+              106,
+              175,
+              611,
+              2
+            ],
+            "caption": "a man and a woman are looking at their cell phones",
+            "logprob": -4.615138530731201,
+            "clipscore": 0.7273454666137695
+          },
+          {
+            "ids": [
+              1,
+              4,
+              12,
+              10,
+              4,
+              23,
+              72,
+              17,
+              4,
+              175,
+              116,
+              2,
+              0
+            ],
+            "caption": "a man and a woman looking at a cell phone",
+            "logprob": -4.703471660614014,
+            "clipscore": 0.7559283971786499
+          },
+          {
+            "ids": [
+              1,
+              4,
+              12,
+              10,
+              23,
+              72,
+              17,
+              106,
+              175,
+              611,
+              2,
+              0,
+              0
+            ],
+            "caption": "a man and woman looking at their cell phones",
+            "logprob": -4.712957382202148,
+            "clipscore": 0.7595741152763367
+          }
+        ],
+        "rank": 0,
+        "caption": "a man and a woman looking at their cell phones"
+      },
+      "historical": "a man and a woman looking at their cell phones",
+      "control_matches_history": true
+    },
+    {
+      "coco_id": 336431,
+      "control": {
+        "candidates": [
+          {
+            "ids": [
+              1,
+              4,
+              50,
+              80,
+              14,
+              8,
+              4,
+              167,
+              27,
+              4,
+              662,
+              2,
+              0,
+              0
+            ],
+            "caption": "a young boy sitting in a chair holding a toothbrush",
+            "logprob": -6.721066474914551,
+            "clipscore": 0.8095425963401794
+          },
+          {
+            "ids": [
+              1,
+              4,
+              50,
+              80,
+              8,
+              4,
+              48,
+              178,
+              27,
+              4,
+              662,
+              2,
+              0,
+              0
+            ],
+            "caption": "a young boy in a red shirt holding a toothbrush",
+            "logprob": -6.982616901397705,
+            "clipscore": 0.8793646097183228
+          },
+          {
+            "ids": [
+              1,
+              4,
+              50,
+              80,
+              8,
+              4,
+              48,
+              178,
+              27,
+              35,
+              4,
+              662,
+              2,
+              0
+            ],
+            "caption": "a young boy in a red shirt holding up a toothbrush",
+            "logprob": -8.4434175491333,
+            "clipscore": 0.9062767624855042
+          },
+          {
+            "ids": [
+              1,
+              4,
+              50,
+              80,
+              8,
+              4,
+              48,
+              178,
+              27,
+              4,
+              499,
+              694,
+              2,
+              0
+            ],
+            "caption": "a young boy in a red shirt holding a plastic container",
+            "logprob": -9.069226264953613,
+            "clipscore": 0.7144026756286621
+          },
+          {
+            "ids": [
+              1,
+              4,
+              50,
+              80,
+              8,
+              4,
+              48,
+              178,
+              27,
+              35,
+              4,
+              499,
+              662,
+              2
+            ],
+            "caption": "a young boy in a red shirt holding up a plastic toothbrush",
+            "logprob": -10.289887428283691,
+            "clipscore": 0.9281218647956848
+          }
+        ],
+        "rank": 1,
+        "caption": "a young boy in a red shirt holding a toothbrush"
+      },
+      "fallback": {
+        "candidates": [
+          {
+            "ids": [
+              1,
+              4,
+              50,
+              80,
+              14,
+              8,
+              4,
+              167,
+              27,
+              4,
+              662,
+              2,
+              0,
+              0
+            ],
+            "caption": "a young boy sitting in a chair holding a toothbrush",
+            "logprob": -6.2770490646362305,
+            "clipscore": 0.8095425963401794
+          },
+          {
+            "ids": [
+              1,
+              4,
+              50,
+              80,
+              8,
+              4,
+              48,
+              178,
+              27,
+              4,
+              662,
+              2,
+              0,
+              0
+            ],
+            "caption": "a young boy in a red shirt holding a toothbrush",
+            "logprob": -6.641229152679443,
+            "clipscore": 0.879364550113678
+          },
+          {
+            "ids": [
+              1,
+              4,
+              50,
+              80,
+              8,
+              4,
+              48,
+              178,
+              27,
+              35,
+              4,
+              662,
+              2,
+              0
+            ],
+            "caption": "a young boy in a red shirt holding up a toothbrush",
+            "logprob": -7.83604621887207,
+            "clipscore": 0.9062768220901489
+          },
+          {
+            "ids": [
+              1,
+              4,
+              50,
+              80,
+              8,
+              4,
+              48,
+              178,
+              27,
+              4,
+              386,
+              6,
+              1070,
+              2
+            ],
+            "caption": "a young boy in a red shirt holding a bottle of milk",
+            "logprob": -9.671343803405762,
+            "clipscore": 0.6930437684059143
+          },
+          {
+            "ids": [
+              1,
+              4,
+              50,
+              80,
+              8,
+              4,
+              48,
+              178,
+              27,
+              4,
+              386,
+              6,
+              3,
+              2
+            ],
+            "caption": "a young boy in a red shirt holding a bottle of <unk>",
+            "logprob": -10.01465892791748,
+            "clipscore": 0.6871494650840759
+          }
+        ],
+        "rank": 1,
+        "caption": "a young boy in a red shirt holding a toothbrush"
+      },
+      "historical": "a young boy in a red shirt holding a toothbrush",
+      "control_matches_history": true
+    },
+    {
+      "coco_id": 48554,
+      "control": {
+        "candidates": [
+          {
+            "ids": [
+              1,
+              4,
+              34,
+              6,
+              406,
+              56,
+              4,
+              93,
+              6,
+              1348,
+              2,
+              0
+            ],
+            "caption": "a group of kids playing a game of basketball",
+            "logprob": -3.9680583477020264,
+            "clipscore": 0.9036502242088318
+          },
+          {
+            "ids": [
+              1,
+              4,
+              34,
+              6,
+              19,
+              56,
+              4,
+              93,
+              6,
+              1348,
+              2,
+              0
+            ],
+            "caption": "a group of people playing a game of basketball",
+            "logprob": -4.313266277313232,
+            "clipscore": 0.8799307346343994
+          },
+          {
+            "ids": [
+              1,
+              4,
+              34,
+              6,
+              50,
+              19,
+              56,
+              4,
+              93,
+              6,
+              1348,
+              2
+            ],
+            "caption": "a group of young people playing a game of basketball",
+            "logprob": -4.519532203674316,
+            "clipscore": 0.9023027420043945
+          },
+          {
+            "ids": [
+              1,
+              4,
+              34,
+              6,
+              268,
+              56,
+              4,
+              93,
+              6,
+              1348,
+              2,
+              0
+            ],
+            "caption": "a group of children playing a game of basketball",
+            "logprob": -4.6158576011657715,
+            "clipscore": 0.8855413198471069
+          },
+          {
+            "ids": [
+              1,
+              4,
+              34,
+              6,
+              50,
+              268,
+              56,
+              4,
+              93,
+              6,
+              1348,
+              2
+            ],
+            "caption": "a group of young children playing a game of basketball",
+            "logprob": -5.309093475341797,
+            "clipscore": 0.8715927600860596
+          }
+        ],
+        "rank": 0,
+        "caption": "a group of kids playing a game of basketball"
+      },
+      "fallback": {
+        "candidates": [
+          {
+            "ids": [
+              1,
+              4,
+              34,
+              6,
+              406,
+              56,
+              4,
+              93,
+              6,
+              1348,
+              2,
+              0
+            ],
+            "caption": "a group of kids playing a game of basketball",
+            "logprob": -4.197355270385742,
+            "clipscore": 0.9036502242088318
+          },
+          {
+            "ids": [
+              1,
+              4,
+              34,
+              6,
+              19,
+              56,
+              4,
+              93,
+              6,
+              1348,
+              2,
+              0
+            ],
+            "caption": "a group of people playing a game of basketball",
+            "logprob": -4.632476329803467,
+            "clipscore": 0.8799307346343994
+          },
+          {
+            "ids": [
+              1,
+              4,
+              34,
+              6,
+              50,
+              19,
+              56,
+              4,
+              93,
+              6,
+              1348,
+              2
+            ],
+            "caption": "a group of young people playing a game of basketball",
+            "logprob": -4.888717174530029,
+            "clipscore": 0.9023027420043945
+          },
+          {
+            "ids": [
+              1,
+              4,
+              34,
+              6,
+              268,
+              56,
+              4,
+              93,
+              6,
+              1348,
+              2,
+              0
+            ],
+            "caption": "a group of children playing a game of basketball",
+            "logprob": -4.921205997467041,
+            "clipscore": 0.8855413198471069
+          },
+          {
+            "ids": [
+              1,
+              4,
+              34,
+              6,
+              50,
+              268,
+              56,
+              4,
+              93,
+              6,
+              1348,
+              2
+            ],
+            "caption": "a group of young children playing a game of basketball",
+            "logprob": -5.718141078948975,
+            "clipscore": 0.8715927600860596
+          }
+        ],
+        "rank": 0,
+        "caption": "a group of kids playing a game of basketball"
+      },
+      "historical": "a group of kids playing a game of basketball",
+      "control_matches_history": true
+    },
+    {
+      "coco_id": 366822,
+      "control": {
+        "candidates": [
+          {
+            "ids": [
+              1,
+              4,
+              34,
+              6,
+              19,
+              18,
+              21,
+              13,
+              135,
+              71,
+              8,
+              7,
+              74,
+              2
+            ],
+            "caption": "a group of people standing next to each other in the snow",
+            "logprob": -4.0724921226501465,
+            "clipscore": 0.7057092189788818
+          },
+          {
+            "ids": [
+              1,
+              4,
+              34,
+              6,
+              19,
+              26,
+              20,
+              18,
+              8,
+              7,
+              74,
+              2,
+              0,
+              0
+            ],
+            "caption": "a group of people that are standing in the snow",
+            "logprob": -4.263339519500732,
+            "clipscore": 0.6766366958618164
+          },
+          {
+            "ids": [
+              1,
+              4,
+              34,
+              6,
+              19,
+              18,
+              21,
+              13,
+              135,
+              71,
+              2,
+              0,
+              0,
+              0
+            ],
+            "caption": "a group of people standing next to each other",
+            "logprob": -4.424354553222656,
+            "clipscore": 0.6400865316390991
+          },
+          {
+            "ids": [
+              1,
+              4,
+              34,
+              6,
+              19,
+              18,
+              21,
+              13,
+              135,
+              71,
+              27,
+              157,
+              2,
+              0
+            ],
+            "caption": "a group of people standing next to each other holding skis",
+            "logprob": -4.929183006286621,
+            "clipscore": 0.8161519765853882
+          },
+          {
+            "ids": [
+              1,
+              4,
+              34,
+              6,
+              19,
+              18,
+              21,
+              13,
+              135,
+              71,
+              27,
+              74,
+              573,
+              2
+            ],
+            "caption": "a group of people standing next to each other holding snow boards",
+            "logprob": -4.9603142738342285,
+            "clipscore": 0.9015158414840698
+          }
+        ],
+        "rank": 0,
+        "caption": "a group of people standing next to each other in the snow"
+      },
+      "fallback": {
+        "candidates": [
+          {
+            "ids": [
+              1,
+              4,
+              34,
+              6,
+              19,
+              18,
+              21,
+              13,
+              135,
+              71,
+              27,
+              1058,
+              2,
+              0
+            ],
+            "caption": "a group of people standing next to each other holding snowboards",
+            "logprob": -3.6221871376037598,
+            "clipscore": 0.9065708518028259
+          },
+          {
+            "ids": [
+              1,
+              4,
+              34,
+              6,
+              19,
+              18,
+              21,
+              13,
+              135,
+              71,
+              27,
+              74,
+              573,
+              2
+            ],
+            "caption": "a group of people standing next to each other holding snow boards",
+            "logprob": -4.28786039352417,
+            "clipscore": 0.9015158414840698
+          },
+          {
+            "ids": [
+              1,
+              4,
+              34,
+              6,
+              19,
+              26,
+              20,
+              18,
+              8,
+              7,
+              74,
+              2,
+              0,
+              0
+            ],
+            "caption": "a group of people that are standing in the snow",
+            "logprob": -4.5259928703308105,
+            "clipscore": 0.6766366958618164
+          },
+          {
+            "ids": [
+              1,
+              4,
+              34,
+              6,
+              19,
+              18,
+              21,
+              13,
+              135,
+              71,
+              8,
+              7,
+              74,
+              2
+            ],
+            "caption": "a group of people standing next to each other in the snow",
+            "logprob": -4.668813705444336,
+            "clipscore": 0.7057092189788818
+          },
+          {
+            "ids": [
+              1,
+              4,
+              34,
+              6,
+              19,
+              18,
+              21,
+              13,
+              135,
+              71,
+              27,
+              4,
+              353,
+              2
+            ],
+            "caption": "a group of people standing next to each other holding a snowboard",
+            "logprob": -5.083817481994629,
+            "clipscore": 0.8930450677871704
+          }
+        ],
+        "rank": 0,
+        "caption": "a group of people standing next to each other holding snowboards"
+      },
+      "historical": "a group of people standing next to each other in the snow",
+      "control_matches_history": true
+    },
+    {
+      "coco_id": 135155,
+      "control": {
+        "candidates": [
+          {
+            "ids": [
+              1,
+              4,
+              34,
+              6,
+              19,
+              47,
+              157,
+              32,
+              4,
+              74,
+              132,
+              234,
+              2
+            ],
+            "caption": "a group of people riding skis down a snow covered slope",
+            "logprob": -3.5907130241394043,
+            "clipscore": 0.6530073285102844
+          },
+          {
+            "ids": [
+              1,
+              4,
+              77,
+              6,
+              19,
+              47,
+              157,
+              32,
+              4,
+              74,
+              132,
+              234,
+              2
+            ],
+            "caption": "a couple of people riding skis down a snow covered slope",
+            "logprob": -3.811044931411743,
+            "clipscore": 0.6681228876113892
+          },
+          {
+            "ids": [
+              1,
+              4,
+              34,
+              6,
+              19,
+              47,
+              157,
+              241,
+              4,
+              74,
+              132,
+              234,
+              2
+            ],
+            "caption": "a group of people riding skis across a snow covered slope",
+            "logprob": -4.573523044586182,
+            "clipscore": 0.6623154878616333
+          },
+          {
+            "ids": [
+              1,
+              4,
+              77,
+              6,
+              19,
+              47,
+              157,
+              241,
+              4,
+              74,
+              132,
+              234,
+              2
+            ],
+            "caption": "a couple of people riding skis across a snow covered slope",
+            "logprob": -4.810797691345215,
+            "clipscore": 0.6788018941879272
+          },
+          {
+            "ids": [
+              1,
+              4,
+              34,
+              6,
+              19,
+              47,
+              157,
+              5,
+              4,
+              74,
+              132,
+              234,
+              2
+            ],
+            "caption": "a group of people riding skis on a snow covered slope",
+            "logprob": -5.450894355773926,
+            "clipscore": 0.6425946354866028
+          }
+        ],
+        "rank": 1,
+        "caption": "a couple of people riding skis down a snow covered slope"
+      },
+      "fallback": {
+        "candidates": [
+          {
+            "ids": [
+              1,
+              4,
+              34,
+              6,
+              19,
+              47,
+              157,
+              32,
+              4,
+              74,
+              132,
+              234,
+              2
+            ],
+            "caption": "a group of people riding skis down a snow covered slope",
+            "logprob": -3.4900474548339844,
+            "clipscore": 0.6530073285102844
+          },
+          {
+            "ids": [
+              1,
+              4,
+              77,
+              6,
+              19,
+              47,
+              157,
+              32,
+              4,
+              74,
+              132,
+              234,
+              2
+            ],
+            "caption": "a couple of people riding skis down a snow covered slope",
+            "logprob": -3.615549087524414,
+            "clipscore": 0.6681228876113892
+          },
+          {
+            "ids": [
+              1,
+              4,
+              34,
+              6,
+              19,
+              47,
+              157,
+              241,
+              4,
+              74,
+              132,
+              234,
+              2
+            ],
+            "caption": "a group of people riding skis across a snow covered slope",
+            "logprob": -4.41611385345459,
+            "clipscore": 0.6623154878616333
+          },
+          {
+            "ids": [
+              1,
+              4,
+              77,
+              6,
+              19,
+              47,
+              157,
+              241,
+              4,
+              74,
+              132,
+              234,
+              2
+            ],
+            "caption": "a couple of people riding skis across a snow covered slope",
+            "logprob": -4.555950164794922,
+            "clipscore": 0.6788018941879272
+          },
+          {
+            "ids": [
+              1,
+              4,
+              34,
+              6,
+              19,
+              47,
+              157,
+              5,
+              4,
+              74,
+              132,
+              234,
+              2
+            ],
+            "caption": "a group of people riding skis on a snow covered slope",
+            "logprob": -5.351673603057861,
+            "clipscore": 0.6425946354866028
+          }
+        ],
+        "rank": 1,
+        "caption": "a couple of people riding skis down a snow covered slope"
+      },
+      "historical": "a couple of people riding skis down a snow covered slope",
+      "control_matches_history": true
+    },
+    {
+      "coco_id": 217622,
+      "control": {
+        "candidates": [
+          {
+            "ids": [
+              1,
+              4,
+              12,
+              47,
+              4,
+              194,
+              5,
+              33,
+              6,
+              4,
+              155,
+              2
+            ],
+            "caption": "a man riding a wave on top of a surfboard",
+            "logprob": -2.6926159858703613,
+            "clipscore": 0.7505669593811035
+          },
+          {
+            "ids": [
+              1,
+              4,
+              31,
+              5,
+              4,
+              155,
+              47,
+              4,
+              194,
+              2,
+              0,
+              0
+            ],
+            "caption": "a person on a surfboard riding a wave",
+            "logprob": -3.5833277702331543,
+            "clipscore": 0.7652666568756104
+          },
+          {
+            "ids": [
+              1,
+              4,
+              12,
+              5,
+              4,
+              155,
+              47,
+              4,
+              194,
+              2,
+              0,
+              0
+            ],
+            "caption": "a man on a surfboard riding a wave",
+            "logprob": -3.6441428661346436,
+            "clipscore": 0.7569940090179443
+          },
+          {
+            "ids": [
+              1,
+              4,
+              31,
+              47,
+              4,
+              194,
+              5,
+              33,
+              6,
+              4,
+              155,
+              2
+            ],
+            "caption": "a person riding a wave on top of a surfboard",
+            "logprob": -3.8263261318206787,
+            "clipscore": 0.7536025047302246
+          },
+          {
+            "ids": [
+              1,
+              4,
+              12,
+              47,
+              4,
+              194,
+              5,
+              4,
+              155,
+              2,
+              0,
+              0
+            ],
+            "caption": "a man riding a wave on a surfboard",
+            "logprob": -4.305006980895996,
+            "clipscore": 0.768049955368042
+          }
+        ],
+        "rank": 1,
+        "caption": "a person on a surfboard riding a wave"
+      },
+      "fallback": {
+        "candidates": [
+          {
+            "ids": [
+              1,
+              4,
+              12,
+              47,
+              4,
+              194,
+              5,
+              33,
+              6,
+              4,
+              155,
+              2
+            ],
+            "caption": "a man riding a wave on top of a surfboard",
+            "logprob": -2.8185875415802,
+            "clipscore": 0.7505669593811035
+          },
+          {
+            "ids": [
+              1,
+              4,
+              31,
+              5,
+              4,
+              155,
+              47,
+              4,
+              194,
+              2,
+              0,
+              0
+            ],
+            "caption": "a person on a surfboard riding a wave",
+            "logprob": -3.5017662048339844,
+            "clipscore": 0.7652666568756104
+          },
+          {
+            "ids": [
+              1,
+              4,
+              12,
+              5,
+              4,
+              155,
+              47,
+              4,
+              194,
+              2,
+              0,
+              0
+            ],
+            "caption": "a man on a surfboard riding a wave",
+            "logprob": -3.5441973209381104,
+            "clipscore": 0.7569940090179443
+          },
+          {
+            "ids": [
+              1,
+              4,
+              31,
+              47,
+              4,
+              307,
+              119,
+              5,
+              4,
+              194,
+              2,
+              0
+            ],
+            "caption": "a person riding a surf board on a wave",
+            "logprob": -3.9484238624572754,
+            "clipscore": 0.7808541655540466
+          },
+          {
+            "ids": [
+              1,
+              4,
+              12,
+              47,
+              4,
+              194,
+              5,
+              4,
+              155,
+              2,
+              0,
+              0
+            ],
+            "caption": "a man riding a wave on a surfboard",
+            "logprob": -4.410067081451416,
+            "clipscore": 0.768049955368042
+          }
+        ],
+        "rank": 3,
+        "caption": "a person riding a surf board on a wave"
+      },
+      "historical": "a person on a surfboard riding a wave",
+      "control_matches_history": true
+    },
+    {
+      "coco_id": 15303,
+      "control": {
+        "candidates": [
+          {
+            "ids": [
+              1,
+              4,
+              12,
+              47,
+              4,
+              194,
+              5,
+              33,
+              6,
+              4,
+              155,
+              2
+            ],
+            "caption": "a man riding a wave on top of a surfboard",
+            "logprob": -2.3176023960113525,
+            "clipscore": 0.7589101195335388
+          },
+          {
+            "ids": [
+              1,
+              4,
+              12,
+              5,
+              4,
+              155,
+              47,
+              4,
+              194,
+              2,
+              0,
+              0
+            ],
+            "caption": "a man on a surfboard riding a wave",
+            "logprob": -3.2225358486175537,
+            "clipscore": 0.7258725762367249
+          },
+          {
+            "ids": [
+              1,
+              4,
+              12,
+              47,
+              4,
+              194,
+              5,
+              4,
+              155,
+              2,
+              0,
+              0
+            ],
+            "caption": "a man riding a wave on a surfboard",
+            "logprob": -3.7367584705352783,
+            "clipscore": 0.7429311275482178
+          },
+          {
+            "ids": [
+              1,
+              4,
+              31,
+              5,
+              4,
+              155,
+              47,
+              4,
+              194,
+              2,
+              0,
+              0
+            ],
+            "caption": "a person on a surfboard riding a wave",
+            "logprob": -3.7978081703186035,
+            "clipscore": 0.7384341955184937
+          },
+          {
+            "ids": [
+              1,
+              4,
+              12,
+              47,
+              4,
+              155,
+              5,
+              33,
+              6,
+              4,
+              194,
+              2
+            ],
+            "caption": "a man riding a surfboard on top of a wave",
+            "logprob": -4.134458065032959,
+            "clipscore": 0.7434531450271606
+          }
+        ],
+        "rank": 0,
+        "caption": "a man riding a wave on top of a surfboard"
+      },
+      "fallback": {
+        "candidates": [
+          {
+            "ids": [
+              1,
+              4,
+              12,
+              47,
+              4,
+              194,
+              5,
+              33,
+              6,
+              4,
+              155,
+              2
+            ],
+            "caption": "a man riding a wave on top of a surfboard",
+            "logprob": -2.3494620323181152,
+            "clipscore": 0.7589101195335388
+          },
+          {
+            "ids": [
+              1,
+              4,
+              12,
+              5,
+              4,
+              155,
+              47,
+              4,
+              194,
+              2,
+              0,
+              0
+            ],
+            "caption": "a man on a surfboard riding a wave",
+            "logprob": -3.207437038421631,
+            "clipscore": 0.7258725762367249
+          },
+          {
+            "ids": [
+              1,
+              4,
+              31,
+              47,
+              4,
+              307,
+              119,
+              5,
+              4,
+              194,
+              2,
+              0
+            ],
+            "caption": "a person riding a surf board on a wave",
+            "logprob": -3.6240978240966797,
+            "clipscore": 0.7539404034614563
+          },
+          {
+            "ids": [
+              1,
+              4,
+              12,
+              47,
+              4,
+              194,
+              5,
+              4,
+              155,
+              2,
+              0,
+              0
+            ],
+            "caption": "a man riding a wave on a surfboard",
+            "logprob": -3.74914288520813,
+            "clipscore": 0.7429311275482178
+          },
+          {
+            "ids": [
+              1,
+              4,
+              12,
+              47,
+              4,
+              155,
+              5,
+              33,
+              6,
+              4,
+              194,
+              2
+            ],
+            "caption": "a man riding a surfboard on top of a wave",
+            "logprob": -3.7994163036346436,
+            "clipscore": 0.7434531450271606
+          }
+        ],
+        "rank": 0,
+        "caption": "a man riding a wave on top of a surfboard"
+      },
+      "historical": "a man riding a wave on top of a surfboard",
+      "control_matches_history": true
+    },
+    {
+      "coco_id": 294537,
+      "control": {
+        "candidates": [
+          {
+            "ids": [
+              1,
+              4,
+              34,
+              6,
+              19,
+              18,
+              5,
+              33,
+              6,
+              4,
+              74,
+              132,
+              234,
+              2,
+              0
+            ],
+            "caption": "a group of people standing on top of a snow covered slope",
+            "logprob": -4.210931777954102,
+            "clipscore": 0.6378964185714722
+          },
+          {
+            "ids": [
+              1,
+              4,
+              34,
+              6,
+              19,
+              5,
+              157,
+              8,
+              7,
+              74,
+              2,
+              0,
+              0,
+              0,
+              0
+            ],
+            "caption": "a group of people on skis in the snow",
+            "logprob": -4.967175006866455,
+            "clipscore": 0.7178051471710205
+          },
+          {
+            "ids": [
+              1,
+              4,
+              12,
+              18,
+              21,
+              13,
+              4,
+              156,
+              5,
+              4,
+              74,
+              132,
+              234,
+              2,
+              0
+            ],
+            "caption": "a man standing next to a child on a snow covered slope",
+            "logprob": -6.054996490478516,
+            "clipscore": 0.6787243485450745
+          },
+          {
+            "ids": [
+              1,
+              4,
+              12,
+              18,
+              21,
+              13,
+              16,
+              268,
+              5,
+              157,
+              2,
+              0,
+              0,
+              0,
+              0
+            ],
+            "caption": "a man standing next to two children on skis",
+            "logprob": -6.247045993804932,
+            "clipscore": 0.811320424079895
+          },
+          {
+            "ids": [
+              1,
+              4,
+              34,
+              6,
+              19,
+              18,
+              5,
+              33,
+              6,
+              4,
+              74,
+              132,
+              269,
+              234,
+              2
+            ],
+            "caption": "a group of people standing on top of a snow covered ski slope",
+            "logprob": -6.37979793548584,
+            "clipscore": 0.6275708675384521
+          }
+        ],
+        "rank": 3,
+        "caption": "a man standing next to two children on skis"
+      },
+      "fallback": {
+        "candidates": [
+          {
+            "ids": [
+              1,
+              4,
+              34,
+              6,
+              19,
+              18,
+              5,
+              33,
+              6,
+              4,
+              74,
+              132,
+              234,
+              2,
+              0
+            ],
+            "caption": "a group of people standing on top of a snow covered slope",
+            "logprob": -4.198863983154297,
+            "clipscore": 0.6378964185714722
+          },
+          {
+            "ids": [
+              1,
+              4,
+              34,
+              6,
+              19,
+              5,
+              157,
+              8,
+              7,
+              74,
+              2,
+              0,
+              0,
+              0,
+              0
+            ],
+            "caption": "a group of people on skis in the snow",
+            "logprob": -4.8211212158203125,
+            "clipscore": 0.7178051471710205
+          },
+          {
+            "ids": [
+              1,
+              4,
+              12,
+              18,
+              21,
+              13,
+              4,
+              156,
+              5,
+              4,
+              74,
+              132,
+              234,
+              2,
+              0
+            ],
+            "caption": "a man standing next to a child on a snow covered slope",
+            "logprob": -6.16231107711792,
+            "clipscore": 0.6787243485450745
+          },
+          {
+            "ids": [
+              1,
+              4,
+              12,
+              18,
+              21,
+              13,
+              16,
+              268,
+              5,
+              157,
+              2,
+              0,
+              0,
+              0,
+              0
+            ],
+            "caption": "a man standing next to two children on skis",
+            "logprob": -6.216744422912598,
+            "clipscore": 0.811320424079895
+          },
+          {
+            "ids": [
+              1,
+              4,
+              34,
+              6,
+              19,
+              18,
+              5,
+              33,
+              6,
+              4,
+              74,
+              132,
+              269,
+              234,
+              2
+            ],
+            "caption": "a group of people standing on top of a snow covered ski slope",
+            "logprob": -6.461379528045654,
+            "clipscore": 0.6275708675384521
+          }
+        ],
+        "rank": 3,
+        "caption": "a man standing next to two children on skis"
+      },
+      "historical": "a man standing next to two children on skis",
+      "control_matches_history": true
+    },
+    {
+      "coco_id": 73927,
+      "control": {
+        "candidates": [
+          {
+            "ids": [
+              1,
+              4,
+              53,
+              89,
+              27,
+              4,
+              161,
+              5,
+              4,
+              36,
+              2,
+              0,
+              0,
+              0
+            ],
+            "caption": "a baseball player holding a bat on a field",
+            "logprob": -3.892167329788208,
+            "clipscore": 0.6819313168525696
+          },
+          {
+            "ids": [
+              1,
+              4,
+              34,
+              6,
+              81,
+              5,
+              4,
+              36,
+              56,
+              53,
+              2,
+              0,
+              0,
+              0
+            ],
+            "caption": "a group of men on a field playing baseball",
+            "logprob": -4.293312072753906,
+            "clipscore": 0.5652742981910706
+          },
+          {
+            "ids": [
+              1,
+              4,
+              12,
+              27,
+              4,
+              53,
+              161,
+              5,
+              4,
+              36,
+              2,
+              0,
+              0,
+              0
+            ],
+            "caption": "a man holding a baseball bat on a field",
+            "logprob": -4.582576751708984,
+            "clipscore": 0.6668599843978882
+          },
+          {
+            "ids": [
+              1,
+              4,
+              53,
+              89,
+              27,
+              4,
+              53,
+              161,
+              5,
+              4,
+              36,
+              2,
+              0,
+              0
+            ],
+            "caption": "a baseball player holding a baseball bat on a field",
+            "logprob": -4.654578685760498,
+            "clipscore": 0.6829994916915894
+          },
+          {
+            "ids": [
+              1,
+              4,
+              34,
+              6,
+              81,
+              5,
+              4,
+              36,
+              56,
+              4,
+              93,
+              6,
+              53,
+              2
+            ],
+            "caption": "a group of men on a field playing a game of baseball",
+            "logprob": -4.770593166351318,
+            "clipscore": 0.5574702024459839
+          }
+        ],
+        "rank": 0,
+        "caption": "a baseball player holding a bat on a field"
+      },
+      "fallback": {
+        "candidates": [
+          {
+            "ids": [
+              1,
+              4,
+              34,
+              6,
+              81,
+              5,
+              4,
+              36,
+              56,
+              53,
+              2,
+              0,
+              0,
+              0
+            ],
+            "caption": "a group of men on a field playing baseball",
+            "logprob": -4.123427867889404,
+            "clipscore": 0.5652742981910706
+          },
+          {
+            "ids": [
+              1,
+              4,
+              53,
+              89,
+              297,
+              4,
+              161,
+              5,
+              4,
+              36,
+              2,
+              0,
+              0,
+              0
+            ],
+            "caption": "a baseball player swinging a bat on a field",
+            "logprob": -4.295496463775635,
+            "clipscore": 0.7095848321914673
+          },
+          {
+            "ids": [
+              1,
+              4,
+              53,
+              89,
+              27,
+              4,
+              161,
+              5,
+              4,
+              36,
+              2,
+              0,
+              0,
+              0
+            ],
+            "caption": "a baseball player holding a bat on a field",
+            "logprob": -4.443450927734375,
+            "clipscore": 0.6819313168525696
+          },
+          {
+            "ids": [
+              1,
+              4,
+              34,
+              6,
+              81,
+              5,
+              4,
+              36,
+              56,
+              4,
+              93,
+              6,
+              53,
+              2
+            ],
+            "caption": "a group of men on a field playing a game of baseball",
+            "logprob": -4.608850479125977,
+            "clipscore": 0.5574702024459839
+          },
+          {
+            "ids": [
+              1,
+              4,
+              53,
+              89,
+              297,
+              4,
+              53,
+              161,
+              5,
+              4,
+              36,
+              2,
+              0,
+              0
+            ],
+            "caption": "a baseball player swinging a baseball bat on a field",
+            "logprob": -4.966578960418701,
+            "clipscore": 0.7096952199935913
+          }
+        ],
+        "rank": 1,
+        "caption": "a baseball player swinging a bat on a field"
+      },
+      "historical": "a baseball player holding a bat on a field",
+      "control_matches_history": true
+    },
+    {
+      "coco_id": 557596,
+      "control": {
+        "candidates": [
+          {
+            "ids": [
+              1,
+              4,
+              23,
+              18,
+              5,
+              4,
+              38,
+              149,
+              27,
+              4,
+              352,
+              2,
+              0,
+              0
+            ],
+            "caption": "a woman standing on a tennis court holding a racquet",
+            "logprob": -2.3026227951049805,
+            "clipscore": 0.7954390048980713
+          },
+          {
+            "ids": [
+              1,
+              4,
+              23,
+              27,
+              4,
+              38,
+              352,
+              5,
+              4,
+              38,
+              149,
+              2,
+              0,
+              0
+            ],
+            "caption": "a woman holding a tennis racquet on a tennis court",
+            "logprob": -2.7982499599456787,
+            "clipscore": 0.7655287981033325
+          },
+          {
+            "ids": [
+              1,
+              4,
+              23,
+              297,
+              4,
+              38,
+              352,
+              5,
+              4,
+              38,
+              149,
+              2,
+              0,
+              0
+            ],
+            "caption": "a woman swinging a tennis racquet on a tennis court",
+            "logprob": -3.7330756187438965,
+            "clipscore": 0.7826775312423706
+          },
+          {
+            "ids": [
+              1,
+              4,
+              23,
+              27,
+              4,
+              38,
+              352,
+              5,
+              33,
+              6,
+              4,
+              38,
+              149,
+              2
+            ],
+            "caption": "a woman holding a tennis racquet on top of a tennis court",
+            "logprob": -4.237220287322998,
+            "clipscore": 0.7730638980865479
+          },
+          {
+            "ids": [
+              1,
+              4,
+              23,
+              18,
+              5,
+              33,
+              6,
+              4,
+              38,
+              149,
+              27,
+              4,
+              352,
+              2
+            ],
+            "caption": "a woman standing on top of a tennis court holding a racquet",
+            "logprob": -4.495509147644043,
+            "clipscore": 0.8148238062858582
+          }
+        ],
+        "rank": 0,
+        "caption": "a woman standing on a tennis court holding a racquet"
+      },
+      "fallback": {
+        "candidates": [
+          {
+            "ids": [
+              1,
+              4,
+              23,
+              18,
+              5,
+              4,
+              38,
+              149,
+              27,
+              4,
+              352,
+              2,
+              0,
+              0
+            ],
+            "caption": "a woman standing on a tennis court holding a racquet",
+            "logprob": -2.272123336791992,
+            "clipscore": 0.7954390048980713
+          },
+          {
+            "ids": [
+              1,
+              4,
+              23,
+              27,
+              4,
+              38,
+              352,
+              5,
+              4,
+              38,
+              149,
+              2,
+              0,
+              0
+            ],
+            "caption": "a woman holding a tennis racquet on a tennis court",
+            "logprob": -2.8050038814544678,
+            "clipscore": 0.7655287981033325
+          },
+          {
+            "ids": [
+              1,
+              4,
+              23,
+              297,
+              4,
+              38,
+              352,
+              5,
+              4,
+              38,
+              149,
+              2,
+              0,
+              0
+            ],
+            "caption": "a woman swinging a tennis racquet on a tennis court",
+            "logprob": -3.706343650817871,
+            "clipscore": 0.7826775312423706
+          },
+          {
+            "ids": [
+              1,
+              4,
+              23,
+              27,
+              4,
+              38,
+              352,
+              5,
+              33,
+              6,
+              4,
+              38,
+              149,
+              2
+            ],
+            "caption": "a woman holding a tennis racquet on top of a tennis court",
+            "logprob": -4.23453950881958,
+            "clipscore": 0.7730638980865479
+          },
+          {
+            "ids": [
+              1,
+              4,
+              23,
+              18,
+              5,
+              33,
+              6,
+              4,
+              38,
+              149,
+              27,
+              4,
+              352,
+              2
+            ],
+            "caption": "a woman standing on top of a tennis court holding a racquet",
+            "logprob": -4.46526575088501,
+            "clipscore": 0.8148238062858582
+          }
+        ],
+        "rank": 0,
+        "caption": "a woman standing on a tennis court holding a racquet"
+      },
+      "historical": "a woman standing on a tennis court holding a racquet",
+      "control_matches_history": true
+    },
+    {
+      "coco_id": 29573,
+      "control": {
+        "candidates": [
+          {
+            "ids": [
+              1,
+              4,
+              12,
+              8,
+              4,
+              263,
+              57,
+              8,
+              41,
+              6,
+              4,
+              70,
+              2,
+              0,
+              0
+            ],
+            "caption": "a man in a suit walking in front of a building",
+            "logprob": -6.454922676086426,
+            "clipscore": 0.752825140953064
+          },
+          {
+            "ids": [
+              1,
+              4,
+              12,
+              8,
+              4,
+              263,
+              57,
+              32,
+              4,
+              70,
+              2,
+              0,
+              0,
+              0,
+              0
+            ],
+            "caption": "a man in a suit walking down a building",
+            "logprob": -6.78110408782959,
+            "clipscore": 0.7308040857315063
+          },
+          {
+            "ids": [
+              1,
+              4,
+              12,
+              8,
+              4,
+              263,
+              10,
+              211,
+              57,
+              8,
+              41,
+              6,
+              4,
+              70,
+              2
+            ],
+            "caption": "a man in a suit and tie walking in front of a building",
+            "logprob": -6.965568542480469,
+            "clipscore": 0.7612793445587158
+          },
+          {
+            "ids": [
+              1,
+              4,
+              12,
+              8,
+              4,
+              263,
+              57,
+              8,
+              41,
+              6,
+              4,
+              22,
+              70,
+              2,
+              0
+            ],
+            "caption": "a man in a suit walking in front of a white building",
+            "logprob": -7.755582332611084,
+            "clipscore": 0.7753843665122986
+          },
+          {
+            "ids": [
+              1,
+              4,
+              12,
+              8,
+              4,
+              263,
+              10,
+              211,
+              57,
+              32,
+              4,
+              70,
+              2,
+              0,
+              0
+            ],
+            "caption": "a man in a suit and tie walking down a building",
+            "logprob": -7.920971870422363,
+            "clipscore": 0.7544101476669312
+          }
+        ],
+        "rank": 0,
+        "caption": "a man in a suit walking in front of a building"
+      },
+      "fallback": {
+        "candidates": [
+          {
+            "ids": [
+              1,
+              4,
+              12,
+              8,
+              4,
+              263,
+              57,
+              8,
+              41,
+              6,
+              4,
+              70,
+              2,
+              0,
+              0
+            ],
+            "caption": "a man in a suit walking in front of a building",
+            "logprob": -6.526908874511719,
+            "clipscore": 0.752825140953064
+          },
+          {
+            "ids": [
+              1,
+              4,
+              12,
+              8,
+              4,
+              263,
+              8,
+              41,
+              6,
+              4,
+              70,
+              2,
+              0,
+              0,
+              0
+            ],
+            "caption": "a man in a suit in front of a building",
+            "logprob": -6.541981220245361,
+            "clipscore": 0.6790788173675537
+          },
+          {
+            "ids": [
+              1,
+              4,
+              12,
+              8,
+              4,
+              263,
+              57,
+              32,
+              7,
+              24,
+              2,
+              0,
+              0,
+              0,
+              0
+            ],
+            "caption": "a man in a suit walking down the street",
+            "logprob": -6.623129844665527,
+            "clipscore": 0.7429238557815552
+          },
+          {
+            "ids": [
+              1,
+              4,
+              12,
+              8,
+              4,
+              263,
+              8,
+              41,
+              6,
+              4,
+              22,
+              70,
+              2,
+              0,
+              0
+            ],
+            "caption": "a man in a suit in front of a white building",
+            "logprob": -6.79937219619751,
+            "clipscore": 0.7042383551597595
+          },
+          {
+            "ids": [
+              1,
+              4,
+              12,
+              8,
+              4,
+              263,
+              10,
+              211,
+              57,
+              8,
+              41,
+              6,
+              4,
+              70,
+              2
+            ],
+            "caption": "a man in a suit and tie walking in front of a building",
+            "logprob": -7.319320201873779,
+            "clipscore": 0.7612793445587158
+          }
+        ],
+        "rank": 0,
+        "caption": "a man in a suit walking in front of a building"
+      },
+      "historical": "a man in a suit walking in front of a building",
+      "control_matches_history": true
+    },
+    {
+      "coco_id": 131869,
+      "control": {
+        "candidates": [
+          {
+            "ids": [
+              1,
+              4,
+              12,
+              27,
+              4,
+              38,
+              352,
+              5,
+              4,
+              38,
+              149,
+              2,
+              0
+            ],
+            "caption": "a man holding a tennis racquet on a tennis court",
+            "logprob": -2.532686233520508,
+            "clipscore": 0.7478598356246948
+          },
+          {
+            "ids": [
+              1,
+              4,
+              12,
+              18,
+              5,
+              4,
+              38,
+              149,
+              27,
+              4,
+              352,
+              2,
+              0
+            ],
+            "caption": "a man standing on a tennis court holding a racquet",
+            "logprob": -2.635521650314331,
+            "clipscore": 0.7588845491409302
+          },
+          {
+            "ids": [
+              1,
+              4,
+              12,
+              18,
+              5,
+              4,
+              38,
+              149,
+              27,
+              4,
+              38,
+              352,
+              2
+            ],
+            "caption": "a man standing on a tennis court holding a tennis racquet",
+            "logprob": -3.4099340438842773,
+            "clipscore": 0.7630959749221802
+          },
+          {
+            "ids": [
+              1,
+              4,
+              12,
+              5,
+              4,
+              38,
+              149,
+              27,
+              4,
+              38,
+              352,
+              2,
+              0
+            ],
+            "caption": "a man on a tennis court holding a tennis racquet",
+            "logprob": -4.425403118133545,
+            "clipscore": 0.7592201232910156
+          },
+          {
+            "ids": [
+              1,
+              4,
+              12,
+              5,
+              4,
+              38,
+              149,
+              27,
+              4,
+              38,
+              207,
+              2,
+              0
+            ],
+            "caption": "a man on a tennis court holding a tennis racket",
+            "logprob": -4.495743751525879,
+            "clipscore": 0.7582675218582153
+          }
+        ],
+        "rank": 1,
+        "caption": "a man standing on a tennis court holding a racquet"
+      },
+      "fallback": {
+        "candidates": [
+          {
+            "ids": [
+              1,
+              4,
+              12,
+              18,
+              5,
+              4,
+              38,
+              149,
+              27,
+              4,
+              352,
+              2,
+              0
+            ],
+            "caption": "a man standing on a tennis court holding a racquet",
+            "logprob": -2.5281479358673096,
+            "clipscore": 0.7588845491409302
+          },
+          {
+            "ids": [
+              1,
+              4,
+              12,
+              27,
+              4,
+              38,
+              352,
+              5,
+              4,
+              38,
+              149,
+              2,
+              0
+            ],
+            "caption": "a man holding a tennis racquet on a tennis court",
+            "logprob": -2.6618967056274414,
+            "clipscore": 0.7478598356246948
+          },
+          {
+            "ids": [
+              1,
+              4,
+              12,
+              18,
+              5,
+              4,
+              38,
+              149,
+              27,
+              4,
+              38,
+              352,
+              2
+            ],
+            "caption": "a man standing on a tennis court holding a tennis racquet",
+            "logprob": -3.866145372390747,
+            "clipscore": 0.7630959749221802
+          },
+          {
+            "ids": [
+              1,
+              4,
+              12,
+              5,
+              4,
+              38,
+              149,
+              27,
+              4,
+              352,
+              2,
+              0,
+              0
+            ],
+            "caption": "a man on a tennis court holding a racquet",
+            "logprob": -4.458446502685547,
+            "clipscore": 0.7542409896850586
+          },
+          {
+            "ids": [
+              1,
+              4,
+              12,
+              5,
+              4,
+              38,
+              149,
+              297,
+              4,
+              38,
+              207,
+              2,
+              0
+            ],
+            "caption": "a man on a tennis court swinging a tennis racket",
+            "logprob": -4.721249103546143,
+            "clipscore": 0.7727307677268982
+          }
+        ],
+        "rank": 0,
+        "caption": "a man standing on a tennis court holding a racquet"
+      },
+      "historical": "a man standing on a tennis court holding a racquet",
+      "control_matches_history": true
+    },
+    {
+      "coco_id": 30347,
+      "control": {
+        "candidates": [
+          {
+            "ids": [
+              1,
+              4,
+              34,
+              6,
+              19,
+              14,
+              108,
+              4,
+              25,
+              9,
+              4,
+              104,
+              2,
+              0,
+              0
+            ],
+            "caption": "a group of people sitting around a table with a laptop",
+            "logprob": -4.026434898376465,
+            "clipscore": 0.7878453731536865
+          },
+          {
+            "ids": [
+              1,
+              4,
+              34,
+              6,
+              19,
+              18,
+              108,
+              4,
+              104,
+              2,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "caption": "a group of people standing around a laptop",
+            "logprob": -4.599802017211914,
+            "clipscore": 0.8070224523544312
+          },
+          {
+            "ids": [
+              1,
+              4,
+              12,
+              18,
+              8,
+              41,
+              6,
+              4,
+              104,
+              115,
+              2,
+              0,
+              0,
+              0,
+              0
+            ],
+            "caption": "a man standing in front of a laptop computer",
+            "logprob": -4.901296615600586,
+            "clipscore": 0.7284177541732788
+          },
+          {
+            "ids": [
+              1,
+              4,
+              34,
+              6,
+              19,
+              14,
+              8,
+              4,
+              123,
+              44,
+              2,
+              0,
+              0,
+              0,
+              0
+            ],
+            "caption": "a group of people sitting in a living room",
+            "logprob": -5.178531646728516,
+            "clipscore": 0.7776094675064087
+          },
+          {
+            "ids": [
+              1,
+              4,
+              34,
+              6,
+              19,
+              14,
+              108,
+              4,
+              25,
+              8,
+              41,
+              6,
+              4,
+              104,
+              2
+            ],
+            "caption": "a group of people sitting around a table in front of a laptop",
+            "logprob": -5.778895378112793,
+            "clipscore": 0.8019497990608215
+          }
+        ],
+        "rank": 1,
+        "caption": "a group of people standing around a laptop"
+      },
+      "fallback": {
+        "candidates": [
+          {
+            "ids": [
+              1,
+              4,
+              34,
+              6,
+              19,
+              14,
+              108,
+              4,
+              25,
+              9,
+              4,
+              104,
+              2
+            ],
+            "caption": "a group of people sitting around a table with a laptop",
+            "logprob": -3.7467896938323975,
+            "clipscore": 0.7878453135490417
+          },
+          {
+            "ids": [
+              1,
+              4,
+              34,
+              6,
+              19,
+              14,
+              108,
+              4,
+              104,
+              115,
+              2,
+              0,
+              0
+            ],
+            "caption": "a group of people sitting around a laptop computer",
+            "logprob": -4.585042953491211,
+            "clipscore": 0.8627384305000305
+          },
+          {
+            "ids": [
+              1,
+              4,
+              34,
+              6,
+              19,
+              14,
+              108,
+              4,
+              104,
+              2,
+              0,
+              0,
+              0
+            ],
+            "caption": "a group of people sitting around a laptop",
+            "logprob": -4.685923099517822,
+            "clipscore": 0.7977246642112732
+          },
+          {
+            "ids": [
+              1,
+              4,
+              34,
+              6,
+              19,
+              14,
+              108,
+              4,
+              123,
+              44,
+              2,
+              0,
+              0
+            ],
+            "caption": "a group of people sitting around a living room",
+            "logprob": -4.689519882202148,
+            "clipscore": 0.7697362303733826
+          },
+          {
+            "ids": [
+              1,
+              4,
+              12,
+              18,
+              8,
+              41,
+              6,
+              4,
+              104,
+              115,
+              2,
+              0,
+              0
+            ],
+            "caption": "a man standing in front of a laptop computer",
+            "logprob": -4.816919326782227,
+            "clipscore": 0.7284176349639893
+          }
+        ],
+        "rank": 1,
+        "caption": "a group of people sitting around a laptop computer"
+      },
+      "historical": "a group of people standing around a laptop",
+      "control_matches_history": true
+    },
+    {
+      "coco_id": 4375,
+      "control": {
+        "candidates": [
+          {
+            "ids": [
+              1,
+              4,
+              34,
+              6,
+              19,
+              18,
+              5,
+              33,
+              6,
+              4,
+              74,
+              132,
+              234,
+              2,
+              0
+            ],
+            "caption": "a group of people standing on top of a snow covered slope",
+            "logprob": -4.3469557762146,
+            "clipscore": 0.7239654064178467
+          },
+          {
+            "ids": [
+              1,
+              4,
+              34,
+              6,
+              19,
+              47,
+              157,
+              5,
+              33,
+              6,
+              4,
+              74,
+              132,
+              234,
+              2
+            ],
+            "caption": "a group of people riding skis on top of a snow covered slope",
+            "logprob": -4.375783920288086,
+            "clipscore": 0.741929292678833
+          },
+          {
+            "ids": [
+              1,
+              4,
+              34,
+              6,
+              19,
+              47,
+              157,
+              5,
+              4,
+              74,
+              132,
+              234,
+              2,
+              0,
+              0
+            ],
+            "caption": "a group of people riding skis on a snow covered slope",
+            "logprob": -4.675079345703125,
+            "clipscore": 0.7618858814239502
+          },
+          {
+            "ids": [
+              1,
+              4,
+              34,
+              6,
+              19,
+              47,
+              157,
+              5,
+              4,
+              247,
+              568,
+              2,
+              0,
+              0,
+              0
+            ],
+            "caption": "a group of people riding skis on a snowy surface",
+            "logprob": -5.30365514755249,
+            "clipscore": 0.7443053722381592
+          },
+          {
+            "ids": [
+              1,
+              4,
+              34,
+              6,
+              19,
+              47,
+              157,
+              32,
+              4,
+              74,
+              132,
+              234,
+              2,
+              0,
+              0
+            ],
+            "caption": "a group of people riding skis down a snow covered slope",
+            "logprob": -5.34440279006958,
+            "clipscore": 0.738639235496521
+          }
+        ],
+        "rank": 2,
+        "caption": "a group of people riding skis on a snow covered slope"
+      },
+      "fallback": {
+        "candidates": [
+          {
+            "ids": [
+              1,
+              4,
+              34,
+              6,
+              19,
+              18,
+              5,
+              33,
+              6,
+              4,
+              74,
+              132,
+              234,
+              2,
+              0
+            ],
+            "caption": "a group of people standing on top of a snow covered slope",
+            "logprob": -4.3469557762146,
+            "clipscore": 0.7239654064178467
+          },
+          {
+            "ids": [
+              1,
+              4,
+              34,
+              6,
+              19,
+              47,
+              157,
+              5,
+              33,
+              6,
+              4,
+              74,
+              132,
+              234,
+              2
+            ],
+            "caption": "a group of people riding skis on top of a snow covered slope",
+            "logprob": -4.375783920288086,
+            "clipscore": 0.741929292678833
+          },
+          {
+            "ids": [
+              1,
+              4,
+              34,
+              6,
+              19,
+              47,
+              157,
+              5,
+              4,
+              74,
+              132,
+              234,
+              2,
+              0,
+              0
+            ],
+            "caption": "a group of people riding skis on a snow covered slope",
+            "logprob": -4.675079345703125,
+            "clipscore": 0.7618858814239502
+          },
+          {
+            "ids": [
+              1,
+              4,
+              34,
+              6,
+              19,
+              47,
+              157,
+              5,
+              4,
+              247,
+              568,
+              2,
+              0,
+              0,
+              0
+            ],
+            "caption": "a group of people riding skis on a snowy surface",
+            "logprob": -5.30365514755249,
+            "clipscore": 0.7443053722381592
+          },
+          {
+            "ids": [
+              1,
+              4,
+              34,
+              6,
+              19,
+              47,
+              157,
+              32,
+              4,
+              74,
+              132,
+              234,
+              2,
+              0,
+              0
+            ],
+            "caption": "a group of people riding skis down a snow covered slope",
+            "logprob": -5.34440279006958,
+            "clipscore": 0.738639235496521
+          }
+        ],
+        "rank": 2,
+        "caption": "a group of people riding skis on a snow covered slope"
+      },
+      "historical": "a group of people riding skis on a snow covered slope",
+      "control_matches_history": true
+    }
+  ],
+  "changed": 5,
+  "control_matches_history": 17,
+  "archive_sha256": "cc0c89e1c9800fdfb422be22b75ecae2a019a8f9b7a34096a5428784941749eb",
+  "changed_caption_review": {
+    "122542": "article only",
+    "217622": "equivalent surfing relation",
+    "366822": "adds supported snowboard detail",
+    "73927": "more specific baseball action, consistent with batting posture",
+    "30347": "posture wording changed; visual benefit unclear for the whole group"
+  }
+}
