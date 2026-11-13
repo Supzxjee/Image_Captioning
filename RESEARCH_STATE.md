@@ -10,7 +10,7 @@ Cập nhật: 13/11/2026, giờ Việt Nam. File này là bản tóm tắt để
 
 ## Hiện đang ở đâu
 
-- **17-image fallback inference pilot ready.** Exact v94 API, saved patches and prompt175, same beam5/CLIP/YOLO rerank in both arms. All 29 automatic proposals considered; capacity blocks reported. Human labels excluded from inference. Syntax, pins and routing checked; real GPU and visual caption review pending.
+- **17-image fallback pilot stopped before inference: Kaggle API denied kernels.get on v94.** Notebook accepts an explicit mounted exact-v94 checkpoint with unchanged SHA check. Static checks passed; authorized checkpoint access and GPU run pending.
 
 - **VALID selective object IoU fallback review complete.** 29 proposals from 37 near-threshold losses; 22 verified on 15 images, 4 rejected, 3 unclear. 75.86% verified among proposed; coverage limited to 0.30% of VALID images. No caption gains tested. [Result](experiments/clip_patch_baseline/CSA_RELATION_OBJECT_IOU_FALLBACK_RESULT.json).
 
