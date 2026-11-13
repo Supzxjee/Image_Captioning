@@ -10,6 +10,8 @@ Cập nhật: 13/11/2026, giờ Việt Nam. File này là bản tóm tắt để
 
 ## Hiện đang ở đâu
 
+- **VALID selective object IoU fallback review ready.** CPU notebook replays exact v175 and screens the 37 near-threshold losses for unique uncontested ROI. Outputs original-image overlays and label form. AST and mocked proposal/competition/tie/strict-subject checks PASS. User-run CPU and visual review pending.
+
 - **VALID endpoint failure replay complete.** Among 207 losses: 123 below IoU, 65 without same-class ROI at either endpoint, 19 collisions. Object endpoint accounts for 103 IoU misses; 37 are in [.45,.50) with subject matched. Recommend inspecting selective object fallback before model changes. [Result](experiments/clip_patch_baseline/CSA_RELATION_MAPPING_FAILURE_REASONS_RESULT.json).
 
 - **VALID relation mapping coverage audit complete.** 207/2526 lost over 130 images. Subjects under 1%: 33/110 lost vs 174/2416. Small subjects with multiple UPT person proposals: 32/92. Among all lost relations, 163 lack only the object in the kept list, 41 only the subject, 3 both. Inspect endpoint failure reasons before modifying matching. [Result](experiments/clip_patch_baseline/CSA_RELATION_MAPPING_VALID_AUDIT_RESULT.json).
