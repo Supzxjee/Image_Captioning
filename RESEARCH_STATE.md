@@ -10,6 +10,8 @@ Cập nhật: 13/11/2026, giờ Việt Nam. File này là bản tóm tắt để
 
 ## Hiện đang ở đâu
 
+- **VALID relation mapping coverage audit ready.** Existing v175 summary shows 207/2526 UPT relations lost. CPU notebook compares exact source-to-mapped retention by subject box size and UPT person count; subgroup results pending Kaggle.
+
 - **Relation audit follow-up complete.** Five VALID prompt exports checked. Horse prompt describes the standing man holding the horse, not the girl on it; elephant has no relation slot; motorcycle sit_on is present, with generic person label and unsupported woman in all beams. No clear case here establishes decoder relation underuse. Keep current alignment pending broader evidence. [Result](experiments/clip_patch_baseline/CSA_RELATION_FIVE_BEAMS_RESULT.json).
 
 - **13/11 relation audit labeled 36/36.** 21 both valid, 6 selected correct only, 5 neither, 2 unclear, 2 opportunities to switch to the correct alternative. Sparse yield under conservative trigger; recommend retaining current rerank and deferring verifier. [Result](experiments/clip_patch_baseline/CSA_RELATION_VALID_AUDIT_RESULT.json).
