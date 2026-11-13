@@ -1,0 +1,450 @@
+{
+  "source": "SCST1500 VALID recovery",
+  "archive_sha256": "44ba1a936d60e30c02269735cf910793d36b34bb5d81b04e7987ee14769273bd",
+  "images": 5000,
+  "eligible": 36,
+  "groups": {
+    "flying / holding": 3,
+    "on / riding": 21,
+    "beside / holding": 4,
+    "beside / on": 4,
+    "beside / flying": 1,
+    "holding / throwing": 1,
+    "holding / walking with": 1,
+    "catching / throwing": 1
+  },
+  "sample": [
+    {
+      "coco_id": 23751,
+      "image": "COCO_val2014_000000023751.jpg",
+      "subject": "man",
+      "object": "kite",
+      "pair": [
+        "a statue of a man holding a kite",
+        "a statue of a man flying a kite"
+      ],
+      "relation_pair": "flying / holding",
+      "selected": "B"
+    },
+    {
+      "coco_id": 209028,
+      "image": "COCO_val2014_000000209028.jpg",
+      "subject": "person",
+      "object": "skateboard",
+      "pair": [
+        "a dog riding a skateboard with a person standing on a skateboard",
+        "a person riding a skateboard with a dog"
+      ],
+      "relation_pair": "on / riding",
+      "selected": "A"
+    },
+    {
+      "coco_id": 299887,
+      "image": "COCO_val2014_000000299887.jpg",
+      "subject": "woman",
+      "object": "motorcycle",
+      "pair": [
+        "a man and a woman standing next to a red motorcycle",
+        "a man and a woman sitting on a motorcycle"
+      ],
+      "relation_pair": "beside / on",
+      "selected": "A"
+    },
+    {
+      "coco_id": 25228,
+      "image": "COCO_val2014_000000025228.jpg",
+      "subject": "woman",
+      "object": "surfboard",
+      "pair": [
+        "a woman riding a surfboard on top of a body of water",
+        "a woman sitting on a surfboard in the water"
+      ],
+      "relation_pair": "on / riding",
+      "selected": "B"
+    },
+    {
+      "coco_id": 195862,
+      "image": "COCO_val2014_000000195862.jpg",
+      "subject": "girl",
+      "object": "horse",
+      "pair": [
+        "a man and a little girl sitting on a horse",
+        "a man and a little girl riding a horse"
+      ],
+      "relation_pair": "on / riding",
+      "selected": "B"
+    },
+    {
+      "coco_id": 499400,
+      "image": "COCO_val2014_000000499400.jpg",
+      "subject": "men",
+      "object": "surfboards",
+      "pair": [
+        "a group of men holding surfboards on a beach",
+        "a group of men standing next to two surfboards"
+      ],
+      "relation_pair": "beside / holding",
+      "selected": "B"
+    },
+    {
+      "coco_id": 73182,
+      "image": "COCO_val2014_000000073182.jpg",
+      "subject": "woman",
+      "object": "motorcycle",
+      "pair": [
+        "a woman sitting on a red motorcycle on a street",
+        "a woman riding a red motorcycle down a street"
+      ],
+      "relation_pair": "on / riding",
+      "selected": "B"
+    },
+    {
+      "coco_id": 464200,
+      "image": "COCO_val2014_000000464200.jpg",
+      "subject": "woman",
+      "object": "frisbee",
+      "pair": [
+        "a woman throwing a frisbee into a frisbee golf basket",
+        "a woman holding a frisbee in a park"
+      ],
+      "relation_pair": "holding / throwing",
+      "selected": "B"
+    },
+    {
+      "coco_id": 430245,
+      "image": "COCO_val2014_000000430245.jpg",
+      "subject": "man",
+      "object": "motorcycle",
+      "pair": [
+        "a man sitting on a motorcycle next to a dog",
+        "a man riding a motorcycle next to a dog"
+      ],
+      "relation_pair": "on / riding",
+      "selected": "A"
+    },
+    {
+      "coco_id": 139781,
+      "image": "COCO_val2014_000000139781.jpg",
+      "subject": "woman",
+      "object": "kite",
+      "pair": [
+        "a woman holding a kite next to a bird",
+        "a woman flying a kite in front of a house"
+      ],
+      "relation_pair": "flying / holding",
+      "selected": "B"
+    },
+    {
+      "coco_id": 432818,
+      "image": "COCO_val2014_000000432818.jpg",
+      "subject": "woman",
+      "object": "kite",
+      "pair": [
+        "a woman standing next to a kite on a beach",
+        "a woman flying a kite with a blue sky in the background"
+      ],
+      "relation_pair": "beside / flying",
+      "selected": "B"
+    },
+    {
+      "coco_id": 456638,
+      "image": "COCO_val2014_000000456638.jpg",
+      "subject": "woman",
+      "object": "suitcase",
+      "pair": [
+        "a woman holding a suitcase next to a train",
+        "a woman standing next to a red suitcase"
+      ],
+      "relation_pair": "beside / holding",
+      "selected": "A"
+    },
+    {
+      "coco_id": 217827,
+      "image": "COCO_val2014_000000217827.jpg",
+      "subject": "men",
+      "object": "surfboard",
+      "pair": [
+        "a group of men standing next to a white surfboard",
+        "a group of young men holding a surfboard"
+      ],
+      "relation_pair": "beside / holding",
+      "selected": "A"
+    },
+    {
+      "coco_id": 528786,
+      "image": "COCO_val2014_000000528786.jpg",
+      "subject": "man",
+      "object": "horse",
+      "pair": [
+        "a statue of a man sitting on a horse",
+        "a statue of a man riding a horse next to a red bus"
+      ],
+      "relation_pair": "on / riding",
+      "selected": "B"
+    },
+    {
+      "coco_id": 544334,
+      "image": "COCO_val2014_000000544334.jpg",
+      "subject": "man",
+      "object": "surfboard",
+      "pair": [
+        "a man standing on a surfboard in the water",
+        "a man riding a surfboard on top of a wave"
+      ],
+      "relation_pair": "on / riding",
+      "selected": "A"
+    },
+    {
+      "coco_id": 29776,
+      "image": "COCO_val2014_000000029776.jpg",
+      "subject": "man",
+      "object": "motorcycle",
+      "pair": [
+        "a man is sitting on a red motorcycle",
+        "a man riding a red motorcycle down a street"
+      ],
+      "relation_pair": "on / riding",
+      "selected": "A"
+    },
+    {
+      "coco_id": 68950,
+      "image": "COCO_val2014_000000068950.jpg",
+      "subject": "man",
+      "object": "surfboard",
+      "pair": [
+        "a man standing on a surfboard in a river",
+        "a man riding a surfboard in a river"
+      ],
+      "relation_pair": "on / riding",
+      "selected": "A"
+    },
+    {
+      "coco_id": 492362,
+      "image": "COCO_val2014_000000492362.jpg",
+      "subject": "man",
+      "object": "skateboard",
+      "pair": [
+        "a man standing on a skateboard next to a woman",
+        "a man riding a skateboard next to a woman"
+      ],
+      "relation_pair": "on / riding",
+      "selected": "B"
+    },
+    {
+      "coco_id": 104406,
+      "image": "COCO_val2014_000000104406.jpg",
+      "subject": "man",
+      "object": "skateboard",
+      "pair": [
+        "a man riding a skateboard down a sidewalk",
+        "a man standing on a skateboard near a body of water"
+      ],
+      "relation_pair": "on / riding",
+      "selected": "B"
+    },
+    {
+      "coco_id": 98801,
+      "image": "COCO_val2014_000000098801.jpg",
+      "subject": "man",
+      "object": "surfboard",
+      "pair": [
+        "a man holding a surfboard on a beach",
+        "a man standing next to a surfboard on a beach"
+      ],
+      "relation_pair": "beside / holding",
+      "selected": "B"
+    },
+    {
+      "coco_id": 214468,
+      "image": "COCO_val2014_000000214468.jpg",
+      "subject": "man",
+      "object": "train",
+      "pair": [
+        "a man standing on a train next to a forest",
+        "a man standing next to a red train"
+      ],
+      "relation_pair": "beside / on",
+      "selected": "B"
+    },
+    {
+      "coco_id": 235130,
+      "image": "COCO_val2014_000000235130.jpg",
+      "subject": "man",
+      "object": "snowboard",
+      "pair": [
+        "a man riding a snowboard on top of a snow covered slope",
+        "a man standing on a snowboard in the snow"
+      ],
+      "relation_pair": "on / riding",
+      "selected": "A"
+    },
+    {
+      "coco_id": 377352,
+      "image": "COCO_val2014_000000377352.jpg",
+      "subject": "men",
+      "object": "motorcycles",
+      "pair": [
+        "two men riding motorcycles on a street",
+        "two men sitting on motorcycles on a street"
+      ],
+      "relation_pair": "on / riding",
+      "selected": "A"
+    },
+    {
+      "coco_id": 546160,
+      "image": "COCO_val2014_000000546160.jpg",
+      "subject": "woman",
+      "object": "umbrella",
+      "pair": [
+        "a woman walking with a white umbrella",
+        "a woman holding a white umbrella in a crowd"
+      ],
+      "relation_pair": "holding / walking with",
+      "selected": "B"
+    },
+    {
+      "coco_id": 465887,
+      "image": "COCO_val2014_000000465887.jpg",
+      "subject": "person",
+      "object": "kite",
+      "pair": [
+        "a person flying a kite in a blue sky",
+        "a person holding a kite in the air"
+      ],
+      "relation_pair": "flying / holding",
+      "selected": "A"
+    },
+    {
+      "coco_id": 199017,
+      "image": "COCO_val2014_000000199017.jpg",
+      "subject": "people",
+      "object": "elephant",
+      "pair": [
+        "a couple of people sitting on an elephant in a river",
+        "two people riding an elephant across a river"
+      ],
+      "relation_pair": "on / riding",
+      "selected": "B"
+    },
+    {
+      "coco_id": 111825,
+      "image": "COCO_val2014_000000111825.jpg",
+      "subject": "man",
+      "object": "skateboard",
+      "pair": [
+        "a man standing on a skateboard in a room",
+        "a man riding a skateboard in a room"
+      ],
+      "relation_pair": "on / riding",
+      "selected": "B"
+    },
+    {
+      "coco_id": 455555,
+      "image": "COCO_val2014_000000455555.jpg",
+      "subject": "boy",
+      "object": "skateboard",
+      "pair": [
+        "a young boy riding a skateboard on a sidewalk",
+        "a boy sitting on a skateboard on a sidewalk"
+      ],
+      "relation_pair": "on / riding",
+      "selected": "A"
+    },
+    {
+      "coco_id": 558661,
+      "image": "COCO_val2014_000000558661.jpg",
+      "subject": "woman",
+      "object": "frisbee",
+      "pair": [
+        "a woman throwing a frisbee in a park",
+        "a woman catching a frisbee in a park"
+      ],
+      "relation_pair": "catching / throwing",
+      "selected": "A"
+    },
+    {
+      "coco_id": 568972,
+      "image": "COCO_val2014_000000568972.jpg",
+      "subject": "man",
+      "object": "motorcycle",
+      "pair": [
+        "a man sitting on a motorcycle next to a child",
+        "a man riding a motorcycle next to a child"
+      ],
+      "relation_pair": "on / riding",
+      "selected": "B"
+    },
+    {
+      "coco_id": 147386,
+      "image": "COCO_val2014_000000147386.jpg",
+      "subject": "woman",
+      "object": "motorcycle",
+      "pair": [
+        "a woman standing next to a red motorcycle",
+        "a woman sitting on a red motorcycle"
+      ],
+      "relation_pair": "beside / on",
+      "selected": "A"
+    },
+    {
+      "coco_id": 94002,
+      "image": "COCO_val2014_000000094002.jpg",
+      "subject": "man",
+      "object": "skateboard",
+      "pair": [
+        "a man standing on a skateboard next to a building",
+        "a man riding a skateboard next to a building"
+      ],
+      "relation_pair": "on / riding",
+      "selected": "A"
+    },
+    {
+      "coco_id": 295945,
+      "image": "COCO_val2014_000000295945.jpg",
+      "subject": "man",
+      "object": "motorcycle",
+      "pair": [
+        "a man sitting on a yellow motorcycle",
+        "a man standing next to a yellow motorcycle"
+      ],
+      "relation_pair": "beside / on",
+      "selected": "B"
+    },
+    {
+      "coco_id": 413043,
+      "image": "COCO_val2014_000000413043.jpg",
+      "subject": "man",
+      "object": "skateboard",
+      "pair": [
+        "a man standing on a skateboard on a street",
+        "a young man riding a skateboard down a street"
+      ],
+      "relation_pair": "on / riding",
+      "selected": "B"
+    },
+    {
+      "coco_id": 373785,
+      "image": "COCO_val2014_000000373785.jpg",
+      "subject": "man",
+      "object": "surfboard",
+      "pair": [
+        "a man standing on a surfboard in the ocean",
+        "a man riding a surfboard in the ocean"
+      ],
+      "relation_pair": "on / riding",
+      "selected": "B"
+    },
+    {
+      "coco_id": 378163,
+      "image": "COCO_val2014_000000378163.jpg",
+      "subject": "man",
+      "object": "motorcycle",
+      "pair": [
+        "a man sitting on a motorcycle with a dog",
+        "a man riding a motorcycle with a dog"
+      ],
+      "relation_pair": "on / riding",
+      "selected": "B"
+    }
+  ]
+}

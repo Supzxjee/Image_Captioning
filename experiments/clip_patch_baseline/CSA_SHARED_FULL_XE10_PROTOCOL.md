@@ -116,3 +116,6 @@ User approved a single Karpathy TEST5000 comparison, with checkpoint pinned to S
 
 ### External baseline scoring comparison
 Check the saved captions from tamvuu/cap-baseline/4 against the frozen Karpathy TEST IDs using the pinned dataset_coco.json imgid to cocoid mapping. Replay CIDEr and CHAIR on CPU without decoding. The reported seed association remains provisional until confirmed.
+
+### VALID audit for relation verification
+Use saved SCST1500 beam5 candidates and frozen rerank choices on VALID5000. Find pairs with the same explicit person noun and object and different relation labels using conservative text rules. Sample up to 40 images, one pair per image with the reranker selection included, balanced across available relation pairs. Hide the selected beam during human review. Report observed wrong-to-right opportunities within this screened sample, not a population rate. No TEST, GPU or new scoring rule yet.

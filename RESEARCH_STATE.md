@@ -10,6 +10,8 @@ Cập nhật: 13/11/2026, giờ Việt Nam. File này là bản tóm tắt để
 
 ## Hiện đang ở đâu
 
+- **13/11 relation verification screening complete.** SCST1500 VALID5000 saved beam/rerank outputs, conservative text matching found 36 unique images with different relation descriptions, 21 on/riding. Blind HTML in Downloads; human labels and actual visual verifier pending. [Sample](experiments/clip_patch_baseline/CSA_RELATION_VALID_AUDIT.json).
+
 - **13/11 external baseline replay complete.** tamvuu/cap-baseline/4 supplied captions, exact Karpathy TEST5000: CIDEr110.7442/CHAIRs10.18% vs local baseline120.5145/5.16%. CIDEr and CHAIRs reproduce reported seed42 rounded values; exact training metadata unverified. [Result](experiments/clip_patch_baseline/TAM_BASELINE_V4_TEST5000_RESULT.json).
 
 - **13/11 frozen SCST1500 TEST complete.** Same TEST5000 and fixed reranker: CIDEr126.6418 vs XE9 125.2307; CHAIRs3.84% vs3.32%. Verified checkpoint lineage, selector, per-image CIDEr and CHAIR counts. Report the CIDEr/ hallucination tradeoff with prior TEST exposure. [Result](experiments/clip_patch_baseline/CSA_SCST_ONLY1500_RERANK_TEST_RESULT.json).
