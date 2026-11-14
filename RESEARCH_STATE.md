@@ -10,7 +10,7 @@ Cập nhật: 13/11/2026, giờ Việt Nam. File này là bản tóm tắt để
 
 ## Hiện đang ở đâu
 
-- **Spatial prompt assisted review provisional.** Visual review of all 24 JPEGs found 4/8 jointly correct for next to, 5/8 above, and 7/8 below. Below reaches the numerical gate in the assisted review; verify borderline object/partial-person labels before training. [Labels](experiments/clip_patch_baseline/YOLO_SPATIAL_PROMPT_VALID_ASSISTED_LABELS.json).
+- **Spatial prompt review complete.** User-reviewed prefilled labels: next to 6/8, above 3/8, below 7/8 jointly correct. Only below passes the prespecified small-sample gate. A matched below-only XE pilot remains a candidate pending agreement on scope and budget. [Result](experiments/clip_patch_baseline/YOLO_SPATIAL_PROMPT_VALID_USER_REVIEW_RESULT.json).
 
 - **Spatial prompt VALID coverage complete.** 702/5000 with candidates, including 445/3786 without a v175 UPT relation. 24 unique review images, eight per predicate, four per repeated-class stratum. Human review pending before any XE pilot. [Result](experiments/clip_patch_baseline/YOLO_SPATIAL_PROMPT_VALID_AUDIT_RESULT.json).
 

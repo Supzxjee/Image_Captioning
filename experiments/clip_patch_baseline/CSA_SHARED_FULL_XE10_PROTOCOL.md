@@ -149,3 +149,5 @@ Detector-box probe result: 4/8 eligible, 2/4 correct in both views with no decis
 
 ### Spatial prompt feasibility on Karpathy VALID
 User approved a CPU-only audit before an XE pilot. From the pinned YOLO cache, generate person/object spatial prompts for next to, above and below with conservative, fixed box rules. Keep original ROI indices. Skip pairs already linked by v175 in either order and report coverage, including images without a v175 relation. Sample up to 24 prompts with seed 1411, balanced by relation and presence of repeated endpoint classes, at most one per image. Review both box identity and visible relation. Require at least six reviewed examples per relation and at least 80% jointly correct in a relation before considering it for training. Review sample is stratified; do not generalize its precision to the whole split. No train, TEST or automatic promotion.
+
+User-reviewed spatial prompts: next to 6/8, above 3/8, below 7/8 jointly correct. Only below passes the review gate. Candidate for a matched XE pilot, with no evidence yet of CIDEr or CHAIR impact.

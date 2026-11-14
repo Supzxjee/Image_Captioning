@@ -1,0 +1,194 @@
+{
+  "review_type": "user_review_of_prefilled_assistant_labels",
+  "archive_sha256": "a35e2b95f74b5cc811e87fc43006f746dc121820709bbc82804766c6c771dac5",
+  "labels_sha256": "e11e4c53ecdb92eb1cdae482b2bd31fb3df590edaabdc71a2877a1b2cd87377d",
+  "summary": {
+    "next to": {
+      "joint_correct": 6,
+      "total": 8,
+      "meets_gate": false
+    },
+    "above": {
+      "joint_correct": 3,
+      "total": 8,
+      "meets_gate": false
+    },
+    "below": {
+      "joint_correct": 7,
+      "total": 8,
+      "meets_gate": true
+    }
+  },
+  "changes": [
+    {
+      "id": 2,
+      "field": "relation",
+      "initial": "unclear",
+      "reviewed": "yes"
+    },
+    {
+      "id": 3,
+      "field": "relation",
+      "initial": "yes",
+      "reviewed": "no"
+    },
+    {
+      "id": 6,
+      "field": "boxes",
+      "initial": "unclear",
+      "reviewed": "yes"
+    },
+    {
+      "id": 8,
+      "field": "boxes",
+      "initial": "unclear",
+      "reviewed": "yes"
+    },
+    {
+      "id": 8,
+      "field": "relation",
+      "initial": "unclear",
+      "reviewed": "yes"
+    },
+    {
+      "id": 9,
+      "field": "relation",
+      "initial": "yes",
+      "reviewed": "no"
+    },
+    {
+      "id": 10,
+      "field": "boxes",
+      "initial": "unclear",
+      "reviewed": "yes"
+    },
+    {
+      "id": 10,
+      "field": "relation",
+      "initial": "unclear",
+      "reviewed": "no"
+    }
+  ],
+  "records": [
+    {
+      "id": 1,
+      "boxes": "yes",
+      "relation": "yes"
+    },
+    {
+      "id": 2,
+      "boxes": "yes",
+      "relation": "yes"
+    },
+    {
+      "id": 3,
+      "boxes": "yes",
+      "relation": "no"
+    },
+    {
+      "id": 4,
+      "boxes": "yes",
+      "relation": "yes"
+    },
+    {
+      "id": 5,
+      "boxes": "yes",
+      "relation": "yes"
+    },
+    {
+      "id": 6,
+      "boxes": "yes",
+      "relation": "unclear"
+    },
+    {
+      "id": 7,
+      "boxes": "yes",
+      "relation": "yes"
+    },
+    {
+      "id": 8,
+      "boxes": "yes",
+      "relation": "yes"
+    },
+    {
+      "id": 9,
+      "boxes": "yes",
+      "relation": "no"
+    },
+    {
+      "id": 10,
+      "boxes": "yes",
+      "relation": "no"
+    },
+    {
+      "id": 11,
+      "boxes": "yes",
+      "relation": "yes"
+    },
+    {
+      "id": 12,
+      "boxes": "yes",
+      "relation": "yes"
+    },
+    {
+      "id": 13,
+      "boxes": "yes",
+      "relation": "no"
+    },
+    {
+      "id": 14,
+      "boxes": "yes",
+      "relation": "yes"
+    },
+    {
+      "id": 15,
+      "boxes": "yes",
+      "relation": "yes"
+    },
+    {
+      "id": 16,
+      "boxes": "yes",
+      "relation": "unclear"
+    },
+    {
+      "id": 17,
+      "boxes": "yes",
+      "relation": "yes"
+    },
+    {
+      "id": 18,
+      "boxes": "yes",
+      "relation": "yes"
+    },
+    {
+      "id": 19,
+      "boxes": "yes",
+      "relation": "no"
+    },
+    {
+      "id": 20,
+      "boxes": "yes",
+      "relation": "yes"
+    },
+    {
+      "id": 21,
+      "boxes": "yes",
+      "relation": "yes"
+    },
+    {
+      "id": 22,
+      "boxes": "no",
+      "relation": "unclear"
+    },
+    {
+      "id": 23,
+      "boxes": "yes",
+      "relation": "yes"
+    },
+    {
+      "id": 24,
+      "boxes": "yes",
+      "relation": "yes"
+    }
+  ]
+}
