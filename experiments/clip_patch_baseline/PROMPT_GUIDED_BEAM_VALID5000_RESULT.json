@@ -1,0 +1,90 @@
+{
+  "split": "val",
+  "images": 5000,
+  "metrics": {
+    "beam5": {
+      "CIDEr": 1.2575816960650208,
+      "BLEU_1": 0.7924568012964707,
+      "BLEU_4": 0.39035368605663157,
+      "METEOR": 0.2940098834712034,
+      "SPICE": 0.22586698937507568,
+      "ROUGE_L": 0.5891458233960603,
+      "CHAIRs": 0.0406,
+      "CHAIRi": 0.026901789162054317,
+      "Recall": 0.45310145655449524,
+      "counts": {
+        "images": 5000,
+        "hallucinated_captions": 203,
+        "hallucinated_mentions": 209,
+        "object_mentions": 7769,
+        "recalled_unique": 7217,
+        "reference_unique": 15928
+      },
+      "mean_words": 9.5026,
+      "short_le2": 0
+    },
+    "prompt_guided": {
+      "CIDEr": 1.257245960416518,
+      "BLEU_1": 0.7942534089946475,
+      "BLEU_4": 0.39132446562300055,
+      "METEOR": 0.29378562748010906,
+      "SPICE": 0.22512631484860784,
+      "ROUGE_L": 0.5894488715352545,
+      "CHAIRs": 0.0394,
+      "CHAIRi": 0.026077975729408728,
+      "Recall": 0.452850326469111,
+      "counts": {
+        "images": 5000,
+        "hallucinated_captions": 197,
+        "hallucinated_mentions": 202,
+        "object_mentions": 7746,
+        "recalled_unique": 7213,
+        "reference_unique": 15928
+      },
+      "mean_words": 9.4456,
+      "short_le2": 0
+    }
+  },
+  "delta": {
+    "CIDEr": -0.00033573564850275517,
+    "CHAIRs": -0.0011999999999999997,
+    "CHAIRi": -0.0008238134326455891,
+    "Recall": -0.00025113008538424353
+  },
+  "origins": {
+    "object": 2633,
+    "fallback": 6857,
+    "relation": 510
+  },
+  "historical_v94": {
+    "CIDEr": 1.2575816960650208,
+    "CHAIRs": 0.0406
+  },
+  "changed_selected_captions": 717,
+  "meets_gate": false,
+  "run_status": {
+    "complete": true,
+    "training": false,
+    "test_used": false,
+    "test_tuning": false,
+    "source_version": "ducanh3/notebook7bc83c4c76/94"
+  },
+  "checkpoint_sha256": "80e1280b9eef216c5db421a738c7a5e0550bb34b1a62a2a13b2c8e76d40b1a24",
+  "selector": {
+    "decoder_weight": 0.3,
+    "clip_weight": 0.4,
+    "object_weight": 0.3,
+    "min_detection_confidence": 0.5,
+    "hallucination_penalty": 1.0,
+    "tie_break": "earlier beam"
+  },
+  "selected_origins": {
+    "fallback": 422,
+    "base": 4250,
+    "object": 283,
+    "relation": 45
+  },
+  "chair_repairs": 16,
+  "chair_new_flags": 10,
+  "archive_sha256": "7091b3b36e76c4362c616e24452ee0460f59b52009d972f5e201a538ab432ac7"
+}

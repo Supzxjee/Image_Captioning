@@ -10,7 +10,7 @@ Cập nhật: 13/11/2026, giờ Việt Nam. File này là bản tóm tắt để
 
 ## Hiện đang ở đâu
 
-- **Prompt-guided five-candidate VALID comparison ready.** Exact v94, 3 retained original beams plus object/relation-guided novel captions or original fallback, 1.5 residual gain, common decoder rescoring and original fixed rerank for both arms. Notebook and embedded source syntax verified; user-run T4x2 pending. No training/TEST. [Notebook](experiments/clip_patch_baseline/CLIP_PATCH_CSA_PROMPT_GUIDED_BEAM_VALID5000_2GPU.ipynb).
+- **Prompt-guided five-candidate VALID comparison complete, gate failed.** Exact v94 and unchanged rerank. CIDEr 125.7582 -> 125.7246, CHAIRs 4.06% -> 3.94%, 717 final captions changed. Keep beam5 as the main pipeline. [Result](experiments/clip_patch_baseline/PROMPT_GUIDED_BEAM_VALID5000_RESULT.json).
 
 - **Object priority ranking complete, gate failed.** On 89 held-out informative TRAIN/restval images, class-aware ridge nDCG@3 .9501 vs area .9467; difference +.00343, paired 95% CI [-.02090, +.02866]. Sample IDs and metric means verified. Defer XE integration under this protocol. [Result](experiments/clip_patch_baseline/OBJECT_PRIORITY_RANK_HOLDOUT_RESULT.json).
 

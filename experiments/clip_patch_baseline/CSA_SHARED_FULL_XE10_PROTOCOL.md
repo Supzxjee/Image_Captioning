@@ -162,3 +162,5 @@ Held-out object priority result: class-aware ridge improves nDCG@3 by .00343 ove
 
 ### Prompt-conditioned candidate generation
 User approved a frozen checkpoint v94 VALID5000 comparison. Keep the original first three beams; replace ranks 4 and 5 with the top distinct candidate from object- or relation-guided decoding respectively. Multiply only the corresponding adapter residual by 1.5, keep the other stream unchanged, and fall back to a distinct original beam when no new candidate is available. Score newly generated sequences under unmodified decoder memory for comparability. Apply the same fixed reranker separately to both five-candidate pools. Compare CIDEr and CHAIRs; the decision requires higher CIDEr and no CHAIRs increase. Same candidate count does not imply equal decoding cost. No training or TEST.
+
+Prompt-guided VALID5000 finished. Beam5 reproduced historical v94. Guided: CIDEr -0.03357 points, CHAIRs -0.12 pp; gate failed. Keep beam5. See PROMPT_GUIDED_BEAM_VALID5000_RESULT.json.
