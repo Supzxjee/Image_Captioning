@@ -10,6 +10,8 @@ Cập nhật: 13/11/2026, giờ Việt Nam. File này là bản tóm tắt để
 
 ## Hiện đang ở đâu
 
+- **14/11 SCST3000 notebook ready.** Continue exact v94 from 1500 to 3000 using cached TRAIN rows 12000:24000, restored Adam and fresh fixed RNG. Keep fixed rerank on VALID5000. Advance only after review against v94 CIDEr 125.7582 and CHAIRs cap 4.20%. Notebook and embedded sources passed static validation. Kaggle run pending. [Notebook](experiments/clip_patch_baseline/CLIP_PATCH_CSA_SCST_RESUME3000_RERANK_VALID5000_2GPU.ipynb).
+
 - **14/11 direct UPT review complete.** User-exported assisted labels for 53 changed pairs: 14 direct UPT preferred, 19 control preferred, 17 equivalent, 3 unclear; 77 identical captions outside review. [Result](experiments/clip_patch_baseline/CSA_DIRECT_UPT_VALID130_BLIND_RESULT.json).
 
 - **14/11 direct UPT VALID130 pilot complete.** Exact v94; all 130 control captions match history; 207 previously dropped proposals restored, 53/130 final captions changed. Qualitative changes include both gains and regressions. Full visual review and aggregate metrics pending. [Result](experiments/clip_patch_baseline/CSA_RELATION_DIRECT_UPT_VALID130_RESULT.json).
