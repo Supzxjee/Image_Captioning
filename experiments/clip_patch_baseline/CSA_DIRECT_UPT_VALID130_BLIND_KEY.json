@@ -1,0 +1,320 @@
+[
+  {
+    "coco_id": 376368,
+    "A": "direct_upt",
+    "B": "control",
+    "image_sha256": "ddb8ad9b30d741beea4bd09aaea9ee8b9a8fe5ef2f024b6fe75000230adac40f"
+  },
+  {
+    "coco_id": 296825,
+    "A": "direct_upt",
+    "B": "control",
+    "image_sha256": "c42e8035c0408d770b489931b4ca2eaaf6c9858b420647e19d198ec14ecdde4b"
+  },
+  {
+    "coco_id": 161187,
+    "A": "direct_upt",
+    "B": "control",
+    "image_sha256": "9795d7defbf662062df88c905bda6f249cc8e4c0d0ef5869c9bfeb9f6c9358cf"
+  },
+  {
+    "coco_id": 425676,
+    "A": "control",
+    "B": "direct_upt",
+    "image_sha256": "e45912757d8f3f2808e5410b50b24dd368182bee335f2900e3583f3bdc91750c"
+  },
+  {
+    "coco_id": 259690,
+    "A": "direct_upt",
+    "B": "control",
+    "image_sha256": "d5296545bda4a910e90c0e252423bac9d61d11802d699ab2c27c562b7d00bd40"
+  },
+  {
+    "coco_id": 499400,
+    "A": "control",
+    "B": "direct_upt",
+    "image_sha256": "5ce69265f3aac9a596e446fd3b617fdabb4a53e31e7693745fb84474e612f159"
+  },
+  {
+    "coco_id": 409346,
+    "A": "direct_upt",
+    "B": "control",
+    "image_sha256": "00eb9ea48688ff976f7bf0fcd88f158121196d2c21d45ca316aa26bfcee0d652"
+  },
+  {
+    "coco_id": 207561,
+    "A": "direct_upt",
+    "B": "control",
+    "image_sha256": "b4fb519dcd548355cf5be309860864777690d05230b5198201d8d0ae8a0bbcef"
+  },
+  {
+    "coco_id": 189248,
+    "A": "control",
+    "B": "direct_upt",
+    "image_sha256": "5dac625491c2928dcec8acd40dec5008cc6b5e23ae97af398fa55d6aa83d5edd"
+  },
+  {
+    "coco_id": 308362,
+    "A": "direct_upt",
+    "B": "control",
+    "image_sha256": "b2ae19cdcd8e7fea0d1a3eae1e1b99f1afb2516e1cdb835d861c9805b17155b0"
+  },
+  {
+    "coco_id": 463722,
+    "A": "control",
+    "B": "direct_upt",
+    "image_sha256": "6f97a7c69ddd0ab36a07f206842ac9daed4f5ddd893288b43cfc786a38505ef1"
+  },
+  {
+    "coco_id": 336431,
+    "A": "control",
+    "B": "direct_upt",
+    "image_sha256": "4c17b31e2ecc89d08d97cf856fd8b725e361693ff649e5f0111b82df5c00434b"
+  },
+  {
+    "coco_id": 379048,
+    "A": "control",
+    "B": "direct_upt",
+    "image_sha256": "d0ea514285b73bafac19e106dc6b54043b3d9f1ef69cb15c26c72ffbdcfe7363"
+  },
+  {
+    "coco_id": 76822,
+    "A": "direct_upt",
+    "B": "control",
+    "image_sha256": "5c06963277a901764d8dfc2bbf480b28364aa9c0226c9906cd6c0480dd65b262"
+  },
+  {
+    "coco_id": 199017,
+    "A": "control",
+    "B": "direct_upt",
+    "image_sha256": "45be9bd59986b301f0d43e19ca287ad7b5edff50b67f43185135ccd28482ec53"
+  },
+  {
+    "coco_id": 543402,
+    "A": "control",
+    "B": "direct_upt",
+    "image_sha256": "ac9cf92b89f3d4ad33ad327e30d31e4a4b92de631fefff193f357e259b56ae69"
+  },
+  {
+    "coco_id": 389123,
+    "A": "direct_upt",
+    "B": "control",
+    "image_sha256": "3c203eb6626c81ad81cb8077fa75420ad575206710161df9b3596307c9878f20"
+  },
+  {
+    "coco_id": 270097,
+    "A": "direct_upt",
+    "B": "control",
+    "image_sha256": "09949a0ed2014b00658fb9690d1b53b736a5c0f042d12f71d5a9cf6527f02906"
+  },
+  {
+    "coco_id": 36607,
+    "A": "direct_upt",
+    "B": "control",
+    "image_sha256": "fd2a17b65c84cb5795a825499aa10596b8658b1c8dc590ee040acaf70a15a640"
+  },
+  {
+    "coco_id": 154816,
+    "A": "direct_upt",
+    "B": "control",
+    "image_sha256": "9adf20cc383c8fb52672a473369b56e128d3beb260564224dfce83839a76b926"
+  },
+  {
+    "coco_id": 314757,
+    "A": "control",
+    "B": "direct_upt",
+    "image_sha256": "1626fead44f6142d9e0c82fe5e00fbf2b585ad14d085aa0f26acbf13a35de7d1"
+  },
+  {
+    "coco_id": 511379,
+    "A": "direct_upt",
+    "B": "control",
+    "image_sha256": "d3b524785ed17e5672850c82ebc0ed4002052f34e2b3f4a1d49c9e1fea05ca05"
+  },
+  {
+    "coco_id": 505099,
+    "A": "direct_upt",
+    "B": "control",
+    "image_sha256": "6174f5d75f00dcb636ba8884c97ae112a49869489a25524f037f27668419099a"
+  },
+  {
+    "coco_id": 18193,
+    "A": "direct_upt",
+    "B": "control",
+    "image_sha256": "ee9037876bab7f2b504cd4be49144bbde27f32ddc05361cd6f3c843c947dd911"
+  },
+  {
+    "coco_id": 276693,
+    "A": "direct_upt",
+    "B": "control",
+    "image_sha256": "4b13991717d3eeade2896744ba28e3e909b182c0e829b37f386af011d1031eb4"
+  },
+  {
+    "coco_id": 16546,
+    "A": "control",
+    "B": "direct_upt",
+    "image_sha256": "a99ba4724dcd00b137d577d25cb54ed87cc52ac823375542abaf0e946315c520"
+  },
+  {
+    "coco_id": 366822,
+    "A": "direct_upt",
+    "B": "control",
+    "image_sha256": "7fb7cffcf05cd409b74bf6faaeb2fac3a2db9ec4ed46fa332f43d02f716a744f"
+  },
+  {
+    "coco_id": 271681,
+    "A": "direct_upt",
+    "B": "control",
+    "image_sha256": "711a5cf3fafedfe15e46dbee827f8e1bc6a5f6ad9fb08c63daf856afe6841c3b"
+  },
+  {
+    "coco_id": 575349,
+    "A": "direct_upt",
+    "B": "control",
+    "image_sha256": "e32e8cb338eb4735acc1e493cdbddff5cae7f90cee81c0f43f2c483d2f36676b"
+  },
+  {
+    "coco_id": 58225,
+    "A": "control",
+    "B": "direct_upt",
+    "image_sha256": "9fc7e1e2fd37aec58136d4cda553f666285996491b78e16a54306891b6926ef3"
+  },
+  {
+    "coco_id": 563885,
+    "A": "control",
+    "B": "direct_upt",
+    "image_sha256": "5a9384569d2d1d01d6a6e0859d69d22341a255aca7112dee87109f12629d0dfb"
+  },
+  {
+    "coco_id": 334309,
+    "A": "direct_upt",
+    "B": "control",
+    "image_sha256": "4ad554c26a5d46b3548b92872606180756fb24786b3ed20819cb38124d85c3c9"
+  },
+  {
+    "coco_id": 5282,
+    "A": "control",
+    "B": "direct_upt",
+    "image_sha256": "2d286da0df7544038e01c2bc2dae4095e8f92ae322b3df388a3a7fbface56659"
+  },
+  {
+    "coco_id": 162580,
+    "A": "control",
+    "B": "direct_upt",
+    "image_sha256": "7d8d43bbadfe446b2a556c0c5c6d0d432f8288c482d7182390f7a1ab5cbd86f8"
+  },
+  {
+    "coco_id": 391463,
+    "A": "direct_upt",
+    "B": "control",
+    "image_sha256": "5f99c7640abfd52cf7026c3f7f26888eb5adb0dba21583d10e59219a96747e9b"
+  },
+  {
+    "coco_id": 30347,
+    "A": "direct_upt",
+    "B": "control",
+    "image_sha256": "1136e04bdc8a729ba237ee8058ee5678bf4ade1d80ab134285d987b3b9e9b5d4"
+  },
+  {
+    "coco_id": 317188,
+    "A": "direct_upt",
+    "B": "control",
+    "image_sha256": "3c82292310e4e844ce44a1f75e4a3b05308398c708d9fb34e40388aa3f5121b5"
+  },
+  {
+    "coco_id": 73927,
+    "A": "direct_upt",
+    "B": "control",
+    "image_sha256": "47a9ebf3343822f0a0b1cf985b54e0ba4de9cc67e07aa8a13f1e2467aac99d49"
+  },
+  {
+    "coco_id": 83925,
+    "A": "control",
+    "B": "direct_upt",
+    "image_sha256": "664127758067128e4b2be61fea490a3d214fe96dcdaa7eac81263bd0ef6159a9"
+  },
+  {
+    "coco_id": 231079,
+    "A": "direct_upt",
+    "B": "control",
+    "image_sha256": "f244223156b9fa3173ab38b0b4a1383e8050fb6ed6153ec44bab610bebee5a84"
+  },
+  {
+    "coco_id": 409241,
+    "A": "control",
+    "B": "direct_upt",
+    "image_sha256": "9277da4159ae3baa64489e9ac1ccedfc368e4be7b1317978485fece5ca3b2de2"
+  },
+  {
+    "coco_id": 124116,
+    "A": "direct_upt",
+    "B": "control",
+    "image_sha256": "b519d4dca23c99921bbd132a525a65acdd8ea39464684b72096b009354663487"
+  },
+  {
+    "coco_id": 94607,
+    "A": "control",
+    "B": "direct_upt",
+    "image_sha256": "cbb826c99825e4a95198d749982a26018a51b3eb65047be03836dfb8be995b7d"
+  },
+  {
+    "coco_id": 327656,
+    "A": "direct_upt",
+    "B": "control",
+    "image_sha256": "1a4cca3fb36d5d6643f957a04c493912c6ea6639c28eebd39a3cbfad30affb09"
+  },
+  {
+    "coco_id": 564355,
+    "A": "direct_upt",
+    "B": "control",
+    "image_sha256": "f5ad1f2e2ad23293ad3d234d215f58c452f72f0ef1a68b0add51b0988e5b2eed"
+  },
+  {
+    "coco_id": 525439,
+    "A": "control",
+    "B": "direct_upt",
+    "image_sha256": "023a7b68203f01cf177bc3888345194e23a47ba7cfefb2775da807da3f2388f2"
+  },
+  {
+    "coco_id": 538414,
+    "A": "direct_upt",
+    "B": "control",
+    "image_sha256": "3acbb8f8c1a5add4a7e43d9c71839c618809f38f1f177f0923fd029f582b9288"
+  },
+  {
+    "coco_id": 328921,
+    "A": "direct_upt",
+    "B": "control",
+    "image_sha256": "a1ce42f4a26f3ce7e738e42401579afef76bfff18a2b63ddd55f93ffe9819975"
+  },
+  {
+    "coco_id": 204757,
+    "A": "direct_upt",
+    "B": "control",
+    "image_sha256": "d2cca8b6bbe2de3919dc26cbe97353b27c270f0919ecbc66f1b22444dafb46bf"
+  },
+  {
+    "coco_id": 561745,
+    "A": "control",
+    "B": "direct_upt",
+    "image_sha256": "219b69c4b4f2707d4b94fa473d7d9c894a50bb90417d6d15584451b97642a927"
+  },
+  {
+    "coco_id": 439522,
+    "A": "direct_upt",
+    "B": "control",
+    "image_sha256": "663545f71af556370c7cba7fd8010a665d00c0b477075562a3d7669c6d853ad3"
+  },
+  {
+    "coco_id": 226008,
+    "A": "direct_upt",
+    "B": "control",
+    "image_sha256": "e8aa62990f1887bc2fc81a27f50f5b7dae8533d24bda58ae87e00882801f9415"
+  },
+  {
+    "coco_id": 304596,
+    "A": "direct_upt",
+    "B": "control",
+    "image_sha256": "13642708be873bdf664e3fbbefacdb1af816724e544079b295e51f3aba2c5000"
+  }
+]

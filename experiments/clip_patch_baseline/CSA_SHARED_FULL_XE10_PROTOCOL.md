@@ -128,3 +128,4 @@ Approved inference pilot: compare original versus automatic IoU fallback on the 
 
 ### 14/11 Direct UPT boxes pilot
 Compare exact v175 versus direct UPT on the 130 affected VALID images with v94, beam5 and fixed rerank. Use UPT boxes for all prompt objects, prioritize relation endpoints, retain 8 object and 3 relation slots, preserve UPT relation order and use existing CLIP text space. Reuse frozen YOLO labels for rerank. Report exposure and paired captions, with visual review before drawing quality conclusions.
+14/11 blind visual review: judge all 53 changed Direct UPT caption pairs with stable randomized A/B assignment, original SHA-verified images, and choices A/B/tie/unclear. Keep the branch key outside the HTML. Results describe changed captions in the affected cohort.

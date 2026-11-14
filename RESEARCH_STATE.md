@@ -10,6 +10,8 @@ Cập nhật: 13/11/2026, giờ Việt Nam. File này là bản tóm tắt để
 
 ## Hiện đang ở đâu
 
+- **14/11 direct UPT blind review prepared.** All 53 changed pairs in a local HTML with original SHA-verified images and randomized A/B, key stored separately. Await labels.
+
 - **14/11 direct UPT VALID130 pilot complete.** Exact v94; all 130 control captions match history; 207 previously dropped proposals restored, 53/130 final captions changed. Qualitative changes include both gains and regressions. Full visual review and aggregate metrics pending. [Result](experiments/clip_patch_baseline/CSA_RELATION_DIRECT_UPT_VALID130_RESULT.json).
 
 - **17-image VALID fallback caption pilot complete.** Exact v94 replay, 17/17 control captions match history; 27/29 proposals applied, 2 blocked by capacity. Five selected captions changed: two equivalent edits, snowboard and baseball examples more specific, laptop posture benefit unclear. No full VALID metric comparison. [Result](experiments/clip_patch_baseline/CSA_RELATION_FALLBACK_CAPTION_PILOT_RESULT.json).
