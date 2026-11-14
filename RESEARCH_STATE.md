@@ -10,6 +10,8 @@ Cập nhật: 13/11/2026, giờ Việt Nam. File này là bản tóm tắt để
 
 ## Hiện đang ở đâu
 
+- **Pair-crop feasibility notebook ready.** Frozen CLIP ViT-B/16 compares whole frames with reviewed union crops on 8 Karpathy train/restval images (16 events). Manifest, crop geometry and notebook syntax verified; runtime pending. [Notebook](experiments/clip_patch_baseline/CLIP_PAIR_CROP_EVIDENCE_PROBE.ipynb).
+
 - **SCST3000 VALID5000 complete, gate failed.** Fixed rerank CIDEr 126.07 vs 125.76 at 1500, CHAIRs 4.62% vs 4.06% (cap 4.20%), CHAIRi 3.04% vs 2.69%. Retain v94 SCST1500 as the preferred SCST checkpoint under the cap. Do not schedule 6000 or a full pass under this protocol. The new run Save Version is unrecorded. [Result](experiments/clip_patch_baseline/CSA_SCST_ONLY3000_RERANK_VALID_RESULT.json).
 
 - **14/11 direct UPT review complete.** User-exported assisted labels for 53 changed pairs: 14 direct UPT preferred, 19 control preferred, 17 equivalent, 3 unclear; 77 identical captions outside review. [Result](experiments/clip_patch_baseline/CSA_DIRECT_UPT_VALID130_BLIND_RESULT.json).
