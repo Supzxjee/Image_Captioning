@@ -1,0 +1,281 @@
+{
+  "images": 130,
+  "split": "val",
+  "recovered_proposals": 207,
+  "checkpoint_sha256": "80e1280b9eef216c5db421a738c7a5e0550bb34b1a62a2a13b2c8e76d40b1a24",
+  "new_clip_texts": [
+    "a person inspecting a bus",
+    "a person setting a clock"
+  ],
+  "changed": 53,
+  "control_matches_history": 130,
+  "archive_sha256": "c656f705fd53aedbb1926a1ac237c6e05e48591346a339ec5296dadc440f36d2",
+  "changed_captions": [
+    {
+      "coco_id": 505099,
+      "control": "a baseball player holding a baseball bat on a field",
+      "direct_upt": "a baseball player holding a bat on a field"
+    },
+    {
+      "coco_id": 276693,
+      "control": "a person walking a dog in the snow",
+      "direct_upt": "a person on skis and a dog in the snow"
+    },
+    {
+      "coco_id": 409241,
+      "control": "a black and red train on a track",
+      "direct_upt": "a black train traveling down train tracks next to a train station"
+    },
+    {
+      "coco_id": 154816,
+      "control": "a young boy swinging a baseball bat at a ball",
+      "direct_upt": "a young baseball player holding a baseball bat"
+    },
+    {
+      "coco_id": 58225,
+      "control": "a person holding a hot dog in front of a large stadium",
+      "direct_upt": "a person holding a hot dog in a bun"
+    },
+    {
+      "coco_id": 561745,
+      "control": "a baseball player standing next to home plate",
+      "direct_upt": "a baseball player holding a bat on a field"
+    },
+    {
+      "coco_id": 162580,
+      "control": "a boy sitting on a chair holding a teddy bear",
+      "direct_upt": "a boy sitting on a chair eating a teddy bear"
+    },
+    {
+      "coco_id": 259690,
+      "control": "a man holding a baseball bat next to a girl in a wheel chair",
+      "direct_upt": "a man and a girl in a wheel chair on a baseball field"
+    },
+    {
+      "coco_id": 463722,
+      "control": "a man holding a red flag on top of a horse",
+      "direct_upt": "a person on a horse holding a red flag"
+    },
+    {
+      "coco_id": 226008,
+      "control": "a woman riding a jet ski on a lake",
+      "direct_upt": "two people on a jet ski in the water"
+    },
+    {
+      "coco_id": 439522,
+      "control": "a woman standing in the snow holding ski poles",
+      "direct_upt": "a woman standing in the snow on skis"
+    },
+    {
+      "coco_id": 207561,
+      "control": "a group of people riding boards on top of a wave",
+      "direct_upt": "a group of people riding surfboards in the ocean"
+    },
+    {
+      "coco_id": 334309,
+      "control": "a man holding a cell phone up to his mouth",
+      "direct_upt": "a man eating a sandwich next to a bush"
+    },
+    {
+      "coco_id": 296825,
+      "control": "a yellow and red truck parked in a parking lot",
+      "direct_upt": "a yellow and red truck parked on the street"
+    },
+    {
+      "coco_id": 314757,
+      "control": "a man standing in a living room holding a nintendo wii game controller",
+      "direct_upt": "two people playing a video game in a living room"
+    },
+    {
+      "coco_id": 270097,
+      "control": "a man sitting in front of a mirror with a laptop",
+      "direct_upt": "a man sitting in front of a mirror on a laptop"
+    },
+    {
+      "coco_id": 18193,
+      "control": "a woman sitting in a chair eating food",
+      "direct_upt": "a woman sitting in a chair eating a slice of food"
+    },
+    {
+      "coco_id": 199017,
+      "control": "two people riding an elephant across a river",
+      "direct_upt": "a couple of people riding an elephant across a river"
+    },
+    {
+      "coco_id": 189248,
+      "control": "a group of people riding boards on top of a wave",
+      "direct_upt": "a group of people riding surfboards in the ocean"
+    },
+    {
+      "coco_id": 336431,
+      "control": "a young boy in a red shirt holding a toothbrush",
+      "direct_upt": "a young boy holding a toothbrush in his hand"
+    },
+    {
+      "coco_id": 425676,
+      "control": "a baseball player holding a bat next to home plate",
+      "direct_upt": "a baseball player holding a bat on a field"
+    },
+    {
+      "coco_id": 564355,
+      "control": "a man standing on a snow covered ski slope",
+      "direct_upt": "a man standing on top of a snow covered slope"
+    },
+    {
+      "coco_id": 575349,
+      "control": "a young boy sitting in a kitchen eating a doughnut",
+      "direct_upt": "a young boy eating a doughnut in a kitchen"
+    },
+    {
+      "coco_id": 16546,
+      "control": "two people cross country skiing in the snow",
+      "direct_upt": "a couple of people riding skis down a snow covered slope"
+    },
+    {
+      "coco_id": 389123,
+      "control": "two people riding a wave on top of surfboards",
+      "direct_upt": "two people riding a wave on top of a surfboard"
+    },
+    {
+      "coco_id": 161187,
+      "control": "a black train engine traveling down train tracks",
+      "direct_upt": "a black train traveling down train tracks next to a forest"
+    },
+    {
+      "coco_id": 543402,
+      "control": "a chair sitting next to a purple umbrella",
+      "direct_upt": "a woman sitting in a chair holding a blue umbrella"
+    },
+    {
+      "coco_id": 76822,
+      "control": "a person flying through the air on skis",
+      "direct_upt": "a man flying through the air while riding skis"
+    },
+    {
+      "coco_id": 328921,
+      "control": "a group of three statues with hats on",
+      "direct_upt": "three statues with hats and hats on them"
+    },
+    {
+      "coco_id": 391463,
+      "control": "a man walking across a beach holding a surfboard",
+      "direct_upt": "a person walking on a beach with a surfboard"
+    },
+    {
+      "coco_id": 366822,
+      "control": "a group of people standing next to each other in the snow",
+      "direct_upt": "a group of people standing next to each other holding snowboards"
+    },
+    {
+      "coco_id": 304596,
+      "control": "a person jumping up in the air with a tennis racket",
+      "direct_upt": "a person on a skateboard jumping in the air"
+    },
+    {
+      "coco_id": 36607,
+      "control": "a man holding a cell phone in front of a door",
+      "direct_upt": "a person holding a cell phone in their hand"
+    },
+    {
+      "coco_id": 271681,
+      "control": "a woman holding a piece of food in her hand",
+      "direct_upt": "a woman holding a piece of pizza in her hand"
+    },
+    {
+      "coco_id": 124116,
+      "control": "a white and gray cat laying in a suitcase",
+      "direct_upt": "a cat laying in a piece of luggage"
+    },
+    {
+      "coco_id": 94607,
+      "control": "a man holding a cup of coffee and a doughnut",
+      "direct_upt": "a man holding a cup of coffee next to a box of donuts"
+    },
+    {
+      "coco_id": 376368,
+      "control": "a boat floating down a river next to a bridge",
+      "direct_upt": "a couple of boats floating down a river next to a bridge"
+    },
+    {
+      "coco_id": 538414,
+      "control": "a baseball player swinging a bat on a field",
+      "direct_upt": "a baseball player swinging a baseball bat on a field"
+    },
+    {
+      "coco_id": 231079,
+      "control": "a man riding a wave on a surfboard",
+      "direct_upt": "a person riding a surf board on a wave"
+    },
+    {
+      "coco_id": 73927,
+      "control": "a baseball player holding a bat on a field",
+      "direct_upt": "a baseball player swinging a bat on a field"
+    },
+    {
+      "coco_id": 379048,
+      "control": "a baseball bat and a bat in a display case",
+      "direct_upt": "a baseball bat and a bat on display"
+    },
+    {
+      "coco_id": 308362,
+      "control": "a bus parked in front of a building",
+      "direct_upt": "a city bus parked in front of a building"
+    },
+    {
+      "coco_id": 5282,
+      "control": "a blue and white boat traveling under a bridge",
+      "direct_upt": "a boat traveling down a river next to a bridge"
+    },
+    {
+      "coco_id": 204757,
+      "control": "a person holding a cell phone in their hand",
+      "direct_upt": "a person holding a knife in their hand"
+    },
+    {
+      "coco_id": 525439,
+      "control": "a person standing on a skateboard on a ramp",
+      "direct_upt": "a young man riding a skateboard up the side of a ramp"
+    },
+    {
+      "coco_id": 499400,
+      "control": "a group of men standing next to two surfboards",
+      "direct_upt": "a group of men holding surfboards on a beach"
+    },
+    {
+      "coco_id": 317188,
+      "control": "a woman in a pink sweater holding a kite",
+      "direct_upt": "a woman in a red sweater is holding a kite"
+    },
+    {
+      "coco_id": 30347,
+      "control": "a group of people standing around a laptop",
+      "direct_upt": "a group of people sitting around a table with a laptop"
+    },
+    {
+      "coco_id": 563885,
+      "control": "a woman laying on a couch holding a stuffed animal",
+      "direct_upt": "a woman laying on a couch holding a teddy bear"
+    },
+    {
+      "coco_id": 409346,
+      "control": "a couple of women standing next to a table",
+      "direct_upt": "a couple of women standing in front of a table"
+    },
+    {
+      "coco_id": 83925,
+      "control": "a young boy hitting a ball with a tennis racquet",
+      "direct_upt": "a young boy hitting a ball with a tennis racket"
+    },
+    {
+      "coco_id": 511379,
+      "control": "a clock on a pole next to a flag",
+      "direct_upt": "a clock on a pole with a flag on it"
+    },
+    {
+      "coco_id": 327656,
+      "control": "a woman sitting in front of a large truck",
+      "direct_upt": "a woman sitting in front of a semi truck"
+    }
+  ],
+  "scope": "Selected affected VALID cohort. Restored relation proposals are not verified ground truth. No aggregate metrics or full visual judgments."
+}
