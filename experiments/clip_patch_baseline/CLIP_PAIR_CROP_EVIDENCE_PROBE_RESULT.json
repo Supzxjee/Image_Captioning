@@ -1,0 +1,495 @@
+{
+  "model": "openai/clip-vit-base-patch16",
+  "revision": "57c216476eefef5ab752ec549e440a49ae4ae5f3",
+  "device": "cpu",
+  "locked_manifest_sha256": "6f3e603ca3a39d88ed4b49d011e42efbe605b080da1bd826f1b2f15cfc4fac76",
+  "splits": [
+    "train",
+    "restval"
+  ],
+  "summary": [
+    {
+      "family": "all",
+      "view": "full",
+      "images": 8,
+      "events": 16,
+      "correct_events": 8,
+      "tied_events": 0,
+      "both_correct": 0,
+      "mean_margin": 0.0
+    },
+    {
+      "family": "all",
+      "view": "crop",
+      "images": 8,
+      "events": 16,
+      "correct_events": 9,
+      "tied_events": 0,
+      "both_correct": 2,
+      "mean_margin": 0.0021837111562490463
+    },
+    {
+      "family": "skateboard_support",
+      "view": "full",
+      "images": 4,
+      "events": 8,
+      "correct_events": 4,
+      "tied_events": 0,
+      "both_correct": 0,
+      "mean_margin": 0.0
+    },
+    {
+      "family": "skateboard_support",
+      "view": "crop",
+      "images": 4,
+      "events": 8,
+      "correct_events": 5,
+      "tied_events": 0,
+      "both_correct": 1,
+      "mean_margin": 0.002911355346441269
+    },
+    {
+      "family": "surfboard_support",
+      "view": "full",
+      "images": 4,
+      "events": 8,
+      "correct_events": 4,
+      "tied_events": 0,
+      "both_correct": 0,
+      "mean_margin": 0.0
+    },
+    {
+      "family": "surfboard_support",
+      "view": "crop",
+      "images": 4,
+      "events": 8,
+      "correct_events": 4,
+      "tied_events": 0,
+      "both_correct": 1,
+      "mean_margin": 0.0014560669660568237
+    }
+  ],
+  "records": [
+    {
+      "image_id": 355593,
+      "image_sha256": "b972c862226dd7ac30981dde054c523b2a2a63db2791dc3b9717f4f26b926087",
+      "group_id": "crop_probe_11a6923598414ac0",
+      "family": "skateboard_support",
+      "descriptions": [
+        "a person standing on a skateboard",
+        "a person carrying a skateboard"
+      ],
+      "positive_indices": [
+        1,
+        0
+      ],
+      "crop_xyxy": [
+        [
+          276,
+          0,
+          403,
+          397
+        ],
+        [
+          121,
+          0,
+          340,
+          426
+        ]
+      ],
+      "similarities": [
+        [
+          0.25456470251083374,
+          0.2421616017818451
+        ],
+        [
+          0.3092380166053772,
+          0.2974989414215088
+        ],
+        [
+          0.29766544699668884,
+          0.2800496220588684
+        ]
+      ],
+      "margins": {
+        "full": [
+          -0.012403100728988647,
+          0.012403100728988647
+        ],
+        "crop": [
+          -0.011739075183868408,
+          0.017615824937820435
+        ]
+      }
+    },
+    {
+      "image_id": 153249,
+      "image_sha256": "6702ac7f4e1f8795a18cc4830425c4b3b1e48912ce901c0b0de7f877f29d5587",
+      "group_id": "crop_probe_2ccc00fada5ec769",
+      "family": "skateboard_support",
+      "descriptions": [
+        "a person standing on a skateboard",
+        "a person carrying a skateboard"
+      ],
+      "positive_indices": [
+        0,
+        1
+      ],
+      "crop_xyxy": [
+        [
+          20,
+          48,
+          216,
+          284
+        ],
+        [
+          355,
+          236,
+          435,
+          427
+        ]
+      ],
+      "similarities": [
+        [
+          0.28217071294784546,
+          0.26980870962142944
+        ],
+        [
+          0.3031533360481262,
+          0.29046380519866943
+        ],
+        [
+          0.3151230216026306,
+          0.31544846296310425
+        ]
+      ],
+      "margins": {
+        "full": [
+          0.012362003326416016,
+          -0.012362003326416016
+        ],
+        "crop": [
+          0.012689530849456787,
+          0.0003254413604736328
+        ]
+      }
+    },
+    {
+      "image_id": 461543,
+      "image_sha256": "919964c8eb5eb0d51e81caf8c79ee628b46d504874c2d8837918f09cc3491360",
+      "group_id": "crop_probe_a7ed012c847be8a7",
+      "family": "skateboard_support",
+      "descriptions": [
+        "a person standing on a skateboard",
+        "a person carrying a skateboard"
+      ],
+      "positive_indices": [
+        0,
+        1
+      ],
+      "crop_xyxy": [
+        [
+          298,
+          0,
+          635,
+          388
+        ],
+        [
+          59,
+          0,
+          302,
+          512
+        ]
+      ],
+      "similarities": [
+        [
+          0.26859182119369507,
+          0.25781315565109253
+        ],
+        [
+          0.29843130707740784,
+          0.28240036964416504
+        ],
+        [
+          0.31651848554611206,
+          0.30314624309539795
+        ]
+      ],
+      "margins": {
+        "full": [
+          0.010778665542602539,
+          -0.010778665542602539
+        ],
+        "crop": [
+          0.016030937433242798,
+          -0.013372242450714111
+        ]
+      }
+    },
+    {
+      "image_id": 563271,
+      "image_sha256": "7ae0be13c9996dd29108e0b81cb5a9d4f397f7ac2118890ab1d294a33cc72dd3",
+      "group_id": "crop_probe_c75899232125146f",
+      "family": "skateboard_support",
+      "descriptions": [
+        "a person standing on a skateboard",
+        "a person carrying a skateboard"
+      ],
+      "positive_indices": [
+        0,
+        1
+      ],
+      "crop_xyxy": [
+        [
+          87,
+          63,
+          296,
+          256
+        ],
+        [
+          402,
+          0,
+          500,
+          316
+        ]
+      ],
+      "similarities": [
+        [
+          0.28609558939933777,
+          0.280944287776947
+        ],
+        [
+          0.309050977230072,
+          0.29895758628845215
+        ],
+        [
+          0.3180873692035675,
+          0.30973440408706665
+        ]
+      ],
+      "margins": {
+        "full": [
+          0.005151301622390747,
+          -0.005151301622390747
+        ],
+        "crop": [
+          0.010093390941619873,
+          -0.008352965116500854
+        ]
+      }
+    },
+    {
+      "image_id": 176009,
+      "image_sha256": "8a131d9e3f846b605475e22757c716ef36eb319adc29008335aeeea5ed2f0f3c",
+      "group_id": "crop_probe_1e651403fd2ebe45",
+      "family": "surfboard_support",
+      "descriptions": [
+        "a person standing on a surfboard",
+        "a person carrying a surfboard"
+      ],
+      "positive_indices": [
+        1,
+        0
+      ],
+      "crop_xyxy": [
+        [
+          90,
+          0,
+          214,
+          147
+        ],
+        [
+          147,
+          119,
+          460,
+          387
+        ]
+      ],
+      "similarities": [
+        [
+          0.293859601020813,
+          0.290457546710968
+        ],
+        [
+          0.31949135661125183,
+          0.31147104501724243
+        ],
+        [
+          0.29798364639282227,
+          0.2971600890159607
+        ]
+      ],
+      "margins": {
+        "full": [
+          -0.0034020543098449707,
+          0.0034020543098449707
+        ],
+        "crop": [
+          -0.0080203115940094,
+          0.0008235573768615723
+        ]
+      }
+    },
+    {
+      "image_id": 225682,
+      "image_sha256": "68ecc036c1d8a2b8a25069a5ebfec2fe05fd9a70a72b24cdaa1dbd2a87528f11",
+      "group_id": "crop_probe_1f41d21468ab4228",
+      "family": "surfboard_support",
+      "descriptions": [
+        "a person standing on a surfboard",
+        "a person carrying a surfboard"
+      ],
+      "positive_indices": [
+        1,
+        0
+      ],
+      "crop_xyxy": [
+        [
+          194,
+          14,
+          344,
+          197
+        ],
+        [
+          193,
+          163,
+          410,
+          356
+        ]
+      ],
+      "similarities": [
+        [
+          0.27456408739089966,
+          0.2779296040534973
+        ],
+        [
+          0.30114471912384033,
+          0.29396748542785645
+        ],
+        [
+          0.2868870496749878,
+          0.2896929085254669
+        ]
+      ],
+      "margins": {
+        "full": [
+          0.0033655166625976562,
+          -0.0033655166625976562
+        ],
+        "crop": [
+          -0.007177233695983887,
+          -0.002805858850479126
+        ]
+      }
+    },
+    {
+      "image_id": 300206,
+      "image_sha256": "d6eccdc91ca9a937459ed4b6a94206bd005c9ccfb7316513e2b35a8f41d10995",
+      "group_id": "crop_probe_89785c52762edc97",
+      "family": "surfboard_support",
+      "descriptions": [
+        "a person standing on a surfboard",
+        "a person carrying a surfboard"
+      ],
+      "positive_indices": [
+        0,
+        1
+      ],
+      "crop_xyxy": [
+        [
+          210,
+          162,
+          266,
+          296
+        ],
+        [
+          57,
+          115,
+          99,
+          201
+        ]
+      ],
+      "similarities": [
+        [
+          0.29876330494880676,
+          0.2975022792816162
+        ],
+        [
+          0.3362688720226288,
+          0.32297205924987793
+        ],
+        [
+          0.23703160881996155,
+          0.24934768676757812
+        ]
+      ],
+      "margins": {
+        "full": [
+          0.0012610256671905518,
+          -0.0012610256671905518
+        ],
+        "crop": [
+          0.013296812772750854,
+          0.012316077947616577
+        ]
+      }
+    },
+    {
+      "image_id": 567486,
+      "image_sha256": "28ffda797f488b86958c5d708a0b480da11ecc6554ce9a7f4c0a2f975d4fa2a6",
+      "group_id": "crop_probe_90bb1900abd51a0f",
+      "family": "surfboard_support",
+      "descriptions": [
+        "a person standing on a surfboard",
+        "a person carrying a surfboard"
+      ],
+      "positive_indices": [
+        1,
+        0
+      ],
+      "crop_xyxy": [
+        [
+          312,
+          78,
+          611,
+          361
+        ],
+        [
+          240,
+          76,
+          333,
+          201
+        ]
+      ],
+      "similarities": [
+        [
+          0.27236202359199524,
+          0.26764342188835144
+        ],
+        [
+          0.2752331793308258,
+          0.2721782624721527
+        ],
+        [
+          0.3152734041213989,
+          0.30900299549102783
+        ]
+      ],
+      "margins": {
+        "full": [
+          -0.004718601703643799,
+          0.004718601703643799
+        ],
+        "crop": [
+          -0.0030549168586730957,
+          0.006270408630371094
+        ]
+      }
+    }
+  ],
+  "source_sha256": "5846cc56f25a2b1dd3b00c7217cef33c92adc1dcf9b677f20360b618b5ae8e9b",
+  "paired_event_flips": {
+    "wrong_to_right": 2,
+    "right_to_wrong": 1
+  }
+}
