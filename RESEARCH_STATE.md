@@ -10,6 +10,8 @@ Cập nhật: 13/11/2026, giờ Việt Nam. File này là bản tóm tắt để
 
 ## Hiện đang ở đâu
 
+- **Spatial prompt CPU audit ready.** YOLO person/object spatial prompts on VALID5000, excluding identical v175 ROI pairs. Notebook syntax and four geometry fixtures passed. Kaggle coverage and manual review pending. [Notebook](experiments/clip_patch_baseline/YOLO_SPATIAL_PROMPT_VALID_AUDIT_CPU.ipynb).
+
 - **Detector-box pair-crop VALID probe complete.** Only 4/8 decisive reviewed pairs had a unique retained UPT-YOLO match; 4 had no matching pair. CLIP full/crop both 2/4, zero decision flips, mean margin +0.00300 to -0.00687. Hold adapter integration. [Result](experiments/clip_patch_baseline/CLIP_PAIR_CROP_DETECTOR_VALID_RESULT.json).
 
 - **Pair-crop feasibility complete.** Frozen CLIP ViT-B/16: 9/16 events correct on crop vs 8/16 full; both correct on 2/8 images vs 0/8 full (identical inputs for paired events); two repairs and one regression. Small diagnostic on two relation families with reviewed boxes. Recommend holding adapter integration; broader detector-box probe needed for promotion. [Result](experiments/clip_patch_baseline/CLIP_PAIR_CROP_EVIDENCE_PROBE_RESULT.json).
