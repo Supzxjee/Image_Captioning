@@ -10,7 +10,7 @@ Cập nhật: 13/11/2026, giờ Việt Nam. File này là bản tóm tắt để
 
 ## Hiện đang ở đâu
 
-- **Spatial prompt CPU audit ready.** YOLO person/object spatial prompts on VALID5000, excluding identical v175 ROI pairs. Notebook syntax and four geometry fixtures passed. Kaggle coverage and manual review pending. [Notebook](experiments/clip_patch_baseline/YOLO_SPATIAL_PROMPT_VALID_AUDIT_CPU.ipynb).
+- **Spatial prompt VALID coverage complete.** 702/5000 with candidates, including 445/3786 without a v175 UPT relation. 24 unique review images, eight per predicate, four per repeated-class stratum. Human review pending before any XE pilot. [Result](experiments/clip_patch_baseline/YOLO_SPATIAL_PROMPT_VALID_AUDIT_RESULT.json).
 
 - **Detector-box pair-crop VALID probe complete.** Only 4/8 decisive reviewed pairs had a unique retained UPT-YOLO match; 4 had no matching pair. CLIP full/crop both 2/4, zero decision flips, mean margin +0.00300 to -0.00687. Hold adapter integration. [Result](experiments/clip_patch_baseline/CLIP_PAIR_CROP_DETECTOR_VALID_RESULT.json).
 

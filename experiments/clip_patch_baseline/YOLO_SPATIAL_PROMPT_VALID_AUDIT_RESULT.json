@@ -1,0 +1,679 @@
+{
+  "split": "val",
+  "summary": {
+    "valid_images": 5000,
+    "missing_detector_rows": 0,
+    "images_with_candidates": 702,
+    "images_without_upt_relation": 3786,
+    "images_without_upt_with_candidates": 445,
+    "candidates_by_predicate": {
+      "next to": 872,
+      "above": 349,
+      "below": 147
+    },
+    "images_by_predicate": {
+      "next to": 550,
+      "below": 101,
+      "above": 211
+    },
+    "sample_by_predicate": {
+      "next to": 8,
+      "above": 8,
+      "below": 8
+    },
+    "review_min": 6,
+    "review_accuracy_min": 0.8
+  },
+  "sample": [
+    {
+      "coco_id": 551906,
+      "filename": "COCO_val2014_000000551906.jpg",
+      "predicate": "next to",
+      "roi": [
+        6,
+        1
+      ],
+      "boxes": [
+        [
+          2.46,
+          218.75,
+          51.87,
+          395.05
+        ],
+        [
+          73.51,
+          159.48,
+          119.47,
+          392.77
+        ]
+      ],
+      "repeated": true,
+      "has_upt_relation": false,
+      "prompt": "a person next to a surfboard",
+      "id": 1
+    },
+    {
+      "coco_id": 490964,
+      "filename": "COCO_val2014_000000490964.jpg",
+      "predicate": "next to",
+      "roi": [
+        4,
+        3
+      ],
+      "boxes": [
+        [
+          113.91,
+          0.62,
+          193.64,
+          123.57
+        ],
+        [
+          210.76,
+          0.28,
+          344.9,
+          117.99
+        ]
+      ],
+      "repeated": false,
+      "has_upt_relation": false,
+      "prompt": "a person next to a potted plant",
+      "id": 2
+    },
+    {
+      "coco_id": 36561,
+      "filename": "COCO_val2014_000000036561.jpg",
+      "predicate": "above",
+      "roi": [
+        10,
+        14
+      ],
+      "boxes": [
+        [
+          13.08,
+          60.97,
+          49.23,
+          132.96
+        ],
+        [
+          0.93,
+          154.06,
+          159.55,
+          245.87
+        ]
+      ],
+      "repeated": true,
+      "has_upt_relation": true,
+      "prompt": "a person above a chair",
+      "id": 3
+    },
+    {
+      "coco_id": 154846,
+      "filename": "COCO_val2014_000000154846.jpg",
+      "predicate": "above",
+      "roi": [
+        0,
+        1
+      ],
+      "boxes": [
+        [
+          149.12,
+          1.4,
+          639.68,
+          119.04
+        ],
+        [
+          1.69,
+          143.67,
+          638.89,
+          422.1
+        ]
+      ],
+      "repeated": false,
+      "has_upt_relation": false,
+      "prompt": "a person above a pizza",
+      "id": 4
+    },
+    {
+      "coco_id": 26992,
+      "filename": "COCO_val2014_000000026992.jpg",
+      "predicate": "below",
+      "roi": [
+        17,
+        11
+      ],
+      "boxes": [
+        [
+          338.03,
+          383.56,
+          417.27,
+          464.64
+        ],
+        [
+          363.25,
+          302.45,
+          440.85,
+          366.84
+        ]
+      ],
+      "repeated": true,
+      "has_upt_relation": true,
+      "prompt": "a person below a bowl",
+      "id": 5
+    },
+    {
+      "coco_id": 85826,
+      "filename": "COCO_val2014_000000085826.jpg",
+      "predicate": "below",
+      "roi": [
+        1,
+        3
+      ],
+      "boxes": [
+        [
+          200.62,
+          103.02,
+          482.55,
+          417.44
+        ],
+        [
+          251.07,
+          1.27,
+          311.83,
+          74.38
+        ]
+      ],
+      "repeated": false,
+      "has_upt_relation": false,
+      "prompt": "a person below a vase",
+      "id": 6
+    },
+    {
+      "coco_id": 61315,
+      "filename": "COCO_val2014_000000061315.jpg",
+      "predicate": "next to",
+      "roi": [
+        0,
+        4
+      ],
+      "boxes": [
+        [
+          326.58,
+          15.49,
+          632.6,
+          474.01
+        ],
+        [
+          123.35,
+          351.92,
+          310.18,
+          476.61
+        ]
+      ],
+      "repeated": true,
+      "has_upt_relation": false,
+      "prompt": "a person next to a pizza",
+      "id": 7
+    },
+    {
+      "coco_id": 449312,
+      "filename": "COCO_val2014_000000449312.jpg",
+      "predicate": "next to",
+      "roi": [
+        0,
+        1
+      ],
+      "boxes": [
+        [
+          64.24,
+          0.83,
+          372.36,
+          405.54
+        ],
+        [
+          389.07,
+          121.64,
+          484.06,
+          260.81
+        ]
+      ],
+      "repeated": false,
+      "has_upt_relation": false,
+      "prompt": "a person next to a chair",
+      "id": 8
+    },
+    {
+      "coco_id": 272117,
+      "filename": "COCO_val2014_000000272117.jpg",
+      "predicate": "above",
+      "roi": [
+        15,
+        16
+      ],
+      "boxes": [
+        [
+          181.59,
+          184.15,
+          215.13,
+          258.6
+        ],
+        [
+          0.38,
+          282.12,
+          481.27,
+          423.9
+        ]
+      ],
+      "repeated": true,
+      "has_upt_relation": false,
+      "prompt": "a person above a dining table",
+      "id": 9
+    },
+    {
+      "coco_id": 171717,
+      "filename": "COCO_val2014_000000171717.jpg",
+      "predicate": "above",
+      "roi": [
+        2,
+        1
+      ],
+      "boxes": [
+        [
+          0.29,
+          232.76,
+          31.39,
+          346.25
+        ],
+        [
+          9.77,
+          355.1,
+          111.91,
+          393.62
+        ]
+      ],
+      "repeated": false,
+      "has_upt_relation": false,
+      "prompt": "a person above a sink",
+      "id": 10
+    },
+    {
+      "coco_id": 78176,
+      "filename": "COCO_val2014_000000078176.jpg",
+      "predicate": "below",
+      "roi": [
+        3,
+        0
+      ],
+      "boxes": [
+        [
+          335.34,
+          394.71,
+          391.04,
+          479.43
+        ],
+        [
+          161.7,
+          67.81,
+          455.12,
+          392.48
+        ]
+      ],
+      "repeated": true,
+      "has_upt_relation": false,
+      "prompt": "a person below a clock",
+      "id": 11
+    },
+    {
+      "coco_id": 348263,
+      "filename": "COCO_val2014_000000348263.jpg",
+      "predicate": "below",
+      "roi": [
+        0,
+        2
+      ],
+      "boxes": [
+        [
+          112.99,
+          139.23,
+          299.06,
+          627.52
+        ],
+        [
+          205.39,
+          109.97,
+          227.1,
+          132.72
+        ]
+      ],
+      "repeated": false,
+      "has_upt_relation": true,
+      "prompt": "a person below a clock",
+      "id": 12
+    },
+    {
+      "coco_id": 468121,
+      "filename": "COCO_val2014_000000468121.jpg",
+      "predicate": "next to",
+      "roi": [
+        1,
+        5
+      ],
+      "boxes": [
+        [
+          161.31,
+          244.19,
+          418.3,
+          476.04
+        ],
+        [
+          138.06,
+          261.59,
+          153.65,
+          298.49
+        ]
+      ],
+      "repeated": true,
+      "has_upt_relation": false,
+      "prompt": "a person next to a bottle",
+      "id": 13
+    },
+    {
+      "coco_id": 215278,
+      "filename": "COCO_val2014_000000215278.jpg",
+      "predicate": "next to",
+      "roi": [
+        0,
+        1
+      ],
+      "boxes": [
+        [
+          321.83,
+          70.16,
+          460.94,
+          475.63
+        ],
+        [
+          0.78,
+          0.26,
+          242.86,
+          472.17
+        ]
+      ],
+      "repeated": false,
+      "has_upt_relation": false,
+      "prompt": "a person next to a refrigerator",
+      "id": 14
+    },
+    {
+      "coco_id": 506942,
+      "filename": "COCO_val2014_000000506942.jpg",
+      "predicate": "above",
+      "roi": [
+        12,
+        0
+      ],
+      "boxes": [
+        [
+          423.36,
+          184.09,
+          439.09,
+          232.26
+        ],
+        [
+          430.64,
+          254.81,
+          541.63,
+          386.57
+        ]
+      ],
+      "repeated": true,
+      "has_upt_relation": false,
+      "prompt": "a person above a chair",
+      "id": 15
+    },
+    {
+      "coco_id": 202609,
+      "filename": "COCO_val2014_000000202609.jpg",
+      "predicate": "above",
+      "roi": [
+        1,
+        6
+      ],
+      "boxes": [
+        [
+          1.09,
+          0.29,
+          433.36,
+          136.59
+        ],
+        [
+          150.29,
+          143.15,
+          204.23,
+          251.84
+        ]
+      ],
+      "repeated": false,
+      "has_upt_relation": false,
+      "prompt": "a person above a spoon",
+      "id": 16
+    },
+    {
+      "coco_id": 67412,
+      "filename": "COCO_val2014_000000067412.jpg",
+      "predicate": "below",
+      "roi": [
+        5,
+        9
+      ],
+      "boxes": [
+        [
+          459.97,
+          333.34,
+          515.18,
+          478.96
+        ],
+        [
+          446.0,
+          87.49,
+          559.6,
+          299.1
+        ]
+      ],
+      "repeated": true,
+      "has_upt_relation": false,
+      "prompt": "a person below a kite",
+      "id": 17
+    },
+    {
+      "coco_id": 192809,
+      "filename": "COCO_val2014_000000192809.jpg",
+      "predicate": "below",
+      "roi": [
+        4,
+        3
+      ],
+      "boxes": [
+        [
+          0.47,
+          496.88,
+          373.52,
+          639.65
+        ],
+        [
+          233.92,
+          277.82,
+          412.82,
+          431.62
+        ]
+      ],
+      "repeated": false,
+      "has_upt_relation": false,
+      "prompt": "a person below a cake",
+      "id": 18
+    },
+    {
+      "coco_id": 14562,
+      "filename": "COCO_val2014_000000014562.jpg",
+      "predicate": "next to",
+      "roi": [
+        0,
+        3
+      ],
+      "boxes": [
+        [
+          90.57,
+          191.72,
+          392.66,
+          615.35
+        ],
+        [
+          2.2,
+          350.72,
+          59.42,
+          526.68
+        ]
+      ],
+      "repeated": true,
+      "has_upt_relation": true,
+      "prompt": "a person next to a chair",
+      "id": 19
+    },
+    {
+      "coco_id": 235242,
+      "filename": "COCO_val2014_000000235242.jpg",
+      "predicate": "next to",
+      "roi": [
+        1,
+        0
+      ],
+      "boxes": [
+        [
+          13.28,
+          276.24,
+          32.66,
+          336.44
+        ],
+        [
+          42.36,
+          128.58,
+          639.52,
+          321.33
+        ]
+      ],
+      "repeated": false,
+      "has_upt_relation": false,
+      "prompt": "a person next to a train",
+      "id": 20
+    },
+    {
+      "coco_id": 357943,
+      "filename": "COCO_val2014_000000357943.jpg",
+      "predicate": "above",
+      "roi": [
+        9,
+        0
+      ],
+      "boxes": [
+        [
+          256.55,
+          149.89,
+          274.05,
+          199.61
+        ],
+        [
+          246.21,
+          202.38,
+          282.33,
+          265.05
+        ]
+      ],
+      "repeated": true,
+      "has_upt_relation": false,
+      "prompt": "a person above a sheep",
+      "id": 21
+    },
+    {
+      "coco_id": 489305,
+      "filename": "COCO_val2014_000000489305.jpg",
+      "predicate": "above",
+      "roi": [
+        0,
+        3
+      ],
+      "boxes": [
+        [
+          0.98,
+          0.74,
+          276.53,
+          140.43
+        ],
+        [
+          0.46,
+          145.38,
+          303.46,
+          225.01
+        ]
+      ],
+      "repeated": false,
+      "has_upt_relation": false,
+      "prompt": "a person above a dining table",
+      "id": 22
+    },
+    {
+      "coco_id": 424879,
+      "filename": "COCO_val2014_000000424879.jpg",
+      "predicate": "below",
+      "roi": [
+        0,
+        3
+      ],
+      "boxes": [
+        [
+          375.53,
+          87.07,
+          539.79,
+          385.65
+        ],
+        [
+          450.26,
+          36.14,
+          526.12,
+          86.66
+        ]
+      ],
+      "repeated": true,
+      "has_upt_relation": false,
+      "prompt": "a person below a potted plant",
+      "id": 23
+    },
+    {
+      "coco_id": 255573,
+      "filename": "COCO_val2014_000000255573.jpg",
+      "predicate": "below",
+      "roi": [
+        2,
+        4
+      ],
+      "boxes": [
+        [
+          0.05,
+          365.76,
+          426.07,
+          639.3
+        ],
+        [
+          151.05,
+          303.65,
+          206.56,
+          363.94
+        ]
+      ],
+      "repeated": false,
+      "has_upt_relation": false,
+      "prompt": "a person below a cup",
+      "id": 24
+    }
+  ],
+  "archive_sha256": "a35e2b95f74b5cc811e87fc43006f746dc121820709bbc82804766c6c771dac5",
+  "human_review": "pending"
+}
