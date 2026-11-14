@@ -1,0 +1,25 @@
+{
+  "split": "train_restval",
+  "input_sha256": {
+    "coco": "2fd999220673258012acfb411a4e7e66af7d488050b2519b0badcc49b7600b8d",
+    "yolo": "498825daf8f8773a1c92f4111dc4ccf1f4296343f952b486e0aa56caf82ec04c",
+    "prompt": "e90c79b3b04540630b4bd2d279a4070ef05da7f4b65970c952851c37e2423bf0"
+  },
+  "output_sha256": "b1926529d605dcfc514ab2f1011ad112f01ee25025f0df81ca163d1fbfb9915c",
+  "summary": {
+    "with_prompt": 1949,
+    "with_eligible_slot": 1411,
+    "slots": 2058,
+    "mentioned_slots": 1737,
+    "informative_images": 412,
+    "strong_vs_unmentioned_images": 103,
+    "confidence_inversion_images": 27,
+    "area_inversion_images": 21,
+    "non_five_references": 9,
+    "sampled_images": 2000,
+    "mean_ndcg_at_3": {
+      "confidence": 0.9330246651948522,
+      "area": 0.9411009475183164
+    }
+  }
+}
