@@ -10,6 +10,8 @@ Cập nhật: 13/11/2026, giờ Việt Nam. File này là bản tóm tắt để
 
 ## Hiện đang ở đâu
 
+- **Object priority held-out ranking notebook ready.** Embedded verified 412 informative TRAIN/restval rows; fixed image split and pairwise ridge compared with area/confidence on nDCG@3. Static and split checks passed, Kaggle CPU run pending. [Notebook](experiments/clip_patch_baseline/OBJECT_PRIORITY_RANK_HOLDOUT_CPU.ipynb).
+
 - **Object mention priority CPU diagnostic complete.** 412/2000 images with differing reference mention counts; 103 with frequent vs unmentioned slots, 27 confidence and 21 area inversions; nDCG@3 .933 confidence, .941 area on informative images. Candidate for low-cost held-out ranking against area before committing to XE. No caption quality claim. [Result](experiments/clip_patch_baseline/OBJECT_PRIORITY_TRAIN2000_RESULT.json).
 
 - **Spatial prompt review complete.** User-reviewed prefilled labels: next to 6/8, above 3/8, below 7/8 jointly correct. Only below passes the prespecified small-sample gate. A matched below-only XE pilot remains a candidate pending agreement on scope and budget. [Result](experiments/clip_patch_baseline/YOLO_SPATIAL_PROMPT_VALID_USER_REVIEW_RESULT.json).
