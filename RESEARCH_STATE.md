@@ -10,6 +10,8 @@ Cập nhật: 13/11/2026, giờ Việt Nam. File này là bản tóm tắt để
 
 ## Hiện đang ở đâu
 
+- **Spatial prompt assisted review provisional.** Visual review of all 24 JPEGs found 4/8 jointly correct for next to, 5/8 above, and 7/8 below. Below reaches the numerical gate in the assisted review; verify borderline object/partial-person labels before training. [Labels](experiments/clip_patch_baseline/YOLO_SPATIAL_PROMPT_VALID_ASSISTED_LABELS.json).
+
 - **Spatial prompt VALID coverage complete.** 702/5000 with candidates, including 445/3786 without a v175 UPT relation. 24 unique review images, eight per predicate, four per repeated-class stratum. Human review pending before any XE pilot. [Result](experiments/clip_patch_baseline/YOLO_SPATIAL_PROMPT_VALID_AUDIT_RESULT.json).
 
 - **Detector-box pair-crop VALID probe complete.** Only 4/8 decisive reviewed pairs had a unique retained UPT-YOLO match; 4 had no matching pair. CLIP full/crop both 2/4, zero decision flips, mean margin +0.00300 to -0.00687. Hold adapter integration. [Result](experiments/clip_patch_baseline/CLIP_PAIR_CROP_DETECTOR_VALID_RESULT.json).

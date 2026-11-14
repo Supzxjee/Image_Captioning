@@ -1,0 +1,167 @@
+{
+  "review_type": "assistant_visual_provisional",
+  "archive_sha256": "a35e2b95f74b5cc811e87fc43006f746dc121820709bbc82804766c6c771dac5",
+  "summary": {
+    "next to": {
+      "joint_correct": 4,
+      "total": 8,
+      "meets_gate_provisionally": false
+    },
+    "above": {
+      "joint_correct": 5,
+      "total": 8,
+      "meets_gate_provisionally": false
+    },
+    "below": {
+      "joint_correct": 7,
+      "total": 8,
+      "meets_gate_provisionally": true
+    }
+  },
+  "records": [
+    {
+      "id": 1,
+      "boxes": "yes",
+      "relation": "yes",
+      "note": ""
+    },
+    {
+      "id": 2,
+      "boxes": "yes",
+      "relation": "unclear",
+      "note": "Person is partly visible through glass; proximity to plant is unclear."
+    },
+    {
+      "id": 3,
+      "boxes": "yes",
+      "relation": "yes",
+      "note": ""
+    },
+    {
+      "id": 4,
+      "boxes": "yes",
+      "relation": "yes",
+      "note": ""
+    },
+    {
+      "id": 5,
+      "boxes": "yes",
+      "relation": "yes",
+      "note": ""
+    },
+    {
+      "id": 6,
+      "boxes": "unclear",
+      "relation": "unclear",
+      "note": "Object may be a vase or another container."
+    },
+    {
+      "id": 7,
+      "boxes": "yes",
+      "relation": "yes",
+      "note": ""
+    },
+    {
+      "id": 8,
+      "boxes": "unclear",
+      "relation": "unclear",
+      "note": "Chair identity is uncertain behind the display."
+    },
+    {
+      "id": 9,
+      "boxes": "yes",
+      "relation": "yes",
+      "note": ""
+    },
+    {
+      "id": 10,
+      "boxes": "unclear",
+      "relation": "unclear",
+      "note": "Only a partial reflection is visible in the subject box."
+    },
+    {
+      "id": 11,
+      "boxes": "yes",
+      "relation": "yes",
+      "note": ""
+    },
+    {
+      "id": 12,
+      "boxes": "yes",
+      "relation": "yes",
+      "note": ""
+    },
+    {
+      "id": 13,
+      "boxes": "yes",
+      "relation": "no",
+      "note": "Bottle appears to belong to a person farther back."
+    },
+    {
+      "id": 14,
+      "boxes": "yes",
+      "relation": "yes",
+      "note": ""
+    },
+    {
+      "id": 15,
+      "boxes": "yes",
+      "relation": "yes",
+      "note": ""
+    },
+    {
+      "id": 16,
+      "boxes": "yes",
+      "relation": "unclear",
+      "note": "Only utensil handle is visible; spoon identity unclear."
+    },
+    {
+      "id": 17,
+      "boxes": "yes",
+      "relation": "yes",
+      "note": ""
+    },
+    {
+      "id": 18,
+      "boxes": "yes",
+      "relation": "yes",
+      "note": "Partial arm counted as person; below is in the image plane."
+    },
+    {
+      "id": 19,
+      "boxes": "yes",
+      "relation": "no",
+      "note": "Chair is behind the fence and farther back."
+    },
+    {
+      "id": 20,
+      "boxes": "yes",
+      "relation": "yes",
+      "note": "Subject is small, but appears next to the train."
+    },
+    {
+      "id": 21,
+      "boxes": "yes",
+      "relation": "yes",
+      "note": ""
+    },
+    {
+      "id": 22,
+      "boxes": "no",
+      "relation": "unclear",
+      "note": "Object box does not clearly localize the dining table."
+    },
+    {
+      "id": 23,
+      "boxes": "yes",
+      "relation": "yes",
+      "note": ""
+    },
+    {
+      "id": 24,
+      "boxes": "yes",
+      "relation": "yes",
+      "note": ""
+    }
+  ]
+}
