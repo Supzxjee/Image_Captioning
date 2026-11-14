@@ -10,6 +10,8 @@ Cập nhật: 13/11/2026, giờ Việt Nam. File này là bản tóm tắt để
 
 ## Hiện đang ở đâu
 
+- **Prompt-guided five-candidate VALID comparison ready.** Exact v94, 3 retained original beams plus object/relation-guided novel captions or original fallback, 1.5 residual gain, common decoder rescoring and original fixed rerank for both arms. Notebook and embedded source syntax verified; user-run T4x2 pending. No training/TEST. [Notebook](experiments/clip_patch_baseline/CLIP_PATCH_CSA_PROMPT_GUIDED_BEAM_VALID5000_2GPU.ipynb).
+
 - **Object priority ranking complete, gate failed.** On 89 held-out informative TRAIN/restval images, class-aware ridge nDCG@3 .9501 vs area .9467; difference +.00343, paired 95% CI [-.02090, +.02866]. Sample IDs and metric means verified. Defer XE integration under this protocol. [Result](experiments/clip_patch_baseline/OBJECT_PRIORITY_RANK_HOLDOUT_RESULT.json).
 
 - **Object mention priority CPU diagnostic complete.** 412/2000 images with differing reference mention counts; 103 with frequent vs unmentioned slots, 27 confidence and 21 area inversions; nDCG@3 .933 confidence, .941 area on informative images. Candidate for low-cost held-out ranking against area before committing to XE. No caption quality claim. [Result](experiments/clip_patch_baseline/OBJECT_PRIORITY_TRAIN2000_RESULT.json).
