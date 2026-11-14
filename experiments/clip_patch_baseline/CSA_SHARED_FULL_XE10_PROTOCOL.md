@@ -144,3 +144,5 @@ Pair-crop feasibility result: 9/16 crop vs 8/16 full-frame; both correct on 2/8 
 
 ### Pair-crop probe with deployed detector boxes
 Reuse the eight VALID audit pairs with a decisive A/B label. Join exact v175 VALID prompt links by COCO ID. Require a unique retained subject/object ROI pair matching the audit classes, with both YOLO ROI boxes available. Keep exclusions in the output with counts. Compare whole frame and union crop on the same two original captions with frozen CLIP and the same preprocessing as the prior probe. Caption labels are at image level and other caption details may differ, so this measures preference for reviewed captions in cases with an unambiguous cache pair, with no claim of isolated predicate accuracy or confirmed instance identity. No training or TEST.
+
+Detector-box probe result: 4/8 eligible, 2/4 correct in both views with no decision flips, and lower crop mean margin (+0.00300 to -0.00687). Close this pilot without adapter integration. See CLIP_PAIR_CROP_DETECTOR_VALID_RESULT.json.

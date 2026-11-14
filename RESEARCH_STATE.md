@@ -10,7 +10,7 @@ Cập nhật: 13/11/2026, giờ Việt Nam. File này là bản tóm tắt để
 
 ## Hiện đang ở đâu
 
-- **Detector-box pair-crop probe ready.** Eight decisive VALID caption pairs screened via exact v175 for a unique retained person-object YOLO ROI pair. Report exclusions and whole-frame/crop CLIP preference. Static checks and matching fixture pass; Kaggle runtime and eligible count pending. [Notebook](experiments/clip_patch_baseline/CLIP_PAIR_CROP_DETECTOR_VALID_PROBE.ipynb).
+- **Detector-box pair-crop VALID probe complete.** Only 4/8 decisive reviewed pairs had a unique retained UPT-YOLO match; 4 had no matching pair. CLIP full/crop both 2/4, zero decision flips, mean margin +0.00300 to -0.00687. Hold adapter integration. [Result](experiments/clip_patch_baseline/CLIP_PAIR_CROP_DETECTOR_VALID_RESULT.json).
 
 - **Pair-crop feasibility complete.** Frozen CLIP ViT-B/16: 9/16 events correct on crop vs 8/16 full; both correct on 2/8 images vs 0/8 full (identical inputs for paired events); two repairs and one regression. Small diagnostic on two relation families with reviewed boxes. Recommend holding adapter integration; broader detector-box probe needed for promotion. [Result](experiments/clip_patch_baseline/CLIP_PAIR_CROP_EVIDENCE_PROBE_RESULT.json).
 

@@ -1,0 +1,240 @@
+{
+  "model": "openai/clip-vit-base-patch16",
+  "revision": "57c216476eefef5ab752ec549e440a49ae4ae5f3",
+  "device": "cpu",
+  "split": "val",
+  "prompt_links_sha256": "e90c79b3b04540630b4bd2d279a4070ef05da7f4b65970c952851c37e2423bf0",
+  "summary": {
+    "eligible": 4,
+    "screened": 8,
+    "full": {
+      "correct": 2,
+      "tied": 0,
+      "mean_margin": 0.0029996633529663086
+    },
+    "crop": {
+      "correct": 2,
+      "tied": 0,
+      "mean_margin": -0.0068726614117622375
+    },
+    "wrong_to_right": 0,
+    "right_to_wrong": 0
+  },
+  "excluded": [
+    {
+      "coco_id": 209028,
+      "matching_roi_pairs": 0,
+      "reason": "no_pair"
+    },
+    {
+      "coco_id": 139781,
+      "matching_roi_pairs": 0,
+      "reason": "no_pair"
+    },
+    {
+      "coco_id": 456638,
+      "matching_roi_pairs": 0,
+      "reason": "no_pair"
+    },
+    {
+      "coco_id": 558661,
+      "matching_roi_pairs": 0,
+      "reason": "no_pair"
+    }
+  ],
+  "records": [
+    {
+      "coco_id": 499400,
+      "image": "COCO_val2014_000000499400.jpg",
+      "subject": "men",
+      "object": "surfboards",
+      "pair": [
+        "a group of men holding surfboards on a beach",
+        "a group of men standing next to two surfboards"
+      ],
+      "relation_pair": "beside / holding",
+      "selected": "B",
+      "positive": 0,
+      "roi_boxes": [
+        [
+          0.20648436546325682,
+          0.10206089421792666,
+          0.4362500190734863,
+          0.7464403067595506
+        ],
+        [
+          0.0165781244635582,
+          0.24571428142610144,
+          0.4626093864440918,
+          0.5925058548009368
+        ]
+      ],
+      "image_sha256": "5ce69265f3aac9a596e446fd3b617fdabb4a53e31e7693745fb84474e612f159",
+      "crop_xyxy": [
+        0,
+        16,
+        325,
+        347
+      ],
+      "similarities": [
+        [
+          0.3096528947353363,
+          0.32799336314201355
+        ],
+        [
+          0.28837060928344727,
+          0.33015692234039307
+        ]
+      ],
+      "margins": {
+        "full": -0.018340468406677246,
+        "crop": -0.0417863130569458
+      }
+    },
+    {
+      "coco_id": 432818,
+      "image": "COCO_val2014_000000432818.jpg",
+      "subject": "woman",
+      "object": "kite",
+      "pair": [
+        "a woman standing next to a kite on a beach",
+        "a woman flying a kite with a blue sky in the background"
+      ],
+      "relation_pair": "beside / flying",
+      "selected": "B",
+      "positive": 1,
+      "roi_boxes": [
+        [
+          0.20766354498462142,
+          0.2834843635559082,
+          0.998504638671875,
+          0.9982656478881836
+        ],
+        [
+          0.04350467485802196,
+          0.13942188024520874,
+          0.473271022333163,
+          0.6440312385559082
+        ]
+      ],
+      "image_sha256": "161ddd680492b356e418bae58a0364c4eb14453ecb5e0318e96b2506f4578b9f",
+      "crop_xyxy": [
+        0,
+        34,
+        428,
+        640
+      ],
+      "similarities": [
+        [
+          0.31045687198638916,
+          0.347262978553772
+        ],
+        [
+          0.29264217615127563,
+          0.3268022835254669
+        ]
+      ],
+      "margins": {
+        "full": 0.03680610656738281,
+        "crop": 0.034160107374191284
+      }
+    },
+    {
+      "coco_id": 214468,
+      "image": "COCO_val2014_000000214468.jpg",
+      "subject": "man",
+      "object": "train",
+      "pair": [
+        "a man standing on a train next to a forest",
+        "a man standing next to a red train"
+      ],
+      "relation_pair": "beside / on",
+      "selected": "B",
+      "positive": 0,
+      "roi_boxes": [
+        [
+          0.2603125095367432,
+          0.39099998474121095,
+          0.4290625095367432,
+          0.6812708536783855
+        ],
+        [
+          0.08270312547683716,
+          0.504812494913737,
+          0.9971094131469727,
+          0.988812510172526
+        ]
+      ],
+      "image_sha256": "dba83d46fd9ce4ab27a5442b03f555ec07fc4b2e474c691a2425f77d105b38f4",
+      "crop_xyxy": [
+        0,
+        158,
+        640,
+        480
+      ],
+      "similarities": [
+        [
+          0.26039013266563416,
+          0.2726222276687622
+        ],
+        [
+          0.2451961636543274,
+          0.27082574367523193
+        ]
+      ],
+      "margins": {
+        "full": -0.012232095003128052,
+        "crop": -0.02562958002090454
+      }
+    },
+    {
+      "coco_id": 295945,
+      "image": "COCO_val2014_000000295945.jpg",
+      "subject": "man",
+      "object": "motorcycle",
+      "pair": [
+        "a man sitting on a yellow motorcycle",
+        "a man standing next to a yellow motorcycle"
+      ],
+      "relation_pair": "beside / on",
+      "selected": "B",
+      "positive": 1,
+      "roi_boxes": [
+        [
+          0.2145156145095825,
+          0.02157068002910514,
+          0.5960000038146973,
+          0.5183420763797993
+        ],
+        [
+          0.011421874910593034,
+          0.28951134273935153,
+          0.9827187538146973,
+          0.9910471118973604
+        ]
+      ],
+      "image_sha256": "c9f772216a922174df3487e00231b5338876c0803b88bc51f36736ae67c60771",
+      "crop_xyxy": [
+        0,
+        0,
+        640,
+        573
+      ],
+      "similarities": [
+        [
+          0.272756427526474,
+          0.2785215377807617
+        ],
+        [
+          0.2727564573287964,
+          0.2785215973854065
+        ]
+      ],
+      "margins": {
+        "full": 0.00576511025428772,
+        "crop": 0.005765140056610107
+      }
+    }
+  ],
+  "source_sha256": "e63c25bca8bbae3eb53fe2a576ac43de8d1623bec36634b23d0467e0ba422843"
+}
