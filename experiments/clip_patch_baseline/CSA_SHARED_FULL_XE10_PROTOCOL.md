@@ -132,3 +132,5 @@ Compare exact v175 versus direct UPT on the 130 affected VALID images with v94, 
 
 ### 14/11 SCST continuation toward one TRAIN pass
 User approved staged continuation. First run exact v94 to 3000 total updates: restore Adam, use cache rows 12000:24000, keep CIDEr-D-only SCST and fixed rerank. The parent has no RNG state; use a fresh fixed per-rank seed. Evaluate VALID5000 at 3000 and compare with SCST1500 CIDEr125.7582 and CHAIRs cap4.20%. Review before moving to 6000; no TEST or automatic extension.
+
+SCST3000 VALID5000 completed. Fixed rerank CIDEr 126.0668 vs 125.7582, CHAIRs 4.62% vs 4.06% (cap 4.20%), and CHAIRi 3.04% vs 2.69%. Gate failed. Retain SCST1500 and stop the current continuation protocol. See CSA_SCST_ONLY3000_RERANK_VALID_RESULT.json.

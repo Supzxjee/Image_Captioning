@@ -1,0 +1,126 @@
+{
+  "status": "CSA_PER_CAPTION_FIXED_RERANK_VALID5000_COMPLETE",
+  "images": 5000,
+  "test_used": false,
+  "training": false,
+  "checkpoint_sha256": "e785dc41bc765e089497873021e2c7be9288f7756854403cb0c6cddddaac2c61",
+  "metrics": {
+    "decoder_rank0": {
+      "CIDEr": 1.2427725058598205,
+      "BLEU_1": 0.7929164614371566,
+      "BLEU_4": 0.3891674965991399,
+      "METEOR": 0.28756730261774116,
+      "SPICE": 0.2197385195791874,
+      "ROUGE_L": 0.5887340949419482,
+      "CHAIRs": 0.0624,
+      "CHAIRi": 0.04115279761132026,
+      "Recall": 0.44807885484681065,
+      "counts": {
+        "images": 5000,
+        "hallucinated_captions": 312,
+        "hallucinated_mentions": 317,
+        "object_mentions": 7703,
+        "recalled_unique": 7137,
+        "reference_unique": 15928
+      },
+      "mean_words": 9.0428,
+      "short_le2": 0
+    },
+    "clip_object_fixed": {
+      "CIDEr": 1.2606684691951704,
+      "BLEU_1": 0.7986413015282366,
+      "BLEU_4": 0.38883205122497727,
+      "METEOR": 0.29190785736849745,
+      "SPICE": 0.22543384362798788,
+      "ROUGE_L": 0.5905655020598742,
+      "CHAIRs": 0.0462,
+      "CHAIRi": 0.03041144901610018,
+      "Recall": 0.4571195379206429,
+      "counts": {
+        "images": 5000,
+        "hallucinated_captions": 231,
+        "hallucinated_mentions": 238,
+        "object_mentions": 7826,
+        "recalled_unique": 7281,
+        "reference_unique": 15928
+      },
+      "mean_words": 9.3312,
+      "short_le2": 0
+    }
+  },
+  "changes": {
+    "changed_captions": 2742,
+    "rank_histogram": {
+      "0": 2258,
+      "1": 1287,
+      "2": 756,
+      "3": 470,
+      "4": 229
+    },
+    "CHAIR_repairs": 116,
+    "CHAIR_new_flags": 35
+  },
+  "selector": {
+    "decoder_weight": 0.3,
+    "clip_weight": 0.4,
+    "object_weight": 0.3,
+    "min_detection_confidence": 0.5,
+    "hallucination_penalty": 1.0,
+    "tie_break": "earlier beam"
+  },
+  "tuned_on_test": false,
+  "oracle_used_for_selection": false,
+  "prior_project_test_exposure": true,
+  "selection": "both prelocked policies reported; fixed VALID164 policy",
+  "NLL_note": "same frozen captioner; reranking changes output only, no target-conditioned pass",
+  "comparison": {
+    "images": 5000,
+    "split": "val",
+    "xe9_fixed_rerank": {
+      "CIDEr": 1.236969320694076,
+      "CHAIRs": 0.0346,
+      "CHAIRi": 0.023370070375780108,
+      "Recall": 0.44161225514816677
+    },
+    "scst1500_fixed_rerank": {
+      "CIDEr": 1.2575816960650208,
+      "CHAIRs": 0.0406,
+      "CHAIRi": 0.026901789162054317,
+      "Recall": 0.45310145655449524
+    },
+    "scst3000_fixed_rerank": {
+      "CIDEr": 1.2606684691951704,
+      "CHAIRs": 0.0462,
+      "CHAIRi": 0.03041144901610018,
+      "Recall": 0.4571195379206429
+    },
+    "delta_vs_1500": {
+      "CIDEr": 0.0030867731301496004,
+      "CHAIRs": 0.005600000000000001,
+      "CHAIRi": 0.0035096598540458636,
+      "Recall": 0.004018081366147674
+    },
+    "delta_vs_xe9": {
+      "CIDEr": 0.023699148501094447,
+      "CHAIRs": 0.0116,
+      "CHAIRi": 0.007041378640320072,
+      "Recall": 0.01550728277247615
+    },
+    "chair_s_cap": 0.042,
+    "meets_gate": false
+  },
+  "run_status": {
+    "complete": true,
+    "training": true,
+    "test_used": false,
+    "test_tuning": false,
+    "source_version": "ducanh3/notebook7bc83c4c76/94"
+  },
+  "checkpoint_receipt": {
+    "sha256": "e785dc41bc765e089497873021e2c7be9288f7756854403cb0c6cddddaac2c61",
+    "updates": 3000,
+    "source_sha256": "b0c5bde0921a4c828ac094b264f502654224aa9365ee40cdce1c15c82fe9aeef",
+    "parent_sha256": "80e1280b9eef216c5db421a738c7a5e0550bb34b1a62a2a13b2c8e76d40b1a24"
+  },
+  "archive_sha256": "bdfb787254a906732b14767dc5664d336a3bf2afc1c9cafac985563862677be1"
+}
