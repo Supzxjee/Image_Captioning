@@ -1,0 +1,843 @@
+{
+  "fit_images": 323,
+  "held_out_images": 89,
+  "results": {
+    "area": {
+      "ndcg_at_3": 0.9466996047950891,
+      "delta_vs_area": 0.0,
+      "ci95": [
+        0.0,
+        0.0
+      ]
+    },
+    "confidence": {
+      "ndcg_at_3": 0.945083068331162,
+      "delta_vs_area": -0.0016165364639270782,
+      "ci95": [
+        -0.027988690855043033,
+        0.025058849402982832
+      ]
+    },
+    "ridge_geometry_confidence": {
+      "ndcg_at_3": 0.9460921900151378,
+      "delta_vs_area": -0.0006074147799513609,
+      "ci95": [
+        -0.015132808937486926,
+        0.013253513191251735
+      ]
+    },
+    "ridge_with_class": {
+      "ndcg_at_3": 0.950129223144161,
+      "delta_vs_area": 0.0034296183490718627,
+      "ci95": [
+        -0.02090371005304997,
+        0.02865799611822074
+      ]
+    }
+  },
+  "meets_gate": false,
+  "per_image": [
+    {
+      "coco_id": 304812,
+      "ndcg_at_3": {
+        "area": 0.8597186998521972,
+        "confidence": 0.8597186998521972,
+        "ridge_geometry_confidence": 0.8597186998521972,
+        "ridge_with_class": 1.0
+      }
+    },
+    {
+      "coco_id": 106820,
+      "ndcg_at_3": {
+        "area": 1.0,
+        "confidence": 1.0,
+        "ridge_geometry_confidence": 1.0,
+        "ridge_with_class": 1.0
+      }
+    },
+    {
+      "coco_id": 222411,
+      "ndcg_at_3": {
+        "area": 1.0,
+        "confidence": 1.0,
+        "ridge_geometry_confidence": 1.0,
+        "ridge_with_class": 0.6309297535714575
+      }
+    },
+    {
+      "coco_id": 101816,
+      "ndcg_at_3": {
+        "area": 0.6309297535714574,
+        "confidence": 0.6309297535714574,
+        "ridge_geometry_confidence": 0.6309297535714574,
+        "ridge_with_class": 0.6309297535714574
+      }
+    },
+    {
+      "coco_id": 76477,
+      "ndcg_at_3": {
+        "area": 1.0,
+        "confidence": 1.0,
+        "ridge_geometry_confidence": 1.0,
+        "ridge_with_class": 0.6309297535714575
+      }
+    },
+    {
+      "coco_id": 250556,
+      "ndcg_at_3": {
+        "area": 0.8231817979910551,
+        "confidence": 1.0,
+        "ridge_geometry_confidence": 0.8231817979910551,
+        "ridge_with_class": 1.0
+      }
+    },
+    {
+      "coco_id": 89,
+      "ndcg_at_3": {
+        "area": 1.0,
+        "confidence": 1.0,
+        "ridge_geometry_confidence": 1.0,
+        "ridge_with_class": 1.0
+      }
+    },
+    {
+      "coco_id": 35884,
+      "ndcg_at_3": {
+        "area": 1.0,
+        "confidence": 0.8597186998521972,
+        "ridge_geometry_confidence": 0.8597186998521972,
+        "ridge_with_class": 1.0
+      }
+    },
+    {
+      "coco_id": 335928,
+      "ndcg_at_3": {
+        "area": 0.6309297535714575,
+        "confidence": 1.0,
+        "ridge_geometry_confidence": 1.0,
+        "ridge_with_class": 1.0
+      }
+    },
+    {
+      "coco_id": 272441,
+      "ndcg_at_3": {
+        "area": 1.0,
+        "confidence": 1.0,
+        "ridge_geometry_confidence": 1.0,
+        "ridge_with_class": 1.0
+      }
+    },
+    {
+      "coco_id": 286368,
+      "ndcg_at_3": {
+        "area": 1.0,
+        "confidence": 1.0,
+        "ridge_geometry_confidence": 1.0,
+        "ridge_with_class": 1.0
+      }
+    },
+    {
+      "coco_id": 349038,
+      "ndcg_at_3": {
+        "area": 1.0,
+        "confidence": 1.0,
+        "ridge_geometry_confidence": 1.0,
+        "ridge_with_class": 1.0
+      }
+    },
+    {
+      "coco_id": 517764,
+      "ndcg_at_3": {
+        "area": 1.0,
+        "confidence": 0.9509457695419297,
+        "ridge_geometry_confidence": 1.0,
+        "ridge_with_class": 0.9509457695419297
+      }
+    },
+    {
+      "coco_id": 65630,
+      "ndcg_at_3": {
+        "area": 1.0,
+        "confidence": 1.0,
+        "ridge_geometry_confidence": 1.0,
+        "ridge_with_class": 1.0
+      }
+    },
+    {
+      "coco_id": 310193,
+      "ndcg_at_3": {
+        "area": 1.0,
+        "confidence": 0.6309297535714575,
+        "ridge_geometry_confidence": 1.0,
+        "ridge_with_class": 1.0
+      }
+    },
+    {
+      "coco_id": 140092,
+      "ndcg_at_3": {
+        "area": 0.9373691761066303,
+        "confidence": 1.0,
+        "ridge_geometry_confidence": 0.9373691761066303,
+        "ridge_with_class": 1.0
+      }
+    },
+    {
+      "coco_id": 67761,
+      "ndcg_at_3": {
+        "area": 1.0,
+        "confidence": 1.0,
+        "ridge_geometry_confidence": 1.0,
+        "ridge_with_class": 1.0
+      }
+    },
+    {
+      "coco_id": 226176,
+      "ndcg_at_3": {
+        "area": 1.0,
+        "confidence": 1.0,
+        "ridge_geometry_confidence": 1.0,
+        "ridge_with_class": 1.0
+      }
+    },
+    {
+      "coco_id": 377762,
+      "ndcg_at_3": {
+        "area": 1.0,
+        "confidence": 0.8597186998521972,
+        "ridge_geometry_confidence": 1.0,
+        "ridge_with_class": 1.0
+      }
+    },
+    {
+      "coco_id": 465302,
+      "ndcg_at_3": {
+        "area": 1.0,
+        "confidence": 1.0,
+        "ridge_geometry_confidence": 1.0,
+        "ridge_with_class": 1.0
+      }
+    },
+    {
+      "coco_id": 355774,
+      "ndcg_at_3": {
+        "area": 1.0,
+        "confidence": 0.8597186998521972,
+        "ridge_geometry_confidence": 1.0,
+        "ridge_with_class": 1.0
+      }
+    },
+    {
+      "coco_id": 476660,
+      "ndcg_at_3": {
+        "area": 1.0,
+        "confidence": 1.0,
+        "ridge_geometry_confidence": 1.0,
+        "ridge_with_class": 1.0
+      }
+    },
+    {
+      "coco_id": 91343,
+      "ndcg_at_3": {
+        "area": 1.0,
+        "confidence": 1.0,
+        "ridge_geometry_confidence": 1.0,
+        "ridge_with_class": 1.0
+      }
+    },
+    {
+      "coco_id": 22415,
+      "ndcg_at_3": {
+        "area": 0.9645790650986836,
+        "confidence": 1.0,
+        "ridge_geometry_confidence": 1.0,
+        "ridge_with_class": 1.0
+      }
+    },
+    {
+      "coco_id": 144937,
+      "ndcg_at_3": {
+        "area": 0.8597186998521972,
+        "confidence": 1.0,
+        "ridge_geometry_confidence": 0.8597186998521972,
+        "ridge_with_class": 0.8597186998521972
+      }
+    },
+    {
+      "coco_id": 111556,
+      "ndcg_at_3": {
+        "area": 0.9134015924715543,
+        "confidence": 1.0,
+        "ridge_geometry_confidence": 1.0,
+        "ridge_with_class": 1.0
+      }
+    },
+    {
+      "coco_id": 382638,
+      "ndcg_at_3": {
+        "area": 1.0,
+        "confidence": 1.0,
+        "ridge_geometry_confidence": 1.0,
+        "ridge_with_class": 0.6309297535714575
+      }
+    },
+    {
+      "coco_id": 237337,
+      "ndcg_at_3": {
+        "area": 0.9540025958322528,
+        "confidence": 0.7670568668842019,
+        "ridge_geometry_confidence": 0.9540025958322528,
+        "ridge_with_class": 0.9540025958322528
+      }
+    },
+    {
+      "coco_id": 290320,
+      "ndcg_at_3": {
+        "area": 1.0,
+        "confidence": 1.0,
+        "ridge_geometry_confidence": 1.0,
+        "ridge_with_class": 1.0
+      }
+    },
+    {
+      "coco_id": 102133,
+      "ndcg_at_3": {
+        "area": 1.0,
+        "confidence": 1.0,
+        "ridge_geometry_confidence": 1.0,
+        "ridge_with_class": 1.0
+      }
+    },
+    {
+      "coco_id": 120994,
+      "ndcg_at_3": {
+        "area": 1.0,
+        "confidence": 1.0,
+        "ridge_geometry_confidence": 1.0,
+        "ridge_with_class": 1.0
+      }
+    },
+    {
+      "coco_id": 499177,
+      "ndcg_at_3": {
+        "area": 1.0,
+        "confidence": 1.0,
+        "ridge_geometry_confidence": 1.0,
+        "ridge_with_class": 1.0
+      }
+    },
+    {
+      "coco_id": 78466,
+      "ndcg_at_3": {
+        "area": 1.0,
+        "confidence": 1.0,
+        "ridge_geometry_confidence": 1.0,
+        "ridge_with_class": 1.0
+      }
+    },
+    {
+      "coco_id": 257894,
+      "ndcg_at_3": {
+        "area": 1.0,
+        "confidence": 1.0,
+        "ridge_geometry_confidence": 1.0,
+        "ridge_with_class": 1.0
+      }
+    },
+    {
+      "coco_id": 177957,
+      "ndcg_at_3": {
+        "area": 0.7609096232928763,
+        "confidence": 1.0,
+        "ridge_geometry_confidence": 0.7609096232928763,
+        "ridge_with_class": 1.0
+      }
+    },
+    {
+      "coco_id": 109042,
+      "ndcg_at_3": {
+        "area": 1.0,
+        "confidence": 1.0,
+        "ridge_geometry_confidence": 1.0,
+        "ridge_with_class": 1.0
+      }
+    },
+    {
+      "coco_id": 150675,
+      "ndcg_at_3": {
+        "area": 0.7609096232928763,
+        "confidence": 1.0,
+        "ridge_geometry_confidence": 0.7609096232928763,
+        "ridge_with_class": 1.0
+      }
+    },
+    {
+      "coco_id": 12993,
+      "ndcg_at_3": {
+        "area": 1.0,
+        "confidence": 1.0,
+        "ridge_geometry_confidence": 1.0,
+        "ridge_with_class": 1.0
+      }
+    },
+    {
+      "coco_id": 92122,
+      "ndcg_at_3": {
+        "area": 0.6309297535714575,
+        "confidence": 1.0,
+        "ridge_geometry_confidence": 0.6309297535714575,
+        "ridge_with_class": 1.0
+      }
+    },
+    {
+      "coco_id": 157109,
+      "ndcg_at_3": {
+        "area": 0.7967075809905066,
+        "confidence": 0.7967075809905066,
+        "ridge_geometry_confidence": 0.7967075809905066,
+        "ridge_with_class": 0.7967075809905066
+      }
+    },
+    {
+      "coco_id": 260906,
+      "ndcg_at_3": {
+        "area": 0.7609096232928763,
+        "confidence": 1.0,
+        "ridge_geometry_confidence": 0.7609096232928763,
+        "ridge_with_class": 0.7609096232928763
+      }
+    },
+    {
+      "coco_id": 19671,
+      "ndcg_at_3": {
+        "area": 1.0,
+        "confidence": 1.0,
+        "ridge_geometry_confidence": 1.0,
+        "ridge_with_class": 0.9509457695419297
+      }
+    },
+    {
+      "coco_id": 468306,
+      "ndcg_at_3": {
+        "area": 1.0,
+        "confidence": 0.9767481110045078,
+        "ridge_geometry_confidence": 1.0,
+        "ridge_with_class": 1.0
+      }
+    },
+    {
+      "coco_id": 480116,
+      "ndcg_at_3": {
+        "area": 0.9509457695419297,
+        "confidence": 0.9509457695419297,
+        "ridge_geometry_confidence": 0.9509457695419297,
+        "ridge_with_class": 0.9509457695419297
+      }
+    },
+    {
+      "coco_id": 452502,
+      "ndcg_at_3": {
+        "area": 1.0,
+        "confidence": 1.0,
+        "ridge_geometry_confidence": 1.0,
+        "ridge_with_class": 1.0
+      }
+    },
+    {
+      "coco_id": 241717,
+      "ndcg_at_3": {
+        "area": 1.0,
+        "confidence": 1.0,
+        "ridge_geometry_confidence": 1.0,
+        "ridge_with_class": 1.0
+      }
+    },
+    {
+      "coco_id": 431827,
+      "ndcg_at_3": {
+        "area": 1.0,
+        "confidence": 0.7609096232928763,
+        "ridge_geometry_confidence": 0.7609096232928763,
+        "ridge_with_class": 1.0
+      }
+    },
+    {
+      "coco_id": 557117,
+      "ndcg_at_3": {
+        "area": 1.0,
+        "confidence": 0.8597186998521972,
+        "ridge_geometry_confidence": 1.0,
+        "ridge_with_class": 1.0
+      }
+    },
+    {
+      "coco_id": 172163,
+      "ndcg_at_3": {
+        "area": 1.0,
+        "confidence": 1.0,
+        "ridge_geometry_confidence": 1.0,
+        "ridge_with_class": 1.0
+      }
+    },
+    {
+      "coco_id": 111609,
+      "ndcg_at_3": {
+        "area": 1.0,
+        "confidence": 0.7967075809905066,
+        "ridge_geometry_confidence": 1.0,
+        "ridge_with_class": 1.0
+      }
+    },
+    {
+      "coco_id": 375063,
+      "ndcg_at_3": {
+        "area": 0.9373691761066303,
+        "confidence": 0.9373691761066303,
+        "ridge_geometry_confidence": 0.9373691761066303,
+        "ridge_with_class": 0.9373691761066303
+      }
+    },
+    {
+      "coco_id": 101531,
+      "ndcg_at_3": {
+        "area": 0.9509457695419297,
+        "confidence": 0.9509457695419297,
+        "ridge_geometry_confidence": 0.9509457695419297,
+        "ridge_with_class": 0.9509457695419297
+      }
+    },
+    {
+      "coco_id": 7275,
+      "ndcg_at_3": {
+        "area": 1.0,
+        "confidence": 0.7609096232928763,
+        "ridge_geometry_confidence": 1.0,
+        "ridge_with_class": 1.0
+      }
+    },
+    {
+      "coco_id": 98882,
+      "ndcg_at_3": {
+        "area": 0.9134015924715543,
+        "confidence": 0.9134015924715543,
+        "ridge_geometry_confidence": 0.9134015924715543,
+        "ridge_with_class": 0.9134015924715543
+      }
+    },
+    {
+      "coco_id": 404823,
+      "ndcg_at_3": {
+        "area": 1.0,
+        "confidence": 1.0,
+        "ridge_geometry_confidence": 1.0,
+        "ridge_with_class": 1.0
+      }
+    },
+    {
+      "coco_id": 128942,
+      "ndcg_at_3": {
+        "area": 1.0,
+        "confidence": 1.0,
+        "ridge_geometry_confidence": 1.0,
+        "ridge_with_class": 1.0
+      }
+    },
+    {
+      "coco_id": 253121,
+      "ndcg_at_3": {
+        "area": 0.7967075809905066,
+        "confidence": 1.0,
+        "ridge_geometry_confidence": 1.0,
+        "ridge_with_class": 1.0
+      }
+    },
+    {
+      "coco_id": 160811,
+      "ndcg_at_3": {
+        "area": 0.6309297535714575,
+        "confidence": 1.0,
+        "ridge_geometry_confidence": 0.6309297535714575,
+        "ridge_with_class": 0.6309297535714575
+      }
+    },
+    {
+      "coco_id": 57646,
+      "ndcg_at_3": {
+        "area": 1.0,
+        "confidence": 1.0,
+        "ridge_geometry_confidence": 1.0,
+        "ridge_with_class": 1.0
+      }
+    },
+    {
+      "coco_id": 392142,
+      "ndcg_at_3": {
+        "area": 0.980637019530922,
+        "confidence": 0.980637019530922,
+        "ridge_geometry_confidence": 0.980637019530922,
+        "ridge_with_class": 0.980637019530922
+      }
+    },
+    {
+      "coco_id": 513676,
+      "ndcg_at_3": {
+        "area": 0.9510464835551904,
+        "confidence": 0.9510464835551904,
+        "ridge_geometry_confidence": 0.9510464835551904,
+        "ridge_with_class": 1.0
+      }
+    },
+    {
+      "coco_id": 510254,
+      "ndcg_at_3": {
+        "area": 1.0,
+        "confidence": 1.0,
+        "ridge_geometry_confidence": 1.0,
+        "ridge_with_class": 0.9509457695419297
+      }
+    },
+    {
+      "coco_id": 112882,
+      "ndcg_at_3": {
+        "area": 1.0,
+        "confidence": 0.9184463009531736,
+        "ridge_geometry_confidence": 1.0,
+        "ridge_with_class": 0.5708758933277845
+      }
+    },
+    {
+      "coco_id": 176759,
+      "ndcg_at_3": {
+        "area": 1.0,
+        "confidence": 0.6309297535714575,
+        "ridge_geometry_confidence": 0.6309297535714575,
+        "ridge_with_class": 0.6309297535714575
+      }
+    },
+    {
+      "coco_id": 15151,
+      "ndcg_at_3": {
+        "area": 1.0,
+        "confidence": 1.0,
+        "ridge_geometry_confidence": 1.0,
+        "ridge_with_class": 1.0
+      }
+    },
+    {
+      "coco_id": 239801,
+      "ndcg_at_3": {
+        "area": 0.8475306857428799,
+        "confidence": 0.79344133571786,
+        "ridge_geometry_confidence": 0.8475306857428799,
+        "ridge_with_class": 1.0
+      }
+    },
+    {
+      "coco_id": 46676,
+      "ndcg_at_3": {
+        "area": 1.0,
+        "confidence": 1.0,
+        "ridge_geometry_confidence": 1.0,
+        "ridge_with_class": 1.0
+      }
+    },
+    {
+      "coco_id": 406755,
+      "ndcg_at_3": {
+        "area": 1.0,
+        "confidence": 1.0,
+        "ridge_geometry_confidence": 1.0,
+        "ridge_with_class": 1.0
+      }
+    },
+    {
+      "coco_id": 549780,
+      "ndcg_at_3": {
+        "area": 1.0,
+        "confidence": 1.0,
+        "ridge_geometry_confidence": 1.0,
+        "ridge_with_class": 1.0
+      }
+    },
+    {
+      "coco_id": 257971,
+      "ndcg_at_3": {
+        "area": 1.0,
+        "confidence": 1.0,
+        "ridge_geometry_confidence": 1.0,
+        "ridge_with_class": 1.0
+      }
+    },
+    {
+      "coco_id": 68628,
+      "ndcg_at_3": {
+        "area": 0.9373691761066303,
+        "confidence": 1.0,
+        "ridge_geometry_confidence": 0.9373691761066303,
+        "ridge_with_class": 0.9373691761066303
+      }
+    },
+    {
+      "coco_id": 325284,
+      "ndcg_at_3": {
+        "area": 0.9134015924715543,
+        "confidence": 0.9134015924715543,
+        "ridge_geometry_confidence": 0.9134015924715543,
+        "ridge_with_class": 0.9134015924715543
+      }
+    },
+    {
+      "coco_id": 131522,
+      "ndcg_at_3": {
+        "area": 0.7601875334318685,
+        "confidence": 0.8597186998521972,
+        "ridge_geometry_confidence": 0.7601875334318685,
+        "ridge_with_class": 0.8597186998521972
+      }
+    },
+    {
+      "coco_id": 343992,
+      "ndcg_at_3": {
+        "area": 1.0,
+        "confidence": 0.9509457695419297,
+        "ridge_geometry_confidence": 1.0,
+        "ridge_with_class": 1.0
+      }
+    },
+    {
+      "coco_id": 362716,
+      "ndcg_at_3": {
+        "area": 0.7588045489781887,
+        "confidence": 0.7588045489781887,
+        "ridge_geometry_confidence": 0.7588045489781887,
+        "ridge_with_class": 0.8362564708545005
+      }
+    },
+    {
+      "coco_id": 143989,
+      "ndcg_at_3": {
+        "area": 1.0,
+        "confidence": 1.0,
+        "ridge_geometry_confidence": 1.0,
+        "ridge_with_class": 1.0
+      }
+    },
+    {
+      "coco_id": 557888,
+      "ndcg_at_3": {
+        "area": 1.0,
+        "confidence": 0.6309297535714575,
+        "ridge_geometry_confidence": 1.0,
+        "ridge_with_class": 1.0
+      }
+    },
+    {
+      "coco_id": 176624,
+      "ndcg_at_3": {
+        "area": 1.0,
+        "confidence": 1.0,
+        "ridge_geometry_confidence": 1.0,
+        "ridge_with_class": 1.0
+      }
+    },
+    {
+      "coco_id": 95520,
+      "ndcg_at_3": {
+        "area": 1.0,
+        "confidence": 1.0,
+        "ridge_geometry_confidence": 1.0,
+        "ridge_with_class": 1.0
+      }
+    },
+    {
+      "coco_id": 422956,
+      "ndcg_at_3": {
+        "area": 1.0,
+        "confidence": 0.9509457695419297,
+        "ridge_geometry_confidence": 1.0,
+        "ridge_with_class": 0.9509457695419297
+      }
+    },
+    {
+      "coco_id": 264642,
+      "ndcg_at_3": {
+        "area": 0.9509457695419297,
+        "confidence": 0.9509457695419297,
+        "ridge_geometry_confidence": 0.9509457695419297,
+        "ridge_with_class": 0.9509457695419297
+      }
+    },
+    {
+      "coco_id": 316446,
+      "ndcg_at_3": {
+        "area": 0.9373691761066303,
+        "confidence": 1.0,
+        "ridge_geometry_confidence": 0.9373691761066303,
+        "ridge_with_class": 0.9373691761066303
+      }
+    },
+    {
+      "coco_id": 58435,
+      "ndcg_at_3": {
+        "area": 1.0,
+        "confidence": 1.0,
+        "ridge_geometry_confidence": 1.0,
+        "ridge_with_class": 1.0
+      }
+    },
+    {
+      "coco_id": 63571,
+      "ndcg_at_3": {
+        "area": 1.0,
+        "confidence": 0.8597186998521972,
+        "ridge_geometry_confidence": 1.0,
+        "ridge_with_class": 1.0
+      }
+    },
+    {
+      "coco_id": 22149,
+      "ndcg_at_3": {
+        "area": 0.9106188852699119,
+        "confidence": 0.8393811147300879,
+        "ridge_geometry_confidence": 0.9106188852699119,
+        "ridge_with_class": 0.9106188852699119
+      }
+    },
+    {
+      "coco_id": 572495,
+      "ndcg_at_3": {
+        "area": 1.0,
+        "confidence": 1.0,
+        "ridge_geometry_confidence": 1.0,
+        "ridge_with_class": 1.0
+      }
+    },
+    {
+      "coco_id": 45183,
+      "ndcg_at_3": {
+        "area": 0.9509457695419297,
+        "confidence": 1.0,
+        "ridge_geometry_confidence": 0.9509457695419297,
+        "ridge_with_class": 0.9509457695419297
+      }
+    },
+    {
+      "coco_id": 250614,
+      "ndcg_at_3": {
+        "area": 0.892911205473213,
+        "confidence": 1.0,
+        "ridge_geometry_confidence": 0.892911205473213,
+        "ridge_with_class": 1.0
+      }
+    },
+    {
+      "coco_id": 458616,
+      "ndcg_at_3": {
+        "area": 1.0,
+        "confidence": 1.0,
+        "ridge_geometry_confidence": 1.0,
+        "ridge_with_class": 1.0
+      }
+    }
+  ],
+  "source_sha256": "d1489e84abeb53c9ee9a7a7bdae04578c02173deb7dbfbf72db29580d2e4f3a2"
+}

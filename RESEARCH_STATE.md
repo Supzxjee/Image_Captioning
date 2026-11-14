@@ -10,7 +10,7 @@ Cập nhật: 13/11/2026, giờ Việt Nam. File này là bản tóm tắt để
 
 ## Hiện đang ở đâu
 
-- **Object priority held-out ranking notebook ready.** Embedded verified 412 informative TRAIN/restval rows; fixed image split and pairwise ridge compared with area/confidence on nDCG@3. Static and split checks passed, Kaggle CPU run pending. [Notebook](experiments/clip_patch_baseline/OBJECT_PRIORITY_RANK_HOLDOUT_CPU.ipynb).
+- **Object priority ranking complete, gate failed.** On 89 held-out informative TRAIN/restval images, class-aware ridge nDCG@3 .9501 vs area .9467; difference +.00343, paired 95% CI [-.02090, +.02866]. Sample IDs and metric means verified. Defer XE integration under this protocol. [Result](experiments/clip_patch_baseline/OBJECT_PRIORITY_RANK_HOLDOUT_RESULT.json).
 
 - **Object mention priority CPU diagnostic complete.** 412/2000 images with differing reference mention counts; 103 with frequent vs unmentioned slots, 27 confidence and 21 area inversions; nDCG@3 .933 confidence, .941 area on informative images. Candidate for low-cost held-out ranking against area before committing to XE. No caption quality claim. [Result](experiments/clip_patch_baseline/OBJECT_PRIORITY_TRAIN2000_RESULT.json).
 

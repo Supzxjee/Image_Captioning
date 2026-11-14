@@ -157,3 +157,5 @@ User approved a CPU diagnostic. Sample 2,000 Karpathy TRAIN/restval images deter
 
 ### Held-out object priority ranking
 User approved a CPU comparison using the existing diagnostic export. Split the 412 informative TRAIN/restval images by fixed hash (roughly 75/25). Fit one pairwise ridge ranker on log area, confidence and class using within-image feature differences. Compare with area, confidence and an area+confidence-only ridge ablation on held-out nDCG@3, with a paired image bootstrap against area. Consider an XE pilot only if the learned ranker beats area with a positive lower confidence bound. This is conditional on informative images; no captioner run or Karpathy VALID/TEST evaluation.
+
+Held-out object priority result: class-aware ridge improves nDCG@3 by .00343 over area on 89 informative images, with paired CI [-.02090,+.02866]. Gate failed; defer XE. See OBJECT_PRIORITY_RANK_HOLDOUT_RESULT.json.
