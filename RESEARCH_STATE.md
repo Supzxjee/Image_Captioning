@@ -10,6 +10,8 @@ Cập nhật: 13/11/2026, giờ Việt Nam. File này là bản tóm tắt để
 
 ## Hiện đang ở đâu
 
+- **Detector-box pair-crop probe ready.** Eight decisive VALID caption pairs screened via exact v175 for a unique retained person-object YOLO ROI pair. Report exclusions and whole-frame/crop CLIP preference. Static checks and matching fixture pass; Kaggle runtime and eligible count pending. [Notebook](experiments/clip_patch_baseline/CLIP_PAIR_CROP_DETECTOR_VALID_PROBE.ipynb).
+
 - **Pair-crop feasibility complete.** Frozen CLIP ViT-B/16: 9/16 events correct on crop vs 8/16 full; both correct on 2/8 images vs 0/8 full (identical inputs for paired events); two repairs and one regression. Small diagnostic on two relation families with reviewed boxes. Recommend holding adapter integration; broader detector-box probe needed for promotion. [Result](experiments/clip_patch_baseline/CLIP_PAIR_CROP_EVIDENCE_PROBE_RESULT.json).
 
 - **SCST3000 VALID5000 complete, gate failed.** Fixed rerank CIDEr 126.07 vs 125.76 at 1500, CHAIRs 4.62% vs 4.06% (cap 4.20%), CHAIRi 3.04% vs 2.69%. Retain v94 SCST1500 as the preferred SCST checkpoint under the cap. Do not schedule 6000 or a full pass under this protocol. The new run Save Version is unrecorded. [Result](experiments/clip_patch_baseline/CSA_SCST_ONLY3000_RERANK_VALID_RESULT.json).
