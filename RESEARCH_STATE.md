@@ -10,7 +10,7 @@ Cập nhật: 13/11/2026, giờ Việt Nam. File này là bản tóm tắt để
 
 ## Hiện đang ở đâu
 
-- **14/11 direct UPT blind review prepared.** All 53 changed pairs in a local HTML with original SHA-verified images and randomized A/B, key stored separately. Await labels.
+- **14/11 direct UPT review complete.** User-exported assisted labels for 53 changed pairs: 14 direct UPT preferred, 19 control preferred, 17 equivalent, 3 unclear; 77 identical captions outside review. [Result](experiments/clip_patch_baseline/CSA_DIRECT_UPT_VALID130_BLIND_RESULT.json).
 
 - **14/11 direct UPT VALID130 pilot complete.** Exact v94; all 130 control captions match history; 207 previously dropped proposals restored, 53/130 final captions changed. Qualitative changes include both gains and regressions. Full visual review and aggregate metrics pending. [Result](experiments/clip_patch_baseline/CSA_RELATION_DIRECT_UPT_VALID130_RESULT.json).
 

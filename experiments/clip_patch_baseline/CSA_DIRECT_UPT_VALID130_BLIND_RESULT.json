@@ -1,0 +1,386 @@
+{
+  "reviewed": 53,
+  "cohort": 130,
+  "unchanged": 77,
+  "counts": {
+    "control": 19,
+    "unclear": 3,
+    "tie": 17,
+    "direct_upt": 14
+  },
+  "labels_sha256": "cce8c9ae67d68492ddc768d418a98c694a1a8214e0a5c9d7b943f049f41339e3",
+  "scope": "Assistant-assisted review with user-exported labels; changed pairs only in affected Karpathy VALID cohort.",
+  "records": [
+    {
+      "index": 1,
+      "coco_id": 376368,
+      "label": "B",
+      "note": "",
+      "outcome": "control"
+    },
+    {
+      "index": 2,
+      "coco_id": 296825,
+      "label": "unclear",
+      "note": "Kh\u00f3 x\u00e1c \u0111\u1ecbnh \u0111\u00e2y l\u00e0 \u0111\u01b0\u1eddng hay b\u00e3i \u0111\u1ed7.",
+      "outcome": "unclear"
+    },
+    {
+      "index": 3,
+      "coco_id": 161187,
+      "label": "tie",
+      "note": "",
+      "outcome": "tie"
+    },
+    {
+      "index": 4,
+      "coco_id": 425676,
+      "label": "A",
+      "note": "",
+      "outcome": "control"
+    },
+    {
+      "index": 5,
+      "coco_id": 259690,
+      "label": "B",
+      "note": "",
+      "outcome": "control"
+    },
+    {
+      "index": 6,
+      "coco_id": 499400,
+      "label": "B",
+      "note": "",
+      "outcome": "direct_upt"
+    },
+    {
+      "index": 7,
+      "coco_id": 409346,
+      "label": "tie",
+      "note": "",
+      "outcome": "tie"
+    },
+    {
+      "index": 8,
+      "coco_id": 207561,
+      "label": "tie",
+      "note": "",
+      "outcome": "tie"
+    },
+    {
+      "index": 9,
+      "coco_id": 189248,
+      "label": "tie",
+      "note": "",
+      "outcome": "tie"
+    },
+    {
+      "index": 10,
+      "coco_id": 308362,
+      "label": "tie",
+      "note": "",
+      "outcome": "tie"
+    },
+    {
+      "index": 11,
+      "coco_id": 463722,
+      "label": "tie",
+      "note": "",
+      "outcome": "tie"
+    },
+    {
+      "index": 12,
+      "coco_id": 336431,
+      "label": "A",
+      "note": "",
+      "outcome": "control"
+    },
+    {
+      "index": 13,
+      "coco_id": 379048,
+      "label": "tie",
+      "note": "",
+      "outcome": "tie"
+    },
+    {
+      "index": 14,
+      "coco_id": 76822,
+      "label": "B",
+      "note": "",
+      "outcome": "control"
+    },
+    {
+      "index": 15,
+      "coco_id": 199017,
+      "label": "tie",
+      "note": "",
+      "outcome": "tie"
+    },
+    {
+      "index": 16,
+      "coco_id": 543402,
+      "label": "A",
+      "note": "Th\u1ea5y gh\u1ebf v\u00e0 \u00f4, kh\u00f4ng th\u1ea5y ng\u01b0\u1eddi ng\u1ed3i tr\u00ean gh\u1ebf.",
+      "outcome": "control"
+    },
+    {
+      "index": 17,
+      "coco_id": 389123,
+      "label": "unclear",
+      "note": "Ph\u01b0\u01a1ng ti\u1ec7n tr\u00f4ng gi\u1ed1ng thuy\u1ec1n kayak. C\u1ea3 hai c\u00e2u \u0111\u1ec1u g\u1ecdi l\u00e0 v\u00e1n l\u01b0\u1edbt s\u00f3ng.",
+      "outcome": "unclear"
+    },
+    {
+      "index": 18,
+      "coco_id": 270097,
+      "label": "B",
+      "note": "",
+      "outcome": "control"
+    },
+    {
+      "index": 19,
+      "coco_id": 36607,
+      "label": "A",
+      "note": "",
+      "outcome": "direct_upt"
+    },
+    {
+      "index": 20,
+      "coco_id": 154816,
+      "label": "B",
+      "note": "",
+      "outcome": "control"
+    },
+    {
+      "index": 21,
+      "coco_id": 314757,
+      "label": "A",
+      "note": "",
+      "outcome": "control"
+    },
+    {
+      "index": 22,
+      "coco_id": 511379,
+      "label": "B",
+      "note": "",
+      "outcome": "control"
+    },
+    {
+      "index": 23,
+      "coco_id": 505099,
+      "label": "tie",
+      "note": "",
+      "outcome": "tie"
+    },
+    {
+      "index": 24,
+      "coco_id": 18193,
+      "label": "tie",
+      "note": "",
+      "outcome": "tie"
+    },
+    {
+      "index": 25,
+      "coco_id": 276693,
+      "label": "A",
+      "note": "",
+      "outcome": "direct_upt"
+    },
+    {
+      "index": 26,
+      "coco_id": 16546,
+      "label": "A",
+      "note": "",
+      "outcome": "control"
+    },
+    {
+      "index": 27,
+      "coco_id": 366822,
+      "label": "A",
+      "note": "",
+      "outcome": "direct_upt"
+    },
+    {
+      "index": 28,
+      "coco_id": 271681,
+      "label": "B",
+      "note": "",
+      "outcome": "control"
+    },
+    {
+      "index": 29,
+      "coco_id": 575349,
+      "label": "B",
+      "note": "",
+      "outcome": "control"
+    },
+    {
+      "index": 30,
+      "coco_id": 58225,
+      "label": "A",
+      "note": "",
+      "outcome": "control"
+    },
+    {
+      "index": 31,
+      "coco_id": 563885,
+      "label": "B",
+      "note": "",
+      "outcome": "direct_upt"
+    },
+    {
+      "index": 32,
+      "coco_id": 334309,
+      "label": "A",
+      "note": "Ng\u01b0\u1eddi \u0111\u00e0n \u00f4ng c\u00f3 \u0111i\u1ec7n tho\u1ea1i v\u00e0 th\u1ee9c \u0103n. Mi\u1ec7ng h\u01b0\u1edbng v\u1ec1 th\u1ee9c \u0103n.",
+      "outcome": "direct_upt"
+    },
+    {
+      "index": 33,
+      "coco_id": 5282,
+      "label": "B",
+      "note": "",
+      "outcome": "direct_upt"
+    },
+    {
+      "index": 34,
+      "coco_id": 162580,
+      "label": "A",
+      "note": "C\u1eadu b\u00e9 \u00f4m g\u1ea5u b\u00f4ng.",
+      "outcome": "control"
+    },
+    {
+      "index": 35,
+      "coco_id": 391463,
+      "label": "tie",
+      "note": "",
+      "outcome": "tie"
+    },
+    {
+      "index": 36,
+      "coco_id": 30347,
+      "label": "A",
+      "note": "M\u1ed9t s\u1ed1 ng\u01b0\u1eddi \u0111ang ng\u1ed3i, ng\u01b0\u1eddi \u1edf ti\u1ec1n c\u1ea3nh qu\u1ef3 b\u00ean laptop.",
+      "outcome": "direct_upt"
+    },
+    {
+      "index": 37,
+      "coco_id": 317188,
+      "label": "tie",
+      "note": "\u00c1o tr\u00f4ng h\u1ed3ng san h\u00f4. M\u00e0u c\u00f3 th\u1ec3 \u0111\u01b0\u1ee3c g\u1ecdi kh\u00e1c nhau.",
+      "outcome": "tie"
+    },
+    {
+      "index": 38,
+      "coco_id": 73927,
+      "label": "A",
+      "note": "",
+      "outcome": "direct_upt"
+    },
+    {
+      "index": 39,
+      "coco_id": 83925,
+      "label": "tie",
+      "note": "",
+      "outcome": "tie"
+    },
+    {
+      "index": 40,
+      "coco_id": 231079,
+      "label": "A",
+      "note": "",
+      "outcome": "direct_upt"
+    },
+    {
+      "index": 41,
+      "coco_id": 409241,
+      "label": "tie",
+      "note": "",
+      "outcome": "tie"
+    },
+    {
+      "index": 42,
+      "coco_id": 124116,
+      "label": "B",
+      "note": "",
+      "outcome": "control"
+    },
+    {
+      "index": 43,
+      "coco_id": 94607,
+      "label": "A",
+      "note": "",
+      "outcome": "control"
+    },
+    {
+      "index": 44,
+      "coco_id": 327656,
+      "label": "A",
+      "note": "",
+      "outcome": "direct_upt"
+    },
+    {
+      "index": 45,
+      "coco_id": 564355,
+      "label": "tie",
+      "note": "",
+      "outcome": "tie"
+    },
+    {
+      "index": 46,
+      "coco_id": 525439,
+      "label": "A",
+      "note": "V\u00e1n l\u1eadt m\u1eb7t b\u00e1nh xe l\u00ean. \u1ea2nh ch\u01b0a cho th\u1ea5y ng\u01b0\u1eddi \u0111ang tr\u01b0\u1ee3t l\u00ean d\u1ed1c.",
+      "outcome": "control"
+    },
+    {
+      "index": 47,
+      "coco_id": 538414,
+      "label": "tie",
+      "note": "",
+      "outcome": "tie"
+    },
+    {
+      "index": 48,
+      "coco_id": 328921,
+      "label": "B",
+      "note": "",
+      "outcome": "control"
+    },
+    {
+      "index": 49,
+      "coco_id": 204757,
+      "label": "unclear",
+      "note": "V\u1eadt \u0111\u01b0\u1ee3c c\u1ea7m tr\u00f4ng gi\u1ed1ng t\u00f4m. D\u1ee5ng c\u1ee5 c\u1eaft c\u0169ng kh\u00f3 x\u00e1c \u0111\u1ecbnh, n\u00ean c\u1ea3 hai c\u00e2u \u0111\u1ec1u \u0111\u00e1ng xem l\u1ea1i.",
+      "outcome": "unclear"
+    },
+    {
+      "index": 50,
+      "coco_id": 561745,
+      "label": "B",
+      "note": "",
+      "outcome": "direct_upt"
+    },
+    {
+      "index": 51,
+      "coco_id": 439522,
+      "label": "tie",
+      "note": "",
+      "outcome": "tie"
+    },
+    {
+      "index": 52,
+      "coco_id": 226008,
+      "label": "A",
+      "note": "",
+      "outcome": "direct_upt"
+    },
+    {
+      "index": 53,
+      "coco_id": 304596,
+      "label": "A",
+      "note": "",
+      "outcome": "direct_upt"
+    }
+  ]
+}
