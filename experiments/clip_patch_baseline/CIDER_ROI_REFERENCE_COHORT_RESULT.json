@@ -1,0 +1,77 @@
+{
+  "split": "val",
+  "selection": "target in at least two VALID references",
+  "screened_images": 141,
+  "eligible_pairs": 2,
+  "shortlisted_images": 2,
+  "rows": [
+    {
+      "coco_id": 456969,
+      "filename": "COCO_val2014_000000456969.jpg",
+      "image_sha256": "50a590b0d80116e4a0d671e735cafedc8c5f162a49309cc6b5d08d58baca812a",
+      "caption": "a woman sitting at a table with a laptop and a plate of food",
+      "prompt": "a pizza",
+      "matched_roi": {
+        "roi": 7,
+        "label": "pizza",
+        "bbox": [
+          0.33675,
+          0.7761124121779859,
+          0.5039687500000001,
+          0.9055269320843092
+        ],
+        "confidence": 0.712
+      },
+      "wrong_roi": {
+        "roi": 9,
+        "label": "laptop",
+        "bbox": [
+          0.073421875,
+          0.6679391100702575,
+          0.26771875,
+          0.8420843091334894
+        ],
+        "confidence": 0.5198
+      },
+      "area_ratio": 1.5635412500651826,
+      "reference_mentions": 2,
+      "center_distance": 0.26411660716065216,
+      "iou": 0.0,
+      "rank_quality": 0.48759324752276534
+    },
+    {
+      "coco_id": 22420,
+      "filename": "COCO_val2014_000000022420.jpg",
+      "image_sha256": "c07333f38a6fb52a3816e06cc21be3ad0251547215567a1398e726dc46b2c53d",
+      "caption": "a couple of books sitting on top of a book shelf",
+      "prompt": "a motorcycle",
+      "matched_roi": {
+        "roi": 4,
+        "label": "motorcycle",
+        "bbox": [
+          0.582921875,
+          0.2767916666666667,
+          0.8869843749999999,
+          0.581
+        ],
+        "confidence": 0.6941
+      },
+      "wrong_roi": {
+        "roi": 5,
+        "label": "book",
+        "bbox": [
+          0.34709375,
+          0.2994791666666667,
+          0.567671875,
+          0.53025
+        ],
+        "confidence": 0.5074
+      },
+      "area_ratio": 1.8171492936527565,
+      "reference_mentions": 2,
+      "center_distance": 0.2779247278633374,
+      "iou": 0.0,
+      "rank_quality": 0.5765592033407843
+    }
+  ]
+}

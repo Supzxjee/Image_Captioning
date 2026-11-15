@@ -88,3 +88,7 @@ Assistant judged all 26 image overlays: 4 accept, 20 reject, 2 unclear. Most rej
 ### Reference-based candidate screening approved
 
 Before checking geometry, retain only target labels mentioned in at least two separate saved VALID reference captions. The reference payload SHA-256 is `219cbe174a62e04b75c4f110242e12c51edb32a4c42210713db93b330340e75e`. This retains 141 of the earlier 912 images. Preserve the existing detector, ROI and prompt pins, foil eligibility and geometry thresholds. Report mention counts for shortlisted nouns. References select the diagnostic sample offline. Visual checks and later scoring must use the verified image/ROI, with references excluded from model inputs. No GPU in screening.
+
+### Reference-based screening result
+
+[Result](CIDER_ROI_REFERENCE_COHORT_RESULT.json). The 141-image reference-first pool gives two eligible pairs, both exact repeats of candidates rejected in assisted visual review: COCO 456969 (the proposed pizza box covers salad) and COCO 22420 (the motorcycle is printed on a book). No accepted pair under this filter. Do not use these pairs to score the decoder. The reference mention criterion applies to the whole image and does not validate a particular detector box. If this experiment is revisited, visually verify target boxes first and consider same-size within-image controls without requiring another detector label mentioned in the saved caption.
