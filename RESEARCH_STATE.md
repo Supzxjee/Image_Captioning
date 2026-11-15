@@ -10,6 +10,8 @@ Cập nhật: 15/11/2026, giờ Việt Nam. File này là bản tóm tắt để
 
 ## Hiện đang ở đâu
 
+- **RegionCLIP slot cache160 notebook prepared.** [Notebook](experiments/clip_patch_baseline/REGIONCLIP_SLOT_CACHE160_1GPU.ipynb). Reuse V4 environment patches and exact checkpoint digest. Deterministic 128 TRAIN/32 VALID v175 images with object slots. Box/slot-preserving extraction only; AST checked, Kaggle execution pending.
+
 - **RegionCLIP fixed-box V4 complete.** Four finite, distinct-within-image float32 vectors of 1024 dimensions on two verified VALID images. [Result](experiments/clip_patch_baseline/REGIONCLIP_FIXED_ROI_VALID2_RESULT.json). Extraction only, no caption quality evaluation.
 
 - **Reference-first ROI screening complete.** 141 images, 2 eligible pairs, both exact repeats already rejected in assisted visual review (salad misclassified as pizza and a motorcycle printed on a book). 0 accepted; no v94 scoring or training. [Result](experiments/clip_patch_baseline/CIDER_ROI_REFERENCE_COHORT_RESULT.json).

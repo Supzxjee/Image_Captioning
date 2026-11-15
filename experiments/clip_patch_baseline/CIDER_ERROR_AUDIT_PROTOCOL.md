@@ -104,3 +104,7 @@ V2 compiled Detectron2 successfully, then stopped during import at the removed P
 V3 passed the Pillow import and stopped on the removed numpy.lib.pad export. V4 switches both legacy import sites to numpy.pad. Verified both pinned source occurrences and their syntax. Checkpoint extraction still pending.
 
 V4 extraction completed. [Result](REGIONCLIP_FIXED_ROI_VALID2_RESULT.json). Both exact YOLO box pairs match the prior audit. Verified four finite nonzero 1024-dimensional float32 vectors, distinct per image. NPZ SHA-256: `b4fc695b6493287bf22ec05bf63e31acdbcf6ddc50d80a288983ca2c5a392f29`. Reported extraction stage elapsed 2.01 seconds, excluding environment setup and checkpoint load. No caption metrics.
+
+### RegionCLIP fixed-box cache benchmark
+
+Reuse the confirmed V4 RegionCLIP RN50 checkpoint digest and exact v175 prompt links. Select 128 TRAIN and 32 VALID images with existing object slots by fixed SHA ordering over split and COCO ID. Store one 1024-dimensional vector per slot in the original slot order and keep its YOLO index and normalized box. Use mounted COCO JPEGs and hash each consumed image. No detector regeneration, captioning, training or TEST. This small cache validates the larger extraction contract and estimates extraction cost; the future training cohort, projection and schedule are separate decisions.
