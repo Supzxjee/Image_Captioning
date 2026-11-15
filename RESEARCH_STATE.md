@@ -10,6 +10,8 @@ Cập nhật: 15/11/2026, giờ Việt Nam. File này là bản tóm tắt để
 
 ## Hiện đang ở đâu
 
+- **RegionCLIP fixed-box feasibility notebook prepared.** [Notebook](experiments/clip_patch_baseline/REGIONCLIP_FIXED_ROI_VALID2_1GPU.ipynb). Two known VALID images, 4 unchanged YOLO boxes, official RN50 feature extraction only. AST/cohort verified; legacy build and actual checkpoint layout unverified on Kaggle. No caption-side integration or training.
+
 - **Reference-first ROI screening complete.** 141 images, 2 eligible pairs, both exact repeats already rejected in assisted visual review (salad misclassified as pizza and a motorcycle printed on a book). 0 accepted; no v94 scoring or training. [Result](experiments/clip_patch_baseline/CIDER_ROI_REFERENCE_COHORT_RESULT.json).
 
 - **Broader same-text ROI screening complete.** 912 images screened, 48 eligible pairs, 26 distinct shortlisted images. Geometry and 26 JPEG hashes verified. Self-contained Downloads review page cider_roi_cohort_review.html. Assisted review 4 accept, 20 reject, 2 unclear; below 20-case target. [Assisted labels](experiments/clip_patch_baseline/CIDER_ROI_COHORT_ASSISTED_LABELS.json). User verification and v94 scoring pending. [Candidates](experiments/clip_patch_baseline/CIDER_ROI_COHORT_CANDIDATES.json).

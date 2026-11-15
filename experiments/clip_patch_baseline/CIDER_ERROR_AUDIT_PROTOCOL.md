@@ -92,3 +92,7 @@ Before checking geometry, retain only target labels mentioned in at least two se
 ### Reference-based screening result
 
 [Result](CIDER_ROI_REFERENCE_COHORT_RESULT.json). The 141-image reference-first pool gives two eligible pairs, both exact repeats of candidates rejected in assisted visual review: COCO 456969 (the proposed pizza box covers salad) and COCO 22420 (the motorcycle is printed on a book). No accepted pair under this filter. Do not use these pairs to score the decoder. The reference mention criterion applies to the whole image and does not validate a particular detector box. If this experiment is revisited, visually verify target boxes first and consider same-size within-image controls without requiring another detector label mentioned in the saved caption.
+
+### RegionCLIP fixed-box feasibility
+
+Use the official pretrained RegionCLIP RN50 recognition backbone at source commit 4b8513b56e24827e3d6468e1f2105869f35c2d0b. Freeze the source. Start with two previously verified VALID images and their four exact target/control YOLO boxes. Use the official recognition preprocessing, C4 ROI pooling, layer4 and attention pooling. Do not generate boxes. Record original normalized boxes and features with checkpoint digest. This is a technical extraction smoke only; features in different spaces must not be substituted into v94 without training/projection. If cache extraction works, design a matched trained comparison of feature sources on the same boxes.
