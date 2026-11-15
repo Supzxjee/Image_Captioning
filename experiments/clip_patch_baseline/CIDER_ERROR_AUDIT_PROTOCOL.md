@@ -38,3 +38,7 @@ Reuse the 15 low-score cases with a primary missing-content or wrong-object judg
 - 72024 and 468858: boat and couch slots are present. A saved alternative mentions the omitted object, while the selected caption leaves it out.
 
 These are selected error cases. The metadata localizes failure modes without measuring causal prompt effects. Proposed next check: inspect raw UPT proposals and YOLO ROI rows on the teddy bear and bed cases, then test adding one verified object–ROI link at a time on the same frozen checkpoint if a usable ROI exists. Keep other inputs fixed and use the saved original beam/caption baseline. No new inference or training performed.
+
+### Two-case source check approved
+
+Read the exact detector and UPT prompt caches that fed v175. Export the source boxes and class evidence for COCO 239894 (teddy bear) and 487438 (bed), reconstructing detector ROI order with the historical confidence sort, clipping and cap. Compare the count and all retained v175 object ROI boxes. The frozen UPT cache exposes previously selected proposals, so an absent class can be attributed to absence in that cache, with raw UPT model output still unknown. No model execution or prompt injection in this phase.
