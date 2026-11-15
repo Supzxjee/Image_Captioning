@@ -54,3 +54,7 @@ Treat these two selected VALID images as a mechanism check. Replay exact v94 wit
 ### Frozen single-slot intervention result
 
 [Result](CIDER_OBJECT_SLOT_VALID2_RESULT.json). User ZIP SHA-256 `43cfe472185bb84099df7ed2faca42424d1e538734a6439adf33f6112c5eeff5`. Offline verification confirms both cases, checkpoint identity recorded in the export, verified ROI coordinates, and exact replay of the five archived beams per case. The added slot changes the five-beam list in both images and the top beam only for 239894. Target noun mentions remain 0/5 before and after on each image. The teddy bear case still says bag; the bed case keeps the same top beam and introduces bookshelf in one beam. This two-image probe does not estimate CIDEr, CHAIR, reranking utility or the direction of the target noun score. Defer a full fallback run. A follow-up, if justified, would compare teacher-forced target phrase margins under a fixed caption prefix using the same model and inputs.
+
+### Fixed-prefix score check approved
+
+Reuse both v94 arms from the single-slot probe. On COCO 239894, score teddy bear versus bag after "a woman with a red". On COCO 487438, score bed versus chair after "a room with a". Teacher-force each continuation and report token log probabilities, their sum, and the shift in the correct-minus-confusion margin. Also report per-token mean margin because the teddy-bear alternatives differ in length. Neither score alone measures general caption quality. No new search, reranking, metric or training.
