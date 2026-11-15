@@ -74,3 +74,8 @@ Run the same v94 fixed-prefix check in three arms: original, one added prompt at
 ### Broader VALID matched-region preparation
 
 Exclude the 40 already reviewed images. Reuse v94 archived VALID beams. Screen for a YOLO class with confidence at least .50 absent from all five saved captions and from existing v175 object prompts. Require a distinct different-class detector ROI unused by the existing slots, around an object mentioned in the archived final caption. Compare the same target prompt at two boxes. Keep box area ratio at most 2, absolute normalized center distance at most .35, and IoU at most .10. Candidate boxes must be visually confirmed before scoring. Sample one pair per image, prioritize similar geometry, and limit repeated target classes in the review shortlist. Aim for 20–30 visually accepted cases. Two prior examples remain outside the cohort.
+
+
+### Broader VALID screening result
+
+912 images screened; 48 eligible pairs and 26 unique shortlisted images. Verified pair geometry and all JPEG hashes. Visual correspondence and caption salience remain to be judged before scoring. If fewer than 20 pass, report the yield before considering new cases. [Candidates](CIDER_ROI_COHORT_CANDIDATES.json).

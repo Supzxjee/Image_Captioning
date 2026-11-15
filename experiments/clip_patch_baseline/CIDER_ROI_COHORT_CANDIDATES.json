@@ -1,0 +1,866 @@
+{
+  "split": "val",
+  "screened_images": 912,
+  "eligible_pairs": 48,
+  "shortlisted_images": 26,
+  "rows": [
+    {
+      "coco_id": 78313,
+      "filename": "COCO_val2014_000000078313.jpg",
+      "image_sha256": "3d685e3d0cb582b9658e403fb7bea7c1d0087459620a39448cb69e6ce7d5c1db",
+      "caption": "a cabinet filled with lots of white vases",
+      "prompt": "a bowl",
+      "matched_roi": {
+        "roi": 13,
+        "label": "bowl",
+        "bbox": [
+          0.310328125,
+          0.43906103286384973,
+          0.385296875,
+          0.48528169014084505
+        ],
+        "confidence": 0.5329
+      },
+      "wrong_roi": {
+        "roi": 11,
+        "label": "vase",
+        "bbox": [
+          0.36559375,
+          0.2799530516431925,
+          0.41515625,
+          0.3506807511737089
+        ],
+        "confidence": 0.6028
+      },
+      "area_ratio": 1.0116408330794677,
+      "center_distance": 0.1528980014771936,
+      "iou": 0.0,
+      "rank_quality": 0.15868480140033073
+    },
+    {
+      "coco_id": 74058,
+      "filename": "COCO_val2014_000000074058.jpg",
+      "image_sha256": "a619c4064a1a9af3f0d3c20abee5dc8bb05edda1ec0b240e28fb823b4fd9d204",
+      "caption": "a black and white photo of a restaurant with bicycles",
+      "prompt": "a car",
+      "matched_roi": {
+        "roi": 2,
+        "label": "car",
+        "bbox": [
+          0.729671875,
+          0.4656206088992974,
+          0.898765625,
+          0.6446838407494144
+        ],
+        "confidence": 0.8002
+      },
+      "wrong_roi": {
+        "roi": 5,
+        "label": "bicycle",
+        "bbox": [
+          0.649875,
+          0.4907025761124122,
+          0.741203125,
+          0.8267213114754098
+        ],
+        "confidence": 0.69
+      },
+      "area_ratio": 1.0135240538728787,
+      "center_distance": 0.15751026511993083,
+      "iou": 0.029997825994520305,
+      "rank_quality": 0.16422697516958243
+    },
+    {
+      "coco_id": 484978,
+      "filename": "COCO_val2014_000000484978.jpg",
+      "image_sha256": "7110686f7909d235b993145e33ac6f5ae0baf8b89c308d5a32553aeb1601aed2",
+      "caption": "a woman sitting at a table with a cup of coffee",
+      "prompt": "a spoon",
+      "matched_roi": {
+        "roi": 10,
+        "label": "spoon",
+        "bbox": [
+          0.84965625,
+          0.6780651731160896,
+          0.966015625,
+          0.7273319755600814
+        ],
+        "confidence": 0.5835
+      },
+      "wrong_roi": {
+        "roi": 13,
+        "label": "cup",
+        "bbox": [
+          0.9609687499999999,
+          0.6008146639511202,
+          0.999625,
+          0.7251527494908351
+        ],
+        "confidence": 0.5505
+      },
+      "area_ratio": 1.1927017559192152,
+      "center_distance": 0.08263085484988829,
+      "iou": 0.02306908588466124,
+      "rank_quality": 0.17074141326160458
+    },
+    {
+      "coco_id": 299493,
+      "filename": "COCO_val2014_000000299493.jpg",
+      "image_sha256": "d8f2e4ad7d8644fb4149ca3f03a626be2c879fee554f2bd3f0f68e461443d822",
+      "caption": "a yellow and yellow bus driving down a street",
+      "prompt": "a truck",
+      "matched_roi": {
+        "roi": 3,
+        "label": "truck",
+        "bbox": [
+          0.09671874999999999,
+          0.5057511737089202,
+          0.15462499999999998,
+          0.6696009389671361
+        ],
+        "confidence": 0.6693
+      },
+      "wrong_roi": {
+        "roi": 2,
+        "label": "bus",
+        "bbox": [
+          0.000125,
+          0.4896713615023474,
+          0.062671875,
+          0.6107276995305164
+        ],
+        "confidence": 0.892
+      },
+      "area_ratio": 1.2530780313058782,
+      "center_distance": 0.10144935192362332,
+      "iou": 0.0,
+      "rank_quality": 0.21425082670271847
+    },
+    {
+      "coco_id": 480122,
+      "filename": "COCO_val2014_000000480122.jpg",
+      "image_sha256": "59388d47e3ddcabe229718019086d04ad7ef4ef15b38e69c71348191cbaf0b6f",
+      "caption": "a kitchen with a bowl of bananas on a table",
+      "prompt": "a chair",
+      "matched_roi": {
+        "roi": 4,
+        "label": "chair",
+        "bbox": [
+          0.3379375,
+          0.5589062499999999,
+          0.45871874999999995,
+          0.6708125
+        ],
+        "confidence": 0.8896
+      },
+      "wrong_roi": {
+        "roi": 3,
+        "label": "bowl",
+        "bbox": [
+          0.407625,
+          0.63859375,
+          0.57975,
+          0.73978125
+        ],
+        "confidence": 0.8917
+      },
+      "area_ratio": 1.2885965276706541,
+      "center_distance": 0.12090525450288027,
+      "iou": 0.05620864091585328,
+      "rank_quality": 0.24768208603596537
+    },
+    {
+      "coco_id": 160004,
+      "filename": "COCO_val2014_000000160004.jpg",
+      "image_sha256": "0e6bae765997cf7acb1134958003495e80f49bcc451b892194439e2af2dc029b",
+      "caption": "a red double decker bus driving past a tall clock tower",
+      "prompt": "a car",
+      "matched_roi": {
+        "roi": 3,
+        "label": "car",
+        "bbox": [
+          0.6001170960187353,
+          0.62471875,
+          0.7324590163934426,
+          0.684203125
+        ],
+        "confidence": 0.8593
+      },
+      "wrong_roi": {
+        "roi": 4,
+        "label": "bus",
+        "bbox": [
+          0.8740983606557378,
+          0.5940000000000001,
+          0.9871896955503512,
+          0.66590625
+        ],
+        "confidence": 0.8511
+      },
+      "area_ratio": 1.0329888543196648,
+      "center_distance": 0.26548957183120986,
+      "iou": 0.0,
+      "rank_quality": 0.28171777205946474
+    },
+    {
+      "coco_id": 213809,
+      "filename": "COCO_val2014_000000213809.jpg",
+      "image_sha256": "15404adc60b0d2e4466bd633530c716051f7f9dcf24f020a71a4b614dc22c73d",
+      "caption": "three pictures of a pizza and a pizza",
+      "prompt": "a spoon",
+      "matched_roi": {
+        "roi": 6,
+        "label": "spoon",
+        "bbox": [
+          0.16015625,
+          0.5239153439153439,
+          0.230109375,
+          0.6030864197530864
+        ],
+        "confidence": 0.7803
+      },
+      "wrong_roi": {
+        "roi": 12,
+        "label": "pizza",
+        "bbox": [
+          0.015921875,
+          0.3183245149911817,
+          0.05745312500000001,
+          0.4403880070546737
+        ],
+        "confidence": 0.632
+      },
+      "area_ratio": 1.0924784374531498,
+      "center_distance": 0.24292829894220944,
+      "iou": 0.0,
+      "rank_quality": 0.2871527543961317
+    },
+    {
+      "coco_id": 53952,
+      "filename": "COCO_val2014_000000053952.jpg",
+      "image_sha256": "c05baa499a7dee634c2f640b8749a69b764e55a09c92796e0bd2705af7965a42",
+      "caption": "a man and a girl sitting in a kitchen with a pizza",
+      "prompt": "a cup",
+      "matched_roi": {
+        "roi": 4,
+        "label": "cup",
+        "bbox": [
+          0.55274,
+          0.7316216216216216,
+          0.59404,
+          0.8609309309309309
+        ],
+        "confidence": 0.8837
+      },
+      "wrong_roi": {
+        "roi": 26,
+        "label": "pizza",
+        "bbox": [
+          0.35318,
+          0.773093093093093,
+          0.47412,
+          0.833033033033033
+        ],
+        "confidence": 0.5998
+      },
+      "area_ratio": 1.3573955593242835,
+      "center_distance": 0.15988410826248278,
+      "iou": 0.0,
+      "rank_quality": 0.31266802517507325
+    },
+    {
+      "coco_id": 133291,
+      "filename": "COCO_val2014_000000133291.jpg",
+      "image_sha256": "7a6b3a57156fcbbde302e7b983d390de280760a37c5b2821c3c8ab0c550e6772",
+      "caption": "two men sitting at a table with pizza and beer",
+      "prompt": "a bottle",
+      "matched_roi": {
+        "roi": 5,
+        "label": "bottle",
+        "bbox": [
+          0.268671875,
+          0.6317916666666666,
+          0.3726875,
+          0.934875
+        ],
+        "confidence": 0.9178
+      },
+      "wrong_roi": {
+        "roi": 16,
+        "label": "pizza",
+        "bbox": [
+          0.3525625,
+          0.8578958333333334,
+          0.519078125,
+          0.9970625
+        ],
+        "confidence": 0.5248
+      },
+      "area_ratio": 1.3604118964847838,
+      "center_distance": 0.18448681468536374,
+      "iou": 0.02914801079078325,
+      "rank_quality": 0.33838057416333217
+    },
+    {
+      "coco_id": 30347,
+      "filename": "COCO_val2014_000000030347.jpg",
+      "image_sha256": "1136e04bdc8a729ba237ee8058ee5678bf4ade1d80ab134285d987b3b9e9b5d4",
+      "caption": "a group of people standing around a laptop",
+      "prompt": "a chair",
+      "matched_roi": {
+        "roi": 6,
+        "label": "chair",
+        "bbox": [
+          0.37042,
+          0.03749333333333334,
+          0.52838,
+          0.24557333333333334
+        ],
+        "confidence": 0.6964
+      },
+      "wrong_roi": {
+        "roi": 9,
+        "label": "laptop",
+        "bbox": [
+          0.57504,
+          0.2500266666666667,
+          0.74498,
+          0.46072
+        ],
+        "confidence": 0.516
+      },
+      "area_ratio": 1.0893537775158197,
+      "center_distance": 0.3001401634236911,
+      "iou": 0.0,
+      "rank_quality": 0.34293249130515063
+    },
+    {
+      "coco_id": 137475,
+      "filename": "COCO_val2014_000000137475.jpg",
+      "image_sha256": "d5d2da5099faa5c5c71626a6378d714d04bf477c734e6b4b0fbe1b0e31e23fb1",
+      "caption": "a kitchen with a table and chairs and a clock",
+      "prompt": "a refrigerator",
+      "matched_roi": {
+        "roi": 6,
+        "label": "refrigerator",
+        "bbox": [
+          0.77771875,
+          0.4157291666666667,
+          0.8609843749999999,
+          0.8326666666666667
+        ],
+        "confidence": 0.8702
+      },
+      "wrong_roi": {
+        "roi": 5,
+        "label": "chair",
+        "bbox": [
+          0.633484375,
+          0.8660625,
+          0.879484375,
+          0.995
+        ],
+        "confidence": 0.8839
+      },
+      "area_ratio": 1.0945165978486597,
+      "center_distance": 0.31271775513275746,
+      "iou": 0.0,
+      "rank_quality": 0.35787415645426224
+    },
+    {
+      "coco_id": 498765,
+      "filename": "COCO_val2014_000000498765.jpg",
+      "image_sha256": "3ece432af4d69745136d5acea6fd457f371987aee9e3f158a425e57fe8462122",
+      "caption": "a man sitting on a couch holding a sandwich",
+      "prompt": "a tv",
+      "matched_roi": {
+        "roi": 3,
+        "label": "tv",
+        "bbox": [
+          0.16625603864734298,
+          0.23548,
+          0.3114492753623188,
+          0.41906
+        ],
+        "confidence": 0.7193
+      },
+      "wrong_roi": {
+        "roi": 6,
+        "label": "sandwich",
+        "bbox": [
+          0.16765700483091786,
+          0.56598,
+          0.3530676328502415,
+          0.69028
+        ],
+        "confidence": 0.5673
+      },
+      "area_ratio": 1.1565542231912995,
+      "center_distance": 0.30162792502069213,
+      "iou": 0.0,
+      "rank_quality": 0.3743504686136178
+    },
+    {
+      "coco_id": 299039,
+      "filename": "COCO_val2014_000000299039.jpg",
+      "image_sha256": "333a3dcaceeb3b2c3e326e8f33b2589fd7ead6d5a02ef300f644bcf45c3dc841",
+      "caption": "a plate with a sandwich and a flower",
+      "prompt": "a cup",
+      "matched_roi": {
+        "roi": 3,
+        "label": "cup",
+        "bbox": [
+          0.176140625,
+          0.2791334894613583,
+          0.398578125,
+          0.5011709601873536
+        ],
+        "confidence": 0.789
+      },
+      "wrong_roi": {
+        "roi": 2,
+        "label": "sandwich",
+        "bbox": [
+          0.455109375,
+          0.45320843091334895,
+          0.651640625,
+          0.7298360655737705
+        ],
+        "confidence": 0.8433
+      },
+      "area_ratio": 1.1007606671618029,
+      "center_distance": 0.3336378262067886,
+      "iou": 0.0,
+      "rank_quality": 0.3816385544163982
+    },
+    {
+      "coco_id": 34167,
+      "filename": "COCO_val2014_000000034167.jpg",
+      "image_sha256": "20482907ed2805e3a5556a6782f0d89498a63a9d03818503e2f8496d0dacd101",
+      "caption": "a little boy standing in a field flying a kite",
+      "prompt": "a truck",
+      "matched_roi": {
+        "roi": 7,
+        "label": "truck",
+        "bbox": [
+          0.2898326359832636,
+          0.47487500000000005,
+          0.4165690376569038,
+          0.5154062500000001
+        ],
+        "confidence": 0.6599
+      },
+      "wrong_roi": {
+        "roi": 10,
+        "label": "kite",
+        "bbox": [
+          0.40054393305439334,
+          0.39909374999999997,
+          0.4851673640167364,
+          0.5064062500000001
+        ],
+        "confidence": 0.5486
+      },
+      "area_ratio": 1.7678669291172218,
+      "center_distance": 0.09917131819043756,
+      "iou": 0.036848585702256305,
+      "rank_quality": 0.3840581657136305
+    },
+    {
+      "coco_id": 140294,
+      "filename": "COCO_val2014_000000140294.jpg",
+      "image_sha256": "73533a7ce78b8ca033e1972cebc52a6a5baa7150cc9fde67a5d896c2a6bf1554",
+      "caption": "a hotel room with two beds and a television",
+      "prompt": "a chair",
+      "matched_roi": {
+        "roi": 3,
+        "label": "chair",
+        "bbox": [
+          0.863703125,
+          0.33761124121779856,
+          0.9078125,
+          0.595503512880562
+        ],
+        "confidence": 0.8112
+      },
+      "wrong_roi": {
+        "roi": 2,
+        "label": "tv",
+        "bbox": [
+          0.9206093750000001,
+          0.23252927400468384,
+          0.9995937500000001,
+          0.47222482435597185
+        ],
+        "confidence": 0.8957
+      },
+      "area_ratio": 1.6643011990011467,
+      "center_distance": 0.1362502860044747,
+      "iou": 0.0,
+      "rank_quality": 0.39095295352146164
+    },
+    {
+      "coco_id": 15338,
+      "filename": "COCO_val2014_000000015338.jpg",
+      "image_sha256": "b9e7f3f58e1568b0af83d0494d21614a38bb212da2d4b14bc36bd002c0b6f0ad",
+      "caption": "a bus parked on the side of a road",
+      "prompt": "a car",
+      "matched_roi": {
+        "roi": 2,
+        "label": "car",
+        "bbox": [
+          0.217109375,
+          0.49198113207547167,
+          0.2960625,
+          0.5242216981132076
+        ],
+        "confidence": 0.7311
+      },
+      "wrong_roi": {
+        "roi": 4,
+        "label": "bus",
+        "bbox": [
+          0.000125,
+          0.4425943396226415,
+          0.050296875,
+          0.5129009433962264
+        ],
+        "confidence": 0.5025
+      },
+      "area_ratio": 1.3857486647389847,
+      "center_distance": 0.23335754154482286,
+      "iou": 0.0,
+      "rank_quality": 0.39647781442068464
+    },
+    {
+      "coco_id": 471521,
+      "filename": "COCO_val2014_000000471521.jpg",
+      "image_sha256": "b971452536a9e765195c3731648aeb0ab3c37a8a71496f2c4aeea63d86a94c59",
+      "caption": "two dogs laying on the floor next to a suitcase",
+      "prompt": "a refrigerator",
+      "matched_roi": {
+        "roi": 4,
+        "label": "refrigerator",
+        "bbox": [
+          0.9265625,
+          0.0012968749999999999,
+          0.9992291666666666,
+          0.291296875
+        ],
+        "confidence": 0.6339
+      },
+      "wrong_roi": {
+        "roi": 3,
+        "label": "suitcase",
+        "bbox": [
+          0.7457499999999999,
+          0.4166875,
+          0.9989791666666666,
+          0.51390625
+        ],
+        "confidence": 0.6367
+      },
+      "area_ratio": 1.168235829494227,
+      "center_distance": 0.3315975078714593,
+      "iou": 0.0,
+      "rank_quality": 0.40934489429083165
+    },
+    {
+      "coco_id": 183456,
+      "filename": "COCO_val2014_000000183456.jpg",
+      "image_sha256": "394117adfa29f5c64fc0f0cc5c891fc649f4842970109378a7bc5f35abeb8e87",
+      "caption": "a table topped with a pizza and a salad",
+      "prompt": "a cup",
+      "matched_roi": {
+        "roi": 3,
+        "label": "cup",
+        "bbox": [
+          0.15006,
+          0.015813333333333332,
+          0.25542,
+          0.20901333333333333
+        ],
+        "confidence": 0.9236
+      },
+      "wrong_roi": {
+        "roi": 9,
+        "label": "pizza",
+        "bbox": [
+          0.34296,
+          0.24032,
+          0.4859,
+          0.41735999999999995
+        ],
+        "confidence": 0.7166
+      },
+      "area_ratio": 1.2432037018696422,
+      "center_distance": 0.3027427259975778,
+      "iou": 0.0,
+      "rank_quality": 0.41158856515816966
+    },
+    {
+      "coco_id": 105177,
+      "filename": "COCO_val2014_000000105177.jpg",
+      "image_sha256": "dcaf6052b489c59c384782b19dc177dfffdba9e28c6ddd0b4fe7b59c2e01867c",
+      "caption": "a kitchen with white cabinets and a white refrigerator",
+      "prompt": "a couch",
+      "matched_roi": {
+        "roi": 9,
+        "label": "couch",
+        "bbox": [
+          0.0006406249999999999,
+          0.4854694835680751,
+          0.1046875,
+          0.9888732394366196
+        ],
+        "confidence": 0.5873
+      },
+      "wrong_roi": {
+        "roi": 0,
+        "label": "refrigerator",
+        "bbox": [
+          0.0915625,
+          0.349037558685446,
+          0.257578125,
+          0.8551173708920187
+        ],
+        "confidence": 0.9477
+      },
+      "area_ratio": 1.6040669315761154,
+      "center_distance": 0.1819656415874475,
+      "iou": 0.03688242067270123,
+      "rank_quality": 0.4182367598319582
+    },
+    {
+      "coco_id": 581081,
+      "filename": "COCO_val2014_000000581081.jpg",
+      "image_sha256": "116b3d954a8d1d4b21a4940a28142d2586d3cd63a9ff748104ef99ab1e5b46e7",
+      "caption": "a group of boats sitting in the water",
+      "prompt": "a truck",
+      "matched_roi": {
+        "roi": 8,
+        "label": "truck",
+        "bbox": [
+          0.25779687500000004,
+          0.38418439716312053,
+          0.455109375,
+          0.5098108747044917
+        ],
+        "confidence": 0.5425
+      },
+      "wrong_roi": {
+        "roi": 7,
+        "label": "boat",
+        "bbox": [
+          0.000234375,
+          0.4890307328605201,
+          0.194015625,
+          0.6655555555555555
+        ],
+        "confidence": 0.5632
+      },
+      "area_ratio": 1.3800084798207557,
+      "center_distance": 0.29022059867014266,
+      "iou": 0.0,
+      "rank_quality": 0.45126542064408426
+    },
+    {
+      "coco_id": 571718,
+      "filename": "COCO_val2014_000000571718.jpg",
+      "image_sha256": "dce1a732ac3d4a47f05c5013d25124d576d1f8b2127e75b143023f296f79c83f",
+      "caption": "a man standing next to a table of bananas",
+      "prompt": "a chair",
+      "matched_roi": {
+        "roi": 2,
+        "label": "chair",
+        "bbox": [
+          0.05034375,
+          0.12084309133489461,
+          0.14751562499999998,
+          0.45833723653395786
+        ],
+        "confidence": 0.8436
+      },
+      "wrong_roi": {
+        "roi": 7,
+        "label": "banana",
+        "bbox": [
+          0.16934375,
+          0.4823887587822014,
+          0.29665625,
+          0.6659250585480094
+        ],
+        "confidence": 0.6214
+      },
+      "area_ratio": 1.4035044950287727,
+      "center_distance": 0.31456808627141947,
+      "iou": 0.0,
+      "rank_quality": 0.484054246042764
+    },
+    {
+      "coco_id": 456969,
+      "filename": "COCO_val2014_000000456969.jpg",
+      "image_sha256": "50a590b0d80116e4a0d671e735cafedc8c5f162a49309cc6b5d08d58baca812a",
+      "caption": "a woman sitting at a table with a laptop and a plate of food",
+      "prompt": "a pizza",
+      "matched_roi": {
+        "roi": 7,
+        "label": "pizza",
+        "bbox": [
+          0.33675,
+          0.7761124121779859,
+          0.5039687500000001,
+          0.9055269320843092
+        ],
+        "confidence": 0.712
+      },
+      "wrong_roi": {
+        "roi": 9,
+        "label": "laptop",
+        "bbox": [
+          0.073421875,
+          0.6679391100702575,
+          0.26771875,
+          0.8420843091334894
+        ],
+        "confidence": 0.5198
+      },
+      "area_ratio": 1.5635412500651826,
+      "center_distance": 0.26411660716065216,
+      "iou": 0.0,
+      "rank_quality": 0.48759324752276534
+    },
+    {
+      "coco_id": 184994,
+      "filename": "COCO_val2014_000000184994.jpg",
+      "image_sha256": "8a6f1504a1d63430570c111c46f42c81433420218d008b071c28c2cad60e3cf4",
+      "caption": "a kitchen with a table chairs and a microwave",
+      "prompt": "a couch",
+      "matched_roi": {
+        "roi": 10,
+        "label": "couch",
+        "bbox": [
+          0.00046875,
+          0.4871875,
+          0.20059375,
+          0.7422291666666666
+        ],
+        "confidence": 0.5159
+      },
+      "wrong_roi": {
+        "roi": 1,
+        "label": "chair",
+        "bbox": [
+          0.307109375,
+          0.5601875,
+          0.478546875,
+          0.971375
+        ],
+        "confidence": 0.9227
+      },
+      "area_ratio": 1.3811258249086888,
+      "center_distance": 0.329029617640934,
+      "iou": 0.0,
+      "rank_quality": 0.4904791085029519
+    },
+    {
+      "coco_id": 302219,
+      "filename": "COCO_val2014_000000302219.jpg",
+      "image_sha256": "7d9094bacdf89dfbbb0bf565dfd3cd1a51234ffb3078081b4e8f75653d41f8da",
+      "caption": "a back of a car filled with bags and bags",
+      "prompt": "a suitcase",
+      "matched_roi": {
+        "roi": 3,
+        "label": "suitcase",
+        "bbox": [
+          0.14710937500000001,
+          0.145625,
+          0.56021875,
+          0.4495625
+        ],
+        "confidence": 0.5209
+      },
+      "wrong_roi": {
+        "roi": 1,
+        "label": "handbag",
+        "bbox": [
+          0.005234375,
+          0.3881875,
+          0.25090625,
+          0.7186458333333333
+        ],
+        "confidence": 0.7356
+      },
+      "area_ratio": 1.546597091672978,
+      "center_distance": 0.34108342781627893,
+      "iou": 0.03179333713363098,
+      "rank_quality": 0.5591119741793414
+    },
+    {
+      "coco_id": 22420,
+      "filename": "COCO_val2014_000000022420.jpg",
+      "image_sha256": "c07333f38a6fb52a3816e06cc21be3ad0251547215567a1398e726dc46b2c53d",
+      "caption": "a couple of books sitting on top of a book shelf",
+      "prompt": "a motorcycle",
+      "matched_roi": {
+        "roi": 4,
+        "label": "motorcycle",
+        "bbox": [
+          0.582921875,
+          0.2767916666666667,
+          0.8869843749999999,
+          0.581
+        ],
+        "confidence": 0.6941
+      },
+      "wrong_roi": {
+        "roi": 5,
+        "label": "book",
+        "bbox": [
+          0.34709375,
+          0.2994791666666667,
+          0.567671875,
+          0.53025
+        ],
+        "confidence": 0.5074
+      },
+      "area_ratio": 1.8171492936527565,
+      "center_distance": 0.2779247278633374,
+      "iou": 0.0,
+      "rank_quality": 0.5765592033407843
+    },
+    {
+      "coco_id": 356349,
+      "filename": "COCO_val2014_000000356349.jpg",
+      "image_sha256": "88d1f35d48f563e394305f2d7d9d094b3875d53c7d8ad5d4c659d9ee20d04e36",
+      "caption": "a table with a vase and a vase of flowers",
+      "prompt": "a chair",
+      "matched_roi": {
+        "roi": 2,
+        "label": "chair",
+        "bbox": [
+          0.550828125,
+          0.4176458333333333,
+          0.71903125,
+          0.5661458333333333
+        ],
+        "confidence": 0.8989
+      },
+      "wrong_roi": {
+        "roi": 0,
+        "label": "vase",
+        "bbox": [
+          0.29059375,
+          0.41508333333333336,
+          0.368640625,
+          0.5850416666666667
+        ],
+        "confidence": 0.9255
+      },
+      "area_ratio": 1.8830529475295352,
+      "center_distance": 0.30542170371585325,
+      "iou": 0.0,
+      "rank_quality": 0.6218688877103289
+    }
+  ]
+}
