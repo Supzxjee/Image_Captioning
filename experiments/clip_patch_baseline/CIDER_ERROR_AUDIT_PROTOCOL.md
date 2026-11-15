@@ -116,3 +116,5 @@ User-confirmed cache output: `ducanh3/notebook7bc83c4c76/135`. Recover `region_f
 ### Paired slot input check
 
 Read exact v135 output and v175 links. Check VALID/TRAIN identity and slot order, shared normalized boxes and mask. Pool frozen raw CLIP patches using the same fractional box weights as semantic_data.box_weights. Preserve raw dimensions (768 and 1024). This validates packing only; the existing adapter actually pools post-alignment Vo. No model or XE in this CPU phase. CLIP ID files and receipts are checked against hashes; the four large patch arrays are read via memmap without scanning whole-file hashes in this check.
+
+CPU pairing completed per [user-provided receipt](REGIONCLIP_SLOT_PAIR160_RESULT.json); counts agree with v135. Verify paired NPZ SHA on recovery, and record its producing notebook version separately from the v135 input. GPU adapter smoke and matched XE are pending.

@@ -1,0 +1,21 @@
+{
+  "source": "ducanh3/notebook7bc83c4c76/135",
+  "images": 160,
+  "slots": 523,
+  "group_counts": {
+    "train": 128,
+    "val": 32
+  },
+  "clip_shape": [
+    160,
+    8,
+    768
+  ],
+  "regionclip_shape": [
+    160,
+    8,
+    1024
+  ],
+  "paired_sha256": "b2f185999077670a27c50305d6e128a182cd451b25bdb625fe7e21a2e9995533",
+  "full_clip_patch_hash_checked": false
+}

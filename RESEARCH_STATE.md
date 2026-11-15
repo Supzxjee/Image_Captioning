@@ -10,7 +10,7 @@ Cập nhật: 15/11/2026, giờ Việt Nam. File này là bản tóm tắt để
 
 ## Hiện đang ở đâu
 
-- **Slot pairing CPU notebook ready.** [Notebook](experiments/clip_patch_baseline/REGIONCLIP_SLOT_PAIR160_CPU.ipynb). Joins exact v135 features to v175 and SCST CLIP patch IDs, packs shared box and slot masks. Python AST checked; Kaggle CPU run pending.
+- **Slot pairing CPU check complete (user-reported receipt).** 160 images, 523 aligned slots; raw pooled CLIP 768 and RegionCLIP 1024. [Receipt](experiments/clip_patch_baseline/REGIONCLIP_SLOT_PAIR160_RESULT.json). NPZ not independently rehashed; full CLIP patch files were not hashed in the CPU check. Model-side smoke and XE pending.
 
 - **RegionCLIP slot cache160 complete.** 128 TRAIN/32 VALID, 523 slots (426 TRAIN/97 VALID), 29.41 s measured extraction. NPZ SHA, float32 shapes and finite/nonzero vectors verified. [Result](experiments/clip_patch_baseline/REGIONCLIP_SLOT_CACHE160_RESULT.json). User-confirmed Kaggle source: `ducanh3/notebook7bc83c4c76/135`. Cache benchmark only; matched XE design/run pending.
 
