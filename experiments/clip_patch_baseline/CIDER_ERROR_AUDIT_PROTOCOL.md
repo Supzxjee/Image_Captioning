@@ -120,3 +120,7 @@ Read exact v135 output and v175 links. Check VALID/TRAIN identity and slot order
 CPU pairing completed per [user-provided receipt](REGIONCLIP_SLOT_PAIR160_RESULT.json); counts agree with v135. Verify paired NPZ SHA on recovery, and record its producing notebook version separately from the v135 input. GPU adapter smoke and matched XE are pending.
 
 User confirms Save Version 136 for the paired cache. Recover `regionclip_slot_pair160/paired_slots.npz` from `ducanh3/notebook7bc83c4c76/136` and verify the audited receipt SHA before use. Version 135 remains the input RegionCLIP cache.
+
+### Slot-to-decoder GPU smoke
+
+Recover paired slots from exact v136 and verify NPZ SHA. Use real per-slot vectors and box weights from the cache with the existing PromptMemory and a production DecoderLayer. Use deterministic synthetic patch memory, prompt text embeddings and XE tokens to isolate the adapter interface. Check identical output for both branches at zero-residual initialization, first gradient on the residual output projection, then nonzero feature projection gradients after one update. Confirm padded region vectors do not alter outputs. This is a smoke only. Native input projections have different parameter counts; a capacity-controlled XE comparison is a separate design.
