@@ -5,7 +5,7 @@
 - [Baseline và hướng dẫn đánh giá](experiments/clip_patch_baseline/README.md). Dùng bản LOCAL V3 để huấn luyện lại baseline và bản TEST5000 V2 để đánh giá.
 - [Mô hình căn chỉnh ngữ nghĩa và kết quả TEST5000](experiments/clip_patch_baseline/CSA_PER_CAPTION_BEST9_RERANK_TEST5000_RESULT.json). Cấu hình chính dùng checkpoint XE epoch 9, sinh năm ứng viên và xếp hạng lại.
 - [Kết quả SCST 1.500 lượt cập nhật](experiments/clip_patch_baseline/CSA_SCST_ONLY1500_RERANK_TEST_RESULT.json) là cấu hình so sánh bổ sung.
-- [Notebook giải mã đối chiếu prompt](experiments/clip_patch_baseline/CLIP_PATCH_CSA_PROMPT_CONTRAST_BEAM_VALID5000_2GPU.ipynb) là lượt VALID5000 đang chờ kết quả.
+- [Notebook giải mã đối chiếu prompt](experiments/clip_patch_baseline/CLIP_PATCH_CSA_PROMPT_CONTRAST_BEAM_VALID5000_2GPU.ipynb) đã chạy trên VALID5000. [Kết quả](experiments/clip_patch_baseline/PROMPT_CONTRAST_BEAM_VALID5000_RESULT.json).
 - [Trạng thái nghiên cứu](RESEARCH_STATE.md) ghi lại quyết định và bằng chứng của từng lượt.
 
 ## Lịch sử thực nghiệm

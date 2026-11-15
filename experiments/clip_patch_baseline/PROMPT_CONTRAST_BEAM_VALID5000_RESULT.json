@@ -1,0 +1,95 @@
+{
+  "split": "val",
+  "images": 5000,
+  "metrics": {
+    "beam5": {
+      "CIDEr": 1.2575816960650208,
+      "BLEU_1": 0.7924568012964707,
+      "BLEU_4": 0.39035368605663157,
+      "METEOR": 0.2940098834712034,
+      "SPICE": 0.22586698937507568,
+      "ROUGE_L": 0.5891458233960603,
+      "CHAIRs": 0.0406,
+      "CHAIRi": 0.026901789162054317,
+      "Recall": 0.45310145655449524,
+      "counts": {
+        "images": 5000,
+        "hallucinated_captions": 203,
+        "hallucinated_mentions": 209,
+        "object_mentions": 7769,
+        "recalled_unique": 7217,
+        "reference_unique": 15928
+      },
+      "mean_words": 9.5026,
+      "short_le2": 0
+    },
+    "prompt_contrast": {
+      "CIDEr": 1.2588541802756925,
+      "BLEU_1": 0.7927144931500918,
+      "BLEU_4": 0.39094176619924664,
+      "METEOR": 0.29428671254214095,
+      "SPICE": 0.2259976234112656,
+      "ROUGE_L": 0.5896308259554638,
+      "CHAIRs": 0.0404,
+      "CHAIRi": 0.026697471441406752,
+      "Recall": 0.45410597689603216,
+      "counts": {
+        "images": 5000,
+        "hallucinated_captions": 202,
+        "hallucinated_mentions": 208,
+        "object_mentions": 7791,
+        "recalled_unique": 7233,
+        "reference_unique": 15928
+      },
+      "mean_words": 9.5038,
+      "short_le2": 0
+    }
+  },
+  "delta": {
+    "CIDEr": 0.0012724842106717205,
+    "CHAIRs": -0.0001999999999999988,
+    "CHAIRi": -0.00020431772064756493,
+    "Recall": 0.0010045203415369186
+  },
+  "missed_reference_objects": {
+    "beam5": 8711,
+    "prompt_contrast": 8695
+  },
+  "checkpoint_sha256": "80e1280b9eef216c5db421a738c7a5e0550bb34b1a62a2a13b2c8e76d40b1a24",
+  "eligible_images": 4606,
+  "changed_selected_captions": 160,
+  "historical_v94": {
+    "CIDEr": 1.2575816960650208,
+    "CHAIRs": 0.0406
+  },
+  "meets_gate": true,
+  "run_status": {
+    "complete": true,
+    "training": false,
+    "test_used": false,
+    "test_tuning": false,
+    "source_version": "ducanh3/notebook7bc83c4c76/94"
+  },
+  "selector": {
+    "decoder_weight": 0.3,
+    "clip_weight": 0.4,
+    "object_weight": 0.3,
+    "min_detection_confidence": 0.5,
+    "hallucination_penalty": 1.0,
+    "tie_break": "earlier beam"
+  },
+  "repairs": 7,
+  "new_flags": 6,
+  "paired_bootstrap_95_ci": {
+    "CIDEr_x100": [
+      -0.1427015757130837,
+      0.3878403768711263
+    ],
+    "CHAIRs_percentage_points": [
+      -0.16,
+      0.12
+    ]
+  },
+  "bootstrap_replicates": 4000,
+  "archive_sha256": "468c4f707e6b3979bdf439e53b9532ee01cd9ea99e1be105b4818e248d18363e"
+}

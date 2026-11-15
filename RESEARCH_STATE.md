@@ -18,7 +18,7 @@ Cập nhật: 13/11/2026, giờ Việt Nam. File này là bản tóm tắt để
 
 - **15/11 dọn repo.** [README](README.md) dẫn tới notebook đang dùng và bản lịch sử. Năm notebook có bản thay thế và hai notebook đã dừng được gỡ khỏi cây hiện tại. Kết quả và mã nguồn thực nghiệm vẫn có trong repo hoặc theo commit được dẫn.
 
-- **Prompt contrastive decoding notebook ready.** Exact v94, full prompt versus adapter-off at same prefix, bias only plausible single-token supported nouns. Beam5, common full-prompt rescoring, fixed rerank; VALID5000 CIDEr/CHAIR/recall. Static checks passed, Kaggle runtime pending. [Notebook](experiments/clip_patch_baseline/CLIP_PATCH_CSA_PROMPT_CONTRAST_BEAM_VALID5000_2GPU.ipynb).
+- **Prompt contrastive decoding VALID5000 complete.** Exact v94 and same reranker. CIDEr 125.7582 to 125.8854, CHAIRs 4.06% to 4.04%, 160 final captions changed. Point-estimate gate passes. Effect small; see paired intervals before adoption. [Result](experiments/clip_patch_baseline/PROMPT_CONTRAST_BEAM_VALID5000_RESULT.json).
 
 - **Prompt-guided five-candidate VALID comparison complete, gate failed.** Exact v94 and unchanged rerank. CIDEr 125.7582 -> 125.7246, CHAIRs 4.06% -> 3.94%, 717 final captions changed. Keep beam5 as the main pipeline. [Result](experiments/clip_patch_baseline/PROMPT_GUIDED_BEAM_VALID5000_RESULT.json).
 

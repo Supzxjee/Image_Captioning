@@ -167,3 +167,5 @@ Prompt-guided VALID5000 finished. Beam5 reproduced historical v94. Guided: CIDEr
 
 ### Prompt contrastive decoding on VALID5000
 Approved frozen v94 pilot. At the same beam prefix compare full-prompt and adapter-off log probabilities, retaining visual and bank memories. Apply a positive-only bias of half the log-probability gain (cap 1 nat before scaling) to canonical one-token nouns supported by retained v175 UPT–YOLO matches (IoU >= .70, UPT confidence >= .50) and only if already in full-prompt top 10. Keep beam width 5 and identical fixed rerank; rescore the resulting beams under the full-prompt decoder using the original log-probability definition. Report CIDEr, CHAIRs/i and missed unique reference objects (from CHAIR Recall counts). Require a CIDEr gain and no CHAIRs increase before adoption. No training or TEST.
+
+Prompt contrastive VALID5000 completed. Point estimates pass the gate with CIDEr +0.127 and CHAIRs -0.02 percentage points; paired intervals in PROMPT_CONTRAST_BEAM_VALID5000_RESULT.json. No TEST.
