@@ -10,7 +10,7 @@ Cập nhật: 15/11/2026, giờ Việt Nam. File này là bản tóm tắt để
 
 ## Hiện đang ở đâu
 
-- **Paired cache decoder smoke prepared.** [Notebook](experiments/clip_patch_baseline/REGIONCLIP_SLOT_SMOKE136_1GPU.ipynb). Exact v136 NPZ, four cached images, production prompt adapter and one decoder layer, synthetic context/targets, initialization/padding/gradient checks. AST verified; Kaggle run and capacity-controlled XE pending.
+- **Paired cache decoder smoke prepared.** [Notebook](experiments/clip_patch_baseline/REGIONCLIP_SLOT_SMOKE136_1GPU.ipynb). Exact v136 NPZ, four cached images, production prompt adapter and one decoder layer, synthetic context/targets, initialization/padding/gradient checks. Kaggle reached Config construction, which failed because the notebook omitted the dataclass decorator. Fixed and verified Config construction offline; GPU rerun and capacity-controlled XE pending.
 
 - **Slot pairing CPU check complete (user-reported receipt).** 160 images, 523 aligned slots; raw pooled CLIP 768 and RegionCLIP 1024. [Receipt](experiments/clip_patch_baseline/REGIONCLIP_SLOT_PAIR160_RESULT.json). Paired NPZ output: `ducanh3/notebook7bc83c4c76/136` (user-confirmed version). NPZ not independently rehashed; full CLIP patch files were not hashed in the CPU check. Model-side smoke and XE pending.
 
