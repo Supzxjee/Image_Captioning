@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="vi">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Chấm lỗi caption trên VALID</title>
+<style>
+body{font:16px/1.55 system-ui,sans-serif;max-width:1060px;margin:32px auto;padding:0 20px;color:#17242d}
+section{border-top:1px solid #b7c6d0;padding:20px 0;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:14px 24px}
+h2{grid-column:1/-1;margin:0;font-size:18px}img{width:100%;max-height:400px;object-fit:contain}
+label{display:block;margin:8px 0}textarea{display:block;width:95%}button,select,textarea{font:inherit}summary{cursor:pointer}
+header{position:sticky;top:0;background:white;padding:12px 0}@media(max-width:680px){section{grid-template-columns:1fr}}
+</style>
+<h1>Chấm lỗi caption trên VALID</h1>
+<p>Nhìn ảnh và chấm caption cuối trước. Sau đó mở các câu còn lại và xem có câu nào mô tả ảnh tốt hơn rõ ràng không.</p>
+<header><button id="download">Tải kết quả JSON</button> <span id="progress"></span></header>
+<!-- CASES -->
+<script>
+const cases = [...document.querySelectorAll('section')];
+const key = 'cider-error-audit-v94-valid40-v1';
+const progress = document.querySelector('#progress');
+let saved = {};
+try { saved = JSON.parse(localStorage.getItem(key) || '{}'); } catch {}
+for (const item of cases) {
+  for (const field of item.querySelectorAll('[data-field]')) {
+    field.value = saved[item.dataset.id]?.[field.dataset.field] || '';
+  }
+}
+function collect() {
+  return Object.fromEntries(cases.map(item => [
+    item.dataset.id,
+    Object.fromEntries([...item.querySelectorAll('[data-field]')].map(field => [field.dataset.field, field.value]))
+  ]));
+}
+function update() {
+  const labels = collect();
+  const count = Object.values(labels).filter(row => row.error && row.alternative).length;
+  progress.textContent = count + '/' + cases.length + ' đã chấm đủ';
+  try { localStorage.setItem(key, JSON.stringify(labels)); } catch {
+    progress.textContent += ' · tải JSON để giữ kết quả';
+  }
+}
+document.addEventListener('input', update);
+document.querySelector('#download').onclick = () => {
+  const url = URL.createObjectURL(new Blob([JSON.stringify(collect(), null, 2)], {type:'application/json'}));
+  const link = document.createElement('a');
+  link.href = url;
+  link.download = 'cider_error_valid40_labels.json';
+  link.click();
+  setTimeout(() => URL.revokeObjectURL(url), 1000);
+};
+update();
+</script>
+</html>

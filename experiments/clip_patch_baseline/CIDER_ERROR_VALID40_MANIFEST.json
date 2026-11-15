@@ -1,0 +1,294 @@
+{
+  "source": {
+    "kaggle_source": "ducanh3/notebook7bc83c4c76/94",
+    "receipt": {
+      "sha256": "80e1280b9eef216c5db421a738c7a5e0550bb34b1a62a2a13b2c8e76d40b1a24",
+      "updates": 1500,
+      "source_sha256": "b0c5bde0921a4c828ac094b264f502654224aa9365ee40cdce1c15c82fe9aeef",
+      "parent_sha256": "56a90b2223b3bb64e433a342d048389dc3e80693fa574c2c1543e31e39a4377b"
+    }
+  },
+  "seed": 1500,
+  "cases": [
+    {
+      "coco_id": 331475,
+      "group": "low",
+      "cider": 0.05387452621397822,
+      "selected_rank": 0,
+      "image_sha256": "72a33c6e9487483d1baf52ee328940fba0489faa1894e9992acbc58690c4b44f"
+    },
+    {
+      "coco_id": 317250,
+      "group": "comparison",
+      "cider": 1.982068991737478,
+      "selected_rank": 0,
+      "image_sha256": "19467c68bd71513769c76e4243bba4f85272315ffc89860d956032e496675f78"
+    },
+    {
+      "coco_id": 379156,
+      "group": "low",
+      "cider": 0.3647691512272334,
+      "selected_rank": 2,
+      "image_sha256": "b052a366c00b36eb0b69566e79db58a3e95ed2ab5a9265688d732bc27a5cf30b"
+    },
+    {
+      "coco_id": 171548,
+      "group": "low",
+      "cider": 0.15204625301007396,
+      "selected_rank": 2,
+      "image_sha256": "9817266df81867c7a6f57034f17d16b6664ad359971bedfda106443d4fb01c0f"
+    },
+    {
+      "coco_id": 523315,
+      "group": "comparison",
+      "cider": 2.5391352320113585,
+      "selected_rank": 1,
+      "image_sha256": "7e25341d490ff3165df17b388283107082e7d01e9a20ed69fc379f48e3646caa"
+    },
+    {
+      "coco_id": 18073,
+      "group": "low",
+      "cider": 0.37467522672446507,
+      "selected_rank": 0,
+      "image_sha256": "e241e770590fea3f3a403c23e6a0b9f95d543df46af7ed5758312d94a27c54ce"
+    },
+    {
+      "coco_id": 72024,
+      "group": "low",
+      "cider": 0.06664987406131587,
+      "selected_rank": 1,
+      "image_sha256": "6d1358e5f3dbc5ef4bf0fcf43a5bfe562ba89732bf8843aeeb2d101ce4a03858"
+    },
+    {
+      "coco_id": 241888,
+      "group": "low",
+      "cider": 0.3589353444799843,
+      "selected_rank": 0,
+      "image_sha256": "b626473ef44e46ee45f498291f296c6e13a3b30830f9a7c7a4bc088391fab6d4"
+    },
+    {
+      "coco_id": 239894,
+      "group": "low",
+      "cider": 0.19344864878688656,
+      "selected_rank": 0,
+      "image_sha256": "79cfff40fc14c76c7bbe9a409b91ef1b03ec7759cb8e6ea94b277e49f810828b"
+    },
+    {
+      "coco_id": 436349,
+      "group": "low",
+      "cider": 0.23328335250650564,
+      "selected_rank": 0,
+      "image_sha256": "64377acc61a7196c4d91f1e9a48615937f19b1133694b1fac225dbf2aa4ccc7e"
+    },
+    {
+      "coco_id": 206907,
+      "group": "comparison",
+      "cider": 1.3406094222709708,
+      "selected_rank": 1,
+      "image_sha256": "e3b37d9d05dea4166066a53e8018aea6f0362acfd37b450f6daad6251a6e89e1"
+    },
+    {
+      "coco_id": 90020,
+      "group": "low",
+      "cider": 0.08778073915383491,
+      "selected_rank": 1,
+      "image_sha256": "4750f94c35a7d697aaf1ffb9e35bf20001520a70b213d991da0f932799fa4d92"
+    },
+    {
+      "coco_id": 58350,
+      "group": "comparison",
+      "cider": 1.5055290311676544,
+      "selected_rank": 2,
+      "image_sha256": "60cc4d293f157edef6ea4d229cabdfe76785c0c1a54b063cbf0a633a1deda52d"
+    },
+    {
+      "coco_id": 337439,
+      "group": "low",
+      "cider": 0.3508061415560261,
+      "selected_rank": 3,
+      "image_sha256": "c4a2f7f64ae1086abd6a4e2690f0aa74c8d851501e04849c1e120de14c012c8a"
+    },
+    {
+      "coco_id": 128280,
+      "group": "low",
+      "cider": 0.26111532877791543,
+      "selected_rank": 0,
+      "image_sha256": "489ae7c442b44264a3d7ca15792e79746c2471f704bf6d8ec953a30153fb1f93"
+    },
+    {
+      "coco_id": 76822,
+      "group": "low",
+      "cider": 0.35134299785859413,
+      "selected_rank": 3,
+      "image_sha256": "5c06963277a901764d8dfc2bbf480b28364aa9c0226c9906cd6c0480dd65b262"
+    },
+    {
+      "coco_id": 275781,
+      "group": "low",
+      "cider": 0.10293122381841414,
+      "selected_rank": 3,
+      "image_sha256": "12464cac2bf0ff122f60ed95996b2347b38a1faa9e507ede0e16bbd8a82a0dd1"
+    },
+    {
+      "coco_id": 62554,
+      "group": "comparison",
+      "cider": 0.93709459283953,
+      "selected_rank": 0,
+      "image_sha256": "2b9444ef969f3b95e53ba3e78ddd329c41c03fbc3c8e7e07034cdd6cb8bc9f41"
+    },
+    {
+      "coco_id": 136915,
+      "group": "low",
+      "cider": 0.1992492798228932,
+      "selected_rank": 2,
+      "image_sha256": "52e676f1c7ad54796f249b175caf31b93c22348914b6f94d279d298dc2e6d4d7"
+    },
+    {
+      "coco_id": 29358,
+      "group": "low",
+      "cider": 0.21584155796698806,
+      "selected_rank": 1,
+      "image_sha256": "5adab005e7f2b73fdb108dfb848f98a8f337185acb79e12651924e574d9e4764"
+    },
+    {
+      "coco_id": 189936,
+      "group": "low",
+      "cider": 0.32573855597590273,
+      "selected_rank": 3,
+      "image_sha256": "2c6e454829d49f95a5dbc6ad2115bf23a8d53d2eff1d6ee4c2188840adddfba0"
+    },
+    {
+      "coco_id": 44699,
+      "group": "comparison",
+      "cider": 1.2877972548939018,
+      "selected_rank": 1,
+      "image_sha256": "24c2eef8c2c8929f3b2032f30fc89c0894c6f1a375d6ae016e3ade301a625165"
+    },
+    {
+      "coco_id": 444294,
+      "group": "low",
+      "cider": 0.2892180677810714,
+      "selected_rank": 1,
+      "image_sha256": "2a97f7141914f7a514cbe30a6fdef2adb115c0f001568d30f88d48eba44accb9"
+    },
+    {
+      "coco_id": 139749,
+      "group": "low",
+      "cider": 0.3838085676561597,
+      "selected_rank": 0,
+      "image_sha256": "3333bf6f5230f0a954e4f0ce9c9eed64fab6315c97dad27caab48a0372d4f419"
+    },
+    {
+      "coco_id": 487438,
+      "group": "low",
+      "cider": 0.20244968280549464,
+      "selected_rank": 1,
+      "image_sha256": "1921b1a7256c483720117c5aca5bc1ce67dfd73fff8132fbec639167edfd77b7"
+    },
+    {
+      "coco_id": 14820,
+      "group": "low",
+      "cider": 0.16935768776285665,
+      "selected_rank": 0,
+      "image_sha256": "739c0c560380dc73e33d3071feae98b061d6984f9ff7d908bb5681289b02706a"
+    },
+    {
+      "coco_id": 477172,
+      "group": "low",
+      "cider": 0.0037178239813108567,
+      "selected_rank": 0,
+      "image_sha256": "5fa3f96dafe87615354d43e592db5e6cdb1c9eb12ea9cde992a27afbfd1a5f3b"
+    },
+    {
+      "coco_id": 29504,
+      "group": "low",
+      "cider": 0.09988829126774373,
+      "selected_rank": 1,
+      "image_sha256": "1005c0938368d20ad1b74939bc38815600e46342c6b9f4d9fe8edbe2fa8b8d6b"
+    },
+    {
+      "coco_id": 422464,
+      "group": "low",
+      "cider": 0.36274702270405196,
+      "selected_rank": 0,
+      "image_sha256": "5032c77024dcdb4c725a7e8854100029cfa3516a90b3478c099066dfe2ffb4f8"
+    },
+    {
+      "coco_id": 408201,
+      "group": "low",
+      "cider": 0.19498248998690143,
+      "selected_rank": 3,
+      "image_sha256": "63c7adc1b447e2b656c5f9bf7c93c6a9aa94d90bd72cc281b57d6f994568da9f"
+    },
+    {
+      "coco_id": 44250,
+      "group": "comparison",
+      "cider": 1.9415506871968282,
+      "selected_rank": 1,
+      "image_sha256": "3e0a717da55aadb086c96a9ceb8835270a6df09b8353752384ac0de297565e25"
+    },
+    {
+      "coco_id": 201043,
+      "group": "low",
+      "cider": 0.39523513452426523,
+      "selected_rank": 0,
+      "image_sha256": "f61d4b4244219513885bce340c407917134c7846faad1146e2a4ba41bb3061ab"
+    },
+    {
+      "coco_id": 232315,
+      "group": "comparison",
+      "cider": 1.133002808771645,
+      "selected_rank": 0,
+      "image_sha256": "7d4f3cbe932429e1ee7dce2526eb85bee035ad57a4e405d43ad4cb6f0290eebe"
+    },
+    {
+      "coco_id": 389308,
+      "group": "low",
+      "cider": 0.059993282203886465,
+      "selected_rank": 4,
+      "image_sha256": "9cf5a2d9d4744f69ff7dd8fe988d365f60dbf80cf02d6eeaf6f990f736bc7526"
+    },
+    {
+      "coco_id": 541898,
+      "group": "comparison",
+      "cider": 1.5212668616641194,
+      "selected_rank": 1,
+      "image_sha256": "cc0a80f59c3e803c1c45d9d6f2de27de06127b3e3d2a59cf9e7aff1fe0fbc95e"
+    },
+    {
+      "coco_id": 19306,
+      "group": "comparison",
+      "cider": 0.6671780720360364,
+      "selected_rank": 0,
+      "image_sha256": "c35f7d5e673be9ad10feaffa3a14655ef5f5d2a2ea65cba0f69a40d238282090"
+    },
+    {
+      "coco_id": 468858,
+      "group": "low",
+      "cider": 0.4036609905005305,
+      "selected_rank": 0,
+      "image_sha256": "14c1d5aa255e3c76335be5b1debb380f98c8228eaa2a9b1e63d5710d19e90fe4"
+    },
+    {
+      "coco_id": 414679,
+      "group": "low",
+      "cider": 0.35469987647997436,
+      "selected_rank": 2,
+      "image_sha256": "4faa9dac9bc69d329ffc5a992b13b4f50f9366153270290a2629984d77a89103"
+    },
+    {
+      "coco_id": 82174,
+      "group": "low",
+      "cider": 0.042640143013912224,
+      "selected_rank": 2,
+      "image_sha256": "a320ae154c02bb23e764f83a3171d6346bf517c571d4d73efb43d02e2ba2a447"
+    },
+    {
+      "coco_id": 117064,
+      "group": "low",
+      "cider": 0.17782058809767404,
+      "selected_rank": 0,
+      "image_sha256": "64f91e3e4b03d93587c4edbdabe279ee99a469776ad30f19e61584bac5fc9986"
+    }
+  ]
+}
