@@ -58,3 +58,7 @@ Treat these two selected VALID images as a mechanism check. Replay exact v94 wit
 ### Fixed-prefix score check approved
 
 Reuse both v94 arms from the single-slot probe. On COCO 239894, score teddy bear versus bag after "a woman with a red". On COCO 487438, score bed versus chair after "a room with a". Teacher-force each continuation and report token log probabilities, their sum, and the shift in the correct-minus-confusion margin. Also report per-token mean margin because the teddy-bear alternatives differ in length. Neither score alone measures general caption quality. No new search, reranking, metric or training.
+
+### Fixed-prefix score result
+
+[Result](CIDER_OBJECT_PHRASE_VALID2_RESULT.json). Verified both exact prefixes, checkpoint identity, token counts, and all aggregates offline. Correct-minus-foil total log probability margins: teddy bear vs bag -5.6344 to -2.0023 (+3.6321); bed vs chair -2.8530 to -2.0501 (+0.8029). Both target scores increase. In the teddy case, mean log probability per token margin turns positive (+0.1214), while the total margin remains negative. Prior five-beam decoding still had zero target mentions in both cases. This selected two-image, fixed-prefix probe establishes sensitivity to the added text-and-region slot, with regional specificity, generalization and corpus-level gains untested. Proposed next check: compare matched ROI and wrong ROI while holding the added noun text fixed, using both supportive and confusable cases before modifying decoding or training.
