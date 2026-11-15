@@ -10,7 +10,7 @@ Cập nhật: 15/11/2026, giờ Việt Nam. File này là bản tóm tắt để
 
 ## Hiện đang ở đâu
 
-- **RegionCLIP slot cache160 complete.** 128 TRAIN/32 VALID, 523 slots (426 TRAIN/97 VALID), 29.41 s measured extraction. NPZ SHA, float32 shapes and finite/nonzero vectors verified. [Result](experiments/clip_patch_baseline/REGIONCLIP_SLOT_CACHE160_RESULT.json). Cache benchmark only; matched XE design/run pending.
+- **RegionCLIP slot cache160 complete.** 128 TRAIN/32 VALID, 523 slots (426 TRAIN/97 VALID), 29.41 s measured extraction. NPZ SHA, float32 shapes and finite/nonzero vectors verified. [Result](experiments/clip_patch_baseline/REGIONCLIP_SLOT_CACHE160_RESULT.json). User-confirmed Kaggle source: `ducanh3/notebook7bc83c4c76/135`. Cache benchmark only; matched XE design/run pending.
 
 - **RegionCLIP fixed-box V4 complete.** Four finite, distinct-within-image float32 vectors of 1024 dimensions on two verified VALID images. [Result](experiments/clip_patch_baseline/REGIONCLIP_FIXED_ROI_VALID2_RESULT.json). Extraction only, no caption quality evaluation.
 
