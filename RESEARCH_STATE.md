@@ -10,6 +10,8 @@ Cập nhật: 13/11/2026, giờ Việt Nam. File này là bản tóm tắt để
 
 ## Hiện đang ở đâu
 
+- **Prompt contrastive decoding notebook ready.** Exact v94, full prompt versus adapter-off at same prefix, bias only plausible single-token supported nouns. Beam5, common full-prompt rescoring, fixed rerank; VALID5000 CIDEr/CHAIR/recall. Static checks passed, Kaggle runtime pending. [Notebook](experiments/clip_patch_baseline/CLIP_PATCH_CSA_PROMPT_CONTRAST_BEAM_VALID5000_2GPU.ipynb).
+
 - **Prompt-guided five-candidate VALID comparison complete, gate failed.** Exact v94 and unchanged rerank. CIDEr 125.7582 -> 125.7246, CHAIRs 4.06% -> 3.94%, 717 final captions changed. Keep beam5 as the main pipeline. [Result](experiments/clip_patch_baseline/PROMPT_GUIDED_BEAM_VALID5000_RESULT.json).
 
 - **Object priority ranking complete, gate failed.** On 89 held-out informative TRAIN/restval images, class-aware ridge nDCG@3 .9501 vs area .9467; difference +.00343, paired 95% CI [-.02090, +.02866]. Sample IDs and metric means verified. Defer XE integration under this protocol. [Result](experiments/clip_patch_baseline/OBJECT_PRIORITY_RANK_HOLDOUT_RESULT.json).
