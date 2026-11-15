@@ -10,6 +10,8 @@ Cập nhật: 13/11/2026, giờ Việt Nam. File này là bản tóm tắt để
 
 ## Hiện đang ở đâu
 
+- **15/11 subject swap CPU screening notebook ready.** Exact v175 VALID5000, up to 32 candidate images with blinded A/B human subject check. Static and matching fixture passed. Coverage and labels pending before model scoring. [Notebook](experiments/clip_patch_baseline/RELATION_SUBJECT_SWAP_VALID_REVIEW_CPU.ipynb).
+
 - **15/11 dọn file chạy ở thư mục gốc.** Gỡ 133 script, notebook và mẫu cũ. Giữ các file được mã hoặc test còn lại tham chiếu, cùng entry point tương thích. [Bản lưu Git](https://github.com/Supzxjee/Image_Captioning/tree/06bd70ea1b514ffa78c50990405b38b5c4fa26eb).
 
 - **15/11 dọn tài liệu gốc.** Gỡ 133 file Markdown lịch sử khỏi main. [Ghi chú Markdown ở thư mục gốc trước khi dọn](https://github.com/Supzxjee/Image_Captioning/tree/952ae1fe6e9bcf02435777fa149378a60cdf8fd0).
