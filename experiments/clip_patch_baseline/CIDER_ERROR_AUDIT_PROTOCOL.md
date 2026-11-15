@@ -96,3 +96,5 @@ Before checking geometry, retain only target labels mentioned in at least two se
 ### RegionCLIP fixed-box feasibility
 
 Use the official pretrained RegionCLIP RN50 recognition backbone at source commit 4b8513b56e24827e3d6468e1f2105869f35c2d0b. Freeze the source. Start with two previously verified VALID images and their four exact target/control YOLO boxes. Use the official recognition preprocessing, C4 ROI pooling, layer4 and attention pooling. Do not generate boxes. Record original normalized boxes and features with checkpoint digest. This is a technical extraction smoke only; features in different spaces must not be substituted into v94 without training/projection. If cache extraction works, design a matched trained comparison of feature sources on the same boxes.
+
+The first RegionCLIP build stopped at setuptools InvalidVersion before any compilation or inference. V2 patches only the setup metadata version in the temporary pinned checkout and constrains isolated NumPy below 2.3. It uses a new output directory. Syntax and pinned rewrite location verified; build/runtime still pending.
