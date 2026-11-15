@@ -1,0 +1,357 @@
+{
+  "split": "val",
+  "images": 12,
+  "checkpoint_sha256": "80e1280b9eef216c5db421a738c7a5e0550bb34b1a62a2a13b2c8e76d40b1a24",
+  "phrase_scored": 11,
+  "mean_delta": 0.0024041225075383077,
+  "original_higher": 4,
+  "swapped_higher": 7,
+  "top1_changed": 1,
+  "records": [
+    {
+      "coco_id": 472643,
+      "id": 5,
+      "prompt": "a person checking a parking meter",
+      "target": [
+        "checking",
+        "a",
+        "parking",
+        "meter"
+      ],
+      "skip_reason": null,
+      "original": {
+        "top1": "a group of children standing around a red elephant",
+        "token_logp": [
+          -5.873726844787598,
+          -0.11877754330635071,
+          -6.13365364074707,
+          -1.9015476703643799
+        ]
+      },
+      "swapped": {
+        "top1": "a group of children standing around a red elephant",
+        "token_logp": [
+          -5.794814109802246,
+          -0.11435134708881378,
+          -6.154110908508301,
+          -1.9176201820373535
+        ]
+      },
+      "delta_original_minus_swapped": -0.011702287942171097
+    },
+    {
+      "coco_id": 418692,
+      "id": 18,
+      "prompt": "a person lying on a couch",
+      "target": [
+        "lying",
+        "on",
+        "a",
+        "couch"
+      ],
+      "skip_reason": null,
+      "original": {
+        "top1": "a woman sitting on a couch in a living room",
+        "token_logp": [
+          -4.159113883972168,
+          -0.04033157229423523,
+          -0.05140147730708122,
+          -0.1429608315229416
+        ]
+      },
+      "swapped": {
+        "top1": "a woman sitting on a couch in a living room",
+        "token_logp": [
+          -4.4404754638671875,
+          -0.04714174196124077,
+          -0.04305609315633774,
+          -0.15992678701877594
+        ]
+      },
+      "delta_original_minus_swapped": 0.07419808022677898
+    },
+    {
+      "coco_id": 531929,
+      "id": 3,
+      "prompt": "a person carrying a tennis racket",
+      "target": [
+        "carrying",
+        "a",
+        "tennis",
+        "racket"
+      ],
+      "skip_reason": null,
+      "original": {
+        "top1": "a man standing on a tennis court holding a racquet",
+        "token_logp": [
+          -10.065644264221191,
+          -0.024876445531845093,
+          -0.06838605552911758,
+          -1.5578219890594482
+        ]
+      },
+      "swapped": {
+        "top1": "a man standing on a tennis court holding a racquet",
+        "token_logp": [
+          -9.95972728729248,
+          -0.026929011568427086,
+          -0.07004149258136749,
+          -1.5444352626800537
+        ]
+      },
+      "delta_original_minus_swapped": -0.028898925054818392
+    },
+    {
+      "coco_id": 37209,
+      "id": 31,
+      "prompt": "a person straddling a motorcycle",
+      "target": [
+        "straddling",
+        "a",
+        "motorcycle"
+      ],
+      "skip_reason": null,
+      "original": {
+        "top1": "a man riding a motorcycle down a street",
+        "token_logp": [
+          -16.972131729125977,
+          -0.05584067478775978,
+          -0.49490267038345337
+        ]
+      },
+      "swapped": {
+        "top1": "a man riding a motorcycle down a street",
+        "token_logp": [
+          -16.812355041503906,
+          -0.04250076785683632,
+          -0.584872841835022
+        ]
+      },
+      "delta_original_minus_swapped": -0.027715474367141724
+    },
+    {
+      "coco_id": 574350,
+      "id": 30,
+      "prompt": "a person standing under an umbrella",
+      "target": [
+        "standing",
+        "under",
+        "an",
+        "umbrella"
+      ],
+      "skip_reason": null,
+      "original": {
+        "top1": "a group of people walking with umbrellas",
+        "token_logp": [
+          -4.350856304168701,
+          -2.8296945095062256,
+          -1.7366282939910889,
+          -0.1638142168521881
+        ]
+      },
+      "swapped": {
+        "top1": "a group of people walking with umbrellas",
+        "token_logp": [
+          -4.37351131439209,
+          -2.77773380279541,
+          -1.7637865543365479,
+          -0.16210678219795227
+        ]
+      },
+      "delta_original_minus_swapped": -0.0009637176990509033
+    },
+    {
+      "coco_id": 248703,
+      "id": 16,
+      "prompt": "a person kicking a sports ball",
+      "target": [
+        "kicking",
+        "a",
+        "sports",
+        "ball"
+      ],
+      "skip_reason": null,
+      "original": {
+        "top1": "a group of young people playing a game of soccer",
+        "token_logp": [
+          -0.7151374816894531,
+          -0.014539130963385105,
+          -11.340113639831543,
+          -0.08131047338247299
+        ]
+      },
+      "swapped": {
+        "top1": "a group of young people playing a game of soccer",
+        "token_logp": [
+          -0.8064590692520142,
+          -0.014653557911515236,
+          -11.397905349731445,
+          -0.07591623812913895
+        ]
+      },
+      "delta_original_minus_swapped": 0.035958372289314866
+    },
+    {
+      "coco_id": 4840,
+      "id": 23,
+      "prompt": "a person riding a skateboard",
+      "target": [
+        "riding",
+        "a",
+        "skateboard"
+      ],
+      "skip_reason": null,
+      "original": {
+        "top1": "a man flying through the air while riding a skateboard",
+        "token_logp": [
+          -3.1282296180725098,
+          -0.020076986402273178,
+          -2.779128313064575
+        ]
+      },
+      "swapped": {
+        "top1": "a man flying through the air while riding a skateboard",
+        "token_logp": [
+          -3.0541770458221436,
+          -0.024181079119443893,
+          -2.659787893295288
+        ]
+      },
+      "delta_original_minus_swapped": -0.0630962997674942
+    },
+    {
+      "coco_id": 41279,
+      "id": 9,
+      "prompt": "a person eating a pizza",
+      "target": [
+        "eating",
+        "a",
+        "pizza"
+      ],
+      "skip_reason": null,
+      "original": {
+        "top1": "a man and a woman eating a slice of pizza",
+        "token_logp": [
+          -1.9611414670944214,
+          -0.2170216143131256,
+          -3.3374533653259277
+        ]
+      },
+      "swapped": {
+        "top1": "a man and a woman sitting at a table eating pizza",
+        "token_logp": [
+          -2.0936238765716553,
+          -0.23324158787727356,
+          -3.2172751426696777
+        ]
+      },
+      "delta_original_minus_swapped": 0.009508053461710686
+    },
+    {
+      "coco_id": 158583,
+      "id": 15,
+      "prompt": "a person and a skateboard (interaction: jumping)",
+      "target": [
+        "and",
+        "a",
+        "skateboard",
+        "interaction",
+        "jumping"
+      ],
+      "skip_reason": "noncanonical_template",
+      "original": {
+        "top1": "a black and white image of a man on a skateboard",
+        "token_logp": null
+      },
+      "swapped": {
+        "top1": "a black and white image of a man on a skateboard",
+        "token_logp": null
+      },
+      "delta_original_minus_swapped": null
+    },
+    {
+      "coco_id": 53626,
+      "id": 29,
+      "prompt": "a person standing on skis",
+      "target": [
+        "standing",
+        "on",
+        "skis"
+      ],
+      "skip_reason": null,
+      "original": {
+        "top1": "a group of people standing on top of a snow covered slope",
+        "token_logp": [
+          -1.1180697679519653,
+          -1.1402850151062012,
+          -2.6489574909210205
+        ]
+      },
+      "swapped": {
+        "top1": "a group of people standing on top of a snow covered slope",
+        "token_logp": [
+          -1.1294636726379395,
+          -1.120563268661499,
+          -2.6290335655212402
+        ]
+      },
+      "delta_original_minus_swapped": -0.009417255719502693
+    },
+    {
+      "coco_id": 149783,
+      "id": 22,
+      "prompt": "a person reading a laptop",
+      "target": [
+        "reading",
+        "a",
+        "laptop"
+      ],
+      "skip_reason": null,
+      "original": {
+        "top1": "a group of people sitting at a table with laptops",
+        "token_logp": [
+          -8.663825035095215,
+          -0.17670829594135284,
+          -0.5672739744186401
+        ]
+      },
+      "swapped": {
+        "top1": "a group of people sitting at a table with laptops",
+        "token_logp": [
+          -8.837135314941406,
+          -0.1538950651884079,
+          -0.569882869720459
+        ]
+      },
+      "delta_original_minus_swapped": 0.0510353147983551
+    },
+    {
+      "coco_id": 2006,
+      "id": 8,
+      "prompt": "a person driving a bus",
+      "target": [
+        "driving",
+        "a",
+        "bus"
+      ],
+      "skip_reason": null,
+      "original": {
+        "top1": "a purple and purple bus driving down a street",
+        "token_logp": [
+          -5.502746105194092,
+          -0.02599559910595417,
+          -2.4117636680603027
+        ]
+      },
+      "swapped": {
+        "top1": "a purple and purple bus driving down a street",
+        "token_logp": [
+          -5.3943328857421875,
+          -0.025625474750995636,
+          -2.5131654739379883
+        ]
+      },
+      "delta_original_minus_swapped": -0.0024605126430592428
+    }
+  ]
+}

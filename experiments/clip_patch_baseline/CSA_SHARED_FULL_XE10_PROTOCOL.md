@@ -175,3 +175,8 @@ Screen exact v175 VALID rows for a retained person–object relation and a secon
 
 ### Subject swap diagnostic cohort confirmed
 Treat the user's chat confirmation as acceptance of the 12 eligible assisted labels. The color leak makes this an assisted, non-blind review. Compare original versus subject-swapped relation slot with both subject patch weights and relation geometry updated. Primary readout is mean teacher-forced log probability of the action/object phrase after the fixed prefix "a person", excluding out-of-vocabulary and noncanonical action templates explicitly. Also compare beam top-1 captions on all 12. No reranking or quality claim on this selected cohort.
+
+
+### Subject swap VALID12 result (2026-11-15)
+
+[Kaggle result](RELATION_SUBJECT_SWAP_VALID12_RESULT.json). Verified checkpoint digest in the result, cohort IDs and paired aggregates offline. The mean original-minus-swapped phrase log probability was +0.002404 (4 original wins, 7 swapped wins, 0 ties). Case 15 was excluded from phrase scoring for a noncanonical template. Beam top-1 changed only on case 9, with both captions mentioning eating pizza. The 12 selected, assisted cases do not support a consistent preference for the original subject binding. Keep this as a diagnostic and defer training on these swaps. Save Version unreported.
