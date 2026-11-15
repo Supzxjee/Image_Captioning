@@ -8,6 +8,10 @@
 - [Notebook giải mã đối chiếu prompt](experiments/clip_patch_baseline/CLIP_PATCH_CSA_PROMPT_CONTRAST_BEAM_VALID5000_2GPU.ipynb) là lượt VALID5000 đang chờ kết quả.
 - [Trạng thái nghiên cứu](RESEARCH_STATE.md) ghi lại quyết định và bằng chứng của từng lượt.
 
+## Lịch sử thực nghiệm
+
+[Toàn bộ repo trước đợt dọn ngày 15/11](https://github.com/Supzxjee/Image_Captioning/tree/2d7e0b23c988bd1ddc6ce2b82de9878a7e7cc3be). Bản lưu gồm 27 thư mục thực nghiệm cũ và 3 thư mục chứa bản trích log để kiểm tra kết quả.
+
 ## Notebook đã ngừng dùng
 
 - [CLIP_PATCH_199_TEST5000_2GPU.ipynb](https://github.com/Supzxjee/Image_Captioning/blob/78973a96a2fefd4c801fb180bdf20078f1d4fd71/experiments/clip_patch_baseline/CLIP_PATCH_199_TEST5000_2GPU.ipynb) · [Bản thay thế](experiments/clip_patch_baseline/CLIP_PATCH_199_TEST5000_V2_2GPU.ipynb).

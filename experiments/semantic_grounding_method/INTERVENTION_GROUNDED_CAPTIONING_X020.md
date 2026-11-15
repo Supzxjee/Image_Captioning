@@ -22,7 +22,7 @@ Giả thuyết cần thử: factual grounding có thể cho attention đúng nh�
 | Response15: direction14/15, Changed-both7/15, Stable-both9/15, joint4/15 | C0 có phản ứng với ảnh dưới original prompt cố định; phản ứng chưa luôn đúng | Lỗi chắc chắn do nhầm region; 4/15 là free-caption accuracy; sửa màu làm CHAIR tốt hơn |
 | Các thử nghiệm attention/auxiliary/KV chưa có added caption utility rõ | Cần kiểm đường evidence→actual output, ngoài điểm phụ | Mọi region model đều vô ích; module trước hoàn toàn unused |
 
-Nguồn: [expanded](../concept_mass_grounding/EXPANDED_RESULT.md), [C0](../concept_mass_grounding/C0_RESULT.md), [response15](RESPONSE15_C0_V2_RESULT.md). Không gộp CIDEr cohort1000 với4000; không dùng quota cũ làm ngân sách hiện tại.
+Nguồn: [expanded](https://github.com/Supzxjee/Image_Captioning/blob/2d7e0b23c988bd1ddc6ce2b82de9878a7e7cc3be/experiments/concept_mass_grounding/EXPANDED_RESULT.md), [C0](https://github.com/Supzxjee/Image_Captioning/blob/2d7e0b23c988bd1ddc6ce2b82de9878a7e7cc3be/experiments/concept_mass_grounding/C0_RESULT.md), [response15](RESPONSE15_C0_V2_RESULT.md). Không gộp CIDEr cohort1000 với4000; không dùng quota cũ làm ngân sách hiện tại.
 
 ## 2. So sánh đúng ba hướng thực chất khác nhau
 
