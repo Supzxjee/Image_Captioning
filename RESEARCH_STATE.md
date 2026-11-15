@@ -10,7 +10,7 @@ Cập nhật: 15/11/2026, giờ Việt Nam. File này là bản tóm tắt để
 
 ## Hiện đang ở đâu
 
-- **Fixed-prefix object phrase probe complete.** v94 VALID2; summed target-minus-foil margin improves +3.6321 (teddy bear) and +0.8029 (bed), both remaining negative. Prior beam output omitted both targets. [Result](experiments/clip_patch_baseline/CIDER_OBJECT_PHRASE_VALID2_RESULT.json). Approved same-text matched versus wrong ROI [notebook](experiments/clip_patch_baseline/CIDER_OBJECT_ROI_CONTROL_VALID2_1GPU.ipynb) ready. Distractor boxes visually verified, exact two cases and syntax checked; user runtime pending. No new training or corpus metrics.
+- **Fixed-prefix object phrase probe complete.** v94 VALID2; summed target-minus-foil margin improves +3.6321 (teddy bear) and +0.8029 (bed), both remaining negative. Prior beam output omitted both targets. [Result](experiments/clip_patch_baseline/CIDER_OBJECT_PHRASE_VALID2_RESULT.json). Same-text ROI control complete: matched minus wrong margin +3.5831/+0.8153, wrong minus original +0.0489/-0.0123. Exact prior replay. [Result](experiments/clip_patch_baseline/CIDER_OBJECT_ROI_CONTROL_VALID2_RESULT.json). Recommend broader matched controls before model changes.
 
 - **Two-case object source trace complete.** Both target objects have visually verified detector ROI 1 (teddy bear .9260, bed .8526), but are absent from the frozen UPT proposal list. No target IoU comparison. [Result](experiments/clip_patch_baseline/CIDER_ERROR_TWO_SOURCE_BOXES_RESULT.json). Frozen single-slot probe complete: archive beam replay 2/2, changes both beam lists but target mentions remain 0/5 each before and after. No rerank/metric/training. [Probe result](experiments/clip_patch_baseline/CIDER_OBJECT_SLOT_VALID2_RESULT.json).
 

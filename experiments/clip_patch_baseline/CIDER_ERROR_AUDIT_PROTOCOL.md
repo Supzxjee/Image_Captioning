@@ -66,3 +66,7 @@ Reuse both v94 arms from the single-slot probe. On COCO 239894, score teddy bear
 ### Matched-region control approved
 
 Run the same v94 fixed-prefix check in three arms: original, one added prompt at the verified object box, and the same added text at a visually checked distractor box. Use handbag ROI 6 for COCO 239894 and chair ROI 7 for COCO 487438. These boxes are disjoint from the corresponding target boxes and unused by the original prompt slots. The primary readout is matched minus distractor in the target-minus-foil summed log-probability margin. Also return both arms relative to original. Keep slot identity, text embedding, masks and other slots fixed. The box changes both absolute geometry and patch support, and the distractors are visually different in size and position. This measures sensitivity to the linked ROI for two cases. No decoding search, training or TEST.
+
+### Matched-region control result
+
+[Result](CIDER_OBJECT_ROI_CONTROL_VALID2_RESULT.json). Both baseline and matched scores replay the earlier result exactly. Matched minus wrong ROI in total target-minus-foil margin is +3.5831 (teddy bear) and +0.8153 (bed). Wrong ROI minus original is +0.0489 and -0.0123 respectively. Correct linkage yields a higher margin for both selected images, while the correct noun remains below the foil in total log probability. The ROI intervention changes both geometry and patch features. Recommend testing on a broader selected VALID cohort with comparable distractor size and position before modifying decoding or training. No corpus metric estimate.
