@@ -102,3 +102,5 @@ The first RegionCLIP build stopped at setuptools InvalidVersion before any compi
 V2 compiled Detectron2 successfully, then stopped during import at the removed Pillow Image.LINEAR alias. V3 replaces the alias with Image.Resampling.BILINEAR in the temporary pinned source. Verified the one upstream occurrence and notebook syntax. Checkpoint load and extraction are still unverified.
 
 V3 passed the Pillow import and stopped on the removed numpy.lib.pad export. V4 switches both legacy import sites to numpy.pad. Verified both pinned source occurrences and their syntax. Checkpoint extraction still pending.
+
+V4 extraction completed. [Result](REGIONCLIP_FIXED_ROI_VALID2_RESULT.json). Both exact YOLO box pairs match the prior audit. Verified four finite nonzero 1024-dimensional float32 vectors, distinct per image. NPZ SHA-256: `b4fc695b6493287bf22ec05bf63e31acdbcf6ddc50d80a288983ca2c5a392f29`. Reported extraction stage elapsed 2.01 seconds, excluding environment setup and checkpoint load. No caption metrics.
