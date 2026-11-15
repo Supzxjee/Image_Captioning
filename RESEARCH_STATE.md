@@ -10,6 +10,8 @@ Cập nhật: 13/11/2026, giờ Việt Nam. File này là bản tóm tắt để
 
 ## Hiện đang ở đâu
 
+- **15/11 dọn file chạy ở thư mục gốc.** Gỡ 133 script, notebook và mẫu cũ. Giữ các file được mã hoặc test còn lại tham chiếu, cùng entry point tương thích. [Bản lưu Git](https://github.com/Supzxjee/Image_Captioning/tree/06bd70ea1b514ffa78c50990405b38b5c4fa26eb).
+
 - **15/11 dọn tài liệu gốc.** Gỡ 133 file Markdown lịch sử khỏi main. [Ghi chú Markdown ở thư mục gốc trước khi dọn](https://github.com/Supzxjee/Image_Captioning/tree/952ae1fe6e9bcf02435777fa149378a60cdf8fd0).
 
 - **15/11 dọn đợt hai.** Gỡ 629 file lịch sử khỏi main. [Snapshot trước khi dọn](https://github.com/Supzxjee/Image_Captioning/tree/2d7e0b23c988bd1ddc6ce2b82de9878a7e7cc3be). Giữ các thư mục có tham chiếu trong mã/notebook được rà.

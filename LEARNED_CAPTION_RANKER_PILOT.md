@@ -36,7 +36,7 @@ Nếu chỉ nhánh scores hoặc global tốt hơn, ghi nhận đúng nhánh đ�
 
 ## Chạy Kaggle
 
-Dùng [notebook đầy đủ](LEARNED_CAPTION_RANKER_PILOT.ipynb), Internet ON, GPU T4x2. Cùng5 dataset của validation/test trước:
+Dùng [notebook đầy đủ](https://github.com/Supzxjee/Image_Captioning/blob/06bd70ea1b514ffa78c50990405b38b5c4fa26eb/LEARNED_CAPTION_RANKER_PILOT.ipynb), Internet ON, GPU T4x2. Cùng5 dataset của validation/test trước:
 
 - `vuthetam/mscoco-2014`
 - `ducanh2403/qformer-epoch10`

@@ -34,7 +34,7 @@ Primary policy đặt trước: `regional_guarded`. Gate mở rộng giữ yêu 
 
 ## Chạy tiếp trong notebook hiện tại
 
-**Thay cell launcher cũ**, tránh `Run All` chạy lại V1 trước V2. Dùng [notebook](CAPTION_GAIN_GUARD_V2_PILOT.ipynb) hoặc [cell đầy đủ](kaggle_caption_gain_guard_v2.py), Internet ON và GPU T4x2.
+**Thay cell launcher cũ**, tránh `Run All` chạy lại V1 trước V2. Dùng [notebook](https://github.com/Supzxjee/Image_Captioning/blob/06bd70ea1b514ffa78c50990405b38b5c4fa26eb/CAPTION_GAIN_GUARD_V2_PILOT.ipynb) hoặc [cell đầy đủ](https://github.com/Supzxjee/Image_Captioning/blob/06bd70ea1b514ffa78c50990405b38b5c4fa26eb/kaggle_caption_gain_guard_v2.py), Internet ON và GPU T4x2.
 
 Cell ưu tiên cache `/kaggle/working/learned_caption_ranker_1024_512`; cũng kiểm đúng một mount path tường minh của output notebook hiện tại. Nếu cache còn đầy đủ, kiểm hashes1792 feature files rồi chỉ học các head. Compact review ZIP không có feature cache và không dùng thay output đầy đủ được.
 
