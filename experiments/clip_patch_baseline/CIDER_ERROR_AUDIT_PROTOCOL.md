@@ -100,3 +100,5 @@ Use the official pretrained RegionCLIP RN50 recognition backbone at source commi
 The first RegionCLIP build stopped at setuptools InvalidVersion before any compilation or inference. V2 patches only the setup metadata version in the temporary pinned checkout and constrains isolated NumPy below 2.3. It uses a new output directory. Syntax and pinned rewrite location verified; build/runtime still pending.
 
 V2 compiled Detectron2 successfully, then stopped during import at the removed Pillow Image.LINEAR alias. V3 replaces the alias with Image.Resampling.BILINEAR in the temporary pinned source. Verified the one upstream occurrence and notebook syntax. Checkpoint load and extraction are still unverified.
+
+V3 passed the Pillow import and stopped on the removed numpy.lib.pad export. V4 switches both legacy import sites to numpy.pad. Verified both pinned source occurrences and their syntax. Checkpoint extraction still pending.

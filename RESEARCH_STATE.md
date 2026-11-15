@@ -10,7 +10,7 @@ Cập nhật: 15/11/2026, giờ Việt Nam. File này là bản tóm tắt để
 
 ## Hiện đang ở đâu
 
-- **RegionCLIP fixed-box V3 prepared.** [Notebook](experiments/clip_patch_baseline/REGIONCLIP_FIXED_ROI_VALID2_V3_1GPU.ipynb). V2 build passed but worker import stopped at Pillow Image.LINEAR. V3 replaces the legacy alias with Resampling.BILINEAR. Pinned source occurrence and syntax verified. Checkpoint loading and 4-vector extraction pending.
+- **RegionCLIP fixed-box V4 prepared.** [Notebook](experiments/clip_patch_baseline/REGIONCLIP_FIXED_ROI_VALID2_V4_1GPU.ipynb). V3 passed the Pillow import but stopped at numpy.lib.pad. V4 switches both pinned sites to numpy.pad. Syntax verified; checkpoint loading and 4-vector extraction pending.
 
 - **Reference-first ROI screening complete.** 141 images, 2 eligible pairs, both exact repeats already rejected in assisted visual review (salad misclassified as pizza and a motorcycle printed on a book). 0 accepted; no v94 scoring or training. [Result](experiments/clip_patch_baseline/CIDER_ROI_REFERENCE_COHORT_RESULT.json).
 
