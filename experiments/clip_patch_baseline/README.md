@@ -10,9 +10,9 @@
 Dùng **CLIP_PATCH_199_TEST5000_V2_2GPU.ipynb**, T4×2/cùng2Dataset/InternetON/Secret nhưtrước. V1retryđãtải đúngcheckpoint vàstage5000TEST559s,nhưngdừngvìso sánhchuỗiTorchbuild quá chặt: train2.11.0+cu128, runtime2.11.0+cu130. [Audit](TEST199_BUILD_FAILURE.json)/[amendment](TEST199_BUILD_V2_PROTOCOL.md). V2cho phépchính2buildnày/giữpublic2.11.0,ghi provenance+strictweights+actualGPUbeampathcheck; khôngcàilạiTorch/train/tune/rerank. Kiểmcheckpoint/runtimeTRƯỚCexpensiveNLP/stage. Nếufile199đãtải vẫnởknownWorkingpaththìreuseSHA;khôngbắtbuộctải lại. [QAV2](TEST199_V2_AUTHOR_CHECKS.json):6isolatedmetadata/mocktestsPASS,model/beam/TESTlockunchanged; actualGPUV2chưađo. Gửi **clip_patch_199_test5000_v2_review.zip**.
 
 
-## TEST5000 checkpoint199 — notebook sẵn sàng
+## Lịch sử TEST5000 checkpoint199 V1
 
-Chạy **CLIP_PATCH_199_TEST5000_2GPU.ipynb** trênT4×2/InternetON, haiDataset `visual-cache` và `vuthetam/mscoco-2014`. BậtSecret `codex` hoặc `KAGGLE_API_TOKEN` củaown199; hoặcđiềnCHECKPOINT_ROOTfile/rootđúngSHA nếuđãmountcheckpoint. Không cầnDatasetcheckpoint/cacheTESTmới/detector/ROI/bank/prompt. Chỉstage5000TESTpatch~1,4GiB, khôngcopyfull.
+Bản lịch sử **[CLIP_PATCH_199_TEST5000_2GPU.ipynb](https://github.com/Supzxjee/Image_Captioning/blob/78973a96a2fefd4c801fb180bdf20078f1d4fd71/experiments/clip_patch_baseline/CLIP_PATCH_199_TEST5000_2GPU.ipynb)** trênT4×2/InternetON, haiDataset `visual-cache` và `vuthetam/mscoco-2014`. BậtSecret `codex` hoặc `KAGGLE_API_TOKEN` củaown199; hoặcđiềnCHECKPOINT_ROOTfile/rootđúngSHA nếuđãmountcheckpoint. Không cầnDatasetcheckpoint/cacheTESTmới/detector/ROI/bank/prompt. Chỉstage5000TESTpatch~1,4GiB, khôngcopyfull.
 
 Đúngbest199epoch10SHA5061e305..., fixedbeam5/max20/rawlogprob/noSCST/rerank/tuning. Haiworker2500ảnh; captionlưutrướcCPUphases, đủBLEU1/4/METEOR/ROUGE-L/CIDEr/SPICE/CHAIRs/i +Recall/NLLmớicomplete. [Protocol](TEST199_PROTOCOL.md)/[QA](TEST199_AUTHOR_CHECKS.json). Cap2hSTOP khôngETA; tácgiảchỉchạy5NumPy/mocktests/AST, chưaKaggle/model/scorer. Gửi **clip_patch_199_test5000_v1_review.zip**, giữoutputnếuphaseCPUlỗiđểkhôngsinhcaptionlại.
 
@@ -28,7 +28,7 @@ Dùng **CLIP_PATCH_BASELINE_FULL_XE10_LOCAL_V3_2GPU.ipynb**, T4×2/InternetON, h
 
 ## Lịch sử LOCAL V2 (đã dừng khi chuẩn bị)
 
-**CLIP_PATCH_BASELINE_FULL_XE10_LOCAL_V2_2GPU.ipynb** là bản thay thế V1 bị dừng0update. T4×2, InternetON, cùng2Dataset `visual-cache` và `vuthetam/mscoco-2014`, khôngAPI/ROI/bank/prompt. V2 đọc tuần tự H5 và chép33,17GiB TRAIN+VALID patchFP16 sang /tmp memmap; không nạp hết vàoRAM, không tríchCLIP lại, không đọcTESTfeature. Cần38GiBscratch và4GiBWorking; kiểm tra ở runtime. Chuẩn bị cap30phút, tổng10,5giờ giữ nguyên, chưa phảiETA.
+**[CLIP_PATCH_BASELINE_FULL_XE10_LOCAL_V2_2GPU.ipynb](https://github.com/Supzxjee/Image_Captioning/blob/78973a96a2fefd4c801fb180bdf20078f1d4fd71/experiments/clip_patch_baseline/CLIP_PATCH_BASELINE_FULL_XE10_LOCAL_V2_2GPU.ipynb)** là bản thay thế V1 bị dừng0update. T4×2, InternetON, cùng2Dataset `visual-cache` và `vuthetam/mscoco-2014`, khôngAPI/ROI/bank/prompt. V2 đọc tuần tự H5 và chép33,17GiB TRAIN+VALID patchFP16 sang /tmp memmap; không nạp hết vàoRAM, không tríchCLIP lại, không đọcTESTfeature. Cần38GiBscratch và4GiBWorking; kiểm tra ở runtime. Chuẩn bị cap30phút, tổng10,5giờ giữ nguyên, chưa phảiETA.
 
 Giữ mô hình/khởi tạo/captionshuffle/10XE/global32/Adam/LR/VALIDbeam5 như V1. Sau stage+SHA, đo lại fullIO/DDP/beam trước train;64update thử bị bỏ. Runtimeprojection/cap vẫn được kiểm, không hứa speedup24× từ mẫuCPU. Fullcorpus33GiB vượtRAMquan sát31GiB. Không dùng lại trọng số V1 (chưa train). [Amendment](LOCAL_STAGE_V2_PROTOCOL.md), [QA](LOCAL_V2_AUTHOR_CHECKS.json). Gửi **clip_patch_baseline_full_xe10_v2_review.zip**; giữ cảoutputfolder/best.bin/checkpoint.bin nếu đã tạo.
 

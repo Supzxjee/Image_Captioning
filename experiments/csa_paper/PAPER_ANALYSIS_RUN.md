@@ -2,7 +2,7 @@
 
 ## Chạy tiếp
 
-Hai notebook `CSA_PROMPT_SPICE_SUBSETS_CONTROL_CPU.ipynb` và `CSA_PROMPT_SPICE_SUBSETS_PROMPT_CPU.ipynb`: **Accelerator None, Internet ON**, bật secret API `codex` của đúng chủ notebook. CONTROL chạy tài khoản ducanh2403, tự tải caption version184; PROMPT chạy ducanh3, tự tải version61. Không cần checkpoint, ảnh hoặc GPU; không train/decode/rerank lại. Nếu đã gắn output đúng lượt thì điền SOURCE_ROOT để không dùng API.
+Hai notebook [CSA_PROMPT_SPICE_SUBSETS_CONTROL_CPU_v2.ipynb](CSA_PROMPT_SPICE_SUBSETS_CONTROL_CPU_v2.ipynb) và [CSA_PROMPT_SPICE_SUBSETS_PROMPT_CPU_v2.ipynb](CSA_PROMPT_SPICE_SUBSETS_PROMPT_CPU_v2.ipynb): **Accelerator None, Internet ON**, bật secret API `codex` của đúng chủ notebook. CONTROL chạy tài khoản ducanh2403, tự tải caption version184; PROMPT chạy ducanh3, tự tải version61. Không cần checkpoint, ảnh hoặc GPU; không train/decode/rerank lại. Nếu đã gắn output đúng lượt thì điền SOURCE_ROOT để không dùng API.
 
 Notebook tải mã theo commit4aabab2, xác minh SHA captions/references/status, dùng pycocoevalcap1.2 và Java8 như lượt chấm trước. Chỉ chấm SPICE normal/fixed_rerank, đối chiếu điểm All với kết quả185/62. Giữ per-image Objects/Relations/Attributes, undefined là null và có số ảnh hợp lệ. Không chuyển undefined thành0. Giới hạn4h CPU là STOPcap, không phải dự báo thời gian. Gửi review ZIP mỗi nhánh sau khi xong. Chỉ gọi COMPLETE khi đủ cả hai chính sách.
 

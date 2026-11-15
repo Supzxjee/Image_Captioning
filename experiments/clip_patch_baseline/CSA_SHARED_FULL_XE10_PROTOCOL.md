@@ -22,7 +22,7 @@ Allow progress toward requested10epochs within cap: do NOT require whole10fit be
 
 After EVERY epoch: VALID5000beam5/max20/rawcumulativelogprob/rank0, teacherforcedNLL/CIDEr, meanlength andshortcaptioncount; savecaps/perimageCIDEr/workerstats. Inspectepoch1qualitativeprogress in logs; fixedtraininghorizon10, no adaptivehyperparamchange. Best=maxVALIDCIDEr, earlier ties. Finalbest/end savedcaption scoring: BLEU1/4,ROUGE-L,CHAIRs/i,Recall; METEOR/SPICE/TEST later, not claimed measured here. No referencecaption selection/re-ranking.
 
-Preservecheckpoint.bin ANDbest.bin/receipts, optimizer/RNG, completedvalidationfiles. Incompletecaprun is not full10qualityresult and must not be ranked ascomplete. Newoutput`csa_structure_shared_full_xe10_v1`, notebook`CLIP_PATCH_CSA_SHARED_FULL_XE10_ACCELERATE_2GPU.ipynb`. AuthoronlyNumPy/mock/AST checks; actualfullIO/Accelerate/GPU/scorers user-run. Pushcode/results and log oldSheet, no unsolicitedWord edits.
+Preservecheckpoint.bin ANDbest.bin/receipts, optimizer/RNG, completedvalidationfiles. Incompletecaprun is not full10qualityresult and must not be ranked ascomplete. Newoutput`csa_structure_shared_full_xe10_v1`, notebook[CLIP_PATCH_CSA_SHARED_FULL_XE10_ACCELERATE_2GPU.ipynb](https://github.com/Supzxjee/Image_Captioning/blob/78973a96a2fefd4c801fb180bdf20078f1d4fd71/experiments/clip_patch_baseline/CLIP_PATCH_CSA_SHARED_FULL_XE10_ACCELERATE_2GPU.ipynb). AuthoronlyNumPy/mock/AST checks; actualfullIO/Accelerate/GPU/scorers user-run. Pushcode/results and log oldSheet, no unsolicitedWord edits.
 
 
 ## Amendment 11/11: V1 packaging failure / fresh V2

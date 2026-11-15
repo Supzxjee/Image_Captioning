@@ -1,4 +1,24 @@
-# Image Captioning: H1.2-G
+# Image Captioning
+
+## Luồng thực nghiệm hiện tại
+
+- [Baseline và hướng dẫn đánh giá](experiments/clip_patch_baseline/README.md). Dùng bản LOCAL V3 để huấn luyện lại baseline và bản TEST5000 V2 để đánh giá.
+- [Mô hình căn chỉnh ngữ nghĩa và kết quả TEST5000](experiments/clip_patch_baseline/CSA_PER_CAPTION_BEST9_RERANK_TEST5000_RESULT.json). Cấu hình chính dùng checkpoint XE epoch 9, sinh năm ứng viên và xếp hạng lại.
+- [Kết quả SCST 1.500 lượt cập nhật](experiments/clip_patch_baseline/CSA_SCST_ONLY1500_RERANK_TEST_RESULT.json) là cấu hình so sánh bổ sung.
+- [Notebook giải mã đối chiếu prompt](experiments/clip_patch_baseline/CLIP_PATCH_CSA_PROMPT_CONTRAST_BEAM_VALID5000_2GPU.ipynb) là lượt VALID5000 đang chờ kết quả.
+- [Trạng thái nghiên cứu](RESEARCH_STATE.md) ghi lại quyết định và bằng chứng của từng lượt.
+
+## Notebook đã ngừng dùng
+
+- [CLIP_PATCH_199_TEST5000_2GPU.ipynb](https://github.com/Supzxjee/Image_Captioning/blob/78973a96a2fefd4c801fb180bdf20078f1d4fd71/experiments/clip_patch_baseline/CLIP_PATCH_199_TEST5000_2GPU.ipynb) · [Bản thay thế](experiments/clip_patch_baseline/CLIP_PATCH_199_TEST5000_V2_2GPU.ipynb).
+- [CLIP_PATCH_BASELINE_FULL_XE10_LOCAL_V2_2GPU.ipynb](https://github.com/Supzxjee/Image_Captioning/blob/78973a96a2fefd4c801fb180bdf20078f1d4fd71/experiments/clip_patch_baseline/CLIP_PATCH_BASELINE_FULL_XE10_LOCAL_V2_2GPU.ipynb) · [Bản thay thế](experiments/clip_patch_baseline/CLIP_PATCH_BASELINE_FULL_XE10_LOCAL_V3_2GPU.ipynb).
+- [CLIP_PATCH_CSA_SHARED_FULL_XE10_ACCELERATE_2GPU.ipynb](https://github.com/Supzxjee/Image_Captioning/blob/78973a96a2fefd4c801fb180bdf20078f1d4fd71/experiments/clip_patch_baseline/CLIP_PATCH_CSA_SHARED_FULL_XE10_ACCELERATE_2GPU.ipynb) · [Bản thay thế](experiments/clip_patch_baseline/CLIP_PATCH_CSA_SHARED_FULL_XE10_ACCELERATE_V2_2GPU.ipynb).
+- [CSA_PROMPT_SPICE_SUBSETS_CONTROL_CPU.ipynb](https://github.com/Supzxjee/Image_Captioning/blob/78973a96a2fefd4c801fb180bdf20078f1d4fd71/experiments/csa_paper/CSA_PROMPT_SPICE_SUBSETS_CONTROL_CPU.ipynb) · [Bản thay thế](experiments/csa_paper/CSA_PROMPT_SPICE_SUBSETS_CONTROL_CPU_v2.ipynb).
+- [CSA_PROMPT_SPICE_SUBSETS_PROMPT_CPU.ipynb](https://github.com/Supzxjee/Image_Captioning/blob/78973a96a2fefd4c801fb180bdf20078f1d4fd71/experiments/csa_paper/CSA_PROMPT_SPICE_SUBSETS_PROMPT_CPU.ipynb) · [Bản thay thế](experiments/csa_paper/CSA_PROMPT_SPICE_SUBSETS_PROMPT_CPU_v2.ipynb).
+- [CLIP_PATCH_CSA_SCST_RESUME3000_RERANK_VALID5000_2GPU.ipynb](https://github.com/Supzxjee/Image_Captioning/blob/78973a96a2fefd4c801fb180bdf20078f1d4fd71/experiments/clip_patch_baseline/CLIP_PATCH_CSA_SCST_RESUME3000_RERANK_VALID5000_2GPU.ipynb) · [Kết quả và quyết định dừng](experiments/clip_patch_baseline/CSA_SCST_ONLY3000_RERANK_VALID_RESULT.json).
+- [CLIP_PATCH_CSA_PROMPT_GUIDED_BEAM_VALID5000_2GPU.ipynb](https://github.com/Supzxjee/Image_Captioning/blob/78973a96a2fefd4c801fb180bdf20078f1d4fd71/experiments/clip_patch_baseline/CLIP_PATCH_CSA_PROMPT_GUIDED_BEAM_VALID5000_2GPU.ipynb) · [Kết quả và quyết định dừng](experiments/clip_patch_baseline/PROMPT_GUIDED_BEAM_VALID5000_RESULT.json).
+
+## Pipeline H1.2-G trước đây
 
 Biến thể có gate của H1.2 prompt-to-visual cross-attention, dùng MS COCO 2014 và CLIP prompt token cache. Giữ notebook H1.2 gốc để đối chiếu.
 
