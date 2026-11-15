@@ -70,3 +70,7 @@ Run the same v94 fixed-prefix check in three arms: original, one added prompt at
 ### Matched-region control result
 
 [Result](CIDER_OBJECT_ROI_CONTROL_VALID2_RESULT.json). Both baseline and matched scores replay the earlier result exactly. Matched minus wrong ROI in total target-minus-foil margin is +3.5831 (teddy bear) and +0.8153 (bed). Wrong ROI minus original is +0.0489 and -0.0123 respectively. Correct linkage yields a higher margin for both selected images, while the correct noun remains below the foil in total log probability. The ROI intervention changes both geometry and patch features. Recommend testing on a broader selected VALID cohort with comparable distractor size and position before modifying decoding or training. No corpus metric estimate.
+
+### Broader VALID matched-region preparation
+
+Exclude the 40 already reviewed images. Reuse v94 archived VALID beams. Screen for a YOLO class with confidence at least .50 absent from all five saved captions and from existing v175 object prompts. Require a distinct different-class detector ROI unused by the existing slots, around an object mentioned in the archived final caption. Compare the same target prompt at two boxes. Keep box area ratio at most 2, absolute normalized center distance at most .35, and IoU at most .10. Candidate boxes must be visually confirmed before scoring. Sample one pair per image, prioritize similar geometry, and limit repeated target classes in the review shortlist. Aim for 20–30 visually accepted cases. Two prior examples remain outside the cohort.
