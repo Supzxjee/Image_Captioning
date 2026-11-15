@@ -10,6 +10,8 @@ Cập nhật: 13/11/2026, giờ Việt Nam. File này là bản tóm tắt để
 
 ## Hiện đang ở đâu
 
+- **Subject swap assisted review.** 12/32 provisional original-true/foil-false cases. Original match is visible via the orange box, so this review is not blind. User confirmation and model scoring pending. [Labels](experiments/clip_patch_baseline/RELATION_SUBJECT_SWAP_VALID_ASSISTED_LABELS.json).
+
 - **Subject swap VALID screening complete.** Exact v175: 398/5000 images and 1,561 candidate swaps. Prepared 32 blinded review cases across 32 of 39 candidate predicates. Human labels pending; no model scoring. [Manifest](experiments/clip_patch_baseline/RELATION_SUBJECT_SWAP_VALID_SCREEN_RESULT.json).
 
 - **15/11 dọn file chạy ở thư mục gốc.** Gỡ 133 script, notebook và mẫu cũ. Giữ các file được mã hoặc test còn lại tham chiếu, cùng entry point tương thích. [Bản lưu Git](https://github.com/Supzxjee/Image_Captioning/tree/06bd70ea1b514ffa78c50990405b38b5c4fa26eb).

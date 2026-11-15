@@ -1,0 +1,241 @@
+{
+  "manifest_sha256": "f170a5c18c7351a83a243b44f63338bea6b96e84c2bd1299daf82e71bdcfdf0c",
+  "records": [
+    {
+      "id": 1,
+      "boxes": "yes",
+      "a": "unclear",
+      "b": "unclear"
+    },
+    {
+      "id": 2,
+      "boxes": "yes",
+      "a": "unclear",
+      "b": "no"
+    },
+    {
+      "id": 3,
+      "boxes": "yes",
+      "a": "no",
+      "b": "yes"
+    },
+    {
+      "id": 4,
+      "boxes": "yes",
+      "a": "unclear",
+      "b": "no"
+    },
+    {
+      "id": 5,
+      "boxes": "yes",
+      "a": "no",
+      "b": "yes"
+    },
+    {
+      "id": 6,
+      "boxes": "yes",
+      "a": "unclear",
+      "b": "no"
+    },
+    {
+      "id": 7,
+      "boxes": "yes",
+      "a": "no",
+      "b": "no"
+    },
+    {
+      "id": 8,
+      "boxes": "yes",
+      "a": "no",
+      "b": "yes"
+    },
+    {
+      "id": 9,
+      "boxes": "yes",
+      "a": "no",
+      "b": "yes"
+    },
+    {
+      "id": 10,
+      "boxes": "yes",
+      "a": "unclear",
+      "b": "unclear"
+    },
+    {
+      "id": 11,
+      "boxes": "yes",
+      "a": "no",
+      "b": "unclear"
+    },
+    {
+      "id": 12,
+      "boxes": "yes",
+      "a": "yes",
+      "b": "unclear"
+    },
+    {
+      "id": 13,
+      "boxes": "yes",
+      "a": "unclear",
+      "b": "no"
+    },
+    {
+      "id": 14,
+      "boxes": "unclear",
+      "a": "no",
+      "b": "unclear"
+    },
+    {
+      "id": 15,
+      "boxes": "yes",
+      "a": "no",
+      "b": "yes"
+    },
+    {
+      "id": 16,
+      "boxes": "yes",
+      "a": "yes",
+      "b": "no"
+    },
+    {
+      "id": 17,
+      "boxes": "yes",
+      "a": "unclear",
+      "b": "no"
+    },
+    {
+      "id": 18,
+      "boxes": "yes",
+      "a": "no",
+      "b": "yes"
+    },
+    {
+      "id": 19,
+      "boxes": "unclear",
+      "a": "no",
+      "b": "unclear"
+    },
+    {
+      "id": 20,
+      "boxes": "yes",
+      "a": "unclear",
+      "b": "yes"
+    },
+    {
+      "id": 21,
+      "boxes": "yes",
+      "a": "no",
+      "b": "yes"
+    },
+    {
+      "id": 22,
+      "boxes": "yes",
+      "a": "no",
+      "b": "yes"
+    },
+    {
+      "id": 23,
+      "boxes": "yes",
+      "a": "no",
+      "b": "yes"
+    },
+    {
+      "id": 24,
+      "boxes": "yes",
+      "a": "yes",
+      "b": "yes"
+    },
+    {
+      "id": 25,
+      "boxes": "unclear",
+      "a": "no",
+      "b": "unclear"
+    },
+    {
+      "id": 26,
+      "boxes": "unclear",
+      "a": "no",
+      "b": "unclear"
+    },
+    {
+      "id": 27,
+      "boxes": "yes",
+      "a": "unclear",
+      "b": "unclear"
+    },
+    {
+      "id": 28,
+      "boxes": "yes",
+      "a": "unclear",
+      "b": "yes"
+    },
+    {
+      "id": 29,
+      "boxes": "yes",
+      "a": "no",
+      "b": "yes"
+    },
+    {
+      "id": 30,
+      "boxes": "yes",
+      "a": "yes",
+      "b": "no"
+    },
+    {
+      "id": 31,
+      "boxes": "yes",
+      "a": "no",
+      "b": "yes"
+    },
+    {
+      "id": 32,
+      "boxes": "yes",
+      "a": "unclear",
+      "b": "no"
+    }
+  ],
+  "review_type": "assistant_provisional",
+  "counts": {
+    "unclear": 17,
+    "eligible": 12,
+    "both_false": 1,
+    "reverse": 1,
+    "both_true": 1
+  },
+  "eligible_ids": [
+    3,
+    5,
+    8,
+    9,
+    15,
+    16,
+    18,
+    22,
+    23,
+    29,
+    30,
+    31
+  ],
+  "notes": {
+    "1": "Khó xác nhận ai đang thổi từ ảnh tĩnh.",
+    "2": "Người A ở cửa xe. Chưa rõ đang lên hay xuống.",
+    "5": "B đang nhìn và chạm vào đồng hồ.",
+    "6": "A đang thao tác trên pizza, chưa thấy rõ đang cắt.",
+    "12": "A có tư thế thả diều. Khó xác định B có giữ dây hay không.",
+    "14": "Box B quá nhỏ và bị che.",
+    "16": "A đang chơi bóng, B chạy theo.",
+    "17": "A đang giữ diều, chưa rõ đã thả.",
+    "18": "B nằm trên ghế sofa, A ngồi ở ghế bên cạnh.",
+    "20": "B có tư thế kéo dây diều, tay A bị khuất.",
+    "21": "B điều khiển xe kéo của ngựa khác. A đi với con ngựa trong box O.",
+    "23": "B đang thực hiện động tác với ván, A cầm xe trượt khác.",
+    "24": "Cả hai ở trên cùng một thuyền và tham gia chèo.",
+    "25": "Cụm tương tác running chưa nói rõ ai đang chạy.",
+    "26": "Người A quá nhỏ để xác nhận.",
+    "29": "B đứng trên ván trượt tuyết trong box O.",
+    "30": "A dưới ô xanh O. B ở phía nhóm ô hồng.",
+    "31": "B ở trên xe máy O.",
+    "32": "A đang chuẩn bị giao bóng, chưa thấy cú vung rõ trong ảnh tĩnh."
+  },
+  "display_limitation": "Orange box identifies the original match in this export."
+}
