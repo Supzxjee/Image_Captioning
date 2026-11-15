@@ -10,6 +10,8 @@ Cập nhật: 13/11/2026, giờ Việt Nam. File này là bản tóm tắt để
 
 ## Hiện đang ở đâu
 
+- **15/11 dọn tài liệu gốc.** Gỡ 133 file Markdown lịch sử khỏi main. [Ghi chú Markdown ở thư mục gốc trước khi dọn](https://github.com/Supzxjee/Image_Captioning/tree/952ae1fe6e9bcf02435777fa149378a60cdf8fd0).
+
 - **15/11 dọn đợt hai.** Gỡ 629 file lịch sử khỏi main. [Snapshot trước khi dọn](https://github.com/Supzxjee/Image_Captioning/tree/2d7e0b23c988bd1ddc6ce2b82de9878a7e7cc3be). Giữ các thư mục có tham chiếu trong mã/notebook được rà.
 
 - **15/11 dọn repo.** [README](README.md) dẫn tới notebook đang dùng và bản lịch sử. Năm notebook có bản thay thế và hai notebook đã dừng được gỡ khỏi cây hiện tại. Kết quả và mã nguồn thực nghiệm vẫn có trong repo hoặc theo commit được dẫn.
@@ -513,9 +515,9 @@ Cập nhật: 13/11/2026, giờ Việt Nam. File này là bản tóm tắt để
 
 - **X019 Codex2 — user yêu cầu tự tìm hướng có contribution, không theo Codex1 bắt buộc:** đã đọc cập nhật báo cáo tuần, không có kết quả model mới. Sau ARS/source review, hạ ưu tiên JS-correspondence của X018 (có thể dư với grounding từng ảnh); đề nghị [partial interchange supervision tại channel vùng–token](experiments/semantic_grounding_method/PARTIAL_INTERCHANGE_METHOD_2026-11-01.md). C0 frozen + regional evidence adapter; donor-region swap có partial updated/protected/UNKNOWN targets, cùng actual fc_out. Đã tự đọc IIT ICML2022 và chỉ rõ đây là prior, exact novelty/utility chưa xác nhận. Có feasibility6bindings/2arm controls/stop rules; chưa user duyệt code/data/GPU. Không stage/chạy model hoặc sửa báo cáo cũ. Chi tiết X019 trong RESEARCH_EXCHANGE.md.
 
-- **User yêu cầu bỏ lan man, đã sửa bản trình thầy còn3trang:** [nội dung](WEEKLY_REPORT_2026-10-31_SHORT.md), Word local `Bao_cao_tuan_31_10_2026_rut_gon.docx`. Giữ3pipeline A,C0/C/G,X018rútgọn;chỉcôngviệcchính,bảng4000,kếtluận vàhướngtiếp. Bỏsốliệudiagnosticphụ,lịchsửlỗivàliệtkênhánhdài. Đãrender/kiểmtra3trang;9tranggiữriêngtracứu.Khôngthaykếtquả/phươngpháp/run.
+- **User yêu cầu bỏ lan man, đã sửa bản trình thầy còn3trang:** [nội dung](https://github.com/Supzxjee/Image_Captioning/blob/952ae1fe6e9bcf02435777fa149378a60cdf8fd0/WEEKLY_REPORT_2026-10-31_SHORT.md), Word local `Bao_cao_tuan_31_10_2026_rut_gon.docx`. Giữ3pipeline A,C0/C/G,X018rútgọn;chỉcôngviệcchính,bảng4000,kếtluận vàhướngtiếp. Bỏsốliệudiagnosticphụ,lịchsửlỗivàliệtkênhánhdài. Đãrender/kiểmtra3trang;9tranggiữriêngtracứu.Khôngthaykếtquả/phươngpháp/run.
 
-- **Đã viết báo cáo tuần25–31/10**, [nội dung và nguồn](WEEKLY_REPORT_2026-10-31.md); Word local `Bao_cao_tuan_31_10_2026.docx`,9trang,giữmẫutuầntrước,đãrender/kiểmtra9trang. Có6sơđồpipeline và bảng giải thích theo từng nhóm, tránh nhầm C/T/G được tái dùng. Baoquát toàn bộthínghiệm và kếtquảCIDEr/hallucinationriêng, X018chỉđềxuất. KhôngrunGPU/môhình hoặc thêmexperimentrowcho báo cáo.
+- **Đã viết báo cáo tuần25–31/10**, [nội dung và nguồn](https://github.com/Supzxjee/Image_Captioning/blob/952ae1fe6e9bcf02435777fa149378a60cdf8fd0/WEEKLY_REPORT_2026-10-31.md); Word local `Bao_cao_tuan_31_10_2026.docx`,9trang,giữmẫutuầntrước,đãrender/kiểmtra9trang. Có6sơđồpipeline và bảng giải thích theo từng nhóm, tránh nhầm C/T/G được tái dùng. Baoquát toàn bộthínghiệm và kếtquảCIDEr/hallucinationriêng, X018chỉđềxuất. KhôngrunGPU/môhình hoặc thêmexperimentrowcho báo cáo.
 
 - **X018 Codex2 trả lời X017:** khuyến nghị grounded token readout kế thừa NBT/Mavroudi + correspondence của cùng entity qua attribute edits; giữ routing nhưng cho local visual values đổi, dùng trực tiếp mixture khi decode. Có forward/loss, frozen/trainable scope, multi-positive/unknown policy,2trainarms G-ind/G-pair + frozenC0, feasibility tối đa6pairs bổ sung boxes và đoạn7câu trình thầy trong [RESEARCH_EXCHANGE.md](RESEARCH_EXCHANGE.md). Đây là incremental-method hypothesis, novelty/utility chưa xác nhận; thiếu box correspondence/proposals edited-side và prior check paired grounding. User chưa duyệt phương pháp/code/GPU; không stage hoặc chạy thêm. Response15 giữ làm diagnostic development, không lặp lại hoặc nhận4/15 là proof lỗi grounding.
 

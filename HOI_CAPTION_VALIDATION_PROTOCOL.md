@@ -10,7 +10,7 @@ The implementation compares the same distinct beam-5 candidate pool under three 
 
 ## Relation evidence
 
-Use the pinned official UPT-R50 HICO checkpoint and implementation from the [frozen transfer audit](PRETRAINED_HOI_TRANSFER_RESULT.md). Run the detector/interaction model on each whole image. Do not restrict its proposals to labeled source pairs or use human boxes. No ground-truth caption, object label or relation annotation enters inference or claim extraction.
+Use the pinned official UPT-R50 HICO checkpoint and implementation from the [frozen transfer audit](https://github.com/Supzxjee/Image_Captioning/blob/952ae1fe6e9bcf02435777fa149378a60cdf8fd0/PRETRAINED_HOI_TRANSFER_RESULT.md). Run the detector/interaction model on each whole image. Do not restrict its proposals to labeled source pairs or use human boxes. No ground-truth caption, object label or relation annotation enters inference or claim extraction.
 
 A conservative lexical parser extracts explicit `person -> verb -> COCO object class` claims for hold, ride, sit_on, carry, eat and talk_on. It requires a nearby preceding person mention, rejects explicit negation, attaches the next explicit object before another recognized action/clause, and leaves unsupported constructions unparsed. The rules are in `captioning/hoi_caption_reranking.py`; they are a coverage limitation, not a general semantic parser. Attribute, count, passive-voice and coreference verification are outside this version.
 

@@ -10,6 +10,8 @@
 
 ## Lịch sử thực nghiệm
 
+[Ghi chú Markdown ở thư mục gốc trước khi dọn](https://github.com/Supzxjee/Image_Captioning/tree/952ae1fe6e9bcf02435777fa149378a60cdf8fd0) tập hợp các ghi chú thử nghiệm, hướng dẫn cũ và báo cáo theo tuần.
+
 [Toàn bộ repo trước đợt dọn ngày 15/11](https://github.com/Supzxjee/Image_Captioning/tree/2d7e0b23c988bd1ddc6ce2b82de9878a7e7cc3be). Bản lưu gồm 27 thư mục thực nghiệm cũ và 3 thư mục chứa bản trích log để kiểm tra kết quả.
 
 ## Notebook đã ngừng dùng
@@ -30,14 +32,14 @@ Hướng dẫn đánh giá hallucination cho Q-Former và OCC: [CHAIR_EVALUATION
 
 ## Trạng thái thực nghiệm đã đối chiếu — 15/10/2026
 
-- [Bảng caption và mức độ bằng chứng](CAPTION_PROGRESS_AUDIT_20261015.md): đã có kết quả test tái hiện Q-Former rank0 CIDEr **1.188245**, fixed re-ranking **1.221815**, thêm UPT **1.223864**. UPT tăng nhỏ về điểm caption nhưng CHAIRs **3.50%**, nhỉnh hơn fixed **3.48%**; chưa cải thiện hallucination so với pipeline cũ.
-- [Đối chứng HOI huấn luyện sẵn](PRETRAINED_HOI_TRANSFER_RESULT.md): UPT HICO-DET đạt **20/20** so với CLIP **17/20** trên cùng các cặp được phủ, nhưng chỉ phủ **20/34**. Đây là tín hiệu nhận biết đối tượng đích, chưa phải cải thiện caption hay đóng góp mới đã xác nhận.
-- [UPT với ngưỡng chọn trên tập riêng](PRETRAINED_HOI_ACCEPTANCE_RESULT.md): 111 ảnh chọn ngưỡng / 128 ảnh đánh giá; AP cùng phần được phủ **0.806 so với CLIP 0.488**. UPT giữ 80 quan hệ đúng / nhận nhầm 16; chuyển nguyên ngưỡng sang nhãn người giữ 13 đúng / 0 sai trên phần đã chấm. Chưa đạt mức chính xác 90% trên tập đánh giá; chưa đo caption.
-- [Full validation caption 5.000 ảnh: đã hoàn tất](HOI_CAPTION_VALIDATION_RESULT.md): fixed re-ranking CIDEr **1.210723**, thêm UPT λ=.1 đạt **1.212580**; chỉ đổi 43 caption. CHAIRs tăng từ **3.56% lên 3.58%**: chưa cải thiện hallucination. Đã tính lại CIDEr/BLEU/ROUGE và tái tổng hợp CHAIR. Đã khóa λ=.1 cho test độc lập bên dưới.
-- [Test 5.000 ảnh với lambda=.1 đã khóa: hoàn tất](HOI_CAPTION_TEST_RESULT.md): CIDEr tăng **0.002049017** so với fixed; đổi **33** caption, số caption hallucinated **174→175**. Không dò lại trọng số trên test. [Notebook](HOI_CAPTION_TEST_FULL.ipynb) do người dùng chạy.
-- [Prototype prompt giữ đúng cặp instance](INSTANCE_LOCAL_PROMPT_PILOT_RESULT.md): cache-only local, 111 calibration/128 development; cạnh tranh cùng người tăng nhận đúng80→94 nhưng nhận sai12→19, precision86.96%→83.19%. Gate FAIL; không mở full Kaggle, chưa có caption metric mới.
-- [Dư địa chọn trong beam5, validation5.000 ảnh](CAPTION_CANDIDATE_HEADROOM_RESULT.md): oracle theo reference **1.513905CIDEr** so với fixed **1.210723**;3.527 ảnh có ứng viên đạt CIDEr cao hơn. Chỉ là trần chẩn đoán, không phải mô hình mới hoặc bằng chứng giảm hallucination; ưu tiên pilot bộ chấm caption có đối chứng.
-- [Pilot học chấm caption đã hoàn tất](LEARNED_CAPTION_RANKER_PILOT_RESULT.md): validation512, regional giảm caption hallucinated **16→13** và tăng Recall, nhưng CIDEr **1.263698→1.251104**; gate mở rộng FAIL. Scores-only giữ epoch0, global chọn epoch1, regional epoch3 theo tune256. Chưa thay pipeline hoặc mở full; không so metric subset512 với full5000/test.
+- [Bảng caption và mức độ bằng chứng](https://github.com/Supzxjee/Image_Captioning/blob/952ae1fe6e9bcf02435777fa149378a60cdf8fd0/CAPTION_PROGRESS_AUDIT_20261015.md): đã có kết quả test tái hiện Q-Former rank0 CIDEr **1.188245**, fixed re-ranking **1.221815**, thêm UPT **1.223864**. UPT tăng nhỏ về điểm caption nhưng CHAIRs **3.50%**, nhỉnh hơn fixed **3.48%**; chưa cải thiện hallucination so với pipeline cũ.
+- [Đối chứng HOI huấn luyện sẵn](https://github.com/Supzxjee/Image_Captioning/blob/952ae1fe6e9bcf02435777fa149378a60cdf8fd0/PRETRAINED_HOI_TRANSFER_RESULT.md): UPT HICO-DET đạt **20/20** so với CLIP **17/20** trên cùng các cặp được phủ, nhưng chỉ phủ **20/34**. Đây là tín hiệu nhận biết đối tượng đích, chưa phải cải thiện caption hay đóng góp mới đã xác nhận.
+- [UPT với ngưỡng chọn trên tập riêng](https://github.com/Supzxjee/Image_Captioning/blob/952ae1fe6e9bcf02435777fa149378a60cdf8fd0/PRETRAINED_HOI_ACCEPTANCE_RESULT.md): 111 ảnh chọn ngưỡng / 128 ảnh đánh giá; AP cùng phần được phủ **0.806 so với CLIP 0.488**. UPT giữ 80 quan hệ đúng / nhận nhầm 16; chuyển nguyên ngưỡng sang nhãn người giữ 13 đúng / 0 sai trên phần đã chấm. Chưa đạt mức chính xác 90% trên tập đánh giá; chưa đo caption.
+- [Full validation caption 5.000 ảnh: đã hoàn tất](https://github.com/Supzxjee/Image_Captioning/blob/952ae1fe6e9bcf02435777fa149378a60cdf8fd0/HOI_CAPTION_VALIDATION_RESULT.md): fixed re-ranking CIDEr **1.210723**, thêm UPT λ=.1 đạt **1.212580**; chỉ đổi 43 caption. CHAIRs tăng từ **3.56% lên 3.58%**: chưa cải thiện hallucination. Đã tính lại CIDEr/BLEU/ROUGE và tái tổng hợp CHAIR. Đã khóa λ=.1 cho test độc lập bên dưới.
+- [Test 5.000 ảnh với lambda=.1 đã khóa: hoàn tất](https://github.com/Supzxjee/Image_Captioning/blob/952ae1fe6e9bcf02435777fa149378a60cdf8fd0/HOI_CAPTION_TEST_RESULT.md): CIDEr tăng **0.002049017** so với fixed; đổi **33** caption, số caption hallucinated **174→175**. Không dò lại trọng số trên test. [Notebook](HOI_CAPTION_TEST_FULL.ipynb) do người dùng chạy.
+- [Prototype prompt giữ đúng cặp instance](https://github.com/Supzxjee/Image_Captioning/blob/952ae1fe6e9bcf02435777fa149378a60cdf8fd0/INSTANCE_LOCAL_PROMPT_PILOT_RESULT.md): cache-only local, 111 calibration/128 development; cạnh tranh cùng người tăng nhận đúng80→94 nhưng nhận sai12→19, precision86.96%→83.19%. Gate FAIL; không mở full Kaggle, chưa có caption metric mới.
+- [Dư địa chọn trong beam5, validation5.000 ảnh](https://github.com/Supzxjee/Image_Captioning/blob/952ae1fe6e9bcf02435777fa149378a60cdf8fd0/CAPTION_CANDIDATE_HEADROOM_RESULT.md): oracle theo reference **1.513905CIDEr** so với fixed **1.210723**;3.527 ảnh có ứng viên đạt CIDEr cao hơn. Chỉ là trần chẩn đoán, không phải mô hình mới hoặc bằng chứng giảm hallucination; ưu tiên pilot bộ chấm caption có đối chứng.
+- [Pilot học chấm caption đã hoàn tất](https://github.com/Supzxjee/Image_Captioning/blob/952ae1fe6e9bcf02435777fa149378a60cdf8fd0/LEARNED_CAPTION_RANKER_PILOT_RESULT.md): validation512, regional giảm caption hallucinated **16→13** và tăng Recall, nhưng CIDEr **1.263698→1.251104**; gate mở rộng FAIL. Scores-only giữ epoch0, global chọn epoch1, regional epoch3 theo tune256. Chưa thay pipeline hoặc mở full; không so metric subset512 với full5000/test.
 - [Gain guard V2: đã chuẩn bị, chưa chạy](CAPTION_GAIN_GUARD_V2_PILOT.md): học lợi ích so với fixed, tách train1024/tune128/calibration128; giữ câu cũ nếu chưa vượt correction. Dùng lại feature cache V1 nếu còn;19 tests local PASS. Không có metric V2 mới. [Notebook](CAPTION_GAIN_GUARD_V2_PILOT.ipynb).
 - **Thực thi Kaggle do người dùng chủ động bấm chạy.** Trợ lý chuẩn bị/sửa mã và đọc kết quả; không tự khởi chạy hoặc chạy lại notebook.
 - Giữ riêng metric validation/test, kiến trúc/hậu xử lý và kết quả lịch sử/được tái kiểm tra. Chưa thay pipeline caption bằng các head quan hệ thử nhỏ.
@@ -262,12 +264,12 @@ Chẩn đoán cache part bị kẹt: dùng --start-row 6300 --limit 256 --batch-
 # VLM prompt experiments
 
 Objects-only YOLO ablation (without VLM):
-[OBJECTS_ABLATION.md](OBJECTS_ABLATION.md) and `objects_only_kaggle.ipynb`.
+[OBJECTS_ABLATION.md](https://github.com/Supzxjee/Image_Captioning/blob/952ae1fe6e9bcf02435777fa149378a60cdf8fd0/OBJECTS_ABLATION.md) and `objects_only_kaggle.ipynb`.
 Requires original saved object labels, builds a fresh prompt cache, then train + full test.
 
 Next experiment: replace YOLO/spatial-heuristic prompts with image-only VLM objects
 and spatial relations while keeping H1.2 + Gate and visual features fixed.
-See [VLM_EXPERIMENTS.md](VLM_EXPERIMENTS.md). Kaggle notebooks:
+See [VLM_EXPERIMENTS.md](https://github.com/Supzxjee/Image_Captioning/blob/952ae1fe6e9bcf02435777fa149378a60cdf8fd0/VLM_EXPERIMENTS.md). Kaggle notebooks:
 `vlm_extract_kaggle.ipynb` (100-image pilot then resumable scene shards),
 `vlm_embed_kaggle.ipynb` (both CLIP prompt caches), and
 `vlm_train_kaggle.ipynb` (one variant per version, train + full test).
@@ -290,7 +292,7 @@ Mã, sơ đồ và cell Kaggle nằm trong
 Chạy `audit_yolo_detections.py` để kiểm tra coverage theo split, confidence,
 bounding box vượt biên/quá nhỏ/quá lớn và các box cùng lớp bị trùng. Script xuất
 JSON tổng hợp cùng CSV theo ảnh và theo nhãn, không chạy lại YOLO. Hướng dẫn và
-cell Kaggle đầy đủ nằm trong [YOLO_AUDIT.md](YOLO_AUDIT.md). Đây là kiểm tra bất
+cell Kaggle đầy đủ nằm trong [YOLO_AUDIT.md](https://github.com/Supzxjee/Image_Captioning/blob/952ae1fe6e9bcf02435777fa149378a60cdf8fd0/YOLO_AUDIT.md). Đây là kiểm tra bất
 thường dữ liệu; vẫn cần xem một mẫu ảnh phân tầng trước khi đổi threshold.
 
 ## Object–region alignment loss
@@ -298,43 +300,43 @@ thường dữ liệu; vẫn cần xem một mẫu ảnh phân tầng trước k
 `build_region_targets.py` tạo cache box chuẩn hóa và CLIP text prototype cho các
 nhãn YOLO. Khi train với `--alignment-weight > 0`, mô hình cộng region
 classification loss vào caption loss để căn chỉnh trực tiếp bounding-box patch
-features với object label. Xem [REGION_ALIGNMENT.md](REGION_ALIGNMENT.md).
+features với object label. Xem [REGION_ALIGNMENT.md](https://github.com/Supzxjee/Image_Captioning/blob/952ae1fe6e9bcf02435777fa149378a60cdf8fd0/REGION_ALIGNMENT.md).
 Thí nghiệm giảm lambda xuống 0.02 và chỉ đánh giá validation có cell Kaggle đầy
-đủ tại [REGION_ALIGNMENT_L002.md](REGION_ALIGNMENT_L002.md).
+đủ tại [REGION_ALIGNMENT_L002.md](https://github.com/Supzxjee/Image_Captioning/blob/952ae1fe6e9bcf02435777fa149378a60cdf8fd0/REGION_ALIGNMENT_L002.md).
 
-- [Kaggle dual-GPU workflow for region alignment lambda 0.02](REGION_ALIGNMENT_L002_DUAL_GPU.md)
-
-
-Đánh giá checkpoint region alignment lambda 0.02 đã chốt trên test 5.000 ảnh: [EVALUATE_L002_TEST.md](EVALUATE_L002_TEST.md).
+- [Kaggle dual-GPU workflow for region alignment lambda 0.02](https://github.com/Supzxjee/Image_Captioning/blob/952ae1fe6e9bcf02435777fa149378a60cdf8fd0/REGION_ALIGNMENT_L002_DUAL_GPU.md)
 
 
-Kết quả và kết luận ablation object-region alignment: [REGION_ALIGNMENT_RESULTS.md](REGION_ALIGNMENT_RESULTS.md).
+Đánh giá checkpoint region alignment lambda 0.02 đã chốt trên test 5.000 ảnh: [EVALUATE_L002_TEST.md](https://github.com/Supzxjee/Image_Captioning/blob/952ae1fe6e9bcf02435777fa149378a60cdf8fd0/EVALUATE_L002_TEST.md).
 
 
-Lightweight Q-Former ablation và cell Kaggle dual-GPU: [QFORMER_EXPERIMENT.md](QFORMER_EXPERIMENT.md).
+Kết quả và kết luận ablation object-region alignment: [REGION_ALIGNMENT_RESULTS.md](https://github.com/Supzxjee/Image_Captioning/blob/952ae1fe6e9bcf02435777fa149378a60cdf8fd0/REGION_ALIGNMENT_RESULTS.md).
 
 
-Q-Former + image-text contrastive alignment, caption-cache builder và cell Kaggle dual-GPU: [QFORMER_ITC_EXPERIMENT.md](QFORMER_ITC_EXPERIMENT.md).
+Lightweight Q-Former ablation và cell Kaggle dual-GPU: [QFORMER_EXPERIMENT.md](https://github.com/Supzxjee/Image_Captioning/blob/952ae1fe6e9bcf02435777fa149378a60cdf8fd0/QFORMER_EXPERIMENT.md).
+
+
+Q-Former + image-text contrastive alignment, caption-cache builder và cell Kaggle dual-GPU: [QFORMER_ITC_EXPERIMENT.md](https://github.com/Supzxjee/Image_Captioning/blob/952ae1fe6e9bcf02435777fa149378a60cdf8fd0/QFORMER_ITC_EXPERIMENT.md).
 
 
 Đánh giá checkpoint Q-Former không ITC trên test 5.000 ảnh: [EVALUATE_QFORMER_TEST.md](EVALUATE_QFORMER_TEST.md).
 
 
-Sinh 5 caption candidates, Object Consistency Checker và tune re-ranking trên validation: [QFORMER_OCC_RERANKING.md](QFORMER_OCC_RERANKING.md).
+Sinh 5 caption candidates, Object Consistency Checker và tune re-ranking trên validation: [QFORMER_OCC_RERANKING.md](https://github.com/Supzxjee/Image_Captioning/blob/952ae1fe6e9bcf02435777fa149378a60cdf8fd0/QFORMER_OCC_RERANKING.md).
 
 
-Save Version độc lập để áp dụng OCC weight 0.1 trên test: [QFORMER_OCC_TEST.md](QFORMER_OCC_TEST.md).
+Save Version độc lập để áp dụng OCC weight 0.1 trên test: [QFORMER_OCC_TEST.md](https://github.com/Supzxjee/Image_Captioning/blob/952ae1fe6e9bcf02435777fa149378a60cdf8fd0/QFORMER_OCC_TEST.md).
 
 
-Báo cáo tiến độ tuần 24/09/2026: [WEEKLY_REPORT_2026-09-24.md](WEEKLY_REPORT_2026-09-24.md).
+Báo cáo tiến độ tuần 24/09/2026: [WEEKLY_REPORT_2026-09-24.md](https://github.com/Supzxjee/Image_Captioning/blob/952ae1fe6e9bcf02435777fa149378a60cdf8fd0/WEEKLY_REPORT_2026-09-24.md).
 
-Prompt-Conditioned Q-Former và re-ranking đa điểm: [PROMPT_CONDITIONED_QFORMER.md](PROMPT_CONDITIONED_QFORMER.md).
+Prompt-Conditioned Q-Former và re-ranking đa điểm: [PROMPT_CONDITIONED_QFORMER.md](https://github.com/Supzxjee/Image_Captioning/blob/952ae1fe6e9bcf02435777fa149378a60cdf8fd0/PROMPT_CONDITIONED_QFORMER.md).
 
-Test cố định cho Prompt-Conditioned Q-Former: [PROMPT_CONDITIONED_QFORMER_TEST.md](PROMPT_CONDITIONED_QFORMER_TEST.md).
+Test cố định cho Prompt-Conditioned Q-Former: [PROMPT_CONDITIONED_QFORMER_TEST.md](https://github.com/Supzxjee/Image_Captioning/blob/952ae1fe6e9bcf02435777fa149378a60cdf8fd0/PROMPT_CONDITIONED_QFORMER_TEST.md).
 
-CHAIR test cho Prompt-Conditioned Q-Former: [PROMPT_CONDITIONED_QFORMER_CHAIR.md](PROMPT_CONDITIONED_QFORMER_CHAIR.md).
+CHAIR test cho Prompt-Conditioned Q-Former: [PROMPT_CONDITIONED_QFORMER_CHAIR.md](https://github.com/Supzxjee/Image_Captioning/blob/952ae1fe6e9bcf02435777fa149378a60cdf8fd0/PROMPT_CONDITIONED_QFORMER_CHAIR.md).
 
 Ablation Q-Former cũ với cùng re-ranking: [QFORMER_FIXED_RERANKING_ABLATION.md](QFORMER_FIXED_RERANKING_ABLATION.md).
 
 Nếu beam candidates test của Q-Former cũ bị mất, sinh lại từ checkpoint bằng:
-[REGENERATE_QFORMER_TEST_CANDIDATES.md](REGENERATE_QFORMER_TEST_CANDIDATES.md).
+[REGENERATE_QFORMER_TEST_CANDIDATES.md](https://github.com/Supzxjee/Image_Captioning/blob/952ae1fe6e9bcf02435777fa149378a60cdf8fd0/REGENERATE_QFORMER_TEST_CANDIDATES.md).
