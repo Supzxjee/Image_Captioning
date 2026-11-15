@@ -79,3 +79,8 @@ Exclude the 40 already reviewed images. Reuse v94 archived VALID beams. Screen f
 ### Broader VALID screening result
 
 912 images screened; 48 eligible pairs and 26 unique shortlisted images. Verified pair geometry and all JPEG hashes. Visual correspondence and caption salience remain to be judged before scoring. If fewer than 20 pass, report the yield before considering new cases. [Candidates](CIDER_ROI_COHORT_CANDIDATES.json).
+
+
+### Broader VALID visual review
+
+Assistant judged all 26 image overlays: 4 accept, 20 reject, 2 unclear. Most rejections are background/minor details or object mismatch. The proposed 20–30 case probe is not ready. User review pending. [Labels](CIDER_ROI_COHORT_ASSISTED_LABELS.json).

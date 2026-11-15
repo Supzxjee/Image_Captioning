@@ -1,0 +1,106 @@
+{
+  "78313": {
+    "label": "reject",
+    "note": "Bát nhỏ hòa vào bộ đồ gốm; khó coi là chi tiết cần bổ sung."
+  },
+  "74058": {
+    "label": "reject",
+    "note": "Xe hơi ở nền xa. Xe đạp và quán mới là nội dung chính."
+  },
+  "484978": {
+    "label": "reject",
+    "note": "Thìa rất nhỏ trên bàn, câu đã mô tả người và tách cà phê."
+  },
+  "299493": {
+    "label": "reject",
+    "note": "Xe tải chỉ lộ ở xa sau xe buýt chính."
+  },
+  "480122": {
+    "label": "accept",
+    "note": "Thấy lưng ghế ở ô xanh và bát chuối ở ô cam. Ghế làm rõ cách bố trí bàn ăn."
+  },
+  "160004": {
+    "label": "reject",
+    "note": "Xe hơi nhỏ phía sau, không đáng thêm vào caption xe buýt và tháp."
+  },
+  "213809": {
+    "label": "reject",
+    "note": "Ảnh ghép; thìa rất nhỏ và nằm ở khung khác với phần pizza trong ô cam."
+  },
+  "53952": {
+    "label": "reject",
+    "note": "Vật trong ô xanh bị che, chi tiết ly ngoài trọng tâm."
+  },
+  "133291": {
+    "label": "reject",
+    "note": "Chai nước phụ trên bàn; câu đã mô tả người, pizza và đồ uống."
+  },
+  "30347": {
+    "label": "reject",
+    "note": "Có ghế và laptop, nhưng ghế là vật nền trong cảnh mọi người dùng máy."
+  },
+  "137475": {
+    "label": "accept",
+    "note": "Thấy mặt bên và tay nắm tủ lạnh bên phải; ô cam là ghế ở tiền cảnh."
+  },
+  "498765": {
+    "label": "accept",
+    "note": "Màn hình TV phía trái rõ và khác chiếc sandwich trong tay."
+  },
+  "299039": {
+    "label": "reject",
+    "note": "Ô xanh chủ yếu bao nền và mép bánh; không thấy cốc đủ rõ."
+  },
+  "34167": {
+    "label": "reject",
+    "note": "Xe ở đường phía xa, không liên quan chủ đề cậu bé thả diều."
+  },
+  "140294": {
+    "label": "reject",
+    "note": "Thấy một phần ghế sát TV, nhưng đây là chi tiết phụ sau hai giường."
+  },
+  "15338": {
+    "label": "reject",
+    "note": "Xe hơi nhỏ ở nền; ô cam chỉ bao một phần nhỏ xe buýt."
+  },
+  "471521": {
+    "label": "reject",
+    "note": "Chỉ lộ một dải mặt tủ lạnh bên rìa; cảnh chính là chó và vali."
+  },
+  "183456": {
+    "label": "reject",
+    "note": "Ly nước nhỏ trong ảnh chụp bàn pizza; câu đã giữ nội dung chính."
+  },
+  "105177": {
+    "label": "unclear",
+    "note": "Ô xanh chỉ bao một dải đồ nội thất ở mép ảnh; chưa chắc đó là sofa."
+  },
+  "581081": {
+    "label": "reject",
+    "note": "Ô xanh chủ yếu là thân thùng xe ở bờ xa; cảnh chính là thuyền."
+  },
+  "571718": {
+    "label": "reject",
+    "note": "Không thấy ghế rõ trong ô xanh; ô cam đúng là chuối."
+  },
+  "456969": {
+    "label": "reject",
+    "note": "Ô xanh bao bát salad, không phải pizza."
+  },
+  "184994": {
+    "label": "reject",
+    "note": "Ô xanh bao các ghế tựa, không thấy sofa."
+  },
+  "302219": {
+    "label": "unclear",
+    "note": "Ô xanh bao một vật tối bị che sau các túi; khó xác nhận là vali."
+  },
+  "22420": {
+    "label": "reject",
+    "note": "Xe máy là hình in trên bìa sách."
+  },
+  "356349": {
+    "label": "accept",
+    "note": "Ô xanh là lưng ghế cạnh bàn, ô cam là lọ hoa; ghế bổ sung bối cảnh bàn ăn."
+  }
+}
