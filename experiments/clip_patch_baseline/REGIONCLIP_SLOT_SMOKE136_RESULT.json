@@ -1,0 +1,29 @@
+{
+  "source": "ducanh3/notebook7bc83c4c76/136",
+  "paired_sha256": "b2f185999077670a27c50305d6e128a182cd451b25bdb625fe7e21a2e9995533",
+  "device": "Tesla T4",
+  "image_ids": [
+    1282,
+    7125,
+    13763,
+    17181
+  ],
+  "branches": {
+    "clip": {
+      "parameters": 393216,
+      "initial_xe": 4.092479705810547,
+      "residual_gradient": 1.5448664426803589,
+      "projection_gradient": 0.022412732243537903,
+      "padded_values_invariant": true
+    },
+    "regionclip": {
+      "parameters": 524288,
+      "initial_xe": 4.092479705810547,
+      "residual_gradient": 1.589590311050415,
+      "projection_gradient": 0.041282277554273605,
+      "padded_values_invariant": true
+    }
+  },
+  "initial_logits_equal": true,
+  "synthetic_context_and_targets": true
+}

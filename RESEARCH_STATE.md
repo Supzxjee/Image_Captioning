@@ -1,6 +1,6 @@
 # Trạng thái nghiên cứu — đọc trước khi tiếp tục
 
-Cập nhật: 15/11/2026, giờ Việt Nam. File này là bản tóm tắt để tiếp tục công việc; protocol và artifacts được dẫn bên dưới mới là nguồn chi tiết. Không cần đọc toàn bộ lịch sử chat.
+Cập nhật: 16/11/2026, giờ Việt Nam. File này là bản tóm tắt để tiếp tục công việc; protocol và artifacts được dẫn bên dưới mới là nguồn chi tiết. Không cần đọc toàn bộ lịch sử chat.
 
 ## Mục tiêu và cách làm việc
 
@@ -10,7 +10,7 @@ Cập nhật: 15/11/2026, giờ Việt Nam. File này là bản tóm tắt để
 
 ## Hiện đang ở đâu
 
-- **Paired cache decoder smoke prepared.** [Notebook](experiments/clip_patch_baseline/REGIONCLIP_SLOT_SMOKE136_1GPU.ipynb). Exact v136 NPZ, four cached images, production prompt adapter and one decoder layer, synthetic context/targets, initialization/padding/gradient checks. Kaggle reached Config construction, which failed because the notebook omitted the dataclass decorator. Fixed and verified Config construction offline; GPU rerun and capacity-controlled XE pending.
+- **Paired cache decoder smoke complete.** User-reported Tesla T4 output on four v136 images; identical initial logits, padded-value invariance, nonzero residual and input projection gradients for both sources. Native projections differ by 131,072 parameters. Synthetic context and targets; no caption quality result. [Receipt](experiments/clip_patch_baseline/REGIONCLIP_SLOT_SMOKE136_RESULT.json). Matched XE design pending.
 
 - **Slot pairing CPU check complete (user-reported receipt).** 160 images, 523 aligned slots; raw pooled CLIP 768 and RegionCLIP 1024. [Receipt](experiments/clip_patch_baseline/REGIONCLIP_SLOT_PAIR160_RESULT.json). Paired NPZ output: `ducanh3/notebook7bc83c4c76/136` (user-confirmed version). NPZ not independently rehashed; full CLIP patch files were not hashed in the CPU check. Model-side smoke and XE pending.
 
