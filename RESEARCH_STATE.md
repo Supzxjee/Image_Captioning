@@ -10,7 +10,9 @@ Cập nhật: 13/11/2026, giờ Việt Nam. File này là bản tóm tắt để
 
 ## Hiện đang ở đâu
 
-- **Subject swap assisted review.** 12/32 provisional original-true/foil-false cases. Original match is visible via the orange box, so this review is not blind. User confirmation and model scoring pending. [Labels](experiments/clip_patch_baseline/RELATION_SUBJECT_SWAP_VALID_ASSISTED_LABELS.json).
+- **Subject swap VALID12 notebook ready.** User confirmed assisted labels in chat; exact v94 and v175. Paired relation phrase scores and beam top1. Static syntax and cohort checks pass. Kaggle runtime pending. [Notebook](experiments/clip_patch_baseline/RELATION_SUBJECT_SWAP_VALID12_1GPU.ipynb).
+
+- **Subject swap assisted review.** 12/32 provisional original-true/foil-false cases. Original match is visible via the orange box, so this review is not blind. User confirmed in chat. Model scoring pending. [Labels](experiments/clip_patch_baseline/RELATION_SUBJECT_SWAP_VALID_ASSISTED_LABELS.json).
 
 - **Subject swap VALID screening complete.** Exact v175: 398/5000 images and 1,561 candidate swaps. Prepared 32 blinded review cases across 32 of 39 candidate predicates. Human labels pending; no model scoring. [Manifest](experiments/clip_patch_baseline/RELATION_SUBJECT_SWAP_VALID_SCREEN_RESULT.json).
 
