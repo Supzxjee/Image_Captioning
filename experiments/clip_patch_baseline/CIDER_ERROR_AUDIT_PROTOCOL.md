@@ -27,3 +27,14 @@ Suggested next check: for the 15 low-score cases with missing content or wrong o
 ## Fifteen-case evidence trace
 
 Reuse the 15 low-score cases with a primary missing-content or wrong-object judgment. Inspect the exact v94 saved captions and reranker detection labels. A class label is evidence of a detection at image level, with instance identity and fitted boxes still to verify. Join the exact v175 prompt-link rows by VALID COCO ID. Absence of a linked slot does not imply absence of a visual ROI. No inference or training.
+
+### Prompt–ROI join complete
+
+[Extracted v175 rows](CIDER_ERROR_VALID15_PROMPT_LINKS.json); returned export SHA-256 `3d9f227b28123970db43c756850da5fbbd8ee0328cdb2581895c3032ba3bf75d`. The declared source digest matches the v175 pin. All 15 VALID IDs, object ROI bounds and relation endpoints verified. Fourteen images have no retained relation. The only two retained phrases are on image 29358 and refer to a donut, whose identity remains uncertain by inspection.
+
+- 239894 and 487438: teddy bear and bed appear in saved reranker detection labels respectively, but the matching prompt classes are absent. The export contains retained links, so it cannot distinguish missing UPT proposals from filtered links.
+- 436349: bus and truck both have slots; the review favors bus, while all five beams use truck.
+- 82174: two bird slots and two chair slots are present; none of the five beams expresses both pairs. Slot counts alone do not prove correct instance or relation use.
+- 72024 and 468858: boat and couch slots are present. A saved alternative mentions the omitted object, while the selected caption leaves it out.
+
+These are selected error cases. The metadata localizes failure modes without measuring causal prompt effects. Proposed next check: inspect raw UPT proposals and YOLO ROI rows on the teddy bear and bed cases, then test adding one verified object–ROI link at a time on the same frozen checkpoint if a usable ROI exists. Keep other inputs fixed and use the saved original beam/caption baseline. No new inference or training performed.
