@@ -1,0 +1,202 @@
+{
+  "331475": {
+    "error": "missing",
+    "alternative": "no",
+    "note": "Hai đĩa riêng, salad và bánh. Các câu khác vẫn gộp sai hoặc quá chung."
+  },
+  "317250": {
+    "error": "correct",
+    "alternative": "no",
+    "note": "Nhiều ô trên bãi cỏ cạnh mặt nước."
+  },
+  "379156": {
+    "error": "missing",
+    "alternative": "no",
+    "note": "Con vật giống cừu đang nằm. Các câu khác vẫn ghi ngồi hoặc đoán sai loài."
+  },
+  "171548": {
+    "error": "action",
+    "alternative": "yes",
+    "note": "Người đi trên hai xe máy riêng. Câu đứng bên đường tránh nói họ cùng ngồi trên một xe, nhưng vẫn thiếu xe."
+  },
+  "523315": {
+    "error": "correct",
+    "alternative": "no",
+    "note": "Gấu bông nâu trên giường."
+  },
+  "18073": {
+    "error": "action",
+    "alternative": "no",
+    "note": "Người ở ngoài biển dưới diều, có vẻ đang lướt ván diều. Các câu parasailing cũng thiếu căn cứ."
+  },
+  "72024": {
+    "error": "missing",
+    "alternative": "yes",
+    "note": "Có nhiều thuyền buồm. Câu có boats giữ được chi tiết chính."
+  },
+  "241888": {
+    "error": "object",
+    "alternative": "no",
+    "note": "Hai bồn cầu nhìn rõ, chưa thấy bồn rửa. Các ứng viên đều nói có bồn rửa."
+  },
+  "239894": {
+    "error": "object",
+    "alternative": "yes",
+    "note": "Vật đỏ là gấu bông ở sau lưng. Câu red object tránh nhầm là túi, dù vẫn chưa mô tả đúng cách mang."
+  },
+  "436349": {
+    "error": "object",
+    "alternative": "yes",
+    "note": "Các xe giống xe buýt. Câu nói đỗ cạnh nhau giảm chi tiết vị trí sai, nhưng vẫn gọi là trucks."
+  },
+  "206907": {
+    "error": "correct",
+    "alternative": "no",
+    "note": "Cầu thủ bóng chày đang chạy. Chi tiết chạy tới chốt hợp lý."
+  },
+  "90020": {
+    "error": "language",
+    "alternative": "yes",
+    "note": "Câu on a city street tự nhiên hơn sitting on the side of a street."
+  },
+  "58350": {
+    "error": "action",
+    "alternative": "yes",
+    "note": "Chỉ người phía trước đang ăn pizza. Câu một người ăn và người kia nhìn phù hợp hơn."
+  },
+  "337439": {
+    "error": "missing",
+    "alternative": "no",
+    "note": "Đồng hồ là một phần của mô hình quảng cáo hình bàn tay. Không câu nào mô tả được mô hình."
+  },
+  "128280": {
+    "error": "language",
+    "alternative": "yes",
+    "note": "Câu an orange in a bowl sửa mạo từ và hợp với vật đựng."
+  },
+  "76822": {
+    "error": "correct",
+    "alternative": "no",
+    "note": "Người trượt tuyết đang bật lên khỏi thành máng."
+  },
+  "275781": {
+    "error": "correct",
+    "alternative": "no",
+    "note": "Thấy người chụp ảnh trong gương và TV ở góc."
+  },
+  "62554": {
+    "error": "attribute",
+    "alternative": "yes",
+    "note": "Chỉ một đĩa bông cải nhìn rõ. Câu plates of food tránh gán bông cải cho nhiều đĩa."
+  },
+  "136915": {
+    "error": "missing",
+    "alternative": "yes",
+    "note": "Cây gậy trên tay người bên trái là chi tiết nổi bật. Câu có bat cụ thể hơn."
+  },
+  "29358": {
+    "error": "object",
+    "alternative": "no",
+    "note": "Món đang cắn có vẻ là đồ chiên dài, thiếu bằng chứng là hot dog. Mọi câu đều gọi hot dog."
+  },
+  "189936": {
+    "error": "correct",
+    "alternative": "no",
+    "note": "Người đeo cà vạt đứng trước đám đông."
+  },
+  "44699": {
+    "error": "correct",
+    "alternative": "no",
+    "note": "Đàn cừu trên bãi cỏ."
+  },
+  "444294": {
+    "error": "correct",
+    "alternative": "no",
+    "note": "Trẻ ngồi gần các máy tính; laptop cụ thể hơn nhưng câu cuối đã đúng ý."
+  },
+  "139749": {
+    "error": "missing",
+    "alternative": "yes",
+    "note": "Thiếu các ô màu treo trên trần. Câu colorful umbrellas ghi nhận chi tiết này, dù không nói rõ đang treo."
+  },
+  "487438": {
+    "error": "missing",
+    "alternative": "no",
+    "note": "Thiếu giường và giá sách. Ghế và vali có trong ảnh nhưng các câu khác cũng bỏ qua giường."
+  },
+  "14820": {
+    "error": "language",
+    "alternative": "yes",
+    "note": "Câu group of zebras sửa danh từ số nhiều và giữ nội dung."
+  },
+  "477172": {
+    "error": "correct",
+    "alternative": "no",
+    "note": "Người đeo ván trượt tuyết đang trên không."
+  },
+  "29504": {
+    "error": "correct",
+    "alternative": "no",
+    "note": "Hai hộp đồ ăn màu đen."
+  },
+  "422464": {
+    "error": "object",
+    "alternative": "no",
+    "note": "Vật nổi bật là nệm dựng nghiêng. Các câu không mô tả tư thế này."
+  },
+  "408201": {
+    "error": "correct",
+    "alternative": "no",
+    "note": "Nhóm người đứng gần nhau và cầm điện thoại."
+  },
+  "44250": {
+    "error": "action",
+    "alternative": "no",
+    "note": "Gấu lao đầu xuống nước từ mép đá. Các câu khác cũng bỏ qua chuyển động rõ nhất."
+  },
+  "201043": {
+    "error": "correct",
+    "alternative": "no",
+    "note": "Chợ có người và nhiều ô."
+  },
+  "232315": {
+    "error": "missing",
+    "alternative": "no",
+    "note": "Đây là chân con vật mang giày, chi tiết mà cả 5 câu đều bỏ qua."
+  },
+  "389308": {
+    "error": "object",
+    "alternative": "no",
+    "note": "Máy Wii, tay cầm và đĩa game đặt trên vải. Cả 5 câu đều hiểu sai cảnh chính."
+  },
+  "541898": {
+    "error": "unclear",
+    "alternative": "yes",
+    "note": "Thấy rõ một ly người phụ nữ đang cầm. Câu một ly bám ảnh hơn, còn bàn khó xác nhận."
+  },
+  "19306": {
+    "error": "language",
+    "alternative": "yes",
+    "note": "Câu street with a traffic light and trees tự nhiên và đúng cảnh hơn."
+  },
+  "468858": {
+    "error": "missing",
+    "alternative": "yes",
+    "note": "Câu có couch, chair và television mô tả nội thất đầy đủ hơn."
+  },
+  "414679": {
+    "error": "correct",
+    "alternative": "no",
+    "note": "Một bò nâu trắng nổi bật ở trước; phía sau có con khác."
+  },
+  "82174": {
+    "error": "missing",
+    "alternative": "no",
+    "note": "Có hai con công trên hai ghế. Không câu nào nhắc được cả hai."
+  },
+  "117064": {
+    "error": "attribute",
+    "alternative": "yes",
+    "note": "Không thấy rõ đường. Câu walking across a dirt field mô tả nền phù hợp hơn."
+  }
+}

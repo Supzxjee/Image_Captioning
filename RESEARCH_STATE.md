@@ -10,7 +10,7 @@ Cập nhật: 15/11/2026, giờ Việt Nam. File này là bản tóm tắt để
 
 ## Hiện đang ở đâu
 
-- **VALID CIDEr error audit page ready.** 30 images sampled from the bottom CIDEr decile and 10 from the remaining 4,500. SCST1500 v94 CPU recovery. Verified 5,000 final caption/beam matches, 40 exact JPEG hashes, and page JS syntax. Self-contained Downloads page cider_error_valid40_review.html. Human labels pending. [Manifest](experiments/clip_patch_baseline/CIDER_ERROR_VALID40_MANIFEST.json). [Protocol](experiments/clip_patch_baseline/CIDER_ERROR_AUDIT_PROTOCOL.md).
+- **VALID CIDEr error audit page ready.** 30 images sampled from the bottom CIDEr decile and 10 from the remaining 4,500. SCST1500 v94 CPU recovery. Verified 5,000 final caption/beam matches, 40 exact JPEG hashes, and page JS syntax. Self-contained Downloads page cider_error_valid40_review.html. Assistant reviewed 40/40; human verification pending. [Assistant labels](experiments/clip_patch_baseline/CIDER_ERROR_VALID40_ASSISTED_LABELS.json). [Manifest](experiments/clip_patch_baseline/CIDER_ERROR_VALID40_MANIFEST.json). [Protocol](experiments/clip_patch_baseline/CIDER_ERROR_AUDIT_PROTOCOL.md).
 
 - **Subject swap VALID12 complete.** v94 checkpoint, v175 prompt links. Original subject won 4/11 phrase comparisons and swapped subject won 7/11 (mean original minus swapped +0.002404). Beam top-1 changed on 1/12, retaining the action. Selected assisted cohort; no consistent preference for the original binding. [Result](experiments/clip_patch_baseline/RELATION_SUBJECT_SWAP_VALID12_RESULT.json). Save Version unreported.
 
