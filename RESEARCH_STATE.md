@@ -10,7 +10,7 @@ Cập nhật: 15/11/2026, giờ Việt Nam. File này là bản tóm tắt để
 
 ## Hiện đang ở đâu
 
-- **RegionCLIP fixed-box feasibility notebook prepared.** [Notebook](experiments/clip_patch_baseline/REGIONCLIP_FIXED_ROI_VALID2_1GPU.ipynb). Two known VALID images, 4 unchanged YOLO boxes, official RN50 feature extraction only. AST/cohort verified; legacy build and actual checkpoint layout unverified on Kaggle. No caption-side integration or training.
+- **RegionCLIP fixed-box V3 prepared.** [Notebook](experiments/clip_patch_baseline/REGIONCLIP_FIXED_ROI_VALID2_V3_1GPU.ipynb). V2 build passed but worker import stopped at Pillow Image.LINEAR. V3 replaces the legacy alias with Resampling.BILINEAR. Pinned source occurrence and syntax verified. Checkpoint loading and 4-vector extraction pending.
 
 - **Reference-first ROI screening complete.** 141 images, 2 eligible pairs, both exact repeats already rejected in assisted visual review (salad misclassified as pizza and a motorcycle printed on a book). 0 accepted; no v94 scoring or training. [Result](experiments/clip_patch_baseline/CIDER_ROI_REFERENCE_COHORT_RESULT.json).
 
