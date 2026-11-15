@@ -108,3 +108,5 @@ V4 extraction completed. [Result](REGIONCLIP_FIXED_ROI_VALID2_RESULT.json). Both
 ### RegionCLIP fixed-box cache benchmark
 
 Reuse the confirmed V4 RegionCLIP RN50 checkpoint digest and exact v175 prompt links. Select 128 TRAIN and 32 VALID images with existing object slots by fixed SHA ordering over split and COCO ID. Store one 1024-dimensional vector per slot in the original slot order and keep its YOLO index and normalized box. Use mounted COCO JPEGs and hash each consumed image. No detector regeneration, captioning, training or TEST. This small cache validates the larger extraction contract and estimates extraction cost; the future training cohort, projection and schedule are separate decisions.
+
+Cache benchmark complete. [Result](REGIONCLIP_SLOT_CACHE160_RESULT.json). Verified NPZ digest, split counts and 523 finite nonzero float32 vectors (1024 dimensions), 426 TRAIN and 97 VALID. 29.41 seconds for extraction and its image reads/writes, excluding setup and checkpoint load. Keep this cache for paired adapter plumbing. Not a representative timed full run or a caption quality result.
