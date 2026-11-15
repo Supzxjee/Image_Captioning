@@ -112,3 +112,7 @@ Reuse the confirmed V4 RegionCLIP RN50 checkpoint digest and exact v175 prompt l
 Cache benchmark complete. [Result](REGIONCLIP_SLOT_CACHE160_RESULT.json). Verified NPZ digest, split counts and 523 finite nonzero float32 vectors (1024 dimensions), 426 TRAIN and 97 VALID. 29.41 seconds for extraction and its image reads/writes, excluding setup and checkpoint load. Keep this cache for paired adapter plumbing. Not a representative timed full run or a caption quality result.
 
 User-confirmed cache output: `ducanh3/notebook7bc83c4c76/135`. Recover `region_features.npz` and `result.json` from this exact Save Version and verify the feature SHA against the audited result before reuse.
+
+### Paired slot input check
+
+Read exact v135 output and v175 links. Check VALID/TRAIN identity and slot order, shared normalized boxes and mask. Pool frozen raw CLIP patches using the same fractional box weights as semantic_data.box_weights. Preserve raw dimensions (768 and 1024). This validates packing only; the existing adapter actually pools post-alignment Vo. No model or XE in this CPU phase. CLIP ID files and receipts are checked against hashes; the four large patch arrays are read via memmap without scanning whole-file hashes in this check.
