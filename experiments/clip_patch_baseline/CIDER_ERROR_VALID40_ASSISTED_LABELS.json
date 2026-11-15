@@ -16,8 +16,8 @@
   },
   "171548": {
     "error": "action",
-    "alternative": "yes",
-    "note": "Người đi trên hai xe máy riêng. Câu đứng bên đường tránh nói họ cùng ngồi trên một xe, nhưng vẫn thiếu xe."
+    "alternative": "no",
+    "note": "Hai người ngồi trên hai xe máy riêng. Các câu khác chuyển thành đứng hoặc bỏ mất người đi xe."
   },
   "523315": {
     "error": "correct",
@@ -41,13 +41,13 @@
   },
   "239894": {
     "error": "object",
-    "alternative": "yes",
-    "note": "Vật đỏ là gấu bông ở sau lưng. Câu red object tránh nhầm là túi, dù vẫn chưa mô tả đúng cách mang."
+    "alternative": "no",
+    "note": "Vật đỏ là gấu bông mang sau lưng. Các câu khác vẫn ghi đang cầm vật đỏ."
   },
   "436349": {
     "error": "object",
-    "alternative": "yes",
-    "note": "Các xe giống xe buýt. Câu nói đỗ cạnh nhau giảm chi tiết vị trí sai, nhưng vẫn gọi là trucks."
+    "alternative": "no",
+    "note": "Các xe trông giống xe buýt. Mọi câu ứng viên đều gọi là trucks."
   },
   "206907": {
     "error": "correct",
@@ -132,7 +132,7 @@
   "477172": {
     "error": "correct",
     "alternative": "no",
-    "note": "Người đeo ván trượt tuyết đang trên không."
+    "note": "Người trượt tuyết đang bật lên giữa hai cờ. Câu cuối hợp ảnh."
   },
   "29504": {
     "error": "correct",
@@ -171,7 +171,7 @@
   },
   "541898": {
     "error": "unclear",
-    "alternative": "yes",
+    "alternative": "unclear",
     "note": "Thấy rõ một ly người phụ nữ đang cầm. Câu một ly bám ảnh hơn, còn bàn khó xác nhận."
   },
   "19306": {
