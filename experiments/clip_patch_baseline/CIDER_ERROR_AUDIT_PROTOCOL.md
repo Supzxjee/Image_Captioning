@@ -42,3 +42,7 @@ These are selected error cases. The metadata localizes failure modes without mea
 ### Two-case source check approved
 
 Read the exact detector and UPT prompt caches that fed v175. Export the source boxes and class evidence for COCO 239894 (teddy bear) and 487438 (bed), reconstructing detector ROI order with the historical confidence sort, clipping and cap. Compare the count and all retained v175 object ROI boxes. The frozen UPT cache exposes previously selected proposals, so an absent class can be attributed to absence in that cache, with raw UPT model output still unknown. No model execution or prompt injection in this phase.
+
+### Two-case source check complete
+
+[Export](CIDER_ERROR_TWO_SOURCE_BOXES_RESULT.json). Exact pinned source IDs and the two retained v175 records match. In both cases ROI 1 is a usable detector box by visual overlay. For COCO 239894, teddy bear confidence is 0.9260 and the cached UPT object list contains only person. For 487438, bed confidence is 0.8526 and the cached UPT list has suitcase and backpacks. The target class is absent from both cached UPT lists, so there is no same-class UPT–YOLO IoU to compute. Raw UPT output before cache selection is unknown. Proposed frozen two-image check: append only the verified detector-derived noun slot and compare the five original versus modified candidates. No inference has run for that intervention.
