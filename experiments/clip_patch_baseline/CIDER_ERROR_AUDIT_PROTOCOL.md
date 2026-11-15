@@ -50,3 +50,7 @@ Read the exact detector and UPT prompt caches that fed v175. Export the source b
 ### Frozen single-slot intervention approved
 
 Treat these two selected VALID images as a mechanism check. Replay exact v94 with pinned v175 links, embeddings and VALID patches. Append one noun prompt to the next empty object slot, using the verified YOLO rectangle for both normalized box and patch support. Keep every other packed slot, decoder, beam width and max length fixed. Compare all five captions and report target noun mentions, beam rank and any baseline replay differences. Historical reranker output is for context only. No reranking, training, reference CIDEr or TEST.
+
+### Frozen single-slot intervention result
+
+[Result](CIDER_OBJECT_SLOT_VALID2_RESULT.json). User ZIP SHA-256 `43cfe472185bb84099df7ed2faca42424d1e538734a6439adf33f6112c5eeff5`. Offline verification confirms both cases, checkpoint identity recorded in the export, verified ROI coordinates, and exact replay of the five archived beams per case. The added slot changes the five-beam list in both images and the top beam only for 239894. Target noun mentions remain 0/5 before and after on each image. The teddy bear case still says bag; the bed case keeps the same top beam and introduces bookshelf in one beam. This two-image probe does not estimate CIDEr, CHAIR, reranking utility or the direction of the target noun score. Defer a full fallback run. A follow-up, if justified, would compare teacher-forced target phrase margins under a fixed caption prefix using the same model and inputs.

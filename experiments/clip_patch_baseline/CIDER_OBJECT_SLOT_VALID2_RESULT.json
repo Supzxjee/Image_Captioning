@@ -1,0 +1,123 @@
+{
+  "split": "val",
+  "images": 2,
+  "checkpoint_sha256": "80e1280b9eef216c5db421a738c7a5e0550bb34b1a62a2a13b2c8e76d40b1a24",
+  "records": [
+    {
+      "coco_id": 239894,
+      "prompt": "a teddy bear",
+      "roi": {
+        "roi": 1,
+        "label": "teddy bear",
+        "confidence": 0.926,
+        "bbox": [
+          0.5461971830985916,
+          0.43859375,
+          0.793169014084507,
+          0.704875
+        ]
+      },
+      "archived_rerank": "a woman in a black outfit holding a red bag",
+      "archived_beams": [
+        "a woman in a black outfit holding a red bag",
+        "a woman in a black dress holding a red bag",
+        "a woman in a black outfit holding a red object",
+        "a woman in a black dress holding a red object",
+        "a woman in a black outfit holding a red bag and a red bag"
+      ],
+      "archived_beams_match": true,
+      "original": {
+        "captions": [
+          "a woman in a black outfit holding a red bag",
+          "a woman in a black dress holding a red bag",
+          "a woman in a black outfit holding a red object",
+          "a woman in a black dress holding a red object",
+          "a woman in a black outfit holding a red bag and a red bag"
+        ],
+        "target_ranks": [],
+        "scores": [
+          -8.0540771484375,
+          -8.17024040222168,
+          -8.393709182739258,
+          -8.465082168579102,
+          -13.312671661376953
+        ]
+      },
+      "added_slot": {
+        "captions": [
+          "a woman in a black dress and a red bag",
+          "a woman in a black outfit holding a red bag",
+          "a woman in a black dress holding a red bag",
+          "a woman in a black dress and a black bag",
+          "a woman in a black and white outfit holding a red bag"
+        ],
+        "target_ranks": [],
+        "scores": [
+          -9.154051780700684,
+          -9.156135559082031,
+          -9.256933212280273,
+          -9.617860794067383,
+          -11.05489730834961
+        ]
+      }
+    },
+    {
+      "coco_id": 487438,
+      "prompt": "a bed",
+      "roi": {
+        "roi": 1,
+        "label": "bed",
+        "confidence": 0.8526,
+        "bbox": [
+          0.160296875,
+          0.48352083333333334,
+          0.7308125000000001,
+          0.9886666666666667
+        ]
+      },
+      "archived_rerank": "a room filled with a chair and a suitcase",
+      "archived_beams": [
+        "a green chair sitting in a green room",
+        "a room filled with a chair and a suitcase",
+        "a room filled with a chair and a chair",
+        "a room with a desk and a chair",
+        "a room with a chair and a suitcase"
+      ],
+      "archived_beams_match": true,
+      "original": {
+        "captions": [
+          "a green chair sitting in a green room",
+          "a room filled with a chair and a suitcase",
+          "a room filled with a chair and a chair",
+          "a room with a desk and a chair",
+          "a room with a chair and a suitcase"
+        ],
+        "target_ranks": [],
+        "scores": [
+          -6.1558356285095215,
+          -6.228104591369629,
+          -6.464677333831787,
+          -6.765671253204346,
+          -6.935420989990234
+        ]
+      },
+      "added_slot": {
+        "captions": [
+          "a green chair sitting in a green room",
+          "a room with a desk and a chair",
+          "a room filled with a chair and a suitcase",
+          "a room filled with a chair and a chair",
+          "a room filled with a chair and a book shelf"
+        ],
+        "target_ranks": [],
+        "scores": [
+          -6.678593158721924,
+          -6.693262100219727,
+          -6.793254375457764,
+          -6.819429874420166,
+          -7.55142068862915
+        ]
+      }
+    }
+  ]
+}
