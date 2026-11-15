@@ -1,0 +1,268 @@
+[
+  {
+    "coco_id": 331475,
+    "target": "sandwich; salad served separately",
+    "observation": "Sandwich detected. Only one alternative names a bowl of salad; the visually important separate plating remains incorrect.",
+    "detected": {
+      "cup": 0.9379,
+      "potted plant": 0.9124,
+      "knife": 0.8494,
+      "sandwich": 0.803,
+      "dining table": 0.7816,
+      "bowl": 0.7526
+    },
+    "selected": "a white plate topped with a sandwich and a salad",
+    "beams": [
+      "a white plate topped with a sandwich and a salad",
+      "a white plate topped with a sandwich and a sandwich",
+      "a table topped with two plates of food",
+      "a white plate topped with a sandwich and a bowl of salad",
+      "a white plate topped with a sandwich next to a bowl of salad"
+    ]
+  },
+  {
+    "coco_id": 379156,
+    "target": "sheep-like animal lying down",
+    "observation": "Sheep detected. Generic animal or wrong species in beams; no lying description.",
+    "detected": {
+      "sheep": 0.9253
+    },
+    "selected": "a brown animal sitting on top of a grass covered hillside",
+    "beams": [
+      "a brown animal sitting on top of a grass covered field",
+      "a dog sitting on a rock in a field",
+      "a brown animal sitting on top of a grass covered hillside",
+      "a brown animal sitting on top of a rock",
+      "a brown bear sitting on top of a grass covered field"
+    ]
+  },
+  {
+    "coco_id": 72024,
+    "target": "sailboats",
+    "observation": "Boat detected. One beam mentions boats; selected caption only describes people in water.",
+    "detected": {
+      "boat": 0.8591,
+      "person": 0.6733
+    },
+    "selected": "a group of people in a body of water",
+    "beams": [
+      "a group of people standing on top of a body of water",
+      "a group of people in a body of water",
+      "a group of people in a body of water with boats",
+      "a group of people standing on a body of water",
+      "a group of people standing on top of a lake"
+    ]
+  },
+  {
+    "coco_id": 241888,
+    "target": "two toilets",
+    "observation": "Toilet detected. All beams also mention a sink, not visible in the review image.",
+    "detected": {
+      "toilet": 0.912,
+      "bottle": 0.7061
+    },
+    "selected": "a bathroom with a toilet and a sink",
+    "beams": [
+      "a bathroom with a toilet and a sink",
+      "a toilet and a sink in a room",
+      "a toilet and a sink in a bathroom",
+      "a bathroom that has a toilet and a sink",
+      "a bathroom with a toilet a sink and a mirror"
+    ]
+  },
+  {
+    "coco_id": 239894,
+    "target": "red teddy bear carried on back",
+    "observation": "Teddy bear detected alongside handbag. No beam names the bear.",
+    "detected": {
+      "person": 0.9387,
+      "teddy bear": 0.926,
+      "handbag": 0.5338
+    },
+    "selected": "a woman in a black outfit holding a red bag",
+    "beams": [
+      "a woman in a black outfit holding a red bag",
+      "a woman in a black dress holding a red bag",
+      "a woman in a black outfit holding a red object",
+      "a woman in a black dress holding a red object",
+      "a woman in a black outfit holding a red bag and a red bag"
+    ]
+  },
+  {
+    "coco_id": 436349,
+    "target": "vehicles resembling buses",
+    "observation": "Both bus and higher-scoring truck detected. All beams choose truck.",
+    "detected": {
+      "person": 0.8906,
+      "truck": 0.8428,
+      "bus": 0.8153
+    },
+    "selected": "a group of trucks parked next to a building",
+    "beams": [
+      "a group of trucks parked next to a building",
+      "a group of trucks parked in a parking lot",
+      "a group of trucks parked next to each other",
+      "a line of trucks parked in a parking lot",
+      "a line of trucks parked next to a building"
+    ]
+  },
+  {
+    "coco_id": 337439,
+    "target": "clock mounted as part of a hand-shaped display",
+    "observation": "No clock label in stored reranker evidence. Every beam mentions a clock, but none describes the hand-shaped display.",
+    "detected": {
+      "person": 0.9183,
+      "suitcase": 0.7135
+    },
+    "selected": "a clock sitting in the middle of a room",
+    "beams": [
+      "a clock sitting in the middle of a building",
+      "a woman standing in a room with a clock",
+      "a blue and white clock sitting in a room",
+      "a clock sitting in the middle of a room",
+      "a woman standing in a room with a clock in the center"
+    ]
+  },
+  {
+    "coco_id": 136915,
+    "target": "bat held by the man",
+    "observation": "No bat label in stored reranker evidence. Two alternative beams mention the bat.",
+    "detected": {
+      "person": 0.9431,
+      "tie": 0.7868,
+      "bottle": 0.5935
+    },
+    "selected": "a couple of men standing next to each other in a room",
+    "beams": [
+      "a couple of men standing next to each other",
+      "a couple of men standing in a room",
+      "a couple of men standing next to each other in a room",
+      "two men in a room with a bat",
+      "a couple of men standing next to each other holding a bat"
+    ]
+  },
+  {
+    "coco_id": 29358,
+    "target": "long fried-looking food of uncertain type",
+    "observation": "Donut detected. Every beam claims hot dog; the exact food type is uncertain.",
+    "detected": {
+      "donut": 0.876,
+      "person": 0.8171
+    },
+    "selected": "a man taking a bite of a hot dog",
+    "beams": [
+      "a man eating a hot dog on a bun",
+      "a man taking a bite of a hot dog",
+      "a man eating a hot dog in front of a river",
+      "a man eating a hot dog in a park",
+      "a man eating a hot dog in front of a man"
+    ]
+  },
+  {
+    "coco_id": 139749,
+    "target": "colorful umbrellas hung from ceiling",
+    "observation": "Umbrella detected. Two beams mention umbrellas; neither specifies that they hang from the ceiling.",
+    "detected": {
+      "person": 0.9144,
+      "umbrella": 0.8706,
+      "handbag": 0.6203,
+      "suitcase": 0.5154
+    },
+    "selected": "a group of people walking through an airport",
+    "beams": [
+      "a group of people walking through an airport",
+      "a group of people standing in an airport",
+      "a group of people standing in a terminal",
+      "a group of people standing in a building with umbrellas",
+      "a group of people standing in a building with a bunch of colorful umbrellas"
+    ]
+  },
+  {
+    "coco_id": 487438,
+    "target": "bed in cluttered bedroom",
+    "observation": "Bed detected. No beam mentions the bed.",
+    "detected": {
+      "suitcase": 0.9427,
+      "bed": 0.8526,
+      "bottle": 0.5731,
+      "cup": 0.5666,
+      "tv": 0.5355
+    },
+    "selected": "a room filled with a chair and a suitcase",
+    "beams": [
+      "a green chair sitting in a green room",
+      "a room filled with a chair and a suitcase",
+      "a room filled with a chair and a chair",
+      "a room with a desk and a chair",
+      "a room with a chair and a suitcase"
+    ]
+  },
+  {
+    "coco_id": 422464,
+    "target": "mattress propped upright",
+    "observation": "Coarse bed label detected. No beam describes the upright mattress.",
+    "detected": {
+      "bed": 0.7946
+    },
+    "selected": "a bed in a living room next to a window",
+    "beams": [
+      "a bed in a living room next to a window",
+      "a living room with a bed and a window",
+      "a living room with a couch and a window",
+      "a living room with a bed and a couch",
+      "a bed in a living room with a window"
+    ]
+  },
+  {
+    "coco_id": 389308,
+    "target": "Wii console and accessories",
+    "observation": "Detected labels include book, remote and laptop. All beams describe books; no Wii or game console.",
+    "detected": {
+      "book": 0.9576,
+      "remote": 0.9541,
+      "laptop": 0.5187
+    },
+    "selected": "a white table topped with a white book and a white box of items",
+    "beams": [
+      "a table topped with a book and a book",
+      "a table topped with a white book and a book",
+      "a white table topped with a white book and a white book",
+      "a white table topped with a white book and a white box",
+      "a white table topped with a white book and a white box of items"
+    ]
+  },
+  {
+    "coco_id": 468858,
+    "target": "couch alongside TV and chair",
+    "observation": "Couch detected. Three alternative beams mention a couch; the selected caption omits it.",
+    "detected": {
+      "couch": 0.9085,
+      "tv": 0.654
+    },
+    "selected": "a living room with a television and a chair",
+    "beams": [
+      "a living room with a television and a chair",
+      "a living room with a television and a couch",
+      "a living room with a tv and a chair",
+      "a living room with a couch and a television",
+      "a living room with a couch a chair and a television"
+    ]
+  },
+  {
+    "coco_id": 82174,
+    "target": "two peacocks on separate chairs",
+    "observation": "Bird and chair detected. No beam names two birds or two chairs.",
+    "detected": {
+      "bird": 0.9382,
+      "chair": 0.9258
+    },
+    "selected": "a bird sitting on a chair next to a street",
+    "beams": [
+      "a bird sitting on top of a white chair",
+      "a bird sitting on top of a chair",
+      "a bird sitting on a chair next to a street",
+      "a large white bird sitting on top of a white chair",
+      "a bird sitting on top of a chair next to a street"
+    ]
+  }
+]

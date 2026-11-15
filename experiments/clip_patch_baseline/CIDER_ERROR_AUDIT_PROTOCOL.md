@@ -23,3 +23,7 @@ The user returned a 40-case export on 2026-11-15 (export SHA-256 `b11c0db2aeba1c
 Among the 21 low-score cases with an identified error, 8 had a clearly better saved alternative and 13 did not. In the comparison group the corresponding counts were 3 and 2 among 5 identified errors. The alternative can be an improvement while still incomplete. The groups were sampled by score and the comparison sample is small.
 
 Suggested next check: for the 15 low-score cases with missing content or wrong objects, trace the visually verified object through detector output, prompt/ROI linkage, and all five beams. Use this to distinguish missing upstream evidence from available evidence the generator fails to verbalize. No model run or modification in this analysis.
+
+## Fifteen-case evidence trace
+
+Reuse the 15 low-score cases with a primary missing-content or wrong-object judgment. Inspect the exact v94 saved captions and reranker detection labels. A class label is evidence of a detection at image level, with instance identity and fitted boxes still to verify. Join the exact v175 prompt-link rows by VALID COCO ID. Absence of a linked slot does not imply absence of a visual ROI. No inference or training.
