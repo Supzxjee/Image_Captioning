@@ -46,3 +46,7 @@ Read the exact detector and UPT prompt caches that fed v175. Export the source b
 ### Two-case source check complete
 
 [Export](CIDER_ERROR_TWO_SOURCE_BOXES_RESULT.json). Exact pinned source IDs and the two retained v175 records match. In both cases ROI 1 is a usable detector box by visual overlay. For COCO 239894, teddy bear confidence is 0.9260 and the cached UPT object list contains only person. For 487438, bed confidence is 0.8526 and the cached UPT list has suitcase and backpacks. The target class is absent from both cached UPT lists, so there is no same-class UPT–YOLO IoU to compute. Raw UPT output before cache selection is unknown. Proposed frozen two-image check: append only the verified detector-derived noun slot and compare the five original versus modified candidates. No inference has run for that intervention.
+
+### Frozen single-slot intervention approved
+
+Treat these two selected VALID images as a mechanism check. Replay exact v94 with pinned v175 links, embeddings and VALID patches. Append one noun prompt to the next empty object slot, using the verified YOLO rectangle for both normalized box and patch support. Keep every other packed slot, decoder, beam width and max length fixed. Compare all five captions and report target noun mentions, beam rank and any baseline replay differences. Historical reranker output is for context only. No reranking, training, reference CIDEr or TEST.
