@@ -10,6 +10,8 @@ Cập nhật: 15/11/2026, giờ Việt Nam. File này là bản tóm tắt để
 
 ## Hiện đang ở đâu
 
+- **Reference-first ROI screening notebook ready.** Retained 141/912 saved v94 VALID images with a target absent from all five beams and mentioned in at least two references. Existing ROI and foil rules kept. [CPU notebook](experiments/clip_patch_baseline/CIDER_ROI_REFERENCE_COHORT_PREP_CPU.ipynb). Syntax and embedded cohort checked; Kaggle screening and visual review pending.
+
 - **Broader same-text ROI screening complete.** 912 images screened, 48 eligible pairs, 26 distinct shortlisted images. Geometry and 26 JPEG hashes verified. Self-contained Downloads review page cider_roi_cohort_review.html. Assisted review 4 accept, 20 reject, 2 unclear; below 20-case target. [Assisted labels](experiments/clip_patch_baseline/CIDER_ROI_COHORT_ASSISTED_LABELS.json). User verification and v94 scoring pending. [Candidates](experiments/clip_patch_baseline/CIDER_ROI_COHORT_CANDIDATES.json).
 
 - **Fixed-prefix object phrase probe complete.** v94 VALID2; summed target-minus-foil margin improves +3.6321 (teddy bear) and +0.8029 (bed), both remaining negative. Prior beam output omitted both targets. [Result](experiments/clip_patch_baseline/CIDER_OBJECT_PHRASE_VALID2_RESULT.json). Same-text ROI control complete: matched minus wrong margin +3.5831/+0.8153, wrong minus original +0.0489/-0.0123. Exact prior replay. [Result](experiments/clip_patch_baseline/CIDER_OBJECT_ROI_CONTROL_VALID2_RESULT.json). Recommend broader matched controls before model changes.

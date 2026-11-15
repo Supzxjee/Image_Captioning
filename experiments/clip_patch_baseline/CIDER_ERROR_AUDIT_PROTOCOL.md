@@ -84,3 +84,7 @@ Exclude the 40 already reviewed images. Reuse v94 archived VALID beams. Screen f
 ### Broader VALID visual review
 
 Assistant judged all 26 image overlays: 4 accept, 20 reject, 2 unclear. Most rejections are background/minor details or object mismatch. The proposed 20–30 case probe is not ready. User review pending. [Labels](CIDER_ROI_COHORT_ASSISTED_LABELS.json).
+
+### Reference-based candidate screening approved
+
+Before checking geometry, retain only target labels mentioned in at least two separate saved VALID reference captions. The reference payload SHA-256 is `219cbe174a62e04b75c4f110242e12c51edb32a4c42210713db93b330340e75e`. This retains 141 of the earlier 912 images. Preserve the existing detector, ROI and prompt pins, foil eligibility and geometry thresholds. Report mention counts for shortlisted nouns. References select the diagnostic sample offline. Visual checks and later scoring must use the verified image/ROI, with references excluded from model inputs. No GPU in screening.
