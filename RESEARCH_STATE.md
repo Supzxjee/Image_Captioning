@@ -10,6 +10,8 @@ Cập nhật: 16/11/2026, giờ Việt Nam. File này là bản tóm tắt để
 
 ## Hiện đang ở đâu
 
+- **XE10k output preservation notebook ready.** Pins user-supplied v151 (ducanh3) and v226 (ducanh2403), supports mounted output or same-owner API. Checks XE10 history, VALID1000 and per-image CIDEr before private Dataset creation. Actual arm read from progress. [Notebook](experiments/clip_patch_baseline/SAVE_REGIONCLIP_XE10K_V151_V226_CPU.ipynb). AST checked; upload pending.
+
 - **RegionCLIP 10k XE trained 10 epochs per user log.** Epoch 10 VALID CIDEr 1.0474095160, train NLL 1.9926694346, 15,640 updates. CHAIR failed after training (missing pattern). [CPU recovery](experiments/clip_patch_baseline/REGIONCLIP_XE10K_CHAIR_RECOVERY_CPU.ipynb) prepared from saved best captions and history; actual best epoch, CHAIR and output availability pending. Training notebook now preflights pinned Pattern.
 
 - **10k XE input preflight complete per user receipt.** Exact output `ducanh3/notebook7bc83c4c76/150`; 10k TRAIN/1k VALID, 32,832 slots, 286 no-slot rows. Six NPY SHA declarations; text vector SHA matches v146. [Receipt](experiments/clip_patch_baseline/REGIONCLIP_XE10K_INPUTS_RESULT.json). Actual packed payloads rehashed in the new training notebook. [Matched XE notebook](experiments/clip_patch_baseline/REGIONCLIP_MATCHED_XE10K_1GPU.ipynb) prepared: 10 epochs per arm, single GPU, global32 micro8, VALID CIDEr selection and CHAIR on best. Mounted v150 input supported by default after cross-notebook API access failed; exact payload hashes unchanged. Static syntax and mounted search mock passed; full model and scoring runtime pending.
