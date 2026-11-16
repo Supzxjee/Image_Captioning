@@ -1,0 +1,21 @@
+{
+  "status": "COMPLETE",
+  "images": {
+    "train": 10000,
+    "val": 1000
+  },
+  "slots": 32832,
+  "empty_images": 286,
+  "versions": [
+    "ducanh3/notebook7bc83c4c76/149",
+    "ducanh3/notebook7bc83c4c76/146"
+  ],
+  "files_sha256": {
+    "boxes.npy": "43a2cb1e8b6cc7011767daad9853a032aa1956b2bcd78b4be257dabe457fc7de",
+    "coco_ids.npy": "47fb70688d40e62b9ae08639f4d1d492ee0d28a8e697020cae7df3a9b80144b1",
+    "region_vectors.npy": "1dfa7c3d99079ee8841f6572302ca2d47e08121621432ea89f654796dad4b144",
+    "text_id.npy": "fedb194993958ea46eb61d6fb713d2e99bb02e9d58487eb41b103d7a2ecad10b",
+    "text_vectors.npy": "1d549de3016c662281b853da695d4e378042e162ca81154826a9d387969884b5",
+    "valid.npy": "6d35255c2411c189799f5d12a7a55a512f415316cfbb3e8ea92047103a66e176"
+  }
+}

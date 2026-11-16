@@ -10,7 +10,7 @@ Cập nhật: 16/11/2026, giờ Việt Nam. File này là bản tóm tắt để
 
 ## Hiện đang ở đâu
 
-- **10k XE input preflight notebook ready.** [Notebook](experiments/clip_patch_baseline/REGIONCLIP_XE10K_INPUTS_CPU.ipynb). Exact v149/v146 retrieval, 22 shard and v175 slot checks, shared cohort order, unpacked NPY cache. Static syntax verified; user CPU run and paired training pending.
+- **10k XE input preflight complete per user receipt.** Exact output `ducanh3/notebook7bc83c4c76/150`; 10k TRAIN/1k VALID, 32,832 slots, 286 no-slot rows. Six NPY SHA declarations; text vector SHA matches v146. [Receipt](experiments/clip_patch_baseline/REGIONCLIP_XE10K_INPUTS_RESULT.json). Actual packed payloads need rehashing at reuse. Paired XE pending.
 
 - **RegionCLIP cache10k extraction complete.** 10,000 TRAIN / 1,000 VALID, 22 shards, 32,832 regions, 286 no-slot images, 1,480.44 seconds. Cohort SHA, receipt and progress verified; shard payloads absent from review ZIP. User-confirmed cache output: `ducanh3/notebook7bc83c4c76/149` (same notebook as v146). Matched XE pending. [Result](experiments/clip_patch_baseline/REGIONCLIP_SLOT_CACHE10K_RESULT.json).
 

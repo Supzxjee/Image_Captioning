@@ -158,3 +158,5 @@ User confirmed Save Version 149 for cache10k. Use exact output `ducanh3/notebook
 ### 10k XE input preflight
 
 Recover exact v149/v146 via the user-run Kaggle API. Verify audited receipt and each shard hash, then join slot identity, YOLO box, text and order to pinned v175. Pack visual vectors, text indices and active-slot mask in the cohort order with no-slot images intact. This artifact is the RegionCLIP side input for XE, not a training run.
+
+Input prep complete per [receipt](REGIONCLIP_XE10K_INPUTS_RESULT.json), from user-confirmed `ducanh3/notebook7bc83c4c76/150`. Offline checks confirm split/slot counts and matching v146 text SHA. Recover six NPY files from v150 and check all SHA values before paired XE. No training yet.
