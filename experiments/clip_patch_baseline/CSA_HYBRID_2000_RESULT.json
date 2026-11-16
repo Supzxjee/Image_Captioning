@@ -1,0 +1,215 @@
+{
+  "run_status": {
+    "complete": true,
+    "updates_requested": 2000,
+    "test_used": false,
+    "SCST": false,
+    "reranking": false
+  },
+  "phase_timing": {
+    "setup_seconds": 24.569759349999998,
+    "prepare_seconds": 71.403684879,
+    "preflight_seconds": 56.945468721
+  },
+  "checkpoint_receipt": {
+    "sha256": "03e8986496d81bb616218757ff66d22b7f50a78e0e065f6797a62b036ad1cabe",
+    "updates": 2000,
+    "epoch": 1,
+    "phase": "train",
+    "training_log_sha256": "074e7c6350db89473ede72eca3ac963c73dc8870ca8f70d60bbc0a2c0f9caf58"
+  },
+  "training_complete": {
+    "status": "CSA_HYBRID_2000_COMPLETE",
+    "epoch": 1,
+    "batch_cursor": 2000,
+    "phase": "train",
+    "updates": 2000,
+    "caption_events": 64000,
+    "history": [],
+    "best_epoch": null,
+    "best_CIDEr": null,
+    "epoch_nll_sum": 4100349.2552490234,
+    "epoch_tokens": 734558,
+    "test_used": false
+  },
+  "progress": {
+    "epoch": 1,
+    "batch_cursor": 2000,
+    "phase": "train",
+    "updates": 2000,
+    "caption_events": 64000,
+    "history": [],
+    "best_epoch": null,
+    "best_CIDEr": null,
+    "epoch_nll_sum": 4100349.2552490234,
+    "epoch_tokens": 734558
+  },
+  "throughput": {
+    "updates": 2000,
+    "caption_events": 64000,
+    "intervals": [
+      {
+        "end_update": 100,
+        "seconds": 23.880757388999996,
+        "seconds_per_update": 0.23880757388999996
+      },
+      {
+        "end_update": 200,
+        "seconds": 27.467312624000044,
+        "seconds_per_update": 0.27467312624000045
+      },
+      {
+        "end_update": 300,
+        "seconds": 25.090822103999983,
+        "seconds_per_update": 0.2509082210399998
+      },
+      {
+        "end_update": 400,
+        "seconds": 23.50868409200001,
+        "seconds_per_update": 0.2350868409200001
+      },
+      {
+        "end_update": 500,
+        "seconds": 19.88542117099996,
+        "seconds_per_update": 0.19885421170999962
+      },
+      {
+        "end_update": 600,
+        "seconds": 21.36676386900001,
+        "seconds_per_update": 0.2136676386900001
+      },
+      {
+        "end_update": 700,
+        "seconds": 19.06061433000002,
+        "seconds_per_update": 0.19060614330000022
+      },
+      {
+        "end_update": 800,
+        "seconds": 17.820498415999964,
+        "seconds_per_update": 0.17820498415999964
+      },
+      {
+        "end_update": 900,
+        "seconds": 17.662103853000076,
+        "seconds_per_update": 0.17662103853000077
+      },
+      {
+        "end_update": 1000,
+        "seconds": 16.83165871499989,
+        "seconds_per_update": 0.1683165871499989
+      },
+      {
+        "end_update": 1100,
+        "seconds": 19.256924661000085,
+        "seconds_per_update": 0.19256924661000085
+      },
+      {
+        "end_update": 1200,
+        "seconds": 16.20407292599998,
+        "seconds_per_update": 0.1620407292599998
+      },
+      {
+        "end_update": 1300,
+        "seconds": 15.646618302999968,
+        "seconds_per_update": 0.15646618302999968
+      },
+      {
+        "end_update": 1400,
+        "seconds": 15.931489422000027,
+        "seconds_per_update": 0.15931489422000028
+      },
+      {
+        "end_update": 1500,
+        "seconds": 15.433919360999994,
+        "seconds_per_update": 0.15433919360999993
+      },
+      {
+        "end_update": 1600,
+        "seconds": 17.670119204000002,
+        "seconds_per_update": 0.17670119204
+      },
+      {
+        "end_update": 1700,
+        "seconds": 15.074956067000016,
+        "seconds_per_update": 0.15074956067000017
+      },
+      {
+        "end_update": 1800,
+        "seconds": 15.486199253999985,
+        "seconds_per_update": 0.15486199253999985
+      },
+      {
+        "end_update": 1900,
+        "seconds": 15.024173549000011,
+        "seconds_per_update": 0.1502417354900001
+      },
+      {
+        "end_update": 2000,
+        "seconds": 15.211058389999948,
+        "seconds_per_update": 0.15211058389999949
+      }
+    ],
+    "stable_seconds_per_update": 0.1840175843742105
+  },
+  "train_timing_rank0": {
+    "seconds": 376.83636667,
+    "updates": 2000,
+    "encoded_rows": 7995,
+    "peak_allocated_GiB": 1.4722976684570312
+  },
+  "train_timing_rank1": {
+    "seconds": 376.797150637,
+    "updates": 2000,
+    "encoded_rows": 7998,
+    "peak_allocated_GiB": 1.481553077697754
+  },
+  "train_log_last": {
+    "epoch": 1,
+    "updates": 2000,
+    "batch_cursor": 2000,
+    "caption_events": 64000,
+    "NLL": 4.938101093420822,
+    "lr": 1.8384415584415583e-05,
+    "grad_norm": 3.0986759662628174,
+    "seconds": 381.21425547300004,
+    "train_seconds": 373.5141677
+  },
+  "train_only_projection_seconds": 3259.135436851642,
+  "preflight_rank0": {
+    "passed": true,
+    "rank": 0,
+    "initial_tensor_sha256": "407696b4c212b3c4f2f3b009f6c64f992d786d6bf9bcd82e07cef49666871c60",
+    "discarded_benchmark_updates": 64,
+    "causal": true,
+    "ordinary_DDP_gradient_parity": true,
+    "beam_score_rescore": true,
+    "forced20token_decode": true,
+    "full_IO_step_median_seconds": 0.30977902450001693,
+    "full_IO_step_p90_seconds": 0.46772887029998184,
+    "mean_encoded_images_local": 3.984375,
+    "decode_images": 24,
+    "decode_seconds": 1.6779456399999617,
+    "peak_allocated_GiB": 1.3886642456054688,
+    "gradient_guard_peak_GiB": 1.7549185752868652,
+    "limits": "TRAIN-only sampled full-loader preflight; forcedEOS-suppressed beam timing copy, not captions/VALID quality/billing.64updates discarded, mainworker recreated fresh."
+  },
+  "preflight_rank1": {
+    "passed": true,
+    "rank": 1,
+    "initial_tensor_sha256": "407696b4c212b3c4f2f3b009f6c64f992d786d6bf9bcd82e07cef49666871c60",
+    "discarded_benchmark_updates": 64,
+    "causal": true,
+    "ordinary_DDP_gradient_parity": true,
+    "beam_score_rescore": true,
+    "forced20token_decode": true,
+    "full_IO_step_median_seconds": 0.31028010300002506,
+    "full_IO_step_p90_seconds": 0.4667401544999792,
+    "mean_encoded_images_local": 4.0,
+    "decode_images": 24,
+    "decode_seconds": 1.6139625719999344,
+    "peak_allocated_GiB": 1.4374194145202637,
+    "gradient_guard_peak_GiB": 1.343510627746582,
+    "limits": "TRAIN-only sampled full-loader preflight; forcedEOS-suppressed beam timing copy, not captions/VALID quality/billing.64updates discarded, mainworker recreated fresh."
+  },
+  "zip_sha256": "f88e327f028de405f78047e63dbf5cae5e5adf5618c206eb89b394a0205e93c9"
+}
