@@ -37,6 +37,7 @@ def distributed(cfg,guard=False):
     torch.backends.cuda.matmul.allow_tf32=False;torch.backends.cudnn.allow_tf32=False
     started=time.monotonic();deadline=started+cfg['worker_seconds']
     hybrid=cfg.get('hybrid_sharing',False)
+    profile=cfg.get('profile_epoch',False)
     epochs=1 if hybrid else 10
     pilot_updates=cfg.get('pilot_updates')
     global_batch=cfg.get('pilot_batch_size',32)
@@ -118,7 +119,7 @@ def distributed(cfg,guard=False):
             remaining_steps=epochs*STEPS-state['updates'];remaining_epochs=epochs+1-state['epoch']
             projected=current_epoch_projection(state,step_est,val_est)
             if rank==0:save(out/'measured_projection.json',dict(remaining_steps=remaining_steps,remaining_epochs=remaining_epochs,seconds=projected,available=deadline-time.monotonic(),not_guaranteed=True,scope='remaining current epoch + VALID + reserve'))
-            if projected>deadline-time.monotonic():checkpoint();raise TimeoutError('Measured current epoch+VALID projection exceeds cap; initial checkpoint saved, resume explicitly')
+            if not profile and projected>deadline-time.monotonic():checkpoint();raise TimeoutError('Measured current epoch+VALID projection exceeds cap; initial checkpoint saved, resume explicitly')
         def validate(epoch):
             validation_start=time.monotonic()
             wrapped.eval();folder=out/'evaluations'/f'epoch_{epoch:02d}';folder.mkdir(parents=True,exist_ok=True);rows=[];nll_sum=0.;tokens=0
@@ -148,6 +149,7 @@ def distributed(cfg,guard=False):
             save(folder/f'worker{rank}.json',worker)
             dist.barrier(device_ids=[rank]);point=[None]
             if rank==0:
+                scoring_start=time.monotonic()
                 from pycocoevalcap.tokenizer.ptbtokenizer import PTBTokenizer
                 from pycocoevalcap.cider.cider import Cider
                 all_rows=read(folder/'val_rank0.json')+read(folder/'val_rank1.json')
@@ -158,6 +160,8 @@ def distributed(cfg,guard=False):
                 save(folder/'cider_per_image.json',[dict(coco_id=i,CIDEr=float(s)) for i,s in zip(gts,per)])
                 workers=[read(folder/f'worker{r}.json') for r in (0,1)]
                 value=dict(epoch=epoch,CIDEr=float(cider),mean_words=float(np.mean([len(r['caption'].split()) for r in all_rows])),short_le2=sum(len(r['caption'].split())<=2 for r in all_rows),NLL=sum(w['NLL_sum'] for w in workers)/sum(w['NLL_tokens'] for w in workers),TRAIN_online_NLL=state['epoch_nll_sum']/state['epoch_tokens'])
+                if profile:
+                    value.update(CIDEr_scoring_seconds=time.monotonic()-scoring_start,validation_wall_seconds=time.monotonic()-validation_start)
                 if cfg.get('semantic_strength_gate'):
                     from memory_fusion import merge_gate_stats
                     value['semantic_strength']=merge_gate_stats([w['semantic_strength_accumulator'] for w in workers])
@@ -174,11 +178,22 @@ def distributed(cfg,guard=False):
                     batch_type=SharedCaptionBatches
                     order=order[:pilot_updates*global_batch]
                 it=iter(loader(batch_type(cfg['stage'],order,rank,cursor,batch_size=global_batch)))
+                wait_seconds=0.
+                samples=[]
+                window_start=time.monotonic()
                 stop_reserve=120 if pilot_updates is not None else 900
                 for offset in range(cursor,pilot_updates if pilot_updates is not None else STEPS):
                     stop=torch.tensor(int(time.monotonic()>deadline-stop_reserve),device=device);dist.all_reduce(stop,op=dist.ReduceOp.MAX)
                     if int(stop):checkpoint();raise TimeoutError('Saved before parent/worker cap')
-                    x,seq,ev=next(it);x=x.to(device,non_blocking=True);seq=seq.to(device,non_blocking=True)
+                    fetch_start=time.monotonic()
+                    x,seq,ev=next(it)
+                    wait_seconds+=time.monotonic()-fetch_start
+                    events=None
+                    if profile and (offset+1)%20==0:
+                        events=[torch.cuda.Event(enable_timing=True) for _ in range(3)]
+                        events[0].record()
+                    x=x.to(device,non_blocking=True);seq=seq.to(device,non_blocking=True)
+                    if events is not None:events[1].record()
                     lr=learning_rate(state['updates']*batch_scale+1)
                     for g in optimizer.param_groups:g['lr']=lr
                     share=hybrid and (offset+1)*global_batch<=len(order)
@@ -194,16 +209,30 @@ def distributed(cfg,guard=False):
                     accelerator.backward(loss);norm=accelerator.clip_grad_norm_(model.parameters(),1)
                     if not torch.isfinite(norm):raise ValueError('Nonfinite gradient norm')
                     optimizer.step()
+                    if events is not None:
+                        events[2].record()
+                        samples.append(events)
                     total=nll.detach().double();dist.all_reduce(total)
                     state.update(batch_cursor=offset+1,updates=state['updates']+1,caption_events=(epoch-1)*TRAIN_EVENTS+min((offset+1)*global_batch,TRAIN_EVENTS),epoch_nll_sum=state['epoch_nll_sum']+float(total),epoch_tokens=state['epoch_tokens']+int(count[0]))
                     if ((offset+1)*batch_scale)%100==0 or offset+1==STEPS:
+                        if profile:
+                            if samples:samples[-1][2].synchronize()
+                            timing=dict(end_update=offset+1,wall_seconds=time.monotonic()-window_start,
+                                        batch_wait_seconds=wait_seconds,sampled_steps=len(samples),
+                                        patch_token_copy_ms=sum(a.elapsed_time(b) for a,b,c in samples),
+                                        training_step_ms=sum(b.elapsed_time(c) for a,b,c in samples))
+                            with (out/f'train_profile_rank{rank}.jsonl').open('a',encoding='utf-8') as f:
+                                f.write(json.dumps(timing)+'\n')
+                            wait_seconds=0.
+                            samples.clear()
+                            window_start=time.monotonic()
                         if rank==0:
                             report=dict(epoch=epoch,updates=state['updates'],batch_cursor=offset+1,caption_events=state['caption_events'],NLL=float(total)/int(count[0]),lr=lr,grad_norm=float(norm),seconds=time.monotonic()-started,train_seconds=time.monotonic()-train_start)
                             with (out/'training.jsonl').open('a',encoding='utf-8') as f:f.write(json.dumps(report)+'\n')
                             print('FULL XE',report,flush=True)
                         completed=offset+1-cursor
                         if completed==100:speed_start=time.monotonic()
-                        if pilot_updates is None and completed>=200 and speed_start is not None:
+                        if not profile and pilot_updates is None and completed>=200 and speed_start is not None:
                             measured=(time.monotonic()-speed_start)/(completed-100);remaining=current_epoch_projection(state,measured,val_est)
                             stop=torch.tensor(int(remaining>deadline-time.monotonic()),device=device);dist.all_reduce(stop,op=dist.ReduceOp.MAX)
                             if int(stop):checkpoint();raise TimeoutError('Current epoch+VALID projection exceeds remaining cap; saved for explicitresume')
