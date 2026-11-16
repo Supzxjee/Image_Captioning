@@ -160,3 +160,7 @@ User confirmed Save Version 149 for cache10k. Use exact output `ducanh3/notebook
 Recover exact v149/v146 via the user-run Kaggle API. Verify audited receipt and each shard hash, then join slot identity, YOLO box, text and order to pinned v175. Pack visual vectors, text indices and active-slot mask in the cohort order with no-slot images intact. This artifact is the RegionCLIP side input for XE, not a training run.
 
 Input prep complete per [receipt](REGIONCLIP_XE10K_INPUTS_RESULT.json), from user-confirmed `ducanh3/notebook7bc83c4c76/150`. Offline checks confirm split/slot counts and matching v146 text SHA. Recover six NPY files from v150 and check all SHA values before paired XE. No training yet.
+
+### Fresh XE 10k implementation
+
+Use one notebook with CLIP or REGIONCLIP arm, independently run with the same seed, caption events, batch size and learning-rate schedule for 10 epochs. CLIP uses the existing CSAPatchCaptioner object path. REGIONCLIP projects the RN50 visual and text vectors separately to 512, gates the visual component by (1+cosine)/2, keeps the original box coordinates consumed by the adapter and uses the identical v175 support mask. Keep the common visual and relation paths unchanged. Use same full TRAIN vocabulary and only selected TRAIN caption supervision. Evaluate beam5 top-1 on the same VALID1000 each epoch, select maximum CIDEr with earliest ties, and evaluate CHAIR on best captions. Native capacity differs; compare whole recipes. User runs each arm separately.
