@@ -10,7 +10,7 @@ Cập nhật: 16/11/2026, giờ Việt Nam. File này là bản tóm tắt để
 
 ## Hiện đang ở đâu
 
-- **RegionCLIP object text cache V2 complete.** 80 unique v175 object phrases, normalized float32 1024-dimensional vectors. SHA hashes match the export; shared RN50 checkpoint identity and coverage of all 523 cached slots verified. [Receipt](experiments/clip_patch_baseline/REGIONCLIP_OBJECT_TEXT_CACHE_V2_RESULT.json). Text output v146 on ducanh3/notebook7bc83c4c76. Cached cosine smoke on two verified box pairs; [Result](experiments/clip_patch_baseline/REGIONCLIP_FIXED_ROI_COSINE_VALID2_RESULT.json). No CLIP comparison or matched XE yet.
+- **RegionCLIP object text cache V2 complete.** 80 unique v175 object phrases, normalized float32 1024-dimensional vectors. SHA hashes match the export; shared RN50 checkpoint identity and coverage of all 523 cached slots verified. [Receipt](experiments/clip_patch_baseline/REGIONCLIP_OBJECT_TEXT_CACHE_V2_RESULT.json). Text output v146 on ducanh3/notebook7bc83c4c76. Cached cosine smoke on two verified box pairs; [Result](experiments/clip_patch_baseline/REGIONCLIP_FIXED_ROI_COSINE_VALID2_RESULT.json). [CLIP crop comparator notebook](experiments/clip_patch_baseline/REGIONCLIP_VS_CLIP_SAME_BOXES_VALID2.ipynb) ready, target and distractor boxes match V4. AST verified; Kaggle comparison and matched XE pending.
 
 - **Paired cache decoder smoke complete.** User-reported Tesla T4 output on four v136 images; identical initial logits, padded-value invariance, nonzero residual and input projection gradients for both sources. Native projections differ by 131,072 parameters. Synthetic context and targets; no caption quality result. [Receipt](experiments/clip_patch_baseline/REGIONCLIP_SLOT_SMOKE136_RESULT.json). Matched XE design pending.
 

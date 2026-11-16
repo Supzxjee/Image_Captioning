@@ -136,3 +136,7 @@ V1 passed build and strict language state loading, then failed before its first 
 V2 text cache completed. [Receipt](REGIONCLIP_OBJECT_TEXT_CACHE_V2_RESULT.json). Verified both output hashes, 80 unique phrases and coverage of all 523 v135 slots, same RN50 checkpoint and v175 source, finite normalized float32 vectors with maximum unit-norm deviation 1.39e-07. Save Version unreported. No image–text ranking or caption quality inference yet.
 
 User confirmed text output `ducanh3/notebook7bc83c4c76/146`. [Cached cosine smoke](REGIONCLIP_FIXED_ROI_COSINE_VALID2_RESULT.json) uses exact texts on the two original verified ROI pairs. Correct-minus-distractor margins +0.0334 and +0.0092. No new model execution, no CLIP baseline and no caption metrics.
+
+### Same-box RegionCLIP vs CLIP crop sanity check
+
+Use the two verified V4 ROI pairs and their original exact prompts. Compare cached RegionCLIP margins with OpenAI CLIP ViT-B/16 on exact image crops, using the native image/text similarity of each encoder. Report within-image rank and margin. Raw pooled CLIP patch hidden states do not form the native CLIP similarity space, so the crop comparator is a standalone check, separate from the deployed decoder. Two selected cases, no training or TEST.
