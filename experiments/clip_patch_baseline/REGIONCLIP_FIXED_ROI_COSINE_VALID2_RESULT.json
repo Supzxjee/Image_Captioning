@@ -1,0 +1,20 @@
+{
+  "text_source": "ducanh3/notebook7bc83c4c76/146",
+  "region_checkpoint_sha256": "afbc58d7d4bd96e2b10cc0d1928a912ed519c3b3215df7e5f3285e4bb09c7c58",
+  "records": [
+    {
+      "coco_id": 239894,
+      "prompt": "a teddy bear",
+      "matched": 0.08968288194702365,
+      "distractor": 0.05626174883934446,
+      "margin": 0.033421133107679184
+    },
+    {
+      "coco_id": 487438,
+      "prompt": "a bed",
+      "matched": 0.14632310692927192,
+      "distractor": 0.13712127191048532,
+      "margin": 0.009201835018786603
+    }
+  ]
+}

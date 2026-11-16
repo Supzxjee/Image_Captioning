@@ -134,3 +134,5 @@ Encode each exact object-slot text in v175 TRAIN/VALID once using the official R
 V1 passed build and strict language state loading, then failed before its first batch because the upstream tokenizer singleton is commented out. V2 explicitly initializes the bundled SimpleTokenizer before tokenization. No embedded cache yet.
 
 V2 text cache completed. [Receipt](REGIONCLIP_OBJECT_TEXT_CACHE_V2_RESULT.json). Verified both output hashes, 80 unique phrases and coverage of all 523 v135 slots, same RN50 checkpoint and v175 source, finite normalized float32 vectors with maximum unit-norm deviation 1.39e-07. Save Version unreported. No image–text ranking or caption quality inference yet.
+
+User confirmed text output `ducanh3/notebook7bc83c4c76/146`. [Cached cosine smoke](REGIONCLIP_FIXED_ROI_COSINE_VALID2_RESULT.json) uses exact texts on the two original verified ROI pairs. Correct-minus-distractor margins +0.0334 and +0.0092. No new model execution, no CLIP baseline and no caption metrics.
