@@ -10,6 +10,8 @@ Cập nhật: 16/11/2026, giờ Việt Nam. File này là bản tóm tắt để
 
 ## Hiện đang ở đâu
 
+- **RegionCLIP matched XE10k comparison complete on VALID1000.** RegionCLIP best8 CIDEr 106.49, CHAIRs 7.60%, CHAIRi 5.59%; CLIP best10 102.48, 5.50%, 4.12%. RegionCLIP +4.00 CIDEr and +2.10 pp CHAIRs. One seed, VALID checkpoint selection, recipe-level comparison. No TEST. [Result](experiments/clip_patch_baseline/REGIONCLIP_XE10K_MATCHED_RESULT.json).
+
 - **XE10k output preservation notebook ready.** Pins user-supplied v151 (ducanh3) and v226 (ducanh2403), supports mounted output or same-owner API. Checks XE10 history, VALID1000 and per-image CIDEr before private Dataset creation. Actual arm read from progress. [Notebook](experiments/clip_patch_baseline/SAVE_REGIONCLIP_XE10K_V151_V226_CPU.ipynb). AST checked; upload pending.
 
 - **RegionCLIP 10k XE trained 10 epochs per user log.** Epoch 10 VALID CIDEr 1.0474095160, train NLL 1.9926694346, 15,640 updates. CHAIR failed after training (missing pattern). [CPU recovery](experiments/clip_patch_baseline/REGIONCLIP_XE10K_CHAIR_RECOVERY_CPU.ipynb) prepared from saved best captions and history; actual best epoch, CHAIR and output availability pending. Training notebook now preflights pinned Pattern.

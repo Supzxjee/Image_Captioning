@@ -1,0 +1,190 @@
+{
+  "split": "val",
+  "images": 1000,
+  "arms": {
+    "regionclip": {
+      "status": "COMPLETE",
+      "arm": "REGIONCLIP",
+      "best": {
+        "epoch": 8,
+        "CIDEr": 1.0648546648518782,
+        "train_nll": 2.113410426820458,
+        "updates": 12512
+      },
+      "history": [
+        {
+          "epoch": 1,
+          "CIDEr": 0.5125083266878819,
+          "train_nll": 4.990824891030269,
+          "updates": 1564
+        },
+        {
+          "epoch": 2,
+          "CIDEr": 0.816113982465506,
+          "train_nll": 3.3165499937123264,
+          "updates": 3128
+        },
+        {
+          "epoch": 3,
+          "CIDEr": 0.9056074990115512,
+          "train_nll": 2.9061037206168128,
+          "updates": 4692
+        },
+        {
+          "epoch": 4,
+          "CIDEr": 0.9686813768732968,
+          "train_nll": 2.666891308926988,
+          "updates": 6256
+        },
+        {
+          "epoch": 5,
+          "CIDEr": 1.0086550858657466,
+          "train_nll": 2.4874664262195614,
+          "updates": 7820
+        },
+        {
+          "epoch": 6,
+          "CIDEr": 1.0358044950213254,
+          "train_nll": 2.336474287188539,
+          "updates": 9384
+        },
+        {
+          "epoch": 7,
+          "CIDEr": 1.040567025129194,
+          "train_nll": 2.211733969203772,
+          "updates": 10948
+        },
+        {
+          "epoch": 8,
+          "CIDEr": 1.0648546648518782,
+          "train_nll": 2.113410426820458,
+          "updates": 12512
+        },
+        {
+          "epoch": 9,
+          "CIDEr": 1.047204742783234,
+          "train_nll": 2.039426295507332,
+          "updates": 14076
+        },
+        {
+          "epoch": 10,
+          "CIDEr": 1.0474095160457064,
+          "train_nll": 1.9926694346254854,
+          "updates": 15640
+        }
+      ],
+      "counts": {
+        "images": 1000,
+        "hallucinated_captions": 76,
+        "hallucinated_mentions": 85,
+        "object_mentions": 1520,
+        "recalled_unique": 1276,
+        "reference_unique": 3129
+      },
+      "CHAIRs": 0.076,
+      "CHAIRi": 0.05592105263157895,
+      "Recall": 0.40779801853627357,
+      "review_sha256": "63d38272fbe0b4dd7004bc453203a91da2067a1ca0904a46dfc788ed2c2fdf15"
+    },
+    "clip": {
+      "status": "COMPLETE",
+      "arm": "CLIP",
+      "best": {
+        "epoch": 10,
+        "CIDEr": 1.024839968556526,
+        "train_nll": 2.0818810092842317,
+        "updates": 15640
+      },
+      "history": [
+        {
+          "epoch": 1,
+          "CIDEr": 0.45186745491281893,
+          "train_nll": 5.026879086917969,
+          "updates": 1564
+        },
+        {
+          "epoch": 2,
+          "CIDEr": 0.7668262350999915,
+          "train_nll": 3.3655057991344064,
+          "updates": 3128
+        },
+        {
+          "epoch": 3,
+          "CIDEr": 0.840141461953665,
+          "train_nll": 2.971304930152481,
+          "updates": 4692
+        },
+        {
+          "epoch": 4,
+          "CIDEr": 0.9027520048709904,
+          "train_nll": 2.7443152975961334,
+          "updates": 6256
+        },
+        {
+          "epoch": 5,
+          "CIDEr": 0.9437332066119896,
+          "train_nll": 2.565223014888677,
+          "updates": 7820
+        },
+        {
+          "epoch": 6,
+          "CIDEr": 0.9832313787967453,
+          "train_nll": 2.4145433377737953,
+          "updates": 9384
+        },
+        {
+          "epoch": 7,
+          "CIDEr": 1.0002012307039145,
+          "train_nll": 2.2938426382954384,
+          "updates": 10948
+        },
+        {
+          "epoch": 8,
+          "CIDEr": 1.0040552173375603,
+          "train_nll": 2.1976717022211867,
+          "updates": 12512
+        },
+        {
+          "epoch": 9,
+          "CIDEr": 1.0193080050459682,
+          "train_nll": 2.127694189041095,
+          "updates": 14076
+        },
+        {
+          "epoch": 10,
+          "CIDEr": 1.024839968556526,
+          "train_nll": 2.0818810092842317,
+          "updates": 15640
+        }
+      ],
+      "counts": {
+        "images": 1000,
+        "hallucinated_captions": 55,
+        "hallucinated_mentions": 61,
+        "object_mentions": 1479,
+        "recalled_unique": 1221,
+        "reference_unique": 3129
+      },
+      "CHAIRs": 0.055,
+      "CHAIRi": 0.041244083840432724,
+      "Recall": 0.39022051773729627,
+      "review_sha256": "ace5f9c14e068c7110bd6e1bbed6ff55c6dbc8a9769d3d3d795accf87ac6cfb7"
+    }
+  },
+  "paired": {
+    "CIDEr_delta_points": 4.001469629535242,
+    "CIDEr_CI95_points": [
+      0.7096462404964793,
+      7.153921385932786
+    ],
+    "CHAIRs_delta_pp": 2.1,
+    "CHAIRs_CI95_pp": [
+      0.6,
+      3.6
+    ],
+    "introduced": 43,
+    "removed": 22,
+    "bootstrap_samples": 2000,
+    "seed": 42
+  }
+}
