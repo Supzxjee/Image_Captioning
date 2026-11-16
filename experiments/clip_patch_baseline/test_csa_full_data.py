@@ -76,12 +76,23 @@ class Checks(TestCase):
                       'context.events(data,events,device)','current_epoch_projection(state,measured,val_est)',
                       "optimizer.load_state_dict(ck['optimizer'])","rng_by_rank",'mean_words','short_le2'):
             self.assertIn(value,source)
-        self.assertNotIn('image_plan',source);self.assertNotIn('SharedCaptionBatches',source)
+        self.assertNotIn('image_plan',source)
         self.assertNotIn('DDP(',source);self.assertNotIn('remaining=(10*STEPS',source)
         call=next(n for n in ast.walk(tree) if isinstance(n,ast.Call) and isinstance(n.func,ast.Name) and n.func.id=='Accelerator')
         self.assertEqual(ast.literal_eval(next(k.value for k in call.keywords if k.arg=='mixed_precision')),'no')
         ast.parse((HERE/'csa_full_runtime.py').read_text(encoding='utf-8'))
         ast.parse((HERE/'score_csa_full.py').read_text(encoding='utf-8'))
+
+    def test_batch64_has_32_caption_events_per_rank(self):
+        events=np.arange(128)%27
+        for rank in (0,1):
+            with patch.object(base,'FeatureReader',Reader):
+                ds=d.SharedCaptionBatches('unused',events,rank=rank,cursor=1,batch_size=64)
+                patches,seq,ids=ds[0]
+                expected=events[64+32*rank:96+32*rank]
+                np.testing.assert_array_equal(ids,expected)
+                np.testing.assert_array_equal(seq[:,1],ds.reader.data['sequences'][expected,1])
+                self.assertEqual(len(patches),len(set(ds.reader.data['caption_image'][expected])))
 
 
 if __name__=='__main__':main(verbosity=2)

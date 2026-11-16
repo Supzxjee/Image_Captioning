@@ -20,7 +20,9 @@ class SharedCaptionBatches(base.CaptionBatches):
     def __getitem__(self,item):
         if self.reader is None:self.reader=base.FeatureReader(self.root)
         start=(item+self.cursor)*self.batch_size;events=self.events[start:start+self.batch_size]
-        if self.rank is not None:events=events[self.rank*16:(self.rank+1)*16]
+        if self.rank is not None:
+            local_size=self.batch_size//2
+            events=events[self.rank*local_size:(self.rank+1)*local_size]
         if not len(events):raise ValueError('Empty distributed batch')
         data=self.reader.data;first,_=image_plan(data['caption_image'],events,True)
         images=data['caption_image'][events[first]]

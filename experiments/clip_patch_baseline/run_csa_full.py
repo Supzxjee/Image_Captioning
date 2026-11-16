@@ -12,7 +12,7 @@ import numpy as np
 from real_bank_data import read,save,sha
 from full_data import prepare,load_stage,CaptionBatches,ImageBatches,loader,learning_rate,validate_state,STEPS,TRAIN_EVENTS,TRAIN_IMAGES,VALID_IMAGES
 
-from csa_full_data import HybridCaptionBatches,order_for_epoch,current_epoch_projection
+from csa_full_data import HybridCaptionBatches,SharedCaptionBatches,order_for_epoch,current_epoch_projection
 
 def atomic(path,value):
     temp=path.with_suffix('.tmp');save(temp,value);os.replace(temp,path)
@@ -39,7 +39,11 @@ def distributed(cfg,guard=False):
     hybrid=cfg.get('hybrid_sharing',False)
     epochs=1 if hybrid else 10
     pilot_updates=cfg.get('pilot_updates')
-    if pilot_updates is not None and (not hybrid or type(pilot_updates) is not int or not 0<pilot_updates<STEPS or cfg.get('resume_root')):
+    global_batch=cfg.get('pilot_batch_size',32)
+    if global_batch not in (32,64) or (global_batch==64 and pilot_updates is None):
+        raise ValueError('Batch 64 is available only for the bounded throughput comparison')
+    batch_scale=global_batch//32
+    if pilot_updates is not None and (not hybrid or type(pilot_updates) is not int or not 0<pilot_updates*batch_scale<STEPS or cfg.get('resume_root')):
         raise ValueError('A bounded throughput pilot requires a fresh hybrid run')
     try:
         if accelerate.__version__!='1.15.0' or accelerator.num_processes!=2 or accelerator.distributed_type!=DistributedType.MULTI_GPU or accelerator.gradient_accumulation_steps!=1 or accelerator.mixed_precision!='no':raise ValueError('NeedAccelerate1.15/twoGPU/FP32/accum1')
@@ -65,6 +69,8 @@ def distributed(cfg,guard=False):
             identity.update(schema='csa_hybrid_epoch1_v1',epochs=epochs,sharing='full_global32_only',feature_storage='mounted_h5')
         if pilot_updates is not None:
             identity.update(schema='csa_hybrid_throughput_v1',pilot_updates=pilot_updates)
+            if global_batch==64:
+                identity.update(global_batch=global_batch,lr_index='caption_exposure')
         optimizer=accelerator.prepare_optimizer(torch.optim.Adam(model.parameters(),lr=8e-6,betas=(.9,.99),eps=1e-8,weight_decay=0))
         state=dict(epoch=1,batch_cursor=0,phase='train',updates=0,caption_events=0,history=[],best_epoch=None,best_CIDEr=None,epoch_nll_sum=0.,epoch_tokens=0)
         random.seed(42+rank);np.random.seed(42+rank);torch.manual_seed(4242+rank);torch.cuda.manual_seed(4242+rank)
@@ -94,7 +100,11 @@ def distributed(cfg,guard=False):
             del ck;dist.barrier(device_ids=[rank])
         if rank==0:save(out/'identity.json',identity)
         def checkpoint(promote=False):
-            validate_state(state)
+            if global_batch==32:
+                validate_state(state)
+            elif (state['epoch']!=1 or state['phase']!='train' or state['updates']!=state['batch_cursor']
+                  or state['caption_events']!=global_batch*state['updates'] or state['history']):
+                raise ValueError('Batch 64 pilot checkpoint exposure mismatch')
             rng=dict(python=random.getstate(),numpy=np.random.get_state(),torch=torch.get_rng_state(),cuda=torch.cuda.get_rng_state(device));all_rng=[None,None];dist.all_gather_object(all_rng,rng)
             if rank==0:
                 temp=out/'checkpoint.tmp';torch.save(dict(model=model.state_dict(),optimizer=optimizer.state_dict(),state=state,identity=identity,rng_by_rank=all_rng),temp);os.replace(temp,out/'checkpoint.bin')
@@ -160,15 +170,20 @@ def distributed(cfg,guard=False):
                 train_start=time.monotonic()
                 encoded_rows=0
                 batch_type=HybridCaptionBatches if hybrid else CaptionBatches
-                it=iter(loader(batch_type(cfg['stage'],order,rank,cursor)))
+                if global_batch==64:
+                    batch_type=SharedCaptionBatches
+                    order=order[:pilot_updates*global_batch]
+                it=iter(loader(batch_type(cfg['stage'],order,rank,cursor,batch_size=global_batch)))
                 stop_reserve=120 if pilot_updates is not None else 900
                 for offset in range(cursor,pilot_updates if pilot_updates is not None else STEPS):
                     stop=torch.tensor(int(time.monotonic()>deadline-stop_reserve),device=device);dist.all_reduce(stop,op=dist.ReduceOp.MAX)
                     if int(stop):checkpoint();raise TimeoutError('Saved before parent/worker cap')
                     x,seq,ev=next(it);x=x.to(device,non_blocking=True);seq=seq.to(device,non_blocking=True)
-                    lr=learning_rate(state['updates']+1)
+                    lr=learning_rate(state['updates']*batch_scale+1)
                     for g in optimizer.param_groups:g['lr']=lr
-                    share=hybrid and (offset+1)*32<=len(order)
+                    share=hybrid and (offset+1)*global_batch<=len(order)
+                    if pilot_updates is not None and len(ev)!=global_batch//2:
+                        raise ValueError('Incomplete rank-local training batch')
                     if hybrid and not share:
                         expected_tail=16 if rank==0 else 11
                         if len(x)!=expected_tail or len(ev)!=expected_tail:raise ValueError('Expected ordinary global tail27 split 16+11')
@@ -180,8 +195,8 @@ def distributed(cfg,guard=False):
                     if not torch.isfinite(norm):raise ValueError('Nonfinite gradient norm')
                     optimizer.step()
                     total=nll.detach().double();dist.all_reduce(total)
-                    state.update(batch_cursor=offset+1,updates=state['updates']+1,caption_events=(epoch-1)*TRAIN_EVENTS+min((offset+1)*32,TRAIN_EVENTS),epoch_nll_sum=state['epoch_nll_sum']+float(total),epoch_tokens=state['epoch_tokens']+int(count[0]))
-                    if (offset+1)%100==0 or offset+1==STEPS:
+                    state.update(batch_cursor=offset+1,updates=state['updates']+1,caption_events=(epoch-1)*TRAIN_EVENTS+min((offset+1)*global_batch,TRAIN_EVENTS),epoch_nll_sum=state['epoch_nll_sum']+float(total),epoch_tokens=state['epoch_tokens']+int(count[0]))
+                    if ((offset+1)*batch_scale)%100==0 or offset+1==STEPS:
                         if rank==0:
                             report=dict(epoch=epoch,updates=state['updates'],batch_cursor=offset+1,caption_events=state['caption_events'],NLL=float(total)/int(count[0]),lr=lr,grad_norm=float(norm),seconds=time.monotonic()-started,train_seconds=time.monotonic()-train_start)
                             with (out/'training.jsonl').open('a',encoding='utf-8') as f:f.write(json.dumps(report)+'\n')
@@ -192,9 +207,9 @@ def distributed(cfg,guard=False):
                             measured=(time.monotonic()-speed_start)/(completed-100);remaining=current_epoch_projection(state,measured,val_est)
                             stop=torch.tensor(int(remaining>deadline-time.monotonic()),device=device);dist.all_reduce(stop,op=dist.ReduceOp.MAX)
                             if int(stop):checkpoint();raise TimeoutError('Current epoch+VALID projection exceeds remaining cap; saved for explicitresume')
-                    if state['updates']%500==0 or state['updates']==pilot_updates:checkpoint()
+                    if (state['updates']*batch_scale)%500==0 or state['updates']==pilot_updates:checkpoint()
                 if pilot_updates is not None:
-                    if state['updates']!=pilot_updates or state['caption_events']!=32*pilot_updates:
+                    if state['updates']!=pilot_updates or state['caption_events']!=global_batch*pilot_updates:
                         raise ValueError('Incorrect bounded training exposure')
                     del it
                     timing=dict(seconds=time.monotonic()-train_start,updates=pilot_updates,encoded_rows=encoded_rows,
