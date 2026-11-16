@@ -10,6 +10,8 @@ Cập nhật: 16/11/2026, giờ Việt Nam. File này là bản tóm tắt để
 
 ## Hiện đang ở đâu
 
+- **Full-run throughput probe prepared.** [Notebook](experiments/clip_patch_baseline/CSA_FULL_RUNNER_THROUGHPUT_2GPU.ipynb). Full metadata with selected actual patch reads only; FP32 T4x2, same grouped events ordinary/shared, first32 and exact tail27 gradients, VALID64 timing. AST and event shapes checked; runtime pending. Timing does not include sustained full-cache streaming.
+
 - **RegionCLIP matched XE10k comparison complete on VALID1000.** RegionCLIP best8 CIDEr 106.49, CHAIRs 7.60%, CHAIRi 5.59%; CLIP best10 102.48, 5.50%, 4.12%. RegionCLIP +4.00 CIDEr and +2.10 pp CHAIRs. One seed, VALID checkpoint selection, recipe-level comparison. No TEST. [Result](experiments/clip_patch_baseline/REGIONCLIP_XE10K_MATCHED_RESULT.json).
 
 - **XE10k output preservation notebook ready.** Pins user-supplied v151 (ducanh3) and v226 (ducanh2403), supports mounted output or same-owner API. Checks XE10 history, VALID1000 and per-image CIDEr before private Dataset creation. Actual arm read from progress. [Notebook](experiments/clip_patch_baseline/SAVE_REGIONCLIP_XE10K_V151_V226_CPU.ipynb). AST checked; upload pending.

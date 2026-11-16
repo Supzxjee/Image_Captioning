@@ -180,3 +180,7 @@ Treat the user's chat confirmation as acceptance of the 12 eligible assisted lab
 ### Subject swap VALID12 result (2026-11-15)
 
 [Kaggle result](RELATION_SUBJECT_SWAP_VALID12_RESULT.json). Verified checkpoint digest in the result, cohort IDs and paired aggregates offline. The mean original-minus-swapped phrase log probability was +0.002404 (4 original wins, 7 swapped wins, 0 ties). Case 15 was excluded from phrase scoring for a noncanonical template. Beam top-1 changed only on case 9, with both captions mentioning eating pizza. The 12 selected, assisted cases do not support a consistent preference for the original subject binding. Keep this as a diagnostic and defer training on these swaps. Save Version unreported.
+
+### Full-run throughput probe approved
+
+Use the existing full Karpathy metadata and semantic setup and read only selected patch rows. Use two T4 and FP32. Time ordinary and shared encoder paths on the same image-grouped caption events, two passes each in ABBA order, and record the historical epoch-1 tail27 gradient agreement without suppressing a failure. Decode 64 VALID examples for measured cost only. Record metadata/selective-stage times separately. No full training, score or checkpoint promotion. The measured timings use only selected local patches and cannot establish sustained storage throughput or epoch quality.
