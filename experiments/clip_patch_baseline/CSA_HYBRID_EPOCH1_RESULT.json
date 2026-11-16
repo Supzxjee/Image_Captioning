@@ -1,0 +1,93 @@
+{
+  "run_status": {
+    "complete": false,
+    "epochs_requested": 1,
+    "test_used": false,
+    "SCST": false,
+    "reranking": false
+  },
+  "progress": {
+    "epoch": 1,
+    "batch_cursor": 0,
+    "phase": "train",
+    "updates": 0,
+    "caption_events": 0,
+    "history": [],
+    "best_epoch": null,
+    "best_CIDEr": null,
+    "epoch_nll_sum": 0.0,
+    "epoch_tokens": 0
+  },
+  "checkpoint_receipt": {
+    "sha256": "dc2bacd91ce5f5e21538ef5b1ad1dfd9d534fe07f72d4957efb90c94613cd24b",
+    "updates": 0,
+    "epoch": 1,
+    "phase": "train",
+    "training_log_sha256": null
+  },
+  "phase_timing": {
+    "setup_seconds": 45.34391099199999,
+    "prepare_seconds": 70.41522164200003,
+    "preflight_seconds": 54.86231386500003
+  },
+  "measured_projection": {
+    "remaining_steps": 17711,
+    "remaining_epochs": 1,
+    "seconds": 12234.481478603064,
+    "available": 10501.962587902999,
+    "not_guaranteed": true,
+    "scope": "remaining current epoch + VALID + reserve"
+  },
+  "preflight_rank0": {
+    "passed": true,
+    "rank": 0,
+    "initial_tensor_sha256": "407696b4c212b3c4f2f3b009f6c64f992d786d6bf9bcd82e07cef49666871c60",
+    "discarded_benchmark_updates": 64,
+    "causal": true,
+    "ordinary_DDP_gradient_parity": true,
+    "beam_score_rescore": true,
+    "forced20token_decode": true,
+    "full_IO_step_median_seconds": 0.3008223894999844,
+    "full_IO_step_p90_seconds": 0.45865849039999496,
+    "mean_encoded_images_local": 3.984375,
+    "decode_images": 24,
+    "decode_seconds": 1.6542990990000135,
+    "peak_allocated_GiB": 1.3886642456054688,
+    "gradient_guard_peak_GiB": 1.7549185752868652,
+    "limits": "TRAIN-only sampled full-loader preflight; forcedEOS-suppressed beam timing copy, not captions/VALID quality/billing.64updates discarded, mainworker recreated fresh."
+  },
+  "preflight_rank1": {
+    "passed": true,
+    "rank": 1,
+    "initial_tensor_sha256": "407696b4c212b3c4f2f3b009f6c64f992d786d6bf9bcd82e07cef49666871c60",
+    "discarded_benchmark_updates": 64,
+    "causal": true,
+    "ordinary_DDP_gradient_parity": true,
+    "beam_score_rescore": true,
+    "forced20token_decode": true,
+    "full_IO_step_median_seconds": 0.300966813499997,
+    "full_IO_step_p90_seconds": 0.4592394209000134,
+    "mean_encoded_images_local": 4.0,
+    "decode_images": 24,
+    "decode_seconds": 1.6009829810000156,
+    "peak_allocated_GiB": 1.4374194145202637,
+    "gradient_guard_peak_GiB": 1.343510627746582,
+    "limits": "TRAIN-only sampled full-loader preflight; forcedEOS-suppressed beam timing copy, not captions/VALID quality/billing.64updates discarded, mainworker recreated fresh."
+  },
+  "full_parity": [
+    {
+      "case": "first32",
+      "passed": true,
+      "caption_events": 32,
+      "encoded_images": 32
+    },
+    {
+      "case": "tail27",
+      "passed": true,
+      "caption_events": 27,
+      "encoded_images": 27
+    }
+  ],
+  "worker_error": "Measured current epoch+VALID projection exceeds cap; initial checkpoint saved, resume explicitly",
+  "review_zip_sha256": "6736a52fccecb48c9c968d51aef7cd138a615ffc6a6970592501f89978cc1824"
+}
