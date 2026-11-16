@@ -10,6 +10,8 @@ Cập nhật: 16/11/2026, giờ Việt Nam. File này là bản tóm tắt để
 
 ## Hiện đang ở đâu
 
+- **RegionCLIP object text cache notebook ready.** [Notebook](experiments/clip_patch_baseline/REGIONCLIP_OBJECT_TEXT_CACHE_1GPU.ipynb). Exact v175 object prompts and RN50 checkpoint. Complete language state is required; absent weights produce inventory. Static syntax checked, Kaggle extraction pending.
+
 - **Paired cache decoder smoke complete.** User-reported Tesla T4 output on four v136 images; identical initial logits, padded-value invariance, nonzero residual and input projection gradients for both sources. Native projections differ by 131,072 parameters. Synthetic context and targets; no caption quality result. [Receipt](experiments/clip_patch_baseline/REGIONCLIP_SLOT_SMOKE136_RESULT.json). Matched XE design pending.
 
 - **Slot pairing CPU check complete (user-reported receipt).** 160 images, 523 aligned slots; raw pooled CLIP 768 and RegionCLIP 1024. [Receipt](experiments/clip_patch_baseline/REGIONCLIP_SLOT_PAIR160_RESULT.json). Paired NPZ output: `ducanh3/notebook7bc83c4c76/136` (user-confirmed version). NPZ not independently rehashed; full CLIP patch files were not hashed in the CPU check. Model-side smoke and XE pending.
