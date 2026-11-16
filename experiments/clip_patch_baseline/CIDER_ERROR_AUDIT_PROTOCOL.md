@@ -132,3 +132,5 @@ Smoke passed on Tesla T4 per [user-provided result](REGIONCLIP_SLOT_SMOKE136_RES
 Encode each exact object-slot text in v175 TRAIN/VALID once using the official RN50 tokenizer and language tower. Require complete language weights from the same pinned checkpoint used for vision; if absent, report and stop before writing embeddings. No template expansion, relation replacement, caption labels, or XE in this cache phase.
 
 V1 passed build and strict language state loading, then failed before its first batch because the upstream tokenizer singleton is commented out. V2 explicitly initializes the bundled SimpleTokenizer before tokenization. No embedded cache yet.
+
+V2 text cache completed. [Receipt](REGIONCLIP_OBJECT_TEXT_CACHE_V2_RESULT.json). Verified both output hashes, 80 unique phrases and coverage of all 523 v135 slots, same RN50 checkpoint and v175 source, finite normalized float32 vectors with maximum unit-norm deviation 1.39e-07. Save Version unreported. No image–text ranking or caption quality inference yet.

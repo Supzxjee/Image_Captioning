@@ -10,7 +10,7 @@ Cập nhật: 16/11/2026, giờ Việt Nam. File này là bản tóm tắt để
 
 ## Hiện đang ở đâu
 
-- **RegionCLIP object text cache V2 ready.** V1 built and passed strict language checkpoint loading, then hit undefined upstream tokenizer at first batch. V2 constructs bundled SimpleTokenizer before encoding. [Notebook](experiments/clip_patch_baseline/REGIONCLIP_OBJECT_TEXT_CACHE_V2_1GPU.ipynb). Static syntax verified, cache still pending.
+- **RegionCLIP object text cache V2 complete.** 80 unique v175 object phrases, normalized float32 1024-dimensional vectors. SHA hashes match the export; shared RN50 checkpoint identity and coverage of all 523 cached slots verified. [Receipt](experiments/clip_patch_baseline/REGIONCLIP_OBJECT_TEXT_CACHE_V2_RESULT.json). Kaggle output version unreported. Cosine audit and matched XE pending.
 
 - **Paired cache decoder smoke complete.** User-reported Tesla T4 output on four v136 images; identical initial logits, padded-value invariance, nonzero residual and input projection gradients for both sources. Native projections differ by 131,072 parameters. Synthetic context and targets; no caption quality result. [Receipt](experiments/clip_patch_baseline/REGIONCLIP_SLOT_SMOKE136_RESULT.json). Matched XE design pending.
 
