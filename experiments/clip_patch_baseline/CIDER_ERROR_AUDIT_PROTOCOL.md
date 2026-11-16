@@ -154,3 +154,7 @@ User selected 10k TRAIN / 1k VALID. Select by the pinned v175 split and determin
 Cache10k complete: [receipt](REGIONCLIP_SLOT_CACHE10K_RESULT.json) and [cohort](REGIONCLIP_SLOT_CACHE10K_COHORT.json). 22 shards with matched progress, 32,832 slots and 286 images without slots. Cohort digest and pinned feature lineage checked offline. Only shard hash declarations are in the review ZIP; actual NPZ/JSON payload hashes must be checked at reuse. Save Version not yet supplied.
 
 User confirmed Save Version 149 for cache10k. Use exact output `ducanh3/notebook7bc83c4c76/149` for cohort and 22 shards, verify each payload against the audited manifest, and retain v146 as the RegionCLIP object text source.
+
+### 10k XE input preflight
+
+Recover exact v149/v146 via the user-run Kaggle API. Verify audited receipt and each shard hash, then join slot identity, YOLO box, text and order to pinned v175. Pack visual vectors, text indices and active-slot mask in the cohort order with no-slot images intact. This artifact is the RegionCLIP side input for XE, not a training run.

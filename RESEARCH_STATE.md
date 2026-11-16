@@ -10,6 +10,8 @@ Cập nhật: 16/11/2026, giờ Việt Nam. File này là bản tóm tắt để
 
 ## Hiện đang ở đâu
 
+- **10k XE input preflight notebook ready.** [Notebook](experiments/clip_patch_baseline/REGIONCLIP_XE10K_INPUTS_CPU.ipynb). Exact v149/v146 retrieval, 22 shard and v175 slot checks, shared cohort order, unpacked NPY cache. Static syntax verified; user CPU run and paired training pending.
+
 - **RegionCLIP cache10k extraction complete.** 10,000 TRAIN / 1,000 VALID, 22 shards, 32,832 regions, 286 no-slot images, 1,480.44 seconds. Cohort SHA, receipt and progress verified; shard payloads absent from review ZIP. User-confirmed cache output: `ducanh3/notebook7bc83c4c76/149` (same notebook as v146). Matched XE pending. [Result](experiments/clip_patch_baseline/REGIONCLIP_SLOT_CACHE10K_RESULT.json).
 
 - **RegionCLIP object text cache V2 complete.** 80 unique v175 object phrases, normalized float32 1024-dimensional vectors. SHA hashes match the export; shared RN50 checkpoint identity and coverage of all 523 cached slots verified. [Receipt](experiments/clip_patch_baseline/REGIONCLIP_OBJECT_TEXT_CACHE_V2_RESULT.json). Text output v146 on ducanh3/notebook7bc83c4c76. Cached cosine smoke on two verified box pairs; [Result](experiments/clip_patch_baseline/REGIONCLIP_FIXED_ROI_COSINE_VALID2_RESULT.json). [Same-box comparison](experiments/clip_patch_baseline/REGIONCLIP_VS_CLIP_SAME_BOXES_VALID2_RESULT.json) complete by user-reported output. Both encoders rank the correct ROI first in 2/2 cases. Cross-encoder margin magnitude is not calibrated; no RegionCLIP advantage established. XE still untested.
