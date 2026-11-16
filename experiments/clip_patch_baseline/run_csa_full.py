@@ -38,6 +38,9 @@ def distributed(cfg,guard=False):
     started=time.monotonic();deadline=started+cfg['worker_seconds']
     hybrid=cfg.get('hybrid_sharing',False)
     epochs=1 if hybrid else 10
+    pilot_updates=cfg.get('pilot_updates')
+    if pilot_updates is not None and (not hybrid or type(pilot_updates) is not int or not 0<pilot_updates<STEPS or cfg.get('resume_root')):
+        raise ValueError('A bounded throughput pilot requires a fresh hybrid run')
     try:
         if accelerate.__version__!='1.15.0' or accelerator.num_processes!=2 or accelerator.distributed_type!=DistributedType.MULTI_GPU or accelerator.gradient_accumulation_steps!=1 or accelerator.mixed_precision!='no':raise ValueError('NeedAccelerate1.15/twoGPU/FP32/accum1')
         save(out/f'accelerate_runtime_rank{rank}.json',dict(version=accelerate.__version__,device=str(device),precision=accelerator.mixed_precision,processes=accelerator.num_processes,accumulation=accelerator.gradient_accumulation_steps,prepared_dataloader=False))
@@ -60,6 +63,8 @@ def distributed(cfg,guard=False):
             method='csa_structure_patch_prompt_grouped_per_caption_accelerate_v1',software={k:importlib.metadata.version(k) for k in ('torch','numpy','pycocoevalcap','accelerate')},test_used=False)
         if hybrid:
             identity.update(schema='csa_hybrid_epoch1_v1',epochs=epochs,sharing='full_global32_only',feature_storage='mounted_h5')
+        if pilot_updates is not None:
+            identity.update(schema='csa_hybrid_throughput_v1',pilot_updates=pilot_updates)
         optimizer=accelerator.prepare_optimizer(torch.optim.Adam(model.parameters(),lr=8e-6,betas=(.9,.99),eps=1e-8,weight_decay=0))
         state=dict(epoch=1,batch_cursor=0,phase='train',updates=0,caption_events=0,history=[],best_epoch=None,best_CIDEr=None,epoch_nll_sum=0.,epoch_tokens=0)
         random.seed(42+rank);np.random.seed(42+rank);torch.manual_seed(4242+rank);torch.cuda.manual_seed(4242+rank)
@@ -99,10 +104,11 @@ def distributed(cfg,guard=False):
                     shutil.copy2(out/'checkpoint.bin',out/'best.tmp');os.replace(out/'best.tmp',out/'best.bin')
                     atomic(out/'best_receipt.json',dict(sha256=receipt['sha256'],epoch=state['best_epoch'],CIDEr=state['best_CIDEr'],test_used=False))
             dist.barrier(device_ids=[rank])
-        remaining_steps=epochs*STEPS-state['updates'];remaining_epochs=epochs+1-state['epoch']
-        projected=current_epoch_projection(state,step_est,val_est)
-        if rank==0:save(out/'measured_projection.json',dict(remaining_steps=remaining_steps,remaining_epochs=remaining_epochs,seconds=projected,available=deadline-time.monotonic(),not_guaranteed=True,scope='remaining current epoch + VALID + reserve'))
-        if projected>deadline-time.monotonic():checkpoint();raise TimeoutError('Measured current epoch+VALID projection exceeds cap; initial checkpoint saved, resume explicitly')
+        if pilot_updates is None:
+            remaining_steps=epochs*STEPS-state['updates'];remaining_epochs=epochs+1-state['epoch']
+            projected=current_epoch_projection(state,step_est,val_est)
+            if rank==0:save(out/'measured_projection.json',dict(remaining_steps=remaining_steps,remaining_epochs=remaining_epochs,seconds=projected,available=deadline-time.monotonic(),not_guaranteed=True,scope='remaining current epoch + VALID + reserve'))
+            if projected>deadline-time.monotonic():checkpoint();raise TimeoutError('Measured current epoch+VALID projection exceeds cap; initial checkpoint saved, resume explicitly')
         def validate(epoch):
             validation_start=time.monotonic()
             wrapped.eval();folder=out/'evaluations'/f'epoch_{epoch:02d}';folder.mkdir(parents=True,exist_ok=True);rows=[];nll_sum=0.;tokens=0
@@ -155,8 +161,9 @@ def distributed(cfg,guard=False):
                 encoded_rows=0
                 batch_type=HybridCaptionBatches if hybrid else CaptionBatches
                 it=iter(loader(batch_type(cfg['stage'],order,rank,cursor)))
-                for offset in range(cursor,STEPS):
-                    stop=torch.tensor(int(time.monotonic()>deadline-900),device=device);dist.all_reduce(stop,op=dist.ReduceOp.MAX)
+                stop_reserve=120 if pilot_updates is not None else 900
+                for offset in range(cursor,pilot_updates if pilot_updates is not None else STEPS):
+                    stop=torch.tensor(int(time.monotonic()>deadline-stop_reserve),device=device);dist.all_reduce(stop,op=dist.ReduceOp.MAX)
                     if int(stop):checkpoint();raise TimeoutError('Saved before parent/worker cap')
                     x,seq,ev=next(it);x=x.to(device,non_blocking=True);seq=seq.to(device,non_blocking=True)
                     lr=learning_rate(state['updates']+1)
@@ -176,16 +183,27 @@ def distributed(cfg,guard=False):
                     state.update(batch_cursor=offset+1,updates=state['updates']+1,caption_events=(epoch-1)*TRAIN_EVENTS+min((offset+1)*32,TRAIN_EVENTS),epoch_nll_sum=state['epoch_nll_sum']+float(total),epoch_tokens=state['epoch_tokens']+int(count[0]))
                     if (offset+1)%100==0 or offset+1==STEPS:
                         if rank==0:
-                            report=dict(epoch=epoch,updates=state['updates'],batch_cursor=offset+1,caption_events=state['caption_events'],NLL=float(total)/int(count[0]),lr=lr,grad_norm=float(norm),seconds=time.monotonic()-started)
+                            report=dict(epoch=epoch,updates=state['updates'],batch_cursor=offset+1,caption_events=state['caption_events'],NLL=float(total)/int(count[0]),lr=lr,grad_norm=float(norm),seconds=time.monotonic()-started,train_seconds=time.monotonic()-train_start)
                             with (out/'training.jsonl').open('a',encoding='utf-8') as f:f.write(json.dumps(report)+'\n')
                             print('FULL XE',report,flush=True)
                         completed=offset+1-cursor
                         if completed==100:speed_start=time.monotonic()
-                        if completed>=200 and speed_start is not None:
+                        if pilot_updates is None and completed>=200 and speed_start is not None:
                             measured=(time.monotonic()-speed_start)/(completed-100);remaining=current_epoch_projection(state,measured,val_est)
                             stop=torch.tensor(int(remaining>deadline-time.monotonic()),device=device);dist.all_reduce(stop,op=dist.ReduceOp.MAX)
                             if int(stop):checkpoint();raise TimeoutError('Current epoch+VALID projection exceeds remaining cap; saved for explicitresume')
-                    if state['updates']%500==0:checkpoint()
+                    if state['updates']%500==0 or state['updates']==pilot_updates:checkpoint()
+                if pilot_updates is not None:
+                    if state['updates']!=pilot_updates or state['caption_events']!=32*pilot_updates:
+                        raise ValueError('Incorrect bounded training exposure')
+                    del it
+                    timing=dict(seconds=time.monotonic()-train_start,updates=pilot_updates,encoded_rows=encoded_rows,
+                                peak_allocated_GiB=torch.cuda.max_memory_allocated(device)/1024**3)
+                    save(out/f'train_timing_rank{rank}.json',timing)
+                    dist.barrier(device_ids=[rank])
+                    if rank==0:
+                        save(out/'training_complete.json',dict(status='CSA_HYBRID_2000_COMPLETE',**state,test_used=False))
+                    return
                 del it;state['phase']='validate';checkpoint()
                 if hybrid:
                     save(out/f'train_timing_rank{rank}.json',dict(seconds=time.monotonic()-train_start,updates=STEPS-cursor,
