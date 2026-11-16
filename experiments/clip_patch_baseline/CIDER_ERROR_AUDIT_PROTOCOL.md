@@ -140,3 +140,5 @@ User confirmed text output `ducanh3/notebook7bc83c4c76/146`. [Cached cosine smok
 ### Same-box RegionCLIP vs CLIP crop sanity check
 
 Use the two verified V4 ROI pairs and their original exact prompts. Compare cached RegionCLIP margins with OpenAI CLIP ViT-B/16 on exact image crops, using the native image/text similarity of each encoder. Report within-image rank and margin. Raw pooled CLIP patch hidden states do not form the native CLIP similarity space, so the crop comparator is a standalone check, separate from the deployed decoder. Two selected cases, no training or TEST.
+
+Same-box check complete. [Result](REGIONCLIP_VS_CLIP_SAME_BOXES_VALID2_RESULT.json). Both encoders rank the correct box first for both images. CLIP crop margins +0.0811/+0.0612; RegionCLIP +0.0334/+0.0092. Different score scales and only two selected images. No evidence for prioritizing either encoder from rank on this check; no caption result.

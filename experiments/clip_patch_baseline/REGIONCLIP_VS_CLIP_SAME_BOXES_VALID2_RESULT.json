@@ -1,0 +1,69 @@
+{
+  "split": "val",
+  "model": "openai/clip-vit-base-patch16",
+  "revision": "57c216476eefef5ab752ec549e440a49ae4ae5f3",
+  "device": "cpu",
+  "images": 2,
+  "correct_box_ranked_first": {
+    "clip_crop": 2,
+    "regionclip": 2
+  },
+  "records": [
+    {
+      "coco_id": 239894,
+      "prompt": "a teddy bear",
+      "pixel_boxes": [
+        [
+          232,
+          280,
+          338,
+          452
+        ],
+        [
+          70,
+          469,
+          195,
+          640
+        ]
+      ],
+      "clip_crop": {
+        "matched": 0.25062093138694763,
+        "distractor": 0.16952240467071533,
+        "margin": 0.0810985267162323
+      },
+      "regionclip": {
+        "matched": 0.08968288194702365,
+        "distractor": 0.05626174883934446,
+        "margin": 0.033421133107679184
+      }
+    },
+    {
+      "coco_id": 487438,
+      "prompt": "a bed",
+      "pixel_boxes": [
+        [
+          102,
+          232,
+          468,
+          475
+        ],
+        [
+          582,
+          294,
+          640,
+          458
+        ]
+      ],
+      "clip_crop": {
+        "matched": 0.26152679324150085,
+        "distractor": 0.20031660795211792,
+        "margin": 0.061210185289382935
+      },
+      "regionclip": {
+        "matched": 0.14632310692927192,
+        "distractor": 0.13712127191048532,
+        "margin": 0.009201835018786603
+      }
+    }
+  ]
+}
