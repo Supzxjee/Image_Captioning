@@ -10,7 +10,8 @@ Cập nhật: 16/11/2026, giờ Việt Nam. File này là bản tóm tắt để
 
 ## Hiện đang ở đâu
 
-- **Full-run throughput probe complete.** Ordinary 0.2412 s vs shared 0.1370 s/update (1.76x). first32 passes; exact tail27 fails same two FFN gradients, equal printed loss. VALID64 decode 2.39 s, selective stage 57.85 s. No throughput claim for whole storage stream or quality. [Result](experiments/clip_patch_baseline/CSA_FULL_RUNNER_THROUGHPUT_RESULT.json). Proposed fallback: ordinary path on partial batch; pilot full epoch pending.
+- **Full-run throughput probe complete.** Ordinary 0.2412 s vs shared 0.1370 s/update (1.76x). first32 passes; exact tail27 fails same two FFN gradients, equal printed loss. VALID64 decode 2.39 s, selective stage 57.85 s. No throughput claim for whole storage stream or quality. [Result](experiments/clip_patch_baseline/CSA_FULL_RUNNER_THROUGHPUT_RESULT.json).
+- **One-epoch hybrid XE pilot ready.** [Notebook](experiments/clip_patch_baseline/CSA_HYBRID_SHARING_EPOCH1_2GPU.ipynb), [protocol](experiments/clip_patch_baseline/CSA_HYBRID_EPOCH1_PROTOCOL.md). Fresh Accelerate two T4 FP32, mounted H5, shares on 17,710 complete batches, ordinary on tail27, 3 h stop cap, VALID5000 CIDEr/XE NLL and phase timings. Five local static/NumPy/mock tests pass, 35 upstream SHA pins and five embedded sources verified, all notebook code compiles. CUDA execution, sustained mounted IO and validation results await the user-run `csa_hybrid_sharing_epoch1_pilot_review.zip`.
 
 - **RegionCLIP matched XE10k comparison complete on VALID1000.** RegionCLIP best8 CIDEr 106.49, CHAIRs 7.60%, CHAIRi 5.59%; CLIP best10 102.48, 5.50%, 4.12%. RegionCLIP +4.00 CIDEr and +2.10 pp CHAIRs. One seed, VALID checkpoint selection, recipe-level comparison. No TEST. [Result](experiments/clip_patch_baseline/REGIONCLIP_XE10K_MATCHED_RESULT.json).
 

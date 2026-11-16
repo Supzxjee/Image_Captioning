@@ -29,6 +29,15 @@ class SharedCaptionBatches(base.CaptionBatches):
         return features,seq,events.copy()
 
 
+class HybridCaptionBatches(SharedCaptionBatches):
+    def __getitem__(self, item):
+        if self.rank not in (0, 1) or self.batch_size != 32:
+            raise ValueError('Hybrid sharing requires two training ranks and global batch 32')
+        if (item + self.cursor + 1) * self.batch_size > len(self.events):
+            return base.CaptionBatches.__getitem__(self, item)
+        return super().__getitem__(item)
+
+
 def current_epoch_projection(state,step_seconds,valid_seconds):
     if state.get('epoch',1)==11:return 900
     steps=0 if state['phase']=='validate' else base.STEPS-state['batch_cursor']

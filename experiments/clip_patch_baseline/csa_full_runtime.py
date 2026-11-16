@@ -17,7 +17,23 @@ def make_model(vocab,cfg):
     if not cfg.get('csa_per_caption_full') or cfg.get('semantic_strength_gate'):
         raise ValueError('Need CSA per-caption configuration, no old strength gate')
     banks=[torch.from_numpy(np.load(Path(cfg['stage'])/('sem_'+k+'_bank.npy'),allow_pickle=False)) for k in ('noun','verb')]
+    if cfg.get('hybrid_sharing'):
+        from csa_shared_model import SharedCSAPatchCaptioner
+        return SharedCSAPatchCaptioner(vocab,*banks)
     return CSAPatchCaptioner(vocab,*banks)
+
+
+def hybrid_logits(net, x, prefix, events, data, context, device, share):
+    import torch
+    from csa_sharing_data import image_plan
+    if not share:
+        return net(x, prefix, context.events(data, events, device))
+    event_ids = np.asarray(events)
+    first, inverse = image_plan(data['caption_image'], event_ids, True)
+    if len(x) != len(first):
+        raise ValueError('Shared feature rows differ from local image plan')
+    images = data['caption_image'][event_ids[first]]
+    return net(x, prefix, context.images(images, device), torch.as_tensor(inverse, device=device))
 
 
 def preflight(cfg,model,wrapped,data,words,rank,device,out,deadline,accelerator):
@@ -71,21 +87,25 @@ def preflight(cfg,model,wrapped,data,words,rank,device,out,deadline,accelerator)
     guard_peak=torch.cuda.max_memory_allocated(device)/1024**3;wrapped.zero_grad(set_to_none=True)
     optimizer=accelerator.prepare_optimizer(torch.optim.Adam(model.parameters(),lr=1e-4,betas=(.9,.99),eps=1e-8,weight_decay=0))
     wrapped.train();times=[];encoded=[];torch.cuda.reset_peak_memory_stats(device)
-    ds=CaptionBatches(cfg['stage'],order[:64*32],rank)
+    batch_type=CaptionBatches
+    if cfg.get('hybrid_sharing'):
+        from csa_full_data import HybridCaptionBatches
+        batch_type=HybridCaptionBatches
+    ds=batch_type(cfg['stage'],order[:64*32],rank)
     iterator=iter(loader(ds))
     for _ in range(64):
         if time.monotonic()>deadline-120:raise TimeoutError('Full data preflight cap')
         torch.cuda.synchronize(device);started=time.monotonic()
         x,seq,events=next(iterator)
         x=x.to(device,non_blocking=True);seq=seq.to(device,non_blocking=True)
-        p=context.events(data,events,device);optimizer.zero_grad(set_to_none=True)
-        logits=wrapped(x,seq[:,:-1],p);count=torch.tensor(int((seq[:,1:]!=0).sum()),device=device);dist.all_reduce(count)
+        optimizer.zero_grad(set_to_none=True)
+        logits=hybrid_logits(wrapped,x,seq[:,:-1],events,data,context,device,cfg.get('hybrid_sharing'));count=torch.tensor(int((seq[:,1:]!=0).sum()),device=device);dist.all_reduce(count)
         loss=F.cross_entropy(logits.flatten(0,1),seq[:,1:].flatten(),ignore_index=0,reduction='sum')*(2/int(count))
         accelerator.backward(loss);norm=accelerator.clip_grad_norm_(model.parameters(),1)
         if not torch.isfinite(loss) or not torch.isfinite(norm):raise ValueError('Nonfinite preflighttrain')
         optimizer.step();torch.cuda.synchronize(device);times.append(time.monotonic()-started);encoded.append(len(x))
     if len(times)!=64:raise ValueError('Incomplete64step preflight')
-    del optimizer,ds,iterator,x,seq,events,logits,loss,p
+    del optimizer,ds,iterator,x,seq,events,logits,loss
     probe=copy.deepcopy(model).eval();indices=np.arange(64)[rank::2]
     with torch.inference_mode():
         # Check real beam scoring before altering ONLY the separate timing copy.

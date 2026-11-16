@@ -12,7 +12,7 @@ import numpy as np
 from real_bank_data import read,save,sha
 from full_data import prepare,load_stage,CaptionBatches,ImageBatches,loader,learning_rate,validate_state,STEPS,TRAIN_EVENTS,TRAIN_IMAGES,VALID_IMAGES
 
-from csa_full_data import order_for_epoch,current_epoch_projection
+from csa_full_data import HybridCaptionBatches,order_for_epoch,current_epoch_projection
 
 def atomic(path,value):
     temp=path.with_suffix('.tmp');save(temp,value);os.replace(temp,path)
@@ -26,7 +26,7 @@ def distributed(cfg,guard=False):
     import accelerate
     from patch_beam import beam_search,text_from_ids
     from full_runtime import tensor_digest
-    from csa_full_runtime import preflight,make_model
+    from csa_full_runtime import hybrid_logits,preflight,make_model
     from semantic_data import SemanticContext
     from cuda_runtime_guard import check_runtime
     rank=int(os.environ['LOCAL_RANK']);out=Path(cfg['output']);check_runtime(out,rank)
@@ -36,6 +36,8 @@ def distributed(cfg,guard=False):
     device=accelerator.device
     torch.backends.cuda.matmul.allow_tf32=False;torch.backends.cudnn.allow_tf32=False
     started=time.monotonic();deadline=started+cfg['worker_seconds']
+    hybrid=cfg.get('hybrid_sharing',False)
+    epochs=1 if hybrid else 10
     try:
         if accelerate.__version__!='1.15.0' or accelerator.num_processes!=2 or accelerator.distributed_type!=DistributedType.MULTI_GPU or accelerator.gradient_accumulation_steps!=1 or accelerator.mixed_precision!='no':raise ValueError('NeedAccelerate1.15/twoGPU/FP32/accum1')
         save(out/f'accelerate_runtime_rank{rank}.json',dict(version=accelerate.__version__,device=str(device),precision=accelerator.mixed_precision,processes=accelerator.num_processes,accumulation=accelerator.gradient_accumulation_steps,prepared_dataloader=False))
@@ -56,6 +58,8 @@ def distributed(cfg,guard=False):
         identity=dict(schema='clip_patch_full_xe10_v1',source=read(out/'source_receipt.json'),stage_files=stage['files_sha256'],raw_sources=stage['sources'],feature_profile=stage['feature_profile'],
             initial_sha256=guards[0]['initial_tensor_sha256'],global_batch=32,epochs=10,lr='warmup1epoch8e-6to1e-4_then_cosine_to1e-5',dropout=.2,clip1=True,seed=42,framework='Accelerate',sharing=False,sampler='image_grouped_42_plus_epoch',
             method='csa_structure_patch_prompt_grouped_per_caption_accelerate_v1',software={k:importlib.metadata.version(k) for k in ('torch','numpy','pycocoevalcap','accelerate')},test_used=False)
+        if hybrid:
+            identity.update(schema='csa_hybrid_epoch1_v1',epochs=epochs,sharing='full_global32_only',feature_storage='mounted_h5')
         optimizer=accelerator.prepare_optimizer(torch.optim.Adam(model.parameters(),lr=8e-6,betas=(.9,.99),eps=1e-8,weight_decay=0))
         state=dict(epoch=1,batch_cursor=0,phase='train',updates=0,caption_events=0,history=[],best_epoch=None,best_CIDEr=None,epoch_nll_sum=0.,epoch_tokens=0)
         random.seed(42+rank);np.random.seed(42+rank);torch.manual_seed(4242+rank);torch.cuda.manual_seed(4242+rank)
@@ -95,11 +99,12 @@ def distributed(cfg,guard=False):
                     shutil.copy2(out/'checkpoint.bin',out/'best.tmp');os.replace(out/'best.tmp',out/'best.bin')
                     atomic(out/'best_receipt.json',dict(sha256=receipt['sha256'],epoch=state['best_epoch'],CIDEr=state['best_CIDEr'],test_used=False))
             dist.barrier(device_ids=[rank])
-        remaining_steps=10*STEPS-state['updates'];remaining_epochs=11-state['epoch']
+        remaining_steps=epochs*STEPS-state['updates'];remaining_epochs=epochs+1-state['epoch']
         projected=current_epoch_projection(state,step_est,val_est)
-        if rank==0:save(out/'measured_projection.json',dict(remaining_steps=remaining_steps,remaining_epochs=remaining_epochs,seconds=projected,available=deadline-time.monotonic(),not_guaranteed=True,scope='remainingcurrentepoch+VALID+reserve;10epochhorizonunchanged',informational_full10_seconds=1.35*(remaining_steps*step_est+remaining_epochs*(val_est+90))+900))
+        if rank==0:save(out/'measured_projection.json',dict(remaining_steps=remaining_steps,remaining_epochs=remaining_epochs,seconds=projected,available=deadline-time.monotonic(),not_guaranteed=True,scope='remaining current epoch + VALID + reserve'))
         if projected>deadline-time.monotonic():checkpoint();raise TimeoutError('Measured current epoch+VALID projection exceeds cap; initial checkpoint saved, resume explicitly')
         def validate(epoch):
+            validation_start=time.monotonic()
             wrapped.eval();folder=out/'evaluations'/f'epoch_{epoch:02d}';folder.mkdir(parents=True,exist_ok=True);rows=[];nll_sum=0.;tokens=0
             images=np.arange(TRAIN_IMAGES,TRAIN_IMAGES+VALID_IMAGES)[rank::2];gate_stats=None
             with torch.inference_mode():
@@ -113,13 +118,14 @@ def distributed(cfg,guard=False):
                     seq,scores=beam_search(model,memory)
                     for i,s,v in zip(index.tolist(),seq[:,0].cpu().tolist(),scores[:,0].cpu().tolist()):rows.append(dict(coco_id=int(data['ids'][i]),caption=text_from_ids(s,words),ids=s,score=float(v)))
                 ev=np.flatnonzero(np.isin(data['caption_image'],images))
+                decode_seconds=time.monotonic()-validation_start
                 for x,seq,event_ids in loader(CaptionBatches(cfg['stage'],ev,rank=None)):
                     if time.monotonic()>deadline-60:raise TimeoutError('VALID NLL deadline')
                     x=x.to(device,non_blocking=True);seq=seq.to(device,non_blocking=True);logits=predict(model,x,seq[:,:-1],event_ids)
                     nll_sum+=float(F.cross_entropy(logits.flatten(0,1),seq[:,1:].flatten(),ignore_index=0,reduction='sum'));tokens+=int((seq[:,1:]!=0).sum())
             if len(rows)!=2500:raise ValueError('Incomplete VALID worker')
             save(folder/f'val_rank{rank}.json',rows)
-            worker=dict(complete=True,epoch=epoch,images=2500,NLL_sum=nll_sum,NLL_tokens=tokens)
+            worker=dict(complete=True,epoch=epoch,images=2500,NLL_sum=nll_sum,NLL_tokens=tokens,decode_seconds=decode_seconds,NLL_seconds=time.monotonic()-validation_start-decode_seconds)
             if cfg.get('semantic_strength_gate'):
                 if gate_stats['count']!=2500*196:raise ValueError('Incomplete VALID strength diagnostics')
                 worker['semantic_strength_accumulator']=gate_stats
@@ -142,17 +148,25 @@ def distributed(cfg,guard=False):
                 save(folder/'result.json',value);value['files_sha256']={p.name:sha(p) for p in folder.iterdir() if p.is_file()};point[0]=value
                 print('FULL VALID',value,flush=True)
             dist.broadcast_object_list(point,src=0);return point[0]
-        while state['epoch']<=10:
+        while state['epoch']<=epochs:
             epoch=state['epoch'];wrapped.train();order=order_for_epoch(data,epoch);cursor=state['batch_cursor'];speed_start=None
             if state['phase']=='train':
-                it=iter(loader(CaptionBatches(cfg['stage'],order,rank,cursor)))
+                train_start=time.monotonic()
+                encoded_rows=0
+                batch_type=HybridCaptionBatches if hybrid else CaptionBatches
+                it=iter(loader(batch_type(cfg['stage'],order,rank,cursor)))
                 for offset in range(cursor,STEPS):
                     stop=torch.tensor(int(time.monotonic()>deadline-900),device=device);dist.all_reduce(stop,op=dist.ReduceOp.MAX)
                     if int(stop):checkpoint();raise TimeoutError('Saved before parent/worker cap')
                     x,seq,ev=next(it);x=x.to(device,non_blocking=True);seq=seq.to(device,non_blocking=True)
                     lr=learning_rate(state['updates']+1)
                     for g in optimizer.param_groups:g['lr']=lr
-                    optimizer.zero_grad(set_to_none=True);logits=predict(wrapped,x,seq[:,:-1],ev);count=torch.tensor([int((seq[:,1:]!=0).sum()),len(ev)],device=device);dist.all_reduce(count)
+                    share=hybrid and (offset+1)*32<=len(order)
+                    if hybrid and not share:
+                        expected_tail=16 if rank==0 else 11
+                        if len(x)!=expected_tail or len(ev)!=expected_tail:raise ValueError('Expected ordinary global tail27 split 16+11')
+                    encoded_rows+=len(x)
+                    optimizer.zero_grad(set_to_none=True);logits=hybrid_logits(wrapped,x,seq[:,:-1],ev,data,context,device,share);count=torch.tensor([int((seq[:,1:]!=0).sum()),len(ev)],device=device);dist.all_reduce(count)
                     nll=F.cross_entropy(logits.flatten(0,1),seq[:,1:].flatten(),ignore_index=0,reduction='sum');loss=nll*(2/int(count[0]))
                     if not torch.isfinite(loss):raise ValueError('Nonfinite XE')
                     accelerator.backward(loss);norm=accelerator.clip_grad_norm_(model.parameters(),1)
@@ -173,10 +187,14 @@ def distributed(cfg,guard=False):
                             if int(stop):checkpoint();raise TimeoutError('Current epoch+VALID projection exceeds remaining cap; saved for explicitresume')
                     if state['updates']%500==0:checkpoint()
                 del it;state['phase']='validate';checkpoint()
+                if hybrid:
+                    save(out/f'train_timing_rank{rank}.json',dict(seconds=time.monotonic()-train_start,updates=STEPS-cursor,
+                         shared_updates=STEPS-cursor-1,ordinary_tail_updates=1,encoded_rows=encoded_rows,
+                         peak_allocated_GiB=torch.cuda.max_memory_allocated(device)/1024**3))
             point=validate(epoch);better=state['best_CIDEr'] is None or point['CIDEr']>state['best_CIDEr']
             if better:state.update(best_CIDEr=point['CIDEr'],best_epoch=epoch)
             state['history'].append(point);state.update(epoch=epoch+1,batch_cursor=0,phase='train',epoch_nll_sum=0.,epoch_tokens=0);checkpoint(promote=better)
-        if rank==0:save(out/'training_complete.json',dict(status='PATCH_FULL_XE10_TRAINING_COMPLETE',**state,worker_seconds=time.monotonic()-started,timing_scope='this worker invocation only; excludes setup, scoring and earlier resume segments'))
+        if rank==0:save(out/'training_complete.json',dict(status='CSA_HYBRID_EPOCH1_COMPLETE' if hybrid else 'PATCH_FULL_XE10_TRAINING_COMPLETE',**state,worker_seconds=time.monotonic()-started,timing_scope='this worker invocation only; excludes notebook setup and earlier resume segments'))
     finally:
         accelerator.end_training()
         if dist.is_initialized():dist.destroy_process_group()

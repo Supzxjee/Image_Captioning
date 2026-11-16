@@ -55,6 +55,21 @@ class Checks(TestCase):
         state.update(epoch=11,phase='train',batch_cursor=0)
         self.assertEqual(d.current_epoch_projection(state,.2,200),900)
 
+    def test_hybrid_collation_uses_ordinary_path_on_both_tail_ranks(self):
+        events=np.arange(59)%27
+        for rank,size in ((0,16),(1,11)):
+            with patch.object(base,'FeatureReader',Reader):
+                ds=d.HybridCaptionBatches('unused',events,rank=rank)
+                patches,_,ids=ds[0]
+                self.assertEqual(len(patches),len(set(ds.reader.data['caption_image'][ids])))
+                self.assertLess(len(patches),len(ids))
+                tail=ds[1]
+                resumed=d.HybridCaptionBatches('unused',events,rank=rank,cursor=1)[0]
+                self.assertEqual(len(tail[0]),size)
+                for actual,expected in zip(tail,resumed):
+                    np.testing.assert_array_equal(actual,expected)
+                np.testing.assert_array_equal(tail[0][:,0,0],ds.reader.data['caption_image'][tail[2]])
+
     def test_runner_static_accelerate_per_caption_resume(self):
         source=(HERE/'run_csa_full.py').read_text(encoding='utf-8');tree=ast.parse(source)
         for value in ('accelerator.prepare_model(model)','accelerator.prepare_optimizer','accelerator.backward(loss)',
