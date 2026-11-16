@@ -152,3 +152,5 @@ Recommend 10k TRAIN / 1k VALID and up to 10 XE epochs first. Freeze sampled IDs 
 User selected 10k TRAIN / 1k VALID. Select by the pinned v175 split and deterministic SHA order, including images with zero object slots. Use official RN50 vision checkpoint and exact v175 YOLO regions. Save cohort, per-500-image indexed vector shards and final SHA manifest for reuse. Cache phase only.
 
 Cache10k complete: [receipt](REGIONCLIP_SLOT_CACHE10K_RESULT.json) and [cohort](REGIONCLIP_SLOT_CACHE10K_COHORT.json). 22 shards with matched progress, 32,832 slots and 286 images without slots. Cohort digest and pinned feature lineage checked offline. Only shard hash declarations are in the review ZIP; actual NPZ/JSON payload hashes must be checked at reuse. Save Version not yet supplied.
+
+User confirmed Save Version 149 for cache10k. Use exact output `ducanh3/notebook7bc83c4c76/149` for cohort and 22 shards, verify each payload against the audited manifest, and retain v146 as the RegionCLIP object text source.
