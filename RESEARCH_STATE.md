@@ -10,7 +10,7 @@ Cập nhật: 16/11/2026, giờ Việt Nam. File này là bản tóm tắt để
 
 ## Hiện đang ở đâu
 
-- **Full-run throughput probe prepared.** [Notebook](experiments/clip_patch_baseline/CSA_FULL_RUNNER_THROUGHPUT_2GPU.ipynb). Full metadata with selected actual patch reads only; FP32 T4x2, same grouped events ordinary/shared, first32 and exact tail27 gradients, VALID64 timing. AST and event shapes checked; runtime pending. Timing does not include sustained full-cache streaming.
+- **Full-run throughput probe complete.** Ordinary 0.2412 s vs shared 0.1370 s/update (1.76x). first32 passes; exact tail27 fails same two FFN gradients, equal printed loss. VALID64 decode 2.39 s, selective stage 57.85 s. No throughput claim for whole storage stream or quality. [Result](experiments/clip_patch_baseline/CSA_FULL_RUNNER_THROUGHPUT_RESULT.json). Proposed fallback: ordinary path on partial batch; pilot full epoch pending.
 
 - **RegionCLIP matched XE10k comparison complete on VALID1000.** RegionCLIP best8 CIDEr 106.49, CHAIRs 7.60%, CHAIRi 5.59%; CLIP best10 102.48, 5.50%, 4.12%. RegionCLIP +4.00 CIDEr and +2.10 pp CHAIRs. One seed, VALID checkpoint selection, recipe-level comparison. No TEST. [Result](experiments/clip_patch_baseline/REGIONCLIP_XE10K_MATCHED_RESULT.json).
 

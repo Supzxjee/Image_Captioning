@@ -184,3 +184,5 @@ Treat the user's chat confirmation as acceptance of the 12 eligible assisted lab
 ### Full-run throughput probe approved
 
 Use the existing full Karpathy metadata and semantic setup and read only selected patch rows. Use two T4 and FP32. Time ordinary and shared encoder paths on the same image-grouped caption events, two passes each in ABBA order, and record the historical epoch-1 tail27 gradient agreement without suppressing a failure. Decode 64 VALID examples for measured cost only. Record metadata/selective-stage times separately. No full training, score or checkpoint promotion. The measured timings use only selected local patches and cannot establish sustained storage throughput or epoch quality.
+
+[Throughput result](CSA_FULL_RUNNER_THROUGHPUT_RESULT.json): normal batches ~1.76x faster in paired ABBA timings. The exact tail27 again fails gradient agreement on two FFN tensors, with identical reported loss. Recommend ordinary path on partial batches and proceed only with a first-epoch pilot to measure real input and quality before multi-seed training.
