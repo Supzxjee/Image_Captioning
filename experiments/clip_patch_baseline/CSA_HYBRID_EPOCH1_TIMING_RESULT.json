@@ -1,0 +1,112 @@
+{
+  "run_status": {
+    "complete": true,
+    "epochs_requested": 1,
+    "test_used": false,
+    "SCST": false,
+    "reranking": false
+  },
+  "phase_timing": {
+    "setup_seconds": 41.73617226800002,
+    "prepare_seconds": 79.27490838799997,
+    "preflight_seconds": 68.67451459299997
+  },
+  "timing_summary": {
+    "CIDEr": 0.9619179304967791,
+    "NLL": 2.692114274493016,
+    "CIDEr_scoring_seconds": 6.375743541999782,
+    "validation_wall_seconds": 204.0395890179998,
+    "ranks": [
+      {
+        "rank": 0,
+        "train_seconds": 3245.148511599,
+        "batch_wait_seconds": 196.37088595801202,
+        "patch_token_copy_ms_per_sample": 0.4938316290998189,
+        "training_step_ms_per_sample": 159.70621287890074,
+        "VALID_decode_seconds": 139.07425727099962,
+        "VALID_NLL_seconds": 58.58874788000003
+      },
+      {
+        "rank": 1,
+        "train_seconds": 3245.0513848709998,
+        "batch_wait_seconds": 321.9355081520147,
+        "patch_token_copy_ms_per_sample": 0.46750080046680687,
+        "training_step_ms_per_sample": 153.6745308568922,
+        "VALID_decode_seconds": 134.336445507,
+        "VALID_NLL_seconds": 56.70445387799964
+      }
+    ]
+  },
+  "training_complete": {
+    "status": "CSA_HYBRID_EPOCH1_COMPLETE",
+    "epoch": 2,
+    "batch_cursor": 0,
+    "phase": "train",
+    "updates": 17711,
+    "caption_events": 566747,
+    "history": [
+      {
+        "epoch": 1,
+        "CIDEr": 0.9619179304967791,
+        "mean_words": 8.3758,
+        "short_le2": 0,
+        "NLL": 2.692114274493016,
+        "TRAIN_online_NLL": 3.4519695695640986,
+        "CIDEr_scoring_seconds": 6.375743541999782,
+        "validation_wall_seconds": 204.0395890179998,
+        "files_sha256": {
+          "worker1.json": "0fa2dc0d21bb7a23bc4bda68e943995054fa51cbc4cd40fcfdf65fc0717fa2bd",
+          "val_rank1.json": "559e6082b8617d00f2c6e2f9a2bc8850029ce1903f6eee3760af36fcc3de5f3a",
+          "val_rank0.json": "1d3b3ce1ac922b912799e9837b105cad8460defc1dd41f182da2e514035bc16f",
+          "result.json": "a2bea38d2ad9c25cb628296c2b8d13b48d470bdb17d7fdac33fefbde6eb0f4a6",
+          "cider_per_image.json": "3a80b102fe6cb58d13e04ca84793a074a01f0ed66acabf808ddc2ace65238ac7",
+          "worker0.json": "dee39f6a47380a6cab53baa2e7db3a3d266f979fb124d69e0b4cc47d71fadd64"
+        }
+      }
+    ],
+    "best_epoch": 1,
+    "best_CIDEr": 0.9619179304967791,
+    "epoch_nll_sum": 0.0,
+    "epoch_tokens": 0,
+    "worker_seconds": 3460.5552071330003,
+    "timing_scope": "this worker invocation only; excludes notebook setup and earlier resume segments"
+  },
+  "checkpoint_receipt": {
+    "sha256": "92a50b741322b602720eef008674f7f1c106d881329be9e4d99f33c8482fa986",
+    "updates": 17711,
+    "epoch": 2,
+    "phase": "train",
+    "training_log_sha256": "ab8f3e824d038314c4278381f6be409569085361a40143ea6cf2a61ac855bc84"
+  },
+  "best_receipt": {
+    "sha256": "92a50b741322b602720eef008674f7f1c106d881329be9e4d99f33c8482fa986",
+    "epoch": 1,
+    "CIDEr": 0.9619179304967791,
+    "test_used": false
+  },
+  "measured_projection": {
+    "remaining_steps": 17711,
+    "remaining_epochs": 1,
+    "seconds": 17638.899675072345,
+    "available": 10482.148811718,
+    "not_guaranteed": true,
+    "scope": "remaining current epoch + VALID + reserve"
+  },
+  "rank_diagnostics": [
+    {
+      "rank": 0,
+      "wait_fraction": 0.060512141510976065,
+      "median_100_updates_seconds": 17.503952673999947,
+      "first_2000_seconds": 487.7773987110002,
+      "last_2000_full_window_seconds": 349.2636176830001
+    },
+    {
+      "rank": 1,
+      "wait_fraction": 0.0992081387841606,
+      "median_100_updates_seconds": 17.503968645999976,
+      "first_2000_seconds": 487.5927279930005,
+      "last_2000_full_window_seconds": 349.2653168009997
+    }
+  ],
+  "zip_sha256": "7e4fd0f953e46e4f6b0107c48e7492f13aa242e303d43bedef80aeb686bddac5"
+}
