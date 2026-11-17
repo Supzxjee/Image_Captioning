@@ -1,0 +1,119 @@
+{
+  "run_status": {
+    "complete": true,
+    "epochs_requested": 1,
+    "training_precision": "fp16",
+    "validation_precision": "fp32",
+    "test_used": false,
+    "SCST": false,
+    "reranking": false
+  },
+  "phase_timing": {
+    "setup_seconds": 32.148073885,
+    "prepare_seconds": 69.859910176,
+    "preflight_seconds": 59.189764663000005
+  },
+  "timing_summary": {
+    "CIDEr": 0.9859613500956613,
+    "NLL": 2.684693315772472,
+    "CIDEr_scoring_seconds": 5.437686794000001,
+    "validation_wall_seconds": 197.41306399799987,
+    "ranks": [
+      {
+        "rank": 0,
+        "train_seconds": 2560.714558025,
+        "optimizer_steps": 17710,
+        "skipped_steps": 1,
+        "nonfinite_norms": 1,
+        "peak_allocated_GiB": 1.6293601989746094,
+        "batch_wait_seconds": 66.67243135100608,
+        "patch_token_copy_ms_per_sample": 0.36314941402209006,
+        "training_step_ms_per_sample": 132.9182097095554,
+        "VALID_decode_seconds": 135.19341533999977,
+        "VALID_NLL_seconds": 56.781288098000005
+      },
+      {
+        "rank": 1,
+        "train_seconds": 2560.664272322,
+        "optimizer_steps": 17710,
+        "skipped_steps": 1,
+        "nonfinite_norms": 1,
+        "peak_allocated_GiB": 1.4341659545898438,
+        "batch_wait_seconds": 161.94847959999487,
+        "patch_token_copy_ms_per_sample": 0.375986548753108,
+        "training_step_ms_per_sample": 128.8132304390945,
+        "VALID_decode_seconds": 133.72589293400006,
+        "VALID_NLL_seconds": 55.24501305500007
+      }
+    ],
+    "historical_fp32_reference": {
+      "train_seconds": 3245.148511599,
+      "CIDEr": 0.9619179304967791,
+      "NLL": 2.692114274493016
+    },
+    "comparison": {
+      "fp16_train_seconds": 2560.714558025,
+      "fp16_over_fp32_throughput": 1.2672824081188818,
+      "CIDEr_delta_x100": 2.404341959888223,
+      "NLL_delta": -0.007420958720544046
+    }
+  },
+  "training_complete": {
+    "status": "CSA_HYBRID_EPOCH1_COMPLETE",
+    "epoch": 2,
+    "batch_cursor": 0,
+    "phase": "train",
+    "updates": 17711,
+    "caption_events": 566747,
+    "history": [
+      {
+        "epoch": 1,
+        "CIDEr": 0.9859613500956613,
+        "mean_words": 8.5798,
+        "short_le2": 0,
+        "NLL": 2.684693315772472,
+        "TRAIN_online_NLL": 3.4494305829975853,
+        "CIDEr_scoring_seconds": 5.437686794000001,
+        "validation_wall_seconds": 197.41306399799987,
+        "files_sha256": {
+          "worker0.json": "8738c454ef0b39b0f2c399303a322455d7ddf1bf20319bb7264634b2cd552e3d",
+          "val_rank1.json": "310de3908099617d516dcdb5f3f45bc3cd9451a3492302c59dcf9420602ba051",
+          "result.json": "39544bef5883851a3a14f14ded318928ad7e2681c37ff074054fd87e1aa47ad3",
+          "cider_per_image.json": "dd7be2c2010e23b66106ed5e63b8afabe871cab33523996fa4642eff75cb8a57",
+          "val_rank0.json": "6805e173ddd9710a98356dfe4ae66176f22875c1c4f2ab0dfa8eced91c504695",
+          "worker1.json": "d2968ea17ff08ba8ed54ee0a1c18edfe0a5343bf3188114cb85baae029790bb9"
+        }
+      }
+    ],
+    "best_epoch": 1,
+    "best_CIDEr": 0.9859613500956613,
+    "epoch_nll_sum": 0.0,
+    "epoch_tokens": 0,
+    "worker_seconds": 2768.994238269,
+    "timing_scope": "this worker invocation only; excludes notebook setup and earlier resume segments"
+  },
+  "checkpoint_receipt": {
+    "sha256": "26c0aa00e23953c2c41457f0fcb0d1600f748c238fbb4f8ed08b517669e0d2d3",
+    "updates": 17711,
+    "epoch": 2,
+    "phase": "train",
+    "training_log_sha256": "97ec0391ec1eb9d15370b7b3b8a43e81a939daaffa6128d6887453fe1073340e"
+  },
+  "best_receipt": {
+    "sha256": "26c0aa00e23953c2c41457f0fcb0d1600f748c238fbb4f8ed08b517669e0d2d3",
+    "epoch": 1,
+    "CIDEr": 0.9859613500956613,
+    "test_used": false
+  },
+  "comparison_checked": {
+    "fp32_train_seconds": 3245.148511599,
+    "fp16_train_seconds": 2560.714558025,
+    "seconds_saved": 684.433953574,
+    "relative_time_reduction": 0.21090990169715074,
+    "fp16_over_fp32_throughput": 1.2672824081188818,
+    "CIDEr_delta_x100": 2.404341959888223,
+    "NLL_delta": -0.007420958720544046,
+    "fp32_validation_wall_seconds": 204.0395890179998
+  },
+  "zip_sha256": "7fdba4dec44e642d98eb7deaad0fa3106a34cded5c02d2ea12a32481ffda4ef3"
+}
