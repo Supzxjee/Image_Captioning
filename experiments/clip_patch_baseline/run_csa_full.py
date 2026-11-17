@@ -33,9 +33,11 @@ def distributed(cfg,guard=False):
     if int(os.environ['WORLD_SIZE'])!=2:raise ValueError('Select T4x2')
     torch.set_num_threads(1)
     requested_precision=cfg.get('pilot_precision','no')
+    fp16_experiment=cfg.get('hybrid_sharing') and cfg.get('pilot_batch_size',32)==32 and (
+        cfg.get('pilot_updates')==2000 or (cfg.get('pilot_updates') is None and cfg.get('profile_epoch')))
     if requested_precision not in ('no','fp16') or (requested_precision=='fp16' and
-       (cfg.get('pilot_updates')!=2000 or cfg.get('pilot_batch_size',32)!=32 or not cfg.get('hybrid_sharing'))):
-        raise ValueError('FP16 is restricted to the matched 2,000-attempt batch32 pilot')
+       (not fp16_experiment or cfg.get('resume_root'))):
+        raise ValueError('FP16 requires a fresh measured batch32 hybrid run')
     precision='no' if guard else requested_precision
     accelerator=Accelerator(mixed_precision=precision,gradient_accumulation_steps=1,dynamo_backend='no',kwargs_handlers=[DistributedDataParallelKwargs(broadcast_buffers=False),GradScalerKwargs(init_scale=1024.),InitProcessGroupKwargs(backend='nccl',timeout=timedelta(seconds=1200))])
     device=accelerator.device
@@ -74,9 +76,9 @@ def distributed(cfg,guard=False):
             method='csa_structure_patch_prompt_grouped_per_caption_accelerate_v1',software={k:importlib.metadata.version(k) for k in ('torch','numpy','pycocoevalcap','accelerate')},test_used=False)
         if hybrid:
             identity.update(schema='csa_hybrid_epoch1_v1',epochs=epochs,sharing='full_global32_only',feature_storage='mounted_h5')
+        if 'pilot_precision' in cfg:identity.update(precision=precision)
         if pilot_updates is not None:
             identity.update(schema='csa_hybrid_throughput_v1',pilot_updates=pilot_updates)
-            if 'pilot_precision' in cfg:identity.update(precision=precision)
             if global_batch==64:
                 identity.update(global_batch=global_batch,lr_index='caption_exposure')
         optimizer=accelerator.prepare_optimizer(torch.optim.Adam(model.parameters(),lr=8e-6,betas=(.9,.99),eps=1e-8,weight_decay=0))
@@ -147,7 +149,14 @@ def distributed(cfg,guard=False):
                 decode_seconds=time.monotonic()-validation_start
                 for x,seq,event_ids in loader(CaptionBatches(cfg['stage'],ev,rank=None)):
                     if time.monotonic()>deadline-60:raise TimeoutError('VALID NLL deadline')
-                    x=x.to(device,non_blocking=True);seq=seq.to(device,non_blocking=True);logits=predict(model,x,seq[:,:-1],event_ids)
+                    x=x.to(device,non_blocking=True);seq=seq.to(device,non_blocking=True)
+                    if precision=='fp16':
+                        # Accelerate wraps forward with autocast. Direct encode/decode preserves FP32 VALID.
+                        memory=model.encode(x,context.events(data,event_ids,device))
+                        logits=model.decode(memory,seq[:,:-1])
+                        if logits.dtype!=torch.float32:raise ValueError('Expected FP32 VALID logits')
+                    else:
+                        logits=predict(model,x,seq[:,:-1],event_ids)
                     nll_sum+=float(F.cross_entropy(logits.flatten(0,1),seq[:,1:].flatten(),ignore_index=0,reduction='sum'));tokens+=int((seq[:,1:]!=0).sum())
             if len(rows)!=2500:raise ValueError('Incomplete VALID worker')
             save(folder/f'val_rank{rank}.json',rows)
@@ -271,7 +280,9 @@ def distributed(cfg,guard=False):
                 if hybrid:
                     save(out/f'train_timing_rank{rank}.json',dict(seconds=time.monotonic()-train_start,updates=STEPS-cursor,
                          shared_updates=STEPS-cursor-1,ordinary_tail_updates=1,encoded_rows=encoded_rows,
-                         peak_allocated_GiB=torch.cuda.max_memory_allocated(device)/1024**3))
+                         peak_allocated_GiB=torch.cuda.max_memory_allocated(device)/1024**3,
+                         precision=precision,skipped_steps=skipped_steps,nonfinite_norms=nonfinite_norms,
+                         optimizer_steps=STEPS-cursor-skipped_steps))
             point=validate(epoch);better=state['best_CIDEr'] is None or point['CIDEr']>state['best_CIDEr']
             if better:state.update(best_CIDEr=point['CIDEr'],best_epoch=epoch)
             state['history'].append(point);state.update(epoch=epoch+1,batch_cursor=0,phase='train',epoch_nll_sum=0.,epoch_tokens=0);checkpoint(promote=better)
