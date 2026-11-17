@@ -79,7 +79,7 @@ class Checks(TestCase):
         self.assertNotIn('image_plan',source)
         self.assertNotIn('DDP(',source);self.assertNotIn('remaining=(10*STEPS',source)
         call=next(n for n in ast.walk(tree) if isinstance(n,ast.Call) and isinstance(n.func,ast.Name) and n.func.id=='Accelerator')
-        self.assertEqual(ast.literal_eval(next(k.value for k in call.keywords if k.arg=='mixed_precision')),'no')
+        self.assertEqual(next(k.value for k in call.keywords if k.arg=='mixed_precision').id,'precision')
         ast.parse((HERE/'csa_full_runtime.py').read_text(encoding='utf-8'))
         ast.parse((HERE/'score_csa_full.py').read_text(encoding='utf-8'))
 

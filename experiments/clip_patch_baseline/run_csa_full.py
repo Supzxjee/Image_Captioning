@@ -22,7 +22,7 @@ def distributed(cfg,guard=False):
     import torch.distributed as dist
     from torch.nn import functional as F
     from accelerate import Accelerator
-    from accelerate.utils import DistributedDataParallelKwargs,InitProcessGroupKwargs,DistributedType
+    from accelerate.utils import DistributedDataParallelKwargs,GradScalerKwargs,InitProcessGroupKwargs,DistributedType
     import accelerate
     from patch_beam import beam_search,text_from_ids
     from full_runtime import tensor_digest
@@ -32,7 +32,12 @@ def distributed(cfg,guard=False):
     rank=int(os.environ['LOCAL_RANK']);out=Path(cfg['output']);check_runtime(out,rank)
     if int(os.environ['WORLD_SIZE'])!=2:raise ValueError('Select T4x2')
     torch.set_num_threads(1)
-    accelerator=Accelerator(mixed_precision='no',gradient_accumulation_steps=1,dynamo_backend='no',kwargs_handlers=[DistributedDataParallelKwargs(broadcast_buffers=False),InitProcessGroupKwargs(backend='nccl',timeout=timedelta(seconds=1200))])
+    requested_precision=cfg.get('pilot_precision','no')
+    if requested_precision not in ('no','fp16') or (requested_precision=='fp16' and
+       (cfg.get('pilot_updates')!=2000 or cfg.get('pilot_batch_size',32)!=32 or not cfg.get('hybrid_sharing'))):
+        raise ValueError('FP16 is restricted to the matched 2,000-attempt batch32 pilot')
+    precision='no' if guard else requested_precision
+    accelerator=Accelerator(mixed_precision=precision,gradient_accumulation_steps=1,dynamo_backend='no',kwargs_handlers=[DistributedDataParallelKwargs(broadcast_buffers=False),GradScalerKwargs(init_scale=1024.),InitProcessGroupKwargs(backend='nccl',timeout=timedelta(seconds=1200))])
     device=accelerator.device
     torch.backends.cuda.matmul.allow_tf32=False;torch.backends.cudnn.allow_tf32=False
     started=time.monotonic();deadline=started+cfg['worker_seconds']
@@ -47,7 +52,8 @@ def distributed(cfg,guard=False):
     if pilot_updates is not None and (not hybrid or type(pilot_updates) is not int or not 0<pilot_updates*batch_scale<STEPS or cfg.get('resume_root')):
         raise ValueError('A bounded throughput pilot requires a fresh hybrid run')
     try:
-        if accelerate.__version__!='1.15.0' or accelerator.num_processes!=2 or accelerator.distributed_type!=DistributedType.MULTI_GPU or accelerator.gradient_accumulation_steps!=1 or accelerator.mixed_precision!='no':raise ValueError('NeedAccelerate1.15/twoGPU/FP32/accum1')
+        if accelerate.__version__!='1.15.0' or accelerator.num_processes!=2 or accelerator.distributed_type!=DistributedType.MULTI_GPU or accelerator.gradient_accumulation_steps!=1 or accelerator.mixed_precision!=precision:raise ValueError('Unexpected Accelerate runtime')
+        if precision=='fp16' and accelerator.scaler is None:raise ValueError('FP16 gradient scaler unavailable')
         save(out/f'accelerate_runtime_rank{rank}.json',dict(version=accelerate.__version__,device=str(device),precision=accelerator.mixed_precision,processes=accelerator.num_processes,accumulation=accelerator.gradient_accumulation_steps,prepared_dataloader=False))
         data,words,stage=load_stage(cfg['stage'],verify=rank==0);dist.barrier(device_ids=[rank])
         if cfg.get('feature_storage') and stage.get('feature_storage')!=cfg['feature_storage']:raise ValueError('Required local stage incomplete; do not fall back to mounted H5')
@@ -70,6 +76,7 @@ def distributed(cfg,guard=False):
             identity.update(schema='csa_hybrid_epoch1_v1',epochs=epochs,sharing='full_global32_only',feature_storage='mounted_h5')
         if pilot_updates is not None:
             identity.update(schema='csa_hybrid_throughput_v1',pilot_updates=pilot_updates)
+            if 'pilot_precision' in cfg:identity.update(precision=precision)
             if global_batch==64:
                 identity.update(global_batch=global_batch,lr_index='caption_exposure')
         optimizer=accelerator.prepare_optimizer(torch.optim.Adam(model.parameters(),lr=8e-6,betas=(.9,.99),eps=1e-8,weight_decay=0))
@@ -108,7 +115,9 @@ def distributed(cfg,guard=False):
                 raise ValueError('Batch 64 pilot checkpoint exposure mismatch')
             rng=dict(python=random.getstate(),numpy=np.random.get_state(),torch=torch.get_rng_state(),cuda=torch.cuda.get_rng_state(device));all_rng=[None,None];dist.all_gather_object(all_rng,rng)
             if rank==0:
-                temp=out/'checkpoint.tmp';torch.save(dict(model=model.state_dict(),optimizer=optimizer.state_dict(),state=state,identity=identity,rng_by_rank=all_rng),temp);os.replace(temp,out/'checkpoint.bin')
+                payload=dict(model=model.state_dict(),optimizer=optimizer.state_dict(),state=state,identity=identity,rng_by_rank=all_rng)
+                if accelerator.scaler is not None:payload['scaler']=accelerator.scaler.state_dict()
+                temp=out/'checkpoint.tmp';torch.save(payload,temp);os.replace(temp,out/'checkpoint.bin')
                 receipt=dict(sha256=sha(out/'checkpoint.bin'),updates=state['updates'],epoch=state['epoch'],phase=state['phase'],training_log_sha256=sha(out/'training.jsonl') if (out/'training.jsonl').is_file() else None)
                 atomic(out/'checkpoint_receipt.json',receipt);atomic(out/'progress.json',state)
                 if promote:
@@ -173,6 +182,8 @@ def distributed(cfg,guard=False):
             if state['phase']=='train':
                 train_start=time.monotonic()
                 encoded_rows=0
+                skipped_steps=0
+                nonfinite_norms=0
                 batch_type=HybridCaptionBatches if hybrid else CaptionBatches
                 if global_batch==64:
                     batch_type=SharedCaptionBatches
@@ -207,8 +218,13 @@ def distributed(cfg,guard=False):
                     nll=F.cross_entropy(logits.flatten(0,1),seq[:,1:].flatten(),ignore_index=0,reduction='sum');loss=nll*(2/int(count[0]))
                     if not torch.isfinite(loss):raise ValueError('Nonfinite XE')
                     accelerator.backward(loss);norm=accelerator.clip_grad_norm_(model.parameters(),1)
-                    if not torch.isfinite(norm):raise ValueError('Nonfinite gradient norm')
+                    finite_norm=bool(torch.isfinite(norm))
+                    if not finite_norm and precision!='fp16':raise ValueError('Nonfinite gradient norm')
                     optimizer.step()
+                    step_skipped=accelerator.optimizer_step_was_skipped
+                    if not finite_norm and not step_skipped:raise ValueError('Nonfinite gradient norm without a scaler skip')
+                    skipped_steps+=int(step_skipped)
+                    nonfinite_norms+=int(not finite_norm)
                     if events is not None:
                         events[2].record()
                         samples.append(events)
@@ -227,7 +243,8 @@ def distributed(cfg,guard=False):
                             samples.clear()
                             window_start=time.monotonic()
                         if rank==0:
-                            report=dict(epoch=epoch,updates=state['updates'],batch_cursor=offset+1,caption_events=state['caption_events'],NLL=float(total)/int(count[0]),lr=lr,grad_norm=float(norm),seconds=time.monotonic()-started,train_seconds=time.monotonic()-train_start)
+                            report=dict(epoch=epoch,updates=state['updates'],batch_cursor=offset+1,caption_events=state['caption_events'],NLL=float(total)/int(count[0]),lr=lr,grad_norm=float(norm) if finite_norm else None,seconds=time.monotonic()-started,train_seconds=time.monotonic()-train_start,
+                                        skipped_steps=skipped_steps,nonfinite_norms=nonfinite_norms)
                             with (out/'training.jsonl').open('a',encoding='utf-8') as f:f.write(json.dumps(report)+'\n')
                             print('FULL XE',report,flush=True)
                         completed=offset+1-cursor
@@ -242,7 +259,9 @@ def distributed(cfg,guard=False):
                         raise ValueError('Incorrect bounded training exposure')
                     del it
                     timing=dict(seconds=time.monotonic()-train_start,updates=pilot_updates,encoded_rows=encoded_rows,
-                                peak_allocated_GiB=torch.cuda.max_memory_allocated(device)/1024**3)
+                                peak_allocated_GiB=torch.cuda.max_memory_allocated(device)/1024**3,
+                                precision=precision,skipped_steps=skipped_steps,nonfinite_norms=nonfinite_norms,
+                                optimizer_steps=pilot_updates-skipped_steps)
                     save(out/f'train_timing_rank{rank}.json',timing)
                     dist.barrier(device_ids=[rank])
                     if rank==0:
