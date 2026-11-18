@@ -1,0 +1,225 @@
+{
+  "run_status": {
+    "complete": true,
+    "training": false,
+    "test_tuning": false,
+    "seed": 43,
+    "source_version": "ducanh3/notebook7bc83c4c76/179",
+    "caption_test_output": "ducanh3/notebook7bc83c4c76/181",
+    "reranking": true
+  },
+  "result": {
+    "status": "CSA_PER_CAPTION_FIXED_RERANK_TEST5000_COMPLETE",
+    "images": 5000,
+    "test_used": true,
+    "training": false,
+    "checkpoint_sha256": "a51e7ec21be68aa1cda9e0805bd6248add6199914a5c262fce138988066051a5",
+    "metrics": {
+      "decoder_rank0": {
+        "CIDEr": 1.2198431675475085,
+        "BLEU_1": 0.7776121266986261,
+        "BLEU_4": 0.37790280281231137,
+        "METEOR": 0.28813366890256553,
+        "SPICE": 0.21825731146122443,
+        "ROUGE_L": 0.579128129683382,
+        "CHAIRs": 0.0406,
+        "CHAIRi": 0.02803483941208492,
+        "Recall": 0.43712688936872857,
+        "counts": {
+          "images": 5000,
+          "hallucinated_captions": 203,
+          "hallucinated_mentions": 206,
+          "object_mentions": 7348,
+          "recalled_unique": 6883,
+          "reference_unique": 15746
+        },
+        "mean_words": 9.2884,
+        "short_le2": 0,
+        "NLL": 2.178126289902086
+      },
+      "clip_object_fixed": {
+        "CIDEr": 1.2436387660847645,
+        "BLEU_1": 0.7790993525432683,
+        "BLEU_4": 0.3741711101557513,
+        "METEOR": 0.2941087006127335,
+        "SPICE": 0.22570564007184174,
+        "ROUGE_L": 0.582496122998859,
+        "CHAIRs": 0.0366,
+        "CHAIRi": 0.02450915799183028,
+        "Recall": 0.4493204623396418,
+        "counts": {
+          "images": 5000,
+          "hallucinated_captions": 183,
+          "hallucinated_mentions": 186,
+          "object_mentions": 7589,
+          "recalled_unique": 7075,
+          "reference_unique": 15746
+        },
+        "mean_words": 9.6686,
+        "short_le2": 0,
+        "NLL": 2.178126289902086
+      }
+    },
+    "changes": {
+      "changed_captions": 2903,
+      "rank_histogram": {
+        "0": 2097,
+        "1": 1268,
+        "2": 865,
+        "3": 537,
+        "4": 233
+      },
+      "CHAIR_repairs": 69,
+      "CHAIR_new_flags": 49
+    },
+    "selector": {
+      "decoder_weight": 0.3,
+      "clip_weight": 0.4,
+      "object_weight": 0.3,
+      "min_detection_confidence": 0.5,
+      "hallucination_penalty": 1.0,
+      "tie_break": "earlier beam"
+    },
+    "tuned_on_test": false,
+    "oracle_used_for_selection": false,
+    "prior_project_test_exposure": true,
+    "selection": "both prelocked policies reported; no TEST-based fallback",
+    "NLL_note": "Same frozen captioner NLL for both output selection policies.",
+    "seed": 43,
+    "checkpoint_source": "ducanh3/notebook7bc83c4c76/179",
+    "caption_test_output": "ducanh3/notebook7bc83c4c76/181",
+    "verified_original_top1_receipts": true,
+    "verified_original_top1_metrics": true
+  },
+  "rerank_output_source": "ducanh3/notebook7bc83c4c76/183",
+  "zip_sha256": "18347c68af4083bcf939372abfd0d167d6c4f2ed10caa8f44f56b8d3f289649d",
+  "checkpoint_source": {
+    "version": "ducanh3/notebook7bc83c4c76/179",
+    "sha256": "a51e7ec21be68aa1cda9e0805bd6248add6199914a5c262fce138988066051a5",
+    "path": "/tmp/clip-patch199-test-s83z6cm2/download_best/csa_per_caption_h5_seed43_resume178/best.bin",
+    "origin": "exact Save Version API download"
+  },
+  "test_lock": {
+    "schema": "csa_per_caption_seed_test_v1",
+    "source_version": "ducanh3/notebook7bc83c4c76/179",
+    "checkpoint_sha256": "a51e7ec21be68aa1cda9e0805bd6248add6199914a5c262fce138988066051a5",
+    "training_commit": "5eb012279e6fd0b5e47a56710ed5e3efa7449d2f",
+    "epoch": 8,
+    "updates": 141688,
+    "beam_width": 5,
+    "max_new_tokens": 20,
+    "length_normalization": false,
+    "reranking": false,
+    "test_id_sha256": "18a173e42d695050f9700423634f3caee4401a03ba9481320f57044806a8bc95",
+    "selection": "checkpoint fixed by VALID before TEST; rank0 raw beam cumulative logprob",
+    "prior_project_test_exposure": true,
+    "method": "csa_structure_patch_prompt_grouped_per_caption_accelerate_v1",
+    "stage_receipt_sha256": "952931dc463704270556f69227bb91d8f58d09ec20de7ee428f83e7fff8e61c9"
+  },
+  "rerank_lock": {
+    "checkpoint_sha256": "a51e7ec21be68aa1cda9e0805bd6248add6199914a5c262fce138988066051a5",
+    "images": 5000,
+    "clip": {
+      "id": "openai/clip-vit-base-patch16",
+      "revision": "57c216476eefef5ab752ec549e440a49ae4ae5f3",
+      "files_sha256": {
+        "merges.txt": "9fd691f7c8039210e0fced15865466c65820d09b63988b0174bfe25de299051a",
+        "pytorch_model.bin": "ec89c7b09c749a60aae3c9cd910516f24b58214a7df060b48962d14c469cfbf0",
+        "special_tokens_map.json": "f8c0d6c39aee3f8431078ef6646567b0aba7f2246e9c54b8b99d55c22b707cbf",
+        "config.json": "eaf1c9089a8553c913d27ea66407f8bfc2be9989c80c9f331ddb3d63d4c5e8ad",
+        "tokenizer.json": "a83e0809aa4c3af7208b2df632a7a69668c6d48775b3c3fe4e1b1199d1f8b8f4",
+        "preprocessor_config.json": "910e70b3956ac9879ebc90b22fb3bc8a75b6a0677814500101a4c072bd7857bd",
+        "tokenizer_config.json": "3f74b6a4d97fee70b3b96921a687fc5e3f2fb583f5f81e7c178c0c22281beade",
+        "vocab.json": "3f0c4f7d2086b61b38487075278ea9ed04edb53a03cbb045b86c27190fa8fb69"
+      }
+    },
+    "selector": {
+      "decoder_weight": 0.3,
+      "clip_weight": 0.4,
+      "object_weight": 0.3,
+      "min_detection_confidence": 0.5,
+      "hallucination_penalty": 1.0,
+      "tie_break": "earlier beam"
+    },
+    "inference_sha256": "94bed598219ab3d2b8274d62f7dbd1786475fbbb6e6abd23dc12f20adcbafbc9",
+    "references_sha256": "311ff29fc3dab1dde650a01b141c2498fbc44a4d7f96f63059dfffe0bdd6e776"
+  },
+  "workers": {
+    "0": {
+      "complete": true,
+      "rank": 0,
+      "images": 2500,
+      "NLL_sum": 311225.8708496094,
+      "NLL_tokens": 143043,
+      "seconds": 196.190387181,
+      "training": false,
+      "checkpoint_sha256": "a51e7ec21be68aa1cda9e0805bd6248add6199914a5c262fce138988066051a5",
+      "caption_sha256": "fc65ddff2c705d11cb7e7803dedb6e36aabac25fb4a21c6680b7fb17425a6bba",
+      "beams_sha256": "fcf3a57392af5f424508345a51dc1d5b0d5dfa25048d5c1a798a119c2c3e828c",
+      "runtime_policy": {
+        "training_torch": "2.11.0+cu128",
+        "inference_torch": "2.11.0+cu128",
+        "cuda_wheel_changed": false,
+        "policy": "Same publicTorch2.11.0 observed CUDA wheels; strictstate and actual GPU beam-path check required.",
+        "bitwise_cross_build_equivalence_established": false
+      },
+      "first_GPU_beam_path_check_passed": true
+    },
+    "1": {
+      "complete": true,
+      "rank": 1,
+      "images": 2500,
+      "NLL_sum": 311960.0200805664,
+      "NLL_tokens": 143068,
+      "seconds": 189.89375279699993,
+      "training": false,
+      "checkpoint_sha256": "a51e7ec21be68aa1cda9e0805bd6248add6199914a5c262fce138988066051a5",
+      "caption_sha256": "44c265dae1be8cea672741ff8efab5cba6eba548f06644ae6feca18290ec57be",
+      "beams_sha256": "2c8727f5991d18a7601d66b1813c48522bc12920bc961f057adfb353f25e71a1",
+      "runtime_policy": {
+        "training_torch": "2.11.0+cu128",
+        "inference_torch": "2.11.0+cu128",
+        "cuda_wheel_changed": false,
+        "policy": "Same publicTorch2.11.0 observed CUDA wheels; strictstate and actual GPU beam-path check required.",
+        "bitwise_cross_build_equivalence_established": false
+      },
+      "first_GPU_beam_path_check_passed": true
+    }
+  },
+  "clip_workers": {
+    "0": {
+      "complete": true,
+      "images": 2500,
+      "scored_pairs": 12500,
+      "scores_sha256": "3dc8890163197aed0372d1140e05e14ab5149afeccc6c016b96bccf1a7d42adf",
+      "seconds": 96.41063026400002,
+      "torch_version": "2.11.0+cu128",
+      "training": false,
+      "clip_revision": "57c216476eefef5ab752ec549e440a49ae4ae5f3"
+    },
+    "1": {
+      "complete": true,
+      "images": 2500,
+      "scored_pairs": 12500,
+      "scores_sha256": "b0956df4cdb05c0a7269f39ff9b1e3481a11b52b3a8c075a0f016663436e572d",
+      "seconds": 96.93183656199994,
+      "torch_version": "2.11.0+cu128",
+      "training": false,
+      "clip_revision": "57c216476eefef5ab752ec549e440a49ae4ae5f3"
+    }
+  },
+  "verification": {
+    "unique_images": 5000,
+    "candidate_count": 25000,
+    "prior_caption_rank_sha_match": true,
+    "beam_and_clip_score_payload_sha_checked": true,
+    "frozen_selector_replayed_on_all_images": true,
+    "original_top1_metrics_replayed": true,
+    "chair_counts_and_transitions_recomputed": true,
+    "cider_per_image_means_checked": true,
+    "NLL_recomputed": true,
+    "actual_caption_text_changes": 2903,
+    "model_executed_locally": false,
+    "CLIP_asset_bytes_in_review": false
+  }
+}

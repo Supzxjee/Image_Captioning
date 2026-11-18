@@ -1,0 +1,345 @@
+{
+  "status": "THREE_SEED_XE_FIXED_RERANK_TEST5000_COMPLETE",
+  "split": "MS COCO Karpathy TEST5000",
+  "seeds": [
+    42,
+    43,
+    44
+  ],
+  "selector": {
+    "decoder_weight": 0.3,
+    "clip_weight": 0.4,
+    "object_weight": 0.3,
+    "min_detection_confidence": 0.5,
+    "hallucination_penalty": 1.0,
+    "tie_break": "earlier beam"
+  },
+  "units": "metrics x100; CHAIRs/CHAIRi/Recall percent; NLL unscaled",
+  "std_definition": "sample standard deviation across training seeds, n-1; not a confidence interval",
+  "rows": [
+    {
+      "seed": 42,
+      "policies": {
+        "decoder_rank0": {
+          "BLEU_1": 77.62520295217418,
+          "BLEU_4": 37.741465333534805,
+          "CIDEr": 121.63754848645776,
+          "ROUGE_L": 57.99110471922811,
+          "METEOR": 28.829007699143826,
+          "SPICE": 21.852672583381093,
+          "CHAIRs": 3.9600000000000004,
+          "CHAIRi": 2.8016946836135026,
+          "Recall": 43.490410262923916,
+          "NLL": 2.182138573369197
+        },
+        "clip_object_fixed": {
+          "BLEU_1": 78.10048233175155,
+          "BLEU_4": 37.74208891947837,
+          "CIDEr": 125.23065111706522,
+          "ROUGE_L": 58.43746619216413,
+          "METEOR": 29.46472701957009,
+          "SPICE": 22.840921289725042,
+          "CHAIRs": 3.32,
+          "CHAIRi": 2.2655007949125596,
+          "Recall": 44.90029213768576,
+          "NLL": 2.182138573369197
+        }
+      },
+      "changes": {
+        "changed_captions": 2925,
+        "rank_histogram": {
+          "0": 2075,
+          "1": 1286,
+          "2": 877,
+          "3": 546,
+          "4": 216
+        },
+        "CHAIR_repairs": 68,
+        "CHAIR_new_flags": 36
+      },
+      "delta": {
+        "BLEU_1": 0.47527937957737265,
+        "BLEU_4": 0.0006235859435648194,
+        "CIDEr": 3.5931026306074614,
+        "ROUGE_L": 0.4463614729360188,
+        "METEOR": 0.635719320426265,
+        "SPICE": 0.9882487063439491,
+        "CHAIRs": -0.6400000000000006,
+        "CHAIRi": -0.536193888700943,
+        "Recall": 1.4098818747618438,
+        "NLL": 0.0
+      }
+    },
+    {
+      "seed": 43,
+      "policies": {
+        "decoder_rank0": {
+          "BLEU_1": 77.76121266986262,
+          "BLEU_4": 37.790280281231134,
+          "CIDEr": 121.98431675475085,
+          "ROUGE_L": 57.9128129683382,
+          "METEOR": 28.813366890256553,
+          "SPICE": 21.825731146122443,
+          "CHAIRs": 4.06,
+          "CHAIRi": 2.803483941208492,
+          "Recall": 43.71268893687286,
+          "NLL": 2.178126289902086
+        },
+        "clip_object_fixed": {
+          "BLEU_1": 77.90993525432684,
+          "BLEU_4": 37.41711101557513,
+          "CIDEr": 124.36387660847646,
+          "ROUGE_L": 58.2496122998859,
+          "METEOR": 29.410870061273346,
+          "SPICE": 22.570564007184174,
+          "CHAIRs": 3.66,
+          "CHAIRi": 2.450915799183028,
+          "Recall": 44.93204623396418,
+          "NLL": 2.178126289902086
+        }
+      },
+      "changes": {
+        "changed_captions": 2903,
+        "rank_histogram": {
+          "0": 2097,
+          "1": 1268,
+          "2": 865,
+          "3": 537,
+          "4": 233
+        },
+        "CHAIR_repairs": 69,
+        "CHAIR_new_flags": 49
+      },
+      "delta": {
+        "BLEU_1": 0.14872258446422393,
+        "BLEU_4": -0.37316926565600284,
+        "CIDEr": 2.3795598537256097,
+        "ROUGE_L": 0.33679933154769515,
+        "METEOR": 0.5975031710167933,
+        "SPICE": 0.744832861061731,
+        "CHAIRs": -0.39999999999999947,
+        "CHAIRi": -0.35256814202546405,
+        "Recall": 1.219357297091321,
+        "NLL": 0.0
+      }
+    },
+    {
+      "seed": 44,
+      "policies": {
+        "decoder_rank0": {
+          "BLEU_1": 78.09570848354568,
+          "BLEU_4": 37.87049184490714,
+          "CIDEr": 121.67111895137317,
+          "ROUGE_L": 57.97898890845321,
+          "METEOR": 28.70584350306239,
+          "SPICE": 21.66770510844247,
+          "CHAIRs": 4.4799999999999995,
+          "CHAIRi": 3.139440065235118,
+          "Recall": 43.668233202083066,
+          "NLL": 2.188388604002932
+        },
+        "clip_object_fixed": {
+          "BLEU_1": 78.2256384618573,
+          "BLEU_4": 37.77886658986051,
+          "CIDEr": 125.0598652034297,
+          "ROUGE_L": 58.37294531945505,
+          "METEOR": 29.3667937143373,
+          "SPICE": 22.5710765542307,
+          "CHAIRs": 3.9,
+          "CHAIRi": 2.641955835962145,
+          "Recall": 45.033659342055124,
+          "NLL": 2.188388604002932
+        }
+      },
+      "changes": {
+        "changed_captions": 2840,
+        "rank_histogram": {
+          "0": 2160,
+          "1": 1228,
+          "2": 848,
+          "3": 538,
+          "4": 226
+        },
+        "CHAIR_repairs": 70,
+        "CHAIR_new_flags": 41
+      },
+      "delta": {
+        "BLEU_1": 0.12992997831162256,
+        "BLEU_4": -0.09162525504662966,
+        "CIDEr": 3.388746252056521,
+        "ROUGE_L": 0.3939564110018381,
+        "METEOR": 0.6609502112749119,
+        "SPICE": 0.9033714457882311,
+        "CHAIRs": -0.5799999999999996,
+        "CHAIRi": -0.4974842292729731,
+        "Recall": 1.3654261399720582,
+        "NLL": 0.0
+      }
+    }
+  ],
+  "statistics": {
+    "decoder_rank0": {
+      "BLEU_1": {
+        "mean": 77.82737470186082,
+        "sample_std": 0.24212997464459768
+      },
+      "BLEU_4": {
+        "mean": 37.80074581989103,
+        "sample_std": 0.06514680179264601
+      },
+      "CIDEr": {
+        "mean": 121.76432806419393,
+        "sample_std": 0.1912537895268252
+      },
+      "ROUGE_L": {
+        "mean": 57.960968865339844,
+        "sample_std": 0.04214191535404761
+      },
+      "METEOR": {
+        "mean": 28.782739364154256,
+        "sample_std": 0.06705138936261341
+      },
+      "SPICE": {
+        "mean": 21.782036279315335,
+        "sample_std": 0.0999258361749393
+      },
+      "CHAIRs": {
+        "mean": 4.166666666666666,
+        "sample_std": 0.2759226944876647
+      },
+      "CHAIRi": {
+        "mean": 2.9148728966857043,
+        "sample_std": 0.19448293049368362
+      },
+      "Recall": {
+        "mean": 43.62377746729328,
+        "sample_std": 0.11761881860442168
+      },
+      "NLL": {
+        "mean": 2.182884489091405,
+        "sample_std": 0.005171659827809849
+      }
+    },
+    "clip_object_fixed": {
+      "BLEU_1": {
+        "mean": 78.0786853493119,
+        "sample_std": 0.1589762879924591
+      },
+      "BLEU_4": {
+        "mean": 37.646022174971336,
+        "sample_std": 0.19909391862076353
+      },
+      "CIDEr": {
+        "mean": 124.88479764299046,
+        "sample_std": 0.45914159060515475
+      },
+      "ROUGE_L": {
+        "mean": 58.353341270501694,
+        "sample_std": 0.09544899298863657
+      },
+      "METEOR": {
+        "mean": 29.414130265060248,
+        "sample_std": 0.04904798431132281
+      },
+      "SPICE": {
+        "mean": 22.660853950379973,
+        "sample_std": 0.15594310084203192
+      },
+      "CHAIRs": {
+        "mean": 3.6266666666666665,
+        "sample_std": 0.29143323992525866
+      },
+      "CHAIRi": {
+        "mean": 2.4527908100192444,
+        "sample_std": 0.18823452454886755
+      },
+      "Recall": {
+        "mean": 44.95533257123502,
+        "sample_std": 0.06966629693003257
+      },
+      "NLL": {
+        "mean": 2.182884489091405,
+        "sample_std": 0.005171659827809849
+      }
+    }
+  },
+  "delta_statistics": {
+    "BLEU_1": {
+      "mean": 0.25131064745107307,
+      "sample_std": 0.1941900750275315
+    },
+    "BLEU_4": {
+      "mean": -0.15472364491968923,
+      "sample_std": 0.19472115724841912
+    },
+    "CIDEr": {
+      "mean": 3.1204695787965306,
+      "sample_std": 0.6497313274670651
+    },
+    "ROUGE_L": {
+      "mean": 0.3923724051618507,
+      "sample_std": 0.05479824369698897
+    },
+    "METEOR": {
+      "mean": 0.63139090090599,
+      "sample_std": 0.031944219211564005
+    },
+    "SPICE": {
+      "mean": 0.878817671064637,
+      "sample_std": 0.12355154520885989
+    },
+    "CHAIRs": {
+      "mean": -0.5399999999999999,
+      "sample_std": 0.12489995996796843
+    },
+    "CHAIRi": {
+      "mean": -0.46208208666646006,
+      "sample_std": 0.09679662951973433
+    },
+    "Recall": {
+      "mean": 1.331555103941741,
+      "sample_std": 0.09967617059988844
+    },
+    "NLL": {
+      "mean": 0.0,
+      "sample_std": 0.0
+    }
+  },
+  "limits": [
+    "XE plus frozen rerank only; new seeds have no SCST result.",
+    "Baseline has one seed and a different decoder architecture; system comparison does not isolate alignment/prompt.",
+    "Seed42 historical I/O versus direct H5 for43/44; no bitwise recipe equivalence claim.",
+    "Prior project TEST exposure recorded.",
+    "No claim that all caption metrics improve; BLEU4 decreases for43/44."
+  ],
+  "sources": {
+    "42": "CSA_PER_CAPTION_BEST9_RERANK_TEST5000_RESULT.json",
+    "43": "ducanh3/notebook7bc83c4c76/183",
+    "44": "ducanh2403/2-vi-cai-kia-qua-nhieu/240"
+  },
+  "comparison_with_single_seed_baseline": {
+    "CIDEr": {
+      "baseline": 120.51445498745915,
+      "rerank_mean": 124.88479764299046,
+      "delta": 4.370342655531317
+    },
+    "CHAIRs": {
+      "baseline": 5.16,
+      "rerank_mean": 3.6266666666666665,
+      "delta": -1.5333333333333337
+    },
+    "CHAIRi": {
+      "baseline": 3.5957504767093433,
+      "rerank_mean": 2.4527908100192444,
+      "delta": -1.142959666690099
+    }
+  },
+  "sheet_update": {
+    "spreadsheet_url": "https://docs.google.com/spreadsheets/d/1XZ5iuyCs5JP8VE6dT7AYdVTiY1_nK4C_QdXs5ppw6FA/edit",
+    "sheet": "Kết quả mới",
+    "range": "A214:P229",
+    "values_read_back_exactly": true,
+    "formatting_checked_via_api": true,
+    "native_visual_fit_inspected": false
+  }
+}

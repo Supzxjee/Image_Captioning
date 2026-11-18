@@ -1,0 +1,225 @@
+{
+  "run_status": {
+    "complete": true,
+    "training": false,
+    "test_tuning": false,
+    "seed": 44,
+    "source_version": "ducanh2403/2-vi-cai-kia-qua-nhieu/236",
+    "caption_test_output": "ducanh2403/2-vi-cai-kia-qua-nhieu/238",
+    "reranking": true
+  },
+  "result": {
+    "status": "CSA_PER_CAPTION_FIXED_RERANK_TEST5000_COMPLETE",
+    "images": 5000,
+    "test_used": true,
+    "training": false,
+    "checkpoint_sha256": "feaaf3fe251ee01c258c82f538a5abc0d0c5dae67ffb15c2108180a1c64c543f",
+    "metrics": {
+      "decoder_rank0": {
+        "CIDEr": 1.2167111895137317,
+        "BLEU_1": 0.7809570848354568,
+        "BLEU_4": 0.37870491844907145,
+        "METEOR": 0.2870584350306239,
+        "SPICE": 0.2166770510844247,
+        "ROUGE_L": 0.5797898890845321,
+        "CHAIRs": 0.0448,
+        "CHAIRi": 0.03139440065235118,
+        "Recall": 0.4366823320208307,
+        "counts": {
+          "images": 5000,
+          "hallucinated_captions": 224,
+          "hallucinated_mentions": 231,
+          "object_mentions": 7358,
+          "recalled_unique": 6876,
+          "reference_unique": 15746
+        },
+        "mean_words": 9.2096,
+        "short_le2": 0,
+        "NLL": 2.188388604002932
+      },
+      "clip_object_fixed": {
+        "CIDEr": 1.2505986520342969,
+        "BLEU_1": 0.782256384618573,
+        "BLEU_4": 0.37778866589860516,
+        "METEOR": 0.293667937143373,
+        "SPICE": 0.22571076554230698,
+        "ROUGE_L": 0.5837294531945505,
+        "CHAIRs": 0.039,
+        "CHAIRi": 0.02641955835962145,
+        "Recall": 0.45033659342055127,
+        "counts": {
+          "images": 5000,
+          "hallucinated_captions": 195,
+          "hallucinated_mentions": 201,
+          "object_mentions": 7608,
+          "recalled_unique": 7091,
+          "reference_unique": 15746
+        },
+        "mean_words": 9.6012,
+        "short_le2": 0,
+        "NLL": 2.188388604002932
+      }
+    },
+    "changes": {
+      "changed_captions": 2840,
+      "rank_histogram": {
+        "0": 2160,
+        "1": 1228,
+        "2": 848,
+        "3": 538,
+        "4": 226
+      },
+      "CHAIR_repairs": 70,
+      "CHAIR_new_flags": 41
+    },
+    "selector": {
+      "decoder_weight": 0.3,
+      "clip_weight": 0.4,
+      "object_weight": 0.3,
+      "min_detection_confidence": 0.5,
+      "hallucination_penalty": 1.0,
+      "tie_break": "earlier beam"
+    },
+    "tuned_on_test": false,
+    "oracle_used_for_selection": false,
+    "prior_project_test_exposure": true,
+    "selection": "both prelocked policies reported; no TEST-based fallback",
+    "NLL_note": "Same frozen captioner NLL for both output selection policies.",
+    "seed": 44,
+    "checkpoint_source": "ducanh2403/2-vi-cai-kia-qua-nhieu/236",
+    "caption_test_output": "ducanh2403/2-vi-cai-kia-qua-nhieu/238",
+    "verified_original_top1_receipts": true,
+    "verified_original_top1_metrics": true
+  },
+  "rerank_output_source": "ducanh2403/2-vi-cai-kia-qua-nhieu/240",
+  "zip_sha256": "156e98a1ce0d2218f4fab51db4d3d302a74d82db45fc1e752d47dd7c1794b69a",
+  "checkpoint_source": {
+    "version": "ducanh2403/2-vi-cai-kia-qua-nhieu/236",
+    "sha256": "feaaf3fe251ee01c258c82f538a5abc0d0c5dae67ffb15c2108180a1c64c543f",
+    "path": "/tmp/clip-patch199-test-v702puwz/download_best/csa_per_caption_h5_seed44_resume235/best.bin",
+    "origin": "exact Save Version API download"
+  },
+  "test_lock": {
+    "schema": "csa_per_caption_seed_test_v1",
+    "source_version": "ducanh2403/2-vi-cai-kia-qua-nhieu/236",
+    "checkpoint_sha256": "feaaf3fe251ee01c258c82f538a5abc0d0c5dae67ffb15c2108180a1c64c543f",
+    "training_commit": "5eb012279e6fd0b5e47a56710ed5e3efa7449d2f",
+    "epoch": 7,
+    "updates": 123977,
+    "beam_width": 5,
+    "max_new_tokens": 20,
+    "length_normalization": false,
+    "reranking": false,
+    "test_id_sha256": "18a173e42d695050f9700423634f3caee4401a03ba9481320f57044806a8bc95",
+    "selection": "checkpoint fixed by VALID before TEST; rank0 raw beam cumulative logprob",
+    "prior_project_test_exposure": true,
+    "method": "csa_structure_patch_prompt_grouped_per_caption_accelerate_v1",
+    "stage_receipt_sha256": "90de673e8e5e446268da968dc10d416e3e8b7a5dac21545ba0dbf6c416c29bd4"
+  },
+  "rerank_lock": {
+    "checkpoint_sha256": "feaaf3fe251ee01c258c82f538a5abc0d0c5dae67ffb15c2108180a1c64c543f",
+    "images": 5000,
+    "clip": {
+      "id": "openai/clip-vit-base-patch16",
+      "revision": "57c216476eefef5ab752ec549e440a49ae4ae5f3",
+      "files_sha256": {
+        "merges.txt": "9fd691f7c8039210e0fced15865466c65820d09b63988b0174bfe25de299051a",
+        "pytorch_model.bin": "ec89c7b09c749a60aae3c9cd910516f24b58214a7df060b48962d14c469cfbf0",
+        "special_tokens_map.json": "f8c0d6c39aee3f8431078ef6646567b0aba7f2246e9c54b8b99d55c22b707cbf",
+        "config.json": "eaf1c9089a8553c913d27ea66407f8bfc2be9989c80c9f331ddb3d63d4c5e8ad",
+        "tokenizer.json": "a83e0809aa4c3af7208b2df632a7a69668c6d48775b3c3fe4e1b1199d1f8b8f4",
+        "preprocessor_config.json": "910e70b3956ac9879ebc90b22fb3bc8a75b6a0677814500101a4c072bd7857bd",
+        "tokenizer_config.json": "3f74b6a4d97fee70b3b96921a687fc5e3f2fb583f5f81e7c178c0c22281beade",
+        "vocab.json": "3f0c4f7d2086b61b38487075278ea9ed04edb53a03cbb045b86c27190fa8fb69"
+      }
+    },
+    "selector": {
+      "decoder_weight": 0.3,
+      "clip_weight": 0.4,
+      "object_weight": 0.3,
+      "min_detection_confidence": 0.5,
+      "hallucination_penalty": 1.0,
+      "tie_break": "earlier beam"
+    },
+    "inference_sha256": "94bed598219ab3d2b8274d62f7dbd1786475fbbb6e6abd23dc12f20adcbafbc9",
+    "references_sha256": "311ff29fc3dab1dde650a01b141c2498fbc44a4d7f96f63059dfffe0bdd6e776"
+  },
+  "workers": {
+    "0": {
+      "complete": true,
+      "rank": 0,
+      "images": 2500,
+      "NLL_sum": 312738.02069091797,
+      "NLL_tokens": 143043,
+      "seconds": 192.40637988100002,
+      "training": false,
+      "checkpoint_sha256": "feaaf3fe251ee01c258c82f538a5abc0d0c5dae67ffb15c2108180a1c64c543f",
+      "caption_sha256": "e21245b0fe3d091d078dec78a28d7010fb45075a9176b89ac14779fb7488caff",
+      "beams_sha256": "5d8a626f26b7f135ea9b666ab4fafd437ddce14fea68ec7bf0189bdc7e251de8",
+      "runtime_policy": {
+        "training_torch": "2.11.0+cu128",
+        "inference_torch": "2.11.0+cu128",
+        "cuda_wheel_changed": false,
+        "policy": "Same publicTorch2.11.0 observed CUDA wheels; strictstate and actual GPU beam-path check required.",
+        "bitwise_cross_build_equivalence_established": false
+      },
+      "first_GPU_beam_path_check_passed": true
+    },
+    "1": {
+      "complete": true,
+      "rank": 1,
+      "images": 2500,
+      "NLL_sum": 313384.03118896484,
+      "NLL_tokens": 143068,
+      "seconds": 195.71908765800003,
+      "training": false,
+      "checkpoint_sha256": "feaaf3fe251ee01c258c82f538a5abc0d0c5dae67ffb15c2108180a1c64c543f",
+      "caption_sha256": "ad435bac5cf6ab71928dbafc696fdcfe60942c41bf63c3b88ec31573b440682a",
+      "beams_sha256": "223be04197feec423244240decbdc698f92af7e686593e72d85ac0a85f52a052",
+      "runtime_policy": {
+        "training_torch": "2.11.0+cu128",
+        "inference_torch": "2.11.0+cu128",
+        "cuda_wheel_changed": false,
+        "policy": "Same publicTorch2.11.0 observed CUDA wheels; strictstate and actual GPU beam-path check required.",
+        "bitwise_cross_build_equivalence_established": false
+      },
+      "first_GPU_beam_path_check_passed": true
+    }
+  },
+  "clip_workers": {
+    "0": {
+      "complete": true,
+      "images": 2500,
+      "scored_pairs": 12500,
+      "scores_sha256": "bcc522bbacd056ada04d2b5bceec9a87b4f626df4b9ff143fccab9d91d907eca",
+      "seconds": 89.54851481900005,
+      "torch_version": "2.11.0+cu128",
+      "training": false,
+      "clip_revision": "57c216476eefef5ab752ec549e440a49ae4ae5f3"
+    },
+    "1": {
+      "complete": true,
+      "images": 2500,
+      "scored_pairs": 12500,
+      "scores_sha256": "ad1577c06ed4fee96adb4f4ff31203a03cc31591898dcb7ab41f97836b8979a9",
+      "seconds": 90.13818781700002,
+      "torch_version": "2.11.0+cu128",
+      "training": false,
+      "clip_revision": "57c216476eefef5ab752ec549e440a49ae4ae5f3"
+    }
+  },
+  "verification": {
+    "unique_images": 5000,
+    "candidate_count": 25000,
+    "prior_caption_rank_sha_match": true,
+    "beam_and_clip_score_payload_sha_checked": true,
+    "frozen_selector_replayed_on_all_images": true,
+    "original_top1_metrics_replayed": true,
+    "chair_counts_and_transitions_recomputed": true,
+    "cider_per_image_means_checked": true,
+    "NLL_recomputed": true,
+    "actual_caption_text_changes": 2840,
+    "model_executed_locally": false,
+    "CLIP_asset_bytes_in_review": false
+  }
+}
