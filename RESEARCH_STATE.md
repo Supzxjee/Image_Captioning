@@ -10,6 +10,9 @@ Cập nhật: 18/11/2026, giờ Việt Nam. File này là bản tóm tắt để
 
 ## Hiện đang ở đâu
 
+- **Seed TEST API routing shadow fixed.** First seed43 TEST log showed inherited ROUTING_PREFLIGHT overwrote the new definition, asserting obsolete kltnnnnnff/v9 before checkpoint download. Removed duplicate in both seed notebooks. New offline regression test checks all cells for duplicate definitions, executes effective mocked routing for179/236 and rejects injected stale assignment. PASS. Corrected V2 copies in Downloads; actual API/GPU/scorers pending.
+
+
 - **Additional-seed TEST5000 API notebooks ready.** User confirmed seed43 source ducanh3/notebook7bc83c4c76/179 (best8 SHAa51e7ec2…) and seed44 source ducanh2403/2-vi-cai-kia-qua-nhieu/236 (best7 SHAfeaaf3fe…). [Protocol](experiments/clip_patch_baseline/CSA_PER_CAPTION_SEED_TEST_PROTOCOL.md). Two CSA_PER_CAPTION_SEED43/44_TEST5000_API_2GPU notebooks in experiments/clip_patch_baseline and Downloads. Same seed42 cohort, FP32 model, prompt181 and beam5/max20 policy. Downloads only best.bin with exact SHA, checks seed/best cursor and runs all eight metrics plus NLL. Notebook/source compilation, source pins and mocked correct/wrong seed/endpoint/decode contracts pass. API/GPU/CPU scorer execution pending.
 
 
