@@ -1,0 +1,136 @@
+{
+  "status": "THREE_SEED_XE10_TEST5000_COMPLETE",
+  "split": "MS COCO Karpathy TEST5000",
+  "selection": "max VALID CIDEr over 10 XE epochs per seed; fixed checkpoint before TEST",
+  "seeds": [
+    42,
+    43,
+    44
+  ],
+  "rows": [
+    {
+      "seed": 42,
+      "best_epoch": 9,
+      "checkpoint_sha256": "b0c5bde0921a4c828ac094b264f502654224aa9365ee40cdce1c15c82fe9aeef",
+      "checkpoint_source": "csa_structure_per_caption_full_xe10_resume124177",
+      "test_output_source": null,
+      "BLEU_1": 77.62520295217418,
+      "BLEU_4": 37.741465333534805,
+      "CIDEr": 121.63754848645776,
+      "ROUGE_L": 57.99110471922811,
+      "METEOR": 28.829007699143826,
+      "SPICE": 21.852672583381093,
+      "CHAIRs": 3.9600000000000004,
+      "CHAIRi": 2.8016946836135026,
+      "Recall": 43.490410262923916,
+      "NLL": 2.182138573369197
+    },
+    {
+      "seed": 43,
+      "best_epoch": 8,
+      "checkpoint_sha256": "a51e7ec21be68aa1cda9e0805bd6248add6199914a5c262fce138988066051a5",
+      "checkpoint_source": "ducanh3/notebook7bc83c4c76/179",
+      "test_output_source": "ducanh3/notebook7bc83c4c76/181",
+      "BLEU_1": 77.76121266986262,
+      "BLEU_4": 37.790280281231134,
+      "CIDEr": 121.98431675475085,
+      "ROUGE_L": 57.9128129683382,
+      "METEOR": 28.813366890256553,
+      "SPICE": 21.825731146122443,
+      "CHAIRs": 4.06,
+      "CHAIRi": 2.803483941208492,
+      "Recall": 43.71268893687286,
+      "NLL": 2.178126289902086
+    },
+    {
+      "seed": 44,
+      "best_epoch": 7,
+      "checkpoint_sha256": "feaaf3fe251ee01c258c82f538a5abc0d0c5dae67ffb15c2108180a1c64c543f",
+      "checkpoint_source": "ducanh2403/2-vi-cai-kia-qua-nhieu/236",
+      "test_output_source": "ducanh2403/2-vi-cai-kia-qua-nhieu/238",
+      "BLEU_1": 78.09570848354568,
+      "BLEU_4": 37.87049184490714,
+      "CIDEr": 121.67111895137317,
+      "ROUGE_L": 57.97898890845321,
+      "METEOR": 28.70584350306239,
+      "SPICE": 21.66770510844247,
+      "CHAIRs": 4.4799999999999995,
+      "CHAIRi": 3.139440065235118,
+      "Recall": 43.668233202083066,
+      "NLL": 2.188388604002932
+    }
+  ],
+  "statistics": {
+    "BLEU_1": {
+      "mean": 77.82737470186082,
+      "sample_std": 0.24212997464459768
+    },
+    "BLEU_4": {
+      "mean": 37.80074581989103,
+      "sample_std": 0.06514680179264601
+    },
+    "CIDEr": {
+      "mean": 121.76432806419393,
+      "sample_std": 0.1912537895268252
+    },
+    "ROUGE_L": {
+      "mean": 57.960968865339844,
+      "sample_std": 0.04214191535404761
+    },
+    "METEOR": {
+      "mean": 28.782739364154256,
+      "sample_std": 0.06705138936261341
+    },
+    "SPICE": {
+      "mean": 21.782036279315335,
+      "sample_std": 0.0999258361749393
+    },
+    "CHAIRs": {
+      "mean": 4.166666666666666,
+      "sample_std": 0.2759226944876647
+    },
+    "CHAIRi": {
+      "mean": 2.9148728966857043,
+      "sample_std": 0.19448293049368362
+    },
+    "Recall": {
+      "mean": 43.62377746729328,
+      "sample_std": 0.11761881860442168
+    },
+    "NLL": {
+      "mean": 2.182884489091405,
+      "sample_std": 0.005171659827809849
+    }
+  },
+  "std_definition": "sample standard deviation, denominator n-1; between training seeds, not a confidence interval",
+  "units": "caption metrics x100; CHAIRs/CHAIRi/Recall percent; NLL unscaled",
+  "decode": {
+    "beam_width": 5,
+    "max_new_tokens": 20,
+    "length_normalization": false,
+    "reranking": false
+  },
+  "verification": {
+    "same_5000_unique_test_ids": true,
+    "test_id_sha256": "18a173e42d695050f9700423634f3caee4401a03ba9481320f57044806a8bc95",
+    "same_reference_payload_sha256": "311ff29fc3dab1dde650a01b141c2498fbc44a4d7f96f63059dfffe0bdd6e776",
+    "same_evaluator_files": true,
+    "archive_hashes_checked": true,
+    "model_executed_locally": false
+  },
+  "limits": [
+    "XE captioner only; additional seeds have no SCST/rerank result yet.",
+    "Seed42 historical I/O and seeds43/44 direct H5; not bitwise-identical execution.",
+    "Historical baseline uses a different decoder; system comparison cannot isolate alignment.",
+    "Baseline has one seed; no matched multi-seed significance claim.",
+    "Prior project TEST exposure recorded; not a previously untouched test set."
+  ],
+  "sheet_update": {
+    "spreadsheet_url": "https://docs.google.com/spreadsheets/d/1XZ5iuyCs5JP8VE6dT7AYdVTiY1_nK4C_QdXs5ppw6FA/edit",
+    "sheet": "Kết quả mới",
+    "range": "A198:P212",
+    "values_read_back_exactly": true,
+    "formatting_checked_via_api": true,
+    "native_visual_fit_inspected": false
+  }
+}
