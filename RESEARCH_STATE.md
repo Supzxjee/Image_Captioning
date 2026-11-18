@@ -10,6 +10,9 @@ Cập nhật: 18/11/2026, giờ Việt Nam. File này là bản tóm tắt để
 
 ## Hiện đang ở đâu
 
+- **Seeds43/44 finished full XE10 after resume.** [Seed43 result](experiments/clip_patch_baseline/CSA_PER_CAPTION_H5_SEED43_FULL_XE10_RESULT.json), [seed44 result](experiments/clip_patch_baseline/CSA_PER_CAPTION_H5_SEED44_FULL_XE10_RESULT.json), [three-seed VALID summary](experiments/clip_patch_baseline/CSA_PER_CAPTION_XE10_THREE_SEEDS_VALID_RESULT.json). Each 177110 updates/5667470 events, all ten VALID payload hashes and train-log hashes checked, previous history and identity preserved. Seed43 best8 CIDEr121.7778, CHAIRs4.18%, CHAIRi3.0048%, NLL2.15526; latest9d025df7…, besta51e7ec2…. Seed44 best7 CIDEr121.1683, CHAIRs4.56%, CHAIRi3.1955%, NLL2.16914; latestcccaaa33…, bestfeaaf3fe…. Together with seed42 best9: sample mean/std on VALID CIDEr121.0805±0.7450, CHAIRs4.2467±0.2859%, CHAIRi2.9973±0.2021%. VALID selection statistics, XE only. New-seed TEST/SCST/rerank pending; final resume Save Versions requested from user. Review ZIPs contain receipts, not binary weights.
+
+
 - **Compact baseline diagram revised on user request.** Single Transformer Decoder box (4 layers, dimension512), straight orthogonal memory K/V and caption-prefix inputs, final LayerNorm, vocabulary head and beam5. SVG and PNG in docs/baseline_diagram_2026-11-18/baseline_compact and Downloads/baseline_diagram_compact. Render inspected after layout and subscript correction. Formal report unchanged.
 
 

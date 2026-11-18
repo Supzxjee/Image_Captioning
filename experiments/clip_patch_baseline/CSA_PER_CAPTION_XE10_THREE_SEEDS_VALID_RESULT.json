@@ -1,0 +1,91 @@
+{
+  "split": "Karpathy VALID5000",
+  "selection": "max VALID CIDEr over 10 XE epochs per seed",
+  "seeds": [
+    42,
+    43,
+    44
+  ],
+  "rows": [
+    {
+      "seed": 42,
+      "best_epoch": 9,
+      "checkpoint_sha256": "b0c5bde0921a4c828ac094b264f502654224aa9365ee40cdce1c15c82fe9aeef",
+      "BLEU_1": 77.9211751922854,
+      "BLEU_4": 37.9421025758623,
+      "ROUGE_L": 57.825645531626094,
+      "CIDEr": 120.29553459889546,
+      "CHAIRs": 4.0,
+      "CHAIRi": 2.7915291529152912,
+      "Recall": 42.69839276745354,
+      "NLL": 2.1642074617673046
+    },
+    {
+      "seed": 43,
+      "best_epoch": 8,
+      "checkpoint_sha256": "a51e7ec21be68aa1cda9e0805bd6248add6199914a5c262fce138988066051a5",
+      "BLEU_1": 78.03653162797217,
+      "BLEU_4": 38.09806217658526,
+      "ROUGE_L": 58.12841985321755,
+      "CIDEr": 121.77780747765262,
+      "CHAIRs": 4.18,
+      "CHAIRi": 3.004824259131633,
+      "Recall": 42.47865394274234,
+      "NLL": 2.1552617615644585
+    },
+    {
+      "seed": 44,
+      "best_epoch": 7,
+      "checkpoint_sha256": "feaaf3fe251ee01c258c82f538a5abc0d0c5dae67ffb15c2108180a1c64c543f",
+      "BLEU_1": 78.27010645147887,
+      "BLEU_4": 38.14832688842081,
+      "ROUGE_L": 58.14291436617268,
+      "CIDEr": 121.16826003331241,
+      "CHAIRs": 4.5600000000000005,
+      "CHAIRi": 3.1955398422627144,
+      "Recall": 43.087644399799096,
+      "NLL": 2.1691380637323294
+    }
+  ],
+  "statistics": {
+    "BLEU_1": {
+      "mean": 78.07593775724548,
+      "sample_std": 0.17777201179829388
+    },
+    "BLEU_4": {
+      "mean": 38.06283054695612,
+      "sample_std": 0.10753170493998997
+    },
+    "ROUGE_L": {
+      "mean": 58.03232658367211,
+      "sample_std": 0.17913770033855894
+    },
+    "CIDEr": {
+      "mean": 121.08053403662016,
+      "sample_std": 0.7450202075423821
+    },
+    "CHAIRs": {
+      "mean": 4.246666666666667,
+      "sample_std": 0.2858904218985545
+    },
+    "CHAIRi": {
+      "mean": 2.9972977514365464,
+      "sample_std": 0.2021104784896324
+    },
+    "Recall": {
+      "mean": 42.75489703666499,
+      "sample_std": 0.30840216199937565
+    },
+    "NLL": {
+      "mean": 2.162869095688031,
+      "sample_std": 0.007034298705992515
+    }
+  },
+  "std_definition": "sample standard deviation, denominator n-1",
+  "limits": [
+    "VALID was used for checkpoint selection",
+    "No TEST/SCST/rerank results for new seeds",
+    "Seed42 used local memmap, seeds43/44 mounted H5; short diagnostic found matching input bytes and numerical differences comparable to repeated old execution",
+    "Checkpoint bytes are not included in the review ZIPs"
+  ]
+}
