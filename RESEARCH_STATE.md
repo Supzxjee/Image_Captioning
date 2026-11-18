@@ -10,6 +10,9 @@ Cập nhật: 18/11/2026, giờ Việt Nam. File này là bản tóm tắt để
 
 ## Hiện đang ở đâu
 
+- **Baseline diagram draft rendered and visually checked.** Editable SVG and PNG in docs/baseline_diagram_2026-11-18 and Downloads/baseline_diagram.svg/png. User reference drives two-row flow, expanded decoder shows post-norm residuals, four layers, final LayerNorm, patch196x768, memory196x512, beam5 and language prefix. CLIP frozen, decoder dropout0.1. Uses existing unannotated embedded photo. Await user visual feedback; no formal report changed.
+
+
 - **VS Code source bundle created.** [Folder guide](baseline_final_pipeline/README.md). Contains baseline train/test and final XE/SCST1500/test-rerank snapshots, preparation helpers and original notebooks. Notebook-pinned Git files and embedded Python exported with SOURCE_MANIFEST.json provenance. All 126 exported-file SHA256s and Python AST checks pass, guide entry points verified. This is a reading snapshot; Kaggle notebooks retain configured sources/inputs and no model was executed.
 
 
