@@ -10,6 +10,9 @@ Cập nhật: 18/11/2026, giờ Việt Nam. File này là bản tóm tắt để
 
 ## Hiện đang ở đâu
 
+- **Compact baseline diagram revised on user request.** Single Transformer Decoder box (4 layers, dimension512), straight orthogonal memory K/V and caption-prefix inputs, final LayerNorm, vocabulary head and beam5. SVG and PNG in docs/baseline_diagram_2026-11-18/baseline_compact and Downloads/baseline_diagram_compact. Render inspected after layout and subscript correction. Formal report unchanged.
+
+
 - **Baseline diagram draft rendered and visually checked.** Editable SVG and PNG in docs/baseline_diagram_2026-11-18 and Downloads/baseline_diagram.svg/png. User reference drives two-row flow, expanded decoder shows post-norm residuals, four layers, final LayerNorm, patch196x768, memory196x512, beam5 and language prefix. CLIP frozen, decoder dropout0.1. Uses existing unannotated embedded photo. Await user visual feedback; no formal report changed.
 
 
