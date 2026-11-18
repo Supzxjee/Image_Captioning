@@ -1,0 +1,952 @@
+{
+  "images": 5000,
+  "split": "val",
+  "test_used": false,
+  "XE_flagged": 209,
+  "SCST_flagged": 273,
+  "transition_counts": {
+    "new_flags": 103,
+    "repairs": 39,
+    "shared_flags": 170,
+    "clean_both": 4688
+  },
+  "changed_captions": 3017,
+  "new_flag_categories": {
+    "dining table": 35,
+    "sink": 10,
+    "cell phone": 5,
+    "bench": 5,
+    "truck": 4,
+    "couch": 3,
+    "toilet": 3,
+    "kite": 2,
+    "bird": 2,
+    "horse": 2,
+    "banana": 2,
+    "chair": 2,
+    "dog": 2,
+    "bear": 2,
+    "clock": 2,
+    "car": 2,
+    "bed": 2,
+    "person": 1,
+    "cow": 1,
+    "skateboard": 1,
+    "frisbee": 1,
+    "backpack": 1,
+    "cat": 1,
+    "sports ball": 1,
+    "bowl": 1,
+    "suitcase": 1,
+    "boat": 1,
+    "remote": 1,
+    "motorcycle": 1,
+    "surfboard": 1,
+    "orange": 1,
+    "laptop": 1,
+    "stop sign": 1,
+    "vase": 1,
+    "refrigerator": 1,
+    "skis": 1,
+    "snowboard": 1
+  },
+  "new_flag_ids": [
+    19916,
+    21919,
+    27805,
+    31749,
+    41257,
+    61997,
+    68396,
+    84431,
+    87581,
+    95078,
+    95516,
+    104392,
+    117471,
+    118065,
+    131725,
+    133098,
+    134386,
+    134596,
+    135139,
+    139781,
+    144062,
+    150989,
+    161602,
+    163600,
+    171351,
+    175212,
+    177714,
+    194153,
+    197775,
+    198612,
+    212203,
+    215709,
+    215845,
+    219916,
+    227960,
+    229601,
+    233311,
+    240506,
+    242189,
+    243478,
+    243495,
+    254454,
+    261824,
+    265611,
+    267998,
+    270609,
+    273420,
+    273642,
+    277073,
+    282591,
+    289201,
+    289716,
+    293259,
+    293671,
+    300221,
+    302531,
+    303847,
+    303994,
+    304741,
+    310543,
+    312544,
+    314792,
+    323760,
+    335081,
+    337180,
+    347724,
+    360767,
+    365103,
+    379667,
+    382443,
+    383339,
+    385873,
+    386716,
+    389128,
+    390241,
+    396932,
+    398236,
+    402858,
+    403907,
+    424284,
+    427189,
+    427386,
+    433066,
+    433154,
+    434634,
+    435466,
+    448078,
+    449302,
+    460208,
+    468121,
+    468858,
+    472246,
+    481404,
+    482367,
+    485509,
+    519094,
+    530367,
+    533137,
+    539962,
+    543895,
+    564023,
+    568846,
+    573791
+  ],
+  "sample_seed": 20261119,
+  "cases": [
+    {
+      "coco_id": 568846,
+      "group": "new_flags",
+      "xe_caption": "a man cutting a piece of paper with scissors",
+      "scst_caption": "a man sitting at a table with a bunch of scissors",
+      "xe_hallucinated_words": [],
+      "scst_hallucinated_words": [
+        [
+          "table",
+          "dining table"
+        ]
+      ],
+      "annotated_objects": [
+        "backpack",
+        "chair",
+        "person",
+        "scissors",
+        "toothbrush",
+        "umbrella"
+      ],
+      "xe_CIDEr": 0.17915946942782207,
+      "scst_CIDEr": 0.27666120483852197
+    },
+    {
+      "coco_id": 314792,
+      "group": "new_flags",
+      "xe_caption": "a living room filled with furniture and a flat screen tv",
+      "scst_caption": "a white living room with a white table and a television",
+      "xe_hallucinated_words": [],
+      "scst_hallucinated_words": [
+        [
+          "table",
+          "dining table"
+        ]
+      ],
+      "annotated_objects": [
+        "book",
+        "bottle",
+        "chair",
+        "potted plant",
+        "tv",
+        "vase"
+      ],
+      "xe_CIDEr": 0.7060968253688238,
+      "scst_CIDEr": 0.28221046612117284
+    },
+    {
+      "coco_id": 468858,
+      "group": "new_flags",
+      "xe_caption": "a living room with a television and a lamp",
+      "scst_caption": "a living room with a television and a chair",
+      "xe_hallucinated_words": [],
+      "scst_hallucinated_words": [
+        [
+          "chair",
+          "chair"
+        ]
+      ],
+      "annotated_objects": [
+        "couch",
+        "tv"
+      ],
+      "xe_CIDEr": 0.712475169477693,
+      "scst_CIDEr": 0.4036609905005305
+    },
+    {
+      "coco_id": 360767,
+      "group": "new_flags",
+      "xe_caption": "a group of people riding bikes down a bridge",
+      "scst_caption": "a group of people riding on the back of motorcycles",
+      "xe_hallucinated_words": [],
+      "scst_hallucinated_words": [
+        [
+          "motorcycle",
+          "motorcycle"
+        ]
+      ],
+      "annotated_objects": [
+        "backpack",
+        "bicycle",
+        "boat",
+        "person",
+        "train"
+      ],
+      "xe_CIDEr": 1.6607559226773447,
+      "scst_CIDEr": 0.6045047031443191
+    },
+    {
+      "coco_id": 472246,
+      "group": "new_flags",
+      "xe_caption": "three pieces of fruit and a fork on a white surface",
+      "scst_caption": "a white table topped with an apple and a fork",
+      "xe_hallucinated_words": [],
+      "scst_hallucinated_words": [
+        [
+          "table",
+          "dining table"
+        ]
+      ],
+      "annotated_objects": [
+        "apple",
+        "fork",
+        "orange"
+      ],
+      "xe_CIDEr": 0.7711058953856733,
+      "scst_CIDEr": 1.856005541040776
+    },
+    {
+      "coco_id": 539962,
+      "group": "new_flags",
+      "xe_caption": "a man standing in front of a swimming pool",
+      "scst_caption": "a dog standing next to a swimming pool",
+      "xe_hallucinated_words": [],
+      "scst_hallucinated_words": [
+        [
+          "dog",
+          "dog"
+        ]
+      ],
+      "annotated_objects": [
+        "chair",
+        "dining table",
+        "frisbee",
+        "person",
+        "umbrella"
+      ],
+      "xe_CIDEr": 1.327322895452695,
+      "scst_CIDEr": 1.204581423195166
+    },
+    {
+      "coco_id": 403907,
+      "group": "new_flags",
+      "xe_caption": "a close up of a street sign at night",
+      "scst_caption": "a red stop sign sitting on the side of a street",
+      "xe_hallucinated_words": [],
+      "scst_hallucinated_words": [
+        [
+          "stop sign",
+          "stop sign"
+        ]
+      ],
+      "annotated_objects": [
+        "bench"
+      ],
+      "xe_CIDEr": 0.08408550132559958,
+      "scst_CIDEr": 0.39720872766815846
+    },
+    {
+      "coco_id": 194153,
+      "group": "new_flags",
+      "xe_caption": "a woman in a white dress holding an umbrella",
+      "scst_caption": "a woman holding a kite on a sidewalk",
+      "xe_hallucinated_words": [],
+      "scst_hallucinated_words": [
+        [
+          "kite",
+          "kite"
+        ]
+      ],
+      "annotated_objects": [
+        "handbag",
+        "person",
+        "umbrella"
+      ],
+      "xe_CIDEr": 1.0825068704554273,
+      "scst_CIDEr": 0.15587646040520697
+    },
+    {
+      "coco_id": 27805,
+      "group": "new_flags",
+      "xe_caption": "a baby is brushing his teeth with a toothbrush",
+      "scst_caption": "a baby sitting on a couch with a toothbrush",
+      "xe_hallucinated_words": [],
+      "scst_hallucinated_words": [
+        [
+          "couch",
+          "couch"
+        ]
+      ],
+      "annotated_objects": [
+        "bed",
+        "person",
+        "toothbrush"
+      ],
+      "xe_CIDEr": 0.038226268098723246,
+      "scst_CIDEr": 0.004504241668079154
+    },
+    {
+      "coco_id": 215845,
+      "group": "new_flags",
+      "xe_caption": "a blue and white bus parked next to a building",
+      "scst_caption": "a woman sitting at a table talking on a cell phone",
+      "xe_hallucinated_words": [],
+      "scst_hallucinated_words": [
+        [
+          "cell phone",
+          "cell phone"
+        ]
+      ],
+      "annotated_objects": [
+        "backpack",
+        "bird",
+        "chair",
+        "dining table",
+        "handbag",
+        "person",
+        "truck"
+      ],
+      "xe_CIDEr": 0.6199856810385975,
+      "scst_CIDEr": 0.029329234833119194
+    },
+    {
+      "coco_id": 386716,
+      "group": "new_flags",
+      "xe_caption": "a little boy that is brushing his teeth",
+      "scst_caption": "a young boy brushing his teeth with an orange toothbrush",
+      "xe_hallucinated_words": [],
+      "scst_hallucinated_words": [
+        [
+          "orange",
+          "orange"
+        ]
+      ],
+      "annotated_objects": [
+        "person",
+        "toothbrush"
+      ],
+      "xe_CIDEr": 0.9858517173475343,
+      "scst_CIDEr": 1.0734102283762212
+    },
+    {
+      "coco_id": 460208,
+      "group": "new_flags",
+      "xe_caption": "a kitchen with a refrigerator and a refrigerator",
+      "scst_caption": "a kitchen with a refrigerator a sink and a refrigerator",
+      "xe_hallucinated_words": [],
+      "scst_hallucinated_words": [
+        [
+          "sink",
+          "sink"
+        ]
+      ],
+      "annotated_objects": [
+        "bottle",
+        "chair",
+        "dining table",
+        "knife",
+        "microwave",
+        "oven",
+        "refrigerator"
+      ],
+      "xe_CIDEr": 0.7678230572555761,
+      "scst_CIDEr": 0.896267876579621
+    },
+    {
+      "coco_id": 303847,
+      "group": "new_flags",
+      "xe_caption": "a picture of a man on an elephant",
+      "scst_caption": "a book on a table next to an elephant",
+      "xe_hallucinated_words": [],
+      "scst_hallucinated_words": [
+        [
+          "table",
+          "dining table"
+        ]
+      ],
+      "annotated_objects": [
+        "book",
+        "elephant",
+        "person",
+        "tie"
+      ],
+      "xe_CIDEr": 0.7859627670938379,
+      "scst_CIDEr": 2.1376440698476777
+    },
+    {
+      "coco_id": 273420,
+      "group": "new_flags",
+      "xe_caption": "a man in a white shirt talking on a phone",
+      "scst_caption": "a man standing in a room next to a table",
+      "xe_hallucinated_words": [],
+      "scst_hallucinated_words": [
+        [
+          "table",
+          "dining table"
+        ]
+      ],
+      "annotated_objects": [
+        "bed",
+        "car",
+        "cell phone",
+        "chair",
+        "cup",
+        "person"
+      ],
+      "xe_CIDEr": 1.0125425906987178,
+      "scst_CIDEr": 0.5747615725178933
+    },
+    {
+      "coco_id": 84431,
+      "group": "new_flags",
+      "xe_caption": "two slices of pizza sitting on a plate",
+      "scst_caption": "a slice of pizza on a plate on a table",
+      "xe_hallucinated_words": [],
+      "scst_hallucinated_words": [
+        [
+          "table",
+          "dining table"
+        ]
+      ],
+      "annotated_objects": [
+        "pizza",
+        "tv"
+      ],
+      "xe_CIDEr": 1.7441420565785708,
+      "scst_CIDEr": 2.4244687977295234
+    },
+    {
+      "coco_id": 229601,
+      "group": "new_flags",
+      "xe_caption": "a group of young men playing a game of baseball",
+      "scst_caption": "a baseball player pitching a ball on a field",
+      "xe_hallucinated_words": [],
+      "scst_hallucinated_words": [
+        [
+          "ball",
+          "sports ball"
+        ]
+      ],
+      "annotated_objects": [
+        "baseball glove",
+        "person"
+      ],
+      "xe_CIDEr": 0.7712869743434875,
+      "scst_CIDEr": 0.9762433042225076
+    },
+    {
+      "coco_id": 402858,
+      "group": "new_flags",
+      "xe_caption": "a teddy bear sitting in a chair next to a laptop",
+      "scst_caption": "a stuffed bear sitting on a blue chair",
+      "xe_hallucinated_words": [],
+      "scst_hallucinated_words": [
+        [
+          "bear",
+          "bear"
+        ]
+      ],
+      "annotated_objects": [
+        "chair",
+        "couch",
+        "laptop",
+        "teddy bear",
+        "tie"
+      ],
+      "xe_CIDEr": 2.6282338534614835,
+      "scst_CIDEr": 0.783301793286628
+    },
+    {
+      "coco_id": 68396,
+      "group": "new_flags",
+      "xe_caption": "a pizza with tomatoes and tomatoes on it",
+      "scst_caption": "a close up of a pizza on a table",
+      "xe_hallucinated_words": [],
+      "scst_hallucinated_words": [
+        [
+          "table",
+          "dining table"
+        ]
+      ],
+      "annotated_objects": [
+        "pizza"
+      ],
+      "xe_CIDEr": 1.8998508904990332,
+      "scst_CIDEr": 0.6538321743492761
+    },
+    {
+      "coco_id": 448078,
+      "group": "new_flags",
+      "xe_caption": "a group of cars driving down a street next to tall buildings",
+      "scst_caption": "a truck and a truck on a city street",
+      "xe_hallucinated_words": [],
+      "scst_hallucinated_words": [
+        [
+          "truck",
+          "truck"
+        ],
+        [
+          "truck",
+          "truck"
+        ]
+      ],
+      "annotated_objects": [
+        "car",
+        "traffic light"
+      ],
+      "xe_CIDEr": 0.4027617435845714,
+      "scst_CIDEr": 0.08438330154003604
+    },
+    {
+      "coco_id": 435466,
+      "group": "new_flags",
+      "xe_caption": "a kitchen filled with lots of counter space",
+      "scst_caption": "a kitchen with a refrigerator a sink and a counter",
+      "xe_hallucinated_words": [],
+      "scst_hallucinated_words": [
+        [
+          "refrigerator",
+          "refrigerator"
+        ],
+        [
+          "sink",
+          "sink"
+        ]
+      ],
+      "annotated_objects": [
+        "bottle",
+        "chair",
+        "dining table",
+        "toaster"
+      ],
+      "xe_CIDEr": 0.4115366801257727,
+      "scst_CIDEr": 0.4754240559406836
+    },
+    {
+      "coco_id": 128280,
+      "group": "repairs",
+      "xe_caption": "a bowl of oranges sitting on top of a table",
+      "scst_caption": "a close up of a bowl of oranges",
+      "xe_hallucinated_words": [
+        [
+          "table",
+          "dining table"
+        ]
+      ],
+      "scst_hallucinated_words": [],
+      "annotated_objects": [
+        "bowl",
+        "orange"
+      ],
+      "xe_CIDEr": 1.5413190775940526,
+      "scst_CIDEr": 1.8214949987861326
+    },
+    {
+      "coco_id": 272185,
+      "group": "repairs",
+      "xe_caption": "a bus stop sign sitting on the side of a road",
+      "scst_caption": "a parking meter sitting on the side of a road",
+      "xe_hallucinated_words": [
+        [
+          "stop sign",
+          "stop sign"
+        ]
+      ],
+      "scst_hallucinated_words": [],
+      "annotated_objects": [
+        "bench",
+        "car",
+        "parking meter",
+        "person"
+      ],
+      "xe_CIDEr": 0.5929347580312597,
+      "scst_CIDEr": 1.441247796396363
+    },
+    {
+      "coco_id": 6012,
+      "group": "repairs",
+      "xe_caption": "a close up of a banana and an orange",
+      "scst_caption": "a close up of a banana and a red apple",
+      "xe_hallucinated_words": [
+        [
+          "orange",
+          "orange"
+        ]
+      ],
+      "scst_hallucinated_words": [],
+      "annotated_objects": [
+        "apple",
+        "banana"
+      ],
+      "xe_CIDEr": 0.0374906318273693,
+      "scst_CIDEr": 0.8062671533010803
+    },
+    {
+      "coco_id": 574241,
+      "group": "repairs",
+      "xe_caption": "two cats eating food out of bowls on a table",
+      "scst_caption": "a cat eating food out of a bowl",
+      "xe_hallucinated_words": [
+        [
+          "table",
+          "dining table"
+        ]
+      ],
+      "scst_hallucinated_words": [],
+      "annotated_objects": [
+        "bowl",
+        "cat"
+      ],
+      "xe_CIDEr": 1.0428427308288086,
+      "scst_CIDEr": 0.5492974048225221
+    },
+    {
+      "coco_id": 449156,
+      "group": "repairs",
+      "xe_caption": "a man and a woman holding a stop sign",
+      "scst_caption": "a man and a woman holding a sign",
+      "xe_hallucinated_words": [
+        [
+          "stop sign",
+          "stop sign"
+        ]
+      ],
+      "scst_hallucinated_words": [],
+      "annotated_objects": [
+        "person"
+      ],
+      "xe_CIDEr": 1.1420871144481977,
+      "scst_CIDEr": 1.1329276631246128
+    },
+    {
+      "coco_id": 519716,
+      "group": "clean_both",
+      "xe_caption": "a white cat is sleeping on a blanket",
+      "scst_caption": "a white cat laying on a blanket on a chair",
+      "xe_hallucinated_words": [],
+      "scst_hallucinated_words": [],
+      "annotated_objects": [
+        "cat",
+        "chair"
+      ],
+      "xe_CIDEr": 1.202973246180445,
+      "scst_CIDEr": 1.1337050799784927
+    },
+    {
+      "coco_id": 336654,
+      "group": "clean_both",
+      "xe_caption": "a baseball player swinging a bat on a field",
+      "scst_caption": "a baseball player swinging a bat on a field",
+      "xe_hallucinated_words": [],
+      "scst_hallucinated_words": [],
+      "annotated_objects": [
+        "baseball bat",
+        "baseball glove",
+        "person",
+        "tie"
+      ],
+      "xe_CIDEr": 2.3972264432659123,
+      "scst_CIDEr": 2.3972264432659123
+    },
+    {
+      "coco_id": 305309,
+      "group": "clean_both",
+      "xe_caption": "two young boys playing baseball in a field",
+      "scst_caption": "a boy holding a baseball bat in a field",
+      "xe_hallucinated_words": [],
+      "scst_hallucinated_words": [],
+      "annotated_objects": [
+        "baseball bat",
+        "person"
+      ],
+      "xe_CIDEr": 1.0584218456468653,
+      "scst_CIDEr": 1.838962455273362
+    },
+    {
+      "coco_id": 571384,
+      "group": "clean_both",
+      "xe_caption": "a group of people standing outside of a bus",
+      "scst_caption": "a group of people standing outside of a bus",
+      "xe_hallucinated_words": [],
+      "scst_hallucinated_words": [],
+      "annotated_objects": [
+        "bus",
+        "car",
+        "handbag",
+        "person"
+      ],
+      "xe_CIDEr": 1.7705609408873222,
+      "scst_CIDEr": 1.7705609408873222
+    },
+    {
+      "coco_id": 561698,
+      "group": "clean_both",
+      "xe_caption": "a vase filled with red and white flowers",
+      "scst_caption": "a vase filled with red and white flowers",
+      "xe_hallucinated_words": [],
+      "scst_hallucinated_words": [],
+      "annotated_objects": [
+        "dining table",
+        "potted plant",
+        "vase"
+      ],
+      "xe_CIDEr": 2.7492783107172785,
+      "scst_CIDEr": 2.7492783107172785
+    }
+  ],
+  "limits": [
+    "Automatic CHAIR flags, not independently verified visual hallucinations.",
+    "Top1 XE versus SCST1500 diagnostic, not SCST500 or rerank evaluation.",
+    "Selected seed43; no representative population or causal claim."
+  ],
+  "sources": {
+    "XE": "ducanh3/notebook7bc83c4c76/179",
+    "SCST": "ducanh3/notebook7bc83c4c76/185"
+  },
+  "image_files": [
+    {
+      "coco_id": 568846,
+      "filename": "000000568846.jpg",
+      "sha256": "80a40ac5c9eb46657f692874e0b99b721c2894b49eb0bb6d50e91b89e7d1082d",
+      "error": null
+    },
+    {
+      "coco_id": 314792,
+      "filename": "000000314792.jpg",
+      "sha256": "59a8eb51c6e3ead9ebe003b615c48f9bd6327ffb4e5ffe3c691a0d1e785cf606",
+      "error": null
+    },
+    {
+      "coco_id": 468858,
+      "filename": "000000468858.jpg",
+      "sha256": "14c1d5aa255e3c76335be5b1debb380f98c8228eaa2a9b1e63d5710d19e90fe4",
+      "error": null
+    },
+    {
+      "coco_id": 360767,
+      "filename": "000000360767.jpg",
+      "sha256": "5394cb28d5a0f12e8213d067acdbd4faf5c1d34dcceb8884c8611dd5155e1ba0",
+      "error": null
+    },
+    {
+      "coco_id": 472246,
+      "filename": "000000472246.jpg",
+      "sha256": "4d42d8767703298432135de4082d9e6add1b487379c9c91eab0f2baa30c160e8",
+      "error": null
+    },
+    {
+      "coco_id": 539962,
+      "filename": "000000539962.jpg",
+      "sha256": "9c03f8050c99b23fd029103327791fc554d645abbec3604c1bcfdb626bfd8727",
+      "error": null
+    },
+    {
+      "coco_id": 403907,
+      "filename": "000000403907.jpg",
+      "sha256": "472717c4769068edf1e7ba41940d3157800a0b20904a9039d84d2879215c0bc8",
+      "error": null
+    },
+    {
+      "coco_id": 194153,
+      "filename": "000000194153.jpg",
+      "sha256": "53a1cdb4e7e52bea5e696325a4418edde217cef321c668167a7a8645c3c24c4c",
+      "error": null
+    },
+    {
+      "coco_id": 27805,
+      "filename": "000000027805.jpg",
+      "sha256": "b871950a40f445c7272c54cc6c0aef0450eacc378cbcd68f31ac6595fe33b7bf",
+      "error": null
+    },
+    {
+      "coco_id": 215845,
+      "filename": "000000215845.jpg",
+      "sha256": "8ad3046a3ae5ad597b54039d75316e6e420066ea06be3413ea95956fa2be7b4c",
+      "error": null
+    },
+    {
+      "coco_id": 386716,
+      "filename": "000000386716.jpg",
+      "sha256": "aba0a9139a39e43e65ef1635eca457f2daf5f0bb10bd9a9120885f35b233c09d",
+      "error": null
+    },
+    {
+      "coco_id": 460208,
+      "filename": "000000460208.jpg",
+      "sha256": "1eac096571071bfa2173ae9931542e1469871434a5e0844025373d3f9df2ec55",
+      "error": null
+    },
+    {
+      "coco_id": 303847,
+      "filename": "000000303847.jpg",
+      "sha256": "5b64aa2b48a747bc2e7b52bb14469897d9c395c7311d8f5455a03d1e9951ed73",
+      "error": null
+    },
+    {
+      "coco_id": 273420,
+      "filename": "000000273420.jpg",
+      "sha256": "0ffe8967a9050226882557ab0ded3a4349b254d9ce6b3517f72580e791a7aae4",
+      "error": null
+    },
+    {
+      "coco_id": 84431,
+      "filename": "000000084431.jpg",
+      "sha256": "b722912fc0d2ab3b108d828a08cc2c450a8cd36e789f33d22c1de1f75b225918",
+      "error": null
+    },
+    {
+      "coco_id": 229601,
+      "filename": "000000229601.jpg",
+      "sha256": "043f621733a834fb963006769920ea4f8fc772996045eba89f96e97b8832ba15",
+      "error": null
+    },
+    {
+      "coco_id": 402858,
+      "filename": "000000402858.jpg",
+      "sha256": "c2a82699a8e351df68cdd82a9e803ddf7c75ca533d5b982732a0a7ffe97bb26f",
+      "error": null
+    },
+    {
+      "coco_id": 68396,
+      "filename": "000000068396.jpg",
+      "sha256": "0e320f19df6a5fc80d32407e2a6bfd9ebf45a218850b0ee9b38d5b4e649cfd90",
+      "error": null
+    },
+    {
+      "coco_id": 448078,
+      "filename": "000000448078.jpg",
+      "sha256": "a3461075e24481375763bdcc9cacd52e51bee24b4ddb0207df4d16f99e5d1b38",
+      "error": null
+    },
+    {
+      "coco_id": 435466,
+      "filename": "000000435466.jpg",
+      "sha256": "b032c2503ff163af42a1f65fa02486f48eb7cec85b96027658a029403523474b",
+      "error": null
+    },
+    {
+      "coco_id": 128280,
+      "filename": "000000128280.jpg",
+      "sha256": "489ae7c442b44264a3d7ca15792e79746c2471f704bf6d8ec953a30153fb1f93",
+      "error": null
+    },
+    {
+      "coco_id": 272185,
+      "filename": "000000272185.jpg",
+      "sha256": "2470b2bbeb2a4277b9973cff94cf049b0ea999fdeed9b3b1d8b47fd598754bd0",
+      "error": null
+    },
+    {
+      "coco_id": 6012,
+      "filename": "000000006012.jpg",
+      "sha256": "7cd0d627b15c09f373aa613d013fb2d8ae6bd20bcce0d98aa31b963e6bcca495",
+      "error": null
+    },
+    {
+      "coco_id": 574241,
+      "filename": "000000574241.jpg",
+      "sha256": "df872125c5e5d7966703b33bf318d9822a155d2799aa196e1d214fdaed3f8b0f",
+      "error": null
+    },
+    {
+      "coco_id": 449156,
+      "filename": "000000449156.jpg",
+      "sha256": "8337e255bd14eab47d6d99c65a5ea55770814e35e1b401c70a00c9adbe3859b4",
+      "error": null
+    },
+    {
+      "coco_id": 519716,
+      "filename": "000000519716.jpg",
+      "sha256": "8b0e71a2f06bc0bafb761fbea138720fe1c3daef4ab3e55e686eac5b7ee62343",
+      "error": null
+    },
+    {
+      "coco_id": 336654,
+      "filename": "000000336654.jpg",
+      "sha256": "15bedbfc206e82cefef65633b88b0ac9bc9ae4d5a0a85fb85cd89f285b232bcd",
+      "error": null
+    },
+    {
+      "coco_id": 305309,
+      "filename": "000000305309.jpg",
+      "sha256": "6ea86200037b2147bcd782185ae893fc9b6a9e43c454bdef19fec8431469d81a",
+      "error": null
+    },
+    {
+      "coco_id": 571384,
+      "filename": "000000571384.jpg",
+      "sha256": "0569591b7e439255fb141880dbf71a7cc1102e8da0772f7c7a3b57d1af215d3d",
+      "error": null
+    },
+    {
+      "coco_id": 561698,
+      "filename": "000000561698.jpg",
+      "sha256": "700305cc55ecd9565973bc1eb68ce598d58f34c874e7105434154e7398abf60d",
+      "error": null
+    }
+  ],
+  "XE_prediction_payload_sha256": {
+    "val_rank0.json": "bfd0d51601c125b2a844910c1562b96ab34e5c2e3ec3099ad725d203b8765e67",
+    "val_rank1.json": "f8e5c9e78b1435f85fca99ee679094d0622b6af6377ea5a697283d4beef49960"
+  },
+  "assistant_review_file": "CSA_SEED43_SCST_VALID_ASSISTED_REVIEW.json"
+}

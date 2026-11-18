@@ -1,0 +1,166 @@
+{
+  "scope": "fixed30 VALID sample:20 new flags,5 repairs,5 clean-both; seed43",
+  "blind": false,
+  "reviewer": "assistant visual inspection; not independent human labels",
+  "requires_user_verification": true,
+  "cases": {
+    "568846": {
+      "judgment": "category_or_annotation_ambiguity",
+      "note": "Có mặt bàn làm tóc và kéo. Table bị ánh xạ dining table; không coi đây là thêm bàn ăn đã xác nhận. XE cũng mô tả sai hoạt động cắt giấy.",
+      "image_sha256": "80a40ac5c9eb46657f692874e0b99b721c2894b49eb0bb6d50e91b89e7d1082d"
+    },
+    "314792": {
+      "judgment": "uncertain",
+      "note": "Có kệ TV và tủ trắng; từ table có thể ám chỉ đồ nội thất này. Không xác nhận được bàn ăn từ ảnh.",
+      "image_sha256": "59a8eb51c6e3ead9ebe003b615c48f9bd6327ffb4e5ffe3c691a0d1e785cf606"
+    },
+    "468858": {
+      "judgment": "category_or_annotation_ambiguity",
+      "note": "Có ghế bành hiện rõ. CHAIR có thể phân loại nó là couch thay vì chair; không kết luận mô hình bịa ra ghế.",
+      "image_sha256": "14c1d5aa255e3c76335be5b1debb380f98c8228eaa2a9b1e63d5710d19e90fe4"
+    },
+    "360767": {
+      "judgment": "visual_error_supported",
+      "note": "Những người đang đi xe đạp. SCST đổi thành motorcycles, không phù hợp ảnh.",
+      "image_sha256": "5394cb28d5a0f12e8213d067acdbd4faf5c1d34dcceb8884c8611dd5155e1ba0"
+    },
+    "472246": {
+      "judgment": "uncertain",
+      "note": "Táo, cam, hành và nĩa trên bề mặt trắng. Không nhìn đủ bề mặt để xác nhận nó là bàn; nhãn dining table không đồng nghĩa mọi table.",
+      "image_sha256": "4d42d8767703298432135de4082d9e6add1b487379c9c91eab0f2baa30c160e8"
+    },
+    "539962": {
+      "judgment": "visual_error_supported",
+      "note": "Không thấy chó đứng cạnh hồ; có người đang ở trong hồ. Caption SCST thiếu bằng chứng cho dog.",
+      "image_sha256": "9c03f8050c99b23fd029103327791fc554d645abbec3604c1bcfdb626bfd8727"
+    },
+    "403907": {
+      "judgment": "visual_error_supported",
+      "note": "Vật đỏ tiền cảnh là lưng ghế, không phải stop sign. XE street sign cũng sai nhưng SCST thêm lớp đối tượng bị đánh dấu.",
+      "image_sha256": "472717c4769068edf1e7ba41940d3157800a0b20904a9039d84d2879215c0bc8"
+    },
+    "194153": {
+      "judgment": "visual_error_supported",
+      "note": "Người phụ nữ cầm ô gấp, không phải diều. Caption XE giữ đúng đối tượng này.",
+      "image_sha256": "53a1cdb4e7e52bea5e696325a4418edde217cef321c668167a7a8645c3c24c4c"
+    },
+    "27805": {
+      "judgment": "uncertain",
+      "note": "Ảnh cận em bé với vải và đệm phía sau; không đủ khung hình để xác nhận couch.",
+      "image_sha256": "b871950a40f445c7272c54cc6c0aef0450eacc378cbcd68f31ac6595fe33b7bf"
+    },
+    "215845": {
+      "judgment": "visual_error_supported",
+      "note": "Người phụ nữ ngồi bàn cầm đồ ăn gần miệng; không thấy điện thoại. XE gọi xe bán kem là bus cũng có vấn đề riêng.",
+      "image_sha256": "8ad3046a3ae5ad597b54039d75316e6e420066ea06be3413ea95956fa2be7b4c"
+    },
+    "386716": {
+      "judgment": "metric_parser_error",
+      "note": "Orange bổ nghĩa màu bàn chải đánh răng hiện rõ, không phải nhắc quả cam. Đây là lỗi phân tích từ của CHAIR trong caption này.",
+      "image_sha256": "aba0a9139a39e43e65ef1635eca457f2daf5f0bb10bd9a9120885f35b233c09d"
+    },
+    "460208": {
+      "judgment": "visual_error_supported",
+      "note": "Ảnh có tủ lạnh, lò vi sóng và quầy bếp; không thấy sink trong khung hình. Không suy ra bồn rửa chỉ vì là bếp.",
+      "image_sha256": "1eac096571071bfa2173ae9931542e1469871434a5e0844025373d3f9df2ec55"
+    },
+    "303847": {
+      "judgment": "category_or_annotation_ambiguity",
+      "note": "Sách và tượng voi gỗ đặt trên mặt gỗ phẳng nhìn thấy rõ. Table có bằng chứng; thiếu nhãn dining table không xác nhận ảo giác. Caption SCST còn bỏ chi tiết tượng.",
+      "image_sha256": "5b64aa2b48a747bc2e7b52bb14469897d9c395c7311d8f5455a03d1e9951ed73"
+    },
+    "273420": {
+      "judgment": "uncertain",
+      "note": "Có người nói điện thoại và bề mặt phủ nhựa phía trước, có thể là giường hoặc bàn. Không xác nhận table là thêm sai chỉ từ ảnh này.",
+      "image_sha256": "0ffe8967a9050226882557ab0ded3a4349b254d9ce6b3517f72580e791a7aae4"
+    },
+    "84431": {
+      "judgment": "uncertain",
+      "note": "Đĩa pizza chiếm gần hết tiền cảnh; không nhìn rõ mặt bàn bên dưới. Table không đủ bằng chứng nhưng cũng chưa xác nhận được là bịa.",
+      "image_sha256": "b722912fc0d2ab3b108d828a08cc2c450a8cd36e789f33d22c1de1f75b225918"
+    },
+    "229601": {
+      "judgment": "uncertain",
+      "note": "Cảnh bóng chày có người chạy và cầu thủ ở xa; không thấy rõ bóng. SCST có thể sai hành động pitching, nhưng nhãn CHAIR ball riêng lẻ chưa đủ xác nhận.",
+      "image_sha256": "043f621733a834fb963006769920ea4f8fc772996045eba89f96e97b8832ba15"
+    },
+    "402858": {
+      "judgment": "metric_parser_error",
+      "note": "Ảnh có gấu bông trên ghế xanh. Stuffed bear đúng về đối tượng, nhưng bộ chấm ánh xạ bear thành gấu thật thay vì teddy bear.",
+      "image_sha256": "c2a82699a8e351df68cdd82a9e803ddf7c75ca533d5b982732a0a7ffe97bb26f"
+    },
+    "68396": {
+      "judgment": "uncertain",
+      "note": "Ảnh cận pizza trên đĩa hoặc khay; không thấy phần bàn ngoài khay. Không thể xác nhận table từ ảnh này.",
+      "image_sha256": "0e320f19df6a5fc80d32407e2a6bfd9ebf45a218850b0ee9b38d5b4e649cfd90"
+    },
+    "448078": {
+      "judgment": "uncertain",
+      "note": "Có SUV, sedan và một xe chỉ thấy một phần ở mép phải. Câu lặp truck không phù hợp mô tả tổng thể, nhưng chưa xác nhận chắc lớp của mọi xe bị che khuất.",
+      "image_sha256": "a3461075e24481375763bdcc9cacd52e51bee24b4ddb0207df4d16f99e5d1b38"
+    },
+    "435466": {
+      "judgment": "visual_error_supported",
+      "note": "Thấy tủ đựng thực phẩm mở và quầy; refrigerator không có bằng chứng rõ, nhiều khả năng nhận nhầm tủ. Mép chậu rửa có thể hiện ở góc phải, nên không coi sink chắc chắn sai.",
+      "image_sha256": "b032c2503ff163af42a1f65fa02486f48eb7cec85b96027658a029403523474b"
+    },
+    "128280": {
+      "judgment": "less_specific_supported",
+      "note": "Ảnh cận bát cam; SCST bỏ cụm on a table nên ít suy diễn hơn. Ảnh không đủ xác nhận bàn của XE chắc chắn sai.",
+      "image_sha256": "489ae7c442b44264a3d7ca15792e79746c2471f704bf6d8ec953a30153fb1f93"
+    },
+    "272185": {
+      "judgment": "repair_supported",
+      "note": "Có máy trả tiền đỗ xe cạnh trạm chờ. SCST parking meter phù hợp hơn. Cụm bus stop sign của XE còn có rủi ro bị bộ chấm hiểu thành biển STOP giao thông.",
+      "image_sha256": "2470b2bbeb2a4277b9973cff94cf049b0ea999fdeed9b3b1d8b47fd598754bd0"
+    },
+    "6012": {
+      "judgment": "repair_supported",
+      "note": "Nhìn thấy táo đỏ giữa các quả chuối. SCST sửa orange thành red apple đúng với ảnh.",
+      "image_sha256": "7cd0d627b15c09f373aa613d013fb2d8ae6bd20bcce0d98aa31b963e6bcca495"
+    },
+    "574241": {
+      "judgment": "repair_supported",
+      "note": "Mèo ăn từ bát đặt trên khay nhựa ở sàn; không thấy bàn ăn. SCST bỏ table có hỗ trợ trực quan, nhưng mô tả một con bỏ sót các con mèo còn lại.",
+      "image_sha256": "df872125c5e5d7966703b33bf318d9822a155d2799aa196e1d214fdaed3f8b0f"
+    },
+    "449156": {
+      "judgment": "repair_supported",
+      "note": "Người phụ nữ cầm bảng biểu tình có chữ STOP, không phải biển giao thông STOP. SCST dùng sign chung phù hợp hơn, nhưng cả hai câu đều có thể khiến hiểu nhầm hai người cùng cầm bảng.",
+      "image_sha256": "8337e255bd14eab47d6d99c65a5ea55770814e35e1b401c70a00c9adbe3859b4"
+    },
+    "519716": {
+      "judgment": "clean_supported",
+      "note": "Có mèo trắng nằm trên chăn trải trên ghế. Cả hai câu phù hợp; SCST bổ sung chair có bằng chứng.",
+      "image_sha256": "8b0e71a2f06bc0bafb761fbea138720fe1c3daef4ab3e55e686eac5b7ee62343"
+    },
+    "336654": {
+      "judgment": "clean_supported",
+      "note": "Vận động viên đang vung gậy bóng chày. Hai caption giống nhau và phù hợp ảnh.",
+      "image_sha256": "15bedbfc206e82cefef65633b88b0ac9bc9ae4d5a0a85fb85cd89f285b232bcd"
+    },
+    "305309": {
+      "judgment": "clean_supported",
+      "note": "Có trẻ chơi bóng và một trẻ cầm gậy. Cả hai câu có bằng chứng, SCST tập trung người cầm gậy.",
+      "image_sha256": "6ea86200037b2147bcd782185ae893fc9b6a9e43c454bdef19fec8431469d81a"
+    },
+    "571384": {
+      "judgment": "clean_supported",
+      "note": "Có nhóm người đứng bên ngoài xe buýt. Hai caption giống nhau và phù hợp ảnh.",
+      "image_sha256": "0569591b7e439255fb141880dbf71a7cc1102e8da0772f7c7a3b57d1af215d3d"
+    },
+    "561698": {
+      "judgment": "clean_supported",
+      "note": "Có hoa đỏ và trắng trong lọ thủy tinh. Hai caption giống nhau và phù hợp ảnh.",
+      "image_sha256": "700305cc55ecd9565973bc1eb68ce598d58f34c874e7105434154e7398abf60d"
+    }
+  },
+  "reviewed": 30,
+  "new_flag_sample_judgments": {
+    "visual_error_supported": 7,
+    "category_or_annotation_ambiguity": 3,
+    "uncertain": 8,
+    "metric_parser_error": 2
+  },
+  "limits": "Assisted nonblind visual judgments, not independent human labels or a population error-rate estimate; uncertain is retained."
+}
