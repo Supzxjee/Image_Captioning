@@ -1,0 +1,455 @@
+{
+  "status": "THREE_SEED_SCST1500_TEST_RERANK_COMPLETE",
+  "split": "MS COCO Karpathy TEST5000",
+  "seeds": [
+    42,
+    43,
+    44
+  ],
+  "fixed_updates": 1500,
+  "selector": {
+    "decoder_weight": 0.3,
+    "clip_weight": 0.4,
+    "object_weight": 0.3,
+    "min_detection_confidence": 0.5,
+    "hallucination_penalty": 1.0,
+    "tie_break": "earlier beam"
+  },
+  "units": "caption metrics x100; CHAIR/Recall percent; NLL unscaled",
+  "std_definition": "sample standard deviation across three training runs, denominator n-1, not a confidence interval",
+  "rows": [
+    {
+      "seed": 42,
+      "policies": {
+        "decoder_rank0": {
+          "BLEU_1": 78.04649133601036,
+          "BLEU_4": 38.244487681283616,
+          "METEOR": 28.89092908287013,
+          "ROUGE_L": 58.36478009958446,
+          "CIDEr": 123.5522574737326,
+          "SPICE": 21.881235618998343,
+          "CHAIRs": 4.9399999999999995,
+          "CHAIRi": 3.341665570319695,
+          "Recall": 44.6462593674584,
+          "NLL": 2.2866899082962173
+        },
+        "clip_object_fixed": {
+          "BLEU_1": 78.89597322544265,
+          "BLEU_4": 38.760607320758155,
+          "METEOR": 29.361404585013172,
+          "ROUGE_L": 58.72409924389855,
+          "CIDEr": 126.6418399702484,
+          "SPICE": 22.71480921692491,
+          "CHAIRs": 3.84,
+          "CHAIRi": 2.5505603503800076,
+          "Recall": 45.65603962911216,
+          "NLL": 2.2866899082962173
+        }
+      },
+      "delta_vs_XE": {
+        "decoder_rank0": {
+          "BLEU_1": 0.4212883838361847,
+          "BLEU_4": 0.5030223477488107,
+          "METEOR": 0.06192138372630396,
+          "ROUGE_L": 0.37367538035634595,
+          "CIDEr": 1.9147089872748353,
+          "SPICE": 0.02856303561724971,
+          "CHAIRs": 0.9799999999999991,
+          "CHAIRi": 0.5399708867061923,
+          "Recall": 1.1558491045344823,
+          "NLL": 0.10455133492702018
+        },
+        "clip_object_fixed": {
+          "BLEU_1": 0.7954908936910954,
+          "BLEU_4": 1.0185184012797848,
+          "METEOR": -0.10332243455691881,
+          "ROUGE_L": 0.28663305173441955,
+          "CIDEr": 1.4111888531831767,
+          "SPICE": -0.12611207280013303,
+          "CHAIRs": 0.52,
+          "CHAIRi": 0.285059555467448,
+          "Recall": 0.7557474914263977,
+          "NLL": 0.10455133492702018
+        }
+      }
+    },
+    {
+      "seed": 43,
+      "policies": {
+        "decoder_rank0": {
+          "BLEU_1": 78.0095506470072,
+          "BLEU_4": 37.77656388652394,
+          "METEOR": 28.60540330616966,
+          "ROUGE_L": 58.037592568438576,
+          "CIDEr": 121.43005624053804,
+          "SPICE": 21.500611679676876,
+          "CHAIRs": 5.0,
+          "CHAIRi": 3.4023473559277333,
+          "Recall": 44.43668233202083,
+          "NLL": 2.313959204668244
+        },
+        "clip_object_fixed": {
+          "BLEU_1": 78.7478268155238,
+          "BLEU_4": 38.15646454722432,
+          "METEOR": 29.196996749022748,
+          "ROUGE_L": 58.54237052493264,
+          "CIDEr": 125.40970099770463,
+          "SPICE": 22.42407179158803,
+          "CHAIRs": 4.0,
+          "CHAIRi": 2.619473549706108,
+          "Recall": 46.011685507430464,
+          "NLL": 2.313959204668244
+        }
+      },
+      "delta_vs_XE": {
+        "decoder_rank0": {
+          "BLEU_1": 0.24833797714458683,
+          "BLEU_4": -0.013716394707195434,
+          "METEOR": -0.20796358408689386,
+          "ROUGE_L": 0.12477960010037492,
+          "CIDEr": -0.5542605142128139,
+          "SPICE": -0.32511946644556744,
+          "CHAIRs": 0.9400000000000004,
+          "CHAIRi": 0.5988634147192413,
+          "Recall": 0.7239933951479713,
+          "NLL": 0.13583291476615766
+        },
+        "clip_object_fixed": {
+          "BLEU_1": 0.8378915611969546,
+          "BLEU_4": 0.7393535316491864,
+          "METEOR": -0.21387331225059825,
+          "ROUGE_L": 0.29275822504674665,
+          "CIDEr": 1.045824389228173,
+          "SPICE": -0.1464922155961439,
+          "CHAIRs": 0.33999999999999986,
+          "CHAIRi": 0.16855775052307997,
+          "Recall": 1.0796392734662845,
+          "NLL": 0.13583291476615766
+        }
+      }
+    },
+    {
+      "seed": 44,
+      "policies": {
+        "decoder_rank0": {
+          "BLEU_1": 79.11649012619054,
+          "BLEU_4": 38.46007140320872,
+          "METEOR": 28.639147439309582,
+          "ROUGE_L": 58.45490892636058,
+          "CIDEr": 122.67299584866646,
+          "SPICE": 21.820875522872136,
+          "CHAIRs": 5.4,
+          "CHAIRi": 3.5801990435569344,
+          "Recall": 45.402006858884796,
+          "NLL": 2.3082499031820394
+        },
+        "clip_object_fixed": {
+          "BLEU_1": 79.49930341537384,
+          "BLEU_4": 38.31225790198765,
+          "METEOR": 29.11339788111858,
+          "ROUGE_L": 58.64962032026906,
+          "CIDEr": 125.27499163235736,
+          "SPICE": 22.59022601140832,
+          "CHAIRs": 4.58,
+          "CHAIRi": 2.9467321496033247,
+          "Recall": 46.65311825225454,
+          "NLL": 2.3082499031820394
+        }
+      },
+      "delta_vs_XE": {
+        "decoder_rank0": {
+          "BLEU_1": 1.020781642644863,
+          "BLEU_4": 0.5895795583015797,
+          "METEOR": -0.06669606375280779,
+          "ROUGE_L": 0.47592001790737015,
+          "CIDEr": 1.001876897293286,
+          "SPICE": 0.15317041442966683,
+          "CHAIRs": 0.9200000000000008,
+          "CHAIRi": 0.4407589783218162,
+          "Recall": 1.7337736568017306,
+          "NLL": 0.11986129917910748
+        },
+        "clip_object_fixed": {
+          "BLEU_1": 1.273664953516544,
+          "BLEU_4": 0.5333913121271365,
+          "METEOR": -0.25339583321872183,
+          "ROUGE_L": 0.2766750008140093,
+          "CIDEr": 0.2151264289276611,
+          "SPICE": 0.019149457177618956,
+          "CHAIRs": 0.6800000000000002,
+          "CHAIRi": 0.30477631364117963,
+          "Recall": 1.6194589101994126,
+          "NLL": 0.11986129917910748
+        }
+      }
+    }
+  ],
+  "statistics": {
+    "decoder_rank0": {
+      "BLEU_1": {
+        "mean": 78.3908440364027,
+        "sample_std": 0.6286993234800661
+      },
+      "BLEU_4": {
+        "mean": 38.160374323672094,
+        "sample_std": 0.3494308573060817
+      },
+      "METEOR": {
+        "mean": 28.71182660944979,
+        "sample_std": 0.15602223757946757
+      },
+      "ROUGE_L": {
+        "mean": 58.28576053146121,
+        "sample_std": 0.21959349889536958
+      },
+      "CIDEr": {
+        "mean": 122.55176985431237,
+        "sample_std": 1.0662815410685311
+      },
+      "SPICE": {
+        "mean": 21.734240940515786,
+        "sample_std": 0.20456737017714344
+      },
+      "CHAIRs": {
+        "mean": 5.113333333333333,
+        "sample_std": 0.25006665778014775
+      },
+      "CHAIRi": {
+        "mean": 3.4414039899347877,
+        "sample_std": 0.12397023819702031
+      },
+      "Recall": {
+        "mean": 44.82831618612134,
+        "sample_std": 0.5077611391762262
+      },
+      "NLL": {
+        "mean": 2.3029663387155,
+        "sample_std": 0.014381956447591224
+      }
+    },
+    "clip_object_fixed": {
+      "BLEU_1": {
+        "mean": 79.04770115211343,
+        "sample_std": 0.3980518720335443
+      },
+      "BLEU_4": {
+        "mean": 38.40977658999004,
+        "sample_std": 0.31365513479866725
+      },
+      "METEOR": {
+        "mean": 29.223933071718168,
+        "sample_std": 0.1261784664846931
+      },
+      "ROUGE_L": {
+        "mean": 58.63869669636675,
+        "sample_std": 0.09135549241078335
+      },
+      "CIDEr": {
+        "mean": 125.77551086677013,
+        "sample_std": 0.7532803196208984
+      },
+      "SPICE": {
+        "mean": 22.57636900664042,
+        "sample_std": 0.14586320666546607
+      },
+      "CHAIRs": {
+        "mean": 4.14,
+        "sample_std": 0.3893584466786358
+      },
+      "CHAIRi": {
+        "mean": 2.7055886832298133,
+        "sample_std": 0.21165983509233466
+      },
+      "Recall": {
+        "mean": 46.10694779626572,
+        "sample_std": 0.5053193276903963
+      },
+      "NLL": {
+        "mean": 2.3029663387155,
+        "sample_std": 0.014381956447591224
+      }
+    }
+  },
+  "delta_vs_XE_statistics": {
+    "decoder_rank0": {
+      "BLEU_1": {
+        "mean": 0.5634693345418782,
+        "sample_std": 0.4053749759797178
+      },
+      "BLEU_4": {
+        "mean": 0.359628503781065,
+        "sample_std": 0.3262098214264497
+      },
+      "METEOR": {
+        "mean": -0.0709127547044659,
+        "sample_std": 0.13499188614438667
+      },
+      "ROUGE_L": {
+        "mean": 0.3247916661213637,
+        "sample_std": 0.18060208025511043
+      },
+      "CIDEr": {
+        "mean": 0.7874417901184358,
+        "sample_std": 1.2483747078545206
+      },
+      "SPICE": {
+        "mean": -0.0477953387995503,
+        "sample_std": 0.24811943403247078
+      },
+      "CHAIRs": {
+        "mean": 0.9466666666666668,
+        "sample_std": 0.03055050463303804
+      },
+      "CHAIRi": {
+        "mean": 0.5265310932490833,
+        "sample_std": 0.07990446945111503
+      },
+      "Recall": {
+        "mean": 1.2045387188280614,
+        "sample_std": 0.506647859081065
+      },
+      "NLL": {
+        "mean": 0.12008184962409511,
+        "sample_std": 0.01564195611751201
+      }
+    },
+    "clip_object_fixed": {
+      "BLEU_1": {
+        "mean": 0.9690158028015313,
+        "sample_std": 0.26468430804407256
+      },
+      "BLEU_4": {
+        "mean": 0.7637544150187026,
+        "sample_std": 0.24348228988848436
+      },
+      "METEOR": {
+        "mean": -0.19019719334207963,
+        "sample_std": 0.07778769312303746
+      },
+      "ROUGE_L": {
+        "mean": 0.2853554258650585,
+        "sample_std": 0.008117374657281306
+      },
+      "CIDEr": {
+        "mean": 0.8907132237796702,
+        "sample_std": 0.6129322441461942
+      },
+      "SPICE": {
+        "mean": -0.08448494373955266,
+        "sample_std": 0.0903266535702073
+      },
+      "CHAIRs": {
+        "mean": 0.5133333333333333,
+        "sample_std": 0.1700980109623078
+      },
+      "CHAIRi": {
+        "mean": 0.2527978732105692,
+        "sample_std": 0.07361716064222242
+      },
+      "Recall": {
+        "mean": 1.1516152250306984,
+        "sample_std": 0.43633101761440896
+      },
+      "NLL": {
+        "mean": 0.12008184962409511,
+        "sample_std": 0.01564195611751201
+      }
+    }
+  },
+  "limits": [
+    "Fixed SCST1500 endpoint; no TEST-selected fallback.",
+    "SCST increases both CHAIR rates in every seed despite reranking.",
+    "Single-seed baseline differs in decoder and is not reranked; comparison describes full systems.",
+    "Seed42 historical I/O vs43/44 direct H5, no bitwise cross-build equivalence.",
+    "Prior project TEST exposure recorded."
+  ],
+  "seed42_NLL_audit": {
+    "archive_sha256": "9b24f0add1afb5b864ece94f51aad63861421279d018659c38bd8c1b2bb01a19",
+    "workers": [
+      {
+        "complete": true,
+        "rank": 0,
+        "images": 2500,
+        "NLL_sum": 326582.72064208984,
+        "NLL_tokens": 143043,
+        "seconds": 188.20662621399993,
+        "training": false,
+        "checkpoint_sha256": "80e1280b9eef216c5db421a738c7a5e0550bb34b1a62a2a13b2c8e76d40b1a24",
+        "caption_sha256": "6fa0bb8171afa1b1419af72f3b5ecdccde8dc1607b6dc7f67add95fd682dff21",
+        "beams_sha256": "4e61df8db0647c742b9a194827d09b364a5fab07e74880ffbfd3d971667c7f5c",
+        "runtime_policy": {
+          "training_torch": "2.11.0+cu128",
+          "inference_torch": "2.11.0+cu128",
+          "cuda_wheel_changed": false,
+          "policy": "Same publicTorch2.11.0 observed CUDA wheels; strictstate and actual GPU beam-path check required.",
+          "bitwise_cross_build_equivalence_established": false
+        },
+        "first_GPU_beam_path_check_passed": true
+      },
+      {
+        "complete": true,
+        "rank": 1,
+        "images": 2500,
+        "NLL_sum": 327664.4157104492,
+        "NLL_tokens": 143068,
+        "seconds": 194.170898566,
+        "training": false,
+        "checkpoint_sha256": "80e1280b9eef216c5db421a738c7a5e0550bb34b1a62a2a13b2c8e76d40b1a24",
+        "caption_sha256": "33054ec6d30caaaa0b0999505526788ba54ea5ee7a04a427df4d782da7f868d4",
+        "beams_sha256": "aa29a2288a5a439288dd9ba228b4c996fe85c5fb9a7c21a977fd3ca10281b1bd",
+        "runtime_policy": {
+          "training_torch": "2.11.0+cu128",
+          "inference_torch": "2.11.0+cu128",
+          "cuda_wheel_changed": false,
+          "policy": "Same publicTorch2.11.0 observed CUDA wheels; strictstate and actual GPU beam-path check required.",
+          "bitwise_cross_build_equivalence_established": false
+        },
+        "first_GPU_beam_path_check_passed": true
+      }
+    ],
+    "NLL": 2.2866899082962173
+  },
+  "sources": {
+    "42": {
+      "version": "csa_scst_only1500_rerank_valid5000",
+      "kaggle_source": "ducanh3/notebook7bc83c4c76/94",
+      "sha256": "80e1280b9eef216c5db421a738c7a5e0550bb34b1a62a2a13b2c8e76d40b1a24",
+      "path": "/tmp/clip-patch199-test-uhwqu4qg/scst_v94/csa_scst_only1500_rerank_valid5000/update1500/pilot_checkpoint.bin",
+      "origin": "Kaggle API exact version ducanh3/notebook7bc83c4c76/94, verified by SHA256"
+    },
+    "43": "ducanh3/notebook7bc83c4c76/185",
+    "44": "ducanh2403/2-vi-cai-kia-qua-nhieu/241"
+  },
+  "comparison_with_single_seed_baseline": {
+    "CIDEr": {
+      "baseline": 120.51445498745915,
+      "scst_rerank_mean": 125.77551086677013,
+      "delta": 5.261055879310987
+    },
+    "CHAIRs": {
+      "baseline": 5.16,
+      "scst_rerank_mean": 4.14,
+      "delta": -1.0200000000000005
+    },
+    "CHAIRi": {
+      "baseline": 3.5957504767093433,
+      "scst_rerank_mean": 2.7055886832298133,
+      "delta": -0.8901617934795301
+    }
+  },
+  "interpretation": {
+    "CIDEr_after_rerank_increases_in_all_seeds": true,
+    "CHAIRs_and_CHAIRi_worsen_vs_XE_rerank_in_all_seeds": true,
+    "top1_CIDEr_increases_in_all_seeds": false,
+    "recommendation": "Keep XE+rerank as the lower-hallucination reference and report SCST+rerank as a CIDEr/faithfulness tradeoff; do not claim uniform improvement or automatically extend training. This is a recommendation, not a new user-approved run."
+  },
+  "same_evaluator_hashes_and_java_across_three_seeds": true,
+  "sheet_update": {
+    "spreadsheet_url": "https://docs.google.com/spreadsheets/d/1XZ5iuyCs5JP8VE6dT7AYdVTiY1_nK4C_QdXs5ppw6FA/edit",
+    "sheet": "Kết quả mới",
+    "range": "A231:P246",
+    "values_read_back_exactly": true,
+    "formatting_checked_via_api": true,
+    "native_visual_fit_inspected": false
+  }
+}

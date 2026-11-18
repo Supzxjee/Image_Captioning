@@ -1,0 +1,395 @@
+{
+  "run_status": {
+    "complete": true,
+    "training": true,
+    "test_used": true,
+    "test_tuning": false,
+    "seed": 43,
+    "xe_source": "ducanh3/notebook7bc83c4c76/179",
+    "target_updates": 1500
+  },
+  "result": {
+    "status": "CSA_PER_CAPTION_SEED_SCST1500_TEST_RERANK_COMPLETE",
+    "images": 5000,
+    "test_used": true,
+    "training": true,
+    "checkpoint_sha256": "db5046b659ce26c069b77d964cbfe5f8d0b46f9a70bce111be2e7d466ddb827b",
+    "metrics": {
+      "decoder_rank0": {
+        "CIDEr": 1.2143005624053804,
+        "BLEU_1": 0.780095506470072,
+        "BLEU_4": 0.3777656388652394,
+        "METEOR": 0.2860540330616966,
+        "SPICE": 0.21500611679676876,
+        "ROUGE_L": 0.5803759256843858,
+        "CHAIRs": 0.05,
+        "CHAIRi": 0.03402347355927733,
+        "Recall": 0.4443668233202083,
+        "counts": {
+          "images": 5000,
+          "hallucinated_captions": 250,
+          "hallucinated_mentions": 258,
+          "object_mentions": 7583,
+          "recalled_unique": 6997,
+          "reference_unique": 15746
+        },
+        "mean_words": 9.2374,
+        "short_le2": 0,
+        "NLL": 2.313959204668244
+      },
+      "clip_object_fixed": {
+        "CIDEr": 1.2540970099770463,
+        "BLEU_1": 0.7874782681552379,
+        "BLEU_4": 0.38156464547224317,
+        "METEOR": 0.29196996749022747,
+        "SPICE": 0.2242407179158803,
+        "ROUGE_L": 0.5854237052493264,
+        "CHAIRs": 0.04,
+        "CHAIRi": 0.02619473549706108,
+        "Recall": 0.4601168550743046,
+        "counts": {
+          "images": 5000,
+          "hallucinated_captions": 200,
+          "hallucinated_mentions": 205,
+          "object_mentions": 7826,
+          "recalled_unique": 7245,
+          "reference_unique": 15746
+        },
+        "mean_words": 9.5482,
+        "short_le2": 0,
+        "NLL": 2.313959204668244
+      }
+    },
+    "changes": {
+      "changed_captions": 2696,
+      "rank_histogram": {
+        "0": 2304,
+        "1": 1226,
+        "2": 786,
+        "3": 471,
+        "4": 213
+      },
+      "CHAIR_repairs": 81,
+      "CHAIR_new_flags": 31
+    },
+    "selector": {
+      "decoder_weight": 0.3,
+      "clip_weight": 0.4,
+      "object_weight": 0.3,
+      "min_detection_confidence": 0.5,
+      "hallucination_penalty": 1.0,
+      "tie_break": "earlier beam"
+    },
+    "tuned_on_test": false,
+    "oracle_used_for_selection": false,
+    "prior_project_test_exposure": true,
+    "selection": "both prelocked policies reported; no TEST-based fallback",
+    "NLL_note": "Measured frozen-captioner teacher-forced NLL, identical for both selection policies.",
+    "seed": 43,
+    "xe_checkpoint_source": "ducanh3/notebook7bc83c4c76/179",
+    "xe_checkpoint_sha256": "a51e7ec21be68aa1cda9e0805bd6248add6199914a5c262fce138988066051a5",
+    "scst_checkpoint": {
+      "sha256": "db5046b659ce26c069b77d964cbfe5f8d0b46f9a70bce111be2e7d466ddb827b",
+      "updates": 1500,
+      "source_sha256": "a51e7ec21be68aa1cda9e0805bd6248add6199914a5c262fce138988066051a5",
+      "parent_sha256": "93d865c65dda5f0a2dd0a4d95f982afa47b27e08377039eb3956fce1cd8b77ba"
+    },
+    "fixed_updates": 1500,
+    "training_torch": "2.11.0+cu128",
+    "training_rule": "SCST only, fresh1000 then optimizer-resume500",
+    "policy_rng_seeds": [
+      4342,
+      5342
+    ],
+    "prior_XE_test_source": "ducanh3/notebook7bc83c4c76/181",
+    "prior_XE_rerank_source": "ducanh3/notebook7bc83c4c76/183"
+  },
+  "output_source": "ducanh3/notebook7bc83c4c76/185",
+  "zip_sha256": "5930bac90e1e336dc651ce417af3722a1da284c7ed55e3adf8596b5038026307",
+  "valid1500": {
+    "split": "val",
+    "images": 5000,
+    "metrics": {
+      "BLEU_1": 0.7808769285658584,
+      "BLEU_4": 0.37828564928140884,
+      "CIDEr": 1.2008200238767663,
+      "ROUGE_L": 0.5793465531624415,
+      "CHAIRs": 0.0546,
+      "CHAIRi": 0.03736584073141646,
+      "Recall": 0.4359618282270216,
+      "NLL": 2.28915979506577
+    },
+    "checkpoint": {
+      "sha256": "db5046b659ce26c069b77d964cbfe5f8d0b46f9a70bce111be2e7d466ddb827b",
+      "updates": 1500,
+      "source_sha256": "a51e7ec21be68aa1cda9e0805bd6248add6199914a5c262fce138988066051a5",
+      "parent_sha256": "93d865c65dda5f0a2dd0a4d95f982afa47b27e08377039eb3956fce1cd8b77ba"
+    },
+    "checkpoint_selection": "fixed1500, not selected using these metrics"
+  },
+  "comparison": {
+    "seed": 43,
+    "split": "test",
+    "images": 5000,
+    "xe_checkpoint_source": "ducanh3/notebook7bc83c4c76/179",
+    "xe_sha256": "a51e7ec21be68aa1cda9e0805bd6248add6199914a5c262fce138988066051a5",
+    "scst_checkpoint": {
+      "sha256": "db5046b659ce26c069b77d964cbfe5f8d0b46f9a70bce111be2e7d466ddb827b",
+      "updates": 1500,
+      "source_sha256": "a51e7ec21be68aa1cda9e0805bd6248add6199914a5c262fce138988066051a5",
+      "parent_sha256": "93d865c65dda5f0a2dd0a4d95f982afa47b27e08377039eb3956fce1cd8b77ba"
+    },
+    "xe_rerank_output_source": "ducanh3/notebook7bc83c4c76/183",
+    "xe_metrics": {
+      "decoder_rank0": {
+        "BLEU_1": 0.7776121266986261,
+        "BLEU_4": 0.37790280281231137,
+        "METEOR": 0.28813366890256553,
+        "ROUGE_L": 0.579128129683382,
+        "CIDEr": 1.2198431675475085,
+        "SPICE": 0.21825731146122443,
+        "CHAIRs": 0.0406,
+        "CHAIRi": 0.02803483941208492,
+        "Recall": 0.43712688936872857
+      },
+      "clip_object_fixed": {
+        "BLEU_1": 0.7790993525432683,
+        "BLEU_4": 0.3741711101557513,
+        "METEOR": 0.2941087006127335,
+        "ROUGE_L": 0.582496122998859,
+        "CIDEr": 1.2436387660847645,
+        "SPICE": 0.22570564007184174,
+        "CHAIRs": 0.0366,
+        "CHAIRi": 0.02450915799183028,
+        "Recall": 0.4493204623396418
+      }
+    },
+    "scst_metrics": {
+      "decoder_rank0": {
+        "CIDEr": 1.2143005624053804,
+        "BLEU_1": 0.780095506470072,
+        "BLEU_4": 0.3777656388652394,
+        "METEOR": 0.2860540330616966,
+        "SPICE": 0.21500611679676876,
+        "ROUGE_L": 0.5803759256843858,
+        "CHAIRs": 0.05,
+        "CHAIRi": 0.03402347355927733,
+        "Recall": 0.4443668233202083,
+        "counts": {
+          "images": 5000,
+          "hallucinated_captions": 250,
+          "hallucinated_mentions": 258,
+          "object_mentions": 7583,
+          "recalled_unique": 6997,
+          "reference_unique": 15746
+        },
+        "mean_words": 9.2374,
+        "short_le2": 0,
+        "NLL": 2.313959204668244
+      },
+      "clip_object_fixed": {
+        "CIDEr": 1.2540970099770463,
+        "BLEU_1": 0.7874782681552379,
+        "BLEU_4": 0.38156464547224317,
+        "METEOR": 0.29196996749022747,
+        "SPICE": 0.2242407179158803,
+        "ROUGE_L": 0.5854237052493264,
+        "CHAIRs": 0.04,
+        "CHAIRi": 0.02619473549706108,
+        "Recall": 0.4601168550743046,
+        "counts": {
+          "images": 5000,
+          "hallucinated_captions": 200,
+          "hallucinated_mentions": 205,
+          "object_mentions": 7826,
+          "recalled_unique": 7245,
+          "reference_unique": 15746
+        },
+        "mean_words": 9.5482,
+        "short_le2": 0,
+        "NLL": 2.313959204668244
+      }
+    },
+    "delta_vs_same_seed_XE": {
+      "decoder_rank0": {
+        "BLEU_1": 0.0024833797714458594,
+        "BLEU_4": -0.0001371639470719721,
+        "METEOR": -0.002079635840868954,
+        "ROUGE_L": 0.0012477960010037759,
+        "CIDEr": -0.005542605142128121,
+        "SPICE": -0.00325119466445567,
+        "CHAIRs": 0.009400000000000006,
+        "CHAIRi": 0.005988634147192411,
+        "Recall": 0.00723993395147976
+      },
+      "clip_object_fixed": {
+        "BLEU_1": 0.008378915611969573,
+        "BLEU_4": 0.007393535316491895,
+        "METEOR": -0.002138733122506009,
+        "ROUGE_L": 0.0029275822504674087,
+        "CIDEr": 0.010458243892281782,
+        "SPICE": -0.0014649221559614456,
+        "CHAIRs": 0.0034000000000000002,
+        "CHAIRi": 0.0016855775052307988,
+        "Recall": 0.010796392734662819
+      }
+    },
+    "fixed_endpoint": 1500,
+    "selected_on_test": false,
+    "prior_project_test_exposure": true
+  },
+  "checkpoints": {
+    "500": {
+      "sha256": "8f1a1fc181b335543d8be117da1315260cdc01b4d4fd4b464d8367a82003d500",
+      "updates": 500,
+      "source_sha256": "a51e7ec21be68aa1cda9e0805bd6248add6199914a5c262fce138988066051a5"
+    },
+    "1000": {
+      "sha256": "93d865c65dda5f0a2dd0a4d95f982afa47b27e08377039eb3956fce1cd8b77ba",
+      "updates": 1000,
+      "source_sha256": "a51e7ec21be68aa1cda9e0805bd6248add6199914a5c262fce138988066051a5"
+    },
+    "1500": {
+      "sha256": "db5046b659ce26c069b77d964cbfe5f8d0b46f9a70bce111be2e7d466ddb827b",
+      "updates": 1500,
+      "source_sha256": "a51e7ec21be68aa1cda9e0805bd6248add6199914a5c262fce138988066051a5",
+      "parent_sha256": "93d865c65dda5f0a2dd0a4d95f982afa47b27e08377039eb3956fce1cd8b77ba"
+    }
+  },
+  "training": {
+    "log_entries": 60,
+    "first1000_seconds": 380.435960478,
+    "continuation500_seconds": 197.59359574199993,
+    "rng_seeds": [
+      4342,
+      5342
+    ],
+    "torch": "2.11.0+cu128"
+  },
+  "test_workers": {
+    "0": {
+      "complete": true,
+      "rank": 0,
+      "images": 2500,
+      "NLL_sum": 330784.9382324219,
+      "NLL_tokens": 143043,
+      "seconds": 183.3097272340001,
+      "training": false,
+      "checkpoint_sha256": "db5046b659ce26c069b77d964cbfe5f8d0b46f9a70bce111be2e7d466ddb827b",
+      "caption_sha256": "a033c10b35831a8218be942f4e4a3f5ee680ef5203d7dcc75161c74df9c4a97d",
+      "beams_sha256": "11701edab5655b6b3788c6e8b457031000fb8de34c6e17a9a61244fd0d3a4e34",
+      "runtime_policy": {
+        "training_torch": "2.11.0+cu128",
+        "inference_torch": "2.11.0+cu128",
+        "cuda_wheel_changed": false,
+        "policy": "Recorded training and inference Torch builds; FP32 and strict checkpoint checks.",
+        "bitwise_cross_build_equivalence_established": false
+      },
+      "first_GPU_beam_path_check_passed": true
+    },
+    "1": {
+      "complete": true,
+      "rank": 1,
+      "images": 2500,
+      "NLL_sum": 331264.24377441406,
+      "NLL_tokens": 143068,
+      "seconds": 186.73095822899995,
+      "training": false,
+      "checkpoint_sha256": "db5046b659ce26c069b77d964cbfe5f8d0b46f9a70bce111be2e7d466ddb827b",
+      "caption_sha256": "23555b350978b6a6d55124b9653602d1f4ec9c15a7f65cd6fd1a0f3659a0f815",
+      "beams_sha256": "49d561e43a3f1cae862393c493e7b86f9aad394227bbaa59bb81f522b18ee8e4",
+      "runtime_policy": {
+        "training_torch": "2.11.0+cu128",
+        "inference_torch": "2.11.0+cu128",
+        "cuda_wheel_changed": false,
+        "policy": "Recorded training and inference Torch builds; FP32 and strict checkpoint checks.",
+        "bitwise_cross_build_equivalence_established": false
+      },
+      "first_GPU_beam_path_check_passed": true
+    }
+  },
+  "clip_workers": {
+    "0": {
+      "complete": true,
+      "images": 2500,
+      "scored_pairs": 12500,
+      "scores_sha256": "581cd97b4e05fb2eac1f23c71a183388572cf51fa205430d1273ed81ca32db0d",
+      "seconds": 92.0571310790001,
+      "torch_version": "2.11.0+cu128",
+      "training": false,
+      "clip_revision": "57c216476eefef5ab752ec549e440a49ae4ae5f3"
+    },
+    "1": {
+      "complete": true,
+      "images": 2500,
+      "scored_pairs": 12500,
+      "scores_sha256": "209838ea1053675838d2602e91c9ddd1ebaef774a94f187f9428345cd1dbb453",
+      "seconds": 92.48636898300038,
+      "torch_version": "2.11.0+cu128",
+      "training": false,
+      "clip_revision": "57c216476eefef5ab752ec549e440a49ae4ae5f3"
+    }
+  },
+  "verification": {
+    "unique_TEST_images": 5000,
+    "candidates": 25000,
+    "train_updates_1_to_1500_log_coverage": true,
+    "receipt_lineage_XE_to_1000_to_1500": true,
+    "cache_rebinding_and_VALID_TEST_disjoint": true,
+    "beam_and_CLIP_score_hashes_checked": true,
+    "all_fixed_selections_replayed": true,
+    "CHAIR_counts_and_transitions_recomputed": true,
+    "per_image_CIDEr_means_verified": true,
+    "NLL_sums_verified": true,
+    "XE_comparison_replayed": true,
+    "checkpoint_binary_bytes_present": false,
+    "CLIP_asset_bytes_present": false,
+    "model_executed_locally": false,
+    "evaluator_hashes_and_java_match_seed42": true
+  },
+  "environment": {
+    "pycocoevalcap": "1.2",
+    "java": "/kaggle/working/csa_per_caption_seed43_scst1500_test_rerank/test/assets/jre/jdk8u472-b08-jre/bin/java",
+    "java_archive_sha256": "6f7fb5fd640a0fd00837344b0920cbc4b9b9284b50e66f33789e3b250446a16e",
+    "corenlp_archive_sha256": "c3e8f129d56cbcd9747ee6615736fb4bc023c5ea550e50465fdf3138fdb9a187",
+    "corenlp_version": "3.6.0",
+    "model_digest_pinned_independently": false,
+    "evaluator_files": {
+      "bleu/bleu.py": "05b74a92b32e071eacfb954ef34328137cfd1b82c563572648633087def23776",
+      "bleu/bleu_scorer.py": "413ccfef71b88c5f11d25d05fdcf08625a1559338ffbb7c2787e800116eaecdd",
+      "cider/cider.py": "268b71cb096ccd10cf4a7cd49a9a72072001922f1876f4e88833e1eb4649cfcb",
+      "cider/cider_scorer.py": "299037838373391c3335e066c867ba2d6dd8617d2c8fb2c4193f32620a774adc",
+      "eval.py": "2d3a3bd8b72aefa9f9cfe24275dbecd4e9cff7ba9177cdd55f689625f372b193",
+      "example/coco_eval_example.py": "2caa3e15f00f248e99b45d5b4f23d3e0ce87f2b5da208ad82d024911ee28cbd9",
+      "meteor/data/paraphrase-en.gz": "c147ac7d2c91f2fbb3ad31e4b352235061eb83145e0434daf217ee9ca5975f48",
+      "meteor/meteor-1.5.jar": "1e57b4c72c0830ebe68558f1c799a624e96cbc1b6045c9f6330e26dcff6eafc2",
+      "meteor/meteor.py": "5ac9a2f6d7e1e04957dfa20774977fdb49c6b77a43c43d4f9eb8f215b1efd850",
+      "rouge/rouge.py": "24f1fd7a3b87e7d9c4fd5aada88c79f54a58d5d8d36c9382aaf7a72a91edfc74",
+      "spice/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "spice/get_stanford_models.py": "cb48112259a6aec54a2fab7c342689ec76815bee45ac2a03d0bf45ab3711cea3",
+      "spice/lib/Meteor-1.5.jar": "014a3627d277a6f4ba5b44a20733f8dff28bbb428204c36abfda56565658ba09",
+      "spice/lib/SceneGraphParser-1.0.jar": "83a1b7c3f896dd135f9539ba41d65b155827dfc312893bfd5bb835c9f9ae310a",
+      "spice/lib/ejml-0.23.jar": "12d44e81fdd661ad2aac6384511facf3d8fa003c3ce8d9cec5f22827d1819a26",
+      "spice/lib/fst-2.47.jar": "8c871febc859cf72dbed1c6c1eebc5600c3d93c3e986feccf4623cc5086098cc",
+      "spice/lib/guava-19.0.jar": "58d4cc2e05ebb012bbac568b032f75623be1cb6fb096f3c60c72a86f7f057de4",
+      "spice/lib/hamcrest-core-1.3.jar": "66fdef91e9739348df7a096aa384a5685f4e875584cce89386a7a47251c4d8e9",
+      "spice/lib/jackson-core-2.5.3.jar": "c9a900c30c702d371be2d3714938dfa6de616599c8eb39f8e3cf7aedd62dfd32",
+      "spice/lib/javassist-3.19.0-GA.jar": "d19c1ef43ccd9cb1b39466bb2f1c8e45c2b6752f1e13a3dfb60096543d1791fa",
+      "spice/lib/json-simple-1.1.1.jar": "4e69696892b88b41c55d49ab2fdcc21eead92bf54acc588c0050596c3b75199c",
+      "spice/lib/junit-4.12.jar": "59721f0805e223d84b90677887d9ff567dc534d7c502ca903c0c2b17f05c116a",
+      "spice/lib/lmdbjni-0.4.6.jar": "f4e8c51eb4ef05abe57d2187e76f5c335e4ef16d8503329eb7dbc5ae7a90529c",
+      "spice/lib/lmdbjni-linux64-0.4.6.jar": "0b7773db873aaeec399a50113c0a4e121df0eff5e724607f7bc8171452107d94",
+      "spice/lib/lmdbjni-osx64-0.4.6.jar": "7d66778037b5689e7c6daf22a7140722f2085da4ae479bceda4a4be487d55460",
+      "spice/lib/lmdbjni-win64-0.4.6.jar": "969c6aa59893b82856a6832da640672b0f23f1d72f70d7b04296c71970d75b79",
+      "spice/lib/objenesis-2.4.jar": "090416e160a7e398f79e0149a7b05ef328b1843898a34e08c1cc170128d326d0",
+      "spice/lib/slf4j-api-1.7.12.jar": "0aee9a77a4940d72932b0d0d9557793f872e66a03f598e473f45e7efecdccf99",
+      "spice/lib/slf4j-simple-1.7.21.jar": "a20179cc3ded2d7e2f5def4ccb34b2d0836e2f8c9e79352a6babd6a6559cc8e0",
+      "spice/lib/stanford-corenlp-3.6.0-models.jar": "d285157bd7887ee3018094b5dbae092e49088b023361ccdb550ee1daf9b2c9bd",
+      "spice/lib/stanford-corenlp-3.6.0.jar": "d341d5863276f55782c5ef73212222d6b3b48e02ae1951ab6de7618d28b12742",
+      "spice/spice-1.0.jar": "6c6a73ae6dd108667047c1818707590413934dcb9f1a62cef6469059b41b3d59",
+      "spice/spice.py": "4595b4c46894516ed1edd09d39ca02574fe0864ea10fa0b8e504b1593777b615",
+      "tokenizer/ptbtokenizer.py": "ded90551127b8a4bf683873432ccafa83330a9997f6d0b695cb71a618808b8c1",
+      "tokenizer/stanford-corenlp-3.4.1.jar": "2fcb91bb7a111f93d71e264f4ee0e3afd19ba0dde6d21b38605088df9e940399"
+    }
+  }
+}
