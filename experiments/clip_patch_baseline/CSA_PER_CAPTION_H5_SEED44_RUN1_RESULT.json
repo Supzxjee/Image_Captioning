@@ -1,0 +1,375 @@
+{
+  "run_status": {
+    "complete": false,
+    "seed": 44,
+    "epochs_requested": 10,
+    "test_used": false,
+    "SCST": false,
+    "reranking": false
+  },
+  "progress": {
+    "epoch": 9,
+    "batch_cursor": 0,
+    "phase": "train",
+    "updates": 141688,
+    "caption_events": 4533976,
+    "history": [
+      {
+        "epoch": 1,
+        "CIDEr": 0.985810970948411,
+        "mean_words": 8.7776,
+        "short_le2": 0,
+        "NLL": 2.6808047705230122,
+        "TRAIN_online_NLL": 3.439422800763899,
+        "files_sha256": {
+          "result.json": "4da6936f5278329a52a8a1f04f86ab406d7416d4292f07c47f8f3358d2898573",
+          "worker0.json": "553b2f21492967cf9842f8712b0480def6999c87907d7e5df11de63a0b2c25cc",
+          "worker1.json": "18ad66b317ff0538426be4b2acee7249821e7db5219c26d4dfddc74f1816c4fb",
+          "val_rank0.json": "08b8f744f847970bc2fd9377d01192d67bf4f544f2a3a15c9465720454f6cb94",
+          "cider_per_image.json": "59af21aa22a5a312e7964de7b729ec6c750cb48cb2fbae44b220e8b7da88e55c",
+          "val_rank1.json": "5340bf273e797da2a323c93dcf3cc46b983416ea57ddca1f76986692913913e5"
+        }
+      },
+      {
+        "epoch": 2,
+        "CIDEr": 1.0988860801674565,
+        "mean_words": 8.9186,
+        "short_le2": 0,
+        "NLL": 2.423495410410543,
+        "TRAIN_online_NLL": 2.5558609608019243,
+        "files_sha256": {
+          "result.json": "2f8d2ad62ae576bf3221360141043e5874948fc0ef21ffd783dd5d06c18c78cd",
+          "worker0.json": "ca1d1e63f367a482ee6a0364d2e784ee7c5d1fcc88f8a9f301e357d894b2e82a",
+          "worker1.json": "e9f1f32a62fb60c11496895f8e89af2da0065e783d143e2fcbd04ad0eced0791",
+          "val_rank0.json": "531293e7a678f0ae27a0e877d181ecf93bae8ac7283bf31eee0bfcdaea9e1e3d",
+          "cider_per_image.json": "46417968421c18469276e0e537f72d9403a5d0ec5035c59a4fde65df0f731cf4",
+          "val_rank1.json": "fb05491f3e76204163ececc6eb89c7f7abf40cb1dc85e6c5eefef000b5bfc829"
+        }
+      },
+      {
+        "epoch": 3,
+        "CIDEr": 1.1440870824679459,
+        "mean_words": 8.9286,
+        "short_le2": 0,
+        "NLL": 2.322416179208095,
+        "TRAIN_online_NLL": 2.3756950800213272,
+        "files_sha256": {
+          "result.json": "6ccab46dd792afb0a2d687227d9fd2eb182d29398f013b7648c37cdf14ececdb",
+          "worker0.json": "bfb83e03c68eee623943563cb5474cc816e1827227282e99fbb44caa781131a9",
+          "worker1.json": "82089eb24f60caf66eda66c7e546ddbef2c789dd7b88015bbe91a152a5013c65",
+          "val_rank0.json": "acc60b14dfd463f5a7f1244b1390849f4c7a7d9176f36a27d388aec024754aa5",
+          "cider_per_image.json": "d9eebe13412becdfe3b17e8002d81da0759048e48dfa7571e23a251c00f0e23a",
+          "val_rank1.json": "5533c3fbcce710aec49d5753f7462ecf9bbadd14aa1e4006b443d6612f7280ef"
+        }
+      },
+      {
+        "epoch": 4,
+        "CIDEr": 1.1513903411826074,
+        "mean_words": 9.0176,
+        "short_le2": 0,
+        "NLL": 2.2655508902129164,
+        "TRAIN_online_NLL": 2.2721088357820713,
+        "files_sha256": {
+          "result.json": "528c7848742297b5e712780ffe7bcc4d0ccd069c0c5b9b41b751f511d0f1ac14",
+          "worker0.json": "5a3ada5ed668d8bdc7f50c83a3169cd1b4ab3a312f285b6fe5a1f562ecd1c910",
+          "worker1.json": "11362f4b60bb7a7c342f16fc7d9bf22008ecae893e694680df83390077f61cf7",
+          "val_rank0.json": "0eed1c40d61e1e1e8a3b8053372be58792bb1c7ba6bee4f7e794e502b8e57736",
+          "cider_per_image.json": "b7354e145afca8b4e1db0b8a9f788165d1f96d08fe702b3098a5bb0fc1148da4",
+          "val_rank1.json": "670936f928488669cecf2faa12a89e75ff30c5ee4fcc1f34513a4df80034a94b"
+        }
+      },
+      {
+        "epoch": 5,
+        "CIDEr": 1.168262375653769,
+        "mean_words": 9.2018,
+        "short_le2": 0,
+        "NLL": 2.216876025962358,
+        "TRAIN_online_NLL": 2.188212146640739,
+        "files_sha256": {
+          "result.json": "a22566d954d9f4d8528e8f8b436877c9e79ca25ab62e5c36d34bbbabcadd5f20",
+          "worker0.json": "2a0fae647175ae97eeff3d11aeef7da6e3affc3d1c2ecc0a094720ed38b97f8e",
+          "worker1.json": "10f25ad2a70842c090773948bf4b3769cba8ef9267461751203e6c5ae7975edc",
+          "val_rank0.json": "e5e5d5bef49efad928757870b32e3b71fdf9a818e1e9be8270035647f494d184",
+          "cider_per_image.json": "88ee5f659b196caf1a6970a8a9db7637c69c1c34583f5eb70829daeeaae3f187",
+          "val_rank1.json": "779b83abc5ea086b62eb12d0b5d5d5a943eee98d771ef9bbd6ae2c07761438dc"
+        }
+      },
+      {
+        "epoch": 6,
+        "CIDEr": 1.192214803817554,
+        "mean_words": 9.099,
+        "short_le2": 0,
+        "NLL": 2.188391972498023,
+        "TRAIN_online_NLL": 2.112870313402861,
+        "files_sha256": {
+          "result.json": "00a777702c328d147bb07e930a8e9e07a8cecdb24de842a68cd97fd133392e10",
+          "worker0.json": "070cec23c3bc6a064fe592ac6966ed41c0b30682d5fdc2e90dac19e373c6fd7c",
+          "worker1.json": "134589379ee64e5b2064dd5735928a028fd54065614317aefb83bf3b85c82c02",
+          "val_rank0.json": "6fa3a7b696f65ebed8b1186d7b4f52088f4037f07431f8a635aca4393d3f3391",
+          "cider_per_image.json": "69cbfad5af4a61c808670fd24620d7fd5d7ce42f0d9d06faaabae4f5c80deecf",
+          "val_rank1.json": "765f3d9610307cd6d21d0430c7c024e4cd9f492ac8bfed01e609380f95f3d9fa"
+        }
+      },
+      {
+        "epoch": 7,
+        "CIDEr": 1.211682600333124,
+        "mean_words": 9.2278,
+        "short_le2": 0,
+        "NLL": 2.1691380637323294,
+        "TRAIN_online_NLL": 2.042873427117289,
+        "files_sha256": {
+          "result.json": "801b60318b4929359bfa971ebb188f81f2eb22a306cda783bb5e51e4c893ce6b",
+          "worker0.json": "9a400323331563d95d3e44a593ef93368f2ee7cb96aa7f34d985486d559ddc65",
+          "worker1.json": "6a37008a69f6b7e81f25339a2da3f564c40c3a933b39710ac58ae05ef06fb084",
+          "val_rank0.json": "9a5df61580588af428620aed45b659e278ce6515c2a812430a183595aee3813e",
+          "cider_per_image.json": "f589f80cfec8e0be80c9b5bd81810b05021506b4360d53bc818b3be34bd0652e",
+          "val_rank1.json": "f769b4f2e46938d063eabbe7e5a66de976f3350863b65a9380d6e7846c606390"
+        }
+      },
+      {
+        "epoch": 8,
+        "CIDEr": 1.2026559458263408,
+        "mean_words": 9.178,
+        "short_le2": 0,
+        "NLL": 2.1619503309625396,
+        "TRAIN_online_NLL": 1.981805705736214,
+        "files_sha256": {
+          "result.json": "90679b535fc44ba8f2d3277bf9c7f6c942cb2712abd43e580a5ffbe33a7c9f5c",
+          "worker0.json": "da0bb4f9746161201e8d45f43878a1a92ba5b7155bf14d51b2c049fb6236555e",
+          "worker1.json": "c8958d5ea3b0e82b1c32dd1136e9a7118e06024720b145b8a1cfd435535ccd9e",
+          "val_rank0.json": "a93c68fd55c6c42406040ae843cde205f3ea7c224a9ccdedd577fe9cbd9d4866",
+          "cider_per_image.json": "555c829e8b05c5a26c70ac3930d47f58b4056aa715e336fde63a536aa9115723",
+          "val_rank1.json": "a2f2c8d7d5b7b61f8629a572b2fffc5083626175d0148566bd04d356fa1cc621"
+        }
+      }
+    ],
+    "best_epoch": 7,
+    "best_CIDEr": 1.211682600333124,
+    "epoch_nll_sum": 0.0,
+    "epoch_tokens": 0
+  },
+  "checkpoint_receipt": {
+    "sha256": "486f64885f30d5ec955afbffaa20ca76a2772fe5bcac08e7fcc2645e91a087fc",
+    "updates": 141688,
+    "epoch": 9,
+    "phase": "train",
+    "training_log_sha256": "1bfee5d05f29beb4ab544b42171571e211cab477aa729dd29b5dcf65f8ebe142"
+  },
+  "best_receipt": {
+    "sha256": "feaaf3fe251ee01c258c82f538a5abc0d0c5dae67ffb15c2108180a1c64c543f",
+    "epoch": 7,
+    "CIDEr": 1.211682600333124,
+    "test_used": false
+  },
+  "identity": {
+    "schema": "clip_patch_full_xe10_v1",
+    "source": {
+      "commit": "5eb012279e6fd0b5e47a56710ed5e3efa7449d2f",
+      "sha256": {
+        "experiments/clip_patch_baseline/full_data.py": "ab69cf61d4ad0456d9a869929750ab10f3a2a33b6c76683689539e57e4015a74",
+        "experiments/clip_patch_baseline/full_runtime.py": "230f7e10d96005fbffc33fb151a7a1d7c7245326e73826134a400772dadd04bb",
+        "experiments/clip_patch_baseline/run_full.py": "32dfb92228fad22d4f503680db1c8226db1e6abf9d7dd253786c3f16be9a97c0",
+        "experiments/clip_patch_baseline/patch_model.py": "dfe6b1d83bfc1e3c7961268fb104bc1f4092129e7d9400841568a3204dc57a70",
+        "experiments/clip_patch_baseline/patch_beam.py": "53fcb5b22bb9f05d795fbd4f539cfd4ff0af39c1dea679f7df1a933edf2754be",
+        "experiments/clip_patch_baseline/score_full.py": "fed170a6d12d1ab1bb969ae7eac29ee0855059417f6e2e876da193e279ca819a",
+        "experiments/clip_patch_baseline/patch_data.py": "3706ffec9c128c8fe12c4f21ba071939268fdd526ed614034cca8dfec55674d5",
+        "experiments/clip_patch_baseline/test_full_data.py": "f47160cf9cd85c96a4495dfa8264c0cd5e7cd60e8d5b6a77022932399e557431",
+        "experiments/clip_patch_baseline/make_full_notebook.py": "2417f0c691e291808b9f3b44f8bdb60090fcaf8bb487d71948538a7d61d5679d",
+        "experiments/clip_patch_baseline/SMOKE_SOURCE.json": "6413058df1575ae8266c6f7ec29eea3cb60917147126bc55961de47c949abe49",
+        "experiments/clip_patch_baseline/FULL_XE10_PROTOCOL.md": "a7c482bfe9efe3f23d4ebf235872204b8e0e0e9e69fae71e3a7b04b8980a986f",
+        "experiments/csa_paper/data.py": "5a5bb451dc20184d3ea597d4dc8415a120583571f4e1a4dac75e29a306213a71",
+        "experiments/csa_paper/real_bank_data.py": "2c791f8dd856198ec1954a2edd1f9e46520d422f20eff07220e462fc2c9bd9a0",
+        "experiments/csa_paper/cuda_runtime_guard.py": "640b5debc81607e3504930e4042571636cc3fbd525a6d0e5eb45abdd141fb773",
+        "experiments/csa_paper/saved_quality_data.py": "f8a092506e3adf96292203190ea2f83de397d3028a3ddc6293d58fd360199a1e",
+        "experiments/clip_patch_baseline/local_stage.py": "76ec1d4ace24fe2d95ea396d489692b7ff3c6289b71fd88c81b110cd2ad9426b",
+        "experiments/clip_patch_baseline/test_local_stage.py": "028e8bff388c44123368dac2aa21887d589adf1e02bb2d3f7082870564b9cfbb",
+        "experiments/clip_patch_baseline/LOCAL_STAGE_V3_PROTOCOL.md": "83ba0fd376a2f1f6069eca1a082c954e8316b236fa343807f813a40eb0a9487d",
+        "experiments/clip_patch_baseline/semantic_data.py": "a57af931f9e6be85f6efeee668b09fcca14c8a3bd54ebd695d9014ede2ab0540",
+        "experiments/clip_patch_baseline/semantic_patch_model.py": "10a385859ea1389a71f14a7a76e16a6989feb73fd581ca89659eab50ec53a0f3",
+        "experiments/clip_patch_baseline/semantic_training.py": "001f05f3e6959570571135a55abb7bc740217a447371bab627af8c72e0f26d11",
+        "experiments/clip_patch_baseline/test_semantic_data.py": "e9d9132db2e83b47e7f29cd1c465389cb4f16db2cd62a1cf27f048a06e29a572",
+        "experiments/clip_patch_baseline/BANK_PROMPT_SCRATCH_PROTOCOL.md": "93d1ebef1d359d393323951a152f50d16559c0fd235dac27eda4940653399a0c",
+        "experiments/csa_paper/model.py": "139edbb1b73caf3dadaf5c960b25542e282f88baf2ce9bdf141de922ceacbc09",
+        "experiments/csa_paper/SAVE_BANK_V130_PACKAGE.json": "826ba36628d6587860e2d548e950ea953bd4bbb8c0a8dc64393089dbc1e058e1",
+        "experiments/csa_paper/lemma_correction_review_text/bank_words_corrected.json": "cec76a0229f30361235a4b64e9712ac6bb2e79fc62a9241079a7af3fa95d13ac",
+        "experiments/csa_paper/FULL_PROMPT_FRESH_V175_RESULT.json": "452e94530b07b117be6873f004404b558e29e87cb09e97e27a1548d0bfd5f81a",
+        "experiments/clip_patch_baseline/memory_fusion.py": "a70947e22263ddd27a7896a94cfb35cfff73102370288c53f86529964ea8f087",
+        "experiments/clip_patch_baseline/test_csa_full_data.py": "6ab5adad7b3b5f5bbbb1648ef993e659c8309781ce5174bfb1971f6a4e72ec2c",
+        "experiments/clip_patch_baseline/csa_patch_model.py": "99b6441c4205b142256192cc3d840a905e00ecc1e730f30e1f5eb2c3cf8dc220",
+        "experiments/clip_patch_baseline/csa_sharing_data.py": "4d89428b8f833e34522bd51ec25640015edbebae4f0b5b81450058e2ebcb1243",
+        "experiments/clip_patch_baseline/gradient_agreement.py": "dc06ffd922fccd9e14e860d07644dddcf320f7d9ac6410e3166cc4f53200971c",
+        "experiments/clip_patch_baseline/test_gradient_agreement.py": "2b2aa46091a5a752b3eab573f701c0f1e2849349d829e1c4d6a4d99ae73285a6",
+        "experiments/clip_patch_baseline/CSA_SHARED_FULL_XE10_PROTOCOL.md": "3b09530054a321f96691adb00cb4cb6340e42ce6eeba52b51268711c5df7ba0a",
+        "experiments/clip_patch_baseline/make_csa_full_notebook.py": "3cac3adbf862cbf7191aa36e0c89ae66c7337a4776eff73ce919d46f4455cfcc"
+      },
+      "embedded_sha256": {
+        "run_csa_full.py": "3fe43887b8f6926af27a5123ca5a23d66b5207a6ef0086d05cb20435d3445759",
+        "csa_full_data.py": "f0700d0e1ad91cbe518705ea6a3cb96ca21415de7e5f204096e3d325ada9a081",
+        "csa_full_runtime.py": "47890be1c2984e4acd3263abe2b8122d87144cba1e22aae3958e4ec4fc2d2ca1",
+        "score_csa_full.py": "79f270abc2ebfcdf1cbcae52eb57d9a1150f3b3c7ff81ec270168aa7d120f3e5"
+      }
+    },
+    "stage_files": {
+      "sequences.npy": "1bdcd962dafa515ea93f19f75a6652e8153b20cc40d994d915c4392fe335d3f0",
+      "ids.npy": "7464d251fc35d1e04909762ee49db29b3e3805247e6869ba952a1aa89426f510",
+      "validation_references.json": "607ccf4b728f65213a2e8de10a0dd0f0004f829a55be95b351acb0f2abcf1662",
+      "caption_image.npy": "6f34ac05d64de32db5ffc0e60ca915177a225d539f3cf1b4dbc6f8f30edfb34e",
+      "locations.npy": "7d5c4e6f676e4f7a49c1aac5e1777930b4fb5cb12ca4af2ad295c5826e0a95f2",
+      "vocabulary.json": "cc5f48afa9e471c7a8fd9e30ac58df2e47a54fbf4c0e86b6e0e340006b1601fd",
+      "sem_object_text_id.npy": "2f2e7deb72fb7eb0a0ed0fe06efa70ed9e629e13b76d07a1194e661897c81872",
+      "sem_object_box.npy": "1e2e8509c0f04764716ccca2f9939b8bb80718ade46bcebd9d1b7b1216f21046",
+      "sem_object_weights.npy": "b5369006dbae62cf4e9295011f5fcbd86fd50fdd989bd22d6cce285f79b2aba9",
+      "sem_object_valid.npy": "fe35008c7085f34b7a858bfcaba41407b8bd0b13360c93d7f9929ef0af79088d",
+      "sem_relation_text_id.npy": "5eb0f5b79af60c3ab373b263a30ca7a8848035ab093828cb7d81b204e517463c",
+      "sem_subject_weights.npy": "cf7f89d08464c4b8d37b5f7d4c0b93078666cdba69f3d1d7f71f70821ac181fe",
+      "sem_target_weights.npy": "6be81355288d69df7ff44009421dffa7149fa5b44986ac057d4e604b05bbcab5",
+      "sem_relation_geometry.npy": "a66b11552dd5f2f30269b2412e4b31ac1de14a834399c8ed02409ca51b5364a6",
+      "sem_relation_valid.npy": "53ad34274418bfcdb4699a4d255a7c4c91e4946580e776b6ffa9093dbc7b3f2e",
+      "sem_noun_bank.npy": "9aba5e19c15b0a8e8e312a078cc46121beeeb84e73b4ccd8e8e89bb27536cfc6",
+      "sem_verb_bank.npy": "61f818d736ed735e8ea1fc95880e4fb0629b0c4af0b2cae9feb329a1ede69238",
+      "sem_text_vectors.npy": "f59b4b08c578e98195f68c2af7899a181c83678e406ddbf3a661ba36cc87e98c"
+    },
+    "raw_sources": [
+      {
+        "path": "/kaggle/input/datasets/ducanh2403/visual-cache/visual_part_01_of_03.h5",
+        "bytes": 12443910016,
+        "shape": [
+          41095,
+          197,
+          768
+        ],
+        "dtype": "float16",
+        "chunks": [
+          1,
+          197,
+          768
+        ],
+        "compression": null
+      },
+      {
+        "path": "/kaggle/input/datasets/ducanh2403/visual-cache/visual_part_02_of_03.h5",
+        "bytes": 12444536256,
+        "shape": [
+          41096,
+          197,
+          768
+        ],
+        "dtype": "float16",
+        "chunks": [
+          1,
+          197,
+          768
+        ],
+        "compression": null
+      },
+      {
+        "path": "/kaggle/input/datasets/ducanh2403/visual-cache/visual_part_03_of_03.h5",
+        "bytes": 12444536256,
+        "shape": [
+          41096,
+          197,
+          768
+        ],
+        "dtype": "float16",
+        "chunks": [
+          1,
+          197,
+          768
+        ],
+        "compression": null
+      }
+    ],
+    "feature_profile": {
+      "model_id": "openai/clip-vit-base-patch16",
+      "output": "vision_model.last_hidden_state",
+      "preprocessing": "bilinear",
+      "image_size": [
+        224,
+        224
+      ],
+      "antialias": true,
+      "dataset_json_sha256": "2fd999220673258012acfb411a4e7e66af7d488050b2519b0badcc49b7600b8d",
+      "model_revision": null,
+      "mean": [
+        0.48145466,
+        0.4578275,
+        0.40821073
+      ],
+      "std": [
+        0.26862954,
+        0.26130258,
+        0.27577711
+      ],
+      "compute_dtype": "float32",
+      "storage_dtype": "float16",
+      "autocast": false
+    },
+    "initial_sha256": "3064b9633a83f92519656296e7e9a88cd36be74bff65d32dff395d29366aaf36",
+    "global_batch": 32,
+    "epochs": 10,
+    "lr": "warmup1epoch8e-6to1e-4_then_cosine_to1e-5",
+    "dropout": 0.2,
+    "clip1": true,
+    "seed": 44,
+    "framework": "Accelerate",
+    "sharing": false,
+    "sampler": "image_grouped_44_plus_epoch",
+    "method": "csa_structure_patch_prompt_grouped_per_caption_accelerate_v1",
+    "software": {
+      "torch": "2.11.0+cu128",
+      "numpy": "2.1.3",
+      "pycocoevalcap": "1.2",
+      "accelerate": "1.15.0"
+    },
+    "test_used": false
+  },
+  "source_receipt": {
+    "commit": "5eb012279e6fd0b5e47a56710ed5e3efa7449d2f",
+    "sha256": {
+      "experiments/clip_patch_baseline/full_data.py": "ab69cf61d4ad0456d9a869929750ab10f3a2a33b6c76683689539e57e4015a74",
+      "experiments/clip_patch_baseline/full_runtime.py": "230f7e10d96005fbffc33fb151a7a1d7c7245326e73826134a400772dadd04bb",
+      "experiments/clip_patch_baseline/run_full.py": "32dfb92228fad22d4f503680db1c8226db1e6abf9d7dd253786c3f16be9a97c0",
+      "experiments/clip_patch_baseline/patch_model.py": "dfe6b1d83bfc1e3c7961268fb104bc1f4092129e7d9400841568a3204dc57a70",
+      "experiments/clip_patch_baseline/patch_beam.py": "53fcb5b22bb9f05d795fbd4f539cfd4ff0af39c1dea679f7df1a933edf2754be",
+      "experiments/clip_patch_baseline/score_full.py": "fed170a6d12d1ab1bb969ae7eac29ee0855059417f6e2e876da193e279ca819a",
+      "experiments/clip_patch_baseline/patch_data.py": "3706ffec9c128c8fe12c4f21ba071939268fdd526ed614034cca8dfec55674d5",
+      "experiments/clip_patch_baseline/test_full_data.py": "f47160cf9cd85c96a4495dfa8264c0cd5e7cd60e8d5b6a77022932399e557431",
+      "experiments/clip_patch_baseline/make_full_notebook.py": "2417f0c691e291808b9f3b44f8bdb60090fcaf8bb487d71948538a7d61d5679d",
+      "experiments/clip_patch_baseline/SMOKE_SOURCE.json": "6413058df1575ae8266c6f7ec29eea3cb60917147126bc55961de47c949abe49",
+      "experiments/clip_patch_baseline/FULL_XE10_PROTOCOL.md": "a7c482bfe9efe3f23d4ebf235872204b8e0e0e9e69fae71e3a7b04b8980a986f",
+      "experiments/csa_paper/data.py": "5a5bb451dc20184d3ea597d4dc8415a120583571f4e1a4dac75e29a306213a71",
+      "experiments/csa_paper/real_bank_data.py": "2c791f8dd856198ec1954a2edd1f9e46520d422f20eff07220e462fc2c9bd9a0",
+      "experiments/csa_paper/cuda_runtime_guard.py": "640b5debc81607e3504930e4042571636cc3fbd525a6d0e5eb45abdd141fb773",
+      "experiments/csa_paper/saved_quality_data.py": "f8a092506e3adf96292203190ea2f83de397d3028a3ddc6293d58fd360199a1e",
+      "experiments/clip_patch_baseline/local_stage.py": "76ec1d4ace24fe2d95ea396d489692b7ff3c6289b71fd88c81b110cd2ad9426b",
+      "experiments/clip_patch_baseline/test_local_stage.py": "028e8bff388c44123368dac2aa21887d589adf1e02bb2d3f7082870564b9cfbb",
+      "experiments/clip_patch_baseline/LOCAL_STAGE_V3_PROTOCOL.md": "83ba0fd376a2f1f6069eca1a082c954e8316b236fa343807f813a40eb0a9487d",
+      "experiments/clip_patch_baseline/semantic_data.py": "a57af931f9e6be85f6efeee668b09fcca14c8a3bd54ebd695d9014ede2ab0540",
+      "experiments/clip_patch_baseline/semantic_patch_model.py": "10a385859ea1389a71f14a7a76e16a6989feb73fd581ca89659eab50ec53a0f3",
+      "experiments/clip_patch_baseline/semantic_training.py": "001f05f3e6959570571135a55abb7bc740217a447371bab627af8c72e0f26d11",
+      "experiments/clip_patch_baseline/test_semantic_data.py": "e9d9132db2e83b47e7f29cd1c465389cb4f16db2cd62a1cf27f048a06e29a572",
+      "experiments/clip_patch_baseline/BANK_PROMPT_SCRATCH_PROTOCOL.md": "93d1ebef1d359d393323951a152f50d16559c0fd235dac27eda4940653399a0c",
+      "experiments/csa_paper/model.py": "139edbb1b73caf3dadaf5c960b25542e282f88baf2ce9bdf141de922ceacbc09",
+      "experiments/csa_paper/SAVE_BANK_V130_PACKAGE.json": "826ba36628d6587860e2d548e950ea953bd4bbb8c0a8dc64393089dbc1e058e1",
+      "experiments/csa_paper/lemma_correction_review_text/bank_words_corrected.json": "cec76a0229f30361235a4b64e9712ac6bb2e79fc62a9241079a7af3fa95d13ac",
+      "experiments/csa_paper/FULL_PROMPT_FRESH_V175_RESULT.json": "452e94530b07b117be6873f004404b558e29e87cb09e97e27a1548d0bfd5f81a",
+      "experiments/clip_patch_baseline/memory_fusion.py": "a70947e22263ddd27a7896a94cfb35cfff73102370288c53f86529964ea8f087",
+      "experiments/clip_patch_baseline/test_csa_full_data.py": "6ab5adad7b3b5f5bbbb1648ef993e659c8309781ce5174bfb1971f6a4e72ec2c",
+      "experiments/clip_patch_baseline/csa_patch_model.py": "99b6441c4205b142256192cc3d840a905e00ecc1e730f30e1f5eb2c3cf8dc220",
+      "experiments/clip_patch_baseline/csa_sharing_data.py": "4d89428b8f833e34522bd51ec25640015edbebae4f0b5b81450058e2ebcb1243",
+      "experiments/clip_patch_baseline/gradient_agreement.py": "dc06ffd922fccd9e14e860d07644dddcf320f7d9ac6410e3166cc4f53200971c",
+      "experiments/clip_patch_baseline/test_gradient_agreement.py": "2b2aa46091a5a752b3eab573f701c0f1e2849349d829e1c4d6a4d99ae73285a6",
+      "experiments/clip_patch_baseline/CSA_SHARED_FULL_XE10_PROTOCOL.md": "3b09530054a321f96691adb00cb4cb6340e42ce6eeba52b51268711c5df7ba0a",
+      "experiments/clip_patch_baseline/make_csa_full_notebook.py": "3cac3adbf862cbf7191aa36e0c89ae66c7337a4776eff73ce919d46f4455cfcc"
+    },
+    "embedded_sha256": {
+      "run_csa_full.py": "3fe43887b8f6926af27a5123ca5a23d66b5207a6ef0086d05cb20435d3445759",
+      "csa_full_data.py": "f0700d0e1ad91cbe518705ea6a3cb96ca21415de7e5f204096e3d325ada9a081",
+      "csa_full_runtime.py": "47890be1c2984e4acd3263abe2b8122d87144cba1e22aae3958e4ec4fc2d2ca1",
+      "score_csa_full.py": "79f270abc2ebfcdf1cbcae52eb57d9a1150f3b3c7ff81ec270168aa7d120f3e5"
+    }
+  },
+  "failure": "Traceback (most recent call last):\n  File \"/tmp/ipykernel_23/1483262257.py\", line 46, in <cell line: 0>\n    run([*launch,SOURCE/'run_csa_full.py','worker','--config',CONFIG],cfg['worker_seconds']+30)\n    ~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/tmp/ipykernel_23/893685653.py\", line 26, in run\n    if process.wait(): raise subprocess.CalledProcessError(process.returncode, args)\n                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nsubprocess.CalledProcessError: Command '['/usr/bin/python3', '-u', '-m', 'torch.distributed.run', '--standalone', '--nnodes=1', '--nproc_per_node=2', '--max_restarts=0', PosixPath('/tmp/clip-patch-full10-_dbcqbdi/run_csa_full.py'), 'worker', '--config', PosixPath('/tmp/clip-patch-full10-_dbcqbdi/config.json')]' returned non-zero exit status 1.\n",
+  "zip_sha256": "e4f139a9a43da404b814b59b96fa7df674665cb13a71442bab128f0dafd16190",
+  "source_version": "ducanh2403/2-vi-cai-kia-qua-nhieu/235"
+}
