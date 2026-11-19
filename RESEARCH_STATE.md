@@ -10,6 +10,9 @@ Cập nhật: 19/11/2026, giờ Việt Nam. File này là bản tóm tắt để
 
 ## Hiện đang ở đâu
 
+- **M2 diagrams drafted from pinned bank_layers.py.** Main overview and shared alignment mechanism in docs/module_m2_2026-11-19; SVG/PNG copies in Downloads. Noun/verb aggregation outputs150x512; object1 returns updated visual and reweighted noun prototypes to object2, Vo feeds relation block with verb prototypes, Vo/Vr196x512. Shared block shows cosine reweighting, visual self-attention, cross-attention Q=H/KV=reweighted prototypes, residual FFNs and gH+(1-g)C. Residual FFN includes the FFN residual and LayerNorm. SVG XML and rendered arrows/labels checked; user feedback pending.
+
+
 - **M1 bank-construction diagram drafted and visually checked.** SVG/PNG in docs/module_m1_2026-11-19 and Downloads/M1_semantic_bank. TRAIN caption extraction with spaCy en_core_web_sm, frequency5/dedup, exact noun/verb templates from corrected bank, shared frozen CLIP ViT-B/16 text encoder, separate L2 normalization, banks5269x512 and1594x512. M2 aggregation excluded from M1 by the approved module boundary. Corrected cylinder-label overlap and rerendered. Await user drawing feedback.
 
 

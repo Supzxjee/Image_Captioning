@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="1120" viewBox="0 0 1100 1120">
+<defs><marker id="a" markerWidth="8" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse"><path d="M0 0 L8 4 L0 8 Z" fill="#30383e"/></marker></defs>
+<rect width="1100" height="1120" fill="white"/>
+<style>text{font-family:"Times New Roman",serif;fill:#202b33}.b{stroke:#697a87;stroke-width:1.35}.e{fill:none;stroke:#30383e;stroke-width:1.6;marker-end:url(#a)}</style>
+<text x="550" y="39" text-anchor="middle" font-size="26" font-weight="bold">Shared Mechanism of an Alignment Block</text>
+<rect class="b" x="100" y="85" width="260" height="70" rx="0" fill="#fff"/>
+<text x="230" y="115" text-anchor="middle" font-size="23" font-weight="bold">Visual Features</text>
+<text x="230" y="144" text-anchor="middle" font-size="20" font-style="italic">196 × 512</text>
+<rect class="b" x="700" y="85" width="260" height="70" rx="0" fill="#fcebdc"/>
+<text x="830" y="115" text-anchor="middle" font-size="23" font-weight="bold">Semantic Prototypes</text>
+<text x="830" y="144" text-anchor="middle" font-size="20" font-style="italic">150 × 512</text>
+<path class="e" d="M230 155 V230"/>
+<path class="e" d="M230 185 H610 V295 H700"/>
+<circle cx="230" cy="185" r="2.7" fill="#30383e"/>
+<path class="e" d="M830 155 V250"/>
+<rect class="b" x="700" y="250" width="260" height="90" rx="9" fill="#fcebdc"/>
+<text x="830" y="284" text-anchor="middle" font-size="22" font-weight="bold">Cosine-based</text>
+<text x="830" y="314" text-anchor="middle" font-size="22" font-weight="bold">Semantic Reweighting</text>
+<rect class="b" x="100" y="230" width="260" height="65" rx="9" fill="#eaf2f8"/>
+<g transform="translate(337,214)"><path d="M8 0 C13 9 20 10 16 19 C12 27 1 25 0 17 C-1 11 4 8 5 4 C5 9 8 9 8 0Z" fill="#eea65b" stroke="#ba642c" stroke-width="1"/><path d="M8 12 C12 17 12 20 8 21 C4 20 5 17 8 12Z" fill="#fff2bd"/></g>
+<text x="230" y="269" text-anchor="middle" font-size="19" font-weight="bold">Multi-Head Self-Attention</text>
+<path class="e" d="M230 295 V335"/>
+<rect class="b" x="100" y="335" width="260" height="50" rx="9" fill="#eaf2f8"/>
+<text x="230" y="367" text-anchor="middle" font-size="21">Add &amp; Norm</text>
+<path class="e" d="M230 205 H65 V360 H100"/>
+<circle cx="230" cy="205" r="2.7" fill="#30383e"/>
+<path class="e" d="M230 385 V435"/>
+<rect class="b" x="100" y="435" width="260" height="65" rx="9" fill="#eaf2f8"/>
+<g transform="translate(337,419)"><path d="M8 0 C13 9 20 10 16 19 C12 27 1 25 0 17 C-1 11 4 8 5 4 C5 9 8 9 8 0Z" fill="#eea65b" stroke="#ba642c" stroke-width="1"/><path d="M8 12 C12 17 12 20 8 21 C4 20 5 17 8 12Z" fill="#fff2bd"/></g>
+<text x="230" y="475" text-anchor="middle" font-size="23" font-weight="bold">Residual FFN</text>
+<path class="e" d="M230 500 V545"/>
+<rect class="b" x="100" y="545" width="260" height="65" rx="0" fill="#fff"/>
+<text x="230" y="585" text-anchor="middle" font-size="20" font-weight="bold">Visual Representation H</text>
+<path class="e" d="M830 340 V435"/>
+<rect class="b" x="700" y="435" width="260" height="70" rx="0" fill="#fcebdc"/>
+<text x="830" y="465" text-anchor="middle" font-size="22" font-weight="bold">Reweighted Prototypes</text>
+<text x="830" y="493" text-anchor="middle" font-size="19" font-style="italic">150 × 512</text>
+<path class="e" d="M830 505 V625"/>
+<text x="885" y="566" text-anchor="middle" font-size="18" font-style="italic">Key &amp; Value</text>
+<path class="e" d="M360 578 H515 V658 H700"/>
+<text x="615" y="646" text-anchor="middle" font-size="18" font-style="italic">Query</text>
+<rect class="b" x="700" y="625" width="260" height="65" rx="9" fill="#eaf2f8"/>
+<g transform="translate(937,609)"><path d="M8 0 C13 9 20 10 16 19 C12 27 1 25 0 17 C-1 11 4 8 5 4 C5 9 8 9 8 0Z" fill="#eea65b" stroke="#ba642c" stroke-width="1"/><path d="M8 12 C12 17 12 20 8 21 C4 20 5 17 8 12Z" fill="#fff2bd"/></g>
+<text x="830" y="665" text-anchor="middle" font-size="19" font-weight="bold">Multi-Head Cross-Attention</text>
+<path class="e" d="M830 690 V740"/>
+<rect class="b" x="700" y="740" width="260" height="50" rx="9" fill="#eaf2f8"/>
+<text x="830" y="772" text-anchor="middle" font-size="21">Add &amp; Norm</text>
+<path class="e" d="M515 658 V765 H700"/>
+<circle cx="515" cy="658" r="2.7" fill="#30383e"/>
+<path class="e" d="M830 790 V835"/>
+<rect class="b" x="700" y="835" width="260" height="65" rx="9" fill="#eaf2f8"/>
+<g transform="translate(937,819)"><path d="M8 0 C13 9 20 10 16 19 C12 27 1 25 0 17 C-1 11 4 8 5 4 C5 9 8 9 8 0Z" fill="#eea65b" stroke="#ba642c" stroke-width="1"/><path d="M8 12 C12 17 12 20 8 21 C4 20 5 17 8 12Z" fill="#fff2bd"/></g>
+<text x="830" y="875" text-anchor="middle" font-size="23" font-weight="bold">Residual FFN</text>
+<path class="e" d="M830 900 V945"/>
+<path class="e" d="M230 610 V982 H700"/>
+<text x="250" y="960" text-anchor="middle" font-size="20" font-style="italic">H</text>
+<rect class="b" x="700" y="945" width="260" height="75" rx="9" fill="#eaf2f8"/>
+<g transform="translate(937,929)"><path d="M8 0 C13 9 20 10 16 19 C12 27 1 25 0 17 C-1 11 4 8 5 4 C5 9 8 9 8 0Z" fill="#eea65b" stroke="#ba642c" stroke-width="1"/><path d="M8 12 C12 17 12 20 8 21 C4 20 5 17 8 12Z" fill="#fff2bd"/></g>
+<text x="830" y="975" text-anchor="middle" font-size="23" font-weight="bold">Gated Fusion</text>
+<text x="830" y="1005" text-anchor="middle" font-size="21" font-style="italic">g ⊙ H + (1 − g) ⊙ C</text>
+<path class="e" d="M830 1020 V1060"/>
+<text x="830" y="1090" text-anchor="middle" font-size="21" font-weight="bold">Updated Visual Features</text>
+<text x="600" y="1067" text-anchor="middle" font-size="20"></text>
+<text x="855" y="927" text-anchor="start" font-size="20" font-style="italic">C</text></svg>

@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="700" viewBox="0 0 1400 700">
+<defs><marker id="a" markerWidth="8" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse"><path d="M0 0 L8 4 L0 8 Z" fill="#30383e"/></marker></defs>
+<rect width="1400" height="700" fill="white"/>
+<style>text{font-family:"Times New Roman",serif;fill:#202b33}.b{stroke:#697a87;stroke-width:1.35}.e{fill:none;stroke:#30383e;stroke-width:1.6;marker-end:url(#a)}</style>
+<text x="700" y="38" text-anchor="middle" font-size="26" font-weight="bold">M2 · Semantic Bank–Visual Alignment</text>
+<rect class="b" x="40" y="85" width="180" height="75" rx="0" fill="#fcebdc"/>
+<text x="130" y="116" text-anchor="middle" font-size="22" font-weight="bold">Noun Bank</text>
+<text x="130" y="144" text-anchor="middle" font-size="22" font-style="italic">B<tspan baseline-shift="sub" font-size="15">n</tspan> ∈ ℝ<tspan baseline-shift="super" font-size="15">5269×512</tspan></text>
+<path class="e" d="M220 123 H280"/>
+<rect class="b" x="280" y="85" width="240" height="75" rx="9" fill="#fcebdc"/>
+<g transform="translate(497,69)"><path d="M8 0 C13 9 20 10 16 19 C12 27 1 25 0 17 C-1 11 4 8 5 4 C5 9 8 9 8 0Z" fill="#eea65b" stroke="#ba642c" stroke-width="1"/><path d="M8 12 C12 17 12 20 8 21 C4 20 5 17 8 12Z" fill="#fff2bd"/></g>
+<text x="400" y="114" text-anchor="middle" font-size="21" font-weight="bold">Learned Semantic</text>
+<text x="400" y="143" text-anchor="middle" font-size="21" font-weight="bold">Aggregation</text>
+<path class="e" d="M520 123 H580"/>
+<rect class="b" x="580" y="85" width="210" height="75" rx="0" fill="#fcebdc"/>
+<text x="685" y="116" text-anchor="middle" font-size="21" font-weight="bold">Noun Prototypes</text>
+<text x="685" y="144" text-anchor="middle" font-size="22" font-style="italic">P<tspan baseline-shift="sub" font-size="15">n</tspan> ∈ ℝ<tspan baseline-shift="super" font-size="15">150×512</tspan></text>
+<path class="e" d="M685 160 V215 H515 V265"/>
+<rect class="b" x="40" y="285" width="180" height="80" rx="0" fill="#fff"/>
+<text x="130" y="316" text-anchor="middle" font-size="21" font-weight="bold">Visual Features</text>
+<text x="130" y="347" text-anchor="middle" font-size="22" font-style="italic">V<tspan baseline-shift="sub" font-size="15"></tspan> ∈ ℝ<tspan baseline-shift="super" font-size="15">196×512</tspan></text>
+<path class="e" d="M220 325 H410"/>
+<rect class="b" x="410" y="265" width="210" height="120" rx="9" fill="#fcebdc"/>
+<g transform="translate(597,249)"><path d="M8 0 C13 9 20 10 16 19 C12 27 1 25 0 17 C-1 11 4 8 5 4 C5 9 8 9 8 0Z" fill="#eea65b" stroke="#ba642c" stroke-width="1"/><path d="M8 12 C12 17 12 20 8 21 C4 20 5 17 8 12Z" fill="#fff2bd"/></g>
+<text x="515" y="315" text-anchor="middle" font-size="23" font-weight="bold">Object Alignment</text>
+<text x="515" y="348" text-anchor="middle" font-size="23">Block 1</text>
+<path class="e" d="M620 295 H900"/>
+<text x="760" y="284" text-anchor="middle" font-size="18" font-style="italic">Updated visual features V₁</text>
+<path class="e" d="M620 355 H900"/>
+<text x="760" y="344" text-anchor="middle" font-size="18" font-style="italic">Reweighted noun prototypes</text>
+<rect class="b" x="900" y="265" width="210" height="120" rx="9" fill="#fcebdc"/>
+<g transform="translate(1087,249)"><path d="M8 0 C13 9 20 10 16 19 C12 27 1 25 0 17 C-1 11 4 8 5 4 C5 9 8 9 8 0Z" fill="#eea65b" stroke="#ba642c" stroke-width="1"/><path d="M8 12 C12 17 12 20 8 21 C4 20 5 17 8 12Z" fill="#fff2bd"/></g>
+<text x="1005" y="315" text-anchor="middle" font-size="23" font-weight="bold">Object Alignment</text>
+<text x="1005" y="348" text-anchor="middle" font-size="23">Block 2</text>
+<path class="e" d="M1110 325 H1180"/>
+<rect class="b" x="1180" y="285" width="180" height="80" rx="0" fill="#fcebdc"/>
+<text x="1270" y="316" text-anchor="middle" font-size="21" font-weight="bold">Object Memory</text>
+<text x="1270" y="347" text-anchor="middle" font-size="22" font-style="italic">V<tspan baseline-shift="sub" font-size="15">o</tspan> ∈ ℝ<tspan baseline-shift="super" font-size="15">196×512</tspan></text>
+<path class="e" d="M1270 365 V440 H1015 V545"/>
+<rect class="b" x="40" y="565" width="180" height="75" rx="0" fill="#e4f2f5"/>
+<text x="130" y="596" text-anchor="middle" font-size="22" font-weight="bold">Verb Bank</text>
+<text x="130" y="624" text-anchor="middle" font-size="22" font-style="italic">B<tspan baseline-shift="sub" font-size="15">v</tspan> ∈ ℝ<tspan baseline-shift="super" font-size="15">1594×512</tspan></text>
+<path class="e" d="M220 603 H280"/>
+<rect class="b" x="280" y="565" width="240" height="75" rx="9" fill="#e4f2f5"/>
+<g transform="translate(497,549)"><path d="M8 0 C13 9 20 10 16 19 C12 27 1 25 0 17 C-1 11 4 8 5 4 C5 9 8 9 8 0Z" fill="#eea65b" stroke="#ba642c" stroke-width="1"/><path d="M8 12 C12 17 12 20 8 21 C4 20 5 17 8 12Z" fill="#fff2bd"/></g>
+<text x="400" y="594" text-anchor="middle" font-size="21" font-weight="bold">Learned Semantic</text>
+<text x="400" y="623" text-anchor="middle" font-size="21" font-weight="bold">Aggregation</text>
+<path class="e" d="M520 603 H580"/>
+<rect class="b" x="580" y="565" width="250" height="75" rx="0" fill="#e4f2f5"/>
+<text x="705" y="596" text-anchor="middle" font-size="21" font-weight="bold">Verb Prototypes</text>
+<text x="705" y="624" text-anchor="middle" font-size="22" font-style="italic">P<tspan baseline-shift="sub" font-size="15">v</tspan> ∈ ℝ<tspan baseline-shift="super" font-size="15">150×512</tspan></text>
+<path class="e" d="M830 603 H910"/>
+<rect class="b" x="910" y="545" width="210" height="115" rx="9" fill="#e4f2f5"/>
+<g transform="translate(1097,529)"><path d="M8 0 C13 9 20 10 16 19 C12 27 1 25 0 17 C-1 11 4 8 5 4 C5 9 8 9 8 0Z" fill="#eea65b" stroke="#ba642c" stroke-width="1"/><path d="M8 12 C12 17 12 20 8 21 C4 20 5 17 8 12Z" fill="#fff2bd"/></g>
+<text x="1015" y="590" text-anchor="middle" font-size="22" font-weight="bold">Relation Alignment</text>
+<text x="1015" y="623" text-anchor="middle" font-size="23">Block</text>
+<path class="e" d="M1120 603 H1180"/>
+<rect class="b" x="1180" y="565" width="180" height="80" rx="0" fill="#e4f2f5"/>
+<text x="1270" y="596" text-anchor="middle" font-size="20" font-weight="bold">Relation Memory</text>
+<text x="1270" y="628" text-anchor="middle" font-size="22" font-style="italic">V<tspan baseline-shift="sub" font-size="15">r</tspan> ∈ ℝ<tspan baseline-shift="super" font-size="15">196×512</tspan></text>
+</svg>
