@@ -1,0 +1,22 @@
+{
+  "pipeline_data_blocks": {
+    "orthogonal_connectors": 26,
+    "math_labels_in_blocks": 6,
+    "png_dimensions": [
+      2400,
+      1425
+    ],
+    "unrelated_block_crossings": 0,
+    "downloads_match": true
+  },
+  "m3_data_blocks": {
+    "orthogonal_connectors": 24,
+    "math_labels_in_blocks": 20,
+    "png_dimensions": [
+      2100,
+      1335
+    ],
+    "unrelated_block_crossings": 0,
+    "downloads_match": true
+  }
+}

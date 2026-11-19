@@ -20,3 +20,8 @@ Parse SVG/draw.io XML, inspect actual Chrome renders of M3 and overview, check a
 ## Revision requested by user: follow Tâm reference layout
 
 The user found the initial figures confusing. Preserve all scientific content and previous drafts; revise presentation only. Borrow the user-provided reference's small operation boxes, white tensor boxes, thin orthogonal connectors and two-row visual-generation path. Put the bank branch above M2, image-specific prompt extraction above M3, visual flow through the middle and generation right-to-left below. M3 detail becomes two vertical adapter columns: pooling, concatenation, MLP, masked cross-attention, residual, output. Keep original Vo for both slot builders and distinct Vo/Vr queries. Main diagram may use module names because details have separate figures. No report/model/training changes.
+
+
+## User revision: all data notation inside blocks, with concrete examples
+
+Move V/Vo/Vr, prompt vectors, Q/K/V, pooled features, slots and residual names into corresponding data or operation blocks; keep connectors unlabelled. Add larger bank, prompt and beam-candidate data blocks following the actual user-provided Tâm Figure4 extracted from weekly13. Bank words person/bicycle/motorcycle and ride/stand/park are checked against the corrected bank. Image-specific phrases and captions will be labelled illustrative examples, not claimed outputs from a model or this photo. CLIP patch features remain patch tokens, not falsely called per-object tokens. Preserve separate object/relation memories, geometry support, matching threshold and exact model mechanisms. No new inference/training/metrics or report edits.

@@ -26,3 +26,10 @@ M1 xây bank chung từ caption TRAIN; M3 dùng prompt riêng của ảnh đang 
 Ưu tiên bản trong `tam_style/`: `pipeline_tam_style` là tổng thể, `m3_tam_style` là hai adapter trình bày theo cột dọc. Các bản SVG/draw.io/PNG cùng tên có trong Downloads. Bố cục mượn cách đặt ảnh phía trên encoder bên trái, các nhánh ngữ nghĩa ở trên, memory qua hàng giữa, decoder và caption ở dưới; không thêm thành phần Fact-RAG hay thay cơ chế mô hình. M3 nhận embedding chữ đã chuẩn hóa từ cache; L2 normalization không mở rộng thành hộp riêng ở sơ đồ tổng thể. Hai nhãn Image I cùng chỉ một ảnh.
 
 Đã mở render, chỉnh nhãn nằm trên đường dây và tách rõ prompt chữ khỏi box trước CLIP Text Encoder. Kiểm tra XML/AST,27 connector ở tổng thể và24 connector ở M3 đều vuông góc, bản sao Downloads trùng SHA. PNG tổng thể2100×1185, M32100×1215.
+
+
+## Bản hiện tại: ký hiệu trong block và ví dụ cụ thể
+
+Ưu tiên `data_blocks/pipeline_data_blocks` và `data_blocks/m3_data_blocks` (SVG/draw.io/PNG, bản sao cùng tên ở Downloads). Đây là lần sửa theo yêu cầu đưa Vo/Vr/tensor/QKV vào block và thêm nội dung ví dụ. Tổng thể có bank TRAIN với ví dụ từ đã kiểm tra, prompt riêng ảnh với ví dụ cụm đối tượng/quan hệ, hai loại memory và ví dụ caption ứng viên/cuối. Các cụm prompt/caption đều được ghi example/illustrative: không phải kết quả inference của ảnh minh họa. Không bịa vector số hoặc gọi patch tokens là object tokens.
+
+M3 giữ hai cột, mỗi phép toán một block; công thức pooling, input/output slot và Q/K/V nằm trong block tương ứng, residual addition là block riêng. Kiểm tra ở `data_blocks/metadata_checks.json`:26/24 connector vuông góc, không đoạn dây nào xuyên block không liên quan,26 nhãn toán học nằm trong block, các bản sao trùng SHA. Đã mở render và sửa chữ/chỉ số chạm viền. Không đổi mô hình, số liệu, notebook hay báo cáo.
