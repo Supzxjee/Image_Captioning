@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1020" height="855" viewBox="0 0 1020 855">
+<defs><marker id="a" markerWidth="8" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse"><path d="M0 0 L8 4 L0 8 Z" fill="#30383e"/></marker></defs>
+<rect width="1020" height="855" fill="white"/>
+<style>text{font-family:"Times New Roman",serif;fill:#202b33}.b{stroke:#697a87;stroke-width:1.35}.e{fill:none;stroke:#30383e;stroke-width:1.65;marker-end:url(#a)}</style>
+<text x="510" y="38" text-anchor="middle" font-size="26" font-weight="bold">M1 · Semantic Bank Construction</text>
+<rect class="b" x="40" y="82" width="205" height="76" rx="0" fill="#fff"/>
+<text x="142.5" y="127" text-anchor="middle" font-size="21" font-weight="bold">TRAIN Captions</text>
+<path class="e" d="M245 120 H295"/>
+<rect class="b" x="295" y="82" width="355" height="76" rx="9" fill="#eaf2f8"/>
+<text x="472.5" y="110" text-anchor="middle" font-size="21" font-weight="bold">POS Tagging &amp; Lemmatization</text>
+<text x="472.5" y="140" text-anchor="middle" font-size="19">spaCy · en_core_web_sm</text>
+<path class="e" d="M650 120 H700"/>
+<rect class="b" x="700" y="82" width="280" height="76" rx="9" fill="#eaf2f8"/>
+<text x="840" y="107" text-anchor="middle" font-size="21" font-weight="bold">Filtering &amp; Deduplication</text>
+<text x="840" y="139" text-anchor="middle" font-size="19">Minimum frequency = 5</text>
+<path class="e" d="M840 158 V200 H270 V245"/>
+<path class="e" d="M750 200 V245"/>
+<circle cx="750" cy="200" r="2.8" fill="#30383e"/>
+<rect class="b" x="120" y="245" width="300" height="65" rx="0" fill="#fcebdc"/>
+<text x="270" y="284" text-anchor="middle" font-size="23" font-weight="bold">Noun Lemmas</text>
+<rect class="b" x="600" y="245" width="300" height="65" rx="0" fill="#e4f2f5"/>
+<text x="750" y="284" text-anchor="middle" font-size="23" font-weight="bold">Verb Lemmas</text>
+<path class="e" d="M270 310 V355"/>
+<path class="e" d="M750 310 V355"/>
+<rect class="b" x="70" y="355" width="400" height="90" rx="9" fill="#fcebdc"/>
+<text x="270" y="388" text-anchor="middle" font-size="22" font-weight="bold">Object Prompts</text>
+<text x="270" y="421" text-anchor="middle" font-size="22" font-style="italic">a photo of a {lemma}</text>
+<rect class="b" x="550" y="355" width="400" height="90" rx="9" fill="#e4f2f5"/>
+<text x="750" y="383" text-anchor="middle" font-size="22" font-weight="bold">Action Prompts</text>
+<text x="750" y="410" text-anchor="middle" font-size="21" font-style="italic">a photo contains the action</text>
+<text x="750" y="435" text-anchor="middle" font-size="21" font-style="italic">of {lemma}</text>
+<path class="e" d="M270 445 V500"/>
+<path class="e" d="M750 445 V500"/>
+<rect class="b" x="70" y="500" width="880" height="85" rx="9" fill="#eaf2f8"/>
+<text x="510" y="534" text-anchor="middle" font-size="24" font-weight="bold">CLIP Text Encoder</text>
+<text x="510" y="565" text-anchor="middle" font-size="22">CLIP ViT-B/16</text>
+<g transform="translate(926,518)" stroke="#4094bb" stroke-width="1.6"><path d="M-10 0 H10 M0 -10 V10 M-7 -7 L7 7 M-7 7 L7 -7 M-10 0 L-5 -3 M-10 0 L-5 3 M10 0 L5 -3 M10 0 L5 3 M0 -10 L-3 -5 M0 -10 L3 -5 M0 10 L-3 5 M0 10 L3 5"/></g>
+<path class="e" d="M270 585 V630"/>
+<path class="e" d="M750 585 V630"/>
+<rect class="b" x="120" y="630" width="300" height="55" rx="9" fill="#eaf2f8"/>
+<text x="270" y="665" text-anchor="middle" font-size="22">L₂ Normalization</text>
+<rect class="b" x="600" y="630" width="300" height="55" rx="9" fill="#eaf2f8"/>
+<text x="750" y="665" text-anchor="middle" font-size="22">L₂ Normalization</text>
+<path class="e" d="M270 685 V735"/>
+<path class="e" d="M750 685 V735"/>
+<path class="b" d="M120 748 V817 C120 834 420 834 420 817 V748 Z" fill="#fcebdc"/>
+<ellipse class="b" cx="270.0" cy="748" rx="150.0" ry="13" fill="#fcebdc"/>
+<path class="b" d="M600 748 V817 C600 834 900 834 900 817 V748 Z" fill="#e4f2f5"/>
+<ellipse class="b" cx="750.0" cy="748" rx="150.0" ry="13" fill="#e4f2f5"/>
+<text x="270" y="787" text-anchor="middle" font-size="23" font-weight="bold">Noun Bank</text>
+<text x="750" y="787" text-anchor="middle" font-size="23" font-weight="bold">Verb Bank</text>
+<text x="270" y="816" text-anchor="middle" font-size="22" font-style="italic">B<tspan baseline-shift="sub" font-size="15">n</tspan> ∈ ℝ<tspan baseline-shift="super" font-size="15">5269×512</tspan></text>
+<text x="750" y="816" text-anchor="middle" font-size="22" font-style="italic">B<tspan baseline-shift="sub" font-size="15">v</tspan> ∈ ℝ<tspan baseline-shift="super" font-size="15">1594×512</tspan></text>
+</svg>
