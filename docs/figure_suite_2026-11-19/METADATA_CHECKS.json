@@ -1,0 +1,115 @@
+{
+  "figures": {
+    "01_M1_semantic_bank": {
+      "title": "M1 — Xây dựng semantic bank",
+      "canvas": [
+        "1000",
+        "700"
+      ],
+      "png_dimensions": [
+        1500,
+        1050
+      ],
+      "orthogonal_connectors": 12,
+      "unrelated_box_crossings": 0,
+      "sha256": {
+        ".png": "68582f58f4d9453f281e231a71ffcba533bfb3dead89780d030be075a2361688",
+        ".svg": "53dc549dc14b0dbb45398433aa786c003fbf565be821df18fcf5ef134655f7c1",
+        ".drawio": "95a18d8a7f92b4bd5d05069e30c8f606ebe45be8d0974dc79dfadd312058927a"
+      }
+    },
+    "02_M2_bank_visual_alignment": {
+      "title": "M2 — Căn chỉnh bank–thị giác",
+      "canvas": [
+        "1000",
+        "610"
+      ],
+      "png_dimensions": [
+        1500,
+        915
+      ],
+      "orthogonal_connectors": 12,
+      "unrelated_box_crossings": 0,
+      "sha256": {
+        ".png": "76a725233889a1fb9cc73a2e10ea7401c933162c182c73973d509dab164d4b60",
+        ".svg": "9fa99d95b7809588745d4fcbcad76614563c929cfe38889304844d238729e7e2",
+        ".drawio": "55f0a9e98bbcb4e9652335c7b9311fe1f92aed6611292889a144be614189ee6a"
+      }
+    },
+    "03_M3_prompt_visual_alignment": {
+      "title": "M3 — Căn chỉnh prompt–thị giác",
+      "canvas": [
+        "820",
+        "590"
+      ],
+      "png_dimensions": [
+        1230,
+        885
+      ],
+      "orthogonal_connectors": 20,
+      "unrelated_box_crossings": 0,
+      "sha256": {
+        ".png": "b6b5adcf1162caf12571f92130b6ad214edf274cea2c2aaf871f841fe871e996",
+        ".svg": "1d1c503507ea4fce5f1bdac77c13a11651f31bb842fd5ffc905b186b8ed36dfb",
+        ".drawio": "6d0ed031dbe316b9aae048b6c229c61bd9235004ced586fbda0254123ba15222"
+      }
+    },
+    "04_baseline": {
+      "title": "Baseline",
+      "canvas": [
+        "1350",
+        "580"
+      ],
+      "png_dimensions": [
+        2025,
+        870
+      ],
+      "orthogonal_connectors": 12,
+      "unrelated_box_crossings": 0,
+      "sha256": {
+        ".png": "4d4cef57e6a4c90b8c4b99b12ddda77ed9edab7f8f9e4bb111b91e95990267c1",
+        ".svg": "c76385102242e3f9bcaf7f2f89fe4f23bab7feaac3762650c7a6d78ff83a99cb",
+        ".drawio": "fbc198f04118a5c050bd44b6177d7e653f308070c6e2cdccb63b5ec0101e7de4"
+      }
+    },
+    "05_full_pipeline": {
+      "title": "Pipeline đầy đủ — mở M1, M2, M3",
+      "canvas": [
+        "1840",
+        "1100"
+      ],
+      "png_dimensions": [
+        2760,
+        1650
+      ],
+      "orthogonal_connectors": 61,
+      "unrelated_box_crossings": 0,
+      "sha256": {
+        ".png": "982eea3f554e130f1b71ccf92ee2eb6ca275a87d26406703839c94d1dde2f1de",
+        ".svg": "bd70a5a1c3364d0eef341dfc3bc665b02de1f9a488c99f519b4d6ecccbb6c239",
+        ".drawio": "aa4ce6ad3ed5a99f7b2724f013add174dd0a8a28d0793bc0957dd16dd0132c03"
+      }
+    },
+    "06_modular_pipeline": {
+      "title": "Pipeline tổng quan — dùng tên M1, M2, M3",
+      "canvas": [
+        "1260",
+        "735"
+      ],
+      "png_dimensions": [
+        1890,
+        1103
+      ],
+      "orthogonal_connectors": 27,
+      "unrelated_box_crossings": 0,
+      "sha256": {
+        ".png": "c15fedf3a0468a98a308bea80a375b2e73ec82fa0af6179c97d8cbd920b124f8",
+        ".svg": "57b4629010bb3e9f21fd316f5eeb4906e3f4dc5a5b245cba7c529ad496320e08",
+        ".drawio": "2d3a604b07331ee0e8850093fdf2814bc35d51ae0ae50d52fb90c5d4ab0dbe84"
+      }
+    }
+  },
+  "combined_drawio_pages": 6,
+  "models_executed": false,
+  "validation": "XML/AST, geometry, baseline/full identities, six renders visually inspected"
+}
