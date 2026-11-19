@@ -19,3 +19,10 @@ M1 xây bank chung từ caption TRAIN; M3 dùng prompt riêng của ảnh đang 
 ## Kiểm tra
 
 Đã đối chiếu code được dẫn ở DESIGN.md, kiểm tra XML SVG/draw.io, AST generator,35/19 connector chỉ dùng đường thẳng hoặc gấp khúc vuông, kích thước PNG và SHA bản sao Downloads. Đã mở ảnh render, chỉnh tràn chữ, bỏ đường giao nhau trong tổng thể và tách đường hình học khỏi đường trọng số patch. Không chạy mô hình, notebook Kaggle hoặc sửa báo cáo.
+
+
+## Bản sửa theo bố cục mẫu của Tâm
+
+Ưu tiên bản trong `tam_style/`: `pipeline_tam_style` là tổng thể, `m3_tam_style` là hai adapter trình bày theo cột dọc. Các bản SVG/draw.io/PNG cùng tên có trong Downloads. Bố cục mượn cách đặt ảnh phía trên encoder bên trái, các nhánh ngữ nghĩa ở trên, memory qua hàng giữa, decoder và caption ở dưới; không thêm thành phần Fact-RAG hay thay cơ chế mô hình. M3 nhận embedding chữ đã chuẩn hóa từ cache; L2 normalization không mở rộng thành hộp riêng ở sơ đồ tổng thể. Hai nhãn Image I cùng chỉ một ảnh.
+
+Đã mở render, chỉnh nhãn nằm trên đường dây và tách rõ prompt chữ khỏi box trước CLIP Text Encoder. Kiểm tra XML/AST,27 connector ở tổng thể và24 connector ở M3 đều vuông góc, bản sao Downloads trùng SHA. PNG tổng thể2100×1185, M32100×1215.
