@@ -1,0 +1,442 @@
+{
+  "zip_sha256": "92729062eb866f96ec66678e98fff700a9494707473db658f520c8645222b638",
+  "source_version": "ducanh3/notebook7bc83c4c76/186",
+  "run_status": {
+    "complete": true,
+    "training": true,
+    "test_used": false,
+    "seed": 43,
+    "updates": 500,
+    "beta": 1.0,
+    "xe_source": "ducanh3/notebook7bc83c4c76/179",
+    "control_source": "ducanh3/notebook7bc83c4c76/185"
+  },
+  "result": {
+    "status": "SCST_KL500_VALID_COMPLETE",
+    "seed": 43,
+    "split": "val",
+    "images": 5000,
+    "test_used": false,
+    "training": true,
+    "updates": 500,
+    "beta": 1.0,
+    "arms": {
+      "xe": {
+        "status": "CSA_PER_CAPTION_FIXED_RERANK_VALID5000_COMPLETE",
+        "images": 5000,
+        "test_used": false,
+        "training": false,
+        "checkpoint_sha256": "a51e7ec21be68aa1cda9e0805bd6248add6199914a5c262fce138988066051a5",
+        "metrics": {
+          "decoder_rank0": {
+            "CIDEr": 1.217777428159048,
+            "BLEU_1": 0.7803653162797217,
+            "BLEU_4": 0.3809806217658526,
+            "METEOR": 0.28854622966270727,
+            "SPICE": 0.215228436067697,
+            "ROUGE_L": 0.5812841985321755,
+            "CHAIRs": 0.0418,
+            "CHAIRi": 0.030048242591316332,
+            "Recall": 0.4247865394274234,
+            "counts": {
+              "images": 5000,
+              "hallucinated_captions": 209,
+              "hallucinated_mentions": 218,
+              "object_mentions": 7255,
+              "recalled_unique": 6766,
+              "reference_unique": 15928
+            },
+            "mean_words": 9.2894,
+            "short_le2": 1,
+            "NLL": 2.1552617681600705
+          },
+          "clip_object_fixed": {
+            "CIDEr": 1.2438820508807618,
+            "BLEU_1": 0.7843177736028082,
+            "BLEU_4": 0.381210245870828,
+            "METEOR": 0.29534303760575575,
+            "SPICE": 0.2256137996509582,
+            "ROUGE_L": 0.5862712514218456,
+            "CHAIRs": 0.0348,
+            "CHAIRi": 0.024448897795591184,
+            "Recall": 0.43884982420894025,
+            "counts": {
+              "images": 5000,
+              "hallucinated_captions": 174,
+              "hallucinated_mentions": 183,
+              "object_mentions": 7485,
+              "recalled_unique": 6990,
+              "reference_unique": 15928
+            },
+            "mean_words": 9.6874,
+            "short_le2": 0,
+            "NLL": 2.1552617681600705
+          }
+        },
+        "changes": {
+          "changed_captions": 2934,
+          "rank_histogram": {
+            "0": 2066,
+            "1": 1310,
+            "2": 857,
+            "3": 523,
+            "4": 244
+          },
+          "CHAIR_repairs": 71,
+          "CHAIR_new_flags": 36
+        },
+        "selector": {
+          "decoder_weight": 0.3,
+          "clip_weight": 0.4,
+          "object_weight": 0.3,
+          "min_detection_confidence": 0.5,
+          "hallucination_penalty": 1.0,
+          "tie_break": "earlier beam"
+        },
+        "tuned_on_test": false,
+        "oracle_used_for_selection": false,
+        "prior_project_test_exposure": true,
+        "selection": "both prelocked policies reported; fixed VALID164 policy",
+        "NLL_note": "Same frozen captioner teacher-forced NLL for both selections.",
+        "arm": "xe",
+        "checkpoint": {
+          "sha256": "a51e7ec21be68aa1cda9e0805bd6248add6199914a5c262fce138988066051a5",
+          "source_sha256": "a51e7ec21be68aa1cda9e0805bd6248add6199914a5c262fce138988066051a5",
+          "updates": 0
+        }
+      },
+      "scst500": {
+        "status": "CSA_PER_CAPTION_FIXED_RERANK_VALID5000_COMPLETE",
+        "images": 5000,
+        "test_used": false,
+        "training": false,
+        "checkpoint_sha256": "8f1a1fc181b335543d8be117da1315260cdc01b4d4fd4b464d8367a82003d500",
+        "metrics": {
+          "decoder_rank0": {
+            "CIDEr": 1.2032485637838324,
+            "BLEU_1": 0.7800070688468648,
+            "BLEU_4": 0.3806047403566039,
+            "METEOR": 0.2870834038484028,
+            "SPICE": 0.21398577889365133,
+            "ROUGE_L": 0.5800098188365157,
+            "CHAIRs": 0.0452,
+            "CHAIRi": 0.03116531165311653,
+            "Recall": 0.43043696634856854,
+            "counts": {
+              "images": 5000,
+              "hallucinated_captions": 226,
+              "hallucinated_mentions": 230,
+              "object_mentions": 7380,
+              "recalled_unique": 6856,
+              "reference_unique": 15928
+            },
+            "mean_words": 9.2914,
+            "short_le2": 1,
+            "NLL": 2.1792416308762936
+          },
+          "clip_object_fixed": {
+            "CIDEr": 1.2365633313480442,
+            "BLEU_1": 0.7846163420250009,
+            "BLEU_4": 0.3811134821241398,
+            "METEOR": 0.2934481389577204,
+            "SPICE": 0.22338014124076258,
+            "ROUGE_L": 0.5853185036128256,
+            "CHAIRs": 0.0376,
+            "CHAIRi": 0.02522784308545767,
+            "Recall": 0.441926167754897,
+            "counts": {
+              "images": 5000,
+              "hallucinated_captions": 188,
+              "hallucinated_mentions": 191,
+              "object_mentions": 7571,
+              "recalled_unique": 7039,
+              "reference_unique": 15928
+            },
+            "mean_words": 9.6414,
+            "short_le2": 0,
+            "NLL": 2.1792416308762936
+          }
+        },
+        "changes": {
+          "changed_captions": 2889,
+          "rank_histogram": {
+            "0": 2111,
+            "1": 1293,
+            "2": 835,
+            "3": 549,
+            "4": 212
+          },
+          "CHAIR_repairs": 66,
+          "CHAIR_new_flags": 28
+        },
+        "selector": {
+          "decoder_weight": 0.3,
+          "clip_weight": 0.4,
+          "object_weight": 0.3,
+          "min_detection_confidence": 0.5,
+          "hallucination_penalty": 1.0,
+          "tie_break": "earlier beam"
+        },
+        "tuned_on_test": false,
+        "oracle_used_for_selection": false,
+        "prior_project_test_exposure": true,
+        "selection": "both prelocked policies reported; fixed VALID164 policy",
+        "NLL_note": "Same frozen captioner teacher-forced NLL for both selections.",
+        "arm": "scst500",
+        "checkpoint": {
+          "sha256": "8f1a1fc181b335543d8be117da1315260cdc01b4d4fd4b464d8367a82003d500",
+          "updates": 500,
+          "source_sha256": "a51e7ec21be68aa1cda9e0805bd6248add6199914a5c262fce138988066051a5"
+        }
+      },
+      "kl500": {
+        "status": "CSA_PER_CAPTION_FIXED_RERANK_VALID5000_COMPLETE",
+        "images": 5000,
+        "test_used": false,
+        "training": false,
+        "checkpoint_sha256": "26c0c38851fb00dbb604092e50798ad68362f369593b02f42cea2db1baaddc59",
+        "metrics": {
+          "decoder_rank0": {
+            "CIDEr": 1.219959628751695,
+            "BLEU_1": 0.7828660572695585,
+            "BLEU_4": 0.3822277920974837,
+            "METEOR": 0.28911845734717906,
+            "SPICE": 0.21603173183140725,
+            "ROUGE_L": 0.5818731742080144,
+            "CHAIRs": 0.0458,
+            "CHAIRi": 0.03163182188433342,
+            "Recall": 0.4301230537418383,
+            "counts": {
+              "images": 5000,
+              "hallucinated_captions": 229,
+              "hallucinated_mentions": 233,
+              "object_mentions": 7366,
+              "recalled_unique": 6851,
+              "reference_unique": 15928
+            },
+            "mean_words": 9.3074,
+            "short_le2": 0,
+            "NLL": 2.1572315975051857
+          },
+          "clip_object_fixed": {
+            "CIDEr": 1.2505833717731343,
+            "BLEU_1": 0.7866135556839597,
+            "BLEU_4": 0.38341929439622985,
+            "METEOR": 0.2958361282378583,
+            "SPICE": 0.22574057669935738,
+            "ROUGE_L": 0.5882260318102004,
+            "CHAIRs": 0.0366,
+            "CHAIRi": 0.024683210137275608,
+            "Recall": 0.4434329482672024,
+            "counts": {
+              "images": 5000,
+              "hallucinated_captions": 183,
+              "hallucinated_mentions": 187,
+              "object_mentions": 7576,
+              "recalled_unique": 7063,
+              "reference_unique": 15928
+            },
+            "mean_words": 9.6904,
+            "short_le2": 0,
+            "NLL": 2.1572315975051857
+          }
+        },
+        "changes": {
+          "changed_captions": 2932,
+          "rank_histogram": {
+            "0": 2068,
+            "1": 1307,
+            "2": 876,
+            "3": 517,
+            "4": 232
+          },
+          "CHAIR_repairs": 76,
+          "CHAIR_new_flags": 30
+        },
+        "selector": {
+          "decoder_weight": 0.3,
+          "clip_weight": 0.4,
+          "object_weight": 0.3,
+          "min_detection_confidence": 0.5,
+          "hallucination_penalty": 1.0,
+          "tie_break": "earlier beam"
+        },
+        "tuned_on_test": false,
+        "oracle_used_for_selection": false,
+        "prior_project_test_exposure": true,
+        "selection": "both prelocked policies reported; fixed VALID164 policy",
+        "NLL_note": "Same frozen captioner teacher-forced NLL for both selections.",
+        "arm": "kl500",
+        "checkpoint": {
+          "sha256": "26c0c38851fb00dbb604092e50798ad68362f369593b02f42cea2db1baaddc59",
+          "updates": 500,
+          "source_sha256": "a51e7ec21be68aa1cda9e0805bd6248add6199914a5c262fce138988066051a5",
+          "kl_beta": 1.0,
+          "reference_sha256": "a51e7ec21be68aa1cda9e0805bd6248add6199914a5c262fce138988066051a5"
+        }
+      }
+    },
+    "display_x100": {
+      "xe": {
+        "BLEU_1": 78.43177736028082,
+        "BLEU_4": 38.1210245870828,
+        "METEOR": 29.534303760575575,
+        "ROUGE_L": 58.62712514218455,
+        "CIDEr": 124.38820508807618,
+        "SPICE": 22.56137996509582,
+        "CHAIRs": 3.4799999999999995,
+        "CHAIRi": 2.4448897795591185,
+        "Recall": 43.884982420894026,
+        "NLL": 2.1552617681600705
+      },
+      "scst500": {
+        "BLEU_1": 78.46163420250008,
+        "BLEU_4": 38.11134821241398,
+        "METEOR": 29.344813895772038,
+        "ROUGE_L": 58.53185036128256,
+        "CIDEr": 123.65633313480441,
+        "SPICE": 22.33801412407626,
+        "CHAIRs": 3.7600000000000002,
+        "CHAIRi": 2.522784308545767,
+        "Recall": 44.192616775489704,
+        "NLL": 2.1792416308762936
+      },
+      "kl500": {
+        "BLEU_1": 78.66135556839598,
+        "BLEU_4": 38.34192943962299,
+        "METEOR": 29.58361282378583,
+        "ROUGE_L": 58.82260318102004,
+        "CIDEr": 125.05833717731343,
+        "SPICE": 22.574057669935737,
+        "CHAIRs": 3.66,
+        "CHAIRi": 2.468321013727561,
+        "Recall": 44.34329482672024,
+        "NLL": 2.1572315975051857
+      }
+    },
+    "delta_vs_XE": {
+      "BLEU_1": 0.002295782081151554,
+      "BLEU_4": 0.0022090485254018244,
+      "METEOR": 0.0004930906321025663,
+      "ROUGE_L": 0.0019547803883548376,
+      "CIDEr": 0.00670132089237252,
+      "SPICE": 0.00012677704839916815,
+      "CHAIRs": 0.001800000000000003,
+      "CHAIRi": 0.00023431234168442422,
+      "Recall": 0.004583124058262167,
+      "NLL": 0.001969829345115137
+    },
+    "delta_vs_SCST500": {
+      "BLEU_1": 0.001997213658958885,
+      "BLEU_4": 0.0023058122720900354,
+      "METEOR": 0.0023879892801379476,
+      "ROUGE_L": 0.0029075281973748313,
+      "CIDEr": 0.014020040425090086,
+      "SPICE": 0.002360435458594795,
+      "CHAIRs": -0.0010000000000000009,
+      "CHAIRi": -0.0005446329481820604,
+      "Recall": 0.0015067805123054057,
+      "NLL": -0.022010033371107962
+    },
+    "gates": {
+      "CIDEr_vs_XE": true,
+      "CHAIRs_vs_XE": false,
+      "CHAIRi_vs_XE": false,
+      "CIDEr_retained_vs_control": true,
+      "CHAIRs_reduced_vs_control": false,
+      "CHAIRi_vs_control": true
+    },
+    "screen_passed": false,
+    "paired_bootstrap_95_ci": {
+      "xe": {
+        "CIDEr_x100": [
+          -0.11699621940964777,
+          1.4626633249688805
+        ],
+        "CHAIRs_percentage_points": [
+          -0.06,
+          0.42
+        ],
+        "CHAIRi_percentage_points": [
+          -0.15300922863196198,
+          0.19791751850107545
+        ]
+      },
+      "scst500": {
+        "CIDEr_x100": [
+          0.3368688072808553,
+          2.441421421768591
+        ],
+        "CHAIRs_percentage_points": [
+          -0.44,
+          0.26
+        ],
+        "CHAIRi_percentage_points": [
+          -0.2834214771764351,
+          0.18107917896257822
+        ]
+      }
+    },
+    "bootstrap_note": "4000 paired image resamples, fixed corpus CIDEr IDF; conditional on one trained seed and reused VALID, not training-seed uncertainty.",
+    "no_automatic_extension": true,
+    "original_XE_replay": {
+      "images": 5000,
+      "changed_captions": 0,
+      "byte_identical_decode_claimed": false,
+      "reference": "same cached evaluator across all pilot arms"
+    }
+  },
+  "audit": {
+    "arms": {
+      "xe": {
+        "verified_images": 5000,
+        "verified_beams": 25000,
+        "NLL": 2.1552617681600705,
+        "weights_sha256": "a51e7ec21be68aa1cda9e0805bd6248add6199914a5c262fce138988066051a5"
+      },
+      "scst500": {
+        "verified_images": 5000,
+        "verified_beams": 25000,
+        "NLL": 2.1792416308762936,
+        "weights_sha256": "8f1a1fc181b335543d8be117da1315260cdc01b4d4fd4b464d8367a82003d500"
+      },
+      "kl500": {
+        "verified_images": 5000,
+        "verified_beams": 25000,
+        "NLL": 2.1572315975051857,
+        "weights_sha256": "26c0c38851fb00dbb604092e50798ad68362f369593b02f42cea2db1baaddc59"
+      }
+    },
+    "all_saved_fixed_selections_replayed": 15000,
+    "reference_sha256": "219cbe174a62e04b75c4f110242e12c51edb32a4c42210713db93b330340e75e",
+    "teacher_guards_passed": true,
+    "tensor_preflight_passed": true,
+    "original_XE_captions_changed": 0,
+    "KL_rerank_flag_transitions": {
+      "xe": {
+        "new_flags": 23,
+        "repairs": 14
+      },
+      "scst500": {
+        "new_flags": 38,
+        "repairs": 43
+      }
+    },
+    "training_seconds": 252.97204510099982,
+    "final_logged_KL": 0.04889029078185558,
+    "peak_memory_bytes": 1586732032,
+    "bootstrap_intervals_recomputed_locally": false,
+    "local_caption_models_or_caption_metric_scorers_executed": false
+  },
+  "limits": [
+    "One seed, reused VALID; not TEST confirmation or seed-level significance.",
+    "Checkpoint binaries, raw patch arrays and actual JPEGs absent from review; saved hashes/receipts checked.",
+    "BLEU/METEOR/ROUGE/SPICE and bootstrap intervals recorded, not rerun locally."
+  ],
+  "recommendation": "Do not automatically extend KL beta1: caption gain versus SCST500, but locked joint CIDEr/CHAIR screen failed.",
+  "sheet": {
+    "range": "Kết quả mới!A255:F271",
+    "spreadsheet_id": "1XZ5iuyCs5JP8VE6dT7AYdVTiY1_nK4C_QdXs5ppw6FA",
+    "native_visual_fit_inspected": false
+  }
+}
