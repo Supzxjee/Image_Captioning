@@ -47,3 +47,8 @@ Bản mới: `expanded_overview/pipeline_m2_m3_expanded` (SVG/draw.io/PNG; bản
 M3 gồm hai hàng, mỗi hàng5phép toán: box pooling, concatenation, Slot MLP, masked cross-attention, residual addition. Shared visual context chứa Vo/Vr; mỗi operator lấy đúng trường được ghi trong block, cả hai pooling lấy Vo gốc. Attention/residual object dùng Vo, relation dùng Vr. Metadata prompt/ROI độc lập với memory; geometry không đi qua CLIP Text Encoder. Valid mask bao gồm slot hợp lệ và hỗ trợ không gian; patch không có slot hợp lệ có delta bằng0 trong implementation.
 
 Kiểm tra `expanded_overview/METADATA_CHECKS.json`:54connector vuông góc, không xuyên block không liên quan, một wire crossing được tách bằng gap thẳng tại1780/532.5,29nhãn toán học nằm trong block, SHA bản sao đúng. Đã xem render và sửa vị trí wire ở tiêu đềM2/đệm chữattention. Không chạy mô hình, Kaggle, scorer hoặc sửa báo cáo. Người dùng duyệt phương án mở cơ chế, chưa duyệt chất lượng hình cuối.
+
+
+## Bản rút chữ theo yêu cầu mới nhất
+
+Ưu tiên `concise_overview/pipeline_m2_m3_concise` (SVG/draw.io/PNG, bản sao ở Downloads). Giữ nguyên topology bản mở M2–M3; ô xử lý chỉ còn tên thao tác và thông tin nhánh cần thiết. Đã bỏ công thức gate, Q/K/V, concat/MLP, Output/Contexts và kích thước lặp; giữ pooling từ Vo gốc, tên memory ở ô dữ liệu và ví dụ ngắn ở bank/prompt. Thu ô xử lý, chuyển đầu connector về đúng biên, thu hai ô đầu vàoM3. Chi tiết implementation vẫn ở phần giải thích và bản expanded, không thay mô hình. Đã xem render;54đường vuông góc, không xuyên block khác, XML/AST/nội dung rút chữ/SHA bản saoPASS. Xem `concise_overview/METADATA_CHECKS.json`.

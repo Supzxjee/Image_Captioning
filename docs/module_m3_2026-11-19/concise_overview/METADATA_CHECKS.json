@@ -1,0 +1,12 @@
+{
+  "orthogonal_connectors": 54,
+  "unrelated_block_crossings": 0,
+  "processing_formulas_removed": true,
+  "math_anchors_in_blocks": true,
+  "downloads_match": true,
+  "models_executed": false,
+  "png_dimensions": [
+    2760,
+    1650
+  ]
+}
