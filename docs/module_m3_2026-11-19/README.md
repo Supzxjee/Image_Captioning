@@ -38,3 +38,12 @@ M3 giữ hai cột, mỗi phép toán một block; công thức pooling, input/o
 ## Bản phác bố cục đang chờ phản hồi
 
 Người dùng đã chê bản data_blocks chưa đẹp. Bản `layout_proof/pipeline_layout_proof` chỉ sửa tổng thể: chữ thường nhỏ hơn, ô xử lý thấp hơn và phần lớn nền trắng, đường mảnh, ví dụ trong hai ô bank/prompt. Chưa mở rộng lại M3 và chưa được người dùng duyệt. SVG/draw.io/PNG cùng tên ở Downloads; đã mở render, chỉnh một đoạn dây bị lệch dưới1pixel sau thu ô, kiểm XML/AST,27 đường vuông góc (gồm2gạch tiêu đề), vị trí nhãn trong block và SHA bản sao. Không sửa pipeline thuật toán hoặc báo cáo.
+
+
+## Tổng thể mở rõ M2–M3 theo phương án người dùng đồng ý
+
+Bản mới: `expanded_overview/pipeline_m2_m3_expanded` (SVG/draw.io/PNG; bản sao cùng tên ở Downloads). M2 tách noun/verb aggregation, hai lượt object alignment, relation alignment và gated update. Các khối alignment gói cosine reweighting, self-/cross-attention cùng normalization/FFN hiện có; không biến encoder thành chỉ một cross-attention. H/C lần lượt là visual/aligned contexts sau xử lý; T1 là noun prototypes đã reweight, được chuyển sang lượt đối tượng thứ hai.
+
+M3 gồm hai hàng, mỗi hàng5phép toán: box pooling, concatenation, Slot MLP, masked cross-attention, residual addition. Shared visual context chứa Vo/Vr; mỗi operator lấy đúng trường được ghi trong block, cả hai pooling lấy Vo gốc. Attention/residual object dùng Vo, relation dùng Vr. Metadata prompt/ROI độc lập với memory; geometry không đi qua CLIP Text Encoder. Valid mask bao gồm slot hợp lệ và hỗ trợ không gian; patch không có slot hợp lệ có delta bằng0 trong implementation.
+
+Kiểm tra `expanded_overview/METADATA_CHECKS.json`:54connector vuông góc, không xuyên block không liên quan, một wire crossing được tách bằng gap thẳng tại1780/532.5,29nhãn toán học nằm trong block, SHA bản sao đúng. Đã xem render và sửa vị trí wire ở tiêu đềM2/đệm chữattention. Không chạy mô hình, Kaggle, scorer hoặc sửa báo cáo. Người dùng duyệt phương án mở cơ chế, chưa duyệt chất lượng hình cuối.
