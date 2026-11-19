@@ -10,6 +10,8 @@ Cập nhật: 19/11/2026, giờ Việt Nam. File này là bản tóm tắt để
 
 ## Hiện đang ở đâu
 
+- **M3 and connected M1/M2/M3 figures delivered.** [Design and source mapping](docs/module_m3_2026-11-19/DESIGN.md). Two editable SVG/native draw.io sources and PNG previews in that folder and Downloads (`m3_prompt_visual_alignment`, `pipeline_m1_m2_m3`). M3 separates frozen UPT/YOLO/CLIP-text preparation from object/relation slot pooling, concatenation, MLP, spatially masked cross-attention and residual updates. Both slot builders pool ORIGINAL Vo; Q=Vo/Vr, KV=slots; outputs Vo′/Vr′196x512. Main overview connects fixed M1 banks, M2, M3, three-layer parallel decoder, beam5 and fixed0.3/0.4/0.3 rerank; detector support is weak evidence, not hallucination truth. Rendered and visually revised text/line crossings, parsed XML/AST, checked every connector is orthogonal and Downloads hashes match. No model/Kaggle/report changes. Await user layout feedback.
+
 - **M2 diagrams drafted from pinned bank_layers.py.** Main overview and shared alignment mechanism in docs/module_m2_2026-11-19; SVG/PNG copies in Downloads. Noun/verb aggregation outputs150x512; object1 returns updated visual and reweighted noun prototypes to object2, Vo feeds relation block with verb prototypes, Vo/Vr196x512. Shared block shows cosine reweighting, visual self-attention, cross-attention Q=H/KV=reweighted prototypes, residual FFNs and gH+(1-g)C. Residual FFN includes the FFN residual and LayerNorm. SVG XML and rendered arrows/labels checked; user feedback pending.
 
 
