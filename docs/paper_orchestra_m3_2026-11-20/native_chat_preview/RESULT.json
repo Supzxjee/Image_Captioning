@@ -1,0 +1,24 @@
+{
+  "status": "RASTER_PREVIEW_GENERATED_AND_INSPECTED",
+  "tool": "built-in image_gen",
+  "paper_orchestra_output": false,
+  "date": "2026-11-20",
+  "downloads": "C:/Users/leduc/Downloads/M3_chat_preview_v1.png",
+  "image_sha256": "96878BEA1D179E63B1D913894DA33E52DA24D3CC1ACE864F886925E3F0B69ED7",
+  "generation_count": 1,
+  "targeted_edits": 2,
+  "visual_qa": [
+    "Object pooling reads original Vo",
+    "Relation subject and target pooling read original Vo",
+    "Object attention Q and residual use original Vo",
+    "Relation attention Q and residual use original Vr",
+    "Slot MLP supplies K,V; ROI controls remain dashed",
+    "Mask paths do not pass through data boxes"
+  ],
+  "limits": [
+    "Raster only; objects are not individually editable",
+    "A few orthogonal wires cross without junction dots; preview awaiting user aesthetic review",
+    "No PaperBanana reference assets or PaperOrchestra-generated text reused"
+  ],
+  "formal_report_modified": false
+}
