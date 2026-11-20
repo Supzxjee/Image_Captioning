@@ -1,0 +1,32 @@
+{
+  "status": "BLOCKED_IMAGE_QUOTA",
+  "date": "2026-11-20",
+  "scope": "M3 diagram only, official upstream single-figure pipeline",
+  "upstream_commit": "d9bae997e793a015ed38bb1605be9eb58c00284f",
+  "checks": {
+    "mechanism_read_from_code": true,
+    "runner_ast": "PASS",
+    "credential_presence": true,
+    "model_metadata_request": "PASS",
+    "planning_stage_reached": true,
+    "styling_stage_reached": true,
+    "image_generated": false,
+    "critic_run": false,
+    "visual_qa": "NOT_POSSIBLE_NO_IMAGE"
+  },
+  "attempts": [
+    {"planner": "gemini-2.5-pro", "result": "HTTP404: no longer available for new users despite metadata listing"},
+    {"planner": "gemini-3.1-pro-preview", "result": "HTTP404: absent for v1/generateContent"},
+    {"planner": "gemini-3.5-flash", "image_model": "gemini-3-pro-image", "result": "Planning and styling returned; initial image generation HTTP429 RESOURCE_EXHAUSTED; Free Tier image requests and input-token limits reported as 0"}
+  ],
+  "first_failed_image_output": "C:/Users/leduc/Downloads/M3_PaperOrchestra_20261120_214006",
+  "first_run_text_responses_persisted": false,
+  "runner_amendment": "Persist styled description before image API calls in subsequent runs; no repeat run after quota failure",
+  "paperbanana_examples": false,
+  "research_models_executed": false,
+  "kaggle_runs": false,
+  "formal_reports_modified": false,
+  "credentials_stored_in_repo": false,
+  "billing_modified": false,
+  "next": "Wait for user to enable Gemini image access/billing or explicitly choose native chat image-generation fallback"
+}

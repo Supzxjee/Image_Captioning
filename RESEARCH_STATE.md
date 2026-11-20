@@ -1,6 +1,6 @@
 # Trạng thái nghiên cứu — đọc trước khi tiếp tục
 
-Cập nhật: 19/11/2026, giờ Việt Nam. File này là bản tóm tắt để tiếp tục công việc; protocol và artifacts được dẫn bên dưới mới là nguồn chi tiết. Không cần đọc toàn bộ lịch sử chat.
+Cập nhật: 20/11/2026, giờ Việt Nam. File này là bản tóm tắt để tiếp tục công việc; protocol và artifacts được dẫn bên dưới mới là nguồn chi tiết. Không cần đọc toàn bộ lịch sử chat.
 
 ## Mục tiêu và cách làm việc
 
@@ -9,6 +9,8 @@ Cập nhật: 19/11/2026, giờ Việt Nam. File này là bản tóm tắt để
 - Không tự chạy mô hình/Torch/autograd local hoặc notebook Kaggle. Kiểm tra metadata/NumPy/static/mock được phép; ghi rõ giới hạn. Quy trình tại [AGENTS.md](AGENTS.md).
 
 ## Hiện đang ở đâu
+
+- **PaperOrchestra M3 drawing trial blocked by image quota.** User selected Gemini API execution and confirmed saving the key locally; credentials stay outside this repo. [Decision/materials/runner](docs/paper_orchestra_m3_2026-11-20/DESIGN.md), [actual outcome](docs/paper_orchestra_m3_2026-11-20/RESULT.json). Original M3 mechanism reread from csa_patch_model/PromptMemory; no architecture changes. Official upstream single-figure pipeline, no PaperBanana few-shot examples. After two planner404s, gemini-3.5-flash returned planning/styling; gemini-3-pro-image returned429 with Free Tier image request/token limits0. No image or critic/visual QA; stopped without blind retries or billing changes. Runner now persists styled description before future image calls; the failed first run did not persist its text responses. User must choose enabling image access/billing or native chat image fallback. No research models, Kaggle, scorers, report or sheet changes.
 
 - **Requested six-figure suite delivered.** [Design/source](docs/figure_suite_2026-11-19/DESIGN.md), [metadata/SHA](docs/figure_suite_2026-11-19/METADATA_CHECKS.json), [gallery](docs/figure_suite_2026-11-19/OVERVIEW.png). Local `Downloads/Bo_hinh_pipeline_M1_M2_M3` has PNG/SVG/DRAWIO subfolders, six-page `Tat_ca_6_hinh.drawio`, HTML/PNG gallery, README and manifest; verified ZIP next to folder. Numbered01M1/02M2/03M3/04baseline/05full/06modular. M1/M2/baseline redrawn in the concise style; M3 extracted as editable module objects with external source wires removed. Full05 opens M1 internals as well as M2/M3;06 keeps other pipeline components but module boxes say only M1/M2/M3. Baseline code verified:4decoder layers, projection+finalLayerNorm; final remains3parallel layers. All six actual renders and gallery inspected; XML/AST, connector geometry, no unrelated block crossings, model-identity labels, exact six native pages, copied SHA and ZIP CRC/content checks PASS. Six figures each have PNG/SVG/native draw.io; no models, scorers, notebooks or formal reports changed. Previous drafts preserved; aesthetics awaits user feedback.
 
