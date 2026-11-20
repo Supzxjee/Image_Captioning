@@ -1,0 +1,218 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1760" height="1400" viewBox="0 0 1760 1400">
+<defs><marker id="arrow" markerWidth="8" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse"><path d="M0 0 L8 4 L0 8 Z" fill="#30383E"/></marker></defs>
+<rect width="1760" height="1400" fill="white"/>
+<style>text{font-family:"Times New Roman",serif;fill:#202B33}.edge{fill:none;stroke:#30383E;stroke-width:1.6;marker-end:url(#arrow)}</style>
+<text x="880" y="35" text-anchor="middle" font-size="28"  >M2 · Semantic Bank–Visual Alignment</text>
+<rect x="60" y="70" width="200" height="60" rx="0" fill="white" stroke="#697A87" stroke-width="1.35"/>
+<text x="160.0" y="97.0" text-anchor="middle" font-size="25"  >Noun bank Bₙ</text>
+<text x="160.0" y="124.0" text-anchor="middle" font-size="22"  >5269 × 512</text>
+<rect x="350" y="70" width="200" height="60" rx="9" fill="#F4F7F9" stroke="#697A87" stroke-width="1.35"/>
+<text x="450.0" y="109.5" text-anchor="middle" font-size="23"  >Noun aggregation</text>
+<rect x="1220" y="70" width="200" height="60" rx="0" fill="white" stroke="#697A87" stroke-width="1.35"/>
+<text x="1320.0" y="97.0" text-anchor="middle" font-size="25"  >Verb bank Bᵥ</text>
+<text x="1320.0" y="124.0" text-anchor="middle" font-size="22"  >1594 × 512</text>
+<rect x="1510" y="70" width="200" height="60" rx="9" fill="#F4F7F9" stroke="#697A87" stroke-width="1.35"/>
+<text x="1610.0" y="109.5" text-anchor="middle" font-size="23"  >Verb aggregation</text>
+<path d="M260,100 L350,100" class="edge"/>
+<path d="M1420,100 L1510,100" class="edge"/>
+<path d="M450,130 L450,190 L432.5,190 L432.5,240" class="edge"/>
+<path d="M1610,130 L1610,190 L1592.5,190 L1592.5,240" class="edge"/>
+<rect x="40" y="320" width="500" height="870" rx="0" fill="none" stroke="#A9B8C2" stroke-width="1.2" stroke-dasharray="6 4"/>
+<text x="321" y="348" text-anchor="middle" font-size="24" font-weight="bold" >Object alignment 1</text>
+<rect x="100" y="240" width="220" height="55" rx="0" fill="white" stroke="#697A87" stroke-width="1.35"/>
+<text x="210.0" y="264.0" text-anchor="middle" font-size="23"  >Visual memory V</text>
+<text x="210.0" y="290.0" text-anchor="middle" font-size="21"  >196 × 512</text>
+<rect x="355" y="240" width="155" height="55" rx="0" fill="white" stroke="#697A87" stroke-width="1.35"/>
+<text x="432.5" y="265.0" text-anchor="middle" font-size="25"  >Prototypes Pₙ</text>
+<text x="432.5" y="291.0" text-anchor="middle" font-size="21"  >150 × 512</text>
+<rect x="100" y="390" width="220" height="70" rx="9" fill="#FFF1E6" stroke="#697A87" stroke-width="1.35"/>
+<text x="210.0" y="423.5" text-anchor="middle" font-size="26"  >Self-attention</text>
+<text x="210.0" y="448.5" text-anchor="middle" font-size="20"  >Q = K = V: V</text>
+<rect x="355" y="390" width="155" height="70" rx="9" fill="#FFF1E6" stroke="#697A87" stroke-width="1.35"/>
+<text x="432.5" y="421.0" text-anchor="middle" font-size="24"  >Cosine</text>
+<text x="432.5" y="449.0" text-anchor="middle" font-size="23"  >reweighting</text>
+<rect x="355" y="530" width="155" height="55" rx="0" fill="white" stroke="#697A87" stroke-width="1.35"/>
+<text x="432.5" y="555.0" text-anchor="middle" font-size="25"  >T₁</text>
+<text x="432.5" y="581.0" text-anchor="middle" font-size="21"  >150 × 512</text>
+<rect x="100" y="500" width="220" height="40" rx="9" fill="white" stroke="#697A87" stroke-width="1.35"/>
+<text x="210.0" y="530.0" text-anchor="middle" font-size="24"  >Add &amp; Norm</text>
+<rect x="100" y="570" width="220" height="44" rx="9" fill="#FFF1E6" stroke="#697A87" stroke-width="1.35"/>
+<text x="210.0" y="603.0" text-anchor="middle" font-size="26"  >FFN</text>
+<rect x="100" y="650" width="220" height="40" rx="9" fill="white" stroke="#697A87" stroke-width="1.35"/>
+<text x="210.0" y="679.5" text-anchor="middle" font-size="23"  >Add &amp; Norm · H</text>
+<rect x="100" y="750" width="220" height="70" rx="9" fill="#FFF1E6" stroke="#697A87" stroke-width="1.35"/>
+<text x="210.0" y="784.0" text-anchor="middle" font-size="26"  >Cross-attention</text>
+<text x="210.0" y="808.0" text-anchor="middle" font-size="19"  >Q: H · K,V: T₁</text>
+<rect x="100" y="860" width="220" height="40" rx="9" fill="white" stroke="#697A87" stroke-width="1.35"/>
+<text x="210.0" y="890.0" text-anchor="middle" font-size="24"  >Add &amp; Norm</text>
+<rect x="100" y="930" width="220" height="44" rx="9" fill="#FFF1E6" stroke="#697A87" stroke-width="1.35"/>
+<text x="210.0" y="963.0" text-anchor="middle" font-size="26"  >FFN</text>
+<rect x="100" y="1010" width="220" height="40" rx="9" fill="white" stroke="#697A87" stroke-width="1.35"/>
+<text x="210.0" y="1039.5" text-anchor="middle" font-size="23"  >Add &amp; Norm · C</text>
+<rect x="100" y="1100" width="220" height="60" rx="9" fill="#FFF1E6" stroke="#697A87" stroke-width="1.35"/>
+<text x="210.0" y="1127.5" text-anchor="middle" font-size="26"  >Gated fusion</text>
+<text x="210.0" y="1154.5" text-anchor="middle" font-size="22"  >gH + (1 − g)C</text>
+<rect x="100" y="1225" width="220" height="55" rx="0" fill="white" stroke="#697A87" stroke-width="1.35"/>
+<text x="210.0" y="1250.5" text-anchor="middle" font-size="26"  >V₁</text>
+<text x="210.0" y="1276.5" text-anchor="middle" font-size="21"  >196 × 512</text>
+<path d="M210,295 L210,390" class="edge"/>
+<path d="M210,355 L335,355 L335,425 L355,425" class="edge"/>
+<circle cx="210" cy="355" r="3" fill="#30383E"/>
+<path d="M432.5,295 L432.5,390" class="edge"/>
+<path d="M432.5,460 L432.5,530" class="edge"/>
+<path d="M432.5,585 L432.5,795 L320,795" class="edge"/>
+<path d="M210,460 L210,500" class="edge"/>
+<path d="M210,540 L210,570" class="edge"/>
+<path d="M210,614 L210,650" class="edge"/>
+<path d="M210,690 L210,750" class="edge"/>
+<path d="M210,820 L210,860" class="edge"/>
+<path d="M210,900 L210,930" class="edge"/>
+<path d="M210,974 L210,1010" class="edge"/>
+<path d="M210,1050 L210,1100" class="edge"/>
+<path d="M210,1160 L210,1225" class="edge"/>
+<path d="M210,370 L85,370 L85,520 L100,520" class="edge"/>
+<circle cx="210" cy="370" r="3" fill="#30383E"/>
+<path d="M210,555 L85,555 L85,670 L100,670" class="edge"/>
+<circle cx="210" cy="555" r="3" fill="#30383E"/>
+<path d="M210,715 L85,715 L85,880 L100,880" class="edge"/>
+<circle cx="210" cy="715" r="3" fill="#30383E"/>
+<path d="M210,915 L85,915 L85,1030 L100,1030" class="edge"/>
+<circle cx="210" cy="915" r="3" fill="#30383E"/>
+<path d="M85,715 L60,715 L60,1130 L100,1130" class="edge"/>
+<circle cx="85" cy="715" r="3" fill="#30383E"/>
+<rect x="620" y="320" width="500" height="870" rx="0" fill="none" stroke="#A9B8C2" stroke-width="1.2" stroke-dasharray="6 4"/>
+<text x="901" y="348" text-anchor="middle" font-size="24" font-weight="bold" >Object alignment 2</text>
+<rect x="680" y="240" width="220" height="55" rx="0" fill="white" stroke="#697A87" stroke-width="1.35"/>
+<text x="790.0" y="264.0" text-anchor="middle" font-size="23"  >Visual memory V₁</text>
+<text x="790.0" y="290.0" text-anchor="middle" font-size="21"  >196 × 512</text>
+<rect x="935" y="240" width="155" height="55" rx="0" fill="white" stroke="#697A87" stroke-width="1.35"/>
+<text x="1012.5" y="265.0" text-anchor="middle" font-size="25"  >Input T₁</text>
+<text x="1012.5" y="291.0" text-anchor="middle" font-size="21"  >150 × 512</text>
+<rect x="680" y="390" width="220" height="70" rx="9" fill="#FFF1E6" stroke="#697A87" stroke-width="1.35"/>
+<text x="790.0" y="423.5" text-anchor="middle" font-size="26"  >Self-attention</text>
+<text x="790.0" y="448.5" text-anchor="middle" font-size="20"  >Q = K = V: V₁</text>
+<rect x="935" y="390" width="155" height="70" rx="9" fill="#FFF1E6" stroke="#697A87" stroke-width="1.35"/>
+<text x="1012.5" y="421.0" text-anchor="middle" font-size="24"  >Cosine</text>
+<text x="1012.5" y="449.0" text-anchor="middle" font-size="23"  >reweighting</text>
+<rect x="935" y="530" width="155" height="55" rx="0" fill="white" stroke="#697A87" stroke-width="1.35"/>
+<text x="1012.5" y="555.0" text-anchor="middle" font-size="25"  >T₂</text>
+<text x="1012.5" y="581.0" text-anchor="middle" font-size="21"  >150 × 512</text>
+<rect x="680" y="500" width="220" height="40" rx="9" fill="white" stroke="#697A87" stroke-width="1.35"/>
+<text x="790.0" y="530.0" text-anchor="middle" font-size="24"  >Add &amp; Norm</text>
+<rect x="680" y="570" width="220" height="44" rx="9" fill="#FFF1E6" stroke="#697A87" stroke-width="1.35"/>
+<text x="790.0" y="603.0" text-anchor="middle" font-size="26"  >FFN</text>
+<rect x="680" y="650" width="220" height="40" rx="9" fill="white" stroke="#697A87" stroke-width="1.35"/>
+<text x="790.0" y="679.5" text-anchor="middle" font-size="23"  >Add &amp; Norm · H</text>
+<rect x="680" y="750" width="220" height="70" rx="9" fill="#FFF1E6" stroke="#697A87" stroke-width="1.35"/>
+<text x="790.0" y="784.0" text-anchor="middle" font-size="26"  >Cross-attention</text>
+<text x="790.0" y="808.0" text-anchor="middle" font-size="19"  >Q: H · K,V: T₂</text>
+<rect x="680" y="860" width="220" height="40" rx="9" fill="white" stroke="#697A87" stroke-width="1.35"/>
+<text x="790.0" y="890.0" text-anchor="middle" font-size="24"  >Add &amp; Norm</text>
+<rect x="680" y="930" width="220" height="44" rx="9" fill="#FFF1E6" stroke="#697A87" stroke-width="1.35"/>
+<text x="790.0" y="963.0" text-anchor="middle" font-size="26"  >FFN</text>
+<rect x="680" y="1010" width="220" height="40" rx="9" fill="white" stroke="#697A87" stroke-width="1.35"/>
+<text x="790.0" y="1039.5" text-anchor="middle" font-size="23"  >Add &amp; Norm · C</text>
+<rect x="680" y="1100" width="220" height="60" rx="9" fill="#FFF1E6" stroke="#697A87" stroke-width="1.35"/>
+<text x="790.0" y="1127.5" text-anchor="middle" font-size="26"  >Gated fusion</text>
+<text x="790.0" y="1154.5" text-anchor="middle" font-size="22"  >gH + (1 − g)C</text>
+<rect x="680" y="1225" width="220" height="55" rx="0" fill="white" stroke="#697A87" stroke-width="1.35"/>
+<text x="790.0" y="1250.5" text-anchor="middle" font-size="26"  >Vₒ</text>
+<text x="790.0" y="1276.5" text-anchor="middle" font-size="21"  >196 × 512</text>
+<path d="M790,295 L790,390" class="edge"/>
+<path d="M790,355 L915,355 L915,425 L935,425" class="edge"/>
+<circle cx="790" cy="355" r="3" fill="#30383E"/>
+<path d="M1012.5,295 L1012.5,390" class="edge"/>
+<path d="M1012.5,460 L1012.5,530" class="edge"/>
+<path d="M1012.5,585 L1012.5,795 L900,795" class="edge"/>
+<path d="M790,460 L790,500" class="edge"/>
+<path d="M790,540 L790,570" class="edge"/>
+<path d="M790,614 L790,650" class="edge"/>
+<path d="M790,690 L790,750" class="edge"/>
+<path d="M790,820 L790,860" class="edge"/>
+<path d="M790,900 L790,930" class="edge"/>
+<path d="M790,974 L790,1010" class="edge"/>
+<path d="M790,1050 L790,1100" class="edge"/>
+<path d="M790,1160 L790,1225" class="edge"/>
+<path d="M790,370 L665,370 L665,520 L680,520" class="edge"/>
+<circle cx="790" cy="370" r="3" fill="#30383E"/>
+<path d="M790,555 L665,555 L665,670 L680,670" class="edge"/>
+<circle cx="790" cy="555" r="3" fill="#30383E"/>
+<path d="M790,715 L665,715 L665,880 L680,880" class="edge"/>
+<circle cx="790" cy="715" r="3" fill="#30383E"/>
+<path d="M790,915 L665,915 L665,1030 L680,1030" class="edge"/>
+<circle cx="790" cy="915" r="3" fill="#30383E"/>
+<path d="M665,715 L640,715 L640,1130 L680,1130" class="edge"/>
+<circle cx="665" cy="715" r="3" fill="#30383E"/>
+<rect x="1200" y="320" width="500" height="870" rx="0" fill="none" stroke="#A9B8C2" stroke-width="1.2" stroke-dasharray="6 4"/>
+<text x="1481" y="348" text-anchor="middle" font-size="24" font-weight="bold" >Relation alignment</text>
+<rect x="1260" y="240" width="220" height="55" rx="0" fill="white" stroke="#697A87" stroke-width="1.35"/>
+<text x="1370.0" y="264.0" text-anchor="middle" font-size="23"  >Visual memory Vₒ</text>
+<text x="1370.0" y="290.0" text-anchor="middle" font-size="21"  >196 × 512</text>
+<rect x="1515" y="240" width="155" height="55" rx="0" fill="white" stroke="#697A87" stroke-width="1.35"/>
+<text x="1592.5" y="265.0" text-anchor="middle" font-size="25"  >Prototypes Pᵥ</text>
+<text x="1592.5" y="291.0" text-anchor="middle" font-size="21"  >150 × 512</text>
+<rect x="1260" y="390" width="220" height="70" rx="9" fill="#EAF4F8" stroke="#697A87" stroke-width="1.35"/>
+<text x="1370.0" y="423.5" text-anchor="middle" font-size="26"  >Self-attention</text>
+<text x="1370.0" y="448.5" text-anchor="middle" font-size="20"  >Q = K = V: Vₒ</text>
+<rect x="1515" y="390" width="155" height="70" rx="9" fill="#EAF4F8" stroke="#697A87" stroke-width="1.35"/>
+<text x="1592.5" y="421.0" text-anchor="middle" font-size="24"  >Cosine</text>
+<text x="1592.5" y="449.0" text-anchor="middle" font-size="23"  >reweighting</text>
+<rect x="1515" y="530" width="155" height="55" rx="0" fill="white" stroke="#697A87" stroke-width="1.35"/>
+<text x="1592.5" y="555.0" text-anchor="middle" font-size="25"  >Tᵣ</text>
+<text x="1592.5" y="581.0" text-anchor="middle" font-size="21"  >150 × 512</text>
+<rect x="1260" y="500" width="220" height="40" rx="9" fill="white" stroke="#697A87" stroke-width="1.35"/>
+<text x="1370.0" y="530.0" text-anchor="middle" font-size="24"  >Add &amp; Norm</text>
+<rect x="1260" y="570" width="220" height="44" rx="9" fill="#EAF4F8" stroke="#697A87" stroke-width="1.35"/>
+<text x="1370.0" y="603.0" text-anchor="middle" font-size="26"  >FFN</text>
+<rect x="1260" y="650" width="220" height="40" rx="9" fill="white" stroke="#697A87" stroke-width="1.35"/>
+<text x="1370.0" y="679.5" text-anchor="middle" font-size="23"  >Add &amp; Norm · H</text>
+<rect x="1260" y="750" width="220" height="70" rx="9" fill="#EAF4F8" stroke="#697A87" stroke-width="1.35"/>
+<text x="1370.0" y="784.0" text-anchor="middle" font-size="26"  >Cross-attention</text>
+<text x="1370.0" y="808.0" text-anchor="middle" font-size="19"  >Q: H · K,V: Tᵣ</text>
+<rect x="1260" y="860" width="220" height="40" rx="9" fill="white" stroke="#697A87" stroke-width="1.35"/>
+<text x="1370.0" y="890.0" text-anchor="middle" font-size="24"  >Add &amp; Norm</text>
+<rect x="1260" y="930" width="220" height="44" rx="9" fill="#EAF4F8" stroke="#697A87" stroke-width="1.35"/>
+<text x="1370.0" y="963.0" text-anchor="middle" font-size="26"  >FFN</text>
+<rect x="1260" y="1010" width="220" height="40" rx="9" fill="white" stroke="#697A87" stroke-width="1.35"/>
+<text x="1370.0" y="1039.5" text-anchor="middle" font-size="23"  >Add &amp; Norm · C</text>
+<rect x="1260" y="1100" width="220" height="60" rx="9" fill="#EAF4F8" stroke="#697A87" stroke-width="1.35"/>
+<text x="1370.0" y="1127.5" text-anchor="middle" font-size="26"  >Gated fusion</text>
+<text x="1370.0" y="1154.5" text-anchor="middle" font-size="22"  >gH + (1 − g)C</text>
+<rect x="1260" y="1225" width="220" height="55" rx="0" fill="white" stroke="#697A87" stroke-width="1.35"/>
+<text x="1370.0" y="1250.5" text-anchor="middle" font-size="26"  >Vᵣ</text>
+<text x="1370.0" y="1276.5" text-anchor="middle" font-size="21"  >196 × 512</text>
+<path d="M1370,295 L1370,390" class="edge"/>
+<path d="M1370,355 L1495,355 L1495,425 L1515,425" class="edge"/>
+<circle cx="1370" cy="355" r="3" fill="#30383E"/>
+<path d="M1592.5,295 L1592.5,390" class="edge"/>
+<path d="M1592.5,460 L1592.5,530" class="edge"/>
+<path d="M1592.5,585 L1592.5,795 L1480,795" class="edge"/>
+<path d="M1370,460 L1370,500" class="edge"/>
+<path d="M1370,540 L1370,570" class="edge"/>
+<path d="M1370,614 L1370,650" class="edge"/>
+<path d="M1370,690 L1370,750" class="edge"/>
+<path d="M1370,820 L1370,860" class="edge"/>
+<path d="M1370,900 L1370,930" class="edge"/>
+<path d="M1370,974 L1370,1010" class="edge"/>
+<path d="M1370,1050 L1370,1100" class="edge"/>
+<path d="M1370,1160 L1370,1225" class="edge"/>
+<path d="M1370,370 L1245,370 L1245,520 L1260,520" class="edge"/>
+<circle cx="1370" cy="370" r="3" fill="#30383E"/>
+<path d="M1370,555 L1245,555 L1245,670 L1260,670" class="edge"/>
+<circle cx="1370" cy="555" r="3" fill="#30383E"/>
+<path d="M1370,715 L1245,715 L1245,880 L1260,880" class="edge"/>
+<circle cx="1370" cy="715" r="3" fill="#30383E"/>
+<path d="M1370,915 L1245,915 L1245,1030 L1260,1030" class="edge"/>
+<circle cx="1370" cy="915" r="3" fill="#30383E"/>
+<path d="M1245,715 L1220,715 L1220,1130 L1260,1130" class="edge"/>
+<circle cx="1245" cy="715" r="3" fill="#30383E"/>
+<path d="M510,557.5 L565,557.5 L565,170 L1012.5,170 L1012.5,240" class="edge"/>
+<path d="M320,1252.5 L590,1252.5 L590,267.5 L680,267.5" class="edge"/>
+<path d="M900,1252.5 L1170,1252.5 L1170,267.5 L1260,267.5" class="edge"/>
+<circle cx="790" cy="1280" r="3" fill="#30383E"/>
+<rect x="1050" y="1310" width="640" height="60" rx="0" fill="white" stroke="#697A87" stroke-width="1.35"/>
+<text x="1370.0" y="1338.0" text-anchor="middle" font-size="27"  >Visual memories Vₒ, Vᵣ</text>
+<text x="1370.0" y="1365.0" text-anchor="middle" font-size="22"  >196 × 512 each</text>
+<path d="M790,1280 L790,1340 L1050,1340" class="edge"/>
+<path d="M1370,1280 L1370,1310" class="edge"/>
+</svg>

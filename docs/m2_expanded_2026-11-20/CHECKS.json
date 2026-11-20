@@ -1,0 +1,25 @@
+{
+  "status": "STATIC_AND_VISUAL_QA_PASS_USER_REVIEW_PENDING",
+  "processing_and_data_boxes": 47,
+  "connectors": 66,
+  "all_connectors_orthogonal": true,
+  "unrelated_box_crossings": 0,
+  "mechanism_source": "C:\\Users\\leduc\\OneDrive\\Tài liệu\\ChatGPT\\Đề cương\\upt_alignment_publish\\baseline_final_pipeline\\final_pipeline\\xe\\bank_layers.py",
+  "source_sha256": "139edbb1b73caf3dadaf5c960b25542e282f88baf2ce9bdf141de922ceacbc09",
+  "models_executed": false,
+  "visual_qa": [
+    "All three expanded stages and four residual-normalization paths each inspected",
+    "T1 reweighted prototype path reaches object2 independently from V1",
+    "Object2 Vo reaches relation and final output",
+    "Visual input reaches self-attention and cosine weighting; selected prototypes feed cross-attention K,V",
+    "H bypass reaches gated fusion alongside cross state C",
+    "Shortened prototype records and moved headings to clear text/wires"
+  ],
+  "formats": [
+    "SVG",
+    "native draw.io",
+    "PNG"
+  ],
+  "downloads": "C:/Users/leduc/Downloads/M2_expanded_inline_v1.*",
+  "formal_report_modified": false
+}
