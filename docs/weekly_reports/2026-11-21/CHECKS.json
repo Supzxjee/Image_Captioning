@@ -1,0 +1,75 @@
+{
+  "report": "C:\\Users\\leduc\\OneDrive\\Tài liệu\\ChatGPT\\Đề cương\\upt_alignment_publish\\docs\\weekly_reports\\2026-11-21\\Bao_cao_ket_qua_nghien_cuu_tuan_15.docx",
+  "input_figures": 5,
+  "embedded_figures": 4,
+  "chosen_overview": "Tat_ca_6_hinh-Page-7.drawio.png",
+  "expanded_full": "Reviewed, not embedded at report scale",
+  "original_figures_edited": false,
+  "source_metrics": [
+    "C:\\Users\\leduc\\OneDrive\\Tài liệu\\ChatGPT\\Đề cương\\upt_alignment_publish\\experiments\\clip_patch_baseline\\CSA_PER_CAPTION_XE10_THREE_SEEDS_TEST_RESULT.json",
+    "C:\\Users\\leduc\\OneDrive\\Tài liệu\\ChatGPT\\Đề cương\\upt_alignment_publish\\experiments\\clip_patch_baseline\\CSA_PER_CAPTION_XE10_THREE_SEEDS_RERANK_TEST_RESULT.json",
+    "C:\\Users\\leduc\\OneDrive\\Tài liệu\\ChatGPT\\Đề cương\\upt_alignment_publish\\experiments\\clip_patch_baseline\\CSA_PER_CAPTION_THREE_SEEDS_SCST1500_TEST_RESULT.json",
+    "C:\\Users\\leduc\\OneDrive\\Tài liệu\\ChatGPT\\Đề cương\\upt_alignment_publish\\experiments\\clip_patch_baseline\\CSA_SEED43_SCST_KL500_VALID5000_RESULT.json"
+  ],
+  "tests": {
+    "metric_tables_from_audited_json": true,
+    "TEST_VALID_separate": true,
+    "portrait": true,
+    "black_headings": true,
+    "models_executed": false
+  },
+  "report_sha256": "92b9ef99d33c082ced1acf01e7732fcd0ad55e4dd3a9fec77137f8e6b89c0ba8",
+  "render_pending": false,
+  "renderer": "Canonical render_docx failed: bundled Windows runtime has no LibreOffice; hidden Word COM exported PDF, bundled Poppler rendered PNGs.",
+  "pages": 6,
+  "visual_review": {
+    "all_pages_inspected": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "clipping_or_overlap_observed": false,
+    "layout": "Six portrait pages; detailed supplied diagrams remain dense at print scale, mechanisms explained in readable prose."
+  },
+  "original_figure_SHA_unchanged": true,
+  "figures_review": [
+    {
+      "figure": "M1",
+      "verdict": "pass",
+      "note": "spaCy, frequency5, frozen CLIP text vectors, bank5269/1594x512 match stored implementation."
+    },
+    {
+      "figure": "M2",
+      "verdict": "pass",
+      "note": "V1/T1 to object2; Vo to relation; separate Vo/Vr outputs; cosine input is original stage visual; residual and gated-fusion paths visible."
+    },
+    {
+      "figure": "M3 Page8",
+      "verdict": "pass",
+      "note": "Both pools from originalVo; object query/residualVo and relation query/residualVr; mask controls and both updated outputs present on white."
+    },
+    {
+      "figure": "Overview Page7",
+      "verdict": "chosen",
+      "note": "Text embeddings and ROI/validity/geometry bypass separated; both memories feed parallel decoder."
+    },
+    {
+      "figure": "Expanded full05",
+      "verdict": "reviewed alternative",
+      "note": "Mechanism broadly consistent, but combined Prompt+ROI label is ambiguous and too dense at portrait report scale; use Page7 plus standalone modules."
+    }
+  ],
+  "pdf_sha256": "01c3a0aaca6ecbb13b551e4fb048a1779ac0531145fe30a94ef45afbe3cbe638",
+  "page_png_sha256": {
+    "page-1.png": "9cee96d47823d28b7351526313dcd8d35ebebf44852a2b9824419b732b3c6e56",
+    "page-2.png": "369f82506bae3fc16242241787f78e10d4533119b470539c032ddf88ea2db56a",
+    "page-3.png": "cc0af09b110707b506b119f13964c6c74961691a082ffda52c6edb34599eca64",
+    "page-4.png": "a3fc9859e3607aea4dc9ddc277f11878f113d5a03210e8782ce9867bc37c174d",
+    "page-5.png": "4471a3d9e2667a5f9b11921e9ef75c275e4c24e1b989bf65b4f2f99fc1fef77f",
+    "page-6.png": "a1be0ff2fec4487467ba0a151a311e54a1af32565be34356f4d2425c1f7315d3"
+  },
+  "delivery": "C:\\Users\\leduc\\Downloads\\Bao_cao_nghien_cuu_tuan_15.docx"
+}
