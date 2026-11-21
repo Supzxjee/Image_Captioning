@@ -1,0 +1,28 @@
+{
+  "status": "STATIC_AND_VISUAL_QA_PASS_USER_REVIEW_PENDING",
+  "nodes": 18,
+  "connectors": 22,
+  "all_connectors_orthogonal": true,
+  "unrelated_box_crossings": 0,
+  "source_sha256": {
+    "baseline_final_pipeline/final_pipeline/xe/csa_patch_model.py": "99b6441c4205b142256192cc3d840a905e00ecc1e730f30e1f5eb2c3cf8dc220",
+    "baseline_final_pipeline/final_pipeline/xe/semantic_patch_model.py": "10a385859ea1389a71f14a7a76e16a6989feb73fd581ca89659eab50ec53a0f3"
+  },
+  "models_executed": false,
+  "formal_reports_modified": false,
+  "visual_qa": [
+    "One original Vo record feeds both object and subject/target pooling",
+    "Vo query/residual uses a separate below-row route; Vr only feeds relation query/residual",
+    "Each ROI record has explicit dashed routes to pooling and attention mask",
+    "Prompt embeddings plus geometry feed concatenation; slots feed attention",
+    "Two updated memory records remain separate, no merged output",
+    "No floating Q/K/V text, grid, footer legend, unsupported wire crossings, or text collisions observed"
+  ],
+  "formats": [
+    "SVG",
+    "native draw.io",
+    "PNG"
+  ],
+  "downloads": "C:/Users/leduc/Downloads/M3_clear_routing_v1.*",
+  "copy_sha256_checked": true
+}

@@ -1,0 +1,86 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1750" height="1000" viewBox="0 0 1750 1000">
+<defs><marker id="arrow" markerWidth="8" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse"><path d="M0 0 L8 4 L0 8 Z" fill="#30383E"/></marker></defs>
+<rect width="1750" height="1000" fill="white"/>
+<style>text{font-family:"Times New Roman",serif;fill:#202B33}.edge{fill:none;stroke:#30383E;stroke-width:1.6;marker-end:url(#arrow)}</style>
+<text x="40" y="35" text-anchor="start" font-size="27"  >M3 · Image-Specific Prompt–Visual Alignment</text>
+<rect x="280" y="65" width="1450" height="420" rx="0" fill="none" stroke="#A9B8C2" stroke-width="1.2" stroke-dasharray="6 4"/>
+<text x="296" y="92" text-anchor="start" font-size="22" font-weight="bold" >Object prompt alignment</text>
+<rect x="280" y="510" width="1450" height="460" rx="0" fill="none" stroke="#A9B8C2" stroke-width="1.2" stroke-dasharray="6 4"/>
+<text x="296" y="537" text-anchor="start" font-size="22" font-weight="bold" >Relation prompt alignment</text>
+<rect x="40" y="310" width="180" height="70" rx="0" fill="white" stroke="#697A87" stroke-width="1.35"/>
+<text x="130.0" y="340.5" text-anchor="middle" font-size="20"  >Object memory Vₒ</text>
+<text x="130.0" y="365.5" text-anchor="middle" font-size="20"  >196 × 512</text>
+<rect x="40" y="880" width="180" height="70" rx="0" fill="white" stroke="#697A87" stroke-width="1.35"/>
+<text x="130.0" y="910.0" text-anchor="middle" font-size="19"  >Relation memory Vᵣ</text>
+<text x="130.0" y="935.0" text-anchor="middle" font-size="20"  >196 × 512</text>
+<rect x="300" y="150" width="170" height="70" rx="0" fill="white" stroke="#697A87" stroke-width="1.35"/>
+<text x="385.0" y="182.0" text-anchor="middle" font-size="24"  >ROI links</text>
+<text x="385.0" y="208.0" text-anchor="middle" font-size="21"  >valid slots</text>
+<rect x="510" y="150" width="230" height="70" rx="0" fill="white" stroke="#697A87" stroke-width="1.35"/>
+<text x="625.0" y="182.0" text-anchor="middle" font-size="24"  >Object prompt</text>
+<text x="625.0" y="208.0" text-anchor="middle" font-size="21"  >tₒ + box geometry</text>
+<rect x="300" y="310" width="170" height="70" rx="9" fill="#FFF1E6" stroke="#697A87" stroke-width="1.35"/>
+<text x="385.0" y="340.0" text-anchor="middle" font-size="23"  >Object ROI</text>
+<text x="385.0" y="369.0" text-anchor="middle" font-size="24"  >pooling</text>
+<rect x="540" y="310" width="170" height="70" rx="9" fill="#FFF1E6" stroke="#697A87" stroke-width="1.35"/>
+<text x="625.0" y="355.0" text-anchor="middle" font-size="24"  >Concatenate</text>
+<rect x="780" y="310" width="140" height="70" rx="9" fill="#FFF1E6" stroke="#697A87" stroke-width="1.35"/>
+<text x="850.0" y="355.0" text-anchor="middle" font-size="24"  >Slot MLP</text>
+<rect x="1000" y="310" width="200" height="70" rx="9" fill="#FFF1E6" stroke="#697A87" stroke-width="1.35"/>
+<text x="1100.0" y="340.5" text-anchor="middle" font-size="24"  >Masked cross-</text>
+<text x="1100.0" y="369.5" text-anchor="middle" font-size="24"  >attention</text>
+<rect x="1270" y="310" width="150" height="70" rx="9" fill="#FFF1E6" stroke="#697A87" stroke-width="1.35"/>
+<text x="1345.0" y="354.0" text-anchor="middle" font-size="22"  >Residual add</text>
+<rect x="1490" y="300" width="220" height="90" rx="0" fill="white" stroke="#697A87" stroke-width="1.35"/>
+<text x="1600.0" y="327.0" text-anchor="middle" font-size="23"  >Updated object</text>
+<text x="1600.0" y="357.0" text-anchor="middle" font-size="25"  >memory Vₒ′</text>
+<text x="1600.0" y="382.0" text-anchor="middle" font-size="20"  >196 × 512</text>
+<path d="M470,345 L540,345" class="edge"/>
+<path d="M710,345 L780,345" class="edge"/>
+<path d="M920,345 L1000,345" class="edge"/>
+<path d="M1200,345 L1270,345" class="edge"/>
+<path d="M1420,345 L1490,345" class="edge"/>
+<path d="M625,220 L625,310" class="edge"/>
+<path d="M385,220 L385,310" class="edge" style="stroke-dasharray:6 4"/>
+<path d="M385,150 L385,125 L1100,125 L1100,310" class="edge" style="stroke-dasharray:6 4"/>
+<rect x="300" y="590" width="170" height="70" rx="0" fill="white" stroke="#697A87" stroke-width="1.35"/>
+<text x="385.0" y="622.0" text-anchor="middle" font-size="24"  >ROI links</text>
+<text x="385.0" y="648.0" text-anchor="middle" font-size="21"  >valid slots</text>
+<rect x="510" y="590" width="230" height="70" rx="0" fill="white" stroke="#697A87" stroke-width="1.35"/>
+<text x="625.0" y="622.0" text-anchor="middle" font-size="24"  >Relation prompt</text>
+<text x="625.0" y="648.0" text-anchor="middle" font-size="21"  >tᵣ + pair geometry</text>
+<rect x="300" y="750" width="170" height="70" rx="9" fill="#EAF4F8" stroke="#697A87" stroke-width="1.35"/>
+<text x="385.0" y="780.0" text-anchor="middle" font-size="23"  >Subject–object</text>
+<text x="385.0" y="809.0" text-anchor="middle" font-size="24"  >ROI pooling</text>
+<rect x="540" y="750" width="170" height="70" rx="9" fill="#EAF4F8" stroke="#697A87" stroke-width="1.35"/>
+<text x="625.0" y="795.0" text-anchor="middle" font-size="24"  >Concatenate</text>
+<rect x="780" y="750" width="140" height="70" rx="9" fill="#EAF4F8" stroke="#697A87" stroke-width="1.35"/>
+<text x="850.0" y="795.0" text-anchor="middle" font-size="24"  >Slot MLP</text>
+<rect x="1000" y="750" width="200" height="70" rx="9" fill="#EAF4F8" stroke="#697A87" stroke-width="1.35"/>
+<text x="1100.0" y="780.5" text-anchor="middle" font-size="24"  >Masked cross-</text>
+<text x="1100.0" y="809.5" text-anchor="middle" font-size="24"  >attention</text>
+<rect x="1270" y="750" width="150" height="70" rx="9" fill="#EAF4F8" stroke="#697A87" stroke-width="1.35"/>
+<text x="1345.0" y="794.0" text-anchor="middle" font-size="22"  >Residual add</text>
+<rect x="1490" y="740" width="220" height="90" rx="0" fill="white" stroke="#697A87" stroke-width="1.35"/>
+<text x="1600.0" y="767.0" text-anchor="middle" font-size="23"  >Updated relation</text>
+<text x="1600.0" y="797.0" text-anchor="middle" font-size="25"  >memory Vᵣ′</text>
+<text x="1600.0" y="822.0" text-anchor="middle" font-size="20"  >196 × 512</text>
+<path d="M470,785 L540,785" class="edge"/>
+<path d="M710,785 L780,785" class="edge"/>
+<path d="M920,785 L1000,785" class="edge"/>
+<path d="M1200,785 L1270,785" class="edge"/>
+<path d="M1420,785 L1490,785" class="edge"/>
+<path d="M625,660 L625,750" class="edge"/>
+<path d="M385,660 L385,750" class="edge" style="stroke-dasharray:6 4"/>
+<path d="M385,590 L385,565 L1100,565 L1100,750" class="edge" style="stroke-dasharray:6 4"/>
+<path d="M220,345 L300,345" class="edge"/>
+<path d="M250,345 L250,785 L300,785" class="edge"/>
+<circle cx="250" cy="345" r="3" fill="#30383E"/>
+<path d="M250,440 L1060,440 L1060,380" class="edge"/>
+<path d="M1060,440 L1345,440 L1345,380" class="edge"/>
+<circle cx="250" cy="440" r="3" fill="#30383E"/>
+<circle cx="1060" cy="440" r="3" fill="#30383E"/>
+<path d="M220,915 L1060,915 L1060,820" class="edge"/>
+<path d="M1060,915 L1345,915 L1345,820" class="edge"/>
+<circle cx="1060" cy="915" r="3" fill="#30383E"/>
+</svg>

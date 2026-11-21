@@ -1,0 +1,11 @@
+# M3 clear routing — approved redraw, 21 November 2026
+
+User asked to redraw M3 after review. Keep short labels and one left-to-right object row plus one relation row. Separate original Vo and Vr inputs; a shared original Vo source supplies object and subject/target ROI pooling, object query, and object residual. Vr supplies only relation query/residual. Separate updated Vo' and Vr' outputs; no combined memory plate.
+
+Give each branch an ROI-links/valid-slots record. Route dashed controls to ROI pooling and the mask input of cross-attention. Separate prompt-text embeddings plus box/pair geometry records feed concatenation. Pooling/concatenation/Slot MLP/masked cross-attention/residual add remain five separate operations. No fine-grained Q/K/V labels, training/footer legends or CSA name. All arrows straight or orthogonal; prioritize legibility and distinct source identities. The user will edit figures personally; this redraw is explicitly authorized, but M2/report edits are not.
+
+Scientific sources read as text only: baseline_final_pipeline/final_pipeline/xe/csa_patch_model.py and semantic_patch_model.py PromptMemory. Both relation subject and target are pooled from original Vo. Attention K/V are projected slots, query is original branch memory, and unsupported patch-query residuals are zeroed. Geometry is metadata and bypasses text encoding. Feature dimensions stay196x512; no research model execution.
+
+Style follows the user's current M3 and academic-diagram reference29 MambaVision: separate processing blocks, restrained colors, clear side routes and repeated aligned branches. No scientific components copied from the reference. Deliver SVG/native draw.io/PNG to Downloads, inspect actual render, validate XML and connector geometry. Preserve older figures and reports.
+
+SVG/native draw.io/PNG delivered as Downloads/M3_clear_routing_v1.*. Actual rendered image inspected: two memories and outputs distinct, no prompt/mask wires through unrelated boxes, original Vo shared only where intended, relation query/residual isolated on Vr, no text collisions observed. Orthogonality/XML/zero unrelated-box crossings and copied SHA checks PASS. Review pending; no research model or report changes.

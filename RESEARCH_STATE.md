@@ -1,6 +1,6 @@
 # Trạng thái nghiên cứu — đọc trước khi tiếp tục
 
-Cập nhật: 20/11/2026, giờ Việt Nam. File này là bản tóm tắt để tiếp tục công việc; protocol và artifacts được dẫn bên dưới mới là nguồn chi tiết. Không cần đọc toàn bộ lịch sử chat.
+Cập nhật: 21/11/2026, giờ Việt Nam. File này là bản tóm tắt để tiếp tục công việc; protocol và artifacts được dẫn bên dưới mới là nguồn chi tiết. Không cần đọc toàn bộ lịch sử chat.
 
 ## Mục tiêu và cách làm việc
 
@@ -9,6 +9,10 @@ Cập nhật: 20/11/2026, giờ Việt Nam. File này là bản tóm tắt để
 - Không tự chạy mô hình/Torch/autograd local hoặc notebook Kaggle. Kiểm tra metadata/NumPy/static/mock được phép; ghi rõ giới hạn. Quy trình tại [AGENTS.md](AGENTS.md).
 
 ## Hiện đang ở đâu
+
+- **M3 redrawn with explicit source/control routing, user-authorized.** [SVG](docs/m3_clear_routing_2026-11-21/M3_clear_routing.svg), [native draw.io](docs/m3_clear_routing_2026-11-21/M3_clear_routing.drawio), [decision](docs/m3_clear_routing_2026-11-21/DESIGN.md), [QA/SHA](docs/m3_clear_routing_2026-11-21/CHECKS.json). One original Vo source supplies both pools plus object query/residual; separate Vr supplies relation query/residual. Per-row dashed ROI controls explicitly reach pooling and attention masks; prompt embeddings plus geometry separately reach concatenation. Separate updated Vo'/Vr' records, short labels, no Q/K/V microtext or merged output. Actual render inspected; XML/orthogonal geometry/zero unrelated box crossings/copied SHA PASS. Downloads/M3_clear_routing_v1.png/.svg/.drawio. User review pending; no models, report or M2 file edits.
+
+- **User's manually edited M2 approved in chat21/11.** Separate Vo/Vr outputs, no merged output plate; remove the small Q/K/V line in cross-attention, explain roles in prose. User explicitly clarified that unsolicited diagram edits were not requested during opinion/review exchanges; only edit when asked. Earlier generated M2 assets below are historical references and were not changed to imitate the user's latest local drawing.
 
 - **M2 expanded directly inside the overview, user-requested.** [Editable source/render](docs/m2_expanded_2026-11-20/M2_expanded.svg), [native draw.io](docs/m2_expanded_2026-11-20/M2_expanded.drawio), [decision](docs/m2_expanded_2026-11-20/DESIGN.md), [checks](docs/m2_expanded_2026-11-20/CHECKS.json). Three adjacent expanded stages show cosine reweighting, self/cross-attention with Q/K/V, four explicit residual Add & Norm operations, two FFNs and scalar gate each. T1 independently passes object1→object2 alongside V1; object2 Vo feeds relation and final output. Prototype outputs150x512 and memories196x512 explicit. Actual render inspected and refined for prototype-label overflow and heading-wire spacing; XML/orthogonal geometry/zero unrelated box crossings and copied SHA PASS. Downloads/M2_expanded_inline_v1.png/.svg/.drawio. Previous module diagrams, formal report and models unchanged. Aesthetics awaits user review.
 
