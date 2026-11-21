@@ -1,0 +1,34 @@
+{
+  "status": "STATIC_AND_VISUAL_QA_PASS_USER_REVIEW_PENDING",
+  "nodes": 32,
+  "connectors": 35,
+  "all_connectors_orthogonal": true,
+  "unrelated_box_crossings": 0,
+  "separate_data": [
+    "Bₙ",
+    "Bᵥ",
+    "Vₒ",
+    "Vᵣ",
+    "Vₒ′",
+    "Vᵣ′"
+  ],
+  "models_executed": false,
+  "formal_reports_modified": false,
+  "visual_qa": [
+    "Separate noun and verb bank records feed independent M2 ports",
+    "Separate Vo and Vr records feed separate M3 ports",
+    "Separate updated Vo and Vr records enter decoder along independent paths without merge",
+    "Prompt texts reach frozen CLIP while ROI/geometry metadata bypasses it",
+    "Decoder embedding and candidate/reranking paths inspected",
+    "Tight patch-token label split into three lines and rerendered; no text/box collisions observed"
+  ],
+  "overview_mode": "M1/M2/M3 module-level; detailed figures preserved separately",
+  "formats": [
+    "SVG",
+    "native draw.io",
+    "PNG"
+  ],
+  "downloads": "C:/Users/leduc/Downloads/Full_pipeline_split_v1.*",
+  "copied_sha256_checked": true,
+  "image_sha256": "6859cf48596bf0583971e3f2f9c3527613f24a026e8581222794b7ac70a442bb"
+}
