@@ -1,0 +1,27 @@
+{
+  "date": "2026-11-22",
+  "status": "STATIC_AND_MOCK_PASS_GPU_PENDING",
+  "tests_run": 6,
+  "tests_failed": 0,
+  "notebook": "experiments\\matched_visual_baseline\\BASELINE_MATCHED_PARALLEL3_XE10_2GPU.ipynb",
+  "notebook_sha256": "89fe5e5db58437cf29b878b072df2dc811df8871382b766045278e0ec5910841",
+  "embedded_files": 41,
+  "embedded_python_sources_compiled": 32,
+  "notebook_cells_compiled": 3,
+  "checks": [
+    "AST/compile and hashes",
+    "repository-local import closure",
+    "missing notebook globals",
+    "seed42/CE10/FP32/DDP32/VALID-only and identity guards",
+    "unchanged inherited decoder and bank-independent parameter construction",
+    "mock semantic-module pruning and duplicate visual-memory routing"
+  ],
+  "local_torch_imported": false,
+  "local_model_executed": false,
+  "kaggle_executed": false,
+  "scorers_executed": false,
+  "actual_shared_weights_and_CUDA_gradients": "pending user-run Kaggle preflight",
+  "downloads_copy": "C:\\Users\\leduc\\Downloads\\BASELINE_MATCHED_PARALLEL3_XE10_2GPU.ipynb",
+  "downloads_copy_sha256": "89fe5e5db58437cf29b878b072df2dc811df8871382b766045278e0ec5910841",
+  "trainable_parameter_count": "user-run contract guard reports exact count; not measured locally"
+}

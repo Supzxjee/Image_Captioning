@@ -1,6 +1,6 @@
 # Trạng thái nghiên cứu — đọc trước khi tiếp tục
 
-Cập nhật: 21/11/2026, giờ Việt Nam. File này là bản tóm tắt để tiếp tục công việc; protocol và artifacts được dẫn bên dưới mới là nguồn chi tiết. Không cần đọc toàn bộ lịch sử chat.
+Cập nhật: 22/11/2026, giờ Việt Nam. File này là bản tóm tắt để tiếp tục công việc; protocol và artifacts được dẫn bên dưới mới là nguồn chi tiết. Không cần đọc toàn bộ lịch sử chat.
 
 ## Mục tiêu và cách làm việc
 
@@ -9,6 +9,8 @@ Cập nhật: 21/11/2026, giờ Việt Nam. File này là bản tóm tắt để
 - Không tự chạy mô hình/Torch/autograd local hoặc notebook Kaggle. Kiểm tra metadata/NumPy/static/mock được phép; ghi rõ giới hạn. Quy trình tại [AGENTS.md](AGENTS.md).
 
 ## Hiện đang ở đâu
+
+- **Matched visual-only baseline ready22/11, user-authorized.** [Notebook](experiments/matched_visual_baseline/BASELINE_MATCHED_PARALLEL3_XE10_2GPU.ipynb), [decision](experiments/matched_visual_baseline/PROTOCOL.md), [checks](experiments/matched_visual_baseline/CHECKS.json). Fresh three-layer same-parallel-decoder baseline,10CEepochs/seed42, controlling the final bank+prompt pipeline. Retain project/embedding/decoder/head initialization and historical FP32 per-caption grouped direct-H5 recipe; remove M2/M3, pass projected V to both decoder attention branches. Only visual-cache/COCO inputs; no bank/prompt staging. Original constructor with dummy buffers then pruning preserves common tensor RNG draw order; actual tensor/causal/image-conditioning/DDP/beam guards run on Kaggle before training.41 embedded source/assets, SHA/provenance, six host static/mock tests including import closure and missing-global checks PASS; no local Torch/model/scorer. Downloads notebook copy SHA verified. Exact actual parameter counts and CUDA/runtime/quality pending user-run; no training started, no TEST/GPT-2/SCST/Word changes. Total capacity differs from full model, not a text-only M3 ablation. Cap11.5h is not ETA or billing guarantee; quota unconfirmed. Delivery followsdca9110.
 
 - **Week15 Word revised with polished figures, user-authorized21/11.** [Revised report](docs/weekly_reports/2026-11-21/revised/Bao_cao_nghien_cuu_tuan_15_cap_nhat.docx), [checks](docs/weekly_reports/2026-11-21/revised/CHECKS.json), [revision script](docs/weekly_reports/2026-11-21/revise_report.py). Inserted all four approved polished PNGs, added Karpathy113287/5000/5000 and10CEepochs, clarified candidate-wise decoder/CLIP min–max versus fixed-range object mapping, expanded KL purpose, replaced old five-image/transparency production prose with accurate four-figure summary. A4 portrait, fitted figure/table widths, six pages; original table text/bold preserved and embedded PNG SHA verified. All pages visually inspected; final edited pages5/6 rechecked after font refinement. Canonical renderer missing LibreOffice; Word COM validPDF + bundledPDFium fallback, benign COMQuit RPC error after export recorded. Original source Word SHA unchanged; revised delivery SHA matches Downloads/Bao_cao_nghien_cuu_tuan_15_cap_nhat.docx. No model/scorer/Sheet changes. Delivery followse4915a6.
 
