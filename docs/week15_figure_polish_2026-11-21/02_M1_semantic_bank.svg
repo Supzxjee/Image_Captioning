@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1150" height="810" viewBox="0 0 1150 810">
+<defs><marker id="arrow" markerWidth="7" markerHeight="7" refX="7" refY="3.5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0 0 L7 3.5 L0 7 Z" fill="#40525E"/></marker></defs>
+<rect width="1150" height="810" fill="white"/>
+<style>text{font-family:"Times New Roman",serif;fill:#243747}.edge{fill:none;stroke:#40525E;stroke-width:1.35;stroke-linejoin:miter;marker-end:url(#arrow)}</style>
+<text x="575" y="35" text-anchor="middle" font-size="28" font-weight="bold" >M1 · Semantic Bank Construction</text>
+<rect x="60" y="80" width="180" height="65" rx="0" fill="white" stroke="#738592" stroke-width="1.2"/>
+<text x="150.0" y="121.0" text-anchor="middle" font-size="23" font-weight="bold">TRAIN captions</text>
+<rect x="310" y="80" width="300" height="65" rx="8" fill="#F3F6F9" stroke="#738592" stroke-width="1.2"/>
+<text x="460.0" y="108.40441978065279" text-anchor="middle" font-size="21.808839561305575" font-weight="bold">POS tagging + Lemmatization</text>
+<text x="460.0" y="132.4044197806528" text-anchor="middle" font-size="20" font-weight="normal">spaCy en_core_web_sm</text>
+<rect x="720" y="80" width="300" height="65" rx="8" fill="#F3F6F9" stroke="#738592" stroke-width="1.2"/>
+<text x="870.0" y="109.0" text-anchor="middle" font-size="24" font-weight="bold">Filter + Deduplicate</text>
+<text x="870.0" y="134.0" text-anchor="middle" font-size="21" font-weight="normal">Minimum frequency = 5</text>
+<path d="M240,112.5 L310,112.5" class="edge" style=""/>
+<path d="M610,112.5 L720,112.5" class="edge" style=""/>
+<rect x="280" y="210" width="260" height="65" rx="0" fill="#FFF0E3" stroke="#738592" stroke-width="1.2"/>
+<text x="410.0" y="239.0" text-anchor="middle" font-size="24" font-weight="bold">Noun lemmas</text>
+<text x="410.0" y="264.0" text-anchor="middle" font-size="21" font-weight="normal">e.g., person, bicycle</text>
+<rect x="225" y="330" width="370" height="80" rx="8" fill="#FFF0E3" stroke="#738592" stroke-width="1.2"/>
+<text x="410.0" y="367.0" text-anchor="middle" font-size="24" font-weight="bold">Object prompt</text>
+<text x="410.0" y="391.0" text-anchor="middle" font-size="20" font-weight="normal">e.g., a photo of a bicycle</text>
+<path d="M410,275 L410,330" class="edge" style=""/>
+<path d="M410,410 L410,465" class="edge" style=""/>
+<rect x="300" y="585" width="220" height="50" rx="8" fill="#F3F6F9" stroke="#738592" stroke-width="1.2"/>
+<text x="410.0" y="618.5" text-anchor="middle" font-size="23" font-weight="bold">L₂ normalization</text>
+<path d="M410,535 L410,585" class="edge" style=""/>
+<path d="M280,700 V765 A130.0,10 0 0 0 540,765 V700 Z" fill="#FFF0E3" stroke="#738592" stroke-width="1.2"/>
+<ellipse cx="410.0" cy="700" rx="130.0" ry="10" fill="#FFF0E3" stroke="#738592" stroke-width="1.2"/>
+<text x="410.0" y="733.5" text-anchor="middle" font-size="25" font-weight="bold">Noun bank Bₙ</text>
+<text x="410.0" y="760.5" text-anchor="middle" font-size="23" font-weight="normal">5269 × 512</text>
+<path d="M410,635 L410,690" class="edge" style=""/>
+<rect x="705" y="210" width="260" height="65" rx="0" fill="#E8F3FA" stroke="#738592" stroke-width="1.2"/>
+<text x="835.0" y="239.0" text-anchor="middle" font-size="24" font-weight="bold">Verb lemmas</text>
+<text x="835.0" y="264.0" text-anchor="middle" font-size="21" font-weight="normal">e.g., ride, stand</text>
+<rect x="650" y="330" width="370" height="80" rx="8" fill="#E8F3FA" stroke="#738592" stroke-width="1.2"/>
+<text x="835.0" y="367.0" text-anchor="middle" font-size="24" font-weight="bold">Verb prompt</text>
+<text x="835.0" y="391.0" text-anchor="middle" font-size="20" font-weight="normal">e.g., a photo contains the action of ride</text>
+<path d="M835,275 L835,330" class="edge" style=""/>
+<path d="M835,410 L835,465" class="edge" style=""/>
+<rect x="725" y="585" width="220" height="50" rx="8" fill="#F3F6F9" stroke="#738592" stroke-width="1.2"/>
+<text x="835.0" y="618.5" text-anchor="middle" font-size="23" font-weight="bold">L₂ normalization</text>
+<path d="M835,535 L835,585" class="edge" style=""/>
+<path d="M705,700 V765 A130.0,10 0 0 0 965,765 V700 Z" fill="#E8F3FA" stroke="#738592" stroke-width="1.2"/>
+<ellipse cx="835.0" cy="700" rx="130.0" ry="10" fill="#E8F3FA" stroke="#738592" stroke-width="1.2"/>
+<text x="835.0" y="733.5" text-anchor="middle" font-size="25" font-weight="bold">Verb bank Bᵥ</text>
+<text x="835.0" y="760.5" text-anchor="middle" font-size="23" font-weight="normal">1594 × 512</text>
+<path d="M835,635 L835,690" class="edge" style=""/>
+<rect x="225" y="465" width="795" height="70" rx="8" fill="#F3F6F9" stroke="#738592" stroke-width="1.2"/>
+<text x="622.5" y="496.5" text-anchor="middle" font-size="25" font-weight="bold">CLIP Text Encoder</text>
+<text x="622.5" y="522.5" text-anchor="middle" font-size="22" font-weight="normal">CLIP ViT-B/16</text>
+<g transform="translate(1007,465)" stroke="#4094BB" stroke-width="1.6"><path d="M0,-8V8 M-7,-4L7,4 M-7,4L7,-4 M-3,-6L0,-3L3,-6 M-3,6L0,3L3,6"/></g>
+<path d="M870,145 L870,178 L410,178 L410,210" class="edge" style=""/>
+<path d="M835,178 L835,210" class="edge" style=""/>
+<circle cx="835" cy="178" r="2.7" fill="#40525E"/>
+</svg>

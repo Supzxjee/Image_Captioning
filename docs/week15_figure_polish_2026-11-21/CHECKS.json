@@ -1,0 +1,67 @@
+{
+  "status": "GEOMETRY_AND_VISUAL_REVIEW_PASS",
+  "report_sha256": "92b9ef99d33c082ced1acf01e7732fcd0ad55e4dd3a9fec77137f8e6b89c0ba8",
+  "report_modified": false,
+  "models_executed": false,
+  "figures": {
+    "01_full_pipeline": {
+      "shapes": 32,
+      "connectors": 35,
+      "orthogonal": true,
+      "unrelated_box_crossings": 0,
+      "native_anchored_endpoints": 70
+    },
+    "02_M1_semantic_bank": {
+      "shapes": 12,
+      "connectors": 12,
+      "orthogonal": true,
+      "unrelated_box_crossings": 0,
+      "native_anchored_endpoints": 23
+    },
+    "03_M2_bank_visual_alignment": {
+      "shapes": 46,
+      "connectors": 64,
+      "orthogonal": true,
+      "unrelated_box_crossings": 0,
+      "native_anchored_endpoints": 110
+    },
+    "04_M3_prompt_visual_alignment": {
+      "shapes": 18,
+      "connectors": 22,
+      "orthogonal": true,
+      "unrelated_box_crossings": 0,
+      "native_anchored_endpoints": 40
+    }
+  },
+  "visual_review": {
+    "all_four_renders_inspected": true,
+    "refinements": [
+      "Restored consistent object/relation tint in M1",
+      "Removed unnecessary aggregation elbows in M2",
+      "Preserved plus-circles and separate M3 output memories"
+    ],
+    "remaining_aesthetic_acceptance": "User review pending"
+  },
+  "raster_sizes": {
+    "01_full_pipeline": [
+      3680,
+      2320
+    ],
+    "02_M1_semantic_bank": [
+      2300,
+      1620
+    ],
+    "03_M2_bank_visual_alignment": [
+      3520,
+      2320
+    ],
+    "04_M3_prompt_visual_alignment": [
+      3280,
+      1640
+    ]
+  },
+  "output_folder": "C:\\Users\\leduc\\Downloads\\Bo_hinh_tuan15_dep_v1",
+  "zip_crc_pass": true,
+  "copied_sha256_pass": true,
+  "combined_drawio_pages": 4
+}
