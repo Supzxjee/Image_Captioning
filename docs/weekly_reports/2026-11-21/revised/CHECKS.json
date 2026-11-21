@@ -1,0 +1,59 @@
+{
+  "source": "C:\\Users\\leduc\\Downloads\\Bao_cao_nghien_cuu_tuan_15.docx",
+  "source_sha256": "92b9ef99d33c082ced1acf01e7732fcd0ad55e4dd3a9fec77137f8e6b89c0ba8",
+  "source_preserved": true,
+  "output": "C:\\Users\\leduc\\OneDrive\\Tài liệu\\ChatGPT\\Đề cương\\upt_alignment_publish\\docs\\weekly_reports\\2026-11-21\\revised\\Bao_cao_nghien_cuu_tuan_15_cap_nhat.docx",
+  "output_sha256": "d20eaf3239434146db01eb182e087fabd1847cf3100f7c1de6b91b50b7aece45",
+  "embedded_figures": [
+    {
+      "name": "01_full_pipeline.png",
+      "sha256": "a25f464df92651f04b8a618bb40d170907676844b8e5adbe5a96b596173b0ecb",
+      "width_inches": 6.94
+    },
+    {
+      "name": "02_M1_semantic_bank.png",
+      "sha256": "064494232fd09a7c6e2126ccc3d1f1c3a30085c7d46eae76f1cfea7e53d6a75c",
+      "width_inches": 5.75
+    },
+    {
+      "name": "03_M2_bank_visual_alignment.png",
+      "sha256": "c8df1861c8f10f6768d01ad0d664f934200d81a806984afc33a780f88cfb88ef",
+      "width_inches": 6.94
+    },
+    {
+      "name": "04_M3_prompt_visual_alignment.png",
+      "sha256": "5dfc80d729a29dae9a1dabe15a0bb51496f98a2411cff79195020218391f959c",
+      "width_inches": 6.94
+    }
+  ],
+  "paragraphs_updated": 5,
+  "table_values_and_bold_unchanged": true,
+  "page_size": "A4 portrait",
+  "models_executed": false,
+  "render_pending": false,
+  "pages": 6,
+  "renderer": "Canonical render_docx attempted: LibreOffice missing. Hidden Word COM exported a valid six-page A4 PDF; bundled PDFium rendered every page. COM Quit returned RPC-unavailable after export; PDF parsed and all page rasters verified.",
+  "visual_review": {
+    "all_pages_inspected": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "refinement": "Explicit Times New Roman applied to revised heading7 and paragraphs; final pages5/6 re-rendered and inspected",
+    "clipping_or_overlap_observed": false
+  },
+  "pdf_sha256": "c44314467331216ab9d387355ca692c139c0084851a31bbda70de6451b67ece2",
+  "page_png_sha256": {
+    "page-1.png": "897ab85b806c38aff3c2dcf220311c8d3b7b63733915488ef10f40b916a9e1a1",
+    "page-2.png": "44e2bba0d17596a0d75650225c0d70699eb9996d08aeb028a3cdf1d1b8b62914",
+    "page-3.png": "014d5a2c268dce1465e2551b56cfec09059be68f4030dadba6ddd365f968e69c",
+    "page-4.png": "3b38632d4e3fafc5cd8cebe691492f091a077bc0be9735bbed645446fb2a2df2",
+    "page-5.png": "f952071a5e7781ea87b01fb6ca39d2e7948fd1aebf193f0f6af66eb9c3b69b30",
+    "page-6.png": "5e3ed6f248d11e0c057b2ac2321027cc2a940d4a3a7656e2bb437bf62917bdb5"
+  },
+  "delivery": "C:\\Users\\leduc\\Downloads\\Bao_cao_nghien_cuu_tuan_15_cap_nhat.docx",
+  "delivery_sha256": "d20eaf3239434146db01eb182e087fabd1847cf3100f7c1de6b91b50b7aece45"
+}
