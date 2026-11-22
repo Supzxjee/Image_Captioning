@@ -1,0 +1,116 @@
+[
+  [
+    "Baseline cùng decoder",
+    "",
+    "TEST5000 — seed42",
+    ""
+  ],
+  [
+    "Thang đo",
+    "Baseline 3 lớp",
+    "Bank + prompt",
+    "Chênh lệch"
+  ],
+  [
+    "BLEU-1",
+    77.7461948459234,
+    77.62520295217418,
+    -0.1209918937492227
+  ],
+  [
+    "BLEU-4",
+    37.728154437394636,
+    37.741465333534805,
+    0.013310896140167339
+  ],
+  [
+    "METEOR",
+    28.44550219143266,
+    28.829007699143826,
+    0.3835055077111682
+  ],
+  [
+    "ROUGE-L",
+    57.925061638271124,
+    57.99110471922811,
+    0.06604308095699007
+  ],
+  [
+    "CIDEr",
+    119.96134429062518,
+    121.63754848645776,
+    1.6762041958325868
+  ],
+  [
+    "SPICE",
+    21.379177915560177,
+    21.852672583381093,
+    0.4734946678209173
+  ],
+  [
+    "CHAIRs (%)",
+    5.220000000000001,
+    3.9600000000000004,
+    -1.26
+  ],
+  [
+    "CHAIRi (%)",
+    3.6854363611453627,
+    2.8016946836135026,
+    -0.8837416775318598
+  ],
+  [
+    "Recall (%)",
+    42.969643083957834,
+    43.490410262923916,
+    0.5207671789660862
+  ],
+  [
+    "NLL",
+    2.2147221084744535,
+    2.182138573369197,
+    -0.032583535105256356
+  ],
+  [
+    "Tham số (triệu)",
+    29.553424,
+    53.183736,
+    23.630312
+  ],
+  [
+    "Nguồn",
+    "",
+    "TEST baseline: ducanh3/notebook7bc83c4c76/189; checkpointv188/best9. Full seed42: best9/b0c5bde0…; cả hai trước SCST/rerank.",
+    ""
+  ],
+  [
+    "Kiểm tra",
+    "",
+    "Đúng SHAcheckpoint/cohort/32sources/scorers;25.000beam và5.000captiontop1/CHAIR kiểm đạt; không chạy scorer/model local.",
+    ""
+  ],
+  [
+    "Phạm vi",
+    "",
+    "Một matched baseline seed, full thêm23,63triệu tham số. Đánh giá toàn bộ bank+prompt, chưa tách riêng embedding chữ; TEST đã từng dùng trong phát triển.",
+    ""
+  ],
+  [
+    "Rerank đã có",
+    "",
+    "Full + rerank cố định: CIDEr125,23; CHAIRs3,32%; là cấu hình hậu xử lý riêng, không dùng làm mức tăng riêng của căn chỉnh.",
+    ""
+  ],
+  [
+    "Thời gian",
+    "",
+    "Haiworker tối đa175,62s gồm decode+NLL; stageTEST536,31s. Chưa gồmsetup/CPUmetrics, không phải giờquota.",
+    ""
+  ],
+  [
+    "Kết quả",
+    "",
+    "https://github.com/Supzxjee/Image_Captioning/blob/main/experiments/matched_visual_baseline/TEST_RESULT.json",
+    ""
+  ]
+]
