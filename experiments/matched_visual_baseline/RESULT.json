@@ -1,0 +1,204 @@
+{
+  "status": "MATCHED_VISUAL_PARALLEL3_XE10_COMPLETE",
+  "epochs": 10,
+  "updates": 177110,
+  "caption_events": 5667470,
+  "train_images": 113287,
+  "validation_images": 5000,
+  "method": "matched_visual_parallel3_xe10_v1",
+  "best_epoch": 9,
+  "metrics_by_epoch": {
+    "9": {
+      "epoch": 9,
+      "CIDEr": 1.1914041593390312,
+      "BLEU_1": 0.7787396350810784,
+      "BLEU_4": 0.3789299934658376,
+      "ROUGE_L": 0.579001092504922,
+      "CHAIRs": 0.057,
+      "CHAIRi": 0.039934578165462725,
+      "Recall": 0.42635610246107486,
+      "counts": {
+        "images": 5000,
+        "hallucinated_captions": 285,
+        "hallucinated_mentions": 293,
+        "object_mentions": 7337,
+        "recalled_unique": 6791,
+        "reference_unique": 15928
+      },
+      "NLL": 2.1941761813491927,
+      "mean_words": 9.183,
+      "short_le2": 0
+    },
+    "10": {
+      "epoch": 10,
+      "CIDEr": 1.1657047845540567,
+      "BLEU_1": 0.7700981872174532,
+      "BLEU_4": 0.368121093670838,
+      "ROUGE_L": 0.5710632367340226,
+      "CHAIRs": 0.0574,
+      "CHAIRi": 0.04116756161365827,
+      "Recall": 0.4247865394274234,
+      "counts": {
+        "images": 5000,
+        "hallucinated_captions": 287,
+        "hallucinated_mentions": 299,
+        "object_mentions": 7263,
+        "recalled_unique": 6766,
+        "reference_unique": 15928
+      },
+      "NLL": 2.19557354177467,
+      "mean_words": 9.1624,
+      "short_le2": 0
+    }
+  },
+  "receipts": {
+    "best_receipt.json": {
+      "sha256": "1eade1fca3b872091b2f2a345a04d8141a887d3fcd1e5772e4952a495c5f4e6b",
+      "epoch": 9,
+      "CIDEr": 1.1914041593390312,
+      "test_used": false
+    },
+    "checkpoint_receipt.json": {
+      "sha256": "ab38aaf76c854fe84242925ddd262c1c7f2d034decf295ed4e76b03262aee2ce",
+      "updates": 177110,
+      "epoch": 11,
+      "phase": "train",
+      "training_log_sha256": "6ce108a9f27f9392f4f844d7cc990dc55f435df1f65c04416a567fd87a2a99f9"
+    }
+  },
+  "test_used": false,
+  "SCST": false,
+  "reranking": false,
+  "metrics_not_measured": [
+    "METEOR",
+    "SPICE",
+    "TEST metrics"
+  ],
+  "selection": "maxVALID CIDEr among fixed10epochs; earlier ties; all metrics use same saved checkpoint captions",
+  "limits": [
+    "One seed and reused VALID; TEST not evaluated.",
+    "Same three-layer parallel decoder and training recipe as the final model; M2/M3 removed.",
+    "Total parameter count differs; this tests the entire semantic addition, not prompt text alone.",
+    "Both decoder attention branches read the same projected visual tokens."
+  ],
+  "framework": "Accelerate1.15.0",
+  "precision": "FP32",
+  "feature_sharing": false,
+  "sampler": "image_grouped_42_plus_epoch",
+  "seed": 42,
+  "baseline_contract": {
+    "passed": true,
+    "seed": 42,
+    "layers": 3,
+    "dropout": 0.2,
+    "baseline_trainable_parameters": 29553424,
+    "full_model_trainable_parameters": 53183736,
+    "removed_trainable_parameters": 23630312,
+    "common_tensor_count": 77,
+    "common_initial_sha256": "1757c41e0361513689cb54a0a668c210d9383b3bbe9460e577f3538a16da8d0a",
+    "common_initialization_equal": true,
+    "decoder_implementation_equal": true,
+    "two_streams_equal_projected_visual": true,
+    "prompt_ignored": true,
+    "visual_conditioning_mean_logit_difference": 0.33042940497398376,
+    "dummy_banks_initialization_only": true,
+    "trained_checkpoint_loaded": false
+  },
+  "source": "ducanh3/notebook7bc83c4c76/188",
+  "archive_sha256": "069c8b7da07258d9cc807d0ce19be198c0f323da0cea4910deed1cc329cad7f0",
+  "checkpoint_binaries_in_review": false,
+  "audit": {
+    "archive_CRC_pass": true,
+    "archive_files": 134,
+    "embedded_source_files": 41,
+    "source_sha_verified": true,
+    "evaluation_payload_sha_verified": true,
+    "training_log_sha_verified": true,
+    "caption_rows_checked": 50000,
+    "CHAIR_captions_checked": 10000,
+    "CIDEr_per_image_means_verified": true,
+    "NLL_aggregates_verified": true,
+    "local_torch_or_model_executed": false,
+    "local_metric_scorers_executed": false
+  },
+  "timing": {
+    "worker_seconds": 19496.705539061,
+    "scope": "this worker invocation only; excludes setup, scoring and earlier resume segments",
+    "metadata_prepare_seconds": 14.018536323999996,
+    "billing_not_measured": true
+  },
+  "comparison": {
+    "split": "VALID5000",
+    "seed": 42,
+    "decoding": "beam top1; no rerank/SCST",
+    "baseline": {
+      "epoch": 9,
+      "CIDEr": 1.1914041593390312,
+      "BLEU_1": 0.7787396350810784,
+      "BLEU_4": 0.3789299934658376,
+      "ROUGE_L": 0.579001092504922,
+      "CHAIRs": 0.057,
+      "CHAIRi": 0.039934578165462725,
+      "Recall": 0.42635610246107486,
+      "counts": {
+        "images": 5000,
+        "hallucinated_captions": 285,
+        "hallucinated_mentions": 293,
+        "object_mentions": 7337,
+        "recalled_unique": 6791,
+        "reference_unique": 15928
+      },
+      "NLL": 2.1941761813491927,
+      "mean_words": 9.183,
+      "short_le2": 0
+    },
+    "full_model": {
+      "epoch": 9,
+      "CIDEr": 1.2029553459889546,
+      "BLEU_1": 0.779211751922854,
+      "BLEU_4": 0.379421025758623,
+      "ROUGE_L": 0.5782564553162609,
+      "CHAIRs": 0.04,
+      "CHAIRi": 0.027915291529152914,
+      "Recall": 0.4269839276745354,
+      "counts": {
+        "images": 5000,
+        "hallucinated_captions": 200,
+        "hallucinated_mentions": 203,
+        "object_mentions": 7272,
+        "recalled_unique": 6801,
+        "reference_unique": 15928
+      },
+      "NLL": 2.1642074617673046,
+      "mean_words": 9.2932,
+      "short_le2": 0
+    },
+    "full_minus_baseline_points": {
+      "CIDEr": 1.1551186649923384,
+      "BLEU_1": 0.04721168417756161,
+      "BLEU_4": 0.04910322927854094,
+      "ROUGE_L": -0.07446371886611347,
+      "CHAIRs": -1.7000000000000002,
+      "CHAIRi": -1.2019286636309812,
+      "Recall": 0.06278252134605533
+    },
+    "full_CHAIRs_relative_reduction": 0.2982456140350877,
+    "full_CHAIRi_relative_reduction": 0.3009744233809047,
+    "full_checkpoint_sha256": "b0c5bde0921a4c828ac094b264f502654224aa9365ee40cdce1c15c82fe9aeef",
+    "limits": [
+      "One matched baseline seed; full model has additional parameters.",
+      "Shared initialization verified against reconstructed full constructor, not a stored initial binary.",
+      "Historical full seed42 used local FP16 feature staging; new baseline reads the same raw H5 directly.",
+      "VALID used for checkpoint selection/development; no TEST conclusion or prompt-text-only causal claim.",
+      "Stored scorer outputs/counts audited; no scorers rerun, no significance test."
+    ]
+  },
+  "sheet_update": {
+    "spreadsheet_url": "https://docs.google.com/spreadsheets/d/1XZ5iuyCs5JP8VE6dT7AYdVTiY1_nK4C_QdXs5ppw6FA/edit",
+    "sheet": "Kết quả mới",
+    "range": "A273:D289",
+    "values_verified": true,
+    "format_metadata_verified": true,
+    "native_visual_inspection": false
+  }
+}

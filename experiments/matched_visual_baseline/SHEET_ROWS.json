@@ -1,0 +1,104 @@
+[
+  [
+    "Baseline cùng decoder",
+    "",
+    "VALID5000 — seed42",
+    ""
+  ],
+  [
+    "Thang đo",
+    "Baseline 3 lớp",
+    "Bank + prompt",
+    "Chênh lệch"
+  ],
+  [
+    "BLEU-1",
+    77.87396350810783,
+    77.9211751922854,
+    0.04721168417756161
+  ],
+  [
+    "BLEU-4",
+    37.892999346583764,
+    37.9421025758623,
+    0.04910322927854094
+  ],
+  [
+    "ROUGE-L",
+    57.90010925049221,
+    57.825645531626094,
+    -0.07446371886611347
+  ],
+  [
+    "CIDEr",
+    119.14041593390311,
+    120.29553459889546,
+    1.1551186649923384
+  ],
+  [
+    "CHAIRs (%)",
+    5.7,
+    4.0,
+    -1.7000000000000002
+  ],
+  [
+    "CHAIRi (%)",
+    3.9934578165462726,
+    2.7915291529152912,
+    -1.2019286636309812
+  ],
+  [
+    "Recall (%)",
+    42.63561024610748,
+    42.69839276745354,
+    0.06278252134605533
+  ],
+  [
+    "NLL",
+    2.1941761813491927,
+    2.1642074617673046,
+    -0.02996871958188807
+  ],
+  [
+    "Best epoch",
+    9,
+    9,
+    0
+  ],
+  [
+    "Tham số (triệu)",
+    29.553424,
+    53.183736,
+    23.630312
+  ],
+  [
+    "Nguồn",
+    "",
+    "Baseline: ducanh3/notebook7bc83c4c76/188; full seed42: best9/b0c5bde0…; cả hai CE10, top1 trước rerank.",
+    ""
+  ],
+  [
+    "Kiểm tra",
+    "",
+    "Khởi tạo chung/decoder/DDP PASS; kiểm SHA41 nguồn,50.000 caption VALID và số đếm CHAIR; không chạy lại mô hình/scorer.",
+    ""
+  ],
+  [
+    "Phạm vi",
+    "",
+    "Một baseline seed, VALID chọn checkpoint; full thêm tham số. Chưa chứng minh riêng prompt chữ; chưa TEST.",
+    ""
+  ],
+  [
+    "Thời gian",
+    "",
+    "Worker19.496,71s≈5h25m, gồm train+VALID; chưa gồm notebook setup/CPU quality và không phải giờ GPU tính quota.",
+    ""
+  ],
+  [
+    "Kết quả",
+    "",
+    "https://github.com/Supzxjee/Image_Captioning/blob/main/experiments/matched_visual_baseline/RESULT.json",
+    ""
+  ]
+]
