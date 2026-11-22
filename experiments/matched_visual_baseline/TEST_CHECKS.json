@@ -1,0 +1,28 @@
+{
+  "status": "STATIC_MOCK_PASS_GPU_API_PENDING",
+  "date": "2026-11-22",
+  "tests_passed": 6,
+  "source_version": "ducanh3/notebook7bc83c4c76/188",
+  "checkpoint_sha256": "1eade1fca3b872091b2f2a345a04d8141a887d3fcd1e5772e4952a495c5f4e6b",
+  "notebook_sha256": "335285b9448767c6aac3697c767573e8d9c3e83a6ea2ba79cb44953ce209c03f",
+  "embedded_sources": 32,
+  "downloads_copy": "C:\\Users\\leduc\\Downloads\\BASELINE_MATCHED_PARALLEL3_V188_TEST5000_API_2GPU.ipynb",
+  "copy_sha256_equal": true,
+  "checks": [
+    "All cells/sources compile, hash and local import closure",
+    "No missing notebook global variables",
+    "Exactly one effective API routing to ducanh3/notebook7bc83c4c76/188",
+    "Metadata accept best9/reject wrong epoch/source/seed/decoder/semantic state",
+    "Training model sources and scorer functions unchanged",
+    "All eight metrics required; saved5beam output and no training"
+  ],
+  "neural_model_executed": false,
+  "local_torch_imported": false,
+  "network_API_executed": false,
+  "metric_scorers_executed": false,
+  "pending": [
+    "Actual Kaggle API authorization and exact binary download",
+    "Strict state loading and CUDA beam check",
+    "Java/external scorer runtime and TEST metrics"
+  ]
+}
