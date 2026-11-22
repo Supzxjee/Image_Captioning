@@ -1,6 +1,7 @@
 __pycache__/
 experiments/matched_visual_baseline/review_cache/
 experiments/matched_visual_baseline/test_review_cache/
+experiments/prompt_text_ablation/review_cache/
 .ipynb_checkpoints/
 *.pth
 *.pt

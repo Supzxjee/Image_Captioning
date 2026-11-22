@@ -1,0 +1,33 @@
+{
+  "status": "STATIC_METADATA_MOCK_PASS_BINARY_CUDA_PENDING",
+  "tests_passed": 4,
+  "source_version": "ducanh3/notebook7bc83c4c76/192",
+  "checkpoint_sha256": "1d7008c25b58a00c2fdcd3d431c8aab4aac727205fff70d0b400b040420df0f8",
+  "best_sha256": "57d1c0b2f8b08ab0bc0dff0a55cef191c787f113ff357c6321074a14d3ad59a7",
+  "unchanged_training_sources": 41,
+  "sealed_transport_metadata": 48,
+  "resume_at_updates": 141433,
+  "remaining_updates": 35677,
+  "notebook_sha256": "c07763483c6304c742350884042ad1ae45e1b6c983c481b8456c45bf611f0526",
+  "downloads_copy": "C:\\Users\\leduc\\Downloads\\FULL_ZERO_PROMPT_TEXT_RESUME_V192_API_2GPU.ipynb",
+  "copy_SHA_verified": true,
+  "cap_hours": 6,
+  "cap_not_ETA_or_billing": true,
+  "source_receipt_preserved": true,
+  "checks": [
+    "Cells compile and no missing globals",
+    "Source payloads/origins/hash dictionary exactly unchanged from run1",
+    "Effective API command parses and mock routes source v192",
+    "File filter includes both weights and validation history and rejects foreign folders",
+    "Fixture weights+metadata accepted, changed weight/log/cursor/seed/mode rejected",
+    "CUDA guard precedes weight API download; resume_root always set before worker"
+  ],
+  "local_torch_imported": false,
+  "local_model_or_autograd": false,
+  "real_API_or_binary_restore": false,
+  "pending": [
+    "Actual source API access/download",
+    "Full checkpoint/optimizer/RNG strict restore on CUDA",
+    "Completion of10epochs and best/end quality metrics"
+  ]
+}

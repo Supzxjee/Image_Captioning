@@ -1,0 +1,128 @@
+{
+  "status": "PARTIAL_CE10_CHECKPOINT_SAVED_AT_CAP",
+  "source_version": "ducanh3/notebook7bc83c4c76/192",
+  "archive_sha256": "9f1c87469401a4da7f2b7fdd164a071aebb7de8ed131f757d0d5552f8ff0da27",
+  "method": "full_zero_prompt_text_xe10_v1",
+  "seed": 42,
+  "prompt_text_mode": "zero",
+  "completed_epochs": 7,
+  "cursor_epoch": 8,
+  "batch_cursor": 17456,
+  "updates": 141433,
+  "caption_events": 4525821,
+  "target_updates": 177110,
+  "remaining_updates": 35677,
+  "remaining_epoch8_updates": 255,
+  "best_epoch_so_far": 7,
+  "best_VALID_CIDEr": 1.1941677861254019,
+  "best_VALID_NLL": 2.174477403439694,
+  "latest_checkpoint_sha256": "1d7008c25b58a00c2fdcd3d431c8aab4aac727205fff70d0b400b040420df0f8",
+  "best_checkpoint_sha256": "57d1c0b2f8b08ab0bc0dff0a55cef191c787f113ff357c6321074a14d3ad59a7",
+  "training_log_sha256": "3f266774d39536b3438277cd80217ed9909c3cb9744ccfc2ca5cdd4b225cda1c",
+  "history": [
+    {
+      "epoch": 1,
+      "CIDEr": 0.9708692760063845,
+      "mean_words": 8.514,
+      "short_le2": 0,
+      "NLL": 2.6860909847023873,
+      "TRAIN_online_NLL": 3.440102218435137
+    },
+    {
+      "epoch": 2,
+      "CIDEr": 1.0797832566500913,
+      "mean_words": 8.8666,
+      "short_le2": 0,
+      "NLL": 2.430391087986439,
+      "TRAIN_online_NLL": 2.5655039966403432
+    },
+    {
+      "epoch": 3,
+      "CIDEr": 1.1225862286283372,
+      "mean_words": 8.9846,
+      "short_le2": 0,
+      "NLL": 2.3256457523829037,
+      "TRAIN_online_NLL": 2.38510079507677
+    },
+    {
+      "epoch": 4,
+      "CIDEr": 1.142332339908813,
+      "mean_words": 9.1336,
+      "short_le2": 0,
+      "NLL": 2.2689990032506717,
+      "TRAIN_online_NLL": 2.2821036720584087
+    },
+    {
+      "epoch": 5,
+      "CIDEr": 1.17559977920141,
+      "mean_words": 9.0486,
+      "short_le2": 0,
+      "NLL": 2.2245227392944584,
+      "TRAIN_online_NLL": 2.1991099420429867
+    },
+    {
+      "epoch": 6,
+      "CIDEr": 1.1799509776826174,
+      "mean_words": 9.1972,
+      "short_le2": 0,
+      "NLL": 2.1933497622144813,
+      "TRAIN_online_NLL": 2.123881799776572
+    },
+    {
+      "epoch": 7,
+      "CIDEr": 1.1941677861254019,
+      "mean_words": 9.1706,
+      "short_le2": 0,
+      "NLL": 2.174477403439694,
+      "TRAIN_online_NLL": 2.054388720638125
+    }
+  ],
+  "failure_reason": "Safety stop at worker deadline; checkpoint saved before parent cap. Not CUDA/model failure.",
+  "contracts": {
+    "passed": true,
+    "seed": 42,
+    "prompt_text_mode": "zero",
+    "trainable_parameters": 53183736,
+    "full_trainable_parameters": 53183736,
+    "same_state_keys_and_initial_tensors": true,
+    "initial_state_sha256": "41fe5bcdb800494a3459c9a432251b69126a05af33d5b8d1b3e6ef74584eab32",
+    "state_tensor_count": 182,
+    "M1_M2_banks_unchanged": true,
+    "ROI_geometry_masks_unchanged": true,
+    "input_prompt_dict_not_mutated": true,
+    "text_change_invariant": true,
+    "equals_full_receiving_zero_text": true,
+    "positive_control_mean_memory_change": 0.5538204908370972,
+    "output_projection_enabled_only_on_copies": true,
+    "original_state_unchanged": true,
+    "synthetic_inputs": true,
+    "trained_checkpoint_loaded": false,
+    "limit": "Synthetic mechanism test, not caption quality; full initial constructor reconstructed."
+  },
+  "audit": {
+    "CRC_pass": true,
+    "archive_files": 108,
+    "source_files": 41,
+    "payloads_and_source_and_trainlog_sha_verified": true,
+    "evaluation_hashes_and_CIDEr_NLL_means_verified": true,
+    "caption_rows_checked": 35000,
+    "training_log_rows": 1420,
+    "DDP_first32_and_tail27_pass": true,
+    "local_Torch_model_or_scorer_executed": false,
+    "checkpoint_binary_in_review": false
+  },
+  "limits": [
+    "Incomplete10epoch arm; do not compare best7 versus fullbest9 as a final ablation.",
+    "CHAIR and other best/end metrics not yet scored; no TEST.",
+    "Actual binary/optimizer/RNG restore pending user-run; receipt-only checkpoint verification.",
+    "Do not restart fresh, change the training schedule, or substitute the best7 snapshot for latestcursor."
+  ],
+  "sheet_update": {
+    "spreadsheet_url": "https://docs.google.com/spreadsheets/d/1XZ5iuyCs5JP8VE6dT7AYdVTiY1_nK4C_QdXs5ppw6FA/edit",
+    "sheet": "Kết quả mới",
+    "range": "A311:D321",
+    "values_verified": true,
+    "format_metadata_checked": true,
+    "native_visual_inspection": false
+  }
+}
