@@ -1,0 +1,41 @@
+{
+  "date": "2026-11-22",
+  "status": "STATIC_MOCK_PASS_CUDA_PENDING",
+  "tests_run": 6,
+  "tests_failed": 0,
+  "reported_GPU_hours": 25,
+  "invocation_cap_hours": 11.5,
+  "cap_is_not_ETA_or_billing": true,
+  "notebook_sha256": "d55af03a8d04c9973deafc85543c0e9fb17d0b0022383f333d5cc799d4e1d053",
+  "embedded_files": 41,
+  "python_sources_compiled": 32,
+  "expected_trainable_parameters": 53183736,
+  "parameter_count_actual_runtime": "pending Kaggle guard",
+  "checks": [
+    "All cells/source compile/hash and no missing global names",
+    "Repository-local import closure",
+    "Full constructor/encoder/adapters/data/beam/scorer code unchanged by hash",
+    "Mock intervention zeroes only two M3text fields, preserves shape and ROI/geometry/mask identity, does not mutate inputs",
+    "Same seed/CE10/FP32/global32 schedule and VALID selection; method-specific resume isolation",
+    "Kaggle guard uses nonzero output projections on copies and a positive control; original state is sealed"
+  ],
+  "downloads_copy": "C:\\Users\\leduc\\Downloads\\FULL_ZERO_PROMPT_TEXT_SEED42_XE10_2GPU.ipynb",
+  "copy_SHA_verified": true,
+  "local_torch_imported": false,
+  "local_model_or_autograd": false,
+  "local_scorers": false,
+  "kaggle_notebook_executed": false,
+  "pending": [
+    "Actual CUDA full-model initialization/parameter/text invariance guards",
+    "DDP first32/tail27 and discarded64benchmarksteps",
+    "Full CE10 training and VALID quality"
+  ],
+  "scopes_not_started": [
+    "M2-only arm",
+    "TEST evaluation",
+    "Additional seeds",
+    "SCST",
+    "Formal Word report edits",
+    "New results Sheet rows"
+  ]
+}
