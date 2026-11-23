@@ -1,0 +1,122 @@
+[
+  [
+    "Ablation chữ prompt M3 — TEST5000",
+    "",
+    "Seed 42 · trước SCST/rerank",
+    ""
+  ],
+  [
+    "Nguồn",
+    "TEST v198",
+    "Checkpoint ducanh3/notebook7bc83c4c76/193 · best epoch 8 · SHA 0aa81a0c…",
+    ""
+  ],
+  [
+    "Thang đo",
+    "Zero-text",
+    "Prompt đúng ảnh",
+    "Full − zero"
+  ],
+  [
+    "BLEU-1",
+    77.49437417075875,
+    77.62520295217418,
+    0.1308287814154374
+  ],
+  [
+    "BLEU-4",
+    37.68243774855171,
+    37.741465333534805,
+    0.05902758498309013
+  ],
+  [
+    "METEOR",
+    28.69649788157797,
+    28.829007699143826,
+    0.13250981756585678
+  ],
+  [
+    "ROUGE-L",
+    57.7440782745832,
+    57.99110471922811,
+    0.24702644464491552
+  ],
+  [
+    "CIDEr",
+    121.17932243603371,
+    121.63754848645776,
+    0.45822605042404874
+  ],
+  [
+    "SPICE",
+    21.689379856695204,
+    21.852672583381093,
+    0.16329272668589023
+  ],
+  [
+    "CHAIRs (%)",
+    4.52,
+    3.9600000000000004,
+    -0.5599999999999994
+  ],
+  [
+    "CHAIRi (%)",
+    3.153276665752673,
+    2.8016946836135026,
+    -0.35158198213917047
+  ],
+  [
+    "Recall (%)",
+    43.3379906007875,
+    43.490410262923916,
+    0.152419662136416
+  ],
+  [
+    "NLL",
+    2.1812919281962735,
+    2.182138573369197,
+    0.0008466451729236546
+  ],
+  [
+    "Caption có đối tượng ảo",
+    226,
+    198,
+    -28
+  ],
+  [
+    "Tham số được học",
+    53183736,
+    53183736,
+    0
+  ],
+  [
+    "Đối chứng",
+    "Chỉ bỏ chữ M3",
+    "Giữ bank/M2/adapter/ROI/mask/hình học. Zero chữ trong train và TEST; cùng seed42/lịch CE10/chọn best bằng VALID CIDEr.",
+    ""
+  ],
+  [
+    "Kiểm tra",
+    "PASS",
+    "5000 caption/25000 beam/8 metrics, 31 source SHA, hai GPU zero-text guard và đếm CHAIR khớp.",
+    ""
+  ],
+  [
+    "Diễn giải",
+    "TEST",
+    "Prompt tăng 0,46 CIDEr; CHAIRs giảm 0,56 điểm phần trăm (12,39% tương đối). VALID cùng chiều về giảm ảo giác.",
+    ""
+  ],
+  [
+    "Giới hạn",
+    "Một seed",
+    "Chưa kiểm định ý nghĩa thống kê; TEST đã dùng khi phát triển, best8/9 và I/O lịch sử khác nhau. Cùng số tham số khai báo, dung lượng hoạt động có thể khác. CHAIR chỉ kiểm tra đối tượng.",
+    ""
+  ],
+  [
+    "Kết quả",
+    "",
+    "https://github.com/Supzxjee/Image_Captioning/blob/main/experiments/prompt_text_ablation/TEST_RESULT.json",
+    ""
+  ]
+]
