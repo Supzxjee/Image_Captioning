@@ -1,0 +1,36 @@
+{
+  "status": "HOST_STATIC_MOCK_PASS",
+  "date": "2026-11-23",
+  "tests_passed": 6,
+  "test_names": [
+    "test_compile_hashes_globals_and_dependency_closure",
+    "test_same_core_data_optimizer_selection_and_score",
+    "test_configuration_scope_resume_and_runtime_guards",
+    "test_mock_constructor_removes_only_M3_and_routes_both_M2_streams",
+    "test_factory_accepts_only_M2_only_seed42",
+    "test_bank_stage_only_two_files_and_sealed_manifest"
+  ],
+  "source_files": 42,
+  "notebook_sha256": "1595bdc9fba5a23ee992b77b6d7c25634f5316a628c577fdfe4589c0bed2dc85",
+  "checks": [
+    "Notebook cells and all Python payloads compile; source SHA and local import closure verified.",
+    "No missing notebook globals; no notebook code cells executed.",
+    "Original core/data/beam/scorer bytes and distributed training/validation/checkpoint loop AST unchanged.",
+    "Mock constructor removes only M3, retains M2 and both streams, ignores all image-specific inputs.",
+    "Mock factory rejects wrong method/seed/semantic/sharing configuration.",
+    "Mock bank staging seals exactly two banks, updates manifest, rejects prompt input/repeated stage/deadline.",
+    "Kaggle guard hooks cover retained initialization, parameter counts, bank sensitivity, DDP/causal/beam."
+  ],
+  "quota_user_reported_hours": 30,
+  "wall_cap_hours": 11.5,
+  "expected_parameters": 49239288,
+  "actual_parameter_count_verified": false,
+  "local_torch_imported": false,
+  "local_model_or_scorer_executed": false,
+  "kaggle_executed": false,
+  "pending": [
+    "Actual CUDA/runtime/parameter counts/bank bytes/initialization/parity/beam guards.",
+    "Training duration, completion and VALID caption quality; TEST is out of scope."
+  ],
+  "downloads_copy_sha256": "1595bdc9fba5a23ee992b77b6d7c25634f5316a628c577fdfe4589c0bed2dc85"
+}
