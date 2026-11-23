@@ -1,0 +1,30 @@
+{
+  "date": "2026-11-23",
+  "status": "STATIC_MOCK_PASS_API_CUDA_PENDING",
+  "tests_passed": 6,
+  "source_version": "ducanh3/notebook7bc83c4c76/193",
+  "checkpoint_sha256": "0aa81a0c0168c64987b77e0c86203fa5c4f7ccb858de806ed8842130ce37e1e0",
+  "epoch": 8,
+  "seed": 42,
+  "prompt_text_mode": "zero",
+  "notebook_sha256": "8b4747c8cb12840a1afe4dabb0830c04215170506c91c286aa2a180ec59441cd",
+  "embedded_files": 31,
+  "downloads_copy": "C:\\Users\\leduc\\Downloads\\FULL_ZERO_PROMPT_TEXT_V193_TEST5000_API_2GPU.ipynb",
+  "copy_SHA_verified": true,
+  "checks": [
+    "All cells/source compile, hashes and no missing notebook globals",
+    "Inference import closure; train-only guard in byte-identical model source is not a TEST entrypoint",
+    "One effective API route to source193",
+    "Accept exact best8 metadata, reject other mode/epoch/source/seed/SHA",
+    "Training zero-model/core code unchanged; mandatory zero factory and per-GPU NaN-text invariance hook",
+    "Score/tokenize/input functions unchanged, all eight metrics required, no training calls"
+  ],
+  "local_Torch_model_or_autograd": false,
+  "real_API_or_checkpoint_download": false,
+  "metric_scorers_executed": false,
+  "pending": [
+    "Actual source API authorization and binary strict load",
+    "Actual CUDA zero-text/beam guards",
+    "External Java/NLP scorers and TEST quality"
+  ]
+}
