@@ -1,0 +1,31 @@
+{
+  "status": "HOST_STATIC_MOCK_PASS",
+  "date": "2026-11-24",
+  "tests_passed": 6,
+  "tests": [
+    "test_compile_hashes_closure_and_missing_globals",
+    "test_exact_effective_api_route_no_stale_overwrite",
+    "test_locks_and_exact_file_selection_reject_changed_inputs",
+    "test_checkpoint_metadata_acceptance_and_rejections",
+    "test_training_model_and_scorers_unchanged_no_training",
+    "test_all_eight_metrics_required_and_no_inference_for_combine"
+  ],
+  "source_files": 33,
+  "source_version": "ducanh2403/2-vi-cai-kia-qua-nhieu/245",
+  "checkpoint_sha256": "3fe31a921742e841c0d3863aac9ab9f00b0cd6b46289f3cf36029ac1fa168226",
+  "notebook_sha256": "40b4cac84b14adb6565f1d8b177a163f6eb5b8118e0aee47f6124480a94cd1a3",
+  "downloads_sha256": "40b4cac84b14adb6565f1d8b177a163f6eb5b8118e0aee47f6124480a94cd1a3",
+  "training_model_sources_unchanged": true,
+  "inference_import_closure_verified": true,
+  "import_scope_note": "Ignore only unused train-only contract_guard in byte-identical bank_only_model; actual TEST guard is included.",
+  "scorer_tokenize_inputs_AST_unchanged": true,
+  "all_eight_metrics_required": true,
+  "bank_only_factory_and_real_GPU_guard_hooks_verified": true,
+  "local_torch_or_model_or_scorer_executed": false,
+  "actual_API_or_binary_or_GPU_executed": false,
+  "pending": [
+    "User-run exact v245 API/binary SHA and strict state loading.",
+    "Real CUDA bank-only guard/beam check and TEST inference.",
+    "Java/evaluator assets and all metric results."
+  ]
+}
