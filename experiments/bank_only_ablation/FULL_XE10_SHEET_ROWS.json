@@ -1,0 +1,156 @@
+[
+  [
+    "M2-only CE10 hoàn tất · VALID5000",
+    "",
+    "v245 · seed42 · trướcSCST/rerank",
+    "",
+    ""
+  ],
+  [
+    "Nguồn",
+    "v245 ← v243",
+    "ducanh2403/2-vi-cai-kia-qua-nhieu/245 · best9 · 177110updates/5667470events",
+    "",
+    ""
+  ],
+  [
+    "Thang đo",
+    "Baseline 3 lớp",
+    "M2-only",
+    "M3 zero-text",
+    "Prompt đúng ảnh"
+  ],
+  [
+    "Best epoch",
+    9,
+    9,
+    8,
+    9
+  ],
+  [
+    "Tham số (triệu)",
+    29.553424,
+    49.239288,
+    53.183736,
+    53.183736
+  ],
+  [
+    "BLEU-1",
+    77.87396350810783,
+    77.76082151362489,
+    77.79490318528988,
+    77.9211751922854
+  ],
+  [
+    "BLEU-4",
+    37.892999346583764,
+    37.49216526870484,
+    37.87949491801356,
+    37.9421025758623
+  ],
+  [
+    "ROUGE-L",
+    57.90010925049221,
+    57.83907709188555,
+    57.71507894068157,
+    57.825645531626094
+  ],
+  [
+    "CIDEr",
+    119.14041593390311,
+    119.92600798055864,
+    120.30444398829316,
+    120.29553459889546
+  ],
+  [
+    "CHAIRs (%)",
+    5.7,
+    5.24,
+    4.96,
+    4.0
+  ],
+  [
+    "CHAIRi (%)",
+    3.9934578165462726,
+    3.745369735217451,
+    3.495733553537022,
+    2.7915291529152912
+  ],
+  [
+    "Recall (%)",
+    42.63561024610748,
+    42.33425414364641,
+    42.472375690607734,
+    42.69839276745354
+  ],
+  [
+    "NLL",
+    2.1941761813491927,
+    2.1741558626682105,
+    2.163914047877315,
+    2.1642074617673046
+  ],
+  [
+    "Caption có đối tượng ảo",
+    285,
+    262,
+    248,
+    200
+  ],
+  [
+    "Checkpoint",
+    "Best epoch9",
+    "SHA3fe31a92… · final10d26af3af…; không đổi sangepoch10 dù CHAIR thấp hơn.",
+    "",
+    ""
+  ],
+  [
+    "M2 so baseline",
+    "VALID",
+    "CIDEr+0,7856; CHAIRs−0,46pp; CHAIRi−0,2481pp. BLEU4−0,4008 và Recall−0,3014pp.",
+    "",
+    ""
+  ],
+  [
+    "Chữ prompt M3",
+    "VALID",
+    "Zero→full: CIDEr−0,0089 (120,304444→120,295535); CHAIRs4,96→4,00%. Không khẳng định tăngCIDEr hoặc tương đương thống kê.",
+    "",
+    ""
+  ],
+  [
+    "Chưa đo",
+    "METEOR/SPICE/TEST",
+    "M2-only mới có VALID; baseline/zero/full có kết quả TEST riêng, không trộn vào bảng này.",
+    "",
+    ""
+  ],
+  [
+    "Kiểm tra",
+    "PASS",
+    "138files/42sourceSHA/50kcaptionVALID/10kCHAIR; identity+8history+1480logprefix v243 giữ nguyên. Resume worker7654,85s chỉ phần tiếp tục.",
+    "",
+    ""
+  ],
+  [
+    "Giới hạn",
+    "Một seed",
+    "Khác dung lượng baseline/M2/full; reusedVALID và I/O lịch sử khác nhau, chưa significance. CHAIR chỉ đo đối tượng.",
+    "",
+    ""
+  ],
+  [
+    "Tiếp theo",
+    "Đề xuất",
+    "Chấm TEST5000 đúngbest9v245, cùngbeam/scorer; chưa tự chuẩn bị/chạy TEST hoặc train thêm.",
+    "",
+    ""
+  ],
+  [
+    "Kết quả",
+    "",
+    "https://github.com/Supzxjee/Image_Captioning/blob/main/experiments/bank_only_ablation/FULL_XE10_RESULT.json",
+    "",
+    ""
+  ]
+]
