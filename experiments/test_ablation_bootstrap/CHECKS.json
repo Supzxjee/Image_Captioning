@@ -1,0 +1,21 @@
+{
+  "status": "PASS",
+  "synthetic_tests": 4,
+  "source_file_hashes_verified": true,
+  "paired_images": 5000,
+  "identical_references": true,
+  "point_estimates_and_CHAIR_counts_match_audits": true,
+  "result_and_protocol_hashes_verified": true,
+  "paired_transition_totals_verified": true,
+  "static_imports_no_model_or_scorer": true,
+  "model_inference": false,
+  "metric_scorers_run": false,
+  "training_seed_uncertainty_estimated": false,
+  "sheet_update": {
+    "range": "'Kết quả mới'!A424:E440",
+    "verified_cells": 85,
+    "readback_pass": true,
+    "native_visual_inspected": true,
+    "scope": "Both comparison tables, method/limits/conclusion rows; Arial10/wrap/three-decimal differences verified. Existing widths/freeze and earlier blocks preserved."
+  }
+}

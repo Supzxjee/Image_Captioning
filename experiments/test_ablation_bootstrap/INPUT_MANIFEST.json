@@ -1,0 +1,91 @@
+{
+  "images": 5000,
+  "columns": "CIDEr raw score; integer CHAIR numerator/denominator; CHAIRs is numerator>0",
+  "input_sha256": "8ab9bec9e0256f596e5140e51d784872be61de772dffc9152b90bf3363d698d4",
+  "sources": {
+    "full": {
+      "archive_sha256": "c3e29d01b7942e24302084120290c14a0bdbcfc9b20aff7046dfba6056a93885",
+      "checkpoint_sha256": "b0c5bde0921a4c828ac094b264f502654224aa9365ee40cdce1c15c82fe9aeef",
+      "checkpoint_source": "csa_structure_per_caption_full_xe10_resume124177",
+      "test_output_source": "historical full TEST archive; Save Version not restated",
+      "aggregate_path": "experiments/clip_patch_baseline/CSA_PER_CAPTION_BEST9_TEST5000_RESULT.json",
+      "aggregate_sha256": "cac64bb43ba9222721f1f797c975ff16441cfb991ce493fd95193d59de725722",
+      "metrics": {
+        "CIDEr": 1.2163754848645776,
+        "CHAIRs": 0.0396,
+        "CHAIRi": 0.028016946836135027
+      },
+      "counts": {
+        "images": 5000,
+        "hallucinated_captions": 198,
+        "hallucinated_mentions": 205,
+        "object_mentions": 7317
+      },
+      "files_sha256": {
+        "captions.json": "e5b58444e1fcff86a25344253138833d17e58a3560e9b2e6c622677645eb34bb",
+        "cider_per_image.json": "7aadf4ebfadcd60076dcb00935ad8f3545107c5459dc49d757c6c0a2c7f423da",
+        "chair_output.json": "2cc53fc91c625e47531470ca4ec51ef2c25820ef634c795816a12e85475d7c21",
+        "test_references.json": "311ff29fc3dab1dde650a01b141c2498fbc44a4d7f96f63059dfffe0bdd6e776",
+        "test_lock.json": "9ad7fd931a1afa1b2a4719aad9a995c4ddc49c930c5c79ef650a46bdb012050b",
+        "scoring_lock.json": "d2491f87824f76db1a7b84450f0340b8ec01890ff1e74564031c94b602ea524c"
+      }
+    },
+    "zero": {
+      "archive_sha256": "71458942487a5338888c64b9162ab2bcc11f2f9c41e07189969a46703f88fe49",
+      "checkpoint_sha256": "0aa81a0c0168c64987b77e0c86203fa5c4f7ccb858de806ed8842130ce37e1e0",
+      "checkpoint_source": "ducanh3/notebook7bc83c4c76/193",
+      "test_output_source": "ducanh3/notebook7bc83c4c76/198",
+      "aggregate_path": "experiments/prompt_text_ablation/TEST_RESULT.json",
+      "aggregate_sha256": "8298e82f888827ff3b5d9a7b5a4093d707afc215a49392df9f395eea7c2335dd",
+      "metrics": {
+        "CIDEr": 1.211793224360337,
+        "CHAIRs": 0.0452,
+        "CHAIRi": 0.03153276665752673
+      },
+      "counts": {
+        "images": 5000,
+        "hallucinated_captions": 226,
+        "hallucinated_mentions": 230,
+        "object_mentions": 7294
+      },
+      "files_sha256": {
+        "captions.json": "a5e161313a5738305dae27a63fbba8168ed91f1879fca02a4a65c4d49ea3265d",
+        "cider_per_image.json": "9d7a4c062ef41e58e0a8169774ee84fe02d82ab209af2a310a39582dec5ab727",
+        "chair_output.json": "2bdeb2176e5c87b6e9cc01453b72c3c3b212a48a189ec793ad29f756b22c36d0",
+        "test_references.json": "311ff29fc3dab1dde650a01b141c2498fbc44a4d7f96f63059dfffe0bdd6e776",
+        "test_lock.json": "ec42dd7b921b20322eaeaa453d93892e8df6f36c7f632462fdc8b38aba6ae36a",
+        "scoring_lock.json": "d39c68ca564442a389b37d215872c8ea6a60e94f45318ef8a0263c8f15bd48d3"
+      }
+    },
+    "m2": {
+      "archive_sha256": "8ba5abcbda684ddab4387c6e75576919a7a318e8e6be61291e4bb94c57d1816c",
+      "checkpoint_sha256": "3fe31a921742e841c0d3863aac9ab9f00b0cd6b46289f3cf36029ac1fa168226",
+      "checkpoint_source": "ducanh2403/2-vi-cai-kia-qua-nhieu/245",
+      "test_output_source": "ducanh2403/2-vi-cai-kia-qua-nhieu/248",
+      "aggregate_path": "experiments/bank_only_ablation/TEST_RESULT.json",
+      "aggregate_sha256": "a5f58e72991fabe7a888285e76fdc1ddadb53277182f403c37e8ebb4dcc294d1",
+      "metrics": {
+        "CIDEr": 1.2140521851223063,
+        "CHAIRs": 0.047,
+        "CHAIRi": 0.032947583390061264
+      },
+      "counts": {
+        "images": 5000,
+        "hallucinated_captions": 235,
+        "hallucinated_mentions": 242,
+        "object_mentions": 7345
+      },
+      "files_sha256": {
+        "captions.json": "1839c8f72e5cef670c2feaa9521515be3be201e5a8ef4379b4a4bf98e27a3919",
+        "cider_per_image.json": "52d6eda7c254bd82d07385e89217492a684fd456a50b42bae5f62e7d6b5ffa7f",
+        "chair_output.json": "f5c2d1b17daad1af8a99d92c02c39bcd53afc28317daeb278a80cff8e67dbaaa",
+        "test_references.json": "311ff29fc3dab1dde650a01b141c2498fbc44a4d7f96f63059dfffe0bdd6e776",
+        "test_lock.json": "265321d0999bf264d5de4a79be3e20d0498f1dd39dee7a86a130edf7f1c1e921",
+        "scoring_lock.json": "b22c0687e9ffaa3dd1b55c0ae9b64b73235b8f5df319e5121e692c07b393351c"
+      }
+    }
+  },
+  "training": false,
+  "model_inference": false,
+  "metric_scorers_run": false
+}

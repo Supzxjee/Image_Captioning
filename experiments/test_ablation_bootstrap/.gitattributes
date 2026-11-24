@@ -1,0 +1,5 @@
+# SHA-sealed inputs must retain their exact bytes on Windows and Linux.
+PAIRED_INPUT.csv -text
+*.py text eol=lf
+*.md text eol=lf
+*.json text eol=lf

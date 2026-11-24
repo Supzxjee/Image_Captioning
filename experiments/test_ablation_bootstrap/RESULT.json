@@ -1,0 +1,125 @@
+{
+  "status": "PAIRED_TEST_ABLATION_BOOTSTRAP_COMPLETE",
+  "date": "2026-11-24",
+  "images": 5000,
+  "replicates": 100000,
+  "seed": 20261124,
+  "rng": "PCG64",
+  "interval": "percentile, linear quantile",
+  "family_endpoints": 6,
+  "adjusted_confidence_percent": 99.16666666666667,
+  "differences": "full minus comparator",
+  "input_sha256": "8ab9bec9e0256f596e5140e51d784872be61de772dffc9152b90bf3363d698d4",
+  "protocol_sha256": "b2be5002407aaa3a659acddcfb79e8644b673981ccd984d757375485663998d0",
+  "code_sha256": "1c5d290f01376edd289edef9a16cbbf5c786fafd49fd3ab884cff5c906d7fea7",
+  "python": "3.13.14",
+  "numpy": "2.5.2",
+  "comparisons": {
+    "full_minus_zero": {
+      "metrics": {
+        "CIDEr_x100": {
+          "full": 121.63754848645763,
+          "comparator": 121.17932243603366,
+          "difference": 0.45822605042397413,
+          "ci95_pointwise": [
+            -1.0052015406346604,
+            1.9381569475300626
+          ],
+          "ci_bonferroni_six": [
+            -1.5271975187899356,
+            2.45305601393043
+          ]
+        },
+        "CHAIRs_pp": {
+          "full": 3.9600000000000004,
+          "comparator": 4.52,
+          "difference": -0.5599999999999992,
+          "ci95_pointwise": [
+            -1.12,
+            0.0
+          ],
+          "ci_bonferroni_six": [
+            -1.3199999999999994,
+            0.17999999999999972
+          ]
+        },
+        "CHAIRi_pp": {
+          "full": 2.8016946836135026,
+          "comparator": 3.153276665752673,
+          "difference": -0.35158198213917036,
+          "ci95_pointwise": [
+            -0.7427495583155993,
+            0.03573962204192164
+          ],
+          "ci_bonferroni_six": [
+            -0.8790468591531828,
+            0.16595623681365937
+          ]
+        }
+      },
+      "paired_CHAIRs_flags": {
+        "both_clear": 4687,
+        "both_flagged": 111,
+        "comparator_flagged_full_clear": 115,
+        "comparator_clear_full_flagged": 87
+      }
+    },
+    "full_minus_m2": {
+      "metrics": {
+        "CIDEr_x100": {
+          "full": 121.63754848645763,
+          "comparator": 121.40521851223063,
+          "difference": 0.23232997422699952,
+          "ci95_pointwise": [
+            -1.1915212946387672,
+            1.6726374089188154
+          ],
+          "ci_bonferroni_six": [
+            -1.6893822344580351,
+            2.165089883492691
+          ]
+        },
+        "CHAIRs_pp": {
+          "full": 3.9600000000000004,
+          "comparator": 4.7,
+          "difference": -0.7399999999999998,
+          "ci95_pointwise": [
+            -1.3399999999999994,
+            -0.15999999999999925
+          ],
+          "ci_bonferroni_six": [
+            -1.5399999999999996,
+            0.05999999999999961
+          ]
+        },
+        "CHAIRi_pp": {
+          "full": 2.8016946836135026,
+          "comparator": 3.294758339006126,
+          "difference": -0.49306365539262353,
+          "ci95_pointwise": [
+            -0.917848034331225,
+            -0.06992687143684338
+          ],
+          "ci_bonferroni_six": [
+            -1.059851796251266,
+            0.07551002690228574
+          ]
+        }
+      },
+      "paired_CHAIRs_flags": {
+        "both_clear": 4670,
+        "both_flagged": 103,
+        "comparator_flagged_full_clear": 132,
+        "comparator_clear_full_flagged": 95
+      }
+    }
+  },
+  "cpu_statistics_seconds": 61.22490690002451,
+  "model_inference": false,
+  "metric_scorers_run": false,
+  "limits": [
+    "Fixed checkpoint/captions/scorers/reference IDF; image resampling only, not training-seed variance.",
+    "Retrospective analysis; prior TEST development exposure. Bonferroni coverage relies on bootstrap approximation.",
+    "CHAIR measures object mentions, not action/relation/attribute correctness. No p-values or equivalence test."
+  ]
+}

@@ -1,0 +1,121 @@
+[
+  [
+    "Paired bootstrap TEST",
+    "",
+    "5.000 ảnh · 100.000 mẫu CPU",
+    "",
+    ""
+  ],
+  [
+    "Full − zero-text",
+    "",
+    "Giữ adapter/ROI/hình học; kiểm tra phần chữ prompt",
+    "",
+    ""
+  ],
+  [
+    "Chỉ số",
+    "Chênh lệch",
+    "Khoảng 95%",
+    "Khoảng 99,17% (6 endpoint)",
+    "Diễn giải"
+  ],
+  [
+    "CIDEr",
+    0.45822605042397413,
+    "[-1,005; +1,938]",
+    "[-1,527; +2,453]",
+    "Khoảng 95% chứa 0"
+  ],
+  [
+    "CHAIRs (đpt)",
+    -0.5599999999999992,
+    "[-1,120; +0,000]",
+    "[-1,320; +0,180]",
+    "Khoảng 95% chứa 0"
+  ],
+  [
+    "CHAIRi (đpt)",
+    -0.35158198213917036,
+    "[-0,743; +0,036]",
+    "[-0,879; +0,166]",
+    "Khoảng 95% chứa 0"
+  ],
+  [
+    "Full − M2-only",
+    "",
+    "Kiểm tra toàn bộ M3; khác tổng tham số",
+    "",
+    ""
+  ],
+  [
+    "Chỉ số",
+    "Chênh lệch",
+    "Khoảng 95%",
+    "Khoảng 99,17% (6 endpoint)",
+    "Diễn giải"
+  ],
+  [
+    "CIDEr",
+    0.23232997422699952,
+    "[-1,192; +1,673]",
+    "[-1,689; +2,165]",
+    "Khoảng 95% chứa 0"
+  ],
+  [
+    "CHAIRs (đpt)",
+    -0.7399999999999998,
+    "[-1,340; -0,160]",
+    "[-1,540; +0,060]",
+    "95% loại 0; điều chỉnh vẫn chứa 0"
+  ],
+  [
+    "CHAIRi (đpt)",
+    -0.49306365539262353,
+    "[-0,918; -0,070]",
+    "[-1,060; +0,076]",
+    "95% loại 0; điều chỉnh vẫn chứa 0"
+  ],
+  [
+    "Phương pháp",
+    "PCG64 · seed 20261124",
+    "Cùng ảnh lấy mẫu cho 3 nhánh; CHAIRi = tổng ảo / tổng nhắc; CIDEr giữ reference IDF. Không p-value.",
+    "",
+    ""
+  ],
+  [
+    "Điều chỉnh",
+    "Bonferroni · 6 endpoint",
+    "Tất cả khoảng 99,17% chứa 0. Không khẳng định tăng CIDEr/giảm ảo giác chắc chắn từ riêng chữ prompt.",
+    "",
+    ""
+  ],
+  [
+    "Giới hạn",
+    "Một seed đối chứng",
+    "Hồi cứu; TEST đã dùng trong phát triển. Chỉ biến động theo ảnh, không thay thế seed huấn luyện. CHAIR chỉ đo đối tượng.",
+    "",
+    ""
+  ],
+  [
+    "Thay đổi theo ảnh",
+    "115/87 và 132/95",
+    "Full/zero: 115 hết cờ, 87 mới bị cờ. Full/M2: 132/95. Là cờ CHAIR, chưa được người chấm xác nhận.",
+    "",
+    ""
+  ],
+  [
+    "Kết luận",
+    "Xu hướng thuận lợi",
+    "Toàn bộ M3 có tín hiệu giảm CHAIR mạnh hơn phần chữ riêng lẻ; ưu tiên lặp zero-text qua seed trước khi kết luận mạnh.",
+    "",
+    ""
+  ],
+  [
+    "Kết quả",
+    "",
+    "https://github.com/Supzxjee/Image_Captioning/blob/main/experiments/test_ablation_bootstrap/RESULT.md",
+    "",
+    ""
+  ]
+]
