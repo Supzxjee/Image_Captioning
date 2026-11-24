@@ -17,5 +17,6 @@
     "readback_pass": true,
     "native_visual_inspected": true,
     "scope": "Both comparison tables, method/limits/conclusion rows; Arial10/wrap/three-decimal differences verified. Existing widths/freeze and earlier blocks preserved."
-  }
+  },
+  "git_index_bytes_match_input_protocol_code_sha256": true
 }
