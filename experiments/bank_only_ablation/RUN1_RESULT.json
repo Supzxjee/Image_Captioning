@@ -1,0 +1,135 @@
+{
+  "status": "PARTIAL_CE10_CHECKPOINT_SAVED_AT_CAP",
+  "source_version": "ducanh2403/2-vi-cai-kia-qua-nhieu/243",
+  "archive_sha256": "9d5866ec0ca03e41df2df406103e4528b4de1f86ae4472c27e429c9307ddd98f",
+  "method": "bank_only_parallel3_xe10_v1",
+  "seed": 42,
+  "image_specific_prompts": false,
+  "completed_epochs": 8,
+  "cursor_epoch": 9,
+  "batch_cursor": 5616,
+  "updates": 147304,
+  "caption_events": 4713688,
+  "target_updates": 177110,
+  "remaining_updates": 29806,
+  "remaining_epoch9_updates": 12095,
+  "best_epoch_so_far": 8,
+  "best_VALID_CIDEr": 1.1933623617626516,
+  "best_VALID_NLL": 2.1749988687035886,
+  "latest_checkpoint_sha256": "16b76195ae52ebe150d87b81843906a862fc13903a005b031407388753475bab",
+  "best_checkpoint_sha256": "a5d9dbab46e0f188d3db28b7caa66d2687abfbd625a17ddf4dc04d90642a4510",
+  "training_log_sha256": "2a265f2569aa78ac0b3d0fa595e29db02b92bdc91f8463231e623d831b49b62d",
+  "history": [
+    {
+      "epoch": 1,
+      "CIDEr": 0.9469477249272239,
+      "mean_words": 8.527,
+      "short_le2": 0,
+      "NLL": 2.704184011268417,
+      "TRAIN_online_NLL": 3.450102770507467
+    },
+    {
+      "epoch": 2,
+      "CIDEr": 1.0769539663796819,
+      "mean_words": 8.8904,
+      "short_le2": 0,
+      "NLL": 2.4392014262290367,
+      "TRAIN_online_NLL": 2.5793058970328997
+    },
+    {
+      "epoch": 3,
+      "CIDEr": 1.114319784044702,
+      "mean_words": 8.947,
+      "short_le2": 0,
+      "NLL": 2.3385786184062534,
+      "TRAIN_online_NLL": 2.395453665463918
+    },
+    {
+      "epoch": 4,
+      "CIDEr": 1.1438139922547343,
+      "mean_words": 9.1358,
+      "short_le2": 0,
+      "NLL": 2.2782020678552897,
+      "TRAIN_online_NLL": 2.2915792912853785
+    },
+    {
+      "epoch": 5,
+      "CIDEr": 1.1705300909350167,
+      "mean_words": 8.968,
+      "short_le2": 0,
+      "NLL": 2.237082400265562,
+      "TRAIN_online_NLL": 2.209163585371598
+    },
+    {
+      "epoch": 6,
+      "CIDEr": 1.1767775609524664,
+      "mean_words": 9.1586,
+      "short_le2": 0,
+      "NLL": 2.2049215672955462,
+      "TRAIN_online_NLL": 2.1342571570406212
+    },
+    {
+      "epoch": 7,
+      "CIDEr": 1.1830761796366245,
+      "mean_words": 9.1544,
+      "short_le2": 0,
+      "NLL": 2.1853500347009196,
+      "TRAIN_online_NLL": 2.0652243344331267
+    },
+    {
+      "epoch": 8,
+      "CIDEr": 1.1933623617626516,
+      "mean_words": 9.2254,
+      "short_le2": 0,
+      "NLL": 2.1749988687035886,
+      "TRAIN_online_NLL": 2.004595395698172
+    }
+  ],
+  "failure_reason": "Safety stop at worker deadline; checkpoint saved before parent cap. Not CUDA/model failure.",
+  "contracts": {
+    "passed": true,
+    "seed": 42,
+    "trainable_parameters": 49239288,
+    "full_parameters": 53183736,
+    "removed_M3_parameters": 3944448,
+    "state_tensor_count": 166,
+    "retained_initial_sha256": "4febee6443a9accdc7f9129a14056f7acaed511ada93603f63e2094fb07dc657",
+    "retained_initialization_equal": true,
+    "M1_M2_retained": true,
+    "M3_removed": true,
+    "image_specific_inputs_ignored": true,
+    "memories_equal_original_M2": true,
+    "decoder_implementation_equal": true,
+    "bank_conditioning_mean_memory_difference": 0.00011404867836972699,
+    "original_state_unchanged": true,
+    "synthetic_inputs": true,
+    "trained_checkpoint_loaded": false
+  },
+  "audit": {
+    "CRC_pass": true,
+    "archive_files": 115,
+    "source_files": 42,
+    "payloads_and_source_and_trainlog_sha_verified": true,
+    "evaluation_hashes_and_CIDEr_NLL_means_verified": true,
+    "caption_rows_checked": 40000,
+    "training_log_rows": 1480,
+    "DDP_first32_and_tail27_pass": true,
+    "local_Torch_model_or_scorer_executed": false,
+    "checkpoint_binary_in_review": false
+  },
+  "limits": [
+    "Incomplete10epoch arm; do not compare best8 versus fullbest9 as a final ablation.",
+    "CHAIR and other best/end metrics not yet scored; no TEST.",
+    "Actual binary/optimizer/RNG restore pending user-run; receipt-only checkpoint verification.",
+    "Do not restart fresh, change the training schedule, or substitute the best8 snapshot for latestcursor."
+  ],
+  "sheet_update": {
+    "spreadsheet_id": "1XZ5iuyCs5JP8VE6dT7AYdVTiY1_nK4C_QdXs5ppw6FA",
+    "sheet": "Kết quả mới",
+    "range": "A363:D375",
+    "written_and_exact_readback_verified": true,
+    "format_metadata_checked": true,
+    "native_visual_inspected": false,
+    "date": "2026-11-24"
+  }
+}

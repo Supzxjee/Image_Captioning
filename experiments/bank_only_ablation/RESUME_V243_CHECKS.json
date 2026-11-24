@@ -1,0 +1,23 @@
+{
+  "status": "HOST_STATIC_MOCK_PASS",
+  "date": "2026-11-24",
+  "tests_passed": 4,
+  "training_sources_unchanged": true,
+  "tests": [
+    "test_verifier_accepts_and_rejects_changed_weight_metadata_and_cursor",
+    "test_all_cells_hashes_unchanged_sources_and_no_missing_names",
+    "test_effective_routing_command_compiles_and_targets_v243",
+    "test_output_file_filter_and_resume_order"
+  ],
+  "source_version": "ducanh2403/2-vi-cai-kia-qua-nhieu/243",
+  "sealed_metadata_files": 54,
+  "source_files": 42,
+  "checkpoint_sha256": "16b76195ae52ebe150d87b81843906a862fc13903a005b031407388753475bab",
+  "best_sha256": "a5d9dbab46e0f188d3db28b7caa66d2687abfbd625a17ddf4dc04d90642a4510",
+  "remaining_updates": 29806,
+  "notebook_sha256": "d19af5155fed15826d638a18112fadb01bb370f00bc1a3154bff69a0d15e98df",
+  "downloads_sha256": "d19af5155fed15826d638a18112fadb01bb370f00bc1a3154bff69a0d15e98df",
+  "local_torch_or_model_executed": false,
+  "actual_API_or_binary_restore_executed": false,
+  "pending": "User-run exact API access, binary SHA/optimizer/RNG restore and CUDA completion. No training source, schedule or checkpoint substitution."
+}
