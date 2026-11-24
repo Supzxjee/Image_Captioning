@@ -1,0 +1,163 @@
+[
+  [
+    "Ablation bốn cấu hình · TEST5000",
+    "",
+    "M2-only v248 · đủ8thang đo · trướcSCST/rerank",
+    "",
+    ""
+  ],
+  [
+    "Nguồn",
+    "TEST v248",
+    "ducanh2403/2-vi-cai-kia-qua-nhieu/248; checkpoint245best9 SHA3fe31a92…",
+    "",
+    ""
+  ],
+  [
+    "Thang đo",
+    "Baseline 3 lớp",
+    "M2-only",
+    "M3 zero-text",
+    "Prompt đúng ảnh"
+  ],
+  [
+    "Best epoch",
+    9,
+    9,
+    8,
+    9
+  ],
+  [
+    "Tham số (triệu)",
+    29.553424,
+    49.239288,
+    53.183736,
+    53.183736
+  ],
+  [
+    "BLEU-1",
+    77.7461948459234,
+    77.52003902547935,
+    77.49437417075875,
+    77.62520295217418
+  ],
+  [
+    "BLEU-4",
+    37.728154437394636,
+    38.00796653028449,
+    37.68243774855171,
+    37.741465333534805
+  ],
+  [
+    "METEOR",
+    28.44550219143266,
+    28.845022806390897,
+    28.69649788157797,
+    28.829007699143826
+  ],
+  [
+    "ROUGE-L",
+    57.925061638271124,
+    57.945810424164925,
+    57.7440782745832,
+    57.99110471922811
+  ],
+  [
+    "CIDEr",
+    119.96134429062518,
+    121.4052185122306,
+    121.17932243603371,
+    121.63754848645776
+  ],
+  [
+    "SPICE",
+    21.379177915560177,
+    21.910517083669912,
+    21.689379856695204,
+    21.852672583381093
+  ],
+  [
+    "CHAIRs (%)",
+    5.220000000000001,
+    4.7,
+    4.52,
+    3.9600000000000004
+  ],
+  [
+    "CHAIRi (%)",
+    3.6854363611453627,
+    3.294758339006126,
+    3.153276665752673,
+    2.8016946836135026
+  ],
+  [
+    "Recall (%)",
+    42.969643083957834,
+    43.45230534738981,
+    43.3379906007875,
+    43.490410262923916
+  ],
+  [
+    "NLL",
+    2.2147221084744535,
+    2.190686675734093,
+    2.1812919281962735,
+    2.182138573369197
+  ],
+  [
+    "Caption có đối tượng ảo",
+    261,
+    235,
+    226,
+    198
+  ],
+  [
+    "M2 so baseline",
+    "TEST",
+    "CIDEr+1,4439; CHAIRs−0,52pp (261→235); BLEU4/METEOR/SPICE tăng, BLEU1 giảm0,2262.",
+    "",
+    ""
+  ],
+  [
+    "M3 không chữ",
+    "TEST",
+    "M2→zero: CIDEr−0,2259; CHAIRs4,70→4,52%. Adapter+ROI/hình học không làm tăng mọi điểm.",
+    "",
+    ""
+  ],
+  [
+    "Chữ prompt M3",
+    "TEST",
+    "Zero→full: CIDEr+0,4582, CHAIRs4,52→3,96% (−12,39% tương đối); captionảo226→198.",
+    "",
+    ""
+  ],
+  [
+    "Full so M2",
+    "TEST",
+    "CIDEr+0,2323; CHAIRs4,70→3,96% (−15,74% tương đối;235→198). Full thấp hơnM2 ở BLEU4/METEOR/SPICE.",
+    "",
+    ""
+  ],
+  [
+    "Giới hạn",
+    "Một seed",
+    "Khác tổng tham số; zero-input có cột trọng số không hoạt động; priorTESTexposure/I/O lịch sử. Chưa significance; CHAIR chỉ đo đối tượng.",
+    "",
+    ""
+  ],
+  [
+    "Kiểm tra",
+    "PASS",
+    "75files/33sourceSHA/5000caption/25000beam/CHAIRcounts/NLL; cùng evaluator digests. Guardbank-only8ảnh/GPU PASS. Không chạy model/scorer local.",
+    "",
+    ""
+  ],
+  [
+    "Kết quả",
+    "",
+    "https://github.com/Supzxjee/Image_Captioning/blob/main/experiments/bank_only_ablation/TEST_RESULT.json",
+    "",
+    ""
+  ]
+]
