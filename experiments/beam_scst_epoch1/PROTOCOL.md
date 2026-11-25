@@ -29,3 +29,15 @@ If a cap interrupts training, keep the entire output, not only review ZIP. Evalu
 - Public `train_sc`: https://github.com/CrossmodalGroup/CSA-Net/blob/main/engine/caption_engine.py#L359-L457 — five beams, reward mean baseline, mean token logp, no CE term, `model.train()`.
 - https://github.com/CrossmodalGroup/CSA-Net/blob/main/configs/caption/coco_config_csa_net_end_to_end.yaml — beam5/max20,SCSTlr4e-6,15/30epochs.
 - Public train script reloads bestVALID each SCST epoch; this one-epoch adaptation begins at CEbest, with exact latest-state continuation inside that epoch. We do not copy the public per-epoch reload behavior into interruption recovery.
+
+## Input-failure amendment,25/11/2026
+
+User log passes CUDA/NCCL2GPU but stops in checkpoint resolver before torch.load/model construction or any training update. The default upt-coco-full-cache path was historical, not confirmed for this run. Sheet Kết quả mới row210 records seed43 source179 and seed44 source236, but only bestepoch9 for seed42; no exact seed42 Save Version/Dataset was found in the searched registry/source rows. Do not invent an API version or silently switch seed. Prepare V2 to verify exact source bytes before pip/cache/CUDA, search mounted weight files independent of filename, and emit a CPU-only source report. Wrong or missing bytes must still stop. All training/beam/loss/model/cache recipes stay fixed pending the user source choice. The observed run has0 training updates; no optimizer continuation is needed for that failed run.
+
+## V2 proposed source replacement after Sheet lookup,25/11/2026
+
+User asks which source is better after being shown the missing seed42 provenance. Recommend Full seed43 bestCEepoch8 from ducanh3/notebook7bc83c4c76/version179, SHA a51e7ec21be68aa1cda9e0805bd6248add6199914a5c262fce138988066051a5, because its source and prior same-seed CE/SCST results are already audited; not because of TEST score. Prepare this concrete replacement for user-run review; no API/model execution by agent. Keep V1 notebook/source manifest and failure evidence intact.
+
+V2 bundles the already-audited seed43 VALID contract/cache-binding helper from the earlier completed SCST1500 notebook. Replace checkpoint/epoch/source identity, policyseed4342(+rank), output label and CE VALID reference consistently. CE VALID baseline is CIDEr121.777807/CHAIRs4.18%/CHAIRi3.004824%/NLL2.155262. Original cache82/83/84 receipts and frozen feature bytes remain unchanged; verify original source42 cache, then rebind only local VALID model metadata to source43. No algorithm/loss/optimizer/batch/one-epoch changes. Compare only to the same seed43 CE source; earlier seed42 bootstrap numbers are not reused as this pilot baseline.
+
+Blank CHECKPOINT_ROOT downloads only exact179 best.bin through pinned isolated Kaggle CLI using an existing Secret with access to ducanh3. No latest-version fallback or automatic switch to236. Optional mounted weights are accepted under any filename only if SHA exactly matches179. Verify source before CUDA/pip scorers/cache staging; preserve input source binary in Output/input_source. Private-source API access is not established by local tests.

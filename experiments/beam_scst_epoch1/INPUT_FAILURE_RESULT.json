@@ -1,0 +1,33 @@
+{
+  "status": "CHECKPOINT_INPUT_NOT_FOUND_BEFORE_MODEL_LOAD",
+  "date": "2026-11-25",
+  "log_sha256": "940e8224eb0c1193b9a405b3429e46721527c741524f59b0db36dd402342105e",
+  "torch": "2.11.0+cu128",
+  "CUDA_available": true,
+  "device_count": 2,
+  "NCCL_available": true,
+  "phase": "preflight checkpoint path resolution",
+  "model_checkpoint_loaded": false,
+  "training_updates": 0,
+  "observed_error": "Missing exact version9 best.bin SHAb0c5bde0; no final/latest fallback",
+  "cause_limit": "No matching best.bin under configured root. Log does not distinguish missing mount, renamed file, wrong checkpoint, or extracted checkpoint directory.",
+  "packaging_flaws": [
+    "Checkpoint resolution only searched best.bin names in the default directory",
+    "Input identity checked after dependencies and full cache metadata staging"
+  ],
+  "sheet_lookup": {
+    "spreadsheet_id": "1XZ5iuyCs5JP8VE6dT7AYdVTiY1_nK4C_QdXs5ppw6FA",
+    "range": "'K\u1ebft qu\u1ea3 m\u1edbi'!A198:P212",
+    "source_row": 210,
+    "seed42": "best epoch9; SaveVersion/Dataset not specified",
+    "seed43": "ducanh3/notebook7bc83c4c76/179",
+    "seed44": "ducanh2403/2-vi-cai-kia-qua-nhieu/236"
+  },
+  "repair": "Move source SHA check before pip/cache/CUDA; accept renamed exact bytes; print weight inventory; no SHA fallback or latest-version guessing.",
+  "user_source_choice_pending": false,
+  "replacement_source_recommendation": {
+    "seed": 43,
+    "source": "ducanh3/notebook7bc83c4c76/179",
+    "basis": "Known source provenance and paired prior same-seed results; user asked recommendation. Prepared for user-run review, not executed."
+  }
+}

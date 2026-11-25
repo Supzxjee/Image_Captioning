@@ -1,0 +1,16 @@
+test_API_route_pins_179_hash_and_isolated_credentials_before_staging (test_v2_notebook.Checks.test_API_route_pins_179_hash_and_isolated_credentials_before_staging) ... ok
+test_cache_shard_provenance_and_model_bytes (test_v2_notebook.Checks.test_cache_shard_provenance_and_model_bytes) ... ok
+test_cells_payload_hashes_and_global_dependencies (test_v2_notebook.Checks.test_cells_payload_hashes_and_global_dependencies) ... ok
+test_dependency_closure_and_no_local_torch (test_v2_notebook.Checks.test_dependency_closure_and_no_local_torch) ... ok
+test_mounted_renamed_file_hash_and_rejection_without_pickle_load (test_v2_notebook.Checks.test_mounted_renamed_file_hash_and_rejection_without_pickle_load) ... ok
+test_mounted_source_skips_API_and_missing_secret_stops_before_install (test_v2_notebook.Checks.test_mounted_source_skips_API_and_missing_secret_stops_before_install) ... ok
+test_nested_metadata_root_exists_before_original_part0_materializer (test_v2_notebook.Checks.test_nested_metadata_root_exists_before_original_part0_materializer) ... ok
+test_objective_mean_baseline_fixed_denominator_and_gradient_weights (test_v2_notebook.Checks.test_objective_mean_baseline_fixed_denominator_and_gradient_weights) ... ok
+test_one_epoch_coverage_no_replacement_and_tail (test_v2_notebook.Checks.test_one_epoch_coverage_no_replacement_and_tail) ... ok
+test_real_guards_training_recipe_and_validation_scope (test_v2_notebook.Checks.test_real_guards_training_recipe_and_validation_scope) ... ok
+test_resume_validation_rejects_foreign_source_recipe_and_cursor (test_v2_notebook.Checks.test_resume_validation_rejects_foreign_source_recipe_and_cursor) ... ok
+
+----------------------------------------------------------------------
+Ran 11 tests in 0.549s
+
+OK
