@@ -1,0 +1,34 @@
+{
+  "status": "READY_UNRUN_QUOTA_INSUFFICIENT",
+  "date": "2026-11-25",
+  "seeds": [
+    43,
+    44
+  ],
+  "tests_passed": 12,
+  "scope": [
+    "Cells/embedded sources compile and hashes match",
+    "Local import closure and undefined globals checked",
+    "All model/data/train-loop/checkpoint/selection/guard payloads unchanged from completed seed42 recipe",
+    "Runtime factory predicate accepts only own seed and rejects seed42/other new seed/wrong method or text mode",
+    "Mock zeroing preserves ROI/geometry/masks/input dictionaries in train and eval"
+  ],
+  "model_executed": false,
+  "Torch_imported": false,
+  "CUDA_tested": false,
+  "Kaggle_executed": false,
+  "metric_scorers_run": false,
+  "quota_hours": null,
+  "wall_hours_per_invocation": 11.5,
+  "wall_hours_is_training_ETA": false,
+  "downloads": {
+    "43": {
+      "path": "C:\\Users\\leduc\\Downloads\\FULL_ZERO_PROMPT_TEXT_SEED43_XE10_2GPU.ipynb",
+      "sha256": "e4707692ae7072cab5fc4d4aa4d3f93f34eaf275ad235dbda68638c395d1c105"
+    },
+    "44": {
+      "path": "C:\\Users\\leduc\\Downloads\\FULL_ZERO_PROMPT_TEXT_SEED44_XE10_2GPU.ipynb",
+      "sha256": "639f2037176c31f8432695920522e178438f0d634ab81c0ef824ccb5b6b35d75"
+    }
+  }
+}

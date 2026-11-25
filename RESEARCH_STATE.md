@@ -1,6 +1,6 @@
 # Trạng thái nghiên cứu — đọc trước khi tiếp tục
 
-Cập nhật: 24/11/2026, giờ Việt Nam. File này là bản tóm tắt để tiếp tục công việc; protocol và artifacts được dẫn bên dưới mới là nguồn chi tiết. Không cần đọc toàn bộ lịch sử chat.
+Cập nhật: 25/11/2026, giờ Việt Nam. File này là bản tóm tắt để tiếp tục công việc; protocol và artifacts được dẫn bên dưới mới là nguồn chi tiết. Không cần đọc toàn bộ lịch sử chat.
 
 ## Mục tiêu và cách làm việc
 
@@ -9,6 +9,8 @@ Cập nhật: 24/11/2026, giờ Việt Nam. File này là bản tóm tắt để
 - Không tự chạy mô hình/Torch/autograd local hoặc notebook Kaggle. Kiểm tra metadata/NumPy/static/mock được phép; ghi rõ giới hạn. Quy trình tại [AGENTS.md](AGENTS.md).
 
 ## Hiện đang ở đâu
+
+- **Zero-text seeds43/44 notebooks ready25/11; GPU quota insufficient, queued.** [Decision](experiments/prompt_text_ablation/MULTI_SEED_PROTOCOL.md). [Seed43](experiments/prompt_text_ablation/FULL_ZERO_PROMPT_TEXT_SEED43_XE10_2GPU.ipynb), [seed44](experiments/prompt_text_ablation/FULL_ZERO_PROMPT_TEXT_SEED44_XE10_2GPU.ipynb), [checks](experiments/prompt_text_ablation/MULTI_SEED_CHECKS.json). 42embeddedpayloads/seed; only factoryseedpredicate and scorerprovenancelimit changed; all model/data/training/selection/checkpoint code unchanged, one added decisionpayload. 12compile/hash/closure/metadata/mock checksPASS, DownloadsSHAverified; no Kaggle/model/scorer execution. Reuse existing full43/44 XE10 TEST; keep zero-text CE10/per-caption/directH5/FP32/global32/53.18M and maxVALIDCIDEr. Both additional seeds fixed regardless result; not new architecture/SCST/rerank. Cap inherited11.5h per invocation is not full-run ETA; exactsame-seed resume if needed. Quota hours/renewal and outputversions unknown; user must choose actual run when quota available.
 
 - **Paired TEST bootstrap completed24/11.** [Report](experiments/test_ablation_bootstrap/RESULT.md), [numbers](experiments/test_ablation_bootstrap/RESULT.json), [protocol](experiments/test_ablation_bootstrap/PROTOCOL.md). 100000 paired5000image resamples/PCG64seed20261124, saved CIDEr and CHAIR counts only. Full−zero CIDEr+0.458CI95[−1.005,+1.938], CHAIRs−0.560ppCI[−1.120,0], CHAIRi−0.352ppCI[−0.743,+0.036]: no95% interval excludes0. Full−M2 C+0.232CI[−1.192,+1.673], CHAIRs−0.740CI[−1.340,−0.160], CHAIRi−0.493CI[−0.918,−0.070]; lattertwo exclude0 pointwise, but all six Bonferroni99.17% CIs include0. Retrospective knownaggregateTEST/fixedIDF/singleablationseed; favorable text trend, not firm text-only gain or equivalence claim. Paired CHAIR flags115cleared/87new vszero,132/95vsM2, not humanconfirmedrepairs. SHA/5000IDs/samereferences/captionlinkage/pointcounts/4syntheticchecksPASS; CPUstatistics61s, no model/scorer/Kaggle/GPU/Word changes. CompactCSV+manifest reproduces analysis without rawZIP/checkpoints; sourceZIPfull readonce/cache. Sheet Kết quả mới!A424:E440 written/85cells exactreadback/nativeGooglevisualPASS. Delivery follows81d6ee0.
 
