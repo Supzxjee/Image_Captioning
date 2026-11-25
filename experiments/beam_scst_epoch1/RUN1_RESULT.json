@@ -1,0 +1,89 @@
+{
+  "status": "COMPLETE_AUDITED_METADATA_AND_SAVED_COUNTS",
+  "date": "2026-11-26",
+  "output_version": "ducanh3/notebook7bc83c4c76/199",
+  "checkpoint_source": {
+    "seed": 43,
+    "version": "ducanh3/notebook7bc83c4c76/179",
+    "epoch": 8,
+    "sha256": "a51e7ec21be68aa1cda9e0805bd6248add6199914a5c262fce138988066051a5",
+    "path": "/kaggle/working/beam_scst_epoch1_seed43_v179_v2_run1/input_source/csa_per_caption_h5_seed43_resume178/best.bin",
+    "origin": "exact Save Version API download"
+  },
+  "endpoint_sha256": "3b03acc29f025b07dc358846b30618ae9c83f8634bc12bf7905e9d908b971f24",
+  "latest_resume_sha256": "5b8d33fc0b26f2c77ad1cee4a58d3e4a718f13107a2d2bd9a0884c427faed88c",
+  "audit": {
+    "source_files": 38,
+    "scoring_seals_verified": true,
+    "caption_and_reference_ids": 5000,
+    "reference_sentences": 25010,
+    "training_log_rows": 142,
+    "CIDEr_mean_verified": true,
+    "CHAIR_counts_verified": true,
+    "NLL_verified": true,
+    "actual_checkpoint_binary_loaded_locally": false,
+    "metric_scorers_run_locally": false
+  },
+  "metrics": {
+    "BLEU_1": 0.8059457192271925,
+    "BLEU_4": 0.40330547656335064,
+    "CIDEr": 1.2938949542216254,
+    "ROUGE_L": 0.597202426454193,
+    "CHAIRs": 0.0508,
+    "CHAIRi": 0.033758536271099086,
+    "Recall": 0.4575590155700653,
+    "NLL": 2.9460973352896422
+  },
+  "CE_reference": {
+    "CIDEr": 1.217778074776526,
+    "BLEU_1": 0.7803653162797217,
+    "BLEU_4": 0.38098062176585257,
+    "ROUGE_L": 0.5812841985321755,
+    "CHAIRs": 0.0418,
+    "CHAIRi": 0.030048242591316332,
+    "Recall": 0.4247865394274234,
+    "NLL": 2.1552617615644585
+  },
+  "delta": {
+    "CIDEr": 0.07611687944509926,
+    "BLEU_1": 0.02558040294747077,
+    "BLEU_4": 0.022324854797498073,
+    "ROUGE_L": 0.01591822792201747,
+    "CHAIRs": 0.009000000000000001,
+    "CHAIRi": 0.0037102936797827543,
+    "Recall": 0.03277247614264189,
+    "NLL": 0.7908355737251838
+  },
+  "chair_counts": {
+    "images": 5000,
+    "hallucinated_captions": 254,
+    "hallucinated_mentions": 262,
+    "object_mentions": 7761,
+    "recalled_unique": 7288,
+    "reference_unique": 15928
+  },
+  "training": {
+    "complete": true,
+    "train_images": 113287,
+    "updates": 3541,
+    "epochs": 1,
+    "source_sha256": "a51e7ec21be68aa1cda9e0805bd6248add6199914a5c262fce138988066051a5",
+    "test_used": false,
+    "reranking": false,
+    "seconds": 11249.117766055,
+    "peak_allocated_bytes": 5457484288
+  },
+  "mean_caption_words": 8.5484,
+  "missing_metrics": [
+    "METEOR",
+    "SPICE"
+  ],
+  "limits": [
+    "One seed and one epoch on reused VALID; no TEST or reranking.",
+    "Change versus earlier SCST includes beam baseline, optimizer rate, train mode and duration; not a baseline-only ablation.",
+    "Checkpoint hashes are user-run receipts; binaries are absent from review ZIP.",
+    "Frozen patch header/size/map verified at runtime; full feature content hashes not rehashed.",
+    "CHAIR measures object hallucination, not attributes/actions/relations."
+  ],
+  "recommendation": "Preserve output199 endpoint; next consider fixed existing rerank on VALID, not automatic further SCST or TEST."
+}
