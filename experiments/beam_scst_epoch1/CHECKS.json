@@ -1,0 +1,40 @@
+{
+  "status": "READY_UNRUN",
+  "date": "2026-11-25",
+  "user_reported_GPU_hours": 16,
+  "host_tests_passed": 8,
+  "checks": [
+    "Cells/source syntax and embedded SHA; notebook undefined globals",
+    "Dependency closure and unchanged pinned model/beam/metadata/reward source bytes",
+    "All113287TRAIN indices once,3541updates,weighted final7; NumPy DDP normalization",
+    "Beam mean baseline/fixed20denominator formula and constant-reward invariance with tensor mock",
+    "Resume identity/cursor/source rejection metadata mocks",
+    "User-run CUDA/autograd/EOS/realbeam/peakmemory/throughput guards wired before fresh worker",
+    "Pinned full cache part82/83/84 provenance; no full patch copies"
+  ],
+  "model_executed": false,
+  "Torch_imported": false,
+  "CUDA_executed": false,
+  "metric_scorers_executed": false,
+  "actual_peak_memory_and_throughput_verified": false,
+  "actual_cache_inputs_verified": false,
+  "full_epoch_fit_in_invocation_or_quota_established": false,
+  "source_files_embedded": 37,
+  "notebook_sha256": "189cd76582aea57b6844259adde128d38aea9d42786d53bea12905907bdaa19a",
+  "downloads_path": "C:\\Users\\leduc\\Downloads\\BEAM_SCST_FULL_EPOCH1_VALID5000_2GPU.ipynb",
+  "downloads_sha_matches": true,
+  "adaptations": [
+    "Our frozen CLIP/prompt architecture and sealed TRAIN CIDEr-D scorer retained",
+    "Local4xaccum4 instead of author local16; no exact dropout/RNG equivalence",
+    "One epoch, not authors15CE+30SCST; no TEST/rerank/automatic continuation"
+  ],
+  "per_invocation_cap_hours": 11.5,
+  "cap_is_ETA_or_billing": false,
+  "discarded_preflight_updates": 6,
+  "timing_shards": [
+    0,
+    1,
+    2
+  ],
+  "metadata_root_creation_mock_passed": true
+}

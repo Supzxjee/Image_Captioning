@@ -1,0 +1,2 @@
+# Preserve SHA-sealed notebook/receipt bytes across Windows and Linux checkouts.
+* -text whitespace=cr-at-eol

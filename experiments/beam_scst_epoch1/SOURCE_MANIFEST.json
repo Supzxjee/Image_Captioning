@@ -1,0 +1,200 @@
+{
+  "parent_notebook": "experiments\\clip_patch_baseline\\CLIP_PATCH_CSA_SCST_ONLY1000_MERGED_DATASET_2GPU.ipynb",
+  "parent_sha256": "bc2f569159501933c50d0297f2e71149a74895f928d375514b046c20a080e643",
+  "notebook_sha256": "189cd76582aea57b6844259adde128d38aea9d42786d53bea12905907bdaa19a",
+  "sha256": {
+    "TEST199_LOCK.json": "a93e320cc0c1444dab2de21ea2765107b949dc6f49353fd8c9c458ad8b60e8e3",
+    "TEST199_PROTOCOL.md": "2cd1f33ae85544688b4dca30e0e3a31da37454178044dfc48419030e45bde988",
+    "TEST199_BUILD_V2_PROTOCOL.md": "7213afcf56f4df32fdae98f72e35f1516d3d7cdcdf657b4b388a6e724af011d8",
+    "SMOKE_SOURCE.json": "6413058df1575ae8266c6f7ec29eea3cb60917147126bc55961de47c949abe49",
+    "test199_data.py": "0291e01b2f0f110e937904d40f4b5d1e69351605a2cff5c0cde55aef0fa412c4",
+    "run_test199.py": "3108367500cc3de3867d02ee5e0240b646a93f38aca184a79118964736d8e7f3",
+    "test_test199.py": "ff7e3942a9e0db932694bff15a3485b2e132163731879871cbb1c5f611ac79be",
+    "patch_model.py": "dfe6b1d83bfc1e3c7961268fb104bc1f4092129e7d9400841568a3204dc57a70",
+    "patch_beam.py": "53fcb5b22bb9f05d795fbd4f539cfd4ff0af39c1dea679f7df1a933edf2754be",
+    "patch_data.py": "3706ffec9c128c8fe12c4f21ba071939268fdd526ed614034cca8dfec55674d5",
+    "full_data.py": "ab69cf61d4ad0456d9a869929750ab10f3a2a33b6c76683689539e57e4015a74",
+    "make_test199_notebook.py": "d2d3a5a3d2bda3268732396f920f847b9fab5b11c60799197a0b667673481a64",
+    "data.py": "5a5bb451dc20184d3ea597d4dc8415a120583571f4e1a4dac75e29a306213a71",
+    "real_bank_data.py": "2c791f8dd856198ec1954a2edd1f9e46520d422f20eff07220e462fc2c9bd9a0",
+    "cuda_runtime_guard.py": "640b5debc81607e3504930e4042571636cc3fbd525a6d0e5eb45abdd141fb773",
+    "saved_quality_data.py": "f8a092506e3adf96292203190ea2f83de397d3028a3ddc6293d58fd360199a1e",
+    "score_prompt_test_extra.py": "8704765eb1c3c2713a7d31b92cba7454e905fcb3f0af37de627d81dc6d0f9bd7",
+    "semantic_test_data.py": "a0f23b6d85a902a7f362a7a2ef03108fbaf603dc4326e61aeabbfe164bb3abdc",
+    "semantic_data.py": "a57af931f9e6be85f6efeee668b09fcca14c8a3bd54ebd695d9014ede2ab0540",
+    "semantic_patch_model.py": "10a385859ea1389a71f14a7a76e16a6989feb73fd581ca89659eab50ec53a0f3",
+    "test_semantic_test.py": "fd8756b0f2fa22efa35c5b79498fd5b1daffb5a0b18c25e8655b03f60927b951",
+    "BANK_PROMPT_TEST_PROTOCOL.md": "56e233a6d86dbfe269e21ced39c3253a0712cfe87cfb72399441728038857e7f",
+    "bank_layers.py": "139edbb1b73caf3dadaf5c960b25542e282f88baf2ce9bdf141de922ceacbc09",
+    "PROMPT_TEST_PREPARATION_RESULT.json": "d99891923634188aa2d75185f0ef9894e3ab9e3be780a5a17e411076c3c9d205",
+    "csa_patch_model.py": "99b6441c4205b142256192cc3d840a905e00ecc1e730f30e1f5eb2c3cf8dc220",
+    "memory_fusion.py": "a70947e22263ddd27a7896a94cfb35cfff73102370288c53f86529964ea8f087",
+    "csa_per_caption_test_data.py": "8b32b993450252c98439ccfb332cb098aeea113038a658dc0467b34228628113",
+    "run_csa_per_caption_test.py": "657bb4e60fdb5647e9130a74ca7607cd12249ee79c472e5e5f3ad04e95484a28",
+    "scst_cache.py": "9721401031272f50cd5c99b177d6177f33b0805cabde19eb936dbb622086dd0f",
+    "scst_dataset_mount.py": "e4574bc17a36f4d6b8fb51ad8fbc725db4269559d0a05f34a7d5ba1354ca35fb",
+    "captioning/scst.py": "3a9a1f32fb27dae0447066e1388a31461f3f0781d52db5861880b037a572a78e",
+    "captioning/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "CACHE_PARTS.json": "50632a1ea657604915fdfa9396320d5c1649df408a28b6b8003b0eab601f3519",
+    "beam_policy.py": "1f2ec8d95c38f91793a2b554cd6f585034871ccbb95d0ed5ad9521206b6ddf67",
+    "full_epoch_data.py": "6cf0ebbd2d9d8740aabef7f8fbe9fdc8a88263b2447a64ab43953deecb31f719",
+    "run_beam_epoch.py": "e649dca27d87a39db29c979619c7e72da7d5e6dc90bb6cfc593a0b96bf7e0952",
+    "PROTOCOL.md": "2f5dbc105ad8bc288acf741c7e93f8cb101b3df2d88b65eabfea94a2c510977b"
+  },
+  "origins": {
+    "TEST199_LOCK.json": {
+      "commit": "aae9afc7966ee4aa36dd67c4b4839ff788e775fe",
+      "path": "experiments/clip_patch_baseline/TEST199_LOCK.json",
+      "sha256": "a93e320cc0c1444dab2de21ea2765107b949dc6f49353fd8c9c458ad8b60e8e3"
+    },
+    "TEST199_PROTOCOL.md": {
+      "commit": "aae9afc7966ee4aa36dd67c4b4839ff788e775fe",
+      "path": "experiments/clip_patch_baseline/TEST199_PROTOCOL.md",
+      "sha256": "2cd1f33ae85544688b4dca30e0e3a31da37454178044dfc48419030e45bde988"
+    },
+    "TEST199_BUILD_V2_PROTOCOL.md": {
+      "commit": "aae9afc7966ee4aa36dd67c4b4839ff788e775fe",
+      "path": "experiments/clip_patch_baseline/TEST199_BUILD_V2_PROTOCOL.md",
+      "sha256": "7213afcf56f4df32fdae98f72e35f1516d3d7cdcdf657b4b388a6e724af011d8"
+    },
+    "SMOKE_SOURCE.json": {
+      "commit": "aae9afc7966ee4aa36dd67c4b4839ff788e775fe",
+      "path": "experiments/clip_patch_baseline/SMOKE_SOURCE.json",
+      "sha256": "6413058df1575ae8266c6f7ec29eea3cb60917147126bc55961de47c949abe49"
+    },
+    "test199_data.py": {
+      "commit": "aae9afc7966ee4aa36dd67c4b4839ff788e775fe",
+      "path": "experiments/clip_patch_baseline/test199_data.py",
+      "sha256": "0291e01b2f0f110e937904d40f4b5d1e69351605a2cff5c0cde55aef0fa412c4"
+    },
+    "run_test199.py": {
+      "commit": "aae9afc7966ee4aa36dd67c4b4839ff788e775fe",
+      "path": "experiments/clip_patch_baseline/run_test199.py",
+      "sha256": "3108367500cc3de3867d02ee5e0240b646a93f38aca184a79118964736d8e7f3"
+    },
+    "test_test199.py": {
+      "commit": "aae9afc7966ee4aa36dd67c4b4839ff788e775fe",
+      "path": "experiments/clip_patch_baseline/test_test199.py",
+      "sha256": "ff7e3942a9e0db932694bff15a3485b2e132163731879871cbb1c5f611ac79be"
+    },
+    "patch_model.py": {
+      "commit": "aae9afc7966ee4aa36dd67c4b4839ff788e775fe",
+      "path": "experiments/clip_patch_baseline/patch_model.py",
+      "sha256": "dfe6b1d83bfc1e3c7961268fb104bc1f4092129e7d9400841568a3204dc57a70"
+    },
+    "patch_beam.py": {
+      "commit": "aae9afc7966ee4aa36dd67c4b4839ff788e775fe",
+      "path": "experiments/clip_patch_baseline/patch_beam.py",
+      "sha256": "53fcb5b22bb9f05d795fbd4f539cfd4ff0af39c1dea679f7df1a933edf2754be"
+    },
+    "patch_data.py": {
+      "commit": "aae9afc7966ee4aa36dd67c4b4839ff788e775fe",
+      "path": "experiments/clip_patch_baseline/patch_data.py",
+      "sha256": "3706ffec9c128c8fe12c4f21ba071939268fdd526ed614034cca8dfec55674d5"
+    },
+    "full_data.py": {
+      "commit": "aae9afc7966ee4aa36dd67c4b4839ff788e775fe",
+      "path": "experiments/clip_patch_baseline/full_data.py",
+      "sha256": "ab69cf61d4ad0456d9a869929750ab10f3a2a33b6c76683689539e57e4015a74"
+    },
+    "make_test199_notebook.py": {
+      "commit": "aae9afc7966ee4aa36dd67c4b4839ff788e775fe",
+      "path": "experiments/clip_patch_baseline/make_test199_notebook.py",
+      "sha256": "d2d3a5a3d2bda3268732396f920f847b9fab5b11c60799197a0b667673481a64"
+    },
+    "data.py": {
+      "commit": "aae9afc7966ee4aa36dd67c4b4839ff788e775fe",
+      "path": "experiments/csa_paper/data.py",
+      "sha256": "5a5bb451dc20184d3ea597d4dc8415a120583571f4e1a4dac75e29a306213a71"
+    },
+    "real_bank_data.py": {
+      "commit": "aae9afc7966ee4aa36dd67c4b4839ff788e775fe",
+      "path": "experiments/csa_paper/real_bank_data.py",
+      "sha256": "2c791f8dd856198ec1954a2edd1f9e46520d422f20eff07220e462fc2c9bd9a0"
+    },
+    "cuda_runtime_guard.py": {
+      "commit": "aae9afc7966ee4aa36dd67c4b4839ff788e775fe",
+      "path": "experiments/csa_paper/cuda_runtime_guard.py",
+      "sha256": "640b5debc81607e3504930e4042571636cc3fbd525a6d0e5eb45abdd141fb773"
+    },
+    "saved_quality_data.py": {
+      "commit": "aae9afc7966ee4aa36dd67c4b4839ff788e775fe",
+      "path": "experiments/csa_paper/saved_quality_data.py",
+      "sha256": "f8a092506e3adf96292203190ea2f83de397d3028a3ddc6293d58fd360199a1e"
+    },
+    "score_prompt_test_extra.py": {
+      "commit": "aae9afc7966ee4aa36dd67c4b4839ff788e775fe",
+      "path": "experiments/csa_paper/score_prompt_test_extra.py",
+      "sha256": "8704765eb1c3c2713a7d31b92cba7454e905fcb3f0af37de627d81dc6d0f9bd7"
+    },
+    "semantic_test_data.py": {
+      "commit": "aae9afc7966ee4aa36dd67c4b4839ff788e775fe",
+      "path": "experiments/clip_patch_baseline/semantic_test_data.py",
+      "sha256": "a0f23b6d85a902a7f362a7a2ef03108fbaf603dc4326e61aeabbfe164bb3abdc"
+    },
+    "semantic_data.py": {
+      "commit": "aae9afc7966ee4aa36dd67c4b4839ff788e775fe",
+      "path": "experiments/clip_patch_baseline/semantic_data.py",
+      "sha256": "a57af931f9e6be85f6efeee668b09fcca14c8a3bd54ebd695d9014ede2ab0540"
+    },
+    "semantic_patch_model.py": {
+      "commit": "5eb012279e6fd0b5e47a56710ed5e3efa7449d2f",
+      "path": "experiments/clip_patch_baseline/semantic_patch_model.py",
+      "sha256": "10a385859ea1389a71f14a7a76e16a6989feb73fd581ca89659eab50ec53a0f3"
+    },
+    "test_semantic_test.py": {
+      "commit": "aae9afc7966ee4aa36dd67c4b4839ff788e775fe",
+      "path": "experiments/clip_patch_baseline/test_semantic_test.py",
+      "sha256": "fd8756b0f2fa22efa35c5b79498fd5b1daffb5a0b18c25e8655b03f60927b951"
+    },
+    "BANK_PROMPT_TEST_PROTOCOL.md": {
+      "commit": "aae9afc7966ee4aa36dd67c4b4839ff788e775fe",
+      "path": "experiments/clip_patch_baseline/BANK_PROMPT_TEST_PROTOCOL.md",
+      "sha256": "56e233a6d86dbfe269e21ced39c3253a0712cfe87cfb72399441728038857e7f"
+    },
+    "bank_layers.py": {
+      "commit": "5eb012279e6fd0b5e47a56710ed5e3efa7449d2f",
+      "path": "experiments/csa_paper/model.py",
+      "sha256": "139edbb1b73caf3dadaf5c960b25542e282f88baf2ce9bdf141de922ceacbc09"
+    },
+    "PROMPT_TEST_PREPARATION_RESULT.json": {
+      "commit": "aae9afc7966ee4aa36dd67c4b4839ff788e775fe",
+      "path": "experiments/csa_paper/PROMPT_TEST_PREPARATION_RESULT.json",
+      "sha256": "d99891923634188aa2d75185f0ef9894e3ab9e3be780a5a17e411076c3c9d205"
+    },
+    "csa_patch_model.py": {
+      "commit": "5eb012279e6fd0b5e47a56710ed5e3efa7449d2f",
+      "path": "experiments/clip_patch_baseline/csa_patch_model.py",
+      "sha256": "99b6441c4205b142256192cc3d840a905e00ecc1e730f30e1f5eb2c3cf8dc220"
+    },
+    "memory_fusion.py": {
+      "commit": "5eb012279e6fd0b5e47a56710ed5e3efa7449d2f",
+      "path": "experiments/clip_patch_baseline/memory_fusion.py",
+      "sha256": "a70947e22263ddd27a7896a94cfb35cfff73102370288c53f86529964ea8f087"
+    },
+    "csa_per_caption_test_data.py": {
+      "parent_notebook": "CLIP_PATCH_CSA_SCST_ONLY1000_MERGED_DATASET_2GPU.ipynb",
+      "embedded": true
+    },
+    "run_csa_per_caption_test.py": {
+      "parent_notebook": "CLIP_PATCH_CSA_SCST_ONLY1000_MERGED_DATASET_2GPU.ipynb",
+      "embedded": true
+    },
+    "scst_cache.py": {
+      "parent_notebook": "CLIP_PATCH_CSA_SCST_ONLY1000_MERGED_DATASET_2GPU.ipynb",
+      "embedded": true
+    },
+    "scst_dataset_mount.py": {
+      "parent_notebook": "CLIP_PATCH_CSA_SCST_ONLY1000_MERGED_DATASET_2GPU.ipynb",
+      "embedded": true
+    },
+    "captioning/scst.py": {
+      "commit": "cd3c8eb372f39df4454a2da27735e00e28f7f394",
+      "path": "captioning/scst.py",
+      "sha256": "3a9a1f32fb27dae0447066e1388a31461f3f0781d52db5861880b037a572a78e"
+    }
+  },
+  "source_checkpoint_sha256": "b0c5bde0921a4c828ac094b264f502654224aa9365ee40cdce1c15c82fe9aeef",
+  "test_used": false,
+  "models_executed": false
+}
