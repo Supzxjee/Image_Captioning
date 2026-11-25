@@ -1,0 +1,27 @@
+{
+  "status": "READY_UNRUN",
+  "date": "2026-11-26",
+  "host_tests_passed": 5,
+  "source_files_embedded": 37,
+  "checks": [
+    "Cell/source syntax, embedded SHA, undefined globals and dependency closure",
+    "Exact model/bank/decoder/beam bytes match training199; fixed CLIP/detector/selector contracts",
+    "Endpoint binary layout model/updates/source accepted; foreign XE/step/banks/TEST cohort rejected",
+    "API199 routing and endpoint pattern mocked; SHA early check before scorer/cache; token isolation",
+    "One decode saves25k candidates; both policies/all8metrics+Recall/NLL; basic/caption/meteor artifacts before SPICE",
+    "Same seed43 CE baselines, reference byte SHA and fixedselector compared; no CE caption replay on new SCST weights"
+  ],
+  "notebook_sha256": "6226af43b3b90c66e95dc59e24935e9dd4df385ebc19f0451108f49fa00beadd",
+  "downloads_path": "C:\\Users\\leduc\\Downloads\\BEAM_SCST_V199_TEST5000_RERANK_API_2GPU.ipynb",
+  "downloads_sha_matches": true,
+  "API_executed": false,
+  "Torch_imported": false,
+  "model_executed": false,
+  "CUDA_executed": false,
+  "metric_scorers_executed": false,
+  "actual_API_access_and_binary_verified": false,
+  "actual_TEST_input_datasets_verified": false,
+  "test_results_available": false,
+  "parent_stop_hours": 3,
+  "stop_is_ETA_or_billing": false
+}

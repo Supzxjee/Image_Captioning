@@ -1,0 +1,10 @@
+test_all_metrics_saved_candidates_recovery_and_same_seed_reference (test_test_notebook.Checks.test_all_metrics_saved_candidates_recovery_and_same_seed_reference) ... ok
+test_cells_hashes_globals_and_dependency_closure (test_test_notebook.Checks.test_cells_hashes_globals_and_dependency_closure) ... ok
+test_effective_API_routing_and_acquisition_before_heavy_phases (test_test_notebook.Checks.test_effective_API_routing_and_acquisition_before_heavy_phases) ... ok
+test_endpoint_binary_shape_and_TEST_contract_reject_foreign_source (test_test_notebook.Checks.test_endpoint_binary_shape_and_TEST_contract_reject_foreign_source) ... ok
+test_model_beam_and_selector_unchanged (test_test_notebook.Checks.test_model_beam_and_selector_unchanged) ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.326s
+
+OK
