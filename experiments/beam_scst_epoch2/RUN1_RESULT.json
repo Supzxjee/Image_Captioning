@@ -1,0 +1,367 @@
+{
+  "status": "EPOCH2_V202_COMPLETE_AUDITED",
+  "date": "2026-11-26",
+  "output_version": "ducanh3/notebook7bc83c4c76/202",
+  "parent_source": {
+    "seed": 43,
+    "version": "ducanh3/notebook7bc83c4c76/199",
+    "epoch": 1,
+    "sha256": "5b8d33fc0b26f2c77ad1cee4a58d3e4a718f13107a2d2bd9a0884c427faed88c",
+    "path": "/kaggle/working/beam_scst_epoch2_seed43_v199_run1/input_source/beam_scst_epoch1_seed43_v179_v2_run1/checkpoint.bin",
+    "origin": "exact Save Version API download"
+  },
+  "endpoint_sha256": "5373f5800109e8d24d56968a222f1b9424ceb119497a8e530212f76026de37cb",
+  "full_checkpoint_sha256": "f21a72b23c5f138550840a4065e9f94a94ff36042b8eaad9d87930d0124529e4",
+  "training": {
+    "complete": true,
+    "train_images": 113287,
+    "updates": 7082,
+    "epochs": 2,
+    "epoch2_image_events": 113287,
+    "cumulative_image_events": 226574,
+    "parent_sha256": "5b8d33fc0b26f2c77ad1cee4a58d3e4a718f13107a2d2bd9a0884c427faed88c",
+    "source_sha256": "a51e7ec21be68aa1cda9e0805bd6248add6199914a5c262fce138988066051a5",
+    "test_used": false,
+    "reranking": false,
+    "seconds": 11405.210433249,
+    "peak_allocated_bytes": 5451720704
+  },
+  "VALID": {
+    "split": "val",
+    "images": 5000,
+    "epoch": 2,
+    "updates": 7082,
+    "checkpoint_sha256": "5373f5800109e8d24d56968a222f1b9424ceb119497a8e530212f76026de37cb",
+    "metrics": {
+      "BLEU_1": 0.8213454841656888,
+      "BLEU_4": 0.4102692345242416,
+      "CIDEr": 1.331703698167245,
+      "ROUGE_L": 0.5986994772859674,
+      "CHAIRs": 0.056,
+      "CHAIRi": 0.036453702527626065,
+      "Recall": 0.4628955298844802,
+      "NLL": 3.977653572326158
+    },
+    "epoch1_reference": {
+      "BLEU_1": 0.8059457192271925,
+      "BLEU_4": 0.40330547656335064,
+      "CIDEr": 1.2938949542216254,
+      "ROUGE_L": 0.597202426454193,
+      "CHAIRs": 0.0508,
+      "CHAIRi": 0.033758536271099086,
+      "Recall": 0.4575590155700653,
+      "NLL": 2.9460973352896422
+    },
+    "delta_vs_epoch1": {
+      "BLEU_1": 0.015399764938496263,
+      "BLEU_4": 0.006963757960890937,
+      "CIDEr": 0.037808743945619616,
+      "ROUGE_L": 0.0014970508317744269,
+      "CHAIRs": 0.005200000000000003,
+      "CHAIRi": 0.002695166256526979,
+      "Recall": 0.005336514314414897,
+      "NLL": 1.0315562370365159
+    },
+    "endpoint_fixed_before_TEST": true
+  },
+  "TEST": {
+    "status": "BEAM_SCST_EPOCH2_TEST5000_RERANK_COMPLETE",
+    "images": 5000,
+    "test_used": true,
+    "training": false,
+    "checkpoint_sha256": "5373f5800109e8d24d56968a222f1b9424ceb119497a8e530212f76026de37cb",
+    "metrics": {
+      "decoder_rank0": {
+        "CIDEr": 1.3254743936271938,
+        "BLEU_1": 0.8143647388155731,
+        "BLEU_4": 0.40355882805544446,
+        "METEOR": 0.2911828770503263,
+        "SPICE": 0.2306152413572574,
+        "ROUGE_L": 0.5934912803472053,
+        "CHAIRs": 0.0542,
+        "CHAIRi": 0.03557958259994971,
+        "Recall": 0.472627969008002,
+        "counts": {
+          "images": 5000,
+          "hallucinated_captions": 271,
+          "hallucinated_mentions": 283,
+          "object_mentions": 7954,
+          "recalled_unique": 7442,
+          "reference_unique": 15746
+        },
+        "mean_words": 8.7812,
+        "short_le2": 0,
+        "NLL": 4.00504463626961
+      },
+      "clip_object_fixed": {
+        "CIDEr": 1.3285300941987233,
+        "BLEU_1": 0.820557428863593,
+        "BLEU_4": 0.40041319144443605,
+        "METEOR": 0.2934388755659074,
+        "SPICE": 0.23553906132892202,
+        "ROUGE_L": 0.5948445920939202,
+        "CHAIRs": 0.0404,
+        "CHAIRi": 0.026880363452801617,
+        "Recall": 0.47332655912612726,
+        "counts": {
+          "images": 5000,
+          "hallucinated_captions": 202,
+          "hallucinated_mentions": 213,
+          "object_mentions": 7924,
+          "recalled_unique": 7453,
+          "reference_unique": 15746
+        },
+        "mean_words": 8.988,
+        "short_le2": 0,
+        "NLL": 4.00504463626961
+      }
+    },
+    "changes": {
+      "changed_captions": 2833,
+      "rank_histogram": {
+        "0": 2167,
+        "1": 1313,
+        "2": 809,
+        "3": 521,
+        "4": 190
+      },
+      "CHAIR_repairs": 94,
+      "CHAIR_new_flags": 25
+    },
+    "selector": {
+      "decoder_weight": 0.3,
+      "clip_weight": 0.4,
+      "object_weight": 0.3,
+      "min_detection_confidence": 0.5,
+      "hallucination_penalty": 1.0,
+      "tie_break": "earlier beam"
+    },
+    "tuned_on_test": false,
+    "oracle_used_for_selection": false,
+    "prior_project_test_exposure": true,
+    "selection": "both prelocked policies reported; no TEST-based fallback",
+    "NLL_note": "same frozen captioner; reranking changes output only, no target-conditioned pass",
+    "epochs_SCST": 2,
+    "updates": 7082,
+    "seed": 43
+  },
+  "comparison": {
+    "seed": 43,
+    "split": "test",
+    "images": 5000,
+    "epoch": 2,
+    "updates": 7082,
+    "checkpoint": {
+      "seed": 43,
+      "version": "beam_scst_epoch2_seed43_v199_run1/epoch2_endpoint",
+      "sha256": "5373f5800109e8d24d56968a222f1b9424ceb119497a8e530212f76026de37cb",
+      "epoch": 2,
+      "updates": 7082,
+      "cursor_images": 113287,
+      "parent_sha256": "5b8d33fc0b26f2c77ad1cee4a58d3e4a718f13107a2d2bd9a0884c427faed88c",
+      "source_sha256": "a51e7ec21be68aa1cda9e0805bd6248add6199914a5c262fce138988066051a5",
+      "complete_epoch": true
+    },
+    "CE_metrics": {
+      "decoder_rank0": {
+        "BLEU_1": 0.7776121266986261,
+        "BLEU_4": 0.37790280281231137,
+        "METEOR": 0.28813366890256553,
+        "ROUGE_L": 0.579128129683382,
+        "CIDEr": 1.2198431675475085,
+        "SPICE": 0.21825731146122443,
+        "CHAIRs": 0.0406,
+        "CHAIRi": 0.02803483941208492,
+        "Recall": 0.43712688936872857,
+        "NLL": 2.178126289902086
+      },
+      "clip_object_fixed": {
+        "BLEU_1": 0.7790993525432683,
+        "BLEU_4": 0.3741711101557513,
+        "METEOR": 0.2941087006127335,
+        "ROUGE_L": 0.582496122998859,
+        "CIDEr": 1.2436387660847645,
+        "SPICE": 0.22570564007184174,
+        "CHAIRs": 0.0366,
+        "CHAIRi": 0.02450915799183028,
+        "Recall": 0.4493204623396418,
+        "NLL": 2.178126289902086
+      }
+    },
+    "epoch1_metrics": {
+      "decoder_rank0": {
+        "CIDEr": 1.2960632849121856,
+        "BLEU_1": 0.8019781362146072,
+        "BLEU_4": 0.4026386985775675,
+        "METEOR": 0.28823099135395064,
+        "SPICE": 0.22656002578284543,
+        "ROUGE_L": 0.591988513596983,
+        "CHAIRs": 0.0506,
+        "CHAIRi": 0.033435426237876466,
+        "Recall": 0.4660231169820907,
+        "counts": {
+          "images": 5000,
+          "hallucinated_captions": 253,
+          "hallucinated_mentions": 262,
+          "object_mentions": 7836,
+          "recalled_unique": 7338,
+          "reference_unique": 15746
+        },
+        "mean_words": 8.534,
+        "short_le2": 0,
+        "NLL": 2.978882952490194
+      },
+      "clip_object_fixed": {
+        "CIDEr": 1.3017854425760478,
+        "BLEU_1": 0.808696662698238,
+        "BLEU_4": 0.39617604337966505,
+        "METEOR": 0.2917378536353819,
+        "SPICE": 0.2324931457754211,
+        "ROUGE_L": 0.5898779488681541,
+        "CHAIRs": 0.0368,
+        "CHAIRi": 0.02484709480122324,
+        "Recall": 0.4687539692620348,
+        "counts": {
+          "images": 5000,
+          "hallucinated_captions": 184,
+          "hallucinated_mentions": 195,
+          "object_mentions": 7848,
+          "recalled_unique": 7381,
+          "reference_unique": 15746
+        },
+        "mean_words": 8.9746,
+        "short_le2": 0,
+        "NLL": 2.978882952490194
+      }
+    },
+    "epoch2_metrics": {
+      "decoder_rank0": {
+        "CIDEr": 1.3254743936271938,
+        "BLEU_1": 0.8143647388155731,
+        "BLEU_4": 0.40355882805544446,
+        "METEOR": 0.2911828770503263,
+        "SPICE": 0.2306152413572574,
+        "ROUGE_L": 0.5934912803472053,
+        "CHAIRs": 0.0542,
+        "CHAIRi": 0.03557958259994971,
+        "Recall": 0.472627969008002,
+        "counts": {
+          "images": 5000,
+          "hallucinated_captions": 271,
+          "hallucinated_mentions": 283,
+          "object_mentions": 7954,
+          "recalled_unique": 7442,
+          "reference_unique": 15746
+        },
+        "mean_words": 8.7812,
+        "short_le2": 0,
+        "NLL": 4.00504463626961
+      },
+      "clip_object_fixed": {
+        "CIDEr": 1.3285300941987233,
+        "BLEU_1": 0.820557428863593,
+        "BLEU_4": 0.40041319144443605,
+        "METEOR": 0.2934388755659074,
+        "SPICE": 0.23553906132892202,
+        "ROUGE_L": 0.5948445920939202,
+        "CHAIRs": 0.0404,
+        "CHAIRi": 0.026880363452801617,
+        "Recall": 0.47332655912612726,
+        "counts": {
+          "images": 5000,
+          "hallucinated_captions": 202,
+          "hallucinated_mentions": 213,
+          "object_mentions": 7924,
+          "recalled_unique": 7453,
+          "reference_unique": 15746
+        },
+        "mean_words": 8.988,
+        "short_le2": 0,
+        "NLL": 4.00504463626961
+      }
+    },
+    "delta_vs_epoch1": {
+      "decoder_rank0": {
+        "BLEU_1": 0.012386602600965912,
+        "BLEU_4": 0.000920129477876952,
+        "METEOR": 0.0029518856963756668,
+        "ROUGE_L": 0.0015027667502223174,
+        "CIDEr": 0.029411108715008183,
+        "SPICE": 0.004055215574411963,
+        "CHAIRs": 0.003599999999999999,
+        "CHAIRi": 0.0021441563620732476,
+        "Recall": 0.006604852025911323,
+        "NLL": 1.0261616837794163
+      },
+      "clip_object_fixed": {
+        "BLEU_1": 0.011860766165354919,
+        "BLEU_4": 0.00423714806477099,
+        "METEOR": 0.0017010219305255148,
+        "ROUGE_L": 0.00496664322576601,
+        "CIDEr": 0.026744651622675475,
+        "SPICE": 0.003045915553500922,
+        "CHAIRs": 0.003599999999999999,
+        "CHAIRi": 0.002033268651578376,
+        "Recall": 0.00457258986409248,
+        "NLL": 1.0261616837794163
+      }
+    },
+    "delta_vs_CE": {
+      "decoder_rank0": {
+        "BLEU_1": 0.036752612116947025,
+        "BLEU_4": 0.025656025243133096,
+        "METEOR": 0.0030492081477607735,
+        "ROUGE_L": 0.01436315066382332,
+        "CIDEr": 0.10563122607968523,
+        "SPICE": 0.01235792989603296,
+        "CHAIRs": 0.013600000000000001,
+        "CHAIRi": 0.007544743187864793,
+        "Recall": 0.03550107963927346,
+        "NLL": 1.826918346367524
+      },
+      "clip_object_fixed": {
+        "BLEU_1": 0.04145807632032461,
+        "BLEU_4": 0.02624208128868477,
+        "METEOR": -0.0006698250468260558,
+        "ROUGE_L": 0.012348469095061154,
+        "CIDEr": 0.08489132811395872,
+        "SPICE": 0.009833421257080283,
+        "CHAIRs": 0.003799999999999998,
+        "CHAIRi": 0.0023712054609713352,
+        "Recall": 0.024006096786485465,
+        "NLL": 1.826918346367524
+      }
+    },
+    "checkpoint_selection": "fixed epoch2 endpoint, no TEST selection",
+    "test_tuning": false,
+    "prior_project_test_exposure": true
+  },
+  "verification": {
+    "source_SHA_files": 80,
+    "rank_continuity_and_Adam_steps_verified": true,
+    "training_log_rows": 143,
+    "all5000_fixed_selections_replayed": true,
+    "beam_candidates": 25000,
+    "CLIP_pairs": 25000,
+    "VALID_TEST_disjoint": true,
+    "TEST_reference_bytes_and_evaluator_assets_match_epoch1": true,
+    "CIDEr_means_CHAIR_counts_NLL_verified": true,
+    "local_Torch_or_scorer_execution": false
+  },
+  "timing": {
+    "training_worker_seconds": 11405.210433249,
+    "epoch1_training_worker_seconds": 11249.117766055,
+    "TEST_decode_worker_max_seconds": 197.80197197000052,
+    "CLIP_worker_max_seconds": 93.70930235000014,
+    "not_same_work_speed_benchmark": true,
+    "excludes_setup_evaluation_and_quota_billing": true
+  },
+  "limits": [
+    "One SCST seed, reused TEST; no new statistical test or untouched holdout.",
+    "Epoch2 adds duration plus the guarded speed candidate; one-update parity does not prove bitwise full-epoch equivalence.",
+    "CHAIR is object-only; flags are not human-confirmed corrections.",
+    "Binary weights/CLIP/JPEG not in review; SHA and restoration verified through user-run receipts only.",
+    "Saved CIDEr/count/NLL/selection aggregation only; no metric scorer rerun. SPICE aggregate present, per-image artifact absent."
+  ],
+  "recommendation": "Retain epoch2+rerank as higher-CIDEr candidate; epoch1+rerank and CE+rerank retain lower CHAIR. No automatic epoch3 or TEST tuning."
+}
