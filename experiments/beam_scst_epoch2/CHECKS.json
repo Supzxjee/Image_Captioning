@@ -1,0 +1,28 @@
+{
+  "status": "HOST_STATIC_METADATA_MOCK_PASS",
+  "date": "2026-11-26",
+  "tests": 9,
+  "notebook_sha256": "7a54340490fc7754b98dbbe03ea4b6f55072aa97c51de50b14909c3d47846332",
+  "Downloads_copy_sha256": "7a54340490fc7754b98dbbe03ea4b6f55072aa97c51de50b14909c3d47846332",
+  "train_embedded_files": 42,
+  "test_embedded_files": 38,
+  "checks": [
+    "All notebook cells compile and are unexecuted; all80 embedded files SHA verified.",
+    "Notebook global dependencies and reachable train/TEST import closure checked.",
+    "Exact v199 full-checkpoint API path/isolated Secret environment mocked; no latest or weights-only fallback.",
+    "Parent metadata/software/cache/vocabulary guards and epoch2 cursor3541â†’7082 including tail7 and partial resume.",
+    "Original update AST unchanged except approved batch helper; model, reward, fast beam, inference, scorer and selector bytes preserved.",
+    "Dynamic TEST endpoint binding rejects incomplete/foreign/epoch1 checkpoints.",
+    "Mock full pipeline succeeds; partial completion/training timeout prevent TEST, scorer timeout preserves weights/beam files."
+  ],
+  "no_Torch_imported": true,
+  "no_metric_scorer_imported": true,
+  "API_executed": false,
+  "Kaggle_executed": false,
+  "model_executed": false,
+  "pending": [
+    "Actual Kaggle API authorization/download",
+    "Binary model/Adam/RNG restore and CUDA preflight",
+    "Full epoch2 throughput/quality; Java/HF downloads and all metrics on user runtime"
+  ]
+}

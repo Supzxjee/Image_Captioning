@@ -1,0 +1,14 @@
+test_dynamic_TEST_binding_rejects_partial_or_epoch1_no_stale_SHA (test_notebook.Checks.test_dynamic_TEST_binding_rejects_partial_or_epoch1_no_stale_SHA) ... ok
+test_effective_API_acquisition_exact_full_checkpoint_before_heavy_setup (test_notebook.Checks.test_effective_API_acquisition_exact_full_checkpoint_before_heavy_setup) ... ok
+test_epoch_cursor_transition_resume_boundaries_and_final_tail (test_notebook.Checks.test_epoch_cursor_transition_resume_boundaries_and_final_tail) ... ok
+test_fixed_policies_metrics_recovery_and_no_TEST_selection (test_notebook.Checks.test_fixed_policies_metrics_recovery_and_no_TEST_selection) ... ok
+test_mock_full_pipeline_and_failures_never_select_partial_or_retrain (test_notebook.Checks.test_mock_full_pipeline_and_failures_never_select_partial_or_retrain) ... ok
+test_original_model_reward_update_math_and_audited_fast_functions_preserved (test_notebook.Checks.test_original_model_reward_update_math_and_audited_fast_functions_preserved) ... ok
+test_parent_full_state_and_software_lineage_reject_weights_only (test_notebook.Checks.test_parent_full_state_and_software_lineage_reject_weights_only) ... ok
+test_runtime_import_closure_for_both_isolated_sources (test_notebook.Checks.test_runtime_import_closure_for_both_isolated_sources) ... ok
+test_syntax_hashes_unexecuted_and_global_dependencies (test_notebook.Checks.test_syntax_hashes_unexecuted_and_global_dependencies) ... ok
+
+----------------------------------------------------------------------
+Ran 9 tests in 0.439s
+
+OK
