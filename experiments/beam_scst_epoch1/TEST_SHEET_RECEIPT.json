@@ -1,0 +1,9 @@
+{
+  "date": "2026-11-26",
+  "spreadsheet_id": "1XZ5iuyCs5JP8VE6dT7AYdVTiY1_nK4C_QdXs5ppw6FA",
+  "range": "'K\u1ebft qu\u1ea3 m\u1edbi'!A462:E481",
+  "exact_cells_readback": 100,
+  "visual_context_checked": true,
+  "full_visual_QA": false,
+  "limit": "Top-table screenshot capture failed; context and tail metrics inspected; all cell value/format metadata checked. Original frozen columns and existing rows preserved."
+}

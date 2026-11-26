@@ -1,0 +1,159 @@
+{
+  "status": "TEST200_COMPLETE_AUDITED",
+  "date": "2026-11-26",
+  "output_version": "ducanh3/notebook7bc83c4c76/200",
+  "training_checkpoint_version": "ducanh3/notebook7bc83c4c76/199",
+  "checkpoint_sha256": "3b03acc29f025b07dc358846b30618ae9c83f8634bc12bf7905e9d908b971f24",
+  "CE_source": "ducanh3/notebook7bc83c4c76/179",
+  "CE_rerank_output": "ducanh3/notebook7bc83c4c76/183",
+  "CE_metrics": {
+    "decoder_rank0": {
+      "BLEU_1": 0.7776121266986261,
+      "BLEU_4": 0.37790280281231137,
+      "METEOR": 0.28813366890256553,
+      "ROUGE_L": 0.579128129683382,
+      "CIDEr": 1.2198431675475085,
+      "SPICE": 0.21825731146122443,
+      "CHAIRs": 0.0406,
+      "CHAIRi": 0.02803483941208492,
+      "Recall": 0.43712688936872857,
+      "NLL": 2.178126289902086
+    },
+    "clip_object_fixed": {
+      "BLEU_1": 0.7790993525432683,
+      "BLEU_4": 0.3741711101557513,
+      "METEOR": 0.2941087006127335,
+      "ROUGE_L": 0.582496122998859,
+      "CIDEr": 1.2436387660847645,
+      "SPICE": 0.22570564007184174,
+      "CHAIRs": 0.0366,
+      "CHAIRi": 0.02450915799183028,
+      "Recall": 0.4493204623396418,
+      "NLL": 2.178126289902086
+    }
+  },
+  "SCST_metrics": {
+    "decoder_rank0": {
+      "CIDEr": 1.2960632849121856,
+      "BLEU_1": 0.8019781362146072,
+      "BLEU_4": 0.4026386985775675,
+      "METEOR": 0.28823099135395064,
+      "SPICE": 0.22656002578284543,
+      "ROUGE_L": 0.591988513596983,
+      "CHAIRs": 0.0506,
+      "CHAIRi": 0.033435426237876466,
+      "Recall": 0.4660231169820907,
+      "counts": {
+        "images": 5000,
+        "hallucinated_captions": 253,
+        "hallucinated_mentions": 262,
+        "object_mentions": 7836,
+        "recalled_unique": 7338,
+        "reference_unique": 15746
+      },
+      "mean_words": 8.534,
+      "short_le2": 0,
+      "NLL": 2.978882952490194
+    },
+    "clip_object_fixed": {
+      "CIDEr": 1.3017854425760478,
+      "BLEU_1": 0.808696662698238,
+      "BLEU_4": 0.39617604337966505,
+      "METEOR": 0.2917378536353819,
+      "SPICE": 0.2324931457754211,
+      "ROUGE_L": 0.5898779488681541,
+      "CHAIRs": 0.0368,
+      "CHAIRi": 0.02484709480122324,
+      "Recall": 0.4687539692620348,
+      "counts": {
+        "images": 5000,
+        "hallucinated_captions": 184,
+        "hallucinated_mentions": 195,
+        "object_mentions": 7848,
+        "recalled_unique": 7381,
+        "reference_unique": 15746
+      },
+      "mean_words": 8.9746,
+      "short_le2": 0,
+      "NLL": 2.978882952490194
+    }
+  },
+  "changes": {
+    "changed_captions": 3096,
+    "rank_histogram": {
+      "0": 1904,
+      "1": 1322,
+      "2": 937,
+      "3": 639,
+      "4": 198
+    },
+    "CHAIR_repairs": 102,
+    "CHAIR_new_flags": 33
+  },
+  "delta_vs_same_seed_CE": {
+    "decoder_rank0": {
+      "BLEU_1": 0.024366009515981113,
+      "BLEU_4": 0.024735895765256144,
+      "METEOR": 9.732245138510676e-05,
+      "ROUGE_L": 0.012860383913601003,
+      "CIDEr": 0.07622011736467704,
+      "SPICE": 0.008302714321620996,
+      "CHAIRs": 0.010000000000000002,
+      "CHAIRi": 0.005400586825791545,
+      "Recall": 0.028896227613362135,
+      "NLL": 0.8007566625881077
+    },
+    "clip_object_fixed": {
+      "BLEU_1": 0.02959731015496969,
+      "BLEU_4": 0.02200493322391378,
+      "METEOR": -0.0023708469773515706,
+      "ROUGE_L": 0.007381825869295144,
+      "CIDEr": 0.058146676491283245,
+      "SPICE": 0.006787505703579361,
+      "CHAIRs": 0.0001999999999999988,
+      "CHAIRi": 0.0003379368093929594,
+      "Recall": 0.019433506922392985,
+      "NLL": 0.8007566625881077
+    }
+  },
+  "rerank_minus_top1": {
+    "CIDEr": 0.005722157663862193,
+    "BLEU_1": 0.0067185264836308045,
+    "BLEU_4": -0.006462655197902456,
+    "METEOR": 0.0035068622814312667,
+    "SPICE": 0.005933119992575675,
+    "ROUGE_L": -0.0021105647288288676,
+    "CHAIRs": -0.0138,
+    "CHAIRi": -0.008588331436653225,
+    "Recall": 0.0027308522799440738,
+    "mean_words": 0.4405999999999999,
+    "short_le2": 0,
+    "NLL": 0.0
+  },
+  "verification": {
+    "source_SHA_files": 37,
+    "caption_ids": 5000,
+    "beam_candidates": 25000,
+    "CLIP_pairs": 25000,
+    "all_fixed_selections_replayed": true,
+    "disjoint_from_VALID": true,
+    "reference_bytes_match_CE": true,
+    "CLIP_assets_match_CE": true,
+    "CHAIR_counts_verified": true,
+    "CIDEr_means_verified": true,
+    "NLL_verified": true
+  },
+  "timing": {
+    "decode_worker_max_seconds": 213.42151559400008,
+    "CLIP_worker_max_seconds": 94.62150723800005,
+    "excludes_setup_and_CPU_metrics_and_billing": true
+  },
+  "limits": [
+    "One training seed; TEST was previously used in project development; no formal statistical test.",
+    "Recipe changes multiple SCST factors; not an isolated beam-baseline ablation or M3 ablation.",
+    "CHAIR flags are object-only, not human-confirmed errors; no equivalence/noninferiority claim versus CE+rerank.",
+    "Model, CLIP and JPEG binary hashes are runtime receipts; binaries not reloaded locally.",
+    "CIDEr means/CHAIR counts/NLL and fixed selections recomputed; BLEU/ROUGE/SPICE not rescored locally."
+  ],
+  "next_recommendation": "Keep XE+rerank as low-hallucination reference and SCST+rerank as high-CIDEr candidate; no automatic epoch2 or TEST retuning."
+}
