@@ -1,0 +1,11 @@
+test_ABBA_schedule_shards_tail_measurements_and_no_production_output (test_speed_notebook.Checks.test_ABBA_schedule_shards_tail_measurements_and_no_production_output) ... ok
+test_mock_API_full_state_before_setup (test_speed_notebook.Checks.test_mock_API_full_state_before_setup) ... ok
+test_original_model_reward_and_effective_recipe_preserved (test_speed_notebook.Checks.test_original_model_reward_and_effective_recipe_preserved) ... ok
+test_synchronization_change_rejects_nonfinite_before_loss_and_keeps_EOS (test_speed_notebook.Checks.test_synchronization_change_rejects_nonfinite_before_loss_and_keeps_EOS) ... ok
+test_syntax_hash_global_and_import_closure (test_speed_notebook.Checks.test_syntax_hash_global_and_import_closure) ... ok
+test_vectorized_batch_matches_original_order_dtype_and_values (test_speed_notebook.Checks.test_vectorized_batch_matches_original_order_dtype_and_values) ... ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 1.053s
+
+OK

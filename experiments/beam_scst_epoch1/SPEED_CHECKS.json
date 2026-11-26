@@ -1,0 +1,27 @@
+{
+  "status": "READY_UNRUN",
+  "date": "2026-11-26",
+  "host_tests_passed": 6,
+  "source_files_embedded": 42,
+  "checks": [
+    "Cells/source syntax, embedded SHA, globals and import closure; no local Torch/scorers",
+    "NumPy/fake-tensor fixtures match original batching across shards/repeated/dummy rows and dtypes; normal4image prompt calls4to1",
+    "Pinned model/decoder/loss/reward/cache bytes unchanged; Adam/global32/FP32/EOS/finite guards retained",
+    "Candidate deferred finite flag checked before return; actual nonfinite/beam/loss/gradient/parameter/RNG guard wired before timings",
+    "ABBA identical restored source/Adam/RNG; warmups plus all3shards/tail; CUDA-event and walltiming;38updatesdiscarded",
+    "Mock exactAPI199 fullcheckpoint pattern, isolated credentials, early SHA before dependency/cache work"
+  ],
+  "notebook_sha256": "cb6e875c80e690ec8c350854fd05f65cc93b80c8d921f4b54c7316389679cc61",
+  "downloads_path": "C:\\Users\\leduc\\Downloads\\BEAM_SCST_V199_SPEED_COMPARE_2GPU.ipynb",
+  "downloads_sha_matches": true,
+  "actual_API_access_or_weights_verified": false,
+  "actual_GPU_equivalence_verified": false,
+  "actual_GPU_throughput_measured": false,
+  "actual_models_executed": false,
+  "Torch_imported_locally": false,
+  "metric_scorers_run_locally": false,
+  "epoch2_prepared": false,
+  "production_runner_changed": false,
+  "cap_hours": 1,
+  "cap_is_ETA_or_billing": false
+}
