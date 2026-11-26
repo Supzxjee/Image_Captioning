@@ -1,0 +1,112 @@
+{
+  "status": "SPEED_PILOT_AUDITED",
+  "date": "2026-11-26",
+  "output_version": null,
+  "source_checkpoint": {
+    "seed": 43,
+    "version": "ducanh3/notebook7bc83c4c76/199",
+    "epoch": 1,
+    "sha256": "5b8d33fc0b26f2c77ad1cee4a58d3e4a718f13107a2d2bd9a0884c427faed88c",
+    "path": "/kaggle/working/beam_scst_v199_speed_compare_run1/input_source/beam_scst_epoch1_seed43_v179_v2_run1/checkpoint.bin",
+    "origin": "exact Save Version API download"
+  },
+  "timing_summary": {
+    "reference": {
+      "n": 12,
+      "mean": 3.1532511380833057,
+      "median": 3.173295397499942,
+      "min": 2.709774687999925,
+      "max": 3.510508417999972
+    },
+    "candidate": {
+      "n": 12,
+      "mean": 3.012351337333333,
+      "median": 2.9902164979999952,
+      "min": 2.7339654429999882,
+      "max": 3.395592724000039
+    }
+  },
+  "gains": {
+    "mean": {
+      "reference": 3.1532511380833057,
+      "candidate": 3.012351337333333,
+      "time_reduction_percent": 4.468397681626401,
+      "throughput_ratio": 1.046774026324135,
+      "training_only_saved_seconds_projection": 498.92619445565316
+    },
+    "median": {
+      "reference": 3.173295397499942,
+      "candidate": 2.9902164979999952,
+      "time_reduction_percent": 5.7693620217072805,
+      "throughput_ratio": 1.0612259679599785,
+      "training_only_saved_seconds_projection": 648.2823831293109
+    }
+  },
+  "matched_position_mean": {
+    "64": {
+      "reference": 3.374603749499954,
+      "candidate": 3.3547058810000294
+    },
+    "96": {
+      "reference": 3.025621677999993,
+      "candidate": 2.7871143054999834
+    },
+    "40000": {
+      "reference": 3.322155475499983,
+      "candidate": 3.188038105500027
+    },
+    "40032": {
+      "reference": 2.805641047999984,
+      "candidate": 2.7680332205000013
+    },
+    "80000": {
+      "reference": 3.0224899029999506,
+      "candidate": 2.8134690929999806
+    },
+    "80032": {
+      "reference": 3.3689949744999694,
+      "candidate": 3.1627474184999755
+    }
+  },
+  "phase_average": {
+    "reference": {
+      "GPU_event_spans_seconds/batch_H2D_span": 0.13791229462623597,
+      "GPU_event_spans_seconds/beam_forward_span": 1.0088756014506022,
+      "GPU_event_spans_seconds/backward_span": 2.047481953938802,
+      "GPU_event_spans_seconds/optimizer_span": 0.016216141223907472,
+      "GPU_event_spans_seconds/summary_allreduce_span": 0.0004309360012412071,
+      "CPU_wall_seconds/batch_wall": 0.13822714858329732,
+      "CPU_wall_seconds/caption_copy_wait": 0.00033326750001568445,
+      "CPU_wall_seconds/CPU_reward_and_transfer": 0.04101859991666856
+    },
+    "candidate": {
+      "GPU_event_spans_seconds/batch_H2D_span": 0.01715286135673523,
+      "GPU_event_spans_seconds/beam_forward_span": 0.9783998540242513,
+      "GPU_event_spans_seconds/backward_span": 2.037280303955078,
+      "GPU_event_spans_seconds/optimizer_span": 0.016206013679504395,
+      "GPU_event_spans_seconds/summary_allreduce_span": 0.00041399466246366503,
+      "CPU_wall_seconds/batch_wall": 0.0174479344166798,
+      "CPU_wall_seconds/caption_copy_wait": 0.00032375966668496403,
+      "CPU_wall_seconds/CPU_reward_and_transfer": 0.01898834141670136
+    }
+  },
+  "peak_allocated_GiB": 5.081140518188477,
+  "verification": {
+    "source_SHA_files": 42,
+    "two_rank_equivalence_guard_PASS": true,
+    "ABBA_samples_recomputed": 24,
+    "tail_samples_excluded_from_global32_projection": true,
+    "mean_rewards_equal_across_blocks": true,
+    "timed_SCST_differences_below": 1e-06,
+    "max_timed_SCST_difference": 3.771856427192688e-08,
+    "discarded_optimizer_steps": 38,
+    "production_checkpoint_saved": false
+  },
+  "recommendation": "Use the guarded candidate for the next bounded epoch; modest gain, do not claim 1\u20132h epoch or new accuracy gain.",
+  "limits": [
+    "Same-session short warm-cache sample; phases overlap, GPU spans are not isolated kernel totals.",
+    "One-update guard checks exact data/beam/logp/loss/RNG; gradient/parameter comparison uses tolerance, not full-epoch equivalence.",
+    "No new caption-quality result, production weights or actual full-epoch timing; projections exclude setup/evaluation/quota billing.",
+    "Host audit reads cached text/metadata only; no Torch/model/checkpoint/scorer run."
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "spreadsheet_id": "1XZ5iuyCs5JP8VE6dT7AYdVTiY1_nK4C_QdXs5ppw6FA",
+  "sheet": "Kết quả mới",
+  "range": "A483:E496",
+  "date": "2026-11-26",
+  "exact_value_readback_cells": 70,
+  "outside_range_unchanged": true,
+  "visual_QA": "Native page/range opened; screenshot capture failed twice. Formatting and all values reviewed via API; full native fit unverified.",
+  "output_version": null
+}
